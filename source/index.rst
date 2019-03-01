@@ -149,7 +149,15 @@ Amazon Web Services AWS
    :maxdepth: 1
 
    Adding an Amazon RDS DB instance to PMM <manage/amazon-rds>
-   
+
+Extending PMM
+================================================================================
+
+.. toctree::
+   :maxdepth: 1
+
+   Using External Exporters <manage/client.external.exporters>
+
 Reference
 ================================================================================
 
