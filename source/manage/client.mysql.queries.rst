@@ -112,7 +112,7 @@ as well as
 .. seealso::
 
    Default ports
-      :term:`Ports` in :ref:`pmm.glossary.terminology-reference`
+      :ref:`Ports <Ports>` in :ref:`pmm.glossary.terminology-reference`
 
 .. _pmm-admin.add-mysql-queries.detailed-description:
 

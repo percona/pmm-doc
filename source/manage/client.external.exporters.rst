@@ -8,8 +8,8 @@
 `Adding external monitoring services <pmm-admin.html#pmm-pmm-admin-external-monitoring-service-adding>`_
 ----------------------------------------------------------------------------------------------------------
 
-The |pmm-admin.add| command is also used to add external :term:`monitoring
-services <External Monitoring Service>`. This command adds an external
+The |pmm-admin.add| command is also used to add external :ref:`monitoring
+services <External-Monitoring-Service>`. This command adds an external
 monitoring service assuming that the underlying |prometheus| exporter is already
 set up and accessible. The default scrape timeout is 10 seconds, and the
 interval equals to 1 minute.

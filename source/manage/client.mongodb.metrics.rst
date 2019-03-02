@@ -68,7 +68,7 @@ provide its URI via the |opt.uri| option.
 .. seealso::
 
    Default ports
-      :term:`Ports` in :ref:`pmm.glossary.terminology-reference`
+      :ref:`Ports <Ports>` in :ref:`pmm.glossary.terminology-reference`
    Essential |mongodb| configuration 
       :ref:`pmm.qan.mongodb.conf`
    
