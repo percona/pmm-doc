@@ -1,0 +1,135 @@
+
+
+
+    <title>Running PMM Server via Docker &mdash; Percona Monitoring and Management Documentation</title>
+    
+  <head>
+    
+    
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Percona Monitoring and Management Documentation" href="../index.html" />
+    <link rel="next" title="Setting Up a Docker Container for PMM Server" href="docker.setting-up.html" />
+    <link rel="prev" title="Security Features in Percona Monitoring and Management" href="../concepts/security.html" /> 
+  </head>
+  <body>
+    <div class="container">  
+
+    <div class="document row">
+      <div class="documentwrapper col-md-9 col-md-push-3">
+    <div class="related row">
+      
+      <ul class="nav nav-pills">
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="docker.setting-up.html" title="Setting Up a Docker Container for PMM Server"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="../concepts/security.html" title="Security Features in Percona Monitoring and Management"
+             accesskey="P">previous</a></li>
+        <li><a href="../index.html">Percona Monitoring and Management Documentation</a></li> 
+      </ul>
+    </div>
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="running-pmm-server-via-docker">
+<span id="run-server-docker"></span><h1>Running PMM Server via Docker<a class="headerlink" href="#running-pmm-server-via-docker" title="Permalink to this headline">¶</a></h1>
+<p>Docker images of PMM Server are stored at the <a class="reference external" href="https://hub.docker.com/r/percona/pmm-server/tags/">percona/pmm-server</a> public
+repository. The host must be able to run Docker 1.12.6 or later, and have
+network access.</p>
+<p>PMM needs roughly 1GB of storage for each monitored database node with data
+retention set to one week. Minimum memory is 2 GB for one monitored database
+node, but it is not linear when you add more nodes.  For example, data from 20
+nodes should be easily handled with 16 GB.</p>
+<p>Make sure that the firewall and routing rules of the host do not constrain the
+Docker container. For more information, see <a class="reference internal" href="../faq.html#troubleshoot-connection"><span class="std std-ref">How to troubleshoot communication issues between PMM Client and PMM Server?</span></a>.</p>
+<p>For more information about using Docker, see the <a class="reference external" href="https://docs.docker.com">Docker Docs</a>.</p>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">By default, <a class="reference internal" href="../glossary.terminology.html#data-retention"><span class="std std-ref">retention</span></a> is set to 30 days for
+Metrics Monitor and to 8 days for <em>PMM Query Analytics</em>.  Also consider
+<a class="reference internal" href="../faq.html#performance-issues"><span class="std std-ref">disabling table statistics</span></a>, which can greatly
+decrease Prometheus database size.</p>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="docker.setting-up.html">Setting Up a Docker Container for PMM Server</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docker.upgrading.html">Updating PMM Server Using Docker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docker.backing-up.html">Backing Up PMM Data from the Docker Container</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docker.restoring.html">Restoring the Backed Up Information to the PMM Data Container</a></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+    <div class="related row">
+      
+      <ul class="nav nav-pills">
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="docker.setting-up.html" title="Setting Up a Docker Container for PMM Server"
+             >next</a></li>
+        <li class="right" >
+          <a href="../concepts/security.html" title="Security Features in Percona Monitoring and Management"
+             >previous</a></li>
+        <li><a href="../index.html">Percona Monitoring and Management Documentation</a></li> 
+      </ul>
+    </div>
+      </div>
+      <div class="sphinxsidebar  col-md-3 col-md-pull-9">
+        <div class="sphinxsidebarwrapper">
+  
+          {@ product_logo @}          
+
+          {@ product_pdf_download @}
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../concepts/security.html"
+                        title="previous chapter">Security Features in <em>Percona Monitoring and Management</em></a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="docker.setting-up.html"
+                        title="next chapter">Setting Up a Docker Container for PMM Server</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">jQuery(document).ready(function(){ jQuery('#searchbox').show(0); });</script>
+          {@ product_series @}
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <!-- div class="footer">
+        &copy; Copyright Percona LLC and/or its affiliates 2009-2019.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.4.
+    </div -->
+  </div>
+  </body>

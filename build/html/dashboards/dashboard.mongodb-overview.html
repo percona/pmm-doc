@@ -1,0 +1,185 @@
+
+
+
+    <title>MongoDB Overview &mdash; Percona Monitoring and Management Documentation</title>
+    
+  <head>
+    
+    
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Percona Monitoring and Management Documentation" href="../index.html" />
+    <link rel="up" title="Metrics Monitor Dashboards" href="../index.metrics-monitor.dashboard.html" />
+    <link rel="next" title="MongoDB ReplSet" href="dashboard.mongodb-replset.html" />
+    <link rel="prev" title="MongoDB MMAPv1 Dashboard" href="dashboard.mongodb-mmapv1.html" /> 
+  </head>
+  <body>
+    <div class="container">  
+
+    <div class="document row">
+      <div class="documentwrapper col-md-9 col-md-push-3">
+    <div class="related row">
+      
+      <ul class="nav nav-pills">
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="dashboard.mongodb-replset.html" title="MongoDB ReplSet"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="dashboard.mongodb-mmapv1.html" title="MongoDB MMAPv1 Dashboard"
+             accesskey="P">previous</a></li>
+        <li><a href="../index.html">Percona Monitoring and Management Documentation</a></li>
+          <li><a href="../index.metrics-monitor.dashboard.html" accesskey="U">Metrics Monitor Dashboards</a></li> 
+      </ul>
+    </div>
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="mongodb-overview">
+<span id="dashboard-mongodb-overview"></span><h1>MongoDB Overview<a class="headerlink" href="#mongodb-overview" title="Permalink to this headline">¶</a></h1>
+<p>This dashboard provides basic information about MongoDB instances.</p>
+<div class="section" id="command-operations">
+<span id="dashboard-mongodb-overview-command-operations"></span><h2><a class="reference internal" href="#dashboard-mongodb-overview-command-operations"><span class="std std-ref">Command Operations</span></a><a class="headerlink" href="#command-operations" title="Permalink to this headline">¶</a></h2>
+<p>Shows how many times a command is executed per second on average during the
+selected interval.</p>
+<p>Look for peaks and drops and correlate them with other graphs.</p>
+<p><strong>View all metrics of</strong> <a class="reference internal" href="#dashboard-mongodb-overview"><span class="std std-ref">MongoDB Overview</span></a></p>
+</div>
+<div class="section" id="connections">
+<span id="dashboard-mongodb-overview-connections"></span><h2><a class="reference internal" href="#dashboard-mongodb-overview-connections"><span class="std std-ref">Connections</span></a><a class="headerlink" href="#connections" title="Permalink to this headline">¶</a></h2>
+<p>Keep in mind the hard limit on the maximum number of connections set by your
+distribution.</p>
+<p>Anything over 5,000 should be a concern, because the application may not close
+connections correctly.</p>
+<p><strong>View all metrics of</strong> <a class="reference internal" href="#dashboard-mongodb-overview"><span class="std std-ref">MongoDB Overview</span></a></p>
+</div>
+<div class="section" id="cursors">
+<span id="dashboard-mongodb-overview-cursors"></span><h2><a class="reference internal" href="#dashboard-mongodb-overview-cursors"><span class="std std-ref">Cursors</span></a><a class="headerlink" href="#cursors" title="Permalink to this headline">¶</a></h2>
+<p>Helps identify why connections are increasing.  Shows active cursors compared to
+cursors being automatically killed after 10 minutes due to an application not
+closing the connection.</p>
+<p><strong>View all metrics of</strong> <a class="reference internal" href="#dashboard-mongodb-overview"><span class="std std-ref">MongoDB Overview</span></a></p>
+</div>
+<div class="section" id="document-operations">
+<span id="dashboard-mongodb-overview-document-operations"></span><h2><a class="reference internal" href="#dashboard-mongodb-overview-document-operations"><span class="std std-ref">Document Operations</span></a><a class="headerlink" href="#document-operations" title="Permalink to this headline">¶</a></h2>
+<p>When used in combination with <strong>Command Operations</strong>, this graph can help
+identify <em>write aplification</em>.  For example, when one <code class="docutils literal"><span class="pre">insert</span></code> or <code class="docutils literal"><span class="pre">update</span></code>
+command actually inserts or updates hundreds, thousands, or even millions of
+documents.</p>
+<p><strong>View all metrics of</strong> <a class="reference internal" href="#dashboard-mongodb-overview"><span class="std std-ref">MongoDB Overview</span></a></p>
+</div>
+<div class="section" id="queued-operations">
+<span id="dashboard-mongodb-overview-queued-operations"></span><h2><a class="reference internal" href="#dashboard-mongodb-overview-queued-operations"><span class="std std-ref">Queued Operations</span></a><a class="headerlink" href="#queued-operations" title="Permalink to this headline">¶</a></h2>
+<p>Any number of queued operations for long periods of time is an indication of
+possible issues.  Find the cause and fix it before requests get stuck in the
+queue.</p>
+<p><strong>View all metrics of</strong> <a class="reference internal" href="#dashboard-mongodb-overview"><span class="std std-ref">MongoDB Overview</span></a></p>
+</div>
+<div class="section" id="getlasterror-write-time-getlasterror-write-operations">
+<span id="dashboard-mongodb-overview-getlasterror-write-time-operations"></span><h2><a class="reference internal" href="#dashboard-mongodb-overview-getlasterror-write-time-operations"><span class="std std-ref">getLastError Write Time, getLastError Write Operations</span></a><a class="headerlink" href="#getlasterror-write-time-getlasterror-write-operations" title="Permalink to this headline">¶</a></h2>
+<p>This is useful for write-heavy workloads to understand how long it takes to
+verify writes and how many concurrent writes are occurring.</p>
+<p><strong>View all metrics of</strong> <a class="reference internal" href="#dashboard-mongodb-overview"><span class="std std-ref">MongoDB Overview</span></a></p>
+</div>
+<div class="section" id="asserts">
+<span id="dashboard-mongodb-overview-asserts"></span><h2><a class="reference internal" href="#dashboard-mongodb-overview-asserts"><span class="std std-ref">Asserts</span></a><a class="headerlink" href="#asserts" title="Permalink to this headline">¶</a></h2>
+<p>Asserts are not important by themselves, but you can correlate spikes with other
+graphs.</p>
+<p><strong>View all metrics of</strong> <a class="reference internal" href="#dashboard-mongodb-overview"><span class="std std-ref">MongoDB Overview</span></a></p>
+</div>
+<div class="section" id="memory-faults">
+<span id="dashboard-mongodb-overview-memory-faults"></span><h2><a class="reference internal" href="#dashboard-mongodb-overview-memory-faults"><span class="std std-ref">Memory Faults</span></a><a class="headerlink" href="#memory-faults" title="Permalink to this headline">¶</a></h2>
+<p>Memory faults indicate that requests are processed from disk either because an
+index is missing or there is not enough memory for the data set.  Consider
+increasing memory or sharding out.</p>
+<p><strong>View all metrics of</strong> <a class="reference internal" href="#dashboard-mongodb-overview"><span class="std std-ref">MongoDB Overview</span></a></p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+    <div class="related row">
+      
+      <ul class="nav nav-pills">
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="dashboard.mongodb-replset.html" title="MongoDB ReplSet"
+             >next</a></li>
+        <li class="right" >
+          <a href="dashboard.mongodb-mmapv1.html" title="MongoDB MMAPv1 Dashboard"
+             >previous</a></li>
+        <li><a href="../index.html">Percona Monitoring and Management Documentation</a></li>
+          <li><a href="../index.metrics-monitor.dashboard.html" >Metrics Monitor Dashboards</a></li> 
+      </ul>
+    </div>
+      </div>
+      <div class="sphinxsidebar  col-md-3 col-md-pull-9">
+        <div class="sphinxsidebarwrapper">
+  
+          {@ product_logo @}          
+
+          {@ product_pdf_download @}
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">MongoDB Overview</a><ul>
+<li><a class="reference internal" href="#command-operations"><code class="docutils literal"><span class="pre">Command</span> <span class="pre">Operations</span></code></a></li>
+<li><a class="reference internal" href="#connections"><code class="docutils literal"><span class="pre">Connections</span></code></a></li>
+<li><a class="reference internal" href="#cursors"><code class="docutils literal"><span class="pre">Cursors</span></code></a></li>
+<li><a class="reference internal" href="#document-operations"><code class="docutils literal"><span class="pre">Document</span> <span class="pre">Operations</span></code></a></li>
+<li><a class="reference internal" href="#queued-operations"><code class="docutils literal"><span class="pre">Queued</span> <span class="pre">Operations</span></code></a></li>
+<li><a class="reference internal" href="#getlasterror-write-time-getlasterror-write-operations"><code class="docutils literal"><span class="pre">getLastError</span> <span class="pre">Write</span> <span class="pre">Time,</span> <span class="pre">getLastError</span> <span class="pre">Write</span> <span class="pre">Operations</span></code></a></li>
+<li><a class="reference internal" href="#asserts"><code class="docutils literal"><span class="pre">Asserts</span></code></a></li>
+<li><a class="reference internal" href="#memory-faults"><code class="docutils literal"><span class="pre">Memory</span> <span class="pre">Faults</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="dashboard.mongodb-mmapv1.html"
+                        title="previous chapter">MongoDB MMAPv1 Dashboard</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="dashboard.mongodb-replset.html"
+                        title="next chapter">MongoDB ReplSet</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">jQuery(document).ready(function(){ jQuery('#searchbox').show(0); });</script>
+          {@ product_series @}
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <!-- div class="footer">
+        &copy; Copyright Percona LLC and/or its affiliates 2009-2019.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.4.
+    </div -->
+  </div>
+  </body>

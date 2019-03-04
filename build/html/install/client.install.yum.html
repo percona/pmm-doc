@@ -1,0 +1,121 @@
+
+
+
+    <title>Installing the PMM Client Package on Red Hat and CentOS &mdash; Percona Monitoring and Management Documentation</title>
+    
+  <head>
+    
+    
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Percona Monitoring and Management Documentation" href="../index.html" /> 
+  </head>
+  <body>
+    <div class="container">  
+
+    <div class="document row">
+      <div class="documentwrapper col-md-9 col-md-push-3">
+    <div class="related row">
+      
+      <ul class="nav nav-pills">
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li><a href="../index.html">Percona Monitoring and Management Documentation</a></li> 
+      </ul>
+    </div>
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="installing-the-pmm-client-package-on-red-hat-and-centos">
+<span id="install-client-yum"></span><h1>Installing the PMM Client Package on Red Hat and CentOS<a class="headerlink" href="#installing-the-pmm-client-package-on-red-hat-and-centos" title="Permalink to this headline">¶</a></h1>
+<p>If you are running an RPM-based Linux distribution, use the <strong class="program">yum</strong> package
+manager to install PMM Client from the official Percona software repository.</p>
+<p>Percona provides <code class="file docutils literal"><span class="pre">.rpm</span></code> packages for 64-bit versions
+of Red Hat Enterprise Linux 6 (Santiago) and 7 (Maipo),
+including its derivatives that claim full binary compatibility,
+such as, CentOS, Oracle Linux, Amazon Linux AMI, and so on.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">PMM Client should work on other RPM-based distributions,
+but it is tested only on RHEL and CentOS versions 6 and 7.</p>
+</div>
+<p>To install the PMM Client package, complete the following procedure. Run the following commands as root or by using the <strong class="program">sudo</strong> command:</p>
+<ol class="arabic">
+<li><p class="first">Configure Percona repositories as described in
+<a class="reference external" href="https://www.percona.com/doc/percona-repo-config/index.html">Percona Software Repositories Documentation</a>.</p>
+</li>
+<li><p class="first">Install the <code class="docutils literal"><span class="pre">pmm-client</span></code> package:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>yum install pmm-client
+</pre></div>
+</div>
+</li>
+</ol>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<dl class="last docutils">
+<dt>What other installation methods exist for PMM Client?</dt>
+<dd><a class="reference internal" href="clients.html#deploy-pmm-client-installing"><span class="std std-ref">Installing Clients</span></a></dd>
+<dt>Next steps: Connecting to PMM Server</dt>
+<dd><a class="reference internal" href="clients.connecting.html#deploy-pmm-client-server-connecting"><span class="std std-ref">Connecting PMM Clients to the PMM Server</span></a></dd>
+</dl>
+</div>
+</div>
+
+
+          </div>
+        </div>
+    <div class="related row">
+      
+      <ul class="nav nav-pills">
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li><a href="../index.html">Percona Monitoring and Management Documentation</a></li> 
+      </ul>
+    </div>
+      </div>
+      <div class="sphinxsidebar  col-md-3 col-md-pull-9">
+        <div class="sphinxsidebarwrapper">
+  
+          {@ product_logo @}          
+
+          {@ product_pdf_download @}
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">jQuery(document).ready(function(){ jQuery('#searchbox').show(0); });</script>
+          {@ product_series @}
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <!-- div class="footer">
+        &copy; Copyright Percona LLC and/or its affiliates 2009-2019.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.4.
+    </div -->
+  </div>
+  </body>

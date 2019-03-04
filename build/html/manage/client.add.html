@@ -1,0 +1,165 @@
+
+
+
+    <title>Adding monitoring services &mdash; Percona Monitoring and Management Documentation</title>
+    
+  <head>
+    
+    
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Percona Monitoring and Management Documentation" href="../index.html" />
+    <link rel="prev" title="Adding a MySQL or PostgreSQL Remote DB instance to PMM" href="remote-instance.html" /> 
+  </head>
+  <body>
+    <div class="container">  
+
+    <div class="document row">
+      <div class="documentwrapper col-md-9 col-md-push-3">
+    <div class="related row">
+      
+      <ul class="nav nav-pills">
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="remote-instance.html" title="Adding a MySQL or PostgreSQL Remote DB instance to PMM"
+             accesskey="P">previous</a></li>
+        <li><a href="../index.html">Percona Monitoring and Management Documentation</a></li> 
+      </ul>
+    </div>
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="adding-monitoring-services">
+<span id="pmm-admin-add"></span><h1><a class="reference internal" href="#pmm-admin-add"><span class="std std-ref">Adding monitoring services</span></a><a class="headerlink" href="#adding-monitoring-services" title="Permalink to this headline">¶</a></h1>
+<p>Use the <strong class="program">pmm-admin add</strong> command to add monitoring services.</p>
+<p class="rubric" id="pmm-admin-add-usage">USAGE</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ pmm-admin add <span class="o">[</span>OPTIONS<span class="o">]</span> <span class="o">[</span>SERVICE<span class="o">]</span>
+</pre></div>
+</div>
+<p>When you add a monitoring service <strong class="program">pmm-admin</strong> automatically creates
+and sets up a service in the operating system. You can tweak the
+<strong class="program">systemd</strong> configuration file and change its behavior.</p>
+<p>For example, you may need to disable the HTTPS protocol for the
+Prometheus exporter associated with the given service. To accomplish this
+task, you need to remove all SSL related options.</p>
+<p>Run the following commands as root or by using the <strong class="program">sudo</strong> command:</p>
+<ol class="arabic">
+<li><p class="first">Open the <strong class="program">systemd</strong> unit file associated with the
+monitoring service that you need to change, such as
+<code class="file docutils literal"><span class="pre">pmm-mysql-metrics-42002.service</span></code>.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> /etc/systemd/system
+$ cat pmm-mysql-metrics-42002.service
+</pre></div>
+</div>
+</li>
+<li><p class="first">Remove the SSL related configuration options (key, cert) from the
+<strong class="program">systemd</strong> unit file or <cite>init.d</cite> startup
+script. <span class="xref std std-ref">sample.systemd</span> highlights the SSL related options in
+the <strong class="program">systemd</strong> unit file.</p>
+<p>The following code demonstrates how you can remove the options
+using the <strong class="program">sed</strong> command. (If you need more information about how
+<strong class="program">sed</strong> works, see the documentation of your system).</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sed -e -i.backup <span class="s1">&#39;s/-web.ssl[^ ]\+[^-&gt;]*//g&#39;</span> pmm-mysql-metrics-42002.service
+</pre></div>
+</div>
+</li>
+<li><p class="first">Reload <strong class="program">systemd</strong>:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ systemctl daemon-reload
+</pre></div>
+</div>
+</li>
+<li><p class="first">Restart the monitoring service by using <strong class="program">pmm-admin restart</strong>:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ pmm-admin restart mysql:metrics
+</pre></div>
+</div>
+</li>
+</ol>
+<p class="rubric" id="pmm-admin-add-options">OPTIONS</p>
+<p>The following option can be used with the <strong class="program">pmm-admin add</strong> command:</p>
+<dl class="docutils">
+<dt><code class="xref std std-option docutils literal"><span class="pre">--dev-enable</span></code></dt>
+<dd>Enable experimental features.</dd>
+<dt><code class="xref std std-option docutils literal"><span class="pre">--disable-ssl</span></code></dt>
+<dd>Disable (otherwise enabled) SSL for the connection between PMM Client and
+PMM Server. Turning off SSL encryption for the data acquired from some
+objects of monitoring allows to decrease the overhead for a PMM Server
+connected with a lot of nodes.</dd>
+</dl>
+<p><code class="xref std std-option docutils literal"><span class="pre">--service-port</span></code></p>
+<blockquote>
+<div>Specify the <a class="reference internal" href="../faq.html#service-port"><span class="std std-ref">service port</span></a>.</div></blockquote>
+<p>You can also use
+<span class="xref std std-ref">global options that apply to any other command</span>.</p>
+<p class="rubric" id="pmm-admin-add-services">SERVICES</p>
+<p>Specify a <a class="reference internal" href="client.aliases.html#pmm-admin-service-aliases"><span class="std std-ref">monitoring service alias</span></a>,
+along with any relevant additional arguments.</p>
+<p>For more information, run
+<strong class="program">pmm-admin add</strong>
+<code class="xref std std-option docutils literal"><span class="pre">--help</span></code>.</p>
+</div>
+
+
+          </div>
+        </div>
+    <div class="related row">
+      
+      <ul class="nav nav-pills">
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="remote-instance.html" title="Adding a MySQL or PostgreSQL Remote DB instance to PMM"
+             >previous</a></li>
+        <li><a href="../index.html">Percona Monitoring and Management Documentation</a></li> 
+      </ul>
+    </div>
+      </div>
+      <div class="sphinxsidebar  col-md-3 col-md-pull-9">
+        <div class="sphinxsidebarwrapper">
+  
+          {@ product_logo @}          
+
+          {@ product_pdf_download @}
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="remote-instance.html"
+                        title="previous chapter">Adding a MySQL or PostgreSQL Remote DB instance to PMM</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">jQuery(document).ready(function(){ jQuery('#searchbox').show(0); });</script>
+          {@ product_series @}
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <!-- div class="footer">
+        &copy; Copyright Percona LLC and/or its affiliates 2009-2019.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.4.
+    </div -->
+  </div>
+  </body>

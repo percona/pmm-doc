@@ -1,0 +1,203 @@
+
+
+
+    <title>MySQL InnoDB Compression Dashboard &mdash; Percona Monitoring and Management Documentation</title>
+    
+  <head>
+    
+    
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Percona Monitoring and Management Documentation" href="../index.html" />
+    <link rel="up" title="Metrics Monitor Dashboards" href="../index.metrics-monitor.dashboard.html" />
+    <link rel="next" title="MySQL InnoDB Metrics" href="dashboard.mysql-innodb-metrics.html" />
+    <link rel="prev" title="MySQL Command/Handler Counters Compare Dashboard" href="dashboard.mysql-command-handler-counters-compare.html" /> 
+  </head>
+  <body>
+    <div class="container">  
+
+    <div class="document row">
+      <div class="documentwrapper col-md-9 col-md-push-3">
+    <div class="related row">
+      
+      <ul class="nav nav-pills">
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="dashboard.mysql-innodb-metrics.html" title="MySQL InnoDB Metrics"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="dashboard.mysql-command-handler-counters-compare.html" title="MySQL Command/Handler Counters Compare Dashboard"
+             accesskey="P">previous</a></li>
+        <li><a href="../index.html">Percona Monitoring and Management Documentation</a></li>
+          <li><a href="../index.metrics-monitor.dashboard.html" accesskey="U">Metrics Monitor Dashboards</a></li> 
+      </ul>
+    </div>
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="dbd-mysql-innodb-compression-dashboard">
+<span id="dashboard-mysql-innodb-compression"></span><h1><em>MySQL InnoDB Compression</em> Dashboard<a class="headerlink" href="#dbd-mysql-innodb-compression-dashboard" title="Permalink to this headline">¶</a></h1>
+<p>This dashboard helps you analyze the efficiency of InnoDB compression.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<dl class="last docutils">
+<dt>MySQL Documentation</dt>
+<dd><a class="reference external" href="https://dev.mysql.com/doc/refman/5.7/en/innodb-information-schema-compression-tables.html">https://dev.mysql.com/doc/refman/5.7/en/innodb-information-schema-compression-tables.html</a></dd>
+</dl>
+</div>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><a class="reference internal" href="#compression-level-and-failure-rate-threshold" id="id1">Compression level and failure rate threshold</a></li>
+<li><a class="reference internal" href="#statistics-of-compression-operations" id="id2">Statistics of Compression Operations</a></li>
+<li><a class="reference internal" href="#cpu-core-usage" id="id3">CPU Core Usage</a></li>
+<li><a class="reference internal" href="#buffer-pool-total" id="id4">Buffer Pool Total</a></li>
+<li><a class="reference internal" href="#buffer-pool-all" id="id5">Buffer Pool All</a></li>
+</ul>
+</div>
+<div class="section" id="compression-level-and-failure-rate-threshold">
+<h2><a class="toc-backref" href="#id1">Compression level and failure rate threshold</a><a class="headerlink" href="#compression-level-and-failure-rate-threshold" title="Permalink to this headline">¶</a></h2>
+<p class="rubric">InnoDB Compression Level</p>
+<p>The level of zlib compression to use for InnoDB compressed tables and indexes.</p>
+<p class="rubric">InnoDB Compression Failure Threshold</p>
+<p>The compression failure rate threshold for a table.</p>
+<p class="rubric">Compression Failure Rate Threshold</p>
+<p>The maximum percentage that can be reserved as free space within each compressed
+page, allowing room to reorganize the data and modification log within the page
+when a compressed table or index is updated and the data might be recompressed.</p>
+<p class="rubric">Write Pages to the Redo Log</p>
+<p>Specifies whether images of re-compressed pages are written to the redo
+log. Re-compression may occur when changes are made to compressed data.</p>
+</div>
+<div class="section" id="statistics-of-compression-operations">
+<h2><a class="toc-backref" href="#id2">Statistics of Compression Operations</a><a class="headerlink" href="#statistics-of-compression-operations" title="Permalink to this headline">¶</a></h2>
+<p>This section contains the following metrics:</p>
+<ul class="simple">
+<li>Compress Attempts</li>
+<li>Uncompressed Attempts</li>
+<li>Compression Success Ratio</li>
+</ul>
+<p class="rubric">Compress Attempts</p>
+<p>Number of compression operations attempted. Pages are compressed whenever an
+empty page is created or the space for the uncompressed modification log runs
+out.</p>
+<p class="rubric">Uncompressed Attempts</p>
+<p>Number of uncompression operations performed. Compressed InnoDB pages are
+uncompressed whenever compression fails, or the first time a compressed page is
+accessed in the buffer pool and the uncompressed page does not exist.</p>
+</div>
+<div class="section" id="cpu-core-usage">
+<h2><a class="toc-backref" href="#id3">CPU Core Usage</a><a class="headerlink" href="#cpu-core-usage" title="Permalink to this headline">¶</a></h2>
+<table class="hlist"><tr><td><ul class="simple">
+<li>CPU Core Usage for Compression</li>
+</ul>
+</td><td><ul class="simple">
+<li>CPU Core Usage for Uncompression</li>
+</ul>
+</td></tr></table>
+</div>
+<div class="section" id="buffer-pool-total">
+<h2><a class="toc-backref" href="#id4">Buffer Pool Total</a><a class="headerlink" href="#buffer-pool-total" title="Permalink to this headline">¶</a></h2>
+<table class="hlist"><tr><td><ul class="simple">
+<li>Total Used Pages</li>
+</ul>
+</td><td><ul class="simple">
+<li>Total Free Pages</li>
+</ul>
+</td></tr></table>
+</div>
+<div class="section" id="buffer-pool-all">
+<h2><a class="toc-backref" href="#id5">Buffer Pool All</a><a class="headerlink" href="#buffer-pool-all" title="Permalink to this headline">¶</a></h2>
+<table class="hlist"><tr><td><ul class="simple">
+<li>Used Pages (Buffer Pool 0)</li>
+</ul>
+</td><td><ul class="simple">
+<li>Pages Free (Buffer Pool 0)</li>
+</ul>
+</td></tr></table>
+</div>
+</div>
+
+
+          </div>
+        </div>
+    <div class="related row">
+      
+      <ul class="nav nav-pills">
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="dashboard.mysql-innodb-metrics.html" title="MySQL InnoDB Metrics"
+             >next</a></li>
+        <li class="right" >
+          <a href="dashboard.mysql-command-handler-counters-compare.html" title="MySQL Command/Handler Counters Compare Dashboard"
+             >previous</a></li>
+        <li><a href="../index.html">Percona Monitoring and Management Documentation</a></li>
+          <li><a href="../index.metrics-monitor.dashboard.html" >Metrics Monitor Dashboards</a></li> 
+      </ul>
+    </div>
+      </div>
+      <div class="sphinxsidebar  col-md-3 col-md-pull-9">
+        <div class="sphinxsidebarwrapper">
+  
+          {@ product_logo @}          
+
+          {@ product_pdf_download @}
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#"><em>MySQL InnoDB Compression</em> Dashboard</a><ul>
+<li><a class="reference internal" href="#compression-level-and-failure-rate-threshold">Compression level and failure rate threshold</a></li>
+<li><a class="reference internal" href="#statistics-of-compression-operations">Statistics of Compression Operations</a></li>
+<li><a class="reference internal" href="#cpu-core-usage">CPU Core Usage</a></li>
+<li><a class="reference internal" href="#buffer-pool-total">Buffer Pool Total</a></li>
+<li><a class="reference internal" href="#buffer-pool-all">Buffer Pool All</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="dashboard.mysql-command-handler-counters-compare.html"
+                        title="previous chapter"><em>MySQL Command/Handler Counters Compare</em> Dashboard</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="dashboard.mysql-innodb-metrics.html"
+                        title="next chapter">MySQL InnoDB Metrics</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">jQuery(document).ready(function(){ jQuery('#searchbox').show(0); });</script>
+          {@ product_series @}
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <!-- div class="footer">
+        &copy; Copyright Percona LLC and/or its affiliates 2009-2019.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.4.
+    </div -->
+  </div>
+  </body>

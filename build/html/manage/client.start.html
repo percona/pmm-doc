@@ -1,0 +1,155 @@
+
+
+
+    <title>Starting monitoring services &mdash; Percona Monitoring and Management Documentation</title>
+    
+  <head>
+    
+    
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Percona Monitoring and Management Documentation" href="../index.html" />
+    <link rel="next" title="Getting passwords used by PMM Client" href="client.passwords.html" />
+    <link rel="prev" title="Stopping monitoring services" href="client.stop.html" /> 
+  </head>
+  <body>
+    <div class="container">  
+
+    <div class="document row">
+      <div class="documentwrapper col-md-9 col-md-push-3">
+    <div class="related row">
+      
+      <ul class="nav nav-pills">
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="client.passwords.html" title="Getting passwords used by PMM Client"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="client.stop.html" title="Stopping monitoring services"
+             accesskey="P">previous</a></li>
+        <li><a href="../index.html">Percona Monitoring and Management Documentation</a></li> 
+      </ul>
+    </div>
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="starting-monitoring-services">
+<span id="pmm-admin-start"></span><h1><a class="reference internal" href="#pmm-admin-start"><span class="std std-ref">Starting monitoring services</span></a><a class="headerlink" href="#starting-monitoring-services" title="Permalink to this headline">¶</a></h1>
+<p>Use the <strong class="program">pmm-admin start</strong> command to start services managed by this
+PMM Client.</p>
+<p class="rubric" id="pmm-admin-start-usage">USAGE</p>
+<p>Run this command as root or by using the <strong class="program">sudo</strong> command</p>
+<div class="highlight-text" id="code-pmm-admin-start-service-name-options"><div class="highlight"><pre><span></span>pmm-admin start [SERVICE [NAME]] [OPTIONS]
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">It should be able to detect the local PMM Client name,
+but you can also specify it explicitly as an argument.</p>
+</div>
+<p class="rubric" id="pmm-admin-start-options">OPTIONS</p>
+<p>The following option can be used with the <strong class="program">pmm-admin start</strong> command:</p>
+<dl class="docutils">
+<dt><code class="xref std std-option docutils literal"><span class="pre">--all</span></code></dt>
+<dd>Start all monitoring services.</dd>
+</dl>
+<p>You can also use
+<span class="xref std std-ref">global options that apply to any other command</span>.</p>
+<p class="rubric" id="pmm-admin-start-services">SERVICES</p>
+<p>Specify a <a class="reference internal" href="client.aliases.html#pmm-admin-service-aliases"><span class="std std-ref">monitoring service alias</span></a>
+that you want to start.
+To see which services are available, run <a href="#id1"><span class="problematic" id="id2">|pmm-admin.list|_</span></a>.</p>
+<p class="rubric" id="pmm-admin-start-examples">EXAMPLES</p>
+<ul>
+<li><p class="first">To start all available services for this PMM Client:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ pmm-admin start --all
+</pre></div>
+</div>
+</li>
+<li><p class="first">To start all services related to MySQL:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ pmm-admin start mysql
+</pre></div>
+</div>
+</li>
+<li><p class="first">To start only the <code class="xref std std-option docutils literal"><span class="pre">mongodb:metrics</span></code> service:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ pmm-admin start mongodb:metrics
+</pre></div>
+</div>
+</li>
+</ul>
+<p>For more information, run
+<strong class="program">pmm-admin start</strong>
+<code class="xref std std-option docutils literal"><span class="pre">--help</span></code>.</p>
+</div>
+
+
+          </div>
+        </div>
+    <div class="related row">
+      
+      <ul class="nav nav-pills">
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="client.passwords.html" title="Getting passwords used by PMM Client"
+             >next</a></li>
+        <li class="right" >
+          <a href="client.stop.html" title="Stopping monitoring services"
+             >previous</a></li>
+        <li><a href="../index.html">Percona Monitoring and Management Documentation</a></li> 
+      </ul>
+    </div>
+      </div>
+      <div class="sphinxsidebar  col-md-3 col-md-pull-9">
+        <div class="sphinxsidebarwrapper">
+  
+          {@ product_logo @}          
+
+          {@ product_pdf_download @}
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="client.stop.html"
+                        title="previous chapter"><code class="docutils literal"><span class="pre">Stopping</span> <span class="pre">monitoring</span> <span class="pre">services</span></code></a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="client.passwords.html"
+                        title="next chapter"><code class="docutils literal"><span class="pre">Getting</span> <span class="pre">passwords</span> <span class="pre">used</span> <span class="pre">by</span> <span class="pre">PMM</span> <span class="pre">Client</span></code></a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">jQuery(document).ready(function(){ jQuery('#searchbox').show(0); });</script>
+          {@ product_series @}
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <!-- div class="footer">
+        &copy; Copyright Percona LLC and/or its affiliates 2009-2019.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.4.
+    </div -->
+  </div>
+  </body>

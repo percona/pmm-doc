@@ -1,0 +1,138 @@
+
+
+
+    <title>MySQL User Statistics &mdash; Percona Monitoring and Management Documentation</title>
+    
+  <head>
+    
+    
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Percona Monitoring and Management Documentation" href="../index.html" />
+    <link rel="up" title="Metrics Monitor Dashboards" href="../index.metrics-monitor.dashboard.html" />
+    <link rel="next" title="MongoDB Cluster Summary" href="dashboard.mongodb-cluster-summary.html" />
+    <link rel="prev" title="MySQL Table Statistics" href="dashboard.mysql-table-statistics.html" /> 
+  </head>
+  <body>
+    <div class="container">  
+
+    <div class="document row">
+      <div class="documentwrapper col-md-9 col-md-push-3">
+    <div class="related row">
+      
+      <ul class="nav nav-pills">
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="dashboard.mongodb-cluster-summary.html" title="MongoDB Cluster Summary"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="dashboard.mysql-table-statistics.html" title="MySQL Table Statistics"
+             accesskey="P">previous</a></li>
+        <li><a href="../index.html">Percona Monitoring and Management Documentation</a></li>
+          <li><a href="../index.metrics-monitor.dashboard.html" accesskey="U">Metrics Monitor Dashboards</a></li> 
+      </ul>
+    </div>
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="dbd-mysql-user-statistics">
+<span id="dashboard-mysql-user-statistics"></span><h1><em>MySQL User Statistics</em><a class="headerlink" href="#dbd-mysql-user-statistics" title="Permalink to this headline">¶</a></h1>
+<p>This dashboard presents various data related to MySQL users.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This dashboard requires Percona Server for MySQL 5.1+ or MariaDB
+10.1/10.2 with XtraDB. Also <code class="docutils literal"><span class="pre">userstat</span></code> should be enabled, for example with
+the <code class="docutils literal"><span class="pre">SET</span> <span class="pre">GLOBAL</span> <span class="pre">userstat=1</span></code> statement. See <a class="reference external" href="https://www.percona.com/doc/percona-monitoring-and-management/conf-mysql.html">Configuring MySQL for Best Results</a>
+for further instructions.</p>
+</div>
+<p>Data is displayed for the 5 top users.</p>
+<dl class="docutils">
+<dt>Top Users by Connections Created</dt>
+<dd>The number of times user’s connections connected using SSL to the server.</dd>
+<dt>Top Users by Traffic</dt>
+<dd>The number of bytes sent to the user’s connections.</dd>
+<dt>Top Users by Rows Fetched/Read</dt>
+<dd>The number of rows fetched by the user’s connections.</dd>
+<dt>Top Users by Rows Updated</dt>
+<dd>The number of rows updated by the user’s connections.</dd>
+<dt>Top Users by Busy Time</dt>
+<dd>The cumulative number of seconds there was activity on connections from the
+user.</dd>
+<dt>Top Users by CPU Time</dt>
+<dd>The cumulative CPU time elapsed, in seconds, while servicing connections of
+the user.</dd>
+</dl>
+</div>
+
+
+          </div>
+        </div>
+    <div class="related row">
+      
+      <ul class="nav nav-pills">
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="dashboard.mongodb-cluster-summary.html" title="MongoDB Cluster Summary"
+             >next</a></li>
+        <li class="right" >
+          <a href="dashboard.mysql-table-statistics.html" title="MySQL Table Statistics"
+             >previous</a></li>
+        <li><a href="../index.html">Percona Monitoring and Management Documentation</a></li>
+          <li><a href="../index.metrics-monitor.dashboard.html" >Metrics Monitor Dashboards</a></li> 
+      </ul>
+    </div>
+      </div>
+      <div class="sphinxsidebar  col-md-3 col-md-pull-9">
+        <div class="sphinxsidebarwrapper">
+  
+          {@ product_logo @}          
+
+          {@ product_pdf_download @}
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="dashboard.mysql-table-statistics.html"
+                        title="previous chapter"><em>MySQL Table Statistics</em></a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="dashboard.mongodb-cluster-summary.html"
+                        title="next chapter">MongoDB Cluster Summary</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">jQuery(document).ready(function(){ jQuery('#searchbox').show(0); });</script>
+          {@ product_series @}
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <!-- div class="footer">
+        &copy; Copyright Percona LLC and/or its affiliates 2009-2019.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.4.
+    </div -->
+  </div>
+  </body>

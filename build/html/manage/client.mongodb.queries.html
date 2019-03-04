@@ -1,0 +1,173 @@
+
+
+
+    <title>Adding MongoDB query analytics service &mdash; Percona Monitoring and Management Documentation</title>
+    
+  <head>
+    
+    
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Percona Monitoring and Management Documentation" href="../index.html" />
+    <link rel="next" title="Adding ProxySQL metrics service" href="client.proxysql.metrics.html" />
+    <link rel="prev" title="Adding MongoDB metrics service" href="client.mongodb.metrics.html" /> 
+  </head>
+  <body>
+    <div class="container">  
+
+    <div class="document row">
+      <div class="documentwrapper col-md-9 col-md-push-3">
+    <div class="related row">
+      
+      <ul class="nav nav-pills">
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="client.proxysql.metrics.html" title="Adding ProxySQL metrics service"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="client.mongodb.metrics.html" title="Adding MongoDB metrics service"
+             accesskey="P">previous</a></li>
+        <li><a href="../index.html">Percona Monitoring and Management Documentation</a></li> 
+      </ul>
+    </div>
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="adding-mongodb-query-analytics-service">
+<span id="pmm-admin-add-mongodb-queries"></span><h1><a class="reference internal" href="#pmm-admin-add-mongodb-queries"><span class="std std-ref">Adding MongoDB query analytics service</span></a><a class="headerlink" href="#adding-mongodb-query-analytics-service" title="Permalink to this headline">¶</a></h1>
+<p>Use the <code class="xref std std-option docutils literal"><span class="pre">mongodb:queries</span></code> alias to enable MongoDB query analytics.</p>
+<p class="rubric" id="pmm-admin-add-mongodb-queries-usage">USAGE</p>
+<div class="highlight-text" id="code-pmm-admin-add-mongodb-queries"><div class="highlight"><pre><span></span>pmm-admin add mongodb:queries [NAME] [OPTIONS]
+</pre></div>
+</div>
+<p>This creates the <code class="docutils literal"><span class="pre">pmm-mongodb-queries-0</span></code> service
+that is able to collect QAN data for multiple remote MongoDB server instances.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">It should be able to detect the local PMM Client name,
+but you can also specify it explicitly as an argument.</p>
+</div>
+<p class="rubric" id="pmm-admin-add-mongodb-queries-options">OPTIONS</p>
+<p>The following options can be used with the <code class="xref std std-option docutils literal"><span class="pre">mongodb:queries</span></code> alias:</p>
+<dl class="docutils">
+<dt><code class="xref std std-option docutils literal"><span class="pre">--uri</span></code></dt>
+<dd><p class="first">Specify the MongoDB instance URI with the following format:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>[mongodb://][user:pass@]host[:port][/database][?options]
+</pre></div>
+</div>
+<p>By default, it is <code class="docutils literal"><span class="pre">localhost:27017</span></code>.</p>
+<div class="last admonition important">
+<p class="first admonition-title">Important</p>
+<p>In cases when the password contains special symbols like the <em>at</em> (&#64;)
+symbol, the host might not not be detected correctly. Make sure that you
+insert the password with special characters replaced with their escape
+sequences. The simplest way is to use the <code class="code docutils literal"><span class="pre">encodeURIComponent</span></code> JavaScript function.</p>
+<p>For this, open the web console of your browser (usually found under
+<em>Development tools</em>) and evaluate the following expression, passing the
+password that you intend to use:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="nb">encodeURIComponent</span><span class="p">(</span><span class="s1">&#39;$ecRet_pas$w@rd&#39;</span><span class="p">)</span>
+<span class="s2">&quot;%24ecRet_pas%24w%40rd&quot;</span>
+</pre></div>
+</div>
+<div class="admonition-related-information last admonition">
+<p class="first admonition-title">Related Information</p>
+<dl class="last docutils">
+<dt>MDN Web Docs: encodeURIComponent</dt>
+<dd><a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent</a></dd>
+</dl>
+</div>
+</div>
+</dd>
+</dl>
+<p>You can also use
+<span class="xref std std-ref">global options that apply to any other command</span>,
+as well as
+<a class="reference internal" href="client.add.html#pmm-admin-add-options"><span class="std std-ref">options that apply to adding services in general</span></a>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">PMM does not support passing SSL/TLS related parameters to <code class="xref std std-option docutils literal"><span class="pre">mongodb:queries</span></code>.</p>
+</div>
+<p>For more information, run
+<strong class="program">pmm-admin add</strong>
+<code class="xref std std-option docutils literal"><span class="pre">mongodb:queries</span></code>
+<code class="xref std std-option docutils literal"><span class="pre">--help</span></code>.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<dl class="last docutils">
+<dt>Default ports</dt>
+<dd><a class="reference internal" href="../glossary.terminology.html#ports"><span class="std std-ref">Ports</span></a> in <a class="reference internal" href="../glossary.terminology.html#pmm-glossary-terminology-reference"><span class="std std-ref">Terminology Reference</span></a></dd>
+</dl>
+</div>
+</div>
+
+
+          </div>
+        </div>
+    <div class="related row">
+      
+      <ul class="nav nav-pills">
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="client.proxysql.metrics.html" title="Adding ProxySQL metrics service"
+             >next</a></li>
+        <li class="right" >
+          <a href="client.mongodb.metrics.html" title="Adding MongoDB metrics service"
+             >previous</a></li>
+        <li><a href="../index.html">Percona Monitoring and Management Documentation</a></li> 
+      </ul>
+    </div>
+      </div>
+      <div class="sphinxsidebar  col-md-3 col-md-pull-9">
+        <div class="sphinxsidebarwrapper">
+  
+          {@ product_logo @}          
+
+          {@ product_pdf_download @}
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="client.mongodb.metrics.html"
+                        title="previous chapter"><code class="docutils literal"><span class="pre">Adding</span> <span class="pre">MongoDB</span> <span class="pre">metrics</span> <span class="pre">service</span></code></a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="client.proxysql.metrics.html"
+                        title="next chapter"><code class="docutils literal"><span class="pre">Adding</span> <span class="pre">ProxySQL</span> <span class="pre">metrics</span> <span class="pre">service</span></code></a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">jQuery(document).ready(function(){ jQuery('#searchbox').show(0); });</script>
+          {@ product_series @}
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <!-- div class="footer">
+        &copy; Copyright Percona LLC and/or its affiliates 2009-2019.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.4.
+    </div -->
+  </div>
+  </body>

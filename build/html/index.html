@@ -1,0 +1,440 @@
+
+
+
+    <title>Percona Monitoring and Management Documentation &mdash; Percona Monitoring and Management Documentation</title>
+    
+  <head>
+    
+    
+    
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '2.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Percona Monitoring and Management Documentation" href="#" />
+    <link rel="next" title="Overview of Percona Monitoring and Management Architecture" href="concepts/architecture.html" /> 
+  </head>
+  <body>
+    <div class="container">  
+
+    <div class="document row">
+      <div class="documentwrapper col-md-9 col-md-push-3">
+    <div class="related row">
+      
+      <ul class="nav nav-pills">
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="concepts/architecture.html" title="Overview of Percona Monitoring and Management Architecture"
+             accesskey="N">next</a></li>
+        <li><a href="#">Percona Monitoring and Management Documentation</a></li> 
+      </ul>
+    </div>
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="percona-monitoring-and-management-documentation">
+<h1>Percona Monitoring and Management Documentation<a class="headerlink" href="#percona-monitoring-and-management-documentation" title="Permalink to this headline">¶</a></h1>
+<p>Percona Monitoring and Management (PMM) is an open-source platform
+for managing and monitoring MySQL and MongoDB performance.
+It is developed by Percona in collaboration with experts
+in the field of managed database services, support and consulting.</p>
+<p>PMM is a free and open-source solution
+that you can run in your own environment
+for maximum security and reliability.
+It provides thorough time-based analysis for MySQL and MongoDB servers
+to ensure that your data works as efficiently as possible.</p>
+<div class="section" id="pmm-concepts">
+<h2>PMM Concepts<a class="headerlink" href="#pmm-concepts" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="pmm-features">
+<h3>PMM Features<a class="headerlink" href="#pmm-features" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Why use PMM</li>
+<li>Who uses PMM</li>
+<li>Who should not use PMM</li>
+</ul>
+</div>
+<div class="section" id="architecture-overview">
+<h3>Architecture Overview<a class="headerlink" href="#architecture-overview" title="Permalink to this headline">¶</a></h3>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="concepts/architecture.html">Client/Server Architecture - an Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="concepts/architecture.html#pmm-client"><code class="docutils literal"><span class="pre">PMM</span> <span class="pre">Client</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="concepts/architecture.html#pmm-server"><code class="docutils literal"><span class="pre">PMM</span> <span class="pre">Server</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="concepts/architecture.html#orchestrator"><code class="docutils literal"><span class="pre">Orchestrator</span></code></a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="exporters">
+<h3>Exporters<a class="headerlink" href="#exporters" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>mysqld_exporter</li>
+<li>mongodb_exporter</li>
+<li>proxysql_exporter</li>
+<li>node_exporter</li>
+<li>Firewalls</li>
+<li>PMM Server</li>
+<li>pmm-client</li>
+</ul>
+</div>
+<div class="section" id="services">
+<h3>Services<a class="headerlink" href="#services" title="Permalink to this headline">¶</a></h3>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="conf-mysql.requirements.html">MySQL requirements</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="conf-mysql.requirements.html#id1">Creating a MySQL User Account to Be Used with PMM</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="conf-mongodb.html">MongoDB requirements</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="conf-mongodb.html#setting-up-the-essential-permissions">Setting Up the Essential Permissions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="conf-mongodb.html#enabling-profiling"><code class="docutils literal"><span class="pre">Enabling</span> <span class="pre">Profiling</span></code></a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="security-features">
+<h3>Security Features<a class="headerlink" href="#security-features" title="Permalink to this headline">¶</a></h3>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="concepts/security.html">Security Features</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="concepts/security.html#enabling-ssl-encryption"><code class="docutils literal"><span class="pre">Enabling</span> <span class="pre">SSL</span> <span class="pre">Encryption</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="concepts/security.html#enabling-password-protection"><code class="docutils literal"><span class="pre">Enabling</span> <span class="pre">Password</span> <span class="pre">Protection</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="concepts/security.html#combining-security-features"><code class="docutils literal"><span class="pre">Combining</span> <span class="pre">Security</span> <span class="pre">Features</span></code></a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="installing-pmm-server">
+<h2>Installing PMM Server<a class="headerlink" href="#installing-pmm-server" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="install/docker.html">Docker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install/ami.html">Amazon AWS Marketplace</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install/virtual-appliance.html">Virtual Appliance (OVF)</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="configuring-pmm-server">
+<h2>Configuring PMM Server<a class="headerlink" href="#configuring-pmm-server" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="glossary.option.html">Using docker environment variables</a></li>
+</ul>
+</div>
+<ul class="simple">
+<li>Using PMM Admin GUI</li>
+<li>Using PMM API</li>
+</ul>
+</div>
+<div class="section" id="service-configuration-for-best-results">
+<h2>Service Configuration for Best Results<a class="headerlink" href="#service-configuration-for-best-results" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="mysql">
+<h3>MySQL<a class="headerlink" href="#mysql" title="Permalink to this headline">¶</a></h3>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="conf-mysql.slow-log.html">Slow Log Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conf-mysql.perf-schema.html">PERFORMANCE_SCHEMA settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conf-mysql.innodb.html">MySQL InnoDB Metrics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conf-mysql.ps.html">Percona Server-specific settings</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="conf-mysql.ps.html#id2">MySQL User Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="conf-mysql.ps.html#id3">Percona Server Query Response Time Distribution</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="conf-mysql.ps8.html">MySQL 8 settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conf-mysql.custom-queries.html">Executing Custom Queries</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="mongodb">
+<h3>MongoDB<a class="headerlink" href="#mongodb" title="Permalink to this headline">¶</a></h3>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="manage/client.mongodb.ssl.html">Passing SSL parameters to the mongodb monitoring service</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="installing-pmm-client">
+<h2>Installing PMM Client<a class="headerlink" href="#installing-pmm-client" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="install/clients.html">Installing Clients</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install/clients.connecting.html">Connecting Clients to the Server</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="using-pmm-client">
+<h2>Using PMM Client<a class="headerlink" href="#using-pmm-client" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Overview of available commands</li>
+</ul>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="manage/client.config.html">Configuring PMM Client with pmm-admin config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manage/client.aliases.html">Understanding Monitoring Service Aliases</a></li>
+</ul>
+</div>
+<div class="section" id="adding-a-mysql-host">
+<h3>Adding a MySQL Host<a class="headerlink" href="#adding-a-mysql-host" title="Permalink to this headline">¶</a></h3>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="manage/client.mysql.metrics.html">Understanding MySQL metrics service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manage/client.mysql.queries.html">Understanding MySQL query analytics service</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="adding-a-mongodb-host">
+<h3>Adding a MongoDB host<a class="headerlink" href="#adding-a-mongodb-host" title="Permalink to this headline">¶</a></h3>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="manage/client.mongodb.metrics.html">Understanding MongoDB metrics service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manage/client.mongodb.queries.html">Understanding MongoDB query analytics service</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="adding-a-proxysql-host">
+<h3>Adding a ProxySQL host<a class="headerlink" href="#adding-a-proxysql-host" title="Permalink to this headline">¶</a></h3>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="manage/client.proxysql.metrics.html">Adding ProxySQL metrics service</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="adding-linux-metrics">
+<h3>Adding Linux metrics<a class="headerlink" href="#adding-linux-metrics" title="Permalink to this headline">¶</a></h3>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="manage/client.linux.metrics.html">Adding general system metrics service</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="postgresql">
+<h3>PostgreSQL<a class="headerlink" href="#postgresql" title="Permalink to this headline">¶</a></h3>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="conf-postgres.html">Configuring PostgreSQL for Monitoring</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="adding-amazon-web-services">
+<h3>Adding Amazon Web Services<a class="headerlink" href="#adding-amazon-web-services" title="Permalink to this headline">¶</a></h3>
+<div class="toctree-wrapper compound">
+<ul class="simple">
+</ul>
+</div>
+</div>
+<div class="section" id="other-configuration-commands">
+<h3>Other configuration commands<a class="headerlink" href="#other-configuration-commands" title="Permalink to this headline">¶</a></h3>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="manage/client.passing-options.html">Passing options to the exporter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manage/client.purge.html">Purging metrics data with pmm-admin purge</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manage/client.list.html">View state of exporters with pmm-admin list</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manage/client.info.html">Getting information about pmm-client with pmm-admin info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manage/client.repair.html">Repairing orphaned services with pmm-admin repair</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manage/client.restart.html">Restarting monitoring services with pmm-admin restart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manage/client.stop.html">Stopping monitoring services with pmm-admin stop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manage/client.start.html">Starting monitoring services with pmm-admin start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manage/client.passwords.html">Displaying passwords with pmm-admin show-passwords</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manage/client.remove.html">Removing monitoring services with pmm-admin rm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manage/client.uninstall.html">Uninstalling monitoring services with pmm-admin uninstall</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="configuring-aws-rds-or-aurora">
+<h2>Configuring AWS RDS or Aurora<a class="headerlink" href="#configuring-aws-rds-or-aurora" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="manage/amazon-rds.settings.html">Required AWS settings</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="manage/amazon-rds.settings.html#creating-an-iam-user-with-permission-to-access-amazon-rds-db-instances"><code class="docutils literal"><span class="pre">Creating</span> <span class="pre">an</span> <span class="pre">IAM</span> <span class="pre">user</span> <span class="pre">with</span> <span class="pre">permission</span> <span class="pre">to</span> <span class="pre">access</span> <span class="pre">Amazon</span> <span class="pre">RDS</span> <span class="pre">DB</span> <span class="pre">instances</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="manage/amazon-rds.settings.html#creating-a-policy"><code class="docutils literal"><span class="pre">Creating</span> <span class="pre">a</span> <span class="pre">policy</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="manage/amazon-rds.settings.html#creating-an-iam-user"><code class="docutils literal"><span class="pre">Creating</span> <span class="pre">an</span> <span class="pre">IAM</span> <span class="pre">user</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="manage/amazon-rds.settings.html#creating-an-access-key-for-an-iam-user"><code class="docutils literal"><span class="pre">Creating</span> <span class="pre">an</span> <span class="pre">access</span> <span class="pre">key</span> <span class="pre">for</span> <span class="pre">an</span> <span class="pre">IAM</span> <span class="pre">user</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="manage/amazon-rds.settings.html#attaching-a-policy-to-an-iam-user"><code class="docutils literal"><span class="pre">Attaching</span> <span class="pre">a</span> <span class="pre">policy</span> <span class="pre">to</span> <span class="pre">an</span> <span class="pre">IAM</span> <span class="pre">user</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="manage/amazon-rds.settings.html#setting-up-the-amazon-rds-db-instance"><code class="docutils literal"><span class="pre">Setting</span> <span class="pre">up</span> <span class="pre">the</span> <span class="pre">Amazon</span> <span class="pre">RDS</span> <span class="pre">DB</span> <span class="pre">Instance</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="manage/amazon-rds.add-instance.html">Using PMM Add Instance wizard</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manage/remote-instance.html">Adding a MySQL or PostgreSQL Remote instance to PMM without Client</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="manage/remote-instance.html#adding-a-remote-postgresql-instance">Adding a Remote PostgreSQL Instance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manage/remote-instance.html#adding-a-remote-mysql-instance">Adding a Remote MySQL Instance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manage/remote-instance.html#viewing-remote-mysql-and-postgresql-instances">Viewing Remote MySQL and PostgreSQL Instances</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="using-pmm-metrics-monitor">
+<h2>Using PMM Metrics Monitor<a class="headerlink" href="#using-pmm-metrics-monitor" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="metrics-monitor.dashboards.html"><code class="docutils literal"><span class="pre">Opening</span> <span class="pre">a</span> <span class="pre">Dashboard</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="metrics-monitor.dashboards.html#viewing-more-information-about-a-graph"><code class="docutils literal"><span class="pre">Viewing</span> <span class="pre">More</span> <span class="pre">Information</span> <span class="pre">about</span> <span class="pre">a</span> <span class="pre">Graph</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="metrics-monitor.dashboards.html#zooming-in-on-a-single-metric"><code class="docutils literal"><span class="pre">Zooming</span> <span class="pre">in</span> <span class="pre">on</span> <span class="pre">a</span> <span class="pre">single</span> <span class="pre">metric</span></code></a></li>
+</ul>
+</div>
+<ul class="simple">
+<li>Navigating across Dashboards while maintaining same host / timerange</li>
+</ul>
+</div>
+<div class="section" id="using-pmm-query-analytics">
+<h2>Using PMM Query Analytics<a class="headerlink" href="#using-pmm-query-analytics" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="qan.intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="qan.navigation.html">Navigating to Query Analytics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="qan.drilling.html">Drilling down on a per query basis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="qan.filtering.html">Filtering Queries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="qan.configuring.html">Configuring QAN</a></li>
+</ul>
+</div>
+<div class="section" id="mongodb-specific">
+<h3>MongoDB specific<a class="headerlink" href="#mongodb-specific" title="Permalink to this headline">¶</a></h3>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="qan.mongodb.html">QAN for MongoDB</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="extending-pmm">
+<h2>Extending PMM<a class="headerlink" href="#extending-pmm" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="manage/client.external.exporters.html">Using External Exporters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manage/client.annotations.html">Annotating important Application Events</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="pmm-for-percona-customers">
+<h2>PMM for Percona Customers<a class="headerlink" href="#pmm-for-percona-customers" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="metrics-monitor.snapshots.html">Creating a Metrics Monitor dashboard Snapshot as part of a Percona Support engagement</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="reference">
+<h2>Reference<a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="release-notes/index.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.metrics-monitor.dashboard.html">Metrics Monitor Dashboards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contact.html">Contact Us</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.terminology.html">Glossary</a></li>
+</ul>
+</div>
+<p>#   Adding monitoring services &lt;manage/client.add&gt;</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+    <div class="related row">
+      
+      <ul class="nav nav-pills">
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="concepts/architecture.html" title="Overview of Percona Monitoring and Management Architecture"
+             >next</a></li>
+        <li><a href="#">Percona Monitoring and Management Documentation</a></li> 
+      </ul>
+    </div>
+      </div>
+      <div class="sphinxsidebar  col-md-3 col-md-pull-9">
+        <div class="sphinxsidebarwrapper">
+  
+          {@ product_logo @}          
+
+          {@ product_pdf_download @}
+  <h3><a href="#">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Percona Monitoring and Management Documentation</a><ul>
+<li><a class="reference internal" href="#pmm-concepts">PMM Concepts</a><ul>
+<li><a class="reference internal" href="#pmm-features">PMM Features</a></li>
+<li><a class="reference internal" href="#architecture-overview">Architecture Overview</a></li>
+<li><a class="reference internal" href="#exporters">Exporters</a></li>
+<li><a class="reference internal" href="#services">Services</a></li>
+<li><a class="reference internal" href="#security-features">Security Features</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#installing-pmm-server">Installing PMM Server</a></li>
+<li><a class="reference internal" href="#configuring-pmm-server">Configuring PMM Server</a></li>
+<li><a class="reference internal" href="#service-configuration-for-best-results">Service Configuration for Best Results</a><ul>
+<li><a class="reference internal" href="#mysql">MySQL</a></li>
+<li><a class="reference internal" href="#mongodb">MongoDB</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#installing-pmm-client">Installing PMM Client</a></li>
+<li><a class="reference internal" href="#using-pmm-client">Using PMM Client</a><ul>
+<li><a class="reference internal" href="#adding-a-mysql-host">Adding a MySQL Host</a></li>
+<li><a class="reference internal" href="#adding-a-mongodb-host">Adding a MongoDB host</a></li>
+<li><a class="reference internal" href="#adding-a-proxysql-host">Adding a ProxySQL host</a></li>
+<li><a class="reference internal" href="#adding-linux-metrics">Adding Linux metrics</a></li>
+<li><a class="reference internal" href="#postgresql">PostgreSQL</a></li>
+<li><a class="reference internal" href="#adding-amazon-web-services">Adding Amazon Web Services</a></li>
+<li><a class="reference internal" href="#other-configuration-commands">Other configuration commands</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#configuring-aws-rds-or-aurora">Configuring AWS RDS or Aurora</a></li>
+<li><a class="reference internal" href="#using-pmm-metrics-monitor">Using PMM Metrics Monitor</a></li>
+<li><a class="reference internal" href="#using-pmm-query-analytics">Using PMM Query Analytics</a><ul>
+<li><a class="reference internal" href="#mongodb-specific">MongoDB specific</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#extending-pmm">Extending PMM</a></li>
+<li><a class="reference internal" href="#pmm-for-percona-customers">PMM for Percona Customers</a></li>
+<li><a class="reference internal" href="#reference">Reference</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Next topic</h4>
+  <p class="topless"><a href="concepts/architecture.html"
+                        title="next chapter">Overview of Percona Monitoring and Management Architecture</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">jQuery(document).ready(function(){ jQuery('#searchbox').show(0); });</script>
+          {@ product_series @}
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <!-- div class="footer">
+        &copy; Copyright Percona LLC and/or its affiliates 2009-2019.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.4.
+    </div -->
+  </div>
+  </body>

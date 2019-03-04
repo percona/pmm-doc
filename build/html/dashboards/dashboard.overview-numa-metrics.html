@@ -1,0 +1,252 @@
+
+
+
+    <title>NUMA Overview Dashboard &mdash; Percona Monitoring and Management Documentation</title>
+    
+  <head>
+    
+    
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Percona Monitoring and Management Documentation" href="../index.html" />
+    <link rel="up" title="Metrics Monitor Dashboards" href="../index.metrics-monitor.dashboard.html" />
+    <link rel="next" title="Prometheus Dashboard" href="dashboard.prometheus.html" />
+    <link rel="prev" title="Compare System Parameters Dashboard" href="dashboard.compare-system-parameters.html" /> 
+  </head>
+  <body>
+    <div class="container">  
+
+    <div class="document row">
+      <div class="documentwrapper col-md-9 col-md-push-3">
+    <div class="related row">
+      
+      <ul class="nav nav-pills">
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="dashboard.prometheus.html" title="Prometheus Dashboard"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="dashboard.compare-system-parameters.html" title="Compare System Parameters Dashboard"
+             accesskey="P">previous</a></li>
+        <li><a href="../index.html">Percona Monitoring and Management Documentation</a></li>
+          <li><a href="../index.metrics-monitor.dashboard.html" accesskey="U">Metrics Monitor Dashboards</a></li> 
+      </ul>
+    </div>
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="dbd-overview-numa-metrics-dashboard">
+<span id="dashboard-overview-numa-metrics"></span><h1><em>NUMA Overview</em> Dashboard<a class="headerlink" href="#dbd-overview-numa-metrics-dashboard" title="Permalink to this headline">¶</a></h1>
+<p>For each node, this dashboard shows metrics related to Non-uniform memory
+access (NUMA).</p>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><a class="reference internal" href="#memory-usage" id="id1"><a class="reference internal" href="#dashboard-overview-numa-metrics-memory-usage"><span class="std std-ref">Memory Usage</span></a></a></li>
+<li><a class="reference internal" href="#free-memory-percent" id="id2"><a class="reference internal" href="#dashboard-overview-numa-metrics-free-memory-percent"><span class="std std-ref">Free Memory Percent</span></a></a></li>
+<li><a class="reference internal" href="#numa-memory-usage-types" id="id3"><a class="reference internal" href="#dashboard-overview-numa-metrics-numa-memory-usage-types"><span class="std std-ref">NUMA Memory Usage Types</span></a></a></li>
+<li><a class="reference internal" href="#numa-allocation-hits" id="id4"><a class="reference internal" href="#dashboard-overview-numa-metrics-numa-allocation-hits"><span class="std std-ref">NUMA Allocation Hits</span></a></a></li>
+<li><a class="reference internal" href="#numa-allocation-missed" id="id5"><a class="reference internal" href="#dashboard-overview-numa-metrics-numa-allocation-missed"><span class="std std-ref">NUMA Allocation Missed</span></a></a></li>
+<li><a class="reference internal" href="#anonymous-memory" id="id6"><a class="reference internal" href="#dashboard-overview-numa-metrics-anonymous-memory"><span class="std std-ref">Anonymous Memory</span></a></a></li>
+<li><a class="reference internal" href="#numa-file-pagecache" id="id7"><a class="reference internal" href="#dashboard-overview-numa-metrics-numa-file-page-cache"><span class="std std-ref">NUMA File (PageCache)</span></a></a></li>
+<li><a class="reference internal" href="#shared-memory" id="id8"><a class="reference internal" href="#dashboard-overview-numa-metrics-shared-memory"><span class="std std-ref">Shared Memory</span></a></a></li>
+<li><a class="reference internal" href="#hugepages-statistics" id="id9"><a class="reference internal" href="#dashboard-overview-numa-metrics-hugepages-statistics"><span class="std std-ref">HugePages Statistics</span></a></a></li>
+<li><a class="reference internal" href="#local-processes" id="id10"><a class="reference internal" href="#dashboard-overview-numa-metrics-local-processes"><span class="std std-ref">Local Processes</span></a></a></li>
+<li><a class="reference internal" href="#remote-processes" id="id11"><a class="reference internal" href="#dashboard-overview-numa-metrics-remote-processes"><span class="std std-ref">Remote Processes</span></a></a></li>
+<li><a class="reference internal" href="#slab-memory" id="id12"><a class="reference internal" href="#dashboard-overview-numa-metrics-slab-memory"><span class="std std-ref">Slab Memory</span></a></a></li>
+</ul>
+</div>
+<p>..note:</p>
+<blockquote>
+<div><p>Users who already have <a class="reference external" href="https://www.percona.com/doc/percona-monitoring-and-management/pmm-admin.html#pmm-admin-add-linux-metrics">General system metrics service</a> monitored and would like to add NUMA metrics need to remove and re-add <code class="docutils literal"><span class="pre">linux:metrics</span></code> on the node:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pmm</span><span class="o">-</span><span class="n">admin</span> <span class="n">remove</span> <span class="n">linux</span><span class="p">:</span><span class="n">metrics</span>
+<span class="n">pmm</span><span class="o">-</span><span class="n">admin</span> <span class="n">add</span> <span class="n">linux</span><span class="p">:</span><span class="n">metrics</span>
+</pre></div>
+</div>
+</div></blockquote>
+<div class="section" id="memory-usage">
+<span id="dashboard-overview-numa-metrics-memory-usage"></span><h2><a class="toc-backref" href="#id1"><a class="reference internal" href="#dashboard-overview-numa-metrics-memory-usage"><span class="std std-ref">Memory Usage</span></a></a><a class="headerlink" href="#memory-usage" title="Permalink to this headline">¶</a></h2>
+<p>Remotes over time the total, used, and free memory.</p>
+<p><strong>View all metrics of</strong> <a class="reference internal" href="#dashboard-overview-numa-metrics"><span class="std std-ref">NUMA Overview Dashboard</span></a></p>
+</div>
+<div class="section" id="free-memory-percent">
+<span id="dashboard-overview-numa-metrics-free-memory-percent"></span><h2><a class="toc-backref" href="#id2"><a class="reference internal" href="#dashboard-overview-numa-metrics-free-memory-percent"><span class="std std-ref">Free Memory Percent</span></a></a><a class="headerlink" href="#free-memory-percent" title="Permalink to this headline">¶</a></h2>
+<p>Shows the free memory as the ratio to the total available memory.</p>
+<p><strong>View all metrics of</strong> <a class="reference internal" href="#dashboard-overview-numa-metrics"><span class="std std-ref">NUMA Overview Dashboard</span></a></p>
+</div>
+<div class="section" id="numa-memory-usage-types">
+<span id="dashboard-overview-numa-metrics-numa-memory-usage-types"></span><h2><a class="toc-backref" href="#id3"><a class="reference internal" href="#dashboard-overview-numa-metrics-numa-memory-usage-types"><span class="std std-ref">NUMA Memory Usage Types</span></a></a><a class="headerlink" href="#numa-memory-usage-types" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>Dirty</dt>
+<dd>Memory waiting to be written back to disk</dd>
+<dt>Bounce</dt>
+<dd>Memory used for block device bounce buffers</dd>
+<dt>Mapped</dt>
+<dd>Files which have been mmaped, such as libraries</dd>
+</dl>
+<p>KernelStack The memory the kernel stack uses. This is not reclaimable.</p>
+<p><strong>View all metrics of</strong> <a class="reference internal" href="#dashboard-overview-numa-metrics"><span class="std std-ref">NUMA Overview Dashboard</span></a></p>
+</div>
+<div class="section" id="numa-allocation-hits">
+<span id="dashboard-overview-numa-metrics-numa-allocation-hits"></span><h2><a class="toc-backref" href="#id4"><a class="reference internal" href="#dashboard-overview-numa-metrics-numa-allocation-hits"><span class="std std-ref">NUMA Allocation Hits</span></a></a><a class="headerlink" href="#numa-allocation-hits" title="Permalink to this headline">¶</a></h2>
+<p>Memory successfully allocated on this node as intended.</p>
+<p><strong>View all metrics of</strong> <a class="reference internal" href="#dashboard-overview-numa-metrics"><span class="std std-ref">NUMA Overview Dashboard</span></a></p>
+</div>
+<div class="section" id="numa-allocation-missed">
+<span id="dashboard-overview-numa-metrics-numa-allocation-missed"></span><h2><a class="toc-backref" href="#id5"><a class="reference internal" href="#dashboard-overview-numa-metrics-numa-allocation-missed"><span class="std std-ref">NUMA Allocation Missed</span></a></a><a class="headerlink" href="#numa-allocation-missed" title="Permalink to this headline">¶</a></h2>
+<p>Memory missed is allocated on a node despite the process preferring some different node.</p>
+<p>Memory foreign is intended for a node, but actually allocated on some different node.</p>
+<p><strong>View all metrics of</strong> <a class="reference internal" href="#dashboard-overview-numa-metrics"><span class="std std-ref">NUMA Overview Dashboard</span></a></p>
+</div>
+<div class="section" id="anonymous-memory">
+<span id="dashboard-overview-numa-metrics-anonymous-memory"></span><h2><a class="toc-backref" href="#id6"><a class="reference internal" href="#dashboard-overview-numa-metrics-anonymous-memory"><span class="std std-ref">Anonymous Memory</span></a></a><a class="headerlink" href="#anonymous-memory" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>Active</dt>
+<dd>Anonymous memory that has been used more recently and usually not swapped out.</dd>
+<dt>Inactive</dt>
+<dd>Anonymous memory that has not been used recently and can be swapped out.</dd>
+</dl>
+<p><strong>View all metrics of</strong> <a class="reference internal" href="#dashboard-overview-numa-metrics"><span class="std std-ref">NUMA Overview Dashboard</span></a></p>
+</div>
+<div class="section" id="numa-file-pagecache">
+<span id="dashboard-overview-numa-metrics-numa-file-page-cache"></span><h2><a class="toc-backref" href="#id7"><a class="reference internal" href="#dashboard-overview-numa-metrics-numa-file-page-cache"><span class="std std-ref">NUMA File (PageCache)</span></a></a><a class="headerlink" href="#numa-file-pagecache" title="Permalink to this headline">¶</a></h2>
+<p>Active(file) Pagecache memory that has been used more recently and usually not
+reclaimed until needed.</p>
+<p>Inactive(file) Pagecache memory that can be reclaimed without huge performance
+impact.</p>
+<p><strong>View all metrics of</strong> <a class="reference internal" href="#dashboard-overview-numa-metrics"><span class="std std-ref">NUMA Overview Dashboard</span></a></p>
+</div>
+<div class="section" id="shared-memory">
+<span id="dashboard-overview-numa-metrics-shared-memory"></span><h2><a class="toc-backref" href="#id8"><a class="reference internal" href="#dashboard-overview-numa-metrics-shared-memory"><span class="std std-ref">Shared Memory</span></a></a><a class="headerlink" href="#shared-memory" title="Permalink to this headline">¶</a></h2>
+<p>Shmem Total used shared memory (shared between several processes, thus including
+RAM disks, SYS-V-IPC and BSD like SHMEM)</p>
+<p><strong>View all metrics of</strong> <a class="reference internal" href="#dashboard-overview-numa-metrics"><span class="std std-ref">NUMA Overview Dashboard</span></a></p>
+</div>
+<div class="section" id="hugepages-statistics">
+<span id="dashboard-overview-numa-metrics-hugepages-statistics"></span><h2><a class="toc-backref" href="#id9"><a class="reference internal" href="#dashboard-overview-numa-metrics-hugepages-statistics"><span class="std std-ref">HugePages Statistics</span></a></a><a class="headerlink" href="#hugepages-statistics" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>Total</dt>
+<dd>Number of hugepages being allocated by the kernel (Defined with vm.nr_hugepages).</dd>
+<dt>Free</dt>
+<dd>The number of hugepages not being allocated by a process</dd>
+<dt>Surp</dt>
+<dd>The number of hugepages in the pool above the value in vm.nr_hugepages. The
+maximum number of surplus hugepages is controlled by
+vm.nr_overcommit_hugepages.</dd>
+</dl>
+<p><strong>View all metrics of</strong> <a class="reference internal" href="#dashboard-overview-numa-metrics"><span class="std std-ref">NUMA Overview Dashboard</span></a></p>
+</div>
+<div class="section" id="local-processes">
+<span id="dashboard-overview-numa-metrics-local-processes"></span><h2><a class="toc-backref" href="#id10"><a class="reference internal" href="#dashboard-overview-numa-metrics-local-processes"><span class="std std-ref">Local Processes</span></a></a><a class="headerlink" href="#local-processes" title="Permalink to this headline">¶</a></h2>
+<p>Memory allocated on a node while a process was running on it.</p>
+<p><strong>View all metrics of</strong> <a class="reference internal" href="#dashboard-overview-numa-metrics"><span class="std std-ref">NUMA Overview Dashboard</span></a></p>
+</div>
+<div class="section" id="remote-processes">
+<span id="dashboard-overview-numa-metrics-remote-processes"></span><h2><a class="toc-backref" href="#id11"><a class="reference internal" href="#dashboard-overview-numa-metrics-remote-processes"><span class="std std-ref">Remote Processes</span></a></a><a class="headerlink" href="#remote-processes" title="Permalink to this headline">¶</a></h2>
+<p>Memory allocated on a node while a process was running on some other node.</p>
+<p><strong>View all metrics of</strong> <a class="reference internal" href="#dashboard-overview-numa-metrics"><span class="std std-ref">NUMA Overview Dashboard</span></a></p>
+</div>
+<div class="section" id="slab-memory">
+<span id="dashboard-overview-numa-metrics-slab-memory"></span><h2><a class="toc-backref" href="#id12"><a class="reference internal" href="#dashboard-overview-numa-metrics-slab-memory"><span class="std std-ref">Slab Memory</span></a></a><a class="headerlink" href="#slab-memory" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>Slab</dt>
+<dd>Allocation is a memory management mechanism intended for the efficient memory allocation of kernel objects.</dd>
+<dt>SReclaimable</dt>
+<dd>The part of the Slab that might be reclaimed (such as caches).</dd>
+<dt>SUnreclaim</dt>
+<dd>The part of the Slab that can&#8217;t be reclaimed under memory pressure</dd>
+</dl>
+<p><strong>View all metrics of</strong> <a class="reference internal" href="#dashboard-overview-numa-metrics"><span class="std std-ref">NUMA Overview Dashboard</span></a></p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+    <div class="related row">
+      
+      <ul class="nav nav-pills">
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="dashboard.prometheus.html" title="Prometheus Dashboard"
+             >next</a></li>
+        <li class="right" >
+          <a href="dashboard.compare-system-parameters.html" title="Compare System Parameters Dashboard"
+             >previous</a></li>
+        <li><a href="../index.html">Percona Monitoring and Management Documentation</a></li>
+          <li><a href="../index.metrics-monitor.dashboard.html" >Metrics Monitor Dashboards</a></li> 
+      </ul>
+    </div>
+      </div>
+      <div class="sphinxsidebar  col-md-3 col-md-pull-9">
+        <div class="sphinxsidebarwrapper">
+  
+          {@ product_logo @}          
+
+          {@ product_pdf_download @}
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#"><em>NUMA Overview</em> Dashboard</a><ul>
+<li><a class="reference internal" href="#memory-usage"><code class="docutils literal"><span class="pre">Memory</span> <span class="pre">Usage</span></code></a></li>
+<li><a class="reference internal" href="#free-memory-percent"><code class="docutils literal"><span class="pre">Free</span> <span class="pre">Memory</span> <span class="pre">Percent</span></code></a></li>
+<li><a class="reference internal" href="#numa-memory-usage-types"><code class="docutils literal"><span class="pre">NUMA</span> <span class="pre">Memory</span> <span class="pre">Usage</span> <span class="pre">Types</span></code></a></li>
+<li><a class="reference internal" href="#numa-allocation-hits"><code class="docutils literal"><span class="pre">NUMA</span> <span class="pre">Allocation</span> <span class="pre">Hits</span></code></a></li>
+<li><a class="reference internal" href="#numa-allocation-missed"><code class="docutils literal"><span class="pre">NUMA</span> <span class="pre">Allocation</span> <span class="pre">Missed</span></code></a></li>
+<li><a class="reference internal" href="#anonymous-memory"><code class="docutils literal"><span class="pre">Anonymous</span> <span class="pre">Memory</span></code></a></li>
+<li><a class="reference internal" href="#numa-file-pagecache"><code class="docutils literal"><span class="pre">NUMA</span> <span class="pre">File</span> <span class="pre">(PageCache)</span></code></a></li>
+<li><a class="reference internal" href="#shared-memory"><code class="docutils literal"><span class="pre">Shared</span> <span class="pre">Memory</span></code></a></li>
+<li><a class="reference internal" href="#hugepages-statistics"><code class="docutils literal"><span class="pre">HugePages</span> <span class="pre">Statistics</span></code></a></li>
+<li><a class="reference internal" href="#local-processes"><code class="docutils literal"><span class="pre">Local</span> <span class="pre">Processes</span></code></a></li>
+<li><a class="reference internal" href="#remote-processes"><code class="docutils literal"><span class="pre">Remote</span> <span class="pre">Processes</span></code></a></li>
+<li><a class="reference internal" href="#slab-memory"><code class="docutils literal"><span class="pre">Slab</span> <span class="pre">Memory</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="dashboard.compare-system-parameters.html"
+                        title="previous chapter"><em>Compare System Parameters</em> Dashboard</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="dashboard.prometheus.html"
+                        title="next chapter"><em>Prometheus</em> Dashboard</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">jQuery(document).ready(function(){ jQuery('#searchbox').show(0); });</script>
+          {@ product_series @}
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <!-- div class="footer">
+        &copy; Copyright Percona LLC and/or its affiliates 2009-2019.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.4.
+    </div -->
+  </div>
+  </body>

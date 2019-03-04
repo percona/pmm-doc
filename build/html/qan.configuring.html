@@ -1,0 +1,171 @@
+
+
+
+    <title>Configuring QAN &mdash; Percona Monitoring and Management Documentation</title>
+    
+  <head>
+    
+    
+    
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '2.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Percona Monitoring and Management Documentation" href="index.html" />
+    <link rel="next" title="QAN for MongoDB" href="qan.mongodb.html" />
+    <link rel="prev" title="Filtering Queries" href="qan.filtering.html" /> 
+  </head>
+  <body>
+    <div class="container">  
+
+    <div class="document row">
+      <div class="documentwrapper col-md-9 col-md-push-3">
+    <div class="related row">
+      
+      <ul class="nav nav-pills">
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="qan.mongodb.html" title="QAN for MongoDB"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="qan.filtering.html" title="Filtering Queries"
+             accesskey="P">previous</a></li>
+        <li><a href="index.html">Percona Monitoring and Management Documentation</a></li> 
+      </ul>
+    </div>
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="configuring-qan">
+<span id="pmm-qan-configuring"></span><h1><a class="reference internal" href="#pmm-qan-configuring"><span class="std std-ref">Configuring QAN</span></a><a class="headerlink" href="#configuring-qan" title="Permalink to this headline">¶</a></h1>
+<p>All <em>PMM Query Analytics</em> settings are available from the <em>Query Analytics Settings</em>
+dashboard. To open this dashboard, use the PMM menu group.</p>
+<div class="figure" id="id1">
+<span id="figure-pmm-qan-configuring-metrics-monitor-menu-pmm"></span><img alt="_images/metrics-monitor.menu.pmm.png" src="_images/metrics-monitor.menu.pmm.png" />
+<p class="caption"><span class="caption-text">The PMM group in the Metrics Monitor navigation menu</span></p>
+</div>
+<div class="section" id="settings-tab">
+<span id="pmm-qan-configuring-settings-tab"></span><h2><a class="reference internal" href="#pmm-qan-configuring-settings-tab"><span class="std std-ref">Settings Tab</span></a><a class="headerlink" href="#settings-tab" title="Permalink to this headline">¶</a></h2>
+<p>The <span class="guilabel">Settings</span> tab displays the essential configuration settings of
+the database server selected from the <span class="guilabel">Databases</span> list. From this tab
+you can see which <a class="reference internal" href="glossary.terminology.html#dsn"><span class="std std-ref">DSN</span></a> is being used as well as the <a class="reference internal" href="glossary.terminology.html#version"><span class="std std-ref">database
+server version</span></a>.</p>
+<p>This tab contains several settings which influence how the monitored data are
+collected. Note that these settings cannot be changed directly in QAN. You
+need to set the appropriate options by using the tools from the database server
+itself. You can, however, select where the database server mentrics are
+collected from, such as <em>slow log</em>, or <em>Performance Schema</em>. For this, change the value
+of the <span class="guilabel">Collect from</span> field accordingly.</p>
+<div class="figure" id="id2">
+<span id="figure-pmm-qan-configuring-pmm-qan-tab-settings"></span><img alt="_images/qan.settings.1.png" src="_images/qan.settings.1.png" />
+<p class="caption"><span class="caption-text">The <span class="guilabel">Settings</span> tab to view the essential settings of the selected
+database server.</span></p>
+</div>
+<p>When you choose to collect MySQL data from <em>slow log</em>, a group of read only
+values becomes available. Note that these settings cannot be set in PMM
+directly. These are essential parameters of MySQL that affect the operation of
+<em>slow log</em>. If you need to change these settings refer to the appropriate sections
+of MySQL documentation.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<dl class="last docutils">
+<dt>Percona Server Documentation:</dt>
+<dd><a class="reference external" href="https://www.percona.com/doc/percona-server/LATEST/flexibility/slowlog_rotation.html">Slow Query Log Rotation and Expiration</a></dd>
+<dt>MySQL Documentation:</dt>
+<dd><a class="reference external" href="https://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html">The Slow Query Log</a></dd>
+</dl>
+</div>
+</div>
+<div class="section" id="status-tab">
+<span id="pmm-qan-configuring-status-tab"></span><h2><a class="reference internal" href="#pmm-qan-configuring-status-tab"><span class="std std-ref">Status Tab</span></a><a class="headerlink" href="#status-tab" title="Permalink to this headline">¶</a></h2>
+<p>The <span class="guilabel">Status</span> tab contains detailed information about the current status of
+the monitored database server. QAN collects this information from the database
+server directly. For example, in case of a MySQL server, the <strong class="command">SHOW STATUS</strong>
+command is used.</p>
+</div>
+<div class="section" id="log-tab">
+<span id="pmm-qan-configuring-log-tab"></span><h2><a class="reference internal" href="#pmm-qan-configuring-log-tab"><span class="std std-ref">Log Tab</span></a><a class="headerlink" href="#log-tab" title="Permalink to this headline">¶</a></h2>
+<p>The <span class="guilabel">Log</span> tab contains the latest version of the monitored log, such
+as <em>slow log</em>. At the top of this tab, you may notice when exactly the snapshot
+was taken.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+    <div class="related row">
+      
+      <ul class="nav nav-pills">
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="qan.mongodb.html" title="QAN for MongoDB"
+             >next</a></li>
+        <li class="right" >
+          <a href="qan.filtering.html" title="Filtering Queries"
+             >previous</a></li>
+        <li><a href="index.html">Percona Monitoring and Management Documentation</a></li> 
+      </ul>
+    </div>
+      </div>
+      <div class="sphinxsidebar  col-md-3 col-md-pull-9">
+        <div class="sphinxsidebarwrapper">
+  
+          {@ product_logo @}          
+
+          {@ product_pdf_download @}
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#"><code class="docutils literal"><span class="pre">Configuring</span> <span class="pre">QAN</span></code></a><ul>
+<li><a class="reference internal" href="#settings-tab"><code class="docutils literal"><span class="pre">Settings</span> <span class="pre">Tab</span></code></a></li>
+<li><a class="reference internal" href="#status-tab"><code class="docutils literal"><span class="pre">Status</span> <span class="pre">Tab</span></code></a></li>
+<li><a class="reference internal" href="#log-tab"><code class="docutils literal"><span class="pre">Log</span> <span class="pre">Tab</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="qan.filtering.html"
+                        title="previous chapter"><code class="docutils literal"><span class="pre">Filtering</span> <span class="pre">Queries</span></code></a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="qan.mongodb.html"
+                        title="next chapter"><code class="docutils literal"><span class="pre">QAN</span> <span class="pre">for</span> <span class="pre">MongoDB</span></code></a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">jQuery(document).ready(function(){ jQuery('#searchbox').show(0); });</script>
+          {@ product_series @}
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <!-- div class="footer">
+        &copy; Copyright Percona LLC and/or its affiliates 2009-2019.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.4.
+    </div -->
+  </div>
+  </body>

@@ -1,0 +1,160 @@
+
+
+
+    <title>Passing SSL parameters to the mongodb monitoring service &mdash; Percona Monitoring and Management Documentation</title>
+    
+  <head>
+    
+    
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Percona Monitoring and Management Documentation" href="../index.html" />
+    <link rel="next" title="Installing Clients" href="../install/clients.html" />
+    <link rel="prev" title="Configuring MySQL 8.0 for PMM" href="../conf-mysql.ps8.html" /> 
+  </head>
+  <body>
+    <div class="container">  
+
+    <div class="document row">
+      <div class="documentwrapper col-md-9 col-md-push-3">
+    <div class="related row">
+      
+      <ul class="nav nav-pills">
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../install/clients.html" title="Installing Clients"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="../conf-mysql.ps8.html" title="Configuring MySQL 8.0 for PMM"
+             accesskey="P">previous</a></li>
+        <li><a href="../index.html">Percona Monitoring and Management Documentation</a></li> 
+      </ul>
+    </div>
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="pmm-pmm-admin-mongodb-pass-ssl-parameter">
+<span id="id1"></span><h1><a class="reference external" href="pmm-admin.html#pmm-pmm-admin-mongodb-pass-ssl-parameter">Passing SSL parameters to the mongodb monitoring service</a><a class="headerlink" href="#pmm-pmm-admin-mongodb-pass-ssl-parameter" title="Permalink to this headline">¶</a></h1>
+<p>SSL/TLS related parameters are passed to an SSL enabled MongoDB server as
+monitoring service parameters along with the <strong class="program">pmm-admin add</strong> command when adding
+the <code class="xref std std-option docutils literal"><span class="pre">mongodb:metrics</span></code> monitoring service.</p>
+<p>Run this command as root or by using the <strong class="program">sudo</strong> command</p>
+<div class="literal-block-wrapper docutils container" id="passing-an-ssl-tls-parameter-to-mongod-to-enable-a-tls-connection">
+<div class="code-block-caption"><span class="caption-text"><em>Passing an SSL/TLS parameter to</em> <strong class="program">mongod</strong> <em>to enable a TLS connection.</em></span><a class="headerlink" href="#passing-an-ssl-tls-parameter-to-mongod-to-enable-a-tls-connection" title="Permalink to this code">¶</a></div>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ pmm-admin add mongodb:metrics -- --mongodb.tls
+</pre></div>
+</div>
+</div>
+<table border="1" class="colwidths-given docutils" id="id2">
+<caption><span class="caption-text">Supported SSL/TLS Parameters</span><a class="headerlink" href="#id2" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="25%" />
+<col width="75%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="xref std std-option docutils literal"><span class="pre">--mongodb.tls</span></code></td>
+<td>Enable a TLS connection with mongo server</td>
+</tr>
+<tr class="row-odd"><td><code class="xref std std-option docutils literal"><span class="pre">--mongodb.tls-ca</span></code>  <em>string</em></td>
+<td>A path to a PEM file that contains the CAs that are trusted for server connections.
+<em>If provided</em>: MongoDB servers connecting to should present a certificate signed by one of these CAs.
+<em>If not provided</em>: System default CAs are used.</td>
+</tr>
+<tr class="row-even"><td><code class="xref std std-option docutils literal"><span class="pre">--mongodb.tls-cert</span></code> <em>string</em></td>
+<td>A path to a PEM file that contains the certificate and, optionally, the private key in the PEM format.
+This should include the whole certificate chain.
+<em>If provided</em>: The connection will be opened via TLS to the MongoDB server.</td>
+</tr>
+<tr class="row-odd"><td><code class="xref std std-option docutils literal"><span class="pre">--mongodb.tls-disable-hostname-validation</span></code></td>
+<td>Do hostname validation for the server connection.</td>
+</tr>
+<tr class="row-even"><td><code class="xref std std-option docutils literal"><span class="pre">--mongodb.tls-private-key</span></code> <em>string</em></td>
+<td>A path to a PEM file that contains the private key (if not contained in the <code class="xref std std-option docutils literal"><span class="pre">mongodb.tls-cert</span></code> file).</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">PMM does not support passing SSL/TLS related parameters to <code class="xref std std-option docutils literal"><span class="pre">mongodb:queries</span></code>.</p>
+</div>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ mongod --dbpath<span class="o">=</span>DATABASEDIR --profile <span class="m">2</span> --slowms <span class="m">200</span> --rateLimit <span class="m">100</span>
+</pre></div>
+</div>
+<span class="target" id="pmm-admin-add-linux-metrics"></span></div>
+
+
+          </div>
+        </div>
+    <div class="related row">
+      
+      <ul class="nav nav-pills">
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../install/clients.html" title="Installing Clients"
+             >next</a></li>
+        <li class="right" >
+          <a href="../conf-mysql.ps8.html" title="Configuring MySQL 8.0 for PMM"
+             >previous</a></li>
+        <li><a href="../index.html">Percona Monitoring and Management Documentation</a></li> 
+      </ul>
+    </div>
+      </div>
+      <div class="sphinxsidebar  col-md-3 col-md-pull-9">
+        <div class="sphinxsidebarwrapper">
+  
+          {@ product_logo @}          
+
+          {@ product_pdf_download @}
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../conf-mysql.ps8.html"
+                        title="previous chapter">Configuring MySQL 8.0 for PMM</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../install/clients.html"
+                        title="next chapter"><code class="docutils literal"><span class="pre">Installing</span> <span class="pre">Clients</span></code></a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">jQuery(document).ready(function(){ jQuery('#searchbox').show(0); });</script>
+          {@ product_series @}
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <!-- div class="footer">
+        &copy; Copyright Percona LLC and/or its affiliates 2009-2019.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.4.
+    </div -->
+  </div>
+  </body>

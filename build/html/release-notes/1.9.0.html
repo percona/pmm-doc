@@ -1,0 +1,295 @@
+
+
+
+    <title>Percona Monitoring and Management 1.9.0 &mdash; Percona Monitoring and Management Documentation</title>
+    
+  <head>
+    
+    
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Percona Monitoring and Management Documentation" href="../index.html" />
+    <link rel="up" title="Percona Monitoring and Management Release Notes" href="index.html" />
+    <link rel="next" title="Percona Monitoring and Management 1.8.1" href="1.8.1.html" />
+    <link rel="prev" title="Percona Monitoring and Management 1.9.1" href="1.9.1.html" /> 
+  </head>
+  <body>
+    <div class="container">  
+
+    <div class="document row">
+      <div class="documentwrapper col-md-9 col-md-push-3">
+    <div class="related row">
+      
+      <ul class="nav nav-pills">
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="1.8.1.html" title="Percona Monitoring and Management 1.8.1"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="1.9.1.html" title="Percona Monitoring and Management 1.9.1"
+             accesskey="P">previous</a></li>
+        <li><a href="../index.html">Percona Monitoring and Management Documentation</a></li>
+          <li><a href="index.html" accesskey="U">Percona Monitoring and Management Release Notes</a></li> 
+      </ul>
+    </div>
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="pmm-name-release">
+<span id="id1"></span><h1><em>Percona Monitoring and Management</em> 1.9.0<a class="headerlink" href="#pmm-name-release" title="Permalink to this headline">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Date:</th><td class="field-body">April 4, 2018</td>
+</tr>
+</tbody>
+</table>
+<p>There are a number of significant updates in 1.9.0 that we hope you
+will like, some of the key highlights include:</p>
+<ul class="simple">
+<li>Faster loading of the index page: We have enabled performance
+optimizations using <strong class="program">gzip</strong> and <strong class="program">HTTP2</strong>.</li>
+<li>AWS improvements: We have added metrics from CloudWatch RDS to 6
+dashboards, as well as changed our AWS add instance workflow, and
+made some changes to credentials handling.</li>
+<li>Percona Snapshot Server: If you are a Percona Customer you can now
+securely share your dashboards with Percona Engineers.</li>
+<li>Exporting PMM Server logs: Retrieve logs from PMM Server for
+troubleshooting using single button-click, avoiding the need to log
+in manually to the docker container.</li>
+<li>Low RAM support: We have reduced the memory requirement so
+PMM Server will run on systems with 512MB</li>
+<li>Dashboard improvements: We ave changed MongoDB instance
+identification for MongoDB graphs, and set maximum graph Y-axis on
+Prometheus Exporter Status dashboard</li>
+</ul>
+<div class="section" id="aws-improvements">
+<h2>AWS Improvements<a class="headerlink" href="#aws-improvements" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="cloudwatch-rds-metrics">
+<h3>CloudWatch RDS metrics<a class="headerlink" href="#cloudwatch-rds-metrics" title="Permalink to this headline">¶</a></h3>
+<p>Since we are already consuming Amazon Cloudwatch metrics and persisting them in
+Prometheus, we have improved 6 node-specific dashboards to now display
+Amazon RDS node-level metrics:</p>
+<ul class="simple">
+<li>Cross_Server (Network Traffic)</li>
+<li>Disk Performance (Disk Latency)</li>
+<li>Home Dashboard (Network IO)</li>
+<li>MySQL Overview (Disk Latency, Network traffic)</li>
+<li>Summary Dashboard (Network Traffic)</li>
+<li>System Overview (Network Traffic)</li>
+</ul>
+</div>
+<div class="section" id="aws-add-instance-changes">
+<h3>AWS Add Instance changes<a class="headerlink" href="#aws-add-instance-changes" title="Permalink to this headline">¶</a></h3>
+<p>We have changed our AWS add instance interface and workflow to be more clear on
+information needed to add an Amazon Aurora MySQL or Amazon RDS MySQL
+instance. We have provided some clarity on how to locate your AWS credentials.</p>
+<img alt="../_images/1-9-0.2.png" src="../_images/1-9-0.2.png" />
+<img alt="../_images/1-9-0.3.png" src="../_images/1-9-0.3.png" />
+</div>
+<div class="section" id="aws-settings">
+<h3>AWS Settings<a class="headerlink" href="#aws-settings" title="Permalink to this headline">¶</a></h3>
+<p>We have improved our documentation to highlight connectivity best practices, and
+authentication options - IAM Role or IAM User Access Key.</p>
+<p class="rubric">Enabling Enhanced Monitoring</p>
+<img alt="../_images/1-9-0.4.png" src="../_images/1-9-0.4.png" />
+<p class="rubric">Credentials Screen</p>
+<img alt="../_images/1-9-0.1.png" src="../_images/1-9-0.1.png" />
+</div>
+</div>
+<div class="section" id="low-ram-support">
+<h2>Low RAM Support<a class="headerlink" href="#low-ram-support" title="Permalink to this headline">¶</a></h2>
+<p>You can now run PMM Server on instances with memory as low as 512MB RAM, which
+means you can deploy to  the free tier of many cloud providers if you want to
+experiment with PMM.  Our memory calculation is now:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nv">METRICS_MEMORY_MULTIPLIED</span><span class="o">=</span><span class="k">$((</span> <span class="o">(</span><span class="si">${</span><span class="nv">MEMORY_AVAIABLE</span><span class="si">}</span> <span class="o">-</span> <span class="m">256</span><span class="o">*</span><span class="m">1024</span><span class="o">*</span><span class="m">1024</span><span class="o">)</span> <span class="o">/</span> <span class="m">100</span> <span class="o">*</span> <span class="m">40</span> <span class="k">))</span>
+<span class="k">if</span> <span class="o">[[</span> <span class="nv">$METRICS_MEMORY_MULTIPLIED</span> &lt; <span class="k">$((</span><span class="m">128</span><span class="o">*</span><span class="m">1024</span><span class="o">*</span><span class="m">1024</span><span class="k">))</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
+    <span class="nv">METRICS_MEMORY_MULTIPLIED</span><span class="o">=</span><span class="k">$((</span><span class="m">128</span><span class="o">*</span><span class="m">1024</span><span class="o">*</span><span class="m">1024</span><span class="k">))</span>
+<span class="k">fi</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="percona-snapshot-server">
+<h2>Percona Snapshot Server<a class="headerlink" href="#percona-snapshot-server" title="Permalink to this headline">¶</a></h2>
+<p>Snapshots are a way of sharing PMM dashboards via a link to individuals who do
+not normally have access to your PMM Server.  If you are a Percona Customer
+you can now securely share your dashboards with Percona Engineers.  We have
+replaced the button for sharing to the Grafana publicly hosted platform onto one
+administered by Percona.  Your dashboard will be written to Percona
+snapshots and only Percona Engineers will be able to retrieve the data.  We
+will be expiring old snapshots automatically at 90 days, but when sharing you
+will have the option to configure a shorter retention period.</p>
+<img alt="../_images/1-9-0.5.png" src="../_images/1-9-0.5.png" />
+</div>
+<div class="section" id="export-of-pmm-server-logs">
+<h2>Export of PMM Server Logs<a class="headerlink" href="#export-of-pmm-server-logs" title="Permalink to this headline">¶</a></h2>
+<p>In this release, the logs from PMM Server can be exported using single
+button-click, avoiding the need to log in manually to the docker container.
+This simplifies the troubleshooting process of a PMM Server, and especially for
+Percona Customers, this feature will provide a more consistent data gathering
+task that you will perform on behalf of requests from Percona Engineers.</p>
+<img alt="../_images/1-9-0.6.png" src="../_images/1-9-0.6.png" />
+</div>
+<div class="section" id="faster-loading-of-the-index-page">
+<h2>Faster Loading of the Index Page<a class="headerlink" href="#faster-loading-of-the-index-page" title="Permalink to this headline">¶</a></h2>
+<p>In version 1.8.0, the index page was redesigned to reveal more useful
+information about the performance of your hosts as well an immediate access to
+essential components of PMM, however the index page had to load much data
+dynamically resulting in a noticeably longer load time. In this release we
+enabled <strong class="program">gzip</strong> and <strong class="program">HTTP2</strong> to improve the load time of the index page. The
+following screenshots demonstrate the results of our tests on webpagetest.org
+where we reduce page load time by half.  We will continue to look for
+opportunities to improve the performance of the index page and expect that when
+we upgrade to Prometheus 2 we will see another improvement.</p>
+<p class="rubric">The load time of the index page of PMM version 1.8.0</p>
+<img alt="../_images/1-9-0.7.png" src="../_images/1-9-0.7.png" />
+<p class="rubric">The load time of the index page of PMM version 1.9.0</p>
+<img alt="../_images/1-9-0.8.png" src="../_images/1-9-0.8.png" />
+</div>
+<div class="section" id="issues-in-this-release">
+<h2>Issues in this release<a class="headerlink" href="#issues-in-this-release" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="new-features">
+<h3>New Features<a class="headerlink" href="#new-features" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><a class="reference external" href="https://jira.percona.com/browse/PMM-781">PMM-781</a>: Plot new PXC 5.7.17, 5.7.18 status variables on new graphs for
+PXC Galera, PXC Overview dashboards</li>
+<li><a class="reference external" href="https://jira.percona.com/browse/PMM-1274">PMM-1274</a>: Export PMM Server logs as zip file to the browser</li>
+<li><a class="reference external" href="https://jira.percona.com/browse/PMM-2058">PMM-2058</a>: Percona Snapshot Server</li>
+</ul>
+</div>
+<div class="section" id="improvements">
+<h3>Improvements<a class="headerlink" href="#improvements" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><a class="reference external" href="https://jira.percona.com/browse/PMM-1587">PMM-1587</a>: Use <code class="xref std std-option docutils literal"><span class="pre">mongodb_up</span></code> variable for the MongoDB Overview
+dashboard to identify if a host is MongoDB.</li>
+<li><a class="reference external" href="https://jira.percona.com/browse/PMM-1788">PMM-1788</a>: AWS Credentials form changes</li>
+<li><a class="reference external" href="https://jira.percona.com/browse/PMM-1823">PMM-1823</a>: AWS Install wizard improvements</li>
+<li><a class="reference external" href="https://jira.percona.com/browse/PMM-2010">PMM-2010</a>: System dashboards update to be compatible with RDS nodes</li>
+<li><a class="reference external" href="https://jira.percona.com/browse/PMM-2118">PMM-2118</a>: Update grafana config for metric series that will not go above 1.0</li>
+<li><a class="reference external" href="https://jira.percona.com/browse/PMM-2215">PMM-2215</a>: PMM Web speed improvements</li>
+<li><a class="reference external" href="https://jira.percona.com/browse/PMM-2216">PMM-2216</a>: PMM can now be started on systems without memory limit
+capabilities in the kernel</li>
+<li><a class="reference external" href="https://jira.percona.com/browse/PMM-2217">PMM-2217</a>: PMM Server can now run in Docker with 512 Mb memory</li>
+<li><a class="reference external" href="https://jira.percona.com/browse/PMM-2252">PMM-2252</a>: Better handling of variables in the navigation menu</li>
+</ul>
+</div>
+<div class="section" id="bug-fixes">
+<h3>Bug fixes<a class="headerlink" href="#bug-fixes" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><a class="reference external" href="https://jira.percona.com/browse/PMM-605">PMM-605</a>: <strong class="program">pt-mysql-summary</strong> requires additional configuration</li>
+<li><a class="reference external" href="https://jira.percona.com/browse/PMM-941">PMM-941</a>: ParseSocketFromNetstat finds an incorrect socket</li>
+<li><a class="reference external" href="https://jira.percona.com/browse/PMM-948">PMM-948</a>: Wrong load reported by QAN due to mis-alignment of time intervals</li>
+<li><a class="reference external" href="https://jira.percona.com/browse/PMM-1486">PMM-1486</a>: MySQL passwords containing the dollar sign ($) were not
+processed properly.</li>
+<li><a class="reference external" href="https://jira.percona.com/browse/PMM-1905">PMM-1905</a>: In QAN, the Explain command could fail in some cases.</li>
+<li><a class="reference external" href="https://jira.percona.com/browse/PMM-2090">PMM-2090</a>: Minor formatting issues in QAN</li>
+<li><a class="reference external" href="https://jira.percona.com/browse/PMM-2214">PMM-2214</a>: Setting Send real query examples for Query Analytic
+OFF still shows the real query in example.</li>
+<li><a class="reference external" href="https://jira.percona.com/browse/PMM-2221">PMM-2221</a>: no Rate of Scrapes for MySQL &amp; MySQL Errors</li>
+<li><a class="reference external" href="https://jira.percona.com/browse/PMM-2224">PMM-2224</a>: Exporter CPU Usage glitches</li>
+<li><a class="reference external" href="https://jira.percona.com/browse/PMM-2227">PMM-2227</a>: Auto Refresh for dashboards</li>
+<li><a class="reference external" href="https://jira.percona.com/browse/PMM-2243">PMM-2243</a>: Long host names in Grafana dashboards are not displayed correctly</li>
+<li><a class="reference external" href="https://jira.percona.com/browse/PMM-2257">PMM-2257</a>: PXC/galera cluster overview Flow control paused time has a percentage glitch</li>
+<li><a class="reference external" href="https://jira.percona.com/browse/PMM-2282">PMM-2282</a>: No data is displayed on dashboards for OVA images</li>
+<li><a class="reference external" href="https://jira.percona.com/browse/PMM-2296">PMM-2296</a>: The <code class="xref std std-option docutils literal"><span class="pre">mysql:metrics</span></code> service will not start on Ubuntu LTS 16.04</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+    <div class="related row">
+      
+      <ul class="nav nav-pills">
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="1.8.1.html" title="Percona Monitoring and Management 1.8.1"
+             >next</a></li>
+        <li class="right" >
+          <a href="1.9.1.html" title="Percona Monitoring and Management 1.9.1"
+             >previous</a></li>
+        <li><a href="../index.html">Percona Monitoring and Management Documentation</a></li>
+          <li><a href="index.html" >Percona Monitoring and Management Release Notes</a></li> 
+      </ul>
+    </div>
+      </div>
+      <div class="sphinxsidebar  col-md-3 col-md-pull-9">
+        <div class="sphinxsidebarwrapper">
+  
+          {@ product_logo @}          
+
+          {@ product_pdf_download @}
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#"><em>Percona Monitoring and Management</em> 1.9.0</a><ul>
+<li><a class="reference internal" href="#aws-improvements">AWS Improvements</a><ul>
+<li><a class="reference internal" href="#cloudwatch-rds-metrics">CloudWatch RDS metrics</a></li>
+<li><a class="reference internal" href="#aws-add-instance-changes">AWS Add Instance changes</a></li>
+<li><a class="reference internal" href="#aws-settings">AWS Settings</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#low-ram-support">Low RAM Support</a></li>
+<li><a class="reference internal" href="#percona-snapshot-server">Percona Snapshot Server</a></li>
+<li><a class="reference internal" href="#export-of-pmm-server-logs">Export of PMM Server Logs</a></li>
+<li><a class="reference internal" href="#faster-loading-of-the-index-page">Faster Loading of the Index Page</a></li>
+<li><a class="reference internal" href="#issues-in-this-release">Issues in this release</a><ul>
+<li><a class="reference internal" href="#new-features">New Features</a></li>
+<li><a class="reference internal" href="#improvements">Improvements</a></li>
+<li><a class="reference internal" href="#bug-fixes">Bug fixes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="1.9.1.html"
+                        title="previous chapter"><em>Percona Monitoring and Management</em> 1.9.1</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="1.8.1.html"
+                        title="next chapter"><em>Percona Monitoring and Management</em> 1.8.1</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">jQuery(document).ready(function(){ jQuery('#searchbox').show(0); });</script>
+          {@ product_series @}
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <!-- div class="footer">
+        &copy; Copyright Percona LLC and/or its affiliates 2009-2019.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.4.
+    </div -->
+  </div>
+  </body>

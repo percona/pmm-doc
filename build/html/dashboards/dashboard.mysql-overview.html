@@ -1,0 +1,465 @@
+
+
+
+    <title>MySQL Overview &mdash; Percona Monitoring and Management Documentation</title>
+    
+  <head>
+    
+    
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Percona Monitoring and Management Documentation" href="../index.html" />
+    <link rel="up" title="Metrics Monitor Dashboards" href="../index.metrics-monitor.dashboard.html" />
+    <link rel="next" title="MySQL Performance Schema Dashboard" href="dashboard.mysql-performance-schema.html" />
+    <link rel="prev" title="MySQL MyRocks Metrics Dashboard" href="dashboard.mysql-myrocks-metrics.html" /> 
+  </head>
+  <body>
+    <div class="container">  
+
+    <div class="document row">
+      <div class="documentwrapper col-md-9 col-md-push-3">
+    <div class="related row">
+      
+      <ul class="nav nav-pills">
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="dashboard.mysql-performance-schema.html" title="MySQL Performance Schema Dashboard"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="dashboard.mysql-myrocks-metrics.html" title="MySQL MyRocks Metrics Dashboard"
+             accesskey="P">previous</a></li>
+        <li><a href="../index.html">Percona Monitoring and Management Documentation</a></li>
+          <li><a href="../index.metrics-monitor.dashboard.html" accesskey="U">Metrics Monitor Dashboards</a></li> 
+      </ul>
+    </div>
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="dbd-mysql-overview">
+<span id="dashboard-mysql-overview"></span><h1><em>MySQL Overview</em><a class="headerlink" href="#dbd-mysql-overview" title="Permalink to this headline">¶</a></h1>
+<p>This dashboard provides basic information about MySQL hosts.</p>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><a class="reference internal" href="#mysql-uptime" id="id1"><a class="reference internal" href="#dashboard-mysql-overview-uptime"><span class="std std-ref">MySQL Uptime</span></a></a></li>
+<li><a class="reference internal" href="#current-qps" id="id2"><a class="reference internal" href="#dashboard-mysql-overview-current-qps"><span class="std std-ref">Current QPS</span></a></a></li>
+<li><a class="reference internal" href="#innodb-buffer-pool-size" id="id3"><a class="reference internal" href="#dashboard-mysql-overview-innodb-buffer-pool-size"><span class="std std-ref">InnoDB Buffer Pool Size</span></a></a></li>
+<li><a class="reference internal" href="#buffer-pool-size-of-total-ram" id="id4"><a class="reference internal" href="#dashboard-mysql-overview-buffer-poolsize-percentage-of-total-ram"><span class="std std-ref">Buffer Pool Size % of Total RAM</span></a></a></li>
+<li><a class="reference internal" href="#mysql-connections" id="id5"><a class="reference internal" href="#dashboard-mysql-overview-connections"><span class="std std-ref">MySQL Connections</span></a></a></li>
+<li><a class="reference internal" href="#mysql-active-threads" id="id6"><a class="reference internal" href="#dashboard-mysql-overview-active-threads"><span class="std std-ref">MySQL Active Threads</span></a></a></li>
+<li><a class="reference internal" href="#mysql-questions" id="id7"><a class="reference internal" href="#dashboard-mysql-overview-questions"><span class="std std-ref">MySQL Questions</span></a></a></li>
+<li><a class="reference internal" href="#mysql-thread-cache" id="id8"><a class="reference internal" href="#dashboard-mysql-overview-thread-cache"><span class="std std-ref">MySQL Thread Cache</span></a></a></li>
+<li><a class="reference internal" href="#mysql-select-types" id="id9"><a class="reference internal" href="#dashboard-mysql-overview-select-types"><span class="std std-ref">MySQL Select Types</span></a></a></li>
+<li><a class="reference internal" href="#mysql-sorts" id="id10"><a class="reference internal" href="#dashboard-mysql-overview-sorts"><span class="std std-ref">MySQL Sorts</span></a></a></li>
+<li><a class="reference internal" href="#mysql-slow-queries" id="id11"><a class="reference internal" href="#dashboard-mysql-overview-slow-queries"><span class="std std-ref">MySQL Slow Queries</span></a></a></li>
+<li><a class="reference internal" href="#aborted-connections" id="id12"><a class="reference internal" href="#dashboard-mysql-overview-aborted-connections"><span class="std std-ref">Aborted Connections</span></a></a></li>
+<li><a class="reference internal" href="#table-locks" id="id13"><a class="reference internal" href="#dashboard-mysql-overview-table-locks"><span class="std std-ref">Table Locks</span></a></a></li>
+<li><a class="reference internal" href="#mysql-network-traffic" id="id14"><a class="reference internal" href="#dashboard-mysql-overview-network-traffic"><span class="std std-ref">MySQL Network Traffic</span></a></a></li>
+<li><a class="reference internal" href="#mysql-network-usage-hourly" id="id15"><a class="reference internal" href="#dashboard-mysql-overview-network-usage-hourly"><span class="std std-ref">MySQL Network Usage Hourly</span></a></a></li>
+<li><a class="reference internal" href="#mysql-internal-memory-overview" id="id16"><a class="reference internal" href="#dashboard-mysql-overview-internal-memory-overview"><span class="std std-ref">MySQL Internal Memory Overview</span></a></a></li>
+<li><a class="reference internal" href="#top-command-counters-and-top-command-counters-hourly" id="id17"><a class="reference internal" href="#dashboard-mysql-overview-top-command-counters-top-command-counters-hourly"><span class="std std-ref">Top Command Counters and Top Command Counters Hourly</span></a></a></li>
+<li><a class="reference internal" href="#mysql-handlers" id="id18"><a class="reference internal" href="#dashboard-mysql-overview-handlers"><span class="std std-ref">MySQL Handlers</span></a></a></li>
+<li><a class="reference internal" href="#mysql-query-cache-memory-and-mysql-query-cache-activity" id="id19"><a class="reference internal" href="#dashboard-mysql-overview-query-cache-memory-query-cache-activity"><span class="std std-ref">MySQL Query Cache Memory and MySQL Query Cache Activity</span></a></a></li>
+<li><a class="reference internal" href="#mysql-open-tables-mysql-table-open-cache-status-and-mysql-table-definition-cache" id="id20"><a class="reference internal" href="#metric-mysql-table-definition-cache-mysql-open-cache-status-mysql-open-table"><span class="std std-ref">MySQL Open Tables, MySQL Table Open Cache Status, and MySQL Table Definition Cache</span></a></a></li>
+</ul>
+</div>
+<div class="section" id="mysql-uptime">
+<span id="dashboard-mysql-overview-uptime"></span><h2><a class="toc-backref" href="#id1"><a class="reference internal" href="#dashboard-mysql-overview-uptime"><span class="std std-ref">MySQL Uptime</span></a></a><a class="headerlink" href="#mysql-uptime" title="Permalink to this headline">¶</a></h2>
+<p>The amount of time since the MySQL server process was started.</p>
+<p><strong>View all metrics of</strong> <a class="reference internal" href="#dashboard-mysql-overview"><span class="std std-ref">MySQL Overview</span></a></p>
+</div>
+<div class="section" id="current-qps">
+<span id="dashboard-mysql-overview-current-qps"></span><h2><a class="toc-backref" href="#id2"><a class="reference internal" href="#dashboard-mysql-overview-current-qps"><span class="std std-ref">Current QPS</span></a></a><a class="headerlink" href="#current-qps" title="Permalink to this headline">¶</a></h2>
+<p>Based on the queries reported by MySQL&#8216;s <strong class="command">SHOW STATUS</strong> command,
+this metric shows the number of queries executed by the server during
+the last second.n This metric includes statements executed within
+stored programs.</p>
+<p>This variable does not include the following commands:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">COM_PING</span></code></li>
+<li><code class="docutils literal"><span class="pre">COM_STATISTICS</span></code></li>
+</ul>
+<p><strong>View all metrics of</strong> <a class="reference internal" href="#dashboard-mysql-overview"><span class="std std-ref">MySQL Overview</span></a></p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<dl class="last docutils">
+<dt>MySQL Server Status Variables: Queries</dt>
+<dd><a class="reference external" href="https://dev.mysql.com/doc/refman/5.6/en/server-status-variables.html#statvar_Queries">https://dev.mysql.com/doc/refman/5.6/en/server-status-variables.html#statvar_Queries</a></dd>
+</dl>
+</div>
+</div>
+<div class="section" id="innodb-buffer-pool-size">
+<span id="dashboard-mysql-overview-innodb-buffer-pool-size"></span><h2><a class="toc-backref" href="#id3"><a class="reference internal" href="#dashboard-mysql-overview-innodb-buffer-pool-size"><span class="std std-ref">InnoDB Buffer Pool Size</span></a></a><a class="headerlink" href="#innodb-buffer-pool-size" title="Permalink to this headline">¶</a></h2>
+<p>Absolute value of the InnoDB buffer pool used for caching data and indexes in
+memory.</p>
+<p>The goal is to keep the working set in memory. In most cases, this should be
+between 60%-90% of available memory on a dedicated database host, but depends on
+many factors.</p>
+<p><strong>View all metrics of</strong> <a class="reference internal" href="#dashboard-mysql-overview"><span class="std std-ref">MySQL Overview</span></a></p>
+</div>
+<div class="section" id="buffer-pool-size-of-total-ram">
+<span id="dashboard-mysql-overview-buffer-poolsize-percentage-of-total-ram"></span><h2><a class="toc-backref" href="#id4"><a class="reference internal" href="#dashboard-mysql-overview-buffer-poolsize-percentage-of-total-ram"><span class="std std-ref">Buffer Pool Size % of Total RAM</span></a></a><a class="headerlink" href="#buffer-pool-size-of-total-ram" title="Permalink to this headline">¶</a></h2>
+<p>The ratio between InnoDB buffer pool size and total memory.  In most cases, the
+InnoDB buffer pool should be between 60% and 90% of available memory on a
+dedicated database host, but it depends on many factors.</p>
+<p><strong>View all metrics of</strong> <a class="reference internal" href="#dashboard-mysql-overview"><span class="std std-ref">MySQL Overview</span></a></p>
+</div>
+<div class="section" id="mysql-connections">
+<span id="dashboard-mysql-overview-connections"></span><h2><a class="toc-backref" href="#id5"><a class="reference internal" href="#dashboard-mysql-overview-connections"><span class="std std-ref">MySQL Connections</span></a></a><a class="headerlink" href="#mysql-connections" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>Max Connections</dt>
+<dd>The maximum permitted number of simultaneous client
+connections. This is the value of the <code class="docutils literal"><span class="pre">max_connections</span></code> variable.</dd>
+<dt>Max Used Connections</dt>
+<dd>The maximum number of connections that have been in use simultaneously since
+the server was started.</dd>
+<dt>Connections</dt>
+<dd>The number of connection attempts (successful or not) to the MySQL server.</dd>
+</dl>
+<p><strong>View all metrics of</strong> <a class="reference internal" href="#dashboard-mysql-overview"><span class="std std-ref">MySQL Overview</span></a></p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<dl class="last docutils">
+<dt>MySQL Server status variables: max_connections</dt>
+<dd><a class="reference external" href="https://dev.mysql.com/doc/refman/5.6/en/server-system-variables.html#sysvar_max_connections">https://dev.mysql.com/doc/refman/5.6/en/server-system-variables.html#sysvar_max_connections</a></dd>
+</dl>
+</div>
+</div>
+<div class="section" id="mysql-active-threads">
+<span id="dashboard-mysql-overview-active-threads"></span><h2><a class="toc-backref" href="#id6"><a class="reference internal" href="#dashboard-mysql-overview-active-threads"><span class="std std-ref">MySQL Active Threads</span></a></a><a class="headerlink" href="#mysql-active-threads" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>Threads Connected</dt>
+<dd>The number of open connections.</dd>
+<dt>Threads Running</dt>
+<dd>The number of threads not sleeping.</dd>
+</dl>
+<p><strong>View all metrics of</strong> <a class="reference internal" href="#dashboard-mysql-overview"><span class="std std-ref">MySQL Overview</span></a></p>
+</div>
+<div class="section" id="mysql-questions">
+<span id="dashboard-mysql-overview-questions"></span><h2><a class="toc-backref" href="#id7"><a class="reference internal" href="#dashboard-mysql-overview-questions"><span class="std std-ref">MySQL Questions</span></a></a><a class="headerlink" href="#mysql-questions" title="Permalink to this headline">¶</a></h2>
+<p>The number of queries sent to the server by clients, <em>excluding those executed
+within stored programs</em>.</p>
+<p>This variable does not count the following commands:</p>
+<p><strong>View all metrics of</strong> <a class="reference internal" href="#dashboard-mysql-overview"><span class="std std-ref">MySQL Overview</span></a></p>
+<ul class="simple">
+<li>COM_PING</li>
+<li>COM_STATISTICS</li>
+<li>COM_STMT_PREPARE</li>
+<li>COM_STMT_CLOSE</li>
+<li>COM_STMT_RESET</li>
+</ul>
+<p><strong>View all metrics of</strong> <a class="reference internal" href="#dashboard-mysql-overview"><span class="std std-ref">MySQL Overview</span></a></p>
+</div>
+<div class="section" id="mysql-thread-cache">
+<span id="dashboard-mysql-overview-thread-cache"></span><h2><a class="toc-backref" href="#id8"><a class="reference internal" href="#dashboard-mysql-overview-thread-cache"><span class="std std-ref">MySQL Thread Cache</span></a></a><a class="headerlink" href="#mysql-thread-cache" title="Permalink to this headline">¶</a></h2>
+<p>The thread_cache_size metric informs how many threads the server should cache to
+reuse. When a client disconnects, the client&#8217;s threads are put in the cache if
+the cache is not full. It is autosized in MySQL 5.6.8 and above (capped to
+100).</p>
+<p>Requests for threads are satisfied by reusing threads taken from the cache if
+possible, and only when the cache is empty is a new thread created.</p>
+<ul class="simple">
+<li>Threads_created: The number of threads created to handle connections.</li>
+<li>Threads_cached: The number of threads in the thread cache.</li>
+</ul>
+<p><strong>View all metrics of</strong> <a class="reference internal" href="#dashboard-mysql-overview"><span class="std std-ref">MySQL Overview</span></a></p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<dl class="last docutils">
+<dt>MySQL Server status variables: thread_cache_size</dt>
+<dd><a class="reference external" href="https://dev.mysql.com/doc/refman/5.6/en/server-system-variables.html#sysvar_thread_cache_size">https://dev.mysql.com/doc/refman/5.6/en/server-system-variables.html#sysvar_thread_cache_size</a></dd>
+</dl>
+</div>
+</div>
+<div class="section" id="mysql-select-types">
+<span id="dashboard-mysql-overview-select-types"></span><h2><a class="toc-backref" href="#id9"><a class="reference internal" href="#dashboard-mysql-overview-select-types"><span class="std std-ref">MySQL Select Types</span></a></a><a class="headerlink" href="#mysql-select-types" title="Permalink to this headline">¶</a></h2>
+<p>As with most relational databases, selecting based on indexes is more efficient
+than scanning the data of an entire table. Here, we see the counters for selects
+not done with indexes.</p>
+<ul class="simple">
+<li><em>Select Scan</em> is how many queries caused full table scans, in which all the
+data in the table had to be read and either discarded or returned.</li>
+<li><em>Select Range</em> is how many queries used a range scan, which means MySQL
+scanned all rows in a given range.</li>
+<li><em>Select Full Join</em> is the number of joins that are not joined on an index,
+this is usually a huge performance hit.</li>
+</ul>
+<p><strong>View all metrics of</strong> <a class="reference internal" href="#dashboard-mysql-overview"><span class="std std-ref">MySQL Overview</span></a></p>
+</div>
+<div class="section" id="mysql-sorts">
+<span id="dashboard-mysql-overview-sorts"></span><h2><a class="toc-backref" href="#id10"><a class="reference internal" href="#dashboard-mysql-overview-sorts"><span class="std std-ref">MySQL Sorts</span></a></a><a class="headerlink" href="#mysql-sorts" title="Permalink to this headline">¶</a></h2>
+<p>Due to a query&#8217;s structure, order, or other requirements, MySQL sorts the rows
+before returning them. For example, if a table is ordered 1 to 10 but you want
+the results reversed, MySQL then has to sort the rows to return 10 to 1.</p>
+<p>This graph also shows when sorts had to scan a whole table or a given range of a
+table in order to return the results and which could not have been sorted via an
+index.</p>
+<p><strong>View all metrics of</strong> <a class="reference internal" href="#dashboard-mysql-overview"><span class="std std-ref">MySQL Overview</span></a></p>
+</div>
+<div class="section" id="mysql-slow-queries">
+<span id="dashboard-mysql-overview-slow-queries"></span><h2><a class="toc-backref" href="#id11"><a class="reference internal" href="#dashboard-mysql-overview-slow-queries"><span class="std std-ref">MySQL Slow Queries</span></a></a><a class="headerlink" href="#mysql-slow-queries" title="Permalink to this headline">¶</a></h2>
+<p>Slow queries are defined as queries being slower than the <code class="xref std std-option docutils literal"><span class="pre">long_query_time</span></code>
+setting. For example, if you have <code class="xref std std-option docutils literal"><span class="pre">long_query_time</span></code> set to <strong>3</strong>, all
+queries that take longer than <strong>3</strong> seconds to complete will show on this graph.</p>
+<p><strong>View all metrics of</strong> <a class="reference internal" href="#dashboard-mysql-overview"><span class="std std-ref">MySQL Overview</span></a></p>
+</div>
+<div class="section" id="aborted-connections">
+<span id="dashboard-mysql-overview-aborted-connections"></span><h2><a class="toc-backref" href="#id12"><a class="reference internal" href="#dashboard-mysql-overview-aborted-connections"><span class="std std-ref">Aborted Connections</span></a></a><a class="headerlink" href="#aborted-connections" title="Permalink to this headline">¶</a></h2>
+<p>When a given host connects to MySQL and the connection is interrupted in the
+middle (for example due to bad credentials), MySQL keeps that info in a system
+table (since 5.6 this table is exposed in performance_schema).</p>
+<p>If the amount of failed requests without a successful connection reaches the
+value of <em>max_connect_errors</em>, <strong class="program">mysqld</strong> assumes that something is wrong and
+blocks the host from further connections.</p>
+<p>To allow connections from that host again, you need to issue the
+<strong class="command">FLUSH HOSTS</strong> statement.</p>
+<p><strong>View all metrics of</strong> <a class="reference internal" href="#dashboard-mysql-overview"><span class="std std-ref">MySQL Overview</span></a></p>
+</div>
+<div class="section" id="table-locks">
+<span id="dashboard-mysql-overview-table-locks"></span><h2><a class="toc-backref" href="#id13"><a class="reference internal" href="#dashboard-mysql-overview-table-locks"><span class="std std-ref">Table Locks</span></a></a><a class="headerlink" href="#table-locks" title="Permalink to this headline">¶</a></h2>
+<p>MySQL takes a number of different locks for varying reasons. In this graph we
+see how many Table level locks MySQL has requested from the storage engine. In
+the case of InnoDB, many times the locks could actually be row locks as it
+only takes table level locks in a few specific cases.</p>
+<p>It is most useful to compare <em>Locks Immediate</em> and <em>Locks Waited</em>. If
+<em>Locks Waited</em> is rising, it means you have lock contention. Otherwise,
+<em>Locks Immediate</em> rising and falling is normal activity.</p>
+<p><strong>View all metrics of</strong> <a class="reference internal" href="#dashboard-mysql-overview"><span class="std std-ref">MySQL Overview</span></a></p>
+</div>
+<div class="section" id="mysql-network-traffic">
+<span id="dashboard-mysql-overview-network-traffic"></span><h2><a class="toc-backref" href="#id14"><a class="reference internal" href="#dashboard-mysql-overview-network-traffic"><span class="std std-ref">MySQL Network Traffic</span></a></a><a class="headerlink" href="#mysql-network-traffic" title="Permalink to this headline">¶</a></h2>
+<p>This metric shows how much network traffic is generated by MySQL. <em>Outbound</em>
+is network traffic sent from MySQL and <em>Inbound</em> is the network traffic that
+MySQL has received.</p>
+<p><strong>View all metrics of</strong> <a class="reference internal" href="#dashboard-mysql-overview"><span class="std std-ref">MySQL Overview</span></a></p>
+</div>
+<div class="section" id="mysql-network-usage-hourly">
+<span id="dashboard-mysql-overview-network-usage-hourly"></span><h2><a class="toc-backref" href="#id15"><a class="reference internal" href="#dashboard-mysql-overview-network-usage-hourly"><span class="std std-ref">MySQL Network Usage Hourly</span></a></a><a class="headerlink" href="#mysql-network-usage-hourly" title="Permalink to this headline">¶</a></h2>
+<p>This metric shows how much network traffic is generated by MySQL per
+hour. You can use the bar graph to compare data sent by MySQL and data
+received by MySQL.</p>
+<p><strong>View all metrics of</strong> <a class="reference internal" href="#dashboard-mysql-overview"><span class="std std-ref">MySQL Overview</span></a></p>
+</div>
+<div class="section" id="mysql-internal-memory-overview">
+<span id="dashboard-mysql-overview-internal-memory-overview"></span><h2><a class="toc-backref" href="#id16"><a class="reference internal" href="#dashboard-mysql-overview-internal-memory-overview"><span class="std std-ref">MySQL Internal Memory Overview</span></a></a><a class="headerlink" href="#mysql-internal-memory-overview" title="Permalink to this headline">¶</a></h2>
+<p>This metric shows the various uses of memory within MySQL.</p>
+<p>System Memory</p>
+<blockquote>
+<div>Total Memory for the system.</div></blockquote>
+<p>InnoDB Buffer Pool Data</p>
+<blockquote>
+<div>InnoDB maintains a storage area called the buffer pool for caching data and
+indexes in memory. Knowing how the InnoDB buffer pool works, and taking
+advantage of it to keep frequently accessed data in memory, is an important
+aspect of MySQL tuning.</div></blockquote>
+<p>TokuDB Cache Size</p>
+<blockquote>
+<div>Similar in function to the InnoDB Buffer Pool, TokuDB will allocate 50%
+of the installed RAM for its own cache. While this is optimal in most
+situations, there are cases where it may lead to memory over allocation. If
+the system tries to allocate more memory than is available, the machine will
+begin swapping and run much slower than normal.</div></blockquote>
+<p>Key Buffer Size</p>
+<blockquote>
+<div>Index blocks for MyISAM tables are buffered and are shared by all
+threads. <em>key_buffer_size</em> is the size of the buffer used for index
+blocks. The key buffer is also known as the <em>key cache</em>.</div></blockquote>
+<p>Adaptive Hash Index Size</p>
+<blockquote>
+<div>The InnoDB storage engine has a special feature called adaptive hash
+indexes. When InnoDB notices that some index values are being accessed very
+frequently, it builds a hash index for them in memory on top of B-Tree
+indexes. This allows for very fast hashed lookups.</div></blockquote>
+<p>Query Cache Size</p>
+<blockquote>
+<div>The query cache stores the text of a <strong class="command">SELECT</strong> statement together with the
+corresponding result that was sent to the client. The query cache has huge
+scalability problems in that only one thread can do an operation in the query
+cache at the same time. This serialization is true for <strong class="command">SELECT</strong> and also
+for <strong class="command">INSERT</strong>, <strong class="command">UPDATE</strong>, and <strong class="command">DELETE</strong>. This also means that the
+larger the <em>query_cache_size</em> is set to, the slower those operations become.</div></blockquote>
+<p>InnoDB Dictionary Size</p>
+<blockquote>
+<div>The data dictionary is InnoDB internal catalog of tables. InnoDB stores
+the data dictionary on disk, and loads entries into memory while the server
+is running. This is somewhat analogous to table cache of MySQL, but instead
+of operating at the server level, it is internal to the InnoDB storage
+engine.</div></blockquote>
+<p>InnoDB Log Buffer Size</p>
+<blockquote>
+<div>The MySQL InnoDB log buffer allows transactions to run without having to
+write the log to disk before the transactions commit. The size of this buffer
+is configured with the <em>innodb_log_buffer_size</em> variable.</div></blockquote>
+<p><strong>View all metrics of</strong> <a class="reference internal" href="#dashboard-mysql-overview"><span class="std std-ref">MySQL Overview</span></a></p>
+</div>
+<div class="section" id="top-command-counters-and-top-command-counters-hourly">
+<span id="dashboard-mysql-overview-top-command-counters-top-command-counters-hourly"></span><h2><a class="toc-backref" href="#id17"><a class="reference internal" href="#dashboard-mysql-overview-top-command-counters-top-command-counters-hourly"><span class="std std-ref">Top Command Counters and Top Command Counters Hourly</span></a></a><a class="headerlink" href="#top-command-counters-and-top-command-counters-hourly" title="Permalink to this headline">¶</a></h2>
+<p>See <a class="reference external" href="https://dev.mysql.com/doc/refman/5.7/en/server-status-variables.html#statvar_Com_xxx">https://dev.mysql.com/doc/refman/5.7/en/server-status-variables.html#statvar_Com_xxx</a></p>
+<p><strong>View all metrics of</strong> <a class="reference internal" href="#dashboard-mysql-overview"><span class="std std-ref">MySQL Overview</span></a></p>
+</div>
+<div class="section" id="mysql-handlers">
+<span id="dashboard-mysql-overview-handlers"></span><h2><a class="toc-backref" href="#id18"><a class="reference internal" href="#dashboard-mysql-overview-handlers"><span class="std std-ref">MySQL Handlers</span></a></a><a class="headerlink" href="#mysql-handlers" title="Permalink to this headline">¶</a></h2>
+<p>Handler statistics are internal statistics on how MySQL is selecting,
+updating, inserting, and modifying rows, tables, and indexes.</p>
+<p>This is in fact the layer between the Storage Engine and MySQL.</p>
+<ul class="simple">
+<li><em>read_rnd_next</em> is incremented when the server performs a full table scan and
+this is a counter you don&#8217;t really want to see with a high value.</li>
+<li><em>read_key</em> is incremented when a read is done with an index.</li>
+<li><em>read_next</em> is incremented when the storage engine is asked to &#8216;read the next
+index entry&#8217;. A high value means a lot of index scans are being done.</li>
+</ul>
+<p><strong>View all metrics of</strong> <a class="reference internal" href="#dashboard-mysql-overview"><span class="std std-ref">MySQL Overview</span></a></p>
+</div>
+<div class="section" id="mysql-query-cache-memory-and-mysql-query-cache-activity">
+<span id="dashboard-mysql-overview-query-cache-memory-query-cache-activity"></span><h2><a class="toc-backref" href="#id19"><a class="reference internal" href="#dashboard-mysql-overview-query-cache-memory-query-cache-activity"><span class="std std-ref">MySQL Query Cache Memory and MySQL Query Cache Activity</span></a></a><a class="headerlink" href="#mysql-query-cache-memory-and-mysql-query-cache-activity" title="Permalink to this headline">¶</a></h2>
+<p>The query cache has huge scalability problems in that only one thread can do an
+operation in the query cache at the same time. This serialization is true not
+only for <strong class="command">SELECT</strong>, but also for <strong class="command">INSERT</strong>, <strong class="command">UPDATE</strong>, and
+<strong class="command">DELETE</strong>.</p>
+<p>This also means that the larger the <cite>query_cache_size</cite> is set to, the slower
+those operations become. In concurrent environments, the MySQL Query Cache
+quickly becomes a contention point, decreasing performance. MariaDB and
+Amazon Aurora have done work to try and eliminate the query cache contention
+in their flavors of MySQL, while MySQL 8.0 has eliminated the query cache
+feature.</p>
+<p>The recommended settings for most environments is to set:</p>
+<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="n">query_cache_type</span><span class="o">=</span><span class="mi">0</span>
+<span class="n">query_cache_size</span><span class="o">=</span><span class="mi">0</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">While you can dynamically change these values, to completely remove the
+contention point you have to restart the database.</p>
+</div>
+<p><strong>View all metrics of</strong> <a class="reference internal" href="#dashboard-mysql-overview"><span class="std std-ref">MySQL Overview</span></a></p>
+</div>
+<div class="section" id="mysql-open-tables-mysql-table-open-cache-status-and-mysql-table-definition-cache">
+<span id="metric-mysql-table-definition-cache-mysql-open-cache-status-mysql-open-table"></span><h2><a class="toc-backref" href="#id20"><a class="reference internal" href="#metric-mysql-table-definition-cache-mysql-open-cache-status-mysql-open-table"><span class="std std-ref">MySQL Open Tables, MySQL Table Open Cache Status, and MySQL Table Definition Cache</span></a></a><a class="headerlink" href="#mysql-open-tables-mysql-table-open-cache-status-and-mysql-table-definition-cache" title="Permalink to this headline">¶</a></h2>
+<p>The recommendation is to set the <cite>table_open_cache_instances</cite> to a loose
+correlation to virtual CPUs, keeping in mind that more instances means the cache
+is split more times. If you have a cache set to 500 but it has 10 instances,
+each cache will only have 50 cached.</p>
+<p>The <cite>table_definition_cache</cite> and <cite>table_open_cache</cite> can be left as default as
+they are autosized MySQL 5.6 and above (do not set them to any value).</p>
+<p><strong>View all metrics of</strong> <a class="reference internal" href="#dashboard-mysql-overview"><span class="std std-ref">MySQL Overview</span></a></p>
+<hr class="docutils" />
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<dl class="last docutils">
+<dt>Configuring MySQL for PMM</dt>
+<dd><span class="xref std std-ref">pmm.conf-mysql.settings.dashboard</span></dd>
+<dt>MySQL Documentation: InnoDB buffer pool</dt>
+<dd><a class="reference external" href="https://dev.mysql.com/doc/refman/5.7/en/innodb-buffer-pool.html">https://dev.mysql.com/doc/refman/5.7/en/innodb-buffer-pool.html</a></dd>
+<dt>Percona Server Documentation: Running TokuDB in Production</dt>
+<dd><a class="reference external" href="https://www.percona.com/doc/percona-server/LATEST/tokudb/tokudb_quickstart.html#considerations-to-run-tokudb-in-production">https://www.percona.com/doc/percona-server/LATEST/tokudb/tokudb_quickstart.html#considerations-to-run-tokudb-in-production</a></dd>
+<dt>Blog post: Adaptive Hash Index in InnoDB</dt>
+<dd><a class="reference external" href="https://www.percona.com/blog/2016/04/12/is-adaptive-hash-index-in-innodb-right-for-my-workload/">https://www.percona.com/blog/2016/04/12/is-adaptive-hash-index-in-innodb-right-for-my-workload/</a></dd>
+<dt>MySQL Server System Variables: key_buffer_size</dt>
+<dd><a class="reference external" href="https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_key_buffer_size">https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_key_buffer_size</a></dd>
+<dt>MySQL Server System Variables: table_open_cache</dt>
+<dd><a class="reference external" href="http://dev.mysql.com/doc/refman/5.6/en/server-system-variables.html#sysvar_table_open_cache">http://dev.mysql.com/doc/refman/5.6/en/server-system-variables.html#sysvar_table_open_cache</a></dd>
+</dl>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+    <div class="related row">
+      
+      <ul class="nav nav-pills">
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="dashboard.mysql-performance-schema.html" title="MySQL Performance Schema Dashboard"
+             >next</a></li>
+        <li class="right" >
+          <a href="dashboard.mysql-myrocks-metrics.html" title="MySQL MyRocks Metrics Dashboard"
+             >previous</a></li>
+        <li><a href="../index.html">Percona Monitoring and Management Documentation</a></li>
+          <li><a href="../index.metrics-monitor.dashboard.html" >Metrics Monitor Dashboards</a></li> 
+      </ul>
+    </div>
+      </div>
+      <div class="sphinxsidebar  col-md-3 col-md-pull-9">
+        <div class="sphinxsidebarwrapper">
+  
+          {@ product_logo @}          
+
+          {@ product_pdf_download @}
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#"><em>MySQL Overview</em></a><ul>
+<li><a class="reference internal" href="#mysql-uptime"><code class="docutils literal"><span class="pre">MySQL</span> <span class="pre">Uptime</span></code></a></li>
+<li><a class="reference internal" href="#current-qps"><code class="docutils literal"><span class="pre">Current</span> <span class="pre">QPS</span></code></a></li>
+<li><a class="reference internal" href="#innodb-buffer-pool-size"><code class="docutils literal"><span class="pre">InnoDB</span> <span class="pre">Buffer</span> <span class="pre">Pool</span> <span class="pre">Size</span></code></a></li>
+<li><a class="reference internal" href="#buffer-pool-size-of-total-ram"><code class="docutils literal"><span class="pre">Buffer</span> <span class="pre">Pool</span> <span class="pre">Size</span> <span class="pre">%</span> <span class="pre">of</span> <span class="pre">Total</span> <span class="pre">RAM</span></code></a></li>
+<li><a class="reference internal" href="#mysql-connections"><code class="docutils literal"><span class="pre">MySQL</span> <span class="pre">Connections</span></code></a></li>
+<li><a class="reference internal" href="#mysql-active-threads"><code class="docutils literal"><span class="pre">MySQL</span> <span class="pre">Active</span> <span class="pre">Threads</span></code></a></li>
+<li><a class="reference internal" href="#mysql-questions"><code class="docutils literal"><span class="pre">MySQL</span> <span class="pre">Questions</span></code></a></li>
+<li><a class="reference internal" href="#mysql-thread-cache"><code class="docutils literal"><span class="pre">MySQL</span> <span class="pre">Thread</span> <span class="pre">Cache</span></code></a></li>
+<li><a class="reference internal" href="#mysql-select-types"><code class="docutils literal"><span class="pre">MySQL</span> <span class="pre">Select</span> <span class="pre">Types</span></code></a></li>
+<li><a class="reference internal" href="#mysql-sorts"><code class="docutils literal"><span class="pre">MySQL</span> <span class="pre">Sorts</span></code></a></li>
+<li><a class="reference internal" href="#mysql-slow-queries"><code class="docutils literal"><span class="pre">MySQL</span> <span class="pre">Slow</span> <span class="pre">Queries</span></code></a></li>
+<li><a class="reference internal" href="#aborted-connections"><code class="docutils literal"><span class="pre">Aborted</span> <span class="pre">Connections</span></code></a></li>
+<li><a class="reference internal" href="#table-locks"><code class="docutils literal"><span class="pre">Table</span> <span class="pre">Locks</span></code></a></li>
+<li><a class="reference internal" href="#mysql-network-traffic"><code class="docutils literal"><span class="pre">MySQL</span> <span class="pre">Network</span> <span class="pre">Traffic</span></code></a></li>
+<li><a class="reference internal" href="#mysql-network-usage-hourly"><code class="docutils literal"><span class="pre">MySQL</span> <span class="pre">Network</span> <span class="pre">Usage</span> <span class="pre">Hourly</span></code></a></li>
+<li><a class="reference internal" href="#mysql-internal-memory-overview"><code class="docutils literal"><span class="pre">MySQL</span> <span class="pre">Internal</span> <span class="pre">Memory</span> <span class="pre">Overview</span></code></a></li>
+<li><a class="reference internal" href="#top-command-counters-and-top-command-counters-hourly"><code class="docutils literal"><span class="pre">Top</span> <span class="pre">Command</span> <span class="pre">Counters</span> <span class="pre">and</span> <span class="pre">Top</span> <span class="pre">Command</span> <span class="pre">Counters</span> <span class="pre">Hourly</span></code></a></li>
+<li><a class="reference internal" href="#mysql-handlers"><code class="docutils literal"><span class="pre">MySQL</span> <span class="pre">Handlers</span></code></a></li>
+<li><a class="reference internal" href="#mysql-query-cache-memory-and-mysql-query-cache-activity"><code class="docutils literal"><span class="pre">MySQL</span> <span class="pre">Query</span> <span class="pre">Cache</span> <span class="pre">Memory</span> <span class="pre">and</span> <span class="pre">MySQL</span> <span class="pre">Query</span> <span class="pre">Cache</span> <span class="pre">Activity</span></code></a></li>
+<li><a class="reference internal" href="#mysql-open-tables-mysql-table-open-cache-status-and-mysql-table-definition-cache"><code class="docutils literal"><span class="pre">MySQL</span> <span class="pre">Open</span> <span class="pre">Tables,</span> <span class="pre">MySQL</span> <span class="pre">Table</span> <span class="pre">Open</span> <span class="pre">Cache</span> <span class="pre">Status,</span> <span class="pre">and</span> <span class="pre">MySQL</span> <span class="pre">Table</span> <span class="pre">Definition</span> <span class="pre">Cache</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="dashboard.mysql-myrocks-metrics.html"
+                        title="previous chapter"><em>MySQL MyRocks Metrics</em> Dashboard</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="dashboard.mysql-performance-schema.html"
+                        title="next chapter">MySQL <em>Performance Schema</em>  Dashboard</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">jQuery(document).ready(function(){ jQuery('#searchbox').show(0); });</script>
+          {@ product_series @}
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <!-- div class="footer">
+        &copy; Copyright Percona LLC and/or its affiliates 2009-2019.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.4.
+    </div -->
+  </div>
+  </body>

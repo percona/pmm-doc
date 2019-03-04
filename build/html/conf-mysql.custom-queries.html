@@ -1,0 +1,200 @@
+
+
+
+    <title>Executing Custom Queries &mdash; Percona Monitoring and Management Documentation</title>
+    
+  <head>
+    
+    
+    
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '2.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Percona Monitoring and Management Documentation" href="index.html" />
+    <link rel="next" title="Passing SSL parameters to the mongodb monitoring service" href="manage/client.mongodb.ssl.html" />
+    <link rel="prev" title="Percona Server specific settings" href="conf-mysql.ps.html" /> 
+  </head>
+  <body>
+    <div class="container">  
+
+    <div class="document row">
+      <div class="documentwrapper col-md-9 col-md-push-3">
+    <div class="related row">
+      
+      <ul class="nav nav-pills">
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="manage/client.mongodb.ssl.html" title="Passing SSL parameters to the mongodb monitoring service"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="conf-mysql.ps.html" title="Percona Server specific settings"
+             accesskey="P">previous</a></li>
+        <li><a href="index.html">Percona Monitoring and Management Documentation</a></li> 
+      </ul>
+    </div>
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="id1">
+<h1><a class="reference external" href="pmm.conf-mysql.executing.custom.queries">Executing Custom Queries</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>Starting from the version 1.15.0, PMM provides user the ability to take a SQL
+<code class="docutils literal"><span class="pre">SELECT</span></code> statement and turn the result set into metric series in PMM. The
+queries are executed at the LOW RESOLUTION level, which by default is every 60
+seconds. A key advantage is that you can extend PMM to profile metrics unique
+to your environment (see users table example below), or to introduce support
+for a table that isn&#8217;t part of PMM yet. This feature is on by default and only
+requires that you edit the configuration file and use vaild YAML syntax. The
+default configuration file location is
+<code class="docutils literal"><span class="pre">/usr/local/percona/pmm-client/queries-mysqld.yml</span></code>.</p>
+<p class="rubric">Example - Application users table</p>
+<p>We&#8217;re going to take a users table of upvotes and downvotes and turn this into
+two metric series, with a set of labels. Labels can also store a value. You can
+filter against labels.</p>
+<p class="rubric">Browsing metrics series using Advanced Data Exploration Dashboard</p>
+<p>Lets look at the output so we understand the goal - take data from a MySQL
+table and store in PMM, then display as a metric series. Using the Advanced
+Data Exploration Dashboard you can review your metric series.</p>
+<p class="rubric">MySQL table</p>
+<p>Lets assume you have the following users table that includes true/false, string,
+and integer types.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>SELECT * FROM <span class="sb">`</span>users<span class="sb">`</span>
++----+------+--------------+-----------+------------+-----------+---------------------+--------+---------+-----------+
+<span class="p">|</span> id <span class="p">|</span> app  <span class="p">|</span> user_type    <span class="p">|</span> last_name <span class="p">|</span> first_name <span class="p">|</span> logged_in <span class="p">|</span> active_subscription <span class="p">|</span> banned <span class="p">|</span> upvotes <span class="p">|</span> downvotes <span class="p">|</span>
++----+------+--------------+-----------+------------+-----------+---------------------+--------+---------+-----------+
+<span class="p">|</span>  <span class="m">1</span> <span class="p">|</span> app2 <span class="p">|</span> unprivileged <span class="p">|</span> Marley    <span class="p">|</span> Bob        <span class="p">|</span>         <span class="m">1</span> <span class="p">|</span>                   <span class="m">1</span> <span class="p">|</span>      <span class="m">0</span> <span class="p">|</span>     <span class="m">100</span> <span class="p">|</span>        <span class="m">25</span> <span class="p">|</span>
+<span class="p">|</span>  <span class="m">2</span> <span class="p">|</span> app3 <span class="p">|</span> moderator    <span class="p">|</span> Young     <span class="p">|</span> Neil       <span class="p">|</span>         <span class="m">1</span> <span class="p">|</span>                   <span class="m">1</span> <span class="p">|</span>      <span class="m">1</span> <span class="p">|</span>     <span class="m">150</span> <span class="p">|</span>        <span class="m">10</span> <span class="p">|</span>
+<span class="p">|</span>  <span class="m">3</span> <span class="p">|</span> app4 <span class="p">|</span> unprivileged <span class="p">|</span> OConnor   <span class="p">|</span> Sinead     <span class="p">|</span>         <span class="m">1</span> <span class="p">|</span>                   <span class="m">1</span> <span class="p">|</span>      <span class="m">0</span> <span class="p">|</span>      <span class="m">25</span> <span class="p">|</span>        <span class="m">50</span> <span class="p">|</span>
+<span class="p">|</span>  <span class="m">4</span> <span class="p">|</span> app1 <span class="p">|</span> unprivileged <span class="p">|</span> Yorke     <span class="p">|</span> Thom       <span class="p">|</span>         <span class="m">0</span> <span class="p">|</span>                   <span class="m">1</span> <span class="p">|</span>      <span class="m">0</span> <span class="p">|</span>     <span class="m">100</span> <span class="p">|</span>       <span class="m">100</span> <span class="p">|</span>
+<span class="p">|</span>  <span class="m">5</span> <span class="p">|</span> app5 <span class="p">|</span> admin        <span class="p">|</span> Buckley   <span class="p">|</span> Jeff       <span class="p">|</span>         <span class="m">1</span> <span class="p">|</span>                   <span class="m">1</span> <span class="p">|</span>      <span class="m">0</span> <span class="p">|</span>     <span class="m">175</span> <span class="p">|</span>         <span class="m">0</span> <span class="p">|</span>
++----+------+--------------+-----------+------------+-----------+---------------------+--------+---------+-----------+
+</pre></div>
+</div>
+<p class="rubric">Explaining the YAML syntax</p>
+<p>We&#8217;ll go through a simple example and mention what&#8217;s required for each line. The
+metric series is constructed based on the first line and appends the column name
+to form metric series. Therefore the number of metric series per table will be
+the count of columns that are of type <code class="docutils literal"><span class="pre">GAUGE</span></code> or <code class="docutils literal"><span class="pre">COUNTER</span></code>. This metric
+series will be called <code class="docutils literal"><span class="pre">app1_users_metrics_downvotes</span></code>:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>app1_users_metrics:                                 <span class="c1">## leading section of your metric series.</span>
+  query: <span class="s2">&quot;SELECT * FROM app1.users&quot;</span>                 <span class="c1">## Your query. Don&#39;t forget the schema name.</span>
+  metrics:                                          <span class="c1">## Required line to start the list of metric items</span>
+    - downvotes:                                    <span class="c1">## Name of the column returned by the query. Will be appended to the metric series.</span>
+        usage: <span class="s2">&quot;COUNTER&quot;</span>                            <span class="c1">## Column value type.  COUNTER will make this a metric series.</span>
+        description: <span class="s2">&quot;Number of upvotes&quot;</span>            <span class="c1">## Helpful description of the column.</span>
+</pre></div>
+</div>
+<p class="rubric">Full queries-mysqld.yml example</p>
+<p>Each column in the <code class="docutils literal"><span class="pre">SELECT</span></code> is named in this example, but that isn&#8217;t required,
+you can use a <code class="docutils literal"><span class="pre">SELECT</span> <span class="pre">*</span></code> as well. Notice the format of schema.table for the
+query is included.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>---
+app1_users_metrics:
+  query: <span class="s2">&quot;SELECT app,first_name,last_name,logged_in,active_subscription,banned,upvotes,downvotes FROM app1.users&quot;</span>
+  metrics:
+    - app:
+        usage: <span class="s2">&quot;LABEL&quot;</span>
+        description: <span class="s2">&quot;Name of the Application&quot;</span>
+    - user_type:
+        usage: <span class="s2">&quot;LABEL&quot;</span>
+        description: <span class="s2">&quot;User&#39;s privilege level within the Application&quot;</span>
+    - first_name:
+        usage: <span class="s2">&quot;LABEL&quot;</span>
+        description: <span class="s2">&quot;User&#39;s First Name&quot;</span>
+    - last_name:
+        usage: <span class="s2">&quot;LABEL&quot;</span>
+        description: <span class="s2">&quot;User&#39;s Last Name&quot;</span>
+    - logged_in:
+        usage: <span class="s2">&quot;LABEL&quot;</span>
+        description: <span class="s2">&quot;User&#39;s logged in or out status&quot;</span>
+    - active_subscription:
+        usage: <span class="s2">&quot;LABEL&quot;</span>
+        description: <span class="s2">&quot;Whether User has an active subscription or not&quot;</span>
+    - banned:
+        usage: <span class="s2">&quot;LABEL&quot;</span>
+        description: <span class="s2">&quot;Whether user is banned or not&quot;</span>
+    - upvotes:
+        usage: <span class="s2">&quot;COUNTER&quot;</span>
+        description: <span class="s2">&quot;Count of upvotes the User has earned. Upvotes once granted cannot be revoked, so the number can only increase.&quot;</span>
+    - downvotes:
+        usage: <span class="s2">&quot;GAUGE&quot;</span>
+        description: <span class="s2">&quot;Count of downvotes the User has earned. Downvotes can be revoked so the number can increase as well as decrease.&quot;</span>
+...
+</pre></div>
+</div>
+<p>This custom query description should be placed in a YAML file
+(<code class="docutils literal"><span class="pre">queries-mysqld.yml</span></code> by default) on the corresponding server with MySQL.</p>
+<p>In order to modify the location of the queries file, for example if you have multiple mysqld instances per server, you need to explicitly identify to the PMM Server MySQL with the <code class="docutils literal"><span class="pre">pmm-admin</span> <span class="pre">add</span></code> command after the double dash:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pmm</span><span class="o">-</span><span class="n">admin</span> <span class="n">add</span> <span class="n">mysql</span><span class="p">:</span><span class="n">metrics</span> <span class="o">...</span> <span class="o">--</span> <span class="o">--</span><span class="n">queries</span><span class="o">-</span><span class="n">file</span><span class="o">-</span><span class="n">name</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">percona</span><span class="o">/</span><span class="n">pmm</span><span class="o">-</span><span class="n">client</span><span class="o">/</span><span class="n">query</span><span class="o">.</span><span class="n">yml</span>
+</pre></div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+    <div class="related row">
+      
+      <ul class="nav nav-pills">
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="manage/client.mongodb.ssl.html" title="Passing SSL parameters to the mongodb monitoring service"
+             >next</a></li>
+        <li class="right" >
+          <a href="conf-mysql.ps.html" title="Percona Server specific settings"
+             >previous</a></li>
+        <li><a href="index.html">Percona Monitoring and Management Documentation</a></li> 
+      </ul>
+    </div>
+      </div>
+      <div class="sphinxsidebar  col-md-3 col-md-pull-9">
+        <div class="sphinxsidebarwrapper">
+  
+          {@ product_logo @}          
+
+          {@ product_pdf_download @}
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="conf-mysql.ps.html"
+                        title="previous chapter">Percona Server specific settings</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="manage/client.mongodb.ssl.html"
+                        title="next chapter">Passing SSL parameters to the mongodb monitoring service</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">jQuery(document).ready(function(){ jQuery('#searchbox').show(0); });</script>
+          {@ product_series @}
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <!-- div class="footer">
+        &copy; Copyright Percona LLC and/or its affiliates 2009-2019.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.4.
+    </div -->
+  </div>
+  </body>

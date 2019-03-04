@@ -1,0 +1,250 @@
+
+
+
+    <title>PMM Server as a Virtual Appliance &mdash; Percona Monitoring and Management Documentation</title>
+    
+  <head>
+    
+    
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Percona Monitoring and Management Documentation" href="../index.html" />
+    <link rel="next" title="VirtualBox Using the Command Line" href="ova.virtualbox.cli.html" />
+    <link rel="prev" title="Running PMM Server Using AWS Marketplace" href="ami.html" /> 
+  </head>
+  <body>
+    <div class="container">  
+
+    <div class="document row">
+      <div class="documentwrapper col-md-9 col-md-push-3">
+    <div class="related row">
+      
+      <ul class="nav nav-pills">
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="ova.virtualbox.cli.html" title="VirtualBox Using the Command Line"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="ami.html" title="Running PMM Server Using AWS Marketplace"
+             accesskey="P">previous</a></li>
+        <li><a href="../index.html">Percona Monitoring and Management Documentation</a></li> 
+      </ul>
+    </div>
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="pmm-server-as-a-virtual-appliance">
+<span id="pmm-deploying-server-virtual-appliance"></span><h1>PMM Server as a Virtual Appliance<a class="headerlink" href="#pmm-server-as-a-virtual-appliance" title="Permalink to this headline">¶</a></h1>
+<p>Percona provides a <em>virtual appliance</em> for running PMM Server in a virtual
+machine.  It is distributed as an <em>Open Virtual Appliance</em> (OVA) package, which
+is a <strong class="command">tar</strong> archive with necessary files that follow the <em>Open
+Virtualization Format</em> (OVF).  OVF is supported by most popular virtualization
+platforms, including:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://www.vmware.com/products/esxi-and-esx.html">VMware - ESXi 6.5</a></li>
+<li><a class="reference external" href="https://www.redhat.com/en/technologies/virtualization">Red Hat Virtualization</a></li>
+<li><a class="reference external" href="https://www.virtualbox.org/">VirtualBox</a></li>
+<li><a class="reference external" href="https://www.xenserver.org/">XenServer</a></li>
+<li><a class="reference external" href="https://www.microsoft.com/en-us/cloud-platform/system-center">Microsoft System Center Virtual Machine Manager</a></li>
+</ul>
+<p>In this chapter</p>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><a class="reference internal" href="#supported-platforms-for-running-the-pmm-server-virtual-appliance" id="id6"><a class="reference internal" href="#pmm-deploying-server-virtual-appliance-supported-platform-virtual-appliance"><span class="std std-ref">Supported Platforms for Running the PMM Server Virtual Appliance</span></a></a></li>
+<li><a class="reference internal" href="#pmm-deploying-server-virtual-appliance-pmm-server-ip-address-identifying" id="id7"><a class="reference internal" href="#pmm-deploying-server-virtual-appliance-pmm-server-ip-address-identifying"><span class="std std-ref">Identifying PMM Server IP Address</span></a></a></li>
+<li><a class="reference internal" href="#accessing-pmm-server" id="id8"><a class="reference internal" href="#deploying-pmm-server-web-interface-opening"><span class="std std-ref">Accessing PMM Server</span></a></a></li>
+<li><a class="reference internal" href="#accessing-the-virtual-machine" id="id9"><a class="reference internal" href="#pmm-deploying-server-virtual-appliance-accessing"><span class="std std-ref">Accessing the Virtual Machine</span></a></a></li>
+<li><a class="reference internal" href="#next-steps" id="id10">Next Steps</a></li>
+</ul>
+</div>
+<div class="section" id="supported-platforms-for-running-the-pmm-server-virtual-appliance">
+<span id="pmm-deploying-server-virtual-appliance-supported-platform-virtual-appliance"></span><h2><a class="toc-backref" href="#id6"><a class="reference internal" href="#pmm-deploying-server-virtual-appliance-supported-platform-virtual-appliance"><span class="std std-ref">Supported Platforms for Running the PMM Server Virtual Appliance</span></a></a><a class="headerlink" href="#supported-platforms-for-running-the-pmm-server-virtual-appliance" title="Permalink to this headline">¶</a></h2>
+<p>The virtual appliance is ideal for running PMM Server on an enterprise
+virtualization platform of your choice. This page explains how to run the
+appliance in VirtualBox and VMware Workstation Player. which is a good choice
+to experiment with PMM at a smaller scale on a local machine.  Similar
+procedure should work for other platforms (including enterprise deployments on
+VMware ESXi, for example), but additional steps may be required.</p>
+<p>The virtual machine used for the appliance runs CentOS 7.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>The appliance must run in a network with DHCP, which will automatically
+assign an IP address for it.</p>
+<p class="last">To assign a static IP manually, you need to acquire the root access as
+described in <a class="reference internal" href="../faq.html#pmm-deploying-server-virtual-appliance-root-password-setting"><span class="std std-ref">How to set the root password when PMM Server is installed as a virtual appliance</span></a>.
+Then, see the documentation for the operating system for further
+instructions: <a class="reference external" href="https://www.centos.org/docs/5/html/Deployment_Guide-en-US/s1-networkscripts-interfaces.html">Configuring network interfaces in CentOS</a></p>
+</div>
+<p class="rubric" id="pmm-deploying-server-virtual-appliance-supported-platform-virtual-appliance-setting-up">Instructions for setting up the virtual machine for different platforms</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="ova.virtualbox.cli.html">VirtualBox Using the Command Line</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ova.virtualbox.gui.html">VirtualBox Using the GUI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ova.wmware-workstation-player.html">VMware Workstation Player</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="pmm-deploying-server-virtual-appliance-pmm-server-ip-address-identifying">
+<span id="identifying-pmm-server-ip-address"></span><h2><a class="toc-backref" href="#id7"><a class="reference internal" href="#pmm-deploying-server-virtual-appliance-pmm-server-ip-address-identifying"><span class="std std-ref">Identifying PMM Server IP Address</span></a></a><a class="headerlink" href="#pmm-deploying-server-virtual-appliance-pmm-server-ip-address-identifying" title="Permalink to this headline">¶</a></h2>
+<p>When run PMM Server as virtual appliance, The IP address of your PMM Server
+appears at the top of the screen above the login prompt. Use this address to
+acces the web interface of PMM Server.</p>
+<div class="figure" id="id2">
+<span id="figure-pmm-deploying-server-virtual-appliance-pmm-server-ip-address-identifying-above-login-prompt"></span><img alt="../_images/command-line.login.11.png" src="../_images/command-line.login.11.png" />
+<p class="caption"><span class="caption-text">The IP address appears above the login prompt.</span></p>
+</div>
+<p>PMM Server uses DHCP for security reasons, and thus you need to check the PMM
+Server console in order to identify the address.  If you require configuration
+of a static IP address, see
+<a class="reference external" href="https://www.centos.org/docs/5/html/Deployment_Guide-en-US/s1-networkscripts-interfaces.html">Configuring network interfaces in CentOS</a></p>
+</div>
+<div class="section" id="accessing-pmm-server">
+<span id="deploying-pmm-server-web-interface-opening"></span><h2><a class="toc-backref" href="#id8"><a class="reference internal" href="#deploying-pmm-server-web-interface-opening"><span class="std std-ref">Accessing PMM Server</span></a></a><a class="headerlink" href="#accessing-pmm-server" title="Permalink to this headline">¶</a></h2>
+<p>To run the PMM Server, start the virtual machine and open in your browser the
+URL that appears at the top of the terminal when you are logging in to the
+virtual machine.</p>
+<div class="figure" id="id3">
+<span id="figure-9a96a76-command-line-login"></span><img alt="../_images/command-line.login.11.png" src="../_images/command-line.login.11.png" />
+<p class="caption"><span class="caption-text">The URL to open in the browser appears at the top of the terminal when
+running the virtual machine.</span></p>
+</div>
+<p>If you run PMM Server in your browser for the first time, you are requested to
+supply the user and a new password. Optionally, you may also provide your SSH
+public key.</p>
+<div class="figure" id="id4">
+<span id="figure-9a96a76-pmm-server-password-change"></span><img alt="../_images/pmm.server.password-change.png" src="../_images/pmm.server.password-change.png" />
+<p class="caption"><span class="caption-text">Set the user and password to access the PMM Server web interface.</span></p>
+</div>
+<p>Click <span class="guilabel">Submit</span> and enter your user name and password in the dialog window
+that pops up. The PMM Server is now ready and the home page opens.</p>
+<div class="figure" id="id5">
+<img alt="../_images/pmm.home-page.png" src="../_images/pmm.home-page.png" />
+<p class="caption"><span class="caption-text">PMM Server home page</span></p>
+</div>
+<p>You are creating a username and password that will be used for two purposes:</p>
+<ol class="arabic">
+<li><p class="first">authentication as a user to PMM - this will be the credentials you need in order
+to log in to PMM.</p>
+</li>
+<li><p class="first">authentication between PMM Server and PMM Clients - you will
+re-use these credentials when configuring pmm-client for the first time on a
+server, for example:</p>
+<p>Run this command as root or by using the <strong class="program">sudo</strong> command</p>
+<div class="highlight-sh"><div class="highlight"><pre><span></span>$ pmm-admin config --username<span class="o">=</span> --password<span class="o">=</span> --server<span class="o">=</span><span class="m">1</span>.2.3.4
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="accessing-the-virtual-machine">
+<span id="pmm-deploying-server-virtual-appliance-accessing"></span><h2><a class="toc-backref" href="#id9"><a class="reference internal" href="#pmm-deploying-server-virtual-appliance-accessing"><span class="std std-ref">Accessing the Virtual Machine</span></a></a><a class="headerlink" href="#accessing-the-virtual-machine" title="Permalink to this headline">¶</a></h2>
+<p>To access the VM with the <em>PMM Server</em> appliance via SSH,
+provide your public key:</p>
+<ol class="arabic">
+<li><p class="first">Open the URL for accessing PMM in a web browser.</p>
+<p>The URL is provided either in the console window or in the appliance log.</p>
+</li>
+<li><p class="first">Submit your <strong>public key</strong> in the PMM web interface.</p>
+</li>
+</ol>
+<p>After that you can use <code class="docutils literal"><span class="pre">ssh</span></code> to log in as the <code class="docutils literal"><span class="pre">admin</span></code> user.
+For example, if <em>PMM Server</em> is running at 192.168.100.1
+and your <strong>private key</strong> is <code class="file docutils literal"><span class="pre">~/.ssh/pmm-admin.key</span></code>,
+use the following command:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ssh</span> <span class="n">admin</span><span class="nd">@192</span><span class="o">.</span><span class="mf">168.100</span><span class="o">.</span><span class="mi">1</span> <span class="o">-</span><span class="n">i</span> <span class="o">~/.</span><span class="n">ssh</span><span class="o">/</span><span class="n">pmm</span><span class="o">-</span><span class="n">admin</span><span class="o">.</span><span class="n">key</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="next-steps">
+<h2><a class="toc-backref" href="#id10">Next Steps</a><a class="headerlink" href="#next-steps" title="Permalink to this headline">¶</a></h2>
+<p><span class="xref std std-ref">Verify that PMM Server is running</span>
+by connecting to the PMM web interface using the IP address
+assigned to the virtual appliance,
+then <a class="reference internal" href="clients.html#deploy-pmm-client-installing"><span class="std std-ref">install PMM Client</span></a>
+on all database hosts that you want to monitor.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+    <div class="related row">
+      
+      <ul class="nav nav-pills">
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="ova.virtualbox.cli.html" title="VirtualBox Using the Command Line"
+             >next</a></li>
+        <li class="right" >
+          <a href="ami.html" title="Running PMM Server Using AWS Marketplace"
+             >previous</a></li>
+        <li><a href="../index.html">Percona Monitoring and Management Documentation</a></li> 
+      </ul>
+    </div>
+      </div>
+      <div class="sphinxsidebar  col-md-3 col-md-pull-9">
+        <div class="sphinxsidebarwrapper">
+  
+          {@ product_logo @}          
+
+          {@ product_pdf_download @}
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">PMM Server as a Virtual Appliance</a><ul>
+<li><a class="reference internal" href="#supported-platforms-for-running-the-pmm-server-virtual-appliance"><code class="docutils literal"><span class="pre">Supported</span> <span class="pre">Platforms</span> <span class="pre">for</span> <span class="pre">Running</span> <span class="pre">the</span> <span class="pre">PMM</span> <span class="pre">Server</span> <span class="pre">Virtual</span> <span class="pre">Appliance</span></code></a></li>
+<li><a class="reference internal" href="#pmm-deploying-server-virtual-appliance-pmm-server-ip-address-identifying"><code class="docutils literal"><span class="pre">Identifying</span> <span class="pre">PMM</span> <span class="pre">Server</span> <span class="pre">IP</span> <span class="pre">Address</span></code></a></li>
+<li><a class="reference internal" href="#accessing-pmm-server"><code class="docutils literal"><span class="pre">Accessing</span> <span class="pre">PMM</span> <span class="pre">Server</span></code></a></li>
+<li><a class="reference internal" href="#accessing-the-virtual-machine"><code class="docutils literal"><span class="pre">Accessing</span> <span class="pre">the</span> <span class="pre">Virtual</span> <span class="pre">Machine</span></code></a></li>
+<li><a class="reference internal" href="#next-steps">Next Steps</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="ami.html"
+                        title="previous chapter">Running PMM Server Using AWS Marketplace</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="ova.virtualbox.cli.html"
+                        title="next chapter">VirtualBox Using the Command Line</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">jQuery(document).ready(function(){ jQuery('#searchbox').show(0); });</script>
+          {@ product_series @}
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <!-- div class="footer">
+        &copy; Copyright Percona LLC and/or its affiliates 2009-2019.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.4.
+    </div -->
+  </div>
+  </body>

@@ -1,0 +1,152 @@
+
+
+
+    <title>MongoDB RocksDB Daskboard &mdash; Percona Monitoring and Management Documentation</title>
+    
+  <head>
+    
+    
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Percona Monitoring and Management Documentation" href="../index.html" />
+    <link rel="up" title="Metrics Monitor Dashboards" href="../index.metrics-monitor.dashboard.html" />
+    <link rel="next" title="MongoDB WiredTiger Dashboard" href="dashboard.mongodb-wiredtiger.html" />
+    <link rel="prev" title="MongoDB ReplSet" href="dashboard.mongodb-replset.html" /> 
+  </head>
+  <body>
+    <div class="container">  
+
+    <div class="document row">
+      <div class="documentwrapper col-md-9 col-md-push-3">
+    <div class="related row">
+      
+      <ul class="nav nav-pills">
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="dashboard.mongodb-wiredtiger.html" title="MongoDB WiredTiger Dashboard"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="dashboard.mongodb-replset.html" title="MongoDB ReplSet"
+             accesskey="P">previous</a></li>
+        <li><a href="../index.html">Percona Monitoring and Management Documentation</a></li>
+          <li><a href="../index.metrics-monitor.dashboard.html" accesskey="U">Metrics Monitor Dashboards</a></li> 
+      </ul>
+    </div>
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="mongodb-rocksdb-daskboard">
+<span id="dashboard-mongodb-rocksdb"></span><h1>MongoDB RocksDB Daskboard<a class="headerlink" href="#mongodb-rocksdb-daskboard" title="Permalink to this headline">¶</a></h1>
+<p>The MongoDB RocksDB daskboard contains metrics that describe the performance
+of the RocksDB storage engine for the selected MongoDB host instance. This
+dashboard contains the following metrics:</p>
+<table class="hlist"><tr><td><ul class="simple">
+<li>RocksDB Memtable used</li>
+<li>RocksDB block cache used</li>
+<li>Memory cached</li>
+<li>Document activity</li>
+<li>RocksDB cache usage</li>
+<li>RocksDB Memtable entries</li>
+<li>RocksDB block cache hit ratio</li>
+<li>RocksDB write acitivity</li>
+<li>RocksDB read activity</li>
+<li>RocksDB Level0 read latency</li>
+<li>RocksDB LevelN read average latency</li>
+<li>RocksDB LevelN 99th percentile read latency</li>
+<li>RocksDB LevelN maximum read latency</li>
+<li>RocksDB compaction time</li>
+<li>RocksDB compaction write amplification</li>
+<li>RocksDB compaction read rate</li>
+</ul>
+</td><td><ul class="simple">
+<li>RocksDB compaction write rate</li>
+<li>RocksDB compaction key rate</li>
+<li>RocksDB compaction threads</li>
+<li>RocksDB compaction level files</li>
+<li>RocksDB compaction level size</li>
+<li>RocksDB write ahead log rate</li>
+<li>RocksDB write ahead log sync size</li>
+<li>RocksDB flush rate</li>
+<li>RocksDB pending operations</li>
+<li>RocksDB stall time</li>
+<li>RocksDB stalls</li>
+<li>Client operations</li>
+<li>Queued operations</li>
+<li>Scanned and moved objects</li>
+<li>Page faults</li>
+</ul>
+</td></tr></table>
+</div>
+
+
+          </div>
+        </div>
+    <div class="related row">
+      
+      <ul class="nav nav-pills">
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="dashboard.mongodb-wiredtiger.html" title="MongoDB WiredTiger Dashboard"
+             >next</a></li>
+        <li class="right" >
+          <a href="dashboard.mongodb-replset.html" title="MongoDB ReplSet"
+             >previous</a></li>
+        <li><a href="../index.html">Percona Monitoring and Management Documentation</a></li>
+          <li><a href="../index.metrics-monitor.dashboard.html" >Metrics Monitor Dashboards</a></li> 
+      </ul>
+    </div>
+      </div>
+      <div class="sphinxsidebar  col-md-3 col-md-pull-9">
+        <div class="sphinxsidebarwrapper">
+  
+          {@ product_logo @}          
+
+          {@ product_pdf_download @}
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="dashboard.mongodb-replset.html"
+                        title="previous chapter">MongoDB ReplSet</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="dashboard.mongodb-wiredtiger.html"
+                        title="next chapter">MongoDB WiredTiger Dashboard</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">jQuery(document).ready(function(){ jQuery('#searchbox').show(0); });</script>
+          {@ product_series @}
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <!-- div class="footer">
+        &copy; Copyright Percona LLC and/or its affiliates 2009-2019.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.4.
+    </div -->
+  </div>
+  </body>

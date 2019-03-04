@@ -1,0 +1,127 @@
+
+
+
+    <title>Adding an Amazon RDS DB instance to PMM &mdash; Percona Monitoring and Management Documentation</title>
+    
+  <head>
+    
+    
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Percona Monitoring and Management Documentation" href="../index.html" /> 
+  </head>
+  <body>
+    <div class="container">  
+
+    <div class="document row">
+      <div class="documentwrapper col-md-9 col-md-push-3">
+    <div class="related row">
+      
+      <ul class="nav nav-pills">
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li><a href="../index.html">Percona Monitoring and Management Documentation</a></li> 
+      </ul>
+    </div>
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="adding-an-amazon-rds-db-instance-to-pmm">
+<span id="pmm-amazon-rds"></span><h1>Adding an Amazon RDS DB instance to PMM<a class="headerlink" href="#adding-an-amazon-rds-db-instance-to-pmm" title="Permalink to this headline">¶</a></h1>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 1.5.0.</span></p>
+</div>
+<p>The <em>PMM Add Instance</em> is now a preferred method of adding an Amazon RDS DB
+instance to PMM. This method supports Amazon RDS DB instances that use
+Amazon Aurora, MySQL, or MariaDB engines.</p>
+<div class="figure" id="id1">
+<span id="figure-pmm-amazon-rds-pmm-server-add-instance-access-key-id"></span><img alt="../_images/metrics-monitor.add-instance.png" src="../_images/metrics-monitor.add-instance.png" />
+<p class="caption"><span class="caption-text">Enter the access key ID and the secret access key of your IAM user to view
+Amazon RDS DB instances.</span></p>
+</div>
+<ol class="arabic simple">
+<li>Open the PMM web interface and select the <em>PMM Add Instance</em> dashboard.</li>
+<li>Select the <span class="guilabel">Add an AWS RDS MySQL or Aurora MySQL Instance</span> option in the dashboard.</li>
+<li>Enter the access key ID and the secret access key of your IAM user.</li>
+<li>Click the <span class="guilabel">Discover</span> button for PMM to retrieve the available Amazon RDS
+instances.</li>
+</ol>
+<div class="figure" id="id2">
+<span id="figure-pmm-amazon-rds-pmm-server-add-instance-displaying"></span><img alt="../_images/metrics-monitor.add-instance.1.png" src="../_images/metrics-monitor.add-instance.1.png" />
+<p class="caption"><span class="caption-text">PMM displays the available Amazon RDS instances</span></p>
+</div>
+<p>For each instance that you would like to monitor, select the <span class="guilabel">Enabled</span> button
+and enter the user name and password. Click <span class="guilabel">Connect</span>. You can now monitor your
+instances in the <em>Amazon RDS / Aurora MySQL Metrics</em>.</p>
+<div class="figure" id="id3">
+<span id="figure-pmm-amazon-rds-pmm-server-add-instance-rds-instances-db-user-credentials"></span><img alt="../_images/metrics-monitor.add-instance.rds-instances.1.png" src="../_images/metrics-monitor.add-instance.rds-instances.1.png" />
+<p class="caption"><span class="caption-text">Enter the DB user name and password to connect to the selected RDS or
+Amazon Aurora instance.</span></p>
+</div>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<dl class="last docutils">
+<dt>AWS Documentation: Managing access keys of IAM users</dt>
+<dd><a class="reference external" href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html">https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html</a></dd>
+</dl>
+</div>
+</div>
+
+
+          </div>
+        </div>
+    <div class="related row">
+      
+      <ul class="nav nav-pills">
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li><a href="../index.html">Percona Monitoring and Management Documentation</a></li> 
+      </ul>
+    </div>
+      </div>
+      <div class="sphinxsidebar  col-md-3 col-md-pull-9">
+        <div class="sphinxsidebarwrapper">
+  
+          {@ product_logo @}          
+
+          {@ product_pdf_download @}
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">jQuery(document).ready(function(){ jQuery('#searchbox').show(0); });</script>
+          {@ product_series @}
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <!-- div class="footer">
+        &copy; Copyright Percona LLC and/or its affiliates 2009-2019.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.4.
+    </div -->
+  </div>
+  </body>

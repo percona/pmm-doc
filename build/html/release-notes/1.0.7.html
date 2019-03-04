@@ -1,0 +1,238 @@
+
+
+
+    <title>Percona Monitoring and Management 1.0.7 &mdash; Percona Monitoring and Management Documentation</title>
+    
+  <head>
+    
+    
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Percona Monitoring and Management Documentation" href="../index.html" />
+    <link rel="up" title="Percona Monitoring and Management Release Notes" href="index.html" />
+    <link rel="next" title="Percona Monitoring and Management 1.0.6" href="1.0.6.html" />
+    <link rel="prev" title="Percona Monitoring and Management 1.1.0 Beta" href="1.1.0beta.html" /> 
+  </head>
+  <body>
+    <div class="container">  
+
+    <div class="document row">
+      <div class="documentwrapper col-md-9 col-md-push-3">
+    <div class="related row">
+      
+      <ul class="nav nav-pills">
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="1.0.6.html" title="Percona Monitoring and Management 1.0.6"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="1.1.0beta.html" title="Percona Monitoring and Management 1.1.0 Beta"
+             accesskey="P">previous</a></li>
+        <li><a href="../index.html">Percona Monitoring and Management Documentation</a></li>
+          <li><a href="index.html" accesskey="U">Percona Monitoring and Management Release Notes</a></li> 
+      </ul>
+    </div>
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="percona-monitoring-and-management-1-0-7">
+<span id="id1"></span><h1>Percona Monitoring and Management 1.0.7<a class="headerlink" href="#percona-monitoring-and-management-1-0-7" title="Permalink to this headline">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Date:</th><td class="field-body">December 12, 2016</td>
+</tr>
+<tr class="field-even field"><th class="field-name">PMM Server:</th><td class="field-body"><a class="reference external" href="https://hub.docker.com/r/percona/pmm-server/">https://hub.docker.com/r/percona/pmm-server/</a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">PMM Client:</th><td class="field-body"><a class="reference external" href="https://www.percona.com/downloads/pmm-client/">https://www.percona.com/downloads/pmm-client/</a></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="upgrading">
+<h2>Upgrading<a class="headerlink" href="#upgrading" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">Stop and remove the <code class="docutils literal"><span class="pre">pmm-server</span></code> container:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">stop</span> <span class="n">pmm</span><span class="o">-</span><span class="n">server</span> <span class="o">&amp;&amp;</span> <span class="n">docker</span> <span class="n">rm</span> <span class="n">pmm</span><span class="o">-</span><span class="n">server</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Create the <code class="docutils literal"><span class="pre">pmm-server</span></code> container with the new version tag:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">run</span> <span class="o">-</span><span class="n">d</span> \
+  <span class="o">-</span><span class="n">p</span> <span class="mi">80</span><span class="p">:</span><span class="mi">80</span> \
+  <span class="o">--</span><span class="n">volumes</span><span class="o">-</span><span class="kn">from</span> <span class="nn">pmm</span><span class="o">-</span><span class="n">data</span> \
+  <span class="o">--</span><span class="n">name</span> <span class="n">pmm</span><span class="o">-</span><span class="n">server</span> \
+  <span class="o">--</span><span class="n">restart</span> <span class="n">always</span> \
+  <span class="n">percona</span><span class="o">/</span><span class="n">pmm</span><span class="o">-</span><span class="n">server</span><span class="p">:</span><span class="mf">1.0</span><span class="o">.</span><span class="mi">7</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first"><a class="reference internal" href="../install/clients.html#deploy-pmm-client-installing"><span class="std std-ref">Install new PMM Client version</span></a>
+on all hosts that you are monitoring.
+If you previously installed using Percona repositories,
+you can upgade the package as follows:</p>
+<ul>
+<li><p class="first">For Debian-based distributions:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="o">--</span><span class="n">only</span><span class="o">-</span><span class="n">upgrade</span> <span class="n">pmm</span><span class="o">-</span><span class="n">client</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">For Red Hat Enterprise Linux derivatives:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">yum</span> <span class="n">update</span> <span class="n">pmm</span><span class="o">-</span><span class="n">client</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+<li><p class="first">(Optional) <a class="reference internal" href="../manage/client.remove.html#pmm-admin-rm"><span class="std std-ref">Remove</span></a> and <a class="reference internal" href="../manage/client.add.html#pmm-admin-add"><span class="std std-ref">add</span></a>
+the services running on PMM clients.</p>
+<p>There are changes related to authentication and general security
+that will only be available after you re-add the services.
+For more information, see the changes mentioned below.</p>
+</li>
+</ol>
+</div>
+<div class="section" id="changes">
+<h2>Changes<a class="headerlink" href="#changes" title="Permalink to this headline">¶</a></h2>
+<p><strong>New in PMM Server:</strong></p>
+<ul class="simple">
+<li>Grafana 4.0.2</li>
+<li>Prometheus 1.4.1</li>
+<li>Consul 0.7.1</li>
+<li>Orchestrator 2.0.1</li>
+<li>Enabled HTTPS/TLS and basic authentication support on Prometheus targets</li>
+<li>Fixed potential error with too many connections on Query Analytics API</li>
+<li>Added new widgets and graphs to <em>PXC/Galera Graphs</em> dashboard</li>
+<li>Fixed hostgroup filtering for <em>ProxySQL Overview</em> dashboard</li>
+<li>Various fixes to MongoDB dashboards</li>
+</ul>
+<p><strong>New in PMM Client:</strong></p>
+<ul>
+<li><p class="first">Added the <code class="docutils literal"><span class="pre">--bind-address</span></code> option
+to support running <em>PMM Server</em> and <em>PMM Client</em> on the different networks.</p>
+<p>By default, this is the address of <em>PMM Client</em>.
+When running PMM on different networks,
+set <code class="docutils literal"><span class="pre">--client-address</span></code> to remote (public) address
+and <code class="docutils literal"><span class="pre">--bind-address</span></code> to local (private) address.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This assumes you configure NAT and port forwarding
+between those addresses.</p>
+</div>
+</li>
+<li><p class="first">Added the <code class="docutils literal"><span class="pre">show-passwords</span></code> command
+to display the current HTTP authentication credentials
+and password of the last created user on MySQL
+(this is useful for replication setups).</p>
+</li>
+<li><p class="first">Fixed slow log rotation for <code class="docutils literal"><span class="pre">mysql:queries</span></code> service with MySQL 5.1.</p>
+</li>
+<li><p class="first">Exposed PXC/Galera gcache size as a metric.</p>
+</li>
+<li><p class="first">Amended output of <code class="docutils literal"><span class="pre">systemv</span></code> service status
+if run ad-hoc (requires re-adding the services).</p>
+</li>
+<li><p class="first">Added automatic generation of self-signed SSL certificate
+to protect metric services with HTTPS/TLS by default
+(requires re-adding services, see <code class="docutils literal"><span class="pre">check-network</span></code> output).</p>
+</li>
+<li><p class="first">Enabled basic HTTP authentication for metric services
+when defined on <em>PMM Server</em> and configured on <em>PMM Client</em>
+to achieve client-side protection
+(requires re-adding services, see <code class="docutils literal"><span class="pre">check-network</span></code> output).</p>
+</li>
+<li><p class="first">Removed MongoDB connection string from being passed in command-line arguments
+and hidden password from the process list
+(requires re-adding the <code class="docutils literal"><span class="pre">mongodb:metrics</span></code> service).</p>
+</li>
+<li><p class="first">Removed network port listening by <code class="docutils literal"><span class="pre">mysql:queries</span></code> service
+(<code class="docutils literal"><span class="pre">percona-qan-agent</span></code> process) as there is no need for it.</p>
+</li>
+<li><p class="first">Replaced emojis with terminal colors for output of the <code class="docutils literal"><span class="pre">check-network</span></code>
+and <code class="docutils literal"><span class="pre">list</span></code> commands.</p>
+</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+    <div class="related row">
+      
+      <ul class="nav nav-pills">
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="1.0.6.html" title="Percona Monitoring and Management 1.0.6"
+             >next</a></li>
+        <li class="right" >
+          <a href="1.1.0beta.html" title="Percona Monitoring and Management 1.1.0 Beta"
+             >previous</a></li>
+        <li><a href="../index.html">Percona Monitoring and Management Documentation</a></li>
+          <li><a href="index.html" >Percona Monitoring and Management Release Notes</a></li> 
+      </ul>
+    </div>
+      </div>
+      <div class="sphinxsidebar  col-md-3 col-md-pull-9">
+        <div class="sphinxsidebarwrapper">
+  
+          {@ product_logo @}          
+
+          {@ product_pdf_download @}
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Percona Monitoring and Management 1.0.7</a><ul>
+<li><a class="reference internal" href="#upgrading">Upgrading</a></li>
+<li><a class="reference internal" href="#changes">Changes</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="1.1.0beta.html"
+                        title="previous chapter">Percona Monitoring and Management 1.1.0 Beta</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="1.0.6.html"
+                        title="next chapter">Percona Monitoring and Management 1.0.6</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">jQuery(document).ready(function(){ jQuery('#searchbox').show(0); });</script>
+          {@ product_series @}
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <!-- div class="footer">
+        &copy; Copyright Percona LLC and/or its affiliates 2009-2019.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.4.
+    </div -->
+  </div>
+  </body>

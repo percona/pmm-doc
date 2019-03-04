@@ -1,0 +1,149 @@
+
+
+
+    <title>VirtualBox Using the GUI &mdash; Percona Monitoring and Management Documentation</title>
+    
+  <head>
+    
+    
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Percona Monitoring and Management Documentation" href="../index.html" />
+    <link rel="up" title="PMM Server as a Virtual Appliance" href="virtual-appliance.html" />
+    <link rel="next" title="VMware Workstation Player" href="ova.wmware-workstation-player.html" />
+    <link rel="prev" title="VirtualBox Using the Command Line" href="ova.virtualbox.cli.html" /> 
+  </head>
+  <body>
+    <div class="container">  
+
+    <div class="document row">
+      <div class="documentwrapper col-md-9 col-md-push-3">
+    <div class="related row">
+      
+      <ul class="nav nav-pills">
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="ova.wmware-workstation-player.html" title="VMware Workstation Player"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="ova.virtualbox.cli.html" title="VirtualBox Using the Command Line"
+             accesskey="P">previous</a></li>
+        <li><a href="../index.html">Percona Monitoring and Management Documentation</a></li>
+          <li><a href="virtual-appliance.html" accesskey="U">PMM Server as a Virtual Appliance</a></li> 
+      </ul>
+    </div>
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="virtualbox-using-the-gui">
+<span id="pmm-deploying-server-ova-virtualbox-gui"></span><h1>VirtualBox Using the GUI<a class="headerlink" href="#virtualbox-using-the-gui" title="Permalink to this headline">¶</a></h1>
+<p>The following procedure describes how to run the PMM Server appliance
+using the graphical user interface of VirtualBox:</p>
+<ol class="arabic">
+<li><p class="first">Download the OVA. The latest version is available at the <a class="reference external" href="https://www.percona.com/downloads/pmm">Download Percona Monitoring and Management</a> site.</p>
+</li>
+<li><p class="first">Import the appliance. For this, open the <span class="guilabel">File</span> menu and click
+<span class="guilabel">Import Appliance</span> and specify the path to the OVA and click
+<span class="guilabel">Continue</span>. Then, select
+<span class="guilabel">Reinitialize the MAC address of all network cards</span> and click <span class="guilabel">Import</span>.</p>
+</li>
+<li><p class="first">Configure network settings to make the appliance accessible
+from other hosts in your network.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">All database hosts must be in the same network as <em>PMM Server</em>,
+so do not set the network adapter to NAT.</p>
+</div>
+<p>If you are running the appliance on a host with properly configured network
+settings, select <span class="guilabel">Bridged Adapter</span> in the <span class="guilabel">Network</span> section of the
+appliance settings.</p>
+</li>
+<li><p class="first">Start the PMM Server appliance and set the root password (required on the
+first login).</p>
+<p>If it was assigned an IP address on the network by DHCP, the URL for
+accessing PMM will be printed in the console window.</p>
+</li>
+</ol>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<dl class="last docutils">
+<dt>Using PMM Server as a virtual appliance</dt>
+<dd><a class="reference internal" href="virtual-appliance.html#pmm-deploying-server-virtual-appliance"><span class="std std-ref">PMM Server as a Virtual Appliance</span></a></dd>
+<dt>Setting the root password</dt>
+<dd><a class="reference internal" href="../faq.html#pmm-deploying-server-virtual-appliance-root-password-setting"><span class="std std-ref">How to set the root password when PMM Server is installed as a virtual appliance</span></a></dd>
+</dl>
+</div>
+</div>
+
+
+          </div>
+        </div>
+    <div class="related row">
+      
+      <ul class="nav nav-pills">
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="ova.wmware-workstation-player.html" title="VMware Workstation Player"
+             >next</a></li>
+        <li class="right" >
+          <a href="ova.virtualbox.cli.html" title="VirtualBox Using the Command Line"
+             >previous</a></li>
+        <li><a href="../index.html">Percona Monitoring and Management Documentation</a></li>
+          <li><a href="virtual-appliance.html" >PMM Server as a Virtual Appliance</a></li> 
+      </ul>
+    </div>
+      </div>
+      <div class="sphinxsidebar  col-md-3 col-md-pull-9">
+        <div class="sphinxsidebarwrapper">
+  
+          {@ product_logo @}          
+
+          {@ product_pdf_download @}
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="ova.virtualbox.cli.html"
+                        title="previous chapter">VirtualBox Using the Command Line</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="ova.wmware-workstation-player.html"
+                        title="next chapter">VMware Workstation Player</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">jQuery(document).ready(function(){ jQuery('#searchbox').show(0); });</script>
+          {@ product_series @}
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <!-- div class="footer">
+        &copy; Copyright Percona LLC and/or its affiliates 2009-2019.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.4.
+    </div -->
+  </div>
+  </body>

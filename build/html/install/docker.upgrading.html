@@ -1,0 +1,251 @@
+
+
+
+    <title>Updating PMM Server Using Docker &mdash; Percona Monitoring and Management Documentation</title>
+    
+  <head>
+    
+    
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Percona Monitoring and Management Documentation" href="../index.html" />
+    <link rel="up" title="Running PMM Server via Docker" href="docker.html" />
+    <link rel="next" title="Backing Up PMM Data from the Docker Container" href="docker.backing-up.html" />
+    <link rel="prev" title="Setting Up a Docker Container for PMM Server" href="docker.setting-up.html" /> 
+  </head>
+  <body>
+    <div class="container">  
+
+    <div class="document row">
+      <div class="documentwrapper col-md-9 col-md-push-3">
+    <div class="related row">
+      
+      <ul class="nav nav-pills">
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="docker.backing-up.html" title="Backing Up PMM Data from the Docker Container"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="docker.setting-up.html" title="Setting Up a Docker Container for PMM Server"
+             accesskey="P">previous</a></li>
+        <li><a href="../index.html">Percona Monitoring and Management Documentation</a></li>
+          <li><a href="docker.html" accesskey="U">Running PMM Server via Docker</a></li> 
+      </ul>
+    </div>
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="updating-pmm-server-using-docker">
+<span id="update-server-docker"></span><h1>Updating PMM Server Using Docker<a class="headerlink" href="#updating-pmm-server-using-docker" title="Permalink to this headline">¶</a></h1>
+<p>To check the version of PMM Server, run <strong class="program">docker ps</strong> on the host.</p>
+<p>Run the following commands as root or by using the <strong class="program">sudo</strong> command</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ docker ps
+CONTAINER ID   IMAGE                      COMMAND                CREATED       STATUS             PORTS                               NAMES
+480696cd4187   percona/pmm-server:1.4.0   <span class="s2">&quot;/opt/entrypoint.sh&quot;</span>   <span class="m">4</span> weeks ago   Up About an hour   <span class="m">192</span>.168.100.1:80-&gt;80/tcp, <span class="m">443</span>/tcp   pmm-server
+</pre></div>
+</div>
+<p>The version number is visible in the <span class="guilabel">Image</span> column. For a Docker
+container created from the image tagged <code class="xref std std-option docutils literal"><span class="pre">latest</span></code>, the <span class="guilabel">Image</span> column
+contains <code class="xref std std-option docutils literal"><span class="pre">latest</span></code> and not the specific version number of PMM Server.</p>
+<p>The information about the currently installed version of PMM Server is
+available from the <code class="file docutils literal"><span class="pre">/srv/update/main.yml</span></code> file. You may extract the version
+number by using the <strong class="program">docker exec</strong> command:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ docker <span class="nb">exec</span> -it pmm-server head -1 /srv/update/main.yml
+<span class="c1"># v1.5.3</span>
+</pre></div>
+</div>
+<p>To check if there exists a newer version of PMM Server,
+visit <a class="reference external" href="https://hub.docker.com/r/percona/pmm-server/tags/">percona/pmm-server</a>.</p>
+<div class="section" id="creating-a-backup-version-of-the-current-pmm-server-docker-container">
+<span id="pmm-deploying-server-docker-container-renaming"></span><h2><a class="reference internal" href="#pmm-deploying-server-docker-container-renaming"><span class="std std-ref">Creating a backup version of the current pmm-server Docker container</span></a><a class="headerlink" href="#creating-a-backup-version-of-the-current-pmm-server-docker-container" title="Permalink to this headline">¶</a></h2>
+<p>You need to create a backup version of the current <code class="xref std std-option docutils literal"><span class="pre">pmm-server</span></code> container if
+the update procedure does not complete successfully or if you decide not to
+upgrade your PMM Server after trying the new version.</p>
+<p>The <strong class="program">docker stop</strong> command stops the currently running <code class="xref std std-option docutils literal"><span class="pre">pmm-server</span></code> container:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ docker stop pmm-server
+</pre></div>
+</div>
+<p>The following command simply renames the current <code class="xref std std-option docutils literal"><span class="pre">pmm-server</span></code> container to
+avoid name conflicts during the update procedure:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ docker rename pmm-server pmm-server-backup
+</pre></div>
+</div>
+</div>
+<div class="section" id="pulling-a-new-docker-image">
+<span id="pmm-deploying-docker-image-pulling"></span><h2><a class="reference internal" href="#pmm-deploying-docker-image-pulling"><span class="std std-ref">Pulling a new Docker Image</span></a><a class="headerlink" href="#pulling-a-new-docker-image" title="Permalink to this headline">¶</a></h2>
+<p>Docker images for all versions of PMM are available from
+<a class="reference external" href="https://hub.docker.com/r/percona/pmm-server/tags/">percona/pmm-server</a>
+Docker repository.</p>
+<p>When pulling a newer Docker image, you may either use a specific version
+number or the <code class="xref std std-option docutils literal"><span class="pre">latest</span></code> image which always matches the highest version
+number.</p>
+<p>This example shows how to pull a specific version:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ docker pull percona/pmm-server:1.5.0
+</pre></div>
+</div>
+<p>This example shows how to pull the <code class="xref std std-option docutils literal"><span class="pre">latest</span></code> version:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ docker pull percona/pmm-server:latest
+</pre></div>
+</div>
+</div>
+<div class="section" id="creating-a-new-docker-container-based-on-the-new-image">
+<span id="pmm-deploying-docker-container-creating"></span><h2><a class="reference internal" href="#pmm-deploying-docker-container-creating"><span class="std std-ref">Creating a new Docker container based on the new image</span></a><a class="headerlink" href="#creating-a-new-docker-container-based-on-the-new-image" title="Permalink to this headline">¶</a></h2>
+<p>After you have pulled a new version of PMM from the Docker repository, you can
+use <strong class="program">docker run</strong> to create a <code class="xref std std-option docutils literal"><span class="pre">pmm-server</span></code> container using the new image.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ docker run -d <span class="se">\</span>
+   -p <span class="m">80</span>:80 <span class="se">\</span>
+   --volumes-from pmm-data <span class="se">\</span>
+   --name pmm-server <span class="se">\</span>
+   --restart always <span class="se">\</span>
+   percona/pmm-server:latest
+</pre></div>
+</div>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">The <code class="xref std std-option docutils literal"><span class="pre">pmm-server</span></code> container must be stopped before attempting <strong class="program">docker run</strong>.</p>
+</div>
+<p>The <strong class="program">docker run</strong> command refers to the pulled image as the last parameter. If
+you used a specific version number when running <strong class="program">docker pull</strong> (see
+<a class="reference internal" href="docker.setting-up.html#pmm-server-docker-image-pulling"><span class="std std-ref">Pulling the PMM Server Docker Image</span></a>) replace <code class="xref std std-option docutils literal"><span class="pre">latest</span></code> accordingly.</p>
+<p>Note that this command also refers to <code class="xref std std-option docutils literal"><span class="pre">pmm-data</span></code> as the value of
+<code class="xref std std-option docutils literal"><span class="pre">--volumes-from</span></code> option. This way, your new version will continue to use the
+existing data.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Do not remove the <code class="xref std std-option docutils literal"><span class="pre">pmm-data</span></code> container when updating,
+if you want to keep all collected data.</p>
+</div>
+<p>Check if the new container is running using <strong class="program">docker ps</strong>.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ docker ps
+CONTAINER ID   IMAGE                      COMMAND                CREATED         STATUS         PORTS                               NAMES
+480696cd4187   percona/pmm-server:1.5.0   <span class="s2">&quot;/opt/entrypoint.sh&quot;</span>   <span class="m">4</span> minutes ago   Up <span class="m">4</span> minutes   <span class="m">192</span>.168.100.1:80-&gt;80/tcp, <span class="m">443</span>/tcp   pmm-server
+</pre></div>
+</div>
+<p>Then, make sure that the PMM version has been updated (see <a class="reference internal" href="../glossary.terminology.html#pmm-version"><span class="std std-ref">PMM
+Version</span></a>) by checking the PMM Server web interface.</p>
+</div>
+<div class="section" id="removing-the-backup-container">
+<span id="pmm-docker-backup-container-removing"></span><h2><a class="reference internal" href="#pmm-docker-backup-container-removing"><span class="std std-ref">Removing the backup container</span></a><a class="headerlink" href="#removing-the-backup-container" title="Permalink to this headline">¶</a></h2>
+<p>After you have tried the features of the new version, you may decide to
+continupe using it. The backup container that you have stored
+(<a class="reference internal" href="#pmm-deploying-server-docker-container-renaming"><span class="std std-ref">Creating a backup version of the current pmm-server Docker container</span></a>) is no longer needed in this
+case.</p>
+<p>To remove this backup container, you need the <strong class="program">docker rm</strong> command:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ docker rm pmm-server-backup
+</pre></div>
+</div>
+<p>As the parameter to <strong class="program">docker rm</strong>, supply the tag name of your backup container.</p>
+<p class="rubric" id="pmm-docker-previous-version-restoring"><strong>Restoring the previous version</strong></p>
+<p>If, for whatever reason, you decide to keep using the old version, you just need
+to stop and remove the new <code class="xref std std-option docutils literal"><span class="pre">pmm-server</span></code> container.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ docker stop pmm-server <span class="o">&amp;&amp;</span> docker rm pmm-server
+</pre></div>
+</div>
+<p>Now, rename the <code class="xref std std-option docutils literal"><span class="pre">pmm-server-backup</span></code> to <code class="xref std std-option docutils literal"><span class="pre">pmm-server</span></code>
+(see <a class="reference internal" href="#pmm-deploying-server-docker-container-renaming"><span class="std std-ref">Creating a backup version of the current pmm-server Docker container</span></a>) and start it.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ docker start pmm-server
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>Do not use the <strong class="program">docker run</strong> command to start the container. The <strong class="program">docker run</strong>
+command creates and then runs a new container.</p>
+<p class="last">To start a new container use the <strong class="program">docker start</strong> command.</p>
+</div>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<dl class="last docutils">
+<dt>Setting up a Docker container</dt>
+<dd><a class="reference internal" href="docker.setting-up.html#pmm-server-docker-setting-up"><span class="std std-ref">Setting Up a Docker Container for PMM Server</span></a></dd>
+<dt>Backing Up the PMM Server Docker container</dt>
+<dd><a class="reference internal" href="docker.backing-up.html#pmm-server-docker-backing-up"><span class="std std-ref">Backing Up PMM Data from the Docker Container</span></a></dd>
+<dt>Updating the PMM Server and the PMM Client</dt>
+<dd><span class="xref std std-ref">deploy-pmm.updating</span> section.</dd>
+</dl>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+    <div class="related row">
+      
+      <ul class="nav nav-pills">
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="docker.backing-up.html" title="Backing Up PMM Data from the Docker Container"
+             >next</a></li>
+        <li class="right" >
+          <a href="docker.setting-up.html" title="Setting Up a Docker Container for PMM Server"
+             >previous</a></li>
+        <li><a href="../index.html">Percona Monitoring and Management Documentation</a></li>
+          <li><a href="docker.html" >Running PMM Server via Docker</a></li> 
+      </ul>
+    </div>
+      </div>
+      <div class="sphinxsidebar  col-md-3 col-md-pull-9">
+        <div class="sphinxsidebarwrapper">
+  
+          {@ product_logo @}          
+
+          {@ product_pdf_download @}
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Updating PMM Server Using Docker</a><ul>
+<li><a class="reference internal" href="#creating-a-backup-version-of-the-current-pmm-server-docker-container"><code class="docutils literal"><span class="pre">Creating</span> <span class="pre">a</span> <span class="pre">backup</span> <span class="pre">version</span> <span class="pre">of</span> <span class="pre">the</span> <span class="pre">current</span> <span class="pre">pmm-server</span> <span class="pre">Docker</span> <span class="pre">container</span></code></a></li>
+<li><a class="reference internal" href="#pulling-a-new-docker-image"><code class="docutils literal"><span class="pre">Pulling</span> <span class="pre">a</span> <span class="pre">new</span> <span class="pre">Docker</span> <span class="pre">Image</span></code></a></li>
+<li><a class="reference internal" href="#creating-a-new-docker-container-based-on-the-new-image"><code class="docutils literal"><span class="pre">Creating</span> <span class="pre">a</span> <span class="pre">new</span> <span class="pre">Docker</span> <span class="pre">container</span> <span class="pre">based</span> <span class="pre">on</span> <span class="pre">the</span> <span class="pre">new</span> <span class="pre">image</span></code></a></li>
+<li><a class="reference internal" href="#removing-the-backup-container"><code class="docutils literal"><span class="pre">Removing</span> <span class="pre">the</span> <span class="pre">backup</span> <span class="pre">container</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="docker.setting-up.html"
+                        title="previous chapter">Setting Up a Docker Container for PMM Server</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="docker.backing-up.html"
+                        title="next chapter">Backing Up PMM Data from the Docker Container</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">jQuery(document).ready(function(){ jQuery('#searchbox').show(0); });</script>
+          {@ product_series @}
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <!-- div class="footer">
+        &copy; Copyright Percona LLC and/or its affiliates 2009-2019.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.4.
+    </div -->
+  </div>
+  </body>

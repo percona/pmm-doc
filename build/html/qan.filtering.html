@@ -1,0 +1,192 @@
+
+
+
+    <title>Filtering Queries &mdash; Percona Monitoring and Management Documentation</title>
+    
+  <head>
+    
+    
+    
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '2.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Percona Monitoring and Management Documentation" href="index.html" />
+    <link rel="next" title="Configuring QAN" href="qan.configuring.html" />
+    <link rel="prev" title="Zooming into a Query" href="qan.drilling.html" /> 
+  </head>
+  <body>
+    <div class="container">  
+
+    <div class="document row">
+      <div class="documentwrapper col-md-9 col-md-push-3">
+    <div class="related row">
+      
+      <ul class="nav nav-pills">
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="qan.configuring.html" title="Configuring QAN"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="qan.drilling.html" title="Zooming into a Query"
+             accesskey="P">previous</a></li>
+        <li><a href="index.html">Percona Monitoring and Management Documentation</a></li> 
+      </ul>
+    </div>
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="filtering-queries">
+<span id="pmm-qan-query-filtering"></span><h1><a class="reference internal" href="#pmm-qan-query-filtering"><span class="std std-ref">Filtering Queries</span></a><a class="headerlink" href="#filtering-queries" title="Permalink to this headline">¶</a></h1>
+<p>If you need to limit the list of available queries to only those that you are
+interested in, use the <span class="guilabel">Query Filter</span> field located above the query summary
+table.</p>
+<p>In the <span class="guilabel">Query Filter</span> field, you can enter a query ID, query abstract, or
+query fingerprint.  The ID is a unique signature of a query and looks like a
+long hexadecimal number. Note that each query in the summary table displays its
+ID in the <em>ID</em> column.</p>
+<p>The query fingerprint is a simplified form of a query: all specific values are
+replaced with placeholders. You may enter only a fragment of the fingerprint to
+view all queries that contain that fragment in their fingerprints.</p>
+<p>The query abstract is the portion of the query fingerprint which contains the
+type of the query, such as <em>SELECT</em> or <em>FIND</em>, and the attributes from the
+projection (a set of requested columns in case of MySQL database, for example).</p>
+<p>When you apply a filter, the query summary table changes to display only the
+queries which match your criterion. Note that the TOTAL row which runs above the
+list of queries in the summary table does not change its values. These are
+always calculated based on all queries run within the selected time or date
+range.</p>
+<div class="figure" id="id1">
+<img alt="_images/qan.query-summary-table.1.png" src="_images/qan.query-summary-table.1.png" />
+<p class="caption"><span class="caption-text">A list of queries</span></p>
+</div>
+<p class="rubric" id="pmm-qan-time-date-range-selecting">Selecting Time or Date Range</p>
+<p>The query metrics that appear in QAN are computed based on a time period or a
+range of dates. The default value is <em>the last hour</em>. To set another range use
+the <em>range selection tool</em> located at the top of the QAN page.</p>
+<div class="figure" id="id2">
+<img alt="_images/qan.range-selection.1.png" src="_images/qan.range-selection.1.png" />
+<p class="caption"><span class="caption-text">QAN displays query metrics for the time period or date range that you
+specify.</span></p>
+</div>
+<p>The tool consists of two parts. The <em>Quick ranges</em> offers frequently used time
+ranges.. The date picker sets a range of dates.</p>
+<div class="section" id="totals-of-the-query-summary">
+<span id="pmm-qan-query-summary-total"></span><h2><a class="reference internal" href="#pmm-qan-query-summary-total"><span class="std std-ref">Totals of the Query Summary</span></a><a class="headerlink" href="#totals-of-the-query-summary" title="Permalink to this headline">¶</a></h2>
+<p>The first line of the query summary contains the totals of the <em>load</em>, <em>count</em>,
+and <em>latency</em> for all queries that were run on the selected database server
+during the time period that you&#8217;ve specified.</p>
+<div class="figure" id="id3">
+<img alt="_images/qan.query-summary-table.totals.1.png" src="_images/qan.query-summary-table.totals.1.png" />
+<p class="caption"><span class="caption-text">The totals appear at the top of the query summary table.</span></p>
+</div>
+<p>The <em>load</em> is the amount of time that the database server spent during the
+selected time or date range running all queries.</p>
+<p>The <em>count</em> is the average number of requests to the server during the specified
+time or date range.</p>
+<p>The <em>latency</em> is the average amount of time that it took the database server to
+retrieve and return the data.</p>
+</div>
+<div class="section" id="queries-in-the-query-summary-table">
+<span id="pmm-qan-query-summary-query"></span><h2><a class="reference internal" href="#pmm-qan-query-summary-query"><span class="std std-ref">Queries in the Query Summary Table</span></a><a class="headerlink" href="#queries-in-the-query-summary-table" title="Permalink to this headline">¶</a></h2>
+<p>Each row in the query summary contains information about a single
+query. Each column is query attribute. The <em>Abstract</em> attribute is an essential
+part of the fingerprint which informs the type of query, such as INSERT, or
+UPDATE, and the queried tables, or collections. The <em>ID</em> attribute is a unique
+hexadecimal number associated with the given query.</p>
+<p>The <em>Load</em>, <em>Count</em>, and <em>Latency</em> attributes refer to the essential metrics of
+each query. Their values are plotted graphics and summary values in the numeric
+form. The summary values have two parts. The average value of the metric and its
+percentage with respect to the corresponding total value at the top of the query
+summary table.</p>
+</div>
+<div class="section" id="viewing-a-specific-value-of-a-metric">
+<span id="pmm-qan-metric-value-viewing"></span><h2><a class="reference internal" href="#pmm-qan-metric-value-viewing"><span class="std std-ref">Viewing a Specific Value of a Metric</span></a><a class="headerlink" href="#viewing-a-specific-value-of-a-metric" title="Permalink to this headline">¶</a></h2>
+<p>If you hover the cursor over one of the metrics in a query, you can see a
+concrete value at the point where your cursor is located. Move the cursor along
+the plotted line to watch how the value is changing.</p>
+<div class="figure" id="id4">
+<img alt="_images/qan.query-summary-table.1.png" src="_images/qan.query-summary-table.1.png" />
+<p class="caption"><span class="caption-text"><em>Hover the cursor to see a value at the point.</em></span></p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+    <div class="related row">
+      
+      <ul class="nav nav-pills">
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="qan.configuring.html" title="Configuring QAN"
+             >next</a></li>
+        <li class="right" >
+          <a href="qan.drilling.html" title="Zooming into a Query"
+             >previous</a></li>
+        <li><a href="index.html">Percona Monitoring and Management Documentation</a></li> 
+      </ul>
+    </div>
+      </div>
+      <div class="sphinxsidebar  col-md-3 col-md-pull-9">
+        <div class="sphinxsidebarwrapper">
+  
+          {@ product_logo @}          
+
+          {@ product_pdf_download @}
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#"><code class="docutils literal"><span class="pre">Filtering</span> <span class="pre">Queries</span></code></a><ul>
+<li><a class="reference internal" href="#totals-of-the-query-summary"><code class="docutils literal"><span class="pre">Totals</span> <span class="pre">of</span> <span class="pre">the</span> <span class="pre">Query</span> <span class="pre">Summary</span></code></a></li>
+<li><a class="reference internal" href="#queries-in-the-query-summary-table"><code class="docutils literal"><span class="pre">Queries</span> <span class="pre">in</span> <span class="pre">the</span> <span class="pre">Query</span> <span class="pre">Summary</span> <span class="pre">Table</span></code></a></li>
+<li><a class="reference internal" href="#viewing-a-specific-value-of-a-metric"><code class="docutils literal"><span class="pre">Viewing</span> <span class="pre">a</span> <span class="pre">Specific</span> <span class="pre">Value</span> <span class="pre">of</span> <span class="pre">a</span> <span class="pre">Metric</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="qan.drilling.html"
+                        title="previous chapter"><code class="docutils literal"><span class="pre">Zooming</span> <span class="pre">into</span> <span class="pre">a</span> <span class="pre">Query</span></code></a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="qan.configuring.html"
+                        title="next chapter"><code class="docutils literal"><span class="pre">Configuring</span> <span class="pre">QAN</span></code></a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">jQuery(document).ready(function(){ jQuery('#searchbox').show(0); });</script>
+          {@ product_series @}
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <!-- div class="footer">
+        &copy; Copyright Percona LLC and/or its affiliates 2009-2019.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.4.
+    </div -->
+  </div>
+  </body>

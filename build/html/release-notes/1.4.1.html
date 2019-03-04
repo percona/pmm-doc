@@ -1,0 +1,172 @@
+
+
+
+    <title>Percona Monitoring and Management 1.4.1 &mdash; Percona Monitoring and Management Documentation</title>
+    
+  <head>
+    
+    
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Percona Monitoring and Management Documentation" href="../index.html" />
+    <link rel="up" title="Percona Monitoring and Management Release Notes" href="index.html" />
+    <link rel="next" title="Percona Monitoring and Management 1.4.0" href="1.4.0.html" />
+    <link rel="prev" title="Percona Monitoring and Management 1.5.0" href="1.5.0.html" /> 
+  </head>
+  <body>
+    <div class="container">  
+
+    <div class="document row">
+      <div class="documentwrapper col-md-9 col-md-push-3">
+    <div class="related row">
+      
+      <ul class="nav nav-pills">
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="1.4.0.html" title="Percona Monitoring and Management 1.4.0"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="1.5.0.html" title="Percona Monitoring and Management 1.5.0"
+             accesskey="P">previous</a></li>
+        <li><a href="../index.html">Percona Monitoring and Management Documentation</a></li>
+          <li><a href="index.html" accesskey="U">Percona Monitoring and Management Release Notes</a></li> 
+      </ul>
+    </div>
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="percona-monitoring-and-management-release">
+<span id="id1"></span><h1>Percona Monitoring and Management 1.4.1<a class="headerlink" href="#percona-monitoring-and-management-release" title="Permalink to this headline">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Date:</th><td class="field-body">November 2, 2017</td>
+</tr>
+</tbody>
+</table>
+<p>Percona announces the release of <em>Percona Monitoring and Management</em> 1.4.1 on Thursday, November
+2nd, 2017.  This release contains fixes to bugs found after <em>Percona Monitoring and Management</em>
+1.4.0 was released. It also introduces two important improvements. The
+<a class="reference external" href="https://btrfs.wiki.kernel.org">btrfs</a> file system has been replaced with <em>XFS</em> in AMI and OVF images and the
+Prometheus dashboard has been enhanced to offer more information.</p>
+<p>For install and upgrade instructions, see <span class="xref std std-ref">deploy-pmm</span>.</p>
+<div class="section" id="improvements">
+<h2>Improvements<a class="headerlink" href="#improvements" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first"><a class="reference external" href="https://jira.percona.com/browse/PMM-1567">PMM-1567</a>: The <a class="reference external" href="https://btrfs.wiki.kernel.org">btrfs</a> file system has been replaced with <em>XFS</em> in
+<span class="xref std std-ref">AMI and OVF images</span> to meet the
+requirements of <a class="reference external" href="https://aws.amazon.com/marketplace">AWS Marketplace</a>.</p>
+</li>
+<li><p class="first"><a class="reference external" href="https://jira.percona.com/browse/PMM-1594">PMM-1594</a>: In Metrics Monitor, the Prometheus dashboard has
+been updated to show more information about the running Prometheus
+jobs and help estimate their efficiency.</p>
+<img alt="../_images/metrics-monitor.prometheus.1.png" src="../_images/metrics-monitor.prometheus.1.png" />
+</li>
+</ul>
+</div>
+<div class="section" id="bug-fixes">
+<h2>Bug fixes<a class="headerlink" href="#bug-fixes" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first"><a class="reference external" href="https://jira.percona.com/browse/PMM-1620">PMM-1620</a>: In some cases, PMM could not be <span class="xref std std-ref">upgraded</span> to
+version 1.4.0 by using the <span class="guilabel">Update</span> button on the landing
+page.</p>
+</li>
+<li><p class="first"><a class="reference external" href="https://jira.percona.com/browse/PMM-1633">PMM-1633</a>: QAN would show error List of Tables is Empty for instances
+having been upgraded from earlier releases of PMM, due to incorrect values
+being stored in the database.  This has been addressed to identify the
+incorrect values and replace with accurate schema and table information.</p>
+</li>
+<li><p class="first"><a class="reference external" href="https://jira.percona.com/browse/PMM-1634">PMM-1634</a>: The <em>Advanced Data Exploration</em> dashboard did
+not always display data points from <code class="xref std std-option docutils literal"><span class="pre">external:metrics</span></code> monitoring
+services due to a too restrictive Grafana Template filter.</p>
+<a class="reference internal image-reference" href="../_images/metrics-monitor.advanced-data-exploration.png"><img alt="../_images/metrics-monitor.advanced-data-exploration.png" src="../_images/metrics-monitor.advanced-data-exploration.png" style="width: 959.5px; height: 450.5px;" /></a>
+</li>
+<li><p class="first"><a class="reference external" href="https://jira.percona.com/browse/PMM-1636">PMM-1636</a>: Special characters prevented the removal of
+<code class="xref std std-option docutils literal"><span class="pre">external:metrics</span></code> services using the <strong class="program">pmm-admin remove</strong> command.</p>
+</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+    <div class="related row">
+      
+      <ul class="nav nav-pills">
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="1.4.0.html" title="Percona Monitoring and Management 1.4.0"
+             >next</a></li>
+        <li class="right" >
+          <a href="1.5.0.html" title="Percona Monitoring and Management 1.5.0"
+             >previous</a></li>
+        <li><a href="../index.html">Percona Monitoring and Management Documentation</a></li>
+          <li><a href="index.html" >Percona Monitoring and Management Release Notes</a></li> 
+      </ul>
+    </div>
+      </div>
+      <div class="sphinxsidebar  col-md-3 col-md-pull-9">
+        <div class="sphinxsidebarwrapper">
+  
+          {@ product_logo @}          
+
+          {@ product_pdf_download @}
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Percona Monitoring and Management 1.4.1</a><ul>
+<li><a class="reference internal" href="#improvements">Improvements</a></li>
+<li><a class="reference internal" href="#bug-fixes">Bug fixes</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="1.5.0.html"
+                        title="previous chapter">Percona Monitoring and Management 1.5.0</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="1.4.0.html"
+                        title="next chapter">Percona Monitoring and Management 1.4.0</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">jQuery(document).ready(function(){ jQuery('#searchbox').show(0); });</script>
+          {@ product_series @}
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <!-- div class="footer">
+        &copy; Copyright Percona LLC and/or its affiliates 2009-2019.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.4.
+    </div -->
+  </div>
+  </body>

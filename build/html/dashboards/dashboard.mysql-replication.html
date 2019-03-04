@@ -1,0 +1,404 @@
+
+
+
+    <title>MySQL Replication &mdash; Percona Monitoring and Management Documentation</title>
+    
+  <head>
+    
+    
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Percona Monitoring and Management Documentation" href="../index.html" />
+    <link rel="up" title="Metrics Monitor Dashboards" href="../index.metrics-monitor.dashboard.html" />
+    <link rel="next" title="MySQL Table Statistics" href="dashboard.mysql-table-statistics.html" />
+    <link rel="prev" title="MySQL Query Response Time" href="dashboard.mysql-query-response-time.html" /> 
+  </head>
+  <body>
+    <div class="container">  
+
+    <div class="document row">
+      <div class="documentwrapper col-md-9 col-md-push-3">
+    <div class="related row">
+      
+      <ul class="nav nav-pills">
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="dashboard.mysql-table-statistics.html" title="MySQL Table Statistics"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="dashboard.mysql-query-response-time.html" title="MySQL Query Response Time"
+             accesskey="P">previous</a></li>
+        <li><a href="../index.html">Percona Monitoring and Management Documentation</a></li>
+          <li><a href="../index.metrics-monitor.dashboard.html" accesskey="U">Metrics Monitor Dashboards</a></li> 
+      </ul>
+    </div>
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="mysql-replication">
+<span id="dashboard-mysql-replication"></span><h1>MySQL Replication<a class="headerlink" href="#mysql-replication" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><a class="reference internal" href="#io-thread-running" id="id7">IO Thread Running</a></li>
+<li><a class="reference internal" href="#sql-thread-running" id="id8">SQL Thread Running</a></li>
+<li><a class="reference internal" href="#replication-error-no" id="id9">Replication Error No</a></li>
+<li><a class="reference internal" href="#read-only" id="id10">Read only</a></li>
+<li><a class="reference internal" href="#mysql-replication-delay" id="id11">MySQL Replication Delay</a></li>
+<li><a class="reference internal" href="#binlog-size" id="id12">Binlog Size</a></li>
+<li><a class="reference internal" href="#binlog-data-written-hourly" id="id13">Binlog Data Written Hourly</a></li>
+<li><a class="reference internal" href="#binlog-count" id="id14">Binlog Count</a></li>
+<li><a class="reference internal" href="#binlogs-created-hourly" id="id15">Binlogs Created Hourly</a></li>
+<li><a class="reference internal" href="#relay-log-space" id="id16">Relay Log Space</a></li>
+<li><a class="reference internal" href="#relay-log-written-hourly" id="id17">Relay Log Written Hourly</a></li>
+</ul>
+</div>
+<div class="section" id="io-thread-running">
+<span id="dashboard-mysql-replication-io-thread-running"></span><h2><a class="toc-backref" href="#id7">IO Thread Running</a><a class="headerlink" href="#io-thread-running" title="Permalink to this headline">¶</a></h2>
+<p>This metric shows if the IO Thread is runnig or not. It only applies to a slave
+host.</p>
+<p>SQL Thread is a process that runs on a slave host in the replication
+environment. It reads the events from the local relay log file and applies them
+to the slave server.</p>
+<p>Depending on the format of the binary log it can read query statements in plain
+text and re-execute them or it can read raw data and apply them to the local
+host.</p>
+<p class="rubric">Possible values</p>
+<p>Yes</p>
+<blockquote>
+<div>The thread is running and is connected to a replication master</div></blockquote>
+<p>No</p>
+<blockquote>
+<div>The thread is not running because it is not lauched yet or because an error
+has occured connecting to the master host</div></blockquote>
+<p>Connecting</p>
+<blockquote>
+<div>The thread is running but is not connected to a replication master</div></blockquote>
+<p>No value</p>
+<blockquote>
+<div>The host is not configured to be a replication slave</div></blockquote>
+<p>IO Thread Running is one of the parameters that the command
+<strong class="command">SHOW SLAVE STATUS</strong> returns.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p>MySQL Documentation</p>
+<blockquote class="last">
+<div><ul class="simple">
+<li><a class="reference external" href="https://dev.mysql.com/doc/refman/5.7/en/replication.html">Replication</a></li>
+<li><a class="reference external" href="https://dev.mysql.com/doc/refman/5.7/en/show-slave-status.html">SHOW SLAVE STATUS Syntax</a></li>
+<li><a class="reference external" href="https://dev.mysql.com/doc/refman/5.7/en/slave-io-thread-states.html">IO Thread states</a></li>
+</ul>
+</div></blockquote>
+</div>
+<p><strong>View all metrics of</strong> <a class="reference internal" href="#dashboard-mysql-replication"><span class="std std-ref">MySQL Replication</span></a></p>
+</div>
+<div class="section" id="sql-thread-running">
+<span id="dashboard-mysql-replication-sql-thread-running"></span><h2><a class="toc-backref" href="#id8">SQL Thread Running</a><a class="headerlink" href="#sql-thread-running" title="Permalink to this headline">¶</a></h2>
+<p>This metric shows if the SQL thread is running or not. It only applies to a
+slave host.</p>
+<p>SQL Thread is a process that runs on a slave host in the replication
+environment. It reads the events from the local relay log file and applies them
+to the slave server.</p>
+<p>Depending on the format of the binary log it can read query statements in plain
+text and re-execute them or it can read raw data and apply them to the local
+host.</p>
+<p class="rubric">Possibile values</p>
+<p>Yes</p>
+<blockquote>
+<div>SQL Thread is running and is applying events from the realy log to the local
+slave host</div></blockquote>
+<p>No</p>
+<blockquote>
+<div>SQL Thread is not running because it is not launched yet or because of an
+errror occurred while applying an event to the local slave host</div></blockquote>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p>MySQL Documentation:</p>
+<blockquote class="last">
+<div><ul class="simple">
+<li><a class="reference external" href="https://dev.mysql.com/doc/refman/5.7/en/replication.html">Replication</a></li>
+<li><a class="reference external" href="https://dev.mysql.com/doc/refman/5.7/en/show-slave-status.html">SHOW SLAVE STATUS Syntax</a></li>
+<li><a class="reference external" href="https://dev.mysql.com/doc/refman/5.7/en/slave-sql-thread-states.html">SQL Thread states</a></li>
+</ul>
+</div></blockquote>
+</div>
+<p><strong>View all metrics of</strong> <a class="reference internal" href="#dashboard-mysql-replication"><span class="std std-ref">MySQL Replication</span></a></p>
+</div>
+<div class="section" id="replication-error-no">
+<span id="dashboard-mysql-replication-replication-error-no"></span><h2><a class="toc-backref" href="#id9">Replication Error No</a><a class="headerlink" href="#replication-error-no" title="Permalink to this headline">¶</a></h2>
+<p>This metric shows the number of the last error in the SQL Thread encountered
+which caused replication to stop.</p>
+<p>One of the more common errors is <em>Error: 1022 Duplicate Key Entry</em>. In such a
+case replication is attempting to update a row that already exists on the slave.
+The SQL Thread will stop replication in order to avoid data corruption.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p>MySQL Documentation:</p>
+<blockquote class="last">
+<div><a class="reference external" href="https://dev.mysql.com/doc/refman/5.7/en/error-messages-server.html">A complete list of error codes</a></div></blockquote>
+</div>
+<p><strong>View all metrics of</strong> <a class="reference internal" href="#dashboard-mysql-replication"><span class="std std-ref">MySQL Replication</span></a></p>
+</div>
+<div class="section" id="read-only">
+<span id="dashboard-mysql-replication-read-only"></span><h2><a class="toc-backref" href="#id10">Read only</a><a class="headerlink" href="#read-only" title="Permalink to this headline">¶</a></h2>
+<p>This metric indicates whether the host is configured to be in <em>Read Only</em>
+mode or not.</p>
+<p class="rubric">Possible values</p>
+<p>Yes</p>
+<blockquote>
+<div><p>The slave host permits no client updates except from users who have the SUPER
+privilege or the REPLICATION SLAVE privilege.</p>
+<p>This kind of configuration is tipically used for slave hosts in a replication
+environment to avoid a user can inadvertently or voluntarily modify data
+causing inconsistencies and stopping the replication process.</p>
+</div></blockquote>
+<p>No</p>
+<blockquote>
+<div>The slave host is not configured in <em>Read Only</em> mode.</div></blockquote>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p>MySQL Documentation:</p>
+<blockquote class="last">
+<div><a class="reference external" href="https://dev.mysql.com/doc/refman/5.7/en/replication.html">Replication</a></div></blockquote>
+</div>
+<p><strong>View all metrics of</strong> <a class="reference internal" href="#dashboard-mysql-replication"><span class="std std-ref">MySQL Replication</span></a></p>
+</div>
+<div class="section" id="mysql-replication-delay">
+<span id="dashboard-mysql-replication-mysql-replication-delay"></span><h2><a class="toc-backref" href="#id11">MySQL Replication Delay</a><a class="headerlink" href="#mysql-replication-delay" title="Permalink to this headline">¶</a></h2>
+<p>This metric shows the number of seconds the slave host is delayed in replication
+applying events compared to when the Master host applied them, denoted by the
+<code class="docutils literal"><span class="pre">Seconds_Behind_Master</span></code> value, and only applies to a slave host.</p>
+<p>Since the replication process applies the data modifications on the slave
+asyncronously, it could happen that the slave replicates events after some
+time. The main reasons are:</p>
+<ul class="simple">
+<li><strong>Network round trip time</strong> - high latency links will lead to non-zero
+replication lag values.</li>
+<li><strong>Single threaded nature of replication channels</strong> - master servers have the
+advantage of applying changes in parallel, whereas slave ones are only able to
+apply changes in serial, thus limiting their throughput. In some cases Group
+Commit can help but is not always applicable.</li>
+<li><strong>High number of changed rows or computationally expensive SQL</strong> - depending
+on the replication format (<code class="docutils literal"><span class="pre">ROW</span></code> vs <code class="docutils literal"><span class="pre">STATEMENT</span></code>), significant changes to
+the database through high volume of rows modified, or expensive CPU will all
+contribute to slave servers lagging behind the master.</li>
+</ul>
+<p>Generally adding more CPU or Disk resources can alleviate replication lag
+issues, up to a point.</p>
+<p>Ideally a value of 0 is desired, but be aware that <code class="docutils literal"><span class="pre">Seconds_Behind_Master</span></code> is
+an integer value and thus rounding is a factor. If you desire greater precision,
+consider the Percona Toolkit tool <code class="docutils literal"><span class="pre">pt-heartbeat</span></code>, as this graph will
+automatically take into account this tool and then show you greater resolution
+in the milliseconds.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p>Related metrics:</p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference internal" href="#dashboard-mysql-replication-relay-log-space"><span class="std std-ref">Relay Log Space</span></a></li>
+</ul>
+</div></blockquote>
+<p>MySQL Documentation</p>
+<blockquote class="last">
+<div><ul class="simple">
+<li><a class="reference external" href="https://dev.mysql.com/doc/refman/5.7/en/show-slave-status.html">SHOW SLAVE STATUS Syntax</a></li>
+<li><a class="reference external" href="https://dev.mysql.com/doc/refman/5.7/en/replication-solutions-performance.html">Improving replication performance</a></li>
+<li><a class="reference external" href="https://dev.mysql.com/doc/refman/5.7/en/replication-options-slave.html">Replication Slave Options and Variables</a></li>
+</ul>
+</div></blockquote>
+</div>
+<p><strong>View all metrics of</strong> <a class="reference internal" href="#dashboard-mysql-replication"><span class="std std-ref">MySQL Replication</span></a></p>
+</div>
+<div class="section" id="binlog-size">
+<span id="dashboard-mysql-replication-binlog-size"></span><h2><a class="toc-backref" href="#id12">Binlog Size</a><a class="headerlink" href="#binlog-size" title="Permalink to this headline">¶</a></h2>
+<p>This metric shows the overall size of the binary log files, which can exist on
+both master and slave servers. The binary log (also known as the binlog)
+contains events that describe database changes: <code class="docutils literal"><span class="pre">CREATE</span> <span class="pre">TABLE</span></code>,
+<code class="docutils literal"><span class="pre">ALTER</span> <span class="pre">TABLE</span></code>, updates, inserts, deletes and other statements or database
+changes. The binlog is the file that is read by slaves via their IO Thread
+process in order to replicate database changes modification on the data and on
+the table structures. There can be more than one binlog file present depending
+on the binlog rotation policy adopted (for example using the configuration
+variables <code class="docutils literal"><span class="pre">max_binlog_size</span></code> and <code class="docutils literal"><span class="pre">expire_logs_days</span></code>).</p>
+<p>There can be more binlog files depending on the rotation policy adopted (for
+example using the configuration variables <code class="xref std std-option docutils literal"><span class="pre">max_binlog_size</span></code> and <code class="xref std std-option docutils literal"><span class="pre">expire_logs_days</span></code>)
+or even because of server reboots.</p>
+<p>When planning the disk space, take care of the overall dimension of binlog files
+and adopt a good rotation policy or think about having a separate mount point or
+disk to store the binlog data.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p>MySQL Documentation:</p>
+<blockquote class="last">
+<div><ul class="simple">
+<li><a class="reference external" href="https://dev.mysql.com/doc/refman/5.7/en/binary-log.html">The binary log</a></li>
+<li><a class="reference external" href="https://dev.mysql.com/doc/refman/5.7/en/replication-configuration.html">Configuring replication</a></li>
+</ul>
+</div></blockquote>
+</div>
+<p><strong>View all metrics of</strong> <a class="reference internal" href="#dashboard-mysql-replication"><span class="std std-ref">MySQL Replication</span></a></p>
+</div>
+<div class="section" id="binlog-data-written-hourly">
+<span id="dashboard-mysql-replication-binlog-data-written-hourly"></span><h2><a class="toc-backref" href="#id13">Binlog Data Written Hourly</a><a class="headerlink" href="#binlog-data-written-hourly" title="Permalink to this headline">¶</a></h2>
+<p>This metric shows the amount of data written hourly to the binlog files during
+the last 24 hours. This metric can give you an idea of how big is your
+application in terms of data writes (creation, modification, deletion).</p>
+<p><strong>View all metrics of</strong> <a class="reference internal" href="#dashboard-mysql-replication"><span class="std std-ref">MySQL Replication</span></a></p>
+</div>
+<div class="section" id="binlog-count">
+<span id="dashboard-mysql-replication-binlog-count"></span><h2><a class="toc-backref" href="#id14">Binlog Count</a><a class="headerlink" href="#binlog-count" title="Permalink to this headline">¶</a></h2>
+<p>This metric shows the overall count of binary log files, on both
+master and slave servers.</p>
+<p>There can be more binlog files depending on the rotation policy adopted (for
+example using the configuration variables <code class="xref std std-option docutils literal"><span class="pre">max_binlog_size</span></code> and <code class="xref std std-option docutils literal"><span class="pre">expire_logs_days</span></code>)
+or even because of server reboots.</p>
+<p>When planning the disk space, take care of the overall dimension of binlog files
+and adopt a good rotation policy or think about having a separate mount point or
+disk to store the binlog data.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p>MySQL Documentation:</p>
+<blockquote class="last">
+<div><ul class="simple">
+<li><a class="reference external" href="https://dev.mysql.com/doc/refman/5.7/en/binary-log.html">The binary log</a></li>
+<li><a class="reference external" href="https://dev.mysql.com/doc/refman/5.7/en/replication-configuration.html">Configuring replication</a></li>
+</ul>
+</div></blockquote>
+</div>
+<p><strong>View all metrics of</strong> <a class="reference internal" href="#dashboard-mysql-replication"><span class="std std-ref">MySQL Replication</span></a></p>
+</div>
+<div class="section" id="binlogs-created-hourly">
+<span id="dashboard-mysql-replication-binlogs-created-hourly"></span><h2><a class="toc-backref" href="#id15">Binlogs Created Hourly</a><a class="headerlink" href="#binlogs-created-hourly" title="Permalink to this headline">¶</a></h2>
+<p>This metric shows the number of binlog files created hourly during the last 24 hours.</p>
+<p>There can be more binlog files depending on the rotation policy adopted (for
+example using the configuration variables <code class="xref std std-option docutils literal"><span class="pre">max_binlog_size</span></code> and <code class="xref std std-option docutils literal"><span class="pre">expire_logs_days</span></code>)
+or even because of server reboots.</p>
+<p>When planning the disk space, take care of the overall dimension of binlog files
+and adopt a good rotation policy or think about having a separate mount point or
+disk to store the binlog data.</p>
+<p><strong>View all metrics of</strong> <a class="reference internal" href="#dashboard-mysql-replication"><span class="std std-ref">MySQL Replication</span></a></p>
+</div>
+<div class="section" id="relay-log-space">
+<span id="dashboard-mysql-replication-relay-log-space"></span><h2><a class="toc-backref" href="#id16">Relay Log Space</a><a class="headerlink" href="#relay-log-space" title="Permalink to this headline">¶</a></h2>
+<p>This metric shows the overall size of the relay log files. It only applies
+to a slave host.</p>
+<p>The relay log consists of a set of numbered files containing the events to be
+executed on the slave host in order to replicate database changes.</p>
+<p>The relay log has the same format as the binlog.</p>
+<p>There can be multiple relay log files depending on the rotation policy adopted
+(using the configuration variable <code class="xref std std-option docutils literal"><span class="pre">max_relay_log_size</span></code>).</p>
+<p>As soon as the SQL thread completes to execute all events in the relay log file,
+the file is deleted.</p>
+<p>If this metric contains a high value, the variable <code class="xref std std-option docutils literal"><span class="pre">max_relay_log_file</span></code> is
+high too. Generally, this not a serious issue. If the value of this metric is
+constantly increased, the slave is delaying too much in applying the events.</p>
+<p>Treat this metric in the same way as the
+<a class="reference internal" href="#dashboard-mysql-replication-mysql-replication-delay"><span class="std std-ref">MySQL Replication Delay</span></a> metric.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p>MySQL Documentation:</p>
+<blockquote class="last">
+<div><ul class="simple">
+<li><a class="reference external" href="https://dev.mysql.com/doc/refman/5.7/en/slave-logs-relaylog.html">The Slave Relay Log</a></li>
+</ul>
+</div></blockquote>
+</div>
+<p><strong>View all metrics of</strong> <a class="reference internal" href="#dashboard-mysql-replication"><span class="std std-ref">MySQL Replication</span></a></p>
+</div>
+<div class="section" id="relay-log-written-hourly">
+<span id="dashboard-mysql-replication-relay-log-written-hourly"></span><h2><a class="toc-backref" href="#id17">Relay Log Written Hourly</a><a class="headerlink" href="#relay-log-written-hourly" title="Permalink to this headline">¶</a></h2>
+<p>This metric shows the amount of data written hourly into relay log files during
+the last 24 hours.</p>
+<p><strong>View all metrics of</strong> <a class="reference internal" href="#dashboard-mysql-replication"><span class="std std-ref">MySQL Replication</span></a></p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+    <div class="related row">
+      
+      <ul class="nav nav-pills">
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="dashboard.mysql-table-statistics.html" title="MySQL Table Statistics"
+             >next</a></li>
+        <li class="right" >
+          <a href="dashboard.mysql-query-response-time.html" title="MySQL Query Response Time"
+             >previous</a></li>
+        <li><a href="../index.html">Percona Monitoring and Management Documentation</a></li>
+          <li><a href="../index.metrics-monitor.dashboard.html" >Metrics Monitor Dashboards</a></li> 
+      </ul>
+    </div>
+      </div>
+      <div class="sphinxsidebar  col-md-3 col-md-pull-9">
+        <div class="sphinxsidebarwrapper">
+  
+          {@ product_logo @}          
+
+          {@ product_pdf_download @}
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">MySQL Replication</a><ul>
+<li><a class="reference internal" href="#io-thread-running">IO Thread Running</a></li>
+<li><a class="reference internal" href="#sql-thread-running">SQL Thread Running</a></li>
+<li><a class="reference internal" href="#replication-error-no">Replication Error No</a></li>
+<li><a class="reference internal" href="#read-only">Read only</a></li>
+<li><a class="reference internal" href="#mysql-replication-delay">MySQL Replication Delay</a></li>
+<li><a class="reference internal" href="#binlog-size">Binlog Size</a></li>
+<li><a class="reference internal" href="#binlog-data-written-hourly">Binlog Data Written Hourly</a></li>
+<li><a class="reference internal" href="#binlog-count">Binlog Count</a></li>
+<li><a class="reference internal" href="#binlogs-created-hourly">Binlogs Created Hourly</a></li>
+<li><a class="reference internal" href="#relay-log-space">Relay Log Space</a></li>
+<li><a class="reference internal" href="#relay-log-written-hourly">Relay Log Written Hourly</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="dashboard.mysql-query-response-time.html"
+                        title="previous chapter">MySQL Query Response Time</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="dashboard.mysql-table-statistics.html"
+                        title="next chapter"><em>MySQL Table Statistics</em></a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">jQuery(document).ready(function(){ jQuery('#searchbox').show(0); });</script>
+          {@ product_series @}
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <!-- div class="footer">
+        &copy; Copyright Percona LLC and/or its affiliates 2009-2019.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.4.
+    </div -->
+  </div>
+  </body>

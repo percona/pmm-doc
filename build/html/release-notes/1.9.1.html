@@ -1,0 +1,152 @@
+
+
+
+    <title>Percona Monitoring and Management 1.9.1 &mdash; Percona Monitoring and Management Documentation</title>
+    
+  <head>
+    
+    
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Percona Monitoring and Management Documentation" href="../index.html" />
+    <link rel="up" title="Percona Monitoring and Management Release Notes" href="index.html" />
+    <link rel="next" title="Percona Monitoring and Management 1.9.0" href="1.9.0.html" />
+    <link rel="prev" title="Percona Monitoring and Management 1.10.0" href="1.10.0.html" /> 
+  </head>
+  <body>
+    <div class="container">  
+
+    <div class="document row">
+      <div class="documentwrapper col-md-9 col-md-push-3">
+    <div class="related row">
+      
+      <ul class="nav nav-pills">
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="1.9.0.html" title="Percona Monitoring and Management 1.9.0"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="1.10.0.html" title="Percona Monitoring and Management 1.10.0"
+             accesskey="P">previous</a></li>
+        <li><a href="../index.html">Percona Monitoring and Management Documentation</a></li>
+          <li><a href="index.html" accesskey="U">Percona Monitoring and Management Release Notes</a></li> 
+      </ul>
+    </div>
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="pmm-name-release">
+<span id="id1"></span><h1><em>Percona Monitoring and Management</em> 1.9.1<a class="headerlink" href="#pmm-name-release" title="Permalink to this headline">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Date:</th><td class="field-body">April 12, 2018</td>
+</tr>
+</tbody>
+</table>
+<p>This release contains bug fixes only and supersedes <em>Percona Monitoring and Management</em> 1.9.0. This release
+effectively solves the problem in QAN when the <em>Count</em> column
+actually displayed the number of queries per minute, not per second,
+as the user would expect. The following screenshot demonstrates the
+problem. The value of the <em>Count</em> column for the <strong>TOTAL</strong> row is
+<strong>649.38</strong> <em>QPS</em> (queries per second). The total number <strong>38.96
+k</strong> (38960) is only sixty times greater than the reported value of
+QPS. Thus, queries were counted for each minute within the selected
+time range of <code class="xref std std-option docutils literal"><span class="pre">Last</span> <span class="pre">1</span> <span class="pre">hour</span></code>.</p>
+<p><strong>Query Analytics in PMM version</strong> 1.9.0.</p>
+<img alt="../_images/1-9-1.pmm-2364.1.png" src="../_images/1-9-1.pmm-2364.1.png" />
+<p>The corrected version of QAN in PMM 1.9.1 shows that queries
+are now counted per second. The total number of queries is <strong>60</strong> *
+<strong>60</strong> greater than the value of <em>QPS</em>, as should be expected for the
+chosen time range.</p>
+<p><strong>Query Analytics in PMM version</strong> 1.9.1.</p>
+<img alt="../_images/1-9-1.pmm-2364.2.png" src="../_images/1-9-1.pmm-2364.2.png" />
+<div class="section" id="bug-fixes">
+<h2>Bug fixes<a class="headerlink" href="#bug-fixes" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="https://jira.percona.com/browse/PMM-2364">PMM-2364</a>: QPS are wrong in QAN</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+    <div class="related row">
+      
+      <ul class="nav nav-pills">
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="1.9.0.html" title="Percona Monitoring and Management 1.9.0"
+             >next</a></li>
+        <li class="right" >
+          <a href="1.10.0.html" title="Percona Monitoring and Management 1.10.0"
+             >previous</a></li>
+        <li><a href="../index.html">Percona Monitoring and Management Documentation</a></li>
+          <li><a href="index.html" >Percona Monitoring and Management Release Notes</a></li> 
+      </ul>
+    </div>
+      </div>
+      <div class="sphinxsidebar  col-md-3 col-md-pull-9">
+        <div class="sphinxsidebarwrapper">
+  
+          {@ product_logo @}          
+
+          {@ product_pdf_download @}
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#"><em>Percona Monitoring and Management</em> 1.9.1</a><ul>
+<li><a class="reference internal" href="#bug-fixes">Bug fixes</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="1.10.0.html"
+                        title="previous chapter"><em>Percona Monitoring and Management</em> 1.10.0</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="1.9.0.html"
+                        title="next chapter"><em>Percona Monitoring and Management</em> 1.9.0</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">jQuery(document).ready(function(){ jQuery('#searchbox').show(0); });</script>
+          {@ product_series @}
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <!-- div class="footer">
+        &copy; Copyright Percona LLC and/or its affiliates 2009-2019.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.4.
+    </div -->
+  </div>
+  </body>

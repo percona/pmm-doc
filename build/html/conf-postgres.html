@@ -1,0 +1,186 @@
+
+
+
+    <title>Configuring PostgreSQL for Monitoring &mdash; Percona Monitoring and Management Documentation</title>
+    
+  <head>
+    
+    
+    
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '2.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Percona Monitoring and Management Documentation" href="index.html" />
+    <link rel="next" title="Passing options to the exporter" href="manage/client.passing-options.html" />
+    <link rel="prev" title="Adding general system metrics service" href="manage/client.linux.metrics.html" /> 
+  </head>
+  <body>
+    <div class="container">  
+
+    <div class="document row">
+      <div class="documentwrapper col-md-9 col-md-push-3">
+    <div class="related row">
+      
+      <ul class="nav nav-pills">
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="manage/client.passing-options.html" title="Passing options to the exporter"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="manage/client.linux.metrics.html" title="Adding general system metrics service"
+             accesskey="P">previous</a></li>
+        <li><a href="index.html">Percona Monitoring and Management Documentation</a></li> 
+      </ul>
+    </div>
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="configuring-postgresql-for-monitoring">
+<span id="pmm-qan-postgres-conf"></span><h1>Configuring PostgreSQL for Monitoring<a class="headerlink" href="#configuring-postgresql-for-monitoring" title="Permalink to this headline">¶</a></h1>
+<p>Monitoring PostgreSQL metrics with the <a class="reference external" href="https://github.com/wrouesnel/postgres_exporter">postgres_exporter</a> is enabled by <code class="docutils literal"><span class="pre">pmm-admin</span> <span class="pre">add</span> <span class="pre">postgresql</span></code> command. The <code class="docutils literal"><span class="pre">postgresql</span></code> alias will set up
+<code class="docutils literal"><span class="pre">postgresql:metrics</span></code> and also <code class="docutils literal"><span class="pre">linux:metrics</span></code> on a host (for more information, see <a class="reference external" href="https://www.percona.com/doc/percona-monitoring-and-management/pmm-admin.html#pmm-admin-add">Adding monitoring services</a>).</p>
+<p><code class="docutils literal"><span class="pre">pmm-admin</span></code> supports passing PostgreSQL connection information via following flags:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="35%" />
+<col width="65%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Flag</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">--host</span></code></td>
+<td>PostgreSQL host</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">--password</span></code></td>
+<td>PostgreSQL password</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">--port</span></code></td>
+<td>PostgreSQL port</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">--user</span></code></td>
+<td>PostgreSQL user</td>
+</tr>
+</tbody>
+</table>
+<p>An example command line would look like this:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pmm</span><span class="o">-</span><span class="n">admin</span> <span class="n">add</span> <span class="n">postgresql</span> <span class="o">--</span><span class="n">host</span><span class="o">=</span><span class="n">localhost</span> <span class="o">--</span><span class="n">password</span><span class="o">=</span><span class="s1">&#39;secret&#39;</span> <span class="o">--</span><span class="n">port</span><span class="o">=</span><span class="mi">5432</span> <span class="o">--</span><span class="n">user</span><span class="o">=</span><span class="n">pmm_user</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>Capturing read and write time statistics is possible only if
+<code class="docutils literal"><span class="pre">track_io_timing</span></code> setting is enabled. This can be done either in
+configuration file or with the following query executed on the running
+system:</p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="n">ALTER</span> <span class="n">SYSTEM</span> <span class="n">SET</span> <span class="n">track_io_timing</span><span class="o">=</span><span class="n">ON</span><span class="p">;</span>
+<span class="n">SELECT</span> <span class="n">pg_reload_conf</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="supported-versions-of-postgresql">
+<h2>Supported versions of PostgreSQL<a class="headerlink" href="#supported-versions-of-postgresql" title="Permalink to this headline">¶</a></h2>
+<p>PMM follows <a class="reference external" href="https://www.postgresql.org/support/versioning/">postgresql.org EOL policy</a>, and thus supports monitoring PostgreSQL version 9.4 and up.  Older versions may work, but will not be supported.  For additional assistance, visit <a class="reference external" href="https://www.percona.com/forums/questions-discussions/percona-monitoring-and-management/">Percona PMM Forums</a>.</p>
+<div class="section" id="setting-up-the-required-permissions">
+<span id="pmm-qan-postgres-conf-essential-permission-setting-up"></span><h3>Setting Up the Required Permissions<a class="headerlink" href="#setting-up-the-required-permissions" title="Permalink to this headline">¶</a></h3>
+<p>Percona recommends that a PostgreSQL user be configured for <code class="docutils literal"><span class="pre">SUPERUSER</span></code>
+level access, in order to gather the maximum amount of data with a minimum
+amount of complexity. This can be done with the following command for the
+standalone PostgreSQL installation:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">USER</span> <span class="n">pmm_user</span> <span class="n">WITH</span> <span class="n">SUPERUSER</span> <span class="n">ENCRYPTED</span> <span class="n">PASSWORD</span> <span class="s1">&#39;secret&#39;</span><span class="p">;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>In case of monitoring a PostgreSQL database running on
+an Amazon RDS instance, the command should look as follows:</p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">USER</span> <span class="n">pmm_user</span> <span class="n">WITH</span> <span class="n">rds_superuser</span> <span class="n">ENCRYPTED</span> <span class="n">PASSWORD</span> <span class="s1">&#39;secret&#39;</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+    <div class="related row">
+      
+      <ul class="nav nav-pills">
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="manage/client.passing-options.html" title="Passing options to the exporter"
+             >next</a></li>
+        <li class="right" >
+          <a href="manage/client.linux.metrics.html" title="Adding general system metrics service"
+             >previous</a></li>
+        <li><a href="index.html">Percona Monitoring and Management Documentation</a></li> 
+      </ul>
+    </div>
+      </div>
+      <div class="sphinxsidebar  col-md-3 col-md-pull-9">
+        <div class="sphinxsidebarwrapper">
+  
+          {@ product_logo @}          
+
+          {@ product_pdf_download @}
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Configuring PostgreSQL for Monitoring</a><ul>
+<li><a class="reference internal" href="#supported-versions-of-postgresql">Supported versions of PostgreSQL</a><ul>
+<li><a class="reference internal" href="#setting-up-the-required-permissions">Setting Up the Required Permissions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="manage/client.linux.metrics.html"
+                        title="previous chapter"><code class="docutils literal"><span class="pre">Adding</span> <span class="pre">general</span> <span class="pre">system</span> <span class="pre">metrics</span> <span class="pre">service</span></code></a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="manage/client.passing-options.html"
+                        title="next chapter">Passing options to the exporter</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">jQuery(document).ready(function(){ jQuery('#searchbox').show(0); });</script>
+          {@ product_series @}
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <!-- div class="footer">
+        &copy; Copyright Percona LLC and/or its affiliates 2009-2019.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.4.
+    </div -->
+  </div>
+  </body>

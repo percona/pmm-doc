@@ -1,0 +1,244 @@
+
+
+
+    <title>Configuring MongoDB for Monitoring in PMM Query Analytics &mdash; Percona Monitoring and Management Documentation</title>
+    
+  <head>
+    
+    
+    
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '2.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Percona Monitoring and Management Documentation" href="index.html" />
+    <link rel="next" title="Security Features in Percona Monitoring and Management" href="concepts/security.html" />
+    <link rel="prev" title="MySQL requirements" href="conf-mysql.requirements.html" /> 
+  </head>
+  <body>
+    <div class="container">  
+
+    <div class="document row">
+      <div class="documentwrapper col-md-9 col-md-push-3">
+    <div class="related row">
+      
+      <ul class="nav nav-pills">
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="concepts/security.html" title="Security Features in Percona Monitoring and Management"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="conf-mysql.requirements.html" title="MySQL requirements"
+             accesskey="P">previous</a></li>
+        <li><a href="index.html">Percona Monitoring and Management Documentation</a></li> 
+      </ul>
+    </div>
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="configuring-mongodb-for-monitoring-in-qan-name">
+<span id="pmm-qan-mongodb-conf"></span><h1>Configuring MongoDB for Monitoring in <em>PMM Query Analytics</em><a class="headerlink" href="#configuring-mongodb-for-monitoring-in-qan-name" title="Permalink to this headline">¶</a></h1>
+<p>In <abbr title="Query Analytics">QAN</abbr>, you can monitor MongoDB metrics and MongoDB queries with the
+<code class="xref std std-option docutils literal"><span class="pre">mongodb:metrics</span></code> or <code class="xref std std-option docutils literal"><span class="pre">mongodb:queries</span></code> monitoring services
+accordingly. Run the <strong class="program">pmm-admin add</strong> command to use these monitoring services
+(for more information, see <a class="reference internal" href="manage/client.add.html#pmm-admin-add"><span class="std std-ref">Adding monitoring services</span></a>).</p>
+<p class="rubric" id="pmm-conf-mongodb-supported-version">Supported versions of MongoDB</p>
+<p>QAN supports MongoDB version 3.2 or higher.</p>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><a class="reference internal" href="#setting-up-the-essential-permissions" id="id1">Setting Up the Essential Permissions</a></li>
+<li><a class="reference internal" href="#enabling-profiling" id="id2"><a class="reference internal" href="#pmm-qan-mongodb-configuring-profiling-enabling"><span class="std std-ref">Enabling Profiling</span></a></a></li>
+</ul>
+</div>
+<div class="section" id="setting-up-the-essential-permissions">
+<span id="pmm-qan-mongodb-conf-essential-permission-setting-up"></span><h2><a class="toc-backref" href="#id1">Setting Up the Essential Permissions</a><a class="headerlink" href="#setting-up-the-essential-permissions" title="Permalink to this headline">¶</a></h2>
+<p>For <code class="xref std std-option docutils literal"><span class="pre">mongodb:metrics</span></code> and <code class="xref std std-option docutils literal"><span class="pre">mongodb:queries</span></code> monitoring services to be
+able work in QAN, you need to set up the <strong class="program">mongodb_exporter</strong> user. This user
+should be assigned the <em>clusterMonitor</em> role for the <code class="file docutils literal"><span class="pre">admin</span></code> database and
+the <em>read</em> role for the <code class="file docutils literal"><span class="pre">local</span></code> database.</p>
+<p>The following example that you can run in the MongoDB shell, adds the
+<strong class="program">mongodb_exporter</strong> user and assigns the appropriate roles.</p>
+<div class="highlight-js" id="code-pmm-qan-mongodb-conf-essential-permission-setting-up-db-get-sibling-db-create-user"><div class="highlight"><pre><span></span><span class="nx">db</span><span class="p">.</span><span class="nx">getSiblingDB</span><span class="p">(</span><span class="s2">&quot;admin&quot;</span><span class="p">).</span><span class="nx">createUser</span><span class="p">({</span>
+    <span class="nx">user</span><span class="o">:</span> <span class="s2">&quot;mongodb_exporter&quot;</span><span class="p">,</span>
+    <span class="nx">pwd</span><span class="o">:</span> <span class="s2">&quot;s3cR#tpa$$worD&quot;</span><span class="p">,</span>
+    <span class="nx">roles</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span> <span class="nx">role</span><span class="o">:</span> <span class="s2">&quot;clusterMonitor&quot;</span><span class="p">,</span> <span class="nx">db</span><span class="o">:</span> <span class="s2">&quot;admin&quot;</span> <span class="p">},</span>
+        <span class="p">{</span> <span class="nx">role</span><span class="o">:</span> <span class="s2">&quot;read&quot;</span><span class="p">,</span> <span class="nx">db</span><span class="o">:</span> <span class="s2">&quot;local&quot;</span> <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">})</span>
+</pre></div>
+</div>
+<p>Then, you need to pass the user name and password in the value of the
+<code class="xref std std-option docutils literal"><span class="pre">--uri</span></code> option when adding the <code class="xref std std-option docutils literal"><span class="pre">mongodb:metrics</span></code> monitoring
+service in the <strong class="program">pmm-admin add</strong> command:</p>
+<p>Run this command as root or by using the <strong class="program">sudo</strong> command.</p>
+<span class="target" id="pmm-qan-mongodb-conf-essential-permission-setting-up-pmm-admin-add-mongodb-metrics-uri"></span><div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<dl class="last docutils">
+<dt>Adding a <code class="xref std std-option docutils literal"><span class="pre">mongodb:metrics</span></code> monitoring service</dt>
+<dd><a class="reference internal" href="manage/client.mongodb.metrics.html#pmm-admin-add-mongodb-metrics"><span class="std std-ref">Adding MongoDB metrics service</span></a></dd>
+</dl>
+</div>
+</div>
+<div class="section" id="enabling-profiling">
+<span id="pmm-qan-mongodb-configuring-profiling-enabling"></span><h2><a class="toc-backref" href="#id2"><a class="reference internal" href="#pmm-qan-mongodb-configuring-profiling-enabling"><span class="std std-ref">Enabling Profiling</span></a></a><a class="headerlink" href="#enabling-profiling" title="Permalink to this headline">¶</a></h2>
+<p>For <a class="reference external" href="https://www.mongodb.com">MongoDB</a> to work correctly with <abbr title="Query Analytics">QAN</abbr>, you need to enable profiling
+in your <strong class="program">mongod</strong> configuration. When started without profiling enabled, QAN
+displays the following warning:</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p><strong>A warning message is displayed when profiling is not enabled</strong></p>
+<p>It is required that profiling of the monitored MongoDB databases be enabled.</p>
+<p class="last">Note that profiling is not enabled by default because it may reduce the
+performance of your MongoDB server.</p>
+</div>
+<div class="section" id="enabling-profiling-on-command-line">
+<span id="pmm-qan-mongodb-conf-profiling-command-line-enable"></span><h3><a class="reference internal" href="#pmm-qan-mongodb-conf-profiling-command-line-enable"><span class="std std-ref">Enabling Profiling on Command Line</span></a><a class="headerlink" href="#enabling-profiling-on-command-line" title="Permalink to this headline">¶</a></h3>
+<p>You can enable profiling from command line when you start the <strong class="program">mongod</strong>
+server. This command is useful if you start <strong class="program">mongod</strong> manually.</p>
+<p>Run this command as root or by using the <strong class="program">sudo</strong> command</p>
+<div class="highlight-bash" id="pmm-qan-mongodb-conf-profiling-command-line-enable-mongod-dbpath-profile-slowms-ratelimit"><div class="highlight"><pre><span></span>$ mongod --dbpath<span class="o">=</span>DATABASEDIR --profile <span class="m">2</span> --slowms <span class="m">200</span> --rateLimit <span class="m">100</span>
+</pre></div>
+</div>
+<p>Note that you need to specify a path to an existing directory that stores
+database files with the <code class="xref std std-option docutils literal"><span class="pre">--dpbath</span></code>. When the <code class="xref std std-option docutils literal"><span class="pre">--profile</span></code> option is set to
+<strong>2</strong>, <strong class="program">mongod</strong> collects the profiling data for all operations. To decrease the
+load, you may consider setting this option to <strong>1</strong> so that the profiling data
+are only collected for slow operations.</p>
+<p>The <code class="xref std std-option docutils literal"><span class="pre">--slowms</span></code> option sets the minimum time for a slow operation. In the given
+example, any operation which takes longer than <strong>200</strong> milliseconds is a slow
+operation.</p>
+<p>The <code class="xref std std-option docutils literal"><span class="pre">--rateLimit</span></code> option, which is available if you use PSMDB instead
+of MongoDB, refers to the number of queries that the MongoDB profiler
+collects. The lower the rate limit, the less impact on the performance. However,
+the accuracy of the collected information decreases as well.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<dl class="last docutils">
+<dt><code class="xref std std-option docutils literal"><span class="pre">--rateLimit</span></code> in PSMDB documentation</dt>
+<dd><a class="reference external" href="https://www.percona.com/doc/percona-server-for-mongodb/LATEST/rate-limit.html">https://www.percona.com/doc/percona-server-for-mongodb/LATEST/rate-limit.html</a></dd>
+</dl>
+</div>
+</div>
+<div class="section" id="enabling-profiling-in-the-configuration-file">
+<span id="pmm-qan-mongodb-configuring-configuration-file-profiling-enabling"></span><h3><a class="reference internal" href="#pmm-qan-mongodb-configuring-configuration-file-profiling-enabling"><span class="std std-ref">Enabling Profiling in the Configuration File</span></a><a class="headerlink" href="#enabling-profiling-in-the-configuration-file" title="Permalink to this headline">¶</a></h3>
+<p>If you run <code class="docutils literal"><span class="pre">mongod</span></code> as a service, you need to use the configuration file which
+by default is <code class="file docutils literal"><span class="pre">/etc/mongod.conf</span></code>.</p>
+<p>In this file, you need to locate the <em>operationProfiling:</em> section and add the
+following settings:</p>
+<div class="highlight-yaml" id="pmm-qan-mongodb-configuring-configuration-file-profiling-enabling-operationprofiling"><div class="highlight"><pre><span></span><span class="nt">operationProfiling</span><span class="p">:</span>
+   <span class="nt">slowOpThresholdMs</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">200</span>
+   <span class="nt">mode</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">slowOp</span>
+   <span class="nt">rateLimit</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">100</span>
+</pre></div>
+</div>
+<p>These settings affect <code class="docutils literal"><span class="pre">mongod</span></code> in the same way as the command line
+options described in section
+<a class="reference internal" href="#pmm-qan-mongodb-conf-profiling-command-line-enable"><span class="std std-ref">Enabling Profiling on Command Line</span></a>. Note that the
+configuration file is in the <a class="reference external" href="http://yaml.org/spec/">YAML</a> format. In this format the indentation of
+your lines is important as it defines levels of nesting.</p>
+<p>Restart the <em>mongod</em> service to enable the settings.</p>
+<p id="pmm-qan-mongodb-configuring-configuration-file-profiling-enabling-service-mongod-restart">Run this command as root or by using the <strong class="program">sudo</strong> command</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ service mongod restart
+</pre></div>
+</div>
+<div class="admonition-related-information admonition">
+<p class="first admonition-title">Related Information</p>
+<dl class="last docutils">
+<dt>MongoDB Documentation: Enabling Profiling</dt>
+<dd><a class="reference external" href="https://docs.mongodb.com/manual/tutorial/manage-the-database-profiler/">https://docs.mongodb.com/manual/tutorial/manage-the-database-profiler/</a></dd>
+<dt>MongoDB Documentation: Profiling Mode</dt>
+<dd><a class="reference external" href="https://docs.mongodb.com/manual/reference/configuration-options/#operationProfiling.mode">https://docs.mongodb.com/manual/reference/configuration-options/#operationProfiling.mode</a></dd>
+<dt>MongoDB Documentation: SlowOpThresholdMd option</dt>
+<dd><a class="reference external" href="https://docs.mongodb.com/manual/reference/configuration-options/#operationProfiling.slowOpThresholdMs">https://docs.mongodb.com/manual/reference/configuration-options/#operationProfiling.slowOpThresholdMs</a></dd>
+<dt>MongoDB Documentation: Profiler Overhead (from MongoDB documentation)</dt>
+<dd><a class="reference external" href="https://docs.mongodb.com/manual/tutorial/manage-the-database-profiler/#profiler-overhead">https://docs.mongodb.com/manual/tutorial/manage-the-database-profiler/#profiler-overhead</a></dd>
+<dt>Documentation for Percona Server for MongoDB: Profiling Rate Limit</dt>
+<dd><a class="reference external" href="https://www.percona.com/doc/percona-server-for-mongodb/LATEST/rate-limit.html">https://www.percona.com/doc/percona-server-for-mongodb/LATEST/rate-limit.html</a></dd>
+</dl>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+    <div class="related row">
+      
+      <ul class="nav nav-pills">
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="concepts/security.html" title="Security Features in Percona Monitoring and Management"
+             >next</a></li>
+        <li class="right" >
+          <a href="conf-mysql.requirements.html" title="MySQL requirements"
+             >previous</a></li>
+        <li><a href="index.html">Percona Monitoring and Management Documentation</a></li> 
+      </ul>
+    </div>
+      </div>
+      <div class="sphinxsidebar  col-md-3 col-md-pull-9">
+        <div class="sphinxsidebarwrapper">
+  
+          {@ product_logo @}          
+
+          {@ product_pdf_download @}
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Configuring MongoDB for Monitoring in <em>PMM Query Analytics</em></a><ul>
+<li><a class="reference internal" href="#setting-up-the-essential-permissions">Setting Up the Essential Permissions</a></li>
+<li><a class="reference internal" href="#enabling-profiling"><code class="docutils literal"><span class="pre">Enabling</span> <span class="pre">Profiling</span></code></a><ul>
+<li><a class="reference internal" href="#enabling-profiling-on-command-line"><code class="docutils literal"><span class="pre">Enabling</span> <span class="pre">Profiling</span> <span class="pre">on</span> <span class="pre">Command</span> <span class="pre">Line</span></code></a></li>
+<li><a class="reference internal" href="#enabling-profiling-in-the-configuration-file"><code class="docutils literal"><span class="pre">Enabling</span> <span class="pre">Profiling</span> <span class="pre">in</span> <span class="pre">the</span> <span class="pre">Configuration</span> <span class="pre">File</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="conf-mysql.requirements.html"
+                        title="previous chapter">MySQL requirements</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="concepts/security.html"
+                        title="next chapter">Security Features in <em>Percona Monitoring and Management</em></a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">jQuery(document).ready(function(){ jQuery('#searchbox').show(0); });</script>
+          {@ product_series @}
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <!-- div class="footer">
+        &copy; Copyright Percona LLC and/or its affiliates 2009-2019.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.4.
+    </div -->
+  </div>
+  </body>

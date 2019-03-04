@@ -1,0 +1,144 @@
+
+
+
+    <title>Getting information about PMM Client &mdash; Percona Monitoring and Management Documentation</title>
+    
+  <head>
+    
+    
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Percona Monitoring and Management Documentation" href="../index.html" />
+    <link rel="next" title="Removing orphaned services" href="client.repair.html" />
+    <link rel="prev" title="Listing monitoring services" href="client.list.html" /> 
+  </head>
+  <body>
+    <div class="container">  
+
+    <div class="document row">
+      <div class="documentwrapper col-md-9 col-md-push-3">
+    <div class="related row">
+      
+      <ul class="nav nav-pills">
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="client.repair.html" title="Removing orphaned services"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="client.list.html" title="Listing monitoring services"
+             accesskey="P">previous</a></li>
+        <li><a href="../index.html">Percona Monitoring and Management Documentation</a></li> 
+      </ul>
+    </div>
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="getting-information-about-pmm-client">
+<span id="pmm-admin-info"></span><h1><a class="reference internal" href="#pmm-admin-info"><span class="std std-ref">Getting information about PMM Client</span></a><a class="headerlink" href="#getting-information-about-pmm-client" title="Permalink to this headline">¶</a></h1>
+<p>Use the <strong class="program">pmm-admin info</strong> command
+to print basic information about PMM Client.</p>
+<p class="rubric" id="pmm-admin-info-usage">USAGE</p>
+<p>Run this command as root or by using the <strong class="program">sudo</strong> command</p>
+<div class="highlight-text" id="code-pmm-admin-info-options"><div class="highlight"><pre><span></span>pmm-admin info [OPTIONS]
+</pre></div>
+</div>
+<p class="rubric" id="pmm-admin-info-options">OPTIONS</p>
+<p>The <strong class="program">pmm-admin info</strong> command does not have its own options,
+but you can use <span class="xref std std-ref">global options that apply to any other command</span></p>
+<p class="rubric" id="pmm-admin-info-output">OUTPUT</p>
+<p>The output provides the following information:</p>
+<ul class="simple">
+<li>Version of <strong class="program">pmm-admin</strong></li>
+<li>PMM Server host address, and local host name and address
+(this can be configured using <a href="#id1"><span class="problematic" id="id2">|pmm-admin.config|_</span></a>)</li>
+<li>System manager that <strong class="program">pmm-admin</strong> uses to manage PMM services</li>
+<li>Go version and runtime information</li>
+</ul>
+<p>For example:</p>
+<div class="highlight-text" id="code-pmm-admin-info"><div class="highlight"><pre><span></span><span class="hll">$ pmm-admin info
+</span>
+PMM Server      | 192.168.100.1
+Client Name     | ubuntu-amd64
+Client Address  | 192.168.200.1
+Service manager | linux-systemd
+
+Go Version      | 1.8
+Runtime Info    | linux/amd64
+</pre></div>
+</div>
+<p>For more information, run
+<strong class="program">pmm-admin info</strong>
+<code class="xref std std-option docutils literal"><span class="pre">--help</span></code>.</p>
+</div>
+
+
+          </div>
+        </div>
+    <div class="related row">
+      
+      <ul class="nav nav-pills">
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="client.repair.html" title="Removing orphaned services"
+             >next</a></li>
+        <li class="right" >
+          <a href="client.list.html" title="Listing monitoring services"
+             >previous</a></li>
+        <li><a href="../index.html">Percona Monitoring and Management Documentation</a></li> 
+      </ul>
+    </div>
+      </div>
+      <div class="sphinxsidebar  col-md-3 col-md-pull-9">
+        <div class="sphinxsidebarwrapper">
+  
+          {@ product_logo @}          
+
+          {@ product_pdf_download @}
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="client.list.html"
+                        title="previous chapter"><code class="docutils literal"><span class="pre">Listing</span> <span class="pre">monitoring</span> <span class="pre">services</span></code></a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="client.repair.html"
+                        title="next chapter"><code class="docutils literal"><span class="pre">Removing</span> <span class="pre">orphaned</span> <span class="pre">services</span></code></a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">jQuery(document).ready(function(){ jQuery('#searchbox').show(0); });</script>
+          {@ product_series @}
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <!-- div class="footer">
+        &copy; Copyright Percona LLC and/or its affiliates 2009-2019.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.4.
+    </div -->
+  </div>
+  </body>

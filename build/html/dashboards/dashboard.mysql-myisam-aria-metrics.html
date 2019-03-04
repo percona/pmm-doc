@@ -1,0 +1,172 @@
+
+
+
+    <title>MySQL MyISAM Aria Metrics Dashboard &mdash; Percona Monitoring and Management Documentation</title>
+    
+  <head>
+    
+    
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Percona Monitoring and Management Documentation" href="../index.html" />
+    <link rel="up" title="Metrics Monitor Dashboards" href="../index.metrics-monitor.dashboard.html" />
+    <link rel="next" title="MySQL MyRocks Metrics Dashboard" href="dashboard.mysql-myrocks-metrics.html" />
+    <link rel="prev" title="MySQL InnoDB Metrics (Advanced) Dashboard" href="dashboard.mysql-innodb-metrics-advanced.html" /> 
+  </head>
+  <body>
+    <div class="container">  
+
+    <div class="document row">
+      <div class="documentwrapper col-md-9 col-md-push-3">
+    <div class="related row">
+      
+      <ul class="nav nav-pills">
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="dashboard.mysql-myrocks-metrics.html" title="MySQL MyRocks Metrics Dashboard"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="dashboard.mysql-innodb-metrics-advanced.html" title="MySQL InnoDB Metrics (Advanced) Dashboard"
+             accesskey="P">previous</a></li>
+        <li><a href="../index.html">Percona Monitoring and Management Documentation</a></li>
+          <li><a href="../index.metrics-monitor.dashboard.html" accesskey="U">Metrics Monitor Dashboards</a></li> 
+      </ul>
+    </div>
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="mysql-myisam-aria-metrics-dashboard">
+<span id="dashboard-mysql-myisam-aria-metrics"></span><h1>MySQL MyISAM Aria Metrics Dashboard<a class="headerlink" href="#mysql-myisam-aria-metrics-dashboard" title="Permalink to this headline">¶</a></h1>
+<p>The MySQL MyISAM Aria Metrics dashboard describes the specific features
+of MariaDB MySQL server: <a class="reference external" href="https://mariadb.com/kb/en/the-mariadb-library/aria-storage-engine/">Aria storage engine</a>, <a class="reference external" href="https://mariadb.com/kb/en/the-mariadb-library/alter-table/">Online DDL (online alter table)</a>,</p>
+<blockquote>
+<div>and <a class="reference external" href="https://mariadb.com/kb/en/the-mariadb-library/defragmenting-innodb-tablespaces/">InnoDB defragmentation patch</a>. This dashboard contains the following metrics:</div></blockquote>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><a class="reference internal" href="#dashboard-mysql-myisam-aria-metrics-aria-storage-engine" id="id2">Aria Storage Engine</a></li>
+<li><a class="reference internal" href="#aria-pagecache-reads-writes" id="id3">Aria Pagecache Reads/Writes</a></li>
+<li><a class="reference internal" href="#aria-pagecache-blocks" id="id4">Aria Pagecache Blocks</a></li>
+<li><a class="reference internal" href="#aria-transactions-log-syncs" id="id5">Aria Transactions Log Syncs</a></li>
+</ul>
+</div>
+<div class="section" id="dashboard-mysql-myisam-aria-metrics-aria-storage-engine">
+<span id="id1"></span><h2><a class="toc-backref" href="#id2">Aria Storage Engine</a><a class="headerlink" href="#dashboard-mysql-myisam-aria-metrics-aria-storage-engine" title="Permalink to this headline">¶</a></h2>
+<p>Aria storage is specific for MariaDB Server. Aria has most of the same
+variables that MyISAM has, but with an Aria prefix. If you use Aria
+instead of MyISAM, then you should make <code class="xref std std-option docutils literal"><span class="pre">key_buffer_size</span></code> smaller and
+aria-pagecache-buffer-size bigger.</p>
+</div>
+<div class="section" id="aria-pagecache-reads-writes">
+<span id="dashboard-mysql-myisam-aria-metrics-aria-pagecache-reads-writes"></span><h2><a class="toc-backref" href="#id3">Aria Pagecache Reads/Writes</a><a class="headerlink" href="#aria-pagecache-reads-writes" title="Permalink to this headline">¶</a></h2>
+<p>This graph is similar to InnoDB buffer pool reads and
+writes. <code class="xref std std-option docutils literal"><span class="pre">aria-pagecache-buffer-size</span></code> is the main cache for aria storage
+engine. If you see high reads and writes (physical IO), i.e. reads is close to
+read requests or writes are close to write requests you may need to increase the
+<code class="xref std std-option docutils literal"><span class="pre">aria-pagecache-buffer-size</span></code> (you may need to decrease other buffers:
+<code class="xref std std-option docutils literal"><span class="pre">key_buffer_size</span></code>, <code class="xref std std-option docutils literal"><span class="pre">innodb_buffer_pool_size</span></code> etc)</p>
+</div>
+<div class="section" id="aria-pagecache-blocks">
+<span id="dashboard-mysql-myisam-aria-metrics-aria-pagecache-blocks"></span><h2><a class="toc-backref" href="#id4">Aria Pagecache Blocks</a><a class="headerlink" href="#aria-pagecache-blocks" title="Permalink to this headline">¶</a></h2>
+<p>This graphs shows the utilization for the aria pagecache.  This is similar to
+InnoDB buffer pool graph. If you see all blocks are used you may consider
+increasing <code class="xref std std-option docutils literal"><span class="pre">aria-pagecache-buffer-size</span></code> (you may need to decrease other
+buffers: <code class="xref std std-option docutils literal"><span class="pre">key_buffer_size</span></code>, <code class="xref std std-option docutils literal"><span class="pre">innodb_buffer_pool_size</span></code> etc)</p>
+</div>
+<div class="section" id="aria-transactions-log-syncs">
+<span id="dashboard-mysql-myisam-aria-metrics-aria-transactions-log-syncs"></span><h2><a class="toc-backref" href="#id5">Aria Transactions Log Syncs</a><a class="headerlink" href="#aria-transactions-log-syncs" title="Permalink to this headline">¶</a></h2>
+<p>This metric is similar to InnoDB log file syncs. If you see lots of log syncs
+and want to relax the durability settings you can change (in seconds) from 30
+(default) to a higher number. It is good to look at the disk IO dashboard as
+well.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p>List of Aria system variables</p>
+<blockquote class="last">
+<div><a class="reference external" href="https://mariadb.com/kb/en/library/aria-system-variables/">https://mariadb.com/kb/en/library/aria-system-variables/</a></div></blockquote>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+    <div class="related row">
+      
+      <ul class="nav nav-pills">
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="dashboard.mysql-myrocks-metrics.html" title="MySQL MyRocks Metrics Dashboard"
+             >next</a></li>
+        <li class="right" >
+          <a href="dashboard.mysql-innodb-metrics-advanced.html" title="MySQL InnoDB Metrics (Advanced) Dashboard"
+             >previous</a></li>
+        <li><a href="../index.html">Percona Monitoring and Management Documentation</a></li>
+          <li><a href="../index.metrics-monitor.dashboard.html" >Metrics Monitor Dashboards</a></li> 
+      </ul>
+    </div>
+      </div>
+      <div class="sphinxsidebar  col-md-3 col-md-pull-9">
+        <div class="sphinxsidebarwrapper">
+  
+          {@ product_logo @}          
+
+          {@ product_pdf_download @}
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">MySQL MyISAM Aria Metrics Dashboard</a><ul>
+<li><a class="reference internal" href="#dashboard-mysql-myisam-aria-metrics-aria-storage-engine">Aria Storage Engine</a></li>
+<li><a class="reference internal" href="#aria-pagecache-reads-writes">Aria Pagecache Reads/Writes</a></li>
+<li><a class="reference internal" href="#aria-pagecache-blocks">Aria Pagecache Blocks</a></li>
+<li><a class="reference internal" href="#aria-transactions-log-syncs">Aria Transactions Log Syncs</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="dashboard.mysql-innodb-metrics-advanced.html"
+                        title="previous chapter">MySQL InnoDB Metrics (Advanced) Dashboard</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="dashboard.mysql-myrocks-metrics.html"
+                        title="next chapter"><em>MySQL MyRocks Metrics</em> Dashboard</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">jQuery(document).ready(function(){ jQuery('#searchbox').show(0); });</script>
+          {@ product_series @}
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <!-- div class="footer">
+        &copy; Copyright Percona LLC and/or its affiliates 2009-2019.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.4.
+    </div -->
+  </div>
+  </body>

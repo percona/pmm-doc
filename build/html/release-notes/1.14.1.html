@@ -1,0 +1,145 @@
+
+
+
+    <title>Percona Monitoring and Management 1.14.1 &mdash; Percona Monitoring and Management Documentation</title>
+    
+  <head>
+    
+    
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Percona Monitoring and Management Documentation" href="../index.html" />
+    <link rel="up" title="Percona Monitoring and Management Release Notes" href="index.html" />
+    <link rel="next" title="Percona Monitoring and Management 1.14.0" href="1.14.0.html" />
+    <link rel="prev" title="Percona Monitoring and Management 1.15.0" href="1.15.0.html" /> 
+  </head>
+  <body>
+    <div class="container">  
+
+    <div class="document row">
+      <div class="documentwrapper col-md-9 col-md-push-3">
+    <div class="related row">
+      
+      <ul class="nav nav-pills">
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="1.14.0.html" title="Percona Monitoring and Management 1.14.0"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="1.15.0.html" title="Percona Monitoring and Management 1.15.0"
+             accesskey="P">previous</a></li>
+        <li><a href="../index.html">Percona Monitoring and Management Documentation</a></li>
+          <li><a href="index.html" accesskey="U">Percona Monitoring and Management Release Notes</a></li> 
+      </ul>
+    </div>
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="percona-monitoring-and-management-1-14-1">
+<span id="id1"></span><h1>Percona Monitoring and Management 1.14.1<a class="headerlink" href="#percona-monitoring-and-management-1-14-1" title="Permalink to this headline">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Date:</th><td class="field-body">September 7, 2018</td>
+</tr>
+</tbody>
+</table>
+<p><em>PMM</em> (<a class="reference external" href="https://www.percona.com/doc/percona-monitoring-and-management/index.html">Percona Monitoring and Management</a>) is a free and open-source platform for managing and monitoring <em>MySQL</em> and <em>MongoDB</em> performance. You can run <em>PMM</em> in your own environment for maximum security and reliability. It provides thorough time-based analysis for <em>MySQL</em> and <em>MongoDB</em> servers to ensure that your data works as efficiently as possible.</p>
+<p>We&#8217;re releasing hotfix 1.14.1 to address three issues found post-release of
+1.14.0:</p>
+<ul>
+<li><p class="first"><a class="reference external" href="https://jira.percona.com/browse/PMM-2963">PMM-2963</a> - Upgrading to PMM 1.14.0 fails due to attempt to create already
+existing Dashboard</p>
+<ul>
+<li><p class="first">Our upgrade script incorrectly tried to create dashboards that already
+existed, and generating failure message:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="n">folder</span> <span class="ow">or</span> <span class="n">dashboard</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">general</span> <span class="n">folder</span> <span class="k">with</span> <span class="n">the</span> <span class="n">same</span> <span class="n">name</span> <span class="n">already</span> <span class="n">exists</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+<li><p class="first"><a class="reference external" href="https://jira.percona.com/browse/PMM-2958">PMM-2958</a> - Grafana did not update to 5.1 when upgrading from versions
+older than 1.11</p>
+<ul class="simple">
+<li>We identified a niche case where PMM installations that were upgraded from
+&lt; 1.11 would fail to upgrade Grafana to correct release 5.1 (Users were
+left on Grafana 5.0)</li>
+</ul>
+</li>
+</ul>
+</div>
+
+
+          </div>
+        </div>
+    <div class="related row">
+      
+      <ul class="nav nav-pills">
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="1.14.0.html" title="Percona Monitoring and Management 1.14.0"
+             >next</a></li>
+        <li class="right" >
+          <a href="1.15.0.html" title="Percona Monitoring and Management 1.15.0"
+             >previous</a></li>
+        <li><a href="../index.html">Percona Monitoring and Management Documentation</a></li>
+          <li><a href="index.html" >Percona Monitoring and Management Release Notes</a></li> 
+      </ul>
+    </div>
+      </div>
+      <div class="sphinxsidebar  col-md-3 col-md-pull-9">
+        <div class="sphinxsidebarwrapper">
+  
+          {@ product_logo @}          
+
+          {@ product_pdf_download @}
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="1.15.0.html"
+                        title="previous chapter">Percona Monitoring and Management 1.15.0</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="1.14.0.html"
+                        title="next chapter">Percona Monitoring and Management 1.14.0</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">jQuery(document).ready(function(){ jQuery('#searchbox').show(0); });</script>
+          {@ product_series @}
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <!-- div class="footer">
+        &copy; Copyright Percona LLC and/or its affiliates 2009-2019.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.4.
+    </div -->
+  </div>
+  </body>

@@ -1,0 +1,159 @@
+
+
+
+    <title>Configuring MySQL 8.0 for PMM &mdash; Percona Monitoring and Management Documentation</title>
+    
+  <head>
+    
+    
+    
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '2.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Percona Monitoring and Management Documentation" href="index.html" />
+    <link rel="next" title="Passing SSL parameters to the mongodb monitoring service" href="manage/client.mongodb.ssl.html" />
+    <link rel="prev" title="Configuring Performance Schema" href="conf-mysql.perf-schema.html" /> 
+  </head>
+  <body>
+    <div class="container">  
+
+    <div class="document row">
+      <div class="documentwrapper col-md-9 col-md-push-3">
+    <div class="related row">
+      
+      <ul class="nav nav-pills">
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="manage/client.mongodb.ssl.html" title="Passing SSL parameters to the mongodb monitoring service"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="conf-mysql.perf-schema.html" title="Configuring Performance Schema"
+             accesskey="P">previous</a></li>
+        <li><a href="index.html">Percona Monitoring and Management Documentation</a></li> 
+      </ul>
+    </div>
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="id1">
+<h1><a class="reference external" href="pmm.conf-mysql.8-0">Configuring MySQL 8.0 for PMM</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>MySQL 8 (in version 8.0.4) changes the way clients are authenticated by
+default. The <code class="xref std std-option docutils literal"><span class="pre">default_authentication_plugin</span></code> parameter is set to
+<code class="docutils literal"><span class="pre">caching_sha2_password</span></code>. This change of the default value implies that MySQL
+drivers must support the SHA-256 authentication. Also, the communication channel
+with MySQL 8 must be encrypted when using <code class="docutils literal"><span class="pre">caching_sha2_password</span></code>.</p>
+<p>The MySQL driver used with PMM does not yet support the SHA-256 authentication.</p>
+<p>With currently supported versions of MySQL, PMM requires that a dedicated MySQL
+user be set up. This MySQL user should be authenticated using the
+<code class="docutils literal"><span class="pre">mysql_native_password</span></code> plugin.  Although MySQL is configured to support SSL
+clients, connections to MySQL Server are not encrypted.</p>
+<p>There are two workarounds to be able to add MySQL Server version 8.0.4
+or higher as a monitoring service to PMM:</p>
+<ol class="arabic simple">
+<li>Alter the MySQL user that you plan to use with PMM</li>
+<li>Change the global MySQL configuration</li>
+</ol>
+<p class="rubric">Altering the MySQL User</p>
+<p>Provided you have already created the MySQL user that you plan to use
+with PMM, alter this user as follows:</p>
+<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="n">mysql</span><span class="o">&gt;</span> <span class="k">ALTER</span> <span class="k">USER</span> <span class="n">pmm</span><span class="o">@</span><span class="s1">&#39;localhost&#39;</span> <span class="n">IDENTIFIED</span> <span class="k">WITH</span> <span class="n">mysql_native_password</span> <span class="k">BY</span> <span class="s1">&#39;$eCR8Tp@s$w*rD&#39;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Then, pass this user to <code class="docutils literal"><span class="pre">pmm-admin</span> <span class="pre">add</span></code> as the value of the <code class="docutils literal"><span class="pre">--user</span></code>
+parameter.</p>
+<p>This is a preferred approach as it only weakens the security of one user.</p>
+<p class="rubric">Changing the global MySQL Configuration</p>
+<p>A less secure approach is to set <code class="xref std std-option docutils literal"><span class="pre">default_authentication_plugin</span></code>
+to the value <strong>mysql_native_password</strong> before adding it as a
+monitoring service. Then, restart your MySQL Server to apply this
+change.</p>
+<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">mysqld</span><span class="p">]</span>
+<span class="n">default_authentication_plugin</span><span class="o">=</span><span class="n">mysql_native_password</span>
+</pre></div>
+</div>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<dl class="last docutils">
+<dt>Creating a MySQL User for PMM</dt>
+<dd><a class="reference internal" href="faq.html#privileges"><span class="std std-ref">What privileges are required to monitor a MySQL instance?</span></a></dd>
+<dt>More information about adding the MySQL query analytics monitoring service</dt>
+<dd><a class="reference internal" href="manage/client.mysql.queries.html#pmm-admin-add-mysql-queries"><span class="std std-ref">Adding MySQL query analytics service</span></a></dd>
+<dt>MySQL Server Blog: MySQL 8.0.4</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">New Default Authentication Plugin</span> <span class="classifier-delimiter">:</span> <span class="classifier">caching_sha2_password</span><dd><a class="reference external" href="https://mysqlserverteam.com/mysql-8-0-4-new-default-authentication-plugin-caching_sha2_password/">https://mysqlserverteam.com/mysql-8-0-4-new-default-authentication-plugin-caching_sha2_password/</a></dd>
+<dt>MySQL Documentation: Authentication Plugins</dt>
+<dd><a class="reference external" href="https://dev.mysql.com/doc/refman/8.0/en/authentication-plugins.html">https://dev.mysql.com/doc/refman/8.0/en/authentication-plugins.html</a></dd>
+<dt>MySQL Documentation: Native Pluggable Authentication</dt>
+<dd><a class="reference external" href="https://dev.mysql.com/doc/refman/8.0/en/native-pluggable-authentication.html">https://dev.mysql.com/doc/refman/8.0/en/native-pluggable-authentication.html</a></dd>
+</dl>
+</div>
+</div>
+
+
+          </div>
+        </div>
+    <div class="related row">
+      
+      <ul class="nav nav-pills">
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="manage/client.mongodb.ssl.html" title="Passing SSL parameters to the mongodb monitoring service"
+             >next</a></li>
+        <li class="right" >
+          <a href="conf-mysql.perf-schema.html" title="Configuring Performance Schema"
+             >previous</a></li>
+        <li><a href="index.html">Percona Monitoring and Management Documentation</a></li> 
+      </ul>
+    </div>
+      </div>
+      <div class="sphinxsidebar  col-md-3 col-md-pull-9">
+        <div class="sphinxsidebarwrapper">
+  
+          {@ product_logo @}          
+
+          {@ product_pdf_download @}
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="conf-mysql.perf-schema.html"
+                        title="previous chapter">Configuring Performance Schema</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="manage/client.mongodb.ssl.html"
+                        title="next chapter">Passing SSL parameters to the mongodb monitoring service</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">jQuery(document).ready(function(){ jQuery('#searchbox').show(0); });</script>
+          {@ product_series @}
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <!-- div class="footer">
+        &copy; Copyright Percona LLC and/or its affiliates 2009-2019.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.4.
+    </div -->
+  </div>
+  </body>

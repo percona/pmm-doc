@@ -1,0 +1,174 @@
+
+
+
+    <title>Percona Monitoring and Management 1.1.0 Beta &mdash; Percona Monitoring and Management Documentation</title>
+    
+  <head>
+    
+    
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Percona Monitoring and Management Documentation" href="../index.html" />
+    <link rel="up" title="Percona Monitoring and Management Release Notes" href="index.html" />
+    <link rel="next" title="Percona Monitoring and Management 1.0.7" href="1.0.7.html" />
+    <link rel="prev" title="Percona Monitoring and Management 1.1.1" href="1.1.1.html" /> 
+  </head>
+  <body>
+    <div class="container">  
+
+    <div class="document row">
+      <div class="documentwrapper col-md-9 col-md-push-3">
+    <div class="related row">
+      
+      <ul class="nav nav-pills">
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="1.0.7.html" title="Percona Monitoring and Management 1.0.7"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="1.1.1.html" title="Percona Monitoring and Management 1.1.1"
+             accesskey="P">previous</a></li>
+        <li><a href="../index.html">Percona Monitoring and Management Documentation</a></li>
+          <li><a href="index.html" accesskey="U">Percona Monitoring and Management Release Notes</a></li> 
+      </ul>
+    </div>
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="percona-monitoring-and-management-1-1-0-beta">
+<span id="beta"></span><h1>Percona Monitoring and Management 1.1.0 Beta<a class="headerlink" href="#percona-monitoring-and-management-1-1-0-beta" title="Permalink to this headline">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Date:</th><td class="field-body">February 7, 2017</td>
+</tr>
+<tr class="field-even field"><th class="field-name">PMM Server:</th><td class="field-body"><a class="reference external" href="https://hub.docker.com/r/perconalab/pmm-server/">https://hub.docker.com/r/perconalab/pmm-server/</a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">PMM Client:</th><td class="field-body"><a class="reference external" href="https://www.percona.com/downloads/TESTING/pmm/">https://www.percona.com/downloads/TESTING/pmm/</a></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This beta release is highly experimental
+with features that are not ready for production.
+Do not upgrade to it from previous versions.
+Use it only in a test environment.</p>
+</div>
+<p>For install instructions, see <span class="xref std std-ref">deploy-pmm</span>.</p>
+<div class="section" id="changes">
+<h2>Changes<a class="headerlink" href="#changes" title="Permalink to this headline">¶</a></h2>
+<p>Introduced Amazon Machine Image (AMI) and VirtualBox images for PMM Server:</p>
+<ul class="simple">
+<li>OVA image for VirtualBox is available from the
+<a class="reference external" href="https://www.percona.com/redir/downloads/TESTING/pmm/">testing download area</a>.</li>
+<li>Public Amazon Machine Image (AMI) is
+<a class="reference external" href="https://console.aws.amazon.com/ec2/v2/home?region=us-east-1#Images:visibility=public-images;imageId=ami-9a0acb8c">ami-9a0acb8c</a>.</li>
+</ul>
+<p><strong>New in PMM Server:</strong></p>
+<ul class="simple">
+<li>Grafana 4.1.1</li>
+<li>Prometheus 1.5.0</li>
+<li>Consul 0.7.3</li>
+<li>Updated the <strong>MongoDB ReplSet</strong> dashboard
+to show the storage engine used by the instance</li>
+<li><a class="reference external" href="https://jira.percona.com/browse/PMM-551">PMM-551</a>: Fixed QAN changing query format
+when a time-based filter was applied to the digest</li>
+</ul>
+<p><strong>New in PMM Client:</strong></p>
+<ul class="simple">
+<li><a class="reference external" href="https://jira.percona.com/browse/PMM-530">PMM-530</a>: Fixed <code class="docutils literal"><span class="pre">pmm-admin</span></code> to support special characters
+in passwords</li>
+<li>Added displaying of original error message
+in <code class="docutils literal"><span class="pre">pmm-admin</span> <span class="pre">config</span></code> output</li>
+</ul>
+<p><strong>Known Issues:</strong></p>
+<ul class="simple">
+<li>Several of the MongoDB metrics related to MongoRocks engine
+do not display correctly.
+This issue will be resolved in the GA production release.</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+    <div class="related row">
+      
+      <ul class="nav nav-pills">
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="1.0.7.html" title="Percona Monitoring and Management 1.0.7"
+             >next</a></li>
+        <li class="right" >
+          <a href="1.1.1.html" title="Percona Monitoring and Management 1.1.1"
+             >previous</a></li>
+        <li><a href="../index.html">Percona Monitoring and Management Documentation</a></li>
+          <li><a href="index.html" >Percona Monitoring and Management Release Notes</a></li> 
+      </ul>
+    </div>
+      </div>
+      <div class="sphinxsidebar  col-md-3 col-md-pull-9">
+        <div class="sphinxsidebarwrapper">
+  
+          {@ product_logo @}          
+
+          {@ product_pdf_download @}
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Percona Monitoring and Management 1.1.0 Beta</a><ul>
+<li><a class="reference internal" href="#changes">Changes</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="1.1.1.html"
+                        title="previous chapter">Percona Monitoring and Management 1.1.1</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="1.0.7.html"
+                        title="next chapter">Percona Monitoring and Management 1.0.7</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">jQuery(document).ready(function(){ jQuery('#searchbox').show(0); });</script>
+          {@ product_series @}
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <!-- div class="footer">
+        &copy; Copyright Percona LLC and/or its affiliates 2009-2019.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.4.
+    </div -->
+  </div>
+  </body>

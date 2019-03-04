@@ -1,0 +1,270 @@
+
+
+
+    <title>Security Features in Percona Monitoring and Management &mdash; Percona Monitoring and Management Documentation</title>
+    
+  <head>
+    
+    
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Percona Monitoring and Management Documentation" href="../index.html" />
+    <link rel="next" title="Running PMM Server via Docker" href="../install/docker.html" />
+    <link rel="prev" title="Configuring MongoDB for Monitoring in PMM Query Analytics" href="../conf-mongodb.html" /> 
+  </head>
+  <body>
+    <div class="container">  
+
+    <div class="document row">
+      <div class="documentwrapper col-md-9 col-md-push-3">
+    <div class="related row">
+      
+      <ul class="nav nav-pills">
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../install/docker.html" title="Running PMM Server via Docker"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="../conf-mongodb.html" title="Configuring MongoDB for Monitoring in PMM Query Analytics"
+             accesskey="P">previous</a></li>
+        <li><a href="../index.html">Percona Monitoring and Management Documentation</a></li> 
+      </ul>
+    </div>
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="security-features-in-pmm-name">
+<span id="pmm-security"></span><h1>Security Features in <em>Percona Monitoring and Management</em><a class="headerlink" href="#security-features-in-pmm-name" title="Permalink to this headline">¶</a></h1>
+<p>You can protect PMM from unauthorized access using the following security
+features:</p>
+<ul class="simple">
+<li>SSL encryption secures traffic between PMM Client and PMM Server</li>
+<li>HTTP password protection adds authentication when accessing the PMM Server
+web interface</li>
+</ul>
+<p>In this chapter</p>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><a class="reference internal" href="#enabling-ssl-encryption" id="id1"><a class="reference internal" href="#pmm-security-ssl-encryption-enabling"><span class="std std-ref">Enabling SSL Encryption</span></a></a><ul>
+<li><a class="reference internal" href="#valid-certificates" id="id2"><a class="reference internal" href="#pmm-security-valid-certificate"><span class="std std-ref">Valid certificates</span></a></a></li>
+<li><a class="reference internal" href="#self-signed-certificates" id="id3"><a class="reference internal" href="#pmm-security-certificate-self-signed"><span class="std std-ref">Self-signed certificates</span></a></a></li>
+<li><a class="reference internal" href="#enabling-ssl-when-connecting-pmm-client-to-pmm-server" id="id4"><a class="reference internal" href="#pmm-security-pmm-client-pmm-server-ssl-enabling"><span class="std std-ref">Enabling SSL when connecting PMM Client to PMM Server</span></a></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#enabling-password-protection" id="id5"><a class="reference internal" href="#pmm-security-password-protection-enabling"><span class="std std-ref">Enabling Password Protection</span></a></a></li>
+<li><a class="reference internal" href="#combining-security-features" id="id6"><a class="reference internal" href="#pmm-security-combining"><span class="std std-ref">Combining Security Features</span></a></a></li>
+</ul>
+</div>
+<div class="section" id="enabling-ssl-encryption">
+<span id="pmm-security-ssl-encryption-enabling"></span><h2><a class="toc-backref" href="#id1"><a class="reference internal" href="#pmm-security-ssl-encryption-enabling"><span class="std std-ref">Enabling SSL Encryption</span></a></a><a class="headerlink" href="#enabling-ssl-encryption" title="Permalink to this headline">¶</a></h2>
+<p>You can encrypt traffic between PMM Client and PMM Server using SSL
+certificates.</p>
+<div class="section" id="valid-certificates">
+<span id="pmm-security-valid-certificate"></span><h3><a class="toc-backref" href="#id2"><a class="reference internal" href="#pmm-security-valid-certificate"><span class="std std-ref">Valid certificates</span></a></a><a class="headerlink" href="#valid-certificates" title="Permalink to this headline">¶</a></h3>
+<p>To use a valid SSL certificate, mount the directory with the certificate
+files to <code class="file docutils literal"><span class="pre">/srv/nginx/</span></code> when <a class="reference internal" href="../install/docker.setting-up.html#server-container"><span class="std std-ref">running the PMM Server container</span></a>.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ docker run -d -p <span class="m">443</span>:443 <span class="se">\</span>
+  --volumes-from pmm-data <span class="se">\</span>
+  --name pmm-server <span class="se">\</span>
+  -v /etc/pmm-certs:/srv/nginx <span class="se">\</span>
+  --restart always <span class="se">\</span>
+  percona/pmm-server:latest
+</pre></div>
+</div>
+<p>The directory (<code class="file docutils literal"><span class="pre">/etc/pmm-certs</span></code> in this example) that you intend to mount must
+contain the following files:</p>
+<ul class="simple">
+<li><code class="file docutils literal"><span class="pre">certificate.crt</span></code></li>
+<li><code class="file docutils literal"><span class="pre">certificate.key</span></code></li>
+<li><code class="file docutils literal"><span class="pre">ca-certs.pem</span></code></li>
+<li><code class="file docutils literal"><span class="pre">dhparam.pem</span></code></li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">To enable SSL encryption, The container publishes port <em>443</em> instead
+of <em>80</em>.</p>
+</div>
+<p>Alternatively, you can use <strong class="program">docker cp</strong> to copy the files to an already existing <code class="xref std std-option docutils literal"><span class="pre">pmm-server</span></code>
+container.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ docker cp certificate.crt pmm-server:/srv/nginx/certificate.crt
+$ docker cp certificate.key pmm-server:/srv/nginx/certificate.key
+$ docker cp ca-certs.pem pmm-server:/srv/nginx/ca-certs.pem
+$ docker cp dhparam.pem pmm-server:/srv/nginx/dhparam.pem
+</pre></div>
+</div>
+<p>This example assumes that you have changed to the directory that contains the
+certificate files.</p>
+</div>
+<div class="section" id="self-signed-certificates">
+<span id="pmm-security-certificate-self-signed"></span><h3><a class="toc-backref" href="#id3"><a class="reference internal" href="#pmm-security-certificate-self-signed"><span class="std std-ref">Self-signed certificates</span></a></a><a class="headerlink" href="#self-signed-certificates" title="Permalink to this headline">¶</a></h3>
+<p>The PMM Server images (Docker, OVF, and AMI) already include self-signed
+certificates. To be able to use them in your Docker container, make sure to
+publish the container&#8217;s port <em>443</em> to the host&#8217;s port <em>443</em> when running the
+<strong class="program">docker run</strong> command.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ docker run -d <span class="se">\</span>
+   -p <span class="m">443</span>:443 <span class="se">\</span>
+   --volumes-from pmm-data <span class="se">\</span>
+   --name pmm-server <span class="se">\</span>
+   --restart always <span class="se">\</span>
+   percona/pmm-server:latest
+</pre></div>
+</div>
+</div>
+<div class="section" id="enabling-ssl-when-connecting-pmm-client-to-pmm-server">
+<span id="pmm-security-pmm-client-pmm-server-ssl-enabling"></span><h3><a class="toc-backref" href="#id4"><a class="reference internal" href="#pmm-security-pmm-client-pmm-server-ssl-enabling"><span class="std std-ref">Enabling SSL when connecting PMM Client to PMM Server</span></a></a><a class="headerlink" href="#enabling-ssl-when-connecting-pmm-client-to-pmm-server" title="Permalink to this headline">¶</a></h3>
+<p>Then, you need to enable SSL when <a class="reference internal" href="../install/clients.connecting.html#deploy-pmm-client-server-connecting"><span class="std std-ref">connecting a PMM Client to a PMM Server</span></a>.  If you purchased the certificate from a
+certificate authority (CA):</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ pmm-admin config --server <span class="m">192</span>.168.100.1 --server-ssl
+</pre></div>
+</div>
+<p>If you generated a self-signed certificate:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ pmm-admin config --server <span class="m">192</span>.168.100.1 --server-insecure-ssl
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="enabling-password-protection">
+<span id="pmm-security-password-protection-enabling"></span><h2><a class="toc-backref" href="#id5"><a class="reference internal" href="#pmm-security-password-protection-enabling"><span class="std std-ref">Enabling Password Protection</span></a></a><a class="headerlink" href="#enabling-password-protection" title="Permalink to this headline">¶</a></h2>
+<p>You can set the password for accessing the PMM Server web interface by passing
+the <a class="reference internal" href="../glossary.option.html#cmdoption-arg-SERVER_PASSWORD"><code class="xref std std-option docutils literal"><span class="pre">SERVER_PASSWORD</span></code></a> environment variable when
+<a class="reference internal" href="../install/docker.setting-up.html#server-container"><span class="std std-ref">creating and running the PMM Server container</span></a>.</p>
+<p>To set the environment variable, use the <code class="docutils literal"><span class="pre">-e</span></code> option.</p>
+<p>By default, the user name is <code class="docutils literal"><span class="pre">pmm</span></code>. You can change it by passing the
+following example uses an insecure port 80 which is typically used for HTTP
+connections.</p>
+<p>Run the following commands as root or by using the <strong class="program">sudo</strong> command.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ docker run -d -p <span class="m">80</span>:80 <span class="se">\</span>
+  --volumes-from pmm-data <span class="se">\</span>
+  --name pmm-server <span class="se">\</span>
+  -e <span class="nv">SERVER_USER</span><span class="o">=</span>jsmith <span class="se">\</span>
+  -e <span class="nv">SERVER_PASSWORD</span><span class="o">=</span>SomeR4ndom-Pa<span class="nv">$$</span>w0rd <span class="se">\</span>
+  --restart always <span class="se">\</span>
+  percona/pmm-server:latest
+</pre></div>
+</div>
+<p>PMM Client uses the same credentials to communicate with PMM Server.  If you
+set the user name and password as described, specify them when <a class="reference internal" href="../install/clients.connecting.html#deploy-pmm-client-server-connecting"><span class="std std-ref">connecting
+a PMM Client to a PMM Server</span></a>:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ pmm-admin config --server <span class="m">192</span>.168.100.1 --server-user jsmith --server-password pass1234
+</pre></div>
+</div>
+</div>
+<div class="section" id="combining-security-features">
+<span id="pmm-security-combining"></span><h2><a class="toc-backref" href="#id6"><a class="reference internal" href="#pmm-security-combining"><span class="std std-ref">Combining Security Features</span></a></a><a class="headerlink" href="#combining-security-features" title="Permalink to this headline">¶</a></h2>
+<p>You can enable both HTTP password protection and SSL encryption by combining the
+corresponding options.</p>
+<p>The following example shows how you might <a class="reference internal" href="../install/docker.setting-up.html#server-container"><span class="std std-ref">run the PMM Server container</span></a>:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ docker run -d -p <span class="m">443</span>:443 <span class="se">\</span>
+  --volumes-from pmm-data <span class="se">\</span>
+  --name pmm-server <span class="se">\</span>
+  -e <span class="nv">SERVER_USER</span><span class="o">=</span>jsmith <span class="se">\</span>
+  -e <span class="nv">SERVER_PASSWORD</span><span class="o">=</span>SomeR4ndom-Pa<span class="nv">$$</span>w0rd <span class="se">\</span>
+  -v /etc/pmm-certs:/srv/nginx <span class="se">\</span>
+  --restart always <span class="se">\</span>
+  percona/pmm-server:latest
+</pre></div>
+</div>
+<p>The following example shows how you might <a class="reference internal" href="../install/clients.connecting.html#deploy-pmm-client-server-connecting"><span class="std std-ref">connect to PMM Server</span></a>:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ pmm-admin config --server <span class="m">192</span>.168.100.1 --server-user jsmith --server-password pass1234 --server-insecure-ssl
+</pre></div>
+</div>
+<p>To see which security features are enabled, run either <strong class="program">pmm-admin ping</strong>,
+<strong class="program">pmm-admin config</strong>, <strong class="program">pmm-admin info</strong>, or <strong class="program">pmm-admin list</strong> and look at the server
+address field. For example:</p>
+<div class="highlight-text"><div class="highlight"><pre><span></span>$ pmm-admin ping
+OK, PMM server is alive.
+
+PMM Server      | 192.168.100.1 (insecure SSL, password-protected)
+Client Name     | centos7.vm
+Client Address  | 192.168.200.1
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+    <div class="related row">
+      
+      <ul class="nav nav-pills">
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../install/docker.html" title="Running PMM Server via Docker"
+             >next</a></li>
+        <li class="right" >
+          <a href="../conf-mongodb.html" title="Configuring MongoDB for Monitoring in PMM Query Analytics"
+             >previous</a></li>
+        <li><a href="../index.html">Percona Monitoring and Management Documentation</a></li> 
+      </ul>
+    </div>
+      </div>
+      <div class="sphinxsidebar  col-md-3 col-md-pull-9">
+        <div class="sphinxsidebarwrapper">
+  
+          {@ product_logo @}          
+
+          {@ product_pdf_download @}
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Security Features in <em>Percona Monitoring and Management</em></a><ul>
+<li><a class="reference internal" href="#enabling-ssl-encryption"><code class="docutils literal"><span class="pre">Enabling</span> <span class="pre">SSL</span> <span class="pre">Encryption</span></code></a><ul>
+<li><a class="reference internal" href="#valid-certificates"><code class="docutils literal"><span class="pre">Valid</span> <span class="pre">certificates</span></code></a></li>
+<li><a class="reference internal" href="#self-signed-certificates"><code class="docutils literal"><span class="pre">Self-signed</span> <span class="pre">certificates</span></code></a></li>
+<li><a class="reference internal" href="#enabling-ssl-when-connecting-pmm-client-to-pmm-server"><code class="docutils literal"><span class="pre">Enabling</span> <span class="pre">SSL</span> <span class="pre">when</span> <span class="pre">connecting</span> <span class="pre">PMM</span> <span class="pre">Client</span> <span class="pre">to</span> <span class="pre">PMM</span> <span class="pre">Server</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#enabling-password-protection"><code class="docutils literal"><span class="pre">Enabling</span> <span class="pre">Password</span> <span class="pre">Protection</span></code></a></li>
+<li><a class="reference internal" href="#combining-security-features"><code class="docutils literal"><span class="pre">Combining</span> <span class="pre">Security</span> <span class="pre">Features</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../conf-mongodb.html"
+                        title="previous chapter">Configuring MongoDB for Monitoring in <em>PMM Query Analytics</em></a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../install/docker.html"
+                        title="next chapter">Running PMM Server via Docker</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">jQuery(document).ready(function(){ jQuery('#searchbox').show(0); });</script>
+          {@ product_series @}
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <!-- div class="footer">
+        &copy; Copyright Percona LLC and/or its affiliates 2009-2019.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.4.
+    </div -->
+  </div>
+  </body>

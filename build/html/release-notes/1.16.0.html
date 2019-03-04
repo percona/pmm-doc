@@ -1,0 +1,288 @@
+
+
+
+    <title>Percona Monitoring and Management 1.16.0 &mdash; Percona Monitoring and Management Documentation</title>
+    
+  <head>
+    
+    
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Percona Monitoring and Management Documentation" href="../index.html" />
+    <link rel="up" title="Percona Monitoring and Management Release Notes" href="index.html" />
+    <link rel="next" title="Percona Monitoring and Management 1.15.0" href="1.15.0.html" />
+    <link rel="prev" title="Percona Monitoring and Management 1.17.0" href="1.17.0.html" /> 
+  </head>
+  <body>
+    <div class="container">  
+
+    <div class="document row">
+      <div class="documentwrapper col-md-9 col-md-push-3">
+    <div class="related row">
+      
+      <ul class="nav nav-pills">
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="1.15.0.html" title="Percona Monitoring and Management 1.15.0"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="1.17.0.html" title="Percona Monitoring and Management 1.17.0"
+             accesskey="P">previous</a></li>
+        <li><a href="../index.html">Percona Monitoring and Management Documentation</a></li>
+          <li><a href="index.html" accesskey="U">Percona Monitoring and Management Release Notes</a></li> 
+      </ul>
+    </div>
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="percona-monitoring-and-management-1-16-0">
+<span id="id1"></span><h1>Percona Monitoring and Management 1.16.0<a class="headerlink" href="#percona-monitoring-and-management-1-16-0" title="Permalink to this headline">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Date:</th><td class="field-body">November 1, 2018</td>
+</tr>
+</tbody>
+</table>
+<p><em>PMM</em> (<a class="reference external" href="https://www.percona.com/doc/percona-monitoring-and-management/index.html">Percona Monitoring and Management</a>) is a free and open-source platform for managing and monitoring <em>MySQL</em>, <em>MongoDB</em>, and PostgreSQL performance. You can run <em>PMM</em> in your own environment for maximum security and reliability. It provides thorough time-based analysis for <em>MySQL</em> and <em>MongoDB</em> servers to ensure that your data works as efficiently as possible.</p>
+<p>This release offers three new features for both the Community and Percona Customers:</p>
+<ul class="simple">
+<li>Agentless PMM support - Use PMM Server to gather Database Metrics and Queries
+from remote instances with no PMM Client installed!</li>
+<li>Query Analytics + Metric Series – See Related Database activity alongside queries</li>
+<li>Simplify metrics collections</li>
+</ul>
+<p>We addressed 11 new features and improvements, and fixed 21 bugs.</p>
+<div class="section" id="agentless-pmm-support-for-mysql-and-postgresql">
+<h2>Agentless PMM support for MySQL and PostgreSQL<a class="headerlink" href="#agentless-pmm-support-for-mysql-and-postgresql" title="Permalink to this headline">¶</a></h2>
+<p>You’re now able to connect PMM Server to your <em>MySQL</em> and PostgreSQL
+instances, whether they run in a cloud DBaaS environment, or under Operating
+Systems which are not natively supported by PMM (e.g. Windows), or when you
+do not have shell access to the server. This can help you get up and running
+with PMM using minimal configuration and zero client installation, however be
+aware there are limitations - <em>there won’t be any host-level dashboards
+populated for these nodes</em> since we don’t attempt to connect to the provider’s
+API nor are we granted access to the instance in order to deploy an exporter.</p>
+<div class="section" id="how-to-use">
+<h3>How to use<a class="headerlink" href="#how-to-use" title="Permalink to this headline">¶</a></h3>
+<p>You’ll be able to collect Metrics and Queries from <em>MySQL</em>, and Metrics from
+PostgreSQL.  You can add remote instances by selecting the <em>PMM Add Instance</em>
+item in a <span class="guilabel">PMM Dropdown</span> group of the system menu:</p>
+<div class="figure">
+<img alt="../_images/1.16.0-1.png" src="../_images/1.16.0-1.png" />
+</div>
+<p>where you will then have the opportunity to add a Remote MySQL or Remote
+PostgreSQL instance:</p>
+<div class="figure">
+<img alt="../_images/1.16.0-2.png" src="../_images/1.16.0-2.png" />
+</div>
+<p>You’ll add the instance by supplying just the Hostname, database Username and
+Password (and optional Port and Name):</p>
+<div class="figure">
+<img alt="../_images/1.16.0-3.png" src="../_images/1.16.0-3.png" />
+</div>
+<p>Also new as part of this release is the ability to display nodes you’ve added,
+on screen <strong>RDS and Remote Instances</strong>:</p>
+<div class="figure">
+<img alt="../_images/1.16.0-4.png" src="../_images/1.16.0-4.png" />
+</div>
+</div>
+<div class="section" id="server-activity-metrics-in-the-pmm-query-analytics-dashboard">
+<h3>Server activity metrics in the PMM Query Analytics dashboard<a class="headerlink" href="#server-activity-metrics-in-the-pmm-query-analytics-dashboard" title="Permalink to this headline">¶</a></h3>
+<p>The Query Analytics dashboard now shows host and database activity graphs linked
+to the queries listed in a summary table.  This brings a view of System Activity
+(CPU, Disk, and Network) and Database Server Activity (Connections, Queries per
+Second, and Threads Running) to help you better pinpoint query pileups and other
+bottlenecks.</p>
+<img src="https://www.percona.com/blog/wp-content/uploads/2018/12/1.16.0-5-1.gif" alt="PMM Query Analytics dashboard"></div>
+<div class="section" id="extending-metrics-with-node-exporter-textfile-collector">
+<h3>Extending metrics with node_exporter textfile collector<a class="headerlink" href="#extending-metrics-with-node-exporter-textfile-collector" title="Permalink to this headline">¶</a></h3>
+<p>While PMM provides an excellent solution for system monitoring, sometimes you
+may have the need for a metric that’s not present in the list of
+<code class="docutils literal"><span class="pre">node_exporter</span></code> metrics out of the box. There is a simple method to extend the
+list of available metrics without modifying the <code class="docutils literal"><span class="pre">node_exporter</span></code> code. It is
+based on the textfile collector.  We’ve enabled this collector as on by default,
+and it is deployed as part of <code class="docutils literal"><span class="pre">linux:metrics</span></code> in PMM Client.</p>
+<p>The default directory for reading text files with the metrics is
+<code class="docutils literal"><span class="pre">/usr/local/percona/pmm-client/textfile-collector</span></code>, and the exporter reads
+files from it with the <code class="docutils literal"><span class="pre">.prom</span></code> extension. By default it contains an example
+file  <code class="docutils literal"><span class="pre">example.prom</span></code> which has commented contents and can be used as a
+template.</p>
+<p>You are responsible for running a cronjob or other regular process to generate
+the metric series data and write it to this directory.</p>
+<div class="section" id="example-collecting-docker-container-information">
+<h4>Example – collecting docker container information<a class="headerlink" href="#example-collecting-docker-container-information" title="Permalink to this headline">¶</a></h4>
+<p>This example will show you how to collect the number of running and stopped
+docker containers on a host. It uses a <code class="docutils literal"><span class="pre">crontab</span></code> task, set with the following
+lines in the cron configuration file (e.g. in <code class="docutils literal"><span class="pre">/etc/crontab</span></code>):</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">*/</span><span class="mi">1</span> <span class="o">*</span> <span class="o">*</span> <span class="o">*</span> <span class="o">*</span>     <span class="n">root</span>   <span class="n">echo</span> <span class="o">-</span><span class="n">n</span> <span class="s2">&quot;&quot;</span> <span class="o">&gt;</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">docker_all</span><span class="o">.</span><span class="n">prom</span><span class="p">;</span> <span class="n">docker</span> <span class="n">ps</span> <span class="o">-</span><span class="n">a</span> <span class="o">-</span><span class="n">q</span> <span class="o">|</span> <span class="n">wc</span> <span class="o">-</span><span class="n">l</span> <span class="o">|</span> <span class="n">xargs</span> <span class="n">echo</span> <span class="n">node_docker_containers_total</span> <span class="o">&gt;&gt;</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">percona</span><span class="o">/</span><span class="n">pmm</span><span class="o">-</span><span class="n">client</span><span class="o">/</span><span class="n">docker_all</span><span class="o">.</span><span class="n">prom</span><span class="p">;</span>
+<span class="o">*/</span><span class="mi">1</span> <span class="o">*</span> <span class="o">*</span> <span class="o">*</span> <span class="o">*</span>     <span class="n">root</span>   <span class="n">echo</span> <span class="o">-</span><span class="n">n</span> <span class="s2">&quot;&quot;</span> <span class="o">&gt;</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">docker_running</span><span class="o">.</span><span class="n">prom</span><span class="p">;</span> <span class="n">docker</span> <span class="n">ps</span> <span class="o">|</span> <span class="n">wc</span> <span class="o">-</span><span class="n">l</span> <span class="o">|</span> <span class="n">xargs</span> <span class="n">echo</span> <span class="n">node_docker_containers_running_total</span> <span class="o">&gt;&gt;</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">percona</span><span class="o">/</span><span class="n">pmm</span><span class="o">-</span><span class="n">client</span><span class="o">/</span><span class="n">docker_running</span><span class="o">.</span><span class="n">prom</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>The result of the commands is placed into the <code class="docutils literal"><span class="pre">docker_all.prom</span></code> and
+<code class="docutils literal"><span class="pre">docker_running.prom</span></code> files and read by exporter and will create two new
+metric series named <code class="docutils literal"><span class="pre">node_docker_containers_total</span></code> and
+<code class="docutils literal"><span class="pre">node_docker_containers_running_total</span></code>, which we’ll then plot on a graph:</p>
+<img alt="../_images/1.16.0-6.png" src="../_images/1.16.0-6.png" />
+</div>
+</div>
+</div>
+<div class="section" id="new-features-and-improvements">
+<h2>New Features and Improvements<a class="headerlink" href="#new-features-and-improvements" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="https://jira.percona.com/browse/PMM-3195">PMM-3195</a>: Remove Color scheme switch in favor of the UI Theme chooser in
+Preferences</li>
+<li><a class="reference external" href="https://jira.percona.com/browse/PMM-3194">PMM-3194</a>: Change link for “Where do I get the security credentials for
+my Amazon RDS DB instance?”</li>
+<li><a class="reference external" href="https://jira.percona.com/browse/PMM-3189">PMM-3189</a>: Include Remote MySQL &amp; PostgreSQL instance logs into PMM
+Server logs.zip system</li>
+<li><a class="reference external" href="https://jira.percona.com/browse/PMM-3166">PMM-3166</a>: Convert status integers to strings on ProxySQL Overview
+Dashboard – Thanks, <a class="reference external" href="https://github.com/impimp">Iwo Panowicz</a> for  <a class="reference external" href="https://github.com/percona/grafana-dashboards/pull/239">https://github.com/percona/grafana-dashboards/pull/239</a></li>
+<li><a class="reference external" href="https://jira.percona.com/browse/PMM-3133">PMM-3133</a>: Include Metric Series on Query Analytics Dashboard</li>
+<li><a class="reference external" href="https://jira.percona.com/browse/PMM-3078">PMM-3078</a>: Generate warning “how to troubleshoot postgresql:metrics”
+after failed pmm-admin add postgresql execution</li>
+<li><a class="reference external" href="https://jira.percona.com/browse/PMM-3061">PMM-3061</a>: Provide Ability to Monitor Remote MySQL and PostgreSQL
+Instances</li>
+<li><a class="reference external" href="https://jira.percona.com/browse/PMM-2888">PMM-2888</a>: Enable Textfile Collector by Default in node_exporter</li>
+<li><a class="reference external" href="https://jira.percona.com/browse/PMM-2880">PMM-2880</a>: Use consistent favicon (Percona logo) across all distribution
+methods</li>
+<li><a class="reference external" href="https://jira.percona.com/browse/PMM-2306">PMM-2306</a>: Reconfigure instance automatically after the EBS volume size
+increase</li>
+<li><a class="reference external" href="https://jira.percona.com/browse/PMM-1358">PMM-1358</a>: Improve Tooltips on Disk Space Dashboard – thanks, <a class="reference external" href="https://www.percona.com/blog/author/corrado-pandiani/">Corrado Pandiani</a> for texts</li>
+</ul>
+</div>
+<div class="section" id="fixed-bugs">
+<h2>Fixed Bugs<a class="headerlink" href="#fixed-bugs" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="https://jira.percona.com/browse/PMM-3202">PMM-3202</a>: Cannot add remote PostgreSQL to monitoring without specified
+dbname</li>
+<li><a class="reference external" href="https://jira.percona.com/browse/PMM-3186">PMM-3186</a>: Strange “Quick ranges” tag appears when you hover over
+documentation links on PMM Add Instance screen</li>
+<li><a class="reference external" href="https://jira.percona.com/browse/PMM-3182">PMM-3182</a>: Some sections for MongoDB are collapsed by default</li>
+<li><a class="reference external" href="https://jira.percona.com/browse/PMM-3171">PMM-3171</a>: Remote RDS instance cannot be deleted</li>
+<li><a class="reference external" href="https://jira.percona.com/browse/PMM-3159">PMM-3159</a>: Problem with enabling RDS instance</li>
+<li><a class="reference external" href="https://jira.percona.com/browse/PMM-3127">PMM-3127</a>: “Expand all” button affects JSON in all queries instead of the
+selected one</li>
+<li><a class="reference external" href="https://jira.percona.com/browse/PMM-3126">PMM-3126</a>: Last check displays locale format of the date</li>
+<li><a class="reference external" href="https://jira.percona.com/browse/PMM-3097">PMM-3097</a>: Update home dashboard to support PostgreSQL nodes in
+Environment Overview</li>
+<li><a class="reference external" href="https://jira.percona.com/browse/PMM-3091">PMM-3091</a>: postgres_exporter typo</li>
+<li><a class="reference external" href="https://jira.percona.com/browse/PMM-3090">PMM-3090</a>: TLS handshake error in PostgreSQL metric</li>
+<li><a class="reference external" href="https://jira.percona.com/browse/PMM-3088">PMM-3088</a>: It’s possible to downgrade PMM from Home dashboard</li>
+<li><a class="reference external" href="https://jira.percona.com/browse/PMM-3072">PMM-3072</a>: Copy to clipboard is not visible for JSON in case of long
+queries</li>
+<li><a class="reference external" href="https://jira.percona.com/browse/PMM-3038">PMM-3038</a>: Error adding MySQL queries when options for mysqld_exporters
+are used</li>
+<li><a class="reference external" href="https://jira.percona.com/browse/PMM-3028">PMM-3028</a>: Mark points are hidden if an annotation isn’t added in advance</li>
+<li><a class="reference external" href="https://jira.percona.com/browse/PMM-3027">PMM-3027</a>: Number of vCPUs for RDS is displayed incorrectly – report and
+proposal from <a class="reference external" href="https://www.percona.com/blog/author/janos-ruszo/">Janos Ruszo</a></li>
+<li><a class="reference external" href="https://jira.percona.com/browse/PMM-2762">PMM-2762</a>: Page refresh makes Search condition lost and shows all queries</li>
+<li><a class="reference external" href="https://jira.percona.com/browse/PMM-2483">PMM-2483</a>: LVM in the PMM Server AMI is poorly configured/documented –
+reported by <a class="reference external" href="https://jira.percona.com/secure/ViewProfile.jspa?name=olivier%40ookla.com">Olivier Mignault</a> and lot of people involved.  Special thanks to  <a class="reference external" href="https://jira.percona.com/secure/ViewProfile.jspa?name=schneiderdba%40gmail.com">Chris Schneider</a> for checking with fix options</li>
+<li><a class="reference external" href="https://jira.percona.com/browse/PMM-2003">PMM-2003</a>: Delete all info related to external exporters on pmm-admin
+list output</li>
+</ul>
+</div>
+<div class="section" id="how-to-get-pmm-server">
+<h2>How to get PMM Server<a class="headerlink" href="#how-to-get-pmm-server" title="Permalink to this headline">¶</a></h2>
+<p>PMM is available for installation using three methods:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://hub.docker.com/r/percona/pmm-server/">Docker Hub</a> – <code class="docutils literal"><span class="pre">docker</span> <span class="pre">pull</span> <span class="pre">percona/pmm-server</span></code> – <a class="reference external" href="https://www.percona.com/doc/percona-monitoring-and-management/deploy/server/docker.html">Documentation</a></li>
+<li><a class="reference external" href="https://aws.amazon.com/marketplace/pp/B077J7FYGX">AWS Marketplace</a> – <a class="reference external" href="https://www.percona.com/doc/percona-monitoring-and-management/deploy/server/ami.html">Documentation</a></li>
+<li><a class="reference external" href="https://www.percona.com/downloads/pmm/">Open Virtualization Format (OVF)</a> – <a class="reference external" href="https://www.percona.com/doc/percona-monitoring-and-management/deploy/server/virtual-appliance.html">Documentation</a></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+    <div class="related row">
+      
+      <ul class="nav nav-pills">
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="1.15.0.html" title="Percona Monitoring and Management 1.15.0"
+             >next</a></li>
+        <li class="right" >
+          <a href="1.17.0.html" title="Percona Monitoring and Management 1.17.0"
+             >previous</a></li>
+        <li><a href="../index.html">Percona Monitoring and Management Documentation</a></li>
+          <li><a href="index.html" >Percona Monitoring and Management Release Notes</a></li> 
+      </ul>
+    </div>
+      </div>
+      <div class="sphinxsidebar  col-md-3 col-md-pull-9">
+        <div class="sphinxsidebarwrapper">
+  
+          {@ product_logo @}          
+
+          {@ product_pdf_download @}
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Percona Monitoring and Management 1.16.0</a><ul>
+<li><a class="reference internal" href="#agentless-pmm-support-for-mysql-and-postgresql">Agentless PMM support for MySQL and PostgreSQL</a><ul>
+<li><a class="reference internal" href="#how-to-use">How to use</a></li>
+<li><a class="reference internal" href="#server-activity-metrics-in-the-pmm-query-analytics-dashboard">Server activity metrics in the PMM Query Analytics dashboard</a></li>
+<li><a class="reference internal" href="#extending-metrics-with-node-exporter-textfile-collector">Extending metrics with node_exporter textfile collector</a><ul>
+<li><a class="reference internal" href="#example-collecting-docker-container-information">Example – collecting docker container information</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#new-features-and-improvements">New Features and Improvements</a></li>
+<li><a class="reference internal" href="#fixed-bugs">Fixed Bugs</a></li>
+<li><a class="reference internal" href="#how-to-get-pmm-server">How to get PMM Server</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="1.17.0.html"
+                        title="previous chapter">Percona Monitoring and Management 1.17.0</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="1.15.0.html"
+                        title="next chapter">Percona Monitoring and Management 1.15.0</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">jQuery(document).ready(function(){ jQuery('#searchbox').show(0); });</script>
+          {@ product_series @}
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <!-- div class="footer">
+        &copy; Copyright Percona LLC and/or its affiliates 2009-2019.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.4.
+    </div -->
+  </div>
+  </body>
