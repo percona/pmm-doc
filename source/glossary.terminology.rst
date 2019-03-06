@@ -5,8 +5,8 @@ Terminology Reference
 
 .. _PMM-annotation:
 
-:ref:`PMM annotation <PMM-annotation>`
-
+`PMM annotation <PMM-annotation>`_
+--------------------------------------------------------------------------------
    A feature of |pmm-server| which adds a special mark to all
    dashboards and signifies an important event in your
    application. Annotations are added on the |pmm-client| by using
@@ -20,8 +20,8 @@ Terminology Reference
 
 .. _PMM-user-permissions-for-AWS:
 
-:ref:`PMM user permissions for AWS <PMM-user-permissions-for-AWS>`
-
+`PMM user permissions for AWS <PMM-user-permissions-for-AWS>`_
+--------------------------------------------------------------------------------
       When creating a `IAM user
       <https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_SettingUp.html#CHAP_SettingUp.IAM>`_
       for |amazon-rds| DB instance that you intend to monitor in PMM, you need to set all
@@ -37,8 +37,8 @@ Terminology Reference
 
 .. _Data-retention:
 
-:ref:`Data retention <data-retention>`
-
+`Data retention <data-retention>`_
+--------------------------------------------------------------------------------
       By default, |prometheus| stores time-series data for 30 days,
       and :ref:`QAN <QAN>` stores query data for 8 days.
 
@@ -58,14 +58,14 @@ Terminology Reference
 
 .. _Default-ports:
 
-:ref:`Default ports <default-ports>`
-
+`Default ports <default-ports>`_
+--------------------------------------------------------------------------------
       See :ref:`Ports <Ports>`.
 
 .. _Ports:
 
-:ref:`Ports <Ports>`
-
+`Ports <Ports>`_
+--------------------------------------------------------------------------------
       The following ports must be open to enable communication between
       the :ref:`PMM Server <PMM-Server>` and :ref:`PMM clients <PMM-Client>`.
 
@@ -94,8 +94,8 @@ Terminology Reference
 
 .. _Telemetry:
 
-:ref:`Telemetry <Telemetry>`
-
+`Telemetry <Telemetry>`_
+--------------------------------------------------------------------------------
       |percona| may collect some statistics about the machine where |pmm| is running.
 
       This statistics includes the following information:
@@ -113,8 +113,8 @@ Terminology Reference
 
 .. _External-Monitoring-Service:
 
-:ref:`External Monitoring Service <External-Monitoring-Service>`
-
+`External Monitoring Service <External-Monitoring-Service>`_
+--------------------------------------------------------------------------------
       A monitoring service which is not provided by :ref:`PMM <PMM>` directly. It is
       bound to a running |prometheus| exporter. As soon as such an service is
       added, you can set up the :ref:`Metrics Monitor <Metrics-Monitor>`
@@ -122,8 +122,8 @@ Terminology Reference
 
 .. _Orchestrator:
 
-:ref:`Orchestrator <Orchestrator>`
-
+`Orchestrator <Orchestrator>`_
+--------------------------------------------------------------------------------
       The topology manager for |mysql|. By default it is disabled for the
       :ref:`PMM-Server`. To enable it, set the :option:`ORCHESTRATOR_ENABLED`.
 
@@ -134,29 +134,29 @@ Terminology Reference
 
 .. _Data-Source-Name:
 
-:ref:`Data Source Name <Data-Source-Name>`
-
+`Data Source Name <Data-Source-Name>`_
+--------------------------------------------------------------------------------
       A database server attribute found on the :ref:`QAN <QAN>` page. It informs how
       :ref:`PMM <PMM>` connects to the selected database.
 
 .. _Version:
 
-:ref:`Version <Version>`
-
+`Version <Version>`_
+--------------------------------------------------------------------------------
       A database server attribute found on the :ref:`QAN <QAN>` page. it informs the
       full version of the monitored database server, as well as the product
       name, revision and release number.
 
 .. _DSN:
 
-:ref:`DSN <DSN>`
-
+`DSN <DSN>`_
+--------------------------------------------------------------------------------
       See :ref:`Data Source Name <Data-Source-Name>`
 
 .. _Grand-Total-Time:
 
-:ref:`Grand Total Time <Grand-Total-Time>`
-
+`Grand Total Time <Grand-Total-Time>`_
+--------------------------------------------------------------------------------
       Grand Total Time.(percent of grand total time) is the percentage
       of time that the database server spent running a specific query,
       compared to the total time it spent running all queries during
@@ -164,36 +164,36 @@ Terminology Reference
 
 .. _GTT:
 
-:ref:`%GTT <GTT>`
-
+`%GTT <GTT>`_
+--------------------------------------------------------------------------------
       See :ref:`Grand Total Time <Grand-Total-Time>`
 
 .. _Query-Summary-Table:
 
-:ref:`Query Summary Table <Query-Summary-Table>`
-
+`Query Summary Table <Query-Summary-Table>`_
+--------------------------------------------------------------------------------
       A tool within :ref:`QAN <QAN>` which lists the queries which were run
       on the selected database server during the :ref:`selected time
       or date range <Selected-Time-or-Date-Range>`.
 
 .. _Query-Metrics-Table:
 
-:ref:`Query Metrics Table <Query-Metrics-Table>`
-
+`Query Metrics Table <Query-Metrics-Table>`_
+--------------------------------------------------------------------------------
       A tool within :ref:`QAN <QAN>` which lists metrics applicable to the query
       selected in the :ref:`query summary table <Query-Summary-Table>`.
 
 .. _Selected-Time-or-Date-Range:
 
-:ref:`Selected Time or Date Range <Selected-Time-or-Date-Range>`
-
+`Selected Time or Date Range <Selected-Time-or-Date-Range>`_
+--------------------------------------------------------------------------------
       A predefined time period (see :ref:`Quick ranges <Quick-ranges>`), such as 1 hour, or a
       range of dates that :ref:`QAN <QAN>` uses to collects metrics.
 
 .. _Quick-ranges:
 
-:ref:`Quick ranges <Quick-ranges>`
-
+`Quick ranges <Quick-ranges>`_
+--------------------------------------------------------------------------------
       Predefined time periods which are used by :ref:`QAN <QAN>` to collect metrics
       for queries. The following quick ranges are available:
 
@@ -206,34 +206,34 @@ Terminology Reference
 
 .. _Query-Load:
 
-:ref:`Query Load <Query-Load>`
-
+`Query Load <Query-Load>`_
+--------------------------------------------------------------------------------
       The percentage of time that the |mysql| server spent executing a specific query.
 
 .. _Query-Abstract:
 
-:ref:`Query Abstract <Query-Abstract>`
-
+`Query Abstract <Query-Abstract>`_
+--------------------------------------------------------------------------------
       Query pattern with placeholders. This term appears in
       :ref:`QAN <Query-Analytics>` as an attribute of queries.
 
 .. _Query-ID:
 
-:ref:`Query ID <Query-ID>`
-
+`Query ID <Query-ID>`_
+--------------------------------------------------------------------------------
       A :ref:`query fingerprint <Query-Fingerprint>` which groups similar queries.
 
 .. _Query-Fingerprint:
 
-:ref:`Query Fingerprint <Query-Fingerprint>`
-
+`Query Fingerprint <Query-Fingerprint>`_
+--------------------------------------------------------------------------------
       See :ref:`Query Abstract <Query-Abstract>`
 
 .. _PMM-Version:
 
-:ref:`PMM Version <PMM-Version>`
-
-      The version of PMM appears at the bottom of the :ref:`PMM server home page <PMM-Home-Page>`.
+`PMM Version <PMM-Version>`_
+--------------------------------------------------------------------------------
+      The version of PMM appears at the bottom of the `PMM server home page <PMM-Home-Page>`.
 
       .. figure:: .res/graphics/png/pmm.home-page.1.png
 
@@ -244,12 +244,12 @@ Terminology Reference
 
 	 Checking the version of |pmm-server|
 
-	     :ref:`PMM Server Version <PMM-Server-Version>`
+	     `PMM Server Version <PMM-Server-Version>`
 
 .. _PMM-Docker-Image:
 
-:ref:`PMM Docker Image <PMM-Docker-Image>`
-
+`PMM Docker Image <PMM-Docker-Image>`_
+--------------------------------------------------------------------------------
       A docker image which enables installing the |pmm-server| by
       using :program:`docker`.
 
@@ -260,8 +260,8 @@ Terminology Reference
 
 .. _PMM-Home-Page:
 
-:ref:`PMM Home Page <PMM-Home-Page>`
-
+`PMM Home Page <PMM-Home-Page>`_
+--------------------------------------------------------------------------------
       The starting page of the PMM portal from which you can have an overview of your environment, open the tools of
       PMM, and browse to online resources.
 
@@ -270,21 +270,21 @@ Terminology Reference
 
 .. _PMM:
 
-:ref:`PMM <PMM>`
-
+`PMM <PMM>`_
+--------------------------------------------------------------------------------
       Percona Monitoring and Management
 
 .. _pmm-admin:
 
-:ref:`pmm-admin <pmm-admin>`
-
+`pmm-admin <pmm-admin>`_
+--------------------------------------------------------------------------------
       A program which changes the configuration of the :ref:`PMM-Client`. See
       detailed documentation in the :ref:`pmm-admin` section.
 
 .. _Monitoring-service:
 
-:ref:`Monitoring service <Monitoring-service>`
-
+`Monitoring service <Monitoring-service>`_
+--------------------------------------------------------------------------------
       A special service which collects information from the database instance
       where :ref:`PMM-Client` is installed.
 
@@ -297,21 +297,21 @@ Terminology Reference
 
 .. _Metrics:
 
-:ref:`Metrics <Metrics>`
-
+`Metrics <Metrics>`_
+--------------------------------------------------------------------------------
       A series of data which are visualized in |pmm|.
 
 .. _Metrics-Monitor:
 
-:ref:`Metrics Monitor (MM) <Metrics-Monitor>`
-   
+`Metrics Monitor (MM) <Metrics-Monitor>`_
+--------------------------------------------------------------------------------   
       Component of :ref:`PMM-Server` that provides a historical view of
       :ref:`metrics <Metrics>` critical to a |mysql| server instance.
 
 .. _PMM-Client:
 
-:ref:`PMM Client <PMM-Client>`
-   
+`PMM Client <PMM-Client>`_
+--------------------------------------------------------------------------------   
       Collects |mysql| server metrics, general system metrics,
       and query analytics data for a complete performance overview.
 
@@ -321,8 +321,8 @@ Terminology Reference
 
 .. _PMM-Server:
 
-:ref:`PMM Server <PMM-Server>`
-
+`PMM Server <PMM-Server>`_
+--------------------------------------------------------------------------------
       Aggregates data collected by :ref:`PMM-Client` and presents it in the
       form of tables, dashboards, and graphs in a web interface.
 
@@ -340,15 +340,15 @@ Terminology Reference
 
 .. _Query-Analytics:
 
-:ref:`Query Analytics (QAN) <Query-Analytics>`
-
+`Query Analytics (QAN) <Query-Analytics>`_
+--------------------------------------------------------------------------------
       Component of :ref:`PMM-Server` that enables you to analyze
       |mysql| query performance over periods of time.
 
 .. _PMM-Server-Version:
 
-:ref:`PMM Server Version <PMM-Server-Version>`
-
+`PMM Server Version <PMM-Server-Version>`_
+--------------------------------------------------------------------------------
       If :ref:`PMM-Server` is installed via |docker|, you can check
       the current |pmm-server| version by running |docker.exec|:
 
@@ -358,14 +358,14 @@ Terminology Reference
 
 .. _QAN:
 
-:ref:`QAN <QAN>`
-
+`QAN <QAN>`_
+--------------------------------------------------------------------------------
       See :ref:`Query Analytics (QAN) <Query-Analytics>`
 
 .. _Query-Metrics-Summary-Table:
 
-:ref:`Query Metrics Summary Table <Query-Metrics-Summary-Table>`
-
+`Query Metrics Summary Table <Query-Metrics-Summary-Table>`_
+--------------------------------------------------------------------------------
       An element of :ref:`Query Analytics (QAN) <Query-Analytics>` which displays the available
       metrics for the selected query.
    
