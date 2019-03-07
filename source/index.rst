@@ -38,11 +38,19 @@ Architecture Overview
 Exporters
 --------------------------------------------------------------------------------
 
-* mysqld_exporter
-* mongodb_exporter
-* proxysql_exporter
-* node_exporter
-* Firewalls
+.. toctree::
+   :maxdepth: 1
+
+   mysqld_exporter <concepts/section.exporter.mysqld>
+   mongodb_exporter <concepts/section.exporter.mongodb>
+   proxysql_exporter <concepts/section.exporter.proxysql>
+   node_exporter <concepts/section.exporter.node>
+   rds_exporter <concepts/section.exporter.rds>
+
+--------------------------------------------------------------------------------
+Firewalls
+--------------------------------------------------------------------------------
+
 * PMM Server
 * pmm-client
 
@@ -185,7 +193,7 @@ PostgreSQL
 .. toctree::
    :maxdepth: 1
 
-   Configuring PostgreSQL for Monitoring <conf-postgres>
+   Understanding PostgreSQL metrics service <conf-postgres>
 
 --------------------------------------------------------------------------------
 Adding Amazon Web Services
@@ -224,7 +232,7 @@ Configuring AWS RDS or Aurora
 
    Required AWS settings <manage/amazon-rds.settings>
    Using PMM Add Instance wizard <manage/amazon-rds.add-instance>
-   Adding a MySQL or PostgreSQL Remote instance to PMM without Client <manage/remote-instance>
+   Agentless PMM support for MySQL or PostgreSQL Remote instance <manage/remote-instance>
 
 ================================================================================
 Using PMM Metrics Monitor
@@ -269,6 +277,8 @@ Extending PMM
    Using External Exporters <manage/client.external.exporters>
    Annotating important Application Events <manage/client.annotations>
 
+* Exploring PMM API
+
 ================================================================================
 PMM for Percona Customers
 ================================================================================
@@ -286,10 +296,10 @@ Reference
    :maxdepth: 1
 
    Release Notes <release-notes/index>
-   Metrics Monitor Dashboards <index.metrics-monitor.dashboard>
-   Contact Us <contact>
-   FAQ <faq>
+   Dashboards references <index.metrics-monitor.dashboard>
    Glossary <glossary.terminology>
-
+   How to Contact Percona <contact>
+   How to get help <placeholder>
+   FAQ <faq>
 
 #   Adding monitoring services <manage/client.add>
