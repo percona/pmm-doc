@@ -18,8 +18,7 @@ service as additional options. For more information about this exporter see its
 
 .. _pmm.exporter.node.collector-option:
 
-:ref:`Collector options <pmm.exporter.node.collector-option>`
---------------------------------------------------------------------------------
+.. rubric:: Collector options
 
 .. include:: ../.res/table/node-exporter.flag.txt
 

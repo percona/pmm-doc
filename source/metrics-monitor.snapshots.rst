@@ -1,7 +1,11 @@
+================================================================================
+PMM for Percona Customers
+================================================================================
+
 .. _pmm.metrics-monitor.dashboard.snapshot.creating:
 
-:ref:`Creating Snapshots of a Dashboard <pmm.metrics-monitor.dashboard.snapshot.creating>`
-==========================================================================================
+`Creating a Metrics Monitor dashboard Snapshot as part of a Percona Support engagement <pmm.metrics-monitor.dashboard.snapshot.creating>`_
+==========================================================================================================================================
 
 A snapshot is a way to securely share your dashboard with |percona|. When
 created, we strip sensitive data like queries (metrics, template variables, and

@@ -1,7 +1,7 @@
 .. _pmm-admin.add-mysql-queries:
 
-:ref:`Adding MySQL query analytics service <pmm-admin.add-mysql-queries>`
---------------------------------------------------------------------------------
+`Understanding MySQL query analytics service <pmm-admin.add-mysql-queries>`_
+================================================================================
 
 Use the |opt.mysql-queries| alias to enable |mysql| query analytics.
 

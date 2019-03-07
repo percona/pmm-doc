@@ -1,14 +1,14 @@
 .. _pmm.glossary.pmm-server.additional-option:
 
-================================================================================
-|pmm-server| Additional Options 
-================================================================================
+--------------------------------------------------------------------------------
+Using docker environment variables
+--------------------------------------------------------------------------------
 
 This glossary contains the addtional parameters that you may pass when starting
 |pmm-server|.
 
 Passing options to PMM Server docker at first run
-================================================================================
+--------------------------------------------------------------------------------
 
 |docker| allows configuration options to be passed using the flag :option:`-e` followed by the option you would like to set.
 
@@ -18,7 +18,7 @@ command. |tip.run-this.root|.
 .. include:: .res/code/docker.run.server-user.example.txt
 
 Passing options to *PMM Server* for an already deployed docker instance
-================================================================================
+--------------------------------------------------------------------------------
 
 docker doesn't support changing environment variables on an already provisioned container, therefore you need to stop the current container and start a new container with the new options.
 variable with **docker start** if you want to change the setting for existing
@@ -58,7 +58,7 @@ with different properties,  you should run a new container instead.
      docker rm pmm-server-old
 
 List of |pmm-server| Parameters
-================================================================================
+--------------------------------------------------------------------------------
 
 .. option:: DISABLE_TELEMETRY
 

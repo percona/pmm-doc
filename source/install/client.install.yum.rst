@@ -1,6 +1,6 @@
 .. _install-client-yum:
 
-Installing the |pmm-client| Package on |red-hat| and |centos|
+Installing RPM packages using yum
 ================================================================================
 
 If you are running an RPM-based |linux| distribution, use the |yum| package

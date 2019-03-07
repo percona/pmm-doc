@@ -1,4 +1,3 @@
-
 .. _perf-schema:
 
 `Configuring Performance Schema <perf-schema>`_

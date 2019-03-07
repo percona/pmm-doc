@@ -1,7 +1,7 @@
 .. _pmm-admin.add-mongodb-queries:
 
-:ref:`Adding MongoDB query analytics service <pmm-admin.add-mongodb-queries>`
---------------------------------------------------------------------------------
+`Understanding MongoDB query analytics service <pmm-admin.add-mongodb-queries>`_
+================================================================================
 
 Use the |opt.mongodb-queries| alias to enable |mongodb| query analytics.
 

@@ -1,11 +1,15 @@
-.. _pmm.metrics-monitor.dashboard.opening:
-
-:ref:`Opening a Dashboard <pmm.metrics-monitor.dashboard.opening>`
-================================================================================	   
+--------------------------------------------------------------------------------
+Understanding Dashboards
+--------------------------------------------------------------------------------
 
 The |metrics-monitor| tool provides a |metrics-monitor.what-is|. Time-based
 graphs are separated into dashboards by themes: some are related to |mysql| or
 |mongodb|, others provide general system metrics.
+
+.. _pmm.metrics-monitor.dashboard.opening:
+
+`Opening a Dashboard <pmm.metrics-monitor.dashboard.opening>`_
+================================================================================
 
 The default |pmm| installation provides more than thirty dashboards. To make it
 easier to reach a specific dashboard, the system offers two tools. The
@@ -19,48 +23,9 @@ on the top allows to search the required dashboard by typing.
    With |gui.dashboard-dropdown|, search the alphabetical list for any
    dashboard.
 
-You can also use a navigation menu which groups dashboards by
-application. Click the required group and then select the dashboard
-that matches your choice.
-
-.. _table.pmm.metrics-monitor.navigation-menu-group:
-
-=============  ==============================================================
-Group          Dashboards for monitoring ...
-=============  ==============================================================   
-|qan.name|     |qan| component (see :ref:`pmm.qan`)
-OS             The operating system status
-|mysql|        |mysql| and |amazon-aurora|
-|mongodb|      State of |mongodb| hosts
-HA             High availability
-Cloud          |amazon-rds| and |amazon-aurora|
-Insight        Summary, cross-server and |prometheus|
-|pmm|          Server settings
-=============  ==============================================================
-
-.. figure:: .res/graphics/png/metrics-monitor.menu.png
-
-   |mysql| group selected in the navigation menu
-
-.. seealso::
-
-   |percona| support for high availability
-      https://www.percona.com/services/support/mysql-ha-cluster-support
-
-   List of |metrics-monitor| dashboards
-      See section :ref:`pmm.dashboard.list`
-
-.. .. _pmm.metrics-monitor.dashboard.enabling:
-
-.. Enabling dashboards
-.. ================================================================================
-
-.. In |pmm|, you can disable the dashboards that you do not require. They will
-.. disappear from the |gui.dashboard-dropdown| list. You can enable them back again.
-
 .. _pmm.metrics-monitor.graph-description:
 
-:ref:`Viewing More Information about a Graph <pmm.metrics-monitor.graph-description>`
+`Viewing More Information about a Graph <pmm.metrics-monitor.graph-description>`_
 =====================================================================================
 
 Each graph has a descriptions to display more information about the monitored
@@ -75,41 +40,6 @@ button the description disappears.
 
    Graph descriptions provide more information about a graph without claiming
    any space in the interface.
-
-.. _pmm.metrics-monitor.metric.zooming-in:
-
-:ref:`Zooming in on a single metric <pmm.metrics-monitor.metric.zooming-in>`
-================================================================================
-     
-On dashboards with multiple metrics, it is hard to see how the value of a single
-metric changes over time. Use the context menu to zoom in on the selected metric
-so that it temporarily occupies the whole dashboard space.
-
-Click the title of the metric that you are interested in and select the
-|gui.view| option from the context menu that opens.
-
-.. figure:: .res/graphics/png/metrics-monitor.metric-context-menu.1.png
-
-   The context menu of a metric
-
-The selected metric opens to occupy the whole dashboard space. You may now set
-another time range using the time and date range selector at the top of the
-|metrics-monitor| page and analyze the metric data further.
-
-.. figure:: .res/graphics/png/metrics-monitor.cross-server-graphs.load-average.1.png
-
-.. note::
-
-   If you are zooming in on a metric which is represented as a single number on
-   its dashboard, you cannot change the level of detail by selecting a range on
-   the graph itself.
-
-To return to the dashboard, click the |gui.back-to-dashboard| button next to the time range selector.
-
-.. figure:: .res/graphics/png/metrics-monitor.time-range-selector.1.png
-
-   The |gui.back-to-dashboard| button returns to the dashboard; this button
-   appears when you are zooming in on one metric.
 
 .. seealso::
 

@@ -1,7 +1,8 @@
 .. _pmm-admin.check-network:
 
-`Checking network connectivity <pmm-admin.html#pmm-admin-check-network>`_
-================================================================================
+--------------------------------------------------------------------------------
+`Checking the network <pmm-admin.html#pmm-admin-check-network>`_
+--------------------------------------------------------------------------------
 
 Use the |pmm-admin.check-network| command to run tests
 that verify connectivity between |pmm-client| and |pmm-server|.

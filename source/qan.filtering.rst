@@ -1,7 +1,8 @@
 .. _pmm.qan.query.filtering:
 
-:ref:`Filtering Queries <pmm.qan.query.filtering>`
-================================================================================
+--------------------------------------------------------------------------------
+`Filtering Queries <pmm.qan.query.filtering>`_
+--------------------------------------------------------------------------------
 
 If you need to limit the list of available queries to only those that you are
 interested in, use the |gui.query-filter| field located above the query summary
@@ -48,7 +49,7 @@ ranges.. The date picker sets a range of dates.
 
 .. _pmm.qan.query-summary.total:
 
-:ref:`Totals of the Query Summary <pmm.qan.query-summary.total>`
+`Totals of the Query Summary <pmm.qan.query-summary.total>`_
 --------------------------------------------------------------------------------
 
 The first line of the query summary contains the totals of the *load*, *count*,
@@ -70,7 +71,7 @@ retrieve and return the data.
 
 .. _pmm.qan.query-summary.query:
 
-:ref:`Queries in the Query Summary Table <pmm.qan.query-summary.query>`
+`Queries in the Query Summary Table <pmm.qan.query-summary.query>`_
 --------------------------------------------------------------------------------
 
 Each row in the query summary contains information about a single
@@ -87,7 +88,7 @@ summary table.
 
 .. _pmm.qan.metric.value.viewing:
 
-:ref:`Viewing a Specific Value of a Metric <pmm.qan.metric.value.viewing>`
+`Viewing a Specific Value of a Metric <pmm.qan.metric.value.viewing>`_
 --------------------------------------------------------------------------------
 
 If you hover the cursor over one of the metrics in a query, you can see a

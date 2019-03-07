@@ -30,15 +30,13 @@ service as additional options.
 
 .. _pmm.exporter.mysqld.collector-option:
 
-:ref:`Collector options <pmm.exporter.mysqld.collector-option>`
---------------------------------------------------------------------------------
+.. rubric:: Collector options
 
 .. include:: ../.res/table/mysqld-exporter.collector-flag.txt
 
 .. _pmm.exporter.mysqld.general-option:
 
-:ref:`General options <pmm.exporter.mysqld.general-option>`
---------------------------------------------------------------------------------
+.. rubric:: General options
 
 .. include:: ../.res/table/mysqld-exporter.general-flag.txt
 

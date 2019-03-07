@@ -1,6 +1,6 @@
 .. _install-client-apt:
 
-Installing |pmm-client| on |debian| or |ubuntu|
+Installing DEB packages using apt-get
 ================================================================================
 
 If you are running a DEB-based |linux| distribution, use the |apt| package

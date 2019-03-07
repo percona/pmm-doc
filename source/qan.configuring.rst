@@ -1,7 +1,7 @@
 .. _pmm.qan.configuring:
-
-:ref:`Configuring QAN <pmm.qan.configuring>`
-================================================================================
+--------------------------------------------------------------------------------
+`Configuring QAN <pmm.qan.configuring>`_
+--------------------------------------------------------------------------------
 
 All |qan.name| settings are available from the |query-analytics-settings|
 dashboard. To open this dashboard, use the |pmm| menu group.
@@ -14,7 +14,7 @@ dashboard. To open this dashboard, use the |pmm| menu group.
 
 .. _pmm.qan.configuring.settings-tab:
 
-:ref:`Settings Tab <pmm.qan.configuring.settings-tab>`
+`Settings Tab <pmm.qan.configuring.settings-tab>`_
 --------------------------------------------------------------------------------
 
 The |gui.settings| tab displays the essential configuration settings of
@@ -54,7 +54,7 @@ of |mysql| documentation.
 
 .. _pmm.qan.configuring.status-tab:
 
-:ref:`Status Tab <pmm.qan.configuring.status-tab>`
+`Status Tab <pmm.qan.configuring.status-tab>`_
 --------------------------------------------------------------------------------
 
 The |gui.status| tab contains detailed information about the current status of
@@ -64,7 +64,7 @@ command is used.
 
 .. _pmm.qan.configuring.log-tab:
 
-:ref:`Log Tab <pmm.qan.configuring.log-tab>`
+`Log Tab <pmm.qan.configuring.log-tab>`_
 --------------------------------------------------------------------------------
 
 The |gui.log| tab contains the latest version of the monitored log, such

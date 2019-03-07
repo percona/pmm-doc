@@ -18,15 +18,13 @@ service as additional options. For more information about this exporter see its
 
 .. _pmm.exporter.proxysql.collector-option:
 
-:ref:`Collector Options <pmm.exporter.proxysql.collector-option>`
---------------------------------------------------------------------------------
+:rubric:`Collector Options`
 
 .. include:: ../.res/table/proxysql-exporter.collector-flag.txt
 
 .. _pmm.exporter.proxysql.general-option:
 
-:ref:`General Options <pmm.exporter.proxysql.general-option>`
---------------------------------------------------------------------------------
+:rubric:`General Options`
 
 .. include:: ../.res/table/proxysql-exporter.general-flag.txt
 

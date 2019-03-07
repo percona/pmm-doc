@@ -1,3 +1,7 @@
+--------------------------------------------------------------------------------
+MongoDB
+--------------------------------------------------------------------------------
+
 .. _pmm.pmm-admin.mongodb.pass-ssl-parameter:
 
 `Passing SSL parameters to the mongodb monitoring service <pmm-admin.html#pmm-pmm-admin-mongodb-pass-ssl-parameter>`_

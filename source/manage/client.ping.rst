@@ -1,7 +1,8 @@
 .. _pmm-admin.ping:
 
-`Pinging PMM Server <pmm-admin.html#pmm-admin-ping>`_
-================================================================================
+--------------------------------------------------------------------------------
+`Pinging the PMM Server <pmm-admin.html#pmm-admin-ping>`_
+--------------------------------------------------------------------------------
 
 Use the |pmm-admin.ping| command to verify connectivity with |pmm-server|.
 

@@ -1,7 +1,8 @@
 .. _pmm.qan:
 
-|qan.name|
-********************************************************************************
+--------------------------------------------------------------------------------
+Introduction
+--------------------------------------------------------------------------------
 
 The |qan| is a special dashboard which enables database administrators and
 application developers to |qan.what-is|. |qan| helps you optimize database

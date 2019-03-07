@@ -1,7 +1,8 @@
 .. _pmm.qan.home-page.opening:
 
-:ref:`Opening QAN from the PMM Home Page <pmm.qan.home-page.opening>`
-================================================================================
+--------------------------------------------------------------------------------
+`Navigating to Query Analytics <pmm.qan.home-page.opening>`_
+--------------------------------------------------------------------------------
    
 To start working with |qan|, open the list of dashboards on the |pmm| home
 page. Then, proceed to the |gui.host| field at the top of the page and select a

@@ -17,10 +17,8 @@ https://github.com/percona/mongodb_exporter.
    All exporter options
       :ref:`pmm.list.exporter`
 
-.. _pmm.exporter-option.mongodb.option:
-	   
-:ref:`Options <pmm.exporter-option.mongodb.option>`
---------------------------------------------------------------------------------
+
+.. rubric:: Options
 
 .. include:: ../.res/table/mongodb-exporter.flag.txt
 

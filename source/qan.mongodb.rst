@@ -1,6 +1,10 @@
 .. _pmm.qan.mongodb:
 
-:ref:`QAN for MongoDB <pmm.qan.mongodb>`
+--------------------------------------------------------------------------------
+`MongoDB specific <pmm.qan.mongodb>`_
+--------------------------------------------------------------------------------
+
+Query Analytics for MongoDB
 ================================================================================
 
 |mongodb| is conceptually different from relational database management systems,

@@ -1,7 +1,8 @@
 .. _pmm.architecture:
 
-Overview of |percona-monitoring-management| Architecture
-********************************************************************************
+--------------------------------------------------------------------------------
+Client/Server Architecture - an Overview
+--------------------------------------------------------------------------------
 
 The |pmm| platform is based on a client-server model that enables scalability.
 It includes the following modules:
@@ -35,7 +36,7 @@ The following diagram illustrates how |pmm| is currently structured:
 
 .. _pmm-client:
 
-:ref:`PMM Client <pmm-client>`
+`PMM Client <pmm-client>`_
 ================================================================================
 
 Each |pmm-client| collects various data about general system and database
@@ -75,7 +76,7 @@ The |pmm-client| package consist of the following:
 
 .. _pmm-server:
 
-:ref:`PMM Server <pmm-server>`
+`PMM Server <pmm-server>`_
 ================================================================================
 
 |pmm-server| runs on the machine that will be your central monitoring host.
@@ -137,7 +138,7 @@ For more information, see :ref:`using`.
 
 .. _pmm.using.orchestrator:
 
-:ref:`Orchestrator <pmm.using.orchestrator>`
+`Orchestrator <pmm.using.orchestrator>`_
 ================================================================================
 
 |orchestrator| is a |mysql| replication topology management and visualization

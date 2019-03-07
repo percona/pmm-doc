@@ -1,7 +1,8 @@
 .. _pmm.qan.query.zooming:
 
-:ref:`Zooming into a Query <pmm.qan.query.zooming>`
-================================================================================
+--------------------------------------------------------------------------------
+`Zooming into a Query <pmm.qan.query.zooming>`_
+--------------------------------------------------------------------------------
 
 Click one of the queries to zoom it in. QAN displays detailed information about
 the query in the :ref:`query metrics summary table <Query-Metrics-Summary-Table>` below the :ref:`query
@@ -15,7 +16,7 @@ in the query.
 
 .. _pmm.qan.query.selecting:
 
-:ref:`Query Section <pmm.qan.query.selecting>`
+`Query Section <pmm.qan.query.selecting>`_
 --------------------------------------------------------------------------------
    
 In addition to the metrics in the :ref:`query metrics summary table <Query-Metrics-Summary-Table>`,
@@ -29,7 +30,7 @@ the query.
 
 .. _pmm.qan.explain-section:
 
-:ref:`Explain Section <pmm.qan.explain-section>`
+`Explain Section <pmm.qan.explain-section>`_
 --------------------------------------------------------------------------------
 
 The |gui.explain| section enables you to run |sql.explain| on the selected query
@@ -73,7 +74,7 @@ If you are viewing the details of a query of another type, the
 
 .. _pmm.qan.table-info-section:
 
-:ref:`Table Info Section <pmm.qan.table-info-section>`
+`Table Info Section <pmm.qan.table-info-section>`_
 --------------------------------------------------------------------------------
 
 At the bottom, you can run Table Info for the selected query.  This

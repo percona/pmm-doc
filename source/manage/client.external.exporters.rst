@@ -1,7 +1,8 @@
 .. _pmm-admin.external.exporters:
 
-:ref:`Using External Exporters <pmm.admin.external.exporters>`
-================================================================================
+--------------------------------------------------------------------------------
+`Using External Exporters <pmm.admin.external.exporters>`_
+--------------------------------------------------------------------------------
 
 .. _pmm.pmm-admin.external-monitoring-service.adding:
 

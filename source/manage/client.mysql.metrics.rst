@@ -1,7 +1,7 @@
 .. _pmm-admin.add-mysql-metrics:
 
-:ref:`Adding MySQL metrics service <pmm-admin.add-mysql-metrics>`
---------------------------------------------------------------------------------
+`Understanding MySQL metrics service <pmm-admin.add-mysql-metrics>`_
+================================================================================
 
 Use the |opt.mysql-metrics| alias to enable |mysql| metrics monitoring.
 
