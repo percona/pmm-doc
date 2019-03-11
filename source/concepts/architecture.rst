@@ -48,18 +48,18 @@ The |pmm-client| package consist of the following:
   for example, adding and removing database instances
   that you want to monitor.
   For more information, see :ref:`pmm-admin`.
-* ``pmm-mysql-queries-0`` is a service that manages the |qan| agent as it
-  collects query performance data from |mysql| and sends it to the |qan| API on
-  :ref:`pmm-server`.
-* ``pmm-mongodb-queries-0`` is a service that manages the |qan| agent as it
-  collects query performance data from |mongodb| and sends it to |qan| API on
-  :ref:`pmm-server`.
+* **pmm-agent** is a a client-side component a minimal command-line interface,
+  which is a central entry point in charge for bringing the client
+  functionality: it carries on client's authentication, gets the client
+  configuration stored on the PMM Server, manages exporters and other agents.
 * |node-exporter| is a |prometheus| exporter that collects general system
   metrics.
 * |mysqld-exporter| is a |prometheus| exporter that collects |mysql| server
   metrics.
 * |mongodb-exporter| is a |prometheus| exporter that collects |mongodb| server
   metrics.
+* **postgresql-exporter** is a |prometheus| exporter that collects |postgresql|
+  performance metrics.
 * |proxysql-exporter| is a |prometheus| exporter that collects |proxysql|
   performance metrics.
 
@@ -108,12 +108,9 @@ For more information, see :ref:`deploy-pmm.server.installing`.
     exporters running on a :ref:`pmm-client` and aggregates metrics collected by
     the exporters.  For more information, see `Prometheus Docs`_.
 
-    * |consul| provides an API that a :ref:`pmm-client` can use to remotely
-      list, add, and remove hosts for Prometheus.  It also stores monitoring
-      metadata.  For more information, see `Consul Docs`_.
-
-      .. warning:: Although the |consul| web UI is accessible, do not make any
-         changes to the configuration.
+  * ClickHouse is a third-party column-oriented database that facilitates
+    the |query-analytics| functionality. For more information, see
+    `ClickHouse Docs <https://clickhouse.yandex/>`_.
 
   * |grafana| is a third-party dashboard and graph builder for visualizing data
     aggregated by |prometheus| in an intuitive web interface.  For more
