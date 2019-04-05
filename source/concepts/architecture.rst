@@ -15,6 +15,8 @@ It includes the following modules:
   and presents it in the form of tables, dashboards, and graphs in a web
   interface.
 
+.. image:: ../.res/graphics/png/diagram.pmm.client-server.png
+
 The modules are packaged for easy installation and usage. It is assumed that
 the user should not need to understand what are the exact tools that make up
 each module and how they interact. However, if you want to leverage the full
@@ -30,14 +32,14 @@ developed by |percona| and some are third-party open-source tools.
 .. note:: The overall client-server model is not likely to change, but the set
    of tools that make up each component may evolve with the product.
 
-The following diagram illustrates how |pmm| is currently structured:
-
-.. image:: ../.res/graphics/png/diagram.pmm-architecture.png
+The following sections illustrates how |pmm| is currently structured.
 
 .. _pmm-client:
 
 `PMM Client <pmm-client>`_
 ================================================================================
+
+.. image:: ../.res/graphics/png/diagram.pmm.client-architecture.png
 
 Each |pmm-client| collects various data about general system and database
 performance, and sends this data to the corresponding |pmm-server|.
@@ -78,6 +80,8 @@ The |pmm-client| package consist of the following:
 
 `PMM Server <pmm-server>`_
 ================================================================================
+
+.. image:: ../.res/graphics/png/diagram.pmm.server-architecture.png
 
 |pmm-server| runs on the machine that will be your central monitoring host.
 It is distributed as an appliance via the following:
