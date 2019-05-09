@@ -22,6 +22,7 @@ This section contains a reference of dashboards available in |metrics-monitor|.
    dashboards/dashboard.summary
    dashboards/dashboard.trends
    dashboards/dashboard.network-overview
+   dashboards/dashboard.inventory
 
 .. _pmm.dashboard.os.list:
 

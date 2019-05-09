@@ -4,20 +4,16 @@
 `Navigating to Query Analytics <pmm.qan.home-page.opening>`_
 --------------------------------------------------------------------------------
    
-To start working with |qan|, open the list of dashboards on the |pmm| home
-page. Then, proceed to the |gui.host| field at the top of the page and select a
-host where the |pmm-client| is installed from the list of database instances.
+To start working with |qan|, choose the *Query analytics", which is the very
+left item of the system menu on the top. The |qan| dashboard will show up
+several panels: a search panel, followed by a filter panel on the left, and a
+panel with the list of queries in a summary table. The columns on this panel are
+highly customizable, and by default, it displays *Query* column, followed by
+three essential metrics: *Load*, *Count*, and *Latency*.
 
-.. figure:: .res/graphics/png/qan.query-summary-table.default.1.png
+.. figure:: .res/graphics/png/qan01.png
 
    The query summary table.
-
-The |qan| dashboard will show a summary of the selected host and database
-activity metrics followed by the list of queries in a summary table. By
-default, |qan| shows queries ranked by :ref:`%GTT <GTT>` (Grand total
-time). Each query displays three essential metrics: *Load*, *Count*, and
-*Latency*. Also queries which are newly seen within the the time range selected
-are highlighted with a blue color for quicker identification.
 
 Also it worth to mention that |qan| data come in with typical 1-2 min delay,
 though it is possible to be delayed more because of specific network condition

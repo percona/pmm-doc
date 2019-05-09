@@ -16,7 +16,7 @@ in the query.
 
 .. _pmm.qan.query.selecting:
 
-`Query Section <pmm.qan.query.selecting>`_
+`Query Detail Section <pmm.qan.query.selecting>`_
 --------------------------------------------------------------------------------
    
 In addition to the metrics in the :ref:`query metrics summary table <Query-Metrics-Summary-Table>`,
