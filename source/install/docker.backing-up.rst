@@ -1,4 +1,4 @@
-.. _pmm.server.docker.backing-up:
+.. _pmm.server.docker-backing-up:
 
 Backing Up |pmm| Data from the |docker| Container
 ================================================================================
@@ -40,7 +40,7 @@ Now, your |pmm| data are backed up and you can start |pmm-server| again:
 .. seealso::
 
    Restoring |opt.pmm-data|
-      :ref:`pmm.server.docker.restoring`
+      :ref:`pmm.server.docker-restoring`
 
    Updating |pmm-server| run via |docker|
       :ref:`update-server.docker`

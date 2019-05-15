@@ -5,5 +5,5 @@ Adding a MySQL Host
 .. toctree::
    :maxdepth: 4
 
-   client.mysql.metrics
-   client.mysql.queries
+   client-mysql-metrics
+   client-mysql-queries

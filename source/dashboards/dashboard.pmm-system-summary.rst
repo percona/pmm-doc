@@ -1,4 +1,4 @@
-.. _dashboard.pmm-system-summary:
+.. _dashboard-pmm-system-summary:
 
 |pmm-system-summary| Dashboard
 ================================================================================

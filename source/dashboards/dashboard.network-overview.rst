@@ -1,4 +1,4 @@
-.. _dashboard.network-overview:
+.. _dashboard-network-overview:
 
 |dbd.network-overview| Dashboard
 ================================================================================
@@ -9,7 +9,7 @@ following sections:
 .. contents::
    :local:
 
-.. _dashboard.network-overview.last-hour-statistic:
+.. _dashboard-network-overview.last-hour-statistic:
 
 Last Hour Statistic
 --------------------------------------------------------------------------------
@@ -19,7 +19,7 @@ drops*, and *retransmit rate*.
 
 |view-all-metrics| |this-dashboard|
 
-.. _dashboard.network-overview.network-traffic:
+.. _dashboard-network-overview.network-traffic:
 
 Network Traffic
 --------------------------------------------------------------------------------
@@ -29,7 +29,7 @@ metrics.
 
 |view-all-metrics| |this-dashboard|
 
-.. _dashboard.network-overview.network-traffic-details:
+.. _dashboard-network-overview.network-traffic-details:
 
 Network Traffic Details
 --------------------------------------------------------------------------------
@@ -43,7 +43,7 @@ This section offers the following metrics:
 
 |view-all-metrics| |this-dashboard|
 
-.. _dashboard.network-overview.network-netstat-tcp:
+.. _dashboard-network-overview.network-netstat-tcp:
 
 Network Netstat TCP
 --------------------------------------------------------------------------------
@@ -58,7 +58,7 @@ This section offers the following metrics:
 
 |view-all-metrics| |this-dashboard|
 
-.. _dashboard.network-overview.network-netstat-udp:
+.. _dashboard-network-overview.network-netstat-udp:
 
 Network Netstat UDP
 --------------------------------------------------------------------------------
@@ -87,7 +87,7 @@ NoPorts
 
 |view-all-metrics| |this-dashboard|
 
-.. _dashboard.network-overview.icmp:
+.. _dashboard-network-overview.icmp:
 
 ICMP
 --------------------------------------------------------------------------------
@@ -166,6 +166,6 @@ OutTimestamps
 
 |view-all-metrics| |this-dashboard|
 
-.. |this-dashboard| replace:: :ref:`dashboard.network-overview`
+.. |this-dashboard| replace:: :ref:`dashboard-network-overview`
 
 .. include:: ../.res/replace.txt

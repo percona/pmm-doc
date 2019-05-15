@@ -1,4 +1,4 @@
-.. _dashboard.mysql-innodb-metrics:
+.. _dashboard-mysql-innodb-metrics:
 
 |mysql| |innodb| Metrics
 ================================================================================
@@ -9,7 +9,7 @@ performs.
 .. contents::
    :local:
 
-.. _dashboard.mysql-innodb-metrics.innodb-checkpoint-age:
+.. _dashboard-mysql-innodb-metrics.innodb-checkpoint-age:
 
 InnoDB Checkpoint Age
 --------------------------------------------------------------------------------
@@ -25,7 +25,7 @@ i.e. when you are busiest.
 
 |view-all-metrics| |this-dashboard|
 
-.. _dashboard.mysql-innodb-metrics.innodb-transactions:
+.. _dashboard-mysql-innodb-metrics.innodb-transactions:
 
 |innodb| Transactions
 --------------------------------------------------------------------------------
@@ -44,7 +44,7 @@ considerably. It is also a good idea to look for long running queries in |qan|.
 
 |view-all-metrics| |this-dashboard|
 
-.. _dashboard.mysql-innodb-metrics.innodb-row-operations:
+.. _dashboard-mysql-innodb-metrics.innodb-row-operations:
 
 |innodb| Row Operations
 --------------------------------------------------------------------------------
@@ -55,7 +55,7 @@ of queries, but one query could effect millions of rows.
        
 |view-all-metrics| |this-dashboard|
 
-.. _dashboard.mysql-innodb-metrics.innodb-row-lock-time:
+.. _dashboard-mysql-innodb-metrics.innodb-row-lock-time:
 
 |innodb| Row Lock Time
 --------------------------------------------------------------------------------
@@ -89,7 +89,7 @@ second.
    |mysql| Server Documentation: |innodb| locking
       https://dev.mysql.com/doc/refman/5.7/en/innodb-locking.html
 
-.. _dashboard.mysql-innodb-metrics.innodb-io:
+.. _dashboard-mysql-innodb-metrics.innodb-io:
 
 |innodb| I/O
 --------------------------------------------------------------------------------
@@ -105,7 +105,7 @@ This metric has the following series:
 
 |view-all-metrics| |this-dashboard|
 
-.. _dashboard.mysql-innodb-metrics.innodb-log-file-usage-hourly:
+.. _dashboard-mysql-innodb-metrics.innodb-log-file-usage-hourly:
 
 |innodb| Log File Usage Hourly
 --------------------------------------------------------------------------------
@@ -131,7 +131,7 @@ This graph can help guide you in setting the correct `innodb_log_file_size`.
    |percona| Server Documentation: Improved |innodb| I/O scalability
       http://www.percona.com/doc/percona-server/5.5/scalability/innodb_io_55.html#innodb_log_file_size
 
-.. _dashboard.mysql-innodb-metrics.innodb-deadlocks:
+.. _dashboard-mysql-innodb-metrics.innodb-deadlocks:
 
 |innodb| Deadlocks
 --------------------------------------------------------------------------------
@@ -149,7 +149,7 @@ immediately and returns an error.
    |percona| Database Performance Blog: Dealing with |mysql| deadlocks
       https://www.percona.com/blog/2014/10/28/how-to-deal-with-mysql-deadlocks/
 
-.. _dashboard.mysql-innodb-metrics.condition-pushdown:
+.. _dashboard-mysql-innodb-metrics.condition-pushdown:
 
 |innodb| Condition Pushdown
 --------------------------------------------------------------------------------
@@ -176,7 +176,7 @@ and the number of times the |mysql| server must access the storage engine.
     |percona| Database Performance Blog: ICP counters and how to interpret them
        https://www.percona.com/blog/2017/05/09/mariadb-handler_icp_-counters-what-they-are-and-how-to-use-them/
 
-.. _dashboard.mysql-innodb-metrics.other-metrics:
+.. _dashboard-mysql-innodb-metrics.other-metrics:
 
 Other Metrics
 --------------------------------------------------------------------------------
@@ -193,6 +193,6 @@ Other Metrics
    - |innodb| Change Buffer
    - |innodb| Change Buffer Activity
 
-.. |this-dashboard| replace:: :ref:`dashboard.mysql-innodb-metrics`
+.. |this-dashboard| replace:: :ref:`dashboard-mysql-innodb-metrics`
 
 .. include:: ../.res/replace.txt

@@ -1,4 +1,4 @@
-.. _dashboard.mysql-innodb-compression:
+.. _dashboard-mysql-innodb-compression:
 
 |dbd.mysql-innodb-compression| Dashboard
 ================================================================================

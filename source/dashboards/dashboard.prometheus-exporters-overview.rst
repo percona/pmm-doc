@@ -1,4 +1,4 @@
-.. _dashboard.prometheus-exporters-overview:
+.. _dashboard-prometheus-exporters-overview:
 
 |prometheus| Exporters Overview
 ================================================================================
@@ -24,7 +24,7 @@ how exporters are used across the selected hosts.
 .. contents::
    :local:
 
-.. _dashboard.prometheus-exporters-overview.summary:
+.. _dashboard-prometheus-exporters-overview.summary:
 
 |prometheus| Exporters Summary
 --------------------------------------------------------------------------------
@@ -49,7 +49,7 @@ hosts being monitored and the total number of running exporters.
    The CPU usage and memory usage do not include the additional CPU and memory
    usage required to produce metrics by the application or operating system.
 
-.. _dashboard.prometheus-exporters-overview.resource-usage-by-host:
+.. _dashboard-prometheus-exporters-overview.resource-usage-by-host:
 
 |prometheus| Exporters Resource Usage by Host
 --------------------------------------------------------------------------------
@@ -64,7 +64,7 @@ exporters for the selected hosts.
 - **Memory Usage** plots the Exporters' Memory usage across each monitored host
   (by default, All hosts).
 
-.. _dashboard.prometheus-exporters-overview.resource-usage-by-type:
+.. _dashboard-prometheus-exporters-overview.resource-usage-by-type:
 
 |prometheus| Exporters Resource Usage by Type
 --------------------------------------------------------------------------------
@@ -78,7 +78,7 @@ exporters for host types: |mysql|, |mongodb|, |proxysql|, and the system.
   Exporter. 
 - **Memory Usage** shows the Exporters' memory used for each type of Exporter.
 
-.. _dashboard.prometheus-exporters-overview.hosts:
+.. _dashboard-prometheus-exporters-overview.hosts:
 
 List of Hosts
 --------------------------------------------------------------------------------
@@ -93,7 +93,7 @@ At the bottom, this dashboard shows details for each running host.
 
 You can click the value of the |gui.cpu-used|, |gui.memory-used|, or
 |gui.exporters-running| column to open the
-:ref:`dashboard.prometheus-exporter-status` for further analysis.
+:ref:`dashboard-prometheus-exporter-status` for further analysis.
 
 .. admonition:: Related information: |prometheus| Documentation
 

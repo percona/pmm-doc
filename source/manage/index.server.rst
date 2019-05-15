@@ -7,4 +7,4 @@ Configuring PMM Server
 
    glossary.option
    server.admin-gui
-   server.pmm-api
+   server-pmm-api

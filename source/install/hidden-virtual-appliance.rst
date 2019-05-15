@@ -148,7 +148,7 @@ use the following command::
 Next Steps
 ================================================================================
 
-:ref:`Verify that PMM Server is running <deploy-pmm.server.verifying>`
+:ref:`Verify that PMM Server is running <deploy-pmm.server-verifying>`
 by connecting to the PMM web interface using the IP address
 assigned to the virtual appliance,
 then :ref:`install PMM Client <deploy-pmm.client.installing>`

@@ -1,4 +1,4 @@
-.. _dashboard.mysql-innodb-metrics-advanced:
+.. _dashboard-mysql-innodb-metrics-advanced:
 
 |mysql| |innodb| Metrics (Advanced) Dashboard
 ================================================================================
@@ -19,7 +19,7 @@ selected |mysql| host. This dashboard contains the following metrics:
 .. contents::
    :local:
 
-.. _dashboard.mysql-innodb-metrics-advanced.change-buffer-performance:
+.. _dashboard-mysql-innodb-metrics-advanced.change-buffer-performance:
 
 Change Buffer Performance
 --------------------------------------------------------------------------------
@@ -34,7 +34,7 @@ efficiency of the change buffer.
 |view-all-metrics|
 |this-dashboard|
 
-.. _dashboard.mysql-innodb-metrics-advanced.innodb-log-buffer-performance:
+.. _dashboard-mysql-innodb-metrics-advanced.innodb-log-buffer-performance:
 
 InnoDB Log Buffer Performance
 --------------------------------------------------------------------------------
@@ -49,7 +49,7 @@ required.
 |view-all-metrics|
 |this-dashboard|
 
-.. _dashboard.mysql-innodb-metrics-advanced.innodb-page-splits:
+.. _dashboard-mysql-innodb-metrics-advanced.innodb-page-splits:
 
 |innodb| Page Splits
 --------------------------------------------------------------------------------
@@ -66,7 +66,7 @@ of page splits, try lowering the innodb_fill_factor variable (5.7+).
 |view-all-metrics|
 |this-dashboard|
 
-.. _dashboard.mysql-innodb-metrics-advanced.innodb-page-reorgs:
+.. _dashboard-mysql-innodb-metrics-advanced.innodb-page-reorgs:
 
 |innodb| Page Reorgs
 --------------------------------------------------------------------------------
@@ -80,7 +80,7 @@ split. Page reorganization can only fail for compressed pages.
 |view-all-metrics|
 |this-dashboard|
 
-.. _dashboard.mysql-innodb-metrics-advanced.innodb-purge-performance:
+.. _dashboard-mysql-innodb-metrics-advanced.innodb-purge-performance:
 
 |innodb| Purge Performance
 --------------------------------------------------------------------------------
@@ -93,7 +93,7 @@ deleted rows.
 |view-all-metrics|
 |this-dashboard|
 
-.. _dashboard.mysql-innodb-metrics-advanced.innodb-locking:
+.. _dashboard-mysql-innodb-metrics-advanced.innodb-locking:
 
 |innodb| Locking
 --------------------------------------------------------------------------------
@@ -103,7 +103,7 @@ The |innodb| Locking graph shows the row level lock activity inside |innodb|.
 |view-all-metrics|
 |this-dashboard|
 
-.. _dashboard.mysql-innodb-metrics-advanced.innodb-main-thread-utilization:
+.. _dashboard-mysql-innodb-metrics-advanced.innodb-main-thread-utilization:
 
 |innodb| Main Thread Utilization
 --------------------------------------------------------------------------------
@@ -114,7 +114,7 @@ The |innodb| Main Thread Utilization graph shows the portion of time the
 |view-all-metrics|
 |this-dashboard|
 
-.. _dashboard.mysql-innodb-metrics-advanced.innodb-transactions-information:
+.. _dashboard-mysql-innodb-metrics-advanced.innodb-transactions-information:
 
 |innodb| Transactions Information
 --------------------------------------------------------------------------------
@@ -130,7 +130,7 @@ with "start transaction read only".
 |view-all-metrics|
 |this-dashboard|
 
-.. _dashboard.mysql-innodb-metrics-advanced.innodb-undo-space-usage:
+.. _dashboard-mysql-innodb-metrics-advanced.innodb-undo-space-usage:
 
 |innodb| Undo Space Usage
 --------------------------------------------------------------------------------
@@ -142,7 +142,7 @@ transactions holding read views opened in the |innodb| status.
 |view-all-metrics|
 |this-dashboard|
 
-.. _dashboard.mysql-innodb-metrics-advanced.innodb-activity:
+.. _dashboard-mysql-innodb-metrics-advanced.innodb-activity:
 
 |innodb| Activity
 --------------------------------------------------------------------------------
@@ -153,7 +153,7 @@ threads.
 |view-all-metrics|
 |this-dashboard|
 
-.. _dashboard.mysql-innodb-metrics-advanced.innodb-contention-os-waits:
+.. _dashboard-mysql-innodb-metrics-advanced.innodb-contention-os-waits:
 
 |innodb| Contention - OS Waits
 --------------------------------------------------------------------------------
@@ -165,7 +165,7 @@ spin rounds are exhausted.
 |view-all-metrics|
 |this-dashboard|
 
-.. _dashboard.mysql-innodb-metrics-advanced.innodb-contention-spin-rounds:
+.. _dashboard-mysql-innodb-metrics-advanced.innodb-contention-spin-rounds:
 
 |innodb| Contention - Spin Rounds
 --------------------------------------------------------------------------------
@@ -177,7 +177,7 @@ in a loop.
 |view-all-metrics|
 |this-dashboard|
 
-.. _dashboard.mysql-innodb-metrics-advanced.innodb-group-commit-batch-size:
+.. _dashboard-mysql-innodb-metrics-advanced.innodb-group-commit-batch-size:
 
 |innodb| Group Commit Batch Size
 --------------------------------------------------------------------------------
@@ -191,7 +191,7 @@ and enlarge the batch size.
 |view-all-metrics|
 |this-dashboard|
 
-.. _dashboard.mysql-innodb-metrics-advanced.innodb-purge-throttling:
+.. _dashboard-mysql-innodb-metrics-advanced.innodb-purge-throttling:
 
 |innodb| Purge Throttling
 --------------------------------------------------------------------------------
@@ -207,7 +207,7 @@ https://dev.mysql.com/doc/refman/5.6/en/innodb-parameters.html#sysvar_innodb_max
 |view-all-metrics|
 |this-dashboard|
 
-.. _dashboard.mysql-innodb-metrics-advanced.innodb-ahi-usage:
+.. _dashboard-mysql-innodb-metrics-advanced.innodb-ahi-usage:
 
 |innodb| AHI Usage
 --------------------------------------------------------------------------------
@@ -221,7 +221,7 @@ likely be disabled.
 |view-all-metrics|
 |this-dashboard|
 
-.. _dashboard.mysql-innodb-metrics-advanced.innodb-ahi-maintenance:
+.. _dashboard-mysql-innodb-metrics-advanced.innodb-ahi-maintenance:
 
 |innodb| AHI Maintenance
 --------------------------------------------------------------------------------
@@ -234,7 +234,7 @@ and removed can be an indication of an ineffective AHI.
 |view-all-metrics|
 |this-dashboard|
 
-.. _dashboard.mysql-innodb-metrics-advanced.innodb-online-ddl:
+.. _dashboard-mysql-innodb-metrics-advanced.innodb-online-ddl:
 
 |innodb| Online DDL
 --------------------------------------------------------------------------------
@@ -250,7 +250,7 @@ the rows processed by the online DDL.
 |view-all-metrics|
 |this-dashboard|
 
-.. _dashboard.mysql-innodb-metrics-advanced.innodb-defragmentation:
+.. _dashboard-mysql-innodb-metrics-advanced.innodb-defragmentation:
 
 |innodb| Defragmentation
 --------------------------------------------------------------------------------
@@ -267,6 +267,6 @@ command.  To enable this feature, the variable innodb-defragment must be set to
 
    Currently available only on |mariadb| Server.
 
-.. |this-dashboard| replace:: :ref:`dashboard.mysql-innodb-metrics-advanced`
+.. |this-dashboard| replace:: :ref:`dashboard-mysql-innodb-metrics-advanced`
 
 .. include:: ../.res/replace.txt

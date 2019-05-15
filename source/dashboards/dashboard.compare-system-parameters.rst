@@ -1,4 +1,4 @@
-.. _dashboard.compare-system-parameters:
+.. _dashboard-compare-system-parameters:
 
 |dbd.compare-system-parameters| Dashboard
 ================================================================================

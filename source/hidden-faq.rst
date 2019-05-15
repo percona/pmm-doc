@@ -377,9 +377,9 @@ If you would like to experiment with the latest development version of
 .. seealso::
 
    Setting up |pmm-server| via |docker|
-      :ref:`setup procedure <pmm.server.docker.setting-up>`
+      :ref:`setup procedure <pmm.server.docker-setting-up>`
    Setting up |pmm-server| via |virtualbox|
-      :ref:`pmm.deploying.server.ova.virtualbox.cli`
+      :ref:`pmm.deploying.server.ova-virtualbox-cli`
 
 .. include:: .res/replace.txt
 

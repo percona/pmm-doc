@@ -1,4 +1,4 @@
-.. _dashboard.prometheus-exporter-status:
+.. _dashboard-prometheus-exporter-status:
 
 |prometheus| Exporter Status
 ================================================================================
@@ -17,6 +17,6 @@ reveals the following information:
    All |pmm| exporters 
       :ref:`pmm.list.exporter` 
    Summary information about the usage of |prometheus| exporters
-      :ref:`dashboard.prometheus-exporters-overview`
+      :ref:`dashboard-prometheus-exporters-overview`
 	   
 .. include:: ../.res/replace.txt

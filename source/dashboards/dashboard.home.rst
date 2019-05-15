@@ -1,4 +1,4 @@
-.. _dashboard.home:
+.. _dashboard-home:
 
 Home Dashboard
 ================================================================================
@@ -10,7 +10,7 @@ The *Home* dashboard is a high level overview of your environment.
    Overview of |pmm|
       :ref:`using`
 
-.. _dashboard.home.general-information:
+.. _dashboard-home.general-information:
 
 General Information
 --------------------------------------------------------------------------------
@@ -18,7 +18,7 @@ General Information
 This section contains links to online resources, such as |pmm|
 documentation, releases notes, and blogs.
 
-.. _dashboard.home.shared-recently-used:
+.. _dashboard-home.shared-recently-used:
 
 Shared and Recently Used Dashboards
 --------------------------------------------------------------------------------
@@ -27,7 +27,7 @@ This section is automatically updated to show the most recent
 dashboards that you worked with. It also contains the dashboards that
 you have bookmarked.
 
-.. _dashboard.home.statistics:
+.. _dashboard-home.statistics:
 
 Statistics
 --------------------------------------------------------------------------------
@@ -37,7 +37,7 @@ total number of database instanced being monitored. This section also
 current the version number. Use the |gui.check-for-updates-manually|
 button to see if you are using the most recent version of |pmm|.
 
-.. _dashboard.home.environment-overview:
+.. _dashboard-home.environment-overview:
 
 Environment Overview
 --------------------------------------------------------------------------------

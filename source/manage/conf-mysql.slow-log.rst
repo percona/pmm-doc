@@ -1,6 +1,6 @@
-.. _conf-mysql.slow-log:
+.. _conf-mysql-slow-log:
 
-`Slow Log Settings <pmm.conf-mysql.slow-log-settings>`_
+`Slow Log Settings <pmm.conf-mysql-slow-log-settings>`_
 ==========================================================================================
 
 If you are running |percona-server|, a properly configured slow query log will

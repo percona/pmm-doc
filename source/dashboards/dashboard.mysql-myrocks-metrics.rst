@@ -1,5 +1,5 @@
 
-.. _dashboard.mysql-myrocks-metrics:
+.. _dashboard-mysql-myrocks-metrics:
 
 |dbd.mysql-myrocks-metrics| Dashboard
 ================================================================================

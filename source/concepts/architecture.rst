@@ -132,8 +132,8 @@ For more information, see :ref:`using`.
 .. seealso::
 
    Default ports
-      :ref:`Ports <Ports>` in :ref:`pmm.glossary.terminology-reference`
+      :ref:`Ports <Ports>` in :ref:`pmm.glossary-terminology-reference`
    Enabling orchestrator
-      :ref:`Orchestrator <Orchestrator>` in :ref:`pmm.glossary.terminology-reference`
+      :ref:`Orchestrator <Orchestrator>` in :ref:`pmm.glossary-terminology-reference`
 
 .. include:: ../.res/replace.txt

@@ -1,13 +1,13 @@
-.. _dashboard.mongodb-overview:
+.. _dashboard-mongodb-overview:
 
 |mongodb| Overview
 ================================================================================
 
 This dashboard provides basic information about |mongodb| instances.
 
-.. _dashboard.mongodb-overview.command-operations:
+.. _dashboard-mongodb-overview.command-operations:
 
-`Command Operations <dashboard.mongodb-overview.html#command-operations>`_
+`Command Operations <dashboard-mongodb-overview.html#command-operations>`_
 --------------------------------------------------------------------------------
 
 Shows how many times a command is executed per second on average during the
@@ -17,9 +17,9 @@ Look for peaks and drops and correlate them with other graphs.
 
 |view-all-metrics| |this-dashboard|
 
-.. _dashboard.mongodb-overview.connections:
+.. _dashboard-mongodb-overview.connections:
 
-`Connections <dashboard.mongodb-overview.html#connections>`_
+`Connections <dashboard-mongodb-overview.html#connections>`_
 --------------------------------------------------------------------------------
 
 Keep in mind the hard limit on the maximum number of connections set by your
@@ -30,9 +30,9 @@ connections correctly.
 
 |view-all-metrics| |this-dashboard|
 
-.. _dashboard.mongodb-overview.cursors:
+.. _dashboard-mongodb-overview.cursors:
 
-`Cursors <dashboard.mongodb-overview.html#cursors>`_
+`Cursors <dashboard-mongodb-overview.html#cursors>`_
 --------------------------------------------------------------------------------
 
 Helps identify why connections are increasing.  Shows active cursors compared to
@@ -41,9 +41,9 @@ closing the connection.
 
 |view-all-metrics| |this-dashboard|
 
-.. _dashboard.mongodb-overview.document-operations:
+.. _dashboard-mongodb-overview.document-operations:
 
-`Document Operations <dashboard.mongodb-overview.html#document-operations>`_
+`Document Operations <dashboard-mongodb-overview.html#document-operations>`_
 --------------------------------------------------------------------------------
 
 When used in combination with **Command Operations**, this graph can help
@@ -53,9 +53,9 @@ documents.
 
 |view-all-metrics| |this-dashboard|
 
-.. _dashboard.mongodb-overview.queued-operations:
+.. _dashboard-mongodb-overview.queued-operations:
 
-`Queued Operations <dashboard.mongodb-overview.html#queued-operations>`_
+`Queued Operations <dashboard-mongodb-overview.html#queued-operations>`_
 --------------------------------------------------------------------------------
 
 Any number of queued operations for long periods of time is an indication of
@@ -64,9 +64,9 @@ queue.
 
 |view-all-metrics| |this-dashboard|
 
-.. _dashboard.mongodb-overview.getlasterror-write-time.operations:
+.. _dashboard-mongodb-overview.getlasterror-write-time.operations:
 
-`getLastError Write Time, getLastError Write Operations <dashboard.mongodb-overview.html#getlasterror-write-time.operations>`_
+`getLastError Write Time, getLastError Write Operations <dashboard-mongodb-overview.html#getlasterror-write-time.operations>`_
 -------------------------------------------------------------------------------------------------------------------------------
 
 This is useful for write-heavy workloads to understand how long it takes to
@@ -74,9 +74,9 @@ verify writes and how many concurrent writes are occurring.
 
 |view-all-metrics| |this-dashboard|
 
-.. _dashboard.mongodb-overview.asserts:
+.. _dashboard-mongodb-overview.asserts:
 
-`Asserts <dashboard.mongodb-overview.html#asserts>`_
+`Asserts <dashboard-mongodb-overview.html#asserts>`_
 --------------------------------------------------------------------------------
 
 Asserts are not important by themselves, but you can correlate spikes with other
@@ -84,9 +84,9 @@ graphs.
 
 |view-all-metrics| |this-dashboard|
 
-.. _dashboard.mongodb-overview.memory-faults:
+.. _dashboard-mongodb-overview.memory-faults:
 
-`Memory Faults <dashboard.mongodb-overview.html#memory-faults>`_
+`Memory Faults <dashboard-mongodb-overview.html#memory-faults>`_
 --------------------------------------------------------------------------------
 
 Memory faults indicate that requests are processed from disk either because an
@@ -95,6 +95,6 @@ increasing memory or sharding out.
 
 |view-all-metrics| |this-dashboard|
 
-.. |this-dashboard| replace:: :ref:`dashboard.mongodb-overview`
+.. |this-dashboard| replace:: :ref:`dashboard-mongodb-overview`
 
 .. include:: ../.res/replace.txt

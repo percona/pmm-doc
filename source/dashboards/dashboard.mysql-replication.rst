@@ -1,4 +1,4 @@
-.. _dashboard.mysql-replication:
+.. _dashboard-mysql-replication:
 
 |mysql| Replication
 ================================================================================
@@ -6,7 +6,7 @@
 .. contents::
    :local:
 
-.. _dashboard.mysql-replication.io-thread-running:
+.. _dashboard-mysql-replication.io-thread-running:
 
 IO Thread Running
 --------------------------------------------------------------------------------
@@ -48,7 +48,7 @@ IO Thread Running is one of the parameters that the command
  
 |view-all-metrics| |this-dashboard|
 
-.. _dashboard.mysql-replication.sql-thread-running:
+.. _dashboard-mysql-replication.sql-thread-running:
 
 SQL Thread Running
 --------------------------------------------------------------------------------
@@ -80,7 +80,7 @@ No
 
 |view-all-metrics| |this-dashboard|
 
-.. _dashboard.mysql-replication.replication-error-no:
+.. _dashboard-mysql-replication.replication-error-no:
 
 Replication Error No
 --------------------------------------------------------------------------------
@@ -100,7 +100,7 @@ The SQL Thread will stop replication in order to avoid data corruption.
 
 |view-all-metrics| |this-dashboard|
 
-.. _dashboard.mysql-replication.read-only:
+.. _dashboard-mysql-replication.read-only:
 
 Read only
 --------------------------------------------------------------------------------
@@ -131,7 +131,7 @@ No
 
 |view-all-metrics| |this-dashboard|
 
-.. _dashboard.mysql-replication.mysql-replication-delay:
+.. _dashboard-mysql-replication.mysql-replication-delay:
 
 MySQL Replication Delay
 --------------------------------------------------------------------------------
@@ -168,7 +168,7 @@ in the milliseconds.
 
    Related metrics:
 
-      - :ref:`dashboard.mysql-replication.relay-log-space`
+      - :ref:`dashboard-mysql-replication.relay-log-space`
 
    |mysql| Documentation
 
@@ -180,7 +180,7 @@ in the milliseconds.
 
 |view-all-metrics| |this-dashboard|
 
-.. _dashboard.mysql-replication.binlog-size:
+.. _dashboard-mysql-replication.binlog-size:
 
 Binlog Size
 --------------------------------------------------------------------------------
@@ -206,7 +206,7 @@ variables ``max_binlog_size`` and ``expire_logs_days``).
 
 |view-all-metrics| |this-dashboard|
 
-.. _dashboard.mysql-replication.binlog-data-written-hourly:
+.. _dashboard-mysql-replication.binlog-data-written-hourly:
  
 Binlog Data Written Hourly
 --------------------------------------------------------------------------------
@@ -217,7 +217,7 @@ application in terms of data writes (creation, modification, deletion).
 
 |view-all-metrics| |this-dashboard|
 
-.. _dashboard.mysql-replication.binlog-count:
+.. _dashboard-mysql-replication.binlog-count:
 
 Binlog Count
 --------------------------------------------------------------------------------
@@ -236,7 +236,7 @@ master and slave servers.
 
 |view-all-metrics| |this-dashboard|
 
-.. _dashboard.mysql-replication.binlogs-created-hourly:
+.. _dashboard-mysql-replication.binlogs-created-hourly:
 
 Binlogs Created Hourly
 --------------------------------------------------------------------------------
@@ -247,7 +247,7 @@ This metric shows the number of binlog files created hourly during the last 24 h
 
 |view-all-metrics| |this-dashboard|
 
-.. _dashboard.mysql-replication.relay-log-space:
+.. _dashboard-mysql-replication.relay-log-space:
 
 Relay Log Space
 --------------------------------------------------------------------------------
@@ -271,7 +271,7 @@ high too. Generally, this not a serious issue. If the value of this metric is
 constantly increased, the slave is delaying too much in applying the events.
 
 Treat this metric in the same way as the
-:ref:`dashboard.mysql-replication.mysql-replication-delay` metric.
+:ref:`dashboard-mysql-replication.mysql-replication-delay` metric.
 
 .. seealso::
 
@@ -281,7 +281,7 @@ Treat this metric in the same way as the
 
 |view-all-metrics| |this-dashboard|
 
-.. _dashboard.mysql-replication.relay-log-written-hourly:
+.. _dashboard-mysql-replication.relay-log-written-hourly:
 
 Relay Log Written Hourly
 --------------------------------------------------------------------------------
@@ -291,6 +291,6 @@ the last 24 hours.
 
 |view-all-metrics| |this-dashboard|
 
-.. |this-dashboard| replace:: :ref:`dashboard.mysql-replication`
+.. |this-dashboard| replace:: :ref:`dashboard-mysql-replication`
 
 .. include:: ../.res/replace.txt

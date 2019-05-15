@@ -1,4 +1,4 @@
-.. _dashboard.system-overview:
+.. _dashboard-system-overview:
 
 |dbd.system-overview| Dashboard
 ================================================================================

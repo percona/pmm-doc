@@ -5,6 +5,6 @@ Adding a MongoDB Host
 .. toctree::
    :maxdepth: 4
 
-   client.mongodb.metrics
-   client.mongodb.queries
+   client-mongodb-metrics
+   client-mongodb-queries
 

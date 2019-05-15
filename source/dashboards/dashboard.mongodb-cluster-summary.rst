@@ -1,4 +1,4 @@
-.. _dashboard.mongodb-cluster-summary:
+.. _dashboard-mongodb-cluster-summary:
 
 |mongodb| Cluster Summary
 ================================================================================

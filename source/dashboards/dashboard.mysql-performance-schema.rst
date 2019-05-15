@@ -1,5 +1,5 @@
 
-.. _dashboard.mysql-performance-schema:
+.. _dashboard-mysql-performance-schema:
 
 |mysql| |perf-schema|  Dashboard
 ================================================================================

@@ -26,11 +26,11 @@ The following options can be used with the |pmm-admin.config| command:
 |opt.bind-address|
   Specify the bind address,
   which is also the local (private) address
-  mapped from client address via NAT or port forwarding
-  By default, it is set to the client address.
+  mapped from client-address via NAT or port forwarding
+  By default, it is set to the client-address.
 
 |opt.client-address|
-  Specify the client address,
+  Specify the client-address,
   which is also the remote (public) address for this system.
   By default, it is automatically detected via request to server.
 

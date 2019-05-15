@@ -1,4 +1,4 @@
-.. _dashboard.postgres-overview:
+.. _dashboard-postgres-overview:
 
 |dbd.postgres-overview|
 ================================================================================
@@ -8,18 +8,18 @@ This dashboard provides basic information about |postgresql| hosts.
 .. contents::
    :local:
 
-.. _dashboard.postgres-overview.connected:
+.. _dashboard-postgres-overview.connected:
 
-`Connected <dashboard.postgres-overview.html#connected>`_
+`Connected <dashboard-postgres-overview.html#connected>`_
 ----------------------------------------------------------------------------------------------
 
 Reports whether PMM Server can connect to the |postgresql| instance.
 
 |view-all-metrics| |this-dashboard|
 
-.. _dashboard.postgres-overview.version:
+.. _dashboard-postgres-overview.version:
 
-`Version <dashboard.postgres-overview.html#version>`_
+`Version <dashboard-postgres-overview.html#version>`_
 ----------------------------------------------------------------------------------
 
 The version of the |postgresql| instance.
@@ -27,9 +27,9 @@ The version of the |postgresql| instance.
 |view-all-metrics| |this-dashboard|
 
 
-.. _dashboard.postgres-overview.shared-buffers:
+.. _dashboard-postgres-overview.shared-buffers:
 
-`Shared Buffers <dashboard.postgres-overview.html#shared-buffers>`_
+`Shared Buffers <dashboard-postgres-overview.html#shared-buffers>`_
 ---------------------------------------------------------------------------------------------------------
 
 Defines the amount of memory the database server uses for shared memory
@@ -43,9 +43,9 @@ generally doesn't exceed ``40%``.
    |postgresql| Server status variables: shared_buffers
       https://www.postgresql.org/docs/current/static/runtime-config-resource.html#GUC-SHARED-BUFFERS
 
-.. _dashboard.postgres-overview.disk-page-buffers:
+.. _dashboard-postgres-overview.disk-page-buffers:
 
-`Disk-Page Buffers <dashboard.postgres-overview.html#disk-page-buffers>`_
+`Disk-Page Buffers <dashboard-postgres-overview.html#disk-page-buffers>`_
 -----------------------------------------------------------------------------------------------------
 
 The setting ``wal_buffers`` defines how much memory is used for caching the
@@ -63,9 +63,9 @@ servers.
    |postgresql| Server status variables: shared_buffers
       https://www.postgresql.org/docs/current/static/runtime-config-resource.html#GUC-SHARED-BUFFERS
 
-.. _dashboard.postgres-overview.memory-size-for-each-sort:
+.. _dashboard-postgres-overview.memory-size-for-each-sort:
 
-`Memory Size for each Sort <dashboard.postgres-overview.html#memory-size-for-each-sort>`_
+`Memory Size for each Sort <dashboard-postgres-overview.html#memory-size-for-each-sort>`_
 -----------------------------------------------------------------------------------------------------------------------
 
 The parameter work_mem defines the amount of memory assigned for internal sort
@@ -79,9 +79,9 @@ is ``4MB``.
    |postgresql| Server status variables: work_mem
       https://www.postgresql.org/docs/current/static/runtime-config-resource.html#GUC-WORK-MEM
 
-.. _dashboard.postgres-overview.disk-cache-size:
+.. _dashboard-postgres-overview.disk-cache-size:
 
-`Disk Cache Size <dashboard.postgres-overview.html#disk-cache-size>`_
+`Disk Cache Size <dashboard-postgres-overview.html#disk-cache-size>`_
 --------------------------------------------------------------------------------------------------
 
 |postgresql|'s ``effective_cache_size`` variable tunes how much RAM you expect
@@ -97,9 +97,9 @@ indexes.
    |postgresql| Server status variables: effective_cache_size
       https://www.postgresql.org/docs/current/static/runtime-config-query.html#GUC-EFFECTIVE-CACHE-SIZE
 
-.. _dashboard.postgres-overview.autovacuum:
+.. _dashboard-postgres-overview.autovacuum:
 
-`Autovacuum <dashboard.postgres-overview.html#autovacuum>`_
+`Autovacuum <dashboard-postgres-overview.html#autovacuum>`_
 ----------------------------------------------------------------------------------------
 
 Whether autovacuum process is enabled or not. Generally the solution is to
@@ -112,9 +112,9 @@ vacuum more often, not less.
    |postgresql| Server status variables: autovacuum
       https://www.postgresql.org/docs/current/static/routine-vacuuming.html#AUTOVACUUM
 
-.. _dashboard.postgres-overview.connections:
+.. _dashboard-postgres-overview.connections:
 
-`PostgreSQL Connections <dashboard.postgres-overview.html#connections>`_
+`PostgreSQL Connections <dashboard-postgres-overview.html#connections>`_
 -----------------------------------------------------------------------------------------------------
 
 Max Connections
@@ -137,9 +137,9 @@ Active Connections
    |postgresql| Server status variables: max_connections
       https://www.postgresql.org/docs/current/static/runtime-config-connection.html#GUC-MAX-CONNECTIONS
 
-.. _dashboard.postgres-overview.tuples:
+.. _dashboard-postgres-overview.tuples:
 
-`PostgreSQL Tuples <dashboard.postgres-overview.html#tuples>`_
+`PostgreSQL Tuples <dashboard-postgres-overview.html#tuples>`_
 -------------------------------------------------------------------------------------------
 
 Tuples
@@ -155,9 +155,9 @@ Tuples Changed per 5min
 
 |view-all-metrics| |this-dashboard|
 
-.. _dashboard.postgres-overview.transactions:
+.. _dashboard-postgres-overview.transactions:
 
-`PostgreSQL Transactions <dashboard.postgres-overview.html#transactions>`_
+`PostgreSQL Transactions <dashboard-postgres-overview.html#transactions>`_
 ------------------------------------------------------------------------------------------------------
 
 Transactions
@@ -169,9 +169,9 @@ Duration of Transactions
 
 |view-all-metrics| |this-dashboard|
 
-.. _dashboard.postgres-overview.temp.files:
+.. _dashboard-postgres-overview.temp.files:
 
-`Temp Files <dashboard.postgres-overview.html#temp-files>`_
+`Temp Files <dashboard-postgres-overview.html#temp-files>`_
 ----------------------------------------------------------------------------------------
 
 Number of Temp Files
@@ -186,9 +186,9 @@ Size of Temp files
 
 |view-all-metrics| |this-dashboard|
 
-.. _dashboard.postgres-overview.conflicts.and.locks:
+.. _dashboard-postgres-overview.conflicts.and.locks:
 
-`Conflicts and Locks <dashboard.postgres-overview.html#conflicts-and-locks>`_
+`Conflicts and Locks <dashboard-postgres-overview.html#conflicts-and-locks>`_
 ----------------------------------------------------------------------------------------------------------
 
 Conflicts/Deadlocks
@@ -201,9 +201,9 @@ Number of Locks
 
 |view-all-metrics| |this-dashboard|
 
-.. _dashboard.postgres-overview.buffers.and.blocks.operations:
+.. _dashboard-postgres-overview.buffers.and.blocks.operations:
 
-`Buffers and Blocks Operations <dashboard.postgres-overview.html#buffers-and-blocks-operations>`_
+`Buffers and Blocks Operations <dashboard-postgres-overview.html#buffers-and-blocks-operations>`_
 ------------------------------------------------------------------------------------------------------------------------------
 
 Operations with Blocks
@@ -223,9 +223,9 @@ Buffers
 
 |view-all-metrics| |this-dashboard|
 
-.. _dashboard.postgres-overview.canceled.queries:
+.. _dashboard-postgres-overview.canceled.queries:
 
-`Canceled Queries <dashboard.postgres-overview.html#canceled-queries>`_
+`Canceled Queries <dashboard-postgres-overview.html#canceled-queries>`_
 -----------------------------------------------------------------------------------------------------
 
 The number of queries that have been canceled due to dropped tablespaces, lock
@@ -236,9 +236,9 @@ timeouts, old snapshots, pinned buffers, and deadlocks.
  
 |view-all-metrics| |this-dashboard|
 
-.. _dashboard.postgres-overview.cache.hit.ratio:
+.. _dashboard-postgres-overview.cache.hit.ratio:
 
-`Cache Hit Ratio <dashboard.postgres-overview.html#cache-hit-ratio>`_
+`Cache Hit Ratio <dashboard-postgres-overview.html#cache-hit-ratio>`_
 --------------------------------------------------------------------------------------------------
 
 The number of times disk blocks were found already in the buffer cache, so that
@@ -249,9 +249,9 @@ a read was not necessary.
 
 |view-all-metrics| |this-dashboard|
 
-.. _dashboard.postgres-overview.checkpoint.stats:
+.. _dashboard-postgres-overview.checkpoint.stats:
 
-`Checkpoint Stats <dashboard.postgres-overview.html#checkpoint-stats>`_
+`Checkpoint Stats <dashboard-postgres-overview.html#checkpoint-stats>`_
 ----------------------------------------------------------------------------------------------------
 
 The total amount of time that has been spent in the portion of checkpoint
@@ -260,18 +260,18 @@ in milliseconds.
 
 |view-all-metrics| |this-dashboard|
 
-.. _dashboard.postgres-overview.postgresql.settings:
+.. _dashboard-postgres-overview.postgresql.settings:
 
-`PostgreSQL Settings <dashboard.postgres-overview.html#postgresql-settings>`_
+`PostgreSQL Settings <dashboard-postgres-overview.html#postgresql-settings>`_
 ----------------------------------------------------------------------------------------------------------
 
 The list of all settings of the |postgresql| server.
 
 |view-all-metrics| |this-dashboard|
 
-.. _dashboard.postgres-overview.system.summary:
+.. _dashboard-postgres-overview.system.summary:
 
-`System Summary <dashboard.postgres-overview.html#system-summary>`_
+`System Summary <dashboard-postgres-overview.html#system-summary>`_
 -------------------------------------------------------------------------------------------------
 
 This section contains the following system parameters of the |postgresql|
@@ -297,7 +297,7 @@ Network Traffic.
    |postgresql| Server status variables: max_connections
       https://www.postgresql.org/docs/current/static/runtime-config-connection.html#GUC-MAX-CONNECTIONS
 
-.. |this-dashboard| replace:: :ref:`dashboard.postgres-overview`
+.. |this-dashboard| replace:: :ref:`dashboard-postgres-overview`
 
 .. include:: ../.res/replace.txt
 

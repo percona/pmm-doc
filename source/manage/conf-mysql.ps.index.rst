@@ -9,10 +9,10 @@ configuration.
 .. toctree::
    :maxdepth: 4
 
-   conf-mysql.ps.userstat
-   conf-mysql.ps.qrt
-   conf-mysql.ps.log-slow-rate-limit
-   conf-mysql.ps.log-slow-verbosity
-   conf-mysql.ps.slow-query-log-use-global-control
+   conf-mysql-ps-userstat
+   conf-mysql-ps-qrt
+   conf-mysql-ps-log-slow-rate-limit
+   conf-mysql-ps-log-slow-verbosity
+   conf-mysql-ps-slow-query-log-use-global-control
 
 .. include:: ../.res/replace.txt

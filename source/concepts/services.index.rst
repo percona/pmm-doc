@@ -6,5 +6,5 @@ Services
    :maxdepth: 1
    :titlesonly:
 
-   MySQL requirements <services.mysql>
-   MongoDB requirements <services.mongodb>
+   MySQL requirements <services-mysql>
+   MongoDB requirements <services-mongodb>

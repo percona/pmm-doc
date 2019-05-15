@@ -1,7 +1,7 @@
-.. _pmm.qan.top-ten:
+.. _pmm.qan-top-ten:
 
 --------------------------------------------------------------------------------
-`Understanding Top 10 <pmm.qan.top-ten>`_
+`Understanding Top 10 <pmm.qan-top-ten>`_
 --------------------------------------------------------------------------------
 
 By default, |qan| shows the top *ten* queries ranked by :ref:`%GTT <GTT>` (Grand

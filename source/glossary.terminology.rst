@@ -1,4 +1,4 @@
-.. _pmm.glossary.terminology-reference:
+.. _pmm.glossary-terminology-reference:
 
 Terminology Reference
 ********************************************************************************

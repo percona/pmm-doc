@@ -1,4 +1,4 @@
-.. _dashboard.prometheus:
+.. _dashboard-prometheus:
 
 |dbd.prometheus| Dashboard
 ================================================================================

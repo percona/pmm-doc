@@ -1,1 +1,1 @@
-.. include:: ../conf-mysql.requirements.rst
+.. include:: ../conf-mysql-requirements.rst

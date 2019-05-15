@@ -1,4 +1,4 @@
-.. _dashboard.mysql-user-statistics:
+.. _dashboard-mysql-user-statistics:
 
 |dbd.mysql-user-statistics|
 ================================================================================

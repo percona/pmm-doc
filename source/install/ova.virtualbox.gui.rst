@@ -1,4 +1,4 @@
-.. _pmm.deploying.server.ova.virtualbox.gui:
+.. _pmm.deploying.server.ova-virtualbox-gui:
 
 VirtualBox Using the GUI
 ================================================================================

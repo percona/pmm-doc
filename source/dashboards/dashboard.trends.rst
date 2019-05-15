@@ -1,4 +1,4 @@
-.. _dashboard.trends:
+.. _dashboard-trends:
 
 Trends Dashboard
 ================================================================================
@@ -23,7 +23,7 @@ questions and |innodb| row reads and row changes.
 .. contents::
    :local:
 
-.. _dashboard.trends.cpu-usage:
+.. _dashboard-trends.cpu-usage:
 
 CPU Usage
 --------------------------------------------------------------------------------
@@ -35,7 +35,7 @@ visually overlaying time periods.
  
 |view-all-metrics| |this-dashboard|
 
-.. _dashboard.trends.io-read-activity:
+.. _dashboard-trends.io-read-activity:
 
 I/O Read Activity
 --------------------------------------------------------------------------------
@@ -47,7 +47,7 @@ changed over time by visually overlaying time periods.
 
 |view-all-metrics| |this-dashboard| 
 
-.. _dashboard.trends.io-write-activity:
+.. _dashboard-trends.io-write-activity:
 
 I/O Write Activity
 --------------------------------------------------------------------------------
@@ -59,7 +59,7 @@ changed over time by visually overlaying time periods.
 
 |view-all-metrics| |this-dashboard|
 
-.. _dashboard.trends.mysql-questions:
+.. _dashboard-trends.mysql-questions:
 
 |mysql| Questions
 --------------------------------------------------------------------------------
@@ -71,7 +71,7 @@ over time by visually overlaying time periods.
 
 |view-all-metrics| |this-dashboard|
 
-.. _dashboard.trends.innodb-rows-read:
+.. _dashboard-trends.innodb-rows-read:
 
 |innodb| Rows Read
 --------------------------------------------------------------------------------
@@ -83,7 +83,7 @@ over time by visually overlaying time periods.
 
 |view-all-metrics| |this-dashboard|
 
-.. _dashboard.trends.innodb-rows-changed:
+.. _dashboard-trends.innodb-rows-changed:
 
 |innodb| Rows Changed
 --------------------------------------------------------------------------------
@@ -95,6 +95,6 @@ fluctuated over time by visually overlaying time periods.
 
 |view-all-metrics| |this-dashboard|
 
-.. |this-dashboard| replace:: :ref:`dashboard.trends`
+.. |this-dashboard| replace:: :ref:`dashboard-trends`
 
 .. include:: ../.res/replace.txt

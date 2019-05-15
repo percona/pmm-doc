@@ -8,4 +8,4 @@ Installing PMM Server
    docker
    ami
    virtual-appliance
-   server.verify
+   server-verify

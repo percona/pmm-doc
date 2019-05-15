@@ -1,4 +1,4 @@
-.. _pmm.server.docker.restoring:
+.. _pmm.server.docker-restoring:
 
 Restoring the Backed Up Information to the PMM Data Container
 ================================================================================
@@ -33,7 +33,7 @@ backed up information into the |opt.pmm-data| container.
 	       |opt.pmm-server| images at `percona/pmm-server`_.
 
 Assuming that you have a backup copy of your |opt.pmm-data|, created according
-to the procedure described in the:ref:`pmm.server.docker.backing-up` section,
+to the procedure described in the:ref:`pmm.server.docker-backing-up` section,
 restore your data as follows:
 
 #. Change the working directory to the directory that contains your
@@ -64,11 +64,11 @@ command from the computer where |pmm-client| is installed. |tip.run-this.root|.
 .. seealso::
 
    Setting up |pmm-server| via |docker|
-      :ref:`pmm.server.docker.setting-up`
+      :ref:`pmm.server.docker-setting-up`
    Updating PMM
      :ref:`Updating PMM <deploy-pmm.updating>`
    Backing Up the |pmm-server| |docker| container
-      :ref:`pmm.server.docker.backing-up`
+      :ref:`pmm.server.docker-backing-up`
 
 .. References
 

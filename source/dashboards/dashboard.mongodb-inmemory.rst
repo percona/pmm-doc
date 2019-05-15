@@ -1,4 +1,4 @@
-.. _dashboard.mongodb-inmemory:
+.. _dashboard-mongodb-inmemory:
 
 |mongodb| inMemory Dashboard
 ================================================================================

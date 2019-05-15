@@ -9,49 +9,49 @@ This section contains a reference of dashboards available in |metrics-monitor|.
 .. _pmm.dashboard.insight.list:
 .. _pmm.dashboard.general.list:
 
-`Insight <index.metrics-monitor.dashboard.html#pmm-dashboard-general-list>`_
+`Insight <index-metrics-monitor-dashboard.html#pmm-dashboard-general-list>`_
 ================================================================================
 
 .. toctree::
    :maxdepth: 1
 
-   dashboards/dashboard.home
-   dashboards/dashboard.pmm-system-summary
-   dashboards/dashboard.advanced-data-exploration
-   dashboards/dashboard.cross-server-graphs
-   dashboards/dashboard.summary
-   dashboards/dashboard.trends
-   dashboards/dashboard.network-overview
-   dashboards/dashboard.inventory
+   dashboards/dashboard-home
+   dashboards/dashboard-pmm-system-summary
+   dashboards/dashboard-advanced-data-exploration
+   dashboards/dashboard-cross-server-graphs
+   dashboards/dashboard-summary
+   dashboards/dashboard-trends
+   dashboards/dashboard-network-overview
+   dashboards/dashboard-inventory
 
 .. _pmm.dashboard.os.list:
 
-`OS Dashboards <index.metrics-monitor.dashboard.html#pmm-dashboard-os-list>`_
+`OS Dashboards <index-metrics-monitor-dashboard.html#pmm-dashboard-os-list>`_
 ================================================================================
 
 .. toctree::
    :maxdepth: 1
 
-   dashboards/dashboard.cpu-utilization-details-cores
-   dashboards/dashboard.disk-space
-   dashboards/dashboard.system-overview
-   dashboards/dashboard.compare-system-parameters
-   dashboards/dashboard.overview-numa-metrics
+   dashboards/dashboard-cpu-utilization-details-cores
+   dashboards/dashboard-disk-space
+   dashboards/dashboard-system-overview
+   dashboards/dashboard-compare-system-parameters
+   dashboards/dashboard-overview-numa-metrics
 
-.. _pmm.dashboard.prometheus.list:
+.. _pmm.dashboard-prometheus.list:
 
-`Prometheus Dashboards <index.metrics-monitor.dashboard.html#pmm-dashboard-prometheus.list>`_
+`Prometheus Dashboards <index-metrics-monitor-dashboard.html#pmm-dashboard-prometheus.list>`_
 ==============================================================================================
 
 .. toctree::
    :glob:
    :maxdepth: 1
 
-   dashboards/dashboard.prometheus*
+   dashboards/dashboard-prometheus*
 
 .. _pmm.dashboard.mysql.list:
 
-`MySQL Dashboards <index.metrics-monitor.dashboard.html#pmm-dashboard-mysql-list>`_
+`MySQL Dashboards <index-metrics-monitor-dashboard.html#pmm-dashboard-mysql-list>`_
 =========================================================================================
 
 .. toctree::
@@ -62,7 +62,7 @@ This section contains a reference of dashboards available in |metrics-monitor|.
 
 .. _pmm.dashboard.mongodb.list:
 
-`MongoDB Dashboards <index.metrics-monitor.dashboard.html#pmm-dashboard-mongodb-list>`_
+`MongoDB Dashboards <index-metrics-monitor-dashboard.html#pmm-dashboard-mongodb-list>`_
 ========================================================================================
 
 .. toctree::
@@ -73,7 +73,7 @@ This section contains a reference of dashboards available in |metrics-monitor|.
 
 .. _pmm.dashboard.postgres.list:
 
-`PostgreSQL Dashboards <index.metrics-monitor.dashboard.html#pmm-dashboard-postgres-list>`_
+`PostgreSQL Dashboards <index-metrics-monitor-dashboard.html#pmm-dashboard-postgres-list>`_
 ============================================================================================
 
 .. toctree::
@@ -84,12 +84,12 @@ This section contains a reference of dashboards available in |metrics-monitor|.
 
 .. _pmm.dashboard.ha.list:
 
-`HA Dashboards <index.metrics-monitor.dashboard.html#pmm-dashboard-ha-list>`_
+`HA Dashboards <index-metrics-monitor-dashboard.html#pmm-dashboard-ha-list>`_
 ================================================================================
 
 .. toctree::
    :maxdepth: 1
 
-   dashboards/dashboard.pxc-galera-cluster-overview
+   dashboards/dashboard-pxc-galera-cluster-overview
 
 .. include:: .res/replace.txt

@@ -1,4 +1,4 @@
-.. _dashboard.pxc-galera-cluster-overview:
+.. _dashboard-pxc-galera-cluster-overview:
 
 PXC/Galera Cluster Overview Dashboard
 ================================================================================

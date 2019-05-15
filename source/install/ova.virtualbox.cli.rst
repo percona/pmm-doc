@@ -1,4 +1,4 @@
-.. _pmm.deploying.server.ova.virtualbox.cli:
+.. _pmm.deploying.server.ova-virtualbox-cli:
 
 VirtualBox Using the Command Line
 ================================================================================

@@ -1,4 +1,4 @@
-.. _dashboard.mysql-amazon-aurora-metrics:
+.. _dashboard-mysql-amazon-aurora-metrics:
 
 |mysql| |amazon-aurora| Metrics
 ================================================================================
@@ -8,18 +8,18 @@ This dashboard provides metrics for analyzing |amazon-aurora| instances.
 .. contents::
    :local:
 
-.. _dashboard.mysql-amazon-aurora-metrics.amazon-aurora-transaction-commits:
+.. _dashboard-mysql-amazon-aurora-metrics.amazon-aurora-transaction-commits:
 
-`Amazon Aurora Transaction Commits <dashboard.mysql-amazon-aurora-metrics.html#amazon-aurora-transaction-commits>`_
+`Amazon Aurora Transaction Commits <dashboard-mysql-amazon-aurora-metrics.html#amazon-aurora-transaction-commits>`_
 -------------------------------------------------------------------------------------------------------------------
 
 This graph shows number of commits which the |amazon-aurora| engine performed as
 well as the average commit latency. Graph Latency does not always correlates
 with number of commits performed and can quite high in certain situations.
 
-.. _dashboard.mysql-amazon-aurora-metrics.amazon-aurora-load:
+.. _dashboard-mysql-amazon-aurora-metrics.amazon-aurora-load:
 
-`Amazon Aurora Load <dashboard.mysql-amazon-aurora-metrics.html#amazon-aurora-transaction-commits>`_
+`Amazon Aurora Load <dashboard-mysql-amazon-aurora-metrics.html#amazon-aurora-transaction-commits>`_
 ----------------------------------------------------------------------------------------------------
 
 This graph shows what statements contribute most load on the system as well
@@ -37,9 +37,9 @@ as what load corresponds to |amazon-aurora| transaction commit.
    submit an SQL query to the database engine, the database session is active
    while the database engine is processing that query.
 
-.. _dashboard.mysql-amazon-aurora-metrics.aurora-memory-used:
+.. _dashboard-mysql-amazon-aurora-metrics.aurora-memory-used:
 
-`Aurora Memory Used <dashboard.mysql-amazon-aurora-metrics.html#aurora-memory-used>`_
+`Aurora Memory Used <dashboard-mysql-amazon-aurora-metrics.html#aurora-memory-used>`_
 -------------------------------------------------------------------------------------
 
 This graph shows how much memory is used by |amazon-aurora| lock manager as well
@@ -53,9 +53,9 @@ as amount of memory used by |amazon-aurora| to store Data Dictionary.
   space that contains metadata used to keep track of database objects, such as
   tables and indexes.
 
-.. _dashboard.mysql-amazon-aurora-metrics.amazon-aurora-statement-latency:
+.. _dashboard-mysql-amazon-aurora-metrics.amazon-aurora-statement-latency:
 
-`Amazon Aurora Statement Latency <dashboard.mysql-amazon-aurora-metrics.html#amazon-aurora-statement-latency>`_
+`Amazon Aurora Statement Latency <dashboard-mysql-amazon-aurora-metrics.html#amazon-aurora-statement-latency>`_
 ---------------------------------------------------------------------------------------------------------------
 
 This graph shows average latency for most important types of statements. Latency
@@ -67,9 +67,9 @@ spikes are often indicative of the instance overload.
 - SELECT Latency: average time to execute SELECT queries
 - INSERT Latency: average time to execute INSERT queries
 
-.. _dashboard.mysql-amazon-aurora-metrics.amazon-aurora-special-command-counters:
+.. _dashboard-mysql-amazon-aurora-metrics.amazon-aurora-special-command-counters:
 
-`Amazon Aurora Special Command Counters <dashboard.mysql-amazon-aurora-metrics.html#amazon-aurora-special-command-counters>`_
+`Amazon Aurora Special Command Counters <dashboard-mysql-amazon-aurora-metrics.html#amazon-aurora-special-command-counters>`_
 -----------------------------------------------------------------------------------------------------------------------------
 
 |amazon-aurora| |mysql| allows a number of commands which are not available from
@@ -94,9 +94,9 @@ alter_system
    is a special query to simulate an instance crash, a disk failure, a disk
    congestion or a replica failure. It is a useful query for testing the system.
 
-.. _dashboard.mysql-amazon-aurora-metrics.amazon-aurora-problems:
+.. _dashboard-mysql-amazon-aurora-metrics.amazon-aurora-problems:
 
-`Amazon Aurora Problems <dashboard.mysql-amazon-aurora-metrics.html#amazon-aurora-problems>`_
+`Amazon Aurora Problems <dashboard-mysql-amazon-aurora-metrics.html#amazon-aurora-problems>`_
 ---------------------------------------------------------------------------------------------
 
 This metric shows different kinds of internal |amazon-aurora| |mysql| problems

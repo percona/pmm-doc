@@ -1,4 +1,4 @@
-.. _dashboard.disk-space:
+.. _dashboard-disk-space:
 
 Disk space
 ================================================================================
@@ -6,9 +6,9 @@ Disk space
 .. contents::
    :local:
 
-.. _dashboard.disk-space.mountpoint-usage:
+.. _dashboard-disk-space.mountpoint-usage:
 
-`Mountpoint Usage <dashboard.disk-space.html#mountpoint-usage>`_
+`Mountpoint Usage <dashboard-disk-space.html#mountpoint-usage>`_
 --------------------------------------------------------------------------------
 
 This metric shows the percentage of disk space utilization for every mountpoint
@@ -21,9 +21,9 @@ expand the space allocate to it.
 
 |view-all-metrics| |this-dashboard|
 
-.. _dashboard.disk-space.mountpoint.root:
+.. _dashboard-disk-space.mountpoint.root:
 
-`Mountpoint <dashboard.disk-space.html#mountpoint.root>`_
+`Mountpoint <dashboard-disk-space.html#mountpoint.root>`_
 --------------------------------------------------------------------------------
 
 This metric shows information about the disk space usage of the specified
@@ -46,7 +46,7 @@ space allocated to the mountpoint.
 
 |view-all-metrics| |this-dashboard|
 
-.. |this-dashboard| replace:: :ref:`dashboard.disk-space`
+.. |this-dashboard| replace:: :ref:`dashboard-disk-space`
 
 .. include:: ../.res/replace.txt
 

@@ -1,4 +1,4 @@
-.. _deploy-pmm.server.verifying:
+.. _deploy-pmm.server-verifying:
 
 --------------------------------------------------------------------------------
 `Verifying PMM Server <index.html#deploy-pmm-server-verifying>`_

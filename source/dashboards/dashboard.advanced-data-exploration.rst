@@ -1,4 +1,4 @@
-.. _dashboard.advanced-data-exploration:
+.. _dashboard-advanced-data-exploration:
 
 |dbd.advanced-data-exploration| Dashboard
 ================================================================================
@@ -19,25 +19,25 @@ the progress of a single |prometheus| metric across one or more hosts.
 ..  contents::
     :local:
 
-.. _dashboard.advanced-data-exploration.metric-value.view-as-gauge:
+.. _dashboard-advanced-data-exploration.metric-value.view-as-gauge:
 
-`View actual metric values (Gauge) <dashboard.advanced-data-exploration.html#metric-value.view-as-gauge>`_
+`View actual metric values (Gauge) <dashboard-advanced-data-exploration.html#metric-value.view-as-gauge>`_
 ----------------------------------------------------------------------------------------------------------
 
 In this section, the values of the selected metric may increase or decrease over
 time (similar to temperature or memory usage).
 
-.. _dashboard.advanced-data-exploration.metric-value.view-as-counter:
+.. _dashboard-advanced-data-exploration.metric-value.view-as-counter:
 
-`View actual metric values (Counters) <dashboard.advanced-data-exploration.html#metric-value.view-as-counter>`_
+`View actual metric values (Counters) <dashboard-advanced-data-exploration.html#metric-value.view-as-counter>`_
 ---------------------------------------------------------------------------------------------------------------
 
 In this section, the values of the selected metric are accummulated over time
 (useful to count the number of served requests, for example).
 
-.. _dashboard.advanced-data-exploration.metric-data-table:
+.. _dashboard-advanced-data-exploration.metric-data-table:
 
-`View actual metric values (Counters) <dashboard.advanced-data-exploration.html#metric-data-table>`_
+`View actual metric values (Counters) <dashboard-advanced-data-exploration.html#metric-data-table>`_
 ----------------------------------------------------------------------------------------------------
 
 This section presents the values of the selected metric in the tabular form.

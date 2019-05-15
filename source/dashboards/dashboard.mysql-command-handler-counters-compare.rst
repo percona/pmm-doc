@@ -1,4 +1,4 @@
-.. _dashboard.mysql-command-handler-counters-compare:
+.. _dashboard-mysql-command-handler-counters-compare:
 
 |dbd.mysql-command-handler-counters-compare| Dashboard
 ================================================================================

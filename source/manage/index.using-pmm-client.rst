@@ -5,15 +5,15 @@ Using PMM Client
 .. toctree::
    :maxdepth: 4
 
-   clients.connecting
-   client.config
+   clients-connecting
+   client-config
    Checking the network with pmm-admin check-network <client.check.network>
    Pinging the PMM Server with pmm-admin ping <client.ping>
    client.aliases
-   index.using.mysql
-   index.using.mongodb
+   index-using-mysql
+   index-using-mongodb
    client.proxysql.metrics
-   client.linux.metrics
+   client-linux-metrics
    conf-postgres
    client.passing-options
    client.purge
@@ -24,5 +24,5 @@ Using PMM Client
    client.stop
    client.start 
    client.passwords
-   client.remove
-   client.uninstall
+   client-remove
+   client-uninstall

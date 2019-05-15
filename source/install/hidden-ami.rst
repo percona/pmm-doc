@@ -266,7 +266,7 @@ You are creating a username and password that will be used for two purposes:
 .. seealso::
 
    How to verify that the |pmm-server| is running properly?
-      :ref:`deploy-pmm.server.verifying`
+      :ref:`deploy-pmm.server-verifying`
 
    How to connect a |pmm-client| to the |pmm-server|?
       :ref:`deploy-pmm.client_server.connecting`

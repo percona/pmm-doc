@@ -1,4 +1,4 @@
-.. _dashboard.overview-numa-metrics:
+.. _dashboard-overview-numa-metrics:
 
 |dbd.overview-numa-metrics| Dashboard
 ================================================================================
@@ -16,27 +16,27 @@ access (NUMA).
        pmm-admin remove linux:metrics
        pmm-admin add linux:metrics
 
-.. _dashboard.overview-numa-metrics.memory-usage:
+.. _dashboard-overview-numa-metrics.memory-usage:
 
-`Memory Usage <dashboard.overview-numa-metrics.html#memory-usage>`_
+`Memory Usage <dashboard-overview-numa-metrics.html#memory-usage>`_
 --------------------------------------------------------------------------------
 
 Remotes over time the total, used, and free memory.
 
 |view-all-metrics| |this-dashboard|
 
-.. _dashboard.overview-numa-metrics.free-memory-percent:
+.. _dashboard-overview-numa-metrics.free-memory-percent:
 
-`Free Memory Percent <dashboard.overview-numa-metrics.html#free-memory-percent>`_
+`Free Memory Percent <dashboard-overview-numa-metrics.html#free-memory-percent>`_
 ---------------------------------------------------------------------------------
 
 Shows the free memory as the ratio to the total available memory.
 
 |view-all-metrics| |this-dashboard|
 
-.. _dashboard.overview-numa-metrics.numa-memory-usage-types:
+.. _dashboard-overview-numa-metrics.numa-memory-usage-types:
 
-`NUMA Memory Usage Types <dashboard.overview-numa-metrics.html#numa-memory-usage-types>`_
+`NUMA Memory Usage Types <dashboard-overview-numa-metrics.html#numa-memory-usage-types>`_
 -----------------------------------------------------------------------------------------
 
 Dirty
@@ -50,18 +50,18 @@ KernelStack The memory the kernel stack uses. This is not reclaimable.
 
 |view-all-metrics| |this-dashboard|
 
-.. _dashboard.overview-numa-metrics.numa-allocation-hits:
+.. _dashboard-overview-numa-metrics.numa-allocation-hits:
 
-`NUMA Allocation Hits <dashboard.overview-numa-metrics.html#numa-allocation-hits>`_
+`NUMA Allocation Hits <dashboard-overview-numa-metrics.html#numa-allocation-hits>`_
 ----------------------------------------------------------------------------------
 
 Memory successfully allocated on this node as intended.
 
 |view-all-metrics| |this-dashboard|
 
-.. _dashboard.overview-numa-metrics.numa-allocation-missed:
+.. _dashboard-overview-numa-metrics.numa-allocation-missed:
 
-`NUMA Allocation Missed <dashboard.overview-numa-metrics.html#numa-allocation-missed>`_
+`NUMA Allocation Missed <dashboard-overview-numa-metrics.html#numa-allocation-missed>`_
 ---------------------------------------------------------------------------------------
 
 Memory missed is allocated on a node despite the process preferring some different node.
@@ -70,9 +70,9 @@ Memory foreign is intended for a node, but actually allocated on some different 
 
 |view-all-metrics| |this-dashboard|
 
-.. _dashboard.overview-numa-metrics.anonymous-memory:
+.. _dashboard-overview-numa-metrics.anonymous-memory:
 
-`Anonymous Memory <dashboard.overview-numa-metrics.html#anonymous-memory>`_
+`Anonymous Memory <dashboard-overview-numa-metrics.html#anonymous-memory>`_
 --------------------------------------------------------------------------------
 
 Active
@@ -82,9 +82,9 @@ Inactive
 
 |view-all-metrics| |this-dashboard|
 
-.. _dashboard.overview-numa-metrics.numa-file-page-cache:
+.. _dashboard-overview-numa-metrics.numa-file-page-cache:
 
-`NUMA File (PageCache) <dashboard.overview-numa-metrics.html#numa-file-page-cache>`_
+`NUMA File (PageCache) <dashboard-overview-numa-metrics.html#numa-file-page-cache>`_
 ------------------------------------------------------------------------------------
 
 Active(file) Pagecache memory that has been used more recently and usually not
@@ -95,9 +95,9 @@ impact.
 
 |view-all-metrics| |this-dashboard|
 
-.. _dashboard.overview-numa-metrics.shared-memory:
+.. _dashboard-overview-numa-metrics.shared-memory:
 
-`Shared Memory <dashboard.overview-numa-metrics.html#shared-memory>`_
+`Shared Memory <dashboard-overview-numa-metrics.html#shared-memory>`_
 --------------------------------------------------------------------------------
 
 Shmem Total used shared memory (shared between several processes, thus including
@@ -105,9 +105,9 @@ RAM disks, SYS-V-IPC and BSD like SHMEM)
 
 |view-all-metrics| |this-dashboard|
 
-.. _dashboard.overview-numa-metrics.hugepages-statistics:
+.. _dashboard-overview-numa-metrics.hugepages-statistics:
 
-`HugePages Statistics <dashboard.overview-numa-metrics.html#hugepages-statistics>`_
+`HugePages Statistics <dashboard-overview-numa-metrics.html#hugepages-statistics>`_
 -----------------------------------------------------------------------------------
 
 Total
@@ -121,27 +121,27 @@ Surp
 
 |view-all-metrics| |this-dashboard|
 
-.. _dashboard.overview-numa-metrics.local-processes:
+.. _dashboard-overview-numa-metrics.local-processes:
 
-`Local Processes <dashboard.overview-numa-metrics.html#local-processes>`_
+`Local Processes <dashboard-overview-numa-metrics.html#local-processes>`_
 --------------------------------------------------------------------------------
 
 Memory allocated on a node while a process was running on it.
 
 |view-all-metrics| |this-dashboard|
 
-.. _dashboard.overview-numa-metrics.remote-processes:
+.. _dashboard-overview-numa-metrics.remote-processes:
 
-`Remote Processes <dashboard.overview-numa-metrics.html#remote-processes>`_
+`Remote Processes <dashboard-overview-numa-metrics.html#remote-processes>`_
 --------------------------------------------------------------------------------
 
 Memory allocated on a node while a process was running on some other node.
 
 |view-all-metrics| |this-dashboard|
 
-.. _dashboard.overview-numa-metrics.slab-memory:
+.. _dashboard-overview-numa-metrics.slab-memory:
 
-`Slab Memory <dashboard.overview-numa-metrics.html#slab-memory>`_
+`Slab Memory <dashboard-overview-numa-metrics.html#slab-memory>`_
 --------------------------------------------------------------------------------
 
 Slab
@@ -153,6 +153,6 @@ SUnreclaim
 
 |view-all-metrics| |this-dashboard|
 
-.. |this-dashboard| replace:: :ref:`dashboard.overview-numa-metrics`
+.. |this-dashboard| replace:: :ref:`dashboard-overview-numa-metrics`
 
 .. include:: ../.res/replace.txt

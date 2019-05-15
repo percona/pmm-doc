@@ -1,7 +1,7 @@
-.. _pmm.qan.mongodb:
+.. _pmm.qan-mongodb:
 
 --------------------------------------------------------------------------------
-`MongoDB specific <pmm.qan.mongodb>`_
+`MongoDB specific <pmm.qan-mongodb>`_
 --------------------------------------------------------------------------------
 
 Query Analytics for MongoDB
@@ -14,7 +14,7 @@ you may need to link records from multiple tables. |mongodb|, on the other hand,
 uses the concept of a document where all essential information pertaining to a
 complex object is stored together.
 
-.. _figure.pmm.qan.mongodb.query-summary-table.mongodb:
+.. _figure.pmm.qan-mongodb.query-summary-table.mongodb:
 
 .. figure:: .res/graphics/png/qan.query-summary-table.mongodb.1.png
 
@@ -32,7 +32,7 @@ reading and writing data in the collections of your |mongodb| databases.
       :ref:`See more information about how to configure MongoDB <pmm.conf.mongodb.supported-version>`
 
 
-.. _figure.pmm.qan.mongodb.query-metrics:
+.. _figure.pmm.qan-mongodb.query-metrics:
 
 .. figure:: .res/graphics/png/qan.query-metrics.mongodb.1.png
 

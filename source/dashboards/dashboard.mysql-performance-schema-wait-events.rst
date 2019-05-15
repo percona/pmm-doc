@@ -1,5 +1,5 @@
 
-.. _dashboard.mysql-performance-schema-wait-event:
+.. _dashboard-mysql-performance-schema-wait-event:
 
 |perf-schema| Wait Event Analysis Dashboard
 ================================================================================

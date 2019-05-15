@@ -8,7 +8,7 @@ graphs are separated into dashboards by themes: some are related to |mysql| or
 
 .. _pmm.metrics-monitor.dashboard.opening:
 
-`Opening a Dashboard <metrics-monitor.dashboards.html#pmm-metrics-monitor-dashboard-opening>`_
+`Opening a Dashboard <metrics-monitor-dashboards.html#pmm-metrics-monitor-dashboard-opening>`_
 ==============================================================================================
 
 The default |pmm| installation provides more than thirty dashboards. To make it
@@ -25,7 +25,7 @@ on the top allows to search the required dashboard by typing.
 
 .. _pmm.metrics-monitor.graph-description:
 
-`Viewing More Information about a Graph <metrics-monitor.dashboards.html#pmm-metrics-monitor-graph-description>`_
+`Viewing More Information about a Graph <metrics-monitor-dashboards.html#pmm-metrics-monitor-graph-description>`_
 ==================================================================================================================
 
 Each graph has a descriptions to display more information about the monitored

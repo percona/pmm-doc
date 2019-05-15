@@ -1,4 +1,4 @@
-.. _dashboard.mysql-myisam-aria-metrics:
+.. _dashboard-mysql-myisam-aria-metrics:
 
 |mysql| |myisam| |aria| Metrics Dashboard
 ================================================================================
@@ -10,7 +10,7 @@ of |mariadb| MySQL server: `Aria storage engine <https://mariadb.com/kb/en/the-m
 .. contents::
    :local:
 
-.. _dashboard.mysql-myisam-aria-metrics.aria-storage-engine:
+.. _dashboard-mysql-myisam-aria-metrics.aria-storage-engine:
 
 |aria| Storage Engine
 --------------------------------------------------------------------------------
@@ -20,7 +20,7 @@ variables that |myisam| has, but with an |aria| prefix. If you use |aria|
 instead of |myisam|, then you should make |opt.key-buffer-size| smaller and
 aria-pagecache-buffer-size bigger.
 
-.. _dashboard.mysql-myisam-aria-metrics.aria-pagecache-reads-writes:
+.. _dashboard-mysql-myisam-aria-metrics.aria-pagecache-reads-writes:
 
 |aria| Pagecache Reads/Writes
 --------------------------------------------------------------------------------
@@ -32,7 +32,7 @@ read requests or writes are close to write requests you may need to increase the
 |opt.aria-pagecache-buffer-size| (you may need to decrease other buffers:
 |opt.key-buffer-size|, |opt.innodb-buffer-pool-size| etc)
 
-.. _dashboard.mysql-myisam-aria-metrics.aria-pagecache-blocks:
+.. _dashboard-mysql-myisam-aria-metrics.aria-pagecache-blocks:
 
 |aria| Pagecache Blocks
 --------------------------------------------------------------------------------
@@ -42,7 +42,7 @@ This graphs shows the utilization for the aria pagecache.  This is similar to
 increasing |opt.aria-pagecache-buffer-size| (you may need to decrease other
 buffers: |opt.key-buffer-size|, |opt.innodb-buffer-pool-size| etc)
 
-.. _dashboard.mysql-myisam-aria-metrics.aria-transactions-log-syncs:
+.. _dashboard-mysql-myisam-aria-metrics.aria-transactions-log-syncs:
 
 |aria| Transactions Log Syncs
 --------------------------------------------------------------------------------

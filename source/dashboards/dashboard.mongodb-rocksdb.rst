@@ -1,4 +1,4 @@
-.. _dashboard.mongodb-rocksdb:
+.. _dashboard-mongodb-rocksdb:
 
 |mongodb| |rocksdb| Daskboard
 ================================================================================

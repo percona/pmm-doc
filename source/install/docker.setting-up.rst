@@ -1,4 +1,4 @@
-.. _pmm.server.docker.setting-up:
+.. _pmm.server.docker-setting-up:
 
 ================================================================================
 Setting Up a |docker| Container for |pmm-server|
@@ -19,7 +19,7 @@ creating and launching the |pmm-server| container.
 
 .. _pmm.server.docker-image.pulling:
 
-`Pulling the PMM Server Docker Image <docker.setting-up.html#image-pulling>`_
+`Pulling the PMM Server Docker Image <docker-setting-up.html#image-pulling>`_
 --------------------------------------------------------------------------------
 
 To pull the latest version from Docker Hub:
@@ -33,7 +33,7 @@ version.
 
 .. _data-container:
 
-`Creating the pmm-data Container <docker.setting-up.html#data-container>`_
+`Creating the pmm-data Container <docker-setting-up.html#data-container>`_
 --------------------------------------------------------------------------------
 
 To create a container for persistent |pmm| data, run the following command:
@@ -69,7 +69,7 @@ The previous command does the following:
 
 .. _server-container:
 
-`Creating and Launching the PMM Server Container <docker.setting-up.html#server-container>`_
+`Creating and Launching the PMM Server Container <docker-setting-up.html#server-container>`_
 ---------------------------------------------------------------------------------------------
 
 To create and launch |pmm-server| in one command, use |docker.run|:
@@ -104,7 +104,7 @@ This command does the following:
 
 .. _pmm.docker.specific-version:
 
-`Installing and using specific docker version <docker.setting-up.html#specific-version>`_
+`Installing and using specific docker version <docker-setting-up.html#specific-version>`_
 -----------------------------------------------------------------------------------------
 
 To install specific |pmm-server| version instead of the latest one, just put
@@ -136,7 +136,7 @@ interface would look as follows:
 
 .. _pmm.docker.additional-option:
 
-`Additional options <docker.setting-up.html#additional-option>`_
+`Additional options <docker-setting-up.html#additional-option>`_
 --------------------------------------------------------------------------------
 
 When running the |pmm-server|, you may pass additional parameters to the
@@ -149,12 +149,12 @@ supported additional options.
 .. seealso::
 
    Default ports
-      :ref:`Ports <Ports>` in :ref:`pmm.glossary.terminology-reference`
+      :ref:`Ports <Ports>` in :ref:`pmm.glossary-terminology-reference`
    Updating PMM
       :ref:`Updating PMM <deploy-pmm.updating>`
    Backing Up the |pmm-server| |docker| container
-      :ref:`pmm.server.docker.backing-up`
+      :ref:`pmm.server.docker-backing-up`
    Restoring |opt.pmm-data|
-      :ref:`pmm.server.docker.restoring`
+      :ref:`pmm.server.docker-restoring`
 
 .. include:: ../.res/replace.txt

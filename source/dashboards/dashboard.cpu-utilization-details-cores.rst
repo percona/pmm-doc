@@ -1,4 +1,4 @@
-.. _dashboard.cpu-utilization-details-cores:
+.. _dashboard-cpu-utilization-details-cores:
 
 CPU Utilization Details (Cores)
 ================================================================================
@@ -6,7 +6,7 @@ CPU Utilization Details (Cores)
 .. contents::
    :local:
 
-.. _dashboard.cpu-utilization-details-cores.overall:
+.. _dashboard-cpu-utilization-details-cores.overall:
 
 Overall CPU Utilization
 --------------------------------------------------------------------------------
@@ -49,7 +49,7 @@ Be aware that this metric presents global values: while there may be a
 lot of unused CPU, a single core may be saturated.  Look at the Max
 Core Utilization to see if any core is reaching close to 100%.
 
-.. _dashboard.cpu-utilization-details-cores.current:
+.. _dashboard-cpu-utilization-details-cores.current:
 
 Current CPU Core Utilization
 --------------------------------------------------------------------------------
@@ -60,7 +60,7 @@ close to 100% utilization and investigate the root cause.
 
 |view-all-metrics| |this-dashboard|
 
-.. _dashboard.cpu-utilization-details-cores.all-total:
+.. _dashboard-cpu-utilization-details-cores.all-total:
 
 All Cores - Total
 --------------------------------------------------------------------------------
@@ -112,7 +112,7 @@ unused CPU, a single core may be saturated.
 
 |view-all-metrics| |this-dashboard|
 
-.. |this-dashboard| replace:: :ref:`dashboard.cpu-utilization-details-cores`
+.. |this-dashboard| replace:: :ref:`dashboard-cpu-utilization-details-cores`
 
 .. include:: ../.res/replace.txt
 

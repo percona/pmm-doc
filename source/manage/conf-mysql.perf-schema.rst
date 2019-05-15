@@ -12,7 +12,7 @@ from the |perf-schema| instead of |slow-query-log|.  Starting from |mysql|
 |perf-schema| is not as data-rich as the |slow-query-log|, but it has all the
 critical data and is generally faster to parse. If you are not running
 |percona-server| (which supports :ref:`sampling for the slow query log
-<pmm.conf-mysql.slow-log-settings>`), then |performance-schema| is a better alternative.
+<pmm.conf-mysql-slow-log-settings>`), then |performance-schema| is a better alternative.
 
 To use |perf-schema|, set the ``performance_schema`` variable to ``ON``:
 
@@ -56,7 +56,7 @@ If you are running a custom Performance Schema configuration, make sure that the
    later versions. It is not available at all in |mysql| versions prior to 5.6.
 
    If certain instruments are not enabled, you will not see the corresponding
-   graphs in the :ref:`dashboard.mysql-performance-schema` dashboard.  To enable
+   graphs in the :ref:`dashboard-mysql-performance-schema` dashboard.  To enable
    full instrumentation, set the option |opt.performance-schema-instrument| to
    ``'%=on'`` when starting the |mysql| server.
 

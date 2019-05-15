@@ -1,20 +1,20 @@
-.. _pmm.qan.configuring:
+.. _pmm.qan-configuring:
 --------------------------------------------------------------------------------
-`Configuring QAN <pmm.qan.configuring>`_
+`Configuring QAN <pmm.qan-configuring>`_
 --------------------------------------------------------------------------------
 
 All |qan.name| settings are available from the |query-analytics-settings|
 dashboard. To open this dashboard, use the |pmm| menu group.
 
-.. _figure.pmm.qan.configuring.metrics-monitor.menu.pmm:
+.. _figure.pmm.qan-configuring.metrics-monitor.menu.pmm:
 
 .. figure:: .res/graphics/png/metrics-monitor.menu.pmm.png
 
    The |pmm| group in the |metrics-monitor| navigation menu
 
-.. _pmm.qan.configuring.settings-tab:
+.. _pmm.qan-configuring.settings-tab:
 
-`Settings Tab <pmm.qan.configuring.settings-tab>`_
+`Settings Tab <pmm.qan-configuring.settings-tab>`_
 --------------------------------------------------------------------------------
 
 The |gui.settings| tab displays the essential configuration settings of
@@ -29,7 +29,7 @@ itself. You can, however, select where the database server mentrics are
 collected from, such as |slow-log|, or |perf-schema|. For this, change the value
 of the |gui.collect-from| field accordingly.
 
-.. _figure.pmm.qan.configuring.pmm.qan.tab.settings:
+.. _figure.pmm.qan-configuring.pmm.qan.tab.settings:
 
 .. figure:: .res/graphics/png/qan.settings.1.png
 	   
@@ -52,9 +52,9 @@ of |mysql| documentation.
       `The Slow Query Log
       <https://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html>`_
 
-.. _pmm.qan.configuring.status-tab:
+.. _pmm.qan-configuring.status-tab:
 
-`Status Tab <pmm.qan.configuring.status-tab>`_
+`Status Tab <pmm.qan-configuring.status-tab>`_
 --------------------------------------------------------------------------------
 
 The |gui.status| tab contains detailed information about the current status of
@@ -62,9 +62,9 @@ the monitored database server. |qan| collects this information from the database
 server directly. For example, in case of a |mysql| server, the |sql.show-status|
 command is used.
 
-.. _pmm.qan.configuring.log-tab:
+.. _pmm.qan-configuring.log-tab:
 
-`Log Tab <pmm.qan.configuring.log-tab>`_
+`Log Tab <pmm.qan-configuring.log-tab>`_
 --------------------------------------------------------------------------------
 
 The |gui.log| tab contains the latest version of the monitored log, such

@@ -1,4 +1,4 @@
-.. _dashboard.mongodb-mmapv1:
+.. _dashboard-mongodb-mmapv1:
 
 |mongodb| |mmapv1| Dashboard
 ================================================================================
