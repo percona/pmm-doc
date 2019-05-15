@@ -16,4 +16,4 @@ features:
 
    security.ssl
    security.password
-   security-combo
+   security.combo
