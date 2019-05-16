@@ -81,8 +81,6 @@ This command does the following:
 * The |docker.run| command runs a new container based on the
   |opt.pmm-server.latest| image.
 
-* The |opt.d| option starts the container in the background (detached mode).
-
 * The |opt.p| option maps the port for accessing the |pmm-server| web UI.
   For example, if port **80** is not available,
   you can map the landing page to port 8080 using ``-p 8080:80``.
@@ -111,40 +109,38 @@ To install specific |pmm-server| version instead of the latest one, just put
 desired version number after the colon. Also in this scenario it may be useful
 to `prevent updating PMM Server via the web interface <https://www.percona.com/doc/percona-monitoring-and-management/glossary.option.html>`_ with the ``DISABLE_UPDATES`` docker option.
 
-For example, installing version 2.0.1 with disabled update button in the web
+For example, installing version 2.0.beta1 with disabled update button in the web
 interface would look as follows:
 
 .. code-block:: bash
 
    $ docker create \
-      -v /opt/prometheus/data \
-      -v /opt/consul-data \
-      -v /var/lib/mysql \
-      -v /var/lib/grafana \
+      -v /srv \
       --name pmm-data \
-      percona/pmm-server:2.0.1 /bin/true
+      percona/pmm-server:2.0.beta1 /bin/true
 
    $ docker run -d \
       -p 80:80 \
+      -p 443:443 \
       --volumes-from pmm-data \
       --name pmm-server \
       -e DISABLE_UPDATES=true \
       --restart always \
-      percona/pmm-server:2.0.1
+      percona/pmm-server:2.0.beta1
 
+.. only:: showhidden
 
+	.. _pmm.docker.additional-option:
 
-.. _pmm.docker.additional-option:
+	`Additional options <docker-setting-up.html#additional-option>`_
+	--------------------------------------------------------------------------------
 
-`Additional options <docker-setting-up.html#additional-option>`_
---------------------------------------------------------------------------------
+	When running the |pmm-server|, you may pass additional parameters to the
+	|docker.run| subcommand. All options that appear after the |opt.e| option
+	are the additional parameters that modify the way how |pmm-server| operates.
 
-When running the |pmm-server|, you may pass additional parameters to the
-|docker.run| subcommand. All options that appear after the |opt.e| option
-are the additional parameters that modify the way how |pmm-server| operates.
-
-The section :ref:`pmm.glossary.pmm-server.additional-option` lists all
-supported additional options.
+	The section :ref:`pmm.glossary.pmm-server.additional-option` lists all
+	supported additional options.
 
 .. seealso::
 

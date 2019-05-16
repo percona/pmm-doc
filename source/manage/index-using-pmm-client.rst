@@ -11,7 +11,9 @@ Using PMM Client
    Pinging the PMM Server with pmm-admin ping <client.ping>
    client.aliases
    index-using-mysql
+   client-mysql-metrics
    index-using-mongodb
+   client-mongodb-metrics
    client.proxysql.metrics
    client-linux-metrics
    conf-postgres

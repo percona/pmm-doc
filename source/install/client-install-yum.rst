@@ -18,21 +18,23 @@ such as, CentOS, Oracle Linux, Amazon Linux AMI, and so on.
 
 To install the |pmm-client| package, complete the following procedure. |tip.run-all.root|:
 
-1. Configure Percona repositories as described in
-   `Percona Software Repositories Documentation
-   <https://www.percona.com/doc/percona-repo-config/index.html>`_.
+1. Configure |percona| repositories using the `percona-release <https://www.percona.com/doc/percona-repo-config/percona-release.html>`_ tool. First you’ll need to download and install the official percona-release package from Percona::
 
-#. Install the ``pmm-client`` package:
+     sudo yum install https://repo.percona.com/yum/percona-release-latest.noarch.rpm
 
+   Since PMM 2 is still not GA, you’ll need to use it to enable the experimental component of the original Percona repository::
+
+     sudo percona-release disable all
+     sudo percona-release enable original experimental
+
+   See `percona-release official documentation <https://www.percona.com/doc/percona-repo-config/percona-release.html>`_ for details.
+
+#. Install the ``pmm2-client`` package:
 
    .. include:: ../.res/code/yum.install.pmm-client.txt
 
-.. seealso::
+#. Having experimental packages enabled may affect further packages installation with versions which are not ready for production. To avoid this, disable this component with the following commands::
 
-   What other installation methods exist for |pmm-client|?
-      :ref:`deploy-pmm.client.installing`
+     sudo percona-release disable original experimental
 
-   Next steps: Connecting to |pmm-server|
-      :ref:`deploy-pmm.client_server.connecting`
-   
 .. include:: ../.res/replace.txt

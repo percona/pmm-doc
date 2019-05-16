@@ -19,17 +19,26 @@ distributions:
 To install the |pmm-client| package, complete the following
 procedure. |tip.run-all.root|:
 
-1. Configure |percona| repositories as described in `Percona Software
-   Repositories Documentation
-   <https://www.percona.com/doc/percona-repo-config/index.html>`_.
+1. Configure |percona| repositories using the `percona-release <https://www.percona.com/doc/percona-repo-config/percona-release.html>`_ tool. First you’ll need to download and install the official percona-release package from Percona::
 
-#. Install the |pmm-client| package:
+     wget https://repo.percona.com/apt/percona-release_latest.generic_all.deb
+     sudo dpkg -i percona-release_latest.generic_all.deb
 
-   .. include:: ../.res/code/apt-get.install.pmm-client.txt
+   Since PMM 2 is still not GA, you’ll need to use it to enable the experimental component of the original Percona repository::
 
-.. seealso::
+     sudo percona-release disable all
+     sudo percona-release enable original experimental
 
-   What other installation methods exist for |pmm-client|?
-      :ref:`deploy-pmm.client.installing`
+   See `percona-release official documentation <https://www.percona.com/doc/percona-repo-config/percona-release.html>`_ for details.
+
+#. Install the ``pmm2-client`` package::
+
+     sudo apt-get update
+     sudo apt-get install pmm2-client
+
+#. Having experimental packages enabled may affect further packages installation with versions which are not ready for production. To avoid this, disable this component with the following commands::
+
+     sudo percona-release disable original experimental
+     sudo apt-get update
 
 .. include:: ../.res/replace.txt
