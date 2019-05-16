@@ -8,3 +8,4 @@ Services
 
    MySQL requirements <services-mysql>
    MongoDB requirements <services-mongodb>
+   PostgreSQL requirements <services-postgres>

@@ -37,4 +37,19 @@ To install the |pmm-client| package, complete the following procedure. |tip.run-
 
      sudo percona-release disable original experimental
 
+#. Once PMM Client is installed, run the ``pmm-admin config`` command with your PMM Server IP address to register your Node within the Server::
+
+     pmm-admin config --server-insecure-tls --server-address=<IP Address>:443
+
+   You should see the following::
+
+     Checking local pmm-agent status...
+     pmm-agent is running.
+     Registering pmm-agent on PMM Server...
+     Registered.
+     Configuration file /usr/local/percona/pmm-agent.yaml updated.
+     Reloading pmm-agent configuration...
+     Configuration reloaded.
+
+
 .. include:: ../.res/replace.txt

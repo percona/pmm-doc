@@ -132,11 +132,6 @@ For more information, see :ref:`using`.
 
 .. seealso::
 
-   Default ports
-      :ref:`Ports <Ports>` in :ref:`pmm.glossary.terminology-reference`
-   Enabling orchestrator
-      :ref:`Orchestrator <Orchestrator>` in :ref:`pmm.glossary.terminology-reference`
-
 .. _`Prometheus Docs`: https://prometheus.io/docs/introduction/overview/
 .. _`Consul Docs`: https://www.consul.io/docs/
 .. _`Grafana Docs`: http://docs.grafana.org/

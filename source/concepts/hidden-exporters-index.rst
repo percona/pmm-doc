@@ -10,4 +10,4 @@ Exporters
    mongodb_exporter <section-exporter-mongodb>
    proxysql_exporter <section-exporter-proxysql>
    node_exporter <section-exporter-node>
-   rds_exporter <section.exporter.rds>
+   rds_exporter <section-exporter-rds>

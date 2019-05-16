@@ -70,8 +70,10 @@ version of |mysql|:
    log_slow_admin_statements=ON
    log_slow_slave_statements=ON
 
-`Creating a MySQL User Account to Be Used with PMM <pmm.conf-mysql.user-account.creating>`_
-===============================================================================================
+.. _pmm.conf-mysql.user-account.creating:
+
+`Creating a MySQL User Account to Be Used with PMM <services-mysql.html#pmm-conf-mysql-user-account-creating>`_
+=========================================================================================================================
 
 When adding a |mysql| instance to monitoring, you can specify the |mysql| server
 superuser account credentials.  However, monitoring with the superuser account
@@ -113,3 +115,5 @@ For more information, run as root
 |pmm-admin.add|
 |opt.mysql|
 |opt.help|.
+
+.. include:: ../.res/replace.txt
