@@ -293,3 +293,4 @@ man_pages = [
 
 def setup(app):
     app.add_javascript('js/toggle-menu.js')
+    app.add_stylesheet( 'css/pmmselector.css')
