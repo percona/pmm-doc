@@ -15,6 +15,14 @@ You then add MySQL services (Metrics and Query Analytics) with the following com
 
 where username and password are credentials for the monitored MySQL access, which will be used locally on the database host.
 
+The ouput of this command may look as follows:
+
+.. code-block:: text
+
+   MySQL Service added.
+   Service ID  : /service_id/a89191d4-7d75-44a9-b37f-a528e2c4550f
+   Service name: osboxes-mysql
+
 .. note:: There are two possible sources for query metrics provided by MySQL to
    get data for the Query Analytics: the `Slow Log <https://www.percona.com/doc/percona-monitoring-and-management/2.x/manage/conf-mysql-slow-log.html#conf-mysql-slow-log>`_ and the `Performance Schema <https://www.percona.com/doc/percona-monitoring-and-management/2.x/manage/conf-mysql-perf-schema.html#perf-schema>`_. The ``--query-source`` option can be
    used to specify it, either as ``slowlog`` (it is also used by default if nothing specified) or as ``perfschema``::
