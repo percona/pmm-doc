@@ -43,7 +43,7 @@ To create a container for persistent |pmm| data, run the following command:
    $ docker create \
       -v /srv \
       --name pmm-data \
-      percona/pmm-server:{{release}} /bin/true
+      perconalab/pmm-server:{{release}} /bin/true
 	     
 .. note:: This container does not run, it simply exists to make sure you retain
 	  all |pmm| data when you upgrade to a newer |pmm-server| image.  Do not remove
@@ -122,7 +122,7 @@ interface would look as follows:
    $ docker create \
       -v /srv \
       --name pmm-data \
-      percona/pmm-server:2.0.0.beta1 /bin/true
+      perconalab/pmm-server:2.0.0.beta1 /bin/true
 
    $ docker run -d \
       -p 80:80 \
@@ -131,7 +131,7 @@ interface would look as follows:
       --name pmm-server \
       -e DISABLE_UPDATES=true \
       --restart always \
-      percona/pmm-server:2.0.0.beta1
+      perconalab/pmm-server:2.0.0.beta1
 
 .. only:: showhidden
 
