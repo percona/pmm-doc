@@ -4,10 +4,10 @@ Adding a ProxySQL host
 
 .. _pmm-admin.add-proxysql-metrics:
 
-`Adding ProxySQL metrics service <pmm-admin.add-proxysql-metrics>`_
-================================================================================
+`Adding ProxySQL metrics service <client-proxysql-metrics.html#pmm-admin-add-proxysql-metrics>`_
+=================================================================================================
 
-Use the |opt.proxysql-metrics| alias
+Use the |opt.proxysql-metrics| alias 
 to enable |proxysql| performance metrics monitoring.
 
 .. _pmm-admin.add-proxysql-metrics.usage:
@@ -18,38 +18,48 @@ to enable |proxysql| performance metrics monitoring.
 
 .. include:: ../.res/code/pmm-admin.add.proxysql-metrics.txt
 
-This creates the ``pmm-proxysql-metrics-42004`` service
-that collects local |proxysql| performance metrics.
+where username and password are credentials for the monitored MongoDB access,
+which will be used locally on the database host. Additionally, a service name
+can be appended to the command line parameters, otherwise it will be generated 
+automatically as ``<node>-proxysql``.
 
-.. note:: It should be able to detect the local |pmm-client| name,
-   but you can also specify it explicitly as an argument.
+The output of this command may look as follows:
 
-.. _pmm-admin.add-proxysql-metrics.options:
+  .. code-block:: bash
 
-.. rubric:: OPTIONS
+     # pmm-admin add proxysql --username=admin --password=admin
+     ProxySQL Service added.
+     Service ID  : /service_id/f69df379-6584-4db5-a896-f35ae8c97573
+     Service name: ubuntu-proxysql
 
-The following option can be used with the |opt.proxysql-metrics| alias:
+.. only:: showhidden
 
-|opt.dsn|
-  Specify the ProxySQL connection DSN.
-  By default, it is ``stats:stats@tcp(localhost:6032)/``.
+	.. _pmm-admin.add-proxysql-metrics.options:
 
-You can also use
-:ref:`global options that apply to any other command
-<pmm-admin.options>`,
-as well as
-:ref:`options that apply to adding services in general
-<pmm-admin.add-options>`.
+	.. rubric:: OPTIONS
 
-For more information, run
-|pmm-admin.add|
-|opt.proxysql-metrics|
-|opt.help|.
+	The following option can be used with the |opt.proxysql-metrics| alias:
 
-.. seealso::
+	|opt.dsn|
+	  Specify the ProxySQL connection DSN.
+	  By default, it is ``stats:stats@tcp(localhost:6032)/``.
+	
+	You can also use
+	:ref:`global options that apply to any other command
+	<pmm-admin.options>`,
+	as well as
+	:ref:`options that apply to adding services in general
+	<pmm-admin.add-options>`.
 
-   Default ports
-      :ref:`Ports <Ports>` in :ref:`pmm.glossary-terminology-reference`
+	For more information, run
+	|pmm-admin.add|
+	|opt.proxysql-metrics|
+	|opt.help|.
+
+	.. seealso::
+
+	   Default ports
+	      :ref:`Ports <Ports>` in :ref:`pmm.glossary-terminology-reference`
 
 
 .. include:: ../.res/replace.txt
