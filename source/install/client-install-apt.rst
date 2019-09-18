@@ -28,10 +28,11 @@ procedure. |tip.run-all.root|:
 
       <script id="asciicast-LaIiFlGWZdWAMPf4p4OUEHrjB" src="https://asciinema.org/a/LaIiFlGWZdWAMPf4p4OUEHrjB.js" async data-theme="solarized-light" data-rows="8"></script>
 
-   Since PMM 2 is still not GA, you’ll need to use it to enable the experimental component of the original Percona repository::
+   Use it to enable the release component of the original Percona repository
+   for the case it is not yet enabled::
 
      sudo percona-release disable all
-     sudo percona-release enable tools release
+     sudo percona-release enable original release
 
    .. raw:: html
 

@@ -22,10 +22,11 @@ To install the |pmm-client| package, complete the following procedure. |tip.run-
 
      sudo yum install https://repo.percona.com/yum/percona-release-latest.noarch.rpm
 
-   Since PMM 2 is still not GA, you’ll need to use it to enable the experimental component of the original Percona repository::
+   Use it to enable the release component of the original Percona repository
+   for the case it is not yet enabled::
 
      sudo percona-release disable all
-     sudo percona-release enable tools release
+     sudo percona-release enable original release
 
    See `percona-release official documentation <https://www.percona.com/doc/percona-repo-config/percona-release.html>`_ for details.
 
