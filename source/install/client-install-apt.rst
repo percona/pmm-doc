@@ -28,15 +28,12 @@ procedure. |tip.run-all.root|:
 
       <script id="asciicast-LaIiFlGWZdWAMPf4p4OUEHrjB" src="https://asciinema.org/a/LaIiFlGWZdWAMPf4p4OUEHrjB.js" async data-theme="solarized-light" data-rows="8"></script>
 
-   Use it to enable the release component of the original Percona repository
-   for the case it is not yet enabled::
+   .. note:: If you have previously enabled the experimental or testing
+      Percona repository, don't forget to disable them and enable the release
+      component of the original repository as follows::
 
-     sudo percona-release disable all
-     sudo percona-release enable original release
-
-   .. raw:: html
-
-      <script id="asciicast-S8iZUOSXVliQ7p5dcEbS7SeHp" src="https://asciinema.org/a/S8iZUOSXVliQ7p5dcEbS7SeHp.js" async data-theme="solarized-light" data-rows="8"></script>
+         sudo percona-release disable all
+         sudo percona-release enable original release
 
    See `percona-release official documentation <https://www.percona.com/doc/percona-repo-config/percona-release.html>`_ for details.
 
