@@ -8,4 +8,6 @@ Percona Monitoring and Management Release Notes
    :maxdepth: 1
 
    PMM 2.0.0-RC1  <2.0.0-rc1>
+   PMM 2.0.0-RC2  <2.0.0-rc2>
+   PMM 2.0.0-RC3  <2.0.0-rc3>
 
