@@ -31,7 +31,7 @@ procedure. |tip.run-all.root|:
    Since PMM 2 is still not GA, you’ll need to use it to enable the experimental component of the original Percona repository::
 
      sudo percona-release disable all
-     sudo percona-release enable original experimental
+     sudo percona-release enable tools release
 
    .. raw:: html
 
@@ -47,11 +47,6 @@ procedure. |tip.run-all.root|:
    .. raw:: html
 
       <script id="asciicast-ZBfCORUanwrZMPD3hkiHYKBkv" src="https://asciinema.org/a/ZBfCORUanwrZMPD3hkiHYKBkv.js" async data-theme="solarized-light" data-rows="8"></script>
-
-#. Having experimental packages enabled may affect further packages installation with versions which are not ready for production. To avoid this, disable this component with the following commands::
-
-     sudo percona-release disable original experimental
-     sudo apt-get update
 
 #. Once PMM Client is installed, run the ``pmm-admin config`` command with your PMM Server IP address to register your Node within the Server::
 
