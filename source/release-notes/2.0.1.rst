@@ -17,11 +17,11 @@ For install instructions, see :ref:`deploy-pmm`.
 Improvements
 ============
 
-* :pmmbug:`4779`: Restored Grafana snapshots dialog
+* :pmmbug:`4779`: Securely share dashboards with Percona
 * :pmmbug:`4752`: replace refresh parameters for all variables
   page, and a Node row 
 * :pmmbug:`4735`: Keep one old slowlog file after rotation
-* :pmmbug:`4724': Alt+click on check updates button enables force-update
+* :pmmbug:`4724`: Alt+click on check updates button enables force-update
 * :pmmbug:`4444`: Return "what's new" URL with the information extracted from
   the pmm-update package changelog
 
@@ -31,7 +31,7 @@ Fixed bugs
 * :pmmbug:`4758`: Remove Inventory rows from dashboards
 * :pmmbug:`4757`: ``qan_mysql_perfschema_agent`` failed querying
   ``events_statements_summary_by_digest`` due to data types conversion
-* :pmmbug:`4755`: Fixed a misprint in the InnoDB AHI Miss Ratio formula
+* :pmmbug:`4755`: Fixed a typo in the InnoDB AHI Miss Ratio formula
 * :pmmbug:`4749`: Navigation from Dashboards to QAN when some Node or Service
   was selected now applies filtering by them in QAN
 * :pmmbug:`4742`: General information links were updated to go to PMM 2 related
@@ -42,8 +42,8 @@ Fixed bugs
 * :pmmbug:`4729`: Fixes were made for formulas on MySQL Instances Overview
 * :pmmbug:`4726`: Links to services in MongoDB singlestats didn't show Node name
 * :pmmbug:`4720`: ``machine_id`` could contain trailing ``\n``
-* :pmmbug:`4640`: It was not possible to add MongoDB remotely if password had
-   a ``#`` symbol
+* :pmmbug:`4640`: It was not possible to add MongoDB remotely if password
+  contained a ``#`` symbol
 
 Help us improve our software quality by reporting any Percona Monitoring and Management bugs you encounter using our `bug tracking system <https://jira.percona.com/secure/Dashboard.jspa>`_.
 
