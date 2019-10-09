@@ -10,7 +10,7 @@ Percona Monitoring and Management 2.0.1
 
 For install instructions, see :ref:`deploy-pmm`.
 
-.. note:: This release is not recommended for production environments.  PMM 2
+.. note:: PMM 2
    is designed to be used as a new installation — please don’t try to upgrade
    your existing PMM 1 environment.
 
@@ -18,8 +18,6 @@ Improvements
 ============
 
 * :pmmbug:`4779`: Securely share dashboards with Percona
-* :pmmbug:`4752`: replace refresh parameters for all variables
-  page, and a Node row 
 * :pmmbug:`4735`: Keep one old slowlog file after rotation
 * :pmmbug:`4724`: Alt+click on check updates button enables force-update
 * :pmmbug:`4444`: Return "what's new" URL with the information extracted from
