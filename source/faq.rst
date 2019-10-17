@@ -34,7 +34,7 @@ with data retention set to one week.
 .. note::
 
    By default, :ref:`retention <data-retention>` is set to 30 days for
-   Metrics Monitor and to 8 days for Query Analytics.  Also consider
+   Metrics Monitor and for Query Analytics.  Also consider
    :ref:`disabling table statistics <performance-issues>`, which can
    greatly decrease Prometheus database size.
 
@@ -59,31 +59,28 @@ throughput is too low.
 How to control data retention for PMM?
 ================================================================================
 
-By default, |prometheus| stores time-series data for 30 days,
-and QAN stores query data for 8 days.
+By default, both |prometheus| and QAN store time-series data for 30 days.
 
 Depending on available disk space and your requirements,
 you may need to adjust data retention time.
 
-You can control data retention by passing the :option:`METRICS_RETENTION` and :option:`QUERIES_RETENTION` environment variables when
-:ref:`creating and running the PMM Server container
-<server-container>`.  To set environment variables, use the ``-e``
-option.  The value should be the number of hours, minutes, or
-seconds. For example, the default value of 30 days for
-|opt.metrics-retention| is ``720h``.  You probably do not need to be
-more precise than the number hours, so you can discard the minutes and
-seconds.  For example, to decrease the retention period for
-|prometheus| to 8 days::
+You can control data retention by passing the :option:`DATA_RETENTION`
+environment variable when :ref:`creating and running the PMM Server container
+<server-container>`.  To set environment variable, use the ``-e``
+option.  The value should be the number of hours, and requires h suffix. 
+For example, the default value of 30 days for |opt.metrics-retention| is
+``720h``, but you can decrease the retention period for |prometheus| to 8 days
+as follows::
 
--e METRICS_RETENTION=192h
+-e DATA_RETENTION=192h
 
 .. seealso::
 
    Metrics retention
-      :option:`METRICS_RETENTION`
+      :option:`DATA_RETENTION`
 
    Queries retention
-      :option:`QUERIES_RETENTION`
+      :option:`DATA_RETENTION`
 
 .. _service-location:
 
@@ -218,8 +215,8 @@ the commands could look similar to the following:
 
 .. code-block:: bash
 
-   $ sudo pmm-admin add mysql --user root --password root --create-user --port 3001 instance-01
-   $ sudo pmm-admin add mysql --user root --password root --create-user --port 3002 instance-02
+   $ sudo pmm-admin add mysql --user root --password root instance-01 127.0.0.1:3001
+   $ sudo pmm-admin add mysql --user root --password root instance-02 127.0.0.1 3002
 
 For more information, run
 |pmm-admin.add|
@@ -238,29 +235,31 @@ if you add the same instance back with a different name, it will be considered a
 new instance with a new set of metrics.  So if you are re-adding an instance and
 want to keep its previous data, add it with the same name.
 
-.. _service-port:
+.. only:: showhidden
 
-Can I use non-default ports for instances?
-================================================================================
+	.. _service-port:
 
-When you add an instance with the |pmm-admin| tool,
-it creates a corresponding service that listens on a predefined client port:
+	Can I use non-default ports for instances?
+	================================================================================
 
-+--------------------+----------------------+-------+
-| General OS metrics | ``linux:metrics``    | 42000 |
-+--------------------+----------------------+-------+
-| MySQL metrics      | ``mysql:metrics``    | 42002 |
-+--------------------+----------------------+-------+
-| MongoDB metrics    | ``mongodb:metrics``  | 42003 |
-+--------------------+----------------------+-------+
-| ProxySQL metrics   | ``proxysql:metrics`` | 42004 |
-+--------------------+----------------------+-------+
+	When you add an instance with the |pmm-admin| tool,
+	it creates a corresponding service that listens on a predefined client port:
 
-If a default port for the service is not available, |pmm-admin| automatically
-chooses a different port.
+	+--------------------+----------------------+-------+
+	| General OS metrics | ``linux:metrics``    | 42000 |
+	+--------------------+----------------------+-------+
+	| MySQL metrics      | ``mysql:metrics``    | 42002 |
+	+--------------------+----------------------+-------+
+	| MongoDB metrics    | ``mongodb:metrics``  | 42003 |
+	+--------------------+----------------------+-------+
+	| ProxySQL metrics   | ``proxysql:metrics`` | 42004 |
+	+--------------------+----------------------+-------+
 
-If you want to assign a different port, use the |opt.service-port| option
-when :ref:`adding instances <pmm-admin.add>`.
+	If a default port for the service is not available, |pmm-admin| automatically
+	chooses a different port.
+
+	If you want to assign a different port, use the |opt.service-port| option
+	when :ref:`adding instances <pmm-admin.add>`.
 
 .. _troubleshoot-connection:
 
@@ -279,8 +278,12 @@ in Prometheus. If this happens, check firewall and routing settings on the
 Docker host.
 
 Also |pmm| is able to generate a set of diagnostics data which can be examined
-and/or shared with Percona Support to solve an issue faster. See details on how
-to get collected logs `from PMM Server <https://www.percona.com/doc/percona-monitoring-and-management/deploy/index.html#deploy-pmm-diagnostics-for-support>`_ and `from PMM Client <https://www.percona.com/doc/percona-monitoring-and-management/pmm-admin.html#pmm-admin-diagnostics-for-support>`_.
+and/or shared with Percona Support to solve an issue faster. You can get
+collected logs from PMM Client `using the pmm-admin command <https://www.percona.com/doc/percona-monitoring-and-management/pmm-admin.html#pmm-admin-diagnostics-for-support>`_. Obtaining logs from PMM Server can be done
+either `by specifying the URL <https://www.percona.com/doc/percona-monitoring-and-management/deploy/index.html#deploy-pmm-diagnostics-for-support>`_ 
+or by clicking the ``server logs`` link on the `Prometheus dashboard <https://www.percona.com/doc/percona-monitoring-and-management/dashboard.prometheus.html>`_:
+
+.. image:: .res/graphics/png/get-logs-from-prometheus-dashboard.png
 
 .. _metrics-resolution:
 
