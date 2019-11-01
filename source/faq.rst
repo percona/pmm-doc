@@ -165,7 +165,7 @@ Also |pmm| is able to generate a set of diagnostics data which can be examined
 and/or shared with Percona Support to solve an issue faster. You can get
 collected logs from PMM Client using the ``pmm-admin summary`` command. 
 Obtaining logs from PMM Server can be done `by specifying the
-``https://<address-of-your-pmm-server>/managed/logs.zip`` URL, or by clicking
+``https://<address-of-your-pmm-server>/logs.zip`` URL, or by clicking
 the ``server logs`` link on the `Prometheus dashboard <https://www.percona.com/doc/percona-monitoring-and-management/2.x/dashboards/dashboard-prometheus.html>`_:
 
 .. image:: .res/graphics/png/get-logs-from-prometheus-dashboard.png
@@ -177,8 +177,8 @@ the ``server logs`` link on the `Prometheus dashboard <https://www.percona.com/d
 	What resolution is used for metrics?
 	================================================================================
 
-	The |opt.mysql-metrics| service collects metrics with different resolutions (1
-	second, 5 seconds, and 60 seconds)
+	The |opt.mysql-metrics| service collects metrics with different resolutions (5
+	seconds, 5 seconds, and 60 seconds by default),
 
 	The |opt.linux-metrics| and |opt.mongodb-metrics| services are set up to collect
 	metrics with 1 second resolution.
@@ -188,8 +188,8 @@ the ``server logs`` link on the `Prometheus dashboard <https://www.percona.com/d
 	second may not be possible when latency is higher than 1 second.  You can change
 	the minimum resolution for metrics by passing the ``METRICS_RESOLUTION``
 	environment variable when :ref:`creating and running the PMM Server container
-	<server-container>`.  To set this environment variable, use the ``-e`` option.
-	The values can be between *1s* (default) and *5s*.  If you set a higher value,
+	<server-container>`. To set this environment variable, use the ``-e`` option.
+	The values can be between *1s* and *5s* (default).  If you set a higher value,
 	|prometheus| will not start.
 
 	For example, to set the minimum resolution to 3 seconds:
