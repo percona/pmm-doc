@@ -114,18 +114,16 @@ What privileges are required to monitor a |mysql| instance?
 
 See :ref:`pmm.conf-mysql.user-account.creating`.
 
-Can I monitor multiple |mysql| instances?
+Can I monitor multiple service instances?
 ================================================================================
 
-Yes, you can add multiple |mysql| instances to be monitored from one
-|pmm-client|.  In this case, you will need to provide a distinct port and socket
-for each instance using the |opt.port| and |opt.socket| parameters, and specify
-a unique name for each instance (by default, it uses the name of the
-|pmm-client| host).
+Yes, you can add multiple instances of |mysql| or some other service to be
+monitored from one |pmm-client|. In this case, you will need to provide a
+distinct port and socket for each instance, and specify a unique name for each
+instance (by default, it uses the name of the |pmm-client| host).
 
-For example, if you are adding complete MySQL monitoring
-for two local |mysql| servers,
-the commands could look similar to the following:
+For example, if you are adding complete MySQL monitoring for two local |mysql|
+servers, the commands could look similar to the following:
 
 .. code-block:: bash
 
