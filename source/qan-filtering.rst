@@ -8,8 +8,11 @@ If you need to limit the list of available queries to only those that you are
 interested in, use the filtering panel on the left, or use the search by bar to
 set filters using *key:value* syntax.
 
+.. figure:: .res/graphics/png/queries_not_filtered.png
+
 Following example shows how to filter just the queries that are executed on the
-*Ubuntu* node:
+*Ubuntu* node (notice that the filtering panel reflects only Labels available
+within the set of currently applied filters):
 
 .. figure:: .res/graphics/png/query_filter.png
 
