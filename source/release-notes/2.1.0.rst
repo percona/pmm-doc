@@ -1,0 +1,77 @@
+.. _2.0.1:
+
+===========================================
+Percona Monitoring and Management 2.1.0
+===========================================
+
+:Date: November 11, 2019
+
+*PMM* (`Percona Monitoring and Management <https://www.percona.com/doc/2.x/percona-monitoring-and-management/index.html>`_) is a free and open-source platform for managing and monitoring |MySQL|, |MongoDB|, and |postgresql| performance. You can run *PMM* in your own environment for maximum security and reliability. It provides thorough time-based analysis for |MySQL|, |MongoDB|, and |postgresql| servers to ensure that your data works as efficiently as possible.
+
+For install instructions, see :ref:`deploy-pmm`.
+
+.. note:: PMM 2
+   is designed to be used as a new installation — please don’t try to upgrade
+   your existing PMM 1 environment.
+
+
+
+In this release, we are introducing the following PMM enhancements:
+
+ We’ve also updated our core software to:
+
+    Grafana 6.4.1
+    Go 1.12.10
+
+
+
+
+Improvements and new features
+=============================
+
+* :pmmbug:`4768`: Disable heavy-load collectors automatically when there are too many tables
+* :pmmbug:`4918`: Update ``vertamedia-clickhouse-datasource`` and
+  ``digiapulssi-breadcrumb-panel`` Grafana plugins to newer versions.
+* :pmmbug:`4857`: Update graph panel descriptions for all PMM2 MongoDB dashboards
+* :pmmbug:`4821`: Make it possible to use gradient fill for all graphs
+* :pmmbug:`4733`: Add more log and config files to the downloadable logs.zip archive
+* :pmmbug:`4672`: Use rounded percentage values in QAN filter panel
+* :pmmbug:`4616`: Query Details section clean up in QAN
+* :pmmbug:`4504`: Update and restructure QAN APP sources to simplify the build process
+* :pmmbug:`4063`: Update QAN filter panel to show only labels available for selection under currently applied filters
+* :pmmbug:`2835`: Use SATA controllers for the PMM Server deployed as the Open Virtual Appliance package
+* :pmmbug:`2313`: Configure AMI images for a 100GB disk instead of a 16GB one
+* :pmmbug:`815`: Develop graph for opLatencies
+* :pmmbug:`4935`: Wrong instance Name displayed in Node Summary
+
+Fixed bugs
+==========
+
+* :pmmbug:`4935`: Wrong instance name displayed on the MySQL Instance Summary dashboard due to the incorrect string crop
+* :pmmbug:`4916`: Wrong Values in Node Summary Dashboard on changing Time Range for Remote Instances
+* :pmmbug:`4911`: QAN for PMM server PostgreSQL doesn't work
+* :pmmbug:`4895`: Upgrade to 2.0.1 doesn't update PMM server and dashboards
+* :pmmbug:`4876`: The credentials for a secured server are exposed without explicit request (pmm-admin)
+* :pmmbug:`4875`: PostgreSQL error log gets flooded with warnings when using custom user without namesake database
+* :pmmbug:`4852`: Node name has an incorrect value
+* :pmmbug:`4847`: Drilldowns should auto-populate with data
+* :pmmbug:`4845`: pg_stat_statement QAN Agent leaks connections
+* :pmmbug:`4843`: Scroll is not exist for some charts
+* :pmmbug:`4841`: Too many idle processes
+* :pmmbug:`4831`: Inconsistency in Selectors names
+* :pmmbug:`4827`: Remove mention of pt-heartbeat support in MySQL Replication dashboard tooltip
+* :pmmbug:`4824`: Incorrect singlestat values on MySQL Instances Overview dashboard
+* :pmmbug:`4819`: Uptime for all exceeds the only monitored host
+* :pmmbug:`4816`: Set equal thresholds for uptime singlestat on Home dashboards
+* :pmmbug:`4814`: Update Process reports completion before it is actually done
+* :pmmbug:`4753`: Negative query's ID for Postgres query
+* :pmmbug:`4736`: Fix PMM Server reporting success earlier than it should
+* :pmmbug:`4718`: Service Id is not fully displayed on right labels
+* :pmmbug:`4545`: Fix the problem with long query's example
+* :pmmbug:`4453`: It's not possible to deploy PMM OVA image on VMware vSphere 6.5+
+* :pmmbug:`4392`: All endpoints of PMM server return Out of bound error on PMM OVF
+
+Help us improve our software quality by reporting any Percona Monitoring and Management bugs you encounter using our `bug tracking system <https://jira.percona.com/secure/Dashboard.jspa>`_.
+
+.. include:: .res/replace.txt
+
