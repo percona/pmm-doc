@@ -14,9 +14,8 @@ For install instructions, see :ref:`deploy-pmm`.
    is designed to be used as a new installation — please don’t try to upgrade
    your existing PMM 1 environment.
 
-In this release, we are introducing the following PMM enhancements:
-
- We’ve also updated our core software to:
+In this release, we have updated versions of the following core software PMM is
+based on:
 
     Grafana 6.4.1
     Go 1.12.10
@@ -34,7 +33,7 @@ Improvements and new features
 * :pmmbug:`4733`: Add more log and config files to the downloadable ``logs.zip``
   archive
 * :pmmbug:`4672`: Use rounded percentage values in QAN filter panel
-* :pmmbug:`4616`: Query Details section clean up in QAN
+* :pmmbug:`4616`: Query Details section clean-up in QAN
 * :pmmbug:`4504`: Update and restructure QAN APP sources to simplify the build
   process
 * :pmmbug:`4063`: Update QAN filter panel to show only labels available for
@@ -50,14 +49,15 @@ Fixed bugs
 
 * :pmmbug:`4935`: Wrong instance name displayed on the MySQL Instance Summary
   dashboard due to the incorrect string crop
-* :pmmbug:`4916`: Wrong values shown when changing the time range for the Node
-  Summary Dashboard in case of remote instances
+* :pmmbug:`4916`: Wrong values are shown when changing the time range for the
+  Node Summary Dashboard in case of remote instances
 * :pmmbug:`4895` and :pmmbug:`4814`: Update Process reports completion before it
   is actually done and therefore some dashboards, etc. can stay not updated
 * :pmmbug:`4876`: PMM Server access credentials are shown by the
   ``pmm-admin status`` command instead of hiding them for security reasons
 * :pmmbug:`4875`: PostgreSQL error log gets flooded with warnings when
-  ``pg_stat_statements`` extension is not installed in the database used by PMM Server or when PostgreSQL user is unable to connect to it
+  ``pg_stat_statements`` extension is not installed in the database used by PMM
+  Server or when PostgreSQL user is unable to connect to it
 * :pmmbug:`4852`: Node name has an incorrect value if the Home dashboard opened
   after QAN
 * :pmmbug:`4847`: Drilldowns from the Environment Overview dashboard doesn't
