@@ -23,22 +23,17 @@ Improvements and new features
   dashboard
 * :pmmbug:`4768`: Disable heavy-load collectors automatically when there are too
   many tables
-* :pmmbug:`4821`: Make it possible to use gradient fill for all graphs
+* :pmmbug:`4821`: Use color gradient in filled graphs on all dashboards
 * :pmmbug:`4733`: Add more log and config files to the downloadable ``logs.zip``
   archive
 * :pmmbug:`4672`: Use rounded percentage values in QAN filter panel
-* :pmmbug:`4857`: Update graph panel descriptions for all PMM2 MongoDB
-  dashboards
-* :pmmbug:`4616`: Make Query Details section in QAN to show Sum instead of Total
-* :pmmbug:`4504`: Update and restructure QAN APP sources to simplify the build
-  process
+* :pmmbug:`4857`: Update tooltips for all MongoDB dashboards
+* :pmmbug:`4616`: Rename column in the Query Details section in QAN from Total
+  to Sum
 * :pmmbug:`4770`: Use Go 1.12.10
 * :pmmbug:`4780`: Update Grafana to version 6.4.1
-* :pmmbug:`4918`: Update ``vertamedia-clickhouse-datasource`` and
-  ``digiapulssi-breadcrumb-panel`` Grafana plugins to newer versions.
-* :pmmbug:`2835`: Use SATA controllers for the PMM Server deployed as the OVA
-  package
-* :pmmbug:`2313`: Configure AMI images for a 100GB disk instead of a 16GB one
+* :pmmbug:`4918`: Update Grafana plugins to newer versions, including the
+  ``clickhouse-datasource`` plugin
 
 Fixed bugs
 ==========
@@ -47,8 +42,8 @@ Fixed bugs
   dashboard due to the incorrect string crop
 * :pmmbug:`4916`: Wrong values are shown when changing the time range for the
   Node Summary Dashboard in case of remote instances
-* :pmmbug:`4895` and :pmmbug:`4814`: Update Process reports completion before it
-  is actually done and therefore some dashboards, etc. can stay not updated
+* :pmmbug:`4895` and :pmmbug:`4814`: The update process reports completion before
+  it is actually done and therefore some dashboards, etc. can stay not updated
 * :pmmbug:`4876`: PMM Server access credentials are shown by the
   ``pmm-admin status`` command instead of hiding them for security reasons
 * :pmmbug:`4875`: PostgreSQL error log gets flooded with warnings when
@@ -72,10 +67,6 @@ Fixed bugs
   Query Details section in QAN
 * :pmmbug:`4545`: Long queries are not fully visible in the Query Examples
   section in QAN
-* :pmmbug:`4453`: Trying to deploy PMM OVA image on VMware vSphere 6.5+ fails
-  with the "invalid manifest file" error
-* :pmmbug:`4392`: Wrong starting order caused out of bound errors reported by
-  all OVA-deployed PMM Server endpoints on the ``prometheus/targets`` URL page
 
 Help us improve our software quality by reporting any Percona Monitoring and Management bugs you encounter using our `bug tracking system <https://jira.percona.com/secure/Dashboard.jspa>`_.
 
