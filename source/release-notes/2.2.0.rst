@@ -10,9 +10,8 @@ Percona Monitoring and Management 2.2.0
 
 For install instructions, see :ref:`deploy-pmm`.
 
-.. note:: PMM 2
-   is designed to be used as a new installation — please don’t try to upgrade
-   your existing PMM 1 environment.
+.. note:: PMM 2 is designed to be used as a new installation — your existing
+   PMM 1 environment can't be upgraded to this version.
 
 Improvements and new features
 =============================
