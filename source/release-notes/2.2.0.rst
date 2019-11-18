@@ -1,0 +1,27 @@
+.. _2.2.0:
+
+===========================================
+Percona Monitoring and Management 2.2.0
+===========================================
+
+:Date: December 9, 2019
+
+*PMM* (`Percona Monitoring and Management <https://www.percona.com/doc/2.x/percona-monitoring-and-management/index.html>`_) is a free and open-source platform for managing and monitoring |MySQL|, |MongoDB|, and |postgresql| performance. You can run *PMM* in your own environment for maximum security and reliability. It provides thorough time-based analysis for |MySQL|, |MongoDB|, and |postgresql| servers to ensure that your data works as efficiently as possible.
+
+For install instructions, see :ref:`deploy-pmm`.
+
+.. note:: PMM 2 is designed to be used as a new installation — your existing
+   PMM 1 environment can't be upgraded to this version.
+
+Improvements and new features
+=============================
+
+
+Fixed bugs
+==========
+
+* :pmmbug:`4978`: Change the Top MySQL Questions singlestat on the MySQL
+  Instances Overview dashboard to show ops instead of percentage
+
+.. include:: .res/replace.txt
+
