@@ -1,8 +1,24 @@
-# Documentation 
+# Documentation for Percona Monitoring and Management (PMM)
 
-## Install 
+The repository is for [Documentation](https://www.percona.com/doc/percona-monitoring-and-management/2.x/index.html)
 
-1.	Installing Sphinx. We use v.1+ on production. If you can, install 1.6+, but a higher version will do. [Official instructions](https://www.sphinx-doc.org/en/master/usage/installation.html) 
+We're looking forward to the new contributors. Instructions will help you. 
+
+
+## Issues
+
+You can improve any page or section of the documentation.
+
+We use [JIRA](https://jira.percona.com/projects/PMM/issues) to track issues. You can use the Component Documentation filter for issues: [Jira – PMM - Documentation](https://jira.percona.com/issues/?jql=project+%3D+PMM+AND+component+%3D+Documentation).
+
+If you want to do something new, please create a task at JIRA.
+
+
+## Install
+
+Installation and build documentation locally
+
+1.	Installing Sphinx. We use Sphinx-doc v.1+ on production. If you can, install 1.6+, but a higher version will do. [Official instructions](https://www.sphinx-doc.org/en/master/usage/installation.html) 
 
 	For Mac
 
@@ -25,7 +41,6 @@
 
 	Check result:
 
-		copying images... [100%] .res/graphics/png/pmm.home-page.png
 		copying static files... ... done
 		copying extra files... done
 		dumping search index in English (code: en)... done
@@ -49,3 +64,23 @@
 5.	Check the documentation. It's going to be built without make-up because it's going to use percona.com's make-up.
 
 	![Result](/images/img-readme-result.png)
+
+
+## WorkFlow
+
+1.	Select or create a issue in [Jira](https://jira.percona.com/issues/?jql=project+%3D+PMM+AND+component+%3D+Documentation)
+
+2.	Make fork a pmm-doc repository
+
+3.	Make a separate branch for your issue
+
+4.	Make changes. Use the syntax and examples from existing pages.
+
+5.	Make a local build and check that the build was completed successfully.
+
+6.	Check that you made the right commit. Just make a Pull Request to your fork repository.
+
+7.	Make a Pull Request to the pmm-doc repository.
+
+8.	Get recognition and SWAG as a gift.
+
