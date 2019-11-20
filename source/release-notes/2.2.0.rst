@@ -30,6 +30,9 @@ Fixed bugs
 * :pmmbug:`4979`: Set decimal precision ``2`` for all the elements, including
   charts and singlestats, on all dashboards
 
+* :pmmbug:`4980`: Fix "Load Average" singlestat on the Node Summary dashboard to
+  show decimal value instead of percent
+
 * :pmmbug:`4981`: Disable automatic color gradient in filled graphs on all
   dashboards
 
