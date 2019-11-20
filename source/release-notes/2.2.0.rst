@@ -23,5 +23,8 @@ Fixed bugs
 * :pmmbug:`4978`: Change the Top MySQL Questions singlestat on the MySQL
   Instances Overview dashboard to show ops instead of percentage
 
+* :pmmbug:`4981`: Disable automatic color gradient in filled graphs on all
+  dashboards
+
 .. include:: .res/replace.txt
 
