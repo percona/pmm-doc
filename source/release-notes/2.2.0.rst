@@ -23,6 +23,10 @@ Fixed bugs
 * :pmmbug:`4978`: Change the Top MySQL Questions singlestat on the MySQL
   Instances Overview dashboard to show ops instead of percentage
 
+* :pmmbug:`4917`: the "Systems under monitoring" and "Monitored DB Instances" 
+  singlestats on the Home dashboard now have a sparkline to make situation more
+  clear with recently shut down nodes/instances
+
 * :pmmbug:`4979`: Set decimal precision ``2`` for all the elements, including
   charts and singlestats, on all dashboards
 
