@@ -27,5 +27,14 @@ Fixed bugs
   singlestats on the Home dashboard now have a sparkline to make situation more
   clear with recently shut down nodes/instances
 
+* :pmmbug:`4979`: Set decimal precision ``2`` for all the elements, including
+  charts and singlestats, on all dashboards
+
+* :pmmbug:`4981`: Disable automatic color gradient in filled graphs on all
+  dashboards
+
+* :pmmbug:`4941`: Some charts were incorrectly showing empty fragments with high
+  time resolution turned on
+
 .. include:: .res/replace.txt
 
