@@ -26,5 +26,11 @@ Fixed bugs
 * :pmmbug:`4979`: Set decimal precision ``2`` for all the elements, including
   charts and singlestats, on all dashboards
 
+* :pmmbug:`4981`: Disable automatic color gradient in filled graphs on all
+  dashboards
+
+* :pmmbug:`4941`: Some charts were incorrectly showing empty fragments with high
+  time resolution turned on
+
 .. include:: .res/replace.txt
 
