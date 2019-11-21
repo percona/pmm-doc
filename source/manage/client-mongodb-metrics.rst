@@ -9,14 +9,15 @@ When done, add monitoring as follows:
 
   .. code-block:: bash
 
-     pmm-admin add mongodb  --username=pmm  --password=pmm 127.0.0.1:27017
+     pmm-admin add mongodb  --username=pmm  --password=pmm
 
 where username and password are credentials for the monitored MongoDB access,
-which will be used locally on the database host. Additionally, a service name
-can be appended to the command line parameters, otherwise it will be generated 
-automatically as ``<node>-mongodb``.
+which will be used locally on the database host. Additionally, a service name to
+be used by PMM, and a service address can be appended to the command line
+parameters, otherwise they are substituted automatically as ``<node>-mongodb``
+and ``127.0.0.1:27017``.
 
-The output of this command may look as follows:
+The command line and the output of this command may look as follows:
 
   .. code-block:: bash
 
@@ -26,6 +27,7 @@ The output of this command may look as follows:
      Service name: mongo
 
 .. only:: showhidden
+
 	.. code-block:: text
 
 	   $ pmm-admin add mongodb --use-profiler --username=pmm --password=pmm \

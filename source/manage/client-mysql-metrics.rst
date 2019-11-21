@@ -16,7 +16,7 @@ You then add MySQL services (Metrics and Query Analytics) with the following com
 where username and password are credentials for the monitored MySQL access,
 which will be used locally on the database host. Additionally, a service name
 to be used by PMM, and a service address can be appended to the command line
-parameters, otherwise they are generated automatically as ``<node>-mysql`` and
+parameters, otherwise they are substituted automatically as ``<node>-mysql`` and
 ``127.0.0.1:3306``.
 
 The command line and the output of this command may look as follows:
