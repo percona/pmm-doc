@@ -35,8 +35,8 @@ The command line and the output of this command may look as follows:
 		--replication-set='MongoDBReplSet2' \
 		--environment='Production' \
 		--custom-labels='az=sfo2' \
-		127.0.0.1:27017 \
-		mongodb1
+		mongodb1 \
+		127.0.0.1:27017
 
 	where username and password are credentials for the monitored MongoDB access, 
 	* --use-profiler - enable query capture
@@ -98,8 +98,6 @@ The command line and the output of this command may look as follows:
 
 	.. seealso::
 
-	   Default ports
-	      :ref:`Ports <Ports>` in :ref:`pmm.glossary-terminology-reference`
 	   Essential |mongodb| configuration 
 	      :ref:`pmm.qan-mongodb.conf`
 	   
