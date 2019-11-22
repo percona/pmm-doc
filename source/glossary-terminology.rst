@@ -11,10 +11,10 @@ Terminology Reference
       By default, both |prometheus| and :ref:`QAN <QAN>` store time-series data
       for 30 days.
 
-      Depending on available disk space and your requirements, you may
-      need to adjust data retention time.
-
 .. only:: showhidden
+
+	      Depending on available disk space and your requirements, you may
+	      need to adjust data retention time.
 
 	      You can control data retention by passing the :option:`DATA_RETENTION`
 	      environment variable when :ref:`creating and running the PMM Server container <server-container>`.
