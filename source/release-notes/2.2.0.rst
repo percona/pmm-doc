@@ -16,6 +16,10 @@ For install instructions, see :ref:`deploy-pmm`.
 Improvements and new features
 =============================
 
+* :pmmbug:`4976`: Home dashboard clean-up: "Systems under monitoring" and 
+  "Network IO" singlestats were refined to be based on the ``host`` variable and
+  to avoid using color as an indicator respectfully; "All" row elements were
+  relinked to a "Nodes Overview" dashboard with regards to a selected host.
 
 Fixed bugs
 ==========
