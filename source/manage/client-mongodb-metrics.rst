@@ -50,22 +50,6 @@ The command line and the output of this command may look as follows:
 
 	You can then check your MySQL and MongoDB dashboards and Query Analytics in order to view your server’s performance information.
 
-	Use the |opt.mongodb-metrics| alias to enable MongoDB metrics monitoring.
-
-	.. _pmm-admin.add.mongodb-metrics.usage:
-
-	.. rubric:: USAGE
-
-	.. _code.pmm-admin.add.mongodb-metrics:
-
-	.. include:: ../.res/code/pmm-admin.add.mongodb-metrics.txt
-
-	This creates the ``pmm-mongodb-metrics-42003`` service
-	that collects local |mongodb| metrics for this particular |mongodb| instance.
-
-	.. note:: It should be able to detect the local |pmm-client| name,
-	   but you can also specify it explicitly as an argument.
-
 	.. _pmm-admin.add.mongodb-metrics.options:
 
 	.. rubric:: OPTIONS
