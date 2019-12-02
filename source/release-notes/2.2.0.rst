@@ -43,5 +43,8 @@ Fixed bugs
 * :pmmbug:`4941`: Some charts were incorrectly showing empty fragments with high
   time resolution turned on
 
+* :pmmbug:`5023`: Make the All instances uptime singlestat on the Home dashboard
+  to show Min values instead of Avg
+
 .. include:: .res/replace.txt
 
