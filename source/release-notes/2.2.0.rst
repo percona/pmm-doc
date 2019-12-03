@@ -45,6 +45,9 @@ Fixed bugs
 * :pmmbug:`4941`: Some charts were incorrectly showing empty fragments with high
   time resolution turned on
 
+* :pmmbug:`5022`: Fix outdated drill-down links on the Prometheus Exporters
+  Overview and Nodes Overview dashboards
+  
 * :pmmbug:`5023`: Make the All instances uptime singlestat on the Home dashboard
   to show Min values instead of Avg
 
