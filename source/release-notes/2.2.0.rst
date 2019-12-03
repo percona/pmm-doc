@@ -20,6 +20,8 @@ Improvements and new features
   "Network IO" singlestats were refined to be based on the ``host`` variable and
   to avoid using color as an indicator respectfully; "All" row elements were
   relinked to a "Nodes Overview" dashboard with regards to a selected host.
+* :pmmbug:`4800`: The ``pmm-admin add mysql`` command have undergone help and
+  messages improvements related to the table statistics collection
 
 Fixed bugs
 ==========
