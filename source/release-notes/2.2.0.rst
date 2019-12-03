@@ -20,6 +20,8 @@ Improvements and new features
   "Network IO" singlestats were refined to be based on the ``host`` variable and
   to avoid using color as an indicator respectfully; "All" row elements were
   relinked to a "Nodes Overview" dashboard with regards to a selected host.
+* :pmmbug:`4800`: The ``pmm-admin add mysql`` command have undergone help and
+  messages improvements related to the table statistics collection
 
 Fixed bugs
 ==========
@@ -45,7 +47,12 @@ Fixed bugs
 
 * :pmmbug:`5022`: Fix outdated drill-down links on the Prometheus Exporters
   Overview and Nodes Overview dashboards
+  
+* :pmmbug:`5023`: Make the All instances uptime singlestat on the Home dashboard
+  to show Min values instead of Avg
 
+* :pmmbug:`5029`: Option to upload dashboard snapshot to Percona disappeared
+  after upgrade
 
 .. include:: .res/replace.txt
 
