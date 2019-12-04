@@ -55,5 +55,9 @@ Fixed bugs
 * :pmmbug:`5029`: Option to upload dashboard snapshot to Percona disappeared
   after upgrade
 
+* :pmmbug:`5015`: Fix format of Disk Page Buffers singlestat on the Compare
+  dashboard for PostgreSQL to have two digits precision for the consistency with
+  other singlestats
+
 .. include:: .res/replace.txt
 
