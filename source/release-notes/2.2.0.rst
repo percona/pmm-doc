@@ -55,6 +55,11 @@ Fixed bugs
 * :pmmbug:`5029`: Option to upload dashboard snapshot to Percona disappeared
   after upgrade
 
+* :pmmbug:`4946`: rename singlestats on the Home dashboard for better clearance:
+   "Systems under monitoring" to "Nodes under monitoring" and "Monitored DB
+   Instances" to "Monitored DB Services", and make the last one to count remote
+   DB instances also
+
 * :pmmbug:`5015`: Fix format of Disk Page Buffers singlestat on the Compare
   dashboard for PostgreSQL to have two digits precision for the consistency with
   other singlestats
