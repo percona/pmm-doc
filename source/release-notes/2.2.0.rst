@@ -22,6 +22,7 @@ Improvements and new features
   relinked to a "Nodes Overview" dashboard with regards to a selected host.
 * :pmmbug:`4800`: The ``pmm-admin add mysql`` command have undergone help and
   messages improvements related to the table statistics collection
+* :pmmbug:`4969`: Update Grafana to version 6.4.4
 
 Fixed bugs
 ==========
@@ -58,6 +59,10 @@ Fixed bugs
    "Systems under monitoring" to "Nodes under monitoring" and "Monitored DB
    Instances" to "Monitored DB Services", and make the last one to count remote
    DB instances also
+
+* :pmmbug:`5015`: Fix format of Disk Page Buffers singlestat on the Compare
+  dashboard for PostgreSQL to have two digits precision for the consistency with
+  other singlestats
 
 .. include:: .res/replace.txt
 
