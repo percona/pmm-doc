@@ -64,5 +64,8 @@ Fixed bugs
   dashboard for PostgreSQL to have two digits precision for the consistency with
   other singlestats
 
+* :pmmbug:`5014`: LVM logical volumes were wrongly sized on a new AWS
+  deployment, resulting in "no space left on device" errors.
+
 .. include:: .res/replace.txt
 
