@@ -23,6 +23,7 @@ Improvements and new features
 * :pmmbug:`4800`: The ``pmm-admin add mysql`` command have undergone help and
   messages improvements related to the table statistics collection
 * :pmmbug:`4969`: Update Grafana to version 6.4.4
+* :pmmbug:`5068`: Add drill-down links to the Node Summary dashboard graphs
 * :pmmbug:`5053`: A tooltip was added to the Head Block graph on the Prometheus
   dashboard
 * :pmmbug:`5050`: Add drill-down links to the graphs on all Services Compare
@@ -59,7 +60,7 @@ Fixed bugs
 
 * :pmmbug:`5022`: Fix outdated drill-down links on the Prometheus Exporters
   Overview and Nodes Overview dashboards
-  
+
 * :pmmbug:`5023`: Make the All instances uptime singlestat on the Home dashboard
   to show Min values instead of Avg
 
