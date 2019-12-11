@@ -67,5 +67,10 @@ Fixed bugs
 * :pmmbug:`5014`: LVM logical volumes were wrongly sized on a new AWS
   deployment, resulting in "no space left on device" errors.
 
+* :pmmbug:`4804`: Incorrect parameters validation required both ``service-name``
+  and ``service-id`` parameters of the ``pmm-admin remove`` command to be
+  presented, while the command itself demanded only one of them to identify the
+  service.
+
 .. include:: .res/replace.txt
 
