@@ -25,6 +25,15 @@ Improvements and new features
 * :pmmbug:`4969`: Update Grafana to version 6.4.4
 * :pmmbug:`5053`: A tooltip was added to the Head Block graph on the Prometheus
   dashboard
+* :pmmbug:`5050`: Add drill-down links to the graphs on all Services Compare
+  dashboards
+* :pmmbug:`5037`: Add drill-down links to all graphs on the Services Overview
+  dashboards
+* :pmmbug:`4988`: Filtering in Query Analytics have undergone improvements to
+  make group selection more comfortable: Labels unavailable under the current 
+  selection are shown as gray/disabled, and the percentage values are
+  dynamically recalculated to reflect labels available within the currently
+  applied filters.
 
 Fixed bugs
 ==========
