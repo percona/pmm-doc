@@ -23,7 +23,7 @@ Improvements and new features
 * :pmmbug:`4800`: The ``pmm-admin add mysql`` command have undergone help and
   messages improvements related to the table statistics collection
 * :pmmbug:`4969`: Update Grafana to version 6.4.4
-* :pmmbug:`5050`: Add drill-down links to all graphs on the Services Overview
+* :pmmbug:`5037`: Add drill-down links to all graphs on the Services Overview
   dashboards
 * :pmmbug:`4988`: Filtering in Query Analytics have undergone improvements to
   make group selection more comfortable: Labels unavailable under the current 
