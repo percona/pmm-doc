@@ -23,6 +23,11 @@ Improvements and new features
 * :pmmbug:`4800`: The ``pmm-admin add mysql`` command have undergone help and
   messages improvements related to the table statistics collection
 * :pmmbug:`4969`: Update Grafana to version 6.4.4
+* :pmmbug:`4988`: Filtering in Query Analytics have undergone improvements to
+  make group selection more comfortable: Labels unavailable under the current 
+  selection are shown as gray/disabled, and the percentage values are
+  dynamically recalculated to reflect labels available within the currently
+  applied filters.
 
 Fixed bugs
 ==========
