@@ -48,7 +48,9 @@ Fixed bugs
 
 * :pmmbug:`5022`: Fix outdated drill-down links on the Prometheus Exporters
   Overview and Nodes Overview dashboards
-  
+
+* :pmmbug:`5068`: Add drill-down links to the Node Summary dashboard graphs
+
 * :pmmbug:`5023`: Make the All instances uptime singlestat on the Home dashboard
   to show Min values instead of Avg
 
