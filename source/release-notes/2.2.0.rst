@@ -84,5 +84,8 @@ Fixed bugs
   presented, while the command itself demanded only one of them to identify the
   service.
 
+* :pmmbug:`3298`: Panic errors were present in the ``rds_exporter`` log after
+  adding an RDS instance from the second AWS account
+
 .. include:: .res/replace.txt
 
