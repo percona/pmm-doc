@@ -16,8 +16,9 @@ For install instructions, see :ref:`deploy-pmm`.
 Improvements and new features
 =============================
 
-* :pmmbug:`4767`: The Amazon RDS setup wizard which facilitates adding remote
-  services for monitoring was included into this PMM Server release
+* :pmmbug:`4950` and :pmmbug:`3094`: `AWS partitions <https://docs.aws.amazon.com/sdk-for-go/api/aws/endpoints/#pkg-constants>`_ are now supported when adding an 
+  Amazon RDS instance to PMM; both default ``aws`` one and alternative
+  partitions are scanned automatically during the discovery process.
 * :pmmbug:`4976`: Home dashboard clean-up: "Systems under monitoring" and 
   "Network IO" singlestats were refined to be based on the ``host`` variable and
   to avoid using color as an indicator respectfully; "All" row elements were
