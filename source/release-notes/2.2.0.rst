@@ -16,6 +16,7 @@ For install instructions, see :ref:`deploy-pmm`.
 Improvements and new features
 =============================
 
+* :pmmbug:`4950` and :pmmbug:`3094`: Alternative `AWS partitions <https://docs.aws.amazon.com/sdk-for-go/api/aws/endpoints/#pkg-constants>`_  are now supported when adding an AWS RDS MySQL or Aurora MySQL Instance to PMM
 * :pmmbug:`4976`: Home dashboard clean-up: "Systems under monitoring" and 
   "Network IO" singlestats were refined to be based on the ``host`` variable and
   to avoid using color as an indicator respectfully; "All" row elements were
