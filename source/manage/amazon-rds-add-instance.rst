@@ -29,9 +29,6 @@ Following steps are needed to add an |amazon-rds| DB instance to |pmm|:
 #. Click the |gui.discover| button for |pmm| to retrieve the available |amazon-rds|
    instances.
 
-   .. note:: During this process instances are discovered as in standard
-     ``aws`` partition, so in the known alternative ones like ``aws-us-gov``.
-
    .. _figure.pmm.amazon-rds.pmm-server.add-instance.displaying:
 
    .. figure:: ../.res/graphics/png/metrics-monitor.add-instance.1.png

@@ -148,6 +148,17 @@ if you add the same instance back with a different name, it will be considered a
 new instance with a new set of metrics.  So if you are re-adding an instance and
 want to keep its previous data, add it with the same name.
 
+Can I add an AWS RDS MySQL or Aurora MySQL instance from a non-default AWS partition?
+=====================================================================================
+
+By default the RDS discovery works with the default ``aws`` partition. But you
+can switch to special regions, like the `GovCloud <https://aws.amazon.com/ru/govcloud-us/>`_ one, with the alternative `AWS partitions <https://docs.aws.amazon.com/sdk-for-go/api/aws/endpoints/#pkg-constants>`_ (e.g. ``aws-us-gov``) adding them to the *Settings* via the `PMM Server API <https://www.percona.com/doc/percona-monitoring-and-management/2.x/manage/server-pmm-api.html>`_:
+
+.. figure:: ../.res/graphics/png/aws-partitions-in-api.png
+
+You can specify any of them instead of the ``aws`` default value, or use several
+of them, with the JSON Array  syntax: ``["aws", "aws-cn"]``.
+
 .. _troubleshoot-connection:
 
 How to troubleshoot communication issues between PMM Client and PMM Server?
