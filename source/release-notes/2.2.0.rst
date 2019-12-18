@@ -16,8 +16,10 @@ For install instructions, see :ref:`deploy-pmm`.
 Improvements and new features
 =============================
 
-* :pmmbug:`4767`: The Amazon RDS setup wizard which facilitates adding remote
-  services for monitoring was included into this PMM Server release
+* :pmmbug:`4907` and :pmmbug:`4767`: The user's AMI Instance ID is now used
+  to facilitate adding an AWS RDS MySQL or Aurora MySQL Instance for monitoring,
+  which provides both additional verification and automatic discovery of
+  instances.
 * :pmmbug:`4976`: Home dashboard clean-up: "Systems under monitoring" and 
   "Network IO" singlestats were refined to be based on the ``host`` variable and
   to avoid using color as an indicator respectfully; "All" row elements were

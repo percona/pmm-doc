@@ -1,15 +1,15 @@
 .. _pmm.amazon-rds:
 
 --------------------------------------------------------------------------------
-Adding an Amazon RDS instance to PMM
+Adding an Amazon RDS MySQL, Aurora MySQL, or Remote Instance
 --------------------------------------------------------------------------------
 
 
-The |pmm-add-instance| is now a preferred method of adding an |amazon-rds| DB
-instance to |pmm|. This method supports |amazon-rds| DB instances that use
-|amazon-aurora|, |mysql|, or |mariadb| engines, as well as remote PostgreSQL, ProxySQL, and MongoDB instances.
+The |pmm-add-instance| is now a preferred method of adding an |amazon-rds|
+database instance to |pmm|. This method supports |amazon-rds| database instances
+that use |amazon-aurora|, |mysql|, or |mariadb| engines, as well as any remote PostgreSQL, ProxySQL, MySQL and MongoDB instances.
 
-Following steps are needed to add an |amazon-rds| DB instance to |pmm|:
+Following steps are needed to add an |amazon-rds| database instance to |pmm|:
 
 1. Open the |pmm| web interface and select the |pmm-add-instance| dashboard.
 
