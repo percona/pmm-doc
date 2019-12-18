@@ -1,7 +1,7 @@
 .. _pmm.amazon-rds:
 
 --------------------------------------------------------------------------------
-Adding an Amazon RDS database instance to PMM
+Adding an Amazon RDS instance to PMM
 --------------------------------------------------------------------------------
 
 
@@ -71,9 +71,10 @@ Following steps are needed to add an |amazon-rds| DB instance to |pmm|:
       Configuring the selected |rds| or |amazon-aurora| instance: the
       *Labels* section
 
-   The *Labels* section allows to specify the environment variables, the AWS
+   The *Labels* section allows specifying labels for the environment, the AWS
    region and availability zone to be used, the Replication set and Cluster
-   names and also the list of custom labels in a key:value format.
+   names and also it allows to set the list of custom labels in a key:value
+   format.
 
    .. _figure.pmm.amazon-rds.pmm-server.add-instance.rds-instances.additional:
 
