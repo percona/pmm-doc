@@ -91,5 +91,11 @@ Fixed bugs
 * :pmmbug:`3298`: Panic errors were present in the ``rds_exporter`` log after
   adding an RDS instance from the second AWS account
 
+* :pmmbug:`5089`: The serialize-javascript package was updated to version 2.1.1
+  because of the possibility of regular expressions cross-site scripting
+  vulnerability in it (CVE-2019-16769). Please note PMM versions were not
+  affected by this vulnerability, as serialize-javascript package is used as a
+  build dependency only.
+
 .. include:: .res/replace.txt
 
