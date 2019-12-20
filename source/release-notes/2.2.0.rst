@@ -27,6 +27,11 @@ For *PMM* install instructions, see :ref:`deploy-pmm`.
 Improvements and new features
 =============================
 
+* :pmmbug:`4575`: The new PMM Settings dashboard allows to configure various PMM
+  Server options: setting metrics resolution and data retention, enabling or
+  disabling send usage data statistics back to Percona and checking for updates;
+  this dashboard is now the proper place to upload your public key for the SSH
+  login and to download PMM Server logs for diagnostics
 * :pmmbug:`4907` and :pmmbug:`4767`: The user's AMI Instance ID is now used
   to setup running PMM Server using AWS Marketplace as an additional
   verification on the user, based on the Amazon Marketplace rules
@@ -101,6 +106,9 @@ Fixed bugs
   vulnerability in it (CVE-2019-16769). Please note PMM versions were not
   affected by this vulnerability, as serialize-javascript package is used as a
   build dependency only.
+* :pmmbug:`5149`: Disk Space singlestat was unable to show data for RDS
+  instances because of not taking into account sources with unknown filesystem
+  type
 
 .. include:: .res/replace.txt
 
