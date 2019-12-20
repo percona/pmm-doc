@@ -39,6 +39,8 @@ Improvements and new features
   selection are shown as gray/disabled, and the percentage values are
   dynamically recalculated to reflect labels available within the currently
   applied filters.
+* :pmmbug:`4966`: All passwords are now substituted with asterisk signs in the
+  exporter logs for security reasons when not in debug mode
 
 Fixed bugs
 ==========
