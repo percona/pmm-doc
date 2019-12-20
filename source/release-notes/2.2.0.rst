@@ -41,6 +41,10 @@ Improvements and new features
   applied filters.
 * :pmmbug:`4966`: All passwords are now substituted with asterisk signs in the
   exporter logs for security reasons when not in debug mode
+* :pmmbug:`527`: ``node_exporter`` is now providing the hardware monitoring
+  information such as CPU temperatures and fan statuses; being collected by PMM
+  Server it is not yet shown until a dedicated dashboard will appear in
+  subsequent releases
 
 Fixed bugs
 ==========
