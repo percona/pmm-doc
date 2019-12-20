@@ -219,8 +219,8 @@ over the ID.
 Paste the instance in the :guilabel:`Instance ID` field of the |pmm.name|
 welcome page and click |gui.submit|.
 
-Click |gui.submit| and enter your user name and password in the dialog window
-that pops up. The |pmm-server| is now ready and the home page opens.
+|pmm-server| provides user access control, and therefore you will need user
+credentials to access it:
 
 .. _figure.run-server-ami.installation-wizard.ami.account-credentials:
 
@@ -228,8 +228,10 @@ that pops up. The |pmm-server| is now ready and the home page opens.
 
    Create credentials for your instance.
 
-Click |gui.submit| and enter your user name and password in the dialog window
-that pops up. The |pmm-server| is now ready and the home page opens.
+The default user name is ``admin``, and the default password is ``admin`` also.
+You will be proposed to change the default password at login if you didn't it.
+
+The |pmm-server| is now ready and the home page opens.
 
 .. _figure.run-server-ami.pmm-server.home-page:
 
@@ -249,7 +251,7 @@ You are creating a username and password that will be used for two purposes:
 
    .. code-block:: sh
 
-      $ pmm-admin config --username= --password= --server=1.2.3.4
+      $ pmm-admin config --server-insecure-tls --server-address=<IP Address>:443
 
 .. note:: **Accessing the instance by using an SSH client.**
 
