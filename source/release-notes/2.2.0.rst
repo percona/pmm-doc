@@ -103,5 +103,9 @@ Fixed bugs
   affected by this vulnerability, as serialize-javascript package is used as a
   build dependency only.
 
+* :pmmbug:`5149`: Disk Space singlestat was unable to show data for RDS
+  instances because of not taking into account sources with unknown filesystem
+  type
+
 .. include:: .res/replace.txt
 
