@@ -248,6 +248,7 @@
 .. |gui.retry| replace:: :guilabel:`Retry`
 .. |gui.review-policy| replace:: :guilabel:`Review policy`
 .. |gui.review| replace:: :guilabel:`Review`
+.. |gui.save| replace:: :guilabel:`Save`
 .. |gui.security-credentials| replace:: :guilabel:`Security credentials`
 .. |gui.security-group| replace:: :guilabel:`Security Group`
 .. |gui.select-aws-access-type| replace:: :guilabel:`Select AWS access type`
