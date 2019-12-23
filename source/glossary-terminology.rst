@@ -348,8 +348,6 @@ Terminology Reference
 
       You may disable telemetry on the *Settings* dashboard.
 
-      .. include:: .res/code/docker.run.disable-telemetry.txt
-
 .. _Version:
 
 `Version <glossary-terminology.html#Version>`_
