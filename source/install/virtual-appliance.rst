@@ -131,16 +131,25 @@ You are creating a username and password that will be used for two purposes:
 `Accessing the Virtual Machine <virtual-appliance.html#pmm-deploying-server-virtual-appliance-accessing>`_
 ==========================================================================================================
 
-.. figure:: ../.res/graphics/png/pmm.settings_ssh_key.png
-
-To access the VM with the *PMM Server* appliance via SSH,
+To access the VM with the *PMM Server* appliance via SSH, you will need to
 provide your public key:
 
 1. Open the URL for accessing |pmm| in a web browser.
 
    The URL is provided either in the console window or in the appliance log.
 
-#. Submit your **public key** in the |pmm| web interface.
+#. Select the |pmm-settings| dashboard in the main menu.
+
+   .. figure:: ../.res/graphics/png/pmm-add-instance.png
+
+      Choosing the |pmm| *Settings* menu entry
+
+#. Submit your **public key** in the *SSH Key Details* section and click the
+   *Apply SSH Key* button.
+
+   .. figure:: ../.res/graphics/png/pmm.settings_ssh_key.png
+
+      Submitting the public key on the *Settings dashboard*
 
 After that you can use ``ssh`` to log in as the ``admin`` user.
 For example, if *PMM Server* is running at 192.168.100.1

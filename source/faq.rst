@@ -181,74 +181,41 @@ the ``server logs`` link on the `Prometheus dashboard <https://www.percona.com/d
 
 .. image:: .res/graphics/png/get-logs-from-prometheus-dashboard.png
 
-.. only:: showhidden
+.. _metrics-resolution:
 
-	.. _metrics-resolution:
+What resolution is used for metrics?
+================================================================================
 
-	What resolution is used for metrics?
-	================================================================================
+The |opt.mysql-metrics| service collects metrics with different resolutions (5
+seconds, 5 seconds, and 60 seconds by default).
 
-	The |opt.mysql-metrics| service collects metrics with different resolutions (5
-	seconds, 5 seconds, and 60 seconds by default),
+The |opt.linux-metrics| and |opt.mongodb-metrics| services are set up to collect
+metrics with 1 second resolution.
 
-	The |opt.linux-metrics| and |opt.mongodb-metrics| services are set up to collect
-	metrics with 1 second resolution.
+In case of bad network connectivity between |pmm-server| and |pmm-client| or
+between |pmm-client| and the database server it is monitoring, scraping every
+second may not be possible when latency is higher than 1 second.
 
-	In case of bad network connectivity between |pmm-server| and |pmm-client| or
-	between |pmm-client| and the database server it is monitoring, scraping every
-	second may not be possible when latency is higher than 1 second.  You can change
-	the minimum resolution for metrics by passing the ``METRICS_RESOLUTION``
-	environment variable when :ref:`creating and running the PMM Server container
-	<server-container>`. To set this environment variable, use the ``-e`` option.
-	The values can be between *1s* and *5s* (default).  If you set a higher value,
-	|prometheus| will not start.
+You can change the minimum resolution for metrics by the following way:
 
-	For example, to set the minimum resolution to 3 seconds:
+#. Select the |pmm-settings| dashboard in the main menu.
 
-	:command:`-e METRICS_RESOLUTION=3s`
+   .. figure:: ../.res/graphics/png/pmm-add-instance.png
 
-	.. note:: Consider increasing minimum resolution
-	   when |pmm-server| and |pmm-client| are on different networks,
-	   or when :ref:`pmm.amazon-rds`.
+      Choosing the |pmm| *Settings* menu entry
 
-.. only:: showhidden
+#. In the *Settings* section, choose proper metrics resolution with the slider.
+   The tooltip of the slider will show you actual resolution values.
 
-	.. _pmm.deploying.server.virtual-appliance.root-password.setting:
+   .. figure:: ../.res/graphics/png/pmm.settings_ssh_key.png
 
-	How to set the root password when |pmm-server| is installed as a virtual appliance
-	====================================================================================================
+      Choosing metrics resolution on the *Settings dashboard*
 
-	With your virtual appliance set up, you need to set the root password for your
-	|pmm-server|. By default, the virtual machine is configured to enforce changing
-	the default password upon the first login.
+#. Click the *Apply changes* button.
 
-	.. figure:: .res/graphics/png/command-line.login.1.png
-
-	   Set the root password when logging in.
-
-	Run your virtual machine and when requested to log in, use the following
-	credentials:
-
-	:User: root
-	:Password: percona
-
-	The system immediately requests that you change your password. Note that, for
-	the sake of security, your password must not be trivial and pass at least the
-	dictionary check. If you do not provide your password within sixty seconds you
-	are automatically logged out. In this case use the default credentials to log in
-	again.
-
-	.. figure:: .res/graphics/png/command-line.login.3.png
-
-	   Set a new password and have full access to your system
-
-	After the new password is set you control this system as a superuser and
-	can make whaterver changes required.
-
-	.. important::
-
-	   You cannot access the root account if you access |pmm-server| using
-	   SSH or via the Web interface.
+.. note:: Consider increasing minimum resolution
+   when |pmm-server| and |pmm-client| are on different networks,
+   or when :ref:`pmm.amazon-rds`.
 
 .. include:: .res/replace.txt
 
