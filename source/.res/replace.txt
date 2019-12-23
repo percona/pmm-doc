@@ -96,6 +96,7 @@
 .. |pmm-query-analytics| replace:: *PMM Query Analytics*
 .. |pmm-server-1.6.0.ova| replace:: :file:`PMM-Server-1.6.0.ova`
 .. |pmm-server| replace:: PMM Server
+.. |pmm-settings| replace:: *PMM Settings*			  
 .. |pmm-system-summary| replace:: *PMM System Summary*
 .. |pmm.name| replace:: *Percona Monitoring and Management*
 .. |pmm| replace:: PMM
@@ -248,6 +249,7 @@
 .. |gui.retry| replace:: :guilabel:`Retry`
 .. |gui.review-policy| replace:: :guilabel:`Review policy`
 .. |gui.review| replace:: :guilabel:`Review`
+.. |gui.save| replace:: :guilabel:`Save`
 .. |gui.security-credentials| replace:: :guilabel:`Security credentials`
 .. |gui.security-group| replace:: :guilabel:`Security Group`
 .. |gui.select-aws-access-type| replace:: :guilabel:`Select AWS access type`
