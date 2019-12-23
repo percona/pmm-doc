@@ -64,20 +64,21 @@ By default, both |prometheus| and QAN store time-series data for 30 days.
 Depending on available disk space and your requirements,
 you may need to adjust data retention time.
 
-You can control data retention by passing the :option:`DATA_RETENTION`
-environment variable when :ref:`creating and running the PMM Server container
-<server-container>`.  To set environment variable, use the ``-e``
-option.  The value should be the number of hours, and requires h suffix. 
-For example, the default value of 30 days for |opt.metrics-retention| is
-``720h``, but you can decrease the retention period for |prometheus| to 8 days
-as follows::
+You can control data retention by the following way.
 
--e DATA_RETENTION=192h
+#. Select the |pmm-settings| dashboard in the main menu.
 
-.. seealso::
+   .. figure:: ../.res/graphics/png/pmm-add-instance.png
 
-   Metrics and queries retention
-      :option:`DATA_RETENTION`
+      Choosing the |pmm| *Settings* menu entry
+
+#. In the *Settings* section, enter new data retention value in seconds.
+
+   .. figure:: ../.res/graphics/png/pmm.settings_settings.png
+
+      Entering data retention on the *Settings dashboard*
+
+#. Click the *Apply changes* button.
 
 How often are nginx logs in PMM Server rotated?
 ================================================================================
@@ -207,7 +208,7 @@ You can change the minimum resolution for metrics by the following way:
 #. In the *Settings* section, choose proper metrics resolution with the slider.
    The tooltip of the slider will show you actual resolution values.
 
-   .. figure:: ../.res/graphics/png/pmm.settings_ssh_key.png
+   .. figure:: ../.res/graphics/png/pmm.settings_settings.png
 
       Choosing metrics resolution on the *Settings dashboard*
 
