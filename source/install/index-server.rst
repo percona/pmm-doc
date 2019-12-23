@@ -8,7 +8,7 @@ Installing PMM Server
    :maxdepth: 4
 
    docker
-   ami
+   aws
    virtual-appliance
    server-verify
    ../manage/index-server
