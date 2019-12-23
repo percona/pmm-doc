@@ -68,13 +68,13 @@ You can control data retention by the following way.
 
 #. Select the |pmm-settings| dashboard in the main menu.
 
-   .. figure:: ../.res/graphics/png/pmm-add-instance.png
+   .. figure:: .res/graphics/png/pmm-add-instance.png
 
       Choosing the |pmm| *Settings* menu entry
 
 #. In the *Settings* section, enter new data retention value in seconds.
 
-   .. figure:: ../.res/graphics/png/pmm.settings_settings.png
+   .. figure:: .res/graphics/png/pmm.settings_settings.png
 
       Entering data retention on the *Settings dashboard*
 
@@ -155,7 +155,7 @@ Can I add an AWS RDS MySQL or Aurora MySQL instance from a non-default AWS parti
 By default the RDS discovery works with the default ``aws`` partition. But you
 can switch to special regions, like the `GovCloud <https://aws.amazon.com/ru/govcloud-us/>`_ one, with the alternative `AWS partitions <https://docs.aws.amazon.com/sdk-for-go/api/aws/endpoints/#pkg-constants>`_ (e.g. ``aws-us-gov``) adding them to the *Settings* via the `PMM Server API <https://www.percona.com/doc/percona-monitoring-and-management/2.x/manage/server-pmm-api.html>`_:
 
-.. figure:: ../.res/graphics/png/aws-partitions-in-api.png
+.. figure:: .res/graphics/png/aws-partitions-in-api.png
 
 You can specify any of them instead of the ``aws`` default value, or use several
 of them, with the JSON Array  syntax: ``["aws", "aws-cn"]``.
@@ -201,14 +201,14 @@ You can change the minimum resolution for metrics by the following way:
 
 #. Select the |pmm-settings| dashboard in the main menu.
 
-   .. figure:: ../.res/graphics/png/pmm-add-instance.png
+   .. figure:: .res/graphics/png/pmm-add-instance.png
 
       Choosing the |pmm| *Settings* menu entry
 
 #. In the *Settings* section, choose proper metrics resolution with the slider.
    The tooltip of the slider will show you actual resolution values.
 
-   .. figure:: ../.res/graphics/png/pmm.settings_settings.png
+   .. figure:: .res/graphics/png/pmm.settings_settings.png
 
       Choosing metrics resolution on the *Settings dashboard*
 

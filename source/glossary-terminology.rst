@@ -14,16 +14,8 @@ Terminology Reference
       Depending on available disk space and your requirements, you may
       need to adjust data retention time.
 
-      You can control data retention by passing the :option:`METRICS_RETENTION`
-      and :option:`QUERIES_RETENTION` environment variables when :ref:`creating
-      and running the PMM Server container <server-container>`.
+      You can control data retention via the *Settings* dashboard.
 
-      .. seealso::
-
-	 Metrics retention
-	    :option:`METRICS_RETENTION`
-	 Queries retention
-	    :option:`QUERIES_RETENTION`
 
 .. _Data-Source-Name:
 

@@ -19,7 +19,7 @@ Main improvements in this release are:
 * The new Settings dashboard allows configuring PMM Server via the graphical
   interface
 
-For *PMM* install instructions, see :ref:`deploy-pmm`.
+For *PMM* install instructions, see :ref:`pmm.deploying.server` and :ref:`pmm.deploying.client`.
 
 .. note:: PMM 2 is designed to be used as a new installation — your existing
    PMM 1 environment can't be upgraded to this version.

@@ -1,4 +1,4 @@
-.. _pmm.deploying.server.virtual-appliance:
+.. _pmm.deploying.server:
 
 PMM Server as a Virtual Appliance
 ********************************************************************************
@@ -86,24 +86,17 @@ To run the |pmm-server|, start the virtual machine and open in your browser the
 URL that appears at the top of the terminal when you are logging in to the
 virtual machine.
 
-.. _figure.9a96a76.command-line-login:
+.. _figure.9a96a76.pmm-server.password-change:
 
-.. figure:: ../.res/graphics/png/command-line.login.1.png
+.. figure:: ../.res/graphics/png/pmm-login-screen.png
 
-   The URL to open in the browser appears at the top of the terminal when
-   running the virtual machine.
+   Enter the user login and password to access the |pmm-server| web interface.
 
 If you run |pmm-server| in your browser for the first time, you are requested to
 supply the user login and password. The default PMM Server credentials are:
 
 * **username:** admin
 * **password:** admin
-
-.. _figure.9a96a76.pmm-server.password-change:
-
-.. figure:: ../.res/graphics/png/pmm-login-screen.png
-
-   Enter the user login and password to access the |pmm-server| web interface.
 
 After login you will be proposed to change this default password. Enter the new
 password twice and click |gui.save|. The |pmm-server| is now ready and the home
@@ -124,7 +117,7 @@ You are creating a username and password that will be used for two purposes:
 
    .. code-block:: sh
 
-      $ pmm-admin config  --server-insecure-tls --server-url=https://admin:admin@<IP Address>:443
+      # pmm-admin config  --server-insecure-tls --server-url=https://admin:admin@<IP Address>:443
 
 .. _pmm.deploying.server.virtual-appliance.accessing:
 
