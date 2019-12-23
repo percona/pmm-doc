@@ -27,11 +27,11 @@ For *PMM* install instructions, see :ref:`pmm.deploying.server` and :ref:`pmm.de
 Improvements and new features
 =============================
 
-* :pmmbug:`4575`: The new PMM Settings dashboard allows to configure various PMM
-  Server options: setting metrics resolution and data retention, enabling or
-  disabling send usage data statistics back to Percona and checking for updates;
-  this dashboard is now the proper place to upload your public key for the SSH
-  login and to download PMM Server logs for diagnostics
+* :pmmbug:`4575`: The new PMM Settings dashboard allows users to configure
+  various PMM Server options: setting metrics resolution and data retention,
+  enabling or disabling send usage data statistics back to Percona and checking
+  for updates; this dashboard is now the proper place to upload your public key
+  for the SSH login and to download PMM Server logs for diagnostics
 * :pmmbug:`4907` and :pmmbug:`4767`: The user's AMI Instance ID is now used
   to setup running PMM Server using AWS Marketplace as an additional
   verification on the user, based on the Amazon Marketplace rules
@@ -63,6 +63,10 @@ Improvements and new features
   information such as CPU temperatures and fan statuses; while this information
   is being collected by PMM Server, it will not be shown until a dedicated
   dashboard is added in a future release
+* :pmmbug:`3198`: Instead of showing All graphs for all services by default,
+  MySQL Command/Handler Counters Compare dashboard now shows the pre-defined
+  set of ten most informative ones, to reduce load on PMM Server at its first
+  open
 
 Fixed bugs
 ==========
