@@ -89,21 +89,6 @@ Terminology Reference
 	 Passing parameters to a monitoring service
 	    :ref:`pmm.pmm-admin.monitoring-service.pass-parameter`
 
-.. only:: showhidden
-
-	.. _Orchestrator:
-
-	`Orchestrator <glossary-terminology.html#Orchestrator>`_
-	--------------------------------------------------------------------------------
-
-	      The topology manager for |mysql|. By default it is disabled for the
-	      :ref:`PMM-Server`. To enable it, set the :option:`ORCHESTRATOR_ENABLED`.
-
-	      .. seealso::
-
-		 Docker container: Enabling orchestrator
-		    :option:`ORCHESTRATOR_ENABLED`
-
 .. _PMM:
 
 `PMM <glossary-terminology.html#PMM>`_
@@ -119,21 +104,24 @@ Terminology Reference
       A program which changes the configuration of the :ref:`PMM-Client`. See
       detailed documentation in the :ref:`pmm-admin` section.
 
-.. _PMM-annotation:
+.. only:: showhidden
 
-`PMM annotation <glossary-terminology.html#PMM-annotation>`_
---------------------------------------------------------------------------------
 
-   A feature of |pmm-server| which adds a special mark to all
-   dashboards and signifies an important event in your
-   application. Annotations are added on the |pmm-client| by using
-   the |pmm-admin.annotate| command.
+	 .. _PMM-annotation:
 
-   .. seealso::
+	 `PMM annotation <PMM-annotation>`_
+	 --------------------------------------------------------------------------------
 
-	 |grafana| Documentation: Annotations
+	   A feature of |pmm-server| which adds a special mark to all
+	   dashboards and signifies an important event in your
+	   application. Annotations are added on the |pmm-client| by using
+	   the |pmm-admin.annotate| command.
 
-	    http://docs.grafana.org/reference/annotations/
+	   .. seealso::
+
+		 |grafana| Documentation: Annotations
+
+		    http://docs.grafana.org/reference/annotations/
 
 .. _PMM-Client:
 
@@ -208,18 +196,18 @@ Terminology Reference
 `PMM user permissions for AWS <glossary-terminology.html#PMM-user-permissions-for-AWS>`_
 -----------------------------------------------------------------------------------------
 
-      When creating a `IAM user
-      <https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_SettingUp.html#CHAP_SettingUp.IAM>`_
-      for |amazon-rds| DB instance that you intend to monitor in PMM, you need to set all
-      required permissions properly. For this, you may copy the following |JSON| for your
-      IAM user:
+	      When creating a `IAM user
+	      <https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_SettingUp.html#CHAP_SettingUp.IAM>`_
+	      for |amazon-rds| DB instance that you intend to monitor in PMM, you need to set all
+	      required permissions properly. For this, you may copy the following |JSON| for your
+	      IAM user:
 
-      .. include:: .res/code/aws.iam-user.permission.txt
+	      .. include:: .res/code/aws.iam-user.permission.txt
 
-      .. seealso::
+	      .. seealso::
 
-	 Creating an IAM user
-	    :ref:`pmm.amazon-rds.iam-user.creating`
+		 Creating an IAM user
+		    :ref:`pmm.amazon-rds.iam-user.creating`
 
 .. _PMM-Version:
 
@@ -246,13 +234,15 @@ Terminology Reference
 
       See :ref:`Query Analytics (QAN) <Query-Analytics>`
 
-.. _Query-Abstract:
+.. only:: showhidden
 
-`Query Abstract <glossary-terminology.html#Query-Abstract>`_
---------------------------------------------------------------------------------
+	.. _Query-Abstract:
 
-      Query pattern with placeholders. This term appears in
-      :ref:`QAN <Query-Analytics>` as an attribute of queries.
+	`Query Abstract <Query-Abstract>`_
+	--------------------------------------------------------------------------------
+
+	      Query pattern with placeholders. This term appears in
+	      :ref:`QAN <Query-Analytics>` as an attribute of queries.
 
 .. _Query-Analytics:
 
@@ -262,19 +252,21 @@ Terminology Reference
       Component of :ref:`PMM-Server` that enables you to analyze
       |mysql| query performance over periods of time.
 
-.. _Query-Fingerprint:
+.. only:: showhidden
 
-`Query Fingerprint <glossary-terminology.html#Query-Fingerprint>`_
---------------------------------------------------------------------------------
+	.. _Query-Fingerprint:
 
-      See :ref:`Query Abstract <Query-Abstract>`
+	`Query Fingerprint <Query-Fingerprint>`_
+	--------------------------------------------------------------------------------
 
-.. _Query-ID:
+	      See :ref:`Query Abstract <Query-Abstract>`
+	
+	.. _Query-ID:
 
-`Query ID <glossary-terminology.html#Query-ID>`_
---------------------------------------------------------------------------------
+	`Query ID <Query-ID>`_
+	--------------------------------------------------------------------------------
 
-      A :ref:`query fingerprint <Query-Fingerprint>` which groups similar queries.
+	      A :ref:`query fingerprint <Query-Fingerprint>` which groups similar queries.
 
 .. _Query-Load:
 
@@ -336,17 +328,17 @@ Terminology Reference
 `Telemetry <glossary-terminology.html#Telemetry>`_
 --------------------------------------------------------------------------------
 
-      |percona| may collect some statistics about the machine where |pmm| is running.
+	      |percona| may collect some statistics about the machine where |pmm| is running.
 
-      This statistics includes the following information:
+	      This statistics includes the following information:
 
-      - |pmm-server| unique ID
-      - |pmm| version
-      - The name and version of the operating system, |ami| or virtual appliance
-      - |mysql| version
-      - |perl| version
+	      - |pmm-server| unique ID
+	      - |pmm| version
+	      - The name and version of the operating system, |ami| or virtual appliance
+	      - |mysql| version
+	      - |perl| version
 
-      You may disable telemetry on the *Settings* dashboard.
+        You may disable telemetry on the *Settings* dashboard.
 
 .. _Version:
 
