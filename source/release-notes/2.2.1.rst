@@ -19,9 +19,10 @@ Improvements and new features
 Fixed bugs
 ==========
 
-* :pmmbug:`5215`: ``yum update`` command was generating errors in the PMM Server
-  2.2.0 OVF image due to a dependency conflict caused by the erroneously
-  pre-installed ``mariadb-libs`` package
+* :pmmbug:`5215`: The unneeded ``mariadb-libs`` package was removed from the
+  PMM Server 2.2.0 OVF image, resulting in both faster updating with the
+  ``yum update`` command and avoiding dependency conflict messages in the update
+  logs
 
 .. include:: .res/replace.txt
 
