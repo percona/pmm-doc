@@ -23,6 +23,9 @@ Fixed bugs
   PMM Server 2.2.0 OVF image, resulting in both faster updating with the
   ``yum update`` command and avoiding dependency conflict messages in the update
   logs
+* :pmmbug:`5216`: PMM Server Upgrade to 2.2.0 was showing Grafana Update Error
+  page with the Refresh button which had to be clicked to start using the
+  updated version
 
 .. include:: .res/replace.txt
 
