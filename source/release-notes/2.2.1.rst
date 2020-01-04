@@ -22,6 +22,13 @@ Fixed bugs
 * :pmmbug:`5215`: The breadcrumb panel, which shows all dashboards visited
   within one session starting from the root, was unable to fully show breadcrumb
   longer than one line
+* :pmmbug:`5215`: The unneeded ``mariadb-libs`` package was removed from the
+  PMM Server 2.2.0 OVF image, resulting in both faster updating with the
+  ``yum update`` command and avoiding dependency conflict messages in the update
+  logs
+* :pmmbug:`5216`: PMM Server Upgrade to 2.2.0 was showing Grafana Update Error
+  page with the Refresh button which had to be clicked to start using the
+  updated version
 
 .. include:: .res/replace.txt
 
