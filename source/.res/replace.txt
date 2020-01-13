@@ -3,7 +3,6 @@
 .. |related-information| replace:: Related Information
 .. |adv-data-expl| replace:: *Advanced Data Exploration*
 .. |amazon-aurora| replace:: Amazon Aurora
-.. |amazon-cloudwatch| replace:: Amazon Cloudwatch
 .. |amazon-linux| replace:: Amazon Linux
 .. |amazon-machine-image| replace:: Amazon Machine Image
 .. |amazon-rds| replace:: Amazon RDS

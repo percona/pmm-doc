@@ -231,15 +231,6 @@ If you have |amazon-rds| with a |mysql| version prior to 5.5, `REPLICATION
 CLIENT` privilege is not available there and has to be excluded from the above
 statement.
 
-.. note::
-
-   General system metrics are monitored by using the |rds-exporter| |prometheus|
-   exporter which replaces |node-exporter|. |rds-exporter| gives acces to
-   |amazon-cloudwatch| metrics.
-
-   |node-exporter|, used in versions of |pmm| prior to 1.8.0, was not able to
-   monitor general system metrics remotely.
-
 .. seealso::
 
    |aws| Documentation: Connecting to a DB instance (|mysql| engine)
