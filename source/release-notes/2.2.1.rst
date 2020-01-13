@@ -19,6 +19,8 @@ Improvements and new features
 Fixed bugs
 ==========
 
+* :pmmbug:`5226`: The handlebars package was updated to version 4.5.3
+  because of the Prototype Pollution vulnerability in it (CVE-2019-19919). 
 * :pmmbug:`5206`: Switching to the Settings dashboard was breaking the visual
   style of some elements on the Home dashboard
 * :pmmbug:`5215`: The breadcrumb panel, which shows all dashboards visited
