@@ -35,6 +35,9 @@ Fixed bugs
 * :pmmbug:`5216`: PMM Server Upgrade to 2.2.0 was showing Grafana Update Error
   page with the Refresh button which had to be clicked to start using the
   updated version
+* :pmmbug:`5211`: The "Where do I get the security credentials for my Amazon
+  RDS DB instance" link in the Add AWS RDS MySQL or Aurora MySQL instance dialog
+  was not targeted at the appropriate instruction
 
 .. include:: .res/replace.txt
 
