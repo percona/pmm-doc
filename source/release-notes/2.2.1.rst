@@ -23,6 +23,8 @@ Improvements and new features
 * :pmmbug:`5235`: The DB uptime singlestats in node rows on the Home dashboard
   were changed to show minimal values instead of average ones to be consistent
   with the top row
+* :pmmbug:`5127`: The "Search by" bar on the Query Analytics dashboard was
+  renamed to "Filter by" to make its purpose more clear
 
 Fixed bugs
 ==========
