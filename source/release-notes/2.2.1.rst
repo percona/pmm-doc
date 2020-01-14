@@ -16,6 +16,8 @@ For *PMM* install instructions, see :ref:`pmm.deploying.server` and :ref:`pmm.de
 Improvements and new features
 =============================
 
+* :pmmbug:`5238`: The Exporters Overview dashboard was updated to include the
+  ``rds_exporter`` metrics in its charts
 * :pmmbug:`5235`: The DB uptime singlestats in node rows on the Home dashboard
   were changed to show minimal values instead of average ones to be consistent
   with the top row
