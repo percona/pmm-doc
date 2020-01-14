@@ -16,6 +16,10 @@ For *PMM* install instructions, see :ref:`pmm.deploying.server` and :ref:`pmm.de
 Improvements and new features
 =============================
 
+* :pmmbug:`4830`: The consistency of the applied filters between the Query
+  Analytics and the Overview dashboards was implemented, and now filters
+  selected in QAN will continue to be active after the switch to any of the
+  Overview dashboards available in the Services menu
 * :pmmbug:`5235`: The DB uptime singlestats in node rows on the Home dashboard
   were changed to show minimal values instead of average ones to be consistent
   with the top row
