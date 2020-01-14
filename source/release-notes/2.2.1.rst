@@ -16,6 +16,8 @@ For *PMM* install instructions, see :ref:`pmm.deploying.server` and :ref:`pmm.de
 Improvements and new features
 =============================
 
+* :pmmbug:`5229`: The new RDS Exporter section added to the Prometheus Exporter
+  Status dashboard shows singlestats and charts related to the ``rds_exporter``
 * :pmmbug:`5235`: The DB uptime singlestats in node rows on the Home dashboard
   were changed to show minimal values instead of average ones to be consistent
   with the top row
