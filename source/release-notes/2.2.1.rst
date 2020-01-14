@@ -38,6 +38,10 @@ Fixed bugs
 * :pmmbug:`5211`: The "Where do I get the security credentials for my Amazon
   RDS DB instance" link in the Add AWS RDS MySQL or Aurora MySQL instance dialog
   was not targeted at the appropriate instruction
+* :pmmbug:`5217`: PMM2.x OVF Image memory size was increased from 1Gb to 4Gb
+  with the additional 1Gb swap space because the previous amount was hardly
+  housing the PMM Server, and it wasn't enough in some cases like performing an
+  upgrade
 
 .. include:: .res/replace.txt
 
