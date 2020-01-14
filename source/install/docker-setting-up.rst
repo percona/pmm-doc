@@ -117,10 +117,9 @@ to `prevent updating PMM Server via the web interface <https://www.percona.com/d
 
 Following docker tags are currently available to represent PMM Server versions:
 
-* ``:latest`` currently means the latest release of the PMM 2.X
+* ``:latest`` currently means the latest release of the PMM 1.X
 
-* ``:2`` is the latest released version of PMM 2 (same as ``:latest`` until PMM
-  3.X is released)
+* ``:2`` is the latest released version of PMM 2
 
 * ``:2.X`` can be used to refer any minor released version, excluding patch
   releases
