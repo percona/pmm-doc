@@ -25,9 +25,13 @@ Fixed bugs
 
 * :pmmbug:`5206`: Switching to the Settings dashboard was breaking the visual
   style of some elements on the Home dashboard
-* :pmmbug:`5215`: The breadcrumb panel, which shows all dashboards visited
+* :pmmbug:`5139`: The breadcrumb panel, which shows all dashboards visited
   within one session starting from the root, was unable to fully show breadcrumb
   longer than one line
+* :pmmbug:`5212`: The explanatory text was added to the Download PMM Server Logs
+  button in the Diagnostic section of the PMM Settings dashboard, and a link to
+  it was added to the Prometheus dashboard which was the previous place to
+  download logs
 * :pmmbug:`5215`: The unneeded ``mariadb-libs`` package was removed from the
   PMM Server 2.2.0 OVF image, resulting in both faster updating with the
   ``yum update`` command and avoiding dependency conflict messages in the update
