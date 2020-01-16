@@ -66,7 +66,7 @@ version of |mysql|:
   queries to avoid high performance overhead.
 
   .. note:: This may affect the quality of monitoring data gathered by
-            |abbr.QAN|.
+            |abbr.qan|.
 
   ::
 
@@ -115,4 +115,4 @@ For more information, run:
 |opt.mysql|
 |opt.help|
 
-.. include:: .res/replace.txt
+.. include:: ../res/replace.txt
