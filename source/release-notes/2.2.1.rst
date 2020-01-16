@@ -62,6 +62,8 @@ Fixed bugs
   with the additional 1Gb swap space because the previous amount was hardly
   housing the PMM Server, and it wasn't enough in some cases like performing an
   upgrade
+* :pmmbug:`5271`: LVM logical volumes were wrongly resized on AWS deployment,
+  resulting in "no space left on device" errors
 
 .. include:: .res/replace.txt
 
