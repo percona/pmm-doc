@@ -64,6 +64,8 @@ Fixed bugs
   upgrade
 * :pmmbug:`5271`: LVM logical volumes were wrongly resized on AWS deployment,
   resulting in "no space left on device" errors
+* :pmmbug:`5295`: Innodb Transaction Rollback Rate values on the MySQL InnoDB
+  Details dashboard were calculated incorrectly
 
 .. include:: .res/replace.txt
 
