@@ -31,6 +31,9 @@ Improvements and new features
   with the top row
 * :pmmbug:`5127`: The "Search by" bar on the Query Analytics dashboard was
   renamed to "Filter by" to make its purpose more clear
+* :pmmbug:`5131`: The Filter panel on the Query Analytics dashboard now shows
+  the total number of available Labels within the "See all" link, which appears
+  if the Filter panel section shows only top 5 of its Labels
 
 Fixed bugs
 ==========
