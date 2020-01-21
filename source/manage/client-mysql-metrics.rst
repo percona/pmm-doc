@@ -34,7 +34,17 @@ The command line and the output of this command may look as follows:
 
      pmm-admin add mysql --username=pmm --password=pmm --query-source=perfschema ps-mysql 127.0.0.1:3306
 
-After this you can view MySQL metrics or examine the added node on the new PMM Inventory Dashboard.
+.. note:: Beside the positional arguments shown above, you can specify the
+   service name and the MySQL address with the following flags:
+   ``--service-name``, ``--host`` (the hostname or IP address of the service),
+   and ``--port`` (the port number of the service). If specified, these flags
+   will be able to overwrite positional arguments::
+
+     pmm-admin add mysql --username=pmm --password=pmm --port=1234 mysql-alt 127.0.0.1:3306 
+
+
+After adding the service you can view MySQL metrics or examine the added node
+on the new PMM Inventory Dashboard.
 
 .. only:: showhidden
 

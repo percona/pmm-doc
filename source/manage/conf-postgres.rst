@@ -65,8 +65,16 @@ The command line and the output of this command may look as follows:
    Service name: postgres
 
 As a result, you should be able to see data in PostgreSQL Overview dashboard,
-and also Query Analytics should contain PostgreSQL queries, if needed extension
-was installed and configured correctly.
+and also Query Analytics should contain PostgreSQL queries, if the needed
+extension was installed and configured correctly.
+
+.. note:: Beside the positional arguments shown above, you can specify the
+   service name and the PostgreSQL address with the following flags:
+   ``--service-name``, ``--host`` (the hostname or IP address of the service),
+   and ``--port`` (the port number of the service). If specified, these flags
+   will be able to overwrite positional arguments::
+
+     pmm-admin add postgresql --username=pmm --password=pmm --port=1234 postgres-alt 127.0.0.1:5432
 
 .. note:: Capturing read and write time statistics is possible only if
    ``track_io_timing`` setting is enabled. This can be done either in

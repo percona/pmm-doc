@@ -33,6 +33,14 @@ The output of this command may look as follows:
      Service ID  : /service_id/f69df379-6584-4db5-a896-f35ae8c97573
      Service name: ubuntu-proxysql
 
+.. note:: Beside the positional arguments shown above, you can specify the
+   service name and the ProxySQL address with the following flags:
+   ``--service-name``, ``--host`` (the hostname or IP address of the service),
+   and ``--port`` (the port number of the service). If specified, these flags
+   will be able to overwrite positional arguments::
+
+     pmm-admin add proxysql --username=admin --password=admin --port=1234 proxysql-alt 127.0.0.1:3306 
+
 .. only:: showhidden
 
 	.. _pmm-admin.add-proxysql-metrics.options:

@@ -26,6 +26,14 @@ The command line and the output of this command may look as follows:
      Service ID  : /service_id/f1af8a88-5a95-4bf1-a646-0101f8a20791
      Service name: mongo
 
+.. note:: Beside the positional arguments shown above, you can specify the
+   service name and the MongoDB address with the following flags:
+   ``--service-name``, ``--host`` (the hostname or IP address of the service),
+   and ``--port`` (the port number of the service). If specified, these flags
+   will be able to overwrite positional arguments::
+
+     pmm-admin add mongodb --username=pmm --password=pmm --port=1234 mongo-alt 127.0.0.1:27017 
+
 .. only:: showhidden
 
 	.. code-block:: text
