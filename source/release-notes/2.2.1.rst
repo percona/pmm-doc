@@ -16,6 +16,9 @@ For *PMM* install instructions, see :ref:`pmm.deploying.server` and :ref:`pmm.de
 Improvements and new features
 =============================
 
+* :pmmbug:`4846`: Beside positional arguments of the ``pmm-admin add`` command
+  you can now specify the service name and address with the ``--service-name``,
+  ``--host``, and ``--port`` flags
 * :pmmbug:`5229`: The new RDS Exporter section added to the Prometheus Exporter
   Status dashboard shows singlestats and charts related to the ``rds_exporter``
 * :pmmbug:`5228` and :pmmbug:`5238`: The Prometheus dashboard and the Exporters
