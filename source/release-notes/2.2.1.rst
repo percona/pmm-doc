@@ -77,6 +77,9 @@ Fixed bugs
   of a digital code
 * :pmmbug:`5261`: CPU usage charts on all dashboards which contain them have
   undergone colors update to make softIRQ and Steal curves better differentiated
+* :pmmbug:`5244`: High memory consumption in the PMM Server with a large number
+  of agents sending data simultaneously was fixed by improving bulk data
+  insertion to the ClickHouse database
 
 .. include:: .res/replace.txt
 
