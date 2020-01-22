@@ -79,7 +79,10 @@ Fixed bugs
   of Query Analytics for PostgreSQL; it was fixed by a number of optimizations
   in the code, resulting in about 4 times smaller memory usage
 * :pmmbug:`5261`: CPU usage charts on all dashboards which contain them have
-  undergone colors update to make softIRQ and Steal curves better differentiated 
+  undergone colors update to make softIRQ and Steal curves better differentiated
+* :pmmbug:`5244`: High memory consumption in the PMM Server with a large number
+  of agents sending data simultaneously was fixed by improving bulk data
+  insertion to the ClickHouse database
 
 .. include:: .res/replace.txt
 
