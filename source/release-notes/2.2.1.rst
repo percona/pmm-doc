@@ -75,8 +75,11 @@ Fixed bugs
   singlestat on the Network Details dashboard was renamed to "The algorithm used
   to determine the timeout value" and updated to show the algorithm name instead
   of a digital code
+* :pmmbug:`5260`: Extensive resource consumption by pmm-agent took place in case
+  of Query Analytics for PostgreSQL; it was fixed by a number of optimizations
+  in the code, resulting in about 4 times smaller memory usage
 * :pmmbug:`5261`: CPU usage charts on all dashboards which contain them have
-  undergone colors update to make softIRQ and Steal curves better differentiated
+  undergone colors update to make softIRQ and Steal curves better differentiated 
 
 .. include:: .res/replace.txt
 
