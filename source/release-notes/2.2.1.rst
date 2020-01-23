@@ -1,12 +1,12 @@
-.. _2.2.0:
+.. _2.2.1:
 
 ===========================================
 Percona Monitoring and Management 2.2.1
 ===========================================
 
-:Date: January XX, 2020
+:Date: January 23, 2020
 
-*PMM* (`Percona Monitoring and Management <https://www.percona.com/doc/percona-monitoring-and-management/2.x/index.html>`_) is a free and open-source platform for managing and monitoring |MySQL|, |MongoDB|, and |postgresql| performance. You can run *PMM* in your own environment for maximum security and reliability. It provides thorough time-based analysis for |MySQL|, |MongoDB|, and |postgresql| servers to ensure that your data works as efficiently as possible.
+`Percona Monitoring and Management <https://www.percona.com/doc/percona-monitoring-and-management/2.x/index.html>`_ (PMM) is a free and open-source platform for managing and monitoring |MySQL|, |MongoDB|, and |postgresql| performance.
 
 For *PMM* install instructions, see :ref:`pmm.deploying.server` and :ref:`pmm.deploying.client`.
 
@@ -14,9 +14,10 @@ For *PMM* install instructions, see :ref:`pmm.deploying.server` and :ref:`pmm.de
    PMM 1 environment can't be upgraded to this version.
 
 PMM Server version 2.2.0 suffered an unauthenticated denial of service
-vulnerability. Any other PMM versions do not carry the same code logic, and are
-thus unaffected by this issue. **Users who have already deployed PMM Server 2.2.0
-are advised to upgrade to version 2.2.1 which resolves this issue.**
+vulnerability (CVE-2020-7920). Any other PMM versions do not carry the same code
+logic, and are thus unaffected by this issue. **Users who have already deployed
+PMM Server 2.2.0 are advised to upgrade to version 2.2.1 which resolves this
+issue.**
 
 Improvements and new features
 =============================
@@ -45,7 +46,8 @@ Fixed bugs
 
 * :pmmbug:`5232`: The pmm-managed component of the PMM Server 2.2.0 is
   vulnerable to DoS attacks, that could be carried out by anyone who knows the
-  PMM Server IP address. Versions other than 2.2.0 are not affected.
+  PMM Server IP address (CVE-2020-7920). Versions other than 2.2.0 are not
+  affected.
 * :pmmbug:`5226`: The handlebars package was updated to version 4.5.3
   because of the Prototype Pollution vulnerability in it (CVE-2019-19919). 
   Please note PMM versions were not affected by this vulnerability, as
