@@ -18,7 +18,7 @@ Improvements and new features
 =============================
 
 * :pmmbug:`5321`: The optimization of Query Analytics parser code for PostgreSQL
-  queries allowed us to reduce the processor and memory resources consumption by
+  queries allowed us to reduce the memory resources consumption by
   1-5%, and the parsing time of an individual query by 30-40%
 * :pmmbug:`5184`: The ``pmm-admin summary`` command have gained a new
   ``--skip-server`` flag which makes it to operate in local-only mode, creating
