@@ -17,9 +17,8 @@ Improvements and new features
 =============================
 
 * :pmmbug:`5064` and :pmmbug:`5065`: starting from this release, users will be
-  able to integrate PMM with their own Alert Manager and supply PMM dashboards
-  with the alert rules, which will be periodically evaluated to send
-  notifications when the specified conditions are met
+  able to integrate PMM with the external Alertmanager, configuring this via
+  the PMM Settings dashboard, to pass alert rules to PMM
 * :pmmbug:`4954`: Query Analytics dashboard now shows units both in the list of
   queries in a summary table and in the Details section to ease understanding
   of the presented data
