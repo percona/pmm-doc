@@ -16,12 +16,10 @@ For *PMM* install instructions, see :ref:`pmm.deploying.server` and :ref:`pmm.de
 Improvements and new features
 =============================
 
-* :pmmbug:`5064` and :pmmbug:`5065`: Alert manager available in PMM 2 since this
-  release allows to supply dashboard panels with the rules, which can be
-  evaluated with a specified periodicity to send pre-configured notifications
-  in case if the specified conditions are met.
-* :pmmbug:`5097`: PMM Client docker image is now available for installation in
-  addition to previously available DEB and RPM packages and a tarball.
+* :pmmbug:`5064` and :pmmbug:`5065`: starting from this release, users will be
+  able to integrate PMM with their own Alert Manager and supply PMM dashboards
+  with the alert rules, which will be periodically evaluated to send
+  notifications when the specified conditions are met
 * :pmmbug:`4954`: Query Analytics dashboard now shows units both in the list of
   queries in a summary table and in the Details section to ease understanding
   of the presented data
@@ -33,15 +31,18 @@ Improvements and new features
 Fixed bugs
 ==========
 
+* :pmmbug:`4620`: The high CPU usage by the pmm-agent process related to MongoDB
+  Query Analytics was fixed
 * :pmmbug:`5377`:  Singlestats showing percentage had sparklines scaled
   vertically along with the graph swing, which made it difficult to visually
   notice the difference between neighboring singlestats.
-* :pmmbug:`4620`: The high CPU usage by the pmm-agent process related to MongoDB
-  Query Analytics was fixed
 * :pmmbug:`5204`: Changing resolution on the PMM settings page was breaking some
   singlestats on the Home and MySQL Overview dashboards
 * :pmmbug:`5251`: Vertical scrollbars on the graph elements were not allowed to
   do a full scroll, making last rows of the legend unavailable for some graphs
+* :pmmbug:`5410`: The "Available Downtime before SST Required" chart on the
+  PXC/Galera Node Summary dashboard was not showing data because it was unable
+  to use metrics available with different scraping intervals
 
 .. include:: .res/replace.txt
 
