@@ -216,5 +216,12 @@ You can change the minimum resolution for metrics by the following way:
    when |pmm-server| and |pmm-client| are on different networks,
    or when :ref:`pmm.amazon-rds`.
 
+.. _alertmanager:
+
+How to integrate Alertmanager with PMM?
+================================================================================
+
+Placeholder
+
 .. include:: .res/replace.txt
 
