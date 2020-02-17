@@ -16,8 +16,8 @@ For *PMM* install instructions, see :ref:`pmm.deploying.server` and :ref:`pmm.de
 Improvements and new features
 =============================
 
-* :pmmbug:`5064` and :pmmbug:`5065`: starting from this release, users will be
-  able to integrate PMM with the external Alertmanager, configuring this via
+* :pmmbug:`5064` and :pmmbug:`5065`: Starting from this release, users will be
+  able to integrate PMM with an external Alertmanager, configuring this via
   the PMM Settings dashboard, to pass alert rules to PMM
 * :pmmbug:`4954`: Query Analytics dashboard now shows units both in the list of
   queries in a summary table and in the Details section to ease understanding
@@ -25,7 +25,11 @@ Improvements and new features
 * :pmmbug:`5179`: Relations between metrics are now specified in the Query
   Analytics Details section
 * :pmmbug:`5115`: The CPU frequency and temperature graphs were added to the
-  CPU Utilization dashboard 
+  CPU Utilization dashboard
+* :pmmbug:`5394`: A special treatment for the node-related dashboards was
+  implemented for the situations when the data resolution change causes new
+  metrics to be generated for existing nodes and services, to make graphs show
+  continuous lines of the same colors
 
 Fixed bugs
 ==========
