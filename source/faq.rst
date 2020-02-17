@@ -221,7 +221,58 @@ You can change the minimum resolution for metrics by the following way:
 How to integrate Alertmanager with PMM?
 ================================================================================
 
-Placeholder
+The `Alertmanager <https://github.com/prometheus/alertmanager>`_ is the high
+performance solution developed by the Prometheus project to handle alerts sent
+by Prometheus. Handling includes deduplicating, grouping, and
+sending alert messages to the specified receiver via e-mail or other
+pre-configured channels. It also takes care of silencing and inhibition of
+alerts if needed.
+
+PMM allows you to configure integration of the Prometheus with an external
+Alertmanager. Configuration is done on the PMM Settings dashboard. The
+Alertmanager section in it contains two fields: **Alertmanager URL** and 
+**Alertmanager rules**. The first field should contain the URL of the Alertmanager
+which would serve your PMM alerts. The second field is used to specify aleting
+rules in the YAML configuration format. These rules are configuring alerts for
+the events of the nodes monitored by PMM. The alert rule looks as follows::
+
+	groups:
+	 - name: Alerts
+	  rules:
+	  - alert: InstanceDown
+	   expr: up == 0
+	   for: 20s
+	   labels:
+	    severity: critical
+	   annotations:
+	    summary: "Instance {{ $labels.instance }} down"
+	    description: "{{ $labels.instance }} of job {{ $labels.job }} has been down for more than 20 seconds."
+
+* The ``alert`` clause determines the type of an alert that will occur when
+  specified conditions are met.
+* The ``expr`` clause is a condition based on the Prometheus expression
+  language.
+* The optional ``for`` clause causes Prometheus to check that the condition is
+  met during each evaluation for the specified time period of time
+  (20 seconds in the above example) before firing the alert.
+* The ``labels`` clause allows specifying a set of additional labels to be
+  attached to the alert.
+* The ``annotations`` clause specifies a set of informational labels that can
+  be used to store longer additional information such as alert descriptions.
+
+Both ``label`` and ``annotation`` values can be templated using console
+templates. The ``$labels`` variable used in the above example holds the label
+key/value pairs of an alert instance. The configured external labels can be
+accessed via the ``$externalLabels`` variable. The ``$value`` variable holds
+the evaluated value of an alert instance.
+
+.. seealso::
+
+   Prometheus Alertmanager
+      https://prometheus.io/docs/alerting/alertmanager/
+
+   Prometheus alerting rules
+      https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/
 
 .. include:: .res/replace.txt
 
