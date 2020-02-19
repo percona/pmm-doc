@@ -65,7 +65,7 @@ and/or shared with Percona Support in case of some issue to solve it faster.
 You can `get collected logs from PMM Server <https://www.percona.com/doc/percona-monitoring-and-management/2.x/faq.html#id13>`_ by clicking
 the **Download PMM Server Logs** button.
 
-   .. figure:: ../.res/graphics/png/pmm.settings_diagnostics.png
+   .. figure:: ../.res/graphics/png/pmm.settings_iagnostics.png
 
       Downloading the PMM Server logs
 
