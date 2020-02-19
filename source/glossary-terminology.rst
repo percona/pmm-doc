@@ -317,7 +317,7 @@ Terminology Reference
 
 .. _Selected-Time-or-Date-Range:
 
-`Selected Time or Date Range <glossary-terminology.html#Selected-Time-or-Date-Range>`_
+`Selected Time or Date Range <glossary-terminology.html#selected-time-or-date-range>`_
 ---------------------------------------------------------------------------------------
 
       A predefined time period (see :ref:`Quick ranges <Quick-ranges>`), such as 1 hour, or a
@@ -325,7 +325,7 @@ Terminology Reference
 
 .. _Telemetry:
 
-`Telemetry <glossary-terminology.html#Telemetry>`_
+`Telemetry <glossary-terminology.html#telemetry>`_
 --------------------------------------------------------------------------------
 
 	      |percona| may collect some statistics about the machine where |pmm| is running.
@@ -342,7 +342,7 @@ Terminology Reference
 
 .. _Version:
 
-`Version <glossary-terminology.html#Version>`_
+`Version <glossary-terminology.html#version>`_
 --------------------------------------------------------------------------------
 
       A database server attribute found on the :ref:`QAN <QAN>` page. it informs the

@@ -21,6 +21,9 @@ Improvements and new features
 * :pmmbug:`4954`: Query Analytics dashboard now shows units both in the list of
   queries in a summary table and in the Details section to ease understanding
   of the presented data
+
+  .. note:: This feature is for advanced users only at this point
+
 * :pmmbug:`5179`: Relations between metrics are now specified in the Query
   Analytics Details section
 * :pmmbug:`5115`: The CPU frequency and temperature graphs were added to the

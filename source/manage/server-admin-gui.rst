@@ -20,7 +20,7 @@ Settings
 ================================================================================
 
 *Settings* section allows you to change `metrics resolution <https://www.percona.com/doc/percona-monitoring-and-management/2.x/faq.html#what-resolution-is-used-for-metrics>`_, `data retention <https://www.percona.com/doc/percona-monitoring-and-management/2.x/faq.html#how-to-control-data-retention-for-pmm>`_,
-as well as configure `telemetry <https://www.percona.com/doc/percona-monitoring-and-management/2.x/glossary-terminology.html#Telemetry>`_ and automatic checking for `updates <https://www.percona.com/doc/percona-monitoring-and-management/2.x/glossary-terminology.html#PMM-Version>`_:
+as well as configure `telemetry <https://www.percona.com/doc/percona-monitoring-and-management/2.x/glossary-terminology.html#telemetry>`_ and automatic checking for `updates <https://www.percona.com/doc/percona-monitoring-and-management/2.x/glossary-terminology.html#PMM-Version>`_:
 
    .. figure:: ../.res/graphics/png/pmm.settings_settings.png
 
