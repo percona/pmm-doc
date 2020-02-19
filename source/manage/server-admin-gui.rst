@@ -44,7 +44,7 @@ Submit your **public key** in the *SSH Key* field and click the
 AlertManager integration
 ================================================================================
 
-This section allows you to configure `integration of the Prometheus with an external Alertmanager <https://www.percona.com/doc/percona-monitoring-and-management/2.x/faq.html#how-to-integrate-alertmanager-with-pmm>`_. 
+This section allows you to configure `integration of Prometheus with an external Alertmanager <https://www.percona.com/doc/percona-monitoring-and-management/2.x/faq.html#how-to-integrate-alertmanager-with-pmm>`_. 
 
 * The **Alertmanager URL** field should contain the URL of the Alertmanager
   which would serve your PMM alerts.
