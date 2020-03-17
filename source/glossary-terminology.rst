@@ -328,17 +328,17 @@ Terminology Reference
 `Telemetry <glossary-terminology.html#telemetry>`_
 --------------------------------------------------------------------------------
 
-      |percona| may collect some statistics about the machine where |pmm| is running.
+      |percona| may collect some **anonimous** statistics about the machine
+      where |pmm| is running.
 
-      This statistics includes the following information:
+      Currently, only the following information is gathered:
 
       - |pmm-server| unique ID
       - |pmm| version
       - The name and version of the operating system, |ami| or virtual appliance
-      - |mysql| version
-      - |perl| version
 
-      You may disable telemetry on the *Settings* dashboard.
+      You may find :ref:`here<server-admin-gui-telemetry>` more details about what and how exactly is gathered, 
+      and how to disable telemetry on the *Settings* dashboard, if needed.
 
 .. _Version:
 
