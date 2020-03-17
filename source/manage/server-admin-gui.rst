@@ -33,17 +33,18 @@ Don't forget to click the *Apply changes* button to make changed options work.
 Telemetry
 ================================================================================
 
-The *Telemetry* switch enables gathering and sending back to Percona basic
-**anonymous** data, which helps us to determine where to focus the development
-and what is the uptake of the various versions of PMM. Particularly, this
-information helps to determine if we need to release patches to legacy versions
-that may not technically be supported all the way to how the frequency of the
-release impacts adoption.
+The *Telemetry* switch enables gathering and sending basic **anonymous** data to
+ Percona, which helps us to determine where to focus the development
+and what is the uptake of the various versions of PMM. Specifically, gathering
+this information helps determine if we need to release patches to legacy
+versions beyond support, determining when supporting a particular version is no
+longer necessary, and even understanding how the frequency of release encourages
+or deters adoption.
 
 Currently, only the following information is gathered:
 
-* PMM Version, 
-* Installation Method (Docker, AMI, OVF), 
+* PMM Version,
+* Installation Method (Docker, AMI, OVF),
 * the Uptime.
 
 We do not gather anything that would make the system identifiable, but the
@@ -51,7 +52,7 @@ following two things are to be mentioned:
 
 1. The Country Code is evaluated from the submitting IP address before it is
    discarded.
-2. We do create an “instance ID” - a random string generated using UUID v4. 
+2. We do create an “instance ID” - a random string generated using UUID v4.
    This instance ID is generated to distinguish new instances from existing
    ones, for figuring out instance upgrades.
 

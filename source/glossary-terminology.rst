@@ -328,16 +328,17 @@ Terminology Reference
 `Telemetry <glossary-terminology.html#telemetry>`_
 --------------------------------------------------------------------------------
 
-      |percona| may collect some **anonimous** statistics about the machine
+      |percona| may collect some **anonymous** statistics about the machine
       where |pmm| is running.
 
       Currently, only the following information is gathered:
 
       * PMM Version,
       * Installation Method (Docker, AMI, OVF),
-      * the Uptime.
+      * the Uptime,
+      * |pmm-server| unique ID.
 
-      You may find :ref:`here<server-admin-gui-telemetry>` more details about what and how exactly is gathered, 
+      You may find :ref:`here<server-admin-gui-telemetry>` more details about what and how information is gathered,
       and how to disable telemetry on the *Settings* dashboard, if needed.
 
 .. _Version:
