@@ -66,6 +66,8 @@ can turn it off.
 
 .. note:: The `Grafana internal reporting feature <https://grafana.com/docs/grafana/latest/installation/configuration/#reporting-enabled>`_ is currently **not** managed by PMM. If you want to turn it, you need to go inside the PMM Server container and `change configuration <https://grafana.com/docs/grafana/latest/installation/configuration/#reporting-enabled>`_ after each update.
 
+.. note:: Beside using *PMM Settings* page, you can also disable Telemetry with the ``-e DISABLE_TELEMETRY=1`` option in your docker run statement for the PMM Server.
+
 SSH Key Details
 ==========================================================================================================
 
