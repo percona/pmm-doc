@@ -72,7 +72,7 @@ You can control data retention by the following way.
 
       Choosing the |pmm| *Settings* menu entry
 
-#. In the *Settings* section, enter new data retention value in seconds.
+#. In the *Settings* section, enter new data retention value in days.
 
    .. figure:: .res/graphics/png/pmm.settings_settings.png
 
@@ -176,18 +176,33 @@ Docker host.
 Also |pmm| is able to generate a set of diagnostics data which can be examined
 and/or shared with Percona Support to solve an issue faster. You can get
 collected logs from PMM Client using the ``pmm-admin summary`` command. 
+
+The logs archive obtained in this way includes PMM Client logs and also logs
+which were received from the PMM Server, stored separately in the ``client``
+and ``server`` folders. The ``server`` folder also contains its own
+``client`` subfolder with the self-monitoring client information collected on
+the PMM Server.
+
+.. note:: Starting from PMM 2.4.0 there is an additional flag that allows to
+   fetch `pprof <https://github.com/google/pprof>`_ debug profiles and add them
+   to the diagnostics data. To do it, run ``pmm-admin summary --pprof``.
+
 Obtaining logs from PMM Server can be done `by specifying the
 ``https://<address-of-your-pmm-server>/logs.zip`` URL, or by clicking
 the ``server logs`` link on the `Prometheus dashboard <https://www.percona.com/doc/percona-monitoring-and-management/2.x/dashboards/dashboard-prometheus.html>`_:
 
 .. image:: .res/graphics/png/get-logs-from-prometheus-dashboard.png
 
+The logs archive obtained in this way includes diagnostics information gathered
+from the PMM Server, and the ``client`` subfolder with the self-monitoring
+client information collected on the PMM Server.
+
 .. _metrics-resolution:
 
 What resolution is used for metrics?
 ================================================================================
 
-MySQL metrics are collected with different resolutions (5 seconds, 5 seconds,
+MySQL metrics are collected with different resolutions (5 seconds, 10 seconds,
 and 60 seconds by default). Linux and MongoDB metrics are collected with 1
 second resolution.
 
@@ -215,6 +230,65 @@ You can change the minimum resolution for metrics by the following way:
 .. note:: Consider increasing minimum resolution
    when |pmm-server| and |pmm-client| are on different networks,
    or when :ref:`pmm.amazon-rds`.
+
+.. _alertmanager:
+
+How to set up Alerting in PMM?
+================================================================================
+
+You can make PMM Server trigger alerts when your monitored service reaches some thresholds in two ways:
+
+* using `Grafana Alerting feature <https://grafana.com/docs/grafana/latest/alerting/rules/>`_,
+* using external `Alertmanager <https://github.com/prometheus/alertmanager>`_ (a
+  high-performance solution developed by the Prometheus project to handle alerts sent
+  by Prometheus).
+
+Both options can be considered advanced features and require knowledge of
+third-party documentation.
+
+Either with Grafana Alerting or with Alertmanager you need to configure some
+alerting rule to define conditions under which the alert should be triggered,
+and the channel used to send the alert (e.g. email).
+
+Grafana Alerts are already integrated into PMM Server and may be simpler to get set up,
+while Alertmanager allows the creation of more sophisticated alerting rules and
+can be easier to manage installations with a large number of hosts; this
+additional flexibility comes at the expense of simplicity and requires advanced
+knowledge of Alertmanager rules. Currently Percona cannot offer support for
+creating custom rules so you should already have a working Alertmanager instance
+prior to using this feature, however we are working hard to bring an integrated
+Alertmanager solution to make rule generation easy!
+
+.. rubric:: `How to set up Alerting with Grafana <https://www.percona.com/doc/percona-monitoring-and-management/2.x/faq.html#how-to-setup-alerting-with-Grafana>`_
+
+Alerting in Grafana allows attaching rules to your dashboard panels. Details
+about Grafana Alerting Engine and Rules can be found in the `official documentation <https://grafana.com/docs/grafana/latest/alerting/rules/>`_.
+Setting it up and running within PMM Server is covered `by the following blog post <https://www.percona.com/blog/2017/02/02/pmm-alerting-with-grafana-working-with-templated-dashboards/>`_.
+
+.. rubric:: `How to integrate Alertmanager with PMM <https://www.percona.com/doc/percona-monitoring-and-management/2.x/faq.html#how-to-integrate-alertmanager-with-pmm>`_
+
+PMM allows you to integrate Prometheus with an external Alertmanager. 
+Configuration is done on the `PMM Settings dashboard <https://www.percona.com/doc/percona-monitoring-and-management/2.x/manage/server-admin-gui.html>`_.  The Alertmanager section in it allows specifying the URL of the Alertmanager
+to serve your PMM alerts, as well as your `alerting rules in the YAML configuration format <https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/>`_.
+
+More details on the Alertmanager and its alerting rules can be found in the 
+`official Alertmanager documentation <https://prometheus.io/docs/alerting/alertmanager/>`_, which also provides plain examples of the `alerting rules <https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/>`_.
+
+How to use a custom Prometheus configuration file inside of a PMM Server?
+================================================================================
+
+Normally PMM Server fully manages `Prometheus configuration file <https://prometheus.io/docs/prometheus/latest/configuration/configuration/>`_. Still, some users may want to be able to change generated configuration to add additional scrape jobs, configure remote storage, etc.
+
+Starting from the version 2.4.0, when pmm-managed starts the Prometheus file
+generation process, it tries to load the ``/srv/prometheus/prometheus.base.yml``
+file first, to use it as a base for the ``prometheus.yml`` if present and can be
+parsed.
+
+.. note:: The ``prometheus.yml`` file can be regenerated by restarting the PMM
+   Server container, or by the ``SetSettings`` `API call <https://www.percona.com/doc/percona-monitoring-and-management/2.x/manage/server-pmm-api.html>`_ with an empty body.
+
+You can find more details about using a custom Prometheus configuration file with
+PMM `in a separate blog post <https://www.percona.com/blog/2020/03/23/extending-pmm-prometheus-configuration/>`_.
 
 .. include:: .res/replace.txt
 

@@ -35,8 +35,6 @@ The following is an example you can run in the |mongodb| shell, to add the
 
 .. _code.pmm.qan-mongodb.conf.essential-permission.setting-up.db.get-sibling-db.create-user:
 
-.. The following does not show up on live version
-
 .. include:: .res/code/db.get-sibling-db.create-user.txt
 
 .. _pmm.qan-mongodb.configuring.profiling.enabling:
