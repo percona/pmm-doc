@@ -106,6 +106,7 @@ follows:
    GRANT SELECT, UPDATE, DELETE, DROP ON performance_schema.* TO 'pmm'@'localhost';
 
 .. seealso::
+
       :ref:`pmm-admin.add-mysql-metrics` - Using the |pmm-admin.add| command
       to add a monitoring service
 
@@ -115,4 +116,4 @@ For more information, run:
 |opt.mysql|
 |opt.help|
 
-.. include:: ../res/replace.txt
+.. include:: .res/replace.txt

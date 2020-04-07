@@ -17,10 +17,10 @@ The setup begins with pulling the required |docker| image. Then, you proceed by
 creating a special container for persistent |pmm| data. The last step is
 creating and launching the |pmm-server| container.
 
-.. _image.pulling:
+.. _pmm.server.docker-image.pulling:
 
-`Pulling the PMM Server Docker Image <docker-setting-up.html#image-pulling>`_
---------------------------------------------------------------------------------
+`Pulling the PMM Server Docker Image <docker-setting-up.html#pmm-server-docker-image-pulling>`_
+-----------------------------------------------------------------------------------------------
 
 To pull the latest version from Docker Hub:
 
@@ -106,10 +106,10 @@ This command does the following:
 * |opt.pmm-server.latest| is the name and version tag of the image
   to derive the container from.
 
-.. _specific-version:
+.. _pmm.docker.specific-version:
 
-`Installing and using specific |pmm-server| version <docker-setting-up.html#specific-version>`_
--------------------------------------------------------------------------------------------------
+`Installing and using specific PMM Server version <docker-setting-up.html#pmm-docker-specific-version>`_
+----------------------------------------------------------------------------------------------------------
 
 To install a specific |pmm-server| version instead of the latest one, just put
 desired version number after the colon. Also in this scenario it may be useful
@@ -146,24 +146,10 @@ the web interface would look as follows:
       --restart always \
       percona/pmm-server:2
 
-.. only:: showhidden
-
-.. _pmm.docker.additional-option:
-
-`Additional options <docker-setting-up.html#additional-option>`_
---------------------------------------------------------------------------------
-
-When running the |pmm-server|, you may pass additional parameters to the
-|docker.run| subcommand. All options that appear after the |opt.e| option
-are the additional parameters that modify the way how |pmm-server| operates.
-
-The section :ref:`pmm.glossary.pmm-server.additional-option` lists all
-supported additional options.
-
 .. seealso::
 
    Updating PMM
-      :ref:`Updating PMM <deploy-pmm.updating>`
+      :ref:`Updating PMM<update-server.docker>`
    Backing Up the |pmm-server| |docker| container
       :ref:`pmm.server.docker-backing-up`
    Restoring |opt.pmm-data|

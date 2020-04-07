@@ -8,7 +8,7 @@ Configuring MongoDB for Monitoring in |qan.name|
 
 In |abbr.qan|, you can monitor |mongodb| metrics and |mongodb| queries. Run the
 |pmm-admin.add| command to use these monitoring services
-(for more information, see `Adding MongoDB Service Monitoring </manage/client-mongodb-metrics.html>`_).
+(for more information, see :ref:`Adding MongoDB Service Monitoring<pmm.pmm-admin.mongodb.add-mongodb>`).
 
 .. _pmm.conf.mongodb.supported-version:
 
@@ -39,16 +39,10 @@ The following is an example you can run in the |mongodb| shell, to add the
 
 .. include:: .res/code/db.get-sibling-db.create-user.txt
 
-.. seealso::
-
-   Adding a |opt.mongodb-metrics| monitoring service
-      :ref:`pmm-admin.add.mongodb-metrics`
-.. The above line does not render...
-
 .. _pmm.qan-mongodb.configuring.profiling.enabling:
 
-Enabling Profiling
-=================================================================================
+`Enabling Profiling <conf-mongodb.html#pmm-qan-mongodb-configuring-profiling-enabling>`_
+=========================================================================================
 
 For `MongoDB`_ to work correctly with |abbr.qan|, you need to enable profiling
 in your |mongod| configuration. When started without profiling enabled, |qan|
@@ -60,10 +54,10 @@ displays the following warning:
    profiling is not enabled by default because it may reduce the performance of your
    |mongodb| server.
 
-.. _pmm.qan-mongodb.conf.profiling.command_line.enable:
+.. _pmm.qan-mongodb.conf.profiling.command-line.enable:
 
-Enabling Profiling on Command Line
----------------------------------------------------------------------------------
+`Enabling Profiling on Command Line <conf-mongodb.html#pmm-qan-mongodb-conf-profiling-command-line-enable>`_
+------------------------------------------------------------------------------------------------------------
 
 You can enable profiling from command line when you start the :program:`mongod`
 server. This command is useful if you start :program:`mongod` manually.
@@ -98,8 +92,8 @@ However, the accuracy of the collected information decreases as well.
 
 .. _pmm.qan-mongodb.configuring.configuration-file.profiling.enabling:
 
-Enabling Profiling in the Configuration File
----------------------------------------------------------------------------------
+`Enabling Profiling in the Configuration File <conf-mongodb.html#pmm-qan-mongodb-configuring-configuration-file-profiling-enabling>`_
+-------------------------------------------------------------------------------------------------------------------------------------
 
 If you run ``mongod`` as a service, you need to use the configuration file
 which by default is |etc.mongod.conf|.
