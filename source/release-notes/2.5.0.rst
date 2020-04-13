@@ -4,7 +4,7 @@
 *Percona Monitoring and Management* 2.5.0
 ================================================================================
 
-:Date: April 13, 2020
+:Date: April 14, 2020
 
 :Installation: `Installing Percona Monitoring and Management <https://www.percona.com/doc/percona-monitoring-and-management/2.x/install/index-server.html>`_
 
@@ -23,9 +23,9 @@ New Features
 Improvements
 ================================================================================
 
-* :jirabug:`PMM-4252`: The resolution of the PMM Server favicon image has been improved.
 * :jirabug:`PMM-5581`: PMM Server Grafana plugins can now be updated on the command line with the ``grafana-cli`` command-line utility.
 * :jirabug:`PMM-5536`: Three Grafana plugins were updated to the latest versions: vertamedia-clickhouse-datasource to 1.9.5, grafana-polystat-panel to 1.1.0, and grafana-piechart-panel to 1.4.0.
+* :jirabug:`PMM-4252`: The resolution of the PMM Server favicon image has been improved.
 
 
 
@@ -35,7 +35,7 @@ Bugs Fixed
 * :jirabug:`PMM-5547`: PMM dashboards were failing when presenting data from more than 100 monitored instances (error message ``proxy error: context canceled``).
 * :jirabug:`PMM-5624`: Empty charts were being shown in some Node Temperature dashboards.
 * :jirabug:`PMM-5637`: The Data retention value in Settings was incorrectly showing the value as minutes instead of days.
-* :jirabug:`PMM-5613`: Sorting data by Query Time was not working in Query Analytics.
+* :jirabug:`PMM-5613`: Sorting data by Query Time was not working properly in Query Analytics.
 * :jirabug:`PMM-5554`: Totals in charts were inconsistently plotted with different colors across charts.
 * :jirabug:`PMM-4919`: The force option (``--force``) in ``pmm-admin config`` was not always working.
 
