@@ -33,7 +33,7 @@ Bugs Fixed
 ================================================================================
 
 * :jirabug:`PMM-5351`: The documentation on MongoDB user privileges has been corrected SKIP
-* :jirabug:`PMM-5547`: PMM dashboards were failing when presenting data from more than 100 monitored instances.
+* :jirabug:`PMM-5547`: PMM dashboards were failing when presenting data from more than 100 monitored instances (error message ``proxy error: context canceled``).
 * :jirabug:`PMM-5624`: Empty charts were being shown in some Node Temperature dashboards.
 * :jirabug:`PMM-5637`: The Data retention value in Settings was incorrectly showing the value as minutes instead of days.
 * :jirabug:`PMM-5613`: Sorting data by Query Time was not working in Query Analytics.
