@@ -8,7 +8,7 @@
 
 :Installation: `Installing Percona Monitoring and Management <https://www.percona.com/doc/percona-monitoring-and-management/2.x/install/index-server.html>`_
 
-*PMM* (`Percona Monitoring and Management<https://www.percona.com/doc/percona-monitoring-and-management/index.html>`_)
+*PMM* (`Percona Monitoring and Management <https://www.percona.com/doc/percona-monitoring-and-management/index.html>`_)
 is a free and open-source platform for managing and monitoring |MySQL|, |MongoDB|, and |postgresql|
 performance.
 
@@ -24,7 +24,7 @@ Improvements
 ================================================================================
 
 * :jirabug:`PMM-4252`: The resolution of the PMM Server favicon image has been improved.
-* :jirabug:`PMM-5581`: PMM Server Grafana plugins can now be updated on the command line with the grafana-cli command-line utility.
+* :jirabug:`PMM-5581`: PMM Server Grafana plugins can now be updated on the command line with the ``grafana-cli`` command-line utility.
 * :jirabug:`PMM-5536`: Three Grafana plugins were updated to the latest versions: vertamedia-clickhouse-datasource to 1.9.5, grafana-polystat-panel to 1.1.0, and grafana-piechart-panel to 1.4.0.
 
 
@@ -38,5 +38,8 @@ Bugs Fixed
 * :jirabug:`PMM-5637`: The Data retention value in Settings was incorrectly showing the value as minutes instead of days.
 * :jirabug:`PMM-5613`: Sorting data by Query Time was not working in Query Analytics.
 * :jirabug:`PMM-5554`: Totals in charts were inconsistently plotted with different colors across charts.
-* :jirabug:`PMM-4919`: The force option (--force) in pmm-admin was not always working.
+* :jirabug:`PMM-4919`: The force option (``--force``) in ``pmm-admin config`` was not always working.
 
+Help us improve our software quality by reporting any bugs you encounter using `our bug tracking system <https://jira.percona.com/secure/Dashboard.jspa>`_.
+
+.. include:: ../.res/replace.txt
