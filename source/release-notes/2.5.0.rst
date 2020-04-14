@@ -15,7 +15,7 @@ performance.
 New Features
 ================================================================================
 
-* :jirabug:`PMM-5042` and :jirabug:`PMM-5272`: PMM Server can now connect to MySQL instances by specifying a UNIX socket. This can be done with a new ``--socket`` option of the ``pmm-admin add mysql`` command. (Note: Updates to both PMM Client and PMM Server are needed to use UNIX socket connections.)
+* :jirabug:`PMM-5042` and :jirabug:`PMM-5272`: PMM Server can now connect to MySQL instances by specifying a UNIX socket. This can be done with a new ``--socket`` option of the ``pmm-admin add mysql`` command. (Note: Updates to both PMM Client and PMM Server were done to allow UNIX socket connections.)
 * :jirabug:`PMM-4145`: Amazon RDS instance metrics can now be independently enabled/disabled for Basic and/or Enhanced metrics.
 
 
