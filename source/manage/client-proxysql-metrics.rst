@@ -35,11 +35,13 @@ The output of this command may look as follows:
 
 Beside positional arguments shown above you can specify service name and
 service address with the following flags: ``--service-name``, ``--host`` (the
-hostname or IP address of the service), and ``--port`` (the port number of the
-service). If both flag and positional argument are present, flag gains higher
-priority. Here is the previous example modified to use these flags::
+hostname or IP address of the service), and either ``--port`` (the port number of the
+service) or ``--socket`` (the UNIX socket path). If both flag and positional argument are present, flag gains higher
+priority. Here is the previous example modified to use these flags for both port and socket connections::
 
      pmm-admin add proxysql --username=pmm --password=pmm --service-name=my-new-proxysql --host=127.0.0.1 --port=3306 
+
+     pmm-admin add proxysql --username=pmm --password=pmm --service-name=my-new-proxysql --host=127.0.0.1 --socket=/var/run/unix_socket
 
 .. only:: showhidden
 
