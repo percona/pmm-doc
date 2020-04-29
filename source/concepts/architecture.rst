@@ -15,7 +15,9 @@ It includes the following modules:
   and presents it in the form of tables, dashboards, and graphs in a web
   interface.
 
-.. image:: ../.res/graphics/png/diagram.pmm.client-server.png
+* :ref:`pmm-platform` provides value-added services for |pmm|.
+
+.. image:: ../.res/graphics/png/diagram.pmm.client-server-platform.png
 
 The modules are packaged for easy installation and usage. It is assumed that
 the user should not need to understand what are the exact tools that make up
@@ -24,7 +26,7 @@ potential of |pmm|, the internal structure is important.
 
 .. contents::
    :local:
-   :depth: 2
+   :depth: 1
 
 |pmm| is a collection of tools designed to seamlessly work together.  Some are
 developed by |percona| and some are third-party open-source tools.
@@ -72,7 +74,7 @@ server is protected by the HTTP basic authentication.
 .. note:: Credentials used in communication between the exporters and the PMM
    Server are the following ones:
 
-   * login is "pmm" 
+   * login is "pmm"
 
    * password is equal to Agent ID, which can be seen e.g. on the Inventory
      Dashboard.
@@ -138,6 +140,18 @@ For more information, see `Installing PMM Server <https://www.percona.com/doc/pe
 All tools can be accessed from the |pmm-server| web interface (landing page).
 For more information, see :ref:`using`.
 
+.. _pmm-platform:
+
+`PMM Platform <architecture.html#pmm-platform>`_
+================================================================================
+
+|pmm-platform| provides the following value-added services to |pmm|.
+
+|stt|
+-----------------------------------------------
+
+|stt| checks registered database instances for a range of common security issues. This service requires the Telemetry setting to be on (see :ref:`server-admin-gui-telemetry`).
+
 .. seealso::
 
 .. _`Prometheus Docs`: https://prometheus.io/docs/introduction/overview/
@@ -146,4 +160,3 @@ For more information, see :ref:`using`.
 .. _`Orchestrator Manual`: https://github.com/outbrain/orchestrator/wiki/Orchestrator-Manual
 
 .. include:: ../.res/replace.txt
-

@@ -94,6 +94,7 @@
 .. |pmm-linux-metrics.service| replace:: :file:`pmm-linux-metrics-42000.service`
 .. |pmm-mysql-metrics.service| replace:: :file:`pmm-mysql-metrics-42002.service`
 .. |pmm-mysql-queries.service| replace:: :file:`pmm-mysql-queries-0.service`
+.. |pmm-platform| replace:: PMM Platform
 .. |pmm-query-analytics| replace:: *PMM Query Analytics*
 .. |pmm-server-1.6.0.ova| replace:: :file:`PMM-Server-1.6.0.ova`
 .. |pmm-server| replace:: PMM Server
@@ -131,6 +132,7 @@
 .. |slow-query-log| replace:: *slow query log*
 .. |srv.nginx| replace:: :file:`/srv/nginx/`
 .. |srv.update.main.yml| replace:: :file:`/srv/update/main.yml`
+.. |stt| replace:: Security Threat Tool                                   
 .. |sudo| replace:: :program:`sudo` 
 .. |summary| replace:: *Summary*
 .. |systemd| replace:: :program:`systemd`
