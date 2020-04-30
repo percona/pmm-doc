@@ -140,12 +140,12 @@ For more information, see `Installing PMM Server <https://www.percona.com/doc/pe
 All tools can be accessed from the |pmm-server| web interface (landing page).
 For more information, see :ref:`using`.
 
-.. _pmm-platform:
+.. _percona-platform:
 
-`PMM Platform <architecture.html#pmm-platform>`_
+`Percona Platform <architecture.html#percona-platform>`_
 ================================================================================
 
-|pmm-platform| provides the following value-added services to |pmm|.
+|percona-platform| provides the following value-added services to |pmm|.
 
 |stt|
 -----------------------------------------------
