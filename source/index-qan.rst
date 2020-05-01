@@ -12,3 +12,4 @@ Using PMM Query Analytics
    qan-filtering
    qan-configuring
    qan-mongodb
+   qan-query-time-distribution
