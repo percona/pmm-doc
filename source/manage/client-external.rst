@@ -22,4 +22,4 @@ Usage
 
 .. code-block:: bash
 
-   pmm-admin add external [--service-name=<service-name>] [--port=<port>] [--metric-path=<metric-path>] [--scheme=<scheme>]
+   pmm-admin add external [--service-name=<service-name>] [--listen-port=<listen-port>] [--metrics-path=<metrics-path>] [--scheme=<scheme>]
