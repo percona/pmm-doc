@@ -38,7 +38,7 @@ Improvements
 Bugs Fixed
 ================================================================================
 
-* :jirabug:`PMM-4829`: The MongoDB Exporter wasn't able to collect metrics from hidden nodes without either the latest driver or using the 'connect-direct' parameter.
+* :jirabug:`PMM-4829`: The MongoDB Exporter wasn't able to collect metrics from hidden nodes without either the latest driver or using the 'connect=direct' parameter.
 * :jirabug:`PMM-5056`: The average values for Query time in the Details and Profile sections were different.
 * :jirabug:`PMM-2717`: Updating MongoDB Exporter resolves an error (``Failed to execute find query on 'config.locks': not found.``) when used with shardedCluster 3.6.4.
 * :jirabug:`PMM-4541`: MongoDB exporter metrics collection was including system collections from collStats and indexStats, causing "log bloat".
