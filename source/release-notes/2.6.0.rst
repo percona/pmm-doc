@@ -1,0 +1,65 @@
+.. _PMM-2.6.0:
+
+================================================================================
+*Percona Monitoring and Management* 2.6.0
+================================================================================
+
+:Date: May 11, 2020
+:Installation: `Installing Percona Monitoring and Management <https://www.percona.com/doc/percona-monitoring-and-management/2.x/install/index-server.html>`_
+
+*PMM* (`Percona Monitoring and Management <https://www.percona.com/doc/percona-monitoring-and-management/index.html>`_)
+is a free and open-source platform for managing and monitoring |MySQL|, |MongoDB|, and |postgresql|
+performance.
+
+New Features
+================================================================================
+
+* :jirabug:`PMM-5728`: Technical preview of External Services monitoring feature.
+* :jirabug:`PMM-5822`: PMM now includes a Security Threat Tool to help users avoid most common database security issues. Read more `here <https://www.percona.com/doc/percona-monitoring-and-management/2.x/concepts/architecture.html>`_.
+* :jirabug:`PMM-5559`: Global annotations can now be set with the pmm-admin annotate command.
+* :jirabug:`PMM-4931`: PMM now checks Docker environment variables and warns about invalid ones.
+
+
+
+Improvements
+================================================================================
+
+* :jirabug:`PMM-1962`: The PMM Server API (via /v1/readyz) now also returns Grafana status information in addition to that for Prometheus.
+* :jirabug:`PMM-5854`: We've cleaned up the Service Details dashboards and removed some unused selectors.
+* :jirabug:`PMM-5775`: We've made it clearer which nodes are Primary and which are Secondary on MongoDB Instance dashboards.
+* :jirabug:`PMM-5549`: We've updated PMM's Grafana component to the latest, v6.7.3.
+* :jirabug:`PMM-5393`: We've added a 'Node Summary' row to all services Summary and Details dashboards summarizing the system update, load average, RAM and memory.
+* :jirabug:`PMM-4778`: We've updated PMM's mongodb_exporter to the latest version, 0.11.0.
+* :jirabug:`PMM-5734`: We've added temporary files activity and utilization charts (rate & irate) to the PostgreSQL Instance overview.
+* :jirabug:`PMM-5695`: We've clarified the wording of the error message seen when using the --socket option incorrectly.
+
+
+
+Bugs Fixed
+================================================================================
+
+* :jirabug:`PMM-4829`: The MongoDB Exporter wasn't able to collect metrics from hidden nodes without either the latest driver or using the 'connect-direct' parameter.
+* :jirabug:`PMM-5056`: The average values for Query time in the Details and Profile sections were different.
+* :jirabug:`PMM-2717`: Updating MongoDB Exporter resolves an error (``Failed to execute find query on 'config.locks': not found.``) when used with shardedCluster 3.6.4.
+* :jirabug:`PMM-4541`: MongoDB exporter metrics collection was including system collections from collStats and indexStats, causing "log bloat".
+* :jirabug:`PMM-5821`: The Compare button was missing from HA Dashboard main menus.
+* :jirabug:`PMM-5687`: Cumulative charts for Disk Details were not showing any data if metrics were returning 'NaN' results.
+* :jirabug:`PMM-5663`: The 'version' value was not being refreshed in various MySQL dashboards.
+* :jirabug:`PMM-5643`: Advanced Data Exploration charts were showing 'N/A' for Metric Resolution and 'No data to show' in the Metric Data Table.
+* :jirabug:`PMM-4756`: Dashboards were not showing services with empty environments.
+* :jirabug:`PMM-4562`: MongoDB and MySQL registered instances with empty cluster labels (--environment=<label>) were not visible in the dashboard despite being added instances.
+* :jirabug:`PMM-4906`: The MongoDB exporter for MongoDB 4.0 and above was causing a "log bloat" condition.
+
+
+
+Known Issues
+================================================================================
+
+* :jirabug:`PMM-5880`: Viewing a local snapshot was causing an error message "Templating init failed".
+* :jirabug:`PMM-5903`: When applying a filter the QAN Overview was being refreshed twice.
+
+
+Help us improve our software quality by reporting any bugs you encounter 
+using `our bug tracking system <https://jira.percona.com/secure/Dashboard.jspa>`_.
+
+.. include:: /.res/replace.txt
