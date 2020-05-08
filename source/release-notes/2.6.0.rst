@@ -15,7 +15,7 @@ New Features
 ================================================================================
 
 * :jirabug:`PMM-5728`: Technical preview of External Services monitoring feature.
-* :jirabug:`PMM-5822`: PMM now includes a Security Threat Tool to help users avoid most common database security issues. Read more `here <https://www.percona.com/doc/percona-monitoring-and-management/2.x/concepts/architecture.html>`_.
+* :jirabug:`PMM-5822`: PMM now includes a Security Threat Tool to help users avoid the most common database security issues. Read more `here <https://www.percona.com/doc/percona-monitoring-and-management/2.x/concepts/architecture.html>`_.
 * :jirabug:`PMM-5559`: Global annotations can now be set with the pmm-admin annotate command.
 * :jirabug:`PMM-4931`: PMM now checks Docker environment variables and warns about invalid ones.
 
