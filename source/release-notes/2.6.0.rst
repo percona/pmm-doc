@@ -27,7 +27,7 @@ Improvements
 * :jirabug:`PMM-1962`: The PMM Server API (via /v1/readyz) now also returns Grafana status information in addition to that for Prometheus.
 * :jirabug:`PMM-5854`: The Service Details dashboards were cleaned up and some unused selectors were removed.
 * :jirabug:`PMM-5775`: It is now clearer which nodes are Primary and which are Secondary on MongoDB Instance dashboards.
-* :jirabug:`PMM-5549`: We've updated PMM's Grafana component to the latest, v6.7.3.
+* :jirabug:`PMM-5549`: PMM's Grafana component is now the latest, v6.7.3.
 * :jirabug:`PMM-5393`: There's a new 'Node Summary' row in the services Summary and Details dashboards summarizing the system update, load average, RAM and memory.
 * :jirabug:`PMM-4778`: The mongodb_exporter is now the latest version, v0.11.0.
 * :jirabug:`PMM-5734`: Temporary files activity and utilization charts (rate & irate) were added to the PostgreSQL Instance overview.
