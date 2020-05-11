@@ -42,8 +42,8 @@ Bugs Fixed
 * :jirabug:`PMM-5056`: The average values for Query time in the Details and Profile sections were different.
 * :jirabug:`PMM-2717`: Updating MongoDB Exporter resolves an error (``Failed to execute find query on 'config.locks': not found.``) when used with shardedCluster 3.6.4.
 * :jirabug:`PMM-4541`: MongoDB exporter metrics collection was including system collections from collStats and indexStats, causing "log bloat".
-* :jirabug:`PMM-5913`: Cluster=MongoDB filter returns only Total in QAN
-* :jirabug:`PMM-5909`: MySQL Overview dashboard shows No Data when user accessed it for second time
+* :jirabug:`PMM-5913`: Only totals were shown in QAN when filtering on Cluster=MongoDB. 
+* :jirabug:`PMM-5909`: MySQL Overview dashboard was showing 'No Data' when accessing for a second time.
 * :jirabug:`PMM-5903`: When applying a filter the QAN Overview was being refreshed twice.
 * :jirabug:`PMM-5821`: The Compare button was missing from HA Dashboard main menus.
 * :jirabug:`PMM-5687`: Cumulative charts for Disk Details were not showing any data if metrics were returning 'NaN' results.
