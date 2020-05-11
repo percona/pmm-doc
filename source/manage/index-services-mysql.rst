@@ -7,7 +7,7 @@
 ################################################################################
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
    conf-mysql-slow-log
    conf-mysql-perf-schema
