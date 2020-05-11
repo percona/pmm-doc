@@ -15,7 +15,7 @@ when adding instances with |pmm-admin.add|:
 .. important::
 
    - These settings can only be used when adding an instance.
-   To change them, you must remove and re-add the instances.
+     To change them, you must remove and re-add the instances.
 
    - You can only use one of these options when adding an instance.
 
