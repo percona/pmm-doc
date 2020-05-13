@@ -28,6 +28,8 @@ as well as configure `telemetry <https://www.percona.com/doc/percona-monitoring-
 
 Don't forget to click the *Apply changes* button to make changed options work.
 
+.. _server-admin-gui-metrics-resolution:
+
 Metrics resolution
 ================================================================================
 
