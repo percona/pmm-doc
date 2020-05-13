@@ -28,6 +28,28 @@ as well as configure `telemetry <https://www.percona.com/doc/percona-monitoring-
 
 Don't forget to click the *Apply changes* button to make changed options work.
 
+Metrics resolution
+================================================================================
+
+|pmm| collects metrics at three different time intervals.
+
+Short time intervals are regarded as high resolution metrics,
+while those at longer time intervals are low resolution.
+
+The :guilabel:`Metrics Resolution` slider lets you choose
+from three preset combinations of intervals corresponding
+to high, medium, and low resolution
+(short, medium, and long collection periods).
+
+The presets are also labeled :guilabel:`Low`, :guilabel:`Medium`, and :guilabel:`High`.
+
+The slider tool-tip shows the collection time corresponding to each
+resolution.
+
+- Setting the slider to :guilabel:`Low` increases the time between collection, resulting in low-resolution metrics.
+
+- Setting the slider to :guilabel:`High` decreases the time between collection, resulting in high-resolution metrics.
+
 .. _server-admin-gui-telemetry:
 
 Telemetry
@@ -79,8 +101,8 @@ can turn it off.
 Check for updates
 ================================================================================
 
-When active, |pmm| will automatically check for updates and notify you if
-any are available.
+When active, |pmm| will automatically check for updates and put a notification
+in the :guilabel:`Updates` dashboard if any are available.
 
 .. _server-admin-gui-stt:
 
