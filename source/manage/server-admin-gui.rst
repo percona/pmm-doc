@@ -116,9 +116,11 @@ checks on a registered instance and reports the findings.
 
 |stt| is disabled by default.
 
-It can be enabled in :menuselection:`PMM Settings --> Settings --> Advanced Settings --> Security Threat Tool`.
+It can be enabled in :menuselection:`PMM --> PMM Settings --> Settings --> Advanced Settings --> Security Threat Tool`.
 
+The checks take 24 hours to complete.
 
+The results can be viewed in :menuselection:`PMM --> PMM Database Checks`.
       
           
 SSH Key Details
