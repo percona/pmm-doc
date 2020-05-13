@@ -116,8 +116,7 @@ checks on a registered instance and reports the findings.
 
 |stt| is disabled by default.
 
-It can be enabled in :guilabel:`Settings` or on the command line with the
-environment variable TODO.
+It can be enabled in :menuselection:`PMM Settings --> Settings --> Advanced Settings --> Security Threat Tool`.
 
 
       
@@ -135,10 +134,10 @@ access the PMM Server via SSH (e.g. the `PMM Server deployed as a virtual applia
 Submit your **public key** in the *SSH Key* field and click the
 *Apply SSH Key* button.
 
-AlertManager integration
+Prometheus Alertmanager integration
 ================================================================================
 
-Alertmanager manages alerts from Prometheus,
+Prometheus Alertmanager manages alerts from Prometheus,
 deduplicating, grouping, and routing them
 to the appropriate receiver or display component.
 
@@ -146,7 +145,7 @@ This section allows you to configure `integration of Prometheus with an external
 
 * The **Alertmanager URL** field should contain the URL of the Alertmanager
   which would serve your PMM alerts.
-* The **Alertmanager rules** field is used to specify alerting rules in the YAML
+* The **Prometheus Alerting rules** field is used to specify alerting rules in the YAML
   configuration format.
 
    .. figure:: ../.res/graphics/png/pmm.settings_alertmanager.png
@@ -157,8 +156,8 @@ Fill both fields and click the *Apply Alertmanager settings* button to proceed.
 
 .. seealso::
 
-   - `Alertmanager Documentation <https://prometheus.io/docs/alerting/alertmanager/>`_
-   - `Alertmanager alerting rules <https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/>`_
+   - `Prometheus Alertmanager documentation <https://prometheus.io/docs/alerting/alertmanager/>`_
+   - `Prometheus Alertmanager alerting rules <https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/>`_
 
 
 Diagnostics
