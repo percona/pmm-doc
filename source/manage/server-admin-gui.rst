@@ -22,7 +22,7 @@ Settings
 *Settings* section allows you to change `metrics resolution <https://www.percona.com/doc/percona-monitoring-and-management/2.x/faq.html#what-resolution-is-used-for-metrics>`_, `data retention <https://www.percona.com/doc/percona-monitoring-and-management/2.x/faq.html#how-to-control-data-retention-for-pmm>`_,
 as well as configure `telemetry <https://www.percona.com/doc/percona-monitoring-and-management/2.x/glossary-terminology.html#telemetry>`_ and automatic checking for `updates <https://www.percona.com/doc/percona-monitoring-and-management/2.x/glossary-terminology.html#PMM-Version>`_:
 
-   .. figure:: ../.res/graphics/png/pmm.settings_settings.png
+   .. figure:: /.res/graphics/png/pmm.settings_settings.png
 
       Settings options
 
@@ -34,7 +34,7 @@ Telemetry
 ================================================================================
 
 The *Telemetry* switch enables gathering and sending basic **anonymous** data to
- Percona, which helps us to determine where to focus the development
+Percona, which helps us to determine where to focus the development
 and what is the uptake of the various versions of PMM. Specifically, gathering
 this information helps determine if we need to release patches to legacy
 versions beyond support, determining when supporting a particular version is no
@@ -73,6 +73,30 @@ can turn it off.
    1. If |stt| is enabled in PMM Settings, Telemetry is automatically enabled.
    2. When |stt| is enabled, telemetry is sent immediately; the 24-hour grace period is not honored.
 
+
+.. _server-admin-gui-check-for-updates:      
+
+Check for updates
+================================================================================
+
+When active, |pmm| will automatically check for updates and notify you if
+any are available.
+
+.. _server-admin-gui-stt:
+
+Security Threat Tool
+================================================================================
+
+|stt| performs a range of security-related
+checks on a registered instance and reports the findings.
+
+|stt| is disabled by default.
+
+It can be enabled in :guilabel:`Settings` or on the command line with the
+environment variable TODO.
+
+
+      
           
 SSH Key Details
 ==========================================================================================================
@@ -90,6 +114,10 @@ Submit your **public key** in the *SSH Key* field and click the
 AlertManager integration
 ================================================================================
 
+Alertmanager manages alerts from Prometheus,
+deduplicating, grouping, and routing them
+to the appropriate receiver or display component.
+
 This section allows you to configure `integration of Prometheus with an external Alertmanager <https://www.percona.com/doc/percona-monitoring-and-management/2.x/faq.html#how-to-integrate-alertmanager-with-pmm>`_. 
 
 * The **Alertmanager URL** field should contain the URL of the Alertmanager
@@ -102,6 +130,12 @@ This section allows you to configure `integration of Prometheus with an external
       Configuring the Alertmanager integration
 
 Fill both fields and click the *Apply Alertmanager settings* button to proceed.
+
+.. seealso::
+
+   - `Alertmanager Documentation <https://prometheus.io/docs/alerting/alertmanager/>`_
+   - `Alertmanager alerting rules <https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/>`_
+
 
 Diagnostics
 ================================================================================
