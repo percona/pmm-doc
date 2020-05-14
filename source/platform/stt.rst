@@ -1,10 +1,13 @@
 .. include:: /.res/replace.txt
 
+.. _platform.stt:
+             
 ################################################################################
 |stt|
 ################################################################################
 
-The |stt| runs regular checks against connected databases, alerting you if any servers pose a potential security threat.
+The |stt| runs regular checks against connected databases,
+alerting you if any servers pose a potential security threat.
 
 The checks are automatically downloaded from |percona-platform|
 and run every 24 hours. (This period is not configurable.)
