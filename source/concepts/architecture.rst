@@ -153,7 +153,7 @@ For more information, see :ref:`using`.
 |stt| checks registered database instances for a range of common security issues.
 This service requires the :guilabel:`Telemetry` setting to be on (see :ref:`Security Threat Tool settings <server-admin-gui-stt>`).
 
-.. seealso::
+.. .. seealso::
 
    :ref:`platform.stt`
    
