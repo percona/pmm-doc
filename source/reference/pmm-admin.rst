@@ -14,20 +14,23 @@ NAME
 SYNOPSIS
 ********
 
-``pmm-admin [OPTIONS] COMMAND [FLAGS]``
+``pmm-admin [FLAGS]``
 
-``pmm-admin add mongodb|mysql|postgresql|proxysql``
+``pmm-admin config [FLAGS] --server-url=server-url``
 
-``pmm-admin remove <service-type> [<service-name>]``
+``pmm-admin add DATABASE [FLAGS] [NAME] [ADDRESS]``
 
-``pmm-admin register``
+``pmm-admin remove [FLAGS] service-type [service-name]``
 
-``pmm-admin status --server-url=<SERVER-URL>``
+``pmm-admin register [FLAGS] [node-address] [node-type] [node-name]``
 
-``pmm-admin list --server-url=<SERVER-URL>``
+``pmm-admin list [FLAGS] [node-address]``
 
-``pmm-admin register --server-url=<SERVER-URL>``
-   Register the current node with the PMM Server located at ``SERVER-URL``.
+``pmm-admin status [FLAGS] [node-address]``
+
+``pmm-admin summary [FLAGS] [node-address]``
+
+``pmm-admin help [COMMAND]``
 
 ***********
 DESCRIPTION
@@ -37,151 +40,152 @@ DESCRIPTION
 
 PMM communicates with the PMM Server via a PMM agent process.
 
-*******
-OPTIONS
-*******
+*****
+FLAGS
+*****
 
-There are two sets of options: general, and those relating to the connection to PMM Server.
-
-General Options
-===============
-
-``--debug``
-   Enable debug logging
-  
 ``-h``, ``--help``
-   Show help.
+   Show help and exit.
 
 ``--help-long``
-   Show extended help.
+   Show extended help and exit.
 
 ``--help-man``
-   Generate ``man`` format help. (Use ``pmm-admin --help-man | man -l -`` to view.)
+   Generate ``man`` page. (Use ``pmm-admin --help-man | man -l -`` to view.)
 
-``--json``
-   Enable JSON output
+``--debug``
+   Enable debug logging.
 
 ``--trace``
    Enable trace logging (implies debug).
-   
+
+``--json``
+   Enable JSON output.
+
 ``--version``
    Show the application version and exit.
 
-Connection Options
-==================
-
-``--server-url=SERVER-URL``
+- ``--server-url=server-url``
    PMM Server URL in `https://username:password@pmm-server-host/` format.
 
 ``--server-insecure-tls``
    Skip PMM Server TLS certificate validation.
-  
+
 ********
 COMMANDS
 ********
 
-General Commands
+================
+GENERAL COMMANDS
 ================
 
-``help [<COMMAND>]``
+``pmm-admin help [COMMAND]``
     Show help for ``COMMAND``.
 
-Information Commands
 ====================
-    
-``list --server-url=<SERVER-URL> [<flags>]``
-    Show Services and Agents running on this Node
+INFORMATION COMMANDS
+====================
 
-``status --server-url=<SERVER-URL> [<flags>]``
+``pmm-admin list --server-url=server-url [FLAGS]``
+    Show Services and Agents running on this Node.
+
+``pmm-admin status --server-url=server-url [FLAGS]``
     Show the following information about a local pmm-agent, and its connected server and client:
-    
+
     - Agent: Agent ID, Node ID.
     - PMM Server: URL and version.
-    - PMM Client: connection status, time drift, latency, pmm-admin and pmm-agent versions.
+    - PMM Client: connection status, time drift, latency, pmm-admin version.
     - Agents: Agent ID path and client name.
 
-``summary --server-url=<SERVER-URL> [<flags>]``
+``pmm-admin summary --server-url=server-url [FLAGS]``
     Fetch system data for diagnostics.
 
-    Flags:
+    FLAGS:
 
-    ``--filename="<filename>"``  
+    ``--filename="filename"``
        The Summary Archive filename.
-
     ``--skip-server``
        Skip fetching ``logs.zip`` from PMM Server.
-      
     ``--pprof``
        Include performance profiling data in the summary.
-    
-Configuration Options
-=====================
-    
-``config [<flags>] [<node-address>] [<node-type>] [<node-name>]``
+
+======================
+CONFIGURATION COMMANDS
+======================
+
+``pmm-admin config [FLAGS] [node-address] [node-type] [node-name]``
     Configure a local ``pmm-agent``.
 
-    ``--node-id=NODE-ID``
-       Node ID (default is autodetected)
-    ``--node-model=NODE-MODEL``
+    FLAGS:
+
+    ``--node-id=node-id``
+       Node ID (default is auto-detected).
+    ``--node-model=node-model``
        Node model
-    ``--region=REGION``
+    ``--region=region``
        Node region
-    ``--az=AZ``
+    ``--az=availability-zone``
        Node availability zone
     ``--force``
        Remove Node with that name with all dependent Services and Agents if one exist
 
-``register [<flags>] [<node-address>] [<node-type>] [<node-name>]``
+``pmm-admin register [FLAGS] [node-address] [node-type] [node-name]``
     Register the current Node with the PMM Server.
 
-    ``--machine-id="/machine_id/9812826a1c45454a98ba45c56cc4f5b0"``  
+    ``--server-url=server-url``
+
+    ``--machine-id="/machine_id/9812826a1c45454a98ba45c56cc4f5b0"``
        Node machine-id (default is auto-detected).
     ``--distro="linux"``
        Node OS distribution (default is auto-detected).
-    ``--container-id=CONTAINER-ID``
+    ``--container-id=container-id``
        Container ID.
-    ``--container-name=CONTAINER-NAME``  
+    ``--container-name=container-name``
        Container name.
-    ``--node-model=NODE-MODEL``
+    ``--node-model=node-model``
        Node model.
-    ``--region=REGION``
+    ``--region=region``
        Node region.
-    ```--az=AZ``
+    ```--az=availability-zone``
        Node availability zone.
-    ``--custom-labels=CUSTOM-LABELS``\
+    ``--custom-labels=labels``
        Custom user-assigned labels.
     ``--force``
        Remove Node with that name with all dependent Services and Agents if one exists.
-    
-``remove [<flags>] <service-type> [<service-name>]``
+
+``pmm-admin remove [FLAGS] service-type [service-name]``
     Remove Service from monitoring.
 
-    ``--service-id=SERVICE-ID``
+    ``--service-id=service-id``
        Service ID.
 
-MongoDB Options
-===============
-    
-``add mongodb [<flags>] [<name>] [<address>]``
+=================
+DATABASE COMMANDS
+=================
+
+MongoDB
+=======
+
+``pmm-admin add mongodb [FLAGS] [node-name] [node-address]``
     Add MongoDB to monitoring.
 
-    ``--node-id=NODE-ID``
+    ``--node-id=node-id``
        Node ID (default is auto-detected).
-    ``--pmm-agent-id=PMM-AGENT-ID``
+    ``--pmm-agent-id=pmm-agent-id``
        The pmm-agent identifier which runs this instance (default is auto-detected).
-    ``--username=USERNAME``
+    ``--username=username``
        MongoDB username.
-    ``--password=PASSWORD``
+    ``--password=password``
        MongoDB password.
     ``--query-source=profiler``
-       Source of queries, one of: profiler, none (default: profiler).
-    ``--environment=ENVIRONMENT``
+       Source of queries, one of: ``profiler``, ``none`` (default: ``profiler``).
+    ``--environment=environment``
        Environment name.
-    ``--cluster=CLUSTER``
+    ``--cluster=cluster``
        Cluster name.
-    ``--replication-set=REPLICATION-SET``  
+    ``--replication-set=replication-set``
        Replication set name.
-    ``--custom-labels=CUSTOM-LABELS``
+    ``--custom-labels=custom-labels``
        Custom user-assigned labels.
     ``--skip-connection-check``
        Skip connection check.
@@ -190,71 +194,80 @@ MongoDB Options
     ``--tls-skip-verify``
        Skip TLS certificates validation.
 
-MySQL Options
-=============
-    
-``add mysql [<flags>] [<name>] [<address>]``
+MySQL
+=====
+
+``pmm-admin add mysql [FLAGS] node-name node-address | [--name=service-name] --address=address[:port] | --socket``
     Add MySQL to monitoring.
 
-    ``--socket=SOCKET``
-       Path to MySQL socket.
-    ``--node-id=NODE-ID``
-       Node ID (default is auto-detected).
-    ``--pmm-agent-id=PMM-AGENT-ID``
-       The pmm-agent identifier which runs this instance (default is auto-detected).
-    ``--username="root"``
-       MySQL username.
-    ``--password=PASSWORD``
-       MySQL password.
-    ``--query-source=slowlog``
-       Source of SQL queries, one of: slowlog, perfschema, none (default: slowlog).
-    ``--disable-queryexamples``
-       Disable collection of query examples.
-    ``--size-slow-logs=SIZE-SLOW-LOGS``
-       Rotate slow log file at this size (default: server-defined; negative value disables rotation).
-    ``--disable-tablestats``
-       Disable table statistics collection.
-    ``--disable-tablestats-limit=DISABLE-TABLESTATS-LIMIT``  
-       Table statistics collection will be disabled if there are more than specified number of tables
-       (default: server-defined).
-    ``--environment=ENVIRONMENT``
-       Environment name.
-    ``--cluster=CLUSTER``
-       Cluster name.
-    ``--replication-set=REPLICATION-SET``  
-       Replication set name.
-    ``--custom-labels=CUSTOM-LABELS``
-       Custom user-assigned labels.
-    ``--skip-connection-check``
-       Skip connection check.
-    ``--tls``
-       Use TLS to connect to the database.
-    ``--tls-skip-verify``
-       Skip TLS certificates validation.
+    FLAGS:
 
-PostgreSQL Options
-==================
-    
-``add postgresql [<flags>] [<name>] [<address>]``
+    ``--address``
+        MySQL address and port (default: 127.0.0.1:3306).
+    ``--socket=socket``
+        Path to MySQL socket.
+    ``--node-id=node-id``
+        Node ID (default is auto-detected).
+    ``--pmm-agent-id=pmm-agent-id``
+        The pmm-agent identifier which runs this instance (default is auto-detected).
+
+    ``--username=username``
+        MySQL username.
+    ``--password=password``
+        MySQL password.
+
+    ``--query-source=slowlog``
+        Source of SQL queries, one of: ``slowlog``, ``perfschema``, ``none`` (default: ``slowlog``).
+    ``--size-slow-logs=size-slow-logs``
+        Rotate slow log file at this size (default: server-defined; negative value disables rotation).
+
+    ``--disable-queryexamples``
+        Disable collection of query examples.
+    ``--disable-tablestats``
+        Disable table statistics collection.
+    ``--disable-tablestats-limit=disable-tablestats-limit``
+        Table statistics collection will be disabled if there are more than specified number of tables
+        (default: server-defined).
+
+    ``--environment=environment``
+        Environment name.
+    ``--cluster=cluster``
+        Cluster name.
+    ``--replication-set=replication-set``
+        Replication set name.
+    ``--custom-labels=custom-labels``
+        Custom user-assigned labels.
+
+    ``--skip-connection-check``
+        Skip connection check.
+    ``--tls``
+        Use TLS to connect to the database.
+    ``--tls-skip-verify``
+        Skip TLS certificates validation.
+
+PostgreSQL
+==========
+
+``pmm-admin add postgresql [FLAGS] [node-name] [node-address]``
     Add PostgreSQL to monitoring.
 
-    ``--node-id=NODE-ID``
+    ``--node-id=node-id``
       Node ID (default is auto-detected).
-    ``--pmm-agent-id=PMM-AGENT-ID``
+    ``--pmm-agent-id=pmm-agent-id``
        The pmm-agent identifier which runs this instance (default is auto-detected).
-    ``--username="postgres"``
+    ``--username=username``
        PostgreSQL username.
-    ``--password=PASSWORD``
+    ``--password=password``
        PostgreSQL password.
     ``--query-source=pgstatements``
-       Source of SQL queries, one of: pgstatements, none (default: pgstatements).
-    ``--environment=ENVIRONMENT``
+       Source of SQL queries, one of: ``pgstatements``, ``none`` (default: pgstatements).
+    ``--environment=environment``
        Environment name.
-    ``--cluster=CLUSTER``
+    ``--cluster=cluster``
        Cluster name.
-    ``--replication-set=REPLICATION-SET``  
+    ``--replication-set=replication-set``
        Replication set name
-    ``--custom-labels=CUSTOM-LABELS``
+    ``--custom-labels=custom-labels``
        Custom user-assigned labels.
     ``--skip-connection-check``
        Skip connection check.
@@ -263,27 +276,27 @@ PostgreSQL Options
     ``--tls-skip-verify``
        Skip TLS certificates validation.
 
-ProxySQL Options
-================
-    
-``add proxysql [<flags>] [<name>] [<address>]``
+ProxySQL
+========
+
+``pmm-admin add proxysql [FLAGS] [node-name] [node-address]``
     Add ProxySQL to monitoring.
 
-    ``--node-id=NODE-ID``
+    ``--node-id=node-id``
        Node ID (default is auto-detected).
-    ``--pmm-agent-id=PMM-AGENT-ID``
+    ``--pmm-agent-id=pmm-agent-id``
        The pmm-agent identifier which runs this instance (default is auto-detected).
-    ``--username="admin"``
+    ``--username=username``
        ProxySQL username.
-    ``--password="admin"``
+    ``--password=password``
        ProxySQL password.
-    ``--environment=ENVIRONMENT``
+    ``--environment=environment``
        Environment name.
-    ``--cluster=CLUSTER``
+    ``--cluster=cluster``
        Cluster name.
-    ``--replication-set=REPLICATION-SET``  
+    ``--replication-set=replication-set``
        Replication set name.
-    ``--custom-labels=CUSTOM-LABELS``
+    ``--custom-labels=custom-labels``
        Custom user-assigned labels.
     ``--skip-connection-check``
        Skip connection check.
@@ -291,14 +304,30 @@ ProxySQL Options
        Use TLS to connect to the database.
     ``--tls-skip-verify``
        Skip TLS certificates validation.
-    
+
 ********
 EXAMPLES
 ********
 
 .. code-block:: sh
 
-   # pmm-admin status
+   $ pmm-admin add mysql --query-source=slowlog --username=pmm --password=pmm sl-mysql 127.0.0.1:3306
+   MySQL Service added.
+   Service ID  : /service_id/a89191d4-7d75-44a9-b37f-a528e2c4550f
+   Service name: sl-mysql
+
+
+.. code-block:: sh
+
+   $ pmm-admin add mysql --username=pmm --password=pmm --service-name=ps-mysql --host=127.0.0.1 --port=3306
+
+
+
+.. TODO:: Add    pmm-agent version: 2.5.0
+
+.. code-block:: sh
+
+   $ pmm-admin status
    Agent ID: /agent_id/c2a55ac6-a12f-4172-8850-4101237a4236
    Node ID : /node_id/29b2cc24-3b90-4892-8d7e-4b44258d9309
    PMM Server:
@@ -309,6 +338,5 @@ EXAMPLES
     Time drift: 2.152715ms
     Latency : 465.658µs
     pmm-admin version: 2.5.0
-    pmm-agent version: 2.5.0
    Agents:
     /agent_id/aeb42475-486c-4f48-a906-9546fc7859e8 mysql_slowlog_agent Running
