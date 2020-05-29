@@ -10,4 +10,6 @@ Installing PMM Client
    clients
    client-install-apt
    client-install-yum
+
+..
    client/install-client-docker
