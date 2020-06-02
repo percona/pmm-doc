@@ -320,6 +320,7 @@ EXAMPLES
 
    $ pmm-admin add mysql --username=pmm --password=pmm --service-name=ps-mysql --host=127.0.0.1 --port=3306
 
+
 .. code-block:: sh
 
    $ pmm-admin status
