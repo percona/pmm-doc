@@ -79,6 +79,7 @@ Run the PMM Client Docker Container
        -e PMM_AGENT_SERVER_INSECURE_TLS=1 \
        -e PMM_AGENT_SETUP=1 \
        -e PMM_AGENT_CONFIG_FILE=pmm-agent.yml \
+       --volumes-from pmm-client-data \
        perconalab/pmm-client:dev-latest
 
 
