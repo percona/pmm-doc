@@ -37,6 +37,6 @@ priority. Here is the previous example modified to use these flags::
 .. note:: It is also possible to add a |mongodb| instance using a UNIX socket with
    just the ``--socket`` flag followed by the path to a socket::
 
-      pmm-admin add mongodb --socket=/var/path/to/mongodb/socket
+      pmm-admin add mongodb --socket=/tmp/mongodb-27017.sock
 
 .. include:: ../.res/replace.txt
