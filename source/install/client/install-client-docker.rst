@@ -29,7 +29,7 @@ When launched, the Docker container gives access to the whole functionality
 of PMM Client.
 
 - The setup begins by pulling the required Docker image.
-- Next, you create a special container for persistent |pmm| data.
+- Next, you create a special container for persistent |product| data.
 - Finally, you create and launch the PMM Client container.
 
 ======================================================================
@@ -46,7 +46,25 @@ To pull the latest version from Docker Hub:
 Creating a Persistent Data Store for the PMM Client Docker Container
 ======================================================================
 
-.. TODO
+To create a container for persistent data, run the following command:
+
+.. code-block:: bash
+
+   docker create -v /srv --name pmm-client-data percona/pmm-client:2 /bin/true
+
+.. note:: This container does not run, but exists only to make sure you retain
+      all |product| data when upgrading to a newer image.
+
+
+* The ``-v`` option initializes a data volume for the container.
+
+* The ``--name`` option assigns a name for the container
+  to reference the container within a Docker network.
+
+* ``percona/pmm-client:2`` is the name and version tag of the image
+  to derive the container from.
+
+* ``/bin/true`` is the command that the container runs.
 
 ======================================================================
 Run the PMM Client Docker Container
@@ -67,23 +85,22 @@ Run the PMM Client Docker Container
 .. rubric:: ENVIRONMENT VARIABLES
 
 ``PMM_AGENT_SERVER_ADDRESS``
-    PMMServer:443
+    The PMM Server hostname and port number.
 
 ``PMM_AGENT_SERVER_USERNAME``
-    admin
+    The PMM Server user name.
 
 ``PMM_AGENT_SERVER_PASSWORD``
-    admin
+    The PMM Server user's password.
 
 ``PMM_AGENT_SERVER_INSECURE_TLS``
-    1 
+    If true (1), use insecure TLS. Otherwise, do not.
 
 ``PMM_AGENT_SETUP``
     If true (1), run ``pmm-agent setup``. Default: false (0).
 
 ``PMM_AGENT_CONFIG_FILE``
-    pmm-agent.yml
-
+    The PMM Agent configuration file.
 
 
 To get help:
