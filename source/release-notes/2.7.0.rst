@@ -23,7 +23,7 @@ New Features
 Improvements
 ================================================================================
 
-* :jirabug:`PMM-2244` & :jirabug:`PMM-5926`: 'pmm-admin status' command output shows both pmm-admin and pmm-agent versions
+* :jirabug:`PMM-2244`: & :jirabug:`PMM-5926`: 'pmm-admin status' command output shows both pmm-admin and pmm-agent versions
 * :jirabug:`PMM-5968`: PMM Server node or agent removal via API deactivated
 * :jirabug:`PMM-5946`: MySQL Table Details dashboard filter on Service Name prevents display of services without data
 * :jirabug:`PMM-5891`: PMM Home page includes News panel
@@ -35,11 +35,11 @@ Bugs Fixed
 ================================================================================
 
 * :jirabug:`PMM-6004`: MySQL exporter reporting wrong values for cluster status (wsrep_cluster_status)
-* :jirabug:`PMM-4547`: MongoDB dashboard replication lag count corrected
-* :jirabug:`PMM-5524`: Prometheus alerting rule changes needed docker restart to activate
+* :jirabug:`PMM-4547`: MongoDB dashboard replication lag count incorrect
+* :jirabug:`PMM-5524`: Prometheus alerting rule changes needs docker restart to activate
 * :jirabug:`PMM-5949`: Unwanted filters applied when moving from QAN to Add Instance page
 * :jirabug:`PMM-5870`: MySQL Table Details dashboard not showing separate service names for tables
 * :jirabug:`PMM-5839`: PostgreSQL metrics disparity between query time and block read/write time
-* :jirabug:`PMM-5348`: Inaccessible tabs on Inventory page required reload
+* :jirabug:`PMM-5348`: Inaccessible tabs on Inventory page requires reload
 
 
