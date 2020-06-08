@@ -1,0 +1,45 @@
+.. _PMM-2.7.0:
+
+================================================================================
+*Percona Monitoring and Management* 2.7.0
+================================================================================
+
+:Date: June 9, 2020
+:Installation: `Installing Percona Monitoring and Management <https://www.percona.com/doc/percona-monitoring-and-management/2.x/install/index-server.html>`_
+
+*PMM* (`Percona Monitoring and Management <https://www.percona.com/doc/percona-monitoring-and-management/index.html>`_)
+is a free and open-source platform for managing and monitoring MySQL, MongoDB, and PostgreSQL
+performance.
+
+New Features
+================================================================================
+
+* :jirabug:`PMM-5257`: pmm-admin socket option (--socket) to specify UNIX socket path for connecting to ProxySQL instances
+* :jirabug:`PMM-5256`: pmm-admin socket option (--socket) to specify UNIX socket path for connecting to MongoDB instances
+* :jirabug:`PMM-5243`: pmm-admin socket option (--socket) to specify UNIX socket path for connecting to PostgreSQL instances
+
+
+
+Improvements
+================================================================================
+
+* :jirabug:`PMM-2244` & :jirabug:`PMM-5926`: 'pmm-admin status' command output shows both pmm-admin and pmm-agent versions
+* :jirabug:`PMM-5968`: PMM Server node or agent removal via API deactivated
+* :jirabug:`PMM-5946`: MySQL Table Details dashboard filter on Service Name prevents display of services without data
+* :jirabug:`PMM-5891`: PMM Home page includes News panel
+* :jirabug:`PMM-5906`: Independent update of PMM components deactivated
+
+
+
+Bugs Fixed
+================================================================================
+
+* :jirabug:`PMM-6004`: MySQL exporter reporting wrong values for cluster status (wsrep_cluster_status)
+* :jirabug:`PMM-4547`: MongoDB dashboard replication lag count corrected
+* :jirabug:`PMM-5524`: Prometheus alerting rule changes needed docker restart to activate
+* :jirabug:`PMM-5949`: Unwanted filters applied when moving from QAN to Add Instance page
+* :jirabug:`PMM-5870`: MySQL Table Details dashboard not showing separate service names for tables
+* :jirabug:`PMM-5839`: PostgreSQL metrics disparity between query time and block r/w time
+* :jirabug:`PMM-5348`: Inaccessible tabs on Inventory page required reload
+
+
