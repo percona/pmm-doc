@@ -11,7 +11,7 @@
 is a free and open-source platform for managing and monitoring MySQL, MongoDB, and PostgreSQL
 performance.
 
-In thisrelease we updated Grafana to version 6.7.4 in order to fix  `CVE-2020-13379 <https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-13379/>`_. We recommend to update to the latest PMM version asap.   
+In this release, we updated Grafana to version 6.7.4 in order to fix  `CVE-2020-13379 <https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-13379/>`_. We recommend updating to the latest PMM version asap.   
 
 New Features
 ================================================================================
