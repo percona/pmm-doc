@@ -1,74 +1,57 @@
 .. _pmm-admin.annotate:
 
---------------------------------------------------------------------------------
+#######################################
 Annotating important Application Events
---------------------------------------------------------------------------------
+#######################################
 
-.. _pmm-admin.annotate.adding:
+******************
+Adding annotations
+******************
 
-`Adding annotations <client-annotations.html#adding-annotations>`_
---------------------------------------------------------------------------------
+The ``pmm-admin annotate`` command registers a moment in time, marking it with a text string called an *annotation*.
 
-Use the |pmm-admin.annotate| command to set notifications about important
-application events and display them on all dashboards. By using annotations, you
-can conveniently analyze the impact of application events on your database.
+The presence of an annotation shows as a vertical dashed line on a dashboard graph; the annotation text is revealed by mousing over the caret indicator below the line.
 
-.. _pmm-admin.annotate.usage:
+Annotations are useful for recording the moment of a system change or other significant application event.
+
+They can be set globally or for specific nodes or services.
+
+.. image:: /.res/graphics/png/pmm-server.mysql-overview.mysql-client-thread-activity.1.png
 
 .. rubric:: USAGE
 
-|tip.run-this.root|
+``pmm-admin annotate <annotation> --tags <tags>``
 
-.. include:: .res/code/pmm-admin.annotate.tags.txt
+``pmm-admin annotate node <annotation> --tags <tags> [--node-name=<node>]``
 
-.. _pmm-admin.annotate.options:
+``pmm-admin annotate service <annotation> --tags <tags> [--service-name=<service>]``
 
 .. rubric:: OPTIONS
 
-The |pmm-admin.annotate| supports the following options:
+``<annotation>``
+    The annotation string. If it contains spaces, it should be quoted.
 
-|opt.tags|
+``--tags``
+   A quoted string that defines one or more comma-separated tags for the annotation. Example: ``"tag 1,tag 2"``.
 
-   Specify one or more tags applicable to the annotation that you are
-   creating. Enclose your tags in quotes and separate individual tags by a
-   comma, such as "tag 1,tag 2".
+``--node-name``
+    Sets the node name for the node being annotated.
 
-You can also use
-:ref:`global options that apply to any other command <pmm-admin.options>`.
+``--service-name``
+    Sets the service name for the node being annotated.
 
-.. _pmm.metrics-monitor.annotation.application-event.marking:
+.. seealso:: :ref:`pmm.ref.pmm-admin`
 
-`Marking Important Events with Annotations <client-annotations.html#application-event-marking>`_
-------------------------------------------------------------------------------------------------------------
+.. _application-event-marking:
 
-Some events in your application may impact your database. Annotations
-visualize these events on each dashboard of |pmm-server|.
+*********************
+Annotation Visibility
+*********************
 
-.. figure:: ../.res/graphics/png/pmm-server.mysql-overview.mysql-client-thread-activity.1.png
+You can toggle the display of annotations on graphs with the :guilabel:`PMM Annotations` checkbox.
 
-   An annotation appears as a vertical line which crosses a graph at a
-   specific point. Its text explains which event occurred at that time.
+.. image:: /.res/graphics/png/pmm-server.pmm-annotations.png
 
-To create a new annotation, run |pmm-admin.annotate| command on
-|pmm-client| passing it text which explains what event the new
-annotation should represent. Use the |opt.tags| option to supply one
-or more tags separated by a comma.
+Remove the check mark to hide annotations from all dashboards.
 
-You may toggle displaying annotations on metric graphs by using the
-|gui.pmm-annotations| checkbox.
-
-.. figure:: ../.res/graphics/png/pmm-server.pmm-annotations.png
-
-   Remove the checkmark from the |gui.pmm-annotations| checkbox to
-   hide annotations from all dashboards.
-
-.. seealso::
-
-   Adding annotations
-     :ref:`pmm-admin.annotate`
-
-   |grafana| Documentation:
-      - `Annotations <http://docs.grafana.org/reference/annotations/#annotations>`_
-      - `Using annotations in queries <http://docs.grafana.org/reference/annotations/#querying-other-data-sources>`_
-
-.. include:: ../.res/replace.txt
+.. seealso:: `docs.grafana.org: Annotations <http://docs.grafana.org/reference/annotations/>`_
