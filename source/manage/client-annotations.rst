@@ -20,11 +20,11 @@ They can be set globally or for specific nodes or services.
 
 .. rubric:: USAGE
 
-``pmm-admin annotate <annotation> --tags <tags>``
+``pmm-admin annotate <annotation> [--tags <tags>]``
 
-``pmm-admin annotate node <annotation> --tags <tags> [--node-name=<node>]``
+``pmm-admin annotate node <annotation> [--tags <tags>] [--node-name=<node>]``
 
-``pmm-admin annotate service <annotation> --tags <tags> [--service-name=<service>]``
+``pmm-admin annotate service <annotation> [--tags <tags>] [--service-name=<service>]``
 
 .. rubric:: OPTIONS
 
