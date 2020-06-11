@@ -178,6 +178,8 @@ html_theme = 'percona-theme'
 # Add any paths that contain custom themes here, relative to this directory.
 html_theme_path = ['.', './percona-theme']
 
+html_css_files = ['pmm.css'] # Makefile copies to percona-theme/static. Build copies to _static
+
 # The name for this set of Sphinx documents.  If None, it defaults to
 # "<project> v<release> documentation".
 html_title = 'Percona Monitoring and Management Documentation'
