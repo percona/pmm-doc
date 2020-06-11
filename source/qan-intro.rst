@@ -1,40 +1,20 @@
 .. _pmm.qan:
 
---------------------------------------------------------------------------------
+.. include:: /.res/qan-redirect.rst  
+  
+############
 Introduction
---------------------------------------------------------------------------------
+############ 
 
-.. raw:: html
+The :guilabel:`Query Analytics` (QAN) dashboard shows how queries are executed and where they spend their time.  It helps you analyze database queries over time, optimize database performance, and find and remedy the source of problems.
 
-	<a
-	  id="another-doc-version-link"
-	  data-location="https://www.percona.com/doc/percona-monitoring-and-management/qan.html"
-	  href="https://www.percona.com/doc/percona-monitoring-and-management/2.x/qan-intro.html"
-	  style="display:none;"
-	></a>
+QAN displays metrics in both visual and numeric form; performance-related characteristics appear as plotted graphics with summaries.
 
-The |qan| is a special dashboard which enables database administrators and
-application developers to |qan.what-is|. |qan| helps you optimize database
-performance by making sure that queries are executed as expected and within the
-shortest time possible.  In case of problems, you can see which queries may be
-the cause and get detailed metrics for them.
+.. image:: .res/graphics/png/qan01.png
 
-.. figure:: .res/graphics/png/qan01.png
-	    
-   |qan| helps analyze database queries over periods of time and find
-   performance problems.
+.. note::
 
-.. important::
-   
-   |qan.name| supports |mysql| and |mongodb|. The minimum requirements
-   for |mysql| are:
+   Query Analytics only supports MySQL and MongoDB. The minimum requirements for MySQL are:
 
-   * |mysql| 5.1 or later (if using the slow query log)
-   * |mysql| 5.6.9 or later (if using Performance Schema)
- 
-   .. tell about 8.0 |qan| 
-
-|qan| displays its metrics in both visual and numeric form: the performance
-related characteristics appear as plotted graphics with summaries.
-
-.. include:: .res/replace.txt
+   * MySQL 5.1 or later (if using the slow query log)
+   * MySQL 5.6.9 or later (if using Performance Schema)
