@@ -1,3 +1,7 @@
+:orphan:
+
+.. content now in qan-intro
+
 .. _pmm.qan-top-ten:
 
 --------------------------------------------------------------------------------
@@ -26,9 +30,8 @@ typing or selecting from the available list of fields.
 
 To view more queries, use buttons below the query summary table.
 
-.. _pmm.qan.query.selecting:
 
-`Query Detail Section <pmm.qan.query.selecting>`_
+Query Detail Section
 --------------------------------------------------------------------------------
    
 In addition to the metrics in the :ref:`query metrics summary table <Query-Metrics-Summary-Table>`,

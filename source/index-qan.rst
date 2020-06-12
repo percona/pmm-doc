@@ -7,6 +7,4 @@ Using PMM Query Analytics
 
    qan-intro
    qan-navigation
-   qan-top-ten
-   qan-filtering
    qan-mongodb
