@@ -30,7 +30,7 @@ SYNOPSIS
 
 ``pmm-admin summary [FLAGS] [node-address]``
 
-``pmm-admin annotate [node|service] [--tags <tags>] [node-name|service-name]``
+``pmm-admin annotate [--node|--service] [--tags <tags>] [node-name|service-name]``
 
 ``pmm-admin help [COMMAND]``
 

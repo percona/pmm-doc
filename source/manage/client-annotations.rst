@@ -20,25 +20,27 @@ They can be set globally or for specific nodes or services.
 
 .. rubric:: USAGE
 
-``pmm-admin annotate <annotation> [--tags <tags>]``
-
-``pmm-admin annotate node <annotation> [--tags <tags>] [--node-name=<node>]``
-
-``pmm-admin annotate service <annotation> [--tags <tags>] [--service-name=<service>]``
+``pmm-admin annotate [--node|--service] <annotation> [--tags <tags>] [--node-name=<node>] [--service-name=<service>]``
 
 .. rubric:: OPTIONS
 
 ``<annotation>``
     The annotation string. If it contains spaces, it should be quoted.
 
+``--node``
+   Annotate the current node or that specified by ``--node-name``.
+
+``--service``
+   Annotate the service running on the current node. If there is more than one service, annotate that specified by ``--service-name``.
+
 ``--tags``
    A quoted string that defines one or more comma-separated tags for the annotation. Example: ``"tag 1,tag 2"``.
 
 ``--node-name``
-    Sets the node name for the node being annotated.
+    The node name being annotated.
 
 ``--service-name``
-    Sets the service name for the node being annotated.
+    The service name being annotated.
 
 .. seealso:: :ref:`pmm.ref.pmm-admin`
 
