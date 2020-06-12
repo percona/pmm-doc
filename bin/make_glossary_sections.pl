@@ -25,11 +25,13 @@ while (<STDIN>) {
        $bm = $kw;
        $bm =~ s/([[:upper:]])/lc $1/eg;
        $bm =~ s/([[:space:]])/\-/g;
-
-       print ".. _" . $bm . "\n\n";
+       print ".. _" . $bm . ":\n\n";
+       # Write title
        print "*" x length($kw) . "\n";
        print "$kw\n";
        print "*" x length($kw) . "\n\n";
    }
+   # Convert :term: to :ref:
+   $parts[1] =~ s/:term:/:ref:/g;
    print "$parts[1]\n\n";
  }
