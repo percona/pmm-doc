@@ -8,3 +8,4 @@ Reference
    :maxdepth: 1
 
    pmm-admin
+   qan-metrics
