@@ -211,7 +211,7 @@ The Query time distribution bar shows a query's total time made up of colored se
 
 Metrics is a table with these headings:
 
-- Metric - The Metric name, with a question-mark tool-tip that reveals a description of the metric on mouse-over.
+- Metric - The Metric name, with a question-mark tool-tip that reveals a description of the metric on mouse-over (see :ref:`ref-qan-metrics`).
 
 - Rate/Second - A historical load graph, with real-time values per unit time.
 
