@@ -1,5 +1,5 @@
 .. _pmm.qan:
-  
+
 .. raw:: html
 
    <!-- Needed for switching between equivalent sections in PMM1/PMM2 -->
@@ -9,9 +9,9 @@
       style="display:none;"></a>
 
 
-############
-Introduction
-############ 
+###################################
+The Query Analytics (QAN) Dashboard
+###################################
 
 The :guilabel:`Query Analytics` (QAN) dashboard shows how queries are executed and where they spend their time.  It helps you analyze database queries over time, optimize database performance, and find and remedy the source of problems.
 
@@ -25,6 +25,13 @@ The :guilabel:`Query Analytics` (QAN) dashboard shows how queries are executed a
 .. todo:: add MySQL 8 and MongoDB reqs
 
 QAN displays metrics in both visual and numeric form; performance-related characteristics appear as plotted graphics with summaries.
+
+
+.. note::
+
+   QAN data update frequency is dependent on network conditions.
+
+
 
 .. .. image:: .res/graphics/png/qan01.png
 
@@ -55,13 +62,15 @@ Only the first five of each category are shown. If there are more, the list is e
 
 Applying a filter may make other filters inapplicable. These are shown as grayed out and inactive.
 
-You can further filter the results using the Time range settings device
-to restrict results to a chosen time period as either an Absolute time range or
-by choosing one of the pre-defined relative time ranges values.
+.. _pmm.qan.time-date-range.selecting:
 
-.. todo:: image
+.. rubric:: Selecting Time or Date Range
 
+You can further filter the results using the Time range settings device to restrict results to a chosen time period as either an Absolute time range or by choosing one of the pre-defined relative time ranges values.
 
+.. todo:: update image
+
+.. image:: /.res/graphics/png/qan.range-selection.1.png
 
 
 .. _pmm-qan-top-ten:
@@ -83,12 +92,37 @@ The panel comprises three sub-panels:
 
 Below these is a utility bar.
 
+.. _pmm.qan.query-summary.query:
+.. _pmm.qan.metric.value.viewing:
+.. _pmm.qan.query-summary.total:
+
 ======================
 Main Columns Sub-panel
 ======================
 
-.. todo::
+Each row in the query summary contains information about a single query.
 
+The *Query* column shows the type of query, such as INSERT, or UPDATE, and the queried tables, or collections.
+
+.. The *ID* attribute is a unique hexadecimal number associated with the given query.
+
+.. The *Load*, *Count*, and *Latency* attributes refer to the essential metrics of each query.
+
+.. Their values are plotted graphics and summary values in the numeric form.
+
+.. The summary values have two parts: the average value of the metric, and its percentage with respect to the corresponding total value at the top of the query summary table.
+
+Hovering over the cursor of a metrics query shows the exact value at that point.  Move the cursor along the plotted line to see how the value changes.
+
+.. todo:: updated image showing value on mouse hover
+
+.. The first line of the query summary contains the totals of the *load*, *count*, and *latency* for all queries that were run on the selected database server during the time period that you've specified.
+
+.. The *load* is the amount of time that the database server spent during the selected time or date range running all queries.
+
+.. The *count* is the average number of requests to the server during the specified time or date range.
+
+.. The *latency* is the average amount of time that it took the database server to retrieve and return the data.
 
 =====================
 Main Metric Sub-panel
@@ -181,7 +215,7 @@ Metrics is a table with these headings:
 
 - Rate/Second - A historical load graph, with real-time values per unit time.
 
-- Sum - A summation of the metric for the selected query, and the percentage of the total. 
+- Sum - A summation of the metric for the selected query, and the percentage of the total.
 
 .. in some cases, "Complex metric" - calculating the ratio between two metrics ??? Explain what a complex metric is
 
@@ -215,3 +249,19 @@ Tables Tab
 
 .. image:: /img/qan-details-panel-tables-tab.png
    :scale: 30%
+
+.. _pmm.qan-mongodb:
+
+***************************
+Query Analytics for MongoDB
+***************************
+
+MongoDB is conceptually different from relational database management systems, such as MySQL and MariaDB.
+
+Relational database management systems store data in tables that represent single entities; complex objects are represented by linking several tables.
+
+In contrast, MongoDB uses the concept of a document where all essential information pertaining to a complex object is stored in one place.
+
+QAN can monitor MongoDB queries. Although MongoDB is not a relational database management system, you analyze its databases and collections in the same interface using the same tools.
+
+.. seealso:: :ref:`pmm.qan-mongodb.conf`
