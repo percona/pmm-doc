@@ -5,11 +5,11 @@ External Sort Passes<small>(Merge Passes),,per second,Merge_passes_sum_per_exter
 External Sorts of Disk<small>(Filesort on disk),,per second,Filesort_on_disk_sum_per_query,of queries
 External Sorts<small>(Filesort),,per second,Filesort_sum_per_query,of queries
 Full Table Scans,,per second,Full_scan_sum_per_query,of queries
-Innodb Distinct Pages,,unit-avg,,,
+Innodb Distinct Pages,,unit-avg,,
 Innodb IO Read Wait,``innodb_io_r_wait``,unit-avg-load,InnoDB_IO_r_wait_avg_per_query_time,of query time
 Innodb Queue Wait,``innodb_queue_wait``,unit-avg-load,InnoDB_queue_wait_avg_per_query_time,of query time
 Innodb Read Bytes,``innodb_io_r_bytes``,per second,InnoDB_IO_r_bytes_sum_per_io,io size
-Innodb Read Ops,,per second,,, 
+Innodb Read Ops,,per second,,
 Innodb Row Lock Wait,,unit-avg-load,InnoDB_rec_lock_wait_avg_per_query_time,of query time
 Lock Time,``lock_time``,unit-avg-load,Lock_time_avg_per_query_time,of query time
 Number of Tmp Tables on Disk,,per second,Tmp_disk_tables_sum_per_query_with_tmp_table,per query with disk tmp table
