@@ -52,7 +52,7 @@ Filters Panel
 *************
 
 .. image:: /img/qan-filters-panel.png
-   :scale: 50%
+   :scale: 40%
 
 The Filter panel lists filters, grouped by category.
 
@@ -131,6 +131,7 @@ Main Metric Sub-panel
 Items in the Main metric sub-panel can be sorted with the sort drop-down menu.
 
 .. image:: /img/qan-overview-panel-main-metrics-sorting.png
+   :scale: 30%
 
 
 .. todo::
@@ -167,6 +168,7 @@ Dimension selector
 ------------------
 
 .. image:: /img/qan-overview-panel-dimension-selector.png
+   :scale: 30%
 
 .. todo::
 
@@ -196,7 +198,7 @@ Details Tab
 
 Details contains a :guilabel:`Query time distribution` bar and a set of :guilabel:`Metrics`.
 
-.. note:: The Query time distribution bar chart is only available for MySQL.
+.. attention:: The Query time distribution bar chart is only available for MySQL.
 
 The Query time distribution bar shows a query's total time made up of colored segments, each segment representing the proportion of time spent on one of the follow named activities:
 
