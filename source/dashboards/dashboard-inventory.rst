@@ -1,4 +1,4 @@
-.. include:: ../.res/replace.txt
+.. include:: /.res/replace.txt
 
 .. _dashboard-home:
 
