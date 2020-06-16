@@ -16,40 +16,40 @@ Glossary
 .. glossary::
    :sorted:
 
-   Dimension
+   `Dimension <glossary-terminology.html#dimension>`_
       In the :term:`Query Analytics` dashboard, to help focus on the possible source of performance issues, you can group queries by *dimension*, one of: Query, Service Name, Database, Schema, User Name, Client Host
 
-   Fingerprint
+   `Fingerprint <glossary-terminology.html#fingerprint>`_
       A *normalized statement digest*---a query string with values removed that acts as a template or typical example for a query.
 
-   Annotation
+   `Annotation <glossary-terminology.html#annotation>`_
       A way of showing a mark on dashboards signifying an important point in time. Use ``pmm-admin annotate`` to add annotations. (See also :ref:`pmm-admin.annotate`).
 
-   Query Analytics
-   QAN
+   `Query Analytics <glossary-terminology.html#query-analytics>`_
+   `QAN <glossary-terminology.html#qan>`_
       Component of :term:`PMM Server` that enables you to analyze MySQL query performance over periods of time.
 
-   STT
+   `STT <glossary-terminology.html#stt>`_
       Security Threat Tool. See :ref:`pmm-platform`.
 
-   EBS
+   `EBS <glossary-terminology.html#ebs>`_
       Amazon's Elastic Block Store.
 
-   VG
+   `VG <glossary-terminology.html#vg>`_
       Volume Group.
 
-   MM
+   `MM <glossary-terminology.html#mm>`_
       Metrics Monitor.
 
-   PEM
+   `PEM <glossary-terminology.html#pem>`_
       Privacy Enhanced Mail.
 
-   IAM
+   `IAM <glossary-terminology.html#iam>`_
       Identity and Access Management (for Amazon AWS).
 
-   QPS
+   `QPS <glossary-terminology.html#qps>`_
       Queries Per Second. A measure of the rate of queries being monitored.
 
-   NUMA
+   `NUMA <glossary-terminology.html#numa>`_
       Non-Uniform Memory Access.
 

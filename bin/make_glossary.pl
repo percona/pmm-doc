@@ -21,9 +21,13 @@ while (<STDIN>) {
    chomp;
    my @parts = split("\t");
    my @keys = split(",",$parts[0]);
+   my $bm = "";
 
    foreach my $kw (split (",",$parts[0])) {
-     print "   $kw\n";
+       $bm = $kw;
+       $bm =~ s/([[:upper:]])/lc $1/eg;
+       $bm =~ s/([[:space:]])/\-/g;
+       print "   `$kw <glossary-terminology.html#$bm>`_\n";
    }
    print "      $parts[1]\n";
    
