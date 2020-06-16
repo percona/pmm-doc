@@ -1,5 +1,3 @@
-.. _pmm.qan:
-
 .. raw:: html
 
    <!-- Needed for switching between equivalent sections in PMM1/PMM2 -->
@@ -8,6 +6,7 @@
       href="https://www.percona.com/doc/percona-monitoring-and-management/2.x/qan-intro.html"
       style="display:none;"></a>
 
+.. _pmm.qan:
 
 ###################################
 The Query Analytics (QAN) Dashboard
