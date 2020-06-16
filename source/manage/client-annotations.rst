@@ -31,7 +31,7 @@ They can be set globally or for specific nodes or services.
    Annotate the current node or that specified by ``--node-name``.
 
 ``--service``
-   Annotate the service running on the current node. If there is more than one service, annotate that specified by ``--service-name``.
+   Annotate all services running on the current node, or that specified by ``--service-name``.
 
 ``--tags``
    A quoted string that defines one or more comma-separated tags for the annotation. Example: ``"tag 1,tag 2"``.
