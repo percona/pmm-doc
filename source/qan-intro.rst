@@ -111,6 +111,8 @@ The *Query* column shows the type of query, such as INSERT, or UPDATE, and the q
 
 .. The summary values have two parts: the average value of the metric, and its percentage with respect to the corresponding total value at the top of the query summary table.
 
+Mouse-hovering over a column reveals its name, description, and units.
+
 Hovering over the cursor of a metrics query shows the exact value at that point.  Move the cursor along the plotted line to see how the value changes.
 
 .. todo:: updated image showing value on mouse hover
