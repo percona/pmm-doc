@@ -1,0 +1,7 @@
+Metric Name,Metric Key,Unit Type,Relation,Relation Units Type
+Query Count,``num_queries``,QPS,,
+Query Time,``query_time``,load,,
+Rows Sent,``rows_sent``,per second,,
+Shared Blocks Dirtied,``shared_blks_dirtied``,per second,,
+Shared Blocks Cache Hits,``shared_blks_hit``,per second,,
+Shared Blocks Read,``shared_blks_read``,per second,,

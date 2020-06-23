@@ -1,0 +1,6 @@
+Metric Name,Metric Key,Unit Type,Relation,Relation Units Type
+Docs Returned,``docs_returned``,per second,,
+Docs Scanned,``docs_scanned``,per second,Rows_examined_sum_per_rows,per row sent
+Query Count,``num_queries``,per second,,
+Query Time,``query_time``,per second,,
+Response Length,``response_length``,per second,Bytes_sent_sum_per_rows,bytes per row
