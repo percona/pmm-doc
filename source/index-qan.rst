@@ -1,6 +1,14 @@
-:orphan: 
+================================================================================
+Using PMM Query Analytics
+================================================================================
 
-.. raw:: html
+.. toctree::
+   :maxdepth: 4
 
-    <!-- Redirect to new location -->
-    <script type="text/javascript">window.location.href = "qan-intro.html";</script>
+   qan-intro
+   qan-navigation
+   qan-top-ten
+   qan-drilling
+   qan-filtering
+   qan-configuring
+   qan-mongodb
