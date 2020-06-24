@@ -25,7 +25,7 @@ to ensure that your data works as efficiently as possible.
    manage/index-services
    Adding AWS RDS and Aurora services <manage/index-amazon>
    index-using-pmm-metrics-monitor
-   qan-intro
+   index-qan
    manage/index.extending
    metrics-monitor.snapshots
    Dashboards references <index-metrics-monitor-dashboard>

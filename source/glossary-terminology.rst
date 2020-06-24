@@ -52,3 +52,4 @@ Glossary
 
    `NUMA <glossary-terminology.html#numa>`_
       Non-Uniform Memory Access.
+
