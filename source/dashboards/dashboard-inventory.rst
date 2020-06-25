@@ -48,7 +48,7 @@ You can remove items from the inventory.
    .. image:: /.res/graphics/png/inventory-delete-object.png
       :scale: 60%
 
-#. Click :guilabel:`Delete object`. The interface will ask you to confirm the operation:
+#. Click :guilabel:`Delete`. The interface will ask you to confirm the operation:
 
    .. image:: /.res/graphics/png/inventory-confirm-delete.png
       :scale: 30%
