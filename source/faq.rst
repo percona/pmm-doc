@@ -46,7 +46,7 @@ The minimum memory requirement is 2 GB for one monitored database node.
 Any modern 64-bit Linux distribution. It is tested on the latest versions of Debian, Ubuntu, CentOS, and Red Hat Enterprise Linux.
 
 A minimum of 100 MB of storage is required for installing the PMM Client package.  With a good connection to PMM Server, additional storage is not required.  However, the client needs to store any collected data that it cannot dispatch immediately, so additional storage may be required if the connection is unstable or the throughput is low.
-
+(Caching only applies to Query Analytics data; Prometheus data is never cached on the client side.)
 
 
 .. _data-retention:
@@ -91,7 +91,7 @@ What privileges are required to monitor a MySQL instance?
 .. code-block::
 
    GRANT SELECT, PROCESS, SUPER, REPLICATION CLIENT, RELOAD ON *.* TO 'pmm'@'localhost';
-   GRANT SELECT ON performance_schema.* TO 'pmm'@'localhost';
+
 
 (See :ref:`pmm.conf-mysql.user-account.creating`.)
 
@@ -101,7 +101,7 @@ What privileges are required to monitor a MySQL instance?
 Can I monitor multiple service instances?
 *****************************************
 
-You can add multiple instances of MySQL or some other service to be monitored from one PMM Client. In this case, you must provide a unique port or socket for each instance, and specify a unique name for each.  (If a name is not provided, PMM uses the name of the PMM Client host.)
+You can add multiple instances of MySQL or some other service to be monitored from one PMM Client. In this case, you must provide a unique port and IP address, or a socket for each instance, and specify a unique name for each.  (If a name is not provided, PMM uses the name of the PMM Client host.)
 
 For example, to add complete MySQL monitoring for two local MySQL servers, the commands would be:
 
@@ -182,19 +182,17 @@ How do I set up Alerting in PMM?
 ********************************
 
 When a monitored service metric reaches a defined threshold, PMM Server can trigger alerts for it either using the Grafana Alerting feature or by using an external Alertmanager, a high-performance solution developed by the Prometheus project to handle alerts sent by Prometheus.
-(Both are advanced features that require knowledge of third-party tools.)
 
 With these methods you must configure alerting rules that define conditions under which an alert should be triggered, and the channel used to send the alert (e.g. email).
 
-Grafana Alerts are already integrated into PMM Server and may be simpler to get set up.
+Alerting in Grafana allows attaching rules to your dashboard panels.  Grafana Alerts are already integrated into PMM Server and may be simpler to get set up.
 
-Alertmanager allows the creation of more sophisticated alerting rules and can be easier to manage installations with a large number of hosts. This additional flexibility comes at the expense of simplicity and requires advanced knowledge of Alertmanager rules.
-
-Alerting in Grafana allows attaching rules to your dashboard panels.
+Alertmanager allows the creation of more sophisticated alerting rules and can be easier to manage installations with a large number of hosts. This additional flexibility comes at the expense of simplicity.
 
 .. note::
 
-   Percona cannot offer support for creating custom rules so you should already have a working Alertmanager instance prior to using this feature. (However, we are working hard to bring an integrated Alertmanager solution to make rule generation easy.)
+   We can only offer support for creating custom rules to Percona customers, so you should already have a working Alertmanager instance prior to using this feature.
+
 
 .. seealso::
 
