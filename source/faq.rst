@@ -7,7 +7,7 @@
 Frequently Asked Questions
 ##########################
 
-.. contents:: Contents
+.. contents::
    :local:
    :depth: 1
 
@@ -184,9 +184,7 @@ The default values are:
 How to set up Alerting in PMM?
 ******************************
 
-When a monitored service metric reaches a defined threshold, PMM Server can trigger alerts for it either using the Grafana Alerting feature
-
-or by using an external Alertmanager  (a high-performance solution developed by the Prometheus project to handle alerts sent by Prometheus).
+When a monitored service metric reaches a defined threshold, PMM Server can trigger alerts for it either using the Grafana Alerting feature or by using an external Alertmanager (a high-performance solution developed by the Prometheus project to handle alerts sent by Prometheus).
 
 With both methods you must configure alerting rules that define conditions under which an alert should be triggered, and the channel used to send the alert (e.g. email).
 

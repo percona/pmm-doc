@@ -25,6 +25,7 @@ Metrics resolution
 ******************
 
 Metrics are collected at three intervals representing low, medium and high resolutions.
+Short time intervals are regarded as high resolution metrics, while those at longer time intervals are low resolution.
 
 The default values are:
 
@@ -32,13 +33,9 @@ The default values are:
 - Medium: 10 seconds
 - High: 5 seconds
 
-Short time intervals are regarded as high resolution metrics, while those at longer time intervals are low resolution.
-
 The *Metrics Resolution* slider lets you choose from three preset combinations of intervals corresponding to high, medium, and low resolution (short, medium, and long collection periods).
 
-The presets are also labeled *Low*, *Medium*, and *High*.
-
-The slider tool-tip shows the collection time corresponding to each resolution.
+The slider tool-tip shows the collection time corresponding to each resolution setting.
 
 - Setting the slider to *Low* increases the time between collection, resulting in low-resolution metrics.
 
