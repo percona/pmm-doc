@@ -1,6 +1,3 @@
-.. include:: /.res/replace.txt
-
-
 .. _faq:
 
 ##########################
@@ -180,15 +177,14 @@ The default values are:
 .. _alertmanager:
 .. _how-to-setup-alerting-with-grafana:
 
-******************************
-How to set up Alerting in PMM?
-******************************
+********************************
+How do I set up Alerting in PMM?
+********************************
 
-When a monitored service metric reaches a defined threshold, PMM Server can trigger alerts for it either using the Grafana Alerting feature or by using an external Alertmanager (a high-performance solution developed by the Prometheus project to handle alerts sent by Prometheus).
-
-With both methods you must configure alerting rules that define conditions under which an alert should be triggered, and the channel used to send the alert (e.g. email).
-
+When a monitored service metric reaches a defined threshold, PMM Server can trigger alerts for it either using the Grafana Alerting feature or by using an external Alertmanager, a high-performance solution developed by the Prometheus project to handle alerts sent by Prometheus.
 (Both are advanced features that require knowledge of third-party tools.)
+
+With these methods you must configure alerting rules that define conditions under which an alert should be triggered, and the channel used to send the alert (e.g. email).
 
 Grafana Alerts are already integrated into PMM Server and may be simpler to get set up.
 
@@ -208,11 +204,11 @@ Alerting in Grafana allows attaching rules to your dashboard panels.
 
    - `PMM Alerting with Grafana: Working with Templated Dashboards <https://www.percona.com/blog/2017/02/02/pmm-alerting-with-grafana-working-with-templated-dashboards/>`_
 
-***************************************************************************
-How do I use a custom Prometheus configuration file inside of a PMM Server?
-***************************************************************************
+**********************************************************************
+How do I use a custom Prometheus configuration file inside PMM Server?
+**********************************************************************
 
-Normally, PMM Server fully manages `Prometheus configuration file <https://prometheus.io/docs/prometheus/latest/configuration/configuration/>`_.
+Normally, PMM Server fully manages the `Prometheus configuration file <https://prometheus.io/docs/prometheus/latest/configuration/configuration/>`_.
 
 However, some users may want to change the generated configuration to add additional scrape jobs, configure remote storage, etc.
 
