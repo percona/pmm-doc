@@ -56,11 +56,8 @@ A minimum of 100 MB of storage is required for installing the PMM Client package
 How to control data retention for PMM?
 **************************************
 
-By default, both Prometheus and QAN store time-series data for 30 days.
-
-Depending on your available disk space and requirements, you may need to adjust the data retention time.
-
-You can control data retention by the following way.
+By default, PMM stores time-series data for 30 days.
+Depending on your available disk space and requirements, you may need to adjust the data retention time:
 
 #. Select the PMM Settings dashboard in the main menu.
 

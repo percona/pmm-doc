@@ -37,14 +37,15 @@ The *Metrics Resolution* slider lets you choose from three preset combinations o
 
 The slider tool-tip shows the collection time corresponding to each resolution setting.
 
-- Setting the slider to *Low* increases the time between collection, resulting in low-resolution metrics.
+- Setting the slider to *Low* increases the time between collection, resulting in low-resolution metrics (and lower disk usage).
 
-- Setting the slider to *High* decreases the time between collection, resulting in high-resolution metrics.
+- Setting the slider to *High* decreases the time between collection, resulting in high-resolution metrics (and higher disk usage).
 
 
 .. note:: 
 
    If there is poor network connectivity between PMM Server and PMM Client, or between PMM Client and the database server it is monitoring, scraping every second may not be possible when the network latency is greater than 1 second.
+
 
 
 .. _server-admin-gui-telemetry:
