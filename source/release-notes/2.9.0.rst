@@ -1,0 +1,27 @@
+.. _PMM-2.9.0:
+
+================================================================================
+*Percona Monitoring and Management* 2.9.0
+================================================================================
+
+:Date: July 13, 2020
+:Installation: `Installing Percona Monitoring and Management <https://www.percona.com/doc/percona-monitoring-and-management/2.x/install/index-server.html>`_
+
+*PMM* (`Percona Monitoring and Management <https://www.percona.com/doc/percona-monitoring-and-management/index.html>`_)
+is a free and open-source platform for managing and monitoring MySQL, MongoDB, and PostgreSQL
+performance.
+
+Improvements
+================================================================================
+
+* :jirabug:`PMM-1027`: New dashboard: MySQL User Details (INFORMATION_SCHEMA.CLIENT_STATISTICS)
+
+
+
+Bugs Fixed
+================================================================================
+
+* :jirabug:`PMM-6184`: MongoDB Instances Compare dashboard shows MySQL metric
+* :jirabug:`PMM-6175`: Node Overview dashboard shows unit for unitless value 'Top I/O Load'
+
+
