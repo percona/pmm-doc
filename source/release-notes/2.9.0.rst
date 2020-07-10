@@ -11,17 +11,32 @@
 is a free and open-source platform for managing and monitoring MySQL, MongoDB, and PostgreSQL
 performance.
 
+New Features
+================================================================================
+
+* :jirabug:`PMM-6124`: MongoDB Replica and Cluster dashboards
+* :jirabug:`PMM-5563`: Add annotation per Service and per Node to PMM2
+
+
+
 Improvements
 ================================================================================
 
 * :jirabug:`PMM-1027`: New dashboard: MySQL User Details (INFORMATION_SCHEMA.CLIENT_STATISTICS)
+* :jirabug:`PMM-6114`: Improve ordering in Inventory table (Thanks to user debug for reporting this issue)
+* :jirabug:`PMM-6147`: Update Grafana plugins to latest versions
 
 
 
 Bugs Fixed
 ================================================================================
 
+* :jirabug:`PMM-5800`: QAN explain and tables tab not working after metrics agent removal
+* :jirabug:`PMM-6198`: Annotation is not displayed only for service
 * :jirabug:`PMM-6184`: MongoDB Instances Compare dashboard shows MySQL metric
+* :jirabug:`PMM-5941`: Remove stacking on MySQL Instances Overview - Network Traffic graphs
+* :jirabug:`PMM-6194`: Set uid for Advanced Data Exploration dashboard
+* :jirabug:`PMM-6191`: Fix Prometheus Process CPU Usage formulas
 * :jirabug:`PMM-6175`: Node Overview dashboard shows unit for unitless value 'Top I/O Load'
 
 
