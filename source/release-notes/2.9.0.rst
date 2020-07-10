@@ -14,8 +14,8 @@ performance.
 New Features
 ================================================================================
 
-* :jirabug:`PMM-6124`: MongoDB Replica and Cluster dashboards
-* :jirabug:`PMM-5563`: Add annotation per Service and per Node to PMM2
+* :jirabug:`PMM-6124`: MongoDB Replica Set and Cluster Summary dashboards
+* :jirabug:`PMM-5563`: Per-Service and per-Node Annotations
 
 
 
@@ -23,7 +23,7 @@ Improvements
 ================================================================================
 
 * :jirabug:`PMM-1027`: New dashboard: MySQL User Details (INFORMATION_SCHEMA.CLIENT_STATISTICS)
-* :jirabug:`PMM-6114`: Improve ordering in Inventory table (Thanks to user debug for reporting this issue)
+* :jirabug:`PMM-6114`: Sort Agents, Nodes, and Services alphabetically by name in Inventory page (Thanks to user debug for reporting this issue)
 * :jirabug:`PMM-6147`: Update Grafana plugins to latest versions
 
 
@@ -31,12 +31,12 @@ Improvements
 Bugs Fixed
 ================================================================================
 
-* :jirabug:`PMM-5800`: QAN explain and tables tab not working after metrics agent removal
-* :jirabug:`PMM-6198`: Annotation is not displayed only for service
+* :jirabug:`PMM-5800`: QAN explain and tables tabs not working after removing MySQL metrics agent
+* :jirabug:`PMM-6198`: Annotation intended only for Service also appears on Node dashboards
 * :jirabug:`PMM-6184`: MongoDB Instances Compare dashboard shows MySQL metric
-* :jirabug:`PMM-5941`: Remove stacking on MySQL Instances Overview - Network Traffic graphs
-* :jirabug:`PMM-6194`: Set uid for Advanced Data Exploration dashboard
-* :jirabug:`PMM-6191`: Fix Prometheus Process CPU Usage formulas
+* :jirabug:`PMM-5941`: Stacked Incoming/Outgoing Network Traffic graphs in MySQL Instances Overview dashboard prevents comparison
+* :jirabug:`PMM-6194`: Missing UID for Advanced Data Exploration dashboard
+* :jirabug:`PMM-6191`: Incorrect computation for Prometheus Process CPU Usage panel values in Prometheus dashboard
 * :jirabug:`PMM-6175`: Node Overview dashboard shows unit for unitless value 'Top I/O Load'
 
 
