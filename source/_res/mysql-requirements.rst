@@ -71,9 +71,7 @@ version of MySQL:
    log_slow_admin_statements=ON
    log_slow_slave_statements=ON
 
-.. _pmm.conf-mysql.user-account.creating:
-
-`Creating a MySQL User Account to Be Used with PMM <services-mysql.html#pmm-conf-mysql-user-account-creating>`_
+Creating a MySQL User Account to Be Used with PMM
 =========================================================================================================================
 
 When adding a MySQL instance to monitoring, you can specify the MySQL

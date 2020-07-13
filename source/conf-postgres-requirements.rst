@@ -1,3 +1,5 @@
+:orphan:
+
 .. _conf-postgresql-requirements:
 
 #######################

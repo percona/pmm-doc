@@ -85,13 +85,9 @@ PMM Server runs ``logrotate`` on a daily basis to rotate NGINX logs and keeps up
 What privileges are required to monitor a MySQL instance?
 *********************************************************
 
-.. code-block::
+.. code-block:: sql
 
    GRANT SELECT, PROCESS, SUPER, REPLICATION CLIENT, RELOAD ON *.* TO 'pmm'@'localhost';
-
-
-(See :ref:`pmm.conf-mysql.user-account.creating`.)
-
 
 
 *****************************************

@@ -5,8 +5,6 @@ In |abbr.qan|, you can monitor |mongodb| metrics and |mongodb| queries. Run the
 |pmm-admin.add| command to use these monitoring services
 (for more information, see :ref:`Adding MongoDB Service Monitoring<pmm.pmm-admin.mongodb.add-mongodb>`).
 
-.. _pmm.conf.mongodb.supported-version:
-
 .. rubric:: Supported versions of |mongodb|
 
 |abbr.qan| supports |mongodb| version 3.2 or higher.
@@ -14,8 +12,6 @@ In |abbr.qan|, you can monitor |mongodb| metrics and |mongodb| queries. Run the
 .. contents::
    :local:
    :depth: 1
-
-.. _pmm.mongodb.conf.essential-permission.setting-up:
 
 Setting Up the Required Permissions
 ================================================================================
@@ -27,13 +23,9 @@ set up the |mongodb-exporter| user. This user should be assigned the
 The following is an example you can run in the |mongodb| shell, to add the
 |mongodb-exporter| user and assign the appropriate roles:
 
-.. _code.pmm.mongodb.conf.essential-permission.setting-up.db.get-sibling-db.create-user:
-
 .. include:: /.res/code/db.get-sibling-db.create-user.txt
 
-.. _pmm.mongodb.configuring.profiling.enabling:
-
-`Enabling Profiling <conf-mongodb.html#pmm-qan-mongodb-configuring-profiling-enabling>`_
+Enabling Profiling
 =========================================================================================
 
 For `MongoDB`_ to work correctly with |abbr.qan|, you need to enable profiling
@@ -46,9 +38,8 @@ displays the following warning:
    profiling is not enabled by default because it may reduce the performance of your
    |mongodb| server.
 
-.. _pmm.mongodb.conf.profiling.command-line.enable:
 
-`Enabling Profiling on Command Line <conf-mongodb.html#pmm-qan-mongodb-conf-profiling-command-line-enable>`_
+Enabling Profiling on Command Line
 ------------------------------------------------------------------------------------------------------------
 
 You can enable profiling from command line when you start the :program:`mongod`
@@ -56,9 +47,6 @@ server. This command is useful if you start :program:`mongod` manually.
 
 |tip.run-this.root|
 
-.. _pmm.mongodb.conf.profiling.command_line.enable.mongod.dbpath.profile.slowms.ratelimit:
-
-.. The following does not render on the live version
 
 .. include:: /.res/code/mongod.dbpath.profile.slowms.ratelimit.txt
 
@@ -82,9 +70,8 @@ However, the accuracy of the collected information decreases as well.
    |opt.rate-limit| in `PSMDB documentation
    <https://www.percona.com/doc/percona-server-for-mongodb/LATEST/rate-limit.html>`_
 
-.. _pmm.mongodb.configuring.configuration-file.profiling.enabling:
 
-`Enabling Profiling in the Configuration File <conf-mongodb.html#pmm-qan-mongodb-configuring-configuration-file-profiling-enabling>`_
+Enabling Profiling in the Configuration File
 -------------------------------------------------------------------------------------------------------------------------------------
 
 If you run ``mongod`` as a service, you need to use the configuration file
@@ -92,8 +79,6 @@ which by default is |etc.mongod.conf|.
 
 In this file, you need to locate the *operationProfiling:* section and add the
 following settings:
-
-.. _pmm.mongodb.configuring.configuration-file.profiling.enabling.operationprofiling:
 
 .. code-block:: yaml
 
@@ -109,11 +94,7 @@ your lines is important as it defines levels of nesting.
 
 Restart the *mongod* service to enable the settings.
 
-.. _pmm.mongodb.configuring.configuration-file.profiling.enabling.service.mongod.restart:
-
 |tip.run-this.root|
-
-.. The following does not show up on the live version
 
 .. include:: /.res/code/service.mongod.restart.txt
 

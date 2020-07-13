@@ -10,5 +10,4 @@ so that maximum amount of information about each captured query is stored.
 
 .. seealso::
 
-   |mysql| Documentation
-      `Setting variables <https://dev.mysql.com/doc/refman/5.7/en/set-variable.html>`_
+   MySQL Documentation: `Setting variables <https://dev.mysql.com/doc/refman/5.7/en/set-variable.html>`_

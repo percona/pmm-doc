@@ -1,3 +1,5 @@
+:orphan:
+
 .. _conf-mongodb-requirements:
 
 ####################
