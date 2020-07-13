@@ -14,8 +14,10 @@ performance.
 New Features
 ================================================================================
 
-* :jirabug:`PMM-6124`: MongoDB Replica Set and Cluster Summary dashboards
-* :jirabug:`PMM-5563`: Per-Service and per-Node Annotations
+* :jirabug:`PMM-6124`: New MongoDB Replica Set and Cluster Summary dashboards
+* :jirabug:`PMM-4192`: JSON format for MongoDB EXPLAIN
+* :jirabug:`PMM-5604`: User interface for MongoDB EXPLAIN
+* :jirabug:`PMM-5563`: Per-Service and per-Node Annotations (This completes the work on improvements to the Annotation functionality.)
 
 
 
@@ -32,7 +34,6 @@ Bugs Fixed
 ================================================================================
 
 * :jirabug:`PMM-5800`: QAN explain and tables tabs not working after removing MySQL metrics agent
-* :jirabug:`PMM-6198`: Annotation intended only for Service also appears on Node dashboards
 * :jirabug:`PMM-6184`: MongoDB Instances Compare dashboard shows MySQL metric
 * :jirabug:`PMM-5941`: Stacked Incoming/Outgoing Network Traffic graphs in MySQL Instances Overview dashboard prevents comparison
 * :jirabug:`PMM-6194`: Missing UID for Advanced Data Exploration dashboard
