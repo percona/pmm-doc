@@ -26,6 +26,7 @@ Improvements
 
 * :jirabug:`PMM-1027`: New dashboard: MySQL User Details (INFORMATION_SCHEMA.CLIENT_STATISTICS)
 * :jirabug:`PMM-6114`: Sort Agents, Nodes, and Services alphabetically by name in Inventory page (Thanks to user debug for reporting this issue)
+* :jirabug:`PMM-6169`: Tooltips for truncated names in Filter panel
 * :jirabug:`PMM-6147`: Update Grafana plugins to latest versions
 
 
