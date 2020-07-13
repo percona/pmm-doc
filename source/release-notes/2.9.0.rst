@@ -34,6 +34,7 @@ Bugs Fixed
 ================================================================================
 
 * :jirabug:`PMM-5800`: QAN explain and tables tabs not working after removing MySQL metrics agent
+* :jirabug:`PMM-5812`: Prometheus relabeling broken (relabel_configs unmarshal errors) (Thanks to user b4bufr1k for reporting this issue)
 * :jirabug:`PMM-6184`: MongoDB Instances Compare dashboard shows MySQL metric
 * :jirabug:`PMM-5941`: Stacked Incoming/Outgoing Network Traffic graphs in MySQL Instances Overview dashboard prevents comparison
 * :jirabug:`PMM-6194`: Missing UID for Advanced Data Exploration dashboard
