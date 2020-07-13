@@ -1,4 +1,4 @@
-.. _pmm.qan-mongodb.conf:
+.. _conf-mongodb-requirements:
 
 MongoDB requirements
 ********************************************************************************
@@ -20,7 +20,7 @@ In |abbr.qan|, you can monitor |mongodb| metrics and |mongodb| queries. Run the
    :local:
    :depth: 1
 
-.. _pmm.qan-mongodb.conf.essential-permission.setting-up:
+.. _pmm.mongodb.conf.essential-permission.setting-up:
 
 Setting Up the Required Permissions
 ================================================================================
@@ -32,11 +32,11 @@ set up the |mongodb-exporter| user. This user should be assigned the
 The following is an example you can run in the |mongodb| shell, to add the
 |mongodb-exporter| user and assign the appropriate roles:
 
-.. _code.pmm.qan-mongodb.conf.essential-permission.setting-up.db.get-sibling-db.create-user:
+.. _code.pmm.mongodb.conf.essential-permission.setting-up.db.get-sibling-db.create-user:
 
-.. include:: .res/code/db.get-sibling-db.create-user.txt
+.. include:: /.res/code/db.get-sibling-db.create-user.txt
 
-.. _pmm.qan-mongodb.configuring.profiling.enabling:
+.. _pmm.mongodb.configuring.profiling.enabling:
 
 `Enabling Profiling <conf-mongodb.html#pmm-qan-mongodb-configuring-profiling-enabling>`_
 =========================================================================================
@@ -51,7 +51,7 @@ displays the following warning:
    profiling is not enabled by default because it may reduce the performance of your
    |mongodb| server.
 
-.. _pmm.qan-mongodb.conf.profiling.command-line.enable:
+.. _pmm.mongodb.conf.profiling.command-line.enable:
 
 `Enabling Profiling on Command Line <conf-mongodb.html#pmm-qan-mongodb-conf-profiling-command-line-enable>`_
 ------------------------------------------------------------------------------------------------------------
@@ -61,11 +61,11 @@ server. This command is useful if you start :program:`mongod` manually.
 
 |tip.run-this.root|
 
-.. _pmm.qan-mongodb.conf.profiling.command_line.enable.mongod.dbpath.profile.slowms.ratelimit:
+.. _pmm.mongodb.conf.profiling.command_line.enable.mongod.dbpath.profile.slowms.ratelimit:
 
 .. The following does not render on the live version
 
-.. include:: .res/code/mongod.dbpath.profile.slowms.ratelimit.txt
+.. include:: /.res/code/mongod.dbpath.profile.slowms.ratelimit.txt
 
 Note that you need to specify a path to an existing directory that stores
 database files with the |opt.dbpath|. When the |opt.profile| option is set to
@@ -87,7 +87,7 @@ However, the accuracy of the collected information decreases as well.
    |opt.rate-limit| in `PSMDB documentation
    <https://www.percona.com/doc/percona-server-for-mongodb/LATEST/rate-limit.html>`_
 
-.. _pmm.qan-mongodb.configuring.configuration-file.profiling.enabling:
+.. _pmm.mongodb.configuring.configuration-file.profiling.enabling:
 
 `Enabling Profiling in the Configuration File <conf-mongodb.html#pmm-qan-mongodb-configuring-configuration-file-profiling-enabling>`_
 -------------------------------------------------------------------------------------------------------------------------------------
@@ -98,7 +98,7 @@ which by default is |etc.mongod.conf|.
 In this file, you need to locate the *operationProfiling:* section and add the
 following settings:
 
-.. _pmm.qan-mongodb.configuring.configuration-file.profiling.enabling.operationprofiling:
+.. _pmm.mongodb.configuring.configuration-file.profiling.enabling.operationprofiling:
 
 .. code-block:: yaml
 
@@ -108,20 +108,19 @@ following settings:
       rateLimit: 100
 
 These settings affect ``mongod`` in the same way as the command line
-options described in section
-:ref:`pmm.qan-mongodb.conf.profiling.command_line.enable`. Note that the
+options. Note that the
 configuration file is in the `YAML`_ format. In this format the indentation of
 your lines is important as it defines levels of nesting.
 
 Restart the *mongod* service to enable the settings.
 
-.. _pmm.qan-mongodb.configuring.configuration-file.profiling.enabling.service.mongod.restart:
+.. _pmm.mongodb.configuring.configuration-file.profiling.enabling.service.mongod.restart:
 
 |tip.run-this.root|
 
 .. The following does not show up on the live version
 
-.. include:: .res/code/service.mongod.restart.txt
+.. include:: /.res/code/service.mongod.restart.txt
 
 .. admonition:: |related-information|
 

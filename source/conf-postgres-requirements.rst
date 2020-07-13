@@ -1,4 +1,4 @@
-.. _conf-mysql-requirements:
+.. _conf-postgres-requirements:
 
 PostgreSQL requirements
 ********************************************************************************

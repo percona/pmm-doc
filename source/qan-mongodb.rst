@@ -23,7 +23,7 @@ complex object is stored together.
 |qan| supports monitoring |mongodb| queries. Although |mongodb| is not a relational
 database management system, you analyze its databases and collections in the
 same interface using the same tools. By using the familiar and intuitive
-interface of :ref:`QAN <QAN>` you can analyze the efficiency of your application
+interface of QAN you can analyze the efficiency of your application
 reading and writing data in the collections of your |mongodb| databases.
 
 .. seealso:: 

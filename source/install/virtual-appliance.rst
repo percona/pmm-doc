@@ -40,11 +40,9 @@ The virtual machine used for the appliance runs |centos| 7.
    The appliance must run in a network with DHCP, which will automatically
    assign an IP address for it.
 
-   To assign a static IP manually, you need to acquire the root access as
-   described in :ref:`pmm.deploying.server.virtual-appliance.root-password.setting`.
+   To assign a static IP manually, you need to acquire the root access.
    Then, see the documentation for the operating system for further
-   instructions: `Configuring network interfaces in CentOS
-   <https://www.centos.org/docs/5/html/Deployment_Guide-en-US/s1-networkscripts-interfaces.html>`_
+   instructions: `Configuring network interfaces in CentOS <https://www.centos.org/docs/5/html/Deployment_Guide-en-US/s1-networkscripts-interfaces.html>`_
 
 .. _pmm.deploying.server.virtual-appliance.supported-platform.virtual-appliance.setting-up:
 
@@ -54,7 +52,7 @@ The virtual machine used for the appliance runs |centos| 7.
    :maxdepth: 1
    :glob:
       
-   ova.*
+   ova-*
 
 .. _pmm.deploying.server.virtual-appliance.pmm-server.ip-address.identifying:
 

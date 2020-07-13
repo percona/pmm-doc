@@ -64,6 +64,7 @@
 .. |mmapv1| replace:: MMAPv1
 .. |mongodb-exporter| replace:: :program:`mongodb_exporter`
 .. |mongodb| replace:: MongoDB
+.. |MongoDB| replace:: MongoDB
 .. |mongod| replace:: :program:`mongod`
 .. |my.cnf| replace:: :file:`my.cnf`
 .. |myisam| replace:: MyISAM
@@ -74,6 +75,7 @@
 .. |mysqld-exporter| replace:: :program:`mysqld_exporter`
 .. |mysqld| replace:: :program:`mysqld`
 .. |mysql| replace:: MySQL
+.. |MySQL| replace:: MySQL
 .. |node-exporter| replace:: :program:`node_exporter`
 .. |oracle-linux| replace:: Oracle Linux
 .. |oracle| replace:: Oracle
@@ -90,7 +92,6 @@
 .. |perl| replace:: Perl
 .. |ping| replace:: :program:`ping`
 .. |pmm-add-instance| replace:: *PMM Add Instance*
-.. |pmm-admin| replace:: :program:`pmm-admin`
 .. |pmm-client| replace:: PMM Client
 .. |pmm-linux-metrics.service| replace:: :file:`pmm-linux-metrics-42000.service`
 .. |pmm-mysql-metrics.service| replace:: :file:`pmm-mysql-metrics-42002.service`
@@ -133,7 +134,6 @@
 .. |srv.nginx| replace:: :file:`/srv/nginx/`
 .. |stt| replace:: Security Threat Tool                         
 .. |srv.update.main.yml| replace:: :file:`/srv/update/main.yml`
-.. |stt| replace:: Security Threat Tool
 .. |sudo| replace:: :program:`sudo` 
 .. |summary| replace:: *Summary*
 .. |systemd| replace:: :program:`systemd`
@@ -440,6 +440,7 @@
 
 .. pmm-admin commands (pmm-admin)
 
+.. |pmm-admin| replace:: ``pmm-admin``
 .. |pmm-admin.add| replace:: :program:`pmm-admin add`
 .. |pmm-admin.annotate| replace:: :program:`pmm-admin annotate`
 .. |pmm-admin.check-network| replace:: :program:`pmm-admin check-network`
