@@ -1,3 +1,5 @@
+:orphan:
+
 .. _conf-mysql-requirements:
 
 MySQL requirements

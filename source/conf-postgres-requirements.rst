@@ -1,3 +1,5 @@
+:orphan:
+
 .. _conf-postgres-requirements:
 
 PostgreSQL requirements
