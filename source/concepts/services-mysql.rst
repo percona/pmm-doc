@@ -1,8 +1,7 @@
+.. _services-mysql-requirements:
+
 ##################
 MySQL requirements
 ##################
 
-.. raw:: html
-
-    <!-- Redirect to new location -->
-    <script type="text/javascript">window.location.href = "../conf-mysql-requirements.html";</script>
+.. include:: /_res/mysql-requirements.rst

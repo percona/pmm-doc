@@ -1,8 +1,7 @@
+.. _services-mongodb-requirements:
+
 ####################
 MongoDB requirements
 ####################
 
-.. raw:: html
-
-    <!-- Redirect to new location -->
-    <script type="text/javascript">window.location.href = "../conf-mongodb.html";</script>
+.. include:: /_res/mongodb-requirements.rst
