@@ -14,7 +14,7 @@ performance.
 New Features
 ================================================================================
 
-* :jirabug:`PMM-6124`: New dashboards: MongoDB Replica Set, MongoDB Cluster Summary
+* :jirabug:`PMM-6124`: New dashboards: MongoDB Replica Set Summary and MongoDB Cluster Summary
 * :jirabug:`PMM-4192`: JSON format for MongoDB EXPLAIN
 * :jirabug:`PMM-5604`: User interface for MongoDB EXPLAIN
 * :jirabug:`PMM-5563`: Per-Service and per-Node Annotations (This completes the work on improvements to the Annotation functionality.)
