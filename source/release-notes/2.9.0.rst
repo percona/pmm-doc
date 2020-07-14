@@ -11,11 +11,16 @@
 is a free and open-source platform for managing and monitoring MySQL, MongoDB, and PostgreSQL
 performance.
 
+Highlights
+==========
+
+This release brings a major rework of the Query Analytics (QAN) component, completing the migration from Angular to React, and adding new UI functionality and features. You can read more in the accompanying blog post (`here < https://www.percona.com/blog/2020/07/13/qan-release-post/>`_).
+
 New Features
 ================================================================================
 
 * :jirabug:`PMM-6124`: New dashboards: MongoDB Replica Set Summary and MongoDB Cluster Summary
-* :jirabug:`PMM-4192`: JSON format for MongoDB EXPLAIN
+* :jirabug:`PMM-1027`: New dashboard: MySQL User Details (INFORMATION_SCHEMA.CLIENT_STATISTICS)
 * :jirabug:`PMM-5604`: User interface for MongoDB EXPLAIN
 * :jirabug:`PMM-5563`: Per-Service and per-Node Annotations (This completes the work on improvements to the Annotation functionality.)
 
@@ -24,9 +29,7 @@ New Features
 Improvements
 ================================================================================
 
-* :jirabug:`PMM-1027`: New dashboard: MySQL User Details (INFORMATION_SCHEMA.CLIENT_STATISTICS)
 * :jirabug:`PMM-6114`: Sort Agents, Nodes, and Services alphabetically by name in Inventory page (Thanks to user debug for reporting this issue)
-* :jirabug:`PMM-6169`: Tooltips for truncated names in Filter panel
 * :jirabug:`PMM-6147`: Update Grafana plugins to latest versions
 
 
