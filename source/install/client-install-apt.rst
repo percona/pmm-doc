@@ -10,7 +10,6 @@ manager to install PMM client from the official Percona software repository.
 Percona provides ``.deb`` packages for 64-bit versions of the following
 distributions:
 
-* Debian 8 (jessie)
 * Debian 9 (stretch)
 * Debian 10 (buster)
 * Ubuntu 16.04 LTS (Xenial Xerus)
