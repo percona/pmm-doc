@@ -37,11 +37,4 @@ You will be proposed to change the default password at login if you didn't it.
 .. note:: You will use the same credentials at `connecting <https://www.percona.com/doc/percona-monitoring-and-management/2.x/manage/client-config.html>`_ your |pmm-client| to |pmm-server|.
 
 
-.. only:: showhidden
-
-	You can also check if |pmm-server| is available requesting the /ping
-	URL as in the following example:
-
-	.. include:: ../.res/code/curl.ping.txt
-
-.. include:: ../.res/replace.txt
+.. include:: /.res/replace.txt

@@ -17,10 +17,6 @@ Use the |pmm-admin.rm| command to remove monitoring services.
 When you remove a service,
 collected data remains in |metrics-monitor| on |pmm-server|.
 
-.. only:: showhidden
-
-	To remove the collected data, use the **pmm-admin purge** command.
-
 .. _pmm-admin.remove.services:
 
 .. rubric:: SERVICES

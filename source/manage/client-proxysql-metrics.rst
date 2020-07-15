@@ -43,34 +43,4 @@ priority. Here is the previous example modified to use these flags for both host
 
      pmm-admin add proxysql --username=pmm --password=pmm --service-name=my-new-proxysql --socket=/tmp/proxysql_admin.sock
 
-.. only:: showhidden
-
-	.. _pmm-admin.add-proxysql-metrics.options:
-
-	.. rubric:: OPTIONS
-
-	The following option can be used with the |opt.proxysql-metrics| alias:
-
-	|opt.dsn|
-	  Specify the ProxySQL connection DSN.
-	  By default, it is ``stats:stats@tcp(localhost:6032)/``.
-	
-	You can also use
-	:ref:`global options that apply to any other command
-	<pmm-admin.options>`,
-	as well as
-	:ref:`options that apply to adding services in general
-	<pmm-admin.add-options>`.
-
-	For more information, run
-	|pmm-admin.add|
-	|opt.proxysql-metrics|
-	|opt.help|.
-
-	.. seealso::
-
-	   Default ports
-	      :ref:`Ports <Ports>` in :ref:`pmm.glossary-terminology-reference`
-
-
-.. include:: ../.res/replace.txt
+.. include:: /.res/replace.txt
