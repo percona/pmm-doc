@@ -1,56 +1,66 @@
 .. _install-client-apt:
 
-Installing DEB packages using apt-get
-================================================================================
+#########################################
+Installing DEB packages using ``apt-get``
+#########################################
 
-If you are running a DEB-based |linux| distribution, use the |apt| package
-manager to install |pmm-client| from the official Percona software repository.
+If you are running a DEB-based Linux distribution, you can use the ``apt`` package
+manager to install PMM client from the official Percona software repository.
 
-|percona| provides :file:`.deb` packages for 64-bit versions of the following
+Percona provides ``.deb`` packages for 64-bit versions of the following
 distributions:
 
-.. include:: ../.res/contents/list.pmm-client.supported-apt-platform.txt
+* Debian 8 (jessie)
+* Debian 9 (stretch)
+* Debian 10 (buster)
+* Ubuntu 16.04 LTS (Xenial Xerus)
+* Ubuntu 18.04 (Bionic Beaver)
+* Ubuntu 20.04 (Focal Fossa)
 
 .. note::
 
-   |pmm-client| should work on other DEB-based distributions, but it is tested
+   Although PMM client should work on other DEB-based distributions, it is tested
    only on the platforms listed above.
 
-To install the |pmm-client| package, complete the following
-procedure. |tip.run-all.root|:
+To install the PMM client package, complete the following
+procedure.
 
-1. Configure |percona| repositories using the `percona-release <https://www.percona.com/doc/percona-repo-config/percona-release.html>`_ tool. First you’ll need to download and install the official percona-release package from Percona::
+1. Configure Percona repositories using the `percona-release <https://www.percona.com/doc/percona-repo-config/percona-release.html>`_ tool. First you’ll need to download and install the official percona-release package from Percona:
 
-     wget https://repo.percona.com/apt/percona-release_latest.generic_all.deb
-     sudo dpkg -i percona-release_latest.generic_all.deb
+   .. code-block:: bash
 
-   .. raw:: html
+      wget https://repo.percona.com/apt/percona-release_latest.generic_all.deb
+      sudo dpkg -i percona-release_latest.generic_all.deb
 
-      <script id="asciicast-LaIiFlGWZdWAMPf4p4OUEHrjB" src="https://asciinema.org/a/LaIiFlGWZdWAMPf4p4OUEHrjB.js" async data-theme="solarized-light" data-rows="8"></script>
-
-   .. note:: If you have previously enabled the experimental or testing
+   .. note::
+   
+      If you have previously enabled the experimental or testing
       Percona repository, don't forget to disable them and enable the release
-      component of the original repository as follows::
+      component of the original repository as follows:
+
+      .. code-block:: bash
 
          sudo percona-release disable all
          sudo percona-release enable original release
 
    See `percona-release official documentation <https://www.percona.com/doc/percona-repo-config/percona-release.html>`_ for details.
 
-#. Install the ``pmm2-client`` package::
+2. Install the PMM client package:
 
-     sudo apt-get update
-     sudo apt-get install pmm2-client
+   .. code-block:: bash
 
-   .. raw:: html
+      sudo apt-get update
+      sudo apt-get install pmm2-client
 
-      <script id="asciicast-ZBfCORUanwrZMPD3hkiHYKBkv" src="https://asciinema.org/a/ZBfCORUanwrZMPD3hkiHYKBkv.js" async data-theme="solarized-light" data-rows="8"></script>
+3. Register your Node:
 
-#. Once PMM Client is installed, run the ``sudo pmm-admin config`` command with your PMM Server IP address to register your Node within the Server:
+   .. code-block:: bash
 
-   .. include:: ../.res/code/pmm-admin.config.server.url.dummy.txt
+      pmm-admin config --server-insecure-tls --server-url=https://admin:admin@<IP Address>:443
 
-   You should see the following::
+4. You should see the following output:
+
+   .. code-block:: text
 
      Checking local pmm-agent status...
      pmm-agent is running.
@@ -60,4 +70,6 @@ procedure. |tip.run-all.root|:
      Reloading pmm-agent configuration...
      Configuration reloaded.
 
-.. include:: ../.res/replace.txt
+.. seealso::
+
+   https://www.percona.com/services/policies/percona-software-platform-lifecycle
