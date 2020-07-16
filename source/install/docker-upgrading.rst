@@ -121,6 +121,7 @@ so that the new version uses your existing data.
 
 You can also check that the PMM version has been updated in the PMM Server web interface.
 
+
 .. _pmm/docker/backup-container.removing:
 .. _backup-container-removing:
 
@@ -159,6 +160,7 @@ and restart it.
 .. code-block:: bash
 
    $ docker start pmm-server
+
 
 .. caution::
 
