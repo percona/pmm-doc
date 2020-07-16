@@ -104,9 +104,6 @@ follows:
       to add a monitoring service
 
 
-For more information, run:
-``pmm-admin add``
-``mysql``
-``--help``
+For more information, run: ``pmm-admin add mysql --help``
 
 
