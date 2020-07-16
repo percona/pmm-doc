@@ -1,25 +1,25 @@
 .. _update-server.docker:
 
-Updating |pmm-server| Using |docker|
+Updating PMM Server Using Docker
 ================================================================================
 
-To check the version of |pmm-server|, run |docker.ps| on the host.
+To check the version of PMM Server, run ``docker ps`` on the host.
 
-|tip.run-all.root|
+Run the following commands as root or by using the ``sudo`` command
 
 .. include:: ../.res/code/docker.ps.2-2-0.txt
 
-The version number is visible in the |gui.image| column. For a |docker|
-container created from the image tagged ``2``, the |gui.image| column
-contains ``2`` and not the specific version number of |pmm-server|.
+The version number is visible in the *Image* column. For a Docker
+container created from the image tagged ``2``, the *Image* column
+contains ``2`` and not the specific version number of PMM Server.
 
-The information about the currently installed version of |pmm-server| is
-available from the |srv.update.main.yml| file. You may extract the version
-number by using the |docker.exec| command:
+The information about the currently installed version of PMM Server is
+available from the ``/srv/update/main.yml`` file. You may extract the version
+number by using the ``docker exec`` command:
 
 .. include:: ../.res/code/docker.exec.it.pmm-server.head.txt
 
-To check if there exists a newer version of |pmm-server|,
+To check if there exists a newer version of PMM Server,
 visit `percona/pmm-server`_.
 
 .. _pmm.deploying.server.docker-container.renaming:
@@ -27,15 +27,15 @@ visit `percona/pmm-server`_.
 `Creating a backup version of the current pmm-server Docker container <docker-upgrading.html#container-renaming>`_
 ----------------------------------------------------------------------------------------------------------------------------
 
-You need to create a backup version of the current |opt.pmm-server| container if
+You need to create a backup version of the current ``pmm-server`` container if
 the update procedure does not complete successfully or if you decide not to
-upgrade your |pmm-server| after trying the new version.
+upgrade your PMM Server after trying the new version.
 
-The |docker.stop| command stops the currently running |opt.pmm-server| container:
+The ``docker stop`` command stops the currently running ``pmm-server`` container:
 
 .. include:: ../.res/code/docker.stop.pmm-server.txt
 
-The following command simply renames the current |opt.pmm-server| container to
+The following command simply renames the current ``pmm-server`` container to
 avoid name conflicts during the update procedure:
 
 .. include:: ../.res/code/docker.rename.pmm-server.pmm-server-backup.txt
@@ -45,11 +45,11 @@ avoid name conflicts during the update procedure:
 `Pulling a new Docker Image <docker-upgrading.html#image-pulling>`_
 --------------------------------------------------------------------------------
 
-|docker| images for all versions of |pmm| are available from
+Docker images for all versions of PMM are available from
 `percona/pmm-server`_
-|docker| repository.
+Docker repository.
 
-When pulling a newer |docker| image, you may either use a specific version
+When pulling a newer Docker image, you may either use a specific version
 number or the ``2`` image which always matches the highest version
 number. 
 
@@ -68,31 +68,31 @@ This example shows how to pull the latest PMM 2 version:
 `Creating a new Docker container based on the new image <docker-upgrading.html#container-creating>`_
 -------------------------------------------------------------------------------------------------------
 
-After you have pulled a new version of |pmm| from the |docker| repository, you can
-use |docker.run| to create a |opt.pmm-server| container using the new image.
+After you have pulled a new version of PMM from the Docker repository, you can
+use ``docker run`` to create a ``pmm-server`` container using the new image.
 
 .. include:: ../.res/code/docker.run.latest.txt
 
 .. important::
 
-   The |opt.pmm-server| container must be stopped before attempting |docker.run|.
+   The ``pmm-server`` container must be stopped before attempting ``docker run``.
 
-The |docker.run| command refers to the pulled image as the last parameter. If
-you used a specific version number when running |docker.pull| (see
+The ``docker run`` command refers to the pulled image as the last parameter. If
+you used a specific version number when running ``docker pull`` (see
 :ref:`pmm.server.docker-image.pulling`) replace ``2`` accordingly.
 
-Note that this command also refers to |opt.pmm-data| as the value of
-|opt.volumes-from| option. This way, your new version will continue to use the
+Note that this command also refers to ``pmm-data`` as the value of
+``--volumes-from`` option. This way, your new version will continue to use the
 existing data.
 
-.. warning:: Do not remove the |opt.pmm-data| container when updating,
+.. warning:: Do not remove the ``pmm-data`` container when updating,
 	     if you want to keep all collected data.
 
-Check if the new container is running using |docker.ps|.
+Check if the new container is running using ``docker ps``.
 
 .. include:: ../.res/code/docker.ps.1-5-0.txt
 
-Then, make sure that the |pmm| version has been updated by checking the |pmm-server| web interface.
+Then, make sure that the PMM version has been updated by checking the PMM Server web interface.
 
 .. _pmm/docker/backup-container.removing:
 
@@ -104,43 +104,43 @@ continupe using it. The backup container that you have stored
 (:ref:`pmm.deploying.server.docker-container.renaming`) is no longer needed in this
 case.
 
-To remove this backup container, you need the |docker.rm| command:
+To remove this backup container, you need the ``docker rm`` command:
 
 .. include:: ../.res/code/docker.rm.pmm-server-backup.txt
 
-As the parameter to |docker.rm|, supply the tag name of your backup container.
+As the parameter to ``docker rm``, supply the tag name of your backup container.
 
 .. _pmm/docker/previous-version.restoring:
 
 .. rubric:: **Restoring the previous version**
 
 If, for whatever reason, you decide to keep using the old version, you just need
-to stop and remove the new |opt.pmm-server| container.
+to stop and remove the new ``pmm-server`` container.
 
 .. include:: ../.res/code/docker.stop.pmm-server.rm.txt
 
-Now, rename the |opt.pmm-server-backup| to |opt.pmm-server|
+Now, rename the ``pmm-server-backup`` to ``pmm-server``
 (see :ref:`pmm.deploying.server.docker-container.renaming`) and start it.
 
 .. include:: ../.res/code/docker.start.pmm-server.txt
 
 .. warning::
 
-   Do not use the |docker.run| command to start the container. The |docker.run|
+   Do not use the ``docker run`` command to start the container. The ``docker run``
    command creates and then runs a new container.
 
-   To start a new container use the |docker.start| command.
+   To start a new container use the ``docker start`` command.
 
 .. seealso:: 
 
-   Setting up a |docker| container
+   Setting up a Docker container
       :ref:`pmm.server.docker-setting-up`
-   Backing Up the |pmm-server| |docker| container
+   Backing Up the PMM Server Docker container
       :ref:`pmm.server.docker-backing-up`
 
 .. References
 
 .. _`percona/pmm-server`: https://hub.docker.com/r/percona/pmm-server/tags/
    
-.. include:: ../.res/replace.txt
+
 
