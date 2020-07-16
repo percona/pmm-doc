@@ -22,8 +22,6 @@ This metric is best used for trends. If you notice the load average rising, it
 may be due to inefficient queries. In that case, you may further analyze your
 queries in QAN.
 
-**View all metrics of** |this-dashboard|
-
 .. seealso::
 
    Description of *load average* in the man page of the ``uptime`` command in Debian
@@ -40,8 +38,6 @@ server. This variable includes statements executed within stored programs,
 unlike the ``Questions`` variable. It does not count *COM_PING* or
 *COM_STATISTICS* commands.
 
-**View all metrics of** |this-dashboard|
-
 .. seealso::
 
    MySQL Server Status Variables: Queries
@@ -53,9 +49,3 @@ MySQL Traffic
 --------------------------------------------------------------------------------
 
 This metric shows the network traffic used by the MySQL process.
-
-**View all metrics of** |this-dashboard|
-
-.. |this-dashboard| replace:: :ref:`dashboard-cross-server-graphs`
-
-
