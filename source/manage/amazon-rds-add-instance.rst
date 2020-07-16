@@ -79,7 +79,7 @@ Following steps are needed to add an Amazon RDS database instance to PMM:
    hostname, as well as to disable basic and/or enhanced metrics collection for
    the RDS instance to reduce costs.
 
-We should allow users to disable basic and/or enhanced metrics when RDS instance is added. 
+We should allow users to disable basic and/or enhanced metrics when RDS instance is added.
 
    Also this section contains a database-specific flag, which would allow Query
    Analytics for the selected remote database:
@@ -97,7 +97,3 @@ We should allow users to disable basic and/or enhanced metrics when RDS instance
 
    AWS Documentation: Managing access keys of IAM users
       https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html
-
-.. |policy-name| replace:: *AmazonRDSforPMMPolicy*
-
-
