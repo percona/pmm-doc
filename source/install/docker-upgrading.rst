@@ -8,7 +8,7 @@ To check the version of PMM Server, run ``docker ps`` on the host.
 
 .. tip::
 
-   Run the following commands as root or by using the ``sudo`` command.
+   Run the commands in this section as root or by using the ``sudo`` command.
 
 **Example**
 
