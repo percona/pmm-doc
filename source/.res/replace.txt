@@ -1,4 +1,3 @@
-.. -*- mode: rst -*-
 .. |product| replace:: PMM
 .. |amazon-aurora| replace:: Amazon Aurora
 .. |amazon-cloudwatch| replace:: Amazon Cloudwatch
@@ -147,25 +146,16 @@
 .. |xml| replace:: XML
 .. |xtradb-cluster| replace:: XtraDB Cluster
 .. |yum| replace:: ``yum``
-
-.. Tips (tip)
-
 .. |tip.bug-fix-release-list| replace:: The following releases contain bug fixes only and supersede this release
 .. |tip.bug-fix-release| replace:: This release contains bug fixes only and supersedes
 .. |tip.run-all.root|  replace:: Run the following commands as root or by using the ``sudo`` command
 .. |tip.run-this.root| replace:: Run this command as root or by using the ``sudo`` command
-
-.. Abbreviations (abbr)
-
 .. |abbr.psmdb|    replace:: PSMDB (Percona Server for MongoDB)
 .. |abbr.ami| replace:: AMI (Amazon Machine Image)
 .. |abbr.aws| replace:: AWS (Amazon Web Services)
 .. |abbr.pmm| replace:: PMM (Percona Monitoring and Management)
 .. |abbr.qan| replace:: QAN (Query Analytics)
 .. |abbr.ova| replace:: OVA (Open Virtual Appliance)
-
-.. Docker commands (docker)
-
 .. |docker.cp| replace:: ``docker cp``
 .. |docker.create| replace:: ``docker create``
 .. |docker.exec| replace:: ``docker exec``
@@ -178,9 +168,6 @@
 .. |docker.start| replace:: ``docker start``
 .. |docker.stop| replace:: ``docker stop``
 .. |docker.tag| replace:: ``docker tag``
-
-.. Graphical interface elements (gui)
-
 .. |gui.back-to-dashboard| replace:: *Back to dashboard*
 .. |gui.view| replace:: *View*
 .. |gui.slow-logs-rotation| replace:: *Slow logs rotation*
@@ -272,9 +259,6 @@
 .. |gui.exporters-running| replace:: *Exporters Running*
 .. |gui.image| replace:: *Image*
 .. |gui.memory-used| replace:: *Memory Used*
-
-.. Options and parameters (opt)
-
 .. |opt.meminfo-numa| replace:: ``meminfo_numa``
 .. |opt.a.upper| replace:: ``-A``
 .. |opt.all| replace:: ``--all``
@@ -435,9 +419,6 @@
 .. |opt.z| replace:: ``-z``
 .. |opt.reload| replace:: ``RELOAD``
 .. |opt.super| replace:: ``SUPER``
-
-.. pmm-admin commands (pmm-admin)
-
 .. |pmm-admin| replace:: ``pmm-admin``
 .. |pmm-admin.add| replace:: ``pmm-admin add``
 .. |pmm-admin.annotate| replace:: ``pmm-admin annotate``
@@ -456,9 +437,6 @@
 .. |pmm-admin.start| replace:: ``pmm-admin start``
 .. |pmm-admin.stop| replace:: ``pmm-admin stop``
 .. |pmm-admin.uninstall| replace:: ``pmm-admin uninstall``
-
-.. SQL commands (sql)
-
 .. |sql.set-global| replace:: ``SET GLOBAL``
 .. |sql.commit| replace:: ``COMMIT``
 .. |sql.delete| replace:: ``DELETE``
@@ -475,9 +453,6 @@
 .. |sql.show-status| replace:: ``SHOW STATUS``
 .. |sql.show-volume-status| replace:: ``SHOW VOLUME STATUS``
 .. |sql.update| replace:: ``UPDATE``
-
-.. PMM Dashboards (dbd)
-
 .. |dbd.advanced-data-exploration| replace:: *Advanced Data Exploration*
 .. |dbd.amazon-rds-aurora-mysql-metrics| replace:: *Amazon RDS / Aurora MySQL Metrics*
 .. |dbd.cross-server-graphs| replace:: *Cross Server Graphs*
@@ -505,20 +480,12 @@
 .. |dbd.compare-system-parameters| replace:: *Compare System Parameters*
 .. |dbd.processes-details| replace:: *Processes Details*
 .. |dbd.node-temperature-details| replace:: *Node Temperature Details*
-
-.. * Text labels
-
-.. Special headings (h)
-
 .. |h.bug-fix-releases| replace:: --- Bug fix releases ---
 .. |h.issues| replace:: --- Issues in this release ---
 .. |h.new-features-and-improvements| replace:: New features and improvements
 .. |h.bug-fixes| replace:: Bug fixes
 .. |h.improvements| replace:: Improvements
 .. |h.new-features| replace:: New Features
-
-.. Status labels (status)
-
 .. |status.fixed| replace:: Fixed
 .. |status.improved| replace:: Improved
 .. |status.new| replace:: New
