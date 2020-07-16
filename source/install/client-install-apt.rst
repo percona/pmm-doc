@@ -9,9 +9,7 @@ manager to install PMM client from the official Percona software repository.
 
 Percona provides ``.deb`` packages for 64-bit versions of popular Linux distributions.
 
-The list can be found here:
-
-https://www.percona.com/services/policies/percona-software-platform-lifecycle#pt
+The list can be found on `Percona's Software Platform Lifecycle page <https://www.percona.com/services/policies/percona-software-platform-lifecycle/>`__.
 
 .. note::
 
@@ -21,7 +19,7 @@ https://www.percona.com/services/policies/percona-software-platform-lifecycle#pt
 To install the PMM client package, follow these steps.
 
 
-1. Configure Percona repositories using the `percona-release <https://www.percona.com/doc/percona-repo-config/percona-release.html>`_ tool. First you’ll need to download and install the official percona-release package from Percona:
+1. Configure Percona repositories using the `percona-release <https://www.percona.com/doc/percona-repo-config/percona-release.html>`_ tool. First you’ll need to download and install the official ``percona-release`` package from Percona:
 
    .. code-block:: bash
 
@@ -38,8 +36,6 @@ To install the PMM client package, follow these steps.
 
          sudo percona-release disable all
          sudo percona-release enable original release
-
-   See `percona-release official documentation <https://www.percona.com/doc/percona-repo-config/percona-release.html>`_ for details.
 
 2. Install the PMM client package:
 
