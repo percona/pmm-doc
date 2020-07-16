@@ -31,21 +31,21 @@ instances you intend to monitor.
 
 .. seealso::
 
-   Amazon RDS Documentation: 
+   Amazon RDS Documentation:
       - `Modifying an Amazon RDS DB Instance <https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.DBInstance.Modifying.html>`_
       - `More information about enhanced monitoring <https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Monitoring.OS.html>`_
       - `Setting Up <https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_SettingUp.html>`_
       - `Getting started <https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_GettingStarted.html>`_
       - `Creating a MySQL DB Instance <https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_GettingStarted.CreatingConnecting.MySQL.html>`_
       - `Availability zones <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html>`_
-      - `What privileges are automatically granted to the master user of an Amazon RDS DB instance? 
+      - `What privileges are automatically granted to the master user of an Amazon RDS DB instance?
 	<https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.MasterAccounts.html>`_
-   
+
 .. contents::
    :local:
 
 .. _pmm.amazon-rds.permission-access-db-instance.iam-user.creating:
-      
+
 `Creating an IAM user with permission to access Amazon RDS DB instances <amazon-rds.html#pmm-amazon-rds-permission-access-db-instance-iam-user-creating>`_
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -57,7 +57,7 @@ hand, you use your AWS account to access all AWS services.
 
 The procedure for creating IAM user accounts is well described in the
 Amazon RDS documentation. This section only goes through the essential steps
-and points out the steps required for using Amazon RDS with Percona Monitoring and Management. 
+and points out the steps required for using Amazon RDS with Percona Monitoring and Management.
 
 .. seealso::
 
@@ -90,16 +90,16 @@ To define a new policy use the IAM page at AWS.
    existing contents with the following JSON document.
 
    .. include:: ../.res/code/aws.iam-user.permission.txt
-   
+
 #. Click *Review policy* and set a name to your policy, such as
-   |policy-name|. Then, click the *Create policy* button.
+   *AmazonRDSforPMMPolicy*. Then, click the *Create policy* button.
 
 .. _figure.pmm.amazon-rds.aws.iam.create-policy:
 
 .. figure:: ../.res/graphics/png/aws.iam.create-policy.png
 
    A new policy is ready to be created.
-   
+
 .. seealso::
 
    AWS Documenation: Creating IAM policies
@@ -108,8 +108,8 @@ To define a new policy use the IAM page at AWS.
 .. _pmm.amazon-rds.iam-user.creating:
 
 `Creating an IAM user <amazon-rds.html#pmm-amazon-rds-iam-user-creating>`_
---------------------------------------------------------------------------------   
-   
+--------------------------------------------------------------------------------
+
 Policies are attached to existing IAM users or groups. To create a new IAM
 user, select *Users* on the Identity and Access Management page at AWS. Then click
 *Add user* and complete the following steps:
@@ -130,7 +130,7 @@ user, select *Users* on the Identity and Access Management page at AWS. Then cli
 
 .. seealso::
 
-   AWS Documentation: 
+   AWS Documentation:
       - `Creating IAM users <https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_SettingUp.html#CHAP_SettingUp.IAM>`_
       -  `IAM roles <https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html>`_
 
@@ -149,7 +149,7 @@ To create the access key, open the *Security credentials* tab and click the
 key ID and a secret access key that you can provide on the *PMM Add Instance*
 dashboard to have your Amazon RDS DB instances discovered.
 
-.. important:: 
+.. important::
 
    You may use an IAM role instead of IAM user provided your Amazon RDS DB
    instances are associated with the same AWS account as PMM.
@@ -178,18 +178,18 @@ Amazon RDS DB instances. Complete the following steps, to apply the policy:
 
 1. On the *Permissions* tab, click the *Add permissions* button.
 #. On the *Add permissions* page, click *Attach existing policies directly*.
-#. Using the *Filter*, locate the policy with the required permissions (such as |policy-name|).
+#. Using the *Filter*, locate the policy with the required permissions (such as *AmazonRDSforPMMPolicy*).
 #. Select a checkbox next to the name of the policy and click *Review*.
 #. The selected policy appears on the *Permissions summary* page. Click *Add permissions*.
 
-The |policy-name| is now added to your IAM user.
-   
+The *AmazonRDSforPMMPolicy* is now added to your IAM user.
+
 .. _figure.pmm.amazon-rds.aws.iam.add-permissions:
 
 .. figure:: ../.res/graphics/png/aws.iam.add-permissions.png
 
    To attach, find the policy on the list and place a check mark to select it
-	      
+
 .. seealso::
 
    Creating an IAM policy for PMM
@@ -242,7 +242,5 @@ statement.
 
    AWS Documentation: Connecting to a DB instance (MySQL engine)
       https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ConnectToInstance.html
-      
-.. |policy-name| replace:: *AmazonRDSforPMMPolicy*
 
-
+.. *AmazonRDSforPMMPolicy* replace:: *AmazonRDSforPMMPolicy*

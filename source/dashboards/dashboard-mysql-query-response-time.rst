@@ -3,7 +3,7 @@
 MySQL Query Response Time
 ================================================================================
 
-This dashboard provides information about query response time distribution. 
+This dashboard provides information about query response time distribution.
 
 .. contents::
    :local:
@@ -18,7 +18,7 @@ the Response Time Distribution plugin sourced from table
 *INFORMATION_SCHEMA.QUERY_RESPONSE_TIME*. It computes this value across all
 queries by taking the sum of seconds divided by the count of seconds.
 
-**View all metrics of** |this-dashboard|
+
 
 .. seealso::
 
@@ -38,7 +38,7 @@ Query response time counts (operations) are grouped into three buckets:
 - 1s - 10s
 - > 10s
 
-**View all metrics of** |this-dashboard|
+
 
 .. _dashboard-mysql-query-response-time.average.read-write-split:
 
@@ -48,7 +48,7 @@ Query response time counts (operations) are grouped into three buckets:
 Available only in Percona Server for MySQL, this metric provides
 visibility of the split of READ vs WRITE query response time.
 
-**View all metrics of** |this-dashboard|
+
 
 .. seealso::
 
@@ -71,7 +71,7 @@ counts (operations) grouped into three buckets:
 - 1s - 10s
 - > 10s
 
-**View all metrics of** |this-dashboard|
+
 
 .. seealso::
 
@@ -90,13 +90,9 @@ time counts (operations) grouped into three buckets:
 - 1s - 10s
 - > 10s
 
-**View all metrics of** |this-dashboard|
+
 
 .. seealso::
-   
+
    Percona Server Documentation: QUERY_RESPONSE_TIME_WRITE
       https://www.percona.com/doc/percona-server/5.7/diagnostics/response_time_distribution.html#QUERY_RESPONSE_TIME_WRITE
-
-.. |this-dashboard| replace:: :ref:`dashboard-mysql-query-response-time`
-
-

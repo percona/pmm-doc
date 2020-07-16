@@ -33,7 +33,7 @@ Softirq
    a single core may be saturated.  Look for any quantity saturating at 100/(cpu
    core count).
 
-**View all metrics of** |this-dashboard|
+
 
 .. seealso::
 
@@ -56,7 +56,7 @@ When the number of process blocked waiting for I/O is large, the load is disk bo
 
 The running average of the sum of these two quantities is the basis of the loadavg metric.
 
-**View all metrics of** |this-dashboard|
+
 
 .. seealso::
 
@@ -77,7 +77,7 @@ outbound rate is coffffnstantly high and close to saturation and you have plenty
 of available CPU, you should consider activating the compression option on the
 MySQL clients and slaves.
 
-**View all metrics of** |this-dashboard|
+
 
 .. _dashboard.system.io-activity:
 
@@ -87,7 +87,7 @@ I/O Activity
 The I/O Activity graph shows the rates of data read from (Page In) and written
 to (Page Out) the all the disks as collected from the vmstat bi and bo columns.
 
-**View all metrics of** |this-dashboard|
+
 
 .. _dashboard.system.disk-latency:
 
@@ -103,7 +103,7 @@ the server.
 High latency values, typically more than 15 ms,  are an indication of a disk
 bound workload saturating the storage subsystem or, a faulty/degraded hardware.
 
-**View all metrics of** |this-dashboard|
+
 
 .. _dashboard.system.mysql-query:
 
@@ -113,7 +113,7 @@ MySQL Queries
 The MySQL Queries graph shows the rate of queries processed by MySQL.  The rate
 of queries is a rough indication of the MySQL Server load.
 
-**View all metrics of** |this-dashboard|
+
 
 .. _dashboard.system.innodb-row-operation:
 
@@ -128,7 +128,7 @@ indexing.
 The amounts of rows inserted, updated and deleted help appreciate the server
 write load.
 
-**View all metrics of** |this-dashboard|
+
 
 .. _dashboard.system.top-mysql-command:
 
@@ -138,7 +138,7 @@ Top MySQL Commands
 The Top MySQL Commands graph shows the rate of the various kind of SQL
 statements executed on the MySQL Server.
 
-**View all metrics of** |this-dashboard|
+
 
 .. _dashboard.system.top-mysql-handler:
 
@@ -151,9 +151,3 @@ engine handler calls. The most important ones to watch are *read_next* and
 
 A high values for read_rnd_next is an indication there are table scans while a
 high value of read_next is an indication of index scans.
-
-**View all metrics of** |this-dashboard|
-
-.. |this-dashboard| replace:: :ref:`dashboard.system`
-
-

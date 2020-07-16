@@ -14,10 +14,6 @@ selected MySQL host. This dashboard contains the following metrics:
 
    .. include:: ../.res/code/set.global.innodb-monitor-enable.txt
 
-.. rubric:: Metrics of |this-dashboard|
-   
-.. contents::
-   :local:
 
 .. _dashboard-mysql-innodb-metrics-advanced.change-buffer-performance:
 
@@ -31,8 +27,7 @@ in the buffer pool, prior to its use by a query.  The merge ratio is the number
 of insert buffer changes done per page, the higher the ratio the better is the
 efficiency of the change buffer.
 
-**View all metrics of**
-|this-dashboard|
+
 
 .. _dashboard-mysql-innodb-metrics-advanced.innodb-log-buffer-performance:
 
@@ -46,8 +41,7 @@ log buffer.  The InnoDB log buffer size is defined by the
 *Used* graph is too high and gets close to *Size*, additional log writes will be
 required.
 
-**View all metrics of**
-|this-dashboard|
+
 
 .. _dashboard-mysql-innodb-metrics-advanced.innodb-page-splits:
 
@@ -63,8 +57,7 @@ the page with a neighbor page. If the resulting page size is larger than the
 InnoDB page size, the operation fails.  If your workload causes a large number
 of page splits, try lowering the innodb_fill_factor variable (5.7+).
 
-**View all metrics of**
-|this-dashboard|
+
 
 .. _dashboard-mysql-innodb-metrics-advanced.innodb-page-reorgs:
 
@@ -77,8 +70,7 @@ of other rows in the page, a reorganization is needed.  If the reorganization
 process finds out there is not enough room in the page, the page will be
 split. Page reorganization can only fail for compressed pages.
 
-**View all metrics of**
-|this-dashboard|
+
 
 .. _dashboard-mysql-innodb-metrics-advanced.innodb-purge-performance:
 
@@ -90,18 +82,16 @@ process.  The purge process removed the undo entries from the history list and
 cleanup the pages of the old versions of modified rows and effectively remove
 deleted rows.
 
-**View all metrics of**
-|this-dashboard|
+
 
 .. _dashboard-mysql-innodb-metrics-advanced.innodb-locking:
 
 InnoDB Locking
 --------------------------------------------------------------------------------
 
-The InnoDB Locking graph shows the row level lock activity inside InnoDB. 
+The InnoDB Locking graph shows the row level lock activity inside InnoDB.
 
-**View all metrics of**
-|this-dashboard|
+
 
 .. _dashboard-mysql-innodb-metrics-advanced.innodb-main-thread-utilization:
 
@@ -111,8 +101,7 @@ InnoDB Main Thread Utilization
 The InnoDB Main Thread Utilization graph shows the portion of time the
 InnoDB main thread spent at various task.
 
-**View all metrics of**
-|this-dashboard|
+
 
 .. _dashboard-mysql-innodb-metrics-advanced.innodb-transactions-information:
 
@@ -127,8 +116,7 @@ on the Undo entries.  Non Locking RO Transaction Commits are transactions commit
 from select statement in auto-commit mode or transactions explicitly started
 with "start transaction read only".
 
-**View all metrics of**
-|this-dashboard|
+
 
 .. _dashboard-mysql-innodb-metrics-advanced.innodb-undo-space-usage:
 
@@ -139,8 +127,7 @@ The InnoDB Undo Space Usage graph shows the amount of space used by the Undo
 segment.  If the amount of space grows too much, look for long running
 transactions holding read views opened in the InnoDB status.
 
-**View all metrics of**
-|this-dashboard|
+
 
 .. _dashboard-mysql-innodb-metrics-advanced.innodb-activity:
 
@@ -150,8 +137,7 @@ InnoDB Activity
 The InnoDB Acitivity graph shows a measure of the activity of the InnoDB
 threads.
 
-**View all metrics of**
-|this-dashboard|
+
 
 .. _dashboard-mysql-innodb-metrics-advanced.innodb-contention-os-waits:
 
@@ -162,8 +148,7 @@ The InnoDB Contention - OS Waits graph shows the number of time an OS wait
 operation was required while waiting to get the lock.  This happens once the
 spin rounds are exhausted.
 
-**View all metrics of**
-|this-dashboard|
+
 
 .. _dashboard-mysql-innodb-metrics-advanced.innodb-contention-spin-rounds:
 
@@ -174,8 +159,7 @@ The InnoDB Contention - Spin Rounds metric shows the number of spin rounds
 executed in order to get a lock.  A spin round is a fast retry to get the lock
 in a loop.
 
-**View all metrics of**
-|this-dashboard|
+
 
 .. _dashboard-mysql-innodb-metrics-advanced.innodb-group-commit-batch-size:
 
@@ -188,8 +172,7 @@ the same time, one of them will write the log entries of all the waiting threads
 and flush the file.  Such process reduces the number of disk operations needed
 and enlarge the batch size.
 
-**View all metrics of**
-|this-dashboard|
+
 
 .. _dashboard-mysql-innodb-metrics-advanced.innodb-purge-throttling:
 
@@ -204,8 +187,7 @@ all update, insert and delete statements.  This helps prevents flushing stalls.
 
 https://dev.mysql.com/doc/refman/5.6/en/innodb-parameters.html#sysvar_innodb_max_purge_lag
 
-**View all metrics of**
-|this-dashboard|
+
 
 .. _dashboard-mysql-innodb-metrics-advanced.innodb-ahi-usage:
 
@@ -218,8 +200,7 @@ hash designed to speed access to InnoDB pages in memory.  If the Hit Ratio is
 small, the working data set is larger than the buffer pool, the AHI should
 likely be disabled.
 
-**View all metrics of**
-|this-dashboard|
+
 
 .. _dashboard-mysql-innodb-metrics-advanced.innodb-ahi-maintenance:
 
@@ -231,8 +212,7 @@ InnoDB adaptive hash index.  The adaptive hash index is a search hash to speed
 access to InnoDB pages in memory. A constant high number of rows/pages added
 and removed can be an indication of an ineffective AHI.
 
-**View all metrics of**
-|this-dashboard|
+
 
 .. _dashboard-mysql-innodb-metrics-advanced.innodb-online-ddl:
 
@@ -247,8 +227,7 @@ the rows processed by the online DDL.
 
    Currently available only on MariaDB Server
 
-**View all metrics of**
-|this-dashboard|
+
 
 .. _dashboard-mysql-innodb-metrics-advanced.innodb-defragmentation:
 
@@ -260,13 +239,8 @@ InnoDB online defragmentation feature of MariaDB for the optimize table
 command.  To enable this feature, the variable innodb-defragment must be set to
 **1** in the configuration file.
 
-**View all metrics of**
-|this-dashboard|
+
 
 .. note::
 
    Currently available only on MariaDB Server.
-
-.. |this-dashboard| replace:: :ref:`dashboard-mysql-innodb-metrics-advanced`
-
-

@@ -15,7 +15,7 @@ This dashboard provides basic information about PostgreSQL hosts.
 
 Reports whether PMM Server can connect to the PostgreSQL instance.
 
-**View all metrics of** |this-dashboard|
+
 
 .. _dashboard-postgres-overview.version:
 
@@ -24,7 +24,7 @@ Reports whether PMM Server can connect to the PostgreSQL instance.
 
 The version of the PostgreSQL instance.
 
-**View all metrics of** |this-dashboard|
+
 
 
 .. _dashboard-postgres-overview.shared-buffers:
@@ -36,7 +36,7 @@ Defines the amount of memory the database server uses for shared memory
 buffers. Default is ``128MB``. Guidance on tuning is ``25%`` of RAM, but
 generally doesn't exceed ``40%``.
 
-**View all metrics of** |this-dashboard|
+
 
 .. seealso::
 
@@ -49,11 +49,11 @@ generally doesn't exceed ``40%``.
 -----------------------------------------------------------------------------------------------------
 
 The setting ``wal_buffers`` defines how much memory is used for caching the
-write-ahead log entries. Generally this value is small (``3%`` of 
+write-ahead log entries. Generally this value is small (``3%`` of
 ``shared_buffers`` value), but it may need to be modified for heavily loaded
 servers.
 
-**View all metrics of** |this-dashboard|
+
 
 .. seealso::
 
@@ -72,7 +72,7 @@ The parameter work_mem defines the amount of memory assigned for internal sort
 operations and hash tables before writing to temporary disk files. The default
 is ``4MB``.
 
-**View all metrics of** |this-dashboard|
+
 
 .. seealso::
 
@@ -90,7 +90,7 @@ you a good idea. This value is used by the query planner whether plans will fit
 in memory, and when defined too low, can lead to some plans rejecting certain
 indexes.
 
-**View all metrics of** |this-dashboard|
+
 
 .. seealso::
 
@@ -105,7 +105,7 @@ indexes.
 Whether autovacuum process is enabled or not. Generally the solution is to
 vacuum more often, not less.
 
-**View all metrics of** |this-dashboard|
+
 
 .. seealso::
 
@@ -130,7 +130,7 @@ Connections
 Active Connections
    The number of open connections to the PostgreSQL server.
 
-**View all metrics of** |this-dashboard|
+
 
 .. seealso::
 
@@ -153,7 +153,7 @@ Tuples Changed per 5min
    The number of rows changed in the last 5 minutes: inserted, updated, and
    deleted ones.
 
-**View all metrics of** |this-dashboard|
+
 
 .. _dashboard-postgres-overview.transactions:
 
@@ -167,7 +167,7 @@ Transactions
 Duration of Transactions
    Maximum duration in seconds any active transaction has been running.
 
-**View all metrics of** |this-dashboard|
+
 
 .. _dashboard-postgres-overview.temp.files:
 
@@ -184,7 +184,7 @@ Size of Temp files
    regardless of why the temporary file was created (e.g., sorting or hashing),
    and regardless of the ``log_temp_files`` setting.
 
-**View all metrics of** |this-dashboard|
+
 
 .. _dashboard-postgres-overview.conflicts.and.locks:
 
@@ -199,7 +199,7 @@ Conflicts/Deadlocks
 Number of Locks
    The number of deadlocks detected by PostgreSQL.
 
-**View all metrics of** |this-dashboard|
+
 
 .. _dashboard-postgres-overview.buffers.and.blocks.operations:
 
@@ -221,7 +221,7 @@ Operations with Blocks
 Buffers
    The number of buffers allocated by PostgreSQL.
 
-**View all metrics of** |this-dashboard|
+
 
 .. _dashboard-postgres-overview.canceled.queries:
 
@@ -233,8 +233,8 @@ timeouts, old snapshots, pinned buffers, and deadlocks.
 
 .. note:: Data shown by this gauge are based on the
    ``pg_stat_database_conflicts`` view.
- 
-**View all metrics of** |this-dashboard|
+
+
 
 .. _dashboard-postgres-overview.cache.hit.ratio:
 
@@ -247,7 +247,7 @@ a read was not necessary.
 .. note:: This only includes hits in the PostgreSQL buffer cache, not the
    operating system's file system cache.
 
-**View all metrics of** |this-dashboard|
+
 
 .. _dashboard-postgres-overview.checkpoint.stats:
 
@@ -258,7 +258,7 @@ The total amount of time that has been spent in the portion of checkpoint
 processing where files are either written or synchronized to disk,
 in milliseconds.
 
-**View all metrics of** |this-dashboard|
+
 
 .. _dashboard-postgres-overview.postgresql.settings:
 
@@ -267,7 +267,7 @@ in milliseconds.
 
 The list of all settings of the PostgreSQL server.
 
-**View all metrics of** |this-dashboard|
+
 
 .. _dashboard-postgres-overview.system.summary:
 
@@ -278,7 +278,7 @@ This section contains the following system parameters of the PostgreSQL
 server: CPU Usage, CPU Saturation and Max Core Usage, Disk I/O Activity, and
 Network Traffic.
 
-**View all metrics of** |this-dashboard|
+
 
 .. seealso::
 
@@ -296,8 +296,3 @@ Network Traffic.
       https://www.postgresql.org/docs/current/static/routine-vacuuming.html#AUTOVACUUM
    PostgreSQL Server status variables: max_connections
       https://www.postgresql.org/docs/current/static/runtime-config-connection.html#GUC-MAX-CONNECTIONS
-
-.. |this-dashboard| replace:: :ref:`dashboard-postgres-overview`
-
-
-

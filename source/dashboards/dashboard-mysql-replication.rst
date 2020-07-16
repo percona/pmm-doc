@@ -45,8 +45,8 @@ IO Thread Running is one of the parameters that the command
       - `Replication <https://dev.mysql.com/doc/refman/5.7/en/replication.html>`_
       - `SHOW SLAVE STATUS Syntax <https://dev.mysql.com/doc/refman/5.7/en/show-slave-status.html>`_
       - `IO Thread states <https://dev.mysql.com/doc/refman/5.7/en/slave-io-thread-states.html>`_
- 
-**View all metrics of** |this-dashboard|
+
+
 
 .. _dashboard-mysql-replication.sql-thread-running:
 
@@ -57,7 +57,7 @@ This metric shows if the SQL thread is running or not. It only applies to a
 slave host.
 
 .. include:: ../.res/contents/io-thread.what-is.txt
-   
+
 .. rubric:: Possibile values
 
 Yes
@@ -78,7 +78,7 @@ No
       - `SHOW SLAVE STATUS Syntax <https://dev.mysql.com/doc/refman/5.7/en/show-slave-status.html>`_
       - `SQL Thread states <https://dev.mysql.com/doc/refman/5.7/en/slave-sql-thread-states.html>`_
 
-**View all metrics of** |this-dashboard|
+
 
 .. _dashboard-mysql-replication.replication-error-no:
 
@@ -98,7 +98,7 @@ The SQL Thread will stop replication in order to avoid data corruption.
 
       `A complete list of error codes <https://dev.mysql.com/doc/refman/5.7/en/error-messages-server.html>`_
 
-**View all metrics of** |this-dashboard|
+
 
 .. _dashboard-mysql-replication.read-only:
 
@@ -129,7 +129,7 @@ No
 
       `Replication <https://dev.mysql.com/doc/refman/5.7/en/replication.html>`_
 
-**View all metrics of** |this-dashboard|
+
 
 .. _dashboard-mysql-replication.mysql-replication-delay:
 
@@ -172,7 +172,7 @@ issues, up to a point.
       - `Replication Slave Options and Variables
 	<https://dev.mysql.com/doc/refman/5.7/en/replication-options-slave.html>`_
 
-**View all metrics of** |this-dashboard|
+
 
 .. _dashboard-mysql-replication.binlog-size:
 
@@ -190,7 +190,7 @@ on the binlog rotation policy adopted (for example using the configuration
 variables ``max_binlog_size`` and ``expire_logs_days``).
 
 .. include:: ../.res/contents/binlog-file.info.txt
-	     
+
 .. seealso::
 
    MySQL Documentation:
@@ -198,10 +198,10 @@ variables ``max_binlog_size`` and ``expire_logs_days``).
       - `The binary log <https://dev.mysql.com/doc/refman/5.7/en/binary-log.html>`_
       - `Configuring replication <https://dev.mysql.com/doc/refman/5.7/en/replication-configuration.html>`_
 
-**View all metrics of** |this-dashboard|
+
 
 .. _dashboard-mysql-replication.binlog-data-written-hourly:
- 
+
 Binlog Data Written Hourly
 --------------------------------------------------------------------------------
 
@@ -209,7 +209,7 @@ This metric shows the amount of data written hourly to the binlog files during
 the last 24 hours. This metric can give you an idea of how big is your
 application in terms of data writes (creation, modification, deletion).
 
-**View all metrics of** |this-dashboard|
+
 
 .. _dashboard-mysql-replication.binlog-count:
 
@@ -228,7 +228,7 @@ master and slave servers.
       - `The binary log <https://dev.mysql.com/doc/refman/5.7/en/binary-log.html>`_
       - `Configuring replication <https://dev.mysql.com/doc/refman/5.7/en/replication-configuration.html>`_
 
-**View all metrics of** |this-dashboard|
+
 
 .. _dashboard-mysql-replication.binlogs-created-hourly:
 
@@ -239,7 +239,7 @@ This metric shows the number of binlog files created hourly during the last 24 h
 
 .. include:: ../.res/contents/binlog-file.info.txt
 
-**View all metrics of** |this-dashboard|
+
 
 .. _dashboard-mysql-replication.relay-log-space:
 
@@ -273,7 +273,7 @@ Treat this metric in the same way as the
 
       - `The Slave Relay Log <https://dev.mysql.com/doc/refman/5.7/en/slave-logs-relaylog.html>`_
 
-**View all metrics of** |this-dashboard|
+
 
 .. _dashboard-mysql-replication.relay-log-written-hourly:
 
@@ -282,9 +282,3 @@ Relay Log Written Hourly
 
 This metric shows the amount of data written hourly into relay log files during
 the last 24 hours.
-
-**View all metrics of** |this-dashboard|
-
-.. |this-dashboard| replace:: :ref:`dashboard-mysql-replication`
-
-

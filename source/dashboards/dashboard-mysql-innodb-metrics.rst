@@ -23,7 +23,7 @@ logs and let the checkpointing perform its work as smooth as possible. If you
 don't do this, InnoDB will do synchronous flushing at the worst possible time,
 i.e. when you are busiest.
 
-**View all metrics of** |this-dashboard|
+
 
 .. _dashboard-mysql-innodb-metrics.innodb-transactions:
 
@@ -42,7 +42,7 @@ If the history length is rising regularly, do not let open connections linger
 for a long period as this can affect the performance of InnoDB
 considerably. It is also a good idea to look for long running queries in QAN.
 
-**View all metrics of** |this-dashboard|
+
 
 .. _dashboard-mysql-innodb-metrics.innodb-row-operations:
 
@@ -52,8 +52,8 @@ InnoDB Row Operations
 This metric allows you to see which operations occur and the number of rows
 affected per operation. A metric like *Queries Per Second* will give you an idea
 of queries, but one query could effect millions of rows.
-       
-**View all metrics of** |this-dashboard|
+
+
 
 .. _dashboard-mysql-innodb-metrics.innodb-row-lock-time:
 
@@ -78,7 +78,7 @@ second.
 
 *Row Lock Wait Load* is a rolling *5* minute average of *Row Lock Waits*.
 
-**View all metrics of** |this-dashboard|
+
 
 .. seealso::
 
@@ -103,7 +103,7 @@ This metric has the following series:
   calls is influenced by the setting of the innodb_flush_method configuration
   option.
 
-**View all metrics of** |this-dashboard|
+
 
 .. _dashboard-mysql-innodb-metrics.innodb-log-file-usage-hourly:
 
@@ -122,7 +122,7 @@ busiest.
 
 This graph can help guide you in setting the correct `innodb_log_file_size`.
 
-**View all metrics of** |this-dashboard|
+
 
 .. seealso::
 
@@ -142,7 +142,7 @@ system, deadlocks are a fact of life and not completely avoidable. InnoDB
 automatically detects transaction deadlocks, rollbacks a transaction
 immediately and returns an error.
 
-**View all metrics of** |this-dashboard|
+
 
 .. seealso::
 
@@ -168,10 +168,10 @@ entry and only if this is satisfied is the row read from the table.
 ICP can reduce the number of times the storage engine must access the base table
 and the number of times the MySQL server must access the storage engine.
 
-**View all metrics of** |this-dashboard|
+
 
 .. seealso::
-   
+
    - `MySQL Server Documentation: Index Condition Pushdown optimisation <https://dev.mysql.com/doc/refman/5.7/en/index-condition-pushdown-optimization.html>`_
    - `Percona Database Performance Blog: ICP counters and how to interpret them <https://www.percona.com/blog/2017/05/09/mariadb-handler_icp_-counters-what-they-are-and-how-to-use-them/>`_
 
@@ -191,7 +191,3 @@ Other Metrics
    - InnoDB Buffer Read-Ahead
    - InnoDB Change Buffer
    - InnoDB Change Buffer Activity
-
-.. |this-dashboard| replace:: :ref:`dashboard-mysql-innodb-metrics`
-
-
