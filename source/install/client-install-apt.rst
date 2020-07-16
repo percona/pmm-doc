@@ -11,7 +11,7 @@ Percona provides ``.deb`` packages for 64-bit versions of popular Linux distribu
 
 The list can be found here:
 
-https://www.percona.com/services/policies/percona-software-platform-lifecycle
+https://www.percona.com/services/policies/percona-software-platform-lifecycle#pt
 
 .. note::
 
