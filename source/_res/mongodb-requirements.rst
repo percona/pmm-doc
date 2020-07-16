@@ -98,7 +98,7 @@ Restart the *mongod* service to enable the settings.
 
 .. include:: /.res/code/service.mongod.restart.txt
 
-.. admonition:: |related-information|
+.. admonition:: Related Information
 
    |mongodb| Documentation: Enabling Profiling
       https://docs.mongodb.com/manual/tutorial/manage-the-database-profiler/
