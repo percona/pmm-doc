@@ -7,22 +7,19 @@ Installing DEB packages using ``apt-get``
 If you are running a DEB-based Linux distribution, you can use the ``apt`` package
 manager to install PMM client from the official Percona software repository.
 
-Percona provides ``.deb`` packages for 64-bit versions of the following
-distributions:
+Percona provides ``.deb`` packages for 64-bit versions of popular Linux distributions.
 
-* Debian 9 (stretch)
-* Debian 10 (buster)
-* Ubuntu 16.04 LTS (Xenial Xerus)
-* Ubuntu 18.04 (Bionic Beaver)
-* Ubuntu 20.04 (Focal Fossa)
+The list can be found here:
+
+https://www.percona.com/services/policies/percona-software-platform-lifecycle
 
 .. note::
 
    Although PMM client should work on other DEB-based distributions, it is tested
    only on the platforms listed above.
 
-To install the PMM client package, complete the following
-procedure.
+To install the PMM client package, follow these steps.
+
 
 1. Configure Percona repositories using the `percona-release <https://www.percona.com/doc/percona-repo-config/percona-release.html>`_ tool. First you’ll need to download and install the official percona-release package from Percona:
 
@@ -68,7 +65,3 @@ procedure.
      Configuration file /usr/local/percona/pmm-agent.yaml updated.
      Reloading pmm-agent configuration...
      Configuration reloaded.
-
-.. seealso::
-
-   https://www.percona.com/services/policies/percona-software-platform-lifecycle
