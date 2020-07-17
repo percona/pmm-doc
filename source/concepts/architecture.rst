@@ -52,7 +52,7 @@ The PMM Client package consist of the following:
   for example, adding and removing database instances
   that you want to monitor.
   For more information, see :ref:`pmm.ref.pmm-admin`.
-* **pmm-agent** is a client-side component a minimal command-line interface,
+* ``pmm-agent`` is a client-side component a minimal command-line interface,
   which is a central entry point in charge for bringing the client
   functionality: it carries on client's authentication, gets the client
   configuration stored on the PMM Server, manages exporters and other agents.
@@ -74,7 +74,7 @@ server is protected by the HTTP basic authentication.
 .. note:: Credentials used in communication between the exporters and the PMM
    Server are the following ones:
 
-   * login is "pmm" 
+   * login is ``pmm``
 
    * password is equal to Agent ID, which can be seen e.g. on the Inventory
      Dashboard.
