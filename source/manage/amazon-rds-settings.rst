@@ -225,8 +225,8 @@ instance that you want to monitor::
  GRANT SELECT, PROCESS, REPLICATION CLIENT ON *.* TO 'pmm'@'%' IDENTIFIED BY 'pass' WITH MAX_USER_CONNECTIONS 10;
  GRANT SELECT, UPDATE, DELETE, DROP ON performance_schema.* TO 'pmm'@'%';
 
-If you have Amazon RDS with a MySQL version prior to 5.5, `REPLICATION
-CLIENT` privilege is not available there and has to be excluded from the above
+If you have Amazon RDS with a MySQL version prior to 5.5, ``REPLICATION
+CLIENT`` privilege is not available there and has to be excluded from the above
 statement.
 
 .. note::
