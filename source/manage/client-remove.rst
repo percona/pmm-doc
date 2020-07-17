@@ -61,6 +61,6 @@ run **pmm-admin list**.
      # pmm-admin remove proxysql ubuntu-proxysql
      Service removed.
 		
-For more information, run ``pmm-admin remove`` --help.
+For more information, run ``pmm-admin remove --help``.
 
 
