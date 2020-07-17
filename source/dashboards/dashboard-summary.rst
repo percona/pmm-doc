@@ -146,8 +146,8 @@ Top MySQL Handlers
 --------------------------------------------------------------------------------
 
 The Top MySQL Handlers graph shows the rate of the various low level storage
-engine handler calls. The most important ones to watch are *read_next* and
-*read_rnd_next*.
+engine handler calls. The most important ones to watch are ``read_next`` and
+``read_rnd_next``.
 
-A high values for read_rnd_next is an indication there are table scans while a
-high value of read_next is an indication of index scans.
+A high value for ``read_rnd_next`` is an indication there are table scans while a
+high value of ``read_next`` is an indication of index scans.
