@@ -19,22 +19,15 @@ performance by making sure that queries are executed as expected and within the
 shortest time possible.  In case of problems, you can see which queries may be
 the cause and get detailed metrics for them.
 
-.. figure:: .res/graphics/png/qan01.png
-	    
-   QAN helps analyze database queries over periods of time and find
-   performance problems.
+.. image:: /_images/PMM_Query_Analytics.jpg
 
 .. important::
    
-   *PMM Query Analytics* supports MySQL and MongoDB. The minimum requirements
+   PMM Query Analytics supports MySQL and MongoDB. The minimum requirements
    for MySQL are:
 
    * MySQL 5.1 or later (if using the slow query log)
    * MySQL 5.6.9 or later (if using Performance Schema)
  
-   .. tell about 8.0 QAN 
-
 QAN displays its metrics in both visual and numeric form: the performance
 related characteristics appear as plotted graphics with summaries.
-
-
