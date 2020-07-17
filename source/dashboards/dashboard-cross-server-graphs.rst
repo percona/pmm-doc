@@ -35,8 +35,8 @@ MySQL Queries
 This metric is based on the queries reported by the MySQL command
 ``SHOW STATUS``. It shows the average number of statements executed by the
 server. This variable includes statements executed within stored programs,
-unlike the ``Questions`` variable. It does not count *COM_PING* or
-*COM_STATISTICS* commands.
+unlike the ``Questions`` variable. It does not count ``COM_PING`` or
+``COM_STATISTICS`` commands.
 
 .. seealso::
 
