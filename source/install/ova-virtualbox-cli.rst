@@ -20,7 +20,7 @@ appliance boots up and returns the lines with the IP address from the log file.
 
 In this script, :code:`[VERSION NUMBER]` is the placeholder of the version of
 PMM Server that you are installing. By convention **OVA** files start with
-*pmm-server-* followed by the full version number such as |release|.
+``pmm-server-`` followed by the full version number such as |release|.
 
 To use this script, make sure to replace this placeholder with the the name of
 the image that you have downloaded from the `Download Percona Monitoring and
