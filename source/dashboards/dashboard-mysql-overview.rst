@@ -1,6 +1,6 @@
 .. _dashboard-mysql-overview:
 
-*MySQL Overview*
+MySQL Overview
 ================================================================================
 
 This dashboard provides basic information about MySQL hosts.
@@ -112,11 +112,11 @@ This variable does not count the following commands:
 
 
 
-* COM_PING
-* COM_STATISTICS
-* COM_STMT_PREPARE
-* COM_STMT_CLOSE
-* COM_STMT_RESET
+* ``COM_PING``
+* ``COM_STATISTICS``
+* ``COM_STMT_PREPARE``
+* ``COM_STMT_CLOSE``
+* ``COM_STMT_RESET``
 
 
 
@@ -197,7 +197,7 @@ middle (for example due to bad credentials), MySQL keeps that info in a system
 table (since 5.6 this table is exposed in performance_schema).
 
 If the amount of failed requests without a successful connection reaches the
-value of *max_connect_errors*, ``mysqld`` assumes that something is wrong and
+value of ``max_connect_errors``, ``mysqld`` assumes that something is wrong and
 blocks the host from further connections.
 
 To allow connections from that host again, you need to issue the
@@ -272,7 +272,7 @@ TokuDB Cache Size
 Key Buffer Size
 
    Index blocks for MyISAM tables are buffered and are shared by all
-   threads. *key_buffer_size* is the size of the buffer used for index
+   threads. ``key_buffer_size`` is the size of the buffer used for index
    blocks. The key buffer is also known as the *key cache*.
 
 Adaptive Hash Index Size
@@ -289,7 +289,7 @@ Query Cache Size
    scalability problems in that only one thread can do an operation in the query
    cache at the same time. This serialization is true for ``SELECT`` and also
    for ``INSERT``, ``UPDATE``, and ``DELETE``. This also means that the
-   larger the *query_cache_size* is set to, the slower those operations become.
+   larger the ``query_cache_size`` is set to, the slower those operations become.
 
 InnoDB Dictionary Size
 
@@ -303,7 +303,7 @@ InnoDB Log Buffer Size
 
    The MySQL InnoDB log buffer allows transactions to run without having to
    write the log to disk before the transactions commit. The size of this buffer
-   is configured with the *innodb_log_buffer_size* variable.
+   is configured with the ``innodb_log_buffer_size`` variable.
 
 
 
@@ -326,10 +326,10 @@ updating, inserting, and modifying rows, tables, and indexes.
 
 This is in fact the layer between the Storage Engine and MySQL.
 
-- *read_rnd_next* is incremented when the server performs a full table scan and
+- ``read_rnd_next`` is incremented when the server performs a full table scan and
   this is a counter you don't really want to see with a high value.
-- *read_key* is incremented when a read is done with an index.
-- *read_next* is incremented when the storage engine is asked to 'read the next
+- ``read_key`` is incremented when a read is done with an index.
+- ``read_next`` is incremented when the storage engine is asked to 'read the next
   index entry'. A high value means a lot of index scans are being done.
 
 
@@ -344,7 +344,7 @@ operation in the query cache at the same time. This serialization is true not
 only for ``SELECT``, but also for ``INSERT``, ``UPDATE``, and
 ``DELETE``.
 
-This also means that the larger the `query_cache_size` is set to, the slower
+This also means that the larger the ``query_cache_size`` is set to, the slower
 those operations become. In concurrent environments, the MySQL Query Cache
 quickly becomes a contention point, decreasing performance. MariaDB and
 Amazon Aurora have done work to try and eliminate the query cache contention
@@ -370,13 +370,13 @@ The recommended settings for most environments is to set:
 `MySQL Open Tables, MySQL Table Open Cache Status, and MySQL Table Definition Cache <metric.mysql-table-definition-cache.mysql-open-cache-status.mysql-open-table>`_
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-The recommendation is to set the `table_open_cache_instances` to a loose
+The recommendation is to set the ``table_open_cache_instances`` to a loose
 correlation to virtual CPUs, keeping in mind that more instances means the cache
 is split more times. If you have a cache set to 500 but it has 10 instances,
 each cache will only have 50 cached.
 
-The `table_definition_cache` and `table_open_cache` can be left as default as
-they are autosized MySQL 5.6 and above (do not set them to any value).
+The `table_definition_cache` and ``table_open_cache`` can be left as default as
+they are auto-sized in MySQL 5.6 and above (do not set them to any value).
 
 
 
