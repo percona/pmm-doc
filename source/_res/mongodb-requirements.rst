@@ -1,7 +1,7 @@
 Configuring MongoDB for Monitoring in PMM Query Analytics
 ================================================================================
 
-In QAN (Query Analytics), you can monitor MongoDB metrics and MongoDB queries. Run the
+In QAN (Query Analytics), you can monitor MongoDB metrics and queries. Run the
 ``pmm-admin add`` command to use these monitoring services
 (for more information, see :ref:`Adding MongoDB Service Monitoring<pmm.pmm-admin.mongodb.add-mongodb>`).
 
