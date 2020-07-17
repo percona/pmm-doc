@@ -242,5 +242,3 @@ statement.
 
    AWS Documentation: Connecting to a DB instance (MySQL engine)
       https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ConnectToInstance.html
-
-.. *AmazonRDSforPMMPolicy* replace:: *AmazonRDSforPMMPolicy*
