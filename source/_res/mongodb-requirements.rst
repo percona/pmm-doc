@@ -1,4 +1,4 @@
-Configuring MongoDB for Monitoring in *PMM Query Analytics*
+Configuring MongoDB for Monitoring in PMM Query Analytics
 ================================================================================
 
 In QAN (Query Analytics), you can monitor MongoDB metrics and MongoDB queries. Run the
