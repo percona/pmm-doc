@@ -1,6 +1,6 @@
 .. _install-client-yum:
 
-Installing RPM packages using yum
+Installing RPM packages using ``yum``
 ================================================================================
 
 If you are running an RPM-based Linux distribution, use the ``yum`` package
