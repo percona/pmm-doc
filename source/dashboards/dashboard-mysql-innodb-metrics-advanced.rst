@@ -55,7 +55,7 @@ has to be split in two.  Similarly, if an InnoDB page, after a row update or
 delete operation, ends up being less than half full, an attempt is made to merge
 the page with a neighbor page. If the resulting page size is larger than the
 InnoDB page size, the operation fails.  If your workload causes a large number
-of page splits, try lowering the innodb_fill_factor variable (5.7+).
+of page splits, try lowering the ``innodb_fill_factor variable`` (5.7+).
 
 
 
@@ -182,7 +182,7 @@ InnoDB Purge Throttling
 The InnoDB Purge Throttling graph shows the evolution of the purge lag and the
 max purge lag currently set.  Under heavy write load, the purge operation may
 start to lag behind and when the max purge lag is reached, a delay, proportional
-to the value defined by innodb_max_purge_lag_delay (in microseconds) is added to
+to the value defined by ``innodb_max_purge_lag_delay`` (in microseconds) is added to
 all update, insert and delete statements.  This helps prevents flushing stalls.
 
 https://dev.mysql.com/doc/refman/5.6/en/innodb-parameters.html#sysvar_innodb_max_purge_lag
@@ -236,7 +236,7 @@ InnoDB Defragmentation
 
 The InnoDB Defragmentation graph shows the status information related to the
 InnoDB online defragmentation feature of MariaDB for the optimize table
-command.  To enable this feature, the variable innodb-defragment must be set to
+command.  To enable this feature, the variable ``innodb-defragment`` must be set to
 **1** in the configuration file.
 
 
