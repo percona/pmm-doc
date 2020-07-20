@@ -22,8 +22,8 @@ The *Query Analytics* (QAN) dashboard shows how queries are executed and where t
 
    - Query Analytics is supported only for MySQL and MongoDB. The minimum requirements for MySQL are:
 
-      * MySQL 5.1 or later (if using the slow query log)
-      * MySQL 5.6.9 or later (if using Performance Schema)
+     * MySQL 5.1 or later (if using the slow query log)
+     * MySQL 5.6.9 or later (if using Performance Schema)
 
    - Query Analytics data retrieval is not instantaneous and can be delayed due to network conditions. Query Analytics reports *no data* in such situations and displays a gap in the sparkline.
 
