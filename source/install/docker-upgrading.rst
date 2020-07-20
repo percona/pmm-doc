@@ -18,16 +18,7 @@ Updating PMM Server Using Docker
 
          docker ps
 
-      The output will look like this (with different container ID, CREATED and STATUS values).
-
-      .. code-block:: text
-
-         CONTAINER ID  IMAGE                     COMMAND                CREATED       STATUS             PORTS                                      NAMES
-         4bdcc8463e64  percona/pmm-server:2      "/opt/entrypoint.sh"   2 weeks ago   Up About an hour   0.0.0.0:80->80/tcp, 0.0.0.0:443->443/tcp   pmm-server
-
-      The version number is appended to the image name in the IMAGE column. For a Docker
-      container created from the image tagged ``2``, the IMAGE column
-      contains ``2`` and not the specific version number of PMM Server.
+      This will show the version tag appended to the image name (e.g. ``percona/pmm-server:2``).
 
    2. Use ``docker exec``:
 
@@ -35,11 +26,7 @@ Updating PMM Server Using Docker
 
          docker exec -it pmm-server curl -u admin:admin http://localhost/v1/version
 
-      The output is a JSON string similar to this one.
-
-      .. code-block:: text
-
-         {"version":"2.9.0","server":{"version":"2.9.0","full_version":"2.9.0-37.2007140859.f31f32e.el7","timestamp":"2020-07-14T08:59:38Z"},"managed":{"version":"2.9.0","full_version":"4b39891989e04e1c33f8d78bb3fd674be6705bb7","timestamp":"2020-07-13T15:37:59Z"},"distribution_method":"DOCKER"}%
+      This will print a JSON string containing version fields.
 
 2. Check if there is a newer version of PMM Server.
 
@@ -61,11 +48,11 @@ Updating PMM Server Using Docker
 
    You may specify an exact version number, or the latest.
 
-   To pull a specific version (2.9.0 in this example):
+   To pull a specific version (|release| in this example):
 
-   .. code-block:: bash
+   .. parsed-literal::
 
-      docker pull percona/pmm-server:2.9.0
+      docker pull percona/pmm-server:|release|
 
    To pull the latest version of PMM 2:
 
