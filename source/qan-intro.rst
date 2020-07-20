@@ -148,24 +148,24 @@ and a set of *Metrics* in collapsable subpanels.
 
 - The *Query time distribution* bar shows a query's total time made up of colored segments, each segment representing the proportion of time spent on one of the follow named activities:
 
-   - ``query_time`` - Elapsed time between receiving a request and the returned result
-   - ``lock_time``
-   - ``blk_read_time``
-   - ``blk_write_time``
-   - ``innodb_io_r_wait``
-   - ``innodb_queue_wait``
-   - ``innodb_rec_lock_wait``
-   - ``other`` - Remaining uncategorized query time.
+  - ``query_time`` - Elapsed time between receiving a request and the returned result
+  - ``lock_time``
+  - ``blk_read_time``
+  - ``blk_write_time``
+  - ``innodb_io_r_wait``
+  - ``innodb_queue_wait``
+  - ``innodb_rec_lock_wait``
+  - ``other`` - Remaining uncategorized query time.
 
 - *Metrics* is a table with these headings:
 
-   - *Metric*: The Metric name, with a question-mark tool-tip that reveals a description of the metric on mouse-over.
+  - *Metric*: The Metric name, with a question-mark tool-tip that reveals a description of the metric on mouse-over.
 
-   - *Rate/Second*: A sparkline chart of real-time values per unit time.
+  - *Rate/Second*: A sparkline chart of real-time values per unit time.
 
-   - *Sum*: A summation of the metric for the selected query, and the percentage of the total.
+  - *Sum*: A summation of the metric for the selected query, and the percentage of the total.
 
-   - *Per Query Stats*: The value of the metric per query.
+  - *Per Query Stats*: The value of the metric per query.
 
 - Each row in the table is a metric. The contents depends on the chosen dimension.
 
