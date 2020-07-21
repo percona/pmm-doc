@@ -22,31 +22,6 @@ By default Filter panel shows top 5 Labels in each section. The additional
 five. Clicking this link toggles it into "Show top 5" and reveals all Labels
 available in the section.
 
-.. only:: showhidden
-
-	In the *Query Filter* field, you can enter a query ID, query abstract, or
-	query fingerprint. The ID is a unique signature of a query and looks like a
-	long hexadecimal number. Note that each query in the summary table displays its
-	ID in the *ID* column.
-
-	The query fingerprint is a simplified form of a query: all specific values are
-	replaced with placeholders. You may enter only a fragment of the fingerprint to
-	view all queries that contain that fragment in their fingerprints.
-
-	The query abstract is the portion of the query fingerprint which contains the
-	type of the query, such as *SELECT* or *FIND*, and the attributes from the
-	projection (a set of requested columns in case of MySQL database, for example).
-
-	When you apply a filter, the query summary table changes to display only the
-	queries which match your criterion. Note that the TOTAL row which runs above the
-	list of queries in the summary table does not change its values. These are
-	always calculated based on all queries run within the selected time or date
-	range.
-
-	.. figure:: .res/graphics/png/qan.query-summary-table.1.png
-
-	   A list of queries
-
 .. _pmm.qan.time-date-range.selecting:
 
 .. rubric:: Selecting Time or Date Range
@@ -71,12 +46,6 @@ ranges.. The date picker sets a range of dates.
 The first line of the query summary contains the totals of the *load*, *count*,
 and *latency* for all queries that were run on the selected database server
 during the time period that you've specified.
-
-.. only:: showhidden
-
-	.. figure:: .res/graphics/png/qan.query-summary-table.totals.1.png
-		   
-	   The totals appear at the top of the query summary table.
 
 The *load* is the amount of time that the database server spent during the
 selected time or date range running all queries.
@@ -115,5 +84,3 @@ the plotted line to watch how the value is changing.
 .. figure:: .res/graphics/png/qan.query-summary-table.1.png
 
    *Hover the cursor to see a value at the point.*
-
-

@@ -13,13 +13,9 @@ Run this command as root or by using the ``sudo`` command
 .. _pmm-admin.remove.options.service:
 
 .. include:: ../.res/code/pmm-admin.rm.options.service.txt
-		
+
 When you remove a service,
 collected data remains in Metrics Monitor on PMM Server.
-
-.. only:: showhidden
-
-	To remove the collected data, use the **pmm-admin purge** command.
 
 .. _pmm-admin.remove.services:
 
@@ -38,8 +34,8 @@ run **pmm-admin list**.
   .. code-block:: bash
 
      # pmm-admin remove mysql mysql-sl
-     Service removed. 
-		   
+     Service removed.
+
 * To remove *MongoDB* service named "mongo":
 
   .. code-block:: bash
@@ -60,7 +56,5 @@ run **pmm-admin list**.
 
      # pmm-admin remove proxysql ubuntu-proxysql
      Service removed.
-		
+
 For more information, run ``pmm-admin remove --help``.
-
-
