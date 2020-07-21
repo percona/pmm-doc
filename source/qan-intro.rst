@@ -25,7 +25,7 @@ The *Query Analytics* (QAN) dashboard shows how queries are executed and where t
      * MySQL 5.1 or later (if using the slow query log)
      * MySQL 5.6.9 or later (if using Performance Schema)
 
-   - Query Analytics data retrieval is not instantaneous and can be delayed due to network conditions. Query Analytics reports *no data* in such situations and displays a gap in the sparkline.
+   - Query Analytics data retrieval is not instantaneous and can be delayed due to network conditions. In such situations *no data* is reported and a gap appears in the sparkline.
 
 .. todo:: add MySQL 8 and MongoDB reqs
 
@@ -57,7 +57,6 @@ Filters Panel
 - Separately, the global *Time range* setting filters results by time, either your choice of *Absolute time range*, or one of the pre-defined *Relative time ranges*.
 
   .. image:: /_images/PMM_Query_Analytics_Time_Range.jpg
-     :scale: 40%
 
 .. _pmm-qan-top-ten:
 .. _pmm.qan.query-summary.total:
@@ -73,7 +72,7 @@ the Overview panel.
 
 .. image:: /_images/PMM_Query_Analytics_overview-table.jpg
 
-Each row of the Overview panel table represents the metrics for a chosen object type, one of:
+Each row of the table represents the metrics for a chosen object type, one of:
 
 - Query
 - Service Name
@@ -82,13 +81,13 @@ Each row of the Overview panel table represents the metrics for a chosen object 
 - User Name
 - Client Host
 
-At the top of the second column is the *dimension* menu. Use this to chose the object type.
+At the top of the second column is the *dimension* menu. Use this to choose the object type.
 
 .. image:: /_images/PMM_Query_Analytics_Dimension_Selector.jpg
 
 **Columns**
 
-- The first column is the object's identifier. For *Query*, it is the query's fingerprint.
+- The first column is the object's identifier. For *Query*, it is the query's :term:`fingerprint`.
 
 - The second column is the *Main metric*, containing a reduced graphical representation of the metric over time, called a *sparkline*, and a horizontal meter, filled to reflect a percentage of the total value.
 
@@ -145,9 +144,9 @@ At the top of the second column is the *dimension* menu. Use this to chose the o
 Details Panel
 *************
 
-- Selecting an item in the Overview panel opens the Details panel with a single `Details Tab`_.
+- Selecting an item in the Overview panel opens the *Details panel* with a `Details Tab`_.
 
-- If the dimension is *Query*, three additional tabs are visible: `Examples Tab`_, `Explain Tab`_, and `Tables Tab`_.
+- If the dimension is *Query*, the panel also contains the `Examples Tab`_, `Explain Tab`_, and `Tables Tab`_.
 
 ===========
 Details Tab
@@ -160,14 +159,14 @@ and a set of *Metrics* in collapsable subpanels.
 
 - The *Query time distribution* bar shows a query's total time made up of colored segments, each segment representing the proportion of time spent on one of the follow named activities:
 
-  - ``query_time`` - Elapsed time between receiving a request and the returned result
+  - ``query_time``: Elapsed time between receiving a request and the returned result.
   - ``lock_time``
   - ``blk_read_time``
   - ``blk_write_time``
   - ``innodb_io_r_wait``
   - ``innodb_queue_wait``
   - ``innodb_rec_lock_wait``
-  - ``other`` - Remaining uncategorized query time.
+  - ``other``: Remaining uncategorized query time.
 
 - *Metrics* is a table with these headings:
 
@@ -180,8 +179,6 @@ and a set of *Metrics* in collapsable subpanels.
   - *Per Query Stats*: The value of the metric per query.
 
 - Each row in the table is a metric. The contents depends on the chosen dimension.
-
-.. todo:: Explain metrics for each dimension in a reference section
 
 ============
 Examples Tab
@@ -201,9 +198,9 @@ Explain Tab
 
 The *Explain* tab shows the ``explain`` output for the selected query, in Classic or JSON formats:
 
-- MySQL - Classic and JSON
-- MongoDB - JSON only
-- PostgreSQL - not supported
+- MySQL: Classic and JSON
+- MongoDB: JSON only
+- PostgreSQL: Not supported
 
 .. image:: /_images/PMM_Query_Analytics_explain.jpg
 
@@ -213,7 +210,7 @@ Tables Tab
 
 (For *Query* dimension.)
 
-.. todo:: explain
+The *Tables* tab shows information on the tables and indexes involved in the selected query.
 
 .. image:: /_images/PMM_Query_Analytics_tables.jpg
 
@@ -227,7 +224,7 @@ Query Analytics for MongoDB
 
 MongoDB is conceptually different from relational database management systems, such as MySQL and MariaDB.
 
-Relational database management systems store data in tables that represent single entities; complex objects are represented by linking several tables.
+Relational database management systems store data in tables that represent single entities. Complex objects are represented by linking several tables.
 
 In contrast, MongoDB uses the concept of a document where all essential information pertaining to a complex object is stored in one place.
 
