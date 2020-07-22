@@ -159,13 +159,13 @@ and a set of *Metrics* in collapsable subpanels.
 
 - The *Query time distribution* bar shows a query's total time made up of colored segments, each segment representing the proportion of time spent on one of the follow named activities:
 
-  - ``query_time``: Elapsed time between receiving a request and the returned result.
-  - ``lock_time``
-  - ``blk_read_time``
-  - ``blk_write_time``
-  - ``innodb_io_r_wait``
-  - ``innodb_queue_wait``
-  - ``innodb_rec_lock_wait``
+  - ``query_time``: Statement execution time.
+  - ``lock_time``: Time to acquire locks.
+  - ``blk_read_time``: Total time the statement spent reading blocks (if ``track_io_timing`` is enabled, otherwise zero).
+  - ``blk_write_time``: Total time the statement spent writing blocks (if ``track_io_timing`` is enabled, otherwise zero).
+  - ``innodb_io_r_wait``: Time for InnoDB to read the data from storage.
+  - ``innodb_queue_wait``: Time the query spent either waiting to enter the InnoDB queue, or in it pending execution.
+  - ``innodb_rec_lock_wait``: Time the query waited for row locks.
   - ``other``: Remaining uncategorized query time.
 
 - *Metrics* is a table with these headings:
