@@ -212,8 +212,8 @@ your browser. In the *Percona Monitoring and Management* welcome page that opens
 
 You can copy the instance ID from the *Properties* panel of your
 instance, select the *Description* tab back in the EC2
-console. Click the *Copy* button next to the :guilabel:`Instance
-ID` field. This button appears as soon as you hover the cursor of your mouse
+console. Click the *Copy* button next to the *Instance
+ID* field. This button appears as soon as you hover the cursor of your mouse
 over the ID.
 
 .. _figure.run-server-ami.aws-marketplace.pmm.ec2.properties.instance-id:
