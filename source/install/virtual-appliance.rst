@@ -35,7 +35,7 @@ VMware ESXi, for example), but additional steps may be required.
 
 The virtual machine used for the appliance runs CentOS 7.
 
-.. warning:: 
+.. warning::
 
    The appliance must run in a network with DHCP, which will automatically
    assign an IP address for it.
@@ -45,12 +45,13 @@ The virtual machine used for the appliance runs CentOS 7.
 .. _pmm.deploying.server.virtual-appliance.supported-platform.virtual-appliance.setting-up:
 
 .. rubric:: Instructions for setting up the virtual machine for different platforms
-   
+
 .. toctree::
    :maxdepth: 1
-   :glob:
-      
-   ova-*
+
+   ova-virtualbox-cli
+   ova-virtualbox-gui
+   ova-wmware-workstation-player
 
 .. _pmm.deploying.server.virtual-appliance.pmm-server.ip-address.identifying:
 
@@ -68,7 +69,7 @@ acces the web interface of PMM Server.
    The IP address appears above the login prompt.
 
 PMM Server uses DHCP for security reasons, and thus you need to check the PMM
-Server console in order to identify the address.  
+Server console in order to identify the address.
 
 
 
@@ -106,12 +107,15 @@ You are creating a username and password that will be used for two purposes:
 
 1. authentication as a user to PMM - this will be the credentials you need in order
    to log in to PMM.
-#. authentication between PMM Server and PMM Clients - you will
+
+2. authentication between PMM Server and PMM Clients - you will
    re-use these credentials as a part of the server URL when configuring PMM Client for the first time on a server:
 
    Run this command as root or by using the ``sudo`` command
 
-   .. include:: ../.res/code/pmm-admin.config.server.url.dummy.txt
+   .. code-block:: bash
+
+      pmm-admin config --server-insecure-tls --server-url=https://admin:admin@<IP Address>:443
 
 .. _pmm.deploying.server.virtual-appliance.accessing:
 
@@ -165,5 +169,3 @@ on all database hosts that you want to monitor.
 .. _`VirtualBox`: https://www.virtualbox.org/
 .. _`XenServer`: https://www.xenserver.org/
 .. _`Microsoft System Center Virtual Machine Manager`: https://www.microsoft.com/en-us/cloud-platform/system-center
-
-

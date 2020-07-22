@@ -12,7 +12,9 @@ Run this command as root or by using the ``sudo`` command
 
 .. _pmm-admin.remove.options.service:
 
-.. include:: ../.res/code/pmm-admin.rm.options.service.txt
+.. code-block:: bash
+
+   pmm-admin remove [OPTIONS] [SERVICE-TYPE] [SERVICE-NAME]
 
 When you remove a service,
 collected data remains in Metrics Monitor on PMM Server.
