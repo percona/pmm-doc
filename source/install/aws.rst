@@ -137,7 +137,7 @@ Applying settings
 
 Scroll up to the top of the page to view your settings. Then, click the
 :guilabel:`Launch with 1 click` button to continue and adjust your settings in
-the :program:`EC2 console`.
+the EC2 console.
 
 .. _figure.run-server-ami.aws-marketplace.pmm.launch-on-ec2.1-click-launch:
 
@@ -156,14 +156,14 @@ Adjusting instance settings in the EC2 Console
 **********************************************
 
 Your clicking the :guilabel:`Launch with 1 click` button, deploys your
-instance. To continue setting up your instance, run the :program:`EC2
-console`. It is available as a link at the top of the page that opens after you
+instance. To continue setting up your instance, run the EC2
+console. It is available as a link at the top of the page that opens after you
 click the :guilabel:`Launch with 1 click` button.
 
-Your instance appears in the :program:`EC2 console` in a table that lists all
+Your instance appears in the EC2 console in a table that lists all
 instances available to you. When a new instance is only created, it has no
 name. Make sure that you give it a name to distinguish from other instances
-managed via the :program:`EC2 console`.
+managed via the EC2 console.
 
 .. _figure.run-server-ami.aws-marketplace.ec2-console.pmm:
 
@@ -211,8 +211,8 @@ your browser. In the *Percona Monitoring and Management* welcome page that opens
    Entering the instance ID when installing PMM Server
 
 You can copy the instance ID from the :guilabel:`Properties` panel of your
-instance, select the :guilabel:`Description` tab back in the :program:`EC2
-console`. Click the :guilabel:`Copy` button next to the :guilabel:`Instance
+instance, select the :guilabel:`Description` tab back in the EC2
+console. Click the :guilabel:`Copy` button next to the :guilabel:`Instance
 ID` field. This button appears as soon as you hover the cursor of your mouse
 over the ID.
 
