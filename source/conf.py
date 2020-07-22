@@ -92,8 +92,8 @@ exclude_patterns = ['*.txt']
 # The name of the Pygments (syntax highlighting) style to use.
 pygments_style = 'sphinx'
 
-rst_epilog = ""
-rst_epilog += '.. |release-code| replace:: ``%s``\n' % release
+rst_prolog = ""
+rst_prolog += '.. |release-code| replace:: ``%s``\n' % release
 
 extlinks = {
     'jirabug': ('https://jira.percona.com/browse/%s', '')
