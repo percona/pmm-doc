@@ -217,7 +217,26 @@ latex_logo = 'percona-logo.jpg'
 #latex_show_urls = False
 
 # Additional stuff for the LaTeX preamble.
-#latex_preamble = ''
+latex_elements = {
+'preamble' : r'''
+\usepackage{tcolorbox}
+\let\oldsphinxalltt\sphinxalltt
+\let\endoldsphinxalltt\endsphinxalltt
+\renewenvironment{sphinxalltt}{
+    \oldsphinxalltt
+        \begin{tcolorbox}[colback=white,
+                          width=\linewidth,
+                          boxrule=0.5pt,
+                          arc=0pt,
+                          left=0pt,
+                          right=0pt,
+                          top=2pt,
+                          bottom=2pt]
+                        }
+        {\end{tcolorbox}
+    \endoldsphinxalltt}
+'''
+}
 
 # Documents to append as an appendix to all manuals.
 #latex_appendices = []
