@@ -356,7 +356,7 @@ correlation to virtual CPUs, keeping in mind that more instances means the cache
 is split more times. If you have a cache set to 500 but it has 10 instances,
 each cache will only have 50 cached.
 
-The `table_definition_cache` and ``table_open_cache`` can be left as default as
+The ``table_definition_cache`` and ``table_open_cache`` can be left as default as
 they are auto-sized in MySQL 5.6 and above (do not set them to any value).
 
 .. seealso::

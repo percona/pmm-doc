@@ -15,7 +15,7 @@ selected MySQL host. This dashboard contains the following metrics:
 
    .. code-block:: mysql
 
-      mysql > SET GLOBAL innodb_monitor_enable=all;
+      SET GLOBAL innodb_monitor_enable=all;
 
 
 .. _dashboard-mysql-innodb-metrics-advanced.change-buffer-performance:
