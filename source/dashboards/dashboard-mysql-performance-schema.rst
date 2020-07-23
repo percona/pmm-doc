@@ -21,4 +21,4 @@ metrics:
 
 .. seealso::
 
-   `MySQL Documentation: *Performance Schema* <https://dev.mysql.com/doc/refman/5.7/en/performance-schema.html>`_
+   `MySQL Server 5.7 Documentation: Performance Schema <https://dev.mysql.com/doc/refman/5.7/en/performance-schema.html>`__

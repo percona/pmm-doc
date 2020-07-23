@@ -49,4 +49,4 @@ This section presents the values of the selected metric in the tabular form.
 
 .. seealso::
 
-   `Prometheus: Metric types <https://prometheus.io/docs/concepts/metric_types/>`_
+   `Prometheus: Metric types <https://prometheus.io/docs/concepts/metric_types/>`__
