@@ -4,7 +4,7 @@
 Adding MongoDB Service Monitoring
 #################################
 
-Before adding MongoDB should be `prepared for the monitoring <https://www.percona.com/doc/percona-monitoring-and-management/2.x/conf-mongodb.html>`_, which involves creating the user, and setting the profiling level.
+Before adding MongoDB should be :ref:`prepared for the monitoring <conf-mongodb-requirements>` which involves creating the user, and setting the profiling level.
 
 When done, add monitoring as follows:
 

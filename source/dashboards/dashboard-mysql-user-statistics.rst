@@ -8,8 +8,7 @@ This dashboard presents various data related to MySQL users.
 
 .. note:: This dashboard requires Percona Server for MySQL 5.1+ or MariaDB
    10.1/10.2 with XtraDB. Also ``userstat`` should be enabled, for example with
-   the ``SET GLOBAL userstat=1`` statement. See `Configuring MySQL for Best Results <https://www.percona.com/doc/percona-monitoring-and-management/conf-mysql.html>`_
-   for further instructions.
+   the ``SET GLOBAL userstat=1`` statement. See :ref:`conf-mysql-requirements`.
 
 Data is displayed for the 5 top users.
 

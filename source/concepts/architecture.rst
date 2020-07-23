@@ -104,7 +104,7 @@ It is distributed as an appliance via the following:
 
 * AMI (Amazon Machine Image) that you can run via Amazon Web Services
 
-For more information, see `Installing PMM Server <https://www.percona.com/doc/percona-monitoring-and-management/2.x/install/index-server.html>`_.
+For more information, see :ref:`pmm.deploying.server`.
 
 PMM Server includes the following tools:
 
