@@ -7,9 +7,7 @@ Advanced Data Exploration
 The *Advanced Data Exploration* dashboard provides detailed information about
 the progress of a single Prometheus metric across one or more hosts.
 
-.. admonition:: Added NUMA related metrics
-
-   .. versionadded:: 1.13.0
+.. admonition:: NUMA-related metrics
 
    This dashboard supports
    metrics related to NUMA. The names of all these metrics start with
