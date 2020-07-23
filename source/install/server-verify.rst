@@ -1,8 +1,8 @@
 .. _deploy-pmm.server-verifying:
 
---------------------------------------------------------------------------------
-`Verifying PMM Server <index.html#deploy-pmm-server-verifying>`_
---------------------------------------------------------------------------------
+####################
+Verifying PMM Server
+####################
 
 In your browser, go to the server by its IP address. If you run your server as a
 virtual appliance or by using an Amazon machine image, you will need to setup

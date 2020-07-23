@@ -1,7 +1,8 @@
 .. _dashboard-mysql-user-statistics:
 
-*MySQL User Statistics*
-================================================================================
+#####################
+MySQL User Statistics
+#####################
 
 This dashboard presents various data related to MySQL users.
 
@@ -31,5 +32,3 @@ Top Users by Busy Time
 Top Users by CPU Time
    The cumulative CPU time elapsed, in seconds, while servicing connections of
    the user.
-
-

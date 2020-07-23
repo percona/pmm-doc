@@ -1,14 +1,12 @@
-
-
 ########################
 Adding External Services
 ########################
 
 .. _pmm-admin-add-external-services:
 
-******************************************************************************************
-`Adding general external services <client-external.html#pmm-admin-add-external-services>`_
-******************************************************************************************
+********************************
+Adding general external services
+********************************
 
 You can collect metrics from an external (custom) exporter on a node when:
 
