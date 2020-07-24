@@ -33,6 +33,7 @@ markdown_extensions:
         anchorlink: True
 #        permalink: 
     - admonition
+    - def_list
     - smarty:
         smart_angled_quotes: True
     - pymdownx.mark
@@ -52,37 +53,38 @@ plugins:
           - index.md
           - index-glossary.md
           - index-qan.md
+          - qan-filtering.md
+          - qan-mongodb.md
+          - qan-navigation.md
+          - qan-top-ten.md
           - qan-query-time-distribution.md
           - index-using-pmm-metrics-monitor.md
-          - tool.md
-          - install/index-*
           - install/aws-resize.md
           - install/aws-upgrade.md
           - install/docker-*
           - install/ova-*
           - install/client/*
           - manage/index-*
-          - concepts/services-*
           - concepts/index.md
           - platform/index.md
           - dashboards/index.md
           - dashboards/dashboard-node-temperature-details.md
           - dashboards/dashboard-processes-details.md
-          - dashboards/dashboard-prometheus-exporter-status.md
-          - dashboards/dashboard-prometheus.md
           - dashboards/dashboard-node-memory.md
           - dashboards/dashboard-node-summary.md
           - release-notes/index.md
           - reference/index.md
 
 nav:
-    - 'introduction.md'
+    - 'What is Percona Monitoring and Management?': 'introduction.md'
     - 'PMM Concepts':
-        - 'concepts/architecture.md'
-        - Services:
-            - 'conf-mysql-requirements.md'
-            - 'conf-mongodb.md'
-            - 'conf-postgres-requirements.md'
+        - 'Client/Server Architecture - an Overview': 'concepts/architecture.md'
+        - 'Services':
+            - 'concepts/services-mysql.md'
+            - 'concepts/services-mongodb.md'
+            - 'concepts/services-postgres.md'
+        - 'Tools of PMM': 'tool.md'
+    - 'Installation': 'install/index.md'
     - Installing PMM Server:
         - Running PMM Server via Docker: 'install/docker.md'
         - 'install/aws.md'
@@ -130,30 +132,24 @@ nav:
     - Using PMM Metrics Monitor:
         - 'metrics-monitor-dashboards.md'
         - 'metrics-monitor-navigation.md'
-    - Using PMM Query Analytics:
-        - 'qan-intro.md'
-        - 'qan-navigation.md'
-        - 'qan-top-ten.md'
-        - 'qan-filtering.md'
-        - 'qan-mongodb.md'
+    - 'The Query Analytics Dashboard': 'qan-intro.md'
     - Dashboards references:
         - Insight:
+            - 'dashboards/dashboard-advanced-data-exploration.md'
             - 'dashboards/dashboard-home.md'
-            - PMM System Summary Dashboard: 'dashboards/dashboard-pmm-system-summary.md'
-            - Advanced Data Exploration Dashboard: 'dashboards/dashboard-advanced-data-exploration.md'
-            - 'dashboards/dashboard-cross-server-graphs.md'
-            - 'dashboards/dashboard-summary.md'
-            - 'dashboards/dashboard-trends.md'
-            - Network Overview Dashboard: 'dashboards/dashboard-network-overview.md'
-            - 'dashboards/dashboard-inventory.md'
+            - 'dashboards/dashboard-prometheus.md'
+            - 'dashboards/dashboard-prometheus-exporter-status.md'
+            - 'dashboards/dashboard-prometheus-exporters-overview.md'
         - OS Dashboards:
             - 'dashboards/dashboard-cpu-utilization-details-cores.md'
             - 'dashboards/dashboard-disk-space.md'
-            - System Overview Dashboard: 'dashboards/dashboard-system-overview.md'
-            - Compare System Parameters: 'dashboards/dashboard-compare-system-parameters.md'
-            - NUMA Overview Dashboard: 'dashboards/dashboard-overview-numa-metrics.md'
+            - 'dashboards/dashboard-system-overview.md'
+            - 'dashboards/dashboard-compare-system-parameters.md'
+            - 'dashboards/dashboard-overview-numa-metrics.md'
         - Prometheus Dashboards:
-            - Prometheus Explorers Overview: 'dashboards/dashboard-prometheus-exporters-overview.md'
+            - 'dashboards/dashboard-prometheus.md'
+            - 'dashboards/dashboard-prometheus-exporter-status.md'
+            - 'dashboards/dashboard-prometheus-exporters-overview.md'
         - MySQL Dashboards:
             - MySQL Amazon Aurora Metrics: 'dashboards/dashboard-mysql-amazon-aurora-metrics.md'
             - MySQL Command/Handler Counters Compare Dashboard: 'dashboards/dashboard-mysql-command-handler-counters-compare.md'
@@ -202,4 +198,4 @@ nav:
         - 'release-notes/2.0.0.md'
     - 'faq.md'
     - 'Reference':
-        - 'reference/pmm-admin.md'
+        - 'pmm-admin': 'reference/pmm-admin.md'

@@ -45,57 +45,47 @@ vacuum more often, not less.
 ## PostgreSQL Connections
 
 Max Connections
-
-    The maximum number of client connections allowed. Change this value with
+:   The maximum number of client connections allowed. Change this value with
     care as there are some memory resources that are allocated on a per-client
     basis, so setting `max_connections` higher will generally increase overall
     PostgreSQL memory usage.
 
 Connections
-
-    The number of connection attempts (successful or not) to the PostgreSQL
+:   The number of connection attempts (successful or not) to the PostgreSQL
     server.
 
 Active Connections
-
-    The number of open connections to the PostgreSQL server.
+:   The number of open connections to the PostgreSQL server.
 
 ## PostgreSQL Tuples
 
 Tuples
-
-    The total number of rows processed by PostgreSQL server: fetched, returned,
+:   The total number of rows processed by PostgreSQL server: fetched, returned,
     inserted, updated, and deleted.
 
 Read Tuple Activity
-
-    The number of rows read from the database: as returned so fetched ones.
+:   The number of rows read from the database: as returned so fetched ones.
 
 Tuples Changed per 5min
-
-    The number of rows changed in the last 5 minutes: inserted, updated, and
+:   The number of rows changed in the last 5 minutes: inserted, updated, and
     deleted ones.
 
 ## PostgreSQL Transactions
 
 Transactions
-
-    The total number of transactions that have been either been committed or
+:   The total number of transactions that have been either been committed or
     rolled back.
 
 Duration of Transactions
-
-    Maximum duration in seconds any active transaction has been running.
+:   Maximum duration in seconds any active transaction has been running.
 
 ## Temp Files
 
 Number of Temp Files
-
-    The number of temporary files created by queries.
+:   The number of temporary files created by queries.
 
 Size of Temp files
-
-    The total amount of data written to temporary files by queries in bytes.
+:   The total amount of data written to temporary files by queries in bytes.
 
 **NOTE**: All temporary files are taken into account by these two gauges,
 regardless of why the temporary file was created (e.g., sorting or hashing),
@@ -104,20 +94,17 @@ and regardless of the `log_temp_files` setting.
 ## Conflicts and Locks
 
 Conflicts/Deadlocks
-
-    The number of queries canceled due to conflicts with recovery in the database
+:   The number of queries canceled due to conflicts with recovery in the database
     (due to dropped tablespaces, lock timeouts, old snapshots, pinned buffers,
     or deadlocks).
 
 Number of Locks
-
-    The number of deadlocks detected by PostgreSQL.
+:   The number of deadlocks detected by PostgreSQL.
 
 ## Buffers and Blocks Operations
 
 Operations with Blocks
-
-    The time spent reading and writing data file blocks by backends, in
+:   The time spent reading and writing data file blocks by backends, in
     milliseconds.
 
 **NOTE**: Capturing read and write time statistics is possible only if
@@ -131,8 +118,7 @@ SELECT pg_reload_conf();
 ```
 
 Buffers
-
-    The number of buffers allocated by PostgreSQL.
+:   The number of buffers allocated by PostgreSQL.
 
 ## Canceled Queries
 
@@ -168,23 +154,16 @@ Network Traffic.
 
 **See also**
 
-
-* PostgreSQL
-
+* [PostgreSQL](../manage/conf-postgres.md)
 
 * [PostgreSQL Server status variables: autovacuum](https://www.postgresql.org/docs/current/static/routine-vacuuming.html#AUTOVACUUM)
 
-
 * [PostgreSQL Server status variables: effective_cache_size](https://www.postgresql.org/docs/current/static/runtime-config-query.html#GUC-EFFECTIVE-CACHE-SIZE)
-
 
 * [PostgreSQL Server status variables: max_connections](https://www.postgresql.org/docs/current/static/runtime-config-connection.html#GUC-MAX-CONNECTIONS)
 
-
 * [PostgreSQL Server status variables: shared_buffers](https://www.postgresql.org/docs/current/static/runtime-config-resource.html#GUC-SHARED-BUFFERS)
 
-
 * [PostgreSQL Server status variables: wal_buffers](https://www.postgresql.org/docs/current/static/runtime-config-wal.html#GUC-WAL-BUFFERS)
-
 
 * [PostgreSQL Server status variables: work_mem](https://www.postgresql.org/docs/current/static/runtime-config-resource.html#GUC-WORK-MEM)

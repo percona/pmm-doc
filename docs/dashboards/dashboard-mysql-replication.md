@@ -16,21 +16,16 @@ host.
 **Possible values**
 
 Yes
-
-    The thread is running and is connected to a replication master
+: The thread is running and is connected to a replication master
 
 No
-
-    The thread is not running because it is not lauched yet or because an error
-    has occured connecting to the master host
+: The thread is not running because it is not lauched yet or because an error has occured connecting to the master host
 
 Connecting
-
-    The thread is running but is not connected to a replication master
+: The thread is running but is not connected to a replication master
 
 No value
-
-    The host is not configured to be a replication slave
+: The host is not configured to be a replication slave
 
 IO Thread Running is one of the parameters that the command
 `SHOW SLAVE STATUS` returns.
@@ -162,7 +157,7 @@ high too. Generally, this not a serious issue. If the value of this metric is
 constantly increased, the slave is delaying too much in applying the events.
 
 Treat this metric in the same way as the
-MySQL Replication Delay metric.
+[MySQL Replication Delay metric](#mysql-replication-delay).
 
 ## Relay Log Written Hourly
 
@@ -171,29 +166,12 @@ the last 24 hours.
 
 **See also**
 
-
 * [MySQL 5.7 Replication](https://dev.mysql.com/doc/refman/5.7/en/replication.html)
-
-
 * [MySQL 5.7 SHOW SLAVE STATUS Syntax](https://dev.mysql.com/doc/refman/5.7/en/show-slave-status.html)
-
-
 * [MySQL 5.7 IO Thread states](https://dev.mysql.com/doc/refman/5.7/en/slave-io-thread-states.html)
-
-
 * [MySQL 5.7 Thread states](https://dev.mysql.com/doc/refman/5.7/en/slave-sql-thread-states.html)
-
-
 * [MySQL 5.7 list of error codes](https://dev.mysql.com/doc/refman/5.7/en/error-messages-server.html)
-
-
 * [MySQL 5.7 Improving replication performance](https://dev.mysql.com/doc/refman/5.7/en/replication-solutions-performance.html)
-
-
 * [MySQL 5.7 Replication Slave Options and Variables](https://dev.mysql.com/doc/refman/5.7/en/replication-options-slave.html)
-
-
 * [MySQL 5.7 The binary log](https://dev.mysql.com/doc/refman/5.7/en/binary-log.html)
-
-
 * [MySQL 5.7 The Slave Relay Log](https://dev.mysql.com/doc/refman/5.7/en/slave-logs-relaylog.html)

@@ -4,7 +4,7 @@
 
 In Query Analytics, you can monitor MongoDB metrics and queries. Run the
 `pmm-admin add` command to use these monitoring services
-(for more information, see Adding MongoDB Service Monitoring).
+(for more information, see [Adding MongoDB Service Monitoring](manage/client-mongodb-metrics.md)).
 
 **Supported versions of MongoDB**
 
@@ -95,20 +95,14 @@ service mongod restart
 
 **See also**
 
-
 * [Percona Server for MongoDB: rateLimit](https://www.percona.com/doc/percona-server-for-mongodb/LATEST/rate-limit.html)
-
 
 * [Percona Server for MongoDB: Profiling Rate Limit](https://www.percona.com/doc/percona-server-for-mongodb/LATEST/rate-limit.html)
 
-
 * [MongoDB Documentation: Enabling Profiling](https://docs.mongodb.com/manual/tutorial/manage-the-database-profiler/)
-
 
 * [MongoDB Documentation: Profiling Mode](https://docs.mongodb.com/manual/reference/configuration-options/#operationProfiling.mode)
 
-
 * [MongoDB Documentation: SlowOpThresholdMd option](https://docs.mongodb.com/manual/reference/configuration-options/#operationProfiling.slowOpThresholdMs)
-
 
 * [MongoDB Documentation: Profiler Overhead](https://docs.mongodb.com/manual/tutorial/manage-the-database-profiler/#profiler-overhead)
