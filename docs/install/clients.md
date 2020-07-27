@@ -22,10 +22,7 @@ PMM Client should run on any modern Linux 64-bit distribution, however
 Percona provides PMM Client packages for automatic installation from
 software repositories only on the most popular Linux distributions:
 
-
 * DEB packages for Debian based distributions such as Ubuntu
-
-
 * RPM packages for Red Hat based distributions such as CentOS
 
 It is recommended that you install your PMM (Percona Monitoring and Management) client by using the
@@ -35,10 +32,7 @@ from the [Download Percona Monitoring and Management](https://www.percona.com/do
 
 In addition to DEB and RPM packages, this site also offers:
 
-
 * Generic tarballs that you can extract and run the included `install` script.
-
-
 * Source code tarball to build your PMM (Percona Monitoring and Management) client from source.
 
 **WARNING**: You should not install agents on database servers that have

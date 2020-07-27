@@ -27,13 +27,8 @@ log. Re-compression may occur when changes are made to compressed data.
 
 This section contains the following metrics:
 
-
 * Compress Attempts
-
-
 * Uncompressed Attempts
-
-
 * Compression Success Ratio
 
 **Compress Attempts**
@@ -50,26 +45,17 @@ accessed in the buffer pool and the uncompressed page does not exist.
 
 ## CPU Core Usage
 
-
 * CPU Core Usage for Compression
-
-
 * CPU Core Usage for Uncompression
 
 ## Buffer Pool Total
 
-
 * Total Used Pages
-
-
 * Total Free Pages
 
 ## Buffer Pool All
 
-
 * Used Pages (Buffer Pool 0)
-
-
 * Pages Free (Buffer Pool 0)
 
 **See also**

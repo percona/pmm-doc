@@ -1,23 +1,14 @@
 # Running PMM Server via Docker
 
-Docker images of PMM Server are stored at the [percona/pmm-server](https://hub.docker.com/r/percona/pmm-server/tags/) public
-repository. The host must be able to run Docker 1.12.6 or later, and have
-network access.
+Docker images of PMM Server are stored at the [percona/pmm-server](https://hub.docker.com/r/percona/pmm-server/tags/) public repository. The host must be able to run Docker 1.12.6 or later, and have network access.
 
-PMM needs roughly 1GB of storage for each monitored database node with data
-retention set to one week. Minimum memory is 2 GB for one monitored database
-node, but it is not linear when you add more nodes.  For example, data from 20
-nodes should be easily handled with 16 GB.
+PMM needs roughly 1GB of storage for each monitored database node with data retention set to one week. Minimum memory is 2 GB for one monitored database node, but it is not linear when you add more nodes.  For example, data from 20 nodes should be easily handled with 16 GB.
 
-Make sure that the firewall and routing rules of the host do not constrain the
-Docker container. For more information, see How do I troubleshoot communication issues between PMM Client and PMM Server?.
+Make sure that the firewall and routing rules of the host do not constrain the Docker container. For more information, see How do I troubleshoot communication issues between PMM Client and PMM Server?.
 
 For more information about using Docker, see the [Docker documentation](https://docs.docker.com).
 
-**NOTE**: By default, retention is set to 30 days for
-Metrics Monitor.  Also consider
-disabling table statistics, which can greatly
-decrease Prometheus database size.
+**NOTE**: By default, retention is set to 30 days for Metrics Monitor.  Also consider disabling table statistics, which can greatly decrease Prometheus database size.
 
 ## Setting Up a Docker Container for PMM Server
 
@@ -60,22 +51,17 @@ start over.
 
 The previous command does the following:
 
-
 * The `docker create` command instructs the Docker daemon
 to create a container from an image.
 
-
 * The `-v` options initialize data volumes for the container.
-
 
 * The `--name` option assigns a custom name for the container
 that you can use to reference the container within a Docker network.
 In this case: `pmm-data`.
 
-
 * `percona/pmm-server:2` is the name and version tag of the image
 to derive the container from.
-
 
 * `/bin/true` is the command that the container runs.
 
@@ -98,32 +84,26 @@ This command does the following:
 * The `docker run` command runs a new container based on the
 `percona/pmm-server:2` image.
 
-
 * The `-p` option maps the host port to the server port inside the docker
 container for accessing the PMM Server web UI in the format of
 `-p <hostPort>:<containerPort>`. For example, if port **80** is not
 available on your host, you can map the landing page to port 8080 using
 `-p 8080:80`, the same for port **443**: `-p 8443:443`.
 
-
 * The `--volumes-from` option mounts volumes from the `pmm-data` container
 created previously (see Creating the pmm-data Container).
-
 
 * The `--name` option assigns a custom name to the container
 that you can use to reference the container within the Docker network.
 In this case: `pmm-server`.
-
 
 * The `--restart` option defines the container’s restart policy.
 Setting it to `always` ensures that the Docker daemon
 will start the container on startup
 and restart it if the container exits.
 
-
 * `percona/pmm-server:2` is the name and version tag of the image
 to derive the container from.
-
 
 * A warning message is printed if invalid an environment variable name key is passed in via the command line option `-e <KEY>=<VALUE>`.
 
@@ -135,16 +115,12 @@ to prevent updating PMM Server via the web interface with the `DISABLE_UPDATES` 
 
 Following docker tags are currently available to represent PMM Server versions:
 
-
 * `:latest` currently means the latest release of the PMM 1.X
-
 
 * `:2` is the latest released version of PMM 2
 
-
 * `:2.X` can be used to refer any minor released version, excluding patch
 releases
-
 
 * `:2.X.Y` tag means specific patch release of PMM
 
@@ -160,101 +136,91 @@ docker run -d -p 80:80 -p 443:443 --volumes-from pmm-data \
 
 ## Updating PMM Server Using Docker
 
-
 1. Check the installed version of PMM Server. There are two methods.
 
 
     1. Use `docker ps`:
 
-```
-docker ps
-```
+    ```
+    docker ps
+    ```
 
-This will show the version tag appended to the image name (e.g. `percona/pmm-server:2`).
+    This will show the version tag appended to the image name (e.g. `percona/pmm-server:2`).
 
 
     2. Use `docker exec`:
 
-```
-docker exec -it pmm-server curl -u admin:admin http://localhost/v1/version
-```
+    ```
+    docker exec -it pmm-server curl -u admin:admin http://localhost/v1/version
+    ```
 
-This will print a JSON string containing version fields.
+    This will print a JSON string containing version fields.
 
 
 2. Check if there is a newer version of PMM Server.
 
-Visit [https://hub.docker.com/r/percona/pmm-server/tags/](https://hub.docker.com/r/percona/pmm-server/tags/).
-
+    Visit [https://hub.docker.com/r/percona/pmm-server/tags/](https://hub.docker.com/r/percona/pmm-server/tags/).
 
 3. Stop the container and create backups.
 
-Back-up the current container and its data so that
-you can revert back to using them, and as a safeguard in case
-the update procedure fails.
+    Back-up the current container and its data so that you can revert back to using them, and as a safeguard in case the update procedure fails.
 
-```
-docker stop pmm-server
-docker rename pmm-server pmm-server-backup
-docker cp pmm-data pmm-data-backup
-```
-
+    ```
+    docker stop pmm-server
+    docker rename pmm-server pmm-server-backup
+    docker cp pmm-data pmm-data-backup
+    ```
 
 4. Pull the new PMM Server image.
 
-You may specify an exact version number, or the latest.
+    You may specify an exact version number, or the latest.
 
-To pull a specific version (2.9.0 in this example):
+    To pull a specific version (2.9.0 in this example):
 
-```
-docker pull percona/pmm-server:2.9.0
-```
+    ```
+    docker pull percona/pmm-server:2.9.0
+    ```
 
-To pull the latest version of PMM 2:
+    To pull the latest version of PMM 2:
 
-```
-docker pull percona/pmm-server:2
-```
-
+    ```
+    docker pull percona/pmm-server:2
+    ```
 
 5. Run the image.
 
-```
-docker run -d -p 80:80 -p 443:443 --volumes-from pmm-data --name pmm-server --restart always percona/pmm-server:2.9.0
-```
+    ```
+    docker run -d -p 80:80 -p 443:443 --volumes-from pmm-data --name pmm-server --restart always percona/pmm-server:2.9.0
+    ```
 
-(`pmm-data` is your existing data image.)
-
+    (`pmm-data` is your existing data image.)
 
 6. Check the new version.
 
-Repeat step 1. You can also check the PMM Server web interface.
+    Repeat step 1. You can also check the PMM Server web interface.
 
 ### Restoring the previous version
 
-
 1. Stop and remove the running version.
 
-```
-docker stop pmm-server
-docker rm pmm-server
-docker rm pmm-data
-```
-
+    ```
+    docker stop pmm-server
+    docker rm pmm-server
+    docker rm pmm-data
+    ```
 
 2. Restore (rename) the backups.
 
-```
-docker rename pmm-server-backup pmm-server
-docker rename pmm-data-backup pmm-data
-```
-
+    ```
+    docker rename pmm-server-backup pmm-server
+    docker rename pmm-data-backup pmm-data
+    ```
 
 3. Start (don’t `run`) the image.
 
-```
-docker start pmm-server
-```
+    ```
+    docker start pmm-server
+    ```
 
 ### Removing the backup container
 
@@ -278,36 +244,35 @@ To back up the information from `pmm-data`, you need to create a local
 directory with essential sub folders and then run Docker commands to copy
 PMM related files into it.
 
-
 1. Create a backup directory and make it the current working directory. In this
 example, we use *pmm-data-backup* as the directory name.
 
-```
-mkdir pmm-data-backup; cd pmm-data-backup
-```
+    ```
+    mkdir pmm-data-backup; cd pmm-data-backup
+    ```
 
 
 2. Create the essential sub directory:
 
-```
-mkdir srv
-```
+    ```
+    mkdir srv
+    ```
 
 Run the following commands as root or by using the `sudo` command
 
 
 1. Stop the docker container:
 
-```
-docker stop pmm-server
-```
+    ```
+    docker stop pmm-server
+    ```
 
 
 2. Copy data from the `pmm-data` container:
 
-```
-docker cp pmm-data:/srv ./
-```
+    ```
+    docker cp pmm-data:/srv ./
+    ```
 
 Now, your PMM data are backed up and you can start PMM Server again:
 
@@ -319,33 +284,29 @@ docker start pmm-server
 
 You can restore a backup copy of your `pmm-data` container with these steps.
 
-
 1. Stop the container:
 
-```
-docker stop pmm-server
-```
-
+    ```
+    docker stop pmm-server
+    ```
 
 2. Rename the container:
 
-```
-docker rename pmm-server pmm-server-backup
-```
-
+    ```
+    docker rename pmm-server pmm-server-backup
+    ```
 
 3. Rename the data container:
 
-```
-docker rename pmm-data pmm-data-backup
-```
-
+    ```
+    docker rename pmm-data pmm-data-backup
+    ```
 
 4. Create a new data container:
 
-```
-docker create -v /srv --name pmm-data percona/pmm-server:2 /bin/true
-```
+    ```
+    docker create -v /srv --name pmm-data percona/pmm-server:2 /bin/true
+    ```
 
 **NOTE**: This step creates a new data container based on the latest
 `percona/pmm-server:2` image. All available versions of `pmm-server` images are listed at
@@ -353,31 +314,29 @@ docker create -v /srv --name pmm-data percona/pmm-server:2 /bin/true
 
 Assuming that you have a backup copy of your `pmm-data` (see Backing Up PMM Data from the Docker Container), restore your data as follows:
 
-
 1. Change to the directory where your `pmm-data` backup files are:
 
-```
-cd <path to>/pmm-data-backup
-```
-
+    ```
+    cd <path to>/pmm-data-backup
+    ```
 
 2. Copy data from your backup directory to the `pmm-data` container:
 
-```
-docker cp srv pmm-data:/srv
-```
+    ```
+    docker cp srv pmm-data:/srv
+    ```
 
 
 3. Apply correct ownership to `pmm-data` files:
 
-```
-docker run --rm --volumes-from pmm-data -it percona/pmm-server:2 chown -R pmm:pmm /srv
-```
+    ```
+    docker run --rm --volumes-from pmm-data -it percona/pmm-server:2 chown -R pmm:pmm /srv
+    ```
 
 
 4. Run (create and launch) a new PMM server container:
 
-```
-docker run -d -p 80:80 -p 443:443 --volumes-from pmm-data \
---name pmm-server --restart always percona/pmm-server:2
-```
+    ```
+    docker run -d -p 80:80 -p 443:443 --volumes-from pmm-data \
+    --name pmm-server --restart always percona/pmm-server:2
+    ```

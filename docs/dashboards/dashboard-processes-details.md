@@ -13,61 +13,25 @@ hosts, and the second part provides charts for each host.
 
 Charts for all hosts, available in the first section, are the following ones:
 
-
 * States of Processes
-
-
 * Number of PIDs
-
-
 * Percentage of Max PIDs Limit
-
-
 * Number of Threads
-
-
 * Percentage of Max Threads Limit
-
-
 * Runnable Processes
-
-
 * Blocked Processes Waiting for I/O
-
-
 * Sleeping Processes
-
-
 * Running Processes
-
-
 * Disk Sleep Processes
-
-
 * Stopped Processes
-
-
 * Zombie Processes
-
-
 * Dead Processes
 
 The following charts are present in the second part, available for each host:
 
-
 * Processes
-
-
 * States of Processes
-
-
 * Number of PIDs
-
-
 * Percentage of Max PIDs Limit
-
-
 * Number of Threads
-
-
 * Percentage of Max Threads Limit

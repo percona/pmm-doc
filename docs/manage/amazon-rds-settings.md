@@ -20,8 +20,6 @@ instances you intend to monitor.
 
 Set the *Enable Enhanced Monitoring* option in the settings of your Amazon RDS DB instance.
 
-
-
 ![image](/_images/amazon-rds.modify-db-instance.2.png)
 
 ## Creating an IAM user with permission to access Amazon RDS DB instances
@@ -47,21 +45,17 @@ associated with an existing user or group.
 
 To define a new policy use the IAM page at AWS.
 
-
-
 ![image](/_images/aws.iam.png)
-
 
 1. Select the *Policies* option on the navigation panel and click the
 *Create policy* button.
 
-
 2. On the *Create policy* page, select the JSON tab and replace the
 existing contents with the following JSON document.
 
-```
-{ "Version": "2012-10-17",
-  "Statement": [{ "Sid": "Stmt1508404837000",
+    ```
+    { "Version": "2012-10-17",
+      "Statement": [{ "Sid": "Stmt1508404837000",
                   "Effect": "Allow",
                   "Action": [ "rds:DescribeDBInstances",
                               "cloudwatch:GetMetricStatistics",
@@ -74,16 +68,13 @@ existing contents with the following JSON document.
                                "logs:FilterLogEvents" ],
                                "Resource": [ "arn:aws:logs:*:*:log-group:RDSOSMetrics:*" ]}
                ]
-}
-```
-
+    }
+    ```
 
 3. Click *Review policy* and set a name to your policy, such as
 *AmazonRDSforPMMPolicy*. Then, click the *Create policy* button.
 
-
-
-![image](/_images/aws.iam.create-policy.png)
+    ![image](/_images/aws.iam.create-policy.png)
 
 ## Creating an IAM user
 
@@ -91,20 +82,11 @@ Policies are attached to existing IAM users or groups. To create a new IAM
 user, select *Users* on the Identity and Access Management page at AWS. Then click
 *Add user* and complete the following steps:
 
-
-
 ![image](/_images/aws.iam-users.1.png)
 
+1. On the *Add user* page, set the user name and select the *Programmatic access* option under *Select AWS access type*. Set a custom password and then proceed to permissions by clicking the *Permissions* button.
 
-1. On the *Add user* page, set the user name and select the
-*Programmatic access* option under
-*Select AWS access type*. Set a custom password and then proceed to
-permissions by clicking the *Permissions* button.
-
-
-2. On the *Set permissions* page, add the new user to one or more groups if
-necessary. Then, click *Review*.
-
+2. On the *Set permissions* page, add the new user to one or more groups if necessary. Then, click *Review*.
 
 3. On the *Add user* page, click *Create user*.
 
@@ -137,24 +119,17 @@ First, make sure that the Identity and Access Management page is open and open
 *Users*. Then, locate and open the IAM user that you plan to use with
 Amazon RDS DB instances. Complete the following steps, to apply the policy:
 
-
 1. On the *Permissions* tab, click the *Add permissions* button.
-
 
 2. On the *Add permissions* page, click *Attach existing policies directly*.
 
-
 3. Using the *Filter*, locate the policy with the required permissions (such as *AmazonRDSforPMMPolicy*).
 
-
 4. Select a checkbox next to the name of the policy and click *Review*.
-
 
 5. The selected policy appears on the *Permissions summary* page. Click *Add permissions*.
 
 The *AmazonRDSforPMMPolicy* is now added to your IAM user.
-
-
 
 ![image](/_images/aws.iam.add-permissions.png)
 
@@ -193,35 +168,24 @@ monitor general system metrics remotely.
 
 **See also**
 
-
-* Configuring Performance Schema
-
+* [Configuring Performance Schema](conf-mysql-perf-schema.md)
 
 * [Amazon RDS Documentation: Setting Up](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_SettingUp.html)
 
-
 * [Amazon AWS Documentation: Connecting to a DB Instance Running the MySQL Database Engine](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ConnectToInstance.html)
-
 
 * [Amazon RDS Documentation: Modifying an Amazon RDS DB Instance](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.DBInstance.Modifying.html)
 
-
 * [Amazon RDS Documentation: Enhanced Monitoring](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Monitoring.OS.html)
-
 
 * [Amazon RDS Documentation: Availability zones](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html)
 
-
 * [Amazon RDS Documentation: Master User Account Privileges](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.MasterAccounts.html)
-
 
 * [Amazon AWS Documentation: Creating IAM policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_create.html)
 
-
 * [Amazon AWS Documentation: IAM roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html)
 
-
 * [Amazon AWS Documentation: Managing Access Keys for IAM Users](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html)
-
 
 * [Amazon AWS Documentation: Parameter groups](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithParamGroups.html)

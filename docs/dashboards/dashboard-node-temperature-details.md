@@ -9,22 +9,18 @@ systems include several of such devices. The actual list can include temperature
 sensors, voltage sensors, fan speed sensors, and various additional features,
 such as the ability to control the rotation speed of the fans.
 
-
 * CPU Cores Temperatures
 
 Presents data taken from the temperature sensors of the CPU
-
 
 * Chips Temperatures
 
 Presents data taken from the temperature sensors connected to other
 system controllers
 
-
 * Fan Rotation Speeds
 
 Fan rotation speeds reported in RPM (rotations per minute).
-
 
 * Fan Power Usage
 

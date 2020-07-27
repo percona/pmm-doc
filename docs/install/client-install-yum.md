@@ -13,46 +13,44 @@ but it is tested only on RHEL and CentOS versions 6 and 7.
 
 To install the PMM Client package, complete the following procedure. Run the following commands as root or by using the `sudo` command:
 
-
 1. Configure Percona repositories using the [percona-release](https://www.percona.com/doc/percona-repo-config/percona-release.html) tool. First you’ll need to download and install the official percona-release package from Percona:
 
-```
-sudo yum install https://repo.percona.com/yum/percona-release-latest.noarch.rpm
-```
+    ```
+    sudo yum install https://repo.percona.com/yum/percona-release-latest.noarch.rpm
+    ```
 
-**NOTE**: If you have previously enabled the experimental or testing
+    **NOTE**: If you have previously enabled the experimental or testing
 Percona repository, don’t forget to disable them and enable the release
 component of the original repository as follows:
 
-```
-sudo percona-release disable all
-sudo percona-release enable original release
-```
+    ```
+    sudo percona-release disable all
+    sudo percona-release enable original release
+    ```
 
-See [percona-release official documentation](https://www.percona.com/doc/percona-repo-config/percona-release.html) for details.
+    See [percona-release official documentation](https://www.percona.com/doc/percona-repo-config/percona-release.html) for details.
 
 
 2. Install the `pmm2-client` package:
 
-```
-yum install pmm2-client
-```
-
+    ```
+    yum install pmm2-client
+    ```
 
 3. Once PMM Client is installed, run the `pmm-admin config` command with your PMM Server IP address to register your Node within the Server:
 
-```
-pmm-admin config --server-insecure-tls --server-url=https://admin:admin@<IP Address>:443
-```
+    ```
+    pmm-admin config --server-insecure-tls --server-url=https://admin:admin@<IP Address>:443
+    ```
 
-You should see the following:
+    You should see the following:
 
-```
-Checking local pmm-agent status...
-pmm-agent is running.
-Registering pmm-agent on PMM Server...
-Registered.
-Configuration file /usr/local/percona/pmm-agent.yaml updated.
-Reloading pmm-agent configuration...
-Configuration reloaded.
-```
+    ```
+    Checking local pmm-agent status...
+    pmm-agent is running.
+    Registering pmm-agent on PMM Server...
+    Registered.
+    Configuration file /usr/local/percona/pmm-agent.yaml updated.
+    Reloading pmm-agent configuration...
+    Configuration reloaded.
+    ```

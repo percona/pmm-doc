@@ -6,4 +6,4 @@ PMM collects Linux metrics automatically starting from the moment when you have 
 
 **See also**
 
-Configuring PMM Client with pmm-admin config
+[Configuring PMM Client with pmm-admin config](client-config.md)

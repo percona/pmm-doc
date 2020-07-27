@@ -15,10 +15,7 @@ stored programs.
 
 This variable does not include the following commands:
 
-
 * `COM_PING`
-
-
 * `COM_STATISTICS`
 
 ## InnoDB Buffer Pool Size
@@ -39,28 +36,23 @@ dedicated database host, but it depends on many factors.
 ## MySQL Connections
 
 Max Connections
-
-    The maximum permitted number of simultaneous client
+:   The maximum permitted number of simultaneous client
     connections. This is the value of the `max_connections` variable.
 
 Max Used Connections
-
-    The maximum number of connections that have been in use simultaneously since
+:   The maximum number of connections that have been in use simultaneously since
     the server was started.
 
 Connections
-
-    The number of connection attempts (successful or not) to the MySQL server.
+:   The number of connection attempts (successful or not) to the MySQL server.
 
 ## MySQL Active Threads
 
 Threads Connected
-
-    The number of open connections.
+: The number of open connections.
 
 Threads Running
-
-    The number of threads not sleeping.
+: The number of threads not sleeping.
 
 ## MySQL Questions
 
@@ -69,22 +61,12 @@ within stored programs*.
 
 This variable does not count the following commands:
 
-
 * `COM_PING`
-
-
 * `COM_STATISTICS`
-
-
 * `COM_STMT_PREPARE`
-
-
 * `COM_STMT_CLOSE`
-
-
 * `COM_STMT_RESET`
 
-<!-- thread-cache: -->
 ## MySQL Thread Cache
 
 The `thread_cache_size` metric informs how many threads the server should cache to
@@ -95,10 +77,7 @@ the cache is not full. It is autosized in MySQL 5.6.8 and above (capped to
 Requests for threads are satisfied by reusing threads taken from the cache if
 possible, and only when the cache is empty is a new thread created.
 
-
 * `threads_created`: The number of threads created to handle connections.
-
-
 * `threads_cached`: The number of threads in the thread cache.
 
 ## MySQL Select Types
@@ -107,14 +86,11 @@ As with most relational databases, selecting based on indexes is more efficient
 than scanning the data of an entire table. Here, we see the counters for selects
 not done with indexes.
 
-
 * *Select Scan* is how many queries caused full table scans, in which all the
 data in the table had to be read and either discarded or returned.
 
-
 * *Select Range* is how many queries used a range scan, which means MySQL
 scanned all rows in a given range.
-
 
 * *Select Full Join* is the number of joins that are not joined on an index,
 this is usually a huge performance hit.
@@ -176,40 +152,34 @@ received by MySQL.
 This metric shows the various uses of memory within MySQL.
 
 System Memory
-
-    Total Memory for the system.
+:   Total Memory for the system.
 
 InnoDB Buffer Pool Data
-
-    InnoDB maintains a storage area called the buffer pool for caching data and
+:   InnoDB maintains a storage area called the buffer pool for caching data and
     indexes in memory. Knowing how the InnoDB buffer pool works, and taking
     advantage of it to keep frequently accessed data in memory, is an important
     aspect of MySQL tuning.
 
 TokuDB Cache Size
-
-    Similar in function to the InnoDB Buffer Pool, TokuDB will allocate 50%
+:   Similar in function to the InnoDB Buffer Pool, TokuDB will allocate 50%
     of the installed RAM for its own cache. While this is optimal in most
     situations, there are cases where it may lead to memory over allocation. If
     the system tries to allocate more memory than is available, the machine will
     begin swapping and run much slower than normal.
 
 Key Buffer Size
-
-    Index blocks for MyISAM tables are buffered and are shared by all
+:   Index blocks for MyISAM tables are buffered and are shared by all
     threads. `key_buffer_size` is the size of the buffer used for index
     blocks. The key buffer is also known as the *key cache*.
 
 Adaptive Hash Index Size
-
-    The InnoDB storage engine has a special feature called adaptive hash
+:   The InnoDB storage engine has a special feature called adaptive hash
     indexes. When InnoDB notices that some index values are being accessed very
     frequently, it builds a hash index for them in memory on top of B-Tree
     indexes. This allows for very fast hashed lookups.
 
 Query Cache Size
-
-    The query cache stores the text of a `SELECT` statement together with the
+:   The query cache stores the text of a `SELECT` statement together with the
     corresponding result that was sent to the client. The query cache has huge
     scalability problems in that only one thread can do an operation in the query
     cache at the same time. This serialization is true for `SELECT` and also
@@ -217,16 +187,14 @@ Query Cache Size
     larger the `query_cache_size` is set to, the slower those operations become.
 
 InnoDB Dictionary Size
-
-    The data dictionary is InnoDB internal catalog of tables. InnoDB stores
+:   The data dictionary is InnoDB internal catalog of tables. InnoDB stores
     the data dictionary on disk, and loads entries into memory while the server
     is running. This is somewhat analogous to table cache of MySQL, but instead
     of operating at the server level, it is internal to the InnoDB storage
     engine.
 
 InnoDB Log Buffer Size
-
-    The MySQL InnoDB log buffer allows transactions to run without having to
+:   The MySQL InnoDB log buffer allows transactions to run without having to
     write the log to disk before the transactions commit. The size of this buffer
     is configured with the `innodb_log_buffer_size` variable.
 
@@ -241,13 +209,10 @@ updating, inserting, and modifying rows, tables, and indexes.
 
 This is in fact the layer between the Storage Engine and MySQL.
 
-
 * `read_rnd_next` is incremented when the server performs a full table scan and
 this is a counter you don’t really want to see with a high value.
 
-
 * `read_key` is incremented when a read is done with an index.
-
 
 * `read_next` is incremented when the storage engine is asked to ‘read the next
 index entry’. A high value means a lot of index scans are being done.
@@ -288,26 +253,18 @@ they are auto-sized in MySQL 5.6 and above (do not set them to any value).
 
 **See also**
 
-
 * [Percona Server Documentation: Running TokuDB in Production](https://www.percona.com/doc/percona-server/LATEST/tokudb/tokudb_quickstart.html#considerations-to-run-tokudb-in-production)
-
 
 * [Percona Blog: Adaptive Hash Index in InnoDB](https://www.percona.com/blog/2016/04/12/is-adaptive-hash-index-in-innodb-right-for-my-workload/)
 
-
 * [MySQL Server 5.7 Documentation: InnoDB buffer pool](https://dev.mysql.com/doc/refman/5.7/en/innodb-buffer-pool.html)
-
 
 * [MySQL Server 5.7 system variables: key_buffer_size](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_key_buffer_size)
 
-
 * [MySQL Server 5.6 system variables: table_open_cache](http://dev.mysql.com/doc/refman/5.6/en/server-system-variables.html#sysvar_table_open_cache)
-
 
 * [MySQL Server 5.6 status variables: Queries](https://dev.mysql.com/doc/refman/5.6/en/server-status-variables.html#statvar_Queries)
 
-
 * [MySQL Server 5.6 status variables: max_connections](https://dev.mysql.com/doc/refman/5.6/en/server-system-variables.html#sysvar_max_connections)
-
 
 * [MySQL Server 5.6 status variables: thread_cache_size](https://dev.mysql.com/doc/refman/5.6/en/server-system-variables.html#sysvar_thread_cache_size)

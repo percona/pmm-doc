@@ -16,12 +16,10 @@ This metric shows information about the disk space usage of the specified
 mountpoint.
 
 Used
-
-    Is the amount of space used
+:  Is the amount of space used
 
 Free
-
-    Is the amount if space not in use
+:  Is the amount if space not in use
 
 The total disk space allocated to the mountpoint is the sum of *Used* and *Free*
 space.

@@ -6,19 +6,10 @@ is a `tar` archive with necessary files that follow the *Open
 Virtualization Format* (OVF).  OVF is supported by most popular virtualization
 platforms, including:
 
-
 * [VMware - ESXi 6.5](https://www.vmware.com/products/esxi-and-esx.html)
-
-
 * [Red Hat Virtualization](https://www.redhat.com/en/technologies/virtualization)
-
-
 * [VirtualBox](https://www.virtualbox.org/)
-
-
 * [XenServer](https://www.xenserver.org/)
-
-
 * [Microsoft System Center Virtual Machine Manager](https://www.microsoft.com/en-us/cloud-platform/system-center)
 
 ## Supported Platforms for Running the PMM Server Virtual Appliance
@@ -85,15 +76,9 @@ the downloaded image file.
 The following procedure describes how to run the PMM Server appliance
 using the graphical user interface of VirtualBox:
 
-
 1. Download the OVA. The latest version is available at [https://www.percona.com/downloads/pmm](https://www.percona.com/downloads/pmm).
 
-
-2. Import the appliance. For this, open the *File* menu and click
-*Import Appliance* and specify the path to the OVA and click
-*Continue*. Then, select
-*Reinitialize the MAC address of all network cards* and click *Import*.
-
+2. Import the appliance. For this, open the *File* menu and click *Import Appliance* and specify the path to the OVA and click *Continue*. Then, select *Reinitialize the MAC address of all network cards* and click *Import*.
 
 3. Configure network settings to make the appliance accessible
 from other hosts in your network.
@@ -105,7 +90,6 @@ If you are running the appliance on a host with properly configured network
 settings, select *Bridged Adapter* in the *Network* section of the
 appliance settings.
 
-
 4. Start the PMM Server appliance.
 
 If it was assigned an IP address on the network by DHCP, the URL for
@@ -116,21 +100,15 @@ accessing PMM will be printed in the console window.
 The following procedure describes how to run the *PMM Server* appliance
 using VMware Workstation Player:
 
-
 1. Download the OVA. The latest version is available at [https://www.percona.com/downloads/pmm](https://www.percona.com/downloads/pmm).
-
 
 2. Import the appliance.
 
-
     1. Open the *File* menu and click *Open*.
-
-
     2. Specify the path to the OVA and click *Continue*.
 
 **NOTE**: You may get an error indicating that import failed.
 Simply click *Retry* and import should succeed.
-
 
 3. Configure network settings to make the appliance accessible
 from other hosts in your network.
@@ -139,7 +117,6 @@ If you are running the applianoce on a host
 with properly configured network settings,
 select **Bridged** in the **Network connection** section
 of the appliance settings.
-
 
 4. Start the PMM Server appliance.
 
@@ -154,8 +131,6 @@ acces the web interface of PMM Server.
 
 The IP address appears above the login prompt.
 
-
-
 ![image](/_images/command-line.login.1.png)
 
 PMM Server uses DHCP for security reasons, and thus you need to check the PMM
@@ -169,76 +144,55 @@ virtual machine.
 
 Enter the user login and password to access the PMM Server web interface.
 
-
-
 ![image](/_images/pmm-login-screen.png)
 
 If you run PMM Server in your browser for the first time, you are requested to
 supply the user login and password. The default PMM Server credentials are:
 
-
 * **username:** admin
-
-
 * **password:** admin
 
 After login you will be proposed to change this default password. Enter the new
 password twice and click *Save*. The PMM Server is now ready and the home
 page opens.
 
-
-
 ![image](/_images/pmm.home-page.png)
 
 You are creating a username and password that will be used for two purposes:
 
+1. authentication as a user to PMM - this will be the credentials you need in order to log in to PMM.
 
-1. authentication as a user to PMM - this will be the credentials you need in order
-to log in to PMM.
+2. authentication between PMM Server and PMM Clients - you will re-use these credentials as a part of the server URL when configuring PMM Client for the first time on a server:
 
+    Run this command as root or by using the `sudo` command
 
-2. authentication between PMM Server and PMM Clients - you will
-re-use these credentials as a part of the server URL when configuring PMM Client for the first time on a server:
-
-Run this command as root or by using the `sudo` command
-
-```
-pmm-admin config --server-insecure-tls --server-url=https://admin:admin@<IP Address>:443
-```
+    ```
+    pmm-admin config --server-insecure-tls --server-url=https://admin:admin@<IP Address>:443
+    ```
 
 ## Accessing the Virtual Machine
 
 To access the VM with the *PMM Server* appliance via SSH, you will need to
 provide your public key:
 
-
 1. Open the URL for accessing PMM in a web browser.
 
-The URL is provided either in the console window or in the appliance log.
-
+    The URL is provided either in the console window or in the appliance log.
 
 2. Select the *PMM Settings* dashboard in the main menu.
 
+    ![image](/_images/pmm-add-instance.png)
 
+3. Submit your **public key** in the *SSH Key Details* section and click the *Apply SSH Key* button.
 
-![image](/_images/pmm-add-instance.png)
+    ![image](/_images/pmm.settings_ssh_key.png)
 
+    After that you can use `ssh` to log in as the `admin` user.
+    For example, if *PMM Server* is running at `192.168.100.1` and your **private key** is `~/.ssh/pmm-admin.key`, use the following command:
 
-3. Submit your **public key** in the *SSH Key Details* section and click the
-*Apply SSH Key* button.
-
-
-
-![image](/_images/pmm.settings_ssh_key.png)
-
-After that you can use `ssh` to log in as the `admin` user.
-For example, if *PMM Server* is running at 192.168.100.1
-and your **private key** is `~/.ssh/pmm-admin.key`,
-use the following command:
-
-```
-ssh admin@192.168.100.1 -i ~/.ssh/pmm-admin.key
-```
+    ```
+    ssh admin@192.168.100.1 -i ~/.ssh/pmm-admin.key
+    ```
 
 ## Next Steps
 

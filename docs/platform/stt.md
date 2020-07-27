@@ -18,14 +18,10 @@ confused with anonymous data sent for Telemetry purposes.
 On your PMM home page, the *Failed security checks* dashboard
 shows a count of the number of failed checks.
 
-
-
 ![image](/_images/pmm.failed-checks.png)
 
 More details can be seen by opening the *Failed Checks* dashboard
 using *PMM > PMM Database Checks*.
-
-
 
 ![image](/_images/pmm.database-checks.failed-checks.png)
 
@@ -40,34 +36,25 @@ The Security Threat Tool is disabled by default. It can be enabled in
 
 Failed security checks summary dashboard when checks are disabled:
 
-
-
 ![image](/_images/pmm.failed-checks.failed-security-checks-off.png)
 
 Failed database checks dashboard when disabled:
-
-
 
 ![image](/_images/pmm.failed-checks.failed-database-checks.png)
 
 ## Checks made by the Security Threat Tool
 
 `mongodb_auth`
-
-    This check returns a warning if MongoDB authentication is disabled.
+: This check returns a warning if MongoDB authentication is disabled.
 
 `mongodb_version`
-
-    Warn if MongoDB/PSMDB version is not the latest.
+: Warn if MongoDB/PSMDB version is not the latest.
 
 `mysql_empty_password`
-
-    Warn if there are users without passwords.
+: Warn if there are users without passwords.
 
 `mysql_version`
-
-    Warn if MySQL/PS/MariaDB version is not the latest.
+: Warn if MySQL/PS/MariaDB version is not the latest.
 
 `postgresql_version`
-
-    Warn if PostgreSQL version is not the latest.
+: Warn if PostgreSQL version is not the latest.

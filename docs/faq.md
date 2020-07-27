@@ -1,4 +1,4 @@
-<span id="faq"></span>
+<div class="section" id="faq"></div>
 
 # Frequently Asked Questions
 
@@ -7,6 +7,11 @@
 The best place to discuss PMM with developers and other community members is the [community forum](https://www.percona.com/forums/questions-discussions/percona-monitoring-and-management).
 
 To report a bug, visit the [PMM project in JIRA](https://jira.percona.com/projects/PMM).
+
+
+
+
+<div class="section" id="sys-req"></div>
 
 ## What are the minimum system requirements for PMM?
 
@@ -29,6 +34,11 @@ Any modern 64-bit Linux distribution. It is tested on the latest versions of Deb
 A minimum of 100 MB of storage is required for installing the PMM Client package.  With a good connection to PMM Server, additional storage is not required.  However, the client needs to store any collected data that it cannot dispatch immediately, so additional storage may be required if the connection is unstable or the throughput is low.
 (Caching only applies to Query Analytics data; Prometheus data is never cached on the client side.)
 
+
+
+<div class="section" id="data-retention"></div>
+<div class="section" id="how-to-control-data-retention-for-pmm"></div>
+
 ## How to control data retention for PMM?
 
 By default, PMM stores time-series data for 30 days.
@@ -44,15 +54,25 @@ Depending on your available disk space and requirements, you may need to adjust 
 
 3. Click *Apply changes*.
 
+
+
+
 ## How often are NGINX logs in PMM Server rotated?
 
 PMM Server runs `logrotate` on a daily basis to rotate NGINX logs and keeps up to ten of the most recent log files.
+
+
+
+<div class="section" id="privileges"></div>
 
 ## What privileges are required to monitor a MySQL instance?
 
 ```
 GRANT SELECT, PROCESS, SUPER, REPLICATION CLIENT, RELOAD ON *.* TO 'pmm'@'localhost';
 ```
+
+
+
 
 ## Can I monitor multiple service instances?
 
@@ -71,11 +91,15 @@ For more information, run:
 pmm-admin add mysql --help
 ```
 
+
+
 ## Can I rename instances?
 
 You can remove any monitoring instance and then add it back with a different name (see [Removing monitoring services with pmm-admin remove](manage/client-remove.md)).
 
 When you remove a monitoring service, previously collected data remains available in Grafana.  However, the metrics are tied to the instance name.  So if you add the same instance back with a different name, it will be considered a new instance with a new set of metrics.  So if you are re-adding an instance and want to keep its previous data, add it with the same name.
+
+
 
 ## Can I add an AWS RDS MySQL or Aurora MySQL instance from a non-default AWS partition?
 
@@ -84,6 +108,10 @@ By default, the RDS discovery works with the default `aws` partition. But you ca
 ![image](/_images/aws-partitions-in-api.png)
 
 To specify other than the default value, or to use several, use the JSON Array syntax: `["aws", "aws-cn"]`.
+
+
+
+<div class="section" id="troubleshoot-connection"></div>
 
 ## How do I troubleshoot communication issues between PMM Client and PMM Server?
 
@@ -99,6 +127,10 @@ Obtaining logs from PMM Server can be done by specifying the `https://<address-o
 
 ![image](/_images/get-logs-from-prometheus-dashboard.png)
 
+
+
+<div class="section" id="metrics-resolution"></div>
+
 ## What resolution is used for metrics?
 
 The default values are:
@@ -108,6 +140,12 @@ The default values are:
 * High: 5 seconds
 
 (See [Metrics resolution](manage/server-admin-gui.md#metrics-resolution).)
+
+
+
+
+<div class="section" id="how-to-integrate-alertmanager-with-pmm"></div>
+<div class="section" id="how-to-setup-alerting-with-grafana"></div>
 
 ## How do I set up Alerting in PMM?
 
@@ -126,6 +164,10 @@ Alertmanager allows the creation of more sophisticated alerting rules and can be
 * [Grafana Alerts overview](https://grafana.com/docs/grafana/latest/alerting/)
 * [Alertmanager](https://prometheus.io/docs/alerting/latest/alertmanager/#alertmanager)
 * [PMM Alerting with Grafana: Working with Templated Dashboards](https://www.percona.com/blog/2017/02/02/pmm-alerting-with-grafana-working-with-templated-dashboards/)
+
+
+
+<div class="section" id="how-to-use-a-custom-prometheus-configuration-file-inside-of-a-pmm-server"></div>
 
 ## How do I use a custom Prometheus configuration file inside PMM Server?
 
