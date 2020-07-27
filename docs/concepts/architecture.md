@@ -23,8 +23,9 @@ potential of PMM, the internal structure is important.
 PMM is a collection of tools designed to seamlessly work together.  Some are
 developed by Percona and some are third-party open-source tools.
 
-**NOTE**: The overall client-server model is not likely to change, but the set
-of tools that make up each component may evolve with the product.
+!!! note
+
+    The overall client-server model is not likely to change, but the set of tools that make up each component may evolve with the product.
 
 The following sections illustrates how PMM is currently structured.
 
@@ -65,13 +66,12 @@ performance metrics.
 To make data transfer from PMM Client to PMM Server secure, all exporters are
 able to use SSL/TLS encrypted connections, and their communication with the PMM server is protected by the HTTP basic authentication.
 
-**NOTE**: Credentials used in communication between the exporters and the PMM
-Server are the following ones:
+!!! note
 
-* login is `pmm`
+    Credentials used in communication between the exporters and the PMM Server are the following ones:
 
-* password is equal to Agent ID, which can be seen e.g. on the Inventory
-Dashboard.
+    * login is `pmm`
+    * password is equal to Agent ID, which can be seen e.g. on the Inventory Dashboard.
 
 ## PMM Server
 

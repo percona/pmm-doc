@@ -44,16 +44,13 @@ Inactive
 
 ## NUMA File (PageCache)
 
-Active(file) Pagecache memory that has been used more recently and usually not
-reclaimed until needed.
+Active(file) Pagecache memory that has been used more recently and usually not reclaimed until needed.
 
-Inactive(file) Pagecache memory that can be reclaimed without huge performance
-impact.
+Inactive(file) Pagecache memory that can be reclaimed without huge performance impact.
 
 ## Shared Memory
 
-Shmem Total used shared memory (shared between several processes, thus including
-RAM disks, SYS-V-IPC and BSD like SHMEM).
+Shmem Total used shared memory (shared between several processes, thus including RAM disks, SYS-V-IPC and BSD like SHMEM).
 
 ## HugePages Statistics
 
@@ -64,9 +61,7 @@ Free
 :   The number of hugepages not being allocated by a process
 
 Surp
-:   The number of hugepages in the pool above the value in `vm.nr_hugepages`. The
-    maximum number of surplus hugepages is controlled by
-    `vm.nr_overcommit_hugepages`.
+:   The number of hugepages in the pool above the value in `vm.nr_hugepages`. The maximum number of surplus hugepages is controlled by `vm.nr_overcommit_hugepages`.
 
 ## Local Processes
 

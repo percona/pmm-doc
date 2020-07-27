@@ -1,17 +1,14 @@
 # Network Details
 
-The information in the Network Details dashboard is grouped into the
-following sections:
+The information in the Network Details dashboard is grouped into the following sections:
 
 ## Last Hour Statistic
 
-This section reports the *inbound speed*, *outbound speed*, *traffic errors and
-drops*, and *retransmit rate*.
+This section reports the *inbound speed*, *outbound speed*, *traffic errors and drops*, and *retransmit rate*.
 
 ## Network Traffic
 
-This section contains the *Network traffic* and *network utilization hourly*
-metrics.
+This section contains the *Network traffic* and *network utilization hourly* metrics.
 
 ## Network Traffic Details
 
@@ -74,12 +71,10 @@ This section has the following metrics:
 **ICMP Errors**
 
 InErrors
-:   Messages which the entity received but determined as having ICMP-specific
-    errors (bad ICMP checksums, bad length, etc.)
+:   Messages which the entity received but determined as having ICMP-specific errors (bad ICMP checksums, bad length, etc.)
 
 OutErrors
-:   Messages which this entity did not send due to problems discovered within
-    ICMP, such as a lack of buffers
+:   Messages which this entity did not send due to problems discovered within ICMP, such as a lack of buffers
 
 InDestUnreachs
 :   Destination Unreachable messages received
@@ -102,19 +97,16 @@ InTimeExcds
 **Messages/Redirects**
 
 InMsgs
-:   Messages which the entity received. Note that this counter includes all those
-    counted by icmpInErrors
+:   Messages which the entity received. Note that this counter includes all those counted by icmpInErrors
 
 InRedirects
 :   Redirect messages received
 
 OutMsgs
-:   Messages which this entity attempted to send. Note that this counter includes
-    all those counted by icmpOutErrors
+:   Messages which this entity attempted to send. Note that this counter includes all those counted by icmpOutErrors
 
 OutRedirects
-:   Redirect messages sent. For a host, this object will always be zero, since
-    hosts do not send redirects
+:   Redirect messages sent. For a host, this object will always be zero, since hosts do not send redirects
 
 **Echos**
 

@@ -8,7 +8,7 @@ the MongoDB monitoring service.
 
 Run this command as root or by using the `sudo` command
 
-```
+```sh
 pmm-admin add mongodb -- --mongodb.tls
 ```
 
@@ -35,6 +35,6 @@ pmm-admin add mongodb -- --mongodb.tls
 `--mongodb.tls-private-key` (string)
 :   A path to a PEM file that contains the private key (if not contained in the `mongodb.tls-cert` file).
 
-```
+```sh
 mongod --dbpath=DATABASEDIR --profile 2 --slowms 200 --rateLimit 100
 ```

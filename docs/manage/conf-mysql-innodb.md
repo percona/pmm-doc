@@ -9,7 +9,7 @@ can select to capture only specific counters, their overhead is low even when
 they all are enabled all the time. To enable all InnoDB metrics, set the
 global variable `innodb_monitor_enable` to `all`:
 
-```
+```sql
 SET GLOBAL innodb_monitor_enable=all
 ```
 

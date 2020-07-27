@@ -73,15 +73,14 @@ nav:
         - 'DEB packages': 'install/client-install-apt.md'
         - 'YUM packages': 'install/client-install-yum.md'
     - 'Using PMM Client':
-        - 'Configuring PMM Client with pmm-admin config'        : 'manage/client-config.md'
-        - 'Adding MySQL Service Monitoring'                     : 'manage/client-mysql-metrics.md'
-        - 'Adding MongoDB Service Monitoring'                   : 'manage/client-mongodb-metrics.md'
-        - 'Adding a ProxySQL host'                              : 'manage/client-proxysql-metrics.md'
-        - 'Adding Linux metrics'                                : 'manage/client-linux-metrics.md'
-        - 'Adding External Services'                            : 'manage/client-external.md'
-        - 'PostgreSQL'                                          : 'manage/conf-postgres.md'
-        - 'Removing monitoring services with `pmm-admin remove`': 'manage/client-remove.md'
-        - 'Annotating important Application Events'             : 'manage/client-annotations.md'
+        - Configuring PMM Client with pmm-admin config: 'manage/client-config.md'
+        - Adding MySQL Service Monitoring: 'manage/client-mysql-metrics.md'
+        - Adding MongoDB Service Monitoring: 'manage/client-mongodb-metrics.md'
+        - Adding a ProxySQL host: 'manage/client-proxysql-metrics.md'
+        - Adding Linux metrics: 'manage/client-linux-metrics.md'
+        - Adding External Services: 'manage/client-external.md'
+        - Removing monitoring services with `pmm-admin remove`: 'manage/client-remove.md'
+        - Annotating important Application Events: 'manage/client-annotations.md'
     - Percona Platform:
         - 'platform/intro.md'
         - Security Threat Tool: 'platform/stt.md'
@@ -92,17 +91,16 @@ nav:
             - 'manage/conf-mysql-disable-table-stats.md'
             - 'manage/conf-mysql-innodb.md'
             - Percona Server specific settings:
-                - 'manage/conf-mysql-ps-index.md'
-                - 'manage/conf-mysql-ps-userstat.md'
-                - 'manage/conf-mysql-ps-qrt.md'
-                - 'manage/conf-mysql-ps-log-slow-rate-limit.md'
-                - 'manage/conf-mysql-ps-log-slow-verbosity.md'
-                - 'manage/conf-mysql-ps-slow-query-log-use-global-control.md'
+                - MySQL User Statistics (userstat): 'manage/conf-mysql-ps-userstat.md'
+                - Query Response Time Plugin: 'manage/conf-mysql-ps-qrt.md'
+                - log_slow_rate_limit: 'manage/conf-mysql-ps-log-slow-rate-limit.md'
+                - log_slow_verbosity: 'manage/conf-mysql-ps-log-slow-verbosity.md'
+                - slow_query_log_use_global_control: 'manage/conf-mysql-ps-slow-query-log-use-global-control.md'
             - 'manage/conf-mysql-ps8.md'
+        - MongoDB:
             - 'manage/client-mongodb-ssl.md'
+        - PostgreSQL:
             - 'manage/conf-postgres.md'
-        - MongoDB: 'manage/client-mongodb-ssl.md'
-        - PostgreSQL: 'manage/conf-postgres.md'
     - Configuring AWS RDS or Aurora Services:
         - 'manage/amazon-rds-settings.md'
         - 'manage/amazon-rds-add-instance.md'
@@ -110,13 +108,10 @@ nav:
         - 'metrics-monitor-dashboards.md'
         - 'metrics-monitor-navigation.md'
     - The Query Analytics Dashboard: 'qan-intro.md'
-    - Dashboards references:
+    - Dashboards Reference:
         - Insight:
             - Advanced Data Exploration: 'dashboards/dashboard-advanced-data-exploration.md'
             - Home Dashboard: 'dashboards/dashboard-home.md'
-            - Prometheus: 'dashboards/dashboard-prometheus.md'
-            - Prometheus Exporter Status: 'dashboards/dashboard-prometheus-exporter-status.md'
-            - Prometheus Exporters Overview: 'dashboards/dashboard-prometheus-exporters-overview.md'
         - OS Dashboards:
             - CPU Utilization Details: 'dashboards/dashboard-cpu-utilization-details-cores.md'
             - Disk Details: 'dashboards/dashboard-disk-space.md'
@@ -134,13 +129,13 @@ nav:
             - MySQL Amazon Aurora Metrics: 'dashboards/dashboard-mysql-amazon-aurora-metrics.md'
             - MySQL Command/Handler Counters Compare: 'dashboards/dashboard-mysql-command-handler-counters-compare.md'
             - MySQL InnoDB Compression: 'dashboards/dashboard-mysql-innodb-compression.md'
-            - MySQL InnoDB Metrics: 'dashboards/dashboard-mysql-innodb-metrics.md'
             - MySQL InnoDB Metrics (Advanced): 'dashboards/dashboard-mysql-innodb-metrics-advanced.md'
+            - MySQL InnoDB Metrics: 'dashboards/dashboard-mysql-innodb-metrics.md'
             - MySQL MyISAM Aria Metrics: 'dashboards/dashboard-mysql-myisam-aria-metrics.md'
             - MySQL MyRocks Metrics: 'dashboards/dashboard-mysql-myrocks-metrics.md'
             - MySQL Overview: 'dashboards/dashboard-mysql-overview.md'
-            - MySQL Performance Schema: 'dashboards/dashboard-mysql-performance-schema.md'
             - Performance Schema Wait Event Analysis: 'dashboards/dashboard-mysql-performance-schema-wait-events.md'
+            - MySQL Performance Schema: 'dashboards/dashboard-mysql-performance-schema.md'
             - MySQL Query Response Time: 'dashboards/dashboard-mysql-query-response-time.md'
             - MySQL Replication: 'dashboards/dashboard-mysql-replication.md'
             - MySQL Table Statistics: 'dashboards/dashboard-mysql-table-statistics.md'
@@ -156,9 +151,7 @@ nav:
         - PostgreSQL Dashboards:
             - PostgreSQL Overview: 'dashboards/dashboard-postgres-overview.md'
         - HA Dashboards:
-            - 'index-metrics-monitor-dashboard.md'
-        - PXC/Galera Cluster Overview:
-            - 'dashboards/dashboard-pxc-galera-cluster-overview.md'
+            - PXC/Galera Cluster Overview: 'dashboards/dashboard-pxc-galera-cluster-overview.md'
     - Contact Us: 'contact.md'
     - Glossary: 'glossary-terminology.md'
     - Release Notes:

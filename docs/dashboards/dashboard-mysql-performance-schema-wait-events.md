@@ -1,7 +1,6 @@
 # Performance Schema Wait Event Analysis
 
-This dashboard helps to analyse *Performance Schema* wait events. It plots the
-following metrics for the chosen (one or more) wait events:
+This dashboard helps to analyse *Performance Schema* wait events. It plots the following metrics for the chosen (one or more) wait events:
 
 * *Count - Performance Schema Waits*
 * *Load - Performance Schema Waits*

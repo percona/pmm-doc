@@ -1,8 +1,6 @@
 # MongoDB inMemory
 
-The MongoDB inMemory dashboard shows statistics on the In-Memory
-storage engine for the selected MongoDB instances. This dashboard
-contains the following metrics:
+The MongoDB inMemory dashboard shows statistics on the In-Memory storage engine for the selected MongoDB instances. This dashboard contains the following metrics:
 
 * InMemory data size
 * InMemory max data size

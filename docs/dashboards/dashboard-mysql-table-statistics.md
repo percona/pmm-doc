@@ -32,5 +32,4 @@ The number of rows changed in the table, shown for the top 5 tables.
 
 ## Auto Increment Usage
 
-The current value of an `auto_increment` column from `information_schema`,
-shown for the top 10 tables.
+The current value of an `auto_increment` column from `information_schema`, shown for the top 10 tables.

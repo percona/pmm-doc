@@ -1,3 +1,5 @@
+<div class="section" id="server-admin-gui-pmm-settings-page"></div>
+
 # PMM Settings Page
 
 The *PMM Settings* page lets you configure a number of PMM options. It can be accessed through the main menu:
@@ -6,7 +8,7 @@ The *PMM Settings* page lets you configure a number of PMM options. It can be ac
 
 ## Settings
 
-The *Settings* section allows you to change metrics resolution, data retention, as well as configure telemetry and automatic checking for updates:
+The *Settings* section allows you to change [metrics resolution](../faq.md#metrics-resolution), [data retention](../faq.md#data-retention), as well as configure telemetry and automatic checking for updates:
 
 ![image](/_images/pmm.settings_settings.png)
 
@@ -31,7 +33,9 @@ The slider tool-tip shows the collection time corresponding to each resolution s
 
 * Setting the slider to *High* decreases the time between collection, resulting in high-resolution metrics (and higher disk usage).
 
-**NOTE**: If there is poor network connectivity between PMM Server and PMM Client, or between PMM Client and the database server it is monitoring, scraping every second may not be possible when the network latency is greater than 1 second.
+!!! note
+
+    If there is poor network connectivity between PMM Server and PMM Client, or between PMM Client and the database server it is monitoring, scraping every second may not be possible when the network latency is greater than 1 second.
 
 ## Telemetry
 
@@ -57,15 +61,18 @@ Grafana’s [anonymous usage statistics](https://grafana.com/docs/grafana/latest
 
 As well as via the *PMM Settings* page, you can also disable telemetry with the `-e DISABLE_TELEMETRY=1` option in your docker run statement for the PMM Server.
 
-**NOTE**:
+!!! note
 
-1. If the Security Threat Tool is enabled in PMM Settings, Telemetry is automatically enabled.
+    1. If the Security Threat Tool is enabled in PMM Settings, Telemetry is automatically enabled.
 
-2. Telemetry is sent immediately; the 24-hour grace period is not honored.
+    2. Telemetry is sent immediately; the 24-hour grace period is not honored.
 
 ## Check for updates
 
 When active, PMM will automatically check for updates and put a notification in the *Updates* dashboard if any are available.
+
+
+<div class="section" id="server-admin-gui-stt"></div>
 
 ## Security Threat Tool
 
@@ -81,7 +88,7 @@ The results can be viewed in *PMM > PMM Database Checks*.
 
 ## SSH Key Details
 
-This section lets you upload your public SSH key to access the PMM Server via SSH (for example, when accessing PMM Server as a virtual appliance).
+This section lets you upload your public SSH key to access the PMM Server via SSH (for example, when accessing PMM Server as a [virtual appliance](../install/virtual-appliance.md)).
 
 ![image](/_images/pmm.settings_ssh_key.png)
 

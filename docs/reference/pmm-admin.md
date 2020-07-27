@@ -342,7 +342,7 @@ PMM communicates with the PMM Server via a PMM agent process.
 
 ## EXAMPLES
 
-```
+```sh
 pmm-admin add mysql --query-source=slowlog --username=pmm --password=pmm sl-mysql 127.0.0.1:3306
 ```
 
@@ -352,11 +352,11 @@ Service ID  : /service_id/a89191d4-7d75-44a9-b37f-a528e2c4550f
 Service name: sl-mysql
 ```
 
-```
+```sh
 pmm-admin add mysql --username=pmm --password=pmm --service-name=ps-mysql --host=127.0.0.1 --port=3306
 ```
 
-```
+```sh
 pmm-admin status
 ```
 

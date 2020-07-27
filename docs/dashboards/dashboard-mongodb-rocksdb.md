@@ -1,8 +1,6 @@
 # MongoDB RocksDB
 
-The MongoDB RocksDB dashboard contains metrics that describe the performance
-of the RocksDB storage engine for the selected MongoDB host instance. This
-dashboard contains the following metrics:
+The MongoDB RocksDB dashboard contains metrics that describe the performance of the RocksDB storage engine for the selected MongoDB host instance. This dashboard contains the following metrics:
 
 * RocksDB Memtable used
 * RocksDB block cache used

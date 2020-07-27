@@ -10,22 +10,22 @@ The *Query Analytics* dashboard shows how queries are executed and where they sp
 
 ![image](/_images/PMM_Query_Analytics.jpg)
 
-**NOTE**:
+!!! note
 
-* Query Analytics supports only MySQL and MongoDB. The minimum requirements for MySQL are:
+    * Query Analytics supports only MySQL and MongoDB. The minimum requirements for MySQL are:
 
-    * MySQL 5.1 or later (if using the slow query log)
-    * MySQL 5.6.9 or later (if using Performance Schema)
+        * MySQL 5.1 or later (if using the slow query log)
+        * MySQL 5.6.9 or later (if using Performance Schema)
 
-* Query Analytics data retrieval is not instantaneous and can be delayed due to network conditions. In such situations *no data* is reported and a gap appears in the sparkline.
+    * Query Analytics data retrieval is not instantaneous and can be delayed due to network conditions. In such situations *no data* is reported and a gap appears in the sparkline.
 
 Query Analytics displays metrics in both visual and numeric form. Performance-related characteristics appear as plotted graphics with summaries.
 
 The dashboard contains three panels:
 
-* Filters Panel
-* Overview Panel
-* Details Panel
+* [Filters Panel](#filters-panel)
+* [Overview Panel](#overview-panel)
+* [Details Panel](#details-panel)
 
 ## Filters Panel
 
@@ -63,7 +63,7 @@ At the top of the second column is the *dimension* menu. Use this to choose the 
 
 **Columns**
 
-* The first column is the object’s identifier. For *Query*, it is the query’s Fingerprint.
+* The first column is the object’s identifier. For *Query*, it is the query’s [Fingerprint](glossary-terminology.md#fingerprint).
 
 * The second column is the *Main metric*, containing a reduced graphical representation of the metric over time, called a *sparkline*, and a horizontal meter, filled to reflect a percentage of the total value.
 
@@ -113,9 +113,9 @@ At the top of the second column is the *dimension* menu. Use this to choose the 
 
 ## Details Panel
 
-* Selecting an item in the Overview panel opens the *Details panel* with a Details Tab.
+* Selecting an item in the Overview panel opens the *Details panel* with a [Details Tab](#details-tab).
 
-* If the dimension is *Query*, the panel also contains the Examples Tab, Explain Tab, and Tables Tab.
+* If the dimension is *Query*, the panel also contains the [Examples Tab](#examples-tab), [Explain Tab](#explain-tab), and [Tables Tab](#tables-tab).
 
 ### Details Tab
 

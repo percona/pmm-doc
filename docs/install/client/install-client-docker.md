@@ -28,7 +28,7 @@ of PMM Client.
 
 To pull the latest version from Docker Hub:
 
-```
+```sh
 docker pull percona/pmm-client:2
 ```
 
@@ -36,11 +36,13 @@ docker pull percona/pmm-client:2
 
 To create a container for persistent data, run the following command:
 
-```
+```sh
 docker create -v /srv --name pmm-client-data percona/pmm-client:2 /bin/true
 ```
 
-**NOTE**: This container does not run, but exists only to make sure you retain
+!!! note
+
+    This container does not run, but exists only to make sure you retain
 all PMM data when upgrading to a newer image.
 
 * The `-v` option initializes a data volume for the container.
@@ -55,7 +57,7 @@ to derive the container from.
 
 ### Run the PMM Client Docker Container
 
-```
+```sh
 docker run --rm \
     -e PMM_AGENT_SERVER_ADDRESS=PMMServer:443 \
     -e PMM_AGENT_SERVER_USERNAME=admin \
@@ -89,6 +91,6 @@ docker run --rm \
 
 To get help:
 
-```
+```sh
 docker run --rm perconalab/pmm-client:dev-latest --help
 ```

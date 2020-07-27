@@ -1,8 +1,6 @@
 # MongoDB WiredTiger
 
-The MongoDB WiredTiger dashboard contains statistics on the WiredTiger
-storage engine for the selected MongoDB host. This dashboard contains the
-following statistics:
+The MongoDB WiredTiger dashboard contains statistics on the WiredTiger storage engine for the selected MongoDB host. This dashboard contains the following statistics:
 
 * WiredTiger cache usage
 * WiredTiger max cache size
