@@ -50,30 +50,6 @@ plugins:
         include_yaml: ['extra.yml']
     - exclude:
         glob:
-          - index.md
-          - index-glossary.md
-          - index-qan.md
-          - qan-filtering.md
-          - qan-mongodb.md
-          - qan-navigation.md
-          - qan-top-ten.md
-          - qan-query-time-distribution.md
-          - index-using-pmm-metrics-monitor.md
-          - install/aws-resize.md
-          - install/aws-upgrade.md
-          - install/docker-*
-          - install/ova-*
-          - install/client/*
-          - manage/index-*
-          - concepts/index.md
-          - platform/index.md
-          - dashboards/index.md
-          - dashboards/dashboard-node-temperature-details.md
-          - dashboards/dashboard-processes-details.md
-          - dashboards/dashboard-node-memory.md
-          - dashboards/dashboard-node-summary.md
-          - release-notes/index.md
-          - reference/index.md
 
 nav:
     - 'What is Percona Monitoring and Management?': 'introduction.md'
@@ -84,29 +60,28 @@ nav:
             - 'concepts/services-mongodb.md'
             - 'concepts/services-postgres.md'
         - 'Tools of PMM': 'tool.md'
-    - 'Installation': 'install/index.md'
-    - Installing PMM Server:
-        - Running PMM Server via Docker: 'install/docker.md'
-        - 'install/aws.md'
-        - 'install/virtual-appliance.md'
-        - 'install/server-verify.md'
-        - Configuring PMM Server:
+    - 'Installing PMM Server':
+        - 'Running PMM Server via Docker': 'install/docker.md'
+        - 'Running PMM Server Using AWS Marketplace': 'install/aws.md'
+        - 'PMM Server as a Virtual Appliance': 'install/virtual-appliance.md'
+        - 'Verifying PMM Server': 'install/server-verify.md'
+        - 'Configuring PMM Server':
             - 'manage/server-admin-gui.md'
             - 'manage/server-pmm-api.md'
-    - Installing PMM Client:
-        - Clients: 'install/clients.md'
-        - DEB packages: 'install/client-install-apt.md'
-        - YUM packages: 'install/client-install-yum.md'
-    - Using PMM Client:
-        - 'manage/client-config.md'
-        - 'manage/client-mysql-metrics.md'
-        - 'manage/client-mongodb-metrics.md'
-        - 'manage/client-proxysql-metrics.md'
-        - 'manage/client-linux-metrics.md'
-        - 'manage/client-external.md'
-#        - 'manage/conf-postgres.md'
-        - 'manage/client-remove.md'
-        - 'manage/client-annotations.md'
+    - 'Installing PMM Client':
+        - 'Clients': 'install/clients.md'
+        - 'DEB packages': 'install/client-install-apt.md'
+        - 'YUM packages': 'install/client-install-yum.md'
+    - 'Using PMM Client':
+        - 'Configuring PMM Client with pmm-admin config'        : 'manage/client-config.md'
+        - 'Adding MySQL Service Monitoring'                     : 'manage/client-mysql-metrics.md'
+        - 'Adding MongoDB Service Monitoring'                   : 'manage/client-mongodb-metrics.md'
+        - 'Adding a ProxySQL host'                              : 'manage/client-proxysql-metrics.md'
+        - 'Adding Linux metrics'                                : 'manage/client-linux-metrics.md'
+        - 'Adding External Services'                            : 'manage/client-external.md'
+        - 'PostgreSQL'                                          : 'manage/conf-postgres.md'
+        - 'Removing monitoring services with `pmm-admin remove`': 'manage/client-remove.md'
+        - 'Annotating important Application Events'             : 'manage/client-annotations.md'
     - Percona Platform:
         - 'platform/intro.md'
         - Security Threat Tool: 'platform/stt.md'
@@ -126,41 +101,46 @@ nav:
             - 'manage/conf-mysql-ps8.md'
             - 'manage/client-mongodb-ssl.md'
             - 'manage/conf-postgres.md'
-    - Adding AWS RDS and Aurora services:
+        - MongoDB: 'manage/client-mongodb-ssl.md'
+        - PostgreSQL: 'manage/conf-postgres.md'
+    - Configuring AWS RDS or Aurora Services:
         - 'manage/amazon-rds-settings.md'
         - 'manage/amazon-rds-add-instance.md'
     - Using PMM Metrics Monitor:
         - 'metrics-monitor-dashboards.md'
         - 'metrics-monitor-navigation.md'
-    - 'The Query Analytics Dashboard': 'qan-intro.md'
+    - The Query Analytics Dashboard: 'qan-intro.md'
     - Dashboards references:
         - Insight:
-            - 'dashboards/dashboard-advanced-data-exploration.md'
-            - 'dashboards/dashboard-home.md'
-            - 'dashboards/dashboard-prometheus.md'
-            - 'dashboards/dashboard-prometheus-exporter-status.md'
-            - 'dashboards/dashboard-prometheus-exporters-overview.md'
+            - Advanced Data Exploration: 'dashboards/dashboard-advanced-data-exploration.md'
+            - Home Dashboard: 'dashboards/dashboard-home.md'
+            - Prometheus: 'dashboards/dashboard-prometheus.md'
+            - Prometheus Exporter Status: 'dashboards/dashboard-prometheus-exporter-status.md'
+            - Prometheus Exporters Overview: 'dashboards/dashboard-prometheus-exporters-overview.md'
         - OS Dashboards:
-            - 'dashboards/dashboard-cpu-utilization-details-cores.md'
-            - 'dashboards/dashboard-disk-space.md'
-            - 'dashboards/dashboard-system-overview.md'
-            - 'dashboards/dashboard-compare-system-parameters.md'
-            - 'dashboards/dashboard-overview-numa-metrics.md'
+            - CPU Utilization Details: 'dashboards/dashboard-cpu-utilization-details-cores.md'
+            - Disk Details: 'dashboards/dashboard-disk-space.md'
+            - Network Details: 'dashboards/dashboard-network-overview.md'
+            - Node Temperature Details: 'dashboards/dashboard-node-temperature-details.md'
+            - Nodes Compare: 'dashboards/dashboard-compare-system-parameters.md'
+            - Nodes Overview: 'dashboards/dashboard-system-overview.md'
+            - NUMA Details: 'dashboards/dashboard-overview-numa-metrics.md'
+            - Processes Details: 'dashboards/dashboard-processes-details.md'
         - Prometheus Dashboards:
-            - 'dashboards/dashboard-prometheus.md'
-            - 'dashboards/dashboard-prometheus-exporter-status.md'
-            - 'dashboards/dashboard-prometheus-exporters-overview.md'
+            - Prometheus: 'dashboards/dashboard-prometheus.md'
+            - Prometheus Exporter Status: 'dashboards/dashboard-prometheus-exporter-status.md'
+            - Prometheus Exporters Overview: 'dashboards/dashboard-prometheus-exporters-overview.md'
         - MySQL Dashboards:
             - MySQL Amazon Aurora Metrics: 'dashboards/dashboard-mysql-amazon-aurora-metrics.md'
-            - MySQL Command/Handler Counters Compare Dashboard: 'dashboards/dashboard-mysql-command-handler-counters-compare.md'
-            - MySQL InnoDB Compression Dashboard: 'dashboards/dashboard-mysql-innodb-compression.md'
+            - MySQL Command/Handler Counters Compare: 'dashboards/dashboard-mysql-command-handler-counters-compare.md'
+            - MySQL InnoDB Compression: 'dashboards/dashboard-mysql-innodb-compression.md'
             - MySQL InnoDB Metrics: 'dashboards/dashboard-mysql-innodb-metrics.md'
-            - MySQL InnoDB Metrics (Advanced) Dashboard: 'dashboards/dashboard-mysql-innodb-metrics-advanced.md'
-            - MySQL MyISAM Aria Metrics Dashboard: 'dashboards/dashboard-mysql-myisam-aria-metrics.md'
-            - MySQL MyRocks Metrics Dashboard: 'dashboards/dashboard-mysql-myrocks-metrics.md'
+            - MySQL InnoDB Metrics (Advanced): 'dashboards/dashboard-mysql-innodb-metrics-advanced.md'
+            - MySQL MyISAM Aria Metrics: 'dashboards/dashboard-mysql-myisam-aria-metrics.md'
+            - MySQL MyRocks Metrics: 'dashboards/dashboard-mysql-myrocks-metrics.md'
             - MySQL Overview: 'dashboards/dashboard-mysql-overview.md'
-            - MySQL Performance Schema Dashboard: 'dashboards/dashboard-mysql-performance-schema.md'
-            - Performance Schema Wait Event Analysis Dashboard: 'dashboards/dashboard-mysql-performance-schema-wait-events.md'
+            - MySQL Performance Schema: 'dashboards/dashboard-mysql-performance-schema.md'
+            - Performance Schema Wait Event Analysis: 'dashboards/dashboard-mysql-performance-schema-wait-events.md'
             - MySQL Query Response Time: 'dashboards/dashboard-mysql-query-response-time.md'
             - MySQL Replication: 'dashboards/dashboard-mysql-replication.md'
             - MySQL Table Statistics: 'dashboards/dashboard-mysql-table-statistics.md'
@@ -168,20 +148,20 @@ nav:
         - MongoDB Dashboards:
             - MongoDB Cluster Summary: 'dashboards/dashboard-mongodb-cluster-summary.md'
             - MongoDB inMemory  Summary: 'dashboards/dashboard-mongodb-inmemory.md'
-            - MongoDB MMAPv1 Dashboard: 'dashboards/dashboard-mongodb-mmapv1.md'
+            - MongoDB MMAPv1: 'dashboards/dashboard-mongodb-mmapv1.md'
             - MongoDB Overview: 'dashboards/dashboard-mongodb-overview.md'
             - MongoDB ReplSet: 'dashboards/dashboard-mongodb-replset.md'
-            - MongoDB RocksDB Dashboard: 'dashboards/dashboard-mongodb-rocksdb.md'
-            - MongoDB WiredTiger Dashboard: 'dashboards/dashboard-mongodb-wiredtiger.md'
+            - MongoDB RocksDB: 'dashboards/dashboard-mongodb-rocksdb.md'
+            - MongoDB WiredTiger: 'dashboards/dashboard-mongodb-wiredtiger.md'
         - PostgreSQL Dashboards:
             - PostgreSQL Overview: 'dashboards/dashboard-postgres-overview.md'
         - HA Dashboards:
             - 'index-metrics-monitor-dashboard.md'
-        - PXC/Galera Cluster Overview Dashboard:
+        - PXC/Galera Cluster Overview:
             - 'dashboards/dashboard-pxc-galera-cluster-overview.md'
-    - 'contact.md'
-    - 'glossary-terminology.md'
-    - 'Release Notes':
+    - Contact Us: 'contact.md'
+    - Glossary: 'glossary-terminology.md'
+    - Release Notes:
         - 'release-notes/2.9.0.md'
         - 'release-notes/2.8.0.md'
         - 'release-notes/2.7.0.md'
@@ -196,6 +176,6 @@ nav:
         - 'release-notes/2.1.0.md'
         - 'release-notes/2.0.1.md'
         - 'release-notes/2.0.0.md'
-    - 'faq.md'
-    - 'Reference':
+    - Frequently Asked Questions: 'faq.md'
+    - Reference:
         - 'pmm-admin': 'reference/pmm-admin.md'

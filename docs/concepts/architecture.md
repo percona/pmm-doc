@@ -131,5 +131,5 @@ This service requires the *Telemetry* setting to be on.
 
 **See also**
 
-* [Security Threat Tool main page](platform/stt.md)
-* [Security Threat Tool settings](manage/server-admin-gui.md#security-threat-tool)
+* [Security Threat Tool main page](../platform/stt.md)
+* [Security Threat Tool settings](../manage/server-admin-gui.md#security-threat-tool)

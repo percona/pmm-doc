@@ -1,4 +1,4 @@
 # Configuring PMM Server
 
-* [PMM Settings Page](manage/server-admin-gui.md)
-* [Exploring PMM API](manage/server-pmm-api.md)
+* [PMM Settings Page](server-admin-gui.md)
+* [Exploring PMM API](server-pmm-api.md)

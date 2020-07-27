@@ -1,15 +1,19 @@
 # Installation
 
-## PMM Server
+<div class="section"  id="pmm-deploying-server"></div>
 
-* [Running PMM Server via Docker](install/docker.md)
-* [Running PMM Server Using AWS Marketplace](install/aws.md)
-* [PMM Server as a Virtual Appliance](install/virtual-appliance.md)
-* [Verifying PMM Server](install/server-verify.md)
-* [Configuring PMM Server](manage/index-server.md)
+# Installing PMM Server
 
-## PMM Client
+* [Running PMM Server via Docker](docker.md)
+* [Running PMM Server Using AWS Marketplace](aws.md)
+* [PMM Server as a Virtual Appliance](virtual-appliance.md)
+* [Verifying PMM Server](server-verify.md)
+* [Configuring PMM Server](../manage/index-server.md)
 
-* Installing Clients
-* Installing DEB packages using `apt-get`
-* Installing RPM packages using `yum`
+<div class="section"  id="pmm-deploying-client"></div>
+
+# Installing PMM Client
+
+- [Clients](clients.md)
+- [DEB packages](client-install-apt.md)
+- [YUM packages](client-install-yum.md)

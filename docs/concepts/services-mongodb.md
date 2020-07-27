@@ -4,7 +4,7 @@
 
 In Query Analytics, you can monitor MongoDB metrics and queries. Run the
 `pmm-admin add` command to use these monitoring services
-(for more information, see [Adding MongoDB Service Monitoring](manage/client-mongodb-metrics.md)).
+(for more information, see [Adding MongoDB Service Monitoring](../manage/client-mongodb-metrics.md)).
 
 **Supported versions of MongoDB**
 

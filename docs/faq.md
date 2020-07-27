@@ -1,3 +1,5 @@
+<span id="faq"></span>
+
 # Frequently Asked Questions
 
 ## How can I contact the developers?

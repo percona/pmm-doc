@@ -103,4 +103,4 @@ GRANT SELECT, PROCESS, SUPER, REPLICATION CLIENT, RELOAD ON *.* TO 'pmm'@'localh
 
 **See also**
 
-[Adding MySQL Service Monitoring](manage/client-mysql-metrics.md)
+[Adding MySQL Service Monitoring](../manage/client-mysql-metrics.md)
