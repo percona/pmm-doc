@@ -23,8 +23,8 @@ theme:
 #  features:
 #     tabs: true # top row navigation bar
 
-#extra_css:
-#  - "css/percona.css"
+extra_css:
+  - "css/percona.css"
 
 markdown_extensions:
     - toc:

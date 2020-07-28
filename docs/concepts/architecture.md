@@ -96,5 +96,4 @@ Security Threat Tool checks registered database instances for a range of common 
 !!! seealso "See also"
 
     * [Security Threat Tool main page](../platform/stt.md)
-
     * [Security Threat Tool settings](../manage/server-admin-gui.md#security-threat-tool)
