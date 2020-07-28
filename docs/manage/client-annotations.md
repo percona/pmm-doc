@@ -44,7 +44,7 @@ You can toggle the display of annotations on graphs with the *PMM Annotations* c
 
 Remove the check mark to hide annotations from all dashboards.
 
-**See also**
+!!! seealso "See also"
 
-* [pmm-admin - PMM Administration Tool](../reference/pmm-admin.md)
-* [docs.grafana.org: Annotations](http://docs.grafana.org/reference/annotations/)
+    * [pmm-admin - PMM Administration Tool](../reference/pmm-admin.md)
+    * [docs.grafana.org: Annotations](http://docs.grafana.org/reference/annotations/)

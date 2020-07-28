@@ -174,20 +174,13 @@ The recommendation is to set the `table_open_cache_instances` to a loose correla
 
 The `table_definition_cache` and `table_open_cache` can be left as default as they are auto-sized in MySQL 5.6 and above (do not set them to any value).
 
-**See also**
+!!! seealso "See also"
 
-* [Percona Server Documentation: Running TokuDB in Production](https://www.percona.com/doc/percona-server/LATEST/tokudb/tokudb_quickstart.html#considerations-to-run-tokudb-in-production)
-
-* [Percona Blog: Adaptive Hash Index in InnoDB](https://www.percona.com/blog/2016/04/12/is-adaptive-hash-index-in-innodb-right-for-my-workload/)
-
-* [MySQL Server 5.7 Documentation: InnoDB buffer pool](https://dev.mysql.com/doc/refman/5.7/en/innodb-buffer-pool.html)
-
-* [MySQL Server 5.7 system variables: key_buffer_size](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_key_buffer_size)
-
-* [MySQL Server 5.6 system variables: table_open_cache](http://dev.mysql.com/doc/refman/5.6/en/server-system-variables.html#sysvar_table_open_cache)
-
-* [MySQL Server 5.6 status variables: Queries](https://dev.mysql.com/doc/refman/5.6/en/server-status-variables.html#statvar_Queries)
-
-* [MySQL Server 5.6 status variables: max_connections](https://dev.mysql.com/doc/refman/5.6/en/server-system-variables.html#sysvar_max_connections)
-
-* [MySQL Server 5.6 status variables: thread_cache_size](https://dev.mysql.com/doc/refman/5.6/en/server-system-variables.html#sysvar_thread_cache_size)
+    * [Percona Server Documentation: Running TokuDB in Production](https://www.percona.com/doc/percona-server/LATEST/tokudb/tokudb_quickstart.html#considerations-to-run-tokudb-in-production)
+    * [Percona Blog: Adaptive Hash Index in InnoDB](https://www.percona.com/blog/2016/04/12/is-adaptive-hash-index-in-innodb-right-for-my-workload/)
+    * [MySQL Server 5.7 Documentation: InnoDB buffer pool](https://dev.mysql.com/doc/refman/5.7/en/innodb-buffer-pool.html)
+    * [MySQL Server 5.7 system variables: key_buffer_size](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_key_buffer_size)
+    * [MySQL Server 5.6 system variables: table_open_cache](http://dev.mysql.com/doc/refman/5.6/en/server-system-variables.html#sysvar_table_open_cache)
+    * [MySQL Server 5.6 status variables: Queries](https://dev.mysql.com/doc/refman/5.6/en/server-status-variables.html#statvar_Queries)
+    * [MySQL Server 5.6 status variables: max_connections](https://dev.mysql.com/doc/refman/5.6/en/server-system-variables.html#sysvar_max_connections)
+    * [MySQL Server 5.6 status variables: thread_cache_size](https://dev.mysql.com/doc/refman/5.6/en/server-system-variables.html#sysvar_thread_cache_size)

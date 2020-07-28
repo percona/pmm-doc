@@ -23,8 +23,7 @@ To enable collection of query response time:
     SET GLOBAL query_response_time_stats=ON;
     ```
 
-**See also**
+!!! seealso "See also"
 
-* [Percona Server 5.7: query_response_time_stats](https://www.percona.com/doc/percona-server/5.7/diagnostics/response_time_distribution.html#query_response_time_stats)
-
-* [Percona Server 5.7: Response time distribution](https://www.percona.com/doc/percona-server/5.7/diagnostics/response_time_distribution.html#installing-the-plugins)
+    * [Percona Server 5.7: query_response_time_stats](https://www.percona.com/doc/percona-server/5.7/diagnostics/response_time_distribution.html#query_response_time_stats)
+    * [Percona Server 5.7: Response time distribution](https://www.percona.com/doc/percona-server/5.7/diagnostics/response_time_distribution.html#installing-the-plugins)

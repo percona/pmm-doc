@@ -50,6 +50,6 @@ selected range versus the previous day and the previous week for the same time
 range. This graph is useful to demonstrate how the InnoDB Rows Changed has
 fluctuated over time by visually overlaying time periods.
 
-**See also**
+!!! seealso "See also"
 
-[MySQL Server 5.7 Documentation: Questions](https://dev.mysql.com/doc/refman/5.7/en/server-status-variables.html#statvar_Questions)
+    [MySQL Server 5.7 Documentation: Questions](https://dev.mysql.com/doc/refman/5.7/en/server-status-variables.html#statvar_Questions)

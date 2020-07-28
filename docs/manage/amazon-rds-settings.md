@@ -123,16 +123,16 @@ If you have Amazon RDS with a MySQL version prior to 5.5, `REPLICATION CLIENT` p
 
     `node_exporter`, used in versions of PMM prior to 1.8.0, was not able to monitor general system metrics remotely.
 
-**See also**
+!!! seealso "See also"
 
-* [Configuring Performance Schema](conf-mysql-perf-schema.md)
-* [Amazon RDS Documentation: Setting Up](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_SettingUp.html)
-* [Amazon AWS Documentation: Connecting to a DB Instance Running the MySQL Database Engine](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ConnectToInstance.html)
-* [Amazon RDS Documentation: Modifying an Amazon RDS DB Instance](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.DBInstance.Modifying.html)
-* [Amazon RDS Documentation: Enhanced Monitoring](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Monitoring.OS.html)
-* [Amazon RDS Documentation: Availability zones](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html)
-* [Amazon RDS Documentation: Master User Account Privileges](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.MasterAccounts.html)
-* [Amazon AWS Documentation: Creating IAM policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_create.html)
-* [Amazon AWS Documentation: IAM roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html)
-* [Amazon AWS Documentation: Managing Access Keys for IAM Users](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html)
-* [Amazon AWS Documentation: Parameter groups](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithParamGroups.html)
+    * [Configuring Performance Schema](conf-mysql-perf-schema.md)
+    * [Amazon RDS Documentation: Setting Up](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_SettingUp.html)
+    * [Amazon AWS Documentation: Connecting to a DB Instance Running the MySQL Database Engine](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ConnectToInstance.html)
+    * [Amazon RDS Documentation: Modifying an Amazon RDS DB Instance](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.DBInstance.Modifying.html)
+    * [Amazon RDS Documentation: Enhanced Monitoring](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Monitoring.OS.html)
+    * [Amazon RDS Documentation: Availability zones](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html)
+    * [Amazon RDS Documentation: Master User Account Privileges](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.MasterAccounts.html)
+    * [Amazon AWS Documentation: Creating IAM policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_create.html)
+    * [Amazon AWS Documentation: IAM roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html)
+    * [Amazon AWS Documentation: Managing Access Keys for IAM Users](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html)
+    * [Amazon AWS Documentation: Parameter groups](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithParamGroups.html)

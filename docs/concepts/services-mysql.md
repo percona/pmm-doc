@@ -100,6 +100,6 @@ CREATE USER 'pmm'@'localhost' IDENTIFIED BY 'pass' WITH MAX_USER_CONNECTIONS 10;
 GRANT SELECT, PROCESS, SUPER, REPLICATION CLIENT, RELOAD ON *.* TO 'pmm'@'localhost';
 ```
 
-**See also**
+!!! seealso "See also"
 
-[Adding MySQL Service Monitoring](../manage/client-mysql-metrics.md)
+    [Adding MySQL Service Monitoring](../manage/client-mysql-metrics.md)

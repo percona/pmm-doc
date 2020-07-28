@@ -115,9 +115,9 @@ by clicking the **Download PMM Server Logs** button.
 
 ![image](/_images/pmm.settings_iagnostics.png)
 
-**See also**
+!!! seealso "See also"
 
-* [How do I troubleshoot communication issues between PMM Client and PMM Server?](../faq.md#how-do-i-troubleshoot-communication-issues-between-pmm-client-and-pmm-server)
-* [Security Threat Tool main page](../platform/stt.md)
-* [Prometheus Alertmanager documentation](https://prometheus.io/docs/alerting/alertmanager/)
-* [Prometheus Alertmanager alerting rules](https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/)
+    * [How do I troubleshoot communication issues between PMM Client and PMM Server?](../faq.md#how-do-i-troubleshoot-communication-issues-between-pmm-client-and-pmm-server)
+    * [Security Threat Tool main page](../platform/stt.md)
+    * [Prometheus Alertmanager documentation](https://prometheus.io/docs/alerting/alertmanager/)
+    * [Prometheus Alertmanager alerting rules](https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/)

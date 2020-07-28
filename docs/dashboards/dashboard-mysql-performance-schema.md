@@ -12,6 +12,6 @@ The MySQL Performance Schema dashboard helps determine the efficiency of communi
 * Performance Schema SQL and external locks (events)
 * Performance Schema SQL and external locks (seconds)
 
-**See also**
+!!! seealso "See also"
 
-[MySQL Server 5.7 Documentation: Performance Schema](https://dev.mysql.com/doc/refman/5.7/en/performance-schema.html)
+    [MySQL Server 5.7 Documentation: Performance Schema](https://dev.mysql.com/doc/refman/5.7/en/performance-schema.html)

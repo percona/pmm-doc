@@ -93,11 +93,11 @@ Run this command as root or by using the `sudo` command
 service mongod restart
 ```
 
-**See also**
+!!! seealso "See also"
 
-* [Percona Server for MongoDB: rateLimit](https://www.percona.com/doc/percona-server-for-mongodb/LATEST/rate-limit.html)
-* [Percona Server for MongoDB: Profiling Rate Limit](https://www.percona.com/doc/percona-server-for-mongodb/LATEST/rate-limit.html)
-* [MongoDB Documentation: Enabling Profiling](https://docs.mongodb.com/manual/tutorial/manage-the-database-profiler/)
-* [MongoDB Documentation: Profiling Mode](https://docs.mongodb.com/manual/reference/configuration-options/#operationProfiling.mode)
-* [MongoDB Documentation: SlowOpThresholdMd option](https://docs.mongodb.com/manual/reference/configuration-options/#operationProfiling.slowOpThresholdMs)
-* [MongoDB Documentation: Profiler Overhead](https://docs.mongodb.com/manual/tutorial/manage-the-database-profiler/#profiler-overhead)
+    * [Percona Server for MongoDB: rateLimit](https://www.percona.com/doc/percona-server-for-mongodb/   LATEST/rate-limit.html)
+    * [Percona Server for MongoDB: Profiling Rate Limit](https://www.percona.com/doc/   percona-server-for-mongodb/LATEST/rate-limit.html)
+    * [MongoDB Documentation: Enabling Profiling](https://docs.mongodb.com/manual/tutorial/ manage-the-database-profiler/)
+    * [MongoDB Documentation: Profiling Mode](https://docs.mongodb.com/manual/reference/    configuration-options/#operationProfiling.mode)
+    * [MongoDB Documentation: SlowOpThresholdMd option](https://docs.mongodb.com/manual/reference/  configuration-options/#operationProfiling.slowOpThresholdMs)
+    * [MongoDB Documentation: Profiler Overhead](https://docs.mongodb.com/manual/tutorial/manage-the-database-profiler/#profiler-overhead)

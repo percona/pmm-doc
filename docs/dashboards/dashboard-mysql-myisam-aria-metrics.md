@@ -18,6 +18,6 @@ This graphs shows the utilization for the aria pagecache.  This is similar to In
 
 This metric is similar to InnoDB log file syncs. If you see lots of log syncs and want to relax the durability settings you can change (in seconds) from 30 (default) to a higher number. It is good to look at the disk IO dashboard as well.
 
-**See also**
+!!! seealso "See also"
 
-[List of Aria system variables](https://mariadb.com/kb/en/library/aria-system-variables/)
+    [List of Aria system variables](https://mariadb.com/kb/en/library/aria-system-variables/)

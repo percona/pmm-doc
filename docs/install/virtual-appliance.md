@@ -158,6 +158,6 @@ To access the VM with the *PMM Server* appliance via SSH, you will need to provi
 
 [Verify that PMM Server is running](../install/server-verify.md) by connecting to the PMM web interface using the IP address assigned to the virtual appliance, then [install PMM Client](../install/clients.md) on all database hosts that you want to monitor.
 
-**See also**
+!!! seealso "See also"
 
-[Configuring network interfaces in CentOS](https://www.serverlab.ca/tutorials/linux/administration-linux/how-to-configure-centos-7-network-settings/)
+    [Configuring network interfaces in CentOS](https://www.serverlab.ca/tutorials/linux/administration-linux/how-to-configure-centos-7-network-settings/)

@@ -12,6 +12,6 @@ capture every 100th query for the *slow query log*.
 
     It is also a good idea to set `log_slow_verbosity` to `full` so that maximum amount of information about each captured query is stored in the slow query log.
 
-**See also**
+!!! seealso "See also"
 
-[MySQL Server 5.7 Documentation: Setting variables](https://dev.mysql.com/doc/refman/5.7/en/set-variable.html)
+    [MySQL Server 5.7 Documentation: Setting variables](https://dev.mysql.com/doc/refman/5.7/en/set-variable.html)

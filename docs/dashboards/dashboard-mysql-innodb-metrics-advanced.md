@@ -90,6 +90,6 @@ The InnoDB Defragmentation graph shows the status information related to the Inn
 
     Currently available only on MariaDB Server.
 
-**See also**
+!!! seealso "See also"
 
-[MySQL 5.6 innodb_max_purge_lag Documentation](https://dev.mysql.com/doc/refman/5.6/en/innodb-parameters.html#sysvar_innodb_max_purge_lag)
+    [MySQL 5.6 innodb_max_purge_lag Documentation](https://dev.mysql.com/doc/refman/5.6/en/innodb-parameters.html#sysvar_innodb_max_purge_lag)

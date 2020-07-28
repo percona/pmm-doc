@@ -23,6 +23,6 @@ In this section, the values of the selected metric are accummulated over time
 
 This section presents the values of the selected metric in the tabular form.
 
-**See also**
+!!! seealso "See also"
 
-[Prometheus: Metric types](https://prometheus.io/docs/concepts/metric_types/)
+    [Prometheus: Metric types](https://prometheus.io/docs/concepts/metric_types/)

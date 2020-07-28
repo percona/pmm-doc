@@ -36,12 +36,9 @@ Available only in Percona Server for MySQL, illustrates WRITE query response tim
 * 1s - 10s
 * \> 10s
 
-**See also**
+!!! seealso "See also"
 
-* [Percona Server Documentation: QUERY_RESPONSE_TIME_WRITE](https://www.percona.com/doc/percona-server/5.7/diagnostics/response_time_distribution.html#QUERY_RESPONSE_TIME_WRITE)
-
-* [Percona Server Documentation: QUERY_RESPONSE_TIME_READ](https://www.percona.com/doc/percona-server/5.7/diagnostics/response_time_distribution.html#QUERY_RESPONSE_TIME_READ)
-
-* [Percona Server Documentation: QUERY_RESPONSE_TIME table](https://www.percona.com/doc/percona-server/5.7/diagnostics/response_time_distribution.html#QUERY_RESPONSE_TIME)
-
-* [Percona Server Documentation: Logging queries in separate READ and WRITE tables](https://www.percona.com/doc/percona-server/5.7/diagnostics/response_time_distribution.html#logging-the-queries-in-separate-read-and-write-tables)
+    * [Percona Server Documentation: QUERY_RESPONSE_TIME_WRITE](https://www.percona.com/doc/percona-server/5.7/diagnostics/response_time_distribution.html#QUERY_RESPONSE_TIME_WRITE)
+    * [Percona Server Documentation: QUERY_RESPONSE_TIME_READ](https://www.percona.com/doc/percona-server/5.7/diagnostics/response_time_distribution.html#QUERY_RESPONSE_TIME_READ)
+    * [Percona Server Documentation: QUERY_RESPONSE_TIME table](https://www.percona.com/doc/percona-server/5.7/diagnostics/response_time_distribution.html#QUERY_RESPONSE_TIME)
+    * [Percona Server Documentation: Logging queries in separate READ and WRITE tables](https://www.percona.com/doc/percona-server/5.7/diagnostics/response_time_distribution.html#logging-the-queries-in-separate-read-and-write-tables)

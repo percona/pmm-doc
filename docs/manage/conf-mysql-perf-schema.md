@@ -102,6 +102,6 @@ pmm-admin add mysql --username=pmm --password=pmmpassword --query-source='perfsc
 
 For more information, run `pmm-admin add mysql --help`.
 
-**See also**
+!!! seealso "See also"
 
-[MySQL Server 5.7 Documentation: –performance_schema_instrument](https://dev.mysql.com/doc/refman/5.7/en/performance-schema-options.html#option_mysqld_performance-schema-instrument)
+    [MySQL Server 5.7 Documentation: –performance_schema_instrument](https://dev.mysql.com/doc/refman/5.7/en/performance-schema-options.html#option_mysqld_performance-schema-instrument)

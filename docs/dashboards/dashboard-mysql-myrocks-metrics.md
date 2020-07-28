@@ -31,6 +31,6 @@ PMM collects statistics on the MyRocks storage engine for MySQL in the Metrics M
 * RocksDB stalls
 * RocksDB stops/slowdowns
 
-**See also**
+!!! seealso "See also"
 
-[MyRocks Information schema](https://github.com/facebook/mysql-5.6/wiki/MyRocks-Information-Schema)
+    [MyRocks Information schema](https://github.com/facebook/mysql-5.6/wiki/MyRocks-Information-Schema)

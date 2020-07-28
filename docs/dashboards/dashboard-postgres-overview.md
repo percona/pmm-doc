@@ -125,18 +125,12 @@ The list of all settings of the PostgreSQL server.
 
 This section contains the following system parameters of the PostgreSQL server: CPU Usage, CPU Saturation and Max Core Usage, Disk I/O Activity, and Network Traffic.
 
-**See also**
+!!! seealso "See also"
 
-* [PostgreSQL](../manage/conf-postgres.md)
-
-* [PostgreSQL Server status variables: autovacuum](https://www.postgresql.org/docs/current/static/routine-vacuuming.html#AUTOVACUUM)
-
-* [PostgreSQL Server status variables: effective_cache_size](https://www.postgresql.org/docs/current/static/runtime-config-query.html#GUC-EFFECTIVE-CACHE-SIZE)
-
-* [PostgreSQL Server status variables: max_connections](https://www.postgresql.org/docs/current/static/runtime-config-connection.html#GUC-MAX-CONNECTIONS)
-
-* [PostgreSQL Server status variables: shared_buffers](https://www.postgresql.org/docs/current/static/runtime-config-resource.html#GUC-SHARED-BUFFERS)
-
-* [PostgreSQL Server status variables: wal_buffers](https://www.postgresql.org/docs/current/static/runtime-config-wal.html#GUC-WAL-BUFFERS)
-
-* [PostgreSQL Server status variables: work_mem](https://www.postgresql.org/docs/current/static/runtime-config-resource.html#GUC-WORK-MEM)
+    * [PostgreSQL](../manage/conf-postgres.md)
+    * [PostgreSQL Server status variables: autovacuum](https://www.postgresql.org/docs/current/static/routine-vacuuming.html#AUTOVACUUM)
+    * [PostgreSQL Server status variables: effective_cache_size](https://www.postgresql.org/docs/current/static/runtime-config-query.html#GUC-EFFECTIVE-CACHE-SIZE)
+    * [PostgreSQL Server status variables: max_connections](https://www.postgresql.org/docs/current/static/runtime-config-connection.html#GUC-MAX-CONNECTIONS)
+    * [PostgreSQL Server status variables: shared_buffers](https://www.postgresql.org/docs/current/static/runtime-config-resource.html#GUC-SHARED-BUFFERS)
+    * [PostgreSQL Server status variables: wal_buffers](https://www.postgresql.org/docs/current/static/runtime-config-wal.html#GUC-WAL-BUFFERS)
+    * [PostgreSQL Server status variables: work_mem](https://www.postgresql.org/docs/current/static/runtime-config-resource.html#GUC-WORK-MEM)

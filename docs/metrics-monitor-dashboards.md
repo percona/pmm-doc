@@ -29,6 +29,6 @@ Graph descriptions provide more information about a graph without claiming any s
 
 ![image](/_images/metrics-monitor.description.1.png)
 
-**See also**
+!!! seealso "See also"
 
-[Selecting time or date range](qan-intro.md#filters-panel)
+    [Selecting time or date range](qan-intro.md#filters-panel)

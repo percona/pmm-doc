@@ -45,6 +45,6 @@ Uncompressed Attempts
 * Used Pages (Buffer Pool 0)
 * Pages Free (Buffer Pool 0)
 
-**See also**
+!!! seealso "See also"
 
-[MySQL 5.7 InnoDB INFORMATION_SCHEMA Documentation](https://dev.mysql.com/doc/refman/5.7/en/innodb-information-schema-compression-tables.html)
+    [MySQL 5.7 InnoDB INFORMATION_SCHEMA Documentation](https://dev.mysql.com/doc/refman/5.7/en/innodb-information-schema-compression-tables.html)

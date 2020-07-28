@@ -49,6 +49,6 @@ instances.
 
 6. Finally press the *Add service* button to start monitoring your instance.
 
-**See also**
+!!! seealso "See also"
 
-[AWS Documentation: Managing access keys for IAM users](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html)
+    [AWS Documentation: Managing access keys for IAM users](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html)

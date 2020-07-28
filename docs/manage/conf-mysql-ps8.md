@@ -46,9 +46,9 @@ change.
 default_authentication_plugin=mysql_native_password
 ```
 
-**See also**
+!!! seealso "See also"
 
-* [What privileges are required to monitor a MySQL instance?](../faq.md#privileges)
-* [MySQL Server Blog: MySQL 8.0.4 : New Default Authentication Plugin : caching_sha2_password](https://mysqlserverteam.com/mysql-8-0-4-new-default-authentication-plugin-caching_sha2_password/)
-* [MySQL Server 8.0 Documentation: Authentication Plugins](https://dev.mysql.com/doc/refman/8.0/en/authentication-plugins.html)
-* [MySQL Server 8.0 Documentation: Native Pluggable Authentication](https://dev.mysql.com/doc/refman/8.0/en/native-pluggable-authentication.html)
+    * [What privileges are required to monitor a MySQL instance?](../faq.md#privileges)
+    * [MySQL Server Blog: MySQL 8.0.4 : New Default Authentication Plugin : caching_sha2_password](https://mysqlserverteam.com/mysql-8-0-4-new-default-authentication-plugin-caching_sha2_password/)
+    * [MySQL Server 8.0 Documentation: Authentication Plugins](https://dev.mysql.com/doc/refman/8.0/en/authentication-plugins.html)
+    * [MySQL Server 8.0 Documentation: Native Pluggable Authentication](https://dev.mysql.com/doc/refman/8.0/en/native-pluggable-authentication.html)
