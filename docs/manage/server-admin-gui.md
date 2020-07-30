@@ -51,7 +51,7 @@ Values for the *Custom* preset can be entered as values, or increased or decreas
 
 ## Advanced Settings
 
-![](/_images/PMM_Settings_Advanced_settings.png)
+![](../_images/PMM_Settings_Advanced_settings.png)
 
 **Data Retention**
 
