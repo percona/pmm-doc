@@ -43,7 +43,7 @@ The default values for the fixed presets are:
 - Medium: 5 seconds
 - High: 1 second
 
-Values for the *Custom* preset can be entered as values, or increased or decreased using the up/down arrows.
+Values for the *Custom* preset can be entered as values, or changed with the arrows.
 
 !!! note
 
