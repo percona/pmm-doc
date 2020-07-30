@@ -47,7 +47,7 @@ Values for the *Custom* preset can be entered as values, or increased or decreas
 
 !!! note
 
-   If there is poor network connectivity between PMM Server and PMM Client, or between PMM Client and the database server it is monitoring, scraping every second may not be possible when the network latency is greater than 1 second.
+    If there is poor network connectivity between PMM Server and PMM Client, or between PMM Client and the database server it is monitoring, scraping every second may not be possible when the network latency is greater than 1 second.
 
 ## Advanced Settings
 
