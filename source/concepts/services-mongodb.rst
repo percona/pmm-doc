@@ -27,16 +27,33 @@ Here is an example for the MongoDB shell that creates and assigns the appropriat
 
 .. code-block:: js
 
-   db.createRole( { role: "explainRole", privileges: [ { resource: { db: "", collection: "" }, actions: [ "listIndexes","listCollections","dbStats","dbHash","collStats","find" ] }], roles:[]})
+   db.createRole({
+       role: "explainRole",
+       privileges: [{
+           resource: {
+               db: "",
+               collection: ""
+               },
+           actions: [
+               "listIndexes",
+               "listCollections",
+               "dbStats",
+               "dbHash",
+               "collStats",
+               "find"
+               ]
+           }],
+       roles:[]
+   })
 
    db.getSiblingDB("admin").createUser({
-       user: "mongodb_exporter",
-       pwd: "percona",
-       roles: [
-          { role: "explainRole", db: "admin" ),
-          { role: "clusterMonitor", db: "admin" },
-          { role: "read", db: "local" }
-       ]
+      user: "mongodb_exporter",
+      pwd: "percona",
+      roles: [
+         { role: "explainRole", db: "admin" ),
+         { role: "clusterMonitor", db: "admin" },
+         { role: "read", db: "local" }
+      ]
    })
 
 ******************
