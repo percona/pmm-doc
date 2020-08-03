@@ -22,7 +22,7 @@ Improvements
 * :jirabug:`PMM-6266`: Query Analytics Dashboard: Pagination device menu lists 25, 50 or 100 items per page
 * :jirabug:`PMM-6262`: PostgreSQL Instance Summary Dashboard: Descriptions for all 'Temp Files' views
 * :jirabug:`PMM-6253`: Query Analytics Dashboard: Improved SQL formatting in Examples panel
-* :jirabug:`PMM-6211`: Query Analytics Dashboard: Loading activity spinner for Example, Explain and Tables tabs
+* :jirabug:`PMM-6211`: Query Analytics Dashboard: Loading activity spinner added to Example, Explain and Tables tabs
 * :jirabug:`PMM-6162`: Consistent sort order in dashboard drop-down filter lists
 * :jirabug:`PMM-5132`: Better message when filter search returns nothing
 
