@@ -301,25 +301,41 @@ You can restore a backup copy of your `pmm-data` container with these steps.
 
 Assuming that you have a backup copy of your `pmm-data`, restore your data as follows:
 
-1. Change to the directory where your `pmm-data` backup files are:
+1. Check the mount points.
+
+    The Destination mount points for pmm-server and pmm-data should be the same.
+
+    If you have used our recommendations, this will be ``/srv``.
+
+    ```sh
+    docker inspect pmm-data | egrep "Source|Destination"
+    docker inspect pmm-server | egrep "Source|Destination"
+    ```
+
+2. Change to the directory where your `pmm-data` backup files are:
 
     ```sh
     cd <path to>/pmm-data-backup
     ```
 
-2. Copy data from your backup directory to the `pmm-data` container:
+3. Copy data from your backup directory to the `pmm-data` container:
 
     ```sh
     docker cp srv pmm-data:/srv
     ```
 
-3. Apply correct ownership to `pmm-data` files:
+4. Apply correct ownership to `pmm-data` files:
 
     ```sh
-    docker run --rm --volumes-from pmm-data -it percona/pmm-server:2 chown -R pmm:pmm /srv
+    docker run --rm --volumes-from pmm-data -it percona/pmm-server:2 chown -R pmm:pmm /srv/prometheus/
+    docker run --rm --volumes-from pmm-data -it percona/pmm-server:2 chown -R grafana:grafana /srv/grafana
+    docker run --rm --volumes-from pmm-data -it percona/pmm-server:2 chown -R postgres:postgres /srv/postgres
+    docker run --rm --volumes-from pmm-data -it percona/pmm-server:2 chown -R pmm:pmm /srv/logs
+    docker run --rm --volumes-from pmm-data -it percona/pmm-server:2 chown -R root:pmm /srv/clickhouse
+    docker run --rm --volumes-from pmm-data -it percona/pmm-server:2 chown -R postgres:postgres /srv/logs/postgresql.log
     ```
 
-4. Run (create and launch) a new PMM server container:
+5. Run (create and launch) a new PMM server container:
 
     ```sh
     docker run -d -p 80:80 -p 443:443 --volumes-from pmm-data \
