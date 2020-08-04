@@ -4,7 +4,7 @@
 *Percona Monitoring and Management* 2.9.1
 ================================================================================
 
-:Date: August 3, 2020
+:Date: August 4, 2020
 :Installation: `Installing Percona Monitoring and Management <https://www.percona.com/doc/percona-monitoring-and-management/2.x/install/index-server.html>`_
 
 *PMM* (`Percona Monitoring and Management <https://www.percona.com/doc/percona-monitoring-and-management/index.html>`_)
