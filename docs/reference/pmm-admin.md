@@ -1,3 +1,7 @@
+---
+id: reference-pmm-admin
+---
+
 # pmm-admin - PMM Administration Tool
 
 ## NAME
