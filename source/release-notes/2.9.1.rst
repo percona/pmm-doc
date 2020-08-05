@@ -33,6 +33,7 @@ Bugs Fixed
 
 * :jirabug:`PMM-5783`: Bulk failure of SHOW ALL SLAVES STATUS scraping on PS/MySQL distributions triggers errors
 * :jirabug:`PMM-6294`: Query Analytics Dashboard doesn't resize well for some screen resolutions (Thanks to user debug for reporting this issue)
+* :jirabug:`PMM-6420`: Wrong version in successful update pop-up window
 * :jirabug:`PMM-6319`: Query Analytics Dashboard: Query scrolls out of view when selected
 * :jirabug:`PMM-6302`: Query Analytics Dashboard: Unnecessary EXPLAIN requests
 * :jirabug:`PMM-6256`: Query Analytics Dashboard: 'InvalidNamespace' EXPLAIN error with some MongoDB queries
