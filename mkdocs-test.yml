@@ -55,10 +55,10 @@ plugins:
         heading_shift: true
         toc_level: 2
         ordered_chapter_level: 2
-        output_path: pdf/PerconaMonitoringAndManagement-2.9.1.pdf
+        output_path: _apdf/PerconaMonitoringAndManagement-2.9.1.pdf
         exclude_pages:
             - 'Percona Monitoring and Management Documentation'
-#        debug_html: true
+        debug_html: true
 
 # use_directory_urls: true
 

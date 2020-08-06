@@ -4,20 +4,20 @@
   }
 
   body {
-    font-size: 14.5pt !important;
-    font-family: 'Noto Serif JP', serif;
+    font-size: 10pt !important;
+    font-family: 'Noto Serif', serif !important;
   }
 
   article {
-    font-size: 11pt !important;
-    line-height: 1.2 !important;
+    font-size: 10pt !important;
+    line-height: 1.4 !important;
     text-align: justify !important;
   }
 
   h1,
   h2,
   h3 {
-    font-family: 'Noto Sans JP', "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: 'Noto Sans', "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
   }
 
   pre,
@@ -26,8 +26,8 @@
   samp,
   kbd,
   tt {
-    font-family: 'Noto Sans Mono CJK JP', 'Courier New', monospace, serif;
-    font-size: 0.7em;
+    font-family: 'Noto Sans Mono', 'Courier New', monospace, serif !important;
+    font-size: 0.9em !important;
   }
 
   pre code,
@@ -39,7 +39,6 @@
   }
 
   div.admonition {
-    font-size: 11pt !important;
+    font-size: 100% !important;
   }
-
 }
