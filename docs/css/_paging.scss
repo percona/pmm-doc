@@ -41,7 +41,7 @@ article {
   page-break-before: always !important;
   min-height: 100% !important;
 
-  /* Defining all page breaks */
+  /* Defining all page breaks
   h1, h2, h3, h4, h5, h6, img, p {
     page-break-after: avoid !important;
     page-break-inside: avoid !important;
@@ -49,7 +49,7 @@ article {
   }
   a, blockquote, table, pre, code, ul, ol, dd, dl, dt {
     page-break-before: avoid !important;
-    page-break-inside: avoid !important;
+    page-break-inside: allow !important;
     page-break-after: avoid !important;
   }
   div.admonition {
@@ -60,5 +60,5 @@ article {
   }
   div.tabbed-content {
     page-break-inside: avoid !important;
-  }
+  } */
 }
