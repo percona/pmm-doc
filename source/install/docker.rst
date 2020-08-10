@@ -25,7 +25,9 @@ PMM Server via Docker
 Introduction
 ************
 
-PMM Server `Docker <https://docs.docker.com>`__ images are available at `percona/pmm-server <https://hub.docker.com/r/percona/pmm-server/tags/>`__ public repository. They run on Docker 1.12.6 or later. The Docker tags used in this section are for the latest version of PMM 2 (|release|).
+PMM Server can run as a container `Docker <https://docs.docker.com>`__ 1.12.6 or later. Images are available at `percona/pmm-server <https://hub.docker.com/r/percona/pmm-server/tags/>`__.
+
+The Docker tags used in this section are for the latest version of PMM 2 (|release|) but you can specify any available tag to use the associated version of PMM Server.
 
 Metrics collection consumes disk space and PMM needs approximately 1GB of storage for each monitored database node with data retention set to one week. (By default, data retention is 30 days.) To reduce the size of the Prometheus database, you can consider disabling table statistics.
 
@@ -63,10 +65,10 @@ Running the image
 
       docker run \
       --detach \
+      --restart always \
       --publish 80:80 --publish 443:443 \
       --volumes-from pmm-data \
       --name pmm-server \
-      --restart always \
       percona/pmm-server:2
 
 .. note::
@@ -116,17 +118,17 @@ Backing-up and upgrading
       docker pull percona/pmm-server:2
       docker run \
       --detach \
+      --restart always \
       --publish 80:80 --publish 443:443 \
       --volumes-from pmm-data \
       --name pmm-server \
-      --restart always \
       percona/pmm-server:2
 
 *************************
 Downgrading and restoring
 *************************
 
-*Remove image; Restore backups; Restore persistent data file permissions; Restart.*
+*1) Remove image; 2) Restore backups; 3) Restore persistent data file permissions; 4) Restart.*
 
 1. Stop and remove the running version.
 
