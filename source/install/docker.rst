@@ -40,37 +40,46 @@ Although the minimum amount of memory is 2 GB for one monitored database node, m
 Running the image
 *****************
 
-*Pull the latest image; Create a persistent data container; Run the image with the data container mounted on ``/srv``.*
+*1) Pull the latest image; 2) Create a persistent data container; 3) Run the image with the data container mounted on /srv.*
 
-1. Pull the latest version of the PMM 2 image:
+1. Pull the latest PMM 2 image:
 
    .. code-block:: bash
 
       docker pull percona/pmm-server:2
 
-2. Create a data container (PMM Server uses a separate persistent data container for storing metrics).
+2. Create a data container -- PMM Server uses a separate persistent data container for storing metrics.
 
    .. code-block:: bash
 
-      docker create -v /srv --name pmm-data percona/pmm-server:2 /bin/true
+      docker create \
+      --volume /srv \
+      --name pmm-data \
+      percona/pmm-server:2 /bin/true
 
 3. Run the image to start PMM Server.
 
    .. code-block:: bash
 
-      docker run -d -p 80:80 -p 443:443 --volumes-from pmm-data --name pmm-server --restart always percona/pmm-server:2
+      docker run \
+      --detach \
+      --publish 80:80 --publish 443:443 \
+      --volumes-from pmm-data \
+      --name pmm-server \
+      --restart always \
+      percona/pmm-server:2
 
 .. note::
 
-   - PMM Server expects that the data volume (initialized with the ``-v`` option) will be ``/srv``.  Using any other value will result in data loss when upgrading.
+   - PMM Server expects the data volume (specified with ``-v``) to be ``/srv``.  Using any other value will result in data loss when upgrading.
 
-   - You can prevent updates via the UI by adding the option ``-e DISABLE_UPDATES=true`` when starting the Docker image.
+   - You can prevent updates via the UI by adding ``-e DISABLE_UPDATES=true`` to the ``docker run`` command.
 
 ************************
 Backing-up and upgrading
 ************************
 
-*Check installed and available versions; Check image and data mount points; Backup: Rename the image and copy persistent data to the filesystem; Pull the latest image.*
+*1) Check installed and available versions; 2) Check image and data mount points; 3) Backup: Rename the image and copy persistent data to the filesystem; 4) Pull the latest image.*
 
 1. Check the installed version of PMM Server. Here are two methods.
 
@@ -80,7 +89,8 @@ Backing-up and upgrading
       docker ps # Shows version as tag in IMAGE column, e.g. pmm-server:2
       # Method 2
       sudo apt install -y jq # Example for Ubuntu
-      docker exec -it pmm-server curl -u admin:admin http://localhost/v1/version | jq .version
+      docker exec -it pmm-server \
+      curl -u admin:admin http://localhost/v1/version | jq .version
       # Returns the version as a quoted string
 
 2. Check the data mount points match -- both should return ``"/srv"``.
@@ -104,7 +114,13 @@ Backing-up and upgrading
    .. code-block:: bash
 
       docker pull percona/pmm-server:2
-      docker run -d -p 80:80 -p 443:443 --volumes-from pmm-data --name pmm-server --restart always percona/pmm-server:2
+      docker run \
+      --detach \
+      --publish 80:80 --publish 443:443 \
+      --volumes-from pmm-data \
+      --name pmm-server \
+      --restart always \
+      percona/pmm-server:2
 
 *************************
 Downgrading and restoring
@@ -116,7 +132,8 @@ Downgrading and restoring
 
    .. code-block:: bash
 
-      docker stop pmm-server && docker rm pmm-server
+      docker stop pmm-server
+      docker rm pmm-server
 
 2. Restore backups.
 
