@@ -89,6 +89,8 @@ Backup and upgrade
 
       Use ``jq`` to extract the quoted string value.
 
+      .. code-block:: bash
+
          sudo apt install jq # Example for Debian, Ubuntu
          docker exec -it pmm-server curl -u admin:admin http://localhost/v1/version | jq .version
 
