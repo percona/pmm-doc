@@ -43,7 +43,7 @@ Although the minimum amount of memory is 2 GB for one monitored database node, m
     percona/pmm-server:2
     ```
 
-    !!! tip
+    !!! note
         You can disable manual updates via the Home Dashboard *PMM Upgrade* panel by adding `-e DISABLE_UPDATES=true` to the `docker run` command.
 
 4. In a web browser, visit *server hostname*:80 or *server hostname*:443 to see the PMM user interface.
@@ -56,7 +56,7 @@ Although the minimum amount of memory is 2 GB for one monitored database node, m
     docker exec -it pmm-server curl -u admin:admin http://localhost/v1/version
     ```
 
-    !!! tip
+    !!! note
         Use `jq` to extract the quoted string value.
 
         ```bash
