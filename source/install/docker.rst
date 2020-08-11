@@ -17,88 +17,89 @@
 .. _server-container:
 .. _update-server.docker:
 
-#####################
-PMM Server via Docker
-#####################
+################################
+PMM Server as a Docker container
+################################
 
 ************
 Introduction
 ************
 
-PMM Server can run as a container `Docker <https://docs.docker.com>`__ 1.12.6 or later. Images are available at `percona/pmm-server <https://hub.docker.com/r/percona/pmm-server/tags/>`__.
+PMM Server can run as a container with `Docker <https://docs.docker.com>`__ 1.12.6 or later. Images are available at `<https://hub.docker.com/r/percona/pmm-server>`__.
 
-The Docker tags used in this section are for the latest version of PMM 2 (|release|) but you can specify any available tag to use the associated version of PMM Server.
+The Docker tags used here are for the latest version of PMM 2 (|release|) but you can specify any available tag to use the corresponding version of PMM Server.
 
-Metrics collection consumes disk space and PMM needs approximately 1GB of storage for each monitored database node with data retention set to one week. (By default, data retention is 30 days.) To reduce the size of the Prometheus database, you can consider disabling table statistics.
+Metrics collection consumes disk space. PMM needs approximately 1GB of storage for each monitored database node with data retention set to one week. (By default, data retention is 30 days.) To reduce the size of the Prometheus database, you can consider disabling table statistics.
 
-Although the minimum amount of memory is 2 GB for one monitored database node, memory usage does not grow in proportion to the number of nodes. For example, 16Gb is adequate for 20 nodes.
+Although the minimum amount of memory is 2 GB for one monitored database node, memory usage does not grow in proportion to the number of nodes. For example, 16GB is adequate for 20 nodes.
 
 .. seealso::
 
    - :ref:`performance-issues`
    - :ref:`data-retention`
 
-*****************
-Running the image
-*****************
+************
+Run an image
+************
 
-*1) Pull the latest image; 2) Create a persistent data container; 3) Run the image with the data container mounted on /srv.*
-
-1. Pull the latest PMM 2 image:
+1. Pull an image.
 
    .. code-block:: bash
 
+      # Pull the latest 2.x image
       docker pull percona/pmm-server:2
 
-2. Create a data container -- PMM Server uses a separate persistent data container for storing metrics.
+2. Create a persistent data container.
 
    .. code-block:: bash
 
-      docker create \
-      --volume /srv \
-      --name pmm-data \
-      percona/pmm-server:2 /bin/true
+      docker create --volume /srv \
+      --name pmm-data percona/pmm-server:2 /bin/true
+
+   .. caution::
+
+      PMM Server expects the data volume (specified with ``-v``) to be ``/srv``.  Using any other value will result in data loss when upgrading.
 
 3. Run the image to start PMM Server.
 
    .. code-block:: bash
 
-      docker run \
-      --detach \
-      --restart always \
+      docker run --detach --restart always \
       --publish 80:80 --publish 443:443 \
-      --volumes-from pmm-data \
-      --name pmm-server \
+      --volumes-from pmm-data --name pmm-server \
       percona/pmm-server:2
 
-.. note::
+   .. tip::
 
-   - PMM Server expects the data volume (specified with ``-v``) to be ``/srv``.  Using any other value will result in data loss when upgrading.
+      You can disable manual updates via the Home Dashboard *PMM Upgrade* panel by adding ``-e DISABLE_UPDATES=true`` to the ``docker run`` command.
 
-   - You can prevent updates via the UI by adding ``-e DISABLE_UPDATES=true`` to the ``docker run`` command.
+4. In a web browser, visit *server hostname*:80 or *server hostname*:443 to see the PMM user interface.
 
-************************
-Backing-up and upgrading
-************************
+******************
+Backup and upgrade
+******************
 
-*1) Check installed and available versions; 2) Check image and data mount points; 3) Backup: Rename the image and copy persistent data to the filesystem; 4) Pull the latest image.*
-
-1. Check the installed version of PMM Server. Here are two methods.
+1. Find out which version is installed.
 
    .. code-block:: bash
 
-      # Method 1
-      docker ps # Shows version as tag in IMAGE column, e.g. pmm-server:2
-      # Method 2
-      sudo apt install -y jq # Example for Ubuntu
-      docker exec -it pmm-server \
-      curl -u admin:admin http://localhost/v1/version | jq .version
-      # Returns the version as a quoted string
+      docker exec -it pmm-server curl -u admin:admin http://localhost/v1/version
 
-2. Check the data mount points match -- both should return ``"/srv"``.
+   .. tip::
+
+      Use ``jq`` to extract the quoted string value.
+
+         sudo apt install jq # Example for Debian, Ubuntu
+         docker exec -it pmm-server curl -u admin:admin http://localhost/v1/version | jq .version
+
+2. Check container mount points are the same (``/srv``).
 
    .. code-block:: bash
 
+      docker inspect pmm-data | grep Destination
+      docker inspect pmm-server | grep Destination
+
+      # With jq
       docker inspect pmm-data | jq '.[].Mounts[].Destination'
       docker inspect pmm-server | jq '.[].Mounts[].Destination'
 
@@ -111,7 +112,7 @@ Backing-up and upgrading
       mkdir pmm-data-backup && cd $_
       docker cp pmm-data:/srv .
 
-3. Pull and run the latest PMM 2 image.
+4. Pull and run the latest image.
 
    .. code-block:: bash
 
@@ -124,11 +125,11 @@ Backing-up and upgrading
       --name pmm-server \
       percona/pmm-server:2
 
+5. (Optional) Repeat step 1 to confirm the version, or check the *PMM Upgrade* panel on the *Home Dashboard*.
+
 *************************
 Downgrading and restoring
 *************************
-
-*1) Remove image; 2) Restore backups; 3) Restore persistent data file permissions; 4) Restart.*
 
 1. Stop and remove the running version.
 
@@ -142,20 +143,23 @@ Downgrading and restoring
    .. code-block:: bash
 
       docker rename pmm-server-backup pmm-server
-      docker cp pmm-data-backup/srv pmm-data:/
+      # cd to wherever you saved the backup
+      docker cp srv pmm-data:/
 
 3. Restore permissions.
 
    .. code-block:: bash
 
-      docker run --rm --volumes-from pmm-data -it percona/pmm-server:2 chown -R pmm:pmm /srv/logs
-      docker run --rm --volumes-from pmm-data -it percona/pmm-server:2 chown -R pmm:pmm /srv/prometheus/
-      docker run --rm --volumes-from pmm-data -it percona/pmm-server:2 chown -R root:pmm /srv/clickhouse
-      docker run --rm --volumes-from pmm-data -it percona/pmm-server:2 chown -R grafana:grafana /srv/grafana
+      docker run --rm --volumes-from pmm-data -it percona/pmm-server:2 chown -R root:root /srv && \
+      docker run --rm --volumes-from pmm-data -it percona/pmm-server:2 chown -R pmm:pmm /srv/alertmanager && \
+      docker run --rm --volumes-from pmm-data -it percona/pmm-server:2 chown -R root:pmm /srv/clickhouse && \
+      docker run --rm --volumes-from pmm-data -it percona/pmm-server:2 chown -R grafana:grafana /srv/grafana && \
+      docker run --rm --volumes-from pmm-data -it percona/pmm-server:2 chown -R pmm:pmm /srv/logs && \
+      docker run --rm --volumes-from pmm-data -it percona/pmm-server:2 chown -R postgres:postgres /srv/postgres && \
+      docker run --rm --volumes-from pmm-data -it percona/pmm-server:2 chown -R pmm:pmm /srv/prometheus && \
       docker run --rm --volumes-from pmm-data -it percona/pmm-server:2 chown -R postgres:postgres /srv/logs/postgresql.log
-      docker run --rm --volumes-from pmm-data -it percona/pmm-server:2 chown -R postgres:postgres /srv/postgres
 
-3. Start (don't run) the image.
+4. Start (don't run) the image.
 
    .. code-block:: bash
 
