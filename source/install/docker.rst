@@ -58,7 +58,7 @@ Run an image
 
    .. caution::
 
-      PMM Server expects the data volume (specified with ``-v``) to be ``/srv``.  Using any other value will result in data loss when upgrading.
+      PMM Server expects the data volume (specified with ``--volume``) to be ``/srv``.  Using any other value will result in data loss when upgrading.
 
 3. Run the image to start PMM Server.
 
