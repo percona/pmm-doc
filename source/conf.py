@@ -153,7 +153,11 @@ html_static_path = ['_static']
 #html_use_smartypants = True
 
 # Custom sidebar templates, maps document names to template names.
-html_sidebars = { '**': ['_templates/edit.html'] }
+html_sidebars = { '**': [
+    'localtoc.html',
+    'relations.html',
+    '_templates/edit.html'
+    ] }
 
 # Additional templates that should be rendered to pages, maps page names to
 # template names.
