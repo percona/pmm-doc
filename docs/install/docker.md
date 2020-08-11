@@ -10,6 +10,11 @@ Metrics collection consumes disk space. PMM needs approximately 1GB of storage f
 
 Although the minimum amount of memory is 2 GB for one monitored database node, memory usage does not grow in proportion to the number of nodes. For example, 16GB is adequate for 20 nodes.
 
+!!! seealso
+
+    - [Performance Issues](../manage/conf-mysql-disable-table-stats.md#performance-issues)
+    - [Data Retention](../faq.md#data-retention)
+
 ## Run an image
 
 1. Pull an image.
@@ -25,6 +30,9 @@ Although the minimum amount of memory is 2 GB for one monitored database node, m
     docker create --volume /srv \
     --name pmm-data percona/pmm-server:2 /bin/true
     ```
+
+    !!! caution
+        PMM Server expects the data volume (specified with `--volume`) to be `/srv`.  Using any other value will result in data loss when upgrading.
 
 3. Run the image to start PMM Server.
 
