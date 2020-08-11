@@ -69,7 +69,7 @@ Run an image
       --volumes-from pmm-data --name pmm-server \
       percona/pmm-server:2
 
-   .. tip::
+   .. note::
 
       You can disable manual updates via the Home Dashboard *PMM Upgrade* panel by adding ``-e DISABLE_UPDATES=true`` to the ``docker run`` command.
 
@@ -85,7 +85,7 @@ Backup and upgrade
 
       docker exec -it pmm-server curl -u admin:admin http://localhost/v1/version
 
-   .. tip::
+   .. note::
 
       Use ``jq`` to extract the quoted string value.
 
