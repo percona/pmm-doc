@@ -129,9 +129,9 @@ Backup and upgrade
 
 5. (Optional) Repeat step 1 to confirm the version, or check the *PMM Upgrade* panel on the *Home Dashboard*.
 
-*************************
-Downgrading and restoring
-*************************
+*********************
+Downgrade and restore
+*********************
 
 1. Stop and remove the running version.
 
