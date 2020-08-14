@@ -200,7 +200,7 @@ If PMM server wasn't updated properly, or if you have concerns about the release
 
 1. From the UI  -  Home panel: click with the Alt key on the reload icon in the Update panel (IMG needed) to make the Update Button visible even if you are on the same version as available for update. Pressing this button will force the system to rerun the update so that any broken or not installed components can be installed. In this case, you'll go through the usual update process with update logs and successful messages at the end. 
 
-2) By  API  call (if UI not available): You can call the Update API directly with:
+2. By  API  call (if UI not available): You can call the Update API directly with:
 
    ```sh
    curl --user admin:admin --request POST 'http://PMM_SERVER/v1/Updates/Start'
