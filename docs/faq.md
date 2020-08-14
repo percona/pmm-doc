@@ -208,7 +208,7 @@ If PMM server wasn't updated properly, or if you have concerns about the release
 
    Replace `admin:admin` with your username/password, and replace `PMM_SERVER` with your server address. 
 
-   !!!note
-      You will not see the logs using this method. 
+   !!! note
+       You will not see the logs using this method. 
 
    Refresh The Home page in 2-5 min and you should see that PMM was updated.
