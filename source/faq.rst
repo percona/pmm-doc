@@ -217,4 +217,4 @@ If PMM server wasn't updated properly, or if you have concerns about the release
    
       You will not see the logs using this method. 
 
-   Refresh The Home page in 2-5 min and you should see that PMM was updated.
+Refresh The Home page in 2-5 min and you should see that PMM was updated.
