@@ -23,9 +23,6 @@ Run this command as root or by using the ``sudo`` command
 ``--tls``
    Enable a TLS connection with mongo server
 
-``--server-insecure-tls``
-   Skip PMM Server TLS certificate validation
-
 ``--tls-skip-verify``
    Skip TLS certificates validation
 
