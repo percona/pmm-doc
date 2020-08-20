@@ -57,7 +57,7 @@ By default, PMM stores time-series data for 30 days. Depending on your available
 
 #. In the *Advanced Settings* section, enter the new data retention value in days.
 
-   .. image:: /_images/PMM_Settings_Advanced_settings.png
+   .. image:: /_images/PMM_Settings_Advanced_Settings.jpg
 
 #. Click *Apply changes*.
 

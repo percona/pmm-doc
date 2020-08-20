@@ -14,7 +14,7 @@ The *PMM Settings* page lets you configure a number of PMM options. It can be ac
 
 Metrics are collected at three intervals representing low, medium and high resolutions. Short time intervals are regarded as high resolution metrics, while those at longer time intervals are low resolution.
 
-![image](../_images/PMM_Settings_Metrics_Resolution.png)
+![image](../_images/PMM_Settings_Metrics_Resolution.jpg)
 
 The *Metrics Resolution* radio button lets you select one of four presets.
 
@@ -51,7 +51,7 @@ Values for the *Custom* preset can be entered as values, or changed with the arr
 
 ## Advanced Settings
 
-![](../_images/PMM_Settings_Advanced_Settings.png)
+![](../_images/PMM_Settings_Advanced_Settings.jpg)
 
 **Data Retention**
 
@@ -109,7 +109,7 @@ The results can be viewed in *PMM > PMM Database Checks*.
 
 This section lets you upload your public SSH key to access the PMM Server via SSH (for example, when accessing PMM Server as a [virtual appliance](../install/virtual-appliance.md)).
 
-![image](../_images/PMM_Settings_SSH_Key.png)
+![image](../_images/PMM_Settings_SSH_Key.jpg)
 
 Enter your **public key** in the *SSH Key* field and click *Apply SSH Key*.
 
@@ -123,7 +123,7 @@ This section lets you configure integration of Prometheus with an external Alert
 
 * The **Prometheus Alerting rules** field is used to specify alerting rules in the YAML configuration format.
 
-![image](../_images/PMM_Settings_Alertmanager_Integration.png)
+![image](../_images/PMM_Settings_Alertmanager_Integration.jpg)
 
 Fill both fields and click the *Apply Alertmanager settings* button to proceed.
 
