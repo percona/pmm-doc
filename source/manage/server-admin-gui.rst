@@ -63,7 +63,7 @@ Values for the *Custom* preset can be entered as values, or changed with the arr
 Advanced Settings
 *****************
 
-.. image:: /_images/PMM_Settings_Advanced_settings.png
+.. image:: /_images/PMM_Settings_Advanced_Settings.png
 
 **Data Retention**
 
@@ -138,7 +138,7 @@ This section lets you configure integration of Prometheus with an external Alert
 
 * The **Prometheus Alerting rules** field is used to specify alerting rules in the YAML configuration format.
 
-.. image:: /_images/PMM_Settings_Alertmanager_integration.png
+.. image:: /_images/PMM_Settings_Alertmanager_Integration.png
 
 Fill both fields and click the *Apply Alertmanager settings* button to proceed.
 
@@ -146,7 +146,7 @@ Fill both fields and click the *Apply Alertmanager settings* button to proceed.
 Diagnostics
 ***********
 
-PMM can generate a set of diagnostics data which can be examined and/or shared with Percona Support in case of some issue to solve it faster.  You can get collected logs from PMM Server by clicking the **Download PMM Server Logs** button.
+PMM can generate a set of diagnostics data which can be examined and/or shared with Percona Support in case of some issue to solve it faster.  You can get collected logs from PMM Server by clicking the **Download server diagnostics** button.
 
 **See also**
 
