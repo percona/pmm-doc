@@ -50,7 +50,7 @@ line. Use the ``VBoxManage`` command to import, configure, and start the
 appliance.
 
 The following script imports the PMM Server appliance from
-``PMM-Server-1.6.0.ova`` and configures it to bridge the `en0` adapter from the
+pmm-server-|release|.ova and configures it to bridge the `en0` adapter from the
 host.  Then the script routes console output from the appliance to
 ``/tmp/pmm-server-console.log``.  This is done because the script then starts the
 appliance in headless (without the console) mode.
@@ -58,33 +58,30 @@ appliance in headless (without the console) mode.
 To get the IP address for accessing PMM, the script waits for 1 minute until the
 appliance boots up and returns the lines with the IP address from the log file.
 
-.. code-block:: bash
+.. parsed-literal::
 
    # Import image
-   VBoxManage import pmm-server-|VERSION NUMBER|.ova
+   VBoxManage import pmm-server-|release|.ova
 
    # Modify NIC settings if needed
    VBoxManage list bridgedifs
-   VBoxManage modifyvm 'PMM Server [VERSION NUMBER]' --nic1 bridged --bridgeadapter1 'en0: Wi-Fi (AirPort)'
+   VBoxManage modifyvm 'PMM Server |release|' --nic1 bridged --bridgeadapter1 'en0: Wi-Fi (AirPort)'
 
    # Log console output into file
-   VBoxManage modifyvm 'PMM Server [VERSION NUMBER]' --uart1 0x3F8 4 --uartmode1 file /tmp/pmm-server-console.log
+   VBoxManage modifyvm 'PMM Server |release|' --uart1 0x3F8 4 --uartmode1 file /tmp/pmm-server-console.log
 
    # Start instance
-   VBoxManage startvm --type headless 'PMM Server [VERSION NUMBER]'
+   VBoxManage startvm --type headless 'PMM Server |release|'
 
    # Wait for 1 minute and get IP address from the log
    sleep 60
    grep cloud-init /tmp/pmm-server-console.log
 
-In this script, ``[VERSION NUMBER]`` is the placeholder of the version of
-PMM Server that you are installing. By convention **OVA** files start with
+By convention **OVA** files start with
 ``pmm-server-`` followed by the full version number such as |release|.
 
 To use this script, make sure to replace this placeholder with the the name of
-the image that you have downloaded from the `PMM download <https://www.percona.com/downloads/pmm>`_ site. This script also assumes that you have changed the working
-directory (using the ``cd`` command, for example) to the directory which contains
-the downloaded image file.
+the image that you have downloaded from the `PMM download <https://www.percona.com/downloads/pmm2>`_ site.
 
 .. _pmm.deploying.server.ova-virtualbox-gui:
 
@@ -95,7 +92,7 @@ VirtualBox Using the GUI
 The following procedure describes how to run the PMM Server appliance
 using the graphical user interface of VirtualBox:
 
-1. Download the OVA. The latest version is available at `<https://www.percona.com/downloads/pmm>`_.
+1. Download the OVA. The latest version is available at `<https://www.percona.com/downloads/pmm2/2.9.1/ova>`_.
 
 2. Import the appliance. For this, open the *File* menu and click
    *Import Appliance* and specify the path to the OVA and click
@@ -126,7 +123,7 @@ VMware Workstation Player
 The following procedure describes how to run the *PMM Server* appliance
 using VMware Workstation Player:
 
-1. Download the OVA. The latest version is available at `<https://www.percona.com/downloads/pmm>`_.
+1. Download the OVA. The latest version is available at `<https://www.percona.com/downloads/pmm2/2.9.1/ova>`_.
 
 2. Import the appliance.
 
@@ -140,16 +137,14 @@ using VMware Workstation Player:
 3. Configure network settings to make the appliance accessible
    from other hosts in your network.
 
-   If you are running the applianoce on a host
+   If you are running the appliance on a host
    with properly configured network settings,
    select **Bridged** in the **Network connection** section
    of the appliance settings.
 
 4. Start the PMM Server appliance.
 
-   If it was assigned an IP address on the network by DHCP,
-   the URL for accessing PMM will be printed in the console window.
-
+   Log in as ``root``, password ``percona`` and follow the prompts to change the password.
 
 .. _pmm.deploying.server.virtual-appliance.pmm-server.ip-address.identifying:
 
@@ -157,18 +152,11 @@ using VMware Workstation Player:
 Identifying PMM Server IP Address
 *********************************
 
-When run PMM Server as virtual appliance, The IP address of your PMM Server
-appears at the top of the screen above the login prompt. Use this address to
-acces the web interface of PMM Server.
+PMM Server uses DHCP for security reasons. Use this command in the PMM Server console to find out the server's IP address:
 
-The IP address appears above the login prompt.
+.. code-block:: bash
 
-.. _figure.pmm/deploying/server/virtual-appliance.pmm-server.ip-address.identifying.above-login-prompt:
-
-.. image:: /_images/command-line.login.1.png
-
-PMM Server uses DHCP for security reasons, and thus you need to check the PMM
-Server console in order to identify the address.
+   hostname -I
 
 .. _deploying.pmm-server.web-interface.opening:
 
@@ -176,11 +164,10 @@ Server console in order to identify the address.
 Accessing PMM Server
 ********************
 
-To run the PMM Server, start the virtual machine and open in your browser the
-URL that appears at the top of the terminal when you are logging in to the
-virtual machine.
-
-Enter the user login and password to access the PMM Server web interface.
+1. Start the virtual machine
+2. Open a web browser
+3. Enter the server's IP address
+4. Enter the user login and password to access the PMM Server web interface
 
 .. _figure.9a96a76.pmm-server.password-change:
 

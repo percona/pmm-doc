@@ -21,22 +21,39 @@ Query Analytics supports MongoDB version 3.2 or higher.
 Setting Up the Required Permissions
 ***********************************
 
-For MongoDB monitoring services to be able work in Query Analytics, you need to
-set up the ``mongodb_exporter`` user. This user should be assigned the
-*clusterMonitor* and *readAnyDatabase* roles for the ``admin`` database.
+For MongoDB monitoring services to work in Query Analytics, you need to set up the ``mongodb_exporter`` user.
 
-The following is an example you can run in the MongoDB shell, to add the
-``mongodb_exporter`` user and assign the appropriate roles:
+Here is an example for the MongoDB shell that creates and assigns the appropriate roles to the user.
 
 .. code-block:: js
 
+   db.createRole({
+       role: "explainRole",
+       privileges: [{
+           resource: {
+               db: "",
+               collection: ""
+               },
+           actions: [
+               "listIndexes",
+               "listCollections",
+               "dbStats",
+               "dbHash",
+               "collStats",
+               "find"
+               ]
+           }],
+       roles:[]
+   })
+
    db.getSiblingDB("admin").createUser({
-       user: "mongodb_exporter",
-       pwd: "mongo",
-       roles: [
-           { role: "clusterMonitor", db: "admin" },
-           { role: "readAnyDatabase", db: "admin" }
-       ]
+      user: "mongodb_exporter",
+      pwd: "s3cR#tpa$$worD",
+      roles: [
+         { role: "explainRole", db: "admin" },
+         { role: "clusterMonitor", db: "admin" },
+         { role: "read", db: "local" }
+      ]
    })
 
 ******************
@@ -96,7 +113,6 @@ following settings:
    operationProfiling:
       slowOpThresholdMs: 200
       mode: slowOp
-      rateLimit: 100
 
 These settings affect ``mongod`` in the same way as the command line options. Note that the configuration file is in the `YAML <http://yaml.org/spec/>`__ format. In this format the indentation of your lines is important as it defines levels of nesting.
 
