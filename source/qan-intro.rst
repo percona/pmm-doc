@@ -83,6 +83,12 @@ At the top of the second column is the *dimension* menu. Use this to choose the 
 
 .. image:: /_images/PMM_Query_Analytics_Dimension_Selector.jpg
 
+On the right side of the dimension column is the *Dimension Search* bar.
+
+Enter a string and press Enter to limit the view to queries containing only the specified keywords.
+
+Delete the search text and press Enter to see the full list again.
+
 **Columns**
 
 - The first column is the object's identifier. For *Query*, it is the query's :term:`Fingerprint`.
