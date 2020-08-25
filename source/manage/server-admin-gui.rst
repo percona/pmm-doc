@@ -142,13 +142,13 @@ This section lets you configure integration of Prometheus with an external Alert
 
 Fill both fields and click the *Apply Alertmanager settings* button to proceed.
 
-*******
-Sign up
-*******
+****************
+Percona Platform
+****************
 
 To create a *Percona Platform* account, enter an email address and password and click *Sign up*.
 
-If you already have a *Percona Platform* account, enter the credentials here and click *Sign in*.
+If you already have a *Percona Platform* account, enter your credentials and click *Login*.
 
 .. image:: /_images/PMM_Settings_Sign_Up.jpg
 
