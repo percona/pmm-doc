@@ -81,7 +81,7 @@ Delete the search text and press Enter to see the full list again.
 
 * For the *Query* dimension, hovering over the information icon reveals the query ID and its example.
 * Hovering on a column header reveals an informative tool-tip for that column.
-* Hovering on the main metric sparkline shows the data value under the cursor.
+* Hovering on the main metric sparkline highlights the data point and a tooltip shows the data value under the cursor.
 
 ![image](_images/PMM_Query_Analytics_Main_Metric_Sparkline.jpg)
 
