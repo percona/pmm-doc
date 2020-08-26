@@ -40,8 +40,8 @@ extra:
     project: 'Percona Monitoring and Management'
     shorttitle: 'Percona Monitoring and Management Documentation'
     copyright: 'Percona LLC and/or its affiliates 2009-2020'
-    release: '2.9.1'
-    version: '2.9'
+    release: '2.10.0'
+    version: '2.10'
     major: 'mkdocs'
 
 #    major: '2.x'
