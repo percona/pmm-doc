@@ -42,8 +42,6 @@ They can be set globally or for specific nodes or services.
 ``--service-name``
     The service name being annotated.
 
-.. _application-event-marking:
-
 ***************
 Combining flags
 ***************
