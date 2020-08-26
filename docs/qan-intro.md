@@ -4,7 +4,7 @@
    href="https://www.percona.com/doc/percona-monitoring-and-management/2.x/qan-intro.html"
    style="display:none;"></a>
 
-# The Query Analytics Dashboard
+# Query Analytics
 
 The *Query Analytics* dashboard shows how queries are executed and where they spend their time.  It helps you analyze database queries over time, optimize database performance, and find and remedy the source of problems.
 
