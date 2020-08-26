@@ -135,11 +135,11 @@ Delete the search text and press Enter to see the full list again.
 
 **Pagination**
 
-- Queries are grouped into pages of 10, 50 or 100 items.
-
 - The pagination device lets you move forwards or backwards through pages, jump to a specific page, and choose how many items are listed per page.
 
-  .. image:: /_images/PMM_Query_Analytics_pagination.jpg
+  .. image:: /_images/PMM_Query_Analytics_Panels_Pagination.jpg
+
+- Queries are grouped into pages of 25, 50 or 100 items.
 
 .. _pmm-qan-query-selecting:
 .. _query-detail-section:
