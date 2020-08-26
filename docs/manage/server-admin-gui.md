@@ -131,19 +131,21 @@ Fill both fields and click the *Apply Alertmanager settings* button to proceed.
 
 This panel is where you create, and log into and out of your Percona Platform account.
 
-![image](../_images/PMM_Settings_Sign_Up.jpg)
-
 **Logging in**
+
+![image](../_images/PMM_Settings_Percona_Platform.jpg)
 
 If you have a *Percona Platform* account, enter your credentials and click *Login*.
 
 **Logging out**
 
-Click *Sign out* to log out of your Percona Platform account.
-
 ![image](../_images/PMM_Settings_Sign_Out.jpg)
 
-**Creating an account**
+Click *Sign out* to log out of your Percona Platform account.
+
+**Create an account**
+
+![image](../_images/PMM_Settings_Sign_Up.jpg)
 
 To create a *Percona Platform* account:
 
