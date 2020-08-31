@@ -6,6 +6,11 @@ Dashboards Reference
 
 This section lists all available dashboards.
 
+**See also**
+
+`Prometheus: Metric types <https://prometheus.io/docs/concepts/metric_types/>`__
+
+
 .. _pmm.dashboard.insight.list:
 .. _pmm.dashboard.general.list:
 

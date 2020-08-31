@@ -1,8 +1,8 @@
-.. _dashboard-advanced-data-exploration:
-
 #########################
 Advanced Data Exploration
 #########################
+
+.. image:: /_images/PMM_Advanced_Data_Exploration_full.jpg
 
 The *Advanced Data Exploration* dashboard provides detailed information about
 the progress of a single Prometheus metric across one or more hosts.
@@ -14,35 +14,22 @@ the progress of a single Prometheus metric across one or more hosts.
    .. image:: /_images/metrics-monitor.advanced-data-exploration.node-memory-numa.png
 
 
-.. _dashboard-advanced-data-exploration.metric-value.view-as-gauge:
-.. _metric-value.view-as-gauge:
-
 *********************************
 View actual metric values (Gauge)
 *********************************
 
-In this section, the values of the selected metric may increase or decrease over
-time (similar to temperature or memory usage).
+A gauge is a metric that represents a single numerical value that can arbitrarily go up and down.
 
-.. _dashboard-advanced-data-exploration.metric-value.view-as-counter:
-.. _metric-value.view-as-counter:
+Gauges are typically used for measured values like temperatures or current memory usage, but also "counts" that can go up and down, like the number of running goroutines.
 
 ************************************
 View actual metric values (Counters)
 ************************************
 
-In this section, the values of the selected metric are accummulated over time
-(useful to count the number of served requests, for example).
+A counter is a cumulative metric that represents a single numerical value that only ever goes up. A counter is typically used to count requests served, tasks completed, errors occurred, etc. Counters should not be used to expose current counts of items whose number can also go down, e.g. the number of currently running goroutines. Use gauges for this use case.
 
-.. _dashboard-advanced-data-exploration.metric-data-table:
-.. _metric-data-table:
+************
+Metric Rates
+************
 
-************************************
-View actual metric values (Counters)
-************************************
-
-This section presents the values of the selected metric in the tabular form.
-
-**See also**
-
-`Prometheus: Metric types <https://prometheus.io/docs/concepts/metric_types/>`__
+Shows  Number of Samples Per Second Stored for Given Interval in the Time Series.

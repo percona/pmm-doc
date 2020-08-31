@@ -4,6 +4,10 @@
 
 This section lists all available dashboards.
 
+!!! seealso "See also"
+
+    [Prometheus: Metric types](https://prometheus.io/docs/concepts/metric_types/)
+
 <div class="section" id="pmm-dashboard-insight-list"></div>
 <div class="section" id="pmm-dashboard-general-list"></div>
 
