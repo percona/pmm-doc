@@ -67,11 +67,11 @@ This section lists all available dashboards.
 
 * [MongoDB Cluster Summary](dashboard-mongodb-cluster-summary.md)
 * [MongoDB Instance Summary](dashboard-mongodb-instance-summary.md)
+* [MongoDB Instances Overview](dashboard-mongodb-instances-overview.md)
 * [MongoDB Instances Compare](dashboard-mongodb-instances-compare.md)
 * [MongoDB ReplSet Summary](dashboard-mongodb-replset-summary.md)
 * [MongoDB inMemory Details](dashboard-mongodb-inmemory-details.md)
 * [MongoDB MMAPv1 Details](dashboard-mongodb-mmapv1-details.md)
-* [MongoDB Overview](dashboard-mongodb-overview.md)
 * [MongoDB RocksDB Details](dashboard-mongodb-rocksdb-details.md)
 * [MongoDB WiredTiger Details](dashboard-mongodb-wiredtiger-details.md)
 

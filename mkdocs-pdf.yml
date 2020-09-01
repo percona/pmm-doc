@@ -141,6 +141,7 @@ nav:
         - MongoDB Dashboards:
             - MongoDB Cluster Summary: 'dashboards/dashboard-mongodb-cluster-summary.md'
             - MongoDB Instance Summary: 'dashboards/dashboard-mongodb-instance-summary.md'
+            - MongoDB Instances Overview: 'dashboards/dashboard-mongodb-instances-overview.md'
             - MongoDB Instances Compare: 'dashboards/dashboard-mongodb-instances-compare.md'
             - MongoDB ReplSet Summary: 'dashboards/dashboard-mongodb-replset-summary.md'
             - MongoDB inMemory Details: 'dashboards/dashboard-mongodb-inmemory-details.md'
