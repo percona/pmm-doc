@@ -85,7 +85,7 @@ MongoDB Dashboards
    dashboard-mongodb-mmapv1-details
    dashboard-mongodb-overview
    dashboard-mongodb-rocksdb-details
-   dashboard-mongodb-wiredtiger
+   dashboard-mongodb-wiredtiger-details
 
 *********************
 PostgreSQL Dashboards

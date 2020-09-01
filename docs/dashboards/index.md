@@ -71,7 +71,7 @@ This section lists all available dashboards.
 * [MongoDB MMAPv1 Details](dashboard-mongodb-mmapv1-details.md)
 * [MongoDB Overview](dashboard-mongodb-overview.md)
 * [MongoDB RocksDB Details](dashboard-mongodb-rocksdb-details.md)
-* [MongoDB WiredTiger](dashboard-mongodb-wiredtiger.md)
+* [MongoDB WiredTiger Details](dashboard-mongodb-wiredtiger-details.md)
 
 <div class="section" id="pmm-dashboard-postgres-list"></div>
 
