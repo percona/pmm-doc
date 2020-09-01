@@ -103,4 +103,4 @@ HA Dashboards
 .. toctree::
    :maxdepth: 1
 
-   dashboard-pxc-galera-cluster-overview
+   dashboard-pxc-galera-node-summary

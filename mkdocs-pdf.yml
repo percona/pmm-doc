@@ -149,7 +149,7 @@ nav:
         - PostgreSQL Dashboards:
             - PostgreSQL Overview: 'dashboards/dashboard-postgres-overview.md'
         - HA Dashboards:
-            - PXC/Galera Cluster Overview: 'dashboards/dashboard-pxc-galera-cluster-overview.md'
+            - PXC/Galera Node Summary: 'dashboards/dashboard-pxc-galera-node-summary.md'
     - Contact Us: 'contact.md'
     - Glossary: 'glossary-terminology.md'
     - Release Notes:

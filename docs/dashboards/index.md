@@ -83,4 +83,4 @@ This section lists all available dashboards.
 
 ## HA Dashboards
 
-* [PXC/Galera Cluster Overview](dashboard-pxc-galera-cluster-overview.md)
+* [PXC/Galera Node Summary](dashboard-pxc-galera-node-summary.md)
