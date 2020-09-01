@@ -65,6 +65,7 @@ This section lists all available dashboards.
 ## MongoDB Dashboards
 
 * [MongoDB Cluster Summary](dashboard-mongodb-cluster-summary.md)
+* [MongoDB Instance Summary](dashboard-mongodb-instance-summary.md)
 * [MongoDB inMemory Details](dashboard-mongodb-inmemory-details.md)
 * [MongoDB MMAPv1](dashboard-mongodb-mmapv1.md)
 * [MongoDB Overview](dashboard-mongodb-overview.md)

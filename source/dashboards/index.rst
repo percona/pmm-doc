@@ -79,6 +79,7 @@ MongoDB Dashboards
    :maxdepth: 1
 
    dashboard-mongodb-cluster-summary
+   dashboard-mongodb-instance-summary
    dashboard-mongodb-inmemory-details
    dashboard-mongodb-mmapv1
    dashboard-mongodb-overview
