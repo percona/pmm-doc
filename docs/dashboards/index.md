@@ -30,7 +30,7 @@ This section lists all available dashboards.
 * [Nodes Compare](dashboard-nodes-compare.md)
 * [Nodes Overview](dashboard-system-overview.md)
 * [Node Summary](dashboard-node-summary.md)
-* [NUMA Details](dashboard-overview-numa-metrics.md)
+* [NUMA Details](dashboard-numa-details.md)
 * [Processes Details](dashboard-processes-details.md)
 
 <div class="section" id="pmm-dashboard-prometheus-list"></div>

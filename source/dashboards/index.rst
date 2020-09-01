@@ -35,7 +35,7 @@ OS Dashboards
    dashboard-nodes-compare
    dashboard-system-overview
    dashboard-node-summary
-   dashboard-overview-numa-metrics
+   dashboard-numa-details
    dashboard-processes-details
 
 *********************
