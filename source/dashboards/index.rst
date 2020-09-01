@@ -36,7 +36,7 @@ OS Dashboards
 .. toctree::
    :maxdepth: 1
 
-   dashboard-cpu-utilization-details-cores
+   dashboard-cpu-utilization-details
    dashboard-disk-space
    dashboard-network-overview
    dashboard-node-temperature-details

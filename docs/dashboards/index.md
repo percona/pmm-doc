@@ -23,7 +23,7 @@ This section lists all available dashboards.
 
 ## OS Dashboards
 
-* [CPU Utilization Details](dashboard-cpu-utilization-details-cores.md)
+* [CPU Utilization Details](dashboard-cpu-utilization-details.md)
 * [Disk Details](dashboard-disk-space.md)
 * [Network Details](dashboard-network-overview.md)
 * [Node Temperature Details](dashboard-node-temperature-details.md)

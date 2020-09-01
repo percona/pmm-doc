@@ -125,7 +125,7 @@ nav:
             - Advanced Data Exploration: 'dashboards/dashboard-advanced-data-exploration.md'
             - Home Dashboard: 'dashboards/dashboard-home.md'
         - OS Dashboards=dashboards/index.html#os-dashboards:
-            - CPU Utilization Details: 'dashboards/dashboard-cpu-utilization-details-cores.md'
+            - CPU Utilization Details: 'dashboards/dashboard-cpu-utilization-details.md'
             - Disk Details: 'dashboards/dashboard-disk-space.md'
             - Network Details: 'dashboards/dashboard-network-overview.md'
             - Node Temperature Details: 'dashboards/dashboard-node-temperature-details.md'
