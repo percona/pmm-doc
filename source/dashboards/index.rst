@@ -81,7 +81,7 @@ MongoDB Dashboards
    dashboard-mongodb-cluster-summary
    dashboard-mongodb-instance-summary
    dashboard-mongodb-inmemory-details
-   dashboard-mongodb-mmapv1
+   dashboard-mongodb-mmapv1-details
    dashboard-mongodb-overview
    dashboard-mongodb-replset
    dashboard-mongodb-rocksdb

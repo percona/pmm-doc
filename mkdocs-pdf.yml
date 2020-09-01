@@ -141,7 +141,7 @@ nav:
             - MongoDB Cluster Summary: 'dashboards/dashboard-mongodb-cluster-summary.md'
             - MongoDB Instance Summary: 'dashboards/dashboard-mongodb-instance-summary.md'
             - MongoDB inMemory Details: 'dashboards/dashboard-mongodb-inmemory-details.md'
-            - MongoDB MMAPv1: 'dashboards/dashboard-mongodb-mmapv1.md'
+            - MongoDB MMAPv1 Details: 'dashboards/dashboard-mongodb-mmapv1-details.md'
             - MongoDB Overview: 'dashboards/dashboard-mongodb-overview.md'
             - MongoDB ReplSet: 'dashboards/dashboard-mongodb-replset.md'
             - MongoDB RocksDB: 'dashboards/dashboard-mongodb-rocksdb.md'
