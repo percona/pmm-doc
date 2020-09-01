@@ -56,7 +56,7 @@ MySQL Dashboards
 .. toctree::
    :maxdepth: 1
 
-   dashboard-mysql-amazon-aurora-metrics
+   dashboard-mysql-amazon-aurora-details
    dashboard-mysql-command-handler-counters-compare
    dashboard-mysql-innodb-compression
    dashboard-mysql-innodb-metrics-advanced

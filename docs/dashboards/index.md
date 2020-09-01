@@ -45,7 +45,7 @@ This section lists all available dashboards.
 
 ## MySQL Dashboards
 
-* [MySQL Amazon Aurora Metrics](dashboard-mysql-amazon-aurora-metrics.md)
+* [MySQL Amazon Aurora Details](dashboard-mysql-amazon-aurora-details.md)
 * [MySQL Command/Handler Counters Compare](dashboard-mysql-command-handler-counters-compare.md)
 * [MySQL InnoDB Compression](dashboard-mysql-innodb-compression.md)
 * [MySQL InnoDB Metrics (Advanced)](dashboard-mysql-innodb-metrics-advanced.md)

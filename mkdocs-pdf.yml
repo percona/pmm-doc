@@ -123,7 +123,7 @@ nav:
             - Prometheus Exporter Status: 'dashboards/dashboard-prometheus-exporter-status.md'
             - Prometheus Exporters Overview: 'dashboards/dashboard-prometheus-exporters-overview.md'
         - MySQL Dashboards:
-            - MySQL Amazon Aurora Metrics: 'dashboards/dashboard-mysql-amazon-aurora-metrics.md'
+            - MySQL Amazon Aurora Details: 'dashboards/dashboard-mysql-amazon-aurora-details.md'
             - MySQL Command/Handler Counters Compare: 'dashboards/dashboard-mysql-command-handler-counters-compare.md'
             - MySQL InnoDB Compression: 'dashboards/dashboard-mysql-innodb-compression.md'
             - MySQL InnoDB Metrics (Advanced): 'dashboards/dashboard-mysql-innodb-metrics-advanced.md'
