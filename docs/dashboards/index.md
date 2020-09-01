@@ -55,7 +55,7 @@ This section lists all available dashboards.
 * [MySQL Instance Summary](dashboard-mysql-instance-summary.md)
 * [Performance Schema Wait Event Analysis](dashboard-mysql-performance-schema-wait-events.md)
 * [MySQL Performance Schema](dashboard-mysql-performance-schema.md)
-* [MySQL Query Response Time](dashboard-mysql-query-response-time.md)
+* [MySQL Query Response Time Details](dashboard-mysql-query-response-time-details.md)
 * [MySQL Replication](dashboard-mysql-replication.md)
 * [MySQL Table Statistics](dashboard-mysql-table-statistics.md)
 * [MySQL User Statistics](dashboard-mysql-user-statistics.md)

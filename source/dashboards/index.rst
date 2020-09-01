@@ -66,7 +66,7 @@ MySQL Dashboards
    dashboard-mysql-instance-summary
    dashboard-mysql-performance-schema-wait-events
    dashboard-mysql-performance-schema
-   dashboard-mysql-query-response-time
+   dashboard-mysql-query-response-time-details
    dashboard-mysql-replication
    dashboard-mysql-table-statistics
    dashboard-mysql-user-statistics
