@@ -4,15 +4,7 @@ Advanced Data Exploration
 
 .. image:: /_images/PMM_Advanced_Data_Exploration_full.jpg
 
-The *Advanced Data Exploration* dashboard provides detailed information about
-the progress of a single Prometheus metric across one or more hosts.
-
-.. note:: NUMA-related metrics
-
-   This dashboard supports metrics related to NUMA. The names of all these metrics start with ``node_memory_numa``.
-
-   .. image:: /_images/metrics-monitor.advanced-data-exploration.node-memory-numa.png
-
+The *Advanced Data Exploration* dashboard provides detailed information about the progress of a single Prometheus metric across one or more hosts.
 
 *********************************
 View actual metric values (Gauge)
@@ -32,4 +24,11 @@ A counter is a cumulative metric that represents a single numerical value that o
 Metric Rates
 ************
 
-Shows  Number of Samples Per Second Stored for Given Interval in the Time Series.
+Shows the number of samples Per second stored for a given interval in the time series.
+
+
+.. note:: NUMA-related metrics
+
+   This dashboard supports metrics related to NUMA. The names of all these metrics start with ``node_memory_numa``.
+
+   .. image:: /_images/metrics-monitor.advanced-data-exploration.node-memory-numa.png
