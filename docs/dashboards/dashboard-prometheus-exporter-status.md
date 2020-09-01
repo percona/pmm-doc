@@ -8,7 +8,3 @@ reveals the following information:
 * Memory usage
 * File descriptors used
 * Exporter uptime
-
-!!! seealso "See also"
-
-    [Prometheus Exporters Overview](dashboard-prometheus-exporters-overview.md)

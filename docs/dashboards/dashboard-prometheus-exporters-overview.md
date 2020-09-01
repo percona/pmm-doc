@@ -62,7 +62,7 @@ RAM
 Virtual CPUs
 :   Shows the total number of virtual CPUs on the host.
 
-You can click the value of the *CPU Used*, *Memory Used*, or *Exporters Running* columns to open the :ref:`dashboard-prometheus-exporter-status` for further analysis.
+You can click the value of the *CPU Used*, *Memory Used*, or *Exporters Running* columns to open the [Prometheus Exporter Status](dashboard-prometheus-exporter-status.md) dashboard for further analysis.
 
 **See also**
 

@@ -12,7 +12,3 @@ reveals the following information:
 - Memory usage
 - File descriptors used
 - Exporter uptime
-
-**See also**
-
-:ref:`dashboard-prometheus-exporters-overview`
