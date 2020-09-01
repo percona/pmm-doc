@@ -140,10 +140,10 @@ nav:
         - MongoDB Dashboards:
             - MongoDB Cluster Summary: 'dashboards/dashboard-mongodb-cluster-summary.md'
             - MongoDB Instance Summary: 'dashboards/dashboard-mongodb-instance-summary.md'
+            - MongoDB ReplSet Summary: 'dashboards/dashboard-mongodb-replset-summary.md'
             - MongoDB inMemory Details: 'dashboards/dashboard-mongodb-inmemory-details.md'
             - MongoDB MMAPv1 Details: 'dashboards/dashboard-mongodb-mmapv1-details.md'
             - MongoDB Overview: 'dashboards/dashboard-mongodb-overview.md'
-            - MongoDB ReplSet: 'dashboards/dashboard-mongodb-replset.md'
             - MongoDB RocksDB: 'dashboards/dashboard-mongodb-rocksdb.md'
             - MongoDB WiredTiger: 'dashboards/dashboard-mongodb-wiredtiger.md'
         - PostgreSQL Dashboards:

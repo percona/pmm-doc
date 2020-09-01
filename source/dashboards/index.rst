@@ -80,10 +80,10 @@ MongoDB Dashboards
 
    dashboard-mongodb-cluster-summary
    dashboard-mongodb-instance-summary
+   dashboard-mongodb-replset-summary
    dashboard-mongodb-inmemory-details
    dashboard-mongodb-mmapv1-details
    dashboard-mongodb-overview
-   dashboard-mongodb-replset
    dashboard-mongodb-rocksdb
    dashboard-mongodb-wiredtiger
 
