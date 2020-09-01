@@ -113,6 +113,7 @@ nav:
             - CPU Utilization Details: 'dashboards/dashboard-cpu-utilization-details.md'
             - Disk Details: 'dashboards/dashboard-disk-details.md'
             - Network Details: 'dashboards/dashboard-network-details.md'
+            - Memory Details: 'dashboards/dashboard-memory-details.md'
             - Node Temperature Details: 'dashboards/dashboard-node-temperature-details.md'
             - Nodes Compare: 'dashboards/dashboard-nodes-compare.md'
             - Nodes Overview: 'dashboards/dashboard-system-overview.md'

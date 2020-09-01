@@ -31,6 +31,7 @@ OS Dashboards
    dashboard-cpu-utilization-details
    dashboard-disk-details
    dashboard-network-details
+   dashboard-memory-details
    dashboard-node-temperature-details
    dashboard-nodes-compare
    dashboard-system-overview
