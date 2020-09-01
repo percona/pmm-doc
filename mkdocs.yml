@@ -145,7 +145,7 @@ nav:
             - MySQL InnoDB Metrics: 'dashboards/dashboard-mysql-innodb-metrics.md'
             - MySQL MyISAM Aria Metrics: 'dashboards/dashboard-mysql-myisam-aria-metrics.md'
             - MySQL MyRocks Metrics: 'dashboards/dashboard-mysql-myrocks-metrics.md'
-            - MySQL Overview: 'dashboards/dashboard-mysql-overview.md'
+            - MySQL Instance Summary: 'dashboards/dashboard-mysql-instance-summary.md'
             - Performance Schema Wait Event Analysis: 'dashboards/dashboard-mysql-performance-schema-wait-events.md'
             - MySQL Performance Schema: 'dashboards/dashboard-mysql-performance-schema.md'
             - MySQL Query Response Time: 'dashboards/dashboard-mysql-query-response-time.md'

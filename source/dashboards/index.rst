@@ -63,7 +63,7 @@ MySQL Dashboards
    dashboard-mysql-innodb-metrics
    dashboard-mysql-myisam-aria-metrics
    dashboard-mysql-myrocks-metrics
-   dashboard-mysql-overview
+   dashboard-mysql-instance-summary
    dashboard-mysql-performance-schema-wait-events
    dashboard-mysql-performance-schema
    dashboard-mysql-query-response-time
