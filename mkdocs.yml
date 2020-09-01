@@ -154,7 +154,7 @@ nav:
             - MySQL User Statistics: 'dashboards/dashboard-mysql-user-statistics.md'
         - MongoDB Dashboards=dashboards/index.html#mongodb-dashboards:
             - MongoDB Cluster Summary: 'dashboards/dashboard-mongodb-cluster-summary.md'
-            - MongoDB inMemory  Summary: 'dashboards/dashboard-mongodb-inmemory.md'
+            - MongoDB inMemory Details: 'dashboards/dashboard-mongodb-inmemory-details.md'
             - MongoDB MMAPv1: 'dashboards/dashboard-mongodb-mmapv1.md'
             - MongoDB Overview: 'dashboards/dashboard-mongodb-overview.md'
             - MongoDB ReplSet: 'dashboards/dashboard-mongodb-replset.md'

@@ -1,5 +1,3 @@
-.. _pmm.dashboard.list:
-
 ####################
 Dashboards Reference
 ####################
@@ -9,10 +7,6 @@ This section lists all available dashboards.
 **See also**
 
 `Prometheus: Metric types <https://prometheus.io/docs/concepts/metric_types/>`__
-
-
-.. _pmm.dashboard.insight.list:
-.. _pmm.dashboard.general.list:
 
 *******
 Insight
@@ -26,8 +20,6 @@ Insight
    dashboard-prometheus
    dashboard-prometheus-exporter-status
    dashboard-prometheus-exporters-overview
-
-.. _pmm.dashboard.os.list:
 
 *************
 OS Dashboards
@@ -46,8 +38,6 @@ OS Dashboards
    dashboard-overview-numa-metrics
    dashboard-processes-details
 
-.. _pmm.dashboard-prometheus.list:
-
 *********************
 Prometheus Dashboards
 *********************
@@ -58,8 +48,6 @@ Prometheus Dashboards
    dashboard-prometheus
    dashboard-prometheus-exporter-status
    dashboard-prometheus-exporters-overview
-
-.. _pmm.dashboard.mysql.list:
 
 ****************
 MySQL Dashboards
@@ -83,8 +71,6 @@ MySQL Dashboards
    dashboard-mysql-table-statistics
    dashboard-mysql-user-statistics
 
-.. _pmm.dashboard.mongodb.list:
-
 ******************
 MongoDB Dashboards
 ******************
@@ -93,14 +79,12 @@ MongoDB Dashboards
    :maxdepth: 1
 
    dashboard-mongodb-cluster-summary
-   dashboard-mongodb-inmemory
+   dashboard-mongodb-inmemory-details
    dashboard-mongodb-mmapv1
    dashboard-mongodb-overview
    dashboard-mongodb-replset
    dashboard-mongodb-rocksdb
    dashboard-mongodb-wiredtiger
-
-.. _pmm.dashboard.postgres.list:
 
 *********************
 PostgreSQL Dashboards
@@ -110,8 +94,6 @@ PostgreSQL Dashboards
    :maxdepth: 1
 
    dashboard-postgres-overview
-
-.. _pmm.dashboard.ha.list:
 
 *************
 HA Dashboards
