@@ -1,6 +1,6 @@
 # Network Details
 
-The information in the Network Details dashboard is grouped into the following sections:
+![image](../_images/PMM_Network_Details.jpg)
 
 ## Last Hour Statistic
 

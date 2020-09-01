@@ -30,7 +30,7 @@ OS Dashboards
 
    dashboard-cpu-utilization-details
    dashboard-disk-details
-   dashboard-network-overview
+   dashboard-network-details
    dashboard-node-temperature-details
    dashboard-nodes-compare
    dashboard-system-overview
