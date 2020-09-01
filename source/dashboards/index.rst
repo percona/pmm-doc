@@ -37,7 +37,7 @@ OS Dashboards
    :maxdepth: 1
 
    dashboard-cpu-utilization-details
-   dashboard-disk-space
+   dashboard-disk-details
    dashboard-network-overview
    dashboard-node-temperature-details
    dashboard-nodes-compare

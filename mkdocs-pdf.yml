@@ -111,7 +111,7 @@ nav:
             - Home Dashboard: 'dashboards/dashboard-home.md'
         - OS Dashboards:
             - CPU Utilization Details: 'dashboards/dashboard-cpu-utilization-details.md'
-            - Disk Details: 'dashboards/dashboard-disk-space.md'
+            - Disk Details: 'dashboards/dashboard-disk-details.md'
             - Network Details: 'dashboards/dashboard-network-overview.md'
             - Node Temperature Details: 'dashboards/dashboard-node-temperature-details.md'
             - Nodes Compare: 'dashboards/dashboard-nodes-compare.md'
