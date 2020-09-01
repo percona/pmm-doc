@@ -1,13 +1,17 @@
-# Nodes Compare
+#############
+Nodes Compare
+#############
 
-The Nodes Compare dashboard allows you to compare wide range of parameters of the servers monitored by PMM. Same type parameters are shown side by side for all the servers, grouped into the following sections:
+.. image:: /_images/PMM_Nodes_Compare.jpg
 
-* System Information
-* CPU
-* Memory
-* Disk Partitions
-* Disk Performance
-* Network
+This dashboard lets you compare a wide range of parameters. Parameters of the same type are shown side by side for all servers, grouped into the following sections:
+
+- System Information
+- CPU
+- Memory
+- Disk Partitions
+- Disk Performance
+- Network
 
 The *System Information* section shows the *System Info* summary of each server, as well as *System Uptime*, *CPU Cores*, *RAM*, *Saturation Metrics*, and *Load Average* gauges.
 

@@ -40,7 +40,7 @@ OS Dashboards
    dashboard-disk-space
    dashboard-network-overview
    dashboard-node-temperature-details
-   dashboard-compare-system-parameters
+   dashboard-nodes-compare
    dashboard-system-overview
    dashboard-node-summary
    dashboard-overview-numa-metrics

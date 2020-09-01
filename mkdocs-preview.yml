@@ -129,7 +129,7 @@ nav:
             - Disk Details: 'dashboards/dashboard-disk-space.md'
             - Network Details: 'dashboards/dashboard-network-overview.md'
             - Node Temperature Details: 'dashboards/dashboard-node-temperature-details.md'
-            - Nodes Compare: 'dashboards/dashboard-compare-system-parameters.md'
+            - Nodes Compare: 'dashboards/dashboard-nodes-compare.md'
             - Nodes Overview: 'dashboards/dashboard-system-overview.md'
             - NUMA Details: 'dashboards/dashboard-overview-numa-metrics.md'
             - Processes Details: 'dashboards/dashboard-processes-details.md'

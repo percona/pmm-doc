@@ -27,7 +27,7 @@ This section lists all available dashboards.
 * [Disk Details](dashboard-disk-space.md)
 * [Network Details](dashboard-network-overview.md)
 * [Node Temperature Details](dashboard-node-temperature-details.md)
-* [Nodes Compare](dashboard-compare-system-parameters.md)
+* [Nodes Compare](dashboard-nodes-compare.md)
 * [Nodes Overview](dashboard-system-overview.md)
 * [Node Summary](dashboard-node-summary.md)
 * [NUMA Details](dashboard-overview-numa-metrics.md)
