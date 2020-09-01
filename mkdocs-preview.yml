@@ -143,7 +143,7 @@ nav:
             - MySQL InnoDB Compression: 'dashboards/dashboard-mysql-innodb-compression.md'
             - MySQL InnoDB Metrics (Advanced): 'dashboards/dashboard-mysql-innodb-metrics-advanced.md'
             - MySQL InnoDB Metrics: 'dashboards/dashboard-mysql-innodb-metrics.md'
-            - MySQL MyISAM Aria Metrics: 'dashboards/dashboard-mysql-myisam-aria-metrics.md'
+            - MySQL MyISAM/Aria Details: 'dashboards/dashboard-mysql-myisam-aria-details.md'
             - MySQL MyRocks Metrics: 'dashboards/dashboard-mysql-myrocks-metrics.md'
             - MySQL Instance Summary: 'dashboards/dashboard-mysql-instance-summary.md'
             - Performance Schema Wait Event Analysis: 'dashboards/dashboard-mysql-performance-schema-wait-events.md'
