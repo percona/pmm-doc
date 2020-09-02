@@ -1,10 +1,10 @@
-# MySQL MyRocks Metrics
+# MySQL MyRocks Details
+
+![image](../_images/PMM_MySQL_MyRocks_Details.jpg)
 
 The [MyRocks](http://myrocks.io) storage engine developed by Facebook based on the RocksDB storage engine is applicable to systems which primarily interact with the database by writing data to it rather than reading from it. RocksDB also features a good level of compression, higher than that of the InnoDB storage engine, which makes it especially valuable when optimizing the usage of hard drives.
 
 PMM collects statistics on the MyRocks storage engine for MySQL in the Metrics Monitor information for this dashboard comes from the *Information Schema* tables.
-
-![image](../_images/metrics-monitor.mysql-myrocks-metrics.1.png)
 
 **Metrics**
 

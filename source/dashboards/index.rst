@@ -63,7 +63,7 @@ MySQL Dashboards
    dashboard-mysql-innodb-metrics-advanced
    dashboard-mysql-innodb-details
    dashboard-mysql-myisam-aria-details
-   dashboard-mysql-myrocks-metrics
+   dashboard-mysql-myrocks-details
    dashboard-mysql-instance-summary
    dashboard-mysql-instances-compare
    dashboard-mysql-instances-overview

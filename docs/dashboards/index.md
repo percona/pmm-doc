@@ -52,7 +52,7 @@ This section lists all available dashboards.
 * [MySQL InnoDB Metrics (Advanced)](dashboard-mysql-innodb-metrics-advanced.md)
 * [MySQL InnoDB Details](dashboard-mysql-innodb-details.md)
 * [MySQL MyISAM/Aria Details](dashboard-mysql-myisam-aria-details.md)
-* [MySQL MyRocks Metrics](dashboard-mysql-myrocks-metrics.md)
+* [MySQL MyRocks Details](dashboard-mysql-myrocks-details.md)
 * [MySQL Instance Summary](dashboard-mysql-instance-summary.md)
 * [MySQL Instances Compare](dashboard-mysql-instances-compare.md)
 * [MySQL Instances Overview](dashboard-mysql-instances-overview.md)
