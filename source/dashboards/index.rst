@@ -61,7 +61,7 @@ MySQL Dashboards
    dashboard-mysql-command-handler-counters-compare
    dashboard-mysql-innodb-compression-details
    dashboard-mysql-innodb-metrics-advanced
-   dashboard-mysql-innodb-metrics
+   dashboard-mysql-innodb-details
    dashboard-mysql-myisam-aria-details
    dashboard-mysql-myrocks-metrics
    dashboard-mysql-instance-summary

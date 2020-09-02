@@ -50,7 +50,7 @@ This section lists all available dashboards.
 * [MySQL Command/Handler Counters Compare](dashboard-mysql-command-handler-counters-compare.md)
 * [MySQL InnoDB Compression Details](dashboard-mysql-innodb-compression-details.md)
 * [MySQL InnoDB Metrics (Advanced)](dashboard-mysql-innodb-metrics-advanced.md)
-* [MySQL InnoDB Metrics](dashboard-mysql-innodb-metrics.md)
+* [MySQL InnoDB Details](dashboard-mysql-innodb-details.md)
 * [MySQL MyISAM/Aria Details](dashboard-mysql-myisam-aria-details.md)
 * [MySQL MyRocks Metrics](dashboard-mysql-myrocks-metrics.md)
 * [MySQL Instance Summary](dashboard-mysql-instance-summary.md)
