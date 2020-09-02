@@ -59,7 +59,7 @@ This section lists all available dashboards.
 * [Performance Schema Wait Event Analysis](dashboard-mysql-performance-schema-wait-events.md)
 * [MySQL Performance Schema Details](dashboard-mysql-performance-schema-details.md)
 * [MySQL Query Response Time Details](dashboard-mysql-query-response-time-details.md)
-* [MySQL Replication](dashboard-mysql-replication.md)
+* [MySQL Replication Summary](dashboard-mysql-replication-summary.md)
 * [MySQL Table Statistics](dashboard-mysql-table-statistics.md)
 * [MySQL User Statistics](dashboard-mysql-user-statistics.md)
 
@@ -72,7 +72,7 @@ This section lists all available dashboards.
 * [MongoDB Instances Overview](dashboard-mongodb-instances-overview.md)
 * [MongoDB Instances Compare](dashboard-mongodb-instances-compare.md)
 * [MongoDB ReplSet Summary](dashboard-mongodb-replset-summary.md)
-* [MongoDB inMemory Details](dashboard-mongodb-inmemory-details.md)
+* [MongoDB InMemory Details](dashboard-mongodb-inmemory-details.md)
 * [MongoDB MMAPv1 Details](dashboard-mongodb-mmapv1-details.md)
 * [MongoDB RocksDB Details](dashboard-mongodb-rocksdb-details.md)
 * [MongoDB WiredTiger Details](dashboard-mongodb-wiredtiger-details.md)

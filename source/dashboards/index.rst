@@ -70,7 +70,7 @@ MySQL Dashboards
    dashboard-mysql-performance-schema-wait-events
    dashboard-mysql-performance-schema-details
    dashboard-mysql-query-response-time-details
-   dashboard-mysql-replication
+   dashboard-mysql-replication-summary
    dashboard-mysql-table-statistics
    dashboard-mysql-user-statistics
 

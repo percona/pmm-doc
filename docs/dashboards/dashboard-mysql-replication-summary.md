@@ -1,4 +1,6 @@
-# MySQL Replication
+# MySQL Replication Summary
+
+![image](../_images/PMM_MySQL_Replication_Summary.jpg)
 
 ## IO Thread Running
 
@@ -35,7 +37,7 @@ Yes
 :   SQL Thread is running and is applying events from the realy log to the local slave host
 
 No
-:   SQL Thread is not running because it is not launched yet or because of an errror occurred while applying an event to the local slave host
+:   SQL Thread is not running because it is not launched yet or because of an error occurred while applying an event to the local slave host
 
 ## Replication Error No
 
@@ -107,7 +109,7 @@ As soon as the SQL thread completes to execute all events in the relay log file,
 
 If this metric contains a high value, the variable `max_relay_log_file` is high too. Generally, this not a serious issue. If the value of this metric is constantly increased, the slave is delaying too much in applying the events.
 
-Treat this metric in the same way as the [MySQL Replication Delay metric](#mysql-replication-delay).
+Treat this metric in the same way as the [MySQL Replication Delay](#mysql-replication-delay) metric.
 
 ## Relay Log Written Hourly
 

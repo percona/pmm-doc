@@ -1,3 +1,5 @@
+.. _mysql-performance-schema-details:
+
 ################################
 MySQL Performance Schema Details
 ################################
