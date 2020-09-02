@@ -1,6 +1,6 @@
 # Prometheus
 
-The Prometheus dashboard shows how Prometheus is performing.
+![image](../_images/PMM_Prometheus.jpg)
 
 ## Prometheus Overview
 
