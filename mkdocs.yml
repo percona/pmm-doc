@@ -168,6 +168,7 @@ nav:
             - MongoDB WiredTiger Details: 'dashboards/dashboard-mongodb-wiredtiger-details.md'
         - PostgreSQL Dashboards=dashboards/index.html#postgresql-dashboards:
             - PostgreSQL Overview: 'dashboards/dashboard-postgres-overview.md'
+            - PostgreSQL Instance Summary: 'dashboards/dashboard-postgresql-instance-summary.md'
         - HA Dashboards=dashboards/index.html#ha-dashboards:
             - PXC/Galera Node Summary: 'dashboards/dashboard-pxc-galera-node-summary.md'
     - Contact Us: 'contact.md'

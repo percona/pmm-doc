@@ -100,6 +100,7 @@ PostgreSQL Dashboards
    :maxdepth: 1
 
    dashboard-postgres-overview
+   dashboard-postgresql-instance-summary
 
 *************
 HA Dashboards
