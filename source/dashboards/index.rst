@@ -121,3 +121,4 @@ HA Dashboards
 
    dashboard-pxc-galera-node-summary
    dashboard-pxc-galera-cluster-summary
+   dashboard-pxc-galera-nodes-compare

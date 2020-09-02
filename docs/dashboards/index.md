@@ -96,3 +96,4 @@ This section lists all available dashboards.
 
 * [PXC/Galera Node Summary](dashboard-pxc-galera-node-summary.md)
 * [PXC/Galera Cluster Summary](dashboard-pxc-galera-cluster-summary.md)
+* [PXC/Galera Nodes Compare](dashboard-pxc-galera-nodes-compare.md)
