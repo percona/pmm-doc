@@ -54,6 +54,7 @@ This section lists all available dashboards.
 * [MySQL MyISAM/Aria Details](dashboard-mysql-myisam-aria-details.md)
 * [MySQL MyRocks Metrics](dashboard-mysql-myrocks-metrics.md)
 * [MySQL Instance Summary](dashboard-mysql-instance-summary.md)
+* [MySQL Instances Compare](dashboard-mysql-instances-compare.md)
 * [Performance Schema Wait Event Analysis](dashboard-mysql-performance-schema-wait-events.md)
 * [MySQL Performance Schema](dashboard-mysql-performance-schema.md)
 * [MySQL Query Response Time Details](dashboard-mysql-query-response-time-details.md)
