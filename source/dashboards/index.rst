@@ -21,6 +21,15 @@ Insight
    dashboard-prometheus-exporter-status
    dashboard-prometheus-exporters-overview
 
+***
+PMM
+***
+
+.. toctree::
+   :maxdepth: 1
+
+   dashboard-inventory
+
 *************
 OS Dashboards
 *************

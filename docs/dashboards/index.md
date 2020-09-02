@@ -19,6 +19,10 @@ This section lists all available dashboards.
 * [Prometheus Exporter Status](dashboard-prometheus-exporter-status.md)
 * [Prometheus Exporters Overview](dashboard-prometheus-exporters-overview.md)
 
+## PMM
+
+* [PMM Inventory](dashboard-inventory.md)
+
 <div class="section" id="pmm-dashboard-os-list"></div>
 
 ## OS Dashboards

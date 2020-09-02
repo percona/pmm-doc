@@ -124,6 +124,8 @@ nav:
         - Insight=dashboards/index.html#insight:
             - Advanced Data Exploration: 'dashboards/dashboard-advanced-data-exploration.md'
             - Home Dashboard: 'dashboards/dashboard-home.md'
+        - PMM:
+            - PMM Inventory: 'dashboards/dashboard-inventory.md'
         - OS Dashboards=dashboards/index.html#os-dashboards:
             - CPU Utilization Details: 'dashboards/dashboard-cpu-utilization-details.md'
             - Disk Details: 'dashboards/dashboard-disk-details.md'
