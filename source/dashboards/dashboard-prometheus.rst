@@ -1,3 +1,5 @@
+.. _dashboard-prometheus:
+
 ##########
 Prometheus
 ##########
