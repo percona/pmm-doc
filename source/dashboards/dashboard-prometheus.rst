@@ -96,7 +96,7 @@ System Level Metrics
 ********************
 
 Metrics in this section give an overview of the essential system characteristics
-of PMM Server. This information is also available from the :ref:`dashboard-system-overview`
+of PMM Server. This information is also available from the :ref:`dashboard-nodes-overview`
 dashboard.
 
 ***************

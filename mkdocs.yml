@@ -131,7 +131,7 @@ nav:
             - Memory Details: 'dashboards/dashboard-memory-details.md'
             - Node Temperature Details: 'dashboards/dashboard-node-temperature-details.md'
             - Nodes Compare: 'dashboards/dashboard-nodes-compare.md'
-            - Nodes Overview: 'dashboards/dashboard-system-overview.md'
+            - Nodes Overview: 'dashboards/dashboard-nodes-overview.md'
             - NUMA Details: 'dashboards/dashboard-numa-details.md'
             - Processes Details: 'dashboards/dashboard-processes-details.md'
         - Prometheus Dashboards=dashboards/index.html#prometheus-dashboards:

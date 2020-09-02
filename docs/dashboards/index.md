@@ -29,7 +29,7 @@ This section lists all available dashboards.
 * [Memory Details](dashboard-memory-details.md)
 * [Node Temperature Details](dashboard-node-temperature-details.md)
 * [Nodes Compare](dashboard-nodes-compare.md)
-* [Nodes Overview](dashboard-system-overview.md)
+* [Nodes Overview](dashboard-nodes-overview.md)
 * [Node Summary](dashboard-node-summary.md)
 * [NUMA Details](dashboard-numa-details.md)
 * [Processes Details](dashboard-processes-details.md)

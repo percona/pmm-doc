@@ -34,7 +34,7 @@ OS Dashboards
    dashboard-memory-details
    dashboard-node-temperature-details
    dashboard-nodes-compare
-   dashboard-system-overview
+   dashboard-nodes-overview
    dashboard-node-summary
    dashboard-numa-details
    dashboard-processes-details
