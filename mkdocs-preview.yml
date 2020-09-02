@@ -171,6 +171,8 @@ nav:
             - PostgreSQL Instances Overview: 'dashboards/dashboard-postgresql-instances-overview.md'
             - PostgreSQL Instance Summary: 'dashboards/dashboard-postgresql-instance-summary.md'
             - PostgreSQL Instances Compare: 'dashboards/dashboard-postgresql-instances-compare.md'
+        - ProxySQL Dashboards:
+            - ProxySQL Instance Summary: 'dashboards/dashboard-proxysql-instance-summary.md'
         - HA Dashboards=dashboards/index.html#ha-dashboards:
             - PXC/Galera Node Summary: 'dashboards/dashboard-pxc-galera-node-summary.md'
     - Contact Us: 'contact.md'

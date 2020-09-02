@@ -86,6 +86,10 @@ This section lists all available dashboards.
 * [PostgreSQL Instance Summary](dashboard-postgresql-instance-summary.md)
 * [PostgreSQL Instances Compare](dashboard-postgresql-instances-compare.md)
 
+## ProxySQL Dashboards
+
+* [ProxySQL Instance Summary](dashboard-proxysql-instance-summary.md)
+
 <div class="section" id="pmm-dashboard-ha-list"></div>
 
 ## HA Dashboards

@@ -103,6 +103,15 @@ PostgreSQL Dashboards
    dashboard-postgresql-instance-summary
    dashboard-postgresql-instances-compare
 
+*******************
+ProxySQL Dashboards
+*******************
+
+.. toctree::
+   :maxdepth: 1
+
+   dashboard-proxysql-instance-summary
+
 *************
 HA Dashboards
 *************
