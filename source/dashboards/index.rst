@@ -59,7 +59,7 @@ MySQL Dashboards
 
    dashboard-mysql-amazon-aurora-details
    dashboard-mysql-command-handler-counters-compare
-   dashboard-mysql-innodb-compression
+   dashboard-mysql-innodb-compression-details
    dashboard-mysql-innodb-metrics-advanced
    dashboard-mysql-innodb-metrics
    dashboard-mysql-myisam-aria-details
