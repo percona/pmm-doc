@@ -120,3 +120,4 @@ HA Dashboards
    :maxdepth: 1
 
    dashboard-pxc-galera-node-summary
+   dashboard-pxc-galera-cluster-summary

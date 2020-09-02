@@ -160,6 +160,7 @@ nav:
             - ProxySQL Instance Summary: 'dashboards/dashboard-proxysql-instance-summary.md'
         - HA Dashboards:
             - PXC/Galera Node Summary: 'dashboards/dashboard-pxc-galera-node-summary.md'
+            - PXC/Galera Cluster Summary: 'dashboards/dashboard-pxc-galera-cluster-summary.md'
     - Contact Us: 'contact.md'
     - Glossary: 'glossary-terminology.md'
     - Release Notes:
