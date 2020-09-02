@@ -1,4 +1,6 @@
-# Performance Schema Wait Event Analysis
+# MySQL Wait Event Analyses Details
+
+![image](../_images/PMM_MySQL_Wait_Event_Analyses_Details.jpg)
 
 This dashboard helps to analyse *Performance Schema* wait events. It plots the following metrics for the chosen (one or more) wait events:
 

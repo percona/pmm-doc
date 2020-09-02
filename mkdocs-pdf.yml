@@ -134,7 +134,7 @@ nav:
             - MySQL Instance Summary: 'dashboards/dashboard-mysql-instance-summary.md'
             - MySQL Instances Compare: 'dashboards/dashboard-mysql-instances-compare.md'
             - MySQL Instances Overview: 'dashboards/dashboard-mysql-instances-overview.md'
-            - Performance Schema Wait Event Analysis: 'dashboards/dashboard-mysql-performance-schema-wait-events.md'
+            - MySQL Wait Event Analyses Details: 'dashboards/dashboard-mysql-wait-event-analyses-details.md'
             - MySQL Performance Schema Details: 'dashboards/dashboard-mysql-performance-schema-details.md'
             - MySQL Query Response Time Details: 'dashboards/dashboard-mysql-query-response-time-details.md'
             - MySQL Replication Summary: 'dashboards/dashboard-mysql-replication-summary.md'
