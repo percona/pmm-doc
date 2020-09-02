@@ -73,6 +73,7 @@ MySQL Dashboards
    dashboard-mysql-replication-summary
    dashboard-mysql-table-details
    dashboard-mysql-user-statistics
+   dashboard-mysql-tokudb-details
 
 ******************
 MongoDB Dashboards

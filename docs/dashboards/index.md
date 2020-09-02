@@ -62,6 +62,7 @@ This section lists all available dashboards.
 * [MySQL Replication Summary](dashboard-mysql-replication-summary.md)
 * [MySQL Table Details](dashboard-mysql-table-details.md)
 * [MySQL User Statistics](dashboard-mysql-user-statistics.md)
+* [MySQL TokuDB Details](dashboard-mysql-tokudb-details.md)
 
 <div class="section" id="pmm-dashboard-mongodb-list"></div>
 
