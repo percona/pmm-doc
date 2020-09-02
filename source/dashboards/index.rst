@@ -66,6 +66,7 @@ MySQL Dashboards
    dashboard-mysql-myrocks-metrics
    dashboard-mysql-instance-summary
    dashboard-mysql-instances-compare
+   dashboard-mysql-instances-overview
    dashboard-mysql-performance-schema-wait-events
    dashboard-mysql-performance-schema
    dashboard-mysql-query-response-time-details

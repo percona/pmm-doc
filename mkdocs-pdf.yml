@@ -133,6 +133,7 @@ nav:
             - MySQL MyRocks Metrics: 'dashboards/dashboard-mysql-myrocks-metrics.md'
             - MySQL Instance Summary: 'dashboards/dashboard-mysql-instance-summary.md'
             - MySQL Instances Compare: 'dashboards/dashboard-mysql-instances-compare.md'
+            - MySQL Instances Overview: 'dashboards/dashboard-mysql-instances-overview.md'
             - Performance Schema Wait Event Analysis: 'dashboards/dashboard-mysql-performance-schema-wait-events.md'
             - MySQL Performance Schema: 'dashboards/dashboard-mysql-performance-schema.md'
             - MySQL Query Response Time Details: 'dashboards/dashboard-mysql-query-response-time-details.md'
