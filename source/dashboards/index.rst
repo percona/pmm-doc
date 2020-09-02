@@ -71,7 +71,7 @@ MySQL Dashboards
    dashboard-mysql-performance-schema-details
    dashboard-mysql-query-response-time-details
    dashboard-mysql-replication-summary
-   dashboard-mysql-table-statistics
+   dashboard-mysql-table-details
    dashboard-mysql-user-statistics
 
 ******************

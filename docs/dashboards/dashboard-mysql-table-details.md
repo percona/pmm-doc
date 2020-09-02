@@ -1,6 +1,6 @@
-# MySQL Table Statistics
+# MySQL Table Details
 
-This dashboard presents various data related to MySQL tables.
+![image](../_images/PMM_MySQL_Table_Details.jpg)
 
 ## Largest Tables
 

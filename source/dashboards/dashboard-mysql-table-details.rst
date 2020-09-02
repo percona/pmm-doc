@@ -1,10 +1,8 @@
-.. _dashboard-mysql-table-statistics:
+###################
+MySQL Table Details
+###################
 
-######################
-MySQL Table Statistics
-######################
-
-This dashboard presents various data related to MySQL tables.
+.. image:: /_images/PMM_MySQL_Table_Details.jpg
 
 **************
 Largest Tables
@@ -48,5 +46,4 @@ The number of rows changed in the table, shown for the top 5 tables.
 Auto Increment Usage
 ********************
 
-The current value of an ``auto_increment`` column from ``information_schema``,
-shown for the top 10 tables.
+The current value of an ``auto_increment`` column from ``information_schema``, shown for the top 10 tables.
