@@ -72,7 +72,7 @@ MySQL Dashboards
    dashboard-mysql-query-response-time-details
    dashboard-mysql-replication-summary
    dashboard-mysql-table-details
-   dashboard-mysql-user-statistics
+   dashboard-mysql-user-details
    dashboard-mysql-tokudb-details
 
 ******************

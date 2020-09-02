@@ -1,6 +1,6 @@
-# MySQL User Statistics
+# MySQL User Details
 
-This dashboard presents various data related to MySQL users.
+![image](../_images/PMM_MySQL_User_Details.jpg)
 
 !!! note
 

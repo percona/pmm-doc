@@ -139,7 +139,7 @@ nav:
             - MySQL Query Response Time Details: 'dashboards/dashboard-mysql-query-response-time-details.md'
             - MySQL Replication Summary: 'dashboards/dashboard-mysql-replication-summary.md'
             - MySQL Table Details: 'dashboards/dashboard-mysql-table-details.md'
-            - MySQL User Statistics: 'dashboards/dashboard-mysql-user-statistics.md'
+            - MySQL User Details: 'dashboards/dashboard-mysql-user-details.md'
             - MySQL TokuDB Details: 'dashboards/dashboard-mysql-tokudb-details.md'
         - MongoDB Dashboards:
             - MongoDB Cluster Summary: 'dashboards/dashboard-mongodb-cluster-summary.md'
