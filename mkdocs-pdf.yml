@@ -129,7 +129,6 @@ nav:
             - MySQL Amazon Aurora Details: 'dashboards/dashboard-mysql-amazon-aurora-details.md'
             - MySQL Command/Handler Counters Compare: 'dashboards/dashboard-mysql-command-handler-counters-compare.md'
             - MySQL InnoDB Compression Details: 'dashboards/dashboard-mysql-innodb-compression-details.md'
-            - MySQL InnoDB Metrics (Advanced): 'dashboards/dashboard-mysql-innodb-metrics-advanced.md'
             - MySQL InnoDB Details: 'dashboards/dashboard-mysql-innodb-details.md'
             - MySQL MyISAM/Aria Details: 'dashboards/dashboard-mysql-myisam-aria-details.md'
             - MySQL MyRocks Details: 'dashboards/dashboard-mysql-myrocks-details.md'
