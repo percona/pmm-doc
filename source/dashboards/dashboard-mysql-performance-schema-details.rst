@@ -1,13 +1,10 @@
+################################
+MySQL Performance Schema Details
+################################
 
-.. _dashboard-mysql-performance-schema:
+.. image:: /_images/PMM_MySQL_Performance_Schema_Details.jpg
 
-########################
-MySQL Performance Schema
-########################
-
-The MySQL Performance Schema dashboard helps determine the efficiency of
-communicating with Performance Schema. This dashboard contains the following
-metrics:
+The MySQL Performance Schema dashboard helps determine the efficiency of communicating with Performance Schema. This dashboard contains the following metrics:
 
 - Performance Schema file IO (events)
 - Performance Schema file IO (load)
