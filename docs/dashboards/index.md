@@ -84,6 +84,7 @@ This section lists all available dashboards.
 
 * [PostgreSQL Overview](dashboard-postgres-overview.md)
 * [PostgreSQL Instance Summary](dashboard-postgresql-instance-summary.md)
+* [PostgreSQL Instances Compare](dashboard-postgresql-instances-compare.md)
 
 <div class="section" id="pmm-dashboard-ha-list"></div>
 

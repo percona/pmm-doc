@@ -101,6 +101,7 @@ PostgreSQL Dashboards
 
    dashboard-postgres-overview
    dashboard-postgresql-instance-summary
+   dashboard-postgresql-instances-compare
 
 *************
 HA Dashboards

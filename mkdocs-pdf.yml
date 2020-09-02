@@ -155,6 +155,7 @@ nav:
         - PostgreSQL Dashboards:
             - PostgreSQL Overview: 'dashboards/dashboard-postgres-overview.md'
             - PostgreSQL Instance Summary: 'dashboards/dashboard-postgresql-instance-summary.md'
+            - PostgreSQL Instances Compare: 'dashboards/dashboard-postgresql-instances-compare.md'
         - HA Dashboards:
             - PXC/Galera Node Summary: 'dashboards/dashboard-pxc-galera-node-summary.md'
     - Contact Us: 'contact.md'
