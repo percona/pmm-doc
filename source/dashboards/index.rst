@@ -99,7 +99,7 @@ PostgreSQL Dashboards
 .. toctree::
    :maxdepth: 1
 
-   dashboard-postgres-overview
+   dashboard-postgresql-instances-overview
    dashboard-postgresql-instance-summary
    dashboard-postgresql-instances-compare
 

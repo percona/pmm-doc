@@ -168,7 +168,7 @@ nav:
             - MongoDB RocksDB Details: 'dashboards/dashboard-mongodb-rocksdb-details.md'
             - MongoDB WiredTiger Details: 'dashboards/dashboard-mongodb-wiredtiger-details.md'
         - PostgreSQL Dashboards=dashboards/index.html#postgresql-dashboards:
-            - PostgreSQL Overview: 'dashboards/dashboard-postgres-overview.md'
+            - PostgreSQL Instances Overview: 'dashboards/dashboard-postgresql-instances-overview.md'
             - PostgreSQL Instance Summary: 'dashboards/dashboard-postgresql-instance-summary.md'
             - PostgreSQL Instances Compare: 'dashboards/dashboard-postgresql-instances-compare.md'
         - HA Dashboards=dashboards/index.html#ha-dashboards:

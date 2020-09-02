@@ -1,6 +1,6 @@
-# PostgreSQL Overview
+# PostgreSQL Instances Overview
 
-This dashboard provides basic information about PostgreSQL hosts.
+![image](../_images/PMM_PostgreSQL_Instances_Overview_full.jpg)
 
 ## Connected
 

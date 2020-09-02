@@ -82,7 +82,7 @@ This section lists all available dashboards.
 
 ## PostgreSQL Dashboards
 
-* [PostgreSQL Overview](dashboard-postgres-overview.md)
+* [PostgreSQL Instances Overview](dashboard-postgresql-instances-overview.md)
 * [PostgreSQL Instance Summary](dashboard-postgresql-instance-summary.md)
 * [PostgreSQL Instances Compare](dashboard-postgresql-instances-compare.md)
 
