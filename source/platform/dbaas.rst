@@ -14,13 +14,11 @@ Add a Kubernetes cluster
 
 1. Click *Add new Kubernetes Cluster*
 
-2. Enter the *Kubernetes Cluster Name*.
+2. Enter values for the *Kubernetes Cluster Name* and *Kubeconfig file* in the relevant fields.
 
    .. image:: /_images/PMM_DBaaS_Add_Kubernetes_Cluster.jpg
 
-3. Enter the *Kubeconfig file*.
-
-4. Click *Add*.
+3. Click *Add*.
 
 ***************************
 Delete a Kubernetes cluster
