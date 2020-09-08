@@ -25,7 +25,7 @@ You can edit whichever copy you like. The PMM Technical Writers will keep the tw
 
 You'll need to know how git works, and the syntax of either restructuredText or Markdown.
 
-For option 2, you'll need to either [install Sphinx and extensions](#install-sphinx-and-extensions), or [MkDocs and extensions](#install-mkdocs-and-extensions), or have [Docker](https://docs.docker.com/get-docker/) installed. (Docker is by far the simplest way.)
+For option 2, you'll need to [install Sphinx and extensions](#install-sphinx-and-extensions), or [MkDocs and extensions](#install-mkdocs-and-extensions), or have [Docker](https://docs.docker.com/get-docker/) installed to preview any changes. (Of these, Docker is by far the simplest.)
 
 There are three ways to get changes made to the documentation. Two are 'do it yourself', one is 'ask someone to do it'.
 
@@ -39,7 +39,7 @@ There are three ways to get changes made to the documentation. Two are 'do it yo
 
 4. Do so and make a pull request for merging your changes.
 
-## Option 2: 'Do it yourself': Edit a cloned copy
+### Option 2: 'Do it yourself': Edit a cloned copy
 
 1. Fork and clone this repository.
 
