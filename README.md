@@ -16,7 +16,7 @@ There are currently two identical copies of documentation in different formats:
 
 - `.md` files in [Markdown](https://daringfireball.net/projects/markdown/) syntax for processing by [MkDocs](https://www.mkdocs.org/).
 
-You can edit whichever copy you like. The PMM Technical Writers will keep the two copies synchronised until a decision is made about which format to keep.
+You can edit whichever copy you like. The PMM Technical Writers will keep the two copies synchronized until a decision is made about which format to keep.
 
 - Sphinx/rst documentation is stored in the `source` directory.
 - MkDocs/md documentation is stored in the `docs` directory.
@@ -55,9 +55,12 @@ There are three ways to get changes made to the documentation. Two are 'do it yo
 
 1. Create a ticket in our [Jira](https://jira.percona.com/projects/PMM/issues) system.
 
-2. Describe the problem or improvement needed in as much detail as possible.
+2. Describe the problem or improvement needed in as much detail as possible, by providing, for example:
+   - links to the relevant pages or sections;
+   - explaining what is wrong and why;
+   - suggesting changes or links to sources of further information.
 
-3. You can communicate with developers and writers and you'll be notifed of progress as it progresses.
+3. You can communicate with developers and writers and you'll be notified of any progress.
 
 ## Preview the documentation
 
