@@ -18,7 +18,6 @@ New Features
 * :jirabug:`PMM-5738`: New exporter: mongodb-exporter (basic implementation)
 * :jirabug:`PMM-5126`: Query Analytics Dashboard: Search by query substring or dimension (Thanks to user debug for reporting this issue)
 * :jirabug:`PMM-6355`: Upgrade Prometheus to v2.19.3
-* :jirabug:`PMM-6130`: Basic pmm-managed API - K8s
 * :jirabug:`PMM-6328`: Query Analytics Dashboard: Mouse-over crosshair shows value on sparklines
 * :jirabug:`PMM-3831`: Node Summary Dashboard: Add pt-summary output
 
