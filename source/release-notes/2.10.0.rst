@@ -15,9 +15,13 @@ New Features
 ================================================================================
 
 * :jirabug:`PMM-2045`: New dashboard: MySQL Group Replication
-* :jirabug:`PMM-5738`: New exporter: mongodb-exporter (basic implementation)
+* :jirabug:`PMM-5738`: New exporter: mongodb-exporter
 * :jirabug:`PMM-5126`: Query Analytics Dashboard: Search by query substring or dimension (Thanks to user debug for reporting this issue)
+* :jirabug:`PMM-6378`: Node Summary Dashboard: Add pt-summary output
 * :jirabug:`PMM-6355`: Upgrade Prometheus to v2.19.3
+* :jirabug:`PMM-6375`: Sign out UI for Percona Account inside PMM Server
+* :jirabug:`PMM-6373`: Sign in UI for Percona Account inside PMM Server
+* :jirabug:`PMM-6372`: Sign up UI for Percona Account inside PMM Server
 * :jirabug:`PMM-6328`: Query Analytics Dashboard: Mouse-over crosshair shows value on sparklines
 * :jirabug:`PMM-3831`: Node Summary Dashboard: Add pt-summary output
 
@@ -26,6 +30,7 @@ New Features
 Improvements
 ================================================================================
 
+* :jirabug:`PMM-6585`: Always expose mongodb_up metric
 * :jirabug:`PMM-6536`: Improved filter/time search message when no results
 * :jirabug:`PMM-6467`: PMM Settings: User-friendly error message
 * :jirabug:`PMM-5947`: Bind services to internal address for containers
@@ -41,6 +46,7 @@ Bugs Fixed
 * :jirabug:`PMM-5701`: Home Dashboard: Incorrect metric for 'DB uptime' (Thanks to user hubi_oediv for reporting this issue)
 * :jirabug:`PMM-6427`: Query Analytics dashboard: Examples broken when switching from MongoDB to MySQL query
 * :jirabug:`PMM-5684`: Data from INFORMATION_SCHEMA cached for 24h
+* :jirabug:`PMM-6587`: pt-summary doesn't work after upgrade
 * :jirabug:`PMM-6502`: Missing Percona Platform item in Settings
 * :jirabug:`PMM-6500`: PMM Database Checks: Unwanted high-contrast styling
 * :jirabug:`PMM-6495`: User account 'Forgot your password' gives Unauthorized error for Grafana 7
