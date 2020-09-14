@@ -107,13 +107,13 @@ Paste the instance in the *Instance ID* field of the *Percona Monitoring and Man
 
 PMM Server provides user access control, and therefore you will need user credentials to access it:
 
-![image](../_images/installation-wizard.ami.account-credentials.png)
+![image](../_images/PMM_Login.jpg)
 
 The default user name is `admin`, and the default password is `admin` also. You will be proposed to change the default password at login if you didn’t it.
 
 The PMM Server is now ready and the home page opens.
 
-![image](../_images/pmm.home-page.png)
+![image](../_images/PMM_Home_Dashboard.jpg)
 
 You are creating a username and password that will be used for two purposes:
 

@@ -196,7 +196,7 @@ credentials to access it:
 
 .. _figure.run-server-ami.installation-wizard.ami.account-credentials:
 
-.. image:: /_images/installation-wizard.ami.account-credentials.png
+.. image:: /_images/PMM_Login.jpg
 
 The default user name is ``admin``, and the default password is ``admin`` also.
 You will be proposed to change the default password at login if you didn't it.
@@ -205,7 +205,7 @@ The PMM Server is now ready and the home page opens.
 
 .. _figure.run-server-ami.pmm-server.home-page:
 
-.. image:: /_images/pmm.home-page.png
+.. image:: /_images/PMM_Home_Dashboard.jpg
 
 You are creating a username and password that will be used for two purposes:
 
