@@ -85,13 +85,13 @@ PMM Server can't currently directly render dashboard images exported by Grafana 
 
    .. image:: /_images/PMM_Common_Panel_Menu_Open.jpg
 
-2. Select *Share* to reveal the *Share Panel*.
+3. Select *Share* to reveal the *Share Panel*.
 
    .. image:: /_images/PMM_Common_Panel_Menu_Share.jpg
 
-3. Click *Direct link rendered image*.
+4. Click *Direct link rendered image*.
 
-4. A new browser tab opens. Wait for the image to be rendered then use your brower's image save function to download the image.
+5. A new browser tab opens. Wait for the image to be rendered then use your browser's image save function to download the image.
 
 
 If the Grafana plugins are not installed, a message in the Share Panel will say so.
