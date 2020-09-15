@@ -180,7 +180,8 @@ nav:
             - PXC/Galera Nodes Compare: 'dashboards/dashboard-pxc-galera-nodes-compare.md'
     - Contact Us: 'contact.md'
     - Glossary: 'glossary-terminology.md'
-    - Release Notes:
+    - Release Notes=release-notes/:
+        - 'release-notes/2.10.0.md'
         - 'release-notes/2.9.1.md'
         - 'release-notes/2.9.0.md'
         - 'release-notes/2.8.0.md'
@@ -197,5 +198,5 @@ nav:
         - 'release-notes/2.0.1.md'
         - 'release-notes/2.0.0.md'
     - Frequently Asked Questions: 'faq.md'
-    - Reference:
+    - Reference=reference/:
         - pmm-admin: 'reference/pmm-admin.md'
