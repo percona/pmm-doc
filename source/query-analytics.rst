@@ -6,6 +6,10 @@
       href="https://www.percona.com/doc/percona-monitoring-and-management/2.x/query-analytics.html"
       style="display:none;"></a>
 
+.. |dashboard-shortcut| image:: /_images/PMM_Query_Analytics_Filter_Panel_Controls_Dashboard_Shortcut.jpg
+
+.. |information-icon| image:: /_images/PMM_Query_Analytics_Devices_Examples_Icon.jpg
+
 .. _pmm.qan:
 .. _pmm.qan.home-page.opening:
 .. _pmm.qan.query-time-distribution:
@@ -45,8 +49,6 @@ Filters Panel
 
 .. image:: /_images/PMM_Query_Analytics_Panels_Filters.jpg
    :scale: 40%
-
-.. |dashboard-shortcut| image:: /_images/PMM_Query_Analytics_Filter_Panel_Controls_Dashboard_Shortcut.jpg
 
 - The Filter panel occupies the left side of the dashboard. It lists filters, grouped by category. Selecting one reduces the Overview list to those items matching the filter.
 
@@ -105,7 +107,7 @@ Delete the search text and press Enter to see the full list again.
 
 **Tool-tips**
 
-- For the *Query* dimension, hovering over the information icon reveals the query ID and its example.
+- For the *Query* dimension, hovering over the information icon (|information-icon|) reveals the query ID and its example.
 - Hovering on a column header reveals an informative tool-tip for that column.
 - Hovering on the main metric sparkline highlights the data point and a tooltip shows the data value under the cursor.
 
