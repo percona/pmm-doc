@@ -120,7 +120,7 @@ nav:
     - Using PMM Metrics Monitor=index-using-pmm-metrics-monitor.html:
         - 'metrics-monitor-dashboards.md'
         - 'metrics-monitor-navigation.md'
-    - Query Analytics: 'qan-intro.md'
+    - Query Analytics: 'query-analytics.md'
     - Dashboards Reference=dashboards/:
         - Insight=dashboards/index.html#insight:
             - Advanced Data Exploration: 'dashboards/dashboard-advanced-data-exploration.md'
