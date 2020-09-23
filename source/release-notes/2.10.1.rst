@@ -11,13 +11,6 @@
 is a free and open-source platform for managing and monitoring MySQL, MongoDB, and PostgreSQL
 performance.
 
-New Features
-================================================================================
-
-* :jirabug:`PMM-6665`: New MongoDB exporter
-
-
-
 Bugs Fixed
 ================================================================================
 
