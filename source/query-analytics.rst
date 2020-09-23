@@ -56,7 +56,7 @@ Filters Panel
 
 - Applying a filter may make other filters inapplicable. These become grayed out and inactive.
 
-- Click the chart symbol (|dashboard-shortcut|) to navigate directly from a filter entry to its associated dashboard.
+- Click the chart symbol (|dashboard-shortcut|) to navigate directly to an item's associated dashboard.
 
 - Separately, the global *Time range* setting filters results by time, either your choice of *Absolute time range*, or one of the pre-defined *Relative time ranges*.
 
