@@ -5,32 +5,180 @@
 PostgreSQL
 ##########
 
-PMM provides both metrics and queries monitoring for PostgreSQL. Queries
-monitoring needs additional ``pg_stat_statements`` extension to be installed
-and enabled.
+There are two options for monitoring PostgreSQL database queries:
+
+- ``pg_stat_monitor``, a new extension created by Percona, based on ``pg_stat_statements`` and compatible with it.
+
+- ``pg_stat_statements``, the original extension created by PostgreSQL, part of the ``postgres-contrib`` package available on Linux.
+
+``pg_stat_monitor`` provides all the features of ``pg_stat_statements``, but extends it to provide bucket-based data aggregation, a feature missing from ``pg_stat_statements``. (``pg_stat_statements`` accumulates data without providing aggregated statistics or histogram information.)
+
+*******************
+``pg_stat_monitor``
+*******************
+
+``pg_stat_monitor`` collects statistics and aggregates data in a *bucket*, a fixed unit of memory.
+
+Configuration values let you specify, among other things, the number of buckets and their expiration time. When a bucket's expiration time is reached, accumulated statistics are reset and data is stored in the next available bucket. When all buckets have been used, the first bucket is reused and its contents overwritten.
+
+=============
+Compatibility
+=============
+
+``pg_stat_monitor`` is compatible with:
+
+- PostgreSQL versions 11 and 12
+- Percona Distribution for PostgreSQL versions 11 and 12
+
+=======
+Install
+=======
+
+This extension can be installed using standard Linux package manager tools, or by downloading and compiling the source code.
+
+
+**Linux package manager**
+
+
+.. code-block:: sh
+
+   sudo apt-get -y install lsb-release gnupg wget
+   wget https://repo.percona.com/apt/percona-release_latest.$(lsb_release -sc)_all.deb && dpkg -i percona-release_latest.$(lsb_release -sc)_all.deb
+
+   # For 11
+   percona-release enable ppg-11 release
+   ## For 12
+   percona-release enable ppg-12 release
+
+   sudo apt-get update
+
+   sudo apt-get install
+
+
+
+**Download and compile source code**
+
+
+
+
+.. seealso::
+
+   `Installing from source code <https://github.com/percona/pg_stat_monitor#installation>`__
+
+
+=========
+Configure
+=========
+
+1. Via psql
+
+.. code-block:: sql
+
+   postgres=# alter system set shared_preload_libraries=pg_stat_monitor;
+   ALTER SYSTEM
+
+.. code-block:: sh
+
+   sudo systemctl restart postgresql-11
+
+
+.. code-block:: sql
+
+   postgres=# create extension pg_stat_monitor;
+   CREATE EXTENSION
+
+
+Restart
+
+2. Before start up
+
+In your ``postgresql.conf`` file:
+
+.. code-block:: ini
+
+   # - Shared Library Preloading -
+
+   shared_preload_libraries = 'pg_stat_monitor' # (change requires restart)
+   #local_preload_libraries = ''
+   #session_preload_libraries = ''
+
+
+========================
+Configuration Parameters
+========================
+
+Here are the 11 configuration parameters, available values ranges, and default values.
+
+
+``pg_stat_monitor.pgsm_max`` (5000-2147483647 bytes) Default: 5000
+    Defines the limit of shared memory. Memory is used by buckets in a circular manner and is divided between buckets equally when PostgreSQL starts.
+
+``pg_stat_monitor.pgsm_query_max_len`` (1024-2147483647 bytes) Default: 1024
+    The maximum size of the query. Long queries are truncated to this length to avoid unnecessary usage of shared memory. This parameter must be set before PostgreSQL starts.
+
+``pg_stat_monitor.pgsm_enable`` (0-1) Default: 1 (true).
+    Enables or disables monitoring. A value of ``Disable`` means that ``pg_stat_monitor`` will not collect statistics for the entire cluster.
+
+``pg_stat_monitor.pgsm_track_utility`` (0-1) Default: 1 (true)
+    Controls whether utility commands (all except SELECT, INSERT, UPDATE and DELETE)
+    are tracked.
+
+``pg_stat_monitor.pgsm_normalized_query`` (0-1) Default: 1 (true)
+    By default, a query shows the actual parameter instead of a placeholder. Set to 1 to change to showing placeholders.
+
+``pg_stat_monitor.pgsm_max_buckets`` (1-10) Default: 10
+    Sets the maximum number of available data buckets.
+
+``pg_stat_monitor.pgsm_bucket_time`` (1-2147483647 seconds) Default: 60
+    Sets the lifetime of the bucket. The system switches between buckets on the basis of this value.
+
+``pg_stat_monitor.pgsm_object_cache`` (50-2147483647) Default: 50
+    The maximum number of objects in the information cache.
+
+``pg_stat_monitor.pgsm_respose_time_lower_bound`` (1-2147483647 milliseconds) Default: 1
+    Sets the lower bound of the execution time histogram.
+
+``pg_stat_monitor.pgsm_respose_time_step`` (1-2147483647 milliseconds) Default: 1
+    Sets the time value of the steps for the histogram.
+
+``pg_stat_monitor.pgsm_query_shared_buffer`` (500000-2147483647 bytes) Default: 500000
+   Sets the query shared_buffer size.
+
+``pg_stat_monitor.pgsm_track_planning`` (0-1) Default: 1 (true)
+   Whether to track planning statistics.
+
+
 
 .. _pmm.qan.postgres.conf-extension:
 
-**************************************************
-Adding PostgreSQL extension for queries monitoring
-**************************************************
+**********************
+``pg_stat_statements``
+**********************
 
-The needed extension is ``pg_stat_statements``. It is included in the official
-PostgreSQL contrib package, so you have to install this package first with your
-Linux distribution package manager. Particularly, on Debian-based systems it is
-done as follows:
+``pg_stat_statements`` is included in the official PostgreSQL contribution package that can be installed with your Linux distribution package manager.
+
+=======
+Install
+=======
+
+For Debian-based systems:
 
 .. code-block:: bash
 
    sudo apt-get install postgresql-contrib
 
-Now add/edit the following three lines in your ``postgres.conf`` file:
+=============
+Configuration
+=============
+
+Add or change these lines in your ``postgres.conf`` file:
 
 .. code-block:: text
 
    shared_preload_libraries = 'pg_stat_statements'
    track_activity_query_size = 2048
    pg_stat_statements.track = all
+
 
 Besides making the appropriate module to be loaded, these edits will increase
 the maximum size of the query strings PostgreSQL records and will allow it to
@@ -135,3 +283,13 @@ In case of monitoring a PostgreSQL database running on an Amazon RDS instance, t
    ``pg_hba.conf`` configuration file changing ``ident`` to ``md5`` for the
    correspondent user. Also, this user should be able to connect to the
    ``postgres`` database which we have installed the extension into.
+
+
+
+
+
+.. seealso::
+
+   - `pg_stat_monitor Github repository <https://github.com/percona/pg_stat_monitor>`__
+
+   - `PostgreSQL pg_stat_statements module <https://www.postgresql.org/docs/current/pgstatstatements.html>`__
