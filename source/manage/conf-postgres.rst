@@ -17,9 +17,17 @@ There are two options for monitoring PostgreSQL database queries:
 ``pg_stat_monitor``
 *******************
 
-``pg_stat_monitor`` collects statistics and aggregates data in a *bucket*, a fixed unit of memory.
+``pg_stat_monitor`` collects statistics and aggregates data in a data collection unit called a *bucket*.
 
-Configuration values let you specify, among other things, the number of buckets and their expiration time. When a bucket's expiration time is reached, accumulated statistics are reset and data is stored in the next available bucket. When all buckets have been used, the first bucket is reused and its contents overwritten.
+You can specify:
+- the number of buckets;
+- how much space is available for all buckets;
+- how long each bucket is used to collect data (known as the bucket expiry).
+
+When a bucket's expiration time is reached, accumulated statistics are reset and data is stored in the next available bucket. When all buckets have been used, the first bucket is reused and its contents overwritten.
+
+If a bucket fills before its expiration time is reached, the next bucket is used.
+
 
 =============
 Compatibility
@@ -92,22 +100,20 @@ Restart
 
 2. Before start up
 
-In your ``postgresql.conf`` file:
+Add this line to your ``postgresql.conf`` file:
 
 .. code-block:: ini
 
-   # - Shared Library Preloading -
-
-   shared_preload_libraries = 'pg_stat_monitor' # (change requires restart)
-   #local_preload_libraries = ''
-   #session_preload_libraries = ''
+   shared_preload_libraries = 'pg_stat_monitor'
 
 
 ========================
 Configuration Parameters
 ========================
 
-Here are the 11 configuration parameters, available values ranges, and default values.
+Here are the configuration parameters, available values ranges, and default values. All require a restart of PostgreSQL except for ``pg_stat_monitor.pgsm_track_utility`` and ``pg_stat_monitor.pgsm_normalized_query``.
+
+To make settings permanent, add them to your ``postgresql.conf`` file before starting your PostgreSQL instance.
 
 
 ``pg_stat_monitor.pgsm_max`` (5000-2147483647 bytes) Default: 5000
@@ -123,8 +129,8 @@ Here are the 11 configuration parameters, available values ranges, and default v
     Controls whether utility commands (all except SELECT, INSERT, UPDATE and DELETE)
     are tracked.
 
-``pg_stat_monitor.pgsm_normalized_query`` (0-1) Default: 1 (true)
-    By default, a query shows the actual parameter instead of a placeholder. Set to 1 to change to showing placeholders.
+``pg_stat_monitor.pgsm_normalized_query`` (0-1) Default: 0 (false)
+    By default, a query shows the actual parameter instead of a placeholder (as `$n` where `n` is an integer). Set to 1 to change to showing placeholders.
 
 ``pg_stat_monitor.pgsm_max_buckets`` (1-10) Default: 10
     Sets the maximum number of available data buckets.
@@ -155,7 +161,7 @@ Here are the 11 configuration parameters, available values ranges, and default v
 ``pg_stat_statements``
 **********************
 
-``pg_stat_statements`` is included in the official PostgreSQL contribution package that can be installed with your Linux distribution package manager.
+``pg_stat_statements`` is included in the official PostgreSQL ``postgres-contrib`` available from your Linux distribution package manager.
 
 =======
 Install
@@ -167,33 +173,25 @@ For Debian-based systems:
 
    sudo apt-get install postgresql-contrib
 
-=============
-Configuration
-=============
+=========
+Configure
+=========
 
-Add or change these lines in your ``postgres.conf`` file:
+1. Add or change these lines in your ``postgres.conf`` file then restart your PostgreSQL instance.
 
-.. code-block:: text
+   .. code-block:: ini
 
-   shared_preload_libraries = 'pg_stat_statements'
-   track_activity_query_size = 2048
-   pg_stat_statements.track = all
+      shared_preload_libraries = 'pg_stat_statements' # Load the extension
+      track_activity_query_size = 2048 # Increase tracked query string size
+      pg_stat_statements.track = all # Track all statements incl. nested
 
 
-Besides making the appropriate module to be loaded, these edits will increase
-the maximum size of the query strings PostgreSQL records and will allow it to
-track all statements including nested ones. When the editing is over, restart
-PostgreSQL.
+2. Install the extension (run in the ``postgres`` database).
 
-Finally, the following statement should be executed in the PostgreSQL shell to
-install the extension:
+   .. code-block:: sql
 
-.. code-block:: sql
+      CREATE EXTENSION pg_stat_statements SCHEMA public;
 
-   CREATE EXTENSION pg_stat_statements SCHEMA public;
-
-.. note:: ``CREATE EXTENSION`` statement should be run in the ``postgres``
-   database.
 
 .. _pmm.qan.postgres.conf-add:
 
