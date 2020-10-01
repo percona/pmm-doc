@@ -1,4 +1,6 @@
-
+.. _pmm.qan.postgres.conf.essential-permission.setting-up:
+.. _pmm.qan.postgres.conf-extension:
+.. _pmm.qan.postgres.conf-add:
 .. _pmm.qan.postgres.conf:
 
 ##########
@@ -13,21 +15,49 @@ There are two options for monitoring PostgreSQL database queries:
 
 ``pg_stat_monitor`` provides all the features of ``pg_stat_statements``, but extends it to provide bucket-based data aggregation, a feature missing from ``pg_stat_statements``. (``pg_stat_statements`` accumulates data without providing aggregated statistics or histogram information.)
 
+.. note::
+
+   - ``pg_stat_monitor`` is the recommended option.
+
+   - Although nothing prevents you from installing and using both, we don't recommend this as you will get duplicate metrics.
+
+*************
+Prerequisites
+*************
+
+We recommend that you create a PostgreSQL user for ``SUPERUSER`` level access. This lets you gather the maximum amount of data with the least complexity.
+
+This user must be able to connect to the ``postgres`` database where the extension was installed. The PostgreSQL user should have local password authentication enabled to access PMM. To do this, set ``ident`` to ``md5`` for the user in the ``pg_hba.conf`` configuration file.
+
+To create a superuser:
+
+.. code-block:: sql
+
+   CREATE USER pmm_user WITH SUPERUSER ENCRYPTED PASSWORD '******';
+
+Or, if your database runs on Amazon RDS:
+
+.. code-block:: sql
+
+   CREATE USER pmm_user WITH rds_superuser ENCRYPTED PASSWORD '******';
+
 *******************
 ``pg_stat_monitor``
 *******************
 
-``pg_stat_monitor`` collects statistics and aggregates data in a data collection unit called a *bucket*.
+``pg_stat_monitor`` collects statistics and aggregates data in a data collection unit called a *bucket* linked together to form a *bucket chain*.
 
 You can specify:
-- the number of buckets;
+
+- the number of buckets (the length of the chain);
 - how much space is available for all buckets;
-- how long each bucket is used to collect data (known as the bucket expiry).
+- a time limit for each bucket's data collection (the *bucket expiry*).
 
-When a bucket's expiration time is reached, accumulated statistics are reset and data is stored in the next available bucket. When all buckets have been used, the first bucket is reused and its contents overwritten.
+When a bucket's expiration time is reached, accumulated statistics are reset and data is stored in the next available bucket in the chain.
 
-If a bucket fills before its expiration time is reached, the next bucket is used.
+When all buckets in the chain have been used, the first bucket is reused and its contents overwritten.
 
+If a bucket fills before its expiration time is reached, data is discarded.
 
 =============
 Compatibility
@@ -35,77 +65,38 @@ Compatibility
 
 ``pg_stat_monitor`` is compatible with:
 
-- PostgreSQL versions 11 and 12
-- Percona Distribution for PostgreSQL versions 11 and 12
+- PostgreSQL versions 11, 12, and 13.
+- Percona Distribution for PostgreSQL versions 11, 12, and 13.
 
 =======
 Install
 =======
 
-This extension can be installed using standard Linux package manager tools, or by downloading and compiling the source code.
+This extension can be installed using standard Linux package manager tools, or by `downloading and compiling the source code <https://github.com/percona/pg_stat_monitor#installation>`__.
 
-
-**Linux package manager**
-
+**Linux package manager (Debian-based)**
 
 .. code-block:: sh
 
-   sudo apt-get -y install lsb-release gnupg wget
-   wget https://repo.percona.com/apt/percona-release_latest.$(lsb_release -sc)_all.deb && dpkg -i percona-release_latest.$(lsb_release -sc)_all.deb
+   sudo apt-get install ...
 
-   # For 11
-   percona-release enable ppg-11 release
-   ## For 12
-   percona-release enable ppg-12 release
+**Linux package manager (Red Hat-based)**
 
-   sudo apt-get update
+.. code-block:: sh
 
-   sudo apt-get install
-
-
-
-**Download and compile source code**
-
-
-
-
-.. seealso::
-
-   `Installing from source code <https://github.com/percona/pg_stat_monitor#installation>`__
-
+   sudo dnf install ...
 
 =========
 Configure
 =========
 
-1. Via psql
+1. Add this line to your ``postgresql.conf`` file:
 
-.. code-block:: sql
+   .. code-block:: ini
 
-   postgres=# alter system set shared_preload_libraries=pg_stat_monitor;
-   ALTER SYSTEM
+      shared_preload_libraries = 'pg_stat_monitor'
 
-.. code-block:: sh
-
-   sudo systemctl restart postgresql-11
-
-
-.. code-block:: sql
-
-   postgres=# create extension pg_stat_monitor;
-   CREATE EXTENSION
-
-
-Restart
-
-2. Before start up
-
-Add this line to your ``postgresql.conf`` file:
-
-.. code-block:: ini
-
-   shared_preload_libraries = 'pg_stat_monitor'
-
+2. Restart your PostgreSQL instance.
 
 ========================
 Configuration Parameters
@@ -126,8 +117,7 @@ To make settings permanent, add them to your ``postgresql.conf`` file before sta
     Enables or disables monitoring. A value of ``Disable`` means that ``pg_stat_monitor`` will not collect statistics for the entire cluster.
 
 ``pg_stat_monitor.pgsm_track_utility`` (0-1) Default: 1 (true)
-    Controls whether utility commands (all except SELECT, INSERT, UPDATE and DELETE)
-    are tracked.
+    Controls whether utility commands (all except SELECT, INSERT, UPDATE and DELETE) are tracked.
 
 ``pg_stat_monitor.pgsm_normalized_query`` (0-1) Default: 0 (false)
     By default, a query shows the actual parameter instead of a placeholder (as `$n` where `n` is an integer). Set to 1 to change to showing placeholders.
@@ -153,10 +143,6 @@ To make settings permanent, add them to your ``postgresql.conf`` file before sta
 ``pg_stat_monitor.pgsm_track_planning`` (0-1) Default: 1 (true)
    Whether to track planning statistics.
 
-
-
-.. _pmm.qan.postgres.conf-extension:
-
 **********************
 ``pg_stat_statements``
 **********************
@@ -167,46 +153,52 @@ To make settings permanent, add them to your ``postgresql.conf`` file before sta
 Install
 =======
 
-For Debian-based systems:
+**Linux package manager (Debian-based)**
 
-.. code-block:: bash
+.. code-block:: sh
 
    sudo apt-get install postgresql-contrib
+
+**Linux package manager (Red Hat-based)**
+
+.. code-block:: sh
+
+   sudo dnf ...
+   sudo dnf ...
 
 =========
 Configure
 =========
 
-1. Add or change these lines in your ``postgres.conf`` file then restart your PostgreSQL instance.
+1. Add these lines to your ``postgresql.conf`` file:
 
    .. code-block:: ini
 
-      shared_preload_libraries = 'pg_stat_statements' # Load the extension
+      shared_preload_libraries = 'pg_stat_statements'
       track_activity_query_size = 2048 # Increase tracked query string size
-      pg_stat_statements.track = all # Track all statements incl. nested
+      pg_stat_statements.track = all   # Track all statements including nested
 
+2. Restart your PostgreSQL instance.
 
-2. Install the extension (run in the ``postgres`` database).
+3. Install the extension (run in the ``postgres`` database).
 
    .. code-block:: sql
 
       CREATE EXTENSION pg_stat_statements SCHEMA public;
 
 
-.. _pmm.qan.postgres.conf-add:
 
 ************************************************
 Adding PostgreSQL queries and metrics monitoring
 ************************************************
 
-You can add PostgreSQL metrics and queries monitoring with the following command:
+You add PostgreSQL metrics and queries monitoring with the following command:
 
 .. code-block:: bash
 
-   pmm-admin add postgresql --username=pmm --password=pmm
+   pmm-admin add postgresql --username=<user name> --password=<password>
 
-where username and password parameters should contain actual PostgreSQL user
-credentials.
+Where ``<user name>`` and ``<password>`` are the PostgreSQL user credentials.
 
 Additionally, two positional arguments can be appended to the command line
 flags: a service name to be used by PMM, and a service address. If not
@@ -222,9 +214,9 @@ The command line and the output of this command may look as follows:
    Service ID  : /service_id/28f1d93a-5c16-467f-841b-8c014bf81ca6
    Service name: postgres
 
-As a result, you should be able to see data in PostgreSQL Overview dashboard,
-and also Query Analytics should contain PostgreSQL queries, if the needed
-extension was installed and configured correctly.
+If correct installed and set up,
+you should be able to see data in PostgreSQL Overview dashboard,
+and also Query Analytics should contain PostgreSQL queries.
 
 Beside positional arguments shown above you can specify service name and
 service address with the following flags: ``--service-name``, ``--host`` (the
@@ -236,13 +228,11 @@ priority. Here is the previous example modified to use these flags:
 
    pmm-admin add postgresql --username=pmm --password=pmm --service-name=postgres --host=127.0.0.1 --port=270175432
 
-
 It is also possible to add a PostgreSQL instance using a UNIX socket with just the ``--socket`` flag followed by the path to a socket:
 
 .. code-block:: bash
 
    pmm-admin add postgresql --socket=/var/run/postgresql
-
 
 Capturing read and write time statistics is possible only if
 ``track_io_timing`` setting is enabled. This can be done either in
@@ -253,38 +243,6 @@ system:
 
    ALTER SYSTEM SET track_io_timing=ON;
    SELECT pg_reload_conf();
-
-.. _pmm.qan.postgres.conf.essential-permission.setting-up:
-
-***********************************************************
-Setting up the required user permissions and authentication
-***********************************************************
-
-Percona recommends that a PostgreSQL user be configured for ``SUPERUSER``
-level access, in order to gather the maximum amount of data with a minimum
-amount of complexity. This can be done with the following command for the
-standalone PostgreSQL installation:
-
-.. code-block:: sql
-
-  CREATE USER pmm_user WITH SUPERUSER ENCRYPTED PASSWORD 'secret';
-
-
-In case of monitoring a PostgreSQL database running on an Amazon RDS instance, the command should look as follows:
-
-.. code-block:: sql
-
-   CREATE USER pmm_user WITH rds_superuser ENCRYPTED PASSWORD 'secret';
-
-.. note:: Specified PostgreSQL user should have enabled local password
-   authentication to enable access for PMM. This can be set in the
-   ``pg_hba.conf`` configuration file changing ``ident`` to ``md5`` for the
-   correspondent user. Also, this user should be able to connect to the
-   ``postgres`` database which we have installed the extension into.
-
-
-
-
 
 .. seealso::
 
