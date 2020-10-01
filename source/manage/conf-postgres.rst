@@ -25,7 +25,7 @@ There are two options for monitoring PostgreSQL database queries:
 Prerequisites
 *************
 
-We recommend that you create a PostgreSQL user for ``SUPERUSER`` level access. This lets you gather the maximum amount of data with the least complexity.
+We recommend that you create a PostgreSQL user for ``SUPERUSER`` level access. This lets you gather the most data with the least fuss.
 
 This user must be able to connect to the ``postgres`` database where the extension was installed. The PostgreSQL user should have local password authentication enabled to access PMM. To do this, set ``ident`` to ``md5`` for the user in the ``pg_hba.conf`` configuration file.
 
@@ -63,40 +63,155 @@ If a bucket fills before its expiration time is reached, data is discarded.
 Compatibility
 =============
 
-``pg_stat_monitor`` is compatible with:
+``pg_stat_monitor`` has been tested with:
 
-- PostgreSQL versions 11, 12, and 13.
-- Percona Distribution for PostgreSQL versions 11, 12, and 13.
+- PostgreSQL versions 11, 12.
+- Percona Distribution for PostgreSQL versions 11, 12.
+
+(It should also work with versions 13 of both, but hasn't been tested.)
 
 =======
 Install
 =======
 
-This extension can be installed using standard Linux package manager tools, or by `downloading and compiling the source code <https://github.com/percona/pg_stat_monitor#installation>`__.
+This extension can be installed in two ways:
 
-**Linux package manager (Debian-based)**
+- Using standard Linux package manager tools (For Percona Distribution for PostgreSQL:
+
+- For PostgreSQL or Percona Distribution for PostgreSQL: `download and compile the source code <https://github.com/percona/pg_stat_monitor#installation>`__.
+
+---------------------
+Linux package manager
+---------------------
+
+The ``pg-stat-monitor`` extension is included in *Percona Distribution for PostgreSQL*. This can be installed via the ``percona-release`` package.
+
+This section reproduces parts of the following:
+
+- `Configuring Percona Repositories with percona-release <https://www.percona.com/doc/percona-repo-config/percona-release.html>`__
+
+- `Installing Percona Distribution for PostgreSQL <https://www.percona.com/doc/postgresql/LATEST/installing.html>`__
+
+Debian
+------
 
 .. code-block:: sh
 
-   sudo apt-get install ...
+   sudo apt-get install -y wget gnupg2 lsb-release
+   wget https://repo.percona.com/apt/percona-release_latest.generic_all.deb
+   sudo dpkg -i percona-release_latest.generic_all.deb
 
-**Linux package manager (Red Hat-based)**
+   sudo percona-release setup ppg-12 # version 12 (others available)
+   sudo apt install percona-postgresql-12
+
+Red Hat
+-------
 
 .. code-block:: sh
 
-   sudo dnf install ...
+   sudo yum install -y https://repo.percona.com/yum/percona-release-latest.noarch.rpm
+   # If RHEL 8
+   sudo dnf module disable postgresql
+   # If RHEL 7
+   sudo yum install -y epel-release
+   sudo yum repolist
+   sudo percona-release setup ppg-12
+   sudo yum install percona-postgresql12-server
+
+--------------------------------
+Download and compile source code
+--------------------------------
+
+Debian
+------
+
+1. Install common packages
+
+   .. code-block:: sh
+
+      sudo apt-get install -y curl git wget gnupg2 lsb-release
+      sudo apt-get update -y
+
+2. Install PostgreSQL development packages
+
+   With Percona Distribution for PostgreSQL (version 12):
+
+   .. code-block:: sh
+
+      wget https://repo.percona.com/apt/percona-release_latest.generic_all.deb
+      sudo dpkg -i percona-release_latest.generic_all.deb
+      sudo percona-release setup ppg-12
+      sudo apt install -y percona-postgresql-server-dev-all
+
+   With PostgreSQL:
+
+   .. code-block:: sh
+
+      wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+      echo "deb http://apt.postgresql.org/pub/repos/apt/ `lsb_release -cs`-pgdg main" | sudo tee /etc/apt/sources.list.d/pgdg.list
+      sudo apt install -y postgresql-server-dev-all
+
+3. Download, compile, and install extension
+
+   .. code-block:: sh
+
+      git clone git://github.com/percona/pg_stat_monitor.git && cd pg_stat_monitor
+      sudo make USE_PGXS=1
+      sudo make USE_PGXS=1 install
+
+Red Hat
+-------
+
+1. Install common packages
+
+   .. code-block:: sh
+
+      sudo yum install -y centos-release-scl epel-release
+      sudo yum update -y
+      sudo yum install -y git gcc gcc-c++ llvm-toolset-7
+
+2. Install PostgreSQL development packages
+
+   With Percona Distribution for PostgreSQL (version 12):
+
+   .. code-block:: sh
+
+      sudo yum install -y https://repo.percona.com/yum/percona-release-latest.noarch.rpm
+      sudo percona-release setup ppg-12
+      sudo yum install -y percona-postgresql12-devel
+
+   With PostgreSQL version 12:
+
+   .. code-block:: sh
+
+      sudo yum -y install https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm
+      sudo yum install -y postgresql12-devel
+
+3. Download, compile, and install extension
+
+   .. code-block:: sh
+
+      git clone git://github.com/percona/pg_stat_monitor.git && cd pg_stat_monitor
+      sudo make PG_CONFIG=/usr/pgsql-12/bin/pg_config USE_PGXS=1
+      sudo make PG_CONFIG=/usr/pgsql-12/bin/pg_config USE_PGXS=1 install
 
 =========
 Configure
 =========
 
-1. Add this line to your ``postgresql.conf`` file:
+1. Set or change the value for ``shared_preload_library`` in your ``postgresql.conf`` file:
 
    .. code-block:: ini
 
       shared_preload_libraries = 'pg_stat_monitor'
 
-2. Restart your PostgreSQL instance.
+2. Start or restart your PostgreSQL instance.
+
+3. In a ``psql`` session:
+
+   .. code-block:: sql
+
+      create extension pg_stat_monitor;
 
 ========================
 Configuration Parameters
@@ -153,13 +268,17 @@ To make settings permanent, add them to your ``postgresql.conf`` file before sta
 Install
 =======
 
-**Linux package manager (Debian-based)**
+------
+Debian
+------
 
 .. code-block:: sh
 
    sudo apt-get install postgresql-contrib
 
-**Linux package manager (Red Hat-based)**
+-------
+Red Hat
+-------
 
 .. code-block:: sh
 
@@ -186,15 +305,13 @@ Configure
 
       CREATE EXTENSION pg_stat_statements SCHEMA public;
 
-
-
 ************************************************
 Adding PostgreSQL queries and metrics monitoring
 ************************************************
 
 You add PostgreSQL metrics and queries monitoring with the following command:
 
-.. code-block:: bash
+.. code-block:: sh
 
    pmm-admin add postgresql --username=<user name> --password=<password>
 
@@ -245,6 +362,7 @@ system:
    SELECT pg_reload_conf();
 
 .. seealso::
+
 
    - `pg_stat_monitor Github repository <https://github.com/percona/pg_stat_monitor>`__
 
