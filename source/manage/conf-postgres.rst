@@ -102,7 +102,7 @@ Debian
    sudo dpkg -i percona-release_latest.generic_all.deb
 
    sudo percona-release setup ppg-12 # version 12 (others available)
-   sudo apt install percona-postgresql-12
+   sudo apt install -y percona-postgresql-12
 
 Red Hat
 -------
@@ -116,7 +116,7 @@ Red Hat
    sudo yum install -y epel-release
    sudo yum repolist
    sudo percona-release setup ppg-12
-   sudo yum install percona-postgresql12-server
+   sudo yum install -y percona-postgresql12-server
 
 --------------------------------
 Download and compile source code
@@ -184,7 +184,7 @@ Red Hat
 
    .. code-block:: sh
 
-      sudo yum -y install https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm
+      sudo yum install -y https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm
       sudo yum install -y postgresql12-devel
 
 3. Download, compile, and install extension
@@ -211,7 +211,7 @@ Configure
 
    .. code-block:: sql
 
-      create extension pg_stat_monitor;
+      CREATE EXTENSION pg_stat_monitor;
 
 ========================
 Configuration Parameters
@@ -262,7 +262,7 @@ To make settings permanent, add them to your ``postgresql.conf`` file before sta
 ``pg_stat_statements``
 **********************
 
-``pg_stat_statements`` is included in the official PostgreSQL ``postgres-contrib`` available from your Linux distribution package manager.
+``pg_stat_statements`` is included in the official PostgreSQL ``postgresql-contrib`` available from your Linux distribution package manager.
 
 =======
 Install
@@ -282,8 +282,7 @@ Red Hat
 
 .. code-block:: sh
 
-   sudo dnf ...
-   sudo dnf ...
+   sudo yum install -y postgresql-contrib
 
 =========
 Configure
