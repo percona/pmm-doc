@@ -7,7 +7,7 @@
 PostgreSQL
 ##########
 
-There are two options for monitoring PostgreSQL database queries:
+To monitor PostgreSQL queries, you must install a database extension. There are two choices:
 
 - ``pg_stat_monitor``, a new extension created by Percona, based on ``pg_stat_statements`` and compatible with it.
 
@@ -55,7 +55,7 @@ You can specify:
 
 When a bucket's expiration time is reached, accumulated statistics are reset and data is stored in the next available bucket in the chain.
 
-When all buckets in the chain have been used, the first bucket is reused and its contents overwritten.
+When all buckets in the chain have been used, the first bucket is reused and its contents are overwritten.
 
 If a bucket fills before its expiration time is reached, data is discarded.
 
@@ -80,9 +80,9 @@ This extension can be installed in two ways:
 
 - For PostgreSQL or Percona Distribution for PostgreSQL: `download and compile the source code <https://github.com/percona/pg_stat_monitor#installation>`__.
 
----------------------
-Linux package manager
----------------------
+-----------------------------------
+Install using Linux package manager
+-----------------------------------
 
 The ``pg-stat-monitor`` extension is included in *Percona Distribution for PostgreSQL*. This can be installed via the ``percona-release`` package.
 
@@ -110,17 +110,20 @@ Red Hat
 .. code-block:: sh
 
    sudo yum install -y https://repo.percona.com/yum/percona-release-latest.noarch.rpm
+
    # If RHEL 8
    sudo dnf module disable postgresql
+
    # If RHEL 7
    sudo yum install -y epel-release
    sudo yum repolist
+
    sudo percona-release setup ppg-12
    sudo yum install -y percona-postgresql12-server
 
---------------------------------
-Download and compile source code
---------------------------------
+------------------------
+Install from source code
+------------------------
 
 Debian
 ------
