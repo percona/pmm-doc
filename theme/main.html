@@ -109,7 +109,7 @@
 {#### PMM1/PMM2 version switcher #}
 {% macro version_menu() %}
 <h3>
-  <a href="{{ url_root }}">Contents</a>
+  <a href="{{ url_root|url }}">Table of Contents</a>
 </h3>
 <style>
   .select-wrapper {
@@ -135,7 +135,6 @@
   window.pmm2DocRedirect = () => {
     const docLink = document.querySelector("#another-doc-version-link");
     let newLink = "{{ url_root|url }}/index.html";
-//    let newLink = "{{ base_url|url }}/{{ config.extra.major }}/index.html";
     if (docLink) {
       if (docLink.href) {
         newLink = docLink.href;
