@@ -14,13 +14,9 @@ performance.
 New Features
 ================================================================================
 
-* :jirabug:`PMM-6588`: Return information if DBaaS functionality is enabled. API
-* :jirabug:`PMM-6573`: Ability to switch ON the DBaaS functionality
-* :jirabug:`PMM-6567`: Management API for pg_stat_monitor
-* :jirabug:`PMM-6557`: Update Prometheus to v2.21.0
-* :jirabug:`PMM-6515`: Short-cut navigation from Query Analytics filters to related dashboards
-* :jirabug:`PMM-6463`: UI changes for pg_stat_monitor agent type
-* :jirabug:`PMM-6461`: pmm-admin changes for pg_stat_monitor
+* :jirabug:`PMM-6567`: Management API for new pg_stat_monitor PostgreSQL extension
+* :jirabug:`PMM-6515`: Link added directly to Node/Service page from Query Analytics filters, opens in new window
+* :jirabug:`PMM-6463`: User interface and CLI changes for new pg_stat_monitor PostgreSQL extension
 
 
 
@@ -28,8 +24,9 @@ Improvements
 ================================================================================
 
 * :jirabug:`PMM-6727`: Update Grafana plugin grafana-polystat-panel to latest v1.2.2
-* :jirabug:`PMM-6625`: Sort chart data by descending average (avg)
+* :jirabug:`PMM-6625`: Default sort to "Average - descending" on all dashboards
 * :jirabug:`PMM-6609`: MySQL Instances Compare & Summary dashboards: Changed metric in 'MySQL Internal Memory Overview'
+* :jirabug:`PMM-6557`: Update Prometheus to v2.21.0
 * :jirabug:`PMM-6554`: MySQL InnoDB Details dashboard: Add "sync flushing" to "Innodb Flushing by Type"
 
 
@@ -37,12 +34,9 @@ Improvements
 Bugs Fixed
 ================================================================================
 
-* :jirabug:`PMM-6702`: Percona Platform User is Shown Already Logged in via PMM-Settings
-* :jirabug:`PMM-6642`: Align pg_stat_monitor buckets
-* :jirabug:`PMM-6639`: Incomplete container detection in update.yml
-* :jirabug:`PMM-6535`: opening Explore in new window
+* :jirabug:`PMM-6639`: Integrated update does not detect all container types
 * :jirabug:`PMM-6531`: Counter-intuitive coloring of element "Update Stats when Metadata Queried"
-* :jirabug:`PMM-6645`: Log errors triggering alerts (vertamedia-clickhouse-datasource plugin)
+* :jirabug:`PMM-6645`: Clean up unnecessary errors in logs (vertamedia-clickhouse-datasource plugin)
 * :jirabug:`PMM-6547`: Hexagonal graph tooltip text overflows bounding box
 
 
