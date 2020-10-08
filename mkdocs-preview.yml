@@ -57,7 +57,6 @@ extra:
     version: '2.11'
     major: '2.x' # Publish url suffix (percona.com/doc/percona-monitoring-and-management/2.x)
 
-
 nav:
     - Percona Monitoring and Management Documentation: 'index.md'
     - What is Percona Monitoring and Management?: introduction.md
