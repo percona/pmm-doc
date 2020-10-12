@@ -16,17 +16,16 @@ New Features
 
 * :jirabug:`PMM-6567`: New PostgreSQL extension 'pg_stat_monitor'
 * :jirabug:`PMM-6515`: Link added directly to Node/Service page from Query Analytics filters, opens in new window
-* :jirabug:`PMM-6463`: User interface and CLI changes for new pg_stat_monitor PostgreSQL extension
 
 
 
 Improvements
 ================================================================================
 
-* :jirabug:`PMM-6727`: Update Grafana plugins to latest versions
+* :jirabug:`PMM-6727`: Grafana plugin updates: grafana-polystat-panel=1.2.2, grafana-piechart-panel=1.6.1
 * :jirabug:`PMM-6625`: Default sort to "Average - descending" on all dashboards
 * :jirabug:`PMM-6609`: MySQL Instances Compare & Summary dashboards: Changed metric in 'MySQL Internal Memory Overview'
-* :jirabug:`PMM-6598`: Improve wording on Image sharing
+* :jirabug:`PMM-6598`: Improved wording on Dashboard image 'Share Panel'
 * :jirabug:`PMM-6557`: Update Prometheus to v2.21.0
 * :jirabug:`PMM-6554`: MySQL InnoDB Details dashboard: Add "sync flushing" to "Innodb Flushing by Type"
 
