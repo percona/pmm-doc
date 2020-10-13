@@ -36,10 +36,12 @@ Bugs Fixed
 
 * :jirabug:`PMM-4547`: MongoDB dashboard replication lag count incorrect (Thanks to user vvol for reporting this issue)
 * :jirabug:`PMM-6639`: Integrated update does not detect all container types
+* :jirabug:`PMM-6765`: Tables information tab reports 'table not found' with new PostgreSQL extension 'pg_stat_monitor'
 * :jirabug:`PMM-6764`: Query Analytics: cannot filter items that are hidden - must use "Show all"
 * :jirabug:`PMM-6742`: Upgrade via PMM UI stalls (on yum update pmm-update)
 * :jirabug:`PMM-6689`: No PostgreSQL queries or metrics in Query Analytics with PostgreSQL 13 (postgresql_pgstatements_agent in Waiting status)
 * :jirabug:`PMM-6738`: PostgreSQL examples shown despite '--disable-queryexamples' option
+* :jirabug:`PMM-6535`: Unable to open 'Explore' in new window from Grafana menu
 * :jirabug:`PMM-6532`: Click-through URLs lose time ranges when redirecting to other dashboards
 * :jirabug:`PMM-6531`: Counter-intuitive coloring of element "Update Stats when Metadata Queried"
 * :jirabug:`PMM-6645`: Clean up unnecessary errors in logs (vertamedia-clickhouse-datasource plugin)
