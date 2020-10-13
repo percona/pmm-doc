@@ -14,7 +14,7 @@ performance.
 New Features
 ================================================================================
 
-* :jirabug:`PMM-6567`: New PostgreSQL extension 'pg_stat_monitor'
+* :jirabug:`PMM-6567`: Technical preview of new PostgreSQL extension 'pg_stat_monitor'
 * :jirabug:`PMM-6515`: Link added directly to Node/Service page from Query Analytics filters, opens in new window
 
 
@@ -25,7 +25,7 @@ Improvements
 * :jirabug:`PMM-6727`: Grafana plugin updates: grafana-polystat-panel=1.2.2, grafana-piechart-panel=1.6.1
 * :jirabug:`PMM-6625`: Default sort to "Average - descending" on all dashboards
 * :jirabug:`PMM-6609`: MySQL Instances Compare & Summary dashboards: Changed metric in 'MySQL Internal Memory Overview'
-* :jirabug:`PMM-6598`: Improved wording on Dashboard image 'Share Panel'
+* :jirabug:`PMM-6598`: Dashboard image sharing (Share Panel): Improved wording with link to configuration instructions
 * :jirabug:`PMM-6557`: Update Prometheus to v2.21.0
 * :jirabug:`PMM-6554`: MySQL InnoDB Details dashboard: Add "sync flushing" to "Innodb Flushing by Type"
 
@@ -36,6 +36,7 @@ Bugs Fixed
 
 * :jirabug:`PMM-4547`: MongoDB dashboard replication lag count incorrect (Thanks to user vvol for reporting this issue)
 * :jirabug:`PMM-6639`: Integrated update does not detect all container types
+* :jirabug:`PMM-6764`: Query Analytics: cannot filter items that are hidden - must use "Show all"
 * :jirabug:`PMM-6742`: Upgrade via PMM UI stalls (on yum update pmm-update)
 * :jirabug:`PMM-6689`: No PostgreSQL queries or metrics in Query Analytics with PostgreSQL 13 (postgresql_pgstatements_agent in Waiting status)
 * :jirabug:`PMM-6738`: PostgreSQL examples shown despite '--disable-queryexamples' option
