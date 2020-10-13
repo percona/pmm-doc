@@ -188,6 +188,10 @@ sudo yum install -y percona-postgresql12-server
     shared_preload_libraries = 'pg_stat_monitor'
     ```
 
+2. Set the value
+
+pg_stat_monitor.pgsm_normalized_query
+
 2. Start or restart your PostgreSQL instance.
 
 3. In a `psql` session:
@@ -216,7 +220,7 @@ To make settings permanent, add them to your `postgresql.conf` file before start
 :    Controls whether utility commands (all except SELECT, INSERT, UPDATE and DELETE) are tracked.
 
 `pg_stat_monitor.pgsm_normalized_query` (0-1) Default: 0 (false)
-:    By default, a query shows the actual parameter instead of a placeholder (as `$n` where `n` is an integer). Set to 1 to change to showing placeholders.
+:    By default, a query shows the actual parameter instead of a placeholder. Set to 1 to change to showing value placeholders (as `$n` where `n` is an integer).
 
 `pg_stat_monitor.pgsm_max_buckets` (1-10) Default: 10
 :    Sets the maximum number of available data buckets.
