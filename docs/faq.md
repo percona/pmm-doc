@@ -210,7 +210,7 @@ If PMM server wasn't updated properly, or if you have concerns about the release
 
 Refresh The Home page in 2-5 min and you should see that PMM was updated.
 
-## How do I troubleshoot information returned by Prometheus Exporter? It is asking me for login credentials when I try to connect 
+## What are my login credentials when I try to connect to a Prometheus Exporter?
 
-PMM protects an exporter's output from being accessed by unauthorized users by adding an authorization layer. To access an exporter you can use "pmm" as a user name and Agent ID as a password. You can find Agent ID corresponding to a given exporter by running `pmm-admiin list`.
+PMM protects an exporter's output from unauthorized access by adding an authorization layer. To access an exporter you can use "`pmm`" as a user name and the Agent ID as a password. You can find the Agent ID corresponding to a given exporter by running `pmm-admin list`.
 
