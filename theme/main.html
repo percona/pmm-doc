@@ -1,10 +1,9 @@
 {#
   MkDocs template for PMM2
-  Derived from Sphinx percona theme files
-  layout.html, localtoc.html, relations.html
-  Original theme: https://www.percona.com/docs/theme-1-4/percona-xtradb-cluster/5.6/
+  Derived from Sphinx original theme:
+  https://www.percona.com/docs/theme-1-4/percona-xtradb-cluster/5.6/
 #}
-{%- set url_root =  base_url %}
+{%- set url_root = site_url|url %}
 {%- set docstitle = config.site_name %} {# Not used in original - Each page uses page title only #}
 {%- if docstitle %}
 {%- set titlesuffix = " &mdash; "|safe + docstitle|e %}
