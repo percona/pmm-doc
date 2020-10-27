@@ -134,7 +134,7 @@
 <script>
   window.pmm2DocRedirect = () => {
     const docLink = document.querySelector("#another-doc-version-link");
-    let newLink = "{{ url_root|url }}/index.html";
+    let newLink = "{{ url_root|url }}/";
     if (docLink) {
       if (docLink.href) {
         newLink = docLink.href;
@@ -144,7 +144,7 @@
   };
   window.pmmDocRedirect = () => {
     const docLink = document.querySelector("#another-doc-version-link");
-    let newLink = "{{ url_root|url }}/../index.html";
+    let newLink = "{{ url_root|url }}/../";
     if (docLink) {
       if (docLink.dataset.location) {
         newLink = docLink.dataset.location;
