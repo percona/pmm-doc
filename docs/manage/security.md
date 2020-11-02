@@ -4,8 +4,6 @@ You can improve the security of your PMM installation with:
 
 - [SSL encryption](#ssl-encryption) to secure traffic between client and server;
 
-- [Password protection](#password-protection) to authenticate client/server connections;
-
 - [Grafana HTTPS secure cookies](#grafana-https-secure-cookies)
 
 To see which security features are enabled:
@@ -14,11 +12,8 @@ To see which security features are enabled:
 pmm-admin status
 ```
 
-You can gain an extra level of security by keeping PMM Server isolated from the internet, if possible.
-
-
-
-
+!!! tip
+    You can gain an extra level of security by keeping PMM Server isolated from the internet, if possible.
 
 ## SSL encryption
 
@@ -42,24 +37,12 @@ docker run -d -p 443:443 --volumes-from pmm-data \
   --restart always percona/pmm-server:2
 ```
 
+!!! note
+    - The certificates must be owned by root. You can do this with: `sudo chown 0:0 /etc/pmm-certs/*`
 
-> **Notes**
->
-> - The certificates must be owned by root. To do this:
->
->     ```
->     sudo chown 0:0 /etc/pmm-certs/*
->     ```
->
-> - The mounted certificate directory (`/etc/pmm-certs` in this example) must contain:
->     - `certificate.crt`
->     - `certificate.key`
->     - `ca-certs.pem`
->     - `dhparam.pem`
->
-> - For SSL encryption, the container must publish port 443 instead of 80.
->
+    - The mounted certificate directory (`/etc/pmm-certs` in this example) must contain the files `certificate.crt`, `certificate.key`, `ca-certs.pem` and `dhparam.pem`.
 
+    - For SSL encryption, the container must publish on port 443 instead of 80.
 
 ### Copying certificates
 
@@ -73,39 +56,11 @@ docker cp dhparam.pem pmm-server:/srv/nginx/dhparam.pem
 ```
 
 
-
-
-
-
-
 ### Enabling SSL when connecting PMM Client to PMM Server
 
 ```
 pmm-admin config --server-url=https://<user>:<password>@<server IP> --server-insecure-tls
 ```
-
-
-## Password protection
-
-Client agent connect to PMM Server: User, password
-
-PMM_AGENT_SERVER_USERNAME
-server-username
-Username to connect to PMM Server
-
-
-PMM_AGENT_SERVER_PASSWORD
-server-password
-Password to connect to PMM Server
-
-PMM_AGENT_SERVER_INSECURE_TLS
-server-insecure-tls
-Skip PMM Server TLS certificate validation
-
-
-
-
-
 
 ## Grafana HTTPS secure cookies
 
