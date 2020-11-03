@@ -271,4 +271,4 @@ man_pages = [
 ]
 
 def setup(app):
-    app.add_javascript('js/toggle-menu.js')
+    app.add_js_file('js/toggle-menu.js')
