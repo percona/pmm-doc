@@ -12,7 +12,7 @@ To access it, select *PMM > PMM DBaaS*, or click the database icon (*DBaas*) in 
 
 2. Enter values for the *Kubernetes Cluster Name* and *Kubeconfig file* in the corresponding fields.
 
-   ![](../_images/PMM_DBaaS_Kubernetes_Cluster_Details.jpg)
+    ![](../_images/PMM_DBaaS_Kubernetes_Cluster_Details.jpg)
 
 3. Click *Register*.
 
@@ -30,7 +30,7 @@ To access it, select *PMM > PMM DBaaS*, or click the database icon (*DBaas*) in 
 
 1. Select the *DB Cluster* tab. (You must first create at least one Kubernetes cluster.)
 
-   ![](../_images/PMM_DBaaS_DB_Cluster_Panel.jpg)
+    ![](../_images/PMM_DBaaS_DB_Cluster_Panel.jpg)
 
 2. Click *Create DB Cluster*.
 
@@ -59,3 +59,36 @@ To access it, select *PMM > PMM DBaaS*, or click the database icon (*DBaas*) in 
 1. Identify the database cluster to be deleted and click *Delete*.
 
 2. Confirm the action by clicking *Proceed*, or abandon by clicking *Cancel*.
+
+
+## Add a Kubernetes Cluster on AWS EKS
+
+1. Create your cluster via `eksctl` or the Amazon AWS interface.
+
+2. To your kubeconfig file, add values for:
+
+    - AWS access key ID and secret access key as environment variables in the `users.user.env` context:
+
+        ```yml
+        env:
+          - name: AWS_ACCESS_KEY_ID
+            value: <User AWS Access Key>
+          - name: AWS_SECRET_ACCESS_KEY
+            value: <User AWS Secret Access Key>
+        ```
+
+     - Authenticator command must be `aws-iam-authenticator`. For example, in the `users.user.exec` context:
+
+        ```yml
+        command: aws-iam-authenticator
+        ```
+
+3. Follow the instructions for [Add a Kubernetes cluster](#add-a-kubernetes-cluster).
+
+!!! seealso "See also"
+
+    - [Amazon AWS EKS: Create a cluster](https://docs.aws.amazon.com/eks/latest/userguide/create-cluster.html)
+
+    - [Amazon AWS EKS: Create a kubconfig file](https://docs.aws.amazon.com/eks/latest/userguide/create-kubeconfig.html)
+
+    - [AWS IAM Authenticator](https://github.com/kubernetes-sigs/aws-iam-authenticator)
