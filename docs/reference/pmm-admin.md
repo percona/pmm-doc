@@ -12,6 +12,8 @@
 
 `pmm-admin add DATABASE [FLAGS] [NAME] [ADDRESS]`
 
+`pmm-admin add external [FLAGS] [NAME] [ADDRESS]`
+
 `pmm-admin remove [FLAGS] service-type [service-name]`
 
 `pmm-admin register [FLAGS] [node-address] [node-type] [node-name]`
@@ -60,6 +62,9 @@ PMM communicates with the PMM Server via a PMM agent process.
 
 `--server-insecure-tls`
 :    Skip PMM Server TLS certificate validation.
+
+`--group=<group-name>`
+: Group name for external services. Default: `external`
 
 ## COMMANDS
 
