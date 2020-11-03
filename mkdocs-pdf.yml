@@ -10,6 +10,7 @@ theme:
 
 extra_css:
     - css/report-print.css
+    - css/cover.css
 
 markdown_extensions:
     - toc:
@@ -34,6 +35,10 @@ plugins:
     - macros
     - with-pdf:
         output_path: '_pdf/PerconaMonitoringAndManagement-2.11.1.pdf'
+        cover_title: 'Percona Monitoring and Management'
+        cover_subtitle: 'Version 2.11.1'
+        author: 'Percona Technical Documentation Team'
+        cover_logo: docs/_images/pmm-doc-logo.svg
 #        debug_html: true
 
 extra:
