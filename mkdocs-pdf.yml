@@ -44,7 +44,7 @@ plugins:
     - macros
     - with-pdf:
         output_path: '_pdf/PerconaMonitoringAndManagement-2.11.1.pdf'
-        cover_title: 'Percona Monitoring and Management'
+        cover_title: 'Documentation'
         cover_subtitle: *release
         author: 'Percona Technical Documentation Team'
         cover_logo: docs/_images/PMM_Logo.svg
