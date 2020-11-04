@@ -52,7 +52,6 @@ To access it, select *PMM > PMM DBaaS*, or click the database icon (*DBaas*) in 
 
 !!! note
     - *Cluster Name* must comply with domain naming rules.
-    - MySQL is the only currently supported database type.
 
 ## Delete a DB Cluster
 
