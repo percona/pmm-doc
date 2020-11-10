@@ -45,6 +45,8 @@ To access it, select *PMM > PMM DBaaS*, or click the database icon (*DBaas*) in 
 
     3. Select a database type from the *Database Type* menu.
 
+        ![](../_images/PMM_DBaaS_DB_Cluster_Basic_Options_Filled.jpg)
+
 4. Expand section 2, *Advanced Options*.
 
     1. Select *Topology*, either *Cluster* or *Single Node*.
@@ -53,16 +55,20 @@ To access it, select *PMM > PMM DBaaS*, or click the database icon (*DBaas*) in 
 
     3. Select a preset for *Resources per Node*. *Small*, *Medium* and *Large* are fixed preset values for *Memory* and *CPU*. Values for the *Custom* preset can be edited.
 
-5. When both section icons are green, the *Create Cluster* button becomes active. Click it to create your cluster.
+         ![](../_images/PMM_DBaaS_DB_Cluster_Advanced_Options.jpg)
 
-6. If the button is inactive, check the values for fields in sections whose icon is red.
+5. When both *Basic Options* and *Advanced Options* section icons are green, the *Create Cluster* button becomes active. (If it is inactive, check the values for fields in sections whose icon is red.)
 
-7. The *Cluster Status* column will show the progress and status of the cluster:
+    Click *Create Cluster* to create your cluster.
 
-    - Pending
-    - Active
-    - Failed
-    - Deleting
+    ![](../_images/PMM_DBaaS_DB_Cluster_Created.png)
+
+6. The *Cluster Status* column will show the state of the cluster:
+
+    - *PENDING*: The cluster is being created
+    - *ACTIVE*: The cluster is active
+    - *FAILED*: The cluster could not be created
+    - *DELETING*: The cluster is being deleted
 
 ## Delete a DB Cluster
 
@@ -70,6 +76,7 @@ To access it, select *PMM > PMM DBaaS*, or click the database icon (*DBaas*) in 
 
 2. Confirm the action by clicking *Proceed*, or abandon by clicking *Cancel*.
 
+    ![](../_images/PMM_DBaaS_DB_Cluster_Delete.png)
 
 ## Add a Kubernetes Cluster on AWS EKS
 
