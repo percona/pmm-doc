@@ -119,7 +119,7 @@ If you have Amazon RDS with a MySQL version prior to 5.5, `REPLICATION CLIENT` p
 
 !!! note
 
-    General system metrics are monitored by using the `rds_exporter` Prometheus exporter which replaces `node_exporter`. `rds_exporter` gives acces to Amazon Cloudwatch metrics.
+    General system metrics are monitored by using the `rds_exporter` exporter which replaces `node_exporter`. `rds_exporter` gives access to Amazon Cloudwatch metrics.
 
     `node_exporter`, used in versions of PMM prior to 1.8.0, was not able to monitor general system metrics remotely.
 
