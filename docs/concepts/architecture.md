@@ -53,7 +53,7 @@ To make data transfer from PMM Client to PMM Server secure, all exporters are ab
 
 ## PMM Server
 
-![image](../_images/PMM_Architecture_Server.jpg)
+![image](../_images/PMM_Architecture_Client_Server.jpg)
 
 PMM Server runs on the machine that will be your central monitoring host. It is distributed as an appliance via the following:
 
