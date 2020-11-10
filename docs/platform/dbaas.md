@@ -1,6 +1,6 @@
 # PMM DBaaS
 
-This dashboard is where you view, register (add), and unregister (remove) Kubernetes and database clusters.
+This dashboard is where you add and remove Kubernetes and database clusters.
 
 To access it, select *PMM > PMM DBaaS*, or click the database icon (*DBaas*) in the left vertical menu bar.
 
@@ -28,7 +28,10 @@ To access it, select *PMM > PMM DBaaS*, or click the database icon (*DBaas*) in 
 
 ## Add a DB Cluster
 
-1. Select the *DB Cluster* tab. (You must first create at least one Kubernetes cluster.)
+!!! note
+    You must create at least one Kubernetes cluster to create a DB cluster.
+
+1. Select the *DB Cluster* tab.
 
     ![](../_images/PMM_DBaaS_DB_Cluster_Panel.jpg)
 
@@ -70,11 +73,21 @@ To access it, select *PMM > PMM DBaaS*, or click the database icon (*DBaas*) in 
     - *FAILED*: The cluster could not be created
     - *DELETING*: The cluster is being deleted
 
+## Edit a DB Cluster
+
+1. Select the *DB Cluster* tab.
+
+2. Identify the database cluster to be changed.
+
+3. Click *Modify*.
+
 ## Delete a DB Cluster
 
-1. Identify the database cluster to be deleted and click *Delete*.
+1. Identify the database cluster to be deleted.
 
-2. Confirm the action by clicking *Proceed*, or abandon by clicking *Cancel*.
+2. Click *Delete*.
+
+3. Confirm the action by clicking *Proceed*, or abandon by clicking *Cancel*.
 
     ![](../_images/PMM_DBaaS_DB_Cluster_Delete.png)
 
