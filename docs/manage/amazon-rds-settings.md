@@ -4,7 +4,7 @@ It is possible to use PMM for monitoring Amazon RDS (just like any remote MySQL 
 
 First of all, ensure that there is the minimal latency between PMM Server and the Amazon RDS instance.
 
-Network connectivity can become an issue for Prometheus to scrape metrics with 1 second resolution.  We strongly suggest that you run PMM Server on AWS (Amazon Web Services) in the same availability zone as Amazon RDS instances.
+Network connectivity can become an issue for VictoriaMetrics to scrape metrics with 1 second resolution.  We strongly suggest that you run PMM Server on AWS (Amazon Web Services) in the same availability zone as Amazon RDS instances.
 
 It is crucial that *enhanced monitoring* be enabled for the Amazon RDS DB instances you intend to monitor.
 
