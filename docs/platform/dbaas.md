@@ -61,14 +61,21 @@ To access it, select *PMM > PMM DBaaS*, or click the database icon (*DBaas*) in 
 
     Click *Create Cluster* to create your cluster.
 
-    ![](../_images/PMM_DBaaS_DB_Cluster_Created.png)
+    ![](../_images/PMM_DBaaS_DB_Cluster_Created.jpg)
 
-6. The *Cluster Status* column will show the state of the cluster:
+6. The icon ![](../_images/PMM_Query_Analytics_Filter_Panel_Controls_Dashboard_Shortcut.jpg) to the right of the cluster name in the *Name* column is a link to the cluster summary dashboard for this cluster, one of:
+
+    - [PXC/Galera Cluster Summary dashboard](../dashboards/dashboard-pxc-galera-cluster-summary.md) for MySQL database types
+    - [MongoDB Cluster Summary dashboard](../dashboards/dashboard-mongodb-cluster-summary.md) for MongoDB database types
+
+7. The *Cluster Status* column will show the state of the cluster:
 
     - *PENDING*: The cluster is being created
     - *ACTIVE*: The cluster is active
     - *FAILED*: The cluster could not be created
     - *DELETING*: The cluster is being deleted
+
+
 
 ## Delete a DB Cluster
 
