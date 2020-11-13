@@ -86,6 +86,11 @@ PMM communicates with the PMM Server via a PMM agent process.
     * PMM Client: connection status, time drift, latency, pmm-admin version.
     * Agents: Agent ID path and client name.
 
+    FLAGS:
+
+    `--wait`
+    : Time to wait for a successful response from pmm-agent
+
 `pmm-admin summary --server-url=server-url [FLAGS]`
 :    Fetch system data for diagnostics.
 
