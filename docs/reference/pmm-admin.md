@@ -88,8 +88,8 @@ PMM communicates with the PMM Server via a PMM agent process.
 
     FLAGS:
 
-    `--wait`
-    : Time to wait for a successful response from pmm-agent
+    `--wait=<period><unit>`
+    : Time to wait for a successful response from pmm-agent. *period* is an integer. *unit* is one of `ms` for milliseconds, `s` for seconds, `m` for minutes, `h` for hours.
 
 `pmm-admin summary --server-url=server-url [FLAGS]`
 :    Fetch system data for diagnostics.
@@ -374,6 +374,7 @@ pmm-admin add mysql --username=pmm --password=pmm --service-name=ps-mysql --host
 
 ```sh
 pmm-admin status
+pmm-admin status --wait=30s
 ```
 
 ```
