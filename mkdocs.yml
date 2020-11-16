@@ -58,8 +58,7 @@ extra:
     major: '2.x' # Used by version switcher. Should match publish url suffix and site_url
 
 nav:
-    - index.md
-    - introduction.md
+    - What is Percona Monitoring and Management?: introduction.md
     - PMM Concepts=concepts/:
         - Client/Server Architecture - an Overview: 'concepts/architecture.md'
         - Services=concepts/services-index.html:
