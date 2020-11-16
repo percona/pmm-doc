@@ -4,12 +4,11 @@
   https://www.percona.com/docs/theme-1-4/percona-xtradb-cluster/5.6/
 #}
 {%- set url_root = config.site_url %}
-{%- set docstitle = config.site_name %} {# Not used in original - Each page uses page title only #}
-{%- if docstitle %}
-{%- set titlesuffix = " &mdash; "|safe + docstitle|e %}
-{%- else %}
-{%- set titlesuffix = "" %}
-{%- endif %}
+{%- set site_name = config.site_name %}
+{%- set page_title = page.title %}
+{%- set short_site_name = config.extra.short_site_name %}
+{%- set release = config.extra.release %}
+
 {# toctree() section level start and limit #}
 {% set default_level = 1 %}
 {% set max_level = 4 %}
@@ -29,7 +28,7 @@
     </li>
     {% endif %}
     <li>
-      <a href="{{ url_root }}">{{ docstitle|e }}</a>
+      <a href="{{ url_root }}">Home</a>
     </li>
   </ul>
 </div>
@@ -364,8 +363,22 @@
 </script>
 {% endmacro %}
 
-{# Layout for content as hosted by Drupal #}
-<title>{% if page.title %}{{ page.title|striptags|e }}{% else %}{{ docstitle }}{% endif %}</title>
+{# Layout for content as hosted by Drupal (no outer html tag) #}
+<title>
+    {%- if short_site_name %}
+        {{ short_site_name|e }}
+    {% else %}
+        {{ site_name|e }}
+    {% endif %}
+
+    {%- if release  %}
+        {{ release|e }}
+    {%- endif %}
+
+    {% if page_title %}
+        &mdash; {{ page_title|striptags|e }}
+    {% endif %}
+</title>
 
 <head>
   {{ metatags() }}
