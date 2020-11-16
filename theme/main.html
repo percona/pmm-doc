@@ -49,6 +49,14 @@
 {% endif %}
 {% endmacro %}
 
+{% macro last_edited() %}
+{% if page and page.meta.revision_date %}
+<div id="last_edited">
+    <small><br><i>Updated {{ page.meta.revision_date }}</i></small>
+</div>
+{% endif %}
+{% endmacro %}
+
 {#### Contents of left column navigation bar #}
 {%- macro sidebar() %}
 <div class="sphinxsidebar col-md-3 col-md-pull-9">
@@ -56,6 +64,7 @@
     {@ product_logo @}
     {@ product_pdf_download @}
     {{ edit_repo() }}
+    {{ last_edited() }}
     {{ version_menu() }}
     {{ toctree(nav, default_level) }}
     {{ relations() }}
