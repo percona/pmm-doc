@@ -51,8 +51,8 @@
 
 {% macro last_edited() %}
 {% if page and page.meta.revision_date %}
-<div id="last_edited">
-    <small><br><i>Updated {{ page.meta.revision_date }}</i></small>
+<div id="last_edited" class="side-column-block">
+    <small>Updated {{ page.meta.revision_date }}</small>
 </div>
 {% endif %}
 {% endmacro %}
