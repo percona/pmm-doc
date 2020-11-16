@@ -52,7 +52,6 @@ plugins:
     - macros
 
 extra:
-    short_site_name: PMM
     release: 2.11.1
     version: 2.11
     major: '2.x' # Used by version switcher. Should match publish url suffix and site_url
