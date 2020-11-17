@@ -84,6 +84,48 @@ To access it, select *PMM > PMM DBaaS*, or click the database icon (*DBaas*) in 
 
 3. Follow the instructions for [Add a Kubernetes cluster](#add-a-kubernetes-cluster).
 
+
+## Start PMM with DBaaS activated 
+
+1. you don't need pmm-client to use DBaaS. PMM Server only
+2. Hos wo install PMM server: 
+docker run --detach --publish 80:80 --name pmm-server --env PERCONA_TEST_DBAAS=1  perconalab/pmm-server-fb:TBD;
+PERCONA_TEST_DBAAS=1 - is to enable  DBaaS functionality
+
+TBD
+## Installing Percona operators in K8s (nimikube, EKS)
+TBD
+1. Minikube 
+
+cat > /home/centos/minikube_up.sh <<EOF
+minikube config set cpus 4
+minikube config set memory 4096
+minikube config set kubernetes-version 1.16.8
+minikube start
+curl -sSf -m 30 https://raw.githubusercontent.com/percona/percona-xtradb-cluster-operator/release-1.4.0/deploy/bundle.yaml  | minikube kubectl -- apply -f -
+curl -sSf -m 30 https://raw.githubusercontent.com/percona/percona-xtradb-cluster-operator/release-1.4.0/deploy/secrets.yaml | minikube kubectl -- apply -f -
+curl -sSf -m 30 https://raw.githubusercontent.com/percona/percona-server-mongodb-operator/release-1.4.0/deploy/bundle.yaml  | minikube kubectl -- apply -f -
+curl -sSf -m 30 https://raw.githubusercontent.com/percona/percona-server-mongodb-operator/release-1.4.0/deploy/secrets.yaml | minikube kubectl -- apply -f -
+minikube kubectl -- get nodes
+minikube kubectl -- get pods
+minikube kubectl -- wait --for=condition=Available deployment percona-xtradb-cluster-operator
+minikube kubectl -- wait --for=condition=Available deployment percona-server-mongodb-operator
+echo 'alias kubectl="minikube kubectl --"' | tee -a /root/.bashrc /home/centos/.bashrc
+EOF
+chown -v centos:centos /home/centos/minikube_up.sh;
+chmod -v 700 /home/centos/minikube_up.sh;
+
+
+Execute script with centos user
+
+sudo -u centos /bin/bash -c "cd && /home/centos/minikube_up.sh";
+
+2. EKS
+TBD
+
+
+
+
 !!! seealso "See also"
 
     - [Amazon AWS EKS: Create a cluster](https://docs.aws.amazon.com/eks/latest/userguide/create-cluster.html)
