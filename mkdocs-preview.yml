@@ -10,7 +10,6 @@ docs_dir: docs
 
 theme:
   name: material
-#  custom_dir: theme
   language: en
   palette:
     primary: deep-orange
@@ -20,19 +19,12 @@ theme:
     code: Roboto Mono
   logo: _images/pmm-doc-logo.svg
   favicon: _images/percona_favicon.ico
-#  features:
-#     tabs: true # top row navigation bar
-
-#extra_css:
-#    - css/basic.css
-#    - _static/pygments.css
 
 markdown_extensions:
     - toc:
         baselevel: 1
         toc_depth: "2-3"
         anchorlink: True
-#        permalink: 
     - admonition
     - def_list
     - smarty:
@@ -50,9 +42,6 @@ plugins:
     - macros
 
 extra:
-    project: 'Percona Monitoring and Management'
-    shorttitle: 'Percona Monitoring and Management Documentation'
-    copyright: 'Percona LLC and/or its affiliates 2009-2020'
     release: '2.12.0'
     version: '2.12'
     major: '2.x' # Publish url suffix (percona.com/doc/percona-monitoring-and-management/2.x)

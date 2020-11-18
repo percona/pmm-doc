@@ -27,9 +27,6 @@ markdown_extensions:
         linenums: false
 
 extra:
-    project: 'Percona Monitoring and Management'
-    shorttitle: 'Percona Monitoring and Management Documentation'
-    copyright: 'Percona LLC and/or its affiliates 2009-2020'
     release: &release '2.12.0'
     version: '2.12'
     major: '2.x' # Publish url suffix (percona.com/doc/percona-monitoring-and-management/2.x)

@@ -33,7 +33,6 @@ markdown_extensions:
         baselevel: 1
         toc_depth: "2-3"
         anchorlink: True
-#        permalink: 
     - admonition
     - def_list
     - smarty:
