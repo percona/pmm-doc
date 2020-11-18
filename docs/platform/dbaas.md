@@ -22,7 +22,10 @@ To access it, select *PMM > PMM DBaaS*, or click the database icon (*DBaas*) in 
 
 ## Unregister a Kubernetes cluster
 
-1. Identify the kubernetes cluster to be deleted and click *Unregister*.
+!!! attention
+    A kubernetes cluster can't be unregistered if there DB clusters associated with it.
+
+1. Click *Unregister*.
 
 2. Confirm the action by clicking *Proceed*, or abandon by clicking *Cancel*.
 
@@ -114,6 +117,64 @@ To access it, select *PMM > PMM DBaaS*, or click the database icon (*DBaas*) in 
         ```
 
 3. Follow the instructions for [Add a Kubernetes cluster](#add-a-kubernetes-cluster).
+
+
+## Start PMM server with DBaaS activated
+
+1. You don't need pmm-client to use DBaaS. PMM Server only
+2. To start the PMM server:
+```
+docker run --detach --publish 80:80 --name pmm-server --env PERCONA_TEST_DBAAS=1  perconalab/pmm-server-fb:TBD;
+```
+`PERCONA_TEST_DBAAS=1` - is to enable  DBaaS functionality
+
+3. Change the default admin:admin credentials:
+```
+docker exec -t pmm-server bash -c 'ln -s /srv/grafana /usr/share/grafana/data; chown -R grafana:grafana /usr/share/grafana/data; grafana-cli --homepath /usr/share/grafana admin reset-admin-password db445p3rc0n4d3m0';
+```
+
+
+
+## Installing Percona operators in minikube
+
+1. Install minikube if you don't have it already in your system
+```
+curl -Lo /usr/local/sbin/minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 && chmod +x /usr/local/sbin/minikube;
+ln -s /usr/local/sbin/minikube /usr/sbin/minikube;
+```
+
+2. Prepare minikube (if you don't have it setup in your system)
+
+```
+minikube config set cpus 4
+minikube config set memory 4096
+minikube config set kubernetes-version 1.16.8
+minikube start
+```
+
+3. Deploy the Percona operators configuration in minikube:
+```
+curl -sSf -m 30 https://raw.githubusercontent.com/percona/percona-xtradb-cluster-operator/release-1.4.0/deploy/bundle.yaml  | minikube kubectl -- apply -f -
+curl -sSf -m 30 https://raw.githubusercontent.com/percona/percona-xtradb-cluster-operator/release-1.4.0/deploy/secrets.yaml | minikube kubectl -- apply -f -
+curl -sSf -m 30 https://raw.githubusercontent.com/percona/percona-server-mongodb-operator/release-1.4.0/deploy/bundle.yaml  | minikube kubectl -- apply -f -
+curl -sSf -m 30 https://raw.githubusercontent.com/percona/percona-server-mongodb-operator/release-1.4.0/deploy/secrets.yaml | minikube kubectl -- apply -f -
+```
+
+4. Inspect and check if the operators are deployed:
+```
+minikube kubectl -- get nodes
+minikube kubectl -- get pods
+minikube kubectl -- wait --for=condition=Available deployment percona-xtradb-cluster-operator
+minikube kubectl -- wait --for=condition=Available deployment percona-server-mongodb-operator
+```
+
+5. Get your kubeconfig details from minikube (so to register your k8s cluster in pmm-server):
+```
+minikube kubectl -- config view --flatten --minify
+```
+
+## Installing Percona operators in AWS EKS (k8s)
+TBD
 
 !!! seealso "See also"
 
