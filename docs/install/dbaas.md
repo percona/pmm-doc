@@ -1,5 +1,8 @@
 # Setting up a development environment for DBaaS
 
+!!! caution
+    DBaaS functionality is Alpha. The information on this page is subject to change and may be inaccurate.
+
 ## Start PMM server with DBaaS activated
 
 !!! note
