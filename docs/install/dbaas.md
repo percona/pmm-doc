@@ -12,15 +12,30 @@
 
     ```
     docker run --detach --publish 80:80 --name pmm-server --env PERCONA_TEST_DBAAS=1 perconalab/pmm-server-fb:<feature branch ID>
+
     ```
 
     !!! note
        Setting the environment variable `PERCONA_TEST_DBAAS=1` enables DBaaS functionality.
+       Use `--network minikube` if you will run pmm-server and minikube in the same docker instance. This way they will share single network and the kubeconfig will work with no extra steps. You will need to start pmm-server after minikube setup!
 
-3. Change the default administrator credentials:
+    !!! note
+       If docker is not installed, you can follow this simple steps to get it running on your CentOS:
+       ```
+       yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo;
+       yum -y install docker-ce;
+       usermod -a -G docker centos;
+       systemctl enable docker;
+       systemctl start docker;
+
+       ```
+
+2. Change the default administrator credentials from CLI:
+    !!! note
+       This step is not mandatory, because the same can be done from the web interface of PMM on the first login.
 
     ```
-    docker exec -t pmm-server bash -c 'ln -s /srv/grafana /usr/share/grafana/data; chown -R grafana:grafana /usr/share/grafana/data; grafana-cli --homepath /usr/share/grafana admin reset-admin-password db445p3rc0n4d3m0'
+    docker exec -t pmm-server bash -c 'ln -s /srv/grafana /usr/share/grafana/data; chown -R grafana:grafana /usr/share/grafana/data; grafana-cli --homepath /usr/share/grafana admin reset-admin-password <RANDOM_PASS_GOES_IN_HERE>'
     ```
 
 ## Install Percona operators in minikube
@@ -28,6 +43,7 @@
 1. Install minikube:
 
     ```
+    yum -y install curl;
     curl -Lo /usr/local/sbin/minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 && chmod +x /usr/local/sbin/minikube
     ln -s /usr/local/sbin/minikube /usr/sbin/minikube
     ```
@@ -36,12 +52,12 @@
 
     ```
     minikube config set cpus 4
-    minikube config set memory 4096
+    minikube config set memory 8192
     minikube config set kubernetes-version 1.16.8
     minikube start
     ```
 
-3. Deploy the Percona operators configuration in minikube:
+3. Deploy the Percona operators configuration for PXC and PSMDB in minikube:
 
     ```
     curl -sSf -m 30 https://raw.githubusercontent.com/percona/percona-xtradb-cluster-operator/release-1.4.0/deploy/bundle.yaml  | minikube kubectl -- apply -f -
