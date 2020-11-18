@@ -22,7 +22,10 @@ To access it, select *PMM > PMM DBaaS*, or click the database icon (*DBaas*) in 
 
 ## Unregister a Kubernetes cluster
 
-1. Identify the kubernetes cluster to be deleted and click *Unregister*.
+!!! attention
+    A kubernetes cluster can't be unregistered if there DB clusters associated with it.
+
+1. Click *Unregister*.
 
 2. Confirm the action by clicking *Proceed*, or abandon by clicking *Cancel*.
 
