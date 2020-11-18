@@ -76,6 +76,14 @@ To access it, select *PMM > PMM DBaaS*, or click the database icon (*DBaas*) in 
     - *FAILED*: The cluster could not be created
     - *DELETING*: The cluster is being deleted
 
+## Restart a DB Cluster
+
+1. Select the *DB Cluster* tab.
+
+2. Identify the DB cluster to restart.
+
+3. Click *Restart cluster*.
+
 ## Edit a DB Cluster
 
 1. Select the *DB Cluster* tab.
