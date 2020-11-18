@@ -127,9 +127,7 @@ To access it, select *PMM > PMM DBaaS*, or click the database icon (*DBaas*) in 
 3. Follow the instructions for [Add a Kubernetes cluster](#add-a-kubernetes-cluster).
 
 !!! seealso "See also"
-
+    - [Setting up a development environment for DBaaS](../install/dbaas.md)
     - [Amazon AWS EKS: Create a cluster](https://docs.aws.amazon.com/eks/latest/userguide/create-cluster.html)
-
     - [Amazon AWS EKS: Create a kubconfig file](https://docs.aws.amazon.com/eks/latest/userguide/create-kubeconfig.html)
-
     - [AWS IAM Authenticator](https://github.com/kubernetes-sigs/aws-iam-authenticator)

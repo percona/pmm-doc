@@ -63,8 +63,8 @@
     ```
 
 !!! seealso "See also"
-    [DBaaS Dashboard](../platform/dbaas.md)
-    [Install minikube](https://minikube.sigs.k8s.io/docs/start/)
+    - [DBaaS Dashboard](../platform/dbaas.md)
+    - [Install minikube](https://minikube.sigs.k8s.io/docs/start/)
 
 
 ## Installing Percona operators in AWS EKS (k8s)
