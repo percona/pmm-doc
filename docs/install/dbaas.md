@@ -17,18 +17,19 @@
 
     !!! note
        Setting the environment variable `PERCONA_TEST_DBAAS=1` enables DBaaS functionality.
-       Use `--network minikube` if you will run pmm-server and minikube in the same docker instance. This way they will share single network and the kubeconfig will work with no extra steps. You will need to start pmm-server after minikube setup!
+
+    !!! note
+       Use `--network minikube` if you will run pmm-server and minikube in the same docker instance. This way they will share single network and the kubeconfig will work
 
     !!! note
        If docker is not installed, you can follow this simple steps to get it running on your CentOS:
-       ```
+
        yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo;
        yum -y install docker-ce;
        usermod -a -G docker centos;
        systemctl enable docker;
        systemctl start docker;
 
-       ```
 
 2. Change the default administrator credentials from CLI:
     !!! note
