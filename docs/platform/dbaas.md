@@ -26,7 +26,7 @@ To access it, select *PMM > PMM DBaaS*, or click the database icon (*DBaas*) in 
 ## Unregister a Kubernetes cluster
 
 > **Attention**
-> A kubernetes cluster can't be unregistered if there DB clusters associated with it.
+> You can't unregister a kubernetes cluster if there DB clusters associated with it.
 
 1. Click *Unregister*.
 
@@ -69,14 +69,27 @@ To access it, select *PMM > PMM DBaaS*, or click the database icon (*DBaas*) in 
 
     Click *Create Cluster* to create your cluster.
 
+6. A row appears with information on your cluster:
+
+    - *Name*: The cluster name
+    - *Database type*: The cluster database type
+    - *Connection*:
+        - *Host*: The hostname
+        - *Port*: The port number
+        - *Username*: The connection username
+        - *Password*: The connection password (click the eye icon to reveal)
+    - *DB Cluster Parameters*:
+        - *K8s cluster name*: The Kubernetes cluster name
+        - *CPU*: The number of CPUs allocated to the cluster
+        - *Memory*: The amount of memory allocated to the cluster
+        - *Disk*: The amount of disk space allocated to the cluster
+    - *Cluster Status*:
+        - *PENDING*: The cluster is being created
+        - *ACTIVE*: The cluster is active
+        - *FAILED*: The cluster could not be created
+        - *DELETING*: The cluster is being deleted
+
     ![](../_images/PMM_DBaaS_DB_Cluster_Created.png)
-
-6. The *Cluster Status* column will show the state of the cluster:
-
-    - *PENDING*: The cluster is being created
-    - *ACTIVE*: The cluster is active
-    - *FAILED*: The cluster could not be created
-    - *DELETING*: The cluster is being deleted
 
 ## Restart a DB Cluster
 
@@ -84,7 +97,7 @@ To access it, select *PMM > PMM DBaaS*, or click the database icon (*DBaas*) in 
 
 2. Identify the DB cluster to restart.
 
-3. In the *Actions* column, open the menu and click *Restart cluster*.
+3. In the *Actions* column, open the vertical dots menu (<b>&vellip;</b>) and click *Restart cluster*.
 
 ## Edit a DB Cluster
 
