@@ -1,5 +1,3 @@
-<div class="section" id="faq"></div>
-
 # Frequently Asked Questions
 
 ## How can I contact the developers?
@@ -42,11 +40,11 @@ A minimum of 100 MB of storage is required for installing the PMM Client package
 
 Because of the significant architectural changes between PMM1 and PMM2, there is no direct upgrade path.  The approach to making the switch from PMM version 1 to 2 is a gradual transition, outlined [in this blog post](https://www.percona.com/blog/2019/11/27/running-pmm1-and-pmm2-clients-on-the-same-host/).
 
-In short, it involves first standing up a new PMM2 server on a new host and connecting clients to it.  As new data is reported to the PMM2 server, old metrics will age out during the course of the retention period (30 days, by default), at which point you'll be able to shut down your existing PMM1 server.  
+In short, it involves first standing up a new PMM2 server on a new host and connecting clients to it.  As new data is reported to the PMM2 server, old metrics will age out during the course of the retention period (30 days, by default), at which point you'll be able to shut down your existing PMM1 server.
 
-!!! note 
+!!! note
 
-    Any alerts configured through the Grafana UI will have to be recreated due to the target dashboard id's not matching between PMM1 and PMM2.  In this instance we recommend moving to Alertmanager recipes in PMM2 for alerting which, for the time being, requires a separate [Alertmanager instance](https://www.percona.com/blog/2020/02/21/percona-monitoring-and-management-meet-prometheus-alertmanger/). However, we are working on integrating this natively into PMM2 Server and expect to support your existing Alertmanager rules.  
+    Any alerts configured through the Grafana UI will have to be recreated due to the target dashboard id's not matching between PMM1 and PMM2.  In this instance we recommend moving to Alertmanager recipes in PMM2 for alerting which, for the time being, requires a separate [Alertmanager instance](https://www.percona.com/blog/2020/02/21/percona-monitoring-and-management-meet-prometheus-alertmanger/). However, we are working on integrating this natively into PMM2 Server and expect to support your existing Alertmanager rules.
 
 <div class="section" id="data-retention"></div>
 
@@ -222,3 +220,14 @@ Refresh The Home page in 2-5 min and you should see that PMM was updated.
 
 PMM protects an exporter's output from unauthorized access by adding an authorization layer. To access an exporter you can use "`pmm`" as a user name and the Agent ID as a password. You can find the Agent ID corresponding to a given exporter by running `pmm-admin list`.
 
+
+## How do I troubleshoot VictoriaMetrics?
+
+1. [Check the VictoriaMetrics troubleshooting documentation](https://victoriametrics.github.io/#troubleshooting)
+
+2. Ask a question on:
+
+    - [Google Groups](https://groups.google.com/forum/#!forum/victorametrics-users)
+    - [Slack](http://slack.victoriametrics.com/)
+    - [Reddit](https://www.reddit.com/r/VictoriaMetrics/)
+    - [Telegram](https://t.me/VictoriaMetrics_en)
