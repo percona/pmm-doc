@@ -1,7 +1,7 @@
 # DBaaS Dashboard
 
-!!! caution
-    DBaaS functionality is Alpha. The information on this page is subject to change and may be inaccurate.
+> **CAUTION**
+> DBaaS functionality is Alpha. The information on this page is subject to change and may be inaccurate.
 
 This dashboard is where you add and remove Kubernetes and database clusters.
 
@@ -25,8 +25,8 @@ To access it, select *PMM > PMM DBaaS*, or click the database icon (*DBaas*) in 
 
 ## Unregister a Kubernetes cluster
 
-!!! attention
-    A kubernetes cluster can't be unregistered if there DB clusters associated with it.
+> **Attention**
+> A kubernetes cluster can't be unregistered if there DB clusters associated with it.
 
 1. Click *Unregister*.
 
@@ -34,8 +34,8 @@ To access it, select *PMM > PMM DBaaS*, or click the database icon (*DBaas*) in 
 
 ## Add a DB Cluster
 
-!!! note
-    You must create at least one Kubernetes cluster to create a DB cluster.
+> **Note**
+> You must create at least one Kubernetes cluster to create a DB cluster.
 
 1. Select the *DB Cluster* tab.
 
@@ -47,8 +47,7 @@ To access it, select *PMM > PMM DBaaS*, or click the database icon (*DBaas*) in 
 
     1. Enter a value for *Cluster name*.
 
-        !!! note
-            *Cluster Name* must comply with domain naming rules.
+        > *Cluster Name* must comply with domain naming rules.
 
     2. Select a cluster from the *Kubernetes Cluster* menu.
 
@@ -129,8 +128,8 @@ To access it, select *PMM > PMM DBaaS*, or click the database icon (*DBaas*) in 
 
 3. Follow the instructions for [Add a Kubernetes cluster](#add-a-kubernetes-cluster).
 
-!!! seealso "See also"
-    - [Setting up a development environment for DBaaS](../install/dbaas.md)
-    - [Amazon AWS EKS: Create a cluster](https://docs.aws.amazon.com/eks/latest/userguide/create-cluster.html)
-    - [Amazon AWS EKS: Create a kubconfig file](https://docs.aws.amazon.com/eks/latest/userguide/create-kubeconfig.html)
-    - [AWS IAM Authenticator](https://github.com/kubernetes-sigs/aws-iam-authenticator)
+> **See also**
+> - [Setting up a development environment for DBaaS](../install/dbaas.md)
+> - [Amazon AWS EKS: Create a cluster](https://docs.aws.amazon.com/eks/latest/userguide/create-cluster.html)
+> - [Amazon AWS EKS: Create a kubconfig file](https://docs.aws.amazon.com/eks/latest/userguide/create-kubeconfig.html)
+> - [AWS IAM Authenticator](https://github.com/kubernetes-sigs/aws-iam-authenticator)
