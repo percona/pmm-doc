@@ -1,4 +1,4 @@
-# PMM Settings Page
+# Configure
 
 The *PMM Settings* page lets you configure a number of PMM options.
 
@@ -97,6 +97,15 @@ It can be enabled in *PMM > PMM Settings > Settings > Advanced Settings > Securi
 The checks take 24 hours to complete.
 
 The results can be viewed in *PMM > PMM Database Checks*.
+
+**DBaaS**
+
+Shows whether DBaaS features are activated on this server.
+
+**Public Address**
+
+Public address for accessing this server.
+
 
 ## SSH Key Details
 
