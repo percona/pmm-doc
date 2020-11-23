@@ -55,7 +55,7 @@ extra:
     quickstart: 'https://www.percona.com/software/pmm/quickstart'
 
 nav:
-    - Welcome: index.md
+#    - index.md
     - Setting up:
         - setting-up/index.md
         - Server:

@@ -81,6 +81,29 @@
 {% endif %}
 {% endmacro %}
 
+
+{### Table of contents for left nav column #}
+{% macro toctree(n, level) %}
+    {%- set class = "toctree_l" + level|string %}
+    {%- if level <= max_level %}
+    <ul>
+        {%- for nav_item in n %}
+            <li class="{{ class }} {% if nav_item.active %}current{% endif %}">
+            {%- if nav_item.url %}
+                <a class="reference internal" href="{{ nav_item.url|url }}">{{ nav_item.title }}</a>
+            {%- else %}
+                {{ nav_item.title }}
+            {%- endif %}
+            </li>
+            {%- if nav_item.children %}
+                {{ toctree(nav_item.children, level+1) }}
+            {%- endif %}
+        {%- endfor %}
+    </ul>
+    {%- endif %}
+{% endmacro %}
+
+
 {%- macro script() %}
 <script type="text/javascript">
     var DOCUMENTATION_OPTIONS = {
@@ -169,68 +192,6 @@
 </section>
 {% endmacro %}
 
-{#
-  Used by toctree()
-
-  MkDocs doesn't allow a section link. Example, in mkdocs.yaml:
-
-  nav:
-    SECTION TITLE:
-      intro: dir/index.md
-      another: dir/section.md
-
-  The toctree will render without a link for 'SECTION TITLE',
-  as it doesn't have a file. 'SECTION TITLE' is just a cosmetic
-  label.
-  To match Sphinx's behaviour, this macro detects special
-  section labels as 'TITLE=path' (splitting on the equals sign).
-  The new nav element would then be:
-
-  nav:
-  SECTION TITLE=/dir/:
-    intro: dir/index.md
-    another: dir/section.md
-
-  This macro will put a link to /dir/ for the toc entry
-  'SECTION TITLE'. If there is not an index.md file in
-  the subdir, link to a file with its .html extension.
-
-  nav:
-  SECTION TITLE=/dir/myindex.html:
-    intro: dir/index.md
-    another: dir/section.md
-
-#}
-{%- macro navi(item, class, close) %}
-<li class="{{ class }}">
-    {%- if item.url %}
-    <a class="reference internal" href="{{ item.url|url }}">{{ item.title }}</a>
-    {%- else %}
-    {% set title_path = (item.title).split('=') %}
-    <a class="reference internal" href="{{ title_path[1]|url }}">{{ title_path[0] }}</a>
-    {% endif %}
-    {%- if close %}</li>{% endif %}
-{% endmacro %}
-
-{#### Table of contents for left nav column #}
-{% macro toctree(n, level) %}
-{% if level <= max_level %}
-<ul>
-    {% for item in n %}
-    <li class="{{ class }}">
-    {%- if item.url %}
-        <a class="reference internal" href="{{ item.url|url }}">{{ item.title }}</a>
-    {% else %}
-        <a class="reference internal" href="#" style="text-decoration:none">{{ item.title }}</a>
-    {% endif %}
-    </li>
-    {% if item.children %}
-    {{ toctree(item.children, level+1) }}
-    {% endif %}
-    {% endfor %}
-</ul>
-{% endif %}
-{% endmacro %}
 
 {# From sphinx template page.html or _static/js/toggle-menu.js #}
 {# For left column navigation buttons (expand/collapse) #}
