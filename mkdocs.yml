@@ -79,7 +79,6 @@ nav:
         - using/query-analytics.md
         - Percona Platform=using/platform/:
             - using/platform/index.md
-#            - using/platform/dbaas.md
             - using/platform/security-threat-tool.md
     - How to=how-to/:
         - how-to/index.md
