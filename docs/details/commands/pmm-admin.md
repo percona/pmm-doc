@@ -12,6 +12,8 @@
 
 `pmm-admin add DATABASE [FLAGS] [NAME] [ADDRESS]`
 
+`pmm-admin add external [FLAGS] [NAME] [ADDRESS]`
+
 `pmm-admin remove [FLAGS] service-type [service-name]`
 
 `pmm-admin register [FLAGS] [node-address] [node-type] [node-name]`
@@ -61,6 +63,9 @@ PMM communicates with the PMM Server via a PMM agent process.
 `--server-insecure-tls`
 :    Skip PMM Server TLS certificate validation.
 
+`--group=<group-name>`
+: Group name for external services. Default: `external`
+
 ## COMMANDS
 
 ### GENERAL COMMANDS
@@ -80,6 +85,11 @@ PMM communicates with the PMM Server via a PMM agent process.
     * PMM Server: URL and version.
     * PMM Client: connection status, time drift, latency, pmm-admin version.
     * Agents: Agent ID path and client name.
+
+    FLAGS:
+
+    `--wait=<period><unit>`
+    : Time to wait for a successful response from pmm-agent. *period* is an integer. *unit* is one of `ms` for milliseconds, `s` for seconds, `m` for minutes, `h` for hours.
 
 `pmm-admin summary --server-url=server-url [FLAGS]`
 :    Fetch system data for diagnostics.
@@ -364,6 +374,7 @@ pmm-admin add mysql --username=pmm --password=pmm --service-name=ps-mysql --host
 
 ```sh
 pmm-admin status
+pmm-admin status --wait=30s
 ```
 
 ```

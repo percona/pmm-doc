@@ -106,15 +106,15 @@ This section lets you upload your public SSH key to access the PMM Server via SS
 
 Enter your **public key** in the *SSH Key* field and click *Apply SSH Key*.
 
-## Alertmanager integration
+## VictoriaMetrics alerts
 
-The Prometheus Alertmanager manages alerts from Prometheus, deduplicating, grouping, and routing them to the appropriate receiver or display component.
+The Prometheus Alertmanager manages alerts from Prometheus, deduplicating, grouping, and routing them to the appropriate receiver or display component.	VictoriaMetrics [vmalert](https://github.com/VictoriaMetrics/VictoriaMetrics/blob/master/app/vmalert/README.md) manages alerts. It is compatible with [Prometheus Alertmanager](https://github.com/prometheus/alertmanager).
 
 This section lets you configure integration of Prometheus with an external Alertmanager.
 
 * The **Alertmanager URL** field should contain the URL of the Alertmanager which would serve your PMM alerts.
 
-* The **Prometheus Alerting rules** field is used to specify alerting rules in the YAML configuration format.
+* The **Alerting rules** field is used to specify alerting rules in the YAML configuration format.
 
 ![image](../_images/PMM_Settings_Alertmanager_Integration.jpg)
 

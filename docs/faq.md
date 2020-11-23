@@ -18,7 +18,7 @@ It needs roughly 1 GB of storage for each monitored database node with data rete
 
 !!! note
 
-    By default, [retention](#how-to-control-data-retention-for-pmm) is set to 30 days for Metrics Monitor and for Query Analytics.  You can consider [disabling table statistics](manage/conf-mysql-disable-table-stats.md) to decrease the Prometheus database size.
+    By default, [retention](#how-to-control-data-retention-for-pmm) is set to 30 days for Metrics Monitor and for Query Analytics.  You can consider [disabling table statistics](manage/conf-mysql-disable-table-stats.md) to decrease the VictoriaMetrics database size.
 
 The minimum memory requirement is 2 GB for one monitored database node.
 
@@ -31,7 +31,7 @@ The minimum memory requirement is 2 GB for one monitored database node.
 Any modern 64-bit Linux distribution. It is tested on the latest versions of Debian, Ubuntu, CentOS, and Red Hat Enterprise Linux.
 
 A minimum of 100 MB of storage is required for installing the PMM Client package.  With a good connection to PMM Server, additional storage is not required.  However, the client needs to store any collected data that it cannot dispatch immediately, so additional storage may be required if the connection is unstable or the throughput is low.
-(Caching only applies to Query Analytics data; Prometheus data is never cached on the client side.)
+(Caching only applies to Query Analytics data; VictoriaMetrics data is never cached on the client side.)
 
 ## How can I upgrade from PMM version 1?
 
@@ -41,7 +41,7 @@ In short, it involves first standing up a new PMM2 server on a new host and conn
 
 !!! note
 
-    Any alerts configured through the Grafana UI will have to be recreated due to the target dashboard id's not matching between PMM1 and PMM2.  In this instance we recommend moving to Alertmanager recipes in PMM2 for alerting which, for the time being, requires a separate [Alertmanager instance](https://www.percona.com/blog/2020/02/21/percona-monitoring-and-management-meet-prometheus-alertmanger/). However, we are working on integrating this natively into PMM2 Server and expect to support your existing Alertmanager rules.
+    Any alerts configured through the Grafana UI will have to be recreated due to the target dashboard id's not matching between PMM1 and PMM2.  In this instance we recommend moving to VictoriaMetrics `vmalert` recipes in PMM2 for alerting which, for the time being, requires a separate Alertmanager instance. However, we are working on integrating this natively into PMM2 Server and expect to support your existing Alertmanager rules.
 
 ## How to control data retention for PMM?
 
@@ -99,7 +99,7 @@ To specify other than the default value, or to use several, use the JSON Array s
 
 ## How do I troubleshoot communication issues between PMM Client and PMM Server?
 
-Broken network connectivity may be due to many reasons.  Particularly, when [using Docker](install/docker.md), the container is constrained by the host-level routing and firewall rules. For example, your hosting provider might have default *iptables* rules on their hosts that block communication between PMM Server and PMM Client, resulting in *DOWN* targets in Prometheus. If this happens, check the firewall and routing settings on the Docker host.
+Broken network connectivity may be due to many reasons.  Particularly, when [using Docker](install/docker.md), the container is constrained by the host-level routing and firewall rules. For example, your hosting provider might have default *iptables* rules on their hosts that block communication between PMM Server and PMM Client, resulting in *DOWN* targets in VictoriaMetrics. If this happens, check the firewall and routing settings on the Docker host.
 
 PMM is also able to generate diagnostics data which can be examined and/or shared with Percona Support to help quickly solve an issue. You can get collected logs from PMM Client using the `pmm-admin summary` command.
 
@@ -126,13 +126,13 @@ The default values are:
 
 ## How do I set up Alerting in PMM?
 
-When a monitored service metric reaches a defined threshold, PMM Server can trigger alerts for it either using the Grafana Alerting feature or by using an external Alertmanager, a high-performance solution developed by the Prometheus project to handle alerts sent by Prometheus.
+When a monitored service metric reaches a defined threshold, PMM Server can trigger alerts for it either using the Grafana Alerting feature or by using an external alert manager, such as [vmalert](https://github.com/VictoriaMetrics/VictoriaMetrics/tree/master/app/vmalert) by VictoriaMetrics.
 
 With these methods you must configure alerting rules that define conditions under which an alert should be triggered, and the channel used to send the alert (e.g. email).
 
 Alerting in Grafana allows attaching rules to your dashboard panels.  Grafana Alerts are already integrated into PMM Server and may be simpler to get set up.
 
-Alertmanager allows the creation of more sophisticated alerting rules and can be easier to manage installations with a large number of hosts. This additional flexibility comes at the expense of simplicity.
+VictoriaMetrics vmalert allows the creation of more sophisticated alerting rules and can be easier to manage installations with a large number of hosts. This additional flexibility comes at the expense of simplicity.
 
 !!! note
 

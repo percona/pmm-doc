@@ -27,8 +27,8 @@ markdown_extensions:
 
 
 extra:
-    release: &release '2.11.1'
-    version: '2.11'
+    release: &release '2.12.0'
+    version: '2.12'
     major: '2.x' # Publish url suffix (percona.com/doc/percona-monitoring-and-management/2.x)
     quickstart: 'https://www.percona.com/software/pmm/quickstart'
 
@@ -36,7 +36,7 @@ plugins:
     - search
     - macros
     - with-pdf:
-        output_path: '_pdf/PerconaMonitoringAndManagement-2.11.1.pdf'
+        output_path: '_pdf/PerconaMonitoringAndManagement-2.12.0.pdf'
         cover_title: 'Documentation'
         cover_subtitle: *release
         author: 'Percona Technical Documentation Team'
@@ -62,6 +62,7 @@ nav:
             - setting-up/client/aws.md
             - setting-up/client/linux.md
             - setting-up/client/external.md
+#            - setting-up/dbaas.md
     - Using:
         - using/index.md
         - using/interface.md
