@@ -216,14 +216,16 @@
 {% macro toctree(n, level) %}
 {% if level <= max_level %}
 <ul>
-    {% for i in n %}
+    {% for item in n %}
     <li class="{{ class }}">
     {%- if item.url %}
-      <a class="reference internal" href="{{ item.url|url }}">{{ item.title }}</a>
+        <a class="reference internal" href="{{ item.url|url }}">{{ item.title }}</a>
+    {% else %}
+        {{ item.title }}
     {% endif %}
     </li>
-    {% if i.children %}
-    {{ toctree(i.children, level+1) }}
+    {% if item.children %}
+    {{ toctree(item.children, level+1) }}
     {% endif %}
     {% endfor %}
 </ul>
@@ -391,9 +393,9 @@
                 {{ relbar() }}
                 <div class="bodywrapper">
                     <div class="body">
-                        {# toctree(nav, default_level) #}
                         {{ page.content }}
                         {{ toctree_menu_style() }}
+                        {{ toctree(nav, default_level) }}
                     </div>
                 </div>
                 {{ relbar() }}
