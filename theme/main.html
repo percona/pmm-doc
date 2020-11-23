@@ -12,7 +12,7 @@
 {% set default_level = 1 %}
 {% set max_level = 4 %}
 
-{#### Horizontal navigation bars above and below main content #}
+{#### Horizontal navigation bars above and below main content (Home, prev, next) #}
 {%- macro relbar() %}
 <div class="related row">
     <ul class="nav nav-pills">
@@ -84,7 +84,7 @@
 
 {### Table of contents for left nav column #}
 {% macro toctree(n, level) %}
-    {%- set class = "toctree_l" + level|string %}
+    {%- set class = "toctree-l" + level|string %}
     {%- if level <= max_level %}
     <ul>
         {%- for nav_item in n %}
