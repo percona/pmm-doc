@@ -91,8 +91,8 @@
             <li class="{{ class }}">
             {%- if nav_item.url %}
                 <a class="reference internal" href="{{ nav_item.url|url }}">{{ nav_item.title }}</a>
-                {%- else %}
-                <a class="reference internal" href="#"></a>{{ nav_item.title }}
+            {%- else %}
+                <a class="reference internal" href="#">{{ nav_item.title }}</a>
             {%- endif %}
             </li>
             {%- if nav_item.children %}
