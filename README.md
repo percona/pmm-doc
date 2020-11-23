@@ -57,7 +57,6 @@ There are three ways to get changes made to the documentation. Two are 'do it yo
 3. You can use Jira to communicate with developers and technical writers, and be notified of progress.
 
 ## Preview the documentation
-
 ### With Docker
 
 1. Install [Docker](https://docs.docker.com/get-docker/).
@@ -75,11 +74,11 @@ There are three ways to get changes made to the documentation. Two are 'do it yo
 > Documentation built this way has no styling because it is intended for hosting on percona.com.
 > You can build a themed version for local viewing by changing the command in step 3 to:
 >
-> `docker run --rm -v $(pwd):/docs perconalab/pmm-doc-md mkdocs build -f mkdocs-preview.yml`
+> `docker run --rm -v $(pwd):/docs perconalab/pmm-doc-md mkdocs build -t material`
 >
 > Alternatively, you can use the MkDocs built-in web server to live preview local edits:
 >
-> `docker run --rm -v $(pwd):/docs -p 8000:8000 perconalab/pmm-doc-md mkdocs serve -f mkdocs-preview.yml --dev-addr=0.0.0.0:8000`
+> `docker run --rm -v $(pwd):/docs -p 8000:8000 perconalab/pmm-doc-md mkdocs serve -t material.yml --dev-addr=0.0.0.0:8000`
 >
 > and point your browser to [http://localhost:8000](http://localhost:8000).
 
@@ -99,7 +98,7 @@ To build the documentation without Docker, you must [install MkDocs and extensio
 
 3. View the site:
 
-   `mkdocs serve -f mkdocs-preview.yml`
+   `mkdocs serve -t material.yml`
 
    and visit <http://localhost:8000>
 
