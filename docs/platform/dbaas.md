@@ -61,9 +61,13 @@ To access it, select *PMM > PMM DBaaS*, or click the database icon (*DBaas*) in 
 
     2. Select the number of nodes. (The lower limit is 3.)
 
-    3. Select a preset for *Resources per Node*. *Small*, *Medium* and *Large* are fixed preset values for *Memory* and *CPU*. Values for the *Custom* preset can be edited.
+    3. Select a preset for *Resources per Node*.
 
-         ![](../_images/PMM_DBaaS_DB_Cluster_Advanced_Options.jpg)
+        *Small*, *Medium* and *Large* are fixed preset values for *Memory*, *CPU*, and *Disk*.
+
+        Values for the *Custom* preset can be edited.
+
+        ![](../_images/PMM_DBaaS_DB_Cluster_Advanced_Options.jpg)
 
 5. When both *Basic Options* and *Advanced Options* section icons are green, the *Create Cluster* button becomes active. (If it is inactive, check the values for fields in sections whose icon is red.)
 
