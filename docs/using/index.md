@@ -1,9 +1,7 @@
 # In this section
 
-- [Using the PMM User Interface](interface/)
-
-- [Using Query Analytics](query-analytics/)
-
-- [Using Percona Platform](platform/)
+- [The User Interface](interface/)
+- [Query Analytics](query-analytics/)
+- [Percona Platform](platform/)
     - [DBaaS](platform/dbaas/)
     - [Security Threat Tool](platform/security-threat-tool/)
