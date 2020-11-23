@@ -73,10 +73,10 @@ nav:
             - using/platform/security-threat-tool.md
     - How to:
         - how-to/index.md
+        - how-to/configure.md
         - how-to/upgrade.md
         - how-to/secure.md
         - how-to/optimize.md
-        - how-to/configure.md
     - Details:
         - details/index.md
         - Dashboards:
