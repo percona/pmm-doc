@@ -217,7 +217,11 @@
 {% if level <= max_level %}
 <ul>
     {% for i in n %}
-    {{ navi(i, "toctree-l" + level|string) }}
+    <li class="{{ class }}">
+    {%- if item.url %}
+      <a class="reference internal" href="{{ item.url|url }}">{{ item.title }}</a>
+    {% endif %}
+    </li>
     {% if i.children %}
     {{ toctree(i.children, level+1) }}
     {% endif %}
