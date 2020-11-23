@@ -63,6 +63,7 @@ nav:
             - setting-up/server/docker.md
             - setting-up/server/virtual-appliance.md
             - setting-up/server/aws.md
+            - setting-up/server/dbaas.md
         - Client=setting-up/client:
             - setting-up/client/index.md
             - setting-up/client/mysql.md
@@ -80,6 +81,7 @@ nav:
         - Percona Platform=using/platform/:
             - using/platform/index.md
             - using/platform/security-threat-tool.md
+            - using/platform/dbaas.md
     - How to=how-to/:
         - how-to/index.md
         - how-to/configure.md
