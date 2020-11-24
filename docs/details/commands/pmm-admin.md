@@ -76,14 +76,14 @@ PMM communicates with the PMM Server via a PMM agent process.
 ### INFORMATION COMMANDS
 
 `pmm-admin list --server-url=server-url [FLAGS]`
-:    Show Services and Agents running on this Node.
+:    Show Services and Agents running on this Node, and mode of vmagent (push/pull).
 
 `pmm-admin status --server-url=server-url [FLAGS]`
-:    Show the following information about a local pmm-agent, and its connected server and client:
+:    Show the following information about a local pmm-agent, and its connected server and clients:
 
     * Agent: Agent ID, Node ID.
     * PMM Server: URL and version.
-    * PMM Client: connection status, time drift, latency, pmm-admin version.
+    * PMM Client: connection status, time drift, latency, vmagent status, pmm-admin version.
     * Agents: Agent ID path and client name.
 
     FLAGS:
@@ -104,6 +104,8 @@ PMM communicates with the PMM Server via a PMM agent process.
 
     `--pprof`
     : Include performance profiling data in the summary.
+
+    If vmagent is present, creates the file `client/vmagent-targets.json`.
 
 ### CONFIGURATION COMMANDS
 
