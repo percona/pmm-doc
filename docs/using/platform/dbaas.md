@@ -75,6 +75,8 @@ To access it, select *PMM > PMM DBaaS*, or click the database icon (*DBaas*) in 
 
 6. A row appears with information on your cluster:
 
+    ![](../../_images/PMM_DBaaS_DB_Cluster_Created.png)
+
     - *Name*: The cluster name
     - *Database type*: The cluster database type
     - *Connection*:
@@ -93,7 +95,6 @@ To access it, select *PMM > PMM DBaaS*, or click the database icon (*DBaas*) in 
         - *FAILED*: The cluster could not be created
         - *DELETING*: The cluster is being deleted
 
-    ![](../../_images/PMM_DBaaS_DB_Cluster_Created.png)
 
 ## Restart a DB Cluster
 
