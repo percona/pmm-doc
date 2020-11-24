@@ -109,7 +109,7 @@ To access it, select *PMM > PMM DBaaS*, or click the database icon (*DBaas*) in 
 
 2. Identify the database cluster to be changed.
 
-3. In the *Actions* column, open the menu and click *Modify*.
+3. In the *Actions* column, open the menu and click *Edit*.
 
 ## Delete a DB Cluster
 
