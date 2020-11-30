@@ -26,9 +26,12 @@ To install minikube:
 ## Start PMM server with DBaaS activated
 
 > **Notes**
+> - In order to start fully working 3 node XtraDB cluster, consisting of sets of 3x ProxySQL, 3x PXC and 6x PMM Client containers, you will need at least 9 vCPU available for minikube.(1x vCPU for ProxySQL and PXC and 0.5vCPU for each pmm-client containers).
 > - DBaaS does not depend on PMM Client.
 > - Setting the environment variable `PERCONA_TEST_DBAAS=1` enables DBaaS functionality.
 > - Add the option `--network minikube` if you run PMM Server and minikube in the same Docker instance. (This will share a single network and the kubeconfig will work.)
+> - Add the options `--env PMM_DEBUG=1` and/or `--env PMM_TRACE=1` if you need extended debug details
+
 1. Start PMM server from a feature branch:
 
        docker run --detach --publish 80:80 --name pmm-server --env PERCONA_TEST_DBAAS=1 perconalab/pmm-server-fb:<feature branch ID>
@@ -44,33 +47,135 @@ To install minikube:
 
 1. Configure and start minikube:
 
-        minikube config set cpus 4
-        minikube config set memory 8192
-        minikube config set kubernetes-version 1.16.8
-        minikube start
+    ```
+    minikube config set cpus 16
+    minikube config set memory 32768
+    minikube config set kubernetes-version 1.16.15
+    minikube start
+    ```
 
 3. Deploy the Percona operators configuration for PXC and PSMDB in minikube:
 
-       curl -sSf -m 30 https://raw.githubusercontent.com/percona/percona-xtradb-cluster-operator/release-1.4.0/deploy/bundle.yaml  | minikube kubectl -- apply -f -
-       curl -sSf -m 30 https://raw.githubusercontent.com/percona/percona-xtradb-cluster-operator/release-1.4.0/deploy/secrets.yaml | minikube kubectl -- apply -f -
-       curl -sSf -m 30 https://raw.githubusercontent.com/percona/percona-server-mongodb-operator/release-1.4.0/deploy/bundle.yaml  | minikube kubectl -- apply -f -
-       curl -sSf -m 30 https://raw.githubusercontent.com/percona/percona-server-mongodb-operator/release-1.4.0/deploy/secrets.yaml | minikube kubectl -- apply -f -
+    ```
+    # Base64 encoded USER and PASS for pmm-server
+    PMM_USER="\$(echo -n 'admin' | base64)";
+    PMM_PASS="\$(echo -n '<RANDOM_PASS_GOES_IN_HERE>' | base64)";
+    
+    # Deploy PXC operator
+    curl -sSf -m 30 https://raw.githubusercontent.com/percona/percona-xtradb-cluster-operator/pmm-branch/deploy/bundle.yaml  | minikube kubectl -- apply -f -
+    curl -sSf -m 30 https://raw.githubusercontent.com/percona/percona-xtradb-cluster-operator/pmm-branch/deploy/secrets.yaml | sed "s/pmmserver:.*=/pmmserver: \${PMM_PASS}/g" | minikube kubectl -- apply -f -
+    
+    # Deploy PSMDB operator
+    curl -sSf -m 30 https://raw.githubusercontent.com/percona/percona-server-mongodb-operator/pmm-branch/deploy/bundle.yaml  | minikube kubectl -- apply -f -
+    curl -sSf -m 30 https://raw.githubusercontent.com/percona/percona-server-mongodb-operator/pmm-branch/deploy/secrets.yaml | sed "s/PMM_SERVER_USER:.*$/PMM_SERVER_USER
+    ```
 
 4. Check the operators are deployed:
 
-       minikube kubectl -- get nodes
-       minikube kubectl -- get pods
-       minikube kubectl -- wait --for=condition=Available deployment percona-xtradb-cluster-operator
-       minikube kubectl -- wait --for=condition=Available deployment percona-server-mongodb-operator
+    ```
+    minikube kubectl -- get nodes
+    minikube kubectl -- get pods
+    minikube kubectl -- wait --for=condition=Available deployment percona-xtradb-cluster-operator
+    minikube kubectl -- wait --for=condition=Available deployment percona-server-mongodb-operator
+    ```
 
 5. Get your kubeconfig details from minikube (to register your k8s cluster with PMM Server):
 
-       minikube kubectl -- config view --flatten --minify
+    ```
+    minikube kubectl -- config view --flatten --minify
+    ```
 
 
 ## Installing Percona operators in AWS EKS (k8s)
 
-TODO
+1. Create your cluster via `eksctl` or the Amazon AWS interface. Example command:
+
+    ```
+    eksctl create cluster --write-kubeconfig —name=your-cluster-name —zones=us-west-2a,us-west-2b --kubeconfig <PATH_TO_KUBECONFIG>
+    ```
+
+2. After your EKS cluster is up you need to install the PXC and PSMDB operators in. This is done the following way:
+
+    ```
+    # Prepare a base64 encoded values for user and pass with administrator privileges to pmm-server (DBaaS)
+    PMM_USER="$(echo -n 'admin' | base64)";
+    PMM_PASS="$(echo -n '<RANDOM_PASS_GOES_IN_HERE>' | base64)";
+
+    # Install the PXC operator
+    curl -sSf -m 30 https://raw.githubusercontent.com/percona/percona-xtradb-cluster-operator/pmm-branch/deploy/bundle.yaml  | kubectl apply -f -
+    curl -sSf -m 30 https://raw.githubusercontent.com/percona/percona-xtradb-cluster-operator/pmm-branch/deploy/secrets.yaml | sed "s/pmmserver:.*=/pmmserver: ${PMM_PASS}/g" | kubectl apply -f -
+
+    # Install the PSMDB operator
+    curl -sSf -m 30 https://raw.githubusercontent.com/percona/percona-server-mongodb-operator/pmm-branch/deploy/bundle.yaml  | kubectl apply -f -
+    curl -sSf -m 30 https://raw.githubusercontent.com/percona/percona-server-mongodb-operator/pmm-branch/deploy/secrets.yaml | sed "s/PMM_SERVER_USER:.*$/PMM_SERVER_USER: ${PMM_USER}/g;s/PMM_SERVER_PASSWORD:.*=$/PMM_SERVER_PASSWORD: ${PMM_PASS}/g;" | kubectl apply -f -
+
+    # Validate that the operators are running
+    kubectl get pods
+    ```
+
+3. Then you need to modify your kubeconfig file, if it's not utilizing the `aws-iam-authenticator` or `client-certificate` method for authentication against k8s. Here are two examples that you can use as template to modify a copy of your existing kubeconfig:
+
+    - For `aws-iam-authenticator` method:
+
+        ```yml
+        ---
+        apiVersion: v1
+        clusters:
+        - cluster:
+            certificate-authority-data: << CERT_AUTH_DATA >>
+            server: << K8S_CLUSTER_URL >>
+          name: << K8S_CLUSTER_NAME >>
+        contexts:
+        - context:
+            cluster: << K8S_CLUSTER_NAME >>
+            user: << K8S_CLUSTER_USER >>
+          name: << K8S_CLUSTER_NAME >>
+        current-context: << K8S_CLUSTER_NAME >>
+        kind: Config
+        preferences: {}
+        users:
+        - name: << K8S_CLUSTER_USER >>
+          user:
+            exec:
+              apiVersion: client.authentication.k8s.io/v1alpha1
+              command: aws-iam-authenticator
+              args:
+                - "token"
+                - "-i"
+                - "<< K8S_CLUSTER_NAME >>"
+                - --region
+                - << AWS_REGION >>
+              env:
+                 - name: AWS_ACCESS_KEY_ID
+                   value: "<< AWS_ACCESS_KEY_ID >>"
+                 - name: AWS_SECRET_ACCESS_KEY
+                   value: "<< AWS_SECRET_ACCESS_KEY >>"
+        ```
+
+     - For `client-certificate` method:
+
+        ```yml
+        ---
+        apiVersion: v1
+        clusters:
+        - cluster:
+            certificate-authority-data: << CERT_AUTH_DATA >>
+            server: << K8S_CLUSTER_URL >>
+          name: << K8S_CLUSTER_NAME >>
+        contexts:
+        - context:
+            cluster: << K8S_CLUSTER_NAME >>
+            user: << K8S_CLUSTER_USER >>
+          name: << K8S_CLUSTER_NAME >>
+        current-context: << K8S_CLUSTER_NAME >>
+        kind: Config
+        preferences: {}
+        users:
+        - name: << K8S_CLUSTER_NAME >>
+          user:
+            client-certificate-data: << CLIENT_CERT_DATA >>
+            client-key-data: << CLIENT_KEY_DATA >>
+        ```
 
 > **See also**
 > - [DBaaS Dashboard](../../using/platform/dbaas.md)
