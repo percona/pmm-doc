@@ -1,6 +1,6 @@
 # DBaaS Dashboard
 
-!!! caution
+!!! note "Caution"
     DBaaS functionality is Alpha. The information on this page is subject to change and may be inaccurate.
 
 This dashboard is where you add and remove Kubernetes and database clusters.
@@ -45,9 +45,7 @@ To access it, select *PMM > PMM DBaaS*, or click the database icon (*DBaas*) in 
 
 3. In section 1, *Basic Options*:
 
-    1. Enter a value for *Cluster name*.
-
-        > *Cluster Name* must comply with domain naming rules.
+    1. Enter a value for *Cluster name* that complies with domain naming rules.
 
     2. Select a cluster from the *Kubernetes Cluster* menu.
 
