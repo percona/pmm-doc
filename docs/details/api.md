@@ -1,4 +1,4 @@
-# Swagger API
+# API
 
 PMM Server lets you visually interact with API resources representing all objects within PMM. You can browse the API using the [Swagger](https://swagger.io/tools/swagger-ui/) UI, accessible at the `/swagger/` endpoint URL:
 
