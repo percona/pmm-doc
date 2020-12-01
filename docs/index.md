@@ -46,7 +46,7 @@ Each PMM Client collects various data about general system and database performa
 
 The PMM Client package consist of the following:
 
-* `pmm-admin` is a command-line tool for managing PMM Client, for example, adding and removing database instances that you want to monitor. For more information, see [pmm-admin - PMM Administration Tool](details/commands/pmm-admin/).
+* `pmm-admin` is a command-line tool for managing PMM Client, for example, adding and removing database instances that you want to monitor. For more information, see [pmm-admin - PMM Administration Tool](details/commands/pmm-admin.md).
 
 * `pmm-agent` is a client-side component a minimal command-line interface, which is a central entry point in charge for bringing the client functionality: it carries on client’s authentication, gets the client configuration stored on the PMM Server, manages exporters and other agents.
 
@@ -99,7 +99,7 @@ PMM Server includes the following tools:
 
     * Percona Dashboards is a set of dashboards for Grafana developed by Percona.
 
-All tools can be accessed from the PMM Server [web interface](using/interface/) (landing page).
+All tools can be accessed from the PMM Server [web interface](using/interface.md).
 
 ## Percona Platform
 
