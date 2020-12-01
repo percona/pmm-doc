@@ -39,9 +39,9 @@ alias kubectl='minikube kubectl --'
 
 1. Start PMM server from a feature branch:
 
-   ```sh
-   docker run --detach --publish 80:80 --name pmm-server --env PERCONA_TEST_DBAAS=1 perconalab/pmm-server-fb:<feature branch ID>
-   ```
+    ```sh
+    docker run --detach --publish 80:80 --name pmm-server --env PERCONA_TEST_DBAAS=1 perconalab/pmm-server-fb:<feature branch ID>
+    ```
 
 2. Change the default administrator credentials from CLI:
 
