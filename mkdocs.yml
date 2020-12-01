@@ -95,7 +95,7 @@ nav:
         - how-to/optimize.md
     - Details=details/:
         - details/index.md
-        - Dashboards=details/dashboards/:
+        - Dashboards:
             - details/dashboards/index.md
             - Insight:
                 - Advanced Data Exploration: 'details/dashboards/dashboard-advanced-data-exploration.md'
@@ -154,7 +154,7 @@ nav:
                 - PXC/Galera Node Summary: 'details/dashboards/dashboard-pxc-galera-node-summary.md'
                 - PXC/Galera Cluster Summary: 'details/dashboards/dashboard-pxc-galera-cluster-summary.md'
                 - PXC/Galera Nodes Compare: 'details/dashboards/dashboard-pxc-galera-nodes-compare.md'
-        - Commands=details/commands/:
+        - Commands:
             - details/commands/pmm-admin.md
         - details/api.md
         - details/glossary.md
