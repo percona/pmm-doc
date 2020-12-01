@@ -12,7 +12,7 @@
 
 `pmm-admin add DATABASE [FLAGS] [NAME] [ADDRESS]`
 
-`pmm-admin add external [FLAGS] [NAME] [ADDRESS]`
+`pmm-admin add external [FLAGS] [NAME] [ADDRESS]` (CAUTION: Technical preview feature)
 
 `pmm-admin remove [FLAGS] service-type [service-name]`
 
@@ -76,7 +76,7 @@ PMM communicates with the PMM Server via a PMM agent process.
 ### INFORMATION COMMANDS
 
 `pmm-admin list --server-url=server-url [FLAGS]`
-:    Show Services and Agents running on this Node, and mode of vmagent (push/pull).
+:    Show Services and Agents running on this Node, and the agent mode (push/pull).
 
 `pmm-admin status --server-url=server-url [FLAGS]`
 :    Show the following information about a local pmm-agent, and its connected server and clients:

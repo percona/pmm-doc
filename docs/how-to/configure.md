@@ -102,9 +102,12 @@ The results can be viewed in *PMM > PMM Database Checks*.
 
 Shows whether DBaaS features are activated on this server.
 
+!!! note
+    DBaaS is a technical preview and requires activation via a server feature flag. See [Setting up a development environment for DBaaS](../setting-up/server/dbaas.md).
+
 **Public Address**
 
-Public address for accessing this server.
+Public address for accessing DBaaS features on this server.
 
 
 ## SSH Key Details
@@ -115,7 +118,7 @@ This section lets you upload your public SSH key to access the PMM Server via SS
 
 Enter your **public key** in the *SSH Key* field and click *Apply SSH Key*.
 
-## VictoriaMetrics alerts
+## Alertmanager integration
 
 VictoriaMetrics [vmalert](https://github.com/VictoriaMetrics/VictoriaMetrics/blob/master/app/vmalert/README.md) manages alerts. It is compatible with [Prometheus Alertmanager](https://github.com/prometheus/alertmanager).
 
