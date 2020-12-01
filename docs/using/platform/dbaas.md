@@ -25,7 +25,7 @@ To access it, select *PMM > PMM DBaaS*, or click the database icon (*DBaas*) in 
 
 ## Unregister a Kubernetes cluster
 
-!!! attention
+!!! note "Attention"
     You can't unregister a kubernetes cluster if there DB clusters associated with it.
 
 1. Click *Unregister*.
@@ -124,13 +124,13 @@ To access it, select *PMM > PMM DBaaS*, or click the database icon (*DBaas*) in 
 
 1. Create your cluster via `eksctl` or the Amazon AWS interface. Example command:
 
-    ```
+    ```sh
     eksctl create cluster --write-kubeconfig —name=your-cluster-name —zones=us-west-2a,us-west-2b --kubeconfig <PATH_TO_KUBECONFIG>
     ```
 
 2. After your EKS cluster is up you need to install the PXC and PSMDB operators in. This is done the following way:
 
-    ```
+    ```sh
     # Prepare a base64 encoded values for user and pass with administrator privileges to pmm-server (DBaaS)
     PMM_USER="$(echo -n 'admin' | base64)";
     PMM_PASS="$(echo -n '<RANDOM_PASS_GOES_IN_HERE>' | base64)";

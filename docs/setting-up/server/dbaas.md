@@ -1,7 +1,7 @@
 # Setting up a development environment for DBaaS
 
-> **CAUTION**
-> DBaaS functionality is Alpha. The information on this page is subject to change and may be inaccurate.
+!!! note "Caution"
+    DBaaS functionality is Alpha. The information on this page is subject to change and may be inaccurate.
 
 ## Prerequirements
 
