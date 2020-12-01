@@ -3,7 +3,7 @@
 !!! note "Caution"
     DBaaS functionality is Alpha. The information on this page is subject to change and may be inaccurate.
 
-## Prerequirements
+## Software prerequisites
 
 ### Docker
 
@@ -17,7 +17,7 @@ systemctl enable docker;
 systemctl start docker;
 ```
 
-### minikube:
+### minikube
 
 To install minikube on CentOS:
 
