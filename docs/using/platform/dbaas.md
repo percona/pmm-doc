@@ -1,7 +1,7 @@
 # DBaaS Dashboard
 
-> **CAUTION**
-> DBaaS functionality is Alpha. The information on this page is subject to change and may be inaccurate.
+!!! caution
+    DBaaS functionality is Alpha. The information on this page is subject to change and may be inaccurate.
 
 This dashboard is where you add and remove Kubernetes and database clusters.
 
@@ -25,8 +25,8 @@ To access it, select *PMM > PMM DBaaS*, or click the database icon (*DBaas*) in 
 
 ## Unregister a Kubernetes cluster
 
-> **Attention**
-> You can't unregister a kubernetes cluster if there DB clusters associated with it.
+!!! attention
+    You can't unregister a kubernetes cluster if there DB clusters associated with it.
 
 1. Click *Unregister*.
 
@@ -34,8 +34,8 @@ To access it, select *PMM > PMM DBaaS*, or click the database icon (*DBaas*) in 
 
 ## Add a DB Cluster
 
-> **Note**
-> You must create at least one Kubernetes cluster to create a DB cluster.
+!!! note
+    You must create at least one Kubernetes cluster to create a DB cluster.
 
 1. Select the *DB Cluster* tab.
 
@@ -215,9 +215,8 @@ To access it, select *PMM > PMM DBaaS*, or click the database icon (*DBaas*) in 
 
 4. Follow the instructions for [Add a Kubernetes cluster](#add-a-kubernetes-cluster).
 
-> **See also**
->
-> - [Setting up a development environment for DBaaS](../../setting-up/server/dbaas.md)
-> - [Amazon AWS EKS: Create a cluster](https://docs.aws.amazon.com/eks/latest/userguide/create-cluster.html)
-> - [Amazon AWS EKS: Create a kubconfig file](https://docs.aws.amazon.com/eks/latest/userguide/create-kubeconfig.html)
-> - [AWS IAM Authenticator](https://github.com/kubernetes-sigs/aws-iam-authenticator)
+!!! seealso "See also"
+    - [Setting up a development environment for DBaaS](../../setting-up/server/dbaas.md)
+    - [Amazon AWS EKS: Create a cluster](https://docs.aws.amazon.com/eks/latest/userguide/create-cluster.html)
+    - [Amazon AWS EKS: Create a kubconfig file](https://docs.aws.amazon.com/eks/latest/userguide/create-kubeconfig.html)
+    - [AWS IAM Authenticator](https://github.com/kubernetes-sigs/aws-iam-authenticator)
