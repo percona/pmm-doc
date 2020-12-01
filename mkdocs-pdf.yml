@@ -1,4 +1,3 @@
-# For PMM-6482 new documentation structure
 site_name: Percona Monitoring and Management Documentation
 site_description: Percona Monitoring and Management Documentation
 site_author: Percona LLC
@@ -143,6 +142,7 @@ nav:
         - details/glossary.md
     - faq.md
     - Release Notes:
+        - release-notes/2.12.0.md
         - release-notes/2.11.1.md
         - release-notes/2.11.0.md
         - release-notes/2.10.1.md
