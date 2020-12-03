@@ -5,7 +5,7 @@ for managing and monitoring MySQL, PostgreSQL, MongoDB, and ProxySQL performance
 It is developed by Percona in collaboration with experts
 in the field of managed database services, support and consulting.
 
-!!! callout callout-info "Note"
+!!! bd-callout bd-callout-info "Note"
     This documentation covers the latest release: PMM {{release}}
 
 ## What is *Percona Monitoring and Management*?
@@ -32,7 +32,7 @@ The modules are packaged for easy installation and usage. It is assumed that the
 
 PMM is a collection of tools designed to seamlessly work together.  Some are developed by Percona and some are third-party open-source tools.
 
-!!! alert alert-secondary "Note"
+!!! callout callout-default "Note"
     The overall client-server model is not likely to change, but the set of tools that make up each component may evolve with the product.
 
 The following sections illustrates how PMM is currently structured.
