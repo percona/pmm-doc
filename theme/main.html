@@ -370,6 +370,7 @@
 {% endmacro %}
 
 {# Layout for content as hosted by Drupal (no outer html tag) #}
+{# NOTE: title and head are ignored by Drupal's container #}
 <title>{{ site_name|e }}{% if page_title %} &mdash; {{ page_title|striptags|e }}{% endif %}</title>
 <head>
     {{ metatags() }}
@@ -384,6 +385,7 @@
     {% endif %}
 </head>
 <body>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <div class="container">
         <div class="document row">
             <div class="documentwrapper col-md-9 col-md-push-3">
