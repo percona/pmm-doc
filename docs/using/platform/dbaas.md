@@ -5,7 +5,7 @@
 
 This dashboard is where you add and remove Kubernetes and database clusters.
 
-To access it, select *PMM > PMM DBaaS*, or click the *DBaas* database icon (:unicons-database:) in the left vertical menu bar.
+To access it, select *PMM > PMM DBaaS*, or click the *DBaaS* database icon :unicons-apps: in the left vertical menu bar.
 
 ![](../../_images/PMM_DBaaS_Kubernetes_Cluster_Panel.jpg)
 
