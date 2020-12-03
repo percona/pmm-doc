@@ -24,8 +24,6 @@ theme:
   favicon: _images/percona_favicon.ico
 
 extra_css:
-    - css/basic.css
-    - _static/pygments.css
     - _css/percona.css
 
 markdown_extensions:
