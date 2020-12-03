@@ -26,7 +26,7 @@ To access it, select *PMM > PMM DBaaS*, or click the *DBaaS* database icon :unic
 ## Unregister a Kubernetes cluster
 
 !!! note "Attention"
-    You can't unregister a kubernetes cluster if there DB clusters associated with it.
+    You can't unregister a Kubernetes cluster if there DB clusters associated with it.
 
 1. Click *Unregister*.
 
@@ -100,7 +100,7 @@ To access it, select *PMM > PMM DBaaS*, or click the *DBaaS* database icon :unic
 
 2. Identify the DB cluster to restart.
 
-3. In the *Actions* column, open the vertical dots menu (:ellipsis-v-solid:) and click *Restart cluster*.
+3. In the *Actions* column, open the vertical dots menu :ellipsis-v-solid: and click *Restart cluster*.
 
 ## Edit a DB Cluster
 
