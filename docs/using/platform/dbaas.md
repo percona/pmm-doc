@@ -25,7 +25,7 @@ To access it, select *PMM > PMM DBaaS*, or click the database icon (*DBaas*) in 
 
 ## Unregister a Kubernetes cluster
 
-!!! alert alert-info
+!!! alert alert-info "Note"
     You can't unregister a kubernetes cluster if there DB clusters associated with it.
 
 1. Click *Unregister*.
@@ -34,7 +34,7 @@ To access it, select *PMM > PMM DBaaS*, or click the database icon (*DBaas*) in 
 
 ## Add a DB Cluster
 
-!!! alert alert-info
+!!! alert alert-info "Note"
     You must create at least one Kubernetes cluster to create a DB cluster.
 
 1. Select the *DB Cluster* tab.
