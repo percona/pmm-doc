@@ -1,6 +1,6 @@
 # DBaaS Dashboard
 
-!!! note "Caution"
+!!! caution alert alert-warning "Caution"
     DBaaS functionality is Alpha. The information on this page is subject to change and may be inaccurate.
 
 This dashboard is where you add and remove Kubernetes and database clusters.
@@ -25,7 +25,7 @@ To access it, select *PMM > PMM DBaaS*, or click the database icon (*DBaas*) in 
 
 ## Unregister a Kubernetes cluster
 
-!!! note "Attention"
+!!! note alert alert-info
     You can't unregister a kubernetes cluster if there DB clusters associated with it.
 
 1. Click *Unregister*.
@@ -34,7 +34,7 @@ To access it, select *PMM > PMM DBaaS*, or click the database icon (*DBaas*) in 
 
 ## Add a DB Cluster
 
-!!! note
+!!! note alert alert-info
     You must create at least one Kubernetes cluster to create a DB cluster.
 
 1. Select the *DB Cluster* tab.
