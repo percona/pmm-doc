@@ -6,7 +6,7 @@
 
 Direct Prometheus paths return structured information directly from Prometheus, bypassing the PMM application.
 
-They are accessed by requesting a URL of the form `<PMM SERVER URL>/prometheus/<token>`.
+They are accessed by requesting a URL of the form `<PMM SERVER URL>/prometheus/<PATH>`.
 
 As a result of the move to VictoriaMetrics some direct Prometheus paths are no longer available.
 
