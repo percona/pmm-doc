@@ -5,8 +5,7 @@ for managing and monitoring MySQL, PostgreSQL, MongoDB, and ProxySQL performance
 It is developed by Percona in collaboration with experts
 in the field of managed database services, support and consulting.
 
-!!! alert alert-success "Note"
-    This documentation covers the latest release: PMM {{release}}
+!!! alert alert-success "This documentation covers the latest release: PMM {{release}}"
 
 ## What is *Percona Monitoring and Management*?
 
@@ -61,7 +60,7 @@ The PMM Client package consist of the following:
 
 To make data transfer from PMM Client to PMM Server secure, all exporters are able to use SSL/TLS encrypted connections, and their communication with the PMM server is protected by the HTTP basic authentication.
 
-!!! alert alert-info
+!!! alert alert-info "Note"
 
     Credentials used in communication between the exporters and the PMM Server are the following ones:
 
