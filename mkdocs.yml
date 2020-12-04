@@ -23,6 +23,9 @@ theme:
   logo: _images/pmm-doc-logo.svg
   favicon: _images/percona_favicon.ico
 
+extra_css:
+    - https://unicons.iconscout.com/release/v2.1.0/css/unicons.css
+
 markdown_extensions:
     - toc:
         baselevel: 1
@@ -79,7 +82,7 @@ nav:
         - using/index.md
         - using/interface.md
         - using/query-analytics.md
-        - Percona Platform=using/platform/:
+        - Percona Enterprise Platform=using/platform/:
             - using/platform/index.md
             - using/platform/security-threat-tool.md
 #            - using/platform/dbaas.md
@@ -153,6 +156,7 @@ nav:
         - Commands:
             - details/commands/pmm-admin.md
         - details/api.md
+        - details/victoria-metrics.md
         - details/glossary.md
     - faq.md
     - Release Notes=release-notes/:
