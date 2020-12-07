@@ -127,9 +127,12 @@ PMM communicates with the PMM Server via a PMM agent process.
 
     `--force`
     : Remove Node with that name with all dependent Services and Agents if one exist
-    
-    `--metrics-mode=auto`      
-    : Metrics flow mode for agents node-exporter, can be push - agent will push metrics, pull - server scrape metrics from agent or auto - chosen by server.
+
+    `--metrics-mode=mode`
+    : Metrics flow mode for agents node-exporter. Allowed values:
+        - `push`: agent will push metrics
+        - `pull`: server scrapes metrics from agent
+        - `auto`: chosen by server
 
 `pmm-admin register [FLAGS] [node-address] [node-type] [node-name]`
 : Register the current Node with the PMM Server.
@@ -214,9 +217,12 @@ PMM communicates with the PMM Server via a PMM agent process.
 
     `--tls-skip-verify`
     :  Skip TLS certificates validation.
-    
-    `--metrics-mode=auto`      
-    : Metrics flow mode for agents node-exporter, can be push - agent will push metrics, pull - server scrape metrics from agent or auto - chosen by server.
+
+    `--metrics-mode=mode`
+    : Metrics flow mode for agents node-exporter. Allowed values:
+        - `push`: agent will push metrics
+        - `pull`: server scrapes metrics from agent
+        - `auto`: chosen by server
 
 #### MySQL
 
@@ -280,9 +286,11 @@ PMM communicates with the PMM Server via a PMM agent process.
     `--tls-skip-verify`
     : Skip TLS certificates validation.
 
-    `--metrics-mode=auto`      
-    : Metrics flow mode for agents node-exporter, can be push - agent will push metrics, pull - server scrape metrics from agent or auto - chosen by server.
-
+    `--metrics-mode=mode`
+    : Metrics flow mode for agents node-exporter. Allowed values:
+        - `push`: agent will push metrics
+        - `pull`: server scrapes metrics from agent
+        - `auto`: chosen by server
 
 #### PostgreSQL
 
@@ -326,10 +334,12 @@ PMM communicates with the PMM Server via a PMM agent process.
 
     `--tls-skip-verify`
     : Skip TLS certificates validation.
-    
-    `--metrics-mode=auto`      
-    : Metrics flow mode for agents node-exporter, can be push - agent will push metrics, pull - server scrape metrics from agent or auto - chosen by server.
 
+    `--metrics-mode=mode`
+    : Metrics flow mode for agents node-exporter. Allowed values:
+        - `push`: agent will push metrics
+        - `pull`: server scrapes metrics from agent
+        - `auto`: chosen by server
 
 #### ProxySQL
 
@@ -370,10 +380,12 @@ PMM communicates with the PMM Server via a PMM agent process.
 
     `--tls-skip-verify`
     : Skip TLS certificates validation.
-    
-    `--metrics-mode=auto`      
-    : Metrics flow mode for agents node-exporter, can be push - agent will push metrics, pull - server scrape metrics from agent or auto - chosen by server.
 
+    `--metrics-mode=mode`
+    : Metrics flow mode for agents node-exporter. Allowed values:
+        - `push`: agent will push metrics
+        - `pull`: server scrapes metrics from agent
+        - `auto`: chosen by server
 
 ## EXAMPLES
 
