@@ -1,4 +1,4 @@
-# Setting up: In this section
+# Setting up: Overview
 
 - [PMM Server](server/index.md)
 

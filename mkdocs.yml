@@ -91,6 +91,7 @@ nav:
         - how-to/optimize.md
     - Details=details/:
         - details/index.md
+        - details/architecture.md
         - Dashboards:
             - details/dashboards/index.md
             - Insight:

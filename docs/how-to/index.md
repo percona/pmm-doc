@@ -1,4 +1,4 @@
-# How to: In this section
+# How to: Overview
 
 - [Configure](configure.md)
     - Configuring PMM via the PMM Settings page

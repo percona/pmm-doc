@@ -1,4 +1,6 @@
-# Details: In this section
+# Details: Overview
+
+- [Architecture](architecture.md): high-level architecture and main components.
 
 - [Dashboards reference](dashboards/index.md): A complete list of dashboards by category, with screenshots
 

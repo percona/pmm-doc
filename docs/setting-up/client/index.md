@@ -16,6 +16,13 @@ You will need to have root access on the database host where you will be
 installing PMM Client (either logged in as a user with root privileges or be
 able to run commands with `sudo`).
 
+!!! alert alert-info "Note"
+
+    Credentials used in communication between the exporters and the PMM Server are the following ones:
+
+    * login is `pmm`
+    * password is equal to Agent ID, which can be seen e.g. on the Inventory Dashboard.
+
 **Supported platforms**
 
 PMM Client should run on any modern Linux 64-bit distribution, however
