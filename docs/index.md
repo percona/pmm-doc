@@ -42,7 +42,7 @@ PMM Server can run as:
 
 ### PMM Client
 
-PMM Client runs on every database host or node you wish to monitor. The client collects server metrics, general system metrics, and query analytics data, and sends this data to the server.
+PMM Client runs on every database host or node you wish to monitor. The client collects server metrics, general system metrics, and query analytics data, and sends it to the server.
 
 You must set up and configure PMM clients for each monitored system type:
 
