@@ -1,18 +1,22 @@
-# In this section
+# Setting up: In this section
 
-[Installing and running PMM Server](server/index.md) on:
+- [PMM Server](server/index.md)
 
-- [Docker](server/docker.md)
-- [Virtual appliances](server/virtual-appliance.md)
-- [AWS Marketplace](server/aws.md)
+    - [Docker](server/docker.md): Running PMM Server as a [Docker](https://www.docker.com/) container.
 
-[Installing and running PMM Clients](client/index.md) on:
+    - [Virtual appliances](server/virtual-appliance.md): Running PMM Server on VirtualBox as a virtual appliance using our OVA/OVF package (also supported by VMWare ESXi, XenServer and others).
 
-- [MySQL](client/mysql.md)
-- [Percona Server for MySQL](client/percona-server.md)
-- [MongDB](client/mongodb.md)
-- [PostgreSQL](client/postgresql.md)
-- [ProxySQL](client/proxysql.md)
-- [AWS](client/aws.md)
-- [Linux](client/linux.md)
-- [External services](client/external.md)
+    - [AWS Marketplace](server/aws.md): Running PMM Server as an Amazon AWS EC2 image via a (free) subscription through the [Amazon AWS Marketplace](https://aws.amazon.com/marketplace).
+
+- [PMM Client](client/index.md)
+
+    Setting up PMM Client for:
+
+    - [MySQL](client/mysql.md)
+    - [Percona Server for MySQL](client/percona-server.md)
+    - [MongDB](client/mongodb.md)
+    - [PostgreSQL](client/postgresql.md)
+    - [ProxySQL](client/proxysql.md)
+    - [Amazon RDS](client/aws.md)
+    - [Linux](client/linux.md)
+    - [External services](client/external.md)
