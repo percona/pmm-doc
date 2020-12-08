@@ -8,9 +8,15 @@ Percona Monitoring and Management (PMM) is a free, open-source database and syst
 
 PMM is software that helps you improve the performance of database instances, simplify their management, and strengthen their security. With it, you can:
 
-- Visualize a wide range of detailed out-of-the-box database metrics across large, mixed and complex multi-vendor system topologies.
+- Visualize a wide range of out-of-the-box system performance details
 
-- Drill-down, dissect and discover the cause of inefficiencies, bottlenecks, latencies, and security issues before they can cause problems (or if they already have).
+- Collect and analyze data across complex multi-vendor system topologies
+
+- Drill-down and discover the cause of inefficiencies
+
+- Anticipate performance issues, troubleshoot existing ones
+
+- Watch for potential security issues and remedy them
 
 PMM is efficient, quick to set up and easy to use. It runs in cloud, on-prem, or across hybrid platforms. It is supported by [Percona's legendary expertise](https://www.percona.com/services) in open source databases, and by a [vibrant developer and user community](https://www.percona.com/forums/questions-discussions/percona-monitoring-and-management).
 
