@@ -40,6 +40,10 @@ PMM Server can run as:
 - An [OVA/OVF virtual appliance](setting-up/server/virtual-appliance.md) running on VirtualBox, VMWare and other hypervisors;
 - An [Amazon AWS EC2 instance](setting-up/server/aws.md).
 
+
+!!! alert alert-info "Quickstart installation <{{quickstart}}>"
+
+
 ### PMM Client
 
 PMM Client runs on every database host or node you wish to monitor. The client collects server metrics, general system metrics, and query analytics data, and sends it to the server.
