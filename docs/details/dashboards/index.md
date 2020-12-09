@@ -10,7 +10,6 @@ This section lists all available dashboards.
 
 * [Advanced Data Exploration](dashboard-advanced-data-exploration.md)
 * [Home Dashboard](dashboard-home.md)
-* [Prometheus](dashboard-prometheus.md)
 * [Prometheus Exporter Status](dashboard-prometheus-exporter-status.md)
 * [Prometheus Exporters Overview](dashboard-prometheus-exporters-overview.md)
 
