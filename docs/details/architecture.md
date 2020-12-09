@@ -4,6 +4,90 @@
 
 ![image](../_images/PMM_Architecture_Client_Server.jpg)
 
+```mermaid
+flowchart LR
+
+    VM[("VictoriaMetrics")]
+    CL[("ClickHouse")]
+        GR["Grafana"]
+        MN["Monitored Database"]
+    AD(["fa:fa-terminal pmm-admin"])
+    AG(["fa:fa-terminal pmm-agent"])
+    US(("fa:fa-user User"))
+    style US fill:#f9f,stroke:#333,stroke-width:4px
+
+    subgraph "PMM Server"
+        subgraph QAN ["Query Analytics"]
+            QANAPP---QAN-API
+            QAN-API---CL
+        end
+
+        NGINX
+        pmm-managed
+        VM
+        GR
+    end
+
+    MN---exporters
+    subgraph "PMM Client"
+        exporters-->vmagent
+        subgraph "Commands"
+            AD
+            AG
+        end
+    end
+
+    VM<-->pmm-managed---QAN-API
+    QANAPP---GR---US
+    exporters-->|pull|VM<-->GR
+    vmagent-->|push|VM
+    AD --- pmm-managed
+    AG --- pmm-managed
+```
+
+```plantuml
+@startuml "pmm-context1"
+!includeurl https://raw.githubusercontent.com/stawirej/C4-PlantUML/master/C4_Component.puml
+
+!define DEVICONS https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/devicons
+!define FONTAWESOME https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/font-awesome-5
+!include DEVICONS/angular.puml
+!include DEVICONS/java.puml
+!include DEVICONS/msql_server.puml
+!include FONTAWESOME/users.puml
+
+LAYOUT_LEFT_RIGHT()
+LAYOUT_WITH_LEGEND()
+
+ComponentDb_Ext(database, "Monitored Database", "")
+
+System_Boundary(pmm_server, "PMM Server") {
+    Component(pmm_managed, "pmm-managed", " ")
+    ComponentDb(victoriametrics, "VictoriaMetrics", " ")
+}
+
+System_Boundary(pmm_client, "PMM Client") {
+    Component(pmm_admin, "pmm-admin", "golang")
+    Component(pmm_agent, "pmm-agent", "golang")
+    Component(vmagent, "vmagent", " ")
+    Boundary(exporters, "exporters"){
+    }
+}
+
+Rel_D(database, exporters, " ")
+Rel_D(vmagent, victoriametrics, "Push")
+Rel_D(exporters, vmagent, " ")
+Rel_D(exporters, victoriametrics, "Pull")
+Rel_D(pmm_admin, pmm_managed, " ")
+Rel_D(pmm_agent, pmm_managed, " ")
+' Rel(database, pmm_agent, " ")
+Rel_L(victoriametrics, pmm_managed, "")
+@enduml
+```
+
+
+
+
 PMM Server includes the following tools:
 
 - Query Analytics (QAN) enables you to analyze MySQL query performance over periods of time. In addition to the client-side QAN agent, it includes the following:

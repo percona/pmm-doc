@@ -39,6 +39,16 @@ markdown_extensions:
     - pymdownx.superfences
     - pymdownx.highlight:
         linenums: false
+    - plantuml_markdown:
+        server: http://www.plantuml.com/plantuml  # PlantUML server, for remote rendering
+        # other global options
+#        cachedir: /tmp                            # set a non-empty value to enable caching
+#        base_dir: .                               # where to search for diagrams to include
+#        format: png                               # default diagram image format
+#        classes: class1,class2                    # default diagram classes
+#        title: UML diagram                        # default title (tooltip) for diagram images
+#        alt: UML diagram image                    # default `alt` attribute for diagram images
+#        priority: 23                              # plugin priority; the higher, the sooner will be applied (default 23)
 
 plugins:
     - search
