@@ -2,7 +2,7 @@
 
 [User Interface](interface.md)
 
-- Using the PMM web-based user interface
+- Using the web-based user interface
 - Finding dashboards
 - Rendering dashboard images
 - Viewing graph details
