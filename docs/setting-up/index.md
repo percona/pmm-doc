@@ -6,6 +6,8 @@
 - [Virtual appliance](server/virtual-appliance.md) based on our OVA/OVF image
 - [Amazon AWS EC2](server/aws.md) instance via the [Amazon AWS Marketplace]({{server_aws}})
 
+---
+
 [PMM Clients](client/index.md) on:
 
 - [MySQL](client/mysql.md)
