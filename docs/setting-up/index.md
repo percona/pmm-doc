@@ -1,17 +1,11 @@
 # Setting up: Overview
 
-- [PMM Server](server/index.md)
+- [PMM Server](server/index.md) as a:
+    - [Docker](server/docker.md) container
+    - [Virtual appliance](server/virtual-appliance.md) based on our OVA/OVF image
+    - [Amazon AWS EC2](server/aws.md) instance via the [Amazon AWS Marketplace]({{server_aws}})
 
-    - [Docker](server/docker.md): Running PMM Server as a [Docker](https://www.docker.com/) container.
-
-    - [Virtual appliances](server/virtual-appliance.md): Running PMM Server on VirtualBox as a virtual appliance using our OVA/OVF package (also supported by VMWare ESXi, XenServer and others).
-
-    - [AWS Marketplace](server/aws.md): Running PMM Server as an Amazon AWS EC2 image via a (free) subscription through the [Amazon AWS Marketplace](https://aws.amazon.com/marketplace).
-
-- [PMM Client](client/index.md)
-
-    Setting up PMM Client for:
-
+- [PMM Clients](client/index.md) on:
     - [MySQL](client/mysql.md)
     - [Percona Server for MySQL](client/percona-server.md)
     - [MongDB](client/mongodb.md)
