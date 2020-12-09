@@ -8,12 +8,6 @@ PMM Client is a package of agents and exporters installed on the host you wish t
 
 Before installing it, make sure that your PMM Server host is accessible.
 
-For example, you can run the `ping` command passing the IP address of the computer that PMM Server is running on:
-
-```sh
-ping 192.168.100.1
-```
-
 You will need root access on the database host where you will be installing PMM Client (either logged in as a user with root privileges or be able to run commands with `sudo`).
 
 !!! alert alert-info "Note"
