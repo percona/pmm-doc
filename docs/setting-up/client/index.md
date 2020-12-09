@@ -17,10 +17,6 @@ You will need root access on the database host where you install PMM Client (eit
     * login is `pmm`
     * password is equal to Agent ID, which can be seen e.g. on the Inventory Dashboard.
 
-!!! warning
-
-    You should not install agents on database servers that have the same host name, because host names are used by PMM Server to identify collected data.
-
 ## Supported platforms
 
 PMM Client should run on any modern RedHat or Debian-based 64-bit Linux distribution, but is only tested on:
@@ -171,6 +167,12 @@ If you change the default port 443 when running PMM Server, specify the new port
 !!! alert alert-info "Note"
 
     By default `pmm-admin config` refuses to add client if it already exists in the PMM Server inventory database. If you need to re-add an already existing client (e.g. after full reinstall, hostname changes, etc.), you can run `pmm-admin config` with the additional `--force` option. This will remove an existing node with the same name, if any, and all its dependent services.
+
+By default, the node name is the hostname. If you have non-unique client hostnames, specify the node name when adding the client:
+
+```sh
+pmm-admin add TYPE [options] NODE-NAME
+```
 
 ## Removing monitoring services with `pmm-admin remove`
 
