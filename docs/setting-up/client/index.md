@@ -6,9 +6,9 @@
 
 PMM Client is a package of agents and exporters installed on the host you wish to monitor.
 
-Before installing it, make sure that your PMM Server host is accessible.
+Before installing, know your PMM Server's IP address and make sure that it is accessible.
 
-You will need root access on the database host where you will be installing PMM Client (either logged in as a user with root privileges or be able to run commands with `sudo`).
+You will need root access on the database host where you install PMM Client (either logged in as a user with root privileges or have `sudo` rights).
 
 !!! alert alert-info "Note"
 
@@ -129,8 +129,7 @@ A minimum of 100 MB of storage is required for installing the PMM Client package
     Configuration reloaded.
     ```
 
-
-## Connecting PMM Clients to the PMM Server
+## Connecting PMM Clients to PMM Server
 
 With your server and clients set up, you must configure each PMM Client and
 specify which PMM Server it should send its data to.

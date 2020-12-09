@@ -1,12 +1,12 @@
 # Docker
 
+[TOC]
+
+---
+
 Percona maintain a Docker image for PMM Server at <https://hub.docker.com/r/percona/pmm-server>.
 
 The Docker tags used here are for the latest version of PMM 2 ({{release}}) but you can specify any available tag to use the corresponding version of PMM Server.
-
-On this page:
-
-[TOC]
 
 ## Before you start
 
