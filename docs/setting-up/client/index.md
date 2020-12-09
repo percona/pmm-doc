@@ -1,7 +1,5 @@
 # Setting up PMM Clients
 
-On this page:
-
 [TOC]
 
 ---
@@ -10,7 +8,7 @@ PMM Client is a package of agents and exporters installed on the host you wish t
 
 Before installing it, make sure that your PMM Server host is accessible.
 
-For example, you can run the `ping` command passing the IP address of the computer that PMM Server is running on. For example:
+For example, you can run the `ping` command passing the IP address of the computer that PMM Server is running on:
 
 ```sh
 ping 192.168.100.1
