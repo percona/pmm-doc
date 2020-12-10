@@ -30,22 +30,26 @@ PMM is a client/server application built by Percona with their own and third-par
 
 
 ```plantuml
-@startuml "pmm-context1"
-!includeurl https://raw.githubusercontent.com/stawirej/C4-PlantUML/master/C4_Context.puml
+@startuml PMM_context1
+!includeurl https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Context.puml
+'!includeurl https://raw.githubusercontent.com/stawirej/C4-PlantUML/master/C4_Context.puml
+
 LAYOUT_WITH_LEGEND()
+LAYOUT_TOP_DOWN()
 
 Person_Ext(user, "User")
 
-System_Boundary(pmm, "Percona Monitoring and Management\n(PMM)") {
+System_Boundary(pmm, "Percona Monitoring and Management (PMM)") {
     System(client, "PMM Client")
     System(server, "PMM Server")
 }
 System_Boundary(platform, "Percona Platform") {
 
 }
+
 Enterprise_Boundary(customer,"Customer System") {
     System(client, "PMM Client")
-    SystemDb_Ext(database, "Database")
+    System(database, "Database")
     System_Ext(application, "Application")
 }
 
@@ -54,7 +58,7 @@ Rel(user, server, " ")
 
 BiRel(client, server, " ")
 
-Rel_L(server, client, " ")
+'Rel_L(server, client, " ")
 Rel_R(server, platform," ")
 Rel_L(platform, server," ")
 Rel(client, database, "Monitors")
