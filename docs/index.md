@@ -26,43 +26,36 @@ PMM is efficient, quick to set up and easy to use. It runs in cloud, on-prem, or
 
 PMM is a client/server application built by Percona with their own and third-party open-source tools.
 
-![PMM Client/Server architecture](_images/diagram.pmm.client-server-platform.png)
+To set it up, you must:
 
+- install and configure a PMM Client on each host to be monitored. The PMM Client package provides exporters for different database and system types, and administration tools and agents.
+
+- install and run a PMM Server that communicates with clients, receiving metrics data and presenting it in a web-based user interface.
+
+We provide packages for both PMM Server and PMM Client.
 
 ```plantuml
-@startuml PMM_context1
+@startuml PMM_context0
 !includeurl https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Context.puml
-'!includeurl https://raw.githubusercontent.com/stawirej/C4-PlantUML/master/C4_Context.puml
-
-LAYOUT_WITH_LEGEND()
-LAYOUT_TOP_DOWN()
-
+!includeurl docs/_images/plantuml_styles.puml
+hide stereotype
+'title High-level overview of PMM
+caption PMM's client/server architecture
+' Entities
 Person_Ext(user, "User")
-
-System_Boundary(pmm, "Percona Monitoring and Management (PMM)") {
-    System(client, "PMM Client")
-    System(server, "PMM Server")
-}
-System_Boundary(platform, "Percona Platform") {
-
-}
-
-Enterprise_Boundary(customer,"Customer System") {
-    System(client, "PMM Client")
-    System(database, "Database")
-    System_Ext(application, "Application")
-}
-
-Rel(user, client, " ")
-Rel(user, server, " ")
-
-BiRel(client, server, " ")
-
-'Rel_L(server, client, " ")
-Rel_R(server, platform," ")
-Rel_L(platform, server," ")
-Rel(client, database, "Monitors")
-Rel_L(application, database, " ")
+System_Ext(monitored, "Monitored systems", "Servers, databases, services or applications")
+System(pmm_client, "PMM Client", "Runs on every monitored host to extract metrics data from databases and services and forwards it to PMM Server")
+System(pmm_server, "PMM Server", "Receives, stores and organizes metrics data from PMM Clients, presents it in web UI as graphs, charts, and tables")
+System_Ext(platform, "Percona Enterprise Platform", "Value-added services:\n- Security Threat Tool\n- DBaas (Coming soon)")
+' Force layout
+Lay_D(user, pmm_client)
+Lay_D(user, pmm_server)
+' Relations
+Rel_R(monitored, pmm_client, "Metrics")
+BiRel_R(pmm_client, pmm_server, " ")
+BiRel_R(pmm_server, platform, " ")
+Rel(user, pmm_server, " ")
+Rel(user, pmm_client, " ")
 @enduml
 ```
 
@@ -78,9 +71,7 @@ PMM Server can run as:
 - An [OVA/OVF virtual appliance](setting-up/server/virtual-appliance.md) running on VirtualBox, VMWare and other hypervisors;
 - An [Amazon AWS EC2 instance](setting-up/server/aws.md).
 
-
 !!! alert alert-info "Quickstart installation <{{quickstart}}>"
-
 
 ### PMM Client
 
@@ -104,6 +95,16 @@ Percona Enterprise Platform (in development) provides value-added services for P
 #### Security Threat Tool
 
 Security Threat Tool checks registered database instances for a range of common security issues. (You must [turn on *Telemetry*](how-to/configure.md#advanced-settings) to use this service.)
+
+
+
+
+
+## Typical deployment
+
+
+
+
 
 !!! seealso
     [Architecture](details/architecture.md)
