@@ -1,89 +1,39 @@
-# Architecture
+# Architecture and operation
+
+PMM works on the client/server principle, where a single server instance communicates with one or more clients.
+
+Except when monitoring AWS RDS instances, a PMM Client must be running on the host to be monitored.
+
+## PMM internal architecture
+
+The PMM Client package provides:
+
+- Exporters for each database and service type. When an exporter runs, it connects to the database or service instance, runs the metrics collection routines, and sends the results to PMM Server.
+
+- pmm-agent: Run as a daemon process, it starts and stops exporters when instructed.
+
+- vmagent: A VictoriaMetrics daemon process that sends metrics data (*pushes*) to PMM Server.
+
+The PMM Server package provides:
+
+- pmm-managed:
+
+- Query Analytics
+
+- Grafana
+
+- VictoriaMetrics
+
+
+
+
+```plantuml source="resources/PMM_Containers.puml"
+```
 
 ## PMM Server
 
 ![image](../_images/PMM_Architecture_Client_Server.jpg)
 
-```mermaid
-flowchart LR
-
-    VM[("VictoriaMetrics")]
-    CL[("ClickHouse")]
-        GR["Grafana"]
-        MN["Monitored Database"]
-    AD(["fa:fa-terminal pmm-admin"])
-    AG(["fa:fa-terminal pmm-agent"])
-    US(("fa:fa-user User"))
-    style US fill:#f9f,stroke:#333,stroke-width:4px
-
-    subgraph "PMM Server"
-        subgraph QAN ["Query Analytics"]
-            QANAPP---QAN-API
-            QAN-API---CL
-        end
-
-        NGINX
-        pmm-managed
-        VM
-        GR
-    end
-
-    MN---exporters
-    subgraph "PMM Client"
-        exporters-->vmagent
-        subgraph "Commands"
-            AD
-            AG
-        end
-    end
-
-    VM<-->pmm-managed---QAN-API
-    QANAPP---GR---US
-    exporters-->|pull|VM<-->GR
-    vmagent-->|push|VM
-    AD --- pmm-managed
-    AG --- pmm-managed
-```
-
-```plantuml
-@startuml "pmm-context1"
-!includeurl https://raw.githubusercontent.com/stawirej/C4-PlantUML/master/C4_Component.puml
-
-!define DEVICONS https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/devicons
-!define FONTAWESOME https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/font-awesome-5
-!include DEVICONS/angular.puml
-!include DEVICONS/java.puml
-!include DEVICONS/msql_server.puml
-!include FONTAWESOME/users.puml
-
-LAYOUT_LEFT_RIGHT()
-LAYOUT_WITH_LEGEND()
-
-ComponentDb_Ext(database, "Monitored Database", "")
-
-System_Boundary(pmm_server, "PMM Server") {
-    Component(pmm_managed, "pmm-managed", " ")
-    ComponentDb(victoriametrics, "VictoriaMetrics", " ")
-}
-
-System_Boundary(pmm_client, "PMM Client") {
-    Component(pmm_admin, "pmm-admin", "golang")
-    Component(pmm_agent, "pmm-agent", "golang")
-    Component(vmagent, "vmagent", " ")
-    Boundary(exporters, "exporters"){
-    }
-}
-
-Rel_D(database, exporters, " ")
-Rel_D(vmagent, victoriametrics, "Push")
-Rel_D(exporters, vmagent, " ")
-Rel_D(exporters, victoriametrics, "Pull")
-Rel_D(pmm_admin, pmm_managed, " ")
-Rel_D(pmm_agent, pmm_managed, " ")
-' Rel(database, pmm_agent, " ")
-Rel_L(victoriametrics, pmm_managed, "")
-@enduml
-```
 
 
 
@@ -125,5 +75,7 @@ The PMM Client package consist of the following:
 * `postgres_exporter` is an exporter that collects PostgreSQL performance metrics.
 
 * `proxysql_exporter` is an exporter that collects ProxySQL performance metrics.
+
+* `rds_exporter` is an exporter that collects Amazon RDS performance metrics.
 
 To make data transfer from PMM Client to PMM Server secure, all exporters are able to use SSL/TLS encrypted connections, and their communication with the PMM server is protected by the HTTP basic authentication.

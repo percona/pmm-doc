@@ -34,29 +34,7 @@ To set it up, you must:
 
 We provide packages for both PMM Server and PMM Client.
 
-```plantuml
-@startuml PMM_context0
-!includeurl https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Context.puml
-!includeurl docs/_images/plantuml_styles.puml
-hide stereotype
-'title High-level overview of PMM
-caption PMM's client/server architecture
-' Entities
-Person_Ext(user, "User")
-System_Ext(monitored, "Monitored systems", "Servers, databases, services or applications")
-System(pmm_client, "PMM Client", "Runs on every monitored host to extract metrics data from databases and services and forwards it to PMM Server")
-System(pmm_server, "PMM Server", "Receives, stores and organizes metrics data from PMM Clients, presents it in web UI as graphs, charts, and tables")
-System_Ext(platform, "Percona Enterprise Platform", "Value-added services:\n- Security Threat Tool\n- DBaas (Coming soon)")
-' Force layout
-Lay_D(user, pmm_client)
-Lay_D(user, pmm_server)
-' Relations
-Rel_R(monitored, pmm_client, "Metrics")
-BiRel_R(pmm_client, pmm_server, " ")
-BiRel_R(pmm_server, platform, " ")
-Rel(user, pmm_server, " ")
-Rel(user, pmm_client, " ")
-@enduml
+```plantuml source="resources/PMM_Context.puml"
 ```
 
 ### PMM Server

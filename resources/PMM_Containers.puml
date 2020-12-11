@@ -1,0 +1,54 @@
+@startuml "PMM Components"
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+!include resources/plantuml_styles.puml
+HIDE_STEREOTYPE()
+LAYOUT_AS_SKETCH()
+'LAYOUT_LEFT_RIGHT()
+
+Person_Ext(user, "User")
+Boundary(customer_system1, "Monitored system") {
+    ContainerDb_Ext(database, "Monitored systems", " ")
+    Boundary(pmm_client, "PMM Client") {
+        System(exporters, "exporters", "")
+        System(pmm_agent, "pmm-agent", "")
+        System(vmagent, "vmagent", "")
+    }
+}
+Boundary(customer_system2, "Server") {
+    Boundary(pmm_server, "PMM Server") {
+        System(grafana, "Grafana", "")
+        System(query_analytics, "Query Analytics", "")
+        System(pmm_managed, "pmm-managed", "")
+        System(victoriametrics, "VictoriaMetrics", "")
+        System(web_server, "Web server", "")
+    }
+}
+' Layout
+'Lay_D(user, web_server)
+Lay_R(customer_system1, customer_system2)
+Lay_R(database, pmm_client)
+'Lay_D(exporters, vmagent)
+'Lay_D(vmagent, pmm_agent)
+'Lay_L(exporters, database)
+'Lay_L(database, exporters)
+' Layout: Right
+'Lay_D(web_server, grafana)
+'Lay_R(victoriametrics, grafana)
+'Lay_D(victoriametrics, pmm_managed)
+'Lay_R(pmm_managed, query_analytics)
+' Relations: Left
+Rel(database, exporters, " ")
+'Rel(pmm_agent, database, " ")
+Rel(exporters, vmagent, " ")
+Rel(pmm_agent, exporters, "Runs")
+' Relations: Right
+Rel(web_server, grafana, " ")
+Rel(grafana, query_analytics, " ")
+Rel(query_analytics, pmm_managed, " ")
+Rel(pmm_managed, victoriametrics, " ")
+' Relations: External
+Rel(user, web_server, " ")
+BiRel(pmm_agent, pmm_managed, " ")
+Rel(exporters, victoriametrics, "Pull")
+Rel(vmagent, victoriametrics, "Push")
+@enduml
