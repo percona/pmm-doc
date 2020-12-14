@@ -1,33 +1,45 @@
-@startuml "PMM containers"
-!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+@startuml "PMM components - server"
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
 !include resources/plantuml_styles.puml
 HIDE_STEREOTYPE()
-'title PMM Client/PMM Server connections
-caption PMM's client/server architecture
-Boundary(customer_system1, "User system") {
-    System_Ext(database, "Monitored", "Database, node or service")
-    Boundary(pmm_client, "PMM Client") {
-        System(exporters, "exporters", "Collection of programs, one for each monitored system type")
-        System(pmm_agent, "pmm-agent", "Agent invokes relevant exporter when instructed")
-        System(vmagent, "vmagent", "VictoriaMetrics agent pushes data to PMM Server")
+'LAYOUT_LEFT_RIGHT()
+'title
+caption PMM Server components
+
+System_Ext(pmm_client, "PMM Client")
+
+Boundary(pmm_server, "PMM Server") {
+
+    System(pmm_managed, "pmm-managed", "")
+    Boundary(query_analytics, "Query Analytics") {
+        ComponentDb(clickhouse, "Database", "clickhouse")
+        System(qan_api, "QAN API", "")
+
     }
-}
-Boundary(customer_system2, "User system") {
-    Boundary(pmm_server, "PMM Server") {
-        System(pmm_managed, "pmm-managed", "")
-        System(query_analytics, "Query Analytics", "")
-        System(victoriametrics, "VictoriaMetrics", "Requests (pulls) metrics and stores it")
-        System_Ext(grafana, "Grafana", "Data presentation")
+    Boundary(victoriametrics, "VictoriaMetrics") {
+        ComponentDb(vmdb, "VictoriaMetrics", "")
     }
+    System_Ext(grafana, "Grafana", "Data presentation")
+    System_Ext(web_server, "Web server", "Nginx")
 }
-BiRel_R(pmm_agent, pmm_managed, " ")
-Rel(database, exporters, " ")
-Rel_R(pmm_agent, database, "Query Analytics metrics")
-Rel_D(exporters, vmagent, " ")
-Rel_D(pmm_agent, exporters, "Runs")
-Rel_R(pmm_managed, query_analytics, " ")
-Rel_D(query_analytics, grafana, " ")
+
+'Lay_R(pmm_managed, qan_api)
+'Lay_D(pmm_managed, vmdb)
+'Lay_R(monitored, pmm_client)
+'Lay_R(pmm_client, pmm_server)
+'Lay_R(victoriametrics, grafana)
+'Lay_R(grafana, web_server)
+'Lay_D(query_analytics, grafana)
+
+'Rel(web_server, pmm_client, "")
+
+Rel(pmm_client, victoriametrics, " ")
 Rel(pmm_managed, victoriametrics, " ")
-Rel_R(exporters, victoriametrics, "Pull")
-Rel_U(vmagent, victoriametrics, "Push")
+Rel(pmm_managed, qan_api, " ")
+Rel(qan_api, grafana, " ")
+Rel(qan_api, clickhouse, " ")
+Rel(grafana, web_server, " ")
+'BiRel_L(pmm_managed, pmm_client, " ")
+BiRel(pmm_client, pmm_managed, " ")
+
 @enduml

@@ -4,18 +4,18 @@
 HIDE_STEREOTYPE()
 LAYOUT_LEFT_RIGHT()
 'title PMM Client/PMM Server connections
-'caption PMM Client
+caption PMM Client components
 
 Boundary(pmm_client, "PMM Client") {
-Container_Boundary(exporters, "exporters") {
-    Component(rds_exporter, "rds_exporter", "")
-    Component(node_exporter, "node_exporter", "")
-    Component(mysqld_exporter, "mysqld_exporter", "")
-    Component(mongodb_exporter, "mongodb_exporter", "")
-    Component(postgres_exporter, "postgres_exporter", "")
-    Component(proxysql_exporter, "proxysql_exporter", "")
-}
-System(pmm_admin, "pmm-admin", "Command-line administration tool")
+    Container_Boundary(exporters, "exporters") {
+        Component(rds_exporter, "rds_exporter", "")
+        Component(node_exporter, "node_exporter", "")
+        Component(mysqld_exporter, "mysqld_exporter", "")
+        Component(mongodb_exporter, "mongodb_exporter", "")
+        Component(postgres_exporter, "postgres_exporter", "")
+        Component(proxysql_exporter, "proxysql_exporter", "")
+    }
+    System(pmm_admin, "pmm-admin", "Command-line administration tool")
     System(pmm_agent, "pmm-agent", "Agent invokes relevant exporter when instructed")
     System(vmagent, "vmagent", "VictoriaMetrics agent pushes data to PMM Server")
 }
@@ -34,7 +34,6 @@ Rel(pmm_agent, mongodb_exporter, " ")
 Rel(pmm_agent, postgres_exporter, " ")
 Rel(pmm_agent, proxysql_exporter, " ")
 Rel(pmm_agent, node_exporter, " ")
-
 
 Rel(pmm_agent, pmm_server, " ")
 Rel(vmagent, pmm_server, "Push")
