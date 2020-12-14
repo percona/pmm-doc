@@ -4,7 +4,7 @@ PMM works on the client/server principle, where a single server instance communi
 
 Except when monitoring AWS RDS instances, a PMM Client must be running on the host to be monitored.
 
-## PMM internal architecture
+## PMM context
 
 The PMM Client package provides:
 
@@ -59,6 +59,10 @@ PMM Server includes the following tools:
 ### PMM Client
 
 ![image](../_images/diagram.pmm.client-architecture.png)
+
+```plantuml source="resources/PMM_Components_Client.puml"
+```
+
 
 The PMM Client package consist of the following:
 

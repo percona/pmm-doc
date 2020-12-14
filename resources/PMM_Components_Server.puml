@@ -2,7 +2,8 @@
 !include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
 !include resources/plantuml_styles.puml
 HIDE_STEREOTYPE()
-caption PMM Client/PMM Server connections
+'title PMM Client/PMM Server connections
+caption PMM's client/server architecture
 Boundary(customer_system1, "User system") {
     System_Ext(database, "Monitored", "Database, node or service")
     Boundary(pmm_client, "PMM Client") {
