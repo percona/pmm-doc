@@ -24,9 +24,6 @@ The PMM Server package provides:
 
 - VictoriaMetrics
 
-
-
-
 ```plantuml source="resources/PMM_Containers.puml"
 ```
 
@@ -34,9 +31,8 @@ The PMM Server package provides:
 
 ![image](../_images/PMM_Architecture_Client_Server.jpg)
 
-
-
-
+```plantuml source="resources/PMM_Components_Server.puml"
+```
 
 PMM Server includes the following tools:
 
@@ -63,23 +59,22 @@ PMM Server includes the following tools:
 ```plantuml source="resources/PMM_Components_Client.puml"
 ```
 
-
 The PMM Client package consist of the following:
 
-* `pmm-admin` is a command-line tool for managing PMM Client, for example, adding and removing database instances that you want to monitor. ([Read more.](../details/commands/pmm-admin.md)).
+- `pmm-admin` is a command-line tool for managing PMM Client, for example, adding and removing database instances that you want to monitor. ([Read more.](../details/commands/pmm-admin.md)).
 
-* `pmm-agent` is a client-side component a minimal command-line interface, which is a central entry point in charge for bringing the client functionality: it carries on client’s authentication, gets the client configuration stored on the PMM Server, manages exporters and other agents.
+- `pmm-agent` is a client-side component a minimal command-line interface, which is a central entry point in charge for bringing the client functionality: it carries on client’s authentication, gets the client configuration stored on the PMM Server, manages exporters and other agents.
 
-* `node_exporter` is an exporter that collects general system metrics.
+- `node_exporter` is an exporter that collects general system metrics.
 
-* `mysqld_exporter` is an exporter that collects MySQL server metrics.
+- `mysqld_exporter` is an exporter that collects MySQL server metrics.
 
-* `mongodb_exporter` is an exporter that collects MongoDB server metrics.
+- `mongodb_exporter` is an exporter that collects MongoDB server metrics.
 
-* `postgres_exporter` is an exporter that collects PostgreSQL performance metrics.
+- `postgres_exporter` is an exporter that collects PostgreSQL performance metrics.
 
-* `proxysql_exporter` is an exporter that collects ProxySQL performance metrics.
+- `proxysql_exporter` is an exporter that collects ProxySQL performance metrics.
 
-* `rds_exporter` is an exporter that collects Amazon RDS performance metrics.
+- `rds_exporter` is an exporter that collects Amazon RDS performance metrics.
 
 To make data transfer from PMM Client to PMM Server secure, all exporters are able to use SSL/TLS encrypted connections, and their communication with the PMM server is protected by the HTTP basic authentication.
