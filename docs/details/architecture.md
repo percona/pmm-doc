@@ -1,4 +1,4 @@
-# Architecture and operation
+# Architecture
 
 PMM works on the client/server principle, where a single server instance communicates with one or more clients.
 
