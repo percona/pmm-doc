@@ -1,32 +1,38 @@
-@startuml "PMM containers"
+@startuml "PMM Containers"
 !include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
 !include resources/plantuml_styles.puml
 HIDE_STEREOTYPE()
+'title
 caption PMM Client/PMM Server connections
-Boundary(customer_system1, "User system") {
-    System_Ext(database, "Monitored", "Database, node or service")
-    Boundary(pmm_client, "PMM Client") {
-        System(exporters, "exporters", "Collection of programs, one for each monitored system type")
-        System(pmm_agent, "pmm-agent", "Agent invokes relevant exporter when instructed")
-        System(vmagent, "vmagent", "VictoriaMetrics agent pushes data to PMM Server")
-    }
+
+System_Ext(monitored, "Monitored system", "Database, node or service")
+
+Boundary(pmm_client, "PMM Client") {
+    System(exporters, "exporters", "Collection of programs, one for each monitored system type")
+    System(pmm_agent, "pmm-agent", "Invokes appropriate exporter on command")
+    System(vmagent, "vmagent", "VictoriaMetrics agent")
 }
-Boundary(customer_system2, "User system") {
-    Boundary(pmm_server, "PMM Server") {
-        System(pmm_managed, "pmm-managed", "")
-        System(query_analytics, "Query Analytics", "")
-        System(victoriametrics, "VictoriaMetrics", "Requests (pulls) metrics and stores it")
-        System_Ext(grafana, "Grafana", "Data presentation")
-    }
+
+Boundary(pmm_server, "PMM Server") {
+    System(pmm_managed, "pmm-managed", "Manages configuration, exposes API for other components")
+    System(query_analytics, "Query Analytics", "Detailed database query data application")
+    System(victoriametrics, "VictoriaMetrics", "Receives and stores metrics data (Prometheus-compatible)")
+    System(grafana, "Grafana", "Data presentation")
 }
+
+Rel(exporters, monitored, "Extracts metrics")
+Rel(pmm_agent, monitored, "Extracts metrics for Query Analytics")
+
 BiRel_R(pmm_agent, pmm_managed, " ")
-Rel(database, exporters, " ")
-Rel_R(pmm_agent, database, "Query Analytics metrics")
-Rel_D(exporters, vmagent, " ")
-Rel_D(pmm_agent, exporters, "Runs")
-Rel_R(pmm_managed, query_analytics, " ")
-Rel_D(query_analytics, grafana, " ")
+
+Rel(exporters, vmagent, " ")
+Rel(pmm_agent, exporters, "Runs")
+
+Rel(pmm_managed, query_analytics, " ")
 Rel(pmm_managed, victoriametrics, " ")
-Rel_R(exporters, victoriametrics, "Pull")
-Rel_U(vmagent, victoriametrics, "Push")
+
+Rel(query_analytics, grafana, " ")
+
+Rel(victoriametrics, exporters, "Pulls from")
+Rel(vmagent, victoriametrics, "Pushes to")
 @enduml

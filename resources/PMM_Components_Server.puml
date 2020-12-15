@@ -12,8 +12,9 @@ Boundary(pmm_server, "PMM Server") {
 
     System(pmm_managed, "pmm-managed", "")
     Boundary(query_analytics, "Query Analytics") {
-        ComponentDb(clickhouse, "Database", "clickhouse")
-        System(qan_api, "QAN API", "")
+        ComponentDb(clickhouse, "Storage", "clickhouse")
+        System(qan_api, "API", "")
+        System(qan_app, "Application", "")
 
     }
     Boundary(victoriametrics, "VictoriaMetrics") {
@@ -36,8 +37,9 @@ Boundary(pmm_server, "PMM Server") {
 Rel(pmm_client, victoriametrics, " ")
 Rel(pmm_managed, victoriametrics, " ")
 Rel(pmm_managed, qan_api, " ")
-Rel(qan_api, grafana, " ")
 Rel(qan_api, clickhouse, " ")
+Rel(grafana, qan_app, " ")
+Rel(qan_app, qan_api, " ")
 Rel(grafana, web_server, " ")
 'BiRel_L(pmm_managed, pmm_client, " ")
 BiRel(pmm_client, pmm_managed, " ")

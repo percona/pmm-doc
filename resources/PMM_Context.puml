@@ -1,8 +1,8 @@
-@startuml "PMM context"
+@startuml "PMM Context"
 !include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Context.puml
 !include resources/plantuml_styles.puml
 HIDE_STEREOTYPE()
-'title High-level overview of PMM
+title PMM Context
 caption PMM's client/server architecture
 Person_Ext(user, "User")
 System_Ext(monitored, "Monitored systems", "Servers, databases, services or applications")
