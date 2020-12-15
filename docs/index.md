@@ -74,15 +74,5 @@ Percona Enterprise Platform (in development) provides value-added services for P
 
 Security Threat Tool checks registered database instances for a range of common security issues. (You must [turn on *Telemetry*](how-to/configure.md#advanced-settings) to use this service.)
 
-
-
-
-
-## Typical deployment
-
-
-
-
-
 !!! seealso
     [Architecture](details/architecture.md)
