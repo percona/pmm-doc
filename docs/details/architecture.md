@@ -24,15 +24,9 @@ The PMM Server package provides:
 
 - VictoriaMetrics
 
-```plantuml source="resources/PMM_Containers.puml"
-```
-
 ## PMM Server
 
 ![image](../_images/PMM_Architecture_Client_Server.jpg)
-
-```plantuml source="resources/PMM_Components_Server.puml"
-```
 
 PMM Server includes the following tools:
 
@@ -55,9 +49,6 @@ PMM Server includes the following tools:
 ### PMM Client
 
 ![image](../_images/diagram.pmm.client-architecture.png)
-
-```plantuml source="resources/PMM_Components_Client.puml"
-```
 
 The PMM Client package consist of the following:
 
