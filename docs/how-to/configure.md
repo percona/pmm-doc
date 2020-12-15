@@ -1,12 +1,16 @@
 # Configure
 
+[TOC]
+
+
+## PMM Settings
+
 The *PMM Settings* page lets you configure a number of PMM options.
 
-!!! note
+!!! alert alert-success "Tip"
+    Click *Apply changes* after making changes in the *PMM Settings* page.
 
-    Press *Apply changes* to store any changes.
-
-## Metrics resolution
+### Metrics resolution
 
 Metrics are collected at three intervals representing low, medium and high resolutions. Short time intervals are regarded as high resolution metrics, while those at longer time intervals are low resolution.
 
@@ -45,7 +49,7 @@ Values for the *Custom* preset can be entered as values, or changed with the arr
 
     If there is poor network connectivity between PMM Server and PMM Client, or between PMM Client and the database server it is monitoring, scraping every second may not be possible when the network latency is greater than 1 second.
 
-## Advanced Settings
+### Advanced Settings
 
 ![](../_images/PMM_Settings_Advanced_Settings.jpg)
 
@@ -109,8 +113,7 @@ Shows whether DBaaS features are activated on this server.
 
 Public address for accessing DBaaS features on this server.
 
-
-## SSH Key Details
+### SSH Key Details
 
 This section lets you upload your public SSH key to access the PMM Server via SSH (for example, when accessing PMM Server as a [virtual appliance](../setting-up/server/virtual-appliance.md)).
 
@@ -118,7 +121,7 @@ This section lets you upload your public SSH key to access the PMM Server via SS
 
 Enter your **public key** in the *SSH Key* field and click *Apply SSH Key*.
 
-## Alertmanager integration
+### Alertmanager integration
 
 Alertmanager manages alerts, deduplicating, grouping, and routing them to the appropriate receiver or display component.
 
@@ -132,7 +135,7 @@ This section lets you configure integration of VictoriaMetrics with an external 
 
 Fill both fields and click the *Apply Alertmanager settings* button to proceed.
 
-## Percona Platform
+### Percona Enterprise Platform
 
 This panel is where you create, and log into and out of your Percona Platform account.
 
@@ -162,18 +165,58 @@ To create a *Percona Platform* account:
 
 A brief message will confirm the creation of your new account and you may now log in with these credentials.
 
-!!! note
-
+!!! alert alert-info "Note"
     Your Percona Platform account is separate from your PMM User account.
 
-## Diagnostics
+### Diagnostics
 
-PMM can generate a set of diagnostics data which can be examined and/or shared with Percona Support in case of some issue to solve it faster.  You can get collected logs from PMM Server
-by clicking the **Download server diagnostics** button.
+PMM can generate a set of diagnostics data which can be examined and/or shared with Percona Support in case of some issue to solve it faster.  You can get collected logs from PMM Server by clicking *Download server diagnostics*.
+
+## Alerting
+
+As well as Alertmanager, PMM has *integrated alerting*.
+
+
+An alert is a named set of *rules*, conditions or criteria met by an event that results in you receiving a *notification*.
+
+The notification comes by email, slack message, or whatever method you've specified.
+
+Rules are defined by *filters*, based on our preset templates or from your own specifications.
+
+### Create an alert
+
+An alert has a name, a summary, a description, and a definition as a set of rules.
+
+Name
+: A unique name for the alert
+
+Summary
+: A short summary
+
+Description
+: A long description
+
+The definition includes:
+
+Frequency
+: How often to check whether the rule matches any events
+
+Service level agreement/objective (SLA/SLO)
+: an expression of the expected availability for the application (e.g. 99.99% uptime)
+
+1. In the left menu bar, click the bell icon <i class="uil uil-bell"></i> to open the *Integrated Alerting* page.
+
+2. TODO
+
+### Edit an alert
+
+
+
+
+
 
 !!! seealso "See also"
 
-    * [How do I troubleshoot communication issues between PMM Client and PMM Server?](../faq.md#how-do-i-troubleshoot-communication-issues-between-pmm-client-and-pmm-server)
-    * [Security Threat Tool](../platform/ssecurity-threat-tool/)
-    * [Prometheus Alertmanager documentation](https://prometheus.io/docs/alerting/alertmanager/)
-    * [Prometheus Alertmanager alerting rules](https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/)
+    - [Prometheus Alertmanager](https://prometheus.io/docs/alerting/alertmanager/)
+
+    - [Prometheus Alertmanager alerting rules](https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/)
