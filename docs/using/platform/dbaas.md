@@ -196,7 +196,7 @@ To access it, select *PMM-->PMM DBaaS*, or click the *DBaaS* database icon <i cl
 
 1. Identify the database cluster to be deleted.
 
-2. In the *Actions* column, open the menu and click *Delete*.
+2. In the *Actions* column, open the <i class="uil uil-ellipsis-v"></i> menu and click *Delete*.
 
 3. Confirm the action by clicking *Proceed*, or abandon by clicking *Cancel*.
 
@@ -208,7 +208,17 @@ To access it, select *PMM-->PMM DBaaS*, or click the *DBaaS* database icon <i cl
 
 2. Identify the database cluster to be changed.
 
-3. In the *Actions* column, open the menu and click *Edit*.
+3. In the *Actions* column, open the <i class="uil uil-ellipsis-v"></i> menu and click *Edit*.
+
+A paused cluster can't be edited.
+
+### Restart a DB Cluster
+
+1. Select the *DB Cluster* tab.
+
+2. Identify the database cluster to be changed.
+
+3. In the *Actions* column, open the <i class="uil uil-ellipsis-v"></i> menu and click *Restart*.
 
 ### Suspend or resume a DB Cluster
 
@@ -216,7 +226,12 @@ To access it, select *PMM-->PMM DBaaS*, or click the *DBaaS* database icon <i cl
 
 2. Identify the DB cluster to suspend or resume.
 
-3. In the *Actions* column, open the vertical dots menu <i class="uil uil-ellipsis-v"></i> and click the required action.
+3. In the *Actions* column, open the <i class="uil uil-ellipsis-v"></i> menu and click the required action:
+
+    - For active clusters, click *Suspend*.
+    - For paused clusters, click *Resume*.
+
+
 
 
 !!! seealso "See also"
