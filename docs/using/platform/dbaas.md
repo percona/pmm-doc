@@ -231,7 +231,7 @@ A paused cluster can't be edited.
     - For active clusters, click *Suspend*.
     - For paused clusters, click *Resume*.
 
-
+    ![DBaaS Resume](../../_images/PMM_DBaaS_DB_Cluster_Resume.gif)
 
 
 !!! seealso "See also"
