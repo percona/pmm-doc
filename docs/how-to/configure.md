@@ -109,6 +109,10 @@ Shows whether DBaaS features are activated on this server.
 !!! note
     DBaaS is a technical preview and requires activation via a server feature flag. See [Setting up a development environment for DBaaS](../setting-up/server/dbaas.md).
 
+**Integrated Alerting**
+
+Enables integrated (built-in) alerting. (See [Alerting](#alerting).)
+
 **Public Address**
 
 Public address for accessing DBaaS features on this server.
@@ -174,8 +178,7 @@ PMM can generate a set of diagnostics data which can be examined and/or shared w
 
 ## Alerting
 
-As well as Alertmanager, PMM has *integrated alerting*.
-
+As well as Alertmanager, PMM has its own built-in *integrated alerting* feature.
 
 An alert is a named set of *rules*, conditions or criteria met by an event that results in you receiving a *notification*.
 
@@ -210,7 +213,7 @@ Service level agreement/objective (SLA/SLO)
 
 ### Edit an alert
 
-
+TODO
 
 
 
