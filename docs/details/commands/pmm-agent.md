@@ -133,17 +133,24 @@ By default, pmm-agent sends messages to stderr and to the system log (syslogd or
 
 To get a separate log file, edit the `pmm-agent` start-up script.
 
-- On systemd-based systems, edit `/usr/lib/systemd/system/pmm-agent.service` and set the value for `StandardError`. Example:
+**systemd-based systems**
 
-    ```
+- Script file: `/usr/lib/systemd/system/pmm-agent.service`
+- Parameter: `StandardError`
+- Default value: `file:/var/log/pmm-agent.log`
+
+Example:
+
     StandardError=file:/var/log/pmm-agent.log
-    ```
 
-- On initd-based systems, edit `/etc/init.d/pmm-agent` and change the value for `pmm_log`. Example:
+**initd-based systems**
 
-    ```
-    pmm_log="/var/log/pmm-agent.log"
-    ```
+- Script file: `/etc/init.d/pmm-agent`
+- Parameter: `pmm_log`
+- Default value: `/var/log/pmm-agent.log`
 
-!!! alert alert-warning "Warning"
-    Log files are not automatically truncated or rotated. You are responsible for monitoring their size.
+Example:
+
+        pmm_log="/var/log/pmm-agent.log"
+
+If you change the default log file name, reflect the change in the log rotation rules file `/etc/logrotate.d/pmm-agent-logrotate`.
