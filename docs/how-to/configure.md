@@ -2,13 +2,27 @@
 
 [TOC]
 
-
 ## PMM Settings
 
-The *PMM Settings* page lets you configure a number of PMM options.
+The *PMM Settings* page lets you configure a number of PMM options. Open the *PMM Settings* page with one of:
+
+- the main menu: choose *PMM*, *PMM Settings*
+- search dashboards by name: type *PMM Settings* and click the search result
+
+On the left of the *PMM Settings* page is a menu list of sections:
+
+- [Metrics resolution](#metrics-resolutions)
+- [Advanced settings](#advanced-settings)
+- [SSH Key](#ssh-key)
+- [Alertmanager Integration](#alertmanager-integration)
+- [Percona Platform](#percona-enterprise-platform)
 
 !!! alert alert-success "Tip"
     Click *Apply changes* after making changes in the *PMM Settings* page.
+
+Common to all sections are *Diagnostics*:
+
+PMM can generate a set of diagnostics data which can be examined and/or shared with Percona Support in case of some issue to solve it faster.  You can get collected logs from PMM Server by clicking *Download server diagnostics*.
 
 ### Metrics resolution
 
@@ -172,53 +186,57 @@ A brief message will confirm the creation of your new account and you may now lo
 !!! alert alert-info "Note"
     Your Percona Platform account is separate from your PMM User account.
 
-### Diagnostics
-
-PMM can generate a set of diagnostics data which can be examined and/or shared with Percona Support in case of some issue to solve it faster.  You can get collected logs from PMM Server by clicking *Download server diagnostics*.
 
 ## Alerting
 
 As well as Alertmanager, PMM has its own built-in *integrated alerting* feature.
 
-An alert is a named set of *rules*, conditions or criteria met by an event that results in you receiving a *notification*.
+!!! alert alert-warning "Warning"
+    Integrated alerting is a technical preview and is subject to change.
 
-The notification comes by email, slack message, or whatever method you've specified.
+An *alert rule* is a named set of conditions or criteria.
 
 Rules are defined by *filters*, based on our preset templates or from your own specifications.
 
-### Create an alert
+When an event matches an alert rule, an *alert* is triggered.
 
-An alert has a name, a summary, a description, and a definition as a set of rules.
+The alert will cause a *notification* via one or more communication channels (e.g. email, slack message).
 
-Name
-: A unique name for the alert
+### Alert Rules
 
-Summary
-: A short summary
+From the left main menu, select <i class="uil uil-bell"></i> *Alerting*, <i class="uil uil-list-ul"></i> *Alert rules*
 
-Description
-: A long description
 
-The definition includes:
+### Notification channels
 
-Frequency
-: How often to check whether the rule matches any events
+*Communication channels* are named configurations representing communication methods used to send alerts.
 
-Service level agreement/objective (SLA/SLO)
-: an expression of the expected availability for the application (e.g. 99.99% uptime)
+From the left main menu, select <i class="uil uil-bell"></i> *Alerting*, <i class="uil uil-comment-alt-share"></i> *Notification channels*
 
-1. In the left menu bar, click the bell icon <i class="uil uil-bell"></i> to open the *Integrated Alerting* page.
+1. Click <i class="uil uil-channel-add"></i> *Add Channel*
 
-2. TODO
+2. In the section *New Notification Channel*, enter values for:
 
-### Edit an alert
+    - Name:
+    - Type: (See below)
+    - Default (send on all alerts):
+    - Include image:
+    - Disable Resolve Message:
+    - Send reminders:
 
-TODO
+3. The next section will provide fields that depend on the value chosen for *Type*.
+
+4. Click *Save*.
+
+5. To test the channel, click *Send test*.
+
 
 
 
 
 !!! seealso "See also"
+
+    - [Using Integrated Alerting](../using/alerting.md)
 
     - [Prometheus Alertmanager](https://prometheus.io/docs/alerting/alertmanager/)
 
