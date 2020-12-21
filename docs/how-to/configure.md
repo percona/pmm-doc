@@ -4,7 +4,9 @@
 
 ## PMM Settings
 
-The *PMM Settings* page lets you configure a number of PMM options. Open the *PMM Settings* page with one of:
+The *PMM Settings* page lets you configure a number of PMM options.
+
+Open the *PMM Settings* page with one of:
 
 - the main menu: choose *PMM*, *PMM Settings*
 - search dashboards by name: type *PMM Settings* and click the search result
@@ -20,9 +22,9 @@ On the left of the *PMM Settings* page is a menu list of sections:
 !!! alert alert-success "Tip"
     Click *Apply changes* after making changes in the *PMM Settings* page.
 
-Common to all sections are *Diagnostics*:
+### Diagnostics
 
-PMM can generate a set of diagnostics data which can be examined and/or shared with Percona Support in case of some issue to solve it faster.  You can get collected logs from PMM Server by clicking *Download server diagnostics*.
+Common to all sections is *Diagnostics*. PMM can generate a set of diagnostics data which can be examined and/or shared with Percona Support in case of some issue to solve it faster.  You can get collected logs from PMM Server by clicking *Download server diagnostics*.
 
 ### Metrics resolution
 
@@ -35,7 +37,11 @@ The *Metrics Resolution* radio button lets you select one of four presets.
 - *Rare*, *Standard* and *Frequent* are fixed presets.
 - *Custom* is an editable preset.
 
-Each preset is a group of Low, Medium and High metrics resolution values. Low resolution intervals *increases* the time between collection, resulting in low-resolution metrics and lower disk usage. High resolution intervals *decreases* the time between collection, resulting in high-resolution metrics and higher disk usage.
+Each preset is a group of Low, Medium and High metrics resolution values.
+
+- A low resolution interval *increases* the time between collection, resulting in low-resolution metrics and lower disk usage.
+
+- A high resolution interval *decreases* the time between collection, resulting in high-resolution metrics and higher disk usage.
 
 The default values for the fixed presets are:
 
@@ -125,7 +131,7 @@ Shows whether DBaaS features are activated on this server.
 
 **Integrated Alerting**
 
-Enables integrated (built-in) alerting. (See [Alerting](#alerting).)
+Enables integrated alerting. (See [Alerting](#alerting).)
 
 **Public Address**
 
@@ -153,7 +159,7 @@ This section lets you configure integration of VictoriaMetrics with an external 
 
 Fill both fields and click the *Apply Alertmanager settings* button to proceed.
 
-### Percona Enterprise Platform
+### Percona Platform
 
 This panel is where you create, and log into and out of your Percona Platform account.
 
@@ -186,7 +192,6 @@ A brief message will confirm the creation of your new account and you may now lo
 !!! alert alert-info "Note"
     Your Percona Platform account is separate from your PMM User account.
 
-
 ## Alerting
 
 As well as Alertmanager, PMM has its own built-in *integrated alerting* feature.
@@ -204,14 +209,13 @@ The alert will cause a *notification* via one or more communication channels (e.
 
 ### Alert Rules
 
-From the left main menu, select <i class="uil uil-bell"></i> *Alerting*, <i class="uil uil-list-ul"></i> *Alert rules*
-
+From the left main menu, select <i class="uil uil-bell"></i> *Alerting*, <i class="uil uil-list-ul"></i> *Alert rules*.
 
 ### Notification channels
 
 *Communication channels* are named configurations representing communication methods used to send alerts.
 
-From the left main menu, select <i class="uil uil-bell"></i> *Alerting*, <i class="uil uil-comment-alt-share"></i> *Notification channels*
+From the left main menu, select <i class="uil uil-bell"></i> *Alerting*, <i class="uil uil-comment-alt-share"></i> *Notification channels*.
 
 1. Click <i class="uil uil-channel-add"></i> *Add Channel*
 
