@@ -1,11 +1,11 @@
 # Docker
 
-Docker images of PMM Client are stored at the [percona/pmm-client](https://hub.docker.com/r/percona/pmm-client/tags/)
-public repository. The host must be able to run Docker 1.12.6 or later,
-and have network access.
+A PMM Client docker image is available from [percona/pmm-client](https://hub.docker.com/r/percona/pmm-client/tags/).
 
-Make sure that the firewall and routing rules of the host do not constrain
-the Docker container. For more information, see How do I troubleshoot communication issues between PMM Client and PMM Server?.
+It runs with Docker 1.12.6 or later.
+
+!!! alert alert-success "Tip"
+    Make sure that the firewall and routing rules of the host do not constrain the Docker container. ([Read more](../../faq.md#how-do-i-troubleshoot-communication-issues-between-pmm-client-and-pmm-server).)
 
 For more information about using Docker, see the [Docker documentation](https://docs.docker.com).
 

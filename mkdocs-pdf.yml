@@ -53,6 +53,7 @@ nav:
             - setting-up/server/aws.md
         - Client:
             - setting-up/client/index.md
+            - setting-up/client/docker.md
             - setting-up/client/mysql.md
             - setting-up/client/percona-server.md
             - setting-up/client/mongodb.md
