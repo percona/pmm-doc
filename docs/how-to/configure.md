@@ -209,13 +209,21 @@ The alert will cause a *notification* via one or more communication channels (e.
 
 ### Alert Rules
 
-From the left main menu, select <i class="uil uil-bell"></i> *Alerting*, <i class="uil uil-list-ul"></i> *Alert rules*.
+To open the *Alerting* page, select <i class="uil uil-bell"></i> *Alerting*, then <i class="uil uil-list-ul"></i> *Alert rules* from the left main menu.
+
+![Alert rules](../_images/PMM_Alert_Rules.jpg)
 
 ### Notification channels
 
-*Communication channels* are named configurations representing communication methods used to send alerts.
+*Notification channels* are named configurations representing communication methods used to send alerts.
 
-From the left main menu, select <i class="uil uil-bell"></i> *Alerting*, <i class="uil uil-comment-alt-share"></i> *Notification channels*.
+To set up a channel, go to the *Notification channels* tab:
+
+- directly, by selecting <i class="uil uil-bell"></i> *Alerting*, then <i class="uil uil-comment-alt-share"></i> *Notification channels* from the left main menu;
+
+- or indirectly, by selecting <i class="uil uil-bell"></i> *Alerting*, then <i class="uil uil-list-ul"></i> *Alert rules* from the left main menu and clicking the *Notification channels* tab;
+
+![Notification channels](../_images/PMM_Notification_Channels_Add.jpg)
 
 1. Click <i class="uil uil-channel-add"></i> *Add Channel*
 
@@ -229,6 +237,8 @@ From the left main menu, select <i class="uil uil-bell"></i> *Alerting*, <i clas
     - Send reminders:
 
 3. The next section will provide fields that depend on the value chosen for *Type*.
+
+    ![Notification Channels settings](../_images/PMM_Notification_Channels_New.jpg)
 
 4. Click *Save*.
 
