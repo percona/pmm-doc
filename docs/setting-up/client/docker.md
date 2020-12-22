@@ -37,8 +37,7 @@ When launched, the Docker container gives access to the whole functionality of P
             -e PMM_AGENT_SERVER_INSECURE_TLS=1 \
             -e PMM_AGENT_SETUP=1 \
             -e PMM_AGENT_CONFIG_FILE=pmm-agent.yml \
-            --volumes-from pmm-client-data \
-            perconalab/pmm-client:2
+            --volumes-from pmm-client-data perconalab/pmm-client:2
 
 !!! alert alert-success "Tip"
     To get help: `docker run --rm perconalab/pmm-client:2 --help`
