@@ -5,92 +5,54 @@ A PMM Client docker image is available from [percona/pmm-client](https://hub.doc
 It runs with Docker 1.12.6 or later.
 
 !!! alert alert-success "Tip"
-    Make sure that the firewall and routing rules of the host do not constrain the Docker container. ([Read more](../../faq.md#how-do-i-troubleshoot-communication-issues-between-pmm-client-and-pmm-server).)
+    Make sure that the firewall and routing rules of the host do not constrain the Docker container. ([Read more in the FAQ.](../../faq.md#how-do-i-troubleshoot-communication-issues-between-pmm-client-and-pmm-server))
 
-For more information about using Docker, see the [Docker documentation](https://docs.docker.com).
+The Docker image is a collection of preinstalled software which lets you run a selected version of PMM Client.
 
-## Setting Up a Docker Container for PMM Client
+The Docker image is not run directly.
 
-A Docker image is a collection of preinstalled software which lets you
-run a selected version of PMM Client.
-A Docker image is not run directly.
 You use it to create a Docker container for your PMM Client.
-When launched, the Docker container gives access to the whole functionality
-of PMM Client.
 
-* The setup begins by pulling the required Docker image.
+When launched, the Docker container gives access to the whole functionality of PMM Client.
 
-* Next, you create a special container for persistent PMM data.
+## Running PMM Client as a Docker container
 
-* Finally, you create and launch the PMM Client container.
+1. Pull the image
 
-### Pulling the PMM Client Docker Image
+        docker pull percona/pmm-client:2
 
-To pull the latest version from Docker Hub:
+2. Create a persistent data store
 
-```sh
-docker pull percona/pmm-client:2
-```
+        docker create -v /srv --name pmm-client-data percona/pmm-client:2 /bin/true
 
-### Creating a Persistent Data Store for the PMM Client Docker Container
+    !!! alert alert-info "Note"
+        This container does not run, but exists only to make sure you retain all PMM data when upgrading to a newer image.
 
-To create a container for persistent data, run the following command:
+3. Run the container
 
-```sh
-docker create -v /srv --name pmm-client-data percona/pmm-client:2 /bin/true
-```
+        docker run --rm \
+            -e PMM_AGENT_SERVER_ADDRESS=PMMServer:443 \
+            -e PMM_AGENT_SERVER_USERNAME=admin \
+            -e PMM_AGENT_SERVER_PASSWORD=admin \
+            -e PMM_AGENT_SERVER_INSECURE_TLS=1 \
+            -e PMM_AGENT_SETUP=1 \
+            -e PMM_AGENT_CONFIG_FILE=pmm-agent.yml \
+            --volumes-from pmm-client-data \
+            perconalab/pmm-client:2
 
-!!! note
+!!! alert alert-success "Tip"
+    To get help: `docker run --rm perconalab/pmm-client:2 --help`
 
-    This container does not run, but exists only to make sure you retain
-all PMM data when upgrading to a newer image.
+## Environment variables
 
-* The `-v` option initializes a data volume for the container.
+| Variable                        | Description   |
+| ------------------------------- | ------------- |
+| `PMM_AGENT_SERVER_ADDRESS`      | The PMM Server hostname and port number.
+| `PMM_AGENT_SERVER_USERNAME`     | The PMM Server user name.
+| `PMM_AGENT_SERVER_PASSWORD`     | The PMM Server user’s password.
+| `PMM_AGENT_SERVER_INSECURE_TLS` | If true (1), use insecure TLS. Otherwise, do not.
+| `PMM_AGENT_SETUP`               | If true (1), run `pmm-agent setup`. Default: false (0).
+| `PMM_AGENT_CONFIG_FILE`         | The PMM Agent configuration file.
 
-* The `--name` option assigns a name for the container
-to reference the container within a Docker network.
-
-* `percona/pmm-client:2` is the name and version tag of the image
-to derive the container from.
-
-* `/bin/true` is the command that the container runs.
-
-### Run the PMM Client Docker Container
-
-```sh
-docker run --rm \
-    -e PMM_AGENT_SERVER_ADDRESS=PMMServer:443 \
-    -e PMM_AGENT_SERVER_USERNAME=admin \
-    -e PMM_AGENT_SERVER_PASSWORD=admin \
-    -e PMM_AGENT_SERVER_INSECURE_TLS=1 \
-    -e PMM_AGENT_SETUP=1 \
-    -e PMM_AGENT_CONFIG_FILE=pmm-agent.yml \
-    --volumes-from pmm-client-data \
-    perconalab/pmm-client:2
-```
-
-### ENVIRONMENT VARIABLES
-
-`PMM_AGENT_SERVER_ADDRESS`
-: The PMM Server hostname and port number.
-
-`PMM_AGENT_SERVER_USERNAME`
-: The PMM Server user name.
-
-`PMM_AGENT_SERVER_PASSWORD`
-: The PMM Server user’s password.
-
-`PMM_AGENT_SERVER_INSECURE_TLS`
-: If true (1), use insecure TLS. Otherwise, do not.
-
-`PMM_AGENT_SETUP`
-: If true (1), run `pmm-agent setup`. Default: false (0).
-
-`PMM_AGENT_CONFIG_FILE`
-: The PMM Agent configuration file.
-
-To get help:
-
-```sh
-docker run --rm perconalab/pmm-client:2 --help
-```
+!!! seealso "See also"
+    - [Docker documentation](https://docs.docker.com)
