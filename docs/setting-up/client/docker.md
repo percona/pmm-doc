@@ -44,16 +44,6 @@ When launched, the Docker container gives access to the whole functionality of P
 
         docker run --rm percona/pmm-client:2 --help
 
-## Environment variables
-
-| Variable                        | Description   |
-| ------------------------------- | ------------- |
-| `PMM_AGENT_SERVER_ADDRESS`      | The PMM Server hostname and port number.
-| `PMM_AGENT_SERVER_USERNAME`     | The PMM Server user name.
-| `PMM_AGENT_SERVER_PASSWORD`     | The PMM Server user’s password.
-| `PMM_AGENT_SERVER_INSECURE_TLS` | If true (1), use insecure TLS. Otherwise, do not.
-| `PMM_AGENT_SETUP`               | If true (1), run `pmm-agent setup`. Default: false (0).
-| `PMM_AGENT_CONFIG_FILE`         | The PMM Agent configuration file.
-
 !!! seealso "See also"
+    - [pmm-agent options and environment](../../details/commands/pmm-agent.md#options-and-environment)
     - [Docker documentation](https://docs.docker.com)
