@@ -133,6 +133,9 @@ Shows whether DBaaS features are activated on this server.
 
 Enables integrated alerting. (See [Alerting](#alerting).)
 
+!!! alert alert-success "Note"
+    After changing this setting you must reload the browser page to reset the left menu entries.
+
 **Public Address**
 
 Public address for accessing DBaaS features on this server.
