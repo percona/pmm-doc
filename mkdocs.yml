@@ -63,6 +63,7 @@ extra:
     open_issue_text: 'Open doc issue'
     open_issue_subject: 'PMM doc issue on page '
     open_issue_body: 'Please describe the issue here'
+    open_issue_tooltip: 'Report an issue with this page on GitHub'
 
 nav:
     - index.md
