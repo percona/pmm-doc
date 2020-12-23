@@ -50,6 +50,20 @@
 {% endif %}
 {% endmacro %}
 
+{#### 'Open an issue for this page' link #}
+{% macro open_issue() %}
+{% if page and page.edit_url %}
+<div id="edit" class="side-column-block">
+    <i class="fa fa-github"></i>
+    <a href="{{ config.repo_url }}/issues/new?title=Issue on '{{ page.title }}' ({{ page.url }})&body=Please describe the issue" target="_blank" title="Report an issue with this page on GitHub">
+        Report an issue
+    </a>
+</div>
+{% elif config.repo_url %}
+<a href="{{ config.repo_url }}" target="_blank">{{ config.repo_name }}</a>
+{% endif %}
+{% endmacro %}
+
 {#### Contents of left column navigation bar #}
 {%- macro sidebar() %}
 {{ toctree_menu_style() }}
@@ -58,6 +72,7 @@
         {@ product_logo @}
         {@ product_pdf_download @}
         {{ edit_repo() }}
+        {{ open_issue() }}
         {{ version_menu() }}
         {{ toctree(nav, default_level) }}
         {{ relations() }}
