@@ -37,7 +37,7 @@
 {% macro edit_repo() %}
 {% if page and page.edit_url %}
 <div id="edit" class="side-column-block">
-    <i class="fa fa-github"></i>
+    <i class="uil uil-github"></i>
     <a href="{{ page.edit_url }}" target="_blank" title="Edit this page on GitHub in Markdown format">
         Edit this page
     </a>
@@ -54,8 +54,8 @@
 {% macro open_issue() %}
 {% if page and page.edit_url %}
 <div id="edit" class="side-column-block">
-    <i class="fa fa-github"></i>
-    <a href="{{ config.repo_url }}/issues/new?title=Issue on '{{ page.title }}' ({{ page.url }})&body=Please describe the issue" target="_blank" title="Report an issue with this page on GitHub">
+    <i class="uil uil-exclamation-circle"></i>
+    <a href="{{ config.repo_url }}/issues/new?title={{ config.extra.open_issue_subject }} '{{ page.title }}' ({{ page.url }})&body={{ config.extra.open_issue_body }}" target="_blank" title="Report an issue with this page on GitHub">
         Report an issue
     </a>
 </div>
