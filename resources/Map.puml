@@ -13,7 +13,7 @@ mindmapDiagram {
 
 *[#GreenYellow] [[https://www.percona.com/doc/percona-monitoring-and-management/2.x/index.html Welcome]]
 ** [[https://www.percona.com/doc/percona-monitoring-and-management/2.x/setting-up/ Setting up]]
-*** [[https://www.percona.com/doc/percona-monitoring-and-management/2.x/setting-up/index.html Setting up: Overview]]
+'*** [[https://www.percona.com/doc/percona-monitoring-and-management/2.x/setting-up/index.html Setting up: Overview]]
 *** [[https://www.percona.com/doc/percona-monitoring-and-management/2.x/setting-up/server/ Server]]
 '****_ [[https://www.percona.com/doc/percona-monitoring-and-management/2.x/setting-up/server/ Setting up PMM Server: Overview]]
 ****_ [[https://www.percona.com/doc/percona-monitoring-and-management/2.x/setting-up/server/docker.html Docker]]
