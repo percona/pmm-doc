@@ -4,6 +4,8 @@ Percona Monitoring and Management (PMM) is a free, open-source database and syst
 
 !!! alert alert-success "This is the technical documentation for the latest release: [PMM {{release}}](release-notes/{{release}}.md)"
 
+[TOC]
+
 ## What is *Percona Monitoring and Management*?
 
 PMM is software that helps you improve the performance of database instances, simplify their management, and strengthen their security. With it, you can:
@@ -73,6 +75,13 @@ Percona Enterprise Platform (in development) provides value-added services for P
 #### Security Threat Tool
 
 Security Threat Tool checks registered database instances for a range of common security issues. (You must [turn on *Telemetry*](how-to/configure.md#advanced-settings) to use this service.)
+
+## Documentation map
+
+<object type="image/svg+xml" data="_images/PMM_Documentation_Map.svg">
+<param name="src" value="_images/PMM_Documentation_Map.svg">
+</object>
+
 
 !!! seealso
     [Architecture](details/architecture.md)
