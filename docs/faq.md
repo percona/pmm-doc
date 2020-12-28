@@ -196,9 +196,9 @@ Refresh The Home page in 2-5 min and you should see that PMM was updated.
 
 PMM protects an exporter's output from unauthorized access by adding an authorization layer. To access an exporter you can use "`pmm`" as a user name and the Agent ID as a password. You can find the Agent ID corresponding to a given exporter by running `pmm-admin list`.
 
-## How to provision PMM Server with non-default admin Password 
+## How to provision PMM Server with non-default admin password?
 
-Currently there is no API available to change `admin` password, If you're deploying through docker you can use the following code snippet to change the password after starting docker container:
+Currently there is no API available to change the `admin` password. If you're deploying through Docker you can use the following code snippet to change the password after starting the Docker container:
 
 ```sh
 PMMPASSWORD="mypassword"
