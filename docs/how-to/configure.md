@@ -1,12 +1,36 @@
 # Configure
 
+---
+
+[TOC]
+
+---
+
+## PMM Settings
+
 The *PMM Settings* page lets you configure a number of PMM options.
 
-!!! note
+Open the *PMM Settings* page with one of:
 
-    Press *Apply changes* to store any changes.
+- the main menu: choose *PMM*, *PMM Settings*
+- search dashboards by name: type *PMM Settings* and click the search result
 
-## Metrics resolution
+On the left of the *PMM Settings* page is a menu list of sections:
+
+- [Metrics resolution](#metrics-resolutions)
+- [Advanced settings](#advanced-settings)
+- [SSH Key](#ssh-key)
+- [Alertmanager Integration](#alertmanager-integration)
+- [Percona Platform](#percona-enterprise-platform)
+
+!!! alert alert-success "Tip"
+    Click *Apply changes* after making changes in the *PMM Settings* page.
+
+### Diagnostics
+
+Common to all sections is *Diagnostics*. PMM can generate a set of diagnostics data which can be examined and/or shared with Percona Support in case of some issue to solve it faster.  You can get collected logs from PMM Server by clicking *Download server diagnostics*.
+
+### Metrics resolution
 
 Metrics are collected at three intervals representing low, medium and high resolutions. Short time intervals are regarded as high resolution metrics, while those at longer time intervals are low resolution.
 
@@ -17,7 +41,11 @@ The *Metrics Resolution* radio button lets you select one of four presets.
 - *Rare*, *Standard* and *Frequent* are fixed presets.
 - *Custom* is an editable preset.
 
-Each preset is a group of Low, Medium and High metrics resolution values. Low resolution intervals *increases* the time between collection, resulting in low-resolution metrics and lower disk usage. High resolution intervals *decreases* the time between collection, resulting in high-resolution metrics and higher disk usage.
+Each preset is a group of Low, Medium and High metrics resolution values.
+
+- A low resolution interval *increases* the time between collection, resulting in low-resolution metrics and lower disk usage.
+
+- A high resolution interval *decreases* the time between collection, resulting in high-resolution metrics and higher disk usage.
 
 The default values for the fixed presets are:
 
@@ -45,7 +73,7 @@ Values for the *Custom* preset can be entered as values, or changed with the arr
 
     If there is poor network connectivity between PMM Server and PMM Client, or between PMM Client and the database server it is monitoring, scraping every second may not be possible when the network latency is greater than 1 second.
 
-## Advanced Settings
+### Advanced Settings
 
 ![](../_images/PMM_Settings_Advanced_Settings.jpg)
 
@@ -94,7 +122,7 @@ It is disabled by default.
 
 It can be enabled in *PMM > PMM Settings > Settings > Advanced Settings > Security Threat Tool*.
 
-The checks take 24 hours to complete.
+The checks are re-fetched and re-run every 24 hours.
 
 The results can be viewed in *PMM > PMM Database Checks*.
 
@@ -105,12 +133,15 @@ Shows whether DBaaS features are activated on this server.
 !!! note
     DBaaS is a technical preview and requires activation via a server feature flag. See [Setting up a development environment for DBaaS](../setting-up/server/dbaas.md).
 
+**Integrated Alerting**
+
+Enables integrated alerting. (See [Alerting](#alerting).)
+
 **Public Address**
 
 Public address for accessing DBaaS features on this server.
 
-
-## SSH Key Details
+### SSH Key Details
 
 This section lets you upload your public SSH key to access the PMM Server via SSH (for example, when accessing PMM Server as a [virtual appliance](../setting-up/server/virtual-appliance.md)).
 
@@ -118,7 +149,7 @@ This section lets you upload your public SSH key to access the PMM Server via SS
 
 Enter your **public key** in the *SSH Key* field and click *Apply SSH Key*.
 
-## Alertmanager integration
+### Alertmanager integration
 
 Alertmanager manages alerts, deduplicating, grouping, and routing them to the appropriate receiver or display component.
 
@@ -132,7 +163,7 @@ This section lets you configure integration of VictoriaMetrics with an external 
 
 Fill both fields and click the *Apply Alertmanager settings* button to proceed.
 
-## Percona Platform
+### Percona Platform
 
 This panel is where you create, and log into and out of your Percona Platform account.
 
@@ -162,18 +193,13 @@ To create a *Percona Platform* account:
 
 A brief message will confirm the creation of your new account and you may now log in with these credentials.
 
-!!! note
-
+!!! alert alert-info "Note"
     Your Percona Platform account is separate from your PMM User account.
-
-## Diagnostics
-
-PMM can generate a set of diagnostics data which can be examined and/or shared with Percona Support in case of some issue to solve it faster.  You can get collected logs from PMM Server
-by clicking the **Download server diagnostics** button.
 
 !!! seealso "See also"
 
-    * [How do I troubleshoot communication issues between PMM Client and PMM Server?](../faq.md#how-do-i-troubleshoot-communication-issues-between-pmm-client-and-pmm-server)
-    * [Security Threat Tool](../platform/ssecurity-threat-tool/)
-    * [Prometheus Alertmanager documentation](https://prometheus.io/docs/alerting/alertmanager/)
-    * [Prometheus Alertmanager alerting rules](https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/)
+    - [Using Integrated Alerting](../using/alerting.md)
+
+    - [Prometheus Alertmanager](https://prometheus.io/docs/alerting/alertmanager/)
+
+    - [Prometheus Alertmanager alerting rules](https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/)

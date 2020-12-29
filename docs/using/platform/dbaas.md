@@ -1,15 +1,29 @@
 # DBaaS Dashboard
 
-!!! caution alert alert-warning "Caution"
+!!! alert alert-warning "Caution"
     DBaaS functionality is Alpha. The information on this page is subject to change and may be inaccurate.
 
-This dashboard is where you add and remove Kubernetes and database clusters.
+!!! alert alert-info "Note"
+    You must run PMM Server with a DBaaS feature flag to activate the features described here.
 
-To access it, select *PMM > PMM DBaaS*, or click the *DBaaS* database icon <i class="uil uil-database"></i> in the left vertical menu bar.
+---
+
+[TOC]
+
+---
+
+The DBaaS dashboard is where you add, remove, and operate on Kubernetes and database clusters.
+
+To open the DBaaS dashboard:
+
+- From the main menu, select <i class="uil uil-bars"></i> *PMM* --> *PMM DBaaS*;
+- Or, from the left menu, select <i class="uil uil-database"></i> *DBaaS*.
 
 ![](../../_images/PMM_DBaaS_Kubernetes_Cluster_Panel.jpg)
 
-## Add a Kubernetes cluster
+## Kubernetes clusters
+
+### Add a Kubernetes cluster
 
 1. Click *Register new Kubernetes Cluster*
 
@@ -23,16 +37,24 @@ To access it, select *PMM > PMM DBaaS*, or click the *DBaaS* database icon <i cl
 
     ![](../../_images/PMM_DBaaS_Kubernetes_Cluster_Added.jpg)
 
-## Unregister a Kubernetes cluster
+### Unregister a Kubernetes cluster
 
 !!! alert alert-info "Note"
-    You can't unregister a kubernetes cluster if there DB clusters associated with it.
+    You can't unregister a Kubernetes cluster if there DB clusters associated with it.
 
 1. Click *Unregister*.
 
 2. Confirm the action by clicking *Proceed*, or abandon by clicking *Cancel*.
 
-## Add a DB Cluster
+### View a Kubernetes cluster's configuration
+
+1. Find the row with the Kubernetes cluster you want to see.
+
+2. In the *Actions* column, open the <i class="uil uil-ellipsis-v"></i> menu and click *Show configuration*.
+
+## DB clusters
+
+### Add a DB Cluster
 
 !!! alert alert-info "Note"
     You must create at least one Kubernetes cluster to create a DB cluster.
@@ -93,125 +115,50 @@ To access it, select *PMM > PMM DBaaS*, or click the *DBaaS* database icon <i cl
         - *FAILED*: The cluster could not be created
         - *DELETING*: The cluster is being deleted
 
+### Delete a DB Cluster
 
-## Restart a DB Cluster
+1. Find the row with the database cluster you want to delete.
 
-1. Select the *DB Cluster* tab.
-
-2. Identify the DB cluster to restart.
-
-3. In the *Actions* column, open the vertical dots menu <i class="uil uil-ellipsis-v"></i> and click *Restart cluster*.
-
-## Edit a DB Cluster
-
-1. Select the *DB Cluster* tab.
-
-2. Identify the database cluster to be changed.
-
-3. In the *Actions* column, open the menu and click *Edit*.
-
-## Delete a DB Cluster
-
-1. Identify the database cluster to be deleted.
-
-2. In the *Actions* column, open the menu and click *Delete*.
+2. In the *Actions* column, open the <i class="uil uil-ellipsis-v"></i> menu and click *Delete*.
 
 3. Confirm the action by clicking *Proceed*, or abandon by clicking *Cancel*.
 
     ![](../../_images/PMM_DBaaS_DB_Cluster_Delete.png)
 
-## Add a Kubernetes Cluster on AWS EKS
+### Edit a DB Cluster
 
-1. Create your cluster via `eksctl` or the Amazon AWS interface. Example command:
+1. Select the *DB Cluster* tab.
 
-    ```sh
-    eksctl create cluster --write-kubeconfig —name=your-cluster-name —zones=us-west-2a,us-west-2b --kubeconfig <PATH_TO_KUBECONFIG>
-    ```
+2. Find the row with the database cluster you want to change.
 
-2. After your EKS cluster is up you need to install the PXC and PSMDB operators in. This is done the following way:
+3. In the *Actions* column, open the <i class="uil uil-ellipsis-v"></i> menu and click *Edit*.
 
-    ```sh
-    # Prepare a base64 encoded values for user and pass with administrator privileges to pmm-server (DBaaS)
-    PMM_USER="$(echo -n 'admin' | base64)";
-    PMM_PASS="$(echo -n '<RANDOM_PASS_GOES_IN_HERE>' | base64)";
+A paused cluster can't be edited.
 
-    # Install the PXC operator
-    curl -sSf -m 30 https://raw.githubusercontent.com/percona/percona-xtradb-cluster-operator/pmm-branch/deploy/bundle.yaml  | kubectl apply -f -
-    curl -sSf -m 30 https://raw.githubusercontent.com/percona/percona-xtradb-cluster-operator/pmm-branch/deploy/secrets.yaml | sed "s/pmmserver:.*=/pmmserver: ${PMM_PASS}/g" | kubectl apply -f -
+### Restart a DB Cluster
 
-    # Install the PSMDB operator
-    curl -sSf -m 30 https://raw.githubusercontent.com/percona/percona-server-mongodb-operator/pmm-branch/deploy/bundle.yaml  | kubectl apply -f -
-    curl -sSf -m 30 https://raw.githubusercontent.com/percona/percona-server-mongodb-operator/pmm-branch/deploy/secrets.yaml | sed "s/PMM_SERVER_USER:.*$/PMM_SERVER_USER: ${PMM_USER}/g;s/PMM_SERVER_PASSWORD:.*=$/PMM_SERVER_PASSWORD: ${PMM_PASS}/g;" | kubectl apply -f -
+1. Select the *DB Cluster* tab.
 
-    # Validate that the operators are running
-    kubectl get pods
-    ```
+2. Identify the database cluster to be changed.
 
-3. Then you need to modify your kubeconfig file, if it's not utilizing the `aws-iam-authenticator` or `client-certificate` method for authentication against k8s. Here are two examples that you can use as template to modify a copy of your existing kubeconfig:
+3. In the *Actions* column, open the <i class="uil uil-ellipsis-v"></i> menu and click *Restart*.
 
-    - For `aws-iam-authenticator` method:
+### Suspend or resume a DB Cluster
 
-        ```yml
-        ---
-        apiVersion: v1
-        clusters:
-        - cluster:
-            certificate-authority-data: << CERT_AUTH_DATA >>
-            server: << K8S_CLUSTER_URL >>
-          name: << K8S_CLUSTER_NAME >>
-        contexts:
-        - context:
-            cluster: << K8S_CLUSTER_NAME >>
-            user: << K8S_CLUSTER_USER >>
-          name: << K8S_CLUSTER_NAME >>
-        current-context: << K8S_CLUSTER_NAME >>
-        kind: Config
-        preferences: {}
-        users:
-        - name: << K8S_CLUSTER_USER >>
-          user:
-            exec:
-              apiVersion: client.authentication.k8s.io/v1alpha1
-              command: aws-iam-authenticator
-              args:
-                - "token"
-                - "-i"
-                - "<< K8S_CLUSTER_NAME >>"
-                - --region
-                - << AWS_REGION >>
-              env:
-                 - name: AWS_ACCESS_KEY_ID
-                   value: "<< AWS_ACCESS_KEY_ID >>"
-                 - name: AWS_SECRET_ACCESS_KEY
-                   value: "<< AWS_SECRET_ACCESS_KEY >>"
-        ```
+1. Select the *DB Cluster* tab.
 
-     - For `client-certificate` method:
+2. Identify the DB cluster to suspend or resume.
 
-        ```yml
-        ---
-        apiVersion: v1
-        clusters:
-        - cluster:
-            certificate-authority-data: << CERT_AUTH_DATA >>
-            server: << K8S_CLUSTER_URL >>
-          name: << K8S_CLUSTER_NAME >>
-        contexts:
-        - context:
-            cluster: << K8S_CLUSTER_NAME >>
-            user: << K8S_CLUSTER_USER >>
-          name: << K8S_CLUSTER_NAME >>
-        current-context: << K8S_CLUSTER_NAME >>
-        kind: Config
-        preferences: {}
-        users:
-        - name: << K8S_CLUSTER_NAME >>
-          user:
-            client-certificate-data: << CLIENT_CERT_DATA >>
-            client-key-data: << CLIENT_KEY_DATA >>
-        ```
+3. In the *Actions* column, open the <i class="uil uil-ellipsis-v"></i> menu and click the required action:
 
-4. Follow the instructions for [Add a Kubernetes cluster](#add-a-kubernetes-cluster).
+    - For active clusters, click *Suspend*.
+
+        ![DBaaS Suspend](../../_images/PMM_DBaaS_DB_Cluster_Suspend.gif)
+
+    - For paused clusters, click *Resume*.
+
+        ![DBaaS Resume](../../_images/PMM_DBaaS_DB_Cluster_Resume.gif)
+
 
 !!! seealso "See also"
     - [Setting up a development environment for DBaaS](../../setting-up/server/dbaas.md)
