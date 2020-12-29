@@ -25,25 +25,28 @@ markdown_extensions:
         linenums: false
     - plantuml_markdown
 
-extra:
-    release: &release '2.13.0'
-    version: '2.13'
-    major: '2.x' # Publish url suffix (percona.com/doc/percona-monitoring-and-management/2.x)
-    quickstart: 'https://www.percona.com/software/pmm/quickstart'
-
 plugins:
     - search
-    - macros
+    - macros:
+        include_yaml: # Variables used in Markdown as '{{ VAR }}'
+          - 'extra.yml'
+          - 'release.yml'
+    - exclude:
+        glob:
+          - welcome.md
+          - index.md
+          - release-notes/index.md
+          - setting-up/server/dbaas-gke.md # Included file
     - with-pdf:
         output_path: '_pdf/PerconaMonitoringAndManagement-2.13.0.pdf'
         cover_title: 'Documentation'
-        cover_subtitle: *release
+        cover_subtitle: 2.13.0
         author: 'Percona Technical Documentation Team'
         cover_logo: docs/_images/PMM_Logo.svg
         debug_html: false
 
 nav:
-    - Welcome: index.md
+    - Welcome: index-pdf.md
     - Setting up:
         - setting-up/index.md
         - Server:
@@ -53,6 +56,7 @@ nav:
             - setting-up/server/aws.md
         - Client:
             - setting-up/client/index.md
+            - setting-up/client/docker.md
             - setting-up/client/mysql.md
             - setting-up/client/percona-server.md
             - setting-up/client/mongodb.md
@@ -78,6 +82,7 @@ nav:
         - how-to/optimize.md
     - Details:
         - details/index.md
+        - details/architecture.md
         - Dashboards:
             - details/dashboards/index.md
             - Insight:
@@ -140,6 +145,7 @@ nav:
                 - details/dashboards/dashboard-pxc-galera-nodes-compare.md
         - Commands:
             - details/commands/pmm-admin.md
+            - details/commands/pmm-agent.md
         - details/api.md
         - details/victoria-metrics.md
         - details/glossary.md

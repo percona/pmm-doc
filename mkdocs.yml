@@ -47,21 +47,24 @@ markdown_extensions:
 plugins:
     - search
     - git-revision-date
-    - macros
-#    - exclude:
-#        glob:
-#          - using/platform/dbaas*
-#          - setting-up/server/dbaas*
+    - macros:
+        include_yaml: # Variables used in Markdown and templates as '{{ VAR }}'
+          - 'extra.yml'
+          - 'release.yml'
+    - exclude:
+        glob:
+          - welcome.md
+          - index-pdf.md
+          - setting-up/server/dbaas-gke.md # Included file
 
-extra:
-    release: '2.13.0'
-    version: '2.13'
-    major: '2.x' # Used by version switcher. Should match publish url suffix and site_url
-    quickstart: 'https://www.percona.com/software/pmm/quickstart'
-    server_aws: 'https://aws.amazon.com/marketplace/pp/B077J7FYGX'
+extra: # Used in main.html template and can't be externalised
+  open_issue_text: 'Report a problem with this page'
+  open_issue_subject: 'PMM doc issue on page '
+  open_issue_body: 'Please describe the issue here'
+  open_issue_tooltip: 'Report an issue with this page on GitHub'
 
 nav:
-    - index.md
+    - Welcome: index.md
     - Setting up=setting-up/:
         - setting-up/index.md
         - Server=setting-up/server/:
@@ -72,6 +75,7 @@ nav:
 #            - setting-up/server/dbaas.md
         - Client=setting-up/client:
             - setting-up/client/index.md
+            - setting-up/client/docker.md
             - setting-up/client/mysql.md
             - setting-up/client/percona-server.md
             - setting-up/client/mongodb.md
@@ -82,6 +86,7 @@ nav:
             - setting-up/client/external.md
     - Using=using/:
         - using/index.md
+        - using/alerting.md
         - using/interface.md
         - using/query-analytics.md
         - Percona Enterprise Platform=using/platform/:
@@ -97,7 +102,7 @@ nav:
     - Details=details/:
         - details/index.md
         - details/architecture.md
-        - Dashboards:
+        - Dashboards=details/dashboards/:
             - details/dashboards/index.md
             - Insight:
                 - details/dashboards/dashboard-home.md
@@ -159,6 +164,7 @@ nav:
                 - details/dashboards/dashboard-pxc-galera-nodes-compare.md
         - Commands:
             - details/commands/pmm-admin.md
+            - details/commands/pmm-agent.md
         - details/api.md
         - details/victoria-metrics.md
         - details/glossary.md
