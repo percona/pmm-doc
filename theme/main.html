@@ -52,24 +52,24 @@ https://www.percona.com/docs/theme-1-4/percona-xtradb-cluster/5.6/
 {% macro edit_repo2() %}
 {% if page and page.edit_url %}
 <div style="text-align: justify;">
-    <div id="edit" style="text-align:left;margin-bottom:10px">
-        <small>
+    <ul class="nav nav-pills">
+        <li class="left" style="margin-right: 10px">
+                <i class="uil uil-exclamation-circle"></i>
+                <a href="{{ config.repo_url }}/issues/new?title={{ config.extra.open_issue_subject }} '{{ page.title }}' ({{ page.url }})&body={{ config.extra.open_issue_body }}"
+                    target="_blank" title="{{ config.extra.open_issue_tooltip }}">{{ config.extra.open_issue_text
+                    }}</a>
+
+        </li>
+        <li class="" style="">
+
             {% if page and page.meta.revision_date %}
-                Last updated {{ page.meta.revision_date }}
+            Last updated {{ page.meta.revision_date }}
             {% endif %}
             <i class="uil uil-github"></i>
             <a href="{{ page.edit_url }}" target="_blank"
-                title="Edit this page on GitHub in Markdown format">Edit</a>
-        </small>
-    </div>
-    <div id="report" style="text-align:left;margin-bottom:10px">
-        <small>
-            <i class="uil uil-exclamation-circle"></i>
-            <a href="{{ config.repo_url }}/issues/new?title={{ config.extra.open_issue_subject }} '{{ page.title }}' ({{ page.url }})&body={{ config.extra.open_issue_body }}"
-                target="_blank" title="{{ config.extra.open_issue_tooltip }}">{{ config.extra.open_issue_text
-                }}</a></small>
-    </div>
-    <span style="width: 100%; display: inline-block;"></span>
+            title="Edit this page on GitHub in Markdown format">Edit</a>
+        </li>
+    </ul>
 </div>
 {% endif %}
 {% endmacro %}
