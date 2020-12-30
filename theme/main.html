@@ -30,78 +30,26 @@ https://www.percona.com/docs/theme-1-4/percona-xtradb-cluster/5.6/
             <a href="{{ url_root }}">Home</a>
         </li>
     </ul>
-    <ul class="nav nav-pills">
-        <li class="left" style="margin-right: 10px">
+</div>
+{% endmacro %}
+
+{#### 'Edit this page' and 'Report issue' links #}
+{% macro edit_report() %}
+{% if page and page.edit_url %}
+<div class="small">
+    <ul class="list-inline">
+        <li class="left">
                 <i class="uil uil-exclamation-circle"></i>
                 <a href="{{ config.repo_url }}/issues/new?title={{ config.extra.open_issue_subject }} '{{ page.title }}' ({{ page.url }})&body={{ config.extra.open_issue_body }}"
                     target="_blank" title="{{ config.extra.open_issue_tooltip }}">{{ config.extra.open_issue_text
                     }}</a>
-
         </li>
-        <li class="" style="">
-            {% if page and page.meta.revision_date %}
-            Last updated {{ page.meta.revision_date }}
-            {% endif %}
-            <i class="uil uil-github"></i>
+        <li class="pull-right">
+            <i class="uil uil-pen"></i>
             <a href="{{ page.edit_url }}" target="_blank"
-            title="Edit this page on GitHub in Markdown format">Edit</a>
+            title="Edit this page on GitHub in Markdown format">{{ config.extra.edit_page_text }}</a>
         </li>
     </ul>
-</div>
-{% endmacro %}
-
-{#### 'Edit this page on REPO' link #}
-{% macro edit_repo2() %}
-{% if page and page.edit_url %}
-<div class="related row">
-    <ul class="nav nav-pills">
-        <li class="left" style="margin-right: 10px">
-                <i class="uil uil-exclamation-circle"></i>
-                <a href="{{ config.repo_url }}/issues/new?title={{ config.extra.open_issue_subject }} '{{ page.title }}' ({{ page.url }})&body={{ config.extra.open_issue_body }}"
-                    target="_blank" title="{{ config.extra.open_issue_tooltip }}">{{ config.extra.open_issue_text
-                    }}</a>
-
-        </li>
-        <li class="" style="">
-            {% if page and page.meta.revision_date %}
-            Last updated {{ page.meta.revision_date }}
-            {% endif %}
-            <i class="uil uil-github"></i>
-            <a href="{{ page.edit_url }}" target="_blank"
-            title="Edit this page on GitHub in Markdown format">Edit</a>
-        </li>
-    </ul>
-</div>
-{% endif %}
-{% endmacro %}
-
-
-{#### 'Edit this page on REPO' link #}
-{% macro edit_repo() %}
-{% if page and page.edit_url %}
-<div id="edit" class="side-column-block" style="text-align:left;margin-bottom:10px">
-    <i class="uil uil-github"></i>
-    <a href="{{ page.edit_url }}" target="_blank" title="Edit this page on GitHub in Markdown format">
-        Edit this page
-    </a>
-    {% if page and page.meta.revision_date %}
-    <small>(Updated {{ page.meta.revision_date }})</small>
-    {% endif %}
-</div>
-{% endif %}
-{% endmacro %}
-
-
-
-
-
-{#### 'Open an issue for this page' link #}
-{% macro open_issue() %}
-{% if page and page.edit_url %}
-<div id="report" class="side-column-block" style="text-align:left;margin-bottom:10px">
-    <i class="uil uil-exclamation-circle"></i>
-    <a href="{{ config.repo_url }}/issues/new?title={{ config.extra.open_issue_subject }} '{{ page.title }}' ({{ page.url }})&body={{ config.extra.open_issue_body }}"
-        target="_blank" title="{{ config.extra.open_issue_tooltip }}">{{ config.extra.open_issue_text }}</a>
 </div>
 {% endif %}
 {% endmacro %}
@@ -113,8 +61,6 @@ https://www.percona.com/docs/theme-1-4/percona-xtradb-cluster/5.6/
     <div class="sphinxsidebarwrapper">
         {@ product_logo @}
         {@ product_pdf_download @}
-        {{ edit_repo() }}
-        {{ open_issue() }}
         {{ version_menu() }}
         {{ toctree(nav, default_level) }}
         {{ relations() }}
@@ -448,6 +394,7 @@ another: dir/section.md
             <div class="document row">
                 <div class="documentwrapper col-md-9 col-md-push-3">
                     {{ relbar() }}
+                    {{ edit_report() }}
                     <div class="bodywrapper">
                         <div class="body">
                             {{ page.content }}
