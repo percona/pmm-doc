@@ -30,6 +30,23 @@ https://www.percona.com/docs/theme-1-4/percona-xtradb-cluster/5.6/
             <a href="{{ url_root }}">Home</a>
         </li>
     </ul>
+    <ul class="nav nav-pills">
+        <li class="left" style="margin-right: 10px">
+                <i class="uil uil-exclamation-circle"></i>
+                <a href="{{ config.repo_url }}/issues/new?title={{ config.extra.open_issue_subject }} '{{ page.title }}' ({{ page.url }})&body={{ config.extra.open_issue_body }}"
+                    target="_blank" title="{{ config.extra.open_issue_tooltip }}">{{ config.extra.open_issue_text
+                    }}</a>
+
+        </li>
+        <li class="" style="">
+            {% if page and page.meta.revision_date %}
+            Last updated {{ page.meta.revision_date }}
+            {% endif %}
+            <i class="uil uil-github"></i>
+            <a href="{{ page.edit_url }}" target="_blank"
+            title="Edit this page on GitHub in Markdown format">Edit</a>
+        </li>
+    </ul>
 </div>
 {% endmacro %}
 
@@ -431,7 +448,6 @@ another: dir/section.md
             <div class="document row">
                 <div class="documentwrapper col-md-9 col-md-push-3">
                     {{ relbar() }}
-                    {{ edit_repo2() }}
                     <div class="bodywrapper">
                         <div class="body">
                             {{ page.content }}
