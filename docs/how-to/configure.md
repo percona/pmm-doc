@@ -1,12 +1,12 @@
 # Configure
 
+The *PMM Settings* page lets you configure a number of PMM options.
+
 ---
 
 [TOC]
 
 ---
-
-The *PMM Settings* page lets you configure a number of PMM options.
 
 Open the *PMM Settings* page with one of:
 
@@ -201,3 +201,4 @@ Alertmanager communications settings.
     - [Using Integrated Alerting](../using/alerting.md)
     - [Prometheus Alertmanager](https://prometheus.io/docs/alerting/alertmanager/)
     - [Prometheus Alertmanager alerting rules](https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/)
+    - [Prometheus Alertmanager configuration](https://prometheus.io/docs/alerting/latest/configuration/)
