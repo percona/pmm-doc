@@ -1,44 +1,49 @@
 # Security Threat Tool
 
-The Security Threat Toll runs regular checks against connected databases, alerting you if any servers pose a potential security threat.
+---
 
-The checks are automatically downloaded from Percona Platform and run every 24 hours. (This period is not configurable.)
+[TOC]
 
-They run on the PMM Client side with the results passed to PMM Server for display in the *Failed security checks* summary dashboard
-and the *PMM Database Checks* details dashboard.
+---
 
-!!! note
+The Security Threat Tool runs regular checks against connected databases, alerting you if any servers pose a potential security threat.
 
+The checks are automatically downloaded from Percona Enterprise Platform and run every 24 hours. (This period is not configurable.)
+
+They run on the PMM Client side with the results passed to PMM Server for display in the *Failed security checks* summary dashboard and the *PMM Database Checks* details dashboard.
+
+!!! alert alert-info
     Check results data *always* remains on the PMM Server, and is not to be confused with anonymous data sent for Telemetry purposes.
 
-## Where to see the results of checks
+## How to enable
 
-On your PMM home page, the *Failed security checks* dashboard shows a count of the number of failed checks.
+The Security Threat Tool is disabled by default.
 
-![image](../../_images/PMM_Home_Dashboard_Failed_Security_Checks.jpg)
+You enable it in [*PMM Settings-->Advanced Settings*](../../how-to/configure.md#advanced-settings).
 
-More details can be seen by opening the *Failed Checks* dashboard using *PMM > PMM Database Checks*.
-
-![image](../../_images/pmm.database-checks.failed-checks.png)
-
-!!! note
-
+!!! alert alert-info
     After activating the Security Threat Tool, you must wait 24 hours for data to appear in the dashboard.
 
-## How to enable the Security Threat Tool
+## Where to see the results
 
-The Security Threat Tool is disabled by default. It can be enabled in *PMM > PMM Settings*
-(see [PMM Settings Page](../../how-to/configure.md)).
+On the PMM home page, the *Failed security checks* panel shows the number of failed checks classed as critical (red), major (amber), and trivial (blue).
 
-Failed security checks summary dashboard when checks are disabled:
+![Failed security checks panel](../../_images/PMM_Home_Dashboard_Panels_Failed_Security_Checks.jpg)
 
-![image](../../_images/pmm.failed-checks.failed-security-checks-off.png)
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Key</h3>
+  </div>
+  <div class="panel-body">
+    Key: <b style="color:#e02f44;">Critical</b> &sol; <b style="color:#e36526;">Major</b> &sol; <b style="color:#5794f2;">Trivial</b>
+  </div>
+</div>
 
-Failed database checks dashboard when disabled:
+You can see more details by opening the *PMM Database Checks* dashboard (select *PMM-->PMM Database Checks*).
 
-![image](../../_images/pmm.failed-checks.failed-database-checks.png)
+![PMM Database Checks dashboard](../../_images/PMM_Database_Checks.jpg)
 
-## Checks made by the Security Threat Tool
+## List of checks made
 
 `mongodb_auth`
 : This check returns a warning if MongoDB authentication is disabled.
@@ -56,7 +61,7 @@ Failed database checks dashboard when disabled:
 : Warn if MySQL/PS/MariaDB version is not the latest.
 
 `postgresql_super_role`
-: Warn if PostgreSQL has users (besides 'postgres', 'rdsadmin', and 'pmm_user') with the role 'SUPER'. 
+: Warn if PostgreSQL has users (besides `postgres`, `rdsadmin`, and `pmm_user`) with the role 'SUPER'.
 
 `postgresql_version`
 : Warn if PostgreSQL version is not the latest.
