@@ -56,7 +56,7 @@ Failed database checks dashboard when disabled:
 : Warn if MySQL/PS/MariaDB version is not the latest.
 
 `postgresql_super_role`
-: Warn if Postgres has users (besides 'postgres', 'rdsadmin', and 'pmm_user') have the role 'SUPER'. 
+: Warn if PostgreSQL has users (besides 'postgres', 'rdsadmin', and 'pmm_user') with the role 'SUPER'. 
 
 `postgresql_version`
 : Warn if PostgreSQL version is not the latest.
