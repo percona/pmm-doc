@@ -1,28 +1,20 @@
 # Security Threat Tool
 
+The Security Threat Tool runs regular checks against connected databases, alerting you if any servers pose a potential security threat.
+
 ---
 
 [TOC]
 
 ---
 
-The Security Threat Tool runs regular checks against connected databases, alerting you if any servers pose a potential security threat.
+All checks run on the PMM Client side. Results are sent to PMM Server where a summary count is shown in the *Failed security checks* panel on the *Home Dashboard*, with details in the *PMM Database Checks* dashboard.
 
-The checks are automatically downloaded from Percona Enterprise Platform and run every 24 hours. (This period is not configurable.)
+Checks are automatically downloaded from Percona Enterprise Platform and run every 24 hours. (This period is not configurable.)
 
-They run on the PMM Client side with the results passed to PMM Server for display in the *Failed security checks* summary dashboard and the *PMM Database Checks* details dashboard.
+**Check results data *always* remains on the PMM Server.** It is not related to anonymous data sent for Telemetry purposes.
 
-**Check results data *always* remains on the PMM Server, and is not to be confused with anonymous data sent for Telemetry purposes.**
-
-## How to enable
-
-The Security Threat Tool is disabled by default. Enable it in [*PMM Settings-->Advanced Settings*](../../how-to/configure.md#advanced-settings).
-
-**After activating the Security Threat Tool, you must wait 24 hours for data to appear in the dashboard.**
-
-## Where to see the results
-
-On the PMM home page, the *Failed security checks* panel shows the number of failed checks classed as critical (red), major (amber), and trivial (blue).
+The PMM *Home Dashboard* shows the number of failed checks classed as critical (red), major (amber), and trivial (blue).
 
 ![Failed security checks panel](../../_images/PMM_Home_Dashboard_Panels_Failed_Security_Checks.jpg)
 
@@ -35,9 +27,15 @@ On the PMM home page, the *Failed security checks* panel shows the number of fai
   </div>
 </div>
 
-You can see more details by opening the *PMM Database Checks* dashboard (select *PMM-->PMM Database Checks*).
+Details are in the *PMM Database Checks* dashboard (select *PMM-->PMM Database Checks*).
 
 ![PMM Database Checks dashboard](../../_images/PMM_Database_Checks.jpg)
+
+## How to enable
+
+The Security Threat Tool is disabled by default. Enable it in [*PMM Settings-->Advanced Settings*](../../how-to/configure.md#advanced-settings).
+
+After activating the Security Threat Tool, you must **wait 24 hours for data to appear in the dashboard.**
 
 ## List of checks made
 
