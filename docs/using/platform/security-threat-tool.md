@@ -12,17 +12,13 @@ The checks are automatically downloaded from Percona Enterprise Platform and run
 
 They run on the PMM Client side with the results passed to PMM Server for display in the *Failed security checks* summary dashboard and the *PMM Database Checks* details dashboard.
 
-!!! alert alert-info
-    Check results data *always* remains on the PMM Server, and is not to be confused with anonymous data sent for Telemetry purposes.
+**Check results data *always* remains on the PMM Server, and is not to be confused with anonymous data sent for Telemetry purposes.**
 
 ## How to enable
 
-The Security Threat Tool is disabled by default.
+The Security Threat Tool is disabled by default. Enable it in [*PMM Settings-->Advanced Settings*](../../how-to/configure.md#advanced-settings).
 
-You enable it in [*PMM Settings-->Advanced Settings*](../../how-to/configure.md#advanced-settings).
-
-!!! alert alert-info
-    After activating the Security Threat Tool, you must wait 24 hours for data to appear in the dashboard.
+**After activating the Security Threat Tool, you must wait 24 hours for data to appear in the dashboard.**
 
 ## Where to see the results
 
@@ -35,7 +31,7 @@ On the PMM home page, the *Failed security checks* panel shows the number of fai
     <h3 class="panel-title">Key</h3>
   </div>
   <div class="panel-body">
-    Key: <b style="color:#e02f44;">Critical</b> &sol; <b style="color:#e36526;">Major</b> &sol; <b style="color:#5794f2;">Trivial</b>
+    <b style="color:#e02f44;">Critical</b> &sol; <b style="color:#e36526;">Major</b> &sol; <b style="color:#5794f2;">Trivial</b>
   </div>
 </div>
 
@@ -45,23 +41,12 @@ You can see more details by opening the *PMM Database Checks* dashboard (select 
 
 ## List of checks made
 
-`mongodb_auth`
-: This check returns a warning if MongoDB authentication is disabled.
-
-`mongodb_version`
-: Warn if MongoDB/PSMDB version is not the latest.
-
-`mysql_anonymous_users`
-: Warn if there are accounts with no username.
-
-`mysql_empty_password`
-: Warn if there are users without passwords.
-
-`mysql_version`
-: Warn if MySQL/PS/MariaDB version is not the latest.
-
-`postgresql_super_role`
-: Warn if PostgreSQL has users (besides `postgres`, `rdsadmin`, and `pmm_user`) with the role 'SUPER'.
-
-`postgresql_version`
-: Warn if PostgreSQL version is not the latest.
+| Check ID                | Description
+| ----------------------- | ----------------------------------------------------------------
+| `mongodb_auth`          | Returns a warning if MongoDB authentication is disabled
+| `mongodb_version`       | Warn if MongoDB/PSMDB version is not the latest
+| `mysql_anonymous_users` | Warn if there are accounts with no username
+| `mysql_empty_password`  | Warn if there are users without passwords
+| `mysql_version`         | Warn if MySQL/PS/MariaDB version is not the latest
+| `postgresql_super_role` | Warn if PostgreSQL has users (besides `postgres`, `rdsadmin`, and `pmm_user`) with the role 'SUPER'
+| `postgresql_version`    | Warn if PostgreSQL version is not the latest
