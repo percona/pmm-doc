@@ -43,10 +43,10 @@ You can see more details by opening the *PMM Database Checks* dashboard (select 
 
 | Check ID                | Description
 | ----------------------- | ----------------------------------------------------------------
-| `mongodb_auth`          | Returns a warning if MongoDB authentication is disabled
-| `mongodb_version`       | Warn if MongoDB/PSMDB version is not the latest
-| `mysql_anonymous_users` | Warn if there are accounts with no username
-| `mysql_empty_password`  | Warn if there are users without passwords
-| `mysql_version`         | Warn if MySQL/PS/MariaDB version is not the latest
-| `postgresql_super_role` | Warn if PostgreSQL has users (besides `postgres`, `rdsadmin`, and `pmm_user`) with the role 'SUPER'
-| `postgresql_version`    | Warn if PostgreSQL version is not the latest
+| `mongodb_auth`          | MongoDB authentication is disabled
+| `mongodb_version`       | MongoDB/PSMDB version is not the latest
+| `mysql_anonymous_users` | There are accounts with no username
+| `mysql_empty_password`  | There are users without passwords
+| `mysql_version`         | MySQL/PS/MariaDB version is not the latest
+| `postgresql_super_role` | PostgreSQL has users (besides `postgres`, `rdsadmin`, and `pmm_user`) with the role 'SUPER'
+| `postgresql_version`    | PostgreSQL version is not the latest
