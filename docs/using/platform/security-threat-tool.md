@@ -8,13 +8,13 @@ The Security Threat Tool runs regular checks against connected databases, alerti
 
 ---
 
-All checks run on the PMM Client side. Results are sent to PMM Server where a summary count is shown in the *Failed security checks* panel on the *Home Dashboard*, with details in the *PMM Database Checks* dashboard.
+All checks run on the PMM Client side. Results are sent to PMM Server where a summary count is shown on the *Home Dashboard*, with details in the *PMM Database Checks* dashboard.
 
 Checks are automatically downloaded from Percona Enterprise Platform and run every 24 hours. (This period is not configurable.)
 
 **Check results data *always* remains on the PMM Server.** It is not related to anonymous data sent for Telemetry purposes.
 
-The PMM *Home Dashboard* shows the number of failed checks classed as critical (red), major (amber), and trivial (blue).
+The *Failed security checks* panel on the *Home Dashboard* shows the number of failed checks classed as *critical* (red), *major* (amber), and *trivial* (blue).
 
 ![Failed security checks panel](../../_images/PMM_Home_Dashboard_Panels_Failed_Security_Checks.jpg)
 
