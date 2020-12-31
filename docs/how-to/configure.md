@@ -200,5 +200,4 @@ Alertmanager communications settings.
 !!! seealso "See also"
     - [Using Integrated Alerting](../using/alerting.md)
     - [Prometheus Alertmanager](https://prometheus.io/docs/alerting/alertmanager/)
-    - [Prometheus Alertmanager alerting rules](https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/)
     - [Prometheus Alertmanager configuration](https://prometheus.io/docs/alerting/latest/configuration/)
