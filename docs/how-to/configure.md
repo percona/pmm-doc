@@ -178,6 +178,9 @@ A brief message will confirm the creation of your new account and you may now lo
 !!! alert alert-info "Note"
     This tab appears only when *Advanced Settings* --> *Integrated Alerting* is on.
 
+Alertmanager communications settings.
+
+
 ![](../_images/PMM_Settings_Communication.jpg)
 
 ### Email
