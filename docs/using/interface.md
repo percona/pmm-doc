@@ -43,7 +43,50 @@ There are three types:
 
     ![PMM Home dashboard](../_images/PMM_Home_Dashboard.jpg)
 
-## Navigation
+## Page elements
+
+### Top row
+
+The current dashboard name is shown top left of the page.
+
+Dashboard controls are grouped top right of the page.
+
+![](../_images/PMM_Home_Dashboard_Menus_Top_Navigation_Bar.jpg)
+
+
+| Items (left)   | Description
+| -------------- | ------------------
+|                | (Display only)
+| Folder name    |
+| Dashboard name |
+|                | Mark as favorite
+|                | Share dashboard
+
+
+| Items (right)  | Description
+| -------------- | -------------------
+|                | Home
+|                | Query Analytics
+|                | Services
+|                | PMM menu
+|                | - PMM Add Instance
+|                | - PMM Database Checks
+
+
+### Filters
+
+Under the dashboard name are three filters:
+
+- Interval
+- Environment
+- Node name
+
+### Main menu
+
+Under the dashboard controls is the main menu.
+
+
+
 
 ### Left menu
 
@@ -52,11 +95,10 @@ The left menu is part of the Grafana framework and is visible on every page.
 <!-- ![Left menu](../_images/PMM_Home_Dashboard_Menus_Grafana_Left_Side_Menu.jpg) -->
 
 
-<i src="_images/percona-logo.svg"></i>
-<img src="../_images/percona-logo.svg" height="30" width="30" />
 
-| Icon                                    | Description   |
+| Icons (Top)                             | Description   |
 | --------------------------------------- | ------------- |
+| <img src="../_images/percona-logo.svg" height="30" width="30" /> | Home
 | <i class="uil uil-search"></i>          | Search
 | <i class="uil uil-plus"></i>            | Create
 | <i class="uil uil-apps"></i>            | Dashboards
@@ -65,11 +107,15 @@ The left menu is part of the Grafana framework and is visible on every page.
 | <i class="uil uil-cog"></i>             | Configuration
 | <i class="uil uil-shield"></i>          | Server Admin
 | <i class="uil uil-database"></i>        | DBaaS
-| (User)                                  |
-| <i class="uil uil-question-circle"></i> |
 
 !!! alert alert-info "Note"
-    The DBaaS icon appears if a server feature flag has been set.
+    The DBaaS icon appears only if a server feature flag has been set.
+
+| Icons (Bottom)                          | Description
+| --------------------------------------- | ------------------
+| (Profile icon)                          | User menu
+| <i class="uil uil-question-circle"></i> | Help
+
 
 ### Main menu
 
