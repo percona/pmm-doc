@@ -30,7 +30,7 @@
 - From the left menu, select {{ icon.bell }} *Alerting*, {{ icon.listul }} *Integrated Alerting*
 
 !!! alert alert-info "Note"
-    The *Alerting*  menu also lists <i class="uil uil-list-ul"></i> *Alert Rules* and <i class="uil uil-comment-alt-share"></i> *Notification Channels*. These are for Grafana's alerting functionality.
+    The *Alerting* menu also lists <i class="uil uil-list-ul"></i> *Alert Rules* and <i class="uil uil-comment-alt-share"></i> *Notification Channels*. These are for Grafana's alerting functionality.
 
 This page has four tabs.
 
