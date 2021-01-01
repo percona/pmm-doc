@@ -27,7 +27,7 @@
 
 ## Open the *Integrated Alerting* page
 
-- From the left menu, select <i class="uil uil-bell"></i> *Alerting*, <i class="uil uil-list-ul"></i> *Integrated Alerting*
+- From the left menu, select {{ icon.bell }} *Alerting*, {{ icon.listul }} *Integrated Alerting*
 
 !!! alert alert-info "Note"
     The *Alerting*  menu also lists <i class="uil uil-list-ul"></i> *Alert Rules* and <i class="uil uil-comment-alt-share"></i> *Notification Channels*. These are for Grafana's alerting functionality.
@@ -77,7 +77,7 @@ This page has four tabs.
 
 1. On the *Integrated Alerting* page, go to the *Alert Rules* tab.
 
-2. Click <i class="uil uil-plus-square"></i> *Add*.
+2. Click {{ icon.plussquare }} *Add*.
 
 3. Fill in the details
 
@@ -98,7 +98,7 @@ This page has four tabs.
 
 1. On the *Integrated Alerting* page, go to the *Alert Rule Templates* tab.
 
-2. Click <i class="uil uil-plus-square"></i> *Add*.
+2. Click {{ icon.plussquare }} *Add*.
 
 3. Enter a template in the *Alert Rule Template* text box.
 
