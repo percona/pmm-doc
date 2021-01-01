@@ -43,105 +43,74 @@ There are three types:
 
     ![PMM Home dashboard](../_images/PMM_Home_Dashboard.jpg)
 
-## Page elements
+## Common page elements
 
 ### Top row
 
-The current dashboard name is shown top left of the page.
+![Common page elements top row](../_images/PMM_Home_Dashboard_Menus_Top_Navigation_Bar.jpg)
 
-Dashboard controls are grouped top right of the page.
+| Items (left)   |                           |
+| --------------:| ------------------------- |
+| {{icon.apps}}  | (Display only)            |
+| (Name) /       | (Optional) Folder name    |
+| (Name)         | Dashboard name            |
+| {{icon.star}}  | Mark as favorite          |
+| {{icon.share}} | Share dashboard           |
+|                |                           |
 
-![](../_images/PMM_Home_Dashboard_Menus_Top_Navigation_Bar.jpg)
+| Items (right)                 |                       |
+| -----------------------------:| --------------------- |
+| {{icon.cog}}                  | Dashboard settings    |
+| {{icon.monitor}}              | Cycle view mode       |
+| {{icon.clock9}} (time range)  | Time range selector   |
+| {{icon.searchminus}}          | Time range zoom out   |
+| {{icon.sync}}                 | Refresh dashboard     |
+| (Time interval)               | Refresh period        |
 
+### Second row
 
-| Items (left)   | Description
-| -------------- | ------------------
-|                | (Display only)
-| Folder name    |
-| Dashboard name |
-|                | Mark as favorite
-|                | Share dashboard
+![Common page element second row](../_images/PMM_Home_Dashboard_Menus_Submenu_Bar.jpg)
 
+| Items (left)  |                        |
+| -------------:| ---------------------- |
+| Interval      | Data interval          |
+| Environment   | Filter by environment  |
+| Node name     | Filter by node name    |
 
-| Items (right)  | Description
-| -------------- | -------------------
-|                | Home
-|                | Query Analytics
-|                | Services
-|                | PMM menu
-|                | - PMM Add Instance
-|                | - PMM Database Checks
-
-
-### Filters
-
-Under the dashboard name are three filters:
-
-- Interval
-- Environment
-- Node name
-
-### Main menu
-
-Under the dashboard controls is the main menu.
-
-
-
+| Items (right)                 |                    |
+| -----------------------------:| ------------------ |
+| {{icon.filealt}} Home         | Home               |
+| {{icon.apps}} Query Analytics | Query Analytics    |
+| {{icon.bars}} Services        | Services           |
+| {{icon.bars}} PMM             | PMM menu           |
 
 ### Left menu
 
 The left menu is part of the Grafana framework and is visible on every page.
 
-<!-- ![Left menu](../_images/PMM_Home_Dashboard_Menus_Grafana_Left_Side_Menu.jpg) -->
+![Left menu](../_images/PMM_Home_Dashboard_Menus_Grafana_Left_Side_Menu.jpg)
 
-
-
-| Icons (Top)                             | Description   |
-| --------------------------------------- | ------------- |
-| <img src="../_images/percona-logo.svg" height="30" width="30" /> | Home
-| <i class="uil uil-search"></i>          | Search
-| <i class="uil uil-plus"></i>            | Create
-| <i class="uil uil-apps"></i>            | Dashboards
-| <i class="uil uil-compass"></i>         | Explore
-| <i class="uil uil-bell"></i>            | Alerting
-| <i class="uil uil-cog"></i>             | Configuration
-| <i class="uil uil-shield"></i>          | Server Admin
-| <i class="uil uil-database"></i>        | DBaaS
+| Items (Top)       |               |
+|:-----------------:| ------------- |
+| {{icon.percona}}  | Home          |
+| {{icon.search}}   | Search        |
+| {{icon.plus}}     | Create        |
+| {{icon.apps}}     | Dashboards    |
+| {{icon.compass}}  | Explore       |
+| {{icon.bell}}     | Alerting      |
+| {{icon.cog}}      | Configuration |
+| {{icon.shield}}   | Server Admin  |
+| {{icon.database}} | DBaaS         |
 
 !!! alert alert-info "Note"
     The DBaaS icon appears only if a server feature flag has been set.
 
-| Icons (Bottom)                          | Description
-| --------------------------------------- | ------------------
-| (Profile icon)                          | User menu
-| <i class="uil uil-question-circle"></i> | Help
+| Icons (Bottom)           |           |
+|:------------------------:| --------- |
+| (Profile icon)           | User menu |
+| {{icon.questioncircle}}  | Help      |
 
 
-### Main menu
-
-
-
-
-
-From the PMM home page, you can access specific monitoring tools, or
-dashboards. Each dashboard features a collection of metrics. These are graphs of
-a certain type that represent one specific aspect showing how metric values
-change over time.
-
-
-
-By default the PMM home page lists most recently used dashboards and helpful
-links to the information that may be useful to understand PMM better.
-
-The PMM home page lists all hosts that you have set up for monitoring as well
-as the essential details about their performance such as CPU load, disk
-performance, or network activity.
-
-
-
-## Understanding Dashboards
-
-The Metrics Monitor tool provides a historical view of metrics that are critical to a database server. Time-based graphs are separated into dashboards by themes: some are related to MySQL or MongoDB, others provide general system metrics.
 
 ## Opening a Dashboard
 
