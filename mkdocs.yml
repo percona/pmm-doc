@@ -1,5 +1,5 @@
 site_name: Percona Monitoring and Management
-site_url: https://www.percona.com/doc/percona-monitoring-and-management/2.x/
+site_url: https://new.percona.com/doc/percona-monitoring-and-management/test/
 repo_name: percona/pmm-doc
 repo_url: https://github.com/percona/pmm-doc
 edit_uri: edit/master/docs/
@@ -12,7 +12,7 @@ docs_dir: docs
 
 theme:
     name: material
-    custom_dir: theme
+#    custom_dir: theme
     language: en
     palette:
         primary: deep-orange
