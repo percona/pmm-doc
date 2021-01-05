@@ -12,7 +12,7 @@ docs_dir: docs
 
 theme:
     name: material
-#    custom_dir: theme
+    custom_dir: theme
     language: en
     palette:
         primary: deep-orange
