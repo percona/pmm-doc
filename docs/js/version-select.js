@@ -42,8 +42,10 @@ window.addEventListener("DOMContentLoaded", function() {
     container.className = "md-nav__item";
     container.appendChild(select);
 
-    var sidebar = document.querySelector(".md-nav--primary > .md-nav__list");
-    sidebar.parentNode.insertBefore(container, sidebar);
+//    var sidebar = document.querySelector(".md-nav--primary > .md-nav__list");
+var sidebar = document.querySelector("#block-system-main > div > div.container > div > div.sphinxsidebar.col-md-3.col-md-pull-9 > div > h3");
+//    sidebar.parentNode.insertBefore(container, sidebar);
+    sidebar.parentNode.insertAfter(container, sidebar);
   };
   xhr.send();
 });
