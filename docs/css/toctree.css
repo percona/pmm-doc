@@ -1,20 +1,16 @@
-.sidebarwrapper,
 .sphinxsidebarwrapper {
     display: none;
     padding-right: 0 !important;
 }
 
-.sidebarwrapper ul,
 .sphinxsidebarwrapper ul {
     list-style: none;
 }
 
-.sidebarwrapper>ul,
 .sphinxsidebarwrapper>ul {
     padding-left: 0;
 }
 
-.sidebarwrapper>ul>li,
 .sphinxsidebarwrapper>ul>li {
     padding: 0 0 10px 0;
     margin: 0;
