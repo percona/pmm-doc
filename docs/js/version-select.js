@@ -10,6 +10,8 @@ window.addEventListener("DOMContentLoaded", function() {
   function makeSelect(options, selected) {
     var select = document.createElement("select");
     select.classList.add("form-control");
+    select.classList.add("btn");
+    select.classList.add("btn-primary");
 
     options.forEach(function(i) {
       var option = new Option(i.text, i.value, undefined,
@@ -38,14 +40,12 @@ window.addEventListener("DOMContentLoaded", function() {
     });
 
     var container = document.createElement("div");
-    container.id = "version-selector";
-    container.className = "md-nav__item";
+    container.id = "custom_select"; // Don't change this ID - used by toctree css/js to locate
+//    container.className = "btn btn-primary";
     container.appendChild(select);
 
-//    var sidebar = document.querySelector(".md-nav--primary > .md-nav__list");
-var sidebar = document.querySelector("#block-system-main > div > div.container > div > div.sphinxsidebar.col-md-3.col-md-pull-9 > div > h3");
-//    sidebar.parentNode.insertBefore(container, sidebar);
-    sidebar.parentNode.insertAfter(container, sidebar);
+    var sidebar = document.querySelector(".select-wrapper");
+    sidebar.append(container);
   };
   xhr.send();
 });
