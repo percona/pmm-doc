@@ -1,12 +1,11 @@
 setTimeout(() => {
-    const asideMenu = document.getElementsByClassName('toctree')[0];
+    const asideMenu = document.getElementsByClassName('sphinxsidebarwrapper')[0];
     hideSubMenus();
-    makeSelect();
     asideMenu.style.display = 'block';
 }, 500);
 
 function hideSubMenus() {
-    const asideMenu = document.getElementsByClassName('toctree')[0];
+    const asideMenu = document.getElementsByClassName('sphinxsidebarwrapper')[0];
     const activeCheckboxClass = 'custom-button--active';
     const activeBackgroundClass = 'custom-button--main-active';
     const links = Array.from(asideMenu.getElementsByTagName('a'));
@@ -38,9 +37,8 @@ function hideSubMenus() {
         }
     }));
 
-//    asideMenu.parentNode.insertBefore(styleDomEl, asideMenu);
+    asideMenu.parentNode.insertBefore(styleDomEl, asideMenu);
 }
-
 function toggleElement(condition, item, className) {
     const isButton = item.localName === 'button';
 
@@ -57,6 +55,7 @@ function toggleElement(condition, item, className) {
 
                     if (previousActiveButtons.length) {
                         previousActiveButtons.forEach(previousButton => {
+
                             removeClass(previousButton, 'custom-button--active');
                             localStorage.removeItem(previousButton.id);
                         });
@@ -75,15 +74,12 @@ function toggleElement(condition, item, className) {
         }
     }
 }
-
 function addClass(item, classes) {
     item.classList.add(...Array.isArray(classes) ? classes : [classes]);
 }
-
 function removeClass(item, classes) {
     item.classList.remove(...Array.isArray(classes) ? classes : [classes]);
 }
-
 function insertButton(element, id) {
     const button = document.createElement('button');
     const isMain = Array.from(element.parentElement.classList).includes('toctree-l1');
@@ -98,29 +94,24 @@ function insertButton(element, id) {
     }
     element.insertAdjacentElement('beforebegin', button);
 }
-
 function makeSelect() {
-    const toctree = document.getElementById('toctree');
-    const select_active_option = toctree.getElementsByClassName('select-active-text')[0];
-    const toctree_list = document.getElementById('custom_select_list');
+    const custom_select = document.getElementById('custom_select');
+    const select_active_option = custom_select.getElementsByClassName('select-active-text')[0];
+    const custom_select_list = document.getElementById('custom_select_list');
 
-    /*
-    select_active_option.innerHTML = window.location.href.includes('{{ config.extra.major }}') ?
-    toctree_list.getElementsByClassName('custom-select__option')[1].innerHTML :
-    toctree_list.getElementsByClassName('custom-select__option')[0].innerHTML;
-    */
+    select_active_option.innerHTML = window.location.href.includes('') ?
+        custom_select_list.getElementsByClassName('custom-select__option')[1].innerHTML :
+        custom_select_list.getElementsByClassName('custom-select__option')[0].innerHTML;
 
     document.addEventListener('click', event => {
-        if (event.target.parentElement.id === 'toctree' || event.target.id === 'toctree') {
-            toctree_list.classList.toggle('select-hidden')
+        if (event.target.parentElement.id === 'custom_select' || event.target.id === 'custom_select') {
+            custom_select_list.classList.toggle('select-hidden')
         }
-        /*
         if (Array.from(event.target.classList).includes('custom-select__option')) {
             select_active_option.innerHTML = event.target.innerHTML;
         }
-        */
         if (event.target.id !== 'custom_select' && event.target.parentElement.id !== 'custom_select') {
-            toctree_list.classList.add('select-hidden')
+            custom_select_list.classList.add('select-hidden')
         }
 
     });

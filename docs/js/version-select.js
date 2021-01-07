@@ -41,7 +41,6 @@ window.addEventListener("DOMContentLoaded", function() {
 
     var container = document.createElement("div");
     container.id = "custom_select"; // Don't change this ID - used by toctree css/js to locate
-//    container.className = "btn btn-primary";
     container.appendChild(select);
 
     var sidebar = document.querySelector(".select-wrapper");

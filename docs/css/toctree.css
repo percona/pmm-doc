@@ -1,21 +1,17 @@
 .sphinxsidebarwrapper {
-    display: none;
     padding-right: 0 !important;
 }
-
+/* Turns off bullets within toctree */
 .sphinxsidebarwrapper ul {
     list-style: none;
 }
-
 .sphinxsidebarwrapper>ul {
     padding-left: 0;
 }
-
 .sphinxsidebarwrapper>ul>li {
     padding: 0 0 10px 0;
     margin: 0;
 }
-
 .custom-button {
     cursor: pointer;
     display: inline-flex;
@@ -44,9 +40,9 @@
 }
 
 .custom-button:before {
-    content: \'+\';
+    content: '+';
 }
 
 .custom-button.custom-button--active:before {
-    content: \'-\';
+    content: '-';
 }
