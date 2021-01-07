@@ -37,8 +37,10 @@ function hideSubMenus() {
         }
     }));
 
-    asideMenu.parentNode.insertBefore(styleDomEl, asideMenu);
+// WIP    var toctree_heading = document.getElementById("toctree-heading");
+// NOT NEEDED?    asideMenu.parentNode.insertBefore(styleDomEl, asideMenu);
 }
+
 function toggleElement(condition, item, className) {
     const isButton = item.localName === 'button';
 

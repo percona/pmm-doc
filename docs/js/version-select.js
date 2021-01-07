@@ -9,7 +9,7 @@ window.addEventListener("DOMContentLoaded", function() {
 
   function makeSelect(options, selected) {
     var select = document.createElement("select");
-    select.classList.add("form-control");
+//    select.classList.add("form-control");
     select.classList.add("btn");
     select.classList.add("btn-primary");
 
@@ -40,11 +40,18 @@ window.addEventListener("DOMContentLoaded", function() {
     });
 
     var container = document.createElement("div");
-    container.id = "custom_select"; // Don't change this ID - used by toctree css/js to locate
+    container.id = "custom_select";
+
+    // Label
+    var label = document.createElement("span");
+    label.textContent = "PMM version: ";
+    container.appendChild(label);
+
+    // Add menu
     container.appendChild(select);
 
-    var sidebar = document.querySelector(".select-wrapper");
-    sidebar.append(container);
+    var sidebar = document.querySelector("#version-select-wrapper"); // Inject menu into element with this ID
+    sidebar.appendChild(container);
   };
   xhr.send();
 });
