@@ -77,7 +77,7 @@ log_slow_slave_statements=ON
 * If you are running any MariaDB version, there is no Explain or Example data shown by default in Query Analytics. A workaround is to run this SQL command:
 
 ```sql
-UPDATE setup_instruments SET ENABLED = 'YES', TIMED = 'YES'
+UPDATE performance_schema.setup_instruments SET ENABLED = 'YES', TIMED = 'YES'
  WHERE NAME LIKE 'statement/%';
  UPDATE setup_consumers SET ENABLED = 'YES'
  WHERE NAME LIKE '%statements%';
