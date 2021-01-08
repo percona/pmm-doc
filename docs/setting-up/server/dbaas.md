@@ -80,24 +80,25 @@ alias kubectl='minikube kubectl --'
 2. Deploy the Percona operators configuration for PXC and PSMDB in minikube:
 
     ```sh
-    # Base64 encoded USER and PASS for pmm-server
-    PMM_USER="$(echo -n 'admin')"
-    PMM_PASS="$(echo -n '<RANDOM_PASS_GOES_IN_HERE>' | base64)"
-
-    # Deploy PXC operator
-    curl -sSf -m 30 \
-    https://raw.githubusercontent.com/percona/percona-xtradb-cluster-operator/pmm-branch/deploy/bundle.yaml \
+    # Prepare a set of base64 encoded values and non encoded for user and pass with administrator privileges to pmm-server (DBaaS)
+    PMM_USER='admin';
+    PMM_PASS='<RANDOM_PASS_GOES_IN_HERE>';
+    
+    PMM_USER_B64="$(echo -n "${PMM_USER}" | base64)";
+    PMM_PASS_B64="$(echo -n "${PMM_PASS}" | base64)";
+    
+    # Install the PXC operator
+    curl -sSf -m 30 https://raw.githubusercontent.com/percona/percona-xtradb-cluster-operator/pmm-branch/deploy/bundle.yaml \
     | kubectl apply -f -
-    curl -sSf -m 30 \
-    https://raw.githubusercontent.com/percona/percona-xtradb-cluster-operator/pmm-branch/deploy/secrets.yaml \
-    | sed "s/pmmserver:.*=/pmmserver: ${PMM_PASS}/g" \
+    curl -sSf -m 30 https://raw.githubusercontent.com/percona/percona-xtradb-cluster-operator/pmm-branch/deploy/secrets.yaml \
+    | sed "s/pmmserver:.*=/pmmserver: ${PMM_PASS_B64}/g" \
     | kubectl apply -f -
-
-    # Deploy PSMDB operator
-    curl -sSf -m 30 https://raw.githubusercontent.com/percona/percona-server-mongodb-operator/v1.6.0/deploy/bundle.yaml | kubectl apply -f -
-    curl -sSf -m 30 https://raw.githubusercontent.com/percona/percona-server-mongodb-operator/v1.6.0/deploy/secrets.yaml | \ 
-    sed "s/PMM_SERVER_USER:.*/PMM_SERVER_USER: ${PMM_USER}/g" | \ 
-    sed "s/PMM_SERVER_PASSWORD:.*/PMM_SERVER_PASSWORD: ${PMM_PASS}/g" | \
+    
+    # Install the PSMDB operator
+    curl -sSf -m 30 https://raw.githubusercontent.com/percona/percona-server-mongodb-operator/v1.6.0/deploy/bundle.yaml \
+    | kubectl apply -f -
+    curl -sSf -m 30 https://raw.githubusercontent.com/percona/percona-server-mongodb-operator/v1.6.0/deploy/secrets.yaml \
+    | sed "s/PMM_SERVER_USER:.*$/PMM_SERVER_USER: ${PMM_USER}/g;s/PMM_SERVER_PASSWORD:.*$/PMM_SERVER_PASSWORD: ${PMM_PASS}/g;" \
     | kubectl apply -f -
     ```
 
@@ -129,18 +130,29 @@ alias kubectl='minikube kubectl --'
 2. When your EKS cluster is running, install the PXC and PSMDB operators:
 
     ```sh
-    # Prepare a base64 encoded values for user and pass with administrator privileges to pmm-server (DBaaS)
-    PMM_USER="$(echo -n 'admin' | base64)";
-    PMM_PASS="$(echo -n '<RANDOM_PASS_GOES_IN_HERE>' | base64)";
-
+    # Prepare a set of base64 encoded values and non encoded for user and pass with administrator privileges to pmm-server (DBaaS)
+    PMM_USER='admin';
+    PMM_PASS='<RANDOM_PASS_GOES_IN_HERE>';
+    
+    PMM_USER_B64="$(echo -n "${PMM_USER}" | base64)";
+    PMM_PASS_B64="$(echo -n "${PMM_PASS}" | base64)";
+    
     # Install the PXC operator
-    curl -sSf -m 30 https://raw.githubusercontent.com/percona/percona-xtradb-cluster-operator/pmm-branch/deploy/bundle.yaml  | kubectl apply -f -
-    curl -sSf -m 30 https://raw.githubusercontent.com/percona/percona-xtradb-cluster-operator/pmm-branch/deploy/secrets.yaml | sed "s/pmmserver:.*=/pmmserver: ${PMM_PASS}/g" | kubectl apply -f -
-
+    curl -sSf -m 30 https://raw.githubusercontent.com/percona/percona-xtradb-cluster-operator/pmm-branch/deploy/bundle.yaml \
+    | kubectl apply -f -
+    curl -sSf -m 30 https://raw.githubusercontent.com/percona/percona-xtradb-cluster-operator/pmm-branch/deploy/secrets.yaml \
+    | sed "s/pmmserver:.*=/pmmserver: ${PMM_PASS_B64}/g" \
+    | kubectl apply -f -
+    
     # Install the PSMDB operator
-    curl -sSf -m 30 https://raw.githubusercontent.com/percona/percona-server-mongodb-operator/v1.6.0/deploy/bundle.yaml  | kubectl apply -f -
-    curl -sSf -m 30 https://raw.githubusercontent.com/percona/percona-server-mongodb-operator/v1.6.0/deploy/secrets.yaml | sed "s/PMM_SERVER_USER:.*$/PMM_SERVER_USER: ${PMM_USER}/g;s/PMM_SERVER_PASSWORD:.*=$/PMM_SERVER_PASSWORD: ${PMM_PASS}/g;" | kubectl apply -f -
+    curl -sSf -m 30 https://raw.githubusercontent.com/percona/percona-server-mongodb-operator/v1.6.0/deploy/bundle.yaml \
+    | kubectl apply -f -
+    curl -sSf -m 30 https://raw.githubusercontent.com/percona/percona-server-mongodb-operator/v1.6.0/deploy/secrets.yaml \
+    | sed "s/PMM_SERVER_USER:.*$/PMM_SERVER_USER: ${PMM_USER}/g;s/PMM_SERVER_PASSWORD:.*$/PMM_SERVER_PASSWORD: ${PMM_PASS}/g;" \
+    | kubectl apply -f -
+    ```
 
+    ```
     # Validate that the operators are running
     kubectl get pods
     ```
