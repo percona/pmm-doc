@@ -39,12 +39,16 @@ When launched, the Docker container gives access to the whole functionality of P
             -e PMM_AGENT_CONFIG_FILE=pmm-agent.yml \
             --volumes-from pmm-client-data percona/pmm-client:2
             
-    3.1 Connecting to a Docker PMM Server by container name
+    **Connecting to a Docker PMM Server by container name**
     
-    If you are trying to connect to a Dockerized PMM Server and want to reference the container by name instead of IP, consider the following:
+    To connect to a Dockerized PMM Server by name instead of IP:
 
-    1. Make sure to have both containers on a non-default network (`docker-network create <network-name>` to create a network, `docker network connect <network-name> <container>` to connect a container to that network)
-    2. You can now use `PMM_AGENT_SERVER_ADDRESS=<your-pmm-server-container-name>:443` instead.
+    1. Put both containers on a non-default network:
+    
+        - `docker network create <network-name>` to create a network,
+        - `docker network connect <network-name> <container>` to connect a container to that network.
+    
+    2. Use `-e PMM_AGENT_SERVER_ADDRESS=<your-pmm-server-container-name>:443`.
 
 !!! alert alert-success "Tip"
     To get help:
