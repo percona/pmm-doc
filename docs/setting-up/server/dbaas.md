@@ -81,8 +81,8 @@ alias kubectl='minikube kubectl --'
 
     ```sh
     # Base64 encoded USER and PASS for pmm-server
-    PMM_USER="\$(echo -n 'admin' | base64)"
-    PMM_PASS="\$(echo -n '<RANDOM_PASS_GOES_IN_HERE>' | base64)"
+    PMM_USER="$(echo -n 'admin')"
+    PMM_PASS="$(echo -n '<RANDOM_PASS_GOES_IN_HERE>' | base64)"
 
     # Deploy PXC operator
     curl -sSf -m 30 \
@@ -90,12 +90,15 @@ alias kubectl='minikube kubectl --'
     | kubectl apply -f -
     curl -sSf -m 30 \
     https://raw.githubusercontent.com/percona/percona-xtradb-cluster-operator/pmm-branch/deploy/secrets.yaml \
-    | sed "s/pmmserver:.*=/pmmserver: \${PMM_PASS}/g" \
+    | sed "s/pmmserver:.*=/pmmserver: ${PMM_PASS}/g" \
     | kubectl apply -f -
 
     # Deploy PSMDB operator
-    curl -sSf -m 30 https://raw.githubusercontent.com/percona/percona-server-mongodb-operator/v1.6.0/deploy/bundle.yaml | kubectl -- apply -f -
-    curl -sSf -m 30 https://raw.githubusercontent.com/percona/percona-server-mongodb-operator/v1.6.0/deploy/secrets.yaml | sed "s/PMM_SERVER_USER:.*$/PMM_SERVER_USER
+    curl -sSf -m 30 https://raw.githubusercontent.com/percona/percona-server-mongodb-operator/v1.6.0/deploy/bundle.yaml | kubectl apply -f -
+    curl -sSf -m 30 https://raw.githubusercontent.com/percona/percona-server-mongodb-operator/v1.6.0/deploy/secrets.yaml | \ 
+    sed "s/PMM_SERVER_USER:.*/PMM_SERVER_USER: ${PMM_USER}/g" | \ 
+    sed "s/PMM_SERVER_PASSWORD:.*/PMM_SERVER_PASSWORD: ${PMM_PASS}/g" | \
+    | kubectl apply -f -
     ```
 
 3. Check the operators are deployed:
@@ -112,6 +115,8 @@ alias kubectl='minikube kubectl --'
     ```sh
     minikube kubectl -- config view --flatten --minify
     ```
+!!! note "Note"
+    You will need to copy this output to your clipboard and continue with [add a Kubernetes cluster to PMM](../../using/platform/dbaas.md#add-a-kubernetes-cluster).
 
 ## Installing Percona operators in AWS EKS (Kubernetes)
 
@@ -212,8 +217,6 @@ alias kubectl='minikube kubectl --'
 
 
 {% include 'setting-up/server/dbaas-gke.md' %}
-
-
 
 ## Deleting clusters
 
