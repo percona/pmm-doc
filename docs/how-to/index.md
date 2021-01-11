@@ -1,0 +1,10 @@
+# How to: Overview
+
+- [Configure](configure.md)
+    - The [PMM Settings page](configure.md#pmm-settings)
+- [Secure](secure.md)
+    - Securing your PMM installation
+- [Upgrade](upgrade.md)
+    - Upgrading PMM Server via the user interface
+- [Optimize](optimize.md)
+    - Improving PMM performance
