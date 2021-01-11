@@ -26,17 +26,11 @@ Each PMM Client collects various data about general system and database performa
 The PMM Client package consist of the following:
 
 * **pmm-admin** is a command-line tool for managing PMM Client, for example, adding and removing database instances that you want to monitor. For more information, see [Managing PMM Client](pmm-admin.md).
-
 * `pmm-mysql-queries-0` is a service that manages the QAN agent as it collects query performance data from MySQL and sends it to the QAN API on [PMM Server](glossary.terminology.md#pmm-server).
-
 * `pmm-mongodb-queries-0` is a service that manages the QAN agent as it collects query performance data from MongoDB and sends it to QAN API on [PMM Server](glossary.terminology.md#pmm-server).
-
 * **node_exporter** is a Prometheus exporter that collects general system metrics.
-
 * **mysqld_exporter** is a Prometheus exporter that collects MySQL server metrics.
-
 * **mongodb_exporter** is a Prometheus exporter that collects MongoDB server metrics.
-
 * **proxysql_exporter** is a Prometheus exporter that collects ProxySQL performance metrics.
 
 !!! seealso "See also"
@@ -84,6 +78,15 @@ PMM Server includes the following tools:
 
 All tools can be accessed from the PMM Server web interface (landing page). For more information, see [Tools of PMM](tool.md).
 
+
+!!! seealso "See also"
+
+    Default ports
+    : Ports in [Terminology Reference](glossary.terminology.md#ports)
+
+    Enabling orchestrator
+    : Orchestrator [Terminology Reference](glossary.terminology.md#orchestrator)
+
 ## Orchestrator
 
 Orchestrator is a MySQL replication topology management and visualization tool.  If it is enabled, you can access it using the `/orchestrator` URL after PMM Server address.  Alternatively, you can click the MySQL Replication Topology Manager button on the PMM Server landing page.
@@ -103,7 +106,7 @@ IDENTIFIED BY 'orc_client_password’;
     $ docker run ... -e ORCHESTRATOR_ENABLED=true ORCHESTRATOR_USER=name -e ORCHESTRATOR_PASSWORD=pass ... percona/ pmm-server:1
     ```
 
-    Then you can use the *Discover* page in the Orchestrator web interface to add the instances to the topology.
+Then you can use the *Discover* page in the Orchestrator web interface to add the instances to the topology.
 
 !!! note
     **Orchestrator is not enabled by default starting with PMM 1.3.0**
