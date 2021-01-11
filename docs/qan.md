@@ -3,7 +3,7 @@
 !!! alert alert-warning "Warning"
     You are viewing documentation for PMM {{release}}.
 
-    For the latest, see [PMM 2.x documentation]({{PMM2DOCROOT}}/query-analytics.html)
+    For the latest, see [PMM 2.x documentation]({{PMM2DOCROOT}}query-analytics.html)
 
 The QAN is a special dashboard which enables database administrators and application developers to analyze database queries over periods of time and find performance problems. QAN helps you optimize database performance by making sure that queries are executed as expected and within the shortest time possible.  In case of problems, you can see which queries may be the cause and get detailed metrics for them.
 
@@ -63,7 +63,7 @@ The query metrics that appear in QAN are computed based on a time period or a ra
 
 ![](_images/qan.range-selection.1.png)
 
-*QAN displays query metrics for the time period or date range that you specify.
+*QAN displays query metrics for the time period or date range that you specify.*
 
 The tool consists of two parts. The *Quick ranges* offers frequently used time ranges. The date picker sets a range of dates.
 
@@ -136,7 +136,7 @@ Note that the **EXPLAIN** command only works with the following statements:
 
 If you are viewing the details of a query of another type, the Explain section will not contain any data.
 
-!!! alert alert-info "Note" "Related information"
+!!! alert alert-info "Related information"
     pt-visual-explain: a tool to show the query plan based on the output of the EXPLAIN command <https://www.percona.com/doc/percona-toolkit/LATEST/pt-visual-explain.html>
 
 ### Table Info Section

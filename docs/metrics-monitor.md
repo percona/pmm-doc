@@ -15,7 +15,8 @@ The credentials used to sign in to Grafana depend on the options that you specif
 * If you specify only `SERVER_PASSWORD`, a single user (`pmm`) will be used to sign in to all components (including QAN, Prometheus, Grafana, etc.).  You will not be able to change to a different Grafana user.
 * If you specify only `SERVER_USER`, this parameter will be ignored.
 
-**WARNING**: The value of the `SERVER_USER` parameter may not contain the **#** or **:** symbols.
+!!! alert alert-warning "Warning"
+    The value of the `SERVER_USER` parameter may not contain the **#** or **:** symbols.
 
 To access the dashboards, provide default user credentials:
 
