@@ -52,8 +52,8 @@ You will need to have root access on the database host where you will be install
 
 PMM Client should run on any modern Linux 64-bit distribution, however Percona provides PMM Client packages for automatic installation from software repositories only on the most popular Linux distributions:
 
-* DEB packages for Debian based distributions such as Ubuntu
-* RPM packages for Red Hat based distributions such as CentOS
+* [DEB packages for Debian based distributions such as Ubuntu](#installing-pmm-client-on-debian-or-ubuntu)
+* [RPM packages for Red Hat based distributions such as CentOS](#installing-the-pmm-client-package-on-red-hat-and-centOS)
 
 It is recommended that you install your  client by using the software repository for your system. If this option does not work for you, Percona provides downloadable PMM Client packages from the [Download Percona Monitoring and Management](https://www.percona.com/downloads/pmm-client) page.
 
