@@ -388,7 +388,7 @@ For example, to set up remote monitoring of QAN data on a MySQL server located a
 $ pmm-admin add mysql:queries --user root --password root --host 192.168.200.2 --create-user
 ```
 
-QAN can use either the *slow query log* or *Performance Schema* as the source. By default, it chooses the *slow query log* for a local MySQL instance and *Performance Schema* otherwise. For more information about the differences, see [Configuring Performance Schema](conf-mysql.html#configuring-performance-schema).
+QAN can use either the *slow query log* or *Performance Schema* as the source. By default, it chooses the *slow query log* for a local MySQL instance and *Performance Schema* otherwise. For more information about the differences, see [Configuring Performance Schema](conf-mysql.md#configuring-performance-schema).
 
 You can explicitly set the query source when adding a QAN instance using the `--query-source` option.
 
