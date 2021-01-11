@@ -16,6 +16,13 @@ To install and set up the PMM Server, use one of the following options:
 * [PMM Server as a Virtual Appliance](server/virtual-appliance.md)
 * [Running PMM Server Using AWS Marketplace](server/ami.md)
 
+!!! important
+    On each computer where PMM Client is installed, the [following ports](../glossary.terminology.md#ports) must be open. These are default ports that you can change when adding the respective monitoring service with the `pmm-admin add` command.
+
+    !!! seealso "See also"
+        Improving security
+        : [Security Features in Percona Monitoring and Management](../security.md)
+
 ### Verifying PMM Server
 
 In your browser, go to the server by its IP address. If you run your server as a virtual appliance or by using an Amazon machine image, you will need to setup the user name, password and your public key if you intend to connect to the server by using ssh. This step is not needed if you run PMM Server using Docker.
