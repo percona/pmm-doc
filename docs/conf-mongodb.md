@@ -47,11 +47,6 @@ Then, you need to pass the user name and password in the value of the `--uri` op
 
 Run this command as root or by using the **sudo** command.
 
-<!-- code=block:: bash
-
-$ pmm-admin add mongodb-metrics --uri mongodb://mongodb_exporter:s3cR#tpa$$worD@localhost:27017 -->
-
-
 ## Enabling Profiling
 
 For [MongoDB](https://www.mongodb.com) to work correctly with QAN, you need to enable profiling in your **mongod** configuration. When started without profiling enabled, QAN displays the following warning:
@@ -59,9 +54,9 @@ For [MongoDB](https://www.mongodb.com) to work correctly with QAN, you need to e
 !!! alert alert-info "Note"
     **A warning message is displayed when profiling is not enabled**
 
-It is required that profiling of the monitored MongoDB databases be enabled.
+    It is required that profiling of the monitored MongoDB databases be enabled.
 
-Note that profiling is not enabled by default because it may reduce the performance of your MongoDB server.
+    Note that profiling is not enabled by default because it may reduce the performance of your MongoDB server.
 
 ### Enabling Profiling on Command Line
 

@@ -33,7 +33,7 @@ The following sample configurations can be used depending on the variant and ver
     userstat=1
     ```
 
-* If you are running MySQL 5.6+ or MariaDB 10.0+, configure Configuring Performance Schema.
+* If you are running MySQL 5.6+ or MariaDB 10.0+, configure [Performance Schema](#configuring-performance-schema).
 
     ```
     innodb_monitor_enable=all
@@ -160,11 +160,11 @@ mysql> select * from setup_consumers;
     $ mysqld --performance-schema-instrument='%=on'
     ```
 
-   This option can cause additional overhead and should be used with care.
+    This option can cause additional overhead and should be used with care.
 
-   !!! seealso "See also"
-       MySQL Documentation: `--performance_schema_instrument` option
-       : <https://dev.mysql.com/doc/refman/5.7/en/performance-schema-options.html#option_mysqld_performance-schema-instrument>
+    !!! seealso "See also"
+        MySQL Documentation: `--performance_schema_instrument` option
+        : <https://dev.mysql.com/doc/refman/5.7/en/performance-schema-options.html#option_mysqld_performance-schema-instrument>
 
 If the instance is already running, configure the QAN agent to collect data from *Performance Schema*:
 

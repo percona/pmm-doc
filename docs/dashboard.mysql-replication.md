@@ -72,7 +72,7 @@ Since the replication process applies the data modifications on the slave asynch
 * **Single threaded nature of replication channels** - master servers have the advantage of applying changes in parallel, whereas slave ones are only able to apply changes in serial, thus limiting their throughput. In some cases Group Commit can help but is not always applicable.
 * **High number of changed rows or computationally expensive SQL** - depending on the replication format (`ROW` vs `STATEMENT`), significant changes to the database through high volume of rows modified, or expensive CPU will all contribute to slave servers lagging behind the master.
 
-    Generally adding more CPU or Disk resources can alleviate replication lag issues, up to a point.
+Generally adding more CPU or Disk resources can alleviate replication lag issues, up to a point.
 
 Ideally a value of 0 is desired, but be aware that `Seconds_Behind_Master` is an integer value and thus rounding is a factor. If you desire greater precision, consider the Percona Toolkit tool `pt-heartbeat`, as this graph will automatically take into account this tool and then show you greater resolution in the milliseconds.
 

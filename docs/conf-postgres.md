@@ -40,6 +40,6 @@ CREATE USER pmm_user WITH SUPERUSER ENCRYPTED PASSWORD 'secret';
 !!! alert alert-info "Note"
     In case of monitoring a PostgreSQL database running on an Amazon RDS instance, the command should look as follows:
 
-```
-CREATE USER pmm_user WITH rds_superuser ENCRYPTED PASSWORD 'secret';
-```
+    ```
+    CREATE USER pmm_user WITH rds_superuser ENCRYPTED PASSWORD 'secret';
+    ```

@@ -6,7 +6,7 @@ In this chapter
 
 [TOC]
 
-### USAGE
+## USAGE
 
 ```
 pmm-admin [OPTIONS] [COMMAND]
@@ -21,7 +21,7 @@ To view all available commands and options, run **pmm-admin** without any comman
 $ sudo pmm-admin
 ```
 
-### OPTIONS
+## OPTIONS
 
 The following options can be used with any command:
 
@@ -37,54 +37,54 @@ The following options can be used with any command:
 `--verbose`
 :     Print verbose output.
 
-### COMMANDS
+## COMMANDS
 
-**pmm-admin add**
+[**pmm-admin add**](#adding-monitoring-services)
 :     Add a monitoring service.
 
-Adding annotations
+[Adding annotations](#adding-annotations)
 :     Add an annotation
 
-**pmm-admin check-network**
+[**pmm-admin check-network**](#checking-network-connectivity)
 :     Check network connection between PMM Client and PMM Server.
 
-**pmm-admin config**
+[**pmm-admin config**](#configuring-pmm-client)
 :     Configure how PMM Client communicates with PMM Server.
 
-**pmm-admin help**
+[**pmm-admin help**](#getting-help-for-any-command)
 :     Print help for any command and exit.
 
-**pmm-admin info**
+[**pmm-admin info**](#getting-information-about-pmm-client)
 :     Print information about PMM Client.
 
-**pmm-admin list**
+[**pmm-admin list**](#listing-monitoring-services)
 :     List all monitoring services added for this PMM Client.
 
-**pmm-admin ping**
+[**pmm-admin ping**](#pinging-pmm-server)
 :     Check if PMM Server is alive.
 
-**pmm-admin purge**
+[**pmm-admin purge**](#purging-metrics-data)
 :     Purge metrics data on PMM Server.
 
-**pmm-admin remove**, **pmm-admin rm**
+[**pmm-admin remove**, **pmm-admin rm**](#removing-monitoring-services)
 :     Remove monitoring services.
 
-**pmm-admin repair**
+[**pmm-admin repair**](#removing-orphaned-services)
 :     Remove orphaned services.
 
-**pmm-admin restart**
+[**pmm-admin restart**](#restarting-monitoring-services)
 :     Restart monitoring services.
 
-**pmm-admin show-passwords**
+[**pmm-admin show-passwords**](#getting-passwords-used-by-pmm-client)
 :     Print passwords used by PMM Client (stored in the configuration file).
 
-**pmm-admin start**
+[**pmm-admin start**](#starting-monitoring-services)
 :     Start monitoring service.
 
-**pmm-admin stop**
+[**pmm-admin stop**](#stopping-monitoring-services)
 :     Stop monitoring service.
 
-**pmm-admin uninstall**
+[**pmm-admin uninstall**](#cleaning-up-before-uninstall)
 :     Clean up PMM Client before uninstalling it.
 
 ## Adding monitoring services
@@ -203,15 +203,19 @@ postgres  10s              1m              /metrics      http    192.168.200.1:9
 
 Run the following commands as root or by using the **sudo** command.
 
+Passing `--collect.perf_schema.eventsstatements` to the `mysql:metrics` monitoring service:
+
 ```
 $ pmm-admin add mysql:metrics -- --collect.perf_schema.eventsstatements
 ```
+
+Passing `--collect.perf_schema.eventswaits=false` to the `mysql:metrics` monitoring service:
 
 ```
 $ pmm-admin add mysql:metrics -- --collect.perf_schema.eventswaits=false
 ```
 
-The section Exporters Overview contains all option grouped by exporters.
+The section [Exporters Overview](index.exporter-option.md) contains all option grouped by exporters.
 
 ### Passing SSL parameters to the mongodb monitoring service
 
@@ -240,7 +244,7 @@ $ pmm-admin add mongodb:metrics -- --mongodb.tls
 $ mongod --dbpath=DATABASEDIR --profile 2 --slowms 200 --rateLimit 100
 ```
 
-### Adding general system metrics service
+## Adding general system metrics service
 
 Use the `linux:metrics` alias to enable general system metrics monitoring.
 
@@ -266,7 +270,7 @@ You can also use global options that apply to any other command, as well as opti
 
 For more information, run **pmm-admin add** `linux:metrics --help`.
 
-### Extending metrics with textfile collector
+## Extending metrics with textfile collector
 
 **Versionadded:** New in version 1.16.0.
 
@@ -278,7 +282,7 @@ The default directory for reading text files with the metrics is `/usr/local/per
 
 You are responsible for running a cronjob or other regular process to generate the metric series data and write it to this directory.
 
-#### Example - collecting docker container information
+### Example - collecting docker container information
 
 This example will show you how to collect the number of running and stopped docker containers on a host. It uses a `crontab` task, set with the following lines in the cron configuration file (e.g. in `/etc/crontab`):
 
@@ -297,7 +301,7 @@ node_docker_containers_total 2
 
 The second command is similar, but it counts only running containers.
 
-### Adding MySQL query analytics service
+## Adding MySQL query analytics service
 
 Use the `mysql:queries` alias to enable MySQL query analytics.
 
@@ -384,13 +388,13 @@ For example, to set up remote monitoring of QAN data on a MySQL server located a
 $ pmm-admin add mysql:queries --user root --password root --host 192.168.200.2 --create-user
 ```
 
-QAN can use either the *slow query log* or *Performance Schema* as the source. By default, it chooses the *slow query log* for a local MySQL instance and *Performance Schema* otherwise. For more information about the differences, see Configuring Performance Schema.
+QAN can use either the *slow query log* or *Performance Schema* as the source. By default, it chooses the *slow query log* for a local MySQL instance and *Performance Schema* otherwise. For more information about the differences, see [Configuring Performance Schema](conf-mysql.html#configuring-performance-schema).
 
 You can explicitly set the query source when adding a QAN instance using the `--query-source` option.
 
 For more information, run **pmm-admin add** `mysql:queries --help`.
 
-### Adding MySQL metrics service
+## Adding MySQL metrics service
 
 Use the `mysql:metrics` alias to enable MySQL metrics monitoring.
 
@@ -470,7 +474,7 @@ $ pmm-admin add mysql:metrics --user root --password root --host 192.168.200.3 -
 
 For more information, run **pmm-admin add** `mysql:metrics` `--help`.
 
-### Adding MongoDB query analytics service
+## Adding MongoDB query analytics service
 
 Use the `mongodb:queries` alias to enable MongoDB query analytics.
 
@@ -520,7 +524,7 @@ You can also use global options that apply to any other command, as well as opti
 
 For more information, run **pmm-admin add** `mongodb:queries` `--help`.
 
-### Adding MongoDB metrics service
+## Adding MongoDB metrics service
 
 Use the `mongodb:metrics` alias to enable MongoDB metrics monitoring.
 
@@ -567,7 +571,7 @@ $ pmm-admin add mongodb:metrics \
 --cluster <cluster name>
 ```
 
-### Adding ProxySQL metrics service
+## Adding ProxySQL metrics service
 
 Use the `proxysql:metrics` alias to enable ProxySQL performance metrics monitoring.
 
@@ -610,10 +614,7 @@ $ pmm-admin annotate "Upgrade to v1.2" --tags "UX Imrovement,v1.2"
 The **pmm-admin annotate** supports the following options:
 
 `--tags`
-
-> Specify one or more tags applicable to the annotation that you are
-> creating. Enclose your tags in quotes and separate individual tags by a
-> comma, such as “tag 1,tag 2”.
+: Specify one or more tags applicable to the annotation that you are creating. Enclose your tags in quotes and separate individual tags by a comma, such as “tag 1,tag 2”.
 
 You can also use global options that apply to any other command.
 
@@ -836,6 +837,14 @@ The **pmm-admin list** command supports global options that apply to any other c
 `--json`
 : list the enabled services as a JSON document. The information provided in the standard tabular form is captured as keys and values. The general information about the computer where PMM Client is installed is given as top level elements:
 
+    * `Version`
+    * `ServerAddress`
+    * `ServerSecurity`
+    * `ClientName`
+    * `ClientAddress`
+    * `ClientBindAddress`
+    * `Platform`
+
     Note that you can quickly determine if there are any errors by inspecting the `Err` top level element in the JSON output. Similarly, the `ExternalErr` element reports errors in external services.
 
     The `Services` top level element contains a list of documents which represent enabled monitoring services. Each attribute in a document maps to the column in the tabular output.
@@ -924,7 +933,7 @@ Specify a monitoring service alias. To see which services are enabled, run **pmm
 
 The **pmm-admin purge** command does not have its own options, but you can use global options that apply to any other command
 
-For more infomation, run **pmm-admin purge** `--help`.
+For more information, run **pmm-admin purge** `--help`.
 
 ## Removing monitoring services
 

@@ -2,12 +2,12 @@
 
 The *Advanced Data Exploration* dashboard provides detailed information about the progress of a single Prometheus metric across one or more hosts.
 
-!!! alert alert-info "Note" "Added NUMA related metrics"
+!!! alert alert-info "Added NUMA related metrics"
     Version added: 1.13.0
 
     This dashboard supports metrics related to NUMA. The names of all these metrics start with *node_memory_numa*.
 
-    ![](_images/metrics-monitor.advanced-data-exploration.node-memory-numa.png)
+![](_images/metrics-monitor.advanced-data-exploration.node-memory-numa.png)
 
 ## View actual metric values (Gauge)
 
