@@ -41,6 +41,7 @@ window.addEventListener("DOMContentLoaded", function() {
 
     var container = document.createElement("div");
     container.id = "custom_select";
+    container.classList.add("side-column-block");
 
     // Label
     var label = document.createElement("span");
