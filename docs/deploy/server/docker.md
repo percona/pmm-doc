@@ -12,8 +12,7 @@ Make sure that the firewall and routing rules of the host do not constrain the D
 For more information about using Docker, see the [Docker Docs](https://docs.docker.com).
 
 !!! important
-    By default, [retention](../../glossary.terminology.md#data-retention) is set to 30 days for
-   Metrics Monitor and to 8 days for PMM Query Analytics.  Also consider [disabling table statistics](../../faq.md#performance-issues), which can greatly decrease Prometheus database size.
+    By default, [retention](../../glossary.terminology.md#data-retention) is set to 30 days for Metrics Monitor and to 8 days for PMM Query Analytics.  Also consider [disabling table statistics](../../faq.md#performance-issues), which can greatly decrease Prometheus database size.
 
 
 * [Setting Up a Docker Container for PMM Server](docker.setting-up.md)

@@ -311,6 +311,15 @@ This creates the `pmm-mysql-queries-0` service that is able to collect QAN data 
 
 The **pmm-admin add** command is able to detect the local PMM Client name, but you can also specify it explicitly as an argument.
 
+!!! alert alert-warning "Important"
+    If you connect MySQL Server version 8.0, make sure it is started with the `default_authentication_plugin` set to the value **mysql_native_password**.
+
+    You may alter your PMM user and pass the authentication plugin as a parameter:
+
+    ```
+    mysql> ALTER USER pmm@'localhost' IDENTIFIED WITH mysql_native_password BY '$eCR8Tp@s$w*rD';
+    ```
+
 ### OPTIONS
 
 The following options can be used with the `mysql:queries` alias:
@@ -488,6 +497,21 @@ The following options can be used with the `mongodb:queries` alias:
     ```
 
     By default, it is `localhost:27017`.
+
+    !!! alert alert-warning "Important"
+
+        In cases when the password contains special symbols like the *at* (@) symbol, the host might not not be detected correctly. Make sure that you insert the password with special characters replaced with their escape sequences. The simplest way is to use the `encodeURIComponent` JavaScript function.
+
+        For this, open the web console of your browser (usually found under *Development tools*) and evaluate the following expression, passing the password that you intend to use:
+
+        ```
+	    encodeURIComponent('$ecRet_pas$w@rd')
+        "%24ecRet_pas%24w%40rd"
+        ```
+
+        !!! seealso "Related Information"
+        	MDN Web Docs: encodeURIComponent
+	        <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent>
 
 You can also use global options that apply to any other command, as well as options that apply to adding services in general.
 

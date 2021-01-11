@@ -41,6 +41,9 @@ The previous command does the following:
 * `percona/pmm-server:1` is the name and version tag of the image to derive the container from.
 * `/bin/true` is the command that the container runs.
 
+!!! alert alert-warning "Important"
+    Make sure that the data volumes that you initialize with the `-v` option match those given in the example. PMM Server expects that those directories are bind mounted exactly as demonstrated.
+
 ## Creating and Launching the PMM Server Container
 
 To create and launch PMM Server in one command, use **docker run**:

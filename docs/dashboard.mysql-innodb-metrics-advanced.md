@@ -4,8 +4,7 @@ The MySQL InnoDB Metrics (Advanced) dashboard contains metrics that provide
 detailed information about the performance of the InnoDB storage engine on the
 selected MySQL host. This dashboard contains the following metrics:
 
-!!! important
-
+!!! alert alert-warning "Important"
     If you do not see any metric, try running the following command in the MySQL client:
 
     ```

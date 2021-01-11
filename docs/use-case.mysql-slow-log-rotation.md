@@ -17,6 +17,8 @@ pmm-admin add mysql:queries --slow-log-rotation=false
 
 On PMM Server, you can check the value of the Slow logs rotation field on the QAN Settings page. It should be *OFF*.
 
+![](_images/qan.settings.1.png)
+
 On PMM Client (the host where you ran **pmm-admin add** command to add the MySQL monitoring service), use the **pmm-admin list** command to determine if the *slow log* rotation is disabled.
 
 ```
@@ -32,6 +34,22 @@ SERVICE TYPE   NAME     LOCAL PORT  RUNNING  DATA SOURCE                        
 -------------- -------- ----------- -------- ------------------------------------------- --------------------------------------------------------------------------------------
 mysql:queries  percona  -           YES      root:***@unix(/var/run/mysqld/mysqld.sock)  query_source=slowlog, query_examples=true, slow_log_rotation=false, retain_slow_logs=1
 ```
+
+!!! alert alert-warning "Important"
+    Disabling the slow log rotation feature for an already added MySQL monitoring service is not supported.
+
+    If you already have the MySQL monitoring service where the slow log rotation was not disabled explicitly using the `--slow-log-rotation` option, remove this monitoring service.
+
+    ```
+    $ pmm-admin rm mysql
+    ```
+
+    Add it again setting the `--slow-log-rotation` to *false*.
+
+    ```
+    pmm-admin rm mysql:queries
+    pmm-admin add mysql:queries --slow-log-rotation=false
+    ```
 
 ## Set up **logrotate** to manage the slow log rotation
 

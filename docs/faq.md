@@ -199,6 +199,9 @@ The system immediately requests that you change your password. Note that, for th
 
 After the new password is set you control this system as a superuser and can make whatever changes required.
 
+!!! alert alert-warning "Important"
+    You cannot access the root account if you access PMM Server using SSH or via the Web interface.
+
 ## How to install the experimental version of PMM Server?
 
 If you would like to experiment with the latest development version using Docker, you may use the `dev-latest` image. This version, however, is not intended to be used in a production environment.
@@ -212,3 +215,6 @@ If you would like to experiment with the latest development version of PMM Serve
 ```
 $ wget "http://percona-vm.s3-website-us-east-1.amazonaws.com/PMM-Server-dev-latest.ova"
 ```
+
+!!! alert alert-warning "Important"
+    This is a development version which is not designed for a production environment.

@@ -4,6 +4,9 @@ As of version 1.14.0 PMM supports PostgreSQL [out-of-the-box](conf-postgres.md).
 
 This example demonstrates how to start monitoring a PostgreSQL host which is installed on an Amazon RDS instance.
 
+!!! alert alert-warning "Important"
+    This use case is limited to demonstrating the essential part of using external monitoring services of PMM and should be treated as an example. As such, it does not demonstrate how to use the security features of Amazon RDS or of the Prometheus exporter being used.
+
 ## Set Up the PostgreSQL Exporter
 
 First, you need to enable an exporter for PostgreSQL on the computer where you have installed the PMM Client package with the `pmm-admin add` command:
