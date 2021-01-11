@@ -1,0 +1,3 @@
+extra:
+  PMM2DOCROOT: 'https://www.percona.com/doc/percona-monitoring-and-management/2.x/'
+  PMM1DOCROOT: 'https://www.percona.com/doc/percona-monitoring-and-management/1.x/'

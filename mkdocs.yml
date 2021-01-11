@@ -57,6 +57,7 @@ plugins:
     - macros:
         include_yaml: # Variables used in Markdown and templates as '{{ VAR }}'
           - 'release.yml' # PMM release and version numbers
+          - 'extra.yml' # Misc values
     - exclude:
         glob:
           - deploy/client/apt.md # Was orphan in sphinx - content moved

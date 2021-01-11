@@ -3,7 +3,7 @@
 !!! alert alert-warning "Warning"
     You are viewing documentation for PMM {{release}}.
 
-    For the latest, see [PMM 2.x documentation](../2.x/using/query-analytics.html)
+    For the latest, see [PMM 2.x documentation]({{PMM2DOCROOT}}/query-analytics.html)
 
 The QAN is a special dashboard which enables database administrators and application developers to analyze database queries over periods of time and find performance problems. QAN helps you optimize database performance by making sure that queries are executed as expected and within the shortest time possible.  In case of problems, you can see which queries may be the cause and get detailed metrics for them.
 
