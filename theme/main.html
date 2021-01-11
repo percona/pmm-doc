@@ -159,7 +159,7 @@ another: dir/section.md
 {# Inserts script items from mkdocs.yml #}
 {%- macro script() %}
 {%- for scriptfile in config.extra_javascript %}
-<script src="{{ scriptfile }}" type="text/javascript"></script>
+<script src="{{ scriptfile|url }}" type="text/javascript"></script>
 {% endfor %}
 {% endmacro %}
 
