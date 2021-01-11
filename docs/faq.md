@@ -16,7 +16,8 @@ Any system which can run Docker version 1.12.6 or later.
 
 It needs roughly 1 GB of storage for each monitored database node with data retention set to one week.
 
-**NOTE**: By default, retention is set to 30 days for Metrics Monitor and to 8 days for Query Analytics.  Also consider disabling table statistics, which can greatly decrease Prometheus database size.
+!!! alert alert-info "Note"
+    By default, retention is set to 30 days for Metrics Monitor and to 8 days for Query Analytics.  Also consider disabling table statistics, which can greatly decrease Prometheus database size.
 
 Minimum memory is 2 GB for one monitored database node, but it is not linear when you add more nodes.  For example, data from 20 nodes should be easily handled with 16 GB.
 
@@ -94,7 +95,8 @@ If a MySQL server has a lot of schemas or tables, it is recommended to disable p
 $ sudo pmm-admin add mysql --disable-tablestats
 ```
 
-**NOTE**: Table statistics are disabled automatically if there are over 1 000 tables.
+!!! alert alert-info "Note"
+    Table statistics are disabled automatically if there are over 1 000 tables.
 
 For more information, run as root **pmm-admin add** `mysql --help`.
 
@@ -177,7 +179,8 @@ For example, to set the minimum resolution to 3 seconds:
 
 **-e METRICS_RESOLUTION=3s**
 
-**NOTE**: Consider increasing minimum resolution when PMM Server and PMM Client are on different networks, or when Adding an Amazon RDS DB instance to PMM.
+!!! alert alert-info "Note"
+    Consider increasing minimum resolution when PMM Server and PMM Client are on different networks, or when Adding an Amazon RDS DB instance to PMM.
 
 ## Why do I get `Failed ReadTopologyInstance` error when adding MySQL host to Orchestrator?
 

@@ -56,7 +56,8 @@ $ pmm-admin add mongodb-metrics --uri mongodb://mongodb_exporter:s3cR#tpa$$worD@
 
 For [MongoDB](https://www.mongodb.com) to work correctly with QAN, you need to enable profiling in your **mongod** configuration. When started without profiling enabled, QAN displays the following warning:
 
-**NOTE**: **A warning message is displayed when profiling is not enabled**
+!!! alert alert-info "Note"
+    **A warning message is displayed when profiling is not enabled**
 
 It is required that profiling of the monitored MongoDB databases be enabled.
 

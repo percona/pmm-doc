@@ -86,10 +86,12 @@ The InnoDB AHI Maintenance graph shows the maintenance operation of the InnoDB a
 
 The InnoDB Online DDL graph shows the state of the online DDL (alter table) operations in InnoDB.  The progress metric is estimate of the percentage of the rows processed by the online DDL.
 
-**NOTE**: Currently available only on MariaDB Server
+!!! alert alert-info "Note"
+    Currently available only on MariaDB Server
 
 ## InnoDB Defragmentation
 
 The InnoDB Defragmentation graph shows the status information related to the InnoDB online defragmentation feature of MariaDB for the optimize table command.  To enable this feature, the variable innodb-defragment must be set to **1** in the configuration file.
 
-**NOTE**: Currently available only on MariaDB Server.
+!!! alert alert-info "Note"
+    Currently available only on MariaDB Server.

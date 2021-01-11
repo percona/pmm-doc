@@ -8,7 +8,8 @@ The following procedure describes how to run the PMM Server appliance using the 
 
 3. Configure network settings to make the appliance accessible from other hosts in your network.
 
-    **NOTE**: All database hosts must be in the same network as *PMM Server*, so do not set the network adapter to NAT.
+    !!! alert alert-info "Note"
+        All database hosts must be in the same network as *PMM Server*, so do not set the network adapter to NAT.
 
     If you are running the appliance on a host with properly configured network settings, select Bridged Adapter in the Network section of the appliance settings.
 

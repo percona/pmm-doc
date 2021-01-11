@@ -42,7 +42,8 @@ The following sample configurations can be used depending on the variant and ver
 
 * If you are running MySQL 5.5 or MariaDB 5.5, configure logging only slow queries to avoid high performance overhead.
 
-    **NOTE**: This may affect the quality of monitoring data gathered by QAN.
+    !!! alert alert-info "Note"
+        This may affect the quality of monitoring data gathered by QAN.
 
     ```
     log_output=file
@@ -91,7 +92,7 @@ However, capturing all queries can consume I/O bandwidth and cause the *slow que
 
 The [`log_slow_rate_limit`](https://www.percona.com/doc/percona-server/5.7/diagnostics/slow_extended.html#log_slow_rate_limit) variable defines the fraction of queries captured by the *slow query log*.  A good rule of thumb is to have approximately 100 queries logged per second.  For example, if your Percona Server instance processes 10_000 queries per second, you should set `log_slow_rate_limit` to `100` and capture every 100th query for the *slow query log*.
 
-!!! note
+!!! alert alert-info "Note"
     When using query sampling, set [`log_slow_rate_type`](https://www.percona.com/doc/percona-server/5.7/diagnostics/slow_extended.html#log_slow_rate_type) to `query` so that it applies to queries, rather than sessions.
 
     It is also a good idea to set [`log_slow_verbosity`](https://www.percona.com/doc/percona-server/5.7/diagnostics/slow_extended.html#log_slow_verbosity) to `full` so that maximum amount of information about each captured query is stored in the slow query log.

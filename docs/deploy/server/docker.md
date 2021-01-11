@@ -2,7 +2,8 @@
 
 Docker images of PMM Server are stored at the [percona/pmm-server](https://hub.docker.com/r/percona/pmm-server/tags/) public repository. The host must be able to run Docker 1.12.6 or later, and have network access.
 
-**NOTE**: You can also download the PMM Server image from the [PMM download page](https://www.percona.com/downloads/pmm/). Choose the appropriate PMM version and the *Server - Docker Image* item in two pop-up menus to get the download link.
+!!! alert alert-info "Note"
+    You can also download the PMM Server image from the [PMM download page](https://www.percona.com/downloads/pmm/). Choose the appropriate PMM version and the *Server - Docker Image* item in two pop-up menus to get the download link.
 
 PMM needs roughly 1GB of storage for each monitored database node with data retention set to one week. Minimum memory is 2 GB for one monitored database node, but it is not linear when you add more nodes.  For example, data from 20 nodes should be easily handled with 16 GB.
 

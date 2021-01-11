@@ -13,7 +13,8 @@ This section provides a summary of how exporters are used across the selected ho
 * **Monitored Hosts** shows the number of monitored hosts that are running Exporters.
 * **Exporters Running** shows the total number of Exporters running with this PMM Server instance.
 
-**NOTE**: The CPU usage and memory usage do not include the additional CPU and memory usage required to produce metrics by the application or operating system.
+!!! alert alert-info "Note"
+    The CPU usage and memory usage do not include the additional CPU and memory usage required to produce metrics by the application or operating system.
 
 ## Prometheus Exporters Resource Usage by Host
 

@@ -60,7 +60,7 @@ It is recommended that you install your  client by using the software repository
 In addition to DEB and RPM packages, this site also offers:
 
 * Generic tarballs that you can extract and run the included `install` script.
-* Source code tarball to build your  client from source.
+* Source code tarball to build your PMM client from source.
 
 **WARNING**: You should not install agents on database servers that have the same host name, because host names are used by PMM Server to identify collected data.
 
@@ -82,7 +82,8 @@ Percona provides `.deb` packages for 64-bit versions of the following distributi
 * Ubuntu 17.10 (Artful Aardvark)
 * Ubuntu 18.04 (Bionic Beaver)
 
-**NOTE**: PMM Client should work on other DEB-based distributions, but it is tested only on the platforms listed above.
+!!! alert alert-info "Note"
+    PMM Client should work on other DEB-based distributions, but it is tested only on the platforms listed above.
 
 To install the PMM Client package, complete the following procedure. Run the following commands as root or by using the **sudo** command:
 
@@ -94,7 +95,8 @@ To install the PMM Client package, complete the following procedure. Run the fol
     $ apt-get install pmm-client
     ```
 
-    **NOTE**: You can also download PMM Client packages from the [PMM download page](https://www.percona.com/downloads/pmm/). Choose the appropriate PMM version and your GNU/Linux distribution in two pop-up menus to get the download link (e.g. *Percona Monitoring and Management 1.17.2* and *Ubuntu 18.04 (Bionic Beaver*).
+    !!! alert alert-info "Note"
+        You can also download PMM Client packages from the [PMM download page](https://www.percona.com/downloads/pmm/). Choose the appropriate PMM version and your GNU/Linux distribution in two pop-up menus to get the download link (e.g. *Percona Monitoring and Management 1.17.2* and *Ubuntu 18.04 (Bionic Beaver*).
 
 ### Installing the PMM Client Package on Red Hat and CentOS
 
@@ -102,7 +104,8 @@ If you are running an RPM-based Linux distribution, use the **yum** package mana
 
 Percona provides `.rpm` packages for 64-bit versions of Red Hat Enterprise Linux 6 (Santiago) and 7 (Maipo), including its derivatives that claim full binary compatibility, such as, CentOS, Oracle Linux, Amazon Linux AMI, and so on.
 
-**NOTE**: PMM Client should work on other RPM-based distributions, but it is tested only on RHEL and CentOS versions 6 and 7.
+!!! alert alert-info "Note"
+    PMM Client should work on other RPM-based distributions, but it is tested only on RHEL and CentOS versions 6 and 7.
 
 To install the PMM Client package, complete the following procedure. Run the following commands as root or by using the **sudo** command:
 
@@ -114,7 +117,8 @@ To install the PMM Client package, complete the following procedure. Run the fol
     yum install pmm-client
     ```
 
-    **NOTE**: You can also download PMM Client packages from the [PMM download page](https://www.percona.com/downloads/pmm/). Choose the appropriate PMM version and your GNU/Linux distribution in two pop-up menus to get the download link (e.g. *Percona Monitoring and Management 1.17.2* and *Red Hat Enterprise Linux / CentOS / Oracle Linux 7*).
+    !!! alert alert-info "Note"
+        You can also download PMM Client packages from the [PMM download page](https://www.percona.com/downloads/pmm/). Choose the appropriate PMM version and your GNU/Linux distribution in two pop-up menus to get the download link (e.g. *Percona Monitoring and Management 1.17.2* and *Red Hat Enterprise Linux / CentOS / Oracle Linux 7*).
 
 ## Connecting PMM Clients to the PMM Server
 
@@ -215,15 +219,21 @@ When changing to a new version of PMM, you update the PMM Server and each PMM Cl
 
 ### Updating the PMM Server
 
-**WARNING**: Currently PMM Server doesn’t support updates from 1.x to 2.0. Just install the new PMM 2 following its [official installation instructions](https://www.percona.com/doc/percona-monitoring-and-management/2.x/setting-up/server/docker.html).
+!!! alert alert-warning "Warning"
+    Currently PMM Server doesn’t support updates from 1.x to 2.0. Just install the new PMM 2 following its [official installation instructions](https://www.percona.com/doc/percona-monitoring-and-management/2.x/setting-up/server/docker.html).
 
 The updating procedure of your PMM Server depends on the option that you selected for installing it.
 
 If you are running PMM Server as a virtual appliance or using an Amazon Machine Image, use the Update button on the Home dashboard (see PMM Home Page) in case of available updates.
 
+![](../_images/pmm.home-page.1.png)
+
+*Updating the PMM Server from the PMM home page.*
+
 ### Updating a PMM Client
 
-**WARNING**: Currently PMM Client has no compatibility between 1.x to 2.0. Coexistence of 1.x and 2.x clients is not supported as well. If you need PMM 2.x, remove the old pmm-client package and install the new pmm2-client one following its [installation instructions](https://www.percona.com/doc/percona-monitoring-and-management/2.x/setting-up/client/index.html).
+!!! alert alert-warning "Warning"
+    Currently PMM Client has no compatibility between 1.x to 2.0. Coexistence of 1.x and 2.x clients is also not supported. If you need PMM 2.x, remove the old pmm-client package and install the new pmm2-client one following its [installation instructions](https://www.percona.com/doc/percona-monitoring-and-management/2.x/setting-up/client/index.html).
 
 When a newer version of PMM Client becomes available, you can update to it from  the Percona software repositories:
 
@@ -239,11 +249,11 @@ Red Hat or CentOS
 $ yum update pmm-client
 ```
 
-If you installed your  client manually, remove it and then download and install a newer version.
+If you installed your PMM client manually, remove it and then download and install a newer version.
 
 ## Uninstalling PMM Components
 
-Each PMM Client and the PMM Server are removed separately. First, remove all monitored services by using the **pmm-admin remove** command (see Removing monitoring services). Then you can remove each PMM Client and the PMM Server.
+Each PMM Client and the PMM Server are removed separately. First, remove all monitored services by using the **pmm-admin remove** command (see [Removing monitoring services](../pmm-admin.md#removing-monitoring-services)). Then you can remove each PMM Client and the PMM Server.
 
 ### Removing the PMM Client
 
@@ -277,8 +287,7 @@ $ dpkg -r pmm-client
 
 Using the generic PMM Client tarball.
 
-    **cd** into the directory where you extracted the tarball
-    contents. Then, run the `unistall` script:
+**cd** into the directory where you extracted the tarball contents. Then, run the `uninstall` script:
 
 ```
 $ ./uninstall

@@ -12,7 +12,8 @@ In this chapter
 pmm-admin [OPTIONS] [COMMAND]
 ```
 
-**NOTE**: The **pmm-admin** tool requires root access (you should either be logged in as a user with root privileges or be able to run commands with **sudo**).
+!!! alert alert-info "Note"
+    The **pmm-admin** tool requires root access (you should either be logged in as a user with root privileges or be able to run commands with **sudo**).
 
 To view all available commands and options, run **pmm-admin** without any commands or options:
 
@@ -232,7 +233,8 @@ $ pmm-admin add mongodb:metrics -- --mongodb.tls
 | `--mongodb.tls-disable-hostname-validation` | Do hostname validation for the server connection. |
 | `--mongodb.tls-private-key` *string*        | A path to a PEM file that contains the private key (if not contained in the `mongodb.tls-cert` file). |
 
-**NOTE**: PMM does not support passing SSL/TLS related parameters to `mongodb:queries`.
+!!! alert alert-info "Note"
+    PMM does not support passing SSL/TLS related parameters to `mongodb:queries`.
 
 ```
 $ mongod --dbpath=DATABASEDIR --profile 2 --slowms 200 --rateLimit 100
@@ -250,7 +252,8 @@ $ pmm-admin add linux:metrics [NAME] [OPTIONS]
 
 This creates the `pmm-linux-metrics-42000` service that collects local system metrics for this particular OS instance.
 
-**NOTE**: It should be able to detect the local PMM Client name, but you can also specify it explicitly as an argument.
+!!! alert alert-info "Note"
+    It should be able to detect the local PMM Client name, but you can also specify it explicitly as an argument.
 
 ### OPTIONS
 
@@ -390,7 +393,8 @@ $ pmm-admin add mysql:metrics [NAME] [OPTIONS]
 
 This creates the `pmm-mysql-metrics-42002` service that collects MySQL instance metrics.
 
-**NOTE**: It should be able to detect the local PMM Client name, but you can also specify it explicitly as an argument.
+!!! alert alert-info "Note"
+    It should be able to detect the local PMM Client name, but you can also specify it explicitly as an argument.
 
 ### OPTIONS
 
@@ -469,7 +473,8 @@ pmm-admin add mongodb:queries [NAME] [OPTIONS]
 
 This creates the `pmm-mongodb-queries-0` service that is able to collect QAN data for multiple remote MongoDB server instances.
 
-**NOTE**: It should be able to detect the local PMM Client name, but you can also specify it explicitly as an argument.
+!!! alert alert-info "Note"
+    It should be able to detect the local PMM Client name, but you can also specify it explicitly as an argument.
 
 ### OPTIONS
 
@@ -486,7 +491,8 @@ The following options can be used with the `mongodb:queries` alias:
 
 You can also use global options that apply to any other command, as well as options that apply to adding services in general.
 
-**NOTE**: PMM does not support passing SSL/TLS related parameters to `mongodb:queries`.
+!!! alert alert-info "Note"
+    PMM does not support passing SSL/TLS related parameters to `mongodb:queries`.
 
 For more information, run **pmm-admin add** `mongodb:queries` `--help`.
 
@@ -502,7 +508,8 @@ $ pmm-admin add mongodb:metrics [NAME] [OPTIONS]
 
 This creates the `pmm-mongodb-metrics-42003` service that collects local MongoDB metrics for this particular MongoDB instance.
 
-**NOTE**: It should be able to detect the local PMM Client name, but you can also specify it explicitly as an argument.
+!!! alert alert-info "Note"
+    It should be able to detect the local PMM Client name, but you can also specify it explicitly as an argument.
 
 ### OPTIONS
 
@@ -548,7 +555,8 @@ $ pmm-admin add proxysql:metrics [NAME] [OPTIONS]
 
 This creates the `pmm-proxysql-metrics-42004` service that collects local ProxySQL performance metrics.
 
-**NOTE**: It should be able to detect the local PMM Client name, but you can also specify it explicitly as an argument.
+!!! alert alert-info "Note"
+    It should be able to detect the local PMM Client name, but you can also specify it explicitly as an argument.
 
 ### OPTIONS
 
@@ -737,7 +745,8 @@ $ pmm-admin help [COMMAND]
 
 This will print help information and exit.  The actual command is not run and options are ignored.
 
-**NOTE**: You can also use the global `-h` or `--help` option after any command to get the same help information.
+!!! alert alert-info "Note"
+    You can also use the global `-h` or `--help` option after any command to get the same help information.
 
 ### COMMANDS
 
@@ -880,7 +889,8 @@ Run this command as root or by using the **sudo** command
 pmm-admin purge [SERVICE [NAME]] [OPTIONS]
 ```
 
-**NOTE**: It should be able to detect the local PMM Client name, but you can also specify it explicitly as an argument.
+!!! alert alert-info "Note"
+    It should be able to detect the local PMM Client name, but you can also specify it explicitly as an argument.
 
 ### SERVICES
 
@@ -971,7 +981,8 @@ Run this command as root or by using the **sudo** command
 pmm-admin restart [SERVICE [NAME]] [OPTIONS]
 ```
 
-**NOTE**: It should be able to detect the local PMM Client name, but you can also specify it explicitly as an argument.
+!!! alert alert-info "Note"
+    It should be able to detect the local PMM Client name, but you can also specify it explicitly as an argument.
 
 ### OPTIONS
 
@@ -1055,7 +1066,8 @@ Run this command as root or by using the **sudo** command
 pmm-admin start [SERVICE [NAME]] [OPTIONS]
 ```
 
-**NOTE**: It should be able to detect the local PMM Client name, but you can also specify it explicitly as an argument.
+!!! alert alert-info "Note"
+    It should be able to detect the local PMM Client name, but you can also specify it explicitly as an argument.
 
 ### OPTIONS
 
@@ -1104,7 +1116,8 @@ Run this command as root or by using the **sudo** command
 pmm-admin stop [SERVICE [NAME]] [OPTIONS]
 ```
 
-**NOTE**: It should be able to detect the local PMM Client name, but you can also specify it explicitly as an argument.
+!!! alert alert-info "Note"
+    It should be able to detect the local PMM Client name, but you can also specify it explicitly as an argument.
 
 ### OPTIONS
 
@@ -1145,7 +1158,8 @@ For more information, run **pmm-admin stop** `--help`.
 
 Use the **pmm-admin uninstall** command to remove all services even if PMM Server is not available.  To uninstall PMM correctly, you first need to remove all services, then uninstall PMM Client, and then stop and remove PMM Server.  However, if PMM Server is not available (disconnected or shut down), **pmm-admin rm** will not work.  In this case, you can use **pmm-admin uninstall** to force the removal of monitoring services enabled for PMM Client.
 
-**NOTE**: Information about services will remain in PMM Server, and it will not let you add those services again.  To remove information about orphaned services from PMM Server, once it is back up and available to PMM Client, use the **pmm-admin repair** command.
+!!! alert alert-info "Note"
+    Information about services will remain in PMM Server, and it will not let you add those services again.  To remove information about orphaned services from PMM Server, once it is back up and available to PMM Client, use the **pmm-admin repair** command.
 
 ### USAGE
 

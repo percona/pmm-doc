@@ -14,7 +14,7 @@ The Pricing Information section allows to select your region and choose an insta
 
 *As soon as you select your region, you can choose the EC2 instance in it and see its price. PMM comes for no cost, you may only need to pay for the infrastructure provided by Amazon.*
 
-!!! note
+!!! alert alert-info "Note"
     Disk space consumed by PMM Server depends on the number of hosts under monitoring. Each environment will be unique, however consider modeling your data consumption based on [PMM Demo](https://pmmdemo.percona.com/) web site, which consumes ~230MB/host/day, or ~6.9GB/host at the default 30 day retention period. See [this blog post](https://www.percona.com/blog/2017/05/04/how-much-disk-space-should-i-allocate-for-percona-monitoring-and-management/) for more details.
 
 Clicking the Continue to Subscribe button will proceed to the terms and conditions page. Clicking Continue to Configuration there will bring a new page to start setting up your instance.
@@ -70,7 +70,8 @@ Scroll up to the top of the page to view your settings. Then, click the Launch w
 
 ![](../../_images/aws-marketplace.pmm.launch-on-ec2.1-click-launch.3.png)
 
-**NOTE**: The *Launch with 1 click* button may alternatively be titled as *Accept Software Terms & Launch with 1-Click*.
+!!! alert alert-info "Note"
+    The *Launch with 1 click* button may alternatively be titled as *Accept Software Terms & Launch with 1-Click*.
 
 ### Adjusting instance settings in the EC2 Console
 
@@ -86,7 +87,8 @@ Your instance appears in the **EC2 console** in a table that lists all instances
 
 After you add your new instance it will take some time to initialize it. When the AWS console reports that the instance is now in a running state, you many continue with configuration of PMM Server.
 
-**NOTE**: When started the next time after rebooting, your instance may acquire another IP address. You may choose to set up an elastic IP to avoid this problem.
+!!! alert alert-info "Note"
+    When started the next time after rebooting, your instance may acquire another IP address. You may choose to set up an elastic IP to avoid this problem.
 
 With your instance selected, open its IP address in a web browser. The IP address appears in the IPv4 Public IP column or as value of the Public IP field at the top of the Properties panel.
 
@@ -124,11 +126,11 @@ You are creating a username and password that will be used for two purposes:
     $ pmm-admin config --username= --password= --server=1.2.3.4
     ```
 
-**NOTE**: **Accessing the instance by using an SSH client.**
+!!! alert alert-info "Accessing the instance by using an SSH client"
 
-For instructions about how to access your instances by using an SSH client, see [Connecting to Your Linux Instance Using SSH](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstancesLinux.html)
+    For instructions about how to access your instances by using an SSH client, see [Connecting to Your Linux Instance Using SSH](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstancesLinux.html)
 
-Make sure to replace the user name `ec2-user` used in this document with `admin`.
+    Make sure to replace the user name `ec2-user` used in this document with `admin`.
 
 ### Resizing the EBS Volume
 
@@ -175,7 +177,8 @@ Percona provides public Amazon Machine Images (AMI) with PMM Server in all regio
        --key-name SSH-KEYNAME
     ```
 
-    **NOTE**: Providing the public SSH key is optional. Specify it if you want SSH access to PMM Server.
+    !!! alert alert-info "Note"
+        Providing the public SSH key is optional. Specify it if you want SSH access to PMM Server.
 
 2. Set a name for the instance using the `create-tags` command. For example:
 

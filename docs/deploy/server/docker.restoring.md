@@ -42,7 +42,8 @@ Assuming that you have a backup copy of your `pmm-data`, created according to th
     $ cd ~/pmm-data-backup
     ```
 
-    **NOTE**: This example assumes that the backup directory is found in your home directory.
+    !!! alert alert-info "Note"
+        This example assumes that the backup directory is found in your home directory.
 
 2. Copy data from your backup directory to the `pmm-data` container.
 

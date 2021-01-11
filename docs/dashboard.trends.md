@@ -2,7 +2,8 @@
 
 The *Trends* dashboard shows the essential statistics about the selected host. It also includes the essential statistics of MySQL, such as MySQL questions and InnoDB row reads and row changes.
 
-**NOTE**: The MySQL statistics section is empty for hosts other than MySQL.
+!!! alert alert-info "Note"
+    The MySQL statistics section is empty for hosts other than MySQL.
 
 ### Metrics
 

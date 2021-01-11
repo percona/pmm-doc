@@ -30,7 +30,8 @@ $ docker create \
    percona/pmm-server:1 /bin/true
 ```
 
-**NOTE**: This container does not run, it simply exists to make sure you retain all PMM data when you upgrade to a newer PMM Server image.  Do not remove or re-create this container, unless you intend to wipe out all PMM data and start over.
+!!! alert alert-info "Note"
+    This container does not run, it simply exists to make sure you retain all PMM data when you upgrade to a newer PMM Server image.  Do not remove or re-create this container, unless you intend to wipe out all PMM data and start over.
 
 The previous command does the following:
 

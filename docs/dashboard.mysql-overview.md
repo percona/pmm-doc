@@ -162,7 +162,8 @@ query_cache_type=0
 query_cache_size=0
 ```
 
-**NOTE**: While you can dynamically change these values, to completely remove the contention point you have to restart the database.
+!!! alert alert-info "Note"
+    While you can dynamically change these values, to completely remove the contention point you have to restart the database.
 
 ## MySQL Open Tables, MySQL Table Open Cache Status, and MySQL Table Definition Cache
 

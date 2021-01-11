@@ -117,7 +117,8 @@ The Explain section enables you to run **EXPLAIN** on the selected query directl
 
 The output appears in three forms: classic, JSON and visual. The classic form presents the attributes of the **EXPLAIN** command as columns of a table. The JSON format presents the output of **EXPLAIN** as a JSON document. To help you better understand how the query has been optimized, the visual form shows how the query accesses the tables it includes. The output of the visual form is identical to that of **pt-visual-explain**.
 
-**NOTE**: The Copy to clipboard button available in Explain, Fingerprint, Example, and Tables sections is useful to save the output and pass it to external tools, such as **pt-visual-explain**.
+!!! alert alert-info "Note"
+    The Copy to clipboard button available in Explain, Fingerprint, Example, and Tables sections is useful to save the output and pass it to external tools, such as **pt-visual-explain**.
 
 ![](_images/qan.explain.1.png)
 
@@ -133,7 +134,7 @@ Note that the **EXPLAIN** command only works with the following statements:
 
 If you are viewing the details of a query of another type, the Explain section will not contain any data.
 
-!!! note "Related information"
+!!! alert alert-info "Note" "Related information"
     pt-visual-explain: a tool to show the query plan based on the output of the EXPLAIN command <https://www.percona.com/doc/percona-toolkit/LATEST/pt-visual-explain.html>
 
 ### Table Info Section

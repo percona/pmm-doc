@@ -34,7 +34,8 @@ The directory (`/etc/pmm-certs` in this example) that you intend to mount must c
 * `ca-certs.pem`
 * `dhparam.pem`
 
-**NOTE**: To enable SSL encryption, The container publishes port *443* instead of *80*.
+!!! alert alert-info "Note"
+    To enable SSL encryption, The container publishes port *443* instead of *80*.
 
 Alternatively, you can use **docker cp** to copy the files to an already existing `pmm-server` container.
 

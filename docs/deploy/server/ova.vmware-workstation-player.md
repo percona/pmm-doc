@@ -9,7 +9,8 @@ The following procedure describes how to run the *PMM Server* appliance using VM
     1. Open the File menu and click Open.
     2. Specify the path to the OVA and click Continue.
 
-        **NOTE**: You may get an error indicating that import failed. Simply click Retry and import should succeed.
+        !!! alert alert-info "Note"
+            You may get an error indicating that import failed. Simply click Retry and import should succeed.
 
 3. Configure network settings to make the appliance accessible from other hosts in your network.
 

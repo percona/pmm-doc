@@ -12,7 +12,7 @@ The modules are packaged for easy installation and usage. It is assumed that the
 
 PMM is a collection of tools designed to seamlessly work together.  Some are developed by Percona and some are third-party open-source tools.
 
-!!! note
+!!! alert alert-info "Note:
     The overall client-server model is not likely to change, but the set of tools that make up each component may evolve with the product.
 
 The following diagram illustrates how PMM is currently structured:
@@ -99,7 +99,7 @@ TO 'orc_client_user'@'%'
 IDENTIFIED BY 'orc_client_password’;
 ```
 
-!!! note
+!!! alert alert-info "Note"
     The credentials in the previous example are default. If you use a different user name or password, you have to pass them when running PMM Server using the `ORCHESTRATOR_PASSWORD` and `ORCHESTRATOR_USER` options.
 
     ```
@@ -108,7 +108,7 @@ IDENTIFIED BY 'orc_client_password’;
 
 Then you can use the *Discover* page in the Orchestrator web interface to add the instances to the topology.
 
-!!! note
+!!! alert alert-info "Note"
     **Orchestrator is not enabled by default starting with PMM 1.3.0**
 
     Orchestrator was included into PMM for experimental purposes.  It is a standalone tool, not integrated with PMM other than that you can access it from the landing page.

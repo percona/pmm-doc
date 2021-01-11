@@ -27,16 +27,12 @@ distributions:
 
 * Ubuntu 18.04 (Bionic Beaver)
 
-**NOTE**: PMM Client should work on other DEB-based distributions, but it is tested
-only on the platforms listed above.
+!!! alert alert-info "Note"
+    PMM Client should work on other DEB-based distributions, but it is tested only on the platforms listed above.
 
-To install the PMM Client package, complete the following
-procedure. Run the following commands as root or by using the **sudo** command:
+To install the PMM Client package, complete the following procedure. Run the following commands as root or by using the **sudo** command:
 
-
-1. Configure Percona repositories as described in [Percona Software
-Repositories Documentation](https://www.percona.com/doc/percona-repo-config/index.html).
-
+1. Configure Percona repositories as described in [Percona Software Repositories Documentation](https://www.percona.com/doc/percona-repo-config/index.html).
 
 2. Install the PMM Client package:
 
@@ -44,19 +40,5 @@ Repositories Documentation](https://www.percona.com/doc/percona-repo-config/inde
 $ apt-get install pmm-client
 ```
 
-**NOTE**: You can also download PMM Client packages from the [PMM download page](https://www.percona.com/downloads/pmm/).
-Choose the appropriate PMM version and your GNU/Linux distribution in
-two pop-up menus to get the download link (e.g. *Percona Monitoring and Management 1.17.2* and *Ubuntu 18.04 (Bionic Beaver*).
-
-<!-- -*- mode: rst -*- -->
-<!-- Tips (tip) -->
-<!-- Abbreviations (abbr) -->
-<!-- Docker commands (docker) -->
-<!-- Graphical interface elements (gui) -->
-<!-- Options and parameters (opt) -->
-<!-- pmm-admin commands (pmm-admin) -->
-<!-- SQL commands (sql) -->
-<!-- PMM Dashboards (dbd) -->
-<!-- * Text labels -->
-<!-- Special headings (h) -->
-<!-- Status labels (status) -->
+!!! alert alert-info "Note"
+    You can also download PMM Client packages from the [PMM download page](https://www.percona.com/downloads/pmm/). Choose the appropriate PMM version and your GNU/Linux distribution in two pop-up menus to get the download link (e.g. *Percona Monitoring and Management 1.17.2* and *Ubuntu 18.04 (Bionic Beaver*).

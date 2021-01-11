@@ -17,7 +17,8 @@ An example command line would look like this:
 pmm-admin add postgresql --host=localhost --password='secret' --port=5432 --user=pmm_user
 ```
 
-**NOTE**: Capturing read and write time statistics is possible only if `track_io_timing` setting is enabled. This can be done either in configuration file or with the following query executed on the running system:
+!!! alert alert-info "Note"
+    Capturing read and write time statistics is possible only if `track_io_timing` setting is enabled. This can be done either in configuration file or with the following query executed on the running system:
 
 ```
 ALTER SYSTEM SET track_io_timing=ON;
@@ -36,7 +37,8 @@ Percona recommends that a PostgreSQL user be configured for `SUPERUSER` level ac
 CREATE USER pmm_user WITH SUPERUSER ENCRYPTED PASSWORD 'secret';
 ```
 
-**NOTE**: In case of monitoring a PostgreSQL database running on an Amazon RDS instance, the command should look as follows:
+!!! alert alert-info "Note"
+    In case of monitoring a PostgreSQL database running on an Amazon RDS instance, the command should look as follows:
 
 ```
 CREATE USER pmm_user WITH rds_superuser ENCRYPTED PASSWORD 'secret';

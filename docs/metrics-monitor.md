@@ -69,7 +69,8 @@ The selected metric opens to occupy the whole dashboard space. You may now set a
 
 ![](_images/metrics-monitor.cross-server-graphs.load-average.1.png)
 
-**NOTE**: If you are zooming in on a metric which is represented as a single number on its dashboard, you cannot change the level of detail by selecting a range on the graph itself.
+!!! alert alert-info "Note"
+    If you are zooming in on a metric which is represented as a single number on its dashboard, you cannot change the level of detail by selecting a range on the graph itself.
 
 To return to the dashboard, click the Back to dashboard button next to the time range selector.
 

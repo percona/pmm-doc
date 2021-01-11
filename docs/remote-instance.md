@@ -2,7 +2,7 @@
 
 There is a quick method for users to add DBaaS instances to PMM without having to hook into the Cloud Provider’s API, and with no need to have PMM Client installed or any exporters running on the monitored node. The drawback of this approach is that you will not have visibility of host-level metrics (CPU, memory, and disk activity will not be captured nor displayed in PMM).
 
-!!! note
+!!! alert alert-info "Note"
     There is an alternative and more complex approach available for MySQL Server, which involves API-aware addition of an Amazon RDS / Aurora DB instance.
 
 Both methods can be accessed in the Metrics Monitor navigation menu by selecting the *PMM Add Instance* item in a PMM Dropdown group:
