@@ -1,8 +1,8 @@
 site_name: Percona Monitoring and Management
 #site_url: https://www.percona.com/doc/percona-monitoring-and-management/1.x/
-repo_name: percona/pmm
-repo_url: https://github.com/percona/pmm
-edit_uri: edit/master/doc/markdown/
+repo_name: percona/pmm-doc
+repo_url: https://github.com/percona/pmm-doc
+edit_uri: edit/1.x/doc/
 site_description: Percona Monitoring and Management Documentation
 site_author: Percona LLC
 copyright: Percona LLC, &#169; 2020
