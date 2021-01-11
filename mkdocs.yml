@@ -54,6 +54,7 @@ markdown_extensions:
 plugins:
   - search
   - git-revision-date
+  - bootstrap-tables
   - macros:
         include_yaml: # Variables used in Markdown and templates as '{{ VAR }}'
           - 'icon.yml'    # Icon shortcuts
