@@ -51,6 +51,6 @@ The following options may be passed to the `linux:metrics` monitoring service as
 
     PMM shows NUMA related metrics on the Advanced Data Exploration and NUMA Overview dashboards. To enable this feature, the meminfo_numa option is enabled automatically when you install PMM.
 
-    !!! seealso "Related Information:
-       Setting collector options
-       : <https://github.com/prometheus/node_exporter#collectors>
+    !!! seealso "Related Information"
+        Setting collector options
+        : <https://github.com/prometheus/node_exporter#collectors>

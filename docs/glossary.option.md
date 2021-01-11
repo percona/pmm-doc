@@ -35,7 +35,8 @@ Docker doesn’t support changing environment variables on an already provisione
     docker pull percona/pmm-server:latest
     ```
 
-    **WARNING**: When you destroy and recreate the container, all the updates you have done through PMM Web interface will be lost. What’s more, the software version will be reset to the one in the Docker image. Running an old PMM version with a data volume modified by a new PMM version may cause unpredictable results. This could include data loss.
+    !!! alert alert-warning "Warning"
+        When you destroy and recreate the container, all the updates you have done through PMM Web interface will be lost. What’s more, the software version will be reset to the one in the Docker image. Running an old PMM version with a data volume modified by a new PMM version may cause unpredictable results. This could include data loss.
 
 3. Start the container with the new settings. For example, changing [`METRICS_RESOLUTION`](#metrics-resolution) would look as follows:
 
@@ -156,6 +157,10 @@ $ docker run ... -e METRICS_RESOLUTION=VALUE ... percona/pmm-server:1
 ### METRICS_MEMORY
 
 By default, Prometheus in PMM Server uses all available memory for storing the most recently used data chunks.  Depending on the amount of data coming into Prometheus, you may require to allow less memory consumption if it is needed for other processes.
+
+!!! alert alert-warning "Important"
+
+    Starting with version 1.13.0, PMM uses Prometheus 2. Due to optimizations in Prometheus, setting the metrics memory by passing the `METRICS_MEMORY` option is a deprecated practice.
 
 If you are still using a version of PMM prior to 1.13 you might need to set the metrics memory by passing the `METRICS_MEMORY` environment variable along with the **docker run** command.
 
