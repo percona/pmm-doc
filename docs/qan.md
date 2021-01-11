@@ -1,7 +1,9 @@
 # PMM Query Analytics
 
-!!! warning
-    You are viewing documentation for PMM 1.x, did you need [PMM 2.x documentation](https://www.percona.com/doc/percona-monitoring-and-management/2.x/using/query-analytics.html)?”
+!!! alert alert-warning "Warning"
+    You are viewing documentation for PMM {{release}}.
+
+    For the latest, see [PMM 2.x documentation](../2.x/using/query-analytics.html)
 
 The QAN is a special dashboard which enables database administrators and application developers to analyze database queries over periods of time and find performance problems. QAN helps you optimize database performance by making sure that queries are executed as expected and within the shortest time possible.  In case of problems, you can see which queries may be the cause and get detailed metrics for them.
 
@@ -9,7 +11,7 @@ The QAN is a special dashboard which enables database administrators and applica
 
 *QAN helps analyze database queries over periods of time and find performance problems.*
 
-!!! important
+!!! alert alert-info "Important"
     PMM Query Analytics supports MySQL and MongoDB. The minimum requirements for MySQL are:
 
     * MySQL 5.1 or later (if using the slow query log)

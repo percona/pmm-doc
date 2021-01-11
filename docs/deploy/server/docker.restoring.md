@@ -34,7 +34,10 @@ Run the following commands as root or by using the **sudo** command
        percona/pmm-server:1 /bin/true
     ```
 
-Assuming that you have a backup copy of your `pmm-data`, created according to the procedure described in the:ref:pmm.server.docker.backing-up section, restore your data as follows:
+!!! alert alert-warning "Important"
+    The last step creates a new `pmm-data` container based on the `percona/pmm-server:1` image. If you do not intend to use the `latest` tag, specify the exact version instead, such as **1.5.0**. You can find all available versions of `pmm-server` images at [percona/pmm-server](https://hub.docker.com/r/percona/pmm-server/tags/).
+
+Assuming that you have a backup copy of your `pmm-data`, created according to the procedure described in [Backing Up PMM Data from the Docker Container ](docker.backing-up.md), restore your data as follows:
 
 1. Change the working directory to the directory that contains your `pmm-data` backup files.
 

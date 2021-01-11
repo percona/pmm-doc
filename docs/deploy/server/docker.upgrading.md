@@ -68,11 +68,15 @@ $ docker run -d \
    percona/pmm-server:1
 ```
 
+!!! alert alert-warning "Important""
+    The `pmm-server` container must be stopped before attempting **docker.run**.
+
 The **docker run** command refers to the pulled image as the last parameter. If you used a specific version number when running **docker pull** (see [Pulling the PMM Server Docker Image](docker.setting-up.md#pmm-server-docker-image-pulling)) replace `latest` accordingly.
 
 Note that this command also refers to `pmm-data` as the value of `--volumes-from` option. This way, your new version will continue to use the existing data.
 
-**WARNING**: Do not remove the `pmm-data` container when updating, if you want to keep all collected data.
+!!! alert alert-warning "Warning"
+    Do not remove the `pmm-data` container when updating, if you want to keep all collected data.
 
 Check if the new container is running using **docker ps**.
 
@@ -86,7 +90,7 @@ Then, make sure that the PMM version has been updated (see [PMM Version](../../g
 
 ## Removing the backup container
 
-After you have tried the features of the new version, you may decide to continue using it. The backup container that you have stored (Creating a backup version of the current pmm-server Docker container) is no longer needed in this case.
+After you have tried the features of the new version, you may decide to continue using it. The backup container that you have stored is no longer needed in this case.
 
 To remove this backup container, you need the **docker rm** command:
 
@@ -104,12 +108,13 @@ If, for whatever reason, you decide to keep using the old version, you just need
 $ docker stop pmm-server && docker rm pmm-server
 ```
 
-Now, rename the `pmm-server-backup` to `pmm-server` (see Creating a backup version of the current pmm-server Docker container) and start it.
+Now, rename the `pmm-server-backup` to `pmm-server` and start it.
 
 ```
 $ docker start pmm-server
 ```
 
-**WARNING**: Do not use the **docker run** command to start the container. The **docker run** command creates and then runs a new container.
+!!! alert alert-warning "Warning"
+    Do not use the **docker run** command to start the container. The **docker run** command creates and then runs a new container.
 
-To start a new container use the **docker start** command.
+    To start a new container use the **docker start** command.

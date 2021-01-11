@@ -2,10 +2,6 @@
 
 You can access the PMM web interface using the IP address of the host where PMM Server is running.  For example, if PMM Server is running on a host with IP 192.168.100.1, access the following address with your web browser: `http://192.168.100.1`.
 
-!!! seealso "See also"
-    Installing PMM Server
-    :
-
 The PMM home page that opens provides an overview of the environment that you have set up to monitor by using the **pmm-admin** tool.
 
 From the PMM home page, you can access specific monitoring tools, or dashboards. Each dashboard features a collection of metrics. These are graphs of a certain type that represent one specific aspect showing how metric values change over time.

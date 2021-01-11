@@ -20,12 +20,13 @@ The virtual appliance is ideal for running PMM Server on an enterprise virtualiz
 
 The virtual machine used for the appliance runs CentOS 7.
 
-!!! warning
+!!! alert alert-warning "Warning"
+
     The appliance must run in a network with DHCP, which will automatically assign an IP address for it.
 
     To assign a static IP manually, you need to acquire the root access as described in How to set the root password when PMM Server is installed as a virtual appliance. Then, see the documentation for the operating system for further instructions: [Configuring network interfaces in CentOS](https://www.centos.org/docs/5/html/Deployment_Guide-en-US/s1-networkscripts-interfaces.html)
 
-### Instructions for setting up the virtual machine for different platforms
+## Instructions for setting up the virtual machine for different platforms
 
 * [VirtualBox Using the Command Line](ova.virtualbox.cli.md)
 * [VirtualBox Using the GUI](ova.virtualbox.gui.md)
@@ -84,4 +85,4 @@ ssh admin@192.168.100.1 -i ~/.ssh/pmm-admin.key
 
 ## Next Steps
 
-Verify that PMM Server is running by connecting to the PMM web interface using the IP address assigned to the virtual appliance, then install PMM Client on all database hosts that you want to monitor.
+[Verify that PMM Server](../index.md#verifying-pmm-server) is running by connecting to the PMM web interface using the IP address assigned to the virtual appliance, then [install PMM Client](../index.md#installing-clients) on all database hosts that you want to monitor.

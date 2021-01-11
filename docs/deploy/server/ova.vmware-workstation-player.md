@@ -20,4 +20,4 @@ The following procedure describes how to run the *PMM Server* appliance using VM
 
     If it was assigned an IP address on the network by DHCP, the URL for accessing PMM will be printed in the console window.
 
-5. Set the root password as described in the section
+5. Set the root password.
