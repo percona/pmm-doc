@@ -101,7 +101,8 @@ This page has four tabs.
 2. Click {{ icon.plussquare }} *Add*.
 
 3. Enter a template in the *Alert Rule Template* text box.
-```
+
+    ```
     ---
     templates:
         - name: mysql_too_many_connections
@@ -130,7 +131,7 @@ This page has four tabs.
                 VALUE = {{ $value }}
                 LABELS: {{ $labels }}
             summary: MySQL too many connections (instance {{ $labels.instance }})
-```
+    ```
 
     ![](../_images/PMM_Integrated_Alerting_Alert_Rule_Templates_Add_Form.jpg)
 
