@@ -74,6 +74,7 @@ log_slow_slave_statements=ON
 
     This may affect the quality of monitoring data gathered by Query Analytics.
 
+
 ## Creating a MySQL User Account for PMM
 
 When adding a MySQL instance to monitoring, you can specify the MySQL
@@ -177,6 +178,16 @@ select * from setup_consumers;
     ```sh
     mysqld --performance-schema-instrument='%=on'
     ```
+
+* If you are running any MariaDB version, there is no Explain or Example data shown by default in Query Analytics. A workaround is to run this SQL command:
+
+```sql
+UPDATE performance_schema.setup_instruments SET ENABLED = 'YES', TIMED = 'YES'
+ WHERE NAME LIKE 'statement/%';
+ UPDATE performance_schema.setup_consumers SET ENABLED = 'YES'
+ WHERE NAME LIKE '%statements%';
+```
+
 
     This option can cause additional overhead and should be used with care.
 
