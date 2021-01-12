@@ -161,4 +161,4 @@ A paused cluster can't be edited.
 
 
 !!! seealso "See also"
-    - [Setting up a development environment for DBaaS](../../setting-up/server/dbaas.md)
+    [Setting up a development environment for DBaaS](../../setting-up/server/dbaas.md)
