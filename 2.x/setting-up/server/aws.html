@@ -109,7 +109,7 @@
 <p><img alt="" src="../../_images/PMM_AWS_Marketplace.png" /></p>
 <p>Selecting a region and instance type in the <em>Pricing Information</em> section will give you an estimate of the costs involved. This is only an indication of costs. You will choose regions and instance types in later steps.</p>
 <p>Percona Monitoring and Management Server is provided at no cost, but you may need to pay for infrastructure costs.</p>
-<div class="admonition note">
+<div class="admonition alert alert-info">
 <p class="admonition-title">Note</p>
 <p>Disk space consumed by PMM Server depends on the number of hosts being monitored. Although each environment will be unique, you can consider the data consumption figures for the <a href="https://pmmdemo.percona.com/">PMM Demo</a> web site which
 consumes approximately 230MB/host/day, or ~6.9GB/host at the default 30 day retention period.</p>
@@ -160,7 +160,7 @@ consumes approximately 230MB/host/day, or ~6.9GB/host at the default 30 day rete
 <h2 id="limiting-access-to-the-instance-security-group-and-a-key-pair"><a class="toclink" href="#limiting-access-to-the-instance-security-group-and-a-key-pair">Limiting Access to the instance: security group and a key pair</a></h2>
 <p>In the <em>Security Group</em> section, which acts like a firewall, you may use the preselected option <code>Create new based on seller settings</code> to create a security group with recommended settings. In the <em>Key Pair</em> select an already set up EC2 key pair to limit access to your instance.</p>
 <p><img alt="image" src="../../_images/aws-marketplace.pmm.launch-on-ec2.1-click-launch.3.png" /></p>
-<div class="admonition note">
+<div class="admonition alert alert-info">
 <p class="admonition-title">Note</p>
 <p>It is important that the security group allow communication via the the following ports: <em>22</em>, <em>80</em>, and <em>443</em>. PMM should also be able to access port <em>3306</em> on the RDS that uses the instance.</p>
 </div>
@@ -169,7 +169,7 @@ consumes approximately 230MB/host/day, or ~6.9GB/host at the default 30 day rete
 <p>Scroll up to the top of the page to view your settings. Then, click the <em>Launch with 1 click</em> button to continue and adjust your settings in the EC2 console.</p>
 <p>Your instance settings are summarized in a special area. Click the Launch with 1 click button to continue.</p>
 <p><img alt="image" src="../../_images/aws-marketplace.pmm.launch-on-ec2.1-click-launch.3.png" /></p>
-<div class="admonition note">
+<div class="admonition alert alert-info">
 <p class="admonition-title">Note</p>
 <p>The <em>Launch with 1 click</em> button may alternatively be titled as <em>Accept Software Terms &amp; Launch with 1-Click</em>.</p>
 </div>
@@ -179,7 +179,7 @@ consumes approximately 230MB/host/day, or ~6.9GB/host at the default 30 day rete
 <p><img alt="image" src="../../_images/aws-marketplace.ec2-console.pmm.1.png" /></p>
 <h2 id="running-the-instance"><a class="toclink" href="#running-the-instance">Running the instance</a></h2>
 <p>After you add your new instance it will take some time to initialize it. When the AWS console reports that the instance is now in a running state, you many continue with configuration of PMM Server.</p>
-<div class="admonition note">
+<div class="admonition alert alert-info">
 <p class="admonition-title">Note</p>
 <p>When started the next time after rebooting, your instance may acquire another IP address. You may choose to set up an elastic IP to avoid this problem.</p>
 </div>
@@ -209,8 +209,8 @@ consumes approximately 230MB/host/day, or ~6.9GB/host at the default 30 day rete
 <p>authentication between PMM Server and PMM Clients - you will re-use these credentials when configuring pmm-client for the first time on a server, for example:</p>
 <div class="highlight"><pre><span></span><code>pmm-admin config --server-insecure-tls --server-url<span class="o">=</span>https://admin:admin@&lt;IP Address&gt;:443
 </code></pre></div>
-<div class="admonition note">
-<p class="admonition-title">Accessing the instance by using an SSH client</p>
+<div class="admonition alert alert-info">
+<p class="admonition-title">Note</p>
 <p>For instructions about how to access your instances by using an SSH client, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstancesLinux.html">Connecting to Your Linux Instance Using SSH</a></p>
 </div>
 <p>Make sure to replace the user name <code>ec2-user</code> used in this document with <code>admin</code>.</p>

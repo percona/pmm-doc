@@ -151,7 +151,7 @@
 <dt>Size of Temp files</dt>
 <dd>The total amount of data written to temporary files by queries in bytes.</dd>
 </dl>
-<div class="admonition note">
+<div class="admonition alert alert-info">
 <p class="admonition-title">Note</p>
 <p>All temporary files are taken into account by these two gauges, regardless of why the temporary file was created (e.g., sorting or hashing), and regardless of the <code>log_temp_files</code> setting.</p>
 </div>
@@ -167,7 +167,7 @@
 <dt>Operations with Blocks</dt>
 <dd>The time spent reading and writing data file blocks by backends, in milliseconds.</dd>
 </dl>
-<div class="admonition note">
+<div class="admonition alert alert-info">
 <p class="admonition-title">Note</p>
 <p>Capturing read and write time statistics is possible only if <code>track_io_timing</code> setting is enabled. This can be done either in configuration file or with the following query executed on the running system:</p>
 </div>
@@ -180,13 +180,13 @@
 </dl>
 <h2 id="canceled-queries"><a class="toclink" href="#canceled-queries">Canceled Queries</a></h2>
 <p>The number of queries that have been canceled due to dropped tablespaces, lock timeouts, old snapshots, pinned buffers, and deadlocks.</p>
-<div class="admonition note">
+<div class="admonition alert alert-info">
 <p class="admonition-title">Note</p>
 <p>Data shown by this gauge are based on the <code>pg_stat_database_conflicts</code> view.</p>
 </div>
 <h2 id="cache-hit-ratio"><a class="toclink" href="#cache-hit-ratio">Cache Hit Ratio</a></h2>
 <p>The number of times disk blocks were found already in the buffer cache, so that a read was not necessary.</p>
-<div class="admonition note">
+<div class="admonition alert alert-info">
 <p class="admonition-title">Note</p>
 <p>This only includes hits in the PostgreSQL buffer cache, not the operating system’s file system cache.</p>
 </div>

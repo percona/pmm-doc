@@ -114,7 +114,7 @@ the <em>slow query log</em>.  A good rule of thumb is to have approximately 100 
 logged per second.  For example, if your Percona Server instance processes
 10_000 queries per second, you should set <code>log_slow_rate_limit</code> to <code>100</code> and
 capture every 100<sup>th</sup> query for the <em>slow query log</em>.</p>
-<div class="admonition note">
+<div class="admonition alert alert-info">
 <p class="admonition-title">Note</p>
 <p>When using query sampling, set <code>log_slow_rate_type</code> to <code>query</code> so that it applies to queries, rather than sessions.</p>
 <p>It is also a good idea to set <code>log_slow_verbosity</code> to <code>full</code> so that maximum amount of information about each captured query is stored in the slow query log.</p>

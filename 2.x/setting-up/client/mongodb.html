@@ -144,7 +144,7 @@
 <p>For <a href="https://www.mongodb.com">MongoDB</a> to work correctly with Query Analytics, you need to enable profiling
 in your <code>mongod</code> configuration. When started without profiling enabled, Query Analytics
 displays the following warning:</p>
-<div class="admonition note">
+<div class="admonition alert alert-info">
 <p class="admonition-title">Note</p>
 <p><strong>A warning message is displayed when profiling is not enabled</strong></p>
 <p>It is required that profiling of the monitored MongoDB databases be enabled, however profiling is not enabled by default because it may reduce the performance of your MongoDB server.</p>
@@ -196,7 +196,7 @@ Service name: mongo
 <p>Beside positional arguments shown above you can specify service name and service address with the following flags: <code>--service-name</code>, <code>--host</code> (the hostname or IP address of the service), and <code>--port</code> (the port number of the service). If both flag and positional argument are present, flag gains higher priority. Here is the previous example modified to use these flags:</p>
 <div class="highlight"><pre><span></span><code>pmm-admin add mongodb --username<span class="o">=</span>pmm --password<span class="o">=</span>pmm --service-name<span class="o">=</span>mongo --host<span class="o">=</span><span class="m">127</span>.0.0.1 --port<span class="o">=</span><span class="m">27017</span>
 </code></pre></div>
-<div class="admonition note">
+<div class="admonition alert alert-info">
 <p class="admonition-title">Note</p>
 <p>It is also possible to add a MongoDB instance using a UNIX socket with just the <code>--socket</code> flag followed by the path to a socket:</p>
 <div class="highlight"><pre><span></span><code>pmm-admin add mongodb --socket<span class="o">=</span>/tmp/mongodb-27017.sock

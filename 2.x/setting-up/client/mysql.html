@@ -117,7 +117,7 @@ sampling feature may reduce the performance impact.</p>
 <p><em>Performance Schema</em> is generally better for recent versions of other MySQL
 variants. For older MySQL variants, which have neither sampling, nor
 <em>Performance Schema</em>, configure logging only slow queries.</p>
-<div class="admonition note">
+<div class="admonition alert alert-info">
 <p class="admonition-title">Note</p>
 <p>MySQL with too many tables can lead to PMM Server overload due to the streaming of too much time series data. It can also lead to too many queries from <code>mysqld_exporter</code> causing extra load on MySQL. Therefore PMM Server disables most consuming <code>mysqld_exporter</code> collectors automatically if there are more than 1000 tables.</p>
 </div>
@@ -191,7 +191,7 @@ from the <em>Performance Schema</em> instead of <em>slow query log</em>.  Starti
 <p><em>Performance Schema</em> is not as data-rich as the <em>slow query log</em>, but it has all the
 critical data and is generally faster to parse. If you are not running
 Percona Server (which supports sampling for the slow query log), then <em>Performance Schema</em> is a better alternative.</p>
-<div class="admonition note">
+<div class="admonition alert alert-info">
 <p class="admonition-title">Note</p>
 <p>Use of the performance schema is off by default in MariaDB 10.x.</p>
 </div>
@@ -234,7 +234,7 @@ MySQL configuration file <code>my.cnf</code> and restart MySQL:</p>
 +----------------------------------+---------+
 15 rows in set (0.00 sec)
 </code></pre></div>
-<div class="admonition note">
+<div class="admonition alert alert-info">
 <p class="admonition-title">Note</p>
 <p><em>Performance Schema</em> instrumentation is enabled by default in MySQL 5.6.6 and later versions. It is not available at all in MySQL versions prior to 5.6.</p>
 <p>If certain instruments are not enabled, you will not see the corresponding graphs in the MySQL Performance Schema dashboard.  To enable full instrumentation, set the option <code>--performance_schema_instrument</code> to <code>'%=on'</code> when starting the MySQL server.</p>
@@ -280,7 +280,7 @@ from <em>Performance Schema</em>:</p>
 Service ID  : /service_id/a89191d4-7d75-44a9-b37f-a528e2c4550f
 Service name: sl-mysql
 </code></pre></div>
-<div class="admonition note">
+<div class="admonition alert alert-info">
 <p class="admonition-title">Note</p>
 <p>There are two possible sources for query metrics provided by MySQL to get data for the Query Analytics: the <a href="#slow-log-settings">slow log</a> and the <a href="#performance-schema">Performance Schema</a>.</p>
 <p>The <code>--query-source</code> option can be used to specify it, either as <code>slowlog</code> (it is also used by default if nothing specified) or as <code>perfschema</code>:</p>
@@ -290,7 +290,7 @@ Service name: sl-mysql
 <p>Beside positional arguments shown above you can specify service name and service address with the following flags: <code>--service-name</code>, <code>--host</code> (the hostname or IP address of the service), and <code>--port</code> (the port number of the service). If both flag and positional argument are present, flag gains higher priority. Here is the previous example modified to use these flags:</p>
 <div class="highlight"><pre><span></span><code>pmm-admin add mysql --username<span class="o">=</span>pmm --password<span class="o">=</span>pmm --service-name<span class="o">=</span>ps-mysql --host<span class="o">=</span><span class="m">127</span>.0.0.1 --port<span class="o">=</span><span class="m">3306</span>
 </code></pre></div>
-<div class="admonition note">
+<div class="admonition alert alert-info">
 <p class="admonition-title">Note</p>
 <p>It is also possible to add MySQL instance using UNIX socket with use of a special <code>--socket</code> flag followed with the path to a socket without username, password and network type:</p>
 <div class="highlight"><pre><span></span><code>pmm-admin add mysql --socket<span class="o">=</span>/var/path/to/mysql/socket

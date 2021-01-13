@@ -139,7 +139,7 @@ ln -s /usr/local/sbin/minikube /usr/sbin/minikube
 <span class="nb">alias</span> <span class="nv">kubectl</span><span class="o">=</span><span class="s1">&#39;minikube kubectl --&#39;</span>
 </code></pre></div>
 <h2 id="start-pmm-server-with-dbaas-activated"><a class="toclink" href="#start-pmm-server-with-dbaas-activated">Start PMM server with DBaaS activated</a></h2>
-<div class="admonition note">
+<div class="admonition alert alert-info">
 <p class="admonition-title">Notes</p>
 <ul>
 <li>To start a fully-working 3 node XtraDB cluster, consisting of sets of 3x ProxySQL, 3x PXC and 6x PMM Client containers, you will need at least 9 vCPU available for minikube. (1x vCPU for ProxySQL and PXC and 0.5vCPU for each pmm-client containers).</li>
@@ -208,7 +208,7 @@ minikube kubectl -- <span class="nb">wait</span> --for<span class="o">=</span><s
 <p>Get your kubeconfig details from minikube (to register your Kubernetes cluster with PMM Server):</p>
 </li>
 </ol>
-<div class="admonition note">
+<div class="admonition alert alert-info">
 <p class="admonition-title">Note</p>
 <p>You will need to copy this output to your clipboard and continue with <a href="../../using/platform/dbaas.html#add-a-kubernetes-cluster">add a Kubernetes cluster to PMM</a>.</p>
 </div>
@@ -574,7 +574,7 @@ eksctl delete cluster --name<span class="o">=</span>your-cluster-name
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-01-11
+            <i class="uil uil-refresh"></i> Page updated 2021-01-13
         </li>
         
     </ul>

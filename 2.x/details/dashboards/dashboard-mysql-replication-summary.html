@@ -163,7 +163,7 @@
 <p>Generally adding more CPU or Disk resources can alleviate replication lag issues, up to a point.</p>
 <h2 id="binlog-size"><a class="toclink" href="#binlog-size">Binlog Size</a></h2>
 <p>This metric shows the overall size of the binary log files, which can exist on both primary and secondary servers. The binary log (also known as the binlog) contains events that describe database changes: <code>CREATE TABLE</code>, <code>ALTER TABLE</code>, updates, inserts, deletes and other statements or database changes. The binlog is the file that is read by secondaries via their IO Thread process in order to replicate database changes modification on the data and on the table structures. There can be more than one binlog file present depending on the binlog rotation policy adopted (for example using the configuration variables <code>max_binlog_size</code> and <code>expire_logs_days</code>).</p>
-<div class="admonition note">
+<div class="admonition alert alert-info">
 <p class="admonition-title">Note</p>
 <p>There can be more binlog files depending on the rotation policy adopted (for example using the configuration variables <code>max_binlog_size</code> and <code>expire_logs_days</code>) or even because of server reboots.</p>
 </div>
