@@ -39,12 +39,18 @@ To open the DBaaS dashboard:
 
 ### Unregister a Kubernetes cluster
 
+1. Find the row with the Kubernetes cluster you want to unregister.
+
+2. In the *Actions* column, open the {{ icon.ellipsisv }} menu and click *Unregister*.
+
+3. Confirm the action by clicking *Proceed*, or abandon by clicking *Cancel*.
+
+4. To ignore any errors when unregistering, activate *Force mode* before clicking *Proceed*.
+
 !!! alert alert-info "Note"
-    You can't unregister a Kubernetes cluster if there DB clusters associated with it.
+    *Force mode* ignores errors, allowing you to unregister a Kubernetes cluster even if there DB clusters associated with it.
 
-1. Click *Unregister*.
-
-2. Confirm the action by clicking *Proceed*, or abandon by clicking *Cancel*.
+![DBaaS Kubernetes Cluster Unregister](../../_images/PMM_DBaaS_Kubernetes_Cluster_Unregister.jpg)
 
 ### View a Kubernetes cluster's configuration
 
