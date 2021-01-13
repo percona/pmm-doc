@@ -1,0 +1,1572 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<title>Percona Monitoring and Management &mdash; MySQL InnoDB Details</title>
+
+<head>
+    
+
+
+    
+<script src="../../js/version-select.js" type="text/javascript"></script>
+
+<script src="../../js/toctree.js" type="text/javascript"></script>
+
+
+    <link rel="top" title="" href="" />
+    
+    <link rel="next" title="MySQL MyISAM/Aria Details" href="dashboard-mysql-myisam-aria-details.html" />
+    
+    
+</head>
+
+<body>
+    
+<link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.3/css/line.css" type="text/css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" type="text/css">
+<link rel="stylesheet" href="../../css/version-select.css" type="text/css">
+<link rel="stylesheet" href="../../css/toctree.css" type="text/css">
+
+    
+<script src="../../js/version-select.js" type="text/javascript"></script>
+
+<script src="../../js/toctree.js" type="text/javascript"></script>
+
+
+    <div class="container">
+        <div class="document row">
+            <div class="documentwrapper col-md-9 col-md-push-3">
+                
+<div class="related row">
+    <ul class="nav nav-pills">
+        
+        <li class="right" style="margin-right: 10px">
+            <a href="dashboard-mysql-myisam-aria-details.html" title="MySQL MyISAM/Aria Details">next</a>
+        </li>
+        
+        
+        <li class="right" style="margin-right: 10px">
+            <a href="dashboard-mysql-innodb-compression-details.html" title="MySQL InnoDB Compression Details">previous</a>
+        </li>
+        
+        <li>
+            <a href="">Home</a>
+        </li>
+    </ul>
+</div>
+
+                
+
+<div class="small">
+    <ul class="list-inline">
+        <li class="left">
+            <a href="https://github.com/percona/pmm-doc/issues/new?title=PMM2: doc issue on page  'MySQL InnoDB Details' (details/dashboards/dashboard-mysql-innodb-details.html)&body=Please describe the issue here"
+                target="_blank" title="Report an issue with this page on GitHub"><i class="uil uil-exclamation-triangle"></i> Report a problem with this page</a>
+        </li>
+        <li class="pull-right">
+            <a href="https://github.com/percona/pmm-doc/edit/master/docs/details/dashboards/dashboard-mysql-innodb-details.md" target="_blank" title="Edit this page on GitHub in Markdown format"><i class="uil uil-pen"></i> Edit this page</a>
+        </li>
+    </ul>
+</div>
+
+
+                <div class="bodywrapper">
+                    <div class="body">
+                        <h1>MySQL InnoDB Details</h1>
+<p><img alt="image" src="../../_images/PMM_MySQL_InnoDB_Details_full.jpg" /></p>
+<h2 id="innodb-activity"><a class="toclink" href="#innodb-activity">InnoDB Activity</a></h2>
+<h3 id="writes-rows"><a class="toclink" href="#writes-rows">Writes (Rows)</a></h3>
+<h3 id="writes-transactions"><a class="toclink" href="#writes-transactions">Writes (Transactions)</a></h3>
+<h3 id="row-writes-per-trx"><a class="toclink" href="#row-writes-per-trx">Row Writes per Trx</a></h3>
+<p>Rows Written Per Transactions which modify rows. This is better indicator of transaction write size than looking at all transactions which did not do any writes as well.</p>
+<h3 id="rows-read-per-trx"><a class="toclink" href="#rows-read-per-trx">Rows Read Per Trx</a></h3>
+<h3 id="log-space-per-trx"><a class="toclink" href="#log-space-per-trx">Log Space per Trx</a></h3>
+<h3 id="rollbacks"><a class="toclink" href="#rollbacks">Rollbacks</a></h3>
+<p>Percent of Transaction Rollbacks (as portion of read-write transactions).</p>
+<h3 id="bp-reqs-per-row"><a class="toclink" href="#bp-reqs-per-row">BP Reqs Per Row</a></h3>
+<p>Number of Buffer Pool requests per Row Access. High numbers here indicate going through long undo chains, deep trees and other inefficient data access.  It can be less than zero due to several rows being read from single page.</p>
+<h3 id="log-fsync-per-trx"><a class="toclink" href="#log-fsync-per-trx">Log Fsync Per Trx</a></h3>
+<p>Log Fsync Per Transaction.</p>
+<h3 id="innodb-row-reads"><a class="toclink" href="#innodb-row-reads">InnoDB Row Reads</a></h3>
+<p><strong>InnoDB Row Operations</strong></p>
+<p>This graph allows you to see which operations occur and the number of rows affected per operation. A graph like Queries Per Second will give you an idea of queries, but one query could effect millions of rows.</p>
+<h3 id="innodb-row-writes"><a class="toclink" href="#innodb-row-writes">InnoDB Row Writes</a></h3>
+<p><strong>InnoDB Row Operations</strong></p>
+<p>This graph allows you to see which operations occur and the number of rows affected per operation. A graph like Queries Per Second will give you an idea of queries, but one query could effect millions of rows.</p>
+<h3 id="innodb-read-only-transactions"><a class="toclink" href="#innodb-read-only-transactions">InnoDB Read-Only Transactions</a></h3>
+<h3 id="innodb-read-write-transactions"><a class="toclink" href="#innodb-read-write-transactions">InnoDB Read-Write Transactions</a></h3>
+<h3 id="innodb-transactions-information-rw"><a class="toclink" href="#innodb-transactions-information-rw">InnoDB Transactions Information (RW)</a></h3>
+<p>The InnoDB Transactions Information graph shows details about the recent transactions.  Transaction IDs Assigned represents the total number of transactions initiated by InnoDB.  RW Transaction Commits are the number of transactions not read-only. Insert-Update Transactions Commits are transactions on the Undo entries.  Non Locking RO Transaction Commits are transactions commit from select statement in auto-commit mode or transactions explicitly started with &ldquo;start transaction read only&rdquo;.</p>
+<p>Note: If you do not see any metric, try running: <code>SET GLOBAL innodb_monitor_enable=all;</code> in the MySQL client.</p>
+<h3 id="misc-innodb-transactions-information"><a class="toclink" href="#misc-innodb-transactions-information">Misc InnoDB Transactions Information</a></h3>
+<p>Additional Innodb Transaction Information</p>
+<h2 id="innodb-storage-summary"><a class="toclink" href="#innodb-storage-summary">InnoDB Storage Summary</a></h2>
+<h3 id="innodb-tables"><a class="toclink" href="#innodb-tables">Innodb Tables</a></h3>
+<p>Current Number of Innodb Tables in database</p>
+<h3 id="data-buffer-pool-fit"><a class="toclink" href="#data-buffer-pool-fit">Data Buffer Pool Fit</a></h3>
+<p>Buffer Pool Size as Portion of the Data</p>
+<h3 id="avg-row-size"><a class="toclink" href="#avg-row-size">Avg Row Size</a></h3>
+<p>Amount of Data Per Row</p>
+<h3 id="index-size-per-row"><a class="toclink" href="#index-size-per-row">Index Size Per Row</a></h3>
+<p>Index Size Per Row shows how much space we&rsquo;re using for indexes on per row basics</p>
+<h3 id="innodb-data-summary"><a class="toclink" href="#innodb-data-summary">InnoDB Data Summary</a></h3>
+<h3 id="space-allocated"><a class="toclink" href="#space-allocated">Space Allocated</a></h3>
+<p>Total Amount of Space Allocated. May not exactly match amount of space used on file system but provided great guidance.</p>
+<h3 id="space-used"><a class="toclink" href="#space-used">Space Used</a></h3>
+<p>Space used in All Innodb Tables. Reported Allocated Space Less Free Space.</p>
+<h3 id="data-length"><a class="toclink" href="#data-length">Data Length</a></h3>
+<p>Space Used by Data (Including Primary Key).</p>
+<h3 id="index-length"><a class="toclink" href="#index-length">Index Length</a></h3>
+<p>Space Used by Secondary Indexes.</p>
+<h3 id="estimated-rows"><a class="toclink" href="#estimated-rows">Estimated Rows</a></h3>
+<p>Estimated number of Rows in Innodb Storage Engine. It is not exact value and it can change abruptly as information is updated.</p>
+<h3 id="indexing-overhead"><a class="toclink" href="#indexing-overhead">Indexing Overhead</a></h3>
+<p>How Much Indexes Take Compared to Data.</p>
+<h3 id="free-space-percent"><a class="toclink" href="#free-space-percent">Free Space Percent</a></h3>
+<p>How Much Space is Free. Too high value wastes space on disk.</p>
+<h3 id="free"><a class="toclink" href="#free">Free</a></h3>
+<p>Allocated Space not currently used by Data or Indexes.</p>
+<h3 id="innodb-file-per-table"><a class="toclink" href="#innodb-file-per-table">InnoDB File Per Table</a></h3>
+<p>If Enabled, By Default every Table will have its own Tablespace represented as its own <code>.idb</code> file  rather than all tables stored in single system tablespace.</p>
+<h2 id="innodb-disk-io"><a class="toclink" href="#innodb-disk-io">InnoDB Disk IO</a></h2>
+<h3 id="innodb-page-size"><a class="toclink" href="#innodb-page-size">InnoDB Page Size</a></h3>
+<h3 id="avg-data-read-rq-size"><a class="toclink" href="#avg-data-read-rq-size">Avg Data Read Rq Size</a></h3>
+<h3 id="avg-data-write-rq-size"><a class="toclink" href="#avg-data-write-rq-size">Avg Data Write Rq Size</a></h3>
+<h3 id="avg-log-write-rq-size"><a class="toclink" href="#avg-log-write-rq-size">Avg Log Write Rq Size</a></h3>
+<h3 id="data-written-per-fsync"><a class="toclink" href="#data-written-per-fsync">Data Written Per Fsync</a></h3>
+<h3 id="log-written-per-fsync"><a class="toclink" href="#log-written-per-fsync">Log Written Per Fsync</a></h3>
+<h3 id="data-read-per-row-read"><a class="toclink" href="#data-read-per-row-read">Data Read Per Row Read</a></h3>
+<h3 id="data-written-per-row-written"><a class="toclink" href="#data-written-per-row-written">Data Written Per Row Written</a></h3>
+<p>Note: Due to difference in timing of Row Write and Data Write the value may be misleading on short intervals.</p>
+<h3 id="innodb-data-io"><a class="toclink" href="#innodb-data-io">InnoDB Data I/O</a></h3>
+<p><strong>InnoDB I/O</strong></p>
+<ul>
+<li><em>Data Writes</em> - The total number of InnoDB data writes.</li>
+<li><em>Data Reads</em> - The total number of InnoDB data reads (OS file reads).</li>
+<li><em>Log Writes</em> - The number of physical writes to the InnoDB redo log file.</li>
+<li><em>Data Fsyncs</em> - The number of fsync() operations. The frequency of <code>fsync()</code> calls is influenced by the setting of the <code>innodb_flush_method</code> configuration option.</li>
+</ul>
+<h3 id="innodb-data-bandwitdh"><a class="toclink" href="#innodb-data-bandwitdh">InnoDB Data Bandwitdh</a></h3>
+<h3 id="innodb-log-io"><a class="toclink" href="#innodb-log-io">InnoDB Log IO</a></h3>
+<p><strong>InnoDB I/O</strong></p>
+<ul>
+<li><em>Data Writes</em> - The total number of InnoDB data writes.</li>
+<li><em>Data Reads</em> - The total number of InnoDB data reads (OS file reads).</li>
+<li><em>Log Writes</em> - The number of physical writes to the InnoDB redo log file.</li>
+<li><em>Data Fsyncs</em> - The number of <code>fsync()</code> operations. The frequency of <code>fsync()</code> calls is influenced by the setting of the <code>innodb_flush_method</code> configuration option.</li>
+</ul>
+<h3 id="innodb-fsyncs"><a class="toclink" href="#innodb-fsyncs">InnoDB FSyncs</a></h3>
+<h3 id="innodb-pending-io"><a class="toclink" href="#innodb-pending-io">InnoDB Pending IO</a></h3>
+<h3 id="innodb-pending-fsyncs"><a class="toclink" href="#innodb-pending-fsyncs">InnoDB Pending Fsyncs</a></h3>
+<h3 id="innodb-auto-extend-increment"><a class="toclink" href="#innodb-auto-extend-increment">InnoDB Auto Extend Increment</a></h3>
+<p>When Growing Innodb System Tablespace extend it by this size at the time.</p>
+<h3 id="innodb-double-write"><a class="toclink" href="#innodb-double-write">InnoDB Double Write</a></h3>
+<p>Whether InnoDB Double Write Buffer is enabled. Doing so doubles amount of writes InnoDB has to do to storage but is required to avoid potential data corruption during the crash on most storage subsystems.</p>
+<h3 id="innodb-fast-shutdown"><a class="toclink" href="#innodb-fast-shutdown">InnoDB Fast Shutdown</a></h3>
+<p>Fast Shutdown means InnoDB will not perform complete Undo Space and Change Buffer cleanup on shutdown, which is faster but may interfere with certain major upgrade operations.</p>
+<h3 id="innodb-open-files"><a class="toclink" href="#innodb-open-files">InnoDB Open Files</a></h3>
+<p>Maximum Number of Files InnoDB is Allowed to use.</p>
+<h3 id="innodb-file-use"><a class="toclink" href="#innodb-file-use">InnoDB File Use</a></h3>
+<p>Portion of Allowed InnoDB Open Files Use.</p>
+<h2 id="innodb-io-objects"><a class="toclink" href="#innodb-io-objects">InnoDB IO Objects</a></h2>
+<h3 id="innodb-io-targets-write-load"><a class="toclink" href="#innodb-io-targets-write-load">InnoDB IO Targets Write Load</a></h3>
+<p>Write Load Includes both Write and fsync (refered as misc).</p>
+<h2 id="innodb-buffer-pool"><a class="toclink" href="#innodb-buffer-pool">InnoDB Buffer Pool</a></h2>
+<h3 id="buffer-pool-size"><a class="toclink" href="#buffer-pool-size">Buffer Pool Size</a></h3>
+<p><strong>InnoDB Buffer Pool Size</strong></p>
+<p>InnoDB maintains a storage area called the buffer pool for caching data and indexes in memory.  Knowing how the InnoDB buffer pool works, and taking advantage of it to keep frequently accessed data in memory, is one of the most important aspects of MySQL tuning. The goal is to keep the working set in memory. In most cases, this should be between 60%-90% of available memory on a dedicated database host, but depends on many factors.</p>
+<h3 id="buffer-pool-size-of-total-ram"><a class="toclink" href="#buffer-pool-size-of-total-ram">Buffer Pool Size of Total RAM</a></h3>
+<p><strong>InnoDB Buffer Pool Size % of Total RAM</strong></p>
+<p>InnoDB maintains a storage area called the buffer pool for caching data and indexes in memory.  Knowing how the InnoDB buffer pool works, and taking advantage of it to keep frequently accessed data in memory, is one of the most important aspects of MySQL tuning. The goal is to keep the working set in memory. In most cases, this should be between 60%-90% of available memory on a dedicated database host, but depends on many factors.</p>
+<h3 id="numa-interleave"><a class="toclink" href="#numa-interleave">NUMA Interleave</a></h3>
+<p>Interleave Buffer Pool between NUMA zones to better support NUMA systems.</p>
+<h3 id="buffer-pool-activity"><a class="toclink" href="#buffer-pool-activity">Buffer Pool Activity</a></h3>
+<p>Combined value of Buffer Pool Read and Write requests.</p>
+<h3 id="bp-data"><a class="toclink" href="#bp-data">BP Data</a></h3>
+<p>Percent of Buffer Pool Occupied by Cached Data.</p>
+<h3 id="bp-data-dirty"><a class="toclink" href="#bp-data-dirty">BP Data Dirty</a></h3>
+<p>Percent of Data which is Dirty.</p>
+<h3 id="bp-miss-ratio"><a class="toclink" href="#bp-miss-ratio">BP Miss Ratio</a></h3>
+<p>How often buffer pool read requests have to do read from the disk. Keep this percent low for good performance.</p>
+<h3 id="bp-write-buffering"><a class="toclink" href="#bp-write-buffering">BP Write Buffering</a></h3>
+<p>Number of Logical Writes to Buffer Pool Per logical Write.</p>
+<h3 id="innodb-buffer-pool-lru-sub-chain-churn"><a class="toclink" href="#innodb-buffer-pool-lru-sub-chain-churn">InnoDB Buffer Pool LRU Sub-Chain Churn</a></h3>
+<h3 id="buffer-pool-chunk-size"><a class="toclink" href="#buffer-pool-chunk-size">Buffer Pool Chunk Size</a></h3>
+<p>Size of the &ldquo;Chunk&rdquo; for buffer pool allocation.  Allocation of buffer pool will be rounded by this number. It also affects the performance impact of online buffer pool resize.</p>
+<h3 id="buffer-pool-instances"><a class="toclink" href="#buffer-pool-instances">Buffer Pool Instances</a></h3>
+<p>Number of Buffer Pool Instances. Higher values allow to reduce contention but also increase overhead.</p>
+<h3 id="read-ahead-io-percent"><a class="toclink" href="#read-ahead-io-percent">Read Ahead IO Percent</a></h3>
+<p>Percent of Reads Caused by Innodb Read Ahead.</p>
+<h3 id="read-ahead-wasted"><a class="toclink" href="#read-ahead-wasted">Read Ahead Wasted</a></h3>
+<p>Percent of Pages Fetched by Read Ahead Evicted Without Access.</p>
+<h3 id="dump-buffer-pool-on-shutdown"><a class="toclink" href="#dump-buffer-pool-on-shutdown">Dump Buffer Pool on Shutdown</a></h3>
+<h3 id="load-buffer-pool-at-startup"><a class="toclink" href="#load-buffer-pool-at-startup">Load Buffer Pool at Startup</a></h3>
+<h3 id="portion-of-buffer-pool-to-dumpload"><a class="toclink" href="#portion-of-buffer-pool-to-dumpload">Portion of Buffer Pool To Dump/Load</a></h3>
+<p>Larger Portion increases dump/load time but get more of original buffer pool content and hence may reduce warmup time.</p>
+<h3 id="include-buffer-pool-in-core-dump"><a class="toclink" href="#include-buffer-pool-in-core-dump">Include Buffer Pool in Core Dump</a></h3>
+<p>Whenever to Include Buffer Pool in Crash Core Dumps.  Doing so may dramatically increase core dump file slow down restart.  Only makes a difference if core dumping on crash is enabled.</p>
+<h3 id="innodb-old-blocks"><a class="toclink" href="#innodb-old-blocks">InnoDB Old Blocks</a></h3>
+<p>Percent of The Buffer Pool To be Reserved for &ldquo;Old Blocks&rdquo; - which has been touched repeatedly over period of time.</p>
+<h3 id="innodb-old-blocks-time"><a class="toclink" href="#innodb-old-blocks-time">InnoDB Old Blocks Time</a></h3>
+<p>The Time which has to pass between multiple touches for the block for it to qualify as old block.</p>
+<h3 id="innodb-random-read-ahead"><a class="toclink" href="#innodb-random-read-ahead">InnoDB Random Read Ahead</a></h3>
+<p>Is InnoDB Random ReadAhead Enabled.</p>
+<h3 id="innodb-random-read-ahead_1"><a class="toclink" href="#innodb-random-read-ahead_1">InnoDB Random Read Ahead</a></h3>
+<p>The Threshold (in Pages) to trigger Linear Read Ahead.</p>
+<h3 id="innodb-read-io-threads"><a class="toclink" href="#innodb-read-io-threads">InnoDB Read IO Threads</a></h3>
+<p>Number of Threads used to Schedule Reads.</p>
+<h3 id="innodb-write-io-threads"><a class="toclink" href="#innodb-write-io-threads">InnoDB Write IO Threads</a></h3>
+<p>Number of Threads used to Schedule Writes.</p>
+<h3 id="innodb-native-aio-enabled"><a class="toclink" href="#innodb-native-aio-enabled">InnoDB Native AIO Enabled</a></h3>
+<p>Whether Native Asynchronous IO is enabled.  Strongly recommended for optimal performance.</p>
+<h2 id="innodb-buffer-pool-replacement-management"><a class="toclink" href="#innodb-buffer-pool-replacement-management">InnoDB Buffer Pool - Replacement Management</a></h2>
+<h3 id="lru-scan-depth"><a class="toclink" href="#lru-scan-depth">LRU Scan Depth</a></h3>
+<p><strong>Innodb LRU Scan Depth</strong></p>
+<p>This variable defines Innodb Free Page Target per buffer pool. When number of free pages falls below this number this number page cleaner will make required amount of pages free, flushing or evicting pages from the tail of LRU as needed.</p>
+<h3 id="lru-clean-page-searches"><a class="toclink" href="#lru-clean-page-searches">LRU Clean Page Searches</a></h3>
+<p>When Page is being read (or created)  the Page need to be allocated in Buffer Pool.</p>
+<h3 id="free-list-miss-rate"><a class="toclink" href="#free-list-miss-rate">Free List Miss Rate</a></h3>
+<p>The most efficient way to get a clean page is to grab one from free list.  However if no pages are available in Free List the LRU scan needs to be performed.</p>
+<h3 id="lru-get-free-loops"><a class="toclink" href="#lru-get-free-loops">LRU Get Free Loops</a></h3>
+<p>If Free List was empty LRU Get Free Loop will be performed.  It may perform LRU scan or may use some other heuristics and shortcuts to get free page.</p>
+<h3 id="lru-scans"><a class="toclink" href="#lru-scans">LRU Scans</a></h3>
+<p>If Page could not be find any Free list and other shortcuts did not work, free page will be searched by scanning LRU chain which is not efficient.</p>
+<h3 id="pages-scanned-in-lru-scans"><a class="toclink" href="#pages-scanned-in-lru-scans">Pages Scanned in LRU Scans</a></h3>
+<p>Pages Scanned Per Second while doing LRU scans.  If this value is large (thousands) it means a lot of resources are wasted.</p>
+<h3 id="pages-scanned-per-lru-scan"><a class="toclink" href="#pages-scanned-per-lru-scan">Pages scanned per LRU Scan</a></h3>
+<p>Number of pages scanned per LRU scan in Average. Large number of scans can consume a lot of resources and also introduce significant addition latency to queries.</p>
+<h3 id="lru-get-free-waits"><a class="toclink" href="#lru-get-free-waits">LRU Get Free Waits</a></h3>
+<p>If Innodb could not find a free page in LRU list and had to sleep. Should be zero.</p>
+<h2 id="innodb-checkpointing-and-flushing"><a class="toclink" href="#innodb-checkpointing-and-flushing">InnoDB Checkpointing and Flushing</a></h2>
+<h3 id="pages-flushed-from-flush-list"><a class="toclink" href="#pages-flushed-from-flush-list">Pages Flushed from Flush List</a></h3>
+<p>Number of Pages Flushed from &ldquo;Flush List&rdquo;  This combines Pages Flushed through Adaptive Flush and Background Flush.</p>
+<h3 id="page-flush-batches-executed"><a class="toclink" href="#page-flush-batches-executed">Page Flush Batches Executed</a></h3>
+<p>Innodb Flush Cycle typically Runs on 1 second intervals.  If it is too far off from this number it can indicate an issue.</p>
+<h3 id="pages-flushed-per-batch"><a class="toclink" href="#pages-flushed-per-batch">Pages Flushed Per Batch</a></h3>
+<p>How many pages are flushed per Batch.  Large Batches can &ldquo;choke&rdquo; IO subsystem and starve other IO which needs to happen.</p>
+<h3 id="neighbor-flushing-enabled"><a class="toclink" href="#neighbor-flushing-enabled">Neighbor Flushing Enabled</a></h3>
+<p>Neighbor Flushing is Optimized for Rotational Media  and unless you&rsquo;re Running spinning disks you should disable it.</p>
+<h3 id="innodb-checkpoint-age"><a class="toclink" href="#innodb-checkpoint-age">InnoDB Checkpoint Age</a></h3>
+<p><strong>InnoDB Checkpoint Age</strong></p>
+<p>The maximum checkpoint age is determined by the total length of all transaction log files (<code>innodb_log_file_size</code>).</p>
+<p>When the checkpoint age reaches the maximum checkpoint age, blocks are flushed syncronously. The rules of the thumb is to keep one hour of traffic in those logs and let the checkpointing perform its work as smooth as possible. If you don&rsquo;t do this, InnoDB will do synchronous flushing at the worst possible time, ie when you are busiest.</p>
+<h3 id="pages-flushed-adaptive"><a class="toclink" href="#pages-flushed-adaptive">Pages Flushed (Adaptive)</a></h3>
+<p>Adaptive Flush  Flushes pages from Flush List based on the need to advance Checkpoint (driven by Redo Generation Rate) and by maintaining number of dirty pages within set limit.</p>
+<h3 id="adaptive-flush-batches-executed"><a class="toclink" href="#adaptive-flush-batches-executed">Adaptive Flush Batches Executed</a></h3>
+<h3 id="pages-per-batch-adaptive"><a class="toclink" href="#pages-per-batch-adaptive">Pages Per Batch (Adaptive)</a></h3>
+<p>Pages Flushed Per Adaptive Batch.</p>
+<h3 id="neighbor-flushing"><a class="toclink" href="#neighbor-flushing">Neighbor Flushing</a></h3>
+<p>To optimize IO for rotational Media InnoDB may flush neighbor pages. It can cause significant wasted IO for flash storage.    Generally for flash you should run with <code>innodb_flush_neighbors=0</code> but otherwise this shows how much IO you&rsquo;re wasting.</p>
+<h3 id="pages-flushed-lru"><a class="toclink" href="#pages-flushed-lru">Pages Flushed (LRU)</a></h3>
+<p>Flushing from the tail of LRU list needs to happen when data does not fit in buffer pool in order to maintain free pages readily available for new data to be read.</p>
+<h3 id="lru-flush-batches-executed"><a class="toclink" href="#lru-flush-batches-executed">LRU Flush Batches Executed</a></h3>
+<h3 id="pages-per-batch-lru"><a class="toclink" href="#pages-per-batch-lru">Pages Per Batch (LRU)</a></h3>
+<p>Pages Flushed Per Neighbor.</p>
+<h3 id="lsn-age-flush-batch-target"><a class="toclink" href="#lsn-age-flush-batch-target">LSN Age Flush Batch Target</a></h3>
+<p>Target for Pages to Flush due to LSN Age.</p>
+<h3 id="pages-flushed-neighbor"><a class="toclink" href="#pages-flushed-neighbor">Pages Flushed (Neighbor)</a></h3>
+<p>Number of Neighbor pages flushed (If neighbor flushing is enabled)  from Flush List and LRU List Combined.</p>
+<h3 id="neighbor-flush-batches-executed"><a class="toclink" href="#neighbor-flush-batches-executed">Neighbor Flush Batches Executed</a></h3>
+<h3 id="pages-per-batch-neighbor"><a class="toclink" href="#pages-per-batch-neighbor">Pages Per Batch (Neighbor)</a></h3>
+<p>Pages Flushed Per Neighbor.</p>
+<h3 id="sync-flush-waits"><a class="toclink" href="#sync-flush-waits">Sync Flush Waits</a></h3>
+<p>If Innodb could not keep up with Checkpoint Flushing and had to trigger Sync flush.  This should never happen.</p>
+<h3 id="pages-flushed-background"><a class="toclink" href="#pages-flushed-background">Pages Flushed (Background)</a></h3>
+<p>Pages Flushed  by Background Flush which is activated when server is considered to be idle.</p>
+<h3 id="background-flush-batches-executed"><a class="toclink" href="#background-flush-batches-executed">Background Flush Batches Executed</a></h3>
+<h3 id="pages-per-batch-background"><a class="toclink" href="#pages-per-batch-background">Pages Per Batch (Background)</a></h3>
+<p>Pages Flushed Per Background Batch.</p>
+<h3 id="redo-generation-rate"><a class="toclink" href="#redo-generation-rate">Redo Generation Rate</a></h3>
+<p>Rate at which LSN (Redo) is Created. It may not match how much data is written to log files due to block size rounding.</p>
+<h3 id="innodb-flushing-by-type"><a class="toclink" href="#innodb-flushing-by-type">Innodb Flushing by Type</a></h3>
+<h3 id="pages-evicted-lru"><a class="toclink" href="#pages-evicted-lru">Pages Evicted (LRU)</a></h3>
+<p>This correspond to number of clean pages which were evicted (made free) from the tail of LRU buffer.</p>
+<h3 id="page-eviction-batches"><a class="toclink" href="#page-eviction-batches">Page Eviction Batches</a></h3>
+<h3 id="pages-evicted-per-batch"><a class="toclink" href="#pages-evicted-per-batch">Pages Evicted per Batch</a></h3>
+<h3 id="max-log-space-used"><a class="toclink" href="#max-log-space-used">Max Log Space Used</a></h3>
+<h3 id="single-page-flushes"><a class="toclink" href="#single-page-flushes">Single Page Flushes</a></h3>
+<p>Single Page flushes happen in rare case, then clean page could not be found in LRU list. It should be zero for most workloads.</p>
+<h3 id="single-page-flush-pages-scanned"><a class="toclink" href="#single-page-flush-pages-scanned">Single Page Flush Pages Scanned</a></h3>
+<h3 id="pages-scanned-per-single-page-flush"><a class="toclink" href="#pages-scanned-per-single-page-flush">Pages Scanned Per Single Page Flush</a></h3>
+<h3 id="innodb-io-capacity"><a class="toclink" href="#innodb-io-capacity">Innodb IO Capacity</a></h3>
+<p>Estimated number of IOPS storage system can provide.  Is used to scale background activities.
+Do not set it to actual storage capacity.</p>
+<h3 id="innodb-io-capacity-max"><a class="toclink" href="#innodb-io-capacity-max">Innodb IO Capacity Max</a></h3>
+<p>InnoDB IO Capacity to use when falling behind and need to catch up with Flushing.</p>
+<h2 id="innodb-logging"><a class="toclink" href="#innodb-logging">InnoDB Logging</a></h2>
+<h3 id="total-log-space"><a class="toclink" href="#total-log-space">Total Log Space</a></h3>
+<p>Number of Innodb Log Files Multiplied by Their Size.</p>
+<h3 id="log-buffer-size"><a class="toclink" href="#log-buffer-size">Log Buffer Size</a></h3>
+<p><strong>InnoDB Log Buffer Size</strong></p>
+<p>The size of buffer InnoDB uses for buffering writes to log files.</p>
+<h3 id="at-transaction-commit"><a class="toclink" href="#at-transaction-commit">At Transaction Commit</a></h3>
+<p>What to do with Log file At Transaction Commit. Do nothing and wait for timeout to  flush the data from Log Buffer,  Flush it to OS Cache but not FSYNC or Flush only.</p>
+<h3 id="flush-transaction-log-every"><a class="toclink" href="#flush-transaction-log-every">Flush Transaction Log Every</a></h3>
+<p>Every Specified Number of Seconds Flush Transaction Log.</p>
+<h3 id="innodb-write-ahead-block-size"><a class="toclink" href="#innodb-write-ahead-block-size">InnoDB Write Ahead Block Size</a></h3>
+<p>This variable can be seen as minimum IO alignment InnoDB will use for Redo log file.  High Values cause waste, low values can make IO less efficient.</p>
+<h3 id="log-write-amplification"><a class="toclink" href="#log-write-amplification">Log Write Amplification</a></h3>
+<p>How much Writes to Log Are Amplified compared to how much Redo is Generated.</p>
+<h3 id="log-fsync-rate"><a class="toclink" href="#log-fsync-rate">Log Fsync Rate</a></h3>
+<h3 id="redo-generated-per-trx"><a class="toclink" href="#redo-generated-per-trx">Redo Generated per Trx</a></h3>
+<p>Amount of Redo Generated Per Write Transaction.  This is a good indicator of transaction size.</p>
+<h3 id="innodb-log-file-usage-hourly"><a class="toclink" href="#innodb-log-file-usage-hourly">InnoDB Log File Usage Hourly</a></h3>
+<p><strong>InnoDB Log File Usage Hourly</strong></p>
+<p>Along with the buffer pool size, <code>innodb_log_file_size</code> is the most important setting when we are working with InnoDB. This graph shows how much data was written to InnoDB&rsquo;s redo logs over each hour. When the InnoDB log files are full, InnoDB needs to flush the modified pages from memory to disk.</p>
+<p>The rules of the thumb is to keep one hour of traffic in those logs and let the checkpointing perform its work as smooth as possible. If you don&rsquo;t do this, InnoDB will do synchronous flushing at the worst possible time, ie when you are busiest.</p>
+<p>This graph can help guide you in setting the correct <code>innodb_log_file_size</code>.</p>
+<h3 id="log-padding-written"><a class="toclink" href="#log-padding-written">Log Padding Written</a></h3>
+<p>Amount of Log Padding Written.</p>
+<h3 id="innodb-log-file-size"><a class="toclink" href="#innodb-log-file-size">InnoDB Log File Size</a></h3>
+<h3 id="innodb-log-files"><a class="toclink" href="#innodb-log-files">InnoDB Log Files</a></h3>
+<p>Number of InnoDB Redo Log Files.</p>
+<h3 id="log-bandwidth"><a class="toclink" href="#log-bandwidth">Log Bandwidth</a></h3>
+<h3 id="redo-generation-rate_1"><a class="toclink" href="#redo-generation-rate_1">Redo Generation Rate</a></h3>
+<p>Rate at which LSN (Redo)  is Created. It may not match how much data is written to log files due to block size rounding.</p>
+<h3 id="innodb-group-commit-batch-size"><a class="toclink" href="#innodb-group-commit-batch-size">InnoDB Group Commit Batch Size</a></h3>
+<p>The InnoDB Group Commit Batch Size graph shows how many bytes were written to the InnoDB log files per attempt to write. If many threads are committing at the same time, one of them will write the log entries of all the waiting threads and flush the file. Such process reduces the number of disk operations needed and enlarge the batch size.</p>
+<h2 id="innodb-locking"><a class="toclink" href="#innodb-locking">InnoDB Locking</a></h2>
+<h3 id="lock-wait-timeout"><a class="toclink" href="#lock-wait-timeout">Lock Wait Timeout</a></h3>
+<p><strong>InnoDB Lock Wait Timeout</strong></p>
+<p>How long to wait for row lock before timing out.</p>
+<h3 id="innodb-deadlock-detection"><a class="toclink" href="#innodb-deadlock-detection">InnoDB Deadlock Detection</a></h3>
+<p>If Disabled Innodb Will not detect deadlocks but rely on timeouts.</p>
+<h3 id="innodb-auto-increment-lock-mode"><a class="toclink" href="#innodb-auto-increment-lock-mode">InnoDB Auto Increment Lock Mode</a></h3>
+<p>Will Define How much locking will come from working with Auto Increment Columns.</p>
+<h3 id="rollback-on-timeout"><a class="toclink" href="#rollback-on-timeout">Rollback on Timeout</a></h3>
+<p>Whenever to rollback all transaction on timeout or just last statement.</p>
+<h3 id="row-lock-blocking"><a class="toclink" href="#row-lock-blocking">Row Lock Blocking</a></h3>
+<p>Percent of Active Sections which are blocked due to waiting on Innodb Row Locks.</p>
+<h3 id="row-writes-per-trx_1"><a class="toclink" href="#row-writes-per-trx_1">Row Writes per Trx</a></h3>
+<p>Rows Written Per Transactions which modify rows. This is better indicator of transaction write size than looking at all transactions which did not do any writes as well.</p>
+<h3 id="rollbacks_1"><a class="toclink" href="#rollbacks_1">Rollbacks</a></h3>
+<p>Percent of Transaction Rollbacks (as portion of read-write transactions).</p>
+<h3 id="innodb-row-lock-wait-activity"><a class="toclink" href="#innodb-row-lock-wait-activity">InnoDB Row Lock Wait Activity</a></h3>
+<h3 id="innodb-row-lock-wait-time"><a class="toclink" href="#innodb-row-lock-wait-time">Innodb Row Lock Wait Time</a></h3>
+<h3 id="innodb-row-lock-wait-load"><a class="toclink" href="#innodb-row-lock-wait-load">Innodb Row Lock Wait Load</a></h3>
+<p>Average Number of Sessions blocked from proceeding due to waiting on row level lock.</p>
+<h3 id="innodb-row-locks-activity"><a class="toclink" href="#innodb-row-locks-activity">Innodb Row Locks Activity</a></h3>
+<h3 id="innodb-table-lock-activity"><a class="toclink" href="#innodb-table-lock-activity">Innodb Table Lock Activity</a></h3>
+<h3 id="current-locks"><a class="toclink" href="#current-locks">Current Locks</a></h3>
+<h2 id="innodb-undo-space-and-purging"><a class="toclink" href="#innodb-undo-space-and-purging">InnoDB Undo Space and Purging</a></h2>
+<h3 id="undo-tablespaces"><a class="toclink" href="#undo-tablespaces">Undo Tablespaces</a></h3>
+<h3 id="max-undo-log-size"><a class="toclink" href="#max-undo-log-size">Max Undo Log Size</a></h3>
+<h3 id="innodb-undo-log-truncate"><a class="toclink" href="#innodb-undo-log-truncate">Innodb Undo Log Truncate</a></h3>
+<h3 id="purge-threads"><a class="toclink" href="#purge-threads">Purge Threads</a></h3>
+<h3 id="max-purge-lag"><a class="toclink" href="#max-purge-lag">Max Purge Lag</a></h3>
+<p>Maximum number of  Unpurged Transactions, if this number exceeded delay will be introduced to incoming DDL statements.</p>
+<h3 id="max-purge-lag-delay"><a class="toclink" href="#max-purge-lag-delay">Max Purge Lag Delay</a></h3>
+<h3 id="current-purge-delay"><a class="toclink" href="#current-purge-delay">Current Purge Delay</a></h3>
+<p>The Delay Injected due to Purge Thread(s) unable to keep up with purge progress.</p>
+<h3 id="rollback-segments"><a class="toclink" href="#rollback-segments">Rollback Segments</a></h3>
+<h3 id="innodb-purge-activity"><a class="toclink" href="#innodb-purge-activity">InnoDB Purge Activity</a></h3>
+<p>The InnoDB Purge Performance graph shows metrics about the page purging process.  The purge process removed the undo entries from the history list and cleanup the pages of the old versions of modified rows and effectively remove deleted rows.</p>
+<p>Note: If you do not see any metric, try running: <code>SET GLOBAL innodb_monitor_enable=all;</code> in the MySQL client.</p>
+<h3 id="transactions-and-undo-records"><a class="toclink" href="#transactions-and-undo-records">Transactions and Undo Records</a></h3>
+<h3 id="innodb-undo-space-usage"><a class="toclink" href="#innodb-undo-space-usage">InnoDB Undo Space Usage</a></h3>
+<p>The InnoDB Undo Space Usage graph shows the amount of space used by the Undo segment.  If the amount of space grows too much, look for long running transactions holding read views opened in the InnoDB status.</p>
+<p>Note: If you do not see any metric, try running: <code>SET GLOBAL innodb_monitor_enable=all;</code> in the MySQL client.</p>
+<h3 id="transaction-history"><a class="toclink" href="#transaction-history">Transaction History</a></h3>
+<h3 id="innodb-purge-throttling"><a class="toclink" href="#innodb-purge-throttling">InnoDB Purge Throttling</a></h3>
+<h3 id="records-per-undo-log-page"><a class="toclink" href="#records-per-undo-log-page">Records Per Undo Log Page</a></h3>
+<p>How Many Undo Operations Are Handled Per Each Undo Log Page.</p>
+<h3 id="purge-invoked"><a class="toclink" href="#purge-invoked">Purge Invoked</a></h3>
+<p>How Frequently Purge Operation is Invoked.</p>
+<h3 id="ops-per-purge"><a class="toclink" href="#ops-per-purge">Ops Per Purge</a></h3>
+<p>Home Many Purge Actions are done Per invocation.</p>
+<h3 id="undo-slots-used"><a class="toclink" href="#undo-slots-used">Undo Slots Used</a></h3>
+<p>Number of Undo Slots Used.</p>
+<h3 id="max-transaction-history-length"><a class="toclink" href="#max-transaction-history-length">Max Transaction History Length</a></h3>
+<h3 id="purge-batch-size"><a class="toclink" href="#purge-batch-size">Purge Batch Size</a></h3>
+<h3 id="rseg-truncate-frequency"><a class="toclink" href="#rseg-truncate-frequency">Rseg Truncate Frequency</a></h3>
+<h2 id="innodb-page-operations"><a class="toclink" href="#innodb-page-operations">InnoDB Page Operations</a></h2>
+<h3 id="innodb-page-splits-and-merges"><a class="toclink" href="#innodb-page-splits-and-merges">InnoDB Page Splits and Merges</a></h3>
+<p>The InnoDB Page Splits graph shows the InnoDB page maintenance activity related to splitting and merging pages.  When an InnoDB page, other than the top most leaf page, has too much data to accept a row update or a row insert, it has to be split in two.  Similarly, if an InnoDB page, after a row update or delete operation, ends up being less than half full, an attempt is made to merge the page with a neighbor page. If the resulting page size is larger than the InnoDB page size, the operation fails.  If your workload causes a large number of page splits, try lowering the <code>innodb_fill_factor</code> variable (5.7+).</p>
+<p>Note: If you do not see any metric, try running: <code>SET GLOBAL innodb_monitor_enable=all;</code> in the MySQL client.</p>
+<h3 id="page-merge-success-ratio"><a class="toclink" href="#page-merge-success-ratio">Page Merge Success Ratio</a></h3>
+<h3 id="innodb-page-reorg-attempts"><a class="toclink" href="#innodb-page-reorg-attempts">InnoDB Page Reorg Attempts</a></h3>
+<p>The InnoDB Page Reorgs graph shows information about the page reorganization operations.  When a page receives an  update or an insert that affect the offset of other rows in the page, a reorganization is needed.  If the reorganization process finds out there is not enough room in the page, the page will be split. Page reorganization can only fail for compressed pages.</p>
+<p>Note: If you do not see any metric, try running: <code>SET GLOBAL innodb_monitor_enable=all;</code> in the MySQL client.</p>
+<h3 id="innodb-page-reorgs-failures"><a class="toclink" href="#innodb-page-reorgs-failures">InnoDB Page Reorgs Failures</a></h3>
+<p>The InnoDB Page Reorgs graph shows information about the page reorganization operations.  When a page receives an  update or an insert that affect the offset of other rows in the page, a reorganization is needed.  If the reorganization process finds out there is not enough room in the page, the page will be split. Page reorganization can only fail for compressed pages.</p>
+<p>Note: If you do not see any metric, try running: <code>SET GLOBAL innodb_monitor_enable=all;</code> in the MySQL client.</p>
+<h3 id="innodb-fill-factor"><a class="toclink" href="#innodb-fill-factor">InnoDB Fill Factor</a></h3>
+<p>The portion of the page to fill then doing sorted Index Build.   Lowering this value will worsen space utilization but will reduce need to split pages when new data is inserted in the index.</p>
+<h2 id="innodb-adaptive-hash-index"><a class="toclink" href="#innodb-adaptive-hash-index">InnoDB Adaptive Hash Index</a></h2>
+<h3 id="adaptive-hash-index-enabled"><a class="toclink" href="#adaptive-hash-index-enabled">Adaptive Hash Index Enabled</a></h3>
+<p>Adaptive Hash Index Helps to Optimize Index Lookups but can be severe hotspot for some workloads.</p>
+<h3 id="adaptive-hash-index-partitions"><a class="toclink" href="#adaptive-hash-index-partitions">Adaptive Hash Index Partitions</a></h3>
+<p>How many Partitions Used for Adaptive Hash Index (to reduce contention).</p>
+<h3 id="percent-of-pages-hashed"><a class="toclink" href="#percent-of-pages-hashed">Percent of Pages Hashed</a></h3>
+<p>Number of Pages Added to AHI vs Number of Pages Added to Buffer Pool.</p>
+<h3 id="ahi-miss-ratio"><a class="toclink" href="#ahi-miss-ratio">AHI Miss Ratio</a></h3>
+<p>Percent of Searches which could not be resolved through AHI.</p>
+<h3 id="rows-added-per-page"><a class="toclink" href="#rows-added-per-page">Rows Added Per Page</a></h3>
+<p>Number of Rows &ldquo;Hashed&rdquo;  Per Each Page which needs to be added to AHI.</p>
+<h3 id="ahi-roi"><a class="toclink" href="#ahi-roi">AHI ROI</a></h3>
+<p>How Many Successful Searches using AHI are performed per each row maintenance operation.</p>
+<h3 id="innodb-ahi-usage"><a class="toclink" href="#innodb-ahi-usage">InnoDB AHI Usage</a></h3>
+<p>The InnoDB AHI Usage graph shows the search operations on the InnoDB adaptive hash index and its efficiency.  The adaptive hash index is a search hash designed to speed access to InnoDB pages in memory.  If the Hit Ratio is small, the working data set is larger than the buffer pool, the AHI should likely be disabled.</p>
+<p>Note: If you do not see any metric, try running: <code>SET GLOBAL innodb_monitor_enable=all;</code> in the MySQL client.</p>
+<h3 id="innodb-ahi-miss-ratio"><a class="toclink" href="#innodb-ahi-miss-ratio">InnoDB AHI Miss Ratio</a></h3>
+<h3 id="innodb-ahi-churn-rows"><a class="toclink" href="#innodb-ahi-churn-rows">InnoDB AHI Churn - Rows</a></h3>
+<h3 id="innodb-ahi-churn-pages"><a class="toclink" href="#innodb-ahi-churn-pages">InnoDB AHI Churn - Pages</a></h3>
+<h2 id="innodb-change-buffer"><a class="toclink" href="#innodb-change-buffer">InnoDB Change Buffer</a></h2>
+<h3 id="change-buffer-max-size"><a class="toclink" href="#change-buffer-max-size">Change Buffer Max Size</a></h3>
+<p>The Maximum Size of Change Buffer (as Percent of Buffer Pool Size).</p>
+<h3 id="change-buffer-max-size_1"><a class="toclink" href="#change-buffer-max-size_1">Change Buffer Max Size</a></h3>
+<p>The Maximum Size of Change Buffer (Bytes).</p>
+<h3 id="innodb-change-buffer-merge-load"><a class="toclink" href="#innodb-change-buffer-merge-load">InnoDB Change Buffer Merge Load</a></h3>
+<p>Number of Average of Active Merge Buffer Operations in Process.</p>
+<h2 id="innodb-contention"><a class="toclink" href="#innodb-contention">InnoDB Contention</a></h2>
+<h3 id="innodb-thread-concurrency"><a class="toclink" href="#innodb-thread-concurrency">InnoDB Thread Concurrency</a></h3>
+<p>If Enabled limits number of Threads allowed inside Innodb Kernel at the same time.</p>
+<h3 id="innodb-commit-concurrency"><a class="toclink" href="#innodb-commit-concurrency">InnoDB Commit Concurrency</a></h3>
+<p>If Enabled limits number of Threads allowed inside InnoDB Kernel at the same time during Commit Stage.</p>
+<h3 id="innodb-thread-sleep-delay"><a class="toclink" href="#innodb-thread-sleep-delay">InnoDB Thread Sleep Delay</a></h3>
+<p>The Time the thread will Sleep before Re-Entering Innodb Kernel if high contention.</p>
+<h3 id="innodb-adaptive-max-sleep-delay"><a class="toclink" href="#innodb-adaptive-max-sleep-delay">InnoDB Adaptive Max Sleep Delay</a></h3>
+<p>If Set to Non-Zero Value InnoDB Thread Sleep Delay will be adjusted automatically depending on the load up to the value specified by this variable.</p>
+<h3 id="innodb-concurrency-tickets"><a class="toclink" href="#innodb-concurrency-tickets">InnoDB Concurrency Tickets</a></h3>
+<p>Number of low level operations InnoDB can do after it entered InnoDB kernel before it is forced to exit and yield to another thread waiting.</p>
+<h3 id="innodb-spin-wait-delay"><a class="toclink" href="#innodb-spin-wait-delay">InnoDB Spin Wait Delay</a></h3>
+<h3 id="innodb-spin-wait-pause-multiplier"><a class="toclink" href="#innodb-spin-wait-pause-multiplier">InnoDB Spin Wait Pause Multiplier</a></h3>
+<h3 id="innodb-sync-spin-loops"><a class="toclink" href="#innodb-sync-spin-loops">InnoDB Sync Spin Loops</a></h3>
+<h3 id="innodb-contention-os-waits"><a class="toclink" href="#innodb-contention-os-waits">InnoDB Contention - OS Waits</a></h3>
+<p>The InnoDB Contention - OS Waits graph shows the number of time an OS wait operation was required while waiting to get the lock.  This happens once the spin rounds are exhausted.</p>
+<p>Note: If you do not see any metric, try running: <code>SET GLOBAL innodb_monitor_enable=all;</code> in the MySQL client.</p>
+<h3 id="innodb-contention-spin-rounds"><a class="toclink" href="#innodb-contention-spin-rounds">InnoDB Contention - Spin Rounds</a></h3>
+<p>The InnoDB Contention - Spin Rounds  graph shows the number of spin rounds executed in order to get a lock.  A spin round is a fast retry to get the lock in a loop.</p>
+<p>Note: If you do not see any metric, try running: <code>SET GLOBAL innodb_monitor_enable=all;</code> in the MySQL client.</p>
+<h2 id="innodb-misc"><a class="toclink" href="#innodb-misc">InnoDB Misc</a></h2>
+<h3 id="innodb-main-thread-utilization"><a class="toclink" href="#innodb-main-thread-utilization">InnoDB Main Thread Utilization</a></h3>
+<p>The InnoDB Main Thread Utilization graph shows the portion of time the InnoDB main thread spent at various task.</p>
+<p>Note: If you do not see any metric, try running: <code>SET GLOBAL innodb_monitor_enable=all;</code> in the MySQL client.</p>
+<h3 id="innodb-activity_1"><a class="toclink" href="#innodb-activity_1">InnoDB Activity</a></h3>
+<p>The InnoDB Activity graph shows a measure of the activity of the InnoDB threads.</p>
+<p>Note: If you do not see any metric, try running: <code>SET GLOBAL innodb_monitor_enable=all;</code> in the MySQL client.</p>
+<h3 id="innodb-dedicated-server"><a class="toclink" href="#innodb-dedicated-server">InnoDB Dedicated Server</a></h3>
+<p>InnoDB automatically optimized for Dedicated Server Environment (auto scaling cache and some other variables).</p>
+<h3 id="innodb-sort-buffer-size"><a class="toclink" href="#innodb-sort-buffer-size">InnoDB Sort Buffer Size</a></h3>
+<p>This Buffer is used for Building InnoDB Indexes using Sort algorithm.</p>
+<h3 id="innodb-stats-auto-recalc"><a class="toclink" href="#innodb-stats-auto-recalc">InnoDB Stats Auto Recalc</a></h3>
+<h3 id="update-stats-when-metadata-queried"><a class="toclink" href="#update-stats-when-metadata-queried">Update Stats when Metadata Queried</a></h3>
+<p>Refresh InnoDB Statistics when meta-data queries by <code>SHOW TABLE STATUS</code> or <code>INFORMATION_SCHEMA</code> queries.  If Enabled can cause severe performance issues.</p>
+<h3 id="index-condition-pushdown-icp"><a class="toclink" href="#index-condition-pushdown-icp">Index Condition Pushdown (ICP)</a></h3>
+<p>Index Condition Pushdown (ICP) is an optimization for the case where MySQL retrieves rows from a table using an index. Without ICP, the storage engine traverses the index to locate rows in the base table and returns them to the MySQL server which evaluates the WHERE condition for the rows. With ICP enabled, and if parts of the WHERE condition can be evaluated by using only columns from the index, the MySQL server pushes this part of the WHERE condition down to the storage engine. The storage engine then evaluates the pushed index condition by using the index entry and only if this is satisfied is the row read from the table. ICP can reduce the number of times the storage engine must access the base table and the number of times the MySQL server must access the storage engine.</p>
+<h3 id="innodb-persistent-statistics"><a class="toclink" href="#innodb-persistent-statistics">InnoDB Persistent Statistics</a></h3>
+<h3 id="innodb-persistent-sample-pages"><a class="toclink" href="#innodb-persistent-sample-pages">InnoDB Persistent Sample Pages</a></h3>
+<p>Number of Pages To Sample if Persistent Statistics are Enabled.</p>
+<h3 id="innodb-transient-sample-pages"><a class="toclink" href="#innodb-transient-sample-pages">InnoDB Transient Sample Pages</a></h3>
+<p>Number of Pages To Sample if Persistent Statistics are Disabled.</p>
+<h2 id="innodb-online-operations-mariadb"><a class="toclink" href="#innodb-online-operations-mariadb">InnoDB Online Operations (MariaDB)</a></h2>
+<h3 id="innodb-defragmentation"><a class="toclink" href="#innodb-defragmentation">InnoDB Defragmentation</a></h3>
+<p>The InnoDB Defragmentation graph shows the status information related to the InnoDB online defragmentation feature of MariaDB for the optimize table command.  To enable this feature, the variable innodb-defragment must be set to 1 in the configuration file.</p>
+<p>Note: Currently available only on a MariaDB server.</p>
+<h3 id="innodb-online-ddl"><a class="toclink" href="#innodb-online-ddl">InnoDB Online DDL</a></h3>
+<p>The InnoDB Online DDL graph shows the state of the online DDL (alter table) operations in InnoDB.  The progress metric is estimate of the percentage of the rows processed by the online DDL.</p>
+<p>Note: Currently available only on a MariaDB server.</p>
+<h2 id="mysql-summary"><a class="toclink" href="#mysql-summary">MySQL Summary</a></h2>
+<h3 id="mysql-uptime"><a class="toclink" href="#mysql-uptime">MySQL Uptime</a></h3>
+<p><strong>MySQL Uptime</strong></p>
+<p>The amount of time since the last restart of the MySQL server process.</p>
+<h3 id="current-qps"><a class="toclink" href="#current-qps">Current QPS</a></h3>
+<p><strong>Current QPS</strong></p>
+<p>Based on the queries reported by MySQL&rsquo;s <code>SHOW STATUS</code> command, it is the number of statements executed by the server within the last second. This variable includes statements executed within stored programs, unlike the Questions variable. It does not count <code>COM_PING</code> or <code>COM_STATISTICS</code> commands.</p>
+<h3 id="file-handlers-used"><a class="toclink" href="#file-handlers-used">File Handlers Used</a></h3>
+<h3 id="table-open-cache-miss-ratio"><a class="toclink" href="#table-open-cache-miss-ratio">Table Open Cache Miss Ratio</a></h3>
+<h3 id="table-open-cache-size"><a class="toclink" href="#table-open-cache-size">Table Open Cache Size</a></h3>
+<h3 id="table-definition-cache-size"><a class="toclink" href="#table-definition-cache-size">Table Definition Cache Size</a></h3>
+<h3 id="mysql-connections"><a class="toclink" href="#mysql-connections">MySQL Connections</a></h3>
+<p><strong>Max Connections</strong></p>
+<p>Max Connections is the maximum permitted number of simultaneous client connections. By default, this is 151. Increasing this value increases the number of file descriptors that mysqld requires. If the required number of descriptors are not available, the server reduces the value of Max Connections.</p>
+<p>mysqld actually permits Max Connections + 1 clients to connect. The extra connection is reserved for use by accounts that have the SUPER privilege, such as root.</p>
+<p>Max Used Connections is the maximum number of connections that have been in use simultaneously since the server started.</p>
+<p>Connections is the number of connection attempts (successful or not) to the MySQL server.</p>
+<h3 id="mysql-client-thread-activity"><a class="toclink" href="#mysql-client-thread-activity">MySQL Client Thread Activity</a></h3>
+<p><strong>MySQL Active Threads</strong></p>
+<p>Threads Connected is the number of open connections, while Threads Running is the number of threads not sleeping.</p>
+<h3 id="mysql-handlers"><a class="toclink" href="#mysql-handlers">MySQL Handlers</a></h3>
+<p><strong>MySQL Handlers</strong></p>
+<p>Handler statistics are internal statistics on how MySQL is selecting, updating, inserting, and modifying rows, tables, and indexes.</p>
+<p>This is in fact the layer between the Storage Engine and MySQL.</p>
+<ul>
+<li><code>read_rnd_next</code> is incremented when the server performs a full table scan and this is a counter you don&rsquo;t really want to see with a high value.</li>
+<li><code>read_key</code> is incremented when a read is done with an index.</li>
+<li><code>read_next</code> is incremented when the storage engine is asked to &lsquo;read the next index entry&rsquo;. A high value means a lot of index scans are being done.</li>
+</ul>
+<h3 id="top-command-counters"><a class="toclink" href="#top-command-counters">Top Command Counters</a></h3>
+<p><strong>Top Command Counters</strong></p>
+<p>The Com_ statement counter variables indicate the number of times each xxx statement has been executed. There is one status variable for each type of statement. For example, Com_delete and Com_update count <a href="https://dev.mysql.com/doc/refman/5.7/en/delete.html"><code>DELETE</code></a> and <a href="https://dev.mysql.com/doc/refman/5.7/en/update.html"><code>UPDATE</code></a> statements, respectively. Com_delete_multi and Com_update_multi are similar but apply to <a href="https://dev.mysql.com/doc/refman/5.7/en/delete.html"><code>DELETE</code></a> and <a href="https://dev.mysql.com/doc/refman/5.7/en/update.html"><code>UPDATE</code></a> statements that use multiple-table syntax.</p>
+<h3 id="mysql-network-traffic"><a class="toclink" href="#mysql-network-traffic">MySQL Network Traffic</a></h3>
+<p><strong>MySQL Network Traffic</strong></p>
+<p>Here we can see how much network traffic is generated by MySQL. Outbound is network traffic sent from MySQL and Inbound is network traffic MySQL has received.</p>
+<h2 id="node-summary"><a class="toclink" href="#node-summary">Node Summary</a></h2>
+<h3 id="system-uptime"><a class="toclink" href="#system-uptime">System Uptime</a></h3>
+<p>The parameter shows how long a system has been “up” and running without a shut down or restart.</p>
+<h3 id="load-average"><a class="toclink" href="#load-average">Load Average</a></h3>
+<p>The system load is a measurement of the computational work the system is performing. Each running process either using or waiting for CPU resources adds 1 to the load.</p>
+<h3 id="ram"><a class="toclink" href="#ram">RAM</a></h3>
+<p>RAM (Random Access Memory) is the hardware in a computing device where the operating system, application programs and data in current use are kept so they can be quickly reached by the device&rsquo;s processor.</p>
+<h3 id="memory-available"><a class="toclink" href="#memory-available">Memory Available</a></h3>
+<p>Percent of Memory Available
+Note: on Modern Linux Kernels amount of Memory Available for application is not the same as Free+Cached+Buffers.</p>
+<h3 id="virtual-memory"><a class="toclink" href="#virtual-memory">Virtual Memory</a></h3>
+<p>RAM + SWAP</p>
+<h3 id="disk-space"><a class="toclink" href="#disk-space">Disk Space</a></h3>
+<p>Sum of disk space on all partitions. Note  it can be significantly over-reported in some installations.</p>
+<h3 id="min-space-available"><a class="toclink" href="#min-space-available">Min Space Available</a></h3>
+<p>Lowest percent of the disk space available.</p>
+<h3 id="cpu-usage"><a class="toclink" href="#cpu-usage">CPU Usage</a></h3>
+<p>The CPU time is measured in clock ticks or seconds. It is useful to measure CPU time as a percentage of the CPU&rsquo;s capacity, which is called the CPU usage.</p>
+<h3 id="cpu-saturation-and-max-core-usage"><a class="toclink" href="#cpu-saturation-and-max-core-usage">CPU Saturation and Max Core Usage</a></h3>
+<p>When a system is running with maximum CPU utilization, the transmitting and receiving threads must all share the available CPU. This will cause data to be queued more frequently to cope with the lack of CPU. CPU Saturation may be measured as the length of a wait queue, or the time spent waiting on the queue.</p>
+<h3 id="disk-io-and-swap-activity"><a class="toclink" href="#disk-io-and-swap-activity">Disk I/O and Swap Activity</a></h3>
+<p>Disk I/O includes read or write or input/output operations involving a physical disk. It is the speed with which the data transfer takes place between the hard disk drive and RAM.</p>
+<p>Swap Activity is memory management that involves swapping sections of memory to and from physical storage.</p>
+<h3 id="network-traffic"><a class="toclink" href="#network-traffic">Network Traffic</a></h3>
+<p>Network traffic refers to the amount of data moving across a network at a given point in time.</p>
+                    </div>
+                </div>
+                
+<div class="small">
+    <ul class="list-inline">
+        
+        <li class="left">
+            <i class="uil uil-refresh"></i> Page updated 2020-11-23
+        </li>
+        
+    </ul>
+</div>
+
+                
+<div class="related row">
+    <ul class="nav nav-pills">
+        
+        <li class="right" style="margin-right: 10px">
+            <a href="dashboard-mysql-myisam-aria-details.html" title="MySQL MyISAM/Aria Details">next</a>
+        </li>
+        
+        
+        <li class="right" style="margin-right: 10px">
+            <a href="dashboard-mysql-innodb-compression-details.html" title="MySQL InnoDB Compression Details">previous</a>
+        </li>
+        
+        <li>
+            <a href="">Home</a>
+        </li>
+    </ul>
+</div>
+
+            </div>
+            
+<div class="sphinxsidebar col-md-3 col-md-pull-9">
+    <div class="sphinxsidebarwrapper">
+        {@ product_logo @}
+        {@ product_pdf_download @}
+        
+<section class="select-wrapper" id="version-select-wrapper">
+    <!-- Empty locator section for version selector -->
+</section>
+
+        <h3 id="toctree-heading"><a href="">Contents</a></h3>
+        
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l1">
+    <a class="reference internal" href="../../index.html">Welcome</a>
+
+
+
+
+<li class="toctree-l1">
+    
+    <a class="reference internal" href="../../setting-up/">Setting up</a>
+    
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../setting-up/index.html">Setting up: Overview</a>
+
+
+
+
+<li class="toctree-l2">
+    
+    <a class="reference internal" href="../../setting-up/server/">Server</a>
+    
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../setting-up/server/index.html">Setting up PMM Server</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../setting-up/server/docker.html">Docker</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../setting-up/server/virtual-appliance.html">Virtual Appliance</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../setting-up/server/aws.html">AWS Marketplace</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l2">
+    
+    <a class="reference internal" href="../../setting-up/client">Client</a>
+    
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../setting-up/client/index.html">Setting up PMM Clients</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../setting-up/client/docker.html">Docker</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../setting-up/client/mysql.html">MySQL</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../setting-up/client/percona-server.html">Percona Server</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../setting-up/client/mongodb.html">MongoDB</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../setting-up/client/postgresql.html">PostgreSQL</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../setting-up/client/proxysql.html">ProxySQL</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../setting-up/client/aws.html">Amazon RDS</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../setting-up/client/linux.html">Linux</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../setting-up/client/external.html">External Services</a>
+
+
+
+</ul>
+
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l1">
+    
+    <a class="reference internal" href="../../using/">Using</a>
+    
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../using/index.html">Using: Overview</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../using/interface.html">User Interface</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../using/alerting.html">Integrated Alerting</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../using/query-analytics.html">Query Analytics</a>
+
+
+
+
+<li class="toctree-l2">
+    
+    <a class="reference internal" href="../../using/platform/">Percona Enterprise Platform</a>
+    
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../using/platform/index.html">About Percona Enterprise Platform</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../using/platform/security-threat-tool.html">Security Threat Tool</a>
+
+
+
+</ul>
+
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l1">
+    
+    <a class="reference internal" href="../../how-to/">How to</a>
+    
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../how-to/index.html">How to: Overview</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../how-to/configure.html">Configure</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../how-to/upgrade.html">Upgrade</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../how-to/secure.html">Secure</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../how-to/optimize.html">Optimize</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l1">
+    
+    <a class="reference internal" href="../">Details</a>
+    
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../index.html">Details: Overview</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../architecture.html">Architecture</a>
+
+
+
+
+<li class="toctree-l2">
+    
+    <a class="reference internal" href="./">Dashboards</a>
+    
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="index.html">Dashboards Index</a>
+
+
+
+
+<li class="toctree-l3">
+    
+    <a class="reference internal" href="../..">Insight</a>
+    
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="dashboard-home.html">Home Dashboard</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="dashboard-advanced-data-exploration.html">Advanced Data Exploration</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="dashboard-victoriametrics.html">VictoriaMetrics</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="dashboard-victoriametrics-agents-overview.html">VictoriaMetrics Agents Overview</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l3">
+    
+    <a class="reference internal" href="../..">PMM</a>
+    
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="dashboard-inventory.html">PMM Inventory</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l3">
+    
+    <a class="reference internal" href="../..">OS Dashboards</a>
+    
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="dashboard-cpu-utilization-details.html">CPU Utilization Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="dashboard-disk-details.html">Disk Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="dashboard-network-details.html">Network Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="dashboard-memory-details.html">Memory Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="dashboard-node-temperature-details.html">Node Temperature Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="dashboard-nodes-compare.html">Nodes Compare</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="dashboard-nodes-overview.html">Nodes Overview</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="dashboard-node-summary.html">Node Summary</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="dashboard-numa-details.html">NUMA Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="dashboard-processes-details.html">Processes Details</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l3">
+    
+    <a class="reference internal" href="../..">Prometheus Dashboards</a>
+    
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="dashboard-prometheus-exporter-status.html">Prometheus Exporter Status</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="dashboard-prometheus-exporters-overview.html">Prometheus Exporters Overview</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l3">
+    
+    <a class="reference internal" href="../..">MySQL Dashboards</a>
+    
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="dashboard-mysql-amazon-aurora-details.html">MySQL Amazon Aurora Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="dashboard-mysql-command-handler-counters-compare.html">MySQL Command/Handler Counters Compare</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="dashboard-mysql-innodb-compression-details.html">MySQL InnoDB Compression Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="dashboard-mysql-innodb-details.html">MySQL InnoDB Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="dashboard-mysql-myisam-aria-details.html">MySQL MyISAM/Aria Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="dashboard-mysql-myrocks-details.html">MySQL MyRocks Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="dashboard-mysql-instance-summary.html">MySQL Instance Summary</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="dashboard-mysql-instances-compare.html">MySQL Instances Compare</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="dashboard-mysql-instances-overview.html">MySQL Instances Overview</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="dashboard-mysql-wait-event-analyses-details.html">MySQL Wait Event Analyses Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="dashboard-mysql-performance-schema-details.html">MySQL Performance Schema Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="dashboard-mysql-query-response-time-details.html">MySQL Query Response Time Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="dashboard-mysql-replication-summary.html">MySQL Replication Summary</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="dashboard-mysql-group-replication-summary.html">MySQL Group Replication Summary</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="dashboard-mysql-table-details.html">MySQL Table Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="dashboard-mysql-user-details.html">MySQL User Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="dashboard-mysql-tokudb-details.html">MySQL TokuDB Details</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l3">
+    
+    <a class="reference internal" href="../..">MongoDB Dashboards</a>
+    
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="dashboard-mongodb-cluster-summary.html">MongoDB Cluster Summary</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="dashboard-mongodb-instance-summary.html">MongoDB Instance Summary</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="dashboard-mongodb-instances-overview.html">MongoDB Instances Overview</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="dashboard-mongodb-instances-compare.html">MongoDB Instances Compare</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="dashboard-mongodb-replset-summary.html">MongoDB ReplSet Summary</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="dashboard-mongodb-inmemory-details.html">MongoDB InMemory Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="dashboard-mongodb-mmapv1-details.html">MongoDB MMAPv1 Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="dashboard-mongodb-wiredtiger-details.html">MongoDB WiredTiger Details</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l3">
+    
+    <a class="reference internal" href="../..">PostgreSQL Dashboards</a>
+    
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="dashboard-postgresql-instances-overview.html">PostgreSQL Instances Overview</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="dashboard-postgresql-instance-summary.html">PostgreSQL Instance Summary</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="dashboard-postgresql-instances-compare.html">PostgreSQL Instances Compare</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l3">
+    
+    <a class="reference internal" href="../..">ProxySQL Dashboards</a>
+    
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="dashboard-proxysql-instance-summary.html">ProxySQL Instance Summary</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l3">
+    
+    <a class="reference internal" href="../..">HA Dashboards</a>
+    
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="dashboard-pxc-galera-node-summary.html">PXC/Galera Node Summary</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="dashboard-pxc-galera-cluster-summary.html">PXC/Galera Cluster Summary</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="dashboard-pxc-galera-nodes-compare.html">PXC/Galera Nodes Compare</a>
+
+
+
+</ul>
+
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l2">
+    
+    <a class="reference internal" href="../..">Commands</a>
+    
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../commands/pmm-admin.html">pmm-admin - Administration Tool</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../commands/pmm-agent.html">pmm-agent - PMM Client agent</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../api.html">API</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../victoria-metrics.html">VictoriaMetrics</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../glossary.html">Glossary</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l1">
+    <a class="reference internal" href="../../faq.html">FAQ</a>
+
+
+
+
+<li class="toctree-l1">
+    
+    <a class="reference internal" href="../../release-notes/">Release Notes</a>
+    
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.13.0.html">Percona Monitoring and Management 2.13.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.12.0.html">Percona Monitoring and Management 2.12.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.11.1.html">Percona Monitoring and Management 2.11.1</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.11.0.html">Percona Monitoring and Management 2.11.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.10.1.html">Percona Monitoring and Management 2.10.1</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.10.0.html">Percona Monitoring and Management 2.10.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.9.1.html">Percona Monitoring and Management 2.9.1</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.9.0.html">Percona Monitoring and Management 2.9.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.8.0.html">Percona Monitoring and Management 2.8.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.7.0.html">Percona Monitoring and Management 2.7.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.6.1.html">Percona Monitoring and Management 2.6.1</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.6.0.html">Percona Monitoring and Management 2.6.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.5.0.html">Percona Monitoring and Management 2.5.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.4.0.html">Percona Monitoring and Management 2.4.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.3.0.html">Percona Monitoring and Management 2.3.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.2.2.html">Percona Monitoring and Management 2.2.2</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.2.1.html">Percona Monitoring and Management 2.2.1</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.2.0.html">Percona Monitoring and Management 2.2.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.1.0.html">Percona Monitoring and Management 2.1.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.0.1.html">Percona Monitoring and Management 2.0.1</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.0.0.html">Percona Monitoring and Management 2.0.0</a>
+
+
+
+</ul>
+
+
+
+
+</ul>
+
+
+        
+
+<h4>Previous topic</h4>
+<p class="topless">
+    <a href="dashboard-mysql-innodb-compression-details.html" title="previous chapter">MySQL InnoDB Compression Details</a>
+</p>
+
+
+<h4>Next topic</h4>
+<p class="topless">
+    <a href="dashboard-mysql-myisam-aria-details.html" title="next chapter">MySQL MyISAM/Aria Details</a>
+</p>
+
+
+        {@ product_series @}
+    </div>
+</div>
+
+            <div class="clearer"></div>
+        </div>
+    </div>
+</body>
