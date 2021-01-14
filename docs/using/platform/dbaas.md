@@ -87,6 +87,14 @@ To open the DBaaS dashboard:
 
         Values for the *Custom* preset can be edited.
 
+        !!! alert alert-info "Note"
+            Resource consumption in Kubernetes can be tricky so apply the following forumula to ensure your nodes have sufficient resources to start the requested configuration:
+            ( 2 * # of nodes in DB cluster * CPU per node ) + (.5 * # of nodes in db cluster) = total # of CPU's that must be free for cluster to start
+            Explained: 
+            The first part of the equation is resources for the cluster and must be doubled because each DB cluster member must also have a proxy started with it
+            The second part of the equation is to start the container(s) that automatically monitor each member of the DB cluster
+            Hint: You can also specify CPU in tenths i.e. .1 CPU's or 1.5 CPU's
+    
         ![](../../_images/PMM_DBaaS_DB_Cluster_Advanced_Options.jpg)
 
 5. When both *Basic Options* and *Advanced Options* section icons are green, the *Create Cluster* button becomes active. (If it is inactive, check the values for fields in sections whose icon is red.)
