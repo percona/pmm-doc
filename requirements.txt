@@ -1,0 +1,11 @@
+mkdocs>=1.1.2
+mkdocs-macros-plugin
+mkdocs-exclude
+markdown-include
+mkdocs-material
+mkdocs-with-pdf>=0.8.0
+plantuml-markdown
+mkdocs-git-revision-date-plugin
+mkdocs-material-extensions
+mkdocs-bootstrap-tables-plugin
+mike
