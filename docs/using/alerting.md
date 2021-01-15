@@ -11,6 +11,9 @@
 
 ---
 
+Before using this feature, you need to activate Integrated Alerting in Settings ( doc/percona-monitoring-and-management/2.x/how-to/configure.html#integrated-alerting )
+
+
 ## Definitions
 
 - Alerts are generated when their criteria (*alert rules*) are met; an *alert* is the result of an *alert rule* expression evaluating to *true*.
