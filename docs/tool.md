@@ -14,5 +14,5 @@ The PMM home page lists all hosts that you have set up for monitoring as well as
 
 ### More about PMM Components
 
-* [*PMM Query Analytics*](qan.md)
+* [PMM Query Analytics](qan.md)
 * [Metrics Monitor](metrics-monitor.md)
