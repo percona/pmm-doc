@@ -16,12 +16,12 @@ PMM is a free and open-source solution that you can run in your own environment 
 ## Advanced
 
 * [Managing PMM Client](pmm-admin.md)
-* [Adding a MySQL or PostgreSQL Remote DB instance to PMM](remote-instance.md)
-* [Adding an Amazon RDS DB instance to PMM](amazon-rds.md)
+* [Adding a MySQL or PostgreSQL Remote DB instance](remote-instance.md)
+* [Adding an Amazon RDS DB instance](amazon-rds.md)
 * [Configuring MySQL for Best Results](conf-mysql.md)
 * [Configuring PostgreSQL for Monitoring](conf-postgres.md)
-* [Configuring MongoDB for Monitoring in *PMM Query Analytics*](conf-mongodb.md)
-* [Security Features in *Percona Monitoring and Management*](security.md)
+* [Configuring MongoDB for Monitoring in PMM Query Analytics](conf-mongodb.md)
+* [Security Features](security.md)
 * [Metrics Monitor Dashboards](index.metrics-monitor.dashboard.md)
 
 ## Reference
