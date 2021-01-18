@@ -110,8 +110,8 @@
 <p>October 10, 2018</p>
 </li>
 </ul>
-<p><em>PMM</em> (<a href="../index.html">Percona Monitoring and Management</a>) is a free and open-source platform for managing and monitoring <em>MySQL</em> and <em>MongoDB</em> performance. You can run <em>PMM</em> in your own environment for maximum security and reliability. It provides thorough time-based analysis for <em>MySQL</em> and <em>MongoDB</em> servers to ensure that your data works as efficiently as possible.</p>
-<p>This release offers two new features for both the <em>MySQL</em> Community and Percona Customers:</p>
+<p><em>PMM</em> (<a href="../index.html">Percona Monitoring and Management</a>) is a free and open-source platform for managing and monitoring MySQL and MongoDB performance. You can run <em>PMM</em> in your own environment for maximum security and reliability. It provides thorough time-based analysis for MySQL and MongoDB servers to ensure that your data works as efficiently as possible.</p>
+<p>This release offers two new features for both the MySQL Community and Percona Customers:</p>
 <ul>
 <li>MySQL Custom Queries - Turn a <code>SELECT</code> into a dashboard!!</li>
 <li>Server and Client logs - Collect troubleshooting logs for Percona Support</li>
@@ -120,9 +120,9 @@
 <h2 id="mysql-custom-queries"><a class="toclink" href="#mysql-custom-queries">MySQL Custom Queries</a></h2>
 <p>In 1.15 we are introducing the ability to take a SQL <code>SELECT</code> statement and turn the result set into metric series in <em>PMM</em>.  The queries are executed at the LOW RESOLUTION level, which by default is every 60 seconds.  A key advantage is that you can extend <em>PMM</em> to profile metrics unique to your environment (see users table example), or to introduce support for a table that isn’t part of <em>PMM</em> yet. This feature is on by default and only requires that you edit the configuration file and use vaild YAML syntax.  The configuration file is in <code>/usr/local/percona/pmm-client/queries-mysqld.yml</code>.</p>
 <h3 id="example-application-users-table"><a class="toclink" href="#example-application-users-table">Example - Application users table</a></h3>
-<p>We’re going to take a fictional <em>MySQL</em> users table that also tracks the number of upvotes and downvotes, and we’ll convert this into two metric series, with a set of seven labels, where each label can also store a value.</p>
+<p>We’re going to take a fictional MySQL users table that also tracks the number of upvotes and downvotes, and we’ll convert this into two metric series, with a set of seven labels, where each label can also store a value.</p>
 <h4>Browsing metrics series using Advanced Data Exploration Dashboard</h4>
-<p>Lets look at the output so we understand the goal - take data from a <em>MySQL</em> table and store in <em>PMM</em>, then display as a metric series.  Using the Advanced Data Exploration Dashboard you can review your metric series. Exploring the metric series <code>app1_users_metrics_downvotes</code> we see the following:</p>
+<p>Lets look at the output so we understand the goal - take data from a MySQL table and store in <em>PMM</em>, then display as a metric series.  Using the Advanced Data Exploration Dashboard you can review your metric series. Exploring the metric series <code>app1_users_metrics_downvotes</code> we see the following:</p>
 <p><img alt="image" src="../_images/1.15.0-1.png" /></p>
 <h4>MySQL table</h4>
 <p>Lets assume you have the following users table that includes true/false, string, and integer types.</p>
@@ -246,7 +246,7 @@ app1_users_metrics:
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-01-11
+            <i class="uil uil-refresh"></i> Page updated 2021-01-18
         </li>
         
     </ul>
@@ -801,7 +801,7 @@ app1_users_metrics:
 
 
 <li class="toctree-l3">
-    <a class="reference internal" href="1.17.4.html">*Percona Monitoring and Management* 1.17.4</a>
+    <a class="reference internal" href="1.17.4.html">Percona Monitoring and Management 1.17.4</a>
 
 
 
@@ -873,37 +873,37 @@ app1_users_metrics:
 
 
 <li class="toctree-l3">
-    <a class="reference internal" href="1.10.0.html">*Percona Monitoring and Management* 1.10.0</a>
+    <a class="reference internal" href="1.10.0.html">Percona Monitoring and Management 1.10.0</a>
 
 
 
 
 <li class="toctree-l3">
-    <a class="reference internal" href="1.9.1.html">*Percona Monitoring and Management* 1.9.1</a>
+    <a class="reference internal" href="1.9.1.html">Percona Monitoring and Management 1.9.1</a>
 
 
 
 
 <li class="toctree-l3">
-    <a class="reference internal" href="1.9.0.html">*Percona Monitoring and Management* 1.9.0</a>
+    <a class="reference internal" href="1.9.0.html">Percona Monitoring and Management 1.9.0</a>
 
 
 
 
 <li class="toctree-l3">
-    <a class="reference internal" href="1.8.1.html">*Percona Monitoring and Management* 1.8.1</a>
+    <a class="reference internal" href="1.8.1.html">Percona Monitoring and Management 1.8.1</a>
 
 
 
 
 <li class="toctree-l3">
-    <a class="reference internal" href="1.8.0.html">*Percona Monitoring and Management* 1.8.0</a>
+    <a class="reference internal" href="1.8.0.html">Percona Monitoring and Management 1.8.0</a>
 
 
 
 
 <li class="toctree-l3">
-    <a class="reference internal" href="1.7.0.html">*Percona Monitoring and Management* 1.7.0</a>
+    <a class="reference internal" href="1.7.0.html">Percona Monitoring and Management 1.7.0</a>
 
 
 
@@ -915,7 +915,7 @@ app1_users_metrics:
 
 
 <li class="toctree-l3">
-    <a class="reference internal" href="1.6.0.html">*Percona Monitoring and Management* 1.6.0</a>
+    <a class="reference internal" href="1.6.0.html">Percona Monitoring and Management 1.6.0</a>
 
 
 
