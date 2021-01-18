@@ -1,15 +1,14 @@
-name: MkDocs (1.x)
+name: BUILD PMM DOCS 1.x
 
 on:
   push:
     branches:
-      - main
       - 1.x
 
   workflow_dispatch:
 
 jobs:
-  mkdocs:
+  build:
 
     runs-on: ubuntu-latest
 
