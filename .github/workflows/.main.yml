@@ -4,23 +4,20 @@ on:
   push:
     branches:
       - main
-      - '1\.x'
-      - '1_x'
-      - 1_x
       - 1.x
 
   workflow_dispatch:
 
 jobs:
   mkdocs:
-    
+
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
       with:
         fetch-depth: 0
-  
+
     - name: Setup Python
       uses: actions/setup-python@v2
       with:
@@ -42,7 +39,7 @@ jobs:
       uses: oleksiyrudenko/gha-git-credentials@v2-latest
       with:
         token: '${{ secrets.GITHUB_TOKEN }}'
-    
+
     - name: Where am i
       run: echo ${{ github.ref }}
 
