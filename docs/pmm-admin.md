@@ -1,6 +1,6 @@
 # Managing PMM Client
 
-Use the **pmm-admin** tool to manage PMM Client.
+Use the `pmm-admin` tool to manage PMM Client.
 
 In this chapter
 
