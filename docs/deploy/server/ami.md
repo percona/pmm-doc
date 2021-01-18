@@ -96,7 +96,7 @@ With your instance selected, open its IP address in a web browser. The IP addres
 
 *The public IP address of the instance*
 
-To run the instance, copy and paste its public IP address to the location bar of your browser. In the *Percona Monitoring and Management* welcome page that opens, enter the instance ID.
+To run the instance, copy and paste its public IP address to the location bar of your browser. In the Percona Monitoring and Management welcome page that opens, enter the instance ID.
 
 ![](../../_images/installation-wizard.ami.instance-id-verification.png)
 
@@ -106,7 +106,7 @@ You can copy the instance ID from the Properties panel of your instance, select 
 
 *Hover the cursor over the instance ID for the Copy button to appear.*
 
-Paste the instance in the Instance ID field of the *Percona Monitoring and Management* welcome page and click Submit.
+Paste the instance in the Instance ID field of the Percona Monitoring and Management welcome page and click Submit.
 
 ![](../../_images/installation-wizard.ami.account-credentials.png)
 
