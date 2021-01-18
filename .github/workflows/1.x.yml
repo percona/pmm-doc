@@ -1,4 +1,4 @@
-name: MkDocs
+name: MkDocs (1.x)
 
 on:
   push:
@@ -39,13 +39,6 @@ jobs:
       uses: oleksiyrudenko/gha-git-credentials@v2-latest
       with:
         token: '${{ secrets.GITHUB_TOKEN }}'
-
-    - name: Where am i
-      run: echo ${{ github.ref }}
-
-    - name: Run MkDocs (2.x)
-      if: github.ref == 'refs/heads/main'
-      run: mike deploy 2.x -b publish -p
 
     - name: Run MkDocs (1.x)
       if: github.ref == 'refs/heads/1.x'
