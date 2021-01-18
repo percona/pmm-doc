@@ -1,7 +1,7 @@
 # Percona Monitoring and Management Documentation
 
 !!! alert alert-danger "Important"
-    PMM Version 1 is no longer in active development. See [PMM 2](../LATEST/)
+    PMM Version 1 is no longer in active development. See [PMM 2](../2.x/).
 
 Percona Monitoring and Management (PMM) is an open source platform for managing and monitoring MySQL and MongoDB performance. It is developed by Percona in collaboration with experts in the field of managed database services, support and consulting.
 
