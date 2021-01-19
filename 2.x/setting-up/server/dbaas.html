@@ -519,7 +519,7 @@ eksctl delete cluster --name<span class="o">=</span>your-cluster-name
 <ol>
 <li>
 <p>Start PMM server from a feature branch:</p>
-<div class="highlight"><pre><span></span><code>docker run --detach --name pmm-server --publish <span class="m">80</span>:80 --publish <span class="m">443</span>:443 --env <span class="nv">PERCONA_TEST_DBAAS</span><span class="o">=</span><span class="m">1</span>  perconalab/pmm-server-fb:PR-XXXXX<span class="p">;</span>
+<div class="highlight"><pre><span></span><code>docker run --detach --name pmm-server --publish <span class="m">80</span>:80 --publish <span class="m">443</span>:443 --env <span class="nv">PERCONA_TEST_DBAAS</span><span class="o">=</span><span class="m">1</span>  percona/pmm-server:2<span class="p">;</span>
 </code></pre></div>
 <div class="admonition alert alert-warning">
 <p class="admonition-title">Important</p>
@@ -574,7 +574,7 @@ eksctl delete cluster --name<span class="o">=</span>your-cluster-name
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-01-13
+            <i class="uil uil-refresh"></i> Page updated 2021-01-19
         </li>
         
     </ul>
