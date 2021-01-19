@@ -59,6 +59,9 @@ To open the DBaaS dashboard:
 !!! alert alert-info "Note"
     You must create at least one Kubernetes cluster to create a DB cluster.
 
+!!! alert alert-info "Note"
+    If you want to have your future DB Cluster monitored by PMM you need to set up [Public Address](https://www.percona.com/doc/percona-monitoring-and-management/2.x/how-to/configure.html#public-address) for your PMM Server before creating the cluster
+
 !!! alert alert-success "Tip"
     Resource consumption in Kubernetes can cause problems. Use this formula to ensure your nodes have enough resources to start the requested configuration:
 
