@@ -151,8 +151,8 @@ ln -s /usr/local/sbin/minikube /usr/sbin/minikube
 </div>
 <ol>
 <li>
-<p>Start PMM server from a feature branch:</p>
-<div class="highlight"><pre><span></span><code>docker run --detach --publish <span class="m">80</span>:80  --publish <span class="m">443</span>:443 --name pmm-server --env <span class="nv">PERCONA_TEST_DBAAS</span><span class="o">=</span><span class="m">1</span> percona/pmm-server:2
+<p>Start PMM server:</p>
+<div class="highlight"><pre><span></span><code>docker run --detach --publish <span class="m">80</span>:80 --publish <span class="m">443</span>:443 --name pmm-server --env <span class="nv">PERCONA_TEST_DBAAS</span><span class="o">=</span><span class="m">1</span> percona/pmm-server:2
 </code></pre></div>
 </li>
 <li>
