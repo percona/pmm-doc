@@ -1,6 +1,6 @@
 # Overview of Percona Monitoring and Management Architecture
 
-The PMM platform is based on a client-server model that enables scalability. It includes the following modules:
+PMM is built as a client-server application comprising these modules:
 
 - PMM Client installed on every database host that you want to monitor. It collects server metrics, general system metrics, and Query Analytics data for a complete performance overview.
 
