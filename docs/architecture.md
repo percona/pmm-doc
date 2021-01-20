@@ -2,9 +2,9 @@
 
 The PMM platform is based on a client-server model that enables scalability. It includes the following modules:
 
-* [PMM Client](glossary.terminology.md#pmm-client) installed on every database host that you want to monitor. It collects server metrics, general system metrics, and Query Analytics data for a complete performance overview.
+- PMM Client installed on every database host that you want to monitor. It collects server metrics, general system metrics, and Query Analytics data for a complete performance overview.
 
-* [PMM Server](glossary.terminology.md#pmm-server) is the central part of PMM that aggregates collected data and presents it in the form of tables, dashboards, and graphs in a web interface.
+- PMM Server is the central part of PMM that aggregates collected data and presents it in the form of tables, dashboards, and graphs in a web interface.
 
 The modules are packaged for easy installation and usage. It is assumed that the user should not need to understand what are the exact tools that make up each module and how they interact. However, if you want to leverage the full potential of PMM, the internal structure is important.
 
