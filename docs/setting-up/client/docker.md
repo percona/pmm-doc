@@ -1,19 +1,15 @@
-# Docker
+# Docker (Client)
 
-A PMM Client docker image is available from [percona/pmm-client](https://hub.docker.com/r/percona/pmm-client/tags/).
+If [Docker](https://docs.docker.com/get-docker/) is installed on a client, you can avoid installing the PMM Client package and run all of PMM's client tools and programs (exporters, agents, command-line tools) via our [PMM Client Docker image](https://hub.docker.com/r/percona/pmm-client/tags/).
 
-It runs with Docker 1.12.6 or later.
+---
+
+[TOC]
+
+---
 
 !!! alert alert-success "Tip"
     Make sure that the firewall and routing rules of the host do not constrain the Docker container. ([Read more in the FAQ.](../../faq.md#how-do-i-troubleshoot-communication-issues-between-pmm-client-and-pmm-server))
-
-The Docker image is a collection of preinstalled software which lets you run a selected version of PMM Client.
-
-The Docker image is not run directly.
-
-You use it to create a Docker container for your PMM Client.
-
-When launched, the Docker container gives access to the whole functionality of PMM Client.
 
 ## Running PMM Client as a Docker container
 
@@ -21,12 +17,9 @@ When launched, the Docker container gives access to the whole functionality of P
 
         docker pull percona/pmm-client:2
 
-2. Create a persistent data store
+2. Create a persistent data store based on the same image. This preserves local data when you pull an updated image.
 
         docker create -v /srv --name pmm-client-data percona/pmm-client:2 /bin/true
-
-    !!! alert alert-info "Note"
-        This container does not run, but exists only to make sure you retain all PMM data when upgrading to a newer image.
 
 3. Run the container
 
