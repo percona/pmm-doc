@@ -20,6 +20,8 @@
 
 `pmm-admin add external [FLAGS] [NAME] [ADDRESS]` (CAUTION: Technical preview feature)
 
+`pmm-admin add external-serverless [FLAGS] [NAME] [ADDRESS]` (CAUTION: Technical preview feature)
+
 `pmm-admin remove [FLAGS] service-type [service-name]`
 
 `pmm-admin register [FLAGS] [node-address] [node-type] [node-name]`
@@ -40,7 +42,7 @@
 
 PMM communicates with the PMM Server via a PMM agent process.
 
-## FLAGS
+## COMMON FLAGS
 
 `-h`, `--help`
 :    Show help and exit.
@@ -110,7 +112,6 @@ PMM communicates with the PMM Server via a PMM agent process.
 
     `--pprof`
     : Include performance profiling data in the summary.
-
 
 ### CONFIGURATION COMMANDS
 
@@ -476,6 +477,22 @@ PMM communicates with the PMM Server via a PMM agent process.
         - `auto`: chosen by server (default)
         - `push`: agent will push metrics
         - `pull`: server scrapes metrics from agent
+
+### OTHER COMMANDS
+
+`pmm-admin add external-serverless [FLAGS]`
+: Add External Service on Remote node to monitoring
+
+    FLAGS:
+
+	`--server-url=SERVER-URL`
+	: PMM Server URL in `https://username:password@pmm-server-host/` format
+
+    `--server-insecure-tls`
+	: Skip PMM Server TLS certificate validation
+
+    `--external-name=EXTERNAL-NAME`
+	: Name for external service
 
 ## EXAMPLES
 
