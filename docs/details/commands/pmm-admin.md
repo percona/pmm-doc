@@ -494,6 +494,48 @@ PMM communicates with the PMM Server via a PMM agent process.
     `--external-name=EXTERNAL-NAME`
 	: Name for external service
 
+	`--listen-port=LISTEN-PORT`
+	: Listen port of external exporter for scraping metrics
+
+    `--metrics-path=METRICS-PATH`
+	: Path under which metrics are exposed, used to generate URL
+
+    `--environment=ENVIRONMENT`
+	: Environment name
+
+    `--cluster=CLUSTER`
+	: Cluster name
+
+    `--replication-set=REPLICATION-SET`
+    : Replication set name
+
+    `--custom-labels=CUSTOM-LABELS`
+    : Custom user-assigned labels
+
+    `--group="external"`
+	: Group name of external service (default: external)
+
+	`--machine-id=MACHINE-ID`
+	: Node machine-id
+
+    `--distro=DISTRO`
+	: Node OS distribution
+
+    `--container-id=CONTAINER-ID`
+	: Container ID
+
+    `--container-name=CONTAINER-NAME`
+    : Container name
+
+    `--node-model=NODE-MODEL`
+	: Node model
+
+    `--region=REGION`
+	: Node region
+
+    `--az=AZ`
+	: Node availability zone
+
 ## EXAMPLES
 
 ```sh
