@@ -34,11 +34,6 @@ jobs:
           sudo cp $GITHUB_WORKSPACE/bin/plantuml /usr/local/bin
           sudo chmod +x /usr/local/bin/plantuml
 
-      # - name: GitHub credentials
-      #   uses: oleksiyrudenko/gha-git-credentials@v2-latest
-      #   with:
-      #     token: "${{ secrets.GITHUB_TOKEN }}"
-
       - name: Configure git
         env:
           ROBOT_TOKEN: ${{ secrets.ROBOT_TOKEN }}
@@ -50,5 +45,5 @@ jobs:
           echo "GIT_USER=percona-platform-robot:${ROBOT_TOKEN}" >> $GITHUB_ENV
 
       - name: Run MkDocs (2.x)
-        if: github.ref != 'refs/heads/main'
+        if: github.ref == 'refs/heads/main'
         run: mike deploy 2.x -b publish -p
