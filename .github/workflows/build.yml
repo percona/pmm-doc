@@ -18,7 +18,7 @@ jobs:
           fetch-depth: 0
 
       - name: Setup Python
-        uses: actions/setup-python@v2
+        uses: percona-platform/setup-python@v2
         with:
           python-version: "3.x"
 
@@ -50,5 +50,5 @@ jobs:
           echo "GIT_USER=percona-platform-robot:${ROBOT_TOKEN}" >> $GITHUB_ENV
 
       - name: Run MkDocs (2.x)
-        if: github.ref == 'refs/heads/main'
+        if: github.ref != 'refs/heads/main'
         run: mike deploy 2.x -b publish -p
