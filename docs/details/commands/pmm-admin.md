@@ -139,8 +139,8 @@ PMM communicates with the PMM Server via a PMM agent process.
 
     `--metrics-mode=mode`
     : Metrics flow mode for agents node-exporter. Allowed values:
-        - `auto`: chosen by server (default)
-        - `push`: agent will push metrics
+        - `auto`: chosen by server
+        - `push`: agent will push metrics (default)
         - `pull`: server scrapes metrics from agent
 
 #### `pmm-admin register`
@@ -311,8 +311,8 @@ PMM communicates with the PMM Server via a PMM agent process.
 
     `--metrics-mode=mode`
     : Metrics flow mode for agents node-exporter. Allowed values:
-        - `auto`: chosen by server (default)
-        - `push`: agent will push metrics
+        - `auto`: chosen by server
+        - `push`: agent will push metrics (default)
         - `pull`: server scrapes metrics from agent
 
 #### MySQL
@@ -379,8 +379,8 @@ PMM communicates with the PMM Server via a PMM agent process.
 
     `--metrics-mode=mode`
     : Metrics flow mode for agents node-exporter. Allowed values:
-        - `auto`: chosen by server (default)
-        - `push`: agent will push metrics
+        - `auto`: chosen by server
+        - `push`: agent will push metrics (default)
         - `pull`: server scrapes metrics from agent
 
 #### PostgreSQL
@@ -428,8 +428,8 @@ PMM communicates with the PMM Server via a PMM agent process.
 
     `--metrics-mode=mode`
     : Metrics flow mode for agents node-exporter. Allowed values:
-        - `auto`: chosen by server (default)
-        - `push`: agent will push metrics
+        - `auto`: chosen by server
+        - `push`: agent will push metrics (default)
         - `pull`: server scrapes metrics from agent
 
 #### ProxySQL
@@ -474,8 +474,8 @@ PMM communicates with the PMM Server via a PMM agent process.
 
     `--metrics-mode=mode`
     : Metrics flow mode for agents node-exporter. Allowed values:
-        - `auto`: chosen by server (default)
-        - `push`: agent will push metrics
+        - `auto`: chosen by server
+        - `push`: agent will push metrics (default)
         - `pull`: server scrapes metrics from agent
 
 ### OTHER COMMANDS
