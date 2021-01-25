@@ -4,7 +4,7 @@ repo_url: https://github.com/percona/pmm-doc
 edit_uri: edit/main/docs/
 site_description: Percona Monitoring and Management Documentation
 site_author: Percona LLC
-copyright: Percona LLC, &#169; 2020
+copyright: Percona LLC, &#169; 2021
 use_directory_urls: false
 docs_dir: docs
 
