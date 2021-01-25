@@ -18,7 +18,6 @@ icon:
   infocircle: '<i class="fa fa-info-circle"></i>'
   listul: '<i class="uil uil-list-ul"></i>'
   monitor: '<i class="uil uil-monitor"></i>'
-  percona: '<img src="../_images/percona-logo.svg" height="20" width="20" />'
   plus: '<i class="uil uil-plus"></i>'
   plussquare: '<i class="uil uil-plus-square"></i>'
   questioncircle: '<i class="uil uil-question-circle"></i>'
