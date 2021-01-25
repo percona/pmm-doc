@@ -1,12 +1,13 @@
 site_name: Percona Monitoring and Management
+site_description: Documentation
+site_author: Percona LLC
+copyright: Percona LLC, &#169; 2021
+
 repo_name: percona/pmm-doc
 repo_url: https://github.com/percona/pmm-doc
 edit_uri: edit/main/docs/
-site_description: Percona Monitoring and Management Documentation
-site_author: Percona LLC
-copyright: Percona LLC, &#169; 2021
+
 use_directory_urls: false
-docs_dir: docs
 
 theme:
     name: material
@@ -65,7 +66,7 @@ plugins:
           - index-pdf.md
           - setting-up/server/dbaas-gke.md # Included file
           - how-to/troubleshoot.md
-    - with-pdf:
+  - with-pdf:
         output_path: '_pdf/PerconaMonitoringAndManagement-2.13.0.pdf'
         cover_title: 'Documentation'
         cover_subtitle: 2.13.0
