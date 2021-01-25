@@ -46,4 +46,6 @@ jobs:
           echo "GIT_USER=percona-platform-robot:${ROBOT_TOKEN}" >> $GITHUB_ENV
 
       - name: Run MkDocs (preview)
-        run: mike deploy preview -b preview -p
+        run: |
+          git branch -D preview ||: # delete the branch to start fresh
+          mike deploy preview -b preview -p

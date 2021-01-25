@@ -46,4 +46,6 @@ jobs:
 
       - name: Run MkDocs (2.x)
         if: github.ref == 'refs/heads/main'
-        run: mike deploy 2.x -b publish -p
+        run: |
+          git branch -D publish || : # delete the branch to start fresh
+          mike deploy 2.x -b publish -p
