@@ -50,7 +50,7 @@
 </head>
 
 <body>
-	<!-- 2021-01-24 22:28:46.997501+00:00 -->
+	<!-- 2021-01-27 06:20:47.322826+00:00 -->
     
 <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.3/css/line.css" type="text/css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" type="text/css">
@@ -132,9 +132,10 @@ systemctl <span class="nb">enable</span> docker
 systemctl start docker
 </code></pre></div>
 <h3 id="minikube"><a class="toclink" href="#minikube">minikube</a></h3>
+<p>Please install minukube v1.16.0</p>
 <p><strong>Red Hat, CentOS</strong></p>
 <div class="highlight"><pre><span></span><code>yum -y install curl
-curl -Lo /usr/local/sbin/minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+curl -Lo /usr/local/sbin/minikube https://github.com/kubernetes/minikube/releases/download/v1.16.0/minikube-linux-amd64
 chmod +x /usr/local/sbin/minikube
 ln -s /usr/local/sbin/minikube /usr/sbin/minikube
 <span class="nb">alias</span> <span class="nv">kubectl</span><span class="o">=</span><span class="s1">&#39;minikube kubectl --&#39;</span>
@@ -575,7 +576,7 @@ eksctl delete cluster --name<span class="o">=</span>your-cluster-name
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-01-20
+            <i class="uil uil-refresh"></i> Page updated 2021-01-27
         </li>
         
     </ul>
