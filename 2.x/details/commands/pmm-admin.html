@@ -52,7 +52,7 @@
 </head>
 
 <body>
-	<!-- 2021-01-28 11:37:25.228316+00:00 -->
+	<!-- 2021-01-28 18:39:51.857161+00:00 -->
     
 <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.3/css/line.css" type="text/css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" type="text/css">
@@ -111,12 +111,13 @@
 <li><a href="#name">NAME</a></li>
 <li><a href="#synopsis">SYNOPSIS</a></li>
 <li><a href="#description">DESCRIPTION</a></li>
-<li><a href="#flags">FLAGS</a></li>
+<li><a href="#common-flags">COMMON FLAGS</a></li>
 <li><a href="#commands">COMMANDS</a><ul>
 <li><a href="#general-commands">GENERAL COMMANDS</a></li>
 <li><a href="#information-commands">INFORMATION COMMANDS</a></li>
 <li><a href="#configuration-commands">CONFIGURATION COMMANDS</a></li>
 <li><a href="#database-commands">DATABASE COMMANDS</a></li>
+<li><a href="#other-commands">OTHER COMMANDS</a></li>
 </ul>
 </li>
 <li><a href="#examples">EXAMPLES</a></li>
@@ -130,6 +131,7 @@
 <p><code>pmm-admin config [FLAGS] --server-url=server-url</code></p>
 <p><code>pmm-admin add DATABASE [FLAGS] [NAME] [ADDRESS]</code></p>
 <p><code>pmm-admin add external [FLAGS] [NAME] [ADDRESS]</code> (CAUTION: Technical preview feature)</p>
+<p><code>pmm-admin add external-serverless [FLAGS] [NAME] [ADDRESS]</code> (CAUTION: Technical preview feature)</p>
 <p><code>pmm-admin remove [FLAGS] service-type [service-name]</code></p>
 <p><code>pmm-admin register [FLAGS] [node-address] [node-type] [node-name]</code></p>
 <p><code>pmm-admin list [FLAGS] [node-address]</code></p>
@@ -140,7 +142,7 @@
 <h2 id="description"><a class="toclink" href="#description">DESCRIPTION</a></h2>
 <p><code>pmm-admin</code> is a command-line tool for administering PMM using a set of COMMAND keywords and associated FLAGS.</p>
 <p>PMM communicates with the PMM Server via a PMM agent process.</p>
-<h2 id="flags"><a class="toclink" href="#flags">FLAGS</a></h2>
+<h2 id="common-flags"><a class="toclink" href="#common-flags">COMMON FLAGS</a></h2>
 <dl>
 <dt><code>-h</code>, <code>--help</code></dt>
 <dd>Show help and exit.</dd>
@@ -494,6 +496,50 @@
 - <code>auto</code>: chosen by server (default)
 - <code>push</code>: agent will push metrics
 - <code>pull</code>: server scrapes metrics from agent</dd>
+</dl>
+</dd>
+</dl>
+<h3 id="other-commands"><a class="toclink" href="#other-commands">OTHER COMMANDS</a></h3>
+<dl>
+<dt><code>pmm-admin add external-serverless [FLAGS]</code></dt>
+<dd>
+<p>Add External Service on Remote node to monitoring</p>
+<p>FLAGS:</p>
+<dl>
+<dt><code>--server-url=SERVER-URL</code></dt>
+<dd>PMM Server URL in <code>https://username:password@pmm-server-host/</code> format</dd>
+<dt><code>--server-insecure-tls</code></dt>
+<dd>Skip PMM Server TLS certificate validation</dd>
+<dt><code>--external-name=EXTERNAL-NAME</code></dt>
+<dd>Name for external service</dd>
+<dt><code>--listen-port=LISTEN-PORT</code></dt>
+<dd>Listen port of external exporter for scraping metrics</dd>
+<dt><code>--metrics-path=METRICS-PATH</code></dt>
+<dd>Path under which metrics are exposed, used to generate URL</dd>
+<dt><code>--environment=ENVIRONMENT</code></dt>
+<dd>Environment name</dd>
+<dt><code>--cluster=CLUSTER</code></dt>
+<dd>Cluster name</dd>
+<dt><code>--replication-set=REPLICATION-SET</code></dt>
+<dd>Replication set name</dd>
+<dt><code>--custom-labels=CUSTOM-LABELS</code></dt>
+<dd>Custom user-assigned labels</dd>
+<dt><code>--group="external"</code></dt>
+<dd>Group name of external service (default: external)</dd>
+<dt><code>--machine-id=MACHINE-ID</code></dt>
+<dd>Node machine-id</dd>
+<dt><code>--distro=DISTRO</code></dt>
+<dd>Node OS distribution</dd>
+<dt><code>--container-id=CONTAINER-ID</code></dt>
+<dd>Container ID</dd>
+<dt><code>--container-name=CONTAINER-NAME</code></dt>
+<dd>Container name</dd>
+<dt><code>--node-model=NODE-MODEL</code></dt>
+<dd>Node model</dd>
+<dt><code>--region=REGION</code></dt>
+<dd>Node region</dd>
+<dt><code>--az=AZ</code></dt>
+<dd>Node availability zone</dd>
 </dl>
 </dd>
 </dl>
@@ -1379,6 +1425,12 @@ Agents:
 
 
 <ul class="toctree" id="toctree">
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.14.0.html">Percona Monitoring and Management 2.14.0</a>
+
+
 
 
 <li class="toctree-l2">
