@@ -1,0 +1,1611 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<title>Percona Monitoring and Management &mdash; User Interface</title>
+
+<head>
+    
+
+
+    
+<script src="../js/version-select.js" type="text/javascript"></script>
+
+<script src="../js/toctree.js" type="text/javascript"></script>
+
+
+    <link rel="top" title="" href="" />
+    
+    <link rel="next" title="Integrated Alerting" href="alerting.html" />
+    
+    
+</head>
+
+<body>
+	<!-- 2021-01-29 11:22:44.282943+00:00 -->
+    
+<link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.3/css/line.css" type="text/css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" type="text/css">
+<link rel="stylesheet" href="../css/version-select.css" type="text/css">
+<link rel="stylesheet" href="../css/toctree.css" type="text/css">
+
+    
+<script src="../js/version-select.js" type="text/javascript"></script>
+
+<script src="../js/toctree.js" type="text/javascript"></script>
+
+
+    <div class="container">
+        <div class="document row">
+            <div class="documentwrapper col-md-9 col-md-push-3">
+                
+<div class="related row">
+    <ul class="nav nav-pills">
+        
+        <li class="right" style="margin-right: 10px">
+            <a href="alerting.html" title="Integrated Alerting">Next</a>
+        </li>
+        
+        
+        <li class="right" style="margin-right: 10px">
+            <a href="index.html" title="Using: Overview">Previous</a>
+        </li>
+        
+        <li>
+            <a href="">Home</a>
+        </li>
+    </ul>
+</div>
+
+                
+
+<div class="small">
+    <ul class="list-inline">
+        <li class="left">
+            <a href="https://github.com/percona/pmm-doc/issues/new?title=PMM2: doc issue on page  'User Interface' (using/interface.html)&body=Please describe the issue here"
+                target="_blank" title="Report an issue with this page on GitHub"><i class="uil uil-exclamation-triangle"></i> Report a problem with this page</a>
+        </li>
+        <li class="pull-right">
+            <a href="https://github.com/percona/pmm-doc/edit/main/docs/using/interface.md" target="_blank" title="Edit this page on GitHub in Markdown format"><i class="uil uil-pen"></i> Edit this page</a>
+        </li>
+    </ul>
+</div>
+
+
+                <div class="bodywrapper">
+                    <div class="body">
+                        <h1>User Interface</h1>
+<p>PMM&rsquo;s user interface is a browser application based on Grafana.</p>
+<hr />
+<div class="toc">
+<ul>
+<li><a href="#dashboards">Dashboards</a></li>
+<li><a href="#logging-in">Logging in</a></li>
+<li><a href="#user-interface-controls-common">User interface controls: Common</a><ul>
+<li><a href="#top-row-menu-bar">Top row menu bar</a></li>
+<li><a href="#second-row-menu-bar">Second row menu bar</a></li>
+<li><a href="#vertical-menu-bar-left">Vertical menu bar (left)</a></li>
+</ul>
+</li>
+<li><a href="#navigation">Navigation</a><ul>
+<li><a href="#by-name">By name</a></li>
+<li><a href="#by-menu">By menu</a></li>
+</ul>
+</li>
+<li><a href="#panels">Panels</a><ul>
+<li><a href="#panel-menu">Panel menu</a></li>
+</ul>
+</li>
+<li><a href="#rendering-dashboard-images">Rendering dashboard images</a></li>
+<li><a href="#annotations">Annotations</a></li>
+</ul>
+</div>
+<hr />
+<h2 id="dashboards"><a class="toclink" href="#dashboards">Dashboards</a></h2>
+<p>The interface is a collection of web pages called <em>dashboards</em>.</p>
+<p>Dashboards are grouped into <em>folders</em>. You can customize these, renaming them or creating new ones.</p>
+<p>The area inside dashboards is populated by <em>panels</em>, many of which are in collapsible panel groups. A panel can show a value, a graph, a chart, or a visual representation of a set.</p>
+<h2 id="logging-in"><a class="toclink" href="#logging-in">Logging in</a></h2>
+<ol>
+<li>
+<p>Start a web browser and enter the server name or IP address of the PMM server host.</p>
+<p><img alt="" src="../_images/PMM_Login.jpg" /></p>
+</li>
+<li>
+<p>Enter the username and password given to you by your system administrator.</p>
+<p>The defaults are:</p>
+<ul>
+<li>Username: <code>admin</code></li>
+<li>Password: <code>admin</code></li>
+</ul>
+</li>
+<li>
+<p>Click <em>Log in</em></p>
+</li>
+<li>
+<p>If this is your first time logging in, you&rsquo;ll be asked to set a new password. (We recommend you do.) Enter a new password in both fields and click <em>Submit</em>.</p>
+</li>
+<li>
+<p>If you wish, you can click <em>Skip</em> and continue using the default password.</p>
+</li>
+<li>
+<p>The PMM Home dashboard loads.</p>
+<p><img alt="PMM Home dashboard" src="../_images/PMM_Home_Dashboard_TALL.jpg" /></p>
+</li>
+</ol>
+<h2 id="user-interface-controls-common"><a class="toclink" href="#user-interface-controls-common">User interface controls: Common</a></h2>
+<h3 id="top-row-menu-bar"><a class="toclink" href="#top-row-menu-bar">Top row menu bar</a></h3>
+<p><img alt="Common page elements top row" src="../_images/PMM_Home_Dashboard_Menus_Top_Navigation_Bar.jpg" /></p>
+<table class="table">
+<thead>
+<tr>
+<th scope="col">Items (left)</th>
+<th scope="col">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><i class="uil uil-apps"></i></td>
+<td>(Display only)</td>
+</tr>
+<tr>
+<td>(Name) /</td>
+<td>(Optional) Folder name</td>
+</tr>
+<tr>
+<td>(Name)</td>
+<td>Dashboard name</td>
+</tr>
+<tr>
+<td><i class="uil uil-star"></i></td>
+<td>Mark as favorite</td>
+</tr>
+<tr>
+<td><i class="uil uil-share-alt"></i></td>
+<td>Share dashboard</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table class="table">
+<thead>
+<tr>
+<th scope="col">Items (right)</th>
+<th scope="col">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><i class="uil uil-cog"></i></td>
+<td>Dashboard settings</td>
+</tr>
+<tr>
+<td><i class="uil uil-monitor"></i></td>
+<td>Cycle view mode</td>
+</tr>
+<tr>
+<td><i class="uil uil-clock-nine"></i> (time range)</td>
+<td>Time range selector</td>
+</tr>
+<tr>
+<td><i class="uil uil-search-minus"></i></td>
+<td>Time range zoom out</td>
+</tr>
+<tr>
+<td><i class="uil uil-sync"></i></td>
+<td>Refresh dashboard</td>
+</tr>
+<tr>
+<td>(Time interval)</td>
+<td>Refresh period</td>
+</tr>
+</tbody>
+</table>
+<h3 id="second-row-menu-bar"><a class="toclink" href="#second-row-menu-bar">Second row menu bar</a></h3>
+<p>This menu bar is context sensitive; it changes according to the page you are on.</p>
+<p>The items are grouped left and right. (With wide menus on small screens, items may wrap to the next row.)</p>
+<ul>
+<li>Left: Filters and controls for the viewed data</li>
+<li>Right: Links to other dashboards</li>
+</ul>
+<p><img alt="Second row (home)" src="../_images/PMM_Home_Dashboard_Menus_Submenu_Bar.jpg" /></p>
+<h4>Left group items</h4>
+<table class="table">
+<thead>
+<tr>
+<th scope="col">Items</th>
+<th scope="col">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Interval</td>
+<td>Data interval</td>
+</tr>
+<tr>
+<td>Region</td>
+<td>Filter by region</td>
+</tr>
+<tr>
+<td>Environment</td>
+<td>Filter by environment</td>
+</tr>
+<tr>
+<td>Cluster</td>
+<td>Filter by cluster</td>
+</tr>
+<tr>
+<td>Replication Set</td>
+<td>Filter by replication set</td>
+</tr>
+<tr>
+<td>Node Name</td>
+<td>Filter by node name</td>
+</tr>
+<tr>
+<td>Service Name</td>
+<td>Filter by service name</td>
+</tr>
+<tr>
+<td>PMM Annotations</td>
+<td>View <a href="#annotations">annotations</a></td>
+</tr>
+</tbody>
+</table>
+<h4>Right group items</h4>
+<table class="table">
+<thead>
+<tr>
+<th scope="col">Items</th>
+<th scope="col">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><i class="uil uil-file-alt"></i> Home</td>
+<td>Home dashboard</td>
+</tr>
+<tr>
+<td><i class="uil uil-apps"></i> Query Analytics</td>
+<td>Query Analytics</td>
+</tr>
+<tr>
+<td><i class="uil uil-bolt"></i> Compare</td>
+<td>Nodes compare</td>
+</tr>
+<tr>
+<td>(Service Type)</td>
+<td>Service type menu (see below)</td>
+</tr>
+<tr>
+<td><i class="uil uil-bars"></i> HA</td>
+<td>HA dashboards</td>
+</tr>
+<tr>
+<td><i class="uil uil-bars"></i> Services</td>
+<td>Services menu</td>
+</tr>
+<tr>
+<td><i class="uil uil-bars"></i> PMM</td>
+<td>PMM menu</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition alert alert-info">
+<p class="admonition-title">Note</p>
+<p>The <em>Compare</em> menu links to the Instances Overview dashboard for the current service type.</p>
+</div>
+<h5>Services menu</h5>
+<p>The <em>Services</em> menu choice determines the Service Type menu.</p>
+<table class="table">
+<thead>
+<tr>
+<th scope="col">Menu</th>
+<th scope="col">Items</th>
+<th scope="col">Service type menu</th>
+<th scope="col">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Services</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>MongoDB Instances Overview</td>
+<td><i class="uil uil-bars"></i> MongoDB</td>
+<td>MongoDB dashboards</td>
+</tr>
+<tr>
+<td></td>
+<td>MySQL Instances Overview</td>
+<td><i class="uil uil-bars"></i> MySQL</td>
+<td>MySQL dashboards</td>
+</tr>
+<tr>
+<td></td>
+<td>Nodes Overview</td>
+<td><i class="uil uil-bars"></i> OS</td>
+<td>OS dashboards</td>
+</tr>
+<tr>
+<td></td>
+<td>PostgreSQL Instances Overview</td>
+<td><i class="uil uil-bars"></i> PostgreSQL</td>
+<td>PostgreSQL dashboards</td>
+</tr>
+</tbody>
+</table>
+<h5>PMM menu</h5>
+<p>This item lists shortcuts to utility pages.</p>
+<table class="table">
+<thead>
+<tr>
+<th scope="col">Menu</th>
+<th scope="col">Items</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PMM</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>PMM Add Instance</td>
+</tr>
+<tr>
+<td></td>
+<td>PMM Database Checks</td>
+</tr>
+<tr>
+<td></td>
+<td>PMM Inventory</td>
+</tr>
+<tr>
+<td></td>
+<td>PMM Settings</td>
+</tr>
+</tbody>
+</table>
+<h3 id="vertical-menu-bar-left"><a class="toclink" href="#vertical-menu-bar-left">Vertical menu bar (left)</a></h3>
+<p>The vertical menu bar (left) is part of the Grafana framework and is visible on every page.</p>
+<p><img alt="Left menu" src="../_images/PMM_Home_Dashboard_Menus_Grafana_Left_Side_Menu.jpg" /></p>
+<table class="table">
+<thead>
+<tr>
+<th scope="col">Items (Top)</th>
+<th scope="col">Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><object type="image/svg+xml" data="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCA3NCA3NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8Y2lyY2xlIGN4PSIzNyIgY3k9IjM3IiByPSIzNyIgZmlsbD0idXJsKCNwYWludDBfbGluZWFyKSIvPgogIDxwYXRoIGQ9Ik0zNy41MDAzIDU4QzQ5LjM3NDQgNTggNTkgNDguMzc0MyA1OSAzNi41QzU5IDI0LjYyNTcgNDkuMzc0NCAxNSAzNy41MDAzIDE1QzI1LjYyNjEgMTUgMTYgMjQuNjI1NyAxNiAzNi41QzE2IDM2LjY2NzEgMTYuMDAxOSAzNi44MzM4IDE2LjAwNTcgMzdIMTZWNjcuNDY3MkMxOC43NDQgNjkuMzYyMiAyMS43NTY2IDcwLjg5NiAyNC45NjkgNzJIMjVWNTMuOTk0OEMyOC41MjI1IDU2LjUxNjEgMzIuODM4MSA1OCAzNy41MDAzIDU4WiIgZmlsbD0id2hpdGUiLz4KICA8cGF0aCBkPSJNNTAgMzYuNUM1MCA0My40MDM2IDQ0LjQwMzcgNDkgMzcuNTAwMSA0OUMzMC41OTY2IDQ5IDI1IDQzLjQwMzYgMjUgMzYuNUMyNSAyOS41OTY0IDMwLjU5NjYgMjQgMzcuNTAwMSAyNEM0NC40MDM3IDI0IDUwIDI5LjU5NjQgNTAgMzYuNVoiIGZpbGw9IiNGQ0I0MkYiLz4KICA8ZGVmcz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0icGFpbnQwX2xpbmVhciIgeDE9IjM3IiB5MT0iMCIgeDI9IjM3IiB5Mj0iNzQiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KICAgICAgPHN0b3Agc3RvcC1jb2xvcj0iI0ZCQjMyRiIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjAuNTA0NzM5IiBzdG9wLWNvbG9yPSIjQzExNTExIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI0MxMTQxMSIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+Cjwvc3ZnPg=="></object></td>
+<td>Home</td>
+</tr>
+<tr>
+<td><i class="uil uil-search"></i></td>
+<td>Search</td>
+</tr>
+<tr>
+<td><i class="uil uil-plus"></i></td>
+<td>Create</td>
+</tr>
+<tr>
+<td><i class="uil uil-apps"></i></td>
+<td>Dashboards</td>
+</tr>
+<tr>
+<td><i class="uil uil-compass"></i></td>
+<td>Explore</td>
+</tr>
+<tr>
+<td><i class="uil uil-bell"></i></td>
+<td>Alerting</td>
+</tr>
+<tr>
+<td><i class="uil uil-cog"></i></td>
+<td>Configuration</td>
+</tr>
+<tr>
+<td><i class="uil uil-shield"></i></td>
+<td>Server Admin</td>
+</tr>
+<tr>
+<td><i class="uil uil-database"></i></td>
+<td>DBaaS</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition alert alert-info">
+<p class="admonition-title">Note</p>
+<p>The DBaaS icon appears only if a server feature flag has been set.</p>
+</div>
+<table class="table">
+<thead>
+<tr>
+<th align="center">Icons (Bottom)</th>
+<th scope="col">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">(Profile icon)</td>
+<td>User menu</td>
+</tr>
+<tr>
+<td align="center"><i class="uil uil-question-circle"></i></td>
+<td>Help</td>
+</tr>
+</tbody>
+</table>
+<h2 id="navigation"><a class="toclink" href="#navigation">Navigation</a></h2>
+<p>There are several ways to open a dashboard.</p>
+<h3 id="by-name"><a class="toclink" href="#by-name">By name</a></h3>
+<ol>
+<li>
+<p>Click the dashboard name (to the right of the <i class="uil uil-apps"></i> icon)</p>
+</li>
+<li>
+<p>A search field appears labeled <em>Search dashboards by name</em>
+    <img alt="Search dashboards by name" src="../_images/PMM_Home_Dashboard_Search.jpg" /></p>
+</li>
+<li>
+<p>Click it and begin typing any part of the dashboard name (in this example, &ldquo;<em>Instances</em>&rdquo;)
+    <img alt="Search dashboards by name" src="../_images/PMM_Home_Dashboard_Search_String.jpg" /></p>
+</li>
+<li>
+<p>Click one of the search results to go to that dashboard</p>
+</li>
+<li>
+<p>To abandon the search, click the <i class="uil uil-times"></i> icon at the end of the search bar</p>
+</li>
+</ol>
+<div class="admonition alert alert-success">
+<p class="admonition-title">Tip</p>
+<p>To search within the current folder, click the folder&rsquo;s name.</p>
+</div>
+<h3 id="by-menu"><a class="toclink" href="#by-menu">By menu</a></h3>
+<p>Use the second row main menu. (See <a href="#second-row-menu-bar">Second row menu bar</a>.)</p>
+<h2 id="panels"><a class="toclink" href="#panels">Panels</a></h2>
+<p>Charts, graphs and set-based panels reveal additional information when the mouse is moved over them.</p>
+<p>Some panels have an information icon <i class="fa fa-info"></i> in the top left corner. Mouse over this to reveal panel information.</p>
+<h3 id="panel-menu"><a class="toclink" href="#panel-menu">Panel menu</a></h3>
+<p>At the top of each panel and to the right of the panel name is the <em>panel menu</em>.</p>
+<p><img alt="image" src="../_images/PMM_Common_Panel_Menu_Open.jpg" /></p>
+<div class="admonition alert alert-success">
+<p class="admonition-title">Tip</p>
+<p>The presence of the menu is hidden until you mouse over it. Look for the <i class="uil uil-angle-down"></i> symbol in the title bar of a panel.</p>
+</div>
+<table class="table">
+<thead>
+<tr>
+<th scope="col">Item</th>
+<th scope="col">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><i class="uil uil-eye"></i> View</td>
+<td>Open the panel in full window mode</td>
+</tr>
+<tr>
+<td><i class="uil uil-share-alt"></i> Share</td>
+<td><a href="#rendering-dashboard-images">Render the panel&rsquo;s image for sharing</a></td>
+</tr>
+<tr>
+<td><i class="uil uil-compass"></i> Explore</td>
+<td>Run <a href="https://prometheus.io/docs/prometheus/latest/querying/basics/">PromQL</a> queries</td>
+</tr>
+<tr>
+<td><i class="fa fa-info-circle"></i> Inspect</td>
+<td>See the panel&rsquo;s data or definition</td>
+</tr>
+<tr>
+<td><i class="uil uil-cube"></i> More</td>
+<td>(Only charts and graphs) Additional options</td>
+</tr>
+</tbody>
+</table>
+<h4>View</h4>
+<p>The <em>View</em> menu items opens panels in full-window mode. This is useful for graphs with several metrics.</p>
+<p>Exit a panel&rsquo;s full window mode by pressing <em>Escape</em> or clicking the left arrow <i class="uil uil-arrow-left"></i> next to the dashboard name.</p>
+<h2 id="rendering-dashboard-images"><a class="toclink" href="#rendering-dashboard-images">Rendering dashboard images</a></h2>
+<p>PMM Server can&rsquo;t currently directly render dashboard images exported by Grafana without these additional set-up steps.</p>
+<p><strong>Part 1: Install dependencies</strong></p>
+<ol>
+<li>
+<p>Connect to your PMM Server Docker container.</p>
+<div class="highlight"><pre><span></span><code>docker <span class="nb">exec</span> -it pmm-server bash
+</code></pre></div>
+</li>
+<li>
+<p>Install Grafana plugins.</p>
+<div class="highlight"><pre><span></span><code>grafana-cli plugins install grafana-image-renderer
+</code></pre></div>
+</li>
+<li>
+<p>Restart Grafana.</p>
+<div class="highlight"><pre><span></span><code>supervisorctl restart grafana
+</code></pre></div>
+</li>
+<li>
+<p>Install additional libraries.</p>
+<div class="highlight"><pre><span></span><code>yum install -y libXcomposite libXdamage libXtst cups libXScrnSaver pango <span class="se">\</span>
+atk adwaita-cursor-theme adwaita-icon-theme at at-spi2-atk at-spi2-core <span class="se">\</span>
+cairo-gobject colord-libs dconf desktop-file-utils ed emacs-filesystem <span class="se">\</span>
+gdk-pixbuf2 glib-networking gnutls gsettings-desktop-schemas <span class="se">\</span>
+gtk-update-icon-cache gtk3 hicolor-icon-theme jasper-libs json-glib <span class="se">\</span>
+libappindicator-gtk3 libdbusmenu libdbusmenu-gtk3 libepoxy <span class="se">\</span>
+liberation-fonts liberation-narrow-fonts liberation-sans-fonts <span class="se">\</span>
+liberation-serif-fonts libgusb libindicator-gtk3 libmodman libproxy <span class="se">\</span>
+libsoup libwayland-cursor libwayland-egl libxkbcommon m4 mailx nettle <span class="se">\</span>
+patch psmisc redhat-lsb-core redhat-lsb-submod-security rest spax <span class="nb">time</span> <span class="se">\</span>
+trousers xdg-utils xkeyboard-config alsa-lib
+</code></pre></div>
+</li>
+</ol>
+<p><strong>Part 2 - Share the image</strong></p>
+<ol>
+<li>
+<p>Navigate to the dashboard you want to share.</p>
+</li>
+<li>
+<p>Open the panel menu.</p>
+</li>
+<li>
+<p>Select <em>Share</em> to reveal the <em>Share Panel</em>.</p>
+<p><img alt="image" src="../_images/PMM_Common_Panel_Menu_Share.jpg" /></p>
+</li>
+<li>
+<p>Click <em>Direct link rendered image</em>.</p>
+</li>
+<li>
+<p>A new browser tab opens. Wait for the image to be rendered then use your browser&rsquo;s image save function to download the image.</p>
+</li>
+</ol>
+<p>If the necessary plugins are not installed, a message in the Share Panel will say so.</p>
+<p><img alt="image" src="../_images/PMM_Common_Panel_Menu_Share_Link_Missing_Plugins.jpg" /></p>
+<h2 id="annotations"><a class="toclink" href="#annotations">Annotations</a></h2>
+<p>Annotations mark a moment in time. They are useful for marking system changes or other significant application events. They can be set globally or for specific nodes or services.</p>
+<p>You create them on the command line with the <a href="../details/commands/pmm-admin.html"><code>pmm-admin annotate</code> command.</a></p>
+<p>Annotations show as a vertical dashed line on a dashboard graph. Reveal the annotation text by mousing over the caret indicator below the line.</p>
+<p><img alt="image" src="../_images/pmm-server.mysql-overview.mysql-client-thread-activity.1.png" /></p>
+<p>You turn annotations on or off with the <em>PMM Annotations</em> switch in the second row menu bar.</p>
+<p><img alt="PMM Annotations switch" src="../_images/PMM_Common_Controls_Annotation_Toggle.jpg" /></p>
+                    </div>
+                </div>
+                
+<div class="small">
+    <ul class="list-inline">
+        
+        <li class="left">
+            <i class="uil uil-refresh"></i> Page updated 2021-01-29
+        </li>
+        
+    </ul>
+</div>
+
+                
+<div class="related row">
+    <ul class="nav nav-pills">
+        
+        <li class="right" style="margin-right: 10px">
+            <a href="alerting.html" title="Integrated Alerting">Next</a>
+        </li>
+        
+        
+        <li class="right" style="margin-right: 10px">
+            <a href="index.html" title="Using: Overview">Previous</a>
+        </li>
+        
+        <li>
+            <a href="">Home</a>
+        </li>
+    </ul>
+</div>
+
+            </div>
+            
+<div class="sphinxsidebar col-md-3 col-md-pull-9">
+    <div class="sphinxsidebarwrapper">
+        {@ product_logo @}
+        {@ product_pdf_download @}
+        
+<section class="select-wrapper" id="version-select-wrapper">
+    <!-- Empty locator section for version selector -->
+</section>
+
+        <h3 id="toctree-heading"><a href="">Contents</a></h3>
+        
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l1">
+    <a class="reference internal" href="../index.html">Welcome</a>
+
+
+
+
+<li class="toctree-l1">
+    <a class="reference internal" href="javascript: void(0)" style="text-decoration: none">Setting up</a>
+
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../setting-up/index.html">Setting up: Overview</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="javascript: void(0)" style="text-decoration: none">Server</a>
+
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../setting-up/server/index.html">Setting up PMM Server</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../setting-up/server/docker.html">Docker</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../setting-up/server/virtual-appliance.html">Virtual Appliance</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../setting-up/server/aws.html">AWS Marketplace</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="javascript: void(0)" style="text-decoration: none">Client</a>
+
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../setting-up/client/index.html">Setting up PMM Clients</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../setting-up/client/docker.html">Docker</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../setting-up/client/mysql.html">MySQL</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../setting-up/client/percona-server.html">Percona Server</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../setting-up/client/mongodb.html">MongoDB</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../setting-up/client/postgresql.html">PostgreSQL</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../setting-up/client/proxysql.html">ProxySQL</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../setting-up/client/aws.html">Amazon RDS</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../setting-up/client/linux.html">Linux</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../setting-up/client/external.html">External Services</a>
+
+
+
+</ul>
+
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l1">
+    <a class="reference internal" href="javascript: void(0)" style="text-decoration: none">Using</a>
+
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="index.html">Using: Overview</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="interface.html">User Interface</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="alerting.html">Integrated Alerting</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="query-analytics.html">Query Analytics</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="javascript: void(0)" style="text-decoration: none">Percona Enterprise Platform</a>
+
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="platform/index.html">About Percona Enterprise Platform</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="platform/security-threat-tool.html">Security Threat Tool</a>
+
+
+
+</ul>
+
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l1">
+    <a class="reference internal" href="javascript: void(0)" style="text-decoration: none">How to</a>
+
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../how-to/index.html">How to: Overview</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../how-to/configure.html">Configure</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../how-to/upgrade.html">Upgrade</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../how-to/secure.html">Secure</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../how-to/optimize.html">Optimize</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l1">
+    <a class="reference internal" href="javascript: void(0)" style="text-decoration: none">Details</a>
+
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../details/index.html">Details: Overview</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../details/architecture.html">Architecture</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="javascript: void(0)" style="text-decoration: none">Dashboards</a>
+
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../details/dashboards/index.html">Dashboards Index</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="javascript: void(0)" style="text-decoration: none">Insight</a>
+
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-home.html">Home Dashboard</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-advanced-data-exploration.html">Advanced Data Exploration</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-victoriametrics.html">VictoriaMetrics</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-victoriametrics-agents-overview.html">VictoriaMetrics Agents Overview</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="javascript: void(0)" style="text-decoration: none">PMM</a>
+
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-inventory.html">PMM Inventory</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="javascript: void(0)" style="text-decoration: none">OS Dashboards</a>
+
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-cpu-utilization-details.html">CPU Utilization Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-disk-details.html">Disk Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-network-details.html">Network Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-memory-details.html">Memory Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-node-temperature-details.html">Node Temperature Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-nodes-compare.html">Nodes Compare</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-nodes-overview.html">Nodes Overview</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-node-summary.html">Node Summary</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-numa-details.html">NUMA Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-processes-details.html">Processes Details</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="javascript: void(0)" style="text-decoration: none">Prometheus Dashboards</a>
+
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-prometheus-exporter-status.html">Prometheus Exporter Status</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-prometheus-exporters-overview.html">Prometheus Exporters Overview</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="javascript: void(0)" style="text-decoration: none">MySQL Dashboards</a>
+
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-mysql-amazon-aurora-details.html">MySQL Amazon Aurora Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-mysql-command-handler-counters-compare.html">MySQL Command/Handler Counters Compare</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-mysql-innodb-compression-details.html">MySQL InnoDB Compression Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-mysql-innodb-details.html">MySQL InnoDB Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-mysql-myisam-aria-details.html">MySQL MyISAM/Aria Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-mysql-myrocks-details.html">MySQL MyRocks Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-mysql-instance-summary.html">MySQL Instance Summary</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-mysql-instances-compare.html">MySQL Instances Compare</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-mysql-instances-overview.html">MySQL Instances Overview</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-mysql-wait-event-analyses-details.html">MySQL Wait Event Analyses Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-mysql-performance-schema-details.html">MySQL Performance Schema Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-mysql-query-response-time-details.html">MySQL Query Response Time Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-mysql-replication-summary.html">MySQL Replication Summary</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-mysql-group-replication-summary.html">MySQL Group Replication Summary</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-mysql-table-details.html">MySQL Table Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-mysql-user-details.html">MySQL User Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-mysql-tokudb-details.html">MySQL TokuDB Details</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="javascript: void(0)" style="text-decoration: none">MongoDB Dashboards</a>
+
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-mongodb-cluster-summary.html">MongoDB Cluster Summary</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-mongodb-instance-summary.html">MongoDB Instance Summary</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-mongodb-instances-overview.html">MongoDB Instances Overview</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-mongodb-instances-compare.html">MongoDB Instances Compare</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-mongodb-replset-summary.html">MongoDB ReplSet Summary</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-mongodb-inmemory-details.html">MongoDB InMemory Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-mongodb-mmapv1-details.html">MongoDB MMAPv1 Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-mongodb-wiredtiger-details.html">MongoDB WiredTiger Details</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="javascript: void(0)" style="text-decoration: none">PostgreSQL Dashboards</a>
+
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-postgresql-instances-overview.html">PostgreSQL Instances Overview</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-postgresql-instance-summary.html">PostgreSQL Instance Summary</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-postgresql-instances-compare.html">PostgreSQL Instances Compare</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="javascript: void(0)" style="text-decoration: none">ProxySQL Dashboards</a>
+
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-proxysql-instance-summary.html">ProxySQL Instance Summary</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="javascript: void(0)" style="text-decoration: none">HA Dashboards</a>
+
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-pxc-galera-node-summary.html">PXC/Galera Node Summary</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-pxc-galera-cluster-summary.html">PXC/Galera Cluster Summary</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-pxc-galera-nodes-compare.html">PXC/Galera Nodes Compare</a>
+
+
+
+</ul>
+
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="javascript: void(0)" style="text-decoration: none">Commands</a>
+
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../details/commands/pmm-admin.html">pmm-admin - Administration Tool</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../details/commands/pmm-agent.html">pmm-agent - PMM Client agent</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../details/api.html">API</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../details/victoria-metrics.html">VictoriaMetrics</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../details/glossary.html">Glossary</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l1">
+    <a class="reference internal" href="../faq.html">FAQ</a>
+
+
+
+
+<li class="toctree-l1">
+    <a class="reference internal" href="javascript: void(0)" style="text-decoration: none">Release Notes</a>
+
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/2.14.0.html">Percona Monitoring and Management 2.14.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/2.13.0.html">Percona Monitoring and Management 2.13.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/2.12.0.html">Percona Monitoring and Management 2.12.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/2.11.1.html">Percona Monitoring and Management 2.11.1</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/2.11.0.html">Percona Monitoring and Management 2.11.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/2.10.1.html">Percona Monitoring and Management 2.10.1</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/2.10.0.html">Percona Monitoring and Management 2.10.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/2.9.1.html">Percona Monitoring and Management 2.9.1</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/2.9.0.html">Percona Monitoring and Management 2.9.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/2.8.0.html">Percona Monitoring and Management 2.8.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/2.7.0.html">Percona Monitoring and Management 2.7.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/2.6.1.html">Percona Monitoring and Management 2.6.1</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/2.6.0.html">Percona Monitoring and Management 2.6.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/2.5.0.html">Percona Monitoring and Management 2.5.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/2.4.0.html">Percona Monitoring and Management 2.4.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/2.3.0.html">Percona Monitoring and Management 2.3.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/2.2.2.html">Percona Monitoring and Management 2.2.2</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/2.2.1.html">Percona Monitoring and Management 2.2.1</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/2.2.0.html">Percona Monitoring and Management 2.2.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/2.1.0.html">Percona Monitoring and Management 2.1.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/2.0.1.html">Percona Monitoring and Management 2.0.1</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/2.0.0.html">Percona Monitoring and Management 2.0.0</a>
+
+
+
+</ul>
+
+
+
+
+</ul>
+
+
+        
+
+<h4>Previous page</h4>
+<p class="topless">
+    <a href="index.html" title="previous chapter">Using: Overview</a>
+</p>
+
+
+<h4>Next page</h4>
+<p class="topless">
+    <a href="alerting.html" title="next chapter">Integrated Alerting</a>
+</p>
+
+
+        {@ product_series @}
+    </div>
+</div>
+
+            <div class="clearer"></div>
+        </div>
+    </div>
+</body>
