@@ -1,0 +1,1368 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<title>Percona Monitoring and Management &mdash; PostgreSQL</title>
+
+<head>
+    
+
+
+    
+<script src="../../js/version-select.js" type="text/javascript"></script>
+
+<script src="../../js/toctree.js" type="text/javascript"></script>
+
+
+    <link rel="top" title="" href="" />
+    
+    <link rel="next" title="ProxySQL" href="proxysql.html" />
+    
+    
+</head>
+
+<body>
+	<!-- 2021-01-29 07:45:51.567052+00:00 -->
+    
+<link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.3/css/line.css" type="text/css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" type="text/css">
+<link rel="stylesheet" href="../../css/version-select.css" type="text/css">
+<link rel="stylesheet" href="../../css/toctree.css" type="text/css">
+
+    
+<script src="../../js/version-select.js" type="text/javascript"></script>
+
+<script src="../../js/toctree.js" type="text/javascript"></script>
+
+
+    <div class="container">
+        <div class="document row">
+            <div class="documentwrapper col-md-9 col-md-push-3">
+                
+<div class="related row">
+    <ul class="nav nav-pills">
+        
+        <li class="right" style="margin-right: 10px">
+            <a href="proxysql.html" title="ProxySQL">Next</a>
+        </li>
+        
+        
+        <li class="right" style="margin-right: 10px">
+            <a href="mongodb.html" title="MongoDB">Previous</a>
+        </li>
+        
+        <li>
+            <a href="">Home</a>
+        </li>
+    </ul>
+</div>
+
+                
+
+<div class="small">
+    <ul class="list-inline">
+        <li class="left">
+            <a href="https://github.com/percona/pmm-doc/issues/new?title=PMM2: doc issue on page  'PostgreSQL' (setting-up/client/postgresql.html)&body=Please describe the issue here"
+                target="_blank" title="Report an issue with this page on GitHub"><i class="uil uil-exclamation-triangle"></i> Report a problem with this page</a>
+        </li>
+        <li class="pull-right">
+            <a href="https://github.com/percona/pmm-doc/edit/main/docs/setting-up/client/postgresql.md" target="_blank" title="Edit this page on GitHub in Markdown format"><i class="uil uil-pen"></i> Edit this page</a>
+        </li>
+    </ul>
+</div>
+
+
+                <div class="bodywrapper">
+                    <div class="body">
+                        <h1>PostgreSQL</h1>
+<p>PMM follows the <a href="https://www.postgresql.org/support/versioning/">postgresql.org EOL policy</a>.</p>
+<p>For specific details on supported platforms and versions, see
+<a href="https://www.percona.com/services/policies/percona-software-platform-lifecycle/">Percona’s Software Platform Lifecycle page</a>.</p>
+<p>To monitor PostgreSQL queries, you must install a database extension. There are two choices:</p>
+<ul>
+<li>
+<p><code>pg_stat_monitor</code>, a new extension created by Percona, based on <code>pg_stat_statements</code> and compatible with it.</p>
+</li>
+<li>
+<p><code>pg_stat_statements</code>, the original extension created by PostgreSQL, part of the <code>postgres-contrib</code> package available on Linux.</p>
+</li>
+</ul>
+<p><code>pg_stat_monitor</code> provides all the features of <code>pg_stat_statements</code>, but extends it to provide bucket-based data aggregation, a feature missing from <code>pg_stat_statements</code>. (<code>pg_stat_statements</code> accumulates data without providing aggregated statistics or histogram information.)</p>
+<div class="admonition alert alert-info">
+<p class="admonition-title">Note</p>
+<ul>
+<li>
+<p><code>pg_stat_monitor</code> is the recommended option.</p>
+</li>
+<li>
+<p>Although nothing prevents you from installing and using both, we don&rsquo;t recommend this as you will get duplicate metrics.</p>
+</li>
+</ul>
+</div>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p><code>pg_stat_monitor</code> is beta software and currently unsupported.</p>
+</div>
+<h2 id="prerequisites"><a class="toclink" href="#prerequisites">Prerequisites</a></h2>
+<p>We recommend that you create a PostgreSQL user for <code>SUPERUSER</code> level access. This lets you gather the most data with the least fuss.</p>
+<p>This user must be able to connect to the <code>postgres</code> database where the extension was installed. The PostgreSQL user should have local password authentication enabled to access PMM. To do this, set <code>ident</code> to <code>md5</code> for the user in the <code>pg_hba.conf</code> configuration file.</p>
+<p>To create a superuser:</p>
+<div class="highlight"><pre><span></span><code><span class="k">CREATE</span> <span class="k">USER</span> <span class="n">pmm_user</span> <span class="k">WITH</span> <span class="n">SUPERUSER</span> <span class="k">ENCRYPTED</span> <span class="n">PASSWORD</span> <span class="s1">&#39;******&#39;</span><span class="p">;</span>
+</code></pre></div>
+<p>Or, if your database runs on Amazon RDS:</p>
+<div class="highlight"><pre><span></span><code><span class="k">CREATE</span> <span class="k">USER</span> <span class="n">pmm_user</span> <span class="k">WITH</span> <span class="n">rds_superuser</span> <span class="k">ENCRYPTED</span> <span class="n">PASSWORD</span> <span class="s1">&#39;******&#39;</span><span class="p">;</span>
+</code></pre></div>
+<h2 id="pg_stat_monitor"><a class="toclink" href="#pg_stat_monitor"><code>pg_stat_monitor</code></a></h2>
+<p><code>pg_stat_monitor</code> collects statistics and aggregates data in a data collection unit called a <em>bucket</em> linked together to form a <em>bucket chain</em>.</p>
+<p>You can specify:</p>
+<ul>
+<li>the number of buckets (the length of the chain);</li>
+<li>how much space is available for all buckets;</li>
+<li>a time limit for each bucket&rsquo;s data collection (the <em>bucket expiry</em>).</li>
+</ul>
+<p>When a bucket&rsquo;s expiration time is reached, accumulated statistics are reset and data is stored in the next available bucket in the chain.</p>
+<p>When all buckets in the chain have been used, the first bucket is reused and its contents are overwritten.</p>
+<p>If a bucket fills before its expiration time is reached, data is discarded.</p>
+<h3 id="compatibility"><a class="toclink" href="#compatibility">Compatibility</a></h3>
+<p><code>pg_stat_monitor</code> has been tested with:</p>
+<ul>
+<li>PostgreSQL versions 11, 12.</li>
+<li>Percona Distribution for PostgreSQL versions 11, 12.</li>
+</ul>
+<p>(It should also work with versions 13 of both, but hasn&rsquo;t been tested.)</p>
+<h3 id="install"><a class="toclink" href="#install">Install</a></h3>
+<p>This extension can be installed in two ways:</p>
+<ul>
+<li>
+<p>For Percona Distribution for PostgreSQL: Using standard Linux package manager tools.</p>
+</li>
+<li>
+<p>For PostgreSQL or Percona Distribution for PostgreSQL: <a href="https://github.com/percona/pg_stat_monitor#installation">download and compile the source code</a>.</p>
+</li>
+</ul>
+<h4>Install using Linux package manager</h4>
+<p>The <code>pg-stat-monitor</code> extension is included in <em>Percona Distribution for PostgreSQL</em>. This can be installed via the <code>percona-release</code> package.</p>
+<p>This section reproduces parts of the following:</p>
+<ul>
+<li>
+<p><a href="https://www.percona.com/doc/percona-repo-config/percona-release.html">Configuring Percona Repositories with percona-release</a></p>
+</li>
+<li>
+<p><a href="https://www.percona.com/doc/postgresql/LATEST/installing.html">Installing Percona Distribution for PostgreSQL</a></p>
+</li>
+</ul>
+<h5>Debian</h5>
+<div class="highlight"><pre><span></span><code>sudo apt-get install -y wget gnupg2 lsb-release
+wget https://repo.percona.com/apt/percona-release_latest.generic_all.deb
+sudo dpkg -i percona-release_latest.generic_all.deb
+
+sudo percona-release setup ppg-12 <span class="c1"># version 12 (others available)</span>
+sudo apt install -y percona-postgresql-12
+</code></pre></div>
+<h5>Red Hat</h5>
+<div class="highlight"><pre><span></span><code>sudo yum install -y https://repo.percona.com/yum/percona-release-latest.noarch.rpm
+
+<span class="c1"># If RHEL 8</span>
+sudo dnf module disable postgresql
+
+<span class="c1"># If RHEL 7</span>
+sudo yum install -y epel-release
+sudo yum repolist
+
+sudo percona-release setup ppg-12
+sudo yum install -y percona-postgresql12-server
+</code></pre></div>
+<h4>Install from source code</h4>
+<h5>Debian</h5>
+<ol>
+<li>
+<p>Install common packages</p>
+<div class="highlight"><pre><span></span><code>sudo apt-get install -y curl git wget gnupg2 lsb-release
+sudo apt-get update -y
+</code></pre></div>
+</li>
+<li>
+<p>Install PostgreSQL development packages</p>
+<p>With Percona Distribution for PostgreSQL (version 12):</p>
+<div class="highlight"><pre><span></span><code>wget https://repo.percona.com/apt/percona-release_latest.generic_all.deb
+sudo dpkg -i percona-release_latest.generic_all.deb
+sudo percona-release setup ppg-12
+sudo apt install -y percona-postgresql-server-dev-all
+</code></pre></div>
+<p>With PostgreSQL:</p>
+<div class="highlight"><pre><span></span><code>wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc <span class="p">|</span> sudo  apt-key add -
+<span class="nb">echo</span> <span class="s2">&quot;deb http://apt.postgresql.org/pub/repos/apt/ `lsb_release -cs`-pgdg main&quot;</span> <span class="p">|</span> sudo tee /etc/apt/sources.list.d/pgdg.list
+sudo apt install -y postgresql-server-dev-all
+</code></pre></div>
+</li>
+<li>
+<p>Download, compile, and install extension</p>
+<div class="highlight"><pre><span></span><code>git clone git://github.com/percona/pg_stat_monitor.git <span class="o">&amp;&amp;</span> <span class="nb">cd</span> pg_stat_monitor
+sudo make <span class="nv">USE_PGXS</span><span class="o">=</span><span class="m">1</span>
+sudo make <span class="nv">USE_PGXS</span><span class="o">=</span><span class="m">1</span> install
+</code></pre></div>
+</li>
+</ol>
+<h5>Red Hat</h5>
+<ol>
+<li>
+<p>Install common packages</p>
+<div class="highlight"><pre><span></span><code>sudo yum install -y centos-release-scl epel-release
+sudo yum update -y
+sudo yum install -y git gcc gcc-c++ llvm-toolset-7
+</code></pre></div>
+</li>
+<li>
+<p>Install PostgreSQL development packages</p>
+<p>With Percona Distribution for PostgreSQL (version 12):</p>
+<div class="highlight"><pre><span></span><code>sudo yum install -y https://repo.percona.com/yum/percona-release-latest.noarch.rpm
+sudo percona-release setup ppg-12
+sudo yum install -y percona-postgresql12-devel
+</code></pre></div>
+<p>With PostgreSQL version 12:</p>
+<div class="highlight"><pre><span></span><code>sudo yum install -y https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm
+sudo yum install -y postgresql12-devel
+</code></pre></div>
+</li>
+<li>
+<p>Download, compile, and install extension</p>
+<div class="highlight"><pre><span></span><code>git clone git://github.com/percona/pg_stat_monitor.git <span class="o">&amp;&amp;</span> <span class="nb">cd</span> pg_stat_monitor
+sudo make <span class="nv">PG_CONFIG</span><span class="o">=</span>/usr/pgsql-12/bin/pg_config <span class="nv">USE_PGXS</span><span class="o">=</span><span class="m">1</span>
+sudo make <span class="nv">PG_CONFIG</span><span class="o">=</span>/usr/pgsql-12/bin/pg_config <span class="nv">USE_PGXS</span><span class="o">=</span><span class="m">1</span> install
+</code></pre></div>
+</li>
+</ol>
+<h3 id="configure"><a class="toclink" href="#configure">Configure</a></h3>
+<ol>
+<li>
+<p>Set or change the value for <code>shared_preload_library</code> in your <code>postgresql.conf</code> file:</p>
+<div class="highlight"><pre><span></span><code><span class="na">shared_preload_libraries</span> <span class="o">=</span> <span class="s">&#39;pg_stat_monitor&#39;</span>
+</code></pre></div>
+</li>
+<li>
+<p>Set the value</p>
+</li>
+</ol>
+<p>pg_stat_monitor.pgsm_normalized_query</p>
+<ol>
+<li>
+<p>Start or restart your PostgreSQL instance.</p>
+</li>
+<li>
+<p>In a <code>psql</code> session:</p>
+<div class="highlight"><pre><span></span><code><span class="k">CREATE</span> <span class="n">EXTENSION</span> <span class="n">pg_stat_monitor</span><span class="p">;</span>
+</code></pre></div>
+</li>
+</ol>
+<h3 id="configuration-parameters"><a class="toclink" href="#configuration-parameters">Configuration Parameters</a></h3>
+<p>Here are the configuration parameters, available values ranges, and default values. All require a restart of PostgreSQL except for <code>pg_stat_monitor.pgsm_track_utility</code> and <code>pg_stat_monitor.pgsm_normalized_query</code>.</p>
+<p>To make settings permanent, add them to your <code>postgresql.conf</code> file before starting your PostgreSQL instance.</p>
+<dl>
+<dt><code>pg_stat_monitor.pgsm_max</code> (5000-2147483647 bytes) Default: 5000</dt>
+<dd>Defines the limit of shared memory. Memory is used by buckets in a circular manner and is divided between buckets equally when PostgreSQL starts.</dd>
+<dt><code>pg_stat_monitor.pgsm_query_max_len</code> (1024-2147483647 bytes) Default: 1024</dt>
+<dd>The maximum size of the query. Long queries are truncated to this length to avoid unnecessary usage of shared memory. This parameter must be set before PostgreSQL starts.</dd>
+<dt><code>pg_stat_monitor.pgsm_enable</code> (0-1) Default: 1 (true).</dt>
+<dd>Enables or disables monitoring. A value of <code>Disable</code> means that <code>pg_stat_monitor</code> will not collect statistics for the entire cluster.</dd>
+<dt><code>pg_stat_monitor.pgsm_track_utility</code> (0-1) Default: 1 (true)</dt>
+<dd>Controls whether utility commands (all except SELECT, INSERT, UPDATE and DELETE) are tracked.</dd>
+<dt><code>pg_stat_monitor.pgsm_normalized_query</code> (0-1) Default: 0 (false)</dt>
+<dd>By default, a query shows the actual parameter instead of a placeholder. Set to 1 to change to showing value placeholders (as <code>$n</code> where <code>n</code> is an integer).</dd>
+<dt><code>pg_stat_monitor.pgsm_max_buckets</code> (1-10) Default: 10</dt>
+<dd>Sets the maximum number of available data buckets.</dd>
+<dt><code>pg_stat_monitor.pgsm_bucket_time</code> (1-2147483647 seconds) Default: 60</dt>
+<dd>Sets the lifetime of the bucket. The system switches between buckets on the basis of this value.</dd>
+<dt><code>pg_stat_monitor.pgsm_object_cache</code> (50-2147483647) Default: 50</dt>
+<dd>The maximum number of objects in the information cache.</dd>
+<dt><code>pg_stat_monitor.pgsm_respose_time_lower_bound</code> (1-2147483647 milliseconds) Default: 1</dt>
+<dd>Sets the lower bound of the execution time histogram.</dd>
+<dt><code>pg_stat_monitor.pgsm_respose_time_step</code> (1-2147483647 milliseconds) Default: 1</dt>
+<dd>Sets the time value of the steps for the histogram.</dd>
+<dt><code>pg_stat_monitor.pgsm_query_shared_buffer</code> (500000-2147483647 bytes) Default: 500000</dt>
+<dd>Sets the query shared_buffer size.</dd>
+<dt><code>pg_stat_monitor.pgsm_track_planning</code> (0-1) Default: 1 (true)</dt>
+<dd>Whether to track planning statistics.</dd>
+</dl>
+<h2 id="pg_stat_statements"><a class="toclink" href="#pg_stat_statements"><code>pg_stat_statements</code></a></h2>
+<p><code>pg_stat_statements</code> is included in the official PostgreSQL <code>postgresql-contrib</code> available from your Linux distribution package manager.</p>
+<h3 id="install_1"><a class="toclink" href="#install_1">Install</a></h3>
+<h4>Debian</h4>
+<div class="highlight"><pre><span></span><code>sudo apt-get install postgresql-contrib
+</code></pre></div>
+<h4>Red Hat</h4>
+<div class="highlight"><pre><span></span><code>sudo yum install -y postgresql-contrib
+</code></pre></div>
+<h3 id="configure_1"><a class="toclink" href="#configure_1">Configure</a></h3>
+<ol>
+<li>
+<p>Add these lines to your <code>postgresql.conf</code> file:</p>
+<div class="highlight"><pre><span></span><code><span class="nv">shared_preload_libraries</span> <span class="o">=</span> <span class="s1">&#39;pg_stat_statements&#39;</span>
+<span class="nv">track_activity_query_size</span> <span class="o">=</span> <span class="m">2048</span> <span class="c1"># Increase tracked query string size</span>
+pg_stat_statements.track <span class="o">=</span> all   <span class="c1"># Track all statements including nested</span>
+</code></pre></div>
+</li>
+<li>
+<p>Restart your PostgreSQL instance.</p>
+</li>
+<li>
+<p>Install the extension (run in the <code>postgres</code> database).</p>
+<div class="highlight"><pre><span></span><code>CREATE EXTENSION pg_stat_statements SCHEMA public<span class="p">;</span>
+</code></pre></div>
+</li>
+</ol>
+<h2 id="adding-postgresql-queries-and-metrics-monitoring"><a class="toclink" href="#adding-postgresql-queries-and-metrics-monitoring">Adding PostgreSQL queries and metrics monitoring</a></h2>
+<p>You add PostgreSQL metrics and queries monitoring with the following command:</p>
+<div class="highlight"><pre><span></span><code>pmm-admin add postgresql --username<span class="o">=</span>&lt;user name&gt; --password<span class="o">=</span>&lt;password&gt;
+</code></pre></div>
+<p>Where <code>&lt;user name&gt;</code> and <code>&lt;password&gt;</code> are the PostgreSQL user credentials.</p>
+<p>Additionally, two positional arguments can be appended to the command line
+flags: a service name to be used by PMM, and a service address. If not
+specified, they are substituted automatically as <code>&lt;node&gt;-postgresql</code> and
+<code>127.0.0.1:5432</code>.</p>
+<p>The command line and the output of this command may look as follows:</p>
+<div class="highlight"><pre><span></span><code>pmm-admin add postgresql --username<span class="o">=</span>pmm --password<span class="o">=</span>pmm postgres <span class="m">127</span>.0.0.1:5432
+PostgreSQL Service added.
+Service ID  : /service_id/28f1d93a-5c16-467f-841b-8c014bf81ca6
+Service name: postgres
+</code></pre></div>
+<p>If correct installed and set up, you should be able to see data in PostgreSQL Overview dashboard, and also Query Analytics should contain PostgreSQL queries.</p>
+<p>Beside positional arguments shown above you can specify service name and service address with the following flags: <code>--service-name</code>, <code>--host</code> (the hostname or IP address of the service), and <code>--port</code> (the port number of the service). If both flag and positional argument are present, flag gains higher priority. Here is the previous example modified to use these flags:</p>
+<div class="highlight"><pre><span></span><code>pmm-admin add postgresql --username<span class="o">=</span>pmm --password<span class="o">=</span>pmm --service-name<span class="o">=</span>postgres --host<span class="o">=</span><span class="m">127</span>.0.0.1 --port<span class="o">=</span><span class="m">270175432</span>
+</code></pre></div>
+<p>It is also possible to add a PostgreSQL instance using a UNIX socket with just the <code>--socket</code> flag followed by the path to a socket:</p>
+<div class="highlight"><pre><span></span><code>pmm-admin add postgresql --socket<span class="o">=</span>/var/run/postgresql
+</code></pre></div>
+<p>Capturing read and write time statistics is possible only if <code>track_io_timing</code> setting is enabled. This can be done either in configuration file or with the following query executed on the running system:</p>
+<div class="highlight"><pre><span></span><code>ALTER SYSTEM SET <span class="nv">track_io_timing</span><span class="o">=</span>ON<span class="p">;</span>
+SELECT pg_reload_conf<span class="o">()</span><span class="p">;</span>
+</code></pre></div>
+                    </div>
+                </div>
+                
+<div class="small">
+    <ul class="list-inline">
+        
+        <li class="left">
+            <i class="uil uil-refresh"></i> Page updated 2021-01-13
+        </li>
+        
+    </ul>
+</div>
+
+                
+<div class="related row">
+    <ul class="nav nav-pills">
+        
+        <li class="right" style="margin-right: 10px">
+            <a href="proxysql.html" title="ProxySQL">Next</a>
+        </li>
+        
+        
+        <li class="right" style="margin-right: 10px">
+            <a href="mongodb.html" title="MongoDB">Previous</a>
+        </li>
+        
+        <li>
+            <a href="">Home</a>
+        </li>
+    </ul>
+</div>
+
+            </div>
+            
+<div class="sphinxsidebar col-md-3 col-md-pull-9">
+    <div class="sphinxsidebarwrapper">
+        {@ product_logo @}
+        {@ product_pdf_download @}
+        
+<section class="select-wrapper" id="version-select-wrapper">
+    <!-- Empty locator section for version selector -->
+</section>
+
+        <h3 id="toctree-heading"><a href="">Contents</a></h3>
+        
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l1">
+    <a class="reference internal" href="../../index.html">Welcome</a>
+
+
+
+
+<li class="toctree-l1">
+    <a class="reference internal" href="javascript: void(0)" style="text-decoration: none">Setting up</a>
+
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../index.html">Setting up: Overview</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="javascript: void(0)" style="text-decoration: none">Server</a>
+
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../server/index.html">Setting up PMM Server</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../server/docker.html">Docker</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../server/virtual-appliance.html">Virtual Appliance</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../server/aws.html">AWS Marketplace</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="javascript: void(0)" style="text-decoration: none">Client</a>
+
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="index.html">Setting up PMM Clients</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="docker.html">Docker</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="mysql.html">MySQL</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="percona-server.html">Percona Server</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="mongodb.html">MongoDB</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="postgresql.html">PostgreSQL</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="proxysql.html">ProxySQL</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="aws.html">Amazon RDS</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="linux.html">Linux</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="external.html">External Services</a>
+
+
+
+</ul>
+
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l1">
+    <a class="reference internal" href="javascript: void(0)" style="text-decoration: none">Using</a>
+
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../using/index.html">Using: Overview</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../using/interface.html">User Interface</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../using/alerting.html">Integrated Alerting</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../using/query-analytics.html">Query Analytics</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="javascript: void(0)" style="text-decoration: none">Percona Enterprise Platform</a>
+
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../using/platform/index.html">About Percona Enterprise Platform</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../using/platform/security-threat-tool.html">Security Threat Tool</a>
+
+
+
+</ul>
+
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l1">
+    <a class="reference internal" href="javascript: void(0)" style="text-decoration: none">How to</a>
+
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../how-to/index.html">How to: Overview</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../how-to/configure.html">Configure</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../how-to/upgrade.html">Upgrade</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../how-to/secure.html">Secure</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../how-to/optimize.html">Optimize</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l1">
+    <a class="reference internal" href="javascript: void(0)" style="text-decoration: none">Details</a>
+
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../details/index.html">Details: Overview</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../details/architecture.html">Architecture</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="javascript: void(0)" style="text-decoration: none">Dashboards</a>
+
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../details/dashboards/index.html">Dashboards Index</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="javascript: void(0)" style="text-decoration: none">Insight</a>
+
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-home.html">Home Dashboard</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-advanced-data-exploration.html">Advanced Data Exploration</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-victoriametrics.html">VictoriaMetrics</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-victoriametrics-agents-overview.html">VictoriaMetrics Agents Overview</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="javascript: void(0)" style="text-decoration: none">PMM</a>
+
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-inventory.html">PMM Inventory</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="javascript: void(0)" style="text-decoration: none">OS Dashboards</a>
+
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-cpu-utilization-details.html">CPU Utilization Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-disk-details.html">Disk Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-network-details.html">Network Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-memory-details.html">Memory Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-node-temperature-details.html">Node Temperature Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-nodes-compare.html">Nodes Compare</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-nodes-overview.html">Nodes Overview</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-node-summary.html">Node Summary</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-numa-details.html">NUMA Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-processes-details.html">Processes Details</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="javascript: void(0)" style="text-decoration: none">Prometheus Dashboards</a>
+
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-prometheus-exporter-status.html">Prometheus Exporter Status</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-prometheus-exporters-overview.html">Prometheus Exporters Overview</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="javascript: void(0)" style="text-decoration: none">MySQL Dashboards</a>
+
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-mysql-amazon-aurora-details.html">MySQL Amazon Aurora Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-mysql-command-handler-counters-compare.html">MySQL Command/Handler Counters Compare</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-mysql-innodb-compression-details.html">MySQL InnoDB Compression Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-mysql-innodb-details.html">MySQL InnoDB Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-mysql-myisam-aria-details.html">MySQL MyISAM/Aria Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-mysql-myrocks-details.html">MySQL MyRocks Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-mysql-instance-summary.html">MySQL Instance Summary</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-mysql-instances-compare.html">MySQL Instances Compare</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-mysql-instances-overview.html">MySQL Instances Overview</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-mysql-wait-event-analyses-details.html">MySQL Wait Event Analyses Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-mysql-performance-schema-details.html">MySQL Performance Schema Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-mysql-query-response-time-details.html">MySQL Query Response Time Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-mysql-replication-summary.html">MySQL Replication Summary</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-mysql-group-replication-summary.html">MySQL Group Replication Summary</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-mysql-table-details.html">MySQL Table Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-mysql-user-details.html">MySQL User Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-mysql-tokudb-details.html">MySQL TokuDB Details</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="javascript: void(0)" style="text-decoration: none">MongoDB Dashboards</a>
+
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-mongodb-cluster-summary.html">MongoDB Cluster Summary</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-mongodb-instance-summary.html">MongoDB Instance Summary</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-mongodb-instances-overview.html">MongoDB Instances Overview</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-mongodb-instances-compare.html">MongoDB Instances Compare</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-mongodb-replset-summary.html">MongoDB ReplSet Summary</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-mongodb-inmemory-details.html">MongoDB InMemory Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-mongodb-mmapv1-details.html">MongoDB MMAPv1 Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-mongodb-wiredtiger-details.html">MongoDB WiredTiger Details</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="javascript: void(0)" style="text-decoration: none">PostgreSQL Dashboards</a>
+
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-postgresql-instances-overview.html">PostgreSQL Instances Overview</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-postgresql-instance-summary.html">PostgreSQL Instance Summary</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-postgresql-instances-compare.html">PostgreSQL Instances Compare</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="javascript: void(0)" style="text-decoration: none">ProxySQL Dashboards</a>
+
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-proxysql-instance-summary.html">ProxySQL Instance Summary</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="javascript: void(0)" style="text-decoration: none">HA Dashboards</a>
+
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-pxc-galera-node-summary.html">PXC/Galera Node Summary</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-pxc-galera-cluster-summary.html">PXC/Galera Cluster Summary</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-pxc-galera-nodes-compare.html">PXC/Galera Nodes Compare</a>
+
+
+
+</ul>
+
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="javascript: void(0)" style="text-decoration: none">Commands</a>
+
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../details/commands/pmm-admin.html">pmm-admin - Administration Tool</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../details/commands/pmm-agent.html">pmm-agent - PMM Client agent</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../details/api.html">API</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../details/victoria-metrics.html">VictoriaMetrics</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../details/glossary.html">Glossary</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l1">
+    <a class="reference internal" href="../../faq.html">FAQ</a>
+
+
+
+
+<li class="toctree-l1">
+    <a class="reference internal" href="javascript: void(0)" style="text-decoration: none">Release Notes</a>
+
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.14.0.html">Percona Monitoring and Management 2.14.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.13.0.html">Percona Monitoring and Management 2.13.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.12.0.html">Percona Monitoring and Management 2.12.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.11.1.html">Percona Monitoring and Management 2.11.1</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.11.0.html">Percona Monitoring and Management 2.11.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.10.1.html">Percona Monitoring and Management 2.10.1</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.10.0.html">Percona Monitoring and Management 2.10.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.9.1.html">Percona Monitoring and Management 2.9.1</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.9.0.html">Percona Monitoring and Management 2.9.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.8.0.html">Percona Monitoring and Management 2.8.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.7.0.html">Percona Monitoring and Management 2.7.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.6.1.html">Percona Monitoring and Management 2.6.1</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.6.0.html">Percona Monitoring and Management 2.6.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.5.0.html">Percona Monitoring and Management 2.5.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.4.0.html">Percona Monitoring and Management 2.4.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.3.0.html">Percona Monitoring and Management 2.3.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.2.2.html">Percona Monitoring and Management 2.2.2</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.2.1.html">Percona Monitoring and Management 2.2.1</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.2.0.html">Percona Monitoring and Management 2.2.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.1.0.html">Percona Monitoring and Management 2.1.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.0.1.html">Percona Monitoring and Management 2.0.1</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.0.0.html">Percona Monitoring and Management 2.0.0</a>
+
+
+
+</ul>
+
+
+
+
+</ul>
+
+
+        
+
+<h4>Previous page</h4>
+<p class="topless">
+    <a href="mongodb.html" title="previous chapter">MongoDB</a>
+</p>
+
+
+<h4>Next page</h4>
+<p class="topless">
+    <a href="proxysql.html" title="next chapter">ProxySQL</a>
+</p>
+
+
+        {@ product_series @}
+    </div>
+</div>
+
+            <div class="clearer"></div>
+        </div>
+    </div>
+</body>
