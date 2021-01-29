@@ -8,7 +8,7 @@ By default, Prometheus stores time-series data for 30 days, and QAN stores query
 
 Depending on available disk space and your requirements, you may need to adjust data retention time.
 
-You can control data retention by passing the [`METRICS_RETENTION`](#metrics-retention) and [`QUERIES_RETENTION`](#queries-retention) environment variables when creating and running the PMM Server container.
+You can control data retention by passing the `METRICS_RETENTION` and `QUERIES_RETENTION` environment variables when creating and running the PMM Server container.
 
 ## Data Source Name
 
@@ -24,7 +24,7 @@ See [Data Source Name](#data-source-name)
 
 ## External Monitoring Service
 
-A monitoring service which is not provided by PMM directly. It is bound to a running Prometheus exporter. As soon as such an service is added, you can set up the [Metrics Monitor](#metrics-monitor) to display its graphs.
+A monitoring service which is not provided by PMM directly. It is bound to a running Prometheus exporter. As soon as such an service is added, you can set up the [Metrics Monitor](#metrics-monitor-mm) to display its graphs.
 
 ## Grand Total Time
 
@@ -46,16 +46,11 @@ Component of PMM Server that provides a historical view of metrics critical to a
 
 A special service which collects information from the database instance where [PMM Client](#pmm-client) is installed.
 
-To add a monitoring service, use the **pmm-admin add** command.
-
-!!! seealso "See also"
-
-    Passing parameters to a monitoring service
-    : [Passing options to the exporter](pmm-admin.md#pmm-pmm-admin-monitoring-service-pass-parameter)
+To add a monitoring service, use the [`pmm-admin add`](pmm-admin.md) command.
 
 ## Orchestrator
 
-The topology manager for MySQL. By default it is disabled for the [PMM Server](#pmm-server). To enable it, set the [`ORCHESTRATOR_ENABLED`](#orchestrator-enabled).
+The topology manager for MySQL. By default it is disabled for the [PMM Server](#pmm-server). To enable it, set `ORCHESTRATOR_ENABLED`.
 
 ## PMM
 
@@ -63,7 +58,7 @@ Percona Monitoring and Management
 
 ## pmm-admin
 
-A program which changes the configuration of the [PMM Client](#pmm-client). See detailed documentation in the [Managing PMM Client](pmm-admin.md#pmm-admin) section.
+A program which changes the configuration of the [PMM Client](#pmm-client). See detailed documentation in the [Managing PMM Client](pmm-admin.md) section.
 
 ## PMM annotation
 
@@ -80,7 +75,7 @@ A docker image which enables installing the PMM Server by using **docker**.
 
 !!! seealso "See also"
     Installing PMM Server using Docker
-    : [Running PMM Server via Docker](deploy/server/docker.md#run-server-docker)
+    : [Running PMM Server via Docker](deploy/server/docker.md)
 
 ## PMM Client
 
@@ -103,10 +98,6 @@ Aggregates data collected by PMM Client and presents it in the form of tables, d
 PMM Server combines the backend API and storage for collected data with a frontend for viewing time-based graphs and performing thorough analysis of your MySQL and MongoDB hosts through a web interface.
 
 Run PMM Server on a host that you will use to access this data.
-
-!!! seealso "See also"
-    PMM Architecture
-    : [Overview of Percona Monitoring and Management Architecture](architecture.md#pmm-architecture)
 
 ## PMM Server Version
 
@@ -143,7 +134,7 @@ When creating a [IAM user](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuid
 
 !!! seealso "See also"
     Creating an IAM user
-    : [Creating an IAM user](amazon-rds.md#pmm-amazon-rds-iam-user-creating)
+    : [Creating an IAM user](amazon-rds.md#creating-an-iam-user-with-permission-to-access-amazon-rds-db-instances)
 
 ## PMM Version
 

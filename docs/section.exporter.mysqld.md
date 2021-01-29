@@ -43,7 +43,7 @@ The following options may be passed to the `mysql:metrics` monitoring service as
 | collect.perf_schema.tableiowaits                       | 5.6           | Collect metrics from performance_schema.table_io_waits_summary_by_table. |
 | collect.perf_schema.tablelocks                         | 5.6           | Collect metrics from performance_schema.table_lock_waits_summary_by_table. |
 | collect.slave_status                                   | 5.1           | Collect from SHOW SLAVE STATUS (Enabled by default) |
-| collect.heartbeat                                      | 5.1           | Collect from [heartbeat](#heartbeat). |
+| collect.heartbeat                                      | 5.1           | Collect from heartbeat. |
 | collect.heartbeat.database                             | 5.1           | Database from where to collect heartbeat data. (default: heartbeat) |
 | collect.heartbeat.table                                | 5.1           | Table from where to collect heartbeat data. (default: heartbeat) |
 

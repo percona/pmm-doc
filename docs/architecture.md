@@ -36,13 +36,13 @@ The PMM Client package consist of the following:
 !!! seealso "See also"
 
     How to install PMM Client
-    : [Installing Clients](deploy/index.md#deploy-pmm-client-installing)
+    : [Installing Clients](deploy/index.md)
 
     How to pass exporter specific options when adding a monitoring service
-    : [Passing options to the exporter](pmm-admin.md#pmm-pmm-admin-monitoring-service-pass-parameter)
+    : [Passing options to the exporter](pmm-admin.md)
 
     List of available exporter options
-    : [Exporters Overview](index.exporter-option.md#pmm-list-exporter)
+    : [Exporters Overview](index.exporter-option.md)
 
 ## PMM Server
 
@@ -113,4 +113,4 @@ Then you can use the *Discover* page in the Orchestrator web interface to add th
 
     Orchestrator was included into PMM for experimental purposes.  It is a standalone tool, not integrated with PMM other than that you can access it from the landing page.
 
-    In version 1.3.0 and later, Orchestrator is not enabled by default. To enable it, see [Additional options](deploy/server/docker.setting-up.md#pmm-docker-additional-option) in the [Running PMM Server via Docker](deploy/server/docker.md#run-server-docker) section.
+    In version 1.3.0 and later, Orchestrator is not enabled by default. To enable it, see [Additional options](deploy/server/docker.setting-up.md) in the [Running PMM Server via Docker](deploy/server/docker.md) section.

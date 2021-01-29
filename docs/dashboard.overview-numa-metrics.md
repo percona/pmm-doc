@@ -1,9 +1,9 @@
-# *NUMA Overview* Dashboard
+# NUMA Overview Dashboard
 
 For each node, this dashboard shows metrics related to Non-uniform memory access (NUMA).
 
 !!! alert alert-info "Note"
-    Users who already have [General system metrics service](https://www.percona.com/doc/percona-monitoring-and-management/pmm-admin.html#pmm-admin-add-linux-metrics) monitored and would like to add NUMA metrics need to remove and re-add `linux:metrics` on the node:
+    Users who already have [General system metrics service](pmm-admin.md) monitored and would like to add NUMA metrics need to remove and re-add `linux:metrics` on the node:
 
     ```
     pmm-admin remove linux:metrics

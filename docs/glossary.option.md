@@ -38,7 +38,7 @@ Docker doesn’t support changing environment variables on an already provisione
     !!! alert alert-warning "Warning"
         When you destroy and recreate the container, all the updates you have done through PMM Web interface will be lost. What’s more, the software version will be reset to the one in the Docker image. Running an old PMM version with a data volume modified by a new PMM version may cause unpredictable results. This could include data loss.
 
-3. Start the container with the new settings. For example, changing [`METRICS_RESOLUTION`](#metrics-resolution) would look as follows:
+3. Start the container with the new settings. For example, changing `METRICS_RESOLUTION` would look as follows:
 
     ```
     docker run -d \
@@ -96,7 +96,7 @@ $ docker run ... -e QUERIES_RETENTION=30 ... percona/pmm-server:1
 
 ### ORCHESTRATOR_ENABLED
 
-This option enables Orchestrator (See [Orchestrator](architecture.md#pmm-using-orchestrator)). By default it is disabled. It is also disabled if this option contains **false**.
+This option enables Orchestrator. By default it is disabled. It is also disabled if this option contains **false**.
 
 ```
 $ docker run ... -e ORCHESTRATOR_ENABLED=true ... percona/pmm-server:1

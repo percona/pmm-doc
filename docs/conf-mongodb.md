@@ -1,6 +1,6 @@
 # Configuring MongoDB for Monitoring in PMM Query Analytics
 
-In QAN, you can monitor MongoDB metrics and MongoDB queries with the `mongodb:metrics` or `mongodb:queries` monitoring services accordingly. Run the **pmm-admin add** command to use these monitoring services (for more information, see [Adding monitoring services](pmm-admin.md#pmm-admin-add)).
+In QAN, you can monitor MongoDB metrics and MongoDB queries with the `mongodb:metrics` or `mongodb:queries` monitoring services accordingly. Run the **pmm-admin add** command to use these monitoring services (for more information, see [Adding monitoring services](pmm-admin.md)).
 
 ## Supported versions of MongoDB
 

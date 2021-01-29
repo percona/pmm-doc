@@ -71,7 +71,7 @@ $ docker run -d \
 !!! alert alert-warning "Important""
     The `pmm-server` container must be stopped before attempting **docker.run**.
 
-The **docker run** command refers to the pulled image as the last parameter. If you used a specific version number when running **docker pull** (see [Pulling the PMM Server Docker Image](docker.setting-up.md#pmm-server-docker-image-pulling)) replace `latest` accordingly.
+The **docker run** command refers to the pulled image as the last parameter. If you used a specific version number when running **docker pull** (see [Pulling the PMM Server Docker Image](docker.setting-up.md)) replace `latest` accordingly.
 
 Note that this command also refers to `pmm-data` as the value of `--volumes-from` option. This way, your new version will continue to use the existing data.
 

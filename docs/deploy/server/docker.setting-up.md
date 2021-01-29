@@ -95,4 +95,4 @@ $ docker run -d \
 
 When running the PMM Server, you may pass additional parameters to the **docker run** subcommand. All options that appear after the `-e` option are the additional parameters that modify the way how PMM Server operates.
 
-The section [PMM Server Additional Options](../../glossary.option.md#pmm-glossary-pmm-server-additional-option) lists all supported additional options.
+The section [PMM Server Additional Options](../../glossary.option.md) lists all supported additional options.

@@ -1,6 +1,6 @@
 # Configuring PostgreSQL for Monitoring
 
-Monitoring PostgreSQL metrics with the [postgres_exporter](https://github.com/wrouesnel/postgres_exporter) is enabled by `pmm-admin add postgresql` command. The `postgresql` alias will set up `postgresql:metrics` and also `linux:metrics` on a host (for more information, see [Adding monitoring services](pmm-admin.md#pmm-admin-add)).
+Monitoring PostgreSQL metrics with the [postgres_exporter](https://github.com/wrouesnel/postgres_exporter) is enabled by `pmm-admin add postgresql` command. The `postgresql` alias will set up `postgresql:metrics` and also `linux:metrics` on a host (for more information, see [Adding monitoring services](pmm-admin.md)).
 
 `pmm-admin` supports passing PostgreSQL connection information via following flags:
 

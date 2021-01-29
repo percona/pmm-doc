@@ -27,7 +27,9 @@ Any modern 64-bit Linux distribution. It is tested on the latest versions of Deb
 
 Minimum 100 MB of storage is required for installing the PMM Client package.  With good constant connection to PMM Server, additional storage is not required.  However, the client needs to store any collected data that it is not able to send over immediately, so additional storage may be required if connection is unstable or throughput is too low.
 
-## How to control memory consumption for PMM? (relevant to versions lower than 1.13 of PMM)
+## How to control memory consumption for PMM?
+
+(Only relevant to PMM 1.13 and below.)
 
 Prometheus 1.x.x, shipped with PMM up to version 1.13.0, used by default 768 MB of memory for storing the most recently used data chunks.
 
@@ -116,9 +118,9 @@ To start all services:
 $ sudo pmm-admin start --all
 ```
 
-For more information about starting and stopping services, see [Starting monitoring services](pmm-admin.md#pmm-admin-start).
+For more information about starting and stopping services, see [Starting monitoring services](pmm-admin.md).
 
-You can view all available monitoring instances and the states of the corresponding services using the **pmm-admin list** command. For more information, see [Listing monitoring services](pmm-admin.md#pmm-admin-list).
+You can view all available monitoring instances and the states of the corresponding services using the **pmm-admin list** command. For more information, see [Listing monitoring services](pmm-admin.md).
 
 ## What privileges are required to monitor a MySQL instance?
 
@@ -159,11 +161,11 @@ If you want to assign a different port, use the `--service-port` option when add
 
 ## How to troubleshoot communication issues between PMM Client and PMM Server?
 
-There is a `pmm-admin check-network` command, which [checks connectivity](https://www.percona.com/doc/percona-monitoring-and-management/pmm-admin.html#pmm-admin-check-network) between PMM Client and PMM Server and presents the summary of this check in a human readable form.
+There is a `pmm-admin check-network` command, which [checks connectivity](pmm-admin.md) between PMM Client and PMM Server and presents the summary of this check in a human readable form.
 
 Broken network connectivity may be caused by rather wide set of reasons. Particularly, when using Docker, the container is constrained by the host-level routing and firewall rules. For example, your hosting provider might have default *iptables* rules on their hosts that block communication between PMM Server and PMM Client, resulting in *DOWN* targets in Prometheus. If this happens, check firewall and routing settings on the Docker host.
 
-Also PMM is able to generate a set of diagnostics data which can be examined and/or shared with Percona Support to solve an issue faster. You can get collected logs from PMM Client [using the pmm-admin command](pmm-admin.md#pmm-admin-diagnostics-for-support). Obtaining logs from PMM Server can be done either [by specifying the URL](deploy/index.md#deploy-pmm-diagnostics-for-support) or by clicking the `server logs` link on the [Prometheus dashboard](dashboard.prometheus.md):
+Also PMM is able to generate a set of diagnostics data which can be examined and/or shared with Percona Support to solve an issue faster. You can get collected logs from PMM Client [using the pmm-admin command](pmm-admin.md). Obtaining logs from PMM Server can be done either [by specifying the URL](deploy/index.md) or by clicking the `server logs` link on the [Prometheus dashboard](dashboard.prometheus.md):
 
 ![image](_images/get-logs-from-prometheus-dashboard.png)
 

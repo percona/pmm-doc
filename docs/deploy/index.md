@@ -53,7 +53,7 @@ You will need to have root access on the database host where you will be install
 PMM Client should run on any modern Linux 64-bit distribution, however Percona provides PMM Client packages for automatic installation from software repositories only on the most popular Linux distributions:
 
 * [DEB packages for Debian based distributions such as Ubuntu](#installing-pmm-client-on-debian-or-ubuntu)
-* [RPM packages for Red Hat based distributions such as CentOS](#installing-the-pmm-client-package-on-red-hat-and-centOS)
+* [RPM packages for Red Hat based distributions such as CentOS](#installing-the-pmm-client-package-on-red-hat-and-centos)
 
 It is recommended that you install your  client by using the software repository for your system. If this option does not work for you, Percona provides downloadable PMM Client packages from the [Download Percona Monitoring and Management](https://www.percona.com/downloads/pmm-client) page.
 
@@ -220,7 +220,7 @@ When changing to a new version of PMM, you update the PMM Server and each PMM Cl
 ### Updating the PMM Server
 
 !!! alert alert-warning "Warning"
-    Currently PMM Server doesn’t support updates from 1.x to 2.0. Just install the new PMM 2 following its [official installation instructions](https://www.percona.com/doc/percona-monitoring-and-management/2.x/setting-up/server/docker.html).
+    Currently PMM Server doesn’t support updates from 1.x to 2.0. Just install the new PMM 2 following its [official installation instructions]({{PMM2DOCROOT}}setting-up/server/docker.html).
 
 The updating procedure of your PMM Server depends on the option that you selected for installing it.
 
@@ -233,7 +233,7 @@ If you are running PMM Server as a virtual appliance or using an Amazon Machine 
 ### Updating a PMM Client
 
 !!! alert alert-warning "Warning"
-    Currently PMM Client has no compatibility between 1.x to 2.0. Coexistence of 1.x and 2.x clients is also not supported. If you need PMM 2.x, remove the old pmm-client package and install the new pmm2-client one following its [installation instructions](https://www.percona.com/doc/percona-monitoring-and-management/2.x/setting-up/client/index.html).
+    Currently PMM Client has no compatibility between 1.x to 2.0. Coexistence of 1.x and 2.x clients is also not supported. If you need PMM 2.x, remove the old pmm-client package and install the new pmm2-client one following its [installation instructions]({{PMM2DOCROOT}}setting-up/client/index.html).
 
 When a newer version of PMM Client becomes available, you can update to it from  the Percona software repositories:
 
