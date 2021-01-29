@@ -1,0 +1,1287 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<title>Percona Monitoring and Management &mdash; Setting up PMM Clients</title>
+
+<head>
+    
+
+
+    
+<script src="../../js/version-select.js" type="text/javascript"></script>
+
+<script src="../../js/toctree.js" type="text/javascript"></script>
+
+
+    <link rel="top" title="" href="" />
+    
+    <link rel="next" title="Docker" href="docker.html" />
+    
+    
+</head>
+
+<body>
+	<!-- 2021-01-29 08:02:06.328131+00:00 -->
+    
+<link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.3/css/line.css" type="text/css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" type="text/css">
+<link rel="stylesheet" href="../../css/version-select.css" type="text/css">
+<link rel="stylesheet" href="../../css/toctree.css" type="text/css">
+
+    
+<script src="../../js/version-select.js" type="text/javascript"></script>
+
+<script src="../../js/toctree.js" type="text/javascript"></script>
+
+
+    <div class="container">
+        <div class="document row">
+            <div class="documentwrapper col-md-9 col-md-push-3">
+                
+<div class="related row">
+    <ul class="nav nav-pills">
+        
+        <li class="right" style="margin-right: 10px">
+            <a href="docker.html" title="Docker">Next</a>
+        </li>
+        
+        
+        <li class="right" style="margin-right: 10px">
+            <a href="../server/aws.html" title="AWS Marketplace">Previous</a>
+        </li>
+        
+        <li>
+            <a href="">Home</a>
+        </li>
+    </ul>
+</div>
+
+                
+
+<div class="small">
+    <ul class="list-inline">
+        <li class="left">
+            <a href="https://github.com/percona/pmm-doc/issues/new?title=PMM2: doc issue on page  'Setting up PMM Clients' (setting-up/client/index.html)&body=Please describe the issue here"
+                target="_blank" title="Report an issue with this page on GitHub"><i class="uil uil-exclamation-triangle"></i> Report a problem with this page</a>
+        </li>
+        <li class="pull-right">
+            <a href="https://github.com/percona/pmm-doc/edit/main/docs/setting-up/client/index.md" target="_blank" title="Edit this page on GitHub in Markdown format"><i class="uil uil-pen"></i> Edit this page</a>
+        </li>
+    </ul>
+</div>
+
+
+                <div class="bodywrapper">
+                    <div class="body">
+                        <h1>Setting up PMM Clients</h1>
+<div class="toc">
+<ul>
+<li><a href="#supported-platforms">Supported platforms</a></li>
+<li><a href="#storage-requirements">Storage requirements</a></li>
+<li><a href="#installing-pmm-client-with-your-linux-package-manager">Installing PMM Client with your Linux package manager</a><ul>
+<li><a href="#using-apt-get-debianubuntu">Using apt-get (Debian/Ubuntu)</a></li>
+<li><a href="#using-yum-redhatcentos">Using yum (RedHat/Centos)</a></li>
+</ul>
+</li>
+<li><a href="#connecting-pmm-clients-to-pmm-server">Connecting PMM Clients to PMM Server</a></li>
+<li><a href="#removing-monitoring-services-with-pmm-admin-remove">Removing monitoring services with pmm-admin remove</a></li>
+</ul>
+</div>
+<hr />
+<p>PMM Client is a package of agents and exporters installed on the host you wish to monitor.</p>
+<p>Before installing, know your PMM Server&rsquo;s IP address and make sure that it is accessible.</p>
+<p>You will need root access on the database host where you install PMM Client (either logged in as a user with root privileges or have <code>sudo</code> rights).</p>
+<div class="admonition alert alert-info">
+<p class="admonition-title">Note</p>
+<p>Credentials used in communication between the exporters and the PMM Server are the following ones:</p>
+<ul>
+<li>login is <code>pmm</code></li>
+<li>password is equal to Agent ID, which can be seen e.g. on the Inventory Dashboard.</li>
+</ul>
+</div>
+<h2 id="supported-platforms"><a class="toclink" href="#supported-platforms">Supported platforms</a></h2>
+<p>PMM Client should run on any modern RedHat or Debian-based 64-bit Linux distribution, but is only tested on:</p>
+<ul>
+<li>RHEL/CentOS 6, 7, 8</li>
+<li>Debian 8, 9, 10</li>
+<li>Ubuntu 16.04, 18.04, 20.04</li>
+</ul>
+<p>We recommended installing PMM Client via your system&rsquo;s <a href="#installing-via-linux-package-manager">package management tool</a>, using the software repository provided by Percona for popular Linux distributions.</p>
+<p>If this option does not work for you, Percona provides downloadable PMM Client packages from the <a href="https://www.percona.com/downloads/pmm2/">Download Percona Monitoring and Management</a> page. As well as DEB and RPM packages, you will also find:</p>
+<ul>
+<li>generic tarballs that you can extract and run the included <code>install</code> script;</li>
+<li>source code tarball to build the PMM client from source.</li>
+</ul>
+<h2 id="storage-requirements"><a class="toclink" href="#storage-requirements">Storage requirements</a></h2>
+<p>A minimum of 100 MB of storage is required for installing the PMM Client package. With a good constant connection to PMM Server, additional storage is not required. However, the client needs to store any collected data that it is not able to send over immediately, so additional storage may be required if connection is unstable or throughput is too low.</p>
+<h2 id="installing-pmm-client-with-your-linux-package-manager"><a class="toclink" href="#installing-pmm-client-with-your-linux-package-manager">Installing PMM Client with your Linux package manager</a></h2>
+<h3 id="using-apt-get-debianubuntu"><a class="toclink" href="#using-apt-get-debianubuntu">Using <code>apt-get</code> (Debian/Ubuntu)</a></h3>
+<ol>
+<li>
+<p>Configure Percona repositories using the <a href="https://www.percona.com/doc/percona-repo-config/percona-release.html">percona-release</a> tool. First you’ll need to download and install the official <code>percona-release</code> package from Percona:</p>
+<div class="highlight"><pre><span></span><code>wget https://repo.percona.com/apt/percona-release_latest.generic_all.deb
+sudo dpkg -i percona-release_latest.generic_all.deb
+</code></pre></div>
+<div class="admonition alert alert-info">
+<p class="admonition-title">Note</p>
+<p>If you have previously enabled the experimental or testing Percona repository, don’t forget to disable them and enable the release component of the original repository as follows:</p>
+<div class="highlight"><pre><span></span><code>sudo percona-release disable all
+sudo percona-release <span class="nb">enable</span> original release
+</code></pre></div>
+</div>
+</li>
+<li>
+<p>Install the PMM client package:</p>
+<div class="highlight"><pre><span></span><code>sudo apt-get update
+sudo apt-get install pmm2-client
+</code></pre></div>
+</li>
+<li>
+<p>Register your Node:</p>
+<div class="highlight"><pre><span></span><code>pmm-admin config --server-insecure-tls --server-url<span class="o">=</span>https://admin:admin@&lt;IP Address&gt;:443
+</code></pre></div>
+</li>
+<li>
+<p>You should see the following output:</p>
+<div class="highlight"><pre><span></span><code>Checking local pmm-agent status...
+pmm-agent is running.
+Registering pmm-agent on PMM Server...
+Registered.
+Configuration file /usr/local/percona/pmm-agent.yaml updated.
+Reloading pmm-agent configuration...
+Configuration reloaded.
+</code></pre></div>
+</li>
+</ol>
+<h3 id="using-yum-redhatcentos"><a class="toclink" href="#using-yum-redhatcentos">Using <code>yum</code> (RedHat/Centos)</a></h3>
+<ol>
+<li>
+<p>Configure Percona repositories using the <a href="https://www.percona.com/doc/percona-repo-config/percona-release.html">percona-release</a> tool. First you’ll need to download and install the official percona-release package from Percona:</p>
+<div class="highlight"><pre><span></span><code>sudo yum install https://repo.percona.com/yum/percona-release-latest.noarch.rpm
+</code></pre></div>
+<div class="admonition alert alert-info">
+<p class="admonition-title">Note</p>
+<p>If you have previously enabled the experimental or testing Percona repository, don’t forget to disable them and enable the release component of the original repository as follows:</p>
+<div class="highlight"><pre><span></span><code>sudo percona-release disable all
+sudo percona-release <span class="nb">enable</span> original release
+</code></pre></div>
+<p>See <a href="https://www.percona.com/doc/percona-repo-config/percona-release.html">percona-release official documentation</a> for details.</p>
+</div>
+</li>
+<li>
+<p>Install the <code>pmm2-client</code> package:</p>
+<div class="highlight"><pre><span></span><code>yum install pmm2-client
+</code></pre></div>
+</li>
+<li>
+<p>Once PMM Client is installed, run the <code>pmm-admin config</code> command with your PMM Server IP address to register your Node within the Server:</p>
+<div class="highlight"><pre><span></span><code>pmm-admin config --server-insecure-tls --server-url<span class="o">=</span>https://admin:admin@&lt;IP Address&gt;:443
+</code></pre></div>
+<p>You should see the following:</p>
+<div class="highlight"><pre><span></span><code>Checking local pmm-agent status...
+pmm-agent is running.
+Registering pmm-agent on PMM Server...
+Registered.
+Configuration file /usr/local/percona/pmm-agent.yaml updated.
+Reloading pmm-agent configuration...
+Configuration reloaded.
+</code></pre></div>
+</li>
+</ol>
+<h2 id="connecting-pmm-clients-to-pmm-server"><a class="toclink" href="#connecting-pmm-clients-to-pmm-server">Connecting PMM Clients to PMM Server</a></h2>
+<p>With your server and clients set up, you must configure each PMM Client and
+specify which PMM Server it should send its data to.</p>
+<p>To connect a PMM Client, enter the IP address of the PMM Server as the value
+of the <code>--server-url</code> parameter to the <code>pmm-admin config</code> command, and
+allow using self-signed certificates with <code>--server-insecure-tls</code>.</p>
+<div class="admonition alert alert-info">
+<p class="admonition-title">Note</p>
+<p>The <code>--server-url</code> argument should include <code>https://</code> prefix and PMM Server credentials, which are <code>admin</code>/<code>admin</code> by default, if not changed at first PMM Server GUI access.</p>
+</div>
+<p>Run this command as root or by using the <code>sudo</code> command</p>
+<div class="highlight"><pre><span></span><code>pmm-admin config --server-insecure-tls --server-url<span class="o">=</span>https://admin:admin@192.168.100.1:443
+</code></pre></div>
+<p>For example, if your PMM Server is running on 192.168.100.1, you have installed PMM Client on a machine with IP 192.168.200.1, and didn’t change default PMM Server credentials, run the following in the terminal of your client. Run the following commands as root or by using the <code>sudo</code> command:</p>
+<div class="highlight"><pre><span></span><code>pmm-admin config --server-insecure-tls --server-url<span class="o">=</span>https://admin:admin@192.168.100.1:443
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Checking local pmm-agent status...
+pmm-agent is running.
+Registering pmm-agent on PMM Server...
+Registered.
+Configuration file /usr/local/percona/pmm-agent.yaml updated.
+Reloading pmm-agent configuration...
+Configuration reloaded.
+Checking local pmm-agent status...
+pmm-agent is running.
+</code></pre></div>
+<p>If you change the default port 443 when running PMM Server, specify the new port number after the IP address of PMM Server.</p>
+<div class="admonition alert alert-info">
+<p class="admonition-title">Note</p>
+<p>By default <code>pmm-admin config</code> refuses to add client if it already exists in the PMM Server inventory database. If you need to re-add an already existing client (e.g. after full reinstall, hostname changes, etc.), you can run <code>pmm-admin config</code> with the additional <code>--force</code> option. This will remove an existing node with the same name, if any, and all its dependent services.</p>
+</div>
+<p>By default, the node name is the hostname. If you have non-unique client hostnames, specify the node name when adding the client:</p>
+<div class="highlight"><pre><span></span><code>pmm-admin add TYPE <span class="o">[</span>options<span class="o">]</span> NODE-NAME
+</code></pre></div>
+<h2 id="removing-monitoring-services-with-pmm-admin-remove"><a class="toclink" href="#removing-monitoring-services-with-pmm-admin-remove">Removing monitoring services with <code>pmm-admin remove</code></a></h2>
+<p>Use the <code>pmm-admin remove</code> command to remove monitoring services.</p>
+<p><strong>USAGE</strong></p>
+<p>Run this command as root or by using the <code>sudo</code> command</p>
+<div class="highlight"><pre><span></span><code>pmm-admin remove <span class="o">[</span>OPTIONS<span class="o">]</span> <span class="o">[</span>SERVICE-TYPE<span class="o">]</span> <span class="o">[</span>SERVICE-NAME<span class="o">]</span>
+</code></pre></div>
+<p>When you remove a service, collected data remains in Metrics Monitor on PMM Server for the specified <a href="../../faq.html#how-to-control-data-retention-for-pmm">retention period</a>.</p>
+<p><strong>SERVICES</strong></p>
+<p>Service type can be mysql, mongodb, postgresql or proxysql, and service
+name is a monitoring service alias. To see which services are enabled,
+run <code>pmm-admin list</code>.</p>
+<p><strong>EXAMPLES</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Removing MySQL service named mysql-sl</span>
+pmm-admin remove mysql mysql-sl
+
+<span class="c1"># remove MongoDB service named mongo</span>
+pmm-admin remove mongodb mongo
+
+<span class="c1"># remove PostgreSQL service named postgres</span>
+pmm-admin remove postgresql postgres
+
+<span class="c1"># remove ProxySQL service named ubuntu-proxysql</span>
+pmm-admin remove proxysql ubuntu-proxysql
+</code></pre></div>
+<p>For more information, run <code>pmm-admin remove --help</code>.</p>
+<div class="admonition seealso">
+<p class="admonition-title">Seealso</p>
+<ul>
+<li><a href="../../details/commands/pmm-admin.html">pmm-admin</a></li>
+<li><a href="https://www.percona.com/services/policies/percona-software-support-lifecycle#pt/">Percona Tools Supported Platforms</a>.</li>
+</ul>
+</div>
+                    </div>
+                </div>
+                
+<div class="small">
+    <ul class="list-inline">
+        
+        <li class="left">
+            <i class="uil uil-refresh"></i> Page updated 2020-12-10
+        </li>
+        
+    </ul>
+</div>
+
+                
+<div class="related row">
+    <ul class="nav nav-pills">
+        
+        <li class="right" style="margin-right: 10px">
+            <a href="docker.html" title="Docker">Next</a>
+        </li>
+        
+        
+        <li class="right" style="margin-right: 10px">
+            <a href="../server/aws.html" title="AWS Marketplace">Previous</a>
+        </li>
+        
+        <li>
+            <a href="">Home</a>
+        </li>
+    </ul>
+</div>
+
+            </div>
+            
+<div class="sphinxsidebar col-md-3 col-md-pull-9">
+    <div class="sphinxsidebarwrapper">
+        {@ product_logo @}
+        {@ product_pdf_download @}
+        
+<section class="select-wrapper" id="version-select-wrapper">
+    <!-- Empty locator section for version selector -->
+</section>
+
+        <h3 id="toctree-heading"><a href="">Contents</a></h3>
+        
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l1">
+    <a class="reference internal" href="../../index.html">Welcome</a>
+
+
+
+
+<li class="toctree-l1">
+    <a class="reference internal" href="javascript: void(0)" style="text-decoration: none">Setting up</a>
+
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../index.html">Setting up: Overview</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="javascript: void(0)" style="text-decoration: none">Server</a>
+
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../server/index.html">Setting up PMM Server</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../server/docker.html">Docker</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../server/virtual-appliance.html">Virtual Appliance</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../server/aws.html">AWS Marketplace</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="javascript: void(0)" style="text-decoration: none">Client</a>
+
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="index.html">Setting up PMM Clients</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="docker.html">Docker</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="mysql.html">MySQL</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="percona-server.html">Percona Server</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="mongodb.html">MongoDB</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="postgresql.html">PostgreSQL</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="proxysql.html">ProxySQL</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="aws.html">Amazon RDS</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="linux.html">Linux</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="external.html">External Services</a>
+
+
+
+</ul>
+
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l1">
+    <a class="reference internal" href="javascript: void(0)" style="text-decoration: none">Using</a>
+
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../using/index.html">Using: Overview</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../using/interface.html">User Interface</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../using/alerting.html">Integrated Alerting</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../using/query-analytics.html">Query Analytics</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="javascript: void(0)" style="text-decoration: none">Percona Enterprise Platform</a>
+
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../using/platform/index.html">About Percona Enterprise Platform</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../using/platform/security-threat-tool.html">Security Threat Tool</a>
+
+
+
+</ul>
+
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l1">
+    <a class="reference internal" href="javascript: void(0)" style="text-decoration: none">How to</a>
+
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../how-to/index.html">How to: Overview</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../how-to/configure.html">Configure</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../how-to/upgrade.html">Upgrade</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../how-to/secure.html">Secure</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../how-to/optimize.html">Optimize</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l1">
+    <a class="reference internal" href="javascript: void(0)" style="text-decoration: none">Details</a>
+
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../details/index.html">Details: Overview</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../details/architecture.html">Architecture</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="javascript: void(0)" style="text-decoration: none">Dashboards</a>
+
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../details/dashboards/index.html">Dashboards Index</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="javascript: void(0)" style="text-decoration: none">Insight</a>
+
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-home.html">Home Dashboard</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-advanced-data-exploration.html">Advanced Data Exploration</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-victoriametrics.html">VictoriaMetrics</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-victoriametrics-agents-overview.html">VictoriaMetrics Agents Overview</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="javascript: void(0)" style="text-decoration: none">PMM</a>
+
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-inventory.html">PMM Inventory</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="javascript: void(0)" style="text-decoration: none">OS Dashboards</a>
+
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-cpu-utilization-details.html">CPU Utilization Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-disk-details.html">Disk Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-network-details.html">Network Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-memory-details.html">Memory Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-node-temperature-details.html">Node Temperature Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-nodes-compare.html">Nodes Compare</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-nodes-overview.html">Nodes Overview</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-node-summary.html">Node Summary</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-numa-details.html">NUMA Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-processes-details.html">Processes Details</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="javascript: void(0)" style="text-decoration: none">Prometheus Dashboards</a>
+
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-prometheus-exporter-status.html">Prometheus Exporter Status</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-prometheus-exporters-overview.html">Prometheus Exporters Overview</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="javascript: void(0)" style="text-decoration: none">MySQL Dashboards</a>
+
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-mysql-amazon-aurora-details.html">MySQL Amazon Aurora Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-mysql-command-handler-counters-compare.html">MySQL Command/Handler Counters Compare</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-mysql-innodb-compression-details.html">MySQL InnoDB Compression Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-mysql-innodb-details.html">MySQL InnoDB Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-mysql-myisam-aria-details.html">MySQL MyISAM/Aria Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-mysql-myrocks-details.html">MySQL MyRocks Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-mysql-instance-summary.html">MySQL Instance Summary</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-mysql-instances-compare.html">MySQL Instances Compare</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-mysql-instances-overview.html">MySQL Instances Overview</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-mysql-wait-event-analyses-details.html">MySQL Wait Event Analyses Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-mysql-performance-schema-details.html">MySQL Performance Schema Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-mysql-query-response-time-details.html">MySQL Query Response Time Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-mysql-replication-summary.html">MySQL Replication Summary</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-mysql-group-replication-summary.html">MySQL Group Replication Summary</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-mysql-table-details.html">MySQL Table Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-mysql-user-details.html">MySQL User Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-mysql-tokudb-details.html">MySQL TokuDB Details</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="javascript: void(0)" style="text-decoration: none">MongoDB Dashboards</a>
+
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-mongodb-cluster-summary.html">MongoDB Cluster Summary</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-mongodb-instance-summary.html">MongoDB Instance Summary</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-mongodb-instances-overview.html">MongoDB Instances Overview</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-mongodb-instances-compare.html">MongoDB Instances Compare</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-mongodb-replset-summary.html">MongoDB ReplSet Summary</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-mongodb-inmemory-details.html">MongoDB InMemory Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-mongodb-mmapv1-details.html">MongoDB MMAPv1 Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-mongodb-wiredtiger-details.html">MongoDB WiredTiger Details</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="javascript: void(0)" style="text-decoration: none">PostgreSQL Dashboards</a>
+
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-postgresql-instances-overview.html">PostgreSQL Instances Overview</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-postgresql-instance-summary.html">PostgreSQL Instance Summary</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-postgresql-instances-compare.html">PostgreSQL Instances Compare</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="javascript: void(0)" style="text-decoration: none">ProxySQL Dashboards</a>
+
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-proxysql-instance-summary.html">ProxySQL Instance Summary</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="javascript: void(0)" style="text-decoration: none">HA Dashboards</a>
+
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-pxc-galera-node-summary.html">PXC/Galera Node Summary</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-pxc-galera-cluster-summary.html">PXC/Galera Cluster Summary</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-pxc-galera-nodes-compare.html">PXC/Galera Nodes Compare</a>
+
+
+
+</ul>
+
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="javascript: void(0)" style="text-decoration: none">Commands</a>
+
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../details/commands/pmm-admin.html">pmm-admin - Administration Tool</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../details/commands/pmm-agent.html">pmm-agent - PMM Client agent</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../details/api.html">API</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../details/victoria-metrics.html">VictoriaMetrics</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../details/glossary.html">Glossary</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l1">
+    <a class="reference internal" href="../../faq.html">FAQ</a>
+
+
+
+
+<li class="toctree-l1">
+    <a class="reference internal" href="javascript: void(0)" style="text-decoration: none">Release Notes</a>
+
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.14.0.html">Percona Monitoring and Management 2.14.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.13.0.html">Percona Monitoring and Management 2.13.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.12.0.html">Percona Monitoring and Management 2.12.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.11.1.html">Percona Monitoring and Management 2.11.1</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.11.0.html">Percona Monitoring and Management 2.11.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.10.1.html">Percona Monitoring and Management 2.10.1</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.10.0.html">Percona Monitoring and Management 2.10.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.9.1.html">Percona Monitoring and Management 2.9.1</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.9.0.html">Percona Monitoring and Management 2.9.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.8.0.html">Percona Monitoring and Management 2.8.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.7.0.html">Percona Monitoring and Management 2.7.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.6.1.html">Percona Monitoring and Management 2.6.1</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.6.0.html">Percona Monitoring and Management 2.6.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.5.0.html">Percona Monitoring and Management 2.5.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.4.0.html">Percona Monitoring and Management 2.4.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.3.0.html">Percona Monitoring and Management 2.3.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.2.2.html">Percona Monitoring and Management 2.2.2</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.2.1.html">Percona Monitoring and Management 2.2.1</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.2.0.html">Percona Monitoring and Management 2.2.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.1.0.html">Percona Monitoring and Management 2.1.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.0.1.html">Percona Monitoring and Management 2.0.1</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.0.0.html">Percona Monitoring and Management 2.0.0</a>
+
+
+
+</ul>
+
+
+
+
+</ul>
+
+
+        
+
+<h4>Previous page</h4>
+<p class="topless">
+    <a href="../server/aws.html" title="previous chapter">AWS Marketplace</a>
+</p>
+
+
+<h4>Next page</h4>
+<p class="topless">
+    <a href="docker.html" title="next chapter">Docker</a>
+</p>
+
+
+        {@ product_series @}
+    </div>
+</div>
+
+            <div class="clearer"></div>
+        </div>
+    </div>
+</body>
