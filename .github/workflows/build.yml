@@ -54,5 +54,5 @@ jobs:
       - name: Spelling
         run: |
           sudo apt install -y nodejs
-          npm i markdown-spellcheck -g
+          sudo npm i markdown-spellcheck -g
           mdspell --report --en-us --ignore-acronyms "docs/**/*.md"
