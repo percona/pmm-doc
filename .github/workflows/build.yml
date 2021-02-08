@@ -1,9 +1,9 @@
-name: BUILD PMM DOCS 2.x
+name: BUILD PMM DOCS (TEST SPELL CHECK)
 
 on:
   push:
     branches:
-      - main
+      - spellcheck-report
 
   workflow_dispatch:
 
