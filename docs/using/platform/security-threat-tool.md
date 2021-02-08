@@ -33,9 +33,9 @@ Details are in the *PMM Database Checks* dashboard (select *PMM-->PMM Database C
 
 ## How to enable
 
-The Security Threat Tool is disabled by default. Enable it in [*PMM Settings-->Advanced Settings*](../../how-to/configure.md#advanced-settings).
+The Security Threat Tool (STT) is disabled by default. Enable it in [*PMM Settings-->Advanced Settings*](../../how-to/configure.md#advanced-settings).
 
-Enabling STT in the settings also causes the PMM server to download STT checks from Percona Platform and run them once. This operation runs in the background so even though the settings update finishes in an instant it might take some time for the Checks to complete download and execution and the results (if any) to be visible in teh *PMM Database Checks* dashboard.
+Enabling STT in the settings also causes the PMM server to download STT checks from Percona Platform and run them once. This operation runs in the background so even though the settings update finishes instantly it might take some time for the checks to complete download and execution and the results (if any) to be visible in the *PMM Database Checks* dashboard.
 
 ## List of checks made
 
