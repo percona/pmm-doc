@@ -53,6 +53,6 @@ jobs:
 
       - name: Spelling
         run: |
-          sudo apt install -y node
+          sudo snap install --classic node
           npm i markdown-spellcheck -g
           mdspell --report --en-us --ignore-acronyms "docs/**/*.md"
