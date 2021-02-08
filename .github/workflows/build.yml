@@ -50,3 +50,9 @@ jobs:
           mike delete 2.x -b publish -p
           mike deploy 2.x -b publish -p
           mike retitle 2.x "PMM2 (LATEST)" -b publish -p
+
+      - name: Spelling
+        run: |
+          sudo apt install -y node
+          npm i markdown-spellcheck -g
+          mdspell --report --en-us --ignore-acronyms "docs/**/*.md"
