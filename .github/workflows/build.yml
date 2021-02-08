@@ -1,9 +1,9 @@
-name: BUILD PMM DOCS (2.x)
+name: BUILD PMM DOCS (GRAMMAR TEST)
 
 on:
   push:
     branches:
-      - main
+      - grammar-report
 
   workflow_dispatch:
 
@@ -57,3 +57,9 @@ jobs:
           sudo npm i markdown-spellcheck -g
           mdspell --report --en-us --ignore-acronyms "docs/**/*.md" || true
           # Ignore errors, just inspect report and refine .spelling
+
+      - name: Grammar
+        run: |
+          sudo npm i write-good -g
+          write-good "docs/**/*.md" || true
+          # Ignore errors, just inspect results
