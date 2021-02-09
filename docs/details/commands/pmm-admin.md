@@ -359,7 +359,17 @@ PMM communicates with the PMM Server via a PMM agent process.
     : Disable collection of query examples.
 
     `--disable-tablestats`
-    : Disable table statistics collection.
+    : Disable table statistics collection. Excluded collectors: 
+            For LR
+            - `--collect.auto_increment.columns`
+            - `--collect.info_schema.tables`
+            - `--collect.info_schema.tablestats`
+			- `--collect.perf_schema.indexiowaits`
+			- `--collect.perf_schema.tableiowaits`
+			- `--collect.perf_schema.file_instances`
+
+			For MR
+			- `--collect.perf_schema.tablelocks`
 
     `--disable-tablestats-limit=disable-tablestats-limit`
     : Table statistics collection will be disabled if there are more than specified number of tables
