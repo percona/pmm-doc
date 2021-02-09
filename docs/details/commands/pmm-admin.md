@@ -519,7 +519,7 @@ PMM communicates with the PMM Server via a PMM agent process.
 	: Scheme to generate URI to exporter metrics endpoints (http, https).
 
     `--metrics-path=METRICS-PATH`
-	: Path under which metrics are exposed, used to generate URL (default: /metrics). Slash will be added automatically, if is not presented already.
+	: Path under which metrics are exposed, used to generate URL (default: `/metrics`). Forward slash is added if missing from METRICS-PATH.
 
     `--environment=ENVIRONMENT`
 	: Environment name
