@@ -1,0 +1,1585 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<title>Percona Monitoring and Management &mdash; pmm-admin - Administration Tool</title>
+
+<head>
+    
+
+
+    
+<script src="../../js/version-select.js" type="text/javascript"></script>
+
+<script src="../../js/toctree.js" type="text/javascript"></script>
+
+
+    <link rel="top" title="" href="" />
+    
+    <link rel="next" title="pmm-agent - PMM Client agent" href="pmm-agent.html" />
+    
+    
+</head>
+
+<body>
+	<!-- 2021-02-09 06:20:10.668377+00:00 -->
+    
+<link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.3/css/line.css" type="text/css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" type="text/css">
+<link rel="stylesheet" href="../../css/version-select.css" type="text/css">
+<link rel="stylesheet" href="../../css/toctree.css" type="text/css">
+
+    
+<script src="../../js/version-select.js" type="text/javascript"></script>
+
+<script src="../../js/toctree.js" type="text/javascript"></script>
+
+
+    <div class="container">
+        <div class="document row">
+            <div class="documentwrapper col-md-9 col-md-push-3">
+                
+<div class="related row">
+    <ul class="nav nav-pills">
+        
+        <li class="right" style="margin-right: 10px">
+            <a href="pmm-agent.html" title="pmm-agent - PMM Client agent">Next</a>
+        </li>
+        
+        
+        <li class="right" style="margin-right: 10px">
+            <a href="../dashboards/dashboard-pxc-galera-nodes-compare.html" title="PXC/Galera Nodes Compare">Previous</a>
+        </li>
+        
+        <li>
+            <a href="">Home</a>
+        </li>
+    </ul>
+</div>
+
+                
+
+<div class="small">
+    <ul class="list-inline">
+        <li class="left">
+            <a href="https://github.com/percona/pmm-doc/issues/new?title=PMM2: doc issue on page  'pmm-admin - Administration Tool' (details/commands/pmm-admin.html)&body=Please describe the issue here"
+                target="_blank" title="Report an issue with this page on GitHub"><i class="uil uil-exclamation-triangle"></i> Report a problem with this page</a>
+        </li>
+        <li class="pull-right">
+            <a href="https://github.com/percona/pmm-doc/edit/main/docs/details/commands/pmm-admin.md" target="_blank" title="Edit this page on GitHub in Markdown format"><i class="uil uil-pen"></i> Edit this page</a>
+        </li>
+    </ul>
+</div>
+
+
+                <div class="bodywrapper">
+                    <div class="body">
+                        <h1>pmm-admin - Administration Tool</h1>
+<hr />
+<div class="toc">
+<ul>
+<li><a href="#name">NAME</a></li>
+<li><a href="#synopsis">SYNOPSIS</a></li>
+<li><a href="#description">DESCRIPTION</a></li>
+<li><a href="#common-flags">COMMON FLAGS</a></li>
+<li><a href="#commands">COMMANDS</a><ul>
+<li><a href="#general-commands">GENERAL COMMANDS</a></li>
+<li><a href="#information-commands">INFORMATION COMMANDS</a></li>
+<li><a href="#configuration-commands">CONFIGURATION COMMANDS</a></li>
+<li><a href="#database-commands">DATABASE COMMANDS</a></li>
+<li><a href="#other-commands">OTHER COMMANDS</a></li>
+</ul>
+</li>
+<li><a href="#examples">EXAMPLES</a></li>
+</ul>
+</div>
+<hr />
+<h2 id="name"><a class="toclink" href="#name">NAME</a></h2>
+<p><code>pmm-admin</code> - Administer PMM</p>
+<h2 id="synopsis"><a class="toclink" href="#synopsis">SYNOPSIS</a></h2>
+<p><code>pmm-admin [FLAGS]</code></p>
+<p><code>pmm-admin config [FLAGS] --server-url=server-url</code></p>
+<p><code>pmm-admin add DATABASE [FLAGS] [NAME] [ADDRESS]</code></p>
+<p><code>pmm-admin add external [FLAGS] [NAME] [ADDRESS]</code> (CAUTION: Technical preview feature)</p>
+<p><code>pmm-admin add external-serverless [FLAGS] [NAME] [ADDRESS]</code> (CAUTION: Technical preview feature)</p>
+<p><code>pmm-admin remove [FLAGS] service-type [service-name]</code></p>
+<p><code>pmm-admin register [FLAGS] [node-address] [node-type] [node-name]</code></p>
+<p><code>pmm-admin list [FLAGS] [node-address]</code></p>
+<p><code>pmm-admin status [FLAGS] [node-address]</code></p>
+<p><code>pmm-admin summary [FLAGS] [node-address]</code></p>
+<p><code>pmm-admin annotate [--node|--service] [--tags &lt;tags&gt;] [node-name|service-name]</code></p>
+<p><code>pmm-admin help [COMMAND]</code></p>
+<h2 id="description"><a class="toclink" href="#description">DESCRIPTION</a></h2>
+<p><code>pmm-admin</code> is a command-line tool for administering PMM using a set of COMMAND keywords and associated FLAGS.</p>
+<p>PMM communicates with the PMM Server via a PMM agent process.</p>
+<h2 id="common-flags"><a class="toclink" href="#common-flags">COMMON FLAGS</a></h2>
+<dl>
+<dt><code>-h</code>, <code>--help</code></dt>
+<dd>Show help and exit.</dd>
+<dt><code>--help-long</code></dt>
+<dd>Show extended help and exit.</dd>
+<dt><code>--help-man</code></dt>
+<dd>Generate <code>man</code> page. (Use <code>pmm-admin --help-man | man -l -</code> to view.)</dd>
+<dt><code>--debug</code></dt>
+<dd>Enable debug logging.</dd>
+<dt><code>--trace</code></dt>
+<dd>Enable trace logging (implies debug).</dd>
+<dt><code>--json</code></dt>
+<dd>Enable JSON output.</dd>
+<dt><code>--version</code></dt>
+<dd>Show the application version and exit.</dd>
+<dt><code>--server-url=server-url</code></dt>
+<dd>PMM Server URL in <code>https://username:password@pmm-server-host/</code> format.</dd>
+<dt><code>--server-insecure-tls</code></dt>
+<dd>Skip PMM Server TLS certificate validation.</dd>
+<dt><code>--group=&lt;group-name&gt;</code></dt>
+<dd>Group name for external services. Default: <code>external</code></dd>
+</dl>
+<h2 id="commands"><a class="toclink" href="#commands">COMMANDS</a></h2>
+<h3 id="general-commands"><a class="toclink" href="#general-commands">GENERAL COMMANDS</a></h3>
+<dl>
+<dt><code>pmm-admin help [COMMAND]</code></dt>
+<dd>Show help for <code>COMMAND</code>.</dd>
+</dl>
+<h3 id="information-commands"><a class="toclink" href="#information-commands">INFORMATION COMMANDS</a></h3>
+<dl>
+<dt><code>pmm-admin list --server-url=server-url [FLAGS]</code></dt>
+<dd>Show Services and Agents running on this Node, and the agent mode (push/pull).</dd>
+<dt><code>pmm-admin status --server-url=server-url [FLAGS]</code></dt>
+<dd>
+<p>Show the following information about a local pmm-agent, and its connected server and clients:</p>
+<ul>
+<li>Agent: Agent ID, Node ID.</li>
+<li>PMM Server: URL and version.</li>
+<li>PMM Client: connection status, time drift, latency, vmagent status, pmm-admin version.</li>
+<li>Agents: Agent ID path and client name.</li>
+</ul>
+<p>FLAGS:</p>
+<dl>
+<dt><code>--wait=&lt;period&gt;&lt;unit&gt;</code></dt>
+<dd>Time to wait for a successful response from pmm-agent. <em>period</em> is an integer. <em>unit</em> is one of <code>ms</code> for milliseconds, <code>s</code> for seconds, <code>m</code> for minutes, <code>h</code> for hours.</dd>
+</dl>
+</dd>
+<dt><code>pmm-admin summary --server-url=server-url [FLAGS]</code></dt>
+<dd>
+<p>Creates an archive file in the current directory with default filename <code>summary_&lt;hostname&gt;_&lt;year&gt;_&lt;month&gt;_&lt;date&gt;_&lt;hour&gt;_&lt;minute&gt;_&lt;second&gt;.zip</code>. The contents are two directories, <code>client</code> and <code>server</code> containing diagnostic text files.</p>
+<p>FLAGS:</p>
+<dl>
+<dt><code>--filename="filename"</code></dt>
+<dd>The Summary Archive filename.</dd>
+<dt><code>--skip-server</code></dt>
+<dd>Skip fetching <code>logs.zip</code> from PMM Server.</dd>
+<dt><code>--pprof</code></dt>
+<dd>Include performance profiling data in the summary.</dd>
+</dl>
+</dd>
+</dl>
+<h3 id="configuration-commands"><a class="toclink" href="#configuration-commands">CONFIGURATION COMMANDS</a></h3>
+<h4><code>pmm-admin config</code></h4>
+<dl>
+<dt><code>pmm-admin config [FLAGS] [node-address] [node-type] [node-name]</code></dt>
+<dd>
+<p>Configure a local <code>pmm-agent</code>.</p>
+<p>FLAGS:</p>
+<dl>
+<dt><code>--node-id=node-id</code></dt>
+<dd>Node ID (default is auto-detected).</dd>
+<dt><code>--node-model=node-model</code></dt>
+<dd>Node model</dd>
+<dt><code>--region=region</code></dt>
+<dd>Node region</dd>
+<dt><code>--az=availability-zone</code></dt>
+<dd>Node availability zone</dd>
+<dt><code>--force</code></dt>
+<dd>Remove Node with that name with all dependent Services and Agents if one exist</dd>
+<dt><code>--metrics-mode=mode</code></dt>
+<dd>Metrics flow mode for agents node-exporter. Allowed values:
+- <code>auto</code>: chosen by server (default)
+- <code>push</code>: agent will push metrics
+- <code>pull</code>: server scrapes metrics from agent</dd>
+<dt><code>--disable-collectors</code></dt>
+<dd>Comma-separated list of collector names to exclude from exporter</dd>
+</dl>
+</dd>
+</dl>
+<h4><code>pmm-admin register</code></h4>
+<dl>
+<dt><code>pmm-admin register [FLAGS] [node-address] [node-type] [node-name]</code></dt>
+<dd>
+<p>Register the current Node with the PMM Server.</p>
+<dl>
+<dt><code>--server-url=server-url</code></dt>
+<dd>PMM Server URL in <code>https://username:password@pmm-server-host/</code> format.</dd>
+<dt><code>--machine-id="/machine_id/9812826a1c45454a98ba45c56cc4f5b0"</code></dt>
+<dd>Node machine-id (default is auto-detected).</dd>
+<dt><code>--distro="linux"</code></dt>
+<dd>Node OS distribution (default is auto-detected).</dd>
+<dt><code>--container-id=container-id</code></dt>
+<dd>Container ID.</dd>
+<dt><code>--container-name=container-name</code></dt>
+<dd>Container name.</dd>
+<dt><code>--node-model=node-model</code></dt>
+<dd>Node model.</dd>
+<dt><code>--region=region</code></dt>
+<dd>Node region.</dd>
+<dt><code>--az=availability-zone</code></dt>
+<dd>Node availability zone.</dd>
+<dt><code>--custom-labels=labels</code></dt>
+<dd>Custom user-assigned labels.</dd>
+<dt><code>--force</code></dt>
+<dd>Remove Node with that name with all dependent Services and Agents if one exists.</dd>
+<dt><code>--disable-collectors</code></dt>
+<dd>Comma-separated list of collector names to exclude from exporter</dd>
+</dl>
+</dd>
+</dl>
+<h4><code>pmm-admin remove</code></h4>
+<dl>
+<dt><code>pmm-admin remove [FLAGS] service-type [service-name]</code></dt>
+<dd>
+<p>Remove Service from monitoring.</p>
+<dl>
+<dt><code>--service-id=service-id</code></dt>
+<dd>Service ID.</dd>
+</dl>
+</dd>
+</dl>
+<h4><code>pmm-admin annotate</code></h4>
+<dl>
+<dt><code>pmm-admin annotate [--node|--service] &lt;annotation&gt; [--tags &lt;tags&gt;] [--node-name=&lt;node&gt;] [--service-name=&lt;service&gt;]</code></dt>
+<dd>
+<p>Annotate an event. (<a href="../../using/interface.html#annotations">Read more</a>)</p>
+<dl>
+<dt><code>&lt;annotation&gt;</code></dt>
+<dd>The annotation string. If it contains spaces, it should be quoted.</dd>
+<dt><code>--node</code></dt>
+<dd>Annotate the current node or that specified by <code>--node-name</code>.</dd>
+<dt><code>--service</code></dt>
+<dd>Annotate all services running on the current node, or that specified by <code>--service-name</code>.</dd>
+<dt><code>--tags</code></dt>
+<dd>A quoted string that defines one or more comma-separated tags for the annotation. Example: <code>"tag 1,tag 2"</code>.</dd>
+<dt><code>--node-name</code></dt>
+<dd>The node name being annotated.</dd>
+<dt><code>--service-name</code></dt>
+<dd>The service name being annotated.</dd>
+</dl>
+<p><strong>Combining flags</strong></p>
+<p>Flags may be combined as shown in the following examples.</p>
+<dl>
+<dt><code>--node</code></dt>
+<dd>current node</dd>
+<dt><code>--node-name</code></dt>
+<dd>node with name</dd>
+<dt><code>--node --node-name=NODE_NAME</code></dt>
+<dd>node with name</dd>
+<dt><code>--node --service-name</code></dt>
+<dd>current node and service with name</dd>
+<dt><code>--node --node-name --service-name</code></dt>
+<dd>node with name and service with name</dd>
+<dt><code>--node --service</code></dt>
+<dd>current node and all services of current node</dd>
+<dt><code>-node --node-name --service --service-name</code></dt>
+<dd>service with name and node with name</dd>
+<dt><code>--service</code></dt>
+<dd>all services of the current node</dd>
+<dt><code>--service-name</code></dt>
+<dd>service with name</dd>
+<dt><code>--service --service-name</code></dt>
+<dd>service with name</dd>
+<dt><code>--service --node-name</code></dt>
+<dd>all services of current node and node with name</dd>
+<dt><code>--service-name --node-name</code></dt>
+<dd>service with name and node with name</dd>
+<dt><code>--service --service-name -node-name</code></dt>
+<dd>service with name and node with name</dd>
+</dl>
+<div class="admonition alert alert-info">
+<p class="admonition-title">Note</p>
+<p>If node or service name is specified, they are used instead of other parameters.</p>
+</div>
+</dd>
+</dl>
+<h3 id="database-commands"><a class="toclink" href="#database-commands">DATABASE COMMANDS</a></h3>
+<h4>MongoDB</h4>
+<dl>
+<dt><code>pmm-admin add mongodb [FLAGS] [node-name] [node-address]</code></dt>
+<dd>
+<p>Add MongoDB to monitoring.</p>
+<p>FLAGS:</p>
+<dl>
+<dt><code>--node-id=node-id</code></dt>
+<dd>Node ID (default is auto-detected).</dd>
+<dt><code>--pmm-agent-id=pmm-agent-id</code></dt>
+<dd>The pmm-agent identifier which runs this instance (default is auto-detected).</dd>
+<dt><code>--username=username</code></dt>
+<dd>MongoDB username.</dd>
+<dt><code>--password=password</code></dt>
+<dd>MongoDB password.</dd>
+<dt><code>--query-source=profiler</code></dt>
+<dd>Source of queries, one of: <code>profiler</code>, <code>none</code> (default: <code>profiler</code>).</dd>
+<dt><code>--environment=environment</code></dt>
+<dd>Environment name.</dd>
+<dt><code>--cluster=cluster</code></dt>
+<dd>Cluster name.</dd>
+<dt><code>--replication-set=replication-set</code></dt>
+<dd>Replication set name.</dd>
+<dt><code>--custom-labels=custom-labels</code></dt>
+<dd>Custom user-assigned labels.</dd>
+<dt><code>--skip-connection-check</code></dt>
+<dd>Skip connection check.</dd>
+<dt><code>--tls</code></dt>
+<dd>Use TLS to connect to the database.</dd>
+<dt><code>--tls-skip-verify</code></dt>
+<dd>Skip TLS certificates validation.</dd>
+<dt><code>--tls-certificate-key-file=PATHTOCERT</code></dt>
+<dd>Path to TLS certificate file.</dd>
+<dt><code>--tls-certificate-key-file-password=IFPASSWORDTOCERTISSET</code></dt>
+<dd>Password for TLS certificate file.</dd>
+<dt><code>--tls-ca-file=PATHTOCACERT</code></dt>
+<dd>Path to certificate authority file.</dd>
+<dt><code>--metrics-mode=mode</code></dt>
+<dd>Metrics flow mode for agents node-exporter. Allowed values:
+- <code>auto</code>: chosen by server (default)
+- <code>push</code>: agent will push metrics
+- <code>pull</code>: server scrapes metrics from agent</dd>
+<dt><code>--disable-collectors</code></dt>
+<dd>Comma-separated list of collector names to exclude from exporter</dd>
+</dl>
+</dd>
+</dl>
+<h4>MySQL</h4>
+<dl>
+<dt><code>pmm-admin add mysql [FLAGS] node-name node-address | [--name=service-name] --address=address[:port] | --socket</code></dt>
+<dd>
+<p>Add MySQL to monitoring.</p>
+<p>FLAGS:</p>
+<dl>
+<dt><code>--address</code></dt>
+<dd>MySQL address and port (default: 127.0.0.1:3306).</dd>
+<dt><code>--socket=socket</code></dt>
+<dd>Path to MySQL socket.</dd>
+<dt><code>--node-id=node-id</code></dt>
+<dd>Node ID (default is auto-detected).</dd>
+<dt><code>--pmm-agent-id=pmm-agent-id</code></dt>
+<dd>The pmm-agent identifier which runs this instance (default is auto-detected).</dd>
+<dt><code>--username=username</code></dt>
+<dd>MySQL username.</dd>
+<dt><code>--password=password</code></dt>
+<dd>MySQL password.</dd>
+<dt><code>--query-source=slowlog</code></dt>
+<dd>Source of SQL queries, one of: <code>slowlog</code>, <code>perfschema</code>, <code>none</code> (default: <code>slowlog</code>).</dd>
+<dt><code>--size-slow-logs=N</code></dt>
+<dd>Rotate slow log file at this size (default: server-defined; negative value disables rotation).</dd>
+<dt><code>--disable-queryexamples</code></dt>
+<dd>Disable collection of query examples.</dd>
+<dt><code>--disable-tablestats</code></dt>
+<dd>Disable table statistics collection.</dd>
+<dt><code>--disable-tablestats-limit=disable-tablestats-limit</code></dt>
+<dd>Table statistics collection will be disabled if there are more than specified number of tables
+(default: server-defined).</dd>
+<dt><code>--environment=environment</code></dt>
+<dd>Environment name.</dd>
+<dt><code>--cluster=cluster</code></dt>
+<dd>Cluster name.</dd>
+<dt><code>--replication-set=replication-set</code></dt>
+<dd>Replication set name.</dd>
+<dt><code>--custom-labels=custom-labels</code></dt>
+<dd>Custom user-assigned labels.</dd>
+<dt><code>--skip-connection-check</code></dt>
+<dd>Skip connection check.</dd>
+<dt><code>--tls</code></dt>
+<dd>Use TLS to connect to the database.</dd>
+<dt><code>--tls-skip-verify</code></dt>
+<dd>Skip TLS certificates validation.</dd>
+<dt><code>--metrics-mode=mode</code></dt>
+<dd>Metrics flow mode for agents node-exporter. Allowed values:
+- <code>auto</code>: chosen by server (default)
+- <code>push</code>: agent will push metrics
+- <code>pull</code>: server scrapes metrics from agent</dd>
+<dt><code>--disable-collectors</code></dt>
+<dd>Comma-separated list of collector names to exclude from exporter</dd>
+</dl>
+</dd>
+</dl>
+<h4>PostgreSQL</h4>
+<dl>
+<dt><code>pmm-admin add postgresql [FLAGS] [node-name] [node-address]</code></dt>
+<dd>
+<p>Add PostgreSQL to monitoring.</p>
+<p>FLAGS:</p>
+<dl>
+<dt><code>--node-id=&lt;node id&gt;</code></dt>
+<dd>Node ID (default is auto-detected).</dd>
+<dt><code>--pmm-agent-id=&lt;pmm agent id&gt;</code></dt>
+<dd>The pmm-agent identifier which runs this instance (default is auto-detected).</dd>
+<dt><code>--username=&lt;username&gt;</code></dt>
+<dd>PostgreSQL username.</dd>
+<dt><code>--password=&lt;password&gt;</code></dt>
+<dd>PostgreSQL password.</dd>
+<dt><code>--query-source=&lt;query source&gt;</code></dt>
+<dd>Source of SQL queries, one of: <code>pgstatements</code>, <code>pgstatmonitor</code>, <code>none</code> (default: <code>pgstatements</code>).</dd>
+<dt><code>--environment=&lt;environment&gt;</code></dt>
+<dd>Environment name.</dd>
+<dt><code>--cluster=&lt;cluster&gt;</code></dt>
+<dd>Cluster name.</dd>
+<dt><code>--replication-set=&lt;replication set&gt;</code></dt>
+<dd>Replication set name</dd>
+<dt><code>--custom-labels=&lt;custom labels&gt;</code></dt>
+<dd>Custom user-assigned labels.</dd>
+<dt><code>--skip-connection-check</code></dt>
+<dd>Skip connection check.</dd>
+<dt><code>--tls</code></dt>
+<dd>Use TLS to connect to the database.</dd>
+<dt><code>--tls-skip-verify</code></dt>
+<dd>Skip TLS certificates validation.</dd>
+<dt><code>--metrics-mode=mode</code></dt>
+<dd>Metrics flow mode for agents node-exporter. Allowed values:
+- <code>auto</code>: chosen by server (default)
+- <code>push</code>: agent will push metrics
+- <code>pull</code>: server scrapes metrics from agent</dd>
+<dt><code>--disable-collectors</code></dt>
+<dd>Comma-separated list of collector names to exclude from exporter</dd>
+</dl>
+</dd>
+</dl>
+<h4>ProxySQL</h4>
+<dl>
+<dt><code>pmm-admin add proxysql [FLAGS] [node-name] [node-address]</code></dt>
+<dd>
+<p>Add ProxySQL to monitoring.</p>
+<p>FLAGS:</p>
+<dl>
+<dt><code>--node-id=node-id</code></dt>
+<dd>Node ID (default is auto-detected).</dd>
+<dt><code>--pmm-agent-id=pmm-agent-id</code></dt>
+<dd>The pmm-agent identifier which runs this instance (default is auto-detected).</dd>
+<dt><code>--username=username</code></dt>
+<dd>ProxySQL username.</dd>
+<dt><code>--password=password</code></dt>
+<dd>ProxySQL password.</dd>
+<dt><code>--environment=environment</code></dt>
+<dd>Environment name.</dd>
+<dt><code>--cluster=cluster</code></dt>
+<dd>Cluster name.</dd>
+<dt><code>--replication-set=replication-set</code></dt>
+<dd>Replication set name.</dd>
+<dt><code>--custom-labels=custom-labels</code></dt>
+<dd>Custom user-assigned labels.</dd>
+<dt><code>--skip-connection-check</code></dt>
+<dd>Skip connection check.</dd>
+<dt><code>--tls</code></dt>
+<dd>Use TLS to connect to the database.</dd>
+<dt><code>--tls-skip-verify</code></dt>
+<dd>Skip TLS certificates validation.</dd>
+<dt><code>--metrics-mode=mode</code></dt>
+<dd>Metrics flow mode for agents node-exporter. Allowed values:
+- <code>auto</code>: chosen by server (default)
+- <code>push</code>: agent will push metrics
+- <code>pull</code>: server scrapes metrics from agent</dd>
+<dt><code>--disable-collectors</code></dt>
+<dd>Comma-separated list of collector names to exclude from exporter</dd>
+</dl>
+</dd>
+</dl>
+<h3 id="other-commands"><a class="toclink" href="#other-commands">OTHER COMMANDS</a></h3>
+<dl>
+<dt><code>pmm-admin add external-serverless [FLAGS]</code></dt>
+<dd>
+<p>Add External Service on Remote node to monitoring</p>
+<p>FLAGS:</p>
+<dl>
+<dt><code>--server-url=SERVER-URL</code></dt>
+<dd>PMM Server URL in <code>https://username:password@pmm-server-host/</code> format</dd>
+<dt><code>--server-insecure-tls</code></dt>
+<dd>Skip PMM Server TLS certificate validation</dd>
+<dt><code>--external-name=EXTERNAL-NAME</code></dt>
+<dd>Name for external service</dd>
+<dt><code>--listen-port=LISTEN-PORT</code></dt>
+<dd>Listen port of external exporter for scraping metrics</dd>
+<dt><code>--scheme=SCHEME</code></dt>
+<dd>Scheme to generate URI to exporter metrics endpoints (http, https).</dd>
+<dt><code>--metrics-path=METRICS-PATH</code></dt>
+<dd>Path under which metrics are exposed, used to generate URL (default: <code>/metrics</code>). Forward slash is added if missing from METRICS-PATH.</dd>
+<dt><code>--environment=ENVIRONMENT</code></dt>
+<dd>Environment name</dd>
+<dt><code>--cluster=CLUSTER</code></dt>
+<dd>Cluster name</dd>
+<dt><code>--replication-set=REPLICATION-SET</code></dt>
+<dd>Replication set name</dd>
+<dt><code>--custom-labels=CUSTOM-LABELS</code></dt>
+<dd>Custom user-assigned labels</dd>
+<dt><code>--group="external"</code></dt>
+<dd>Group name of external service (default: external)</dd>
+<dt><code>--machine-id=MACHINE-ID</code></dt>
+<dd>Node machine-id</dd>
+<dt><code>--distro=DISTRO</code></dt>
+<dd>Node OS distribution</dd>
+<dt><code>--container-id=CONTAINER-ID</code></dt>
+<dd>Container ID</dd>
+<dt><code>--container-name=CONTAINER-NAME</code></dt>
+<dd>Container name</dd>
+<dt><code>--node-model=NODE-MODEL</code></dt>
+<dd>Node model</dd>
+<dt><code>--region=REGION</code></dt>
+<dd>Node region</dd>
+<dt><code>--az=AZ</code></dt>
+<dd>Node availability zone</dd>
+</dl>
+</dd>
+</dl>
+<h2 id="examples"><a class="toclink" href="#examples">EXAMPLES</a></h2>
+<div class="highlight"><pre><span></span><code>pmm-admin add mysql --query-source<span class="o">=</span>slowlog --username<span class="o">=</span>pmm --password<span class="o">=</span>pmm sl-mysql <span class="m">127</span>.0.0.1:3306
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>MySQL Service added.
+Service ID  : /service_id/a89191d4-7d75-44a9-b37f-a528e2c4550f
+Service name: sl-mysql
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>pmm-admin add mysql --username<span class="o">=</span>pmm --password<span class="o">=</span>pmm --service-name<span class="o">=</span>ps-mysql --host<span class="o">=</span><span class="m">127</span>.0.0.1 --port<span class="o">=</span><span class="m">3306</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>pmm-admin status
+pmm-admin status --wait<span class="o">=</span>30s
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Agent ID: /agent_id/c2a55ac6-a12f-4172-8850-4101237a4236
+Node ID : /node_id/29b2cc24-3b90-4892-8d7e-4b44258d9309
+PMM Server:
+ URL : https://x.x.x.x:443/
+ Version: 2.5.0
+PMM Client:
+ Connected : true
+ Time drift: 2.152715ms
+ Latency : 465.658µs
+ pmm-admin version: 2.5.0
+ pmm-agent version: 2.5.0
+Agents:
+ /agent_id/aeb42475-486c-4f48-a906-9546fc7859e8 mysql_slowlog_agent Running
+</code></pre></div>
+                    </div>
+                </div>
+                
+<div class="small">
+    <ul class="list-inline">
+        
+        <li class="left">
+            <i class="uil uil-refresh"></i> Page updated 2021-02-09
+        </li>
+        
+    </ul>
+</div>
+
+                
+<div class="related row">
+    <ul class="nav nav-pills">
+        
+        <li class="right" style="margin-right: 10px">
+            <a href="pmm-agent.html" title="pmm-agent - PMM Client agent">Next</a>
+        </li>
+        
+        
+        <li class="right" style="margin-right: 10px">
+            <a href="../dashboards/dashboard-pxc-galera-nodes-compare.html" title="PXC/Galera Nodes Compare">Previous</a>
+        </li>
+        
+        <li>
+            <a href="">Home</a>
+        </li>
+    </ul>
+</div>
+
+            </div>
+            
+<div class="sphinxsidebar col-md-3 col-md-pull-9">
+    <div class="sphinxsidebarwrapper">
+        {@ product_logo @}
+        {@ product_pdf_download @}
+        
+<section class="select-wrapper" id="version-select-wrapper">
+    <!-- Empty locator section for version selector -->
+</section>
+
+        <h3 id="toctree-heading"><a href="">Contents</a></h3>
+        
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l1">
+    <a class="reference internal" href="../../index.html">Welcome</a>
+
+
+
+
+<li class="toctree-l1">
+    <a class="reference internal" href="javascript: void(0)" style="text-decoration: none">Setting up</a>
+
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../setting-up/index.html">Setting up: Overview</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="javascript: void(0)" style="text-decoration: none">Server</a>
+
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../setting-up/server/index.html">Setting up PMM Server</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../setting-up/server/docker.html">Docker</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../setting-up/server/virtual-appliance.html">Virtual Appliance</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../setting-up/server/aws.html">AWS Marketplace</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="javascript: void(0)" style="text-decoration: none">Client</a>
+
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../setting-up/client/index.html">Setting up PMM Clients</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../setting-up/client/docker.html">Docker (Client)</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../setting-up/client/mysql.html">MySQL</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../setting-up/client/percona-server.html">Percona Server</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../setting-up/client/mongodb.html">MongoDB</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../setting-up/client/postgresql.html">PostgreSQL</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../setting-up/client/proxysql.html">ProxySQL</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../setting-up/client/aws.html">Amazon RDS</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../setting-up/client/linux.html">Linux</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../setting-up/client/external.html">External Services</a>
+
+
+
+</ul>
+
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l1">
+    <a class="reference internal" href="javascript: void(0)" style="text-decoration: none">Using</a>
+
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../using/index.html">Using: Overview</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../using/interface.html">User Interface</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../using/alerting.html">Integrated Alerting</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../using/query-analytics.html">Query Analytics</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="javascript: void(0)" style="text-decoration: none">Percona Enterprise Platform</a>
+
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../using/platform/index.html">About Percona Enterprise Platform</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../using/platform/security-threat-tool.html">Security Threat Tool</a>
+
+
+
+</ul>
+
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l1">
+    <a class="reference internal" href="javascript: void(0)" style="text-decoration: none">How to</a>
+
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../how-to/index.html">How to: Overview</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../how-to/configure.html">Configure</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../how-to/upgrade.html">Upgrade</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../how-to/secure.html">Secure</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../how-to/optimize.html">Optimize</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l1">
+    <a class="reference internal" href="javascript: void(0)" style="text-decoration: none">Details</a>
+
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../index.html">Details: Overview</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../architecture.html">Architecture</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="javascript: void(0)" style="text-decoration: none">Dashboards</a>
+
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../dashboards/index.html">Dashboards Index</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="javascript: void(0)" style="text-decoration: none">Insight</a>
+
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../dashboards/dashboard-home.html">Home Dashboard</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../dashboards/dashboard-advanced-data-exploration.html">Advanced Data Exploration</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../dashboards/dashboard-victoriametrics.html">VictoriaMetrics</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../dashboards/dashboard-victoriametrics-agents-overview.html">VictoriaMetrics Agents Overview</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="javascript: void(0)" style="text-decoration: none">PMM</a>
+
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../dashboards/dashboard-inventory.html">PMM Inventory</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="javascript: void(0)" style="text-decoration: none">OS Dashboards</a>
+
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../dashboards/dashboard-cpu-utilization-details.html">CPU Utilization Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../dashboards/dashboard-disk-details.html">Disk Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../dashboards/dashboard-network-details.html">Network Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../dashboards/dashboard-memory-details.html">Memory Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../dashboards/dashboard-node-temperature-details.html">Node Temperature Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../dashboards/dashboard-nodes-compare.html">Nodes Compare</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../dashboards/dashboard-nodes-overview.html">Nodes Overview</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../dashboards/dashboard-node-summary.html">Node Summary</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../dashboards/dashboard-numa-details.html">NUMA Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../dashboards/dashboard-processes-details.html">Processes Details</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="javascript: void(0)" style="text-decoration: none">Prometheus Dashboards</a>
+
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../dashboards/dashboard-prometheus-exporter-status.html">Prometheus Exporter Status</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../dashboards/dashboard-prometheus-exporters-overview.html">Prometheus Exporters Overview</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="javascript: void(0)" style="text-decoration: none">MySQL Dashboards</a>
+
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../dashboards/dashboard-mysql-amazon-aurora-details.html">MySQL Amazon Aurora Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../dashboards/dashboard-mysql-command-handler-counters-compare.html">MySQL Command/Handler Counters Compare</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../dashboards/dashboard-mysql-innodb-compression-details.html">MySQL InnoDB Compression Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../dashboards/dashboard-mysql-innodb-details.html">MySQL InnoDB Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../dashboards/dashboard-mysql-myisam-aria-details.html">MySQL MyISAM/Aria Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../dashboards/dashboard-mysql-myrocks-details.html">MySQL MyRocks Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../dashboards/dashboard-mysql-instance-summary.html">MySQL Instance Summary</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../dashboards/dashboard-mysql-instances-compare.html">MySQL Instances Compare</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../dashboards/dashboard-mysql-instances-overview.html">MySQL Instances Overview</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../dashboards/dashboard-mysql-wait-event-analyses-details.html">MySQL Wait Event Analyses Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../dashboards/dashboard-mysql-performance-schema-details.html">MySQL Performance Schema Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../dashboards/dashboard-mysql-query-response-time-details.html">MySQL Query Response Time Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../dashboards/dashboard-mysql-replication-summary.html">MySQL Replication Summary</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../dashboards/dashboard-mysql-group-replication-summary.html">MySQL Group Replication Summary</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../dashboards/dashboard-mysql-table-details.html">MySQL Table Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../dashboards/dashboard-mysql-user-details.html">MySQL User Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../dashboards/dashboard-mysql-tokudb-details.html">MySQL TokuDB Details</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="javascript: void(0)" style="text-decoration: none">MongoDB Dashboards</a>
+
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../dashboards/dashboard-mongodb-cluster-summary.html">MongoDB Cluster Summary</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../dashboards/dashboard-mongodb-instance-summary.html">MongoDB Instance Summary</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../dashboards/dashboard-mongodb-instances-overview.html">MongoDB Instances Overview</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../dashboards/dashboard-mongodb-instances-compare.html">MongoDB Instances Compare</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../dashboards/dashboard-mongodb-replset-summary.html">MongoDB ReplSet Summary</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../dashboards/dashboard-mongodb-inmemory-details.html">MongoDB InMemory Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../dashboards/dashboard-mongodb-mmapv1-details.html">MongoDB MMAPv1 Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../dashboards/dashboard-mongodb-wiredtiger-details.html">MongoDB WiredTiger Details</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="javascript: void(0)" style="text-decoration: none">PostgreSQL Dashboards</a>
+
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../dashboards/dashboard-postgresql-instances-overview.html">PostgreSQL Instances Overview</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../dashboards/dashboard-postgresql-instance-summary.html">PostgreSQL Instance Summary</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../dashboards/dashboard-postgresql-instances-compare.html">PostgreSQL Instances Compare</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="javascript: void(0)" style="text-decoration: none">ProxySQL Dashboards</a>
+
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../dashboards/dashboard-proxysql-instance-summary.html">ProxySQL Instance Summary</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="javascript: void(0)" style="text-decoration: none">HA Dashboards</a>
+
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../dashboards/dashboard-pxc-galera-node-summary.html">PXC/Galera Node Summary</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../dashboards/dashboard-pxc-galera-cluster-summary.html">PXC/Galera Cluster Summary</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../dashboards/dashboard-pxc-galera-nodes-compare.html">PXC/Galera Nodes Compare</a>
+
+
+
+</ul>
+
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="javascript: void(0)" style="text-decoration: none">Commands</a>
+
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="pmm-admin.html">pmm-admin - Administration Tool</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="pmm-agent.html">pmm-agent - PMM Client agent</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../api.html">API</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../victoria-metrics.html">VictoriaMetrics</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../glossary.html">Glossary</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l1">
+    <a class="reference internal" href="../../faq.html">FAQ</a>
+
+
+
+
+<li class="toctree-l1">
+    <a class="reference internal" href="javascript: void(0)" style="text-decoration: none">Release Notes</a>
+
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.14.0.html">Percona Monitoring and Management 2.14.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.13.0.html">Percona Monitoring and Management 2.13.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.12.0.html">Percona Monitoring and Management 2.12.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.11.1.html">Percona Monitoring and Management 2.11.1</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.11.0.html">Percona Monitoring and Management 2.11.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.10.1.html">Percona Monitoring and Management 2.10.1</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.10.0.html">Percona Monitoring and Management 2.10.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.9.1.html">Percona Monitoring and Management 2.9.1</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.9.0.html">Percona Monitoring and Management 2.9.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.8.0.html">Percona Monitoring and Management 2.8.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.7.0.html">Percona Monitoring and Management 2.7.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.6.1.html">Percona Monitoring and Management 2.6.1</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.6.0.html">Percona Monitoring and Management 2.6.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.5.0.html">Percona Monitoring and Management 2.5.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.4.0.html">Percona Monitoring and Management 2.4.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.3.0.html">Percona Monitoring and Management 2.3.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.2.2.html">Percona Monitoring and Management 2.2.2</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.2.1.html">Percona Monitoring and Management 2.2.1</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.2.0.html">Percona Monitoring and Management 2.2.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.1.0.html">Percona Monitoring and Management 2.1.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.0.1.html">Percona Monitoring and Management 2.0.1</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.0.0.html">Percona Monitoring and Management 2.0.0</a>
+
+
+
+</ul>
+
+
+
+
+</ul>
+
+
+        
+
+<h4>Previous page</h4>
+<p class="topless">
+    <a href="../dashboards/dashboard-pxc-galera-nodes-compare.html" title="previous chapter">PXC/Galera Nodes Compare</a>
+</p>
+
+
+<h4>Next page</h4>
+<p class="topless">
+    <a href="pmm-agent.html" title="next chapter">pmm-agent - PMM Client agent</a>
+</p>
+
+
+        {@ product_series @}
+    </div>
+</div>
+
+            <div class="clearer"></div>
+        </div>
+    </div>
+</body>
