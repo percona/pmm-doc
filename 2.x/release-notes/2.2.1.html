@@ -1,0 +1,1155 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<title>Percona Monitoring and Management &mdash; Percona Monitoring and Management 2.2.1</title>
+
+<head>
+    
+
+
+    
+<script src="../js/version-select.js" type="text/javascript"></script>
+
+<script src="../js/toctree.js" type="text/javascript"></script>
+
+
+    <link rel="top" title="" href="" />
+    
+    <link rel="next" title="Percona Monitoring and Management 2.2.0" href="2.2.0.html" />
+    
+    
+</head>
+
+<body>
+	<!-- 2021-02-09 08:57:33.027588+00:00 -->
+    
+<link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.3/css/line.css" type="text/css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" type="text/css">
+<link rel="stylesheet" href="../css/version-select.css" type="text/css">
+<link rel="stylesheet" href="../css/toctree.css" type="text/css">
+
+    
+<script src="../js/version-select.js" type="text/javascript"></script>
+
+<script src="../js/toctree.js" type="text/javascript"></script>
+
+
+    <div class="container">
+        <div class="document row">
+            <div class="documentwrapper col-md-9 col-md-push-3">
+                
+<div class="related row">
+    <ul class="nav nav-pills">
+        
+        <li class="right" style="margin-right: 10px">
+            <a href="2.2.0.html" title="Percona Monitoring and Management 2.2.0">Next</a>
+        </li>
+        
+        
+        <li class="right" style="margin-right: 10px">
+            <a href="2.2.2.html" title="Percona Monitoring and Management 2.2.2">Previous</a>
+        </li>
+        
+        <li>
+            <a href="">Home</a>
+        </li>
+    </ul>
+</div>
+
+                
+
+<div class="small">
+    <ul class="list-inline">
+        <li class="left">
+            <a href="https://github.com/percona/pmm-doc/issues/new?title=PMM2: doc issue on page  'Percona Monitoring and Management 2.2.1' (release-notes/2.2.1.html)&body=Please describe the issue here"
+                target="_blank" title="Report an issue with this page on GitHub"><i class="uil uil-exclamation-triangle"></i> Report a problem with this page</a>
+        </li>
+        <li class="pull-right">
+            <a href="https://github.com/percona/pmm-doc/edit/main/docs/release-notes/2.2.1.md" target="_blank" title="Edit this page on GitHub in Markdown format"><i class="uil uil-pen"></i> Edit this page</a>
+        </li>
+    </ul>
+</div>
+
+
+                <div class="bodywrapper">
+                    <div class="body">
+                        <h1>Percona Monitoring and Management 2.2.1</h1>
+<table class="docutils field-list" frame="void" rules="none">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field-odd field">
+      <th class="field-name">Date:</th>
+      <td class="field-body">January 23, 2020</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Percona Monitoring and Management (PMM) is a free and open-source platform for managing and monitoring MySQL, MongoDB, and PostgreSQL performance.</p>
+<p>For <em>PMM</em> install instructions, see <a href="../setting-up/server/index.html">Installing PMM Server</a> and <a href="../setting-up/client/index.html">Installing PMM Client</a>.</p>
+<div class="admonition alert alert-info">
+<p class="admonition-title">Note</p>
+<p>PMM 2 is designed to be used as a new installation — your existing PMM 1 environment can’t be upgraded to this version.</p>
+</div>
+<p>PMM Server version 2.2.0 suffered an unauthenticated denial of service vulnerability (CVE-2020-7920). Any other PMM versions do not carry the same code logic, and are thus unaffected by this issue. <strong>Users who have already deployed PMM Server 2.2.0 are advised to upgrade to version 2.2.1 which resolves this issue.</strong></p>
+<h2 id="improvements-and-new-features"><a class="toclink" href="#improvements-and-new-features">Improvements and new features</a></h2>
+<ul>
+<li><a href="https://jira.percona.com/browse/PMM-5229">PMM-5229</a>: The new RDS Exporter section added to the Prometheus Exporter Status dashboard shows singlestats and charts related to the <code>rds_exporter</code></li>
+<li><a href="https://jira.percona.com/browse/PMM-5228">PMM-5228</a> and <a href="https://jira.percona.com/browse/PMM-5238">PMM-5238</a>: The Prometheus dashboard and the Exporters Overview dashboard were updated to include the <code>rds_exporter</code> metrics in their charts, allowing better understanding of the impacts of monitoring RDS instances</li>
+<li><a href="https://jira.percona.com/browse/PMM-4830">PMM-4830</a>: The consistency of the applied filters between the Query Analytics and the Overview dashboards was implemented, and now filters selected in QAN will continue to be active after the switch to any of the Overview dashboards available in the Services menu</li>
+<li><a href="https://jira.percona.com/browse/PMM-5235">PMM-5235</a>: The DB <code>uptime</code> <code>singlestats</code> in node rows on the Home dashboard were changed to show minimal values instead of average ones to be consistent with the top row</li>
+<li><a href="https://jira.percona.com/browse/PMM-5127">PMM-5127</a>: The “Search by” bar on the Query Analytics dashboard was renamed to “Filter by” to make its purpose more clear</li>
+<li><a href="https://jira.percona.com/browse/PMM-5131">PMM-5131</a>: The Filter panel on the Query Analytics dashboard now shows the total number of available Labels within the “See all” link, which appears if the Filter panel section shows only top 5 of its Labels</li>
+</ul>
+<h2 id="fixed-bugs"><a class="toclink" href="#fixed-bugs">Fixed bugs</a></h2>
+<ul>
+<li><a href="https://jira.percona.com/browse/PMM-5232">PMM-5232</a>: The <code>pmm-managed</code> component of the PMM Server 2.2.0 is vulnerable to DoS attacks, that could be carried out by anyone who knows the PMM Server IP address (CVE-2020-7920). Versions other than 2.2.0 are not affected.</li>
+<li><a href="https://jira.percona.com/browse/PMM-5226">PMM-5226</a>: The handlebars package was updated to version 4.5.3 because of the Prototype Pollution vulnerability in it (CVE-2019-19919). Please note PMM versions were not affected by this vulnerability, as handlebars package is used as a build dependency only.</li>
+<li><a href="https://jira.percona.com/browse/PMM-5206">PMM-5206</a>: Switching to the Settings dashboard was breaking the visual style of some elements on the Home dashboard</li>
+<li><a href="https://jira.percona.com/browse/PMM-5139">PMM-5139</a>: The breadcrumb panel, which shows all dashboards visited within one session starting from the root, was unable to fully show breadcrumb longer than one line</li>
+<li><a href="https://jira.percona.com/browse/PMM-5212">PMM-5212</a>: The explanatory text was added to the Download PMM Server Logs button in the Diagnostic section of the PMM Settings dashboard, and a link to it was added to the Prometheus dashboard which was the previous place to download logs</li>
+<li><a href="https://jira.percona.com/browse/PMM-5215">PMM-5215</a>: The unneeded <code>mariadb-libs</code> package was removed from the PMM Server 2.2.0 OVF image, resulting in both faster updating with the <code>yum update</code> command and avoiding dependency conflict messages in the update logs</li>
+<li><a href="https://jira.percona.com/browse/PMM-5216">PMM-5216</a>: PMM Server Upgrade to 2.2.0 was showing Grafana Update Error page with the Refresh button which had to be clicked to start using the updated version</li>
+<li><a href="https://jira.percona.com/browse/PMM-5211">PMM-5211</a>: The “Where do I get the security credentials for my Amazon RDS DB instance” link in the Add AWS RDS MySQL or Aurora MySQL instance dialog was not targeted at the appropriate instruction</li>
+<li><a href="https://jira.percona.com/browse/PMM-5217">PMM-5217</a>: PMM 2.x OVF Image memory size was increased from 1 Gb to 4 Gb with the additional 1 Gb swap space because the previous amount was hardly housing the PMM Server, and it wasn’t enough in some cases like performing an upgrade</li>
+<li><a href="https://jira.percona.com/browse/PMM-5271">PMM-5271</a>: LVM logical volumes were wrongly resized on AWS deployment, resulting in “no space left on device” errors</li>
+<li><a href="https://jira.percona.com/browse/PMM-5295">PMM-5295</a>: InnoDB Transaction Rollback Rate values on the MySQL InnoDB Details dashboard were calculated incorrectly</li>
+<li><a href="https://jira.percona.com/browse/PMM-5270">PMM-5270</a>: PXC/Galera Cluster Summary dashboard was showing empty Cluster drop-down list, making it impossible to choose the cluster name</li>
+<li><a href="https://jira.percona.com/browse/PMM-4769">PMM-4769</a>: The wrongly named “Timeout value used for retransmitting” <code>singlestat</code> on the Network Details dashboard was renamed to “The algorithm used to determine the timeout value” and updated to show the algorithm name instead of a digital code</li>
+<li><a href="https://jira.percona.com/browse/PMM-5260">PMM-5260</a>: Extensive resource consumption by <code>pmm-agent</code> took place in case of Query Analytics for PostgreSQL; it was fixed by a number of optimizations in the code, resulting in about 4 times smaller memory usage</li>
+<li><a href="https://jira.percona.com/browse/PMM-5261">PMM-5261</a>: CPU usage charts on all dashboards which contain them have undergone colors update to make <code>softIRQ</code> and Steal curves better differentiated</li>
+<li><a href="https://jira.percona.com/browse/PMM-5244">PMM-5244</a>: High memory consumption in the PMM Server with a large number of agents sending data simultaneously was fixed by improving bulk data insertion to the ClickHouse database</li>
+</ul>
+                    </div>
+                </div>
+                
+<div class="small">
+    <ul class="list-inline">
+        
+        <li class="left">
+            <i class="uil uil-refresh"></i> Page updated 2021-02-09
+        </li>
+        
+    </ul>
+</div>
+
+                
+<div class="related row">
+    <ul class="nav nav-pills">
+        
+        <li class="right" style="margin-right: 10px">
+            <a href="2.2.0.html" title="Percona Monitoring and Management 2.2.0">Next</a>
+        </li>
+        
+        
+        <li class="right" style="margin-right: 10px">
+            <a href="2.2.2.html" title="Percona Monitoring and Management 2.2.2">Previous</a>
+        </li>
+        
+        <li>
+            <a href="">Home</a>
+        </li>
+    </ul>
+</div>
+
+            </div>
+            
+<div class="sphinxsidebar col-md-3 col-md-pull-9">
+    <div class="sphinxsidebarwrapper">
+        {@ product_logo @}
+        {@ product_pdf_download @}
+        
+<section class="select-wrapper" id="version-select-wrapper">
+    <!-- Empty locator section for version selector -->
+</section>
+
+        <h3 id="toctree-heading"><a href="">Contents</a></h3>
+        
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l1">
+    <a class="reference internal" href="../index.html">Welcome</a>
+
+
+
+
+<li class="toctree-l1">
+    <a class="reference internal" href="javascript: void(0)" style="text-decoration: none">Setting up</a>
+
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../setting-up/index.html">Setting up: Overview</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="javascript: void(0)" style="text-decoration: none">Server</a>
+
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../setting-up/server/index.html">Setting up PMM Server</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../setting-up/server/docker.html">Docker</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../setting-up/server/virtual-appliance.html">Virtual Appliance</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../setting-up/server/aws.html">AWS Marketplace</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="javascript: void(0)" style="text-decoration: none">Client</a>
+
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../setting-up/client/index.html">Setting up PMM Clients</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../setting-up/client/docker.html">Docker (Client)</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../setting-up/client/mysql.html">MySQL</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../setting-up/client/percona-server.html">Percona Server</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../setting-up/client/mongodb.html">MongoDB</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../setting-up/client/postgresql.html">PostgreSQL</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../setting-up/client/proxysql.html">ProxySQL</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../setting-up/client/aws.html">Amazon RDS</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../setting-up/client/linux.html">Linux</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../setting-up/client/external.html">External Services</a>
+
+
+
+</ul>
+
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l1">
+    <a class="reference internal" href="javascript: void(0)" style="text-decoration: none">Using</a>
+
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../using/index.html">Using: Overview</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../using/interface.html">User Interface</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../using/alerting.html">Integrated Alerting</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../using/query-analytics.html">Query Analytics</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="javascript: void(0)" style="text-decoration: none">Percona Enterprise Platform</a>
+
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../using/platform/index.html">About Percona Enterprise Platform</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../using/platform/security-threat-tool.html">Security Threat Tool</a>
+
+
+
+</ul>
+
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l1">
+    <a class="reference internal" href="javascript: void(0)" style="text-decoration: none">How to</a>
+
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../how-to/index.html">How to: Overview</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../how-to/configure.html">Configure</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../how-to/upgrade.html">Upgrade</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../how-to/secure.html">Secure</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../how-to/optimize.html">Optimize</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l1">
+    <a class="reference internal" href="javascript: void(0)" style="text-decoration: none">Details</a>
+
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../details/index.html">Details: Overview</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../details/architecture.html">Architecture</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="javascript: void(0)" style="text-decoration: none">Dashboards</a>
+
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../details/dashboards/index.html">Dashboards Index</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="javascript: void(0)" style="text-decoration: none">Insight</a>
+
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-home.html">Home Dashboard</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-advanced-data-exploration.html">Advanced Data Exploration</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-victoriametrics.html">VictoriaMetrics</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-victoriametrics-agents-overview.html">VictoriaMetrics Agents Overview</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="javascript: void(0)" style="text-decoration: none">PMM</a>
+
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-inventory.html">PMM Inventory</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="javascript: void(0)" style="text-decoration: none">OS Dashboards</a>
+
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-cpu-utilization-details.html">CPU Utilization Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-disk-details.html">Disk Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-network-details.html">Network Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-memory-details.html">Memory Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-node-temperature-details.html">Node Temperature Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-nodes-compare.html">Nodes Compare</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-nodes-overview.html">Nodes Overview</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-node-summary.html">Node Summary</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-numa-details.html">NUMA Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-processes-details.html">Processes Details</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="javascript: void(0)" style="text-decoration: none">Prometheus Dashboards</a>
+
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-prometheus-exporter-status.html">Prometheus Exporter Status</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-prometheus-exporters-overview.html">Prometheus Exporters Overview</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="javascript: void(0)" style="text-decoration: none">MySQL Dashboards</a>
+
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-mysql-amazon-aurora-details.html">MySQL Amazon Aurora Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-mysql-command-handler-counters-compare.html">MySQL Command/Handler Counters Compare</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-mysql-innodb-compression-details.html">MySQL InnoDB Compression Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-mysql-innodb-details.html">MySQL InnoDB Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-mysql-myisam-aria-details.html">MySQL MyISAM/Aria Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-mysql-myrocks-details.html">MySQL MyRocks Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-mysql-instance-summary.html">MySQL Instance Summary</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-mysql-instances-compare.html">MySQL Instances Compare</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-mysql-instances-overview.html">MySQL Instances Overview</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-mysql-wait-event-analyses-details.html">MySQL Wait Event Analyses Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-mysql-performance-schema-details.html">MySQL Performance Schema Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-mysql-query-response-time-details.html">MySQL Query Response Time Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-mysql-replication-summary.html">MySQL Replication Summary</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-mysql-group-replication-summary.html">MySQL Group Replication Summary</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-mysql-table-details.html">MySQL Table Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-mysql-user-details.html">MySQL User Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-mysql-tokudb-details.html">MySQL TokuDB Details</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="javascript: void(0)" style="text-decoration: none">MongoDB Dashboards</a>
+
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-mongodb-cluster-summary.html">MongoDB Cluster Summary</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-mongodb-instance-summary.html">MongoDB Instance Summary</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-mongodb-instances-overview.html">MongoDB Instances Overview</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-mongodb-instances-compare.html">MongoDB Instances Compare</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-mongodb-replset-summary.html">MongoDB ReplSet Summary</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-mongodb-inmemory-details.html">MongoDB InMemory Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-mongodb-mmapv1-details.html">MongoDB MMAPv1 Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-mongodb-wiredtiger-details.html">MongoDB WiredTiger Details</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="javascript: void(0)" style="text-decoration: none">PostgreSQL Dashboards</a>
+
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-postgresql-instances-overview.html">PostgreSQL Instances Overview</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-postgresql-instance-summary.html">PostgreSQL Instance Summary</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-postgresql-instances-compare.html">PostgreSQL Instances Compare</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="javascript: void(0)" style="text-decoration: none">ProxySQL Dashboards</a>
+
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-proxysql-instance-summary.html">ProxySQL Instance Summary</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="javascript: void(0)" style="text-decoration: none">HA Dashboards</a>
+
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-pxc-galera-node-summary.html">PXC/Galera Node Summary</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-pxc-galera-cluster-summary.html">PXC/Galera Cluster Summary</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-pxc-galera-nodes-compare.html">PXC/Galera Nodes Compare</a>
+
+
+
+</ul>
+
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="javascript: void(0)" style="text-decoration: none">Commands</a>
+
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../details/commands/pmm-admin.html">pmm-admin - Administration Tool</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../details/commands/pmm-agent.html">pmm-agent - PMM Client agent</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../details/api.html">API</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../details/victoria-metrics.html">VictoriaMetrics</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../details/glossary.html">Glossary</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l1">
+    <a class="reference internal" href="../faq.html">FAQ</a>
+
+
+
+
+<li class="toctree-l1">
+    <a class="reference internal" href="javascript: void(0)" style="text-decoration: none">Release Notes</a>
+
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="2.14.0.html">Percona Monitoring and Management 2.14.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="2.13.0.html">Percona Monitoring and Management 2.13.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="2.12.0.html">Percona Monitoring and Management 2.12.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="2.11.1.html">Percona Monitoring and Management 2.11.1</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="2.11.0.html">Percona Monitoring and Management 2.11.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="2.10.1.html">Percona Monitoring and Management 2.10.1</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="2.10.0.html">Percona Monitoring and Management 2.10.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="2.9.1.html">Percona Monitoring and Management 2.9.1</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="2.9.0.html">Percona Monitoring and Management 2.9.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="2.8.0.html">Percona Monitoring and Management 2.8.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="2.7.0.html">Percona Monitoring and Management 2.7.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="2.6.1.html">Percona Monitoring and Management 2.6.1</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="2.6.0.html">Percona Monitoring and Management 2.6.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="2.5.0.html">Percona Monitoring and Management 2.5.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="2.4.0.html">Percona Monitoring and Management 2.4.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="2.3.0.html">Percona Monitoring and Management 2.3.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="2.2.2.html">Percona Monitoring and Management 2.2.2</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="2.2.1.html">Percona Monitoring and Management 2.2.1</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="2.2.0.html">Percona Monitoring and Management 2.2.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="2.1.0.html">Percona Monitoring and Management 2.1.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="2.0.1.html">Percona Monitoring and Management 2.0.1</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="2.0.0.html">Percona Monitoring and Management 2.0.0</a>
+
+
+
+</ul>
+
+
+
+
+</ul>
+
+
+        
+
+<h4>Previous page</h4>
+<p class="topless">
+    <a href="2.2.2.html" title="previous chapter">Percona Monitoring and Management 2.2.2</a>
+</p>
+
+
+<h4>Next page</h4>
+<p class="topless">
+    <a href="2.2.0.html" title="next chapter">Percona Monitoring and Management 2.2.0</a>
+</p>
+
+
+        {@ product_series @}
+    </div>
+</div>
+
+            <div class="clearer"></div>
+        </div>
+    </div>
+</body>
