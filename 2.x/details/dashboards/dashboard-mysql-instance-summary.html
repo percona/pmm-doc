@@ -52,7 +52,7 @@
 </head>
 
 <body>
-	<!-- 2021-02-10 08:52:37.377351+00:00 -->
+	<!-- 2021-02-10 10:00:01.137444+00:00 -->
     
 <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.3/css/line.css" type="text/css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" type="text/css">
@@ -122,7 +122,7 @@
 <p>Threads Connected is the number of open connections, while Threads Running is the number of threads not sleeping.</p>
 <h2 id="mysql-thread-cache"><a class="toclink" href="#mysql-thread-cache">MySQL Thread Cache</a></h2>
 <p><strong>MySQL Thread Cache</strong></p>
-<p>The <code>thread_cache_size</code> variable sets how many threads the server should cache to reuse. When a client disconnects, the client&rsquo;s threads are put in the cache if the cache is not full. It is autosized in MySQL 5.6.8 and above (capped to 100). Requests for threads are satisfied by reusing threads taken from the cache if possible, and only when the cache is empty is a new thread created.</p>
+<p>The <code>thread_cache_size</code> variable sets how many threads the server should cache to reuse. When a client disconnects, the client&rsquo;s threads are put in the cache if the cache is not full. It is auto-sized in MySQL 5.6.8 and above (capped to 100). Requests for threads are satisfied by reusing threads taken from the cache if possible, and only when the cache is empty is a new thread created.</p>
 <ul>
 <li><code>threads_created</code>: The number of threads created to handle connections.</li>
 <li><code>threads_cached</code>: The number of threads in the thread cache.</li>
@@ -210,15 +210,15 @@
 <h2 id="mysql-table-open-cache-status"><a class="toclink" href="#mysql-table-open-cache-status">MySQL Table Open Cache Status</a></h2>
 <p><strong>MySQL Table Open Cache Status</strong></p>
 <p>The recommendation is to set the <code>table_open_cache_instances</code> to a loose correlation to virtual CPUs, keeping in mind that more instances means the cache is split more times. If you have a cache set to 500 but it has 10 instances, each cache will only have 50 cached.</p>
-<p>The <code>table_definition_cache</code> and <code>table_open_cache</code> can be left as default as they are auto-sized MySQL 5.6 and above (ie: do not set them to any value).</p>
+<p>The <code>table_definition_cache</code> and <code>table_open_cache</code> can be left as default as they are auto-sized MySQL 5.6 and above (i.e., do not set them to any value).</p>
 <h2 id="mysql-open-tables"><a class="toclink" href="#mysql-open-tables">MySQL Open Tables</a></h2>
 <p><strong>MySQL Open Tables</strong></p>
 <p>The recommendation is to set the <code>table_open_cache_instances</code> to a loose correlation to virtual CPUs, keeping in mind that more instances means the cache is split more times. If you have a cache set to 500 but it has 10 instances, each cache will only have 50 cached.</p>
-<p>The <code>table_definition_cache</code> and <code>table_open_cache</code> can be left as default as they are auto-sized MySQL 5.6 and above (ie: do not set them to any value).</p>
+<p>The <code>table_definition_cache</code> and <code>table_open_cache</code> can be left as default as they are auto-sized MySQL 5.6 and above (i.e., do not set them to any value).</p>
 <h2 id="mysql-table-definition-cache"><a class="toclink" href="#mysql-table-definition-cache">MySQL Table Definition Cache</a></h2>
 <p><strong>MySQL Table Definition Cache</strong></p>
 <p>The recommendation is to set the <code>table_open_cache_instances</code> to a loose correlation to virtual CPUs, keeping in mind that more instances means the cache is split more times. If you have a cache set to 500 but it has 10 instances, each cache will only have 50 cached.</p>
-<p>The <code>table_definition_cache</code> and <code>table_open_cache</code> can be left as default as they are auto-sized MySQL 5.6 and above (ie: do not set them to any value).</p>
+<p>The <code>table_definition_cache</code> and <code>table_open_cache</code> can be left as default as they are auto-sized MySQL 5.6 and above (i.e., do not set them to any value).</p>
                     </div>
                 </div>
                 
@@ -226,7 +226,7 @@
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-02-09
+            <i class="uil uil-refresh"></i> Page updated 2021-02-10
         </li>
         
     </ul>

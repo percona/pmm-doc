@@ -52,7 +52,7 @@
 </head>
 
 <body>
-	<!-- 2021-02-10 08:52:37.499948+00:00 -->
+	<!-- 2021-02-10 10:00:01.250335+00:00 -->
     
 <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.3/css/line.css" type="text/css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" type="text/css">
@@ -116,7 +116,7 @@
 <li>Network traffic by packets</li>
 <li>Network traffic errors</li>
 <li>Network traffic drop</li>
-<li>Network traffic multicust</li>
+<li>Network traffic multicast</li>
 </ul>
 <h2 id="network-netstat-tcp"><a class="toclink" href="#network-netstat-tcp">Network Netstat TCP</a></h2>
 <p>This section offers the following metrics:</p>
@@ -135,19 +135,19 @@
 </ul>
 <p>The graphs in the <em>UDP Lite</em> metric give statistics about:</p>
 <dl>
-<dt>InDatagrams</dt>
+<dt><code>InDatagrams</code></dt>
 <dd>Packets received</dd>
-<dt>OutDatagrams</dt>
+<dt><code>OutDatagrams</code></dt>
 <dd>Packets sent</dd>
-<dt>InCsumErrors</dt>
+<dt><code>InCsumErrors</code></dt>
 <dd>Datagrams with checksum errors</dd>
-<dt>InErrors</dt>
+<dt><code>InErrors</code></dt>
 <dd>Datagrams that could not be delivered to an application</dd>
-<dt>RcvbufErrors</dt>
+<dt><code>RcvbufErrors</code></dt>
 <dd>Datagrams for which not enough socket buffer memory to receive</dd>
-<dt>SndbufErrors</dt>
+<dt><code>SndbufErrors</code></dt>
 <dd>Datagrams for which not enough socket buffer memory to transmit</dd>
-<dt>NoPorts</dt>
+<dt><code>NoPorts</code></dt>
 <dd>Datagrams received on a port with no listener</dd>
 </dl>
 <h2 id="icmp"><a class="toclink" href="#icmp">ICMP</a></h2>
@@ -160,62 +160,62 @@
 </ul>
 <p><strong>ICMP Errors</strong></p>
 <dl>
-<dt>InErrors</dt>
+<dt><code>InErrors</code></dt>
 <dd>Messages which the entity received but determined as having ICMP-specific errors (bad ICMP checksums, bad length, etc.)</dd>
-<dt>OutErrors</dt>
+<dt><code>OutErrors</code></dt>
 <dd>Messages which this entity did not send due to problems discovered within ICMP, such as a lack of buffers</dd>
-<dt>InDestUnreachs</dt>
+<dt><code>InDestUnreachs</code></dt>
 <dd>Destination Unreachable messages received</dd>
-<dt>OutDestUnreachs</dt>
+<dt><code>OutDestUnreachs</code></dt>
 <dd>Destination Unreachable messages sent</dd>
-<dt>InType3</dt>
+<dt><code>InType3</code></dt>
 <dd>Destination unreachable</dd>
-<dt>OutType3</dt>
+<dt><code>OutType3</code></dt>
 <dd>Destination unreachable</dd>
-<dt>InCsumErrors</dt>
+<dt><code>InCsumErrors</code></dt>
 <dd>Messages with ICMP checksum errors</dd>
-<dt>InTimeExcds</dt>
+<dt><code>InTimeExcds</code></dt>
 <dd>Time Exceeded messages received</dd>
 </dl>
 <p><strong>Messages/Redirects</strong></p>
 <dl>
-<dt>InMsgs</dt>
-<dd>Messages which the entity received. Note that this counter includes all those counted by icmpInErrors</dd>
-<dt>InRedirects</dt>
+<dt><code>InMsgs</code></dt>
+<dd>Messages which the entity received. Note that this counter includes all those counted by <code>icmpInErrors</code></dd>
+<dt><code>InRedirects</code></dt>
 <dd>Redirect messages received</dd>
-<dt>OutMsgs</dt>
-<dd>Messages which this entity attempted to send. Note that this counter includes all those counted by icmpOutErrors</dd>
-<dt>OutRedirects</dt>
+<dt><code>OutMsgs</code></dt>
+<dd>Messages which this entity attempted to send. Note that this counter includes all those counted by <code>icmpOutErrors</code></dd>
+<dt><code>OutRedirects</code></dt>
 <dd>Redirect messages sent. For a host, this object will always be zero, since hosts do not send redirects</dd>
 </dl>
 <p><strong>Echos</strong></p>
 <dl>
-<dt>InEchoReps</dt>
+<dt><code>InEchoReps</code></dt>
 <dd>Echo Reply messages received</dd>
-<dt>InEchos</dt>
+<dt><code>InEchos</code></dt>
 <dd>Echo (request) messages received</dd>
-<dt>OutEchoReps</dt>
+<dt><code>OutEchoReps</code></dt>
 <dd>Echo Reply messages sent</dd>
-<dt>OutEchos</dt>
+<dt><code>OutEchos</code></dt>
 <dd>Echo (request) messages sent</dd>
 </dl>
 <p><strong>Timestamps/Mask Requests</strong></p>
 <dl>
-<dt>InAddrMaskReps</dt>
+<dt><code>InAddrMaskReps</code></dt>
 <dd>Address Mask Reply messages received</dd>
-<dt>InAddrMasks</dt>
+<dt><code>InAddrMasks</code></dt>
 <dd>Address Mask Request messages received</dd>
-<dt>OutAddrMaskReps</dt>
+<dt><code>OutAddrMaskReps</code></dt>
 <dd>Address Mask Reply messages sent</dd>
-<dt>OutAddrMasks</dt>
+<dt><code>OutAddrMasks</code></dt>
 <dd>Address Mask Request messages sent</dd>
-<dt>InTimestampReps</dt>
+<dt><code>InTimestampReps</code></dt>
 <dd>Timestamp Reply messages received</dd>
-<dt>InTimestamps</dt>
+<dt><code>InTimestamps</code></dt>
 <dd>Timestamp Request messages received</dd>
-<dt>OutTimestampReps</dt>
+<dt><code>OutTimestampReps</code></dt>
 <dd>Timestamp Reply messages sent</dd>
-<dt>OutTimestamps</dt>
+<dt><code>OutTimestamps</code></dt>
 <dd>Timestamp Request messages sent</dd>
 </dl>
                     </div>
@@ -225,7 +225,7 @@
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2020-11-23
+            <i class="uil uil-refresh"></i> Page updated 2021-02-10
         </li>
         
     </ul>
