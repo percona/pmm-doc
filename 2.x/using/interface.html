@@ -52,7 +52,7 @@
 </head>
 
 <body>
-	<!-- 2021-02-10 08:35:45.093812+00:00 -->
+	<!-- 2021-02-10 08:38:12.971889+00:00 -->
     
 <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.3/css/line.css" type="text/css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" type="text/css">
@@ -110,12 +110,13 @@
 <div class="toc">
 <ul>
 <li><a href="#dashboards">Dashboards</a></li>
-<li><a href="#menus">Menus</a></li>
 <li><a href="#logging-in">Logging in</a></li>
 <li><a href="#user-interface-controls-common">User interface controls: Common</a><ul>
-<li><a href="#top-row-menu-bar">Top row menu bar</a></li>
-<li><a href="#second-row-menu-bar">Second row menu bar</a></li>
-<li><a href="#vertical-menu-bar-left">Vertical menu bar (left)</a></li>
+<li><a href="#main-menu">Main menu</a></li>
+<li><a href="#navigation-bar">Navigation bar</a></li>
+<li><a href="#view-controls">View controls</a></li>
+<li><a href="#view-selectors">View selectors</a></li>
+<li><a href="#shortcut-menu">Shortcut menu</a></li>
 </ul>
 </li>
 <li><a href="#navigation">Navigation</a><ul>
@@ -136,16 +137,6 @@
 <p>The interface is a collection of web pages called <em>dashboards</em>.</p>
 <p>Dashboards are grouped into <em>folders</em>. You can customize these, renaming them or creating new ones.</p>
 <p>The area inside dashboards is populated by <em>panels</em>, many of which are in collapsible panel groups. A panel can show a value, a graph, a chart, or a visual representation of a set.</p>
-<h2 id="menus"><a class="toclink" href="#menus">Menus</a></h2>
-<p>These menus and controls appear on all dashboards:</p>
-<ol>
-<li>Main menu (also <em>Grafana menu</em>, <em>side menu</em> or <em>left vertical menu</em>)</li>
-<li>Navigation bar</li>
-<li>View controls</li>
-<li>View selectors (dynamic contents)</li>
-<li>Shortcut menu (dynamic contents)</li>
-</ol>
-<p><img alt="" src="../_images/PMM_Home_Dashboard_TALL_Numbered.png" /></p>
 <h2 id="logging-in"><a class="toclink" href="#logging-in">Logging in</a></h2>
 <ol>
 <li>
@@ -175,7 +166,87 @@
 </li>
 </ol>
 <h2 id="user-interface-controls-common"><a class="toclink" href="#user-interface-controls-common">User interface controls: Common</a></h2>
-<h3 id="top-row-menu-bar"><a class="toclink" href="#top-row-menu-bar">Top row menu bar</a></h3>
+<p>These menus and controls appear on all dashboards:</p>
+<ol>
+<li><a href="#main-menu">Main menu</a> (also <em>Grafana menu</em>, <em>side menu</em>)</li>
+<li><a href="#navigation-bar">Navigation bar</a></li>
+<li><a href="#view-controls">View controls</a></li>
+<li><a href="#view-selectors">View selectors</a> (dynamic contents)</li>
+<li><a href="#shortcut-menu">Shortcut menu</a> (dynamic contents)</li>
+</ol>
+<p><img alt="" src="../_images/PMM_Home_Dashboard_TALL_Numbered.png" /></p>
+<h3 id="main-menu"><a class="toclink" href="#main-menu">Main menu</a></h3>
+<p>The main menu is part of the Grafana framework and is visible on every page.</p>
+<p><img alt="Left menu" src="../_images/PMM_Home_Dashboard_Menus_Grafana_Left_Side_Menu.jpg" /></p>
+<table class="table">
+<thead>
+<tr>
+<th scope="col">Items (Top)</th>
+<th scope="col">Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><object type="image/svg+xml" data="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCA3NCA3NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8Y2lyY2xlIGN4PSIzNyIgY3k9IjM3IiByPSIzNyIgZmlsbD0idXJsKCNwYWludDBfbGluZWFyKSIvPgogIDxwYXRoIGQ9Ik0zNy41MDAzIDU4QzQ5LjM3NDQgNTggNTkgNDguMzc0MyA1OSAzNi41QzU5IDI0LjYyNTcgNDkuMzc0NCAxNSAzNy41MDAzIDE1QzI1LjYyNjEgMTUgMTYgMjQuNjI1NyAxNiAzNi41QzE2IDM2LjY2NzEgMTYuMDAxOSAzNi44MzM4IDE2LjAwNTcgMzdIMTZWNjcuNDY3MkMxOC43NDQgNjkuMzYyMiAyMS43NTY2IDcwLjg5NiAyNC45NjkgNzJIMjVWNTMuOTk0OEMyOC41MjI1IDU2LjUxNjEgMzIuODM4MSA1OCAzNy41MDAzIDU4WiIgZmlsbD0id2hpdGUiLz4KICA8cGF0aCBkPSJNNTAgMzYuNUM1MCA0My40MDM2IDQ0LjQwMzcgNDkgMzcuNTAwMSA0OUMzMC41OTY2IDQ5IDI1IDQzLjQwMzYgMjUgMzYuNUMyNSAyOS41OTY0IDMwLjU5NjYgMjQgMzcuNTAwMSAyNEM0NC40MDM3IDI0IDUwIDI5LjU5NjQgNTAgMzYuNVoiIGZpbGw9IiNGQ0I0MkYiLz4KICA8ZGVmcz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0icGFpbnQwX2xpbmVhciIgeDE9IjM3IiB5MT0iMCIgeDI9IjM3IiB5Mj0iNzQiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KICAgICAgPHN0b3Agc3RvcC1jb2xvcj0iI0ZCQjMyRiIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjAuNTA0NzM5IiBzdG9wLWNvbG9yPSIjQzExNTExIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI0MxMTQxMSIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+Cjwvc3ZnPg=="></object></td>
+<td>Home</td>
+</tr>
+<tr>
+<td><i class="uil uil-search"></i></td>
+<td>Search</td>
+</tr>
+<tr>
+<td><i class="uil uil-plus"></i></td>
+<td>Create</td>
+</tr>
+<tr>
+<td><i class="uil uil-apps"></i></td>
+<td>Dashboards</td>
+</tr>
+<tr>
+<td><i class="uil uil-compass"></i></td>
+<td>Explore</td>
+</tr>
+<tr>
+<td><i class="uil uil-bell"></i></td>
+<td>Alerting</td>
+</tr>
+<tr>
+<td><i class="uil uil-cog"></i></td>
+<td>Configuration</td>
+</tr>
+<tr>
+<td><i class="uil uil-shield"></i></td>
+<td>Server Admin</td>
+</tr>
+<tr>
+<td><i class="uil uil-database"></i></td>
+<td>DBaaS</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition alert alert-info">
+<p class="admonition-title">Note</p>
+<p>The DBaaS icon appears only if a server feature flag has been set.</p>
+</div>
+<table class="table">
+<thead>
+<tr>
+<th align="center">Icons (Bottom)</th>
+<th scope="col">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">(Profile icon)</td>
+<td>User menu</td>
+</tr>
+<tr>
+<td align="center"><i class="uil uil-question-circle"></i></td>
+<td>Help</td>
+</tr>
+</tbody>
+</table>
+<h3 id="navigation-bar"><a class="toclink" href="#navigation-bar">Navigation bar</a></h3>
 <p><img alt="Common page elements top row" src="../_images/PMM_Home_Dashboard_Menus_Top_Navigation_Bar.jpg" /></p>
 <table class="table">
 <thead>
@@ -211,6 +282,7 @@
 </tr>
 </tbody>
 </table>
+<h3 id="view-controls"><a class="toclink" href="#view-controls">View controls</a></h3>
 <table class="table">
 <thead>
 <tr>
@@ -245,15 +317,9 @@
 </tr>
 </tbody>
 </table>
-<h3 id="second-row-menu-bar"><a class="toclink" href="#second-row-menu-bar">Second row menu bar</a></h3>
-<p>This menu bar is context sensitive; it changes according to the page you are on.</p>
-<p>The items are grouped left and right. (With wide menus on small screens, items may wrap to the next row.)</p>
-<ul>
-<li>Left: Filters and controls for the viewed data</li>
-<li>Right: Links to other dashboards</li>
-</ul>
+<h3 id="view-selectors"><a class="toclink" href="#view-selectors">View selectors</a></h3>
+<p>This menu bar is context sensitive; it changes according to the page you are on. (With wide menus on small screens, items may wrap to the next row.)</p>
 <p><img alt="Second row (home)" src="../_images/PMM_Home_Dashboard_Menus_Submenu_Bar.jpg" /></p>
-<h4>Left group items</h4>
 <table class="table">
 <thead>
 <tr>
@@ -296,7 +362,8 @@
 </tr>
 </tbody>
 </table>
-<h4>Right group items</h4>
+<h3 id="shortcut-menu"><a class="toclink" href="#shortcut-menu">Shortcut menu</a></h3>
+<p>Shortcuts to other dashboards.</p>
 <table class="table">
 <thead>
 <tr>
@@ -412,77 +479,6 @@
 <tr>
 <td></td>
 <td>PMM Settings</td>
-</tr>
-</tbody>
-</table>
-<h3 id="vertical-menu-bar-left"><a class="toclink" href="#vertical-menu-bar-left">Vertical menu bar (left)</a></h3>
-<p>The vertical menu bar (left) is part of the Grafana framework and is visible on every page.</p>
-<p><img alt="Left menu" src="../_images/PMM_Home_Dashboard_Menus_Grafana_Left_Side_Menu.jpg" /></p>
-<table class="table">
-<thead>
-<tr>
-<th scope="col">Items (Top)</th>
-<th scope="col">Name</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><object type="image/svg+xml" data="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCA3NCA3NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8Y2lyY2xlIGN4PSIzNyIgY3k9IjM3IiByPSIzNyIgZmlsbD0idXJsKCNwYWludDBfbGluZWFyKSIvPgogIDxwYXRoIGQ9Ik0zNy41MDAzIDU4QzQ5LjM3NDQgNTggNTkgNDguMzc0MyA1OSAzNi41QzU5IDI0LjYyNTcgNDkuMzc0NCAxNSAzNy41MDAzIDE1QzI1LjYyNjEgMTUgMTYgMjQuNjI1NyAxNiAzNi41QzE2IDM2LjY2NzEgMTYuMDAxOSAzNi44MzM4IDE2LjAwNTcgMzdIMTZWNjcuNDY3MkMxOC43NDQgNjkuMzYyMiAyMS43NTY2IDcwLjg5NiAyNC45NjkgNzJIMjVWNTMuOTk0OEMyOC41MjI1IDU2LjUxNjEgMzIuODM4MSA1OCAzNy41MDAzIDU4WiIgZmlsbD0id2hpdGUiLz4KICA8cGF0aCBkPSJNNTAgMzYuNUM1MCA0My40MDM2IDQ0LjQwMzcgNDkgMzcuNTAwMSA0OUMzMC41OTY2IDQ5IDI1IDQzLjQwMzYgMjUgMzYuNUMyNSAyOS41OTY0IDMwLjU5NjYgMjQgMzcuNTAwMSAyNEM0NC40MDM3IDI0IDUwIDI5LjU5NjQgNTAgMzYuNVoiIGZpbGw9IiNGQ0I0MkYiLz4KICA8ZGVmcz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0icGFpbnQwX2xpbmVhciIgeDE9IjM3IiB5MT0iMCIgeDI9IjM3IiB5Mj0iNzQiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KICAgICAgPHN0b3Agc3RvcC1jb2xvcj0iI0ZCQjMyRiIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjAuNTA0NzM5IiBzdG9wLWNvbG9yPSIjQzExNTExIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI0MxMTQxMSIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+Cjwvc3ZnPg=="></object></td>
-<td>Home</td>
-</tr>
-<tr>
-<td><i class="uil uil-search"></i></td>
-<td>Search</td>
-</tr>
-<tr>
-<td><i class="uil uil-plus"></i></td>
-<td>Create</td>
-</tr>
-<tr>
-<td><i class="uil uil-apps"></i></td>
-<td>Dashboards</td>
-</tr>
-<tr>
-<td><i class="uil uil-compass"></i></td>
-<td>Explore</td>
-</tr>
-<tr>
-<td><i class="uil uil-bell"></i></td>
-<td>Alerting</td>
-</tr>
-<tr>
-<td><i class="uil uil-cog"></i></td>
-<td>Configuration</td>
-</tr>
-<tr>
-<td><i class="uil uil-shield"></i></td>
-<td>Server Admin</td>
-</tr>
-<tr>
-<td><i class="uil uil-database"></i></td>
-<td>DBaaS</td>
-</tr>
-</tbody>
-</table>
-<div class="admonition alert alert-info">
-<p class="admonition-title">Note</p>
-<p>The DBaaS icon appears only if a server feature flag has been set.</p>
-</div>
-<table class="table">
-<thead>
-<tr>
-<th align="center">Icons (Bottom)</th>
-<th scope="col">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="center">(Profile icon)</td>
-<td>User menu</td>
-</tr>
-<tr>
-<td align="center"><i class="uil uil-question-circle"></i></td>
-<td>Help</td>
 </tr>
 </tbody>
 </table>
