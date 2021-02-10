@@ -32,7 +32,7 @@
 
 
 
-<title>Percona Monitoring and Management &mdash; Percona Monitoring and Management 2.1.0</title>
+<title>Percona Monitoring and Management &mdash; Troubleshoot</title>
 
 <head>
     
@@ -46,13 +46,13 @@
 
     <link rel="top" title="" href="" />
     
-    <link rel="next" title="Percona Monitoring and Management 2.0.1" href="2.0.1.html" />
+    <link rel="next" title="Details: Overview" href="../details/index.html" />
     
     
 </head>
 
 <body>
-	<!-- 2021-02-10 12:09:36.815870+00:00 -->
+	<!-- 2021-02-10 12:09:36.769510+00:00 -->
     
 <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.3/css/line.css" type="text/css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" type="text/css">
@@ -73,12 +73,12 @@
     <ul class="nav nav-pills">
         
         <li class="right" style="margin-right: 10px">
-            <a href="2.0.1.html" title="Percona Monitoring and Management 2.0.1">Next</a>
+            <a href="../details/index.html" title="Details: Overview">Next</a>
         </li>
         
         
         <li class="right" style="margin-right: 10px">
-            <a href="2.2.0.html" title="Percona Monitoring and Management 2.2.0">Previous</a>
+            <a href="optimize.html" title="Optimize">Previous</a>
         </li>
         
         <li>
@@ -92,11 +92,11 @@
 <div class="small">
     <ul class="list-inline">
         <li class="left">
-            <a href="https://github.com/percona/pmm-doc/issues/new?title=PMM2: doc issue on page  'Percona Monitoring and Management 2.1.0' (release-notes/2.1.0.html)&body=Please describe the issue here"
+            <a href="https://github.com/percona/pmm-doc/issues/new?title=PMM2: doc issue on page  'Troubleshoot' (how-to/troubleshoot.html)&body=Please describe the issue here"
                 target="_blank" title="Report an issue with this page on GitHub"><i class="uil uil-exclamation-triangle"></i> Report a problem with this page</a>
         </li>
         <li class="pull-right">
-            <a href="https://github.com/percona/pmm-doc/edit/main/docs/release-notes/2.1.0.md" target="_blank" title="Edit this page on GitHub in Markdown format"><i class="uil uil-pen"></i> Edit this page</a>
+            <a href="https://github.com/percona/pmm-doc/edit/main/docs/how-to/troubleshoot.md" target="_blank" title="Edit this page on GitHub in Markdown format"><i class="uil uil-pen"></i> Edit this page</a>
         </li>
     </ul>
 </div>
@@ -104,58 +104,99 @@
 
                 <div class="bodywrapper">
                     <div class="body">
-                        <h1>Percona Monitoring and Management 2.1.0</h1>
-<table class="docutils field-list" frame="void" rules="none">
-  <colgroup>
-    <col class="field-name">
-    <col class="field-body">
-  </colgroup>
-  <tbody valign="top">
-    <tr class="field-odd field">
-      <th class="field-name">Date:</th>
-      <td class="field-body">November 11, 2019</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>Percona Monitoring and Management (PMM) is a free and open-source platform for managing and monitoring MySQL, MongoDB, and PostgreSQL performance. You can run PMM in your own environment for maximum security and reliability. It provides thorough time-based analysis for MySQL, MongoDB, and PostgreSQL servers to ensure that your data works as efficiently as possible.</p>
-<p>For install instructions, see <a href="../setting-up/index.html">Installing Percona Monitoring and Management</a>.</p>
-<div class="admonition alert alert-info">
-<p class="admonition-title">Note</p>
-<p>PMM 2 is designed to be used as a new installation — please don’t try to upgrade your existing PMM 1 environment.</p>
+                        <h1>Troubleshoot</h1>
+<hr />
+<div class="toc">
+<ul>
+<li><a href="#integrated-alerting">Integrated Alerting</a><ul>
+<li><a href="#no-integrated-alerting-icon">No  Integrated Alerting icon</a></li>
+<li><a href="#integrated-alerting-icon-but-no-submenu"> Integrated Alerting icon but no submenu</a></li>
+<li><a href="#unreachable-external-ip-addresses">Unreachable external IP addresses</a></li>
+<li><a href="#what-is-alertmanager-integration">What is &lsquo;Alertmanager integration&rsquo;?</a></li>
+<li><a href="#notification-channels-not-working">Notification channels not working</a></li>
+<li><a href="#whats-the-difference-usernamepassword-vs-identitysecret">What&rsquo;s the difference: Username/Password vs Identity/Secret</a></li>
+<li><a href="#alert-rule-templates-is-disabled">Alert Rule Templates is disabled</a></li>
+<li><a href="#creating-rules">Creating rules</a></li>
+<li><a href="#variables-in-templates">Variables in Templates</a></li>
+</ul>
+</li>
+</ul>
 </div>
-<h2 id="improvements-and-new-features"><a class="toclink" href="#improvements-and-new-features">Improvements and new features</a></h2>
+<hr />
+<h2 id="integrated-alerting"><a class="toclink" href="#integrated-alerting">Integrated Alerting</a></h2>
+<h3 id="no-integrated-alerting-icon"><a class="toclink" href="#no-integrated-alerting-icon">No <i class="uil uil-bell"></i> Integrated Alerting icon</a></h3>
+<p>You are not logged in as a privileged user. You need either Admin or Editor roles to work with Integrated Alerting.</p>
+<h3 id="integrated-alerting-icon-but-no-submenu"><a class="toclink" href="#integrated-alerting-icon-but-no-submenu"><i class="uil uil-bell"></i> Integrated Alerting icon but no submenu</a></h3>
+<p>Integrated Alerting isn&rsquo;t activated.</p>
+<ol>
+<li>Go to PMM &rarr; PMM Settings &rarr; Advanced Settings</li>
+<li>Enable Integrated Alerting</li>
+</ol>
+<h3 id="unreachable-external-ip-addresses"><a class="toclink" href="#unreachable-external-ip-addresses">Unreachable external IP addresses</a></h3>
+<blockquote>
+<p>When I get an email or page from my system the IP is not reachable from outside my organization how do I fix this?</p>
+</blockquote>
+<p>You can configure your PMM Server’s Public Address by navigating to PMM &rarr; PMM Settings &rarr; Advanced Settings, and supply an address to use in your alert notifications.</p>
+<h3 id="what-is-alertmanager-integration"><a class="toclink" href="#what-is-alertmanager-integration">What is &lsquo;Alertmanager integration&rsquo;?</a></h3>
+<blockquote>
+<p>There’s already an Alertmanager integration tab without me turning it on, I know because I was using your existing alertmanager integration.</p>
+</blockquote>
+<p>This will continue to work but will be renamed <em>External Alertmanager</em>.</p>
+<h3 id="notification-channels-not-working"><a class="toclink" href="#notification-channels-not-working">Notification channels not working</a></h3>
+<blockquote>
+<p>I tried to setup a Slack/Email channel but nothing happened</p>
+</blockquote>
+<p>Before you can use a notification channel you must provide your connection details.</p>
+<ol>
+<li>Go to PMM &rarr; PMM Settings&rarr; Communication</li>
+<li>Define your SMTP server or Slack incoming webhook URL</li>
+</ol>
+<p>For PagerDuty you can configure in the notification channel tab of Integrated Alerting by supplying your server/routing key.</p>
+<h3 id="whats-the-difference-usernamepassword-vs-identitysecret"><a class="toclink" href="#whats-the-difference-usernamepassword-vs-identitysecret">What&rsquo;s the difference: Username/Password vs Identity/Secret</a></h3>
+<blockquote>
+<p>In configuring my email server I’m being asked for a Username and Password as well as Identity and Secret. What is the difference between these and which do I use or do I need both?</p>
+</blockquote>
+<p>It depends on what kind of authentication your system uses:</p>
 <ul>
-<li><a href="https://jira.percona.com/browse/PMM-4063">PMM-4063</a>: Update QAN filter panel to show only labels available for selection under currently applied filters</li>
-<li><a href="https://jira.percona.com/browse/PMM-815">PMM-815</a>: Latency Detail graph added to the MongoDB Instance Summary dashboard</li>
-<li><a href="https://jira.percona.com/browse/PMM-4768">PMM-4768</a>: Disable heavy-load collectors automatically when there are too many tables</li>
-<li><a href="https://jira.percona.com/browse/PMM-4821">PMM-4821</a>: Use color gradient in filled graphs on all dashboards</li>
-<li><a href="https://jira.percona.com/browse/PMM-4733">PMM-4733</a>: Add more log and configuration files to the downloadable <code>logs.zip</code> archive</li>
-<li><a href="https://jira.percona.com/browse/PMM-4672">PMM-4672</a>: Use integer percentage values in QAN filter panel</li>
-<li><a href="https://jira.percona.com/browse/PMM-4857">PMM-4857</a>: Update tooltips for all MongoDB dashboards</li>
-<li><a href="https://jira.percona.com/browse/PMM-4616">PMM-4616</a>: Rename column in the Query Details section in QAN from Total to Sum</li>
-<li><a href="https://jira.percona.com/browse/PMM-4770">PMM-4770</a>: Use Go 1.12.10</li>
-<li><a href="https://jira.percona.com/browse/PMM-4780">PMM-4780</a>: Update Grafana to version 6.4.1</li>
-<li><a href="https://jira.percona.com/browse/PMM-4918">PMM-4918</a>: Update Grafana plugins to newer versions, including the <code>clickhouse-datasource</code> plugin</li>
+<li>LOGIN: Use Username/Password</li>
+<li>PLAIN: Use either Username or Identity and Password</li>
+<li>CRAM-MD5: Use Username and Secret</li>
 </ul>
-<h2 id="fixed-bugs"><a class="toclink" href="#fixed-bugs">Fixed bugs</a></h2>
+<h3 id="alert-rule-templates-is-disabled"><a class="toclink" href="#alert-rule-templates-is-disabled">Alert Rule Templates is disabled</a></h3>
+<p>Built-In alerts are not editable.</p>
+<p>However, you can copy them and edit the copies. (PMM &gt;=2.14.0).</p>
+<p>If you create a custom alert rule template you will have access to edit.</p>
+<h3 id="creating-rules"><a class="toclink" href="#creating-rules">Creating rules</a></h3>
+<blockquote>
+<p>I’m ready to create my first rule!  I’ve chosen a template and given it a name&hellip;what is the format of the fields?</p>
+</blockquote>
 <ul>
-<li><a href="https://jira.percona.com/browse/PMM-4935">PMM-4935</a>: Wrong instance name displayed on the MySQL Instance Summary dashboard due to the incorrect string crop</li>
-<li><a href="https://jira.percona.com/browse/PMM-4916">PMM-4916</a>: Wrong values are shown when changing the time range for the Node Summary Dashboard in case of remote instances</li>
-<li><a href="https://jira.percona.com/browse/PMM-4895">PMM-4895</a> and <a href="https://jira.percona.com/browse/PMM-4814">PMM-4814</a>: The update process reports completion before it is actually done and therefore some dashboards, etc. may not be updated</li>
-<li><a href="https://jira.percona.com/browse/PMM-4876">PMM-4876</a>: PMM Server access credentials are shown by the <code>pmm-admin status</code> command instead of hiding them for security reasons</li>
-<li><a href="https://jira.percona.com/browse/PMM-4875">PMM-4875</a>: PostgreSQL error log gets flooded with warnings when <code>pg_stat_statements</code> extension is not installed in the database used by PMM Server or when PostgreSQL user is unable to connect to it</li>
-<li><a href="https://jira.percona.com/browse/PMM-4852">PMM-4852</a>: Node name has an incorrect value if the Home dashboard opened after QAN</li>
-<li><a href="https://jira.percona.com/browse/PMM-4847">PMM-4847</a>: Drill-downs from the Environment Overview dashboard doesn’t show data for the preselected host</li>
-<li><a href="https://jira.percona.com/browse/PMM-4841">PMM-4841</a> and <a href="https://jira.percona.com/browse/PMM-4845">PMM-4845</a>: <code>pg_stat_statement</code> QAN Agent leaks database connections</li>
-<li><a href="https://jira.percona.com/browse/PMM-4831">PMM-4831</a>: Clean-up representation of selectors names on MySQL-related dashboards for a better consistency</li>
-<li><a href="https://jira.percona.com/browse/PMM-4824">PMM-4824</a>: Incorrectly calculated singlestat values on MySQL Instances Overview dashboard</li>
-<li><a href="https://jira.percona.com/browse/PMM-4819">PMM-4819</a>: In case of the only one monitored host, its uptime is shown as a smaller value than the all hosts uptime due to the inaccurate rounding</li>
-<li><a href="https://jira.percona.com/browse/PMM-4816">PMM-4816</a>: Set equal thresholds to avoid confusing singlestat color differences on a Home dashboard</li>
-<li><a href="https://jira.percona.com/browse/PMM-4718">PMM-4718</a>: Labels are not fully displayed in the filter panel of the Query Details section in QAN</li>
-<li><a href="https://jira.percona.com/browse/PMM-4545">PMM-4545</a>: Long queries are not fully visible in the Query Examples section in QAN</li>
+<li>
+<p>Threshold - float value, it has different meanings depending on what template is used</p>
+</li>
+<li>
+<p>Duration - The duration the condition must be satisfied in seconds</p>
+</li>
+<li>
+<p>Filters - A Key, Evaluator, and Value. E.g. <code>service_name=ps5.7</code></p>
+<ul>
+<li>
+<p>Key must be an exact match. You can find a complete list of keys by using the <i class="uil uil-compass"></i><em>Explore</em> main menu item in PMM</p>
+</li>
+<li>
+<p>Evaluator can be any of: <code>=</code>, <code>=~</code></p>
+</li>
+<li>
+<p>Value is an exact match or when used with a ‘fuzzy’ evaluator (=~) can be a regular expression. E.g. <code>service_name=~ps.*</code></p>
+</li>
 </ul>
-<p>Help us improve our software quality by reporting any Percona Monitoring and Management bugs you encounter using our <a href="https://jira.percona.com/secure/Dashboard.jspa">bug tracking system</a>.</p>
+</li>
+</ul>
+<h3 id="variables-in-templates"><a class="toclink" href="#variables-in-templates">Variables in Templates</a></h3>
+<blockquote>
+<p>The concept of “template” implies things like variable substitutions&hellip;where can I use these? Where can I find a complete list of them?</p>
+</blockquote>
+<p>Here is a guide to creating templates for Alertmanager: <a href="https://prometheus.io/docs/prometheus/latest/configuration/template_examples/">https://prometheus.io/docs/prometheus/latest/configuration/template_examples/</a></p>
                     </div>
                 </div>
                 
@@ -163,7 +204,7 @@
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-02-09
+            <i class="uil uil-refresh"></i> Page updated 2021-02-10
         </li>
         
     </ul>
@@ -174,12 +215,12 @@
     <ul class="nav nav-pills">
         
         <li class="right" style="margin-right: 10px">
-            <a href="2.0.1.html" title="Percona Monitoring and Management 2.0.1">Next</a>
+            <a href="../details/index.html" title="Details: Overview">Next</a>
         </li>
         
         
         <li class="right" style="margin-right: 10px">
-            <a href="2.2.0.html" title="Percona Monitoring and Management 2.2.0">Previous</a>
+            <a href="optimize.html" title="Optimize">Previous</a>
         </li>
         
         <li>
@@ -423,37 +464,37 @@
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../how-to/index.html">How to: Overview</a>
+    <a class="reference internal" href="index.html">How to: Overview</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../how-to/configure.html">Configure</a>
+    <a class="reference internal" href="configure.html">Configure</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../how-to/upgrade.html">Upgrade</a>
+    <a class="reference internal" href="upgrade.html">Upgrade</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../how-to/secure.html">Secure</a>
+    <a class="reference internal" href="secure.html">Secure</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../how-to/optimize.html">Optimize</a>
+    <a class="reference internal" href="optimize.html">Optimize</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../how-to/troubleshoot.html">Troubleshoot</a>
+    <a class="reference internal" href="troubleshoot.html">Troubleshoot</a>
 
 
 
@@ -1002,133 +1043,133 @@
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.14.0.html">Percona Monitoring and Management 2.14.0</a>
+    <a class="reference internal" href="../release-notes/2.14.0.html">Percona Monitoring and Management 2.14.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.13.0.html">Percona Monitoring and Management 2.13.0</a>
+    <a class="reference internal" href="../release-notes/2.13.0.html">Percona Monitoring and Management 2.13.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.12.0.html">Percona Monitoring and Management 2.12.0</a>
+    <a class="reference internal" href="../release-notes/2.12.0.html">Percona Monitoring and Management 2.12.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.11.1.html">Percona Monitoring and Management 2.11.1</a>
+    <a class="reference internal" href="../release-notes/2.11.1.html">Percona Monitoring and Management 2.11.1</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.11.0.html">Percona Monitoring and Management 2.11.0</a>
+    <a class="reference internal" href="../release-notes/2.11.0.html">Percona Monitoring and Management 2.11.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.10.1.html">Percona Monitoring and Management 2.10.1</a>
+    <a class="reference internal" href="../release-notes/2.10.1.html">Percona Monitoring and Management 2.10.1</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.10.0.html">Percona Monitoring and Management 2.10.0</a>
+    <a class="reference internal" href="../release-notes/2.10.0.html">Percona Monitoring and Management 2.10.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.9.1.html">Percona Monitoring and Management 2.9.1</a>
+    <a class="reference internal" href="../release-notes/2.9.1.html">Percona Monitoring and Management 2.9.1</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.9.0.html">Percona Monitoring and Management 2.9.0</a>
+    <a class="reference internal" href="../release-notes/2.9.0.html">Percona Monitoring and Management 2.9.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.8.0.html">Percona Monitoring and Management 2.8.0</a>
+    <a class="reference internal" href="../release-notes/2.8.0.html">Percona Monitoring and Management 2.8.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.7.0.html">Percona Monitoring and Management 2.7.0</a>
+    <a class="reference internal" href="../release-notes/2.7.0.html">Percona Monitoring and Management 2.7.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.6.1.html">Percona Monitoring and Management 2.6.1</a>
+    <a class="reference internal" href="../release-notes/2.6.1.html">Percona Monitoring and Management 2.6.1</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.6.0.html">Percona Monitoring and Management 2.6.0</a>
+    <a class="reference internal" href="../release-notes/2.6.0.html">Percona Monitoring and Management 2.6.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.5.0.html">Percona Monitoring and Management 2.5.0</a>
+    <a class="reference internal" href="../release-notes/2.5.0.html">Percona Monitoring and Management 2.5.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.4.0.html">Percona Monitoring and Management 2.4.0</a>
+    <a class="reference internal" href="../release-notes/2.4.0.html">Percona Monitoring and Management 2.4.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.3.0.html">Percona Monitoring and Management 2.3.0</a>
+    <a class="reference internal" href="../release-notes/2.3.0.html">Percona Monitoring and Management 2.3.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.2.2.html">Percona Monitoring and Management 2.2.2</a>
+    <a class="reference internal" href="../release-notes/2.2.2.html">Percona Monitoring and Management 2.2.2</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.2.1.html">Percona Monitoring and Management 2.2.1</a>
+    <a class="reference internal" href="../release-notes/2.2.1.html">Percona Monitoring and Management 2.2.1</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.2.0.html">Percona Monitoring and Management 2.2.0</a>
+    <a class="reference internal" href="../release-notes/2.2.0.html">Percona Monitoring and Management 2.2.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.1.0.html">Percona Monitoring and Management 2.1.0</a>
+    <a class="reference internal" href="../release-notes/2.1.0.html">Percona Monitoring and Management 2.1.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.0.1.html">Percona Monitoring and Management 2.0.1</a>
+    <a class="reference internal" href="../release-notes/2.0.1.html">Percona Monitoring and Management 2.0.1</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.0.0.html">Percona Monitoring and Management 2.0.0</a>
+    <a class="reference internal" href="../release-notes/2.0.0.html">Percona Monitoring and Management 2.0.0</a>
 
 
 
@@ -1144,13 +1185,13 @@
 
 <h4>Previous page</h4>
 <p class="topless">
-    <a href="2.2.0.html" title="previous chapter">Percona Monitoring and Management 2.2.0</a>
+    <a href="optimize.html" title="previous chapter">Optimize</a>
 </p>
 
 
 <h4>Next page</h4>
 <p class="topless">
-    <a href="2.0.1.html" title="next chapter">Percona Monitoring and Management 2.0.1</a>
+    <a href="../details/index.html" title="next chapter">Details: Overview</a>
 </p>
 
 
