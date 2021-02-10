@@ -1,4 +1,4 @@
-name: BUILD PMM DOCS 2.x
+name: BUILD PMM DOCS (2.x)
 
 on:
   push:
@@ -47,6 +47,22 @@ jobs:
       - name: Run MkDocs (2.x)
         if: github.ref == 'refs/heads/main'
         run: |
-          mike delete 2.x -b publish -p
           mike deploy 2.x -b publish -p
           mike retitle 2.x "PMM2 (LATEST)" -b publish -p
+
+      - name: Install Node.js 14.x
+        uses: percona-platform/setup-node@v2.1.2
+        with:
+          node-version: "14"
+
+      - name: Spelling
+        run: |
+          sudo npm i markdown-spellcheck -g
+          mdspell --report --en-us --ignore-acronyms --ignore-numbers "docs/**/*.md" || true
+          # Ignore errors, just inspect report and refine .spelling
+
+      - name: Grammar
+        run: |
+          sudo npm i write-good -g
+          write-good docs/**/*.md || true
+          # Ignore errors, just inspect results

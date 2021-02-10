@@ -52,7 +52,7 @@ To define a new policy use the IAM page at AWS.
     }
     ```
 
-3. Click *Review policy* and set a name to your policy, such as *AmazonRDSforPMMPolicy*. Then, click the *Create policy* button.
+3. Click *Review policy* and set a name to your policy, such as `AmazonRDSforPMMPolicy`. Then, click the *Create policy* button.
 
     ![image](../../_images/aws.iam.create-policy.png)
 
@@ -70,7 +70,7 @@ Policies are attached to existing IAM users or groups. To create a new IAM user,
 
 ## Creating an access key for an IAM user
 
-In order to be able to discover an Amazon RDS DB instance in PMM, you either need to use the access key and secret access key of an existing IAM user or an IAM role. To create an access key for use with PMM, open the IAM console and click *Users* on the navigation pane. Then, select your IAM user.
+To discover an Amazon RDS DB instance in PMM, you either need to use the access key and secret access key of an existing IAM user or an IAM role. To create an access key for use with PMM, open the IAM console and click *Users* on the navigation pane. Then, select your IAM user.
 
 To create the access key, open the *Security credentials* tab and click the *Create access key* button. The system automatically generates a new access key ID and a secret access key that you can provide on the *PMM Add Instance* dashboard to have your Amazon RDS DB instances discovered.
 
@@ -90,13 +90,13 @@ First, make sure that the Identity and Access Management page is open and open *
 
 2. On the *Add permissions* page, click *Attach existing policies directly*.
 
-3. Using the *Filter*, locate the policy with the required permissions (such as *AmazonRDSforPMMPolicy*).
+3. Using the *Filter*, locate the policy with the required permissions (such as `AmazonRDSforPMMPolicy`).
 
-4. Select a checkbox next to the name of the policy and click *Review*.
+4. Select a check-box next to the name of the policy and click *Review*.
 
 5. The selected policy appears on the *Permissions summary* page. Click *Add permissions*.
 
-The *AmazonRDSforPMMPolicy* is now added to your IAM user.
+The `AmazonRDSforPMMPolicy` is now added to your IAM user.
 
 ![image](../../_images/aws.iam.add-permissions.png)
 

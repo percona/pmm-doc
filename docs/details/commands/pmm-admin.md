@@ -100,7 +100,7 @@ PMM communicates with the PMM Server via a PMM agent process.
     : Time to wait for a successful response from pmm-agent. *period* is an integer. *unit* is one of `ms` for milliseconds, `s` for seconds, `m` for minutes, `h` for hours.
 
 `pmm-admin summary --server-url=server-url [FLAGS]`
-:    Creates an archive file in the current directory with default filename `summary_<hostname>_<year>_<month>_<date>_<hour>_<minute>_<second>.zip`. The contents are two directories, `client` and `server` containing diagnostic text files.
+:    Creates an archive file in the current directory with default file name `summary_<hostname>_<year>_<month>_<date>_<hour>_<minute>_<second>.zip`. The contents are two directories, `client` and `server` containing diagnostic text files.
 
      FLAGS:
 
@@ -143,6 +143,9 @@ PMM communicates with the PMM Server via a PMM agent process.
         - `push`: agent will push metrics
         - `pull`: server scrapes metrics from agent
 
+    `--disable-collectors`
+    : Comma-separated list of collector names to exclude from exporter
+
 #### `pmm-admin register`
 
 `pmm-admin register [FLAGS] [node-address] [node-type] [node-name]`
@@ -177,6 +180,9 @@ PMM communicates with the PMM Server via a PMM agent process.
 
     `--force`
     : Remove Node with that name with all dependent Services and Agents if one exists.
+
+    `--disable-collectors`
+    : Comma-separated list of collector names to exclude from exporter
 
 #### `pmm-admin remove`
 
@@ -315,6 +321,9 @@ PMM communicates with the PMM Server via a PMM agent process.
         - `push`: agent will push metrics
         - `pull`: server scrapes metrics from agent
 
+    `--disable-collectors`
+    : Comma-separated list of collector names to exclude from exporter
+
 #### MySQL
 
 `pmm-admin add mysql [FLAGS] node-name node-address | [--name=service-name] --address=address[:port] | --socket`
@@ -352,9 +361,21 @@ PMM communicates with the PMM Server via a PMM agent process.
     `--disable-tablestats`
     : Disable table statistics collection.
 
+    	Excluded collectors for low-resolution time intervals:
+
+		- `--collect.auto_increment.columns`
+        - `--collect.info_schema.tables`
+        - `--collect.info_schema.tablestats`
+		- `--collect.perf_schema.indexiowaits`
+		- `--collect.perf_schema.tableiowaits`
+        - `--collect.perf_schema.file_instances`
+
+		Excluded collectors for medium-resolution time intervals:
+
+		- `--collect.perf_schema.tablelocks`
+
     `--disable-tablestats-limit=disable-tablestats-limit`
-    : Table statistics collection will be disabled if there are more than specified number of tables
-        (default: server-defined).
+    : Table statistics collection will be disabled if there are more than the specified number of tables (default: server-defined).
 
     `--environment=environment`
     : Environment name.
@@ -382,6 +403,9 @@ PMM communicates with the PMM Server via a PMM agent process.
         - `auto`: chosen by server (default)
         - `push`: agent will push metrics
         - `pull`: server scrapes metrics from agent
+
+    `--disable-collectors`
+    : Comma-separated list of collector names to exclude from exporter
 
 #### PostgreSQL
 
@@ -432,6 +456,9 @@ PMM communicates with the PMM Server via a PMM agent process.
         - `push`: agent will push metrics
         - `pull`: server scrapes metrics from agent
 
+    `--disable-collectors`
+    : Comma-separated list of collector names to exclude from exporter
+
 #### ProxySQL
 
 `pmm-admin add proxysql [FLAGS] [node-name] [node-address]`
@@ -477,6 +504,9 @@ PMM communicates with the PMM Server via a PMM agent process.
         - `auto`: chosen by server (default)
         - `push`: agent will push metrics
         - `pull`: server scrapes metrics from agent
+
+    `--disable-collectors`
+    : Comma-separated list of collector names to exclude from exporter
 
 ### OTHER COMMANDS
 

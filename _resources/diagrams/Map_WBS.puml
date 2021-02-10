@@ -9,16 +9,16 @@
 '
 ' B) Command line:
 ' 1. Download PlantUML jar file: https://sourceforge.net/projects/plantuml/files/plantuml.jar/download
-' 2. cat _resources/diagrams/Map.puml | java -jar ~/Downloads/plantuml.jar -tsvg -pipe > docs/_images/PMM_Documentation_Map.svg
+' 2. cat _resources/diagrams/Map_WBS.puml | java -jar ~/Downloads/plantuml.jar -tsvg -pipe > docs/_images/PMM_Documentation_Map_WBS.svg
 '
 ' For icons see https://plantuml.com/openiconic
 
-@startmindmap "PMM_Documentation_Map"
+@startwbs "PMM_Documentation_Map"
 title PMM Documentation Map
 caption Click a link to jump to that section
 skinparam Shadowing false
 <style>
-mindmapDiagram {
+wbsDiagram {
   node {
     FontSize 12
     BackgroundColor Orange
@@ -57,7 +57,6 @@ mindmapDiagram {
 		*_ [[https://www.percona.com/doc/percona-monitoring-and-management/2.x/how-to/secure.html Secure]]
 		*_ [[https://www.percona.com/doc/percona-monitoring-and-management/2.x/how-to/optimize.html Optimize]]
 
-left side
 
 	* <&magnifying-glass> [[https://www.percona.com/doc/percona-monitoring-and-management/2.x/details/ Details]]
 		*_ [[https://www.percona.com/doc/percona-monitoring-and-management/2.x/details/architecture.html Architecture]]
@@ -99,4 +98,4 @@ left side
 			*_ [[https://www.percona.com/doc/percona-monitoring-and-management/2.x/release-notes/2.2.2.html 2.2.2]]
 		*_ [[https://www.percona.com/doc/percona-monitoring-and-management/2.x/release-notes/2.1.0.html 2.1.0]]
 		*_ [[https://www.percona.com/doc/percona-monitoring-and-management/2.x/release-notes/2.0.0.html 2.0.0]]
-@endmindmap
+@endwbs

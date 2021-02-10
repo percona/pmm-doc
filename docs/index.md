@@ -49,7 +49,7 @@ PMM Server is the heart of PMM. It receives data from clients, collates it and s
 PMM Server can run as:
 
 - [A Docker container](setting-up/server/docker.md);
-- An [OVA/OVF virtual appliance](setting-up/server/virtual-appliance.md) running on VirtualBox, VMWare and other hypervisors;
+- An [OVA/OVF virtual appliance](setting-up/server/virtual-appliance.md) running on VirtualBox, VMware and other hypervisors;
 - An [Amazon AWS EC2 instance](setting-up/server/aws.md).
 
 !!! alert alert-info "Quickstart installation <{{ extra.quickstart }}>"
@@ -62,7 +62,7 @@ You must set up and configure PMM clients for each monitored system type:
 
 - [MySQL](setting-up/client/mysql.md)
 - [Percona Server for MySQL](setting-up/client/percona-server.md)
-- [MongDB](setting-up/client/mongodb.md)
+- [MongoDB](setting-up/client/mongodb.md)
 - [PostgreSQL](setting-up/client/postgresql.md)
 - [ProxySQL](setting-up/client/proxysql.md)
 - [Amazon RDS](setting-up/client/aws.md)
