@@ -52,7 +52,7 @@
 </head>
 
 <body>
-	<!-- 2021-02-10 08:18:53.584763+00:00 -->
+	<!-- 2021-02-10 08:35:44.044257+00:00 -->
     
 <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.3/css/line.css" type="text/css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" type="text/css">
@@ -403,24 +403,10 @@
 <dt><code>--disable-queryexamples</code></dt>
 <dd>Disable collection of query examples.</dd>
 <dt><code>--disable-tablestats</code></dt>
-<dd>
-<p>Disable table statistics collection.</p>
-<p>Excluded collectors for low-resolution time intervals:</p>
-<ul>
-<li><code>--collect.auto_increment.columns</code></li>
-<li><code>--collect.info_schema.tables</code></li>
-<li><code>--collect.info_schema.tablestats</code></li>
-<li><code>--collect.perf_schema.indexiowaits</code></li>
-<li><code>--collect.perf_schema.tableiowaits</code></li>
-<li><code>--collect.perf_schema.file_instances</code></li>
-</ul>
-<p>Excluded collectors for medium-resolution time intervals:</p>
-<ul>
-<li><code>--collect.perf_schema.tablelocks</code></li>
-</ul>
-</dd>
+<dd>Disable table statistics collection.</dd>
 <dt><code>--disable-tablestats-limit=disable-tablestats-limit</code></dt>
-<dd>Table statistics collection will be disabled if there are more than the specified number of tables (default: server-defined).</dd>
+<dd>Table statistics collection will be disabled if there are more than specified number of tables
+(default: server-defined).</dd>
 <dt><code>--environment=environment</code></dt>
 <dd>Environment name.</dd>
 <dt><code>--cluster=cluster</code></dt>
