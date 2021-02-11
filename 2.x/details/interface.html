@@ -32,7 +32,7 @@
 
 
 
-<title>Percona Monitoring and Management &mdash; Details: Overview</title>
+<title>Percona Monitoring and Management &mdash; User Interface components</title>
 
 <head>
     
@@ -46,13 +46,13 @@
 
     <link rel="top" title="" href="" />
     
-    <link rel="next" title="Architecture" href="architecture.html" />
+    <link rel="next" title="Dashboards Index" href="dashboards/index.html" />
     
     
 </head>
 
 <body>
-	<!-- 2021-02-11 13:19:13.280909+00:00 -->
+	<!-- 2021-02-11 13:19:13.316103+00:00 -->
     
 <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.3/css/line.css" type="text/css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" type="text/css">
@@ -73,12 +73,12 @@
     <ul class="nav nav-pills">
         
         <li class="right" style="margin-right: 10px">
-            <a href="architecture.html" title="Architecture">Next</a>
+            <a href="dashboards/index.html" title="Dashboards Index">Next</a>
         </li>
         
         
         <li class="right" style="margin-right: 10px">
-            <a href="../how-to/troubleshoot.html" title="Troubleshoot">Previous</a>
+            <a href="architecture.html" title="Architecture">Previous</a>
         </li>
         
         <li>
@@ -92,11 +92,11 @@
 <div class="small">
     <ul class="list-inline">
         <li class="left">
-            <a href="https://github.com/percona/pmm-doc/issues/new?title=PMM2: doc issue on page  'Details: Overview' (details/index.html)&body=Please describe the issue here"
+            <a href="https://github.com/percona/pmm-doc/issues/new?title=PMM2: doc issue on page  'User Interface components' (details/interface.html)&body=Please describe the issue here"
                 target="_blank" title="Report an issue with this page on GitHub"><i class="uil uil-exclamation-triangle"></i> Report a problem with this page</a>
         </li>
         <li class="pull-right">
-            <a href="https://github.com/percona/pmm-doc/edit/main/docs/details/index.md" target="_blank" title="Edit this page on GitHub in Markdown format"><i class="uil uil-pen"></i> Edit this page</a>
+            <a href="https://github.com/percona/pmm-doc/edit/main/docs/details/interface.md" target="_blank" title="Edit this page on GitHub in Markdown format"><i class="uil uil-pen"></i> Edit this page</a>
         </li>
     </ul>
 </div>
@@ -104,31 +104,331 @@
 
                 <div class="bodywrapper">
                     <div class="body">
-                        <h1>Details: Overview</h1>
-<ul>
-<li>
-<p><a href="architecture.html">Architecture</a>: high-level architecture and main components.</p>
-</li>
-<li>
-<p><a href="dashboards/index.html">Dashboards reference</a>: A complete list of dashboards by category, with screenshots</p>
-</li>
-<li>
-<p>Commands</p>
-<ul>
-<li><a href="commands/pmm-admin.html">pmm-admin</a>: A manual page for the PMM administration tool</li>
-<li><a href="commands/pmm-agent.html">pmm-agent</a>: A manual page for the PMM Client agent program</li>
-</ul>
-</li>
-<li>
-<p><a href="api.html">API</a>: How to access the Swagger API</p>
-</li>
-<li>
-<p><a href="victoria-metrics.html">VictoriaMetrics</a>: the third-party monitoring solution and time-series database that replaced Prometheus in <a href="../release-notes/2.12.0.html">PMM 2.12.0</a></p>
-</li>
-<li>
-<p><a href="glossary.html">Glossary</a>: A list of obscure terms and definitions</p>
-</li>
-</ul>
+                        <h1>User Interface components</h1>
+<ol>
+<li><a href="#main-menu">Main menu</a> (also <em>Grafana menu</em>, <em>side menu</em>)</li>
+<li><a href="#navigation-bar">Navigation bar</a></li>
+<li><a href="#view-controls">View controls</a></li>
+<li><a href="#view-selectors">View selectors</a> (dynamic contents)</li>
+<li><a href="#shortcut-menu">Shortcut menu</a> (dynamic contents)</li>
+</ol>
+<p><img alt="" src="../_images/PMM_Home_Dashboard_TALL_Numbered.png" /></p>
+<h2 id="main-menu"><a class="toclink" href="#main-menu">Main menu</a></h2>
+<p>The main menu is part of the Grafana framework and is visible on every page.</p>
+<table class="table">
+<thead>
+<tr>
+<th scope="col">Item (Top)</th>
+<th scope="col">Name</th>
+<th scope="col">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><object type="image/svg+xml" data="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCA3NCA3NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8Y2lyY2xlIGN4PSIzNyIgY3k9IjM3IiByPSIzNyIgZmlsbD0idXJsKCNwYWludDBfbGluZWFyKSIvPgogIDxwYXRoIGQ9Ik0zNy41MDAzIDU4QzQ5LjM3NDQgNTggNTkgNDguMzc0MyA1OSAzNi41QzU5IDI0LjYyNTcgNDkuMzc0NCAxNSAzNy41MDAzIDE1QzI1LjYyNjEgMTUgMTYgMjQuNjI1NyAxNiAzNi41QzE2IDM2LjY2NzEgMTYuMDAxOSAzNi44MzM4IDE2LjAwNTcgMzdIMTZWNjcuNDY3MkMxOC43NDQgNjkuMzYyMiAyMS43NTY2IDcwLjg5NiAyNC45NjkgNzJIMjVWNTMuOTk0OEMyOC41MjI1IDU2LjUxNjEgMzIuODM4MSA1OCAzNy41MDAzIDU4WiIgZmlsbD0id2hpdGUiLz4KICA8cGF0aCBkPSJNNTAgMzYuNUM1MCA0My40MDM2IDQ0LjQwMzcgNDkgMzcuNTAwMSA0OUMzMC41OTY2IDQ5IDI1IDQzLjQwMzYgMjUgMzYuNUMyNSAyOS41OTY0IDMwLjU5NjYgMjQgMzcuNTAwMSAyNEM0NC40MDM3IDI0IDUwIDI5LjU5NjQgNTAgMzYuNVoiIGZpbGw9IiNGQ0I0MkYiLz4KICA8ZGVmcz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0icGFpbnQwX2xpbmVhciIgeDE9IjM3IiB5MT0iMCIgeDI9IjM3IiB5Mj0iNzQiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KICAgICAgPHN0b3Agc3RvcC1jb2xvcj0iI0ZCQjMyRiIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjAuNTA0NzM5IiBzdG9wLWNvbG9yPSIjQzExNTExIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI0MxMTQxMSIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+Cjwvc3ZnPg=="></object></td>
+<td>Home</td>
+<td>Link to home dashboard</td>
+</tr>
+<tr>
+<td><i class="uil uil-search"></i></td>
+<td>Search</td>
+<td>Search dashboards by name</td>
+</tr>
+<tr>
+<td><i class="uil uil-plus"></i></td>
+<td>Create</td>
+<td>Create dashboards or <a href="https://grafana.com/docs/grafana/latest/dashboards/dashboard_folders/">folders</a>, import dashboards</td>
+</tr>
+<tr>
+<td><i class="uil uil-apps"></i></td>
+<td>Dashboards</td>
+<td>Manage dashboards, create playlists, manage snapshots</td>
+</tr>
+<tr>
+<td><i class="uil uil-compass"></i></td>
+<td>Explore</td>
+<td>Run queries with <a href="https://grafana.com/blog/2020/02/04/introduction-to-promql-the-prometheus-query-language/">PromQL</a></td>
+</tr>
+<tr>
+<td><i class="uil uil-bell"></i></td>
+<td>Alerting</td>
+<td>Alerting, <a href="../using/alerting.html">Integrated Alerting</a>, Alert Rules, Notification Channels</td>
+</tr>
+<tr>
+<td><i class="uil uil-cog"></i></td>
+<td>Configuration</td>
+<td></td>
+</tr>
+<tr>
+<td><i class="uil uil-shield"></i></td>
+<td>Server Admin</td>
+<td></td>
+</tr>
+<tr>
+<td><i class="uil uil-database"></i></td>
+<td>DBaaS</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition alert alert-info">
+<p class="admonition-title">Note</p>
+<p>The DBaaS icon appears only if a server feature flag has been set.</p>
+</div>
+<table class="table">
+<thead>
+<tr>
+<th align="center">Icon (Bottom)</th>
+<th scope="col">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">(Profile icon)</td>
+<td>User menu</td>
+</tr>
+<tr>
+<td align="center"><i class="uil uil-question-circle"></i></td>
+<td>Help</td>
+</tr>
+</tbody>
+</table>
+<h3 id="navigation-bar"><a class="toclink" href="#navigation-bar">Navigation bar</a></h3>
+<p><img alt="Common page elements top row" src="../_images/PMM_Home_Dashboard_Menus_Top_Navigation_Bar.jpg" /></p>
+<table class="table">
+<thead>
+<tr>
+<th scope="col">Item (left)</th>
+<th scope="col">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><i class="uil uil-apps"></i></td>
+<td>(Display only)</td>
+</tr>
+<tr>
+<td>(Name) /</td>
+<td>(Optional) Folder name</td>
+</tr>
+<tr>
+<td>(Name)</td>
+<td>Dashboard name</td>
+</tr>
+<tr>
+<td><i class="uil uil-star"></i></td>
+<td>Mark as favorite</td>
+</tr>
+<tr>
+<td><i class="uil uil-share-alt"></i></td>
+<td>Share dashboard</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="view-controls"><a class="toclink" href="#view-controls">View controls</a></h3>
+<table class="table">
+<thead>
+<tr>
+<th scope="col">Item (right)</th>
+<th scope="col">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><i class="uil uil-cog"></i></td>
+<td>Dashboard settings</td>
+</tr>
+<tr>
+<td><i class="uil uil-monitor"></i></td>
+<td>Cycle view mode</td>
+</tr>
+<tr>
+<td><i class="uil uil-clock-nine"></i> (time range)</td>
+<td>Time range selector</td>
+</tr>
+<tr>
+<td><i class="uil uil-search-minus"></i></td>
+<td>Time range zoom out</td>
+</tr>
+<tr>
+<td><i class="uil uil-sync"></i></td>
+<td>Refresh dashboard</td>
+</tr>
+<tr>
+<td>(Time interval)</td>
+<td>Refresh period</td>
+</tr>
+</tbody>
+</table>
+<h3 id="view-selectors"><a class="toclink" href="#view-selectors">View selectors</a></h3>
+<p>This menu bar is context sensitive; it changes according to the page you are on. (With wide menus on small screens, items may wrap to the next row.)</p>
+<p><img alt="" src="../_images/PMM_Home_Dashboard_Menus_Submenu_Bar.jpg" /></p>
+<table class="table">
+<thead>
+<tr>
+<th scope="col">Item</th>
+<th scope="col">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Interval</td>
+<td>Data interval</td>
+</tr>
+<tr>
+<td>Region</td>
+<td>Filter by region</td>
+</tr>
+<tr>
+<td>Environment</td>
+<td>Filter by environment</td>
+</tr>
+<tr>
+<td>Cluster</td>
+<td>Filter by cluster</td>
+</tr>
+<tr>
+<td>Replication Set</td>
+<td>Filter by replication set</td>
+</tr>
+<tr>
+<td>Node Name</td>
+<td>Filter by node name</td>
+</tr>
+<tr>
+<td>Service Name</td>
+<td>Filter by service name</td>
+</tr>
+<tr>
+<td>PMM Annotations</td>
+<td>View <a href="#annotations">annotations</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="shortcut-menu"><a class="toclink" href="#shortcut-menu">Shortcut menu</a></h3>
+<p>This menu contains shortcuts to other dashboards. The list changes according to the page you&rsquo;re on.</p>
+<table class="table">
+<thead>
+<tr>
+<th scope="col">Item</th>
+<th scope="col">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><i class="uil uil-file-alt"></i> Home</td>
+<td>Home dashboard</td>
+</tr>
+<tr>
+<td><i class="uil uil-apps"></i> Query Analytics</td>
+<td>Query Analytics</td>
+</tr>
+<tr>
+<td><i class="uil uil-bolt"></i> Compare</td>
+<td>Nodes compare</td>
+</tr>
+<tr>
+<td>(Service Type)</td>
+<td>Service type menu (see below)</td>
+</tr>
+<tr>
+<td><i class="uil uil-bars"></i> HA</td>
+<td>HA dashboards</td>
+</tr>
+<tr>
+<td><i class="uil uil-bars"></i> Services</td>
+<td>Services menu</td>
+</tr>
+<tr>
+<td><i class="uil uil-bars"></i> PMM</td>
+<td>PMM menu</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition alert alert-info">
+<p class="admonition-title">Note</p>
+<p>The <em>Compare</em> menu links to the Instances Overview dashboard for the current service type.</p>
+</div>
+<h5>Services menu</h5>
+<p>The <em>Services</em> menu choice determines the Service Type menu.</p>
+<table class="table">
+<thead>
+<tr>
+<th scope="col">Menu</th>
+<th scope="col">Item</th>
+<th scope="col">Service type menu</th>
+<th scope="col">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Services</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>MongoDB Instances Overview</td>
+<td><i class="uil uil-bars"></i> MongoDB</td>
+<td>MongoDB dashboards</td>
+</tr>
+<tr>
+<td></td>
+<td>MySQL Instances Overview</td>
+<td><i class="uil uil-bars"></i> MySQL</td>
+<td>MySQL dashboards</td>
+</tr>
+<tr>
+<td></td>
+<td>Nodes Overview</td>
+<td><i class="uil uil-bars"></i> OS</td>
+<td>OS dashboards</td>
+</tr>
+<tr>
+<td></td>
+<td>PostgreSQL Instances Overview</td>
+<td><i class="uil uil-bars"></i> PostgreSQL</td>
+<td>PostgreSQL dashboards</td>
+</tr>
+</tbody>
+</table>
+<h5>PMM menu</h5>
+<p>This item lists shortcuts to utility pages.</p>
+<table class="table">
+<thead>
+<tr>
+<th scope="col">Menu</th>
+<th scope="col">Item</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PMM</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>PMM Add Instance</td>
+</tr>
+<tr>
+<td></td>
+<td>PMM Database Checks</td>
+</tr>
+<tr>
+<td></td>
+<td>PMM Inventory</td>
+</tr>
+<tr>
+<td></td>
+<td>PMM Settings</td>
+</tr>
+</tbody>
+</table>
                     </div>
                 </div>
                 
@@ -136,7 +436,7 @@
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2020-12-18
+            <i class="uil uil-refresh"></i> Page updated 2021-02-11
         </li>
         
     </ul>
@@ -147,12 +447,12 @@
     <ul class="nav nav-pills">
         
         <li class="right" style="margin-right: 10px">
-            <a href="architecture.html" title="Architecture">Next</a>
+            <a href="dashboards/index.html" title="Dashboards Index">Next</a>
         </li>
         
         
         <li class="right" style="margin-right: 10px">
-            <a href="../how-to/troubleshoot.html" title="Troubleshoot">Previous</a>
+            <a href="architecture.html" title="Architecture">Previous</a>
         </li>
         
         <li>
@@ -1135,13 +1435,13 @@
 
 <h4>Previous page</h4>
 <p class="topless">
-    <a href="../how-to/troubleshoot.html" title="previous chapter">Troubleshoot</a>
+    <a href="architecture.html" title="previous chapter">Architecture</a>
 </p>
 
 
 <h4>Next page</h4>
 <p class="topless">
-    <a href="architecture.html" title="next chapter">Architecture</a>
+    <a href="dashboards/index.html" title="next chapter">Dashboards Index</a>
 </p>
 
 
