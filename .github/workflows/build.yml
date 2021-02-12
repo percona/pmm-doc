@@ -11,7 +11,6 @@ jobs:
   setup:
     runs-on: ubuntu-latest
     steps:
-
       - name: Check out code
         uses: percona-platform/checkout@v2
         with:
@@ -35,7 +34,7 @@ jobs:
           sudo chmod +x /usr/local/bin/plantuml
 
       - name: Install Node.js 14.x
-        uses: percona-platform/setup-node@v2.1.2
+        uses: percona-platform/setup-node@v2
         with:
           node-version: "14"
 
@@ -53,7 +52,6 @@ jobs:
     needs: setup
     runs-on: ubuntu-latest
     steps:
-
       - name: Run MkDocs (2.x)
         if: github.ref == 'refs/heads/main'
         run: |
@@ -64,7 +62,6 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-
       - name: Spelling
         run: |
           sudo npm i markdown-spellcheck -g
