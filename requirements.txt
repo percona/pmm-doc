@@ -1,3 +1,4 @@
+wheel
 mkdocs>=1.1.2
 mkdocs-macros-plugin
 mkdocs-exclude
