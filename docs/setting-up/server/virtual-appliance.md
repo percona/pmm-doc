@@ -40,7 +40,9 @@ This page shows how to import the appliance into two popular virtualization prog
 
 
 
-## Download PMM Server OVA
+## Download
+
+*Download the PMM Server OVA and verify it.*
 
 **With a browser**
 
@@ -57,6 +59,9 @@ This page shows how to import the appliance into two popular virtualization prog
 	wget https://www.percona.com/downloads/pmm2/{{release}}/ova/pmm-server-{{release}}.ova
 	wget https://www.percona.com/downloads/pmm2/{{release}}/ova/pmm-server-{{release}}.sha256sum
 
+!!! alert alert-success "Tip"
+	Combine download and import steps on the command line for VMware Workstation Player with `ovftool`.
+
 **Verify the download**
 
 1. Open a terminal and change directory to where you saved the files.
@@ -70,15 +75,13 @@ This page shows how to import the appliance into two popular virtualization prog
 
 
 
-## Import the virtual appliance and configure the network
+## Import and configure
 
-You can import the OVA with your virtualization software's GUI or on the command line.
+*Import the virtual appliance and configure the network with your virtualization software's GUI or on the command line.*
 
-### With the GUI
+### VMware Workstation Player
 
-
-
-**VMware Workstation Player**
+**With the GUI**
 
 1. Click *File --> Import*.
 
@@ -86,11 +89,37 @@ You can import the OVA with your virtualization software's GUI or on the command
 
 1. TODO
 
+**On the command line**
+
+1. Install [`ovftool`][OVFTool] (You need a VMware account.)
+
+1. Import (convert) the image. Choose:
+
+	a. Download and import the OVA file.
+
+		ovftool --name="PMM Server" --net:NAT=Wi-Fi https://www.percona.com/downloads/pmm2/{{release}}/ova/pmm-server-{{release}}.ova pmm-server-{{release}}.vmx
+
+	b. Import an already-downloaded OVA file.
+
+		ovftool --name="PMM Server" --net:NAT=WiFi pmm-server-{{release}}.ova pmm-server.vmx
+
+	> `ovftool` can't change CPU or memory settings during import.
+
+1. Start the virtual machine in GUI mode.
+
+		vmrun -gu root -gp percona start \
+		pmm-server.vmx gui
+
+1. When the instance has booted, note the IP address in the VMware console. You can stop the instance and restart it in headless mode:
+
+		vmrun stop pmm-server.vmx
+		vmrun -gu root -gp percona start \
+		pmm-server.vmx nogui
 
 
+### Oracle VM VirtualBox
 
-
-**Oracle VM VirtualBox**
+**With the GUI**
 
 1. Click *File --> Import appliance...*.
 
@@ -116,30 +145,7 @@ You can import the OVA with your virtualization software's GUI or on the command
 
 
 
-
-
-
-
-
-### On the command line
-
-**VMware Workstation Player**
-
-Install [`ovftool`][OVFTool] (You must have or sign up for a VMware account.)
-
-	ovftool pmm-server-{{release}}.ova ~/Virtual Machines
-
-	vmrun \
-	-gu root -gp percona \
-	start --nogui \
-	~/Virtual Machines/PMM2-Server-{{release_date}}-NNNN.vmx
-
-
-To stop
-
-	vmrun stop ~/Virtual Machines/PMM2-Server-{{release_date}}-NNNN.vmx
-
-**Oracle VM VirtualBox**
+**On the command line**
 
 1. Open a terminal and change directory to where you saved the `.ova` file
 
@@ -147,9 +153,9 @@ To stop
 
 		VBoxManage import pmm-server-{{release}}.ova --dry-run
 
-1. Import the image
+1. Import the image. Choose:
 
-	a. (Optional) With the default settings (Name: "PMM2-Server-{{release_date}}-NNNN", CPUs: 1, RAM: 4096 MB)
+	a. With the default settings (Name: "PMM2-Server-{{release_date}}-NNNN", CPUs: 1, RAM: 4096 MB)
 
 		VBoxManage import pmm-server-{{release}}.ova
 
@@ -218,15 +224,18 @@ When the virtual machine starts, it will get an IP address from the virtual host
 
 ### Assign a static IP address
 
-1. Log into the virtual machine as root.
+1. Start the virtual machine in non-headless (GUI) mode.
 
+1. Log into the virtual machine with the default superuser credentials:
 
+	- Username: `root`
+	- Password: `percona`
 
-    Log in as `root`, password `percona` and follow the prompts to change the password.
+1. Follow the prompts to change the password.
 
+1. TODO
 
-
-## Logging in via SSH
+### Logging in via SSH
 
 1. In a terminal, create a key pair for the `admin` user.
 
@@ -243,6 +252,8 @@ When the virtual machine starts, it will get an IP address from the virtual host
 
 
 
+!!! seealso "See also"
+	- [vmrun command (PDF)][vmrun]
 
 
 
@@ -252,3 +263,5 @@ When the virtual machine starts, it will get an IP address from the virtual host
 [VMware]: https://www.vmware.com/products/workstation-player/
 [VMwareDownload]: https://www.vmware.com/go/downloadworkstationplayer
 [OVFTool]: https://code.vmware.com/tool/ovf
+
+[vmrun]: https://www.vmware.com/pdf/vix180_vmrun_command.pdf
