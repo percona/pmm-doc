@@ -512,7 +512,7 @@ PMM communicates with the PMM Server via a PMM agent process.
 
 #### HAProxy
 
-`pmm-admin add haproxy [FLAGS] [name]`
+`pmm-admin add haproxy [FLAGS] [NAME]`
 :   Add HAProxy to monitoring.
 
     FLAGS:
@@ -539,7 +539,7 @@ PMM communicates with the PMM Server via a PMM agent process.
     : Listen port of external exporter for scraping metrics (Required).
 
     `--service-node-id=SERVICE-NODE-ID`
-    : Node ID where service runs (default is autodetected).
+    : Node ID where service runs (default is auto-detected).
 
     `--environment=ENVIRONMENT`
     : Environment name like 'production' or 'qa'.
