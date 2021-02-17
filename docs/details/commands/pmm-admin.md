@@ -18,6 +18,8 @@
 
 `pmm-admin add DATABASE [FLAGS] [NAME] [ADDRESS]`
 
+`pmm-admin add haproxy [FLAGS] [NAME]` (CAUTION: Technical preview feature)
+
 `pmm-admin add external [FLAGS] [NAME] [ADDRESS]` (CAUTION: Technical preview feature)
 
 `pmm-admin add external-serverless [FLAGS] [NAME] [ADDRESS]` (CAUTION: Technical preview feature)
@@ -507,6 +509,58 @@ PMM communicates with the PMM Server via a PMM agent process.
 
     `--disable-collectors`
     : Comma-separated list of collector names to exclude from exporter
+
+#### HAProxy
+
+`pmm-admin add haproxy [FLAGS] [name]`
+:   Add HAProxy to monitoring.
+
+    FLAGS:
+
+    `--server-url=SERVER-URL`
+    : PMM Server URL in `https://username:password@pmm-server-host/` format
+
+    `--server-insecure-tls`
+	: Skip PMM Server TLS certificate validation.
+
+    `--username=USERNAME`
+    : HAProxy username.
+
+    `--password=PASSWORD`
+    : HAProxy password.
+
+    `--scheme=SCHEME`
+    : Scheme to generate URI to exporter metrics endpoints (http or https).
+
+    `--metrics-path=METRICS-PATH`
+    : Path under which metrics are exposed, used to generate URI (default: /metrics).
+
+    `--listen-port=LISTEN-PORT`
+    : Listen port of external exporter for scraping metrics (Required).
+
+    `--service-node-id=SERVICE-NODE-ID`
+    : Node ID where service runs (default is autodetected).
+
+    `--environment=ENVIRONMENT`
+    : Environment name like 'production' or 'qa'.
+
+    `--cluster=CLUSTER`
+    : Cluster name.
+
+    `--replication-set=REPLICATION-SET`
+    : Replication set name.
+
+    `--custom-labels=CUSTOM-LABELS`
+    : Custom user-assigned labels. Example: region=east,app=app1.
+
+    `--metrics-mode=MODE`
+    : Metrics flow mode for agents node-exporter. Allowed values:
+        - `auto`: chosen by server (default)
+        - `push`: agent will push metrics
+        - `pull`: server scrapes metrics from agent
+
+    `--skip-connection-check`
+    : Skip connection check.
 
 ### OTHER COMMANDS
 
