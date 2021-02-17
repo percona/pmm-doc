@@ -521,7 +521,7 @@ PMM communicates with the PMM Server via a PMM agent process.
     : PMM Server URL in `https://username:password@pmm-server-host/` format
 
     `--server-insecure-tls`
-	: Skip PMM Server TLS certificate validation.
+    : Skip PMM Server TLS certificate validation.
 
     `--username=USERNAME`
     : HAProxy username.
