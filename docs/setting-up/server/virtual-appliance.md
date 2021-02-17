@@ -1,54 +1,34 @@
 # Virtual Appliance
 
----
+Run PMM Server as a virtual machine by downloading and importing the [PMM {{release}}][OVA] Open Virtual Appliance (OVA) file into any virtualization software supporting the
+[OVF standard][OVF].
 
-[TOC]
+This section shows how to do this for two example virtualization programs, [VMware Workstation Player][VMware] and [Oracle VM VirtualBox][VirtualBox].
 
----
-
-You can run PMM Server as a virtual machine using our *Open Virtual Appliance* (OVA) package.
-
-> [Download OVA for PMM {{release}}][OVA]
-
-The package contains an Open Virtualization Format (OVF) virtual machine file that you import into any virtualization software that supports the [OVF standard][OVF].
-
-When running, the virtual machine hosts the latest PMM Server preinstalled on a CentOS 7.9 Linux guest OS with 1 CPU and 4096 MB of base memory.
-
-This page shows how to import the appliance into two popular virtualization programs, [VMware Workstation Player][VMware] and [Oracle VM VirtualBox][VirtualBox].
-
-## Overview
-
-1. Download and install your choice of virtualization software
-
-2. [Download and verify the PMM Server OVA](#download-pmm-server-ova)
-
-3. [Import the virtual appliance](#import-the-virtual-appliance)
-
-	a. Configure the virtual machine's network
-
-	b. Get the virtual machine's IP address
-
-4. Start the virtual appliance
-
-5. Open a web browser and log in to PMM
-
-6. (Optional) Log into PMM Server via SSH
+!!! alert alert-info "OVA file details"
+	- Download: <https://www.percona.com/downloads/pmm2/{{release}}/ova>
+	- File name: `pmm-server-{{release}}.ova`
+	- VM name: `PMM2-Server-{{release_date}}-N` (`N`=build number)
+	- VM specifications: CentOS 7.9, 1 CPU, 4096 MB  base memory
+	- Username/default password:
+		- `root`/`percona`
+    	- `admin`/`admin`
 
 
+```plantuml source="_resources/diagrams/Setting-Up_Server_Virtual-Appliance.puml"
+```
 
+## 1. OVA file
 
-
-
-
-## Download
+### Download
 
 *Download the PMM Server OVA and verify it.*
 
 **With a browser**
 
-1. [Go to the PMM Server download page][OVA]
+1. [Visit the PMM Server download page][OVA].
 
-1. Choose a *Version* or use the default (the latest)
+1. Choose a *Version* or use the default (the latest).
 
 1. Click the link for *pmm-server-{{release}}.ova*. Note where your browser saves it.
 
@@ -59,27 +39,23 @@ This page shows how to import the appliance into two popular virtualization prog
 	wget https://www.percona.com/downloads/pmm2/{{release}}/ova/pmm-server-{{release}}.ova
 	wget https://www.percona.com/downloads/pmm2/{{release}}/ova/pmm-server-{{release}}.sha256sum
 
-!!! alert alert-success "Tip"
-	Combine download and import steps on the command line for VMware Workstation Player with `ovftool`.
+### Verify
 
-**Verify the download**
+*Verify the checksum to check the integrity of the downloaded file.*
 
 1. Open a terminal and change directory to where you saved the files.
 
-1. Type
+1. Enter this command:
 
 		shasum -ca 256 pmm-server-{{release}}.sha256sum
 
-1. Check the result is `OK`
+1. Check the result is `OK`.
 
-
-
-
-## Import and configure
+### Import
 
 *Import the virtual appliance and configure the network with your virtualization software's GUI or on the command line.*
 
-### VMware Workstation Player
+#### Example: VMware Workstation Player
 
 **With the GUI**
 
@@ -117,7 +93,7 @@ This page shows how to import the appliance into two popular virtualization prog
 		pmm-server.vmx nogui
 
 
-### Oracle VM VirtualBox
+#### Example: Oracle VM VirtualBox
 
 **With the GUI**
 
@@ -128,16 +104,6 @@ This page shows how to import the appliance into two popular virtualization prog
 1. Click *Continue*.
 
 1. On the *Appliance settings* page, review the settings and click *Import*.
-
-1. Click *Settings*.
-
-1. Click *Network*.
-
-1. In the *Adaptor 1* field, click *Attached to* and change to *Bridged Adaptor*.
-
-1. In the *Name* field, select your host's active network interface (e.g. `en0: Wi-Fi (Wireless)`).
-
-1. Click *OK*.
 
 1. Click *Start*.
 
@@ -180,22 +146,76 @@ This page shows how to import the appliance into two popular virtualization prog
 		VBoxManage modifyvm 'PMM Server {{release}}' \
 		--uart1 0x3F8 4 --uartmode1 file /tmp/pmm-server-console.log
 
-1. Start the virtual machine
 
-		VBoxManage startvm --type headless 'PMM Server {{release}}'
 
-1. Wait for one minute for the server to finish booting up.
+## 2. Configure network
+
+### Change from NAT to bridged
+
+#### Example: Oracle VM VirtualBox
+
+**With the GUI**
+
+1. Click *Settings*.
+
+1. Click *Network*.
+
+1. In the *Adaptor 1* field, click *Attached to* and change to *Bridged Adaptor*.
+
+1. In the *Name* field, select your host's active network interface (e.g. `en0: Wi-Fi (Wireless)`).
+
+1. Click *OK*.
+
+**On the command line**
+
+The interface is
+
+
+
+
+
+
+
+
+### Start virtual machine
+
+#### Example: Oracle VM VirtualBox
+
+**With the GUI**
+
+1. Select the *PMM Server* virtual machine in the list.
+
+1. Click *Start*.
+
+
+**On the command line**
+
+1.
+
+		VBoxManage startvm --type headless 'PMM Server'
+
+1. (Optional) Watch the log file.
+
+		tail -f /tmp/pmm-server-console.log
+
+1. Wait for one minute for the server to boot up.
 
 1. Get the server's IP address from the log.
 
 	grep -e "^IP:" /tmp/pmm-server-console.log | cut -f2 -d' '
 
-To stop the virtual machine
+
+Stop the virtual machine.
 
 	VBoxManage controlvm "PMM Server" poweroff
 
 
-## Logging in
+
+
+
+
+
+## 3. Log in
 
 ### PMM Server web interface
 
@@ -218,13 +238,10 @@ To stop the virtual machine
 
 
 
-## Networking
+## 4. Administration
 
-When the virtual machine starts, it will get an IP address from the virtual host's DHCP server.
 
-### Assign a static IP address
-
-1. Start the virtual machine in non-headless (GUI) mode.
+### Change root password
 
 1. Log into the virtual machine with the default superuser credentials:
 
@@ -233,9 +250,9 @@ When the virtual machine starts, it will get an IP address from the virtual host
 
 1. Follow the prompts to change the password.
 
-1. TODO
 
-### Logging in via SSH
+
+### SSH access
 
 1. In a terminal, create a key pair for the `admin` user.
 
@@ -249,6 +266,23 @@ When the virtual machine starts, it will get an IP address from the virtual host
 1. In a terminal :
 
 		ssh -i admin admin@N.N.N.N
+
+
+
+
+### Static IP address
+
+When the virtual machine starts, it will get an IP address from the virtual host's DHCP server.
+
+As the IP can change when the virtual machine is restarted, you must use the UI to get the server's IP address.
+
+You can avoid this by setting a static IP for the server.
+
+1. Start the virtual machine in non-headless (GUI) mode.
+
+
+1. TODO
+
 
 
 
