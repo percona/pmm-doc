@@ -18,11 +18,11 @@
 
 `pmm-admin add DATABASE [FLAGS] [NAME] [ADDRESS]`
 
-`pmm-admin add haproxy [FLAGS] [NAME]` (CAUTION: Technical preview feature)
+`pmm-admin add haproxy [FLAGS] [NAME]`
 
-`pmm-admin add external [FLAGS] [NAME] [ADDRESS]` (CAUTION: Technical preview feature)
+`pmm-admin add external [FLAGS] [NAME] [ADDRESS]`
 
-`pmm-admin add external-serverless [FLAGS] [NAME] [ADDRESS]` (CAUTION: Technical preview feature)
+`pmm-admin add external-serverless [FLAGS] [NAME] [ADDRESS]`
 
 `pmm-admin remove [FLAGS] service-type [service-name]`
 
