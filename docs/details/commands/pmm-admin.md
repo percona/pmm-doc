@@ -536,7 +536,7 @@ PMM communicates with the PMM Server via a PMM agent process.
     : Path under which metrics are exposed, used to generate URI (default: /metrics).
 
     `--listen-port=LISTEN-PORT`
-    : Listen port of external exporter for scraping metrics (Required).
+    : Listen port of haproxy exposing the metrics for scraping metrics (Required).
 
     `--service-node-id=SERVICE-NODE-ID`
     : Node ID where service runs (default is auto-detected).
