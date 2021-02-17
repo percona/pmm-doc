@@ -1,48 +1,22 @@
 ' Diagram showing sequence of tasks to set up Virtual Appliance
-' Not published (WIP)
+' Syntax: https://plantuml.com/activity-diagram-beta
+' Icons: https://plantuml.com/openiconic
+' Colour: https://plantuml.com/color
+' Text: https://plantuml.com/creole
 
 @startuml
-title Running PMM Server as a virtual appliance\nOverview of steps\n
-
-legend bottom right
-<#application>| UI or command line |
-<#lightgrey>| Command line only |
-<#technology>| UI only|
-endlegend
-
-partition "1. OVA file" {
-	#application:Download;
-	#lightgrey:Verify;
-	note right
-	Optional (recommended)
-	end note
-	#application:Import;
-}
-partition "2. Configure Network" {
-	#application:Change from NAT to bridged;
-	note left
-	CLI: Done during import
-	end note
-	#application :Start virtual machine;
-	#lightgrey:Get PMM Server IP address;
-}
-partition "3. Log in" {
-	#technology:Visit IP address in browser;
-	#technology:Log into PMM UI;
-	note right
-	Default ""admin/admin""
-	end note
-	#technology:Change admin password;
-	note right
-	Optional (recommended)
-	end note
-}
-partition "4. Administration" {
-	#technology:Change root password;
-	note left
-	Default ""root/percona""
-	end note
-	#technology:SSH access;
-	#lightgrey:Static IP address;
-}
+title Running PMM Server as a virtual appliance\nTask overview\n
+#application:Download;
+#application:Verify;
+#application:Import;
+#application:Reconfigure interface;
+#application:Get IP address;
+#application:Log in;
+#application:Change root password;
+split
+	#lightgrey:(Optional) Set up SSH;
+kill
+split again
+	#lightgrey:(Optional) Set up static IP;
+kill
 @enduml
