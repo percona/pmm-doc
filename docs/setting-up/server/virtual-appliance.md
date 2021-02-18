@@ -269,7 +269,7 @@ Most steps can be done with either a user interface or on the command line, but 
 
 
 
-## Log in {{icon.mouse}}
+## Log into PMM
 
 1. Open a web browser and visit the guest IP address.
 1. The PMM login screen appears.
@@ -281,14 +281,9 @@ Most steps can be done with either a user interface or on the command line, but 
 1. The PMM Home Dashboard appears.
 	![image](../../_images/PMM_Home_Dashboard.jpg)
 
+## Change root password
 
-
-
-
-
-## Administer
-
-### Change root password {{icon.mouse}}
+**UI {{icon.mouse}}**
 
 1. Start the virtual machine in GUI mode.
 1. Log in with the default superuser credentials:
@@ -296,7 +291,9 @@ Most steps can be done with either a user interface or on the command line, but 
 	- Password: `percona`
 1. Follow the prompts to change the password.
 
-### (Optional) Set up SSH {{icon.mouse}} {{icon.keyboard}}
+## (Optional) Set up SSH
+
+{{icon.mouse}} {{icon.keyboard}}
 
 1. Create a key pair for the `admin` user.
 
@@ -310,7 +307,7 @@ Most steps can be done with either a user interface or on the command line, but 
 
 		ssh -i admin admin@N.N.N.N
 
-### (Optional) Set up static IP
+## (Optional) Set up static IP
 
 When the guest OS starts, it will get an IP address from the virtual host's DHCP server. This IP can change each time the guest OS is restarted. Setting a static IP for the guest OS can avoid having to check the IP address whenever the guest is restarted.
 
