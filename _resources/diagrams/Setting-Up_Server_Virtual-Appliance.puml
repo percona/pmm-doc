@@ -6,17 +6,39 @@
 
 @startuml
 title Running PMM Server as a virtual appliance\nTask overview\n
-#application:Download;
-#application:Verify;
-#application:Import;
-#application:Reconfigure interface;
-#application:Get IP address;
-#application:Log in;
-#application:Change root password;
+
+:[[#1-download 1. Download]];
+:[[#2-verify 2. Verify]];
+
 split
-	#lightgrey:(Optional) Set up SSH;
-kill
+partition "3. VMware" {
+	:3.1 Import;
+	:3.2 Reconfigure interface;
+	:3.3 Start and get IP address;
+}
+
 split again
-	#lightgrey:(Optional) Set up static IP;
-kill
+partition "4. VirtualBox" {
+	:4.1 Import;
+	:4.2 Reconfigure interface;
+	:4.3 Start and get IP address;
+}
+
+split again
+
+partition QEMU {
+:Convert;
+:Run;
+:Get IP address;
+}
+
+
+end split
+
+:Log in;
+:Change root password;
+
+:(Optional) Set up SSH;
+:(Optional) Set up static IP;
+
 @enduml

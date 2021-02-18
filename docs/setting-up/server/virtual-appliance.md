@@ -2,7 +2,7 @@
 
 Run PMM Server as a virtual machine by downloading and importing the [PMM {{release}}][OVA] Open Virtual Appliance (OVA) file into any virtualization software supporting the [OVF standard][OVF].
 
-This section shows this for two popular desktop hypervisors, [VMware Workstation Player][VMware] and [Oracle VM VirtualBox][VirtualBox].
+This section shows this for three popular free desktop hypervisors, [VMware Workstation Player][VMware], [Oracle VM VirtualBox][VirtualBox], and [QEMU]()
 
 Most steps can be done with either a user interface or on the command line, but some steps can only be done in one or the other. Section titles include symbols to show which approach can be used: {{icon.mouse}} for user interface (UI) or {{icon.keyboard}} for command line (CLI).
 
@@ -16,7 +16,13 @@ Most steps can be done with either a user interface or on the command line, but 
 	- Download page: <https://www.percona.com/downloads/pmm2/{{release}}/ova>
 	- File name: `pmm-server-{{release}}.ova`
 	- VM name: `PMM2-Server-{{release_date}}-N` (`N`=build number)
-	- VM specifications: CentOS 7.9, 1 CPU, 4096 MB  base memory
+	- VM specifications:
+		- CentOS 7.9 (64-bit)
+		- CPU: 1
+		- Base memory: 4096 MB
+		- Disks: LVM, 2 physical volumes
+			- Disk 1 (sda): VMDK (SCSI, 40 GB)
+			- Disk 2 (sdb): VMDK (SCSI, 400 GB)
 	- Username/default password:
 		- `root`/`percona`
     	- `admin`/`admin`
@@ -27,14 +33,7 @@ Most steps can be done with either a user interface or on the command line, but 
 ```plantuml source="_resources/diagrams/Setting-Up_Server_Virtual-Appliance.puml"
 ```
 
-
-
-
-
-
-## Download {{icon.mouse}} {{icon.keyboard}}
-
-*Download the PMM Server OVA file and verify it.*
+## 1. Download {{icon.mouse}} {{icon.keyboard}}
 
 **UI {{icon.mouse}}**
 
@@ -43,21 +42,15 @@ Most steps can be done with either a user interface or on the command line, but 
 1. Choose a *Version* or use the default (the latest).
 1. Click the link for `pmm-server-{{release}}.ova`. Note where your browser saves it.
 1. Right click the link for `pmm-server-{{release}}.sha256sum` and save the link to the same place as the `.ova` file.
+1. (Optional) [Verify](#verify).
 
 **CLI {{icon.keyboard}}**
 
+	# Download the latest PMM Server OVA and checksum files
 	wget https://www.percona.com/downloads/pmm2/{{release}}/ova/pmm-server-{{release}}.ova
 	wget https://www.percona.com/downloads/pmm2/{{release}}/ova/pmm-server-{{release}}.sha256sum
 
-
-
-
-
-
-
-## Verify {{icon.keyboard}}
-
-*Check the integrity of the downloaded file.*
+## 2. Verify {{icon.keyboard}}
 
 **CLI {{icon.keyboard}}**
 
@@ -72,11 +65,9 @@ Most steps can be done with either a user interface or on the command line, but 
 
 
 
-## Import {{icon.mouse}} {{icon.keyboard}}
+## 3. VMware Workstation Player
 
-*Import the virtual appliance into your hypervisor.*
-
-### VMware Workstation Player
+### 3.1 Import
 
 **UI {{icon.mouse}}**
 
@@ -95,22 +86,73 @@ Most steps can be done with either a user interface or on the command line, but 
 
 **CLI {{icon.keyboard}}**
 
-!!! alert alert-info "Notes"
-	`ovftool` can't change CPU or memory settings during import but it can set the default interface.
+1. Install [`ovftool`][OVFTool]. (You need to register.)
 
-1. Install [`ovftool`][OVFTool]. (You need a VMware account.)
-1. Import and convert the OVA file. Either:
+1. Import and convert the OVA file. (`ovftool` can't change CPU or memory settings during import but it can set the default interface.)
+
+	Choose one of:
+
 	- Download and import the OVA file.
-
-			ovftool --name="PMM Server" --net:NAT=Wi-Fi\
-			https://www.percona.com/downloads/pmm2/{{release}}/ova/pmm-server-{{release}}.ova pmm-server-{{release}}.vmx
-
+		```
+		ovftool --name="PMM Server" --net:NAT=Wi-Fi\
+		https://www.percona.com/downloads/pmm2/{{release}}/ova/pmm-server-{{release}}.ova pmm-server-{{release}}.vmx
+		```
 	- Import an already-downloaded OVA file.
+		```
+		ovftool --name="PMM Server" --net:NAT=WiFi\
+		pmm-server-{{release}}.ova pmm-server.vmx
+		```
 
-			ovftool --name="PMM Server" --net:NAT=WiFi\
-			pmm-server-{{release}}.ova pmm-server.vmx
+### 3.2 Reconfigure interface
 
-### Oracle VM VirtualBox
+!!! alert alert-info "Notes"
+	When using the command line, the interface is remapped during import.
+
+**UI {{icon.mouse}}**
+
+1. In the VMware main window, select the imported virtual machine.
+1. Click *Virtual Machine --> Settings...*
+1. Click *Network Adaptor*.
+1. In the *Bridged Networking* section, select *Autodetect*.
+1. Close the settings window.
+
+### 3.3 Start and get IP address
+
+**UI {{icon.mouse}}**
+
+1. In the VMware main window, select the imported virtual machine.
+1. Click the play button {{icon.caretright}} or select *Virtual Machine --> Start Up*.
+1. When the instance has booted, note the IP address in the guest console.
+
+**CLI {{icon.keyboard}}/UI {{icon.mouse}}**
+
+1. Start the virtual machine in GUI mode. (There's no way to redirect a VMware VM's console to the host.)
+	```
+	vmrun -gu root -gp percona start \
+	pmm-server.vmx gui
+	```
+1. When the instance has booted, note the IP address in the guest console.
+1. (Optional) Stop and restart the instance in headless mode.
+	```
+	vmrun stop pmm-server.vmx
+	vmrun -gu root -gp percona start \
+	pmm-server.vmx nogui
+	```
+
+
+
+
+
+
+
+
+
+
+
+
+## 4. Oracle VM VirtualBox
+
+### 4.1 Import
 
 **UI {{icon.mouse}}**
 
@@ -119,7 +161,7 @@ Most steps can be done with either a user interface or on the command line, but 
 1. Click *Continue*.
 1. On the *Appliance settings* page, review the settings and click *Import*.
 1. Click *Start*.
-1. The console will report the server's IP address. ***Make a note of it***.
+1. When the guest has booted, note the IP address in the guest console.
 
 **CLI {{icon.keyboard}}**
 
@@ -128,7 +170,9 @@ Most steps can be done with either a user interface or on the command line, but 
 
 		VBoxManage import pmm-server-{{release}}.ova --dry-run
 
-1. Import the image. Either:
+1. Import the image.
+
+	Choose one of:
 
 	a. With the default settings.
 
@@ -139,47 +183,8 @@ Most steps can be done with either a user interface or on the command line, but 
 		VBoxManage import --vsys 0 --vmname "PMM Server"\
     	--cpus 2 --memory 8192 pmm-server-{{release}}.ova
 
-1. Show the list of available bridge interfaces
 
-		VBoxManage list bridgedifs
-
-1. Find the name of the active interface you want to bridge to (one with *Status: Up* and a valid IP address). Example: `en0: Wi-Fi (Wireless)`
-
-1. Bridge the virtual machine's first interface (`nic`) to the host's `en0` adaptor
-
-		VBoxManage modifyvm 'PMM Server {{release}}'\
-		--nic1 bridged --bridgeadapter1 'en0: Wi-Fi (Wireless)'
-
-1. Redirect the console output into a host file.
-
-		VBoxManage modifyvm 'PMM Server {{release}}'\
-		--uart1 0x3F8 4 --uartmode1 file /tmp/pmm-server-console.log
-
-
-
-
-
-
-
-
-## Reconfigure interface {{icon.mouse}}
-
-*Change it from NAT to bridged so we can access PMM Server on the same network.*
-
-!!! alert alert-info "Notes"
-	When using the command line, the interface is remapped during import.
-
-### VMware Workstation Player
-
-**UI {{icon.mouse}}**
-
-1. In the VMware main window, select the imported virtual machine.
-1. Click *Virtual Machine --> Settings...*
-1. Click *Network Adaptor*.
-1. In the *Bridged Networking* section, select *Autodetect*.
-1. Close the settings window.
-
-#### Oracle VM VirtualBox
+### 4.2 Reconfigure interface
 
 **UI {{icon.mouse}}**
 
@@ -189,45 +194,34 @@ Most steps can be done with either a user interface or on the command line, but 
 1. In the *Name* field, select your host's active network interface (e.g. `en0: Wi-Fi (Wireless)`).
 1. Click *OK*.
 
+**CLI {{icon.keyboard}}**
 
+1. Show the list of available bridge interfaces
+	```
+	VBoxManage list bridgedifs
+	```
 
+1. Find the name of the active interface you want to bridge to (one with *Status: Up* and a valid IP address). Example: `en0: Wi-Fi (Wireless)`
 
+1. Bridge the virtual machine's first interface (`nic`) to the host's `en0` adaptor
+	```
+	VBoxManage modifyvm 'PMM Server {{release}}'\
+	--nic1 bridged --bridgeadapter1 'en0: Wi-Fi (Wireless)'
+	```
 
+1. Redirect the console output into a host file.
+	```
+	VBoxManage modifyvm 'PMM Server {{release}}'\
+	--uart1 0x3F8 4 --uartmode1 file /tmp/pmm-server-console.log
+	```
 
-
-## Get IP address {{icon.mouse}} {{icon.keyboard}}
-
-*Find out which IP address the hypervisor allocated to the guest OS.*
-
-### VMware Workstation Player
-
-**UI {{icon.mouse}}**
-
-1. In the VMware main window, select the imported virtual machine.
-1. Click the play button {{icon.caretright}} or select *Virtual Machine --> Start Up*.
-1. When the instance has booted, note the IP address in the guest console.
-
-**CLI {{icon.keyboard}}/UI {{icon.mouse}}**
-
-1. Start the virtual machine in GUI mode. (There's no way to redirect a WMware VM's console to the host.)
-
-		vmrun -gu root -gp percona start \
-		pmm-server.vmx gui
-
-1. When the instance has booted, note the IP address in the guest console.
-1. (Optional) Stop and restart the instance in headless mode.
-
-		vmrun stop pmm-server.vmx
-		vmrun -gu root -gp percona start \
-		pmm-server.vmx nogui
-
-### Oracle VM VirtualBox
+### 4.3 Start and get IP address
 
 **UI {{icon.mouse}}**
 
 1. Select the *PMM Server* virtual machine in the list.
 1. Click *Start*.
-1. When the instance has booted, note the IP address in the guest console.
+1. When the guest has booted, note the IP address in the guest console.
 
 **CLI {{icon.keyboard}}**
 
