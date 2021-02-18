@@ -1,12 +1,16 @@
 # Virtual Appliance
 
-Run PMM Server as a virtual machine by downloading and importing the [PMM {{release}}][OVA] Open Virtual Appliance (OVA) file into any virtualization software supporting the
-[OVF standard][OVF].
+Run PMM Server as a virtual machine by downloading and importing the [PMM {{release}}][OVA] Open Virtual Appliance (OVA) file into any virtualization software supporting the [OVF standard][OVF].
 
-This section does this for two popular desktop hypervisors, [VMware Workstation Player][VMware] and [Oracle VM VirtualBox][VirtualBox].
+This section shows this for two popular desktop hypervisors, [VMware Workstation Player][VMware] and [Oracle VM VirtualBox][VirtualBox].
 
-Most steps can be done with either a user interface or on the command line, but some steps can only be done in one or the other. Section titles include symbols to show which approach can be used:
-{{icon.mouse}} for user interface (UI) or {{icon.keyboard}} for command line (CLI).
+Most steps can be done with either a user interface or on the command line, but some steps can only be done in one or the other. Section titles include symbols to show which approach can be used: {{icon.mouse}} for user interface (UI) or {{icon.keyboard}} for command line (CLI).
+
+**Terminology**
+
+- *Host* is the desktop or server machine running the hypervisor.
+- *Hypervisor* is software (e.g. VirtualBox, VMware) that runs the guest OS as a virtual machine.
+- *Guest* is the CentOS virtual machine that runs PMM Server.
 
 !!! alert alert-info "OVA file details"
 	- Download page: <https://www.percona.com/downloads/pmm2/{{release}}/ova>
@@ -193,7 +197,7 @@ Most steps can be done with either a user interface or on the command line, but 
 
 ## Get IP address {{icon.mouse}} {{icon.keyboard}}
 
-*Start the virtual machine to learn which IP address the hypervisor allocated to the guest OS.*
+*Find out which IP address the hypervisor allocated to the guest OS.*
 
 ### VMware Workstation Player
 
@@ -217,7 +221,7 @@ Most steps can be done with either a user interface or on the command line, but 
 		vmrun -gu root -gp percona start \
 		pmm-server.vmx nogui
 
-#### Oracle VM VirtualBox
+### Oracle VM VirtualBox
 
 **UI {{icon.mouse}}**
 
@@ -314,16 +318,30 @@ Most steps can be done with either a user interface or on the command line, but 
 
 ### (Optional) Set up static IP
 
-When the virtual machine starts, it will get an IP address from the virtual host's DHCP server.
-
-As the IP can change when the virtual machine is restarted, you must use the UI to get the server's IP address.
-
-You can avoid this by setting a static IP for the server.
+When the guest OS starts, it will get an IP address from the virtual host's DHCP server. This IP can change each time the guest OS is restarted. Setting a static IP for the guest OS can avoid having to check the IP address whenever the guest is restarted.
 
 1. Start the virtual machine in non-headless (GUI) mode.
+1. Log in as `root`.
+1. Edit `/etc/sysconfig/network-scripts/ifcfg-eth0`
+1. Change the value of `BOOTPROTO`:
+	```
+	BOOTPROTO=none
+	```
+1. Add these values:
+	```
+	IPADDR=192.168.1.123 # Example
+	NETMASK=255.255.255.0
+	GATEWAY=192.168.1.1
+	```
+1. Restart the interface.
+	```sh
+	ifdown eth0 && ifup eth0
+	```
+1. Check the IP.
+	```sh
+	ip addr show eth0
+	```
 
-
-1. TODO
 
 
 
