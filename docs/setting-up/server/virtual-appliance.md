@@ -7,7 +7,7 @@ This section shows this for these popular free desktop hypervisors:
 - [VMware Workstation Player][VMware]
 - [Oracle VM VirtualBox][VirtualBox]
 
-Most steps can be done with either a user interface or on the command line, but some steps can only be done in one or the other. Section titles include symbols to show which approach can be used: {{icon.mouse}} for user interface (UI) or {{icon.keyboard}} for command line (CLI).
+Most steps can be done with either a user interface or on the command line, but some steps can only be done in one or the other. Section are marked with **UI {{icon.mouse}}** for user interface or **CLI {{icon.keyboard}}** for command line instructions.
 
 **Terminology**
 
