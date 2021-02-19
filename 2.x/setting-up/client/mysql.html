@@ -52,7 +52,7 @@
 </head>
 
 <body>
-	<!-- 2021-02-19 08:20:08.337351+00:00 -->
+	<!-- 2021-02-19 11:34:46.567804+00:00 -->
     
 <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.3/css/line.css" type="text/css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" type="text/css">
@@ -129,10 +129,8 @@ restart the server or change variables dynamically using the following syntax:</
 <p>The following sample configurations can be used depending on the variant and
 version of MySQL:</p>
 <ul>
-<li>If you are running Percona Server (or XtraDB Cluster), configure the
-<em>slow query log</em> to capture all queries and enable sampling. This will
-provide the most amount of information with the lowest overhead.</li>
-</ul>
+<li>
+<p>If you are running Percona Server (or XtraDB Cluster), configure the <em>slow query log</em> to capture all queries and enable sampling. This will provide the most amount of information with the lowest overhead.</p>
 <div class="highlight"><pre><span></span><code><span class="na">log_output</span><span class="o">=</span><span class="s">file</span>
 <span class="na">slow_query_log</span><span class="o">=</span><span class="s">ON</span>
 <span class="na">long_query_time</span><span class="o">=</span><span class="s">0</span>
@@ -146,22 +144,23 @@ provide the most amount of information with the lowest overhead.</li>
 <span class="na">innodb_monitor_enable</span><span class="o">=</span><span class="s">all</span>
 <span class="na">userstat</span><span class="o">=</span><span class="s">1</span>
 </code></pre></div>
-<ul>
-<li>If you are running MySQL 5.6+ or MariaDB 10.0+, see <a href="#performance-schema">Performance Schema</a>.</li>
-</ul>
+</li>
+<li>
+<p>If you are running MySQL 5.6+ or MariaDB 10.0+, see <a href="#performance-schema">Performance Schema</a>.</p>
 <div class="highlight"><pre><span></span><code><span class="na">innodb_monitor_enable</span><span class="o">=</span><span class="s">all</span>
 <span class="na">performance_schema</span><span class="o">=</span><span class="s">ON</span>
 </code></pre></div>
-<ul>
-<li>If you are running MySQL 5.5 or MariaDB 5.5, configure logging only slow
-queries to avoid high performance overhead.</li>
-</ul>
+</li>
+<li>
+<p>If you are running MySQL 5.5 or MariaDB 5.5, configure logging only slow queries to avoid high performance overhead.</p>
 <div class="highlight"><pre><span></span><code><span class="na">log_output</span><span class="o">=</span><span class="s">file</span>
 <span class="na">slow_query_log</span><span class="o">=</span><span class="s">ON</span>
 <span class="na">long_query_time</span><span class="o">=</span><span class="s">0</span>
 <span class="na">log_slow_admin_statements</span><span class="o">=</span><span class="s">ON</span>
 <span class="na">log_slow_slave_statements</span><span class="o">=</span><span class="s">ON</span>
 </code></pre></div>
+</li>
+</ul>
 <div class="admonition caution">
 <p class="admonition-title">Caution</p>
 <p>This may affect the quality of monitoring data gathered by Query Analytics.</p>
@@ -241,8 +240,18 @@ MySQL configuration file <code>my.cnf</code> and restart MySQL:</p>
 <p>If certain instruments are not enabled, you will not see the corresponding graphs in the MySQL Performance Schema dashboard.  To enable full instrumentation, set the option <code>--performance_schema_instrument</code> to <code>'%=on'</code> when starting the MySQL server.</p>
 <div class="highlight"><pre><span></span><code>mysqld --performance-schema-instrument<span class="o">=</span><span class="s1">&#39;%=on&#39;</span>
 </code></pre></div>
-<p>This option can cause additional overhead and should be used with care.</p>
 </div>
+<ul>
+<li>
+<p>If you are running any MariaDB version, there is no Explain or Example data shown by default in Query Analytics. A workaround is to run this SQL command:</p>
+<div class="highlight"><pre><span></span><code><span class="k">UPDATE</span> <span class="n">performance_schema</span><span class="p">.</span><span class="n">setup_instruments</span> <span class="k">SET</span> <span class="n">ENABLED</span> <span class="o">=</span> <span class="s1">&#39;YES&#39;</span><span class="p">,</span> <span class="n">TIMED</span> <span class="o">=</span> <span class="s1">&#39;YES&#39;</span>
+<span class="k">WHERE</span> <span class="n">NAME</span> <span class="k">LIKE</span> <span class="s1">&#39;statement/%&#39;</span><span class="p">;</span>
+<span class="k">UPDATE</span> <span class="n">performance_schema</span><span class="p">.</span><span class="n">setup_consumers</span> <span class="k">SET</span> <span class="n">ENABLED</span> <span class="o">=</span> <span class="s1">&#39;YES&#39;</span>
+<span class="k">WHERE</span> <span class="n">NAME</span> <span class="k">LIKE</span> <span class="s1">&#39;%statements%&#39;</span><span class="p">;</span>
+</code></pre></div>
+<p>This option can cause additional overhead and should be used with care.</p>
+</li>
+</ul>
 <p>If the instance is already running, configure the QAN agent to collect data
 from <em>Performance Schema</em>:</p>
 <ol>
@@ -330,7 +339,7 @@ cases, use Performance Schema if it is supported.</p>
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-02-09
+            <i class="uil uil-refresh"></i> Page updated 2021-02-19
         </li>
         
     </ul>
