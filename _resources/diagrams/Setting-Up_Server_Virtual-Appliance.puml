@@ -4,11 +4,11 @@
 ' Colour: https://plantuml.com/color
 ' Text: https://plantuml.com/creole
 
-@startuml
-title Running PMM Server as a virtual appliance\nTask overview\n
+@startuml "setting-up_server_virtual-appliance"
+title Running PMM Server as a virtual appliance\nOverview\n
 
-:[[#1-download 1. Download]];
-:[[#2-verify 2. Verify]];
+:1. Download;
+:2. Verify;
 
 split
 partition "3. VMware" {
