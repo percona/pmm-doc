@@ -40,8 +40,8 @@ Most steps can be done with either a user interface or on the command line, but 
 1. Open a web browser.
 2. [Visit the PMM Server download page][OVA].
 3. Choose a *Version* or use the default (the latest).
-4. Click the link for `pmm-server-{{release}}.ova`. Note where your browser saves it.
-5. Right click the link for `pmm-server-{{release}}.sha256sum` and save the link to the same place as the `.ova` file.
+4. Click the link for `pmm-server-{{release}}.ova` to download it. Note where your browser saves it.
+5. Right click the link for `pmm-server-{{release}}.sha256sum` and save it in the same place as the `.ova` file.
 6. (Optional) [Verify](#verify).
 
 **CLI {{icon.keyboard}}**
@@ -57,6 +57,7 @@ wget https://www.percona.com/downloads/pmm2/{{release}}/ova/pmm-server-{{release
 **CLI {{icon.keyboard}}**
 
 ```sh
+# Verify the checksum of the downloaded .ova file
 shasum -ca 256 pmm-server-{{release}}.sha256sum
 ```
 
@@ -72,8 +73,11 @@ shasum -ca 256 pmm-server-{{release}}.sha256sum
 4. Click *Open*.
 5. Click *Continue*.
 6. In the *Save as* dialog:
+
 	a. (Optional) Change the directory or file name.
-	b Click *Save*.
+
+	b. Click *Save*.
+
 7. Choose one of:
 	- (Optional) Click *Finish*. This starts the virtual machine.
 	- (Recommended) Click *Customize Settings*. This opens the VM's settings page without starting the machine.
@@ -82,16 +86,19 @@ shasum -ca 256 pmm-server-{{release}}.sha256sum
 
 1. Install [`ovftool`][OVFTool]. (You need to register.)
 2. Import and convert the OVA file. (`ovftool` can't change CPU or memory settings during import but it can set the default interface.)
+
 	Choose one of:
 	- Download and import the OVA file.
 		```sh
 		ovftool --name="PMM Server" --net:NAT=Wi-Fi\
-		https://www.percona.com/downloads/pmm2/{{release}}/ova/pmm-server-{{release}}.ova pmm-server-{{release}}.vmx
+		https://www.percona.com/downloads/pmm2/{{release}}/ova/pmm-server-{{release}}.ova\
+		pmm-server-{{release}}.vmx
 		```
 	- Import an already-downloaded OVA file.
 		```sh
 		ovftool --name="PMM Server" --net:NAT=WiFi\
-		pmm-server-{{release}}.ova pmm-server.vmx
+		pmm-server-{{release}}.ova\
+		pmm-server.vmx
 		```
 
 ### 3.2. Reconfigure interface
@@ -174,12 +181,12 @@ shasum -ca 256 pmm-server-{{release}}.sha256sum
 
 **CLI {{icon.keyboard}}**
 
-1. Show the list of available bridge interfaces
+1. Show the list of available bridge interfaces.
 	```sh
 	VBoxManage list bridgedifs
 	```
 2. Find the name of the active interface you want to bridge to (one with *Status: Up* and a valid IP address). Example: `en0: Wi-Fi (Wireless)`
-3. Bridge the virtual machine's first interface (`nic`) to the host's `en0` adaptor
+3. Bridge the virtual machine's first interface (`nic1`) to the host's `en0` ethernet adaptor.
 	```sh
 	VBoxManage modifyvm 'PMM Server'\
 	--nic1 bridged --bridgeadapter1 'en0: Wi-Fi (Wireless)'
@@ -220,7 +227,7 @@ shasum -ca 256 pmm-server-{{release}}.sha256sum
 		VBoxManage controlvm "PMM Server" poweroff
 		```
 
-## 5. Log into PMM
+## 5. Log into PMM user interface
 
 **UI {{icon.mouse}}**
 
@@ -252,9 +259,9 @@ shasum -ca 256 pmm-server-{{release}}.sha256sum
 	```sh
 	ssh-keygen -f admin
 	```
-2. Log into the [PMM web interface](#pmm-web-interface)
+2. Log into the [PMM user interface](#5-log-into-pmm-user-interface).
 3. Select *PMM --> PMM Settings --> SSH Key*.
-4. Copy and paste the contents of `admin.pub` into the *SSH Key* field.
+4. Copy and paste the contents of the `admin.pub` file into the *SSH Key* field.
 5. Click *Apply SSH Key*. (This copies the public key to `/home/admin/.ssh/authorized_keys` in the guest).
 6. Log in via SSH (`N.N.N.N` is the guest IP address).
 	```sh
@@ -263,7 +270,7 @@ shasum -ca 256 pmm-server-{{release}}.sha256sum
 
 ## 8. (Optional) Set up static IP
 
-When the guest OS starts, it will get an IP address from the virtual host's DHCP server. This IP can change each time the guest OS is restarted. Setting a static IP for the guest OS can avoid having to check the IP address whenever the guest is restarted.
+When the guest OS starts, it will get an IP address from the hypervisor's DHCP server. This IP can change each time the guest OS is restarted. Setting a static IP for the guest OS avoids having to check the IP address whenever the guest is restarted.
 
 **CLI {{icon.keyboard}}**
 
