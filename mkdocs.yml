@@ -59,9 +59,9 @@ plugins:
           - setting-up/server/dbaas-gke.md # Included file
           - how-to/troubleshoot.md
   - with-pdf: # https://github.com/orzih/mkdocs-with-pdf
-        output_path: '_pdf/PerconaMonitoringAndManagement-2.14.0.pdf'
+        output_path: '_pdf/PerconaMonitoringAndManagement-2.15.0.pdf'
         cover_title: 'Documentation'
-        cover_subtitle: 2.14.0 (January 28, 2021)
+        cover_subtitle: 2.15.0 (March 01, 2021)
         author: 'Percona Technical Documentation Team'
         cover_logo: docs/_images/PMM_Logo.svg
         debug_html: false
