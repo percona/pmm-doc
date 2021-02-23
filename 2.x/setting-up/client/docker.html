@@ -52,7 +52,7 @@
 </head>
 
 <body>
-	<!-- 2021-02-23 09:33:34.116844+00:00 -->
+	<!-- 2021-02-23 09:46:48.997985+00:00 -->
     
 <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.3/css/line.css" type="text/css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" type="text/css">
@@ -133,37 +133,6 @@
 </code></pre></div>
 </li>
 </ol>
-<h2 id="connect-to-a-docker-pmm-server-by-container-name"><a class="toclink" href="#connect-to-a-docker-pmm-server-by-container-name">Connect to a Docker PMM Server by container name</a></h2>
-<p>You can connect to a Docker-containerized PMM Server by name instead of IP address.</p>
-<ol>
-<li>
-<p>Put both containers on a non-default network.</p>
-<ol>
-<li>
-<p>Create a network.</p>
-<div class="highlight"><pre><span></span><code>docker network create &lt;network-name&gt;
-</code></pre></div>
-</li>
-<li>
-<p>Connect a container to that network.</p>
-<div class="highlight"><pre><span></span><code>docker network connect &lt;network-name&gt; &lt;container&gt;
-</code></pre></div>
-</li>
-</ol>
-</li>
-<li>
-<p>Run the container with <code>PMM_AGENT_SERVER_ADDRESS</code> as container name instead of IP.</p>
-<div class="highlight"><pre><span></span><code>docker run --rm \
--e PMM_AGENT_SERVER_ADDRESS=your-pmm-server-container-name:443 \
--e PMM_AGENT_SERVER_USERNAME=admin \
--e PMM_AGENT_SERVER_PASSWORD=admin \
--e PMM_AGENT_SERVER_INSECURE_TLS=1 \
--e PMM_AGENT_SETUP=1 \
--e PMM_AGENT_CONFIG_FILE=pmm-agent.yml \
---volumes-from pmm-client-data percona/pmm-client:2
-</code></pre></div>
-</li>
-</ol>
 <div class="admonition alert alert-success">
 <p class="admonition-title">Tips</p>
 <ul>
@@ -182,7 +151,7 @@
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-02-09
+            <i class="uil uil-refresh"></i> Page updated 2021-02-23
         </li>
         
     </ul>
