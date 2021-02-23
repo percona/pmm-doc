@@ -52,7 +52,7 @@
 </head>
 
 <body>
-	<!-- 2021-02-23 08:44:48.951232+00:00 -->
+	<!-- 2021-02-23 09:33:34.297342+00:00 -->
     
 <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.3/css/line.css" type="text/css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" type="text/css">
@@ -132,8 +132,7 @@
 <ol>
 <li>
 <p>Pull the image.</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Pull the latest 2.x image</span>
-docker pull percona/pmm-server:2
+<div class="highlight"><pre><span></span><code>docker pull percona/pmm-server:2
 </code></pre></div>
 </li>
 <li>
@@ -174,9 +173,9 @@ docker <span class="nb">exec</span> -it pmm-server curl -u admin:admin http://lo
 <p>Check container mount points are the same (<code>/srv</code>).</p>
 <div class="highlight"><pre><span></span><code>docker inspect pmm-data <span class="p">|</span> grep Destination
 docker inspect pmm-server <span class="p">|</span> grep Destination
-
-<span class="c1"># With jq</span>
-docker inspect pmm-data <span class="p">|</span> jq <span class="s1">&#39;.[].Mounts[].Destination&#39;</span>
+</code></pre></div>
+<p>With <code>jq</code>:</p>
+<div class="highlight"><pre><span></span><code>docker inspect pmm-data <span class="p">|</span> jq <span class="s1">&#39;.[].Mounts[].Destination&#39;</span>
 docker inspect pmm-server <span class="p">|</span> jq <span class="s1">&#39;.[].Mounts[].Destination&#39;</span>
 </code></pre></div>
 </li>
@@ -245,7 +244,7 @@ docker run --rm --volumes-from pmm-data -it percona/pmm-server:2 chown -R postgr
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-01-29
+            <i class="uil uil-refresh"></i> Page updated 2021-02-23
         </li>
         
     </ul>
