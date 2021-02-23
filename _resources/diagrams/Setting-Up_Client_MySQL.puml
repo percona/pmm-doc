@@ -1,0 +1,31 @@
+' Diagram showing sequence of tasks to set up PMM Client for MySQL
+' Syntax: https://plantuml.com/activity-diagram-beta
+' Icons: https://plantuml.com/openiconic
+' Colour: https://plantuml.com/color
+' Text: https://plantuml.com/creole
+@startuml "setting-up_client_mysql"
+skinparam ArrowHeadColor none
+title Running PMM Client on a MySQL host\nOverview\n
+
+split
+-[hidden]->
+partition "MySQL 5.6+\nMariaDB 10.0+" {
+	:Performance Schema;
+}
+split again
+-[hidden]->
+partition "MySQL 5.5\nMariaDB 5.5" {
+	:slow query log;
+}
+
+split again
+-[hidden]->
+partition "Percona Server\nXtraDB Cluster" {
+	:slow query log;
+}
+end split
+
+:User account;
+:Add service;
+
+@enduml
