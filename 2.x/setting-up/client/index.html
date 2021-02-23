@@ -52,7 +52,7 @@
 </head>
 
 <body>
-	<!-- 2021-02-19 11:40:00.173936+00:00 -->
+	<!-- 2021-02-23 08:44:48.723295+00:00 -->
     
 <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.3/css/line.css" type="text/css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" type="text/css">
@@ -222,18 +222,8 @@ Configuration reloaded.
 <h2 id="connecting-pmm-clients-to-pmm-server"><a class="toclink" href="#connecting-pmm-clients-to-pmm-server">Connecting PMM Clients to PMM Server</a></h2>
 <p>With your server and clients set up, you must configure each PMM Client and
 specify which PMM Server it should send its data to.</p>
-<p>To connect a PMM Client, enter the IP address of the PMM Server as the value
-of the <code>--server-url</code> parameter to the <code>pmm-admin config</code> command, and
-allow using self-signed certificates with <code>--server-insecure-tls</code>.</p>
-<div class="admonition alert alert-info">
-<p class="admonition-title">Note</p>
-<p>The <code>--server-url</code> argument should include <code>https://</code> prefix and PMM Server credentials, which are <code>admin</code>/<code>admin</code> by default, if not changed at first PMM Server GUI access.</p>
-</div>
-<p>Run this command as root or by using the <code>sudo</code> command</p>
-<div class="highlight"><pre><span></span><code>pmm-admin config --server-insecure-tls --server-url<span class="o">=</span>https://admin:admin@192.168.100.1:443
-</code></pre></div>
-<p>For example, if your PMM Server is running on 192.168.100.1, you have installed PMM Client on a machine with IP 192.168.200.1, and didn’t change default PMM Server credentials, run the following in the terminal of your client. Run the following commands as root or by using the <code>sudo</code> command:</p>
-<div class="highlight"><pre><span></span><code>pmm-admin config --server-insecure-tls --server-url<span class="o">=</span>https://admin:admin@192.168.100.1:443
+<p>To connect a PMM Client, use this command, replacing <code>X.X.X.X</code> with the IP address of your PMM Server.</p>
+<div class="highlight"><pre><span></span><code>pmm-admin config --server-insecure-tls --server-url<span class="o">=</span>https://admin:admin@X.X.X.X:443
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>Checking local pmm-agent status...
 pmm-agent is running.
@@ -245,10 +235,13 @@ Configuration reloaded.
 Checking local pmm-agent status...
 pmm-agent is running.
 </code></pre></div>
-<p>If you change the default port 443 when running PMM Server, specify the new port number after the IP address of PMM Server.</p>
 <div class="admonition alert alert-info">
-<p class="admonition-title">Note</p>
-<p>By default <code>pmm-admin config</code> refuses to add client if it already exists in the PMM Server inventory database. If you need to re-add an already existing client (e.g. after full reinstall, hostname changes, etc.), you can run <code>pmm-admin config</code> with the additional <code>--force</code> option. This will remove an existing node with the same name, if any, and all its dependent services.</p>
+<p class="admonition-title">Notes</p>
+<ul>
+<li>The <code>--server-url</code> argument should include <code>https://</code> prefix and PMM Server credentials, which are <code>admin</code>/<code>admin</code> by default, if not changed at first PMM Server GUI access.</li>
+<li>If you change the default port 443 when running PMM Server, specify the new port number after the IP address of PMM Server.</li>
+<li>By default <code>pmm-admin config</code> refuses to add client if it already exists in the PMM Server inventory database. If you need to re-add an already existing client (e.g. after full reinstall, hostname changes, etc.), you can run <code>pmm-admin config</code> with the additional <code>--force</code> option. This will remove an existing node with the same name, if any, and all its dependent services.</li>
+</ul>
 </div>
 <p>By default, the node name is the host name. If you have non-unique client host names, specify the node name when adding the client:</p>
 <div class="highlight"><pre><span></span><code>pmm-admin add TYPE <span class="o">[</span>options<span class="o">]</span> NODE-NAME
@@ -292,7 +285,7 @@ pmm-admin remove proxysql ubuntu-proxysql
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-02-09
+            <i class="uil uil-refresh"></i> Page updated 2021-02-23
         </li>
         
     </ul>
