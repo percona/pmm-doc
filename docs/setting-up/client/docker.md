@@ -41,7 +41,7 @@ The [PMM Client Docker image](https://hub.docker.com/r/percona/pmm-client/tags/)
 4. Check status.
 
 	```sh
-	docker exec	pmm-client\
+	docker exec	pmm-client \
 	pmm-admin status
 	```
 
