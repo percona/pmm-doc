@@ -90,7 +90,6 @@ nav:
           - setting-up/client/index.md
           - setting-up/client/docker.md
           - setting-up/client/mysql.md
-          - setting-up/client/percona-server.md
           - setting-up/client/mongodb.md
           - setting-up/client/postgresql.md
           - setting-up/client/proxysql.md
