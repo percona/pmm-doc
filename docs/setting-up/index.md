@@ -14,8 +14,7 @@
 
 [PMM Clients](client/index.md) on:
 
-- [MySQL](client/mysql.md)
-- [Percona Server for MySQL](client/percona-server.md)
+- [MySQL, Percona Server](client/mysql.md)
 - [MongoDB](client/mongodb.md)
 - [PostgreSQL](client/postgresql.md)
 - [ProxySQL](client/proxysql.md)
