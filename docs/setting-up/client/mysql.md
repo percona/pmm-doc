@@ -1,45 +1,32 @@
-# MySQL, Percona Server
+# MySQL (including Percona Server, MariaDB)
 
-PMM Client collects metrics from MySQL and derivatives such as Percona Server for MySQL, MariaDB, and [Amazon RDS](aws.md) with one of two methods:
+PMM Client collects metrics from MySQL and MySQL derivatives such as Percona Server for MySQL, MariaDB, and [Amazon RDS](aws.md).
 
-- *slow query log*:
+Metrics come from two sources:
 
-Provides the most detail but can impact performance on heavily-loaded systems.
-On Percona Server the query sampling feature may reduce the performance impact.
-Recommended for use on older MySQL versions (prior to 5.6), which have neither sampling nor *Performance Schema*.
+- [Slow query log](#slow-query-log)
+- [Performance Schema](#performance-schema)
 
-- *Performance Schema*: generally a better choice for recent versions of other MySQL variants.
+Although you can use both we recommend choosing one; there is some overlap in the data reported, and each incurs a small performance overhead.
 
-Which one you use depends on the version and variant of your MySQL instance.
-
-
-
-
-
-
+Your choice depends on the version and variant of your MySQL instance, and how much detail you want to see.
 
 <!--
-
-
-However, there are certain recommended settings that help maximize monitoring efficiency.
-
-These recommendations depend on the variant and version of MySQL you are using, and mostly apply to very high loads.
-
 MySQL with too many tables can lead to PMM Server overload due to the streaming of too much time series data. It can also lead to too many queries from `mysqld_exporter` causing extra load on MySQL. Therefore PMM Server disables most consuming `mysqld_exporter` collectors automatically if there are more than 1000 tables.
-
 -->
-
-
-
-
-<!----------------------------------------------------------------------------------------------------------------------------------->
 
 ## Slow query log
 
-| Advantages           | Disadvantages
-| -------------------- | --------------
-| Detailed information | Can affect the quality of monitoring data gathered by Query Analytics
-| Low resource usage   |
+{{icon.pluscircle}} Advantages
+
+- Detailed information.
+- Low resource usage. (Percona Server for MySQL has a query sampling feature that can lower the performance impact.)
+
+{{icon.minuscircle}} Disadvantages
+
+- Can only be used to monitor local databases.
+- Can affect the quality of monitoring data gathered by Query Analytics
+- Need to set up a log file rotation strategy.
 
 ### Configuration
 
@@ -48,15 +35,20 @@ MySQL with too many tables can lead to PMM Server overload due to the streaming 
 You must set these values for your database server, either in the server's configuration file (e.g., `/etc/mysql/conf.d/mysql.cnf` for MySQL) and restarting to make them permanent, or set them in an SQL session.
 
 - [`slow_query_log=ON`](https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar_slow_query_log) enables the slow query log.
+
 - [`log_output=file`](https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar_log_output) ensures the log is sent to a file.
+
 - [`long_query_time=0`](https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar_long_query_time) is the slow query threshold in seconds (the definition of *slow*). In heavily-loaded applications, frequent fast queries can have a bigger impact on performance than rare slow queries. Setting this value to `0` means all queries are captured.
+
 - [`log_slow_admin_statements=ON`](https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar_log_slow_admin_statements) includes the logging of administrative statements.
+
 - [`log_slow_slave_statements=ON`]()
 
 Example (configuration file)
 
 ```ini
-[mysql]
+[mysqld]
+# ...
 slow_query_log=ON
 log_output=file
 long_query_time=0
@@ -74,7 +66,19 @@ SET GLOBAL log_slow_admin_statements=1;
 SET GLOBAL log_slow_slave_statements=1;
 ```
 
-**Applies to: Percona Server for MySQL**
+!!! alert alert-success "Tip"
+	In MySQL 5.6+, `performance_schema` is enabled by default. You should explicitly disable it with:
+
+	```ini
+	performance_schema=0
+	```
+
+
+
+
+Recommended for:
+
+- Percona Server for MySQL
 
 Not all dashboards are available by default for all MySQL variants and configurations. Some graphs require Percona Server for MySQL, and specialized plugins, or extra configuration.
 
@@ -105,7 +109,10 @@ Not all dashboards are available by default for all MySQL variants and configura
  innodb_monitor_enable=all
  ```
 
-**Applies to: Percona Server for MySQL, MariaDB**
+Recommended for:
+
+- Percona Server for MySQL
+- MariaDB
 
 - `userstat=1` enables *User statistics*, information about user activity, individual table and index access.
 
@@ -143,19 +150,29 @@ Older files will be deleted on the next iteration.
 
 
 
-<!-- -------------------------------------------------- -->
 
 ## Performance Schema
 
-**Applies to: MySQL 5.6+ (enabled by default in MySQL 5.6.6), Percona Server for MySQL 5.6+, MariaDB 10.0+ (disabled by default)**
+PMM's *MySQL Performance Schema Details* dashboard charts the various `performance_schema` metrics.
 
-| Advantages           | Disadvantages
-| -------------------- | --------------
-| Faster parsing       | Less detailed than *slow query log*
+**Recommended for:**
+
+- MySQL 5.6+ (enabled by default in MySQL 5.6.6)
+- Percona Server for MySQL 5.6+
+- MariaDB 10.0+ (disabled by default)
+
+{{icon.pluscircle}} Advantages
+
+- Faster parsing
+- Enabled by default on later versions of MySQL
+
+{{icon.minuscircle}} Disadvantages
+
+- Less detailed than *slow query log*
 
 ### Configuration
 
-- [`performance_schema=ON`](https://dev.mysql.com/doc/refman/5.7/en/performance-schema-system-variables.html#sysvar_performance_schema) enables *Performance Schema*.
+- [`performance_schema=ON`](https://dev.mysql.com/doc/refman/5.7/en/performance-schema-system-variables.html#sysvar_performance_schema) enables *Performance Schema* metrics. This is the default in MySQL 5.6.6 and higher.
 
 - [`innodb_monitor_enable=all`](https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html#sysvar_innodb_monitor_enable) enables InnoDB metrics counters.
 
@@ -226,7 +243,6 @@ WHERE NAME LIKE '%statements%';
 ```
 
 This option can cause additional overhead and should be used with care.
-
 
 
 
