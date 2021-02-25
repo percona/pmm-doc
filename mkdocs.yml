@@ -97,6 +97,7 @@ nav:
           - setting-up/client/aws.md
           - setting-up/client/linux.md
           - setting-up/client/external.md
+          - setting-up/client/haproxy.md
   - Using:
       - using/index.md
       - using/interface.md
