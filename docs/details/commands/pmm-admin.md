@@ -344,7 +344,7 @@ PMM communicates with the PMM Server via a PMM agent process.
     : Source of SQL queries, one of: `slowlog`, `perfschema`, `none` (default: `slowlog`).
 
     `--size-slow-logs=N`
-    : Rotate slow log file at this size (default: server-defined; negative value disables rotation).
+    : Rotate slow log file at this number of bytes. If `0`, use server-defined default. Negative values disable log rotation.
 
     `--disable-queryexamples`
     : Disable collection of query examples.

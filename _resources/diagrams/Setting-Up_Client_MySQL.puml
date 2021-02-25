@@ -5,27 +5,50 @@
 ' Text: https://plantuml.com/creole
 @startuml "setting-up_client_mysql"
 skinparam ArrowHeadColor none
-title Running PMM Client on a MySQL host\nOverview\n
+title "Running PMM Client on a MySQL host\nOverview"
 
 split
 -[hidden]->
-partition "MySQL 5.6+\nMariaDB 10.0+" {
-	:Performance Schema;
-}
+:Configure database
+server for
+**//slow query log//**;
 split again
 -[hidden]->
-partition "MySQL 5.5\nMariaDB 5.5" {
-	:slow query log;
-}
-
+:Configure database
+server for
+**//Performance Schema//**;
+end split
+:(Optional)
+Configure
+User statistics;
+note right
+""userstat=1""
+end note
+:(Recommended)
+Create PMM
+user account;
+split
+:Add service;
+note left
+<code>
+pmm-admin add mysql
+--query-source=slowlog
+[--size-slow-logs=N]
+...
+</code>
+end note
+kill
 split again
--[hidden]->
-partition "Percona Server\nXtraDB Cluster" {
-	:slow query log;
-}
+:Add service;
+note right
+<code>
+pmm-admin add mysql
+--query-source=perfschema
+...
+</code>
+end note
+kill
 end split
 
-:User account;
-:Add service;
 
 @enduml
