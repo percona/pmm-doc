@@ -18,9 +18,8 @@ pmm-admin add haproxy --listen-port=8404
 ```
 
 where listen-port is port, where HAProxy running. Flag listen-port is only one, which is required.
-Additionally, one positional arguments can be appended to the command line flags: a service name to be used
-by PMM. If not specified, they are substituted
-automatically as `<node>-haproxy`.
+Additionally, one positional argument can be appended to the command line flags: a service name to be used
+by PMM. If not specified, they are substituted automatically as `<node>-haproxy`.
 
 During adding here is connection check (can be skipped by flag --skip-connection-check).
 If HAProxy doesnt running properly on given port then you will see error message:
