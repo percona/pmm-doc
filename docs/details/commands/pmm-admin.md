@@ -326,7 +326,7 @@ PMM communicates with the PMM Server via a PMM agent process.
     : MySQL address and port (default: 127.0.0.1:3306).
 
     `--socket=socket`
-    : Path to MySQL socket.
+    : Path to MySQL socket. (Find the socket path with `mysql -u root -p -e "select @@socket"`.)
 
     `--node-id=node-id`
     : Node ID (default is auto-detected).

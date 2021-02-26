@@ -308,13 +308,13 @@ Example (MySQL configuration file)
 
 ```ini
 [mysqld]
-userstat=1
+userstat = ON
 ```
 
 Example (session)
 
 ```sql
-SET GLOBAL userstat=1;
+SET GLOBAL userstat=ON;
 ```
 
 
@@ -376,7 +376,7 @@ pmm-admin add mysql --username pmm --password pass ...
 5. Default query source (`slowlog`), service name (`{node}-mysql`), connect via socket.
 
 	```sh
-	pmm-admin add mysql --username=pmm --password=pass --socket=/tmp/mysql.sock
+	pmm-admin add mysql --username=pmm --password=pass --socket=/var/run/mysqld/mysqld.sock
 	```
 
 !!! seealso "See also"
