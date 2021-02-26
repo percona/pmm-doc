@@ -33,8 +33,7 @@ Service ID  : /service_id/c481183f-70a2-443f-91e5-cae5cecd06a2
 Service name: Ubuntu-haproxy
 ```
 
-Beside positional argument shown above you can specify service name and
-service address with the following flags: `--username`, `--password`, `--metrics-path` (path for scraping metrics, default: /metrics) and `--scheme` (http or https), Here are some examples:
+Beside positional argument shown above you can specify service name  with the following flags: `--username`, `--password`, `--metrics-path` (path for scraping metrics, default: /metrics) and `--scheme` (http or https), Here are some examples:
 
 ```sh
 pmm-admin add haproxy --listen-port=8404 --username=pmm --password=pmm new-haproxy
