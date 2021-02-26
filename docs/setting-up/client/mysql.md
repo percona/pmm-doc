@@ -314,7 +314,7 @@ userstat = ON
 Example (session)
 
 ```sql
-SET GLOBAL userstat=ON;
+SET GLOBAL userstat = ON;
 ```
 
 
@@ -352,31 +352,31 @@ pmm-admin add mysql --username pmm --password pass ...
 1. Default query source (`slowlog`), service name (`{node}-mysql`), and service address/port (`127.0.0.1:3306`).
 
 	```sh
-	pmm-admin add mysql --username=pmm --password=pass
+	sudo pmm-admin add mysql --username=pmm --password=pass
 	```
 
 2. Slow query log source and log size limit (`1048576` bytes), service name (`MYSQL_NODE`) and service address/port (`191.168.1.123:3306`).
 
 	```sh
-	pmm-admin add mysql --query-source=slowlog --size-slow-logs=1048576 --username=pmm --password=pass MYSQL_NODE 192.168.1.123:3306
+	sudo pmm-admin add mysql --query-source=slowlog --size-slow-logs=1048576 --username=pmm --password=pass MYSQL_NODE 192.168.1.123:3306
 	```
 
 3. Performance schema query source, service name (`MYSQL_NODE`) and default service address/port (`127.0.0.1:3306`)
 
 	```sh
-	pmm-admin add mysql --query-source=perfschema --username=pmm --password=pass MYSQL_NODE
+	sudo pmm-admin add mysql --query-source=perfschema --username=pmm --password=pass MYSQL_NODE
 	```
 
 4. Performance schema query source, service name (`MYSQL_NODE`) and default service address/port (`127.0.0.1:3306`) specified with flags.
 
 	```sh
-	pmm-admin add mysql --query-source=perfschema --username=pmm --password=pass --service-name=MYSQL_NODE --host=127.0.0.1 --port=3306
+	sudo pmm-admin add mysql --query-source=perfschema --username=pmm --password=pass --service-name=MYSQL_NODE --host=127.0.0.1 --port=3306
 	```
 
 5. Default query source (`slowlog`), service name (`{node}-mysql`), connect via socket.
 
 	```sh
-	pmm-admin add mysql --username=pmm --password=pass --socket=/var/run/mysqld/mysqld.sock
+	sudo pmm-admin add mysql --username=pmm --password=pass --socket=/var/run/mysqld/mysqld.sock
 	```
 
 !!! seealso "See also"
