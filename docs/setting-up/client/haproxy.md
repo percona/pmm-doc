@@ -1,6 +1,6 @@
 # HAProxy
 
-## Adding general external services
+## Adding HAProxy services
 
 You can collect metrics from an haproxy on a node when:
 
