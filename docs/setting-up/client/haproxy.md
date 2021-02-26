@@ -44,6 +44,10 @@ pmm-admin add haproxy --listen-port=8404 --username=pmm --password=pmm new-hapro
 pmm-admin add haproxy --listen-port=8404 --metrics-path=/prom-metrics --scheme=https
 ```
 
+Here you can check list of all available flags: [pmm-admin](../../details/commands/pmm-admin.md)
+
 You can also add HAProxy by UI in Grafana. Add instance.
 
-Here you can check list of all available flags: [pmm-admin](../../details/commands/pmm-admin.md)
+HAProxy data is visible in the *Advanced Data Exploration* dashboard:
+
+![](../../_images/PMM_Advanced_Data_Exploration_HAProxy.png)
