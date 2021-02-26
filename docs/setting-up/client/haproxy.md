@@ -22,6 +22,10 @@ Additionally, one positional arguments can be appended to the command line flags
 by PMM. If not specified, they are substituted
 automatically as `<node>-haproxy`.
 
+During adding here is connection check (can be skipped by flag --skip-connection-check).
+If HAProxy doesnt running properly on given port then you will see error message:
+Connection check failed: Get "http://127.0.0.1:8404/metrics": dial tcp 127.0.0.1:8404: connect: connection refused.
+
 The output of this command may look as follows:
 
 ```
