@@ -41,3 +41,5 @@ service address with the following flags: `--username`, `--password`, `--metrics
 pmm-admin add haproxy --listen-port=8404 --username=pmm --password=pmm new-haproxy
 pmm-admin add haproxy --listen-port=8404 --metrics-path=/prom-metrics --scheme=https
 ```
+
+Here you can check list of all avalaible flags: [pmm-admin](../../details/commands/pmm-admin.md)
