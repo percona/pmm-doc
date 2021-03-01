@@ -52,7 +52,7 @@
 </head>
 
 <body>
-	<!-- 2021-02-23 10:05:56.878685+00:00 -->
+	<!-- 2021-03-01 12:58:53.794824+00:00 -->
     
 <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.3/css/line.css" type="text/css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" type="text/css">
@@ -104,7 +104,7 @@
 
                 <div class="bodywrapper">
                     <div class="body">
-                        <h1>Amazon RDS</h1>
+                        <h1 id="amazon-rds"><a class="toclink" href="#amazon-rds">Amazon RDS</a></h1>
 <h2 id="required-settings"><a class="toclink" href="#required-settings">Required settings</a></h2>
 <p>It is possible to use PMM for monitoring <a href="https://aws.amazon.com/rds/">Amazon RDS</a> (just like any remote MySQL instance). In this case, the PMM Client is not installed on the host where the database server is deployed. By using the PMM web interface, you connect to the Amazon RDS DB instance. You only need to provide the IAM user access key (or assign an IAM role) and PMM discovers the Amazon RDS DB instances available for monitoring.</p>
 <p>First of all, ensure that there is the minimal latency between PMM Server and the Amazon RDS instance.</p>
@@ -209,7 +209,7 @@
 <p>General system metrics are monitored by using the <code>rds_exporter</code> exporter which replaces <code>node_exporter</code>. <code>rds_exporter</code> gives access to Amazon Cloudwatch metrics.</p>
 <p><code>node_exporter</code>, used in versions of PMM prior to 1.8.0, was not able to monitor general system metrics remotely.</p>
 </div>
-<h1>Adding an Amazon RDS MySQL, Aurora MySQL, or Remote Instance</h1>
+<h1 id="adding-an-amazon-rds-mysql-aurora-mysql-or-remote-instance"><a class="toclink" href="#adding-an-amazon-rds-mysql-aurora-mysql-or-remote-instance">Adding an Amazon RDS MySQL, Aurora MySQL, or Remote Instance</a></h1>
 <p>The <em>PMM Add Instance</em> is now a preferred method of adding an Amazon RDS
 database instance to PMM. This method supports Amazon RDS database instances
 that use Amazon Aurora, MySQL, or MariaDB engines, as well as any remote PostgreSQL, ProxySQL, MySQL and MongoDB instances.</p>
