@@ -52,7 +52,7 @@
 </head>
 
 <body>
-	<!-- 2021-03-01 17:25:31.084900+00:00 -->
+	<!-- 2021-03-01 18:53:32.772094+00:00 -->
     
 <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.3/css/line.css" type="text/css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" type="text/css">
@@ -131,8 +131,8 @@
 <p>Details are in the <em>PMM Database Checks</em> dashboard (select <em>PMM&rarr;PMM Database Checks</em>).</p>
 <p><img alt="PMM Database Checks dashboard" src="../../_images/PMM_Database_Checks.jpg" /></p>
 <h2 id="how-to-enable"><a class="toclink" href="#how-to-enable">How to enable</a></h2>
-<p>The Security Threat Tool is disabled by default. Enable it in <a href="../../how-to/configure.html#advanced-settings"><em>PMM Settings&rarr;Advanced Settings</em></a>.</p>
-<p>After activating the Security Threat Tool, you must <strong>wait 24 hours for data to appear in the dashboard.</strong></p>
+<p>The Security Threat Tool (STT) is disabled by default. Enable it in <a href="../../how-to/configure.html#advanced-settings"><em>PMM Settings&rarr;Advanced Settings</em></a>.</p>
+<p>Enabling STT in the settings also causes the PMM server to download STT checks from Percona Platform and run them once. This operation runs in the background so even though the settings update finishes instantly it might take some time for the checks to complete download and execution and the results (if any) to be visible in the <em>PMM Database Checks</em> dashboard.</p>
 <h2 id="list-of-checks-made"><a class="toclink" href="#list-of-checks-made">List of checks made</a></h2>
 <table class="table">
 <thead>
@@ -179,7 +179,7 @@
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2020-12-31
+            <i class="uil uil-refresh"></i> Page updated 2021-03-01
         </li>
         
     </ul>
@@ -348,6 +348,12 @@
 
 <li class="toctree-l3">
     <a class="reference internal" href="../../setting-up/client/external.html">External Services</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../setting-up/client/haproxy.html">HAProxy</a>
 
 
 
@@ -958,6 +964,12 @@
 
 
 
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-haproxy-instance-summary.html">HAProxy Instance Summary</a>
+
+
+
 </ul>
 
 
@@ -1033,6 +1045,12 @@
 
 
 <ul class="toctree" id="toctree">
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.15.0.html">Percona Monitoring and Management 2.15.0</a>
+
+
 
 
 <li class="toctree-l2">

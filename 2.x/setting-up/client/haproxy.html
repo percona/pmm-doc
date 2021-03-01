@@ -32,7 +32,7 @@
 
 
 
-<title>Percona Monitoring and Management &mdash; Docker</title>
+<title>Percona Monitoring and Management &mdash; HAProxy</title>
 
 <head>
     
@@ -46,13 +46,13 @@
 
     <link rel="top" title="" href="" />
     
-    <link rel="next" title="Virtual Appliance" href="virtual-appliance.html" />
+    <link rel="next" title="Using: Overview" href="../../using/index.html" />
     
     
 </head>
 
 <body>
-	<!-- 2021-03-01 18:53:32.655188+00:00 -->
+	<!-- 2021-03-01 18:53:32.473685+00:00 -->
     
 <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.3/css/line.css" type="text/css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" type="text/css">
@@ -73,12 +73,12 @@
     <ul class="nav nav-pills">
         
         <li class="right" style="margin-right: 10px">
-            <a href="virtual-appliance.html" title="Virtual Appliance">Next</a>
+            <a href="../../using/index.html" title="Using: Overview">Next</a>
         </li>
         
         
         <li class="right" style="margin-right: 10px">
-            <a href="index.html" title="Setting up PMM Server">Previous</a>
+            <a href="external.html" title="External Services">Previous</a>
         </li>
         
         <li>
@@ -92,11 +92,11 @@
 <div class="small">
     <ul class="list-inline">
         <li class="left">
-            <a href="https://github.com/percona/pmm-doc/issues/new?title=PMM2: doc issue on page  'Docker' (setting-up/server/docker.html)&body=Please describe the issue here"
+            <a href="https://github.com/percona/pmm-doc/issues/new?title=PMM2: doc issue on page  'HAProxy' (setting-up/client/haproxy.html)&body=Please describe the issue here"
                 target="_blank" title="Report an issue with this page on GitHub"><i class="uil uil-exclamation-triangle"></i> Report a problem with this page</a>
         </li>
         <li class="pull-right">
-            <a href="https://github.com/percona/pmm-doc/edit/main/docs/setting-up/server/docker.md" target="_blank" title="Edit this page on GitHub in Markdown format"><i class="uil uil-pen"></i> Edit this page</a>
+            <a href="https://github.com/percona/pmm-doc/edit/main/docs/setting-up/client/haproxy.md" target="_blank" title="Edit this page on GitHub in Markdown format"><i class="uil uil-pen"></i> Edit this page</a>
         </li>
     </ul>
 </div>
@@ -104,139 +104,40 @@
 
                 <div class="bodywrapper">
                     <div class="body">
-                        <h1 id="docker"><a class="toclink" href="#docker">Docker</a></h1>
-<div class="toc">
+                        <h1 id="haproxy"><a class="toclink" href="#haproxy">HAProxy</a></h1>
+<h2 id="adding-haproxy-services"><a class="toclink" href="#adding-haproxy-services">Adding HAProxy services</a></h2>
+<p>You can collect metrics from <a href="https://www.haproxy.com/">HAProxy</a> on a node when:</p>
 <ul>
-<li><a href="#before-you-start">Before you start</a></li>
-<li><a href="#run-pmm-server-as-a-docker-image">Run PMM Server as a Docker image</a></li>
-<li><a href="#backup-and-upgrade">Backup and upgrade</a></li>
-<li><a href="#downgrade-and-restore">Downgrade and restore</a></li>
+<li>there is already configured haproxy</li>
+<li>How to configure HAProxy https://www.haproxy.com/blog/haproxy-exposes-a-prometheus-metrics-endpoint</li>
+<li>After HAProxy is running (default address http://localhost:8404/metrics) you can add it to PMM.</li>
+<li>Use the <code>haproxy</code> alias to enable HAProxy metrics monitoring.</li>
+<li>there is already a PMM Agent instance running</li>
+<li>this node has been <a href="index.html">configured</a> using the <code>pmm-admin config</code> command.</li>
 </ul>
-</div>
-<hr />
-<p>Percona maintain a Docker image for PMM Server at <a href="https://hub.docker.com/r/percona/pmm-server">https://hub.docker.com/r/percona/pmm-server</a>.</p>
-<p>The Docker tags used here are for the latest version of PMM 2 (2.15.0) but you can specify any available tag to use the corresponding version of PMM Server.</p>
-<h2 id="before-you-start"><a class="toclink" href="#before-you-start">Before you start</a></h2>
-<ul>
-<li>
-<p><a href="https://docs.docker.com/get-docker/">Install Docker</a> 1.12.6 or higher.</p>
-</li>
-<li>
-<p>Check disk space: PMM needs approximately 1GB of storage for each monitored database node with data retention set to one week. (By default, data retention is 30 days.) To reduce the size of the VictoriaMetrics database, you can consider disabling table statistics.</p>
-</li>
-<li>
-<p>Check RAM: The minimum amount of memory is 2 GB for one monitored database node. (Memory usage does not grow in proportion to the number of nodes. For example, 16GB is adequate for 20 nodes.)</p>
-</li>
-</ul>
-<h2 id="run-pmm-server-as-a-docker-image"><a class="toclink" href="#run-pmm-server-as-a-docker-image">Run PMM Server as a Docker image</a></h2>
-<ol>
-<li>
-<p>Pull the image.</p>
-<div class="highlight"><pre><span></span><code>docker pull percona/pmm-server:2
+<h2 id="usage"><a class="toclink" href="#usage">USAGE</a></h2>
+<div class="highlight"><pre><span></span><code>pmm-admin add haproxy --listen-port<span class="o">=</span><span class="m">8404</span>
 </code></pre></div>
-</li>
-<li>
-<p>Create a persistent data container.</p>
-<div class="highlight"><pre><span></span><code>docker create --volume /srv <span class="se">\</span>
---name pmm-data percona/pmm-server:2 /bin/true
+<p>where <code>listen-port</code> is the port number where HAProxy running. (This is the only required flag.)</p>
+<p>The output of this command should look as follows:</p>
+<div class="highlight"><pre><span></span><code>HAProxy Service added.
+Service ID  : /service_id/c481183f-70a2-443f-91e5-cae5cecd06a2
+Service name: Ubuntu-haproxy
 </code></pre></div>
-<p>PMM Server expects the data volume (specified with <code>--volume</code>) to be <code>/srv</code>.  <strong>Using any other value will result in data loss when upgrading.</strong></p>
-</li>
-<li>
-<p>Run the image to start PMM Server.</p>
-<div class="highlight"><pre><span></span><code>docker run --detach --restart always <span class="se">\</span>
---publish <span class="m">80</span>:80 --publish <span class="m">443</span>:443 <span class="se">\</span>
---volumes-from pmm-data --name pmm-server <span class="se">\</span>
-percona/pmm-server:2
+<p>Additionally, one positional argument can be appended to the command line flags: a service name to be used
+by PMM. If not specified, they are substituted automatically as <code>&lt;node&gt;-haproxy</code>.</p>
+<p>During adding here is connection check (can be skipped by flag <code>--skip-connection-check</code>).
+If HAProxy doesn&rsquo;t run properly on the given port then you will see an error message:</p>
+<div class="highlight"><pre><span></span><code>Connection check failed: Get &quot;http://127.0.0.1:8404/metrics&quot;: dial tcp 127.0.0.1:8404: connect: connection refused.
 </code></pre></div>
-<p>You can disable manual updates via the Home Dashboard <em>PMM Upgrade</em> panel by adding <code>-e DISABLE_UPDATES=true</code> to the <code>docker run</code> command.</p>
-</li>
-<li>
-<p>In a web browser, visit <em>server hostname</em>:80 or <em>server hostname</em>:443 to see the PMM user interface.</p>
-</li>
-</ol>
-<h2 id="backup-and-upgrade"><a class="toclink" href="#backup-and-upgrade">Backup and upgrade</a></h2>
-<ol>
-<li>
-<p>Find out which version is installed.</p>
-<div class="highlight"><pre><span></span><code>docker <span class="nb">exec</span> -it pmm-server curl -u admin:admin http://localhost/v1/version
+<p>Beside positional argument shown above you can specify service name  with the following flags: <code>--username</code>, <code>--password</code>, <code>--metrics-path</code> (path for scraping metrics, default: /metrics) and <code>--scheme</code> (http or https). Here are some examples:</p>
+<div class="highlight"><pre><span></span><code>pmm-admin add haproxy --listen-port<span class="o">=</span><span class="m">8404</span> --username<span class="o">=</span>pmm --password<span class="o">=</span>pmm new-haproxy
+pmm-admin add haproxy --listen-port<span class="o">=</span><span class="m">8404</span> --metrics-path<span class="o">=</span>/prom-metrics --scheme<span class="o">=</span>https
 </code></pre></div>
-<div class="admonition alert alert-success">
-<p class="admonition-title">Tip</p>
-<p>Use <code>jq</code> to extract the quoted string value.</p>
-<div class="highlight"><pre><span></span><code>sudo apt install jq <span class="c1"># Example for Debian, Ubuntu</span>
-docker <span class="nb">exec</span> -it pmm-server curl -u admin:admin http://localhost/v1/version <span class="p">|</span> jq .version
-</code></pre></div>
-</div>
-</li>
-<li>
-<p>Check container mount points are the same (<code>/srv</code>).</p>
-<div class="highlight"><pre><span></span><code>docker inspect pmm-data <span class="p">|</span> grep Destination
-docker inspect pmm-server <span class="p">|</span> grep Destination
-</code></pre></div>
-<p>With <code>jq</code>:</p>
-<div class="highlight"><pre><span></span><code>docker inspect pmm-data <span class="p">|</span> jq <span class="s1">&#39;.[].Mounts[].Destination&#39;</span>
-docker inspect pmm-server <span class="p">|</span> jq <span class="s1">&#39;.[].Mounts[].Destination&#39;</span>
-</code></pre></div>
-</li>
-<li>
-<p>Stop the container and create backups.</p>
-<div class="highlight"><pre><span></span><code>docker stop pmm-server
-docker rename pmm-server pmm-server-backup
-mkdir pmm-data-backup <span class="o">&amp;&amp;</span> <span class="nb">cd</span> <span class="nv">$_</span>
-docker cp pmm-data:/srv .
-</code></pre></div>
-</li>
-<li>
-<p>Pull and run the latest image.</p>
-<div class="highlight"><pre><span></span><code>docker pull percona/pmm-server:2
-docker run <span class="se">\</span>
---detach <span class="se">\</span>
---restart always <span class="se">\</span>
---publish <span class="m">80</span>:80 --publish <span class="m">443</span>:443 <span class="se">\</span>
---volumes-from pmm-data <span class="se">\</span>
---name pmm-server <span class="se">\</span>
-percona/pmm-server:2
-</code></pre></div>
-</li>
-<li>
-<p>(Optional) Repeat step 1 to confirm the version, or check the <em>PMM Upgrade</em> panel on the <em>Home Dashboard</em>.</p>
-</li>
-</ol>
-<h2 id="downgrade-and-restore"><a class="toclink" href="#downgrade-and-restore">Downgrade and restore</a></h2>
-<ol>
-<li>
-<p>Stop and remove the running version.</p>
-<div class="highlight"><pre><span></span><code>docker stop pmm-server
-docker rm pmm-server
-</code></pre></div>
-</li>
-<li>
-<p>Restore backups.</p>
-<div class="highlight"><pre><span></span><code>docker rename pmm-server-backup pmm-server
-<span class="c1"># cd to wherever you saved the backup</span>
-docker cp srv pmm-data:/
-</code></pre></div>
-</li>
-<li>
-<p>Restore permissions.</p>
-<div class="highlight"><pre><span></span><code>docker run --rm --volumes-from pmm-data -it percona/pmm-server:2 chown -R root:root /srv <span class="o">&amp;&amp;</span> <span class="se">\</span>
-docker run --rm --volumes-from pmm-data -it percona/pmm-server:2 chown -R pmm:pmm /srv/alertmanager <span class="o">&amp;&amp;</span> <span class="se">\</span>
-docker run --rm --volumes-from pmm-data -it percona/pmm-server:2 chown -R root:pmm /srv/clickhouse <span class="o">&amp;&amp;</span> <span class="se">\</span>
-docker run --rm --volumes-from pmm-data -it percona/pmm-server:2 chown -R grafana:grafana /srv/grafana <span class="o">&amp;&amp;</span> <span class="se">\</span>
-docker run --rm --volumes-from pmm-data -it percona/pmm-server:2 chown -R pmm:pmm /srv/logs <span class="o">&amp;&amp;</span> <span class="se">\</span>
-docker run --rm --volumes-from pmm-data -it percona/pmm-server:2 chown -R postgres:postgres /srv/postgres <span class="o">&amp;&amp;</span> <span class="se">\</span>
-docker run --rm --volumes-from pmm-data -it percona/pmm-server:2 chown -R pmm:pmm /srv/prometheus <span class="o">&amp;&amp;</span> <span class="se">\</span>
-docker run --rm --volumes-from pmm-data -it percona/pmm-server:2 chown -R pmm:pmm /srv/victoriametrics <span class="o">&amp;&amp;</span> <span class="se">\</span>
-docker run --rm --volumes-from pmm-data -it percona/pmm-server:2 chown -R postgres:postgres /srv/logs/postgresql.log
-</code></pre></div>
-</li>
-<li>
-<p>Start (don’t run) the image.</p>
-<div class="highlight"><pre><span></span><code>docker start pmm-server
-</code></pre></div>
-</li>
-</ol>
+<p>Here you can check list of all available flags: <a href="../../details/commands/pmm-admin.html">pmm-admin</a></p>
+<p>You can also add HAProxy by UI in Grafana. Add instance.</p>
+<p>HAProxy data is visible in the <em>Advanced Data Exploration</em> dashboard:</p>
+<p><img alt="" src="../../_images/PMM_Advanced_Data_Exploration_HAProxy.png" /></p>
                     </div>
                 </div>
                 
@@ -244,7 +145,7 @@ docker run --rm --volumes-from pmm-data -it percona/pmm-server:2 chown -R postgr
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-02-23
+            <i class="uil uil-refresh"></i> Page updated 2021-03-01
         </li>
         
     </ul>
@@ -255,12 +156,12 @@ docker run --rm --volumes-from pmm-data -it percona/pmm-server:2 chown -R postgr
     <ul class="nav nav-pills">
         
         <li class="right" style="margin-right: 10px">
-            <a href="virtual-appliance.html" title="Virtual Appliance">Next</a>
+            <a href="../../using/index.html" title="Using: Overview">Next</a>
         </li>
         
         
         <li class="right" style="margin-right: 10px">
-            <a href="index.html" title="Setting up PMM Server">Previous</a>
+            <a href="external.html" title="External Services">Previous</a>
         </li>
         
         <li>
@@ -319,25 +220,25 @@ docker run --rm --volumes-from pmm-data -it percona/pmm-server:2 chown -R postgr
 
 
 <li class="toctree-l3">
-    <a class="reference internal" href="index.html">Setting up PMM Server</a>
+    <a class="reference internal" href="../server/index.html">Setting up PMM Server</a>
 
 
 
 
 <li class="toctree-l3">
-    <a class="reference internal" href="docker.html">Docker</a>
+    <a class="reference internal" href="../server/docker.html">Docker</a>
 
 
 
 
 <li class="toctree-l3">
-    <a class="reference internal" href="virtual-appliance.html">Virtual Appliance</a>
+    <a class="reference internal" href="../server/virtual-appliance.html">Virtual Appliance</a>
 
 
 
 
 <li class="toctree-l3">
-    <a class="reference internal" href="aws.html">AWS Marketplace</a>
+    <a class="reference internal" href="../server/aws.html">AWS Marketplace</a>
 
 
 
@@ -358,67 +259,67 @@ docker run --rm --volumes-from pmm-data -it percona/pmm-server:2 chown -R postgr
 
 
 <li class="toctree-l3">
-    <a class="reference internal" href="../client/index.html">Setting up PMM Clients</a>
+    <a class="reference internal" href="index.html">Setting up PMM Clients</a>
 
 
 
 
 <li class="toctree-l3">
-    <a class="reference internal" href="../client/docker.html">Docker</a>
+    <a class="reference internal" href="docker.html">Docker</a>
 
 
 
 
 <li class="toctree-l3">
-    <a class="reference internal" href="../client/mysql.html">MySQL</a>
+    <a class="reference internal" href="mysql.html">MySQL</a>
 
 
 
 
 <li class="toctree-l3">
-    <a class="reference internal" href="../client/percona-server.html">Percona Server</a>
+    <a class="reference internal" href="percona-server.html">Percona Server</a>
 
 
 
 
 <li class="toctree-l3">
-    <a class="reference internal" href="../client/mongodb.html">MongoDB</a>
+    <a class="reference internal" href="mongodb.html">MongoDB</a>
 
 
 
 
 <li class="toctree-l3">
-    <a class="reference internal" href="../client/postgresql.html">PostgreSQL</a>
+    <a class="reference internal" href="postgresql.html">PostgreSQL</a>
 
 
 
 
 <li class="toctree-l3">
-    <a class="reference internal" href="../client/proxysql.html">ProxySQL</a>
+    <a class="reference internal" href="proxysql.html">ProxySQL</a>
 
 
 
 
 <li class="toctree-l3">
-    <a class="reference internal" href="../client/aws.html">Amazon RDS</a>
+    <a class="reference internal" href="aws.html">Amazon RDS</a>
 
 
 
 
 <li class="toctree-l3">
-    <a class="reference internal" href="../client/linux.html">Linux</a>
+    <a class="reference internal" href="linux.html">Linux</a>
 
 
 
 
 <li class="toctree-l3">
-    <a class="reference internal" href="../client/external.html">External Services</a>
+    <a class="reference internal" href="external.html">External Services</a>
 
 
 
 
 <li class="toctree-l3">
-    <a class="reference internal" href="../client/haproxy.html">HAProxy</a>
+    <a class="reference internal" href="haproxy.html">HAProxy</a>
 
 
 
@@ -1261,13 +1162,13 @@ docker run --rm --volumes-from pmm-data -it percona/pmm-server:2 chown -R postgr
 
 <h4>Previous page</h4>
 <p class="topless">
-    <a href="index.html" title="previous chapter">Setting up PMM Server</a>
+    <a href="external.html" title="previous chapter">External Services</a>
 </p>
 
 
 <h4>Next page</h4>
 <p class="topless">
-    <a href="virtual-appliance.html" title="next chapter">Virtual Appliance</a>
+    <a href="../../using/index.html" title="next chapter">Using: Overview</a>
 </p>
 
 

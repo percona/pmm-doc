@@ -52,7 +52,7 @@
 </head>
 
 <body>
-	<!-- 2021-03-01 17:25:29.888248+00:00 -->
+	<!-- 2021-03-01 18:53:31.368646+00:00 -->
     
 <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.3/css/line.css" type="text/css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" type="text/css">
@@ -78,7 +78,7 @@
         
         
         <li class="right" style="margin-right: 10px">
-            <a href="../dashboards/dashboard-pxc-galera-nodes-compare.html" title="PXC/Galera Nodes Compare">Previous</a>
+            <a href="../dashboards/dashboard-haproxy-instance-summary.html" title="HAProxy Instance Summary">Previous</a>
         </li>
         
         <li>
@@ -120,7 +120,10 @@
 <li><a href="#other-commands">OTHER COMMANDS</a></li>
 </ul>
 </li>
-<li><a href="#examples">EXAMPLES</a></li>
+<li><a href="#examples">EXAMPLES</a><ul>
+<li><a href="#disable-collectors">Disable collectors</a></li>
+</ul>
+</li>
 </ul>
 </div>
 <hr />
@@ -130,8 +133,9 @@
 <p><code>pmm-admin [FLAGS]</code></p>
 <p><code>pmm-admin config [FLAGS] --server-url=server-url</code></p>
 <p><code>pmm-admin add DATABASE [FLAGS] [NAME] [ADDRESS]</code></p>
-<p><code>pmm-admin add external [FLAGS] [NAME] [ADDRESS]</code> (CAUTION: Technical preview feature)</p>
-<p><code>pmm-admin add external-serverless [FLAGS] [NAME] [ADDRESS]</code> (CAUTION: Technical preview feature)</p>
+<p><code>pmm-admin add haproxy [FLAGS] [NAME]</code></p>
+<p><code>pmm-admin add external [FLAGS] [NAME] [ADDRESS]</code></p>
+<p><code>pmm-admin add external-serverless [FLAGS] [NAME] [ADDRESS]</code></p>
 <p><code>pmm-admin remove [FLAGS] service-type [service-name]</code></p>
 <p><code>pmm-admin register [FLAGS] [node-address] [node-type] [node-name]</code></p>
 <p><code>pmm-admin list [FLAGS] [node-address]</code></p>
@@ -397,7 +401,28 @@
 <dt><code>--disable-queryexamples</code></dt>
 <dd>Disable collection of query examples.</dd>
 <dt><code>--disable-tablestats</code></dt>
-<dd>Disable table statistics collection.</dd>
+<dd>
+<p>Disable table statistics collection.</p>
+<p>Excluded collectors for low-resolution time intervals:</p>
+<ul>
+<li><code>--collect.auto_increment.columns</code><ul>
+<li><code>--collect.info_schema.tables</code></li>
+<li><code>--collect.info_schema.tablestats</code></li>
+</ul>
+</li>
+<li><code>--collect.perf_schema.indexiowaits</code></li>
+<li><code>--collect.perf_schema.tableiowaits</code><ul>
+<li><code>--collect.perf_schema.file_instances</code></li>
+</ul>
+</li>
+</ul>
+</dd>
+</dl>
+<p>Excluded collectors for medium-resolution time intervals:</p>
+<ul>
+<li><code>--collect.perf_schema.tablelocks</code></li>
+</ul>
+<dl>
 <dt><code>--disable-tablestats-limit=disable-tablestats-limit</code></dt>
 <dd>Table statistics collection will be disabled if there are more than specified number of tables
 (default: server-defined).</dd>
@@ -496,33 +521,121 @@
 - <code>auto</code>: chosen by server (default)
 - <code>push</code>: agent will push metrics
 - <code>pull</code>: server scrapes metrics from agent</dd>
+<dt><code>--disable-collectors</code></dt>
+<dd>Comma-separated list of collector names to exclude from exporter</dd>
 </dl>
 </dd>
 </dl>
-<h3 id="other-commands"><a class="toclink" href="#other-commands">OTHER COMMANDS</a></h3>
+<h4 id="haproxy"><a class="toclink" href="#haproxy">HAProxy</a></h4>
 <dl>
-<dt><code>pmm-admin add external-serverless [FLAGS]</code></dt>
+<dt><code>pmm-admin add haproxy [FLAGS] [NAME]</code></dt>
 <dd>
-<p>Add External Service on Remote node to monitoring</p>
+<p>Add HAProxy to monitoring.</p>
 <p>FLAGS:</p>
 <dl>
 <dt><code>--server-url=SERVER-URL</code></dt>
 <dd>PMM Server URL in <code>https://username:password@pmm-server-host/</code> format</dd>
 <dt><code>--server-insecure-tls</code></dt>
-<dd>Skip PMM Server TLS certificate validation</dd>
-<dt><code>--external-name=EXTERNAL-NAME</code></dt>
-<dd>Name for external service</dd>
-<dt><code>--listen-port=LISTEN-PORT</code></dt>
-<dd>Listen port of external exporter for scraping metrics</dd>
+<dd>Skip PMM Server TLS certificate validation.</dd>
+<dt><code>--username=USERNAME</code></dt>
+<dd>HAProxy username.</dd>
+<dt><code>--password=PASSWORD</code></dt>
+<dd>HAProxy password.</dd>
+<dt><code>--scheme=SCHEME</code></dt>
+<dd>Scheme to generate URI to exporter metrics endpoints (http or https).</dd>
 <dt><code>--metrics-path=METRICS-PATH</code></dt>
-<dd>Path under which metrics are exposed, used to generate URL</dd>
+<dd>Path under which metrics are exposed, used to generate URI (default: /metrics).</dd>
+<dt><code>--listen-port=LISTEN-PORT</code></dt>
+<dd>Listen port of haproxy exposing the metrics for scraping metrics (Required).</dd>
+<dt><code>--service-node-id=SERVICE-NODE-ID</code></dt>
+<dd>Node ID where service runs (default is auto-detected).</dd>
 <dt><code>--environment=ENVIRONMENT</code></dt>
+<dd>Environment name like &lsquo;production&rsquo; or &lsquo;qa&rsquo;.</dd>
+<dt><code>--cluster=CLUSTER</code></dt>
+<dd>Cluster name.</dd>
+<dt><code>--replication-set=REPLICATION-SET</code></dt>
+<dd>Replication set name.</dd>
+<dt><code>--custom-labels=CUSTOM-LABELS</code></dt>
+<dd>Custom user-assigned labels. Example: region=east,app=app1.</dd>
+<dt><code>--metrics-mode=MODE</code></dt>
+<dd>Metrics flow mode for agents node-exporter. Allowed values:
+- <code>auto</code>: chosen by server (default)
+- <code>push</code>: agent will push metrics
+- <code>pull</code>: server scrapes metrics from agent</dd>
+<dt><code>--skip-connection-check</code></dt>
+<dd>Skip connection check.</dd>
+</dl>
+</dd>
+</dl>
+<h3 id="other-commands"><a class="toclink" href="#other-commands">OTHER COMMANDS</a></h3>
+<dl>
+<dt><code>pmm-admin add external [FLAGS]</code></dt>
+<dd>
+<p>Add External source of data (like a custom exporter running on a port) to the monitoring</p>
+<p>FLAGS:</p>
+<dl>
+<dt><code>--service-name="current-hostname"</code></dt>
+<dd>Service name (autodetected defaults to the hostname where pmm-admin is running)</dd>
+<dt><code>--agent-node-id=AGENT-NODE-ID</code></dt>
+<dd>Node ID where agent runs (default is autodetected)</dd>
+<dt><code>--username=USERNAME</code></dt>
+<dd>External username</dd>
+<dt><code>--password=PASSWORD</code></dt>
+<dd>External password</dd>
+<dt><code>--scheme=http or https</code></dt>
+<dd>Scheme to generate URI to exporter metrics endpoints</dd>
+<dt><code>--metrics-path=/metrics</code></dt>
+<dd>Path under which metrics are exposed, used to generate URI.</dd>
+<dt><code>--listen-port=LISTEN-PORT</code></dt>
+<dd>Listen port of external exporter for scraping metrics. (Required)</dd>
+<dt><code>--service-node-id=SERVICE-NODE-ID</code></dt>
+<dd>Node ID where service runs (default is autodetected)</dd>
+<dt><code>--environment=prod</code></dt>
+<dd>Environment name like &lsquo;production&rsquo; or &lsquo;qa&rsquo;</dd>
+<dt><code>--cluster=east-cluster</code></dt>
+<dd>Cluster name</dd>
+<dt><code>--replication-set=rs1</code></dt>
+<dd>Replication set name</dd>
+<dt><code>--custom-labels=CUSTOM-LABELS</code></dt>
+<dd>Custom user-assigned labels. Example: region=east,app=app1</dd>
+<dt><code>--metrics-mode=auto</code></dt>
+<dd>Metrics flow mode, can be <code>push</code>: agent will push metrics, <code>pull</code>: server scrape metrics from agent or <code>auto</code>: chosen by server.</dd>
+<dt><code>--group="external"</code></dt>
+<dd>Group name of external service (default: external)</dd>
+</dl>
+</dd>
+<dt><code>pmm-admin add external-serverless [FLAGS]</code></dt>
+<dd>
+<p>Add External Service on Remote node to monitoring.</p>
+<p>Usage example: <code>sudo pmm-admin add external-serverless --url=http://1.2.3.4:9093/metrics</code></p>
+<p>Also, individual parameters can be set instead of <code>--url</code> like: <code>sudo pmm-admin add external-serverless --scheme=http --host=1.2.3.4 --listen-port=9093 --metrics-path=/metrics --container-name=ddd --external-name=e125</code></p>
+<p>Notice that some parameters are mandatory depending on the context. For example, if you specify <code>--url</code>, <code>--schema</code> and other related parameters are not mandatory but, if you specify <code>--host</code> you must provide all other parameters needed to
+build the destination URL or even you can specify <code>--address</code> instead of host and port as individual parameters.</p>
+<p>FLAGS:</p>
+<dl>
+<dt><code>--url=URL</code></dt>
+<dd>Full URL to exporter metrics endpoints</dd>
+<dt><code>--scheme=https</code></dt>
+<dd>Scheme to generate URL to exporter metrics endpoints</dd>
+<dt><code>--username=USERNAME</code></dt>
+<dd>External username</dd>
+<dt><code>--password=PASSWORD</code></dt>
+<dd>External password</dd>
+<dt><code>--address=1.2.3.4:9000</code></dt>
+<dd>External exporter address and port</dd>
+<dt><code>--host=1.2.3.4</code></dt>
+<dd>External exporters hostname or IP address</dd>
+<dt><code>--listen-port=9999</code></dt>
+<dd>Listen port of external exporter for scraping metrics.</dd>
+<dt><code>--metrics-path=/metrics</code></dt>
+<dd>Path under which metrics are exposed, used to generate URL.</dd>
+<dt><code>--environment=testing</code></dt>
 <dd>Environment name</dd>
 <dt><code>--cluster=CLUSTER</code></dt>
 <dd>Cluster name</dd>
-<dt><code>--replication-set=REPLICATION-SET</code></dt>
+<dt><code>--replication-set=rs1</code></dt>
 <dd>Replication set name</dd>
-<dt><code>--custom-labels=CUSTOM-LABELS</code></dt>
+<dt><code>--custom-labels='app=myapp,region=s1'</code></dt>
 <dd>Custom user-assigned labels</dd>
 <dt><code>--group="external"</code></dt>
 <dd>Group name of external service (default: external)</dd>
@@ -569,6 +682,17 @@ PMM Client:
 Agents:
  /agent_id/aeb42475-486c-4f48-a906-9546fc7859e8 mysql_slowlog_agent Running
 </code></pre></div>
+<h3 id="disable-collectors"><a class="toclink" href="#disable-collectors">Disable collectors</a></h3>
+<div class="highlight"><pre><span></span><code>pmm-admin add mysql --disable-collectors<span class="o">=</span><span class="s1">&#39;heartbeat,global_status,info_schema.innodb_cmp&#39;</span> --username<span class="o">=</span>pmm --password<span class="o">=</span>pmm --service-name<span class="o">=</span>db1-mysql --host<span class="o">=</span><span class="m">127</span>.0.0.1 --port<span class="o">=</span><span class="m">3306</span>
+</code></pre></div>
+<p>For other collectors that you can disable with the <code>--disable-collectors</code> option, please visit the official repositories for each exporter:</p>
+<ul>
+<li><a href="https://github.com/percona/node_exporter">node_exporter</a></li>
+<li><a href="https://github.com/percona/mysqld_exporter">mysqld_exporter</a></li>
+<li><a href="https://github.com/percona/mongodb_exporter">mongodb_exporter</a></li>
+<li><a href="https://github.com/percona/postgres_exporter">postgres_exporter</a></li>
+<li><a href="https://github.com/percona/proxysql_exporter">proxysql_exporter</a></li>
+</ul>
                     </div>
                 </div>
                 
@@ -576,7 +700,7 @@ Agents:
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-02-10
+            <i class="uil uil-refresh"></i> Page updated 2021-03-01
         </li>
         
     </ul>
@@ -592,7 +716,7 @@ Agents:
         
         
         <li class="right" style="margin-right: 10px">
-            <a href="../dashboards/dashboard-pxc-galera-nodes-compare.html" title="PXC/Galera Nodes Compare">Previous</a>
+            <a href="../dashboards/dashboard-haproxy-instance-summary.html" title="HAProxy Instance Summary">Previous</a>
         </li>
         
         <li>
@@ -745,6 +869,12 @@ Agents:
 
 <li class="toctree-l3">
     <a class="reference internal" href="../../setting-up/client/external.html">External Services</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../setting-up/client/haproxy.html">HAProxy</a>
 
 
 
@@ -1355,6 +1485,12 @@ Agents:
 
 
 
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../dashboards/dashboard-haproxy-instance-summary.html">HAProxy Instance Summary</a>
+
+
+
 </ul>
 
 
@@ -1430,6 +1566,12 @@ Agents:
 
 
 <ul class="toctree" id="toctree">
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.15.0.html">Percona Monitoring and Management 2.15.0</a>
+
+
 
 
 <li class="toctree-l2">
@@ -1575,7 +1717,7 @@ Agents:
 
 <h4>Previous page</h4>
 <p class="topless">
-    <a href="../dashboards/dashboard-pxc-galera-nodes-compare.html" title="previous chapter">PXC/Galera Nodes Compare</a>
+    <a href="../dashboards/dashboard-haproxy-instance-summary.html" title="previous chapter">HAProxy Instance Summary</a>
 </p>
 
 
