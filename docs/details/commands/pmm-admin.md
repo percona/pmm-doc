@@ -549,6 +549,53 @@ PMM communicates with the PMM Server via a PMM agent process.
     : Skip connection check.
 
 ### OTHER COMMANDS
+`pmm-admin add external [FLAGS]`
+
+: Add External source of data (like a custom exporter running on a port) to the monitoring
+
+    FLAGS:
+    
+    `--service-name="current-hostname"`
+    : Service name (autodetected defaults to the hostname where pmm-admin is running)
+    
+    `--agent-node-id=AGENT-NODE-ID`
+    : Node ID where agent runs (default is autodetected)
+
+    `--username=USERNAME`
+    : External username
+      
+    `--password=PASSWORD`
+    : External password
+      
+    `--scheme=http or https`
+    : Scheme to generate URI to exporter metrics endpoints
+      
+    `--metrics-path=/metrics`
+    : Path under which metrics are exposed, used to generate URI.
+
+    `--listen-port=LISTEN-PORT`
+    : Listen port of external exporter for scraping metrics. (Required)
+
+    `--service-node-id=SERVICE-NODE-ID`
+    : Node ID where service runs (default is autodetected)
+
+    `--environment=prod`
+    : Environment name like 'production' or 'qa'
+      
+    `--cluster=east-cluster`
+    : Cluster name
+      
+    `--replication-set=rs1`
+    : Replication set name
+
+    `--custom-labels=CUSTOM-LABELS`
+    : Custom user-assigned labels. Example: region=east,app=app1
+      
+    `--metrics-mode=auto`
+    : Metrics flow mode, can be `push`: agent will push metrics, `pull`: server scrape metrics from agent or `auto`: chosen by server.
+     
+    `--group="external"`
+    : Group name of external service (default: external)
 
 `pmm-admin add external-serverless [FLAGS]`
 
