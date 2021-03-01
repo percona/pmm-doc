@@ -38,7 +38,7 @@ You need at least 2 GB for one monitored database node.
 
 !!! alert alert-info "Note"
 
-    Your CPU must support SSE4.2 instruction set.  This requirement is comming from ClickHoust (a third-party column-oriented database that facilitates the Query Analytics functionality). If your CPU is lacking this instruction set you won't be able to use QAN.
+    Your CPU must support the SSE4.2 instruction set, a requirement of ClickHouse, a third-party column-oriented database used by Query Analytics. If your CPU is lacking this instruction set you won't be able to use QAN.
 
 **PMM Client**
 
