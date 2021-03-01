@@ -549,65 +549,126 @@ PMM communicates with the PMM Server via a PMM agent process.
     : Skip connection check.
 
 ### OTHER COMMANDS
+`pmm-admin add external [FLAGS]`
 
-`pmm-admin add external-serverless [FLAGS]`
-: Add External Service on Remote node to monitoring
+: Add External source of data (like a custom exporter running on a port) to the monitoring
 
     FLAGS:
+    
+    `--service-name="current-hostname"`
+    : Service name (autodetected defaults to the hostname where pmm-admin is running)
+    
+    `--agent-node-id=AGENT-NODE-ID`
+    : Node ID where agent runs (default is autodetected)
 
-	`--server-url=SERVER-URL`
-	: PMM Server URL in `https://username:password@pmm-server-host/` format
+    `--username=USERNAME`
+    : External username
+      
+    `--password=PASSWORD`
+    : External password
+      
+    `--scheme=http or https`
+    : Scheme to generate URI to exporter metrics endpoints
+      
+    `--metrics-path=/metrics`
+    : Path under which metrics are exposed, used to generate URI.
 
-    `--server-insecure-tls`
-	: Skip PMM Server TLS certificate validation
+    `--listen-port=LISTEN-PORT`
+    : Listen port of external exporter for scraping metrics. (Required)
 
-    `--external-name=EXTERNAL-NAME`
-	: Name for external service
+    `--service-node-id=SERVICE-NODE-ID`
+    : Node ID where service runs (default is autodetected)
 
-	`--listen-port=LISTEN-PORT`
-	: Listen port of external exporter for scraping metrics
-
-    `--scheme=SCHEME`
-	: Scheme to generate URI to exporter metrics endpoints (http, https).
-
-    `--metrics-path=METRICS-PATH`
-	: Path under which metrics are exposed, used to generate URL (default: `/metrics`). Forward slash is added if missing from METRICS-PATH.
-
-    `--environment=ENVIRONMENT`
-	: Environment name
-
-    `--cluster=CLUSTER`
-	: Cluster name
-
-    `--replication-set=REPLICATION-SET`
+    `--environment=prod`
+    : Environment name like 'production' or 'qa'
+      
+    `--cluster=east-cluster`
+    : Cluster name
+      
+    `--replication-set=rs1`
     : Replication set name
 
     `--custom-labels=CUSTOM-LABELS`
+    : Custom user-assigned labels. Example: region=east,app=app1
+      
+    `--metrics-mode=auto`
+    : Metrics flow mode, can be `push`: agent will push metrics, `pull`: server scrape metrics from agent or `auto`: chosen by server.
+     
+    `--group="external"`
+    : Group name of external service (default: external)
+
+`pmm-admin add external-serverless [FLAGS]`
+
+: Add External Service on Remote node to monitoring.
+
+    Usage example: `sudo pmm-admin add external-serverless --url=http://1.2.3.4:9093/metrics`
+
+    Also, individual parameters can be set instead of `--url` like: `sudo pmm-admin add external-serverless --scheme=http --host=1.2.3.4 --listen-port=9093 --metrics-path=/metrics --container-name=ddd --external-name=e125`
+
+    Notice that some parameters are mandatory depending on the context. For example, if you specify `--url`, `--schema` and other related parameters are not mandatory but, if you specify `--host` you must provide all other parameters needed to
+    build the destination URL or even you can specify `--address` instead of host and port as individual parameters.
+
+    FLAGS:
+
+    `--url=URL`
+    : Full URL to exporter metrics endpoints
+
+    `--scheme=https`
+    : Scheme to generate URL to exporter metrics endpoints
+
+    `--username=USERNAME`
+    : External username
+
+    `--password=PASSWORD`
+    : External password
+
+    `--address=1.2.3.4:9000`
+    : External exporter address and port
+
+    `--host=1.2.3.4`
+    : External exporters hostname or IP address
+
+    `--listen-port=9999`
+    : Listen port of external exporter for scraping metrics.
+
+    `--metrics-path=/metrics`
+    : Path under which metrics are exposed, used to generate URL.
+
+    `--environment=testing`
+    : Environment name
+
+    `--cluster=CLUSTER`
+    : Cluster name
+
+    `--replication-set=rs1`
+    : Replication set name
+
+    `--custom-labels='app=myapp,region=s1'`
     : Custom user-assigned labels
 
     `--group="external"`
-	: Group name of external service (default: external)
+    : Group name of external service (default: external)
 
-	`--machine-id=MACHINE-ID`
-	: Node machine-id
+    `--machine-id=MACHINE-ID`
+    : Node machine-id
 
     `--distro=DISTRO`
-	: Node OS distribution
+    : Node OS distribution
 
     `--container-id=CONTAINER-ID`
-	: Container ID
+    : Container ID
 
     `--container-name=CONTAINER-NAME`
     : Container name
 
     `--node-model=NODE-MODEL`
-	: Node model
+    : Node model
 
     `--region=REGION`
-	: Node region
+    : Node region
 
     `--az=AZ`
-	: Node availability zone
+    : Node availability zone
 
 ## EXAMPLES
 
