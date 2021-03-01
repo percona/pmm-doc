@@ -97,6 +97,7 @@ nav:
           - setting-up/client/aws.md
           - setting-up/client/linux.md
           - setting-up/client/external.md
+          - setting-up/client/haproxy.md
   - Using:
       - using/index.md
       - using/interface.md
@@ -179,6 +180,7 @@ nav:
               - details/dashboards/dashboard-pxc-galera-node-summary.md
               - details/dashboards/dashboard-pxc-galera-cluster-summary.md
               - details/dashboards/dashboard-pxc-galera-nodes-compare.md
+              - details/dashboards/dashboard-haproxy-instance-summary.md
       - Commands:
           - details/commands/pmm-admin.md
           - details/commands/pmm-agent.md
