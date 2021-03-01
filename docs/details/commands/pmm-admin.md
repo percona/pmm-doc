@@ -18,6 +18,8 @@
 
 `pmm-admin add DATABASE [FLAGS] [NAME] [ADDRESS]`
 
+DATABASE:= [[MongoDB](#mongodb) | [MySQL](#mysql) | [PostgreSQL](#postgresql) | [ProxySQL](#proxysql)]
+
 `pmm-admin add external [FLAGS] [NAME] [ADDRESS]` (CAUTION: Technical preview feature)
 
 `pmm-admin add external-serverless [FLAGS] [NAME] [ADDRESS]` (CAUTION: Technical preview feature)

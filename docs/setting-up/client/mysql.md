@@ -345,7 +345,43 @@ pmm-admin add mysql --username pmm --password pass ...
 
 ## Add service
 
+You can add a MySQL service with the user interface or on the command line.
 
+### User interface
+
+1. Select *PMM --> PMM Add Instance*.
+
+2. Select *MySQL -- Add a remove instance*.
+
+3. Enter values for these fields.
+
+	| Section                  | Field                                          | `pmm-admin` parameter
+	| ------------------------ | ---------------------------------------------- | --------------------------
+	| *Main details*           |                                                |
+	|                          | *Hostname*                                     | `--address`
+	|                          | *Service name*                                 | `--name`
+	|                          | *Port*                                         | `port` in `--address=address[:port]`
+	|                          | *Username*                                     | `--username`
+	|                          | *Password*                                     | `--password`
+	| *Labels*                 |                                                |
+	|                          | *Environment*                                  | `--environment`
+	|                          | *Region*                                       |
+	|                          | *Availability zone*                            |
+	|                          | *Replication set*                              | `--replication-set`
+	|                          | *Cluster*                                      | `--cluster`
+	|                          | *Custom labels*                                | `--custom-labels`
+	| *Additional options*     | *Skip connection check*                        | `--skip-connection-check`
+	|                          | *Use TLS for database connections*             | `--tls`
+	|                          | *Skip TLS certificate and hostname validation* | `--tls-skip-verify`
+	| *Table statistics limit* |                                                |
+	|                      	   | *Disabled*                                     | `--disable-tablestats`
+	|                      	   | *Default*                                      | `--disable-tablestats-limit`
+	|                      	   | *Custom*                                       | `--disable-tablestats-limit`
+	| *Use performance schema* |
+
+4. Click *Add service*.
+
+### Command line
 
 **Examples**
 
@@ -378,6 +414,12 @@ pmm-admin add mysql --username pmm --password pass ...
 	```sh
 	sudo pmm-admin add mysql --username=pmm --password=pass --socket=/var/run/mysqld/mysqld.sock
 	```
+
+
+## Check
+
+1. In the PMM web interface, navigate to *PMM --> PMM Inventory*.
+2. Check the added node, agent or service is listed in the appropriate tab.
 
 !!! seealso "See also"
 	- [Percona Server for MySQL - Slow Query Log][SLOWQUERYLOG]
