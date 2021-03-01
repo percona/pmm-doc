@@ -69,17 +69,21 @@ and point your browser to [http://localhost:8000](http://localhost:8000).
 
         pip install -r requirements.txt
 
-3. Build the site:
+3. Build the site with your choice of theme:
 
 		mkdocs build -t material
+		# mkdocs build -t readthedocs
 
 4. Open `site/index.html`
 
-Or run the built-in web server:
+Or run the built-in web server.
 
     mkdocs serve -t material
+    # mkdocs serve -t readthedocs
 
 And view the site at <http://localhost:8000>
+
+([Get more themes.](https://github.com/mkdocs/mkdocs/wiki/MkDocs-Themes))
 
 ## PDF
 
@@ -121,6 +125,58 @@ You'll find the PDF in `site/_pdf`.
 We are trialing the use of [mike](https://github.com/jimporter/mike) to build different versions.
 
 With this, a GitHUb action workflow runs `mike` (which runs `mkdocs`). The HTML is committed and pushed to the `publish` branch. The whole branch is then copied (by us, naturally) to our web server.
+
+## Image overlays
+
+`docs/using/interface.md` uses an image of the home dashboard overlaid with numbered boxes to identify menu bars and control. This approach means the home dashboard image and it's numbered version always look the same. Here's how it's done.
+
+- `PMM_Home_Dashboard_TALL.jpg` is created by [pmm-screenshots-pw](https://github.com/PaulJacobs-percona/pmm-screenshots-pw). If snapped by hand, it should be 1280x1120 pixels, to match the overlay image.
+- `PMM_Home_Dashboard_TALL_Overlay.png` is exported from `_resources/diagrams/PMM_Home_Dashboard_TALL_Overlay.drawio` using <https://app.diagrams.net/>.
+
+	1. Go to <https://app.diagrams.net/>
+	2. If it's your first time, select *Device* at the *Save diagrams to:* dialog
+	2. Click *Open existing diagram*
+	3. Navigate to `pmm-doc/_resources/diagrams` and select `PMM_Home_Dashboard_TALL_Overlay.drawio`
+	4. If the dashboard layout has changed, replace the *Guide* Layer with a new screenshot and adjust the elements on the *Overlay* layer as needed (To show layers, click View --> Layers). Untick the *Guide* Layer so it is not exported.
+	5. Click File --> Export as --> PNG
+	6. In the *Image settings* dialog, use these settings:
+		- *Zoom*: 100%, Border Width: 0
+		- *Selection Only:* OFF
+		- *Size:* Page
+		- *Transparent Background:* ON
+		- *Shadow:* OFF
+		- *Grid*: OFF
+		- *Include a copy of my diagram:* OFF
+	7. Click *Export*
+	8. Click *Device*
+	9. Navigate to `pmm-doc/docs/_resources/diagrams` and click `PMM_Home_Dashboard_TALL_Overlay.png`
+	10. Click *Save* and overwrite the current file
+
+The overlay image is merged with a copy of the latest home dashboard using [`composite`](https://imagemagick.org/script/composite.php), one of the ImageMagick tools.
+
+	composite _resources/diagrams/PMM_Home_Dashboard_TALL_Overlay.png docs/_images/PMM_Home_Dashboard_TALL.jpg docs/_images/PMM_Home_Dashboard_TALL_Numbered.png
+
+## Spelling and grammar
+
+The GitHub actions build job performs a basic spell and grammar check. You can do these yourself on the command line if you have [Node.js](https://nodejs.org/en/download/) installed.
+
+	npm i markdown-spellcheck -g
+    mdspell --report --en-us --ignore-acronyms --ignore-numbers docs/<path to file>.md
+
+To check all files:
+
+	mdspell --report --en-us --ignore-acronyms --ignore-numbers "docs/**/*.md"
+
+Add any custom dictionary words to `.spelling`. If spell checking fails, the GitHub action will fail too, but after the MkDocs build. The `publish` branch will still have the latest build and can be used. Meanwhile, see what the spelling error is and either fix it or add the word to `.spelling`.
+
+Grammar is checked using [`write-good`](https://github.com/btford/write-good).
+
+	npm i write-good -g
+	write-good docs/<path to file>.md
+
+To check all files:
+
+	write-good docs/**/*.md
 
 ## License
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fpercona%2Fpmm-doc.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fpercona%2Fpmm-doc?ref=badge_large)

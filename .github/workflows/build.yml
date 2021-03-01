@@ -25,6 +25,7 @@ jobs:
       - name: Setup MkDocs
         run: |
           python -m pip install --upgrade pip
+          pip install wheel
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
       - name: Setup PlantUML
@@ -58,11 +59,10 @@ jobs:
       - name: Spelling
         run: |
           sudo npm i markdown-spellcheck -g
-          mdspell --report --en-us --ignore-acronyms --ignore-numbers "docs/**/*.md" || true
-          # Ignore errors, just inspect report and refine .spelling
+          mdspell --report --en-us --ignore-acronyms --ignore-numbers "docs/**/*.md"
 
       - name: Grammar
         run: |
           sudo npm i write-good -g
-          write-good docs/**/*.md || true
+          write-good --no-passive docs/**/*.md || true
           # Ignore errors, just inspect results

@@ -31,48 +31,43 @@ The following sample configurations can be used depending on the variant and
 version of MySQL:
 
 
-* If you are running Percona Server (or XtraDB Cluster), configure the
-*slow query log* to capture all queries and enable sampling. This will
-provide the most amount of information with the lowest overhead.
+* If you are running Percona Server (or XtraDB Cluster), configure the *slow query log* to capture all queries and enable sampling. This will provide the most amount of information with the lowest overhead.
 
-```ini
-log_output=file
-slow_query_log=ON
-long_query_time=0
-log_slow_rate_limit=100
-log_slow_rate_type=query
-log_slow_verbosity=full
-log_slow_admin_statements=ON
-log_slow_slave_statements=ON
-slow_query_log_always_write_time=1
-slow_query_log_use_global_control=all
-innodb_monitor_enable=all
-userstat=1
-```
-
+    ```ini
+    log_output=file
+    slow_query_log=ON
+    long_query_time=0
+    log_slow_rate_limit=100
+    log_slow_rate_type=query
+    log_slow_verbosity=full
+    log_slow_admin_statements=ON
+    log_slow_slave_statements=ON
+    slow_query_log_always_write_time=1
+    slow_query_log_use_global_control=all
+    innodb_monitor_enable=all
+    userstat=1
+    ```
 
 * If you are running MySQL 5.6+ or MariaDB 10.0+, see [Performance Schema](#performance-schema).
 
-```ini
-innodb_monitor_enable=all
-performance_schema=ON
-```
+    ```ini
+    innodb_monitor_enable=all
+    performance_schema=ON
+    ```
 
+* If you are running MySQL 5.5 or MariaDB 5.5, configure logging only slow queries to avoid high performance overhead.
 
-* If you are running MySQL 5.5 or MariaDB 5.5, configure logging only slow
-queries to avoid high performance overhead.
+    ```ini
+    log_output=file
+    slow_query_log=ON
+    long_query_time=0
+    log_slow_admin_statements=ON
+    log_slow_slave_statements=ON
+    ```
 
-```ini
-log_output=file
-slow_query_log=ON
-long_query_time=0
-log_slow_admin_statements=ON
-log_slow_slave_statements=ON
-```
-
-!!! caution
-
+!!! alert alert-warning "Caution"
     This may affect the quality of monitoring data gathered by Query Analytics.
+
 
 ## Creating a MySQL User Account for PMM
 
@@ -172,10 +167,19 @@ select * from setup_consumers;
 
     *Performance Schema* instrumentation is enabled by default in MySQL 5.6.6 and later versions. It is not available at all in MySQL versions prior to 5.6.
 
-    If certain instruments are not enabled, you will not see the corresponding graphs in the MySQL Performance Schema dashboard.  To enable full instrumentation, set the option `--performance_schema_instrument` to `'%=on'` when starting the MySQL server.
+    If certain instruments are not enabled, you will not see the corresponding graphs in the MySQL Performance Schema dashboard.  To enable full instrumentation, set the option `--performance_schema_instrument` to `'%=on'` when starting the MySQL server:
 
     ```sh
     mysqld --performance-schema-instrument='%=on'
+    ```
+
+* If you are running any MariaDB version, there is no Explain or Example data shown by default in Query Analytics. A workaround is to run this SQL command:
+
+    ```sql
+    UPDATE performance_schema.setup_instruments SET ENABLED = 'YES', TIMED = 'YES'
+    WHERE NAME LIKE 'statement/%';
+    UPDATE performance_schema.setup_consumers SET ENABLED = 'YES'
+    WHERE NAME LIKE '%statements%';
     ```
 
     This option can cause additional overhead and should be used with care.

@@ -18,9 +18,11 @@
 
 `pmm-admin add DATABASE [FLAGS] [NAME] [ADDRESS]`
 
-`pmm-admin add external [FLAGS] [NAME] [ADDRESS]` (CAUTION: Technical preview feature)
+`pmm-admin add haproxy [FLAGS] [NAME]`
 
-`pmm-admin add external-serverless [FLAGS] [NAME] [ADDRESS]` (CAUTION: Technical preview feature)
+`pmm-admin add external [FLAGS] [NAME] [ADDRESS]`
+
+`pmm-admin add external-serverless [FLAGS] [NAME] [ADDRESS]`
 
 `pmm-admin remove [FLAGS] service-type [service-name]`
 
@@ -143,9 +145,6 @@ PMM communicates with the PMM Server via a PMM agent process.
         - `push`: agent will push metrics
         - `pull`: server scrapes metrics from agent
 
-    `--disable-collectors`
-    : Comma-separated list of collector names to exclude from exporter
-
 #### `pmm-admin register`
 
 `pmm-admin register [FLAGS] [node-address] [node-type] [node-name]`
@@ -180,9 +179,6 @@ PMM communicates with the PMM Server via a PMM agent process.
 
     `--force`
     : Remove Node with that name with all dependent Services and Agents if one exists.
-
-    `--disable-collectors`
-    : Comma-separated list of collector names to exclude from exporter
 
 #### `pmm-admin remove`
 
@@ -321,9 +317,6 @@ PMM communicates with the PMM Server via a PMM agent process.
         - `push`: agent will push metrics
         - `pull`: server scrapes metrics from agent
 
-    `--disable-collectors`
-    : Comma-separated list of collector names to exclude from exporter
-
 #### MySQL
 
 `pmm-admin add mysql [FLAGS] node-name node-address | [--name=service-name] --address=address[:port] | --socket`
@@ -363,19 +356,20 @@ PMM communicates with the PMM Server via a PMM agent process.
 
     	Excluded collectors for low-resolution time intervals:
 
-		- `--collect.auto_increment.columns`
-        - `--collect.info_schema.tables`
-        - `--collect.info_schema.tablestats`
-		- `--collect.perf_schema.indexiowaits`
-		- `--collect.perf_schema.tableiowaits`
-        - `--collect.perf_schema.file_instances`
+	    - `--collect.auto_increment.columns`
+      - `--collect.info_schema.tables`
+      - `--collect.info_schema.tablestats`
+	    - `--collect.perf_schema.indexiowaits`
+	    - `--collect.perf_schema.tableiowaits`
+      - `--collect.perf_schema.file_instances`
 
-		Excluded collectors for medium-resolution time intervals:
+	Excluded collectors for medium-resolution time intervals:
 
-		- `--collect.perf_schema.tablelocks`
+	- `--collect.perf_schema.tablelocks`
 
     `--disable-tablestats-limit=disable-tablestats-limit`
-    : Table statistics collection will be disabled if there are more than the specified number of tables (default: server-defined).
+    : Table statistics collection will be disabled if there are more than specified number of tables
+        (default: server-defined).
 
     `--environment=environment`
     : Environment name.
@@ -403,9 +397,6 @@ PMM communicates with the PMM Server via a PMM agent process.
         - `auto`: chosen by server (default)
         - `push`: agent will push metrics
         - `pull`: server scrapes metrics from agent
-
-    `--disable-collectors`
-    : Comma-separated list of collector names to exclude from exporter
 
 #### PostgreSQL
 
@@ -456,9 +447,6 @@ PMM communicates with the PMM Server via a PMM agent process.
         - `push`: agent will push metrics
         - `pull`: server scrapes metrics from agent
 
-    `--disable-collectors`
-    : Comma-separated list of collector names to exclude from exporter
-
 #### ProxySQL
 
 `pmm-admin add proxysql [FLAGS] [node-name] [node-address]`
@@ -507,6 +495,58 @@ PMM communicates with the PMM Server via a PMM agent process.
 
     `--disable-collectors`
     : Comma-separated list of collector names to exclude from exporter
+
+#### HAProxy
+
+`pmm-admin add haproxy [FLAGS] [NAME]`
+:   Add HAProxy to monitoring.
+
+    FLAGS:
+
+    `--server-url=SERVER-URL`
+    : PMM Server URL in `https://username:password@pmm-server-host/` format
+
+    `--server-insecure-tls`
+    : Skip PMM Server TLS certificate validation.
+
+    `--username=USERNAME`
+    : HAProxy username.
+
+    `--password=PASSWORD`
+    : HAProxy password.
+
+    `--scheme=SCHEME`
+    : Scheme to generate URI to exporter metrics endpoints (http or https).
+
+    `--metrics-path=METRICS-PATH`
+    : Path under which metrics are exposed, used to generate URI (default: /metrics).
+
+    `--listen-port=LISTEN-PORT`
+    : Listen port of haproxy exposing the metrics for scraping metrics (Required).
+
+    `--service-node-id=SERVICE-NODE-ID`
+    : Node ID where service runs (default is auto-detected).
+
+    `--environment=ENVIRONMENT`
+    : Environment name like 'production' or 'qa'.
+
+    `--cluster=CLUSTER`
+    : Cluster name.
+
+    `--replication-set=REPLICATION-SET`
+    : Replication set name.
+
+    `--custom-labels=CUSTOM-LABELS`
+    : Custom user-assigned labels. Example: region=east,app=app1.
+
+    `--metrics-mode=MODE`
+    : Metrics flow mode for agents node-exporter. Allowed values:
+        - `auto`: chosen by server (default)
+        - `push`: agent will push metrics
+        - `pull`: server scrapes metrics from agent
+
+    `--skip-connection-check`
+    : Skip connection check.
 
 ### OTHER COMMANDS
 
