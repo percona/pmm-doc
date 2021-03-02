@@ -52,7 +52,7 @@
 </head>
 
 <body>
-	<!-- 2021-03-02 07:38:35.655415+00:00 -->
+	<!-- 2021-03-02 15:51:04.585806+00:00 -->
     
 <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.3/css/line.css" type="text/css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" type="text/css">
@@ -173,7 +173,7 @@
 </ul>
 <h2 id="improvements"><a class="toclink" href="#improvements">Improvements</a></h2>
 <ul>
-<li><a href="https://jira.percona.com/browse/PMM-4679">PMM-4679</a>: Docker: Tag <code>pmm-server</code>, <code>pmm-client</code> images with <code>:latest</code> &ndash; Docker images for <code>pmm-client</code> and <code>pmm-server</code> are tagged <code>:latest</code> for the most recent release. <strong>These should not</strong> be used in production environments. Instead, use the <code>:2</code> tag.</li>
+<li><a href="https://jira.percona.com/browse/PMM-4679">PMM-4679</a>: Docker: <code>:latest</code> tag for <code>pmm-server</code> and <code>pmm-client</code> images has been moved from v1 latest release to v2 latest release.  <strong>Note</strong>: use of the latest tag is not recommended in production environments, instead use <code>:2</code> tag.</li>
 <li><a href="https://jira.percona.com/browse/PMM-7472">PMM-7472</a>: Remove Prometheus data source &ndash; If you were using custom dashboards with a specified data source (not using empty to use default one) you may need to edit your dashboards to use the proper data source. PMM is no longer using Prometheus but uses compatible storage for metrics from VictoriaMetrics. We renamed the data source to be more technology-agnostic.</li>
 <li><a href="https://jira.percona.com/browse/PMM-6695">PMM-6695</a>: Software update: Grafana 7.1.3 to 7.3.7 (See <a href="https://grafana.com/docs/grafana/latest/whatsnew/whats-new-in-v7-2">What&rsquo;s new in Grafana 7.2</a> and <a href="https://grafana.com/docs/grafana/latest/whatsnew/whats-new-in-v7-3/">What&rsquo;s new in Grafana 7.3</a>.)</li>
 <li><a href="https://jira.percona.com/browse/PMM-7471">PMM-7471</a>: Software update: VictoriaMetrics 1.52.0 to 1.53.1 (See <a href="https://github.com/VictoriaMetrics/VictoriaMetrics/releases/tag/v1.53.0">VictoriaMetrics 1.53.0</a> and <a href="https://github.com/VictoriaMetrics/VictoriaMetrics/releases/tag/v1.53.1">VictoriaMetrics 1.53.1</a>.)</li>
