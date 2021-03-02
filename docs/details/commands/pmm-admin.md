@@ -356,7 +356,7 @@ PMM communicates with the PMM Server via a PMM agent process.
 
     `--disable-tablestats-limit=disable-tablestats-limit`
     : Table statistics collection will be disabled if there are more than specified number of tables
-        (default: server-defined).
+        (default: server-defined). 0=no limit. Negative value disables collection.
 
     `--environment=environment`
     : Environment name.

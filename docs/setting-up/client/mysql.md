@@ -1,23 +1,28 @@
 # MySQL and derivatives
 
-PMM Client collects metrics from MySQL and MySQL derivatives such as Percona Server for MySQL, Percona XtraDB Cluster, and MariaDB. (Amazon RDS is also supported and explained in a [separate section](aws.md).)
+PMM Client collects metrics from MySQL, Percona Server for MySQL, Percona XtraDB Cluster, and MariaDB. (Amazon RDS is also supported and explained in a [separate section](aws.md).)
 
 To set up PMM Client for MySQL and derivatives, you must:
 
-- [choose and configure a source](#choose-and-configure-a-source), (*slow query log* or *Performance Schema*);
+- [choose and configure a source](#1-choose-and-configure-a-source), (*slow query log* or *Performance Schema*);
 
 - (Optional for Percona Server, MariaDB) [configure user statistics](#configure-user-statistics);
 
-- create a database user account for PMM;
+- [create a database user account for PMM;](#create-a-database-user-account-for-pmm)
 
-- add a service with pmm-admin;
+- [add service:](#add-service)
+	- [With the command line](#command-line)
+	- [With the user interface](#user-interface)
+
 
 ```plantuml source="_resources/diagrams/Setting-Up_Client_MySQL.puml"
 ```
 
-## Choose and configure a source
+## 1. Choose and configure a source
 
-Metrics come from two sources:
+You must decide which source of metrics to use, and configure your database server for it.
+
+The choices are:
 
 - [Slow query log](#slow-query-log)
 - [Performance Schema](#performance-schema)
@@ -26,18 +31,18 @@ Although you can use both we recommend choosing one; there is some overlap in th
 
 Your choice depends on the version and variant of your MySQL instance, and how much detail you want to see.
 
-### Comparing Slow query log and Performance Schema
+**Comparing *Slow query log* and *Performance Schema* metrics sources**
 
 | Slow query log                                                                                                                | Performance Schema
 | ----------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------
 | **{{icon.pluscircle}} Advantages**                                                                                            | **{{icon.pluscircle}} Advantages**
-| Highly detailed information.                                                                                                  | Faster parsing.
+| More detail.                                                                                                                  | Faster parsing.
 | Low resource impact. (Percona Server for MySQL has a query sampling feature that can lower the performance impact.)           | Enabled by default on later versions of MySQL.
 | **{{icon.minuscircle}} Disadvantages**                                                                                        | **{{icon.minuscircle}} Disadvantages**
-| Can only be used where PMM Client is running on the same host as the database server or can access the slow query log file.   | Less details.
+| Can only be used where PMM Client is running on the same host as the database server or can access the slow query log file.   | Less detail.
 | Large log files must be carefully managed.                                                                                    |
 
-### Recommendations
+**Recommendations**
 
 | Database server          | Versions       | Recommended source | Is default
 | ------------------------ | -------------- | ------------------ | -----------
@@ -47,40 +52,35 @@ Your choice depends on the version and variant of your MySQL instance, and how m
 | MySQL                    | 5.1-5.5        | Slow query log     |
 | MySQL                    | 5.6+           | Performance Schema | From 5.6.6
 
+### 1.1. Configure *slow query log*
 
-
-
-
-
-
-<!--
-MySQL with too many tables can lead to PMM Server overload due to the streaming of too much time series data. It can also lead to too many queries from `mysqld_exporter` causing extra load on MySQL. Therefore PMM Server disables most consuming `mysqld_exporter` collectors automatically if there are more than 1000 tables.
--->
-
-### Slow query log
-
-The *slow query log* feature records queries to a log file that take longer than a certain time to run.
+The *slow query log* is a log file with the details of queries that take more than a certain amount of time to complete.
 
 PMM Client parses this file and sends aggregated data to PMM Server via the Query Analytics part of PMM Agent.
 
 
-<!-- - Can affect the quality of monitoring data gathered by Query Analytics -->
 
-#### Configuration
 
 **Applies to: MySQL 5.1 to 5.5, MariaDB 5.5, Percona Server for MySQL, Percona XtraDB Cluster**
 
-You must set these values for your database server, either in the server's configuration file (e.g., `/etc/mysql/conf.d/mysql.cnf` for MySQL) and restarting to make them permanent, or set them in an SQL session.
+You must set these values for your database server. If you set them in the server's configuration file (e.g., `/etc/mysql/conf.d/mysql.cnf` for MySQL) the settings are permanent but you must restart the server to activate them. If you set them in an SQL session, they are active until the server restarts.
 
-- [`slow_query_log`](https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar_slow_query_log) enables the slow query log.
+<style>
+table th:first-of-type {
+    width: 40%;
+}
+table th:nth-of-type(2) {
+    width: 60%;
+}
+</style>
 
-- [`log_output`](https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar_log_output) ensures the log is sent to a file.
-
-- [`long_query_time`](https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar_long_query_time) is the slow query threshold in seconds (the definition of *slow*). In heavily-loaded applications, frequent fast queries can have a bigger impact on performance than rare slow queries. Setting this value to `0` means all queries are captured.
-
-- [`log_slow_admin_statements`](https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar_log_slow_admin_statements) includes the logging of administrative statements.
-
-- [`log_slow_slave_statements`]()
+| Variable                                                        | Description
+|-----------------------------------------------------------------|----------------------------------------------------------
+| [`slow_query_log`][sysvar_slow_query_log]                       | Enables the slow query log.
+| [`log_output`][sysvar_log_output]                               | Ensures the log is sent to a file.
+| [`long_query_time`][sysvar_long_query_time]                     | The slow query threshold in seconds (definition of *slow*). In heavily-loaded applications, frequent fast queries can have a greater performance impact than infrequent slow ones. Setting this value to `0` ensures all queries are captured.
+| [`log_slow_admin_statements`][sysvar_log_slow_admin_statements] | Includes the logging of slow administrative statements.
+| [`log_slow_slave_statements`][sysvar_log_slow_slave_statements] | Enables logging for queries that have taken more than `long_query_time` seconds to execute on the replica.
 
 **Examples**
 
@@ -89,139 +89,116 @@ You must set these values for your database server, either in the server's confi
 ```ini
 [mysqld]
 # ...
-slow_query_log=ON
-long_query_time=0
-log_output=file
-log_slow_admin_statements=ON
-log_slow_slave_statements=ON
+slow_query_log = ON
+long_query_time = 0
+log_output = file
+log_slow_admin_statements = ON
+log_slow_slave_statements = ON
 ```
 
 *Session*
 
 ```sql
-SET GLOBAL slow_query_log=1;
-SET GLOBAL long_query_time=0;
-SET GLOBAL log_output=file;
-SET GLOBAL log_slow_admin_statements=1;
-SET GLOBAL log_slow_slave_statements=1;
+SET GLOBAL slow_query_log = 1;
+SET GLOBAL long_query_time = 0;
+SET GLOBAL log_output = file;
+SET GLOBAL log_slow_admin_statements = 1;
+SET GLOBAL log_slow_slave_statements = 1;
 ```
 
 **Applies to: Percona Server for MySQL**
 
 Not all dashboards are available by default for all MySQL variants and configurations. Some graphs require Percona Server for MySQL, and specialized plugins, or extra configuration.
 
-- [`log_slow_rate_limit`](https://www.percona.com/doc/percona-server/LATEST/diagnostics/slow_extended.html#log_slow_rate_limit): defines the fraction of queries captured by the *slow query log*.  A good rule of thumb is 100 queries logged per second.  For example, if your Percona Server instance processes 10,000 queries per second, you should set `log_slow_rate_limit` to `100` and capture every 100th query for the *slow query log*. Depending on the amount of traffic, logging could become aggressive and resource consuming. This variable throttles the level of intensity of the data capture without compromising information.
+| Variable                                                                 | Description
+|--------------------------------------------------------------------------|--------------------------------------------------------------------
+| [`log_slow_rate_limit`][log_slow_rate_limit]                             | Defines the fraction of queries captured by the *slow query log*. A good rule of thumb is 100 queries logged per second. For example, if your Percona Server instance processes 10,000 queries per second, you should set `log_slow_rate_limit` to `100` and capture every 100th query for the *slow query log*. Depending on the amount of traffic, logging could become aggressive and resource consuming. This variable throttles the level of intensity of the data capture without compromising information.
+| [`log_slow_rate_type`][log_slow_rate_type]                               | Set so that it applies to queries, rather than sessions.
+| [`slow_query_log_always_write_time`][slow_query_log_always_write_time]   | specifies which queries should ignore sampling. With query sampling this ensures that queries with longer execution time will always be captured by the slow query log, avoiding the possibility that infrequent slow queries might not get captured at all.
+| [`log_slow_verbosity`][log_slow_verbosity]                               | Ensures that all information about each captured query is stored in the slow query log.
+| [`slow_query_log_use_global_control`][slow_query_log_use_global_control] | Configure the slow query log during runtime and apply these settings to existing connections. (By default, slow query log settings apply only to new sessions.)
+| `query_response_time_stats`                                              | Report *query response time distributions*. (Requires plugin installation. See below.)
 
-- [`log_slow_rate_type`]() Set so that it applies to queries, rather than sessions.
+**Examples**
 
-- [`slow_query_log_always_write_time`]() specifies which queries should ignore sampling. With query sampling this ensures that queries with longer execution time will always be captured by the slow query log, avoiding the possibility that rare slow queries might not get captured at all.
-
-- `log_slow_verbosity` to ensure that all information about each captured query is stored in the slow query log.
-
-- `slow_query_log_use_global_control` to configure the slow query log during runtime and apply these settings to existing connections. (By default, slow query log settings apply only to new sessions.)
-
-
-
+*Configuration file*
 
 ```ini
-log_slow_rate_limit=100
-log_slow_rate_type='query'
-slow_query_log_always_write_time=1 // v5.6.13
-log_slow_verbosity='full'
-slow_query_log_use_global_control='all'
+log_slow_rate_limit = 100
+log_slow_rate_type = 'query'
+slow_query_log_always_write_time = 1 // v5.6.13
+log_slow_verbosity = 'full'
+slow_query_log_use_global_control = 'all'
 ```
 
+*Session*
+
+For query response time distributions:
+
+```sql
+INSTALL PLUGIN QUERY_RESPONSE_TIME_AUDIT SONAME 'query_response_time.so';
+INSTALL PLUGIN QUERY_RESPONSE_TIME SONAME 'query_response_time.so';
+INSTALL PLUGIN QUERY_RESPONSE_TIME_READ SONAME 'query_response_time.so';
+INSTALL PLUGIN QUERY_RESPONSE_TIME_WRITE SONAME 'query_response_time.so';
+SET GLOBAL query_response_time_stats = ON;
+```
+
+Some table metrics are automatically disabled when the number of tables exceeds a default limit of 1000 tables.
+
+This prevents PMM Client from affecting the performance of your database server.
+
+The limit can be changed on the command line with the two `pmm-admin` options:
+
+| `pmm-admin` option             | Description
+| ------------------------------ | --------------------------------------------------------------------------
+| `--disable-tablestats`         | Disables tablestats collection when the default limit is reached.
+| `--disable-tablestats-limit=N` | Sets the number of tables (`N`) for which tablestats collection is disabled. 0 means no limit. A negative number means tablestats is completely disabled (for any number of tables).
 
 
+### 1.2. Configure log rotation
 
+Slow query log files can grow quickly and must be managed.
 
+Use the `--size-slow-logs` option to `pmm-admin` to set at what size (in bytes) the slow query log file is closed, renamed, and a new one started.
 
+When the limit is reached, PMM Client will:
 
+- remove the previous `.old` slow log file,
+- rename the current file by adding the suffix `.old`,
+- execute the MySQL command `FLUSH LOGS`.
 
-- `query_response_time_stats=ON`: Percona Server for MySQL can report *query response time distributions*. To enable:
+Only one `.old` file is kept. Older files are deleted.
 
-	```sql
-	INSTALL PLUGIN QUERY_RESPONSE_TIME_AUDIT SONAME 'query_response_time.so';
-	INSTALL PLUGIN QUERY_RESPONSE_TIME SONAME 'query_response_time.so';
-	INSTALL PLUGIN QUERY_RESPONSE_TIME_READ SONAME 'query_response_time.so';
-	INSTALL PLUGIN QUERY_RESPONSE_TIME_WRITE SONAME 'query_response_time.so';
-	SET GLOBAL query_response_time_stats=ON;
-	```
-
-
-
-
-
-
- ```ini
- innodb_monitor_enable=all
- ```
-
-
-
-
-
-#### Slow log file rotation
-
-Set the `--size-slow-logs` variable with [pmm-admin](../../details/commands/pmm-admin.md)
-to automatically manage
-log file rotation and removal.
-
-When the limit is reached, PMM will remove the previous old slow log file, rename the current file with the suffix `.old`, and execute the MySQL command `FLUSH LOGS`.
-It will only keep one old file.
-Older files will be deleted on the next iteration.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-### Performance Schema
+### 1.3. Performance Schema
 
 PMM's *MySQL Performance Schema Details* dashboard charts the various `performance_schema` metrics.
 
 
+| Variable                                                | Description
+|---------------------------------------------------------|----------------------------------------------------------------------------------------
+| [`performance_schema`][sysvar_performance_schema]       | Enables *Performance Schema* metrics. This is the default in MySQL 5.6.6 and higher.
+| [`innodb_monitor_enable`][sysvar_innodb_monitor_enable] | Enables InnoDB metrics counters.
 
+**Examples**
 
-#### Configuration
-
-- [`performance_schema=ON`](https://dev.mysql.com/doc/refman/5.7/en/performance-schema-system-variables.html#sysvar_performance_schema) enables *Performance Schema* metrics. This is the default in MySQL 5.6.6 and higher.
-
-- [`innodb_monitor_enable=all`](https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html#sysvar_innodb_monitor_enable) enables InnoDB metrics counters.
-
-Example (configuration file)
+*Configuration file*
 
 ```ini
 [mysqld]
-performance_schema=ON
-innodb_monitor_enable=all
+performance_schema = ON
+innodb_monitor_enable = all
 ```
 
-Example (session)
+*Session*
 
 ```sql
-SET GLOBAL performance_schema=1;
-SET GLOBAL innodb_monitor_enable=all;
+SET GLOBAL performance_schema = 1;
+SET GLOBAL innodb_monitor_enable = all;
 ```
 
 
-
-If you are running a custom Performance Schema configuration, make sure that the
-`statements_digest` consumer is enabled.
+<!-- ?? -->
+If you are running a custom Performance Schema configuration, make sure that the `statements_digest` consumer is enabled.
 
 Example
 
@@ -273,7 +250,7 @@ This option can cause additional overhead and should be used with care.
 
 
 
-### Query Analytics
+### 1.4. Configure Query Analytics
 
 If the instance is already running, configure the Query Analytics agent to collect data from *Performance Schema*:
 
@@ -292,36 +269,30 @@ pmm-admin add mysql --username=pmm --password=pmmpassword --query-source='perfsc
 
 
 
-## Configure user statistics
+### 1.5. Configure user statistics
 
 **Applies to: Percona Server for MySQL, MariaDB 5.2.0+**
 
 Enable user statistics to see user activity, individual table and index access details on the [MySQL User Details][MYSQLUSERDETAILS] dashboard.
 
+**Examples**
 
-<!-- what cases?  Warning useless without qualification
-!!! alert alert-warning "Caution"
-	In some cases, collecting user statistics can load system resources.
--->
-
-Example (MySQL configuration file)
+*Configuration file*
 
 ```ini
 [mysqld]
 userstat = ON
 ```
 
-Example (session)
+*Session*
 
 ```sql
 SET GLOBAL userstat = ON;
 ```
 
+### 1.6. Create a database user account for PMM
 
-## (Recommended) Create a database user account for PMM
-
-Connect PMM Client to the database instance with a non-superuser account.
-
+(Recommended) *Connect PMM Client to the database instance with a non-superuser account.*
 
 **Example**
 
@@ -338,16 +309,11 @@ Add an instance using this user.
 pmm-admin add mysql --username pmm --password pass ...
 ```
 
-
-
-
-
-
-## Add service
+## 2. Add service
 
 You can add a MySQL service with the user interface or on the command line.
 
-### User interface
+### 2.1. User interface
 
 1. Select *PMM --> PMM Add Instance*.
 
@@ -379,9 +345,10 @@ You can add a MySQL service with the user interface or on the command line.
 	|                      	   | --> *Default*                                  |          |                                         |          | `--disable-tablestats-limit`
 	|                      	   | --> *Custom*                                   |          |                                         |          | `--disable-tablestats-limit`
 	|                          | *Use performance schema*                       |          |                                         |          | `--perfschema` if selected, `--slowlog` if not.
+
 4. Click *Add service*.
 
-### Command line
+### 2.2. Command line
 
 **Examples**
 
@@ -438,3 +405,16 @@ You can add a MySQL service with the user interface or on the command line.
 [BLOG_LOGGING]: https://www.percona.com/blog/2009/02/10/impact-of-logging-on-mysql%E2%80%99s-performance/
 [BLOG_LOG_ROTATION]: https://www.percona.com/blog/2013/04/18/rotating-mysql-slow-logs-safely/
 [BLOG_PS_VS_SLOW]: https://www.percona.com/blog/2014/02/11/performance_schema-vs-slow-query-log/
+
+[log_slow_rate_limit]: https://www.percona.com/doc/percona-server/LATEST/diagnostics/slow_extended.html#log_slow_rate_limit
+[log_slow_rate_type]: https://www.percona.com/doc/percona-server/LATEST/diagnostics/slow_extended.html#log_slow_rate_type
+[log_slow_verbosity]: https://www.percona.com/doc/percona-server/LATEST/diagnostics/slow_extended.html#log_slow_verbosity
+[slow_query_log_always_write_time]: https://www.percona.com/doc/percona-server/LATEST/diagnostics/slow_extended.html#slow_query_log_always_write_time
+[slow_query_log_use_global_control]: https://www.percona.com/doc/percona-server/LATEST/diagnostics/slow_extended.html#slow_query_log_use_global_control
+[sysvar_innodb_monitor_enable]: https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html#sysvar_innodb_monitor_enable
+[sysvar_log_output]: https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar_log_output
+[sysvar_log_slow_admin_statements]: https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar_log_slow_admin_statements
+[sysvar_log_slow_slave_statements]: https://dev.mysql.com/doc/refman/8.0/en/replication-options-replica.html#sysvar_log_slow_slave_statements
+[sysvar_long_query_time]: https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar_long_query_time
+[sysvar_performance_schema]: https://dev.mysql.com/doc/refman/5.7/en/performance-schema-system-variables.html#sysvar_performance_schema
+[sysvar_slow_query_log]: https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar_slow_query_log

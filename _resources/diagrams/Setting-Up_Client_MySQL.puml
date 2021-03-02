@@ -5,50 +5,55 @@
 ' Text: https://plantuml.com/creole
 @startuml "setting-up_client_mysql"
 skinparam ArrowHeadColor none
-title "Running PMM Client on a MySQL host\nOverview"
+skinparam roundCorner 10
+title "Setting up PMM Client to monitor a MySQL host\nOverview\n"
 
-split
--[hidden]->
-:Configure database
-server for
-**//slow query log//**;
-split again
--[hidden]->
-:Configure database
-server for
-**//Performance Schema//**;
-end split
-:(Optional)
-Configure
-User statistics;
-note right
-""userstat=1""
-end note
-:(Recommended)
-Create PMM
-user account;
-split
-:Add service;
-note left
+partition "1. Choose and configure a source" {
+	split
+		-[hidden]->
+		:1.1. Configure database server for
+		**//slow query log//**;
+		:1.2. Configure log rotation;
+	split again
+		-[hidden]->
+		:1.3. Configure database server for
+		**//Performance Schema//**;
+		:1.4. Configure Query Analytics;
+	end split
+	:(Optional) 1.5. Configure User statistics;
+	:(Recommended) 1.6. Create PMM user account;
+}
+partition "2. Add service" {
+	split
+	partition "2.1. User interface" {
+		:PMM <&arrow-thick-right>\nPMM Add Instance <&arrow-thick-right>\nMySQL - Add a remote instance;
+	}
+	kill
+	split again
+
+	partition "2.2. Command line" {
+		split
+		:**//slow query log//**
+
 <code>
-pmm-admin add mysql
---query-source=slowlog
-[--size-slow-logs=N]
-...
-</code>
-end note
-kill
-split again
-:Add service;
-note right
+		pmm-admin add mysql
+		--query-source=slowlog
+		--size-slow-logs=N
+		...
+</code>;
+
+		kill
+		split again
+		:**//Performance Schema//**
+
 <code>
-pmm-admin add mysql
---query-source=perfschema
-...
-</code>
-end note
-kill
+		pmm-admin add mysql
+		--query-source=perfschema
+		...
+</code>;
+		kill
+		end split
+	}
 end split
-
-
+}
 @enduml
