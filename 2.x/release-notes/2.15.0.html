@@ -52,7 +52,7 @@
 </head>
 
 <body>
-	<!-- 2021-03-02 07:07:39.358147+00:00 -->
+	<!-- 2021-03-02 07:10:37.210777+00:00 -->
     
 <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.3/css/line.css" type="text/css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" type="text/css">
@@ -132,8 +132,8 @@
 <p>With this feature users can disable any collector used by PMM to get metrics. When metrics cannot be collected or are no longer needed, disabling the collector(s) prevents PMM from flooding logs and saves infrastructure resources.</p>
 <p>Our vision for PMM collectors is to provide “stop from collecting” functionality to prevent possible harm to the user environment. This “disable” feature is an initial step towards the ideal functionality. The full and flexible management for “What metrics to collect and in what resolution” is slated for future releases.</p>
 <p><em>External services monitoring</em></p>
-<p>Since PMM v1.4.0, users had the ability to monitor external services Percona didn’t currently support (e.g., Redis). <a href="https://www.percona.com/blog/2018/02/12/percona-monitoring-management-pmm-support-external-monitoring-services-yes/">This blog article from 2018</a> nicely described external services monitoring at that time. (At that time Percona was not natively supporting a PostgreSQL monitoring service and so this was listed as an external service. Today, PostgreSQL is natively supported by PMM.)</p>
-<p>Until now, PMM v2.x didn’t support external services monitoring. With this release, any non-natively supported by PMM service will now become supported with external services monitoring. You can see the list of possible exporters to be used in <a href="https://prometheus.io/docs/instrumenting/exporters/">https://prometheus.io/docs/instrumenting/exporters/</a>. Natively-supported services will continue to deliver an expanded set of metrics and insights.</p>
+<p>Since PMM 1.4.0, users had the ability to monitor external services Percona didn’t currently support (e.g., Redis). <a href="https://www.percona.com/blog/2018/02/12/percona-monitoring-management-pmm-support-external-monitoring-services-yes/">This blog article from 2018</a> nicely described external services monitoring at that time. (At that time Percona was not natively supporting a PostgreSQL monitoring service and so this was listed as an external service. Today, PostgreSQL is natively supported by PMM.)</p>
+<p>Until now, PMM 2.x didn’t support external services monitoring. With this release, any non-natively supported by PMM service will now become supported with external services monitoring. You can see the list of possible exporters to be used in <a href="https://prometheus.io/docs/instrumenting/exporters/">https://prometheus.io/docs/instrumenting/exporters/</a>. Natively-supported services will continue to deliver an expanded set of metrics and insights.</p>
 <p><em>Provide summary information for  systems  (pt-*-summary actions)</em></p>
 <p>With the addition of <code>pt-*-summary</code> in PMM 2, users can now view summary information about services and nodes on PMM’s dashboard. This summary information is in the industry common format of <code>pt-*-summary</code> tools output to simplify portability of this data. This format will also be preserved in the snapshot of the dashboard shared with Percona Support to simplify investigations of issues.</p>
 <p>Note: <code>pt-*-summary</code> includes formats for:</p>
