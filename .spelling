@@ -6,9 +6,11 @@
 64-bit
 7.x
 Alertmanager
+Alexandre
 analytics
 Analytics
 autovacuum
+Barth
 Beata
 binlog
 binlogs
@@ -20,6 +22,7 @@ checkpointing
 checksum
 checksums
 ClickHouse
+comms
 CPUs
 CRAM-MD5
 CVE-2019-16769
@@ -33,6 +36,7 @@ defragmentation
 e.g.
 ElasticSearch
 ESXi
+Fedorov
 freeable
 fsync
 fsyncs
@@ -45,9 +49,11 @@ GovCloud
 Grafana
 Guzman
 Handzelova
+haproxy
 hostgroup
 hostname
 hotspot
+http
 https
 Hubertus
 hugepages
@@ -76,6 +82,7 @@ minikube
 MMAPv1
 mongod
 MongoDB
+mongodb_exporter
 mountpoint
 multicast
 MyISAM
@@ -84,8 +91,10 @@ MySQL
 mysql1-3306
 mysql1-3307
 mysqld
+mysqld_exporter
 natively
 netstat
+node_exporter
 non-DBAs
 non-UTF-8
 oplog
@@ -9108,11 +9117,13 @@ pmm-server
 pmm-update
 pmmdemo
 pmmdemo.percona.com
+postgres_exporter
 PostgreSQL
 postgresql.org
 profiler
 PromQL
 ProxySQL
+proxysql_exporter
 pushdown
 quickstart
 ReadAhead
@@ -9120,6 +9131,7 @@ recalc
 Reddit
 RedHat
 Redis
+reenabled
 replicaset
 ReplSet
 reqs

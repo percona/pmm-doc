@@ -69,17 +69,22 @@ and point your browser to [http://localhost:8000](http://localhost:8000).
 
         pip install -r requirements.txt
 
-3. Build the site:
+3. Build the site with your choice of theme:
 
 		mkdocs build -t material
+		# mkdocs build -t readthedocs
+		# mkdocs build -t mkdocs
 
 4. Open `site/index.html`
 
-Or run the built-in web server:
+Or run the built-in web server.
 
     mkdocs serve -t material
+    # mkdocs serve -t readthedocs
 
 And view the site at <http://localhost:8000>
+
+([Get more themes.](https://github.com/mkdocs/mkdocs/wiki/MkDocs-Themes))
 
 ## PDF
 
@@ -163,9 +168,9 @@ To check all files:
 
 	mdspell --report --en-us --ignore-acronyms --ignore-numbers "docs/**/*.md"
 
-Add any custom dictionary words to `.spelling`. If spell checking fails, the GitHub action will fail too, but after the MkDocs build. The `publish` branch will still have the latest build and can be used. Meanwhile, see what the spelling error is and either fix it or add the word to `.spelling`.
+Add any custom dictionary words to `.spelling`. If spell checking fails, the GitHub action will fail too, but after the MkDocs build and so can be safely ignored. The `publish` branch will still have the latest build and can be used. Meanwhile, see what the spelling error is and either fix it or add the word to `.spelling`.
 
-Grammar is checked using [`write-good`](https://github.com/btford/write-good).
+Grammar is checked using [`write-good`](https://github.com/btford/write-good). (The results of this check are ignored and don't affect the GitHub action.)
 
 	npm i write-good -g
 	write-good docs/<path to file>.md
