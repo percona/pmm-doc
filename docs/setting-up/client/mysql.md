@@ -6,7 +6,13 @@ To set up PMM Client for MySQL and derivatives, you must:
 
 - [choose and configure a source](#1-choose-and-configure-a-source), (*slow query log* or *Performance Schema*);
 
+- (Optional for Percona Server for MySQL 5.7, MariaDB 10.0) [configure query response time](1-2-configure-query-response-time)
+
+- (Optional) [configure tablestats](1-3-configure-tablestats)
+
 - (Optional for Percona Server, MariaDB) [configure user statistics](#configure-user-statistics);
+
+- (For slow query log) [configure log rotation](1-4-configure-log-rotation)
 
 - [create a database user account for PMM;](#create-a-database-user-account-for-pmm)
 
@@ -136,16 +142,37 @@ slow_query_log_use_global_control = 'all'
 TODO
 ```
 
+**Log rotation**
 
-### Configure query response time
+Slow query log files can grow quickly and must be managed.
 
-**Applies to: Percona Server for MySQL 5.7 (removed from [8.0][PS_REMOVED_FEATURES]), MySQL 5.7, MariaDB 10.0.4.**
+When adding a service use the  `pmm-admin` option `--size-slow-logs` to set at what size (in bytes) the slow query log file is closed, renamed, and a new one started. When the limit is reached, PMM Client will:
+
+- remove the previous `.old` slow log file,
+- rename the current file by adding the suffix `.old`,
+- execute the MySQL command `FLUSH LOGS`.
+
+Only one `.old` file is kept. Older files are deleted.
+
+
+
+
+
+
+
+
+
+
+### 1.2. Configure query response time
+
+For query response time distributions:
+
+**Applies to: Percona Server for MySQL 5.7 (not [8.0][PS_REMOVED_FEATURES]), MariaDB 10.0.4.**
 
 | Variable                                                                 | Value | Description
 |--------------------------------------------------------------------------|:-----:|-----------------------------------------------------------------------------------
 | [`query_response_time_stats`][query_response_time_stats]                 | ON    | Report *query response time distributions*. (Requires plugin installation. See below.)
 
-For query response time distributions:
 
 *Configuration file*
 
@@ -153,11 +180,15 @@ For query response time distributions:
 query_response_time_stats = ON
 ```
 
-*Session ([MariaDB 10.3][mariadb_query_response_time])*
+You must also install the plugins in a `mysql` session.
+
+*Session*
 
 1. Check that `/usr/lib/mysql/plugin/query_response_time.so` exists.
 
 2. Install the plugins and activate.
+
+	[MariaDB 10.3][mariadb_query_response_time]
 
 	```sql
 	INSTALL PLUGIN QUERY_RESPONSE_TIME_AUDIT SONAME 'query_response_time.so';
@@ -165,6 +196,15 @@ query_response_time_stats = ON
 	SET GLOBAL query_response_time_stats = ON;
 	```
 
+	[Percona Server for MySQL 5.7][query_response_time_stats]
+
+	```sql
+	INSTALL PLUGIN QUERY_RESPONSE_TIME_AUDIT SONAME 'query_response_time.so';
+	INSTALL PLUGIN QUERY_RESPONSE_TIME SONAME 'query_response_time.so';
+	INSTALL PLUGIN QUERY_RESPONSE_TIME_READ SONAME 'query_response_time.so';
+	INSTALL PLUGIN QUERY_RESPONSE_TIME_WRITE SONAME 'query_response_time.so';
+	SET GLOBAL query_response_time_stats = ON;
+	```
 
 
 <!--
@@ -176,11 +216,7 @@ Server option --query-response-time
 
 
 
-
-```
-INSTALL PLUGIN QUERY_RESPONSE_TIME_READ SONAME 'query_response_time.so';
-INSTALL PLUGIN QUERY_RESPONSE_TIME_WRITE SONAME 'query_response_time.so';
-```
+## 1.3. Configure tablestats
 
 Some table metrics are automatically disabled when the number of tables exceeds a default limit of 1000 tables.
 
@@ -203,21 +239,8 @@ table th:nth-of-type(2) {
 | `--disable-tablestats-limit=N` | Sets the number of tables (`N`) for which tablestats collection is disabled. 0 means no limit. A negative number means tablestats is completely disabled (for any number of tables).
 
 
-### 1.2. Configure log rotation
 
-Slow query log files can grow quickly and must be managed.
-
-Use the `--size-slow-logs` option to `pmm-admin` to set at what size (in bytes) the slow query log file is closed, renamed, and a new one started.
-
-When the limit is reached, PMM Client will:
-
-- remove the previous `.old` slow log file,
-- rename the current file by adding the suffix `.old`,
-- execute the MySQL command `FLUSH LOGS`.
-
-Only one `.old` file is kept. Older files are deleted.
-
-### 1.3. Performance Schema
+### 1.5. Performance Schema
 
 PMM's *MySQL Performance Schema Details* dashboard charts the various `performance_schema` metrics.
 
@@ -243,7 +266,6 @@ table th:nth-of-type(3) {
 *Configuration file*
 
 ```ini
-[mysqld]
 performance_schema = ON
 innodb_monitor_enable = all
 ```
@@ -309,7 +331,7 @@ This option can cause additional overhead and should be used with care.
 
 
 
-### 1.4. Configure Query Analytics
+### 1.6. Configure Query Analytics
 
 If the instance is already running, configure the Query Analytics agent to collect data from *Performance Schema*:
 
@@ -328,7 +350,7 @@ pmm-admin add mysql --username=pmm --password=pmmpassword --query-source='perfsc
 
 
 
-### 1.5. Configure user statistics
+### 1.7. Configure user statistics
 
 **Applies to: Percona Server for MySQL, MariaDB 5.2.0+**
 
@@ -349,7 +371,7 @@ userstat = ON
 SET GLOBAL userstat = ON;
 ```
 
-### 1.6. Create a database user account for PMM
+### 1.8. Create a database user account for PMM
 
 (Recommended) *Connect PMM Client to the database instance with a non-superuser account.*
 
@@ -440,6 +462,15 @@ You can add a MySQL service with the user interface or on the command line.
 	```sh
 	sudo pmm-admin add mysql --username=pmm --password=pass --socket=/var/run/mysqld/mysqld.sock
 	```
+
+
+
+
+
+
+
+
+
 
 
 ## 3. Check
