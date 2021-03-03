@@ -25,7 +25,7 @@ There two ways to get metrics from other exporters:
 
 - `external-serverless` is useful for collecting metrics from cloud services. You need a host and port number to add it to PMM Server. (See more details with `pmm-admin add external-serverless --help`.)
 
-Here are two general schemas that show the difference between external and external-serverless
+Here are the differences between `external` and `external-serverless` types.
 
 Connection schema of exernal exporter:
 
