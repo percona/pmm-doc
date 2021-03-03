@@ -52,7 +52,7 @@
 </head>
 
 <body>
-	<!-- 2021-03-03 09:51:50.709897+00:00 -->
+	<!-- 2021-03-03 14:34:56.310169+00:00 -->
     
 <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.3/css/line.css" type="text/css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" type="text/css">
@@ -109,11 +109,40 @@
 <p>You can collect metrics from an external (custom) exporter on a node when:</p>
 <ul>
 <li>there is already a PMM Agent instance running and,</li>
-<li>this node has been <a href="/setting-up/client/index.md">configured</a> using the <code>pmm-admin config</code> command.</li>
+<li>this node has been <a href="index.html">configured</a> using the <code>pmm-admin config</code> command.</li>
 </ul>
 <h3 id="usage"><a class="toclink" href="#usage">Usage</a></h3>
-<div class="highlight"><pre><span></span><code>pmm-admin add external <span class="o">[</span>--service-name<span class="o">=</span>&lt;service-name&gt;<span class="o">]</span> <span class="o">[</span>--listen-port<span class="o">=</span>&lt;listen-port&gt;<span class="o">]</span> <span class="o">[</span>--metrics-path<span class="o">=</span>&lt;metrics-path&gt;<span class="o">]</span> <span class="o">[</span>--scheme<span class="o">=</span>&lt;scheme&gt;<span class="o">]</span>
+<div class="highlight"><pre><span></span><code>pmm-admin add external --service-name<span class="o">=</span>&lt;service-name&gt; --listen-port<span class="o">=</span>&lt;listen-port&gt; --metrics-path<span class="o">=</span>&lt;metrics-path&gt; --scheme<span class="o">=</span>&lt;scheme&gt;
 </code></pre></div>
+<div class="highlight"><pre><span></span><code>pmm-admin add external-serverless --external-name<span class="o">=</span>&lt;external-service-name&gt; --host<span class="o">=</span>&lt;hostname&gt; --listen-port<span class="o">=</span>&lt;listen-port&gt; --metrics-path<span class="o">=</span>&lt;metrics-path&gt; --scheme<span class="o">=</span>&lt;scheme&gt;
+</code></pre></div>
+<h2 id="getting-data-from-external-exporters"><a class="toclink" href="#getting-data-from-external-exporters">Getting data from external exporters</a></h2>
+<p>There two ways to get metrics from other exporters:</p>
+<ul>
+<li>
+<p><code>external</code> will collect metrics from the exporter that is run on the same host as pmm-client connection to it by a port. (See more details with <code>pmm-admin add external --help</code>.)</p>
+</li>
+<li>
+<p><code>external-serverless</code> is useful for collecting metrics from cloud services. You need a host and port number to add it to PMM Server. (See more details with <code>pmm-admin add external-serverless --help</code>.)</p>
+</li>
+</ul>
+<p>Here are the differences between <code>external</code> and <code>external-serverless</code> types.</p>
+<p>Connection schema of exernal exporter:</p>
+<p><img alt="" src="../../_images/PMM_External_Exporter_Schema.jpg" /></p>
+<p>Connection schema of exernal serverless exporter:</p>
+<p><img alt="" src="../../_images/PMM_External_Serverless_Exporter_Schema.jpg" /></p>
+<h2 id="how-i-can-add-something-not-supported-by-pmm"><a class="toclink" href="#how-i-can-add-something-not-supported-by-pmm">How I can add something not supported by PMM</a></h2>
+<p>PMM can collect any metrics in <a href="https://openmetrics.io">Open metrics</a> or <a href="https://prometheus.io/docs/instrumenting/exposition_formats/">Prometheus exposition</a> format. You must specify the host and port of these metrics using the <code>pmm-admin add external</code> or <code>pmm-admin add external-serverless</code> commands.</p>
+<p>From this point, PMM will collect and store available metrics.</p>
+<p>To browse and visualize collected metrics as a first step, we can look at the Advanced Data Exploration dashboard and select informative services and metrics.</p>
+<p><img alt="" src="../../_images/PMM_Exploration_Dashboard.jpg" /></p>
+<p>Another way is to create a <a href="https://grafana.com/docs/grafana/latest/best-practices/best-practices-for-creating-dashboards/">new Grafana Dashboard to PMM as needed</a>.</p>
+<p>One more way is to search for an already created dashboard at <a href="https://grafana.com/grafana/dashboards">https://grafana.com/grafana/dashboards</a> for the added exporter and import it into PMM.</p>
+<h3 id="third-party-exporters"><a class="toclink" href="#third-party-exporters">Third-party exporters</a></h3>
+<p>You can find more exporters on the <a href="https://prometheus.io/docs/instrumenting/exporters/">official Prometheus page</a>.</p>
+<h3 id="custom-exporter"><a class="toclink" href="#custom-exporter">Custom exporter</a></h3>
+<p>You can write a custom external exporter or extend your application to expose metrics in Prometheus format.</p>
+<p>Please see more details here: https://prometheus.io/docs/instrumenting/writing_exporters/</p>
                     </div>
                 </div>
                 
@@ -121,7 +150,7 @@
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2020-12-02
+            <i class="uil uil-refresh"></i> Page updated 2021-03-03
         </li>
         
     </ul>
