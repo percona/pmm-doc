@@ -20,7 +20,6 @@ To set up PMM Client for MySQL and derivatives, you must:
 	- Either [on the command line](#command-line),
 	- or [with the user interface](#user-interface).
 
-
 ```plantuml source="_resources/diagrams/Setting-Up_Client_MySQL.puml"
 ```
 
@@ -33,30 +32,33 @@ The choices are:
 - [Slow query log](#slow-query-log)
 - [Performance Schema](#performance-schema)
 
-Although you can use both we recommend choosing one; there is some overlap in the data reported, and each incurs a small performance overhead.
+You can use both but we recommend using just one--there is some overlap in the data reported, and each incurs a small performance overhead. The choice depends on the version and variant of your MySQL instance, and how much detail you want to see.
 
-Your choice depends on the version and variant of your MySQL instance, and how much detail you want to see.
+Benefits and drawbacks of *Slow query log* and *Performance Schema* metrics sources.
 
-**Comparing *Slow query log* and *Performance Schema* metrics sources**
+**Slow query log**
 
-| Slow query log                                                                                | Performance Schema
-|-----------------------------------------------------------------------------------------------|-----------------------------------------
-| **{{icon.pluscircle}} Advantages**                                                            | **{{icon.pluscircle}} Advantages**
-| More detail.                                                                                  | Faster parsing.
-| Lower resource impact (with query sampling feature in Percona Server for MySQL).              | Enabled by default on later versions of MySQL.
-| **{{icon.minuscircle}} Disadvantages**                                                        | **{{icon.minuscircle}} Disadvantages**
-| PMM Client must be on the same host as the database server or have access the slow query log. | Less detail.
-| Log files must be managed.                                                                    |
+| {{icon.thumbsup}} Benefits  | {{icon.thumbsdown}} Drawbacks
+|-----------------------------|-------------------------------
+| More detail.                | PMM Client must be on the same host as the database server or have access the slow query log.
+| Lower resource impact (with query sampling feature in Percona Server for MySQL). | Log files management.
+
+**Performance Schema**
+
+| {{icon.thumbsup}} Benefits  | {{icon.thumbsdown}} Drawbacks
+|-----------------------------|-------------------------------
+| Faster parsing.             | Less detail.
+| Enabled by default on later versions of MySQL. | |
 
 **Recommendations**
 
 | Database server          | Versions       | Recommended source | Is default
 | ------------------------ | -------------- | ------------------ | -----------
 | MySQL                    | 5.1-5.5        | Slow query log     |
+| Percona XtraDB Cluster   | 5.6, 5.7, 8.0  | Slow query log     |
 | MySQL                    | 5.6+           | Performance Schema | From 5.6.6
 | MariaDB                  | 10.0+          | Performance Schema | No
 | Percona Server for MySQL | 5.7, 8.0       | Performance Schema |
-| Percona XtraDB Cluster   | 5.6, 5.7, 8.0  | Slow query log     |
 
 ### 1.1. Configure *slow query log*
 
@@ -67,18 +69,6 @@ PMM Client parses this file and sends aggregated data to PMM Server via the Quer
 **Applies to: MySQL 5.1 to 5.5, MariaDB 5.5, Percona Server for MySQL, Percona XtraDB Cluster**
 
 You must set these values for your database server. If you set them in the server's configuration file (e.g., `/etc/mysql/conf.d/mysql.cnf` for MySQL) the settings are permanent but you must restart the server to activate them. If you set them in an SQL session, they are active until the server restarts.
-
-<style>
-table th:first-of-type {
-    width: 40%;
-}
-table th:nth-of-type(2) {
-    width: 10%;
-}
-table th:nth-of-type(3) {
-    width: 50%;
-}
-</style>
 
 | Variable                                                        | Value |Description
 |-----------------------------------------------------------------|:-----:|----------------------------------------------------------
@@ -154,18 +144,13 @@ When adding a service use the  `pmm-admin` option `--size-slow-logs` to set at w
 
 Only one `.old` file is kept. Older files are deleted.
 
+Alternatively, you can manage log rotation yourself, for example, with [`logrotate`][LOGROTATE].
 
-
-
-
-
-
-
-
+To disable PMM Client's log rotation, use the `--slow-log-rotation=false` option when adding a service with `pmm-admin add`.
 
 ### 1.2. Configure query response time
 
-For query response time distributions:
+These settings are needed for query response time distributions.
 
 **Applies to: Percona Server for MySQL 5.7 (not [8.0][PS_REMOVED_FEATURES]), MariaDB 10.0.4.**
 
@@ -188,7 +173,7 @@ You must also install the plugins in a `mysql` session.
 
 2. Install the plugins and activate.
 
-	[MariaDB 10.3][mariadb_query_response_time]
+	For [MariaDB 10.3][mariadb_query_response_time]:
 
 	```sql
 	INSTALL PLUGIN QUERY_RESPONSE_TIME_AUDIT SONAME 'query_response_time.so';
@@ -196,7 +181,7 @@ You must also install the plugins in a `mysql` session.
 	SET GLOBAL query_response_time_stats = ON;
 	```
 
-	[Percona Server for MySQL 5.7][query_response_time_stats]
+	For [Percona Server for MySQL 5.7][query_response_time_stats]:
 
 	```sql
 	INSTALL PLUGIN QUERY_RESPONSE_TIME_AUDIT SONAME 'query_response_time.so';
@@ -206,60 +191,27 @@ You must also install the plugins in a `mysql` session.
 	SET GLOBAL query_response_time_stats = ON;
 	```
 
-
-<!--
-Server option --query-response-time
--->
-
-
-
-
-
-
 ## 1.3. Configure tablestats
 
-Some table metrics are automatically disabled when the number of tables exceeds a default limit of 1000 tables.
-
-This prevents PMM Client from affecting the performance of your database server.
+Some table metrics are automatically disabled when the number of tables exceeds a default limit of 1000 tables. This prevents PMM Client from affecting the performance of your database server.
 
 The limit can be changed on the command line with the two `pmm-admin` options:
-
-<style>
-table th:first-of-type {
-    width: 40%;
-}
-table th:nth-of-type(2) {
-    width: 60%;
-}
-</style>
 
 | `pmm-admin` option             | Description
 |--------------------------------|--------------------------------------------------------------------------
 | `--disable-tablestats`         | Disables tablestats collection when the default limit is reached.
 | `--disable-tablestats-limit=N` | Sets the number of tables (`N`) for which tablestats collection is disabled. 0 means no limit. A negative number means tablestats is completely disabled (for any number of tables).
 
-
-
 ### 1.5. Performance Schema
 
-PMM's *MySQL Performance Schema Details* dashboard charts the various `performance_schema` metrics.
+PMM's *MySQL Performance Schema Details* dashboard charts the various [`performance_schema`][performance-schema-startup-configuration] metrics.
 
-<style>
-table th:first-of-type {
-    width: 40%;
-}
-table th:nth-of-type(2) {
-    width: 10%;
-}
-table th:nth-of-type(3) {
-    width: 50%;
-}
-</style>
-
-| Variable                                                | Value | Description
-|---------------------------------------------------------|:-----:|---------------------------------------------------------------------------------
-| [`performance_schema`][sysvar_performance_schema]       | ON    | Enables *Performance Schema* metrics. This is the default in MySQL 5.6.6 and higher.
-| [`innodb_monitor_enable`][sysvar_innodb_monitor_enable] | all   | Enables InnoDB metrics counters.
+| Variable                                                                                 | Value              | Description
+|------------------------------------------------------------------------------------------|:------------------:|---------------------------------------------------------------------------------
+| [`performance_schema`][sysvar_performance_schema]                                        | `ON`               | Enables *Performance Schema* metrics. This is the default in MySQL 5.6.6 and higher.
+| [`performance-schema-instrument`][perfschema-instrument]                                 | `'statement/%=ON'` | Configures Performance Schema instruments.
+| [`performance-schema-consumer-statements-digest`][perfschema-consumer-statements-digest] | `ON`               | Configures the `statements-digest` consumer.
+| [`innodb_monitor_enable`][sysvar_innodb_monitor_enable]                                  | all                | Enables InnoDB metrics counters.
 
 **Examples**
 
@@ -267,56 +219,24 @@ table th:nth-of-type(3) {
 
 ```ini
 performance_schema = ON
+performance-schema-instrument = 'statement/%=ON'
+# performance-schema-instrument = '%=ON'
+performance-schema-consumer-statements-digest = ON
 innodb_monitor_enable = all
 ```
 
 *Session*
 
 ```sql
-SET GLOBAL performance_schema = 1;
+SET GLOBAL performance_schema = ON;
+UPDATE performance_schema.setup_consumers
+SET ENABLED = 'YES'
+WHERE NAME LIKE '%statements%';
 SET GLOBAL innodb_monitor_enable = all;
 ```
 
 
-<!-- ?? -->
-If you are running a custom Performance Schema configuration, make sure that the `statements_digest` consumer is enabled.
 
-Example
-
-```sql
-SELECT * FROM performance_schema.setup_consumers;
-```
-
-```
-+----------------------------------+---------+
-| NAME                             | ENABLED |
-+----------------------------------+---------+
-| events_stages_current            | NO      |
-| events_stages_history            | NO      |
-| events_stages_history_long       | NO      |
-| events_statements_current        | YES     |
-| events_statements_history        | YES     |
-| events_statements_history_long   | NO      |
-| events_transactions_current      | NO      |
-| events_transactions_history      | NO      |
-| events_transactions_history_long | NO      |
-| events_waits_current             | NO      |
-| events_waits_history             | NO      |
-| events_waits_history_long        | NO      |
-| global_instrumentation           | YES     |
-| thread_instrumentation           | YES     |
-| statements_digest                | YES     |
-+----------------------------------+---------+
-15 rows in set (0.00 sec)
-```
-
-!!! alert alert-info "Note"
-
-    If certain instruments are not enabled, you will not see the corresponding graphs in the MySQL Performance Schema dashboard.  To enable full instrumentation, set the option `--performance_schema_instrument` to `'%=on'` when starting the MySQL server:
-
-    ```sh
-    mysqld --performance-schema-instrument='%=on'
-    ```
 
 If you are running any MariaDB version, there is no Explain or Example data shown by default in Query Analytics. A workaround is to run this SQL command:
 
@@ -445,19 +365,25 @@ You can add a MySQL service with the user interface or on the command line.
 	sudo pmm-admin add mysql --query-source=slowlog --size-slow-logs=1048576 --username=pmm --password=pass MYSQL_NODE 192.168.1.123:3306
 	```
 
-3. Performance schema query source, service name (`MYSQL_NODE`) and default service address/port (`127.0.0.1:3306`)
+3. Slow query log source, disabled log management, service name (`MYSQL_NODE`) and service address/port (`191.168.1.123:3306`). **Use [`logrotate`][LOGROTATE] or some other log management tool.**
+
+	```sh
+	sudo pmm-admin add mysql --query-source=slowlog --size-slow-logs=false --username=pmm --password=pass MYSQL_NODE 192.168.1.123:3306
+	```
+
+4. Performance schema query source, service name (`MYSQL_NODE`) and default service address/port (`127.0.0.1:3306`)
 
 	```sh
 	sudo pmm-admin add mysql --query-source=perfschema --username=pmm --password=pass MYSQL_NODE
 	```
 
-4. Performance schema query source, service name (`MYSQL_NODE`) and default service address/port (`127.0.0.1:3306`) specified with flags.
+5. Performance schema query source, service name (`MYSQL_NODE`) and default service address/port (`127.0.0.1:3306`) specified with flags.
 
 	```sh
 	sudo pmm-admin add mysql --query-source=perfschema --username=pmm --password=pass --service-name=MYSQL_NODE --host=127.0.0.1 --port=3306
 	```
 
-5. Default query source (`slowlog`), service name (`{node}-mysql`), connect via socket.
+6. Default query source (`slowlog`), service name (`{node}-mysql`), connect via socket.
 
 	```sh
 	sudo pmm-admin add mysql --username=pmm --password=pass --socket=/var/run/mysqld/mysqld.sock
@@ -475,8 +401,17 @@ You can add a MySQL service with the user interface or on the command line.
 
 ## 3. Check
 
+**Check service**
+
 1. In the PMM web interface, navigate to *PMM --> PMM Inventory*.
 2. Check the added node, agent or service is listed in the appropriate tab.
+
+**Check data**
+
+TODO
+
+
+
 
 !!! seealso "See also"
 	- [Percona Server for MySQL - Slow Query Log][SLOWQUERYLOG]
@@ -508,8 +443,15 @@ You can add a MySQL service with the user interface or on the command line.
 [sysvar_log_slow_admin_statements]: https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar_log_slow_admin_statements
 [sysvar_log_slow_slave_statements]: https://dev.mysql.com/doc/refman/8.0/en/replication-options-replica.html#sysvar_log_slow_slave_statements
 [sysvar_long_query_time]: https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar_long_query_time
-[sysvar_performance_schema]: https://dev.mysql.com/doc/refman/5.7/en/performance-schema-system-variables.html#sysvar_performance_schema
 [sysvar_slow_query_log]: https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar_slow_query_log
 
 [query_response_time_stats]: https://www.percona.com/doc/percona-server/5.7/diagnostics/response_time_distribution.html#usage
 [mariadb_query_response_time]: https://mariadb.com/kb/en/query-response-time-plugin/
+
+[sysvar_performance_schema]: https://dev.mysql.com/doc/refman/5.7/en/performance-schema-system-variables.html#sysvar_performance_schema
+[performance-schema-statement-tables]: https://dev.mysql.com/doc/refman/5.7/en/performance-schema-statement-tables.html
+[performance-schema-startup-configuration]: https://dev.mysql.com/doc/refman/5.7/en/performance-schema-startup-configuration.html
+[perfschema-instrument]: https://dev.mysql.com/doc/refman/5.7/en/performance-schema-options.html#option_mysqld_performance-schema-instrument
+[perfschema-consumer-statements-digest]: https://dev.mysql.com/doc/refman/5.7/en/performance-schema-options.html#option_mysqld_performance-schema-consumer-statements-digest
+
+[LOGROTATE]: https://linux.die.net/man/8/logrotate
