@@ -46,8 +46,9 @@ Most steps can be done with either a user interface or on the command line, but 
 
 **CLI {{icon.keyboard}}**
 
+*Download the latest PMM Server OVA and checksum files*
+
 ```sh
-# Download the latest PMM Server OVA and checksum files
 wget https://www.percona.com/downloads/pmm2/{{release}}/ova/pmm-server-{{release}}.ova
 wget https://www.percona.com/downloads/pmm2/{{release}}/ova/pmm-server-{{release}}.sha256sum
 ```
@@ -56,8 +57,9 @@ wget https://www.percona.com/downloads/pmm2/{{release}}/ova/pmm-server-{{release
 
 **CLI {{icon.keyboard}}**
 
+*Verify the checksum of the downloaded .ova file*
+
 ```sh
-# Verify the checksum of the downloaded .ova file
 shasum -ca 256 pmm-server-{{release}}.sha256sum
 ```
 
