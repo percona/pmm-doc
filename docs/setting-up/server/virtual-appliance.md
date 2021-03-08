@@ -110,11 +110,12 @@ shasum -ca 256 pmm-server-{{release}}.sha256sum
 
 **UI {{icon.mouse}}**
 
-1. In the VMware main window, select the imported virtual machine.
-2. Click *Virtual Machine --> Settings...*
-3. Click *Network Adaptor*.
-4. In the *Bridged Networking* section, select *Autodetect*.
-5. Close the settings window.
+1. If started, shut down the virtual machine.
+2. In the VMware main window, select the imported virtual machine.
+3. Click *Virtual Machine --> Settings...*
+4. Click *Network Adaptor*.
+5. In the *Bridged Networking* section, select *Autodetect*.
+6. Close the settings window.
 
 ### 3.3. Start guest and get IP address
 
