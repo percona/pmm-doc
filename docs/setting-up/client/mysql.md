@@ -48,7 +48,7 @@ Here are the benefits and drawbacks of *Slow query log* and *Performance Schema*
 | MySQL                    | 5.1-5.5          |
 | MariaDB                  | 10.1.2+          |
 | Percona Server for MySQL | 5.7.10+, 8.0.12+ |
-| Percona XtraDB Cluster   | 5.7, 8.0         |
+| Percona XtraDB Cluster   | 5.6, 5.7, 8.0    |
 
 The *slow query log* records the details of queries that take more than a certain amount of time to complete. With the database server configured to write this information to a file rather than a table, PMM Client parses the file and sends aggregated data to PMM Server via the Query Analytics part of PMM Agent.
 
@@ -67,7 +67,7 @@ The *slow query log* records the details of queries that take more than a certai
 *Configuration file*
 
 ```ini
-slow_query_log
+slow_query_log=ON
 log_output=FILE
 long_query_time=0
 log_slow_admin_statements=ON
@@ -89,9 +89,9 @@ SET GLOBAL log_slow_slave_statements = 1;
 **Applicable versions**
 
 | Server                   | Versions         |
-|-------------------------:|------------------|
+|-------------------------:|:----------------:|
 | Percona Server for MySQL | 5.7.10+, 8.0.12+ |
-| Percona XtraDB Cluster   | 5.7, 8.0         |
+| Percona XtraDB Cluster   | 5.6, 5.7, 8.0    |
 
 **Settings**
 
@@ -212,7 +212,7 @@ The limit can be changed [when adding a service on the command line ](#2-2-comma
 | Server                   | Versions
 |--------------------------|-----------------------------------------
 | Percona Server for MySQL | TODO
-| Percona XtraDB Cluster   | 5.7, 8.0
+| Percona XtraDB Cluster   | 5.6, 5.7, 8.0
 | MariaDB                  | [10.3+][mariadb_perfschema_instr_table]
 
 PMM's [*MySQL Performance Schema Details* dashboard](../../details/dashboards/dashboard-mysql-performance-schema-details.md) charts the various [performance_schema][performance-schema-startup-configuration] metrics.
@@ -245,8 +245,9 @@ innodb_monitor_enable=all
 
 *Session*
 
+(`performance_schema` must be set at server start-up.)
+
 ```sql
-# performance_schema must be set at server start-up
 UPDATE performance_schema.setup_consumers
 SET ENABLED = 'YES' WHERE NAME LIKE '%statements%';
 SET GLOBAL innodb_monitor_enable = all;
@@ -296,7 +297,7 @@ If the instance is already running, configure the Query Analytics agent to colle
 | Server                    | Versions
 |--------------------------:|:-------------
 | Percona Server for MySQL  | TODO
-| Percona XtraDB Cluster    | 5.7, 8.0
+| Percona XtraDB Cluster    | 5.6, 5.7, 8.0
 | MariaDB                   | 5.2.0+
 
 Enable user statistics to see user activity, individual table and index access details on the [MySQL User Details][DASH_MYSQLUSERDETAILS] dashboard.
