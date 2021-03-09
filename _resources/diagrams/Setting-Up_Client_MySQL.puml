@@ -5,7 +5,7 @@
 ' Text: https://plantuml.com/creole
 @startuml "setting-up_client_mysql"
 skinparam ArrowHeadColor none
-skinparam roundCorner 10
+skinparam roundCorner 15
 skinparam legendBackgroundColor #0000
 'title "Setting up PMM Client to monitor a MySQL host\nOverview\n"
 legend bottom left
@@ -16,20 +16,20 @@ endlegend
 
 #lightgrey:1. Create PMM database account;
 partition "2. Choose and configure\n     a source" {
-	if (Choose a source) then (**//slow query log//**)
-		:2.1. slow query log;
-		:2.2. slow query log - additional;
-		#lightgrey:2.3. slow query log rotation;
-		#lightgrey:2.3. query response time;
-		#lightgrey:2.4. tablestats;
-	else (**//Performance Schema//**)
+	if () then (**Slow query log**)
+		:2.1. Slow query log;
+		:2.2. Slow query log - additional;
+		#lightgrey:2.3. Slow query log rotation;
+		#lightgrey:2.3. Query response time;
+		#lightgrey:2.4. Tablestats;
+	else (**Performance Schema**)
 		:2.5. Performance Schema;
 	endif
-	#lightgrey:2.7. **//user statistics//**;
+	#lightgrey:2.7. User statistics;
 }
 partition "3. Add service" {
 	if () then (**3.1. User interface**)
-		:PMM <&arrow-thick-right> PMM Add Instance <&arrow-thick-right>\nMySQL - Add a remote instance;
+		:PMM <&arrow-thick-right>\nPMM Add Instance <&arrow-thick-right>\nMySQL -\nAdd a remote instance;
 	else (**3.2. Command line**)
 		if () then (**Slow query log**)
 			:<code>
