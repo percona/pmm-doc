@@ -126,7 +126,7 @@ If you have Amazon RDS with a MySQL version prior to 5.5, `REPLICATION CLIENT` p
     `node_exporter`, used in versions of PMM prior to 1.8.0, was not able to monitor general system metrics remotely.
 
 
-# Adding an Amazon RDS MySQL, Aurora MySQL, or Remote Instance
+# Adding an Amazon RDS MySQL, Aurora MySQL or Remote Instance
 
 The *PMM Add Instance* is now a preferred method of adding an Amazon RDS
 database instance to PMM. This method supports Amazon RDS database instances
@@ -173,4 +173,25 @@ instances.
 
     * when adding a MongoDB instance, you will be able to choose using Query Analytics MongoDB profiler
 
+
 6. Finally press the *Add service* button to start monitoring your instance.
+
+## Adding an Amazon RDS PostgreSQL
+
+For PostgreSQL, use the same method described above.
+
+1. In the PMM web interface, go to *PMM > PMM Add Instance*.
+
+2. Select *AWS RDS MySQL or Aurora MySQL -- Add a remote instance*.
+    *At the moment of writing this guide, the Add button doesn't mention PostgreSQL but the discovery function alredy supports it.*
+
+    ![image](../../_images/PMM_rds_postgre_02_discover.png)
+
+4. Follow steps 4 to 6 as in the previous section. Fill the form and remember to select `PG Stat Statement` to enable Query Analytics.
+    Also remember that in order to be able to get queries for Query Analytics, you need to enable pg_stat_statements in your instance by running 
+```
+CREATE EXTENSION pg_stat_statements SCHEMA public;
+```
+
+    ![image](../../_images/PMM_rds_postgre_03_form_1.png)  
+    ![image](../../_images/PMM_rds_postgre_04_add_btn.png)
