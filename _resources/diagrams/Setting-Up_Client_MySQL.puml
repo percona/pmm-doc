@@ -14,25 +14,23 @@ Legend
 <#lightgrey>| Optional |
 endlegend
 
-partition "1. Choose and configure a source" {
+#lightgrey:1. Create PMM database account;
+partition "2. Choose and configure\n     a source" {
 	if (Choose a source) then (**//slow query log//**)
-		:1.1. **//slow query log//**;
-		:1.2. slow query log -- additional**;
-		#lightgrey:1.3. slow query log rotation**;
-		#lightgrey:1.3. **//query response time//**;
-		#lightgrey:1.4. **//tablestats//**;
+		:2.1. slow query log;
+		:2.2. slow query log - additional;
+		#lightgrey:2.3. slow query log rotation;
+		#lightgrey:2.3. query response time;
+		#lightgrey:2.4. tablestats;
 	else (**//Performance Schema//**)
-		:1.5. **//Performance Schema//**;
-		:1.6. **//Query Analytics//**;
+		:2.5. Performance Schema;
 	endif
-	#lightgrey:1.7. **//user statistics//**;
-	#lightgrey:1.8. PMM database account;
+	#lightgrey:2.7. **//user statistics//**;
 }
-partition "2. Add service" {
-	if () then (**2.1. User interface**)
+partition "3. Add service" {
+	if () then (**3.1. User interface**)
 		:PMM <&arrow-thick-right> PMM Add Instance <&arrow-thick-right>\nMySQL - Add a remote instance;
-		kill
-	else (**2.2. Command line**)
+	else (**3.2. Command line**)
 		if () then (**Slow query log**)
 			:<code>
 			pmm-admin add mysql
@@ -47,8 +45,7 @@ partition "2. Add service" {
 			...
 			</code>;
 		endif
-		kill
 	endif
 }
-#lightgrey:3. Check;
+#lightgrey:4. Check;
 @enduml

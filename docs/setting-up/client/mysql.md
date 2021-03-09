@@ -9,7 +9,20 @@ Here is an overview of the steps involved.
 ```plantuml source="_resources/diagrams/Setting-Up_Client_MySQL.puml"
 ```
 
-## 1. Choose and configure a source
+## 1. Create a database account for PMM
+
+(Recommended) *Connect PMM Client to the database instance with a non-superuser account.*
+
+**Example**
+
+Create a database user `pmm` with password `pass`.
+
+```sql
+CREATE USER 'pmm'@'localhost' IDENTIFIED BY 'pass' WITH MAX_USER_CONNECTIONS 10;
+GRANT SELECT, PROCESS, SUPER, REPLICATION CLIENT, RELOAD ON *.* TO 'pmm'@'localhost';
+```
+
+## 2. Choose and configure a source
 
 You must decide which source of metrics to use, and configure your database server for it. The choices are:
 
@@ -33,13 +46,13 @@ Here are the benefits and drawbacks of *Slow query log* and *Performance Schema*
 
 | Database server          | Versions       | Recommended source | Default?
 |-------------------------:|:--------------:| ------------------ | -----------
-| MySQL                    | 5.1-5.5        | Slow query log     | TODO
-| MySQL                    | 5.6+           | Performance Schema | From 5.6.6
+| MySQL                    | 5.1-5.5        | Slow query log     | No
+| MySQL                    | 5.6+           | Performance Schema | Yes, from 5.6.6
 | MariaDB                  | 10.0+          | Performance Schema | No
 | Percona Server for MySQL | 5.7, 8.0       | Performance Schema | Yes
 | Percona XtraDB Cluster   | 5.6, 5.7, 8.0  | Slow query log     | No
 
-### 1.1. Slow query log
+### 2.1. Slow query log
 
 **Applicable versions**
 
@@ -84,7 +97,7 @@ SET GLOBAL log_slow_admin_statements = 1;
 SET GLOBAL log_slow_slave_statements = 1;
 ```
 
-### 1.2. Slow query log -- extended
+### 2.2. Slow query log -- extended
 
 **Applicable versions**
 
@@ -131,7 +144,7 @@ SET GLOBAL log_slow_verbosity = 'full';
 SET GLOBAL slow_query_log_use_global_control = 'all';
 ```
 
-### 1.3. Slow query log rotation
+### 2.3. Slow query log rotation
 
 Slow query log files can grow quickly and must be managed.
 
@@ -147,7 +160,7 @@ Alternatively, you can manage log rotation yourself, for example, with [`logrota
 
 To disable PMM Client's log rotation, use the `--slow-log-rotation=false` option when adding a service with `pmm-admin add`.
 
-### 1.4. Query response time
+### 2.4. Query response time
 
 **Applicable versions**
 
@@ -194,7 +207,7 @@ You must also install the plugins.
 	SET GLOBAL query_response_time_stats = ON;
 	```
 
-## 1.5. Tablestats
+## 2.5. Tablestats
 
 Some table metrics are automatically disabled when the number of tables exceeds a default limit of 1000 tables. This prevents PMM Client from affecting the performance of your database server.
 
@@ -205,23 +218,17 @@ The limit can be changed [when adding a service on the command line ](#2-2-comma
 | `--disable-tablestats` {{pad.65}}| Disables tablestats collection when the default limit is reached.
 | `--disable-tablestats-limit=N`   | Sets the number of tables (`N`) for which tablestats collection is disabled. 0 means no limit. A negative number means tablestats is completely disabled (for any number of tables).
 
-### 1.6. Performance Schema
+### 2.6. Performance Schema
 
 **Applicable versions**
 
 | Server                   | Versions
-|--------------------------|-----------------------------------------
-| Percona Server for MySQL | TODO
+|-------------------------:|:----------------------------------------
+| Percona Server for MySQL | 5.6, 5.7, 8.0
 | Percona XtraDB Cluster   | 5.6, 5.7, 8.0
 | MariaDB                  | [10.3+][mariadb_perfschema_instr_table]
 
 PMM's [*MySQL Performance Schema Details* dashboard](../../details/dashboards/dashboard-mysql-performance-schema-details.md) charts the various [performance_schema][performance-schema-startup-configuration] metrics.
-
-To check if Performance Schema is active on your database server:
-
-```sql
-SHOW GLOBAL VARIABLES LIKE 'performance_schema';
-```
 
 To activate Performance Schema for PMM, set these variables.
 
@@ -238,14 +245,14 @@ To activate Performance Schema for PMM, set these variables.
 
 ```ini
 performance_schema=ON
-performance_schema_instrument='statement/%=ON'
-performance_schema_consumer_statements_digest=ON
+performance-schema-instrument='statement/%=ON'
+performance-schema-consumer-statements-digest=ON
 innodb_monitor_enable=all
 ```
 
 *Session*
 
-(`performance_schema` must be set at server start-up.)
+(`performance_schema` cannot be set in a session and must be set at server start-up.)
 
 ```sql
 UPDATE performance_schema.setup_consumers
@@ -253,25 +260,13 @@ SET ENABLED = 'YES' WHERE NAME LIKE '%statements%';
 SET GLOBAL innodb_monitor_enable = all;
 ```
 
-### 1.7. Query Analytics
+**MariaDB 10.5.7 or lower**
 
-**Applicable versions**
-
-| Server                   | Versions      |
-|--------------------------|---------------|
-| MariaDB                  | Before 10.5.6 |
-
-When monitoring MariaDB instances before version 10.5.7, there is no *Explain* or *Example* data shown by default in Query Analytics. The solution is to set these variables.
+There is no *Explain* or *Example* data shown by default in Query Analytics when monitoring MariaDB instances version 10.5.7 or lower. A workaround is to set this variable.
 
 | Variable                                                                | Value           | Description
 |-------------------------------------------------------------------------|-----------------|-----------------------------
-| [performance_schema.setup_instruments][mariadb_perfschema_instr_table] | `'statement/%'` | TODO
-
-**Configuration file**
-
-```ini
-TODO
-```
+| [performance_schema.setup_instruments][mariadb_perfschema_instr_table]  | `'statement/%'` | List of instrumented object classes.
 
 **Session**
 
@@ -280,6 +275,7 @@ UPDATE performance_schema.setup_instruments SET ENABLED = 'YES', TIMED = 'YES' W
 UPDATE performance_schema.setup_consumers SET ENABLED = 'YES' WHERE NAME LIKE '%statements%';
 ```
 
+<!--
 **PMM user interface**
 
 If the instance is already running, configure the Query Analytics agent to collect data from *Performance Schema*:
@@ -289,14 +285,15 @@ If the instance is already running, configure the Query Analytics agent to colle
 3. Open the *Settings* section.
 4. Select `Performance Schema` in the *Collect from* drop-down list.
 5. Click *Apply* to save changes.
+-->
 
-### 1.6. User statistics
+### 2.6. User statistics
 
 **Applicable versions**
 
 | Server                    | Versions
 |--------------------------:|:-------------
-| Percona Server for MySQL  | TODO
+| Percona Server for MySQL  | 5.6, 5.7, 8.0
 | Percona XtraDB Cluster    | 5.6, 5.7, 8.0
 | MariaDB                   | 5.2.0+
 
@@ -316,30 +313,11 @@ userstat=ON
 SET GLOBAL userstat = ON;
 ```
 
-### 1.7. Create a database account for PMM
-
-(Recommended) *Connect PMM Client to the database instance with a non-superuser account.*
-
-**Example**
-
-Create a database user `pmm` with password `pass`.
-
-```sql
-CREATE USER 'pmm'@'localhost' IDENTIFIED BY 'pass' WITH MAX_USER_CONNECTIONS 10;
-GRANT SELECT, PROCESS, SUPER, REPLICATION CLIENT, RELOAD ON *.* TO 'pmm'@'localhost';
-```
-
-Add an instance using this user.
-
-```sh
-pmm-admin add mysql --username pmm --password pass ...
-```
-
-## 2. Add service
+## 3. Add service
 
 You can add a MySQL service with the user interface or on the command line.
 
-### 2.1. User interface
+### 3.1. User interface
 
 1. Select *PMM --> PMM Add Instance*.
 
@@ -374,7 +352,7 @@ You can add a MySQL service with the user interface or on the command line.
 
 4. Click *Add service*.
 
-### 2.2. Command line
+### 3.2. Command line
 
 1. Configure PMM Client (connect to example PMM Server at address `192.168.1.123`).
 
@@ -432,7 +410,7 @@ Default query source (`slowlog`), environment labelled `test`, custom labels set
 pmm-admin add mysql --environment=test --custom-labels='source=slowlog'  --username=root --password=password --query-source=slowlog MySQLSlowLog localhost:3306
 ```
 
-## 3. Check
+## 4. Check
 
 **Check service - PMM user interface**
 

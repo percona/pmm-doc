@@ -136,9 +136,6 @@ PMM communicates with the PMM Server via a PMM agent process.
     `--az=availability-zone`
     : Node availability zone
 
-    `--force`
-    : Remove Node with that name with all dependent Services and Agents if one exist
-
     `--metrics-mode=mode`
     : Metrics flow mode for agents node-exporter. Allowed values:
         - `auto`: chosen by server (default)
@@ -177,8 +174,6 @@ PMM communicates with the PMM Server via a PMM agent process.
     `--custom-labels=labels`
     : Custom user-assigned labels.
 
-    `--force`
-    : Remove Node with that name with all dependent Services and Agents if one exists.
 
 #### `pmm-admin remove`
 
@@ -187,6 +182,9 @@ PMM communicates with the PMM Server via a PMM agent process.
 
     `--service-id=service-id`
     : Service ID.
+
+    `--force`
+    : Remove service with that name or ID and all dependent services and agents.
 
 #### `pmm-admin annotate`
 
