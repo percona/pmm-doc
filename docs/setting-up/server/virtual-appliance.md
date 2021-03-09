@@ -27,8 +27,8 @@ Most steps can be done with either a user interface or on the command line, but 
 			- Disk 1 (sda): VMDK (SCSI, 40 GB)
 			- Disk 2 (sdb): VMDK (SCSI, 400 GB)
 	- Username/default password:
-		- `root`/`percona`
-    	- `admin`/`admin`
+		- `root`/`percona` (SSH)
+    	- `admin`/`admin` (PMM server account )
 
 ## 1. Download
 
