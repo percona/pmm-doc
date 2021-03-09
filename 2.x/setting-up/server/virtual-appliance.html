@@ -52,7 +52,7 @@
 </head>
 
 <body>
-	<!-- 2021-03-09 07:35:49.721234+00:00 -->
+	<!-- 2021-03-09 07:41:36.645463+00:00 -->
     
 <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.3/css/line.css" type="text/css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" type="text/css">
@@ -213,7 +213,7 @@ pmm-server.vmx
 <li>If started, shut down the virtual machine.</li>
 <li>In the VMware main window, select the imported virtual machine.</li>
 <li>Click <em>Virtual Machine &rarr; Settings&hellip;</em></li>
-<li>Click <em>Network Adaptor</em>.</li>
+<li>Click <em>Network Adapter</em>.</li>
 <li>In the <em>Bridged Networking</em> section, select <em>Autodetect</em>.</li>
 <li>Close the settings window.</li>
 </ol>
@@ -271,7 +271,7 @@ pmm-server.vmx nogui
 <ol>
 <li>Click <em>Settings</em>.</li>
 <li>Click <em>Network</em>.</li>
-<li>In the <em>Adaptor 1</em> field, click <em>Attached to</em> and change to <em>Bridged Adaptor</em>.</li>
+<li>In the <em>Adapter 1</em> field, click <em>Attached to</em> and change to <em>Bridged Adapter</em>.</li>
 <li>In the <em>Name</em> field, select your host&rsquo;s active network interface (e.g. <code>en0: Wi-Fi (Wireless)</code>).</li>
 <li>Click <em>OK</em>.</li>
 </ol>
@@ -281,7 +281,7 @@ pmm-server.vmx nogui
     <div class="highlight"><pre><span></span><code>VBoxManage list bridgedifs
 </code></pre></div></li>
 <li>Find the name of the active interface you want to bridge to (one with <em>Status: Up</em> and a valid IP address). Example: <code>en0: Wi-Fi (Wireless)</code></li>
-<li>Bridge the virtual machine&rsquo;s first interface (<code>nic1</code>) to the host&rsquo;s <code>en0</code> ethernet adaptor.
+<li>Bridge the virtual machine&rsquo;s first interface (<code>nic1</code>) to the host&rsquo;s <code>en0</code> ethernet adapter.
     <div class="highlight"><pre><span></span><code>VBoxManage modifyvm <span class="s1">&#39;PMM Server&#39;</span><span class="se">\</span>
 --nic1 bridged --bridgeadapter1 <span class="s1">&#39;en0: Wi-Fi (Wireless)&#39;</span>
 </code></pre></div></li>
