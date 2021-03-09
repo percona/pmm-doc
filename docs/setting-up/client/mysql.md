@@ -9,7 +9,7 @@ Here is an overview of the steps involved.
 ```plantuml source="_resources/diagrams/Setting-Up_Client_MySQL.puml"
 ```
 
-## 1. Create a database account for PMM
+## Create a database account for PMM
 
 (Recommended) *Connect PMM Client to the database instance with a non-superuser account.*
 
@@ -22,7 +22,7 @@ CREATE USER 'pmm'@'localhost' IDENTIFIED BY 'pass' WITH MAX_USER_CONNECTIONS 10;
 GRANT SELECT, PROCESS, SUPER, REPLICATION CLIENT, RELOAD ON *.* TO 'pmm'@'localhost';
 ```
 
-## 2. Choose and configure a source
+## Choose and configure a source
 
 You must decide which source of metrics to use, and configure your database server for it. The choices are:
 
@@ -52,7 +52,7 @@ Here are the benefits and drawbacks of *Slow query log* and *Performance Schema*
 | Percona Server for MySQL | 5.7, 8.0       | Performance Schema | Yes
 | Percona XtraDB Cluster   | 5.6, 5.7, 8.0  | Slow query log     | No
 
-### 2.1. Slow query log
+### Slow query log
 
 **Applicable versions**
 
@@ -97,7 +97,7 @@ SET GLOBAL log_slow_admin_statements = 1;
 SET GLOBAL log_slow_slave_statements = 1;
 ```
 
-### 2.2. Slow query log -- extended
+#### Slow query log -- extended
 
 **Applicable versions**
 
@@ -144,7 +144,7 @@ SET GLOBAL log_slow_verbosity = 'full';
 SET GLOBAL slow_query_log_use_global_control = 'all';
 ```
 
-### 2.3. Slow query log rotation
+#### Slow query log rotation
 
 Slow query log files can grow quickly and must be managed.
 
@@ -160,65 +160,9 @@ Alternatively, you can manage log rotation yourself, for example, with [`logrota
 
 To disable PMM Client's log rotation, use the `--slow-log-rotation=false` option when adding a service with `pmm-admin add`.
 
-### 2.4. Query response time
 
-**Applicable versions**
 
-| Server                   | Versions
-|--------------------------|------------
-| Percona Server for MySQL | 5.7 (**not** [Percona Server for MySQL 8.0][PS_FEATURES_REMOVED].)
-| MariaDB                  | 10.0.4
-
-Settings needed for query response time distributions.
-
-| Variable                                                            | Value | Description
-|---------------------------------------------------------------------|:-----:|-----------------------------------------------------------------------------------
-| [query_response_time_stats][ps_query_response_time_stats] {{pad.35}} | ON    | Report *query response time distributions*. (Requires plugin installation. See below.)
-
-*Configuration file*
-
-```ini
-query_response_time_stats=ON
-```
-
-You must also install the plugins.
-
-*Session*
-
-1. Check that `/usr/lib/mysql/plugin/query_response_time.so` exists.
-
-2. Install the plugins and activate.
-
-	For [MariaDB 10.3][mariadb_query_response_time]:
-
-	```sql
-	INSTALL PLUGIN QUERY_RESPONSE_TIME_AUDIT SONAME 'query_response_time.so';
-	INSTALL PLUGIN QUERY_RESPONSE_TIME SONAME 'query_response_time.so';
-	SET GLOBAL query_response_time_stats = ON;
-	```
-
-	For [Percona Server for MySQL 5.7][ps_query_response_time_stats]:
-
-	```sql
-	INSTALL PLUGIN QUERY_RESPONSE_TIME_AUDIT SONAME 'query_response_time.so';
-	INSTALL PLUGIN QUERY_RESPONSE_TIME SONAME 'query_response_time.so';
-	INSTALL PLUGIN QUERY_RESPONSE_TIME_READ SONAME 'query_response_time.so';
-	INSTALL PLUGIN QUERY_RESPONSE_TIME_WRITE SONAME 'query_response_time.so';
-	SET GLOBAL query_response_time_stats = ON;
-	```
-
-## 2.5. Tablestats
-
-Some table metrics are automatically disabled when the number of tables exceeds a default limit of 1000 tables. This prevents PMM Client from affecting the performance of your database server.
-
-The limit can be changed [when adding a service on the command line ](#2-2-command-line) with the two `pmm-admin` options:
-
-| `pmm-admin` option               | Description
-|----------------------------------|--------------------------------------------------------------------------
-| `--disable-tablestats` {{pad.65}}| Disables tablestats collection when the default limit is reached.
-| `--disable-tablestats-limit=N`   | Sets the number of tables (`N`) for which tablestats collection is disabled. 0 means no limit. A negative number means tablestats is completely disabled (for any number of tables).
-
-### 2.6. Performance Schema
+### Performance Schema
 
 **Applicable versions**
 
@@ -287,7 +231,68 @@ If the instance is already running, configure the Query Analytics agent to colle
 5. Click *Apply* to save changes.
 -->
 
-### 2.6. User statistics
+
+## Query response time
+
+**Applicable versions**
+
+| Server                   | Versions
+|--------------------------|------------
+| Percona Server for MySQL | 5.7 (**not** [Percona Server for MySQL 8.0][PS_FEATURES_REMOVED].)
+| MariaDB                  | 10.0.4
+
+Settings needed for query response time distributions.
+
+| Variable                                                            | Value | Description
+|---------------------------------------------------------------------|:-----:|-----------------------------------------------------------------------------------
+| [query_response_time_stats][ps_query_response_time_stats] {{pad.35}} | ON    | Report *query response time distributions*. (Requires plugin installation. See below.)
+
+*Configuration file*
+
+```ini
+query_response_time_stats=ON
+```
+
+You must also install the plugins.
+
+*Session*
+
+1. Check that `/usr/lib/mysql/plugin/query_response_time.so` exists.
+
+2. Install the plugins and activate.
+
+	For [MariaDB 10.3][mariadb_query_response_time]:
+
+	```sql
+	INSTALL PLUGIN QUERY_RESPONSE_TIME_AUDIT SONAME 'query_response_time.so';
+	INSTALL PLUGIN QUERY_RESPONSE_TIME SONAME 'query_response_time.so';
+	SET GLOBAL query_response_time_stats = ON;
+	```
+
+	For [Percona Server for MySQL 5.7][ps_query_response_time_stats]:
+
+	```sql
+	INSTALL PLUGIN QUERY_RESPONSE_TIME_AUDIT SONAME 'query_response_time.so';
+	INSTALL PLUGIN QUERY_RESPONSE_TIME SONAME 'query_response_time.so';
+	INSTALL PLUGIN QUERY_RESPONSE_TIME_READ SONAME 'query_response_time.so';
+	INSTALL PLUGIN QUERY_RESPONSE_TIME_WRITE SONAME 'query_response_time.so';
+	SET GLOBAL query_response_time_stats = ON;
+	```
+
+
+## Tablestats
+
+Some table metrics are automatically disabled when the number of tables exceeds a default limit of 1000 tables. This prevents PMM Client from affecting the performance of your database server.
+
+The limit can be changed [when adding a service on the command line ](#2-2-command-line) with the two `pmm-admin` options:
+
+| `pmm-admin` option               | Description
+|----------------------------------|--------------------------------------------------------------------------
+| `--disable-tablestats` {{pad.65}}| Disables tablestats collection when the default limit is reached.
+| `--disable-tablestats-limit=N`   | Sets the number of tables (`N`) for which tablestats collection is disabled. 0 means no limit. A negative number means tablestats is completely disabled (for any number of tables).
+
+
+## User statistics
 
 **Applicable versions**
 
@@ -313,11 +318,11 @@ userstat=ON
 SET GLOBAL userstat = ON;
 ```
 
-## 3. Add service
+## Add a service
 
 You can add a MySQL service with the user interface or on the command line.
 
-### 3.1. User interface
+### With the user interface
 
 1. Select *PMM --> PMM Add Instance*.
 
@@ -352,7 +357,7 @@ You can add a MySQL service with the user interface or on the command line.
 
 4. Click *Add service*.
 
-### 3.2. Command line
+### On the command line
 
 1. Configure PMM Client (connect to example PMM Server at address `192.168.1.123`).
 
@@ -410,7 +415,7 @@ Default query source (`slowlog`), environment labelled `test`, custom labels set
 pmm-admin add mysql --environment=test --custom-labels='source=slowlog'  --username=root --password=password --query-source=slowlog MySQLSlowLog localhost:3306
 ```
 
-## 4. Check
+## Check the service
 
 **Check service - PMM user interface**
 
