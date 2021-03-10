@@ -188,7 +188,7 @@ For PostgreSQL, use the same method described above.
     ![image](../../_images/PMM_rds_postgre_02_discover.png)
 
 4. Follow steps 4 to 6 as in the previous section. Fill the form and remember to select `PG Stat Statement` to enable Query Analytics.
-    Also remember that in order to be able to get queries for Query Analytics, you need to enable pg_stat_statements in your instance by running:
+    To get queries for Query Analytics, you need to enable `pg_stat_statements` in your instance by running:
     
     ```
     CREATE EXTENSION pg_stat_statements SCHEMA public;
