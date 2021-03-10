@@ -59,12 +59,11 @@ To get PMM running, you must:
 		- [ProxySQL](setting-up/client/proxysql.md)
 		- [Linux](setting-up/client/linux.md)
 		- [External services](setting-up/client/external.md)
+		- [HAProxy](setting-up/client/haproxy.md)
 
 	The PMM Client package provides exporters for different database and system types, and administration tools and agents.
 
-## PMM documentation site map
+## Documentation site map
 
-<object type="image/svg+xml" data="_images/PMM_Documentation_Map.svg">
-	<param name="src" value="_images/PMM_Documentation_Map.svg">
-	<img src="_images/PMM_Documentation_Map.png" alt="Documentation map">
-</object>
+```plantuml format="svg_object" width="90%" height="90%" source="_resources/diagrams/Map.puml"
+```

@@ -56,9 +56,9 @@ plugins:
         glob:
           - setting-up/server/dbaas-gke.md # Included file
   - with-pdf: # https://github.com/orzih/mkdocs-with-pdf
-        output_path: '_pdf/PerconaMonitoringAndManagement-2.14.0.pdf'
+        output_path: '_pdf/PerconaMonitoringAndManagement-2.15.0.pdf'
         cover_title: 'Documentation'
-        cover_subtitle: 2.14.0 (January 28, 2021)
+        cover_subtitle: 2.15.0 (March 01, 2021)
         author: 'Percona Technical Documentation Team'
         cover_logo: docs/_images/PMM_Logo.svg
         debug_html: false
@@ -71,7 +71,7 @@ extra: # Used in main.html template and can't be externalised
     open_issue_subject: 'PMM2: doc issue on page '
     open_issue_body: 'Please describe the issue here'
     open_issue_tooltip: 'Report an issue with this page on GitHub'
-    edit_page_text: '<i class="uil uil-pen"></i> Edit this page'
+    edit_page_text: '<i class="uil uil-pen"></i> <b>Edit this page</b>'
     updated_text: '<i class="uil uil-refresh"></i> Page updated'
     version:
        method: mike
@@ -94,8 +94,10 @@ nav:
           - setting-up/client/postgresql.md
           - setting-up/client/proxysql.md
           - setting-up/client/aws.md
+          - setting-up/client/azure.md
           - setting-up/client/linux.md
           - setting-up/client/external.md
+          - setting-up/client/haproxy.md
   - Using:
       - using/index.md
       - using/interface.md
@@ -178,6 +180,7 @@ nav:
               - details/dashboards/dashboard-pxc-galera-node-summary.md
               - details/dashboards/dashboard-pxc-galera-cluster-summary.md
               - details/dashboards/dashboard-pxc-galera-nodes-compare.md
+              - details/dashboards/dashboard-haproxy-instance-summary.md
       - Commands:
           - details/commands/pmm-admin.md
           - details/commands/pmm-agent.md
@@ -186,6 +189,7 @@ nav:
       - details/glossary.md
   - faq.md
   - Release Notes:
+      - release-notes/2.15.0.md
       - release-notes/2.14.0.md
       - release-notes/2.13.0.md
       - release-notes/2.12.0.md

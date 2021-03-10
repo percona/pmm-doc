@@ -1,29 +1,15 @@
 ' Map of documentation using PlantUML
-'
+' References:
 ' Syntax: https://plantuml.com/mindmap-diagram
 ' Icons: https://plantuml.com/openiconic
 ' Colour: https://plantuml.com/color
 ' Text: https://plantuml.com/creole
-'
-' To export as image with clickable links:
-'
-' A) Using Visual Studio Code:
-' 1. install PlantUML extension (https://marketplace.visualstudio.com/items?itemName=jebbs.plantuml)
-' 2. Right click and choose 'Export current diagram'
-' 3. Select 'svg' type
-' 3. Copy out/resources/Map/PMM_Documentation_Map.svg to docs/_images
-'
-' B) Command line:
-' 1. Download PlantUML jar file: https://sourceforge.net/projects/plantuml/files/plantuml.jar/download
-' 2. cat _resources/diagrams/Map.puml | java -jar ~/Downloads/plantuml.jar -tsvg -pipe > docs/_images/PMM_Documentation_Map.svg
-'
-
 @startwbs "PMM_Documentation_Map"
-
 ' Absolute links - can be useful for exporting map as stand-alone image
-'!$base = "https://www.percona.com/doc/percona-monitoring-and-management/2.x"
-' relative links make testing easier
-!$base = ".."
+' relative links make testing easier but must be changed for local vs hosting' Hosted
+!$base = "https://www.percona.com/doc/percona-monitoring-and-management/2.x"
+'!$base = "../2.x"
+' !$base = ".."
 
 <style>
 wbsDiagram {
@@ -51,8 +37,10 @@ wbsDiagram {
 			+_ [[$base/setting-up/client/postgresql.html PostgreSQL]]
 			+_ [[$base/setting-up/client/proxysql.html ProxySQL]]
 			+_ [[$base/setting-up/client/aws.html Amazon RDS]]
+			+_ [[$base/setting-up/client/azure.html Microsoft Azure]]
 			+_ [[$base/setting-up/client/linux.html Linux]]
 			+_ [[$base/setting-up/client/external.html External\nServices]]
+			+_ [[$base/setting-up/client/haproxy.html HAProxy]]
 
 	+ <&wrench> [[$base/using/ Using]]
 		+_ [[$base/using/interface.html User\ninterface]]
