@@ -11,11 +11,7 @@ Here is an overview of the steps involved.
 
 ## Create a database account for PMM
 
-(Recommended) *Connect PMM Client to the database instance with a non-superuser account.*
-
-**Example**
-
-Create a database user `pmm` with password `pass`.
+It is good practice to use a non-superuser account to connect PMM Client to the monitored database instance. This example creates a database user with name `pmm`, password `pass`, and the necessary permissions.
 
 ```sql
 CREATE USER 'pmm'@'localhost' IDENTIFIED BY 'pass' WITH MAX_USER_CONNECTIONS 10;
@@ -24,14 +20,9 @@ GRANT SELECT, PROCESS, SUPER, REPLICATION CLIENT, RELOAD ON *.* TO 'pmm'@'localh
 
 ## Choose and configure a source
 
-You must decide which source of metrics to use, and configure your database server for it. The choices are:
+Decide which source of metrics to use, and configure your database server for it. The choices are [Slow query log](#slow-query-log) and [Performance Schema](#performance-schema).
 
-- [Slow query log](#slow-query-log)
-- [Performance Schema](#performance-schema)
-
-You can use both but we recommend using just one--there is some overlap in the data reported, and each incurs a small performance penalty. The choice depends on the version and variant of your MySQL instance, and how much detail you want to see.
-
-The choice is made when adding a service. On the command line this is done with the `--query-source` option. With the PMM user interface, you select *Use performance schema*, or deselect it to use *slow query log*.
+While you can use both at the same time we recommend using only one--there is some overlap in the data reported, and each incurs a small performance penalty. The choice depends on the version and variant of your MySQL instance, and how much detail you want to see.
 
 Here are the benefits and drawbacks of *Slow query log* and *Performance Schema* metrics sources.
 
@@ -53,6 +44,8 @@ Here are the benefits and drawbacks of *Slow query log* and *Performance Schema*
 | Percona XtraDB Cluster   | 5.6, 5.7, 8.0  | Slow query log     | No
 
 ### Slow query log
+
+This section covers how to configure a MySQL-based database server to use the *slow query log* as a source of metrics.
 
 **Applicable versions**
 
@@ -99,12 +92,15 @@ SET GLOBAL log_slow_slave_statements = 1;
 
 #### Slow query log -- extended
 
+Some MySQL-based database servers support extended slow query log variables.
+
 **Applicable versions**
 
 | Server                   | Versions         |
 |-------------------------:|:----------------:|
 | Percona Server for MySQL | 5.7.10+, 8.0.12+ |
 | Percona XtraDB Cluster   | 5.6, 5.7, 8.0    |
+| MariaDB                  | 10.0             |
 
 **Settings**
 
@@ -148,21 +144,19 @@ SET GLOBAL slow_query_log_use_global_control = 'all';
 
 Slow query log files can grow quickly and must be managed.
 
-When adding a service use the  `pmm-admin` option `--size-slow-logs` to set at what size (in bytes) the slow query log file is closed, renamed, and a new one started. When the limit is reached, PMM Client will:
+When adding a service with the command line use the  `pmm-admin` option `--size-slow-logs` to set at what size (in bytes) the slow query log file is rotated. When the limit is reached, PMM Client will:
 
 - remove the previous `.old` slow log file,
 - rename the current file by adding the suffix `.old`,
 - execute the MySQL command `FLUSH LOGS`.
 
-Only one `.old` file is kept. Older files are deleted.
+Only one `.old` file is kept. Older ones are deleted.
 
-Alternatively, you can manage log rotation yourself, for example, with [`logrotate`][LOGROTATE].
-
-To disable PMM Client's log rotation, use the `--slow-log-rotation=false` option when adding a service with `pmm-admin add`.
-
-
+You can manage log rotation yourself, for example, with [`logrotate`][LOGROTATE]. If you do, you can disable PMM Client's log rotation with the `--slow-log-rotation=false` option when adding a service with `pmm-admin add`.
 
 ### Performance Schema
+
+This section covers how to configure a MySQL-based database server to use *Performance Schema* as a source of metrics.
 
 **Applicable versions**
 
@@ -174,7 +168,7 @@ To disable PMM Client's log rotation, use the `--slow-log-rotation=false` option
 
 PMM's [*MySQL Performance Schema Details* dashboard](../../details/dashboards/dashboard-mysql-performance-schema-details.md) charts the various [performance_schema][performance-schema-startup-configuration] metrics.
 
-To activate Performance Schema for PMM, set these variables.
+To use *Performance Schema*, set these variables.
 
 | Variable                                                                                 | Value              | Description
 |------------------------------------------------------------------------------------------|:------------------:|---------------------------------------------------------------------------------
@@ -221,6 +215,8 @@ UPDATE performance_schema.setup_consumers SET ENABLED = 'YES' WHERE NAME LIKE '%
 
 ## Query response time
 
+*Query time distribution* is a chart in the [*Details* tab of Query Analytics](../../using/query-analytics.md#details-tab) showing the proportion of query time spent on various activities. It is enabled with the `query_response_time_stats` variable and associated plugins.
+
 **Applicable versions**
 
 | Server                   | Versions
@@ -228,7 +224,7 @@ UPDATE performance_schema.setup_consumers SET ENABLED = 'YES' WHERE NAME LIKE '%
 | Percona Server for MySQL | 5.7 (**not** [Percona Server for MySQL 8.0][PS_FEATURES_REMOVED].)
 | MariaDB                  | 10.0.4
 
-Settings needed for query response time distributions.
+Set this variable to see query time distribution charts.
 
 | Variable                                                            | Value | Description
 |---------------------------------------------------------------------|:-----:|-----------------------------------------------------------------------------------
@@ -266,7 +262,6 @@ You must also install the plugins.
 	SET GLOBAL query_response_time_stats = ON;
 	```
 
-
 ## Tablestats
 
 Some table metrics are automatically disabled when the number of tables exceeds a default limit of 1000 tables. This prevents PMM Client from affecting the performance of your database server.
@@ -278,18 +273,17 @@ The limit can be changed [when adding a service on the command line ](#2-2-comma
 | `--disable-tablestats` {{pad.65}}| Disables tablestats collection when the default limit is reached.
 | `--disable-tablestats-limit=N`   | Sets the number of tables (`N`) for which tablestats collection is disabled. 0 means no limit. A negative number means tablestats is completely disabled (for any number of tables).
 
-
 ## User statistics
 
 **Applicable versions**
+
+User activity, individual table and index access details are shown on the [MySQL User Details][DASH_MYSQLUSERDETAILS] dashboard when the `userstat` variable is set.
 
 | Server                    | Versions
 |--------------------------:|:-------------
 | Percona Server for MySQL  | 5.6, 5.7, 8.0
 | Percona XtraDB Cluster    | 5.6, 5.7, 8.0
 | MariaDB                   | 5.2.0+
-
-Enable user statistics to see user activity, individual table and index access details on the [MySQL User Details][DASH_MYSQLUSERDETAILS] dashboard.
 
 **Examples**
 
@@ -307,7 +301,11 @@ SET GLOBAL userstat = ON;
 
 ## Add a service
 
-You can add a MySQL service with the user interface or on the command line.
+When you have configured your database server, you can add a MySQL service with the user interface or on the command line.
+
+When adding a service with the command line, you must use the `pmm-admin --query-source=SOURCE` option to match the source you've chosen and configured the database server for.
+
+With the PMM user interface, you select *Use performance schema*, or deselect it to use *slow query log*.
 
 ### With the user interface
 
@@ -444,38 +442,26 @@ Open the [*PXC/Galera Cluster Summary* dashboard][DASH_PXCGALERACLUSTER].
 	- [Percona Blog -- Impact of logging on MySQL's performance][BLOG_LOGGING]
 
 
-
-
 [DASH_MYSQLUSERDETAILS]: ../../details/dashboards/dashboard-mysql-user-details.md
 [DASH_PXCGALERACLUSTER]: ../../details/dashboards/dashboard-pxc-galera-cluster-summary.md
-
+[LOGROTATE]: https://linux.die.net/man/8/logrotate
 <!-- Blog -->
 [BLOG_INNODB_METRICS]: https://www.percona.com/blog/2014/11/18/mysqls-innodb_metrics-table-how-much-is-the-overhead/
 [BLOG_LOGGING]: https://www.percona.com/blog/2009/02/10/impact-of-logging-on-mysql%E2%80%99s-performance/
 [BLOG_LOG_ROTATION]: https://www.percona.com/blog/2013/04/18/rotating-mysql-slow-logs-safely/
 [BLOG_PS_VS_SLOW]: https://www.percona.com/blog/2014/02/11/performance_schema-vs-slow-query-log/
-
 <!-- Percona Server for MySQL -->
 [PS_FEATURES_REMOVED]: https://www.percona.com/doc/percona-server/LATEST/changed_in_version.html
 [ps_slow_query_ext]: https://www.percona.com/doc/percona-server/LATEST/diagnostics/slow_extended.html
 [ps_query_response_time_stats]: https://www.percona.com/doc/percona-server/5.7/diagnostics/response_time_distribution.html#usage
 [ps_userstats]: https://www.percona.com/doc/percona-server/LATEST/diagnostics/user_stats.html
-
-
 <!-- MariaDB -->
-<!-- Slow Query Log -->
-
-
 [mariadb_slow_query_log]: https://mariadb.com/kb/en/slow-query-log-overview/
 [mariadb_slow_query_ext]: https://mariadb.com/kb/en/slow-query-log-extended-statistics/
-<!-- Performance Schema -->
 [mariadb_query_response_time]: https://mariadb.com/kb/en/query-response-time-plugin/
 [mariadb_perfschema_instr_table]: https://mariadb.com/kb/en/performance-schema-setup_instruments-table/
-<!-- Userstats -->
 [mariadb_userstats]: https://mariadb.com/kb/en/user-statistics/
-
 <!-- MySQL -->
-<!-- slow query log -->
 [log_slow_rate_limit]: https://www.percona.com/doc/percona-server/LATEST/diagnostics/slow_extended.html#log_slow_rate_limit
 [log_slow_rate_type]: https://www.percona.com/doc/percona-server/LATEST/diagnostics/slow_extended.html#log_slow_rate_type
 [log_slow_verbosity]: https://www.percona.com/doc/percona-server/LATEST/diagnostics/slow_extended.html#log_slow_verbosity
@@ -487,13 +473,8 @@ Open the [*PXC/Galera Cluster Summary* dashboard][DASH_PXCGALERACLUSTER].
 [sysvar_log_slow_slave_statements]: https://dev.mysql.com/doc/refman/8.0/en/replication-options-replica.html#sysvar_log_slow_slave_statements
 [sysvar_long_query_time]: https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar_long_query_time
 [sysvar_slow_query_log]: https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar_slow_query_log
-
-
-<!-- Performance Schema -->
 [sysvar_performance_schema]: https://dev.mysql.com/doc/refman/5.7/en/performance-schema-system-variables.html#sysvar_performance_schema
 [performance-schema-statement-tables]: https://dev.mysql.com/doc/refman/5.7/en/performance-schema-statement-tables.html
 [performance-schema-startup-configuration]: https://dev.mysql.com/doc/refman/5.7/en/performance-schema-startup-configuration.html
 [perfschema-instrument]: https://dev.mysql.com/doc/refman/5.7/en/performance-schema-options.html#option_mysqld_performance-schema-instrument
 [perfschema-consumer-statements-digest]: https://dev.mysql.com/doc/refman/5.7/en/performance-schema-options.html#option_mysqld_performance-schema-consumer-statements-digest
-
-[LOGROTATE]: https://linux.die.net/man/8/logrotate
