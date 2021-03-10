@@ -4,7 +4,6 @@
 ' Colour: https://plantuml.com/color
 ' Text: https://plantuml.com/creole
 @startuml "setting-up_client_mysql"
-'scale 2/3
 skinparam ArrowHeadColor none
 skinparam roundCorner 15
 skinparam legendBackgroundColor #0000
