@@ -1,0 +1,80 @@
+site_name: Percona Monitoring and Management
+site_description: Documentation
+site_author: Percona LLC
+copyright: Percona LLC, &#169; 2021
+
+repo_name: percona/pmm-doc
+repo_url: https://github.com/percona/pmm-doc
+edit_uri: edit/main/docs/
+
+use_directory_urls: false
+
+# Custom theme for uploading to percona.com website
+# Override on command line with 'mkdocs build -t <theme>'
+# See https://github.com/mkdocs/mkdocs/wiki/MkDocs-Themes
+theme:
+    name: material
+    custom_dir: _resources/theme
+
+extra_css:
+  - https://unicons.iconscout.com/release/v3.0.3/css/line.css
+  - https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css
+  - css/version-select.css
+  - css/toctree.css
+
+extra_javascript:
+  - js/version-select.js
+  - js/toctree.js
+
+markdown_extensions:
+  - toc:
+        baselevel: 1
+#        toc_depth: "2-3"
+        anchorlink: true
+  - admonition
+  - def_list
+  - meta
+  - smarty:
+        smart_angled_quotes: true
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.tabbed
+  - pymdownx.tilde
+  - pymdownx.superfences
+  - pymdownx.highlight:
+        linenums: false
+  - plantuml_markdown
+
+plugins:
+  - search
+  - git-revision-date
+  - bootstrap-tables
+  - macros:
+        include_yaml:
+          - 'variables.yml' # Use in markdown as '{{ VAR }}'
+  - exclude: # Don't process these files
+        glob:
+          - setting-up/server/dbaas-gke.md # Included file
+  - with-pdf: # https://github.com/orzih/mkdocs-with-pdf
+        output_path: '_pdf/PerconaMonitoringAndManagement-REVIEW.pdf'
+        cover_title: 'Documentation'
+        cover_subtitle: Extract for Review
+        author: 'Percona Technical Documentation Team'
+        cover_logo: docs/_images/PMM_Logo.svg
+#        debug_html: false
+        custom_template_path: _resources/templates
+#        enabled_if_env: ENABLE_PDF_EXPORT
+
+extra: # Used in main.html template and can't be externalised
+    open_issue_text: '<i class="uil uil-exclamation-triangle"></i> Report a problem
+        with this page'
+    open_issue_subject: 'PMM2: doc issue on page '
+    open_issue_body: 'Please describe the issue here'
+    open_issue_tooltip: 'Report an issue with this page on GitHub'
+    edit_page_text: '<i class="uil uil-pen"></i> Edit this page'
+    updated_text: '<i class="uil uil-refresh"></i> Page updated'
+    version:
+       method: mike
+
+nav:
+  - setting-up/client/mysql.md
