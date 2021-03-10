@@ -128,9 +128,9 @@ If you have Amazon RDS with a MySQL version prior to 5.5, `REPLICATION CLIENT` p
 
 ## Adding an Amazon RDS MySQL, Aurora MySQL or Remote Instance
 
-The *PMM Add Instance* is now the preferred method of adding an Amazon RDS
-database instance to PMM. This method supports Amazon RDS database instances
-that use Amazon Aurora, MySQL, or MariaDB engines, as well as any remote PostgreSQL, ProxySQL, MySQL and MongoDB instances.
+The preferred method of adding an Amazon RDS database instance to PMM is via the *PMM --> PMM Add Instance* menu option. 
+
+This method supports Amazon RDS database instances that use Amazon Aurora, MySQL, or MariaDB engines, as well as any remote PostgreSQL, ProxySQL, MySQL and MongoDB instances.
 
 The following steps are needed to add an Amazon RDS database instance to PMM:
 
