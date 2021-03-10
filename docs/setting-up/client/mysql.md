@@ -1,4 +1,4 @@
-# MySQL and derivatives
+# MySQL and variants
 
 PMM Client collects metrics from MySQL, Percona Server for MySQL, Percona XtraDB Cluster, and MariaDB. (Amazon RDS is also supported and explained in a [separate section](aws.md).)
 
