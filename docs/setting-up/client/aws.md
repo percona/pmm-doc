@@ -176,7 +176,7 @@ instances.
 
 6. Finally press the *Add service* button to start monitoring your instance.
 
-## Adding an Amazon RDS PostgreSQL
+## Adding an Amazon RDS PostgreSQL instance
 
 For PostgreSQL, use the same method described above.
 
