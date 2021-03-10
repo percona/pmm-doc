@@ -126,7 +126,7 @@ If you have Amazon RDS with a MySQL version prior to 5.5, `REPLICATION CLIENT` p
     `node_exporter`, used in versions of PMM prior to 1.8.0, was not able to monitor general system metrics remotely.
 
 
-# Adding an Amazon RDS MySQL, Aurora MySQL or Remote Instance
+## Adding an Amazon RDS MySQL, Aurora MySQL or Remote Instance
 
 The *PMM Add Instance* is now the preferred method of adding an Amazon RDS
 database instance to PMM. This method supports Amazon RDS database instances
