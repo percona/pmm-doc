@@ -219,19 +219,6 @@ UPDATE performance_schema.setup_instruments SET ENABLED = 'YES', TIMED = 'YES' W
 UPDATE performance_schema.setup_consumers SET ENABLED = 'YES' WHERE NAME LIKE '%statements%';
 ```
 
-<!--
-**PMM user interface**
-
-If the instance is already running, configure the Query Analytics agent to collect data from *Performance Schema*:
-
-1. Open the *PMM Query Analytics* dashboard.
-2. Click the *Settings* button.
-3. Open the *Settings* section.
-4. Select `Performance Schema` in the *Collect from* drop-down list.
-5. Click *Apply* to save changes.
--->
-
-
 ## Query response time
 
 **Applicable versions**
