@@ -1,16 +1,15 @@
 # Setting up
 
 - [PMM Server](server/index.md) as a:
-
 	- [Docker](server/docker.md) container
 	- [Virtual appliance](server/virtual-appliance.md) based on our OVA/OVF image
 	- [Amazon AWS EC2](server/aws.md) instance via the Amazon AWS Marketplace
 
-- [PMM Client](client/index.md)
-- [PMM Client as a Docker container](client/docker.md)
+- [PMM Client](client/index.md):
+	- [on Linux](client/index.md#installing-pmm-client-with-your-linux-package-manager)
+	- [as a Docker container](client/docker.md)
 
-- Adding PMM Clients:
-
+- Monitoring for:
 	- [MySQL](client/mysql.md)
 	- [Percona Server for MySQL](client/percona-server.md)
 	- [MongoDB](client/mongodb.md)
