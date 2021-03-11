@@ -1,4 +1,4 @@
-# How to: Overview
+# How to
 
 - [Configure](configure.md) via the PMM Settings page
 - [Upgrade](upgrade.md) PMM Server via the user interface
