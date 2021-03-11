@@ -1,0 +1,41 @@
+' Diagram showing sequence of tasks to set up PMM
+' Syntax: https://plantuml.com/activity-diagram-beta
+' Icons: https://plantuml.com/openiconic
+' Colour: https://plantuml.com/color
+' Text: https://plantuml.com/creole
+
+@startuml "setting-up"
+!include _resources/diagrams/plantuml_styles.puml
+
+' Absolute links - can be useful for exporting map as stand-alone image
+' relative links make testing easier but must be changed for local vs hosting' Hosted
+
+title Setting up PMM\nOverview\n
+
+start
+partition "1. Set up PMM Server" {
+	split
+		:Docker;
+	split again
+		:Virtual Appliance;
+	split again
+		:Amazon AWS;
+	end split
+	:Verify PMM Server;
+}
+partition "2. Set up PMM Client" {
+	note
+Repeat for each
+monitored node or
+service
+	end note
+	split
+		:Linux;
+	split again
+		:Docker;
+	end split
+	:Configure service;
+	:Add service;
+}
+stop
+@enduml
