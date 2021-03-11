@@ -1,4 +1,4 @@
-# Setting up: Overview
+# Setting up
 
 [PMM Server](server/index.md) as a:
 
@@ -8,7 +8,9 @@
 
 ---
 
-[PMM Client as a Docker container](client/docker.md)
+PMM Client as a:
+
+- [Docker container](client/docker.md)
 
 ---
 
