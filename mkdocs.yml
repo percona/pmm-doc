@@ -21,6 +21,7 @@ extra_css:
   - https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css
   - css/version-select.css
   - css/toctree.css
+  - css/percona.css
 
 extra_javascript:
   - js/version-select.js
@@ -49,6 +50,8 @@ plugins:
   - search
   - git-revision-date
   - bootstrap-tables
+  - section-index
+  - htmlproofer
   - macros:
         include_yaml:
           - 'variables.yml' # Use in markdown as '{{ VAR }}'
@@ -189,6 +192,7 @@ nav:
       - details/glossary.md
   - faq.md
   - Release Notes:
+      - release-notes/index.md
       - release-notes/2.15.0.md
       - release-notes/2.14.0.md
       - release-notes/2.13.0.md

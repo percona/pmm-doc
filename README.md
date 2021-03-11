@@ -45,6 +45,8 @@ Before you start, you'll need to know:
 	- [Use Docker](#use-docker)
 	- [Install MkDocs and dependencies](#install-mkdocs-and-dependencies)
 
+> The `mkdocs-htmlproofer-plugin` link checking plugin increases build time significantly (~10-50x). You can temporarily disable it by commenting out the line with `htmlproofer` in `plugins` section of `mkdocs.yml`.
+
 ### Use Docker
 
 1. [Get Docker](https://docs.docker.com/get-docker/)
@@ -92,7 +94,7 @@ To generate a PDF version of the documentation:
 
 with Docker:
 
-	docker run --rm -v $(pwd):/docs perconalab/pmm-doc-md -e ENABLE_PDF_EXPORT=1 mkdocs build -t material
+	docker run --rm -v $(pwd):/docs -e ENABLE_PDF_EXPORT=1 perconalab/pmm-doc-md mkdocs build -t material
 
 without:
 
