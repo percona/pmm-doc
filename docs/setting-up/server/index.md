@@ -1,6 +1,6 @@
 # Setting up PMM Server
 
-You can run PMM Server in any of these ways:
+Choose how you want to run PMM Server:
 
 - as a [Docker container](docker.md);
 - as a [virtual appliance](virtual-appliance.md);
