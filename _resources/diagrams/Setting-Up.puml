@@ -5,23 +5,25 @@
 ' Text: https://plantuml.com/creole
 @startuml "setting-up"
 !include _resources/diagrams/plantuml_styles.puml
+skinparam partitionWidth 400
+
 title Setting up PMM\nOverview\n
 start
 partition "1. Set up PMM Server" {
 	split
-		:a) Docker;
+		:Docker;
 	split again
-		:b) Virtual Appliance;
+		:Virtual Appliance;
 	split again
-		:c) Amazon AWS;
+		:Amazon AWS;
 	end split
 }
 repeat
 partition "2. Set up PMM Client" {
 	split
-		:a) Linux;
+		:Linux;
 	split again
-		:b) Docker;
+		:Docker;
 	end split
 }
 :3. Configure service;

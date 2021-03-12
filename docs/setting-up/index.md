@@ -1,27 +1,30 @@
 # Setting up
 
+This section is an overview of the setting-up process broken into four key stages.
+
+```plantuml source="_resources/diagrams/Setting-Up.puml"
+```
+
 Setting up PMM means:
 
-1. Setting up and verifying at least one server as either a
-	a) Docker container,
-	b) virtual appliance, or
-	c) Amazon AWS instance;
+1. Setting up and verifying a server as one of:
+
+	- [A Docker container](server/docker.md)
+	- [A virtual appliance](server/virtual-appliance.md)
+	- [An Amazon AWS EC2 instance](server/aws.md)
+
 2. Setting up the client on each node where a monitored service runs using either:
-	a) the native Linux package, or
-	b) a Docker container;
-3. Configuring those services so the client can extract, parse and transmit the system's metrics;
+
+	- [Natively on Linux](client/index.md#installing-pmm-client-with-your-linux-package-manager)
+	- [as a Docker container](client/docker.md)
+
+3. [Configuring those services](#3-configure-service) so the client can extract, parse and transmit the system's metrics;
+
 4. Adding the service to PMM's inventory of monitored systems.
 
 You repeat steps 3 and 4 on each node being monitored.
 
 If you have configured everything correctly, you'll see data in the PMM user interface, in one of the dashboards specific to the type of service.
-
-This section is an overview of the setting-up process broken into these four key stages.
-
-Follow the links to separate sections which cover each stage in detail.
-
-```plantuml source="_resources/diagrams/Setting-Up.puml"
-```
 
 ## 1. Setting up PMM Server
 
