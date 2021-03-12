@@ -170,12 +170,12 @@ PMM's [*MySQL Performance Schema Details* dashboard](../../details/dashboards/da
 
 To use *Performance Schema*, set these variables.
 
-| Variable                                                                                 | Value              | Description
-|------------------------------------------------------------------------------------------|--------------------|---------------------------------------------------------------------------------
-| [performance_schema][sysvar_performance_schema]                                          | `ON`               | Enables *Performance Schema* metrics. This is the default in MySQL 5.6.6 and higher.
-| [performance-schema-instrument][perfschema-instrument]                                   | `'statement/%=ON'` | Configures Performance Schema instruments.
-| [performance-schema-consumer-statements-digest][perfschema-consumer-statements-digest]   | `ON`               | Configures the `statements-digest` consumer.
-| [innodb_monitor_enable][sysvar_innodb_monitor_enable]                                    | all                | Enables InnoDB metrics counters.
+| Variable                                                                                   | Value              | Description
+|--------------------------------------------------------------------------------------------|--------------------|---------------------------------------------------------------------------------
+| [`performance_schema`][sysvar_performance_schema]                                          | `ON`               | Enables *Performance Schema* metrics. This is the default in MySQL 5.6.6 and higher.
+| [`performance-schema-instrument`][perfschema-instrument]                                   | `'statement/%=ON'` | Configures Performance Schema instruments.
+| [`performance-schema-consumer-statements-digest`][perfschema-consumer-statements-digest]   | `ON`               | Configures the `statements-digest` consumer.
+| [`innodb_monitor_enable`][sysvar_innodb_monitor_enable]                                    | all                | Enables InnoDB metrics counters.
 
 **Examples**
 
@@ -202,9 +202,9 @@ SET GLOBAL innodb_monitor_enable = all;
 
 There is no *Explain* or *Example* data shown by default in Query Analytics when monitoring MariaDB instances version 10.5.7 or lower. A workaround is to set this variable.
 
-| Variable                                                                | Value           | Description
-|-------------------------------------------------------------------------|-----------------|-----------------------------
-| [performance_schema.setup_instruments][mariadb_perfschema_instr_table]  | `'statement/%'` | List of instrumented object classes.
+| Variable                                                                  | Value           | Description
+|---------------------------------------------------------------------------|-----------------|-----------------------------
+| [`performance_schema.setup_instruments`][mariadb_perfschema_instr_table]  | `'statement/%'` | List of instrumented object classes.
 
 **Session**
 
@@ -226,9 +226,9 @@ UPDATE performance_schema.setup_consumers SET ENABLED = 'YES' WHERE NAME LIKE '%
 
 Set this variable to see query time distribution charts.
 
-| Variable                                                             | Value | Description
-|----------------------------------------------------------------------|-------|-----------------------------------------------------------------------------------
-| [query_response_time_stats][ps_query_response_time_stats] {{pad.35}} | ON    | Report *query response time distributions*. (Requires plugin installation. See below.)
+| Variable                                                               | Value | Description
+|------------------------------------------------------------------------|-------|-----------------------------------------------------------------------------------
+| [`query_response_time_stats`][ps_query_response_time_stats] {{pad.35}} | ON    | Report *query response time distributions*. (Requires plugin installation. See below.)
 
 *Configuration file*
 
