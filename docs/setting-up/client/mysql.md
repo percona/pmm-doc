@@ -26,21 +26,21 @@ While you can use both at the same time we recommend using only one--there is so
 
 Here are the benefits and drawbacks of *Slow query log* and *Performance Schema* metrics sources.
 
-|                                   | {{icon.thumbsup}} **Benefits**                                                     | {{icon.thumbsdown}} **Drawbacks**
-|----------------------------------:|------------------------------------------------------------------------------------|------------------------------------------
-| **Slow query log**                | More detail.                                                                       | PMM Client must be on the same host as the database server or have access to the slow query log.
-|                                   | Lower resource impact (with query sampling feature in Percona Server for MySQL).   | Log files grow and must be actively managed.
-| **Performance Schema**            | Faster parsing.                                                                    | Less detail.
-|                                   | Enabled by default on newer versions of MySQL.                                     |
+|                        | {{icon.thumbsup}} **Benefits**                                                   | {{icon.thumbsdown}} **Drawbacks**
+|------------------------|----------------------------------------------------------------------------------|------------------------------------------
+| **Slow query log**     | More detail.                                                                     | PMM Client must be on the same host as the database server or have access to the slow query log.
+|                        | Lower resource impact (with query sampling feature in Percona Server for MySQL). | Log files grow and must be actively managed.
+| **Performance Schema** | Faster parsing.                                                                  | Less detail.
+|                        | Enabled by default on newer versions of MySQL.                                   |
 
 **Data source recommendations**
 
 | Database server          | Versions       | Recommended source | Default?
-|-------------------------:|:--------------:| ------------------ | -----------
+|--------------------------|----------------|--------------------|------------
 | MySQL                    | 5.1-5.5        | Slow query log     | No
 | MySQL                    | 5.6+           | Performance Schema | Yes, from 5.6.6
 | MariaDB                  | 10.0+          | Performance Schema | No
-| Percona Server for MySQL | 5.7, 8.0       | Performance Schema | Yes
+| Percona Server for MySQL | 5.7, 8.0       | Slow log           | TODO
 | Percona XtraDB Cluster   | 5.6, 5.7, 8.0  | Slow query log     | No
 
 ### Slow query log
@@ -50,7 +50,7 @@ This section covers how to configure a MySQL-based database server to use the *s
 **Applicable versions**
 
 | Server                   | Versions         |
-|-------------------------:|:----------------:|
+|--------------------------|------------------|
 | MySQL                    | 5.1-5.5          |
 | MariaDB                  | 10.1.2+          |
 | Percona Server for MySQL | 5.7.10+, 8.0.12+ |
@@ -61,7 +61,7 @@ The *slow query log* records the details of queries that take more than a certai
 **Settings**
 
 | Variable                                                        | Value  |Description
-|----------------------------------------------------------------:|:------:|----------------------------------------------------------
+|-----------------------------------------------------------------|--------|----------------------------------------------------------
 | [`slow_query_log`][sysvar_slow_query_log] {{pad.55}}            | ON     | Enables the slow query log.
 | [`log_output`][sysvar_log_output]                               |`'FILE'`| Ensures the log is sent to a file. (This is the default on MariaDB.)
 | [`long_query_time`][sysvar_long_query_time]                     | 0      | The slow query threshold in seconds. In heavily-loaded applications, many quick queries can affect performance more than a few slow ones. Setting this value to `0` ensures all queries are captured.
@@ -96,16 +96,16 @@ Some MySQL-based database servers support extended slow query log variables.
 
 **Applicable versions**
 
-| Server                   | Versions         |
-|-------------------------:|:----------------:|
-| Percona Server for MySQL | 5.7.10+, 8.0.12+ |
-| Percona XtraDB Cluster   | 5.6, 5.7, 8.0    |
-| MariaDB                  | 10.0             |
+| Server                   | Versions
+|--------------------------|-----------------
+| Percona Server for MySQL | 5.7.10+, 8.0.12+
+| Percona XtraDB Cluster   | 5.6, 5.7, 8.0
+| MariaDB                  | 10.0
 
 **Settings**
 
 | Variable                                                                 | Value | Description
-|--------------------------------------------------------------------------|:-----:|-----------------------------------------------------------------------------------
+|--------------------------------------------------------------------------|-------|-----------------------------------------------------------------------------------
 | [`log_slow_rate_limit`][log_slow_rate_limit]  {{pad.70}}                 | 100   | Defines the rate of queries captured by the *slow query log*. A good rule of thumb is 100 queries logged per second. For example, if your Percona Server instance processes 10,000 queries per second, you should set `log_slow_rate_limit` to `100` and capture every 100th query for the *slow query log*. Depending on the amount of traffic, logging could become aggressive and resource consuming. This variable throttles the level of intensity of the data capture without compromising information.
 | [`log_slow_rate_type`][log_slow_rate_type]                               |'query'| Set so that it applies to queries, rather than sessions.
 | [`slow_query_log_always_write_time`][slow_query_log_always_write_time]   | 1     | Specifies which queries should ignore sampling. With query sampling this ensures that queries with longer execution time will always be captured by the slow query log, avoiding the possibility that infrequent slow queries might not get captured at all.
@@ -161,7 +161,7 @@ This section covers how to configure a MySQL-based database server to use *Perfo
 **Applicable versions**
 
 | Server                   | Versions
-|-------------------------:|:----------------------------------------
+|--------------------------|-----------------------------------------
 | Percona Server for MySQL | 5.6, 5.7, 8.0
 | Percona XtraDB Cluster   | 5.6, 5.7, 8.0
 | MariaDB                  | [10.3+][mariadb_perfschema_instr_table]
@@ -171,11 +171,11 @@ PMM's [*MySQL Performance Schema Details* dashboard](../../details/dashboards/da
 To use *Performance Schema*, set these variables.
 
 | Variable                                                                                 | Value              | Description
-|------------------------------------------------------------------------------------------|:------------------:|---------------------------------------------------------------------------------
-| [performance_schema][sysvar_performance_schema]                                        | `ON`               | Enables *Performance Schema* metrics. This is the default in MySQL 5.6.6 and higher.
-| [performance-schema-instrument][perfschema-instrument]                                 | `'statement/%=ON'` | Configures Performance Schema instruments.
-| [performance-schema-consumer-statements-digest][perfschema-consumer-statements-digest] | `ON`               | Configures the `statements-digest` consumer.
-| [innodb_monitor_enable][sysvar_innodb_monitor_enable]                                  | all                | Enables InnoDB metrics counters.
+|------------------------------------------------------------------------------------------|--------------------|---------------------------------------------------------------------------------
+| [performance_schema][sysvar_performance_schema]                                          | `ON`               | Enables *Performance Schema* metrics. This is the default in MySQL 5.6.6 and higher.
+| [performance-schema-instrument][perfschema-instrument]                                   | `'statement/%=ON'` | Configures Performance Schema instruments.
+| [performance-schema-consumer-statements-digest][perfschema-consumer-statements-digest]   | `ON`               | Configures the `statements-digest` consumer.
+| [innodb_monitor_enable][sysvar_innodb_monitor_enable]                                    | all                | Enables InnoDB metrics counters.
 
 **Examples**
 
@@ -226,8 +226,8 @@ UPDATE performance_schema.setup_consumers SET ENABLED = 'YES' WHERE NAME LIKE '%
 
 Set this variable to see query time distribution charts.
 
-| Variable                                                            | Value | Description
-|---------------------------------------------------------------------|:-----:|-----------------------------------------------------------------------------------
+| Variable                                                             | Value | Description
+|----------------------------------------------------------------------|-------|-----------------------------------------------------------------------------------
 | [query_response_time_stats][ps_query_response_time_stats] {{pad.35}} | ON    | Report *query response time distributions*. (Requires plugin installation. See below.)
 
 *Configuration file*
@@ -268,10 +268,10 @@ Some table metrics are automatically disabled when the number of tables exceeds 
 
 The limit can be changed [when adding a service on the command line ](#2-2-command-line) with the two `pmm-admin` options:
 
-| `pmm-admin` option               | Description
-|----------------------------------|--------------------------------------------------------------------------
-| `--disable-tablestats` {{pad.65}}| Disables tablestats collection when the default limit is reached.
-| `--disable-tablestats-limit=N`   | Sets the number of tables (`N`) for which tablestats collection is disabled. 0 means no limit. A negative number means tablestats is completely disabled (for any number of tables).
+| `pmm-admin` option                | Description
+|-----------------------------------|--------------------------------------------------------------------------
+| `--disable-tablestats` {{pad.65}} | Disables tablestats collection when the default limit is reached.
+| `--disable-tablestats-limit=N`    | Sets the number of tables (`N`) for which tablestats collection is disabled. 0 means no limit. A negative number means tablestats is completely disabled (for any number of tables).
 
 ## User statistics
 
@@ -280,7 +280,7 @@ The limit can be changed [when adding a service on the command line ](#2-2-comma
 User activity, individual table and index access details are shown on the [MySQL User Details][DASH_MYSQLUSERDETAILS] dashboard when the `userstat` variable is set.
 
 | Server                    | Versions
-|--------------------------:|:-------------
+|---------------------------|---------------
 | Percona Server for MySQL  | 5.6, 5.7, 8.0
 | Percona XtraDB Cluster    | 5.6, 5.7, 8.0
 | MariaDB                   | 5.2.0+
