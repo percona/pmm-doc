@@ -16,7 +16,7 @@
 <style>
 wbsDiagram {
   node {
-    BackgroundColor #FFB500
+    BackgroundColor #ffb366
     RoundCorner 10
     Padding 5
     Margin 5

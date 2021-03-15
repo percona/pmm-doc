@@ -4,29 +4,30 @@
 ' Colour: https://plantuml.com/color
 ' Text: https://plantuml.com/creole
 @startuml "setting-up_client_mysql"
+!include _resources/diagrams/plantuml_styles.puml
 skinparam ArrowHeadColor none
 skinparam roundCorner 15
 skinparam legendBackgroundColor #0000
 'title "Setting up PMM Client to monitor a MySQL host\nOverview\n"
 legend bottom left
 Legend
-<#lemonchiffon>| Required |
+<#ffb366>| Required |
 <#lightgrey>| Optional |
 endlegend
 
-#lightgrey:Create PMM database account;
+#lightgrey:Create a database account for PMM;
 partition "Choose and configure\na source" {
 	split
-		:Slow query log;
-		:Slow query log - extended;
-		#lightgrey:Slow query log rotation;
+		:Configure //slow query log//;
+		:Configure //slow query log (extended)//;
+		#lightgrey:Configure //slow query log rotation//;
 	split again
-		:Performance Schema;
+		:Configure //Performance Schema//;
 	end split
-	#lightgrey:Query response time;
-	#lightgrey:Tablestats;
-	#lightgrey:User statistics;
 }
+	#lightgrey:Configure //query response time//;
+	#lightgrey:Configure //tablestats//;
+	#lightgrey:Configure //user statistics//;
 partition "Add a service " {
 	split
 	-> With user interface;
