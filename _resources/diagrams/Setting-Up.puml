@@ -1,0 +1,34 @@
+' Diagram showing sequence of tasks to set up PMM
+' Syntax: https://plantuml.com/activity-diagram-beta
+' Icons: https://plantuml.com/openiconic
+' Colour: https://plantuml.com/color
+' Text: https://plantuml.com/creole
+@startuml "setting-up"
+!include _resources/diagrams/plantuml_styles.puml
+skinparam partitionWidth 400
+
+title Setting up PMM\nOverview\n
+start
+partition "1. Set up PMM Server" {
+	split
+		:Docker;
+	split again
+		:Virtual Appliance;
+	split again
+		:Amazon AWS;
+	end split
+}
+repeat
+partition "2. Set up PMM Client" {
+	split
+		:Linux;
+	split again
+		:Docker;
+	end split
+}
+:3. Configure service;
+:4. Add service;
+repeat while (Add more?) is (Yes)
+-> Done;
+stop
+@enduml
