@@ -13,17 +13,6 @@
 '!$base = "../2.x"
 ' !$base = ".."
 
-<style>
-wbsDiagram {
-  node {
-    BackgroundColor #ffb366
-    RoundCorner 10
-    Padding 5
-    Margin 5
-  }
-}
-</style>
-
 + <&home> [[$base/index.html Welcome]]
 	+ <&power-standby> [[$base/setting-up/ Setting up]]
 		- <&heart> [[$base/setting-up/server/ Server]]

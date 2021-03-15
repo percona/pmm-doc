@@ -6,6 +6,16 @@ skinparam {
   defaultTextAlignment center
   ArrowHeadColor none
   BackgroundColor #fff
-  ActivityBackgroundColor #ffb366
-  activityDiamondBackgroundColor #ffb366
+  ActivityBackgroundColor #99ccff
+  activityDiamondBackgroundColor #99ccff
 }
+<style>
+wbsDiagram {
+  node {
+    BackgroundColor #ff9933
+'    RoundCorner 10
+    Padding 5
+    Margin 5
+  }
+}
+</style>
