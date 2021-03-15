@@ -1,6 +1,6 @@
 # MySQL and variants
 
-PMM Client collects metrics from MySQL, Percona Server for MySQL, Percona XtraDB Cluster, and MariaDB. (Amazon RDS is also supported and explained in a [separate section](aws.md).)
+PMM Client collects metrics from [MySQL][ORACLE_MYSQL], [Percona Server for MySQL][PERCONA_SERVER_MYSQL], [Percona XtraDB Cluster][PERCONA_XTRADB_CLUSTER], and [MariaDB][MARIADB]. (Amazon RDS is also supported and explained in a [separate section](aws.md).)
 
 This page shows you how to set up PMM to monitor a MySQL or MySQL-based database instance. (You should read it completely before starting work.)
 
@@ -35,13 +35,13 @@ Here are the benefits and drawbacks of *Slow query log* and *Performance Schema*
 
 **Data source recommendations**
 
-| Database server          | Versions       | Recommended source | Default?
-|--------------------------|----------------|--------------------|------------
-| MySQL                    | 5.1-5.5        | Slow query log     | No
-| MySQL                    | 5.6+           | Performance Schema | Yes, from 5.6.6
-| MariaDB                  | 10.0+          | Performance Schema | No
-| Percona Server for MySQL | 5.7, 8.0       | Slow log           | TODO
-| Percona XtraDB Cluster   | 5.6, 5.7, 8.0  | Slow query log     | No
+| Database server          | Versions       | Recommended source |
+|--------------------------|----------------|--------------------|
+| MySQL                    | 5.1-5.5        | Slow query log     |
+| MySQL                    | 5.6+           | Performance Schema |
+| MariaDB                  | 10.0+          | Performance Schema |
+| Percona Server for MySQL | 5.7, 8.0       | Slow query log     |
+| Percona XtraDB Cluster   | 5.6, 5.7, 8.0  | Slow query log     |
 
 ### Slow query log
 
@@ -447,6 +447,11 @@ Open the [*PXC/Galera Cluster Summary* dashboard][DASH_PXCGALERACLUSTER].
 [DASH_MYSQLUSERDETAILS]: ../../details/dashboards/dashboard-mysql-user-details.md
 [DASH_PXCGALERACLUSTER]: ../../details/dashboards/dashboard-pxc-galera-cluster-summary.md
 [LOGROTATE]: https://linux.die.net/man/8/logrotate
+<!-- Products -->
+[PERCONA_SERVER_MYSQL]: https://www.percona.com/software/mysql-database/percona-server
+[PERCONA_XTRADB_CLUSTER]: https://www.percona.com/software/mysql-database/percona-xtradb-cluster
+[ORACLE_MYSQL]: https://www.mysql.com/
+[MARIADB]: https://mariadb.org/
 <!-- Blog -->
 [BLOG_INNODB_METRICS]: https://www.percona.com/blog/2014/11/18/mysqls-innodb_metrics-table-how-much-is-the-overhead/
 [BLOG_LOGGING]: https://www.percona.com/blog/2009/02/10/impact-of-logging-on-mysql%E2%80%99s-performance/
