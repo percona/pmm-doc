@@ -144,7 +144,9 @@ SET GLOBAL slow_query_log_use_global_control = 'all';
 
 Slow query log files can grow quickly and must be managed.
 
-When adding a service with the command line use the  `pmm-admin` option `--size-slow-logs` to set at what size (in bytes) the slow query log file is rotated. When the limit is reached, PMM Client will:
+When adding a service with the command line use the  `pmm-admin` option `--size-slow-logs` to set at what size the slow query log file is rotated. (The size is specified as a number with a suffix. See [`pmm-admin add mysql`](../../details/commands/pmm-admin.md#mysql).)
+
+When the limit is reached, PMM Client will:
 
 - remove the previous `.old` slow log file,
 - rename the current file by adding the suffix `.old`,
@@ -360,10 +362,10 @@ Default query source (`slowlog`), service name (`{node name}-mysql`), and servic
 sudo pmm-admin add mysql --username=pmm --password=pass
 ```
 
-Slow query log source and log size limit (`1048576` bytes), service name (`MYSQL_NODE`) and service address/port (`191.168.1.123:3306`).
+Slow query log source and log size limit (1 gigabyte), service name (`MYSQL_NODE`) and service address/port (`191.168.1.123:3306`).
 
 ```sh
-sudo pmm-admin add mysql --query-source=slowlog --size-slow-logs=1048576 --username=pmm --password=pass MYSQL_NODE 192.168.1.123:3306
+sudo pmm-admin add mysql --query-source=slowlog --size-slow-logs=1GB --username=pmm --password=pass MYSQL_NODE 192.168.1.123:3306
 ```
 
 Slow query log source, disabled log management (use [`logrotate`][LOGROTATE] or some other log management tool), service name (`MYSQL_NODE`) and service address/port (`191.168.1.123:3306`).
