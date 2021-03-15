@@ -53,7 +53,7 @@ Security Threat Tool.
 
 ## Technical Preview
 
-Releases intended for public preview and feedback but not suitable for use on production or business-critical systems.
+Releases intended for public preview and feedback but not suitable for use on production or business-critical systems. ([Read more](https://www.percona.com/services/policies/percona-release-lifecycle-overview).)
 
 ## VG
 
