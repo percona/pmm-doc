@@ -8,26 +8,41 @@
 skinparam partitionWidth 400
 
 title Setting up PMM\nOverview\n
-start
-partition "1. Set up PMM Server" {
+
+partition "1. Set up PMM Server as one of: " {
 	split
-		:Docker;
+		-[hidden]->
+		:Docker container;
 	split again
-		:Virtual Appliance;
+		-[hidden]->
+		:Virtual appliance;
 	split again
-		:Amazon AWS;
+		-[hidden]->
+		:Amazon AWS marketplace;
 	end split
 }
-repeat
-partition "2. Set up PMM Client" {
+partition "2. Set up PMM Client for each node " {
 	split
-		:Linux;
+		partition "Linux" {
+			split
+				:Set up ""percona-release"";
+				:""apt/yum install pmm2-client"";
+			split again
+				:Download "".deb""/"".rpm"";
+				:<code>
+				dpkg -i *.deb
+				</code>;
+			end split
+		}
 	split again
-		:Docker;
+		partition "Docker" {
+			:<code>
+			docker pull
+			percona/pmm-client:2
+			</code>;
+		}
+
 	end split
 }
 :3. Configure and add service;
-repeat while (More clients?) is (Yes)
--> Done;
-stop
 @enduml
