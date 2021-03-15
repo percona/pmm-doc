@@ -1,21 +1,12 @@
 ' Styles for PlantUML created diagrams
 skinparam {
-  roundcorner 20
+  roundcorner 15
   defaultFontName Chivo
   defaultFontSize 14
   defaultTextAlignment center
   ArrowHeadColor none
   BackgroundColor #fff
-  ActivityBackgroundColor #99ccff
-  activityDiamondBackgroundColor #99ccff
+  ActivityBackgroundColor #cce6ff
+  activityDiamondBackgroundColor #cce6ff
+  legendBackgroundColor #0000
 }
-<style>
-wbsDiagram {
-  node {
-    BackgroundColor #ff9933
-'    RoundCorner 10
-    Padding 5
-    Margin 5
-  }
-}
-</style>

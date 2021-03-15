@@ -6,6 +6,14 @@
 ' Text: https://plantuml.com/creole
 @startwbs "PMM_Documentation_Map"
 !include _resources/diagrams/plantuml_styles.puml
+<style>
+wbsDiagram {
+  node {
+    Padding 5
+    Margin 5
+  }
+}
+</style>
 
 ' Absolute links - can be useful for exporting map as stand-alone image
 ' relative links make testing easier but must be changed for local vs hosting' Hosted

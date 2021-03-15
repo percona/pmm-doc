@@ -5,9 +5,6 @@
 ' Text: https://plantuml.com/creole
 @startuml "setting-up_client_mysql"
 !include _resources/diagrams/plantuml_styles.puml
-skinparam ArrowHeadColor none
-skinparam roundCorner 15
-skinparam legendBackgroundColor #0000
 'title "Setting up PMM Client to monitor a MySQL host\nOverview\n"
 legend bottom left
 Legend
