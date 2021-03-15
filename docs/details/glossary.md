@@ -1,4 +1,4 @@
-<!-- CREATED BY make_glossary_md.pl - DO NOT EDIT! -->
+<!-- CREATED BY make_glossary.pl - DO NOT EDIT! -->
 
 <!-- Local style adjustments -->
 <style>div.section dl.glossary dt {font-weight: bold; font-size: 1.3em;}
@@ -51,6 +51,11 @@ Component of PMM Server that enables you to analyze MySQL query performance over
 
 Security Threat Tool.
 
+## Technical Preview
+
+Releases intended for public preview and feedback but not suitable for use on production or business-critical systems.
+
 ## VG
 
 Volume Group.
+
