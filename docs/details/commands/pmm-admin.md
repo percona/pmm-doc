@@ -348,7 +348,10 @@ PMM communicates with the PMM Server via a PMM agent process.
     : Source of SQL queries, one of: `slowlog`, `perfschema`, `none` (default: `slowlog`).
 
     `--size-slow-logs=N`
-    : Rotate slow log file at this number of bytes. If `0`, use server-defined default. Negative values disable log rotation.
+    : Rotate slow log file at this size. If `0`, use server-defined default. Negative values disable log rotation. A unit suffix must be appended to the number and can be one of:
+
+		- `KB`, `kB`, `MB`, `mB`, `GB`, `gB`, `TB`, `tB` for base 10 units (1000, 1000000, etc);
+		- `KiB`, `MiB`, `GiB`, `TiB` for base 2 units (1024, 1048576, etc).
 
     `--disable-queryexamples`
     : Disable collection of query examples.
@@ -556,22 +559,22 @@ PMM communicates with the PMM Server via a PMM agent process.
 : Add External source of data (like a custom exporter running on a port) to the monitoring
 
     FLAGS:
-    
+
     `--service-name="current-hostname"`
     : Service name (autodetected defaults to the hostname where pmm-admin is running)
-    
+
     `--agent-node-id=AGENT-NODE-ID`
     : Node ID where agent runs (default is autodetected)
 
     `--username=USERNAME`
     : External username
-      
+
     `--password=PASSWORD`
     : External password
-      
+
     `--scheme=http or https`
     : Scheme to generate URI to exporter metrics endpoints
-      
+
     `--metrics-path=/metrics`
     : Path under which metrics are exposed, used to generate URI.
 
@@ -583,19 +586,19 @@ PMM communicates with the PMM Server via a PMM agent process.
 
     `--environment=prod`
     : Environment name like 'production' or 'qa'
-      
+
     `--cluster=east-cluster`
     : Cluster name
-      
+
     `--replication-set=rs1`
     : Replication set name
 
     `--custom-labels=CUSTOM-LABELS`
     : Custom user-assigned labels. Example: region=east,app=app1
-      
+
     `--metrics-mode=auto`
     : Metrics flow mode, can be `push`: agent will push metrics, `pull`: server scrape metrics from agent or `auto`: chosen by server.
-     
+
     `--group="external"`
     : Group name of external service (default: external)
 
