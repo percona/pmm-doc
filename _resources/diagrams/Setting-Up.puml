@@ -26,9 +26,8 @@ partition "2. Set up PMM Client" {
 		:Docker;
 	end split
 }
-:3. Configure service;
-:4. Add service;
-repeat while (Add more?) is (Yes)
+:3. Configure and add service;
+repeat while (More clients?) is (Yes)
 -> Done;
 stop
 @enduml
