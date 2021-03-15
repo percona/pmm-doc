@@ -1,0 +1,55 @@
+' Diagram showing sequence of tasks to set up PMM Client for MySQL
+' Syntax: https://plantuml.com/activity-diagram-beta
+' Icons: https://plantuml.com/openiconic
+' Colour: https://plantuml.com/color
+' Text: https://plantuml.com/creole
+@startuml "setting-up_client_mysql"
+skinparam ArrowHeadColor none
+skinparam roundCorner 15
+skinparam legendBackgroundColor #0000
+'title "Setting up PMM Client to monitor a MySQL host\nOverview\n"
+legend bottom left
+Legend
+<#lemonchiffon>| Required |
+<#lightgrey>| Optional |
+endlegend
+
+#lightgrey:Create PMM database account;
+partition "Choose and configure\na source" {
+	split
+		:Slow query log;
+		:Slow query log - extended;
+		#lightgrey:Slow query log rotation;
+	split again
+		:Performance Schema;
+	end split
+	#lightgrey:Query response time;
+	#lightgrey:Tablestats;
+	#lightgrey:User statistics;
+}
+partition "Add a service " {
+	split
+	-> With user interface;
+		:PMM <&arrow-thick-right>\nPMM Add Instance <&arrow-thick-right>\nMySQL -\nAdd a remote instance;
+	split again
+	-> On command line;
+		split
+			-> Slow query log;
+			:<code>
+			pmm-admin add mysql
+			--query-source=slowlog
+			--size-slow-logs=N
+			...
+			</code>;
+		split again
+			-> Performance Schema;
+			:<code>
+			pmm-admin add mysql
+			--query-source=perfschema
+			...
+			</code>;
+		end split
+	end split
+}
+#lightgrey:Check the service;
+@enduml
