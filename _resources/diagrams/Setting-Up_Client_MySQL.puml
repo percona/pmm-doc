@@ -8,7 +8,7 @@
 'title "Setting up PMM Client to monitor a MySQL host\nOverview\n"
 legend bottom left
 Legend
-<#ffb366>| Required |
+<#cce6ff>| Required |
 <#lightgrey>| Optional |
 endlegend
 

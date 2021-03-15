@@ -9,6 +9,7 @@
 <style>
 wbsDiagram {
   node {
+	BackgroundColor #cce6ff
     Padding 5
     Margin 5
   }
