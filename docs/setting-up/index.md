@@ -21,7 +21,7 @@ A server can run as:
 
 ## 2. Setting up PMM Client {: #setting-up-pmm-client}
 
-You must set up PMM Client on each node where there is a service to be monitored.
+You must [set up PMM Client](client/index.md) on each node where there is a service to be monitored.
 
 You can do this:
 
