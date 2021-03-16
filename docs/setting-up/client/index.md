@@ -252,6 +252,7 @@ You should continue by adding services with `pmm-admin add` according to the ser
 - [ProxySQL](proxysql.md)
 - [Amazon RDS](aws.md)
 - [Microsoft Azure](azure.md)
+- [Google Cloud Platform (MySQL and PostgreSQL)](google.md)
 - [Linux](linux.md)
 - [External services](external.md)
 - [HAProxy](haproxy.md)
