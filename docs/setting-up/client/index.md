@@ -1,31 +1,31 @@
+---
+TODO:
+- How to build PMM Client from source code
+- Examples of using Docker
+---
+
 # Setting up PMM Client
 
 PMM Client is a collection of agents and exporters that run on the host being monitored.
 
-These sections cover the different ways to install PMM Client on a Linux node and register it with PMM Server.
+These sections cover the different ways to install PMM Client on a Linux node and register it with PMM Server. The options are:
 
-For Debian- or Red Hat-based distributions, you can:
+1. For Debian- or Red Hat-based distributions, install [`percona-release`][PERCONA_RELEASE] and [use a Linux package manager](#package-manager) (`apt`/`dnf`) to install PMM Client.
 
-- Method 1: Install [`percona-release`][PERCONA_RELEASE] and [use a Linux package manager](#method-1) (`apt`/`dnf`) to install PMM Client.
+2. For Debian- or Red Hat-based distributions, [download `.deb`/`.rpm` PMM Client packages and install them](#manual-package).
 
-- Method 2: [Download `.deb`/`.rpm` PMM Client packages and install them](#method-2-download-and-install-pmm-client-packages-manually).
+3. For other Linux distributions, [download and unpack generic PMM Client Linux binaries](#binary-package).
 
-For other Linux distributions, you can:
-
-- Method 3: [Download and unpack generic PMM Client Linux binaries](#method-3-download-and-unpack-generic-linux-binary-package).
-
-If you use [Docker][GETDOCKER], you can:
-
-- Method 4: [run PMM Client as a Docker container](#method-4-run-pmm-client-as-a-docker-container).
+4. If you use [Docker][GETDOCKER], [run PMM Client as a Docker container](#docker).
 
 <!-- TODO
 - Download the PMM Client source code, compile and install it (not covered here)
 -->
 
-When you have installed PMM Client with one of these methods, you must:
+When you have installed PMM Client, you must:
 
-- [register the node with PMM Server](#register-node-with-pmm-server),
-- Configure and add services according to type.
+- [Register the node with PMM Server](#register);
+- [Configure and add services according to type](#configure-add-services).
 
 ## Before you start
 
@@ -45,9 +45,9 @@ When you have installed PMM Client with one of these methods, you must:
     * password is equal to Agent ID, which can be seen e.g. on the Inventory Dashboard.
 -->
 
-## Method 1: Install PMM Client with a package manager {: package-manager }
+## Install PMM Client with a package manager {: #package-manager }
 
-### Debian-based distributions
+### Install on Debian-based distributions
 
 1. Configure repositories.
 
@@ -63,7 +63,7 @@ When you have installed PMM Client with one of these methods, you must:
     sudo apt install -y pmm2-client
     ```
 
-### Red Hat-based distributions
+### Install on Red Hat-based distributions
 
 1. Configure repositories.
 
@@ -85,7 +85,7 @@ When you have installed PMM Client with one of these methods, you must:
 	sudo percona-release enable original release
 	```
 
-## Method 2: Download and install PMM Client packages manually {: #manual-package }
+## Download and install PMM Client packages manually {: #manual-package }
 
 1. Visit the [Percona Monitoring and Management 2 download][DOWNLOAD] page.
 2. Under *Version:*, select the one you want (usually the latest).
@@ -107,19 +107,19 @@ Here are the download page links for each supported platform.
 - [Ubuntu 18.04 ("Bionic Beaver")][DOWNLOAD_UBUNTU_18]
 - [Ubuntu 20.04 ("Focal Fossa")][DOWNLOAD_UBUNTU_20]
 
-### Debian-based distributions
+### Install on Debian-based distributions
 
 ```sh
 dpkg -i *.deb
 ```
 
-### Red Hat-based distributions
+### Install on Red Hat-based distributions
 
 ```sh
 dnf localinstall *.rpm
 ```
 
-## Method 3: Download and unpack generic Linux binary package {: #binary-package }
+## Download and unpack generic Linux binary package {: #binary-package }
 
 1. Download the PMM Client package:
 
@@ -175,7 +175,7 @@ dnf localinstall *.rpm
 	pmm-admin status
 	```
 
-## Method 4: Run PMM Client as a Docker container {: #docker }
+## Run PMM Client as a Docker container {: #docker }
 
 The [PMM Client Docker image](https://hub.docker.com/r/percona/pmm-client/tags/) is a convenient way to run PMM Client as a preconfigured [Docker](https://docs.docker.com/get-docker/) container.
 
@@ -241,6 +241,8 @@ pmm-admin config --server-insecure-tls --server-url=https://admin:admin@X.X.X.X:
 - `X.X.X.X` is the address of your PMM Server.
 - `443` is the default port number.
 - `admin`/`admin` is the default PMM username and password. This is the same account you use to log into the PMM user interface, which you had the option to change when first logging in.
+
+## Configure and add services {: #configure-add-services }
 
 You should continue by adding services with `pmm-admin add` according to the service type.
 

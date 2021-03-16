@@ -1,6 +1,10 @@
+---
+TODO: Explain pros/cons of each
+---
+
 # Setting up PMM Server
 
-Choose how you want to run PMM Server:
+You can run PMM Server:
 
 - as a [Docker container](docker.md);
 - as a [virtual appliance](virtual-appliance.md);

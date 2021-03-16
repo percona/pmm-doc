@@ -1,16 +1,16 @@
 # Docker
 
-This section shows how to run PMM Server as a Docker container.
+Percona maintains a [Docker image for PMM Server][DOCKERHUB]. This section shows how to run PMM Server as a Docker container. (The tags used here are for the latest version of PMM 2 ({{release}}). [Other tags are available][TAGS].)
 
-Percona maintains a [Docker image for PMM Server][DOCKERHUB].
+## Before you start
 
-(The tags used here are for the latest version of PMM 2 ({{release}}). [Other tags are available][TAGS].)
+1. You need [Docker](https://docs.docker.com/get-docker/) 1.12.6 or higher.
 
-1. Software preprerequisite: [Docker](https://docs.docker.com/get-docker/) 1.12.6 or higher.
+1. Your system needs approximately 1GB of storage for each monitored database node with data retention set to one week. (By default, data retention is 30 days.) To reduce the size of the VictoriaMetrics database, you can consider disabling table statistics.
 
-1. System preprerequisite: PMM needs approximately 1GB of storage for each monitored database node with data retention set to one week. (By default, data retention is 30 days.) To reduce the size of the VictoriaMetrics database, you can consider disabling table statistics.
+1. The minimum amount of memory is 2 GB for one monitored database node. (Memory usage does not grow in proportion to the number of nodes. For example, 16GB is adequate for 20 nodes.)
 
-1. System preprerequisite: The minimum amount of memory is 2 GB for one monitored database node. (Memory usage does not grow in proportion to the number of nodes. For example, 16GB is adequate for 20 nodes.)
+## Running PMM Client as a Docker container
 
 1. Pull the image.
 

@@ -25,10 +25,10 @@ You must set up PMM Client on each node where there is a service to be monitored
 
 You can do this:
 
-- [with a package manager](client/index.md#package-manager);
-- [by manually downloading and installing packages](client/index.md#download-package);
-- [by manually downloading and unpacking binary package](client/index.md#binary-package).
-- [with a Docker image](client/index.md#docker).
+1. [with a package manager (`apt`, `apt-get`, `dnf`, `yum`)](client/index.md#package-manager);
+1. [by manually downloading and installing `.deb` or `.rpm` packages](client/index.md#manual-package);
+1. [by manually downloading and unpacking a binary package (`.tar.gz`)](client/index.md#binary-package);
+1. [with a Docker image](client/index.md#docker).
 
 ## 3. Configure and add services {: #configure-add-services}
 
@@ -44,6 +44,6 @@ You must configure your services and adding them to PMM Server's inventory of mo
 - [External services](client/external.md)
 - [HAProxy](client/haproxy.md)
 
-You do this on each node being monitored.
+You do this on each node/service being monitored.
 
 If you have configured everything correctly, you'll see data in the PMM user interface, in one of the dashboards specific to the type of service.
