@@ -6,7 +6,7 @@ These sections cover the different ways to install PMM Client on a Linux node an
 
 For Debian- or Red Hat-based distributions, you can:
 
-- Method 1: Install [`percona-release`][PERCONA_RELEASE] and [use a Linux package manager](#method-1-install-pmm-client-with-a-package-manager) (`apt`/`dnf`) to install PMM Client.
+- Method 1: Install [`percona-release`][PERCONA_RELEASE] and [use a Linux package manager](#method-1) (`apt`/`dnf`) to install PMM Client.
 
 - Method 2: [Download `.deb`/`.rpm` PMM Client packages and install them](#method-2-download-and-install-pmm-client-packages-manually).
 
@@ -27,7 +27,6 @@ When you have installed PMM Client with one of these methods, you must:
 - [register the node with PMM Server](#register-node-with-pmm-server),
 - Configure and add services according to type.
 
-
 ## Before you start
 
 - PMM Server is installed and running with a known IP address accessible from the client node.
@@ -46,7 +45,7 @@ When you have installed PMM Client with one of these methods, you must:
     * password is equal to Agent ID, which can be seen e.g. on the Inventory Dashboard.
 -->
 
-## Method 1: Install PMM Client with a package manager
+## Method 1: Install PMM Client with a package manager {: package-manager }
 
 ### Debian-based distributions
 
@@ -86,7 +85,7 @@ When you have installed PMM Client with one of these methods, you must:
 	sudo percona-release enable original release
 	```
 
-## Method 2: Download and install PMM Client packages manually
+## Method 2: Download and install PMM Client packages manually {: #manual-package }
 
 1. Visit the [Percona Monitoring and Management 2 download][DOWNLOAD] page.
 2. Under *Version:*, select the one you want (usually the latest).
@@ -120,7 +119,7 @@ dpkg -i *.deb
 dnf localinstall *.rpm
 ```
 
-## Method 3: Download and unpack generic Linux binary package
+## Method 3: Download and unpack generic Linux binary package {: #binary-package }
 
 1. Download the PMM Client package:
 
@@ -176,7 +175,7 @@ dnf localinstall *.rpm
 	pmm-admin status
 	```
 
-## Method 4: Run PMM Client as a Docker container
+## Method 4: Run PMM Client as a Docker container {: #docker }
 
 The [PMM Client Docker image](https://hub.docker.com/r/percona/pmm-client/tags/) is a convenient way to run PMM Client as a preconfigured [Docker](https://docs.docker.com/get-docker/) container.
 
@@ -231,12 +230,7 @@ You can now add services with [`pmm-admin`](../../details/commands/pmm-admin.md)
 		docker run --rm percona/pmm-client:2 --help
 		```
 
-
-
-
-
-
-## Register node with PMM Server
+## Register node with PMM Server {: #register }
 
 Register your node (`X.X.X.X` is the IP address of your PMM Server).
 
@@ -250,11 +244,20 @@ pmm-admin config --server-insecure-tls --server-url=https://admin:admin@X.X.X.X:
 
 You should continue by adding services with `pmm-admin add` according to the service type.
 
+- [MySQL and variants (Percona Server for MySQL, Percona XtraDB Cluster, MariaDB)](mysql.md)
+- [MongoDB](mongodb.md)
+- [PostgreSQL](postgresql.md)
+- [ProxySQL](proxysql.md)
+- [Amazon RDS](aws.md)
+- [Microsoft Azure](azure.md)
+- [Linux](linux.md)
+- [External services](external.md)
+- [HAProxy](haproxy.md)
 
-`pmm-admin` won't add a client if it already exists in the PMM Server inventory database.
 
 
 <!--
+`pmm-admin` won't add a client if it already exists in the PMM Server inventory database.
 If you need to re-add an already existing client (e.g. after full reinstall, hostname changes, etc.), you can
 use the `--force` option.
 

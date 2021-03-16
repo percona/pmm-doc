@@ -35,6 +35,7 @@ markdown_extensions:
   - admonition
   - def_list
   - meta
+  - attr_list
   - smarty:
         smart_angled_quotes: true
   - pymdownx.mark

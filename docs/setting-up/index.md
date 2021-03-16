@@ -1,35 +1,49 @@
 # Setting up
 
-This section is an overview of the setting-up process broken into three key stages.
+This section is an overview of the PMM setting-up process broken into three key stages:
+
+1. [Setting up at least one PMM Server](#setting-up-pmm-server)
+2. [Setting up one or more PMM Clients](#setting-up-pmm-client)
+3. [Configuring and adding services for monitoring](#configure-add-services)
 
 ```plantuml source="_resources/diagrams/Setting-Up.puml"
 ```
 
-Setting up PMM means:
+## 1. Setting up PMM Server {: #setting-up-pmm-server}
 
-1. Setting up and verifying at least one PMM Server. A server can run as:
+You must set up at least one PMM Server.
 
-	- [a Docker container](server/docker.md);
-	- [a virtual appliance](server/virtual-appliance.md);
-	- [an Amazon AWS EC2 instance](server/aws.md).
+A server can run as:
 
-2. Setting up PMM Client on each node where a monitored service. Clients can run:
+- [a Docker container](server/docker.md);
+- [a virtual appliance](server/virtual-appliance.md);
+- [an Amazon AWS EC2 instance](server/aws.md).
 
-	- [natively on Linux](client/index.md#installing-pmm-client-with-your-linux-package-manager);
-	- [as a Docker container](client/index.md#run-pmm-client-as-a-docker-container).
+## 2. Setting up PMM Client {: #setting-up-pmm-client}
 
-3. Configuring those services so PMM Client can extract, parse and transmit the system's metrics, and adding the service to PMM Server's inventory of monitored systems:
+You must set up PMM Client on each node where there is a service to be monitored.
 
-	- [MySQL and variants (Percona Server for MySQL, Percona XtraDB Cluster, MariaDB)](client/mysql.md)
-	- [MongoDB](client/mongodb.md)
-	- [PostgreSQL](client/postgresql.md)
-	- [ProxySQL](client/proxysql.md)
-	- [Amazon RDS](client/aws.md)
-	- [Microsoft Azure](client/azure.md)
-	- [Linux](client/linux.md)
-	- [External services](client/external.md)
-	- [HAProxy](client/haproxy.md)
+You can do this:
 
-You repeat step 3 on each node being monitored.
+- [with a package manager](client/index.md#package-manager);
+- [by manually downloading and installing packages](client/index.md#download-package);
+- [by manually downloading and unpacking binary package](client/index.md#binary-package).
+- [with a Docker image](client/index.md#docker).
+
+## 3. Configure and add services {: #configure-add-services}
+
+You must configure your services and adding them to PMM Server's inventory of monitored systems. This is different for each type of service:
+
+- [MySQL and variants (Percona Server for MySQL, Percona XtraDB Cluster, MariaDB)](client/mysql.md)
+- [MongoDB](client/mongodb.md)
+- [PostgreSQL](client/postgresql.md)
+- [ProxySQL](client/proxysql.md)
+- [Amazon RDS](client/aws.md)
+- [Microsoft Azure](client/azure.md)
+- [Linux](client/linux.md)
+- [External services](client/external.md)
+- [HAProxy](client/haproxy.md)
+
+You do this on each node being monitored.
 
 If you have configured everything correctly, you'll see data in the PMM user interface, in one of the dashboards specific to the type of service.

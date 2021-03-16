@@ -12,7 +12,7 @@ Here is an overview of the steps involved.
 ## Before you start
 
 - [PMM Server is installed](../server/index.md) and running with a known IP address accessible from the client node.
-- [PMM Client is installed](index.md) and the [node registered with PMM Server](index.md@#register-node-with-pmm-server).
+- [PMM Client is installed](index.md) and the [node registered with PMM Server](index.md#register).
 - You have superuser (root) access on the client host.
 - You have superuser access to any database servers that you want to monitor.
 
