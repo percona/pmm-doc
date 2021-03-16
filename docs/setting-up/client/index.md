@@ -262,20 +262,22 @@ Register your node (`X.X.X.X` is the IP address of your PMM Server).
 pmm-admin config --server-insecure-tls --server-url=https://admin:admin@X.X.X.X:443
 ```
 
+- `X.X.X.X` is the address of your PMM Server.
+- `443` is the default port number.
+- `admin`/`admin` is the default PMM username and password. This is the same account you use to log into the PMM user interface, which you had the option to change when first logging in.
+
 You should continue by adding services with `pmm-admin add` according to the service type.
 
 
+`pmm-admin` won't add a client if it already exists in the PMM Server inventory database.
 
 
+<!--
+If you need to re-add an already existing client (e.g. after full reinstall, hostname changes, etc.), you can
+use the `--force` option.
 
-
-!!! alert alert-info "Notes"
-    - The `--server-url` argument should include `https://` prefix and PMM Server credentials, which are `admin`/`admin` by default, if not changed at first PMM Server GUI access.
-	- If you change the default port 443 when running PMM Server, specify the new port number after the IP address of PMM Server.
-    - By default `pmm-admin config` refuses to add client if it already exists in the PMM Server inventory database. If you need to re-add an already existing client (e.g. after full reinstall, hostname changes, etc.), you can run `pmm-admin config` with the additional `--force` option. This will remove an existing node with the same name, if any, and all its dependent services.
-
-
-
+This will remove an existing node with the same name, if any, and all its dependent services.
+-->
 
 
 
@@ -283,9 +285,9 @@ You should continue by adding services with `pmm-admin add` according to the ser
 
 
 
+## Adding and removing services
 
 
-## Removing monitoring services with `pmm-admin remove`
 
 Use the `pmm-admin remove` command to remove monitoring services.
 
