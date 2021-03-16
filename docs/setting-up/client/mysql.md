@@ -9,6 +9,13 @@ Here is an overview of the steps involved.
 ```plantuml source="_resources/diagrams/Setting-Up_Client_MySQL.puml"
 ```
 
+## Before you start
+
+- [PMM Server is installed](../server/index.md) and running with a known IP address accessible from the client node.
+- [PMM Client is installed](index.md) and the [node registered with PMM Server](index.md@#register-node-with-pmm-server).
+- You have superuser (root) access on the client host.
+- You have superuser access to any database servers that you want to monitor.
+
 ## Create a database account for PMM
 
 It is good practice to use a non-superuser account to connect PMM Client to the monitored database instance. This example creates a database user with name `pmm`, password `pass`, and the necessary permissions.

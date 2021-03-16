@@ -1,48 +1,39 @@
 # Setting up PMM Client
 
-PMM Client is a suite of agents and exporters that run on the host being monitored.
+PMM Client is a collection of agents and exporters that run on the host being monitored.
 
-This section shows how to install PMM Client on a Linux node and register it with PMM Server.
+These sections cover the different ways to install PMM Client on a Linux node and register it with PMM Server.
 
-You can:
+For Debian- or Red Hat-based distributions, you can:
 
-On Debian, Ubuntu, Red Hat, CentOS, Oracle Linux:
+- Method 1: Install [`percona-release`][PERCONA_RELEASE] and [use a Linux package manager](#method-1-install-pmm-client-with-a-package-manager) (`apt`/`dnf`) to install PMM Client.
 
-- [Use `percona-release` to install with a package manager](#install-pmm-client-with-a-package-manager) on Debian- or Red Hat-based distributions
+- Method 2: [Download `.deb`/`.rpm` PMM Client packages and install them](#method-2-download-and-install-pmm-client-packages-manually).
 
-- [Download and install `.deb` or `.rpm` packages manually](#download-and-install-pmm-client-packages-manually)
+For other Linux distributions, you can:
 
-On other Linux:
+- Method 3: [Download and unpack generic PMM Client Linux binaries](#method-3-download-and-unpack-generic-linux-binary-package).
 
-- Download and install generic Linux binaries
+If you use [Docker][GETDOCKER], you can:
 
-With Docker:
+- Method 4: [run PMM Client as a Docker container](#method-4-run-pmm-client-as-a-docker-container).
 
-- [Run PMM Client as a Docker container](#run-pmm-client-as-a-docker-container),
-
-
-<!--
+<!-- TODO
 - Download the PMM Client source code, compile and install it (not covered here)
 -->
 
+When you have installed PMM Client with one of these methods, you must:
 
-## Prerequisites
+- [register the node with PMM Server](#register-node-with-pmm-server),
+- Configure and add services according to type.
 
-- PMM Server installed known IP address accessible from client node
-- Superuser access on the Linux host
-- Linux packages:
-	- `curl`
-	- `gnupg`
-	- `sudo`
-	- `wget`
-- Superuser access to any database servers to be added as monitored services
-- System requirements:
 
-	Supported platform:
+## Before you start
 
-	- Linux: PMM Client should run on any modern Red Hat or Debian-based 64-bit Linux distribution. ([Read more][PERCONA_TOOLS].)
-
-	- Docker: To use PMM Client as a Docker container you need to install the [Docker software][GETDOCKER].
+- PMM Server is installed and running with a known IP address accessible from the client node.
+- You have superuser (root) access on the client host.
+- You have superuser access to any database servers that you want to monitor.
+- These Linux packages are installed: `curl`, `gnupg`, `sudo`, `wget`.
 
 
 <!--
@@ -55,16 +46,7 @@ With Docker:
     * password is equal to Agent ID, which can be seen e.g. on the Inventory Dashboard.
 -->
 
-## Install PMM Client with a package manager
-
-If you have previously enabled the experimental or testing Percona repository, disable and reenable the release component of the original repository before you start.
-
-```sh
-sudo percona-release disable all
-sudo percona-release enable original release
-```
-
-Visit the the [Percona release][PERCONA_RELEASE] page for more information on setting up Percona repositories.
+## Method 1: Install PMM Client with a package manager
 
 ### Debian-based distributions
 
@@ -96,8 +78,15 @@ Visit the the [Percona release][PERCONA_RELEASE] page for more information on se
     sudo yum install -y pmm2-client
     ```
 
+!!! alert alert-success "Tip"
+	If you have used `percona-release` before, disable and reenable the repository like this:
 
-## Download and install PMM Client packages manually
+	```sh
+	sudo percona-release disable all
+	sudo percona-release enable original release
+	```
+
+## Method 2: Download and install PMM Client packages manually
 
 1. Visit the [Percona Monitoring and Management 2 download][DOWNLOAD] page.
 2. Under *Version:*, select the one you want (usually the latest).
@@ -107,7 +96,7 @@ Visit the the [Percona release][PERCONA_RELEASE] page for more information on se
 	- For Debian, Ubuntu: `.deb`
 	- For Red Hat, CentOS, Oracle Linux: `.rpm`
 
-Alternatively, copy the link and use `wget` to download it.
+(Alternatively, copy the link and use `wget` to download it.)
 
 Here are the download page links for each supported platform.
 
@@ -131,20 +120,18 @@ dpkg -i *.deb
 dnf localinstall *.rpm
 ```
 
-
-
-## Download and unpack a generic Linux binary package
+## Method 3: Download and unpack generic Linux binary package
 
 1. Download the PMM Client package:
 
 	```sh
-	wget https://downloads.percona.com/downloads/pmm2/{{release}}/binary/tarball/pmm2-client-{{release}}.tar.gz
+	sudo wget https://downloads.percona.com/downloads/pmm2/{{release}}/binary/tarball/pmm2-client-{{release}}.tar.gz
 	```
 
 2. Download the PMM Client package checksum file:
 
 	```sh
-	wget https://downloads.percona.com/downloads/pmm2/{{release}}/binary/tarball/pmm2-client-{{release}}.tar.gz.sha256sum
+	sudo wget https://downloads.percona.com/downloads/pmm2/{{release}}/binary/tarball/pmm2-client-{{release}}.tar.gz.sha256sum
 	```
 
 3. Verify the download.
@@ -156,13 +143,13 @@ dnf localinstall *.rpm
 4. Unpack the package and move into the directory.
 
 	```sh
-	tar xfz pmm2-client-{{release}}.tar.gz && cd pmm2-client-{{release}}
+	sudo tar xfz pmm2-client-{{release}}.tar.gz && cd pmm2-client-{{release}}
 	```
 
 5. Run the installer.
 
 	```sh
-	./install_tarball
+	sudo ./install_tarball
 	```
 
 6. Change the path.
@@ -174,7 +161,7 @@ dnf localinstall *.rpm
 7. Set up the agent
 
 	```sh
-	pmm-agent setup --config-file=/usr/local/percona/pmm2/config/pmm-agent.yaml --server-address=192.168.1.123 --server-insecure-tls --server-username=admin --server-password=admin
+	sudo pmm-agent setup --config-file=/usr/local/percona/pmm2/config/pmm-agent.yaml --server-address=192.168.1.123 --server-insecure-tls --server-username=admin --server-password=admin
 	```
 
 8. Open a new terminal and run the agent.
@@ -189,14 +176,9 @@ dnf localinstall *.rpm
 	pmm-admin status
 	```
 
-You can now [register the node with PMM Server](#register-node-with-pmm-server).
-
-## Run PMM Client as a Docker container
+## Method 4: Run PMM Client as a Docker container
 
 The [PMM Client Docker image](https://hub.docker.com/r/percona/pmm-client/tags/) is a convenient way to run PMM Client as a preconfigured [Docker](https://docs.docker.com/get-docker/) container.
-
-```plantuml source="_resources/diagrams/Setting-Up_Client_Docker.puml"
-```
 
 1. Pull the PMM Client docker image.
 
@@ -285,45 +267,10 @@ This will remove an existing node with the same name, if any, and all its depend
 
 
 
-## Adding and removing services
 
 
-
-Use the `pmm-admin remove` command to remove monitoring services.
-
-**USAGE**
-
-Run this command as root or by using the `sudo` command
-
-```sh
-pmm-admin remove [OPTIONS] [SERVICE-TYPE] [SERVICE-NAME]
-```
-
-When you remove a service, collected data remains in Metrics Monitor on PMM Server for the specified [retention period](../../faq.md#how-to-control-data-retention-for-pmm).
-
-**SERVICES**
-
-Service type can be `mysql`, `mongodb`, `postgresql` or `proxysql`, and service
-name is a monitoring service alias. To see which services are enabled,
-run `pmm-admin list`.
-
-**EXAMPLES**
-
-```sh
-# Removing MySQL service named mysql-sl
-pmm-admin remove mysql mysql-sl
-
-# remove MongoDB service named mongo
-pmm-admin remove mongodb mongo
-
-# remove PostgreSQL service named postgres
-pmm-admin remove postgresql postgres
-
-# remove ProxySQL service named ubuntu-proxysql
-pmm-admin remove proxysql ubuntu-proxysql
-```
-
-For more information, run `pmm-admin remove --help`.
+!!! seealso "See also"
+	- [Percona release][PERCONA_RELEASE]
 
 
 

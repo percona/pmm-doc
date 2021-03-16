@@ -16,7 +16,7 @@ Setting up PMM means:
 2. Setting up PMM Client on each node where a monitored service. Clients can run:
 
 	- [natively on Linux](client/index.md#installing-pmm-client-with-your-linux-package-manager);
-	- [as a Docker container](client/docker.md).
+	- [as a Docker container](client/index.md#run-pmm-client-as-a-docker-container).
 
 3. Configuring those services so PMM Client can extract, parse and transmit the system's metrics, and adding the service to PMM Server's inventory of monitored systems:
 
