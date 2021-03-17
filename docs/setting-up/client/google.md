@@ -132,7 +132,8 @@ The connection can be direct, or indirect using [Cloud SQL Proxy][GOOGLE_CLOUD_S
 7. Add service:
 
 	```sh
-	pmm-admin add postgresql --host=127.0.0.1 --port=5432 --username="postgres" --password=secret --service-name=PGGCP
+	pmm-admin add postgresql --host=127.0.0.1 --port=5432 \
+	--username="postgres" --password=secret --service-name=PGGCP
 	```
 
 
