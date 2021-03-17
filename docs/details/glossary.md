@@ -53,9 +53,8 @@ Security Threat Tool.
 
 ## Technical Preview
 
-Releases intended for public preview and feedback but not suitable for use on production or business-critical systems. ([Read more](https://www.percona.com/services/policies/percona-release-lifecycle-overview).)
+Releases intended for public preview and feedback but with no support or SLAs. Should not be used on production or business-critical systems. May contain breaking changes to UI, API, CLI. ([Read more](https://www.percona.com/services/policies/percona-release-lifecycle-overview).)
 
 ## VG
 
 Volume Group.
-
