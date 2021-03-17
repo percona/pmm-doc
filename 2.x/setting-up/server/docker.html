@@ -52,7 +52,7 @@
 </head>
 
 <body>
-	<!-- 2021-03-17 06:12:27.142883+00:00 -->
+	<!-- 2021-03-17 06:28:15.378302+00:00 -->
     
 <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.3/css/line.css" type="text/css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" type="text/css">
@@ -147,9 +147,10 @@ percona/pmm-server:2
 </li>
 </ol>
 <h2 id="backup-and-upgrade"><a class="toclink" href="#backup-and-upgrade">Backup and upgrade</a></h2>
+<p>You can test a new release of the PMM Server Docker image by making backups of your current <code>pmm-server</code> and <code>pmm-data</code> containers which you can restore if you need to.</p>
 <ol>
 <li>
-<p>Find out which version is installed.</p>
+<p>Find out which release you have now.</p>
 <div class="highlight"><pre><span></span><code>docker <span class="nb">exec</span> -it pmm-server curl -u admin:admin http://localhost/v1/version
 </code></pre></div>
 <div class="admonition alert alert-success">
@@ -161,7 +162,7 @@ docker <span class="nb">exec</span> -it pmm-server curl -u admin:admin http://lo
 </div>
 </li>
 <li>
-<p>Check container mount points are the same (<code>/srv</code>).</p>
+<p>Check the container mount points are the same (<code>/srv</code>).</p>
 <div class="highlight"><pre><span></span><code>docker inspect pmm-data <span class="p">|</span> grep Destination
 docker inspect pmm-server <span class="p">|</span> grep Destination
 </code></pre></div>
@@ -194,7 +195,7 @@ percona/pmm-server:2
 <p>(Optional) Repeat step 1 to confirm the version, or check the <em>PMM Upgrade</em> panel on the <em>Home Dashboard</em>.</p>
 </li>
 </ol>
-<h2 id="downgrade-and-restore"><a class="toclink" href="#downgrade-and-restore">Downgrade and restore</a></h2>
+<h2 id="restore"><a class="toclink" href="#restore">Restore</a></h2>
 <ol>
 <li>
 <p>Stop and remove the running version.</p>
@@ -235,7 +236,7 @@ docker run --rm --volumes-from pmm-data -it percona/pmm-server:2 chown -R postgr
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-03-16
+            <i class="uil uil-refresh"></i> Page updated 2021-03-17
         </li>
         
     </ul>
