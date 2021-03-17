@@ -44,7 +44,7 @@ PMM Client runs on every database host or node you want to monitor. The client c
 
 PMM Server communicates with clients, receives metrics data and presents it in a web-based user interface. PMM Server can run as: [a Docker container](setting-up/server/docker.md), an [virtual machine](setting-up/server/virtual-appliance.md), or as an [Amazon AWS EC2 instance](setting-up/server/aws.md). (Learn more about [setting up PMM Server](setting-up/server/index.md).)
 
-PMM Client runs on all hosts you want to monitor according to the type of system, be they databases ([MySQL, Percona Server, MariaDB](setting-up/client/mysql.md), [MongoDB](setting-up/client/mongodb.md), [PostgreSQL](setting-up/client/postgresql.md), [Amazon RDS](setting-up/client/aws.md), [Microsoft Azure](setting-up/client/azure.md)) or services ([ProxySQL](setting-up/client/proxysql.md), [Linux](setting-up/client/linux.md), [External services](setting-up/client/external.md), [HAProxy](setting-up/client/haproxy.md)). (Learn more about [setting up PMM Client](setting-up/client/index.md).)
+PMM Client runs on all hosts you want to monitor according to the type of system, be they databases ([MySQL, Percona Server, MariaDB](setting-up/client/mysql.md), [MongoDB](setting-up/client/mongodb.md), [PostgreSQL](setting-up/client/postgresql.md)), databases on cloud platforms ([Amazon RDS](setting-up/client/aws.md), [Microsoft Azure](setting-up/client/azure.md), [Google Cloud Platform](setting-up/client/google.md)) or services ([ProxySQL](setting-up/client/proxysql.md), [Linux](setting-up/client/linux.md), [External services](setting-up/client/external.md), [HAProxy](setting-up/client/haproxy.md)). (Learn more about [setting up PMM Client](setting-up/client/index.md).)
 
 ## Documentation site map
 
