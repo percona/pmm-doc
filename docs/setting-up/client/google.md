@@ -71,7 +71,7 @@ The connection can be direct, or indirect using [Cloud SQL Proxy][GOOGLE_CLOUD_S
 
 2. Note connection as `<project_id>:<zone>:<db_instance_name>`
 
-3. [Enable Admin API][GOOGLE_CLOUD_ADMIN_API] to download JSON file
+3. [Enable Admin API][GOOGLE_CLOUD_ADMIN_API] and download the JSON credential file
 
 4. Enable *Performance Schema*
 
@@ -81,28 +81,29 @@ The connection can be direct, or indirect using [Cloud SQL Proxy][GOOGLE_CLOUD_S
 
 		```sh
 		docker run -d \
-		-v ~/Downloads/example-project-288515-79f603c751d9.json:/config \
+		-v ~/path/to/admin-api-file.json:/config \
 		-p 127.0.0.1:3306:3306 \
 		gcr.io/cloudsql-docker/gce-proxy:1.19.1 \
 		/cloud_sql_proxy \
-		-instances=example-project-289515:us-central1:mysql-for-pmm=tcp:0.0.0.0:3306 \
+		-instances=example-project-NNNN:us-central1:mysql-for-pmm=tcp:0.0.0.0:3306 \
 		-credential_file=/config
 		```
 
-	- Native
+	- On Linux:
 
 		```sh
 		wget https://dl.google.com/cloudsql/cloud_sql_proxy.linux.amd64 -O cloud_sql_proxy
 		chmod +x cloud_sql_proxy
-		./cloud_sql_proxy -instances=example-project-289515:us-central1:mysql-for-pmm=tcp:3306 -credential_file=example-project-288515-79f603c751d9.json
+		./cloud_sql_proxy -instances=example-project-NNNN:us-central1:mysql-for-pmm=tcp:3306 \
+		-credential_file=/path/to/credential-file.json
 		```
 
 6. Add instance
 
-	CLI
-
 	```sh
-	pmm-admin add mysql --host=127.0.0.1 --port=3306 --username=root --password=secret --service-name=MySQLGCP --query-source=perfschema
+	pmm-admin add mysql --host=127.0.0.1 --port=3306 \
+	--username=root --password=secret \
+	--service-name=MySQLGCP --query-source=perfschema
 	```
 
 ### PostgreSQL
@@ -111,18 +112,14 @@ The connection can be direct, or indirect using [Cloud SQL Proxy][GOOGLE_CLOUD_S
 
 2. Note connection as `<project_id>:<zone>:<db_instance_name>`
 
-3. [Enable Admin API][GOOGLE_CLOUD_ADMIN_API]
-
-<!--
-Need pg_stat_statements?
--->
+3. [Enable Admin API][GOOGLE_CLOUD_ADMIN_API] and download the JSON credential file
 
 4. Run Cloud SQL Proxy
 
 	```sh
-	./cloud_sql_proxy -instances=example-project-289515:us-central1:pg-for-pmm=tcp:5432 -credential_file=example-project-288515-79f603c751d9.json
+	./cloud_sql_proxy -instances=example-project-NNNN:us-central1:pg-for-pmm=tcp:5432 \
+	-credential_file=/path/to/credential-file.json
 	```
-
 
 5. Log into PostgreSQL
 
@@ -132,7 +129,7 @@ Need pg_stat_statements?
 	CREATE EXTENSION pg_stat_statements;
 	```
 
-7. Add service
+7. Add service:
 
 	```sh
 	pmm-admin add postgresql --host=127.0.0.1 --port=5432 --username="postgres" --password=secret --service-name=PGGCP
