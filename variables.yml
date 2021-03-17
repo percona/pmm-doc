@@ -4,8 +4,10 @@ release: '2.15.0'
 version: '2.15'
 release_date: 2021-03-01
 
-operators:
-  vers: 'v1.7.0'
+# Setting Up/Server/DBaaS operator versions
+op:
+  pxc_vers: 'v1.7.0'
+  psmdb_vers: 'v1.7.0'
 
 # Miscellaneous values
 extra:
