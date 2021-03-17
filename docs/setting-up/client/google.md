@@ -5,25 +5,34 @@ PMM can monitor MySQL or PostgreSQL instances hosted on the [Google Cloud Platfo
 The connection can be direct, or indirect using [Cloud SQL Proxy][GOOGLE_CLOUD_SQL_PROXY].
 
 
-## Mysql
+## MySQL
 
 1. [Set up a MySQL instance on Google Cloud][GOOGLE_CLOUD_MYSQL]
 
-2. Configure network
+2. Configure network.
 
 3. Configure *Performance Schema*.
 
-	```sh
-	gcloud sql instances patch <instance_name> --database-flags performance_schema=on
-	```
+	- Click *Connect using Cloud Shell*
 
-4. Add service: *PMM --> PMM Add Instance*
+	- Run the command.
+
+		```sh
+		gcloud sql instances patch <instance_name> --database-flags performance_schema=on
+		```
+
+4. Log into the PMM user interface.
+
+5. Navigate to *PMM --> PMM Add Instance*
 
 5. Click *Add service*
+
+6. Check for values in the *MySQL Instance Overview* dashboard and *Query Analytics*
 
 <!--
 pmm-admin add ?
 -->
+
 
 ## PostgreSQL
 
@@ -39,18 +48,106 @@ pmm-admin add ?
 
 <!--
 Why not pg_stat_monitor?
+Anything to check extensions are present?
 -->
 
+4. Log into the PMM user interface.
 
-4. Add service: *PMM --> PMM Add Instance*
+5. Navigate to *PMM --> PMM Add Instance*
 
-5. For *Stat tracking options*, select *PG Stat Statements*.
+6. For *Stat tracking options*, select *PG Stat Statements*.
 
-6. Click *Add service*
+7. Click *Add service*
 
+8. Check for values in the *PostgreSQL Instance Overview* dashboard and *Query Analytics*
+
+
+
+
+
+
+
+
+## Cloud SQL Proxy
+
+### MySQL
+
+1. Create instance on GCP
+
+2. Note connection as `<project_id>:<zone>:<db_instance_name>`
+
+3. [Enable Admin API][GOOGLE_CLOUD_ADMIN_API]
+
+<!--
+Downloads a JSON file?
+-->
+
+4. Enable *Performance Schema*
+
+5. Run Cloud SQL Proxy
+
+	- As a Docker container:
+
+		```sh
+		docker run -d \
+		-v ~/Downloads/example-project-288515-79f603c751d9.json:/config \
+		-p 127.0.0.1:3306:3306 \
+		gcr.io/cloudsql-docker/gce-proxy:1.19.1 \
+		/cloud_sql_proxy \
+		-instances=example-project-289515:us-central1:mysql-for-pmm=tcp:0.0.0.0:3306 \
+		-credential_file=/config
+		```
+
+	- Native
+
+		```sh
+		wget https://dl.google.com/cloudsql/cloud_sql_proxy.linux.amd64 -O cloud_sql_proxy
+		chmod +x cloud_sql_proxy
+		./cloud_sql_proxy -instances=example-project-289515:us-central1:mysql-for-pmm=tcp:3306 -credential_file=example-project-288515-79f603c751d9.json
+		```
+
+6. Add instance
+
+	```sh
+	pmm-admin add mysql --host=127.0.0.1 --port=3306 --username=root --password=secret --service-name=MySQLGCP --query-source=perfschema
+	```
+
+### PostgreSQL
+
+1. Create instance on GCP
+
+2. Note connection as `<project_id>:<zone>:<db_instance_name>`
+
+3. [Enable Admin API][GOOGLE_CLOUD_ADMIN_API]
+
+<!--
+Need pg_stat_statements?
+-->
+
+4. Run Cloud SQL Proxy
+
+	```sh
+	./cloud_sql_proxy -instances=example-project-289515:us-central1:pg-for-pmm=tcp:5432 -credential_file=example-project-288515-79f603c751d9.json
+	```
+
+
+5. Log into PostgreSQL
+
+6. Load extension:
+
+	```sql
+	CREATE EXTENSION pg_stat_statements;
+	```
+
+7. Add service
+
+	```sh
+	pmm-admin add postgresql --host=127.0.0.1 --port=5432 --username="postgres" --password=secret --service-name=PGGCP
+	```
 
 [GOOGLE_CLOUD_SQL]: https://cloud.google.com/sql
 [GOOGLE_CLOUD]: https://cloud.google.com/
 [GOOGLE_CLOUD_MYSQL]: https://cloud.google.com/sql/docs/mysql/quickstart
 [GOOGLE_CLOUD_POSTGRESQL]: https://cloud.google.com/sql/docs/postgres/quickstart
 [GOOGLE_CLOUD_SQL_PROXY]: https://cloud.google.com/sql/docs/mysql/connect-overview#cloud_sql_proxy
+[GOOGLE_CLOUD_ADMIN_API]: https://cloud.google.com/sql/docs/mysql/admin-api#console
