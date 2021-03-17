@@ -4,6 +4,9 @@ release: '2.15.0'
 version: '2.15'
 release_date: 2021-03-01
 
+operators:
+  vers: 'v1.7.0'
+
 # Miscellaneous values
 extra:
   # Link to quickstart landing page
