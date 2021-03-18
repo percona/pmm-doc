@@ -32,7 +32,7 @@
 
 
 
-<title>Percona Monitoring and Management &mdash; User Interface</title>
+<title>Percona Monitoring and Management &mdash; Percona Monitoring and Management 2.15.1</title>
 
 <head>
     
@@ -46,13 +46,13 @@
 
     <link rel="top" title="" href="" />
     
-    <link rel="next" title="Integrated Alerting" href="alerting.html" />
+    <link rel="next" title="Percona Monitoring and Management 2.15.0" href="2.15.0.html" />
     
     
 </head>
 
 <body>
-	<!-- 2021-03-18 14:00:07.052423+00:00 -->
+	<!-- 2021-03-18 14:00:06.635405+00:00 -->
     
 <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.3/css/line.css" type="text/css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" type="text/css">
@@ -74,12 +74,12 @@
     <ul class="nav nav-pills">
         
         <li class="right" style="margin-right: 10px">
-            <a href="alerting.html" title="Integrated Alerting">Next</a>
+            <a href="2.15.0.html" title="Percona Monitoring and Management 2.15.0">Next</a>
         </li>
         
         
         <li class="right" style="margin-right: 10px">
-            <a href="index.html" title="Using">Previous</a>
+            <a href="index.html" title="Release Notes">Previous</a>
         </li>
         
         <li>
@@ -93,11 +93,11 @@
 <div class="small">
     <ul class="list-inline">
         <li class="left">
-            <a href="https://github.com/percona/pmm-doc/issues/new?title=PMM2: doc issue on page  'User Interface' (using/interface.html)&body=Please describe the issue here"
+            <a href="https://github.com/percona/pmm-doc/issues/new?title=PMM2: doc issue on page  'Percona Monitoring and Management 2.15.1' (release-notes/2.15.1.html)&body=Please describe the issue here"
                 target="_blank" title="Report an issue with this page on GitHub"><i class="uil uil-exclamation-triangle"></i> Report a problem with this page</a>
         </li>
         <li class="pull-right">
-            <a href="https://github.com/percona/pmm-doc/edit/main/docs/using/interface.md" target="_blank" title="Edit this page on GitHub in Markdown format"><i class="uil uil-pen"></i> <b>Edit this page</b></a>
+            <a href="https://github.com/percona/pmm-doc/edit/main/docs/release-notes/2.15.1.md" target="_blank" title="Edit this page on GitHub in Markdown format"><i class="uil uil-pen"></i> <b>Edit this page</b></a>
         </li>
     </ul>
 </div>
@@ -105,129 +105,35 @@
 
                 <div class="bodywrapper">
                     <div class="body">
-                        <h1 id="user-interface"><a class="toclink" href="#user-interface">User Interface</a></h1>
-<p>PMM&rsquo;s user interface is a browser application based on <a href="https://grafana.com/docs/grafana/latest/">Grafana</a>. This page explains how to log in, how the user interface is laid out, and what the controls do.</p>
-<h2 id="logging-in"><a class="toclink" href="#logging-in">Logging in</a></h2>
-<ol>
-<li>
-<p>Start a web browser and in the address bar enter the server name or IP address of the PMM server host.</p>
-</li>
-<li>
-<p>The page loads showing the PMM login screen.</p>
-<p><img alt="" src="../_images/PMM_Login.jpg" /></p>
-</li>
-<li>
-<p>Enter the username and password given to you by your system administrator.</p>
-<p>The defaults are:</p>
-<ul>
-<li>Username: <code>admin</code></li>
-<li>Password: <code>admin</code></li>
-</ul>
-</li>
-<li>
-<p>Click <em>Log in</em></p>
-</li>
-<li>
-<p>If this is your first time logging in, you&rsquo;ll be asked to set a new password. (We recommend you do.) Enter a new password in both fields and click <em>Submit</em>. You can click <em>Skip</em> to carry on with the default password.</p>
-</li>
-<li>
-<p>The PMM Home dashboard loads. (This is an example taken from <a href="https://pmmdemo.percona.com/">https://pmmdemo.percona.com/</a>. Yours may be different.)</p>
-<p><img alt="PMM Home dashboard" src="../_images/PMM_Home_Dashboard_TALL.jpg" /></p>
-</li>
-</ol>
-<h2 id="dashboards"><a class="toclink" href="#dashboards">Dashboards</a></h2>
-<p>The interface is a collection of web pages called <em>dashboards</em>.</p>
-<p>Dashboards are grouped into <em>folders</em>. You can customize these, by renaming them or creating new ones.</p>
-<p>The area inside dashboards is populated by <em>panels</em>. Some are in collapsible panel groups. A panel can show a value, a graph, a chart, or a visual representation of a set.</p>
-<h2 id="controls"><a class="toclink" href="#controls">Controls</a></h2>
-<p>These menus and controls appear on all dashboards:</p>
-<ol>
-<li>Main menu  (also <em>Grafana menu</em>, <em>side menu</em>)</li>
-<li>Navigation bar</li>
-<li>View controls</li>
-<li>View selectors (dynamic contents)</li>
-<li>Shortcut menu (dynamic contents)</li>
-</ol>
-<p><img alt="" src="../_images/PMM_Home_Dashboard_TALL_Numbered.png" /></p>
-<h2 id="navigation"><a class="toclink" href="#navigation">Navigation</a></h2>
-<p><strong>Search for a dashboard by name</strong></p>
-<p>There are two ways to open the dashboard search page. (Each takes you to the same search screen.)</p>
-<ul>
-<li>Click the <i class="uil uil-search"></i> icon in the main menu.</li>
-<li>Click the dashboard name in the navigation bar (top row, to the right of the <i class="uil uil-apps"></i> icon). (To search within the current folder, click the folder name instead of the dashboard name.)</li>
-</ul>
-<p><img alt="Search dashboards by name" src="../_images/PMM_Home_Dashboard_Search.jpg" /></p>
-<ol>
-<li>
-<p>Click <em>Search dashboards by name</em> and begin typing any part of the dashboard name (in this example, &ldquo;<em>Instances</em>&rdquo;).
-    <img alt="Search dashboards by name" src="../_images/PMM_Home_Dashboard_Search_String.jpg" /></p>
-</li>
-<li>
-<p>Click one of the search results to go to that dashboard. Change the search text to refine the list.</p>
-</li>
-<li>
-<p>To abandon the search, click the <i class="uil uil-times"></i> icon at the end of the search bar.</p>
-</li>
-</ol>
-<p><strong>Open a dashboard with the menu</strong></p>
-<p>The <a href="#shortcut-menu">shortcut menu</a> has links to commonly-used dashboards.</p>
-<p><img alt="" src="../_images/PMM_Home_Dashboard_Menus_Submenu_Bar.jpg" /></p>
-<h2 id="panels"><a class="toclink" href="#panels">Panels</a></h2>
-<p>Charts, graphs and set-based panels reveal extra information when the mouse is moved over them.</p>
-<p>Some panels have an information icon <i class="fa fa-info"></i> in the top left corner. Mouse over this to reveal panel information.</p>
-<h3 id="panel-menu"><a class="toclink" href="#panel-menu">Panel menu</a></h3>
-<p>At the top of each panel and to the right of the panel name is the <em>panel menu</em>.</p>
-<p><img alt="image" src="../_images/PMM_Common_Panel_Menu_Open.jpg" /></p>
-<blockquote>
-<p><strong>Tip</strong> The menu is hidden until you mouse over it. Look for the <i class="uil uil-angle-down"></i> symbol in the title bar of a panel.</p>
-</blockquote>
-<table class="table">
-<thead>
-<tr>
-<th align="center">Item</th>
-<th scope="col">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="center"><i class="uil uil-eye"></i> View</td>
-<td>Open the panel in full window mode</td>
-</tr>
-<tr>
-<td align="center"><i class="uil uil-share-alt"></i> Share</td>
-<td><a href="#rendering-dashboard-images">Render the panel&rsquo;s image for sharing</a></td>
-</tr>
-<tr>
-<td align="center"><i class="uil uil-compass"></i> Explore</td>
-<td>Run <a href="https://prometheus.io/docs/prometheus/latest/querying/basics/">PromQL</a> queries</td>
-</tr>
-<tr>
-<td align="center"><i class="fa fa-info-circle"></i> Inspect</td>
-<td>See the panel&rsquo;s data or definition</td>
-</tr>
-<tr>
-<td align="center"><i class="uil uil-cube"></i> More</td>
-<td>(Only charts and graphs) Additional options</td>
-</tr>
-</tbody>
+                        <h1 id="percona-monitoring-and-management-2151"><a class="toclink" href="#percona-monitoring-and-management-2151">Percona Monitoring and Management 2.15.1</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field-odd field">
+      <th class="field-name">Date:</th>
+      <td class="field-body">March 18, 2021</td>
+    </tr>
+    <tr class="field-even field">
+      <th class="field-name">Installation:</th>
+      <td class="field-body">
+        <a class="reference external" href="https://www.percona.com/software/pmm/quickstart">Installing Percona Monitoring and Management</a></td>
+    </tr>
+  </tbody>
 </table>
-<h4 id="view"><a class="toclink" href="#view">View</a></h4>
-<p>The <em>View</em> menu items opens panels in full-window mode. This is useful for graphs with several metrics.</p>
-<p>Exit a panel&rsquo;s full window mode by pressing <em>Escape</em> or clicking the left arrow <i class="uil uil-arrow-left"></i> next to the dashboard name.</p>
-<blockquote>
-<p><strong>See also</strong></p>
+
+<p>Percona Monitoring and Management (PMM) is a free and open-source platform for managing and monitoring MySQL, MongoDB, and PostgreSQL performance.</p>
+<h2 id="release-highlights"><a class="toclink" href="#release-highlights">Release Highlights</a></h2>
+<p>This patch release fixes performance issues discovered in systems where a majority of Services use push mode, together with other small fixes.</p>
+<h2 id="bugs-fixed"><a class="toclink" href="#bugs-fixed">Bugs Fixed</a></h2>
 <ul>
-<li>
-<p><a href="../how-to/render-dashboard-images.html">How to render dashboard images</a></p>
-</li>
-<li>
-<p><a href="../how-to/annotate.html">How to annotate special events</a></p>
-</li>
-<li>
-<p><a href="../details/interface.html">User interface components</a></p>
-</li>
+<li><a href="https://jira.percona.com/browse/PMM-7635">PMM-7635</a>: Fix high CPU consumption by Grafana server after upgrade by docker replacement to 2.15.0 with large numbers of services in &lsquo;push&rsquo; mode.</li>
+<li><a href="https://jira.percona.com/browse/PMM-7713">PMM-7713</a>: Fix high CPU and Memory consumption by Victoria Metrics after upgrade by docker replacement to 2.15.0 with large numbers of services in &lsquo;push&rsquo; mode.</li>
+<li><a href="https://jira.percona.com/browse/PMM-7470">PMM-7470</a>: MongoDB exporter <code>IndexStatsCollections</code> is assigned values from wrong flag (intended for 2.15.0, omitted due to missing merge cutoff) (Thanks to Tim for reporting this issue).</li>
+<li><a href="https://jira.percona.com/browse/PMM-1531">PMM-1531</a>: Metrics not being collected due to rename of MySQL 8 information schema tables.</li>
 </ul>
-</blockquote>
                     </div>
                 </div>
                 
@@ -246,12 +152,12 @@
     <ul class="nav nav-pills">
         
         <li class="right" style="margin-right: 10px">
-            <a href="alerting.html" title="Integrated Alerting">Next</a>
+            <a href="2.15.0.html" title="Percona Monitoring and Management 2.15.0">Next</a>
         </li>
         
         
         <li class="right" style="margin-right: 10px">
-            <a href="index.html" title="Using">Previous</a>
+            <a href="index.html" title="Release Notes">Previous</a>
         </li>
         
         <li>
@@ -398,7 +304,7 @@
 
 
 <li class="toctree-l1">
-    <a class="reference internal" href="index.html">Using</a>
+    <a class="reference internal" href="../using/index.html">Using</a>
 
 
 
@@ -407,25 +313,25 @@
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="interface.html">User Interface</a>
+    <a class="reference internal" href="../using/interface.html">User Interface</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="alerting.html">Integrated Alerting</a>
+    <a class="reference internal" href="../using/alerting.html">Integrated Alerting</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="query-analytics.html">Query Analytics</a>
+    <a class="reference internal" href="../using/query-analytics.html">Query Analytics</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="platform/index.html">Percona Enterprise Platform</a>
+    <a class="reference internal" href="../using/platform/index.html">Percona Enterprise Platform</a>
 
 
 
@@ -434,7 +340,7 @@
 
 
 <li class="toctree-l3">
-    <a class="reference internal" href="platform/security-threat-tool.html">Security Threat Tool</a>
+    <a class="reference internal" href="../using/platform/security-threat-tool.html">Security Threat Tool</a>
 
 
 
@@ -952,7 +858,7 @@
 
 
 <li class="toctree-l1">
-    <a class="reference internal" href="../release-notes/index.html">Release Notes</a>
+    <a class="reference internal" href="index.html">Release Notes</a>
 
 
 
@@ -961,145 +867,145 @@
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../release-notes/2.15.1.html">Percona Monitoring and Management 2.15.1</a>
+    <a class="reference internal" href="2.15.1.html">Percona Monitoring and Management 2.15.1</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../release-notes/2.15.0.html">Percona Monitoring and Management 2.15.0</a>
+    <a class="reference internal" href="2.15.0.html">Percona Monitoring and Management 2.15.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../release-notes/2.14.0.html">Percona Monitoring and Management 2.14.0</a>
+    <a class="reference internal" href="2.14.0.html">Percona Monitoring and Management 2.14.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../release-notes/2.13.0.html">Percona Monitoring and Management 2.13.0</a>
+    <a class="reference internal" href="2.13.0.html">Percona Monitoring and Management 2.13.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../release-notes/2.12.0.html">Percona Monitoring and Management 2.12.0</a>
+    <a class="reference internal" href="2.12.0.html">Percona Monitoring and Management 2.12.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../release-notes/2.11.1.html">Percona Monitoring and Management 2.11.1</a>
+    <a class="reference internal" href="2.11.1.html">Percona Monitoring and Management 2.11.1</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../release-notes/2.11.0.html">Percona Monitoring and Management 2.11.0</a>
+    <a class="reference internal" href="2.11.0.html">Percona Monitoring and Management 2.11.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../release-notes/2.10.1.html">Percona Monitoring and Management 2.10.1</a>
+    <a class="reference internal" href="2.10.1.html">Percona Monitoring and Management 2.10.1</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../release-notes/2.10.0.html">Percona Monitoring and Management 2.10.0</a>
+    <a class="reference internal" href="2.10.0.html">Percona Monitoring and Management 2.10.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../release-notes/2.9.1.html">Percona Monitoring and Management 2.9.1</a>
+    <a class="reference internal" href="2.9.1.html">Percona Monitoring and Management 2.9.1</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../release-notes/2.9.0.html">Percona Monitoring and Management 2.9.0</a>
+    <a class="reference internal" href="2.9.0.html">Percona Monitoring and Management 2.9.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../release-notes/2.8.0.html">Percona Monitoring and Management 2.8.0</a>
+    <a class="reference internal" href="2.8.0.html">Percona Monitoring and Management 2.8.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../release-notes/2.7.0.html">Percona Monitoring and Management 2.7.0</a>
+    <a class="reference internal" href="2.7.0.html">Percona Monitoring and Management 2.7.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../release-notes/2.6.1.html">Percona Monitoring and Management 2.6.1</a>
+    <a class="reference internal" href="2.6.1.html">Percona Monitoring and Management 2.6.1</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../release-notes/2.6.0.html">Percona Monitoring and Management 2.6.0</a>
+    <a class="reference internal" href="2.6.0.html">Percona Monitoring and Management 2.6.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../release-notes/2.5.0.html">Percona Monitoring and Management 2.5.0</a>
+    <a class="reference internal" href="2.5.0.html">Percona Monitoring and Management 2.5.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../release-notes/2.4.0.html">Percona Monitoring and Management 2.4.0</a>
+    <a class="reference internal" href="2.4.0.html">Percona Monitoring and Management 2.4.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../release-notes/2.3.0.html">Percona Monitoring and Management 2.3.0</a>
+    <a class="reference internal" href="2.3.0.html">Percona Monitoring and Management 2.3.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../release-notes/2.2.2.html">Percona Monitoring and Management 2.2.2</a>
+    <a class="reference internal" href="2.2.2.html">Percona Monitoring and Management 2.2.2</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../release-notes/2.2.1.html">Percona Monitoring and Management 2.2.1</a>
+    <a class="reference internal" href="2.2.1.html">Percona Monitoring and Management 2.2.1</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../release-notes/2.2.0.html">Percona Monitoring and Management 2.2.0</a>
+    <a class="reference internal" href="2.2.0.html">Percona Monitoring and Management 2.2.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../release-notes/2.1.0.html">Percona Monitoring and Management 2.1.0</a>
+    <a class="reference internal" href="2.1.0.html">Percona Monitoring and Management 2.1.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../release-notes/2.0.1.html">Percona Monitoring and Management 2.0.1</a>
+    <a class="reference internal" href="2.0.1.html">Percona Monitoring and Management 2.0.1</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../release-notes/2.0.0.html">Percona Monitoring and Management 2.0.0</a>
+    <a class="reference internal" href="2.0.0.html">Percona Monitoring and Management 2.0.0</a>
 
 
 
@@ -1115,13 +1021,13 @@
 
 <h4>Previous page</h4>
 <p class="topless">
-    <a href="index.html" title="previous chapter">Using</a>
+    <a href="index.html" title="previous chapter">Release Notes</a>
 </p>
 
 
 <h4>Next page</h4>
 <p class="topless">
-    <a href="alerting.html" title="next chapter">Integrated Alerting</a>
+    <a href="2.15.0.html" title="next chapter">Percona Monitoring and Management 2.15.0</a>
 </p>
 
 
