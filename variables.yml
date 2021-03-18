@@ -2,7 +2,7 @@
 # See also mkdocs.yml plugins.with-pdf.cover_subtitle and output_path
 release: '2.16.0'
 version: '2.16'
-release_date: 2021-04-XX
+release_date: 2021-04-06
 
 # Miscellaneous values
 extra:
