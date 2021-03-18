@@ -52,7 +52,7 @@
 </head>
 
 <body>
-	<!-- 2021-03-18 09:57:23.260686+00:00 -->
+	<!-- 2021-03-18 10:16:02.363612+00:00 -->
     
 <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.3/css/line.css" type="text/css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" type="text/css">
@@ -153,13 +153,12 @@ percona/pmm-server:2
 <p>Find out which release you have now.</p>
 <div class="highlight"><pre><span></span><code>docker <span class="nb">exec</span> -it pmm-server curl -u admin:admin http://localhost/v1/version
 </code></pre></div>
-<div class="admonition alert alert-success">
-<p class="admonition-title">Tip</p>
-<p>Use <code>jq</code> to extract the quoted string value.</p>
+<blockquote>
+<p><strong>Tip:</strong> Use <code>jq</code> to extract the quoted string value.
 <div class="highlight"><pre><span></span><code>sudo apt install jq <span class="c1"># Example for Debian, Ubuntu</span>
 docker <span class="nb">exec</span> -it pmm-server curl -u admin:admin http://localhost/v1/version <span class="p">|</span> jq .version
-</code></pre></div>
-</div>
+</code></pre></div></p>
+</blockquote>
 </li>
 <li>
 <p>Check the container mount points are the same (<code>/srv</code>).</p>
@@ -236,7 +235,7 @@ docker run --rm --volumes-from pmm-data -it percona/pmm-server:2 chown -R postgr
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-03-17
+            <i class="uil uil-refresh"></i> Page updated 2021-03-18
         </li>
         
     </ul>
