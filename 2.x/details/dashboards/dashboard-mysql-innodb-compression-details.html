@@ -52,7 +52,7 @@
 </head>
 
 <body>
-	<!-- 2021-03-18 15:22:34.528374+00:00 -->
+	<!-- 2021-03-18 16:51:30.611515+00:00 -->
     
 <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.3/css/line.css" type="text/css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" type="text/css">
@@ -105,10 +105,10 @@
 
                 <div class="bodywrapper">
                     <div class="body">
-                        <h1 id="mysql-innodb-compression-details"><a class="toclink" href="#mysql-innodb-compression-details">MySQL InnoDB Compression Details</a></h1>
+                        <h1 id="mysql-innodb-compression-details">MySQL InnoDB Compression Details<a class="headerlink" href="#mysql-innodb-compression-details" title="Permanent link">&para;</a></h1>
 <p><img alt="image" src="../../_images/PMM_MySQL_InnoDB_Compression_Details.jpg" /></p>
 <p>This dashboard helps you analyze the efficiency of InnoDB compression.</p>
-<h2 id="compression-level-and-failure-rate-threshold"><a class="toclink" href="#compression-level-and-failure-rate-threshold">Compression level and failure rate threshold</a></h2>
+<h2 id="compression-level-and-failure-rate-threshold">Compression level and failure rate threshold<a class="headerlink" href="#compression-level-and-failure-rate-threshold" title="Permanent link">&para;</a></h2>
 <dl>
 <dt>InnoDB Compression Level</dt>
 <dd>The level of zlib compression to use for InnoDB compressed tables and indexes.</dd>
@@ -119,21 +119,21 @@
 <dt>Write Pages to the Redo Log</dt>
 <dd>Specifies whether images of re-compressed pages are written to the redo log. Re-compression may occur when changes are made to compressed data.</dd>
 </dl>
-<h2 id="statistic-of-compression-operations"><a class="toclink" href="#statistic-of-compression-operations">Statistic of compression operations</a></h2>
+<h2 id="statistic-of-compression-operations">Statistic of compression operations<a class="headerlink" href="#statistic-of-compression-operations" title="Permanent link">&para;</a></h2>
 <dl>
 <dt>Compress Attempts</dt>
 <dd>Number of compression operations attempted. Pages are compressed whenever an empty page is created or the space for the uncompressed modification log runs out.</dd>
 <dt>Uncompressed Attempts</dt>
 <dd>Number of uncompression operations performed. Compressed InnoDB pages are uncompressed whenever compression fails, or the first time a compressed page is accessed in the buffer pool and the uncompressed page does not exist.</dd>
 </dl>
-<h2 id="cpu-core-usage"><a class="toclink" href="#cpu-core-usage">CPU Core Usage</a></h2>
+<h2 id="cpu-core-usage">CPU Core Usage<a class="headerlink" href="#cpu-core-usage" title="Permanent link">&para;</a></h2>
 <dl>
 <dt>CPU Core Usage for Compression</dt>
 <dd>Shows the time in seconds spent by InnoDB Compression operations.</dd>
 <dt>CPU Core Usage for Uncompression</dt>
 <dd>Shows the time in seconds spent by InnoDB Uncompression operations.</dd>
 </dl>
-<h2 id="buffer-pool-total"><a class="toclink" href="#buffer-pool-total">Buffer Pool Total</a></h2>
+<h2 id="buffer-pool-total">Buffer Pool Total<a class="headerlink" href="#buffer-pool-total" title="Permanent link">&para;</a></h2>
 <dl>
 <dt>Total Used Pages</dt>
 <dd>Shows the total amount of used compressed pages into the InnoDB Buffer Pool split by page size.</dd>

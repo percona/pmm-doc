@@ -52,7 +52,7 @@
 </head>
 
 <body>
-	<!-- 2021-03-18 15:22:34.308515+00:00 -->
+	<!-- 2021-03-18 16:51:30.357042+00:00 -->
     
 <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.3/css/line.css" type="text/css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" type="text/css">
@@ -105,10 +105,11 @@
 
                 <div class="bodywrapper">
                     <div class="body">
-                        <h1 id="pmm-admin-administration-tool"><a class="toclink" href="#pmm-admin-administration-tool">pmm-admin - Administration Tool</a></h1>
+                        <h1 id="pmm-admin-administration-tool">pmm-admin - Administration Tool<a class="headerlink" href="#pmm-admin-administration-tool" title="Permanent link">&para;</a></h1>
 <hr />
 <div class="toc">
 <ul>
+<li><a href="#pmm-admin-administration-tool">pmm-admin - Administration Tool</a><ul>
 <li><a href="#name">NAME</a></li>
 <li><a href="#synopsis">SYNOPSIS</a></li>
 <li><a href="#description">DESCRIPTION</a></li>
@@ -116,8 +117,21 @@
 <li><a href="#commands">COMMANDS</a><ul>
 <li><a href="#general-commands">GENERAL COMMANDS</a></li>
 <li><a href="#information-commands">INFORMATION COMMANDS</a></li>
-<li><a href="#configuration-commands">CONFIGURATION COMMANDS</a></li>
-<li><a href="#database-commands">DATABASE COMMANDS</a></li>
+<li><a href="#configuration-commands">CONFIGURATION COMMANDS</a><ul>
+<li><a href="#pmm-admin-config">pmm-admin config</a></li>
+<li><a href="#pmm-admin-register">pmm-admin register</a></li>
+<li><a href="#pmm-admin-remove">pmm-admin remove</a></li>
+<li><a href="#pmm-admin-annotate">pmm-admin annotate</a></li>
+</ul>
+</li>
+<li><a href="#database-commands">DATABASE COMMANDS</a><ul>
+<li><a href="#mongodb">MongoDB</a></li>
+<li><a href="#mysql">MySQL</a></li>
+<li><a href="#postgresql">PostgreSQL</a></li>
+<li><a href="#proxysql">ProxySQL</a></li>
+<li><a href="#haproxy">HAProxy</a></li>
+</ul>
+</li>
 <li><a href="#other-commands">OTHER COMMANDS</a></li>
 </ul>
 </li>
@@ -126,11 +140,13 @@
 </ul>
 </li>
 </ul>
+</li>
+</ul>
 </div>
 <hr />
-<h2 id="name"><a class="toclink" href="#name">NAME</a></h2>
+<h2 id="name">NAME<a class="headerlink" href="#name" title="Permanent link">&para;</a></h2>
 <p><code>pmm-admin</code> - Administer PMM</p>
-<h2 id="synopsis"><a class="toclink" href="#synopsis">SYNOPSIS</a></h2>
+<h2 id="synopsis">SYNOPSIS<a class="headerlink" href="#synopsis" title="Permanent link">&para;</a></h2>
 <p><code>pmm-admin [FLAGS]</code></p>
 <p><code>pmm-admin config [FLAGS] --server-url=server-url</code></p>
 <p><code>pmm-admin add DATABASE [FLAGS] [NAME] [ADDRESS]</code></p>
@@ -146,10 +162,10 @@
 <p><code>pmm-admin summary [FLAGS] [node-address]</code></p>
 <p><code>pmm-admin annotate [--node|--service] [--tags &lt;tags&gt;] [node-name|service-name]</code></p>
 <p><code>pmm-admin help [COMMAND]</code></p>
-<h2 id="description"><a class="toclink" href="#description">DESCRIPTION</a></h2>
+<h2 id="description">DESCRIPTION<a class="headerlink" href="#description" title="Permanent link">&para;</a></h2>
 <p><code>pmm-admin</code> is a command-line tool for administering PMM using a set of COMMAND keywords and associated FLAGS.</p>
 <p>PMM communicates with the PMM Server via a PMM agent process.</p>
-<h2 id="common-flags"><a class="toclink" href="#common-flags">COMMON FLAGS</a></h2>
+<h2 id="common-flags">COMMON FLAGS<a class="headerlink" href="#common-flags" title="Permanent link">&para;</a></h2>
 <dl>
 <dt><code>-h</code>, <code>--help</code></dt>
 <dd>Show help and exit.</dd>
@@ -172,13 +188,13 @@
 <dt><code>--group=&lt;group-name&gt;</code></dt>
 <dd>Group name for external services. Default: <code>external</code></dd>
 </dl>
-<h2 id="commands"><a class="toclink" href="#commands">COMMANDS</a></h2>
-<h3 id="general-commands"><a class="toclink" href="#general-commands">GENERAL COMMANDS</a></h3>
+<h2 id="commands">COMMANDS<a class="headerlink" href="#commands" title="Permanent link">&para;</a></h2>
+<h3 id="general-commands">GENERAL COMMANDS<a class="headerlink" href="#general-commands" title="Permanent link">&para;</a></h3>
 <dl>
 <dt><code>pmm-admin help [COMMAND]</code></dt>
 <dd>Show help for <code>COMMAND</code>.</dd>
 </dl>
-<h3 id="information-commands"><a class="toclink" href="#information-commands">INFORMATION COMMANDS</a></h3>
+<h3 id="information-commands">INFORMATION COMMANDS<a class="headerlink" href="#information-commands" title="Permanent link">&para;</a></h3>
 <dl>
 <dt><code>pmm-admin list --server-url=server-url [FLAGS]</code></dt>
 <dd>Show Services and Agents running on this Node, and the agent mode (push/pull).</dd>
@@ -211,8 +227,8 @@
 </dl>
 </dd>
 </dl>
-<h3 id="configuration-commands"><a class="toclink" href="#configuration-commands">CONFIGURATION COMMANDS</a></h3>
-<h4 id="pmm-admin-config"><a class="toclink" href="#pmm-admin-config"><code>pmm-admin config</code></a></h4>
+<h3 id="configuration-commands">CONFIGURATION COMMANDS<a class="headerlink" href="#configuration-commands" title="Permanent link">&para;</a></h3>
+<h4 id="pmm-admin-config"><code>pmm-admin config</code><a class="headerlink" href="#pmm-admin-config" title="Permanent link">&para;</a></h4>
 <dl>
 <dt><code>pmm-admin config [FLAGS] [node-address] [node-type] [node-name]</code></dt>
 <dd>
@@ -235,7 +251,7 @@
 </dl>
 </dd>
 </dl>
-<h4 id="pmm-admin-register"><a class="toclink" href="#pmm-admin-register"><code>pmm-admin register</code></a></h4>
+<h4 id="pmm-admin-register"><code>pmm-admin register</code><a class="headerlink" href="#pmm-admin-register" title="Permanent link">&para;</a></h4>
 <dl>
 <dt><code>pmm-admin register [FLAGS] [node-address] [node-type] [node-name]</code></dt>
 <dd>
@@ -262,7 +278,7 @@
 </dl>
 </dd>
 </dl>
-<h4 id="pmm-admin-remove"><a class="toclink" href="#pmm-admin-remove"><code>pmm-admin remove</code></a></h4>
+<h4 id="pmm-admin-remove"><code>pmm-admin remove</code><a class="headerlink" href="#pmm-admin-remove" title="Permanent link">&para;</a></h4>
 <dl>
 <dt><code>pmm-admin remove [FLAGS] service-type [service-name]</code></dt>
 <dd>
@@ -276,7 +292,7 @@
 </dd>
 </dl>
 <p>When you remove a service, collected data remains on PMM Server for the specified <a href="../../faq.html#how-to-control-data-retention-for-pmm">retention period</a>.</p>
-<h4 id="pmm-admin-annotate"><a class="toclink" href="#pmm-admin-annotate"><code>pmm-admin annotate</code></a></h4>
+<h4 id="pmm-admin-annotate"><code>pmm-admin annotate</code><a class="headerlink" href="#pmm-admin-annotate" title="Permanent link">&para;</a></h4>
 <dl>
 <dt><code>pmm-admin annotate [--node|--service] &lt;annotation&gt; [--tags &lt;tags&gt;] [--node-name=&lt;node&gt;] [--service-name=&lt;service&gt;]</code></dt>
 <dd>
@@ -331,8 +347,8 @@
 </div>
 </dd>
 </dl>
-<h3 id="database-commands"><a class="toclink" href="#database-commands">DATABASE COMMANDS</a></h3>
-<h4 id="mongodb"><a class="toclink" href="#mongodb">MongoDB</a></h4>
+<h3 id="database-commands">DATABASE COMMANDS<a class="headerlink" href="#database-commands" title="Permanent link">&para;</a></h3>
+<h4 id="mongodb">MongoDB<a class="headerlink" href="#mongodb" title="Permanent link">&para;</a></h4>
 <dl>
 <dt><code>pmm-admin add mongodb [FLAGS] [node-name] [node-address]</code></dt>
 <dd>
@@ -377,7 +393,7 @@
 </dl>
 </dd>
 </dl>
-<h4 id="mysql"><a class="toclink" href="#mysql">MySQL</a></h4>
+<h4 id="mysql">MySQL<a class="headerlink" href="#mysql" title="Permanent link">&para;</a></h4>
 <dl>
 <dt><code>pmm-admin add mysql [FLAGS] node-name node-address | [--name=service-name] --address=address[:port] | --socket</code></dt>
 <dd>
@@ -456,7 +472,7 @@
 </dl>
 </dd>
 </dl>
-<h4 id="postgresql"><a class="toclink" href="#postgresql">PostgreSQL</a></h4>
+<h4 id="postgresql">PostgreSQL<a class="headerlink" href="#postgresql" title="Permanent link">&para;</a></h4>
 <dl>
 <dt><code>pmm-admin add postgresql [FLAGS] [node-name] [node-address]</code></dt>
 <dd>
@@ -495,7 +511,7 @@
 </dl>
 </dd>
 </dl>
-<h4 id="proxysql"><a class="toclink" href="#proxysql">ProxySQL</a></h4>
+<h4 id="proxysql">ProxySQL<a class="headerlink" href="#proxysql" title="Permanent link">&para;</a></h4>
 <dl>
 <dt><code>pmm-admin add proxysql [FLAGS] [node-name] [node-address]</code></dt>
 <dd>
@@ -534,7 +550,7 @@
 </dl>
 </dd>
 </dl>
-<h4 id="haproxy"><a class="toclink" href="#haproxy">HAProxy</a></h4>
+<h4 id="haproxy">HAProxy<a class="headerlink" href="#haproxy" title="Permanent link">&para;</a></h4>
 <dl>
 <dt><code>pmm-admin add haproxy [FLAGS] [NAME]</code></dt>
 <dd>
@@ -575,7 +591,7 @@
 </dl>
 </dd>
 </dl>
-<h3 id="other-commands"><a class="toclink" href="#other-commands">OTHER COMMANDS</a></h3>
+<h3 id="other-commands">OTHER COMMANDS<a class="headerlink" href="#other-commands" title="Permanent link">&para;</a></h3>
 <dl>
 <dt><code>pmm-admin add external [FLAGS]</code></dt>
 <dd>
@@ -664,7 +680,7 @@ build the destination URL or even you can specify <code>--address</code> instead
 </dl>
 </dd>
 </dl>
-<h2 id="examples"><a class="toclink" href="#examples">EXAMPLES</a></h2>
+<h2 id="examples">EXAMPLES<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>pmm-admin add mysql --query-source<span class="o">=</span>slowlog --username<span class="o">=</span>pmm --password<span class="o">=</span>pmm sl-mysql <span class="m">127</span>.0.0.1:3306
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>MySQL Service added.
@@ -690,7 +706,7 @@ PMM Client:
 Agents:
  /agent_id/aeb42475-486c-4f48-a906-9546fc7859e8 mysql_slowlog_agent Running
 </code></pre></div>
-<h3 id="disable-collectors"><a class="toclink" href="#disable-collectors">Disable collectors</a></h3>
+<h3 id="disable-collectors">Disable collectors<a class="headerlink" href="#disable-collectors" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>pmm-admin add mysql --disable-collectors<span class="o">=</span><span class="s1">&#39;heartbeat,global_status,info_schema.innodb_cmp&#39;</span> --username<span class="o">=</span>pmm --password<span class="o">=</span>pmm --service-name<span class="o">=</span>db1-mysql --host<span class="o">=</span><span class="m">127</span>.0.0.1 --port<span class="o">=</span><span class="m">3306</span>
 </code></pre></div>
 <p>For other collectors that you can disable with the <code>--disable-collectors</code> option, please visit the official repositories for each exporter:</p>

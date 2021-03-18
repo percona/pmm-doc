@@ -52,7 +52,7 @@
 </head>
 
 <body>
-	<!-- 2021-03-18 15:22:35.383921+00:00 -->
+	<!-- 2021-03-18 16:51:31.527231+00:00 -->
     
 <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.3/css/line.css" type="text/css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" type="text/css">
@@ -105,7 +105,7 @@
 
                 <div class="bodywrapper">
                     <div class="body">
-                        <h1 id="aws-marketplace"><a class="toclink" href="#aws-marketplace">AWS Marketplace</a></h1>
+                        <h1 id="aws-marketplace">AWS Marketplace<a class="headerlink" href="#aws-marketplace" title="Permanent link">&para;</a></h1>
 <p>You can run an instance of PMM Server hosted at AWS Marketplace.</p>
 <p>Assuming that you have an AWS (Amazon Web Services) account, locate <em>Percona Monitoring and Management Server</em> in <a href="https://aws.amazon.com/marketplace">AWS Marketplace</a> (or use <a href="https://aws.amazon.com/marketplace/pp/B077J7FYGX">this link</a>).</p>
 <p><img alt="" src="../../_images/PMM_AWS_Marketplace.png" /></p>
@@ -159,7 +159,7 @@ consumes approximately 230MB/host/day, or ~6.9GB/host at the default 30 day rete
 </ol>
 </li>
 </ol>
-<h2 id="limiting-access-to-the-instance-security-group-and-a-key-pair"><a class="toclink" href="#limiting-access-to-the-instance-security-group-and-a-key-pair">Limiting Access to the instance: security group and a key pair</a></h2>
+<h2 id="limiting-access-to-the-instance-security-group-and-a-key-pair">Limiting Access to the instance: security group and a key pair<a class="headerlink" href="#limiting-access-to-the-instance-security-group-and-a-key-pair" title="Permanent link">&para;</a></h2>
 <p>In the <em>Security Group</em> section, which acts like a firewall, you may use the preselected option <code>Create new based on seller settings</code> to create a security group with recommended settings. In the <em>Key Pair</em> select an already set up EC2 key pair to limit access to your instance.</p>
 <p><img alt="image" src="../../_images/aws-marketplace.pmm.launch-on-ec2.1-click-launch.3.png" /></p>
 <div class="admonition alert alert-info">
@@ -167,7 +167,7 @@ consumes approximately 230MB/host/day, or ~6.9GB/host at the default 30 day rete
 <p>It is important that the security group allow communication via the the following ports: <em>22</em>, <em>80</em>, and <em>443</em>. PMM should also be able to access port <em>3306</em> on the RDS that uses the instance.</p>
 </div>
 <p><img alt="image" src="../../_images/aws-marketplace.pmm.launch-on-ec2.1-click-launch.2.png" /></p>
-<h2 id="applying-settings"><a class="toclink" href="#applying-settings">Applying settings</a></h2>
+<h2 id="applying-settings">Applying settings<a class="headerlink" href="#applying-settings" title="Permanent link">&para;</a></h2>
 <p>Scroll up to the top of the page to view your settings. Then, click the <em>Launch with 1 click</em> button to continue and adjust your settings in the EC2 console.</p>
 <p>Your instance settings are summarized in a special area. Click the Launch with 1 click button to continue.</p>
 <p><img alt="image" src="../../_images/aws-marketplace.pmm.launch-on-ec2.1-click-launch.3.png" /></p>
@@ -175,11 +175,11 @@ consumes approximately 230MB/host/day, or ~6.9GB/host at the default 30 day rete
 <p class="admonition-title">Note</p>
 <p>The <em>Launch with 1 click</em> button may alternatively be titled as <em>Accept Software Terms &amp; Launch with 1-Click</em>.</p>
 </div>
-<h2 id="adjusting-instance-settings-in-the-ec2-console"><a class="toclink" href="#adjusting-instance-settings-in-the-ec2-console">Adjusting instance settings in the EC2 Console</a></h2>
+<h2 id="adjusting-instance-settings-in-the-ec2-console">Adjusting instance settings in the EC2 Console<a class="headerlink" href="#adjusting-instance-settings-in-the-ec2-console" title="Permanent link">&para;</a></h2>
 <p>Your clicking the <em>Launch with 1 click</em> button, deploys your instance. To continue setting up your instance, run the EC2 console. It is available as a link at the top of the page that opens after you click the <em>Launch with 1 click</em> button.</p>
 <p>Your instance appears in the EC2 console in a table that lists all instances available to you. When a new instance is only created, it has no name. Make sure that you give it a name to distinguish from other instances managed via the EC2 console.</p>
 <p><img alt="image" src="../../_images/aws-marketplace.ec2-console.pmm.1.png" /></p>
-<h2 id="running-the-instance"><a class="toclink" href="#running-the-instance">Running the instance</a></h2>
+<h2 id="running-the-instance">Running the instance<a class="headerlink" href="#running-the-instance" title="Permanent link">&para;</a></h2>
 <p>After you add your new instance it will take some time to initialize it. When the AWS console reports that the instance is now in a running state, you many continue with configuration of PMM Server.</p>
 <div class="admonition alert alert-info">
 <p class="admonition-title">Note</p>
@@ -218,14 +218,14 @@ consumes approximately 230MB/host/day, or ~6.9GB/host at the default 30 day rete
 <p>Make sure to replace the user name <code>ec2-user</code> used in this document with <code>admin</code>.</p>
 </li>
 </ol>
-<h2 id="resizing-the-ebs-volume"><a class="toclink" href="#resizing-the-ebs-volume">Resizing the EBS Volume</a></h2>
+<h2 id="resizing-the-ebs-volume">Resizing the EBS Volume<a class="headerlink" href="#resizing-the-ebs-volume" title="Permanent link">&para;</a></h2>
 <p>Your AWS instance comes with a predefined size which can become a limitation. To make more disk space available to your instance, you need to increase the size of the EBS volume as needed and then your instance will reconfigure itself to use the new size.</p>
 <p>The procedure of resizing EBS volumes is described in the Amazon documentation: <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-modify-volume.html">Modifying the Size, IOPS, or Type of an EBS Volume on Linux</a>.</p>
 <p>After the EBS volume is updated, PMM Server instance will auto-detect changes in approximately 5 minutes or less and will reconfigure itself for the updated conditions.</p>
-<h2 id="upgrading-pmm-server-on-aws"><a class="toclink" href="#upgrading-pmm-server-on-aws">Upgrading PMM Server on AWS</a></h2>
-<h3 id="upgrading-ec2-instance-class"><a class="toclink" href="#upgrading-ec2-instance-class">Upgrading EC2 instance class</a></h3>
+<h2 id="upgrading-pmm-server-on-aws">Upgrading PMM Server on AWS<a class="headerlink" href="#upgrading-pmm-server-on-aws" title="Permanent link">&para;</a></h2>
+<h3 id="upgrading-ec2-instance-class">Upgrading EC2 instance class<a class="headerlink" href="#upgrading-ec2-instance-class" title="Permanent link">&para;</a></h3>
 <p>Upgrading to a larger EC2 instance class is supported by PMM provided you follow the instructions from the <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-resize.html">AWS manual</a>. The PMM AMI image uses a distinct EBS volume for the PMM data volume which permits independent resizing of the EC2 instance without impacting the EBS volume.</p>
-<h3 id="expanding-the-pmm-data-ebs-volume"><a class="toclink" href="#expanding-the-pmm-data-ebs-volume">Expanding the PMM Data EBS Volume</a></h3>
+<h3 id="expanding-the-pmm-data-ebs-volume">Expanding the PMM Data EBS Volume<a class="headerlink" href="#expanding-the-pmm-data-ebs-volume" title="Permanent link">&para;</a></h3>
 <p>The PMM data volume is mounted as an XFS formatted volume on top of an LVM volume. There are two ways to increase this volume size:</p>
 <ol>
 <li>
@@ -235,7 +235,7 @@ consumes approximately 230MB/host/day, or ~6.9GB/host at the default 30 day rete
 <p>Expand existing EBS volume and grow the LVM volume.</p>
 </li>
 </ol>
-<h3 id="expand-existing-ebs-volume"><a class="toclink" href="#expand-existing-ebs-volume">Expand existing EBS volume</a></h3>
+<h3 id="expand-existing-ebs-volume">Expand existing EBS volume<a class="headerlink" href="#expand-existing-ebs-volume" title="Permanent link">&para;</a></h3>
 <p>To expand the existing EBS volume for increased capacity, follow these steps.</p>
 <ol>
 <li>

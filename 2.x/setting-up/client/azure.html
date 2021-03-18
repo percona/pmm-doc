@@ -52,7 +52,7 @@
 </head>
 
 <body>
-	<!-- 2021-03-18 15:22:35.242372+00:00 -->
+	<!-- 2021-03-18 16:51:31.378092+00:00 -->
     
 <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.3/css/line.css" type="text/css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" type="text/css">
@@ -105,30 +105,30 @@
 
                 <div class="bodywrapper">
                     <div class="body">
-                        <h1 id="microsoft-azure"><a class="toclink" href="#microsoft-azure">Microsoft Azure</a></h1>
-<h2 id="required-settings"><a class="toclink" href="#required-settings">Required settings</a></h2>
+                        <h1 id="microsoft-azure">Microsoft Azure<a class="headerlink" href="#microsoft-azure" title="Permanent link">&para;</a></h1>
+<h2 id="required-settings">Required settings<a class="headerlink" href="#required-settings" title="Permanent link">&para;</a></h2>
 <p>It is possible to use PMM for monitoring <a href="https://azure.microsoft.com">Azure</a> database instances like other remote instances. In this case, the PMM Client is not installed on the host where the database server is deployed. By using the PMM web interface, you connect to the Azure DB instance. Discovery is not yet implemented in PMM but it is possible to add known instances by providing the connection parameters.</p>
 <p>First of all, ensure that there is the minimal latency between PMM Server and the Azure instance.</p>
 <p>Second, add a firewall rule to enable access from PMM Client like this:</p>
 <p><img alt="image" src="../../_images/azure-firewall.png" /></p>
-<h2 id="setting-up-a-mysql-instance"><a class="toclink" href="#setting-up-a-mysql-instance">Setting up a MySQL instance</a></h2>
+<h2 id="setting-up-a-mysql-instance">Setting up a MySQL instance<a class="headerlink" href="#setting-up-a-mysql-instance" title="Permanent link">&para;</a></h2>
 <p>Query Analytics requires you to configure <em>Performance Schema</em> as the query source, because the slow query log is stored on the Azure side, and QAN agent is not able to read it.  Enable the <code>performance_schema</code> option under <code>Parameter Groups</code> in Amazon RDS.</p>
 <p>When adding a monitoring instance for Azure, specify a unique name to distinguish it from the local MySQL instance.  If you do not specify a name, it will use the client’s host name.</p>
 <p>Create the <code>pmm</code> user with the following privileges on the Amazon RDS instance that you want to monitor:</p>
 <div class="highlight"><pre><span></span><code><span class="k">GRANT</span> <span class="k">SELECT</span><span class="p">,</span> <span class="n">PROCESS</span><span class="p">,</span> <span class="n">REPLICATION</span> <span class="n">CLIENT</span> <span class="k">ON</span> <span class="o">*</span><span class="p">.</span><span class="o">*</span> <span class="k">TO</span> <span class="s1">&#39;pmm&#39;</span><span class="o">@</span><span class="s1">&#39;%&#39;</span> <span class="n">IDENTIFIED</span> <span class="k">BY</span> <span class="s1">&#39;pass&#39;</span> <span class="k">WITH</span> <span class="n">MAX_USER_CONNECTIONS</span> <span class="mi">10</span><span class="p">;</span>
 <span class="k">GRANT</span> <span class="k">SELECT</span><span class="p">,</span> <span class="k">UPDATE</span><span class="p">,</span> <span class="k">DELETE</span><span class="p">,</span> <span class="k">DROP</span> <span class="k">ON</span> <span class="n">performance_schema</span><span class="p">.</span><span class="o">*</span> <span class="k">TO</span> <span class="s1">&#39;pmm&#39;</span><span class="o">@</span><span class="s1">&#39;%&#39;</span><span class="p">;</span>
 </code></pre></div>
-<h1 id="adding-an-azure-instance"><a class="toclink" href="#adding-an-azure-instance">Adding an Azure Instance</a></h1>
+<h1 id="adding-an-azure-instance">Adding an Azure Instance<a class="headerlink" href="#adding-an-azure-instance" title="Permanent link">&para;</a></h1>
 <p>Follow the instructions for remotes instances explained <a href="aws.html">here</a>.</p>
 <p>Example:</p>
 <p><img alt="image" src="../../_images/azure-add-mysql-1.png" /></p>
 <p>and be sure to set <em>Performance Schema</em> as the query collection method for Query Analytics.</p>
 <p><img alt="image" src="../../_images/azure-add-mysql-2.png" /></p>
-<h1 id="mariadb"><a class="toclink" href="#mariadb">MariaDB.</a></h1>
+<h1 id="mariadb">MariaDB.<a class="headerlink" href="#mariadb" title="Permanent link">&para;</a></h1>
 <p>MariaDB up to version 10.2 works out of the box but starting with MariaDB 10.3 instrumentation is disabled by default and cannot be enabled since there
 is no SUPER role in Azure-MariaDB. So, it is not possible to run the required queries to enable instrumentation. Monitoring will work but Query Analytics
 won&rsquo;t receive any query data.</p>
-<h1 id="postgresql"><a class="toclink" href="#postgresql">PostgreSQL</a></h1>
+<h1 id="postgresql">PostgreSQL<a class="headerlink" href="#postgresql" title="Permanent link">&para;</a></h1>
 <p>For PostgreSQL follow the same methods used for MySQL and MariaDB and enable <code>track_io_timing</code> in the instance configuration to enable Query Analytics.</p>
 <p><img alt="image" src="../../_images/azure-postgresql-config.png" /></p>
                     </div>

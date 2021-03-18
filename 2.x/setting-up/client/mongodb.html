@@ -52,7 +52,7 @@
 </head>
 
 <body>
-	<!-- 2021-03-18 15:22:35.281267+00:00 -->
+	<!-- 2021-03-18 16:51:31.419782+00:00 -->
     
 <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.3/css/line.css" type="text/css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" type="text/css">
@@ -105,12 +105,12 @@
 
                 <div class="bodywrapper">
                     <div class="body">
-                        <h1 id="mongodb"><a class="toclink" href="#mongodb">MongoDB</a></h1>
-<h2 id="configuring-mongodb-for-monitoring-in-pmm-query-analytics"><a class="toclink" href="#configuring-mongodb-for-monitoring-in-pmm-query-analytics">Configuring MongoDB for Monitoring in PMM Query Analytics</a></h2>
+                        <h1 id="mongodb">MongoDB<a class="headerlink" href="#mongodb" title="Permanent link">&para;</a></h1>
+<h2 id="configuring-mongodb-for-monitoring-in-pmm-query-analytics">Configuring MongoDB for Monitoring in PMM Query Analytics<a class="headerlink" href="#configuring-mongodb-for-monitoring-in-pmm-query-analytics" title="Permanent link">&para;</a></h2>
 <p>In Query Analytics, you can monitor MongoDB metrics and queries. Run the <code>pmm-admin add</code> command to use these monitoring services.</p>
 <p><strong>Supported versions of MongoDB</strong></p>
 <p>Query Analytics supports MongoDB version 3.2 or higher.</p>
-<h2 id="setting-up-the-required-permissions"><a class="toclink" href="#setting-up-the-required-permissions">Setting Up the Required Permissions</a></h2>
+<h2 id="setting-up-the-required-permissions">Setting Up the Required Permissions<a class="headerlink" href="#setting-up-the-required-permissions" title="Permanent link">&para;</a></h2>
 <p>For MongoDB monitoring services to work in Query Analytics, you need to set up the <code>mongodb_exporter</code> user.</p>
 <p>Here is an example for the MongoDB shell that creates and assigns the appropriate roles to the user.</p>
 <div class="highlight"><pre><span></span><code><span class="nx">db</span><span class="p">.</span><span class="nx">createRole</span><span class="p">({</span>
@@ -142,7 +142,7 @@
    <span class="p">]</span>
 <span class="p">})</span>
 </code></pre></div>
-<h2 id="enabling-profiling"><a class="toclink" href="#enabling-profiling">Enabling Profiling</a></h2>
+<h2 id="enabling-profiling">Enabling Profiling<a class="headerlink" href="#enabling-profiling" title="Permanent link">&para;</a></h2>
 <p>For <a href="https://www.mongodb.com">MongoDB</a> to work correctly with Query Analytics, you need to enable profiling
 in your <code>mongod</code> configuration. When started without profiling enabled, Query Analytics
 displays the following warning:</p>
@@ -151,7 +151,7 @@ displays the following warning:</p>
 <p><strong>A warning message is displayed when profiling is not enabled</strong></p>
 <p>It is required that profiling of the monitored MongoDB databases be enabled, however profiling is not enabled by default because it may reduce the performance of your MongoDB server.</p>
 </div>
-<h3 id="enabling-profiling-on-command-line"><a class="toclink" href="#enabling-profiling-on-command-line">Enabling Profiling on Command Line</a></h3>
+<h3 id="enabling-profiling-on-command-line">Enabling Profiling on Command Line<a class="headerlink" href="#enabling-profiling-on-command-line" title="Permanent link">&para;</a></h3>
 <p>You can enable profiling from command line when you start the <code>mongod</code>
 server. This command is useful if you start <code>mongod</code> manually.</p>
 <p>Run this command as root or by using the <code>sudo</code> command</p>
@@ -169,7 +169,7 @@ slow operation.</p>
 of MongoDB, refers to the number of queries that the MongoDB profiler
 collects. The lower the rate limit, the less impact on the performance.
 However, the accuracy of the collected information decreases as well.</p>
-<h3 id="enabling-profiling-in-the-configuration-file"><a class="toclink" href="#enabling-profiling-in-the-configuration-file">Enabling Profiling in the Configuration File</a></h3>
+<h3 id="enabling-profiling-in-the-configuration-file">Enabling Profiling in the Configuration File<a class="headerlink" href="#enabling-profiling-in-the-configuration-file" title="Permanent link">&para;</a></h3>
 <p>If you run <code>mongod</code> as a service, you need to use the configuration file
 which by default is <code>/etc/mongod.conf</code>.</p>
 <p>In this file, you need to locate the <code>operationProfiling:</code> section and add the
@@ -183,7 +183,7 @@ following settings:</p>
 <p>Run this command as root or by using the <code>sudo</code> command</p>
 <div class="highlight"><pre><span></span><code>service mongod restart
 </code></pre></div>
-<h2 id="adding-mongodb-service-monitoring"><a class="toclink" href="#adding-mongodb-service-monitoring">Adding MongoDB Service Monitoring</a></h2>
+<h2 id="adding-mongodb-service-monitoring">Adding MongoDB Service Monitoring<a class="headerlink" href="#adding-mongodb-service-monitoring" title="Permanent link">&para;</a></h2>
 <p>Add monitoring as follows:</p>
 <div class="highlight"><pre><span></span><code>pmm-admin add mongodb --username<span class="o">=</span>pmm --password<span class="o">=</span>pmm
 </code></pre></div>
@@ -204,7 +204,7 @@ Service name: mongo
 <div class="highlight"><pre><span></span><code>pmm-admin add mongodb --socket<span class="o">=</span>/tmp/mongodb-27017.sock
 </code></pre></div>
 </div>
-<h2 id="passing-ssl-parameters-to-the-mongodb-monitoring-service"><a class="toclink" href="#passing-ssl-parameters-to-the-mongodb-monitoring-service">Passing SSL parameters to the MongoDB monitoring service</a></h2>
+<h2 id="passing-ssl-parameters-to-the-mongodb-monitoring-service">Passing SSL parameters to the MongoDB monitoring service<a class="headerlink" href="#passing-ssl-parameters-to-the-mongodb-monitoring-service" title="Permanent link">&para;</a></h2>
 <p>SSL/TLS related parameters are passed to an SSL enabled MongoDB server as
 monitoring service parameters along with the <code>pmm-admin add</code> command when adding
 the MongoDB monitoring service.</p>

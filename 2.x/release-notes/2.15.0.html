@@ -52,7 +52,7 @@
 </head>
 
 <body>
-	<!-- 2021-03-18 15:22:35.047489+00:00 -->
+	<!-- 2021-03-18 16:51:31.166974+00:00 -->
     
 <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.3/css/line.css" type="text/css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" type="text/css">
@@ -105,7 +105,7 @@
 
                 <div class="bodywrapper">
                     <div class="body">
-                        <h1 id="percona-monitoring-and-management-2150"><a class="toclink" href="#percona-monitoring-and-management-2150">Percona Monitoring and Management 2.15.0</a></h1>
+                        <h1 id="percona-monitoring-and-management-2150">Percona Monitoring and Management 2.15.0<a class="headerlink" href="#percona-monitoring-and-management-2150" title="Permanent link">&para;</a></h1>
 <table class="docutils field-list" frame="void" rules="none">
   <colgroup>
     <col class="field-name">
@@ -125,7 +125,7 @@
 </table>
 
 <p>Percona Monitoring and Management (PMM) is a free and open-source platform for managing and monitoring MySQL, MongoDB, and PostgreSQL performance.</p>
-<h2 id="release-highlights"><a class="toclink" href="#release-highlights">Release Highlights</a></h2>
+<h2 id="release-highlights">Release Highlights<a class="headerlink" href="#release-highlights" title="Permanent link">&para;</a></h2>
 <ul>
 <li>
 <p>PMM 1 vs. 2 Parity</p>
@@ -155,7 +155,7 @@
 <p>Known Limitations: The progress bar will not provide valuable information for the Delete operation (will be in a later version when we’ll change the API with Operators Team), Operation of DB Cluster Modification will have “strange” behavior and will start changes from non-zero values of steps. (This will be modified after API changes.)</p>
 </li>
 </ul>
-<h2 id="new-features"><a class="toclink" href="#new-features">New Features</a></h2>
+<h2 id="new-features">New Features<a class="headerlink" href="#new-features" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="https://jira.percona.com/browse/PMM-4172">PMM-4172</a>, <a href="https://jira.percona.com/browse/PMM-4306">PMM-4306</a>, <a href="https://jira.percona.com/browse/PMM-5784">PMM-5784</a>, <a href="https://jira.percona.com/browse/PMM-7177">PMM-7177</a>: Services and Nodes Summary presentation. Present information about DB&rsquo;s and Node status using <code>pt-mysql-summary</code>, <code>pt-mongodb-summary</code>, <code>pt-pg-summary</code> outputs (in API and on Dashboards).</li>
 <li><a href="https://jira.percona.com/browse/PMM-7123">PMM-7123</a>: Ability to add External Services via the UI in PMM server.</li>
@@ -172,7 +172,7 @@
 <li><a href="https://jira.percona.com/browse/PMM-7419">PMM-7419</a>: DBaaS: Ability to see DB Cluster creation/modification logs.</li>
 <li><a href="https://jira.percona.com/browse/PMM-7266">PMM-7266</a>: DBaaS: Cluster creation progress bar &ndash; You can now see the progress of DBaaS DB cluster creation. (The progress bar is based on the number of back-end technical steps, not the time required to perform the tasks.)</li>
 </ul>
-<h2 id="improvements"><a class="toclink" href="#improvements">Improvements</a></h2>
+<h2 id="improvements">Improvements<a class="headerlink" href="#improvements" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="https://jira.percona.com/browse/PMM-4679">PMM-4679</a>: Docker: <code>:latest</code> tag for <code>pmm-server</code> and <code>pmm-client</code> images has been moved from v1 latest release to v2 latest release.  <strong>Note</strong>: use of the latest tag is not recommended in production environments, instead use <code>:2</code> tag.</li>
 <li><a href="https://jira.percona.com/browse/PMM-7472">PMM-7472</a>: Remove Prometheus data source &ndash; If you were using custom dashboards with a specified data source (not using empty to use default one) you may need to edit your dashboards to use the proper data source. PMM is no longer using Prometheus but uses compatible storage for metrics from VictoriaMetrics. We renamed the data source to be more technology-agnostic.</li>
@@ -189,7 +189,7 @@
 <li><a href="https://jira.percona.com/browse/PMM-5533">PMM-5533</a>: Better indentation of columns in <code>pmm-admin list</code> output.</li>
 <li><a href="https://jira.percona.com/browse/PMM-5888">PMM-5888</a>: Improve <code>pmm-admin --help</code> descriptions for external services.</li>
 </ul>
-<h2 id="bugs-fixed"><a class="toclink" href="#bugs-fixed">Bugs Fixed</a></h2>
+<h2 id="bugs-fixed">Bugs Fixed<a class="headerlink" href="#bugs-fixed" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="https://jira.percona.com/browse/PMM-5837">PMM-5837</a>: <code>pmm-agent</code> reports &ldquo;Malformed DSN&rdquo; error when adding PostgreSQL instance with a PMM user password containing <code>=</code> (equals sign) (Thanks to Alexandre Barth for reporting this issue).</li>
 <li><a href="https://jira.percona.com/browse/PMM-5969">PMM-5969</a>: Removing Services or Nodes with <code>pmm-admin ... --force</code> mode does not stop running agents, VictoriaMetrics continues collecting data from exporters.</li>

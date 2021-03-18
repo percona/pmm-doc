@@ -52,7 +52,7 @@
 </head>
 
 <body>
-	<!-- 2021-03-18 15:22:34.907883+00:00 -->
+	<!-- 2021-03-18 16:51:31.018772+00:00 -->
     
 <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.3/css/line.css" type="text/css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" type="text/css">
@@ -105,7 +105,7 @@
 
                 <div class="bodywrapper">
                     <div class="body">
-                        <h1 id="secure"><a class="toclink" href="#secure">Secure</a></h1>
+                        <h1 id="secure">Secure<a class="headerlink" href="#secure" title="Permanent link">&para;</a></h1>
 <p>You can improve the security of your PMM installation with:</p>
 <ul>
 <li>
@@ -122,7 +122,7 @@
 <p class="admonition-title">Tip</p>
 <p>You can gain an extra level of security by keeping PMM Server isolated from the internet, if possible.</p>
 </div>
-<h2 id="ssl-encryption"><a class="toclink" href="#ssl-encryption">SSL encryption</a></h2>
+<h2 id="ssl-encryption">SSL encryption<a class="headerlink" href="#ssl-encryption" title="Permanent link">&para;</a></h2>
 <p>You need valid SSL certificates to encrypt traffic between client and server.</p>
 <p>With our Docker, OVF and AMI images, self-signed certificates are in <code>/srv/nginx</code>.</p>
 <p>To use your own, you can either:</p>
@@ -134,7 +134,7 @@
 <p>copy your certificates to a running PMM Server container.</p>
 </li>
 </ul>
-<h3 id="mounting-certificates"><a class="toclink" href="#mounting-certificates">Mounting certificates</a></h3>
+<h3 id="mounting-certificates">Mounting certificates<a class="headerlink" href="#mounting-certificates" title="Permanent link">&para;</a></h3>
 <p>For example, if your own certificates are in <code>/etc/pmm-certs</code>:</p>
 <div class="highlight"><pre><span></span><code>docker run -d -p <span class="m">443</span>:443 --volumes-from pmm-data <span class="se">\</span>
   --name pmm-server -v /etc/pmm-certs:/srv/nginx <span class="se">\</span>
@@ -154,17 +154,17 @@
 </li>
 </ul>
 </div>
-<h3 id="copying-certificates"><a class="toclink" href="#copying-certificates">Copying certificates</a></h3>
+<h3 id="copying-certificates">Copying certificates<a class="headerlink" href="#copying-certificates" title="Permanent link">&para;</a></h3>
 <p>If PMM Server is running as a Docker image, use <code>docker cp</code> to copy certificates. This example copies certificate files from the current working directory to a running PMM Server docker container.</p>
 <div class="highlight"><pre><span></span><code>docker cp certificate.crt pmm-server:/srv/nginx/certificate.crt
 docker cp certificate.key pmm-server:/srv/nginx/certificate.key
 docker cp ca-certs.pem pmm-server:/srv/nginx/ca-certs.pem
 docker cp dhparam.pem pmm-server:/srv/nginx/dhparam.pem
 </code></pre></div>
-<h3 id="enabling-ssl-when-connecting-pmm-client-to-pmm-server"><a class="toclink" href="#enabling-ssl-when-connecting-pmm-client-to-pmm-server">Enabling SSL when connecting PMM Client to PMM Server</a></h3>
+<h3 id="enabling-ssl-when-connecting-pmm-client-to-pmm-server">Enabling SSL when connecting PMM Client to PMM Server<a class="headerlink" href="#enabling-ssl-when-connecting-pmm-client-to-pmm-server" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>pmm-admin config --server-url=https://&lt;user&gt;:&lt;password&gt;@&lt;server IP&gt;
 </code></pre></div>
-<h2 id="grafana-https-secure-cookies"><a class="toclink" href="#grafana-https-secure-cookies">Grafana HTTPS secure cookies</a></h2>
+<h2 id="grafana-https-secure-cookies">Grafana HTTPS secure cookies<a class="headerlink" href="#grafana-https-secure-cookies" title="Permanent link">&para;</a></h2>
 <p>To enable:</p>
 <ol>
 <li>

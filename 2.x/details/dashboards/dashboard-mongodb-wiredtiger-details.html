@@ -52,7 +52,7 @@
 </head>
 
 <body>
-	<!-- 2021-03-18 15:22:34.491619+00:00 -->
+	<!-- 2021-03-18 16:51:30.561646+00:00 -->
     
 <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.3/css/line.css" type="text/css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" type="text/css">
@@ -105,38 +105,38 @@
 
                 <div class="bodywrapper">
                     <div class="body">
-                        <h1 id="mongodb-wiredtiger-details"><a class="toclink" href="#mongodb-wiredtiger-details">MongoDB WiredTiger Details</a></h1>
+                        <h1 id="mongodb-wiredtiger-details">MongoDB WiredTiger Details<a class="headerlink" href="#mongodb-wiredtiger-details" title="Permanent link">&para;</a></h1>
 <p><img alt="image" src="../../_images/PMM_MongoDB_WiredTiger_Details.jpg" /></p>
-<h2 id="wiredtiger-transactions"><a class="toclink" href="#wiredtiger-transactions">WiredTiger Transactions</a></h2>
+<h2 id="wiredtiger-transactions">WiredTiger Transactions<a class="headerlink" href="#wiredtiger-transactions" title="Permanent link">&para;</a></h2>
 <p>WiredTiger internal transactions</p>
-<h2 id="wiredtiger-cache-activity"><a class="toclink" href="#wiredtiger-cache-activity">WiredTiger Cache Activity</a></h2>
+<h2 id="wiredtiger-cache-activity">WiredTiger Cache Activity<a class="headerlink" href="#wiredtiger-cache-activity" title="Permanent link">&para;</a></h2>
 <p>Data volume transferred per second between the WT cache and data files. Writes out always imply disk; Reads are often from OS file buffer cache already in RAM, but disk if not.</p>
-<h2 id="wiredtiger-block-activity"><a class="toclink" href="#wiredtiger-block-activity">WiredTiger Block Activity</a></h2>
+<h2 id="wiredtiger-block-activity">WiredTiger Block Activity<a class="headerlink" href="#wiredtiger-block-activity" title="Permanent link">&para;</a></h2>
 <p>Data volume handled by the WT block manager per second</p>
-<h2 id="wiredtiger-sessions"><a class="toclink" href="#wiredtiger-sessions">WiredTiger Sessions</a></h2>
+<h2 id="wiredtiger-sessions">WiredTiger Sessions<a class="headerlink" href="#wiredtiger-sessions" title="Permanent link">&para;</a></h2>
 <p>Internal WT storage engine cursors and sessions currently open</p>
-<h2 id="wiredtiger-concurrency-tickets-available"><a class="toclink" href="#wiredtiger-concurrency-tickets-available">WiredTiger Concurrency Tickets Available</a></h2>
+<h2 id="wiredtiger-concurrency-tickets-available">WiredTiger Concurrency Tickets Available<a class="headerlink" href="#wiredtiger-concurrency-tickets-available" title="Permanent link">&para;</a></h2>
 <p>A WT &lsquo;ticket&rsquo; is assigned out for every operation running simultaneously in the WT storage engine. &ldquo;Available&rdquo; = hard-coded high value - &ldquo;Out&rdquo;.</p>
-<h2 id="queued-operations"><a class="toclink" href="#queued-operations">Queued Operations</a></h2>
+<h2 id="queued-operations">Queued Operations<a class="headerlink" href="#queued-operations" title="Permanent link">&para;</a></h2>
 <p>Operations queued due to a lock.</p>
-<h2 id="wiredtiger-checkpoint-time"><a class="toclink" href="#wiredtiger-checkpoint-time">WiredTiger Checkpoint Time</a></h2>
+<h2 id="wiredtiger-checkpoint-time">WiredTiger Checkpoint Time<a class="headerlink" href="#wiredtiger-checkpoint-time" title="Permanent link">&para;</a></h2>
 <p>The time spent in WT checkpoint phase. Warning: This calculation averages the cyclical event (default: 1 min) execution to a per-second value.</p>
-<h2 id="wiredtiger-cache-eviction"><a class="toclink" href="#wiredtiger-cache-eviction">WiredTiger Cache Eviction</a></h2>
+<h2 id="wiredtiger-cache-eviction">WiredTiger Cache Eviction<a class="headerlink" href="#wiredtiger-cache-eviction" title="Permanent link">&para;</a></h2>
 <p>Least-recently used pages being evicted due to WT cache becoming full.</p>
-<h2 id="wiredtiger-cache-capacity"><a class="toclink" href="#wiredtiger-cache-capacity">WiredTiger Cache Capacity</a></h2>
+<h2 id="wiredtiger-cache-capacity">WiredTiger Cache Capacity<a class="headerlink" href="#wiredtiger-cache-capacity" title="Permanent link">&para;</a></h2>
 <p>Configured max and current size of the WT cache.</p>
-<h2 id="wiredtiger-cache-pages"><a class="toclink" href="#wiredtiger-cache-pages">WiredTiger Cache Pages</a></h2>
-<h2 id="wiredtiger-log-operations"><a class="toclink" href="#wiredtiger-log-operations">WiredTiger Log Operations</a></h2>
+<h2 id="wiredtiger-cache-pages">WiredTiger Cache Pages<a class="headerlink" href="#wiredtiger-cache-pages" title="Permanent link">&para;</a></h2>
+<h2 id="wiredtiger-log-operations">WiredTiger Log Operations<a class="headerlink" href="#wiredtiger-log-operations" title="Permanent link">&para;</a></h2>
 <p>WT internal write-ahead log operations.</p>
-<h2 id="wiredtiger-log-activity"><a class="toclink" href="#wiredtiger-log-activity">WiredTiger Log Activity</a></h2>
+<h2 id="wiredtiger-log-activity">WiredTiger Log Activity<a class="headerlink" href="#wiredtiger-log-activity" title="Permanent link">&para;</a></h2>
 <p>Data volume moved per second in WT internal write-ahead log.</p>
-<h2 id="wiredtiger-log-records"><a class="toclink" href="#wiredtiger-log-records">WiredTiger Log Records</a></h2>
+<h2 id="wiredtiger-log-records">WiredTiger Log Records<a class="headerlink" href="#wiredtiger-log-records" title="Permanent link">&para;</a></h2>
 <p>Number of records appended per second in WT internal log.</p>
-<h2 id="document-changes"><a class="toclink" href="#document-changes">Document Changes</a></h2>
+<h2 id="document-changes">Document Changes<a class="headerlink" href="#document-changes" title="Permanent link">&para;</a></h2>
 <p>Mixed metrics: Docs per second inserted, updated, deleted or returned on any type of node (primary or secondary); + replicated write Ops/sec; + TTL deletes per second.</p>
-<h2 id="scanned-and-moved-objects"><a class="toclink" href="#scanned-and-moved-objects">Scanned and Moved Objects</a></h2>
+<h2 id="scanned-and-moved-objects">Scanned and Moved Objects<a class="headerlink" href="#scanned-and-moved-objects" title="Permanent link">&para;</a></h2>
 <p>This panel shows the number of objects (both data (<code>scanned_objects</code>) and index (<code>scanned</code>)) as well as the number of documents that were moved to a new location due to the size of the document growing. Moved documents only apply to the MMAPv1 storage engine.</p>
-<h2 id="page-faults"><a class="toclink" href="#page-faults">Page Faults</a></h2>
+<h2 id="page-faults">Page Faults<a class="headerlink" href="#page-faults" title="Permanent link">&para;</a></h2>
 <p>Unix or Window memory page faults. Not necessarily from MongoDB.</p>
                     </div>
                 </div>

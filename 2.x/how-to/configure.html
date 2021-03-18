@@ -52,7 +52,7 @@
 </head>
 
 <body>
-	<!-- 2021-03-18 15:22:34.873010+00:00 -->
+	<!-- 2021-03-18 16:51:30.983776+00:00 -->
     
 <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.3/css/line.css" type="text/css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" type="text/css">
@@ -105,7 +105,7 @@
 
                 <div class="bodywrapper">
                     <div class="body">
-                        <h1 id="configure"><a class="toclink" href="#configure">Configure</a></h1>
+                        <h1 id="configure">Configure<a class="headerlink" href="#configure" title="Permanent link">&para;</a></h1>
 <p>The <em>PMM Settings</em> page lets you configure a number of PMM options.</p>
 <p>Open the <em>PMM Settings</em> page with one of:</p>
 <ul>
@@ -119,9 +119,9 @@
 <p class="admonition-title">Tip</p>
 <p>Click <em>Apply changes</em> after changing settings.</p>
 </div>
-<h2 id="diagnostics"><a class="toclink" href="#diagnostics">Diagnostics</a></h2>
+<h2 id="diagnostics">Diagnostics<a class="headerlink" href="#diagnostics" title="Permanent link">&para;</a></h2>
 <p>Common to all sections is <em>Diagnostics</em>. PMM can generate a set of diagnostics data which can be examined and/or shared with Percona Support in case of some issue to solve it faster.  You can get collected logs from PMM Server by clicking <em>Download server diagnostics</em>.</p>
-<h2 id="metrics-resolution"><a class="toclink" href="#metrics-resolution">Metrics resolution</a></h2>
+<h2 id="metrics-resolution">Metrics resolution<a class="headerlink" href="#metrics-resolution" title="Permanent link">&para;</a></h2>
 <p>Metrics are collected at three intervals representing low, medium and high resolutions. Short time intervals are regarded as high resolution metrics, while those at longer time intervals are low resolution.</p>
 <p><img alt="image" src="../_images/PMM_Settings_Metrics_Resolution.jpg" /></p>
 <p>The <em>Metrics Resolution</em> radio button lets you select one of four presets.</p>
@@ -174,11 +174,11 @@
 <p class="admonition-title">Note</p>
 <p>If there is poor network connectivity between PMM Server and PMM Client, or between PMM Client and the database server it is monitoring, scraping every second may not be possible when the network latency is greater than 1 second.</p>
 </div>
-<h2 id="advanced-settings"><a class="toclink" href="#advanced-settings">Advanced Settings</a></h2>
+<h2 id="advanced-settings">Advanced Settings<a class="headerlink" href="#advanced-settings" title="Permanent link">&para;</a></h2>
 <p><img alt="" src="../_images/PMM_Settings_Advanced_Settings.jpg" /></p>
-<h3 id="data-retention"><a class="toclink" href="#data-retention">Data Retention</a></h3>
+<h3 id="data-retention">Data Retention<a class="headerlink" href="#data-retention" title="Permanent link">&para;</a></h3>
 <p><em>Data retention</em> specifies how long data is stored by PMM Server.</p>
-<h3 id="telemetry"><a class="toclink" href="#telemetry">Telemetry</a></h3>
+<h3 id="telemetry">Telemetry<a class="headerlink" href="#telemetry" title="Permanent link">&para;</a></h3>
 <p>The <em>Telemetry</em> switch enables gathering and sending basic <strong>anonymous</strong> data to Percona, which helps us to determine where to focus the development and what is the uptake of the various versions of PMM. Specifically, gathering this information helps determine if we need to release patches to legacy versions beyond support, determining when supporting a particular version is no longer necessary, and even understanding how the frequency of release encourages or deters adoption.</p>
 <p>Currently, only the following information is gathered:</p>
 <ul>
@@ -206,29 +206,29 @@
 <li>Telemetry is sent immediately; the 24-hour grace period is not honored.</li>
 </ol>
 </div>
-<h3 id="check-for-updates"><a class="toclink" href="#check-for-updates">Check for updates</a></h3>
+<h3 id="check-for-updates">Check for updates<a class="headerlink" href="#check-for-updates" title="Permanent link">&para;</a></h3>
 <p>When active, PMM will automatically check for updates and put a notification in the <em>Updates</em> dashboard if any are available.</p>
-<h3 id="security-threat-tool"><a class="toclink" href="#security-threat-tool">Security Threat Tool</a></h3>
+<h3 id="security-threat-tool">Security Threat Tool<a class="headerlink" href="#security-threat-tool" title="Permanent link">&para;</a></h3>
 <p>The Security Threat Tool performs a range of security-related checks on a registered instance and reports the findings.</p>
 <p>It is disabled by default.</p>
 <p>It can be enabled in <em>PMM&rarr;PMM Settings&rarr;Settings&rarr;Advanced Settings&rarr;Security Threat Tool</em>.</p>
 <p>The checks are re-fetched and re-run every 24 hours.</p>
 <p>The results can be viewed in <em>PMM&rarr;PMM Database Checks</em>.</p>
-<h3 id="dbaas"><a class="toclink" href="#dbaas">DBaaS</a></h3>
+<h3 id="dbaas">DBaaS<a class="headerlink" href="#dbaas" title="Permanent link">&para;</a></h3>
 <p>A read-only setting that shows whether DBaaS features are activated on this server.</p>
 <div class="admonition alert alert-warning">
 <p class="admonition-title">Caution</p>
 <p>DBaaS functionality is a technical preview that must be turned on with a server feature flag. See <a href="../setting-up/server/dbaas.html">Setting up a development environment for DBaaS</a>.</p>
 </div>
-<h3 id="integrated-alerting"><a class="toclink" href="#integrated-alerting">Integrated Alerting</a></h3>
+<h3 id="integrated-alerting">Integrated Alerting<a class="headerlink" href="#integrated-alerting" title="Permanent link">&para;</a></h3>
 <p>Enables <a href="../using/alerting.html">Integrated Alerting</a> and reveals the <a href="#communication">Communication</a> tab.</p>
-<h3 id="public-address"><a class="toclink" href="#public-address">Public Address</a></h3>
+<h3 id="public-address">Public Address<a class="headerlink" href="#public-address" title="Permanent link">&para;</a></h3>
 <p>Public address for accessing DBaaS features on this server.</p>
-<h2 id="ssh-key"><a class="toclink" href="#ssh-key">SSH Key</a></h2>
+<h2 id="ssh-key">SSH Key<a class="headerlink" href="#ssh-key" title="Permanent link">&para;</a></h2>
 <p>This section lets you upload your public SSH key to access the PMM Server via SSH (for example, when accessing PMM Server as a <a href="../setting-up/server/virtual-appliance.html">virtual appliance</a>).</p>
 <p><img alt="" src="../_images/PMM_Settings_SSH_Key.jpg" /></p>
 <p>Enter your <strong>public key</strong> in the <em>SSH Key</em> field and click <em>Apply SSH Key</em>.</p>
-<h2 id="alertmanager-integration"><a class="toclink" href="#alertmanager-integration">Alertmanager integration</a></h2>
+<h2 id="alertmanager-integration">Alertmanager integration<a class="headerlink" href="#alertmanager-integration" title="Permanent link">&para;</a></h2>
 <p>Alertmanager manages alerts, de-duplicating, grouping, and routing them to the appropriate receiver or display component.</p>
 <p>This section lets you configure integration of VictoriaMetrics with an external Alertmanager.</p>
 <ul>
@@ -237,13 +237,13 @@
 </ul>
 <p><img alt="" src="../_images/PMM_Settings_Alertmanager_Integration.jpg" /></p>
 <p>Fill both fields and click the <em>Apply Alertmanager settings</em> button to proceed.</p>
-<h2 id="percona-platform"><a class="toclink" href="#percona-platform">Percona Platform</a></h2>
+<h2 id="percona-platform">Percona Platform<a class="headerlink" href="#percona-platform" title="Permanent link">&para;</a></h2>
 <p>This panel is where you create, and log into and out of your Percona Platform account.</p>
-<h3 id="login"><a class="toclink" href="#login">Login</a></h3>
+<h3 id="login">Login<a class="headerlink" href="#login" title="Permanent link">&para;</a></h3>
 <p><img alt="image" src="../_images/PMM_Settings_Percona_Platform_Login.jpg" /></p>
 <p>If you have a <em>Percona Platform</em> account, enter your credentials and click <em>Login</em>.</p>
 <p>Click <em>Sign out</em> to log out of your Percona Platform account.</p>
-<h3 id="sign-up"><a class="toclink" href="#sign-up">Sign up</a></h3>
+<h3 id="sign-up">Sign up<a class="headerlink" href="#sign-up" title="Permanent link">&para;</a></h3>
 <p><img alt="image" src="../_images/PMM_Settings_Percona_Platform_Sign_Up.jpg" /></p>
 <p>To create a <em>Percona Platform</em> account:</p>
 <ol>
@@ -258,7 +258,7 @@
 <p class="admonition-title">Note</p>
 <p>Your Percona Platform account is separate from your PMM User account.</p>
 </div>
-<h2 id="communication"><a class="toclink" href="#communication">Communication</a></h2>
+<h2 id="communication">Communication<a class="headerlink" href="#communication" title="Permanent link">&para;</a></h2>
 <div class="admonition alert alert-info">
 <p class="admonition-title">Note</p>
 <p>This tab appears only when <em>Advanced Settings</em> &rarr; <em>Integrated Alerting</em> is on.</p>
@@ -267,7 +267,7 @@
 <p><img alt="" src="../_images/PMM_Settings_Communication.jpg" /></p>
 <p>Integrated Alerting uses a separate instance of Alertmanager run by <code>pmm-managed</code>.</p>
 <p>The descriptions for the settings here are reproduced from <a href="https://prometheus.io/docs/alerting/latest/configuration/">Prometheus Alertmanager configuration</a>.</p>
-<h3 id="email"><a class="toclink" href="#email">Email</a></h3>
+<h3 id="email">Email<a class="headerlink" href="#email" title="Permanent link">&para;</a></h3>
 <p>Settings for the SMTP email server:</p>
 <ul>
 <li><em>Server Address</em>: The default SMTP smarthost used for sending emails, including port number.</li>
@@ -278,7 +278,7 @@
 <li><em>Identity</em>: SMTP Auth using PLAIN.</li>
 <li><em>Secret</em>: SMTP Auth using CRAM-MD5.</li>
 </ul>
-<h3 id="slack"><a class="toclink" href="#slack">Slack</a></h3>
+<h3 id="slack">Slack<a class="headerlink" href="#slack" title="Permanent link">&para;</a></h3>
 <p>Settings for Slack notifications:</p>
 <ul>
 <li><em>URL</em>: The Slack webhook URL to use for Slack notifications.</li>

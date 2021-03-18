@@ -52,7 +52,7 @@
 </head>
 
 <body>
-	<!-- 2021-03-18 15:22:34.465316+00:00 -->
+	<!-- 2021-03-18 16:51:30.532073+00:00 -->
     
 <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.3/css/line.css" type="text/css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" type="text/css">
@@ -105,26 +105,26 @@
 
                 <div class="bodywrapper">
                     <div class="body">
-                        <h1 id="mongodb-instances-overview"><a class="toclink" href="#mongodb-instances-overview">MongoDB Instances Overview</a></h1>
+                        <h1 id="mongodb-instances-overview">MongoDB Instances Overview<a class="headerlink" href="#mongodb-instances-overview" title="Permanent link">&para;</a></h1>
 <p><img alt="image" src="../../_images/PMM_MongoDB_Instances_Overview_full.jpg" /></p>
 <p>This dashboard provides basic information about MongoDB instances.</p>
-<h2 id="command-operations"><a class="toclink" href="#command-operations">Command Operations</a></h2>
+<h2 id="command-operations">Command Operations<a class="headerlink" href="#command-operations" title="Permanent link">&para;</a></h2>
 <p>Shows how many times a command is executed per second on average during the selected interval.</p>
 <p>Look for peaks and drops and correlate them with other graphs.</p>
-<h2 id="connections"><a class="toclink" href="#connections">Connections</a></h2>
+<h2 id="connections">Connections<a class="headerlink" href="#connections" title="Permanent link">&para;</a></h2>
 <p>Keep in mind the hard limit on the maximum number of connections set by your distribution.</p>
 <p>Anything over 5,000 should be a concern, because the application may not close connections correctly.</p>
-<h2 id="cursors"><a class="toclink" href="#cursors">Cursors</a></h2>
+<h2 id="cursors">Cursors<a class="headerlink" href="#cursors" title="Permanent link">&para;</a></h2>
 <p>Helps identify why connections are increasing.  Shows active cursors compared to cursors being automatically killed after 10 minutes due to an application not closing the connection.</p>
-<h2 id="document-operations"><a class="toclink" href="#document-operations">Document Operations</a></h2>
+<h2 id="document-operations">Document Operations<a class="headerlink" href="#document-operations" title="Permanent link">&para;</a></h2>
 <p>When used in combination with <em>Command Operations</em>, this graph can help identify <em>write amplification</em>.  For example, when one <code>insert</code> or <code>update</code> command actually inserts or updates hundreds, thousands, or even millions of documents.</p>
-<h2 id="queued-operations"><a class="toclink" href="#queued-operations">Queued Operations</a></h2>
+<h2 id="queued-operations">Queued Operations<a class="headerlink" href="#queued-operations" title="Permanent link">&para;</a></h2>
 <p>Any number of queued operations for long periods of time is an indication of possible issues.  Find the cause and fix it before requests get stuck in the queue.</p>
-<h2 id="getlasterror-write-time-getlasterror-write-operations"><a class="toclink" href="#getlasterror-write-time-getlasterror-write-operations"><code>getLastError</code> Write Time, <code>getLastError</code> Write Operations</a></h2>
+<h2 id="getlasterror-write-time-getlasterror-write-operations"><code>getLastError</code> Write Time, <code>getLastError</code> Write Operations<a class="headerlink" href="#getlasterror-write-time-getlasterror-write-operations" title="Permanent link">&para;</a></h2>
 <p>This is useful for write-heavy workloads to understand how long it takes to verify writes and how many concurrent writes are occurring.</p>
-<h2 id="asserts"><a class="toclink" href="#asserts">Asserts</a></h2>
+<h2 id="asserts">Asserts<a class="headerlink" href="#asserts" title="Permanent link">&para;</a></h2>
 <p>Asserts are not important by themselves, but you can correlate spikes with other graphs.</p>
-<h2 id="memory-faults"><a class="toclink" href="#memory-faults">Memory Faults</a></h2>
+<h2 id="memory-faults">Memory Faults<a class="headerlink" href="#memory-faults" title="Permanent link">&para;</a></h2>
 <p>Memory faults indicate that requests are processed from disk either because an index is missing or there is not enough memory for the data set.  Consider increasing memory or sharding out.</p>
                     </div>
                 </div>

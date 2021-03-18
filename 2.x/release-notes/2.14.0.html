@@ -52,7 +52,7 @@
 </head>
 
 <body>
-	<!-- 2021-03-18 15:22:35.035091+00:00 -->
+	<!-- 2021-03-18 16:51:31.153445+00:00 -->
     
 <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.3/css/line.css" type="text/css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" type="text/css">
@@ -105,7 +105,7 @@
 
                 <div class="bodywrapper">
                     <div class="body">
-                        <h1 id="percona-monitoring-and-management-2140"><a class="toclink" href="#percona-monitoring-and-management-2140">Percona Monitoring and Management 2.14.0</a></h1>
+                        <h1 id="percona-monitoring-and-management-2140">Percona Monitoring and Management 2.14.0<a class="headerlink" href="#percona-monitoring-and-management-2140" title="Permanent link">&para;</a></h1>
 <table class="docutils field-list" frame="void" rules="none">
   <colgroup>
     <col class="field-name">
@@ -125,7 +125,7 @@
 </table>
 
 <p>Percona Monitoring and Management (PMM) is a free and open-source platform for managing and monitoring MySQL, MongoDB, and PostgreSQL performance.</p>
-<h2 id="release-highlights"><a class="toclink" href="#release-highlights">Release Highlights</a></h2>
+<h2 id="release-highlights">Release Highlights<a class="headerlink" href="#release-highlights" title="Permanent link">&para;</a></h2>
 <ul>
 <li>
 <p>Switch to push metrics by default</p>
@@ -142,7 +142,7 @@
 <p>Improvements to the user experience for adding and viewing external services (any data that can be monitored by a Prometheus exporter such as: non-Percona supported databases like Redis, ElasticSearch, Cassandra, etc. or an organization&rsquo;s external application) on the Node Summary dashboard of PMM.</p>
 </li>
 </ul>
-<h2 id="new-features"><a class="toclink" href="#new-features">New Features</a></h2>
+<h2 id="new-features">New Features<a class="headerlink" href="#new-features" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="https://jira.percona.com/browse/PMM-5765">PMM-5765</a>: Ability to monitor External Services for situations where PMM Client can&rsquo;t be installed &ndash; Uses a new command <code>pmm-admin add external-serverless</code>. (See <a href="../details/commands/pmm-admin.html">pmm-admin</a>.) (This is a <strong>Technical Preview</strong> feature)</li>
 <li><a href="https://jira.percona.com/browse/PMM-7015">PMM-7015</a>: DBaaS Preview: Create DB cluster with randomly-generated password</li>
@@ -150,7 +150,7 @@
 <li><a href="https://jira.percona.com/browse/PMM-7006">PMM-7006</a>: Integrated Alerting: Ability to delete alert rules</li>
 <li><a href="https://jira.percona.com/browse/PMM-6941">PMM-6941</a>: Integrated Alerting: Ability to delete alert rule templates</li>
 </ul>
-<h2 id="improvements"><a class="toclink" href="#improvements">Improvements</a></h2>
+<h2 id="improvements">Improvements<a class="headerlink" href="#improvements" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="https://jira.percona.com/browse/PMM-6985">PMM-6985</a>: DBaaS: Ability to force unregister Kubernetes cluster</li>
 <li><a href="https://jira.percona.com/browse/PMM-7145">PMM-7145</a>: &lsquo;Push&rsquo; metrics mode is default when adding services and nodes (All agents collecting data from Services and Nodes will now use PUSH model if not specified explicitly. You will still be able to use <code>--metrics-mode</code> flag to use Pull metrics if needed. All previously set up agents will keep their existing mode. To change these you need to remove and re-add them.)</li>
@@ -161,7 +161,7 @@
 <li><a href="https://jira.percona.com/browse/PMM-7048">PMM-7048</a>: DBaaS: Simplify Cluster creation by moving Create Cluster button to earlier steps</li>
 <li><a href="https://jira.percona.com/browse/PMM-6993">PMM-6993</a>: Protect against possible problems with EXPLAIN of stored functions in MySQL &ndash; We are fixing possible problems caused by an attempt to analyze queries covered in <a href="https://bugs.mysql.com/bug.php?id=67632">https://bugs.mysql.com/bug.php?id=67632</a>.</li>
 </ul>
-<h2 id="bugs-fixed"><a class="toclink" href="#bugs-fixed">Bugs Fixed</a></h2>
+<h2 id="bugs-fixed">Bugs Fixed<a class="headerlink" href="#bugs-fixed" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="https://jira.percona.com/browse/PMM-7312">PMM-7312</a>: Error when accessing Metrics data on Dashboards for large installations</li>
 <li><a href="https://jira.percona.com/browse/PMM-7310">PMM-7310</a>: VictoriaMetrics consuming 100&rsquo;s Gb&rsquo;s of disk in <code>/tmp/searchResults</code> in PMM 2.13.0</li>

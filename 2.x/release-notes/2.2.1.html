@@ -52,7 +52,7 @@
 </head>
 
 <body>
-	<!-- 2021-03-18 15:22:35.083558+00:00 -->
+	<!-- 2021-03-18 16:51:31.204378+00:00 -->
     
 <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.3/css/line.css" type="text/css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" type="text/css">
@@ -105,7 +105,7 @@
 
                 <div class="bodywrapper">
                     <div class="body">
-                        <h1 id="percona-monitoring-and-management-221"><a class="toclink" href="#percona-monitoring-and-management-221">Percona Monitoring and Management 2.2.1</a></h1>
+                        <h1 id="percona-monitoring-and-management-221">Percona Monitoring and Management 2.2.1<a class="headerlink" href="#percona-monitoring-and-management-221" title="Permanent link">&para;</a></h1>
 <table class="docutils field-list" frame="void" rules="none">
   <colgroup>
     <col class="field-name">
@@ -126,7 +126,7 @@
 <p>PMM 2 is designed to be used as a new installation — your existing PMM 1 environment can’t be upgraded to this version.</p>
 </div>
 <p>PMM Server version 2.2.0 suffered an unauthenticated denial of service vulnerability (CVE-2020-7920). Any other PMM versions do not carry the same code logic, and are thus unaffected by this issue. <strong>Users who have already deployed PMM Server 2.2.0 are advised to upgrade to version 2.2.1 which resolves this issue.</strong></p>
-<h2 id="improvements-and-new-features"><a class="toclink" href="#improvements-and-new-features">Improvements and new features</a></h2>
+<h2 id="improvements-and-new-features">Improvements and new features<a class="headerlink" href="#improvements-and-new-features" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="https://jira.percona.com/browse/PMM-5229">PMM-5229</a>: The new RDS Exporter section added to the Prometheus Exporter Status dashboard shows singlestats and charts related to the <code>rds_exporter</code></li>
 <li><a href="https://jira.percona.com/browse/PMM-5228">PMM-5228</a> and <a href="https://jira.percona.com/browse/PMM-5238">PMM-5238</a>: The Prometheus dashboard and the Exporters Overview dashboard were updated to include the <code>rds_exporter</code> metrics in their charts, allowing better understanding of the impacts of monitoring RDS instances</li>
@@ -135,7 +135,7 @@
 <li><a href="https://jira.percona.com/browse/PMM-5127">PMM-5127</a>: The “Search by” bar on the Query Analytics dashboard was renamed to “Filter by” to make its purpose more clear</li>
 <li><a href="https://jira.percona.com/browse/PMM-5131">PMM-5131</a>: The Filter panel on the Query Analytics dashboard now shows the total number of available Labels within the “See all” link, which appears if the Filter panel section shows only top 5 of its Labels</li>
 </ul>
-<h2 id="fixed-bugs"><a class="toclink" href="#fixed-bugs">Fixed bugs</a></h2>
+<h2 id="fixed-bugs">Fixed bugs<a class="headerlink" href="#fixed-bugs" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="https://jira.percona.com/browse/PMM-5232">PMM-5232</a>: The <code>pmm-managed</code> component of the PMM Server 2.2.0 is vulnerable to DoS attacks, that could be carried out by anyone who knows the PMM Server IP address (CVE-2020-7920). Versions other than 2.2.0 are not affected.</li>
 <li><a href="https://jira.percona.com/browse/PMM-5226">PMM-5226</a>: The handlebars package was updated to version 4.5.3 because of the Prototype Pollution vulnerability in it (CVE-2019-19919). Please note PMM versions were not affected by this vulnerability, as handlebars package is used as a build dependency only.</li>

@@ -52,7 +52,7 @@
 </head>
 
 <body>
-	<!-- 2021-03-18 15:22:34.769227+00:00 -->
+	<!-- 2021-03-18 16:51:30.873798+00:00 -->
     
 <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.3/css/line.css" type="text/css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" type="text/css">
@@ -105,23 +105,23 @@
 
                 <div class="bodywrapper">
                     <div class="body">
-                        <h1 id="postgresql-instances-overview"><a class="toclink" href="#postgresql-instances-overview">PostgreSQL Instances Overview</a></h1>
+                        <h1 id="postgresql-instances-overview">PostgreSQL Instances Overview<a class="headerlink" href="#postgresql-instances-overview" title="Permanent link">&para;</a></h1>
 <p><img alt="image" src="../../_images/PMM_PostgreSQL_Instances_Overview_full.jpg" /></p>
-<h2 id="connected"><a class="toclink" href="#connected">Connected</a></h2>
+<h2 id="connected">Connected<a class="headerlink" href="#connected" title="Permanent link">&para;</a></h2>
 <p>Reports whether PMM Server can connect to the PostgreSQL instance.</p>
-<h2 id="version"><a class="toclink" href="#version">Version</a></h2>
+<h2 id="version">Version<a class="headerlink" href="#version" title="Permanent link">&para;</a></h2>
 <p>The version of the PostgreSQL instance.</p>
-<h2 id="shared-buffers"><a class="toclink" href="#shared-buffers">Shared Buffers</a></h2>
+<h2 id="shared-buffers">Shared Buffers<a class="headerlink" href="#shared-buffers" title="Permanent link">&para;</a></h2>
 <p>Defines the amount of memory the database server uses for shared memory buffers. Default is <code>128MB</code>. Guidance on tuning is <code>25%</code> of RAM, but generally doesn’t exceed <code>40%</code>.</p>
-<h2 id="disk-page-buffers"><a class="toclink" href="#disk-page-buffers">Disk-Page Buffers</a></h2>
+<h2 id="disk-page-buffers">Disk-Page Buffers<a class="headerlink" href="#disk-page-buffers" title="Permanent link">&para;</a></h2>
 <p>The setting <code>wal_buffers</code> defines how much memory is used for caching the write-ahead log entries. Generally this value is small (<code>3%</code> of <code>shared_buffers</code> value), but it may need to be modified for heavily loaded servers.</p>
-<h2 id="memory-size-for-each-sort"><a class="toclink" href="#memory-size-for-each-sort">Memory Size for each Sort</a></h2>
+<h2 id="memory-size-for-each-sort">Memory Size for each Sort<a class="headerlink" href="#memory-size-for-each-sort" title="Permanent link">&para;</a></h2>
 <p>The parameter <code>work_mem</code> defines the amount of memory assigned for internal sort operations and hash tables before writing to temporary disk files. The default is <code>4MB</code>.</p>
-<h2 id="disk-cache-size"><a class="toclink" href="#disk-cache-size">Disk Cache Size</a></h2>
+<h2 id="disk-cache-size">Disk Cache Size<a class="headerlink" href="#disk-cache-size" title="Permanent link">&para;</a></h2>
 <p>PostgreSQL’s <code>effective_cache_size</code> variable tunes how much RAM you expect to be available for disk caching. Generally adding Linux free+cached will give you a good idea. This value is used by the query planner whether plans will fit in memory, and when defined too low, can lead to some plans rejecting certain indexes.</p>
-<h2 id="autovacuum"><a class="toclink" href="#autovacuum">Autovacuum</a></h2>
+<h2 id="autovacuum">Autovacuum<a class="headerlink" href="#autovacuum" title="Permanent link">&para;</a></h2>
 <p>Whether autovacuum process is enabled or not. Generally the solution is to vacuum more often, not less.</p>
-<h2 id="postgresql-connections"><a class="toclink" href="#postgresql-connections">PostgreSQL Connections</a></h2>
+<h2 id="postgresql-connections">PostgreSQL Connections<a class="headerlink" href="#postgresql-connections" title="Permanent link">&para;</a></h2>
 <dl>
 <dt>Max Connections</dt>
 <dd>The maximum number of client connections allowed. Change this value with care as there are some memory resources that are allocated on a per-client basis, so setting <code>max_connections</code> higher will generally increase overall PostgreSQL memory usage.</dd>
@@ -130,7 +130,7 @@
 <dt>Active Connections</dt>
 <dd>The number of open connections to the PostgreSQL server.</dd>
 </dl>
-<h2 id="postgresql-tuples"><a class="toclink" href="#postgresql-tuples">PostgreSQL Tuples</a></h2>
+<h2 id="postgresql-tuples">PostgreSQL Tuples<a class="headerlink" href="#postgresql-tuples" title="Permanent link">&para;</a></h2>
 <dl>
 <dt>Tuples</dt>
 <dd>The total number of rows processed by PostgreSQL server: fetched, returned, inserted, updated, and deleted.</dd>
@@ -139,14 +139,14 @@
 <dt>Tuples Changed per 5 min</dt>
 <dd>The number of rows changed in the last 5 minutes: inserted, updated, and deleted ones.</dd>
 </dl>
-<h2 id="postgresql-transactions"><a class="toclink" href="#postgresql-transactions">PostgreSQL Transactions</a></h2>
+<h2 id="postgresql-transactions">PostgreSQL Transactions<a class="headerlink" href="#postgresql-transactions" title="Permanent link">&para;</a></h2>
 <dl>
 <dt>Transactions</dt>
 <dd>The total number of transactions that have been either been committed or rolled back.</dd>
 <dt>Duration of Transactions</dt>
 <dd>Maximum duration in seconds any active transaction has been running.</dd>
 </dl>
-<h2 id="temp-files"><a class="toclink" href="#temp-files">Temp Files</a></h2>
+<h2 id="temp-files">Temp Files<a class="headerlink" href="#temp-files" title="Permanent link">&para;</a></h2>
 <dl>
 <dt>Number of Temp Files</dt>
 <dd>The number of temporary files created by queries.</dd>
@@ -157,14 +157,14 @@
 <p class="admonition-title">Note</p>
 <p>All temporary files are taken into account by these two gauges, regardless of why the temporary file was created (e.g., sorting or hashing), and regardless of the <code>log_temp_files</code> setting.</p>
 </div>
-<h2 id="conflicts-and-locks"><a class="toclink" href="#conflicts-and-locks">Conflicts and Locks</a></h2>
+<h2 id="conflicts-and-locks">Conflicts and Locks<a class="headerlink" href="#conflicts-and-locks" title="Permanent link">&para;</a></h2>
 <dl>
 <dt>Conflicts/Deadlocks</dt>
 <dd>The number of queries canceled due to conflicts with recovery in the database (due to dropped tablespaces, lock timeouts, old snapshots, pinned buffers, or deadlocks).</dd>
 <dt>Number of Locks</dt>
 <dd>The number of deadlocks detected by PostgreSQL.</dd>
 </dl>
-<h2 id="buffers-and-blocks-operations"><a class="toclink" href="#buffers-and-blocks-operations">Buffers and Blocks Operations</a></h2>
+<h2 id="buffers-and-blocks-operations">Buffers and Blocks Operations<a class="headerlink" href="#buffers-and-blocks-operations" title="Permanent link">&para;</a></h2>
 <dl>
 <dt>Operations with Blocks</dt>
 <dd>The time spent reading and writing data file blocks by back ends, in milliseconds.</dd>
@@ -180,23 +180,23 @@
 <dt>Buffers</dt>
 <dd>The number of buffers allocated by PostgreSQL.</dd>
 </dl>
-<h2 id="canceled-queries"><a class="toclink" href="#canceled-queries">Canceled Queries</a></h2>
+<h2 id="canceled-queries">Canceled Queries<a class="headerlink" href="#canceled-queries" title="Permanent link">&para;</a></h2>
 <p>The number of queries that have been canceled due to dropped tablespaces, lock timeouts, old snapshots, pinned buffers, and deadlocks.</p>
 <div class="admonition alert alert-info">
 <p class="admonition-title">Note</p>
 <p>Data shown by this gauge are based on the <code>pg_stat_database_conflicts</code> view.</p>
 </div>
-<h2 id="cache-hit-ratio"><a class="toclink" href="#cache-hit-ratio">Cache Hit Ratio</a></h2>
+<h2 id="cache-hit-ratio">Cache Hit Ratio<a class="headerlink" href="#cache-hit-ratio" title="Permanent link">&para;</a></h2>
 <p>The number of times disk blocks were found already in the buffer cache, so that a read was not necessary.</p>
 <div class="admonition alert alert-info">
 <p class="admonition-title">Note</p>
 <p>This only includes hits in the PostgreSQL buffer cache, not the operating system’s file system cache.</p>
 </div>
-<h2 id="checkpoint-stats"><a class="toclink" href="#checkpoint-stats">Checkpoint Stats</a></h2>
+<h2 id="checkpoint-stats">Checkpoint Stats<a class="headerlink" href="#checkpoint-stats" title="Permanent link">&para;</a></h2>
 <p>The total amount of time that has been spent in the portion of checkpoint processing where files are either written or synchronized to disk, in milliseconds.</p>
-<h2 id="postgresql-settings"><a class="toclink" href="#postgresql-settings">PostgreSQL Settings</a></h2>
+<h2 id="postgresql-settings">PostgreSQL Settings<a class="headerlink" href="#postgresql-settings" title="Permanent link">&para;</a></h2>
 <p>The list of all settings of the PostgreSQL server.</p>
-<h2 id="system-summary"><a class="toclink" href="#system-summary">System Summary</a></h2>
+<h2 id="system-summary">System Summary<a class="headerlink" href="#system-summary" title="Permanent link">&para;</a></h2>
 <p>This section contains the following system parameters of the PostgreSQL server: CPU Usage, CPU Saturation and Max Core Usage, Disk I/O Activity, and Network Traffic.</p>
                     </div>
                 </div>

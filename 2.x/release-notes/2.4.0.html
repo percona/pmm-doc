@@ -52,7 +52,7 @@
 </head>
 
 <body>
-	<!-- 2021-03-18 15:22:35.113359+00:00 -->
+	<!-- 2021-03-18 16:51:31.237658+00:00 -->
     
 <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.3/css/line.css" type="text/css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" type="text/css">
@@ -105,7 +105,7 @@
 
                 <div class="bodywrapper">
                     <div class="body">
-                        <h1 id="percona-monitoring-and-management-240"><a class="toclink" href="#percona-monitoring-and-management-240">Percona Monitoring and Management 2.4.0</a></h1>
+                        <h1 id="percona-monitoring-and-management-240">Percona Monitoring and Management 2.4.0<a class="headerlink" href="#percona-monitoring-and-management-240" title="Permanent link">&para;</a></h1>
 <table class="docutils field-list" frame="void" rules="none">
   <colgroup>
     <col class="field-name">
@@ -125,13 +125,13 @@
 </table>
 
 <p>Percona Monitoring and Management (PMM) is a free and open-source platform for managing and monitoring MySQL, MongoDB, and PostgreSQL performance.</p>
-<h2 id="new-features"><a class="toclink" href="#new-features">New Features</a></h2>
+<h2 id="new-features">New Features<a class="headerlink" href="#new-features" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="https://jira.percona.com/browse/PMM-3387">PMM-3387</a>: Prometheus custom configuration is now supported by PMM Server. The feature is targeted at experienced users and is done by <a href="../faq.html">adding the base configuration file into the PMM Server container</a> to be parsed and included into the managed Prometheus configuration.</li>
 <li><a href="https://jira.percona.com/browse/PMM-5186">PMM-5186</a>: Including <code>–-pprof</code> option in the <code>pmm-admin summary</code> command adds <code>pprof</code> debug profiles to the diagnostics data archive</li>
 <li><a href="https://jira.percona.com/browse/PMM-5102">PMM-5102</a>: The new “Node Details” dashboard now displays data from the hardware monitoring sensors in <code>hwmon</code>. The <a href="../details/dashboards/dashboard-node-temperature-details.html">new dashboard</a> is based on the <code>hwmon</code> collector data from the <code>node_exporter</code>. Please note that data may be unavailable for some nodes because of the configuration or virtualization parameters.</li>
 </ul>
-<h2 id="improvements"><a class="toclink" href="#improvements">Improvements</a></h2>
+<h2 id="improvements">Improvements<a class="headerlink" href="#improvements" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="https://jira.percona.com/browse/PMM-4915">PMM-4915</a>: The Query Analytics dashboard now shows Time Metrics in the Profile Section as “AVG per query” instead of “AVG per second”</li>
 <li><a href="https://jira.percona.com/browse/PMM-5470">PMM-5470</a>: ClickHouse query optimized for Query Analytics to improve its speed and reduce the load on the back-end</li>
@@ -151,7 +151,7 @@
 <li><a href="https://jira.percona.com/browse/PMM-5182">PMM-5182</a>: The <code>logs.zip</code> archive available on the PMM Settings page now includes additional self-monitoring information in a separate <code>client</code> subfolder. This subfolder contains information collected on the PMM Server and is equivalent to the one collected on a node by the <code>pmm-admin summary</code> command.</li>
 <li><a href="https://jira.percona.com/browse/PMM-5112">PMM-5112</a>: The Inventory API List requests now can be filtered by the Node/Service/Agent type</li>
 </ul>
-<h2 id="bugs-fixed"><a class="toclink" href="#bugs-fixed">Bugs Fixed</a></h2>
+<h2 id="bugs-fixed">Bugs Fixed<a class="headerlink" href="#bugs-fixed" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="https://jira.percona.com/browse/PMM-5178">PMM-5178</a>: Query Detail Section of the Query Analytics dashboard didn’t show tables definitions and indexes for the internal PostgreSQL database</li>
 <li><a href="https://jira.percona.com/browse/PMM-5465">PMM-5465</a>: MySQL Instance related dashboards had row names not always matching the actual contents. To fix this, elements were re-ordered and additional rows were added for better matching of the row name and the corresponding elements</li>

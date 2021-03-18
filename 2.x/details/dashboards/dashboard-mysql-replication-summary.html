@@ -52,7 +52,7 @@
 </head>
 
 <body>
-	<!-- 2021-03-18 15:22:34.651113+00:00 -->
+	<!-- 2021-03-18 16:51:30.748163+00:00 -->
     
 <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.3/css/line.css" type="text/css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" type="text/css">
@@ -105,9 +105,9 @@
 
                 <div class="bodywrapper">
                     <div class="body">
-                        <h1 id="mysql-replication-summary"><a class="toclink" href="#mysql-replication-summary">MySQL Replication Summary</a></h1>
+                        <h1 id="mysql-replication-summary">MySQL Replication Summary<a class="headerlink" href="#mysql-replication-summary" title="Permanent link">&para;</a></h1>
 <p><img alt="image" src="../../_images/PMM_MySQL_Replication_Summary.jpg" /></p>
-<h2 id="io-thread-running"><a class="toclink" href="#io-thread-running">IO Thread Running</a></h2>
+<h2 id="io-thread-running">IO Thread Running<a class="headerlink" href="#io-thread-running" title="Permanent link">&para;</a></h2>
 <p>This metric shows if the IO Thread is running or not. It only applies to a secondary host.</p>
 <p>SQL Thread is a process that runs on a secondary host in the replication environment. It reads the events from the local relay log file and applies them to the secondary server.</p>
 <p>Depending on the format of the binary log it can read query statements in plain text and re-execute them or it can read raw data and apply them to the local host.</p>
@@ -124,7 +124,7 @@
 </dl>
 <p>IO Thread Running is one of the parameters that the command
 <code>SHOW SLAVE STATUS</code> returns.</p>
-<h2 id="sql-thread-running"><a class="toclink" href="#sql-thread-running">SQL Thread Running</a></h2>
+<h2 id="sql-thread-running">SQL Thread Running<a class="headerlink" href="#sql-thread-running" title="Permanent link">&para;</a></h2>
 <p>This metric shows if the SQL thread is running or not. It only applies to a secondary host.</p>
 <p><strong>Possible values</strong></p>
 <dl>
@@ -133,10 +133,10 @@
 <dt>No</dt>
 <dd>SQL Thread is not running because it is not launched yet or because of an error occurred while applying an event to the local secondary host</dd>
 </dl>
-<h2 id="replication-error-no"><a class="toclink" href="#replication-error-no">Replication Error No</a></h2>
+<h2 id="replication-error-no">Replication Error No<a class="headerlink" href="#replication-error-no" title="Permanent link">&para;</a></h2>
 <p>This metric shows the number of the last error in the SQL Thread encountered which caused replication to stop.</p>
 <p>One of the more common errors is <em>Error: 1022 Duplicate Key Entry</em>. In such a case replication is attempting to update a row that already exists on the secondary. The SQL Thread will stop replication to avoid data corruption.</p>
-<h2 id="read-only"><a class="toclink" href="#read-only">Read only</a></h2>
+<h2 id="read-only">Read only<a class="headerlink" href="#read-only" title="Permanent link">&para;</a></h2>
 <p>This metric indicates whether the host is configured to be in <em>Read Only</em> mode or not.</p>
 <p><strong>Possible values</strong></p>
 <dl>
@@ -148,7 +148,7 @@
 <dt>No</dt>
 <dd>The secondary host is not configured in <em>Read Only</em> mode.</dd>
 </dl>
-<h2 id="mysql-replication-delay"><a class="toclink" href="#mysql-replication-delay">MySQL Replication Delay</a></h2>
+<h2 id="mysql-replication-delay">MySQL Replication Delay<a class="headerlink" href="#mysql-replication-delay" title="Permanent link">&para;</a></h2>
 <p>This metric shows the number of seconds the secondary host is delayed in replication applying events compared to when the primary host applied them, denoted by the <code>Seconds_Behind_Master</code> value, and only applies to a secondary host.</p>
 <p>Since the replication process applies the data modifications on the secondary asynchronously, it could happen that the secondary replicates events after some time. The main reasons are:</p>
 <ul>
@@ -163,18 +163,18 @@
 </li>
 </ul>
 <p>Generally adding more CPU or Disk resources can alleviate replication lag issues, up to a point.</p>
-<h2 id="binlog-size"><a class="toclink" href="#binlog-size">Binlog Size</a></h2>
+<h2 id="binlog-size">Binlog Size<a class="headerlink" href="#binlog-size" title="Permanent link">&para;</a></h2>
 <p>This metric shows the overall size of the binary log files, which can exist on both primary and secondary servers.</p>
 <p>The binary log (also known as the <em>binlog</em>) contains events that describe database changes: <code>CREATE TABLE</code>, <code>ALTER TABLE</code>, updates, inserts, deletes and other statements or database changes.</p>
 <p>The binlog file is read by secondaries via their IO Thread process to replicate database changes modification on the data and on the table structures. There can be more than one binlog file depending on the binlog rotation policy (for example using the configuration variables <code>max_binlog_size</code> and <code>expire_logs_days</code>) or because of server reboots.</p>
 <p>When planning the disk space, take care of the overall dimension of binlog files and adopt a good rotation policy or think about having a separate mount point or disk to store the binlog data.</p>
-<h2 id="binlog-data-written-hourly"><a class="toclink" href="#binlog-data-written-hourly">Binlog Data Written Hourly</a></h2>
+<h2 id="binlog-data-written-hourly">Binlog Data Written Hourly<a class="headerlink" href="#binlog-data-written-hourly" title="Permanent link">&para;</a></h2>
 <p>This metric shows the amount of data written hourly to the binlog files during the last 24 hours. This metric can give you an idea of how big is your application in terms of data writes (creation, modification, deletion).</p>
-<h2 id="binlog-count"><a class="toclink" href="#binlog-count">Binlog Count</a></h2>
+<h2 id="binlog-count">Binlog Count<a class="headerlink" href="#binlog-count" title="Permanent link">&para;</a></h2>
 <p>This metric shows the overall count of binary log files, on both primary and secondary servers.</p>
-<h2 id="binlogs-created-hourly"><a class="toclink" href="#binlogs-created-hourly">Binlogs Created Hourly</a></h2>
+<h2 id="binlogs-created-hourly">Binlogs Created Hourly<a class="headerlink" href="#binlogs-created-hourly" title="Permanent link">&para;</a></h2>
 <p>This metric shows the number of binlog files created hourly during the last 24 hours.</p>
-<h2 id="relay-log-space"><a class="toclink" href="#relay-log-space">Relay Log Space</a></h2>
+<h2 id="relay-log-space">Relay Log Space<a class="headerlink" href="#relay-log-space" title="Permanent link">&para;</a></h2>
 <p>This metric shows the overall size of the relay log files. It only applies to a secondary host.</p>
 <p>The relay log consists of a set of numbered files containing the events to be executed on the secondary host to replicate database changes.</p>
 <p>The relay log has the same format as the binlog.</p>
@@ -182,7 +182,7 @@
 <p>As soon as the SQL thread completes to execute all events in the relay log file, the file is deleted.</p>
 <p>If this metric contains a high value, the variable <code>max_relay_log_file</code> is high too. Generally, this not a serious issue. If the value of this metric is constantly increased, the secondary is delaying too much in applying the events.</p>
 <p>Treat this metric in the same way as the <a href="#mysql-replication-delay">MySQL Replication Delay</a> metric.</p>
-<h2 id="relay-log-written-hourly"><a class="toclink" href="#relay-log-written-hourly">Relay Log Written Hourly</a></h2>
+<h2 id="relay-log-written-hourly">Relay Log Written Hourly<a class="headerlink" href="#relay-log-written-hourly" title="Permanent link">&para;</a></h2>
 <p>This metric shows the amount of data written hourly into relay log files during the last 24 hours.</p>
                     </div>
                 </div>

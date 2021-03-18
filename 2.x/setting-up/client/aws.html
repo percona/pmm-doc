@@ -52,7 +52,7 @@
 </head>
 
 <body>
-	<!-- 2021-03-18 15:22:35.222892+00:00 -->
+	<!-- 2021-03-18 16:51:31.357614+00:00 -->
     
 <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.3/css/line.css" type="text/css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" type="text/css">
@@ -105,19 +105,19 @@
 
                 <div class="bodywrapper">
                     <div class="body">
-                        <h1 id="amazon-rds"><a class="toclink" href="#amazon-rds">Amazon RDS</a></h1>
-<h2 id="required-settings"><a class="toclink" href="#required-settings">Required settings</a></h2>
+                        <h1 id="amazon-rds">Amazon RDS<a class="headerlink" href="#amazon-rds" title="Permanent link">&para;</a></h1>
+<h2 id="required-settings">Required settings<a class="headerlink" href="#required-settings" title="Permanent link">&para;</a></h2>
 <p>It is possible to use PMM for monitoring <a href="https://aws.amazon.com/rds/">Amazon RDS</a> (just like any remote MySQL instance). In this case, the PMM Client is not installed on the host where the database server is deployed. By using the PMM web interface, you connect to the Amazon RDS DB instance. You only need to provide the IAM user access key (or assign an IAM role) and PMM discovers the Amazon RDS DB instances available for monitoring.</p>
 <p>First of all, ensure that there is the minimal latency between PMM Server and the Amazon RDS instance.</p>
 <p>Network connectivity can become an issue for VictoriaMetrics to scrape metrics with 1 second resolution.  We strongly suggest that you run PMM Server on AWS (Amazon Web Services) in the same availability zone as Amazon RDS instances.</p>
 <p>It is crucial that <em>enhanced monitoring</em> be enabled for the Amazon RDS DB instances you intend to monitor.</p>
 <p>Set the <em>Enable Enhanced Monitoring</em> option in the settings of your Amazon RDS DB instance.</p>
 <p><img alt="image" src="../../_images/amazon-rds.modify-db-instance.2.png" /></p>
-<h2 id="creating-an-iam-user-with-permission-to-access-amazon-rds-db-instances"><a class="toclink" href="#creating-an-iam-user-with-permission-to-access-amazon-rds-db-instances">Creating an IAM user with permission to access Amazon RDS DB instances</a></h2>
+<h2 id="creating-an-iam-user-with-permission-to-access-amazon-rds-db-instances">Creating an IAM user with permission to access Amazon RDS DB instances<a class="headerlink" href="#creating-an-iam-user-with-permission-to-access-amazon-rds-db-instances" title="Permanent link">&para;</a></h2>
 <p>It is recommended that you use an IAM user account to access Amazon RDS DB instances instead of using your AWS account. This measure improves security as the permissions of an IAM user account can be limited so that this account only grants access to your Amazon RDS DB instances. On the other hand, you use your AWS account to access all AWS services.</p>
 <p>The procedure for creating IAM user accounts is well described in the Amazon RDS documentation. This section only goes through the essential steps and points out the steps required for using Amazon RDS with Percona Monitoring and Management.</p>
 <p>The first step is to define a policy which will hold all the necessary permissions. Then, you need to associate this policy with the IAM user or group. In this section, we will create a new user for this purpose.</p>
-<h2 id="creating-a-policy"><a class="toclink" href="#creating-a-policy">Creating a policy</a></h2>
+<h2 id="creating-a-policy">Creating a policy<a class="headerlink" href="#creating-a-policy" title="Permanent link">&para;</a></h2>
 <p>A policy defines how AWS services can be accessed. Once defined it can be associated with an existing user or group.</p>
 <p>To define a new policy use the IAM page at AWS.</p>
 <p><img alt="image" src="../../_images/aws.iam.png" /></p>
@@ -149,7 +149,7 @@
 <p><img alt="image" src="../../_images/aws.iam.create-policy.png" /></p>
 </li>
 </ol>
-<h2 id="creating-an-iam-user"><a class="toclink" href="#creating-an-iam-user">Creating an IAM user</a></h2>
+<h2 id="creating-an-iam-user">Creating an IAM user<a class="headerlink" href="#creating-an-iam-user" title="Permanent link">&para;</a></h2>
 <p>Policies are attached to existing IAM users or groups. To create a new IAM user, select <em>Users</em> on the Identity and Access Management page at AWS. Then click <em>Add user</em> and complete the following steps:</p>
 <p><img alt="image" src="../../_images/aws.iam-users.1.png" /></p>
 <ol>
@@ -163,7 +163,7 @@
 <p>On the <em>Add user</em> page, click <em>Create user</em>.</p>
 </li>
 </ol>
-<h2 id="creating-an-access-key-for-an-iam-user"><a class="toclink" href="#creating-an-access-key-for-an-iam-user">Creating an access key for an IAM user</a></h2>
+<h2 id="creating-an-access-key-for-an-iam-user">Creating an access key for an IAM user<a class="headerlink" href="#creating-an-access-key-for-an-iam-user" title="Permanent link">&para;</a></h2>
 <p>To discover an Amazon RDS DB instance in PMM, you either need to use the access key and secret access key of an existing IAM user or an IAM role. To create an access key for use with PMM, open the IAM console and click <em>Users</em> on the navigation pane. Then, select your IAM user.</p>
 <p>To create the access key, open the <em>Security credentials</em> tab and click the <em>Create access key</em> button. The system automatically generates a new access key ID and a secret access key that you can provide on the <em>PMM Add Instance</em> dashboard to have your Amazon RDS DB instances discovered.</p>
 <div class="admonition alert alert-info">
@@ -171,7 +171,7 @@
 <p>You may use an IAM role instead of IAM user provided your Amazon RDS DB instances are associated with the same AWS account as PMM.</p>
 </div>
 <p>In case, the PMM Server and Amazon RDS DB instance were created by using the same AWS account, you do not need create the access key ID and secret access key manually. PMM retrieves this information automatically and attempts to discover your Amazon RDS DB instances.</p>
-<h2 id="attaching-a-policy-to-an-iam-user"><a class="toclink" href="#attaching-a-policy-to-an-iam-user">Attaching a policy to an IAM user</a></h2>
+<h2 id="attaching-a-policy-to-an-iam-user">Attaching a policy to an IAM user<a class="headerlink" href="#attaching-a-policy-to-an-iam-user" title="Permanent link">&para;</a></h2>
 <p>The last step before you are ready to create an Amazon RDS DB instance is to attach the policy with the required permissions to the IAM user.</p>
 <p>First, make sure that the Identity and Access Management page is open and open <em>Users</em>. Then, locate and open the IAM user that you plan to use with Amazon RDS DB instances. Complete the following steps, to apply the policy:</p>
 <ol>
@@ -193,7 +193,7 @@
 </ol>
 <p>The <code>AmazonRDSforPMMPolicy</code> is now added to your IAM user.</p>
 <p><img alt="image" src="../../_images/aws.iam.add-permissions.png" /></p>
-<h2 id="setting-up-the-amazon-rds-db-instance"><a class="toclink" href="#setting-up-the-amazon-rds-db-instance">Setting up the Amazon RDS DB Instance</a></h2>
+<h2 id="setting-up-the-amazon-rds-db-instance">Setting up the Amazon RDS DB Instance<a class="headerlink" href="#setting-up-the-amazon-rds-db-instance" title="Permanent link">&para;</a></h2>
 <p>Query Analytics requires Configuring Performance Schema as the query source, because the slow query log is stored on the AWS (Amazon Web Services) side, and QAN agent is not able to read it.  Enable the <code>performance_schema</code> option under <code>Parameter Groups</code> in Amazon RDS.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -210,7 +210,7 @@
 <p>General system metrics are monitored by using the <code>rds_exporter</code> exporter which replaces <code>node_exporter</code>. <code>rds_exporter</code> gives access to Amazon Cloudwatch metrics.</p>
 <p><code>node_exporter</code>, used in versions of PMM prior to 1.8.0, was not able to monitor general system metrics remotely.</p>
 </div>
-<h2 id="adding-an-amazon-rds-mysql-aurora-mysql-or-remote-instance"><a class="toclink" href="#adding-an-amazon-rds-mysql-aurora-mysql-or-remote-instance">Adding an Amazon RDS MySQL, Aurora MySQL or Remote Instance</a></h2>
+<h2 id="adding-an-amazon-rds-mysql-aurora-mysql-or-remote-instance">Adding an Amazon RDS MySQL, Aurora MySQL or Remote Instance<a class="headerlink" href="#adding-an-amazon-rds-mysql-aurora-mysql-or-remote-instance" title="Permanent link">&para;</a></h2>
 <p>The preferred method of adding an Amazon RDS database instance to PMM is via the <em>PMM &rarr; PMM Add Instance</em> menu option. </p>
 <p>This method supports Amazon RDS database instances that use Amazon Aurora, MySQL, or MariaDB engines, as well as any remote PostgreSQL, ProxySQL, MySQL and MongoDB instances.</p>
 <p>The following steps are needed to add an Amazon RDS database instance to PMM:</p>
@@ -258,7 +258,7 @@ database user name and password.</p>
 <p>Finally press the <em>Add service</em> button to start monitoring your instance.</p>
 </li>
 </ol>
-<h2 id="adding-an-amazon-rds-postgresql-instance"><a class="toclink" href="#adding-an-amazon-rds-postgresql-instance">Adding an Amazon RDS PostgreSQL instance</a></h2>
+<h2 id="adding-an-amazon-rds-postgresql-instance">Adding an Amazon RDS PostgreSQL instance<a class="headerlink" href="#adding-an-amazon-rds-postgresql-instance" title="Permanent link">&para;</a></h2>
 <p>For PostgreSQL, use the same method described above.</p>
 <ol>
 <li>

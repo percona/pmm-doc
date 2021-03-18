@@ -52,7 +52,7 @@
 </head>
 
 <body>
-	<!-- 2021-03-18 15:22:34.824903+00:00 -->
+	<!-- 2021-03-18 16:51:30.933542+00:00 -->
     
 <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.3/css/line.css" type="text/css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" type="text/css">
@@ -105,29 +105,29 @@
 
                 <div class="bodywrapper">
                     <div class="body">
-                        <h1 id="pxcgalera-node-summary"><a class="toclink" href="#pxcgalera-node-summary">PXC/Galera Node Summary</a></h1>
+                        <h1 id="pxcgalera-node-summary">PXC/Galera Node Summary<a class="headerlink" href="#pxcgalera-node-summary" title="Permanent link">&para;</a></h1>
 <p><img alt="image" src="../../_images/PMM_PXC_Galera_Node_Summary.jpg" /></p>
-<h2 id="galera-replication-latency"><a class="toclink" href="#galera-replication-latency">Galera Replication Latency</a></h2>
+<h2 id="galera-replication-latency">Galera Replication Latency<a class="headerlink" href="#galera-replication-latency" title="Permanent link">&para;</a></h2>
 <p>Shows figures for the replication latency on group communication. It measures latency from the time point when a message is sent out to the time point when a message is received. As replication is a group operation, this essentially gives you the slowest ACK and longest RTT in the cluster.</p>
-<h2 id="galera-replication-queues"><a class="toclink" href="#galera-replication-queues">Galera Replication Queues</a></h2>
+<h2 id="galera-replication-queues">Galera Replication Queues<a class="headerlink" href="#galera-replication-queues" title="Permanent link">&para;</a></h2>
 <p>Shows the length of receive and send queues.</p>
-<h2 id="galera-cluster-size"><a class="toclink" href="#galera-cluster-size">Galera Cluster Size</a></h2>
+<h2 id="galera-cluster-size">Galera Cluster Size<a class="headerlink" href="#galera-cluster-size" title="Permanent link">&para;</a></h2>
 <p>Shows the number of members currently connected to the cluster.</p>
-<h2 id="galera-flow-control"><a class="toclink" href="#galera-flow-control">Galera Flow Control</a></h2>
+<h2 id="galera-flow-control">Galera Flow Control<a class="headerlink" href="#galera-flow-control" title="Permanent link">&para;</a></h2>
 <p>Shows the number of <code>FC_PAUSE</code> events sent/received. They are sent by a node when its replication queue gets too full. If a node is sending out FC messages it indicates a problem.</p>
-<h2 id="galera-parallelization-efficiency"><a class="toclink" href="#galera-parallelization-efficiency">Galera Parallelization Efficiency</a></h2>
+<h2 id="galera-parallelization-efficiency">Galera Parallelization Efficiency<a class="headerlink" href="#galera-parallelization-efficiency" title="Permanent link">&para;</a></h2>
 <p>Shows the average distances between highest and lowest seqno that are concurrently applied, committed and can be possibly applied in parallel (potential degree of parallelization).</p>
-<h2 id="galera-writing-conflicts"><a class="toclink" href="#galera-writing-conflicts">Galera Writing Conflicts</a></h2>
+<h2 id="galera-writing-conflicts">Galera Writing Conflicts<a class="headerlink" href="#galera-writing-conflicts" title="Permanent link">&para;</a></h2>
 <p>Shows the number of local transactions being committed on this node that failed certification (some other node had a commit that conflicted with ours) – client received deadlock error on commit and also the number of local transactions in flight on this node that were aborted because they locked something an applier thread needed – deadlock error anywhere in an open transaction. Spikes in the graph may indicate writing to the same table potentially the same rows from 2 nodes.</p>
-<h2 id="available-downtime-before-sst-required"><a class="toclink" href="#available-downtime-before-sst-required">Available Downtime before SST Required</a></h2>
+<h2 id="available-downtime-before-sst-required">Available Downtime before SST Required<a class="headerlink" href="#available-downtime-before-sst-required" title="Permanent link">&para;</a></h2>
 <p>Shows for how long the node can be taken out of the cluster before SST is required. SST is a full state transfer method.</p>
-<h2 id="galera-writeset-count"><a class="toclink" href="#galera-writeset-count">Galera Writeset Count</a></h2>
+<h2 id="galera-writeset-count">Galera Writeset Count<a class="headerlink" href="#galera-writeset-count" title="Permanent link">&para;</a></h2>
 <p>Shows the count of transactions received from the cluster (any other node) and replicated to the cluster (from this node).</p>
-<h2 id="galera-writeset-size"><a class="toclink" href="#galera-writeset-size">Galera Writeset Size</a></h2>
+<h2 id="galera-writeset-size">Galera Writeset Size<a class="headerlink" href="#galera-writeset-size" title="Permanent link">&para;</a></h2>
 <p>Shows the average transaction size received/replicated.</p>
-<h2 id="galera-writeset-traffic"><a class="toclink" href="#galera-writeset-traffic">Galera Writeset Traffic</a></h2>
+<h2 id="galera-writeset-traffic">Galera Writeset Traffic<a class="headerlink" href="#galera-writeset-traffic" title="Permanent link">&para;</a></h2>
 <p>Shows the bytes of data received from the cluster (any other node) and replicated to the cluster (from this node).</p>
-<h2 id="galera-network-usage-hourly"><a class="toclink" href="#galera-network-usage-hourly">Galera Network Usage Hourly</a></h2>
+<h2 id="galera-network-usage-hourly">Galera Network Usage Hourly<a class="headerlink" href="#galera-network-usage-hourly" title="Permanent link">&para;</a></h2>
 <p>Shows the bytes of data received from the cluster (any other node) and replicated to the cluster (from this node).</p>
                     </div>
                 </div>

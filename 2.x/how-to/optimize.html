@@ -52,7 +52,7 @@
 </head>
 
 <body>
-	<!-- 2021-03-18 15:22:34.889330+00:00 -->
+	<!-- 2021-03-18 16:51:31.000374+00:00 -->
     
 <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.3/css/line.css" type="text/css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" type="text/css">
@@ -105,8 +105,8 @@
 
                 <div class="bodywrapper">
                     <div class="body">
-                        <h1 id="optimize"><a class="toclink" href="#optimize">Optimize</a></h1>
-<h2 id="improving-pmm-performance-with-table-statistics-options"><a class="toclink" href="#improving-pmm-performance-with-table-statistics-options">Improving PMM Performance with Table Statistics Options</a></h2>
+                        <h1 id="optimize">Optimize<a class="headerlink" href="#optimize" title="Permanent link">&para;</a></h1>
+<h2 id="improving-pmm-performance-with-table-statistics-options">Improving PMM Performance with Table Statistics Options<a class="headerlink" href="#improving-pmm-performance-with-table-statistics-options" title="Permanent link">&para;</a></h2>
 <p>If a MySQL instance has a lot of schemas or tables, there are two options to help improve the performance of PMM when adding instances with <code>pmm-admin add</code>: <code>--disable-tablestats</code> and <code>--disable-tablestats-limit</code>.</p>
 <div class="admonition alert alert-info">
 <p class="admonition-title">Note</p>
@@ -119,17 +119,17 @@
 </li>
 </ul>
 </div>
-<h2 id="disable-per-table-statistics-for-an-instance"><a class="toclink" href="#disable-per-table-statistics-for-an-instance">Disable per-table statistics for an instance</a></h2>
+<h2 id="disable-per-table-statistics-for-an-instance">Disable per-table statistics for an instance<a class="headerlink" href="#disable-per-table-statistics-for-an-instance" title="Permanent link">&para;</a></h2>
 <p>When adding an instance with <code>pmm-admin add</code>, the <code>--disable-tablestats</code> option disables table statistics collection when there are more than the default number (1000) of tables in the instance.</p>
-<h3 id="usage"><a class="toclink" href="#usage">USAGE</a></h3>
+<h3 id="usage">USAGE<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>sudo pmm-admin add mysql --disable-tablestats
 </code></pre></div>
-<h2 id="change-the-number-of-tables-beyond-which-per-table-statistics-is-disabled"><a class="toclink" href="#change-the-number-of-tables-beyond-which-per-table-statistics-is-disabled">Change the number of tables beyond which per-table statistics is disabled</a></h2>
+<h2 id="change-the-number-of-tables-beyond-which-per-table-statistics-is-disabled">Change the number of tables beyond which per-table statistics is disabled<a class="headerlink" href="#change-the-number-of-tables-beyond-which-per-table-statistics-is-disabled" title="Permanent link">&para;</a></h2>
 <p>When adding an instance with <code>pmm-admin add</code>, the <code>--disable-tablestats-limit</code> option changes the number of tables (from the default of 1000) beyond which per-table statistics collection is disabled.</p>
-<h3 id="usage_1"><a class="toclink" href="#usage_1">USAGE</a></h3>
+<h3 id="usage_1">USAGE<a class="headerlink" href="#usage_1" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>sudo pmm-admin add mysql --disable-tablestats-limit<span class="o">=</span>&lt;LIMIT&gt;
 </code></pre></div>
-<h3 id="example"><a class="toclink" href="#example">EXAMPLE</a></h3>
+<h3 id="example">EXAMPLE<a class="headerlink" href="#example" title="Permanent link">&para;</a></h3>
 <p>Add a MySQL instance, disabling per-table statistics collection when the number of tables in the instance reaches 2000.</p>
 <div class="highlight"><pre><span></span><code>sudo pmm-admin add mysql --disable-tablestats-limit<span class="o">=</span><span class="m">2000</span>
 </code></pre></div>
