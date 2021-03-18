@@ -15,9 +15,7 @@ With PMM, you can:
 
 PMM is efficient, quick to set up and easy to use. It runs in cloud, on-prem, or across hybrid platforms. It is supported by [Percona's legendary expertise][PERCONA_SERVICES] in open source databases, and by a [vibrant developer and user community][PMM_FORUM].
 
-<div class="alert alert-info">
-Try the live demo: <a href='https://pmmdemo.percona.com/' target='_blank'>pmmdemo.percona.com</a>
-</div>
+> Try the live demo: <a href='https://pmmdemo.percona.com/' target='_blank'>pmmdemo.percona.com</a>
 
 ## How it works
 
@@ -44,7 +42,7 @@ PMM Client runs on every database host or node you want to monitor. The client c
 
 ## Setting up
 
-!!! alert alert-info "Quickstart installation <{{ extra.quickstart }}>"
+> [**Quickstart installation**][PMM_QUICKSTART]
 
 PMM Server communicates with clients, receives metrics data and presents it in a web-based user interface. PMM Server can run as: [a Docker container](setting-up/server/docker.md), an [virtual machine](setting-up/server/virtual-appliance.md), or as an [Amazon AWS EC2 instance](setting-up/server/aws.md). (Learn more about [setting up PMM Server](setting-up/server/index.md).)
 
@@ -58,3 +56,4 @@ PMM Client runs on all hosts you want to monitor according to the type of system
 
 [PERCONA_SERVICES]: https://www.percona.com/services
 [PMM_FORUM]: https://www.percona.com/forums/questions-discussions/percona-monitoring-and-management
+[PMM_QUICKSTART]: https://www.percona.com/software/pmm/quickstart
