@@ -1,10 +1,10 @@
 # DBaaS Dashboard
 
-!!! alert alert-warning "Caution"
-    DBaaS functionality is Alpha. The information on this page is subject to change and may be inaccurate.
+> <b style="color: red">Caution</b>
+> DBaaS functionality is Alpha. The information on this page is subject to change and may be inaccurate.
 
-!!! alert alert-info "Note"
-    You must run PMM Server with a DBaaS feature flag to activate the features described here.
+> **Note**
+> You must run PMM Server with a DBaaS feature flag to activate the features described here.
 
 ---
 
@@ -39,8 +39,8 @@ To open the DBaaS dashboard:
 
 ### Unregister a Kubernetes cluster
 
-!!! alert alert-info "Note"
-    You can't unregister a Kubernetes cluster if there DB clusters associated with it.
+> **Note**
+> You can't unregister a Kubernetes cluster if there DB clusters associated with it.
 
 1. Click *Unregister*.
 
@@ -161,5 +161,5 @@ A paused cluster can't be edited.
         ![DBaaS Resume](../../_images/PMM_DBaaS_DB_Cluster_Resume.gif)
 
 
-!!! seealso "See also"
-    [Setting up a development environment for DBaaS](../../setting-up/server/dbaas.md)
+> **See also**
+> [Setting up a development environment for DBaaS](../../setting-up/server/dbaas.md)
