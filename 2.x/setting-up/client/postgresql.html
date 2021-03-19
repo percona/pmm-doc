@@ -52,7 +52,7 @@
 </head>
 
 <body>
-	<!-- 2021-03-19 10:24:51.603723+00:00 -->
+	<!-- 2021-03-19 10:31:24.822602+00:00 -->
     
 <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.3/css/line.css" type="text/css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" type="text/css">
@@ -111,24 +111,13 @@
 <a href="https://www.percona.com/services/policies/percona-software-platform-lifecycle/">Percona’s Software Platform Lifecycle page</a>.</p>
 <p>To monitor PostgreSQL queries, you must install a database extension. There are two choices:</p>
 <ul>
-<li>
-<p><code>pg_stat_monitor</code>, a new extension created by Percona, based on <code>pg_stat_statements</code> and compatible with it.</p>
-</li>
-<li>
-<p><code>pg_stat_statements</code>, the original extension created by PostgreSQL, part of the <code>postgres-contrib</code> package available on Linux.</p>
-</li>
+<li><code>pg_stat_monitor</code>, a new extension created by Percona, based on <code>pg_stat_statements</code> and compatible with it.</li>
+<li><code>pg_stat_statements</code>, the original extension created by PostgreSQL, part of the <code>postgres-contrib</code> package available on Linux.</li>
 </ul>
+<p>(We recommend using only one. If you use both, you will get duplicate metrics.)</p>
 <p><code>pg_stat_monitor</code> provides all the features of <code>pg_stat_statements</code>, but extends it to provide bucket-based data aggregation, a feature missing from <code>pg_stat_statements</code>. (<code>pg_stat_statements</code> accumulates data without providing aggregated statistics or histogram information.)</p>
 <blockquote>
-<p><b style="color:goldenrod">Caution</b> <code>pg_stat_monitor</code> is beta software and currently unsupported.</p>
-<ul>
-<li>
-<p><code>pg_stat_monitor</code> is the recommended option.</p>
-</li>
-<li>
-<p>Although nothing prevents you from installing and using both, we don&rsquo;t recommend this as you will get duplicate metrics.</p>
-</li>
-</ul>
+<p><b style="color:goldenrod">Important</b> While we recommend use of the newer <code>pg_stat_monitor</code> extension, be aware that it is currently beta status and unsupported.&rdquo;</p>
 </blockquote>
 <h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
 <p>We recommend that you create a PostgreSQL user for <code>SUPERUSER</code> level access. This lets you gather the most data with the least fuss.</p>
