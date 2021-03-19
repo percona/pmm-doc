@@ -16,13 +16,9 @@ To monitor PostgreSQL queries, you must install a database extension. There are 
 
 !!! alert alert-info "Note"
 
-    - `pg_stat_monitor` is the recommended option.
+    - Although `pg_stat_monitor` is beta software and currently unsupported, we do recommend the early adoption of `pg_stat_monitor`.
 
-    - Although nothing prevents you from installing and using both, we don't recommend this as you will get duplicate metrics.
-
-!!! caution
-
-    `pg_stat_monitor` is beta software and currently unsupported.
+    - Nothing prevents you from installing and using both `pg_stat_monitor` and `pg_stat_monitor`, but we don't recommend this as you will get duplicate metrics.
 
 
 ## Prerequisites
