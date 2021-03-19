@@ -52,7 +52,7 @@
 </head>
 
 <body>
-	<!-- 2021-03-19 10:48:05.674241+00:00 -->
+	<!-- 2021-03-19 11:51:03.099107+00:00 -->
     
 <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.3/css/line.css" type="text/css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" type="text/css">
@@ -117,7 +117,7 @@
 <li>You have superuser (root) access on the client host.</li>
 <li>You have superuser access to any database servers that you want to monitor.</li>
 </ul>
-<h2 id="create-a-database-account-for-pmm">Create a database account for PMM<a class="headerlink" href="#create-a-database-account-for-pmm" title="Permanent link">&para;</a></h2>
+<h2 id="setting-up-client-user">Create a database account for PMM<a class="headerlink" href="#setting-up-client-user" title="Permanent link">&para;</a></h2>
 <p>It is good practice to use a non-superuser account to connect PMM Client to the monitored database instance. This example creates a database user with name <code>pmm</code>, password <code>pass</code>, and the necessary permissions.</p>
 <div class="highlight"><pre><span></span><code><span class="k">CREATE</span> <span class="k">USER</span> <span class="s1">&#39;pmm&#39;</span><span class="o">@</span><span class="s1">&#39;localhost&#39;</span> <span class="n">IDENTIFIED</span> <span class="k">BY</span> <span class="s1">&#39;pass&#39;</span> <span class="k">WITH</span> <span class="n">MAX_USER_CONNECTIONS</span> <span class="mi">10</span><span class="p">;</span>
 <span class="k">GRANT</span> <span class="k">SELECT</span><span class="p">,</span> <span class="n">PROCESS</span><span class="p">,</span> <span class="n">SUPER</span><span class="p">,</span> <span class="n">REPLICATION</span> <span class="n">CLIENT</span><span class="p">,</span> <span class="n">RELOAD</span> <span class="k">ON</span> <span class="o">*</span><span class="p">.</span><span class="o">*</span> <span class="k">TO</span> <span class="s1">&#39;pmm&#39;</span><span class="o">@</span><span class="s1">&#39;localhost&#39;</span><span class="p">;</span>

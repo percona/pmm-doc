@@ -52,7 +52,7 @@
 </head>
 
 <body>
-	<!-- 2021-03-19 10:48:04.492653+00:00 -->
+	<!-- 2021-03-19 11:51:01.981072+00:00 -->
     
 <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.3/css/line.css" type="text/css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" type="text/css">
@@ -107,16 +107,9 @@
                     <div class="body">
                         <h1 id="faq">FAQ<a class="headerlink" href="#faq" title="Permanent link">&para;</a></h1>
 <h2 id="how-can-i-contact-the-developers">How can I contact the developers?<a class="headerlink" href="#how-can-i-contact-the-developers" title="Permanent link">&para;</a></h2>
-<p>The best place to discuss PMM with developers and other community members is the <a href="https://www.percona.com/forums/questions-discussions/percona-monitoring-and-management">community forum</a>.</p>
-<p>To report a bug, visit the <a href="https://jira.percona.com/projects/PMM">PMM project in JIRA</a>.</p>
-<h2 id="how-can-i-contact-the-technical-writers">How can I contact the technical writers?<a class="headerlink" href="#how-can-i-contact-the-technical-writers" title="Permanent link">&para;</a></h2>
 <ul>
-<li>
-<p>Open a <a href="https://jira.percona.com/secure/CreateIssue!default.jspa">Jira</a> ticket</p>
-</li>
-<li>
-<p>Open a <a href="https://github.com/percona/pmm-doc/issues/new">GitHub</a> issue</p>
-</li>
+<li><a href="https://www.percona.com/forums/questions-discussions/percona-monitoring-and-management">Community forum</a>.</li>
+<li><a href="https://jira.percona.com/projects/PMM">PMM project in JIRA</a>.</li>
 </ul>
 <h2 id="what-are-the-minimum-system-requirements-for-pmm">What are the minimum system requirements for PMM?<a class="headerlink" href="#what-are-the-minimum-system-requirements-for-pmm" title="Permanent link">&para;</a></h2>
 <p><strong>PMM Server</strong></p>
@@ -153,8 +146,7 @@ Depending on your available disk space and requirements, you may need to adjust 
 <h2 id="how-often-are-nginx-logs-in-pmm-server-rotated">How often are NGINX logs in PMM Server rotated?<a class="headerlink" href="#how-often-are-nginx-logs-in-pmm-server-rotated" title="Permanent link">&para;</a></h2>
 <p>PMM Server runs <code>logrotate</code> on a daily basis to rotate NGINX logs and keeps up to ten of the most recent log files.</p>
 <h2 id="what-privileges-are-required-to-monitor-a-mysql-instance">What privileges are required to monitor a MySQL instance?<a class="headerlink" href="#what-privileges-are-required-to-monitor-a-mysql-instance" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="k">GRANT</span> <span class="k">SELECT</span><span class="p">,</span> <span class="n">PROCESS</span><span class="p">,</span> <span class="n">SUPER</span><span class="p">,</span> <span class="n">REPLICATION</span> <span class="n">CLIENT</span><span class="p">,</span> <span class="n">RELOAD</span> <span class="k">ON</span> <span class="o">*</span><span class="p">.</span><span class="o">*</span> <span class="k">TO</span> <span class="s1">&#39;pmm&#39;</span><span class="o">@</span><span class="s1">&#39;localhost&#39;</span><span class="p">;</span>
-</code></pre></div>
+<p>See <a href="setting-up/client/mysql.html#setting-up-client-user">Setting Up PMM Client</a>.</p>
 <h2 id="can-i-monitor-multiple-service-instances">Can I monitor multiple service instances?<a class="headerlink" href="#can-i-monitor-multiple-service-instances" title="Permanent link">&para;</a></h2>
 <p>You can add multiple instances of MySQL or some other service to be monitored from one PMM Client. In this case, you must provide a unique port and IP address, or a socket for each instance, and specify a unique name for each.  (If a name is not provided, PMM uses the name of the PMM Client host.)</p>
 <p>For example, to add complete MySQL monitoring for two local MySQL servers, the commands would be:</p>
@@ -172,23 +164,9 @@ sudo pmm-admin add mysql --username root --password root instance-02 <span class
 <p><img alt="image" src="_images/aws-partitions-in-api.png" /></p>
 <p>To specify other than the default value, or to use several, use the JSON Array syntax: <code>["aws", "aws-cn"]</code>.</p>
 <h2 id="how-do-i-troubleshoot-communication-issues-between-pmm-client-and-pmm-server">How do I troubleshoot communication issues between PMM Client and PMM Server?<a class="headerlink" href="#how-do-i-troubleshoot-communication-issues-between-pmm-client-and-pmm-server" title="Permanent link">&para;</a></h2>
-<p>Broken network connectivity may be due to many reasons.  Particularly, when <a href="setting-up/server/docker.html">using Docker</a>, the container is constrained by the host-level routing and firewall rules. For example, your hosting provider might have default <code>iptables</code> rules on their hosts that block communication between PMM Server and PMM Client, resulting in <em>DOWN</em> targets in VictoriaMetrics. If this happens, check the firewall and routing settings on the Docker host.</p>
-<p>PMM is also able to generate diagnostics data which can be examined and/or shared with Percona Support to help quickly solve an issue. You can get collected logs from PMM Client using the <code>pmm-admin summary</code> command.</p>
-<p>Logs obtained in this way includes PMM Client logs and logs which were received from the PMM Server, stored separately in the <code>client</code> and <code>server</code> folders. The <code>server</code> folder also contains its own <code>client</code> subfolder with the self-monitoring client information collected on the PMM Server.</p>
-<p>Beginning with PMM version 2.4.0, there is an additional flag that enables the fetching of <a href="https://github.com/google/pprof">pprof</a> debug profiles and adds them to the diagnostics data. To enable, run <code>pmm-admin summary --pprof</code>.</p>
-<p>You can get PMM Server logs in two ways:</p>
-<ul>
-<li>In a browser, visit <code>https://&lt;address-of-your-pmm-server&gt;/logs.zip</code>.</li>
-<li>Go to <em>PMM &gt; PMM Settings</em> and click <em>Download server diagnostics</em>. (See <a href="how-to/configure.html#diagnostics">Diagnostics in PMM Settings</a>.)</li>
-</ul>
+<p>See <a href="how-to/troubleshoot.html#troubleshoot-connection">Troubleshoot PMM Server/PMM Client connection</a>.</p>
 <h2 id="what-resolution-is-used-for-metrics">What resolution is used for metrics?<a class="headerlink" href="#what-resolution-is-used-for-metrics" title="Permanent link">&para;</a></h2>
-<p>The default values are:</p>
-<ul>
-<li>Low: 60 seconds</li>
-<li>Medium: 10 seconds</li>
-<li>High: 5 seconds</li>
-</ul>
-<p>(See <a href="how-to/configure.html#metrics-resolution">Metrics resolution</a>.)</p>
+<p>See <a href="how-to/configure.html#metrics-resolution">Metrics resolution</a>.</p>
 <h2 id="how-do-i-set-up-alerting-in-pmm">How do I set up Alerting in PMM?<a class="headerlink" href="#how-do-i-set-up-alerting-in-pmm" title="Permanent link">&para;</a></h2>
 <p>When a monitored service metric reaches a defined threshold, PMM Server can trigger alerts for it either using the Grafana Alerting feature or by using an external alert manager.</p>
 <p>With these methods you must configure alerting rules that define conditions under which an alert should be triggered, and the channel used to send the alert (e.g. email).</p>
@@ -215,22 +193,7 @@ sudo pmm-admin add mysql --username root --password root instance-02 <span class
 </ul>
 </blockquote>
 <h2 id="how-to-troubleshoot-an-update">How to troubleshoot an Update?<a class="headerlink" href="#how-to-troubleshoot-an-update" title="Permanent link">&para;</a></h2>
-<p>If PMM server wasn&rsquo;t updated properly, or if you have concerns about the release, you can force the update process in 2 ways:</p>
-<ol>
-<li>
-<p>From the UI  -  Home panel: click with the Alt key on the reload icon in the Update panel (IMG needed) to make the Update Button visible even if you are on the same version as available for update. Pressing this button will force the system to rerun the update so that any broken or not installed components can be installed. In this case, you&rsquo;ll go through the usual update process with update logs and successful messages at the end.</p>
-</li>
-<li>
-<p>By  API  call (if UI not available): You can call the Update API directly with:</p>
-<div class="highlight"><pre><span></span><code>curl --user admin:admin --request POST <span class="s1">&#39;http://PMM_SERVER/v1/Updates/Start&#39;</span>
-</code></pre></div>
-<p>Replace <code>admin:admin</code> with your username/password, and replace <code>PMM_SERVER</code> with your server address.</p>
-<blockquote>
-<p>You will not see the logs using this method.</p>
-</blockquote>
-</li>
-</ol>
-<p>Refresh The Home page in 2-5 min and you should see that PMM was updated.</p>
+<p>See <a href="how-to/troubleshoot.html#troubleshoot-update">Troubleshoot update</a>.</p>
 <h2 id="what-are-my-login-credentials-when-i-try-to-connect-to-a-prometheus-exporter">What are my login credentials when I try to connect to a Prometheus Exporter?<a class="headerlink" href="#what-are-my-login-credentials-when-i-try-to-connect-to-a-prometheus-exporter" title="Permanent link">&para;</a></h2>
 <p>PMM protects an exporter&rsquo;s output from unauthorized access by adding an authorization layer. To access an exporter you can use &ldquo;<code>pmm</code>&rdquo; as a user name and the Agent ID as a password. You can find the Agent ID corresponding to a given exporter by running <code>pmm-admin list</code>.</p>
 <h2 id="how-to-provision-pmm-server-with-non-default-admin-password">How to provision PMM Server with non-default admin password?<a class="headerlink" href="#how-to-provision-pmm-server-with-non-default-admin-password" title="Permanent link">&para;</a></h2>

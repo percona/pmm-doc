@@ -52,7 +52,7 @@
 </head>
 
 <body>
-	<!-- 2021-03-19 10:48:05.268886+00:00 -->
+	<!-- 2021-03-19 11:51:02.705671+00:00 -->
     
 <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.3/css/line.css" type="text/css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" type="text/css">
@@ -106,6 +106,33 @@
                 <div class="bodywrapper">
                     <div class="body">
                         <h1 id="troubleshoot">Troubleshoot<a class="headerlink" href="#troubleshoot" title="Permanent link">&para;</a></h1>
+<h2 id="troubleshoot-update">Update<a class="headerlink" href="#troubleshoot-update" title="Permanent link">&para;</a></h2>
+<p>If PMM server wasn&rsquo;t updated properly, or if you have concerns about the release, you can force the update process in 2 ways:</p>
+<ol>
+<li>
+<p>From the UI  -  Home panel: click with the Alt key on the reload icon in the Update panel (IMG needed) to make the Update Button visible even if you are on the same version as available for update. Pressing this button will force the system to rerun the update so that any broken or not installed components can be installed. In this case, you&rsquo;ll go through the usual update process with update logs and successful messages at the end.</p>
+</li>
+<li>
+<p>By  API  call (if UI not available): You can call the Update API directly with:</p>
+<div class="highlight"><pre><span></span><code>curl --user admin:admin --request POST <span class="s1">&#39;http://PMM_SERVER/v1/Updates/Start&#39;</span>
+</code></pre></div>
+<p>Replace <code>admin:admin</code> with your username/password, and replace <code>PMM_SERVER</code> with your server address.</p>
+<blockquote>
+<p>You will not see the logs using this method.</p>
+</blockquote>
+</li>
+</ol>
+<p>Refresh The Home page in 2-5 min and you should see that PMM was updated.</p>
+<h2 id="troubleshoot-connection">PMM Server/PMM Client connection<a class="headerlink" href="#troubleshoot-connection" title="Permanent link">&para;</a></h2>
+<p>Broken network connectivity may be due to many reasons.  Particularly, when <a href="../setting-up/server/docker.html">using Docker</a>, the container is constrained by the host-level routing and firewall rules. For example, your hosting provider might have default <code>iptables</code> rules on their hosts that block communication between PMM Server and PMM Client, resulting in <em>DOWN</em> targets in VictoriaMetrics. If this happens, check the firewall and routing settings on the Docker host.</p>
+<p>PMM is also able to generate diagnostics data which can be examined and/or shared with Percona Support to help quickly solve an issue. You can get collected logs from PMM Client using the <code>pmm-admin summary</code> command.</p>
+<p>Logs obtained in this way includes PMM Client logs and logs which were received from the PMM Server, stored separately in the <code>client</code> and <code>server</code> folders. The <code>server</code> folder also contains its own <code>client</code> subfolder with the self-monitoring client information collected on the PMM Server.</p>
+<p>Beginning with PMM version 2.4.0, there is an additional flag that enables the fetching of <a href="https://github.com/google/pprof"><code>pprof</code></a> debug profiles and adds them to the diagnostics data. To enable, run <code>pmm-admin summary --pprof</code>.</p>
+<p>You can get PMM Server logs in two ways:</p>
+<ul>
+<li>In a browser, visit <code>https://&lt;address-of-your-pmm-server&gt;/logs.zip</code>.</li>
+<li>Go to <em>PMM &gt; PMM Settings</em> and click <em>Download server diagnostics</em>. (See <a href="configure.html#diagnostics">Diagnostics in PMM Settings</a>.)</li>
+</ul>
 <h2 id="integrated-alerting">Integrated Alerting<a class="headerlink" href="#integrated-alerting" title="Permanent link">&para;</a></h2>
 <h3 id="no-integrated-alerting-icon">No <i class="uil uil-bell"></i> Integrated Alerting icon<a class="headerlink" href="#no-integrated-alerting-icon" title="Permanent link">&para;</a></h3>
 <p>You are not logged in as a privileged user. You need either Admin or Editor roles to work with Integrated Alerting.</p>
@@ -187,7 +214,7 @@
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-03-11
+            <i class="uil uil-refresh"></i> Page updated 2021-03-19
         </li>
         
     </ul>
