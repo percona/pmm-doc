@@ -52,7 +52,7 @@
 </head>
 
 <body>
-	<!-- 2021-03-18 16:51:30.335542+00:00 -->
+	<!-- 2021-03-19 09:12:27.643849+00:00 -->
     
 <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.3/css/line.css" type="text/css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" type="text/css">
@@ -109,10 +109,9 @@
 <p><a href="https://victoriametrics.github.io/">VictoriaMetrics</a> is a third-party monitoring solution and time-series database that replaced Prometheus in <a href="../release-notes/2.12.0.html">PMM 2.12.0</a>.</p>
 <h2 id="pushpull-modes">Push/Pull modes<a class="headerlink" href="#pushpull-modes" title="Permanent link">&para;</a></h2>
 <p>VictoriaMetrics allows metrics data to be &lsquo;pushed&rsquo; to the server in addition to it being &lsquo;pulled&rsquo; by the server. When setting up services, you can decide which mode to use.</p>
-<div class="admonition alert alert-info">
-<p class="admonition-title">Note</p>
+<blockquote>
 <p>For PMM 2.12.0 the default mode is &lsquo;pull&rsquo;. Later releases will use the &lsquo;push&rsquo; mode by default for newly-added services.</p>
-</div>
+</blockquote>
 <p>The mode (push/pull) is controlled by the <code>--metrics-mode</code> flag for the <code>pmm-admin config</code> and <code>pmm-admin add</code> commands.</p>
 <p>If you need to change the metrics mode for an existing Service, you must remove it and re-add it with the same name and the required flags. (There is currently no ability to &ldquo;update&rdquo; a service.)</p>
 <h2 id="remapped-targets-for-direct-prometheus-paths">Remapped targets for direct Prometheus paths<a class="headerlink" href="#remapped-targets-for-direct-prometheus-paths" title="Permanent link">&para;</a></h2>
@@ -146,7 +145,7 @@
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2020-12-08
+            <i class="uil uil-refresh"></i> Page updated 2021-03-19
         </li>
         
     </ul>
@@ -817,7 +816,7 @@
 
 
 <li class="toctree-l3">
-    <a class="reference internal" href="commands/pmm-admin.html">pmm-admin - Administration Tool</a>
+    <a class="reference internal" href="commands/pmm-admin.html">pmm-admin - PMM Administration Tool</a>
 
 
 

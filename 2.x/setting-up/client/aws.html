@@ -52,7 +52,7 @@
 </head>
 
 <body>
-	<!-- 2021-03-18 16:51:31.357614+00:00 -->
+	<!-- 2021-03-19 09:12:28.581347+00:00 -->
     
 <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.3/css/line.css" type="text/css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" type="text/css">
@@ -166,10 +166,9 @@
 <h2 id="creating-an-access-key-for-an-iam-user">Creating an access key for an IAM user<a class="headerlink" href="#creating-an-access-key-for-an-iam-user" title="Permanent link">&para;</a></h2>
 <p>To discover an Amazon RDS DB instance in PMM, you either need to use the access key and secret access key of an existing IAM user or an IAM role. To create an access key for use with PMM, open the IAM console and click <em>Users</em> on the navigation pane. Then, select your IAM user.</p>
 <p>To create the access key, open the <em>Security credentials</em> tab and click the <em>Create access key</em> button. The system automatically generates a new access key ID and a secret access key that you can provide on the <em>PMM Add Instance</em> dashboard to have your Amazon RDS DB instances discovered.</p>
-<div class="admonition alert alert-info">
-<p class="admonition-title">Note</p>
+<blockquote>
 <p>You may use an IAM role instead of IAM user provided your Amazon RDS DB instances are associated with the same AWS account as PMM.</p>
-</div>
+</blockquote>
 <p>In case, the PMM Server and Amazon RDS DB instance were created by using the same AWS account, you do not need create the access key ID and secret access key manually. PMM retrieves this information automatically and attempts to discover your Amazon RDS DB instances.</p>
 <h2 id="attaching-a-policy-to-an-iam-user">Attaching a policy to an IAM user<a class="headerlink" href="#attaching-a-policy-to-an-iam-user" title="Permanent link">&para;</a></h2>
 <p>The last step before you are ready to create an Amazon RDS DB instance is to attach the policy with the required permissions to the IAM user.</p>
@@ -195,23 +194,21 @@
 <p><img alt="image" src="../../_images/aws.iam.add-permissions.png" /></p>
 <h2 id="setting-up-the-amazon-rds-db-instance">Setting up the Amazon RDS DB Instance<a class="headerlink" href="#setting-up-the-amazon-rds-db-instance" title="Permanent link">&para;</a></h2>
 <p>Query Analytics requires Configuring Performance Schema as the query source, because the slow query log is stored on the AWS (Amazon Web Services) side, and QAN agent is not able to read it.  Enable the <code>performance_schema</code> option under <code>Parameter Groups</code> in Amazon RDS.</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Enabling Performance Schema on T2 instances is not recommended because it can easily run the T2 instance out of memory.</p>
-</div>
+<blockquote>
+<p><b style="color:goldenrod">Caution</b> Enabling Performance Schema on T2 instances is not recommended because it can easily run the T2 instance out of memory.</p>
+</blockquote>
 <p>When adding a monitoring instance for Amazon RDS, specify a unique name to distinguish it from the local MySQL instance.  If you do not specify a name, it will use the client’s host name.</p>
 <p>Create the <code>pmm</code> user with the following privileges on the Amazon RDS instance that you want to monitor:</p>
 <div class="highlight"><pre><span></span><code><span class="k">GRANT</span> <span class="k">SELECT</span><span class="p">,</span> <span class="n">PROCESS</span><span class="p">,</span> <span class="n">REPLICATION</span> <span class="n">CLIENT</span> <span class="k">ON</span> <span class="o">*</span><span class="p">.</span><span class="o">*</span> <span class="k">TO</span> <span class="s1">&#39;pmm&#39;</span><span class="o">@</span><span class="s1">&#39;%&#39;</span> <span class="n">IDENTIFIED</span> <span class="k">BY</span> <span class="s1">&#39;pass&#39;</span> <span class="k">WITH</span> <span class="n">MAX_USER_CONNECTIONS</span> <span class="mi">10</span><span class="p">;</span>
 <span class="k">GRANT</span> <span class="k">SELECT</span><span class="p">,</span> <span class="k">UPDATE</span><span class="p">,</span> <span class="k">DELETE</span><span class="p">,</span> <span class="k">DROP</span> <span class="k">ON</span> <span class="n">performance_schema</span><span class="p">.</span><span class="o">*</span> <span class="k">TO</span> <span class="s1">&#39;pmm&#39;</span><span class="o">@</span><span class="s1">&#39;%&#39;</span><span class="p">;</span>
 </code></pre></div>
 <p>If you have Amazon RDS with a MySQL version prior to 5.5, <code>REPLICATION CLIENT</code> privilege is not available there and has to be excluded from the above statement.</p>
-<div class="admonition alert alert-info">
-<p class="admonition-title">Note</p>
+<blockquote>
 <p>General system metrics are monitored by using the <code>rds_exporter</code> exporter which replaces <code>node_exporter</code>. <code>rds_exporter</code> gives access to Amazon Cloudwatch metrics.</p>
 <p><code>node_exporter</code>, used in versions of PMM prior to 1.8.0, was not able to monitor general system metrics remotely.</p>
-</div>
+</blockquote>
 <h2 id="adding-an-amazon-rds-mysql-aurora-mysql-or-remote-instance">Adding an Amazon RDS MySQL, Aurora MySQL or Remote Instance<a class="headerlink" href="#adding-an-amazon-rds-mysql-aurora-mysql-or-remote-instance" title="Permanent link">&para;</a></h2>
-<p>The preferred method of adding an Amazon RDS database instance to PMM is via the <em>PMM &rarr; PMM Add Instance</em> menu option. </p>
+<p>The preferred method of adding an Amazon RDS database instance to PMM is via the <em>PMM &rarr; PMM Add Instance</em> menu option.</p>
 <p>This method supports Amazon RDS database instances that use Amazon Aurora, MySQL, or MariaDB engines, as well as any remote PostgreSQL, ProxySQL, MySQL and MongoDB instances.</p>
 <p>The following steps are needed to add an Amazon RDS database instance to PMM:</p>
 <ol>
@@ -274,7 +271,7 @@ database user name and password.</p>
     To get queries for Query Analytics, you need to enable <code>pg_stat_statements</code> in your instance by running:</p>
 <div class="highlight"><pre><span></span><code>CREATE EXTENSION pg_stat_statements SCHEMA public;
 </code></pre></div>
-<p><img alt="image" src="../../_images/PMM_rds_postgre_03_form_1.png" /><br />
+<p><img alt="image" src="../../_images/PMM_rds_postgre_03_form_1.png" />
 <img alt="image" src="../../_images/PMM_rds_postgre_04_add_btn.png" /></p>
 </li>
 </ol>
@@ -285,7 +282,7 @@ database user name and password.</p>
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-03-10
+            <i class="uil uil-refresh"></i> Page updated 2021-03-19
         </li>
         
     </ul>
@@ -956,7 +953,7 @@ database user name and password.</p>
 
 
 <li class="toctree-l3">
-    <a class="reference internal" href="../../details/commands/pmm-admin.html">pmm-admin - Administration Tool</a>
+    <a class="reference internal" href="../../details/commands/pmm-admin.html">pmm-admin - PMM Administration Tool</a>
 
 
 

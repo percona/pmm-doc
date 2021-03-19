@@ -52,7 +52,7 @@
 </head>
 
 <body>
-	<!-- 2021-03-18 16:51:31.000374+00:00 -->
+	<!-- 2021-03-19 09:12:28.248590+00:00 -->
     
 <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.3/css/line.css" type="text/css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" type="text/css">
@@ -108,8 +108,8 @@
                         <h1 id="optimize">Optimize<a class="headerlink" href="#optimize" title="Permanent link">&para;</a></h1>
 <h2 id="improving-pmm-performance-with-table-statistics-options">Improving PMM Performance with Table Statistics Options<a class="headerlink" href="#improving-pmm-performance-with-table-statistics-options" title="Permanent link">&para;</a></h2>
 <p>If a MySQL instance has a lot of schemas or tables, there are two options to help improve the performance of PMM when adding instances with <code>pmm-admin add</code>: <code>--disable-tablestats</code> and <code>--disable-tablestats-limit</code>.</p>
-<div class="admonition alert alert-info">
-<p class="admonition-title">Note</p>
+<blockquote>
+<p><strong>Note</strong></p>
 <ul>
 <li>
 <p>These settings can only be used when adding an instance. To change them, you must remove and re-add the instances.</p>
@@ -118,7 +118,7 @@
 <p>You can only use one of these options when adding an instance.</p>
 </li>
 </ul>
-</div>
+</blockquote>
 <h2 id="disable-per-table-statistics-for-an-instance">Disable per-table statistics for an instance<a class="headerlink" href="#disable-per-table-statistics-for-an-instance" title="Permanent link">&para;</a></h2>
 <p>When adding an instance with <code>pmm-admin add</code>, the <code>--disable-tablestats</code> option disables table statistics collection when there are more than the default number (1000) of tables in the instance.</p>
 <h3 id="usage">USAGE<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h3>
@@ -140,7 +140,7 @@
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-01-13
+            <i class="uil uil-refresh"></i> Page updated 2021-03-19
         </li>
         
     </ul>
@@ -811,7 +811,7 @@
 
 
 <li class="toctree-l3">
-    <a class="reference internal" href="../details/commands/pmm-admin.html">pmm-admin - Administration Tool</a>
+    <a class="reference internal" href="../details/commands/pmm-admin.html">pmm-admin - PMM Administration Tool</a>
 
 
 

@@ -52,7 +52,7 @@
 </head>
 
 <body>
-	<!-- 2021-03-18 16:51:30.983776+00:00 -->
+	<!-- 2021-03-19 09:12:28.232256+00:00 -->
     
 <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.3/css/line.css" type="text/css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" type="text/css">
@@ -115,10 +115,9 @@
 <p>On the left of the page is a set of sub-page selector tabs.</p>
 <p><img alt="" src="../_images/PMM_Settings_Menu.jpg" /></p>
 <p>(The <a href="#communication">Communication</a> tab remains hidden until <a href="#integrated-alerting">Integrated Alerting</a> is activated.)</p>
-<div class="admonition alert alert-success">
-<p class="admonition-title">Tip</p>
-<p>Click <em>Apply changes</em> after changing settings.</p>
-</div>
+<blockquote>
+<p><strong>Tip</strong> Click <em>Apply changes</em> after changing settings.</p>
+</blockquote>
 <h2 id="diagnostics">Diagnostics<a class="headerlink" href="#diagnostics" title="Permanent link">&para;</a></h2>
 <p>Common to all sections is <em>Diagnostics</em>. PMM can generate a set of diagnostics data which can be examined and/or shared with Percona Support in case of some issue to solve it faster.  You can get collected logs from PMM Server by clicking <em>Download server diagnostics</em>.</p>
 <h2 id="metrics-resolution">Metrics resolution<a class="headerlink" href="#metrics-resolution" title="Permanent link">&para;</a></h2>
@@ -131,12 +130,8 @@
 </ul>
 <p>Each preset is a group of Low, Medium and High metrics resolution values.</p>
 <ul>
-<li>
-<p>A low resolution interval <em>increases</em> the time between collection, resulting in low-resolution metrics and lower disk usage.</p>
-</li>
-<li>
-<p>A high resolution interval <em>decreases</em> the time between collection, resulting in high-resolution metrics and higher disk usage.</p>
-</li>
+<li>A low resolution interval <em>increases</em> the time between collection, resulting in low-resolution metrics and lower disk usage.</li>
+<li>A high resolution interval <em>decreases</em> the time between collection, resulting in high-resolution metrics and higher disk usage.</li>
 </ul>
 <p>The default values (in seconds) for the fixed presets and their resolution names are:</p>
 <table class="table">
@@ -170,10 +165,9 @@
 </tbody>
 </table>
 <p>Values for the <em>Custom</em> preset can be entered as values, or changed with the arrows.</p>
-<div class="admonition alert alert-info">
-<p class="admonition-title">Note</p>
-<p>If there is poor network connectivity between PMM Server and PMM Client, or between PMM Client and the database server it is monitoring, scraping every second may not be possible when the network latency is greater than 1 second.</p>
-</div>
+<blockquote>
+<p><strong>Note</strong> If there is poor network connectivity between PMM Server and PMM Client, or between PMM Client and the database server it is monitoring, scraping every second may not be possible when the network latency is greater than 1 second.</p>
+</blockquote>
 <h2 id="advanced-settings">Advanced Settings<a class="headerlink" href="#advanced-settings" title="Permanent link">&para;</a></h2>
 <p><img alt="" src="../_images/PMM_Settings_Advanced_Settings.jpg" /></p>
 <h3 id="data-retention">Data Retention<a class="headerlink" href="#data-retention" title="Permanent link">&para;</a></h3>
@@ -199,13 +193,17 @@
 <p>There is a landing page for this service, available at <a href="https://check.percona.com">check.percona.com</a>, which clearly explains what this service is, what it’s collecting, and how you can turn it off.</p>
 <p>Grafana’s <a href="https://grafana.com/docs/grafana/latest/installation/configuration/#reporting-enabled">anonymous usage statistics</a> is not managed by PMM. To activate it, you must change the PMM Server container configuration after each update.</p>
 <p>As well as via the <em>PMM Settings</em> page, you can also disable telemetry with the <code>-e DISABLE_TELEMETRY=1</code> option in your docker run statement for the PMM Server.</p>
-<div class="admonition alert alert-info">
-<p class="admonition-title">Notes</p>
-<ol>
-<li>If the Security Threat Tool is enabled in PMM Settings, Telemetry is automatically enabled.</li>
-<li>Telemetry is sent immediately; the 24-hour grace period is not honored.</li>
-</ol>
-</div>
+<blockquote>
+<p><strong>Note</strong></p>
+<ul>
+<li>
+<p>If the Security Threat Tool is enabled in PMM Settings, Telemetry is automatically enabled.</p>
+</li>
+<li>
+<p>Telemetry is sent immediately; the 24-hour grace period is not honored.</p>
+</li>
+</ul>
+</blockquote>
 <h3 id="check-for-updates">Check for updates<a class="headerlink" href="#check-for-updates" title="Permanent link">&para;</a></h3>
 <p>When active, PMM will automatically check for updates and put a notification in the <em>Updates</em> dashboard if any are available.</p>
 <h3 id="security-threat-tool">Security Threat Tool<a class="headerlink" href="#security-threat-tool" title="Permanent link">&para;</a></h3>
@@ -216,10 +214,9 @@
 <p>The results can be viewed in <em>PMM&rarr;PMM Database Checks</em>.</p>
 <h3 id="dbaas">DBaaS<a class="headerlink" href="#dbaas" title="Permanent link">&para;</a></h3>
 <p>A read-only setting that shows whether DBaaS features are activated on this server.</p>
-<div class="admonition alert alert-warning">
-<p class="admonition-title">Caution</p>
-<p>DBaaS functionality is a technical preview that must be turned on with a server feature flag. See <a href="../setting-up/server/dbaas.html">Setting up a development environment for DBaaS</a>.</p>
-</div>
+<blockquote>
+<p><b style="color:goldenrod">Caution</b> DBaaS functionality is a technical preview that must be turned on with a server feature flag. See <a href="../setting-up/server/dbaas.html">Setting up a development environment for DBaaS</a>.</p>
+</blockquote>
 <h3 id="integrated-alerting">Integrated Alerting<a class="headerlink" href="#integrated-alerting" title="Permanent link">&para;</a></h3>
 <p>Enables <a href="../using/alerting.html">Integrated Alerting</a> and reveals the <a href="#communication">Communication</a> tab.</p>
 <h3 id="public-address">Public Address<a class="headerlink" href="#public-address" title="Permanent link">&para;</a></h3>
@@ -254,16 +251,12 @@
 <li>Click <em>Sign up</em></li>
 </ol>
 <p>A brief message will confirm the creation of your new account and you may now log in with these credentials.</p>
-<div class="admonition alert alert-info">
-<p class="admonition-title">Note</p>
-<p>Your Percona Platform account is separate from your PMM User account.</p>
-</div>
+<blockquote>
+<p><strong>Note</strong> Your Percona Platform account is separate from your PMM User account.</p>
+</blockquote>
 <h2 id="communication">Communication<a class="headerlink" href="#communication" title="Permanent link">&para;</a></h2>
-<div class="admonition alert alert-info">
-<p class="admonition-title">Note</p>
-<p>This tab appears only when <em>Advanced Settings</em> &rarr; <em>Integrated Alerting</em> is on.</p>
-</div>
 <p>Global communications settings for <a href="../using/alerting.html">Integrated Alerting</a>.</p>
+<p><strong>This tab appears only when <em>Advanced Settings</em> &rarr; <em>Integrated Alerting</em> is on.</strong></p>
 <p><img alt="" src="../_images/PMM_Settings_Communication.jpg" /></p>
 <p>Integrated Alerting uses a separate instance of Alertmanager run by <code>pmm-managed</code>.</p>
 <p>The descriptions for the settings here are reproduced from <a href="https://prometheus.io/docs/alerting/latest/configuration/">Prometheus Alertmanager configuration</a>.</p>
@@ -290,7 +283,7 @@
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-03-11
+            <i class="uil uil-refresh"></i> Page updated 2021-03-19
         </li>
         
     </ul>
@@ -961,7 +954,7 @@
 
 
 <li class="toctree-l3">
-    <a class="reference internal" href="../details/commands/pmm-admin.html">pmm-admin - Administration Tool</a>
+    <a class="reference internal" href="../details/commands/pmm-admin.html">pmm-admin - PMM Administration Tool</a>
 
 
 

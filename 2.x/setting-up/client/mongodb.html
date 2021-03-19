@@ -52,7 +52,7 @@
 </head>
 
 <body>
-	<!-- 2021-03-18 16:51:31.419782+00:00 -->
+	<!-- 2021-03-19 09:12:28.639469+00:00 -->
     
 <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.3/css/line.css" type="text/css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" type="text/css">
@@ -143,14 +143,7 @@
 <span class="p">})</span>
 </code></pre></div>
 <h2 id="enabling-profiling">Enabling Profiling<a class="headerlink" href="#enabling-profiling" title="Permanent link">&para;</a></h2>
-<p>For <a href="https://www.mongodb.com">MongoDB</a> to work correctly with Query Analytics, you need to enable profiling
-in your <code>mongod</code> configuration. When started without profiling enabled, Query Analytics
-displays the following warning:</p>
-<div class="admonition alert alert-info">
-<p class="admonition-title">Note</p>
-<p><strong>A warning message is displayed when profiling is not enabled</strong></p>
-<p>It is required that profiling of the monitored MongoDB databases be enabled, however profiling is not enabled by default because it may reduce the performance of your MongoDB server.</p>
-</div>
+<p>For <a href="https://www.mongodb.com">MongoDB</a> to work correctly with Query Analytics, you need to enable profiling in your <code>mongod</code> configuration. (Profiling is not enabled by default because it may reduce the performance of your MongoDB server.)</p>
 <h3 id="enabling-profiling-on-command-line">Enabling Profiling on Command Line<a class="headerlink" href="#enabling-profiling-on-command-line" title="Permanent link">&para;</a></h3>
 <p>You can enable profiling from command line when you start the <code>mongod</code>
 server. This command is useful if you start <code>mongod</code> manually.</p>
@@ -198,12 +191,11 @@ Service name: mongo
 <p>Beside positional arguments shown above you can specify service name and service address with the following flags: <code>--service-name</code>, <code>--host</code> (the hostname or IP address of the service), and <code>--port</code> (the port number of the service). If both flag and positional argument are present, flag gains higher priority. Here is the previous example modified to use these flags:</p>
 <div class="highlight"><pre><span></span><code>pmm-admin add mongodb --username<span class="o">=</span>pmm --password<span class="o">=</span>pmm --service-name<span class="o">=</span>mongo --host<span class="o">=</span><span class="m">127</span>.0.0.1 --port<span class="o">=</span><span class="m">27017</span>
 </code></pre></div>
-<div class="admonition alert alert-info">
-<p class="admonition-title">Note</p>
-<p>It is also possible to add a MongoDB instance using a UNIX socket with just the <code>--socket</code> flag followed by the path to a socket:</p>
+<blockquote>
+<p>You can add a MongoDB instance using a UNIX socket with the <code>--socket</code> option:</p>
 <div class="highlight"><pre><span></span><code>pmm-admin add mongodb --socket<span class="o">=</span>/tmp/mongodb-27017.sock
 </code></pre></div>
-</div>
+</blockquote>
 <h2 id="passing-ssl-parameters-to-the-mongodb-monitoring-service">Passing SSL parameters to the MongoDB monitoring service<a class="headerlink" href="#passing-ssl-parameters-to-the-mongodb-monitoring-service" title="Permanent link">&para;</a></h2>
 <p>SSL/TLS related parameters are passed to an SSL enabled MongoDB server as
 monitoring service parameters along with the <code>pmm-admin add</code> command when adding
@@ -231,7 +223,7 @@ the MongoDB monitoring service.</p>
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-02-09
+            <i class="uil uil-refresh"></i> Page updated 2021-03-19
         </li>
         
     </ul>
@@ -902,7 +894,7 @@ the MongoDB monitoring service.</p>
 
 
 <li class="toctree-l3">
-    <a class="reference internal" href="../../details/commands/pmm-admin.html">pmm-admin - Administration Tool</a>
+    <a class="reference internal" href="../../details/commands/pmm-admin.html">pmm-admin - PMM Administration Tool</a>
 
 
 

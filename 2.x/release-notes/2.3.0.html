@@ -52,7 +52,7 @@
 </head>
 
 <body>
-	<!-- 2021-03-18 16:51:31.226066+00:00 -->
+	<!-- 2021-03-19 09:12:28.462604+00:00 -->
     
 <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.3/css/line.css" type="text/css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" type="text/css">
@@ -121,19 +121,14 @@
 
 <p>Percona Monitoring and Management (PMM) is a free and open-source platform for managing and monitoring MySQL, MongoDB, and PostgreSQL performance.</p>
 <p>For <em>PMM</em> install instructions, see <a href="../setting-up/server/index.html">Installing PMM Server</a> and <a href="../setting-up/client/index.html">Installing PMM Client</a>.</p>
-<div class="admonition alert alert-info">
-<p class="admonition-title">Note</p>
-<p>PMM 2 is designed to be used as a new installation — your existing PMM 1 environment can’t be upgraded to this version.</p>
-</div>
+<blockquote>
+<p><b style="color:goldenrod">Important</b> PMM 2 is designed to be used as a new installation — please don’t try to upgrade your existing PMM 1 environment.</p>
+</blockquote>
 <h2 id="improvements-and-new-features">Improvements and new features<a class="headerlink" href="#improvements-and-new-features" title="Permanent link">&para;</a></h2>
 <ul>
 <li>
 <p><a href="https://jira.percona.com/browse/PMM-5064">PMM-5064</a> and <a href="https://jira.percona.com/browse/PMM-5065">PMM-5065</a>: Starting from this release, <a href="../faq.html">users will be able to integrate PMM with an external Alertmanager</a> by specifying the
-Alertmanager URL and the Alert Rules to be executed inside the PMM server</p>
-<div class="admonition alert alert-info">
-<p class="admonition-title">Note</p>
-<p>This feature is for advanced users only at this point</p>
-</div>
+Alertmanager URL and the Alert Rules to be executed inside the PMM server (<strong>This feature is for advanced users only at this point</strong>)</p>
 </li>
 <li>
 <p><a href="https://jira.percona.com/browse/PMM-4954">PMM-4954</a>: Query Analytics dashboard now shows units both in the list of queries in a summary table and in the Details section to ease understanding of the presented data</p>
@@ -157,7 +152,7 @@ Alertmanager URL and the Alert Rules to be executed inside the PMM server</p>
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-02-09
+            <i class="uil uil-refresh"></i> Page updated 2021-03-19
         </li>
         
     </ul>
@@ -828,7 +823,7 @@ Alertmanager URL and the Alert Rules to be executed inside the PMM server</p>
 
 
 <li class="toctree-l3">
-    <a class="reference internal" href="../details/commands/pmm-admin.html">pmm-admin - Administration Tool</a>
+    <a class="reference internal" href="../details/commands/pmm-admin.html">pmm-admin - PMM Administration Tool</a>
 
 
 

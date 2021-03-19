@@ -52,7 +52,7 @@
 </head>
 
 <body>
-	<!-- 2021-03-18 16:51:30.267776+00:00 -->
+	<!-- 2021-03-19 09:12:27.599611+00:00 -->
     
 <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.3/css/line.css" type="text/css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" type="text/css">
@@ -112,15 +112,9 @@
 <p><img alt="image" src="../_images/PMM_Swagger_API_Execute.jpg" /></p>
 <p>The objects visible are nodes, services, and agents:</p>
 <ul>
-<li>
-<p>A <strong>Node</strong> represents a bare metal server, a virtual machine, a Docker container, or a more specific type such as an Amazon RDS Node. A node runs zero or more Services and Agents, and has zero or more Agents providing insights for it.</p>
-</li>
-<li>
-<p>A <strong>Service</strong> represents something useful running on the Node: Amazon Aurora MySQL, MySQL, MongoDB, etc. It runs on zero (Amazon Aurora Serverless), single (MySQL), or several (Percona XtraDB Cluster) Nodes. It also has zero or more Agents providing insights for it.</p>
-</li>
-<li>
-<p>An <strong>Agent</strong> represents something that runs on the Node which is not useful in itself but instead provides insights (metrics, query performance data, etc) about Nodes and/or Services. An agent always runs on the single Node (except External Exporters), and provides insights for zero or more Services and Nodes.</p>
-</li>
+<li>A <strong>Node</strong> represents a bare metal server, a virtual machine, a Docker container, or a more specific type such as an Amazon RDS Node. A node runs zero or more Services and Agents, and has zero or more Agents providing insights for it.</li>
+<li>A <strong>Service</strong> represents something useful running on the Node: Amazon Aurora MySQL, MySQL, MongoDB, etc. It runs on zero (Amazon Aurora Serverless), single (MySQL), or several (Percona XtraDB Cluster) Nodes. It also has zero or more Agents providing insights for it.</li>
+<li>An <strong>Agent</strong> represents something that runs on the Node which is not useful in itself but instead provides insights (metrics, query performance data, etc) about Nodes and/or Services. An agent always runs on the single Node (except External Exporters), and provides insights for zero or more Services and Nodes.</li>
 </ul>
 <p>Nodes, Services, and Agents have <strong>Types</strong> which define specific their properties, and the specific logic they implement.</p>
 <p>Nodes and Services are external by nature – we do not manage them (create, destroy), but merely maintain a list of them (add to inventory, remove from inventory) in <code>pmm-managed</code>. Most Agents, however, are started and stopped by <code>pmm-agent</code>. The only exception is the External Exporter Type which is started externally.</p>
@@ -131,7 +125,7 @@
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2020-12-02
+            <i class="uil uil-refresh"></i> Page updated 2021-03-19
         </li>
         
     </ul>
@@ -802,7 +796,7 @@
 
 
 <li class="toctree-l3">
-    <a class="reference internal" href="commands/pmm-admin.html">pmm-admin - Administration Tool</a>
+    <a class="reference internal" href="commands/pmm-admin.html">pmm-admin - PMM Administration Tool</a>
 
 
 

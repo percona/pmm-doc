@@ -52,7 +52,7 @@
 </head>
 
 <body>
-	<!-- 2021-03-18 16:51:31.018772+00:00 -->
+	<!-- 2021-03-19 09:12:28.267258+00:00 -->
     
 <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.3/css/line.css" type="text/css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" type="text/css">
@@ -118,21 +118,16 @@
 <p>To see which security features are enabled:</p>
 <div class="highlight"><pre><span></span><code>pmm-admin status
 </code></pre></div>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>You can gain an extra level of security by keeping PMM Server isolated from the internet, if possible.</p>
-</div>
+<blockquote>
+<p><strong>Tip</strong> You can gain an extra level of security by keeping PMM Server isolated from the internet, if possible.</p>
+</blockquote>
 <h2 id="ssl-encryption">SSL encryption<a class="headerlink" href="#ssl-encryption" title="Permanent link">&para;</a></h2>
 <p>You need valid SSL certificates to encrypt traffic between client and server.</p>
 <p>With our Docker, OVF and AMI images, self-signed certificates are in <code>/srv/nginx</code>.</p>
 <p>To use your own, you can either:</p>
 <ul>
-<li>
-<p>mount the local certificate directory to the same location, or,</p>
-</li>
-<li>
-<p>copy your certificates to a running PMM Server container.</p>
-</li>
+<li>mount the local certificate directory to the same location, or,</li>
+<li>copy your certificates to a running PMM Server container.</li>
 </ul>
 <h3 id="mounting-certificates">Mounting certificates<a class="headerlink" href="#mounting-certificates" title="Permanent link">&para;</a></h3>
 <p>For example, if your own certificates are in <code>/etc/pmm-certs</code>:</p>
@@ -140,8 +135,8 @@
   --name pmm-server -v /etc/pmm-certs:/srv/nginx <span class="se">\</span>
   --restart always percona/pmm-server:2
 </code></pre></div>
-<div class="admonition alert alert-info">
-<p class="admonition-title">Note</p>
+<blockquote>
+<p><strong>Note</strong></p>
 <ul>
 <li>
 <p>The certificates must be owned by root. You can do this with: <code>sudo chown 0:0 /etc/pmm-certs/*</code></p>
@@ -153,7 +148,7 @@
 <p>For SSL encryption, the container must publish on port 443 instead of 80.</p>
 </li>
 </ul>
-</div>
+</blockquote>
 <h3 id="copying-certificates">Copying certificates<a class="headerlink" href="#copying-certificates" title="Permanent link">&para;</a></h3>
 <p>If PMM Server is running as a Docker image, use <code>docker cp</code> to copy certificates. This example copies certificate files from the current working directory to a running PMM Server docker container.</p>
 <div class="highlight"><pre><span></span><code>docker cp certificate.crt pmm-server:/srv/nginx/certificate.crt
@@ -162,23 +157,15 @@ docker cp ca-certs.pem pmm-server:/srv/nginx/ca-certs.pem
 docker cp dhparam.pem pmm-server:/srv/nginx/dhparam.pem
 </code></pre></div>
 <h3 id="enabling-ssl-when-connecting-pmm-client-to-pmm-server">Enabling SSL when connecting PMM Client to PMM Server<a class="headerlink" href="#enabling-ssl-when-connecting-pmm-client-to-pmm-server" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>pmm-admin config --server-url=https://&lt;user&gt;:&lt;password&gt;@&lt;server IP&gt;
+<div class="highlight"><pre><span></span><code>pmm-admin config --server-url<span class="o">=</span>https://&lt;user&gt;:&lt;password&gt;@&lt;server IP&gt;
 </code></pre></div>
 <h2 id="grafana-https-secure-cookies">Grafana HTTPS secure cookies<a class="headerlink" href="#grafana-https-secure-cookies" title="Permanent link">&para;</a></h2>
 <p>To enable:</p>
 <ol>
-<li>
-<p>Start a shell within the Docker container: <code>docker exec -it pmm-server bash</code></p>
-</li>
-<li>
-<p>Edit <code>/etc/grafana/grafana.ini</code></p>
-</li>
-<li>
-<p>Enable <code>cookie_secure</code> and set the value to <code>true</code></p>
-</li>
-<li>
-<p>Restart Grafana: <code>supervisorctl restart grafana</code></p>
-</li>
+<li>Start a shell within the Docker container: <code>docker exec -it pmm-server bash</code></li>
+<li>Edit <code>/etc/grafana/grafana.ini</code></li>
+<li>Enable <code>cookie_secure</code> and set the value to <code>true</code></li>
+<li>Restart Grafana: <code>supervisorctl restart grafana</code></li>
 </ol>
                     </div>
                 </div>
@@ -187,7 +174,7 @@ docker cp dhparam.pem pmm-server:/srv/nginx/dhparam.pem
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-03-15
+            <i class="uil uil-refresh"></i> Page updated 2021-03-19
         </li>
         
     </ul>
@@ -858,7 +845,7 @@ docker cp dhparam.pem pmm-server:/srv/nginx/dhparam.pem
 
 
 <li class="toctree-l3">
-    <a class="reference internal" href="../details/commands/pmm-admin.html">pmm-admin - Administration Tool</a>
+    <a class="reference internal" href="../details/commands/pmm-admin.html">pmm-admin - PMM Administration Tool</a>
 
 
 

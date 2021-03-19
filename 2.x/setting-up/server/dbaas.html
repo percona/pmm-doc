@@ -50,7 +50,7 @@
 </head>
 
 <body>
-	<!-- 2021-03-18 16:51:31.545934+00:00 -->
+	<!-- 2021-03-19 09:12:28.760768+00:00 -->
     
 <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.3/css/line.css" type="text/css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" type="text/css">
@@ -96,10 +96,9 @@
                 <div class="bodywrapper">
                     <div class="body">
                         <h1 id="setting-up-a-development-environment-for-dbaas">Setting up a development environment for DBaaS<a class="headerlink" href="#setting-up-a-development-environment-for-dbaas" title="Permanent link">&para;</a></h1>
-<div class="admonition alert alert-warning">
-<p class="admonition-title">Caution</p>
-<p>DBaaS functionality is Alpha. The information on this page is subject to change and may be inaccurate.</p>
-</div>
+<blockquote>
+<p><b style="color:goldenrod">Caution</b> DBaaS functionality is Alpha. The information on this page is subject to change and may be inaccurate.</p>
+</blockquote>
 <hr />
 <div class="toc">
 <ul>
@@ -136,9 +135,9 @@ systemctl <span class="nb">enable</span> docker
 systemctl start docker
 </code></pre></div>
 <h3 id="minikube">minikube<a class="headerlink" href="#minikube" title="Permanent link">&para;</a></h3>
-<div class="admonition alert alert-info">
-<p class="admonition-title">Please install minikube 1.16.0</p>
-</div>
+<blockquote>
+<p>Please install minikube 1.16.0</p>
+</blockquote>
 <p><strong>Red Hat, CentOS</strong></p>
 <div class="highlight"><pre><span></span><code>yum -y install curl
 curl -Lo /usr/local/sbin/minikube https://github.com/kubernetes/minikube/releases/download/v1.16.0/minikube-linux-amd64
@@ -147,16 +146,25 @@ ln -s /usr/local/sbin/minikube /usr/sbin/minikube
 <span class="nb">alias</span> <span class="nv">kubectl</span><span class="o">=</span><span class="s1">&#39;minikube kubectl --&#39;</span>
 </code></pre></div>
 <h2 id="start-pmm-server-with-dbaas-activated">Start PMM server with DBaaS activated<a class="headerlink" href="#start-pmm-server-with-dbaas-activated" title="Permanent link">&para;</a></h2>
-<div class="admonition alert alert-info">
-<p class="admonition-title">Notes</p>
+<blockquote>
 <ul>
-<li>To start a fully-working 3 node XtraDB cluster, consisting of sets of 3x ProxySQL, 3x PXC and 6x PMM Client containers, you will need at least 9 vCPU available for minikube. (1x vCPU for ProxySQL and PXC and 0.5vCPU for each pmm-client containers).</li>
-<li>DBaaS does not depend on PMM Client.</li>
-<li>Setting the environment variable <code>PERCONA_TEST_DBAAS=1</code> enables DBaaS functionality.</li>
-<li>Add the option <code>--network minikube</code> if you run PMM Server and minikube in the same Docker instance. (This will share a single network and the kubeconfig will work.)</li>
-<li>Add the options <code>--env PMM_DEBUG=1</code> and/or <code>--env PMM_TRACE=1</code> if you need extended debug details</li>
+<li>
+<p>To start a fully-working 3 node XtraDB cluster, consisting of sets of 3x ProxySQL, 3x PXC and 6x PMM Client containers, you will need at least 9 vCPU available for minikube. (1x vCPU for ProxySQL and PXC and 0.5vCPU for each pmm-client containers).</p>
+</li>
+<li>
+<p>DBaaS does not depend on PMM Client.</p>
+</li>
+<li>
+<p>Setting the environment variable <code>PERCONA_TEST_DBAAS=1</code> enables DBaaS functionality.</p>
+</li>
+<li>
+<p>Add the option <code>--network minikube</code> if you run PMM Server and minikube in the same Docker instance. (This will share a single network and the kubeconfig will work.)</p>
+</li>
+<li>
+<p>Add the options <code>--env PMM_DEBUG=1</code> and/or <code>--env PMM_TRACE=1</code> if you need extended debug details</p>
+</li>
 </ul>
-</div>
+</blockquote>
 <ol>
 <li>
 <p>Start PMM server:</p>
@@ -216,12 +224,11 @@ minikube kubectl -- <span class="nb">wait</span> --for<span class="o">=</span><s
 <p>Get your kubeconfig details from minikube (to register your Kubernetes cluster with PMM Server):</p>
 <div class="highlight"><pre><span></span><code>minikube kubectl -- config view --flatten --minify
 </code></pre></div>
+<blockquote>
+<p>You will need to copy this output to your clipboard and continue with <a href="../../using/platform/dbaas.html#add-a-kubernetes-cluster">add a Kubernetes cluster to PMM</a>.</p>
+</blockquote>
 </li>
 </ol>
-<div class="admonition alert alert-info">
-<p class="admonition-title">Note</p>
-<p>You will need to copy this output to your clipboard and continue with <a href="../../using/platform/dbaas.html#add-a-kubernetes-cluster">add a Kubernetes cluster to PMM</a>.</p>
-</div>
 <h2 id="installing-percona-operators-in-aws-eks-kubernetes">Installing Percona operators in AWS EKS (Kubernetes)<a class="headerlink" href="#installing-percona-operators-in-aws-eks-kubernetes" title="Permanent link">&para;</a></h2>
 <ol>
 <li>
@@ -323,17 +330,12 @@ users:
 </li>
 <li>
 <p>Follow the instructions for <a href="../../using/platform/dbaas.html#add-a-kubernetes-cluster">Add a Kubernetes cluster</a>.</p>
+<blockquote>
+<p>If possible, the connection details will show the cluster&rsquo;s external IP (not possible with minikube).</p>
+</blockquote>
 </li>
 </ol>
-<div class="admonition alert alert-info">
-<p class="admonition-title">Note</p>
-<p>If possible, the connection details will show the cluster&rsquo;s external IP (not possible with minikube).</p>
-</div>
 <h2 id="install-operators-on-gke">Install Operators on GKE<a class="headerlink" href="#install-operators-on-gke" title="Permanent link">&para;</a></h2>
-<div class="admonition alert alert-warning">
-<p class="admonition-title">Caution</p>
-<p>These instructions are still in development.</p>
-</div>
 <p><strong>Prerequisites</strong></p>
 <p>You should have an account on GCP <a href="https://cloud.google.com/">https://cloud.google.com/</a>.</p>
 <ol>
@@ -467,10 +469,9 @@ current-context: svcs-acct-context
 </li>
 <li>
 <p>Register your GKE using kubeconfig from step 12.</p>
-<div class="admonition alert alert-warning">
-<p class="admonition-title">Important</p>
-<p>Please make sure there are no stray new lines in the kubeconfig, especially in long lines like certificate or token.</p>
-</div>
+<blockquote>
+<p><b style="color:goldenrod">Important</b> Ensure there are no stray new lines in the kubeconfig, especially in long lines like certificate or token.</p>
+</blockquote>
 <p><img alt="" src="../../_images/PMM_DBaaS_GKE_17.png" /></p>
 <p><img alt="" src="../../_images/PMM_DBaaS_GKE_18.png" /></p>
 </li>
@@ -531,20 +532,23 @@ eksctl delete cluster --name<span class="o">=</span>your-cluster-name
 <p>Start PMM server from a feature branch:</p>
 <div class="highlight"><pre><span></span><code>docker run --detach --name pmm-server --publish <span class="m">80</span>:80 --publish <span class="m">443</span>:443 --env <span class="nv">PERCONA_TEST_DBAAS</span><span class="o">=</span><span class="m">1</span>  percona/pmm-server:2<span class="p">;</span>
 </code></pre></div>
-<div class="admonition alert alert-warning">
-<p class="admonition-title">Important</p>
+<blockquote>
+<p><b style="color:goldenrod">Important</b></p>
 <ul>
-<li>Use <code>--network minikube</code> if running PMM Server and minikube in the same Docker instance. This way they will share single network and the kubeconfig will work.</li>
-<li>Use Docker variables <code>--env PMM_DEBUG=1 --env PMM_TRACE=1</code> to see extended debug details.</li>
+<li>
+<p>Use <code>--network minikube</code> if running PMM Server and minikube in the same Docker instance. This way they will share single network and the kubeconfig will work.</p>
+</li>
+<li>
+<p>Use Docker variables <code>--env PMM_DEBUG=1 --env PMM_TRACE=1</code> to see extended debug details.</p>
+</li>
 </ul>
-</div>
+</blockquote>
 </li>
 <li>
 <p>Change the default administrator credentials:</p>
-<div class="admonition alert alert-info">
-<p class="admonition-title">Note</p>
+<blockquote>
 <p>This step is optional, because the same can be done from the web interface of PMM on the first login.</p>
-</div>
+</blockquote>
 <div class="highlight"><pre><span></span><code>docker <span class="nb">exec</span> -t pmm-server bash -c <span class="s1">&#39;ln -s /srv/grafana /usr/share/grafana/data; chown -R grafana:grafana /usr/share/grafana/data; grafana-cli --homepath /usr/share/grafana admin reset-admin-password &lt;RANDOM_PASS_GOES_IN_HERE&gt;&#39;</span>
 </code></pre></div>
 </li>
@@ -567,16 +571,26 @@ eksctl delete cluster --name<span class="o">=</span>your-cluster-name
 <p>To make services visible externally, you create a LoadBalancer service or manually run commands to expose ports:</p>
 <div class="highlight"><pre><span></span><code>kubectl expose deployment hello-world --type<span class="o">=</span>NodePort.
 </code></pre></div>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
+<blockquote>
+<p><strong>See also</strong></p>
 <ul>
-<li><a href="../../using/platform/dbaas.html">DBaaS Dashboard</a></li>
-<li><a href="https://minikube.sigs.k8s.io/docs/start/">Install minikube</a></li>
-<li><a href="https://medium.com/@chrisedrego/setting-up-a-standalone-mysql-instance-on-kubernetes-exposing-it-using-nginx-ingress-controller-262fc7af593a">Setting up a Standalone MYSQL Instance on Kubernetes &amp; exposing it using Nginx Ingress Controller</a></li>
-<li><a href="https://kubernetes.io/docs/tasks/access-application-cluster/service-access-application-cluster/">Use a Service to Access an Application in a Cluster.</a></li>
-<li><a href="https://cloud.google.com/kubernetes-engine/docs/how-to/exposing-apps">Exposing applications using services.</a></li>
+<li>
+<p><a href="../../using/platform/dbaas.html">DBaaS Dashboard</a></p>
+</li>
+<li>
+<p><a href="https://minikube.sigs.k8s.io/docs/start/">Install minikube</a></p>
+</li>
+<li>
+<p><a href="https://medium.com/@chrisedrego/setting-up-a-standalone-mysql-instance-on-kubernetes-exposing-it-using-nginx-ingress-controller-262fc7af593a">Setting up a Standalone MYSQL Instance on Kubernetes &amp; exposing it using Nginx Ingress Controller</a></p>
+</li>
+<li>
+<p><a href="https://kubernetes.io/docs/tasks/access-application-cluster/service-access-application-cluster/">Use a Service to Access an Application in a Cluster.</a></p>
+</li>
+<li>
+<p><a href="https://cloud.google.com/kubernetes-engine/docs/how-to/exposing-apps">Exposing applications using services.</a></p>
+</li>
 </ul>
-</div>
+</blockquote>
                     </div>
                 </div>
                 
@@ -584,7 +598,7 @@ eksctl delete cluster --name<span class="o">=</span>your-cluster-name
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-03-09
+            <i class="uil uil-refresh"></i> Page updated 2021-03-19
         </li>
         
     </ul>
@@ -1247,7 +1261,7 @@ eksctl delete cluster --name<span class="o">=</span>your-cluster-name
 
 
 <li class="toctree-l3">
-    <a class="reference internal" href="../../details/commands/pmm-admin.html">pmm-admin - Administration Tool</a>
+    <a class="reference internal" href="../../details/commands/pmm-admin.html">pmm-admin - PMM Administration Tool</a>
 
 
 

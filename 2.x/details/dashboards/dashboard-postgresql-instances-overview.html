@@ -52,7 +52,7 @@
 </head>
 
 <body>
-	<!-- 2021-03-18 16:51:30.873798+00:00 -->
+	<!-- 2021-03-19 09:12:28.128374+00:00 -->
     
 <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.3/css/line.css" type="text/css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" type="text/css">
@@ -153,10 +153,9 @@
 <dt>Size of Temp files</dt>
 <dd>The total amount of data written to temporary files by queries in bytes.</dd>
 </dl>
-<div class="admonition alert alert-info">
-<p class="admonition-title">Note</p>
+<blockquote>
 <p>All temporary files are taken into account by these two gauges, regardless of why the temporary file was created (e.g., sorting or hashing), and regardless of the <code>log_temp_files</code> setting.</p>
-</div>
+</blockquote>
 <h2 id="conflicts-and-locks">Conflicts and Locks<a class="headerlink" href="#conflicts-and-locks" title="Permanent link">&para;</a></h2>
 <dl>
 <dt>Conflicts/Deadlocks</dt>
@@ -169,10 +168,9 @@
 <dt>Operations with Blocks</dt>
 <dd>The time spent reading and writing data file blocks by back ends, in milliseconds.</dd>
 </dl>
-<div class="admonition alert alert-info">
-<p class="admonition-title">Note</p>
+<blockquote>
 <p>Capturing read and write time statistics is possible only if <code>track_io_timing</code> setting is enabled. This can be done either in configuration file or with the following query executed on the running system:</p>
-</div>
+</blockquote>
 <div class="highlight"><pre><span></span><code><span class="k">ALTER</span> <span class="k">SYSTEM</span> <span class="k">SET</span> <span class="n">track_io_timing</span><span class="o">=</span><span class="k">ON</span><span class="p">;</span>
 <span class="k">SELECT</span> <span class="n">pg_reload_conf</span><span class="p">();</span>
 </code></pre></div>
@@ -182,16 +180,14 @@
 </dl>
 <h2 id="canceled-queries">Canceled Queries<a class="headerlink" href="#canceled-queries" title="Permanent link">&para;</a></h2>
 <p>The number of queries that have been canceled due to dropped tablespaces, lock timeouts, old snapshots, pinned buffers, and deadlocks.</p>
-<div class="admonition alert alert-info">
-<p class="admonition-title">Note</p>
+<blockquote>
 <p>Data shown by this gauge are based on the <code>pg_stat_database_conflicts</code> view.</p>
-</div>
+</blockquote>
 <h2 id="cache-hit-ratio">Cache Hit Ratio<a class="headerlink" href="#cache-hit-ratio" title="Permanent link">&para;</a></h2>
 <p>The number of times disk blocks were found already in the buffer cache, so that a read was not necessary.</p>
-<div class="admonition alert alert-info">
-<p class="admonition-title">Note</p>
+<blockquote>
 <p>This only includes hits in the PostgreSQL buffer cache, not the operating system’s file system cache.</p>
-</div>
+</blockquote>
 <h2 id="checkpoint-stats">Checkpoint Stats<a class="headerlink" href="#checkpoint-stats" title="Permanent link">&para;</a></h2>
 <p>The total amount of time that has been spent in the portion of checkpoint processing where files are either written or synchronized to disk, in milliseconds.</p>
 <h2 id="postgresql-settings">PostgreSQL Settings<a class="headerlink" href="#postgresql-settings" title="Permanent link">&para;</a></h2>
@@ -205,7 +201,7 @@
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-02-10
+            <i class="uil uil-refresh"></i> Page updated 2021-03-19
         </li>
         
     </ul>
@@ -876,7 +872,7 @@
 
 
 <li class="toctree-l3">
-    <a class="reference internal" href="../commands/pmm-admin.html">pmm-admin - Administration Tool</a>
+    <a class="reference internal" href="../commands/pmm-admin.html">pmm-admin - PMM Administration Tool</a>
 
 
 
