@@ -11,21 +11,14 @@ PMM Client is a collection of agents and exporters that run on the host being mo
 These sections cover the different ways to install PMM Client on a Linux node and register it with PMM Server. The options are:
 
 1. For Debian- or Red Hat-based distributions, install [`percona-release`][PERCONA_RELEASE] and [use a Linux package manager](#package-manager) (`apt`/`dnf`) to install PMM Client.
-
 2. For Debian- or Red Hat-based distributions, [download `.deb`/`.rpm` PMM Client packages and install them](#manual-package).
-
 3. For other Linux distributions, [download and unpack generic PMM Client Linux binaries](#binary-package).
-
 4. If you use [Docker][GETDOCKER], [run PMM Client as a Docker container](#docker).
-
-<!-- TODO
-- Download the PMM Client source code, compile and install it (not covered here)
--->
 
 When you have installed PMM Client, you must:
 
-- [Register the node with PMM Server](#register);
-- [Configure and add services according to type](#configure-add-services).
+- [Register the node with PMM Server](#register)
+- [Configure and add services according to type](#configure-add-services)
 
 ## Before you start
 
@@ -36,9 +29,6 @@ When you have installed PMM Client, you must:
 
 
 <!--
-
-!!! alert alert-info "Note"
-
     Credentials used in communication between the exporters and the PMM Server are the following ones:
 
     * login is `pmm`
@@ -77,13 +67,11 @@ When you have installed PMM Client, you must:
     sudo yum install -y pmm2-client
     ```
 
-!!! alert alert-success "Tip"
-	If you have used `percona-release` before, disable and reenable the repository like this:
-
-	```sh
-	sudo percona-release disable all
-	sudo percona-release enable original release
-	```
+> **Tip** If you have used `percona-release` before, disable and reenable the repository:
+> ```sh
+> sudo percona-release disable all
+> sudo percona-release enable original release
+> ```
 
 ## Download and install PMM Client packages manually {: #manual-package }
 
@@ -223,12 +211,13 @@ The [PMM Client Docker image](https://hub.docker.com/r/percona/pmm-client/tags/)
 
 You can now add services with [`pmm-admin`](../../details/commands/pmm-admin.md) by prefixing commands with `docker exec pmm-client`.
 
-!!! alert alert-success "Tips"
-    - Adjust host firewall and routing rules to allow Docker communications. ([Read more in the FAQ.](../../faq.md#how-do-i-troubleshoot-communication-issues-between-pmm-client-and-pmm-server))
-	- For help:
-		```sh
-		docker run --rm percona/pmm-client:2 --help
-		```
+> **Tip**
+>
+> - Adjust host firewall and routing rules to allow Docker communications. ([Read more in the FAQ.](../../faq.md#how-do-i-troubleshoot-communication-issues-between-pmm-client-and-pmm-server))
+> - For help:
+> ```sh
+> docker run --rm percona/pmm-client:2 --help
+> ```
 
 ## Register node with PMM Server {: #register }
 
@@ -244,7 +233,7 @@ pmm-admin config --server-insecure-tls --server-url=https://admin:admin@X.X.X.X:
 
 ## Configure and add services {: #configure-add-services }
 
-You should continue by adding services with `pmm-admin add` according to the service type.
+You should continue by adding services according to the service type.
 
 - [MySQL and variants (Percona Server for MySQL, Percona XtraDB Cluster, MariaDB)](mysql.md)
 - [MongoDB](mongodb.md)
@@ -257,28 +246,11 @@ You should continue by adding services with `pmm-admin add` according to the ser
 - [External services](external.md)
 - [HAProxy](haproxy.md)
 
-
-
-<!--
-`pmm-admin` won't add a client if it already exists in the PMM Server inventory database.
-If you need to re-add an already existing client (e.g. after full reinstall, hostname changes, etc.), you can
-use the `--force` option.
-
-This will remove an existing node with the same name, if any, and all its dependent services.
--->
-
-
-
-
-
-
-
-
-
-!!! seealso "See also"
-	- [Percona release][PERCONA_RELEASE]
-
-
+> **See also**
+>
+> - [Percona release][PERCONA_RELEASE]
+>
+> - [PMM Client architecture](../../details/architecture.md#pmm-client)
 
 [GETDOCKER]: https://docs.docker.com/get-docker/
 [DOWNLOAD]: https://www.percona.com/downloads/pmm2/

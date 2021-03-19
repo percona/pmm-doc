@@ -1,10 +1,4 @@
-# pmm-admin - Administration Tool
-
----
-
-[TOC]
-
----
+# pmm-admin - PMM Administration Tool
 
 ## NAME
 
@@ -258,8 +252,7 @@ When you remove a service, collected data remains on PMM Server for the specifie
     `--service --service-name -node-name`
     : service with name and node with name
 
-    !!! alert alert-info "Note"
-        If node or service name is specified, they are used instead of other parameters.
+    > If node or service name is specified, they are used instead of other parameters.
 
 ### DATABASE COMMANDS
 
@@ -556,6 +549,7 @@ When you remove a service, collected data remains on PMM Server for the specifie
     : Skip connection check.
 
 ### OTHER COMMANDS
+
 `pmm-admin add external [FLAGS]`
 
 : Add External source of data (like a custom exporter running on a port) to the monitoring
