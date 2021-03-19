@@ -52,7 +52,7 @@
 </head>
 
 <body>
-	<!-- 2021-03-19 12:07:02.527028+00:00 -->
+	<!-- 2021-03-19 12:50:18.077355+00:00 -->
     
 <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.3/css/line.css" type="text/css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" type="text/css">
@@ -112,37 +112,15 @@
 <li><a href="https://jira.percona.com/projects/PMM">PMM project in JIRA</a>.</li>
 </ul>
 <h2 id="what-are-the-minimum-system-requirements-for-pmm">What are the minimum system requirements for PMM?<a class="headerlink" href="#what-are-the-minimum-system-requirements-for-pmm" title="Permanent link">&para;</a></h2>
-<p><strong>PMM Server</strong></p>
-<p>Any system which can run Docker version 1.12.6 or later.</p>
-<p>It needs roughly 1 GB of storage for each monitored database node with data retention set to one week.</p>
-<blockquote>
-<p>By default, <a href="#how-to-control-data-retention-for-pmm">retention</a> is set to 30 days for Metrics Monitor and for Query Analytics.  You can consider <a href="how-to/optimize.html">disabling table statistics</a> to decrease the VictoriaMetrics database size.</p>
-</blockquote>
-<p>You need at least 2 GB for one monitored database node. The increase in memory usage is not proportional to the number of nodes.  For example, data from 20 nodes should be easily handled with 16 GB.</p>
-<p>Your CPU must support the SSE4.2 instruction set, a requirement of ClickHouse, a third-party column-oriented database used by Query Analytics. If your CPU is lacking this instruction set you won&rsquo;t be able to use QAN.</p>
-<p><strong>PMM Client</strong></p>
-<p>Any modern 64-bit Linux distribution. It is tested on the latest versions of Debian, Ubuntu, CentOS, and Red Hat Enterprise Linux.</p>
-<p>A minimum of 100 MB of storage is required for installing the PMM Client package.  With a good connection to PMM Server, additional storage is not required.  However, the client needs to store any collected data that it cannot dispatch immediately, so additional storage may be required if the connection is unstable or the throughput is low.
-(Caching only applies to Query Analytics data; VictoriaMetrics data is never cached on the client side.)</p>
+<p>See:</p>
+<ul>
+<li><a href="setting-up/server/index.html#system-requirements">PMM Server</a></li>
+<li><a href="setting-up/client/index.html#system-requirements">PMM Client</a></li>
+</ul>
 <h2 id="how-can-i-upgrade-from-pmm-version-1">How can I upgrade from PMM version 1?<a class="headerlink" href="#how-can-i-upgrade-from-pmm-version-1" title="Permanent link">&para;</a></h2>
-<p>Because of the significant architectural changes between PMM1 and PMM2, there is no direct upgrade path.  The approach to making the switch from PMM version 1 to 2 is a gradual transition, outlined <a href="https://www.percona.com/blog/2019/11/27/running-pmm1-and-pmm2-clients-on-the-same-host/">in this blog post</a>.</p>
-<p>In short, it involves first standing up a new PMM2 server on a new host and connecting clients to it.  As new data is reported to the PMM2 server, old metrics will age out during the course of the retention period (30 days, by default), at which point you&rsquo;ll be able to shut down your existing PMM1 server.</p>
-<p>Any alerts configured through the Grafana UI will have to be recreated due to the target dashboard id&rsquo;s not matching between PMM1 and PMM2.  In this instance we recommend moving to Alertmanager recipes in PMM2 for alerting which, for the time being, requires a separate Alertmanager instance. However, we are working on integrating this natively into PMM2 Server and expect to support your existing Alertmanager rules.</p>
+<p>See <a href="how-to/upgrade.html#upgrade-from-pmm1">Upgrade from PMM1</a>.</p>
 <h2 id="how-to-control-data-retention-for-pmm">How to control data retention for PMM?<a class="headerlink" href="#how-to-control-data-retention-for-pmm" title="Permanent link">&para;</a></h2>
-<p>By default, PMM stores time-series data for 30 days.
-Depending on your available disk space and requirements, you may need to adjust the data retention time:</p>
-<ol>
-<li>
-<p>Go to <em>PMM &gt; PMM Settings &gt; Advanced Settings</em>.</p>
-</li>
-<li>
-<p>Change the data retention value.</p>
-<p><img alt="image" src="_images/PMM_Settings_Advanced_Settings.jpg" /></p>
-</li>
-<li>
-<p>Click <em>Apply changes</em>.</p>
-</li>
-</ol>
+<p>See <a href="how-to/configure.html#data-retention">How to configure Data retention</a>.</p>
 <h2 id="how-often-are-nginx-logs-in-pmm-server-rotated">How often are NGINX logs in PMM Server rotated?<a class="headerlink" href="#how-often-are-nginx-logs-in-pmm-server-rotated" title="Permanent link">&para;</a></h2>
 <p>PMM Server runs <code>logrotate</code> on a daily basis to rotate NGINX logs and keeps up to ten of the most recent log files.</p>
 <h2 id="what-privileges-are-required-to-monitor-a-mysql-instance">What privileges are required to monitor a MySQL instance?<a class="headerlink" href="#what-privileges-are-required-to-monitor-a-mysql-instance" title="Permanent link">&para;</a></h2>

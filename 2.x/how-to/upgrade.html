@@ -52,7 +52,7 @@
 </head>
 
 <body>
-	<!-- 2021-03-19 12:07:03.215524+00:00 -->
+	<!-- 2021-03-19 12:50:18.781078+00:00 -->
     
 <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.3/css/line.css" type="text/css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" type="text/css">
@@ -119,6 +119,10 @@
 </ul>
 <p>Click the refresh button to manually check for updates.</p>
 <p>If one is available, click the update button to update to the version indicated.</p>
+<h2 id="upgrade-from-pmm1">Upgrade from PMM 1<a class="headerlink" href="#upgrade-from-pmm1" title="Permanent link">&para;</a></h2>
+<p>Because of the significant architectural changes between PMM1 and PMM2, there is no direct upgrade path. The approach to making the switch from PMM version 1 to 2 is a gradual transition, outlined <a href="https://www.percona.com/blog/2019/11/27/running-pmm1-and-pmm2-clients-on-the-same-host/">in this blog post</a>.</p>
+<p>In short, it involves first standing up a new PMM2 server on a new host and connecting clients to it.  As new data is reported to the PMM2 server, old metrics will age out during the course of the retention period (30 days, by default), at which point you&rsquo;ll be able to shut down your existing PMM1 server.</p>
+<p>Any alerts configured through the Grafana UI will have to be recreated due to the target dashboard id&rsquo;s not matching between PMM1 and PMM2.  In this instance we recommend moving to Alertmanager recipes in PMM2 for alerting which, for the time being, requires a separate Alertmanager instance. However, we are working on integrating this natively into PMM2 Server and expect to support your existing Alertmanager rules.</p>
                     </div>
                 </div>
                 
@@ -126,7 +130,7 @@
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2020-12-02
+            <i class="uil uil-refresh"></i> Page updated 2021-03-19
         </li>
         
     </ul>
