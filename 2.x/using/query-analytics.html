@@ -52,7 +52,7 @@
 </head>
 
 <body>
-	<!-- 2021-03-19 09:44:11.522922+00:00 -->
+	<!-- 2021-03-19 10:16:12.225133+00:00 -->
     
 <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.3/css/line.css" type="text/css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" type="text/css">
@@ -108,19 +108,11 @@
                         <h1 id="query-analytics">Query Analytics<a class="headerlink" href="#query-analytics" title="Permanent link">&para;</a></h1>
 <p>The <em>Query Analytics</em> dashboard shows how queries are executed and where they spend their time.  It helps you analyze database queries over time, optimize database performance, and find and remedy the source of problems.</p>
 <p><img alt="image" src="../_images/PMM_Query_Analytics.jpg" /></p>
-<blockquote>
-<p><strong>Note</strong></p>
 <p>Query Analytics supports MySQL, MongoDB and PostgreSQL. The minimum requirements for MySQL are:</p>
 <ul>
-<li>
-<p>MySQL 5.1 or later (if using the slow query log)</p>
-</li>
-<li>
-<p>MySQL 5.6.9 or later (if using Performance Schema)</p>
-</li>
+<li>MySQL 5.1 or later (if using the slow query log)</li>
+<li>MySQL 5.6.9 or later (if using Performance Schema)</li>
 </ul>
-<p>Query Analytics data retrieval is not instantaneous and can be delayed due to network conditions. In such situations <em>no data</em> is reported and a gap appears in the sparkline.</p>
-</blockquote>
 <p>Query Analytics displays metrics in both visual and numeric form. Performance-related characteristics appear as plotted graphics with summaries.</p>
 <p>The dashboard contains three panels:</p>
 <ul>
@@ -128,24 +120,17 @@
 <li><a href="#overview-panel">Overview Panel</a></li>
 <li><a href="#details-panel">Details Panel</a></li>
 </ul>
+<blockquote>
+<p>Query Analytics data retrieval is not instantaneous and can be delayed due to network conditions. In such situations <em>no data</em> is reported and a gap appears in the sparkline.</p>
+</blockquote>
 <h2 id="filters-panel">Filters Panel<a class="headerlink" href="#filters-panel" title="Permanent link">&para;</a></h2>
 <p><img alt="image" src="../_images/PMM_Query_Analytics_Panels_Filters.jpg" /></p>
 <ul>
-<li>
-<p>The Filter panel occupies the left side of the dashboard. It lists filters, grouped by category. Selecting one reduces the Overview list to those items matching the filter.</p>
-</li>
-<li>
-<p>The first five of each category are shown. If there are more, the list is expanded by clicking <em>Show all</em> beside the category name, and collapsed again with <em>Show top 5</em>.</p>
-</li>
-<li>
-<p>Applying a filter may make other filters inapplicable. These become grayed out and inactive.</p>
-</li>
-<li>
-<p>Click the chart symbol (<img alt="image" src="../_images/PMM_Query_Analytics_Filter_Panel_Controls_Dashboard_Shortcut.jpg" />) to navigate directly to an item&rsquo;s associated dashboard.</p>
-</li>
-<li>
-<p>Separately, the global <em>Time range</em> setting filters results by time, either your choice of <em>Absolute time range</em>, or one of the predefined <em>Relative time ranges</em>.</p>
-</li>
+<li>The Filter panel occupies the left side of the dashboard. It lists filters, grouped by category. Selecting one reduces the Overview list to those items matching the filter.</li>
+<li>The first five of each category are shown. If there are more, the list is expanded by clicking <em>Show all</em> beside the category name, and collapsed again with <em>Show top 5</em>.</li>
+<li>Applying a filter may make other filters inapplicable. These become grayed out and inactive.</li>
+<li>Click the chart symbol <i class="uil uil-graph-bar"></i> to navigate directly to an item&rsquo;s associated dashboard.</li>
+<li>Separately, the global <em>Time range</em> setting filters results by time, either your choice of <em>Absolute time range</em>, or one of the predefined <em>Relative time ranges</em>.</li>
 </ul>
 <p><img alt="image" src="../_images/PMM_Query_Analytics_Time_Range.jpg" /></p>
 <h2 id="overview-panel">Overview Panel<a class="headerlink" href="#overview-panel" title="Permanent link">&para;</a></h2>
@@ -168,76 +153,61 @@
 <p>Delete the search text and press Enter to see the full list again.</p>
 <p><strong>Columns</strong></p>
 <ul>
-<li>
-<p>The first column is the object’s identifier. For <em>Query</em>, it is the query’s <a href="../details/glossary/#fingerprint">Fingerprint</a>.</p>
-</li>
-<li>
-<p>The second column is the <em>Main metric</em>, containing a reduced graphical representation of the metric over time, called a <em>sparkline</em>, and a horizontal meter, filled to reflect a percentage of the total value.</p>
-</li>
-<li>
-<p>Additional values are revealed as mouse-over tool-tips.</p>
-</li>
+<li>The first column is the object’s identifier. For <em>Query</em>, it is the query’s <a href="../details/glossary/#fingerprint">Fingerprint</a>.</li>
+<li>The second column is the <em>Main metric</em>, containing a reduced graphical representation of the metric over time, called a <em>sparkline</em>, and a horizontal meter, filled to reflect a percentage of the total value.</li>
+<li>Additional values are revealed as mouse-over tool-tips.</li>
 </ul>
 <p><strong>Tool-tips</strong></p>
 <ul>
-<li>For the <em>Query</em> dimension, hovering over the information icon (<img alt="image" src="../_images/PMM_Query_Analytics_Devices_Examples_Icon.jpg" />) reveals the query ID and its example.</li>
+<li>For the <em>Query</em> dimension, hovering over the information icon <i class="fa fa-info-circle"></i> reveals the query ID and its example.</li>
 <li>Hovering on a column header reveals an informative tool-tip for that column.</li>
 <li>Hovering on the main metric sparkline highlights the data point and a tooltip shows the data value under the cursor.</li>
 </ul>
 <p><img alt="image" src="../_images/PMM_Query_Analytics_Main_Metric_Sparkline.jpg" /></p>
 <ul>
-<li>Hovering on the main metric meter reveals the percentage of the total, and other details specific to the main metric.</li>
-</ul>
+<li>
+<p>Hovering on the main metric meter reveals the percentage of the total, and other details specific to the main metric.</p>
 <p><img alt="image" src="../_images/PMM_Query_Analytics_Main_Metric_Summary.jpg" /></p>
-<ul>
-<li>Hovering on column values reveals more details on the value. The contents depends on the type of value.</li>
-</ul>
+</li>
+<li>
+<p>Hovering on column values reveals more details on the value. The contents depends on the type of value.</p>
 <p><img alt="image" src="../_images/PMM_Query_Analytics_Metric_Tooltip.jpg" /></p>
+</li>
+</ul>
 <p><strong>Adding and removing columns</strong></p>
 <ul>
-<li>Metrics columns are added with the <em>Add column</em> button.</li>
-</ul>
+<li>
+<p>Metrics columns are added with the <em>Add column</em> button.</p>
 <p><img alt="image" src="../_images/PMM_Query_Analytics_add-columns.jpg" /></p>
-<ul>
+</li>
 <li>
 <p>When clicked, a text field and list of available metrics are revealed. Select a metric or enter a search string to reduce the list. Selecting a metric adds it to the panel.</p>
 </li>
-<li>
-<p>A metric column is removed by clicking on the column heading and selecting <em>Remove column</em>.</p>
-</li>
-<li>
-<p>The value plotted in the <em>main metric</em> column can be changed by clicking a metric column heading and selecting <em>Swap with main metric</em>.</p>
-</li>
+<li>A metric column is removed by clicking on the column heading and selecting <em>Remove column</em>.</li>
+<li>The value plotted in the <em>main metric</em> column can be changed by clicking a metric column heading and selecting <em>Swap with main metric</em>.</li>
 </ul>
 <p><strong>Sorting</strong></p>
 <ul>
-<li>
-<p>The entire list is sorted by one of the columns.</p>
-</li>
-<li>
-<p>Click either the up or down caret to sort the list by that column’s ascending or descending values.</p>
-</li>
+<li>The entire list is sorted by one of the columns.</li>
+<li>Click either the up or down caret to sort the list by that column’s ascending or descending values.</li>
 </ul>
 <p><strong>Pagination</strong></p>
 <ul>
-<li>The pagination device lets you move forwards or backwards through pages, jump to a specific page, and choose how many items are listed per page.</li>
-</ul>
+<li>
+<p>The pagination device lets you move forwards or backwards through pages, jump to a specific page, and choose how many items are listed per page.</p>
 <p><img alt="image" src="../_images/PMM_Query_Analytics_Panels_Pagination.jpg" /></p>
-<ul>
-<li>Queries are grouped into pages of 25, 50 or 100 items.</li>
+</li>
+<li>
+<p>Queries are grouped into pages of 25, 50 or 100 items.</p>
+</li>
 </ul>
 <h2 id="details-panel">Details Panel<a class="headerlink" href="#details-panel" title="Permanent link">&para;</a></h2>
 <ul>
-<li>
-<p>Selecting an item in the Overview panel opens the <em>Details panel</em> with a <a href="#details-tab">Details Tab</a>.</p>
-</li>
-<li>
-<p>If the dimension is <em>Query</em>, the panel also contains the <a href="#examples-tab">Examples Tab</a>, <a href="#explain-tab">Explain Tab</a>, and <a href="#tables-tab">Tables Tab</a>.</p>
-</li>
+<li>Selecting an item in the Overview panel opens the <em>Details panel</em> with a <a href="#details-tab">Details Tab</a>.</li>
+<li>If the dimension is <em>Query</em>, the panel also contains the <a href="#examples-tab">Examples Tab</a>, <a href="#explain-tab">Explain Tab</a>, and <a href="#tables-tab">Tables Tab</a>.</li>
 </ul>
 <h3 id="details-tab">Details Tab<a class="headerlink" href="#details-tab" title="Permanent link">&para;</a></h3>
-<p>The <em>Details</em> tab contains a <em>Query time distribution</em> bar (only for MySQL databases)
-and a set of <em>Metrics</em> in collapsible subpanels.</p>
+<p>The <em>Details</em> tab contains a <em>Query time distribution</em> bar (only for MySQL databases) and a set of <em>Metrics</em> in collapsible subpanels.</p>
 <p><img alt="image" src="../_images/PMM_Query_Analytics_details.jpg" /></p>
 <ul>
 <li>
