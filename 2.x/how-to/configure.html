@@ -52,7 +52,7 @@
 </head>
 
 <body>
-	<!-- 2021-03-19 10:16:11.545482+00:00 -->
+	<!-- 2021-03-19 10:23:12.255351+00:00 -->
     
 <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.3/css/line.css" type="text/css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" type="text/css">
@@ -116,7 +116,7 @@
 <p><img alt="" src="../_images/PMM_Settings_Menu.jpg" /></p>
 <p>(The <a href="#communication">Communication</a> tab remains hidden until <a href="#integrated-alerting">Integrated Alerting</a> is activated.)</p>
 <blockquote>
-<p><strong>Tip</strong> Click <em>Apply changes</em> after changing settings.</p>
+<p>Click <em>Apply changes</em> after changing settings.</p>
 </blockquote>
 <h2 id="diagnostics">Diagnostics<a class="headerlink" href="#diagnostics" title="Permanent link">&para;</a></h2>
 <p>Common to all sections is <em>Diagnostics</em>. PMM can generate a set of diagnostics data which can be examined and/or shared with Percona Support in case of some issue to solve it faster.  You can get collected logs from PMM Server by clicking <em>Download server diagnostics</em>.</p>
@@ -166,7 +166,7 @@
 </table>
 <p>Values for the <em>Custom</em> preset can be entered as values, or changed with the arrows.</p>
 <blockquote>
-<p><strong>Note</strong> If there is poor network connectivity between PMM Server and PMM Client, or between PMM Client and the database server it is monitoring, scraping every second may not be possible when the network latency is greater than 1 second.</p>
+<p>If there is poor network connectivity between PMM Server and PMM Client, or between PMM Client and the database server it is monitoring, scraping every second may not be possible when the network latency is greater than 1 second.</p>
 </blockquote>
 <h2 id="advanced-settings">Advanced Settings<a class="headerlink" href="#advanced-settings" title="Permanent link">&para;</a></h2>
 <p><img alt="" src="../_images/PMM_Settings_Advanced_Settings.jpg" /></p>
@@ -194,7 +194,6 @@
 <p>Grafana’s <a href="https://grafana.com/docs/grafana/latest/installation/configuration/#reporting-enabled">anonymous usage statistics</a> is not managed by PMM. To activate it, you must change the PMM Server container configuration after each update.</p>
 <p>As well as via the <em>PMM Settings</em> page, you can also disable telemetry with the <code>-e DISABLE_TELEMETRY=1</code> option in your docker run statement for the PMM Server.</p>
 <blockquote>
-<p><strong>Note</strong></p>
 <ul>
 <li>
 <p>If the Security Threat Tool is enabled in PMM Settings, Telemetry is automatically enabled.</p>
@@ -252,11 +251,13 @@
 </ol>
 <p>A brief message will confirm the creation of your new account and you may now log in with these credentials.</p>
 <blockquote>
-<p><strong>Note</strong> Your Percona Platform account is separate from your PMM User account.</p>
+<p>Your Percona Platform account is separate from your PMM User account.</p>
 </blockquote>
 <h2 id="communication">Communication<a class="headerlink" href="#communication" title="Permanent link">&para;</a></h2>
 <p>Global communications settings for <a href="../using/alerting.html">Integrated Alerting</a>.</p>
-<p><strong>This tab appears only when <em>Advanced Settings</em> &rarr; <em>Integrated Alerting</em> is on.</strong></p>
+<blockquote>
+<p>This tab appears only when <em>Advanced Settings</em> &rarr; <em>Integrated Alerting</em> is on.</p>
+</blockquote>
 <p><img alt="" src="../_images/PMM_Settings_Communication.jpg" /></p>
 <p>Integrated Alerting uses a separate instance of Alertmanager run by <code>pmm-managed</code>.</p>
 <p>The descriptions for the settings here are reproduced from <a href="https://prometheus.io/docs/alerting/latest/configuration/">Prometheus Alertmanager configuration</a>.</p>

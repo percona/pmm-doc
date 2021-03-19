@@ -52,7 +52,7 @@
 </head>
 
 <body>
-	<!-- 2021-03-19 10:16:11.235124+00:00 -->
+	<!-- 2021-03-19 10:23:11.941077+00:00 -->
     
 <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.3/css/line.css" type="text/css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" type="text/css">
@@ -197,7 +197,9 @@
 <li><code>query_cache_type=0</code></li>
 <li><code>query_cache_size=0</code></li>
 </ul>
-<p>Note that while you can dynamically change these values, to completely remove the contention point you have to restart the database.</p>
+<blockquote>
+<p>While you can dynamically change these values, to completely remove the contention point you have to restart the database.</p>
+</blockquote>
 <h2 id="mysql-query-cache-activity">MySQL Query Cache Activity<a class="headerlink" href="#mysql-query-cache-activity" title="Permanent link">&para;</a></h2>
 <p><strong>MySQL Query Cache Activity</strong></p>
 <p>The query cache has huge scalability problems in that only one thread can do an operation in the query cache at the same time. This serialization is true not only for SELECTs, but also for INSERT/UPDATE/DELETE.</p>
@@ -207,7 +209,9 @@
 <li><code>query_cache_type=0</code></li>
 <li><code>query_cache_size=0</code></li>
 </ul>
-<p>Note that while you can dynamically change these values, to completely remove the contention point you have to restart the database.</p>
+<blockquote>
+<p>While you can dynamically change these values, to completely remove the contention point you have to restart the database.</p>
+</blockquote>
 <h2 id="mysql-table-open-cache-status">MySQL Table Open Cache Status<a class="headerlink" href="#mysql-table-open-cache-status" title="Permanent link">&para;</a></h2>
 <p><strong>MySQL Table Open Cache Status</strong></p>
 <p>The recommendation is to set the <code>table_open_cache_instances</code> to a loose correlation to virtual CPUs, keeping in mind that more instances means the cache is split more times. If you have a cache set to 500 but it has 10 instances, each cache will only have 50 cached.</p>
@@ -227,7 +231,7 @@
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-02-10
+            <i class="uil uil-refresh"></i> Page updated 2021-03-19
         </li>
         
     </ul>

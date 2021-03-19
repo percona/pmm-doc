@@ -52,7 +52,7 @@
 </head>
 
 <body>
-	<!-- 2021-03-19 10:16:11.182812+00:00 -->
+	<!-- 2021-03-19 10:23:11.890194+00:00 -->
     
 <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.3/css/line.css" type="text/css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" type="text/css">
@@ -130,7 +130,9 @@
 <h3 id="innodb-read-write-transactions">InnoDB Read-Write Transactions<a class="headerlink" href="#innodb-read-write-transactions" title="Permanent link">&para;</a></h3>
 <h3 id="innodb-transactions-information-rw">InnoDB Transactions Information (RW)<a class="headerlink" href="#innodb-transactions-information-rw" title="Permanent link">&para;</a></h3>
 <p>The InnoDB Transactions Information graph shows details about the recent transactions.  Transaction IDs Assigned represents the total number of transactions initiated by InnoDB.  RW Transaction Commits are the number of transactions not read-only. Insert-Update Transactions Commits are transactions on the Undo entries.  Non Locking RO Transaction Commits are transactions commit from select statement in auto-commit mode or transactions explicitly started with &ldquo;start transaction read only&rdquo;.</p>
-<p>Note: If you do not see any metric, try running: <code>SET GLOBAL innodb_monitor_enable=all;</code> in the MySQL client.</p>
+<blockquote>
+<p>If you do not see any metric, try running: <code>SET GLOBAL innodb_monitor_enable=all;</code> in the MySQL client.</p>
+</blockquote>
 <h3 id="misc-innodb-transactions-information">Misc InnoDB Transactions Information<a class="headerlink" href="#misc-innodb-transactions-information" title="Permanent link">&para;</a></h3>
 <p>Additional InnoDB Transaction Information</p>
 <h2 id="innodb-storage-summary">InnoDB Storage Summary<a class="headerlink" href="#innodb-storage-summary" title="Permanent link">&para;</a></h2>
@@ -170,7 +172,9 @@
 <h3 id="log-written-per-fsync">Log Written Per Fsync<a class="headerlink" href="#log-written-per-fsync" title="Permanent link">&para;</a></h3>
 <h3 id="data-read-per-row-read">Data Read Per Row Read<a class="headerlink" href="#data-read-per-row-read" title="Permanent link">&para;</a></h3>
 <h3 id="data-written-per-row-written">Data Written Per Row Written<a class="headerlink" href="#data-written-per-row-written" title="Permanent link">&para;</a></h3>
-<p>Note: Due to difference in timing of Row Write and Data Write the value may be misleading on short intervals.</p>
+<blockquote>
+<p>Due to difference in timing of Row Write and Data Write the value may be misleading on short intervals.</p>
+</blockquote>
 <h3 id="innodb-data-io">InnoDB Data I/O<a class="headerlink" href="#innodb-data-io" title="Permanent link">&para;</a></h3>
 <p><strong>InnoDB I/O</strong></p>
 <ul>
@@ -394,11 +398,15 @@ Do not set it to actual storage capacity.</p>
 <h3 id="rollback-segments">Rollback Segments<a class="headerlink" href="#rollback-segments" title="Permanent link">&para;</a></h3>
 <h3 id="innodb-purge-activity">InnoDB Purge Activity<a class="headerlink" href="#innodb-purge-activity" title="Permanent link">&para;</a></h3>
 <p>The InnoDB Purge Performance graph shows metrics about the page purging process.  The purge process removed the undo entries from the history list and cleanup the pages of the old versions of modified rows and effectively remove deleted rows.</p>
-<p>Note: If you do not see any metric, try running: <code>SET GLOBAL innodb_monitor_enable=all;</code> in the MySQL client.</p>
+<blockquote>
+<p>If you do not see any metric, try running: <code>SET GLOBAL innodb_monitor_enable=all;</code> in the MySQL client.</p>
+</blockquote>
 <h3 id="transactions-and-undo-records">Transactions and Undo Records<a class="headerlink" href="#transactions-and-undo-records" title="Permanent link">&para;</a></h3>
 <h3 id="innodb-undo-space-usage">InnoDB Undo Space Usage<a class="headerlink" href="#innodb-undo-space-usage" title="Permanent link">&para;</a></h3>
 <p>The InnoDB Undo Space Usage graph shows the amount of space used by the Undo segment.  If the amount of space grows too much, look for long running transactions holding read views opened in the InnoDB status.</p>
-<p>Note: If you do not see any metric, try running: <code>SET GLOBAL innodb_monitor_enable=all;</code> in the MySQL client.</p>
+<blockquote>
+<p>If you do not see any metric, try running: <code>SET GLOBAL innodb_monitor_enable=all;</code> in the MySQL client.</p>
+</blockquote>
 <h3 id="transaction-history">Transaction History<a class="headerlink" href="#transaction-history" title="Permanent link">&para;</a></h3>
 <h3 id="innodb-purge-throttling">InnoDB Purge Throttling<a class="headerlink" href="#innodb-purge-throttling" title="Permanent link">&para;</a></h3>
 <h3 id="records-per-undo-log-page">Records Per Undo Log Page<a class="headerlink" href="#records-per-undo-log-page" title="Permanent link">&para;</a></h3>
@@ -415,14 +423,20 @@ Do not set it to actual storage capacity.</p>
 <h2 id="innodb-page-operations">InnoDB Page Operations<a class="headerlink" href="#innodb-page-operations" title="Permanent link">&para;</a></h2>
 <h3 id="innodb-page-splits-and-merges">InnoDB Page Splits and Merges<a class="headerlink" href="#innodb-page-splits-and-merges" title="Permanent link">&para;</a></h3>
 <p>The InnoDB Page Splits graph shows the InnoDB page maintenance activity related to splitting and merging pages.  When an InnoDB page, other than the top most leaf page, has too much data to accept a row update or a row insert, it has to be split in two.  Similarly, if an InnoDB page, after a row update or delete operation, ends up being less than half full, an attempt is made to merge the page with a neighbor page. If the resulting page size is larger than the InnoDB page size, the operation fails.  If your workload causes a large number of page splits, try lowering the <code>innodb_fill_factor</code> variable (5.7+).</p>
-<p>Note: If you do not see any metric, try running: <code>SET GLOBAL innodb_monitor_enable=all;</code> in the MySQL client.</p>
+<blockquote>
+<p>If you do not see any metric, try running: <code>SET GLOBAL innodb_monitor_enable=all;</code> in the MySQL client.</p>
+</blockquote>
 <h3 id="page-merge-success-ratio">Page Merge Success Ratio<a class="headerlink" href="#page-merge-success-ratio" title="Permanent link">&para;</a></h3>
 <h3 id="innodb-page-reorg-attempts">InnoDB Page Reorg Attempts<a class="headerlink" href="#innodb-page-reorg-attempts" title="Permanent link">&para;</a></h3>
 <p>The InnoDB Page Reorgs graph shows information about the page reorganization operations.  When a page receives an  update or an insert that affect the offset of other rows in the page, a reorganization is needed.  If the reorganization process finds out there is not enough room in the page, the page will be split. Page reorganization can only fail for compressed pages.</p>
-<p>Note: If you do not see any metric, try running: <code>SET GLOBAL innodb_monitor_enable=all;</code> in the MySQL client.</p>
+<blockquote>
+<p>If you do not see any metric, try running: <code>SET GLOBAL innodb_monitor_enable=all;</code> in the MySQL client.</p>
+</blockquote>
 <h3 id="innodb-page-reorgs-failures">InnoDB Page Reorgs Failures<a class="headerlink" href="#innodb-page-reorgs-failures" title="Permanent link">&para;</a></h3>
 <p>The InnoDB Page Reorgs graph shows information about the page reorganization operations.  When a page receives an  update or an insert that affect the offset of other rows in the page, a reorganization is needed.  If the reorganization process finds out there is not enough room in the page, the page will be split. Page reorganization can only fail for compressed pages.</p>
-<p>Note: If you do not see any metric, try running: <code>SET GLOBAL innodb_monitor_enable=all;</code> in the MySQL client.</p>
+<blockquote>
+<p>If you do not see any metric, try running: <code>SET GLOBAL innodb_monitor_enable=all;</code> in the MySQL client.</p>
+</blockquote>
 <h3 id="innodb-fill-factor">InnoDB Fill Factor<a class="headerlink" href="#innodb-fill-factor" title="Permanent link">&para;</a></h3>
 <p>The portion of the page to fill then doing sorted Index Build.   Lowering this value will worsen space utilization but will reduce need to split pages when new data is inserted in the index.</p>
 <h2 id="innodb-adaptive-hash-index">InnoDB Adaptive Hash Index<a class="headerlink" href="#innodb-adaptive-hash-index" title="Permanent link">&para;</a></h2>
@@ -440,7 +454,9 @@ Do not set it to actual storage capacity.</p>
 <p>How Many Successful Searches using AHI are performed per each row maintenance operation.</p>
 <h3 id="innodb-ahi-usage">InnoDB AHI Usage<a class="headerlink" href="#innodb-ahi-usage" title="Permanent link">&para;</a></h3>
 <p>The InnoDB AHI Usage graph shows the search operations on the InnoDB adaptive hash index and its efficiency.  The adaptive hash index is a search hash designed to speed access to InnoDB pages in memory.  If the Hit Ratio is small, the working data set is larger than the buffer pool, the AHI should likely be disabled.</p>
-<p>Note: If you do not see any metric, try running: <code>SET GLOBAL innodb_monitor_enable=all;</code> in the MySQL client.</p>
+<blockquote>
+<p>If you do not see any metric, try running: <code>SET GLOBAL innodb_monitor_enable=all;</code> in the MySQL client.</p>
+</blockquote>
 <h3 id="innodb-ahi-miss-ratio">InnoDB AHI Miss Ratio<a class="headerlink" href="#innodb-ahi-miss-ratio" title="Permanent link">&para;</a></h3>
 <h3 id="innodb-ahi-churn-rows">InnoDB AHI Churn - Rows<a class="headerlink" href="#innodb-ahi-churn-rows" title="Permanent link">&para;</a></h3>
 <h3 id="innodb-ahi-churn-pages">InnoDB AHI Churn - Pages<a class="headerlink" href="#innodb-ahi-churn-pages" title="Permanent link">&para;</a></h3>
@@ -467,17 +483,25 @@ Do not set it to actual storage capacity.</p>
 <h3 id="innodb-sync-spin-loops">InnoDB Sync Spin Loops<a class="headerlink" href="#innodb-sync-spin-loops" title="Permanent link">&para;</a></h3>
 <h3 id="innodb-contention-os-waits">InnoDB Contention - OS Waits<a class="headerlink" href="#innodb-contention-os-waits" title="Permanent link">&para;</a></h3>
 <p>The InnoDB Contention - OS Waits graph shows the number of time an OS wait operation was required while waiting to get the lock.  This happens once the spin rounds are exhausted.</p>
-<p>Note: If you do not see any metric, try running: <code>SET GLOBAL innodb_monitor_enable=all;</code> in the MySQL client.</p>
+<blockquote>
+<p>If you do not see any metric, try running: <code>SET GLOBAL innodb_monitor_enable=all;</code> in the MySQL client.</p>
+</blockquote>
 <h3 id="innodb-contention-spin-rounds">InnoDB Contention - Spin Rounds<a class="headerlink" href="#innodb-contention-spin-rounds" title="Permanent link">&para;</a></h3>
 <p>The InnoDB Contention - Spin Rounds graph shows the number of spin rounds executed to get a lock.  A spin round is a fast retry to get the lock in a loop.</p>
-<p>Note: If you do not see any metric, try running: <code>SET GLOBAL innodb_monitor_enable=all;</code> in the MySQL client.</p>
+<blockquote>
+<p>If you do not see any metric, try running: <code>SET GLOBAL innodb_monitor_enable=all;</code> in the MySQL client.</p>
+</blockquote>
 <h2 id="innodb-misc">InnoDB Misc<a class="headerlink" href="#innodb-misc" title="Permanent link">&para;</a></h2>
 <h3 id="innodb-main-thread-utilization">InnoDB Main Thread Utilization<a class="headerlink" href="#innodb-main-thread-utilization" title="Permanent link">&para;</a></h3>
 <p>The InnoDB Main Thread Utilization graph shows the portion of time the InnoDB main thread spent at various task.</p>
-<p>Note: If you do not see any metric, try running: <code>SET GLOBAL innodb_monitor_enable=all;</code> in the MySQL client.</p>
+<blockquote>
+<p>If you do not see any metric, try running: <code>SET GLOBAL innodb_monitor_enable=all;</code> in the MySQL client.</p>
+</blockquote>
 <h3 id="innodb-activity_1">InnoDB Activity<a class="headerlink" href="#innodb-activity_1" title="Permanent link">&para;</a></h3>
 <p>The InnoDB Activity graph shows a measure of the activity of the InnoDB threads.</p>
-<p>Note: If you do not see any metric, try running: <code>SET GLOBAL innodb_monitor_enable=all;</code> in the MySQL client.</p>
+<blockquote>
+<p>If you do not see any metric, try running: <code>SET GLOBAL innodb_monitor_enable=all;</code> in the MySQL client.</p>
+</blockquote>
 <h3 id="innodb-dedicated-server">InnoDB Dedicated Server<a class="headerlink" href="#innodb-dedicated-server" title="Permanent link">&para;</a></h3>
 <p>InnoDB automatically optimized for Dedicated Server Environment (auto scaling cache and some other variables).</p>
 <h3 id="innodb-sort-buffer-size">InnoDB Sort Buffer Size<a class="headerlink" href="#innodb-sort-buffer-size" title="Permanent link">&para;</a></h3>
@@ -495,10 +519,14 @@ Do not set it to actual storage capacity.</p>
 <h2 id="innodb-online-operations-mariadb">InnoDB Online Operations (MariaDB)<a class="headerlink" href="#innodb-online-operations-mariadb" title="Permanent link">&para;</a></h2>
 <h3 id="innodb-defragmentation">InnoDB Defragmentation<a class="headerlink" href="#innodb-defragmentation" title="Permanent link">&para;</a></h3>
 <p>The InnoDB Defragmentation graph shows the status information related to the InnoDB online defragmentation feature of MariaDB for the optimize table command.  To enable this feature, the variable <code>innodb-defragment</code> must be set to 1 in the configuration file.</p>
-<p>Note: Currently available only on a MariaDB server.</p>
+<blockquote>
+<p>Currently available only on a MariaDB server.</p>
+</blockquote>
 <h3 id="innodb-online-ddl">InnoDB Online DDL<a class="headerlink" href="#innodb-online-ddl" title="Permanent link">&para;</a></h3>
 <p>The InnoDB Online DDL graph shows the state of the online DDL (alter table) operations in InnoDB.  The progress metric is estimate of the percentage of the rows processed by the online DDL.</p>
-<p>Note: Currently available only on a MariaDB server.</p>
+<blockquote>
+<p>Currently available only on a MariaDB server.</p>
+</blockquote>
 <h2 id="mysql-summary">MySQL Summary<a class="headerlink" href="#mysql-summary" title="Permanent link">&para;</a></h2>
 <h3 id="mysql-uptime">MySQL Uptime<a class="headerlink" href="#mysql-uptime" title="Permanent link">&para;</a></h3>
 <p><strong>MySQL Uptime</strong></p>
@@ -542,12 +570,17 @@ Do not set it to actual storage capacity.</p>
 <h3 id="ram">RAM<a class="headerlink" href="#ram" title="Permanent link">&para;</a></h3>
 <p>RAM (Random Access Memory) is the hardware in a computing device where the operating system, application programs and data in current use are kept so they can be quickly reached by the device&rsquo;s processor.</p>
 <h3 id="memory-available">Memory Available<a class="headerlink" href="#memory-available" title="Permanent link">&para;</a></h3>
-<p>Percent of Memory Available
-Note: on Modern Linux Kernels amount of Memory Available for application is not the same as Free+Cached+Buffers.</p>
+<p>Percent of Memory Available</p>
+<blockquote>
+<p>on Modern Linux Kernels amount of Memory Available for application is not the same as Free+Cached+Buffers.</p>
+</blockquote>
 <h3 id="virtual-memory">Virtual Memory<a class="headerlink" href="#virtual-memory" title="Permanent link">&para;</a></h3>
 <p>RAM + SWAP</p>
 <h3 id="disk-space">Disk Space<a class="headerlink" href="#disk-space" title="Permanent link">&para;</a></h3>
-<p>Sum of disk space on all partitions. Note  it can be significantly over-reported in some installations.</p>
+<p>Sum of disk space on all partitions.</p>
+<blockquote>
+<p>It can be significantly over-reported in some installations.</p>
+</blockquote>
 <h3 id="min-space-available">Min Space Available<a class="headerlink" href="#min-space-available" title="Permanent link">&para;</a></h3>
 <p>Lowest percent of the disk space available.</p>
 <h3 id="cpu-usage">CPU Usage<a class="headerlink" href="#cpu-usage" title="Permanent link">&para;</a></h3>
@@ -566,7 +599,7 @@ Note: on Modern Linux Kernels amount of Memory Available for application is not 
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-02-10
+            <i class="uil uil-refresh"></i> Page updated 2021-03-19
         </li>
         
     </ul>
