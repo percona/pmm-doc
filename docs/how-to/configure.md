@@ -183,9 +183,9 @@ Settings for the SMTP email server:
     - *None*
     - *Plain*
     - *Login*
-    - *CRAM MD5*
+    - *CRAM-MD5*
 - *Username*: SMTP Auth using CRAM-MD5, LOGIN and PLAIN.
-- *Password*: SMTP Auth using LOGIN and PLAIN.
+- *Password*: SMTP Auth using CRAM-MD5, LOGIN and PLAIN.
 
 ### Slack
 
