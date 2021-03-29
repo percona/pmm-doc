@@ -50,7 +50,7 @@
 </head>
 
 <body>
-	<!-- 2021-03-26 07:05:41.159415+00:00 -->
+	<!-- 2021-03-29 13:09:20.463922+00:00 -->
     
 <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.3/css/line.css" type="text/css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" type="text/css">
@@ -228,7 +228,7 @@ minikube kubectl -- <span class="nb">wait</span> --for<span class="o">=</span><s
 curl -sSf -m <span class="m">30</span> https://raw.githubusercontent.com/percona/percona-xtradb-cluster-operator/v1.7.0/deploy/bundle.yaml <span class="se">\</span>
 <span class="p">|</span> kubectl apply -f -
 curl -sSf -m <span class="m">30</span> https://raw.githubusercontent.com/percona/percona-xtradb-cluster-operator/v1.7.0/deploy/secrets.yaml <span class="se">\</span>
-<span class="p">|</span> sed <span class="s2">&quot;s/pmmserver:.*=/pmmserver: </span><span class="si">${</span><span class="nv">PMM_PASS</span><span class="si">}</span><span class="s2">/g&quot;</span> <span class="se">\</span>
+<span class="p">|</span> sed <span class="s2">&quot;s/pmmserver:.*/pmmserver: </span><span class="si">${</span><span class="nv">PMM_PASS</span><span class="si">}</span><span class="s2">/g&quot;</span> <span class="se">\</span>
 <span class="p">|</span> kubectl apply -f -
 
 <span class="c1"># Install the PSMDB operator</span>
@@ -577,7 +577,7 @@ eksctl delete cluster --name<span class="o">=</span>your-cluster-name
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-03-19
+            <i class="uil uil-refresh"></i> Page updated 2021-03-29
         </li>
         
     </ul>
