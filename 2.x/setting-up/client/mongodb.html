@@ -52,7 +52,7 @@
 </head>
 
 <body>
-	<!-- 2021-03-29 13:09:20.345742+00:00 -->
+	<!-- 2021-03-29 15:26:45.637472+00:00 -->
     
 <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.3/css/line.css" type="text/css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" type="text/css">
@@ -191,9 +191,13 @@ Service name: mongo
 <p>Beside positional arguments shown above you can specify service name and service address with the following flags: <code>--service-name</code>, <code>--host</code> (the hostname or IP address of the service), and <code>--port</code> (the port number of the service). If both flag and positional argument are present, flag gains higher priority. Here is the previous example modified to use these flags:</p>
 <div class="highlight"><pre><span></span><code>pmm-admin add mongodb --username<span class="o">=</span>pmm --password<span class="o">=</span>pmm --service-name<span class="o">=</span>mongo --host<span class="o">=</span><span class="m">127</span>.0.0.1 --port<span class="o">=</span><span class="m">27017</span>
 </code></pre></div>
-<blockquote>
 <p>You can add a MongoDB instance using a UNIX socket with the <code>--socket</code> option:</p>
 <div class="highlight"><pre><span></span><code>pmm-admin add mongodb --socket<span class="o">=</span>/tmp/mongodb-27017.sock
+</code></pre></div>
+<blockquote>
+<p>If the password contains special symbols like the &lsquo;at&rsquo; (<code>@</code>) symbol, the host might not be detected correctly. Make sure that you insert the password with special characters replaced with their escape sequences. The simplest way is to use the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent"><code>encodeURIComponent</code></a> JavaScript function in your browser&rsquo;s web console (usually found under <em>Development Tools</em>). Evaluate the function with your password as the parameter. For example:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">encodeURIComponent</span><span class="p">(</span><span class="s1">&#39;$ecRet_pas$w@rd&#39;</span><span class="p">)</span>
+<span class="s2">&quot;%24ecRet_pas%24w%40rd&quot;</span>
 </code></pre></div>
 </blockquote>
 <h2 id="passing-ssl-parameters-to-the-mongodb-monitoring-service">Passing SSL parameters to the MongoDB monitoring service<a class="headerlink" href="#passing-ssl-parameters-to-the-mongodb-monitoring-service" title="Permanent link">&para;</a></h2>
@@ -223,7 +227,7 @@ the MongoDB monitoring service.</p>
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-03-19
+            <i class="uil uil-refresh"></i> Page updated 2021-03-29
         </li>
         
     </ul>
