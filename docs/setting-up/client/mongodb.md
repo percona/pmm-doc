@@ -133,6 +133,23 @@ pmm-admin add mongodb --username=pmm --password=pmm --service-name=mongo --host=
 > pmm-admin add mongodb --socket=/tmp/mongodb-27017.sock
 > ```
 
+
+!!! alert alert-warning "Important"
+
+        In cases when the password contains special symbols like the *at* (@) symbol, the host might not not be detected correctly. Make sure that you insert the password with special characters replaced with their escape sequences. The simplest way is to use the `encodeURIComponent` JavaScript function.
+
+        For this, open the web console of your browser (usually found under *Development tools*) and evaluate the following expression, passing the password that you intend to use:
+
+        ```
+	    encodeURIComponent('$ecRet_pas$w@rd')
+        "%24ecRet_pas%24w%40rd"
+        ```
+
+        !!! seealso "Related Information"
+        	MDN Web Docs: encodeURIComponent
+	        <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent>
+
+
 ## Passing SSL parameters to the MongoDB monitoring service
 
 SSL/TLS related parameters are passed to an SSL enabled MongoDB server as
