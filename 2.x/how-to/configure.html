@@ -52,7 +52,7 @@
 </head>
 
 <body>
-	<!-- 2021-03-29 15:26:45.183748+00:00 -->
+	<!-- 2021-03-29 15:30:11.973527+00:00 -->
     
 <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.3/css/line.css" type="text/css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" type="text/css">
@@ -256,27 +256,35 @@
 <h2 id="communication">Communication<a class="headerlink" href="#communication" title="Permanent link">&para;</a></h2>
 <p>Global communications settings for <a href="../using/alerting.html">Integrated Alerting</a>.</p>
 <blockquote>
-<p>This tab appears only when <em>Advanced Settings</em> &rarr; <em>Integrated Alerting</em> is on.</p>
+<p>If there is no <em>Communication</em> tab, go to the <em>Advanced Settings</em> tab and activate <em>Integrated Alerting</em>.</p>
 </blockquote>
 <p><img alt="" src="../_images/PMM_Settings_Communication.jpg" /></p>
-<p>Integrated Alerting uses a separate instance of Alertmanager run by <code>pmm-managed</code>.</p>
-<p>The descriptions for the settings here are reproduced from <a href="https://prometheus.io/docs/alerting/latest/configuration/">Prometheus Alertmanager configuration</a>.</p>
+<p>(Integrated Alerting uses a separate instance of Alertmanager run by <code>pmm-managed</code>.)</p>
 <h3 id="email">Email<a class="headerlink" href="#email" title="Permanent link">&para;</a></h3>
 <p>Settings for the SMTP email server:</p>
 <ul>
 <li><em>Server Address</em>: The default SMTP smarthost used for sending emails, including port number.</li>
-<li><em>From</em>: The default SMTP From header field.</li>
-<li><em>Username</em>: SMTP Auth using CRAM-MD5, LOGIN and PLAIN.</li>
-<li><em>Password</em>: SMTP Auth using LOGIN and PLAIN.</li>
 <li><em>Hello</em>: The default hostname to identify to the SMTP server.</li>
-<li><em>Identity</em>: SMTP Auth using PLAIN.</li>
-<li><em>Secret</em>: SMTP Auth using CRAM-MD5.</li>
+<li><em>From</em>: The sender&rsquo;s email address.</li>
+<li><em>Auth type</em>: Authentication type. Choose from:<ul>
+<li><em>None</em></li>
+<li><em>Plain</em></li>
+<li><em>Login</em></li>
+<li><em>CRAM-MD5</em></li>
+</ul>
+</li>
+<li><em>Username</em>: SMTP Auth using CRAM-MD5, LOGIN and PLAIN.</li>
+<li><em>Password</em>: SMTP Auth using CRAM-MD5, LOGIN and PLAIN.</li>
 </ul>
 <h3 id="slack">Slack<a class="headerlink" href="#slack" title="Permanent link">&para;</a></h3>
 <p>Settings for Slack notifications:</p>
 <ul>
 <li><em>URL</em>: The Slack webhook URL to use for Slack notifications.</li>
 </ul>
+<blockquote>
+<p><strong>See also</strong></p>
+<p><a href="https://prometheus.io/docs/alerting/latest/configuration/">Prometheus Alertmanager configuration</a></p>
+</blockquote>
                     </div>
                 </div>
                 
@@ -284,7 +292,7 @@
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-03-19
+            <i class="uil uil-refresh"></i> Page updated 2021-03-29
         </li>
         
     </ul>
