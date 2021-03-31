@@ -52,7 +52,7 @@
 </head>
 
 <body>
-	<!-- 2021-03-31 06:44:10.650913+00:00 -->
+	<!-- 2021-03-31 08:24:07.187522+00:00 -->
     
 <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.3/css/line.css" type="text/css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" type="text/css">
@@ -131,6 +131,9 @@ won&rsquo;t receive any query data.</p>
 <h1 id="postgresql">PostgreSQL<a class="headerlink" href="#postgresql" title="Permanent link">&para;</a></h1>
 <p>For PostgreSQL follow the same methods used for MySQL and MariaDB and enable <code>track_io_timing</code> in the instance configuration to enable Query Analytics.</p>
 <p><img alt="image" src="../../_images/azure-postgresql-config.png" /></p>
+<p>For Query Analytics, set the server parameter:</p>
+<div class="highlight"><pre><span></span><code><span class="na">pg_stat_statements.track</span> <span class="o">=</span> <span class="s">all</span>
+</code></pre></div>
                     </div>
                 </div>
                 
@@ -138,7 +141,7 @@ won&rsquo;t receive any query data.</p>
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-03-04
+            <i class="uil uil-refresh"></i> Page updated 2021-03-31
         </li>
         
     </ul>
