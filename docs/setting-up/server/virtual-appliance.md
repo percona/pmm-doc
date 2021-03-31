@@ -7,7 +7,7 @@ This page shows how to set up PMM Server as a virtual machine in [VMware Worksta
 ```plantuml source="_resources/diagrams/Setting-Up_Server_Virtual-Appliance.puml"
 ```
 
-Most steps can be done with either a user interface or on the command line, but some steps can only be done in one or the other. Sections are marked with **UI {{icon.mouse}}** for user interface or **CLI {{icon.keyboard}}** for command line instructions.
+Most steps can be done with either a user interface or on the command line, but some steps can only be done in one or the other. Sections are labeled **UI** for user interface or **CLI** for command line instructions.
 
 **Terminology**
 
@@ -15,24 +15,35 @@ Most steps can be done with either a user interface or on the command line, but 
 - *Hypervisor* is software (e.g. VirtualBox, VMware) that runs the guest OS as a virtual machine.
 - *Guest* is the CentOS virtual machine that runs PMM Server.
 
-!!! alert alert-info "OVA file details"
-	- Download page: <https://www.percona.com/downloads/pmm2/{{release}}/ova>
-	- File name: `pmm-server-{{release}}.ova`
-	- VM name: `PMM2-Server-{{release_date}}-N` (`N`=build number)
-	- VM specifications:
-		- CentOS 7.9 (64-bit)
-		- CPU: 1
-		- Base memory: 4096 MB
-		- Disks: LVM, 2 physical volumes
-			- Disk 1 (sda): VMDK (SCSI, 40 GB)
-			- Disk 2 (sdb): VMDK (SCSI, 400 GB)
-	- Username/default password:
-		- `root`/`percona`
-    	- `admin`/`admin`
+**OVA file details**
 
-## 1. Download
+| Item          | Value
+|---------------|-----------------------------------------------------------
+| Download page | <https://www.percona.com/downloads/pmm2/{{release}}/ova>
+| File name     | `pmm-server-{{release}}.ova`
+| VM name       | `PMM2-Server-{{release_date}}-N` (`N`=build number)
 
-**UI {{icon.mouse}}**
+**VM specifications**
+
+| Component         | Value
+|-------------------|-------------------------------
+| OS                | CentOS 7.9 (64-bit)
+| CPU               | 1
+| Base memory       | 4096 MB
+| Disks             | LVM, 2 physical volumes
+| Disk 1 (sda)      | VMDK (SCSI, 40 GB)
+| Disk 2 (sdb)      | VMDK (SCSI, 400 GB)
+
+**Users**
+
+| Default Username | Default password
+|------------------|-----------------------
+| `root`           | `percona`
+| `admin`          | `admin`
+
+## Download
+
+**U**
 
 1. Open a web browser.
 2. [Visit the PMM Server download page][OVA].
@@ -41,7 +52,7 @@ Most steps can be done with either a user interface or on the command line, but 
 5. Right click the link for `pmm-server-{{release}}.sha256sum` and save it in the same place as the `.ova` file.
 6. (Optional) [Verify](#verify).
 
-**CLI {{icon.keyboard}}**
+**CLI**
 
 *Download the latest PMM Server OVA and checksum files*
 
@@ -50,9 +61,9 @@ wget https://www.percona.com/downloads/pmm2/{{release}}/ova/pmm-server-{{release
 wget https://www.percona.com/downloads/pmm2/{{release}}/ova/pmm-server-{{release}}.sha256sum
 ```
 
-## 2. Verify
+## Verify
 
-**CLI {{icon.keyboard}}**
+**CLI**
 
 *Verify the checksum of the downloaded .ova file*
 
@@ -60,11 +71,11 @@ wget https://www.percona.com/downloads/pmm2/{{release}}/ova/pmm-server-{{release
 shasum -ca 256 pmm-server-{{release}}.sha256sum
 ```
 
-## 3. VMware Workstation Player
+## PMM Server as a virtual appliance on VMware Workstation Player {: #vmware }
 
-### 3.1. Import
+### Import
 
-**UI {{icon.mouse}}**
+**U**
 
 1. Select *File --> Import*.
 2. Click *Choose file...*.
@@ -81,7 +92,7 @@ shasum -ca 256 pmm-server-{{release}}.sha256sum
 	- (Optional) Click *Finish*. This starts the virtual machine.
 	- (Recommended) Click *Customize Settings*. This opens the VM's settings page without starting the machine.
 
-**CLI {{icon.keyboard}}**
+**CLI**
 
 1. Install [`ovftool`][OVFTool]. (You need to register.)
 2. Import and convert the OVA file. (`ovftool` can't change CPU or memory settings during import but it can set the default interface.)
@@ -100,12 +111,11 @@ shasum -ca 256 pmm-server-{{release}}.sha256sum
 		pmm-server.vmx
 		```
 
-### 3.2. Reconfigure interface
+### Reconfigure interface
 
-!!! alert alert-info "Notes"
-	When using the command line, the interface is remapped during import.
+> When using the command line, the interface is remapped during import.
 
-**UI {{icon.mouse}}**
+**U**
 
 1. If started, shut down the virtual machine.
 2. In the VMware main window, select the imported virtual machine.
@@ -114,15 +124,15 @@ shasum -ca 256 pmm-server-{{release}}.sha256sum
 5. In the *Bridged Networking* section, select *Autodetect*.
 6. Close the settings window.
 
-### 3.3. Start guest and get IP address
+### Start guest and get IP address
 
-**UI {{icon.mouse}}**
+**U**
 
 1. In the VMware main window, select the imported virtual machine.
 2. Click the play button {{icon.caretright}} or select *Virtual Machine --> Start Up*.
 3. When the instance has booted, note the IP address in the guest console.
 
-**CLI/UI {{icon.keyboard}} {{icon.mouse}}**
+**CLI/UI**
 
 1. Start the virtual machine in GUI mode. (There's no way to redirect a VMware VM's console to the host.)
 	```sh
@@ -137,11 +147,11 @@ shasum -ca 256 pmm-server-{{release}}.sha256sum
 	pmm-server.vmx nogui
 	```
 
-## 4. Oracle VM VirtualBox
+## PMM Server as a virtual appliance on Oracle VM VirtualBox {: #virtualbox }
 
-### 4.1. Import
+### Import
 
-**UI {{icon.mouse}}**
+**U**
 
 1. Select *File --> Import appliance...*.
 2. In the *File* field, type the path to the downloaded `.ova` file, or click the folder icon to navigate and open it.
@@ -150,7 +160,7 @@ shasum -ca 256 pmm-server-{{release}}.sha256sum
 5. Click *Start*.
 6. When the guest has booted, note the IP address in the guest console.
 
-**CLI {{icon.keyboard}}**
+**CLI**
 
 1. Open a terminal and change directory to where the downloaded `.ova` file is.
 2. (Optional) Do a 'dry run' import to see what values will be used.
@@ -169,9 +179,9 @@ shasum -ca 256 pmm-server-{{release}}.sha256sum
     	--cpus 2 --memory 8192 pmm-server-{{release}}.ova
 		```
 
-### 4.2. Reconfigure interface
+### Reconfigure interface
 
-**UI {{icon.mouse}}**
+**U**
 
 1. Click *Settings*.
 2. Click *Network*.
@@ -179,7 +189,7 @@ shasum -ca 256 pmm-server-{{release}}.sha256sum
 4. In the *Name* field, select your host's active network interface (e.g. `en0: Wi-Fi (Wireless)`).
 5. Click *OK*.
 
-**CLI {{icon.keyboard}}**
+**CLI**
 
 1. Show the list of available bridge interfaces.
 	```sh
@@ -197,15 +207,15 @@ shasum -ca 256 pmm-server-{{release}}.sha256sum
 	--uart1 0x3F8 4 --uartmode1 file /tmp/pmm-server-console.log
 	```
 
-### 4.3. Start guest and get IP address
+### Start guest and get IP address
 
-**UI {{icon.mouse}}**
+**U**
 
 1. Select the *PMM Server* virtual machine in the list.
 2. Click *Start*.
 3. When the guest has booted, note the IP address in the guest console.
 
-**CLI {{icon.keyboard}}**
+**CLI**
 
 1. Start the guest.
 	```sh
@@ -227,9 +237,9 @@ shasum -ca 256 pmm-server-{{release}}.sha256sum
 		VBoxManage controlvm "PMM Server" poweroff
 		```
 
-## 5. Log into PMM user interface
+## Log into PMM user interface
 
-**UI {{icon.mouse}}**
+**U**
 
 1. Open a web browser and visit the guest IP address.
 2. The PMM login screen appears.
@@ -241,9 +251,9 @@ shasum -ca 256 pmm-server-{{release}}.sha256sum
 5. The PMM Home Dashboard appears.
 	![image](../../_images/PMM_Home_Dashboard.jpg)
 
-## 6. (Optional) Change root password
+## (Optional) Change root password
 
-**UI {{icon.mouse}}**
+**U**
 
 1. Start the virtual machine in GUI mode.
 2. Log in with the default superuser credentials:
@@ -251,9 +261,9 @@ shasum -ca 256 pmm-server-{{release}}.sha256sum
 	- Password: `percona`
 3. Follow the prompts to change the password.
 
-## 7. (Optional) Set up SSH
+## (Optional) Set up SSH
 
-**UI/CLI {{icon.mouse}} {{icon.keyboard}}**
+**UI/CL**
 
 1. Create a key pair for the `admin` user.
 	```sh
@@ -268,11 +278,11 @@ shasum -ca 256 pmm-server-{{release}}.sha256sum
 	ssh -i admin admin@N.N.N.N
 	```
 
-## 8. (Optional) Set up static IP
+## (Optional) Set up static IP
 
 When the guest OS starts, it will get an IP address from the hypervisor's DHCP server. This IP can change each time the guest OS is restarted. Setting a static IP for the guest OS avoids having to check the IP address whenever the guest is restarted.
 
-**CLI {{icon.keyboard}}**
+**CLI**
 
 1. Start the virtual machine in non-headless (GUI) mode.
 2. Log in as `root`.

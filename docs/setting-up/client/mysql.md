@@ -16,7 +16,7 @@ Here is an overview of the steps involved.
 - You have superuser (root) access on the client host.
 - You have superuser access to any database servers that you want to monitor.
 
-## Create a database account for PMM
+## Create a database account for PMM {: #setting-up-client-user}
 
 It is good practice to use a non-superuser account to connect PMM Client to the monitored database instance. This example creates a database user with name `pmm`, password `pass`, and the necessary permissions.
 
@@ -50,7 +50,7 @@ Here are the benefits and drawbacks of *Slow query log* and *Performance Schema*
 | Percona Server for MySQL | 5.7, 8.0       | Slow query log     |
 | Percona XtraDB Cluster   | 5.6, 5.7, 8.0  | Slow query log     |
 
-### Slow query log
+### Slow query log {: #slow-query-log}
 
 This section covers how to configure a MySQL-based database server to use the *slow query log* as a source of metrics.
 
@@ -163,7 +163,7 @@ Only one `.old` file is kept. Older ones are deleted.
 
 You can manage log rotation yourself, for example, with [`logrotate`][LOGROTATE]. If you do, you can disable PMM Client's log rotation with the `--slow-log-rotation=false` option when adding a service with `pmm-admin add`.
 
-### Performance Schema
+### Performance Schema {: #performance-schema}
 
 This section covers how to configure a MySQL-based database server to use *Performance Schema* as a source of metrics.
 
@@ -250,7 +250,6 @@ You must also install the plugins.
 *Session*
 
 1. Check that `/usr/lib/mysql/plugin/query_response_time.so` exists.
-
 2. Install the plugins and activate.
 
 	For [MariaDB 10.3][mariadb_query_response_time]:
@@ -319,9 +318,7 @@ With the PMM user interface, you select *Use performance schema*, or deselect it
 ### With the user interface
 
 1. Select *PMM --> PMM Add Instance*.
-
 2. Select *MySQL -- Add a remote instance*.
-
 3. Enter values for these fields.
 
 	| Section                  | Field                                          | Required | Description                             | Default  | `pmm-admin` parameter
@@ -403,7 +400,7 @@ sudo pmm-admin add mysql --query-source=perfschema --username=pmm --password=pas
 
 **Examples -- Identifying services**
 
-Default query source (`slowlog`), environment labelled `test`, custom labels setting `source` to `slowlog`. (This example uses positional parameters for service name and service address.)
+Default query source (`slowlog`), environment labeled `test`, custom labels setting `source` to `slowlog`. (This example uses positional parameters for service name and service address.)
 
 ```sh
 pmm-admin add mysql --environment=test --custom-labels='source=slowlog'  --username=root --password=password --query-source=slowlog MySQLSlowLog localhost:3306
@@ -439,16 +436,25 @@ If query response time plugin was installed, check for data in the *MySQL Query 
 Open the [*PXC/Galera Cluster Summary* dashboard][DASH_PXCGALERACLUSTER].
 
 
-!!! seealso "See also"
-	- [Percona Server for MySQL -- Slow Query Log Extended][ps_slow_query_ext]
-	- [Percona Server for MySQL -- User Statistics][ps_userstats]
-	- [MariaDB -- Slow Query Log Overview][mariadb_slow_query_log]
-	- [MariaDB -- Slow Query Log Extended Statistics][mariadb_slow_query_ext]
-	- [MariaDB -- User Statistics][mariadb_userstats]
-	- [Percona Blog -- PERFORMANCE_SCHEMA vs Slow Query Log][BLOG_PS_VS_SLOW]
-	- [Percona Blog -- MySQL's INNODB_METRICS table][BLOG_INNODB_METRICS]
-	- [Percona Blog -- Rotating MySQL Slow Logs Safely][BLOG_LOG_ROTATION]
-	- [Percona Blog -- Impact of logging on MySQL's performance][BLOG_LOGGING]
+> **See also**
+>
+> - [Percona Server for MySQL -- Slow Query Log Extended][ps_slow_query_ext]
+>
+> - [Percona Server for MySQL -- User Statistics][ps_userstats]
+>
+> - [MariaDB -- Slow Query Log Overview][mariadb_slow_query_log]
+>
+> - [MariaDB -- Slow Query Log Extended Statistics][mariadb_slow_query_ext]
+>
+> - [MariaDB -- User Statistics][mariadb_userstats]
+>
+> - [Percona Blog -- PERFORMANCE_SCHEMA vs Slow Query Log][BLOG_PS_VS_SLOW]
+>
+> - [Percona Blog -- MySQL's INNODB_METRICS table][BLOG_INNODB_METRICS]
+>
+> - [Percona Blog -- Rotating MySQL Slow Logs Safely][BLOG_LOG_ROTATION]
+>
+> - [Percona Blog -- Impact of logging on MySQL's performance][BLOG_LOGGING]
 
 
 [DASH_MYSQLUSERDETAILS]: ../../details/dashboards/dashboard-mysql-user-details.md
