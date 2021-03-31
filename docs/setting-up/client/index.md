@@ -11,11 +11,8 @@ PMM Client is a collection of agents and exporters that run on the host being mo
 These sections cover the different ways to install PMM Client on a Linux node and register it with PMM Server. The options are:
 
 1. For Debian- or Red Hat-based distributions, install [`percona-release`][PERCONA_RELEASE] and [use a Linux package manager](#package-manager) (`apt`/`dnf`) to install PMM Client.
-
 2. For Debian- or Red Hat-based distributions, [download `.deb`/`.rpm` PMM Client packages and install them](#manual-package).
-
 3. For other Linux distributions, [download and unpack generic PMM Client Linux binaries](#binary-package).
-
 4. If you use [Docker][GETDOCKER], [run PMM Client as a Docker container](#docker).
 
 When you have installed PMM Client, you must:
@@ -23,7 +20,24 @@ When you have installed PMM Client, you must:
 - [Register the node with PMM Server](#register)
 - [Configure and add services according to type](#configure-add-services)
 
+## System requirements
+
+**Operating system**
+
+PMM Client runs on any modern 64-bit Linux distribution. It is tested on the latest versions of Debian, Ubuntu, CentOS, and Red Hat Enterprise Linux.
+
+**Disk**
+
+A minimum of 100 MB of storage is required for installing the PMM Client package.
+
+With a good connection to PMM Server, additional storage is not required.
+
+However, the client needs to store any collected data that it cannot dispatch immediately, so additional storage may be required if the connection is unstable or the throughput is low.
+
+(Caching only applies to Query Analytics data; VictoriaMetrics data is never cached on the client side.)
+
 ## Before you start
+
 
 - PMM Server is installed and running with a known IP address accessible from the client node.
 - You have superuser (root) access on the client host.
@@ -31,10 +45,15 @@ When you have installed PMM Client, you must:
 - These Linux packages are installed: `curl`, `gnupg`, `sudo`, `wget`.
 
 
+
+
+
+
+
+
+
+
 <!--
-
-!!! alert alert-info "Note"
-
     Credentials used in communication between the exporters and the PMM Server are the following ones:
 
     * login is `pmm`
@@ -73,13 +92,11 @@ When you have installed PMM Client, you must:
     sudo yum install -y pmm2-client
     ```
 
-!!! alert alert-success "Tip"
-	If you have used `percona-release` before, disable and reenable the repository like this:
-
-	```sh
-	sudo percona-release disable all
-	sudo percona-release enable original release
-	```
+> **Tip** If you have used `percona-release` before, disable and reenable the repository:
+> ```sh
+> sudo percona-release disable all
+> sudo percona-release enable original release
+> ```
 
 ## Download and install PMM Client packages manually {: #manual-package }
 
@@ -219,12 +236,13 @@ The [PMM Client Docker image](https://hub.docker.com/r/percona/pmm-client/tags/)
 
 You can now add services with [`pmm-admin`](../../details/commands/pmm-admin.md) by prefixing commands with `docker exec pmm-client`.
 
-!!! alert alert-success "Tips"
-    - Adjust host firewall and routing rules to allow Docker communications. ([Read more in the FAQ.](../../faq.md#how-do-i-troubleshoot-communication-issues-between-pmm-client-and-pmm-server))
-	- For help:
-		```sh
-		docker run --rm percona/pmm-client:2 --help
-		```
+> **Tip**
+>
+> - Adjust host firewall and routing rules to allow Docker communications. ([Read more in the FAQ.](../../faq.md#how-do-i-troubleshoot-communication-issues-between-pmm-client-and-pmm-server))
+> - For help:
+> ```sh
+> docker run --rm percona/pmm-client:2 --help
+> ```
 
 ## Register node with PMM Server {: #register }
 
@@ -248,12 +266,16 @@ You should continue by adding services according to the service type.
 - [ProxySQL](proxysql.md)
 - [Amazon RDS](aws.md)
 - [Microsoft Azure](azure.md)
+- [Google Cloud Platform (MySQL and PostgreSQL)](google.md)
 - [Linux](linux.md)
 - [External services](external.md)
 - [HAProxy](haproxy.md)
 
-!!! seealso "See also"
-	- [Percona release][PERCONA_RELEASE]
+> **See also**
+>
+> - [Percona release][PERCONA_RELEASE]
+>
+> - [PMM Client architecture](../../details/architecture.md#pmm-client)
 
 [GETDOCKER]: https://docs.docker.com/get-docker/
 [DOWNLOAD]: https://www.percona.com/downloads/pmm2/

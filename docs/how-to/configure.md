@@ -13,12 +13,11 @@ On the left of the page is a set of sub-page selector tabs.
 
 (The [Communication](#communication) tab remains hidden until [Integrated Alerting](#integrated-alerting) is activated.)
 
-!!! alert alert-success "Tip"
-    Click *Apply changes* after changing settings.
+> Click *Apply changes* after changing settings.
 
 ## Diagnostics
 
-Common to all sections is *Diagnostics*. PMM can generate a set of diagnostics data which can be examined and/or shared with Percona Support in case of some issue to solve it faster.  You can get collected logs from PMM Server by clicking *Download server diagnostics*.
+Common to all sections is *Diagnostics*. PMM can generate a set of diagnostics data which can be examined and/or shared with our support team in case of some issue to solve it faster.  You can get collected logs from PMM Server by clicking *Download server diagnostics*.
 
 ## Metrics resolution
 
@@ -34,7 +33,6 @@ The *Metrics Resolution* radio button lets you select one of four presets.
 Each preset is a group of Low, Medium and High metrics resolution values.
 
 - A low resolution interval *increases* the time between collection, resulting in low-resolution metrics and lower disk usage.
-
 - A high resolution interval *decreases* the time between collection, resulting in high-resolution metrics and higher disk usage.
 
 The default values (in seconds) for the fixed presets and their resolution names are:
@@ -47,8 +45,7 @@ The default values (in seconds) for the fixed presets and their resolution names
 
 Values for the *Custom* preset can be entered as values, or changed with the arrows.
 
-!!! alert alert-info "Note"
-    If there is poor network connectivity between PMM Server and PMM Client, or between PMM Client and the database server it is monitoring, scraping every second may not be possible when the network latency is greater than 1 second.
+> If there is poor network connectivity between PMM Server and PMM Client, or between PMM Client and the database server it is monitoring, scraping every second may not be possible when the network latency is greater than 1 second.
 
 ## Advanced Settings
 
@@ -56,7 +53,7 @@ Values for the *Custom* preset can be entered as values, or changed with the arr
 
 ### Data Retention
 
-*Data retention* specifies how long data is stored by PMM Server.
+*Data retention* specifies how long data is stored by PMM Server. By default, PMM stores time-series data for 30 days. Depending on your available disk space and requirements, you may need to adjust the data retention time.
 
 ### Telemetry
 
@@ -82,9 +79,9 @@ Grafana’s [anonymous usage statistics](https://grafana.com/docs/grafana/latest
 
 As well as via the *PMM Settings* page, you can also disable telemetry with the `-e DISABLE_TELEMETRY=1` option in your docker run statement for the PMM Server.
 
-!!! alert alert-info "Notes"
-    1. If the Security Threat Tool is enabled in PMM Settings, Telemetry is automatically enabled.
-    2. Telemetry is sent immediately; the 24-hour grace period is not honored.
+> - If the Security Threat Tool is enabled in PMM Settings, Telemetry is automatically enabled.
+>
+> - Telemetry is sent immediately; the 24-hour grace period is not honored.
 
 ### Check for updates
 
@@ -106,8 +103,7 @@ The results can be viewed in *PMM-->PMM Database Checks*.
 
 A read-only setting that shows whether DBaaS features are activated on this server.
 
-!!! alert alert-warning "Caution"
-    DBaaS functionality is a technical preview that must be turned on with a server feature flag. See [Setting up a development environment for DBaaS](../setting-up/server/dbaas.md).
+> <b style="color:goldenrod">Caution</b> DBaaS functionality is a technical preview that must be turned on with a server feature flag. See [Setting up a development environment for DBaaS](../setting-up/server/dbaas.md).
 
 ### Integrated Alerting
 
@@ -164,36 +160,39 @@ To create a *Percona Platform* account:
 
 A brief message will confirm the creation of your new account and you may now log in with these credentials.
 
-!!! alert alert-info "Note"
-    Your Percona Platform account is separate from your PMM User account.
+> Your Percona Platform account is separate from your PMM User account.
 
 ## Communication
 
-!!! alert alert-info "Note"
-    This tab appears only when *Advanced Settings* --> *Integrated Alerting* is on.
-
 Global communications settings for [Integrated Alerting](../using/alerting.md).
+
+> If there is no *Communication* tab, go to the *Advanced Settings* tab and activate *Integrated Alerting*.
 
 ![](../_images/PMM_Settings_Communication.jpg)
 
-Integrated Alerting uses a separate instance of Alertmanager run by `pmm-managed`.
-
-The descriptions for the settings here are reproduced from [Prometheus Alertmanager configuration](https://prometheus.io/docs/alerting/latest/configuration/).
+(Integrated Alerting uses a separate instance of Alertmanager run by `pmm-managed`.)
 
 ### Email
 
 Settings for the SMTP email server:
 
 - *Server Address*: The default SMTP smarthost used for sending emails, including port number.
-- *From*: The default SMTP From header field.
-- *Username*: SMTP Auth using CRAM-MD5, LOGIN and PLAIN.
-- *Password*: SMTP Auth using LOGIN and PLAIN.
 - *Hello*: The default hostname to identify to the SMTP server.
-- *Identity*: SMTP Auth using PLAIN.
-- *Secret*: SMTP Auth using CRAM-MD5.
+- *From*: The sender's email address.
+- *Auth type*: Authentication type. Choose from:
+    - *None*
+    - *Plain*
+    - *Login*
+    - *CRAM-MD5*
+- *Username*: SMTP Auth using CRAM-MD5, LOGIN and PLAIN.
+- *Password*: SMTP Auth using CRAM-MD5, LOGIN and PLAIN.
 
 ### Slack
 
 Settings for Slack notifications:
 
 - *URL*: The Slack webhook URL to use for Slack notifications.
+
+> **See also**
+>
+> [Prometheus Alertmanager configuration](https://prometheus.io/docs/alerting/latest/configuration/)

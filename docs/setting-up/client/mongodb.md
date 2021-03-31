@@ -47,15 +47,7 @@ db.getSiblingDB("admin").createUser({
 
 ## Enabling Profiling
 
-For [MongoDB](https://www.mongodb.com) to work correctly with Query Analytics, you need to enable profiling
-in your `mongod` configuration. When started without profiling enabled, Query Analytics
-displays the following warning:
-
-!!! alert alert-info "Note"
-
-    **A warning message is displayed when profiling is not enabled**
-
-    It is required that profiling of the monitored MongoDB databases be enabled, however profiling is not enabled by default because it may reduce the performance of your MongoDB server.
+For [MongoDB](https://www.mongodb.com) to work correctly with Query Analytics, you need to enable profiling in your `mongod` configuration. (Profiling is not enabled by default because it may reduce the performance of your MongoDB server.)
 
 ### Enabling Profiling on Command Line
 
@@ -135,14 +127,20 @@ Beside positional arguments shown above you can specify service name and service
 pmm-admin add mongodb --username=pmm --password=pmm --service-name=mongo --host=127.0.0.1 --port=27017
 ```
 
-!!! alert alert-info "Note"
+You can add a MongoDB instance using a UNIX socket with the `--socket` option:
 
-    It is also possible to add a MongoDB instance using a UNIX socket with just the `--socket` flag followed by the path to a socket:
+```sh
+pmm-admin add mongodb --socket=/tmp/mongodb-27017.sock
+```
 
-    ```sh
-    pmm-admin add mongodb --socket=/tmp/mongodb-27017.sock
-    ```
+> If the password contains special symbols like the 'at' (`@`) symbol, the host might not be detected correctly. Make sure that you insert the password with special characters replaced with their escape sequences. The simplest way is to use the [`encodeURIComponent`][ENCODE_URI] JavaScript function in your browser's web console (usually found under *Development Tools*). Evaluate the function with your password as the parameter. For example:
+>
+> ```javascript
+> encodeURIComponent('$ecRet_pas$w@rd')
+> "%24ecRet_pas%24w%40rd"
+> ```
 
+[ENCODE_URI]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent
 
 ## Passing SSL parameters to the MongoDB monitoring service
 
