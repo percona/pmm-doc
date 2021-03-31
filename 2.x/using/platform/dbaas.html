@@ -50,7 +50,7 @@
 </head>
 
 <body>
-	<!-- 2021-03-29 15:30:12.754396+00:00 -->
+	<!-- 2021-03-31 05:53:19.061798+00:00 -->
     
 <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.3/css/line.css" type="text/css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" type="text/css">
@@ -150,18 +150,9 @@
 <h3 id="add-a-db-cluster">Add a DB Cluster<a class="headerlink" href="#add-a-db-cluster" title="Permanent link">&para;</a></h3>
 <p>You must create at least one Kubernetes cluster to create a DB cluster.</p>
 <p>To monitor a DB cluster, set up a <a href="../../how-to/configure.html#public-address">public address</a> for PMM Server first.</p>
-<blockquote>
-<p><b style="color:green">Tip</b></p>
-<p>Resource consumption in Kubernetes can cause problems. Use this formula to ensure your nodes have enough resources to start the requested configuration:</p>
-<p>( 2 * # of nodes in DB cluster * CPU per node ) + (.5 * # of nodes in db cluster) = total # of CPUs that must be free for cluster to start</p>
-<p>The first part of the equation is resources for the cluster. It is doubled because each DB cluster member must also have a proxy started with it.</p>
-<p>The second part is to start the container(s) that automatically monitor each member of the DB cluster.</p>
-<p>(You can also specify CPU in decimal tenths, e.g. <code>.1</code> CPUs or <code>1.5</code> CPUs.)</p>
-</blockquote>
 <ol>
 <li>
 <p>Select the <em>DB Cluster</em> tab.</p>
-<p><img alt="" src="../../_images/PMM_DBaaS_DB_Cluster_Panel.jpg" /></p>
 </li>
 <li>
 <p>Click <em>Create DB Cluster</em>.</p>
@@ -194,7 +185,8 @@
 <p>Select a preset for <em>Resources per Node</em>.</p>
 <p><em>Small</em>, <em>Medium</em> and <em>Large</em> are fixed preset values for <em>Memory</em>, <em>CPU</em>, and <em>Disk</em>.</p>
 <p>Values for the <em>Custom</em> preset can be edited.</p>
-<p><img alt="" src="../../_images/PMM_DBaaS_DB_Cluster_Advanced_Options.jpg" /></p>
+<p>Beside each resource type is an estimate of the required and available resources represented numerically in absolute and percentage values, and graphically as a colored, segmented bar showing the projected ratio of used to available resources. A red warning triangle <i style="color: red" class="uil uil-exclamation-triangle"></i> is shown if the requested resources exceed those available.</p>
+<p><img alt="" src="../../_images/PMM_DBaaS_DB_Cluster_Advanced_Options.png" /></p>
 </li>
 </ol>
 </li>
@@ -293,8 +285,8 @@
 </li>
 </ol>
 <blockquote>
-<p><strong>See also</strong></p>
-<p><a href="../../setting-up/server/dbaas.html">Setting up a development environment for DBaaS</a></p>
+<p><strong>See also</strong>
+<a href="../../setting-up/server/dbaas.html">Setting up a development environment for DBaaS</a></p>
 </blockquote>
                     </div>
                 </div>
@@ -303,7 +295,7 @@
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-03-19
+            <i class="uil uil-refresh"></i> Page updated 2021-03-31
         </li>
         
     </ul>
