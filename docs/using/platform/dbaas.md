@@ -1,16 +1,8 @@
 # DBaaS Dashboard
 
-> <b style="color: red">Caution</b>
-> DBaaS functionality is Alpha. The information on this page is subject to change and may be inaccurate.
+> <b style="color:goldenrod">Caution</b> DBaaS functionality is Alpha. The information on this page is subject to change and may be inaccurate.
 
-> **Note**
 > You must run PMM Server with a DBaaS feature flag to activate the features described here.
-
----
-
-[TOC]
-
----
 
 The DBaaS dashboard is where you add, remove, and operate on Kubernetes and database clusters.
 
@@ -39,7 +31,6 @@ To open the DBaaS dashboard:
 
 ### Unregister a Kubernetes cluster
 
-> **Note**
 > You can't unregister a Kubernetes cluster if there DB clusters associated with it.
 
 1. Click *Unregister*.

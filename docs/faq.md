@@ -1,74 +1,34 @@
+---
+TODO: New questions (answers or links to existing)
+What is PMM:
+What does it do:
+How can it help me:
+How does it work:
+What do I need to run it:
+Is it free/how much does it cost:
+---
+
 # FAQ
-
----
-
-[TOC]
-
----
 
 ## How can I contact the developers?
 
-The best place to discuss PMM with developers and other community members is the [community forum](https://www.percona.com/forums/questions-discussions/percona-monitoring-and-management).
-
-To report a bug, visit the [PMM project in JIRA](https://jira.percona.com/projects/PMM).
-
-## How can I contact the technical writers?
-
-- Open a [Jira](https://jira.percona.com/secure/CreateIssue!default.jspa) ticket
-
-- Open a [GitHub](https://github.com/percona/pmm-doc/issues/new) issue
+- [Community forum](https://www.percona.com/forums/questions-discussions/percona-monitoring-and-management).
+- [PMM project in JIRA](https://jira.percona.com/projects/PMM).
 
 ## What are the minimum system requirements for PMM?
 
-**PMM Server**
+See:
 
-Any system which can run Docker version 1.12.6 or later.
-
-It needs roughly 1 GB of storage for each monitored database node with data retention set to one week.
-
-!!! alert alert-info "Note"
-
-    By default, [retention](#how-to-control-data-retention-for-pmm) is set to 30 days for Metrics Monitor and for Query Analytics.  You can consider [disabling table statistics](how-to/optimize.md) to decrease the VictoriaMetrics database size.
-
-You need at least 2 GB for one monitored database node.
-
-!!! alert alert-info "Note"
-
-    The increase in memory usage is not proportional to the number of nodes.  For example, data from 20 nodes should be easily handled with 16 GB.
-
-!!! alert alert-info "Note"
-
-    Your CPU must support the SSE4.2 instruction set, a requirement of ClickHouse, a third-party column-oriented database used by Query Analytics. If your CPU is lacking this instruction set you won't be able to use QAN.
-
-**PMM Client**
-
-Any modern 64-bit Linux distribution. It is tested on the latest versions of Debian, Ubuntu, CentOS, and Red Hat Enterprise Linux.
-
-A minimum of 100 MB of storage is required for installing the PMM Client package.  With a good connection to PMM Server, additional storage is not required.  However, the client needs to store any collected data that it cannot dispatch immediately, so additional storage may be required if the connection is unstable or the throughput is low.
-(Caching only applies to Query Analytics data; VictoriaMetrics data is never cached on the client side.)
+- [PMM Server](setting-up/server/index.md#system-requirements)
+- [PMM Client](setting-up/client/index.md#system-requirements)
 
 ## How can I upgrade from PMM version 1?
 
-Because of the significant architectural changes between PMM1 and PMM2, there is no direct upgrade path.  The approach to making the switch from PMM version 1 to 2 is a gradual transition, outlined [in this blog post](https://www.percona.com/blog/2019/11/27/running-pmm1-and-pmm2-clients-on-the-same-host/).
-
-In short, it involves first standing up a new PMM2 server on a new host and connecting clients to it.  As new data is reported to the PMM2 server, old metrics will age out during the course of the retention period (30 days, by default), at which point you'll be able to shut down your existing PMM1 server.
-
-!!! alert alert-info "Note"
-
-    Any alerts configured through the Grafana UI will have to be recreated due to the target dashboard id's not matching between PMM1 and PMM2.  In this instance we recommend moving to Alertmanager recipes in PMM2 for alerting which, for the time being, requires a separate Alertmanager instance. However, we are working on integrating this natively into PMM2 Server and expect to support your existing Alertmanager rules.
+See [Upgrade from PMM1](how-to/upgrade.md#upgrade-from-pmm1).
 
 ## How to control data retention for PMM?
 
-By default, PMM stores time-series data for 30 days.
-Depending on your available disk space and requirements, you may need to adjust the data retention time:
-
-1. Go to *PMM > PMM Settings > Advanced Settings*.
-
-2. Change the data retention value.
-
-    ![image](./_images/PMM_Settings_Advanced_Settings.jpg)
-
-3. Click *Apply changes*.
+See [How to configure Data retention](how-to/configure.md#data-retention).
 
 ## How often are NGINX logs in PMM Server rotated?
 
@@ -76,9 +36,7 @@ PMM Server runs `logrotate` on a daily basis to rotate NGINX logs and keeps up t
 
 ## What privileges are required to monitor a MySQL instance?
 
-```sql
-GRANT SELECT, PROCESS, SUPER, REPLICATION CLIENT, RELOAD ON *.* TO 'pmm'@'localhost';
-```
+See [Setting Up PMM Client](setting-up/client/mysql.md#setting-up-client-user).
 
 ## Can I monitor multiple service instances?
 
@@ -113,30 +71,11 @@ To specify other than the default value, or to use several, use the JSON Array s
 
 ## How do I troubleshoot communication issues between PMM Client and PMM Server?
 
-Broken network connectivity may be due to many reasons.  Particularly, when [using Docker](setting-up/server/docker.md), the container is constrained by the host-level routing and firewall rules. For example, your hosting provider might have default `iptables` rules on their hosts that block communication between PMM Server and PMM Client, resulting in *DOWN* targets in VictoriaMetrics. If this happens, check the firewall and routing settings on the Docker host.
-
-PMM is also able to generate diagnostics data which can be examined and/or shared with Percona Support to help quickly solve an issue. You can get collected logs from PMM Client using the `pmm-admin summary` command.
-
-Logs obtained in this way includes PMM Client logs and logs which were received from the PMM Server, stored separately in the `client` and `server` folders. The `server` folder also contains its own `client` subfolder with the self-monitoring client information collected on the PMM Server.
-
-!!! alert alert-info "Note"
-
-    Beginning with PMM version 2.4.0, there is an additional flag that enables the fetching of [pprof](https://github.com/google/pprof) debug profiles and adds them to the diagnostics data. To enable, run `pmm-admin summary --pprof`.
-
-You can get PMM Server logs in two ways:
-
-- In a browser, visit `https://<address-of-your-pmm-server>/logs.zip`.
-- Go to *PMM > PMM Settings* and click *Download server diagnostics*. (See [Diagnostics in PMM Settings](how-to/configure.md#diagnostics).)
+See [Troubleshoot PMM Server/PMM Client connection](how-to/troubleshoot.md#troubleshoot-connection).
 
 ## What resolution is used for metrics?
 
-The default values are:
-
-* Low: 60 seconds
-* Medium: 10 seconds
-* High: 5 seconds
-
-(See [Metrics resolution](how-to/configure.md#metrics-resolution).)
+See [Metrics resolution](how-to/configure.md#metrics-resolution).
 
 ## How do I set up Alerting in PMM?
 
@@ -148,12 +87,9 @@ Alerting in Grafana allows attaching rules to your dashboard panels.  Grafana Al
 
 Alertmanager allows the creation of more sophisticated alerting rules and can be easier to manage installations with a large number of hosts. This additional flexibility comes at the expense of simplicity.
 
-!!! alert alert-info "Note"
+We only offer support for creating custom rules to our customers, so you should already have a working Alertmanager instance prior to using this feature.
 
-    We can only offer support for creating custom rules to Percona customers, so you should already have a working Alertmanager instance prior to using this feature.
-
-!!! seealso "See also"
-    [PMM Alerting with Grafana: Working with Templated Dashboards](https://www.percona.com/blog/2017/02/02/pmm-alerting-with-grafana-working-with-templated-dashboards/)
+> **See also** [PMM Alerting with Grafana: Working with Templated Dashboards](https://www.percona.com/blog/2017/02/02/pmm-alerting-with-grafana-working-with-templated-dashboards/)
 
 ## How do I use a custom Prometheus configuration file inside PMM Server?
 
@@ -165,29 +101,15 @@ From version 2.4.0, when `pmm-managed` starts the Prometheus file generation pro
 
 The `prometheus.yml` file can be regenerated by restarting the PMM Server container, or by using the `SetSettings` API call with an empty body.
 
-!!! seealso "See also"
-    - [API](details/api.md)
-    - [Percona blog: Extending PMM’s Prometheus Configuration](https://www.percona.com/blog/2020/03/23/extending-pmm-prometheus-configuration/)
+> **See also**
+>
+> - [API](details/api.md)
+>
+> - [Percona blog: Extending PMM’s Prometheus Configuration](https://www.percona.com/blog/2020/03/23/extending-pmm-prometheus-configuration/)
 
 ## How to troubleshoot an Update?
 
-If PMM server wasn't updated properly, or if you have concerns about the release, you can force the update process in 2 ways:
-
-1. From the UI  -  Home panel: click with the Alt key on the reload icon in the Update panel (IMG needed) to make the Update Button visible even if you are on the same version as available for update. Pressing this button will force the system to rerun the update so that any broken or not installed components can be installed. In this case, you'll go through the usual update process with update logs and successful messages at the end.
-
-2. By  API  call (if UI not available): You can call the Update API directly with:
-
-    ```sh
-    curl --user admin:admin --request POST 'http://PMM_SERVER/v1/Updates/Start'
-    ```
-
-    Replace `admin:admin` with your username/password, and replace `PMM_SERVER` with your server address.
-
-    !!! alert alert-info "Note"
-
-        You will not see the logs using this method.
-
-Refresh The Home page in 2-5 min and you should see that PMM was updated.
+See [Troubleshoot update](how-to/troubleshoot.md#troubleshoot-update).
 
 ## What are my login credentials when I try to connect to a Prometheus Exporter?
 
