@@ -1,6 +1,6 @@
 # Docker
 
-We maintain a [Docker image for PMM Server][DOCKERHUB]. This section shows how to run PMM Server as a Docker container. (The tags used here are for the latest version of PMM 2 ({{release}}). [Other tags are available][TAGS].)
+We maintain a [Docker image for PMM Server][DOCKERHUB]. This section shows how to run PMM Server as a Docker container, directly and with Docker compose. (The tags used here are for the latest version of PMM 2 ({{release}}). [Other tags are available][TAGS].)
 
 ## System requirements
 
@@ -130,5 +130,52 @@ You can test a new release of the PMM Server Docker image by making backups of y
     ```
 
 
+## Running PMM Server with Docker compose
+
+<!-- Credit: https://gist.github.com/paskal -->
+
+1. Copy and paste this text into a file called `docker-compose.yml`.
+
+    ```
+    version: '2'
+    services:
+        pmm-data:
+            image: percona/pmm-server:2
+            container_name: pmm-data
+            hostname: pmm-data
+            volumes:
+                - /srv
+            entrypoint: /bin/true
+        pmm-server:
+            image: percona/pmm-server:2
+            hostname: pmm-server
+            container_name: pmm-server
+            restart: always
+            logging:
+                driver: json-file
+                options:
+                    max-size: "10m"
+                    max-file: "5"
+            ports:
+                - "443:443"
+            # uncomment to proxy requests through another container instead of
+            # accessing the container directly
+            # expose:
+            #     - "443"
+            volumes_from:
+                - pmm-data
+    ```
+
+2. Run:
+
+    ```sh
+    docker-compose up -d pmm-server
+    ```
+
+3. Access PMM Server on <https://localhost:443>
+
+
+
 [TAGS]: https://hub.docker.com/r/percona/pmm-server/tags
 [DOCKERHUB]: https://hub.docker.com/r/percona/pmm-server
+[DOCKER_COMPOSE]: https://docs.docker.com/compose/
