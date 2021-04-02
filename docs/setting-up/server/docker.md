@@ -174,8 +174,89 @@ You can test a new release of the PMM Server Docker image by making backups of y
 
 3. Access PMM Server on <https://localhost:443>
 
+To connect PMM Client running with Docker on a different host, set up a [Docker swarm with an overlay network][DOCKER_SWARM].
+
+
+<!--
+
+On PMM Server:
+
+```sh
+docker swarm init
+```
+
+Take a copy of the output of this command.
+
+Create a network
+
+```sh
+docker network create --driver=overlay --attachable pmm-net
+```
+
+Edit `docker-compose.yml`.
+
+To the `pmm-server` service, add
+
+```yaml
+services:
+    ...
+    pmm-server:
+        ...
+        networks:
+            - default
+            - pmm-net
+```
+
+At the bottom. add:
+
+```yaml
+networks:
+    default:
+        driver: bridge
+    pmm-net:
+        external: true
+```
+
+Run `docker-compose up` and check PMM Server by logging into the web UI.
+
+On PMM Client:
+
+Copy and paste the `docker swarm join ...` command (output from the `docker swarm init` command run on the PMM Server host) into a terminal on the host where PMM Client will run.
+
+Test connectivity
+
+````
+docker run -it --rm --name test --network pmm-net alpine ash
+ping -c 3 pmm-server
+```
+
+
+Edit `docker-compose.yml`.
+
+To the `pmm-client` service, add
+
+```yaml
+networks:
+    - pmm-net
+```
+
+At the bottom. add:
+
+```yaml
+networks:
+  pmm-net:
+    external: true
+```
+
+
+
+-->
+
+
+
 
 
 [TAGS]: https://hub.docker.com/r/percona/pmm-server/tags
 [DOCKERHUB]: https://hub.docker.com/r/percona/pmm-server
 [DOCKER_COMPOSE]: https://docs.docker.com/compose/
+[DOCKER_SWARM]: https://docs.docker.com/network/network-tutorial-overlay/#use-an-overlay-network-for-standalone-containers

@@ -257,40 +257,43 @@ You can now add services with [`pmm-admin`](../../details/commands/pmm-admin.md)
 
 1. Copy and paste this text into a file called `docker-compose.yml`.
 
-    ```
+    ```yaml
     version: '2'
     services:
         pmm-client:
             image: percona/pmm-client:2
-            # select unique hostname, as it will be used for reporting
-            hostname: pmm-client-myhost
+            # Use unique hostname, as it will be used for reporting
+            hostname: pmm-client-1
             container_name: pmm-client
-            # needed if monitoring DB running via docker-compose
-            depends_on:
-                - mysql-server
             # pmm-agent.yaml contains credentials and should not be shared or added to git
             volumes:
                 - ./pmm-agent.yaml:/etc/pmm-agent.yaml
+
             # uncomment if pmm-server is on another host
-            # to see full list of ports you need to expose please see `docker-compose logs pmm-client`
-            # after start of the container for lines like that:
-            # > Sending status: RUNNING (port 42000). <...>
-            # > Sending status: RUNNING (port 42001). <...>
             # ports:
             #     - "42000:42000"
             #     - "42001:42001"
+
             logging:
                 driver: json-file
                 options:
                     max-size: "10m"
                     max-file: "5"
+
             restart: always
             environment:
                 - PMM_AGENT_CONFIG_FILE=/etc/pmm-agent.yaml
-            # pmm-server is on different host you have to access it directly,
-            # (accessing through proxy like nginx won't work)
-            entrypoint: pmm-agent setup --server-insecure-tls --server-address=pmm-server:443 --server-username=admin --server-password=admin
+                - PMM_AGENT_SERVER_USERNAME=admin
+                - PMM_AGENT_SERVER_PASSWORD=admin
+                - PMM_AGENT_SERVER_ADDRESS=pmm-server:443
+                - PMM_AGENT_SERVER_INSECURE_TLS=true
+                - PMM_AGENT_SETUP_FORCE=true
 
+            entrypoint: pmm-agent setup
+
+    networks:
+        default:
+            name: pmm
     ```
 
 2. Ensure a writable agent configuration file.
@@ -305,11 +308,18 @@ You can now add services with [`pmm-admin`](../../details/commands/pmm-admin.md)
     docker-compose up pmm-client
     ```
 
-4. Run:
+4. Edit `docker-compose.yml` and comment out the `entrypoint` line.
+
+5. Run:
 
     ```sh
     docker-compose up -d pmm-client
     ```
+
+
+to see full list of ports you need to expose please see `docker-compose logs pmm-client`
+
+
 
 ## Register node with PMM Server {: #register }
 
