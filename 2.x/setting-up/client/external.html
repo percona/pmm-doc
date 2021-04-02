@@ -52,7 +52,7 @@
 </head>
 
 <body>
-	<!-- 2021-04-02 10:58:29.971073+00:00 -->
+	<!-- 2021-04-02 14:14:25.702646+00:00 -->
     
 <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.3/css/line.css" type="text/css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" type="text/css">
@@ -144,6 +144,14 @@
 <h3 id="custom-exporter">Custom exporter<a class="headerlink" href="#custom-exporter" title="Permanent link">&para;</a></h3>
 <p>You can write a custom external exporter or extend your application to expose metrics in Prometheus format.</p>
 <p>Please see more details here: https://prometheus.io/docs/instrumenting/writing_exporters/</p>
+<h3 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h3>
+<p><div class="highlight"><pre><span></span><code>root@mysql1:~# pmm-admin add external --group<span class="o">=</span>processess  --listen-port<span class="o">=</span><span class="m">9256</span>
+External Service added.
+Service ID  : /service_id/6485f4fd-745b-4dfb-8b72-328e300f8b50
+Service name: mysql1-processess
+Group       : processess
+</code></pre></div>
+Add exporter running on local port 9256 to the group called &ldquo;processess&rdquo;  use group name and host name to automatically generate service name.  Use default scheme and metrics path.</p>
                     </div>
                 </div>
                 
@@ -151,7 +159,7 @@
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-03-04
+            <i class="uil uil-refresh"></i> Page updated 2021-04-02
         </li>
         
     </ul>
