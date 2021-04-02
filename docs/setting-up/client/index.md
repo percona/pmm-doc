@@ -251,49 +251,53 @@ You can now add services with [`pmm-admin`](../../details/commands/pmm-admin.md)
 > docker run --rm percona/pmm-client:2 --help
 > ```
 
-## Run PMM Client with Docker compose
+## Run PMM Client with Docker compose {: #setting-up-client-docker-compose }
 
-<!-- Credit: https://gist.github.com/paskal -->
+<!-- thanks: https://gist.github.com/paskal -->
+
+1. (Optional) If connecting to a [PMM Server running with Docker compose][PMMS_COMPOSE], join your PMM Client host to the Docker swarm. When done, on the PMM Server host, check the PMM Client is connected to the swarm:
+
+    ```sh
+    # Run on PMM Server swarm manager
+    docker node ls --filter role=worker
+    ```
+
+1. (Optional) Check connectivity. Run an Alpine Linux container and ping PMM Server by container name.
+
+    ```sh
+    docker run -it --rm --name test --network pmm_net alpine ash
+    ping -c 3 pmm-server
+    ```
 
 1. Copy and paste this text into a file called `docker-compose.yml`.
 
     ```yaml
-    version: '2'
+    version: '3.6'
+
     services:
-        pmm-client:
-            image: percona/pmm-client:2
-            # Use unique hostname, as it will be used for reporting
-            hostname: pmm-client-1
-            container_name: pmm-client
-            # pmm-agent.yaml contains credentials and should not be shared or added to git
-            volumes:
-                - ./pmm-agent.yaml:/etc/pmm-agent.yaml
-
-            # uncomment if pmm-server is on another host
-            # ports:
-            #     - "42000:42000"
-            #     - "42001:42001"
-
-            logging:
-                driver: json-file
-                options:
-                    max-size: "10m"
-                    max-file: "5"
-
-            restart: always
-            environment:
-                - PMM_AGENT_CONFIG_FILE=/etc/pmm-agent.yaml
-                - PMM_AGENT_SERVER_USERNAME=admin
-                - PMM_AGENT_SERVER_PASSWORD=admin
-                - PMM_AGENT_SERVER_ADDRESS=pmm-server:443
-                - PMM_AGENT_SERVER_INSECURE_TLS=true
-                - PMM_AGENT_SETUP_FORCE=true
-
-            entrypoint: pmm-agent setup
-
-    networks:
-        default:
-            name: pmm
+      pmm-client:
+        image: percona/pmm-client:2
+        hostname: pmm-client-myhost
+        container_name: pmm-client
+        restart: always
+        ports:
+          - "42000:42000"
+          - "42001:42001"
+        network_mode: "pmm_net"
+        logging:
+          driver: json-file
+          options:
+            max-size: "10m"
+            max-file: "5"
+        volumes:
+          - ./pmm-agent.yaml:/etc/pmm-agent.yaml
+        environment:
+          - PMM_AGENT_CONFIG_FILE=/etc/pmm-agent.yaml
+          - PMM_AGENT_SERVER_USERNAME=admin
+          - PMM_AGENT_SERVER_PASSWORD=admin
+          - PMM_AGENT_SERVER_ADDRESS=pmm-server:443
+          - PMM_AGENT_SERVER_INSECURE_TLS=true
+        entrypoint: pmm-agent setup
     ```
 
 2. Ensure a writable agent configuration file.
@@ -302,22 +306,31 @@ You can now add services with [`pmm-admin`](../../details/commands/pmm-admin.md)
     touch pmm-agent.yaml && chmod 0666 pmm-agent.yaml
     ```
 
-3. Run:
+3. Run the PMM Agent setup. This will run and stop.
 
     ```sh
-    docker-compose up pmm-client
+    docker-compose -p pmm up
     ```
 
-4. Edit `docker-compose.yml` and comment out the `entrypoint` line.
+4. Edit `docker-compose.yml`, comment out the `entrypoint` line (insert a `#`) and save.
 
-5. Run:
+    ```
+    ...
+    #        entrypoint: pmm-agent setup
+    ```
+
+5. Run PMM Client.
 
     ```sh
-    docker-compose up -d pmm-client
+    docker-compose -p pmm up --detach
     ```
 
 
-to see full list of ports you need to expose please see `docker-compose logs pmm-client`
+> **Notes**
+>
+> Use unique hostnames across all PMM Clients (value for `services.pmm-client.hostname`).
+>
+> `pmm-agent.yaml` contains sensitive credentials and should not be shared.
 
 
 
@@ -371,3 +384,4 @@ You should continue by adding services according to the service type.
 [PERCONA_RELEASE]: https://www.percona.com/doc/percona-repo-config/percona-release.html
 [PERCONA_TOOLS]: https://www.percona.com/services/policies/percona-software-support-lifecycle#pt
 [PASKAL]: https://gist.github.com/paskal/48f10a0a584f4849be6b0889ede9262b
+[PMMS_COMPOSE]: ../server/docker.md#setting-up-server-docker-compose

@@ -129,134 +129,62 @@ You can test a new release of the PMM Server Docker image by making backups of y
     docker start pmm-server
     ```
 
+## Running PMM Server with Docker compose {: #setting-up-server-docker-compose }
 
-## Running PMM Server with Docker compose
+<!-- thanks: https://gist.github.com/paskal -->
 
-<!-- Credit: https://gist.github.com/paskal -->
+1. (Optional) If running both PMM Server and PMM Client via docker compose, use an [overlay network][DOCKER_OVERLAY] with Docker swarm to allow network connections with container names rather than IP addresses.
+
+    ```sh
+    docker swarm init
+    ```
+
+    The output displays a `docker swarm join ...`command. Copy it and run it in a terminal on the PMM Client host to connect it to the swarm. (See [Run PMM Client with Docker compose][PMMC_COMPOSE].)
 
 1. Copy and paste this text into a file called `docker-compose.yml`.
 
     ```
-    version: '2'
+    version: '3.6'
+
     services:
-        pmm-data:
-            image: percona/pmm-server:2
-            container_name: pmm-data
-            hostname: pmm-data
-            volumes:
-                - /srv
-            entrypoint: /bin/true
-        pmm-server:
-            image: percona/pmm-server:2
-            hostname: pmm-server
-            container_name: pmm-server
-            restart: always
-            logging:
-                driver: json-file
-                options:
-                    max-size: "10m"
-                    max-file: "5"
-            ports:
-                - "443:443"
-            # uncomment to proxy requests through another container instead of
-            # accessing the container directly
-            # expose:
-            #     - "443"
-            volumes_from:
-                - pmm-data
+      pmm-server:
+        image: percona/pmm-server:2
+        hostname: pmm-server
+        container_name: pmm-server
+        restart: always
+        logging:
+          driver: json-file
+          options:
+            max-size: "10m"
+            max-file: "5"
+        ports:
+          - "443:443"
+        volumes:
+          - data:/srv
+
+    volumes:
+      data:
+
+    networks:
+      default:
+        driver: bridge
+      net:
+        driver: overlay
     ```
 
-2. Run:
+1. Run:
 
     ```sh
-    docker-compose up -d pmm-server
+    docker-compose -p pmm up --detach
     ```
 
 3. Access PMM Server on <https://localhost:443>
 
-To connect PMM Client running with Docker on a different host, set up a [Docker swarm with an overlay network][DOCKER_SWARM].
-
-
-<!--
-
-On PMM Server:
-
-```sh
-docker swarm init
-```
-
-Take a copy of the output of this command.
-
-Create a network
-
-```sh
-docker network create --driver=overlay --attachable pmm-net
-```
-
-Edit `docker-compose.yml`.
-
-To the `pmm-server` service, add
-
-```yaml
-services:
-    ...
-    pmm-server:
-        ...
-        networks:
-            - default
-            - pmm-net
-```
-
-At the bottom. add:
-
-```yaml
-networks:
-    default:
-        driver: bridge
-    pmm-net:
-        external: true
-```
-
-Run `docker-compose up` and check PMM Server by logging into the web UI.
-
-On PMM Client:
-
-Copy and paste the `docker swarm join ...` command (output from the `docker swarm init` command run on the PMM Server host) into a terminal on the host where PMM Client will run.
-
-Test connectivity
-
-````
-docker run -it --rm --name test --network pmm-net alpine ash
-ping -c 3 pmm-server
-```
-
-
-Edit `docker-compose.yml`.
-
-To the `pmm-client` service, add
-
-```yaml
-networks:
-    - pmm-net
-```
-
-At the bottom. add:
-
-```yaml
-networks:
-  pmm-net:
-    external: true
-```
-
-
-
--->
-
-
-
+> With this approach, data is stored in a volume, not in a `pmm-data` container.
 
 
 [TAGS]: https://hub.docker.com/r/percona/pmm-server/tags
 [DOCKERHUB]: https://hub.docker.com/r/percona/pmm-server
 [DOCKER_COMPOSE]: https://docs.docker.com/compose/
-[DOCKER_SWARM]: https://docs.docker.com/network/network-tutorial-overlay/#use-an-overlay-network-for-standalone-containers
+[DOCKER_OVERLAY]: https://docs.docker.com/network/network-tutorial-overlay/#use-an-overlay-network-for-standalone-containers
+[PMMC_COMPOSE]: ../client/index.md#setting-up-client-docker-compose
