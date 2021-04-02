@@ -262,14 +262,14 @@ You can now add services with [`pmm-admin`](../../details/commands/pmm-admin.md)
     docker node ls --filter role=worker
     ```
 
-1. (Optional) Check connectivity. Run an Alpine Linux container and ping PMM Server by container name.
+2. (Optional) Check connectivity. Run an Alpine Linux container and ping PMM Server by container name.
 
     ```sh
     docker run -it --rm --name test --network pmm_net alpine ash
     ping -c 3 pmm-server
     ```
 
-1. Copy and paste this text into a file called `docker-compose.yml`.
+3. Copy and paste this text into a file called `docker-compose.yml`.
 
     ```yaml
     version: '3.6'
@@ -300,26 +300,26 @@ You can now add services with [`pmm-admin`](../../details/commands/pmm-admin.md)
         entrypoint: pmm-agent setup
     ```
 
-2. Ensure a writable agent configuration file.
+4. Ensure a writable agent configuration file.
 
     ```sh
     touch pmm-agent.yaml && chmod 0666 pmm-agent.yaml
     ```
 
-3. Run the PMM Agent setup. This will run and stop.
+5. Run the PMM Agent setup. This will run and stop.
 
     ```sh
     docker-compose -p pmm up
     ```
 
-4. Edit `docker-compose.yml`, comment out the `entrypoint` line (insert a `#`) and save.
+6. Edit `docker-compose.yml`, comment out the `entrypoint` line (insert a `#`) and save.
 
     ```
     ...
     #        entrypoint: pmm-agent setup
     ```
 
-5. Run PMM Client.
+7. Run PMM Client.
 
     ```sh
     docker-compose -p pmm up --detach

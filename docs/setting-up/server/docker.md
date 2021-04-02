@@ -141,7 +141,7 @@ You can test a new release of the PMM Server Docker image by making backups of y
 
     The output displays a `docker swarm join ...`command. Copy it and run it in a terminal on the PMM Client host to connect it to the swarm. (See [Run PMM Client with Docker compose][PMMC_COMPOSE].)
 
-1. Copy and paste this text into a file called `docker-compose.yml`.
+2. Copy and paste this text into a file called `docker-compose.yml`.
 
     ```
     version: '3.6'
@@ -172,13 +172,13 @@ You can test a new release of the PMM Server Docker image by making backups of y
         driver: overlay
     ```
 
-1. Run:
+3. Run:
 
     ```sh
     docker-compose -p pmm up --detach
     ```
 
-3. Access PMM Server on <https://localhost:443>
+4. Access PMM Server on <https://localhost:443>
 
 > With this approach, data is stored in a volume, not in a `pmm-data` container.
 
