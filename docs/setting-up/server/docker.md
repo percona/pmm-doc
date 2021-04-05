@@ -7,6 +7,7 @@ We maintain a [Docker image for PMM Server][DOCKERHUB]. This section shows how t
 **Software**
 
 - [Docker](https://docs.docker.com/get-docker/) 1.12.6 or higher.
+- (Optional) [`docker-compose`](https://docs.docker.com/compose/install/)
 
 ## Running PMM Server as a Docker container
 
@@ -133,13 +134,21 @@ You can test a new release of the PMM Server Docker image by making backups of y
 
 <!-- thanks: https://gist.github.com/paskal -->
 
-1. (Optional) If running both PMM Server and PMM Client via docker compose, use an [overlay network][DOCKER_OVERLAY] with Docker swarm to allow network connections with container names rather than IP addresses.
+> With this approach, data is stored in a volume, not in a `pmm-data` container.
+
+1. If running PMM Server and PMM Client on separate Docker daemons, use an [overlay network][DOCKER_OVERLAY] with Docker swarm to allow network connections with container names rather than IP addresses.
 
     ```sh
     docker swarm init
     ```
 
-    The output displays a `docker swarm join ...`command. Copy it and run it in a terminal on the PMM Client host to connect it to the swarm. (See [Run PMM Client with Docker compose][PMMC_COMPOSE].)
+    The output displays a `docker swarm join --token ...`command.
+
+    Copy it and run it in a terminal on the PMM Client host to connect it to the swarm. (See [Run PMM Client with Docker compose][PMMC_COMPOSE].) When done, on the PMM Server host, check the PMM Client hostname is listed as a member of the swarm:
+
+    ```sh
+    docker node ls --filter role=worker
+    ```
 
 2. Copy and paste this text into a file called `docker-compose.yml`.
 
@@ -159,6 +168,9 @@ You can test a new release of the PMM Server Docker image by making backups of y
             max-file: "5"
         ports:
           - "443:443"
+        networks:
+          - default
+          - net
         volumes:
           - data:/srv
 
@@ -178,9 +190,17 @@ You can test a new release of the PMM Server Docker image by making backups of y
     docker-compose -p pmm up --detach
     ```
 
-4. Access PMM Server on <https://localhost:443>
+4. Access PMM Server on <https://X.X.X.X:443> where `X.X.X.X` is the IP address of the host.
 
-> With this approach, data is stored in a volume, not in a `pmm-data` container.
+
+To stop the server
+
+```sh
+docker-compose -p pmm down
+```
+
+> **See also** [Run PMM Client with Docker compose][PMMC_COMPOSE]
+
 
 
 [TAGS]: https://hub.docker.com/r/percona/pmm-server/tags
