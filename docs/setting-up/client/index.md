@@ -255,21 +255,23 @@ You can now add services with [`pmm-admin`](../../details/commands/pmm-admin.md)
 
 <!-- thanks: https://gist.github.com/paskal -->
 
-1. (Optional) If connecting to a [PMM Server running with Docker compose][PMMS_COMPOSE], join your PMM Client host to the Docker swarm. When done, on the PMM Server host, check the PMM Client is connected to the swarm:
-
-    ```sh
-    # Run on PMM Server swarm manager
-    docker node ls --filter role=worker
-    ```
+1. If connecting to a [PMM Server running with Docker compose][PMMS_COMPOSE], ensure your PMM Client host is joined to the Docker swarm.
 
 2. (Optional) Check connectivity. Run an Alpine Linux container and ping PMM Server by container name.
 
     ```sh
     docker run -it --rm --name test --network pmm_net alpine ash
+    ```
+
+    At the Alpine container prompt:
+
+    ```sh
     ping -c 3 pmm-server
     ```
 
-3. Copy and paste this text into a file called `docker-compose.yml`.
+3. Copy and paste this text into a file called `docker-compose.yml`. Check the values in the `environment` section match those for your PMM Server.
+
+    > Use unique hostnames across all PMM Clients (value for `services.pmm-client.hostname`).
 
     ```yaml
     version: '3.6'
@@ -312,27 +314,53 @@ You can now add services with [`pmm-admin`](../../details/commands/pmm-admin.md)
     docker-compose -p pmm up
     ```
 
-6. Edit `docker-compose.yml`, comment out the `entrypoint` line (insert a `#`) and save.
+6. (Optional) Check the values in the `pmm-agent.yaml` file.
+
+    ```sh
+    cat pmm-agent.yaml
+    ```
+
+7. Edit `docker-compose.yml`, comment out the `entrypoint` line (insert a `#`) and save.
 
     ```
     ...
     #        entrypoint: pmm-agent setup
     ```
 
-7. Run PMM Client.
+8. Run PMM Client.
 
     ```sh
     docker-compose -p pmm up --detach
     ```
 
 
-> **Notes**
->
-> Use unique hostnames across all PMM Clients (value for `services.pmm-client.hostname`).
->
-> `pmm-agent.yaml` contains sensitive credentials and should not be shared.
+To stop PMM Client:
 
+```sh
+docker-compose -p pmm down
+```
 
+> **Important** `pmm-agent.yaml` contains sensitive credentials and should not be shared.
+
+<!--
+Troubleshooting
+
+1) Can't ping server from client
+a) - Is client still member of swarm? Check status with
+docker node ls --filter role=worker
+Status should be 'Ready', availability 'Active'
+See https://docs.docker.com/engine/reference/commandline/swarm/
+b) Check firewall
+
+2) "Failed to register pmm-agent on PMM Server: Node with name "pmm-client-myhost" already exists"
+Change name of host in docker-compose file
+
+3) "docker: Error response from daemon: attaching to network failed, make sure your network options are correct and check manager logs: context deadline exceeded."
+a) Try again. VMware network issues.
+b) Has client host restarted? Leave/join swarm. On leader, clean up old with docker node rm ID
+c) Increase VM memory > 2048
+
+-->
 
 ## Register node with PMM Server {: #register }
 
