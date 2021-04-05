@@ -152,7 +152,7 @@ You can test a new release of the PMM Server Docker image by making backups of y
 
 2. Copy and paste this text into a file called `docker-compose.yml`.
 
-    ```
+    ```yaml
     version: '3.6'
 
     services:
