@@ -314,7 +314,7 @@ You can now add services with [`pmm-admin`](../../details/commands/pmm-admin.md)
 8. Run PMM Client.
 
     ```sh
-    docker-compose -p pmm up --detach
+    docker-compose -p pmm up
     ```
 
 
