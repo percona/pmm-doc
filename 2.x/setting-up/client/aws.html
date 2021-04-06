@@ -52,7 +52,7 @@
 </head>
 
 <body>
-	<!-- 2021-04-06 05:36:03.574625+00:00 -->
+	<!-- 2021-04-06 05:39:22.517702+00:00 -->
     
 <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.3/css/line.css" type="text/css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" type="text/css">
@@ -255,26 +255,27 @@ database user name and password.</p>
 <p>Finally press the <em>Add service</em> button to start monitoring your instance.</p>
 </li>
 </ol>
-<h2 id="adding-an-amazon-rds-postgresql-instance">Adding an Amazon RDS PostgreSQL instance<a class="headerlink" href="#adding-an-amazon-rds-postgresql-instance" title="Permanent link">&para;</a></h2>
-<p>For PostgreSQL, use the same method described above.</p>
-<ol>
-<li>
-<p>In the PMM web interface, go to <em>PMM &gt; PMM Add Instance</em>.</p>
-</li>
-<li>
-<p>Select <em>AWS RDS MySQL or Aurora MySQL &ndash; Add a remote instance</em>.
-    <em>At the moment of writing this guide, the Add button doesn&rsquo;t mention PostgreSQL but the discovery function already supports it.</em></p>
-<p><img alt="image" src="../../_images/PMM_rds_postgre_02_discover.png" /></p>
-</li>
-<li>
-<p>Follow steps 4 to 6 as in the previous section. Fill the form and remember to select <code>PG Stat Statement</code> to enable Query Analytics.
-    To get queries for Query Analytics, you need to enable <code>pg_stat_statements</code> in your instance by running:</p>
-<div class="highlight"><pre><span></span><code>CREATE EXTENSION pg_stat_statements SCHEMA public;
+<!--
+## Adding an Amazon RDS PostgreSQL instance
+
+For PostgreSQL, use the same method described above.
+
+1. In the PMM web interface, go to *PMM > PMM Add Instance*.
+
+2. Select *AWS RDS MySQL or Aurora MySQL -- Add a remote instance*.
+    *At the moment of writing this guide, the Add button doesn't mention PostgreSQL but the discovery function already supports it.*
+
+    ![image](../../_images/PMM_rds_postgre_02_discover.png)
+
+4. Follow steps 4 to 6 as in the previous section. Fill the form and remember to select `PG Stat Statement` to enable Query Analytics.
+    To get queries for Query Analytics, you need to enable `pg_stat_statements` in your instance by running:
+
+    <div class="highlight"><pre><span></span><code>CREATE EXTENSION pg_stat_statements SCHEMA public;
 </code></pre></div>
-<p><img alt="image" src="../../_images/PMM_rds_postgre_03_form_1.png" />
-<img alt="image" src="../../_images/PMM_rds_postgre_04_add_btn.png" /></p>
-</li>
-</ol>
+
+    ![image](../../_images/PMM_rds_postgre_03_form_1.png)
+    ![image](../../_images/PMM_rds_postgre_04_add_btn.png)
+-->
                     </div>
                 </div>
                 
@@ -282,7 +283,7 @@ database user name and password.</p>
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-03-31
+            <i class="uil uil-refresh"></i> Page updated 2021-04-06
         </li>
         
     </ul>
