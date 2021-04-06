@@ -255,27 +255,11 @@ You can now add services with [`pmm-admin`](../../details/commands/pmm-admin.md)
 
 <!-- thanks: https://gist.github.com/paskal -->
 
-1. If connecting to a [PMM Server running with Docker compose][PMMS_COMPOSE], ensure your PMM Client host is joined to the Docker swarm.
-
-2. (Optional) Check connectivity. Run an Alpine Linux container and ping PMM Server by container name.
-
-    ```sh
-    docker run -it --rm --name test --network pmm_net alpine ash
-    ```
-
-    At the Alpine container prompt:
-
-    ```sh
-    ping -c 3 pmm-server
-    ```
-
-3. Copy and paste this text into a file called `docker-compose.yml`. Check the values in the `environment` section match those for your PMM Server.
-
+1. Copy and paste this text into a file called `docker-compose.yml`. Check the values in the `environment` section match those for your PMM Server. `X.X.X.X` is the IP address of your PMM Server.
     > Use unique hostnames across all PMM Clients (value for `services.pmm-client.hostname`).
 
     ```yaml
-    version: '3.6'
-
+    version: '3'
     services:
       pmm-client:
         image: percona/pmm-client:2
@@ -297,12 +281,12 @@ You can now add services with [`pmm-admin`](../../details/commands/pmm-admin.md)
           - PMM_AGENT_CONFIG_FILE=/etc/pmm-agent.yaml
           - PMM_AGENT_SERVER_USERNAME=admin
           - PMM_AGENT_SERVER_PASSWORD=admin
-          - PMM_AGENT_SERVER_ADDRESS=pmm-server:443
+          - PMM_AGENT_SERVER_ADDRESS=X.X.X.X:443
           - PMM_AGENT_SERVER_INSECURE_TLS=true
         entrypoint: pmm-agent setup
     ```
 
-4. Ensure a writable agent configuration file.
+2. Ensure a writable agent configuration file.
 
     ```sh
     touch pmm-agent.yaml && chmod 0666 pmm-agent.yaml

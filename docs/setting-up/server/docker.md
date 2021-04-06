@@ -136,25 +136,10 @@ You can test a new release of the PMM Server Docker image by making backups of y
 
 > With this approach, data is stored in a volume, not in a `pmm-data` container.
 
-1. If running PMM Server and PMM Client on separate Docker daemons, use an [overlay network][DOCKER_OVERLAY] with Docker swarm to allow network connections with container names rather than IP addresses.
-
-    ```sh
-    docker swarm init
-    ```
-
-    The output displays a `docker swarm join --token ...`command.
-
-    Copy it and run it in a terminal on the PMM Client host to connect it to the swarm. (See [Run PMM Client with Docker compose][PMMC_COMPOSE].) When done, on the PMM Server host, check the PMM Client hostname is listed as a member of the swarm:
-
-    ```sh
-    docker node ls --filter role=worker
-    ```
-
-2. Copy and paste this text into a file called `docker-compose.yml`.
+1. Copy and paste this text into a file called `docker-compose.yml`.
 
     ```yaml
-    version: '3.6'
-
+    version: '3'
     services:
       pmm-server:
         image: percona/pmm-server:2
@@ -168,20 +153,10 @@ You can test a new release of the PMM Server Docker image by making backups of y
             max-file: "5"
         ports:
           - "443:443"
-        networks:
-          - default
-          - net
         volumes:
           - data:/srv
-
     volumes:
       data:
-
-    networks:
-      default:
-        driver: bridge
-      net:
-        driver: overlay
     ```
 
 3. Run:
