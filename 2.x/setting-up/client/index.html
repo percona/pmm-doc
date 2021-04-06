@@ -52,7 +52,7 @@
 </head>
 
 <body>
-	<!-- 2021-04-06 05:39:22.501739+00:00 -->
+	<!-- 2021-04-06 07:55:06.119783+00:00 -->
     
 <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.3/css/line.css" type="text/css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" type="text/css">
@@ -133,6 +133,7 @@
 <li>You have superuser (root) access on the client host.</li>
 <li>You have superuser access to any database servers that you want to monitor.</li>
 <li>These Linux packages are installed: <code>curl</code>, <code>gnupg</code>, <code>sudo</code>, <code>wget</code>.</li>
+<li>If using Docker, <a href="https://docs.docker.com/get-docker/">install it</a>.</li>
 </ul>
 <!--
     Credentials used in communication between the exporters and the PMM Server are the following ones:
@@ -305,6 +306,93 @@ pmm-admin status
 </code></pre></div></li>
 </ul>
 </blockquote>
+<h2 id="docker-compose">Run PMM Client with Docker compose<a class="headerlink" href="#docker-compose" title="Permanent link">&para;</a></h2>
+<!-- thanks: https://gist.github.com/paskal -->
+
+<ol>
+<li>
+<p>Copy and paste this text into a file called <code>docker-compose.yml</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span> <span class="s">&#39;2&#39;</span>
+<span class="nt">services</span><span class="p">:</span>
+  <span class="nt">pmm-client</span><span class="p">:</span>
+    <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">percona/pmm-client:2</span>
+    <span class="nt">hostname</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">pmm-client-myhost</span>
+    <span class="nt">container_name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">pmm-client</span>
+    <span class="nt">restart</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">always</span>
+    <span class="nt">ports</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="s">&quot;42000:42000&quot;</span>
+      <span class="p p-Indicator">-</span> <span class="s">&quot;42001:42001&quot;</span>
+    <span class="nt">logging</span><span class="p">:</span>
+      <span class="nt">driver</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">json-file</span>
+      <span class="nt">options</span><span class="p">:</span>
+        <span class="nt">max-size</span><span class="p">:</span> <span class="s">&quot;10m&quot;</span>
+        <span class="nt">max-file</span><span class="p">:</span> <span class="s">&quot;5&quot;</span>
+    <span class="nt">volumes</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">./pmm-agent.yaml:/etc/pmm-agent.yaml</span>
+    <span class="nt">environment</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">PMM_AGENT_CONFIG_FILE=/etc/pmm-agent.yaml</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">PMM_AGENT_SERVER_USERNAME=admin</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">PMM_AGENT_SERVER_PASSWORD=admin</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">PMM_AGENT_SERVER_ADDRESS=X.X.X.X:443</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">PMM_AGENT_SERVER_INSECURE_TLS=true</span>
+    <span class="nt">entrypoint</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">pmm-agent setup</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li>
+<p>Check the values in the <code>environment</code> section match those for your PMM Server. (<code>X.X.X.X</code> is the IP address of your PMM Server.)</p>
+</li>
+<li>
+<p>Use unique hostnames across all PMM Clients (value for <code>services.pmm-client.hostname</code>).</p>
+</li>
+</ul>
+</blockquote>
+</li>
+<li>
+<p>Ensure a writable agent configuration file.</p>
+<div class="highlight"><pre><span></span><code>touch pmm-agent.yaml <span class="o">&amp;&amp;</span> chmod <span class="m">0666</span> pmm-agent.yaml
+</code></pre></div>
+</li>
+<li>
+<p>Run the PMM Agent setup. This will run and stop.</p>
+<div class="highlight"><pre><span></span><code>sudo docker-compose up
+</code></pre></div>
+</li>
+<li>
+<p>Edit <code>docker-compose.yml</code>, comment out the <code>entrypoint</code> line (insert a <code>#</code>) and save.</p>
+<div class="highlight"><pre><span></span><code><span class="nn">...</span>
+<span class="c1">#        entrypoint: pmm-agent setup</span>
+</code></pre></div>
+</li>
+<li>
+<p>Run again.</p>
+<div class="highlight"><pre><span></span><code>sudo docker-compose up
+</code></pre></div>
+</li>
+</ol>
+<blockquote>
+<p><b style="color:goldenrod">Caution</b> <code>pmm-agent.yaml</code> contains sensitive credentials and should not be shared.</p>
+</blockquote>
+<!--
+Troubleshooting
+
+1) Can't ping server from client
+a) - Is client still member of swarm? Check status with
+docker node ls --filter role=worker
+Status should be 'Ready', availability 'Active'
+See https://docs.docker.com/engine/reference/commandline/swarm/
+b) Check firewall
+
+2) "Failed to register pmm-agent on PMM Server: Node with name "pmm-client-myhost" already exists"
+Change name of host in docker-compose file
+
+3) "docker: Error response from daemon: attaching to network failed, make sure your network options are correct and check manager logs: context deadline exceeded."
+a) Try again. VMware network issues.
+b) Has client host restarted? Leave/join swarm. On leader, clean up old with docker node rm ID
+c) Increase VM memory > 2048
+
+-->
+
 <h2 id="register">Register node with PMM Server<a class="headerlink" href="#register" title="Permanent link">&para;</a></h2>
 <p>Register your node (<code>X.X.X.X</code> is the IP address of your PMM Server).</p>
 <div class="highlight"><pre><span></span><code>pmm-admin config --server-insecure-tls --server-url<span class="o">=</span>https://admin:admin@X.X.X.X:443
@@ -337,6 +425,9 @@ pmm-admin status
 <li>
 <p><a href="../../details/architecture.html#pmm-client">PMM Client architecture</a></p>
 </li>
+<li>
+<p><a href="https://gist.github.com/paskal/48f10a0a584f4849be6b0889ede9262b">Thanks to https://gist.github.com/paskal for Docker compose files</a></p>
+</li>
 </ul>
 </blockquote>
                     </div>
@@ -346,7 +437,7 @@ pmm-admin status
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-03-31
+            <i class="uil uil-refresh"></i> Page updated 2021-04-06
         </li>
         
     </ul>
