@@ -139,7 +139,7 @@ You can test a new release of the PMM Server Docker image by making backups of y
 1. Copy and paste this text into a file called `docker-compose.yml`.
 
     ```yaml
-    version: '3'
+    version: '2'
     services:
       pmm-server:
         image: percona/pmm-server:2

@@ -259,7 +259,7 @@ You can now add services with [`pmm-admin`](../../details/commands/pmm-admin.md)
     > Use unique hostnames across all PMM Clients (value for `services.pmm-client.hostname`).
 
     ```yaml
-    version: '3'
+    version: '2'
     services:
       pmm-client:
         image: percona/pmm-client:2
