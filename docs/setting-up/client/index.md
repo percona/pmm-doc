@@ -295,7 +295,7 @@ You can now add services with [`pmm-admin`](../../details/commands/pmm-admin.md)
 5. Run the PMM Agent setup. This will run and stop.
 
     ```sh
-    docker-compose -p pmm up
+    docker-compose up
     ```
 
 6. (Optional) Check the values in the `pmm-agent.yaml` file.
@@ -314,14 +314,14 @@ You can now add services with [`pmm-admin`](../../details/commands/pmm-admin.md)
 8. Run PMM Client.
 
     ```sh
-    docker-compose -p pmm up
+    docker-compose up
     ```
 
 
 To stop PMM Client:
 
 ```sh
-docker-compose -p pmm down
+docker-compose down
 ```
 
 > **Important** `pmm-agent.yaml` contains sensitive credentials and should not be shared.

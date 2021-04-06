@@ -162,7 +162,7 @@ You can test a new release of the PMM Server Docker image by making backups of y
 3. Run:
 
     ```sh
-    docker-compose -p pmm up
+    docker-compose up
     ```
 
 4. Access PMM Server on <https://X.X.X.X:443> where `X.X.X.X` is the IP address of the host.
@@ -171,7 +171,7 @@ You can test a new release of the PMM Server Docker image by making backups of y
 To stop the server
 
 ```sh
-docker-compose -p pmm down
+docker-compose down
 ```
 
 > **See also** [Run PMM Client with Docker compose][PMMC_COMPOSE]
