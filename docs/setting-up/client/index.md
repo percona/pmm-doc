@@ -251,12 +251,11 @@ You can now add services with [`pmm-admin`](../../details/commands/pmm-admin.md)
 > docker run --rm percona/pmm-client:2 --help
 > ```
 
-## Run PMM Client with Docker compose {: #setting-up-client-docker-compose }
+## Run PMM Client with Docker compose {: #docker-compose }
 
 <!-- thanks: https://gist.github.com/paskal -->
 
-1. Copy and paste this text into a file called `docker-compose.yml`. Check the values in the `environment` section match those for your PMM Server. `X.X.X.X` is the IP address of your PMM Server.
-    > Use unique hostnames across all PMM Clients (value for `services.pmm-client.hostname`).
+1. Copy and paste this text into a file called `docker-compose.yml`.
 
     ```yaml
     version: '2'
@@ -269,7 +268,6 @@ You can now add services with [`pmm-admin`](../../details/commands/pmm-admin.md)
         ports:
           - "42000:42000"
           - "42001:42001"
-        network_mode: "pmm_net"
         logging:
           driver: json-file
           options:
@@ -286,45 +284,36 @@ You can now add services with [`pmm-admin`](../../details/commands/pmm-admin.md)
         entrypoint: pmm-agent setup
     ```
 
+    > - Check the values in the `environment` section match those for your PMM Server. (`X.X.X.X` is the IP address of your PMM Server.)
+    >
+    > - Use unique hostnames across all PMM Clients (value for `services.pmm-client.hostname`).
+
 2. Ensure a writable agent configuration file.
 
     ```sh
     touch pmm-agent.yaml && chmod 0666 pmm-agent.yaml
     ```
 
-5. Run the PMM Agent setup. This will run and stop.
+3. Run the PMM Agent setup. This will run and stop.
 
     ```sh
-    docker-compose up
+    sudo docker-compose up
     ```
 
-6. (Optional) Check the values in the `pmm-agent.yaml` file.
+4. Edit `docker-compose.yml`, comment out the `entrypoint` line (insert a `#`) and save.
 
-    ```sh
-    cat pmm-agent.yaml
-    ```
-
-7. Edit `docker-compose.yml`, comment out the `entrypoint` line (insert a `#`) and save.
-
-    ```
+    ```yaml
     ...
     #        entrypoint: pmm-agent setup
     ```
 
-8. Run PMM Client.
+5. Run again.
 
     ```sh
-    docker-compose up
+    sudo docker-compose up
     ```
 
-
-To stop PMM Client:
-
-```sh
-docker-compose down
-```
-
-> **Important** `pmm-agent.yaml` contains sensitive credentials and should not be shared.
+> <b style="color:goldenrod">Caution</b> `pmm-agent.yaml` contains sensitive credentials and should not be shared.
 
 <!--
 Troubleshooting
