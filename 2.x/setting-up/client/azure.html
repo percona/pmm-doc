@@ -52,7 +52,7 @@
 </head>
 
 <body>
-	<!-- 2021-04-05 11:06:01.020601+00:00 -->
+	<!-- 2021-04-06 05:36:03.596084+00:00 -->
     
 <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.3/css/line.css" type="text/css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" type="text/css">
@@ -134,63 +134,68 @@ won&rsquo;t receive any query data.</p>
 <p>For Query Analytics, set the server parameter:</p>
 <div class="highlight"><pre><span></span><code><span class="na">pg_stat_statements.track</span> <span class="o">=</span> <span class="s">all</span>
 </code></pre></div>
-<h2 id="to-discover-databases-on-azure">To discover databases on Azure<a class="headerlink" href="#to-discover-databases-on-azure" title="Permanent link">&para;</a></h2>
-<p>You need to get the Client ID, Client Secret, Tenant ID and Subscription ID.</p>
-<p><img alt="" src="../../_images/PMM_Add_Instance_Azure_1.png" /></p>
-<p>You can follow the steps here: <a href="https://www.inkoop.io/blog/how-to-get-azure-api-credentials/">https://www.inkoop.io/blog/how-to-get-azure-api-credentials/</a></p>
-<p>Navigate to:</p>
-<ul>
-<li>Create an application in Azure Active directory. <a href="https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview">https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview</a></li>
-<li>Get the subscription ID.</li>
-<li>Get the tenant ID.</li>
-<li>Get the client ID.</li>
-<li>Get the client secret.</li>
-</ul>
-<p>When you fill in all fields press the <em>Discover</em> button and you will see a list of available databases for monitoring.</p>
-<p><img alt="" src="../../_images/PMM_Add_Instance_Azure_2.png" /></p>
-<p>You can monitor 6 types of databases:</p>
-<ul>
-<li>Microsoft.DBforMySQL/servers</li>
-<li>Microsoft.DBforMySQL/flexibleServers</li>
-<li>Microsoft.DBforMariaDB/servers</li>
-<li>Microsoft.DBforPostgreSQL/servers</li>
-<li>Microsoft.DBforPostgreSQL/flexibleServers</li>
-<li>Microsoft.DBforPostgreSQL/serversv2</li>
-</ul>
-<p>You can find more details on how to create DB on Azure at:</p>
-<ul>
-<li><a href="https://docs.microsoft.com/en-us/azure/postgresql/">https://docs.microsoft.com/en-us/azure/postgresql/</a></li>
-<li><a href="https://docs.microsoft.com/en-us/azure/mysql/">https://docs.microsoft.com/en-us/azure/mysql/</a></li>
-</ul>
-<blockquote>
-<p>You will need to set <code>pg_stat_statements.track = all</code> in you PostgreSQL Server settings to use PMM Query Analytics</p>
-</blockquote>
-<p><img alt="" src="../../_images/PMM_Add_Instance_Azure_3.png" /></p>
-<p>In the list of databases on the Discovery page click <em>Start Monitoring</em> to add the selected Azure Database to PMM.</p>
-<p>Fill in all required fields and click <em>Add service</em>.</p>
-<p><img alt="" src="../../_images/PMM_Add_Instance_Azure_4.png" /></p>
-<p>PMM can use 3 exporters to collect metrics:</p>
-<ul>
-<li>
-<p>Azure Metrics Exporter – collect &ldquo;system&rdquo; metrics related to DB.</p>
-<ul>
-<li><code>node_cpu_average</code></li>
-<li><code>azure_resource_info</code></li>
-<li><code>node_filesystem_size_bytes</code></li>
-<li><code>azure_memory_percent_average</code></li>
-<li><code>azure_storage_percent_average</code></li>
-<li><code>azure_storage_used_bytes_average</code></li>
-<li><code>node_network_receive_bytes_total</code></li>
-<li><code>node_network_transmit_bytes_total</code></li>
-</ul>
-</li>
-<li>
-<p><code>mysql_exporter</code> or <code>postgres_exporter</code> – to collect database related metrics.</p>
-</li>
-<li>
-<p>PMM Agent to collect queries related metrics using pg_stat_statements for PostgreSQL or Performance Schema for MySQL (MariaDB)</p>
-</li>
-</ul>
+<!--
+## To discover databases on Azure
+
+You need to get the Client ID, Client Secret, Tenant ID and Subscription ID.
+
+![](../../_images/PMM_Add_Instance_Azure_1.png)
+
+You can follow the steps here: <https://www.inkoop.io/blog/how-to-get-azure-api-credentials/>
+
+Navigate to:
+
+- Create an application in Azure Active directory. <https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview>
+- Get the subscription ID.
+- Get the tenant ID.
+- Get the client ID.
+- Get the client secret.
+
+When you fill in all fields press the *Discover* button and you will see a list of available databases for monitoring.
+
+![](../../_images/PMM_Add_Instance_Azure_2.png)
+
+You can monitor 6 types of databases:
+
+- Microsoft.DBforMySQL/servers
+- Microsoft.DBforMySQL/flexibleServers
+- Microsoft.DBforMariaDB/servers
+- Microsoft.DBforPostgreSQL/servers
+- Microsoft.DBforPostgreSQL/flexibleServers
+- Microsoft.DBforPostgreSQL/serversv2
+
+You can find more details on how to create DB on Azure at:
+
+- <https://docs.microsoft.com/en-us/azure/postgresql/>
+- <https://docs.microsoft.com/en-us/azure/mysql/>
+
+> You will need to set `pg_stat_statements.track = all` in you PostgreSQL Server settings to use PMM Query Analytics
+
+![](../../_images/PMM_Add_Instance_Azure_3.png)
+
+In the list of databases on the Discovery page click *Start Monitoring* to add the selected Azure Database to PMM.
+
+Fill in all required fields and click *Add service*.
+
+![](../../_images/PMM_Add_Instance_Azure_4.png)
+
+PMM can use 3 exporters to collect metrics:
+
+- Azure Metrics Exporter – collect "system" metrics related to DB.
+
+    - `node_cpu_average`
+    - `azure_resource_info`
+    - `node_filesystem_size_bytes`
+    - `azure_memory_percent_average`
+    - `azure_storage_percent_average`
+    - `azure_storage_used_bytes_average`
+    - `node_network_receive_bytes_total`
+    - `node_network_transmit_bytes_total`
+
+- `mysql_exporter` or `postgres_exporter` – to collect database related metrics.
+
+- PMM Agent to collect queries related metrics using pg_stat_statements for PostgreSQL or Performance Schema for MySQL (MariaDB)
+-->
                     </div>
                 </div>
                 
@@ -198,7 +203,7 @@ won&rsquo;t receive any query data.</p>
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-04-02
+            <i class="uil uil-refresh"></i> Page updated 2021-04-06
         </li>
         
     </ul>
