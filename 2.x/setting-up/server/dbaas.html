@@ -50,7 +50,7 @@
 </head>
 
 <body>
-	<!-- 2021-04-07 09:19:27.125586+00:00 -->
+	<!-- 2021-04-07 10:39:41.550650+00:00 -->
     
 <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.3/css/line.css" type="text/css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" type="text/css">
@@ -178,9 +178,9 @@ minikube start
 <span class="nv">PMM_PASS_B64</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span><span class="nb">echo</span> -n <span class="s2">&quot;</span><span class="si">${</span><span class="nv">PMM_PASS</span><span class="si">}</span><span class="s2">&quot;</span> <span class="p">|</span> base64<span class="k">)</span><span class="s2">&quot;</span><span class="p">;</span>
 
 <span class="c1"># Install the PXC operator</span>
-curl -sSf -m <span class="m">30</span> https://raw.githubusercontent.com/percona/percona-xtradb-cluster-operator/v1.7.0/deploy/bundle.yaml <span class="se">\</span>
+curl -sSf -m <span class="m">30</span> https://raw.githubusercontent.com/percona/percona-xtradb-cluster-operator/K8SPXC-668-CUSTOM/deploy/bundle.yaml <span class="se">\</span>
 <span class="p">|</span> kubectl apply -f -
-curl -sSf -m <span class="m">30</span> https://raw.githubusercontent.com/percona/percona-xtradb-cluster-operator/v1.7.0/deploy/secrets.yaml <span class="se">\</span>
+curl -sSf -m <span class="m">30</span> https://raw.githubusercontent.com/percona/percona-xtradb-cluster-operator/K8SPXC-668-CUSTOM/deploy/secrets.yaml <span class="se">\</span>
 <span class="p">|</span> sed <span class="s2">&quot;s/pmmserver:.*/pmmserver: </span><span class="si">${</span><span class="nv">PMM_PASS</span><span class="si">}</span><span class="s2">/g&quot;</span> <span class="se">\</span>
 <span class="p">|</span> kubectl apply -f -
 
@@ -226,9 +226,9 @@ minikube kubectl -- <span class="nb">wait</span> --for<span class="o">=</span><s
 <span class="nv">PMM_PASS_B64</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span><span class="nb">echo</span> -n <span class="s2">&quot;</span><span class="si">${</span><span class="nv">PMM_PASS</span><span class="si">}</span><span class="s2">&quot;</span> <span class="p">|</span> base64<span class="k">)</span><span class="s2">&quot;</span><span class="p">;</span>
 
 <span class="c1"># Install the PXC operator</span>
-curl -sSf -m <span class="m">30</span> https://raw.githubusercontent.com/percona/percona-xtradb-cluster-operator/v1.7.0/deploy/bundle.yaml <span class="se">\</span>
+curl -sSf -m <span class="m">30</span> https://raw.githubusercontent.com/percona/percona-xtradb-cluster-operator/K8SPXC-668-CUSTOM/deploy/bundle.yaml <span class="se">\</span>
 <span class="p">|</span> kubectl apply -f -
-curl -sSf -m <span class="m">30</span> https://raw.githubusercontent.com/percona/percona-xtradb-cluster-operator/v1.7.0/deploy/secrets.yaml <span class="se">\</span>
+curl -sSf -m <span class="m">30</span> https://raw.githubusercontent.com/percona/percona-xtradb-cluster-operator/K8SPXC-668-CUSTOM/deploy/secrets.yaml <span class="se">\</span>
 <span class="p">|</span> sed <span class="s2">&quot;s/pmmserver:.*/pmmserver: </span><span class="si">${</span><span class="nv">PMM_PASS</span><span class="si">}</span><span class="s2">/g&quot;</span> <span class="se">\</span>
 <span class="p">|</span> kubectl apply -f -
 
