@@ -10,11 +10,9 @@ edit_uri: edit/main/docs/
 use_directory_urls: false
 
 # Custom theme for uploading to percona.com website
-# Override on command line with 'mkdocs build -t <theme>'
-# See https://github.com/mkdocs/mkdocs/wiki/MkDocs-Themes
 theme:
-    name: material
-
+  name: material
+  custom_dir: _resources/theme
 
 extra_css:
   - https://unicons.iconscout.com/release/v3.0.3/css/line.css
@@ -31,9 +29,6 @@ markdown_extensions:
   - attr_list
   - toc:
       permalink: True
-#      anchorlink: True # Causes blank headings in PDF
-#        baselevel: 1
-#        toc_depth: "2-3"
   - admonition
   - def_list   # https://michelf.ca/projects/php-markdown/extra/#def-list
   - meta
