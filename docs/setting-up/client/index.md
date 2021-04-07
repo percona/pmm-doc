@@ -240,21 +240,21 @@ You can now add services with [`pmm-admin`](../../details/commands/pmm-admin.md)
 
 1. Stop pmm-client container.
 
-   ```sh
-   docker stop pmm-client
-   ```
+    ```sh
+    docker stop pmm-client
+    ```
 
 2. Remove containers.
 
-   ```sh
-   docker rm pmm-client
-   ```
+    ```sh
+    docker rm pmm-client
+    ```
 
 3. Remove the image.
 
-   ```sh
-   docker rmi $(docker images | grep "percona/pmm-client" | awk {'print $3'})
-   ``` 
+    ```sh
+    docker rmi $(docker images | grep "percona/pmm-client" | awk {'print $3'})
+    ```
 
 ## Run PMM Client with Docker compose {: #docker-compose }
 
