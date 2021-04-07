@@ -14,7 +14,7 @@ use_directory_urls: false
 # See https://github.com/mkdocs/mkdocs/wiki/MkDocs-Themes
 theme:
     name: material
-
+    custom_dir: _resources/theme
 
 extra_css:
   - https://unicons.iconscout.com/release/v3.0.3/css/line.css
