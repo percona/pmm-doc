@@ -173,10 +173,34 @@ sudo dnf localinstall *.rpm
 	pmm-admin status
 	```
 
+## Remove PMM Client with a package manager {: #remove-package-manager }
 
+### Remove on Debian-based distributions
 
+1. Deinstall the PMM Client package.
 
+    ```sh
+    sudo apt remove -y pmm2-client
+    ```
+2. Remove the Percona repository
 
+    ```sh
+    sudo dpkg -r percona-release
+    ```
+
+### Remove on Red Hat-based distributions
+
+1. Deinstall the PMM Client package.
+
+    ```sh
+    sudo yum remove -y pmm2-client
+    ```
+
+2. Remove the Percona repository
+
+    ```sh
+    sudo yum remove -y percona-release
+    ```
 
 
 
