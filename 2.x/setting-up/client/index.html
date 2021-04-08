@@ -52,7 +52,7 @@
 </head>
 
 <body>
-	<!-- 2021-04-08 08:30:24.494495+00:00 -->
+	<!-- 2021-04-08 11:31:43.590340+00:00 -->
     
 <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.3/css/line.css" type="text/css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" type="text/css">
@@ -259,10 +259,12 @@ sudo percona-release <span class="nb">enable</span> original release
 <h3 id="remove-on-debian-based-distributions">Remove on Debian-based distributions<a class="headerlink" href="#remove-on-debian-based-distributions" title="Permanent link">&para;</a></h3>
 <ol>
 <li>
-<p>Deinstall the PMM Client package.</p>
-<p><div class="highlight"><pre><span></span><code>sudo apt remove -y pmm2-client
+<p>Uninstall the PMM Client package.</p>
+<div class="highlight"><pre><span></span><code>sudo apt remove -y pmm2-client
 </code></pre></div>
-2. Remove the Percona repository</p>
+</li>
+<li>
+<p>Remove the Percona repository</p>
 <div class="highlight"><pre><span></span><code>sudo dpkg -r percona-release
 </code></pre></div>
 </li>
@@ -270,7 +272,7 @@ sudo percona-release <span class="nb">enable</span> original release
 <h3 id="remove-on-red-hat-based-distributions">Remove on Red Hat-based distributions<a class="headerlink" href="#remove-on-red-hat-based-distributions" title="Permanent link">&para;</a></h3>
 <ol>
 <li>
-<p>Deinstall the PMM Client package.</p>
+<p>Uninstall the PMM Client package.</p>
 <div class="highlight"><pre><span></span><code>sudo yum remove -y pmm2-client
 </code></pre></div>
 </li>
