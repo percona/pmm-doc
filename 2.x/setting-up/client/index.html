@@ -52,7 +52,7 @@
 </head>
 
 <body>
-	<!-- 2021-04-08 07:32:54.411807+00:00 -->
+	<!-- 2021-04-08 07:56:06.097737+00:00 -->
     
 <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.3/css/line.css" type="text/css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" type="text/css">
@@ -255,6 +255,31 @@ sudo percona-release <span class="nb">enable</span> original release
 </code></pre></div>
 </li>
 </ol>
+<h2 id="remove-package-manager">Remove PMM Client with a package manager<a class="headerlink" href="#remove-package-manager" title="Permanent link">&para;</a></h2>
+<h3 id="remove-on-debian-based-distributions">Remove on Debian-based distributions<a class="headerlink" href="#remove-on-debian-based-distributions" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>Deinstall the PMM Client package.</p>
+<p><div class="highlight"><pre><span></span><code>sudo apt remove -y pmm2-client
+</code></pre></div>
+2. Remove the Percona repository</p>
+<div class="highlight"><pre><span></span><code>sudo dpkg -r percona-release
+</code></pre></div>
+</li>
+</ol>
+<h3 id="remove-on-red-hat-based-distributions">Remove on Red Hat-based distributions<a class="headerlink" href="#remove-on-red-hat-based-distributions" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>Deinstall the PMM Client package.</p>
+<div class="highlight"><pre><span></span><code>sudo yum remove -y pmm2-client
+</code></pre></div>
+</li>
+<li>
+<p>Remove the Percona repository</p>
+<div class="highlight"><pre><span></span><code>sudo yum remove -y percona-release
+</code></pre></div>
+</li>
+</ol>
 <h2 id="docker">Run PMM Client as a Docker container<a class="headerlink" href="#docker" title="Permanent link">&para;</a></h2>
 <p>The <a href="https://hub.docker.com/r/percona/pmm-client/tags/">PMM Client Docker image</a> is a convenient way to run PMM Client as a preconfigured <a href="https://docs.docker.com/get-docker/">Docker</a> container.</p>
 <ol>
@@ -306,6 +331,24 @@ pmm-admin status
 </code></pre></div></li>
 </ul>
 </blockquote>
+<h2 id="remove-docker">Remove PMM Client as a Docker container<a class="headerlink" href="#remove-docker" title="Permanent link">&para;</a></h2>
+<ol>
+<li>
+<p>Stop pmm-client container.</p>
+<div class="highlight"><pre><span></span><code>docker stop pmm-client
+</code></pre></div>
+</li>
+<li>
+<p>Remove containers.</p>
+<div class="highlight"><pre><span></span><code>docker rm pmm-client
+</code></pre></div>
+</li>
+<li>
+<p>Remove the image.</p>
+<div class="highlight"><pre><span></span><code>docker rmi <span class="k">$(</span>docker images <span class="p">|</span> grep <span class="s2">&quot;percona/pmm-client&quot;</span> <span class="p">|</span> awk <span class="o">{</span><span class="s1">&#39;print $3&#39;</span><span class="o">}</span><span class="k">)</span>
+</code></pre></div>
+</li>
+</ol>
 <h2 id="docker-compose">Run PMM Client with Docker compose<a class="headerlink" href="#docker-compose" title="Permanent link">&para;</a></h2>
 <!-- thanks: https://gist.github.com/paskal -->
 
@@ -416,6 +459,11 @@ c) Increase VM memory > 2048
 <li><a href="external.html">External services</a></li>
 <li><a href="haproxy.html">HAProxy</a></li>
 </ul>
+<h2 id="remove-services">Remove services from monitoring<a class="headerlink" href="#remove-services" title="Permanent link">&para;</a></h2>
+<p>You should specify service type and service name for removing from monitoring
+One of next types has to be set: mysql, mongodb, postgresql, proxysql, haproxy, external</p>
+<div class="highlight"><pre><span></span><code>pmm-admin remove &lt;service-type&gt; &lt;service-name&gt;
+</code></pre></div>
 <blockquote>
 <p><strong>See also</strong></p>
 <ul>
@@ -437,7 +485,7 @@ c) Increase VM memory > 2048
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-04-06
+            <i class="uil uil-refresh"></i> Page updated 2021-04-08
         </li>
         
     </ul>

@@ -52,7 +52,7 @@
 </head>
 
 <body>
-	<!-- 2021-04-08 07:32:54.631566+00:00 -->
+	<!-- 2021-04-08 07:56:06.362253+00:00 -->
     
 <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.3/css/line.css" type="text/css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" type="text/css">
@@ -263,6 +263,22 @@ sudo docker run --rm --volumes-from pmm-data -it percona/pmm-server:2 chown -R p
 <blockquote>
 <p><strong>See also</strong> <a href="../client/index.html#docker-compose">Run PMM Client with Docker compose</a></p>
 </blockquote>
+<h2 id="removing-pmm-server">Removing PMM Server<a class="headerlink" href="#removing-pmm-server" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Stop pmm-server container.</li>
+</ol>
+<div class="highlight"><pre><span></span><code>docker stop pmm-server
+</code></pre></div>
+<ol>
+<li>Remove containers.</li>
+</ol>
+<div class="highlight"><pre><span></span><code>docker rm pmm-server pmm-data
+</code></pre></div>
+<ol>
+<li>Remove the image.</li>
+</ol>
+<div class="highlight"><pre><span></span><code>docker rmi <span class="k">$(</span>docker images <span class="p">|</span> grep <span class="s2">&quot;percona/pmm-server&quot;</span> <span class="p">|</span> awk <span class="o">{</span><span class="s1">&#39;print $3&#39;</span><span class="o">}</span><span class="k">)</span>
+</code></pre></div>
                     </div>
                 </div>
                 
@@ -270,7 +286,7 @@ sudo docker run --rm --volumes-from pmm-data -it percona/pmm-server:2 chown -R p
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-04-06
+            <i class="uil uil-refresh"></i> Page updated 2021-04-08
         </li>
         
     </ul>
