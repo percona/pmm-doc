@@ -71,3 +71,6 @@ Service name: mysql1-processess
 Group       : processess
 ```
 Add exporter running on local port 9256 to the group called "processess"  use group name and host name to automatically generate service name.  Use default scheme and metrics path.
+
+> **Notice**
+> If it's required to modify some parameters of already added service please remove the service and add it again with new parameters.

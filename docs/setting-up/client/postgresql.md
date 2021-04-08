@@ -322,3 +322,6 @@ Capturing read and write time statistics is possible only if `track_io_timing` s
 ALTER SYSTEM SET track_io_timing=ON;
 SELECT pg_reload_conf();
 ```
+
+> **Notice**
+> If it's required to modify some parameters of already added service please remove the service and add it again with new parameters.

@@ -51,3 +51,6 @@ You can also add HAProxy by UI in Grafana. Add instance.
 HAProxy data is visible in the *Advanced Data Exploration* dashboard:
 
 ![](../../_images/PMM_Advanced_Data_Exploration_HAProxy.png)
+
+> **Notice**
+> If it's required to modify some parameters of already added service please remove the service and add it again with new parameters.

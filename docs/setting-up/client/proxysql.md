@@ -36,3 +36,6 @@ priority. Here is the previous example modified to use these flags for both host
 pmm-admin add proxysql --username=pmm --password=pmm --service-name=my-new-proxysql --host=127.0.0.1 --port=6032
 pmm-admin add proxysql --username=pmm --password=pmm --service-name=my-new-proxysql --socket=/tmp/proxysql_admin.sock
 ```
+
+> **Notice**
+> If it's required to modify some parameters of already added service please remove the service and add it again with new parameters.

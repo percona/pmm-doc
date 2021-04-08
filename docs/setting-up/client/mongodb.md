@@ -170,3 +170,6 @@ pmm-admin add mongodb --tls
 
 `--tls-ca-file=PATHTOCACERT`
 : Path to certificate authority file.
+
+> **Notice**
+> If it's required to modify some parameters of already added service please remove the service and add it again with new parameters.

@@ -405,6 +405,8 @@ Default query source (`slowlog`), environment labeled `test`, custom labels sett
 ```sh
 pmm-admin add mysql --environment=test --custom-labels='source=slowlog'  --username=root --password=password --query-source=slowlog MySQLSlowLog localhost:3306
 ```
+> **Notice**
+> If it's required to modify some parameters of already added service please remove the service and add it again with new parameters.
 
 ## Check the service
 
