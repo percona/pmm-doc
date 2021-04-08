@@ -61,7 +61,7 @@ You can write a custom external exporter or extend your application to expose me
 
 Please see more details here: https://prometheus.io/docs/instrumenting/writing_exporters/
 
-### Examples 
+### Examples
 
 ```sh
 root@mysql1:~# pmm-admin add external --group=processess  --listen-port=9256
@@ -71,6 +71,3 @@ Service name: mysql1-processess
 Group       : processess
 ```
 Add exporter running on local port 9256 to the group called "processess"  use group name and host name to automatically generate service name.  Use default scheme and metrics path.
-
-> **Note**
-> To change the parameters of a previously-added service, remove the service and re-add it with new parameters.

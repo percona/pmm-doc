@@ -9,7 +9,7 @@ to enable ProxySQL performance metrics monitoring.
 pmm-admin add proxysql --username=admin --password=admin
 ```
 
-where username and password are credentials for the administration interface of the monitored ProxySQL instance. 
+where username and password are credentials for the administration interface of the monitored ProxySQL instance.
 Additionally, two positional arguments can be appended to the command line flags: a service name to be used
 by PMM, and a service address. If not specified, they are substituted
 automatically as `<node>-proxysql` and `127.0.0.1:6032`.
@@ -36,6 +36,3 @@ priority. Here is the previous example modified to use these flags for both host
 pmm-admin add proxysql --username=pmm --password=pmm --service-name=my-new-proxysql --host=127.0.0.1 --port=6032
 pmm-admin add proxysql --username=pmm --password=pmm --service-name=my-new-proxysql --socket=/tmp/proxysql_admin.sock
 ```
-
-> **Notice**
-> If it's required to modify some parameters of already added service please remove the service and add it again with new parameters.
