@@ -52,7 +52,7 @@
 </head>
 
 <body>
-	<!-- 2021-04-08 11:31:43.878935+00:00 -->
+	<!-- 2021-04-08 11:43:48.010203+00:00 -->
     
 <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.3/css/line.css" type="text/css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" type="text/css">
@@ -249,6 +249,18 @@ templates:
         summary: MySQL too many connections (instance {{ $labels.instance }})
 </code></pre></div>
 <p><img alt="" src="../_images/PMM_Integrated_Alerting_Alert_Rule_Templates_Add_Form.jpg" /></p>
+<blockquote>
+<p><strong>Alert Rule Template parameters</strong></p>
+<p>The parameters used in the template follow a format and might include different fields depending on their <code>type</code>:</p>
+<ul>
+<li><code>name</code> (required): the name of the parameter. Spaces and special characters not allowed.</li>
+<li><code>summary</code> (required): a short description of what this parameter represents.</li>
+<li><code>type</code> (required): PMM currently supports the <code>float</code> type. (More will be available in the future, such as <code>string</code> or <code>bool</code>.)</li>
+<li><code>unit</code> (optional): PMM currently supports either <code>s</code> (seconds) or <code>%</code> (percentage).</li>
+<li><code>value</code> (optional): the parameter value itself.</li>
+<li><code>range</code> (optional): only for <code>float</code> parameters, defining the boundaries for the value.</li>
+</ul>
+</blockquote>
 </li>
 <li>
 <p>Click <em>Add</em> to add the alert rule template, or <em>Cancel</em> to abort the operation.</p>
@@ -261,7 +273,7 @@ templates:
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-03-19
+            <i class="uil uil-refresh"></i> Page updated 2021-04-08
         </li>
         
     </ul>
