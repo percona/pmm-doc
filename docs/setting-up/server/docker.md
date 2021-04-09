@@ -221,7 +221,7 @@ If the host where you will run PMM Server has no internet connection, you can do
 
     ```sh
     sudo docker create --volume /srv \
-    --name pmm-data percona/pmm-server:2 /bin/true
+    --name pmm-data percona/pmm-server:{{release}} /bin/true
     ```
 
 7. Run the container.
@@ -233,7 +233,7 @@ If the host where you will run PMM Server has no internet connection, you can do
     --publish 80:80 --publish 443:443 \
     --volumes-from pmm-data \
     --name pmm-server \
-    percona/pmm-server:2
+    percona/pmm-server:{{release}}
     ```
 
 
