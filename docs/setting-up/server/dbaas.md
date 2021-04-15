@@ -419,7 +419,7 @@ eksctl delete cluster --name=your-cluster-name
 
 ## Run PMM Server as a Docker container for DBaaS
 
-1. Start PMM server with enabled DBaaS:
+1. Start PMM Server with DBaaS enabled:
 
     ```sh
     docker run --detach --name pmm-server --publish 80:80 --publish 443:443 --env PERCONA_TEST_DBAAS=1  percona/pmm-server:2;
