@@ -1,3 +1,6 @@
+# Default MkDocs configuration for HTML publishing to percona.com
+# There is no theme unless specified on the command line. See README.md
+
 site_name: Percona Monitoring and Management
 site_description: Documentation
 site_author: Percona LLC
