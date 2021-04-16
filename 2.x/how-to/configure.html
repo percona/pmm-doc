@@ -52,7 +52,7 @@
 </head>
 
 <body>
-	<!-- 2021-04-15 04:44:36.854137+00:00 -->
+	<!-- 2021-04-16 05:16:31.791987+00:00 -->
     
 <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.3/css/line.css" type="text/css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" type="text/css">
@@ -106,61 +106,78 @@
                 <div class="bodywrapper">
                     <div class="body">
                         <h1 id="configure">Configure<a class="headerlink" href="#configure" title="Permanent link">&para;</a></h1>
-<p>The <em>PMM Settings</em> page lets you configure a number of PMM options.</p>
-<p>Open the <em>PMM Settings</em> page with one of:</p>
-<ul>
-<li>the main menu: choose <em>PMM&rarr;PMM Settings</em></li>
-<li>search dashboards by name: type <em>PMM Settings</em> and click the search result</li>
-</ul>
-<p>On the left of the page is a set of sub-page selector tabs.</p>
-<p><img alt="" src="../_images/PMM_Settings_Menu.jpg" /></p>
-<p>(The <a href="#communication">Communication</a> tab remains hidden until <a href="#integrated-alerting">Integrated Alerting</a> is activated.)</p>
-<blockquote>
-<p>Click <em>Apply changes</em> after changing settings.</p>
-</blockquote>
-<h2 id="diagnostics">Diagnostics<a class="headerlink" href="#diagnostics" title="Permanent link">&para;</a></h2>
-<p>Common to all sections is <em>Diagnostics</em>. PMM can generate a set of diagnostics data which can be examined and/or shared with our support team in case of some issue to solve it faster.  You can get collected logs from PMM Server by clicking <em>Download server diagnostics</em>.</p>
-<h2 id="metrics-resolution">Metrics resolution<a class="headerlink" href="#metrics-resolution" title="Permanent link">&para;</a></h2>
-<p>Metrics are collected at three intervals representing low, medium and high resolutions. Short time intervals are regarded as high resolution metrics, while those at longer time intervals are low resolution.</p>
+<p>The <em>Settings</em> page is where you configure PMM.</p>
+<p>Open the <em>Settings</em> page from the <a href="../details/interface.html#main-menu">main menu</a> with <i class="uil uil-cog"></i> <em>Configuration&rarr;Settings</em>. The page opens with the <em>Metrics Resolution</em> settings tab selected.</p>
 <p><img alt="image" src="../_images/PMM_Settings_Metrics_Resolution.jpg" /></p>
-<p>The <em>Metrics Resolution</em> radio button lets you select one of four presets.</p>
+<p>On the left are the selector tabs:</p>
 <ul>
-<li><em>Rare</em>, <em>Standard</em> and <em>Frequent</em> are fixed presets.</li>
-<li><em>Custom</em> is an editable preset.</li>
+<li><a href="#metrics-resolution">Metrics Resolution</a></li>
+<li><a href="#advanced-settings">Advanced Settings</a></li>
+<li><a href="#ssh-key">SSH Key</a></li>
+<li><a href="#alertmanager-integration">Alertmanager Integration</a></li>
+<li><a href="#percona-platform">Percona Platform</a></li>
+<li><a href="#communication">Communication</a> (This tab remains hidden until <a href="#integrated-alerting">Integrated Alerting</a> is activated in the <em>Advanced Settings</em> tab.)</li>
 </ul>
-<p>Each preset is a group of Low, Medium and High metrics resolution values.</p>
+<blockquote>
+<p><b style="color:goldenrod">Important</b> Click <em>Apply changes</em> to save any changes made here.</p>
+</blockquote>
+<p><strong>Diagnostics</strong></p>
+<p>On all tabs is a <em>Diagnostics</em> section (top-right). Click <em>Download server diagnostics</em> to retrieve PMM diagnostics data which can be examined and/or shared with our support team should you need help.</p>
+<h2 id="metrics-resolution">Metrics resolution<a class="headerlink" href="#metrics-resolution" title="Permanent link">&para;</a></h2>
+<p>Metrics are collected at three intervals representing low, medium and high resolutions.</p>
+<p>The <em>Metrics Resolution</em> settings tab contains a radio button with three fixed presets (<em>Rare</em>, <em>Standard</em> and <em>Frequent</em>) and one editable custom preset (<em>Custom</em>).</p>
+<p><img alt="image" src="../_images/PMM_Settings_Metrics_Resolution.jpg" /></p>
+<p>Each preset is a group of low, medium and high resolutions. The values are in seconds.</p>
+<blockquote>
+<p>Short time intervals are <em>high</em> resolution metrics. Longer time intervals are <em>low</em> resolution. So:</p>
 <ul>
-<li>A low resolution interval <em>increases</em> the time between collection, resulting in low-resolution metrics and lower disk usage.</li>
-<li>A high resolution interval <em>decreases</em> the time between collection, resulting in high-resolution metrics and higher disk usage.</li>
+<li>
+<p>A low resolution interval <em>increases</em> the time between collection, resulting in low-resolution metrics and lower disk usage.</p>
+</li>
+<li>
+<p>A high resolution interval <em>decreases</em> the time between collection, resulting in high-resolution metrics and higher disk usage.</p>
+</li>
 </ul>
+</blockquote>
 <p>The default values (in seconds) for the fixed presets and their resolution names are:</p>
 <table class="table">
 <thead>
 <tr>
+<th align="center">Editable?</th>
 <th scope="col">Preset</th>
-<th scope="col">Low</th>
-<th scope="col">Medium</th>
-<th scope="col">High</th>
+<th align="center">Low</th>
+<th align="center">Medium</th>
+<th align="center">High</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td align="center">No</td>
 <td>Rare</td>
-<td>300</td>
-<td>180</td>
-<td>60</td>
+<td align="center">300</td>
+<td align="center">180</td>
+<td align="center">60</td>
 </tr>
 <tr>
+<td align="center">No</td>
 <td>Standard</td>
-<td>60</td>
-<td>10</td>
-<td>5</td>
+<td align="center">60</td>
+<td align="center">10</td>
+<td align="center">5</td>
 </tr>
 <tr>
+<td align="center">No</td>
 <td>Frequent</td>
-<td>30</td>
-<td>5</td>
-<td>1</td>
+<td align="center">30</td>
+<td align="center">5</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td align="center">Yes</td>
+<td>Custom (defaults)</td>
+<td align="center">60</td>
+<td align="center">10</td>
+<td align="center">5</td>
 </tr>
 </tbody>
 </table>
@@ -169,9 +186,9 @@
 <p>If there is poor network connectivity between PMM Server and PMM Client, or between PMM Client and the database server it is monitoring, scraping every second may not be possible when the network latency is greater than 1 second.</p>
 </blockquote>
 <h2 id="advanced-settings">Advanced Settings<a class="headerlink" href="#advanced-settings" title="Permanent link">&para;</a></h2>
-<p><img alt="" src="../_images/PMM_Settings_Advanced_Settings.jpg" /></p>
+<p><img alt="" src="../_images/PMM_Settings_Advanced_Settings.png" /></p>
 <h3 id="data-retention">Data Retention<a class="headerlink" href="#data-retention" title="Permanent link">&para;</a></h3>
-<p><em>Data retention</em> specifies how long data is stored by PMM Server. By default, PMM stores time-series data for 30 days. Depending on your available disk space and requirements, you may need to adjust the data retention time.</p>
+<p><em>Data retention</em> specifies how long data is stored by PMM Server. By default, time-series data is stored for 30 days. You can adjust the data retention time to balance your system&rsquo;s available disk space with your metrics history requirements.</p>
 <h3 id="telemetry">Telemetry<a class="headerlink" href="#telemetry" title="Permanent link">&para;</a></h3>
 <p>The <em>Telemetry</em> switch enables gathering and sending basic <strong>anonymous</strong> data to Percona, which helps us to determine where to focus the development and what is the uptake of the various versions of PMM. Specifically, gathering this information helps determine if we need to release patches to legacy versions beyond support, determining when supporting a particular version is no longer necessary, and even understanding how the frequency of release encourages or deters adoption.</p>
 <p>Currently, only the following information is gathered:</p>
@@ -204,21 +221,72 @@
 </ul>
 </blockquote>
 <h3 id="check-for-updates">Check for updates<a class="headerlink" href="#check-for-updates" title="Permanent link">&para;</a></h3>
-<p>When active, PMM will automatically check for updates and put a notification in the <em>Updates</em> dashboard if any are available.</p>
+<p>When active, PMM will automatically check for updates and put a notification in the home page <em>Updates</em> dashboard if any are available.</p>
 <h3 id="security-threat-tool">Security Threat Tool<a class="headerlink" href="#security-threat-tool" title="Permanent link">&para;</a></h3>
-<p>The Security Threat Tool performs a range of security-related checks on a registered instance and reports the findings.</p>
-<p>It is disabled by default.</p>
-<p>It can be enabled in <em>PMM&rarr;PMM Settings&rarr;Settings&rarr;Advanced Settings&rarr;Security Threat Tool</em>.</p>
-<p>The checks are re-fetched and re-run every 24 hours.</p>
-<p>The results can be viewed in <em>PMM&rarr;PMM Database Checks</em>.</p>
+<p>The <a href="../using/platform/security-threat-tool.html">Security Threat Tool</a> performs a range of security-related checks on a registered instance and reports the findings. It is off by default.</p>
+<blockquote>
+<p>To see the results of checks, select <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0)"><path d="M3.85 19.95C3.75 19.95 3.65 19.9 3.6 19.85C3.45 19.7 3.45 19.45 3.6 19.3L4.2 18.7C4.35 18.55 4.6 18.55 4.75 18.7C4.9 18.85 4.9 19.1 4.75 19.25L4.15 19.85C4.05 19.9 3.95 19.95 3.85 19.95ZM11.6 23.15C11.4 23.15 11.2 23 11.2 22.75V21.95C11.2 21.75 11.35 21.55 11.6 21.55C11.8 21.55 12 21.7 12 21.95V22.75C11.95 22.95 11.8 23.15 11.6 23.15ZM22.5 12.2H21.7C21.5 12.2 21.3 12.05 21.3 11.8C21.3 11.6 21.45 11.4 21.7 11.4H22.5C22.7 11.4 22.9 11.55 22.9 11.8C22.9 12 22.75 12.2 22.5 12.2ZM1.45 12.2H0.65C0.45 12.2 0.25 12.05 0.25 11.8C0.25 11.6 0.4 11.4 0.65 11.4H1.45C1.65 11.4 1.85 11.55 1.85 11.8C1.85 12 1.65 12.2 1.45 12.2ZM1.45 16.35C1.3 16.35 1.15 16.25 1.1 16.1C1 15.9 1.1 15.7 1.3 15.6L2.05 15.3C2.25 15.2 2.45 15.3 2.55 15.5C2.65 15.7 2.55 15.9 2.35 16L1.6 16.3C1.55 16.35 1.5 16.35 1.45 16.35ZM7.35 22.3C7.3 22.3 7.25 22.3 7.2 22.25C7 22.15 6.9 21.95 7 21.75L7.3 21C7.4 20.8 7.6 20.7 7.8 20.8C8 20.9 8.1 21.1 8 21.3L7.7 22.05C7.65 22.2 7.5 22.3 7.35 22.3ZM4.1 4.75C4 4.75 3.9 4.7 3.8 4.6L3.2 4C3.05 3.85 3.05 3.6 3.2 3.45C3.35 3.3 3.6 3.3 3.75 3.45L4.35 4.05C4.5 4.2 4.5 4.45 4.35 4.6C4.3 4.7 4.2 4.75 4.1 4.75ZM19 4.75C18.9 4.75 18.8 4.7 18.7 4.65C18.55 4.5 18.55 4.25 18.7 4.1L19.3 3.5C19.45 3.35 19.7 3.35 19.85 3.5C20 3.65 20 3.9 19.85 4.05L19.25 4.65C19.2 4.7 19.1 4.75 19 4.75ZM11.55 1.65C11.35 1.65 11.15 1.45 11.15 1.25V0.4C11.15 0.2 11.35 0 11.55 0C11.75 0 11.95 0.2 11.95 0.4V1.25C11.95 1.45 11.75 1.65 11.55 1.65ZM7.55 2.4C7.4 2.4 7.25 2.3 7.2 2.15L6.9 1.35C6.8 1.15 6.9 0.9 7.1 0.85C7.3 0.75 7.55 0.85 7.6 1.05L7.9 1.85C8 2.05 7.9 2.3 7.7 2.35C7.65 2.4 7.6 2.4 7.55 2.4ZM21.35 8.2C21.2 8.2 21.05 8.1 21 7.95C20.9 7.75 21 7.5 21.2 7.45L22 7.15C22.2 7.05 22.45 7.15 22.5 7.35C22.6 7.55 22.5 7.8 22.3 7.85L21.5 8.15C21.45 8.2 21.4 8.2 21.35 8.2ZM15.65 2.45C15.6 2.45 15.55 2.45 15.5 2.4C15.3 2.3 15.2 2.1 15.3 1.9L15.65 1.1C15.75 0.9 15.95 0.8 16.15 0.9C16.35 1 16.45 1.2 16.35 1.4L16 2.2C15.95 2.35 15.8 2.45 15.65 2.45ZM1.8 8.1C1.75 8.1 1.7 8.1 1.65 8.05L0.85 7.7C0.65 7.6 0.55 7.4 0.65 7.2C0.75 7 0.95 6.9 1.15 7L1.95 7.35C2.15 7.45 2.25 7.65 2.15 7.85C2.1 8 1.95 8.1 1.8 8.1ZM14.6 8.75C13.8 7.95 12.7 7.5 11.55 7.5C10.4 7.5 9.3 7.95 8.5 8.75C6.8 10.45 6.8 13.2 8.5 14.85C9.3 15.65 10.4 16.1 11.55 16.1C12.7 16.1 13.8 15.65 14.6 14.85C15.4 14.05 15.85 12.95 15.85 11.8C15.9 10.65 15.4 9.55 14.6 8.75ZM13.75 14C13.15 14.6 12.35 14.9 11.55 14.9C10.7 14.9 9.95 14.6 9.35 14C8.15 12.8 8.15 10.8 9.35 9.6C9.65 9.3 9.95 9.1 10.35 8.95C10.45 8.9 10.6 8.9 10.7 8.95C10.8 9 10.9 9.1 10.9 9.25C10.95 9.4 11 9.55 11.1 9.65C11.4 9.95 11.9 9.95 12.15 9.65C12.25 9.55 12.3 9.45 12.35 9.3C12.4 9.2 12.45 9.1 12.55 9.05C12.65 9 12.8 9 12.9 9.05C13.2 9.2 13.5 9.4 13.75 9.65C14.95 10.8 14.95 12.8 13.75 14ZM13.2 10.15C13.1 10.05 13 9.95 12.9 9.9C12.85 10 12.75 10.1 12.7 10.15C12.1 10.75 11.1 10.75 10.5 10.15C10.4 10.05 10.3 9.95 10.25 9.85C10.1 9.95 10 10.05 9.85 10.15C8.95 11.05 8.95 12.55 9.85 13.45C10.3 13.9 10.9 14.15 11.5 14.15C12.1 14.15 12.7 13.9 13.15 13.45C14.1 12.55 14.1 11.05 13.2 10.15ZM14.6 8.75C13.8 7.95 12.7 7.5 11.55 7.5C10.4 7.5 9.3 7.95 8.5 8.75C6.8 10.45 6.8 13.2 8.5 14.85C9.3 15.65 10.4 16.1 11.55 16.1C12.7 16.1 13.8 15.65 14.6 14.85C15.4 14.05 15.85 12.95 15.85 11.8C15.9 10.65 15.4 9.55 14.6 8.75ZM13.75 14C13.15 14.6 12.35 14.9 11.55 14.9C10.7 14.9 9.95 14.6 9.35 14C8.15 12.8 8.15 10.8 9.35 9.6C9.65 9.3 9.95 9.1 10.35 8.95C10.45 8.9 10.6 8.9 10.7 8.95C10.8 9 10.9 9.1 10.9 9.25C10.95 9.4 11 9.55 11.1 9.65C11.4 9.95 11.9 9.95 12.15 9.65C12.25 9.55 12.3 9.45 12.35 9.3C12.4 9.2 12.45 9.1 12.55 9.05C12.65 9 12.8 9 12.9 9.05C13.2 9.2 13.5 9.4 13.75 9.65C14.95 10.8 14.95 12.8 13.75 14ZM13.2 10.15C13.1 10.05 13 9.95 12.9 9.9C12.85 10 12.75 10.1 12.7 10.15C12.1 10.75 11.1 10.75 10.5 10.15C10.4 10.05 10.3 9.95 10.25 9.85C10.1 9.95 10 10.05 9.85 10.15C8.95 11.05 8.95 12.55 9.85 13.45C10.3 13.9 10.9 14.15 11.5 14.15C12.1 14.15 12.7 13.9 13.15 13.45C14.1 12.55 14.1 11.05 13.2 10.15ZM17.05 6.3C15.6 4.8 13.65 4 11.55 4C9.45 4 7.5 4.8 6.05 6.3C3 9.35 3 14.3 6.05 17.35C7.5 18.85 9.5 19.65 11.55 19.65C13.1 19.65 14.6 19.2 15.85 18.35C16.25 18.05 16.65 17.75 17.05 17.35C17.45 16.95 17.75 16.55 18.05 16.15C20.1 13.05 19.7 8.9 17.05 6.3ZM15.15 15.4C14.2 16.35 12.9 16.9 11.55 16.9C10.2 16.9 8.9 16.35 7.95 15.4C5.95 13.4 5.95 10.15 7.95 8.2C8.9 7.25 10.2 6.7 11.55 6.7C12.9 6.7 14.2 7.25 15.15 8.2C16.1 9.15 16.65 10.45 16.65 11.8C16.65 13.15 16.15 14.45 15.15 15.4ZM11.55 7.5C10.4 7.5 9.3 7.95 8.5 8.75C6.8 10.45 6.8 13.2 8.5 14.85C9.3 15.65 10.4 16.1 11.55 16.1C12.7 16.1 13.8 15.65 14.6 14.85C15.4 14.05 15.85 12.95 15.85 11.8C15.85 10.65 15.4 9.55 14.6 8.75C13.8 7.95 12.7 7.5 11.55 7.5ZM13.75 14C13.15 14.6 12.35 14.9 11.55 14.9C10.7 14.9 9.95 14.6 9.35 14C8.15 12.8 8.15 10.8 9.35 9.6C9.65 9.3 9.95 9.1 10.35 8.95C10.45 8.9 10.6 8.9 10.7 8.95C10.8 9 10.9 9.1 10.9 9.25C10.95 9.4 11 9.55 11.1 9.65C11.4 9.95 11.9 9.95 12.15 9.65C12.25 9.55 12.3 9.45 12.35 9.3C12.4 9.2 12.45 9.1 12.55 9.05C12.65 9 12.8 9 12.9 9.05C13.2 9.2 13.5 9.4 13.75 9.65C14.95 10.8 14.95 12.8 13.75 14ZM12.9 9.9C12.85 10 12.75 10.1 12.7 10.15C12.1 10.75 11.1 10.75 10.5 10.15C10.4 10.05 10.3 9.95 10.25 9.85C10.1 9.95 10 10.05 9.85 10.15C8.95 11.05 8.95 12.55 9.85 13.45C10.3 13.9 10.9 14.15 11.5 14.15C12.1 14.15 12.7 13.9 13.15 13.45C14.05 12.55 14.05 11.05 13.15 10.15C13.1 10.05 13 10 12.9 9.9ZM22.85 20.1L18.45 16.9C18.4 16.95 18.35 17.05 18.25 17.1C18.2 17.15 18.15 17.2 18.1 17.3C17.95 17.5 17.75 17.7 17.6 17.9C17.4 18.1 17.2 18.25 17 18.45C16.95 18.5 16.9 18.55 16.8 18.6C16.75 18.65 16.65 18.75 16.55 18.8L19.75 23.2C20.15 23.75 20.8 24.1 21.5 24.1C22.05 24.1 22.6 23.9 23 23.45C23.45 23 23.7 22.4 23.65 21.75C23.7 21.05 23.35 20.45 22.85 20.1Z" fill="#000"/></g><defs><clipPath id="clip0"><rect width="24" height="24" fill="white"/></clipPath></defs> </svg> <em>PMM Database Checks</em> to open the <em>Security Checks/Failed Checks</em> dashboard, and select the <em>Failed Checks</em> tab.</p>
+</blockquote>
+<p>Checks are re-fetched and re-run at intervals. There are three named intervals:</p>
+<table class="table">
+<thead>
+<tr>
+<th scope="col">Interval name</th>
+<th align="center">Value (hours)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>Rare interval</em></td>
+<td align="center">78</td>
+</tr>
+<tr>
+<td><em>Standard interval</em> (default)</td>
+<td align="center">24</td>
+</tr>
+<tr>
+<td><em>Frequent interval</em></td>
+<td align="center">4</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>The values for each named interval are fixed.</p>
+</blockquote>
+<p>Checks use the <em>Standard</em> interval by default. To change a check&rsquo;s interval:</p>
+<ul>
+<li>Go to <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0)"><path d="M3.85 19.95C3.75 19.95 3.65 19.9 3.6 19.85C3.45 19.7 3.45 19.45 3.6 19.3L4.2 18.7C4.35 18.55 4.6 18.55 4.75 18.7C4.9 18.85 4.9 19.1 4.75 19.25L4.15 19.85C4.05 19.9 3.95 19.95 3.85 19.95ZM11.6 23.15C11.4 23.15 11.2 23 11.2 22.75V21.95C11.2 21.75 11.35 21.55 11.6 21.55C11.8 21.55 12 21.7 12 21.95V22.75C11.95 22.95 11.8 23.15 11.6 23.15ZM22.5 12.2H21.7C21.5 12.2 21.3 12.05 21.3 11.8C21.3 11.6 21.45 11.4 21.7 11.4H22.5C22.7 11.4 22.9 11.55 22.9 11.8C22.9 12 22.75 12.2 22.5 12.2ZM1.45 12.2H0.65C0.45 12.2 0.25 12.05 0.25 11.8C0.25 11.6 0.4 11.4 0.65 11.4H1.45C1.65 11.4 1.85 11.55 1.85 11.8C1.85 12 1.65 12.2 1.45 12.2ZM1.45 16.35C1.3 16.35 1.15 16.25 1.1 16.1C1 15.9 1.1 15.7 1.3 15.6L2.05 15.3C2.25 15.2 2.45 15.3 2.55 15.5C2.65 15.7 2.55 15.9 2.35 16L1.6 16.3C1.55 16.35 1.5 16.35 1.45 16.35ZM7.35 22.3C7.3 22.3 7.25 22.3 7.2 22.25C7 22.15 6.9 21.95 7 21.75L7.3 21C7.4 20.8 7.6 20.7 7.8 20.8C8 20.9 8.1 21.1 8 21.3L7.7 22.05C7.65 22.2 7.5 22.3 7.35 22.3ZM4.1 4.75C4 4.75 3.9 4.7 3.8 4.6L3.2 4C3.05 3.85 3.05 3.6 3.2 3.45C3.35 3.3 3.6 3.3 3.75 3.45L4.35 4.05C4.5 4.2 4.5 4.45 4.35 4.6C4.3 4.7 4.2 4.75 4.1 4.75ZM19 4.75C18.9 4.75 18.8 4.7 18.7 4.65C18.55 4.5 18.55 4.25 18.7 4.1L19.3 3.5C19.45 3.35 19.7 3.35 19.85 3.5C20 3.65 20 3.9 19.85 4.05L19.25 4.65C19.2 4.7 19.1 4.75 19 4.75ZM11.55 1.65C11.35 1.65 11.15 1.45 11.15 1.25V0.4C11.15 0.2 11.35 0 11.55 0C11.75 0 11.95 0.2 11.95 0.4V1.25C11.95 1.45 11.75 1.65 11.55 1.65ZM7.55 2.4C7.4 2.4 7.25 2.3 7.2 2.15L6.9 1.35C6.8 1.15 6.9 0.9 7.1 0.85C7.3 0.75 7.55 0.85 7.6 1.05L7.9 1.85C8 2.05 7.9 2.3 7.7 2.35C7.65 2.4 7.6 2.4 7.55 2.4ZM21.35 8.2C21.2 8.2 21.05 8.1 21 7.95C20.9 7.75 21 7.5 21.2 7.45L22 7.15C22.2 7.05 22.45 7.15 22.5 7.35C22.6 7.55 22.5 7.8 22.3 7.85L21.5 8.15C21.45 8.2 21.4 8.2 21.35 8.2ZM15.65 2.45C15.6 2.45 15.55 2.45 15.5 2.4C15.3 2.3 15.2 2.1 15.3 1.9L15.65 1.1C15.75 0.9 15.95 0.8 16.15 0.9C16.35 1 16.45 1.2 16.35 1.4L16 2.2C15.95 2.35 15.8 2.45 15.65 2.45ZM1.8 8.1C1.75 8.1 1.7 8.1 1.65 8.05L0.85 7.7C0.65 7.6 0.55 7.4 0.65 7.2C0.75 7 0.95 6.9 1.15 7L1.95 7.35C2.15 7.45 2.25 7.65 2.15 7.85C2.1 8 1.95 8.1 1.8 8.1ZM14.6 8.75C13.8 7.95 12.7 7.5 11.55 7.5C10.4 7.5 9.3 7.95 8.5 8.75C6.8 10.45 6.8 13.2 8.5 14.85C9.3 15.65 10.4 16.1 11.55 16.1C12.7 16.1 13.8 15.65 14.6 14.85C15.4 14.05 15.85 12.95 15.85 11.8C15.9 10.65 15.4 9.55 14.6 8.75ZM13.75 14C13.15 14.6 12.35 14.9 11.55 14.9C10.7 14.9 9.95 14.6 9.35 14C8.15 12.8 8.15 10.8 9.35 9.6C9.65 9.3 9.95 9.1 10.35 8.95C10.45 8.9 10.6 8.9 10.7 8.95C10.8 9 10.9 9.1 10.9 9.25C10.95 9.4 11 9.55 11.1 9.65C11.4 9.95 11.9 9.95 12.15 9.65C12.25 9.55 12.3 9.45 12.35 9.3C12.4 9.2 12.45 9.1 12.55 9.05C12.65 9 12.8 9 12.9 9.05C13.2 9.2 13.5 9.4 13.75 9.65C14.95 10.8 14.95 12.8 13.75 14ZM13.2 10.15C13.1 10.05 13 9.95 12.9 9.9C12.85 10 12.75 10.1 12.7 10.15C12.1 10.75 11.1 10.75 10.5 10.15C10.4 10.05 10.3 9.95 10.25 9.85C10.1 9.95 10 10.05 9.85 10.15C8.95 11.05 8.95 12.55 9.85 13.45C10.3 13.9 10.9 14.15 11.5 14.15C12.1 14.15 12.7 13.9 13.15 13.45C14.1 12.55 14.1 11.05 13.2 10.15ZM14.6 8.75C13.8 7.95 12.7 7.5 11.55 7.5C10.4 7.5 9.3 7.95 8.5 8.75C6.8 10.45 6.8 13.2 8.5 14.85C9.3 15.65 10.4 16.1 11.55 16.1C12.7 16.1 13.8 15.65 14.6 14.85C15.4 14.05 15.85 12.95 15.85 11.8C15.9 10.65 15.4 9.55 14.6 8.75ZM13.75 14C13.15 14.6 12.35 14.9 11.55 14.9C10.7 14.9 9.95 14.6 9.35 14C8.15 12.8 8.15 10.8 9.35 9.6C9.65 9.3 9.95 9.1 10.35 8.95C10.45 8.9 10.6 8.9 10.7 8.95C10.8 9 10.9 9.1 10.9 9.25C10.95 9.4 11 9.55 11.1 9.65C11.4 9.95 11.9 9.95 12.15 9.65C12.25 9.55 12.3 9.45 12.35 9.3C12.4 9.2 12.45 9.1 12.55 9.05C12.65 9 12.8 9 12.9 9.05C13.2 9.2 13.5 9.4 13.75 9.65C14.95 10.8 14.95 12.8 13.75 14ZM13.2 10.15C13.1 10.05 13 9.95 12.9 9.9C12.85 10 12.75 10.1 12.7 10.15C12.1 10.75 11.1 10.75 10.5 10.15C10.4 10.05 10.3 9.95 10.25 9.85C10.1 9.95 10 10.05 9.85 10.15C8.95 11.05 8.95 12.55 9.85 13.45C10.3 13.9 10.9 14.15 11.5 14.15C12.1 14.15 12.7 13.9 13.15 13.45C14.1 12.55 14.1 11.05 13.2 10.15ZM17.05 6.3C15.6 4.8 13.65 4 11.55 4C9.45 4 7.5 4.8 6.05 6.3C3 9.35 3 14.3 6.05 17.35C7.5 18.85 9.5 19.65 11.55 19.65C13.1 19.65 14.6 19.2 15.85 18.35C16.25 18.05 16.65 17.75 17.05 17.35C17.45 16.95 17.75 16.55 18.05 16.15C20.1 13.05 19.7 8.9 17.05 6.3ZM15.15 15.4C14.2 16.35 12.9 16.9 11.55 16.9C10.2 16.9 8.9 16.35 7.95 15.4C5.95 13.4 5.95 10.15 7.95 8.2C8.9 7.25 10.2 6.7 11.55 6.7C12.9 6.7 14.2 7.25 15.15 8.2C16.1 9.15 16.65 10.45 16.65 11.8C16.65 13.15 16.15 14.45 15.15 15.4ZM11.55 7.5C10.4 7.5 9.3 7.95 8.5 8.75C6.8 10.45 6.8 13.2 8.5 14.85C9.3 15.65 10.4 16.1 11.55 16.1C12.7 16.1 13.8 15.65 14.6 14.85C15.4 14.05 15.85 12.95 15.85 11.8C15.85 10.65 15.4 9.55 14.6 8.75C13.8 7.95 12.7 7.5 11.55 7.5ZM13.75 14C13.15 14.6 12.35 14.9 11.55 14.9C10.7 14.9 9.95 14.6 9.35 14C8.15 12.8 8.15 10.8 9.35 9.6C9.65 9.3 9.95 9.1 10.35 8.95C10.45 8.9 10.6 8.9 10.7 8.95C10.8 9 10.9 9.1 10.9 9.25C10.95 9.4 11 9.55 11.1 9.65C11.4 9.95 11.9 9.95 12.15 9.65C12.25 9.55 12.3 9.45 12.35 9.3C12.4 9.2 12.45 9.1 12.55 9.05C12.65 9 12.8 9 12.9 9.05C13.2 9.2 13.5 9.4 13.75 9.65C14.95 10.8 14.95 12.8 13.75 14ZM12.9 9.9C12.85 10 12.75 10.1 12.7 10.15C12.1 10.75 11.1 10.75 10.5 10.15C10.4 10.05 10.3 9.95 10.25 9.85C10.1 9.95 10 10.05 9.85 10.15C8.95 11.05 8.95 12.55 9.85 13.45C10.3 13.9 10.9 14.15 11.5 14.15C12.1 14.15 12.7 13.9 13.15 13.45C14.05 12.55 14.05 11.05 13.15 10.15C13.1 10.05 13 10 12.9 9.9ZM22.85 20.1L18.45 16.9C18.4 16.95 18.35 17.05 18.25 17.1C18.2 17.15 18.15 17.2 18.1 17.3C17.95 17.5 17.75 17.7 17.6 17.9C17.4 18.1 17.2 18.25 17 18.45C16.95 18.5 16.9 18.55 16.8 18.6C16.75 18.65 16.65 18.75 16.55 18.8L19.75 23.2C20.15 23.75 20.8 24.1 21.5 24.1C22.05 24.1 22.6 23.9 23 23.45C23.45 23 23.7 22.4 23.65 21.75C23.7 21.05 23.35 20.45 22.85 20.1Z" fill="#000"/></g><defs><clipPath id="clip0"><rect width="24" height="24" fill="white"/></clipPath></defs> </svg> <em>PMM Database Checks</em></li>
+<li>Select <em>All Checks</em></li>
+<li>
+<p>In the <em>Actions</em> column, select the <i class="uil uil-history"></i> icon</p>
+<p><img alt="" src="../_images/PMM_Security_Checks_Actions.png" /></p>
+</li>
+<li>
+<p>Select an interval and click <em>Save</em></p>
+<p><img alt="" src="../_images/PMM_Security_Checks_Actions_Set_Interval.png" /></p>
+</li>
+</ul>
+<p>(Read more at <a href="../using/platform/security-threat-tool.html">Security Threat Tool</a>.)</p>
+<h2 id="public-address">Public address<a class="headerlink" href="#public-address" title="Permanent link">&para;</a></h2>
+<p>The address or hostname PMM Server will be accessible at. Click <em>Get from browser</em> to have your browser detect and populate this field automatically.</p>
 <h3 id="dbaas">DBaaS<a class="headerlink" href="#dbaas" title="Permanent link">&para;</a></h3>
 <p>A read-only setting that shows whether DBaaS features are activated on this server.</p>
 <blockquote>
-<p><b style="color:goldenrod">Caution</b> DBaaS functionality is a technical preview that must be turned on with a server feature flag. See <a href="../setting-up/server/dbaas.html">Setting up a development environment for DBaaS</a>.</p>
+<p><b style="color:goldenrod">Caution</b> DBaaS functionality is a technical preview that must be turned on with a server feature flag. See <a href="../setting-up/server/dbaas.html">DBaaS</a>.</p>
 </blockquote>
 <h3 id="integrated-alerting">Integrated Alerting<a class="headerlink" href="#integrated-alerting" title="Permanent link">&para;</a></h3>
 <p>Enables <a href="../using/alerting.html">Integrated Alerting</a> and reveals the <a href="#communication">Communication</a> tab.</p>
-<h3 id="public-address">Public Address<a class="headerlink" href="#public-address" title="Permanent link">&para;</a></h3>
+<h3 id="microsoft-azure-monitoring">Microsoft Azure Monitoring<a class="headerlink" href="#microsoft-azure-monitoring" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p><b style="color:goldenrod">Caution</b> This is a technical preview feature.</p>
+</blockquote>
+<p>Activates Microsoft Azure monitoring.</p>
+<h3 id="backup-management">Backup Management<a class="headerlink" href="#backup-management" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p><b style="color:goldenrod">Caution</b> This is a technical preview feature.</p>
+</blockquote>
+<p>Activates backup management.</p>
+<h3 id="public-address_1">Public Address<a class="headerlink" href="#public-address_1" title="Permanent link">&para;</a></h3>
 <p>Public address for accessing DBaaS features on this server.</p>
 <h2 id="ssh-key">SSH Key<a class="headerlink" href="#ssh-key" title="Permanent link">&para;</a></h2>
 <p>This section lets you upload your public SSH key to access the PMM Server via SSH (for example, when accessing PMM Server as a <a href="../setting-up/server/virtual-appliance.html">virtual appliance</a>).</p>
@@ -229,7 +297,7 @@
 <p>This section lets you configure integration of VictoriaMetrics with an external Alertmanager.</p>
 <ul>
 <li>The <em>Alertmanager URL</em> field should contain the URL of the Alertmanager which would serve your PMM alerts.</li>
-<li>The <em>Alerting rules</em> field is used to specify alerting rules in the YAML configuration format.</li>
+<li>The <em>Prometheus Alerting rules</em> field is used to specify alerting rules in the YAML configuration format.</li>
 </ul>
 <p><img alt="" src="../_images/PMM_Settings_Alertmanager_Integration.jpg" /></p>
 <p>Fill both fields and click the <em>Apply Alertmanager settings</em> button to proceed.</p>
@@ -258,7 +326,7 @@
 <blockquote>
 <p>If there is no <em>Communication</em> tab, go to the <em>Advanced Settings</em> tab and activate <em>Integrated Alerting</em>.</p>
 </blockquote>
-<p><img alt="" src="../_images/PMM_Settings_Communication.jpg" /></p>
+<p><img alt="" src="../_images/PMM_Settings_Communication.png" /></p>
 <p>(Integrated Alerting uses a separate instance of Alertmanager run by <code>pmm-managed</code>.)</p>
 <h3 id="email">Email<a class="headerlink" href="#email" title="Permanent link">&para;</a></h3>
 <p>Settings for the SMTP email server:</p>
@@ -277,6 +345,7 @@
 <li><em>Password</em>: SMTP Auth using CRAM-MD5, LOGIN and PLAIN.</li>
 </ul>
 <h3 id="slack">Slack<a class="headerlink" href="#slack" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="../_images/PMM_Settings_Communication_Slack.png" /></p>
 <p>Settings for Slack notifications:</p>
 <ul>
 <li><em>URL</em>: The Slack webhook URL to use for Slack notifications.</li>
@@ -292,7 +361,7 @@
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-03-29
+            <i class="uil uil-refresh"></i> Page updated 2021-04-16
         </li>
         
     </ul>
@@ -564,6 +633,12 @@
 
 
 <li class="toctree-l2">
+    <a class="reference internal" href="backup.html">Backup</a>
+
+
+
+
+<li class="toctree-l2">
     <a class="reference internal" href="render-dashboard-images.html">Render dashboard images</a>
 
 
@@ -596,7 +671,7 @@
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../details/interface.html">User Interface components</a>
+    <a class="reference internal" href="../details/interface.html">UI components</a>
 
 
 
@@ -1033,6 +1108,12 @@
 
 
 <ul class="toctree" id="toctree">
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/2.16.0.html">Percona Monitoring and Management 2.16.0</a>
+
+
 
 
 <li class="toctree-l2">

@@ -52,7 +52,7 @@
 </head>
 
 <body>
-	<!-- 2021-04-15 04:44:37.216713+00:00 -->
+	<!-- 2021-04-16 05:16:32.181869+00:00 -->
     
 <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.3/css/line.css" type="text/css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" type="text/css">
@@ -208,35 +208,37 @@
 <p><code>node_exporter</code>, used in versions of PMM prior to 1.8.0, was not able to monitor general system metrics remotely.</p>
 </blockquote>
 <h2 id="adding-an-amazon-rds-mysql-aurora-mysql-or-remote-instance">Adding an Amazon RDS MySQL, Aurora MySQL or Remote Instance<a class="headerlink" href="#adding-an-amazon-rds-mysql-aurora-mysql-or-remote-instance" title="Permanent link">&para;</a></h2>
-<p>The preferred method of adding an Amazon RDS database instance to PMM is via the <em>PMM &rarr; PMM Add Instance</em> menu option.</p>
+<p>The preferred method of adding an Amazon RDS database instance to PMM is via the <i class="uil uil-cog"></i> <em>Configuration&rarr;PMM Inventory&rarr;Add Instance</em> menu option.</p>
 <p>This method supports Amazon RDS database instances that use Amazon Aurora, MySQL, or MariaDB engines, as well as any remote PostgreSQL, ProxySQL, MySQL and MongoDB instances.</p>
 <p>The following steps are needed to add an Amazon RDS database instance to PMM:</p>
 <ol>
 <li>
-<p>In the PMM web interface, go to <em>PMM &gt; PMM Add Instance</em>.</p>
+<p>In the PMM web interface, go to <em><i class="uil uil-cog"></i> Configuration&rarr;<svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.94602 8.89221L9.6093 9.55549L7.84915 11.3156L6.67493 10.1438L7.33821 9.48049L7.84915 9.99143L8.94602 8.89221Z" fill="#000"></path><path d="M16.4273 2.4679V4.04524H7.57258V2.4679H3.1593V22.6406H20.8382V2.4679H16.4273ZM5.87805 19.0429V14.5148H10.4062V19.0429H5.87805ZM11.8288 9.47102H17.7702V10.4085H11.8288V9.47102ZM11.8288 16.3101H17.7702V17.2476H11.8288V16.3101ZM10.4062 7.67571V12.2038H5.87805V7.67571H10.4062Z" fill="#000"></path><path d="M15.7242 1.73906V3.34219H8.27576V1.73906C8.27576 1.53047 8.44685 1.35938 8.65544 1.35938H15.3445C15.5554 1.35938 15.7242 1.53047 15.7242 1.73906Z" fill="#000"></path></svg> PMM Inventory&rarr;<i class="uil uil-plus-circle"></i> Add Instance</em></p>
 </li>
 <li>
 <p>Select <em>AWS RDS MySQL or Aurora MySQL &ndash; Add a remote instance</em>.</p>
+<p><img alt="image" src="../../_images/PMM_Add_Instance_RDS.png" /></p>
 </li>
 <li>
 <p>Enter the access key ID and the secret access key of your IAM user.</p>
-<p><img alt="image" src="../../_images/metrics-monitor.add-instance.png" /></p>
 </li>
 <li>
 <p>Click the <em>Discover</em> button for PMM to retrieve the available Amazon RDS
 instances.</p>
-<p><img alt="image" src="../../_images/metrics-monitor.add-instance.1.png" /></p>
+<p><img alt="image" src="../../_images/PMM_Add_Instance_RDS_Discover.png" /></p>
+</li>
+<li>
 <p>For the instance that you would like to monitor, select the <em>Start monitoring</em> button.</p>
 </li>
 <li>
 <p>You will see a new page with the number of fields. The list is divided into the following groups: <em>Main details</em>, <em>RDS database</em>, <em>Labels</em>, and <em>Additional options</em>. Some already known data, such as already entered <em>AWS access key</em>, are filled in automatically, and some fields are optional.</p>
-<p><img alt="image" src="../../_images/metrics-monitor.add-instance.rds-instances.1.png" /></p>
+<p><img alt="" src="../../_images/PMM_Add_Instance_RDS_Main_Details.png" /></p>
 <p>The <em>Main details</em> section allows you to specify the DNS hostname of your instance,
 the service name to use within PMM, the port your service is listening on, and the
 database user name and password.</p>
-<p><img alt="image" src="../../_images/metrics-monitor.add-instance.rds-instances.3.png" /></p>
+<p><img alt="image" src="../../_images/PMM_Add_Instance_RDS_Labels.png" /></p>
 <p>The <em>Labels</em> section allows you to specify labels for the environment, the AWS region and availability zone to be used, the Replication set and Cluster names and also it allows you to set the list of custom labels in a key:value format.</p>
-<p><img alt="image" src="../../_images/metrics-monitor.add-instance.rds-instances.4.png" /></p>
+<p><img alt="" src="../../_images/PMM_Add_Instance_RDS_Additional_Options.png" /></p>
 <p>The <em>Additional options</em> section contains specific flags which allow you to tune the RDS monitoring. They can allow you to skip connection check, to use TLS for the database connection, not to validate the TLS certificate and the hostname, as well as to disable basic and/or enhanced metrics collection for the RDS instance to reduce costs.</p>
 <p>Also this section contains a database-specific flag, which would allow Query Analytics for the selected remote database:</p>
 <ul>
@@ -255,27 +257,26 @@ database user name and password.</p>
 <p>Finally press the <em>Add service</em> button to start monitoring your instance.</p>
 </li>
 </ol>
-<!--
-## Adding an Amazon RDS PostgreSQL instance
-
-For PostgreSQL, use the same method described above.
-
-1. In the PMM web interface, go to *PMM > PMM Add Instance*.
-
-2. Select *AWS RDS MySQL or Aurora MySQL -- Add a remote instance*.
-    *At the moment of writing this guide, the Add button doesn't mention PostgreSQL but the discovery function already supports it.*
-
-    ![image](../../_images/PMM_rds_postgre_02_discover.png)
-
-4. Follow steps 4 to 6 as in the previous section. Fill the form and remember to select `PG Stat Statement` to enable Query Analytics.
-    To get queries for Query Analytics, you need to enable `pg_stat_statements` in your instance by running:
-
-    <div class="highlight"><pre><span></span><code>CREATE EXTENSION pg_stat_statements SCHEMA public;
+<h2 id="adding-an-amazon-rds-postgresql-instance">Adding an Amazon RDS PostgreSQL instance<a class="headerlink" href="#adding-an-amazon-rds-postgresql-instance" title="Permanent link">&para;</a></h2>
+<p>For PostgreSQL, use the same method described above.</p>
+<ol>
+<li>
+<p>In the PMM web interface, go to <em>PMM &gt; PMM Add Instance</em>.</p>
+</li>
+<li>
+<p>Select <em>AWS RDS MySQL or Aurora MySQL &ndash; Add a remote instance</em>.
+    <em>At the moment of writing this guide, the Add button doesn&rsquo;t mention PostgreSQL but the discovery function already supports it.</em></p>
+<p><img alt="image" src="../../_images/PMM_rds_postgre_02_discover.png" /></p>
+</li>
+<li>
+<p>Follow steps 4 to 6 as in the previous section. Fill the form and remember to select <code>PG Stat Statement</code> to enable Query Analytics.
+    To get queries for Query Analytics, you need to enable <code>pg_stat_statements</code> in your instance by running:</p>
+<div class="highlight"><pre><span></span><code>CREATE EXTENSION pg_stat_statements SCHEMA public;
 </code></pre></div>
-
-    ![image](../../_images/PMM_rds_postgre_03_form_1.png)
-    ![image](../../_images/PMM_rds_postgre_04_add_btn.png)
--->
+<p><img alt="image" src="../../_images/PMM_rds_postgre_03_form_1.png" />
+<img alt="image" src="../../_images/PMM_rds_postgre_04_add_btn.png" /></p>
+</li>
+</ol>
                     </div>
                 </div>
                 
@@ -283,7 +284,7 @@ For PostgreSQL, use the same method described above.
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-04-06
+            <i class="uil uil-refresh"></i> Page updated 2021-04-16
         </li>
         
     </ul>
@@ -555,6 +556,12 @@ For PostgreSQL, use the same method described above.
 
 
 <li class="toctree-l2">
+    <a class="reference internal" href="../../how-to/backup.html">Backup</a>
+
+
+
+
+<li class="toctree-l2">
     <a class="reference internal" href="../../how-to/render-dashboard-images.html">Render dashboard images</a>
 
 
@@ -587,7 +594,7 @@ For PostgreSQL, use the same method described above.
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../../details/interface.html">User Interface components</a>
+    <a class="reference internal" href="../../details/interface.html">UI components</a>
 
 
 
@@ -1024,6 +1031,12 @@ For PostgreSQL, use the same method described above.
 
 
 <ul class="toctree" id="toctree">
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.16.0.html">Percona Monitoring and Management 2.16.0</a>
+
+
 
 
 <li class="toctree-l2">
