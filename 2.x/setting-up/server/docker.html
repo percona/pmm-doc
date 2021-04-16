@@ -52,7 +52,7 @@
 </head>
 
 <body>
-	<!-- 2021-04-16 05:20:12.848681+00:00 -->
+	<!-- 2021-04-16 05:36:00.744301+00:00 -->
     
 <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.3/css/line.css" type="text/css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" type="text/css">
@@ -173,7 +173,7 @@ sudo docker cp pmm-data:/srv .
 </code></pre></div>
 </li>
 <li>
-<p>Pull and run the latest image.</p>
+<p>Pull the latest image and run the container.</p>
 <div class="highlight"><pre><span></span><code>sudo docker pull percona/pmm-server:2
 sudo docker run <span class="se">\</span>
 --detach <span class="se">\</span>
@@ -281,6 +281,49 @@ sudo docker run --rm --volumes-from pmm-data -it percona/pmm-server:2 chown -R p
 </code></pre></div>
 </li>
 </ol>
+<h2 id="hosts-with-no-internet-connectivity">Hosts with no internet connectivity<a class="headerlink" href="#hosts-with-no-internet-connectivity" title="Permanent link">&para;</a></h2>
+<p>If the host where you will run PMM Server has no internet connection, you can download the Docker image on a separate (internet-connected) host and securely copy it.</p>
+<ol>
+<li>
+<p>On an internet-connected host, download the Docker image and its checksum file.</p>
+<div class="highlight"><pre><span></span><code>wget https://downloads.percona.com/downloads/pmm2/2.16.0/docker/pmm-server-2.16.0.docker
+wget https://downloads.percona.com/downloads/pmm2/2.16.0/docker/pmm-server-2.16.0.sha256sum
+</code></pre></div>
+</li>
+<li>
+<p>Copy both files to where you will run PMM Server.</p>
+</li>
+<li>
+<p>Open a terminal on the PMM Server host.</p>
+</li>
+<li>
+<p>(Optional) Check the Docker image file integrity.</p>
+<div class="highlight"><pre><span></span><code>shasum -ca <span class="m">256</span> pmm-server-2.16.0.sha256sum
+</code></pre></div>
+</li>
+<li>
+<p>Load the image.</p>
+<div class="highlight"><pre><span></span><code>sudo docker load -i pmm-server-2.16.0.docker
+</code></pre></div>
+</li>
+<li>
+<p>Create the <code>pmm-data</code> persistent data container.</p>
+<div class="highlight"><pre><span></span><code>sudo docker create --volume /srv <span class="se">\</span>
+--name pmm-data percona/pmm-server:2.16.0 /bin/true
+</code></pre></div>
+</li>
+<li>
+<p>Run the container.</p>
+<div class="highlight"><pre><span></span><code>sudo docker run <span class="se">\</span>
+--detach <span class="se">\</span>
+--restart always <span class="se">\</span>
+--publish <span class="m">80</span>:80 --publish <span class="m">443</span>:443 <span class="se">\</span>
+--volumes-from pmm-data <span class="se">\</span>
+--name pmm-server <span class="se">\</span>
+percona/pmm-server:2.16.0
+</code></pre></div>
+</li>
+</ol>
                     </div>
                 </div>
                 
@@ -288,7 +331,7 @@ sudo docker run --rm --volumes-from pmm-data -it percona/pmm-server:2 chown -R p
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-04-08
+            <i class="uil uil-refresh"></i> Page updated 2021-04-16
         </li>
         
     </ul>
