@@ -1,6 +1,8 @@
 # Percona Monitoring and Management (PMM) Documentation
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fpercona%2Fpmm-doc.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fpercona%2Fpmm-doc?ref=badge_shield)
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/9db2c2b3-f6a8-4d56-a853-8414f8580a43/deploy-status)](https://app.netlify.com/sites/pmm-doc/deploys)
+
 [Percona Monitoring and Management (PMM)](https://www.percona.com/software/database-tools/percona-monitoring-and-management) is a database monitoring solution that is free and open-source.
 
 This repo holds the source files for the PMM technical documentation published at <https://www.percona.com/doc/percona-monitoring-and-management/>.
