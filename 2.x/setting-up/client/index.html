@@ -52,7 +52,6 @@
 </head>
 
 <body>
-	<!-- 2021-04-20 05:40:53.639451+00:00 -->
     
 <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.3/css/line.css" type="text/css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" type="text/css">
@@ -135,13 +134,6 @@
 </ul>
 </li>
 </ul>
-<!--
-    Credentials used in communication between the exporters and the PMM Server are the following ones:
-
-    * login is `pmm`
-    * password is equal to Agent ID, which can be seen e.g. on the Inventory Dashboard.
--->
-
 <h2 id="package-manager">Install PMM Client with a package manager<a class="headerlink" href="#package-manager" title="Permanent link">&para;</a></h2>
 <h3 id="install-on-debian-based-distributions">Install on Debian-based distributions<a class="headerlink" href="#install-on-debian-based-distributions" title="Permanent link">&para;</a></h3>
 <ol>
@@ -352,8 +344,6 @@ pmm-admin status
 </li>
 </ol>
 <h2 id="docker-compose">Run PMM Client with Docker compose<a class="headerlink" href="#docker-compose" title="Permanent link">&para;</a></h2>
-<!-- thanks: https://gist.github.com/paskal -->
-
 <ol>
 <li>
 <p>Copy and paste this text into a file called <code>docker-compose.yml</code>.</p>
@@ -418,26 +408,6 @@ pmm-admin status
 <blockquote>
 <p><b style="color:goldenrod">Caution</b> <code>pmm-agent.yaml</code> contains sensitive credentials and should not be shared.</p>
 </blockquote>
-<!--
-Troubleshooting
-
-1) Can't ping server from client
-a) - Is client still member of swarm? Check status with
-docker node ls --filter role=worker
-Status should be 'Ready', availability 'Active'
-See https://docs.docker.com/engine/reference/commandline/swarm/
-b) Check firewall
-
-2) "Failed to register pmm-agent on PMM Server: Node with name "pmm-client-myhost" already exists"
-Change name of host in docker-compose file
-
-3) "docker: Error response from daemon: attaching to network failed, make sure your network options are correct and check manager logs: context deadline exceeded."
-a) Try again. VMware network issues.
-b) Has client host restarted? Leave/join swarm. On leader, clean up old with docker node rm ID
-c) Increase VM memory > 2048
-
--->
-
 <h2 id="register">Register node with PMM Server<a class="headerlink" href="#register" title="Permanent link">&para;</a></h2>
 <p>Register your node (<code>X.X.X.X</code> is the IP address of your PMM Server).</p>
 <div class="highlight"><pre><span></span><code>pmm-admin config --server-insecure-tls --server-url<span class="o">=</span>https://admin:admin@X.X.X.X:443
@@ -491,7 +461,7 @@ One of next types has to be set: mysql, mongodb, postgresql, proxysql, haproxy, 
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-04-08
+            <i class="uil uil-refresh"></i> Page updated 2021-04-20
         </li>
         
     </ul>
