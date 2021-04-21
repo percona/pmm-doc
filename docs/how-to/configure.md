@@ -151,7 +151,7 @@ If you'll disable the already enabled Integrated Alerting feature you will stop 
 
 Activates Microsoft Azure monitoring.
 
-If you'll disable the already enabled Microsoft Azure monitoring feature you will not be able to do discovery and add Azure instances using the native  UI from PMM. No date related to already added Azure instances will not be deleted and already added instances will be monitored 
+If you'll disable the already enabled Microsoft Azure monitoring feature you will not be able to do discovery and add Azure instances using the native  UI from PMM. Data related to already added Azure instances will not be deleted and already added instances will be monitored 
 
 ### Backup Management {: #backup-management }
 
