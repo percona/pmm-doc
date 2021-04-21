@@ -1,5 +1,13 @@
 # PostgreSQL
 
+PMM Client collects metrics from [PostgreSQL][POSTGRESQ]
+
+This page shows you how to set up PMM to monitor a PostgreSQL database instance. (You should read it completely before starting work.)
+
+
+
+
+
 PMM follows the [postgresql.org EOL policy](https://www.postgresql.org/support/versioning/).
 
 For specific details on supported platforms and versions, see
