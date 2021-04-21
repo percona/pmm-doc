@@ -85,10 +85,15 @@ As well as via the *PMM Settings* page, you can also disable telemetry with the 
 > - If the Security Threat Tool is enabled in PMM Settings, Telemetry is automatically enabled.
 >
 > - Telemetry is sent immediately; the 24-hour grace period is not honored.
+> 
+
+If you'll disable the already enabled Telemetry feature PMM will stop sending data and all feature where you can get some data from Percona will be not available to be enabled 
 
 ### Check for updates
 
 When active, PMM will automatically check for updates and put a notification in the home page *Updates* dashboard if any are available.
+
+If you'll disable the already enabled Check for Updates feature you will not be longer informed about new versions of PMM and might miss important features we'll ad in future 
 
 ### Security Threat Tool
 
@@ -120,6 +125,8 @@ Checks use the *Standard* interval by default. To change a check's interval:
 
 (Read more at [Security Threat Tool](../using/platform/security-threat-tool.md).)
 
+If you'll disable the already enabled Security Threat Tool  feature you will not be able to see the Security alerts and Security Checks will not be executed on the system
+
 ## Public address
 
 The address or hostname PMM Server will be accessible at. Click *Get from browser* to have your browser detect and populate this field automatically.
@@ -130,15 +137,21 @@ Enables DBaaS features on this server.
 
 > <b style="color:goldenrod">Caution</b> DBaaS functionality is a technical preview that must be turned on with a server feature flag. See [DBaaS](../setting-up/server/dbaas.md).
 
+If you'll disable the already enabled DBaaS feature you will not lose any of your K8s data or DB cluster. The only effect this will have is the DBaaS menu will disappear from the PMM 
+
 ### Integrated Alerting
 
 Enables [Integrated Alerting](../using/alerting.md) and reveals the [Communication](#communication) tab.
+
+If you'll disable the already enabled Integrated Alerting feature you will stop receiving the notifications and will not be able to access the UI of this feature 
 
 ### Microsoft Azure Monitoring
 
 > <b style="color:goldenrod">Caution</b> This is a technical preview feature.
 
 Activates Microsoft Azure monitoring.
+
+If you'll disable the already enabled Microsoft Azure monitoring feature you will not be able to do discovery and add Azure instances using the native  UI from PMM. No date related to already added Azure instances will not be deleted and already added instances will be monitored 
 
 ### Backup Management {: #backup-management }
 
