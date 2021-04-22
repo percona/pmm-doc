@@ -139,6 +139,116 @@ percona/pmm-server:2
 <p>In a web browser, visit <em>server hostname</em>:80 or <em>server hostname</em>:443 to see the PMM user interface.</p>
 </li>
 </ol>
+<h3 id="docker-environment-variables">Docker environment variables<a class="headerlink" href="#docker-environment-variables" title="Permanent link">&para;</a></h3>
+<p>It is possible to change some server setting by using environment variables when starting the Docker container.
+Use <code>-e var=value</code> in your pmm-server run command.</p>
+<table class="table">
+<thead>
+<tr>
+<th scope="col">Variable</th>
+<th scope="col">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>DISABLE_UPDATES</code></td>
+<td>Disable automatic updates</td>
+</tr>
+<tr>
+<td><code>DISABLE_TELEMETRY</code></td>
+<td>Disable built-in telemetry and disable STT if telemetry is disabled</td>
+</tr>
+<tr>
+<td><code>METRICS_RESOLUTION</code></td>
+<td>High metrics resolution in seconds</td>
+</tr>
+<tr>
+<td><code>METRICS_RESOLUTION_HR</code></td>
+<td>High metrics resolution (same as above)</td>
+</tr>
+<tr>
+<td><code>METRICS_RESOLUTION_MR</code></td>
+<td>Medium metrics resolution in seconds</td>
+</tr>
+<tr>
+<td><code>METRICS_RESOLUTION_LR</code></td>
+<td>Low metrics resolution in seconds</td>
+</tr>
+<tr>
+<td><code>DATA_RETENTION</code></td>
+<td>How many days to keep time-series data in ClickHouse</td>
+</tr>
+<tr>
+<td><code>ENABLE_VM_CACHE</code></td>
+<td>Enable cache in VM</td>
+</tr>
+<tr>
+<td><code>ENABLE_ALERTING</code></td>
+<td>Enable integrated alerting</td>
+</tr>
+<tr>
+<td><code>ENABLE_AZUREDISCOVER</code></td>
+<td>Enable support for discovery of Azure databases</td>
+</tr>
+<tr>
+<td><code>ENABLE_BACKUP_MANAGEMENT</code></td>
+<td>Enable integrated backup tools</td>
+</tr>
+<tr>
+<td><code>PERCONA_TEST_SAAS_HOST</code></td>
+<td>SaaS server hostname</td>
+</tr>
+<tr>
+<td><code>PERCONA_TEST_DBAAS</code></td>
+<td>Enable testing DBaaS features. (Will be deprecated in future versions.)</td>
+</tr>
+<tr>
+<td><code>ENABLE_DBAAS</code></td>
+<td>Enable DBaaS features</td>
+</tr>
+<tr>
+<td><code>PMM_DEBUG</code></td>
+<td>Enables a more verbose log level</td>
+</tr>
+<tr>
+<td><code>PMM_TRACE</code></td>
+<td>Enables a more verbose log level including traceback information</td>
+</tr>
+</tbody>
+</table>
+<h4 id="ignored-variables">Ignored variables<a class="headerlink" href="#ignored-variables" title="Permanent link">&para;</a></h4>
+<p>These variables will be ignored by <code>pmm-managed</code> when starting the server. If any other variable is found,
+it will be considered invalid and the server won&rsquo;t start.</p>
+<table class="table">
+<thead>
+<tr>
+<th scope="col">Variable</th>
+<th scope="col">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>_</code>, <code>HOME</code>, <code>HOSTNAME</code>, <code>LANG</code>, <code>PATH</code>, <code>PWD</code>, <code>SHLVL</code>, <code>TERM</code></td>
+<td>Default environment variables</td>
+</tr>
+<tr>
+<td><code>GF_*</code></td>
+<td>Grafana&rsquo;s environment variables</td>
+</tr>
+<tr>
+<td><code>SUPERVISOR_</code></td>
+<td>Supervisord environment variables</td>
+</tr>
+<tr>
+<td><code>PERCONA_TEST_</code></td>
+<td>Unknown variable but won&rsquo;t prevent the server to start</td>
+</tr>
+<tr>
+<td><code>PERCONA_TEST_DBAAS</code></td>
+<td>Deprecated. Use ENABLE_DBAAS</td>
+</tr>
+</tbody>
+</table>
 <h2 id="backup-and-upgrade">Backup and upgrade<a class="headerlink" href="#backup-and-upgrade" title="Permanent link">&para;</a></h2>
 <p>You can test a new release of the PMM Server Docker image by making backups of your current <code>pmm-server</code> and <code>pmm-data</code> containers which you can restore if you need to.</p>
 <ol>
@@ -328,7 +438,7 @@ percona/pmm-server:2.16.0
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-04-20
+            <i class="uil uil-refresh"></i> Page updated 2021-04-22
         </li>
         
     </ul>
