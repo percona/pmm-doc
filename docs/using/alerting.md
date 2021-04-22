@@ -140,7 +140,7 @@ This page has four tabs.
     >
     > **Restrictions**
     >
-    > - Value strings must not include any of these special characters: `@`, ` ` (space), ...
+    > - Value strings must not include any of these special characters: `<` `>` `!` `@` `#` `$` `%` `^` `&` `*` `(` `)` `_` `/` `\` `'` `+` `-` `=` ` ` (space)
     > - Any variables must be predefined.
 
 4. Click *Add* to add the alert rule template, or *Cancel* to abort the operation.
