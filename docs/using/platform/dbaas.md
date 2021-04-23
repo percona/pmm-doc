@@ -9,7 +9,7 @@ The DBaaS dashboard is where you add, remove, and operate on Kubernetes and data
 ## Activate a DBaaS feature
 
 **To activate the *DBaaS* feature**, select {{ icon.bars }} *PMM* --> *PMM Settings* --> *Advanced settings*.
-Then turn on the DBaaS feature by clicking on {{ icon.toggle-off }} toggle in the *Technical preview features* section of the page.
+Then turn on the DBaaS feature by clicking on {{ icon.toggleoff }} toggle in the *Technical preview features* section of the page.
 
 To open the DBaaS dashboard:
 
