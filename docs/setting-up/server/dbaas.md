@@ -68,7 +68,7 @@ alias kubectl='minikube kubectl --'
 
 3. ***IMPORTANT***: *Please follow instructions on* [**How to activate the *DBaaS* feature in Advanced Settings of PMM**](../../using/platform/dbaas.md#activate-a-dbaas-feature).
 
-    You need to enable the feature using PMM UI if you omited `--env ENABLE_DBAAS=1` when starting up the container.
+    You need to enable the feature using PMM UI if you omitted `--env ENABLE_DBAAS=1` when starting up the container.
 
 ## Install Percona operators in minikube
 
