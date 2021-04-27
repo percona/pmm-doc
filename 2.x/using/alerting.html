@@ -258,6 +258,11 @@ templates:
 <li><code>value</code> (optional): the parameter value itself.</li>
 <li><code>range</code> (optional): only for <code>float</code> parameters, defining the boundaries for the value.</li>
 </ul>
+<p><strong>Restrictions</strong></p>
+<ul>
+<li>Value strings must not include any of these special characters: <code>&lt;</code> <code>&gt;</code> <code>!</code> <code>@</code> <code>#</code> <code>$</code> <code>%</code> <code>^</code> <code>&amp;</code> <code>*</code> <code>(</code> <code>)</code> <code>_</code> <code>/</code> <code>\</code> <code>'</code> <code>+</code> <code>-</code> <code>=</code> <code></code> (space)</li>
+<li>Any variables must be predefined.</li>
+</ul>
 </blockquote>
 </li>
 <li>
@@ -277,7 +282,7 @@ templates:
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-04-20
+            <i class="uil uil-refresh"></i> Page updated 2021-04-27
         </li>
         
     </ul>
