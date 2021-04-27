@@ -129,14 +129,20 @@
 <li>
 <p>Run the image to start PMM Server.</p>
 <div class="highlight"><pre><span></span><code>sudo docker run --detach --restart always <span class="se">\</span>
---publish <span class="m">80</span>:80 --publish <span class="m">443</span>:443 <span class="se">\</span>
+--publish <span class="m">443</span>:443 <span class="se">\</span>
 --volumes-from pmm-data --name pmm-server <span class="se">\</span>
 percona/pmm-server:2
 </code></pre></div>
+<blockquote>
+<p>Optionally you can enable http (insecure) by including <code>--publish 80:80</code> in the above docker run command however note that PMM Client <em>requires</em> TLS to communication with the server so will only work on the secure port. </p>
+</blockquote>
 <p>You can disable manual updates via the Home Dashboard <em>PMM Upgrade</em> panel by adding <code>-e DISABLE_UPDATES=true</code> to the <code>docker run</code> command.</p>
 </li>
 <li>
-<p>In a web browser, visit <em>server hostname</em>:80 or <em>server hostname</em>:443 to see the PMM user interface.</p>
+<p>In a web browser, visit <em>https://server hostname</em>:443 (or <em>//server hostname</em>:80 if optionally enabled) to see the PMM user interface.</p>
+<blockquote>
+<p>PRO Tip: Eliminate browser certificate warnings by configuring a <a href="https://www.percona.com/doc/percona-monitoring-and-management/2.x/how-to/secure.html#ssl-encryption">trusted certificate</a></p>
+</blockquote>
 </li>
 </ol>
 <h3 id="docker-environment-variables">Docker environment variables<a class="headerlink" href="#docker-environment-variables" title="Permanent link">&para;</a></h3>
@@ -254,12 +260,12 @@ it will be considered invalid and the server won&rsquo;t start.</p>
 <ol>
 <li>
 <p>Find out which release you have now.</p>
-<div class="highlight"><pre><span></span><code>sudo docker <span class="nb">exec</span> -it pmm-server curl -u admin:admin http://localhost/v1/version
+<div class="highlight"><pre><span></span><code>sudo docker <span class="nb">exec</span> -it pmm-server curl -u admin:admin https://localhost/v1/version
 </code></pre></div>
 <blockquote>
 <p><strong>Tip:</strong> Use <code>jq</code> to extract the quoted string value.
 <div class="highlight"><pre><span></span><code>sudo apt install jq <span class="c1"># Example for Debian, Ubuntu</span>
-sudo docker <span class="nb">exec</span> -it pmm-server curl -u admin:admin http://localhost/v1/version <span class="p">|</span> jq .version
+sudo docker <span class="nb">exec</span> -it pmm-server curl -u admin:admin https://localhost/v1/version <span class="p">|</span> jq .version
 </code></pre></div></p>
 </blockquote>
 </li>
@@ -287,7 +293,7 @@ sudo docker cp pmm-data:/srv .
 sudo docker run <span class="se">\</span>
 --detach <span class="se">\</span>
 --restart always <span class="se">\</span>
---publish <span class="m">80</span>:80 --publish <span class="m">443</span>:443 <span class="se">\</span>
+--publish <span class="m">443</span>:443 <span class="se">\</span>
 --volumes-from pmm-data <span class="se">\</span>
 --name pmm-server <span class="se">\</span>
 percona/pmm-server:2
@@ -424,7 +430,7 @@ wget https://downloads.percona.com/downloads/pmm2/2.16.0/docker/pmm-server-2.16.
 <div class="highlight"><pre><span></span><code>sudo docker run <span class="se">\</span>
 --detach <span class="se">\</span>
 --restart always <span class="se">\</span>
---publish <span class="m">80</span>:80 --publish <span class="m">443</span>:443 <span class="se">\</span>
+--publish <span class="m">443</span>:443 <span class="se">\</span>
 --volumes-from pmm-data <span class="se">\</span>
 --name pmm-server <span class="se">\</span>
 percona/pmm-server:2.16.0
@@ -438,7 +444,7 @@ percona/pmm-server:2.16.0
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-04-22
+            <i class="uil uil-refresh"></i> Page updated 2021-04-27
         </li>
         
     </ul>
