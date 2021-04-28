@@ -1,32 +1,27 @@
 # PostgreSQL
 
-PMM Client collects metrics from [PostgreSQL][POSTGRESQ]
+PMM Client collects metrics from [PostgreSQL][POSTGRESQL] and [Percona Distribution for PostgreSQL][PERCONA_POSTGRESQL] databases.
 
-This page shows you how to set up PMM to monitor a PostgreSQL database instance. (You should read it completely before starting work.)
+This page shows how to set up PMM to monitor a PostgreSQL database instance. (Read it completely before starting work.)
 
+Here is an overview of the steps involved.
 
+```plantuml source="_resources/diagrams/Setting-Up_Client_PostgreSQL.puml"
+```
+## Before you start
 
+- One of these database extensions is installed:
+    1. `pg_stat_statements`, the original extension created by PostgreSQL, part of the `Here is an overview of the steps involved.
+` package available on Linux.
+    1. `pg_stat_monitor`, a new extension created by Percona, based on `pg_stat_statements` and compatible with it.
+- [PMM Server is installed](../server/index.md) and running with a known IP address accessible from the client node.
+- [PMM Client is installed](index.md) and the [node registered with PMM Server](index.md#register).
+- You have superuser (root) access on the client host.
+- You have superuser access to any database servers that you want to monitor.
 
+## Create a database account for PMM {: #setting-up-client-user}
 
-PMM follows the [postgresql.org EOL policy](https://www.postgresql.org/support/versioning/).
-
-For specific details on supported platforms and versions, see
-[Percona’s Software Platform Lifecycle page](https://www.percona.com/services/policies/percona-software-platform-lifecycle/).
-
-To monitor PostgreSQL queries, you must install a database extension. There are two choices:
-
-- `pg_stat_monitor`, a new extension created by Percona, based on `pg_stat_statements` and compatible with it.
-- `pg_stat_statements`, the original extension created by PostgreSQL, part of the `postgresql-contrib` package available on Linux.
-
-(We recommend using only one. If you use both, you will get duplicate metrics.)
-
-`pg_stat_monitor` provides all the features of `pg_stat_statements`, but extends it to provide bucket-based data aggregation, a feature missing from `pg_stat_statements`. (`pg_stat_statements` accumulates data without providing aggregated statistics or histogram information.)
-
-> <b style="color:goldenrod">Important</b> While we recommend use of the newer `pg_stat_monitor` extension, be aware that it is currently beta status and unsupported.
-
-## Prerequisites
-
-We recommend that you create a PostgreSQL user for `SUPERUSER` level access. This lets you gather the most data with the least fuss.
+We recommend creating a PostgreSQL user for `SUPERUSER` level access.
 
 This user must be able to connect to the `postgres` database where the extension was installed. The PostgreSQL user should have local password authentication enabled to access PMM. To do this, set `ident` to `md5` for the user in the `pg_hba.conf` configuration file.
 
@@ -41,6 +36,61 @@ Or, if your database runs on Amazon RDS:
 ```sql
 CREATE USER pmm_user WITH rds_superuser ENCRYPTED PASSWORD '******';
 ```
+
+## Choose and configure an extension
+
+> <b style="color:goldenrod">Important</b> While we recommend use of the newer `pg_stat_monitor` extension, be aware that it is currently beta status and unsupported.
+>
+> We recommend using only one. If you use both, you will get duplicate metrics.
+
+- [`pg_stat_statements`](#pg_stat_statements) accumulates data but doesn't provide aggregated statistics or histogram information.
+
+- [`pg_stat_monitor`](#pg_stat_monitor) has all the features of `pg_stat_statements`, and adds bucket-based data aggregation (a feature missing from `pg_stat_statements`).
+
+
+
+
+
+### `pg_stat_statements`
+
+`pg_stat_statements` is included in the official PostgreSQL `postgresql-contrib` available from your Linux distribution package manager.
+
+**Install on Debian**
+
+```sh
+sudo apt-get install postgresql-contrib
+```
+
+**Install on Red Hat**
+
+```sh
+sudo yum install -y postgresql-contrib
+```
+
+**Configure**
+
+1. Add these lines to your `postgresql.conf` file:
+
+    ```sh
+    shared_preload_libraries = 'pg_stat_statements'
+    track_activity_query_size = 2048 # Increase tracked query string size
+    pg_stat_statements.track = all   # Track all statements including nested
+    ```
+
+2. Restart your PostgreSQL instance.
+
+3. Install the extension (run in the `postgres` database).
+
+    ```sh
+    CREATE EXTENSION pg_stat_statements SCHEMA public;
+    ```
+
+
+
+
+
+
+
 
 ## `pg_stat_monitor`
 
@@ -58,32 +108,27 @@ When all buckets in the chain have been used, the first bucket is reused and its
 
 If a bucket fills before its expiration time is reached, data is discarded.
 
-### Compatibility
+**Compatibility**
 
 `pg_stat_monitor` has been tested with:
 
 - PostgreSQL versions 11, 12, 13.
 - Percona Distribution for PostgreSQL versions 11, 12, 13.
 
-### Install
+**Install**
 
-This extension can be installed in two ways:
+There are two ways to install this extension:
 
-- For Percona Distribution for PostgreSQL: Using standard Linux package manager tools.
+- For *Percona Distribution for PostgreSQL*: Using a Linux package manager.
 
-- For PostgreSQL or Percona Distribution for PostgreSQL: [download and compile the source code](https://github.com/percona/pg_stat_monitor#installation).
+- For *PostgreSQL* or *Percona Distribution for PostgreSQL*: [download and compile the source code](https://github.com/percona/pg_stat_monitor#installation).
 
-#### Install using Linux package manager
+**Install using a Linux package manager**
 
 The `pg-stat-monitor` extension is included in *Percona Distribution for PostgreSQL*. This can be installed via the `percona-release` package.
 
-This section reproduces parts of the following:
 
-- [Configuring Percona Repositories with percona-release](https://www.percona.com/doc/percona-repo-config/percona-release.html)
-
-- [Installing Percona Distribution for PostgreSQL](https://www.percona.com/doc/postgresql/LATEST/installing.html)
-
-##### Debian
+**Install on Debian**
 
 ```sh
 sudo apt-get install -y wget gnupg2 lsb-release
@@ -94,7 +139,7 @@ sudo percona-release setup ppg-12 # version 12 (others available)
 sudo apt install -y percona-postgresql-12
 ```
 
-##### Red Hat
+**Install on Red Hat**
 
 ```sh
 sudo yum install -y https://repo.percona.com/yum/percona-release-latest.noarch.rpm
@@ -110,9 +155,9 @@ sudo percona-release setup ppg-12
 sudo yum install -y percona-postgresql12-server
 ```
 
-#### Install from source code
+**Install from source code**
 
-##### Debian
+**Debian**
 
 1. Install common packages
 
@@ -148,7 +193,7 @@ sudo yum install -y percona-postgresql12-server
     sudo make USE_PGXS=1 install
     ```
 
-##### Red Hat
+**Red Hat**
 
 1. Install common packages
 
@@ -183,7 +228,7 @@ sudo yum install -y percona-postgresql12-server
     sudo make PG_CONFIG=/usr/pgsql-12/bin/pg_config USE_PGXS=1 install
     ```
 
-### Configure
+**Configure**
 
 1. Set or change the value for `shared_preload_library` in your `postgresql.conf` file:
 
@@ -249,41 +294,6 @@ To make settings permanent, add them to your `postgresql.conf` file before start
 :   Whether to track planning statistics.
 
 
-## `pg_stat_statements`
-
-`pg_stat_statements` is included in the official PostgreSQL `postgresql-contrib` available from your Linux distribution package manager.
-
-### Install
-
-#### Debian
-
-```sh
-sudo apt-get install postgresql-contrib
-```
-
-#### Red Hat
-
-```sh
-sudo yum install -y postgresql-contrib
-```
-
-### Configure
-
-1. Add these lines to your `postgresql.conf` file:
-
-    ```sh
-    shared_preload_libraries = 'pg_stat_statements'
-    track_activity_query_size = 2048 # Increase tracked query string size
-    pg_stat_statements.track = all   # Track all statements including nested
-    ```
-
-2. Restart your PostgreSQL instance.
-
-3. Install the extension (run in the `postgres` database).
-
-    ```sh
-    CREATE EXTENSION pg_stat_statements SCHEMA public;
-    ```
 
 ## Adding PostgreSQL queries and metrics monitoring
 
@@ -330,3 +340,22 @@ Capturing read and write time statistics is possible only if `track_io_timing` s
 ALTER SYSTEM SET track_io_timing=ON;
 SELECT pg_reload_conf();
 ```
+
+
+## Supported versions
+
+PMM follows [PostgreSQL's end-of-life policy][POSTGRESQL_VERSIONING].
+
+For specific details on supported platforms and versions, see [Percona’s Software Platform Lifecycle page][PERCONA_LIFECYCLE].
+
+> See also
+> - [Configuring Percona Repositories with percona-release][PERCONA_RELEASE]
+> - [Installing Percona Distribution for PostgreSQL][PERCONA_POSTGRESQL_INSTALL]
+
+
+[POSTGRESQL]: https://www.postgresql.org/
+[POSTGRESQL_VERSIONING]: https://www.postgresql.org/support/versioning/
+[PERCONA_LIFECYCLE]: https://www.percona.com/services/policies/percona-software-platform-lifecycle/
+[PERCONA_POSTGRESQL]: https://www.percona.com/software/postgresql-distribution
+[PERCONA_RELEASE]: https://www.percona.com/doc/percona-repo-config/percona-release.html
+[PERCONA_POSTGRESQL_INSTALL]: https://www.percona.com/doc/postgresql/LATEST/installing.html
