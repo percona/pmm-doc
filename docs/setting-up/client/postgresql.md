@@ -204,7 +204,7 @@ Here are the configuration parameters, available values ranges, and default valu
 
 To make settings permanent, add them to your `postgresql.conf` file before starting your PostgreSQL instance.
 
-Please see [pg_stat_monitor Configuration section](https://github.com/percona/pg_stat_monitor/blob/master/docs/USER_GUIDE.md#configuration) for more details about possible parameters
+> See [`pg_stat_monitor` GitHub repository](https://github.com/percona/pg_stat_monitor/blob/master/docs/USER_GUIDE.md#configuration) for details about available parameters.
 
 ## `pg_stat_statements`
 
