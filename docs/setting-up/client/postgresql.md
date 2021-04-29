@@ -204,42 +204,7 @@ Here are the configuration parameters, available values ranges, and default valu
 
 To make settings permanent, add them to your `postgresql.conf` file before starting your PostgreSQL instance.
 
-`pg_stat_monitor.pgsm_max` (5000-2147483647 bytes) Default: 5000
-:    Defines the limit of shared memory. Memory is used by buckets in a circular manner and is divided between buckets equally when PostgreSQL starts.
-
-`pg_stat_monitor.pgsm_query_max_len` (1024-2147483647 bytes) Default: 1024
-:    The maximum size of the query. Long queries are truncated to this length to avoid unnecessary usage of shared memory. This parameter must be set before PostgreSQL starts.
-
-`pg_stat_monitor.pgsm_enable` (0-1) Default: 1 (true).
-:    Enables or disables monitoring. A value of `Disable` means that `pg_stat_monitor` will not collect statistics for the entire cluster.
-
-`pg_stat_monitor.pgsm_track_utility` (0-1) Default: 1 (true)
-:    Controls whether utility commands (all except SELECT, INSERT, UPDATE and DELETE) are tracked.
-
-`pg_stat_monitor.pgsm_normalized_query` (0-1) Default: 0 (false)
-:    By default, a query shows the actual parameter instead of a placeholder. Set to 1 to change to showing value placeholders (as `$n` where `n` is an integer).
-
-`pg_stat_monitor.pgsm_max_buckets` (1-10) Default: 10
-:    Sets the maximum number of available data buckets.
-
-`pg_stat_monitor.pgsm_bucket_time` (1-2147483647 seconds) Default: 60
-:    Sets the lifetime of the bucket. The system switches between buckets on the basis of this value.
-
-`pg_stat_monitor.pgsm_object_cache` (50-2147483647) Default: 50
-:    The maximum number of objects in the information cache.
-
-`pg_stat_monitor.pgsm_respose_time_lower_bound` (1-2147483647 milliseconds) Default: 1
-:    Sets the lower bound of the execution time histogram.
-
-`pg_stat_monitor.pgsm_respose_time_step` (1-2147483647 milliseconds) Default: 1
-:    Sets the time value of the steps for the histogram.
-
-`pg_stat_monitor.pgsm_query_shared_buffer` (500000-2147483647 bytes) Default: 500000
-:   Sets the query shared buffer size.
-
-`pg_stat_monitor.pgsm_track_planning` (0-1) Default: 1 (true)
-:   Whether to track planning statistics.
-
+Please see [pg_stat_monitor Configuration section](https://github.com/percona/pg_stat_monitor/blob/master/docs/USER_GUIDE.md#configuration) for more details about possible parameters
 
 ## `pg_stat_statements`
 
