@@ -12,46 +12,33 @@ Legend
 <#lightgrey>| Optional |
 endlegend
 
-#lightgrey:Create a database account for PMM;
+#lightgrey:Create a database\naccount for PMM;
 partition "Choose and configure\nan extension" {
 	split
 		-> ""pg_stat_statements"";
-		:Install ""postgresql-contrib"";
-		:Configure;
+		:Install\n""postgresql-contrib"";
 	split again
 		-> ""ps_stat_monitor"";
 		split
 			-> Percona distribution;
-			:Linux package manager;
+			:Install with\nLinux package\nmanager;
 		split again
 			-> PostgreSQL;
-			:Source code;
+			:Compile from\nsource code;
 		end split
-		:Configure;
 	end split
+	:Configure extension;
 }
 partition "Add a service " {
 	split
 	-> With user interface;
-		:PMM <&arrow-thick-right>\nPMM Add Instance <&arrow-thick-right>\nMySQL -\nAdd a remote instance;
+		:PMM <&arrow-thick-right>\nPMM Add Instance <&arrow-thick-right>\nPostgreSQL -\nAdd a remote instance;
 	split again
 	-> On command line;
-		split
-			-> Slow query log;
 			:<code>
-			pmm-admin add mysql
-			--query-source=slowlog
-			--size-slow-logs=N
+			pmm-admin add postgresql
 			...
 			</code>;
-		split again
-			-> Performance Schema;
-			:<code>
-			pmm-admin add mysql
-			--query-source=perfschema
-			...
-			</code>;
-		end split
 	end split
 }
 #lightgrey:Check the service;
