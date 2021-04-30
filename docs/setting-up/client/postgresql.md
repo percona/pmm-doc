@@ -50,6 +50,12 @@ We recommend creating a PMM database account that can connect to the `postgres` 
 	psql -c "select pg_reload_conf()"
 	```
 
+4. Check local login by opening a `psql` session. If successful, exit (with `Ctrl-D` or `\q`).
+
+	```sh
+	psql postgres pmm
+	```
+
 ## Choose and configure an extension
 
 Decide which database extension to use, and configure your database server for it. The choices are:
@@ -141,7 +147,6 @@ You can now [add the service](#add-a-service).
 
 ### `pg_stat_monitor`
 
-
 **Install**
 
 There are two ways to install this extension:
@@ -152,119 +157,27 @@ There are two ways to install this extension:
 
 **Install using a Linux package manager**
 
-The `pg-stat-monitor` extension is included in *Percona Distribution for PostgreSQL*. This can be installed via the `percona-release` package.
+The `pg-stat-monitor` extension is included in *Percona Distribution for PostgreSQL*.
 
- -Debian
+You can install *Percona Distribution for PostgreSQL* with the `percona-release` package.
 
-	```sh
-	sudo apt-get install -y wget gnupg2 lsb-release
-	wget https://repo.percona.com/apt/percona-release_latest.generic_all.deb
-	sudo dpkg -i percona-release_latest.generic_all.deb
-
-	sudo percona-release setup ppg-12 # version 12 (others available)
-	sudo apt install -y percona-postgresql-12
-	```
-
-- Red Hat
-
-	```sh
-	sudo yum install -y https://repo.percona.com/yum/percona-release-latest.noarch.rpm
-
-	# If RHEL 8
-	sudo dnf module disable postgresql
-
-	# If RHEL 7
-	sudo yum install -y epel-release
-	sudo yum repolist
-
-	sudo percona-release setup ppg-12
-	sudo yum install -y percona-postgresql12-server
-	```
+> See [Installing Percona Distribution for PostgreSQL][PERCONA_POSTGRESQL_INSTALL].
 
 **Install from source code**
 
-**Debian**
-
-1. Install common packages
-
-    ```sh
-    sudo apt-get install -y curl git wget gnupg2 lsb-release
-    sudo apt-get update -y
-    ```
-
-2. Install PostgreSQL development packages
-
-    With Percona Distribution for PostgreSQL (version 12):
-
-    ```sh
-    wget https://repo.percona.com/apt/percona-release_latest.generic_all.deb
-    sudo dpkg -i percona-release_latest.generic_all.deb
-    sudo percona-release setup ppg-12
-    sudo apt install -y percona-postgresql-server-dev-all
-    ```
-
-    With PostgreSQL:
-
-    ```sh
-    wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo  apt-key add -
-    echo "deb http://apt.postgresql.org/pub/repos/apt/ `lsb_release -cs`-pgdg main" | sudo tee /etc/apt/sources.list.d/pgdg.list
-    sudo apt install -y postgresql-server-dev-all
-    ```
-
-3. Download, compile, and install extension
-
-    ```sh
-    git clone git://github.com/percona/pg_stat_monitor.git && cd pg_stat_monitor
-    sudo make USE_PGXS=1
-    sudo make USE_PGXS=1 install
-    ```
-
-**Red Hat**
-
-1. Install common packages
-
-    ```sh
-    sudo yum install -y centos-release-scl epel-release
-    sudo yum update -y
-    sudo yum install -y git gcc gcc-c++ llvm-toolset-7
-    ```
-
-2. Install PostgreSQL development packages
-
-    With Percona Distribution for PostgreSQL (version 12):
-
-    ```sh
-    sudo yum install -y https://repo.percona.com/yum/percona-release-latest.noarch.rpm
-    sudo percona-release setup ppg-12
-    sudo yum install -y percona-postgresql12-devel
-    ```
-
-    With PostgreSQL version 12:
-
-    ```sh
-    sudo yum install -y https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm
-    sudo yum install -y postgresql12-devel
-    ```
-
-3. Download, compile, and install extension
-
-    ```sh
-    git clone git://github.com/percona/pg_stat_monitor.git && cd pg_stat_monitor
-    sudo make PG_CONFIG=/usr/pgsql-12/bin/pg_config USE_PGXS=1
-    sudo make PG_CONFIG=/usr/pgsql-12/bin/pg_config USE_PGXS=1 install
-    ```
+> See [Installing `pg_stat_monitor` from source code][PG_STAT_MONITOR_INSTALL].
 
 **Configure**
 
 1. Set or change the value for `shared_preload_library`.
 
-	- In your `postgresql.conf` file:
+	- Either in your `postgresql.conf` file:
 
 	   ```ini
 	   shared_preload_libraries = 'pg_stat_monitor'
 	   ```
 
-	- In a `psql` session:
+	- Or in a `psql` session:
 
 		```sql
 		ALTER SYSTEM SET shared_preload_libraries=pg_stat_monitor;
@@ -379,7 +292,7 @@ pmm-admin add postgresql --socket=/var/run/postgresql
 
 **Check service - PMM user interface**
 
-1. Go to {{icon.cog}} *Configuration-->PMM Inventory-->Inventory list*.
+1. Select {{icon.cog}} *Configuration-->PMM Inventory-->Inventory list*.
 2. Look in the *Services* tab for a matching *Service Type* (PostgreSQL), *Service name*, *Addresses*, and any other details entered in the form.
 3. Look in the *Agents* tab to check the desired data source is being used.
 
@@ -398,7 +311,6 @@ pmm-admin inventory list services
 
 > See also
 > - [Configuring Percona Repositories with percona-release][PERCONA_RELEASE]
-> - [Installing Percona Distribution for PostgreSQL][PERCONA_POSTGRESQL_INSTALL]
 
 [POSTGRESQL]: https://www.postgresql.org/
 [POSTGRESQL_VERSIONING]: https://www.postgresql.org/support/versioning/
@@ -406,3 +318,4 @@ pmm-admin inventory list services
 [PERCONA_POSTGRESQL]: https://www.percona.com/software/postgresql-distribution
 [PERCONA_RELEASE]: https://www.percona.com/doc/percona-repo-config/percona-release.html
 [PERCONA_POSTGRESQL_INSTALL]: https://www.percona.com/doc/postgresql/LATEST/installing.html
+[PG_STAT_MONITOR_INSTALL]: https://github.com/percona/pg_stat_monitor#installation

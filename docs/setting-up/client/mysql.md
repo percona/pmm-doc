@@ -406,7 +406,7 @@ pmm-admin add mysql --environment=test --custom-labels='source=slowlog'  --usern
 
 **Check service - PMM user interface**
 
-1. Go to {{icon.cog}} *Configuration-->PMM Inventory-->Inventory list*.
+1. Select {{icon.cog}} *Configuration-->PMM Inventory-->Inventory list*.
 2. Look in the *Services* tab for a matching *Service Type* (MySQL), *Service name*, *Addresses*, and any other details entered in the form.
 3. Look in the *Agents* tab to check the desired data source is being used.
 
