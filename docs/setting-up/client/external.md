@@ -71,3 +71,20 @@ Service name: mysql1-processess
 Group       : processess
 ```
 Add exporter running on local port 9256 to the group called "processess"  use group name and host name to automatically generate service name.  Use default scheme and metrics path.
+
+## Adding an External service via UI
+
+1. In the PMM web interface, go to *PMM > PMM Add Instance*.
+
+2. Select *External Service -- Add a remote instance*.
+
+    ![](../../_images/PMM_External_Serverless.png)
+
+3. Fill the form and set external service endpoint. Endpoint can be set manually
+
+    ![](../../_images/PMM_External_Serverless_switcher_manually.png)
+    
+    or by parsing all required data from URL string, in that case you just need to pass a valid URL.
+    
+    ![](../../_images/PMM_External_Serverless_switcher.png)
+
