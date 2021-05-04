@@ -80,11 +80,13 @@ Add exporter running on local port 9256 to the group called "processess"  use gr
 
     ![](../../_images/PMM_External_Serverless.png)
 
-3. Fill the form and set external service endpoint. Endpoint can be set manually
+3. Fill the form and set the external service endpoint.
+    
+    The endpoint can be set manually:
 
     ![](../../_images/PMM_External_Serverless_switcher_manually.png)
     
-    or by parsing all required data from URL string, in that case you just need to pass a valid URL.
+    or by parsing required data from a URL string, in which case you only need to pass a valid URL.
     
     ![](../../_images/PMM_External_Serverless_switcher.png)
 
