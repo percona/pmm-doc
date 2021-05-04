@@ -151,6 +151,23 @@ Service name: mysql1-processess
 Group       : processess
 </code></pre></div>
 Add exporter running on local port 9256 to the group called &ldquo;processess&rdquo;  use group name and host name to automatically generate service name.  Use default scheme and metrics path.</p>
+<h2 id="adding-an-external-service-via-ui">Adding an External service via UI<a class="headerlink" href="#adding-an-external-service-via-ui" title="Permanent link">&para;</a></h2>
+<ol>
+<li>
+<p>In the PMM web interface, go to <em>PMM &gt; PMM Add Instance</em>.</p>
+</li>
+<li>
+<p>Select <em>External Service &ndash; Add a remote instance</em>.</p>
+<p><img alt="" src="../../_images/PMM_External_Serverless.png" /></p>
+</li>
+<li>
+<p>Fill the form and set the external service endpoint.</p>
+<p>The endpoint can be set manually:</p>
+<p><img alt="" src="../../_images/PMM_External_Serverless_switcher_manually.png" /></p>
+<p>or by parsing required data from a URL string, in which case you only need to pass a valid URL.</p>
+<p><img alt="" src="../../_images/PMM_External_Serverless_switcher.png" /></p>
+</li>
+</ol>
                     </div>
                 </div>
                 
@@ -158,7 +175,7 @@ Add exporter running on local port 9256 to the group called &ldquo;processess&rd
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-04-08
+            <i class="uil uil-refresh"></i> Page updated 2021-05-04
         </li>
         
     </ul>
