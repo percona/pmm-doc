@@ -27,7 +27,7 @@ On the left are the selector tabs:
     - [Sign up](#sign-up)
     - [Password Reset](#password-reset)
       - [Password Forgotten](#password-forgotten)
-      - [Reset Password after Login](#reset-password-after-login)
+      - [Change Password after Login](#change-password-after-login)
   - [Communication](#communication)
     - [Email](#email)
     - [Slack](#slack)
@@ -225,7 +225,7 @@ You will be redirected to a password reset page. Enter the email you are registe
 
 An email with a link to reset your password will be sent to you.
 
-#### Reset Password after Login
+#### Change Password after Login
 
 If you did not forget your password but you still want to change it, go to `https://okta.percona.com/enduser/settings` (make sure you are logged in).
 
