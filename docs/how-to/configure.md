@@ -26,7 +26,7 @@ On the left are the selector tabs:
     - [Login](#login)
     - [Sign up](#sign-up)
     - [Password Reset](#password-reset)
-      - [Forgot Password](#forgot-password)
+      - [Password Forgotten](#password-forgotten)
       - [Reset Password after Login](#reset-password-after-login)
   - [Communication](#communication)
     - [Email](#email)
@@ -215,9 +215,9 @@ A brief message will confirm the creation of your new account and you may now lo
 
 ### Password Reset
 
-#### Forgot Password
+#### Password Forgotten
 
-In case you forgot you password, click on the *Forgot password* link in the login page.
+In case you forgot your password, click on the *Forgot password* link in the login page.
 
 You will be redirected to a password reset page. Enter the email you are registered with in the field and click on *Reset via Email*.
 
