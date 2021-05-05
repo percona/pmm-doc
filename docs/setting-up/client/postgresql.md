@@ -24,7 +24,7 @@ Check that:
 
 We recommend creating a PMM database account that can connect to the `postgres` database with the `SUPERUSER` role.
 
-1. Create a user. This example uses `pmm`. Replace `******` with a strong password of your choice.
+1. Create a user. This example uses `pmm`. (Replace `******` with a strong password of your choice.)
 
     ```sql
     CREATE USER pmm WITH SUPERUSER ENCRYPTED PASSWORD '******';
