@@ -227,7 +227,7 @@ An email with a link to reset your password will be sent to you.
 
 #### Change Password after Login
 
-If you did not forget your password but you still want to change it, go to `https://okta.percona.com/enduser/settings` (make sure you are logged in).
+If you did not forget your password but you still want to change it, go to <https://okta.percona.com/enduser/settings> (make sure you are logged in).
 
 ![image](../_images/PMM_Settings_Percona_Platform_Password_Reset_Okta.jpg)
 
