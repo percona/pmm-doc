@@ -18,6 +18,8 @@ Check that:
 - You have superuser (root) access on the client host.
 - You have superuser access to any database servers that you want to monitor.
 
+(PMM follows [PostgreSQL's end-of-life policy][POSTGRESQL_VERSIONING]. For specific details on supported platforms and versions, see [Percona’s Software Platform Lifecycle page][PERCONA_LIFECYCLE].)
+
 ## Create a database account for PMM {: #setting-up-client-user}
 
 We recommend creating a PMM database account that can connect to the `postgres` database with the `SUPERUSER` role.
@@ -46,11 +48,11 @@ We recommend creating a PMM database account that can connect to the `postgres` 
 
 3. Reload the configuration:
 
-	```sh
-	psql -c "select pg_reload_conf()"
+	```sql
+	select pg_reload_conf();
 	```
 
-4. Check local login by opening a `psql` session. If successful, exit (with `Ctrl-D` or `\q`).
+4. Check local login by opening a `psql` session.
 
 	```sh
 	psql postgres pmm
@@ -91,16 +93,6 @@ Here are the benefits and drawbacks of each.
 > When all buckets in the chain have been used, the first bucket is reused and its contents are overwritten.
 >
 > If a bucket fills before its expiration time is reached, data is discarded.
-
-
-> **Supported versions**
->
-> PMM follows [PostgreSQL's end-of-life policy][POSTGRESQL_VERSIONING]. For specific details on supported platforms and versions, see [Percona’s Software Platform Lifecycle page][PERCONA_LIFECYCLE].
->
-> `pg_stat_monitor` has been tested with:
->
-> - PostgreSQL versions 11, 12, 13.
-> - Percona Distribution for PostgreSQL versions 11, 12, 13.
 
 ### `pg_stat_statements`
 
@@ -147,6 +139,13 @@ You can now [add the service](#add-a-service).
 
 ### `pg_stat_monitor`
 
+`pg_stat_monitor` has been tested with:
+
+- PostgreSQL versions 11, 12, 13.
+- Percona Distribution for PostgreSQL versions 11, 12, 13.
+
+> <b style="color:goldenrod">Important</b> `pg_stat_monitor` is currently in beta phase and unsupported.
+
 **Install**
 
 There are two ways to install this extension:
@@ -177,10 +176,10 @@ You can install *Percona Distribution for PostgreSQL* with the `percona-release`
 	   shared_preload_libraries = 'pg_stat_monitor'
 	   ```
 
-	- Or in a `psql` session:
+	- Or with a `psql` session:
 
-		```sql
-		ALTER SYSTEM SET shared_preload_libraries=pg_stat_monitor;
+		```sh
+		psql -c "ALTER SYSTEM SET shared_preload_libraries = pg_stat_monitor"
 		```
 
 2. Set the value
