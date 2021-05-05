@@ -229,8 +229,8 @@ When you have configured your database server, you can add a PostgreSQL service 
 	|                          | *Hostname*                                     | ☑️        | Hostname or IP address of the service   |          | `--address`
 	|                          | *Service name*                                 |          | Service name                            |          | `--name`
 	|                          | *Port*                                         |          | Port for accessing the service          | 5432     | `port` in `--address=address[:port]`
-	|                          | *Username*                                     |          | MySQL user name                         |          | `--username`
-	|                          | *Password*                                     |          | MySQL user password                     |          | `--password`
+	|                          | *Username*                                     |          | PostgreSQL user name                    |          | `--username`
+	|                          | *Password*                                     |          | PostgreSQL user password                |          | `--password`
 	| *Labels*                 |                                                |          |                                         |          |
 	|                          | *Environment*                                  |          |                                         |          | `--environment`
 	|                          | *Region*                                       |          |                                         |          |
