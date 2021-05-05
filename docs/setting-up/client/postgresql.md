@@ -24,39 +24,41 @@ Check that:
 
 We recommend creating a PMM database account that can connect to the `postgres` database with the `SUPERUSER` role.
 
-1. Create a user (e.g. `pmm_user`):
+1. Create a user. This example uses `pmm`. Replace `******` with a strong password of your choice.
 
-	```sql
-	CREATE USER pmm WITH SUPERUSER ENCRYPTED PASSWORD '******';
-	```
+    ```sql
+    CREATE USER pmm WITH SUPERUSER ENCRYPTED PASSWORD '******';
+    ```
 
-	If your database runs on Amazon RDS:
+    If your database runs on Amazon RDS:
 
-	```sql
-	CREATE USER pmm WITH rds_superuser ENCRYPTED PASSWORD '******';
-	```
+    ```sql
+    CREATE USER pmm WITH rds_superuser ENCRYPTED PASSWORD '******';
+    ```
 
-2. PMM must be able to log in locally as this user to the PostgreSQL instance. To enable this:
+2. PMM must be able to log in locally as this user to the PostgreSQL instance. To enable this, edit the `pg_hba.conf` file. If not already enabled by an existing rule, add:
 
-	1. Edit the `pg_hba.conf` file
+    ```conf
+    local   all             pmm                                md5
+    # TYPE  DATABASE        USER        ADDRESS                METHOD
+    ```
 
-	2. If not already enabled by an existing rule, add this line:
-
-	```
-	local   all             pmm                                md5
-	```
+    (Ignore the second line. It is a comment to show field alignment.)
 
 3. Reload the configuration:
 
-	```sql
-	select pg_reload_conf();
-	```
+    ```sh
+    sudo su - postgres
+    psql -c "select pg_reload_conf()"
+    ```
 
-4. Check local login by opening a `psql` session.
+4. Check local login.
 
-	```sh
-	psql postgres pmm
-	```
+    ```sh
+    psql postgres pmm -c "\conninfo"
+    ```
+
+5. Enter the password for the `pmm` user when prompted.
 
 ## Choose and configure an extension
 
@@ -100,40 +102,34 @@ Here are the benefits and drawbacks of each.
 
 - Debian/Ubuntu
 
-	```sh
-	sudo apt-get install -y postgresql-contrib
-	```
+    ```sh
+    sudo apt install -y postgresql-contrib
+    ```
 
 - Red Hat/CentOS
 
-	```sh
-	sudo yum install -y postgresql-contrib
-	```
+    ```sh
+    sudo yum install -y postgresql-contrib
+    ```
 
 **Configure**
 
 1. Add these lines to your `postgresql.conf` file:
 
-	```sh
-	shared_preload_libraries = 'pg_stat_statements'
-	track_activity_query_size = 2048 # Increase tracked query string size
-	pg_stat_statements.track = all   # Track all statements including nested
-	track_io_timing = on             # Capture read/write stats
-	```
+    ```conf
+    shared_preload_libraries = 'pg_stat_statements'
+    track_activity_query_size = 2048 # Increase tracked query string size
+    pg_stat_statements.track = all   # Track all statements including nested
+    track_io_timing = on             # Capture read/write stats
+    ```
 
-2. Restart your PostgreSQL instance. (E.g. on Linux).
-
-	```sh
-	sudo systemctl restart postgresql
-	```
+2. Restart the database server.
 
 3. Install the extension.
 
-	In a `psql` session in the `postgres` database:
-
-	```sh
-	CREATE EXTENSION pg_stat_statements SCHEMA public;
-	```
+    ```sh
+    psql postgres postgres -c "CREATE EXTENSION pg_stat_statements SCHEMA public"
+    ```
 
 You can now [add the service](#add-a-service).
 
@@ -148,70 +144,45 @@ You can now [add the service](#add-a-service).
 
 **Install**
 
-There are two ways to install this extension:
+- If you use *Percona Distribution for PostgreSQL*, you can install the extension with your Linux package manager. See [Installing Percona Distribution for PostgreSQL][PERCONA_POSTGRESQL_INSTALL].
 
-- For *Percona Distribution for PostgreSQL*: Using a Linux package manager.
-
-- For *PostgreSQL* or *Percona Distribution for PostgreSQL*: [download and compile the source code](https://github.com/percona/pg_stat_monitor#installation).
-
-**Install using a Linux package manager**
-
-The `pg-stat-monitor` extension is included in *Percona Distribution for PostgreSQL*.
-
-You can install *Percona Distribution for PostgreSQL* with the `percona-release` package.
-
-> See [Installing Percona Distribution for PostgreSQL][PERCONA_POSTGRESQL_INSTALL].
-
-**Install from source code**
-
-> See [Installing `pg_stat_monitor` from source code][PG_STAT_MONITOR_INSTALL].
+- If you use *PostgreSQL* you can install by downloading and compiling the source code. See [Installing `pg_stat_monitor`][PG_STAT_MONITOR_INSTALL].
 
 **Configure**
 
 1. Set or change the value for `shared_preload_library`.
 
-	- Either in your `postgresql.conf` file:
+    - Either in your `postgresql.conf` file:
 
-	   ```ini
-	   shared_preload_libraries = 'pg_stat_monitor'
-	   ```
+       ```ini
+       shared_preload_libraries = 'pg_stat_monitor'
+       ```
 
-	- Or with a `psql` session:
+    - Or with a `psql` session:
 
-		```sh
-		psql -c "ALTER SYSTEM SET shared_preload_libraries = pg_stat_monitor"
-		```
+        ```sh
+        psql -c "ALTER SYSTEM SET shared_preload_libraries = pg_stat_monitor"
+        ```
 
-2. Set the value
+2. Set configuration values.
 
-	```
-	pg_stat_monitor.pgsm_normalized_query
-	```
+    You can get a list of available settings with `SELECT * FROM pg_stat_monitor_settings;`.
+
+    > See [`pg_stat_monitor` GitHub repository](https://github.com/percona/pg_stat_monitor/blob/master/docs/USER_GUIDE.md#configuration) for details about available parameters.
 
 3. Restart the database server.
 
 4. Create the extension. In a `psql` session:
 
-	```sql
-	CREATE EXTENSION pg_stat_monitor;
-	```
+    ```sql
+    CREATE EXTENSION pg_stat_monitor;
+    ```
 
 5. Check the version.
 
-	```sql
-	SELECT pg_stat_monitor_version();
-	```
-
-
-> You can get a list of available settings with `SELECT * FROM pg_stat_monitor_settings;`.
->
-> See [`pg_stat_monitor` GitHub repository](https://github.com/percona/pg_stat_monitor/blob/master/docs/USER_GUIDE.md#configuration) for details about available parameters.
-
-
-
-
-
-
+    ```sql
+    SELECT pg_stat_monitor_version();
+    ```
 
 ## Add a service {: #add-service }
 
@@ -219,33 +190,33 @@ When you have configured your database server, you can add a PostgreSQL service 
 
 ### With the user interface
 
-1. Select {{icon.cog}} *Configuration-->PMM Inventory-->Add Instance*.
+1. Select *{{icon.cog}} Configuration --> {{icon.inventory}} PMM Inventory --> {{icon.addinstance}} Add Instance*.
 2. Select *PostgreSQL -- Add a remote instance*.
-3. Enter values for these fields.
+3. Enter or select values for these fields.
 
-	| Section                  | Field                                          | Required | Description                             | Default  | `pmm-admin` parameter
-	| ------------------------ | ---------------------------------------------- | -------- | --------------------------------------- | -------- | --------------------------
-	| *Main details*           |                                                |          |                                         |          |
-	|                          | *Hostname*                                     | ☑️        | Hostname or IP address of the service   |          | `--address`
-	|                          | *Service name*                                 |          | Service name                            |          | `--name`
-	|                          | *Port*                                         |          | Port for accessing the service          | 5432     | `port` in `--address=address[:port]`
-	|                          | *Username*                                     |          | PostgreSQL user name                    |          | `--username`
-	|                          | *Password*                                     |          | PostgreSQL user password                |          | `--password`
-	| *Labels*                 |                                                |          |                                         |          |
-	|                          | *Environment*                                  |          |                                         |          | `--environment`
-	|                          | *Region*                                       |          |                                         |          |
-	|                          | *Availability zone*                            |          |                                         |          |
-	|                          | *Replication set*                              |          |                                         |          | `--replication-set`
-	|                          | *Cluster*                                      |          |                                         |          | `--cluster`
-	|                          | *Custom labels*                                |          |                                         |          | `--custom-labels`
-	| *Additional options*     |                                                |          |                                         |          |
-	|                          | *Skip connection check*                        |          |                                         |          | `--skip-connection-check`
-	|                          | *Use TLS for database connections*             |          |                                         |          | `--tls`
-	|                          | *Skip TLS certificate and hostname validation* |          |                                         |          | `--tls-skip-verify`
-	|                          | *Stat tracking options*                        |          |                                         |          |
-	|                          | --> *Don't track*                              |          |                                         |          |
-	|                          | --> *PG Stat Statements*                       |          |                                         |          |
-	|                          | --> *PG Stat Monitor*                          |          |                                         |          |
+    | Section                  | Field                                          | Required | Description                             | Default  | `pmm-admin` parameter
+    | ------------------------ | ---------------------------------------------- |:--------:| --------------------------------------- | -------- | --------------------------
+    | *Main details*           |                                                |          |                                         |          |
+    |                          | *Hostname*                                     | ☑️        | Hostname or IP address of the service   |          | `--address`
+    |                          | *Service name*                                 |          | Service name                            |          | `--name`
+    |                          | *Port*                                         |          | Port for accessing the service          | 5432     | `port` in `--address=address[:port]`
+    |                          | *Username*                                     | ☑️        | PostgreSQL user name                    |          | `--username`
+    |                          | *Password*                                     | ☑️        | PostgreSQL user password                |          | `--password`
+    | *Labels*                 |                                                |          |                                         |          |
+    |                          | *Environment*                                  |          |                                         |          | `--environment`
+    |                          | *Region*                                       |          |                                         |          |
+    |                          | *Availability zone*                            |          |                                         |          |
+    |                          | *Replication set*                              |          |                                         |          | `--replication-set`
+    |                          | *Cluster*                                      |          |                                         |          | `--cluster`
+    |                          | *Custom labels*                                |          |                                         |          | `--custom-labels`
+    | *Additional options*     |                                                |          |                                         |          |
+    |                          | *Skip connection check*                        |          |                                         |          | `--skip-connection-check`
+    |                          | *Use TLS for database connections*             |          |                                         |          | `--tls`
+    |                          | *Skip TLS certificate and hostname validation* |          |                                         |          | `--tls-skip-verify`
+    |                          | *Stat tracking options*                        |          |                                         |          |
+    |                          | --> *Don't track*                              |          |                                         |          |
+    |                          | --> *PG Stat Statements*                       |          | Select if `pg_stat_statements` is used  |          |
+    |                          | --> *PG Stat Monitor*                          |          | Select if `pg_stat_monitor` is used     |          |
 
 4. Click *Add service*.
 
@@ -291,7 +262,7 @@ pmm-admin add postgresql --socket=/var/run/postgresql
 
 **Check service - PMM user interface**
 
-1. Select {{icon.cog}} *Configuration-->PMM Inventory-->Inventory list*.
+1. Select *{{icon.cog}} Configuration --> {{icon.inventory}} PMM Inventory --> {{icon.inventory}} Inventory list*
 2. Look in the *Services* tab for a matching *Service Type* (PostgreSQL), *Service name*, *Addresses*, and any other details entered in the form.
 3. Look in the *Agents* tab to check the desired data source is being used.
 
@@ -302,6 +273,8 @@ Look for your service in the output of this command.
 ```sh
 pmm-admin inventory list services
 ```
+
+> If using Docker, use `sudo docker exec pmm-client pmm-admin inventory list services`
 
 **Check data**
 

@@ -338,11 +338,25 @@ You can now add services with [`pmm-admin`](../../details/commands/pmm-admin.md)
     #        entrypoint: pmm-agent setup
     ```
 
-5. Run again.
+5. Run again, this time with the Docker *detach* option.
 
     ```sh
-    sudo docker-compose up
+    sudo docker-compose up -d
     ```
+
+6. Verify.
+
+    On the command line.
+
+    ```sh
+    sudo docker exec pmm-client pmm-admin status
+    ```
+
+    In the GUI.
+
+    - Select *{{icon.dashboards}} PMM Dashboards --> {{icon.node}} System (Node) --> {{icon.node}} Node Overview*
+    - In the *Node Names* menu, select the new node
+    - Change the time range to see data
 
 > <b style="color:goldenrod">Caution</b> `pmm-agent.yaml` contains sensitive credentials and should not be shared.
 
