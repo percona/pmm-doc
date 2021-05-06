@@ -90,15 +90,9 @@ alias kubectl='minikube kubectl --'
     # Install the PXC operator
     curl -sSf -m 30 https://raw.githubusercontent.com/percona/percona-xtradb-cluster-operator/{{op.pxc_vers}}/deploy/bundle.yaml \
     | kubectl apply -f -
-    curl -sSf -m 30 https://raw.githubusercontent.com/percona/percona-xtradb-cluster-operator/{{op.pxc_vers}}/deploy/secrets.yaml \
-    | sed "s/pmmserver:.*/pmmserver: ${PMM_PASS}/g" \
-    | kubectl apply -f -
 
     # Install the PSMDB operator
     curl -sSf -m 30 https://raw.githubusercontent.com/percona/percona-server-mongodb-operator/{{op.psmdb_vers}}/deploy/bundle.yaml \
-    | kubectl apply -f -
-    curl -sSf -m 30 https://raw.githubusercontent.com/percona/percona-server-mongodb-operator/{{op.psmdb_vers}}/deploy/secrets.yaml \
-    | sed "s/PMM_SERVER_USER:.*$/PMM_SERVER_USER: ${PMM_USER}/g;s/PMM_SERVER_PASSWORD:.*$/PMM_SERVER_PASSWORD: ${PMM_PASS}/g;" \
     | kubectl apply -f -
     ```
 
