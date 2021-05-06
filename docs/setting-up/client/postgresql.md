@@ -152,17 +152,11 @@ You can now [add the service](#add-a-service).
 
 1. Set or change the value for `shared_preload_library`.
 
-    - Either in your `postgresql.conf` file:
+    In your `postgresql.conf` file:
 
-       ```ini
-       shared_preload_libraries = 'pg_stat_monitor'
-       ```
-
-    - Or with a `psql` session:
-
-        ```sh
-        psql -c "ALTER SYSTEM SET shared_preload_libraries = pg_stat_monitor"
-        ```
+    ```ini
+    shared_preload_libraries = 'pg_stat_monitor'
+    ```
 
 2. Set configuration values.
 
@@ -192,32 +186,7 @@ When you have configured your database server, you can add a PostgreSQL service 
 
 1. Select *{{icon.cog}} Configuration --> {{icon.inventory}} PMM Inventory --> {{icon.addinstance}} Add Instance*.
 2. Select *PostgreSQL -- Add a remote instance*.
-3. Enter or select values for these fields.
-
-    | Section                  | Field                                          | Required | Description                             | Default  | `pmm-admin` parameter
-    | ------------------------ | ---------------------------------------------- |:--------:| --------------------------------------- | -------- | --------------------------
-    | *Main details*           |                                                |          |                                         |          |
-    |                          | *Hostname*                                     | ☑️        | Hostname or IP address of the service   |          | `--address`
-    |                          | *Service name*                                 |          | Service name                            |          | `--name`
-    |                          | *Port*                                         |          | Port for accessing the service          | 5432     | `port` in `--address=address[:port]`
-    |                          | *Username*                                     | ☑️        | PostgreSQL user name                    |          | `--username`
-    |                          | *Password*                                     | ☑️        | PostgreSQL user password                |          | `--password`
-    | *Labels*                 |                                                |          |                                         |          |
-    |                          | *Environment*                                  |          |                                         |          | `--environment`
-    |                          | *Region*                                       |          |                                         |          |
-    |                          | *Availability zone*                            |          |                                         |          |
-    |                          | *Replication set*                              |          |                                         |          | `--replication-set`
-    |                          | *Cluster*                                      |          |                                         |          | `--cluster`
-    |                          | *Custom labels*                                |          |                                         |          | `--custom-labels`
-    | *Additional options*     |                                                |          |                                         |          |
-    |                          | *Skip connection check*                        |          |                                         |          | `--skip-connection-check`
-    |                          | *Use TLS for database connections*             |          |                                         |          | `--tls`
-    |                          | *Skip TLS certificate and hostname validation* |          |                                         |          | `--tls-skip-verify`
-    |                          | *Stat tracking options*                        |          |                                         |          |
-    |                          | --> *Don't track*                              |          |                                         |          |
-    |                          | --> *PG Stat Statements*                       |          | Select if `pg_stat_statements` is used  |          |
-    |                          | --> *PG Stat Monitor*                          |          | Select if `pg_stat_monitor` is used     |          |
-
+3. Enter or select values for the fields.
 4. Click *Add service*.
 
 ### On the command line
@@ -236,8 +205,8 @@ pmm-admin add postgresql \
 --server-insecure-tls
 ```
 
-- `<user name>`: The
-- `<password>` are the PostgreSQL user credentials.
+- `<user name>`: The PostgreSQL PMM user
+- `<password>`: The PostgreSQL user credentials.
 
 The service name and service ID will be automatically chosen.
 
@@ -249,7 +218,6 @@ pmm-admin add postgresql \
 --password=password \
 --server-url=https://admin:admin@X.X.X.X:443 \
 --server-insecure-tls \
-
 ```
 
 Add instance to connect with a UNIX socket.
@@ -257,6 +225,8 @@ Add instance to connect with a UNIX socket.
 ```sh
 pmm-admin add postgresql --socket=/var/run/postgresql
 ```
+
+> See [pmm-admin man page]
 
 ## Check the service
 
@@ -291,3 +261,4 @@ pmm-admin inventory list services
 [PERCONA_RELEASE]: https://www.percona.com/doc/percona-repo-config/percona-release.html
 [PERCONA_POSTGRESQL_INSTALL]: https://www.percona.com/doc/postgresql/LATEST/installing.html
 [PG_STAT_MONITOR_INSTALL]: https://github.com/percona/pg_stat_monitor#installation
+[PMM_ADMIN]: ../../details/pmm-admin.md
