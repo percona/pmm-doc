@@ -33,6 +33,7 @@ When PMM Server is running, set up [PMM Client](../client/index.md) for each nod
 ```sh
 curl -fsSL https://raw.githubusercontent.com/percona/pmm/PMM-2.0/get-pmm.sh -o get-pmm2.sh ; chmod +x get-pmm2.sh ; ./get-pmm2.sh
 ```
+*WARNING* it is highly recomended you review get-pmm2.sh prior to running on your system, to ensure the content is as expected.
 
 This command will:
 
