@@ -371,6 +371,8 @@ You should have an account on GCP [https://cloud.google.com/](https://cloud.goog
 
 You should delete all installation operators as the operators own resources.
 
+> If a Public Address is set in PMM Settings, for each DB cluster an API Key is created which can be found on the page `/graph/org/apikeys`. You should not delete them (for now, until [issue PMM-8045](https://jira.percona.com/browse/PMM-8045) is fixed) -- once a DB cluster is removed from DBaaS, the related API Key is also removed.
+
 If you only run `eksctl delete cluster` without cleaning up the cluster first, there will be a lot of orphaned resources as Cloud Formations, Load Balancers, EC2 instances, Network interfaces, etc.
 
 In the `pmm-managed` repository, in the deploy directory there are 2 example bash scripts to install and delete the operators from the EKS cluster.
