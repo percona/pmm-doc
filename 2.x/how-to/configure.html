@@ -110,12 +110,37 @@
 <p><img alt="image" src="../_images/PMM_Settings_Metrics_Resolution.jpg" /></p>
 <p>On the left are the selector tabs:</p>
 <ul>
-<li><a href="#metrics-resolution">Metrics Resolution</a></li>
-<li><a href="#advanced-settings">Advanced Settings</a></li>
+<li><a href="#configure">Configure</a></li>
+<li><a href="#metrics-resolution">Metrics resolution</a></li>
+<li><a href="#advanced-settings">Advanced Settings</a><ul>
+<li><a href="#data-retention">Data Retention</a></li>
+<li><a href="#telemetry">Telemetry</a></li>
+<li><a href="#check-for-updates">Check for updates</a></li>
+<li><a href="#security-threat-tool">Security Threat Tool</a></li>
+</ul>
+</li>
+<li><a href="#public-address">Public address</a><ul>
+<li><a href="#dbaas">DBaaS</a></li>
+<li><a href="#integrated-alerting">Integrated Alerting</a></li>
+<li><a href="#microsoft-azure-monitoring">Microsoft Azure Monitoring</a></li>
+<li><a href="#public-address-1">Public Address</a></li>
+</ul>
+</li>
 <li><a href="#ssh-key">SSH Key</a></li>
-<li><a href="#alertmanager-integration">Alertmanager Integration</a></li>
-<li><a href="#percona-platform">Percona Platform</a></li>
-<li><a href="#communication">Communication</a> (This tab remains hidden until <a href="#integrated-alerting">Integrated Alerting</a> is activated in the <em>Advanced Settings</em> tab.)</li>
+<li><a href="#alertmanager-integration">Alertmanager integration</a></li>
+<li><a href="#percona-platform">Percona Platform</a><ul>
+<li><a href="#login">Login</a></li>
+<li><a href="#sign-up">Sign up</a></li>
+<li><a href="#password-reset">Password Reset</a></li>
+<li><a href="#password-forgotten">Password Forgotten</a></li>
+<li><a href="#change-password-after-login">Change Password after Login</a></li>
+</ul>
+</li>
+<li><a href="#communication">Communication</a><ul>
+<li><a href="#email">Email</a></li>
+<li><a href="#slack">Slack</a></li>
+</ul>
+</li>
 </ul>
 <blockquote>
 <p><b style="color:goldenrod">Important</b> Click <em>Apply changes</em> to save any changes made here.</p>
@@ -317,6 +342,17 @@
 <blockquote>
 <p>Your Percona Platform account is separate from your PMM User account.</p>
 </blockquote>
+<h3 id="password-reset">Password Reset<a class="headerlink" href="#password-reset" title="Permanent link">&para;</a></h3>
+<h4 id="password-forgotten">Password Forgotten<a class="headerlink" href="#password-forgotten" title="Permanent link">&para;</a></h4>
+<p>In case you forgot your password, click on the <em>Forgot password</em> link in the login page.</p>
+<p>You will be redirected to a password reset page. Enter the email you are registered with in the field and click on <em>Reset via Email</em>.</p>
+<p><img alt="image" src="../_images/PMM_Settings_Percona_Platform_Password_Reset.jpg" /></p>
+<p>An email with a link to reset your password will be sent to you.</p>
+<h4 id="change-password-after-login">Change Password after Login<a class="headerlink" href="#change-password-after-login" title="Permanent link">&para;</a></h4>
+<p>If you did not forget your password but you still want to change it, go to <a href="https://okta.percona.com/enduser/settings">https://okta.percona.com/enduser/settings</a> (make sure you are logged in).</p>
+<p><img alt="image" src="../_images/PMM_Settings_Percona_Platform_Password_Reset_Okta.jpg" /></p>
+<p>Insert you current password and the new password in the form to the bottom right of the page. If you cannot see the form, you will need to click on the <em>Edit Profile</em> green button (you will be prompted for you password).</p>
+<p>Click on <em>Change Password</em>. If everything goes well, you will see a confirmation message.</p>
 <h2 id="communication">Communication<a class="headerlink" href="#communication" title="Permanent link">&para;</a></h2>
 <p>Global communications settings for <a href="../using/alerting.html">Integrated Alerting</a>.</p>
 <blockquote>
@@ -357,7 +393,7 @@
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-04-28
+            <i class="uil uil-refresh"></i> Page updated 2021-05-07
         </li>
         
     </ul>
