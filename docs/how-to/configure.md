@@ -1,62 +1,79 @@
 # Configure
 
-The *PMM Settings* page lets you configure a number of PMM options.
+The *Settings* page is where you configure PMM.
 
-Open the *PMM Settings* page with one of:
-
-- the main menu: choose *PMM-->PMM Settings*
-- search dashboards by name: type *PMM Settings* and click the search result
-
-On the left of the page is a set of sub-page selector tabs.
-
-![](../_images/PMM_Settings_Menu.jpg)
-
-(The [Communication](#communication) tab remains hidden until [Integrated Alerting](#integrated-alerting) is activated.)
-
-!!! alert alert-success "Tip"
-    Click *Apply changes* after changing settings.
-
-## Diagnostics
-
-Common to all sections is *Diagnostics*. PMM can generate a set of diagnostics data which can be examined and/or shared with Percona Support in case of some issue to solve it faster.  You can get collected logs from PMM Server by clicking *Download server diagnostics*.
-
-## Metrics resolution
-
-Metrics are collected at three intervals representing low, medium and high resolutions. Short time intervals are regarded as high resolution metrics, while those at longer time intervals are low resolution.
+Open the *Settings* page from the [main menu](../details/interface.md#main-menu) with {{icon.cog}} *Configuration-->Settings*. The page opens with the *Metrics Resolution* settings tab selected.
 
 ![image](../_images/PMM_Settings_Metrics_Resolution.jpg)
 
-The *Metrics Resolution* radio button lets you select one of four presets.
+On the left are the selector tabs:
 
-- *Rare*, *Standard* and *Frequent* are fixed presets.
-- *Custom* is an editable preset.
+- [Configure](#configure)
+  - [Metrics resolution](#metrics-resolution)
+  - [Advanced Settings](#advanced-settings)
+    - [Data Retention](#data-retention)
+    - [Telemetry](#telemetry)
+    - [Check for updates](#check-for-updates)
+    - [Security Threat Tool](#security-threat-tool)
+  - [Public address](#public-address)
+    - [DBaaS](#dbaas)
+    - [Integrated Alerting](#integrated-alerting)
+    - [Microsoft Azure Monitoring](#microsoft-azure-monitoring)
+    - [Public Address](#public-address-1)
+  - [SSH Key](#ssh-key)
+  - [Alertmanager integration](#alertmanager-integration)
+  - [Percona Platform](#percona-platform)
+    - [Login](#login)
+    - [Sign up](#sign-up)
+    - [Password Reset](#password-reset)
+      - [Password Forgotten](#password-forgotten)
+      - [Change Password after Login](#change-password-after-login)
+  - [Communication](#communication)
+    - [Email](#email)
+    - [Slack](#slack)
 
-Each preset is a group of Low, Medium and High metrics resolution values.
+> <b style="color:goldenrod">Important</b> Click *Apply changes* to save any changes made here.
 
-- A low resolution interval *increases* the time between collection, resulting in low-resolution metrics and lower disk usage.
+**Diagnostics**
 
-- A high resolution interval *decreases* the time between collection, resulting in high-resolution metrics and higher disk usage.
+On all tabs is a *Diagnostics* section (top-right). Click *Download server diagnostics* to retrieve PMM diagnostics data which can be examined and/or shared with our support team should you need help.
+
+## Metrics resolution
+
+Metrics are collected at three intervals representing low, medium and high resolutions.
+
+The *Metrics Resolution* settings tab contains a radio button with three fixed presets (*Rare*, *Standard* and *Frequent*) and one editable custom preset (*Custom*).
+
+![image](../_images/PMM_Settings_Metrics_Resolution.jpg)
+
+Each preset is a group of low, medium and high resolutions. The values are in seconds.
+
+> Short time intervals are *high* resolution metrics. Longer time intervals are *low* resolution. So:
+>
+> - A low resolution interval *increases* the time between collection, resulting in low-resolution metrics and lower disk usage.
+>
+> - A high resolution interval *decreases* the time between collection, resulting in high-resolution metrics and higher disk usage.
 
 The default values (in seconds) for the fixed presets and their resolution names are:
 
-| Preset    | Low  | Medium | High |
-| --------- | ---- | ------ | ---- |
-| Rare      | 300  | 180    | 60   |
-| Standard  | 60   | 10     | 5    |
-| Frequent  | 30   | 5      | 1    |
+| Editable? | Preset            | Low  | Medium | High |
+|:---------:|-------------------|:----:|:------:|:----:|
+| No        | Rare              | 300  | 180    | 60   |
+| No        | Standard          | 60   | 10     | 5    |
+| No        | Frequent          | 30   | 5      | 1    |
+| Yes       | Custom (defaults) | 60   | 10     | 5    |
 
 Values for the *Custom* preset can be entered as values, or changed with the arrows.
 
-!!! alert alert-info "Note"
-    If there is poor network connectivity between PMM Server and PMM Client, or between PMM Client and the database server it is monitoring, scraping every second may not be possible when the network latency is greater than 1 second.
+> If there is poor network connectivity between PMM Server and PMM Client, or between PMM Client and the database server it is monitoring, scraping every second may not be possible when the network latency is greater than 1 second.
 
 ## Advanced Settings
 
-![](../_images/PMM_Settings_Advanced_Settings.jpg)
+![](../_images/PMM_Settings_Advanced_Settings.png)
 
 ### Data Retention
 
-*Data retention* specifies how long data is stored by PMM Server.
+*Data retention* specifies how long data is stored by PMM Server. By default, time-series data is stored for 30 days. You can adjust the data retention time to balance your system's available disk space with your metrics history requirements.
 
 ### Telemetry
 
@@ -66,7 +83,9 @@ Currently, only the following information is gathered:
 
 - PMM Version,
 - Installation Method (Docker, AMI, OVF),
-- the Server Uptime.
+- the Server Uptime,
+- Security Threat Tool Status (enabled or disabled),
+- Integrated Alerting Status (enabled or disabled).
 
 We do not gather anything that would make the system identifiable, but the following two things are to be mentioned:
 
@@ -82,36 +101,64 @@ Grafana’s [anonymous usage statistics](https://grafana.com/docs/grafana/latest
 
 As well as via the *PMM Settings* page, you can also disable telemetry with the `-e DISABLE_TELEMETRY=1` option in your docker run statement for the PMM Server.
 
-!!! alert alert-info "Notes"
-    1. If the Security Threat Tool is enabled in PMM Settings, Telemetry is automatically enabled.
-    2. Telemetry is sent immediately; the 24-hour grace period is not honored.
+> - If the Security Threat Tool is enabled in PMM Settings, Telemetry is automatically enabled.
+>
+> - Telemetry is sent immediately; the 24-hour grace period is not honored.
 
 ### Check for updates
 
-When active, PMM will automatically check for updates and put a notification in the *Updates* dashboard if any are available.
+When active, PMM will automatically check for updates and put a notification in the home page *Updates* dashboard if any are available.
 
 ### Security Threat Tool
 
-The Security Threat Tool performs a range of security-related checks on a registered instance and reports the findings.
+The [Security Threat Tool](../using/platform/security-threat-tool.md) performs a range of security-related checks on a registered instance and reports the findings. It is off by default.
 
-It is disabled by default.
+> To see the results of checks, select {{icon.checks}} *PMM Database Checks* to open the *Security Checks/Failed Checks* dashboard, and select the *Failed Checks* tab.
 
-It can be enabled in *PMM-->PMM Settings-->Settings-->Advanced Settings-->Security Threat Tool*.
+Checks are re-fetched and re-run at intervals. There are three named intervals:
 
-The checks are re-fetched and re-run every 24 hours.
+| Interval name                 | Value (hours)  |
+|------------------------------ |:--------------:|
+| *Rare interval*               | 78             |
+| *Standard interval* (default) | 24             |
+| *Frequent interval*           | 4              |
 
-The results can be viewed in *PMM-->PMM Database Checks*.
+> The values for each named interval are fixed.
+
+Checks use the *Standard* interval by default. To change a check's interval:
+
+- Go to {{icon.checks}} *PMM Database Checks*
+- Select *All Checks*
+- In the *Actions* column, select the {{icon.history}} icon
+
+    ![](../_images/PMM_Security_Checks_Actions.png)
+
+- Select an interval and click *Save*
+
+    ![](../_images/PMM_Security_Checks_Actions_Set_Interval.png)
+
+(Read more at [Security Threat Tool](../using/platform/security-threat-tool.md).)
+
+## Public address
+
+The address or hostname PMM Server will be accessible at. Click *Get from browser* to have your browser detect and populate this field automatically.
 
 ### DBaaS
 
-A read-only setting that shows whether DBaaS features are activated on this server.
+Enables DBaaS features on this server.
 
-!!! alert alert-warning "Caution"
-    DBaaS functionality is a technical preview that must be turned on with a server feature flag. See [Setting up a development environment for DBaaS](../setting-up/server/dbaas.md).
+> <b style="color:goldenrod">Caution</b> DBaaS functionality is a technical preview that must be turned on with a server feature flag. See [DBaaS](../setting-up/server/dbaas.md).
 
 ### Integrated Alerting
 
 Enables [Integrated Alerting](../using/alerting.md) and reveals the [Communication](#communication) tab.
+
+### Microsoft Azure Monitoring
+
+> <b style="color:goldenrod">Caution</b> This is a technical preview feature.
+
+Activates Microsoft Azure monitoring.
+
 
 ### Public Address
 
@@ -132,7 +179,7 @@ Alertmanager manages alerts, de-duplicating, grouping, and routing them to the a
 This section lets you configure integration of VictoriaMetrics with an external Alertmanager.
 
 - The *Alertmanager URL* field should contain the URL of the Alertmanager which would serve your PMM alerts.
-- The *Alerting rules* field is used to specify alerting rules in the YAML configuration format.
+- The *Prometheus Alerting rules* field is used to specify alerting rules in the YAML configuration format.
 
 ![](../_images/PMM_Settings_Alertmanager_Integration.jpg)
 
@@ -164,36 +211,63 @@ To create a *Percona Platform* account:
 
 A brief message will confirm the creation of your new account and you may now log in with these credentials.
 
-!!! alert alert-info "Note"
-    Your Percona Platform account is separate from your PMM User account.
+> Your Percona Platform account is separate from your PMM User account.
+
+### Password Reset
+
+#### Password Forgotten
+
+In case you forgot your password, click on the *Forgot password* link in the login page.
+
+You will be redirected to a password reset page. Enter the email you are registered with in the field and click on *Reset via Email*.
+
+![image](../_images/PMM_Settings_Percona_Platform_Password_Reset.jpg)
+
+An email with a link to reset your password will be sent to you.
+
+#### Change Password after Login
+
+If you did not forget your password but you still want to change it, go to <https://okta.percona.com/enduser/settings> (make sure you are logged in).
+
+![image](../_images/PMM_Settings_Percona_Platform_Password_Reset_Okta.jpg)
+
+Insert you current password and the new password in the form to the bottom right of the page. If you cannot see the form, you will need to click on the *Edit Profile* green button (you will be prompted for you password).
+
+Click on *Change Password*. If everything goes well, you will see a confirmation message.
 
 ## Communication
 
-!!! alert alert-info "Note"
-    This tab appears only when *Advanced Settings* --> *Integrated Alerting* is on.
-
 Global communications settings for [Integrated Alerting](../using/alerting.md).
 
-![](../_images/PMM_Settings_Communication.jpg)
+> If there is no *Communication* tab, go to the *Advanced Settings* tab and activate *Integrated Alerting*.
 
-Integrated Alerting uses a separate instance of Alertmanager run by `pmm-managed`.
+![](../_images/PMM_Settings_Communication.png)
 
-The descriptions for the settings here are reproduced from [Prometheus Alertmanager configuration](https://prometheus.io/docs/alerting/latest/configuration/).
+(Integrated Alerting uses a separate instance of Alertmanager run by `pmm-managed`.)
 
 ### Email
 
 Settings for the SMTP email server:
 
 - *Server Address*: The default SMTP smarthost used for sending emails, including port number.
-- *From*: The default SMTP From header field.
-- *Username*: SMTP Auth using CRAM-MD5, LOGIN and PLAIN.
-- *Password*: SMTP Auth using LOGIN and PLAIN.
 - *Hello*: The default hostname to identify to the SMTP server.
-- *Identity*: SMTP Auth using PLAIN.
-- *Secret*: SMTP Auth using CRAM-MD5.
+- *From*: The sender's email address.
+- *Auth type*: Authentication type. Choose from:
+    - *None*
+    - *Plain*
+    - *Login*
+    - *CRAM-MD5*
+- *Username*: SMTP Auth using CRAM-MD5, LOGIN and PLAIN.
+- *Password*: SMTP Auth using CRAM-MD5, LOGIN and PLAIN.
 
 ### Slack
+
+![](../_images/PMM_Settings_Communication_Slack.png)
 
 Settings for Slack notifications:
 
 - *URL*: The Slack webhook URL to use for Slack notifications.
+
+> **See also**
+>
+> [Prometheus Alertmanager configuration](https://prometheus.io/docs/alerting/latest/configuration/)

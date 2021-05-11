@@ -4,7 +4,7 @@ The Security Threat Tool runs regular checks against connected databases, alerti
 
 All checks run on the PMM Client side. Results are sent to PMM Server where a summary count is shown on the *Home Dashboard*, with details in the *PMM Database Checks* dashboard.
 
-Checks are automatically downloaded from Percona Enterprise Platform and run every 24 hours. (This period is not configurable.)
+Checks are automatically downloaded from Percona Platform and run every 24 hours. (This period is not configurable.)
 
 **Check results data *always* remains on the PMM Server.** It is not related to anonymous data sent for Telemetry purposes.
 
@@ -12,14 +12,9 @@ The *Failed security checks* panel on the *Home Dashboard* shows the number of f
 
 ![Failed security checks panel](../../_images/PMM_Home_Dashboard_Panels_Failed_Security_Checks.jpg)
 
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title">Key</h3>
-  </div>
-  <div class="panel-body">
-    <b style="color:#e02f44;">Critical</b> / <b style="color:#e36526;">Major</b> / <b style="color:#5794f2;">Trivial</b>
-  </div>
-</div>
+> **Key**
+>
+> <b style="color:#e02f44;">Critical</b> / <b style="color:#e36526;">Major</b> / <b style="color:#5794f2;">Trivial</b>
 
 Details are in the *PMM Database Checks* dashboard (select *PMM-->PMM Database Checks*).
 
@@ -30,6 +25,18 @@ Details are in the *PMM Database Checks* dashboard (select *PMM-->PMM Database C
 The Security Threat Tool (STT) is disabled by default. Enable it in [*PMM Settings-->Advanced Settings*](../../how-to/configure.md#advanced-settings).
 
 Enabling STT in the settings also causes the PMM server to download STT checks from Percona Platform and run them once. This operation runs in the background so even though the settings update finishes instantly it might take some time for the checks to complete download and execution and the results (if any) to be visible in the *PMM Database Checks* dashboard.
+
+## Change a check's interval
+
+1. Navigate to *PMM-->PMM Database Checks*
+
+2. Activate the *All Checks* tab
+
+3. In the *Actions* column for a chosen check, click the {{icon.history}} *Interval* icon
+
+4. Chose an interval from the options
+
+5. Click *Save*
 
 ## List of checks made
 

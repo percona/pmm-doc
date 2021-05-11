@@ -1,45 +1,22 @@
----
-TODO:
-- Examples of panel items (graph, chart, set, table)
-
----
-
 # User Interface
 
 PMM's user interface is a browser application based on [Grafana][Grafana]. This page explains how to log in, how the user interface is laid out, and what the controls do.
 
 [Grafana]: https://grafana.com/docs/grafana/latest/
 
----
-
-- [Logging in](#logging-in)
-- [Dashboards](#dashboards)
-- [Controls](#controls)
-- [Navigation](#navigation)
-- [Panels](#panels)
-
----
-
 ## Logging in
 
 1. Start a web browser and in the address bar enter the server name or IP address of the PMM server host.
-
 2. The page loads showing the PMM login screen.
 
     ![](../_images/PMM_Login.jpg)
 
-3. Enter the username and password given to you by your system administrator.
-
-    The defaults are:
-
+3. Enter the username and password given to you by your system administrator. The defaults are:
     - Username: `admin`
     - Password: `admin`
-
 4. Click *Log in*
-
 5. If this is your first time logging in, you'll be asked to set a new password. (We recommend you do.) Enter a new password in both fields and click *Submit*. You can click *Skip* to carry on with the default password.
-
-6. The PMM Home dashboard loads. (This is an example taken from <https://pmmdemo.percona.com/>. Yours may be different.)
+6. The PMM Home dashboard loads.
 
     ![PMM Home dashboard](../_images/PMM_Home_Dashboard_TALL.jpg)
 
@@ -61,10 +38,10 @@ These menus and controls appear on all dashboards:
 4. View selectors (dynamic contents)
 5. Shortcut menu (dynamic contents)
 
+(For details see [UI Components](../details/interface.md).)
+
 ![](../_images/PMM_Home_Dashboard_TALL_Numbered.png)
 
-!!! seealso "See also"
-	[User interface components](../details/interface.md)
 
 ## Navigation
 
@@ -86,9 +63,7 @@ There are two ways to open the dashboard search page. (Each takes you to the sam
 
 **Open a dashboard with the menu**
 
-The [shortcut menu](#shortcut-menu) has links to commonly-used dashboards.
-
-![](../_images/PMM_Home_Dashboard_Menus_Submenu_Bar.jpg)
+In the [main menu](../details/interface.md#main-menu), the {{ icon.dashboard }} *PMM Dashboards* icon reveals a submenu containing links to all PMM dashboards grouped by service type. (This menu will eventually replace the [shortcut menu](../details/interface.md#shortcut-menu) which has links to commonly-used dashboards.
 
 ## Panels
 
@@ -102,13 +77,10 @@ At the top of each panel and to the right of the panel name is the *panel menu*.
 
 ![image](../_images/PMM_Common_Panel_Menu_Open.jpg)
 
-
-!!! alert alert-success "Tip"
-    The menu is hidden until you mouse over it. Look for the {{icon.angledown}} symbol in the title bar of a panel.
-
+> **Tip** The menu is hidden until you mouse over it. Look for the {{icon.angledown}} symbol in the title bar of a panel.
 
 | Item                          | Description                                                                         |
-| ----------------------------- | ----------------------------------------------------------------------------------- |
+|:-----------------------------:| ----------------------------------------------------------------------------------- |
 | {{icon.eye}} View             | Open the panel in full window mode                                                  |
 | {{icon.share}} Share          | [Render the panel's image for sharing](#rendering-dashboard-images)                 |
 | {{icon.compass}} Explore      | Run [PromQL](https://prometheus.io/docs/prometheus/latest/querying/basics/) queries |
@@ -121,15 +93,8 @@ The *View* menu items opens panels in full-window mode. This is useful for graph
 
 Exit a panel's full window mode by pressing *Escape* or clicking the left arrow {{icon.arrowleft}} next to the dashboard name.
 
-
-
-
-
-
-
-
-
-
-!!! seealso "See also"
-	- [How to render dashboard images](../how-to/render-dashboard-images.md)
-	- [How to annotate special events](../how-to/annotate.md)
+> **See also**
+>
+> - [How to render dashboard images](../how-to/render-dashboard-images.md)
+>
+> - [How to annotate special events](../how-to/annotate.md)

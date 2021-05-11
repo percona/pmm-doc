@@ -9,28 +9,24 @@ The PMM setting-up process can be broken into three key stages:
 ```plantuml source="_resources/diagrams/Setting-Up.puml"
 ```
 
-## 1. Setting up PMM Server {: #setting-up-pmm-server}
+## Setting up PMM Server {: #setting-up-pmm-server}
 
-You must set up at least one PMM Server.
+You must set up at least one PMM Server. A server can run:
 
-A server can run as:
+- [with Docker](server/docker.md)
+- [as a virtual appliance](server/virtual-appliance.md)
+- [on an Amazon AWS EC2 instance](server/aws.md)
 
-- [a Docker container](server/docker.md)
-- [a virtual appliance](server/virtual-appliance.md)
-- [an Amazon AWS EC2 instance](server/aws.md)
+## Setting up PMM Client {: #setting-up-pmm-client}
 
-## 2. Setting up PMM Client {: #setting-up-pmm-client}
-
-You must [set up PMM Client](client/index.md) on each node where there is a service to be monitored.
-
-You can do this:
+You must [set up PMM Client](client/index.md) on each node where there is a service to be monitored. You can do this:
 
 1. [with a package manager (`apt`, `apt-get`, `dnf`, `yum`)](client/index.md#package-manager)
 1. [by manually downloading and installing `.deb` or `.rpm` packages](client/index.md#manual-package)
 1. [by manually downloading and unpacking a binary package (`.tar.gz`)](client/index.md#binary-package)
 1. [with a Docker image](client/index.md#docker)
 
-## 3. Configure and add services {: #configure-add-services}
+## Configure and add services {: #configure-add-services}
 
 You must configure your services and add them to PMM Server's inventory of monitored systems. This is different for each type of service:
 
@@ -40,6 +36,7 @@ You must configure your services and add them to PMM Server's inventory of monit
 - [ProxySQL](client/proxysql.md)
 - [Amazon RDS](client/aws.md)
 - [Microsoft Azure](client/azure.md)
+- [Google Cloud Platform (MySQL and PostgreSQL)](client/google.md)
 - [Linux](client/linux.md)
 - [External services](client/external.md)
 - [HAProxy](client/haproxy.md)

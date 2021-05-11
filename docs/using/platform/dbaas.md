@@ -1,18 +1,12 @@
-# DBaaS Dashboard
+# DBaaS Dashboard (Alpha)
 
-!!! alert alert-warning "Caution"
-    DBaaS functionality is Alpha. The information on this page is subject to change and may be inaccurate.
-
-!!! alert alert-info "Note"
-    You must run PMM Server with a DBaaS feature flag to activate the features described here.
-
----
-
-[TOC]
-
----
+> <b style="color:goldenrod">Caution</b> **DBaaS functionality is currently in [Alpha status][ALPHA]**.
+>
+> The information on this page is subject to change and may be inaccurate.
 
 The DBaaS dashboard is where you add, remove, and operate on Kubernetes and database clusters.
+
+> You must run PMM Server with a DBaaS feature flag to activate the features described here.
 
 To open the DBaaS dashboard:
 
@@ -39,8 +33,7 @@ To open the DBaaS dashboard:
 
 ### Unregister a Kubernetes cluster
 
-!!! alert alert-info "Note"
-    You can't unregister a Kubernetes cluster if there DB clusters associated with it.
+> You can't unregister a Kubernetes cluster if there DB clusters associated with it.
 
 1. Click *Unregister*.
 
@@ -52,6 +45,30 @@ To open the DBaaS dashboard:
 
 2. In the *Actions* column, open the {{ icon.ellipsisv }} menu and click *Show configuration*.
 
+### Manage allowed component versions
+
+Administrators can select allowed and default versions of components versions for each cluster.
+
+1. Find the row with the Kubernetes cluster you want to manage.
+
+2. In the *Actions* column, open the {{ icon.ellipsisv }} menu and click *Manage versions*.
+
+    ![](../../_images/PMM_DBaaS_Kubernetes_Manage_Versions.png)
+
+3. Select an *Operator* and *Component* from the drop-down menus.
+
+    ![](../../_images/PMM_DBaaS_Kubernetes_Manage_Components_Versions.png)
+
+4. Activate or deactivate allowed versions, and select a default in the *Default* menu.
+
+5. Click *Save*.
+
+### Kubernetes operator status
+
+The Kubernetes Cluster tab shows the status of operators.
+
+![](../../_images/PMM_DBaaS_Kubernetes_Cluster_Operator_Status.png)
+
 ## DB clusters
 
 ### Add a DB Cluster
@@ -60,20 +77,7 @@ You must create at least one Kubernetes cluster to create a DB cluster.
 
 To monitor a DB cluster, set up a [public address](../../how-to/configure.md#public-address) for PMM Server first.
 
-!!! alert alert-success "Tip"
-    Resource consumption in Kubernetes can cause problems. Use this formula to ensure your nodes have enough resources to start the requested configuration:
-
-    > ( 2 * # of nodes in DB cluster * CPU per node ) + (.5 * # of nodes in db cluster) = total # of CPUs that must be free for cluster to start
-
-	The first part of the equation is resources for the cluster. It is doubled because each DB cluster member must also have a proxy started with it.
-
-    The second part is to start the container(s) that automatically monitor each member of the DB cluster.
-
-	(You can also specify CPU in decimal tenths, e.g. `.1` CPUs or `1.5` CPUs.)
-
 1. Select the *DB Cluster* tab.
-
-    ![](../../_images/PMM_DBaaS_DB_Cluster_Panel.jpg)
 
 2. Click *Create DB Cluster*.
 
@@ -99,7 +103,9 @@ To monitor a DB cluster, set up a [public address](../../how-to/configure.md#pub
 
         Values for the *Custom* preset can be edited.
 
-        ![](../../_images/PMM_DBaaS_DB_Cluster_Advanced_Options.jpg)
+		Beside each resource type is an estimate of the required and available resources represented numerically in absolute and percentage values, and graphically as a colored, segmented bar showing the projected ratio of used to available resources. A red warning triangle {{ icon.exclamationtrianglered }} is shown if the requested resources exceed those available.
+
+        ![](../../_images/PMM_DBaaS_DB_Cluster_Advanced_Options.png)
 
 5. When both *Basic Options* and *Advanced Options* section icons are green, the *Create Cluster* button becomes active. (If inactive, check the values for fields in sections whose icon is red.)
 
@@ -137,6 +143,8 @@ To monitor a DB cluster, set up a [public address](../../how-to/configure.md#pub
 
     ![](../../_images/PMM_DBaaS_DB_Cluster_Delete.png)
 
+> <b style="color:goldenrod">Important</b> Deleting a cluster in this way also deletes any attached volumes.
+
 ### Edit a DB Cluster
 
 1. Select the *DB Cluster* tab.
@@ -172,5 +180,8 @@ A paused cluster can't be edited.
         ![DBaaS Resume](../../_images/PMM_DBaaS_DB_Cluster_Resume.gif)
 
 
-!!! seealso "See also"
-    [Setting up a development environment for DBaaS](../../setting-up/server/dbaas.md)
+> **See also**
+> [Setting up a development environment for DBaaS](../../setting-up/server/dbaas.md)
+
+
+[ALPHA]: https://en.wikipedia.org/wiki/Software_release_life_cycle#Alpha
