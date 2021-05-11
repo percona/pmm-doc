@@ -389,16 +389,12 @@
 <p>Disable table statistics collection.</p>
 <p>Excluded collectors for low-resolution time intervals:</p>
 <ul>
-<li><code>--collect.auto_increment.columns</code><ul>
+<li><code>--collect.auto_increment.columns</code></li>
 <li><code>--collect.info_schema.tables</code></li>
 <li><code>--collect.info_schema.tablestats</code></li>
-</ul>
-</li>
 <li><code>--collect.perf_schema.indexiowaits</code></li>
-<li><code>--collect.perf_schema.tableiowaits</code><ul>
+<li><code>--collect.perf_schema.tableiowaits</code></li>
 <li><code>--collect.perf_schema.file_instances</code></li>
-</ul>
-</li>
 </ul>
 </dd>
 </dl>
@@ -424,6 +420,20 @@
 <dd>Use TLS to connect to the database.</dd>
 <dt><code>--tls-skip-verify</code></dt>
 <dd>Skip TLS certificates validation.</dd>
+<dt><code>--tls-cert-file=PATHTOCERT</code></dt>
+<dd>Path to TLS client certificate file.</dd>
+<dt><code>--tls-key=PATHTOCERTKEY</code></dt>
+<dd>Key for TLS client certificate file.</dd>
+<dt><code>--tls-ca-file=PATHTOCACERT</code></dt>
+<dd>Path to certificate authority file.</dd>
+<dt><code>--ssl-ca=PATHTOCACERT</code></dt>
+<dd>The path name of the Certificate Authority (CA) certificate file. If used must specify the same certificate used by the server. (-ssl-capath is similar but specifies the path name of a directory of CA certificate files.)</dd>
+<dt><code>--ssl-cert=PATHTOCERTKEY</code></dt>
+<dd>The path name of the client public key certificate file.</dd>
+<dt><code>--ssl-key</code></dt>
+<dd>The path name of the client private key file.</dd>
+<dt><code>--ssl-skip-verify</code></dt>
+<dd>Skip SSL certificate verification.</dd>
 <dt><code>--metrics-mode=mode</code></dt>
 <dd>Metrics flow mode for agents node-exporter. Allowed values:
 - <code>auto</code>: chosen by server (default)
@@ -684,7 +694,7 @@ Agents:
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-03-19
+            <i class="uil uil-refresh"></i> Page updated 2021-05-11
         </li>
         
     </ul>
@@ -1431,6 +1441,12 @@ Agents:
 
 
 <ul class="toctree" id="toctree">
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.17.0.html">Percona Monitoring and Management 2.17.0</a>
+
+
 
 
 <li class="toctree-l2">

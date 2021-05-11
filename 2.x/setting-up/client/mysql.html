@@ -781,6 +781,9 @@
 </ol>
 <h3 id="on-the-command-line">On the command line<a class="headerlink" href="#on-the-command-line" title="Permanent link">&para;</a></h3>
 <p>Add the database server as a service using one of these example commands. If successful, PMM Client will print <code>MySQL Service added</code> with the service&rsquo;s ID and name. Use the <code>--environment</code> and <code>-custom-labels</code> options to set tags for the service to help identify them.</p>
+<p><strong>Examples &ndash; TLS connection</strong></p>
+<div class="highlight"><pre><span></span><code>sudo pmm-admin add mysql --username<span class="o">=</span>user --password<span class="o">=</span>pass --tls --tls-skip-verify --tls-ca<span class="o">=</span>pathtoca.pem --tls-cert<span class="o">=</span>pathtocert.pem --tls-key<span class="o">=</span>pathtocertkey.pem --server-url<span class="o">=</span>http://admin:admin@127.0.0.1 --query-source<span class="o">=</span>perfschema name localhost:3306
+</code></pre></div>
 <p><strong>Examples &ndash; Slow query log</strong></p>
 <p>Default query source (<code>slowlog</code>), service name (<code>{node name}-mysql</code>), and service address/port (<code>127.0.0.1:3306</code>), with database server account <code>pmm</code> and password <code>pass</code>.</p>
 <div class="highlight"><pre><span></span><code>sudo pmm-admin add mysql --username<span class="o">=</span>pmm --password<span class="o">=</span>pass
@@ -864,7 +867,7 @@
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-05-07
+            <i class="uil uil-refresh"></i> Page updated 2021-05-11
         </li>
         
     </ul>
@@ -1611,6 +1614,12 @@
 
 
 <ul class="toctree" id="toctree">
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.17.0.html">Percona Monitoring and Management 2.17.0</a>
+
+
 
 
 <li class="toctree-l2">

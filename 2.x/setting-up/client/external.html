@@ -144,13 +144,17 @@
 <p>You can write a custom external exporter or extend your application to expose metrics in Prometheus format.</p>
 <p>Please see more details here: https://prometheus.io/docs/instrumenting/writing_exporters/</p>
 <h3 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h3>
-<p><div class="highlight"><pre><span></span><code>root@mysql1:~# pmm-admin add external --group<span class="o">=</span>processess  --listen-port<span class="o">=</span><span class="m">9256</span>
+<div class="highlight"><pre><span></span><code>root@mysql1:~# pmm-admin add external --group<span class="o">=</span>processes  --listen-port<span class="o">=</span><span class="m">9256</span>
 External Service added.
 Service ID  : /service_id/6485f4fd-745b-4dfb-8b72-328e300f8b50
-Service name: mysql1-processess
-Group       : processess
+Service name: mysql1-processes
+Group       : processes
 </code></pre></div>
-Add exporter running on local port 9256 to the group called &ldquo;processess&rdquo;  use group name and host name to automatically generate service name.  Use default scheme and metrics path.</p>
+<ul>
+<li>Add an exporter running on local port 9256 to the group called <code>processes</code>.</li>
+<li>Use the group and host names to automatically generate a service name.</li>
+<li>Use the default scheme and metrics path.</li>
+</ul>
 <h2 id="adding-an-external-service-via-ui">Adding an External service via UI<a class="headerlink" href="#adding-an-external-service-via-ui" title="Permanent link">&para;</a></h2>
 <ol>
 <li>
@@ -175,7 +179,7 @@ Add exporter running on local port 9256 to the group called &ldquo;processess&rd
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-05-04
+            <i class="uil uil-refresh"></i> Page updated 2021-05-11
         </li>
         
     </ul>
@@ -922,6 +926,12 @@ Add exporter running on local port 9256 to the group called &ldquo;processess&rd
 
 
 <ul class="toctree" id="toctree">
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.17.0.html">Percona Monitoring and Management 2.17.0</a>
+
+
 
 
 <li class="toctree-l2">

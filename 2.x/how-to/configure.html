@@ -242,7 +242,7 @@
 <p>If the Security Threat Tool is enabled in PMM Settings, Telemetry is automatically enabled.</p>
 </li>
 <li>
-<p>Telemetry is sent immediately; the 24-hour grace period is not honored.</p>
+<p>Telemetry is sent immediately; the 24 hour grace period is not honored.</p>
 </li>
 </ul>
 </blockquote>
@@ -296,9 +296,12 @@
 <h2 id="public-address">Public address<a class="headerlink" href="#public-address" title="Permanent link">&para;</a></h2>
 <p>The address or hostname PMM Server will be accessible at. Click <em>Get from browser</em> to have your browser detect and populate this field automatically.</p>
 <h3 id="dbaas">DBaaS<a class="headerlink" href="#dbaas" title="Permanent link">&para;</a></h3>
-<p>Enables DBaaS features on this server.</p>
 <blockquote>
 <p><b style="color:goldenrod">Caution</b> DBaaS functionality is a technical preview that must be turned on with a server feature flag. See <a href="../setting-up/server/dbaas.html">DBaaS</a>.</p>
+</blockquote>
+<p>Enables/disables <a href="../using/platform/dbaas.html">DBaaS features</a> on this server.</p>
+<blockquote>
+<p><b style="color:goldenrod">Important</b> Deactivating DBaaS <strong><em>does not</em></strong> suspend or remove running DB clusters.</p>
 </blockquote>
 <h3 id="integrated-alerting">Integrated Alerting<a class="headerlink" href="#integrated-alerting" title="Permanent link">&para;</a></h3>
 <p>Enables <a href="../using/alerting.html">Integrated Alerting</a> and reveals the <a href="#communication">Communication</a> tab.</p>
@@ -393,7 +396,7 @@
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-05-07
+            <i class="uil uil-refresh"></i> Page updated 2021-05-11
         </li>
         
     </ul>
@@ -1140,6 +1143,12 @@
 
 
 <ul class="toctree" id="toctree">
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/2.17.0.html">Percona Monitoring and Management 2.17.0</a>
+
+
 
 
 <li class="toctree-l2">

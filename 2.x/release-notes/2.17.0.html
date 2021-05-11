@@ -32,7 +32,7 @@
 
 
 
-<title>Percona Monitoring and Management &mdash; Percona Monitoring and Management 2.4.0</title>
+<title>Percona Monitoring and Management &mdash; Percona Monitoring and Management 2.17.0</title>
 
 <head>
     
@@ -46,7 +46,7 @@
 
     <link rel="top" title="" href="" />
     
-    <link rel="next" title="Percona Monitoring and Management 2.3.0" href="2.3.0.html" />
+    <link rel="next" title="Percona Monitoring and Management 2.16.0" href="2.16.0.html" />
     
     
 </head>
@@ -73,12 +73,12 @@
     <ul class="nav nav-pills">
         
         <li class="right" style="margin-right: 10px">
-            <a href="2.3.0.html" title="Percona Monitoring and Management 2.3.0">Next</a>
+            <a href="2.16.0.html" title="Percona Monitoring and Management 2.16.0">Next</a>
         </li>
         
         
         <li class="right" style="margin-right: 10px">
-            <a href="2.5.0.html" title="Percona Monitoring and Management 2.5.0">Previous</a>
+            <a href="index.html" title="Release Notes">Previous</a>
         </li>
         
         <li>
@@ -92,11 +92,11 @@
 <div class="small">
     <ul class="list-inline">
         <li class="left">
-            <a href="https://github.com/percona/pmm-doc/issues/new?title=PMM2: doc issue on page  'Percona Monitoring and Management 2.4.0' (release-notes/2.4.0.html)&body=Please describe the issue here"
+            <a href="https://github.com/percona/pmm-doc/issues/new?title=PMM2: doc issue on page  'Percona Monitoring and Management 2.17.0' (release-notes/2.17.0.html)&body=Please describe the issue here"
                 target="_blank" title="Report an issue with this page on GitHub"><i class="uil uil-exclamation-triangle"></i> Report a problem with this page</a>
         </li>
         <li class="pull-right">
-            <a href="https://github.com/percona/pmm-doc/edit/main/docs/release-notes/2.4.0.md" target="_blank" title="Edit this page on GitHub in Markdown format"><i class="uil uil-pen"></i> <b>Edit this page</b></a>
+            <a href="https://github.com/percona/pmm-doc/edit/main/docs/release-notes/2.17.0.md" target="_blank" title="Edit this page on GitHub in Markdown format"><i class="uil uil-pen"></i> <b>Edit this page</b></a>
         </li>
     </ul>
 </div>
@@ -104,7 +104,7 @@
 
                 <div class="bodywrapper">
                     <div class="body">
-                        <h1 id="percona-monitoring-and-management-240">Percona Monitoring and Management 2.4.0<a class="headerlink" href="#percona-monitoring-and-management-240" title="Permanent link">&para;</a></h1>
+                        <h1 id="percona-monitoring-and-management-2170">Percona Monitoring and Management 2.17.0<a class="headerlink" href="#percona-monitoring-and-management-2170" title="Permanent link">&para;</a></h1>
 <table class="docutils field-list" frame="void" rules="none">
   <colgroup>
     <col class="field-name">
@@ -113,58 +113,76 @@
   <tbody valign="top">
     <tr class="field-odd field">
       <th class="field-name">Date:</th>
-      <td class="field-body">March 18, 2020</td>
+      <td class="field-body">May 11, 2021</td>
     </tr>
     <tr class="field-even field">
       <th class="field-name">Installation:</th>
       <td class="field-body">
-        <a class="reference external" href="https://www.percona.com/doc/percona-monitoring-and-management/2.x/setting-up/">Installing Percona Monitoring and Management</a></td>
+        <a class="reference external" href="https://www.percona.com/software/pmm/quickstart">Installing Percona Monitoring and Management</a></td>
     </tr>
   </tbody>
 </table>
 
 <p>Percona Monitoring and Management (PMM) is a free and open-source platform for managing and monitoring MySQL, MongoDB, and PostgreSQL performance.</p>
+<h2 id="release-highlights">Release Highlights<a class="headerlink" href="#release-highlights" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p>Custom certificates help define proper security levels for remotely monitored MySQL instances, including Google Cloud SQL.</p>
+</li>
+<li>
+<p>Usability improvements to the External Monitoring UI. When filling parameters, you can enter the parts of an endpoint (scheme, host, path) or let PMM automatically extract them from a URL.</p>
+</li>
+<li>
+<p>pg_stat_monitor 0.9.0 support. This change will give you compatibility with the latest version. Support for new features will be in an upcoming release.</p>
+</li>
+<li>
+<p>Single-line install of PMM Server on supported Linux distributions (this feature is in Technical Preview).</p>
+</li>
+<li>
+<p>DBaaS Changes: (this feature is in Technical Preview)</p>
+<ul>
+<li>It is easier to experience DBaaS functionality; you can quickly turn it ON/OFF in <em>Advanced settings</em> on the <em>Settings</em> page. (<a href="../how-to/configure.html#advanced-settings">Read more</a>)</li>
+<li>Database components management will enable PMM administrators to limit users in your organization to specific (admin-approved) database versions in their DBaaS DB Clusters.</li>
+<li>For PXC clusters created using DBaaS, HAProxy will now be used by default.  Please note: Monitoring of the HAProxy in DBaaS will be enabled in an upcoming release.</li>
+</ul>
+</li>
+<li>
+<p>Changes to <em>Sign in to Percona Platform</em>. From this release, Registration of the Percona account will be more secure and require additional confirmation.</p>
+</li>
+</ul>
 <h2 id="new-features">New Features<a class="headerlink" href="#new-features" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a href="https://jira.percona.com/browse/PMM-3387">PMM-3387</a>: Prometheus custom configuration is now supported by PMM Server. The feature is targeted at experienced users and is done by <a href="../faq.html">adding the base configuration file into the PMM Server container</a> to be parsed and included into the managed Prometheus configuration.</li>
-<li><a href="https://jira.percona.com/browse/PMM-5186">PMM-5186</a>: Including <code>–-pprof</code> option in the <code>pmm-admin summary</code> command adds <code>pprof</code> debug profiles to the diagnostics data archive</li>
-<li><a href="https://jira.percona.com/browse/PMM-5102">PMM-5102</a>: The new “Node Details” dashboard now displays data from the hardware monitoring sensors in <code>hwmon</code>. The <a href="../details/dashboards/dashboard-node-temperature-details.html">new dashboard</a> is based on the <code>hwmon</code> collector data from the <code>node_exporter</code>. Please note that data may be unavailable for some nodes because of the configuration or virtualization parameters.</li>
+<li><a href="https://jira.percona.com/browse/PMM-7863">PMM-7863</a>: DBaaS: Ability to specify in K8s configuration the version of HAProxy to be used for DB creation</li>
+<li><a href="https://jira.percona.com/browse/PMM-7848">PMM-7848</a>, <a href="https://jira.percona.com/browse/PMM-7847">PMM-7847</a>, <a href="https://jira.percona.com/browse/PMM-7421">PMM-7421</a>: Add support for using SSL certificates between pmm-admin and monitored MySQL databases</li>
+<li><a href="https://jira.percona.com/browse/PMM-7883">PMM-7883</a>: Single-line install of PMM Server on supported Linux distributions - [Technical Preview]</li>
+<li><a href="https://jira.percona.com/browse/PMM-7013">PMM-7013</a>, <a href="https://jira.percona.com/browse/PMM-7819">PMM-7819</a>: DBaaS: Use HAProxy by default instead of ProxySQL for MySQL DB clusters</li>
+<li><a href="https://jira.percona.com/browse/PMM-7356">PMM-7356</a>, <a href="https://jira.percona.com/browse/PMM-7581">PMM-7581</a>: DBaaS: Management of available versions of DB components</li>
+<li><a href="https://jira.percona.com/browse/PMM-7358">PMM-7358</a>, <a href="https://jira.percona.com/browse/PMM-7576">PMM-7576</a>: DBaaS: Management of default versions of DB components</li>
 </ul>
 <h2 id="improvements">Improvements<a class="headerlink" href="#improvements" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a href="https://jira.percona.com/browse/PMM-4915">PMM-4915</a>: The Query Analytics dashboard now shows Time Metrics in the Profile Section as “AVG per query” instead of “AVG per second”</li>
-<li><a href="https://jira.percona.com/browse/PMM-5470">PMM-5470</a>: ClickHouse query optimized for Query Analytics to improve its speed and reduce the load on the back-end</li>
-<li><a href="https://jira.percona.com/browse/PMM-5448">PMM-5448</a>: The default high and medium metrics resolutions were changed to 1-5-30 and 5-10-60 sec. To reduce the effect of this change on existing installations, systems having the “old” high resolution chosen on the PMM Settings page (5-5-60 sec.) will be automatically re-configured to the medium one during an upgrade. If the resolution was changed to some custom values via API, it will not be affected</li>
-<li>
-<p><a href="https://jira.percona.com/browse/PMM-5531">PMM-5531</a>: A health check indicator was implemented for the PMM Server Docker image. It is based on the <a href="https://docs.docker.com/engine/reference/builder/#healthcheck">Docker HEALTHCHECK</a>. This feature can be used as follows:</p>
-<div class="highlight"><pre><span></span><code>docker inspect -f  <span class="o">{{</span>.State.Health.Status<span class="o">}}</span>
-<span class="k">until</span> <span class="o">[</span> <span class="s2">&quot;`docker inspect -f  {{.State.Health.Status}} pmm-server`&quot;</span> <span class="o">==</span> <span class="s2">&quot;healthy&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">do</span> sleep <span class="m">1</span><span class="p">;</span> <span class="k">done</span>
-</code></pre></div>
-</li>
-<li>
-<p><a href="https://jira.percona.com/browse/PMM-5489">PMM-5489</a>: The “Total” line in all charts is now drawn with the same red color for better consistency</p>
-</li>
-<li><a href="https://jira.percona.com/browse/PMM-5461">PMM-5461</a>: Memory graphs on the node-related dashboards were adjusted to have fixed colors that are more distinguishable from each other</li>
-<li><a href="https://jira.percona.com/browse/PMM-5329">PMM-5329</a>: Prometheus in PMM Server was updated to version 2.16.0. This update has brought several improvements. Among them are significantly reduced memory footprint of the loaded TSDB blocks, lower memory footprint for the compaction process (caused by the more balanced choice of what to buffer during compaction), and improved query performance for the queries that only touch the most recent 2 hours of data.</li>
-<li><a href="https://jira.percona.com/browse/PMM-5210">PMM-5210</a>: Data Retention is now specified in days instead of seconds on the PMM Settings page. Please note this is a UI-only change, so the actual data retention precision is not changed</li>
-<li><a href="https://jira.percona.com/browse/PMM-5182">PMM-5182</a>: The <code>logs.zip</code> archive available on the PMM Settings page now includes additional self-monitoring information in a separate <code>client</code> subfolder. This subfolder contains information collected on the PMM Server and is equivalent to the one collected on a node by the <code>pmm-admin summary</code> command.</li>
-<li><a href="https://jira.percona.com/browse/PMM-5112">PMM-5112</a>: The Inventory API List requests now can be filtered by the Node/Service/Agent type</li>
+<li><a href="https://jira.percona.com/browse/PMM-7572">PMM-7572</a>: Add TLS options to mysqld_exporter</li>
+<li><a href="https://jira.percona.com/browse/PMM-7783">PMM-7783</a>: Support of pg_stat_monitor 0.9.0</li>
+<li><a href="https://jira.percona.com/browse/PMM-7064">PMM-7064</a>: Integrated Alerting: Presenting severity of the Alert Rule using different colors</li>
+<li><a href="https://jira.percona.com/browse/PMM-7946">PMM-7946</a>: Better error message on PMM client if server doesn&rsquo;t support HAProxy</li>
+<li><a href="https://jira.percona.com/browse/PMM-7932">PMM-7932</a>: Usability improvements on UI for adding External Services</li>
+<li><a href="https://jira.percona.com/browse/PMM-7641">PMM-7641</a>, <a href="https://jira.percona.com/browse/PMM-7820">PMM-7820</a>: Add DBaaS to Technical Preview section and allow user to Enable/Disable via UI</li>
+<li><a href="https://jira.percona.com/browse/PMM-7966">PMM-7966</a>: Telemetry: Collect enabled/disabled status for Integrated Alerting and Security Threat Tool features</li>
 </ul>
 <h2 id="bugs-fixed">Bugs Fixed<a class="headerlink" href="#bugs-fixed" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a href="https://jira.percona.com/browse/PMM-5178">PMM-5178</a>: Query Detail Section of the Query Analytics dashboard didn’t show tables definitions and indexes for the internal PostgreSQL database</li>
-<li><a href="https://jira.percona.com/browse/PMM-5465">PMM-5465</a>: MySQL Instance related dashboards had row names not always matching the actual contents. To fix this, elements were re-ordered and additional rows were added for better matching of the row name and the corresponding elements</li>
-<li><a href="https://jira.percona.com/browse/PMM-5455">PMM-5455</a>: Dashboards from the Insight menu were fixed to work correctly when the low resolution is set on the PMM Settings page</li>
-<li><a href="https://jira.percona.com/browse/PMM-5446">PMM-5446</a>: A number of the Compare Dashboards were fixed to work correctly when the low resolution is set on the PMM Settings page</li>
-<li><a href="https://jira.percona.com/browse/PMM-5430">PMM-5430</a>: MySQL Exporter section on the Prometheus Exporter Status dashboard now collapsed by default to be consistent with other database-related sections</li>
-<li><a href="https://jira.percona.com/browse/PMM-5445">PMM-5445</a>, <a href="https://jira.percona.com/browse/PMM-5439">PMM-5439</a>, <a href="https://jira.percona.com/browse/PMM-5427">PMM-5427</a>, <a href="https://jira.percona.com/browse/PMM-5426">PMM-5426</a>, <a href="https://jira.percona.com/browse/PMM-5419">PMM-5419</a>: Labels change (which occurs e.g. when the metrics resolution is changed on the PMM Settings page) was breaking dashboards</li>
-<li><a href="https://jira.percona.com/browse/PMM-5347">PMM-5347</a>: Selecting queries on the Query Analytics dashboard was generating errors in the browser console</li>
-<li><a href="https://jira.percona.com/browse/PMM-5305">PMM-5305</a>: Some applied filters on the Query Analytics dashboard were not preserved after changing the time range</li>
-<li><a href="https://jira.percona.com/browse/PMM-5267">PMM-5267</a>: The Refresh button was not working on the Query Analytics dashboard</li>
-<li><a href="https://jira.percona.com/browse/PMM-5003">PMM-5003</a>: pmm-admin list and status use different JSON naming for the same data</li>
-<li><a href="https://jira.percona.com/browse/PMM-5526">PMM-5526</a>: A typo was fixed in the Replication Dashboard description tooltip</li>
+<li><a href="https://jira.percona.com/browse/PMM-7911">PMM-7911</a>: DBaaS: Invalid Number of Nodes results in an annoying error message pop-up</li>
+<li><a href="https://jira.percona.com/browse/PMM-7884">PMM-7884</a>: DBaaS: Fix DB Cluster tab loading</li>
+<li><a href="https://jira.percona.com/browse/PMM-7917">PMM-7917</a>: PostgreSQL exporter has high CPU usage during Restart</li>
+<li><a href="https://jira.percona.com/browse/PMM-8037">PMM-8037</a>: User can create a Percona Platform account without proper confirmation</li>
+<li><a href="https://jira.percona.com/browse/PMM-7702">PMM-7702</a>: DBaaS: Cannot edit already-created PSMDB clusters</li>
+<li><a href="https://jira.percona.com/browse/PMM-7991">PMM-7991</a>: MySQL Summary panel doesn&rsquo;t exist on MySQL Summary dashboard</li>
+<li><a href="https://jira.percona.com/browse/PMM-7939">PMM-7939</a>: Inconsistent format of version reporting in pmm-admin</li>
+<li><a href="https://jira.percona.com/browse/PMM-7920">PMM-7920</a>: PostgreSQL Exporter has increased memory usage with pmm-client 2.15.1 &amp; pmm-server 2.16.0</li>
+<li><a href="https://jira.percona.com/browse/PMM-7700">PMM-7700</a>: Integrated Alerting: Rule API crashing with more than two parameters or invalid values</li>
+<li><a href="https://jira.percona.com/browse/PMM-7616">PMM-7616</a>: Integrated Alerting: Incorrect title of the page in a browser</li>
+<li><a href="https://jira.percona.com/browse/PMM-7396">PMM-7396</a>: Integrated Alerting: Alerts tab error if user deletes Alert Rule which has Firing alerts</li>
 </ul>
-<p>Help us improve our software quality by reporting any bugs you encounter using <a href="https://jira.percona.com/secure/Dashboard.jspa">our bug tracking system</a>.</p>
                     </div>
                 </div>
                 
@@ -172,7 +190,7 @@
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-02-10
+            <i class="uil uil-refresh"></i> Page updated 2021-05-11
         </li>
         
     </ul>
@@ -183,12 +201,12 @@
     <ul class="nav nav-pills">
         
         <li class="right" style="margin-right: 10px">
-            <a href="2.3.0.html" title="Percona Monitoring and Management 2.3.0">Next</a>
+            <a href="2.16.0.html" title="Percona Monitoring and Management 2.16.0">Next</a>
         </li>
         
         
         <li class="right" style="margin-right: 10px">
-            <a href="2.5.0.html" title="Percona Monitoring and Management 2.5.0">Previous</a>
+            <a href="index.html" title="Release Notes">Previous</a>
         </li>
         
         <li>
@@ -1088,13 +1106,13 @@
 
 <h4>Previous page</h4>
 <p class="topless">
-    <a href="2.5.0.html" title="previous chapter">Percona Monitoring and Management 2.5.0</a>
+    <a href="index.html" title="previous chapter">Release Notes</a>
 </p>
 
 
 <h4>Next page</h4>
 <p class="topless">
-    <a href="2.3.0.html" title="next chapter">Percona Monitoring and Management 2.3.0</a>
+    <a href="2.16.0.html" title="next chapter">Percona Monitoring and Management 2.16.0</a>
 </p>
 
 
