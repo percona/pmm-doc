@@ -198,9 +198,15 @@ sudo yum install -y percona-postgresql12-server
 	pg_stat_monitor.pgsm_normalized_query
 	```
 
-3. Start or restart your PostgreSQL instance.
+3. Set bucket time to 60 seconds
 
-4. In a `psql` session:
+	```
+	ALTER SYSTEM SET pg_stat_monitor.pgsm_bucket_time=60;
+	```
+
+4. Start or restart your PostgreSQL instance.    
+
+5. In a `psql` session:
 
     ```sql
     CREATE EXTENSION pg_stat_monitor;
