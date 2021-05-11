@@ -273,10 +273,15 @@ track_io_timing = on             # Capture read/write stats
 </blockquote>
 </li>
 <li>
-<p>Restart the database server.</p>
+<p>Set bucket time to 60 seconds</p>
+<div class="highlight"><pre><span></span><code>ALTER SYSTEM SET pg_stat_monitor.pgsm_bucket_time=60;
+</code></pre></div>
 </li>
 <li>
-<p>Create the extension. In a <code>psql</code> session:</p>
+<p>Start or restart your PostgreSQL instance.    </p>
+</li>
+<li>
+<p>In a <code>psql</code> session:</p>
 <div class="highlight"><pre><span></span><code><span class="k">CREATE</span> <span class="n">EXTENSION</span> <span class="n">pg_stat_monitor</span><span class="p">;</span>
 </code></pre></div>
 </li>
@@ -353,7 +358,7 @@ track_io_timing = on             # Capture read/write stats
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-05-07
+            <i class="uil uil-refresh"></i> Page updated 2021-05-11
         </li>
         
     </ul>
