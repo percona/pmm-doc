@@ -50,3 +50,9 @@ jobs:
           mike delete 1.x -b publish -p
           mike deploy 1.x -b publish -p
           mike retitle 1.x "PMM1 (1.17.4)" -b publish -p
+
+      - name: Run MkDocs for Netlify/GitHub pages (1.x)
+        if: github.ref == 'refs/heads/1.x'
+        run: |
+          mike deploy 1.x -p
+          mike retitle 1.x "PMM1 (1.17.4)" -p

@@ -1,4 +1,4 @@
-# Default (themed) MkDocs configuration
+# MkDocs configuration for HTML publishing to percona.com
 
 site_name: Percona Monitoring and Management
 site_description: Documentation
@@ -10,42 +10,26 @@ repo_url: https://github.com/percona/pmm-doc
 edit_uri: edit/1.x/docs/
 
 use_directory_urls: false
+docs_dir: docs
 
 theme:
   name: material
-  logo: _images/percona-logo.svg
-  favicon: _images/percona-favicon.ico
-  palette:
-
-    # Light mode
-    - media: "(prefers-color-scheme: light)"
-      scheme: percona-light
-      toggle:
-        icon: material/toggle-switch-off-outline
-        name: Switch to dark mode
-
-    # Dark mode
-    - media: "(prefers-color-scheme: dark)"
-      scheme: slate
-      toggle:
-        icon: material/toggle-switch
-        name: Switch to light mode
+  custom_dir: _resources/theme
 
 extra_css:
   - https://unicons.iconscout.com/release/v3.0.3/css/line.css
   - https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css
-  - css/version-select.css
-  - css/toctree.css
+  - _css/version-select.css
+  - _css/toctree.css
+  - _css/percona.css
 
 extra_javascript:
-  - _js/version-select.js
-  - _js/toctree.js
-#  - js/extra.js
+  - js/version-select.js
+  - js/toctree.js
 
 markdown_extensions:
+    - attr_list
     - toc:
-        baselevel: 1
-        toc_depth: "2-3"
         anchorlink: True
     - admonition
     - def_list
@@ -90,8 +74,6 @@ extra: # Used in main.html template and can't be externalised
   open_issue_tooltip: 'Report an issue with this page on GitHub'
   edit_page_text: '<i class="uil uil-pen"></i> Edit this page'
   updated_text: '<i class="uil uil-refresh"></i> Page updated'
-  version:
-      provider: mike
 
 nav:
   - index.md
