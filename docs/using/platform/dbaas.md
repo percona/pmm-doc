@@ -1,6 +1,6 @@
-# DBaaS 
+# DBaaS
 
-> <b style="color:goldenrod">Caution</b> DBaaS functionality is currently in [technical preview](../details/glossary.md#technical-preview) and is subject to change.
+> <b style="color:goldenrod">Caution</b> DBaaS functionality is currently in [technical preview](../../details/glossary.md#technical-preview) and is subject to change.
 
 
 The DBaaS dashboard is where you add, remove, and operate on Kubernetes and database clusters.
