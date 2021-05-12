@@ -1,4 +1,4 @@
-# DBaaS Dashboard (Alpha)
+# DBaaS 
 
 > <b style="color:goldenrod">Caution</b> DBaaS functionality is currently in [technical preview](../details/glossary.md#technical-preview) and is subject to change.
 
