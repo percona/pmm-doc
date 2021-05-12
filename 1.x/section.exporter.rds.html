@@ -1,0 +1,2595 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentation">
+      
+      
+      
+        <meta name="author" content="Percona LLC">
+      
+      
+      <link rel="icon" href="_images/percona-favicon.ico">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.4">
+    
+    
+      
+        <title>Amazon RDS Exporter (rds_exporter) - Percona Monitoring and Management</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.bde7dde4.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ef6f36e2.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.3/css/line.css">
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+    
+      <link rel="stylesheet" href="css/version-select.css">
+    
+      <link rel="stylesheet" href="css/toctree.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="percona-light" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    <script>function __prefix(e){return new URL(".",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+      <script>var palette=__get("__palette");if(null!==palette&&"object"==typeof palette.color)for(var key in palette.color)document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#metrics" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="." title="Percona Monitoring and Management" class="md-header__button md-logo" aria-label="Percona Monitoring and Management" data-md-component="logo">
+      
+  <img src="_images/percona-logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Percona Monitoring and Management
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Amazon RDS Exporter (rds_exporter)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="percona-light" data-md-color-primary="" data-md-color-accent="" type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 10a2 2 0 0 1 2 2 2 2 0 0 1-2 2 2 2 0 0 1-2-2 2 2 0 0 1 2-2m10-3a5 5 0 0 1 5 5 5 5 0 0 1-5 5H7a5 5 0 0 1-5-5 5 5 0 0 1 5-5h10M7 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3h10a3 3 0 0 0 3-3 3 3 0 0 0-3-3H7z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="" data-md-color-accent="" type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/percona/pmm-doc/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    percona/pmm-doc
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="." title="Percona Monitoring and Management" class="md-nav__button md-logo" aria-label="Percona Monitoring and Management" data-md-component="logo">
+      
+  <img src="_images/percona-logo.svg" alt="logo">
+
+    </a>
+    Percona Monitoring and Management
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/percona/pmm-doc/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    percona/pmm-doc
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        Welcome
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      <label class="md-nav__link" for="__nav_2">
+        Basics
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Basics" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Basics
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="architecture.html" class="md-nav__link">
+        Architecture Overview
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" >
+      
+      <label class="md-nav__link" for="__nav_2_2">
+        Deployment Instructions
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Deployment Instructions" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Deployment Instructions
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="deploy/index.html" class="md-nav__link">
+        Deploying Percona Monitoring and Management
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2_2" type="checkbox" id="__nav_2_2_2" >
+      
+      <label class="md-nav__link" for="__nav_2_2_2">
+        Docker
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Docker" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Docker
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="deploy/server/docker.html" class="md-nav__link">
+        Running PMM Server via Docker
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="deploy/server/docker.setting-up.html" class="md-nav__link">
+        Setting Up a Docker Container for PMM Server
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="deploy/server/docker.upgrading.html" class="md-nav__link">
+        Updating PMM Server Using Docker
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="deploy/server/docker.backing-up.html" class="md-nav__link">
+        Backing Up PMM Data from the Docker Container
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="deploy/server/docker.restoring.html" class="md-nav__link">
+        Restoring the Backed Up Information to the PMM Data Container
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2_3" type="checkbox" id="__nav_2_2_3" >
+      
+      <label class="md-nav__link" for="__nav_2_2_3">
+        Virtual Appliance
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Virtual Appliance" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          Virtual Appliance
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="deploy/server/virtual-appliance.html" class="md-nav__link">
+        PMM Server as a Virtual Appliance
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="deploy/server/ova.virtualbox.cli.html" class="md-nav__link">
+        VirtualBox Using the Command Line
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="deploy/server/ova.virtualbox.gui.html" class="md-nav__link">
+        VirtualBox Using the GUI
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="deploy/server/ova.vmware-workstation-player.html" class="md-nav__link">
+        VMware Workstation Player
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="deploy/server/ami.html" class="md-nav__link">
+        Running PMM Server Using AWS Marketplace
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" type="checkbox" id="__nav_2_3" >
+      
+      <label class="md-nav__link" for="__nav_2_3">
+        Tools of PMM
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Tools of PMM" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          Tools of PMM
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tool.html" class="md-nav__link">
+        Tools of PMM
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="qan.html" class="md-nav__link">
+        PMM Query Analytics
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="metrics-monitor.html" class="md-nav__link">
+        Metrics Monitor
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      <label class="md-nav__link" for="__nav_3">
+        Advanced
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Advanced" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Advanced
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="pmm-admin.html" class="md-nav__link">
+        Managing PMM Client
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="remote-instance.html" class="md-nav__link">
+        Adding a MySQL or PostgreSQL Remote DB instance to PMM
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="amazon-rds.html" class="md-nav__link">
+        Adding an Amazon RDS DB instance to PMM
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="conf-mysql.html" class="md-nav__link">
+        Configuring MySQL for Best Results
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="conf-postgres.html" class="md-nav__link">
+        Configuring PostgreSQL for Monitoring
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="conf-mongodb.html" class="md-nav__link">
+        Configuring MongoDB for Monitoring in PMM Query Analytics
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="security.html" class="md-nav__link">
+        Security Features in Percona Monitoring and Management
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_8" type="checkbox" id="__nav_3_8" >
+      
+      <label class="md-nav__link" for="__nav_3_8">
+        Metrics Monitor Dashboards
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Metrics Monitor Dashboards" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_8">
+          <span class="md-nav__icon md-icon"></span>
+          Metrics Monitor Dashboards
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.metrics-monitor.dashboard.html" class="md-nav__link">
+        Metrics Monitor Dashboards
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="dashboard.home.html" class="md-nav__link">
+        Home Dashboard
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="dashboard.pmm-system-summary.html" class="md-nav__link">
+        *PMM System Summary* Dashboard
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="dashboard.advanced-data-exploration.html" class="md-nav__link">
+        *Advanced Data Exploration* Dashboard
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="dashboard.cross-server-graphs.html" class="md-nav__link">
+        Cross Server Graphs
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="dashboard.summary.html" class="md-nav__link">
+        Summary Dashboard
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="dashboard.trends.html" class="md-nav__link">
+        Trends Dashboard
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="dashboard.network-overview.html" class="md-nav__link">
+        *Network Overview* Dashboard
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="dashboard.cpu-utilization-details-cores.html" class="md-nav__link">
+        CPU Utilization Details (Cores)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="dashboard.disk-space.html" class="md-nav__link">
+        Disk space
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="dashboard.system-overview.html" class="md-nav__link">
+        *System Overview* Dashboard
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="dashboard.compare-system-parameters.html" class="md-nav__link">
+        *Compare System Parameters* Dashboard
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="dashboard.overview-numa-metrics.html" class="md-nav__link">
+        NUMA Overview Dashboard
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="dashboard.prometheus.html" class="md-nav__link">
+        *Prometheus* Dashboard
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="dashboard.prometheus-exporter-status.html" class="md-nav__link">
+        Prometheus Exporter Status
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="dashboard.prometheus-exporters-overview.html" class="md-nav__link">
+        Prometheus Exporters Overview
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="dashboard.mysql-amazon-aurora-metrics.html" class="md-nav__link">
+        MySQL Amazon Aurora Metrics
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="dashboard.mysql-command-handler-counters-compare.html" class="md-nav__link">
+        *MySQL Command/Handler Counters Compare* Dashboard
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="dashboard.mysql-innodb-compression.html" class="md-nav__link">
+        *MySQL InnoDB Compression* Dashboard
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="dashboard.mysql-innodb-metrics.html" class="md-nav__link">
+        MySQL InnoDB Metrics
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="dashboard.mysql-innodb-metrics-advanced.html" class="md-nav__link">
+        MySQL InnoDB Metrics (Advanced) Dashboard
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="dashboard.mysql-myisam-aria-metrics.html" class="md-nav__link">
+        MySQL MyISAM Aria Metrics Dashboard
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="dashboard.mysql-myrocks-metrics.html" class="md-nav__link">
+        *MySQL MyRocks Metrics* Dashboard
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="dashboard.mysql-overview.html" class="md-nav__link">
+        MySQL Overview
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="dashboard.mysql-performance-schema.html" class="md-nav__link">
+        MySQL *Performance Schema*  Dashboard
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="dashboard.mysql-performance-schema-wait-events.html" class="md-nav__link">
+        Performance Schema Wait Event Analysis Dashboard
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="dashboard.mysql-query-response-time.html" class="md-nav__link">
+        MySQL Query Response Time
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="dashboard.mysql-replication.html" class="md-nav__link">
+        MySQL Replication
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="dashboard.mysql-table-statistics.html" class="md-nav__link">
+        *MySQL Table Statistics*
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="dashboard.mysql-user-statistics.html" class="md-nav__link">
+        *MySQL User Statistics*
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="dashboard.mongodb-cluster-summary.html" class="md-nav__link">
+        MongoDB Cluster Summary
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="dashboard.mongodb-inmemory.html" class="md-nav__link">
+        MongoDB inMemory Dashboard
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="dashboard.mongodb-mmapv1.html" class="md-nav__link">
+        MongoDB MMAPv1 Dashboard
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="dashboard.mongodb-overview.html" class="md-nav__link">
+        MongoDB Overview
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="dashboard.mongodb-replset.html" class="md-nav__link">
+        MongoDB ReplSet
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="dashboard.mongodb-rocksdb.html" class="md-nav__link">
+        MongoDB RocksDB Dashboard
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="dashboard.mongodb-wiredtiger.html" class="md-nav__link">
+        MongoDB WiredTiger Dashboard
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="dashboard.postgres-overview.html" class="md-nav__link">
+        *PostgreSQL Overview*
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="dashboard.pxc-galera-cluster-overview.html" class="md-nav__link">
+        PXC/Galera Cluster Overview Dashboard
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      <label class="md-nav__link" for="__nav_4">
+        Reference
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Reference" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Reference
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1" type="checkbox" id="__nav_4_1" >
+      
+      <label class="md-nav__link" for="__nav_4_1">
+        Release Notes
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Release Notes" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_1">
+          <span class="md-nav__icon md-icon"></span>
+          Release Notes
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="release-notes/index.html" class="md-nav__link">
+        Percona Monitoring and Management Release Notes
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="release-notes/1.17.4.html" class="md-nav__link">
+        Percona Monitoring and Management 1.17.4
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="release-notes/1.17.3.html" class="md-nav__link">
+        Percona Monitoring and Management 1.17.3
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="release-notes/1.17.2.html" class="md-nav__link">
+        Percona Monitoring and Management 1.17.2
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="release-notes/1.17.1.html" class="md-nav__link">
+        Percona Monitoring and Management 1.17.1
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="release-notes/1.17.0.html" class="md-nav__link">
+        Percona Monitoring and Management 1.17.0
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="release-notes/1.16.0.html" class="md-nav__link">
+        Percona Monitoring and Management 1.16.0
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="release-notes/1.15.0.html" class="md-nav__link">
+        Percona Monitoring and Management 1.15.0
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="release-notes/1.14.1.html" class="md-nav__link">
+        Percona Monitoring and Management 1.14.1
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="release-notes/1.14.0.html" class="md-nav__link">
+        Percona Monitoring and Management 1.14.0
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="release-notes/1.13.0.html" class="md-nav__link">
+        Percona Monitoring and Management 1.13.0
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="release-notes/1.12.0.html" class="md-nav__link">
+        Percona Monitoring and Management 1.12.0
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="release-notes/1.11.0.html" class="md-nav__link">
+        Percona Monitoring and Management 1.11.0
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="release-notes/1.10.0.html" class="md-nav__link">
+        Percona Monitoring and Management 1.10.0
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="release-notes/1.9.1.html" class="md-nav__link">
+        Percona Monitoring and Management 1.9.1
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="release-notes/1.9.0.html" class="md-nav__link">
+        Percona Monitoring and Management 1.9.0
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="release-notes/1.8.1.html" class="md-nav__link">
+        Percona Monitoring and Management 1.8.1
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="release-notes/1.8.0.html" class="md-nav__link">
+        Percona Monitoring and Management 1.8.0
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="release-notes/1.7.0.html" class="md-nav__link">
+        Percona Monitoring and Management 1.7.0
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="release-notes/1.6.1.html" class="md-nav__link">
+        Percona Monitoring and Management 1.6.1
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="release-notes/1.6.0.html" class="md-nav__link">
+        Percona Monitoring and Management 1.6.0
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="release-notes/1.5.3.html" class="md-nav__link">
+        Percona Monitoring and Management 1.5.3
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="release-notes/1.5.2.html" class="md-nav__link">
+        Percona Monitoring and Management 1.5.2
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="release-notes/1.5.1.html" class="md-nav__link">
+        Percona Monitoring and Management 1.5.1
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="release-notes/1.5.0.html" class="md-nav__link">
+        Percona Monitoring and Management 1.5.0
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="release-notes/1.4.1.html" class="md-nav__link">
+        Percona Monitoring and Management 1.4.1
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="release-notes/1.4.0.html" class="md-nav__link">
+        Percona Monitoring and Management 1.4.0
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="release-notes/1.3.2.html" class="md-nav__link">
+        Percona Monitoring and Management 1.3.2
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="release-notes/1.3.1.html" class="md-nav__link">
+        Percona Monitoring and Management 1.3.1
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="release-notes/1.3.0.html" class="md-nav__link">
+        Percona Monitoring and Management 1.3.0
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="release-notes/1.2.2.html" class="md-nav__link">
+        Percona Monitoring and Management 1.2.2
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="release-notes/1.2.1.html" class="md-nav__link">
+        Percona Monitoring and Management 1.2.1
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="release-notes/1.2.0.html" class="md-nav__link">
+        Percona Monitoring and Management 1.2.0
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="release-notes/1.1.5.html" class="md-nav__link">
+        Percona Monitoring and Management 1.1.5
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="release-notes/1.1.4-2.html" class="md-nav__link">
+        Percona Monitoring and Management 1.1.4-2
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="release-notes/1.1.4.html" class="md-nav__link">
+        Percona Monitoring and Management 1.1.4
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="release-notes/1.1.3.html" class="md-nav__link">
+        Percona Monitoring and Management 1.1.3
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="release-notes/1.1.2.html" class="md-nav__link">
+        Percona Monitoring and Management 1.1.2
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="release-notes/1.1.1.html" class="md-nav__link">
+        Percona Monitoring and Management 1.1.1
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="release-notes/1.1.0beta.html" class="md-nav__link">
+        Percona Monitoring and Management 1.1.0 Beta
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="release-notes/1.0.7.html" class="md-nav__link">
+        Percona Monitoring and Management 1.0.7
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="release-notes/1.0.6.html" class="md-nav__link">
+        Percona Monitoring and Management 1.0.6
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="release-notes/1.0.5.html" class="md-nav__link">
+        Percona Monitoring and Management 1.0.5
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="release-notes/1.0.4.html" class="md-nav__link">
+        Percona Monitoring and Management 1.0.4
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="release-notes/1.0.3.html" class="md-nav__link">
+        Percona Monitoring and Management Beta 1.0.3
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="release-notes/1.0.2.html" class="md-nav__link">
+        Percona Monitoring and Management Beta 1.0.2
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="release-notes/1.0.1.html" class="md-nav__link">
+        Percona Monitoring and Management Beta 1.0.1
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="release-notes/1.0.0.html" class="md-nav__link">
+        Percona Monitoring and Management Beta 1.0.0
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2" type="checkbox" id="__nav_4_2" checked>
+      
+      <label class="md-nav__link" for="__nav_4_2">
+        Exporters
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Exporters" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_2">
+          <span class="md-nav__icon md-icon"></span>
+          Exporters
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.exporter-option.html" class="md-nav__link">
+        Exporters Overview
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="section.exporter.mongodb.html" class="md-nav__link">
+        MongoDB Exporter (mongodb_exporter)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="section.exporter.mysqld.html" class="md-nav__link">
+        MySQL Server Exporter (mysqld_exporter)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="section.exporter.node.html" class="md-nav__link">
+        Node Exporter (node_exporter)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="section.exporter.proxysql.html" class="md-nav__link">
+        ProxySQL Server Exporter (proxysql_exporter)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Amazon RDS Exporter (rds_exporter)
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="section.exporter.rds.html" class="md-nav__link md-nav__link--active">
+        Amazon RDS Exporter (rds_exporter)
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#metrics" class="md-nav__link">
+    Metrics
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="contact.html" class="md-nav__link">
+        Contact Us
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="faq.html" class="md-nav__link">
+        FAQ
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_5" type="checkbox" id="__nav_4_5" >
+      
+      <label class="md-nav__link" for="__nav_4_5">
+        Glossaries
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Glossaries" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_5">
+          <span class="md-nav__icon md-icon"></span>
+          Glossaries
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.glossary.html" class="md-nav__link">
+        Glossaries
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="glossary.option.html" class="md-nav__link">
+        PMM Server Additional Options
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="glossary.terminology.html" class="md-nav__link">
+        Terminology Reference
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#metrics" class="md-nav__link">
+    Metrics
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/percona/pmm-doc/edit/1.x/docs/section.exporter.rds.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="amazon-rds-exporter-rds_exporter"><a class="toclink" href="#amazon-rds-exporter-rds_exporter">Amazon RDS Exporter (rds_exporter)</a></h1>
+<p>The Amazon RDS exporter makes the Amazon Cloudwatch metrics available to PMM. PMM uses this exporter to obtain metrics from any Amazon RDS node that you choose to monitor.</p>
+<h2 id="metrics"><a class="toclink" href="#metrics">Metrics</a></h2>
+<p>The Amazon RDS exporter has two types of metrics: basic and advanced. To be able to use advanced metrics, make sure to set the Enable Enhanced Monitoring option in the settings of your Amazon RDS DB instance.</p>
+<p><img alt="" src="_images/amazon-rds.modify-db-instance.2.png" /></p>
+<table class="table">
+<thead>
+<tr>
+<th scope="col">rds_exporter Metric</th>
+<th scope="col">Amazon Cloudwatch Metric</th>
+<th scope="col">Units</th>
+<th scope="col">Type of Metric</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>aws_rds_bin_log_disk_usage_average</td>
+<td>BinLogDiskUsage</td>
+<td>Bytes</td>
+<td>Basic</td>
+</tr>
+<tr>
+<td>aws_rds_cpu_credit_balance_average</td>
+<td>CPUCreditBalance</td>
+<td>Credits (vCPU-minutes)</td>
+<td>Basic</td>
+</tr>
+<tr>
+<td>aws_rds_cpu_credit_usage_average</td>
+<td>CPUCreditUsage</td>
+<td>Credits (vCPU-minutes)</td>
+<td>Basic</td>
+</tr>
+<tr>
+<td>aws_rds_database_connections_average</td>
+<td>DatabaseConnections</td>
+<td>Count</td>
+<td>Basic</td>
+</tr>
+<tr>
+<td>aws_rds_disk_queue_depth_average</td>
+<td>DiskQueueDepth</td>
+<td>Count</td>
+<td>Basic</td>
+</tr>
+<tr>
+<td>aws_rds_network_receive_throughput_average</td>
+<td>NetworkReceiveThroughput</td>
+<td>Bytes per second</td>
+<td>Basic</td>
+</tr>
+<tr>
+<td>aws_rds_network_transmit_throughput_average</td>
+<td>NetworkTransmitThroughput</td>
+<td>Bytes per second</td>
+<td>Basic</td>
+</tr>
+<tr>
+<td>aws_rds_read_iops_average</td>
+<td>ReadIOPS</td>
+<td>Count per second</td>
+<td>Basic</td>
+</tr>
+<tr>
+<td>aws_rds_read_latency_average</td>
+<td>ReadLatency</td>
+<td>Seconds</td>
+<td>Basic</td>
+</tr>
+<tr>
+<td>aws_rds_read_throughput_average</td>
+<td>ReadThroughput</td>
+<td>Bytes per second</td>
+<td>Basic</td>
+</tr>
+<tr>
+<td>aws_rds_swap_usage_average</td>
+<td>SwapUsage</td>
+<td>Bytes</td>
+<td>Basic</td>
+</tr>
+<tr>
+<td>aws_rds_write_iops_average</td>
+<td>WriteIOPS</td>
+<td>Count per second</td>
+<td>Basic</td>
+</tr>
+<tr>
+<td>aws_rds_write_latency_average</td>
+<td>WriteLatency</td>
+<td>Seconds</td>
+<td>Basic</td>
+</tr>
+<tr>
+<td>aws_rds_write_throughput_average</td>
+<td>WriteThroughput</td>
+<td>Bytes per second</td>
+<td>Basic</td>
+</tr>
+<tr>
+<td>node_cpu_average</td>
+<td>CPUUtilization</td>
+<td>Percentage</td>
+<td>Enhanced</td>
+</tr>
+<tr>
+<td>node_filesystem_free</td>
+<td>FreeStorageSpace</td>
+<td>Bytes</td>
+<td>Enhanced</td>
+</tr>
+<tr>
+<td>node_memory_Cached</td>
+<td>FreeableMemory</td>
+<td>Bytes</td>
+<td>Enhanced</td>
+</tr>
+<tr>
+<td>rds_exporter_erroneous_requests</td>
+<td>No corresponding Amazon Cloudwatch metric. The number of erroneous API requests made to CloudWatch.</td>
+<td>Count</td>
+<td>Enhanced</td>
+</tr>
+<tr>
+<td>rds_exporter_requests_total</td>
+<td>No corresponding Amazon Cloudwatch metric. API requests made to Amazon Cloudwatch</td>
+<td>Count</td>
+<td>Enhanced</td>
+</tr>
+<tr>
+<td>rds_exporter_scrape_duration_seconds</td>
+<td>No corresponding Amazon Cloudwatch metric. The time that the current RDS scrape took.</td>
+<td>Seconds</td>
+<td>Enhanced</td>
+</tr>
+<tr>
+<td>rds_latency</td>
+<td>No corresponding Amazon Cloudwatch metric. The difference between the current time and timestamp in the metric itself.</td>
+<td>Seconds</td>
+<td>Enhanced</td>
+</tr>
+<tr>
+<td>node_cp_average</td>
+<td>CPUUtilization</td>
+<td>Percentage</td>
+<td>Enhanced</td>
+</tr>
+<tr>
+<td>node_load1</td>
+<td>No corresponding Amazon Cloudwatch metric. The number of processes requesting CPU time over the last minute.</td>
+<td>Count</td>
+<td>Enhanced</td>
+</tr>
+<tr>
+<td>node_memory_Active</td>
+<td>No corresponding Amazon Cloudwatch metric. The amount of assigned memory.</td>
+<td>Kilobytes</td>
+<td>Enhanced</td>
+</tr>
+<tr>
+<td>node_memory_Buffers</td>
+<td>No corresponding Amazon Cloudwatch metric. The amount of memory used for buffering I/O requests prior to writing to the storage device</td>
+<td>Kilobytes</td>
+<td>Enhanced</td>
+</tr>
+<tr>
+<td>node_memory_Cached</td>
+<td>No corresponding Amazon Cloudwatch metric. The amount of memory used for caching file system–based I/O.</td>
+<td>Kilobytes</td>
+<td>Enhanced</td>
+</tr>
+<tr>
+<td>node_memory_Inactive</td>
+<td>No corresponding Amazon Cloudwatch metric. The amount of least-frequently used memory pages.</td>
+<td>Kilobytes</td>
+<td>Enhanced</td>
+</tr>
+<tr>
+<td>node_memory_Mapped</td>
+<td>No corresponding Amazon Cloudwatch metric. The total amount of file-system contents that is memory mapped inside a process address space.</td>
+<td>Kilobytes</td>
+<td>Enhanced</td>
+</tr>
+<tr>
+<td>node_memory_MemFree</td>
+<td>No corresponding Amazon Cloudwatch metric. The amount of unassigned memory.</td>
+<td>Kilobytes</td>
+<td>Enhanced</td>
+</tr>
+<tr>
+<td>node_memory_MemTotal</td>
+<td>No corresponding Amazon Cloudwatch metric. The total amount of memory.</td>
+<td>Kilobytes</td>
+<td>Enhanced</td>
+</tr>
+<tr>
+<td>node_memory_PageTables</td>
+<td>No corresponding Amazon Cloudwatch metric. The amount of memory used by page tables</td>
+<td>Kilobytes</td>
+<td>Enhanced</td>
+</tr>
+<tr>
+<td>node_memory_Slab</td>
+<td>The amount of reusable kernel data structures</td>
+<td>Kilobytes</td>
+<td>Enhanced</td>
+</tr>
+<tr>
+<td>node_memory_SwapFree</td>
+<td>No corresponding Amazon Cloudwatch metric. The total amount of swap memory free.</td>
+<td>Kilobytes</td>
+<td>Enhanced</td>
+</tr>
+<tr>
+<td>node_memory_SwapTotal</td>
+<td>No corresponding Amazon Cloudwatch metric. The total amount of swap memory available.</td>
+<td>Kilobytes</td>
+<td>Enhanced</td>
+</tr>
+<tr>
+<td>node_memory_nr_dirty</td>
+<td>No corresponding Amazon Cloudwatch metric. The amount of memory pages in RAM that have been modified but not written to their related data block in storage,</td>
+<td>Kilobytes</td>
+<td>Enhanced</td>
+</tr>
+<tr>
+<td>node_procs_blocked</td>
+<td>No corresponding Amazon Cloudwatch metric. The number of tasks that are blocked.</td>
+<td>Count</td>
+<td>Enhanced</td>
+</tr>
+<tr>
+<td>node_procs_running.</td>
+<td>No corresponding Amazon Cloudwatch metric.The number of tasks that are running.</td>
+<td>Count</td>
+<td>Enhanced</td>
+</tr>
+<tr>
+<td>node_vmstat_pswpin</td>
+<td>No corresponding Amazon Cloudwatch metric. The number of kilobytes the system has swapped in from disk per second (disk reads).</td>
+<td>Kilobytes</td>
+<td>Enhanced</td>
+</tr>
+<tr>
+<td>node_vmstat_pswpout</td>
+<td>No corresponding Amazon Cloudwatch metric. The number of kilobytes the system has swapped out to disk per second (disk writes).</td>
+<td>Kilobytes</td>
+<td>Enhanced</td>
+</tr>
+<tr>
+<td>rds_exporter_erroneous_requests (Enhanced rds_exporter metric)</td>
+<td>No corresponding Amazon Cloudwatch metric. The number of erroneous API request made to Amazon Cloudwatch.</td>
+<td>Count</td>
+<td>Enhanced</td>
+</tr>
+<tr>
+<td>rds_exporter_requests_total</td>
+<td>No corresponding Amazon Cloudwatch metric. API requests made to Amazon Cloudwatch</td>
+<td>Count</td>
+<td>Enhanced</td>
+</tr>
+<tr>
+<td>rds_exporter_scrape_duration_seconds</td>
+<td>No corresponding Amazon Cloudwatch metric. The amount of time that this RDS scrape took.</td>
+<td>Seconds</td>
+<td>Enhanced</td>
+</tr>
+<tr>
+<td>rds_latency</td>
+<td>No corresponding Amazon Cloudwatch metric. The difference between the current time and timestamp in the metric itself.</td>
+<td>Seconds</td>
+<td>Enhanced</td>
+</tr>
+<tr>
+<td>rdsosmetrics_General_numVCPUs</td>
+<td>No corresponding Amazon Cloudwatch metric. The number of virtual CPUs for the DB instance.</td>
+<td>Count</td>
+<td>Enhanced</td>
+</tr>
+<tr>
+<td>rdsosmetrics_General_version</td>
+<td>No corresponding Amazon Cloudwatch metric. The version of the OS metrics stream JSON format.</td>
+<td>Version number</td>
+<td>Enhanced</td>
+</tr>
+<tr>
+<td>rdsosmetrics_diskIO_await</td>
+<td>No corresponding Amazon Cloudwatch metric. The number of milliseconds required to respond to requests, including queue time and service time. This metric is not available for Amazon Aurora.</td>
+<td>Milliseconds</td>
+<td>Enhanced</td>
+</tr>
+<tr>
+<td>rdsosmetrics_diskIO_tps</td>
+<td>No corresponding Amazon Cloudwatch metric. The number of I/O transactions per second. This metric is not available for Amazon Aurora.</td>
+<td>Count per Second</td>
+<td>Enhanced</td>
+</tr>
+<tr>
+<td>rdsosmetrics_fileSys_maxFiles</td>
+<td>No corresponding Amazon Cloudwatch metric. The maximum number of files that can be created for the file system.</td>
+<td>Count</td>
+<td>Enhanced</td>
+</tr>
+<tr>
+<td>rdsosmetrics_fileSys_usedFilePercent</td>
+<td>No corresponding Amazon Cloudwatch metric. The percentage of available files in use.</td>
+<td>Percentage</td>
+<td>Enhanced</td>
+</tr>
+<tr>
+<td>rdsosmetrics_loadAverageMinute_fifteen</td>
+<td>No corresponding Amazon Cloudwatch metric. The number of processes requesting CPU time over the last 15 minutes.</td>
+<td>Count</td>
+<td>Enhanced</td>
+</tr>
+<tr>
+<td>rdsosmetrics_loadAverageMinute_five</td>
+<td>No corresponding Amazon Cloudwatch metric. The number of processes requesting CPU time over the last 5 minutes.</td>
+<td>Count</td>
+<td>Enhanced</td>
+</tr>
+<tr>
+<td>rdsosmetrics_memory_hugePagesFree</td>
+<td>No corresponding Amazon Cloudwatch metric. The number of free huge pages. Huge pages are a feature of the Linux kernel.</td>
+<td>Count</td>
+<td>Enhanced</td>
+</tr>
+<tr>
+<td>rdsosmetrics_memory_hugePagesRsvd</td>
+<td>No corresponding Amazon Cloudwatch metric. The number of committed huge pages.</td>
+<td>Count</td>
+<td>Enhanced</td>
+</tr>
+<tr>
+<td>rdsosmetrics_memory_hugePagesSize</td>
+<td>No corresponding Amazon Cloudwatch metric. The size for each huge pages unit.</td>
+<td>Count</td>
+<td>Enhanced</td>
+</tr>
+<tr>
+<td>rdsosmetrics_memory_hugePagesSurp</td>
+<td>No corresponding Amazon Cloudwatch metric. The number of available surplus huge pages over the total.</td>
+<td>Count</td>
+<td>Enhanced</td>
+</tr>
+<tr>
+<td>rdsosmetrics_memory_hugePagesTotal</td>
+<td>No corresponding Amazon Cloudwatch metric. The total number of huge pages for the system.</td>
+<td>Count</td>
+<td>Enhanced</td>
+</tr>
+<tr>
+<td>rdsosmetrics_memory_writeback</td>
+<td>No corresponding Amazon Cloudwatch metric. The amount of dirty pages in RAM that are still being written to the backing storage.</td>
+<td>Count</td>
+<td>Enhanced</td>
+</tr>
+<tr>
+<td>rdsosmetrics_processList_cpuUsedPc</td>
+<td>No corresponding Amazon Cloudwatch metric. The percentage of CPU used by the process.</td>
+<td>Percentage</td>
+<td>Enhanced</td>
+</tr>
+<tr>
+<td>rdsosmetrics_processList_id</td>
+<td>No corresponding Amazon Cloudwatch metric. The identifier of the process.</td>
+<td>Process ID</td>
+<td>Enhanced</td>
+</tr>
+<tr>
+<td>rdsosmetrics_processList_parentID</td>
+<td>No corresponding Amazon Cloudwatch metric. The process identifier for the parent process of the process.</td>
+<td>Process ID</td>
+<td>Enhanced</td>
+</tr>
+<tr>
+<td>rdsosmetrics_processList_rss</td>
+<td>No corresponding Amazon Cloudwatch metric. The amount of RAM allocated to the process</td>
+<td>Kilobytes</td>
+<td>Enhanced</td>
+</tr>
+<tr>
+<td>rdsosmetrics_processList_tgid</td>
+<td>No corresponding Amazon Cloudwatch metric. The thread group identifier, which is a number representing the process ID to which a thread belongs. This identifier is used to group threads from the same process.</td>
+<td>Identifier</td>
+<td>Enhanced</td>
+</tr>
+<tr>
+<td>rdsosmetrics_processList_vss</td>
+<td>No corresponding Amazon Cloudwatch metric. The amount of virtual memory allocated to the process</td>
+<td>Kilobytes</td>
+<td>Enhanced</td>
+</tr>
+<tr>
+<td>rdsosmetrics_swap_cached</td>
+<td>No corresponding Amazon Cloudwatch metric. The amount of swap memory used as cache memory.</td>
+<td>Kilobytes</td>
+<td>Enhanced</td>
+</tr>
+<tr>
+<td>rdsosmetrics_tasks_sleeping</td>
+<td>No corresponding Amazon Cloudwatch metric. The number of tasks that are sleeping.</td>
+<td>Count</td>
+<td>Enhanced</td>
+</tr>
+<tr>
+<td>rdsosmetrics_tasks_stopped</td>
+<td>No corresponding Amazon Cloudwatch metric. The number of tasks that are stopped.</td>
+<td>Count</td>
+<td>Enhanced</td>
+</tr>
+<tr>
+<td>rdsosmetrics_tasks_total</td>
+<td>No corresponding Amazon Cloudwatch metric. The total number of tasks.</td>
+<td>Count</td>
+<td>Enhanced</td>
+</tr>
+<tr>
+<td>rdsosmetrics_tasks_zombie</td>
+<td>No corresponding Amazon Cloudwatch metric. The number of child tasks that are inactive with an active parent task.</td>
+<td>Count</td>
+<td>Enhanced</td>
+</tr>
+</tbody>
+</table>
+                
+                  
+                    
+
+<hr>
+<div class="md-source-date">
+  <small>
+    
+      Last update: 2021-01-11
+    
+  </small>
+</div>
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        <a href="section.exporter.proxysql.html" class="md-footer__link md-footer__link--prev" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              ProxySQL Server Exporter (proxysql_exporter)
+            </div>
+          </div>
+        </a>
+      
+      
+        <a href="contact.html" class="md-footer__link md-footer__link--next" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Contact Us
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Percona LLC, &#169; 2021
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": ".", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "assets/javascripts/workers/search.4fa0e4ee.min.js", "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="assets/javascripts/bundle.1d3bfcf1.min.js"></script>
+      
+        <script src="_js/version-select.js"></script>
+      
+        <script src="_js/toctree.js"></script>
+      
+    
+  </body>
+</html>
