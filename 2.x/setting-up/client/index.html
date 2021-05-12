@@ -358,7 +358,12 @@ pmm-admin status
 <div class="highlight"><pre><span></span><code>docker rmi <span class="k">$(</span>docker images <span class="p">|</span> grep <span class="s2">&quot;percona/pmm-client&quot;</span> <span class="p">|</span> awk <span class="o">{</span><span class="s1">&#39;print $3&#39;</span><span class="o">}</span><span class="k">)</span>
 </code></pre></div>
 </li>
+<li>
+<p>Remove the volume.</p>
+</li>
 </ol>
+<div class="highlight"><pre><span></span><code>docker volume rm pmm-client-data
+</code></pre></div>
 <h2 id="docker-compose">Run PMM Client with Docker compose<a class="headerlink" href="#docker-compose" title="Permanent link">&para;</a></h2>
 <ol>
 <li>
@@ -380,6 +385,7 @@ pmm-admin status
         <span class="nt">max-file</span><span class="p">:</span> <span class="s">&quot;5&quot;</span>
     <span class="nt">volumes</span><span class="p">:</span>
       <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">./pmm-agent.yaml:/etc/pmm-agent.yaml</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">pmm-client-data:/srv</span>
     <span class="nt">environment</span><span class="p">:</span>
       <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">PMM_AGENT_CONFIG_FILE=/etc/pmm-agent.yaml</span>
       <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">PMM_AGENT_SERVER_USERNAME=admin</span>
@@ -387,6 +393,8 @@ pmm-admin status
       <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">PMM_AGENT_SERVER_ADDRESS=X.X.X.X:443</span>
       <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">PMM_AGENT_SERVER_INSECURE_TLS=true</span>
     <span class="nt">entrypoint</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">pmm-agent setup</span>
+<span class="nt">volumes</span><span class="p">:</span>
+  <span class="nt">pmm-client-data</span><span class="p">:</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -493,7 +501,7 @@ One of next types has to be set: mysql, mongodb, postgresql, proxysql, haproxy, 
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-05-07
+            <i class="uil uil-refresh"></i> Page updated 2021-05-12
         </li>
         
     </ul>
