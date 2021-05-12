@@ -128,8 +128,8 @@
 <h2 id="can-i-monitor-multiple-service-instances">Can I monitor multiple service instances?<a class="headerlink" href="#can-i-monitor-multiple-service-instances" title="Permanent link">&para;</a></h2>
 <p>You can add multiple instances of MySQL or some other service to be monitored from one PMM Client. In this case, you must provide a unique port and IP address, or a socket for each instance, and specify a unique name for each.  (If a name is not provided, PMM uses the name of the PMM Client host.)</p>
 <p>For example, to add complete MySQL monitoring for two local MySQL servers, the commands would be:</p>
-<div class="highlight"><pre><span></span><code>sudo pmm-admin add mysql --username root --password root instance-01 <span class="m">127</span>.0.0.1:3001
-sudo pmm-admin add mysql --username root --password root instance-02 <span class="m">127</span>.0.0.1:3002
+<div class="highlight"><pre><span></span><code>pmm-admin add mysql --username root --password root instance-01 <span class="m">127</span>.0.0.1:3001
+pmm-admin add mysql --username root --password root instance-02 <span class="m">127</span>.0.0.1:3002
 </code></pre></div>
 <p>For more information, run:</p>
 <div class="highlight"><pre><span></span><code>pmm-admin add mysql --help
@@ -188,7 +188,7 @@ docker <span class="nb">exec</span> -t pmm2-server bash -c  <span class="s2">&q
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-05-11
+            <i class="uil uil-refresh"></i> Page updated 2021-05-12
         </li>
         
     </ul>

@@ -138,7 +138,7 @@
 </li>
 <li>
 <p>Reload the configuration:</p>
-<div class="highlight"><pre><span></span><code>sudo su - postgres
+<div class="highlight"><pre><span></span><code>su - postgres
 psql -c <span class="s2">&quot;select pg_reload_conf()&quot;</span>
 </code></pre></div>
 </li>
@@ -210,12 +210,12 @@ psql -c <span class="s2">&quot;select pg_reload_conf()&quot;</span>
 <ul>
 <li>
 <p>Debian/Ubuntu</p>
-<div class="highlight"><pre><span></span><code>sudo apt install -y postgresql-contrib
+<div class="highlight"><pre><span></span><code>apt install -y postgresql-contrib
 </code></pre></div>
 </li>
 <li>
 <p>Red Hat/CentOS</p>
-<div class="highlight"><pre><span></span><code>sudo yum install -y postgresql-contrib
+<div class="highlight"><pre><span></span><code>yum install -y postgresql-contrib
 </code></pre></div>
 </li>
 </ul>
@@ -278,7 +278,7 @@ track_io_timing = on             # Capture read/write stats
 </code></pre></div>
 </li>
 <li>
-<p>Start or restart your PostgreSQL instance.    </p>
+<p>Start or restart your PostgreSQL instance.</p>
 </li>
 <li>
 <p>In a <code>psql</code> session:</p>
@@ -340,7 +340,7 @@ track_io_timing = on             # Capture read/write stats
 <div class="highlight"><pre><span></span><code>pmm-admin inventory list services
 </code></pre></div>
 <blockquote>
-<p>If using Docker, use <code>sudo docker exec pmm-client pmm-admin inventory list services</code></p>
+<p>If using Docker, use <code>docker exec pmm-client pmm-admin inventory list services</code></p>
 </blockquote>
 <p><strong>Check data</strong></p>
 <ol>
@@ -358,7 +358,7 @@ track_io_timing = on             # Capture read/write stats
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-05-11
+            <i class="uil uil-refresh"></i> Page updated 2021-05-12
         </li>
         
     </ul>

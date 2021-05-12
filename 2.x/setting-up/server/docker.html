@@ -116,19 +116,19 @@
 <ol>
 <li>
 <p>Pull the image.</p>
-<div class="highlight"><pre><span></span><code>sudo docker pull percona/pmm-server:2
+<div class="highlight"><pre><span></span><code>docker pull percona/pmm-server:2
 </code></pre></div>
 </li>
 <li>
 <p>Create a persistent data container.</p>
-<div class="highlight"><pre><span></span><code>sudo docker create --volume /srv <span class="se">\</span>
+<div class="highlight"><pre><span></span><code>docker create --volume /srv <span class="se">\</span>
 --name pmm-data percona/pmm-server:2 /bin/true
 </code></pre></div>
 <p>PMM Server expects the data volume (specified with <code>--volume</code>) to be <code>/srv</code>.  <strong>Using any other value will result in data loss when upgrading.</strong></p>
 </li>
 <li>
 <p>Run the image to start PMM Server.</p>
-<div class="highlight"><pre><span></span><code>sudo docker run --detach --restart always <span class="se">\</span>
+<div class="highlight"><pre><span></span><code>docker run --detach --restart always <span class="se">\</span>
 --publish <span class="m">443</span>:443 <span class="se">\</span>
 --volumes-from pmm-data --name pmm-server <span class="se">\</span>
 percona/pmm-server:2
@@ -260,37 +260,37 @@ it will be considered invalid and the server won&rsquo;t start.</p>
 <ol>
 <li>
 <p>Find out which release you have now.</p>
-<div class="highlight"><pre><span></span><code>sudo docker <span class="nb">exec</span> -it pmm-server curl -u admin:admin https://localhost/v1/version
+<div class="highlight"><pre><span></span><code>docker <span class="nb">exec</span> -it pmm-server curl -u admin:admin https://localhost/v1/version
 </code></pre></div>
 <blockquote>
 <p><strong>Tip:</strong> Use <code>jq</code> to extract the quoted string value.
-<div class="highlight"><pre><span></span><code>sudo apt install jq <span class="c1"># Example for Debian, Ubuntu</span>
-sudo docker <span class="nb">exec</span> -it pmm-server curl -u admin:admin https://localhost/v1/version <span class="p">|</span> jq .version
+<div class="highlight"><pre><span></span><code>apt install jq <span class="c1"># Example for Debian, Ubuntu</span>
+docker <span class="nb">exec</span> -it pmm-server curl -u admin:admin https://localhost/v1/version <span class="p">|</span> jq .version
 </code></pre></div></p>
 </blockquote>
 </li>
 <li>
 <p>Check the container mount points are the same (<code>/srv</code>).</p>
-<div class="highlight"><pre><span></span><code>sudo docker inspect pmm-data <span class="p">|</span> grep Destination
-sudo docker inspect pmm-server <span class="p">|</span> grep Destination
+<div class="highlight"><pre><span></span><code>docker inspect pmm-data <span class="p">|</span> grep Destination
+docker inspect pmm-server <span class="p">|</span> grep Destination
 </code></pre></div>
 <p>With <code>jq</code>:</p>
-<div class="highlight"><pre><span></span><code>sudo docker inspect pmm-data <span class="p">|</span> jq <span class="s1">&#39;.[].Mounts[].Destination&#39;</span>
-sudo docker inspect pmm-server <span class="p">|</span> jq <span class="s1">&#39;.[].Mounts[].Destination&#39;</span>
+<div class="highlight"><pre><span></span><code>docker inspect pmm-data <span class="p">|</span> jq <span class="s1">&#39;.[].Mounts[].Destination&#39;</span>
+docker inspect pmm-server <span class="p">|</span> jq <span class="s1">&#39;.[].Mounts[].Destination&#39;</span>
 </code></pre></div>
 </li>
 <li>
 <p>Stop the container and create backups.</p>
-<div class="highlight"><pre><span></span><code>sudo docker stop pmm-server
-sudo docker rename pmm-server pmm-server-backup
+<div class="highlight"><pre><span></span><code>docker stop pmm-server
+docker rename pmm-server pmm-server-backup
 mkdir pmm-data-backup <span class="o">&amp;&amp;</span> <span class="nb">cd</span> <span class="nv">$_</span>
-sudo docker cp pmm-data:/srv .
+docker cp pmm-data:/srv .
 </code></pre></div>
 </li>
 <li>
 <p>Pull the latest image and run the container.</p>
-<div class="highlight"><pre><span></span><code>sudo docker pull percona/pmm-server:2
-sudo docker run <span class="se">\</span>
+<div class="highlight"><pre><span></span><code>docker pull percona/pmm-server:2
+docker run <span class="se">\</span>
 --detach <span class="se">\</span>
 --restart always <span class="se">\</span>
 --publish <span class="m">443</span>:443 <span class="se">\</span>
@@ -307,33 +307,33 @@ percona/pmm-server:2
 <ol>
 <li>
 <p>Stop and remove the running version.</p>
-<div class="highlight"><pre><span></span><code>sudo docker stop pmm-server
-sudo docker rm pmm-server
+<div class="highlight"><pre><span></span><code>docker stop pmm-server
+docker rm pmm-server
 </code></pre></div>
 </li>
 <li>
 <p>Restore backups.</p>
-<div class="highlight"><pre><span></span><code>sudo docker rename pmm-server-backup pmm-server
+<div class="highlight"><pre><span></span><code>docker rename pmm-server-backup pmm-server
 <span class="c1"># cd to wherever you saved the backup</span>
-sudo docker cp srv pmm-data:/
+docker cp srv pmm-data:/
 </code></pre></div>
 </li>
 <li>
 <p>Restore permissions.</p>
-<div class="highlight"><pre><span></span><code>sudo docker run --rm --volumes-from pmm-data -it percona/pmm-server:2 chown -R root:root /srv <span class="o">&amp;&amp;</span> <span class="se">\</span>
-sudo docker run --rm --volumes-from pmm-data -it percona/pmm-server:2 chown -R pmm:pmm /srv/alertmanager <span class="o">&amp;&amp;</span> <span class="se">\</span>
-sudo docker run --rm --volumes-from pmm-data -it percona/pmm-server:2 chown -R root:pmm /srv/clickhouse <span class="o">&amp;&amp;</span> <span class="se">\</span>
-sudo docker run --rm --volumes-from pmm-data -it percona/pmm-server:2 chown -R grafana:grafana /srv/grafana <span class="o">&amp;&amp;</span> <span class="se">\</span>
-sudo docker run --rm --volumes-from pmm-data -it percona/pmm-server:2 chown -R pmm:pmm /srv/logs <span class="o">&amp;&amp;</span> <span class="se">\</span>
-sudo docker run --rm --volumes-from pmm-data -it percona/pmm-server:2 chown -R postgres:postgres /srv/postgres <span class="o">&amp;&amp;</span> <span class="se">\</span>
-sudo docker run --rm --volumes-from pmm-data -it percona/pmm-server:2 chown -R pmm:pmm /srv/prometheus <span class="o">&amp;&amp;</span> <span class="se">\</span>
-sudo docker run --rm --volumes-from pmm-data -it percona/pmm-server:2 chown -R pmm:pmm /srv/victoriametrics <span class="o">&amp;&amp;</span> <span class="se">\</span>
-sudo docker run --rm --volumes-from pmm-data -it percona/pmm-server:2 chown -R postgres:postgres /srv/logs/postgresql.log
+<div class="highlight"><pre><span></span><code>docker run --rm --volumes-from pmm-data -it percona/pmm-server:2 chown -R root:root /srv <span class="o">&amp;&amp;</span> <span class="se">\</span>
+docker run --rm --volumes-from pmm-data -it percona/pmm-server:2 chown -R pmm:pmm /srv/alertmanager <span class="o">&amp;&amp;</span> <span class="se">\</span>
+docker run --rm --volumes-from pmm-data -it percona/pmm-server:2 chown -R root:pmm /srv/clickhouse <span class="o">&amp;&amp;</span> <span class="se">\</span>
+docker run --rm --volumes-from pmm-data -it percona/pmm-server:2 chown -R grafana:grafana /srv/grafana <span class="o">&amp;&amp;</span> <span class="se">\</span>
+docker run --rm --volumes-from pmm-data -it percona/pmm-server:2 chown -R pmm:pmm /srv/logs <span class="o">&amp;&amp;</span> <span class="se">\</span>
+docker run --rm --volumes-from pmm-data -it percona/pmm-server:2 chown -R postgres:postgres /srv/postgres <span class="o">&amp;&amp;</span> <span class="se">\</span>
+docker run --rm --volumes-from pmm-data -it percona/pmm-server:2 chown -R pmm:pmm /srv/prometheus <span class="o">&amp;&amp;</span> <span class="se">\</span>
+docker run --rm --volumes-from pmm-data -it percona/pmm-server:2 chown -R pmm:pmm /srv/victoriametrics <span class="o">&amp;&amp;</span> <span class="se">\</span>
+docker run --rm --volumes-from pmm-data -it percona/pmm-server:2 chown -R postgres:postgres /srv/logs/postgresql.log
 </code></pre></div>
 </li>
 <li>
 <p>Start (don’t run) the image.</p>
-<div class="highlight"><pre><span></span><code>sudo docker start pmm-server
+<div class="highlight"><pre><span></span><code>docker start pmm-server
 </code></pre></div>
 </li>
 </ol>
@@ -366,7 +366,7 @@ sudo docker run --rm --volumes-from pmm-data -it percona/pmm-server:2 chown -R p
 </li>
 <li>
 <p>Run:</p>
-<div class="highlight"><pre><span></span><code>sudo docker-compose up
+<div class="highlight"><pre><span></span><code>docker-compose up
 </code></pre></div>
 </li>
 <li>
@@ -416,18 +416,18 @@ wget https://downloads.percona.com/downloads/pmm2/2.17.0/docker/pmm-server-2.17.
 </li>
 <li>
 <p>Load the image.</p>
-<div class="highlight"><pre><span></span><code>sudo docker load -i pmm-server-2.17.0.docker
+<div class="highlight"><pre><span></span><code>docker load -i pmm-server-2.17.0.docker
 </code></pre></div>
 </li>
 <li>
 <p>Create the <code>pmm-data</code> persistent data container.</p>
-<div class="highlight"><pre><span></span><code>sudo docker create --volume /srv <span class="se">\</span>
+<div class="highlight"><pre><span></span><code>docker create --volume /srv <span class="se">\</span>
 --name pmm-data percona/pmm-server:2.17.0 /bin/true
 </code></pre></div>
 </li>
 <li>
 <p>Run the container.</p>
-<div class="highlight"><pre><span></span><code>sudo docker run <span class="se">\</span>
+<div class="highlight"><pre><span></span><code>docker run <span class="se">\</span>
 --detach <span class="se">\</span>
 --restart always <span class="se">\</span>
 --publish <span class="m">443</span>:443 <span class="se">\</span>
@@ -444,7 +444,7 @@ percona/pmm-server:2.17.0
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-05-11
+            <i class="uil uil-refresh"></i> Page updated 2021-05-12
         </li>
         
     </ul>

@@ -137,8 +137,8 @@
 <h2 id="package-manager">Install PMM Client with a package manager<a class="headerlink" href="#package-manager" title="Permanent link">&para;</a></h2>
 <blockquote>
 <p><strong>Tip</strong> If you have used <code>percona-release</code> before, disable and re-enable the repository:
-<div class="highlight"><pre><span></span><code>sudo percona-release disable all
-sudo percona-release <span class="nb">enable</span> original release
+<div class="highlight"><pre><span></span><code>percona-release disable all
+percona-release <span class="nb">enable</span> original release
 </code></pre></div></p>
 </blockquote>
 <h3 id="install-on-debian-based-distributions">Install on Debian-based distributions<a class="headerlink" href="#install-on-debian-based-distributions" title="Permanent link">&para;</a></h3>
@@ -146,13 +146,13 @@ sudo percona-release <span class="nb">enable</span> original release
 <li>
 <p>Configure repositories.</p>
 <div class="highlight"><pre><span></span><code>wget https://repo.percona.com/apt/percona-release_latest.generic_all.deb
-sudo dpkg -i percona-release_latest.generic_all.deb
+dpkg -i percona-release_latest.generic_all.deb
 </code></pre></div>
 </li>
 <li>
 <p>Install the PMM Client package.</p>
-<div class="highlight"><pre><span></span><code>sudo apt update
-sudo apt install -y pmm2-client
+<div class="highlight"><pre><span></span><code>apt update
+apt install -y pmm2-client
 </code></pre></div>
 </li>
 <li>
@@ -168,12 +168,12 @@ sudo apt install -y pmm2-client
 <ol>
 <li>
 <p>Configure repositories.</p>
-<div class="highlight"><pre><span></span><code>sudo yum install -y https://repo.percona.com/yum/percona-release-latest.noarch.rpm
+<div class="highlight"><pre><span></span><code>yum install -y https://repo.percona.com/yum/percona-release-latest.noarch.rpm
 </code></pre></div>
 </li>
 <li>
 <p>Install the PMM Client package.</p>
-<div class="highlight"><pre><span></span><code>sudo yum install -y pmm2-client
+<div class="highlight"><pre><span></span><code>yum install -y pmm2-client
 </code></pre></div>
 </li>
 <li>
@@ -210,21 +210,21 @@ sudo apt install -y pmm2-client
 <li><a href="https://www.percona.com/downloads/pmm2/2.17.0/binary/debian/focal/">Ubuntu 20.04 (&ldquo;Focal Fossa&rdquo;)</a></li>
 </ul>
 <h3 id="install-on-debian-based-distributions_1">Install on Debian-based distributions<a class="headerlink" href="#install-on-debian-based-distributions_1" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>sudo dpkg -i *.deb
+<div class="highlight"><pre><span></span><code>dpkg -i *.deb
 </code></pre></div>
 <h3 id="install-on-red-hat-based-distributions_1">Install on Red Hat-based distributions<a class="headerlink" href="#install-on-red-hat-based-distributions_1" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>sudo dnf localinstall *.rpm
+<div class="highlight"><pre><span></span><code>dnf localinstall *.rpm
 </code></pre></div>
 <h2 id="binary-package">Download and unpack generic Linux binary package<a class="headerlink" href="#binary-package" title="Permanent link">&para;</a></h2>
 <ol>
 <li>
 <p>Download the PMM Client package:</p>
-<div class="highlight"><pre><span></span><code>sudo wget https://downloads.percona.com/downloads/pmm2/2.17.0/binary/tarball/pmm2-client-2.17.0.tar.gz
+<div class="highlight"><pre><span></span><code>wget https://downloads.percona.com/downloads/pmm2/2.17.0/binary/tarball/pmm2-client-2.17.0.tar.gz
 </code></pre></div>
 </li>
 <li>
 <p>Download the PMM Client package checksum file:</p>
-<div class="highlight"><pre><span></span><code>sudo wget https://downloads.percona.com/downloads/pmm2/2.17.0/binary/tarball/pmm2-client-2.17.0.tar.gz.sha256sum
+<div class="highlight"><pre><span></span><code>wget https://downloads.percona.com/downloads/pmm2/2.17.0/binary/tarball/pmm2-client-2.17.0.tar.gz.sha256sum
 </code></pre></div>
 </li>
 <li>
@@ -234,12 +234,12 @@ sudo apt install -y pmm2-client
 </li>
 <li>
 <p>Unpack the package and move into the directory.</p>
-<div class="highlight"><pre><span></span><code>sudo tar xfz pmm2-client-2.17.0.tar.gz <span class="o">&amp;&amp;</span> <span class="nb">cd</span> pmm2-client-2.17.0
+<div class="highlight"><pre><span></span><code>tar xfz pmm2-client-2.17.0.tar.gz <span class="o">&amp;&amp;</span> <span class="nb">cd</span> pmm2-client-2.17.0
 </code></pre></div>
 </li>
 <li>
 <p>Run the installer.</p>
-<div class="highlight"><pre><span></span><code>sudo ./install_tarball
+<div class="highlight"><pre><span></span><code>./install_tarball
 </code></pre></div>
 </li>
 <li>
@@ -249,7 +249,7 @@ sudo apt install -y pmm2-client
 </li>
 <li>
 <p>Set up the agent</p>
-<div class="highlight"><pre><span></span><code>sudo pmm-agent setup --config-file<span class="o">=</span>/usr/local/percona/pmm2/config/pmm-agent.yaml --server-address<span class="o">=</span><span class="m">192</span>.168.1.123 --server-insecure-tls --server-username<span class="o">=</span>admin --server-password<span class="o">=</span>admin
+<div class="highlight"><pre><span></span><code>pmm-agent setup --config-file<span class="o">=</span>/usr/local/percona/pmm2/config/pmm-agent.yaml --server-address<span class="o">=</span><span class="m">192</span>.168.1.123 --server-insecure-tls --server-username<span class="o">=</span>admin --server-password<span class="o">=</span>admin
 </code></pre></div>
 </li>
 <li>
@@ -268,12 +268,12 @@ sudo apt install -y pmm2-client
 <ol>
 <li>
 <p>Uninstall the PMM Client package.</p>
-<div class="highlight"><pre><span></span><code>sudo apt remove -y pmm2-client
+<div class="highlight"><pre><span></span><code>apt remove -y pmm2-client
 </code></pre></div>
 </li>
 <li>
 <p>Remove the Percona repository</p>
-<div class="highlight"><pre><span></span><code>sudo dpkg -r percona-release
+<div class="highlight"><pre><span></span><code>dpkg -r percona-release
 </code></pre></div>
 </li>
 </ol>
@@ -281,12 +281,12 @@ sudo apt install -y pmm2-client
 <ol>
 <li>
 <p>Uninstall the PMM Client package.</p>
-<div class="highlight"><pre><span></span><code>sudo yum remove -y pmm2-client
+<div class="highlight"><pre><span></span><code>yum remove -y pmm2-client
 </code></pre></div>
 </li>
 <li>
 <p>Remove the Percona repository</p>
-<div class="highlight"><pre><span></span><code>sudo yum remove -y percona-release
+<div class="highlight"><pre><span></span><code>yum remove -y percona-release
 </code></pre></div>
 </li>
 </ol>
@@ -385,6 +385,7 @@ pmm-admin status
         <span class="nt">max-file</span><span class="p">:</span> <span class="s">&quot;5&quot;</span>
     <span class="nt">volumes</span><span class="p">:</span>
       <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">./pmm-agent.yaml:/etc/pmm-agent.yaml</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">pmm-client-data:/srv</span>
     <span class="nt">environment</span><span class="p">:</span>
       <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">PMM_AGENT_CONFIG_FILE=/etc/pmm-agent.yaml</span>
       <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">PMM_AGENT_SERVER_USERNAME=admin</span>
@@ -392,6 +393,8 @@ pmm-admin status
       <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">PMM_AGENT_SERVER_ADDRESS=X.X.X.X:443</span>
       <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">PMM_AGENT_SERVER_INSECURE_TLS=true</span>
     <span class="nt">entrypoint</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">pmm-agent setup</span>
+<span class="nt">volumes</span><span class="p">:</span>
+  <span class="nt">pmm-client-data</span><span class="p">:</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -411,7 +414,7 @@ pmm-admin status
 </li>
 <li>
 <p>Run the PMM Agent setup. This will run and stop.</p>
-<div class="highlight"><pre><span></span><code>sudo docker-compose up
+<div class="highlight"><pre><span></span><code>docker-compose up
 </code></pre></div>
 </li>
 <li>
@@ -422,13 +425,13 @@ pmm-admin status
 </li>
 <li>
 <p>Run again, this time with the Docker <em>detach</em> option.</p>
-<div class="highlight"><pre><span></span><code>sudo docker-compose up -d
+<div class="highlight"><pre><span></span><code>docker-compose up -d
 </code></pre></div>
 </li>
 <li>
 <p>Verify.</p>
 <p>On the command line.</p>
-<div class="highlight"><pre><span></span><code>sudo docker <span class="nb">exec</span> pmm-client pmm-admin status
+<div class="highlight"><pre><span></span><code>docker <span class="nb">exec</span> pmm-client pmm-admin status
 </code></pre></div>
 <p>In the GUI.</p>
 <ul>

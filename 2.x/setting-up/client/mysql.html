@@ -782,27 +782,27 @@
 <h3 id="on-the-command-line">On the command line<a class="headerlink" href="#on-the-command-line" title="Permanent link">&para;</a></h3>
 <p>Add the database server as a service using one of these example commands. If successful, PMM Client will print <code>MySQL Service added</code> with the service&rsquo;s ID and name. Use the <code>--environment</code> and <code>-custom-labels</code> options to set tags for the service to help identify them.</p>
 <p><strong>Examples &ndash; TLS connection</strong></p>
-<div class="highlight"><pre><span></span><code>sudo pmm-admin add mysql --username<span class="o">=</span>user --password<span class="o">=</span>pass --tls --tls-skip-verify --tls-ca<span class="o">=</span>pathtoca.pem --tls-cert<span class="o">=</span>pathtocert.pem --tls-key<span class="o">=</span>pathtocertkey.pem --server-url<span class="o">=</span>http://admin:admin@127.0.0.1 --query-source<span class="o">=</span>perfschema name localhost:3306
+<div class="highlight"><pre><span></span><code>pmm-admin add mysql --username<span class="o">=</span>user --password<span class="o">=</span>pass --tls --tls-skip-verify --tls-ca<span class="o">=</span>pathtoca.pem --tls-cert<span class="o">=</span>pathtocert.pem --tls-key<span class="o">=</span>pathtocertkey.pem --server-url<span class="o">=</span>http://admin:admin@127.0.0.1 --query-source<span class="o">=</span>perfschema name localhost:3306
 </code></pre></div>
 <p><strong>Examples &ndash; Slow query log</strong></p>
 <p>Default query source (<code>slowlog</code>), service name (<code>{node name}-mysql</code>), and service address/port (<code>127.0.0.1:3306</code>), with database server account <code>pmm</code> and password <code>pass</code>.</p>
-<div class="highlight"><pre><span></span><code>sudo pmm-admin add mysql --username<span class="o">=</span>pmm --password<span class="o">=</span>pass
+<div class="highlight"><pre><span></span><code>pmm-admin add mysql --username<span class="o">=</span>pmm --password<span class="o">=</span>pass
 </code></pre></div>
 <p>Slow query log source and log size limit (1 gigabyte), service name (<code>MYSQL_NODE</code>) and service address/port (<code>191.168.1.123:3306</code>).</p>
-<div class="highlight"><pre><span></span><code>sudo pmm-admin add mysql --query-source<span class="o">=</span>slowlog --size-slow-logs<span class="o">=</span>1GB --username<span class="o">=</span>pmm --password<span class="o">=</span>pass MYSQL_NODE <span class="m">192</span>.168.1.123:3306
+<div class="highlight"><pre><span></span><code>pmm-admin add mysql --query-source<span class="o">=</span>slowlog --size-slow-logs<span class="o">=</span>1GB --username<span class="o">=</span>pmm --password<span class="o">=</span>pass MYSQL_NODE <span class="m">192</span>.168.1.123:3306
 </code></pre></div>
 <p>Slow query log source, disabled log management (use <a href="https://linux.die.net/man/8/logrotate"><code>logrotate</code></a> or some other log management tool), service name (<code>MYSQL_NODE</code>) and service address/port (<code>191.168.1.123:3306</code>).</p>
-<div class="highlight"><pre><span></span><code>sudo pmm-admin add mysql --query-source<span class="o">=</span>slowlog --size-slow-logs<span class="o">=</span><span class="nb">false</span> --username<span class="o">=</span>pmm --password<span class="o">=</span>pass MYSQL_NODE <span class="m">192</span>.168.1.123:3306
+<div class="highlight"><pre><span></span><code>pmm-admin add mysql --query-source<span class="o">=</span>slowlog --size-slow-logs<span class="o">=</span><span class="nb">false</span> --username<span class="o">=</span>pmm --password<span class="o">=</span>pass MYSQL_NODE <span class="m">192</span>.168.1.123:3306
 </code></pre></div>
 <p>Default query source (<code>slowlog</code>), service name (<code>{node}-mysql</code>), connect via socket.</p>
-<div class="highlight"><pre><span></span><code>sudo pmm-admin add mysql --username<span class="o">=</span>pmm --password<span class="o">=</span>pass --socket<span class="o">=</span>/var/run/mysqld/mysqld.sock
+<div class="highlight"><pre><span></span><code>pmm-admin add mysql --username<span class="o">=</span>pmm --password<span class="o">=</span>pass --socket<span class="o">=</span>/var/run/mysqld/mysqld.sock
 </code></pre></div>
 <p><strong>Examples &ndash; Performance Schema</strong></p>
 <p>Performance schema query source, service name (<code>MYSQL_NODE</code>) and default service address/port (<code>127.0.0.1:3306</code>)</p>
-<div class="highlight"><pre><span></span><code>sudo pmm-admin add mysql --query-source<span class="o">=</span>perfschema --username<span class="o">=</span>pmm --password<span class="o">=</span>pass MYSQL_NODE
+<div class="highlight"><pre><span></span><code>pmm-admin add mysql --query-source<span class="o">=</span>perfschema --username<span class="o">=</span>pmm --password<span class="o">=</span>pass MYSQL_NODE
 </code></pre></div>
 <p>Performance schema query source, service name (<code>MYSQL_NODE</code>) and default service address/port (<code>127.0.0.1:3306</code>) specified with flags.</p>
-<div class="highlight"><pre><span></span><code>sudo pmm-admin add mysql --query-source<span class="o">=</span>perfschema --username<span class="o">=</span>pmm --password<span class="o">=</span>pass --service-name<span class="o">=</span>MYSQL_NODE --host<span class="o">=</span><span class="m">127</span>.0.0.1 --port<span class="o">=</span><span class="m">3306</span>
+<div class="highlight"><pre><span></span><code>pmm-admin add mysql --query-source<span class="o">=</span>perfschema --username<span class="o">=</span>pmm --password<span class="o">=</span>pass --service-name<span class="o">=</span>MYSQL_NODE --host<span class="o">=</span><span class="m">127</span>.0.0.1 --port<span class="o">=</span><span class="m">3306</span>
 </code></pre></div>
 <p><strong>Examples &ndash; Identifying services</strong></p>
 <p>Default query source (<code>slowlog</code>), environment labeled <code>test</code>, custom labels setting <code>source</code> to <code>slowlog</code>. (This example uses positional parameters for service name and service address.)</p>
@@ -867,7 +867,7 @@
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-05-11
+            <i class="uil uil-refresh"></i> Page updated 2021-05-12
         </li>
         
     </ul>

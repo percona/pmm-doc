@@ -112,7 +112,7 @@
 <h2 id="setting-up-the-required-permissions">Setting Up the Required Permissions<a class="headerlink" href="#setting-up-the-required-permissions" title="Permanent link">&para;</a></h2>
 <p>For MongoDB monitoring services to work in Query Analytics, you need to set up the <code>mongodb_exporter</code> user.</p>
 <p>Here is an example for the MongoDB shell that creates and assigns the appropriate roles to the user.</p>
-<div class="highlight"><pre><span></span><code><span class="nx">db</span><span class="p">.</span><span class="nx">createRole</span><span class="p">({</span>
+<div class="highlight"><pre><span></span><code><span class="nx">db</span><span class="p">.</span><span class="nx">getSiblingDB</span><span class="p">(</span><span class="s2">&quot;admin&quot;</span><span class="p">).</span><span class="nx">createRole</span><span class="p">({</span>
     <span class="nx">role</span><span class="o">:</span> <span class="s2">&quot;explainRole&quot;</span><span class="p">,</span>
     <span class="nx">privileges</span><span class="o">:</span> <span class="p">[{</span>
         <span class="nx">resource</span><span class="o">:</span> <span class="p">{</span>
@@ -226,7 +226,7 @@ the MongoDB monitoring service.</p>
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-03-29
+            <i class="uil uil-refresh"></i> Page updated 2021-05-12
         </li>
         
     </ul>

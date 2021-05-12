@@ -601,8 +601,8 @@
 <dt><code>pmm-admin add external-serverless [FLAGS]</code></dt>
 <dd>
 <p>Add External Service on Remote node to monitoring.</p>
-<p>Usage example: <code>sudo pmm-admin add external-serverless --url=http://1.2.3.4:9093/metrics</code></p>
-<p>Also, individual parameters can be set instead of <code>--url</code> like: <code>sudo pmm-admin add external-serverless --scheme=http --host=1.2.3.4 --listen-port=9093 --metrics-path=/metrics --container-name=ddd --external-name=e125</code></p>
+<p>Usage example: <code>pmm-admin add external-serverless --url=http://1.2.3.4:9093/metrics</code></p>
+<p>Also, individual parameters can be set instead of <code>--url</code> like: <code>pmm-admin add external-serverless --scheme=http --host=1.2.3.4 --listen-port=9093 --metrics-path=/metrics --container-name=ddd --external-name=e125</code></p>
 <p>Notice that some parameters are mandatory depending on the context. For example, if you specify <code>--url</code>, <code>--schema</code> and other related parameters are not mandatory but, if you specify <code>--host</code> you must provide all other parameters needed to
 build the destination URL or even you can specify <code>--address</code> instead of host and port as individual parameters.</p>
 <p>FLAGS:</p>
@@ -694,7 +694,7 @@ Agents:
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-05-11
+            <i class="uil uil-refresh"></i> Page updated 2021-05-12
         </li>
         
     </ul>
