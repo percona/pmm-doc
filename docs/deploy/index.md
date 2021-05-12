@@ -220,7 +220,7 @@ When changing to a new version of PMM, you update the PMM Server and each PMM Cl
 ### Updating the PMM Server
 
 !!! alert alert-warning "Warning"
-    Currently PMM Server doesn’t support updates from 1.x to 2.0. Just install the new PMM 2 following its [official installation instructions](../setting-up/).
+    Currently PMM Server doesn’t support updates from 1.x to 2.0. Just install the new PMM 2 following its [official installation instructions](../2.x/setting-up/).
 
 The updating procedure of your PMM Server depends on the option that you selected for installing it.
 
@@ -233,7 +233,7 @@ If you are running PMM Server as a virtual appliance or using an Amazon Machine 
 ### Updating a PMM Client
 
 !!! alert alert-warning "Warning"
-    Currently PMM Client has no compatibility between 1.x to 2.0. Coexistence of 1.x and 2.x clients is also not supported. If you need PMM 2.x, remove the old pmm-client package and install the new pmm2-client one following its [installation instructions](../setting-up/).
+    Currently PMM Client has no compatibility between 1.x to 2.0. Coexistence of 1.x and 2.x clients is also not supported. If you need PMM 2.x, remove the old pmm-client package and install the new pmm2-client one following its [installation instructions](../2.x/setting-up/).
 
 When a newer version of PMM Client becomes available, you can update to it from  the Percona software repositories:
 
