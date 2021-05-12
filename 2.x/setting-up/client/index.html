@@ -385,7 +385,6 @@ pmm-admin status
         <span class="nt">max-file</span><span class="p">:</span> <span class="s">&quot;5&quot;</span>
     <span class="nt">volumes</span><span class="p">:</span>
       <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">./pmm-agent.yaml:/etc/pmm-agent.yaml</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">pmm-client-data:/srv</span>
     <span class="nt">environment</span><span class="p">:</span>
       <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">PMM_AGENT_CONFIG_FILE=/etc/pmm-agent.yaml</span>
       <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">PMM_AGENT_SERVER_USERNAME=admin</span>
@@ -393,8 +392,6 @@ pmm-admin status
       <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">PMM_AGENT_SERVER_ADDRESS=X.X.X.X:443</span>
       <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">PMM_AGENT_SERVER_INSECURE_TLS=true</span>
     <span class="nt">entrypoint</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">pmm-agent setup</span>
-<span class="nt">volumes</span><span class="p">:</span>
-  <span class="nt">pmm-client-data</span><span class="p">:</span>
 </code></pre></div>
 <blockquote>
 <ul>
