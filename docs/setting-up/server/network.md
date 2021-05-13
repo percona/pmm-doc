@@ -4,18 +4,18 @@
 
 This is a list of ports used by the various components of PMM.
 
-For PMM to work correctly, your system's firewall should allow TCP traffic on these ports (UDP is not needed).
+For PMM to work correctly, your system's firewall should allow traffic on these ports.
 
-PMM component | TCP port      | Description
---------------|---------------|----------------------
-`pmm-server`  |   80          | HTTP server, used for web interface
-`pmm-server`  |  443          | HTTPS server, used for web interface
-`pmm-server`  | 7771          | gRPC, used for communication between `pmm-agent`, `pmm-admin`
-`pmm-server`  | 7772          | HTTP1 server, used for older links like `logs.zip`
-`pmm-server`  | 7773          | Debugging
-`pmm-agent`   | 7777          | Default `pmm-agent` listen port
-`pmm-agent`   | 42000 - 51999 | Default range for `pmm-agent` connected agents
-`vm-agent`    | 8428          | Victoria metrics port
+| Destination   | Component     | Protocols | Port/Port Range | Description
+|---------------|---------------|-----------|-----------------|----------------------
+| PMM Server    | `pmm-server`  | TCP       |   80            | HTTP server, used for web interface
+| PMM Server    | `pmm-server`  | TCP       |  443            | HTTPS server, used for web interface
+| PMM Server    | `pmm-server`  | TCP       | 7771            | gRPC, used for communication between `pmm-agent`, `pmm-admin`
+| PMM Server    | `pmm-server`  | TCP       | 7772            | HTTP1 server, used for older links like `logs.zip`
+| PMM Server    | `pmm-server`  | TCP       | 7773            | Debugging
+| PMM Client    | `pmm-agent`   | TCP       | 7777            | Default `pmm-agent` listen port
+| PMM Client    | `pmm-agent`   | TCP       | 42000--51999    | Default range for `pmm-agent` connected agents
+| PMM Client    | `vm-agent`    | TCP       | 8428            | Victoria metrics port
 
 > Notes
 >
