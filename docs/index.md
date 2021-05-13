@@ -59,7 +59,9 @@ PMM Client runs on every database host or node you want to monitor. The client c
 
 [Percona Platform](using/platform/) (in development) provides value-added services for PMM.
 
-## Where next
+## Where next?
+
+Links to key sections for users and administrators.
 
 ```plantuml format="svg_object" width="90%" height="90%" source="_resources/diagrams/Topics.puml"
 ```
