@@ -43,6 +43,15 @@
 
 <script src="../../js/toctree.js" type="text/javascript"></script>
 
+<script src="../../js/lightgallery.min.js" type="text/javascript"></script>
+
+
+<script>
+    var elements = document.getElementsByClassName("lightgallery");
+    for(var i=0; i<elements.length; i++) {
+       lightGallery(elements[i]);
+    }
+</script>
 
     <link rel="top" title="" href="" />
     
@@ -58,12 +67,22 @@
 <link rel="stylesheet" href="../../css/version-select.css" type="text/css">
 <link rel="stylesheet" href="../../css/toctree.css" type="text/css">
 <link rel="stylesheet" href="../../css/percona.css" type="text/css">
+<link rel="stylesheet" href="../../css/lightgallery.min.cs" type="text/css">
 
     
 <script src="../../js/version-select.js" type="text/javascript"></script>
 
 <script src="../../js/toctree.js" type="text/javascript"></script>
 
+<script src="../../js/lightgallery.min.js" type="text/javascript"></script>
+
+
+<script>
+    var elements = document.getElementsByClassName("lightgallery");
+    for(var i=0; i<elements.length; i++) {
+       lightGallery(elements[i]);
+    }
+</script>
 
     <div class="container">
         <div class="document row">
@@ -105,7 +124,7 @@
                 <div class="bodywrapper">
                     <div class="body">
                         <h1 id="mysql-myrocks-details">MySQL MyRocks Details<a class="headerlink" href="#mysql-myrocks-details" title="Permanent link">&para;</a></h1>
-<p><img alt="image" src="../../_images/PMM_MySQL_MyRocks_Details.jpg" /></p>
+<p><div class="lightgallery"><a data-sub-html="image" href="../../_images/PMM_MySQL_MyRocks_Details.jpg"><img alt="image" src="../../_images/PMM_MySQL_MyRocks_Details.jpg" /></a></div></p>
 <p>The <a href="http://myrocks.io">MyRocks</a> storage engine developed by Facebook based on the RocksDB storage engine is applicable to systems which primarily interact with the database by writing data to it rather than reading from it. RocksDB also features a good level of compression, higher than that of the InnoDB storage engine, which makes it especially valuable when optimizing the usage of hard drives.</p>
 <p>PMM collects statistics on the MyRocks storage engine for MySQL in the Metrics Monitor information for this dashboard comes from the <em>Information Schema</em> tables.</p>
 <p><strong>Metrics</strong></p>
@@ -140,7 +159,7 @@
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-02-09
+            <i class="uil uil-refresh"></i> Page updated 2021-05-11
         </li>
         
     </ul>

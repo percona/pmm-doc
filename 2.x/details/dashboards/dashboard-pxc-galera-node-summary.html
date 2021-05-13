@@ -43,6 +43,15 @@
 
 <script src="../../js/toctree.js" type="text/javascript"></script>
 
+<script src="../../js/lightgallery.min.js" type="text/javascript"></script>
+
+
+<script>
+    var elements = document.getElementsByClassName("lightgallery");
+    for(var i=0; i<elements.length; i++) {
+       lightGallery(elements[i]);
+    }
+</script>
 
     <link rel="top" title="" href="" />
     
@@ -58,12 +67,22 @@
 <link rel="stylesheet" href="../../css/version-select.css" type="text/css">
 <link rel="stylesheet" href="../../css/toctree.css" type="text/css">
 <link rel="stylesheet" href="../../css/percona.css" type="text/css">
+<link rel="stylesheet" href="../../css/lightgallery.min.cs" type="text/css">
 
     
 <script src="../../js/version-select.js" type="text/javascript"></script>
 
 <script src="../../js/toctree.js" type="text/javascript"></script>
 
+<script src="../../js/lightgallery.min.js" type="text/javascript"></script>
+
+
+<script>
+    var elements = document.getElementsByClassName("lightgallery");
+    for(var i=0; i<elements.length; i++) {
+       lightGallery(elements[i]);
+    }
+</script>
 
     <div class="container">
         <div class="document row">
@@ -105,7 +124,7 @@
                 <div class="bodywrapper">
                     <div class="body">
                         <h1 id="pxcgalera-node-summary">PXC/Galera Node Summary<a class="headerlink" href="#pxcgalera-node-summary" title="Permanent link">&para;</a></h1>
-<p><img alt="image" src="../../_images/PMM_PXC_Galera_Node_Summary.jpg" /></p>
+<p><div class="lightgallery"><a data-sub-html="image" href="../../_images/PMM_PXC_Galera_Node_Summary.jpg"><img alt="image" src="../../_images/PMM_PXC_Galera_Node_Summary.jpg" /></a></div></p>
 <h2 id="galera-replication-latency">Galera Replication Latency<a class="headerlink" href="#galera-replication-latency" title="Permanent link">&para;</a></h2>
 <p>Shows figures for the replication latency on group communication. It measures latency from the time point when a message is sent out to the time point when a message is received. As replication is a group operation, this essentially gives you the slowest ACK and longest RTT in the cluster.</p>
 <h2 id="galera-replication-queues">Galera Replication Queues<a class="headerlink" href="#galera-replication-queues" title="Permanent link">&para;</a></h2>
@@ -135,7 +154,7 @@
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-02-09
+            <i class="uil uil-refresh"></i> Page updated 2021-05-11
         </li>
         
     </ul>

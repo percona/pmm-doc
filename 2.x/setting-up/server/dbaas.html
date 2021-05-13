@@ -43,6 +43,15 @@
 
 <script src="../../js/toctree.js" type="text/javascript"></script>
 
+<script src="../../js/lightgallery.min.js" type="text/javascript"></script>
+
+
+<script>
+    var elements = document.getElementsByClassName("lightgallery");
+    for(var i=0; i<elements.length; i++) {
+       lightGallery(elements[i]);
+    }
+</script>
 
     <link rel="top" title="" href="" />
     
@@ -58,12 +67,22 @@
 <link rel="stylesheet" href="../../css/version-select.css" type="text/css">
 <link rel="stylesheet" href="../../css/toctree.css" type="text/css">
 <link rel="stylesheet" href="../../css/percona.css" type="text/css">
+<link rel="stylesheet" href="../../css/lightgallery.min.cs" type="text/css">
 
     
 <script src="../../js/version-select.js" type="text/javascript"></script>
 
 <script src="../../js/toctree.js" type="text/javascript"></script>
 
+<script src="../../js/lightgallery.min.js" type="text/javascript"></script>
+
+
+<script>
+    var elements = document.getElementsByClassName("lightgallery");
+    for(var i=0; i<elements.length; i++) {
+       lightGallery(elements[i]);
+    }
+</script>
 
     <div class="container">
         <div class="document row">
@@ -324,54 +343,54 @@ users:
 </li>
 <li>
 <p>Navigate to Menu &rarr; Kubernetes Engine &rarr; Clusters</p>
-<p><img alt="" src="../../_images/PMM_DBaaS_GKE_1.png" /></p>
+<p><div class="lightgallery"><a data-sub-html="" href="../../_images/PMM_DBaaS_GKE_1.png"><img alt="" src="../../_images/PMM_DBaaS_GKE_1.png" /></a></div></p>
 </li>
 <li>
 <p>Click button Create cluster</p>
-<p><img alt="" src="../../_images/PMM_DBaaS_GKE_2.png" /></p>
+<p><div class="lightgallery"><a data-sub-html="" href="../../_images/PMM_DBaaS_GKE_2.png"><img alt="" src="../../_images/PMM_DBaaS_GKE_2.png" /></a></div></p>
 </li>
 <li>
 <p>You can specify cluster option in form or simply click on “My first cluster” and button Create</p>
-<p><img alt="" src="../../_images/PMM_DBaaS_GKE_3.png" /></p>
-<p><img alt="" src="../../_images/PMM_DBaaS_GKE_4.png" /></p>
+<p><div class="lightgallery"><a data-sub-html="" href="../../_images/PMM_DBaaS_GKE_3.png"><img alt="" src="../../_images/PMM_DBaaS_GKE_3.png" /></a></div></p>
+<p><div class="lightgallery"><a data-sub-html="" href="../../_images/PMM_DBaaS_GKE_4.png"><img alt="" src="../../_images/PMM_DBaaS_GKE_4.png" /></a></div></p>
 </li>
 <li>
 <p>Wait until cluster created</p>
-<p><img alt="" src="../../_images/PMM_DBaaS_GKE_5.png" /></p>
+<p><div class="lightgallery"><a data-sub-html="" href="../../_images/PMM_DBaaS_GKE_5.png"><img alt="" src="../../_images/PMM_DBaaS_GKE_5.png" /></a></div></p>
 </li>
 <li>
 <p>Click on button Connect in a the cluster’s row</p>
-<p><img alt="" src="../../_images/PMM_DBaaS_GKE_6.png" /></p>
+<p><div class="lightgallery"><a data-sub-html="" href="../../_images/PMM_DBaaS_GKE_6.png"><img alt="" src="../../_images/PMM_DBaaS_GKE_6.png" /></a></div></p>
 </li>
 <li>
 <p>Click button Run in Cloud shell</p>
-<p><img alt="" src="../../_images/PMM_DBaaS_GKE_7.png" /></p>
+<p><div class="lightgallery"><a data-sub-html="" href="../../_images/PMM_DBaaS_GKE_7.png"><img alt="" src="../../_images/PMM_DBaaS_GKE_7.png" /></a></div></p>
 </li>
 <li>
 <p>Click Authorize</p>
-<p><img alt="" src="../../_images/PMM_DBaaS_GKE_8.png" /></p>
-<p><img alt="" src="../../_images/PMM_DBaaS_GKE_9.png" /></p>
-<p><img alt="" src="../../_images/PMM_DBaaS_GKE_10.png" /></p>
+<p><div class="lightgallery"><a data-sub-html="" href="../../_images/PMM_DBaaS_GKE_8.png"><img alt="" src="../../_images/PMM_DBaaS_GKE_8.png" /></a></div></p>
+<p><div class="lightgallery"><a data-sub-html="" href="../../_images/PMM_DBaaS_GKE_9.png"><img alt="" src="../../_images/PMM_DBaaS_GKE_9.png" /></a></div></p>
+<p><div class="lightgallery"><a data-sub-html="" href="../../_images/PMM_DBaaS_GKE_10.png"><img alt="" src="../../_images/PMM_DBaaS_GKE_10.png" /></a></div></p>
 </li>
 <li>
 <p>Set up PXC and PSMDB operators:</p>
 <div class="highlight"><pre><span></span><code>curl -sSf -m 30 https://raw.githubusercontent.com/percona/percona-xtradb-cluster-operator/pmm-branch/deploy/bundle.yaml  | kubectl apply -f -
 curl -sSf -m 30 https://raw.githubusercontent.com/percona/percona-server-mongodb-operator/pmm-branch/deploy/bundle.yaml  | kubectl apply -f -
 </code></pre></div>
-<p><img alt="" src="../../_images/PMM_DBaaS_GKE_11.png" /></p>
+<p><div class="lightgallery"><a data-sub-html="" href="../../_images/PMM_DBaaS_GKE_11.png"><img alt="" src="../../_images/PMM_DBaaS_GKE_11.png" /></a></div></p>
 </li>
 <li>
 <p>Check if it was set up successfully</p>
 <div class="highlight"><pre><span></span><code>kubectl api-resources --api-group=&#39;psmdb.percona.com&#39;
 kubectl api-resources --api-group=&#39;pxc.percona.com&#39;
 </code></pre></div>
-<p><img alt="" src="../../_images/PMM_DBaaS_GKE_12.png" /></p>
+<p><div class="lightgallery"><a data-sub-html="" href="../../_images/PMM_DBaaS_GKE_12.png"><img alt="" src="../../_images/PMM_DBaaS_GKE_12.png" /></a></div></p>
 </li>
 <li>
 <p>Check versions</p>
 <div class="highlight"><pre><span></span><code>kubectl api-versions | grep percona.com
 </code></pre></div>
-<p><img alt="" src="../../_images/PMM_DBaaS_GKE_13.png" /></p>
+<p><div class="lightgallery"><a data-sub-html="" href="../../_images/PMM_DBaaS_GKE_13.png"><img alt="" src="../../_images/PMM_DBaaS_GKE_13.png" /></a></div></p>
 </li>
 <li>
 <p>Create Service Account, copy and store kubeconfig - output of the following command</p>
@@ -412,7 +431,7 @@ certificate=`kubectl get secret $name -o json | jq -r  &#39;.data.&quot;ca.crt&q
 token=`kubectl get secret $name -o json | jq -r  &#39;.data.token&#39; | base64 -d`
 server=`kubectl cluster-info | grep &#39;Kubernetes master&#39; | cut -d &#39; &#39; -f 6`
 </code></pre></div>
-<p><img alt="" src="../../_images/PMM_DBaaS_GKE_14.png" /></p>
+<p><div class="lightgallery"><a data-sub-html="" href="../../_images/PMM_DBaaS_GKE_14.png"><img alt="" src="../../_images/PMM_DBaaS_GKE_14.png" /></a></div></p>
 <div class="highlight"><pre><span></span><code>echo &quot;
 apiVersion: v1
 kind: Config
@@ -433,7 +452,7 @@ contexts:
 current-context: svcs-acct-context
 &quot;
 </code></pre></div>
-<p><img alt="" src="../../_images/PMM_DBaaS_GKE_15.png" /></p>
+<p><div class="lightgallery"><a data-sub-html="" href="../../_images/PMM_DBaaS_GKE_15.png"><img alt="" src="../../_images/PMM_DBaaS_GKE_15.png" /></a></div></p>
 </li>
 <li>
 <p>Start PMM Server on you local machine or other VM instance:</p>
@@ -443,15 +462,15 @@ current-context: svcs-acct-context
 </li>
 <li>
 <p>Login into PMM and navigate to DBaaS</p>
-<p><img alt="" src="../../_images/PMM_DBaaS_GKE_16.png" /></p>
+<p><div class="lightgallery"><a data-sub-html="" href="../../_images/PMM_DBaaS_GKE_16.png"><img alt="" src="../../_images/PMM_DBaaS_GKE_16.png" /></a></div></p>
 </li>
 <li>
 <p>Register your GKE using kubeconfig from step 12.</p>
 <blockquote>
 <p><b style="color:goldenrod">Important</b> Ensure there are no stray new lines in the kubeconfig, especially in long lines like certificate or token.</p>
 </blockquote>
-<p><img alt="" src="../../_images/PMM_DBaaS_GKE_17.png" /></p>
-<p><img alt="" src="../../_images/PMM_DBaaS_GKE_18.png" /></p>
+<p><div class="lightgallery"><a data-sub-html="" href="../../_images/PMM_DBaaS_GKE_17.png"><img alt="" src="../../_images/PMM_DBaaS_GKE_17.png" /></a></div></p>
+<p><div class="lightgallery"><a data-sub-html="" href="../../_images/PMM_DBaaS_GKE_18.png"><img alt="" src="../../_images/PMM_DBaaS_GKE_18.png" /></a></div></p>
 </li>
 </ol>
 <h2 id="deleting-clusters">Deleting clusters<a class="headerlink" href="#deleting-clusters" title="Permanent link">&para;</a></h2>
@@ -575,7 +594,7 @@ eksctl delete cluster --name<span class="o">=</span>your-cluster-name
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-05-12
+            <i class="uil uil-refresh"></i> Page updated 2021-05-13
         </li>
         
     </ul>

@@ -43,6 +43,15 @@
 
 <script src="../../js/toctree.js" type="text/javascript"></script>
 
+<script src="../../js/lightgallery.min.js" type="text/javascript"></script>
+
+
+<script>
+    var elements = document.getElementsByClassName("lightgallery");
+    for(var i=0; i<elements.length; i++) {
+       lightGallery(elements[i]);
+    }
+</script>
 
     <link rel="top" title="" href="" />
     
@@ -58,12 +67,22 @@
 <link rel="stylesheet" href="../../css/version-select.css" type="text/css">
 <link rel="stylesheet" href="../../css/toctree.css" type="text/css">
 <link rel="stylesheet" href="../../css/percona.css" type="text/css">
+<link rel="stylesheet" href="../../css/lightgallery.min.cs" type="text/css">
 
     
 <script src="../../js/version-select.js" type="text/javascript"></script>
 
 <script src="../../js/toctree.js" type="text/javascript"></script>
 
+<script src="../../js/lightgallery.min.js" type="text/javascript"></script>
+
+
+<script>
+    var elements = document.getElementsByClassName("lightgallery");
+    for(var i=0; i<elements.length; i++) {
+       lightGallery(elements[i]);
+    }
+</script>
 
     <div class="container">
         <div class="document row">
@@ -105,7 +124,7 @@
                 <div class="bodywrapper">
                     <div class="body">
                         <h1 id="mysql-myisamaria-details">MySQL MyISAM/Aria Details<a class="headerlink" href="#mysql-myisamaria-details" title="Permanent link">&para;</a></h1>
-<p><img alt="image" src="../../_images/PMM_MySQL_MyISAM_Aria_Details.jpg" /></p>
+<p><div class="lightgallery"><a data-sub-html="image" href="../../_images/PMM_MySQL_MyISAM_Aria_Details.jpg"><img alt="image" src="../../_images/PMM_MySQL_MyISAM_Aria_Details.jpg" /></a></div></p>
 <h2 id="myisam-key-buffer-performance">MyISAM Key Buffer Performance<a class="headerlink" href="#myisam-key-buffer-performance" title="Permanent link">&para;</a></h2>
 <p>The <code>Key Read Ratio</code>  (<code>Key_reads</code> / <code>Key_read_requests</code>) ratio should normally be less than 0.01.</p>
 <p>The  <code>Key Write Ratio</code> (<code>Key_writes</code> / <code>Key_write_requests</code>) ratio is usually near 1 if you are using mostly updates and deletes, but might be much smaller if you tend to do updates that affect many rows at the same time or if you are using the <code>DELAY_KEY_WRITE</code> table option.</p>
@@ -122,7 +141,7 @@
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-02-10
+            <i class="uil uil-refresh"></i> Page updated 2021-05-11
         </li>
         
     </ul>

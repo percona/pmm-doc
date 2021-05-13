@@ -43,6 +43,15 @@
 
 <script src="../../js/toctree.js" type="text/javascript"></script>
 
+<script src="../../js/lightgallery.min.js" type="text/javascript"></script>
+
+
+<script>
+    var elements = document.getElementsByClassName("lightgallery");
+    for(var i=0; i<elements.length; i++) {
+       lightGallery(elements[i]);
+    }
+</script>
 
     <link rel="top" title="" href="" />
     
@@ -58,12 +67,22 @@
 <link rel="stylesheet" href="../../css/version-select.css" type="text/css">
 <link rel="stylesheet" href="../../css/toctree.css" type="text/css">
 <link rel="stylesheet" href="../../css/percona.css" type="text/css">
+<link rel="stylesheet" href="../../css/lightgallery.min.cs" type="text/css">
 
     
 <script src="../../js/version-select.js" type="text/javascript"></script>
 
 <script src="../../js/toctree.js" type="text/javascript"></script>
 
+<script src="../../js/lightgallery.min.js" type="text/javascript"></script>
+
+
+<script>
+    var elements = document.getElementsByClassName("lightgallery");
+    for(var i=0; i<elements.length; i++) {
+       lightGallery(elements[i]);
+    }
+</script>
 
     <div class="container">
         <div class="document row">
@@ -370,7 +389,7 @@ pmm-server.vmx nogui
 <ol>
 <li>Open a web browser and visit the guest IP address.</li>
 <li>The PMM login screen appears.
-    <img alt="image" src="../../_images/PMM_Login.jpg" /></li>
+    <div class="lightgallery"><a data-sub-html="image" href="../../_images/PMM_Login.jpg"><img alt="image" src="../../_images/PMM_Login.jpg" /></a></div></li>
 <li>Enter the default username and password in the relevant fields and click <em>Log in</em>.<ul>
 <li>username: <code>admin</code></li>
 <li>password: <code>admin</code></li>
@@ -378,7 +397,7 @@ pmm-server.vmx nogui
 </li>
 <li>(Recommended) Follow the prompts to change the default password.</li>
 <li>The PMM Home Dashboard appears.
-    <img alt="image" src="../../_images/PMM_Home_Dashboard.jpg" /></li>
+    <div class="lightgallery"><a data-sub-html="image" href="../../_images/PMM_Home_Dashboard.jpg"><img alt="image" src="../../_images/PMM_Home_Dashboard.jpg" /></a></div></li>
 </ol>
 <h2 id="optional-change-root-password">(Optional) Change root password<a class="headerlink" href="#optional-change-root-password" title="Permanent link">&para;</a></h2>
 <p><strong>UI</strong></p>
@@ -442,7 +461,7 @@ pmm-server.vmx nogui
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-04-08
+            <i class="uil uil-refresh"></i> Page updated 2021-05-11
         </li>
         
     </ul>

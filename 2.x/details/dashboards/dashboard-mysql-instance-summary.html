@@ -43,6 +43,15 @@
 
 <script src="../../js/toctree.js" type="text/javascript"></script>
 
+<script src="../../js/lightgallery.min.js" type="text/javascript"></script>
+
+
+<script>
+    var elements = document.getElementsByClassName("lightgallery");
+    for(var i=0; i<elements.length; i++) {
+       lightGallery(elements[i]);
+    }
+</script>
 
     <link rel="top" title="" href="" />
     
@@ -58,12 +67,22 @@
 <link rel="stylesheet" href="../../css/version-select.css" type="text/css">
 <link rel="stylesheet" href="../../css/toctree.css" type="text/css">
 <link rel="stylesheet" href="../../css/percona.css" type="text/css">
+<link rel="stylesheet" href="../../css/lightgallery.min.cs" type="text/css">
 
     
 <script src="../../js/version-select.js" type="text/javascript"></script>
 
 <script src="../../js/toctree.js" type="text/javascript"></script>
 
+<script src="../../js/lightgallery.min.js" type="text/javascript"></script>
+
+
+<script>
+    var elements = document.getElementsByClassName("lightgallery");
+    for(var i=0; i<elements.length; i++) {
+       lightGallery(elements[i]);
+    }
+</script>
 
     <div class="container">
         <div class="document row">
@@ -105,7 +124,7 @@
                 <div class="bodywrapper">
                     <div class="body">
                         <h1 id="mysql-instance-summary">MySQL Instance Summary<a class="headerlink" href="#mysql-instance-summary" title="Permanent link">&para;</a></h1>
-<p><img alt="image" src="../../_images/PMM_MySQL_Instance_Summary.jpg" /></p>
+<p><div class="lightgallery"><a data-sub-html="image" href="../../_images/PMM_MySQL_Instance_Summary.jpg"><img alt="image" src="../../_images/PMM_MySQL_Instance_Summary.jpg" /></a></div></p>
 <h2 id="mysql-connections">MySQL Connections<a class="headerlink" href="#mysql-connections" title="Permanent link">&para;</a></h2>
 <p><strong>Max Connections</strong></p>
 <p>Max Connections is the maximum permitted number of simultaneous client connections. By default, this is 151. Increasing this value increases the number of file descriptors that <code>mysqld</code> requires. If the required number of descriptors are not available, the server reduces the value of Max Connections.</p>
@@ -230,7 +249,7 @@
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-03-19
+            <i class="uil uil-refresh"></i> Page updated 2021-05-11
         </li>
         
     </ul>

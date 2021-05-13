@@ -43,6 +43,15 @@
 
 <script src="../js/toctree.js" type="text/javascript"></script>
 
+<script src="../js/lightgallery.min.js" type="text/javascript"></script>
+
+
+<script>
+    var elements = document.getElementsByClassName("lightgallery");
+    for(var i=0; i<elements.length; i++) {
+       lightGallery(elements[i]);
+    }
+</script>
 
     <link rel="top" title="" href="" />
     
@@ -58,12 +67,22 @@
 <link rel="stylesheet" href="../css/version-select.css" type="text/css">
 <link rel="stylesheet" href="../css/toctree.css" type="text/css">
 <link rel="stylesheet" href="../css/percona.css" type="text/css">
+<link rel="stylesheet" href="../css/lightgallery.min.cs" type="text/css">
 
     
 <script src="../js/version-select.js" type="text/javascript"></script>
 
 <script src="../js/toctree.js" type="text/javascript"></script>
 
+<script src="../js/lightgallery.min.js" type="text/javascript"></script>
+
+
+<script>
+    var elements = document.getElementsByClassName("lightgallery");
+    for(var i=0; i<elements.length; i++) {
+       lightGallery(elements[i]);
+    }
+</script>
 
     <div class="container">
         <div class="document row">
@@ -106,7 +125,7 @@
                     <div class="body">
                         <h1 id="query-analytics">Query Analytics<a class="headerlink" href="#query-analytics" title="Permanent link">&para;</a></h1>
 <p>The <em>Query Analytics</em> dashboard shows how queries are executed and where they spend their time.  It helps you analyze database queries over time, optimize database performance, and find and remedy the source of problems.</p>
-<p><img alt="image" src="../_images/PMM_Query_Analytics.jpg" /></p>
+<p><div class="lightgallery"><a data-sub-html="image" href="../_images/PMM_Query_Analytics.jpg"><img alt="image" src="../_images/PMM_Query_Analytics.jpg" /></a></div></p>
 <p>Query Analytics supports MySQL, MongoDB and PostgreSQL. The minimum requirements for MySQL are:</p>
 <ul>
 <li>MySQL 5.1 or later (if using the slow query log)</li>
@@ -123,7 +142,7 @@
 <p>Query Analytics data retrieval is not instantaneous and can be delayed due to network conditions. In such situations <em>no data</em> is reported and a gap appears in the sparkline.</p>
 </blockquote>
 <h2 id="filters-panel">Filters Panel<a class="headerlink" href="#filters-panel" title="Permanent link">&para;</a></h2>
-<p><img alt="image" src="../_images/PMM_Query_Analytics_Panels_Filters.jpg" /></p>
+<p><div class="lightgallery"><a data-sub-html="image" href="../_images/PMM_Query_Analytics_Panels_Filters.jpg"><img alt="image" src="../_images/PMM_Query_Analytics_Panels_Filters.jpg" /></a></div></p>
 <ul>
 <li>The Filter panel occupies the left side of the dashboard. It lists filters, grouped by category. Selecting one reduces the Overview list to those items matching the filter.</li>
 <li>The first five of each category are shown. If there are more, the list is expanded by clicking <em>Show all</em> beside the category name, and collapsed again with <em>Show top 5</em>.</li>
@@ -131,10 +150,10 @@
 <li>Click the chart symbol <i class="uil uil-graph-bar"></i> to navigate directly to an item&rsquo;s associated dashboard.</li>
 <li>Separately, the global <em>Time range</em> setting filters results by time, either your choice of <em>Absolute time range</em>, or one of the predefined <em>Relative time ranges</em>.</li>
 </ul>
-<p><img alt="image" src="../_images/PMM_Query_Analytics_Time_Range.jpg" /></p>
+<p><div class="lightgallery"><a data-sub-html="image" href="../_images/PMM_Query_Analytics_Time_Range.jpg"><img alt="image" src="../_images/PMM_Query_Analytics_Time_Range.jpg" /></a></div></p>
 <h2 id="overview-panel">Overview Panel<a class="headerlink" href="#overview-panel" title="Permanent link">&para;</a></h2>
 <p>To the right of the Filters panel and occupying the upper part of the dashboard is the Overview panel.</p>
-<p><img alt="image" src="../_images/PMM_Query_Analytics_overview-table.jpg" /></p>
+<p><div class="lightgallery"><a data-sub-html="image" href="../_images/PMM_Query_Analytics_overview-table.jpg"><img alt="image" src="../_images/PMM_Query_Analytics_overview-table.jpg" /></a></div></p>
 <p>Each row of the table represents the metrics for a chosen object type, one of:</p>
 <ul>
 <li>Query</li>
@@ -145,9 +164,9 @@
 <li>Client Host</li>
 </ul>
 <p>At the top of the second column is the <em>dimension</em> menu. Use this to choose the object type.</p>
-<p><img alt="image" src="../_images/PMM_Query_Analytics_Dimension_Selector.jpg" /></p>
+<p><div class="lightgallery"><a data-sub-html="image" href="../_images/PMM_Query_Analytics_Dimension_Selector.jpg"><img alt="image" src="../_images/PMM_Query_Analytics_Dimension_Selector.jpg" /></a></div></p>
 <p>On the right side of the dimension column is the <em>Dimension Search</em> bar.</p>
-<p><img alt="image" src="../_images/PMM_Query_Analytics_Panels_Dimension_Search.jpg" /></p>
+<p><div class="lightgallery"><a data-sub-html="image" href="../_images/PMM_Query_Analytics_Panels_Dimension_Search.jpg"><img alt="image" src="../_images/PMM_Query_Analytics_Panels_Dimension_Search.jpg" /></a></div></p>
 <p>Enter a string and press Enter to limit the view to queries containing only the specified keywords.</p>
 <p>Delete the search text and press Enter to see the full list again.</p>
 <p><strong>Columns</strong></p>
@@ -162,22 +181,22 @@
 <li>Hovering on a column header reveals an informative tool-tip for that column.</li>
 <li>Hovering on the main metric sparkline highlights the data point and a tooltip shows the data value under the cursor.</li>
 </ul>
-<p><img alt="image" src="../_images/PMM_Query_Analytics_Main_Metric_Sparkline.jpg" /></p>
+<p><div class="lightgallery"><a data-sub-html="image" href="../_images/PMM_Query_Analytics_Main_Metric_Sparkline.jpg"><img alt="image" src="../_images/PMM_Query_Analytics_Main_Metric_Sparkline.jpg" /></a></div></p>
 <ul>
 <li>
 <p>Hovering on the main metric meter reveals the percentage of the total, and other details specific to the main metric.</p>
-<p><img alt="image" src="../_images/PMM_Query_Analytics_Main_Metric_Summary.jpg" /></p>
+<p><div class="lightgallery"><a data-sub-html="image" href="../_images/PMM_Query_Analytics_Main_Metric_Summary.jpg"><img alt="image" src="../_images/PMM_Query_Analytics_Main_Metric_Summary.jpg" /></a></div></p>
 </li>
 <li>
 <p>Hovering on column values reveals more details on the value. The contents depends on the type of value.</p>
-<p><img alt="image" src="../_images/PMM_Query_Analytics_Metric_Tooltip.jpg" /></p>
+<p><div class="lightgallery"><a data-sub-html="image" href="../_images/PMM_Query_Analytics_Metric_Tooltip.jpg"><img alt="image" src="../_images/PMM_Query_Analytics_Metric_Tooltip.jpg" /></a></div></p>
 </li>
 </ul>
 <p><strong>Adding and removing columns</strong></p>
 <ul>
 <li>
 <p>Metrics columns are added with the <em>Add column</em> button.</p>
-<p><img alt="image" src="../_images/PMM_Query_Analytics_add-columns.jpg" /></p>
+<p><div class="lightgallery"><a data-sub-html="image" href="../_images/PMM_Query_Analytics_add-columns.jpg"><img alt="image" src="../_images/PMM_Query_Analytics_add-columns.jpg" /></a></div></p>
 </li>
 <li>
 <p>When clicked, a text field and list of available metrics are revealed. Select a metric or enter a search string to reduce the list. Selecting a metric adds it to the panel.</p>
@@ -194,7 +213,7 @@
 <ul>
 <li>
 <p>The pagination device lets you move forwards or backwards through pages, jump to a specific page, and choose how many items are listed per page.</p>
-<p><img alt="image" src="../_images/PMM_Query_Analytics_Panels_Pagination.jpg" /></p>
+<p><div class="lightgallery"><a data-sub-html="image" href="../_images/PMM_Query_Analytics_Panels_Pagination.jpg"><img alt="image" src="../_images/PMM_Query_Analytics_Panels_Pagination.jpg" /></a></div></p>
 </li>
 <li>
 <p>Queries are grouped into pages of 25, 50 or 100 items.</p>
@@ -207,7 +226,7 @@
 </ul>
 <h3 id="details-tab">Details Tab<a class="headerlink" href="#details-tab" title="Permanent link">&para;</a></h3>
 <p>The <em>Details</em> tab contains a <em>Query time distribution</em> bar (only for MySQL databases) and a set of <em>Metrics</em> in collapsible subpanels.</p>
-<p><img alt="image" src="../_images/PMM_Query_Analytics_details.jpg" /></p>
+<p><div class="lightgallery"><a data-sub-html="image" href="../_images/PMM_Query_Analytics_details.jpg"><img alt="image" src="../_images/PMM_Query_Analytics_details.jpg" /></a></div></p>
 <ul>
 <li>
 <p>The <em>Query time distribution</em> bar shows a query’s total time made up of colored segments, each segment representing the proportion of time spent on one of the follow named activities:</p>
@@ -238,7 +257,7 @@
 <h3 id="examples-tab">Examples Tab<a class="headerlink" href="#examples-tab" title="Permanent link">&para;</a></h3>
 <p>(For <em>Query</em> dimension.)</p>
 <p>The <em>Examples</em> tab shows an example of the selected query’s fingerprint or table element.</p>
-<p><img alt="image" src="../_images/PMM_Query_Analytics_examples.jpg" /></p>
+<p><div class="lightgallery"><a data-sub-html="image" href="../_images/PMM_Query_Analytics_examples.jpg"><img alt="image" src="../_images/PMM_Query_Analytics_examples.jpg" /></a></div></p>
 <h3 id="explain-tab">Explain Tab<a class="headerlink" href="#explain-tab" title="Permanent link">&para;</a></h3>
 <p>(For <em>Query</em> dimension.)</p>
 <p>The <em>Explain</em> tab shows the <code>explain</code> output for the selected query, in Classic or JSON formats:</p>
@@ -247,11 +266,11 @@
 <li>MongoDB: JSON only</li>
 <li>PostgreSQL: Not supported</li>
 </ul>
-<p><img alt="image" src="../_images/PMM_Query_Analytics_explain.jpg" /></p>
+<p><div class="lightgallery"><a data-sub-html="image" href="../_images/PMM_Query_Analytics_explain.jpg"><img alt="image" src="../_images/PMM_Query_Analytics_explain.jpg" /></a></div></p>
 <h3 id="tables-tab">Tables Tab<a class="headerlink" href="#tables-tab" title="Permanent link">&para;</a></h3>
 <p>(For <em>Query</em> dimension.)</p>
 <p>The <em>Tables</em> tab shows information on the tables and indexes involved in the selected query.</p>
-<p><img alt="image" src="../_images/PMM_Query_Analytics_tables.jpg" /></p>
+<p><div class="lightgallery"><a data-sub-html="image" href="../_images/PMM_Query_Analytics_tables.jpg"><img alt="image" src="../_images/PMM_Query_Analytics_tables.jpg" /></a></div></p>
 <h2 id="query-analytics-for-mongodb">Query Analytics for MongoDB<a class="headerlink" href="#query-analytics-for-mongodb" title="Permanent link">&para;</a></h2>
 <p>MongoDB is conceptually different from relational database management systems, such as MySQL and MariaDB.</p>
 <p>Relational database management systems store data in tables that represent single entities. Complex objects are represented by linking tables.</p>
@@ -264,7 +283,7 @@
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-03-19
+            <i class="uil uil-refresh"></i> Page updated 2021-05-11
         </li>
         
     </ul>

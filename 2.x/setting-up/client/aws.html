@@ -43,6 +43,15 @@
 
 <script src="../../js/toctree.js" type="text/javascript"></script>
 
+<script src="../../js/lightgallery.min.js" type="text/javascript"></script>
+
+
+<script>
+    var elements = document.getElementsByClassName("lightgallery");
+    for(var i=0; i<elements.length; i++) {
+       lightGallery(elements[i]);
+    }
+</script>
 
     <link rel="top" title="" href="" />
     
@@ -58,12 +67,22 @@
 <link rel="stylesheet" href="../../css/version-select.css" type="text/css">
 <link rel="stylesheet" href="../../css/toctree.css" type="text/css">
 <link rel="stylesheet" href="../../css/percona.css" type="text/css">
+<link rel="stylesheet" href="../../css/lightgallery.min.cs" type="text/css">
 
     
 <script src="../../js/version-select.js" type="text/javascript"></script>
 
 <script src="../../js/toctree.js" type="text/javascript"></script>
 
+<script src="../../js/lightgallery.min.js" type="text/javascript"></script>
+
+
+<script>
+    var elements = document.getElementsByClassName("lightgallery");
+    for(var i=0; i<elements.length; i++) {
+       lightGallery(elements[i]);
+    }
+</script>
 
     <div class="container">
         <div class="document row">
@@ -111,7 +130,7 @@
 <p>Network connectivity can become an issue for VictoriaMetrics to scrape metrics with 1 second resolution.  We strongly suggest that you run PMM Server on AWS (Amazon Web Services) in the same availability zone as Amazon RDS instances.</p>
 <p>It is crucial that <em>enhanced monitoring</em> be enabled for the Amazon RDS DB instances you intend to monitor.</p>
 <p>Set the <em>Enable Enhanced Monitoring</em> option in the settings of your Amazon RDS DB instance.</p>
-<p><img alt="image" src="../../_images/amazon-rds.modify-db-instance.2.png" /></p>
+<p><div class="lightgallery"><a data-sub-html="image" href="../../_images/amazon-rds.modify-db-instance.2.png"><img alt="image" src="../../_images/amazon-rds.modify-db-instance.2.png" /></a></div></p>
 <h2 id="creating-an-iam-user-with-permission-to-access-amazon-rds-db-instances">Creating an IAM user with permission to access Amazon RDS DB instances<a class="headerlink" href="#creating-an-iam-user-with-permission-to-access-amazon-rds-db-instances" title="Permanent link">&para;</a></h2>
 <p>It is recommended that you use an IAM user account to access Amazon RDS DB instances instead of using your AWS account. This measure improves security as the permissions of an IAM user account can be limited so that this account only grants access to your Amazon RDS DB instances. On the other hand, you use your AWS account to access all AWS services.</p>
 <p>The procedure for creating IAM user accounts is well described in the Amazon RDS documentation. This section only goes through the essential steps and points out the steps required for using Amazon RDS with Percona Monitoring and Management.</p>
@@ -119,7 +138,7 @@
 <h2 id="creating-a-policy">Creating a policy<a class="headerlink" href="#creating-a-policy" title="Permanent link">&para;</a></h2>
 <p>A policy defines how AWS services can be accessed. Once defined it can be associated with an existing user or group.</p>
 <p>To define a new policy use the IAM page at AWS.</p>
-<p><img alt="image" src="../../_images/aws.iam.png" /></p>
+<p><div class="lightgallery"><a data-sub-html="image" href="../../_images/aws.iam.png"><img alt="image" src="../../_images/aws.iam.png" /></a></div></p>
 <ol>
 <li>
 <p>Select the <em>Policies</em> option on the navigation panel and click the <em>Create policy</em> button.</p>
@@ -145,12 +164,12 @@
 </li>
 <li>
 <p>Click <em>Review policy</em> and set a name to your policy, such as <code>AmazonRDSforPMMPolicy</code>. Then, click the <em>Create policy</em> button.</p>
-<p><img alt="image" src="../../_images/aws.iam.create-policy.png" /></p>
+<p><div class="lightgallery"><a data-sub-html="image" href="../../_images/aws.iam.create-policy.png"><img alt="image" src="../../_images/aws.iam.create-policy.png" /></a></div></p>
 </li>
 </ol>
 <h2 id="creating-an-iam-user">Creating an IAM user<a class="headerlink" href="#creating-an-iam-user" title="Permanent link">&para;</a></h2>
 <p>Policies are attached to existing IAM users or groups. To create a new IAM user, select <em>Users</em> on the Identity and Access Management page at AWS. Then click <em>Add user</em> and complete the following steps:</p>
-<p><img alt="image" src="../../_images/aws.iam-users.1.png" /></p>
+<p><div class="lightgallery"><a data-sub-html="image" href="../../_images/aws.iam-users.1.png"><img alt="image" src="../../_images/aws.iam-users.1.png" /></a></div></p>
 <ol>
 <li>
 <p>On the <em>Add user</em> page, set the user name and select the <em>Programmatic access</em> option under <em>Select AWS access type</em>. Set a custom password and then proceed to permissions by clicking the <em>Permissions</em> button.</p>
@@ -190,7 +209,7 @@
 </li>
 </ol>
 <p>The <code>AmazonRDSforPMMPolicy</code> is now added to your IAM user.</p>
-<p><img alt="image" src="../../_images/aws.iam.add-permissions.png" /></p>
+<p><div class="lightgallery"><a data-sub-html="image" href="../../_images/aws.iam.add-permissions.png"><img alt="image" src="../../_images/aws.iam.add-permissions.png" /></a></div></p>
 <h2 id="setting-up-the-amazon-rds-db-instance">Setting up the Amazon RDS DB Instance<a class="headerlink" href="#setting-up-the-amazon-rds-db-instance" title="Permanent link">&para;</a></h2>
 <p>Query Analytics requires Configuring Performance Schema as the query source, because the slow query log is stored on the AWS (Amazon Web Services) side, and QAN agent is not able to read it.  Enable the <code>performance_schema</code> option under <code>Parameter Groups</code> in Amazon RDS.</p>
 <blockquote>
@@ -216,7 +235,7 @@
 </li>
 <li>
 <p>Select <em>AWS RDS MySQL or Aurora MySQL &ndash; Add a remote instance</em>.</p>
-<p><img alt="image" src="../../_images/PMM_Add_Instance_RDS.png" /></p>
+<p><div class="lightgallery"><a data-sub-html="image" href="../../_images/PMM_Add_Instance_RDS.png"><img alt="image" src="../../_images/PMM_Add_Instance_RDS.png" /></a></div></p>
 </li>
 <li>
 <p>Enter the access key ID and the secret access key of your IAM user.</p>
@@ -224,20 +243,20 @@
 <li>
 <p>Click the <em>Discover</em> button for PMM to retrieve the available Amazon RDS
 instances.</p>
-<p><img alt="image" src="../../_images/PMM_Add_Instance_RDS_Discover.png" /></p>
+<p><div class="lightgallery"><a data-sub-html="image" href="../../_images/PMM_Add_Instance_RDS_Discover.png"><img alt="image" src="../../_images/PMM_Add_Instance_RDS_Discover.png" /></a></div></p>
 </li>
 <li>
 <p>For the instance that you would like to monitor, select the <em>Start monitoring</em> button.</p>
 </li>
 <li>
 <p>You will see a new page with the number of fields. The list is divided into the following groups: <em>Main details</em>, <em>RDS database</em>, <em>Labels</em>, and <em>Additional options</em>. Some already known data, such as already entered <em>AWS access key</em>, are filled in automatically, and some fields are optional.</p>
-<p><img alt="" src="../../_images/PMM_Add_Instance_RDS_Main_Details.png" /></p>
+<p><div class="lightgallery"><a data-sub-html="" href="../../_images/PMM_Add_Instance_RDS_Main_Details.png"><img alt="" src="../../_images/PMM_Add_Instance_RDS_Main_Details.png" /></a></div></p>
 <p>The <em>Main details</em> section allows you to specify the DNS hostname of your instance,
 the service name to use within PMM, the port your service is listening on, and the
 database user name and password.</p>
-<p><img alt="image" src="../../_images/PMM_Add_Instance_RDS_Labels.png" /></p>
+<p><div class="lightgallery"><a data-sub-html="image" href="../../_images/PMM_Add_Instance_RDS_Labels.png"><img alt="image" src="../../_images/PMM_Add_Instance_RDS_Labels.png" /></a></div></p>
 <p>The <em>Labels</em> section allows you to specify labels for the environment, the AWS region and availability zone to be used, the Replication set and Cluster names and also it allows you to set the list of custom labels in a key:value format.</p>
-<p><img alt="" src="../../_images/PMM_Add_Instance_RDS_Additional_Options.png" /></p>
+<p><div class="lightgallery"><a data-sub-html="" href="../../_images/PMM_Add_Instance_RDS_Additional_Options.png"><img alt="" src="../../_images/PMM_Add_Instance_RDS_Additional_Options.png" /></a></div></p>
 <p>The <em>Additional options</em> section contains specific flags which allow you to tune the RDS monitoring. They can allow you to skip connection check, to use TLS for the database connection, not to validate the TLS certificate and the hostname, as well as to disable basic and/or enhanced metrics collection for the RDS instance to reduce costs.</p>
 <p>Also this section contains a database-specific flag, which would allow Query Analytics for the selected remote database:</p>
 <ul>
@@ -265,15 +284,15 @@ database user name and password.</p>
 <li>
 <p>Select <em>AWS RDS MySQL or Aurora MySQL &ndash; Add a remote instance</em>.
     <em>At the moment of writing this guide, the Add button doesn&rsquo;t mention PostgreSQL but the discovery function already supports it.</em></p>
-<p><img alt="image" src="../../_images/PMM_rds_postgre_02_discover.png" /></p>
+<p><div class="lightgallery"><a data-sub-html="image" href="../../_images/PMM_rds_postgre_02_discover.png"><img alt="image" src="../../_images/PMM_rds_postgre_02_discover.png" /></a></div></p>
 </li>
 <li>
 <p>Follow steps 4 to 6 as in the previous section. Fill the form and remember to select <code>PG Stat Statement</code> to enable Query Analytics.
     To get queries for Query Analytics, you need to enable <code>pg_stat_statements</code> in your instance by running:</p>
 <div class="highlight"><pre><span></span><code>CREATE EXTENSION pg_stat_statements SCHEMA public;
 </code></pre></div>
-<p><img alt="image" src="../../_images/PMM_rds_postgre_03_form_1.png" />
-<img alt="image" src="../../_images/PMM_rds_postgre_04_add_btn.png" /></p>
+<p><div class="lightgallery"><a data-sub-html="image" href="../../_images/PMM_rds_postgre_03_form_1.png"><img alt="image" src="../../_images/PMM_rds_postgre_03_form_1.png" />
+</a></div><div class="lightgallery"><a data-sub-html="image" href="../../_images/PMM_rds_postgre_04_add_btn.png"><img alt="image" src="../../_images/PMM_rds_postgre_04_add_btn.png" /></a></div></p>
 </li>
 </ol>
                     </div>
@@ -283,7 +302,7 @@ database user name and password.</p>
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-04-16
+            <i class="uil uil-refresh"></i> Page updated 2021-05-11
         </li>
         
     </ul>

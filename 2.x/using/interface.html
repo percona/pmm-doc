@@ -43,6 +43,15 @@
 
 <script src="../js/toctree.js" type="text/javascript"></script>
 
+<script src="../js/lightgallery.min.js" type="text/javascript"></script>
+
+
+<script>
+    var elements = document.getElementsByClassName("lightgallery");
+    for(var i=0; i<elements.length; i++) {
+       lightGallery(elements[i]);
+    }
+</script>
 
     <link rel="top" title="" href="" />
     
@@ -58,12 +67,22 @@
 <link rel="stylesheet" href="../css/version-select.css" type="text/css">
 <link rel="stylesheet" href="../css/toctree.css" type="text/css">
 <link rel="stylesheet" href="../css/percona.css" type="text/css">
+<link rel="stylesheet" href="../css/lightgallery.min.cs" type="text/css">
 
     
 <script src="../js/version-select.js" type="text/javascript"></script>
 
 <script src="../js/toctree.js" type="text/javascript"></script>
 
+<script src="../js/lightgallery.min.js" type="text/javascript"></script>
+
+
+<script>
+    var elements = document.getElementsByClassName("lightgallery");
+    for(var i=0; i<elements.length; i++) {
+       lightGallery(elements[i]);
+    }
+</script>
 
     <div class="container">
         <div class="document row">
@@ -111,7 +130,7 @@
 <li>Start a web browser and in the address bar enter the server name or IP address of the PMM server host.</li>
 <li>
 <p>The page loads showing the PMM login screen.</p>
-<p><img alt="" src="../_images/PMM_Login.jpg" /></p>
+<p><div class="lightgallery"><a data-sub-html="" href="../_images/PMM_Login.jpg"><img alt="" src="../_images/PMM_Login.jpg" /></a></div></p>
 </li>
 <li>
 <p>Enter the username and password given to you by your system administrator. The defaults are:</p>
@@ -124,7 +143,7 @@
 <li>If this is your first time logging in, you&rsquo;ll be asked to set a new password. (We recommend you do.) Enter a new password in both fields and click <em>Submit</em>. You can click <em>Skip</em> to carry on with the default password.</li>
 <li>
 <p>The PMM Home dashboard loads.</p>
-<p><img alt="PMM Home dashboard" src="../_images/PMM_Home_Dashboard_TALL.jpg" /></p>
+<p><div class="lightgallery"><a data-sub-html="PMM Home dashboard" href="../_images/PMM_Home_Dashboard_TALL.jpg"><img alt="PMM Home dashboard" src="../_images/PMM_Home_Dashboard_TALL.jpg" /></a></div></p>
 </li>
 </ol>
 <h2 id="dashboards">Dashboards<a class="headerlink" href="#dashboards" title="Permanent link">&para;</a></h2>
@@ -141,7 +160,7 @@
 <li>Shortcut menu (dynamic contents)</li>
 </ol>
 <p>(For details see <a href="../details/interface.html">UI Components</a>.)</p>
-<p><img alt="" src="../_images/PMM_Home_Dashboard_TALL_Numbered.png" /></p>
+<p><div class="lightgallery"><a data-sub-html="" href="../_images/PMM_Home_Dashboard_TALL_Numbered.png"><img alt="" src="../_images/PMM_Home_Dashboard_TALL_Numbered.png" /></a></div></p>
 <h2 id="navigation">Navigation<a class="headerlink" href="#navigation" title="Permanent link">&para;</a></h2>
 <p><strong>Search for a dashboard by name</strong></p>
 <p>There are two ways to open the dashboard search page. (Each takes you to the same search screen.)</p>
@@ -149,11 +168,11 @@
 <li>Click the <i class="uil uil-search"></i> icon in the main menu.</li>
 <li>Click the dashboard name in the navigation bar (top row, to the right of the <i class="uil uil-apps"></i> icon). (To search within the current folder, click the folder name instead of the dashboard name.)</li>
 </ul>
-<p><img alt="Search dashboards by name" src="../_images/PMM_Home_Dashboard_Search.jpg" /></p>
+<p><div class="lightgallery"><a data-sub-html="Search dashboards by name" href="../_images/PMM_Home_Dashboard_Search.jpg"><img alt="Search dashboards by name" src="../_images/PMM_Home_Dashboard_Search.jpg" /></a></div></p>
 <ol>
 <li>
 <p>Click <em>Search dashboards by name</em> and begin typing any part of the dashboard name (in this example, &ldquo;<em>Instances</em>&rdquo;).
-    <img alt="Search dashboards by name" src="../_images/PMM_Home_Dashboard_Search_String.jpg" /></p>
+    <div class="lightgallery"><a data-sub-html="Search dashboards by name" href="../_images/PMM_Home_Dashboard_Search_String.jpg"><img alt="Search dashboards by name" src="../_images/PMM_Home_Dashboard_Search_String.jpg" /></a></div></p>
 </li>
 <li>
 <p>Click one of the search results to go to that dashboard. Change the search text to refine the list.</p>
@@ -169,7 +188,7 @@
 <p>Some panels have an information icon <i class="fa fa-info"></i> in the top left corner. Mouse over this to reveal panel information.</p>
 <h3 id="panel-menu">Panel menu<a class="headerlink" href="#panel-menu" title="Permanent link">&para;</a></h3>
 <p>At the top of each panel and to the right of the panel name is the <em>panel menu</em>.</p>
-<p><img alt="image" src="../_images/PMM_Common_Panel_Menu_Open.jpg" /></p>
+<p><div class="lightgallery"><a data-sub-html="image" href="../_images/PMM_Common_Panel_Menu_Open.jpg"><img alt="image" src="../_images/PMM_Common_Panel_Menu_Open.jpg" /></a></div></p>
 <blockquote>
 <p><strong>Tip</strong> The menu is hidden until you mouse over it. Look for the <i class="uil uil-angle-down"></i> symbol in the title bar of a panel.</p>
 </blockquote>
@@ -224,7 +243,7 @@
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-04-16
+            <i class="uil uil-refresh"></i> Page updated 2021-05-11
         </li>
         
     </ul>
