@@ -4,21 +4,23 @@
 
 ## Before you start
 
-**For restoring**
-
-There are no special requirements for restoring.
-
-**For backing up**
-
-- You have either an AWS S3 storage account and location
-- There is only one MySQL instance running on the node
+- You have an AWS S3 storage account and location details for it.
+- There is only one MySQL instance running on the node.
 - MySQL is running:
     - as a service via `systemd`;
     - with the name `mysql` (to confirm, use `systemctl status mysql`);
-    - from a `mysql` system user account
-- There is a `mysql` system group
-- MySQL is using the `/var/lib/mysql` directory for database storage
-- These packages are installed and their locations included in the `$PATH` environment variable:
+    - from a `mysql` system user account.
+- There is a `mysql` system group.
+- MySQL is using the `/var/lib/mysql` directory for database storage.
+- Backup management has been enabled:
+    1. Navigate to *{{icon.cog}} Configuration-->Settings-->Advanced Settings*.
+    2. Activate *Backup Management*.
+    3. Click *Apply changes*.
+    4. In the left menu bar, click *{{icon.history}}-->Backup*.
+
+        ![!](../_images/PMM_Backup_Management.jpg)
+
+- The following packages are needed for creating backups. They should be included in the `$PATH` environment variable:
     - [xtrabackup][PERCONA_XTRABACKUP], which includes:
         - [`xbcloud`][PERCONA_XBCLOUD]
         - [`xbstream`][PERCONA_XBSTREAM]
@@ -26,13 +28,6 @@ There are no special requirements for restoring.
 
     **The versions of each must be compatible with the installed version of MySQL.**
 
-- Backup management has been enabled:
-    1. Navigate to *{{icon.cog}} Configuration-->Settings-->Advanced Settings*
-    2. Activate *Backup Management*
-    3. Click *Apply changes*
-    4. In the left menu bar, click *{{icon.history}}-->Backup*
-
-        ![!](../_images/PMM_Backup_Management.jpg)
 
 ## Adding a storage location {: #backup-location }
 
