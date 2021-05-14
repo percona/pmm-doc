@@ -1,6 +1,6 @@
 # Backup and Restore
 
-> <b style="color:goldenrod">Caution</b> Backup and restore features are a technical preview and currently only work with MySQL database servers backing up to Amazon AWS S3 storage. locations
+> <b style="color:goldenrod">Caution</b> Backup and restore features are a technical preview and currently only work with MySQL database servers backing up to Amazon AWS S3 storage locations.
 
 ## Before you start
 
