@@ -6,7 +6,7 @@ This is a list of ports used by the various components of PMM.
 
 For PMM to work correctly, your system's firewall should allow traffic on these ports.
 
-| Destination   | Component     | Protocols | Port/Port Range | Dicertion | Description
+| Destination   | Component     | Protocols | Port/Port Range | Direction | Description
 |---------------|---------------|-----------|-----------------|-----------|---------------------
 | PMM Server    | `pmm-server`  | TCP       |   80            | out       | HTTP server, used for web interface
 | PMM Server    | `pmm-server`  | TCP       |  443            | out       | HTTPS server, used for web interface
