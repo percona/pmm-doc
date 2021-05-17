@@ -22,18 +22,17 @@
 
 - The following packages are needed for creating backups. They should be included in the `$PATH` environment variable:
     - [xtrabackup][PERCONA_XTRABACKUP], which includes:
-        - [`xbcloud`][PERCONA_XBCLOUD]
-        - [`xbstream`][PERCONA_XBSTREAM]
-    - [`qpress`][PERCONA_QPRESS]
+        - [`xbcloud`][PERCONA_XBCLOUD];
+        - [`xbstream`][PERCONA_XBSTREAM];
+    - [`qpress`][PERCONA_QPRESS].
 
     **The versions of each must be compatible with the installed version of MySQL.**
 
-
 ## Adding a storage location {: #backup-location }
 
-1. Navigate to Backup Management-->Storage locations
-2. Click *Add*
-3. Fill in the form fields
+1. Navigate to Backup Management-->Storage locations.
+2. Click *Add*.
+3. Fill in the form fields.
 
     ![!](../_images/PMM_Backup_Management_Locations_Add_Storage_Location.jpg)
 
@@ -41,8 +40,8 @@
     - *Description*:
     - *Type:*
         - *S3*:
-        - *Local Client:*
-        - *Local Server:*
+        - *Local Client:* (Not currently implemented)
+        - *Local Server:* (Not currently implemented)
     - *Endpoint:*
     - *Bucket Name:*
     - *Access Key:*
@@ -52,28 +51,29 @@
 
 ## Creating a backup {: #backup-create }
 
-> You must add a [backup storage location](#backup-location) before backing up
+> You must add a [backup storage location](#backup-location) before backing up.
 
-1. Navigate to *Backup Management-->Backup Inventory*
+1. Navigate to *Backup Management-->Backup Inventory*.
 
-2. Click {{icon.plussquare}} Add
+2. Click {{icon.plussquare}} Add.
 
 3. In the *Backup On Demand* dialog, enter values for:
 
-    - *Service name* -- The service being backed up
-    - *Vendor* -- The database vendor name (only * * currently supported)
-    - *Backup name* -- A unique name for the backup
-    - *Description* -- A long description
-    - *Location* -- The predefined storage location
+    - *Service name* -- The service being backed up.
+    - *Backup name* -- A unique name for the backup.
+    - *Description* -- A long description.
+    - *Location* -- The predefined storage location.
 
-4. Click *Backup*
+    > *Vendor* is a read-only value showing the database vendor name. (Currently only for the supported MySQL service.)
+
+4. Click *Backup*.
 
 5. In the *Backup Inventory* pane, watch the *Status* column.
 
 
 ## Restoring a backup {: #backup-restore }
 
-> You can only restore a backup to the same service type. I.e. a MySQL backup can only be restored to a MySQL database server.
+> You can only restore a backup to the same service. I.e. a MySQL backup of service `mymsql-service-1` can only be restored to a MySQL database server registered with the same service name.
 
 1. Navigate to *Backup Management-->Backup Inventory*
 
