@@ -1,5 +1,27 @@
 # MongoDB
 
+PMM Client collects metrics from [MongoDB][MONGODB] and [Percona Server for MongoDB][PSMDB].
+
+This page shows you how to set up PMM to monitor a MongoDB database instance. (You should read it completely before starting work.)
+
+Here is an overview of the steps involved.
+
+```plantuml source="_resources/diagrams/Setting-Up_Client_MongoDB.puml"
+```
+
+## Before you start
+
+Check that:
+
+- [PMM Server is installed](../server/index.md) and running with a known IP address accessible from the client node.
+- [PMM Client is installed](index.md) and the [node is registered with PMM Server](index.md#register).
+- You have superuser (root) access on the client host.
+- You have superuser access to any database servers that you want to monitor.
+
+
+
+
+<!--
 ## Configuring MongoDB for Monitoring in PMM Query Analytics
 
 In Query Analytics, you can monitor MongoDB metrics and queries. Run the `pmm-admin add` command to use these monitoring services.
@@ -7,107 +29,120 @@ In Query Analytics, you can monitor MongoDB metrics and queries. Run the `pmm-ad
 **Supported versions of MongoDB**
 
 Query Analytics supports MongoDB version 3.2 or higher.
+-->
 
-## Setting Up the Required Permissions
+## Roles and permissions
 
-For MongoDB monitoring services to work in Query Analytics, you need to set up the `mongodb_exporter` user.
+*Required for Query Analytics*
 
-Here is an example for the MongoDB shell that creates and assigns the appropriate roles to the user.
+1. In a MongoDB shell, create a role.
 
-```js
-db.getSiblingDB("admin").createRole({
-    role: "explainRole",
-    privileges: [{
-        resource: {
-            db: "",
-            collection: ""
-            },
-        actions: [
-            "listIndexes",
-            "listCollections",
-            "dbStats",
-            "dbHash",
-            "collStats",
-            "find"
-            ]
-        }],
-    roles:[]
-})
+    ```json
+    db.getSiblingDB("admin").createRole({
+        role: "explainRole",
+        privileges: [{
+            resource: {
+                db: "",
+                collection: ""
+                },
+            actions: [
+                "listIndexes",
+                "listCollections",
+                "dbStats",
+                "dbHash",
+                "collStats",
+                "find"
+                ]
+            }],
+        roles:[]
+    })
+    ```
 
-db.getSiblingDB("admin").createUser({
-   user: "mongodb_exporter",
-   pwd: "s3cR#tpa$$worD",
-   roles: [
-      { role: "explainRole", db: "admin" },
-      { role: "clusterMonitor", db: "admin" },
-      { role: "read", db: "local" }
-   ]
-})
-```
+2. Create a user for the exporter. Replace the value for `pwd` with your choice of secure password.
 
-## Enabling Profiling
+    ```json
+    db.getSiblingDB("admin").createUser({
+       user: "mongodb_exporter",
+       pwd: "s3cR#tpa$$worD",
+       roles: [
+          { role: "explainRole", db: "admin" },
+          { role: "clusterMonitor", db: "admin" },
+          { role: "read", db: "local" }
+       ]
+    })
+    ```
 
-For [MongoDB](https://www.mongodb.com) to work correctly with Query Analytics, you need to enable profiling in your `mongod` configuration. (Profiling is not enabled by default because it may reduce the performance of your MongoDB server.)
+## Profiling
 
-### Enabling Profiling on Command Line
+Query Analytics requires profiling. (It is disabled by default to avoid affecting the performance of MongoDB.)
 
-You can enable profiling from command line when you start the `mongod`
-server. This command is useful if you start `mongod` manually.
+You can set profiling either on the command line when running MongoDB, or in the MongoDB configuration file.
 
-Run this command as root or by using the `sudo` command
+**Command Line**
+
+If you start `mongod` manually:
+
 
 ```sh
 mongod --dbpath=DATABASEDIR --profile 2 --slowms 200 --rateLimit 100
 ```
 
-Note that you need to specify a path to an existing directory that stores
-database files with the `--dpbath`. When the `--profile` option is set to
-2, `mongod` collects the profiling data for all operations. To decrease the
-load, you may consider setting this option to 1 so that the profiling data
-are only collected for slow operations.
+- `--dbpath`: The path to database files (usually `/var/lib/mongo`).
+- `--profile`: A value of `2` tells the server to collect profiling data for *all* operations. To lower the load on the server, use a value of `1` to only record slow operations.
+- `--slowms`: An operation is classified as *slow* if it runs for longer than this number of milliseconds.
+- `--rateLimit`: (Only available with Percona Server for MongoDB.) The sample rate of profiled queries. A value of `100` means sample every 100th fast query. Smaller values improve accuracy but can load your server. ([Read more][PSMDB_RATELIMIT])
 
-The `--slowms` option sets the minimum time for a slow operation. In the
-given example, any operation which takes longer than 200 milliseconds is a
-slow operation.
+**Configuration file**
 
-The `--rateLimit` option, which is available if you use PSMDB instead
-of MongoDB, refers to the number of queries that the MongoDB profiler
-collects. The lower the rate limit, the less impact on the performance.
-However, the accuracy of the collected information decreases as well.
+If you start `mongod` as a service:
 
-### Enabling Profiling in the Configuration File
+1. Edit the configuration file (usually `/etc/mongod.conf`).
 
-If you run `mongod` as a service, you need to use the configuration file
-which by default is `/etc/mongod.conf`.
+2. Create or add this to the `operationProfiling` section.
 
-In this file, you need to locate the `operationProfiling:` section and add the
-following settings:
+    ```yml
+    operationProfiling:
+      slowOpThresholdMs: 200
+      mode: slowOp
+      rateLimit: 100
+    ```
 
-```
-operationProfiling:
-   slowOpThresholdMs: 200
-   mode: slowOp
-```
+    > Indenting is important in this [YAML](http://yaml.org/spec/) file.
 
-These settings affect `mongod` in the same way as the command line options. Note that the configuration file is in the [YAML](http://yaml.org/spec/) format. In this format the indentation of your lines is important as it defines levels of nesting.
+3. Restart the `mongod` service. (Example for `systemd`.)
 
-Restart the `mongod` service to enable the settings.
+    ```sh
+    systemctl restart mongod
+    ```
 
-Run this command as root or by using the `sudo` command
+## Adding a service
+
+When you have configured your database server, you can add a MongoDB service with the user interface or on the command line.
+
+### With the user interface
+
+1. Select *PMM --> PMM Add Instance*.
+2. Select *MySQL -- Add a remote instance*.
+3. Enter values for these fields.
+4. Click *Add service*.
+
+
+### On the command line
+
+Add the database server as a service using one of these example commands. If successful, PMM Client will print `MongoDB Service added` with the service's ID and name. Use the `--environment` and `-custom-labels` options to set tags for the service to help identify them.
+
 
 ```sh
-service mongod restart
+pmm-admin add mongodb
 ```
 
-## Adding MongoDB Service Monitoring
+pmm-admin add mongodb --username=pmm --password=pmm --cluster=mycluster
 
-Add monitoring as follows:
+> `--cluster` ...
 
-```sh
-pmm-admin add mongodb --username=pmm --password=pmm
-```
+where username and password are credentials for the monitored MongoDB access, which will be used locally on the database host.
 
-where username and password are credentials for the monitored MongoDB access, which will be used locally on the database host. Additionally, two positional arguments can be appended to the command line flags: a service name to be used by PMM, and a service address. If not specified, they are substituted automatically as `<node>-mongodb` and `127.0.0.1:27017`.
+Additionally, two positional arguments can be appended to the command line flags: a service name to be used by PMM, and a service address. If not specified, they are substituted automatically as `<node>-mongodb` and `127.0.0.1:27017`.
 
 The command line and the output of this command may look as follows:
 
@@ -170,3 +205,10 @@ pmm-admin add mongodb --tls
 
 `--tls-ca-file=PATHTOCACERT`
 : Path to certificate authority file.
+
+
+
+
+[MONGODB]: https://www.mongodb.com/
+[PSMDB]: https://www.percona.com/software/mongodb/percona-server-for-mongodb
+[PSMDB_RATELIMIT]: https://www.percona.com/doc/percona-server-for-mongodb/LATEST/rate-limit.html#enabling-the-rate-limit
