@@ -26,4 +26,4 @@ PMM component | TCP port      | Direction     | Description
 
 > Notes
 >
-> Depends on architecture some of other ports needs to be exposed too. For `pmm-agent`, the default listen port is 7777. This can be changed in the `pmm-agent.yml` configuration file or with the `pmm-agent` flag `--listen-port`. The default range for agents ports can be changed with the flag `--ports-min` and  `--ports-max`, or in the configuration file.
+> Depending on your architecture other ports may need to be exposed too. For `pmm-agent`, the default listen port is 7777. This can be changed in the `pmm-agent.yml` configuration file or with the `pmm-agent` flag `--listen-port`. The default range for agents ports can be changed with the flag `--ports-min` and  `--ports-max`, or in the configuration file.
