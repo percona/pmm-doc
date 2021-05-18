@@ -15,7 +15,9 @@ extra:
   server_aws: 'https://aws.amazon.com/marketplace/pp/B077J7FYGX'
   # Code block includes
   STATE_HEALTH_STATUS: '{{.State.Health.Status}}' # Docker variables in code breaks MkDocs macros extension
-
+  # Used in Setting Up/Client pages
+  'pmm_password': 'password'  #'s3cR#tpa$$worD'
+  'pmm_mongodb_user': 'pmm_mongodb'
 
 # Icons, use in markdown as {{ icon.<name> }}
 # For Grafana icons (uil-), goto https://iconscout.com/unicons/explore/line, find an icon, select 'Font' and copy the code here.

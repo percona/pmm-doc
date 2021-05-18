@@ -11,16 +11,17 @@ Legend
 <#lightgrey>| Optional |
 endlegend
 
-:Change role permissions;
-:Configure profiling;
+:Set role permissions;
+#lightgrey:Create PMM account;
+#lightgrey:Configure profiling;
 partition "Add a service " {
     split
     -> With user interface;
-        :PMM <&arrow-thick-right>\nPMM Add Instance <&arrow-thick-right>\nPostgreSQL -\nAdd a remote instance;
+        :PMM <&arrow-thick-right>\nPMM Add Instance <&arrow-thick-right>\nMongoDB -\nAdd a remote instance;
     split again
     -> On command line;
             :<code>
-            pmm-admin add postgresql
+            pmm-admin add mongodb
             ...
             </code>;
     end split

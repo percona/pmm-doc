@@ -22,55 +22,56 @@ Check that:
 
 
 <!--
-## Configuring MongoDB for Monitoring in PMM Query Analytics
-
-In Query Analytics, you can monitor MongoDB metrics and queries. Run the `pmm-admin add` command to use these monitoring services.
-
 **Supported versions of MongoDB**
 
 Query Analytics supports MongoDB version 3.2 or higher.
 -->
 
-## Roles and permissions
+## Set role permissions
 
-*Required for Query Analytics*
+```json
+db.getSiblingDB("admin").createRole({
+    role: "explainRole",
+    privileges: [{
+        resource: {
+            db: "",
+            collection: ""
+            },
+        actions: [
+            "listIndexes",
+            "listCollections",
+            "dbStats",
+            "dbHash",
+            "collStats",
+            "find"
+            ]
+        }],
+    roles:[]
+})
+```
 
-1. In a MongoDB shell, create a role.
+## Create PMM account {: #setting-up-client-user}
 
-    ```json
-    db.getSiblingDB("admin").createRole({
-        role: "explainRole",
-        privileges: [{
-            resource: {
-                db: "",
-                collection: ""
-                },
-            actions: [
-                "listIndexes",
-                "listCollections",
-                "dbStats",
-                "dbHash",
-                "collStats",
-                "find"
-                ]
-            }],
-        roles:[]
-    })
-    ```
+We recommend using a dedicated account to connect PMM Client to the monitored database instance.
 
-2. Create a user for the exporter. Replace the value for `pwd` with your choice of secure password.
+This example creates a database user with name `{{pmm_mongodb_user}}`, password `{{pmm_password}}`, and with the necessary roles.
 
-    ```json
-    db.getSiblingDB("admin").createUser({
-       user: "mongodb_exporter",
-       pwd: "s3cR#tpa$$worD",
-       roles: [
-          { role: "explainRole", db: "admin" },
-          { role: "clusterMonitor", db: "admin" },
-          { role: "read", db: "local" }
-       ]
-    })
-    ```
+> Values for username (`user`) and password (`pwd`) are examples. Replace them before using this code.
+
+```json
+db.getSiblingDB("admin").createUser({
+   user: "{{pmm_mongodb_user}}",
+   pwd: "{{pmm_password}}",
+   roles: [
+      { role: "explainRole", db: "admin" },
+      { role: "clusterMonitor", db: "admin" },
+      { role: "read", db: "local" }
+   ]
+})
+```
+
+
+
 
 ## Profiling
 
@@ -107,7 +108,7 @@ If you start `mongod` as a service:
       rateLimit: 100
     ```
 
-    > Indenting is important in this [YAML](http://yaml.org/spec/) file.
+    > This is a [YAML](http://yaml.org/spec/) file. Indentation is important.
 
 3. Restart the `mongod` service. (Example for `systemd`.)
 
@@ -121,9 +122,17 @@ When you have configured your database server, you can add a MongoDB service wit
 
 ### With the user interface
 
-1. Select *PMM --> PMM Add Instance*.
-2. Select *MySQL -- Add a remote instance*.
-3. Enter values for these fields.
+1. Select *{{icon.cog}} Configuration-->{{icon.inventory}} PMM Inventory-->{{icon.addinstance}} Add Instance*.
+2. Select *MongoDB -- Add a remote instance*.
+3. Enter values for the fields.
+    - *Hostname*: The hostname or IP address of the node where the database server is running.
+    - *Service name*: Choose a service name.
+    - *Port*: Default is 27017 for MongoDB servers.
+    - *Username*: The username for connecting to the MongoDB database. Use the PMM user account if you chose to create one (`{{pmm_mongodb_user}}` in these examples).
+    - *Password*: The password for this user account. (`{{pmm_password}}` in these examples.)
+    - Additional options:
+        - *Use QAN MongoDB Profiler*: Activate if you want to use Query Analytics and have [set up profiling](#profiling).
+
 4. Click *Add service*.
 
 
@@ -131,12 +140,22 @@ When you have configured your database server, you can add a MongoDB service wit
 
 Add the database server as a service using one of these example commands. If successful, PMM Client will print `MongoDB Service added` with the service's ID and name. Use the `--environment` and `-custom-labels` options to set tags for the service to help identify them.
 
+**Example**
+
 
 ```sh
 pmm-admin add mongodb
+--username={{pmm_mongodb_user}}
+--password={{pmm_password}}
+--query-source=profiler
+--cluster=mycluster
 ```
 
-pmm-admin add mongodb --username=pmm --password=pmm --cluster=mycluster
+**Example**
+
+```sh
+pmm-admin add mongodb --use-profiler --server-insecure-tls --username={{pmm_mongodb_user}} --password={{pmm_password}} --server-url=https://<pmm_ip>:443
+```
 
 > `--cluster` ...
 
@@ -144,10 +163,12 @@ where username and password are credentials for the monitored MongoDB access, wh
 
 Additionally, two positional arguments can be appended to the command line flags: a service name to be used by PMM, and a service address. If not specified, they are substituted automatically as `<node>-mongodb` and `127.0.0.1:27017`.
 
+**Example**
+
 The command line and the output of this command may look as follows:
 
 ```sh
-pmm-admin add mongodb --username=pmm --password=pmm mongo 127.0.0.1:27017
+pmm-admin add mongodb --username={{pmm_mongodb_user}} --password={{pmm_password}} mongo 127.0.0.1:27017
 ```
 
 ```
@@ -159,7 +180,7 @@ Service name: mongo
 Beside positional arguments shown above you can specify service name and service address with the following flags: `--service-name`, `--host` (the hostname or IP address of the service), and `--port` (the port number of the service). If both flag and positional argument are present, flag gains higher priority. Here is the previous example modified to use these flags:
 
 ```sh
-pmm-admin add mongodb --username=pmm --password=pmm --service-name=mongo --host=127.0.0.1 --port=27017
+pmm-admin add mongodb --username={{pmm_mongodb_user}} --password={{pmm_password}} --service-name=mongo --host=127.0.0.1 --port=27017
 ```
 
 You can add a MongoDB instance using a UNIX socket with the `--socket` option:
@@ -170,9 +191,12 @@ pmm-admin add mongodb --socket=/tmp/mongodb-27017.sock
 
 > If the password contains special symbols like the 'at' (`@`) symbol, the host might not be detected correctly. Make sure that you insert the password with special characters replaced with their escape sequences. The simplest way is to use the [`encodeURIComponent`][ENCODE_URI] JavaScript function in your browser's web console (usually found under *Development Tools*). Evaluate the function with your password as the parameter. For example:
 >
-> ```javascript
-> encodeURIComponent('$ecRet_pas$w@rd')
-> "%24ecRet_pas%24w%40rd"
+> ```js
+> > encodeURIComponent('{{pmm_password}}')
+> ```
+> will give:
+> ```
+> "s3cR%23tpa%24%24worD"
 > ```
 
 [ENCODE_URI]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent
