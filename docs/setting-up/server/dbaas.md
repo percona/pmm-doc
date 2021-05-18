@@ -69,7 +69,11 @@ alias kubectl='minikube kubectl --'
 
     You need to enable the feature using PMM UI if you omitted `--env ENABLE_DBAAS=1` when starting up the container.
 
-## Install Percona operators in minikube
+## Create a Kubernetes cluster
+> The DBaaS feature uses Kubernetes clusters to deploy database cluster. You need to create one and then add it using kubeconfig you get after successfull setup. Please follow instructions below.
+>
+
+### Minikube cluster {: #minikube }
 
 1. Configure and start minikube:
 
@@ -80,34 +84,6 @@ alias kubectl='minikube kubectl --'
     minikube start
     ```
 
-2. Deploy the Percona operators configuration for PXC and PSMDB in minikube:
-
-    ```sh
-    # Prepare a set of base64 encoded values and non encoded for user and pass with administrator privileges to pmm-server (DBaaS)
-    PMM_USER='admin';
-    PMM_PASS='<RANDOM_PASS_GOES_IN_HERE>';
-
-    PMM_USER_B64="$(echo -n "${PMM_USER}" | base64)";
-    PMM_PASS_B64="$(echo -n "${PMM_PASS}" | base64)";
-
-    # Install the PXC operator
-    curl -sSf -m 30 https://raw.githubusercontent.com/percona/percona-xtradb-cluster-operator/{{op.pxc_vers}}/deploy/bundle.yaml \
-    | kubectl apply -f -
-
-    # Install the PSMDB operator
-    curl -sSf -m 30 https://raw.githubusercontent.com/percona/percona-server-mongodb-operator/{{op.psmdb_vers}}/deploy/bundle.yaml \
-    | kubectl apply -f -
-    ```
-
-3. Check the operators are deployed:
-
-    ```sh
-    minikube kubectl -- get nodes
-    minikube kubectl -- get pods
-    minikube kubectl -- wait --for=condition=Available deployment percona-xtradb-cluster-operator
-    minikube kubectl -- wait --for=condition=Available deployment percona-server-mongodb-operator
-    ```
-
 4. Get your kubeconfig details from minikube (to register your Kubernetes cluster with PMM Server):
 
     ```sh
@@ -115,7 +91,7 @@ alias kubectl='minikube kubectl --'
     ```
 	> You will need to copy this output to your clipboard and continue with [add a Kubernetes cluster to PMM](../../using/platform/dbaas.md#add-a-kubernetes-cluster).
 
-## Installing Percona operators on Amazon AWS EKS {: #operators-aws-eks }
+### Amazon AWS EKS cluster {: #aws-eks }
 
 1. Create your cluster via `eksctl` or the Amazon AWS interface. For example:
 
@@ -123,31 +99,7 @@ alias kubectl='minikube kubectl --'
     eksctl create cluster --write-kubeconfig --name=your-cluster-name --zones=us-west-2a,us-west-2b --kubeconfig <PATH_TO_KUBECONFIG>
     ```
 
-2. When your EKS cluster is running, install the PXC and PSMDB operators:
-
-    ```sh
-    # Prepare a set of base64 encoded values and non encoded for user and pass with administrator privileges to pmm-server (DBaaS)
-    PMM_USER='admin';
-    PMM_PASS='<RANDOM_PASS_GOES_IN_HERE>';
-
-    PMM_USER_B64="$(echo -n "${PMM_USER}" | base64)";
-    PMM_PASS_B64="$(echo -n "${PMM_PASS}" | base64)";
-
-    # Install the PXC operator
-    curl -sSf -m 30 https://raw.githubusercontent.com/percona/percona-xtradb-cluster-operator/{{op.pxc_vers}}/deploy/bundle.yaml \
-    | kubectl apply -f -
-
-    # Install the PSMDB operator
-    curl -sSf -m 30 https://raw.githubusercontent.com/percona/percona-server-mongodb-operator/{{op.psmdb_vers}}/deploy/bundle.yaml \
-    | kubectl apply -f -
-    ```
-
-    ```
-    # Validate that the operators are running
-    kubectl get pods
-    ```
-
-3. Modify your kubeconfig file, if it's not utilizing the `aws-iam-authenticator` or `client-certificate` method for authentication with Kubernetes. Here are two examples that you can use as templates to modify a copy of your existing kubeconfig:
+3. When the cluster is running, modify your kubeconfig file, if it's not utilizing the `aws-iam-authenticator` or `client-certificate` method for authentication with Kubernetes. Here are two examples that you can use as templates to modify a copy of your existing kubeconfig:
 
     - For the `aws-iam-authenticator` method:
 
@@ -211,11 +163,11 @@ alias kubectl='minikube kubectl --'
             client-key-data: << CLIENT_KEY_DATA >>
         ```
 
-4. Follow the instructions for [Add a Kubernetes cluster](../../using/platform/dbaas.md#add-a-kubernetes-cluster).
+4. Follow the instructions on [How to add a Kubernetes cluster](../../using/platform/dbaas.md#add-a-kubernetes-cluster).
 
 	> If possible, the connection details will show the cluster's external IP (not possible with minikube).
 
-## Install Percona operators on Google GKE {: #operators-google-gke }
+### Google GKE {: #google-gke }
 
 **Prerequisites**
 
@@ -256,32 +208,6 @@ You should have an account on GCP [https://cloud.google.com/](https://cloud.goog
     ![!](../../_images/PMM_DBaaS_GKE_9.png)
 
     ![!](../../_images/PMM_DBaaS_GKE_10.png)
-
-9. Set up PXC and PSMDB operators:
-
-    ```
-    curl -sSf -m 30 https://raw.githubusercontent.com/percona/percona-xtradb-cluster-operator/pmm-branch/deploy/bundle.yaml  | kubectl apply -f -
-    curl -sSf -m 30 https://raw.githubusercontent.com/percona/percona-server-mongodb-operator/pmm-branch/deploy/bundle.yaml  | kubectl apply -f -
-    ```
-
-    ![!](../../_images/PMM_DBaaS_GKE_11.png)
-
-10. Check if it was set up successfully
-
-    ```
-    kubectl api-resources --api-group='psmdb.percona.com'
-    kubectl api-resources --api-group='pxc.percona.com'
-    ```
-
-    ![!](../../_images/PMM_DBaaS_GKE_12.png)
-
-11. Check versions
-
-    ```
-    kubectl api-versions | grep percona.com
-    ```
-
-    ![!](../../_images/PMM_DBaaS_GKE_13.png)
 
 12. Create Service Account, copy and store kubeconfig - output of the following command
 
@@ -358,25 +284,24 @@ You should have an account on GCP [https://cloud.google.com/](https://cloud.goog
     --env ENABLE_DBAAS=1 perconalab/pmm-server-fb:PR-1240-07bef94;
     ```
 
-14.  Login into PMM and navigate to DBaaS
+14. Login into PMM and navigate to DBaaS
 
      ![!](../../_images/PMM_DBaaS_GKE_16.png)
 
-15. Register your GKE using kubeconfig from step 12.
-
-	> <b style="color:goldenrod">Important</b> Ensure there are no stray new lines in the kubeconfig, especially in long lines like certificate or token.
-
-    ![!](../../_images/PMM_DBaaS_GKE_17.png)
-
-    ![!](../../_images/PMM_DBaaS_GKE_18.png)
+15. Use kubeconfig from step 12 to [Add the Kubernetes cluster](../../using/platform/dbaas.md#add-a-kubernetes-cluster).
 
 ## Deleting clusters
 
-You should delete all installation operators as the operators own resources.
+You should delete all database clusters created and backups and then delete installed operators.
+```sh
+kubectl delete perconaxtradbclusterbackups.pxc.percona.com --all
+kubectl delete perconaxtradbclusters.pxc.percona.com --all
+
+kubectl TODO DELETE MONGODB AND OPERATOR DEPLOYMENTS
 
 > If a Public Address is set in PMM Settings, for each DB cluster an API Key is created which can be found on the page `/graph/org/apikeys`. You should not delete them (for now, until [issue PMM-8045](https://jira.percona.com/browse/PMM-8045) is fixed) -- once a DB cluster is removed from DBaaS, the related API Key is also removed.
 
-If you only run `eksctl delete cluster` without cleaning up the cluster first, there will be a lot of orphaned resources as Cloud Formations, Load Balancers, EC2 instances, Network interfaces, etc.
+If you only run `eksctl delete cluster` without cleaning up a database cluster first, there will be a lot of orphaned resources as Cloud Formations, Load Balancers, EC2 instances, Network interfaces, etc.
 
 In the `pmm-managed` repository, in the deploy directory there are 2 example bash scripts to install and delete the operators from the EKS cluster.
 
