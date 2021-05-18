@@ -4,15 +4,24 @@
 
 This is a list of ports used by the various components of PMM.
 
-For PMM to work correctly, your system's firewall should allow traffic on these ports.
+For PMM to work correctly, your system's firewall should allow TCP traffic on these ports (UDP is not needed).
 
-| Destination   | Component     | Protocols | Port/Port Range | Direction | Description
-|---------------|---------------|-----------|-----------------|-----------|---------------------
-| PMM Server    | `pmm-server`  | TCP       |   80            | out       | HTTP server, used for web interface and gRPC over HTTP
-| PMM Server    | `pmm-server`  | TCP       |  443            | out       | HTTPS server, used for web interface and gRPC over HTTPS
-| PMM Server    | `pmm-server`  | TCP       | 7773            | both      | Debugging (not exposed by default)
-| PMM Client    | `pmm-agent`   | TCP       | 42000--51999    | in        | Default range for `pmm-agent` connected agents
+Ports to expose:
+PMM component | TCP port      | Direction     | Description
+--------------|---------------|----------------------
+`pmm-server`  |   80          | both          | HTTP server, used for gRPC over HTTP and web interface
+`pmm-server`  |  443          | both          | HTTPS server, used for gRPC over HTTPS and web interface
+
+Other ports:
+PMM component | TCP port      | Direction     | Description
+--------------|---------------|----------------------
+`pmm-server`  | 7771          | both          | gRPC, used for communication between `pmm-agent`, `pmm-admin`
+`pmm-server`  | 7772          | out           | HTTP1 server, used for older links like `logs.zip`
+`pmm-server`  | 7773          | out           | Debugging
+`pmm-agent`   | 7777          | out           | Default `pmm-agent` listen port
+`vm-agent`    | 8428          | both          | Victoria metrics port
+`pmm-agent`   | 42000 - 51999 | in            | Default range for `pmm-agent` connected agents
 
 > Notes
 >
-> The default range for `pmm-agent` agents ports can be changed with the flag `--ports-min` and  `--ports-max`, or in the configuration file.
+> Depends on architecture some of other ports needs to be exposed too. For `pmm-agent`, the default listen port is 7777. This can be changed in the `pmm-agent.yml` configuration file or with the `pmm-agent` flag `--listen-port`. The default range for agents ports can be changed with the flag `--ports-min` and  `--ports-max`, or in the configuration file.
