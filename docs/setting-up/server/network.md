@@ -7,14 +7,16 @@ This is a list of ports used by the various components of PMM.
 For PMM to work correctly, your system's firewall should allow TCP traffic on these ports (UDP is not needed).
 
 Ports to expose:
+
 PMM component | TCP port      | Direction     | Description
---------------|---------------|----------------------
+--------------|---------------|---------------|------
 `pmm-server`  |   80          | both          | HTTP server, used for gRPC over HTTP and web interface
 `pmm-server`  |  443          | both          | HTTPS server, used for gRPC over HTTPS and web interface
 
 Other ports:
+
 PMM component | TCP port      | Direction     | Description
---------------|---------------|----------------------
+--------------|---------------|---------------|------
 `pmm-server`  | 7771          | both          | gRPC, used for communication between `pmm-agent`, `pmm-admin`
 `pmm-server`  | 7772          | out           | HTTP1 server, used for older links like `logs.zip`
 `pmm-server`  | 7773          | out           | Debugging
