@@ -189,7 +189,7 @@ pmm-admin add mongodb --socket=/tmp/mongodb-27017.sock
 pmm-admin add mongodb --tls \
 --tls-certificate-key-file=PATHTOCER \
 --tls-certificate-key-file-password=IFPASSWORDTOCERTISSET \
--tls-ca-file=PATHTOCACERT
+--tls-ca-file=PATHTOCACERT
 ```
 
 where:
