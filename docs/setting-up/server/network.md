@@ -21,7 +21,7 @@ PMM component | TCP port      | Direction     | Description
 `pmm-server`  | 7772          | out           | HTTP1 server, used for older links like `logs.zip`
 `pmm-server`  | 7773          | out           | Debugging
 `pmm-agent`   | 7777          | out           | Default `pmm-agent` listen port
-`vm-agent`    | 8428          | both          | Victoria metrics port
+`vm-agent`    | 8428          | both          | VictoriaMetrics port
 `pmm-agent`   | 42000 - 51999 | in            | Default range for `pmm-agent` connected agents
 
 > Notes
