@@ -70,10 +70,11 @@ alias kubectl='minikube kubectl --'
     You need to enable the feature using PMM UI if you omitted `--env ENABLE_DBAAS=1` when starting up the container.
 
 ## Create a Kubernetes cluster
-> The DBaaS feature uses Kubernetes clusters to deploy database cluster. You need to create one and then add it using kubeconfig you get after successfull setup. Please follow instructions below.
+
+> The DBaaS feature uses Kubernetes clusters to deploy database clusters. You need to create one and then add it using kubeconfig you get after successfull setup. Please follow instructions below.
 >
 
-### Minikube cluster {: #minikube }
+### Minikube {: #minikube }
 
 1. Configure and start minikube:
 
@@ -91,7 +92,7 @@ alias kubectl='minikube kubectl --'
     ```
 	> You will need to copy this output to your clipboard and continue with [adding a Kubernetes cluster to PMM](../../using/platform/dbaas.md#add-a-kubernetes-cluster).
 
-### Amazon AWS EKS cluster {: #aws-eks }
+### Amazon AWS EKS {: #aws-eks }
 
 1. Create your cluster via `eksctl` or the Amazon AWS interface. For example:
 
@@ -298,7 +299,7 @@ For example If you only run `eksctl delete cluster` to delete Amazon EKS cluster
 
 ### Cleaning up Kubernetes cluster
 
-1. You should delete all database clusters created, backups and restores.
+1. You should delete all database clusters, backups and restores.
 ```sh
 kubectl delete perconaxtradbclusterbackups.pxc.percona.com --all
 kubectl delete perconaxtradbclusters.pxc.percona.com --all
