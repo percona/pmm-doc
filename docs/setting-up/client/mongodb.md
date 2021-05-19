@@ -19,6 +19,28 @@ Check that:
 - You have superuser access to any database servers that you want to monitor.
 - Your MongoDB server is version 3.2 or higher (for Query Analytics).
 
+## Create PMM account
+
+We recommend using a dedicated account to connect PMM Client to the monitored database instance.
+
+This example creates a database user with name `{{pmm_mongodb_user}}`, password `{{pmm_password}}`, and with the necessary roles.
+
+> Values for username (`user`) and password (`pwd`) are examples. Replace them before using this code.
+
+Run this in a `mongo` session.
+
+```json
+db.getSiblingDB("admin").createUser({
+   user: "{{pmm_mongodb_user}}",
+   pwd: "{{pmm_password}}",
+   roles: [
+      { role: "explainRole", db: "admin" },
+      { role: "clusterMonitor", db: "admin" },
+      { role: "read", db: "local" }
+   ]
+})
+```
+
 ## Set role permissions
 
 Run this in a `mongo` session.
@@ -44,78 +66,66 @@ db.getSiblingDB("admin").createRole({
 })
 ```
 
-## Create PMM account
 
-We recommend using a dedicated account to connect PMM Client to the monitored database instance.
-
-This example creates a database user with name `{{pmm_mongodb_user}}`, password `{{pmm_password}}`, and with the necessary roles.
-
-> Values for username (`user`) and password (`pwd`) are examples. Replace them before using this code.
-
-Run this in a `mongo` session.
-
-```json
-db.getSiblingDB("admin").createUser({
-   user: "{{pmm_mongodb_user}}",
-   pwd: "{{pmm_password}}",
-   roles: [
-      { role: "explainRole", db: "admin" },
-      { role: "clusterMonitor", db: "admin" },
-      { role: "read", db: "local" }
-   ]
-})
-```
 
 ## Profiling
 
-PMM Query Analytics uses MongoDB's [Database Profiler][MONGDB_DATABASE_PROFILER].
+To use PMM Query Analytics, you must turn on MongoDB's [profiling feature][MONGDB_DATABASE_PROFILER].
 
-You can turn on profiling with:
+You can set profiling:
 
-- the MongoDB configuration file (recommended);
-- the `mongod` command line;
-- a `mongo` session.
+- permanently, by editing the MongoDB configuration file  and restarting the database instance (recommended);
+- when starting MongoDB, by passing arguments to `mongod` on the command line;
+- until the next database instance restart, by running a command in a `mongo` session.
 
 > Profiling is turned off by default as it can adversely affect the performance of the database server.
 
-- Configuration file
+### Set profiling in the configuration file
 
-    1. Edit the configuration file (usually `/etc/mongod.conf`).
+1. Edit the configuration file (usually `/etc/mongod.conf`).
 
-    2. Create or add this to the `operationProfiling` section. ([Read more][MONGODB_CONFIG_OP_PROF].)
+2. Create or add this to the `operationProfiling` section. ([Read more][MONGODB_CONFIG_OP_PROF].)
 
-        ```yml
-        operationProfiling:
-          mode: all
-          slowOpThresholdMs: 200
-          rateLimit: 100
-        ```
+    ```yml
+    operationProfiling:
+      mode: all
+      slowOpThresholdMs: 200
+      rateLimit: 100
+    ```
 
-        > This is a [YAML](http://yaml.org/spec/) file. Indentation is important.
+    > This is a [YAML](http://yaml.org/spec/) file. Indentation is important.
 
-    3. Restart the `mongod` service. (Example for `systemd`.)
-
-        ```sh
-        systemctl restart mongod
-        ```
-
-- Command Line
+3. Restart the `mongod` service. (Example for `systemd`.)
 
     ```sh
-    mongod --dbpath=DATABASEDIR --profile 2 --slowms 200 --rateLimit 100
+    systemctl restart mongod
     ```
 
-    - `--dbpath`: The path to database files (usually `/var/lib/mongo`).
-    - `--profile`: The MongoDB profiling level. A value of `2` tells the server to collect profiling data for *all* operations. To lower the load on the server, use a value of `1` to only record slow operations. ([Read more][MONGDB_PROFILING_LEVELS].)
-    - `--slowms`: An operation is classified as *slow* if it runs for longer than this number of milliseconds.
-    - `--rateLimit`: (Only available with Percona Server for MongoDB.) The sample rate of profiled queries. A value of `100` means sample every 100th fast query. Smaller values improve accuracy but can load your server. ([Read more][PSMDB_RATELIMIT].)
+### Set profiling on the command Line
 
-- `mongo` session
+```sh
+mongod --dbpath=DATABASEDIR --profile 2 --slowms 200 --rateLimit 100
+```
 
-    ```json
+- `--dbpath`: The path to database files (usually `/var/lib/mongo`).
+- `--profile`: The MongoDB profiling level. A value of `2` tells the server to collect profiling data for *all* operations. To lower the load on the server, use a value of `1` to only record slow operations.
+- `--slowms`: An operation is classified as *slow* if it runs for longer than this number of milliseconds.
+- `--rateLimit`: (Only available with Percona Server for MongoDB.) The sample rate of profiled queries. A value of `100` means sample every 100th fast query. ([Read more][PSMDB_RATELIMIT].)
 
-    ```
-## Adding a service
+    > Smaller values improve accuracy but can adversly affect the performance of your server.
+
+### Set profiling in a `mongo` session
+
+In a `mongo` session:
+
+```json
+use admin
+db.setProfilingLevel(2)
+```
+
+> If you have already [added a service](#add-service), you should remove it and re-add it after changing the profiling level.
+
+## Add service
 
 When you have configured your database server, you can add a MongoDB service with the user interface or on the command line.
 
@@ -153,73 +163,66 @@ pmm-admin add mongodb \
 **Example**
 
 ```sh
-pmm-admin add mongodb --username={{pmm_mongodb_user}} --password={{pmm_password}} mongo 127.0.0.1:27017
+pmm-admin add mongodb \
+--username={{pmm_mongodb_user}} --password={{pmm_password}} \
+mongo 127.0.0.1:27017
 ```
 
-
-Beside positional arguments shown above you can specify service name and service address with the following flags: `--service-name`, `--host` (the hostname or IP address of the service), and `--port` (the port number of the service). If both flag and positional argument are present, flag gains higher priority. Here is the previous example modified to use these flags:
+**Example**
 
 ```sh
-pmm-admin add mongodb --username={{pmm_mongodb_user}} --password={{pmm_password}} --service-name=mongo --host=127.0.0.1 --port=27017
+pmm-admin add mongodb \
+--username={{pmm_mongodb_user}} --password={{pmm_password}} \
+--service-name=mymongosvc --host=127.0.0.1 --port=27017
 ```
 
-You can add a MongoDB instance using a UNIX socket with the `--socket` option:
+**Example -- connect via UNIX socket**
 
 ```sh
 pmm-admin add mongodb --socket=/tmp/mongodb-27017.sock
 ```
 
-> If the password contains special symbols like the 'at' (`@`) symbol, the host might not be detected correctly. Make sure that you insert the password with special characters replaced with their escape sequences. The simplest way is to use the [`encodeURIComponent`][ENCODE_URI] JavaScript function in your browser's web console (usually found under *Development Tools*). Evaluate the function with your password as the parameter. For example:
->
-> ```js
-> > encodeURIComponent('{{pmm_password}}')
-> ```
-> will give:
-> ```
-> "s3cR%23tpa%24%24worD"
-> ```
 
-[ENCODE_URI]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent
-
-## Passing SSL parameters to the MongoDB monitoring service
-
-SSL/TLS related parameters are passed to an SSL enabled MongoDB server as
-monitoring service parameters along with the `pmm-admin add` command when adding
-the MongoDB monitoring service.
-
-Run this command as root or by using the `sudo` command
+**Example -- connecting via SSL/TLS**
 
 ```sh
-pmm-admin add mongodb --tls
+pmm-admin add mongodb --tls \
+--tls-certificate-key-file=PATHTOCER \
+--tls-certificate-key-file-password=IFPASSWORDTOCERTISSET \
+-tls-ca-file=PATHTOCACERT
 ```
 
-**Supported SSL/TLS Parameters**
+where:
 
-`--tls`
-: Enable a TLS connection with mongo server
+- `PATHTOCERT`: Path to TLS certificate file.
+- `IFPASSWORDTOCERTISSET`: Password for TLS certificate file.
+- `PATHTOCACERT`: Path to certificate authority file.
 
-`--tls-skip-verify`
-: Skip TLS certificates validation
-
-`--tls-certificate-key-file=PATHTOCERT`
-: Path to TLS certificate file.
-
-`--tls-certificate-key-file-password=IFPASSWORDTOCERTISSET`
-: Password for TLS certificate file.
-
-`--tls-ca-file=PATHTOCACERT`
-: Path to certificate authority file.
-
+> **See also** [`pmm-admin` man page for `pmm-admin add mongodb`](../../details/commands/pmm-admin.md#mongodb)
 
 ## Tips
 
 - When adding nodes of a replica set, add each node separately using the same cluster name.
 
+- If the password contains special symbols (such as `@`), the host might not be detected correctly. You should convert any password with special characters, replacing them with their escape sequence equivalents.
+
+    One way to do this is to use the [`encodeURIComponent`][ENCODE_URI] JavaScript function in your browser's web console (usually found under *Development Tools*). Evaluate the function with your password as the parameter. For example:
+
+    ```js
+    > encodeURIComponent("s3cR#tpa$$worD")
+    ```
+
+    will give:
+
+    ```
+    "s3cR%23tpa%24%24worD"
+    ```
+
 ## Check the service
 
 **Check service - PMM user interface**
 
-1. Select *{{icon.cog}} Configuration-->PMM Inventory-->Inventory list*.
+1. Select *{{icon.cog}} Configuration-->{{icon.inventory}} PMM Inventory-->{{icon.inventory}} Inventory list*.
 2. Look in the *Services* tab for a matching *Service Type* (MongoDB), *Service name*, *Addresses*, and any other values used when adding the service.
 3. Look in the *Agents* tab to check the desired data source is being used.
 
@@ -244,7 +247,7 @@ pmm-admin inventory list services --service-type=mongodb
     2. Under *Service Type* select *mongodb*.
 
 
-## Removing a service
+## Remove service
 
 ### With the user interface
 
@@ -270,3 +273,4 @@ pmm-admin remove mongodb SERVICE_NAME
 [PSMDB]: https://www.percona.com/software/mongodb/percona-server-for-mongodb
 [PSMDB_RATELIMIT]: https://www.percona.com/doc/percona-server-for-mongodb/LATEST/rate-limit.html#enabling-the-rate-limit
 [PMM_ADMIN_MAN_PAGE]: ../../details/commands/pmm-admin.md
+[ENCODE_URI]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent
