@@ -11,7 +11,7 @@ Ports to expose:
 PMM component | TCP port      | Direction     | Description
 --------------|---------------|---------------|------
 `pmm-server`  |   80          | both          | HTTP server, used for gRPC over HTTP and web interface (insecure, use with caution)
-`pmm-server`  |  443          | both          | HTTPS server, used for gRPC over HTTPS and web interface
+`pmm-server`  |  443          | both          | HTTPS server, used for gRPC over HTTPS and web interface (secure, use of SSL certificates is highly encouraged)
 
 Other ports:
 
