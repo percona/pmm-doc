@@ -319,23 +319,19 @@ For example If you only run `eksctl delete cluster` to delete Amazon EKS cluster
 	>
 	> - Also be careful with this step if you are running DBaaS in more than one namespace as it deletes cluster level CustomResourceDefinitions needed to run DBaaS. This would break DBaaS in other namespaces. Delete just operators deployments in that case.
 
-```sh
-# Clone the repository
-git clone https://github.com/percona-platform/dbaas-controller.git
-cd dbaas-controller
+    ```sh
+    # Delete the PXC operator and related resources.
+    cat ./deploy/pxc-operator.yaml | kubectl delete -f -
 
-# Delete the PXC operator and related resources.
-cat ./deploy/pxc-operator.yaml | kubectl delete -f -
-
-# Delete the PSMDB operator and related resources.
-cat ./deploy/psmdb-operator.yaml | kubectl delete -f -
-```
+    # Delete the PSMDB operator and related resources.
+    cat ./deploy/psmdb-operator.yaml | kubectl delete -f -
+    ```
 
 3. Delete the namespace where the DBaaS is running, this will delete all remaining namespace level resources if any are left.
 
-```sh
-kubectl delete namespace <your-namespace>
-```
+    ```sh
+    kubectl delete namespace <your-namespace>
+    ```
 
 4. Delete the Kubernetes cluster. The way is based on your cloud provider.
   [Delete GKE cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/deleting-a-cluster)
