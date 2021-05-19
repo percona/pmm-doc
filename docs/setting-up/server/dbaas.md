@@ -321,10 +321,10 @@ For example If you only run `eksctl delete cluster` to delete Amazon EKS cluster
 
     ```sh
     # Delete the PXC operator and related resources.
-    cat ./deploy/pxc-operator.yaml | kubectl delete -f -
+    curl https://raw.githubusercontent.com/percona-platform/dbaas-controller/7a5fff023994cecf6bde15705365114004b50b41/deploy/pxc-operator.yaml | kubectl delete -f -
 
     # Delete the PSMDB operator and related resources.
-    cat ./deploy/psmdb-operator.yaml | kubectl delete -f -
+    curl https://raw.githubusercontent.com/percona-platform/dbaas-controller/7a5fff023994cecf6bde15705365114004b50b41/deploy/psmdb-operator.yaml | kubectl delete -f -
     ```
 
 3. Delete the namespace where the DBaaS is running, this will delete all remaining namespace level resources if any are left.
