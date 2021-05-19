@@ -84,12 +84,12 @@ alias kubectl='minikube kubectl --'
     minikube start
     ```
 
-4. Get your kubeconfig details from minikube (to register your Kubernetes cluster with PMM Server):
+2. Get your kubeconfig details from minikube (to register your Kubernetes cluster with PMM Server):
 
     ```sh
     minikube kubectl -- config view --flatten --minify
     ```
-	> You will need to copy this output to your clipboard and continue with [add a Kubernetes cluster to PMM](../../using/platform/dbaas.md#add-a-kubernetes-cluster).
+	> You will need to copy this output to your clipboard and continue with [adding a Kubernetes cluster to PMM](../../using/platform/dbaas.md#add-a-kubernetes-cluster).
 
 ### Amazon AWS EKS cluster {: #aws-eks }
 
@@ -99,7 +99,7 @@ alias kubectl='minikube kubectl --'
     eksctl create cluster --write-kubeconfig --name=your-cluster-name --zones=us-west-2a,us-west-2b --kubeconfig <PATH_TO_KUBECONFIG>
     ```
 
-3. When the cluster is running, modify your kubeconfig file, if it's not utilizing the `aws-iam-authenticator` or `client-certificate` method for authentication with Kubernetes. Here are two examples that you can use as templates to modify a copy of your existing kubeconfig:
+2. When the cluster is running, modify your kubeconfig file, if it's not utilizing the `aws-iam-authenticator` or `client-certificate` method for authentication with Kubernetes. Here are two examples that you can use as templates to modify a copy of your existing kubeconfig:
 
     - For the `aws-iam-authenticator` method:
 
@@ -163,7 +163,7 @@ alias kubectl='minikube kubectl --'
             client-key-data: << CLIENT_KEY_DATA >>
         ```
 
-4. Follow the instructions on [How to add a Kubernetes cluster](../../using/platform/dbaas.md#add-a-kubernetes-cluster).
+3. Follow the instructions on [How to add a Kubernetes cluster](../../using/platform/dbaas.md#add-a-kubernetes-cluster) with kubeconfig from the previous step.
 
 	> If possible, the connection details will show the cluster's external IP (not possible with minikube).
 
@@ -209,7 +209,7 @@ You should have an account on GCP [https://cloud.google.com/](https://cloud.goog
 
     ![!](../../_images/PMM_DBaaS_GKE_10.png)
 
-12. Create Service Account, copy and store kubeconfig - output of the following command
+9. Create Service Account, copy and store kubeconfig - output of the following command
 
     ```
     cat <<EOF | kubectl apply -f -
@@ -277,91 +277,68 @@ You should have an account on GCP [https://cloud.google.com/](https://cloud.goog
 
     ![!](../../_images/PMM_DBaaS_GKE_15.png)
 
-13. Start PMM Server on you local machine or other VM instance:
+10. Start PMM Server on you local machine or other VM instance:
 
     ```
     docker run --detach --name pmm-server --publish 80:80 --publish 443:443 \
     --env ENABLE_DBAAS=1 perconalab/pmm-server-fb:PR-1240-07bef94;
     ```
 
-14. Login into PMM and navigate to DBaaS
+11. Login into PMM and navigate to DBaaS
 
      ![!](../../_images/PMM_DBaaS_GKE_16.png)
 
-15. Use kubeconfig from step 12 to [Add the Kubernetes cluster](../../using/platform/dbaas.md#add-a-kubernetes-cluster).
+12. Use kubeconfig from step 9 to [Add the Kubernetes cluster](../../using/platform/dbaas.md#add-a-kubernetes-cluster).
 
 ## Deleting clusters
 
-You should delete all database clusters created and backups and then delete installed operators.
+> If a Public Address is set in PMM Settings, for each DB cluster an API Key is created which can be found on the page `/graph/org/apikeys`. You should not delete them (for now, until [issue PMM-8045](https://jira.percona.com/browse/PMM-8045) is fixed) -- once a DB cluster is removed from DBaaS, the related API Key is also removed.
+
+For example If you only run `eksctl delete cluster` to delete Amazon EKS cluster without cleaning up the cluster first, there will be a lot of orphaned resources as Cloud Formations, Load Balancers, EC2 instances, Network interfaces, etc. The same applies for Google GKE clusters.
+
+### Cleaning up Kubernetes cluster
+
+1. You should delete all database clusters created, backups and restores.
 ```sh
 kubectl delete perconaxtradbclusterbackups.pxc.percona.com --all
 kubectl delete perconaxtradbclusters.pxc.percona.com --all
+kubectl delete perconaxtradbclusterrestores.pxc.percona.com --all
 
-kubectl TODO DELETE MONGODB AND OPERATOR DEPLOYMENTS
+kubectl delete perconaservermongodbbackups.psmdb.percona.com --all
+kubectl delete perconaservermongodbs.psmdb.percona.com --all
+kubectl delete perconaservermongodbrestores.psmdb.percona.com --all
+```
 
-> If a Public Address is set in PMM Settings, for each DB cluster an API Key is created which can be found on the page `/graph/org/apikeys`. You should not delete them (for now, until [issue PMM-8045](https://jira.percona.com/browse/PMM-8045) is fixed) -- once a DB cluster is removed from DBaaS, the related API Key is also removed.
+2. In the `dbaas-controller` repository, in the deploy directory there are manifests we use to deploy operators. Use them to delete operators and related resources from the cluster.
 
-If you only run `eksctl delete cluster` without cleaning up a database cluster first, there will be a lot of orphaned resources as Cloud Formations, Load Balancers, EC2 instances, Network interfaces, etc.
-
-In the `pmm-managed` repository, in the deploy directory there are 2 example bash scripts to install and delete the operators from the EKS cluster.
-
-The install script:
+	> <b style="color:goldenrod">Important</b>
+	>
+	> Do NOT execute this step before all database clusters, backups and restores are deleted in the previous step. It may result in not being able to delete the namespace DBaaS lives in.
+	>
+        > Also be careful with this step if you are running DBaaS in more than one namespace as it deletes cluster level CustomResourceDefinitions needed to run DBaaS. This would break DBaaS in other namespaces.
+        > Delete just operators deployments in that case.
 
 ```sh
-#!/bin/bash
+# Clone the repository
+git clone https://github.com/percona-platform/dbaas-controller.git
+cd dbaas-controller
 
-TOP_DIR=$(git rev-parse --show-toplevel)
-PMM_USER="$(echo -n 'admin' | base64)";
-PMM_PASS="$(echo -n 'admin_password' | base64)";
-KUBECTL_CMD="kubectl --kubeconfig ${HOME}/.kube/config_eks"
+# Delete the PXC operator and related resources.
+cat ./deploy/pxc-operator.yaml | kubectl delete -f -
 
-# Install the PXC operator
-cat ${TOP_DIR}/deploy/pxc_operator.yaml | ${KUBECTL_CMD} apply -f -
-
-# Install the PSMDB operator
-cat ${TOP_DIR}/deploy/psmdb_operator.yaml | ${KUBECTL_CMD} apply -f -
+# Delete the PSMDB operator and related resources.
+cat ./deploy/psmdb-operator.yaml | kubectl delete -f -
 ```
 
-The delete script:
+3. Delete the namespace where the DBaaS is running, this will delete all remaining namespace level resources if any are left.
 
 ```sh
-#!/bin/bash
-
-TOP_DIR=$(git rev-parse --show-toplevel)
-PMM_USER="$(echo -n 'admin' | base64)";
-PMM_PASS="$(echo -n 'admin_password' | base64)";
-KUBECTL_CMD="kubectl --kubeconfig ${HOME}/.kube/config_eks"
-
-# Delete the PXC operator
-cat ${TOP_DIR}/deploy/pxc_operator.yaml | ${KUBECTL_CMD} delete -f -
-
-# Delete the PSMDB operator
-cat ${TOP_DIR}/deploy/psmdb_operator.yaml | ${KUBECTL_CMD} delete -f -
+kubectl delete namespace <your-namespace>
 ```
 
-(Both scripts are similar except the install script command is `apply` while in the delete script it is `delete`.)
-
-After deleting everything in the EKS cluster, run this command (using your own configuration path) and wait until the output only shows `service/kubernetes` before deleting the cluster with the `eksclt delete` command.
-
-```sh
-kubectl --kubeconfig ~/.kube/config_eks get all
-```
-
-Example output:
-
-```
-NAME                 TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
-service/kubernetes   ClusterIP   10.100.0.1   <none>        443/TCP   4d5h
-```
-
-If you don't need the cluster anymore, you can uninstall everything in it and destroy it:
-
-```sh
-# Delete all volumes created by the operators:
-kubectl [--kubeconfig <config file>] delete pvc --all
-# Delete the cluster
-eksctl delete cluster --name=your-cluster-name
-```
+4. Delete the Kubernetes cluster. The way is based on your cloud provider.
+  [Delete GKE cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/deleting-a-cluster)
+  [Delete Amazon EKS cluster](https://docs.aws.amazon.com/eks/latest/userguide/delete-cluster.html)
 
 ## Run PMM Server as a Docker container for DBaaS
 
