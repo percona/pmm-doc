@@ -334,8 +334,8 @@ For example If you only run `eksctl delete cluster` to delete Amazon EKS cluster
     ```
 
 4. Delete the Kubernetes cluster. The way is based on your cloud provider.
-  [Delete GKE cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/deleting-a-cluster)
-  [Delete Amazon EKS cluster](https://docs.aws.amazon.com/eks/latest/userguide/delete-cluster.html)
+    - [Delete GKE cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/deleting-a-cluster)
+    - [Delete Amazon EKS cluster](https://docs.aws.amazon.com/eks/latest/userguide/delete-cluster.html)
 
 ## Run PMM Server as a Docker container for DBaaS
 
