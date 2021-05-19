@@ -300,15 +300,16 @@ For example If you only run `eksctl delete cluster` to delete Amazon EKS cluster
 ### Cleaning up Kubernetes cluster
 
 1. You should delete all database clusters, backups and restores.
-```sh
-kubectl delete perconaxtradbclusterbackups.pxc.percona.com --all
-kubectl delete perconaxtradbclusters.pxc.percona.com --all
-kubectl delete perconaxtradbclusterrestores.pxc.percona.com --all
 
-kubectl delete perconaservermongodbbackups.psmdb.percona.com --all
-kubectl delete perconaservermongodbs.psmdb.percona.com --all
-kubectl delete perconaservermongodbrestores.psmdb.percona.com --all
-```
+    ```sh
+    kubectl delete perconaxtradbclusterbackups.pxc.percona.com --all
+    kubectl delete perconaxtradbclusters.pxc.percona.com --all
+    kubectl delete perconaxtradbclusterrestores.pxc.percona.com --all
+
+    kubectl delete perconaservermongodbbackups.psmdb.percona.com --all
+    kubectl delete perconaservermongodbs.psmdb.percona.com --all
+    kubectl delete perconaservermongodbrestores.psmdb.percona.com --all
+    ```
 
 2. In the `dbaas-controller` repository, in the deploy directory there are manifests we use to deploy operators. Use them to delete operators and related resources from the cluster.
 
