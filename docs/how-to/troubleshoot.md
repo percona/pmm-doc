@@ -40,7 +40,7 @@ You can get PMM Server logs in two ways:
 
 When adding a service, the host might not be detected correctly if the password contains special symbols (e.g. `@`, `%`, etc.).
 
-You should convert any password with special characters, replacing them with their escape sequence equivalents.
+In such cases, you should convert any password, replacing special characters with their escape sequence equivalents.
 
 One way to do this is to use the [`encodeURIComponent`][ENCODE_URI] JavaScript function in your browser's web console (usually found under *Development Tools*). Evaluate the function with your password as the parameter. For example:
 
