@@ -11,8 +11,7 @@ Legend
 <#lightgrey>| Optional |
 endlegend
 
-:Set role permissions;
-#lightgrey:Create PMM account;
+:Create PMM account and\nset permissions;
 #lightgrey:Configure profiling;
 partition "Add a service " {
     split

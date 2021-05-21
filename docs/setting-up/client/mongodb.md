@@ -19,29 +19,13 @@ Check that:
 - You have superuser access to any database servers that you want to monitor.
 - Your MongoDB server is version 3.2 or higher (for Query Analytics).
 
-## Create PMM account
+## Create PMM account and set permissions
 
 We recommend using a dedicated account to connect PMM Client to the monitored database instance.
 
-This example creates a database user with name `{{pmm_mongodb_user}}`, password `{{pmm_password}}`, and with the necessary roles.
+This example creates a role with the necessary permissions, and adds a database user with the necessary roles.
 
 > Values for username (`user`) and password (`pwd`) are examples. Replace them before using this code.
-
-Run this in a `mongo` session.
-
-```json
-db.getSiblingDB("admin").createUser({
-   user: "{{pmm_mongodb_user}}",
-   pwd: "{{pmm_password}}",
-   roles: [
-      { role: "explainRole", db: "admin" },
-      { role: "clusterMonitor", db: "admin" },
-      { role: "read", db: "local" }
-   ]
-})
-```
-
-## Set role permissions
 
 Run this in a `mongo` session.
 
@@ -64,9 +48,17 @@ db.getSiblingDB("admin").createRole({
         }],
     roles:[]
 })
+
+db.getSiblingDB("admin").createUser({
+   user: "{{pmm_mongodb_user}}",
+   pwd: "{{pmm_password}}",
+   roles: [
+      { role: "explainRole", db: "admin" },
+      { role: "clusterMonitor", db: "admin" },
+      { role: "read", db: "local" }
+   ]
+})
 ```
-
-
 
 ## Profiling
 
