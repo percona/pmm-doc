@@ -2,7 +2,9 @@
 
 PMM Client collects metrics from [MongoDB][MONGODB] and [Percona Server for MongoDB][PSMDB].
 
-This page shows you how to set up PMM to monitor a MongoDB database instance. (You should read it completely before starting work.)
+This page shows you how to set up PMM to monitor a MongoDB database instance.
+
+> We recommend you read it in full before doing anything.
 
 Here is an overview of the steps involved.
 
