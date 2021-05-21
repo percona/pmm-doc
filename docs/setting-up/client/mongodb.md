@@ -144,8 +144,6 @@ Use `pmm-admin` to add the database server as a service using one of these examp
 
 When successful, PMM Client will print `MongoDB Service added` with the service's ID and name. Use the `--environment` and `-custom-labels` options to set tags for the service to help identify them.
 
-> **See also**: [`pmm-admin` man page][PMM_ADMIN_MAN_PAGE]
-
 **Example**
 
 ```sh
@@ -192,25 +190,16 @@ where:
 - `IFPASSWORDTOCERTISSET`: Password for TLS certificate file.
 - `PATHTOCACERT`: Path to certificate authority file.
 
-> **See also** [`pmm-admin` man page for `pmm-admin add mongodb`](../../details/commands/pmm-admin.md#mongodb)
+> **See also**
+>
+> - [`pmm-admin` man page for `pmm-admin add mongodb`](../../details/commands/pmm-admin.md#mongodb)
+>
+> - [Troubleshooting connection difficulties][TROUBLESHOOTING_CONNECTION]
 
 ## Tips
 
 - When adding nodes of a replica set, add each node separately using the same cluster name.
 
-- If the password contains special symbols (such as `@`), the host might not be detected correctly. You should convert any password with special characters, replacing them with their escape sequence equivalents.
-
-    One way to do this is to use the [`encodeURIComponent`][ENCODE_URI] JavaScript function in your browser's web console (usually found under *Development Tools*). Evaluate the function with your password as the parameter. For example:
-
-    ```js
-    > encodeURIComponent("s3cR#tpa$$worD")
-    ```
-
-    will give:
-
-    ```
-    "s3cR%23tpa%24%24worD"
-    ```
 
 ## Check the service
 
@@ -267,4 +256,4 @@ pmm-admin remove mongodb SERVICE_NAME
 [PSMDB]: https://www.percona.com/software/mongodb/percona-server-for-mongodb
 [PSMDB_RATELIMIT]: https://www.percona.com/doc/percona-server-for-mongodb/LATEST/rate-limit.html#enabling-the-rate-limit
 [PMM_ADMIN_MAN_PAGE]: ../../details/commands/pmm-admin.md
-[ENCODE_URI]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent
+[TROUBLESHOOTING_CONNECTION]: ../../how-to/troubleshoot.md#connection-difficulties
