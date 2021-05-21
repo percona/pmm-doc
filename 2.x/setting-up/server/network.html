@@ -32,7 +32,7 @@
 
 
 
-<title>Percona Monitoring and Management &mdash; MySQL InnoDB Compression Details</title>
+<title>Percona Monitoring and Management &mdash; Network</title>
 
 <head>
     
@@ -55,7 +55,7 @@
 
     <link rel="top" title="" href="" />
     
-    <link rel="next" title="MySQL InnoDB Details" href="dashboard-mysql-innodb-details.html" />
+    <link rel="next" title="Docker" href="docker.html" />
     
     
 </head>
@@ -92,12 +92,12 @@
     <ul class="nav nav-pills">
         
         <li class="right" style="margin-right: 10px">
-            <a href="dashboard-mysql-innodb-details.html" title="MySQL InnoDB Details">Next</a>
+            <a href="docker.html" title="Docker">Next</a>
         </li>
         
         
         <li class="right" style="margin-right: 10px">
-            <a href="dashboard-mysql-command-handler-counters-compare.html" title="MySQL Command/Handler Counters Compare">Previous</a>
+            <a href="index.html" title="Server">Previous</a>
         </li>
         
         <li>
@@ -111,11 +111,11 @@
 <div class="small">
     <ul class="list-inline">
         <li class="left">
-            <a href="https://github.com/percona/pmm-doc/issues/new?title=PMM2: doc issue on page  'MySQL InnoDB Compression Details' (details/dashboards/dashboard-mysql-innodb-compression-details.html)&body=Please describe the issue here"
+            <a href="https://github.com/percona/pmm-doc/issues/new?title=PMM2: doc issue on page  'Network' (setting-up/server/network.html)&body=Please describe the issue here"
                 target="_blank" title="Report an issue with this page on GitHub"><i class="uil uil-exclamation-triangle"></i> Report a problem with this page</a>
         </li>
         <li class="pull-right">
-            <a href="https://github.com/percona/pmm-doc/edit/main/docs/details/dashboards/dashboard-mysql-innodb-compression-details.md" target="_blank" title="Edit this page on GitHub in Markdown format"><i class="uil uil-pen"></i> <b>Edit this page</b></a>
+            <a href="https://github.com/percona/pmm-doc/edit/main/docs/setting-up/server/network.md" target="_blank" title="Edit this page on GitHub in Markdown format"><i class="uil uil-pen"></i> <b>Edit this page</b></a>
         </li>
     </ul>
 </div>
@@ -123,41 +123,90 @@
 
                 <div class="bodywrapper">
                     <div class="body">
-                        <h1 id="mysql-innodb-compression-details">MySQL InnoDB Compression Details<a class="headerlink" href="#mysql-innodb-compression-details" title="Permanent link">&para;</a></h1>
-<p><div class="lightgallery"><a data-sub-html="image" href="../../_images/PMM_MySQL_InnoDB_Compression_Details.jpg"><img alt="image" src="../../_images/PMM_MySQL_InnoDB_Compression_Details.jpg" /></a></div></p>
-<p>This dashboard helps you analyze the efficiency of InnoDB compression.</p>
-<h2 id="compression-level-and-failure-rate-threshold">Compression level and failure rate threshold<a class="headerlink" href="#compression-level-and-failure-rate-threshold" title="Permanent link">&para;</a></h2>
-<dl>
-<dt>InnoDB Compression Level</dt>
-<dd>The level of zlib compression to use for InnoDB compressed tables and indexes.</dd>
-<dt>InnoDB Compression Failure Threshold</dt>
-<dd>The compression failure rate threshold for a table.</dd>
-<dt>Compression Failure Rate Threshold</dt>
-<dd>The maximum percentage that can be reserved as free space within each compressed page, allowing room to reorganize the data and modification log within the page when a compressed table or index is updated and the data might be recompressed.</dd>
-<dt>Write Pages to the Redo Log</dt>
-<dd>Specifies whether images of re-compressed pages are written to the redo log. Re-compression may occur when changes are made to compressed data.</dd>
-</dl>
-<h2 id="statistic-of-compression-operations">Statistic of compression operations<a class="headerlink" href="#statistic-of-compression-operations" title="Permanent link">&para;</a></h2>
-<dl>
-<dt>Compress Attempts</dt>
-<dd>Number of compression operations attempted. Pages are compressed whenever an empty page is created or the space for the uncompressed modification log runs out.</dd>
-<dt>Uncompressed Attempts</dt>
-<dd>Number of uncompression operations performed. Compressed InnoDB pages are uncompressed whenever compression fails, or the first time a compressed page is accessed in the buffer pool and the uncompressed page does not exist.</dd>
-</dl>
-<h2 id="cpu-core-usage">CPU Core Usage<a class="headerlink" href="#cpu-core-usage" title="Permanent link">&para;</a></h2>
-<dl>
-<dt>CPU Core Usage for Compression</dt>
-<dd>Shows the time in seconds spent by InnoDB Compression operations.</dd>
-<dt>CPU Core Usage for Uncompression</dt>
-<dd>Shows the time in seconds spent by InnoDB Uncompression operations.</dd>
-</dl>
-<h2 id="buffer-pool-total">Buffer Pool Total<a class="headerlink" href="#buffer-pool-total" title="Permanent link">&para;</a></h2>
-<dl>
-<dt>Total Used Pages</dt>
-<dd>Shows the total amount of used compressed pages into the InnoDB Buffer Pool split by page size.</dd>
-<dt>Total Free Pages</dt>
-<dd>Shows the total amount of free compressed pages into the InnoDB Buffer Pool split by page size.</dd>
-</dl>
+                        <h1 id="network">Network<a class="headerlink" href="#network" title="Permanent link">&para;</a></h1>
+<h2 id="ports">Ports<a class="headerlink" href="#ports" title="Permanent link">&para;</a></h2>
+<p>This is a list of ports used by the various components of PMM.</p>
+<p>For PMM to work correctly, your system&rsquo;s firewall should allow TCP traffic on these ports (UDP is not needed).</p>
+<p>Ports to expose:</p>
+<table class="table">
+<thead>
+<tr>
+<th scope="col">PMM component</th>
+<th scope="col">TCP port</th>
+<th scope="col">Direction</th>
+<th scope="col">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PMM Server</td>
+<td>80</td>
+<td>both</td>
+<td>HTTP server, used for gRPC over HTTP and web interface (<strong>insecure</strong>, use with caution).</td>
+</tr>
+<tr>
+<td>PMM Server</td>
+<td>443</td>
+<td>both</td>
+<td>HTTPS server, used for gRPC over HTTPS and web interface (secure, use of SSL certificates is highly encouraged).</td>
+</tr>
+</tbody>
+</table>
+<p>Other ports:</p>
+<table class="table">
+<thead>
+<tr>
+<th scope="col">PMM component</th>
+<th scope="col">TCP port</th>
+<th scope="col">Direction</th>
+<th scope="col">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PMM Server</td>
+<td>7771</td>
+<td>both</td>
+<td>gRPC, used for communication between <code>pmm-agent</code>, <code>pmm-admin</code></td>
+</tr>
+<tr>
+<td>PMM Server</td>
+<td>7772</td>
+<td>out</td>
+<td>HTTP1 server, used for older links like <code>logs.zip</code></td>
+</tr>
+<tr>
+<td>PMM Server</td>
+<td>7773</td>
+<td>out</td>
+<td>Debugging</td>
+</tr>
+<tr>
+<td><code>pmm-agent</code></td>
+<td>7777</td>
+<td>out</td>
+<td>Default <code>pmm-agent</code> listen port</td>
+</tr>
+<tr>
+<td><code>vm-agent</code></td>
+<td>8428</td>
+<td>both</td>
+<td>VictoriaMetrics port</td>
+</tr>
+<tr>
+<td><code>pmm-agent</code></td>
+<td>42000 - 51999</td>
+<td>in</td>
+<td>Default range for <code>pmm-agent</code> connected agents</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><b style="color:goldenrod">Important</b></p>
+<p>Depending on your architecture other ports may also need to be exposed.
+- For <code>pmm-agent</code>, the default listen port is 7777. This can be changed in the <code>pmm-agent.yml</code> configuration file or with the <code>pmm-agent</code> flag <code>--listen-port</code>.
+- The default range for agents ports can be changed with the flag <code>--ports-min</code> and  <code>--ports-max</code>, or in the configuration file.</p>
+</blockquote>
                     </div>
                 </div>
                 
@@ -165,7 +214,7 @@
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-05-11
+            <i class="uil uil-refresh"></i> Page updated 2021-05-21
         </li>
         
     </ul>
@@ -176,12 +225,12 @@
     <ul class="nav nav-pills">
         
         <li class="right" style="margin-right: 10px">
-            <a href="dashboard-mysql-innodb-details.html" title="MySQL InnoDB Details">Next</a>
+            <a href="docker.html" title="Docker">Next</a>
         </li>
         
         
         <li class="right" style="margin-right: 10px">
-            <a href="dashboard-mysql-command-handler-counters-compare.html" title="MySQL Command/Handler Counters Compare">Previous</a>
+            <a href="index.html" title="Server">Previous</a>
         </li>
         
         <li>
@@ -214,7 +263,7 @@
 
 
 <li class="toctree-l1">
-    <a class="reference internal" href="../../setting-up/index.html">Setting up</a>
+    <a class="reference internal" href="../index.html">Setting up</a>
 
 
 
@@ -223,7 +272,7 @@
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../../setting-up/server/index.html">Server</a>
+    <a class="reference internal" href="index.html">Server</a>
 
 
 
@@ -232,31 +281,31 @@
 
 
 <li class="toctree-l3">
-    <a class="reference internal" href="../../setting-up/server/network.html">Network</a>
+    <a class="reference internal" href="network.html">Network</a>
 
 
 
 
 <li class="toctree-l3">
-    <a class="reference internal" href="../../setting-up/server/docker.html">Docker</a>
+    <a class="reference internal" href="docker.html">Docker</a>
 
 
 
 
 <li class="toctree-l3">
-    <a class="reference internal" href="../../setting-up/server/virtual-appliance.html">Virtual Appliance</a>
+    <a class="reference internal" href="virtual-appliance.html">Virtual Appliance</a>
 
 
 
 
 <li class="toctree-l3">
-    <a class="reference internal" href="../../setting-up/server/aws.html">AWS Marketplace</a>
+    <a class="reference internal" href="aws.html">AWS Marketplace</a>
 
 
 
 
 <li class="toctree-l3">
-    <a class="reference internal" href="../../setting-up/server/dbaas.html">DBaaS</a>
+    <a class="reference internal" href="dbaas.html">DBaaS</a>
 
 
 
@@ -267,7 +316,7 @@
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../../setting-up/client/index.html">Client</a>
+    <a class="reference internal" href="../client/index.html">Client</a>
 
 
 
@@ -276,61 +325,61 @@
 
 
 <li class="toctree-l3">
-    <a class="reference internal" href="../../setting-up/client/mysql.html">MySQL and variants</a>
+    <a class="reference internal" href="../client/mysql.html">MySQL and variants</a>
 
 
 
 
 <li class="toctree-l3">
-    <a class="reference internal" href="../../setting-up/client/mongodb.html">MongoDB</a>
+    <a class="reference internal" href="../client/mongodb.html">MongoDB</a>
 
 
 
 
 <li class="toctree-l3">
-    <a class="reference internal" href="../../setting-up/client/postgresql.html">PostgreSQL</a>
+    <a class="reference internal" href="../client/postgresql.html">PostgreSQL</a>
 
 
 
 
 <li class="toctree-l3">
-    <a class="reference internal" href="../../setting-up/client/proxysql.html">ProxySQL</a>
+    <a class="reference internal" href="../client/proxysql.html">ProxySQL</a>
 
 
 
 
 <li class="toctree-l3">
-    <a class="reference internal" href="../../setting-up/client/aws.html">Amazon RDS</a>
+    <a class="reference internal" href="../client/aws.html">Amazon RDS</a>
 
 
 
 
 <li class="toctree-l3">
-    <a class="reference internal" href="../../setting-up/client/azure.html">Microsoft Azure</a>
+    <a class="reference internal" href="../client/azure.html">Microsoft Azure</a>
 
 
 
 
 <li class="toctree-l3">
-    <a class="reference internal" href="../../setting-up/client/google.html">Google Cloud Platform</a>
+    <a class="reference internal" href="../client/google.html">Google Cloud Platform</a>
 
 
 
 
 <li class="toctree-l3">
-    <a class="reference internal" href="../../setting-up/client/linux.html">Linux</a>
+    <a class="reference internal" href="../client/linux.html">Linux</a>
 
 
 
 
 <li class="toctree-l3">
-    <a class="reference internal" href="../../setting-up/client/external.html">External Services</a>
+    <a class="reference internal" href="../client/external.html">External Services</a>
 
 
 
 
 <li class="toctree-l3">
-    <a class="reference internal" href="../../setting-up/client/haproxy.html">HAProxy</a>
+    <a class="reference internal" href="../client/haproxy.html">HAProxy</a>
 
 
 
@@ -466,7 +515,7 @@
 
 
 <li class="toctree-l1">
-    <a class="reference internal" href="../index.html">Details</a>
+    <a class="reference internal" href="../../details/index.html">Details</a>
 
 
 
@@ -475,19 +524,19 @@
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../architecture.html">Architecture</a>
+    <a class="reference internal" href="../../details/architecture.html">Architecture</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../interface.html">UI components</a>
+    <a class="reference internal" href="../../details/interface.html">UI components</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="index.html">Dashboards</a>
+    <a class="reference internal" href="../../details/dashboards/index.html">Dashboards</a>
 
 
 
@@ -496,7 +545,7 @@
 
 
 <li class="toctree-l3">
-    <a class="reference internal" href="dashboard-home.html">Insight</a>
+    <a class="reference internal" href="../../details/dashboards/dashboard-home.html">Insight</a>
 
 
 
@@ -505,19 +554,19 @@
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="dashboard-advanced-data-exploration.html">Advanced Data Exploration</a>
+    <a class="reference internal" href="../../details/dashboards/dashboard-advanced-data-exploration.html">Advanced Data Exploration</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="dashboard-victoriametrics.html">VictoriaMetrics</a>
+    <a class="reference internal" href="../../details/dashboards/dashboard-victoriametrics.html">VictoriaMetrics</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="dashboard-victoriametrics-agents-overview.html">VictoriaMetrics Agents Overview</a>
+    <a class="reference internal" href="../../details/dashboards/dashboard-victoriametrics-agents-overview.html">VictoriaMetrics Agents Overview</a>
 
 
 
@@ -528,13 +577,13 @@
 
 
 <li class="toctree-l3">
-    <a class="reference internal" href="dashboard-inventory.html">PMM</a>
+    <a class="reference internal" href="../../details/dashboards/dashboard-inventory.html">PMM</a>
 
 
 
 
 <li class="toctree-l3">
-    <a class="reference internal" href="dashboard-cpu-utilization-details.html">OS Dashboards</a>
+    <a class="reference internal" href="../../details/dashboards/dashboard-cpu-utilization-details.html">OS Dashboards</a>
 
 
 
@@ -543,55 +592,55 @@
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="dashboard-disk-details.html">Disk Details</a>
+    <a class="reference internal" href="../../details/dashboards/dashboard-disk-details.html">Disk Details</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="dashboard-network-details.html">Network Details</a>
+    <a class="reference internal" href="../../details/dashboards/dashboard-network-details.html">Network Details</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="dashboard-memory-details.html">Memory Details</a>
+    <a class="reference internal" href="../../details/dashboards/dashboard-memory-details.html">Memory Details</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="dashboard-node-temperature-details.html">Node Temperature Details</a>
+    <a class="reference internal" href="../../details/dashboards/dashboard-node-temperature-details.html">Node Temperature Details</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="dashboard-nodes-compare.html">Nodes Compare</a>
+    <a class="reference internal" href="../../details/dashboards/dashboard-nodes-compare.html">Nodes Compare</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="dashboard-nodes-overview.html">Nodes Overview</a>
+    <a class="reference internal" href="../../details/dashboards/dashboard-nodes-overview.html">Nodes Overview</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="dashboard-node-summary.html">Node Summary</a>
+    <a class="reference internal" href="../../details/dashboards/dashboard-node-summary.html">Node Summary</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="dashboard-numa-details.html">NUMA Details</a>
+    <a class="reference internal" href="../../details/dashboards/dashboard-numa-details.html">NUMA Details</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="dashboard-processes-details.html">Processes Details</a>
+    <a class="reference internal" href="../../details/dashboards/dashboard-processes-details.html">Processes Details</a>
 
 
 
@@ -602,7 +651,7 @@
 
 
 <li class="toctree-l3">
-    <a class="reference internal" href="dashboard-prometheus-exporter-status.html">Prometheus Dashboards</a>
+    <a class="reference internal" href="../../details/dashboards/dashboard-prometheus-exporter-status.html">Prometheus Dashboards</a>
 
 
 
@@ -611,7 +660,7 @@
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="dashboard-prometheus-exporters-overview.html">Prometheus Exporters Overview</a>
+    <a class="reference internal" href="../../details/dashboards/dashboard-prometheus-exporters-overview.html">Prometheus Exporters Overview</a>
 
 
 
@@ -622,7 +671,7 @@
 
 
 <li class="toctree-l3">
-    <a class="reference internal" href="dashboard-mysql-amazon-aurora-details.html">MySQL Dashboards</a>
+    <a class="reference internal" href="../../details/dashboards/dashboard-mysql-amazon-aurora-details.html">MySQL Dashboards</a>
 
 
 
@@ -631,97 +680,97 @@
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="dashboard-mysql-command-handler-counters-compare.html">MySQL Command/Handler Counters Compare</a>
+    <a class="reference internal" href="../../details/dashboards/dashboard-mysql-command-handler-counters-compare.html">MySQL Command/Handler Counters Compare</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="dashboard-mysql-innodb-compression-details.html">MySQL InnoDB Compression Details</a>
+    <a class="reference internal" href="../../details/dashboards/dashboard-mysql-innodb-compression-details.html">MySQL InnoDB Compression Details</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="dashboard-mysql-innodb-details.html">MySQL InnoDB Details</a>
+    <a class="reference internal" href="../../details/dashboards/dashboard-mysql-innodb-details.html">MySQL InnoDB Details</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="dashboard-mysql-myisam-aria-details.html">MySQL MyISAM/Aria Details</a>
+    <a class="reference internal" href="../../details/dashboards/dashboard-mysql-myisam-aria-details.html">MySQL MyISAM/Aria Details</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="dashboard-mysql-myrocks-details.html">MySQL MyRocks Details</a>
+    <a class="reference internal" href="../../details/dashboards/dashboard-mysql-myrocks-details.html">MySQL MyRocks Details</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="dashboard-mysql-instance-summary.html">MySQL Instance Summary</a>
+    <a class="reference internal" href="../../details/dashboards/dashboard-mysql-instance-summary.html">MySQL Instance Summary</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="dashboard-mysql-instances-compare.html">MySQL Instances Compare</a>
+    <a class="reference internal" href="../../details/dashboards/dashboard-mysql-instances-compare.html">MySQL Instances Compare</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="dashboard-mysql-instances-overview.html">MySQL Instances Overview</a>
+    <a class="reference internal" href="../../details/dashboards/dashboard-mysql-instances-overview.html">MySQL Instances Overview</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="dashboard-mysql-wait-event-analyses-details.html">MySQL Wait Event Analyses Details</a>
+    <a class="reference internal" href="../../details/dashboards/dashboard-mysql-wait-event-analyses-details.html">MySQL Wait Event Analyses Details</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="dashboard-mysql-performance-schema-details.html">MySQL Performance Schema Details</a>
+    <a class="reference internal" href="../../details/dashboards/dashboard-mysql-performance-schema-details.html">MySQL Performance Schema Details</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="dashboard-mysql-query-response-time-details.html">MySQL Query Response Time Details</a>
+    <a class="reference internal" href="../../details/dashboards/dashboard-mysql-query-response-time-details.html">MySQL Query Response Time Details</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="dashboard-mysql-replication-summary.html">MySQL Replication Summary</a>
+    <a class="reference internal" href="../../details/dashboards/dashboard-mysql-replication-summary.html">MySQL Replication Summary</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="dashboard-mysql-group-replication-summary.html">MySQL Group Replication Summary</a>
+    <a class="reference internal" href="../../details/dashboards/dashboard-mysql-group-replication-summary.html">MySQL Group Replication Summary</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="dashboard-mysql-table-details.html">MySQL Table Details</a>
+    <a class="reference internal" href="../../details/dashboards/dashboard-mysql-table-details.html">MySQL Table Details</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="dashboard-mysql-user-details.html">MySQL User Details</a>
+    <a class="reference internal" href="../../details/dashboards/dashboard-mysql-user-details.html">MySQL User Details</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="dashboard-mysql-tokudb-details.html">MySQL TokuDB Details</a>
+    <a class="reference internal" href="../../details/dashboards/dashboard-mysql-tokudb-details.html">MySQL TokuDB Details</a>
 
 
 
@@ -732,7 +781,7 @@
 
 
 <li class="toctree-l3">
-    <a class="reference internal" href="dashboard-mongodb-cluster-summary.html">MongoDB Dashboards</a>
+    <a class="reference internal" href="../../details/dashboards/dashboard-mongodb-cluster-summary.html">MongoDB Dashboards</a>
 
 
 
@@ -741,43 +790,43 @@
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="dashboard-mongodb-instance-summary.html">MongoDB Instance Summary</a>
+    <a class="reference internal" href="../../details/dashboards/dashboard-mongodb-instance-summary.html">MongoDB Instance Summary</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="dashboard-mongodb-instances-overview.html">MongoDB Instances Overview</a>
+    <a class="reference internal" href="../../details/dashboards/dashboard-mongodb-instances-overview.html">MongoDB Instances Overview</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="dashboard-mongodb-instances-compare.html">MongoDB Instances Compare</a>
+    <a class="reference internal" href="../../details/dashboards/dashboard-mongodb-instances-compare.html">MongoDB Instances Compare</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="dashboard-mongodb-replset-summary.html">MongoDB ReplSet Summary</a>
+    <a class="reference internal" href="../../details/dashboards/dashboard-mongodb-replset-summary.html">MongoDB ReplSet Summary</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="dashboard-mongodb-inmemory-details.html">MongoDB InMemory Details</a>
+    <a class="reference internal" href="../../details/dashboards/dashboard-mongodb-inmemory-details.html">MongoDB InMemory Details</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="dashboard-mongodb-mmapv1-details.html">MongoDB MMAPv1 Details</a>
+    <a class="reference internal" href="../../details/dashboards/dashboard-mongodb-mmapv1-details.html">MongoDB MMAPv1 Details</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="dashboard-mongodb-wiredtiger-details.html">MongoDB WiredTiger Details</a>
+    <a class="reference internal" href="../../details/dashboards/dashboard-mongodb-wiredtiger-details.html">MongoDB WiredTiger Details</a>
 
 
 
@@ -788,7 +837,7 @@
 
 
 <li class="toctree-l3">
-    <a class="reference internal" href="dashboard-postgresql-instances-overview.html">PostgreSQL Dashboards</a>
+    <a class="reference internal" href="../../details/dashboards/dashboard-postgresql-instances-overview.html">PostgreSQL Dashboards</a>
 
 
 
@@ -797,13 +846,13 @@
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="dashboard-postgresql-instance-summary.html">PostgreSQL Instance Summary</a>
+    <a class="reference internal" href="../../details/dashboards/dashboard-postgresql-instance-summary.html">PostgreSQL Instance Summary</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="dashboard-postgresql-instances-compare.html">PostgreSQL Instances Compare</a>
+    <a class="reference internal" href="../../details/dashboards/dashboard-postgresql-instances-compare.html">PostgreSQL Instances Compare</a>
 
 
 
@@ -814,13 +863,13 @@
 
 
 <li class="toctree-l3">
-    <a class="reference internal" href="dashboard-proxysql-instance-summary.html">ProxySQL Dashboards</a>
+    <a class="reference internal" href="../../details/dashboards/dashboard-proxysql-instance-summary.html">ProxySQL Dashboards</a>
 
 
 
 
 <li class="toctree-l3">
-    <a class="reference internal" href="dashboard-pxc-galera-node-summary.html">HA Dashboards</a>
+    <a class="reference internal" href="../../details/dashboards/dashboard-pxc-galera-node-summary.html">HA Dashboards</a>
 
 
 
@@ -829,50 +878,24 @@
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="dashboard-pxc-galera-cluster-summary.html">PXC/Galera Cluster Summary</a>
+    <a class="reference internal" href="../../details/dashboards/dashboard-pxc-galera-cluster-summary.html">PXC/Galera Cluster Summary</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="dashboard-pxc-galera-nodes-compare.html">PXC/Galera Nodes Compare</a>
+    <a class="reference internal" href="../../details/dashboards/dashboard-pxc-galera-nodes-compare.html">PXC/Galera Nodes Compare</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="dashboard-haproxy-instance-summary.html">HAProxy Instance Summary</a>
+    <a class="reference internal" href="../../details/dashboards/dashboard-haproxy-instance-summary.html">HAProxy Instance Summary</a>
 
 
 
 </ul>
 
-
-
-
-</ul>
-
-
-
-
-
-<li class="toctree-l2">
-    <a class="reference internal" href="../commands/index.html">Commands</a>
-
-
-
-
-<ul class="toctree" id="toctree">
-
-
-<li class="toctree-l3">
-    <a class="reference internal" href="../commands/pmm-admin.html">pmm-admin - PMM Administration Tool</a>
-
-
-
-
-<li class="toctree-l3">
-    <a class="reference internal" href="../commands/pmm-agent.html">pmm-agent - PMM Client agent</a>
 
 
 
@@ -883,19 +906,45 @@
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../api.html">API</a>
+    <a class="reference internal" href="../../details/commands/index.html">Commands</a>
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../details/commands/pmm-admin.html">pmm-admin - PMM Administration Tool</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../details/commands/pmm-agent.html">pmm-agent - PMM Client agent</a>
+
+
+
+</ul>
+
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../victoria-metrics.html">VictoriaMetrics</a>
+    <a class="reference internal" href="../../details/api.html">API</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../glossary.html">Glossary</a>
+    <a class="reference internal" href="../../details/victoria-metrics.html">VictoriaMetrics</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../details/glossary.html">Glossary</a>
 
 
 
@@ -1087,13 +1136,13 @@
 
 <h4>Previous page</h4>
 <p class="topless">
-    <a href="dashboard-mysql-command-handler-counters-compare.html" title="previous chapter">MySQL Command/Handler Counters Compare</a>
+    <a href="index.html" title="previous chapter">Server</a>
 </p>
 
 
 <h4>Next page</h4>
 <p class="topless">
-    <a href="dashboard-mysql-innodb-details.html" title="next chapter">MySQL InnoDB Details</a>
+    <a href="docker.html" title="next chapter">Docker</a>
 </p>
 
 
