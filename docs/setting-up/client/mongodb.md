@@ -25,7 +25,7 @@ Check that:
 
 We recommend using a dedicated account to connect PMM Client to the monitored database instance.
 
-This example creates a role with the necessary permissions, and adds a database user with the necessary roles.
+This example creates a new custom role with the privileges needed by the Query Analyzer, and adds a database user with that role plus the built-in "clusterMonitor" role.
 
 > Values for username (`user`) and password (`pwd`) are examples. Replace them before using this code.
 
