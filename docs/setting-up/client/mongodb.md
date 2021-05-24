@@ -18,7 +18,7 @@ Check that:
 - [PMM Server is installed](../server/index.md) and running with a known IP address or hostname accessible from the client node.
 - [PMM Client is installed](index.md) and the [node is registered with PMM Server](index.md#register).
 - You have superuser (root) access on the client host.
-- You have superuser access to any database servers that you want to monitor.
+- You have `adminUserAnyDatabase` or superuser role privilege to any database servers that you want to monitor.
 - Your MongoDB server is version 3.2 or higher (for Query Analytics).
 
 ## Create PMM account and set permissions
