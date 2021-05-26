@@ -151,6 +151,16 @@
 <li>In a browser, visit <code>https://&lt;address-of-your-pmm-server&gt;/logs.zip</code>.</li>
 <li>Go to <em>PMM &gt; PMM Settings</em> and click <em>Download server diagnostics</em>. (See <a href="configure.html#diagnostics">Diagnostics in PMM Settings</a>.)</li>
 </ul>
+<h2 id="connection-difficulties">Connection difficulties<a class="headerlink" href="#connection-difficulties" title="Permanent link">&para;</a></h2>
+<h3 id="passwords">Passwords<a class="headerlink" href="#passwords" title="Permanent link">&para;</a></h3>
+<p>When adding a service, the host might not be detected correctly if the password contains special symbols (e.g. <code>@</code>, <code>%</code>, etc.).</p>
+<p>In such cases, you should convert any password, replacing special characters with their escape sequence equivalents.</p>
+<p>One way to do this is to use the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent"><code>encodeURIComponent</code></a> JavaScript function in your browser&rsquo;s web console (usually found under <em>Development Tools</em>). Evaluate the function with your password as the parameter. For example:</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;</span> <span class="nb">encodeURIComponent</span><span class="p">(</span><span class="s2">&quot;s3cR#tpa$$worD&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>will give:</p>
+<div class="highlight"><pre><span></span><code>&quot;s3cR%23tpa%24%24worD&quot;
+</code></pre></div>
 <h2 id="integrated-alerting">Integrated Alerting<a class="headerlink" href="#integrated-alerting" title="Permanent link">&para;</a></h2>
 <h3 id="no-integrated-alerting-icon">No <i class="uil uil-bell"></i> Integrated Alerting icon<a class="headerlink" href="#no-integrated-alerting-icon" title="Permanent link">&para;</a></h3>
 <p>You are not logged in as a privileged user. You need either Admin or Editor roles to work with Integrated Alerting.</p>
@@ -232,7 +242,7 @@
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-03-19
+            <i class="uil uil-refresh"></i> Page updated 2021-05-26
         </li>
         
     </ul>
