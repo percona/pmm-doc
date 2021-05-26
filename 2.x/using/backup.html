@@ -32,7 +32,7 @@
 
 
 
-<title>Percona Monitoring and Management &mdash; Percona Monitoring and Management 2.11.0</title>
+<title>Percona Monitoring and Management &mdash; Backup and Restore</title>
 
 <head>
     
@@ -55,7 +55,7 @@
 
     <link rel="top" title="" href="" />
     
-    <link rel="next" title="Percona Monitoring and Management 2.10.1" href="2.10.1.html" />
+    <link rel="next" title="Query Analytics" href="query-analytics.html" />
     
     
 </head>
@@ -92,12 +92,12 @@
     <ul class="nav nav-pills">
         
         <li class="right" style="margin-right: 10px">
-            <a href="2.10.1.html" title="Percona Monitoring and Management 2.10.1">Next</a>
+            <a href="query-analytics.html" title="Query Analytics">Next</a>
         </li>
         
         
         <li class="right" style="margin-right: 10px">
-            <a href="2.11.1.html" title="Percona Monitoring and Management 2.11.1">Previous</a>
+            <a href="alerting.html" title="Integrated Alerting">Previous</a>
         </li>
         
         <li>
@@ -111,11 +111,11 @@
 <div class="small">
     <ul class="list-inline">
         <li class="left">
-            <a href="https://github.com/percona/pmm-doc/issues/new?title=PMM2: doc issue on page  'Percona Monitoring and Management 2.11.0' (release-notes/2.11.0.html)&body=Please describe the issue here"
+            <a href="https://github.com/percona/pmm-doc/issues/new?title=PMM2: doc issue on page  'Backup and Restore' (using/backup.html)&body=Please describe the issue here"
                 target="_blank" title="Report an issue with this page on GitHub"><i class="uil uil-exclamation-triangle"></i> Report a problem with this page</a>
         </li>
         <li class="pull-right">
-            <a href="https://github.com/percona/pmm-doc/edit/main/docs/release-notes/2.11.0.md" target="_blank" title="Edit this page on GitHub in Markdown format"><i class="uil uil-pen"></i> <b>Edit this page</b></a>
+            <a href="https://github.com/percona/pmm-doc/edit/main/docs/using/backup.md" target="_blank" title="Edit this page on GitHub in Markdown format"><i class="uil uil-pen"></i> <b>Edit this page</b></a>
         </li>
     </ul>
 </div>
@@ -123,55 +123,124 @@
 
                 <div class="bodywrapper">
                     <div class="body">
-                        <h1 id="percona-monitoring-and-management-2110">Percona Monitoring and Management 2.11.0<a class="headerlink" href="#percona-monitoring-and-management-2110" title="Permanent link">&para;</a></h1>
-<table class="docutils field-list" frame="void" rules="none">
-  <colgroup>
-    <col class="field-name">
-    <col class="field-body">
-  </colgroup>
-  <tbody valign="top">
-    <tr class="field-odd field">
-      <th class="field-name">Date:</th>
-      <td class="field-body">October 14, 2020</td>
-    </tr>
-    <tr class="field-even field">
-      <th class="field-name">Installation:</th>
-      <td class="field-body">
-        <a class="reference external" href="https://www.percona.com/doc/percona-monitoring-and-management/2.x/setting-up/">Installing Percona Monitoring and Management</a></td>
-    </tr>
-  </tbody>
-</table>
-
-<p>Percona Monitoring and Management (PMM) is a free and open-source platform for managing and monitoring MySQL, MongoDB, and PostgreSQL performance.</p>
-<h2 id="new-features">New Features<a class="headerlink" href="#new-features" title="Permanent link">&para;</a></h2>
+                        <h1 id="backup-and-restore">Backup and Restore<a class="headerlink" href="#backup-and-restore" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p><b style="color:goldenrod">Caution</b> Backup and restore features are a technical preview and currently only work with MySQL database servers backing up to Amazon AWS S3 storage locations.</p>
+</blockquote>
+<h2 id="before-you-start">Before you start<a class="headerlink" href="#before-you-start" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a href="https://jira.percona.com/browse/PMM-6567">PMM-6567</a>: Technical preview of new PostgreSQL extension <code>pg_stat_monitor</code></li>
-<li><a href="https://jira.percona.com/browse/PMM-6515">PMM-6515</a>: Link added directly to Node/Service page from Query Analytics filters, opens in new window</li>
+<li>You have an AWS S3 storage account and location details for it.</li>
+<li>There is only one MySQL instance running on the node.</li>
+<li>MySQL is running:<ul>
+<li>as a service via <code>systemd</code>;</li>
+<li>with the name <code>mysql</code> (to confirm, use <code>systemctl status mysql</code>);</li>
+<li>from a <code>mysql</code> system user account.</li>
 </ul>
-<h2 id="improvements">Improvements<a class="headerlink" href="#improvements" title="Permanent link">&para;</a></h2>
+</li>
+<li>There is a <code>mysql</code> system group.</li>
+<li>MySQL is using the <code>/var/lib/mysql</code> directory for database storage.</li>
+<li>
+<p>Backup management has been enabled:</p>
+<ol>
+<li>Navigate to <em><i class="uil uil-cog"></i> Configuration&rarr;Settings&rarr;Advanced Settings</em>.</li>
+<li>Activate <em>Backup Management</em>.</li>
+<li>Click <em>Apply changes</em>.</li>
+<li>
+<p>In the left menu bar, click <em><i class="uil uil-history"></i>&rarr;Backup</em>.</p>
+<p><div class="lightgallery"><a data-sub-html="" href="../_images/PMM_Backup_Management.jpg"><img alt="" src="../_images/PMM_Backup_Management.jpg" /></a></div></p>
+</li>
+</ol>
+</li>
+<li>
+<p>The following packages are needed for creating backups. They should be included in the <code>$PATH</code> environment variable:</p>
 <ul>
-<li><a href="https://jira.percona.com/browse/PMM-6727">PMM-6727</a>: Grafana plugin updates: <code>grafana-polystat-panel=1.2.2</code>, <code>grafana-piechart-panel=1.6.1</code></li>
-<li><a href="https://jira.percona.com/browse/PMM-6625">PMM-6625</a>: Default sort to &ldquo;Average - descending&rdquo; on all dashboards</li>
-<li><a href="https://jira.percona.com/browse/PMM-6609">PMM-6609</a>: MySQL Instances Compare &amp; Summary dashboards: Changed metric in &lsquo;MySQL Internal Memory Overview&rsquo;</li>
-<li><a href="https://jira.percona.com/browse/PMM-6598">PMM-6598</a>: Dashboard image sharing (Share Panel): Improved wording with link to configuration instructions</li>
-<li><a href="https://jira.percona.com/browse/PMM-6557">PMM-6557</a>: Update Prometheus to 2.21.0</li>
-<li><a href="https://jira.percona.com/browse/PMM-6554">PMM-6554</a>: MySQL InnoDB Details dashboard: Add &ldquo;sync flushing&rdquo; to &ldquo;InnoDB Flushing by Type&rdquo;</li>
+<li><a href="https://www.percona.com/software/mysql-database/percona-xtrabackup">xtrabackup</a>, which includes:<ul>
+<li><a href="https://www.percona.com/doc/percona-xtrabackup/2.3/xbcloud/xbcloud.html"><code>xbcloud</code></a>;</li>
+<li><a href="https://www.percona.com/doc/percona-xtrabackup/2.3/xbstream/xbstream.html"><code>xbstream</code></a>;</li>
 </ul>
-<h2 id="bugs-fixed">Bugs Fixed<a class="headerlink" href="#bugs-fixed" title="Permanent link">&para;</a></h2>
+</li>
+<li><a href="https://www.percona.com/doc/percona-xtrabackup/LATEST/backup_scenarios/compressed_backup.html"><code>qpress</code></a>.</li>
+</ul>
+<p><strong>The versions of each must be compatible with the installed version of MySQL.</strong></p>
+</li>
+</ul>
+<h2 id="backup-location">Adding a storage location<a class="headerlink" href="#backup-location" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Navigate to Backup Management&rarr;Storage locations.</li>
+<li>Click <em>Add</em>.</li>
+<li>
+<p>Fill in the form fields.</p>
+<p><div class="lightgallery"><a data-sub-html="" href="../_images/PMM_Backup_Management_Locations_Add_Storage_Location.jpg"><img alt="" src="../_images/PMM_Backup_Management_Locations_Add_Storage_Location.jpg" /></a></div></p>
 <ul>
-<li><a href="https://jira.percona.com/browse/PMM-4547">PMM-4547</a>: MongoDB dashboard replication lag count incorrect (Thanks to user <code>vvol</code> for reporting this issue)</li>
-<li><a href="https://jira.percona.com/browse/PMM-6639">PMM-6639</a>: Integrated update does not detect all container types</li>
-<li><a href="https://jira.percona.com/browse/PMM-6765">PMM-6765</a>: Tables information tab reports &lsquo;table not found&rsquo; with new PostgreSQL extension <code>pg_stat_monitor</code></li>
-<li><a href="https://jira.percona.com/browse/PMM-6764">PMM-6764</a>: Query Analytics: cannot filter items that are hidden - must use &ldquo;Show all&rdquo;</li>
-<li><a href="https://jira.percona.com/browse/PMM-6742">PMM-6742</a>: Upgrade via PMM UI stalls (on <code>yum update pmm-update</code>)</li>
-<li><a href="https://jira.percona.com/browse/PMM-6689">PMM-6689</a>: No PostgreSQL queries or metrics in Query Analytics with PostgreSQL 13 (<code>postgresql_pgstatements_agent</code> in Waiting status)</li>
-<li><a href="https://jira.percona.com/browse/PMM-6738">PMM-6738</a>: PostgreSQL examples shown despite <code>--disable-queryexamples</code> option</li>
-<li><a href="https://jira.percona.com/browse/PMM-6535">PMM-6535</a>: Unable to open &lsquo;Explore&rsquo; in new window from Grafana menu</li>
-<li><a href="https://jira.percona.com/browse/PMM-6532">PMM-6532</a>: Click-through URLs lose time ranges when redirecting to other dashboards</li>
-<li><a href="https://jira.percona.com/browse/PMM-6531">PMM-6531</a>: Counter-intuitive coloring of element &ldquo;Update Stats when Metadata Queried&rdquo;</li>
-<li><a href="https://jira.percona.com/browse/PMM-6645">PMM-6645</a>: Clean up unnecessary errors in logs (<code>vertamedia-clickhouse-datasource</code> plugin)</li>
-<li><a href="https://jira.percona.com/browse/PMM-6547">PMM-6547</a>: Hexagonal graph tooltip text overflows bounding box</li>
+<li><em>Name</em>:</li>
+<li><em>Description</em>:</li>
+<li><em>Type:</em><ul>
+<li><em>S3</em>:</li>
+<li><em>Local Client:</em> (Not currently implemented)</li>
+<li><em>Local Server:</em> (Not currently implemented)</li>
 </ul>
+</li>
+<li><em>Endpoint:</em></li>
+<li><em>Bucket Name:</em></li>
+<li><em>Access Key:</em></li>
+<li><em>Secret Key:</em></li>
+</ul>
+</li>
+<li>
+<p>Click <em>Add</em> to add the location or <em>Test</em> to test the connection.</p>
+</li>
+</ol>
+<h2 id="backup-create">Creating a backup<a class="headerlink" href="#backup-create" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>You must add a <a href="#backup-location">backup storage location</a> before backing up.</p>
+</blockquote>
+<ol>
+<li>
+<p>Navigate to <em>Backup Management&rarr;Backup Inventory</em>.</p>
+</li>
+<li>
+<p>Click <i class="uil uil-plus-square"></i> Add.</p>
+</li>
+<li>
+<p>In the <em>Backup On Demand</em> dialog, enter values for:</p>
+<ul>
+<li><em>Service name</em> &ndash; The service being backed up.</li>
+<li><em>Backup name</em> &ndash; A unique name for the backup.</li>
+<li><em>Description</em> &ndash; A long description.</li>
+<li><em>Location</em> &ndash; The predefined storage location.</li>
+</ul>
+<blockquote>
+<p><em>Vendor</em> is a read-only value showing the database vendor name. (Currently only for the supported MySQL service.)</p>
+</blockquote>
+</li>
+<li>
+<p>Click <em>Backup</em>.</p>
+</li>
+<li>
+<p>In the <em>Backup Inventory</em> pane, watch the <em>Status</em> column.</p>
+</li>
+</ol>
+<h2 id="backup-restore">Restoring a backup<a class="headerlink" href="#backup-restore" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>For this release, you can only restore a backup to the same service. I.e. a MySQL backup of service <code>mymsql-service-1</code> can only be restored to a MySQL database server registered with the same service name. Future releases will give more flexibility to restore backups to other service types.</p>
+</blockquote>
+<ol>
+<li>
+<p>Navigate to <em>Backup Management&rarr;Backup Inventory</em></p>
+</li>
+<li>
+<p>Find the row with the backup you want to restore.</p>
+</li>
+<li>
+<p>In the <em>Actions</em> column for that row, click <em>Restore from backup</em></p>
+</li>
+<li>
+<p>In the <em>Restore from backup</em> dialog, check the values and click <em>Restore</em></p>
+</li>
+<li>
+<p>Navigate to the <em>Restore History</em> tab to check the status of the restored backup</p>
+</li>
+</ol>
                     </div>
                 </div>
                 
@@ -179,7 +248,7 @@
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-02-10
+            <i class="uil uil-refresh"></i> Page updated 2021-05-18
         </li>
         
     </ul>
@@ -190,12 +259,12 @@
     <ul class="nav nav-pills">
         
         <li class="right" style="margin-right: 10px">
-            <a href="2.10.1.html" title="Percona Monitoring and Management 2.10.1">Next</a>
+            <a href="query-analytics.html" title="Query Analytics">Next</a>
         </li>
         
         
         <li class="right" style="margin-right: 10px">
-            <a href="2.11.1.html" title="Percona Monitoring and Management 2.11.1">Previous</a>
+            <a href="alerting.html" title="Integrated Alerting">Previous</a>
         </li>
         
         <li>
@@ -360,7 +429,7 @@
 
 
 <li class="toctree-l1">
-    <a class="reference internal" href="../using/index.html">Using</a>
+    <a class="reference internal" href="index.html">Using</a>
 
 
 
@@ -369,31 +438,31 @@
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../using/interface.html">User Interface</a>
+    <a class="reference internal" href="interface.html">User Interface</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../using/alerting.html">Integrated Alerting</a>
+    <a class="reference internal" href="alerting.html">Integrated Alerting</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../using/backup.html">Backup and Restore</a>
+    <a class="reference internal" href="backup.html">Backup and Restore</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../using/query-analytics.html">Query Analytics</a>
+    <a class="reference internal" href="query-analytics.html">Query Analytics</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../using/platform/index.html">Percona Platform</a>
+    <a class="reference internal" href="platform/index.html">Percona Platform</a>
 
 
 
@@ -402,13 +471,13 @@
 
 
 <li class="toctree-l3">
-    <a class="reference internal" href="../using/platform/security-threat-tool.html">Security Threat Tool</a>
+    <a class="reference internal" href="platform/security-threat-tool.html">Security Threat Tool</a>
 
 
 
 
 <li class="toctree-l3">
-    <a class="reference internal" href="../using/platform/dbaas.html">DBaaS</a>
+    <a class="reference internal" href="platform/dbaas.html">DBaaS</a>
 
 
 
@@ -932,7 +1001,7 @@
 
 
 <li class="toctree-l1">
-    <a class="reference internal" href="index.html">Release Notes</a>
+    <a class="reference internal" href="../release-notes/index.html">Release Notes</a>
 
 
 
@@ -941,163 +1010,163 @@
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.18.0.html">Percona Monitoring and Management 2.18.0</a>
+    <a class="reference internal" href="../release-notes/2.18.0.html">Percona Monitoring and Management 2.18.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.17.0.html">Percona Monitoring and Management 2.17.0</a>
+    <a class="reference internal" href="../release-notes/2.17.0.html">Percona Monitoring and Management 2.17.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.16.0.html">Percona Monitoring and Management 2.16.0</a>
+    <a class="reference internal" href="../release-notes/2.16.0.html">Percona Monitoring and Management 2.16.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.15.1.html">Percona Monitoring and Management 2.15.1</a>
+    <a class="reference internal" href="../release-notes/2.15.1.html">Percona Monitoring and Management 2.15.1</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.15.0.html">Percona Monitoring and Management 2.15.0</a>
+    <a class="reference internal" href="../release-notes/2.15.0.html">Percona Monitoring and Management 2.15.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.14.0.html">Percona Monitoring and Management 2.14.0</a>
+    <a class="reference internal" href="../release-notes/2.14.0.html">Percona Monitoring and Management 2.14.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.13.0.html">Percona Monitoring and Management 2.13.0</a>
+    <a class="reference internal" href="../release-notes/2.13.0.html">Percona Monitoring and Management 2.13.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.12.0.html">Percona Monitoring and Management 2.12.0</a>
+    <a class="reference internal" href="../release-notes/2.12.0.html">Percona Monitoring and Management 2.12.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.11.1.html">Percona Monitoring and Management 2.11.1</a>
+    <a class="reference internal" href="../release-notes/2.11.1.html">Percona Monitoring and Management 2.11.1</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.11.0.html">Percona Monitoring and Management 2.11.0</a>
+    <a class="reference internal" href="../release-notes/2.11.0.html">Percona Monitoring and Management 2.11.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.10.1.html">Percona Monitoring and Management 2.10.1</a>
+    <a class="reference internal" href="../release-notes/2.10.1.html">Percona Monitoring and Management 2.10.1</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.10.0.html">Percona Monitoring and Management 2.10.0</a>
+    <a class="reference internal" href="../release-notes/2.10.0.html">Percona Monitoring and Management 2.10.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.9.1.html">Percona Monitoring and Management 2.9.1</a>
+    <a class="reference internal" href="../release-notes/2.9.1.html">Percona Monitoring and Management 2.9.1</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.9.0.html">Percona Monitoring and Management 2.9.0</a>
+    <a class="reference internal" href="../release-notes/2.9.0.html">Percona Monitoring and Management 2.9.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.8.0.html">Percona Monitoring and Management 2.8.0</a>
+    <a class="reference internal" href="../release-notes/2.8.0.html">Percona Monitoring and Management 2.8.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.7.0.html">Percona Monitoring and Management 2.7.0</a>
+    <a class="reference internal" href="../release-notes/2.7.0.html">Percona Monitoring and Management 2.7.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.6.1.html">Percona Monitoring and Management 2.6.1</a>
+    <a class="reference internal" href="../release-notes/2.6.1.html">Percona Monitoring and Management 2.6.1</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.6.0.html">Percona Monitoring and Management 2.6.0</a>
+    <a class="reference internal" href="../release-notes/2.6.0.html">Percona Monitoring and Management 2.6.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.5.0.html">Percona Monitoring and Management 2.5.0</a>
+    <a class="reference internal" href="../release-notes/2.5.0.html">Percona Monitoring and Management 2.5.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.4.0.html">Percona Monitoring and Management 2.4.0</a>
+    <a class="reference internal" href="../release-notes/2.4.0.html">Percona Monitoring and Management 2.4.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.3.0.html">Percona Monitoring and Management 2.3.0</a>
+    <a class="reference internal" href="../release-notes/2.3.0.html">Percona Monitoring and Management 2.3.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.2.2.html">Percona Monitoring and Management 2.2.2</a>
+    <a class="reference internal" href="../release-notes/2.2.2.html">Percona Monitoring and Management 2.2.2</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.2.1.html">Percona Monitoring and Management 2.2.1</a>
+    <a class="reference internal" href="../release-notes/2.2.1.html">Percona Monitoring and Management 2.2.1</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.2.0.html">Percona Monitoring and Management 2.2.0</a>
+    <a class="reference internal" href="../release-notes/2.2.0.html">Percona Monitoring and Management 2.2.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.1.0.html">Percona Monitoring and Management 2.1.0</a>
+    <a class="reference internal" href="../release-notes/2.1.0.html">Percona Monitoring and Management 2.1.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.0.1.html">Percona Monitoring and Management 2.0.1</a>
+    <a class="reference internal" href="../release-notes/2.0.1.html">Percona Monitoring and Management 2.0.1</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.0.0.html">Percona Monitoring and Management 2.0.0</a>
+    <a class="reference internal" href="../release-notes/2.0.0.html">Percona Monitoring and Management 2.0.0</a>
 
 
 
@@ -1113,13 +1182,13 @@
 
 <h4>Previous page</h4>
 <p class="topless">
-    <a href="2.11.1.html" title="previous chapter">Percona Monitoring and Management 2.11.1</a>
+    <a href="alerting.html" title="previous chapter">Integrated Alerting</a>
 </p>
 
 
 <h4>Next page</h4>
 <p class="topless">
-    <a href="2.10.1.html" title="next chapter">Percona Monitoring and Management 2.10.1</a>
+    <a href="query-analytics.html" title="next chapter">Query Analytics</a>
 </p>
 
 

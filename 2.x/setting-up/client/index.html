@@ -220,13 +220,13 @@ apt install -y pmm2-client
 <p>(Alternatively, copy the link and use <code>wget</code> to download it.)</p>
 <p>Here are the download page links for each supported platform.</p>
 <ul>
-<li><a href="https://www.percona.com/downloads/pmm2/2.17.0/binary/debian/stretch/">Debian 9 (&ldquo;Stretch&rdquo;)</a></li>
-<li><a href="https://www.percona.com/downloads/pmm2/2.17.0/binary/debian/buster/">Debian 10 (&ldquo;Buster&rdquo;)</a></li>
-<li><a href="https://www.percona.com/downloads/pmm2/2.17.0/binary/redhat/7/">Red Hat/CentOS/Oracle 7</a></li>
-<li><a href="https://www.percona.com/downloads/pmm2/2.17.0/binary/redhat/8/">Red Hat/CentOS/Oracle 8</a></li>
-<li><a href="https://www.percona.com/downloads/pmm2/2.17.0/binary/debian/xenial/">Ubuntu 16.04 (&ldquo;Xenial Xerus&rdquo;)</a></li>
-<li><a href="https://www.percona.com/downloads/pmm2/2.17.0/binary/debian/bionic/">Ubuntu 18.04 (&ldquo;Bionic Beaver&rdquo;)</a></li>
-<li><a href="https://www.percona.com/downloads/pmm2/2.17.0/binary/debian/focal/">Ubuntu 20.04 (&ldquo;Focal Fossa&rdquo;)</a></li>
+<li><a href="https://www.percona.com/downloads/pmm2/2.18.0/binary/debian/stretch/">Debian 9 (&ldquo;Stretch&rdquo;)</a></li>
+<li><a href="https://www.percona.com/downloads/pmm2/2.18.0/binary/debian/buster/">Debian 10 (&ldquo;Buster&rdquo;)</a></li>
+<li><a href="https://www.percona.com/downloads/pmm2/2.18.0/binary/redhat/7/">Red Hat/CentOS/Oracle 7</a></li>
+<li><a href="https://www.percona.com/downloads/pmm2/2.18.0/binary/redhat/8/">Red Hat/CentOS/Oracle 8</a></li>
+<li><a href="https://www.percona.com/downloads/pmm2/2.18.0/binary/debian/xenial/">Ubuntu 16.04 (&ldquo;Xenial Xerus&rdquo;)</a></li>
+<li><a href="https://www.percona.com/downloads/pmm2/2.18.0/binary/debian/bionic/">Ubuntu 18.04 (&ldquo;Bionic Beaver&rdquo;)</a></li>
+<li><a href="https://www.percona.com/downloads/pmm2/2.18.0/binary/debian/focal/">Ubuntu 20.04 (&ldquo;Focal Fossa&rdquo;)</a></li>
 </ul>
 <h3 id="install-on-debian-based-distributions_1">Install on Debian-based distributions<a class="headerlink" href="#install-on-debian-based-distributions_1" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>dpkg -i *.deb
@@ -238,22 +238,22 @@ apt install -y pmm2-client
 <ol>
 <li>
 <p>Download the PMM Client package:</p>
-<div class="highlight"><pre><span></span><code>wget https://downloads.percona.com/downloads/pmm2/2.17.0/binary/tarball/pmm2-client-2.17.0.tar.gz
+<div class="highlight"><pre><span></span><code>wget https://downloads.percona.com/downloads/pmm2/2.18.0/binary/tarball/pmm2-client-2.18.0.tar.gz
 </code></pre></div>
 </li>
 <li>
 <p>Download the PMM Client package checksum file:</p>
-<div class="highlight"><pre><span></span><code>wget https://downloads.percona.com/downloads/pmm2/2.17.0/binary/tarball/pmm2-client-2.17.0.tar.gz.sha256sum
+<div class="highlight"><pre><span></span><code>wget https://downloads.percona.com/downloads/pmm2/2.18.0/binary/tarball/pmm2-client-2.18.0.tar.gz.sha256sum
 </code></pre></div>
 </li>
 <li>
 <p>Verify the download.</p>
-<div class="highlight"><pre><span></span><code>sha256sum -c pmm2-client-2.17.0.tar.gz.sha256sum
+<div class="highlight"><pre><span></span><code>sha256sum -c pmm2-client-2.18.0.tar.gz.sha256sum
 </code></pre></div>
 </li>
 <li>
 <p>Unpack the package and move into the directory.</p>
-<div class="highlight"><pre><span></span><code>tar xfz pmm2-client-2.17.0.tar.gz <span class="o">&amp;&amp;</span> <span class="nb">cd</span> pmm2-client-2.17.0
+<div class="highlight"><pre><span></span><code>tar xfz pmm2-client-2.18.0.tar.gz <span class="o">&amp;&amp;</span> <span class="nb">cd</span> pmm2-client-2.18.0
 </code></pre></div>
 </li>
 <li>
@@ -470,7 +470,10 @@ pmm-admin status
 <ul>
 <li><code>X.X.X.X</code> is the address of your PMM Server.</li>
 <li><code>443</code> is the default port number.</li>
-<li><code>admin</code>/<code>admin</code> is the default PMM username and password. This is the same account you use to log into the PMM user interface, which you had the option to change when first logging in.</li>
+<li><code>admin</code>/<code>admin</code> is the default PMM username and password. This is the same account you use to log into the PMM user interface, which you had the option to change when first logging in.<blockquote>
+<p><strong>Note</strong> Clients <em>must</em> be registered with the PMM Server using a secure channel. If you use http as your server URL, PMM will try to connect via https on port 443. If a TLS connection can&rsquo;t be established you will get an error and you must use https along with the appropriate secure port.</p>
+</blockquote>
+</li>
 </ul>
 <p><strong>Examples</strong></p>
 <p>Register on PMM Server with IP address <code>192.168.33.14</code> using the default <code>admin/admin</code> username and password, a node with IP address <code>192.168.33.23</code>, type <code>generic</code>, and name <code>mynode</code>.</p>
@@ -520,7 +523,7 @@ One of next types has to be set: mysql, mongodb, postgresql, proxysql, haproxy, 
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-05-12
+            <i class="uil uil-refresh"></i> Page updated 2021-05-26
         </li>
         
     </ul>
@@ -717,6 +720,12 @@ One of next types has to be set: mysql, mongodb, postgresql, proxysql, haproxy, 
 
 <li class="toctree-l2">
     <a class="reference internal" href="../../using/alerting.html">Integrated Alerting</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../using/backup.html">Backup and Restore</a>
 
 
 
@@ -1273,6 +1282,12 @@ One of next types has to be set: mysql, mongodb, postgresql, proxysql, haproxy, 
 
 
 <ul class="toctree" id="toctree">
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.18.0.html">Percona Monitoring and Management 2.18.0</a>
+
+
 
 
 <li class="toctree-l2">

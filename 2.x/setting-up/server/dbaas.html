@@ -141,7 +141,7 @@ systemctl start docker
 systemctl <span class="nb">enable</span> docker
 systemctl start docker
 </code></pre></div>
-<h3 id="minikube">minikube<a class="headerlink" href="#minikube" title="Permanent link">&para;</a></h3>
+<h3 id="minikube_1">minikube<a class="headerlink" href="#minikube_1" title="Permanent link">&para;</a></h3>
 <blockquote>
 <p>Please install minikube 1.16.0</p>
 </blockquote>
@@ -189,7 +189,11 @@ ln -s /usr/local/sbin/minikube /usr/sbin/minikube
 <p>You need to enable the feature using PMM UI if you omitted <code>--env ENABLE_DBAAS=1</code> when starting up the container.</p>
 </li>
 </ol>
-<h2 id="install-percona-operators-in-minikube">Install Percona operators in minikube<a class="headerlink" href="#install-percona-operators-in-minikube" title="Permanent link">&para;</a></h2>
+<h2 id="create-a-kubernetes-cluster">Create a Kubernetes cluster<a class="headerlink" href="#create-a-kubernetes-cluster" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>The DBaaS feature uses Kubernetes clusters to deploy database clusters. You must first create a Kubernetes cluster and then add it to PMM using <code>kubeconfig</code> to get a successful setup</p>
+</blockquote>
+<h3 id="minikube">Minikube<a class="headerlink" href="#minikube" title="Permanent link">&para;</a></h3>
 <ol>
 <li>
 <p>Configure and start minikube:</p>
@@ -200,41 +204,15 @@ minikube start
 </code></pre></div>
 </li>
 <li>
-<p>Deploy the Percona operators configuration for PXC and PSMDB in minikube:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Prepare a set of base64 encoded values and non encoded for user and pass with administrator privileges to pmm-server (DBaaS)</span>
-<span class="nv">PMM_USER</span><span class="o">=</span><span class="s1">&#39;admin&#39;</span><span class="p">;</span>
-<span class="nv">PMM_PASS</span><span class="o">=</span><span class="s1">&#39;&lt;RANDOM_PASS_GOES_IN_HERE&gt;&#39;</span><span class="p">;</span>
-
-<span class="nv">PMM_USER_B64</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span><span class="nb">echo</span> -n <span class="s2">&quot;</span><span class="si">${</span><span class="nv">PMM_USER</span><span class="si">}</span><span class="s2">&quot;</span> <span class="p">|</span> base64<span class="k">)</span><span class="s2">&quot;</span><span class="p">;</span>
-<span class="nv">PMM_PASS_B64</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span><span class="nb">echo</span> -n <span class="s2">&quot;</span><span class="si">${</span><span class="nv">PMM_PASS</span><span class="si">}</span><span class="s2">&quot;</span> <span class="p">|</span> base64<span class="k">)</span><span class="s2">&quot;</span><span class="p">;</span>
-
-<span class="c1"># Install the PXC operator</span>
-curl -sSf -m <span class="m">30</span> https://raw.githubusercontent.com/percona/percona-xtradb-cluster-operator/v1.8.0/deploy/bundle.yaml <span class="se">\</span>
-<span class="p">|</span> kubectl apply -f -
-
-<span class="c1"># Install the PSMDB operator</span>
-curl -sSf -m <span class="m">30</span> https://raw.githubusercontent.com/percona/percona-server-mongodb-operator/v1.7.0/deploy/bundle.yaml <span class="se">\</span>
-<span class="p">|</span> kubectl apply -f -
-</code></pre></div>
-</li>
-<li>
-<p>Check the operators are deployed:</p>
-<div class="highlight"><pre><span></span><code>minikube kubectl -- get nodes
-minikube kubectl -- get pods
-minikube kubectl -- <span class="nb">wait</span> --for<span class="o">=</span><span class="nv">condition</span><span class="o">=</span>Available deployment percona-xtradb-cluster-operator
-minikube kubectl -- <span class="nb">wait</span> --for<span class="o">=</span><span class="nv">condition</span><span class="o">=</span>Available deployment percona-server-mongodb-operator
-</code></pre></div>
-</li>
-<li>
-<p>Get your kubeconfig details from minikube (to register your Kubernetes cluster with PMM Server):</p>
+<p>Get your kubeconfig details from <code>minikube</code>. (You need these to register your Kubernetes cluster with PMM Server):</p>
 <div class="highlight"><pre><span></span><code>minikube kubectl -- config view --flatten --minify
 </code></pre></div>
 <blockquote>
-<p>You will need to copy this output to your clipboard and continue with <a href="../../using/platform/dbaas.html#add-a-kubernetes-cluster">add a Kubernetes cluster to PMM</a>.</p>
+<p>You will need to copy this output to your clipboard and continue with <a href="../../using/platform/dbaas.html#add-a-kubernetes-cluster">adding a Kubernetes cluster to PMM</a>.</p>
 </blockquote>
 </li>
 </ol>
-<h2 id="operators-aws-eks">Installing Percona operators on Amazon AWS EKS<a class="headerlink" href="#operators-aws-eks" title="Permanent link">&para;</a></h2>
+<h3 id="aws-eks">Amazon AWS EKS<a class="headerlink" href="#aws-eks" title="Permanent link">&para;</a></h3>
 <ol>
 <li>
 <p>Create your cluster via <code>eksctl</code> or the Amazon AWS interface. For example:</p>
@@ -242,28 +220,7 @@ minikube kubectl -- <span class="nb">wait</span> --for<span class="o">=</span><s
 </code></pre></div>
 </li>
 <li>
-<p>When your EKS cluster is running, install the PXC and PSMDB operators:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Prepare a set of base64 encoded values and non encoded for user and pass with administrator privileges to pmm-server (DBaaS)</span>
-<span class="nv">PMM_USER</span><span class="o">=</span><span class="s1">&#39;admin&#39;</span><span class="p">;</span>
-<span class="nv">PMM_PASS</span><span class="o">=</span><span class="s1">&#39;&lt;RANDOM_PASS_GOES_IN_HERE&gt;&#39;</span><span class="p">;</span>
-
-<span class="nv">PMM_USER_B64</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span><span class="nb">echo</span> -n <span class="s2">&quot;</span><span class="si">${</span><span class="nv">PMM_USER</span><span class="si">}</span><span class="s2">&quot;</span> <span class="p">|</span> base64<span class="k">)</span><span class="s2">&quot;</span><span class="p">;</span>
-<span class="nv">PMM_PASS_B64</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span><span class="nb">echo</span> -n <span class="s2">&quot;</span><span class="si">${</span><span class="nv">PMM_PASS</span><span class="si">}</span><span class="s2">&quot;</span> <span class="p">|</span> base64<span class="k">)</span><span class="s2">&quot;</span><span class="p">;</span>
-
-<span class="c1"># Install the PXC operator</span>
-curl -sSf -m <span class="m">30</span> https://raw.githubusercontent.com/percona/percona-xtradb-cluster-operator/v1.8.0/deploy/bundle.yaml <span class="se">\</span>
-<span class="p">|</span> kubectl apply -f -
-
-<span class="c1"># Install the PSMDB operator</span>
-curl -sSf -m <span class="m">30</span> https://raw.githubusercontent.com/percona/percona-server-mongodb-operator/v1.7.0/deploy/bundle.yaml <span class="se">\</span>
-<span class="p">|</span> kubectl apply -f -
-</code></pre></div>
-<div class="highlight"><pre><span></span><code># Validate that the operators are running
-kubectl get pods
-</code></pre></div>
-</li>
-<li>
-<p>Modify your kubeconfig file, if it&rsquo;s not utilizing the <code>aws-iam-authenticator</code> or <code>client-certificate</code> method for authentication with Kubernetes. Here are two examples that you can use as templates to modify a copy of your existing kubeconfig:</p>
+<p>When the cluster is running, modify your kubeconfig file, if it&rsquo;s not utilizing the <code>aws-iam-authenticator</code> or <code>client-certificate</code> method for authentication with Kubernetes. Here are two examples that you can use as templates to modify a copy of your existing kubeconfig:</p>
 <ul>
 <li>
 <p>For the <code>aws-iam-authenticator</code> method:</p>
@@ -328,13 +285,13 @@ users:
 </ul>
 </li>
 <li>
-<p>Follow the instructions for <a href="../../using/platform/dbaas.html#add-a-kubernetes-cluster">Add a Kubernetes cluster</a>.</p>
+<p>Follow the instructions on <a href="../../using/platform/dbaas.html#add-a-kubernetes-cluster">How to add a Kubernetes cluster</a> with kubeconfig from the previous step.</p>
 <blockquote>
 <p>If possible, the connection details will show the cluster&rsquo;s external IP (not possible with minikube).</p>
 </blockquote>
 </li>
 </ol>
-<h2 id="operators-google-gke">Install Percona operators on Google GKE<a class="headerlink" href="#operators-google-gke" title="Permanent link">&para;</a></h2>
+<h3 id="google-gke">Google GKE<a class="headerlink" href="#google-gke" title="Permanent link">&para;</a></h3>
 <p><strong>Prerequisites</strong></p>
 <p>You should have an account on GCP <a href="https://cloud.google.com/">https://cloud.google.com/</a>.</p>
 <ol>
@@ -394,6 +351,21 @@ kubectl api-resources --api-group=&#39;pxc.percona.com&#39;
 </li>
 <li>
 <p>Create Service Account, copy and store kubeconfig - output of the following command</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>main</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
 <div class="highlight"><pre><span></span><code>cat &lt;&lt;EOF | kubectl apply -f -
 ---
 apiVersion: v1
@@ -455,9 +427,9 @@ current-context: svcs-acct-context
 <p><div class="lightgallery"><a data-sub-html="" href="../../_images/PMM_DBaaS_GKE_15.png"><img alt="" src="../../_images/PMM_DBaaS_GKE_15.png" /></a></div></p>
 </li>
 <li>
-<p>Start PMM Server on you local machine or other VM instance:</p>
-<div class="highlight"><pre><span></span><code>docker run --detach --name pmm-server --publish 80:80 --publish 443:443 \
---env ENABLE_DBAAS=1 perconalab/pmm-server-fb:PR-1240-07bef94;
+<p>Start PMM Server on your local machine or other VM instance:</p>
+<div class="highlight"><pre><span></span><code>docker run --detach --name pmm-server --publish <span class="m">80</span>:80 --publish <span class="m">443</span>:443 <span class="se">\</span>
+--env <span class="nv">ENABLE_DBAAS</span><span class="o">=</span><span class="m">1</span> perconalab/pmm-server-fb:PR-1240-07bef94<span class="p">;</span>
 </code></pre></div>
 </li>
 <li>
@@ -465,63 +437,60 @@ current-context: svcs-acct-context
 <p><div class="lightgallery"><a data-sub-html="" href="../../_images/PMM_DBaaS_GKE_16.png"><img alt="" src="../../_images/PMM_DBaaS_GKE_16.png" /></a></div></p>
 </li>
 <li>
-<p>Register your GKE using kubeconfig from step 12.</p>
-<blockquote>
-<p><b style="color:goldenrod">Important</b> Ensure there are no stray new lines in the kubeconfig, especially in long lines like certificate or token.</p>
-</blockquote>
-<p><div class="lightgallery"><a data-sub-html="" href="../../_images/PMM_DBaaS_GKE_17.png"><img alt="" src="../../_images/PMM_DBaaS_GKE_17.png" /></a></div></p>
-<p><div class="lightgallery"><a data-sub-html="" href="../../_images/PMM_DBaaS_GKE_18.png"><img alt="" src="../../_images/PMM_DBaaS_GKE_18.png" /></a></div></p>
+<p>Use kubeconfig from step 9 to <a href="../../using/platform/dbaas.html#add-a-kubernetes-cluster">Add the Kubernetes cluster</a>.</p>
 </li>
 </ol>
 <h2 id="deleting-clusters">Deleting clusters<a class="headerlink" href="#deleting-clusters" title="Permanent link">&para;</a></h2>
-<p>You should delete all installation operators as the operators own resources.</p>
 <blockquote>
 <p>If a Public Address is set in PMM Settings, for each DB cluster an API Key is created which can be found on the page <code>/graph/org/apikeys</code>. You should not delete them (for now, until <a href="https://jira.percona.com/browse/PMM-8045">issue PMM-8045</a> is fixed) &ndash; once a DB cluster is removed from DBaaS, the related API Key is also removed.</p>
 </blockquote>
-<p>If you only run <code>eksctl delete cluster</code> without cleaning up the cluster first, there will be a lot of orphaned resources as Cloud Formations, Load Balancers, EC2 instances, Network interfaces, etc.</p>
-<p>In the <code>pmm-managed</code> repository, in the deploy directory there are 2 example bash scripts to install and delete the operators from the EKS cluster.</p>
-<p>The install script:</p>
-<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<p>For example, if you only run <code>eksctl delete cluster</code> to delete an Amazon EKS cluster without cleaning up the cluster first, there will be a lot of orphaned resources such as Cloud Formations, Load Balancers, EC2 instances, Network interfaces, etc. The same applies for Google GKE clusters.</p>
+<h3 id="cleaning-up-kubernetes-cluster">Cleaning up Kubernetes cluster<a class="headerlink" href="#cleaning-up-kubernetes-cluster" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>You should delete all database clusters, backups and restores.</p>
+<div class="highlight"><pre><span></span><code>kubectl delete perconaxtradbclusterbackups.pxc.percona.com --all
+kubectl delete perconaxtradbclusters.pxc.percona.com --all
+kubectl delete perconaxtradbclusterrestores.pxc.percona.com --all
 
-<span class="nv">TOP_DIR</span><span class="o">=</span><span class="k">$(</span>git rev-parse --show-toplevel<span class="k">)</span>
-<span class="nv">PMM_USER</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span><span class="nb">echo</span> -n <span class="s1">&#39;admin&#39;</span> <span class="p">|</span> base64<span class="k">)</span><span class="s2">&quot;</span><span class="p">;</span>
-<span class="nv">PMM_PASS</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span><span class="nb">echo</span> -n <span class="s1">&#39;admin_password&#39;</span> <span class="p">|</span> base64<span class="k">)</span><span class="s2">&quot;</span><span class="p">;</span>
-<span class="nv">KUBECTL_CMD</span><span class="o">=</span><span class="s2">&quot;kubectl --kubeconfig </span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span><span class="s2">/.kube/config_eks&quot;</span>
-
-<span class="c1"># Install the PXC operator</span>
-cat <span class="si">${</span><span class="nv">TOP_DIR</span><span class="si">}</span>/deploy/pxc_operator.yaml <span class="p">|</span> <span class="si">${</span><span class="nv">KUBECTL_CMD</span><span class="si">}</span> apply -f -
-
-<span class="c1"># Install the PSMDB operator</span>
-cat <span class="si">${</span><span class="nv">TOP_DIR</span><span class="si">}</span>/deploy/psmdb_operator.yaml <span class="p">|</span> <span class="si">${</span><span class="nv">KUBECTL_CMD</span><span class="si">}</span> apply -f -
+kubectl delete perconaservermongodbbackups.psmdb.percona.com --all
+kubectl delete perconaservermongodbs.psmdb.percona.com --all
+kubectl delete perconaservermongodbrestores.psmdb.percona.com --all
 </code></pre></div>
-<p>The delete script:</p>
-<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+</li>
+<li>
+<p>In the <code>dbaas-controller</code> repository, in the deploy directory there are manifests we use to deploy operators. Use them to delete operators and related resources from the cluster.</p>
+<blockquote>
+<p><b style="color:goldenrod">Important</b></p>
+<ul>
+<li>
+<p>Do NOT execute this step before all database clusters, backups and restores are deleted in the previous step. It may result in not being able to delete the namespace DBaaS lives in.</p>
+</li>
+<li>
+<p>Also be careful with this step if you are running DBaaS in more than one namespace as it deletes cluster level CustomResourceDefinitions needed to run DBaaS. This would break DBaaS in other namespaces. Delete just operators deployments in that case.</p>
+</li>
+</ul>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="c1"># Delete the PXC operator and related resources.</span>
+curl https://raw.githubusercontent.com/percona-platform/dbaas-controller/7a5fff023994cecf6bde15705365114004b50b41/deploy/pxc-operator.yaml <span class="p">|</span> kubectl delete -f -
 
-<span class="nv">TOP_DIR</span><span class="o">=</span><span class="k">$(</span>git rev-parse --show-toplevel<span class="k">)</span>
-<span class="nv">PMM_USER</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span><span class="nb">echo</span> -n <span class="s1">&#39;admin&#39;</span> <span class="p">|</span> base64<span class="k">)</span><span class="s2">&quot;</span><span class="p">;</span>
-<span class="nv">PMM_PASS</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span><span class="nb">echo</span> -n <span class="s1">&#39;admin_password&#39;</span> <span class="p">|</span> base64<span class="k">)</span><span class="s2">&quot;</span><span class="p">;</span>
-<span class="nv">KUBECTL_CMD</span><span class="o">=</span><span class="s2">&quot;kubectl --kubeconfig </span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span><span class="s2">/.kube/config_eks&quot;</span>
-
-<span class="c1"># Delete the PXC operator</span>
-cat <span class="si">${</span><span class="nv">TOP_DIR</span><span class="si">}</span>/deploy/pxc_operator.yaml <span class="p">|</span> <span class="si">${</span><span class="nv">KUBECTL_CMD</span><span class="si">}</span> delete -f -
-
-<span class="c1"># Delete the PSMDB operator</span>
-cat <span class="si">${</span><span class="nv">TOP_DIR</span><span class="si">}</span>/deploy/psmdb_operator.yaml <span class="p">|</span> <span class="si">${</span><span class="nv">KUBECTL_CMD</span><span class="si">}</span> delete -f -
+<span class="c1"># Delete the PSMDB operator and related resources.</span>
+curl https://raw.githubusercontent.com/percona-platform/dbaas-controller/7a5fff023994cecf6bde15705365114004b50b41/deploy/psmdb-operator.yaml <span class="p">|</span> kubectl delete -f -
 </code></pre></div>
-<p>(Both scripts are similar except the install script command is <code>apply</code> while in the delete script it is <code>delete</code>.)</p>
-<p>After deleting everything in the EKS cluster, run this command (using your own configuration path) and wait until the output only shows <code>service/kubernetes</code> before deleting the cluster with the <code>eksclt delete</code> command.</p>
-<div class="highlight"><pre><span></span><code>kubectl --kubeconfig ~/.kube/config_eks get all
+</li>
+<li>
+<p>Delete the namespace where the DBaaS is running, this will delete all remaining namespace level resources if any are left.</p>
+<div class="highlight"><pre><span></span><code>kubectl delete namespace &lt;your-namespace&gt;
 </code></pre></div>
-<p>Example output:</p>
-<div class="highlight"><pre><span></span><code>NAME                 TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
-service/kubernetes   ClusterIP   10.100.0.1   &lt;none&gt;        443/TCP   4d5h
-</code></pre></div>
-<p>If you don&rsquo;t need the cluster anymore, you can uninstall everything in it and destroy it:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Delete all volumes created by the operators:</span>
-kubectl <span class="o">[</span>--kubeconfig &lt;config file&gt;<span class="o">]</span> delete pvc --all
-<span class="c1"># Delete the cluster</span>
-eksctl delete cluster --name<span class="o">=</span>your-cluster-name
-</code></pre></div>
+</li>
+<li>
+<p>Delete the Kubernetes cluster. The way is based on your cloud provider.</p>
+<ul>
+<li><a href="https://cloud.google.com/kubernetes-engine/docs/how-to/deleting-a-cluster">Delete GKE cluster</a></li>
+<li><a href="https://docs.aws.amazon.com/eks/latest/userguide/delete-cluster.html">Delete Amazon EKS cluster</a></li>
+</ul>
+</li>
+</ol>
 <h2 id="run-pmm-server-as-a-docker-container-for-dbaas">Run PMM Server as a Docker container for DBaaS<a class="headerlink" href="#run-pmm-server-as-a-docker-container-for-dbaas" title="Permanent link">&para;</a></h2>
 <ol>
 <li>
@@ -594,7 +563,7 @@ eksctl delete cluster --name<span class="o">=</span>your-cluster-name
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-05-13
+            <i class="uil uil-refresh"></i> Page updated 2021-05-26
         </li>
         
     </ul>
@@ -791,6 +760,12 @@ eksctl delete cluster --name<span class="o">=</span>your-cluster-name
 
 <li class="toctree-l2">
     <a class="reference internal" href="../../using/alerting.html">Integrated Alerting</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../using/backup.html">Backup and Restore</a>
 
 
 
@@ -1347,6 +1322,12 @@ eksctl delete cluster --name<span class="o">=</span>your-cluster-name
 
 
 <ul class="toctree" id="toctree">
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.18.0.html">Percona Monitoring and Management 2.18.0</a>
+
+
 
 
 <li class="toctree-l2">
