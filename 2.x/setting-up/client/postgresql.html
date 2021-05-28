@@ -344,6 +344,18 @@ track_io_timing = on             # Capture read/write stats
 <p>Add instance to connect with a UNIX socket.</p>
 <div class="highlight"><pre><span></span><code>pmm-admin add postgresql --socket<span class="o">=</span>/var/run/postgresql
 </code></pre></div>
+<p>Add instance to connect with SSL/TLS.</p>
+<div class="highlight"><pre><span></span><code>pmm-admin add postgresql <span class="se">\</span>
+--username<span class="o">=</span>pmm <span class="se">\</span>
+--password<span class="o">=</span>password <span class="se">\</span>
+--tls <span class="se">\</span>
+--tls-skip-verify
+</code></pre></div>
+<p>where:</p>
+<ul>
+<li><code>--tls</code>: Use TLS to connect to the database.</li>
+<li><code>--tls-skip-verify</code>: Skip TLS certificates validation.</li>
+</ul>
 <blockquote>
 <p>See [pmm-admin man page]</p>
 </blockquote>
@@ -377,7 +389,7 @@ track_io_timing = on             # Capture read/write stats
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-05-12
+            <i class="uil uil-refresh"></i> Page updated 2021-05-28
         </li>
         
     </ul>
