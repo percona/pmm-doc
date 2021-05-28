@@ -128,13 +128,14 @@
 <p><b style="color:goldenrod">Caution</b> DBaaS functionality is currently in <a href="../../details/glossary.html#technical-preview">technical preview</a> and is subject to change.</p>
 </blockquote>
 <p>The DBaaS dashboard is where you add, remove, and operate on Kubernetes and database clusters.</p>
-<h2 id="activate-a-dbaas-feature">Activate a DBaaS feature<a class="headerlink" href="#activate-a-dbaas-feature" title="Permanent link">&para;</a></h2>
-<p><strong>To activate the <em>DBaaS</em> feature</strong>, select <i class="uil uil-bars"></i> <em>PMM</em> &rarr; <em>PMM Settings</em> &rarr; <em>Advanced settings</em>.
-Then turn on the DBaaS feature by clicking on <i class="uil uil-toggle-off"></i> toggle in the <em>Technical preview features</em> section of the page.</p>
-<p>To open the DBaaS dashboard:</p>
-<ul>
-<li>From the left menu, select <i class="uil uil-database"></i> <em>DBaaS</em>.</li>
-</ul>
+<h2 id="activate-dbaas">Activate DBaaS<a class="headerlink" href="#activate-dbaas" title="Permanent link">&para;</a></h2>
+<p>The DBaaS feature is turned off by default. To turn it on:</p>
+<ol>
+<li>Go to <em><i class="uil uil-bars"></i> PMM&rarr;PMM Settings&rarr;Advanced settings</em>.</li>
+<li>Click the <i class="uil uil-toggle-off"></i> toggle in the <em>Technical preview features</em> section of the page.</li>
+</ol>
+<h2 id="open-the-dbaas-dashboard">Open the DBaaS dashboard<a class="headerlink" href="#open-the-dbaas-dashboard" title="Permanent link">&para;</a></h2>
+<p>From the left menu, select <em><i class="uil uil-database"></i> DBaaS</em>.</p>
 <p><div class="lightgallery"><a data-sub-html="" href="../../_images/PMM_DBaaS_Kubernetes_Cluster_Panel.jpg"><img alt="" src="../../_images/PMM_DBaaS_Kubernetes_Cluster_Panel.jpg" /></a></div></p>
 <h2 id="kubernetes-clusters">Kubernetes clusters<a class="headerlink" href="#kubernetes-clusters" title="Permanent link">&para;</a></h2>
 <h3 id="add-a-kubernetes-cluster">Add a Kubernetes cluster<a class="headerlink" href="#add-a-kubernetes-cluster" title="Permanent link">&para;</a></h3>
@@ -217,7 +218,12 @@ Then turn on the DBaaS feature by clicking on <i class="uil uil-toggle-off"></i>
 <p>In section 1, <em>Basic Options</em>:</p>
 <ol>
 <li>
-<p>Enter a value for <em>Cluster name</em> that complies with domain naming rules.</p>
+<p>Enter a value for <em>Cluster name</em>. A cluster name:</p>
+<ul>
+<li>must begin with a lowercase letter;</li>
+<li>can comprise lowercase letters, numbers and dashes;</li>
+<li>must end with an alphanumeric character.</li>
+</ul>
 </li>
 <li>
 <p>Select a cluster from the <em>Kubernetes Cluster</em> menu.</p>
@@ -354,7 +360,7 @@ Then turn on the DBaaS feature by clicking on <i class="uil uil-toggle-off"></i>
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-05-26
+            <i class="uil uil-refresh"></i> Page updated 2021-05-28
         </li>
         
     </ul>
