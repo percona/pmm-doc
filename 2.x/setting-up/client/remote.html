@@ -32,7 +32,7 @@
 
 
 
-<title>Percona Monitoring and Management &mdash; Monitoring remote instances.</title>
+<title>Percona Monitoring and Management &mdash; Monitoring remote instances</title>
 
 <head>
     
@@ -54,6 +54,8 @@
 </script>
 
     <link rel="top" title="" href="" />
+    
+    <link rel="next" title="Using" href="../../using/index.html" />
     
     
 </head>
@@ -89,6 +91,14 @@
 <div class="related row">
     <ul class="nav nav-pills">
         
+        <li class="right" style="margin-right: 10px">
+            <a href="../../using/index.html" title="Using">Next</a>
+        </li>
+        
+        
+        <li class="right" style="margin-right: 10px">
+            <a href="haproxy.html" title="HAProxy">Previous</a>
+        </li>
         
         <li>
             <a href="">Home</a>
@@ -101,7 +111,7 @@
 <div class="small">
     <ul class="list-inline">
         <li class="left">
-            <a href="https://github.com/percona/pmm-doc/issues/new?title=PMM2: doc issue on page  'Monitoring remote instances.' (setting-up/client/remote.html)&body=Please describe the issue here"
+            <a href="https://github.com/percona/pmm-doc/issues/new?title=PMM2: doc issue on page  'Monitoring remote instances' (setting-up/client/remote.html)&body=Please describe the issue here"
                 target="_blank" title="Report an issue with this page on GitHub"><i class="uil uil-exclamation-triangle"></i> Report a problem with this page</a>
         </li>
         <li class="pull-right">
@@ -113,9 +123,9 @@
 
                 <div class="bodywrapper">
                     <div class="body">
-                        <h1 id="monitoring-remote-instances">Monitoring remote instances.<a class="headerlink" href="#monitoring-remote-instances" title="Permanent link">&para;</a></h1>
-<h2 id="recommended-settings">Recommended settings.<a class="headerlink" href="#recommended-settings" title="Permanent link">&para;</a></h2>
-<p>When monitoring remote instances including RDS and Google instances, network latency might affect the scrape process and throw timeout errors. 
+                        <h1 id="monitoring-remote-instances">Monitoring remote instances<a class="headerlink" href="#monitoring-remote-instances" title="Permanent link">&para;</a></h1>
+<h2 id="recommended-settings">Recommended settings<a class="headerlink" href="#recommended-settings" title="Permanent link">&para;</a></h2>
+<p>When monitoring remote instances including RDS and Google instances, network latency might affect the scrape process and throw timeout errors.
 For this reason, it is recommended to lower the metrics resolution in the settings section using the menu on the left side (The gear icon).</p>
 <p>Starting with PMM 2.18, the scrape timeout has been updated according to the following rules:</p>
 <ul>
@@ -123,9 +133,9 @@ For this reason, it is recommended to lower the metrics resolution in the settin
 <li>For resolutions &lt;= 10 seconds, timeout is set to resolution minus 1 second. For example, for 10 second resolution, timeout will be set at 9 seconds.</li>
 <li>For lower resolutions (values &gt; 10 seconds), the scrape timeout is set to 90% of the resolution time. For example, for 60 second resolution, the scrape timeout will be set to 54 seconds.</li>
 </ul>
-<h2 id="how-to-check-for-scrape-timeouts">How to check for scrape timeouts.<a class="headerlink" href="#how-to-check-for-scrape-timeouts" title="Permanent link">&para;</a></h2>
+<h2 id="how-to-check-for-scrape-timeouts">How to check for scrape timeouts<a class="headerlink" href="#how-to-check-for-scrape-timeouts" title="Permanent link">&para;</a></h2>
 <p>Sometimes it is hard to check if you are using the correct values to scrape or if there some other reason why there is no data in a dashboard even when the instance has been added correctly and the agent is running.</p>
-<p>One aditional step you can do is to check for scrape target statuses. Browse to http://<your-pmm-server-address-here>/prometheus/targets and then click on the Unhealthy button. </p>
+<p>One aditional step you can do is to check for scrape target statuses. Browse to http://<your-pmm-server-address-here>/prometheus/targets and then click on the Unhealthy button.</p>
 <p><div class="lightgallery"><a data-sub-html="image" href="../../_images/scrape_targets_01.png"><img alt="image" src="../../_images/scrape_targets_01.png" /></a></div></p>
 <p>The page will show only agents having issues while scrapping and the scrape result including the error messages.</p>
 <p><div class="lightgallery"><a data-sub-html="image" href="../../_images/scrape_targets_02.png"><img alt="image" src="../../_images/scrape_targets_02.png" /></a></div></p>
@@ -149,6 +159,14 @@ For this reason, it is recommended to lower the metrics resolution in the settin
 <div class="related row">
     <ul class="nav nav-pills">
         
+        <li class="right" style="margin-right: 10px">
+            <a href="../../using/index.html" title="Using">Next</a>
+        </li>
+        
+        
+        <li class="right" style="margin-right: 10px">
+            <a href="haproxy.html" title="HAProxy">Previous</a>
+        </li>
         
         <li>
             <a href="">Home</a>
@@ -297,6 +315,12 @@ For this reason, it is recommended to lower the metrics resolution in the settin
 
 <li class="toctree-l3">
     <a class="reference internal" href="haproxy.html">HAProxy</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="remote.html">Monitoring remote instances</a>
 
 
 
@@ -1063,6 +1087,16 @@ For this reason, it is recommended to lower the metrics resolution in the settin
 
         
 
+<h4>Previous page</h4>
+<p class="topless">
+    <a href="haproxy.html" title="previous chapter">HAProxy</a>
+</p>
+
+
+<h4>Next page</h4>
+<p class="topless">
+    <a href="../../using/index.html" title="next chapter">Using</a>
+</p>
 
 
         {@ product_series @}
