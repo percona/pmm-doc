@@ -172,40 +172,31 @@
 </ul>
 <h2 id="bugs-fixed">Bugs Fixed<a class="headerlink" href="#bugs-fixed" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a href="https://jira.percona.com/browse/PMM-8058">PMM-8058</a>: Integrated Alerting: Firing alerts disappear after docker restart</li>
-<li><a href="https://jira.percona.com/browse/PMM-8069">PMM-8069</a>: Integrated Alerting: Alert template now accepts <code>.yaml</code> extension in addition to <code>.yml</code> when manually staging on the filesystem</li>
 <li><a href="https://jira.percona.com/browse/PMM-8053">PMM-8053</a>: Better error handling for non-admins who try to access the settings page</li>
-<li><a href="https://jira.percona.com/browse/PMM-7916">PMM-7916</a>: DBaaS: Wrong required resources when editing a cluster</li>
-<li><a href="https://jira.percona.com/browse/PMM-7941">PMM-7941</a>: mongodb_exporter provides a wrong replication status value</li>
-<li><a href="https://jira.percona.com/browse/PMM-5350">PMM-5350</a>: 500 Internal Server Error due to file permissions</li>
-<li><a href="https://jira.percona.com/browse/PMM-7302">PMM-7302</a>: The attribute max_alerts is not valid for webhook_configs for AlertManager version included in PMM v2.13.0</li>
+<li><a href="https://jira.percona.com/browse/PMM-7941">PMM-7941</a>: Wrong replication status for MongoDB Replica Set  </li>
+<li><a href="https://jira.percona.com/browse/PMM-7302">PMM-7302</a>: Webhook usage with max_alerts attribute for Alertmanager configuration causes errors for PMM</li>
 <li><a href="https://jira.percona.com/browse/PMM-7224">PMM-7224</a>: Instance Overview dashboards behave inconsistently</li>
-<li><a href="https://jira.percona.com/browse/PMM-6864">PMM-6864</a>: PMM2 Oplog Recovery Window dashboard is broken (Thanks to Clyde Shillingford for reporting this issue)</li>
-<li><a href="https://jira.percona.com/browse/PMM-6543">PMM-6543</a>: Users logged out of PMM after some period</li>
-<li><a href="https://jira.percona.com/browse/PMM-7910">PMM-7910</a>: MongoDB Query Collector never recovers from failed cursor (Thanks to Yann Rouillard for reporting this issue)</li>
-<li><a href="https://jira.percona.com/browse/PMM-6890">PMM-6890</a>: The &ldquo;Environment&rdquo; filter not working (Thanks to Daniel Guzman Burgos for reporting this issue)</li>
-<li><a href="https://jira.percona.com/browse/PMM-6451">PMM-6451</a>: Passing parameters between QAN and dashboards</li>
-<li><a href="https://jira.percona.com/browse/PMM-5368">PMM-5368</a>: &ldquo;Failed to get PMM Server parameter&rdquo; after config. (Thanks to Martin Wittwer for reporting this issue)</li>
-<li><a href="https://jira.percona.com/browse/PMM-5135">PMM-5135</a>: Query Example is often empty (Thanks to Mikhail Solovyev for reporting this issue)</li>
-<li><a href="https://jira.percona.com/browse/PMM-7673">PMM-7673</a>: Integrated Alerting: Actions column is transparent</li>
-<li><a href="https://jira.percona.com/browse/PMM-8083">PMM-8083</a>: PMM-Agent Config is failing</li>
+<li><a href="https://jira.percona.com/browse/PMM-6864">PMM-6864</a>: MongoDB Oplog Recovery Window dashboard is broken (Thanks to Clyde Shillingford for reporting this issue)</li>
+<li><a href="https://jira.percona.com/browse/PMM-7910">PMM-7910</a>: MongoDB Query metrics stops being collected if the cursor is failed once (Thanks to Yann Rouillard for reporting this issue)</li>
+<li><a href="https://jira.percona.com/browse/PMM-6451">PMM-6451</a>: Passing parameters between Query Analytics and Dashboards is broken</li>
+<li><a href="https://jira.percona.com/browse/PMM-5368">PMM-5368</a>: Unclear message &ldquo;Failed to get PMM Server parameter&rdquo; after config (Thanks to Martin Wittwer for reporting this issue)</li>
+<li><a href="https://jira.percona.com/browse/PMM-5135">PMM-5135</a>: Query Example is often empty for MySQL 8+ (Thanks to Mikhail Solovyev for reporting this issue)</li>
+<li><a href="https://jira.percona.com/browse/PMM-8083">PMM-8083</a>: Better config file checking during configuration </li>
 <li><a href="https://jira.percona.com/browse/PMM-7958">PMM-7958</a>: Databases cannot be deleted while Postgres is being monitored</li>
 <li><a href="https://jira.percona.com/browse/PMM-6553">PMM-6553</a>: Slow log size units are not defined in help</li>
-<li><a href="https://jira.percona.com/browse/PMM-6154">PMM-6154</a>: News panel does not work in fully isolated from internet environment</li>
-<li><a href="https://jira.percona.com/browse/PMM-5931">PMM-5931</a>: Graph and values are identical for TOTAL and N/A</li>
+<li><a href="https://jira.percona.com/browse/PMM-5931">PMM-5931</a>: Graph and values in Query Analytics are identical for TOTAL and case when data is Not Available </li>
 <li><a href="https://jira.percona.com/browse/PMM-5538">PMM-5538</a>: Heavy Load with Distinct Queries on Slowlog enabled could cause no data being reported</li>
-<li><a href="https://jira.percona.com/browse/PMM-8095">PMM-8095</a>: Community footer link broken</li>
-<li><a href="https://jira.percona.com/browse/PMM-8088">PMM-8088</a>: DBaaS: controller leaves kubeconfig behind in case of error</li>
+<li><a href="https://jira.percona.com/browse/PMM-8095">PMM-8095</a>: The link to the Community section in the PMM footer is broken </li>
 <li><a href="https://jira.percona.com/browse/PMM-7982">PMM-7982</a>: Query Analytics: Sorting element for the columns is hard to access</li>
-<li><a href="https://jira.percona.com/browse/PMM-7753">PMM-7753</a>: Edit DB Cluster shows wrong values by default</li>
-<li><a href="https://jira.percona.com/browse/PMM-7706">PMM-7706</a>: LDAP/AD users with Admin role mapping cannot see Integrated Alerting Option from left menu</li>
-<li><a href="https://jira.percona.com/browse/PMM-7315">PMM-7315</a>: Prevent error message when attempting to list DB clusters that have been requested to be deleted</li>
-<li><a href="https://jira.percona.com/browse/PMM-7184">PMM-7184</a>: DBaaS: Connection column showing different values after deleting DB cluster</li>
-<li><a href="https://jira.percona.com/browse/PMM-6676">PMM-6676</a>: Open Terms and Privacy in New tab</li>
+<li><a href="https://jira.percona.com/browse/PMM-6676">PMM-6676</a>: Terms and Privacy pages opened in the current tab complicates registration process </li>
 <li><a href="https://jira.percona.com/browse/PMM-6552">PMM-6552</a>: Do not register with server if config file fails to create on client</li>
-<li><a href="https://jira.percona.com/browse/PMM-5220">PMM-5220</a>: PMM Update for AMI instances shows no Log in Update Popup</li>
-<li><a href="https://jira.percona.com/browse/PMM-1880">PMM-1880</a>: Text message while query data is not yet loaded</li>
-<li><a href="https://jira.percona.com/browse/PMM-6505">PMM-6505</a>: Change style for error messages on Add RDS instance page</li>
+<li><a href="https://jira.percona.com/browse/PMM-6505">PMM-6505</a>: Inconsistent style for error messages on Add RDS instance page.</li>
+<li><a href="https://jira.percona.com/browse/PMM-8069">PMM-8069</a>: Integrated Alerting: Alert template now accepts <code>.yaml</code> extension in addition to <code>.yml</code> when manually staging on the filesystem</li>
+<li><a href="https://jira.percona.com/browse/PMM-7673">PMM-7673</a>: Integrated Alerting: Actions column is transparent</li>
+<li><a href="https://jira.percona.com/browse/PMM-7916">PMM-7916</a>: DBaaS: Wrong required resources when editing a cluster</li>
+<li><a href="https://jira.percona.com/browse/PMM-7753">PMM-7753</a>: DBaaS: Edit DB Cluster shows wrong values by default</li>
+<li><a href="https://jira.percona.com/browse/PMM-7184">PMM-7184</a>: DBaaS: Connection column showing different values after deleting DB cluster</li>
+<li><a href="https://jira.percona.com/browse/PMM-8088">PMM-8088</a>: DBaaS: In case of error, the kubeconfig file is left in the system</li>
 </ul>
                     </div>
                 </div>
@@ -214,7 +205,7 @@
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-05-26
+            <i class="uil uil-refresh"></i> Page updated 2021-05-31
         </li>
         
     </ul>
