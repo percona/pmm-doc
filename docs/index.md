@@ -4,26 +4,26 @@
 
 PMM helps you improve the performance of databases, simplify their management, and strengthen their security. It is efficient, quick to set up and easy to use. It runs in cloud, on-prem, or across hybrid platforms. It's supported by [our legendary expertise][PERCONA_SERVICES] in open source databases, and by a [vibrant developer and user community][PMM_FORUM].
 
-!!! important ""
+!!! note ""
     The latest release is <a href="release-notes/{{release}}.html">PMM {{release}}</a>.
 
-??? "What does it do?"
+??? note "What does it do?"
     - Collects performance data from databases and their hosts.
     - Visualizes thousands of performance metrics, out-of-the-box.
     - Checks databases for security threats.
 
-??? "How can it help me?"
+??? note "How can it help me?"
     - Drill-down and pinpoint where and why a database is running slowly.
     - Watch performance over time.
     - Solve security concerns before they are exploited.
 
-???+ "What does it look like?"
+??? note "What does it look like?"
     Here's how the home page looks on our
     <a href='https://pmmdemo.percona.com/' target='_blank'>live demo system.</a> (Click image to expand.)
 
     ![!](_images/PMM_Home_Dashboard.jpg){ width=600px .imgcenter }
 
-???+ "How do I run it?"
+??? note "How do I run it?"
     PMM is one *server* and as many *clients* as there are systems you want to monitor. PMM Server collects metrics data from PMM Clients and shows it in a web GUI. PMM Client runs on all systems you want to monitor.
 
     Go to:
@@ -33,7 +33,7 @@ PMM helps you improve the performance of databases, simplify their management, a
 
     Or see the [Quickstart installation guide.][PMM_QUICKSTART]
 
-??? "How does it work?"
+??? note "How does it work?"
     PMM is a client/server application built by us with our own and third-party open-source tools. (Read more in [Architecture](details/architecture.md).)
 
     ```plantuml source="_resources/diagrams/1_PMM_Context.puml"
@@ -51,7 +51,7 @@ PMM helps you improve the performance of databases, simplify their management, a
 
     [Percona Platform](using/platform/) (in development) provides value-added services for PMM.
 
-??? "Where next?"
+??? note "Where next?"
     Click a link jump to that section.
 
     ```plantuml format="svg_object" width="90%" height="90%" source="_resources/diagrams/Topics.puml"
