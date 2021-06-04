@@ -9,33 +9,31 @@ PMM helps you improve the performance of databases, simplify their management, a
 
 ??? "What does it do?"
     - Collects performance data from databases and their hosts.
-    - Visualizes thousands of performance metrics, out-of-the-box;
+    - Visualizes thousands of performance metrics, out-of-the-box.
     - Checks databases for security threats.
 
-??? "What can I do with it?"
+??? "How can it help me?"
     - Drill-down and pinpoint where and why a database is running slowly.
     - Watch performance over time.
     - Solve security concerns before they are exploited.
 
-??? "What does it look like?"
+???+ "What does it look like?"
     Here's how the home page looks on our
-    <a href='https://pmmdemo.percona.com/' target='_blank'>live demo system.</a>
+    <a href='https://pmmdemo.percona.com/' target='_blank'>live demo system.</a> (Click image to expand.)
 
-    ![!](_images/PMM_Home_Dashboard.jpg){ width="400px" }
+    ![!](_images/PMM_Home_Dashboard.jpg){ width=600px .imgcenter }
 
-??? "How do I get started?"
-
+???+ "How do I run it?"
     PMM is one *server* and as many *clients* as there are systems you want to monitor. PMM Server collects metrics data from PMM Clients and shows it in a web GUI. PMM Client runs on all systems you want to monitor.
 
-    Read about:
+    Go to:
 
-    - [setting up PMM Server](setting-up/server/index.md);
-    - [setting up PMM Client](setting-up/client/index.md).
+    - [Setting up PMM Server](setting-up/server/index.md)
+    - [Setting up PMM Client](setting-up/client/index.md)
 
-    Or see the [**Quickstart installation guide.**][PMM_QUICKSTART]
+    Or see the [Quickstart installation guide.][PMM_QUICKSTART]
 
 ??? "How does it work?"
-
     PMM is a client/server application built by us with our own and third-party open-source tools. (Read more in [Architecture](details/architecture.md).)
 
     ```plantuml source="_resources/diagrams/1_PMM_Context.puml"
@@ -54,8 +52,7 @@ PMM helps you improve the performance of databases, simplify their management, a
     [Percona Platform](using/platform/) (in development) provides value-added services for PMM.
 
 ??? "Where next?"
-
-    Click a link jump to a section.
+    Click a link jump to that section.
 
     ```plantuml format="svg_object" width="90%" height="90%" source="_resources/diagrams/Topics.puml"
     ```
