@@ -29,7 +29,7 @@ mindmapDiagram {
 +++_ [[$base/how-to/configure.html Configure]]
 +++_ [[$base/how-to/upgrade.html Upgrade]]
 +++_ [[$base/details/commands/ Command-line tools]]
-+++_ [[$base/how-to/secure.html Security]]
++++_ [[$base/how-to/secure.html Secure]]
 +++_ [[$base/how-to/optimize.html Optimize]]
 +++_ [[$base/details/architecture.html Architecture]]
 --_ [[$base/using/interface.html User interface]]

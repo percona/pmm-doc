@@ -39,11 +39,11 @@ Full instructions for setting up are in:
 
 Links to popular sections.
 
-```plantuml format="svg_object" width="90%" height="90%" source="_resources/diagrams/Topics.puml"
+```plantuml format="svg_object" width="90%" height="90%" source="_resources/diagrams/Navigation_Topics.puml"
 ```
 
 ??? note "Full section map (click to view)"
-    ```plantuml format="svg_object" width="100%" height="100%" source="_resources/diagrams/Map.puml"
+    ```plantuml format="svg_object" width="100%" height="100%" source="_resources/diagrams/Navigation_Map.puml"
     ```
 
 [PERCONA_SERVICES]: https://www.percona.com/services
