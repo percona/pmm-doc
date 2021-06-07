@@ -136,15 +136,9 @@
 <p>This is for the latest release, <strong>PMM 2.18.0</strong> (<a href="release-notes/2.18.0.html">Release Notes</a>).</p>
 </div>
 <p>Percona Monitoring and Management helps you improve the performance of databases, simplify their management, and strengthen their security. It is efficient, quick to <a href="setting-up/index.html">set up</a> and easy to use.</p>
-<p>PMM is one <a href="details/architecture.html#pmm-server">server</a> and as many <a href="details/architecture.html#pmm-client">clients</a> as there are systems you want to monitor.</p>
-<ul>
-<li>PMM Server receives metrics from PMM Clients and shows them in a web UI.</li>
-<li>PMM Client runs on all systems you want to monitor.</li>
-</ul>
+<p>A minimal PMM set-up comprises one <a href="details/architecture.html#pmm-server">server</a> and a <a href="details/architecture.html#pmm-client">client agent</a> on every system you want to monitor. Clients send metrics to the server which stores, collates and displays them.</p>
 <p>Here&rsquo;s how the web UI home page looks on our <a href='https://pmmdemo.percona.com/' target='_blank'>live demo system</a>. (It&rsquo;s free to use&mdash;why not try it?)</p>
-<p><a href='https://pmmdemo.percona.com/' target='_blank'>
-<img src="_images/PMM_Home_Dashboard.jpg" width=600px class="imgcenter"/>
-</a></p>
+<p><a href='https://pmmdemo.percona.com/' target='_blank'><img src="_images/PMM_Home_Dashboard.jpg" width=600px class="imgcenter"/></a></p>
 <p>PMM can run as a cloud service, on-prem, or across hybrid platforms. It&rsquo;s supported by our <a href="https://www.percona.com/services">legendary expertise</a> in open source databases, and by a vibrant developer and user <a href="https://www.percona.com/forums/questions-discussions/percona-monitoring-and-management">community</a>.</p>
 <h2 id="next-steps">Next steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
 <p>The <a href="https://www.percona.com/software/pmm/quickstart">Quickstart installation guide</a> shows how to run PMM Server as a Docker container, and how to install PMM Client on Ubuntu or Red Hat Linux hosts.</p>
