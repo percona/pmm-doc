@@ -2,24 +2,29 @@
 
 **Percona Monitoring and Management** (PMM) is a free, open-source monitoring tool for MySQL, PostgreSQL, MongoDB, and ProxySQL, and the servers they run on.
 
-- PMM collects from databases and their hosts thousands of out-of-the-box performance metrics.
+- PMM **collects** from databases and their hosts thousands of out-of-the-box performance **metrics**.
 
-- The PMM [web UI](using/interface.md) visualizes data in [dashboards](details/dashboards/).
+- The PMM [web UI](using/interface.md) **visualizes data** in [dashboards](details/dashboards/).
 
 - Additional features include checking databases for [security threats](using/platform/security-threat-tool.md).
 
 !!! important ""
-    This is for the latest release, **PMM {{release}}**. ([Release notes](release-notes/{{release}}.md).)
+    This is for the latest release, **PMM {{release}}** ([Release Notes](release-notes/{{release}}.md)).
 
-PMM helps you improve the performance of databases, simplify their management, and strengthen their security. It is efficient, quick to [set up](setting-up/index.md) and easy to use. It runs in cloud, on-prem, or across hybrid platforms. It's supported by our [legendary expertise][PERCONA_SERVICES] in open source databases, and by a vibrant developer and user [community][PMM_FORUM].
+Percona Monitoring and Management helps you improve the performance of databases, simplify their management, and strengthen their security. It is efficient, quick to [set up](setting-up/index.md) and easy to use.
 
-PMM is one [server](details/architecture.md#pmm-server) and as many [clients](details/architecture.md#pmm-client) as there are systems you want to monitor. PMM Server collects metrics data from PMM Clients and shows it in a web UI. PMM Client runs on all systems you want to monitor.
+PMM is one [server](details/architecture.md#pmm-server) and as many [clients](details/architecture.md#pmm-client) as there are systems you want to monitor.
+
+- PMM Server receives metrics from PMM Clients and shows them in a web UI.
+- PMM Client runs on all systems you want to monitor.
 
 Here's how the web UI home page looks on our <a href='https://pmmdemo.percona.com/' target='_blank'>live demo system</a>. (It's free to use---why not try it?)
 
 <a href='https://pmmdemo.percona.com/' target='_blank'>
 <img src="_images/PMM_Home_Dashboard.jpg" width=600px class="imgcenter"/>
 </a>
+
+PMM can run as a cloud service, on-prem, or across hybrid platforms. It's supported by our [legendary expertise][PERCONA_SERVICES] in open source databases, and by a vibrant developer and user [community][PMM_FORUM].
 
 ## Next steps
 
@@ -37,7 +42,7 @@ Links to popular sections.
 ```plantuml format="svg_object" width="90%" height="90%" source="_resources/diagrams/Topics.puml"
 ```
 
-??? tip "Full section map"
+??? note "Full section map"
     ```plantuml format="svg_object" width="100%" height="100%" source="_resources/diagrams/Map.puml"
     ```
 
