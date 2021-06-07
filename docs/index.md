@@ -4,14 +4,14 @@
 
 - PMM collects from databases and their hosts thousands of out-of-the-box performance metrics.
 
-- The PMM [web UI](using/interface.md) visualizes data in [dashboards](details/dashboards/)
+- The PMM [web UI](using/interface.md) visualizes data in [dashboards](details/dashboards/).
 
 - Additional features include checking databases for [security threats](using/platform/security-threat-tool.md).
 
 !!! important ""
     This is for the latest release, **PMM {{release}}**. ([Release notes](release-notes/{{release}}.md).)
 
-PMM helps you improve the performance of databases, simplify their management, and strengthen their security. It is efficient, quick to set up and easy to use. It runs in cloud, on-prem, or across hybrid platforms. It's supported by [our legendary expertise][PERCONA_SERVICES] in open source databases, and by a [vibrant developer and user community][PMM_FORUM].
+PMM helps you improve the performance of databases, simplify their management, and strengthen their security. It is efficient, quick to [set up](setting-up/index.md) and easy to use. It runs in cloud, on-prem, or across hybrid platforms. It's supported by our [legendary expertise][PERCONA_SERVICES] in open source databases, and by a vibrant developer and user [community][PMM_FORUM].
 
 PMM is one [server](details/architecture.md#pmm-server) and as many [clients](details/architecture.md#pmm-client) as there are systems you want to monitor. PMM Server collects metrics data from PMM Clients and shows it in a web UI. PMM Client runs on all systems you want to monitor.
 
