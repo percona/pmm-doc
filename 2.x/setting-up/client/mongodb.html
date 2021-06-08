@@ -288,7 +288,7 @@ mongo <span class="m">127</span>.0.0.1:27017
 <h2 id="tips">Tips<a class="headerlink" href="#tips" title="Permanent link">&para;</a></h2>
 <ul>
 <li>
-<p>When adding nodes of a replica set, add each node separately using the same cluster name.</p>
+<p>When adding nodes of a sharded cluster, add each node separately using the <code>--cluster mycluster</code> option for the MongoDB Cluster Summary dashboard to populate correctly.</p>
 </li>
 <li>
 <p>Atlas doesn&rsquo;t support direct connections. When connecting to an Atlas instance, use the <code>pmm-admin</code> option <code>--direct-connection=false</code>. (Doing so will prevent replicaset status from working and the MongoDB Overview dashboard widget will show invalid values.)</p>
@@ -344,7 +344,7 @@ mongo <span class="m">127</span>.0.0.1:27017
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-05-31
+            <i class="uil uil-refresh"></i> Page updated 2021-06-08
         </li>
         
     </ul>
