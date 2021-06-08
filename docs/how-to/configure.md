@@ -95,7 +95,7 @@ We do not gather anything that would make the system identifiable, but the follo
 
 The first telemetry reporting of a new PMM Server instance is delayed by 24 hours to allow sufficient time to disable the service for those that do not wish to share any information.
 
-There is a landing page for this service, available at [check.percona.com](https://check.percona.com), which clearly explains what this service is.
+The landing page for this service, [check.percona.com](https://check.percona.com), explains what this service is.
 
 Grafana’s [anonymous usage statistics](https://grafana.com/docs/grafana/latest/administration/configuration/#reporting-enabled) is not managed by PMM. To activate it, you must change the PMM Server container configuration after each update.
 
