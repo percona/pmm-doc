@@ -62,12 +62,12 @@
 
 <body>
     
-<link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.3/css/line.css" type="text/css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" type="text/css">
 <link rel="stylesheet" href="../../css/version-select.css" type="text/css">
 <link rel="stylesheet" href="../../css/toctree.css" type="text/css">
+<link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.3/css/line.css" type="text/css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" type="text/css">
 <link rel="stylesheet" href="../../css/percona.css" type="text/css">
-<link rel="stylesheet" href="../../css/lightgallery.min.cs" type="text/css">
+<link rel="stylesheet" href="../../css/lightgallery.min.css" type="text/css">
 
     
 <script src="../../js/version-select.js" type="text/javascript"></script>
@@ -167,11 +167,11 @@ percona/pmm-server:2
 <h3 id="docker-environment-variables">Docker environment variables<a class="headerlink" href="#docker-environment-variables" title="Permanent link">&para;</a></h3>
 <p>It is possible to change some server setting by using environment variables when starting the Docker container.
 Use <code>-e var=value</code> in your pmm-server run command.</p>
-<table class="table">
+<table>
 <thead>
 <tr>
-<th scope="col">Variable</th>
-<th scope="col">Description</th>
+<th>Variable</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
@@ -243,11 +243,11 @@ Use <code>-e var=value</code> in your pmm-server run command.</p>
 </table>
 <h4 id="ignored-variables">Ignored variables<a class="headerlink" href="#ignored-variables" title="Permanent link">&para;</a></h4>
 <p>These variables will be ignored by <code>pmm-managed</code> when starting the server. If any other variable is found, it will be considered invalid and the server won&rsquo;t start.</p>
-<table class="table">
+<table>
 <thead>
 <tr>
-<th scope="col">Variable</th>
-<th scope="col">Description</th>
+<th>Variable</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
