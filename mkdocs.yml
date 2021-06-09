@@ -12,24 +12,20 @@ edit_uri: edit/main/docs/
 use_directory_urls: false
 
 theme:
-  name: material
-  logo: _images/percona-logo.svg
-  favicon: _images/percona-favicon.ico
-  palette:
-
-    # Light mode
-    - media: "(prefers-color-scheme: light)"
-      scheme: percona-light
-      toggle:
-        icon: material/toggle-switch-off-outline
-        name: Switch to dark mode
-
-    # Dark mode
-    - media: "(prefers-color-scheme: dark)"
-      scheme: slate
-      toggle:
-        icon: material/toggle-switch
-        name: Switch to light mode
+    name: material
+    logo: _images/percona-logo.svg
+    favicon: _images/percona-favicon.ico
+    palette:
+      - media: "(prefers-color-scheme: light)"
+        scheme: percona-light
+        toggle:
+          icon: material/toggle-switch-off-outline
+          name: Switch to night mode
+      - media: "(prefers-color-scheme: dark)"
+        scheme: slate
+        toggle:
+          icon: material/toggle-switch
+          name: Switch to day mode
 
 extra_css:
   - https://unicons.iconscout.com/release/v3.0.3/css/line.css
