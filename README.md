@@ -117,8 +117,7 @@ View the site at <http://0.0.0.0:8000>
 - `nav.yml`: Navigation (`nav`) element in separate file defining table of contents.
 - `docs`:
     - `*.md`: Markdown files.
-    - `_images/*`: Images and image resources.
-    - `_videos/*`: Videos.
+    - `_images/*`: Images, image resources, videos.
     - `css`: Styling.
     - `js`: JavaScript files.
 - `_resources`:
