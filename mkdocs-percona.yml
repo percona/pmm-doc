@@ -1,6 +1,4 @@
-# MkDocs configuration for HTML publishing to percona.com
-# There is no theme unless specified on the command line. See README.md
-
+# MkDocs configuration
 site_name: Percona Monitoring and Management
 site_description: Documentation
 site_author: Percona LLC
@@ -46,7 +44,7 @@ markdown_extensions:
   - pymdownx.tilde
   - pymdownx.superfences
   - pymdownx.highlight:
-        linenums: false
+      linenums: false
   - plantuml_markdown
   - lightgallery
 

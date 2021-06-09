@@ -68,7 +68,13 @@ plugins:
           - 'variables.yml' # Use in markdown as '{{ VAR }}'
   - exclude: # Don't process these files
         glob:
-          - setting-up/client/docker.md # Moved to setting-up/client/index.md
+          - 'setting-up/client/docker.md'
+    - mike:
+        version_selector: true
+        css_dir: css
+        javascript_dir: js
+        canonical_version: null
+    - section-index
 
 extra: # Used in main.html template and can't be externalised
     open_issue_text: '<i class="uil uil-exclamation-triangle"></i> Report a problem
