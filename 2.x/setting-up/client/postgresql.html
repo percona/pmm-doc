@@ -181,8 +181,8 @@ psql -c <span class="s2">&quot;select pg_reload_conf()&quot;</span>
 </li>
 </ol>
 <p>We recommend choosing only one of these. <strong>If you use both, you will get duplicate metrics.</strong></p>
-<div class="admonition important alert alert-warning">
-<p class="admonition-title">Important</p>
+<div class="admonition caution alert alert-warning">
+<p class="admonition-title">Caution</p>
 <p>While we recommend use of the newer <code>pg_stat_monitor</code> extension, be aware it is currently in beta phase and unsupported.</p>
 </div>
 <p>Here are the benefits and drawbacks of each.</p>
@@ -212,19 +212,19 @@ psql -c <span class="s2">&quot;select pg_reload_conf()&quot;</span>
 </tr>
 </tbody>
 </table>
-<blockquote>
-<p><strong>About <em>bucket-based data aggregation</em></strong></p>
+<div class="admonition note alert alert-primary">
+<p class="admonition-title">Bucket-based data aggregation</p>
 <p><code>pg_stat_monitor</code> collects statistics and aggregates data in a data collection unit called a <em>bucket</em>. These are linked together to form a <em>bucket chain</em>.</p>
 <p>You can specify:</p>
 <ul>
-<li>the number of buckets (the length of the chain)</li>
-<li>how much space is available for all buckets</li>
-<li>a time limit for each bucket&rsquo;s data collection (the <em>bucket expiry</em>)</li>
+<li>the number of buckets (the length of the chain);</li>
+<li>how much space is available for all buckets;</li>
+<li>a time limit for each bucket&rsquo;s data collection (the <em>bucket expiry</em>).</li>
 </ul>
-<p>When a bucket&rsquo;s expiration time is reached, accumulated statistics are reset and data is stored in the next available bucket in &gt; the chain.</p>
+<p>When a bucket&rsquo;s expiration time is reached, accumulated statistics are reset and data is stored in the next available bucket in the chain.</p>
 <p>When all buckets in the chain have been used, the first bucket is reused and its contents are overwritten.</p>
 <p>If a bucket fills before its expiration time is reached, data is discarded.</p>
-</blockquote>
+</div>
 <h3 id="pg_stat_statements"><code>pg_stat_statements</code><a class="headerlink" href="#pg_stat_statements" title="Permanent link">&para;</a></h3>
 <p><strong>Install</strong></p>
 <ul>
@@ -260,15 +260,15 @@ track_io_timing = on             # Capture read/write stats
 </ol>
 <p>You can now <a href="#add-a-service">add the service</a>.</p>
 <h3 id="pg_stat_monitor"><code>pg_stat_monitor</code><a class="headerlink" href="#pg_stat_monitor" title="Permanent link">&para;</a></h3>
+<div class="admonition caution alert alert-warning">
+<p class="admonition-title">Caution</p>
+<p><code>pg_stat_monitor</code> is currently in beta phase and is unsupported.</p>
+</div>
 <p><code>pg_stat_monitor</code> has been tested with:</p>
 <ul>
 <li>PostgreSQL versions 11, 12, 13.</li>
 <li>Percona Distribution for PostgreSQL versions 11, 12, 13.</li>
 </ul>
-<div class="admonition important alert alert-warning">
-<p class="admonition-title">Important</p>
-<p><code>pg_stat_monitor</code> is currently in beta phase and is unsupported.</p>
-</div>
 <p><strong>Install</strong></p>
 <ul>
 <li>
@@ -289,13 +289,13 @@ track_io_timing = on             # Capture read/write stats
 <li>
 <p>Set configuration values.</p>
 <p>You can get a list of available settings with <code>SELECT * FROM pg_stat_monitor_settings;</code>.</p>
-<blockquote>
+<div class="admonition note alert alert-primary">
 <p>See <a href="https://github.com/percona/pg_stat_monitor/blob/master/docs/USER_GUIDE.md#configuration"><code>pg_stat_monitor</code> GitHub repository</a> for details about available parameters.</p>
-</blockquote>
+</div>
 </li>
 <li>
 <p>Set bucket time to 60 seconds</p>
-<div class="highlight"><pre><span></span><code>ALTER SYSTEM SET pg_stat_monitor.pgsm_bucket_time=60;
+<div class="highlight"><pre><span></span><code><span class="k">ALTER</span> <span class="k">SYSTEM</span> <span class="k">SET</span> <span class="n">pg_stat_monitor</span><span class="p">.</span><span class="n">pgsm_bucket_time</span><span class="o">=</span><span class="mi">60</span><span class="p">;</span>
 </code></pre></div>
 </li>
 <li>
@@ -359,9 +359,6 @@ track_io_timing = on             # Capture read/write stats
 <li><code>--tls</code>: Use TLS to connect to the database.</li>
 <li><code>--tls-skip-verify</code>: Skip TLS certificates validation.</li>
 </ul>
-<blockquote>
-<p>See [pmm-admin man page]</p>
-</blockquote>
 <h2 id="check-the-service">Check the service<a class="headerlink" href="#check-the-service" title="Permanent link">&para;</a></h2>
 <p><strong>Check service - PMM user interface</strong></p>
 <ol>
@@ -373,18 +370,21 @@ track_io_timing = on             # Capture read/write stats
 <p>Look for your service in the output of this command.</p>
 <div class="highlight"><pre><span></span><code>pmm-admin inventory list services
 </code></pre></div>
-<blockquote>
+<div class="admonition tip alert alert-success">
 <p>If using Docker, use <code>docker exec pmm-client pmm-admin inventory list services</code></p>
-</blockquote>
+</div>
 <p><strong>Check data</strong></p>
 <ol>
 <li>Open the <em>PostgreSQL Instance Summary</em> dashboard.</li>
 <li>Set the <em>Service Name</em> to the newly-added service.</li>
 </ol>
-<blockquote>
-<p>See also
-- <a href="https://www.percona.com/doc/percona-repo-config/percona-release.html">Configuring Percona Repositories with percona-release</a></p>
-</blockquote>
+<div class="admonition seealso alert alert-info">
+<p class="admonition-title">See also</p>
+<ul>
+<li><a href="../../details/commands/pmm-admin.html#postgresql"><code>pmm-admin</code> man page for <code>pmm-admin add postgresql</code></a></li>
+<li><a href="https://www.percona.com/doc/percona-repo-config/percona-release.html">Configuring Percona Repositories with percona-release</a></li>
+</ul>
+</div>
                     </div>
                 </div>
                 
@@ -677,12 +677,6 @@ track_io_timing = on             # Capture read/write stats
 
 <li class="toctree-l2">
     <a class="reference internal" href="../../how-to/annotate.html">Annotate</a>
-
-
-
-
-<li class="toctree-l2">
-    <a class="reference internal" href="../../how-to/backup.html">Backup</a>
 
 
 

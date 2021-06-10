@@ -136,9 +136,10 @@
 <p>To see which security features are enabled:</p>
 <div class="highlight"><pre><span></span><code>pmm-admin status
 </code></pre></div>
-<blockquote>
-<p><strong>Tip</strong> You can gain an extra level of security by keeping PMM Server isolated from the internet, if possible.</p>
-</blockquote>
+<div class="admonition tip alert alert-success">
+<p class="admonition-title">Tip</p>
+<p>You can gain an extra level of security by keeping PMM Server isolated from the internet, if possible.</p>
+</div>
 <h2 id="ssl-encryption">SSL encryption<a class="headerlink" href="#ssl-encryption" title="Permanent link">&para;</a></h2>
 <p>You need valid SSL certificates to encrypt traffic between client and server.</p>
 <p>With our Docker, OVF and AMI images, self-signed certificates are in <code>/srv/nginx</code>.</p>
@@ -153,19 +154,13 @@
   --name pmm-server -v /etc/pmm-certs:/srv/nginx <span class="se">\</span>
   --restart always percona/pmm-server:2
 </code></pre></div>
-<blockquote>
+<div class="admonition note alert alert-primary">
 <ul>
-<li>
-<p>The certificates must be owned by root. You can do this with: <code>chown 0:0 /etc/pmm-certs/*</code></p>
-</li>
-<li>
-<p>The mounted certificate directory (<code>/etc/pmm-certs</code> in this example) must contain the files <code>certificate.crt</code>, <code>certificate.key</code>, <code>ca-certs.pem</code> and <code>dhparam.pem</code>.</p>
-</li>
-<li>
-<p>For SSL encryption, the container must publish on port 443 instead of 80.</p>
-</li>
+<li>The certificates must be owned by root. You can do this with: <code>chown 0:0 /etc/pmm-certs/*</code></li>
+<li>The mounted certificate directory (<code>/etc/pmm-certs</code> in this example) must contain the files <code>certificate.crt</code>, <code>certificate.key</code>, <code>ca-certs.pem</code> and <code>dhparam.pem</code>.</li>
+<li>For SSL encryption, the container must publish on port 443 instead of 80.</li>
 </ul>
-</blockquote>
+</div>
 <h3 id="copying-certificates">Copying certificates<a class="headerlink" href="#copying-certificates" title="Permanent link">&para;</a></h3>
 <p>If PMM Server is running as a Docker image, use <code>docker cp</code> to copy certificates. This example copies certificate files from the current working directory to a running PMM Server docker container.</p>
 <div class="highlight"><pre><span></span><code>docker cp certificate.crt pmm-server:/srv/nginx/certificate.crt
@@ -191,7 +186,7 @@ docker cp dhparam.pem pmm-server:/srv/nginx/dhparam.pem
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-05-12
+            <i class="uil uil-refresh"></i> Page updated 2021-06-10
         </li>
         
     </ul>
@@ -476,12 +471,6 @@ docker cp dhparam.pem pmm-server:/srv/nginx/dhparam.pem
 
 <li class="toctree-l2">
     <a class="reference internal" href="annotate.html">Annotate</a>
-
-
-
-
-<li class="toctree-l2">
-    <a class="reference internal" href="backup.html">Backup</a>
 
 
 

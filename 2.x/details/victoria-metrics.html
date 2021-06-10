@@ -127,9 +127,10 @@
 <p><a href="https://victoriametrics.github.io/">VictoriaMetrics</a> is a third-party monitoring solution and time-series database that replaced Prometheus in <a href="../release-notes/2.12.0.html">PMM 2.12.0</a>.</p>
 <h2 id="pushpull-modes">Push/Pull modes<a class="headerlink" href="#pushpull-modes" title="Permanent link">&para;</a></h2>
 <p>VictoriaMetrics allows metrics data to be &lsquo;pushed&rsquo; to the server in addition to it being &lsquo;pulled&rsquo; by the server. When setting up services, you can decide which mode to use.</p>
-<blockquote>
-<p>For PMM 2.12.0 the default mode is &lsquo;pull&rsquo;. Later releases will use the &lsquo;push&rsquo; mode by default for newly-added services.</p>
-</blockquote>
+<div class="admonition note alert alert-primary">
+<p>The &lsquo;push&rsquo; mode is now default for newly-added services.
+(In PMM 2.12.0 the default mode was &lsquo;pull&rsquo;.)</p>
+</div>
 <p>The mode (push/pull) is controlled by the <code>--metrics-mode</code> flag for the <code>pmm-admin config</code> and <code>pmm-admin add</code> commands.</p>
 <p>If you need to change the metrics mode for an existing Service, you must remove it and re-add it with the same name and the required flags. (There is currently no ability to &ldquo;update&rdquo; a service.)</p>
 <h2 id="remapped-targets-for-direct-prometheus-paths">Remapped targets for direct Prometheus paths<a class="headerlink" href="#remapped-targets-for-direct-prometheus-paths" title="Permanent link">&para;</a></h2>
@@ -163,7 +164,7 @@
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-03-19
+            <i class="uil uil-refresh"></i> Page updated 2021-06-10
         </li>
         
     </ul>
@@ -448,12 +449,6 @@
 
 <li class="toctree-l2">
     <a class="reference internal" href="../how-to/annotate.html">Annotate</a>
-
-
-
-
-<li class="toctree-l2">
-    <a class="reference internal" href="../how-to/backup.html">Backup</a>
 
 
 

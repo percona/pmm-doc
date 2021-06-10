@@ -129,10 +129,10 @@
 <p><div class="lightgallery"><a data-sub-html="" href="../../_images/PMM_AWS_Marketplace.png"><img alt="" src="../../_images/PMM_AWS_Marketplace.png" /></a></div></p>
 <p>Selecting a region and instance type in the <em>Pricing Information</em> section will give you an estimate of the costs involved. This is only an indication of costs. You will choose regions and instance types in later steps.</p>
 <p>Percona Monitoring and Management Server is provided at no cost, but you may need to pay for infrastructure costs.</p>
-<blockquote>
+<div class="admonition note alert alert-primary">
 <p>Disk space consumed by PMM Server depends on the number of hosts being monitored. Although each environment will be unique, you can consider the data consumption figures for the <a href="https://pmmdemo.percona.com/">PMM Demo</a> web site which consumes approximately 230MB/host/day, or ~6.9GB/host at the default 30 day retention period.</p>
 <p>For more information, see our blog post <a href="https://www.percona.com/blog/2017/05/04/how-much-disk-space-should-i-allocate-for-percona-monitoring-and-management/">How much disk space should I allocate for Percona Monitoring and Management?</a>.</p>
-</blockquote>
+</div>
 <ol>
 <li>
 <p>Click <em>Continue to Subscribe</em>.</p>
@@ -178,26 +178,27 @@
 <h2 id="limiting-access-to-the-instance-security-group-and-a-key-pair">Limiting Access to the instance: security group and a key pair<a class="headerlink" href="#limiting-access-to-the-instance-security-group-and-a-key-pair" title="Permanent link">&para;</a></h2>
 <p>In the <em>Security Group</em> section, which acts like a firewall, you may use the preselected option <code>Create new based on seller settings</code> to create a security group with recommended settings. In the <em>Key Pair</em> select an already set up EC2 key pair to limit access to your instance.</p>
 <p><div class="lightgallery"><a data-sub-html="image" href="../../_images/aws-marketplace.pmm.launch-on-ec2.1-click-launch.3.png"><img alt="image" src="../../_images/aws-marketplace.pmm.launch-on-ec2.1-click-launch.3.png" /></a></div></p>
-<blockquote>
-<p>It is important that the security group allow communication via the the following ports: <em>22</em>, <em>80</em>, and <em>443</em>. PMM should also be able to access port <em>3306</em> on the RDS that uses the instance.</p>
-</blockquote>
+<div class="admonition important alert alert-success">
+<p class="admonition-title">Important</p>
+<p>The security group should allow communication via the the following ports: <em>22</em>, <em>80</em>, and <em>443</em>. PMM should also be able to access port <em>3306</em> on the RDS that uses the instance.</p>
 <p><div class="lightgallery"><a data-sub-html="image" href="../../_images/aws-marketplace.pmm.launch-on-ec2.1-click-launch.2.png"><img alt="image" src="../../_images/aws-marketplace.pmm.launch-on-ec2.1-click-launch.2.png" /></a></div></p>
+</div>
 <h2 id="applying-settings">Applying settings<a class="headerlink" href="#applying-settings" title="Permanent link">&para;</a></h2>
 <p>Scroll up to the top of the page to view your settings. Then, click the <em>Launch with 1 click</em> button to continue and adjust your settings in the EC2 console.</p>
 <p>Your instance settings are summarized in a special area. Click the Launch with 1 click button to continue.</p>
 <p><div class="lightgallery"><a data-sub-html="image" href="../../_images/aws-marketplace.pmm.launch-on-ec2.1-click-launch.3.png"><img alt="image" src="../../_images/aws-marketplace.pmm.launch-on-ec2.1-click-launch.3.png" /></a></div></p>
-<blockquote>
+<div class="admonition note alert alert-primary">
 <p>The <em>Launch with 1 click</em> button may alternatively be titled as <em>Accept Software Terms &amp; Launch with 1-Click</em>.</p>
-</blockquote>
+</div>
 <h2 id="adjusting-instance-settings-in-the-ec2-console">Adjusting instance settings in the EC2 Console<a class="headerlink" href="#adjusting-instance-settings-in-the-ec2-console" title="Permanent link">&para;</a></h2>
 <p>Your clicking the <em>Launch with 1 click</em> button, deploys your instance. To continue setting up your instance, run the EC2 console. It is available as a link at the top of the page that opens after you click the <em>Launch with 1 click</em> button.</p>
 <p>Your instance appears in the EC2 console in a table that lists all instances available to you. When a new instance is only created, it has no name. Make sure that you give it a name to distinguish from other instances managed via the EC2 console.</p>
 <p><div class="lightgallery"><a data-sub-html="image" href="../../_images/aws-marketplace.ec2-console.pmm.1.png"><img alt="image" src="../../_images/aws-marketplace.ec2-console.pmm.1.png" /></a></div></p>
 <h2 id="running-the-instance">Running the instance<a class="headerlink" href="#running-the-instance" title="Permanent link">&para;</a></h2>
 <p>After you add your new instance it will take some time to initialize it. When the AWS console reports that the instance is now in a running state, you many continue with configuration of PMM Server.</p>
-<blockquote>
+<div class="admonition note alert alert-primary">
 <p>When started the next time after rebooting, your instance may acquire another IP address. You may choose to set up an elastic IP to avoid this problem.</p>
-</blockquote>
+</div>
 <p>With your instance selected, open its IP address in a web browser. The IP address appears in the <em>IPv4 Public IP</em> column or as value of the <em>Public IP</em> field at the top of the <em>Properties</em> panel.</p>
 <p><div class="lightgallery"><a data-sub-html="image" href="../../_images/aws-marketplace.pmm.ec2.properties.png"><img alt="image" src="../../_images/aws-marketplace.pmm.ec2.properties.png" /></a></div></p>
 <p>To run the instance, copy and paste its public IP address to the location bar of your browser. In the <em>Percona Monitoring and Management</em> welcome page that opens, enter the instance ID.</p>
@@ -224,9 +225,9 @@
 <p>authentication between PMM Server and PMM Clients - you will re-use these credentials when configuring PMM Client for the first time on a server, for example:</p>
 <div class="highlight"><pre><span></span><code>pmm-admin config --server-insecure-tls --server-url<span class="o">=</span>https://admin:admin@&lt;IP Address&gt;:443
 </code></pre></div>
-<blockquote>
+<div class="admonition note alert alert-primary">
 <p>For instructions about how to access your instances by using an SSH client, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstancesLinux.html">Connecting to Your Linux Instance Using SSH</a></p>
-</blockquote>
+</div>
 <p>Make sure to replace the user name <code>ec2-user</code> used in this document with <code>admin</code>.</p>
 </li>
 </ol>
@@ -381,7 +382,7 @@ data blocks changed from 3354624 to 8335360
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-05-11
+            <i class="uil uil-refresh"></i> Page updated 2021-06-10
         </li>
         
     </ul>
@@ -666,12 +667,6 @@ data blocks changed from 3354624 to 8335360
 
 <li class="toctree-l2">
     <a class="reference internal" href="../../how-to/annotate.html">Annotate</a>
-
-
-
-
-<li class="toctree-l2">
-    <a class="reference internal" href="../../how-to/backup.html">Backup</a>
 
 
 

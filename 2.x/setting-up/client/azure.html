@@ -180,9 +180,10 @@ won&rsquo;t receive any query data.</p>
 <li><a href="https://docs.microsoft.com/en-us/azure/postgresql/">https://docs.microsoft.com/en-us/azure/postgresql/</a></li>
 <li><a href="https://docs.microsoft.com/en-us/azure/mysql/">https://docs.microsoft.com/en-us/azure/mysql/</a></li>
 </ul>
-<blockquote>
-<p>You will need to set <code>pg_stat_statements.track = all</code> in you PostgreSQL Server settings to use PMM Query Analytics</p>
-</blockquote>
+<div class="admonition tip alert alert-success">
+<p class="admonition-title">Tip</p>
+<p>You must set <code>pg_stat_statements.track = all</code> in your PostgreSQL Server settings to use PMM Query Analytics. (<a href="postgresql.html#pg_stat_statements">Read more.</a>)</p>
+</div>
 <p><div class="lightgallery"><a data-sub-html="" href="../../_images/PMM_Add_Instance_Azure_3.png"><img alt="" src="../../_images/PMM_Add_Instance_Azure_3.png" /></a></div></p>
 <p>In the list of databases on the Discovery page click <em>Start Monitoring</em> to add the selected Azure Database to PMM.</p>
 <p>Fill in all required fields and click <em>Add service</em>.</p>
@@ -216,7 +217,7 @@ won&rsquo;t receive any query data.</p>
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-05-18
+            <i class="uil uil-refresh"></i> Page updated 2021-06-10
         </li>
         
     </ul>
@@ -501,12 +502,6 @@ won&rsquo;t receive any query data.</p>
 
 <li class="toctree-l2">
     <a class="reference internal" href="../../how-to/annotate.html">Annotate</a>
-
-
-
-
-<li class="toctree-l2">
-    <a class="reference internal" href="../../how-to/backup.html">Backup</a>
 
 
 
