@@ -154,12 +154,13 @@
 </li>
 </ul>
 <h2 id="package-manager">Install PMM Client with a package manager<a class="headerlink" href="#package-manager" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p><strong>Tip</strong> If you have used <code>percona-release</code> before, disable and re-enable the repository:
+<div class="admonition tip alert alert-secondary">
+<p class="admonition-title">Tip</p>
+<p>If you have used <code>percona-release</code> before, disable and re-enable the repository:
 <div class="highlight"><pre><span></span><code>percona-release disable all
 percona-release <span class="nb">enable</span> original release
 </code></pre></div></p>
-</blockquote>
+</div>
 <h3 id="install-on-debian-based-distributions">Install on Debian-based distributions<a class="headerlink" href="#install-on-debian-based-distributions" title="Permanent link">&para;</a></h3>
 <ol>
 <li>
@@ -351,15 +352,15 @@ pmm-admin status
 </li>
 </ol>
 <p>You can now add services with <a href="../../details/commands/pmm-admin.html"><code>pmm-admin</code></a> by prefixing commands with <code>docker exec pmm-client</code>.</p>
-<blockquote>
-<p><strong>Tip</strong></p>
+<div class="admonition tip alert alert-secondary">
+<p class="admonition-title">Tips</p>
 <ul>
 <li>Adjust host firewall and routing rules to allow Docker communications. (<a href="../../faq.html#how-do-i-troubleshoot-communication-issues-between-pmm-client-and-pmm-server">Read more in the FAQ.</a>)</li>
 <li>For help:
-<div class="highlight"><pre><span></span><code>docker run --rm percona/pmm-client:2 --help
+    <div class="highlight"><pre><span></span><code>docker run --rm percona/pmm-client:2 --help
 </code></pre></div></li>
 </ul>
-</blockquote>
+</div>
 <h2 id="remove-docker">Remove PMM Client as a Docker container<a class="headerlink" href="#remove-docker" title="Permanent link">&para;</a></h2>
 <ol>
 <li>
@@ -415,16 +416,12 @@ pmm-admin status
 <span class="nt">volumes</span><span class="p">:</span>
   <span class="nt">pmm-client-data</span><span class="p">:</span>
 </code></pre></div>
-<blockquote>
+<div class="admonition note alert alert-info">
 <ul>
-<li>
-<p>Check the values in the <code>environment</code> section match those for your PMM Server. (<code>X.X.X.X</code> is the IP address of your PMM Server.)</p>
-</li>
-<li>
-<p>Use unique hostnames across all PMM Clients (value for <code>services.pmm-client.hostname</code>).</p>
-</li>
+<li>Check the values in the <code>environment</code> section match those for your PMM Server. (<code>X.X.X.X</code> is the IP address of your PMM Server.)</li>
+<li>Use unique hostnames across all PMM Clients (value for <code>services.pmm-client.hostname</code>).</li>
 </ul>
-</blockquote>
+</div>
 </li>
 <li>
 <p>Ensure a writable agent configuration file.</p>
@@ -460,9 +457,10 @@ pmm-admin status
 </ul>
 </li>
 </ol>
-<blockquote>
-<p><b style="color:goldenrod">Caution</b> <code>pmm-agent.yaml</code> contains sensitive credentials and should not be shared.</p>
-</blockquote>
+<div class="admonition danger alert alert-danger">
+<p class="admonition-title">Danger</p>
+<p><code>pmm-agent.yaml</code> contains sensitive credentials and should not be shared.</p>
+</div>
 <h2 id="register">Register node with PMM Server<a class="headerlink" href="#register" title="Permanent link">&para;</a></h2>
 <p>Register your node (<code>X.X.X.X</code> is the IP address of your PMM Server).</p>
 <div class="highlight"><pre><span></span><code>pmm-admin config --server-insecure-tls --server-url<span class="o">=</span>https://admin:admin@X.X.X.X:443
@@ -470,11 +468,12 @@ pmm-admin status
 <ul>
 <li><code>X.X.X.X</code> is the address of your PMM Server.</li>
 <li><code>443</code> is the default port number.</li>
-<li><code>admin</code>/<code>admin</code> is the default PMM username and password. This is the same account you use to log into the PMM user interface, which you had the option to change when first logging in.<blockquote>
-<p><strong>Note</strong> Clients <em>must</em> be registered with the PMM Server using a secure channel. If you use http as your server URL, PMM will try to connect via https on port 443. If a TLS connection can&rsquo;t be established you will get an error and you must use https along with the appropriate secure port.</p>
-</blockquote>
-</li>
+<li><code>admin</code>/<code>admin</code> is the default PMM username and password. This is the same account you use to log into the PMM user interface, which you had the option to change when first logging in.</li>
 </ul>
+<div class="admonition important alert alert-warning">
+<p class="admonition-title">Important</p>
+<p>Clients <em>must</em> be registered with the PMM Server using a secure channel. If you use http as your server URL, PMM will try to connect via https on port 443. If a TLS connection can&rsquo;t be established you will get an error and you must use https along with the appropriate secure port.</p>
+</div>
 <p><strong>Examples</strong></p>
 <p>Register on PMM Server with IP address <code>192.168.33.14</code> using the default <code>admin/admin</code> username and password, a node with IP address <code>192.168.33.23</code>, type <code>generic</code>, and name <code>mynode</code>.</p>
 <div class="highlight"><pre><span></span><code>pmm-admin config --server-insecure-tls --server-url<span class="o">=</span>https://admin:admin@192.168.33.14:443 <span class="m">192</span>.168.33.23 generic mynode
@@ -494,10 +493,9 @@ pmm-admin status
 <li><a href="haproxy.html">HAProxy</a></li>
 <li><a href="remote.html">Notes on remote instances</a></li>
 </ul>
-<blockquote>
-<p><strong>Note</strong>
-To change the parameters of a previously-added service, remove the service and re-add it with new parameters.</p>
-</blockquote>
+<div class="admonition note alert alert-info">
+<p>To change the parameters of a previously-added service, remove the service and re-add it with new parameters.</p>
+</div>
 <h2 id="remove-services">Remove services from monitoring<a class="headerlink" href="#remove-services" title="Permanent link">&para;</a></h2>
 <p>You should specify service type and service name for removing from monitoring
 One of next types has to be set: mysql, mongodb, postgresql, proxysql, haproxy, external</p>
@@ -524,7 +522,7 @@ One of next types has to be set: mysql, mongodb, postgresql, proxysql, haproxy, 
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-06-09
+            <i class="uil uil-refresh"></i> Page updated 2021-06-10
         </li>
         
     </ul>

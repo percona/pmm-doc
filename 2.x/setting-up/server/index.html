@@ -144,19 +144,21 @@
 </ul>
 <p>When PMM Server is running, set up <a href="../client/index.html">PMM Client</a> for each node or service.</p>
 <h2 id="single-line-installer">Single line installer<a class="headerlink" href="#single-line-installer" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p><b style="color:goldenrod">Caution</b> This is a <a href="../../details/glossary.html#technical-preview">technical preview</a> and is subject to change.</p>
-</blockquote>
+<div class="admonition caution alert alert-warning">
+<p class="admonition-title">Caution</p>
+<p>This is a <a href="../../details/glossary.html#technical-preview">technical preview</a> and is subject to change.</p>
+</div>
 <div class="highlight"><pre><span></span><code>curl -fsSL https://raw.githubusercontent.com/percona/pmm/PMM-2.0/get-pmm.sh -o get-pmm2.sh <span class="p">;</span> chmod +x get-pmm2.sh <span class="p">;</span> ./get-pmm2.sh
 </code></pre></div>
-<blockquote>
-<p><b style="color:red">Warning</b> We highly recommend you review <code>get-pmm2.sh</code> prior to running on your system, to ensure the content is as expected.</p>
-</blockquote>
+<div class="admonition important alert alert-warning">
+<p class="admonition-title">Important</p>
+<p>We highly recommend you review <code>get-pmm2.sh</code> prior to running on your system, to ensure the content is as expected.</p>
+</div>
 <p>This command will:</p>
 <ul>
-<li>if Docker is not already installed, install it</li>
-<li>if there is a PMM Server docker container running, stop it and back it up</li>
-<li>pull and run the latest PMM Server docker image</li>
+<li>install Docker if not already installed;</li>
+<li>if there is a PMM Server docker container running, stop it and back it up;</li>
+<li>pull and run the latest PMM Server docker image.</li>
 </ul>
                     </div>
                 </div>
@@ -165,7 +167,7 @@
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-05-21
+            <i class="uil uil-refresh"></i> Page updated 2021-06-10
         </li>
         
     </ul>

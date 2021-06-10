@@ -181,9 +181,10 @@ psql -c <span class="s2">&quot;select pg_reload_conf()&quot;</span>
 </li>
 </ol>
 <p>We recommend choosing only one of these. <strong>If you use both, you will get duplicate metrics.</strong></p>
-<blockquote>
-<p><b style="color:goldenrod">Important</b> While we recommend use of the newer <code>pg_stat_monitor</code> extension, be aware it is currently in beta phase and unsupported.</p>
-</blockquote>
+<div class="admonition important alert alert-warning">
+<p class="admonition-title">Important</p>
+<p>While we recommend use of the newer <code>pg_stat_monitor</code> extension, be aware it is currently in beta phase and unsupported.</p>
+</div>
 <p>Here are the benefits and drawbacks of each.</p>
 <table>
 <thead>
@@ -264,9 +265,10 @@ track_io_timing = on             # Capture read/write stats
 <li>PostgreSQL versions 11, 12, 13.</li>
 <li>Percona Distribution for PostgreSQL versions 11, 12, 13.</li>
 </ul>
-<blockquote>
-<p><b style="color:goldenrod">Important</b> <code>pg_stat_monitor</code> is currently in beta phase and unsupported.</p>
-</blockquote>
+<div class="admonition important alert alert-warning">
+<p class="admonition-title">Important</p>
+<p><code>pg_stat_monitor</code> is currently in beta phase and is unsupported.</p>
+</div>
 <p><strong>Install</strong></p>
 <ul>
 <li>
@@ -390,7 +392,7 @@ track_io_timing = on             # Capture read/write stats
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-06-09
+            <i class="uil uil-refresh"></i> Page updated 2021-06-10
         </li>
         
     </ul>

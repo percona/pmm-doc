@@ -124,9 +124,10 @@
                 <div class="bodywrapper">
                     <div class="body">
                         <h1 id="dbaas">DBaaS<a class="headerlink" href="#dbaas" title="Permanent link">&para;</a></h1>
-<blockquote>
-<p><b style="color:goldenrod">Caution</b> DBaaS functionality is currently in <a href="../../details/glossary.html#technical-preview">technical preview</a> and is subject to change.</p>
-</blockquote>
+<div class="admonition caution alert alert-warning">
+<p class="admonition-title">Caution</p>
+<p>DBaaS functionality is currently in <a href="../../details/glossary.html#technical-preview">technical preview</a> and is subject to change.</p>
+</div>
 <h2 id="software-prerequisites">Software prerequisites<a class="headerlink" href="#software-prerequisites" title="Permanent link">&para;</a></h2>
 <h3 id="docker">Docker<a class="headerlink" href="#docker" title="Permanent link">&para;</a></h3>
 <p><strong>Red Hat, CentOS</strong></p>
@@ -460,17 +461,13 @@ kubectl delete perconaservermongodbrestores.psmdb.percona.com --all
 </li>
 <li>
 <p>In the <code>dbaas-controller</code> repository, in the deploy directory there are manifests we use to deploy operators. Use them to delete operators and related resources from the cluster.</p>
-<blockquote>
-<p><b style="color:goldenrod">Important</b></p>
+<div class="admonition important alert alert-warning">
+<p class="admonition-title">Important</p>
 <ul>
-<li>
-<p>Do NOT execute this step before all database clusters, backups and restores are deleted in the previous step. It may result in not being able to delete the namespace DBaaS lives in.</p>
-</li>
-<li>
-<p>Also be careful with this step if you are running DBaaS in more than one namespace as it deletes cluster level CustomResourceDefinitions needed to run DBaaS. This would break DBaaS in other namespaces. Delete just operators deployments in that case.</p>
-</li>
+<li>Do NOT execute this step before all database clusters, backups and restores are deleted in the previous step. It may result in not being able to delete the namespace DBaaS lives in.</li>
+<li>Also be careful with this step if you are running DBaaS in more than one namespace as it deletes cluster level CustomResourceDefinitions needed to run DBaaS. This would break DBaaS in other namespaces. Delete just operators deployments in that case.</li>
 </ul>
-</blockquote>
+</div>
 <div class="highlight"><pre><span></span><code><span class="c1"># Delete the PXC operator and related resources.</span>
 curl https://raw.githubusercontent.com/percona-platform/dbaas-controller/7a5fff023994cecf6bde15705365114004b50b41/deploy/pxc-operator.yaml <span class="p">|</span> kubectl delete -f -
 
@@ -497,17 +494,13 @@ curl https://raw.githubusercontent.com/percona-platform/dbaas-controller/7a5fff0
 <p>Start PMM server from a feature branch:</p>
 <div class="highlight"><pre><span></span><code>docker run --detach --name pmm-server --publish <span class="m">80</span>:80 --publish <span class="m">443</span>:443 --env <span class="nv">ENABLE_DBAAS</span><span class="o">=</span><span class="m">1</span>  percona/pmm-server:2<span class="p">;</span>
 </code></pre></div>
-<blockquote>
-<p><b style="color:goldenrod">Important</b></p>
+<div class="admonition important alert alert-warning">
+<p class="admonition-title">Important</p>
 <ul>
-<li>
-<p>Use <code>--network minikube</code> if running PMM Server and minikube in the same Docker instance. This way they will share single network and the kubeconfig will work.</p>
-</li>
-<li>
-<p>Use Docker variables <code>--env PMM_DEBUG=1 --env PMM_TRACE=1</code> to see extended debug details.</p>
-</li>
+<li>Use <code>--network minikube</code> if running PMM Server and minikube in the same Docker instance. This way they will share single network and the kubeconfig will work.</li>
+<li>Use Docker variables <code>--env PMM_DEBUG=1 --env PMM_TRACE=1</code> to see extended debug details.</li>
 </ul>
-</blockquote>
+</div>
 </li>
 <li>
 <p>Change the default administrator credentials:</p>
@@ -563,7 +556,7 @@ curl https://raw.githubusercontent.com/percona-platform/dbaas-controller/7a5fff0
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-05-26
+            <i class="uil uil-refresh"></i> Page updated 2021-06-10
         </li>
         
     </ul>

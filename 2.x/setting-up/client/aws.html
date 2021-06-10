@@ -212,9 +212,10 @@
 <p><div class="lightgallery"><a data-sub-html="image" href="../../_images/aws.iam.add-permissions.png"><img alt="image" src="../../_images/aws.iam.add-permissions.png" /></a></div></p>
 <h2 id="setting-up-the-amazon-rds-db-instance">Setting up the Amazon RDS DB Instance<a class="headerlink" href="#setting-up-the-amazon-rds-db-instance" title="Permanent link">&para;</a></h2>
 <p>Query Analytics requires Configuring Performance Schema as the query source, because the slow query log is stored on the AWS (Amazon Web Services) side, and QAN agent is not able to read it.  Enable the <code>performance_schema</code> option under <code>Parameter Groups</code> in Amazon RDS.</p>
-<blockquote>
-<p><b style="color:goldenrod">Caution</b> Enabling Performance Schema on T2 instances is not recommended because it can easily run the T2 instance out of memory.</p>
-</blockquote>
+<div class="admonition important alert alert-warning">
+<p class="admonition-title">Important</p>
+<p>Enabling Performance Schema on T2 instances is not recommended because it can easily run the T2 instance out of memory.</p>
+</div>
 <p>When adding a monitoring instance for Amazon RDS, specify a unique name to distinguish it from the local MySQL instance.  If you do not specify a name, it will use the client’s host name.</p>
 <p>Create the <code>pmm</code> user with the following privileges on the Amazon RDS instance that you want to monitor:</p>
 <div class="highlight"><pre><span></span><code><span class="k">GRANT</span> <span class="k">SELECT</span><span class="p">,</span> <span class="n">PROCESS</span><span class="p">,</span> <span class="n">REPLICATION</span> <span class="n">CLIENT</span> <span class="k">ON</span> <span class="o">*</span><span class="p">.</span><span class="o">*</span> <span class="k">TO</span> <span class="s1">&#39;pmm&#39;</span><span class="o">@</span><span class="s1">&#39;%&#39;</span> <span class="n">IDENTIFIED</span> <span class="k">BY</span> <span class="s1">&#39;pass&#39;</span> <span class="k">WITH</span> <span class="n">MAX_USER_CONNECTIONS</span> <span class="mi">10</span><span class="p">;</span>
@@ -302,7 +303,7 @@ database user name and password.</p>
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-06-01
+            <i class="uil uil-refresh"></i> Page updated 2021-06-10
         </li>
         
     </ul>
