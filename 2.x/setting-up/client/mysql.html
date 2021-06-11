@@ -554,7 +554,7 @@
 </ol>
 <h2 id="tablestats">Tablestats<a class="headerlink" href="#tablestats" title="Permanent link">&para;</a></h2>
 <p>Some table metrics are automatically disabled when the number of tables exceeds a default limit of 1000 tables. This prevents PMM Client from affecting the performance of your database server.</p>
-<p>The limit can be changed <a href="#2-2-command-line">when adding a service on the command line </a> with the two <code>pmm-admin</code> options:</p>
+<p>The limit can be changed <a href="#command-line">when adding a service on the command line </a> with the two <code>pmm-admin</code> options:</p>
 <table>
 <thead>
 <tr>
@@ -609,7 +609,7 @@
 <p>When you have configured your database server, you can add a MySQL service with the user interface or on the command line.</p>
 <p>When adding a service with the command line, you must use the <code>pmm-admin --query-source=SOURCE</code> option to match the source you&rsquo;ve chosen and configured the database server for.</p>
 <p>With the PMM user interface, you select <em>Use performance schema</em>, or deselect it to use <em>slow query log</em>.</p>
-<h3 id="with-the-user-interface">With the user interface<a class="headerlink" href="#with-the-user-interface" title="Permanent link">&para;</a></h3>
+<h3 id="user-interface">User interface<a class="headerlink" href="#user-interface" title="Permanent link">&para;</a></h3>
 <ol>
 <li>Select <em>PMM &rarr; PMM Add Instance</em>.</li>
 <li>Select <em>MySQL &ndash; Add a remote instance</em>.</li>
@@ -617,7 +617,7 @@
 <li>Click <em>Add service</em>.</li>
 </ol>
 <p><div class="lightgallery"><a data-sub-html="" href="../../_images/PMM_Add_Instance_MySQL.jpg"><img alt="" src="../../_images/PMM_Add_Instance_MySQL.jpg" /></a></div></p>
-<h3 id="on-the-command-line">On the command line<a class="headerlink" href="#on-the-command-line" title="Permanent link">&para;</a></h3>
+<h3 id="command-line">Command line<a class="headerlink" href="#command-line" title="Permanent link">&para;</a></h3>
 <p>Add the database server as a service using one of these example commands. If successful, PMM Client will print <code>MySQL Service added</code> with the service&rsquo;s ID and name. Use the <code>--environment</code> and <code>-custom-labels</code> options to set tags for the service to help identify them.</p>
 <p><strong>Examples &ndash; TLS connection</strong></p>
 <div class="highlight"><pre><span></span><code>pmm-admin add mysql --username<span class="o">=</span>user --password<span class="o">=</span>pass --tls --tls-skip-verify --tls-ca<span class="o">=</span>pathtoca.pem --tls-cert<span class="o">=</span>pathtocert.pem --tls-key<span class="o">=</span>pathtocertkey.pem --server-url<span class="o">=</span>http://admin:admin@127.0.0.1 --query-source<span class="o">=</span>perfschema name localhost:3306
@@ -687,7 +687,7 @@
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-06-10
+            <i class="uil uil-refresh"></i> Page updated 2021-06-11
         </li>
         
     </ul>
