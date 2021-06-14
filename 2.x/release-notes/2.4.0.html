@@ -168,8 +168,8 @@
 <li><a href="https://jira.percona.com/browse/PMM-5448">PMM-5448</a>: The default high and medium metrics resolutions were changed to 1-5-30 and 5-10-60 sec. To reduce the effect of this change on existing installations, systems having the “old” high resolution chosen on the PMM Settings page (5-5-60 sec.) will be automatically re-configured to the medium one during an upgrade. If the resolution was changed to some custom values via API, it will not be affected</li>
 <li>
 <p><a href="https://jira.percona.com/browse/PMM-5531">PMM-5531</a>: A health check indicator was implemented for the PMM Server Docker image. It is based on the <a href="https://docs.docker.com/engine/reference/builder/#healthcheck">Docker HEALTHCHECK</a>. This feature can be used as follows:</p>
-<div class="highlight"><pre><span></span><code>docker inspect -f  <span class="o">{{</span>.State.Health.Status<span class="o">}}</span>
-<span class="k">until</span> <span class="o">[</span> <span class="s2">&quot;`docker inspect -f  {{.State.Health.Status}} pmm-server`&quot;</span> <span class="o">==</span> <span class="s2">&quot;healthy&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">do</span> sleep <span class="m">1</span><span class="p">;</span> <span class="k">done</span>
+<div class="highlight"><pre><span></span><code>docker inspect -f  
+<span class="k">until</span> <span class="o">[</span> <span class="s2">&quot;`docker inspect -f   pmm-server`&quot;</span> <span class="o">==</span> <span class="s2">&quot;healthy&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">do</span> sleep <span class="m">1</span><span class="p">;</span> <span class="k">done</span>
 </code></pre></div>
 </li>
 <li>
