@@ -56,7 +56,7 @@ plugins:
           - 'setting-up/client/docker.md'
     # https://github.com/orzih/mkdocs-with-pdf
     - with-pdf:
-        output_path: '_pdf/PerconaMonitoringAndManagement-2.18.0.pdf'
+        output_path: '_pdf/PerconaMonitoringAndManagement-2.19.0.pdf'
         cover_title: 'Documentation'
         cover_subtitle: 2.19.0 (June 29, 2021)
         author: 'Percona Technical Documentation Team'
