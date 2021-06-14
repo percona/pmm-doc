@@ -62,20 +62,19 @@ markdown_extensions:
 plugins:
   - search
   - git-revision-date
-  - section-index # Adds links to nodes - comment out when creating PDF
-#  - htmlproofer # Uncomment to check links - but extends build time significantly
   - macros:
         include_yaml:
           - 'variables.yml' # Use in markdown as '{{ VAR }}'
   - exclude: # Don't process these files
         glob:
           - 'setting-up/client/docker.md'
-    - mike:
+  - mike:
         version_selector: true
         css_dir: css
         javascript_dir: js
         canonical_version: null
-    - section-index
+  - section-index
+#  - htmlproofer # Uncomment to check links - but extends build time significantly
 
 extra: # Used in main.html template and can't be externalised
     open_issue_text: '<i class="uil uil-exclamation-triangle"></i> Report a problem
