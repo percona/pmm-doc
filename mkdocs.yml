@@ -72,8 +72,8 @@ plugins:
         css_dir: css
         javascript_dir: js
         canonical_version: null
-  - section-index
-#  - htmlproofer # Uncomment to check links - but extends build time significantly
+    - section-index
+#    - htmlproofer # Uncomment to check links - but extends build time significantly
 
 extra: # Used in main.html template and can't be externalised
     open_issue_text: '<i class="uil uil-exclamation-triangle"></i> Report a problem
