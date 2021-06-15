@@ -153,6 +153,10 @@
 </ul>
 <p>Click the refresh button to manually check for updates.</p>
 <p>If one is available, click the update button to update to the version indicated.</p>
+<div class="admonition seealso alert alert-info">
+<p class="admonition-title">See also</p>
+<p><a href="../setting-up/server/docker.html#upgrade">PMM Server Docker upgrade</a></p>
+</div>
 <h2 id="upgrade-from-pmm1">Upgrade from PMM 1<a class="headerlink" href="#upgrade-from-pmm1" title="Permanent link">&para;</a></h2>
 <p>Because of the significant architectural changes between PMM1 and PMM2, there is no direct upgrade path. The approach to making the switch from PMM version 1 to 2 is a gradual transition, outlined <a href="https://www.percona.com/blog/2019/11/27/running-pmm1-and-pmm2-clients-on-the-same-host/">in this blog post</a>.</p>
 <p>In short, it involves first standing up a new PMM2 server on a new host and connecting clients to it.  As new data is reported to the PMM2 server, old metrics will age out during the course of the retention period (30 days, by default), at which point you&rsquo;ll be able to shut down your existing PMM1 server.</p>
@@ -164,7 +168,7 @@
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-06-10
+            <i class="uil uil-refresh"></i> Page updated 2021-06-15
         </li>
         
     </ul>
