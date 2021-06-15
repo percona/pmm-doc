@@ -136,7 +136,7 @@
                 <div class="bodywrapper">
                     <div class="body">
                         <h1 id="docker">Docker<a class="headerlink" href="#docker" title="Permanent link">&para;</a></h1>
-<p>How to run PMM Server with Docker based on our <a href="https://hub.docker.com/r/percona/pmm-server">Docker image</a> for PMM Server.</p>
+<p>How to run PMM Server with Docker based on our <a href="https://hub.docker.com/r/percona/pmm-server">Docker image</a>.</p>
 <div class="admonition note alert alert-primary">
 <p>The tags used here are for the current release. Other <a href="https://hub.docker.com/r/percona/pmm-server/tags">tags</a> are available.</p>
 </div>
@@ -146,6 +146,16 @@
 <li>(Optional) Install <a href="https://docs.docker.com/compose/">Docker compose</a>.</li>
 </ul>
 <h2 id="run">Run<a class="headerlink" href="#run" title="Permanent link">&para;</a></h2>
+<div class="admonition summary alert alert-info">
+<p class="admonition-title">Summary</p>
+<ul>
+<li>Pull the Docker image.</li>
+<li>Copy it to create a persistent data container.</li>
+<li>Run the image.</li>
+<li>Open the PMM UI in a browser.</li>
+</ul>
+</div>
+<hr />
 <ol>
 <li>
 <p>Pull the image.</p>
@@ -212,6 +222,16 @@ percona/pmm-server:2
 </li>
 </ol>
 <h2 id="upgrade">Upgrade<a class="headerlink" href="#upgrade" title="Permanent link">&para;</a></h2>
+<div class="admonition summary alert alert-info">
+<p class="admonition-title">Summary</p>
+<ul>
+<li>Stop the running container.</li>
+<li>Backup (rename) the container and copy data.</li>
+<li>Pull the latest Docker image.</li>
+<li>Run it.</li>
+</ul>
+</div>
+<hr />
 <div class="admonition tip alert alert-success">
 <p class="admonition-title">Tip</p>
 <p>To see what release you are running, use the <em>PMM Upgrade</em> panel on the <em>Home Dashboard</em>, or run:</p>
@@ -242,6 +262,16 @@ percona/pmm-server:2
 </li>
 </ol>
 <h2 id="restore">Restore<a class="headerlink" href="#restore" title="Permanent link">&para;</a></h2>
+<div class="admonition summary alert alert-info">
+<p class="admonition-title">Summary</p>
+<ul>
+<li>Stop and remove the container.</li>
+<li>Restore (rename) the backup container.</li>
+<li>Restore saved data to the data container.</li>
+<li>Restore permissions to the data.</li>
+</ul>
+</div>
+<hr />
 <div class="admonition caution alert alert-warning">
 <p class="admonition-title">Important</p>
 <p>You must have a <a href="#backup">backup</a> to restore from.</p>
@@ -290,6 +320,15 @@ docker run --rm --volumes-from pmm-data -it percona/pmm-server:2 chown -R postgr
 </li>
 </ol>
 <h2 id="remove">Remove<a class="headerlink" href="#remove" title="Permanent link">&para;</a></h2>
+<div class="admonition summary alert alert-info">
+<p class="admonition-title">Summary</p>
+<ul>
+<li>Stop the container.</li>
+<li>Remove (delete) both the server and data containers.</li>
+<li>Remove (delete) both images.</li>
+</ul>
+</div>
+<hr />
 <div class="admonition caution alert alert-warning">
 <p class="admonition-title">Caution</p>
 <p>These steps delete the PMM Server Docker image and any accumulated PMM metrics data.</p>
@@ -312,6 +351,14 @@ docker run --rm --volumes-from pmm-data -it percona/pmm-server:2 chown -R postgr
 </li>
 </ol>
 <h2 id="docker-compose">Docker compose<a class="headerlink" href="#docker-compose" title="Permanent link">&para;</a></h2>
+<div class="admonition summary alert alert-info">
+<p class="admonition-title">Summary</p>
+<ul>
+<li>Copy and paste the <code>docker-compose.yml</code> file.</li>
+<li>Run <code>docker-compose up</code>.</li>
+</ul>
+</div>
+<hr />
 <div class="admonition important alert alert-success">
 <p class="admonition-title">Important</p>
 <p>With this approach, data is stored in a volume, not in a <code>pmm-data</code> container.</p>
@@ -349,7 +396,7 @@ docker run --rm --volumes-from pmm-data -it percona/pmm-server:2 chown -R postgr
 </li>
 </ol>
 <h2 id="environment-variables">Environment variables<a class="headerlink" href="#environment-variables" title="Permanent link">&para;</a></h2>
-<p>Use the following container environment variables (with <code>-e var=value</code>) to set PMM Server parameters.</p>
+<p>Use the following Docker container environment variables (with <code>-e var=value</code>) to set PMM Server parameters.</p>
 <table>
 <thead>
 <tr>
