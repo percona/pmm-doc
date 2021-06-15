@@ -132,6 +132,19 @@ After the EBS volume is updated, PMM Server instance will auto-detect changes in
 
 ## Upgrading PMM Server on AWS
 
+### Change Public IP address
+
+To assign a public IP address for an Amazon EC2 instance, follow these steps:
+
+1. Allocate Elastic IP address
+
+![!image](../../_images/aws-marketplace.pmm.ec2.ip.allocate.png)
+
+2. Associate Elastic IP address with a Network interface ID of your EC2 instance
+If you associate an Elastic IP address to an instance that already has an Elastic IP address associated, this previously associated Elastic IP address will be disassociated but still allocated to your account.
+
+![!image](../../_images/aws-marketplace.pmm.ec2.ip.associate.png)
+
 ### Upgrading EC2 instance class
 
 Upgrading to a larger EC2 instance class is supported by PMM provided you follow the instructions from the [AWS manual](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-resize.html). The PMM AMI image uses a distinct EBS volume for the PMM data volume which permits independent resizing of the EC2 instance without impacting the EBS volume.
