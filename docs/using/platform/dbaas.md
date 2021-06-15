@@ -107,7 +107,7 @@ To monitor a DB cluster, set up a [public address](../../how-to/configure.md#pub
 
     3. Select *External Access* if you want to make your DB cluster available outside of Kubernetes cluster.
         
-        By default, only internal access provided. 
+        By default, only internal access is provided. 
 
     4. Select a preset for *Resources per Node*.
 
