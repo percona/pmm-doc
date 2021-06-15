@@ -136,9 +136,9 @@
                 <div class="bodywrapper">
                     <div class="body">
                         <h1 id="docker">Docker<a class="headerlink" href="#docker" title="Permanent link">&para;</a></h1>
-<p>This page shows how to run PMM Server with Docker based on our <a href="https://hub.docker.com/r/percona/pmm-server">Docker image</a> for PMM Server.</p>
+<p>How to run PMM Server with Docker based on our <a href="https://hub.docker.com/r/percona/pmm-server">Docker image</a> for PMM Server.</p>
 <div class="admonition note alert alert-primary">
-<p>The tags used here are for the current release, 2.18.0. Other <a href="https://hub.docker.com/r/percona/pmm-server/tags">tags</a> are available.</p>
+<p>The tags used here are for the current release. Other <a href="https://hub.docker.com/r/percona/pmm-server/tags">tags</a> are available.</p>
 </div>
 <h2 id="before-you-start">Before you start<a class="headerlink" href="#before-you-start" title="Permanent link">&para;</a></h2>
 <ul>
@@ -160,7 +160,11 @@ percona/pmm-server:2 /bin/true
 </code></pre></div>
 <div class="admonition caution alert alert-warning">
 <p class="admonition-title">Important</p>
-<p>PMM Server expects the data volume (specified with <code>--volume</code>) to be <code>/srv</code>.  <strong>Using any other value will result in data loss when upgrading.</strong></p>
+<p>PMM Server expects the data volume to be <code>/srv</code>. Using any other value will result in <strong>data loss</strong> when upgrading.</p>
+<p>To check server and data container mount points:</p>
+<div class="highlight"><pre><span></span><code>docker inspect pmm-data <span class="p">|</span> grep Destination <span class="o">&amp;&amp;</span> <span class="se">\</span>
+docker inspect pmm-server <span class="p">|</span> grep Destination
+</code></pre></div>
 </div>
 </li>
 <li>
@@ -176,49 +180,45 @@ percona/pmm-server:2
 <p>In a web browser, visit <code>https://localhost:443</code> (or <code>http://localhost:80</code> if enabled) to see the PMM user interface. (If you are accessing the docker host remotely, replace <code>localhost</code> with the IP or server name of the host.)</p>
 </li>
 </ol>
-<div class="admonition tip alert alert-success">
-<p class="admonition-title">Tips</p>
+<h2 id="backup">Backup<a class="headerlink" href="#backup" title="Permanent link">&para;</a></h2>
+<div class="admonition summary">
+<p class="admonition-title">Summary</p>
 <ul>
-<li>Disable manual updates via the Home Dashboard <em>PMM Upgrade</em> panel by adding <code>-e DISABLE_UPDATES=true</code> to the <code>docker run</code> command in step 3. (<a href="#environment-variables">Read more about Docker environment variables.</a>)</li>
-<li>Eliminate browser certificate warnings by configuring a <a href="../../how-to/secure.html#ssl-encryption">trusted certificate</a>.</li>
-<li>Optionally enable an (insecure) HTTP connection by adding <code>--publish 80:80</code> to the <code>docker run</code> command in step 3. However note that PMM Client <em>requires</em> TLS to communicate with the server so will only work on the secure port.</li>
+<li>Stop and rename the <code>pmm-server</code> container.</li>
+<li>Take a local copy of the <code>pmm-data</code> container&rsquo;s <code>/srv</code> directory.</li>
 </ul>
 </div>
-<h2 id="backup">Backup<a class="headerlink" href="#backup" title="Permanent link">&para;</a></h2>
 <ol>
 <li>
-<p>Find out what release is running.</p>
-<div class="highlight"><pre><span></span><code>docker <span class="nb">exec</span> -it pmm-server <span class="se">\</span>
-curl -ku admin:admin https://localhost/v1/version
-</code></pre></div>
-<div class="admonition note alert alert-primary">
-<p>If you are accessing the docker host remotely, replace <code>localhost</code> with the IP or server name of the host.</p>
-</div>
-</li>
-<li>
-<p>Check container mount points match (<code>/srv</code>).</p>
-<div class="highlight"><pre><span></span><code>docker inspect pmm-data <span class="p">|</span> grep Destination <span class="o">&amp;&amp;</span> <span class="se">\</span>
-docker inspect pmm-server <span class="p">|</span> grep Destination
-</code></pre></div>
-</li>
-<li>
-<p>Stop the container</p>
+<p>Stop the container.</p>
 <div class="highlight"><pre><span></span><code>docker stop pmm-server
 </code></pre></div>
 </li>
 <li>
-<p>Backup the image.</p>
+<p>Move the image.</p>
 <div class="highlight"><pre><span></span><code>docker rename pmm-server pmm-server-backup
 </code></pre></div>
 </li>
 <li>
-<p>Backup the data (copy it to a subdirectory, for example, <code>pmm-data-backup</code>).</p>
-<div class="highlight"><pre><span></span><code>mkdir pmm-data-backup <span class="o">&amp;&amp;</span> <span class="nb">cd</span> <span class="nv">$_</span> <span class="o">&amp;&amp;</span> <span class="se">\</span>
-docker cp pmm-data:/srv .
+<p>Create a subdirectory (e.g., <code>pmm-data-backup</code>) and move to it.</p>
+<div class="highlight"><pre><span></span><code>mkdir pmm-data-backup <span class="o">&amp;&amp;</span> <span class="nb">cd</span> pmm-data-backup
+</code></pre></div>
+</li>
+<li>
+<p>Backup the data.</p>
+<div class="highlight"><pre><span></span><code>docker cp pmm-data:/srv .
 </code></pre></div>
 </li>
 </ol>
 <h2 id="upgrade">Upgrade<a class="headerlink" href="#upgrade" title="Permanent link">&para;</a></h2>
+<div class="admonition tip alert alert-success">
+<p class="admonition-title">Tip</p>
+<p>To see what release you are running, use the <em>PMM Upgrade</em> panel on the <em>Home Dashboard</em>, or run:</p>
+<div class="highlight"><pre><span></span><code>docker <span class="nb">exec</span> -it pmm-server <span class="se">\</span>
+curl -ku admin:admin https://localhost/v1/version
+</code></pre></div>
+<p>(If you are accessing the docker host remotely, replace <code>localhost</code> with the IP or server name of the host.)</p>
+</div>
 <ol>
 <li>
 <p>Perform a <a href="#backup">backup</a>.</p>
@@ -239,11 +239,6 @@ docker cp pmm-data:/srv .
 percona/pmm-server:2
 </code></pre></div>
 </li>
-<li>
-<p>Check the version (or use the <em>PMM Upgrade</em> panel on the <em>Home Dashboard</em>).</p>
-<div class="highlight"><pre><span></span><code>docker <span class="nb">exec</span> -it pmm-server curl -ku admin:admin https://localhost/v1/version
-</code></pre></div>
-</li>
 </ol>
 <h2 id="restore">Restore<a class="headerlink" href="#restore" title="Permanent link">&para;</a></h2>
 <div class="admonition caution alert alert-warning">
@@ -262,7 +257,7 @@ percona/pmm-server:2
 </code></pre></div>
 </li>
 <li>
-<p>Restore backup.</p>
+<p>Revert to the saved image.</p>
 <div class="highlight"><pre><span></span><code>docker rename pmm-server-backup pmm-server
 </code></pre></div>
 </li>
@@ -296,7 +291,7 @@ docker run --rm --volumes-from pmm-data -it percona/pmm-server:2 chown -R postgr
 <h2 id="remove">Remove<a class="headerlink" href="#remove" title="Permanent link">&para;</a></h2>
 <div class="admonition caution alert alert-warning">
 <p class="admonition-title">Caution</p>
-<p>These steps delete the PMM Server Docker image and PMM metrics data.</p>
+<p>These steps delete the PMM Server Docker image and any accumulated PMM metrics data.</p>
 </div>
 <ol>
 <li>
@@ -461,6 +456,17 @@ docker run --rm --volumes-from pmm-data -it percona/pmm-server:2 chown -R postgr
 </tbody>
 </table>
 <h2 id="tips">Tips<a class="headerlink" href="#tips" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p>Disable manual updates via the Home Dashboard <em>PMM Upgrade</em> panel by adding <code>-e DISABLE_UPDATES=true</code> to the <code>docker run</code> command.</p>
+</li>
+<li>
+<p>Eliminate browser certificate warnings by configuring a <a href="../../how-to/secure.html#ssl-encryption">trusted certificate</a>.</p>
+</li>
+<li>
+<p>Optionally enable an (insecure) HTTP connection by adding <code>--publish 80:80</code> to the <code>docker run</code> command. However note that PMM Client <em>requires</em> TLS to communicate with the server so will only work on the secure port.</p>
+</li>
+</ul>
 <p><strong>Isolated hosts</strong></p>
 <p>If the host where you will run PMM Server has no internet connection, you can download the Docker image on a separate (internet-connected) host and securely copy it.</p>
 <ol>
