@@ -98,7 +98,7 @@ How to run PMM Server with Docker based on our [Docker image].
 
 ---
 
-!!! tip alert alert-success "Tip"
+!!! hint alert alert-success "Tip"
     To see what release you are running, use the *PMM Upgrade* panel on the *Home Dashboard*, or run:
 
     ```sh
@@ -226,7 +226,7 @@ How to run PMM Server with Docker based on our [Docker image].
 
 ---
 
-!!! important alert alert-success "Important"
+!!! note alert alert-primary ""
     With this approach, data is stored in a volume, not in a `pmm-data` container.
 
 1. Copy and paste this text into a file called `docker-compose.yml`.
