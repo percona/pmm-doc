@@ -305,153 +305,104 @@ users:
 </li>
 </ol>
 <h3 id="google-gke">Google GKE<a class="headerlink" href="#google-gke" title="Permanent link">&para;</a></h3>
-<p><strong>Prerequisites</strong></p>
-<p>You should have an account on GCP <a href="https://cloud.google.com/">https://cloud.google.com/</a>.</p>
 <ol>
-<li>
-<p>Login into google cloud platform console <a href="https://console.cloud.google.com/">https://console.cloud.google.com/</a></p>
-</li>
-<li>
-<p>Navigate to Menu &rarr; Kubernetes Engine &rarr; Clusters</p>
-<p><div class="lightgallery"><a data-sub-html="" href="../../_images/PMM_DBaaS_GKE_1.png"><img alt="" src="../../_images/PMM_DBaaS_GKE_1.png" /></a></div></p>
-</li>
-<li>
-<p>Click button Create cluster</p>
-<p><div class="lightgallery"><a data-sub-html="" href="../../_images/PMM_DBaaS_GKE_2.png"><img alt="" src="../../_images/PMM_DBaaS_GKE_2.png" /></a></div></p>
-</li>
-<li>
-<p>You can specify cluster option in form or simply click on “My first cluster” and button Create</p>
-<p><div class="lightgallery"><a data-sub-html="" href="../../_images/PMM_DBaaS_GKE_3.png"><img alt="" src="../../_images/PMM_DBaaS_GKE_3.png" /></a></div></p>
-<p><div class="lightgallery"><a data-sub-html="" href="../../_images/PMM_DBaaS_GKE_4.png"><img alt="" src="../../_images/PMM_DBaaS_GKE_4.png" /></a></div></p>
-</li>
-<li>
-<p>Wait until cluster created</p>
-<p><div class="lightgallery"><a data-sub-html="" href="../../_images/PMM_DBaaS_GKE_5.png"><img alt="" src="../../_images/PMM_DBaaS_GKE_5.png" /></a></div></p>
-</li>
-<li>
-<p>Click on button Connect in a the cluster’s row</p>
-<p><div class="lightgallery"><a data-sub-html="" href="../../_images/PMM_DBaaS_GKE_6.png"><img alt="" src="../../_images/PMM_DBaaS_GKE_6.png" /></a></div></p>
-</li>
-<li>
-<p>Click button Run in Cloud shell</p>
-<p><div class="lightgallery"><a data-sub-html="" href="../../_images/PMM_DBaaS_GKE_7.png"><img alt="" src="../../_images/PMM_DBaaS_GKE_7.png" /></a></div></p>
-</li>
-<li>
-<p>Click Authorize</p>
-<p><div class="lightgallery"><a data-sub-html="" href="../../_images/PMM_DBaaS_GKE_8.png"><img alt="" src="../../_images/PMM_DBaaS_GKE_8.png" /></a></div></p>
-<p><div class="lightgallery"><a data-sub-html="" href="../../_images/PMM_DBaaS_GKE_9.png"><img alt="" src="../../_images/PMM_DBaaS_GKE_9.png" /></a></div></p>
-<p><div class="lightgallery"><a data-sub-html="" href="../../_images/PMM_DBaaS_GKE_10.png"><img alt="" src="../../_images/PMM_DBaaS_GKE_10.png" /></a></div></p>
-</li>
-<li>
-<p>Set up PXC and PSMDB operators:</p>
-<div class="highlight"><pre><span></span><code>curl -sSf -m 30 https://raw.githubusercontent.com/percona/percona-xtradb-cluster-operator/pmm-branch/deploy/bundle.yaml  | kubectl apply -f -
-curl -sSf -m 30 https://raw.githubusercontent.com/percona/percona-server-mongodb-operator/pmm-branch/deploy/bundle.yaml  | kubectl apply -f -
+<li>Create your cluster either with <a href="https://console.cloud.google.com/">Google Cloud Console</a> or <a href="https://cloud.google.com/sdk/gcloud">gcloud command line tool</a>:</li>
+</ol>
+<p>The command below assumes that your gcloud command line tool is properly configured and your user authenticated and authorized to manage GKE Clusters. This example creates a minimal zonal cluster using preemptible node machines, ideal for testing the DBaaS functionality.  </p>
+<div class="highlight"><pre><span></span><code>gcloud container clusters create --zone europe-west3-c pmm-dbaas-cluster --cluster-version <span class="m">1</span>.19 --machine-type e2-standard-4 --preemptible --num-nodes<span class="o">=</span><span class="m">3</span>
+gcloud container clusters get-credentials pmm-dbaas-cluster --zone<span class="o">=</span>europe-west3-c
+kubectl create clusterrolebinding cluster-admin-binding --clusterrole<span class="o">=</span>cluster-admin --user<span class="o">=</span><span class="s">&lt;&lt;your_user@your_</span>company.com&gt;&gt;
 </code></pre></div>
-<p><div class="lightgallery"><a data-sub-html="" href="../../_images/PMM_DBaaS_GKE_11.png"><img alt="" src="../../_images/PMM_DBaaS_GKE_11.png" /></a></div></p>
-</li>
-<li>
-<p>Check if it was set up successfully</p>
-<div class="highlight"><pre><span></span><code>kubectl api-resources --api-group=&#39;psmdb.percona.com&#39;
-kubectl api-resources --api-group=&#39;pxc.percona.com&#39;
+<ol>
+<li>Create ServiceAccount, ClusterRole and RoleBindings (required Roles are deployed automatically when PMM deploys Operators) using the following command:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>cat <span class="s">&lt;&lt;EOF | kubectl apply -f -</span>
+<span class="s">---</span>
+<span class="s">apiVersion: v1</span>
+<span class="s">kind: ServiceAccount</span>
+<span class="s">metadata:</span>
+<span class="s">  name: percona-dbaas-cluster-operator</span>
+<span class="s">---</span>
+<span class="s">kind: RoleBinding</span>
+<span class="s">apiVersion: rbac.authorization.k8s.io/v1beta1</span>
+<span class="s">metadata:</span>
+<span class="s">  name: service-account-percona-server-dbaas-xtradb-operator</span>
+<span class="s">subjects:</span>
+<span class="s">- kind: ServiceAccount</span>
+<span class="s">  name: percona-dbaas-cluster-operator</span>
+<span class="s">roleRef:</span>
+<span class="s">  kind: Role</span>
+<span class="s">  name: percona-xtradb-cluster-operator</span>
+<span class="s">  apiGroup: rbac.authorization.k8s.io</span>
+<span class="s">---</span>
+<span class="s">kind: RoleBinding</span>
+<span class="s">apiVersion: rbac.authorization.k8s.io/v1beta1</span>
+<span class="s">metadata:</span>
+<span class="s">  name: service-account-percona-server-dbaas-psmdb-operator</span>
+<span class="s">subjects:</span>
+<span class="s">- kind: ServiceAccount</span>
+<span class="s">  name: percona-dbaas-cluster-operator</span>
+<span class="s">roleRef:</span>
+<span class="s">  kind: Role</span>
+<span class="s">  name: percona-server-mongodb-operator</span>
+<span class="s">  apiGroup: rbac.authorization.k8s.io</span>
+<span class="s">---</span>
+<span class="s">apiVersion: rbac.authorization.k8s.io/v1beta1</span>
+<span class="s">kind: ClusterRole</span>
+<span class="s">metadata:</span>
+<span class="s">  name: service-account-percona-server-dbaas-admin</span>
+<span class="s">rules:</span>
+<span class="s">- apiGroups: [&quot;*&quot;]</span>
+<span class="s">  resources: [&quot;*&quot;]</span>
+<span class="s">  verbs: [&quot;*&quot;]</span>
+<span class="s">---</span>
+<span class="s">apiVersion: rbac.authorization.k8s.io/v1beta1</span>
+<span class="s">kind: ClusterRoleBinding</span>
+<span class="s">metadata:</span>
+<span class="s">  name: service-account-percona-server-dbaas-operator-admin</span>
+<span class="s">subjects:</span>
+<span class="s">- kind: ServiceAccount</span>
+<span class="s">  name: percona-dbaas-cluster-operator</span>
+<span class="s">  namespace: default</span>
+<span class="s">roleRef:</span>
+<span class="s">  kind: ClusterRole</span>
+<span class="s">  name: service-account-percona-server-dbaas-admin</span>
+<span class="s">  apiGroup: rbac.authorization.k8s.io</span>
+<span class="s">EOF</span>
 </code></pre></div>
-<p><div class="lightgallery"><a data-sub-html="" href="../../_images/PMM_DBaaS_GKE_12.png"><img alt="" src="../../_images/PMM_DBaaS_GKE_12.png" /></a></div></p>
-</li>
-<li>
-<p>Check versions</p>
-<div class="highlight"><pre><span></span><code>kubectl api-versions | grep percona.com
+<ol>
+<li>Extract variables required to generate a kubeconfig:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="nv">name</span><span class="o">=</span><span class="sb">`</span>kubectl get serviceAccounts percona-dbaas-cluster-operator -o json <span class="p">|</span> jq  -r <span class="s1">&#39;.secrets[].name&#39;</span><span class="sb">`</span>
+<span class="nv">certificate</span><span class="o">=</span><span class="sb">`</span>kubectl get secret <span class="nv">$name</span> -o json <span class="p">|</span> jq -r  <span class="s1">&#39;.data.&quot;ca.crt&quot;&#39;</span><span class="sb">`</span>
+<span class="nv">token</span><span class="o">=</span><span class="sb">`</span>kubectl get secret <span class="nv">$name</span> -o json <span class="p">|</span> jq -r  <span class="s1">&#39;.data.token&#39;</span> <span class="p">|</span> base64 -d<span class="sb">`</span>
+<span class="nv">server</span><span class="o">=</span><span class="sb">`</span>kubectl cluster-info <span class="p">|</span> grep <span class="s1">&#39;Kubernetes master&#39;</span> <span class="p">|</span> cut -d <span class="s1">&#39; &#39;</span> -f <span class="m">6</span><span class="sb">`</span>
 </code></pre></div>
-<p><div class="lightgallery"><a data-sub-html="" href="../../_images/PMM_DBaaS_GKE_13.png"><img alt="" src="../../_images/PMM_DBaaS_GKE_13.png" /></a></div></p>
-</li>
-<li>
-<p>Create Service Account, copy and store kubeconfig - output of the following command</p>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>main</p>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-<div class="highlight"><pre><span></span><code>cat &lt;&lt;EOF | kubectl apply -f -
----
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: percona-dbaas-cluster-operator
----
-kind: RoleBinding
-apiVersion: rbac.authorization.k8s.io/v1beta1
-metadata:
-  name: service-account-percona-server-dbaas-xtradb-operator
-subjects:
-- kind: ServiceAccount
-  name: percona-dbaas-cluster-operator
-roleRef:
-  kind: Role
-  name: percona-xtradb-cluster-operator
-  apiGroup: rbac.authorization.k8s.io
----
-kind: RoleBinding
-apiVersion: rbac.authorization.k8s.io/v1beta1
-metadata:
-  name: service-account-percona-server-dbaas-psmdb-operator
-subjects:
-- kind: ServiceAccount
-  name: percona-dbaas-cluster-operator
-roleRef:
-  kind: Role
-  name: percona-server-mongodb-operator
-  apiGroup: rbac.authorization.k8s.io
-EOF
-
-name=`kubectl get serviceAccounts percona-dbaas-cluster-operator -o json | jq  -r .secrets[].name`
-certificate=`kubectl get secret $name -o json | jq -r  &#39;.data.&quot;ca.crt&quot;&#39;`
-token=`kubectl get secret $name -o json | jq -r  &#39;.data.token&#39; | base64 -d`
-server=`kubectl cluster-info | grep &#39;Kubernetes master&#39; | cut -d &#39; &#39; -f 6`
+<ol>
+<li>Generate your kubeconfig file (copy the output):</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="nb">echo</span> <span class="s2">&quot;</span>
+<span class="s2">apiVersion: v1</span>
+<span class="s2">kind: Config</span>
+<span class="s2">users:</span>
+<span class="s2">- name: percona-dbaas-cluster-operator</span>
+<span class="s2">  user:</span>
+<span class="s2">    token: </span><span class="nv">$token</span><span class="s2"></span>
+<span class="s2">clusters:</span>
+<span class="s2">- cluster:</span>
+<span class="s2">    certificate-authority-data: </span><span class="nv">$certificate</span><span class="s2"></span>
+<span class="s2">    server: </span><span class="nv">$server</span><span class="s2"></span>
+<span class="s2">  name: self-hosted-cluster</span>
+<span class="s2">contexts:</span>
+<span class="s2">- context:</span>
+<span class="s2">    cluster: self-hosted-cluster</span>
+<span class="s2">    user: percona-dbaas-cluster-operator</span>
+<span class="s2">  name: svcs-acct-context</span>
+<span class="s2">current-context: svcs-acct-context</span>
+<span class="s2">&quot;</span>
 </code></pre></div>
-<p><div class="lightgallery"><a data-sub-html="" href="../../_images/PMM_DBaaS_GKE_14.png"><img alt="" src="../../_images/PMM_DBaaS_GKE_14.png" /></a></div></p>
-<div class="highlight"><pre><span></span><code>echo &quot;
-apiVersion: v1
-kind: Config
-users:
-- name: percona-dbaas-cluster-operator
-  user:
-    token: $token
-clusters:
-- cluster:
-    certificate-authority-data: $certificate
-    server: $server
-  name: self-hosted-cluster
-contexts:
-- context:
-    cluster: self-hosted-cluster
-    user: percona-dbaas-cluster-operator
-  name: svcs-acct-context
-current-context: svcs-acct-context
-&quot;
-</code></pre></div>
-<p><div class="lightgallery"><a data-sub-html="" href="../../_images/PMM_DBaaS_GKE_15.png"><img alt="" src="../../_images/PMM_DBaaS_GKE_15.png" /></a></div></p>
-</li>
-<li>
-<p>Start PMM Server on your local machine or other VM instance:</p>
-<div class="highlight"><pre><span></span><code>docker run --detach --name pmm-server --publish <span class="m">80</span>:80 --publish <span class="m">443</span>:443 <span class="se">\</span>
---env <span class="nv">ENABLE_DBAAS</span><span class="o">=</span><span class="m">1</span> perconalab/pmm-server-fb:PR-1240-07bef94<span class="p">;</span>
-</code></pre></div>
-</li>
-<li>
-<p>Login into PMM and navigate to DBaaS</p>
-<p><div class="lightgallery"><a data-sub-html="" href="../../_images/PMM_DBaaS_GKE_16.png"><img alt="" src="../../_images/PMM_DBaaS_GKE_16.png" /></a></div></p>
-</li>
-<li>
-<p>Use kubeconfig from step 9 to <a href="../../using/platform/dbaas.html#add-a-kubernetes-cluster">Add the Kubernetes cluster</a>.</p>
-</li>
+<ol>
+<li>Follow the instructions on <a href="../../using/platform/dbaas.html#add-a-kubernetes-cluster">How to add a Kubernetes cluster</a> with kubeconfig from the previous step.</li>
 </ol>
 <h2 id="deleting-clusters">Deleting clusters<a class="headerlink" href="#deleting-clusters" title="Permanent link">&para;</a></h2>
 <blockquote>
@@ -568,7 +519,7 @@ curl https://raw.githubusercontent.com/percona-platform/dbaas-controller/7a5fff0
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-06-10
+            <i class="uil uil-refresh"></i> Page updated 2021-06-15
         </li>
         
     </ul>
