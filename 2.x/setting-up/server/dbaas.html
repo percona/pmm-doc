@@ -155,9 +155,9 @@ systemctl <span class="nb">enable</span> docker
 systemctl start docker
 </code></pre></div>
 <h3 id="minikube_1">minikube<a class="headerlink" href="#minikube_1" title="Permanent link">&para;</a></h3>
-<blockquote>
+<div class="admonition note alert alert-primary">
 <p>Please install minikube 1.16.0</p>
-</blockquote>
+</div>
 <p><strong>Red Hat, CentOS</strong></p>
 <div class="highlight"><pre><span></span><code>yum -y install curl
 curl -Lo /usr/local/sbin/minikube https://github.com/kubernetes/minikube/releases/download/v1.16.0/minikube-linux-amd64
@@ -166,25 +166,15 @@ ln -s /usr/local/sbin/minikube /usr/sbin/minikube
 <span class="nb">alias</span> <span class="nv">kubectl</span><span class="o">=</span><span class="s1">&#39;minikube kubectl --&#39;</span>
 </code></pre></div>
 <h2 id="start-pmm-server-and-activate-a-dbaas-feature">Start PMM server and activate a DBaaS feature<a class="headerlink" href="#start-pmm-server-and-activate-a-dbaas-feature" title="Permanent link">&para;</a></h2>
-<blockquote>
+<div class="admonition note alert alert-primary">
 <ul>
-<li>
-<p>To start a fully-working 3 node XtraDB cluster, consisting of sets of 3x HAProxy, 3x PXC and 6x PMM Client containers, you will need at least 9 vCPU available for minikube. (1x vCPU for HAProxy and PXC and 0.5vCPU for each pmm-client containers).</p>
-</li>
-<li>
-<p>DBaaS does not depend on PMM Client.</p>
-</li>
-<li>
-<p>You can pass the environment variable <code>--env ENABLE_DBAAS=1</code> to force the DBaaS feature when starting up pmm-server container. <strong>You can omit the variable and enable the feature later using PMM UI</strong>, please follow the link in step 3. below.</p>
-</li>
-<li>
-<p>Add the option <code>--network minikube</code> if you run PMM Server and minikube in the same Docker instance. (This will share a single network and the kubeconfig will work.)</p>
-</li>
-<li>
-<p>Add the options <code>--env PMM_DEBUG=1</code> and/or <code>--env PMM_TRACE=1</code> if you need extended debug details</p>
-</li>
+<li>To start a fully-working 3 node XtraDB cluster, consisting of sets of 3x HAProxy, 3x PXC and 6x PMM Client containers, you will need at least 9 vCPU available for minikube. (1x vCPU for HAProxy and PXC and 0.5vCPU for each pmm-client containers).</li>
+<li>DBaaS does not depend on PMM Client.</li>
+<li>You can pass the environment variable <code>--env ENABLE_DBAAS=1</code> to force the DBaaS feature when starting up pmm-server container. <strong>You can omit the variable and enable the feature later using PMM UI</strong>, please follow the link in step 3. below.</li>
+<li>Add the option <code>--network minikube</code> if you run PMM Server and minikube in the same Docker instance. (This will share a single network and the kubeconfig will work.)</li>
+<li>Add the options <code>--env PMM_DEBUG=1</code> and/or <code>--env PMM_TRACE=1</code> if you need extended debug details</li>
 </ul>
-</blockquote>
+</div>
 <ol>
 <li>
 <p>Start PMM server:</p>
@@ -198,14 +188,17 @@ ln -s /usr/local/sbin/minikube /usr/sbin/minikube
 </code></pre></div>
 </li>
 <li>
-<p><strong><em>IMPORTANT</em></strong>: <em>Please follow instructions on</em> <a href="../../using/platform/dbaas.html#activate-a-dbaas-feature"><strong>How to activate the <em>DBaaS</em> feature in Advanced Settings of PMM</strong></a>.</p>
+<div class="admonition caution alert alert-warning">
+<p class="admonition-title">Important</p>
+<p>Please follow instructions on <a href="../../using/platform/dbaas.html#activate-a-dbaas-feature">How to activate the <em>DBaaS</em> feature in Advanced Settings of PMM</a>.</p>
+</div>
 <p>You need to enable the feature using PMM UI if you omitted <code>--env ENABLE_DBAAS=1</code> when starting up the container.</p>
 </li>
 </ol>
 <h2 id="create-a-kubernetes-cluster">Create a Kubernetes cluster<a class="headerlink" href="#create-a-kubernetes-cluster" title="Permanent link">&para;</a></h2>
-<blockquote>
+<div class="admonition note alert alert-primary">
 <p>The DBaaS feature uses Kubernetes clusters to deploy database clusters. You must first create a Kubernetes cluster and then add it to PMM using <code>kubeconfig</code> to get a successful setup</p>
-</blockquote>
+</div>
 <h3 id="minikube">Minikube<a class="headerlink" href="#minikube" title="Permanent link">&para;</a></h3>
 <ol>
 <li>
@@ -220,9 +213,9 @@ minikube start
 <p>Get your kubeconfig details from <code>minikube</code>. (You need these to register your Kubernetes cluster with PMM Server):</p>
 <div class="highlight"><pre><span></span><code>minikube kubectl -- config view --flatten --minify
 </code></pre></div>
-<blockquote>
+<div class="admonition note alert alert-primary">
 <p>You will need to copy this output to your clipboard and continue with <a href="../../using/platform/dbaas.html#add-a-kubernetes-cluster">adding a Kubernetes cluster to PMM</a>.</p>
-</blockquote>
+</div>
 </li>
 </ol>
 <h3 id="aws-eks">Amazon AWS EKS<a class="headerlink" href="#aws-eks" title="Permanent link">&para;</a></h3>
@@ -299,23 +292,23 @@ users:
 </li>
 <li>
 <p>Follow the instructions on <a href="../../using/platform/dbaas.html#add-a-kubernetes-cluster">How to add a Kubernetes cluster</a> with kubeconfig from the previous step.</p>
-<blockquote>
+<div class="admonition note alert alert-primary">
 <p>If possible, the connection details will show the cluster&rsquo;s external IP (not possible with minikube).</p>
-</blockquote>
+</div>
 </li>
 </ol>
 <h3 id="google-gke">Google GKE<a class="headerlink" href="#google-gke" title="Permanent link">&para;</a></h3>
 <ol>
-<li>Create your cluster either with <a href="https://console.cloud.google.com/">Google Cloud Console</a> or <a href="https://cloud.google.com/sdk/gcloud">gcloud command line tool</a>:</li>
-</ol>
-<p>The command below assumes that your gcloud command line tool is properly configured and your user authenticated and authorized to manage GKE Clusters. This example creates a minimal zonal cluster using preemptible node machines, ideal for testing the DBaaS functionality.  </p>
+<li>
+<p>Create your cluster either with <a href="https://console.cloud.google.com/">Google Cloud Console</a> or <a href="https://cloud.google.com/sdk/gcloud">gcloud command line tool</a>:</p>
+<p>The command below assumes that your gcloud command line tool is properly configured and your user authenticated and authorized to manage GKE Clusters. This example creates a minimal zonal cluster using preemptible node machines, ideal for testing the DBaaS functionality.</p>
 <div class="highlight"><pre><span></span><code>gcloud container clusters create --zone europe-west3-c pmm-dbaas-cluster --cluster-version <span class="m">1</span>.19 --machine-type e2-standard-4 --preemptible --num-nodes<span class="o">=</span><span class="m">3</span>
 gcloud container clusters get-credentials pmm-dbaas-cluster --zone<span class="o">=</span>europe-west3-c
 kubectl create clusterrolebinding cluster-admin-binding --clusterrole<span class="o">=</span>cluster-admin --user<span class="o">=</span><span class="s">&lt;&lt;your_user@your_</span>company.com&gt;&gt;
 </code></pre></div>
-<ol>
-<li>Create ServiceAccount, ClusterRole and RoleBindings (required Roles are deployed automatically when PMM deploys Operators) using the following command:</li>
-</ol>
+</li>
+<li>
+<p>Create ServiceAccount, ClusterRole and RoleBindings (required Roles are deployed automatically when PMM deploys Operators) using the following command:</p>
 <div class="highlight"><pre><span></span><code>cat <span class="s">&lt;&lt;EOF | kubectl apply -f -</span>
 <span class="s">---</span>
 <span class="s">apiVersion: v1</span>
@@ -370,17 +363,17 @@ kubectl create clusterrolebinding cluster-admin-binding --clusterrole<span class
 <span class="s">  apiGroup: rbac.authorization.k8s.io</span>
 <span class="s">EOF</span>
 </code></pre></div>
-<ol>
-<li>Extract variables required to generate a kubeconfig:</li>
-</ol>
+</li>
+<li>
+<p>Extract variables required to generate a kubeconfig:</p>
 <div class="highlight"><pre><span></span><code><span class="nv">name</span><span class="o">=</span><span class="sb">`</span>kubectl get serviceAccounts percona-dbaas-cluster-operator -o json <span class="p">|</span> jq  -r <span class="s1">&#39;.secrets[].name&#39;</span><span class="sb">`</span>
 <span class="nv">certificate</span><span class="o">=</span><span class="sb">`</span>kubectl get secret <span class="nv">$name</span> -o json <span class="p">|</span> jq -r  <span class="s1">&#39;.data.&quot;ca.crt&quot;&#39;</span><span class="sb">`</span>
 <span class="nv">token</span><span class="o">=</span><span class="sb">`</span>kubectl get secret <span class="nv">$name</span> -o json <span class="p">|</span> jq -r  <span class="s1">&#39;.data.token&#39;</span> <span class="p">|</span> base64 -d<span class="sb">`</span>
 <span class="nv">server</span><span class="o">=</span><span class="sb">`</span>kubectl cluster-info <span class="p">|</span> grep <span class="s1">&#39;Kubernetes master&#39;</span> <span class="p">|</span> cut -d <span class="s1">&#39; &#39;</span> -f <span class="m">6</span><span class="sb">`</span>
 </code></pre></div>
-<ol>
-<li>Generate your kubeconfig file (copy the output):</li>
-</ol>
+</li>
+<li>
+<p>Generate your kubeconfig file (copy the output):</p>
 <div class="highlight"><pre><span></span><code><span class="nb">echo</span> <span class="s2">&quot;</span>
 <span class="s2">apiVersion: v1</span>
 <span class="s2">kind: Config</span>
@@ -401,13 +394,15 @@ kubectl create clusterrolebinding cluster-admin-binding --clusterrole<span class
 <span class="s2">current-context: svcs-acct-context</span>
 <span class="s2">&quot;</span>
 </code></pre></div>
-<ol>
-<li>Follow the instructions on <a href="../../using/platform/dbaas.html#add-a-kubernetes-cluster">How to add a Kubernetes cluster</a> with kubeconfig from the previous step.</li>
+</li>
+<li>
+<p>Follow the instructions on <a href="../../using/platform/dbaas.html#add-a-kubernetes-cluster">How to add a Kubernetes cluster</a> with kubeconfig from the previous step.</p>
+</li>
 </ol>
 <h2 id="deleting-clusters">Deleting clusters<a class="headerlink" href="#deleting-clusters" title="Permanent link">&para;</a></h2>
-<blockquote>
+<div class="admonition note alert alert-primary">
 <p>If a Public Address is set in PMM Settings, for each DB cluster an API Key is created which can be found on the page <code>/graph/org/apikeys</code>. You should not delete them (for now, until <a href="https://jira.percona.com/browse/PMM-8045">issue PMM-8045</a> is fixed) &ndash; once a DB cluster is removed from DBaaS, the related API Key is also removed.</p>
-</blockquote>
+</div>
 <p>For example, if you only run <code>eksctl delete cluster</code> to delete an Amazon EKS cluster without cleaning up the cluster first, there will be a lot of orphaned resources such as Cloud Formations, Load Balancers, EC2 instances, Network interfaces, etc. The same applies for Google GKE clusters.</p>
 <h3 id="cleaning-up-kubernetes-cluster">Cleaning up Kubernetes cluster<a class="headerlink" href="#cleaning-up-kubernetes-cluster" title="Permanent link">&para;</a></h3>
 <ol>
@@ -424,7 +419,7 @@ kubectl delete perconaservermongodbrestores.psmdb.percona.com --all
 </li>
 <li>
 <p>In the <code>dbaas-controller</code> repository, in the deploy directory there are manifests we use to deploy operators. Use them to delete operators and related resources from the cluster.</p>
-<div class="admonition important alert alert-warning">
+<div class="admonition caution alert alert-warning">
 <p class="admonition-title">Important</p>
 <ul>
 <li>Do NOT execute this step before all database clusters, backups and restores are deleted in the previous step. It may result in not being able to delete the namespace DBaaS lives in.</li>
@@ -457,7 +452,7 @@ curl https://raw.githubusercontent.com/percona-platform/dbaas-controller/7a5fff0
 <p>Start PMM server from a feature branch:</p>
 <div class="highlight"><pre><span></span><code>docker run --detach --name pmm-server --publish <span class="m">80</span>:80 --publish <span class="m">443</span>:443 --env <span class="nv">ENABLE_DBAAS</span><span class="o">=</span><span class="m">1</span>  percona/pmm-server:2<span class="p">;</span>
 </code></pre></div>
-<div class="admonition important alert alert-warning">
+<div class="admonition caution alert alert-warning">
 <p class="admonition-title">Important</p>
 <ul>
 <li>Use <code>--network minikube</code> if running PMM Server and minikube in the same Docker instance. This way they will share single network and the kubeconfig will work.</li>
@@ -467,9 +462,9 @@ curl https://raw.githubusercontent.com/percona-platform/dbaas-controller/7a5fff0
 </li>
 <li>
 <p>Change the default administrator credentials:</p>
-<blockquote>
+<div class="admonition note alert alert-primary">
 <p>This step is optional, because the same can be done from the web interface of PMM on the first login.</p>
-</blockquote>
+</div>
 <div class="highlight"><pre><span></span><code>docker <span class="nb">exec</span> -t pmm-server bash -c <span class="s1">&#39;ln -s /srv/grafana /usr/share/grafana/data; chown -R grafana:grafana /usr/share/grafana/data; grafana-cli --homepath /usr/share/grafana admin reset-admin-password &lt;RANDOM_PASS_GOES_IN_HERE&gt;&#39;</span>
 </code></pre></div>
 </li>
@@ -492,26 +487,16 @@ curl https://raw.githubusercontent.com/percona-platform/dbaas-controller/7a5fff0
 <p>To make services visible externally, you create a LoadBalancer service or manually run commands to expose ports:</p>
 <div class="highlight"><pre><span></span><code>kubectl expose deployment hello-world --type<span class="o">=</span>NodePort.
 </code></pre></div>
-<blockquote>
-<p><strong>See also</strong></p>
+<div class="admonition seealso alert alert-info">
+<p class="admonition-title">See also</p>
 <ul>
-<li>
-<p><a href="../../using/platform/dbaas.html">DBaaS Dashboard</a></p>
-</li>
-<li>
-<p><a href="https://minikube.sigs.k8s.io/docs/start/">Install minikube</a></p>
-</li>
-<li>
-<p><a href="https://medium.com/@chrisedrego/setting-up-a-standalone-mysql-instance-on-kubernetes-exposing-it-using-nginx-ingress-controller-262fc7af593a">Setting up a Standalone MYSQL Instance on Kubernetes &amp; exposing it using Nginx Ingress Controller</a></p>
-</li>
-<li>
-<p><a href="https://kubernetes.io/docs/tasks/access-application-cluster/service-access-application-cluster/">Use a Service to Access an Application in a Cluster</a></p>
-</li>
-<li>
-<p><a href="https://cloud.google.com/kubernetes-engine/docs/how-to/exposing-apps">Exposing applications using services</a></p>
-</li>
+<li><a href="../../using/platform/dbaas.html">DBaaS Dashboard</a></li>
+<li><a href="https://minikube.sigs.k8s.io/docs/start/">Install minikube</a></li>
+<li><a href="https://medium.com/@chrisedrego/setting-up-a-standalone-mysql-instance-on-kubernetes-exposing-it-using-nginx-ingress-controller-262fc7af593a">Setting up a Standalone MYSQL Instance on Kubernetes &amp; exposing it using Nginx Ingress Controller</a></li>
+<li><a href="https://kubernetes.io/docs/tasks/access-application-cluster/service-access-application-cluster/">Use a Service to Access an Application in a Cluster</a></li>
+<li><a href="https://cloud.google.com/kubernetes-engine/docs/how-to/exposing-apps">Exposing applications using services</a></li>
 </ul>
-</blockquote>
+</div>
                     </div>
                 </div>
                 
@@ -519,7 +504,7 @@ curl https://raw.githubusercontent.com/percona-platform/dbaas-controller/7a5fff0
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-06-15
+            <i class="uil uil-refresh"></i> Page updated 2021-06-16
         </li>
         
     </ul>
