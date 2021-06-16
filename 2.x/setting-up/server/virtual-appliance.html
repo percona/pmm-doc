@@ -282,17 +282,23 @@ wget https://www.percona.com/downloads/pmm2/2.18.0/ova/pmm-server-2.18.0.sha256s
 <li>Install <a href="https://code.vmware.com/tool/ovf"><code>ovftool</code></a>. (You need to register.)</li>
 <li>
 <p>Import and convert the OVA file. (<code>ovftool</code> can&rsquo;t change CPU or memory settings during import but it can set the default interface.)</p>
-<p>Choose one of:
-- Download and import the OVA file.
-    <div class="highlight"><pre><span></span><code>ovftool --name<span class="o">=</span><span class="s2">&quot;PMM Server&quot;</span> --net:NAT<span class="o">=</span>Wi-Fi<span class="se">\</span>
-https://www.percona.com/downloads/pmm2/2.18.0/ova/pmm-server-2.18.0.ova<span class="se">\</span>
+<p>Choose one of:</p>
+<ul>
+<li>
+<p>Download and import the OVA file.
+    <div class="highlight"><pre><span></span><code>ovftool --name<span class="o">=</span><span class="s2">&quot;PMM Server&quot;</span> --net:NAT<span class="o">=</span>Wi-Fi <span class="se">\</span>
+https://www.percona.com/downloads/pmm2/2.18.0/ova/pmm-server-2.18.0.ova <span class="se">\</span>
 pmm-server-2.18.0.vmx
-</code></pre></div>
-- Import an already-downloaded OVA file.
-    <div class="highlight"><pre><span></span><code>ovftool --name<span class="o">=</span><span class="s2">&quot;PMM Server&quot;</span> --net:NAT<span class="o">=</span>WiFi<span class="se">\</span>
-pmm-server-2.18.0.ova<span class="se">\</span>
+</code></pre></div></p>
+</li>
+<li>
+<p>Import an already-downloaded OVA file.
+    <div class="highlight"><pre><span></span><code>ovftool --name<span class="o">=</span><span class="s2">&quot;PMM Server&quot;</span> --net:NAT<span class="o">=</span>WiFi <span class="se">\</span>
+pmm-server-2.18.0.ova <span class="se">\</span>
 pmm-server.vmx
 </code></pre></div></p>
+</li>
+</ul>
 </li>
 </ol>
 <h3 id="reconfigure-interface">Reconfigure interface<a class="headerlink" href="#reconfigure-interface" title="Permanent link">&para;</a></h3>
@@ -351,7 +357,7 @@ pmm-server.vmx nogui
     <div class="highlight"><pre><span></span><code>VBoxManage import pmm-server-2.18.0.ova
 </code></pre></div></li>
 <li>With custom settings (in this example, Name: &ldquo;PMM Server&rdquo;, CPUs: 2, RAM: 8192 MB).
-    <div class="highlight"><pre><span></span><code>VBoxManage import --vsys <span class="m">0</span> --vmname <span class="s2">&quot;PMM Server&quot;</span><span class="se">\</span>
+    <div class="highlight"><pre><span></span><code>VBoxManage import --vsys <span class="m">0</span> --vmname <span class="s2">&quot;PMM Server&quot;</span> <span class="se">\</span>
 --cpus <span class="m">2</span> --memory <span class="m">8192</span> pmm-server-2.18.0.ova
 </code></pre></div></li>
 </ul>
@@ -373,11 +379,11 @@ pmm-server.vmx nogui
 </code></pre></div></li>
 <li>Find the name of the active interface you want to bridge to (one with <em>Status: Up</em> and a valid IP address). Example: <code>en0: Wi-Fi (Wireless)</code></li>
 <li>Bridge the virtual machine&rsquo;s first interface (<code>nic1</code>) to the host&rsquo;s <code>en0</code> ethernet adapter.
-    <div class="highlight"><pre><span></span><code>VBoxManage modifyvm <span class="s1">&#39;PMM Server&#39;</span><span class="se">\</span>
+    <div class="highlight"><pre><span></span><code>VBoxManage modifyvm <span class="s1">&#39;PMM Server&#39;</span> <span class="se">\</span>
 --nic1 bridged --bridgeadapter1 <span class="s1">&#39;en0: Wi-Fi (Wireless)&#39;</span>
 </code></pre></div></li>
 <li>Redirect the console output into a host file.
-    <div class="highlight"><pre><span></span><code>VBoxManage modifyvm <span class="s1">&#39;PMM Server&#39;</span><span class="se">\</span>
+    <div class="highlight"><pre><span></span><code>VBoxManage modifyvm <span class="s1">&#39;PMM Server&#39;</span> <span class="se">\</span>
 --uart1 0x3F8 <span class="m">4</span> --uartmode1 file /tmp/pmm-server-console.log
 </code></pre></div></li>
 </ol>
@@ -397,16 +403,18 @@ pmm-server.vmx nogui
     <div class="highlight"><pre><span></span><code>tail -f /tmp/pmm-server-console.log
 </code></pre></div></li>
 <li>Wait for one minute for the server to boot up.</li>
-<li>Choose one of:<ul>
+<li>
+<p>Choose one of:</p>
+<ul>
 <li>Read the IP address from the tailed log file.</li>
 <li>Extract the IP address from the log file.
     <div class="highlight"><pre><span></span><code>grep -e <span class="s2">&quot;^IP:&quot;</span> /tmp/pmm-server-console.log <span class="p">|</span> cut -f2 -d<span class="s1">&#39; &#39;</span>
 </code></pre></div></li>
+<li>(Optional) Stop the guest:
+    <div class="highlight"><pre><span></span><code>VBoxManage controlvm <span class="s2">&quot;PMM Server&quot;</span> poweroff
+</code></pre></div></li>
 </ul>
 </li>
-<li>(Optional) Stop the guest:
-        <div class="highlight"><pre><span></span><code>VBoxManage controlvm <span class="s2">&quot;PMM Server&quot;</span> poweroff
-</code></pre></div></li>
 </ol>
 <h2 id="log-into-user-interface">Log into user interface<a class="headerlink" href="#log-into-user-interface" title="Permanent link">&para;</a></h2>
 <p><strong>UI</strong></p>
