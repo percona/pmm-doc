@@ -325,6 +325,33 @@ To expand the existing EBS volume for increased capacity, follow these steps.
     Filesystem                 Size Used Avail Use% Mounted on
     /dev/mapper/DataVG-DataLV   32G 254M   32G   1% /srv
     ```
+## Backup PMM Server
+All data are stored in /srv partition. So it's enough to back the PMM data volume.
+You can create a point-in-time snapshot of the volume and use it for data backup.
+
+The procedure of creating a snapshot is described in the Amazon documentation: [Create Amazon EBS snapshots](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-creating-snapshot.html)
+
+![!image](../../_images/aws-marketplace.pmm.ec2.backup1.png)
+
+
+## Restore PMM Server from a backup
+
+1. Create a new volume by using the latest snapshot of the PMM data volume.
+
+![!image](../../_images/aws-marketplace.pmm.ec2.backup2.png)
+
+2. Stop the PMM Server instance.
+
+3. Detach the current PMM data volume.
+
+![!image](../../_images/aws-marketplace.pmm.ec2.backup3.png)
+
+4. Attach the new volume.
+
+![!image](../../_images/aws-marketplace.pmm.ec2.backup4.png)
+
+5. Start the PMM Server instance.
+
 
 ## Remove PMM Server
 
