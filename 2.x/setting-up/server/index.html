@@ -166,23 +166,6 @@
 <p>A minimum of 2 GB per monitored database node. The increase in memory usage is not proportional to the number of nodes. For example, data from 20 nodes should be easily handled with 16 GB.</p>
 <p><strong>Architecture</strong></p>
 <p>Your CPU must support the SSE4.2 instruction set, a requirement of ClickHouse, a third-party column-oriented database used by Query Analytics. If your CPU is lacking this instruction set you won&rsquo;t be able to use Query Analytics.</p>
-<h2 id="one-line-installer">One-line installer<a class="headerlink" href="#one-line-installer" title="Permanent link">&para;</a></h2>
-<div class="admonition caution alert alert-warning">
-<p class="admonition-title">Caution</p>
-<p>This is a <a href="../../details/glossary.html#technical-preview">technical preview</a> and is subject to change.</p>
-</div>
-<div class="highlight"><pre><span></span><code>curl -fsSL https://raw.githubusercontent.com/percona/pmm/PMM-2.0/get-pmm.sh -o get-pmm2.sh <span class="p">;</span> chmod +x get-pmm2.sh <span class="p">;</span> ./get-pmm2.sh
-</code></pre></div>
-<div class="admonition caution alert alert-warning">
-<p class="admonition-title">Caution</p>
-<p>Download and check <code>get-pmm2.sh</code> before running it to make sure you know what it does.</p>
-</div>
-<p>This command will:</p>
-<ul>
-<li>install Docker if not already installed;</li>
-<li>if there is a PMM Server docker container running, stop it and back it up;</li>
-<li>pull and run the latest PMM Server docker image.</li>
-</ul>
                     </div>
                 </div>
                 
@@ -190,7 +173,7 @@
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-06-15
+            <i class="uil uil-refresh"></i> Page updated 2021-06-17
         </li>
         
     </ul>
