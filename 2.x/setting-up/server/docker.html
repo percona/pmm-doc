@@ -400,11 +400,11 @@ docker run --rm --volumes-from pmm-data -it percona/pmm-server:2 chown -R postgr
 </ol>
 <h2 id="environment-variables">Environment variables<a class="headerlink" href="#environment-variables" title="Permanent link">&para;</a></h2>
 <p>Use the following Docker container environment variables (with <code>-e var=value</code>) to set PMM Server parameters.</p>
-<table>
+<table class="table">
 <thead>
 <tr>
-<th>Variable</th>
-<th>Description</th>
+<th scope="col">Variable</th>
+<th scope="col">Description</th>
 </tr>
 </thead>
 <tbody>
@@ -476,11 +476,11 @@ docker run --rm --volumes-from pmm-data -it percona/pmm-server:2 chown -R postgr
 </table>
 <p><strong>Ignored variables</strong></p>
 <p>These variables will be ignored by <code>pmm-managed</code> when starting the server. If any other variable is found, it will be considered invalid and the server won&rsquo;t start.</p>
-<table>
+<table class="table">
 <thead>
 <tr>
-<th>Variable</th>
-<th>Description</th>
+<th scope="col">Variable</th>
+<th scope="col">Description</th>
 </tr>
 </thead>
 <tbody>
