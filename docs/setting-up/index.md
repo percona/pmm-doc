@@ -2,7 +2,6 @@
 
 There are three stages to installing and setting up PMM.
 
-
 ```mermaid
 graph LR
 1(Set up PMM Server)-->2(Set up PMM Client)-->3(Add services)
@@ -18,19 +17,12 @@ Set up at least one PMM Server as either:
 
 ## Set up PMM Client {: #setting-up-pmm-client}
 
-Set up PMM Client on each node where there is a service to be monitored.
+On every node where there is a service to be monitored,
+set up PMM Client using:
 
-You have these options:
-
-- [Pull and run our Docker image](client/index.md#docker) or use Docker compose.
-
-    or
-
-- [Use a Linux package manager](client/index.md#package-manager) (`apt`, `apt-get`, `dnf`, `yum`).
-
-    or
-
-- [Download a binary package](client/index.md#binary-package) (a `.tar.gz` file).
+- [Docker](client/index.md#docker),
+- [a Linux package manager](client/index.md#package-manager) (`apt`, `apt-get`, `dnf`, `yum`),
+- or [the binary package](client/index.md#binary-package) (a `.tar.gz` file).
 
 ## Add services {: #configure-add-services}
 
