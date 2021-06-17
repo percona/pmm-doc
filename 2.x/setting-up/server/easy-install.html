@@ -32,7 +32,7 @@
 
 
 
-<title>Percona Monitoring and Management &mdash; External Services</title>
+<title>Percona Monitoring and Management &mdash; Easy install</title>
 
 <head>
     
@@ -63,7 +63,7 @@
 
     <link rel="top" title="" href="" />
     
-    <link rel="next" title="HAProxy" href="haproxy.html" />
+    <link rel="next" title="DBaaS" href="dbaas.html" />
     
     
 </head>
@@ -108,12 +108,12 @@
     <ul class="nav nav-pills">
         
         <li class="right" style="margin-right: 10px">
-            <a href="haproxy.html" title="HAProxy">Next</a>
+            <a href="dbaas.html" title="DBaaS">Next</a>
         </li>
         
         
         <li class="right" style="margin-right: 10px">
-            <a href="linux.html" title="Linux">Previous</a>
+            <a href="aws.html" title="AWS Marketplace">Previous</a>
         </li>
         
         <li>
@@ -127,11 +127,11 @@
 <div class="small">
     <ul class="list-inline">
         <li class="left">
-            <a href="https://github.com/percona/pmm-doc/issues/new?title=PMM2: doc issue on page  'External Services' (setting-up/client/external.html)&body=Please describe the issue here"
+            <a href="https://github.com/percona/pmm-doc/issues/new?title=PMM2: doc issue on page  'Easy install' (setting-up/server/easy-install.html)&body=Please describe the issue here"
                 target="_blank" title="Report an issue with this page on GitHub"><i class="uil uil-exclamation-triangle"></i> Report a problem with this page</a>
         </li>
         <li class="pull-right">
-            <a href="https://github.com/percona/pmm-doc/edit/main/docs/setting-up/client/external.md" target="_blank" title="Edit this page on GitHub in Markdown format"><i class="uil uil-pen"></i> <b>Edit this page</b></a>
+            <a href="https://github.com/percona/pmm-doc/edit/main/docs/setting-up/server/easy-install.md" target="_blank" title="Edit this page on GitHub in Markdown format"><i class="uil uil-pen"></i> <b>Edit this page</b></a>
         </li>
     </ul>
 </div>
@@ -139,74 +139,24 @@
 
                 <div class="bodywrapper">
                     <div class="body">
-                        <h1 id="external-services">External Services<a class="headerlink" href="#external-services" title="Permanent link">&para;</a></h1>
-<h2 id="adding-general-external-services">Adding general external services<a class="headerlink" href="#adding-general-external-services" title="Permanent link">&para;</a></h2>
-<p>You can collect metrics from an external (custom) exporter on a node when:</p>
+                        <h2 id="easy-install-script">Easy-install script<a class="headerlink" href="#easy-install-script" title="Permanent link">&para;</a></h2>
+<div class="admonition caution alert alert-warning">
+<p class="admonition-title">Caution</p>
 <ul>
-<li>there is already a PMM Agent instance running and,</li>
-<li>this node has been <a href="index.html">configured</a> using the <code>pmm-admin config</code> command.</li>
+<li>This is a <a href="../../details/glossary.html#technical-preview">technical preview</a> and is subject to change.</li>
+<li>Download and check <code>get-pmm2.sh</code> before running it to make sure you know what it does.</li>
 </ul>
-<h3 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>pmm-admin add external --service-name<span class="o">=</span>&lt;service-name&gt; --listen-port<span class="o">=</span>&lt;listen-port&gt; --metrics-path<span class="o">=</span>&lt;metrics-path&gt; --scheme<span class="o">=</span>&lt;scheme&gt;
+</div>
+<div class="highlight"><pre><span></span><code>curl -fsSL https://raw.githubusercontent.com/percona/pmm/PMM-2.0/get-pmm.sh -o get-pmm2.sh <span class="o">&amp;&amp;</span> <span class="se">\</span>
+chmod +x get-pmm2.sh <span class="o">&amp;&amp;</span> <span class="se">\</span>
+./get-pmm2.sh
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>pmm-admin add external-serverless --external-name<span class="o">=</span>&lt;external-service-name&gt; --host<span class="o">=</span>&lt;hostname&gt; --listen-port<span class="o">=</span>&lt;listen-port&gt; --metrics-path<span class="o">=</span>&lt;metrics-path&gt; --scheme<span class="o">=</span>&lt;scheme&gt;
-</code></pre></div>
-<h2 id="getting-data-from-external-exporters">Getting data from external exporters<a class="headerlink" href="#getting-data-from-external-exporters" title="Permanent link">&para;</a></h2>
-<p>There two ways to get metrics from other exporters:</p>
+<p>These commands:</p>
 <ul>
-<li>
-<p><code>external</code> will collect metrics from the exporter that is run on the same host as PMM Client&rsquo;s connection to it by a port. (See more details with <code>pmm-admin add external --help</code>.)</p>
-</li>
-<li>
-<p><code>external-serverless</code> is useful for collecting metrics from cloud services. You need a host and port number to add it to PMM Server. (See more details with <code>pmm-admin add external-serverless --help</code>.)</p>
-</li>
+<li>install Docker if not already installed;</li>
+<li>if there is a PMM Server docker container running, stop it and back it up;</li>
+<li>pull and run the latest PMM Server docker image.</li>
 </ul>
-<p>Here are the differences between <code>external</code> and <code>external-serverless</code> types.</p>
-<p>Connection schema of external exporter:</p>
-<p><div class="lightgallery"><a data-sub-html="" href="../../_images/PMM_External_Exporter_Schema.jpg"><img alt="" src="../../_images/PMM_External_Exporter_Schema.jpg" /></a></div></p>
-<p>Connection schema of external serverless exporter:</p>
-<p><div class="lightgallery"><a data-sub-html="" href="../../_images/PMM_External_Serverless_Exporter_Schema.jpg"><img alt="" src="../../_images/PMM_External_Serverless_Exporter_Schema.jpg" /></a></div></p>
-<h2 id="how-i-can-add-something-not-supported-by-pmm">How I can add something not supported by PMM<a class="headerlink" href="#how-i-can-add-something-not-supported-by-pmm" title="Permanent link">&para;</a></h2>
-<p>PMM can collect any metrics in <a href="https://openmetrics.io">Open metrics</a> or <a href="https://prometheus.io/docs/instrumenting/exposition_formats/">Prometheus exposition</a> format. You must specify the host and port of these metrics using the <code>pmm-admin add external</code> or <code>pmm-admin add external-serverless</code> commands.</p>
-<p>From this point, PMM will collect and store available metrics.</p>
-<p>To browse and visualize collected metrics as a first step, we can look at the Advanced Data Exploration dashboard and select informative services and metrics.</p>
-<p><div class="lightgallery"><a data-sub-html="" href="../../_images/PMM_Advanced_Data_Exploration.jpg"><img alt="" src="../../_images/PMM_Advanced_Data_Exploration.jpg" /></a></div></p>
-<p>Another way is to create a <a href="https://grafana.com/docs/grafana/latest/best-practices/best-practices-for-creating-dashboards/">new Grafana Dashboard to PMM as needed</a>.</p>
-<p>One more way is to search for an already created dashboard at <a href="https://grafana.com/grafana/dashboards">https://grafana.com/grafana/dashboards</a> for the added exporter and import it into PMM.</p>
-<h3 id="third-party-exporters">Third-party exporters<a class="headerlink" href="#third-party-exporters" title="Permanent link">&para;</a></h3>
-<p>You can find more exporters on the <a href="https://prometheus.io/docs/instrumenting/exporters/">official Prometheus page</a>.</p>
-<h3 id="custom-exporter">Custom exporter<a class="headerlink" href="#custom-exporter" title="Permanent link">&para;</a></h3>
-<p>You can write a custom external exporter or extend your application to expose metrics in Prometheus format.</p>
-<p>Please see more details here: https://prometheus.io/docs/instrumenting/writing_exporters/</p>
-<h3 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>root@mysql1:~# pmm-admin add external --group<span class="o">=</span>processes  --listen-port<span class="o">=</span><span class="m">9256</span>
-External Service added.
-Service ID  : /service_id/6485f4fd-745b-4dfb-8b72-328e300f8b50
-Service name: mysql1-processes
-Group       : processes
-</code></pre></div>
-<ul>
-<li>Add an exporter running on local port 9256 to the group called <code>processes</code>.</li>
-<li>Use the group and host names to automatically generate a service name.</li>
-<li>Use the default scheme and metrics path.</li>
-</ul>
-<h2 id="adding-an-external-service-via-ui">Adding an External service via UI<a class="headerlink" href="#adding-an-external-service-via-ui" title="Permanent link">&para;</a></h2>
-<ol>
-<li>
-<p>In the PMM web interface, go to <em>PMM &gt; PMM Add Instance</em>.</p>
-</li>
-<li>
-<p>Select <em>External Service &ndash; Add a remote instance</em>.</p>
-<p><div class="lightgallery"><a data-sub-html="" href="../../_images/PMM_External_Serverless.png"><img alt="" src="../../_images/PMM_External_Serverless.png" /></a></div></p>
-</li>
-<li>
-<p>Fill the form and set the external service endpoint.</p>
-<p>The endpoint can be set manually:</p>
-<p><img alt="" src="../../_images/PMM_External_Serverless_switcher_manually.png" /></p>
-<p>or by parsing required data from a URL string, in which case you only need to pass a valid URL.</p>
-<p><img alt="" src="../../_images/PMM_External_Serverless_switcher.png" /></p>
-</li>
-</ol>
                     </div>
                 </div>
                 
@@ -214,7 +164,7 @@ Group       : processes
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-06-03
+            <i class="uil uil-refresh"></i> Page updated 2021-06-17
         </li>
         
     </ul>
@@ -225,12 +175,12 @@ Group       : processes
     <ul class="nav nav-pills">
         
         <li class="right" style="margin-right: 10px">
-            <a href="haproxy.html" title="HAProxy">Next</a>
+            <a href="dbaas.html" title="DBaaS">Next</a>
         </li>
         
         
         <li class="right" style="margin-right: 10px">
-            <a href="linux.html" title="Linux">Previous</a>
+            <a href="aws.html" title="AWS Marketplace">Previous</a>
         </li>
         
         <li>
@@ -272,7 +222,7 @@ Group       : processes
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../server/index.html">Server</a>
+    <a class="reference internal" href="index.html">Server</a>
 
 
 
@@ -281,37 +231,37 @@ Group       : processes
 
 
 <li class="toctree-l3">
-    <a class="reference internal" href="../server/network.html">Network</a>
+    <a class="reference internal" href="network.html">Network</a>
 
 
 
 
 <li class="toctree-l3">
-    <a class="reference internal" href="../server/docker.html">Docker</a>
+    <a class="reference internal" href="docker.html">Docker</a>
 
 
 
 
 <li class="toctree-l3">
-    <a class="reference internal" href="../server/virtual-appliance.html">Virtual Appliance</a>
+    <a class="reference internal" href="virtual-appliance.html">Virtual Appliance</a>
 
 
 
 
 <li class="toctree-l3">
-    <a class="reference internal" href="../server/aws.html">AWS Marketplace</a>
+    <a class="reference internal" href="aws.html">AWS Marketplace</a>
 
 
 
 
 <li class="toctree-l3">
-    <a class="reference internal" href="../server/easy-install.html">Easy install</a>
+    <a class="reference internal" href="easy-install.html">Easy install</a>
 
 
 
 
 <li class="toctree-l3">
-    <a class="reference internal" href="../server/dbaas.html">DBaaS</a>
+    <a class="reference internal" href="dbaas.html">DBaaS</a>
 
 
 
@@ -322,7 +272,7 @@ Group       : processes
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="index.html">Client</a>
+    <a class="reference internal" href="../client/index.html">Client</a>
 
 
 
@@ -331,67 +281,67 @@ Group       : processes
 
 
 <li class="toctree-l3">
-    <a class="reference internal" href="mysql.html">MySQL</a>
+    <a class="reference internal" href="../client/mysql.html">MySQL</a>
 
 
 
 
 <li class="toctree-l3">
-    <a class="reference internal" href="mongodb.html">MongoDB</a>
+    <a class="reference internal" href="../client/mongodb.html">MongoDB</a>
 
 
 
 
 <li class="toctree-l3">
-    <a class="reference internal" href="postgresql.html">PostgreSQL</a>
+    <a class="reference internal" href="../client/postgresql.html">PostgreSQL</a>
 
 
 
 
 <li class="toctree-l3">
-    <a class="reference internal" href="proxysql.html">ProxySQL</a>
+    <a class="reference internal" href="../client/proxysql.html">ProxySQL</a>
 
 
 
 
 <li class="toctree-l3">
-    <a class="reference internal" href="aws.html">Amazon RDS</a>
+    <a class="reference internal" href="../client/aws.html">Amazon RDS</a>
 
 
 
 
 <li class="toctree-l3">
-    <a class="reference internal" href="azure.html">Microsoft Azure</a>
+    <a class="reference internal" href="../client/azure.html">Microsoft Azure</a>
 
 
 
 
 <li class="toctree-l3">
-    <a class="reference internal" href="google.html">Google Cloud Platform</a>
+    <a class="reference internal" href="../client/google.html">Google Cloud Platform</a>
 
 
 
 
 <li class="toctree-l3">
-    <a class="reference internal" href="linux.html">Linux</a>
+    <a class="reference internal" href="../client/linux.html">Linux</a>
 
 
 
 
 <li class="toctree-l3">
-    <a class="reference internal" href="external.html">External Services</a>
+    <a class="reference internal" href="../client/external.html">External Services</a>
 
 
 
 
 <li class="toctree-l3">
-    <a class="reference internal" href="haproxy.html">HAProxy</a>
+    <a class="reference internal" href="../client/haproxy.html">HAProxy</a>
 
 
 
 
 <li class="toctree-l3">
-    <a class="reference internal" href="remote.html">Remote instances</a>
+    <a class="reference internal" href="../client/remote.html">Remote instances</a>
 
 
 
@@ -1154,13 +1104,13 @@ Group       : processes
 
 <h4>Previous page</h4>
 <p class="topless">
-    <a href="linux.html" title="previous chapter">Linux</a>
+    <a href="aws.html" title="previous chapter">AWS Marketplace</a>
 </p>
 
 
 <h4>Next page</h4>
 <p class="topless">
-    <a href="haproxy.html" title="next chapter">HAProxy</a>
+    <a href="dbaas.html" title="next chapter">DBaaS</a>
 </p>
 
 

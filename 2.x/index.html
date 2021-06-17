@@ -137,6 +137,7 @@
                     <div class="body">
                         <h1 id="welcome">Welcome<a class="headerlink" href="#welcome" title="Permanent link">&para;</a></h1>
 <p><strong>Percona Monitoring and Management</strong> (PMM) is a free, open-source monitoring tool for MySQL, PostgreSQL, MongoDB, and ProxySQL, and the servers they run on.</p>
+<p>PMM helps you improve the performance of your databases, simplify their management, and strengthen their security. It&rsquo;s efficient, quick to <a href="setting-up/index.html">set up</a>, and easy to use.</p>
 <ul>
 <li>
 <p>PMM <strong>collects</strong> thousands of out-of-the-box performance <strong>metrics</strong> from databases and their hosts.</p>
@@ -149,24 +150,22 @@
 </li>
 </ul>
 <div class="admonition alert alert-info">
-<p>You&rsquo;re looking at the documentation for the latest release, <strong>PMM 2.18.0</strong> (<a href="release-notes/2.18.0.html">Release Notes</a>).</p>
+<p>This is the documentation for the latest release, <strong>PMM 2.18.0</strong> (<a href="release-notes/2.18.0.html">Release Notes</a>).</p>
 </div>
-<p>Percona Monitoring and Management helps you improve the performance of your databases, simplify their management, and strengthen their security. It&rsquo;s efficient, quick to <a href="setting-up/index.html">set up</a>, and easy to use.</p>
-<details class="note alert alert-info" open="open"><summary>PMM Live Demo</summary><p>Here&rsquo;s how the home page looks on our <a href='https://pmmdemo.percona.com/' target='_blank'>free, live demo system</a>.</p>
+<p>Here&rsquo;s how the home page looks on our <a href='https://pmmdemo.percona.com/' target='_blank'>free, live demo system</a>.</p>
 <p><a href='https://pmmdemo.percona.com/' target='_blank'><img src="_images/PMM_Home_Dashboard.jpg" width=600px class="imgcenter"/></a></p>
-</details>
 <p>PMM runs in the cloud, on-prem, or across hybrid platforms. It&rsquo;s supported by our <a href="https://www.percona.com/services">legendary expertise</a> in open source databases, and by a vibrant developer and user <a href="https://www.percona.com/forums/questions-discussions/percona-monitoring-and-management">community</a>.</p>
+<p>A minimal PMM set-up comprises one <a href="details/architecture.html#pmm-server">server</a> and a <a href="details/architecture.html#pmm-client">client agent</a> on every system you want to monitor.</p>
 <h2 id="start-here">Start here<a class="headerlink" href="#start-here" title="Permanent link">&para;</a></h2>
-<p>A minimal PMM set-up comprises one <a href="details/architecture.html#pmm-server">server</a> and a <a href="details/architecture.html#pmm-client">client agent</a> on every system you want to monitor. (The server stores, collates and displays metrics sent to it by clients.)</p>
 <ul>
 <li>
-<p><a href="setting-up/index.html">Setting Up</a> explains in detail how to install and run both PMM Server and PMM Client.</p>
+<p>An <a href="setting-up/server/easy-install.html">easy install</a> script, which you download, make executable and run. The script installs Docker and runs PMM Server as a container. (Caution: this is a <a href="details/glossary.html#technical-preview">Technical Preview</a>.)</p>
 </li>
 <li>
 <p>The <a href="https://www.percona.com/software/pmm/quickstart">Quickstart install guide</a> shows how to run PMM Server as a Docker container, and how to install PMM Client on Ubuntu or Red Hat Linux hosts.</p>
 </li>
 <li>
-<p>A <a href="setting-up/server/index.html#one-line-installer">one-line install command</a> downloads a script, makes it executable and runs it. The script installs Docker and runs PMM Server as a container. (Caution: this is a <a href="details/glossary.html#technical-preview">Technical Preview</a>.)</p>
+<p><a href="setting-up/index.html">Setting Up</a> explains in detail how to set up PMM Server, clients, and how to add services.</p>
 </li>
 </ul>
 <h2 id="read-more">Read more<a class="headerlink" href="#read-more" title="Permanent link">&para;</a></h2>
@@ -263,6 +262,12 @@
 
 <li class="toctree-l3">
     <a class="reference internal" href="setting-up/server/aws.html">AWS Marketplace</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="setting-up/server/easy-install.html">Easy install</a>
 
 
 
