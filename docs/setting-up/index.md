@@ -13,9 +13,11 @@ Set up at least one PMM Server.
 
 Choose from:
 
-- [Docker](server/docker.md)
-- [Virtual appliance](server/virtual-appliance.md)
-- [Amazon AWS](server/aws.md)
+| Use                  | {{icon.thumbsup}} **Benefits**  | {{icon.thumbsdown}} **Drawbacks**
+|----------------------|---------------------------------|--------------------------------------
+| [Docker]             | Quick, simple                   | Docker required, not for production
+| [Virtual appliance]  |                                 |
+| [Amazon AWS]         |                                 | Non-free solution (infrastructure)
 
 ## Set up PMM Client {: #setting-up-pmm-client}
 
@@ -82,6 +84,11 @@ partition "<b>Stage 3</b>" {
 }
 @enduml
 ```
+
+
+[Docker]: server/docker.md
+[Virtual appliance] :server/virtual-appliance.md
+[Amazon AWS]: server/aws.md
 
 
 [MySQL and variants]: client/mysql.md
