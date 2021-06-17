@@ -218,7 +218,7 @@ minikube start
 </div>
 </li>
 </ol>
-<h3 id="aws-eks">Amazon AWS EKS<a class="headerlink" href="#aws-eks" title="Permanent link">&para;</a></h3>
+<h3 id="amazon-aws-eks">Amazon AWS EKS<a class="headerlink" href="#amazon-aws-eks" title="Permanent link">&para;</a></h3>
 <ol>
 <li>
 <p>Create your cluster via <code>eksctl</code> or the Amazon AWS interface. For example:</p>
@@ -300,15 +300,15 @@ users:
 <h3 id="google-gke">Google GKE<a class="headerlink" href="#google-gke" title="Permanent link">&para;</a></h3>
 <ol>
 <li>
-<p>Create your cluster either with <a href="https://console.cloud.google.com/">Google Cloud Console</a> or <a href="https://cloud.google.com/sdk/gcloud">gcloud command line tool</a>:</p>
-<p>The command below assumes that your gcloud command line tool is properly configured and your user authenticated and authorized to manage GKE Clusters. This example creates a minimal zonal cluster using preemptible node machines, ideal for testing the DBaaS functionality.</p>
+<p>Create your cluster either with <a href="https://console.cloud.google.com/">Google Cloud Console</a> or <a href="https://cloud.google.com/sdk/gcloud"><code>gcloud</code> command line tool</a>:</p>
+<p>The command below assumes that your <code>gcloud</code> command line tool is properly configured and your user authenticated and authorized to manage GKE Clusters. This example creates a minimal zonal cluster using preemptive node machines, ideal for testing the DBaaS functionality.</p>
 <div class="highlight"><pre><span></span><code>gcloud container clusters create --zone europe-west3-c pmm-dbaas-cluster --cluster-version <span class="m">1</span>.19 --machine-type e2-standard-4 --preemptible --num-nodes<span class="o">=</span><span class="m">3</span>
 gcloud container clusters get-credentials pmm-dbaas-cluster --zone<span class="o">=</span>europe-west3-c
 kubectl create clusterrolebinding cluster-admin-binding --clusterrole<span class="o">=</span>cluster-admin --user<span class="o">=</span><span class="s">&lt;&lt;your_user@your_</span>company.com&gt;&gt;
 </code></pre></div>
 </li>
 <li>
-<p>Create ServiceAccount, ClusterRole and RoleBindings (required Roles are deployed automatically when PMM deploys Operators) using the following command:</p>
+<p>Create <code>ServiceAccount</code>, <code>ClusterRole</code> and <code>RoleBindings</code> (required Roles are deployed automatically when PMM deploys Operators) using the following command:</p>
 <div class="highlight"><pre><span></span><code>cat <span class="s">&lt;&lt;EOF | kubectl apply -f -</span>
 <span class="s">---</span>
 <span class="s">apiVersion: v1</span>
@@ -434,7 +434,7 @@ curl https://raw.githubusercontent.com/percona-platform/dbaas-controller/7a5fff0
 </code></pre></div>
 </li>
 <li>
-<p>Delete the namespace where the DBaaS is running, this will delete all remaining namespace level resources if any are left.</p>
+<p>Delete the name space where the DBaaS is running, this will delete all remaining name space level resources if any are left.</p>
 <div class="highlight"><pre><span></span><code>kubectl delete namespace &lt;your-namespace&gt;
 </code></pre></div>
 </li>
@@ -504,7 +504,7 @@ curl https://raw.githubusercontent.com/percona-platform/dbaas-controller/7a5fff0
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-06-16
+            <i class="uil uil-refresh"></i> Page updated 2021-06-17
         </li>
         
     </ul>
