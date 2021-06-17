@@ -22,7 +22,7 @@
         ![!](../_images/PMM_Backup_Management.jpg)
 
 - The following packages are needed for creating backups. They should be included in the `$PATH` environment variable:
-    - [xtrabackup][PERCONA_XTRABACKUP], which includes:
+    - [`xtrabackup`][PERCONA_XTRABACKUP], which includes:
         - [`xbcloud`][PERCONA_XBCLOUD];
         - [`xbstream`][PERCONA_XBSTREAM];
     - [`qpress`][PERCONA_QPRESS].
@@ -52,7 +52,7 @@
 
 ## Creating a backup {: #backup-create }
 
-!!! tip alert alert-success "Tip"
+!!! hint alert alert-success "Tip"
     You must add a [backup storage location](#backup-location) before backing up.
 
 1. Navigate to *Backup Management-->Backup Inventory*.

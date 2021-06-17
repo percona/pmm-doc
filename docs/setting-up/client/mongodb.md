@@ -4,7 +4,7 @@ PMM Client collects metrics from [MongoDB][MONGODB] and [Percona Server for Mong
 
 This page shows you how to set up PMM to monitor a MongoDB database instance.
 
-!!! tip alert alert-success ""
+!!! hint alert alert-success ""
     We recommend you read it in full before doing anything.
 
 Here is an overview of the steps involved.
@@ -49,7 +49,7 @@ Check that:
 
 We recommend using a dedicated account to connect PMM Client to the monitored database instance.
 
-This example creates a new custom role with the privileges needed by the Query Analyzer, and adds a database user with that role plus the built-in "clusterMonitor" role.
+This example creates a new custom role with the privileges needed by the Query Analyzer, and adds a database user with that role plus the built-in `clusterMonitor` role.
 
 !!! caution alert alert-warning ""
     Values for username (`user`) and password (`pwd`) are examples. Replace them before using this code.
@@ -113,7 +113,7 @@ You can set profiling:
       rateLimit: 100
     ```
 
-    !!! important alert alert-success "Important"
+    !!! caution alert alert-warning "Important"
         This is a [YAML](http://yaml.org/spec/) file. Indentation matters.
 
 3. Restart the `mongod` service. (Example for `systemd`.)
@@ -212,7 +212,7 @@ where:
 - `IFPASSWORDTOCERTISSET`: Password for TLS certificate file.
 - `PATHTOCACERT`: Path to certificate authority file.
 
-!!! tip alert alert-success "Tips"
+!!! hint alert alert-success "Tips"
     - When adding nodes of a sharded cluster, add each node separately using the `--cluster mycluster` option for the MongoDB Cluster Summary dashboard to populate correctly.
     - Atlas doesn't support direct connections. When connecting to an Atlas instance, use the `pmm-admin` option `--direct-connection=false`. (Doing so will prevent replicaset status from working and the MongoDB Overview dashboard widget will show invalid values.)
 
@@ -242,7 +242,7 @@ pmm-admin inventory list services --service-type=mongodb
 1. Open *PMM Query Analytics*.
 2. In the *Filters* panel:
     1. Under *Service Name*, select your service.
-    2. Under *Service Type* select *mongodb*.
+    2. Under *Service Type* select `mongodb`.
 
 ## Remove service
 

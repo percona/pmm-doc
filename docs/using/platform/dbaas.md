@@ -103,13 +103,9 @@ To monitor a DB cluster, set up a [public address](../../how-to/configure.md#pub
 
     1. Select *Topology*, either *Cluster* or *Single Node*.
 
-    2. Select the number of nodes. (The lower limit is 3.)
+    1. Select the number of nodes. (The lower limit is 3.)
 
-    3. Select *External Access* if you want to make your DB cluster available outside of Kubernetes cluster.
-        
-        By default, only internal access is provided. 
-
-    4. Select a preset for *Resources per Node*.
+    1. Select a preset for *Resources per Node*.
 
         *Small*, *Medium* and *Large* are fixed preset values for *Memory*, *CPU*, and *Disk*.
 
@@ -155,7 +151,7 @@ To monitor a DB cluster, set up a [public address](../../how-to/configure.md#pub
 
     ![!](../../_images/PMM_DBaaS_DB_Cluster_Delete.png)
 
-!!! important alert alert-warning "Important"
+!!! caution alert alert-warning "Important"
     Deleting a cluster in this way also deletes any attached volumes.
 
 ### Edit a DB Cluster

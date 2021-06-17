@@ -74,7 +74,7 @@ To discover an Amazon RDS DB instance in PMM, you either need to use the access 
 
 To create the access key, open the *Security credentials* tab and click the *Create access key* button. The system automatically generates a new access key ID and a secret access key that you can provide on the *PMM Add Instance* dashboard to have your Amazon RDS DB instances discovered.
 
-!!! tip alert alert-success "Tip"
+!!! hint alert alert-success "Tip"
     You may use an IAM role instead of IAM user provided your Amazon RDS DB instances are associated with the same AWS account as PMM.
 
 In case, the PMM Server and Amazon RDS DB instance were created by using the same AWS account, you do not need create the access key ID and secret access key manually. PMM retrieves this information automatically and attempts to discover your Amazon RDS DB instances.
@@ -103,7 +103,7 @@ The `AmazonRDSforPMMPolicy` is now added to your IAM user.
 
 Query Analytics requires Configuring Performance Schema as the query source, because the slow query log is stored on the AWS (Amazon Web Services) side, and QAN agent is not able to read it.  Enable the `performance_schema` option under `Parameter Groups` in Amazon RDS.
 
-!!! important alert alert-success "Important"
+!!! caution alert alert-warning "Important"
     Enabling Performance Schema on T2 instances is not recommended because it can easily run the T2 instance out of memory.
 
 When adding a monitoring instance for Amazon RDS, specify a unique name to distinguish it from the local MySQL instance.  If you do not specify a name, it will use the client’s host name.

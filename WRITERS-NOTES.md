@@ -6,6 +6,8 @@ Admonitions use a combined MkDocs/Bootstrap definition to get acceptable and sim
 
 Percona.com uses Bootstrap 4. Admonitions are styled as [Alerts](https://getbootstrap.com/docs/4.0/components/alerts/).
 
+Material for MkDocs theme: https://squidfunk.github.io/mkdocs-material/reference/admonitions/#supported-types
+
 **General advice**
 
 Admonitions are to highlight something special, not to make every point significant. When used in this way, they are ignored in the same way as 'the boy who cried wolf'. But they help to break up large blocks of text, and add a little colour.
@@ -25,8 +27,7 @@ By using a subset of all MkDocs, we can get some alignment between those and Boo
 | Tip                         | Green         | Green            |
 | Caution, Warning, Important | Amber         | Amber            |
 | Danger                      | Red           | Red              |
-
-
+| Summary                     | Turquoise     | Turqoise         |
 
 ### Note, Info
 
@@ -76,18 +77,27 @@ Anything that has the potential to damage or compromise a user's data or system.
 
 ### Tip
 
-Use for tips, hints, non-essential but useful advice.
+Use for tips, hints, non-essential but useful advice. Note that `tip` renders badly in Percona.com. `hint` is better and looks the same as `tip` in Material theme.
 
 ```
-!!! tip alert alert-success "Tip"
+!!! hint alert alert-success "Tip"
     Tip
 
-!!! tip alert alert-success "Tips"
+!!! hint alert alert-success "Tips"
     - One
     - Two
 
-!!! tip alert alert-success ""
+!!! hint alert alert-success ""
     Tip
+```
+
+
+### Summary
+
+Used to summarise a block of text (a TLDR).
+
+```
+!!! summary alert alert-info "Summary"
 ```
 
 ### See Also

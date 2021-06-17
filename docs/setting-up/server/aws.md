@@ -11,7 +11,7 @@ Selecting a region and instance type in the *Pricing Information* section will g
 Percona Monitoring and Management Server is provided at no cost, but you may need to pay for infrastructure costs.
 
 !!! note alert alert-primary ""
-    Disk space consumed by PMM Server depends on the number of hosts being monitored. Although each environment will be unique, you can consider the data consumption figures for the [PMM Demo](https://pmmdemo.percona.com/) web site which consumes approximately 230MB/host/day, or ~6.9GB/host at the default 30 day retention period.
+    Disk space consumed by PMM Server depends on the number of hosts being monitored. Although each environment will be unique, you can consider the data consumption figures for the [PMM Demo](https://pmmdemo.percona.com/) web site which consumes approximately 230 MB per host per day, or approximately 6.9 GB per host at the default 30 day retention period.
 
     For more information, see our blog post [How much disk space should I allocate for Percona Monitoring and Management?](https://www.percona.com/blog/2017/05/04/how-much-disk-space-should-i-allocate-for-percona-monitoring-and-management/).
 
@@ -47,7 +47,7 @@ In the *Security Group* section, which acts like a firewall, you may use the pre
 
 ![!image](../../_images/aws-marketplace.pmm.launch-on-ec2.1-click-launch.3.png)
 
-!!! important alert alert-success "Important"
+!!! caution alert alert-warning "Important"
     The security group should allow communication via the the following ports: *22*, *80*, and *443*. PMM should also be able to access port *3306* on the RDS that uses the instance.
 
     ![!image](../../_images/aws-marketplace.pmm.launch-on-ec2.1-click-launch.2.png)

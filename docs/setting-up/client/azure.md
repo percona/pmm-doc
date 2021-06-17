@@ -75,19 +75,19 @@ When you fill in all fields press the *Discover* button and you will see a list 
 
 You can monitor 6 types of databases:
 
-- Microsoft.DBforMySQL/servers
-- Microsoft.DBforMySQL/flexibleServers
-- Microsoft.DBforMariaDB/servers
-- Microsoft.DBforPostgreSQL/servers
-- Microsoft.DBforPostgreSQL/flexibleServers
-- Microsoft.DBforPostgreSQL/serversv2
+- `Microsoft.DBforMySQL/servers`
+- `Microsoft.DBforMySQL/flexibleServers`
+- `Microsoft.DBforMariaDB/servers`
+- `Microsoft.DBforPostgreSQL/servers`
+- `Microsoft.DBforPostgreSQL/flexibleServers`
+- `Microsoft.DBforPostgreSQL/serversv2`
 
 You can find more details on how to create DB on Azure at:
 
 - <https://docs.microsoft.com/en-us/azure/postgresql/>
 - <https://docs.microsoft.com/en-us/azure/mysql/>
 
-!!! tip alert alert-success "Tip"
+!!! hint alert alert-success "Tip"
     You must set `pg_stat_statements.track = all` in your PostgreSQL Server settings to use PMM Query Analytics. ([Read more.](postgresql.md#pg_stat_statements))
 
 ![!](../../_images/PMM_Add_Instance_Azure_3.png)

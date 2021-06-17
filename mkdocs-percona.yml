@@ -28,6 +28,7 @@ extra_javascript:
   - https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js
   - js/table.number.js
   - js/tables.js
+#  - https://unpkg.com/mermaid/dist/mermaid.min.js
 
 markdown_extensions:
   - attr_list
@@ -44,6 +45,10 @@ markdown_extensions:
   - pymdownx.tabbed
   - pymdownx.tilde
   - pymdownx.superfences
+#      custom_fences:
+#        - name: mermaid
+#          class: mermaid
+#          format: !!python/name:mermaid2.fence_mermaid
   - pymdownx.highlight:
       linenums: false
   - plantuml_markdown
@@ -60,6 +65,7 @@ plugins:
       glob:
         - "setting-up/client/docker.md"
   - section-index
+  - bootstrap-tables
 
 extra: # Used in main.html template and can't be externalised
   open_issue_text:
@@ -83,6 +89,7 @@ nav:
           - setting-up/server/docker.md
           - setting-up/server/virtual-appliance.md
           - setting-up/server/aws.md
+          - setting-up/server/easy-install.md
           - setting-up/server/dbaas.md
       - Client:
           - setting-up/client/index.md
