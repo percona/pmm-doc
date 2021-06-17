@@ -1,6 +1,6 @@
 # Upgrade
 
-!!! important alert alert-success "Important"
+!!! caution alert alert-warning "Important"
     Upgrade PMM Server before upgrading PMM Clients.
 
 ## Updating a Server
@@ -22,6 +22,9 @@ The panel shows:
 Click the refresh button to manually check for updates.
 
 If one is available, click the update button to update to the version indicated.
+
+!!! seealso alert alert-info "See also"
+    [PMM Server Docker upgrade](../setting-up/server/docker.md#upgrade)
 
 ## Upgrade from PMM 1 {: #upgrade-from-pmm1}
 

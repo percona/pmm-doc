@@ -1,25 +1,18 @@
 # Virtual Appliance
 
-Run PMM Server as a virtual machine by downloading and importing the [PMM {{release}}][OVA] Open Virtual Appliance (OVA) file into any virtualization software supporting the [OVF standard][OVF].
+How to run PMM Server as a virtual machine by downloading and importing the [PMM {{release}}][OVA] Open Virtual Appliance (OVA) file into virtualization software supporting the [OVF standard][OVF], such as [VMware Workstation Player][VMware] and [Oracle VM VirtualBox][VirtualBox].
 
-This page shows how to set up PMM Server as a virtual machine in [VMware Workstation Player][VMware] and [Oracle VM VirtualBox][VirtualBox].
+!!! summary alert alert-info "Summary"
+    - Download and verify the OVF file.
+    - Import it.
+    - Reconfigure network.
+    - Start the VM and get IP.
+    - Log into PMM UI.
+    - (Optional) Change VM root password.
+    - (Optional) Set up SSH.
+    - (Optional) Set up static IP.
 
-```plantuml
-@startuml "setting-up_server_virtual-appliance"
-!include docs/_images/plantuml_styles.puml
-:Download;
-:Verify;
-partition "VMware or\nVirtualBox" {
-    :Import;
-    :Reconfigure interface;
-    :Start guest and get IP address;
-}
-:Log in to PMM user interface;
-#lightgrey:(Optional) Change root password;
-#lightgrey:(Optional) Set up SSH;
-#lightgrey:(Optional) Set up static IP;
-@enduml
-```
+---
 
 Most steps can be done with either a user interface or on the command line, but some steps can only be done in one or the other. Sections are labeled **UI** for user interface or **CLI** for command line instructions.
 
@@ -85,7 +78,7 @@ wget https://www.percona.com/downloads/pmm2/{{release}}/ova/pmm-server-{{release
 shasum -ca 256 pmm-server-{{release}}.sha256sum
 ```
 
-## VMware Workstation Player {: #vmware }
+## VMware {: #vmware }
 
 ### Import
 
@@ -103,6 +96,7 @@ shasum -ca 256 pmm-server-{{release}}.sha256sum
     b. Click *Save*.
 
 7. Choose one of:
+
     - (Optional) Click *Finish*. This starts the virtual machine.
     - (Recommended) Click *Customize Settings*. This opens the VM's settings page without starting the machine.
 
@@ -112,16 +106,18 @@ shasum -ca 256 pmm-server-{{release}}.sha256sum
 2. Import and convert the OVA file. (`ovftool` can't change CPU or memory settings during import but it can set the default interface.)
 
     Choose one of:
+
     - Download and import the OVA file.
         ```sh
-        ovftool --name="PMM Server" --net:NAT=Wi-Fi\
-        https://www.percona.com/downloads/pmm2/{{release}}/ova/pmm-server-{{release}}.ova\
+        ovftool --name="PMM Server" --net:NAT=Wi-Fi \
+        https://www.percona.com/downloads/pmm2/{{release}}/ova/pmm-server-{{release}}.ova \
         pmm-server-{{release}}.vmx
         ```
+
     - Import an already-downloaded OVA file.
         ```sh
-        ovftool --name="PMM Server" --net:NAT=WiFi\
-        pmm-server-{{release}}.ova\
+        ovftool --name="PMM Server" --net:NAT=WiFi \
+        pmm-server-{{release}}.ova \
         pmm-server.vmx
         ```
 
@@ -162,7 +158,7 @@ shasum -ca 256 pmm-server-{{release}}.sha256sum
     pmm-server.vmx nogui
     ```
 
-## Oracle VM VirtualBox {: #virtualbox }
+## VirtualBox {: #virtualbox }
 
 ### Import
 
@@ -190,11 +186,11 @@ shasum -ca 256 pmm-server-{{release}}.sha256sum
         ```
     - With custom settings (in this example, Name: "PMM Server", CPUs: 2, RAM: 8192 MB).
         ```sh
-        VBoxManage import --vsys 0 --vmname "PMM Server"\
+        VBoxManage import --vsys 0 --vmname "PMM Server" \
         --cpus 2 --memory 8192 pmm-server-{{release}}.ova
         ```
 
-### Reconfigure interface
+### Interface
 
 **UI**
 
@@ -213,16 +209,16 @@ shasum -ca 256 pmm-server-{{release}}.sha256sum
 2. Find the name of the active interface you want to bridge to (one with *Status: Up* and a valid IP address). Example: `en0: Wi-Fi (Wireless)`
 3. Bridge the virtual machine's first interface (`nic1`) to the host's `en0` ethernet adapter.
     ```sh
-    VBoxManage modifyvm 'PMM Server'\
+    VBoxManage modifyvm 'PMM Server' \
     --nic1 bridged --bridgeadapter1 'en0: Wi-Fi (Wireless)'
     ```
 4. Redirect the console output into a host file.
     ```sh
-    VBoxManage modifyvm 'PMM Server'\
+    VBoxManage modifyvm 'PMM Server' \
     --uart1 0x3F8 4 --uartmode1 file /tmp/pmm-server-console.log
     ```
 
-### Start guest and get IP address
+### Get IP
 
 **UI**
 
@@ -242,6 +238,7 @@ shasum -ca 256 pmm-server-{{release}}.sha256sum
     ```
 3. Wait for one minute for the server to boot up.
 4. Choose one of:
+
     - Read the IP address from the tailed log file.
     - Extract the IP address from the log file.
         ```sh
@@ -252,7 +249,7 @@ shasum -ca 256 pmm-server-{{release}}.sha256sum
         VBoxManage controlvm "PMM Server" poweroff
         ```
 
-## Log into PMM user interface
+## Log into user interface
 
 **UI**
 
@@ -321,14 +318,12 @@ When the guest OS starts, it will get an IP address from the hypervisor's DHCP s
     ip addr show eth0
     ```
 
-## Remove PMM Server
+## Remove
 
 **UI**
 
-1. Stop the virtual machine.
-   Select Close --> Power Off
-2. Remove the virtual machine.
-   Select Remove --> Delete all files
+1. Stop the virtual machine: select *Close-->Power Off*.
+2. Remove the virtual machine: select *Remove-->Delete all files*.
 
 
 [OVA]: https://www.percona.com/downloads/pmm2/{{release}}/ova

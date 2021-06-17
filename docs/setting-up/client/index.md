@@ -141,7 +141,7 @@ The [PMM Client Docker image](https://hub.docker.com/r/percona/pmm-client/tags/)
 
 You can now add services with [`pmm-admin`](../../details/commands/pmm-admin.md) by prefixing commands with `docker exec pmm-client`.
 
-!!! tip alert alert-success "Tips"
+!!! hint alert alert-success "Tips"
     - Adjust host firewall and routing rules to allow Docker communications. ([Read more in the FAQ.](../../faq.md#how-do-i-troubleshoot-communication-issues-between-pmm-client-and-pmm-server))
     - For help:
         ```sh
@@ -238,7 +238,7 @@ You can now add services with [`pmm-admin`](../../details/commands/pmm-admin.md)
 
 ### Package manager
 
-!!! tip alert alert-success "Tip"
+!!! hint alert alert-success "Tip"
     If you have used `percona-release` before, disable and re-enable the repository:
     ```sh
     percona-release disable all
@@ -472,7 +472,7 @@ pmm-admin config --server-insecure-tls --server-url=https://admin:admin@X.X.X.X:
 - `443` is the default port number.
 - `admin`/`admin` is the default PMM username and password. This is the same account you use to log into the PMM user interface, which you had the option to change when first logging in.
 
-!!! important alert alert-warning "Important"
+!!! caution alert alert-warning "Important"
     Clients *must* be registered with the PMM Server using a secure channel. If you use http as your server URL, PMM will try to connect via https on port 443. If a TLS connection can't be established you will get an error and you must use https along with the appropriate secure port.
 
 **Examples**
