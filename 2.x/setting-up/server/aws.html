@@ -420,7 +420,7 @@ data blocks changed from 3354624 to 8335360
 <p>Use the lsblk command to see that our disk size has been identified by the kernel correctly, but LVM2 is not yet aware of the new size.</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># lsblk</span>
 NAME                      MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
-nvme0n1                   <span class="m">259</span>:1    <span class="m">0</span>    10G  <span class="m">0</span> disk 
+nvme0n1                   <span class="m">259</span>:1    <span class="m">0</span>    10G  <span class="m">0</span> disk
 └─nvme0n1p1               <span class="m">259</span>:2    <span class="m">0</span>     8G  <span class="m">0</span> part /
 ...
 </code></pre></div>
@@ -435,7 +435,7 @@ CHANGED: <span class="nv">partition</span><span class="o">=</span><span class="m
 <p>To verify that the partition reflects the increased volume size, use the lsblk command again.</p>
 <div class="highlight"><pre><span></span><code># lsblk
 NAME                      MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
-nvme0n1                   259:1    0    10G  0 disk 
+nvme0n1                   259:1    0    10G  0 disk
 └─nvme0n1p1               259:2    0    10G  0 part /
 ...
 </code></pre></div>
@@ -504,8 +504,10 @@ You can create a point-in-time snapshot of the volume and use it for data backup
 <p><div class="lightgallery"><a data-sub-html="image" href="../../_images/aws-marketplace.pmm.ec2.remove3.png"><img alt="image" src="../../_images/aws-marketplace.pmm.ec2.remove3.png" /></a></div></p>
 </li>
 </ol>
-<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
+<div class="admonition seealso alert alert-info">
+<p class="admonition-title">See also</p>
 <p><a href="https://www.percona.com/blog/2021/04/29/improving-percona-monitoring-and-management-ec2-instance-resilience-using-cloudwatch-alarm-actions/">Improving Percona Monitoring and Management EC2 Instance Resilience Using CloudWatch Alarm Actions</a></p>
+</div>
                     </div>
                 </div>
                 
