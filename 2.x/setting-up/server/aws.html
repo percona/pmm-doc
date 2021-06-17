@@ -248,8 +248,39 @@
 <p>The procedure of resizing EBS volumes is described in the Amazon documentation: <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-modify-volume.html">Modifying the Size, IOPS, or Type of an EBS Volume on Linux</a>.</p>
 <p>After the EBS volume is updated, PMM Server instance will auto-detect changes in approximately 5 minutes or less and will reconfigure itself for the updated conditions.</p>
 <h2 id="upgrading-pmm-server-on-aws">Upgrading PMM Server on AWS<a class="headerlink" href="#upgrading-pmm-server-on-aws" title="Permanent link">&para;</a></h2>
+<h3 id="change-public-ip-address">Change Public IP address<a class="headerlink" href="#change-public-ip-address" title="Permanent link">&para;</a></h3>
+<p>To assign a public IP address for an Amazon EC2 instance, follow these steps:</p>
+<ol>
+<li>
+<p>Allocate Elastic IP address</p>
+<p><div class="lightgallery"><a data-sub-html="image" href="../../_images/aws-marketplace.pmm.ec2.ip.allocate.png"><img alt="image" src="../../_images/aws-marketplace.pmm.ec2.ip.allocate.png" /></a></div></p>
+</li>
+<li>
+<p>Associate Elastic IP address with a Network interface ID of your EC2 instance</p>
+<p>If you associate an Elastic IP address to an instance that already has an Elastic IP address associated, this previously associated Elastic IP address will be disassociated but still allocated to your account.</p>
+<p><div class="lightgallery"><a data-sub-html="image" href="../../_images/aws-marketplace.pmm.ec2.ip.associate.png"><img alt="image" src="../../_images/aws-marketplace.pmm.ec2.ip.associate.png" /></a></div></p>
+</li>
+</ol>
 <h3 id="upgrading-ec2-instance-class">Upgrading EC2 instance class<a class="headerlink" href="#upgrading-ec2-instance-class" title="Permanent link">&para;</a></h3>
 <p>Upgrading to a larger EC2 instance class is supported by PMM provided you follow the instructions from the <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-resize.html">AWS manual</a>. The PMM AMI image uses a distinct EBS volume for the PMM data volume which permits independent resizing of the EC2 instance without impacting the EBS volume.</p>
+<ol>
+<li>
+<p>Open the Amazon EC2 console.</p>
+</li>
+<li>
+<p>In the navigation pane, choose PMM Server Instances.</p>
+</li>
+<li>
+<p>Select the instance and choose Actions, Instance state, Stop instance.</p>
+</li>
+<li>
+<p>In the Change instance type dialog box, select the instance type that you want.</p>
+<p><div class="lightgallery"><a data-sub-html="image" href="../../_images/aws-marketplace.pmm.ec2.instance.upgrade.png"><img alt="image" src="../../_images/aws-marketplace.pmm.ec2.instance.upgrade.png" /></a></div></p>
+</li>
+<li>
+<p>Choose Apply to accept the new settings and start the stopped instance.</p>
+</li>
+</ol>
 <h3 id="expanding-the-pmm-data-ebs-volume">Expanding the PMM Data EBS Volume<a class="headerlink" href="#expanding-the-pmm-data-ebs-volume" title="Permanent link">&para;</a></h3>
 <p>The PMM data volume is mounted as an XFS formatted volume on top of an LVM volume. There are two ways to increase this volume size:</p>
 <ol>
@@ -374,19 +405,107 @@ data blocks changed from 3354624 to 8335360
 </code></pre></div>
 </li>
 </ol>
+<h3 id="expand-the-amazon-ebs-root-volume">Expand the Amazon EBS root volume<a class="headerlink" href="#expand-the-amazon-ebs-root-volume" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>Expand the disk from AWS Console/CLI to the desired capacity.</p>
+</li>
+<li>
+<p>Login to the PMM EC2 instance and verify that the disk capacity has increased. For example, if you have expanded disk from 8G to 10G, dmesg output should look like below:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># dmesg | grep &quot;capacity change&quot;</span>
+<span class="o">[</span><span class="m">63175</span>.044762<span class="o">]</span> nvme0n1: detected capacity change from <span class="m">8589934592</span> to <span class="m">10737418240</span>
+</code></pre></div>
+</li>
+<li>
+<p>Use the lsblk command to see that our disk size has been identified by the kernel correctly, but LVM2 is not yet aware of the new size.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># lsblk</span>
+NAME                      MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
+nvme0n1                   <span class="m">259</span>:1    <span class="m">0</span>    10G  <span class="m">0</span> disk 
+└─nvme0n1p1               <span class="m">259</span>:2    <span class="m">0</span>     8G  <span class="m">0</span> part /
+...
+</code></pre></div>
+</li>
+<li>
+<p>For volumes that have a partition, such as the root volume shown in the previous step, use the growpart command to extend the partition.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># growpart /dev/nvme0n1 1</span>
+CHANGED: <span class="nv">partition</span><span class="o">=</span><span class="m">1</span> <span class="nv">start</span><span class="o">=</span><span class="m">2048</span> old: <span class="nv">size</span><span class="o">=</span><span class="m">16775168</span> <span class="nv">end</span><span class="o">=</span><span class="m">16777216</span> new: <span class="nv">size</span><span class="o">=</span><span class="m">20969439</span> <span class="nv">end</span><span class="o">=</span><span class="m">20971487</span>
+</code></pre></div>
+</li>
+<li>
+<p>To verify that the partition reflects the increased volume size, use the lsblk command again.</p>
+<div class="highlight"><pre><span></span><code># lsblk
+NAME                      MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
+nvme0n1                   259:1    0    10G  0 disk 
+└─nvme0n1p1               259:2    0    10G  0 part /
+...
+</code></pre></div>
+</li>
+<li>
+<p>Extend the XFS file system on the root volume by xfs_growfs command. I</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># xfs_growfs -d /</span>
+meta-data<span class="o">=</span>/dev/nvme0n1p1         <span class="nv">isize</span><span class="o">=</span><span class="m">512</span>    <span class="nv">agcount</span><span class="o">=</span><span class="m">4</span>, <span class="nv">agsize</span><span class="o">=</span><span class="m">524224</span> <span class="nv">blks</span>
+         <span class="o">=</span>                       <span class="nv">sectsz</span><span class="o">=</span><span class="m">512</span>   <span class="nv">attr</span><span class="o">=</span><span class="m">2</span>, <span class="nv">projid32bit</span><span class="o">=</span><span class="nv">1</span>
+         <span class="o">=</span>                       <span class="nv">crc</span><span class="o">=</span><span class="m">1</span>        <span class="nv">finobt</span><span class="o">=</span><span class="m">0</span> <span class="nv">spinodes</span><span class="o">=</span><span class="m">0</span>
+<span class="nv">data</span>     <span class="o">=</span>                       <span class="nv">bsize</span><span class="o">=</span><span class="m">4096</span>   <span class="nv">blocks</span><span class="o">=</span><span class="m">2096896</span>, <span class="nv">imaxpct</span><span class="o">=</span><span class="nv">25</span>
+         <span class="o">=</span>                       <span class="nv">sunit</span><span class="o">=</span><span class="m">0</span>      <span class="nv">swidth</span><span class="o">=</span><span class="m">0</span> blks
+<span class="nv">naming</span>   <span class="o">=</span>version <span class="m">2</span>              <span class="nv">bsize</span><span class="o">=</span><span class="m">4096</span>   ascii-ci<span class="o">=</span><span class="m">0</span> <span class="nv">ftype</span><span class="o">=</span><span class="m">1</span>
+<span class="nv">log</span>      <span class="o">=</span>internal               <span class="nv">bsize</span><span class="o">=</span><span class="m">4096</span>   <span class="nv">blocks</span><span class="o">=</span><span class="m">2560</span>, <span class="nv">version</span><span class="o">=</span><span class="nv">2</span>
+         <span class="o">=</span>                       <span class="nv">sectsz</span><span class="o">=</span><span class="m">512</span>   <span class="nv">sunit</span><span class="o">=</span><span class="m">0</span> blks, lazy-count<span class="o">=</span><span class="m">1</span>
+<span class="nv">realtime</span> <span class="o">=</span>none                   <span class="nv">extsz</span><span class="o">=</span><span class="m">4096</span>   <span class="nv">blocks</span><span class="o">=</span><span class="m">0</span>, <span class="nv">rtextents</span><span class="o">=</span><span class="m">0</span>
+data blocks changed from <span class="m">2096896</span> to <span class="m">2621120</span>
+</code></pre></div>
+</li>
+<li>
+<p>Verify that file system reflects the increased volume size</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># df -hT /</span>
+Filesystem     Type  Size  Used Avail Use% Mounted on
+/dev/nvme0n1p1 xfs    10G  <span class="m">5</span>,6G  <span class="m">4</span>,5G  <span class="m">56</span>% /
+</code></pre></div>
+</li>
+</ol>
+<h2 id="backup-pmm-server">Backup PMM Server<a class="headerlink" href="#backup-pmm-server" title="Permanent link">&para;</a></h2>
+<p>All data are stored in the <code>/srv</code> partition, so it&rsquo;s enough to back the PMM data volume.
+You can create a point-in-time snapshot of the volume and use it for data backup.</p>
+<p>The procedure of creating a snapshot is described in the Amazon documentation: <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-creating-snapshot.html">Create Amazon EBS snapshots</a></p>
+<p><div class="lightgallery"><a data-sub-html="image" href="../../_images/aws-marketplace.pmm.ec2.backup1.png"><img alt="image" src="../../_images/aws-marketplace.pmm.ec2.backup1.png" /></a></div></p>
+<h2 id="restore-pmm-server-from-a-backup">Restore PMM Server from a backup<a class="headerlink" href="#restore-pmm-server-from-a-backup" title="Permanent link">&para;</a></h2>
+<ol>
+<li>
+<p>Create a new volume by using the latest snapshot of the PMM data volume.</p>
+<p><div class="lightgallery"><a data-sub-html="image" href="../../_images/aws-marketplace.pmm.ec2.backup2.png"><img alt="image" src="../../_images/aws-marketplace.pmm.ec2.backup2.png" /></a></div></p>
+</li>
+<li>
+<p>Stop the PMM Server instance.</p>
+</li>
+<li>
+<p>Detach the current PMM data volume.</p>
+<p><div class="lightgallery"><a data-sub-html="image" href="../../_images/aws-marketplace.pmm.ec2.backup3.png"><img alt="image" src="../../_images/aws-marketplace.pmm.ec2.backup3.png" /></a></div></p>
+</li>
+<li>
+<p>Attach the new volume.</p>
+<p><div class="lightgallery"><a data-sub-html="image" href="../../_images/aws-marketplace.pmm.ec2.backup4.png"><img alt="image" src="../../_images/aws-marketplace.pmm.ec2.backup4.png" /></a></div></p>
+</li>
+<li>
+<p>Start the PMM Server instance.</p>
+</li>
+</ol>
 <h2 id="remove-pmm-server">Remove PMM Server<a class="headerlink" href="#remove-pmm-server" title="Permanent link">&para;</a></h2>
 <ol>
-<li>Find the instance in the EC2 Console</li>
-</ol>
+<li>
+<p>Find the instance in the EC2 Console</p>
 <p><div class="lightgallery"><a data-sub-html="image" href="../../_images/aws-marketplace.pmm.ec2.remove1.png"><img alt="image" src="../../_images/aws-marketplace.pmm.ec2.remove1.png" /></a></div></p>
-<ol>
-<li>Select &ldquo;Instance state&rdquo; menu and &ldquo;Terminate instance&rdquo;</li>
-</ol>
+</li>
+<li>
+<p>Select &ldquo;Instance state&rdquo; menu and &ldquo;Terminate instance&rdquo;</p>
 <p><div class="lightgallery"><a data-sub-html="image" href="../../_images/aws-marketplace.pmm.ec2.remove2.png"><img alt="image" src="../../_images/aws-marketplace.pmm.ec2.remove2.png" /></a></div></p>
-<ol>
-<li>Confirm termination operation</li>
-</ol>
+</li>
+<li>
+<p>Confirm termination operation</p>
 <p><div class="lightgallery"><a data-sub-html="image" href="../../_images/aws-marketplace.pmm.ec2.remove3.png"><img alt="image" src="../../_images/aws-marketplace.pmm.ec2.remove3.png" /></a></div></p>
+</li>
+</ol>
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
+<p><a href="https://www.percona.com/blog/2021/04/29/improving-percona-monitoring-and-management-ec2-instance-resilience-using-cloudwatch-alarm-actions/">Improving Percona Monitoring and Management EC2 Instance Resilience Using CloudWatch Alarm Actions</a></p>
                     </div>
                 </div>
                 
