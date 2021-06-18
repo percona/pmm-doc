@@ -169,7 +169,7 @@
 <div class="admonition seealso alert alert-info">
 <p class="admonition-title">See also</p>
 <ul>
-<li><a href="how-to/upgrade.html#upgrade-from-pmm-1">Upgrade from PMM1</a>.</li>
+<li><a href="how-to/upgrade.html#upgrade-from-pmm-1">Upgrade from PMM1</a></li>
 <li><a href="https://www.percona.com/blog/2019/11/27/running-pmm1-and-pmm2-clients-on-the-same-host/">Percona blog: Running PMM1 and PMM2 Clients on the Same Host</a></li>
 </ul>
 </div>
@@ -180,7 +180,8 @@
 <p><a href="how-to/configure.html#data-retention">Configure data retention</a></p>
 </div>
 <h2 id="how-often-are-nginx-logs-rotated">How often are NGINX logs rotated?<a class="headerlink" href="#how-often-are-nginx-logs-rotated" title="Permanent link">&para;</a></h2>
-<p>PMM Server runs <code>logrotate</code> on a daily basis to rotate NGINX logs and keeps up to ten of the most recent log files.</p>
+<p>Daily.</p>
+<p>PMM Server runs <code>logrotate</code> daily to rotate NGINX logs, keeping up to ten of the most recent log files.</p>
 <h2 id="what-privileges-are-required-to-monitor-a-mysql-instance">What privileges are required to monitor a MySQL instance?<a class="headerlink" href="#what-privileges-are-required-to-monitor-a-mysql-instance" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>SELECT, PROCESS, SUPER, REPLICATION CLIENT, RELOAD
 </code></pre></div>
@@ -189,16 +190,19 @@
 <p><a href="setting-up/client/mysql.html#create-a-database-account-for-pmm">Setting Up/Client/MySQL</a>.</p>
 </div>
 <h2 id="can-i-monitor-multiple-service-instances">Can I monitor multiple service instances?<a class="headerlink" href="#can-i-monitor-multiple-service-instances" title="Permanent link">&para;</a></h2>
-<p>You can add multiple instances of MySQL or some other service to be monitored from one PMM Client. In this case, you must provide a unique port and IP address, or a socket for each instance, and specify a unique name for each.  (If a name is not provided, PMM uses the name of the PMM Client host.)</p>
-<p>For example, to add complete MySQL monitoring for two local MySQL servers, the commands would be:</p>
+<p>Yes.</p>
+<p>You can add multiple instances of MySQL or any other service to be monitored from the same PMM Client.</p>
+<p>To do this, you provide a unique port and IP address, or a socket for each instance, and specify a unique name for each. (If a name is not provided, PMM uses the name of the PMM Client host.)</p>
+<p>For example, to add MySQL monitoring for two local MySQL servers:</p>
 <div class="highlight"><pre><span></span><code>pmm-admin add mysql --username root --password root instance-01 <span class="m">127</span>.0.0.1:3001
 pmm-admin add mysql --username root --password root instance-02 <span class="m">127</span>.0.0.1:3002
 </code></pre></div>
-<p>For more information, run:</p>
-<div class="highlight"><pre><span></span><code>pmm-admin add mysql --help
-</code></pre></div>
+<div class="admonition seealso alert alert-info">
+<p class="admonition-title">See also</p>
+<p><a href="details/commands/pmm-admin.html#mysql"><code>pmm-admin add mysql</code></a></p>
+</div>
 <h2 id="can-i-rename-instances">Can I rename instances?<a class="headerlink" href="#can-i-rename-instances" title="Permanent link">&para;</a></h2>
-<p>You can remove any monitoring instance and then add it back with a different name.</p>
+<p>Yes, by removing and re-adding with a different name.</p>
 <p>When you remove a monitoring service, previously collected data remains available in Grafana.  However, the metrics are tied to the instance name.  So if you add the same instance back with a different name, it will be considered a new instance with a new set of metrics.  So if you are re-adding an instance and want to keep its previous data, add it with the same name.</p>
 <h2 id="can-i-add-an-aws-rds-mysql-or-aurora-mysql-instance-from-a-non-default-aws-partition">Can I add an AWS RDS MySQL or Aurora MySQL instance from a non-default AWS partition?<a class="headerlink" href="#can-i-add-an-aws-rds-mysql-or-aurora-mysql-instance-from-a-non-default-aws-partition" title="Permanent link">&para;</a></h2>
 <p>By default, the RDS discovery works with the default <code>aws</code> partition. But you can switch to special regions, like the <a href="https://aws.amazon.com/govcloud-us/">GovCloud</a> one, with the alternative <a href="https://docs.aws.amazon.com/sdk-for-go/api/aws/endpoints/#pkg-constants">AWS partitions</a> (e.g. <code>aws-us-gov</code>) adding them to the <em>Settings</em> via the PMM Server <a href="details/api.html">API</a>.</p>
