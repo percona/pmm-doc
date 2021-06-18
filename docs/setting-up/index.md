@@ -17,7 +17,7 @@ Choose from:
 |----------------------|---------------------------------|--------------------------------------
 | [Docker]             | Quick, simple                   | Docker required, will have additional network configuration needs
 | [Virtual appliance]  | Easily import into Hypervisor of your choice  | Requires more system resources compared to docker footprint
-| [Amazon AWS]         |                                 | Non-free solution (infrastructure)
+| [Amazon AWS]         |  Wizard driven install                               | Non-free solution (infrastructure)
 
 ## Set up PMM Client {: #setting-up-pmm-client}
 
