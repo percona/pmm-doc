@@ -281,6 +281,7 @@ pmm-admin add mysql --username root --password root instance-02 <span class="m">
 <span class="k">until</span> <span class="o">[</span> <span class="s2">&quot;`docker inspect -f {{.State.Health.Status}} pmm-server`&quot;</span> <span class="o">=</span> <span class="s2">&quot;healthy&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">do</span> sleep <span class="m">1</span><span class="p">;</span> <span class="k">done</span>
 docker <span class="nb">exec</span> -t pmm-server bash -c  <span class="s2">&quot;grafana-cli --homepath /usr/share/grafana admin reset-admin-password </span><span class="nv">$PMM_PASSWORD</span><span class="s2">&quot;</span>
 </code></pre></div>
+<p>(This example assumes your Docker container is named <code>pmm-server</code>.)</p>
                     </div>
                 </div>
                 
