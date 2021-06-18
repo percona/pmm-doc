@@ -277,7 +277,15 @@ pmm-admin add mysql --username root --password root instance-02 <span class="m">
 <h2 id="how-to-troubleshoot-an-update">How to troubleshoot an Update?<a class="headerlink" href="#how-to-troubleshoot-an-update" title="Permanent link">&para;</a></h2>
 <p>See <a href="how-to/troubleshoot.html#troubleshoot-update">Troubleshoot update</a>.</p>
 <h2 id="what-are-my-login-credentials-when-i-try-to-connect-to-a-prometheus-exporter">What are my login credentials when I try to connect to a Prometheus Exporter?<a class="headerlink" href="#what-are-my-login-credentials-when-i-try-to-connect-to-a-prometheus-exporter" title="Permanent link">&para;</a></h2>
-<p>PMM protects an exporter&rsquo;s output from unauthorized access by adding an authorization layer. To access an exporter you can use &ldquo;<code>pmm</code>&rdquo; as a user name and the Agent ID as a password. You can find the Agent ID corresponding to a given exporter by running <code>pmm-admin list</code>.</p>
+<ul>
+<li>User name: <code>pmm</code></li>
+<li>Password: Agent ID</li>
+</ul>
+<p>PMM protects an exporter&rsquo;s output from unauthorized access by adding an authorization layer. To access an exporter you can use <code>pmm</code> as a user name and the Agent ID as a password. You can find the Agent ID corresponding to a given exporter by running <code>pmm-admin list</code>.</p>
+<div class="admonition seealso alert alert-info">
+<p class="admonition-title">See also</p>
+<p><a href="details/commands/pmm-admin.html#information-commands"><code>pmm-admin list</code></a></p>
+</div>
 <h2 id="how-to-provision-pmm-server-with-non-default-admin-password">How to provision PMM Server with non-default admin password?<a class="headerlink" href="#how-to-provision-pmm-server-with-non-default-admin-password" title="Permanent link">&para;</a></h2>
 <p>Currently there is no API available to change the <code>admin</code> password. If you&rsquo;re deploying through Docker you can use the following code snippet to change the password after starting the Docker container:</p>
 <div class="highlight"><pre><span></span><code><span class="nv">PMM_PASSWORD</span><span class="o">=</span><span class="s2">&quot;mypassword&quot;</span>
