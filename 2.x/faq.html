@@ -143,11 +143,25 @@
 <li><a href="https://jira.percona.com/projects/PMM">PMM project in JIRA</a>.</li>
 </ul>
 <h2 id="what-are-the-minimum-system-requirements-for-pmm">What are the minimum system requirements for PMM?<a class="headerlink" href="#what-are-the-minimum-system-requirements-for-pmm" title="Permanent link">&para;</a></h2>
-<p>See:</p>
 <ul>
-<li><a href="setting-up/server/index.html#system-requirements">PMM Server</a></li>
-<li><a href="setting-up/client/index.html#system-requirements">PMM Client</a></li>
+<li>Server:<ul>
+<li>Disk: 1 GB per monitored database (1 week data retention)</li>
+<li>Memory: 2 GB per monitored database</li>
+<li>CPU: Supports <a href="https://wikipedia.org/wiki/SSE4#SSE4.2"><code>SSE4.2</code></a></li>
 </ul>
+</li>
+<li>Client:<ul>
+<li>Disk: 100 MB</li>
+</ul>
+</li>
+</ul>
+<div class="admonition seealso alert alert-info">
+<p class="admonition-title">See also</p>
+<ul>
+<li><a href="setting-up/server/index.html">Setting up PMM Server</a></li>
+<li><a href="setting-up/client/index.html">Setting up PMM Client</a></li>
+</ul>
+</div>
 <h2 id="how-can-i-upgrade-from-pmm-version-1">How can I upgrade from PMM version 1?<a class="headerlink" href="#how-can-i-upgrade-from-pmm-version-1" title="Permanent link">&para;</a></h2>
 <p>See <a href="how-to/upgrade.html#upgrade-from-pmm1">Upgrade from PMM1</a>.</p>
 <h2 id="how-to-control-data-retention-for-pmm">How to control data retention for PMM?<a class="headerlink" href="#how-to-control-data-retention-for-pmm" title="Permanent link">&para;</a></h2>
@@ -216,7 +230,7 @@ docker <span class="nb">exec</span> -t pmm2-server bash -c  <span class="s2">&q
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-06-14
+            <i class="uil uil-refresh"></i> Page updated 2021-06-18
         </li>
         
     </ul>
