@@ -15,7 +15,7 @@ Choose from:
 
 | Use                  | {{icon.thumbsup}} **Benefits**  | {{icon.thumbsdown}} **Drawbacks**
 |----------------------|---------------------------------|--------------------------------------
-| [Docker]             | Quick, simple                   | Docker required, not for production
+| [Docker]             | Quick, simple                   | Docker required, will have additional network configuration needs
 | [Virtual appliance]  |                                 |
 | [Amazon AWS]         |                                 | Non-free solution (infrastructure)
 
