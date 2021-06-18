@@ -434,9 +434,49 @@ apt install -y pmm2-client
 </code></pre></div>
 </li>
 </ol>
-<h2 id="uninstall">Uninstall<a class="headerlink" href="#uninstall" title="Permanent link">&para;</a></h2>
-<p>How to uninstall (remove)) PMM Client.</p>
+<h2 id="register">Register<a class="headerlink" href="#register" title="Permanent link">&para;</a></h2>
+<p>Register your client node with PMM Server.</p>
+<div class="highlight"><pre><span></span><code>pmm-admin config --server-insecure-tls --server-url<span class="o">=</span>https://admin:admin@X.X.X.X:443
+</code></pre></div>
+<ul>
+<li><code>X.X.X.X</code> is the address of your PMM Server.</li>
+<li><code>443</code> is the default port number.</li>
+<li><code>admin</code>/<code>admin</code> is the default PMM username and password. This is the same account you use to log into the PMM user interface, which you had the option to change when first logging in.</li>
+</ul>
+<div class="admonition caution alert alert-warning">
+<p class="admonition-title">Important</p>
+<p>Clients <em>must</em> be registered with the PMM Server using a secure channel. If you use http as your server URL, PMM will try to connect via https on port 443. If a TLS connection can&rsquo;t be established you will get an error and you must use https along with the appropriate secure port.</p>
+</div>
+<p><strong>Examples</strong></p>
+<p>Register on PMM Server with IP address <code>192.168.33.14</code> using the default <code>admin/admin</code> username and password, a node with IP address <code>192.168.33.23</code>, type <code>generic</code>, and name <code>mynode</code>.</p>
+<div class="highlight"><pre><span></span><code>pmm-admin config --server-insecure-tls --server-url<span class="o">=</span>https://admin:admin@192.168.33.14:443 <span class="m">192</span>.168.33.23 generic mynode
+</code></pre></div>
+<h2 id="add-services">Add services<a class="headerlink" href="#add-services" title="Permanent link">&para;</a></h2>
+<p>You must configure and adding services according to the service type.</p>
+<ul>
+<li><a href="mysql.html">MySQL</a> (and variants Percona Server for MySQL, Percona XtraDB Cluster, MariaDB)</li>
+<li><a href="mongodb.html">MongoDB</a></li>
+<li><a href="postgresql.html">PostgreSQL</a></li>
+<li><a href="proxysql.html">ProxySQL</a></li>
+<li><a href="aws.html">Amazon RDS</a></li>
+<li><a href="azure.html">Microsoft Azure</a></li>
+<li><a href="google">Google Cloud Platform</a> (MySQL and PostgreSQL)</li>
+<li><a href="linux.html">Linux</a></li>
+<li><a href="external.html">External services</a></li>
+<li><a href="haproxy.html">HAProxy</a></li>
+<li><a href="remote.html">Remote instances</a></li>
+</ul>
+<div class="admonition hint alert alert-success">
+<p class="admonition-title">Tip</p>
+<p>To change the parameters of a previously-added service, remove the service and re-add it with new parameters.</p>
+</div>
+<h2 id="remove">Remove<a class="headerlink" href="#remove" title="Permanent link">&para;</a></h2>
+<p>How to remove (uninstall) PMM Client.</p>
 <h3 id="docker_1">Docker<a class="headerlink" href="#docker_1" title="Permanent link">&para;</a></h3>
+<div class="admonition caution alert alert-warning">
+<p class="admonition-title">Caution</p>
+<p>These steps delete the PMM Client Docker image and client services configuration data.</p>
+</div>
 <ol>
 <li>
 <p>Stop pmm-client container.</p>
@@ -486,42 +526,6 @@ apt install -y pmm2-client
 </code></pre></div>
 </li>
 </ol>
-<h2 id="register">Register<a class="headerlink" href="#register" title="Permanent link">&para;</a></h2>
-<p>Register your client node with PMM Server.</p>
-<div class="highlight"><pre><span></span><code>pmm-admin config --server-insecure-tls --server-url<span class="o">=</span>https://admin:admin@X.X.X.X:443
-</code></pre></div>
-<ul>
-<li><code>X.X.X.X</code> is the address of your PMM Server.</li>
-<li><code>443</code> is the default port number.</li>
-<li><code>admin</code>/<code>admin</code> is the default PMM username and password. This is the same account you use to log into the PMM user interface, which you had the option to change when first logging in.</li>
-</ul>
-<div class="admonition caution alert alert-warning">
-<p class="admonition-title">Important</p>
-<p>Clients <em>must</em> be registered with the PMM Server using a secure channel. If you use http as your server URL, PMM will try to connect via https on port 443. If a TLS connection can&rsquo;t be established you will get an error and you must use https along with the appropriate secure port.</p>
-</div>
-<p><strong>Examples</strong></p>
-<p>Register on PMM Server with IP address <code>192.168.33.14</code> using the default <code>admin/admin</code> username and password, a node with IP address <code>192.168.33.23</code>, type <code>generic</code>, and name <code>mynode</code>.</p>
-<div class="highlight"><pre><span></span><code>pmm-admin config --server-insecure-tls --server-url<span class="o">=</span>https://admin:admin@192.168.33.14:443 <span class="m">192</span>.168.33.23 generic mynode
-</code></pre></div>
-<h2 id="add-services">Add services<a class="headerlink" href="#add-services" title="Permanent link">&para;</a></h2>
-<p>You must configure and adding services according to the service type.</p>
-<ul>
-<li><a href="mysql.html">MySQL</a> (and variants Percona Server for MySQL, Percona XtraDB Cluster, MariaDB)</li>
-<li><a href="mongodb.html">MongoDB</a></li>
-<li><a href="postgresql.html">PostgreSQL</a></li>
-<li><a href="proxysql.html">ProxySQL</a></li>
-<li><a href="aws.html">Amazon RDS</a></li>
-<li><a href="azure.html">Microsoft Azure</a></li>
-<li><a href="google">Google Cloud Platform</a> (MySQL and PostgreSQL)</li>
-<li><a href="linux.html">Linux</a></li>
-<li><a href="external.html">External services</a></li>
-<li><a href="haproxy.html">HAProxy</a></li>
-<li><a href="remote.html">Remote instances</a></li>
-</ul>
-<div class="admonition hint alert alert-success">
-<p class="admonition-title">Tip</p>
-<p>To change the parameters of a previously-added service, remove the service and re-add it with new parameters.</p>
-</div>
 <h2 id="remove-services">Remove services<a class="headerlink" href="#remove-services" title="Permanent link">&para;</a></h2>
 <p>You should specify service type and service name for removing from monitoring
 One of next types has to be set: <code>mysql</code>, <code>mongodb</code>, <code>postgresql</code>, <code>proxysql</code>, <code>haproxy</code>, <code>external</code>.</p>
