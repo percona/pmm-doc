@@ -6,28 +6,49 @@
 - [Discord chat](http://per.co.na/discord).
 - [PMM project in JIRA](https://jira.percona.com/projects/PMM).
 
-## What are the minimum system requirements for PMM?
+## What are the minimum system requirements?
 
-See:
+- Server:
+    - Disk: 1 GB per monitored database (1 week data retention)
+    - Memory: 2 GB per monitored database
+    - CPU: Supports [`SSE4.2`](https://wikipedia.org/wiki/SSE4#SSE4.2)
+- Client:
+    - Disk: 100 MB
 
-- [PMM Server](setting-up/server/index.md#system-requirements)
-- [PMM Client](setting-up/client/index.md#system-requirements)
+!!! seealso alert alert-info "See also"
+    - [Setting up PMM Server](setting-up/server/index.md)
+    - [Setting up PMM Client](setting-up/client/index.md)
 
-## How can I upgrade from PMM version 1?
+## How can I upgrade from version 1?
 
-See [Upgrade from PMM1](how-to/upgrade.md#upgrade-from-pmm1).
+There is no direct software upgrade path.
 
-## How to control data retention for PMM?
+You must [set up](setting-up/index.md) PMM 2 and connect your existing clients to it.
 
-See [How to configure Data retention](how-to/configure.md#data-retention).
+When all data is registered in PMM1 and expired in PMM1, decommission your PMM1 instance.
 
-## How often are NGINX logs in PMM Server rotated?
+!!! seealso alert alert-info "See also"
+    - [Upgrade from PMM1](how-to/upgrade.md#upgrade-from-pmm-1).
+    - [Percona blog: Running PMM1 and PMM2 Clients on the Same Host](https://www.percona.com/blog/2019/11/27/running-pmm1-and-pmm2-clients-on-the-same-host/)
+
+## How to control data retention?
+
+Go to *{{icon.cog}} Configuration-->{{icon.setting}} Settings -->Advanced Settings-->Data retention* to adjust the value in days.
+
+!!! seealso alert alert-info "See also"
+    [Configure data retention](how-to/configure.md#data-retention)
+## How often are NGINX logs rotated?
 
 PMM Server runs `logrotate` on a daily basis to rotate NGINX logs and keeps up to ten of the most recent log files.
 
 ## What privileges are required to monitor a MySQL instance?
 
-See [Setting Up PMM Client](setting-up/client/mysql.md#setting-up-client-user).
+```
+SELECT, PROCESS, SUPER, REPLICATION CLIENT, RELOAD
+```
+
+!!! seealso alert alert-info "See also"
+    [Setting Up/Client/MySQL](setting-up/client/mysql.md#create-a-database-account-for-pmm).
 
 ## Can I monitor multiple service instances?
 
@@ -66,9 +87,20 @@ See [Troubleshoot PMM Server/PMM Client connection](how-to/troubleshoot.md#troub
 
 ## What resolution is used for metrics?
 
-See [Metrics resolution](how-to/configure.md#metrics-resolution).
+The default values (in seconds):
 
-## How do I set up Alerting in PMM?
+| Preset            | Low  | Medium | High |
+|-------------------|:----:|:------:|:----:|
+| Rare              | 300  | 180    | 60   |
+| Standard          | 60   | 10     | 5    |
+| Frequent          | 30   | 5      | 1    |
+| Custom (defaults) | 60   | 10     | 5    |
+
+
+!!! seealso alert alert-info "See also"
+    [Metrics resolution](how-to/configure.md#metrics-resolution).
+
+## How do I set up Alerting?
 
 When a monitored service metric reaches a defined threshold, PMM Server can trigger alerts for it either using the Grafana Alerting feature or by using an external alert manager.
 
@@ -83,7 +115,7 @@ We only offer support for creating custom rules to our customers, so you should 
 !!! seealso alert alert-info "See also"
     [PMM Alerting with Grafana: Working with Templated Dashboards](https://www.percona.com/blog/2017/02/02/pmm-alerting-with-grafana-working-with-templated-dashboards/)
 
-## How do I use a custom Prometheus configuration file inside PMM Server?
+## How do I use a custom Prometheus configuration file?
 
 Normally, PMM Server fully manages the [Prometheus configuration file](https://prometheus.io/docs/prometheus/latest/configuration/configuration/).
 
