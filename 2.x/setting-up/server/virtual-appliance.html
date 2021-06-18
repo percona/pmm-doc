@@ -136,11 +136,11 @@
                 <div class="bodywrapper">
                     <div class="body">
                         <h1 id="virtual-appliance">Virtual Appliance<a class="headerlink" href="#virtual-appliance" title="Permanent link">&para;</a></h1>
-<p>How to run PMM Server as a virtual machine by downloading and importing the <a href="https://www.percona.com/downloads/pmm2/2.18.0/ova">PMM 2.18.0</a> Open Virtual Appliance (OVA) file into virtualization software supporting the <a href="https://wikipedia.org/wiki/Open_Virtualization_Format">OVF standard</a>, such as <a href="https://www.vmware.com/products/workstation-player/">VMware Workstation Player</a> and <a href="https://www.virtualbox.org/">Oracle VM VirtualBox</a>.</p>
+<p>How to run PMM Server as a virtual machine.</p>
 <div class="admonition summary alert alert-info">
 <p class="admonition-title">Summary</p>
 <ul>
-<li>Download and verify the OVF file.</li>
+<li>Download and verify the <a href="https://www.percona.com/downloads/pmm2/2.18.0/ova">latest</a> OVF file.</li>
 <li>Import it.</li>
 <li>Reconfigure network.</li>
 <li>Start the VM and get IP.</li>
@@ -155,7 +155,7 @@
 <p><strong>Terminology</strong></p>
 <ul>
 <li><em>Host</em> is the desktop or server machine running the hypervisor.</li>
-<li><em>Hypervisor</em> is software (e.g. VirtualBox, VMware) that runs the guest OS as a virtual machine.</li>
+<li><em>Hypervisor</em> is software (e.g. <a href="https://www.virtualbox.org/">VirtualBox</a>, <a href="https://www.vmware.com/products/workstation-player/">VMware</a>) that runs the guest OS as a virtual machine.</li>
 <li><em>Guest</em> is the CentOS virtual machine that runs PMM Server.</li>
 </ul>
 <p><strong>OVA file details</strong></p>
@@ -259,7 +259,7 @@ wget https://www.percona.com/downloads/pmm2/2.18.0/ova/pmm-server-2.18.0.sha256s
 <h3 id="import">Import<a class="headerlink" href="#import" title="Permanent link">&para;</a></h3>
 <p><strong>UI</strong></p>
 <ol>
-<li>Select <em>File &rarr; Import</em>.</li>
+<li>Select <em>File&rarr;Import</em>.</li>
 <li>Click <em>Choose file&hellip;</em>.</li>
 <li>Navigate to the downloaded <code>.ova</code> file and select it.</li>
 <li>Click <em>Open</em>.</li>
@@ -309,7 +309,7 @@ pmm-server.vmx
 <ol>
 <li>If started, shut down the virtual machine.</li>
 <li>In the VMware main window, select the imported virtual machine.</li>
-<li>Click <em>Virtual Machine &rarr; Settings&hellip;</em></li>
+<li>Click <em>Virtual Machine&rarr;Settings&hellip;</em></li>
 <li>Click <em>Network Adapter</em>.</li>
 <li>In the <em>Bridged Networking</em> section, select <em>Autodetect</em>.</li>
 <li>Close the settings window.</li>
@@ -318,7 +318,7 @@ pmm-server.vmx
 <p><strong>UI</strong></p>
 <ol>
 <li>In the VMware main window, select the imported virtual machine.</li>
-<li>Click the play button <i class="uil uil-caret-right"></i> or select <em>Virtual Machine &rarr; Start Up</em>.</li>
+<li>Click the play button <i class="uil uil-caret-right"></i> or select <em>Virtual Machine&rarr;Start Up</em>.</li>
 <li>When the instance has booted, note the IP address in the guest console.</li>
 </ol>
 <p><strong>CLI/UI</strong></p>
@@ -338,7 +338,7 @@ pmm-server.vmx nogui
 <h3 id="import_1">Import<a class="headerlink" href="#import_1" title="Permanent link">&para;</a></h3>
 <p><strong>UI</strong></p>
 <ol>
-<li>Select <em>File &rarr; Import appliance&hellip;</em>.</li>
+<li>Select <em>File&rarr;Import appliance&hellip;</em>.</li>
 <li>In the <em>File</em> field, type the path to the downloaded <code>.ova</code> file, or click the folder icon to navigate and open it.</li>
 <li>Click <em>Continue</em>.</li>
 <li>On the <em>Appliance settings</em> page, review the settings and click <em>Import</em>.</li>
@@ -420,16 +420,14 @@ pmm-server.vmx nogui
 <p><strong>UI</strong></p>
 <ol>
 <li>Open a web browser and visit the guest IP address.</li>
-<li>The PMM login screen appears.
-    <div class="lightgallery"><a data-sub-html="image" href="../../_images/PMM_Login.jpg"><img alt="image" src="../../_images/PMM_Login.jpg" /></a></div></li>
+<li>The PMM <a href="../../using/interface.html">login screen</a> appears.</li>
 <li>Enter the default username and password in the relevant fields and click <em>Log in</em>.<ul>
 <li>username: <code>admin</code></li>
 <li>password: <code>admin</code></li>
 </ul>
 </li>
 <li>(Recommended) Follow the prompts to change the default password.</li>
-<li>The PMM Home Dashboard appears.
-    <div class="lightgallery"><a data-sub-html="image" href="../../_images/PMM_Home_Dashboard.jpg"><img alt="image" src="../../_images/PMM_Home_Dashboard.jpg" /></a></div></li>
+<li>The PMM Home Dashboard appears.</li>
 </ol>
 <h2 id="optional-change-root-password">(Optional) Change root password<a class="headerlink" href="#optional-change-root-password" title="Permanent link">&para;</a></h2>
 <p><strong>UI</strong></p>
@@ -448,8 +446,8 @@ pmm-server.vmx nogui
 <li>Create a key pair for the <code>admin</code> user.
     <div class="highlight"><pre><span></span><code>ssh-keygen -f admin
 </code></pre></div></li>
-<li>Log into the <a href="log-into-pmm-user-interface">PMM user interface</a>.</li>
-<li>Select <em>PMM &rarr; PMM Settings &rarr; SSH Key</em>.</li>
+<li>Log into the PMM user interface.</li>
+<li>Select <em>PMM&rarr;PMM Settings&rarr;SSH Key</em>.</li>
 <li>Copy and paste the contents of the <code>admin.pub</code> file into the <em>SSH Key</em> field.</li>
 <li>Click <em>Apply SSH Key</em>. (This copies the public key to <code>/home/admin/.ssh/authorized_keys</code> in the guest).</li>
 <li>Log in via SSH (<code>N.N.N.N</code> is the guest IP address).
@@ -491,7 +489,7 @@ pmm-server.vmx nogui
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-06-17
+            <i class="uil uil-refresh"></i> Page updated 2021-06-18
         </li>
         
     </ul>
