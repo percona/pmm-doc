@@ -4,10 +4,21 @@
     - This is a [technical preview] and is subject to change.
     - Download and check `get-pmm2.sh` before running it to make sure you know what it does.
 
+
+Linux:
 ```sh
-curl -fsSL https://raw.githubusercontent.com/percona/pmm/PMM-2.0/get-pmm.sh -o get-pmm2.sh && \
-chmod +x get-pmm2.sh && \
-./get-pmm2.sh
+curl -fsSL -O https://raw.githubusercontent.com/percona/pmm/PMM-2.0/get-pmm.sh -O https://raw.githubusercontent.com/percona/pmm/018ea9812a4cce0303dc11d7676d09c3cd1bfbb0/.sha256-oneline && \
+sha256sum .sha256-oneline -c && \
+chmod +x ./get-pmm.sh && \
+./get-pmm.sh
+
+```
+MacOS:
+```sh
+curl -fsSL -O https://raw.githubusercontent.com/percona/pmm/PMM-2.0/get-pmm.sh -O https://raw.githubusercontent.com/percona/pmm/018ea9812a4cce0303dc11d7676d09c3cd1bfbb0/.sha256-oneline && \
+shasum .sha256-oneline -c && \
+chmod +x ./get-pmm.sh && \
+./get-pmm.sh
 ```
 
 These commands:
