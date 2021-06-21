@@ -1,10 +1,22 @@
 # FAQ
 
-## How can I contact the developers?
+## What is PMM?
 
-- [Community forum](https://www.percona.com/forums/questions-discussions/percona-monitoring-and-management).
-- [Discord chat](http://per.co.na/discord).
-- [PMM project in JIRA](https://jira.percona.com/projects/PMM).
+Percona Monitoring and Management (PMM) is an open-source tool for monitoring databases and the servers they run on.
+
+PMM extracts metrics data from your databases and charts them in graphical and tabular form.
+
+## What can it do for me?
+
+- Track performance over time
+- Identify problem queries
+- Identify latencies and resource bottlenecks
+
+## How much does it cost?
+
+PMM is free if you run PMM on your own hardware.
+
+If you run on a cloud service (Amazon AWS) there are infrastructure fees.
 
 ## What are the minimum system requirements?
 
@@ -18,6 +30,21 @@
 !!! seealso alert alert-info "See also"
     - [Setting up PMM Server](setting-up/server/index.md)
     - [Setting up PMM Client](setting-up/client/index.md)
+
+## How do I install it?
+
+1. [Set up a PMM Server](setting-up/server/index.md).
+1. On the host where your database is, [set up PMM Client](setting-up/client/index.md).
+1. [Configure the database according to its type](setting-up/client/index.md#add-services).
+1. [Register the client with the server](setting-up/client/index.md#register).
+1. [Open the PMM web UI to start seeing metrics appear](using/interface.md).
+
+## How can I contact the developers?
+
+- [Community forum](https://www.percona.com/forums/questions-discussions/percona-monitoring-and-management).
+- [Discord chat](http://per.co.na/discord).
+- [PMM project in JIRA](https://jira.percona.com/projects/PMM).
+
 
 ## How can I upgrade from version 1?
 
