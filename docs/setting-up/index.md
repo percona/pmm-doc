@@ -2,14 +2,20 @@
 
 There are three stages to installing and setting up PMM.
 
-```mermaid
-graph LR
-1(Set up PMM Server)-->2(Set up PMM Client)-->3(Add services)
+```plantuml
+@startuml
+!include docs/_images/plantuml_styles.puml
+rectangle "Set up a PMM Server" as SERVER
+rectangle "Set up PMM Client(s)" as CLIENT
+rectangle "Add services" as SERVICES
+SERVER -right->> CLIENT
+CLIENT -right->> SERVICES
+@enduml
 ```
 
-## Set up PMM Server {: #setting-up-pmm-server}
+## Set up PMM Server
 
-Set up at least one PMM Server.
+Install and run at least one PMM Server.
 
 Choose from:
 
@@ -19,79 +25,37 @@ Choose from:
 | [Virtual appliance]  | Easily import into Hypervisor of your choice  | Requires more system resources compared to docker footprint
 | [Amazon AWS]         |  Wizard driven install                               | Non-free solution (infrastructure)
 
-## Set up PMM Client {: #setting-up-pmm-client}
+## Set up PMM Client
 
-On every node where there is a service to be monitored, set up PMM Client.
+Install and run PMM Client on every node where there is a service you want to monitor.
 
-Choose from:
+The choices:
 
-- [Docker](client/index.md#docker)
-- [Linux package manager](client/index.md#package-manager) (`apt`, `apt-get`, `dnf`, `yum`)
-- [Binary package](client/index.md#binary-package) (a `.tar.gz` file)
+- With [Docker](client/index.md#docker)
+- Natively, installed from:
+    - [Linux package](client/index.md#package-manager) (installed with `apt`, `apt-get`, `dnf`, `yum`)
+    - [Binary package](client/index.md#binary-package) (a downloaded `.tar.gz` file)
 
-## Add services {: #configure-add-services}
+## Add services
 
-You must configure your services and add them to PMM Server's inventory of monitored systems.
+On each PMM Client, you configure then add to PMM Server's inventory the node or service you want to monitor.
 
-You do this on each node/service being monitored.
+How you do this depends on the type of service. You can monitor:
 
-The set up depends on which type of service you want to monitor:
-
-- [MySQL and variants](client/mysql.md) (Percona Server for MySQL, Percona XtraDB Cluster, MariaDB)
-- [MongoDB](client/mongodb.md)
-- [PostgreSQL](client/postgresql.md)
-- [ProxySQL](client/proxysql.md)
-- [Amazon RDS](client/aws.md)
-- [Microsoft Azure](client/azure.md)
-- [Google Cloud Platform](client/google.md) (MySQL and PostgreSQL)
-- [Linux](client/linux.md)
-- [External services](client/external.md)
-- [HAProxy](client/haproxy.md)
-
-When you have configured everything correctly, you'll see data in the PMM user interface, in one of the [dashboards](../details/dashboards/) specific to the type of service.
-
-Here's a graphical overview of the steps involved.
-
-```plantuml
-' Syntax: https://plantuml.com/activity-diagram-beta
-@startuml "setting-up"
-!include docs/_images/plantuml_styles.puml
-skinparam partitionWidth 400
-partition "<b>Stage 1:</b> Set up PMM Server\nChoices:" {
-    split
-        -[hidden]->
-        :Docker or\nDocker compose;
-    split again
-        -[hidden]->
-        :Virtual appliance;
-    split again
-        -[hidden]->
-        :Amazon AWS marketplace;
-    end split
-}
-partition "<b>Stage 2:</b> Set up PMM Client\nChoices:" {
-    split
-        :Docker or\nDocker compose;
-    split again
-        :Package manager;
-    split again
-        :Binary package;
-    end split
-}
-partition "<b>Stage 3</b>" {
-    :Register;
-    :Add services;
-}
-@enduml
-```
+- [MySQL] (and variants: Percona Server for MySQL, Percona XtraDB Cluster, MariaDB)
+- [MongoDB]
+- [PostgreSQL]
+- [ProxySQL]
+- [Amazon RDS]
+- [Microsoft Azure]
+- [Google Cloud Platform] (MySQL and PostgreSQL)
+- [Linux]
+- [External services]
+- [HAProxy]
+- [Remote instances]
 
 
-[Docker]: server/docker.md
-[Virtual appliance] :server/virtual-appliance.md
-[Amazon AWS]: server/aws.md
-
-
-[MySQL and variants]: client/mysql.md
+[MySQL]: client/mysql.md
 [MongoDB]: client/mongodb.md
 [PostgreSQL]: client/postgresql.md
 [ProxySQL]: client/proxysql.md
@@ -101,3 +65,10 @@ partition "<b>Stage 3</b>" {
 [Linux]: client/linux.md
 [External services]: client/external.md
 [HAProxy]: client/haproxy.md
+[Remote instances]: client/remote.md
+[dashboards]: ../details/dashboards/
+
+[Docker]: server/docker.md
+[virtual appliance]: server/virtual-appliance.md
+[Amazon AWS]: server/aws.md
+[easy install]: server/easy-install.md

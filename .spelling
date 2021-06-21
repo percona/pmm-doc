@@ -50,6 +50,7 @@ GitHub
 goroutine
 goroutines
 GovCloud
+gRPC
 Grafana
 Guzman
 Handzelova
@@ -9148,9 +9149,11 @@ reseeks
 resize
 resized
 RocksDB
+Rouillard
 rq
 rseg
 runtime
+SaaS
 schema
 schemas
 scrollbar
@@ -9158,12 +9161,14 @@ seealso
 seqno
 serverless
 sharding
+Shillingford
 shmem
 singlestat
 singlestats
 slowlog
 smarthost
 softirq
+Solovyev
 sparkline
 sparklines
 ssl-enabled
@@ -9207,9 +9212,11 @@ virtualized
 vmware
 webhook
 WiredTiger
+Wittwer
 Writeset
-Xenial
+xenial
 Xerus
 XtraDB
+Yann
 Zaitzev
 zlib
