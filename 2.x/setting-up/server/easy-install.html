@@ -143,15 +143,29 @@
 <li>Download and check <code>get-pmm2.sh</code> before running it to make sure you know what it does.</li>
 </ul>
 </div>
-<div class="highlight"><pre><span></span><code>curl -fsSL https://raw.githubusercontent.com/percona/pmm/PMM-2.0/get-pmm.sh -o get-pmm2.sh <span class="o">&amp;&amp;</span> <span class="se">\</span>
-chmod +x get-pmm2.sh <span class="o">&amp;&amp;</span> <span class="se">\</span>
-./get-pmm2.sh
+<h2 id="linux">Linux<a class="headerlink" href="#linux" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>curl -fsSL -O https://raw.githubusercontent.com/percona/pmm/PMM-2.0/get-pmm.sh -O https://raw.githubusercontent.com/percona/pmm/PMM-2.0/.sha256-oneline <span class="o">&amp;&amp;</span> <span class="se">\</span>
+sha256sum .sha256-oneline -c <span class="o">&amp;&amp;</span> <span class="se">\</span>
+chmod +x ./get-pmm.sh <span class="o">&amp;&amp;</span> <span class="se">\</span>
+./get-pmm.sh
+</code></pre></div>
+<h2 id="macos">MacOS<a class="headerlink" href="#macos" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>curl -fsSL -O https://raw.githubusercontent.com/percona/pmm/PMM-2.0/get-pmm.sh -O https://raw.githubusercontent.com/percona/pmm/PMM-2.0/.sha256-oneline <span class="o">&amp;&amp;</span> <span class="se">\</span>
+shasum .sha256-oneline -c <span class="o">&amp;&amp;</span> <span class="se">\</span>
+chmod +x ./get-pmm.sh <span class="o">&amp;&amp;</span> <span class="se">\</span>
+./get-pmm.sh
 </code></pre></div>
 <p>These commands:</p>
 <ul>
+<li>Download the script;</li>
+<li>Check its integrity;</li>
+<li>Make the script executable;</li>
+<li>Run it. The script will:<ul>
 <li>install Docker if not already installed;</li>
 <li>if there is a PMM Server docker container running, stop it and back it up;</li>
 <li>pull and run the latest PMM Server docker image.</li>
+</ul>
+</li>
 </ul>
                     </div>
                 </div>
@@ -160,7 +174,7 @@ chmod +x get-pmm2.sh <span class="o">&amp;&amp;</span> <span class="se">\</span>
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-06-17
+            <i class="uil uil-refresh"></i> Page updated 2021-06-22
         </li>
         
     </ul>
