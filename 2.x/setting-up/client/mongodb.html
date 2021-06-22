@@ -205,7 +205,7 @@
 <div class="highlight"><pre><span></span><code>operationProfiling:
   mode: all
   slowOpThresholdMs: 200
-  rateLimit: 100
+  rateLimit: 100 # (Only available with Percona Server for MongoDB.)
 </code></pre></div>
 <div class="admonition caution alert alert-warning">
 <p class="admonition-title">Important</p>
@@ -254,6 +254,14 @@
 <h3 id="on-the-command-line">On the command line<a class="headerlink" href="#on-the-command-line" title="Permanent link">&para;</a></h3>
 <p>Use <code>pmm-admin</code> to add the database server as a service using one of these example commands.</p>
 <p>When successful, PMM Client will print <code>MongoDB Service added</code> with the service&rsquo;s ID and name. Use the <code>--environment</code> and <code>-custom-labels</code> options to set tags for the service to help identify them.</p>
+<div class="admonition hint alert alert-success">
+<p class="admonition-title">Tips</p>
+<ul>
+<li>When adding nodes of a sharded cluster, add each node separately using the <code>--cluster mycluster</code> option for the MongoDB Cluster Summary dashboard to populate correctly.</li>
+<li>Atlas doesn&rsquo;t support direct connections. When connecting to an Atlas instance, use the <code>pmm-admin</code> option <code>--direct-connection=false</code>. (Doing so will prevent replicaset status from working and the MongoDB Overview dashboard widget will show invalid values.)</li>
+<li><a href="../../details/commands/pmm-admin.html#mongodb"><code>pmm-admin add mongodb</code></a> command line options </li>
+</ul>
+</div>
 <p><strong>Example</strong></p>
 <div class="highlight"><pre><span></span><code>pmm-admin add mongodb <span class="se">\</span>
 --username<span class="o">=</span>pmm_mongodb --password<span class="o">=</span>password <span class="se">\</span>
@@ -284,13 +292,6 @@ mongo <span class="m">127</span>.0.0.1:27017
 <li><code>IFPASSWORDTOCERTISSET</code>: Password for TLS certificate file.</li>
 <li><code>PATHTOCACERT</code>: Path to certificate authority file.</li>
 </ul>
-<div class="admonition hint alert alert-success">
-<p class="admonition-title">Tips</p>
-<ul>
-<li>When adding nodes of a sharded cluster, add each node separately using the <code>--cluster mycluster</code> option for the MongoDB Cluster Summary dashboard to populate correctly.</li>
-<li>Atlas doesn&rsquo;t support direct connections. When connecting to an Atlas instance, use the <code>pmm-admin</code> option <code>--direct-connection=false</code>. (Doing so will prevent replicaset status from working and the MongoDB Overview dashboard widget will show invalid values.)</li>
-</ul>
-</div>
 <h2 id="check-the-service">Check the service<a class="headerlink" href="#check-the-service" title="Permanent link">&para;</a></h2>
 <p><strong>Check service - PMM user interface</strong></p>
 <ol>
@@ -348,7 +349,7 @@ mongo <span class="m">127</span>.0.0.1:27017
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-06-18
+            <i class="uil uil-refresh"></i> Page updated 2021-06-22
         </li>
         
     </ul>
