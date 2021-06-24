@@ -48,7 +48,7 @@ From the left menu, select *{{icon.database}} DBaaS*.
 
 1. Find the row with the Kubernetes cluster you want to see.
 
-2. In the *Actions* column, open the {{ icon.ellipsisv }} menu and click *Show configuration*.
+2. In the *Actions* column, open the {{icon.ellipsisv}} menu and click *Show configuration*.
 
 ### Manage allowed component versions
 
@@ -56,7 +56,7 @@ Administrators can select allowed and default versions of components versions fo
 
 1. Find the row with the Kubernetes cluster you want to manage.
 
-2. In the *Actions* column, open the {{ icon.ellipsisv }} menu and click *Manage versions*.
+2. In the *Actions* column, open the {{icon.ellipsisv}} menu and click *Manage versions*.
 
     ![!](../../_images/PMM_DBaaS_Kubernetes_Manage_Versions.png)
 
@@ -103,15 +103,21 @@ To monitor a DB cluster, set up a [public address](../../how-to/configure.md#pub
 
     1. Select *Topology*, either *Cluster* or *Single Node*.
 
-    2. Select the number of nodes. (The lower limit is 3.)
+    1. Select the number of nodes. (The lower limit is 3.)
 
-    3. Select a preset for *Resources per Node*.
+    1. Select *External Access* if you want to make your DB cluster available outside of Kubernetes cluster.
+
+        By default, only internal access is provided.
+
+        *External Access* can't be granted for local Kubernetes clusters (e.g. minikube).
+
+    1. Select a preset for *Resources per Node*.
 
         *Small*, *Medium* and *Large* are fixed preset values for *Memory*, *CPU*, and *Disk*.
 
         Values for the *Custom* preset can be edited.
 
-        Beside each resource type is an estimate of the required and available resources represented numerically in absolute and percentage values, and graphically as a colored, segmented bar showing the projected ratio of used to available resources. A red warning triangle {{ icon.exclamationtrianglered }} is shown if the requested resources exceed those available.
+        Beside each resource type is an estimate of the required and available resources represented numerically in absolute and percentage values, and graphically as a colored, segmented bar showing the projected ratio of used to available resources. A red warning triangle {{icon.exclamationtrianglered}} is shown if the requested resources exceed those available.
 
         ![!](../../_images/PMM_DBaaS_DB_Cluster_Advanced_Options.png)
 
@@ -129,7 +135,7 @@ To monitor a DB cluster, set up a [public address](../../how-to/configure.md#pub
         - *Host*: The hostname
         - *Port*: The port number
         - *Username*: The connection username
-        - *Password*: The connection password (click the eye icon {{ icon.eye }} to reveal)
+        - *Password*: The connection password (click the eye icon {{icon.eye}} to reveal)
     - *DB Cluster Parameters*:
         - *K8s cluster name*: The Kubernetes cluster name
         - *CPU*: The number of CPUs allocated to the cluster
@@ -145,13 +151,13 @@ To monitor a DB cluster, set up a [public address](../../how-to/configure.md#pub
 
 1. Find the row with the database cluster you want to delete.
 
-2. In the *Actions* column, open the {{ icon.ellipsisv }} menu and click *Delete*.
+2. In the *Actions* column, open the {{icon.ellipsisv}} menu and click *Delete*.
 
 3. Confirm the action by clicking *Proceed*, or abandon by clicking *Cancel*.
 
     ![!](../../_images/PMM_DBaaS_DB_Cluster_Delete.png)
 
-!!! important alert alert-warning "Important"
+!!! caution alert alert-warning "Important"
     Deleting a cluster in this way also deletes any attached volumes.
 
 ### Edit a DB Cluster
@@ -160,7 +166,7 @@ To monitor a DB cluster, set up a [public address](../../how-to/configure.md#pub
 
 2. Find the row with the database cluster you want to change.
 
-3. In the *Actions* column, open the {{ icon.ellipsisv }} menu and click *Edit*.
+3. In the *Actions* column, open the {{icon.ellipsisv}} menu and click *Edit*.
 
 A paused cluster can't be edited.
 
@@ -170,7 +176,7 @@ A paused cluster can't be edited.
 
 2. Identify the database cluster to be changed.
 
-3. In the *Actions* column, open the {{ icon.ellipsisv }} menu and click *Restart*.
+3. In the *Actions* column, open the {{icon.ellipsisv}} menu and click *Restart*.
 
 ### Suspend or resume a DB Cluster
 
@@ -178,7 +184,7 @@ A paused cluster can't be edited.
 
 2. Identify the DB cluster to suspend or resume.
 
-3. In the *Actions* column, open the {{ icon.ellipsisv }} menu and click the required action:
+3. In the *Actions* column, open the {{icon.ellipsisv}} menu and click the required action:
 
     - For active clusters, click *Suspend*.
 

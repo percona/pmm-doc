@@ -1,11 +1,6 @@
 # MongoDB
 
-PMM Client collects metrics from [MongoDB][MONGODB] and [Percona Server for MongoDB][PSMDB].
-
-This page shows you how to set up PMM to monitor a MongoDB database instance.
-
-!!! tip alert alert-success ""
-    We recommend you read it in full before doing anything.
+How to set up PMM to monitor a [MongoDB] or [Percona Server for MongoDB] database instance.
 
 Here is an overview of the steps involved.
 
@@ -49,7 +44,7 @@ Check that:
 
 We recommend using a dedicated account to connect PMM Client to the monitored database instance.
 
-This example creates a new custom role with the privileges needed by the Query Analyzer, and adds a database user with that role plus the built-in "clusterMonitor" role.
+This example creates a new custom role with the privileges needed by the Query Analyzer, and adds a database user with that role plus the built-in `clusterMonitor` role.
 
 !!! caution alert alert-warning ""
     Values for username (`user`) and password (`pwd`) are examples. Replace them before using this code.
@@ -89,7 +84,7 @@ db.getSiblingDB("admin").createUser({
 
 ## Profiling
 
-To use PMM Query Analytics, you must turn on MongoDB's [profiling feature][MONGDB_DATABASE_PROFILER].
+To use PMM Query Analytics, you must turn on MongoDB's [profiling feature].
 
 You can set profiling:
 
@@ -110,11 +105,11 @@ You can set profiling:
     operationProfiling:
       mode: all
       slowOpThresholdMs: 200
-      rateLimit: 100
+      rateLimit: 100 # (Only available with Percona Server for MongoDB.)
     ```
 
-    !!! important alert alert-success "Important"
-        This is a [YAML](http://yaml.org/spec/) file. Indentation matters.
+    !!! caution alert alert-warning "Important"
+        This is a [YAML] file. Indentation matters.
 
 3. Restart the `mongod` service. (Example for `systemd`.)
 
@@ -167,6 +162,10 @@ Use `pmm-admin` to add the database server as a service using one of these examp
 
 When successful, PMM Client will print `MongoDB Service added` with the service's ID and name. Use the `--environment` and `-custom-labels` options to set tags for the service to help identify them.
 
+!!! hint alert alert-success "Tips"
+    - When adding nodes of a sharded cluster, add each node separately using the `--cluster mycluster` option for the MongoDB Cluster Summary dashboard to populate correctly.
+    - Atlas doesn't support direct connections. When connecting to an Atlas instance, use the `pmm-admin` option `--direct-connection=false`. (Doing so will prevent replicaset status from working and the MongoDB Overview dashboard widget will show invalid values.)
+
 **Example**
 
 ```sh
@@ -212,10 +211,6 @@ where:
 - `IFPASSWORDTOCERTISSET`: Password for TLS certificate file.
 - `PATHTOCACERT`: Path to certificate authority file.
 
-!!! tip alert alert-success "Tips"
-    - When adding nodes of a sharded cluster, add each node separately using the `--cluster mycluster` option for the MongoDB Cluster Summary dashboard to populate correctly.
-    - Atlas doesn't support direct connections. When connecting to an Atlas instance, use the `pmm-admin` option `--direct-connection=false`. (Doing so will prevent replicaset status from working and the MongoDB Overview dashboard widget will show invalid values.)
-
 ## Check the service
 
 **Check service - PMM user interface**
@@ -242,7 +237,7 @@ pmm-admin inventory list services --service-type=mongodb
 1. Open *PMM Query Analytics*.
 2. In the *Filters* panel:
     1. Under *Service Name*, select your service.
-    2. Under *Service Type* select *mongodb*.
+    2. Under *Service Type* select `mongodb`.
 
 ## Remove service
 
@@ -263,16 +258,17 @@ pmm-admin remove mongodb SERVICE_NAME
 
 - `SERVICE_NAME`: The name the service was added as. (Find it with `pmm-admin list`.)
 
-
 !!! seealso alert alert-info "See also"
-    - [`pmm-admin` man page for `pmm-admin add mongodb`](../../details/commands/pmm-admin.md#mongodb)
-    - [Troubleshooting connection difficulties][TROUBLESHOOTING_CONNECTION]
+    - [`pmm-admin add mongodb`](../../details/commands/pmm-admin.md#mongodb)
+    - [Troubleshooting connection difficulties]
 
 
-[MONGODB]: https://www.mongodb.com/
-[MONGDB_DATABASE_PROFILER]: https://docs.mongodb.com/manual/tutorial/manage-the-database-profiler/
+[MongoDB]: https://www.mongodb.com/
+[Percona Server for MongoDB]: https://www.percona.com/software/mongodb/percona-server-for-mongodb
+[profiling feature]: https://docs.mongodb.com/manual/tutorial/manage-the-database-profiler/
+[YAML]: http://yaml.org/spec/
+
 [MONGODB_CONFIG_OP_PROF]: https://docs.mongodb.com/manual/reference/configuration-options/#operationprofiling-options
-[PSMDB]: https://www.percona.com/software/mongodb/percona-server-for-mongodb
 [PSMDB_RATELIMIT]: https://www.percona.com/doc/percona-server-for-mongodb/LATEST/rate-limit.html#enabling-the-rate-limit
 [PMM_ADMIN_MAN_PAGE]: ../../details/commands/pmm-admin.md
-[TROUBLESHOOTING_CONNECTION]: ../../how-to/troubleshoot.md#connection-difficulties
+[Troubleshooting connection difficulties]: ../../how-to/troubleshoot.md#connection-difficulties

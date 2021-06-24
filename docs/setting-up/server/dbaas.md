@@ -27,7 +27,8 @@ systemctl start docker
 
 ### minikube
 
-> Please install minikube 1.16.0
+!!! note alert alert-primary ""
+    Please install minikube 1.16.0
 
 **Red Hat, CentOS**
 
@@ -41,15 +42,12 @@ alias kubectl='minikube kubectl --'
 
 ## Start PMM server and activate a DBaaS feature
 
-> - To start a fully-working 3 node XtraDB cluster, consisting of sets of 3x HAProxy, 3x PXC and 6x PMM Client containers, you will need at least 9 vCPU available for minikube. (1x vCPU for HAProxy and PXC and 0.5vCPU for each pmm-client containers).
->
-> - DBaaS does not depend on PMM Client.
->
-> - You can pass the environment variable `--env ENABLE_DBAAS=1` to force the DBaaS feature when starting up pmm-server container. **You can omit the variable and enable the feature later using PMM UI**, please follow the link in step 3. below.
->
-> - Add the option `--network minikube` if you run PMM Server and minikube in the same Docker instance. (This will share a single network and the kubeconfig will work.)
->
-> - Add the options `--env PMM_DEBUG=1` and/or `--env PMM_TRACE=1` if you need extended debug details
+!!! note alert alert-primary ""
+    - To start a fully-working 3 node XtraDB cluster, consisting of sets of 3x HAProxy, 3x PXC and 6x PMM Client containers, you will need at least 9 vCPU available for minikube. (1x vCPU for HAProxy and PXC and 0.5vCPU for each pmm-client containers).
+    - DBaaS does not depend on PMM Client.
+    - You can pass the environment variable `--env ENABLE_DBAAS=1` to force the DBaaS feature when starting up pmm-server container. **You can omit the variable and enable the feature later using PMM UI**, please follow the link in step 3. below.
+    - Add the option `--network minikube` if you run PMM Server and minikube in the same Docker instance. (This will share a single network and the kubeconfig will work.)
+    - Add the options `--env PMM_DEBUG=1` and/or `--env PMM_TRACE=1` if you need extended debug details
 
 1. Start PMM server:
 
@@ -65,13 +63,15 @@ alias kubectl='minikube kubectl --'
     docker exec -t pmm-server bash -c 'ln -s /srv/grafana /usr/share/grafana/data; chown -R grafana:grafana /usr/share/grafana/data; grafana-cli --homepath /usr/share/grafana admin reset-admin-password <RANDOM_PASS_GOES_IN_HERE>'
     ```
 
-3. ***IMPORTANT***: *Please follow instructions on* [**How to activate the *DBaaS* feature in Advanced Settings of PMM**](../../using/platform/dbaas.md#activate-a-dbaas-feature).
+3. !!! caution alert alert-warning "Important"
+       Please follow instructions on [How to activate the *DBaaS* feature in Advanced Settings of PMM](../../using/platform/dbaas.md#activate-a-dbaas-feature).
 
     You need to enable the feature using PMM UI if you omitted `--env ENABLE_DBAAS=1` when starting up the container.
 
 ## Create a Kubernetes cluster
 
-> The DBaaS feature uses Kubernetes clusters to deploy database clusters. You must first create a Kubernetes cluster and then add it to PMM using `kubeconfig` to get a successful setup
+!!! note alert alert-primary ""
+    The DBaaS feature uses Kubernetes clusters to deploy database clusters. You must first create a Kubernetes cluster and then add it to PMM using `kubeconfig` to get a successful setup
 
 ### Minikube {: #minikube }
 
@@ -89,9 +89,11 @@ alias kubectl='minikube kubectl --'
     ```sh
     minikube kubectl -- config view --flatten --minify
     ```
-	> You will need to copy this output to your clipboard and continue with [adding a Kubernetes cluster to PMM](../../using/platform/dbaas.md#add-a-kubernetes-cluster).
 
-### Amazon AWS EKS {: #aws-eks }
+    !!! note alert alert-primary ""
+        You will need to copy this output to your clipboard and continue with [adding a Kubernetes cluster to PMM](../../using/platform/dbaas.md#add-a-kubernetes-cluster).
+
+### Amazon AWS EKS
 
 1. Create your cluster via `eksctl` or the Amazon AWS interface. For example:
 
@@ -165,80 +167,24 @@ alias kubectl='minikube kubectl --'
 
 3. Follow the instructions on [How to add a Kubernetes cluster](../../using/platform/dbaas.md#add-a-kubernetes-cluster) with kubeconfig from the previous step.
 
-	> If possible, the connection details will show the cluster's external IP (not possible with minikube).
+    !!! note alert alert-primary ""
+        If possible, the connection details will show the cluster's external IP (not possible with minikube).
 
-### Google GKE {: #google-gke }
+### Google GKE
 
-**Prerequisites**
+1. Create your cluster either with [Google Cloud Console](https://console.cloud.google.com/) or [`gcloud` command line tool](https://cloud.google.com/sdk/gcloud):
 
-You should have an account on GCP [https://cloud.google.com/](https://cloud.google.com/).
+    The command below assumes that your `gcloud` command line tool is properly configured and your user authenticated and authorized to manage GKE Clusters. This example creates a minimal zonal cluster using preemptive node machines, ideal for testing the DBaaS functionality.
 
-1. Login into google cloud platform console [https://console.cloud.google.com/](https://console.cloud.google.com/)
-
-2. Navigate to Menu --> Kubernetes Engine --> Clusters
-
-    ![!](../../_images/PMM_DBaaS_GKE_1.png)
-
-3. Click button Create cluster
-
-    ![!](../../_images/PMM_DBaaS_GKE_2.png)
-
-4. You can specify cluster option in form or simply click on “My first cluster” and button Create
-
-    ![!](../../_images/PMM_DBaaS_GKE_3.png)
-
-    ![!](../../_images/PMM_DBaaS_GKE_4.png)
-
-5. Wait until cluster created
-
-    ![!](../../_images/PMM_DBaaS_GKE_5.png)
-
-6. Click on button Connect in a the cluster’s row
-
-    ![!](../../_images/PMM_DBaaS_GKE_6.png)
-
-7. Click button Run in Cloud shell
-
-    ![!](../../_images/PMM_DBaaS_GKE_7.png)
-
-8. Click Authorize
-
-    ![!](../../_images/PMM_DBaaS_GKE_8.png)
-
-    ![!](../../_images/PMM_DBaaS_GKE_9.png)
-
-    ![!](../../_images/PMM_DBaaS_GKE_10.png)
-
-9. Set up PXC and PSMDB operators:
-
-    ```
-    curl -sSf -m 30 https://raw.githubusercontent.com/percona/percona-xtradb-cluster-operator/pmm-branch/deploy/bundle.yaml  | kubectl apply -f -
-    curl -sSf -m 30 https://raw.githubusercontent.com/percona/percona-server-mongodb-operator/pmm-branch/deploy/bundle.yaml  | kubectl apply -f -
+    ```sh
+    gcloud container clusters create --zone europe-west3-c pmm-dbaas-cluster --cluster-version 1.19 --machine-type e2-standard-4 --preemptible --num-nodes=3
+    gcloud container clusters get-credentials pmm-dbaas-cluster --zone=europe-west3-c
+    kubectl create clusterrolebinding cluster-admin-binding --clusterrole=cluster-admin --user=<<your_user@your_company.com>>
     ```
 
-    ![!](../../_images/PMM_DBaaS_GKE_11.png)
+2. Create `ServiceAccount`, `ClusterRole` and `RoleBindings` (required Roles are deployed automatically when PMM deploys Operators) using the following command:
 
-10. Check if it was set up successfully
-
-    ```
-    kubectl api-resources --api-group='psmdb.percona.com'
-    kubectl api-resources --api-group='pxc.percona.com'
-    ```
-
-    ![!](../../_images/PMM_DBaaS_GKE_12.png)
-
-11. Check versions
-
-    ```
-    kubectl api-versions | grep percona.com
-    ```
-
-    ![!](../../_images/PMM_DBaaS_GKE_13.png)
-
-12. Create Service Account, copy and store kubeconfig - output of the following command
->>>>>>> main
-
-    ```
+    ```sh
     cat <<EOF | kubectl apply -f -
     ---
     apiVersion: v1
@@ -269,18 +215,43 @@ You should have an account on GCP [https://cloud.google.com/](https://cloud.goog
       kind: Role
       name: percona-server-mongodb-operator
       apiGroup: rbac.authorization.k8s.io
+    ---
+    apiVersion: rbac.authorization.k8s.io/v1beta1
+    kind: ClusterRole
+    metadata:
+      name: service-account-percona-server-dbaas-admin
+    rules:
+    - apiGroups: ["*"]
+      resources: ["*"]
+      verbs: ["*"]
+    ---
+    apiVersion: rbac.authorization.k8s.io/v1beta1
+    kind: ClusterRoleBinding
+    metadata:
+      name: service-account-percona-server-dbaas-operator-admin
+    subjects:
+    - kind: ServiceAccount
+      name: percona-dbaas-cluster-operator
+      namespace: default
+    roleRef:
+      kind: ClusterRole
+      name: service-account-percona-server-dbaas-admin
+      apiGroup: rbac.authorization.k8s.io
     EOF
+    ```
 
-    name=`kubectl get serviceAccounts percona-dbaas-cluster-operator -o json | jq  -r .secrets[].name`
+3. Extract variables required to generate a kubeconfig:
+
+    ```sh
+    name=`kubectl get serviceAccounts percona-dbaas-cluster-operator -o json | jq  -r '.secrets[].name'`
     certificate=`kubectl get secret $name -o json | jq -r  '.data."ca.crt"'`
     token=`kubectl get secret $name -o json | jq -r  '.data.token' | base64 -d`
     server=`kubectl cluster-info | grep 'Kubernetes master' | cut -d ' ' -f 6`
     ```
 
-    ![!](../../_images/PMM_DBaaS_GKE_14.png)
+4. Generate your kubeconfig file (copy the output):
 
-
-    ```
+    ```sh
     echo "
     apiVersion: v1
     kind: Config
@@ -302,24 +273,11 @@ You should have an account on GCP [https://cloud.google.com/](https://cloud.goog
     "
     ```
 
-    ![!](../../_images/PMM_DBaaS_GKE_15.png)
-
-10. Start PMM Server on your local machine or other VM instance:
-
-    ```sh
-    docker run --detach --name pmm-server --publish 80:80 --publish 443:443 \
-    --env ENABLE_DBAAS=1 perconalab/pmm-server-fb:PR-1240-07bef94;
-    ```
-
-11. Login into PMM and navigate to DBaaS
-
-     ![!](../../_images/PMM_DBaaS_GKE_16.png)
-
-12. Use kubeconfig from step 9 to [Add the Kubernetes cluster](../../using/platform/dbaas.md#add-a-kubernetes-cluster).
-
+5. Follow the instructions on [How to add a Kubernetes cluster](../../using/platform/dbaas.md#add-a-kubernetes-cluster) with kubeconfig from the previous step.
 ## Deleting clusters
 
-> If a Public Address is set in PMM Settings, for each DB cluster an API Key is created which can be found on the page `/graph/org/apikeys`. You should not delete them (for now, until [issue PMM-8045](https://jira.percona.com/browse/PMM-8045) is fixed) -- once a DB cluster is removed from DBaaS, the related API Key is also removed.
+!!! note alert alert-primary ""
+    If a Public Address is set in PMM Settings, for each DB cluster an API Key is created which can be found on the page `/graph/org/apikeys`. You should not delete them (for now, until [issue PMM-8045](https://jira.percona.com/browse/PMM-8045) is fixed) -- once a DB cluster is removed from DBaaS, the related API Key is also removed.
 
 For example, if you only run `eksctl delete cluster` to delete an Amazon EKS cluster without cleaning up the cluster first, there will be a lot of orphaned resources such as Cloud Formations, Load Balancers, EC2 instances, Network interfaces, etc. The same applies for Google GKE clusters.
 
@@ -339,7 +297,7 @@ For example, if you only run `eksctl delete cluster` to delete an Amazon EKS clu
 
 2. In the `dbaas-controller` repository, in the deploy directory there are manifests we use to deploy operators. Use them to delete operators and related resources from the cluster.
 
-    !!! important alert alert-warning "Important"
+    !!! caution alert alert-warning "Important"
         - Do NOT execute this step before all database clusters, backups and restores are deleted in the previous step. It may result in not being able to delete the namespace DBaaS lives in.
         - Also be careful with this step if you are running DBaaS in more than one namespace as it deletes cluster level CustomResourceDefinitions needed to run DBaaS. This would break DBaaS in other namespaces. Delete just operators deployments in that case.
 
@@ -351,7 +309,7 @@ For example, if you only run `eksctl delete cluster` to delete an Amazon EKS clu
     curl https://raw.githubusercontent.com/percona-platform/dbaas-controller/7a5fff023994cecf6bde15705365114004b50b41/deploy/psmdb-operator.yaml | kubectl delete -f -
     ```
 
-3. Delete the namespace where the DBaaS is running, this will delete all remaining namespace level resources if any are left.
+3. Delete the name space where the DBaaS is running, this will delete all remaining name space level resources if any are left.
 
     ```sh
     kubectl delete namespace <your-namespace>
@@ -369,13 +327,14 @@ For example, if you only run `eksctl delete cluster` to delete an Amazon EKS clu
     docker run --detach --name pmm-server --publish 80:80 --publish 443:443 --env ENABLE_DBAAS=1  percona/pmm-server:2;
     ```
 
-    !!! important alert alert-warning "Important"
+    !!! caution alert alert-warning "Important"
         - Use `--network minikube` if running PMM Server and minikube in the same Docker instance. This way they will share single network and the kubeconfig will work.
         - Use Docker variables `--env PMM_DEBUG=1 --env PMM_TRACE=1` to see extended debug details.
 
 2. Change the default administrator credentials:
 
-	> This step is optional, because the same can be done from the web interface of PMM on the first login.
+    !!! note alert alert-primary ""
+        This step is optional, because the same can be done from the web interface of PMM on the first login.
 
     ```sh
     docker exec -t pmm-server bash -c 'ln -s /srv/grafana /usr/share/grafana/data; chown -R grafana:grafana /usr/share/grafana/data; grafana-cli --homepath /usr/share/grafana admin reset-admin-password <RANDOM_PASS_GOES_IN_HERE>'
@@ -401,17 +360,12 @@ To make services visible externally, you create a LoadBalancer service or manual
 kubectl expose deployment hello-world --type=NodePort.
 ```
 
-> **See also**
->
-> - [DBaaS Dashboard](../../using/platform/dbaas.md)
->
-> - [Install minikube](https://minikube.sigs.k8s.io/docs/start/)
->
-> - [Setting up a Standalone MYSQL Instance on Kubernetes & exposing it using Nginx Ingress Controller][STANDALONE_MYSQL_K8S]
->
-> - [Use a Service to Access an Application in a Cluster][KUBERNETES_ACCESS_APP]
->
-> - [Exposing applications using services][GOOGLE_EXPOSING_APPS]
+!!! seealso alert alert-info "See also"
+    - [DBaaS Dashboard](../../using/platform/dbaas.md)
+    - [Install minikube](https://minikube.sigs.k8s.io/docs/start/)
+    - [Setting up a Standalone MYSQL Instance on Kubernetes & exposing it using Nginx Ingress Controller][STANDALONE_MYSQL_K8S]
+    - [Use a Service to Access an Application in a Cluster][KUBERNETES_ACCESS_APP]
+    - [Exposing applications using services][GOOGLE_EXPOSING_APPS]
 
 
 [ALPHA]: https://en.wikipedia.org/wiki/Software_release_life_cycle#Alpha

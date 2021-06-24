@@ -1,8 +1,8 @@
 # MySQL
 
-PMM Client collects metrics from [MySQL][ORACLE_MYSQL], [Percona Server for MySQL][PERCONA_SERVER_MYSQL], [Percona XtraDB Cluster][PERCONA_XTRADB_CLUSTER], and [MariaDB][MARIADB]. (Amazon RDS is also supported and explained in a [separate section](aws.md).)
+How to set up PMM to monitor a MySQL or MySQL-based database instance.
 
-This page shows you how to set up PMM to monitor a MySQL or MySQL-based database instance. (You should read it completely before starting work.)
+PMM Client collects metrics from [MySQL][ORACLE_MYSQL], [Percona Server for MySQL][PERCONA_SERVER_MYSQL], [Percona XtraDB Cluster][PERCONA_XTRADB_CLUSTER], and [MariaDB][MARIADB]. (Amazon RDS is also supported and explained in a [separate section](aws.md).)
 
 Here is an overview of the steps involved.
 
@@ -65,7 +65,7 @@ Check that:
 - You have superuser (root) access on the client host.
 - You have superuser access to any database servers that you want to monitor.
 
-## Create a database account for PMM {: #setting-up-client-user}
+## Create a database account for PMM
 
 It is good practice to use a non-superuser account to connect PMM Client to the monitored database instance. This example creates a database user with name `pmm`, password `pass`, and the necessary permissions.
 
@@ -224,7 +224,7 @@ This section covers how to configure a MySQL-based database server to use *Perfo
 | Percona XtraDB Cluster   | 5.6, 5.7, 8.0
 | MariaDB                  | [10.3+][mariadb_perfschema_instr_table]
 
-PMM's [*MySQL Performance Schema Details* dashboard](../../details/dashboards/dashboard-mysql-performance-schema-details.md) charts the various [performance_schema][performance-schema-startup-configuration] metrics.
+PMM's [*MySQL Performance Schema Details* dashboard](../../details/dashboards/dashboard-mysql-performance-schema-details.md) charts the various [`performance_schema`][performance-schema-startup-configuration] metrics.
 
 To use *Performance Schema*, set these variables.
 
