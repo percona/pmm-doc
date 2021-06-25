@@ -182,10 +182,22 @@ docker cp dhparam.pem pmm-server:/srv/nginx/dhparam.pem
 <h2 id="grafana-https-secure-cookies">Grafana HTTPS secure cookies<a class="headerlink" href="#grafana-https-secure-cookies" title="Permanent link">&para;</a></h2>
 <p>To enable:</p>
 <ol>
-<li>Start a shell within the Docker container: <code>docker exec -it pmm-server bash</code></li>
-<li>Edit <code>/etc/grafana/grafana.ini</code></li>
-<li>Enable <code>cookie_secure</code> and set the value to <code>true</code></li>
-<li>Restart Grafana: <code>supervisorctl restart grafana</code></li>
+<li>
+<p>Start a shell within the Docker container.</p>
+<div class="highlight"><pre><span></span><code>docker <span class="nb">exec</span> -it pmm-server bash
+</code></pre></div>
+</li>
+<li>
+<p>Edit <code>/etc/grafana/grafana.ini</code>.</p>
+</li>
+<li>
+<p>Enable <code>cookie_secure</code> and set the value to <code>true</code>.</p>
+</li>
+<li>
+<p>Restart Grafana.</p>
+<div class="highlight"><pre><span></span><code>supervisorctl restart grafana
+</code></pre></div>
+</li>
 </ol>
                     </div>
                 </div>
@@ -194,7 +206,7 @@ docker cp dhparam.pem pmm-server:/srv/nginx/dhparam.pem
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-06-15
+            <i class="uil uil-refresh"></i> Page updated 2021-06-25
         </li>
         
     </ul>

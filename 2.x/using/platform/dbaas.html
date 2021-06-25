@@ -140,17 +140,17 @@
 <h2 id="activate-dbaas">Activate DBaaS<a class="headerlink" href="#activate-dbaas" title="Permanent link">&para;</a></h2>
 <p>The DBaaS feature is turned off by default. To turn it on:</p>
 <ol>
-<li>Go to <em><i class="uil uil-bars"></i> PMM&rarr;PMM Settings&rarr;Advanced settings</em>.</li>
+<li>Go to <i class="uil uil-bars"></i> <em>PMM</em> → <em>PMM Settings</em> → <em>Advanced settings</em>.</li>
 <li>Click the <i class="uil uil-toggle-off"></i> toggle in the <em>Technical preview features</em> section of the page.</li>
 </ol>
 <h2 id="open-the-dbaas-dashboard">Open the DBaaS dashboard<a class="headerlink" href="#open-the-dbaas-dashboard" title="Permanent link">&para;</a></h2>
-<p>From the left menu, select <em><i class="uil uil-database"></i> DBaaS</em>.</p>
+<p>From the left menu, select <i class="uil uil-database"></i> <em>DBaaS</em>.</p>
 <p><div class="lightgallery"><a data-sub-html="" href="../../_images/PMM_DBaaS_Kubernetes_Cluster_Panel.jpg"><img alt="" src="../../_images/PMM_DBaaS_Kubernetes_Cluster_Panel.jpg" /></a></div></p>
 <h2 id="kubernetes-clusters">Kubernetes clusters<a class="headerlink" href="#kubernetes-clusters" title="Permanent link">&para;</a></h2>
 <h3 id="add-a-kubernetes-cluster">Add a Kubernetes cluster<a class="headerlink" href="#add-a-kubernetes-cluster" title="Permanent link">&para;</a></h3>
-<blockquote>
+<div class="admonition note alert alert-primary">
 <p>PXC and PSMDB operators are installed as part of the Kubernetes cluster registration process. It enables you to deploy database clusters into the Kubernetes cluster.</p>
-</blockquote>
+</div>
 <ol>
 <li>
 <p>Click <em>Register new Kubernetes Cluster</em></p>
@@ -168,9 +168,10 @@
 </li>
 </ol>
 <h3 id="unregister-a-kubernetes-cluster">Unregister a Kubernetes cluster<a class="headerlink" href="#unregister-a-kubernetes-cluster" title="Permanent link">&para;</a></h3>
-<blockquote>
+<div class="admonition caution alert alert-warning">
+<p class="admonition-title">Important</p>
 <p>You can&rsquo;t unregister a Kubernetes cluster if there DB clusters associated with it.</p>
-</blockquote>
+</div>
 <ol>
 <li>
 <p>Click <em>Unregister</em>.</p>
@@ -308,8 +309,8 @@
 <p><div class="lightgallery"><a data-sub-html="" href="../../_images/PMM_DBaaS_DB_Cluster_Delete.png"><img alt="" src="../../_images/PMM_DBaaS_DB_Cluster_Delete.png" /></a></div></p>
 </li>
 </ol>
-<div class="admonition caution alert alert-warning">
-<p class="admonition-title">Important</p>
+<div class="admonition danger alert alert-danger">
+<p class="admonition-title">Danger</p>
 <p>Deleting a cluster in this way also deletes any attached volumes.</p>
 </div>
 <h3 id="edit-a-db-cluster">Edit a DB Cluster<a class="headerlink" href="#edit-a-db-cluster" title="Permanent link">&para;</a></h3>
@@ -359,10 +360,10 @@
 </ul>
 </li>
 </ol>
-<blockquote>
-<p><strong>See also</strong>
-<a href="../../setting-up/server/dbaas.html">Setting up a development environment for DBaaS</a></p>
-</blockquote>
+<div class="admonition seealso alert alert-info">
+<p class="admonition-title">See also</p>
+<p><a href="../../setting-up/server/dbaas.html">Setting up a development environment for DBaaS</a></p>
+</div>
                     </div>
                 </div>
                 
@@ -370,7 +371,7 @@
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-06-23
+            <i class="uil uil-refresh"></i> Page updated 2021-06-25
         </li>
         
     </ul>
