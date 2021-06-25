@@ -363,9 +363,9 @@ When you remove a service, collected data remains on PMM Server for the specifie
         - `--collect.perf_schema.tableiowaits`
         - `--collect.perf_schema.file_instances`
 
-	Excluded collectors for medium-resolution time intervals:
+        Excluded collectors for medium-resolution time intervals:
 
-	- `--collect.perf_schema.tablelocks`
+        - `--collect.perf_schema.tablelocks`
 
     `--disable-tablestats-limit=disable-tablestats-limit`
     : Table statistics collection will be disabled if there are more than specified number of tables
@@ -698,7 +698,7 @@ When you remove a service, collected data remains on PMM Server for the specifie
 pmm-admin add mysql --query-source=slowlog --username=pmm --password=pmm sl-mysql 127.0.0.1:3306
 ```
 
-```
+```txt
 MySQL Service added.
 Service ID  : /service_id/a89191d4-7d75-44a9-b37f-a528e2c4550f
 Service name: sl-mysql
@@ -713,7 +713,7 @@ pmm-admin status
 pmm-admin status --wait=30s
 ```
 
-```
+```txt
 Agent ID: /agent_id/c2a55ac6-a12f-4172-8850-4101237a4236
 Node ID : /node_id/29b2cc24-3b90-4892-8d7e-4b44258d9309
 PMM Server:

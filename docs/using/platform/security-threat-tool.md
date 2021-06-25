@@ -15,13 +15,13 @@ The *Failed security checks* panel on the *Home Dashboard* shows the number of f
 !!! note alert alert-light ""
     **Key:** <b style="color:#e02f44;">Critical</b> (Red) / <b style="color:#e36526;">Major</b> (Amber) / <b style="color:#5794f2;">Trivial</b> (Blue)
 
-Details are in the *PMM Database Checks* dashboard (select *PMM-->PMM Database Checks*).
+Details are in the *PMM Database Checks* dashboard (select *PMM* → *PMM Database Checks*).
 
 ![!PMM Database Checks dashboard](../../_images/PMM_Database_Checks.jpg)
 
 ## How to enable
 
-The Security Threat Tool (STT) is disabled by default. To enable it, select *{{icon.cog}} Configuration-->{{icon.setting}} Settings-->Advanced Settings*. [(Read more.)](../../how-to/configure.md#advanced-settings).
+The Security Threat Tool (STT) is disabled by default. To enable it, select <i class="uil uil-cog"></i> *Configuration* → <i class="uil uil-setting"></i> *Settings* → *Advanced Settings*. [(Read more.)](../../how-to/configure.md#advanced-settings).
 
 Enabling STT in the settings also causes the PMM server to download STT checks from Percona Platform and run them once. This operation runs in the background so even though the settings update finishes instantly it might take some time for the checks to complete download and execution and the results (if any) to be visible in the *PMM Database Checks* dashboard.
 
@@ -31,7 +31,7 @@ Enabling STT in the settings also causes the PMM server to download STT checks f
 
 2. Select the *All Checks* tab.
 
-3. In the *Actions* column for a chosen check, click the *{{icon.history}} Interval* icon.
+3. In the *Actions* column for a chosen check, click the <i class="uil uil-history"></i> *Interval* icon.
 
 4. Chose an interval: *Standard*, *Rare*, *Frequent*.
 
@@ -40,12 +40,12 @@ Enabling STT in the settings also causes the PMM server to download STT checks f
 ## List of checks made
 
 | Check ID                | Description
-| ----------------------- | ----------------------------------------------------------------
-| `mongodb_auth`          | MongoDB authentication is disabled
-| `mongodb_version`       | MongoDB/Percona Server for MongoDB version is not the latest
-| `mongodb_cve_version`   | MongoDB/Percona Server for MongoDB version is not the latest with CVE fixes
-| `mysql_anonymous_users` | There are accounts with no username
-| `mysql_empty_password`  | There are users without passwords
-| `mysql_version`         | MySQL/PS/MariaDB version is not the latest
-| `postgresql_super_role` | PostgreSQL has users (besides `postgres`, `rdsadmin`, and `pmm_user`) with the role 'SUPER'
-| `postgresql_version`    | PostgreSQL version is not the latest
+|-------------------------|-----------------------------------------------------------------
+| `mongodb_auth`          | MongoDB authentication is disabled.
+| `mongodb_version`       | MongoDB/Percona Server for MongoDB version is not the latest.
+| `mongodb_cve_version`   | MongoDB/Percona Server for MongoDB version is not the latest with CVE fixes.
+| `mysql_anonymous_users` | There are accounts with no username.
+| `mysql_empty_password`  | There are users without passwords.
+| `mysql_version`         | MySQL/PS/MariaDB version is not the latest.
+| `postgresql_super_role` | PostgreSQL has users (besides `postgres`, `rdsadmin`, and `pmm_user`) with the role 'SUPER'.
+| `postgresql_version`    | PostgreSQL version is not the latest.
