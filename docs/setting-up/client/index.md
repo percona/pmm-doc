@@ -211,7 +211,7 @@ You can now add services with [`pmm-admin`](../../details/commands/pmm-admin.md)
 
     In the GUI.
 
-    - Select *{{icon.dashboards}} PMM Dashboards-->{{icon.node}} System (Node)-->{{icon.node}} Node Overview*
+    - Select *{{icon.dashboards}} PMM Dashboards → {{icon.node}} System (Node) → {{icon.node}} Node Overview*
     - In the *Node Names* menu, select the new node
     - Change the time range to see data
 

@@ -32,7 +32,7 @@ The main menu is part of the Grafana framework and is visible on every page.
 !!! hint alert alert-success "Tip"
     The DBaaS icon appears only if a server feature flag has been set.
 
-    The Backup Management icon appears when *Backup Management* is activated in *<i class="uil uil-cog"></i> Configuration--><i class="uil uil-setting"></i> Settings-->Advanced Settings*.
+    The Backup Management icon appears when *Backup Management* is activated in <i class="uil uil-cog"></i> *Configuration* → <i class="uil uil-setting"></i> *Settings* → *Advanced Settings*.
 
 | Icon (Bottom)                            | Description |
 |:----------------------------------------:|-------------|

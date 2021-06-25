@@ -5,7 +5,7 @@
 
 *Integrated Alerting* lets you know when certain system events occur.
 
-**To activate *Integrated Alerting***, select <i class="uil uil-cog"></i> *Configuration*--><i class="uil uil-setting"></i> *Settings*-->*Advanced Settings*, turn on *Integrated Alerting* and click *Apply changes*.
+**To activate *Integrated Alerting***, select <i class="uil uil-cog"></i> *Configuration* → <i class="uil uil-setting"></i> *Settings* → *Advanced Settings*, turn on *Integrated Alerting* and click *Apply changes*.
 
 This short (3:36) video shows how to activate and configure Integrated Alerting.
 
@@ -63,7 +63,7 @@ stop
 
 ## Open the *Integrated Alerting* page
 
-- From the left menu, select <i class="uil uil-bell"></i> *Alerting*--><i class="uil uil-list-ul"></i> *Integrated Alerting*
+- From the left menu, select <i class="uil uil-bell"></i> *Alerting* → <i class="uil uil-list-ul"></i> *Integrated Alerting*
 
 !!! note alert alert-primary ""
     The *Alerting* menu also lists <i class="uil uil-list-ul"></i> *Alert Rules* and <i class="uil uil-comment-alt-share"></i> *Notification Channels*. These are for Grafana's alerting functionality.

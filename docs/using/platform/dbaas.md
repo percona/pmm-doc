@@ -9,7 +9,7 @@ The DBaaS dashboard is where you add, remove, and operate on Kubernetes and data
 
 The DBaaS feature is turned off by default. To turn it on:
 
-1. Go to <i class="uil uil-bars"></i> *PMM*-->*PMM Settings*-->*Advanced settings*.
+1. Go to <i class="uil uil-bars"></i> *PMM* → *PMM Settings* → *Advanced settings*.
 2. Click the <i class="uil uil-toggle-off"></i> toggle in the *Technical preview features* section of the page.
 
 ## Open the DBaaS dashboard
