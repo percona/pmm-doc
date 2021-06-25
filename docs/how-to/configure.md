@@ -2,7 +2,7 @@
 
 The *Settings* page is where you configure PMM.
 
-Open the *Settings* page from the [main menu](../details/interface.md#main-menu) with *{{icon.cog}} Configuration-->{{icon.setting}} Settings*. The page opens with the *Metrics Resolution* settings tab selected.
+Open the *Settings* page from the [main menu](../details/interface.md#main-menu) with <i class="uil uil-cog"></i> *Configuration*--><i class="uil uil-setting"></i> *Settings*. The page opens with the *Metrics Resolution* settings tab selected.
 
 ![!image](../_images/PMM_Settings_Metrics_Resolution.jpg)
 
@@ -133,7 +133,7 @@ Checks use the *Standard* interval by default. To change a check's interval:
 
 - Go to {{icon.checks}} *PMM Database Checks*
 - Select *All Checks*
-- In the *Actions* column, select the {{icon.history}} icon
+- In the *Actions* column, select the <i class="uil uil-history"></i> icon
 
     ![!](../_images/PMM_Security_Checks_Actions.png)
 

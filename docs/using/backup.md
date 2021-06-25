@@ -14,10 +14,10 @@
 - There is a `mysql` system group.
 - MySQL is using the `/var/lib/mysql` directory for database storage.
 - Backup management has been enabled:
-    1. Select *{{icon.cog}} Configuration-->{{icon.setting}} Settings-->Advanced Settings*.
+    1. Select <i class="uil uil-cog"></i> *Configuration*--><i class="uil uil-setting"></i> *Settings*-->*Advanced Settings*.
     2. Activate *Backup Management*.
     3. Click *Apply changes*.
-    4. In the left menu bar, click *{{icon.history}}-->Backup*.
+    4. In the left menu bar, click <i class="uil uil-history"></i>-->*Backup*.
 
         ![!](../_images/PMM_Backup_Management.jpg)
 
@@ -57,7 +57,7 @@
 
 1. Navigate to *Backup Management-->Backup Inventory*.
 
-2. Click {{icon.plussquare}} Add.
+2. Click <i class="uil uil-plus-square"></i> *Add*.
 
 3. In the *Backup On Demand* dialog, enter values for:
 

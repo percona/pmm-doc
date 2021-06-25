@@ -140,7 +140,7 @@ shasum -ca 256 pmm-server-{{release}}.sha256sum
 **UI**
 
 1. In the VMware main window, select the imported virtual machine.
-2. Click the play button {{icon.caretright}} or select *Virtual Machine-->Start Up*.
+2. Click the play button <i class="uil uil-caret-right"></i> or select *Virtual Machine-->Start Up*.
 3. When the instance has booted, note the IP address in the guest console.
 
 **CLI/UI**
