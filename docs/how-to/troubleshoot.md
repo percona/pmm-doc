@@ -124,7 +124,7 @@ If you create a custom alert rule template you will have access to edit.
 - Filters - A Key, Evaluator, and Value. E.g. `service_name=ps5.7`
     - Key must be an exact match. You can find a complete list of keys by using the <i class="uil uil-compass"></i> *Explore* main menu item in PMM
     - Evaluator can be any of: `=`, `=~`
-    - Value is an exact match or when used with a ‘fuzzy’ evaluator (=~) can be a regular expression. E.g. `service_name=~ps.*`
+    - Value is an exact match or when used with a ‘fuzzy’ evaluator (`=~`) can be a regular expression. E.g. `service_name=~ps.*`
 
 ### Variables in Templates
 

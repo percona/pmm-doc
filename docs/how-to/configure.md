@@ -131,13 +131,13 @@ Checks are re-fetched and re-run at intervals. There are three named intervals:
 
 Checks use the *Standard* interval by default. To change a check's interval:
 
-- Go to {{icon.checks}} *PMM Database Checks*
-- Select *All Checks*
-- In the *Actions* column, select the <i class="uil uil-history"></i> icon
+- Go to {{icon.checks}} *PMM Database Checks*.
+- Select *All Checks*.
+- In the *Actions* column, select the <i class="uil uil-history"></i> icon.
 
     ![!](../_images/PMM_Security_Checks_Actions.png)
 
-- Select an interval and click *Save*
+- Select an interval and click *Save*.
 
     ![!](../_images/PMM_Security_Checks_Actions_Set_Interval.png)
 
@@ -211,11 +211,11 @@ Click *Sign out* to log out of your Percona Platform account.
 
 To create a *Percona Platform* account:
 
-1. Click *Sign up*
-2. Enter a valid email address in the *Email* field
-3. Choose and enter a strong password in the *Password* field
-4. Select the check box acknowledging our terms of service and privacy policy
-5. Click *Sign up*
+1. Click *Sign up*.
+2. Enter a valid email address in the *Email* field.
+3. Choose and enter a strong password in the *Password* field.
+4. Select the check box acknowledging our terms of service and privacy policy.
+5. Click *Sign up*.
 
 A brief message will confirm the creation of your new account and you may now log in with these credentials.
 

@@ -66,7 +66,8 @@
     - *Description* -- A long description.
     - *Location* -- The predefined storage location.
 
-    > *Vendor* is a read-only value showing the database vendor name. (Currently only for the supported MySQL service.)
+    !!! note alert alert-primary ""
+        *Vendor* is a read-only value showing the database vendor name. (Currently only for the supported MySQL service.)
 
 4. Click *Backup*.
 
@@ -77,15 +78,15 @@
 !!! note alert alert-primary ""
     For this release, you can only restore a backup to the same service. I.e. a MySQL backup of service `mymsql-service-1` can only be restored to a MySQL database server registered with the same service name. Future releases will give more flexibility to restore backups to other service types.
 
-1. Navigate to *Backup Management → Backup Inventory*
+1. Navigate to *Backup Management* → *Backup Inventory*
 
 2. Find the row with the backup you want to restore.
 
-3. In the *Actions* column for that row, click *Restore from backup*
+3. In the *Actions* column for that row, click *Restore from backup*.
 
-4. In the *Restore from backup* dialog, check the values and click *Restore*
+4. In the *Restore from backup* dialog, check the values and click *Restore*.
 
-5. Navigate to the *Restore History* tab to check the status of the restored backup
+5. Navigate to the *Restore History* tab to check the status of the restored backup.
 
 
 

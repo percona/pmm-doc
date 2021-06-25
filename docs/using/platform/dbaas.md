@@ -22,7 +22,8 @@ From the left menu, select <i class="uil uil-database"></i> *DBaaS*.
 
 ### Add a Kubernetes cluster
 
-> PXC and PSMDB operators are installed as part of the Kubernetes cluster registration process. It enables you to deploy database clusters into the Kubernetes cluster.
+!!! note alert alert-primary ""
+    PXC and PSMDB operators are installed as part of the Kubernetes cluster registration process. It enables you to deploy database clusters into the Kubernetes cluster.
 
 1. Click *Register new Kubernetes Cluster*
 
@@ -38,7 +39,8 @@ From the left menu, select <i class="uil uil-database"></i> *DBaaS*.
 
 ### Unregister a Kubernetes cluster
 
-> You can't unregister a Kubernetes cluster if there DB clusters associated with it.
+!!! caution alert alert-warning "Important"
+    You can't unregister a Kubernetes cluster if there DB clusters associated with it.
 
 1. Click *Unregister*.
 
@@ -151,7 +153,7 @@ To monitor a DB cluster, set up a [public address](../../how-to/configure.md#pub
 
     ![!](../../_images/PMM_DBaaS_DB_Cluster_Delete.png)
 
-!!! caution alert alert-warning "Important"
+!!! danger alert alert-danger "Danger"
     Deleting a cluster in this way also deletes any attached volumes.
 
 ### Edit a DB Cluster
@@ -189,8 +191,8 @@ A paused cluster can't be edited.
         ![!DBaaS Resume](../../_images/PMM_DBaaS_DB_Cluster_Resume.gif)
 
 
-> **See also**
-> [Setting up a development environment for DBaaS](../../setting-up/server/dbaas.md)
+!!! seealso alert alert-info "See also"
+    [Setting up a development environment for DBaaS](../../setting-up/server/dbaas.md)
 
 
 [ALPHA]: https://en.wikipedia.org/wiki/Software_release_life_cycle#Alpha
