@@ -32,7 +32,7 @@
 
 
 
-<title>Percona Monitoring and Management &mdash; Percona Monitoring and Management 2.16.0</title>
+<title>Percona Monitoring and Management &mdash; PMM 2.16.0</title>
 
 <head>
     
@@ -61,7 +61,7 @@
 
     <link rel="top" title="" href="https://www.percona.com/doc/percona-monitoring-and-management/2.x" />
     
-    <link rel="next" title="Percona Monitoring and Management 2.15.1" href="2.15.1.html" />
+    <link rel="next" title="PMM 2.15.1" href="2.15.1.html" />
     
     
 </head>
@@ -104,12 +104,12 @@
     <ul class="nav nav-pills">
         
         <li class="right" style="margin-right: 10px">
-            <a href="2.15.1.html" title="Percona Monitoring and Management 2.15.1">Next</a>
+            <a href="2.15.1.html" title="PMM 2.15.1">Next</a>
         </li>
         
         
         <li class="right" style="margin-right: 10px">
-            <a href="2.17.0.html" title="Percona Monitoring and Management 2.17.0">Previous</a>
+            <a href="2.17.0.html" title="PMM 2.17.0">Previous</a>
         </li>
         
         <li>
@@ -131,7 +131,7 @@
 
                 <div class="bodywrapper">
                     <div class="body">
-                        <h1 id="percona-monitoring-and-management-2160">Percona Monitoring and Management 2.16.0<a class="headerlink" href="#percona-monitoring-and-management-2160" title="Permanent link">&para;</a></h1>
+                        <h1 id="pmm-2160">PMM 2.16.0<a class="headerlink" href="#pmm-2160" title="Permanent link">&para;</a></h1>
 <table class="docutils field-list" frame="void" rules="none">
   <colgroup>
     <col class="field-name">
@@ -193,135 +193,53 @@
 </ul>
 <h2 id="new-features">New Features<a class="headerlink" href="#new-features" title="Permanent link">&para;</a></h2>
 <ul>
-<li>
-<p><a href="https://jira.percona.com/browse/PMM-7313">PMM-7313</a>, <a href="https://jira.percona.com/browse/PMM-7610">PMM-7610</a>: Ability to discover and monitor Amazon RDS PostgreSQL instances with collecting PostgreSQL and RDS node metrics (Thanks to Daniel Guzman Burgos for reporting this issue).</p>
-</li>
-<li>
-<p><a href="https://jira.percona.com/browse/PMM-7345">PMM-7345</a>: Expose metrics for all available databases on a PMM monitored PostgreSQL server.</p>
-</li>
-<li>
-<p><a href="https://jira.percona.com/browse/PMM-7344">PMM-7344</a>: Update postgres_exporter version from 0.4.6 to 0.8.0. (See the full list of improvements in the <a href="https://github.com/percona/postgres_exporter/blob/master/CHANGELOG.md">changelog</a>.)</p>
-</li>
-<li>
-<p><a href="https://jira.percona.com/browse/PMM-7767">PMM-7767</a>, <a href="https://jira.percona.com/browse/PMM-7696">PMM-7696</a>: Implement feature flag to enable Microsoft Azure monitoring. Users can <a href="../setting-up/client/azure.html">use the UI</a> or set an environment variable (<code>ENABLE_AZUREDISCOVER=1</code>) during container creation.</p>
-</li>
-<li>
-<p><a href="https://jira.percona.com/browse/PMM-7684">PMM-7684</a>, <a href="https://jira.percona.com/browse/PMM-7498">PMM-7498</a>: Ability to discover running and supported Microsoft Azure Databases instances in a provided account.</p>
-</li>
-<li>
-<p><a href="https://jira.percona.com/browse/PMM-7678">PMM-7678</a>, <a href="https://jira.percona.com/browse/PMM-7679">PMM-7679</a>, <a href="https://jira.percona.com/browse/PMM-7676">PMM-7676</a>, <a href="https://jira.percona.com/browse/PMM-7499">PMM-7499</a>, <a href="https://jira.percona.com/browse/PMM-7691">PMM-7691</a>: Prepare, modify and use <code>azure_exporter</code> to collect Node related metrics.</p>
-</li>
-<li>
-<p><a href="https://jira.percona.com/browse/PMM-7681">PMM-7681</a>: Use Microsoft Azure metrics on Node/OS-related dashboards to show the metrics on panels.</p>
-</li>
-<li>
-<p><a href="https://jira.percona.com/browse/PMM-7339">PMM-7339</a>: Security Threat Tool: Ability to execute security checks individually and on-demand.</p>
-</li>
-<li>
-<p><a href="https://jira.percona.com/browse/PMM-7451">PMM-7451</a>, <a href="https://jira.percona.com/browse/PMM-7337">PMM-7337</a>: Security Threat Tool: Ability to change intervals for security checks on the <em>PMM Settings</em> page.</p>
-</li>
-<li>
-<p><a href="https://jira.percona.com/browse/PMM-7772">PMM-7772</a>, <a href="https://jira.percona.com/browse/PMM-7338">PMM-7338</a>: Security Threat Tool: Ability to change default execution interval per check.</p>
-</li>
-<li>
-<p><a href="https://jira.percona.com/browse/PMM-7336">PMM-7336</a>: Security Threat Tool: Execute checks based on execution interval they belong to.</p>
-</li>
-<li>
-<p><a href="https://jira.percona.com/browse/PMM-7335">PMM-7335</a>: Security Threat Tool: Ship security check files with predefined execution interval.</p>
-</li>
-<li>
-<p><a href="https://jira.percona.com/browse/PMM-7748">PMM-7748</a>: Add an additional experimental menu for Dashboards on the left side panel.</p>
-</li>
-<li>
-<p><a href="https://jira.percona.com/browse/PMM-7688">PMM-7688</a>: Unify UX and layout of all PMM specific pages like Settings, Add Instance etc.</p>
-</li>
-<li>
-<p><a href="https://jira.percona.com/browse/PMM-7687">PMM-7687</a>: Modify links in menus to ensure both menus are working as expected after dashboard URL change.</p>
-</li>
-<li>
-<p><a href="https://jira.percona.com/browse/PMM-7705">PMM-7705</a>: Simplify display of features in technical preview to easily identify them and their current state.</p>
-</li>
-<li>
-<p><a href="https://jira.percona.com/browse/PMM-7522">PMM-7522</a>, <a href="https://jira.percona.com/browse/PMM-7511">PMM-7511</a>: Integrated Alerting: Improve Notification Channels UX by Pagination for the Notification list.</p>
-</li>
-<li>
-<p><a href="https://jira.percona.com/browse/PMM-7521">PMM-7521</a>, <a href="https://jira.percona.com/browse/PMM-7510">PMM-7510</a>: Integrated Alerting: Improve Alert Rule Templates UX by Pagination on Rule Templates list.</p>
-</li>
-<li>
-<p><a href="https://jira.percona.com/browse/PMM-7652">PMM-7652</a>, <a href="https://jira.percona.com/browse/PMM-7674">PMM-7674</a>, <a href="https://jira.percona.com/browse/PMM-7503">PMM-7503</a>, <a href="https://jira.percona.com/browse/PMM-7486">PMM-7486</a>: DBaaS: While creating the DB cluster see all and available resources in the K8s cluster, such as Disk, CPU &amp; Memory.</p>
-</li>
-<li>
-<p><a href="https://jira.percona.com/browse/PMM-7508">PMM-7508</a>, <a href="https://jira.percona.com/browse/PMM-7488">PMM-7488</a>: DBaaS: See predicted resource usage for selected DB Cluster configuration.</p>
-</li>
-<li>
-<p><a href="https://jira.percona.com/browse/PMM-7364">PMM-7364</a>: DBaaS: Show warning before starting creating the cluster if there are not enough resources in the K8s cluster to create DB Cluster with requested configuration.</p>
-</li>
-<li>
-<p><a href="https://jira.percona.com/browse/PMM-7580">PMM-7580</a>, <a href="https://jira.percona.com/browse/PMM-7359">PMM-7359</a>: DBaaS: Users can select the database version to use during DB Cluster creation.</p>
-</li>
+<li><a href="https://jira.percona.com/browse/PMM-7313">PMM-7313</a>, <a href="https://jira.percona.com/browse/PMM-7610">PMM-7610</a>: Ability to discover and monitor Amazon RDS PostgreSQL instances with collecting PostgreSQL and RDS node metrics (Thanks to Daniel Guzman Burgos for reporting this issue).</li>
+<li><a href="https://jira.percona.com/browse/PMM-7345">PMM-7345</a>: Expose metrics for all available databases on a PMM monitored PostgreSQL server.</li>
+<li><a href="https://jira.percona.com/browse/PMM-7344">PMM-7344</a>: Update postgres_exporter version from 0.4.6 to 0.8.0. (See the full list of improvements in the <a href="https://github.com/percona/postgres_exporter/blob/master/CHANGELOG.md">changelog</a>.)</li>
+<li><a href="https://jira.percona.com/browse/PMM-7767">PMM-7767</a>, <a href="https://jira.percona.com/browse/PMM-7696">PMM-7696</a>: Implement feature flag to enable Microsoft Azure monitoring. Users can <a href="../setting-up/client/azure.html">use the UI</a> or set an environment variable (<code>ENABLE_AZUREDISCOVER=1</code>) during container creation.</li>
+<li><a href="https://jira.percona.com/browse/PMM-7684">PMM-7684</a>, <a href="https://jira.percona.com/browse/PMM-7498">PMM-7498</a>: Ability to discover running and supported Microsoft Azure Databases instances in a provided account.</li>
+<li><a href="https://jira.percona.com/browse/PMM-7678">PMM-7678</a>, <a href="https://jira.percona.com/browse/PMM-7679">PMM-7679</a>, <a href="https://jira.percona.com/browse/PMM-7676">PMM-7676</a>, <a href="https://jira.percona.com/browse/PMM-7499">PMM-7499</a>, <a href="https://jira.percona.com/browse/PMM-7691">PMM-7691</a>: Prepare, modify and use <code>azure_exporter</code> to collect Node related metrics.</li>
+<li><a href="https://jira.percona.com/browse/PMM-7681">PMM-7681</a>: Use Microsoft Azure metrics on Node/OS-related dashboards to show the metrics on panels.</li>
+<li><a href="https://jira.percona.com/browse/PMM-7339">PMM-7339</a>: Security Threat Tool: Ability to execute security checks individually and on-demand.</li>
+<li><a href="https://jira.percona.com/browse/PMM-7451">PMM-7451</a>, <a href="https://jira.percona.com/browse/PMM-7337">PMM-7337</a>: Security Threat Tool: Ability to change intervals for security checks on the <em>PMM Settings</em> page.</li>
+<li><a href="https://jira.percona.com/browse/PMM-7772">PMM-7772</a>, <a href="https://jira.percona.com/browse/PMM-7338">PMM-7338</a>: Security Threat Tool: Ability to change default execution interval per check.</li>
+<li><a href="https://jira.percona.com/browse/PMM-7336">PMM-7336</a>: Security Threat Tool: Execute checks based on execution interval they belong to.</li>
+<li><a href="https://jira.percona.com/browse/PMM-7335">PMM-7335</a>: Security Threat Tool: Ship security check files with predefined execution interval.</li>
+<li><a href="https://jira.percona.com/browse/PMM-7748">PMM-7748</a>: Add an additional experimental menu for Dashboards on the left side panel.</li>
+<li><a href="https://jira.percona.com/browse/PMM-7688">PMM-7688</a>: Unify UX and layout of all PMM specific pages like Settings, Add Instance etc.</li>
+<li><a href="https://jira.percona.com/browse/PMM-7687">PMM-7687</a>: Modify links in menus to ensure both menus are working as expected after dashboard URL change.</li>
+<li><a href="https://jira.percona.com/browse/PMM-7705">PMM-7705</a>: Simplify display of features in technical preview to easily identify them and their current state.</li>
+<li><a href="https://jira.percona.com/browse/PMM-7522">PMM-7522</a>, <a href="https://jira.percona.com/browse/PMM-7511">PMM-7511</a>: Integrated Alerting: Improve Notification Channels UX by Pagination for the Notification list.</li>
+<li><a href="https://jira.percona.com/browse/PMM-7521">PMM-7521</a>, <a href="https://jira.percona.com/browse/PMM-7510">PMM-7510</a>: Integrated Alerting: Improve Alert Rule Templates UX by Pagination on Rule Templates list.</li>
+<li><a href="https://jira.percona.com/browse/PMM-7652">PMM-7652</a>, <a href="https://jira.percona.com/browse/PMM-7674">PMM-7674</a>, <a href="https://jira.percona.com/browse/PMM-7503">PMM-7503</a>, <a href="https://jira.percona.com/browse/PMM-7486">PMM-7486</a>: DBaaS: While creating the DB cluster see all and available resources in the K8s cluster, such as Disk, CPU &amp; Memory.</li>
+<li><a href="https://jira.percona.com/browse/PMM-7508">PMM-7508</a>, <a href="https://jira.percona.com/browse/PMM-7488">PMM-7488</a>: DBaaS: See predicted resource usage for selected DB Cluster configuration.</li>
+<li><a href="https://jira.percona.com/browse/PMM-7364">PMM-7364</a>: DBaaS: Show warning before starting creating the cluster if there are not enough resources in the K8s cluster to create DB Cluster with requested configuration.</li>
+<li><a href="https://jira.percona.com/browse/PMM-7580">PMM-7580</a>, <a href="https://jira.percona.com/browse/PMM-7359">PMM-7359</a>: DBaaS: Users can select the database version to use during DB Cluster creation.</li>
 </ul>
 <h2 id="improvements">Improvements<a class="headerlink" href="#improvements" title="Permanent link">&para;</a></h2>
 <ul>
-<li>
-<p><a href="https://jira.percona.com/browse/PMM-7506">PMM-7506</a>: Security Threat Tool: Reduce False Positives due to Roles automatically created in PXC with no password but cannot be used to login.</p>
-</li>
-<li>
-<p><a href="https://jira.percona.com/browse/PMM-7569">PMM-7569</a>: Make PMM compatible with pg_stat_monitor 0.8 release.</p>
-</li>
-<li>
-<p><a href="https://jira.percona.com/browse/PMM-7571">PMM-7571</a>: Modified Percona Platform Account registration flow from PMM server UI.</p>
-</li>
-<li>
-<p><a href="https://jira.percona.com/browse/PMM-7513">PMM-7513</a>: Integrated Alerting: Ability to see default values and Threshold values during the Alert Rule creation.</p>
-</li>
-<li>
-<p><a href="https://jira.percona.com/browse/PMM-7461">PMM-7461</a>: Integrated Alerting: Improve UX of tables presentation and loading on UI.</p>
-</li>
-<li>
-<p><a href="https://jira.percona.com/browse/PMM-7375">PMM-7375</a>: Integrated Alerting: Inform users about the template that they are editing and warn them about the limitations.</p>
-</li>
-<li>
-<p><a href="https://jira.percona.com/browse/PMM-7260">PMM-7260</a>: Integrated Alerting: Make it clearer what rule is being edited.</p>
-</li>
+<li><a href="https://jira.percona.com/browse/PMM-7506">PMM-7506</a>: Security Threat Tool: Reduce False Positives due to Roles automatically created in PXC with no password but cannot be used to login.</li>
+<li><a href="https://jira.percona.com/browse/PMM-7569">PMM-7569</a>: Make PMM compatible with pg_stat_monitor 0.8 release.</li>
+<li><a href="https://jira.percona.com/browse/PMM-7571">PMM-7571</a>: Modified Percona Platform Account registration flow from PMM server UI.</li>
+<li><a href="https://jira.percona.com/browse/PMM-7513">PMM-7513</a>: Integrated Alerting: Ability to see default values and Threshold values during the Alert Rule creation.</li>
+<li><a href="https://jira.percona.com/browse/PMM-7461">PMM-7461</a>: Integrated Alerting: Improve UX of tables presentation and loading on UI.</li>
+<li><a href="https://jira.percona.com/browse/PMM-7375">PMM-7375</a>: Integrated Alerting: Inform users about the template that they are editing and warn them about the limitations.</li>
+<li><a href="https://jira.percona.com/browse/PMM-7260">PMM-7260</a>: Integrated Alerting: Make it clearer what rule is being edited.</li>
 </ul>
 <h2 id="bugs-fixed">Bugs Fixed<a class="headerlink" href="#bugs-fixed" title="Permanent link">&para;</a></h2>
 <ul>
-<li>
-<p><a href="https://jira.percona.com/browse/PMM-7131">PMM-7131</a>, <a href="https://jira.percona.com/browse/PMM-7555">PMM-7555</a>: QAN for PostgreSQL attempts to connect to a database with the same name as the username. (Thanks to Daniel Guzman Burgos for reporting this issue)</p>
-</li>
-<li>
-<p><a href="https://jira.percona.com/browse/PMM-7481">PMM-7481</a>: Query Analytics is not showing “Query with Errors” in the Profile section.</p>
-</li>
-<li>
-<p><a href="https://jira.percona.com/browse/PMM-7464">PMM-7464</a>: NGINX misconfiguration leads to log storm in push mode</p>
-</li>
-<li>
-<p><a href="https://jira.percona.com/browse/PMM-7434">PMM-7434</a>: Integrated Alerting: Unknown parameters [threshold] error during Add/Update Alert Rule.</p>
-</li>
-<li>
-<p><a href="https://jira.percona.com/browse/PMM-7231">PMM-7231</a>: Integrated Alerting: Disabling channels does nothing.</p>
-</li>
-<li>
-<p><a href="https://jira.percona.com/browse/PMM-7379">PMM-7379</a>: Integrated Alerting: Can not edit Alert Rule Name through API.</p>
-</li>
-<li>
-<p><a href="https://jira.percona.com/browse/PMM-7232">PMM-7232</a>: Integrated Alerting: Disabling IA does not disable rules evaluation and notifications sending.</p>
-</li>
-<li>
-<p><a href="https://jira.percona.com/browse/PMM-7119">PMM-7119</a>: Integrated Alerting: Update error notification for adding/update Alert rule Template – There was inconsistent behavior if you tried to add a new Rule Template with an already-used name.</p>
-</li>
-<li>
-<p><a href="https://jira.percona.com/browse/PMM-7543">PMM-7543</a>: Integrated Alerting: selected section disappears from a breadcrumb after clicking the tab for a second time.</p>
-</li>
-<li>
-<p><a href="https://jira.percona.com/browse/PMM-7766">PMM-7766</a>: DBaaS: PMM Upgrade breaks DBaaS get credentials method.</p>
-</li>
-<li>
-<p><a href="https://jira.percona.com/browse/PMM-7351">PMM-7351</a>: DBaaS: Safari does not accept float numbers as a custom option in the “Create Cluster” dialogue.</p>
-</li>
-<li>
-<p><a href="https://jira.percona.com/browse/PMM-7701">PMM-7701</a>: DBaaS: PSMDB clusters stuck in initializing due to special characters in secrets.</p>
-</li>
+<li><a href="https://jira.percona.com/browse/PMM-7131">PMM-7131</a>, <a href="https://jira.percona.com/browse/PMM-7555">PMM-7555</a>: QAN for PostgreSQL attempts to connect to a database with the same name as the username. (Thanks to Daniel Guzman Burgos for reporting this issue)</li>
+<li><a href="https://jira.percona.com/browse/PMM-7481">PMM-7481</a>: Query Analytics is not showing “Query with Errors” in the Profile section.</li>
+<li><a href="https://jira.percona.com/browse/PMM-7464">PMM-7464</a>: NGINX misconfiguration leads to log storm in push mode</li>
+<li><a href="https://jira.percona.com/browse/PMM-7434">PMM-7434</a>: Integrated Alerting: Unknown parameters [threshold] error during Add/Update Alert Rule.</li>
+<li><a href="https://jira.percona.com/browse/PMM-7231">PMM-7231</a>: Integrated Alerting: Disabling channels does nothing.</li>
+<li><a href="https://jira.percona.com/browse/PMM-7379">PMM-7379</a>: Integrated Alerting: Can not edit Alert Rule Name through API.</li>
+<li><a href="https://jira.percona.com/browse/PMM-7232">PMM-7232</a>: Integrated Alerting: Disabling IA does not disable rules evaluation and notifications sending.</li>
+<li><a href="https://jira.percona.com/browse/PMM-7119">PMM-7119</a>: Integrated Alerting: Update error notification for adding/update Alert rule Template – There was inconsistent behavior if you tried to add a new Rule Template with an already-used name.</li>
+<li><a href="https://jira.percona.com/browse/PMM-7543">PMM-7543</a>: Integrated Alerting: selected section disappears from a breadcrumb after clicking the tab for a second time.</li>
+<li><a href="https://jira.percona.com/browse/PMM-7766">PMM-7766</a>: DBaaS: PMM Upgrade breaks DBaaS get credentials method.</li>
+<li><a href="https://jira.percona.com/browse/PMM-7351">PMM-7351</a>: DBaaS: Safari does not accept float numbers as a custom option in the “Create Cluster” dialogue.</li>
+<li><a href="https://jira.percona.com/browse/PMM-7701">PMM-7701</a>: DBaaS: PSMDB clusters stuck in initializing due to special characters in secrets.</li>
 </ul>
                     </div>
                 </div>
@@ -330,7 +248,7 @@
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-04-20
+            <i class="uil uil-refresh"></i> Page updated 2021-06-25
         </li>
         
     </ul>
@@ -341,12 +259,12 @@
     <ul class="nav nav-pills">
         
         <li class="right" style="margin-right: 10px">
-            <a href="2.15.1.html" title="Percona Monitoring and Management 2.15.1">Next</a>
+            <a href="2.15.1.html" title="PMM 2.15.1">Next</a>
         </li>
         
         
         <li class="right" style="margin-right: 10px">
-            <a href="2.17.0.html" title="Percona Monitoring and Management 2.17.0">Previous</a>
+            <a href="2.17.0.html" title="PMM 2.17.0">Previous</a>
         </li>
         
         <li>
@@ -1098,163 +1016,163 @@
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.18.0.html">Percona Monitoring and Management 2.18.0</a>
+    <a class="reference internal" href="2.18.0.html">PMM 2.18.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.17.0.html">Percona Monitoring and Management 2.17.0</a>
+    <a class="reference internal" href="2.17.0.html">PMM 2.17.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.16.0.html">Percona Monitoring and Management 2.16.0</a>
+    <a class="reference internal" href="2.16.0.html">PMM 2.16.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.15.1.html">Percona Monitoring and Management 2.15.1</a>
+    <a class="reference internal" href="2.15.1.html">PMM 2.15.1</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.15.0.html">Percona Monitoring and Management 2.15.0</a>
+    <a class="reference internal" href="2.15.0.html">PMM 2.15.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.14.0.html">Percona Monitoring and Management 2.14.0</a>
+    <a class="reference internal" href="2.14.0.html">PMM 2.14.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.13.0.html">Percona Monitoring and Management 2.13.0</a>
+    <a class="reference internal" href="2.13.0.html">PMM 2.13.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.12.0.html">Percona Monitoring and Management 2.12.0</a>
+    <a class="reference internal" href="2.12.0.html">PMM 2.12.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.11.1.html">Percona Monitoring and Management 2.11.1</a>
+    <a class="reference internal" href="2.11.1.html">PMM 2.11.1</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.11.0.html">Percona Monitoring and Management 2.11.0</a>
+    <a class="reference internal" href="2.11.0.html">PMM 2.11.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.10.1.html">Percona Monitoring and Management 2.10.1</a>
+    <a class="reference internal" href="2.10.1.html">PMM 2.10.1</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.10.0.html">Percona Monitoring and Management 2.10.0</a>
+    <a class="reference internal" href="2.10.0.html">PMM 2.10.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.9.1.html">Percona Monitoring and Management 2.9.1</a>
+    <a class="reference internal" href="2.9.1.html">PMM 2.9.1</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.9.0.html">Percona Monitoring and Management 2.9.0</a>
+    <a class="reference internal" href="2.9.0.html">PMM 2.9.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.8.0.html">Percona Monitoring and Management 2.8.0</a>
+    <a class="reference internal" href="2.8.0.html">PMM 2.8.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.7.0.html">Percona Monitoring and Management 2.7.0</a>
+    <a class="reference internal" href="2.7.0.html">PMM 2.7.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.6.1.html">Percona Monitoring and Management 2.6.1</a>
+    <a class="reference internal" href="2.6.1.html">PMM 2.6.1</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.6.0.html">Percona Monitoring and Management 2.6.0</a>
+    <a class="reference internal" href="2.6.0.html">PMM 2.6.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.5.0.html">Percona Monitoring and Management 2.5.0</a>
+    <a class="reference internal" href="2.5.0.html">PMM 2.5.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.4.0.html">Percona Monitoring and Management 2.4.0</a>
+    <a class="reference internal" href="2.4.0.html">PMM 2.4.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.3.0.html">Percona Monitoring and Management 2.3.0</a>
+    <a class="reference internal" href="2.3.0.html">PMM 2.3.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.2.2.html">Percona Monitoring and Management 2.2.2</a>
+    <a class="reference internal" href="2.2.2.html">PMM 2.2.2</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.2.1.html">Percona Monitoring and Management 2.2.1</a>
+    <a class="reference internal" href="2.2.1.html">PMM 2.2.1</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.2.0.html">Percona Monitoring and Management 2.2.0</a>
+    <a class="reference internal" href="2.2.0.html">PMM 2.2.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.1.0.html">Percona Monitoring and Management 2.1.0</a>
+    <a class="reference internal" href="2.1.0.html">PMM 2.1.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.0.1.html">Percona Monitoring and Management 2.0.1</a>
+    <a class="reference internal" href="2.0.1.html">PMM 2.0.1</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.0.0.html">Percona Monitoring and Management 2.0.0</a>
+    <a class="reference internal" href="2.0.0.html">PMM 2.0.0</a>
 
 
 
@@ -1270,13 +1188,13 @@
 
 <h4>Previous page</h4>
 <p class="topless">
-    <a href="2.17.0.html" title="previous chapter">Percona Monitoring and Management 2.17.0</a>
+    <a href="2.17.0.html" title="previous chapter">PMM 2.17.0</a>
 </p>
 
 
 <h4>Next page</h4>
 <p class="topless">
-    <a href="2.15.1.html" title="next chapter">Percona Monitoring and Management 2.15.1</a>
+    <a href="2.15.1.html" title="next chapter">PMM 2.15.1</a>
 </p>
 
 

@@ -134,31 +134,31 @@
                         <h1 id="mysql-instance-summary">MySQL Instance Summary<a class="headerlink" href="#mysql-instance-summary" title="Permanent link">&para;</a></h1>
 <p><div class="lightgallery"><a data-sub-html="image" href="../../_images/PMM_MySQL_Instance_Summary.jpg"><img alt="image" src="../../_images/PMM_MySQL_Instance_Summary.jpg" /></a></div></p>
 <h2 id="mysql-connections">MySQL Connections<a class="headerlink" href="#mysql-connections" title="Permanent link">&para;</a></h2>
-<p><strong>Max Connections</strong></p>
+<h3 id="max-connections">Max Connections<a class="headerlink" href="#max-connections" title="Permanent link">&para;</a></h3>
 <p>Max Connections is the maximum permitted number of simultaneous client connections. By default, this is 151. Increasing this value increases the number of file descriptors that <code>mysqld</code> requires. If the required number of descriptors are not available, the server reduces the value of Max Connections.</p>
 <p><code>mysqld</code> actually permits Max Connections + 1 clients to connect. The extra connection is reserved for use by accounts that have the SUPER privilege, such as root.</p>
 <p>Max Used Connections is the maximum number of connections that have been in use simultaneously since the server started.</p>
 <p>Connections is the number of connection attempts (successful or not) to the MySQL server.</p>
 <h2 id="mysql-aborted-connections">MySQL Aborted Connections<a class="headerlink" href="#mysql-aborted-connections" title="Permanent link">&para;</a></h2>
-<p><strong>Aborted Connections</strong></p>
+<h3 id="aborted-connections">Aborted Connections<a class="headerlink" href="#aborted-connections" title="Permanent link">&para;</a></h3>
 <p>When a given host connects to MySQL and the connection is interrupted in the middle (for example due to bad credentials), MySQL keeps that info in a system table (since 5.6 this table is exposed in <code>performance_schema</code>).</p>
 <p>If the amount of failed requests without a successful connection reaches the value of <code>max_connect_errors</code>, <code>mysqld</code> assumes that something is wrong and blocks the host from further connection.</p>
 <p>To allow connections from that host again, you need to issue the <code>FLUSH HOSTS</code> statement.</p>
 <h2 id="mysql-client-thread-activity">MySQL Client Thread Activity<a class="headerlink" href="#mysql-client-thread-activity" title="Permanent link">&para;</a></h2>
-<p><strong>MySQL Active Threads</strong></p>
+<h3 id="mysql-active-threads">MySQL Active Threads<a class="headerlink" href="#mysql-active-threads" title="Permanent link">&para;</a></h3>
 <p>Threads Connected is the number of open connections, while Threads Running is the number of threads not sleeping.</p>
 <h2 id="mysql-thread-cache">MySQL Thread Cache<a class="headerlink" href="#mysql-thread-cache" title="Permanent link">&para;</a></h2>
-<p><strong>MySQL Thread Cache</strong></p>
+<h3 id="mysql-thread-cache_1">MySQL Thread Cache<a class="headerlink" href="#mysql-thread-cache_1" title="Permanent link">&para;</a></h3>
 <p>The <code>thread_cache_size</code> variable sets how many threads the server should cache to reuse. When a client disconnects, the client&rsquo;s threads are put in the cache if the cache is not full. It is auto-sized in MySQL 5.6.8 and above (capped to 100). Requests for threads are satisfied by reusing threads taken from the cache if possible, and only when the cache is empty is a new thread created.</p>
 <ul>
 <li><code>threads_created</code>: The number of threads created to handle connections.</li>
 <li><code>threads_cached</code>: The number of threads in the thread cache.</li>
 </ul>
 <h2 id="mysql-slow-queries">MySQL Slow Queries<a class="headerlink" href="#mysql-slow-queries" title="Permanent link">&para;</a></h2>
-<p><strong>MySQL Slow Queries</strong></p>
+<h3 id="mysql-slow-queries_1">MySQL Slow Queries<a class="headerlink" href="#mysql-slow-queries_1" title="Permanent link">&para;</a></h3>
 <p>Slow queries are defined as queries being slower than the <code>long_query_time</code> setting. For example, if you have <code>long_query_time</code> set to 3, all queries that take longer than 3 seconds to complete will show on this graph.</p>
 <h2 id="mysql-select-types">MySQL Select Types<a class="headerlink" href="#mysql-select-types" title="Permanent link">&para;</a></h2>
-<p><strong>MySQL Select Types</strong></p>
+<h3 id="mysql-select-types_1">MySQL Select Types<a class="headerlink" href="#mysql-select-types_1" title="Permanent link">&para;</a></h3>
 <p>As with most relational databases, selecting based on indexes is more efficient than scanning an entire table&rsquo;s data. Here we see the counters for selects not done with indexes.</p>
 <ul>
 <li><strong><em>Select Scan</em></strong> is how many queries caused full table scans, in which all the data in the table had to be read and either discarded or returned.</li>
@@ -166,15 +166,15 @@
 <li><strong><em>Select Full Join</em></strong> is the number of joins that are not joined on an index, this is usually a huge performance hit.</li>
 </ul>
 <h2 id="mysql-sorts">MySQL Sorts<a class="headerlink" href="#mysql-sorts" title="Permanent link">&para;</a></h2>
-<p><strong>MySQL Sorts</strong></p>
+<h3 id="mysql-sorts_1">MySQL Sorts<a class="headerlink" href="#mysql-sorts_1" title="Permanent link">&para;</a></h3>
 <p>Due to a query&rsquo;s structure, order, or other requirements, MySQL sorts the rows before returning them. For example, if a table is ordered 1 to 10 but you want the results reversed, MySQL then has to sort the rows to return 10 to 1.</p>
 <p>This graph also shows when sorts had to scan a whole table or a given range of a table to return the results and which could not have been sorted via an index.</p>
 <h2 id="mysql-table-locks">MySQL Table Locks<a class="headerlink" href="#mysql-table-locks" title="Permanent link">&para;</a></h2>
-<p><strong>Table Locks</strong></p>
+<h3 id="table-locks">Table Locks<a class="headerlink" href="#table-locks" title="Permanent link">&para;</a></h3>
 <p>MySQL takes a number of different locks for varying reasons. In this graph we see how many Table level locks MySQL has requested from the storage engine. In the case of InnoDB, many times the locks could actually be row locks as it only takes table level locks in a few specific cases.</p>
 <p>It is most useful to compare Locks Immediate and Locks Waited. If Locks waited is rising, it means you have lock contention. Otherwise, Locks Immediate rising and falling is normal activity.</p>
 <h2 id="mysql-questions">MySQL Questions<a class="headerlink" href="#mysql-questions" title="Permanent link">&para;</a></h2>
-<p><strong>MySQL Questions</strong></p>
+<h3 id="mysql-questions_1">MySQL Questions<a class="headerlink" href="#mysql-questions_1" title="Permanent link">&para;</a></h3>
 <p>The number of statements executed by the server. This includes only statements sent to the server by clients and not statements executed within stored programs, unlike the Queries used in the QPS calculation.</p>
 <p>This variable does not count the following commands:</p>
 <ul>
@@ -185,10 +185,10 @@
 <li><code>COM_STMT_RESET</code></li>
 </ul>
 <h2 id="mysql-network-traffic">MySQL Network Traffic<a class="headerlink" href="#mysql-network-traffic" title="Permanent link">&para;</a></h2>
-<p><strong>MySQL Network Traffic</strong></p>
+<h3 id="mysql-network-traffic_1">MySQL Network Traffic<a class="headerlink" href="#mysql-network-traffic_1" title="Permanent link">&para;</a></h3>
 <p>Here we can see how much network traffic is generated by MySQL. Outbound is network traffic sent from MySQL and Inbound is network traffic MySQL has received.</p>
 <h2 id="mysql-network-usage-hourly">MySQL Network Usage Hourly<a class="headerlink" href="#mysql-network-usage-hourly" title="Permanent link">&para;</a></h2>
-<p><strong>MySQL Network Usage Hourly</strong></p>
+<h3 id="mysql-network-usage-hourly_1">MySQL Network Usage Hourly<a class="headerlink" href="#mysql-network-usage-hourly_1" title="Permanent link">&para;</a></h3>
 <p>Here we can see how much network traffic is generated by MySQL per hour. You can use the bar graph to compare data sent by MySQL and data received by MySQL.</p>
 <h2 id="mysql-internal-memory-overview">MySQL Internal Memory Overview<a class="headerlink" href="#mysql-internal-memory-overview" title="Permanent link">&para;</a></h2>
 <p><strong>System Memory</strong>: Total Memory for the system.</p>
@@ -200,13 +200,13 @@
 <p><strong>InnoDB Dictionary Size</strong>: The data dictionary is InnoDB&rsquo;s internal catalog of tables. InnoDB stores the data dictionary on disk, and loads entries into memory while the server is running.</p>
 <p><strong>InnoDB Log Buffer Size</strong>: The MySQL InnoDB log buffer allows transactions to run without having to write the log to disk before the transactions commit.</p>
 <h2 id="top-command-counters">Top Command Counters<a class="headerlink" href="#top-command-counters" title="Permanent link">&para;</a></h2>
-<p><strong>Top Command Counters</strong></p>
+<h3 id="top-command-counters_1">Top Command Counters<a class="headerlink" href="#top-command-counters_1" title="Permanent link">&para;</a></h3>
 <p>The <code>Com_xxx</code> statement counter variables indicate the number of times each <code>xxx</code> statement has been executed. There is one status variable for each type of statement. For example, <code>Com_delete</code> and <code>Com_update</code> count <a href="https://dev.mysql.com/doc/refman/5.7/en/delete.html">DELETE</a> and <a href="https://dev.mysql.com/doc/refman/5.7/en/update.html">UPDATE</a> statements, respectively. <code>Com_delete_multi</code> and <code>Com_update_multi</code> are similar but apply to <a href="https://dev.mysql.com/doc/refman/5.7/en/delete.html">DELETE</a> and <a href="https://dev.mysql.com/doc/refman/5.7/en/update.html">UPDATE</a> statements that use multiple-table syntax.</p>
 <h2 id="top-command-counters-hourly">Top Command Counters Hourly<a class="headerlink" href="#top-command-counters-hourly" title="Permanent link">&para;</a></h2>
-<p><strong>Top Command Counters Hourly</strong></p>
+<h3 id="top-command-counters-hourly_1">Top Command Counters Hourly<a class="headerlink" href="#top-command-counters-hourly_1" title="Permanent link">&para;</a></h3>
 <p>The <code>Com_xxx</code> statement counter variables indicate the number of times each <code>xxx</code> statement has been executed. There is one status variable for each type of statement. For example, <code>Com_delete</code> and <code>Com_update</code> count <a href="https://dev.mysql.com/doc/refman/5.7/en/delete.html">DELETE</a> and <a href="https://dev.mysql.com/doc/refman/5.7/en/update.html">UPDATE</a> statements, respectively. <code>Com_delete_multi</code> and <code>Com_update_multi</code> are similar but apply to <a href="https://dev.mysql.com/doc/refman/5.7/en/delete.html">DELETE</a> and <a href="https://dev.mysql.com/doc/refman/5.7/en/update.html">UPDATE</a> statements that use multiple-table syntax.</p>
 <h2 id="mysql-handlers">MySQL Handlers<a class="headerlink" href="#mysql-handlers" title="Permanent link">&para;</a></h2>
-<p><strong>MySQL Handlers</strong></p>
+<h3 id="mysql-handlers_1">MySQL Handlers<a class="headerlink" href="#mysql-handlers_1" title="Permanent link">&para;</a></h3>
 <p>Handler statistics are internal statistics on how MySQL is selecting, updating, inserting, and modifying rows, tables, and indexes.</p>
 <p>This is in fact the layer between the Storage Engine and MySQL.</p>
 <ul>
@@ -215,7 +215,7 @@
 <li><code>read_next</code> is incremented when the storage engine is asked to &lsquo;read the next index entry&rsquo;. A high value means a lot of index scans are being done.</li>
 </ul>
 <h2 id="mysql-query-cache-memory">MySQL Query Cache Memory<a class="headerlink" href="#mysql-query-cache-memory" title="Permanent link">&para;</a></h2>
-<p><strong>MySQL Query Cache Memory</strong></p>
+<h3 id="mysql-query-cache-memory_1">MySQL Query Cache Memory<a class="headerlink" href="#mysql-query-cache-memory_1" title="Permanent link">&para;</a></h3>
 <p>The query cache has huge scalability problems in that only one thread can do an operation in the query cache at the same time. This serialization is true not only for SELECTs, but also for INSERT/UPDATE/DELETE.</p>
 <p>This also means that the larger the <code>query_cache_size</code> is set to, the slower those operations become. In concurrent environments, the MySQL Query Cache quickly becomes a contention point, decreasing performance. MariaDB and AWS Aurora have done work to try and eliminate the query cache contention in their flavors of MySQL, while MySQL 8.0 has eliminated the query cache feature.</p>
 <p>The recommended settings for most environments is to set:</p>
@@ -228,7 +228,7 @@
 <p>While you can dynamically change these values, to completely remove the contention point you have to restart the database.</p>
 </div>
 <h2 id="mysql-query-cache-activity">MySQL Query Cache Activity<a class="headerlink" href="#mysql-query-cache-activity" title="Permanent link">&para;</a></h2>
-<p><strong>MySQL Query Cache Activity</strong></p>
+<h3 id="mysql-query-cache-activity_1">MySQL Query Cache Activity<a class="headerlink" href="#mysql-query-cache-activity_1" title="Permanent link">&para;</a></h3>
 <p>The query cache has huge scalability problems in that only one thread can do an operation in the query cache at the same time. This serialization is true not only for SELECTs, but also for INSERT/UPDATE/DELETE.</p>
 <p>This also means that the larger the <code>query_cache_size</code> is set to, the slower those operations become. In concurrent environments, the MySQL Query Cache quickly becomes a contention point, decreasing performance. MariaDB and AWS Aurora have done work to try and eliminate the query cache contention in their flavors of MySQL, while MySQL 8.0 has eliminated the query cache feature.</p>
 <p>The recommended settings for most environments is to set:</p>
@@ -241,15 +241,15 @@
 <p>While you can dynamically change these values, to completely remove the contention point you have to restart the database.</p>
 </div>
 <h2 id="mysql-table-open-cache-status">MySQL Table Open Cache Status<a class="headerlink" href="#mysql-table-open-cache-status" title="Permanent link">&para;</a></h2>
-<p><strong>MySQL Table Open Cache Status</strong></p>
+<h3 id="mysql-table-open-cache-status_1">MySQL Table Open Cache Status<a class="headerlink" href="#mysql-table-open-cache-status_1" title="Permanent link">&para;</a></h3>
 <p>The recommendation is to set the <code>table_open_cache_instances</code> to a loose correlation to virtual CPUs, keeping in mind that more instances means the cache is split more times. If you have a cache set to 500 but it has 10 instances, each cache will only have 50 cached.</p>
 <p>The <code>table_definition_cache</code> and <code>table_open_cache</code> can be left as default as they are auto-sized MySQL 5.6 and above (i.e., do not set them to any value).</p>
 <h2 id="mysql-open-tables">MySQL Open Tables<a class="headerlink" href="#mysql-open-tables" title="Permanent link">&para;</a></h2>
-<p><strong>MySQL Open Tables</strong></p>
+<h3 id="mysql-open-tables_1">MySQL Open Tables<a class="headerlink" href="#mysql-open-tables_1" title="Permanent link">&para;</a></h3>
 <p>The recommendation is to set the <code>table_open_cache_instances</code> to a loose correlation to virtual CPUs, keeping in mind that more instances means the cache is split more times. If you have a cache set to 500 but it has 10 instances, each cache will only have 50 cached.</p>
 <p>The <code>table_definition_cache</code> and <code>table_open_cache</code> can be left as default as they are auto-sized MySQL 5.6 and above (i.e., do not set them to any value).</p>
 <h2 id="mysql-table-definition-cache">MySQL Table Definition Cache<a class="headerlink" href="#mysql-table-definition-cache" title="Permanent link">&para;</a></h2>
-<p><strong>MySQL Table Definition Cache</strong></p>
+<h3 id="mysql-table-definition-cache_1">MySQL Table Definition Cache<a class="headerlink" href="#mysql-table-definition-cache_1" title="Permanent link">&para;</a></h3>
 <p>The recommendation is to set the <code>table_open_cache_instances</code> to a loose correlation to virtual CPUs, keeping in mind that more instances means the cache is split more times. If you have a cache set to 500 but it has 10 instances, each cache will only have 50 cached.</p>
 <p>The <code>table_definition_cache</code> and <code>table_open_cache</code> can be left as default as they are auto-sized MySQL 5.6 and above (i.e., do not set them to any value).</p>
                     </div>
@@ -259,7 +259,7 @@
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-06-15
+            <i class="uil uil-refresh"></i> Page updated 2021-06-25
         </li>
         
     </ul>
@@ -1027,163 +1027,163 @@
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../../release-notes/2.18.0.html">Percona Monitoring and Management 2.18.0</a>
+    <a class="reference internal" href="../../release-notes/2.18.0.html">PMM 2.18.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../../release-notes/2.17.0.html">Percona Monitoring and Management 2.17.0</a>
+    <a class="reference internal" href="../../release-notes/2.17.0.html">PMM 2.17.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../../release-notes/2.16.0.html">Percona Monitoring and Management 2.16.0</a>
+    <a class="reference internal" href="../../release-notes/2.16.0.html">PMM 2.16.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../../release-notes/2.15.1.html">Percona Monitoring and Management 2.15.1</a>
+    <a class="reference internal" href="../../release-notes/2.15.1.html">PMM 2.15.1</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../../release-notes/2.15.0.html">Percona Monitoring and Management 2.15.0</a>
+    <a class="reference internal" href="../../release-notes/2.15.0.html">PMM 2.15.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../../release-notes/2.14.0.html">Percona Monitoring and Management 2.14.0</a>
+    <a class="reference internal" href="../../release-notes/2.14.0.html">PMM 2.14.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../../release-notes/2.13.0.html">Percona Monitoring and Management 2.13.0</a>
+    <a class="reference internal" href="../../release-notes/2.13.0.html">PMM 2.13.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../../release-notes/2.12.0.html">Percona Monitoring and Management 2.12.0</a>
+    <a class="reference internal" href="../../release-notes/2.12.0.html">PMM 2.12.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../../release-notes/2.11.1.html">Percona Monitoring and Management 2.11.1</a>
+    <a class="reference internal" href="../../release-notes/2.11.1.html">PMM 2.11.1</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../../release-notes/2.11.0.html">Percona Monitoring and Management 2.11.0</a>
+    <a class="reference internal" href="../../release-notes/2.11.0.html">PMM 2.11.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../../release-notes/2.10.1.html">Percona Monitoring and Management 2.10.1</a>
+    <a class="reference internal" href="../../release-notes/2.10.1.html">PMM 2.10.1</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../../release-notes/2.10.0.html">Percona Monitoring and Management 2.10.0</a>
+    <a class="reference internal" href="../../release-notes/2.10.0.html">PMM 2.10.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../../release-notes/2.9.1.html">Percona Monitoring and Management 2.9.1</a>
+    <a class="reference internal" href="../../release-notes/2.9.1.html">PMM 2.9.1</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../../release-notes/2.9.0.html">Percona Monitoring and Management 2.9.0</a>
+    <a class="reference internal" href="../../release-notes/2.9.0.html">PMM 2.9.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../../release-notes/2.8.0.html">Percona Monitoring and Management 2.8.0</a>
+    <a class="reference internal" href="../../release-notes/2.8.0.html">PMM 2.8.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../../release-notes/2.7.0.html">Percona Monitoring and Management 2.7.0</a>
+    <a class="reference internal" href="../../release-notes/2.7.0.html">PMM 2.7.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../../release-notes/2.6.1.html">Percona Monitoring and Management 2.6.1</a>
+    <a class="reference internal" href="../../release-notes/2.6.1.html">PMM 2.6.1</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../../release-notes/2.6.0.html">Percona Monitoring and Management 2.6.0</a>
+    <a class="reference internal" href="../../release-notes/2.6.0.html">PMM 2.6.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../../release-notes/2.5.0.html">Percona Monitoring and Management 2.5.0</a>
+    <a class="reference internal" href="../../release-notes/2.5.0.html">PMM 2.5.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../../release-notes/2.4.0.html">Percona Monitoring and Management 2.4.0</a>
+    <a class="reference internal" href="../../release-notes/2.4.0.html">PMM 2.4.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../../release-notes/2.3.0.html">Percona Monitoring and Management 2.3.0</a>
+    <a class="reference internal" href="../../release-notes/2.3.0.html">PMM 2.3.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../../release-notes/2.2.2.html">Percona Monitoring and Management 2.2.2</a>
+    <a class="reference internal" href="../../release-notes/2.2.2.html">PMM 2.2.2</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../../release-notes/2.2.1.html">Percona Monitoring and Management 2.2.1</a>
+    <a class="reference internal" href="../../release-notes/2.2.1.html">PMM 2.2.1</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../../release-notes/2.2.0.html">Percona Monitoring and Management 2.2.0</a>
+    <a class="reference internal" href="../../release-notes/2.2.0.html">PMM 2.2.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../../release-notes/2.1.0.html">Percona Monitoring and Management 2.1.0</a>
+    <a class="reference internal" href="../../release-notes/2.1.0.html">PMM 2.1.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../../release-notes/2.0.1.html">Percona Monitoring and Management 2.0.1</a>
+    <a class="reference internal" href="../../release-notes/2.0.1.html">PMM 2.0.1</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../../release-notes/2.0.0.html">Percona Monitoring and Management 2.0.0</a>
+    <a class="reference internal" href="../../release-notes/2.0.0.html">PMM 2.0.0</a>
 
 
 

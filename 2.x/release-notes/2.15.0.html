@@ -32,7 +32,7 @@
 
 
 
-<title>Percona Monitoring and Management &mdash; Percona Monitoring and Management 2.15.0</title>
+<title>Percona Monitoring and Management &mdash; PMM 2.15.0</title>
 
 <head>
     
@@ -61,7 +61,7 @@
 
     <link rel="top" title="" href="https://www.percona.com/doc/percona-monitoring-and-management/2.x" />
     
-    <link rel="next" title="Percona Monitoring and Management 2.14.0" href="2.14.0.html" />
+    <link rel="next" title="PMM 2.14.0" href="2.14.0.html" />
     
     
 </head>
@@ -104,12 +104,12 @@
     <ul class="nav nav-pills">
         
         <li class="right" style="margin-right: 10px">
-            <a href="2.14.0.html" title="Percona Monitoring and Management 2.14.0">Next</a>
+            <a href="2.14.0.html" title="PMM 2.14.0">Next</a>
         </li>
         
         
         <li class="right" style="margin-right: 10px">
-            <a href="2.15.1.html" title="Percona Monitoring and Management 2.15.1">Previous</a>
+            <a href="2.15.1.html" title="PMM 2.15.1">Previous</a>
         </li>
         
         <li>
@@ -131,7 +131,7 @@
 
                 <div class="bodywrapper">
                     <div class="body">
-                        <h1 id="percona-monitoring-and-management-2150">Percona Monitoring and Management 2.15.0<a class="headerlink" href="#percona-monitoring-and-management-2150" title="Permanent link">&para;</a></h1>
+                        <h1 id="pmm-2150">PMM 2.15.0<a class="headerlink" href="#pmm-2150" title="Permanent link">&para;</a></h1>
 <table class="docutils field-list" frame="void" rules="none">
   <colgroup>
     <col class="field-name">
@@ -155,13 +155,13 @@
 <ul>
 <li>
 <p>PMM 1 vs. 2 Parity</p>
-<p><em>Disable collectors during adding node/service to monitoring</em></p>
+<p><strong>Disable collectors during adding node/service to monitoring</strong></p>
 <p>With this feature users can disable any collector used by PMM to get metrics. When metrics cannot be collected or are no longer needed, disabling the collector(s) prevents PMM from flooding logs and saves infrastructure resources.</p>
 <p>Our vision for PMM collectors is to provide “stop from collecting” functionality to prevent possible harm to the user environment. This “disable” feature is an initial step towards the ideal functionality. The full and flexible management for “What metrics to collect and in what resolution” is slated for future releases.</p>
-<p><em>External services monitoring</em></p>
+<p><strong>External services monitoring</strong></p>
 <p>Since PMM 1.4.0, users had the ability to monitor external services Percona didn’t currently support (e.g., Redis). <a href="https://www.percona.com/blog/2018/02/12/percona-monitoring-management-pmm-support-external-monitoring-services-yes/">This blog article from 2018</a> nicely described external services monitoring at that time. (At that time Percona was not natively supporting a PostgreSQL monitoring service and so this was listed as an external service. Today, PostgreSQL is natively supported by PMM.)</p>
 <p>Until now, PMM 2.x didn’t support external services monitoring. With this release, any non-natively supported by PMM service will now become supported with external services monitoring. You can see the list of possible exporters to be used in <a href="https://prometheus.io/docs/instrumenting/exporters/">https://prometheus.io/docs/instrumenting/exporters/</a>. Natively-supported services will continue to deliver an expanded set of metrics and insights.</p>
-<p><em>Provide summary information for  systems  (pt-*-summary actions)</em></p>
+<p><strong>Provide summary information for  systems (<code>pt-*-summary actions</code>)</strong></p>
 <p>With the addition of <code>pt-*-summary</code> in PMM 2, users can now view summary information about services and nodes on PMM’s dashboard. This summary information is in the industry common format of <code>pt-*-summary</code> tools output to simplify portability of this data. This format will also be preserved in the snapshot of the dashboard shared with Percona Support to simplify investigations of issues.</p>
 <p>Note: <code>pt-*-summary</code> includes formats for:</p>
 <ul>
@@ -210,7 +210,7 @@
 <li><a href="https://jira.percona.com/browse/PMM-7329">PMM-7329</a>: Security Threat Tool: Hide check results tab if STT is disabled.</li>
 <li><a href="https://jira.percona.com/browse/PMM-7331">PMM-7331</a>: Security Threat Tool: Failed checks have &lsquo;Read more&rsquo; links with helpful content.</li>
 <li><a href="https://jira.percona.com/browse/PMM-7422">PMM-7422</a>: Security Threat Tool: View all active and silenced alerts.</li>
-<li><a href="https://jira.percona.com/browse/PMM-7257">PMM-7257</a>,<a href="https://jira.percona.com/browse/PMM-7433">PMM-7433</a>: Integrated Alerting: Easier-to-read rule details in Alert Rules list (API and UI presentation).</li>
+<li><a href="https://jira.percona.com/browse/PMM-7257">PMM-7257</a>, <a href="https://jira.percona.com/browse/PMM-7433">PMM-7433</a>: Integrated Alerting: Easier-to-read rule details in Alert Rules list (API and UI presentation).</li>
 <li><a href="https://jira.percona.com/browse/PMM-7259">PMM-7259</a>: Integrated Alerting: Better UI error reporting for disabled Integrated Alerting. (Hint to users how to enable it.)</li>
 <li><a href="https://jira.percona.com/browse/PMM-5533">PMM-5533</a>: Better indentation of columns in <code>pmm-admin list</code> output.</li>
 <li><a href="https://jira.percona.com/browse/PMM-5888">PMM-5888</a>: Improve <code>pmm-admin --help</code> descriptions for external services.</li>
@@ -234,7 +234,7 @@
 <li><a href="https://jira.percona.com/browse/PMM-7591">PMM-7591</a>: Integrated Alerting: User can not receive notifications on email after password update.</li>
 <li><a href="https://jira.percona.com/browse/PMM-7343">PMM-7343</a>: Security Threat Tool: Check results show previously failed checks after STT re-enabled.</li>
 <li><a href="https://jira.percona.com/browse/PMM-7250">PMM-7250</a>: DBaaS: Confusing error &ldquo;Cannot get PSMDB/PXC cluster&rdquo; appears after removing DB cluster.</li>
-<li><a href="https://jira.percona.com/browse/PMM-7193">PMM-7193</a>:    DBaaS: Number of Nodes can be set as float.</li>
+<li><a href="https://jira.percona.com/browse/PMM-7193">PMM-7193</a>: DBaaS: Number of Nodes can be set as float.</li>
 <li><a href="https://jira.percona.com/browse/PMM-7349">PMM-7349</a>: DBaaS: Host and Password occasionally disappearing from Connection column.</li>
 </ul>
                     </div>
@@ -255,12 +255,12 @@
     <ul class="nav nav-pills">
         
         <li class="right" style="margin-right: 10px">
-            <a href="2.14.0.html" title="Percona Monitoring and Management 2.14.0">Next</a>
+            <a href="2.14.0.html" title="PMM 2.14.0">Next</a>
         </li>
         
         
         <li class="right" style="margin-right: 10px">
-            <a href="2.15.1.html" title="Percona Monitoring and Management 2.15.1">Previous</a>
+            <a href="2.15.1.html" title="PMM 2.15.1">Previous</a>
         </li>
         
         <li>
@@ -1012,163 +1012,163 @@
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.18.0.html">Percona Monitoring and Management 2.18.0</a>
+    <a class="reference internal" href="2.18.0.html">PMM 2.18.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.17.0.html">Percona Monitoring and Management 2.17.0</a>
+    <a class="reference internal" href="2.17.0.html">PMM 2.17.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.16.0.html">Percona Monitoring and Management 2.16.0</a>
+    <a class="reference internal" href="2.16.0.html">PMM 2.16.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.15.1.html">Percona Monitoring and Management 2.15.1</a>
+    <a class="reference internal" href="2.15.1.html">PMM 2.15.1</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.15.0.html">Percona Monitoring and Management 2.15.0</a>
+    <a class="reference internal" href="2.15.0.html">PMM 2.15.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.14.0.html">Percona Monitoring and Management 2.14.0</a>
+    <a class="reference internal" href="2.14.0.html">PMM 2.14.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.13.0.html">Percona Monitoring and Management 2.13.0</a>
+    <a class="reference internal" href="2.13.0.html">PMM 2.13.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.12.0.html">Percona Monitoring and Management 2.12.0</a>
+    <a class="reference internal" href="2.12.0.html">PMM 2.12.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.11.1.html">Percona Monitoring and Management 2.11.1</a>
+    <a class="reference internal" href="2.11.1.html">PMM 2.11.1</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.11.0.html">Percona Monitoring and Management 2.11.0</a>
+    <a class="reference internal" href="2.11.0.html">PMM 2.11.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.10.1.html">Percona Monitoring and Management 2.10.1</a>
+    <a class="reference internal" href="2.10.1.html">PMM 2.10.1</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.10.0.html">Percona Monitoring and Management 2.10.0</a>
+    <a class="reference internal" href="2.10.0.html">PMM 2.10.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.9.1.html">Percona Monitoring and Management 2.9.1</a>
+    <a class="reference internal" href="2.9.1.html">PMM 2.9.1</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.9.0.html">Percona Monitoring and Management 2.9.0</a>
+    <a class="reference internal" href="2.9.0.html">PMM 2.9.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.8.0.html">Percona Monitoring and Management 2.8.0</a>
+    <a class="reference internal" href="2.8.0.html">PMM 2.8.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.7.0.html">Percona Monitoring and Management 2.7.0</a>
+    <a class="reference internal" href="2.7.0.html">PMM 2.7.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.6.1.html">Percona Monitoring and Management 2.6.1</a>
+    <a class="reference internal" href="2.6.1.html">PMM 2.6.1</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.6.0.html">Percona Monitoring and Management 2.6.0</a>
+    <a class="reference internal" href="2.6.0.html">PMM 2.6.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.5.0.html">Percona Monitoring and Management 2.5.0</a>
+    <a class="reference internal" href="2.5.0.html">PMM 2.5.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.4.0.html">Percona Monitoring and Management 2.4.0</a>
+    <a class="reference internal" href="2.4.0.html">PMM 2.4.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.3.0.html">Percona Monitoring and Management 2.3.0</a>
+    <a class="reference internal" href="2.3.0.html">PMM 2.3.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.2.2.html">Percona Monitoring and Management 2.2.2</a>
+    <a class="reference internal" href="2.2.2.html">PMM 2.2.2</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.2.1.html">Percona Monitoring and Management 2.2.1</a>
+    <a class="reference internal" href="2.2.1.html">PMM 2.2.1</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.2.0.html">Percona Monitoring and Management 2.2.0</a>
+    <a class="reference internal" href="2.2.0.html">PMM 2.2.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.1.0.html">Percona Monitoring and Management 2.1.0</a>
+    <a class="reference internal" href="2.1.0.html">PMM 2.1.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.0.1.html">Percona Monitoring and Management 2.0.1</a>
+    <a class="reference internal" href="2.0.1.html">PMM 2.0.1</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.0.0.html">Percona Monitoring and Management 2.0.0</a>
+    <a class="reference internal" href="2.0.0.html">PMM 2.0.0</a>
 
 
 
@@ -1184,13 +1184,13 @@
 
 <h4>Previous page</h4>
 <p class="topless">
-    <a href="2.15.1.html" title="previous chapter">Percona Monitoring and Management 2.15.1</a>
+    <a href="2.15.1.html" title="previous chapter">PMM 2.15.1</a>
 </p>
 
 
 <h4>Next page</h4>
 <p class="topless">
-    <a href="2.14.0.html" title="next chapter">Percona Monitoring and Management 2.14.0</a>
+    <a href="2.14.0.html" title="next chapter">PMM 2.14.0</a>
 </p>
 
 

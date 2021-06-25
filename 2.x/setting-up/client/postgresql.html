@@ -233,7 +233,7 @@ psql -c <span class="s2">&quot;select pg_reload_conf()&quot;</span>
 <p>If a bucket fills before its expiration time is reached, data is discarded.</p>
 </div>
 <h3 id="pg_stat_statements"><code>pg_stat_statements</code><a class="headerlink" href="#pg_stat_statements" title="Permanent link">&para;</a></h3>
-<p><strong>Install</strong></p>
+<h4 id="install">Install<a class="headerlink" href="#install" title="Permanent link">&para;</a></h4>
 <ul>
 <li>
 <p>Debian/Ubuntu</p>
@@ -246,7 +246,7 @@ psql -c <span class="s2">&quot;select pg_reload_conf()&quot;</span>
 </code></pre></div>
 </li>
 </ul>
-<p><strong>Configure</strong></p>
+<h4 id="configure">Configure<a class="headerlink" href="#configure" title="Permanent link">&para;</a></h4>
 <ol>
 <li>
 <p>Add these lines to your <code>postgresql.conf</code> file:</p>
@@ -276,7 +276,7 @@ track_io_timing = on             # Capture read/write stats
 <li>PostgreSQL versions 11, 12, 13.</li>
 <li>Percona Distribution for PostgreSQL versions 11, 12, 13.</li>
 </ul>
-<p><strong>Install</strong></p>
+<h4 id="install_1">Install<a class="headerlink" href="#install_1" title="Permanent link">&para;</a></h4>
 <ul>
 <li>
 <p>If you use <em>Percona Distribution for PostgreSQL</em>, you can install the extension with your Linux package manager. See <a href="https://www.percona.com/doc/postgresql/LATEST/installing.html">Installing Percona Distribution for PostgreSQL</a>.</p>
@@ -285,7 +285,7 @@ track_io_timing = on             # Capture read/write stats
 <p>If you use <em>PostgreSQL</em> you can install by downloading and compiling the source code. See <a href="https://github.com/percona/pg_stat_monitor#installation">Installing <code>pg_stat_monitor</code></a>.</p>
 </li>
 </ul>
-<p><strong>Configure</strong></p>
+<h4 id="configure_1">Configure<a class="headerlink" href="#configure_1" title="Permanent link">&para;</a></h4>
 <ol>
 <li>
 <p>Set or change the value for <code>shared_preload_library</code>.</p>
@@ -331,7 +331,7 @@ track_io_timing = on             # Capture read/write stats
 <p><div class="lightgallery"><a data-sub-html="" href="../../_images/PMM_Add_Instance_PostgreSQL.jpg"><img alt="" src="../../_images/PMM_Add_Instance_PostgreSQL.jpg" /></a></div></p>
 <h3 id="on-the-command-line">On the command line<a class="headerlink" href="#on-the-command-line" title="Permanent link">&para;</a></h3>
 <p>Add the database server as a service using one of these example commands. If successful, PMM Client will print <code>PostgreSQL Service added</code> with the service&rsquo;s ID and name. Use the <code>--environment</code> and <code>-custom-labels</code> options to set tags for the service to help identify them.</p>
-<p><strong>Examples</strong></p>
+<h3 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h3>
 <p>Add instance with default node (<code>&lt;node&gt;-postgresql</code>) and service name.</p>
 <div class="highlight"><pre><span></span><code>pmm-admin add postgresql <span class="se">\</span>
 --username<span class="o">=</span>pmm <span class="se">\</span>
@@ -367,20 +367,20 @@ track_io_timing = on             # Capture read/write stats
 <li><code>--tls-skip-verify</code>: Skip TLS certificates validation.</li>
 </ul>
 <h2 id="check-the-service">Check the service<a class="headerlink" href="#check-the-service" title="Permanent link">&para;</a></h2>
-<p><strong>Check service - PMM user interface</strong></p>
+<h3 id="check-service-pmm-user-interface">Check service - PMM user interface<a class="headerlink" href="#check-service-pmm-user-interface" title="Permanent link">&para;</a></h3>
 <ol>
 <li>Select <i class="uil uil-cog"></i> <em>Configuration</em> → <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.94602 8.89221L9.6093 9.55549L7.84915 11.3156L6.67493 10.1438L7.33821 9.48049L7.84915 9.99143L8.94602 8.89221Z" fill="#000"></path><path d="M16.4273 2.4679V4.04524H7.57258V2.4679H3.1593V22.6406H20.8382V2.4679H16.4273ZM5.87805 19.0429V14.5148H10.4062V19.0429H5.87805ZM11.8288 9.47102H17.7702V10.4085H11.8288V9.47102ZM11.8288 16.3101H17.7702V17.2476H11.8288V16.3101ZM10.4062 7.67571V12.2038H5.87805V7.67571H10.4062Z" fill="#000"></path><path d="M15.7242 1.73906V3.34219H8.27576V1.73906C8.27576 1.53047 8.44685 1.35938 8.65544 1.35938H15.3445C15.5554 1.35938 15.7242 1.53047 15.7242 1.73906Z" fill="#000"></path></svg> <em>PMM Inventory</em> → <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.94602 8.89221L9.6093 9.55549L7.84915 11.3156L6.67493 10.1438L7.33821 9.48049L7.84915 9.99143L8.94602 8.89221Z" fill="#000"></path><path d="M16.4273 2.4679V4.04524H7.57258V2.4679H3.1593V22.6406H20.8382V2.4679H16.4273ZM5.87805 19.0429V14.5148H10.4062V19.0429H5.87805ZM11.8288 9.47102H17.7702V10.4085H11.8288V9.47102ZM11.8288 16.3101H17.7702V17.2476H11.8288V16.3101ZM10.4062 7.67571V12.2038H5.87805V7.67571H10.4062Z" fill="#000"></path><path d="M15.7242 1.73906V3.34219H8.27576V1.73906C8.27576 1.53047 8.44685 1.35938 8.65544 1.35938H15.3445C15.5554 1.35938 15.7242 1.53047 15.7242 1.73906Z" fill="#000"></path></svg> <em>Inventory list</em></li>
 <li>Look in the <em>Services</em> tab for a matching <em>Service Type</em> (PostgreSQL), <em>Service name</em>, <em>Addresses</em>, and any other details entered in the form.</li>
 <li>Look in the <em>Agents</em> tab to check the desired data source is being used.</li>
 </ol>
-<p><strong>Check service - Command line</strong></p>
+<h3 id="check-service-command-line">Check service - Command line<a class="headerlink" href="#check-service-command-line" title="Permanent link">&para;</a></h3>
 <p>Look for your service in the output of this command.</p>
 <div class="highlight"><pre><span></span><code>pmm-admin inventory list services
 </code></pre></div>
 <div class="admonition hint alert alert-success">
 <p>If using Docker, use <code>docker exec pmm-client pmm-admin inventory list services</code></p>
 </div>
-<p><strong>Check data</strong></p>
+<h3 id="check-data">Check data<a class="headerlink" href="#check-data" title="Permanent link">&para;</a></h3>
 <ol>
 <li>Open the <em>PostgreSQL Instance Summary</em> dashboard.</li>
 <li>Set the <em>Service Name</em> to the newly-added service.</li>
@@ -1167,163 +1167,163 @@ track_io_timing = on             # Capture read/write stats
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../../release-notes/2.18.0.html">Percona Monitoring and Management 2.18.0</a>
+    <a class="reference internal" href="../../release-notes/2.18.0.html">PMM 2.18.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../../release-notes/2.17.0.html">Percona Monitoring and Management 2.17.0</a>
+    <a class="reference internal" href="../../release-notes/2.17.0.html">PMM 2.17.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../../release-notes/2.16.0.html">Percona Monitoring and Management 2.16.0</a>
+    <a class="reference internal" href="../../release-notes/2.16.0.html">PMM 2.16.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../../release-notes/2.15.1.html">Percona Monitoring and Management 2.15.1</a>
+    <a class="reference internal" href="../../release-notes/2.15.1.html">PMM 2.15.1</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../../release-notes/2.15.0.html">Percona Monitoring and Management 2.15.0</a>
+    <a class="reference internal" href="../../release-notes/2.15.0.html">PMM 2.15.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../../release-notes/2.14.0.html">Percona Monitoring and Management 2.14.0</a>
+    <a class="reference internal" href="../../release-notes/2.14.0.html">PMM 2.14.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../../release-notes/2.13.0.html">Percona Monitoring and Management 2.13.0</a>
+    <a class="reference internal" href="../../release-notes/2.13.0.html">PMM 2.13.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../../release-notes/2.12.0.html">Percona Monitoring and Management 2.12.0</a>
+    <a class="reference internal" href="../../release-notes/2.12.0.html">PMM 2.12.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../../release-notes/2.11.1.html">Percona Monitoring and Management 2.11.1</a>
+    <a class="reference internal" href="../../release-notes/2.11.1.html">PMM 2.11.1</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../../release-notes/2.11.0.html">Percona Monitoring and Management 2.11.0</a>
+    <a class="reference internal" href="../../release-notes/2.11.0.html">PMM 2.11.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../../release-notes/2.10.1.html">Percona Monitoring and Management 2.10.1</a>
+    <a class="reference internal" href="../../release-notes/2.10.1.html">PMM 2.10.1</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../../release-notes/2.10.0.html">Percona Monitoring and Management 2.10.0</a>
+    <a class="reference internal" href="../../release-notes/2.10.0.html">PMM 2.10.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../../release-notes/2.9.1.html">Percona Monitoring and Management 2.9.1</a>
+    <a class="reference internal" href="../../release-notes/2.9.1.html">PMM 2.9.1</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../../release-notes/2.9.0.html">Percona Monitoring and Management 2.9.0</a>
+    <a class="reference internal" href="../../release-notes/2.9.0.html">PMM 2.9.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../../release-notes/2.8.0.html">Percona Monitoring and Management 2.8.0</a>
+    <a class="reference internal" href="../../release-notes/2.8.0.html">PMM 2.8.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../../release-notes/2.7.0.html">Percona Monitoring and Management 2.7.0</a>
+    <a class="reference internal" href="../../release-notes/2.7.0.html">PMM 2.7.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../../release-notes/2.6.1.html">Percona Monitoring and Management 2.6.1</a>
+    <a class="reference internal" href="../../release-notes/2.6.1.html">PMM 2.6.1</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../../release-notes/2.6.0.html">Percona Monitoring and Management 2.6.0</a>
+    <a class="reference internal" href="../../release-notes/2.6.0.html">PMM 2.6.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../../release-notes/2.5.0.html">Percona Monitoring and Management 2.5.0</a>
+    <a class="reference internal" href="../../release-notes/2.5.0.html">PMM 2.5.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../../release-notes/2.4.0.html">Percona Monitoring and Management 2.4.0</a>
+    <a class="reference internal" href="../../release-notes/2.4.0.html">PMM 2.4.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../../release-notes/2.3.0.html">Percona Monitoring and Management 2.3.0</a>
+    <a class="reference internal" href="../../release-notes/2.3.0.html">PMM 2.3.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../../release-notes/2.2.2.html">Percona Monitoring and Management 2.2.2</a>
+    <a class="reference internal" href="../../release-notes/2.2.2.html">PMM 2.2.2</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../../release-notes/2.2.1.html">Percona Monitoring and Management 2.2.1</a>
+    <a class="reference internal" href="../../release-notes/2.2.1.html">PMM 2.2.1</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../../release-notes/2.2.0.html">Percona Monitoring and Management 2.2.0</a>
+    <a class="reference internal" href="../../release-notes/2.2.0.html">PMM 2.2.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../../release-notes/2.1.0.html">Percona Monitoring and Management 2.1.0</a>
+    <a class="reference internal" href="../../release-notes/2.1.0.html">PMM 2.1.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../../release-notes/2.0.1.html">Percona Monitoring and Management 2.0.1</a>
+    <a class="reference internal" href="../../release-notes/2.0.1.html">PMM 2.0.1</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../../release-notes/2.0.0.html">Percona Monitoring and Management 2.0.0</a>
+    <a class="reference internal" href="../../release-notes/2.0.0.html">PMM 2.0.0</a>
 
 
 

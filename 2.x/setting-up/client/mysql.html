@@ -184,7 +184,7 @@
 </tr>
 </tbody>
 </table>
-<p><strong>Data source recommendations</strong></p>
+<h3 id="data-source-recommendations">Data source recommendations<a class="headerlink" href="#data-source-recommendations" title="Permanent link">&para;</a></h3>
 <table class="table">
 <thead>
 <tr>
@@ -223,7 +223,7 @@
 </table>
 <h3 id="slow-query-log">Slow query log<a class="headerlink" href="#slow-query-log" title="Permanent link">&para;</a></h3>
 <p>This section covers how to configure a MySQL-based database server to use the <em>slow query log</em> as a source of metrics.</p>
-<p><strong>Applicable versions</strong></p>
+<h3 id="applicable-versions">Applicable versions<a class="headerlink" href="#applicable-versions" title="Permanent link">&para;</a></h3>
 <table class="table">
 <thead>
 <tr>
@@ -251,7 +251,7 @@
 </tbody>
 </table>
 <p>The <em>slow query log</em> records the details of queries that take more than a certain amount of time to complete. With the database server configured to write this information to a file rather than a table, PMM Client parses the file and sends aggregated data to PMM Server via the Query Analytics part of PMM Agent.</p>
-<p><strong>Settings</strong></p>
+<h3 id="settings">Settings<a class="headerlink" href="#settings" title="Permanent link">&para;</a></h3>
 <table class="table">
 <thead>
 <tr>
@@ -288,24 +288,30 @@
 </tr>
 </tbody>
 </table>
-<p><strong>Examples</strong></p>
-<p><em>Configuration file</em></p>
+<h4 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h4>
+<ul>
+<li>
+<p>Configuration file</p>
 <div class="highlight"><pre><span></span><code><span class="na">slow_query_log</span><span class="o">=</span><span class="s">ON</span>
 <span class="na">log_output</span><span class="o">=</span><span class="s">FILE</span>
 <span class="na">long_query_time</span><span class="o">=</span><span class="s">0</span>
 <span class="na">log_slow_admin_statements</span><span class="o">=</span><span class="s">ON</span>
 <span class="na">log_slow_slave_statements</span><span class="o">=</span><span class="s">ON</span>
 </code></pre></div>
-<p><em>Session</em></p>
+</li>
+<li>
+<p>Session</p>
 <div class="highlight"><pre><span></span><code><span class="k">SET</span> <span class="k">GLOBAL</span> <span class="n">slow_query_log</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
 <span class="k">SET</span> <span class="k">GLOBAL</span> <span class="n">log_output</span> <span class="o">=</span> <span class="s1">&#39;FILE&#39;</span><span class="p">;</span>
 <span class="k">SET</span> <span class="k">GLOBAL</span> <span class="n">long_query_time</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 <span class="k">SET</span> <span class="k">GLOBAL</span> <span class="n">log_slow_admin_statements</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
 <span class="k">SET</span> <span class="k">GLOBAL</span> <span class="n">log_slow_slave_statements</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
 </code></pre></div>
+</li>
+</ul>
 <h4 id="slow-query-log-extended">Slow query log &ndash; extended<a class="headerlink" href="#slow-query-log-extended" title="Permanent link">&para;</a></h4>
 <p>Some MySQL-based database servers support extended slow query log variables.</p>
-<p><strong>Applicable versions</strong></p>
+<h5 id="applicable-versions_1">Applicable versions<a class="headerlink" href="#applicable-versions_1" title="Permanent link">&para;</a></h5>
 <table class="table">
 <thead>
 <tr>
@@ -328,7 +334,7 @@
 </tr>
 </tbody>
 </table>
-<p><strong>Settings</strong></p>
+<h5 id="settings_1">Settings<a class="headerlink" href="#settings_1" title="Permanent link">&para;</a></h5>
 <table class="table">
 <thead>
 <tr>
@@ -365,24 +371,32 @@
 </tr>
 </tbody>
 </table>
-<p><strong>Examples</strong></p>
-<p><em>Configuration file (Percona Server for MySQL, Percona XtraDB Cluster)</em></p>
+<h5 id="examples_1">Examples<a class="headerlink" href="#examples_1" title="Permanent link">&para;</a></h5>
+<ul>
+<li>
+<p>Configuration file (Percona Server for MySQL, Percona XtraDB Cluster)</p>
 <div class="highlight"><pre><span></span><code><span class="na">log_slow_rate_limit</span><span class="o">=</span><span class="s">100</span>
 <span class="na">log_slow_rate_type</span><span class="o">=</span><span class="s">&#39;query&#39;</span>
 <span class="na">slow_query_log_always_write_time</span><span class="o">=</span><span class="s">1</span>
 <span class="na">log_slow_verbosity</span><span class="o">=</span><span class="s">&#39;full&#39;</span>
 <span class="na">slow_query_log_use_global_control</span><span class="o">=</span><span class="s">&#39;all&#39;</span>
 </code></pre></div>
-<p><em>Configuration file (MariaDB)</em></p>
+</li>
+<li>
+<p>Configuration file (MariaDB)</p>
 <div class="highlight"><pre><span></span><code><span class="na">log_slow_rate_limit</span><span class="o">=</span><span class="s">100</span>
 </code></pre></div>
-<p><em>Session (Percona Server for MySQL, Percona XtraDB Cluster)</em></p>
+</li>
+<li>
+<p>Session (Percona Server for MySQL, Percona XtraDB Cluster)</p>
 <div class="highlight"><pre><span></span><code><span class="k">SET</span> <span class="k">GLOBAL</span> <span class="n">log_slow_rate_limit</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
 <span class="k">SET</span> <span class="k">GLOBAL</span> <span class="n">log_slow_rate_type</span> <span class="o">=</span> <span class="s1">&#39;query&#39;</span><span class="p">;</span>
 <span class="k">SET</span> <span class="k">GLOBAL</span> <span class="n">slow_query_log_always_write_time</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
 <span class="k">SET</span> <span class="k">GLOBAL</span> <span class="n">log_slow_verbosity</span> <span class="o">=</span> <span class="s1">&#39;full&#39;</span><span class="p">;</span>
 <span class="k">SET</span> <span class="k">GLOBAL</span> <span class="n">slow_query_log_use_global_control</span> <span class="o">=</span> <span class="s1">&#39;all&#39;</span><span class="p">;</span>
 </code></pre></div>
+</li>
+</ul>
 <h4 id="slow-query-log-rotation">Slow query log rotation<a class="headerlink" href="#slow-query-log-rotation" title="Permanent link">&para;</a></h4>
 <p>Slow query log files can grow quickly and must be managed.</p>
 <p>When adding a service with the command line use the  <code>pmm-admin</code> option <code>--size-slow-logs</code> to set at what size the slow query log file is rotated. (The size is specified as a number with a suffix. See <a href="../../details/commands/pmm-admin.html#mysql"><code>pmm-admin add mysql</code></a>.)</p>
@@ -396,7 +410,7 @@
 <p>You can manage log rotation yourself, for example, with <a href="https://linux.die.net/man/8/logrotate"><code>logrotate</code></a>. If you do, you can disable PMM Client&rsquo;s log rotation with the <code>--slow-log-rotation=false</code> option when adding a service with <code>pmm-admin add</code>.</p>
 <h3 id="performance-schema">Performance Schema<a class="headerlink" href="#performance-schema" title="Permanent link">&para;</a></h3>
 <p>This section covers how to configure a MySQL-based database server to use <em>Performance Schema</em> as a source of metrics.</p>
-<p><strong>Applicable versions</strong></p>
+<h4 id="applicable-versions_2">Applicable versions<a class="headerlink" href="#applicable-versions_2" title="Permanent link">&para;</a></h4>
 <table class="table">
 <thead>
 <tr>
@@ -452,20 +466,26 @@
 </tr>
 </tbody>
 </table>
-<p><strong>Examples</strong></p>
-<p><em>Configuration file</em></p>
+<h4 id="examples_2">Examples<a class="headerlink" href="#examples_2" title="Permanent link">&para;</a></h4>
+<ul>
+<li>
+<p>Configuration file</p>
 <div class="highlight"><pre><span></span><code><span class="na">performance_schema</span><span class="o">=</span><span class="s">ON</span>
 <span class="na">performance-schema-instrument</span><span class="o">=</span><span class="s">&#39;statement/%=ON&#39;</span>
 <span class="na">performance-schema-consumer-statements-digest</span><span class="o">=</span><span class="s">ON</span>
 <span class="na">innodb_monitor_enable</span><span class="o">=</span><span class="s">all</span>
 </code></pre></div>
-<p><em>Session</em></p>
+</li>
+<li>
+<p>Session</p>
 <p>(<code>performance_schema</code> cannot be set in a session and must be set at server start-up.)</p>
 <div class="highlight"><pre><span></span><code><span class="k">UPDATE</span> <span class="n">performance_schema</span><span class="p">.</span><span class="n">setup_consumers</span>
 <span class="k">SET</span> <span class="n">ENABLED</span> <span class="o">=</span> <span class="s1">&#39;YES&#39;</span> <span class="k">WHERE</span> <span class="n">NAME</span> <span class="k">LIKE</span> <span class="s1">&#39;%statements%&#39;</span><span class="p">;</span>
 <span class="k">SET</span> <span class="k">GLOBAL</span> <span class="n">innodb_monitor_enable</span> <span class="o">=</span> <span class="k">all</span><span class="p">;</span>
 </code></pre></div>
-<p><strong>MariaDB 10.5.7 or lower</strong></p>
+</li>
+</ul>
+<h4 id="mariadb-1057-or-lower">MariaDB 10.5.7 or lower<a class="headerlink" href="#mariadb-1057-or-lower" title="Permanent link">&para;</a></h4>
 <p>There is no <em>Explain</em> or <em>Example</em> data shown by default in Query Analytics when monitoring MariaDB instances version 10.5.7 or lower. A workaround is to set this variable.</p>
 <table class="table">
 <thead>
@@ -483,13 +503,17 @@
 </tr>
 </tbody>
 </table>
-<p><strong>Session</strong></p>
+<ul>
+<li>
+<p>Session</p>
 <div class="highlight"><pre><span></span><code><span class="k">UPDATE</span> <span class="n">performance_schema</span><span class="p">.</span><span class="n">setup_instruments</span> <span class="k">SET</span> <span class="n">ENABLED</span> <span class="o">=</span> <span class="s1">&#39;YES&#39;</span><span class="p">,</span> <span class="n">TIMED</span> <span class="o">=</span> <span class="s1">&#39;YES&#39;</span> <span class="k">WHERE</span> <span class="n">NAME</span> <span class="k">LIKE</span> <span class="s1">&#39;statement/%&#39;</span><span class="p">;</span>
 <span class="k">UPDATE</span> <span class="n">performance_schema</span><span class="p">.</span><span class="n">setup_consumers</span> <span class="k">SET</span> <span class="n">ENABLED</span> <span class="o">=</span> <span class="s1">&#39;YES&#39;</span> <span class="k">WHERE</span> <span class="n">NAME</span> <span class="k">LIKE</span> <span class="s1">&#39;%statements%&#39;</span><span class="p">;</span>
 </code></pre></div>
+</li>
+</ul>
 <h2 id="query-response-time">Query response time<a class="headerlink" href="#query-response-time" title="Permanent link">&para;</a></h2>
 <p><em>Query time distribution</em> is a chart in the <a href="../../using/query-analytics.html#details-tab"><em>Details</em> tab of Query Analytics</a> showing the proportion of query time spent on various activities. It is enabled with the <code>query_response_time_stats</code> variable and associated plugins.</p>
-<p><strong>Applicable versions</strong></p>
+<h3 id="applicable-versions_3">Applicable versions<a class="headerlink" href="#applicable-versions_3" title="Permanent link">&para;</a></h3>
 <table class="table">
 <thead>
 <tr>
@@ -525,11 +549,17 @@
 </tr>
 </tbody>
 </table>
-<p><em>Configuration file</em></p>
+<ul>
+<li>
+<p>Configuration file</p>
 <div class="highlight"><pre><span></span><code><span class="na">query_response_time_stats</span><span class="o">=</span><span class="s">ON</span>
 </code></pre></div>
+</li>
+</ul>
 <p>You must also install the plugins.</p>
-<p><em>Session</em></p>
+<ul>
+<li>
+<p>Session</p>
 <ol>
 <li>Check that <code>/usr/lib/mysql/plugin/query_response_time.so</code> exists.</li>
 <li>
@@ -548,6 +578,8 @@
 </code></pre></div>
 </li>
 </ol>
+</li>
+</ul>
 <h2 id="tablestats">Tablestats<a class="headerlink" href="#tablestats" title="Permanent link">&para;</a></h2>
 <p>Some table metrics are automatically disabled when the number of tables exceeds a default limit of 1000 tables. This prevents PMM Client from affecting the performance of your database server.</p>
 <p>The limit can be changed <a href="#command-line">when adding a service on the command line </a> with the two <code>pmm-admin</code> options:</p>
@@ -570,7 +602,7 @@
 </tbody>
 </table>
 <h2 id="user-statistics">User statistics<a class="headerlink" href="#user-statistics" title="Permanent link">&para;</a></h2>
-<p><strong>Applicable versions</strong></p>
+<h3 id="applicable-versions_4">Applicable versions<a class="headerlink" href="#applicable-versions_4" title="Permanent link">&para;</a></h3>
 <p>User activity, individual table and index access details are shown on the <a href="../../details/dashboards/dashboard-mysql-user-details.html">MySQL User Details</a> dashboard when the <code>userstat</code> variable is set.</p>
 <table class="table">
 <thead>
@@ -594,13 +626,19 @@
 </tr>
 </tbody>
 </table>
-<p><strong>Examples</strong></p>
-<p><em>Configuration file</em></p>
+<h3 id="examples_3">Examples<a class="headerlink" href="#examples_3" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p>Configuration file</p>
 <div class="highlight"><pre><span></span><code><span class="na">userstat</span><span class="o">=</span><span class="s">ON</span>
 </code></pre></div>
-<p><em>Session</em></p>
+</li>
+<li>
+<p>Session</p>
 <div class="highlight"><pre><span></span><code><span class="k">SET</span> <span class="k">GLOBAL</span> <span class="n">userstat</span> <span class="o">=</span> <span class="k">ON</span><span class="p">;</span>
 </code></pre></div>
+</li>
+</ul>
 <h2 id="add-a-service">Add a service<a class="headerlink" href="#add-a-service" title="Permanent link">&para;</a></h2>
 <p>When you have configured your database server, you can add a MySQL service with the user interface or on the command line.</p>
 <p>When adding a service with the command line, you must use the <code>pmm-admin --query-source=SOURCE</code> option to match the source you&rsquo;ve chosen and configured the database server for.</p>
@@ -615,10 +653,11 @@
 <p><div class="lightgallery"><a data-sub-html="" href="../../_images/PMM_Add_Instance_MySQL.jpg"><img alt="" src="../../_images/PMM_Add_Instance_MySQL.jpg" /></a></div></p>
 <h3 id="command-line">Command line<a class="headerlink" href="#command-line" title="Permanent link">&para;</a></h3>
 <p>Add the database server as a service using one of these example commands. If successful, PMM Client will print <code>MySQL Service added</code> with the service&rsquo;s ID and name. Use the <code>--environment</code> and <code>-custom-labels</code> options to set tags for the service to help identify them.</p>
-<p><strong>Examples &ndash; TLS connection</strong></p>
+<h3 id="examples_4">Examples<a class="headerlink" href="#examples_4" title="Permanent link">&para;</a></h3>
+<h4 id="tls-connection">TLS connection<a class="headerlink" href="#tls-connection" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code>pmm-admin add mysql --username<span class="o">=</span>user --password<span class="o">=</span>pass --tls --tls-skip-verify --tls-ca<span class="o">=</span>pathtoca.pem --tls-cert<span class="o">=</span>pathtocert.pem --tls-key<span class="o">=</span>pathtocertkey.pem --server-url<span class="o">=</span>http://admin:admin@127.0.0.1 --query-source<span class="o">=</span>perfschema name localhost:3306
 </code></pre></div>
-<p><strong>Examples &ndash; Slow query log</strong></p>
+<h4 id="slow-query-log_1">Slow query log<a class="headerlink" href="#slow-query-log_1" title="Permanent link">&para;</a></h4>
 <p>Default query source (<code>slowlog</code>), service name (<code>{node name}-mysql</code>), and service address/port (<code>127.0.0.1:3306</code>), with database server account <code>pmm</code> and password <code>pass</code>.</p>
 <div class="highlight"><pre><span></span><code>pmm-admin add mysql --username<span class="o">=</span>pmm --password<span class="o">=</span>pass
 </code></pre></div>
@@ -631,36 +670,36 @@
 <p>Default query source (<code>slowlog</code>), service name (<code>{node}-mysql</code>), connect via socket.</p>
 <div class="highlight"><pre><span></span><code>pmm-admin add mysql --username<span class="o">=</span>pmm --password<span class="o">=</span>pass --socket<span class="o">=</span>/var/run/mysqld/mysqld.sock
 </code></pre></div>
-<p><strong>Examples &ndash; Performance Schema</strong></p>
+<h4 id="performance-schema_1">Performance Schema<a class="headerlink" href="#performance-schema_1" title="Permanent link">&para;</a></h4>
 <p>Performance schema query source, service name (<code>MYSQL_NODE</code>) and default service address/port (<code>127.0.0.1:3306</code>)</p>
 <div class="highlight"><pre><span></span><code>pmm-admin add mysql --query-source<span class="o">=</span>perfschema --username<span class="o">=</span>pmm --password<span class="o">=</span>pass MYSQL_NODE
 </code></pre></div>
 <p>Performance schema query source, service name (<code>MYSQL_NODE</code>) and default service address/port (<code>127.0.0.1:3306</code>) specified with flags.</p>
 <div class="highlight"><pre><span></span><code>pmm-admin add mysql --query-source<span class="o">=</span>perfschema --username<span class="o">=</span>pmm --password<span class="o">=</span>pass --service-name<span class="o">=</span>MYSQL_NODE --host<span class="o">=</span><span class="m">127</span>.0.0.1 --port<span class="o">=</span><span class="m">3306</span>
 </code></pre></div>
-<p><strong>Examples &ndash; Identifying services</strong></p>
+<h4 id="identifying-services">Identifying services<a class="headerlink" href="#identifying-services" title="Permanent link">&para;</a></h4>
 <p>Default query source (<code>slowlog</code>), environment labeled <code>test</code>, custom labels setting <code>source</code> to <code>slowlog</code>. (This example uses positional parameters for service name and service address.)</p>
 <div class="highlight"><pre><span></span><code>pmm-admin add mysql --environment<span class="o">=</span><span class="nb">test</span> --custom-labels<span class="o">=</span><span class="s1">&#39;source=slowlog&#39;</span>  --username<span class="o">=</span>root --password<span class="o">=</span>password --query-source<span class="o">=</span>slowlog MySQLSlowLog localhost:3306
 </code></pre></div>
 <h2 id="check-the-service">Check the service<a class="headerlink" href="#check-the-service" title="Permanent link">&para;</a></h2>
-<p><strong>Check service - PMM user interface</strong></p>
+<h3 id="pmm-user-interface">PMM user interface<a class="headerlink" href="#pmm-user-interface" title="Permanent link">&para;</a></h3>
 <ol>
 <li>Select <i class="uil uil-cog"></i> <em>Configuration</em> → <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.94602 8.89221L9.6093 9.55549L7.84915 11.3156L6.67493 10.1438L7.33821 9.48049L7.84915 9.99143L8.94602 8.89221Z" fill="#000"></path><path d="M16.4273 2.4679V4.04524H7.57258V2.4679H3.1593V22.6406H20.8382V2.4679H16.4273ZM5.87805 19.0429V14.5148H10.4062V19.0429H5.87805ZM11.8288 9.47102H17.7702V10.4085H11.8288V9.47102ZM11.8288 16.3101H17.7702V17.2476H11.8288V16.3101ZM10.4062 7.67571V12.2038H5.87805V7.67571H10.4062Z" fill="#000"></path><path d="M15.7242 1.73906V3.34219H8.27576V1.73906C8.27576 1.53047 8.44685 1.35938 8.65544 1.35938H15.3445C15.5554 1.35938 15.7242 1.53047 15.7242 1.73906Z" fill="#000"></path></svg> <em>PMM Inventory</em> → <em>Inventory list</em>.</li>
 <li>Look in the <em>Services</em> tab for a matching <em>Service Type</em> (MySQL), <em>Service name</em>, <em>Addresses</em>, and any other details entered in the form.</li>
 <li>Look in the <em>Agents</em> tab to check the desired data source is being used.</li>
 </ol>
-<p><strong>Check service - Command line</strong></p>
+<h3 id="command-line_1">Command line<a class="headerlink" href="#command-line_1" title="Permanent link">&para;</a></h3>
 <p>Look for your service in the output of this command.</p>
 <div class="highlight"><pre><span></span><code>pmm-admin inventory list services --service-type<span class="o">=</span>mysql
 </code></pre></div>
-<p><strong>Check data</strong></p>
+<h3 id="check-data">Check data<a class="headerlink" href="#check-data" title="Permanent link">&para;</a></h3>
 <ol>
 <li>Open the <em>MySQL Instance Summary</em> dashboard.</li>
 <li>Set the <em>Service Name</em> to the newly-added service.</li>
 </ol>
-<p><strong>Percona Server for MySQL, MariaDB</strong></p>
+<h4 id="percona-server-for-mysql-mariadb">Percona Server for MySQL, MariaDB<a class="headerlink" href="#percona-server-for-mysql-mariadb" title="Permanent link">&para;</a></h4>
 <p>If query response time plugin was installed, check for data in the <em>MySQL Query Response Time Details</em> dashboard or select a query in <em>PMM Query Analytics</em> to see the <em>Query time distribution</em> bar.</p>
-<p><strong>Percona XtraDB Cluster</strong></p>
+<h4 id="percona-xtradb-cluster">Percona XtraDB Cluster<a class="headerlink" href="#percona-xtradb-cluster" title="Permanent link">&para;</a></h4>
 <p>Open the <a href="../../details/dashboards/dashboard-pxc-galera-cluster-summary.html"><em>PXC/Galera Cluster Summary</em> dashboard</a>.</p>
 <div class="admonition seealso alert alert-info">
 <p class="admonition-title">See also</p>
@@ -1451,163 +1490,163 @@
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../../release-notes/2.18.0.html">Percona Monitoring and Management 2.18.0</a>
+    <a class="reference internal" href="../../release-notes/2.18.0.html">PMM 2.18.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../../release-notes/2.17.0.html">Percona Monitoring and Management 2.17.0</a>
+    <a class="reference internal" href="../../release-notes/2.17.0.html">PMM 2.17.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../../release-notes/2.16.0.html">Percona Monitoring and Management 2.16.0</a>
+    <a class="reference internal" href="../../release-notes/2.16.0.html">PMM 2.16.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../../release-notes/2.15.1.html">Percona Monitoring and Management 2.15.1</a>
+    <a class="reference internal" href="../../release-notes/2.15.1.html">PMM 2.15.1</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../../release-notes/2.15.0.html">Percona Monitoring and Management 2.15.0</a>
+    <a class="reference internal" href="../../release-notes/2.15.0.html">PMM 2.15.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../../release-notes/2.14.0.html">Percona Monitoring and Management 2.14.0</a>
+    <a class="reference internal" href="../../release-notes/2.14.0.html">PMM 2.14.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../../release-notes/2.13.0.html">Percona Monitoring and Management 2.13.0</a>
+    <a class="reference internal" href="../../release-notes/2.13.0.html">PMM 2.13.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../../release-notes/2.12.0.html">Percona Monitoring and Management 2.12.0</a>
+    <a class="reference internal" href="../../release-notes/2.12.0.html">PMM 2.12.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../../release-notes/2.11.1.html">Percona Monitoring and Management 2.11.1</a>
+    <a class="reference internal" href="../../release-notes/2.11.1.html">PMM 2.11.1</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../../release-notes/2.11.0.html">Percona Monitoring and Management 2.11.0</a>
+    <a class="reference internal" href="../../release-notes/2.11.0.html">PMM 2.11.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../../release-notes/2.10.1.html">Percona Monitoring and Management 2.10.1</a>
+    <a class="reference internal" href="../../release-notes/2.10.1.html">PMM 2.10.1</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../../release-notes/2.10.0.html">Percona Monitoring and Management 2.10.0</a>
+    <a class="reference internal" href="../../release-notes/2.10.0.html">PMM 2.10.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../../release-notes/2.9.1.html">Percona Monitoring and Management 2.9.1</a>
+    <a class="reference internal" href="../../release-notes/2.9.1.html">PMM 2.9.1</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../../release-notes/2.9.0.html">Percona Monitoring and Management 2.9.0</a>
+    <a class="reference internal" href="../../release-notes/2.9.0.html">PMM 2.9.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../../release-notes/2.8.0.html">Percona Monitoring and Management 2.8.0</a>
+    <a class="reference internal" href="../../release-notes/2.8.0.html">PMM 2.8.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../../release-notes/2.7.0.html">Percona Monitoring and Management 2.7.0</a>
+    <a class="reference internal" href="../../release-notes/2.7.0.html">PMM 2.7.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../../release-notes/2.6.1.html">Percona Monitoring and Management 2.6.1</a>
+    <a class="reference internal" href="../../release-notes/2.6.1.html">PMM 2.6.1</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../../release-notes/2.6.0.html">Percona Monitoring and Management 2.6.0</a>
+    <a class="reference internal" href="../../release-notes/2.6.0.html">PMM 2.6.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../../release-notes/2.5.0.html">Percona Monitoring and Management 2.5.0</a>
+    <a class="reference internal" href="../../release-notes/2.5.0.html">PMM 2.5.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../../release-notes/2.4.0.html">Percona Monitoring and Management 2.4.0</a>
+    <a class="reference internal" href="../../release-notes/2.4.0.html">PMM 2.4.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../../release-notes/2.3.0.html">Percona Monitoring and Management 2.3.0</a>
+    <a class="reference internal" href="../../release-notes/2.3.0.html">PMM 2.3.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../../release-notes/2.2.2.html">Percona Monitoring and Management 2.2.2</a>
+    <a class="reference internal" href="../../release-notes/2.2.2.html">PMM 2.2.2</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../../release-notes/2.2.1.html">Percona Monitoring and Management 2.2.1</a>
+    <a class="reference internal" href="../../release-notes/2.2.1.html">PMM 2.2.1</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../../release-notes/2.2.0.html">Percona Monitoring and Management 2.2.0</a>
+    <a class="reference internal" href="../../release-notes/2.2.0.html">PMM 2.2.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../../release-notes/2.1.0.html">Percona Monitoring and Management 2.1.0</a>
+    <a class="reference internal" href="../../release-notes/2.1.0.html">PMM 2.1.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../../release-notes/2.0.1.html">Percona Monitoring and Management 2.0.1</a>
+    <a class="reference internal" href="../../release-notes/2.0.1.html">PMM 2.0.1</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../../release-notes/2.0.0.html">Percona Monitoring and Management 2.0.0</a>
+    <a class="reference internal" href="../../release-notes/2.0.0.html">PMM 2.0.0</a>
 
 
 
