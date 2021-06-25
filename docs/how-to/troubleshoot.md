@@ -40,7 +40,6 @@ In a browser, visit `https://<address-of-your-pmm-server>/logs.zip`.
 1. Select <i class="uil uil-cog"></i> *Configuration* → <i class="uil uil-setting"></i> *Settings*.
 2. Click *Download server diagnostics*. (See [Diagnostics in PMM Settings](configure.md#diagnostics).)
 
-
 ## Connection difficulties
 
 ### Passwords
@@ -93,8 +92,8 @@ This will continue to work but will be renamed *External Alertmanager*.
 
 Before you can use a notification channel you must provide your connection details.
 
-1. Go to PMM  →  PMM Settings →  Communication
-2. Define your SMTP server or Slack incoming webhook URL
+1. Go to *PMM* → *PMM Settings* → *Communication*.
+2. Define your SMTP server or Slack incoming webhook URL.
 
 For PagerDuty you can configure in the notification channel tab of Integrated Alerting by supplying your server/routing key.
 

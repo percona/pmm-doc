@@ -15,7 +15,7 @@ The *Failed security checks* panel on the *Home Dashboard* shows the number of f
 !!! note alert alert-light ""
     **Key:** <b style="color:#e02f44;">Critical</b> (Red) / <b style="color:#e36526;">Major</b> (Amber) / <b style="color:#5794f2;">Trivial</b> (Blue)
 
-Details are in the *PMM Database Checks* dashboard (select *PMM → PMM Database Checks*).
+Details are in the *PMM Database Checks* dashboard (select *PMM* → *PMM Database Checks*).
 
 ![!PMM Database Checks dashboard](../../_images/PMM_Database_Checks.jpg)
 

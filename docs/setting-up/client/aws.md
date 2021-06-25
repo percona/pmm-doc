@@ -167,8 +167,7 @@ instances.
 
     * when adding a MongoDB instance, you will be able to choose using Query Analytics MongoDB profiler.
 
-
-6. Finally press the *Add service* button to start monitoring your instance.
+7. Finally press the *Add service* button to start monitoring your instance.
 
 ## Adding an Amazon RDS PostgreSQL instance
 
@@ -181,7 +180,7 @@ For PostgreSQL, use the same method described above.
 
     ![!image](../../_images/PMM_rds_postgre_02_discover.png)
 
-4. Follow steps 4 to 6 as in the previous section. Fill the form and remember to select `PG Stat Statement` to enable Query Analytics.
+3. Follow steps 4 to 6 as in the previous section. Fill the form and remember to select `PG Stat Statement` to enable Query Analytics.
 
     To get queries for Query Analytics, you need to enable `pg_stat_statements` in your instance by running:
 

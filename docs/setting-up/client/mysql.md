@@ -366,7 +366,7 @@ With the PMM user interface, you select *Use performance schema*, or deselect it
 
 ### User interface
 
-1. Select *PMM  →  PMM Add Instance*.
+1. Select *PMM* → *PMM Add Instance*.
 2. Select *MySQL -- Add a remote instance*.
 3. Enter or select values for the fields.
 4. Click *Add service*.
