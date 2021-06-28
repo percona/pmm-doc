@@ -138,22 +138,44 @@
 </div>
 <h2 id="before-you-start">Before you start<a class="headerlink" href="#before-you-start" title="Permanent link">&para;</a></h2>
 <ul>
-<li>You have an AWS S3 storage account and location details for it.</li>
-<li>There is only one MySQL instance running on the node.</li>
-<li>MySQL is running:<ul>
-<li>as a service via <code>systemd</code>;</li>
-<li>with the name <code>mysql</code> (to confirm, use <code>systemctl status mysql</code>);</li>
-<li>from a <code>mysql</code> system user account.</li>
+<li>
+<p>You have an AWS S3 storage account and location details for it.</p>
+</li>
+<li>
+<p>There is only one MySQL instance running on the node.</p>
+</li>
+<li>
+<p>MySQL is running:</p>
+<ul>
+<li>
+<p>as a service via <code>systemd</code>;</p>
+</li>
+<li>
+<p>with the name <code>mysql</code> (to confirm, use <code>systemctl status mysql</code>);</p>
+</li>
+<li>
+<p>from a <code>mysql</code> system user account.</p>
+</li>
 </ul>
 </li>
-<li>There is a <code>mysql</code> system group.</li>
-<li>MySQL is using the <code>/var/lib/mysql</code> directory for database storage.</li>
+<li>
+<p>There is a <code>mysql</code> system group.</p>
+</li>
+<li>
+<p>MySQL is using the <code>/var/lib/mysql</code> directory for database storage.</p>
+</li>
 <li>
 <p>Backup management has been enabled:</p>
 <ol>
-<li>Select <i class="uil uil-cog"></i> <em>Configuration</em> → <i class="uil uil-setting"></i> <em>Settings</em> → <em>Advanced Settings</em>.</li>
-<li>Activate <em>Backup Management</em>.</li>
-<li>Click <em>Apply changes</em>.</li>
+<li>
+<p>Select <i class="uil uil-cog"></i> <em>Configuration</em> → <i class="uil uil-setting"></i> <em>Settings</em> → <em>Advanced Settings</em>.</p>
+</li>
+<li>
+<p>Activate <em>Backup Management</em>.</p>
+</li>
+<li>
+<p>Click <em>Apply changes</em>.</p>
+</li>
 <li>
 <p>In the left menu bar, click <i class="uil uil-history"></i> → <em>Backup</em>.</p>
 <p><div class="lightgallery"><a data-sub-html="" href="../_images/PMM_Backup_Management.jpg"><img alt="" src="../_images/PMM_Backup_Management.jpg" /></a></div></p>
@@ -163,20 +185,32 @@
 <li>
 <p>The following packages are needed for creating backups. They should be included in the <code>$PATH</code> environment variable:</p>
 <ul>
-<li><a href="https://www.percona.com/software/mysql-database/percona-xtrabackup"><code>xtrabackup</code></a>, which includes:<ul>
-<li><a href="https://www.percona.com/doc/percona-xtrabackup/2.3/xbcloud/xbcloud.html"><code>xbcloud</code></a>;</li>
-<li><a href="https://www.percona.com/doc/percona-xtrabackup/2.3/xbstream/xbstream.html"><code>xbstream</code></a>;</li>
+<li>
+<p><a href="https://www.percona.com/software/mysql-database/percona-xtrabackup"><code>xtrabackup</code></a>, which includes:</p>
+<ul>
+<li>
+<p><a href="https://www.percona.com/doc/percona-xtrabackup/2.3/xbcloud/xbcloud.html"><code>xbcloud</code></a>;</p>
+</li>
+<li>
+<p><a href="https://www.percona.com/doc/percona-xtrabackup/2.3/xbstream/xbstream.html"><code>xbstream</code></a>;</p>
+</li>
 </ul>
 </li>
-<li><a href="https://www.percona.com/doc/percona-xtrabackup/LATEST/backup_scenarios/compressed_backup.html"><code>qpress</code></a>.</li>
+<li>
+<p><a href="https://www.percona.com/doc/percona-xtrabackup/LATEST/backup_scenarios/compressed_backup.html"><code>qpress</code></a>.</p>
+</li>
 </ul>
 <p><strong>The versions of each must be compatible with the installed version of MySQL.</strong></p>
 </li>
 </ul>
-<h2 id="backup-location">Adding a storage location<a class="headerlink" href="#backup-location" title="Permanent link">&para;</a></h2>
+<h2 id="adding-a-storage-location">Adding a storage location<a class="headerlink" href="#adding-a-storage-location" title="Permanent link">&para;</a></h2>
 <ol>
-<li>Navigate to Backup Management → Storage locations.</li>
-<li>Click <em>Add</em>.</li>
+<li>
+<p>Navigate to Backup Management → Storage locations.</p>
+</li>
+<li>
+<p>Click <em>Add</em>.</p>
+</li>
 <li>
 <p>Fill in the form fields.</p>
 <p><div class="lightgallery"><a data-sub-html="" href="../_images/PMM_Backup_Management_Locations_Add_Storage_Location.jpg"><img alt="" src="../_images/PMM_Backup_Management_Locations_Add_Storage_Location.jpg" /></a></div></p>
@@ -199,10 +233,10 @@
 <p>Click <em>Add</em> to add the location or <em>Test</em> to test the connection.</p>
 </li>
 </ol>
-<h2 id="backup-create">Creating a backup<a class="headerlink" href="#backup-create" title="Permanent link">&para;</a></h2>
+<h2 id="creating-a-backup">Creating a backup<a class="headerlink" href="#creating-a-backup" title="Permanent link">&para;</a></h2>
 <div class="admonition hint alert alert-success">
 <p class="admonition-title">Tip</p>
-<p>You must add a <a href="#backup-location">backup storage location</a> before backing up.</p>
+<p>You must <a href="#adding-a-storage-location">add a backup storage location</a> before backing up.</p>
 </div>
 <ol>
 <li>
@@ -230,7 +264,7 @@
 <p>In the <em>Backup Inventory</em> pane, watch the <em>Status</em> column.</p>
 </li>
 </ol>
-<h2 id="backup-restore">Restoring a backup<a class="headerlink" href="#backup-restore" title="Permanent link">&para;</a></h2>
+<h2 id="restoring-a-backup">Restoring a backup<a class="headerlink" href="#restoring-a-backup" title="Permanent link">&para;</a></h2>
 <div class="admonition note alert alert-primary">
 <p>For this release, you can only restore a backup to the same service. I.e. a MySQL backup of service <code>mymsql-service-1</code> can only be restored to a MySQL database server registered with the same service name. Future releases will give more flexibility to restore backups to other service types.</p>
 </div>
@@ -258,7 +292,7 @@
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-06-25
+            <i class="uil uil-refresh"></i> Page updated 2021-06-28
         </li>
         
     </ul>
