@@ -2,40 +2,40 @@
 
 The *Settings* page is where you configure PMM.
 
-Open the *Settings* page from the [main menu](../details/interface.md#main-menu) with *{{icon.cog}} Configuration-->{{icon.setting}} Settings*. The page opens with the *Metrics Resolution* settings tab selected.
+Open the *Settings* page from the [main menu](../details/interface.md#main-menu) with <i class="uil uil-cog"></i> *Configuration* → <i class="uil uil-setting"></i> *Settings*. The page opens with the *Metrics Resolution* settings tab selected.
 
 ![!image](../_images/PMM_Settings_Metrics_Resolution.jpg)
 
 On the left are the selector tabs:
 
 - [Configure](#configure)
-  - [Metrics resolution](#metrics-resolution)
-  - [Advanced Settings](#advanced-settings)
-    - [Data Retention](#data-retention)
-    - [Telemetry](#telemetry)
-    - [Check for updates](#check-for-updates)
-    - [Security Threat Tool](#security-threat-tool)
-  - [Public address](#public-address)
-    - [DBaaS](#dbaas)
-    - [Integrated Alerting](#integrated-alerting)
-    - [Microsoft Azure Monitoring](#microsoft-azure-monitoring)
-    - [Public Address](#public-address-1)
-  - [SSH Key](#ssh-key)
-  - [Alertmanager integration](#alertmanager-integration)
-  - [Percona Platform](#percona-platform)
-    - [Login](#login)
-    - [Sign up](#sign-up)
-    - [Password Reset](#password-reset)
-      - [Password Forgotten](#password-forgotten)
-      - [Change Password after Login](#change-password-after-login)
-  - [Communication](#communication)
-    - [Email](#email)
-    - [Slack](#slack)
+    - [Metrics resolution](#metrics-resolution)
+    - [Advanced Settings](#advanced-settings)
+        - [Data Retention](#data-retention)
+        - [Telemetry](#telemetry)
+        - [Check for updates](#check-for-updates)
+        - [Security Threat Tool](#security-threat-tool)
+    - [Public address](#public-address)
+        - [DBaaS](#dbaas)
+        - [Integrated Alerting](#integrated-alerting)
+        - [Microsoft Azure Monitoring](#microsoft-azure-monitoring)
+        - [Public Address](#public-address-1)
+    - [SSH Key](#ssh-key)
+    - [Alertmanager integration](#alertmanager-integration)
+    - [Percona Platform](#percona-platform)
+        - [Login](#login)
+        - [Sign up](#sign-up)
+        - [Password Reset](#password-reset)
+            - [Password Forgotten](#password-forgotten)
+            - [Change Password after Login](#change-password-after-login)
+    - [Communication](#communication)
+        - [Email](#email)
+        - [Slack](#slack)
 
 !!! hint alert alert-success "Tip"
     Click *Apply changes* to save any changes made here.
 
-**Diagnostics**
+## Diagnostics
 
 On all tabs is a *Diagnostics* section (top-right). Click *Download server diagnostics* to retrieve PMM diagnostics data which can be examined and/or shared with our support team should you need help.
 
@@ -131,13 +131,13 @@ Checks are re-fetched and re-run at intervals. There are three named intervals:
 
 Checks use the *Standard* interval by default. To change a check's interval:
 
-- Go to {{icon.checks}} *PMM Database Checks*
-- Select *All Checks*
-- In the *Actions* column, select the {{icon.history}} icon
+- Go to {{icon.checks}} *PMM Database Checks*.
+- Select *All Checks*.
+- In the *Actions* column, select the <i class="uil uil-history"></i> icon.
 
     ![!](../_images/PMM_Security_Checks_Actions.png)
 
-- Select an interval and click *Save*
+- Select an interval and click *Save*.
 
     ![!](../_images/PMM_Security_Checks_Actions_Set_Interval.png)
 
@@ -211,11 +211,11 @@ Click *Sign out* to log out of your Percona Platform account.
 
 To create a *Percona Platform* account:
 
-1. Click *Sign up*
-2. Enter a valid email address in the *Email* field
-3. Choose and enter a strong password in the *Password* field
-4. Select the check box acknowledging our terms of service and privacy policy
-5. Click *Sign up*
+1. Click *Sign up*.
+2. Enter a valid email address in the *Email* field.
+3. Choose and enter a strong password in the *Password* field.
+4. Select the check box acknowledging our terms of service and privacy policy.
+5. Click *Sign up*.
 
 A brief message will confirm the creation of your new account and you may now log in with these credentials.
 

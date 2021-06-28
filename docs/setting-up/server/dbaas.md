@@ -7,7 +7,7 @@
 
 ### Docker
 
-**Red Hat, CentOS**
+#### Red Hat, CentOS
 
 ```sh
 yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
@@ -17,7 +17,7 @@ systemctl enable docker
 systemctl start docker
 ```
 
-**Debian, Ubuntu**
+#### Debian, Ubuntu
 
 ```sh
 apt-add-repository https://download.docker.com/linux/centos/docker-ce.repo
@@ -30,7 +30,7 @@ systemctl start docker
 !!! note alert alert-primary ""
     Please install minikube 1.16.0
 
-**Red Hat, CentOS**
+#### Red Hat, CentOS
 
 ```sh
 yum -y install curl
@@ -63,10 +63,8 @@ alias kubectl='minikube kubectl --'
     docker exec -t pmm-server bash -c 'ln -s /srv/grafana /usr/share/grafana/data; chown -R grafana:grafana /usr/share/grafana/data; grafana-cli --homepath /usr/share/grafana admin reset-admin-password <RANDOM_PASS_GOES_IN_HERE>'
     ```
 
-3. !!! caution alert alert-warning "Important"
-       Please follow instructions on [How to activate the *DBaaS* feature in Advanced Settings of PMM](../../using/platform/dbaas.md#activate-a-dbaas-feature).
-
-    You need to enable the feature using PMM UI if you omitted `--env ENABLE_DBAAS=1` when starting up the container.
+!!! caution alert alert-warning "Important"
+    You must [activate DBaaS](../../using/platform/dbaas.md#activate-dbaas) using the PMM UI if you omitted `--env ENABLE_DBAAS=1` when starting up the container.
 
 ## Create a Kubernetes cluster
 
@@ -140,7 +138,7 @@ alias kubectl='minikube kubectl --'
                    value: "<< AWS_SECRET_ACCESS_KEY >>"
         ```
 
-     - For the `client-certificate` method:
+    - For the `client-certificate` method:
 
         ```yml
         ---
@@ -274,6 +272,7 @@ alias kubectl='minikube kubectl --'
     ```
 
 5. Follow the instructions on [How to add a Kubernetes cluster](../../using/platform/dbaas.md#add-a-kubernetes-cluster) with kubeconfig from the previous step.
+
 ## Deleting clusters
 
 !!! note alert alert-primary ""
@@ -366,7 +365,6 @@ kubectl expose deployment hello-world --type=NodePort.
     - [Setting up a Standalone MYSQL Instance on Kubernetes & exposing it using Nginx Ingress Controller][STANDALONE_MYSQL_K8S]
     - [Use a Service to Access an Application in a Cluster][KUBERNETES_ACCESS_APP]
     - [Exposing applications using services][GOOGLE_EXPOSING_APPS]
-
 
 [ALPHA]: https://en.wikipedia.org/wiki/Software_release_life_cycle#Alpha
 [GOOGLE_EXPOSING_APPS]: https://cloud.google.com/kubernetes-engine/docs/how-to/exposing-apps

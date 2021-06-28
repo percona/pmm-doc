@@ -19,11 +19,11 @@ Install and run at least one PMM Server.
 
 Choose from:
 
-| Use                  | {{icon.thumbsup}} **Benefits**                | {{icon.thumbsdown}} **Drawbacks**
-|----------------------|-----------------------------------------------|--------------------------------------
-| [Docker]             | Quick, simple                                 | Docker required, will have additional network configuration needs
-| [Virtual appliance]  | Easily import into Hypervisor of your choice  | Requires more system resources compared to Docker footprint
-| [Amazon AWS]         | Wizard-driven install                         | Non-free solution (infrastructure costs)
+| Use                  | <i class="uil uil-thumbs-up"></i> **Benefits** | <i class="uil uil-thumbs-down"></i> **Drawbacks**
+|----------------------|------------------------------------------------|-------------------------------------------------------------
+| [Docker]             | Quick, simple                                  | Docker required, will have additional network configuration needs
+| [Virtual appliance]  | Easily import into Hypervisor of your choice   | Requires more system resources compared to Docker footprint
+| [Amazon AWS]         | Wizard-driven install                          | Non-free solution (infrastructure costs)
 
 ## Set up PMM Client
 
@@ -54,7 +54,6 @@ How you do this depends on the type of service. You can monitor:
 - [HAProxy]
 - [Remote instances]
 
-
 [MySQL]: client/mysql.md
 [MongoDB]: client/mongodb.md
 [PostgreSQL]: client/postgresql.md
@@ -67,7 +66,6 @@ How you do this depends on the type of service. You can monitor:
 [HAProxy]: client/haproxy.md
 [Remote instances]: client/remote.md
 [dashboards]: ../details/dashboards/
-
 [Docker]: server/docker.md
 [virtual appliance]: server/virtual-appliance.md
 [Amazon AWS]: server/aws.md
