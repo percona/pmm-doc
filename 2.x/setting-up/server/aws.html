@@ -407,13 +407,13 @@ data blocks changed from 3354624 to 8335360
 <p>Expand the disk from AWS Console/CLI to the desired capacity.</p>
 </li>
 <li>
-<p>Login to the PMM EC2 instance and verify that the disk capacity has increased. For example, if you have expanded disk from 8G to 10G, dmesg output should look like below:</p>
+<p>Login to the PMM EC2 instance and verify that the disk capacity has increased. For example, if you have expanded disk from 8G to 10G, <code>dmesg</code> output should look like below:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># dmesg | grep &quot;capacity change&quot;</span>
 <span class="o">[</span><span class="m">63175</span>.044762<span class="o">]</span> nvme0n1: detected capacity change from <span class="m">8589934592</span> to <span class="m">10737418240</span>
 </code></pre></div>
 </li>
 <li>
-<p>Use the lsblk command to see that our disk size has been identified by the kernel correctly, but LVM2 is not yet aware of the new size.</p>
+<p>Use the <code>lsblk</code> command to see that our disk size has been identified by the kernel correctly, but LVM2 is not yet aware of the new size.</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># lsblk</span>
 NAME                      MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
 nvme0n1                   <span class="m">259</span>:1    <span class="m">0</span>    10G  <span class="m">0</span> disk
@@ -422,13 +422,13 @@ nvme0n1                   <span class="m">259</span>:1    <span class="m">0</spa
 </code></pre></div>
 </li>
 <li>
-<p>For volumes that have a partition, such as the root volume shown in the previous step, use the growpart command to extend the partition.</p>
+<p>For volumes that have a partition, such as the root volume shown in the previous step, use the <code>growpart</code> command to extend the partition.</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># growpart /dev/nvme0n1 1</span>
 CHANGED: <span class="nv">partition</span><span class="o">=</span><span class="m">1</span> <span class="nv">start</span><span class="o">=</span><span class="m">2048</span> old: <span class="nv">size</span><span class="o">=</span><span class="m">16775168</span> <span class="nv">end</span><span class="o">=</span><span class="m">16777216</span> new: <span class="nv">size</span><span class="o">=</span><span class="m">20969439</span> <span class="nv">end</span><span class="o">=</span><span class="m">20971487</span>
 </code></pre></div>
 </li>
 <li>
-<p>To verify that the partition reflects the increased volume size, use the lsblk command again.</p>
+<p>To verify that the partition reflects the increased volume size, use the <code>lsblk</code> command again.</p>
 <div class="highlight"><pre><span></span><code># lsblk
 NAME                      MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
 nvme0n1                   259:1    0    10G  0 disk
@@ -437,7 +437,7 @@ nvme0n1                   259:1    0    10G  0 disk
 </code></pre></div>
 </li>
 <li>
-<p>Extend the XFS file system on the root volume by xfs_growfs command. I</p>
+<p>Extend the XFS file system on the root volume by <code>xfs_growfs</code> command. I</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># xfs_growfs -d /</span>
 meta-data<span class="o">=</span>/dev/nvme0n1p1         <span class="nv">isize</span><span class="o">=</span><span class="m">512</span>    <span class="nv">agcount</span><span class="o">=</span><span class="m">4</span>, <span class="nv">agsize</span><span class="o">=</span><span class="m">524224</span> <span class="nv">blks</span>
          <span class="o">=</span>                       <span class="nv">sectsz</span><span class="o">=</span><span class="m">512</span>   <span class="nv">attr</span><span class="o">=</span><span class="m">2</span>, <span class="nv">projid32bit</span><span class="o">=</span><span class="nv">1</span>
@@ -511,7 +511,7 @@ You can create a point-in-time snapshot of the volume and use it for data backup
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-06-23
+            <i class="uil uil-refresh"></i> Page updated 2021-06-28
         </li>
         
     </ul>
