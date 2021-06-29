@@ -2,16 +2,10 @@
 
 There are three stages to installing and setting up PMM.
 
-```plantuml
-@startuml
-!include docs/_images/plantuml_styles.puml
-rectangle "Set up a PMM Server" as SERVER
-rectangle "Set up PMM Client(s)" as CLIENT
-rectangle "Add services" as SERVICES
-SERVER -right->> CLIENT
-CLIENT -right->> SERVICES
-@enduml
-```
+!!! summary alert alert-info "Summary"
+    1. [Set up a PMM Server](#set-up-pmm-server)
+    2. [Set up PMM Client(s)](#set-up-pmm-client)
+    3. [Add services](#add-services)
 
 ## Set up PMM Server
 
@@ -33,8 +27,8 @@ The choices:
 
 - With [Docker](client/index.md#docker)
 - Natively, installed from:
-    - [Linux package](client/index.md#package-manager) (installed with `apt`, `apt-get`, `dnf`, `yum`)
-    - [Binary package](client/index.md#binary-package) (a downloaded `.tar.gz` file)
+    - [Linux package](client/index.md#package-manager) (installed with `apt`, `apt-get`, `dnf`, `yum`);
+    - [Binary package](client/index.md#binary-package) (a downloaded `.tar.gz` file).
 
 ## Add services
 

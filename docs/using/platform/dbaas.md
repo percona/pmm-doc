@@ -9,7 +9,8 @@ The DBaaS dashboard is where you add, remove, and operate on Kubernetes and data
 
 The DBaaS feature is turned off by default. To turn it on:
 
-1. Go to <i class="uil uil-bars"></i> *PMM* → *PMM Settings* → *Advanced settings*.
+1. Go to <i class="uil uil-cog"></i> *Configuration* → <i class="uil uil-setting"></i> *Settings* → *Advanced Settings*.
+
 2. Click the <i class="uil uil-toggle-off"></i> toggle in the *Technical preview features* section of the page.
 
 ## Open the DBaaS dashboard
@@ -105,9 +106,9 @@ To monitor a DB cluster, set up a [public address](../../how-to/configure.md#pub
 
     1. Select *Topology*, either *Cluster* or *Single Node*.
 
-    1. Select the number of nodes. (The lower limit is 3.)
+    2. Select the number of nodes. (The lower limit is 3.)
 
-    1. Select a preset for *Resources per Node*.
+    3. Select a preset for *Resources per Node*.
 
         *Small*, *Medium* and *Large* are fixed preset values for *Memory*, *CPU*, and *Disk*.
 
@@ -125,23 +126,23 @@ To monitor a DB cluster, set up a [public address](../../how-to/configure.md#pub
 
     ![!](../../_images/PMM_DBaaS_DB_Cluster_Created.png)
 
-    - *Name*: The cluster name
-    - *Database type*: The cluster database type
+    - *Name*: The cluster name.
+    - *Database type*: The cluster database type.
     - *Connection*:
-        - *Host*: The hostname
-        - *Port*: The port number
-        - *Username*: The connection username
-        - *Password*: The connection password (click the eye icon <i class="uil uil-eye"></i> to reveal)
+        - *Host*: The hostname.
+        - *Port*: The port number.
+        - *Username*: The connection username.
+        - *Password*: The connection password (click the eye icon <i class="uil uil-eye"></i> to reveal).
     - *DB Cluster Parameters*:
-        - *K8s cluster name*: The Kubernetes cluster name
-        - *CPU*: The number of CPUs allocated to the cluster
-        - *Memory*: The amount of memory allocated to the cluster
-        - *Disk*: The amount of disk space allocated to the cluster
+        - *K8s cluster name*: The Kubernetes cluster name.
+        - *CPU*: The number of CPUs allocated to the cluster.
+        - *Memory*: The amount of memory allocated to the cluster.
+        - *Disk*: The amount of disk space allocated to the cluster.
     - *Cluster Status*:
-        - *PENDING*: The cluster is being created
-        - *ACTIVE*: The cluster is active
-        - *FAILED*: The cluster could not be created
-        - *DELETING*: The cluster is being deleted
+        - *PENDING*: The cluster is being created.
+        - *ACTIVE*: The cluster is active.
+        - *FAILED*: The cluster could not be created.
+        - *DELETING*: The cluster is being deleted.
 
 ### Delete a DB Cluster
 

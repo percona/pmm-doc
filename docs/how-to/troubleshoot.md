@@ -4,7 +4,7 @@
 
 If PMM server wasn't updated properly, or if you have concerns about the release, you can force the update process in 2 ways:
 
-1. From the UI  -  Home panel: click with the Alt key on the reload icon in the Update panel (IMG needed) to make the Update Button visible even if you are on the same version as available for update. Pressing this button will force the system to rerun the update so that any broken or not installed components can be installed. In this case, you'll go through the usual update process with update logs and successful messages at the end.
+1. From the UI - Home panel: click with the Alt key on the reload icon in the Update panel to make the Update Button visible even if you are on the same version as available for update. Pressing this button will force the system to rerun the update so that any broken or not installed components can be installed. In this case, you'll go through the usual update process with update logs and successful messages at the end.
 
 2. By  API  call (if UI not available): You can call the Update API directly with:
 
@@ -17,7 +17,7 @@ If PMM server wasn't updated properly, or if you have concerns about the release
     !!! note alert alert-primary ""
         You will not see the logs using this method.
 
-Refresh The Home page in 2-5 min and you should see that PMM was updated.
+Refresh The Home page in 2-5 minutes and you should see that PMM was updated.
 
 ## PMM Server/PMM Client connection {: #troubleshoot-connection }
 
@@ -38,6 +38,7 @@ In a browser, visit `https://<address-of-your-pmm-server>/logs.zip`.
 ### From Settings page
 
 1. Select <i class="uil uil-cog"></i> *Configuration* → <i class="uil uil-setting"></i> *Settings*.
+
 2. Click *Download server diagnostics*. (See [Diagnostics in PMM Settings](configure.md#diagnostics).)
 
 ## Connection difficulties
@@ -77,7 +78,7 @@ Integrated Alerting isn't activated.
 
 **When I get an email or page from my system the IP is not reachable from outside my organization how do I fix this?**
 
-To configure your PMM Server’s Public Address, Select <i class="uil uil-cog"></i> *Configuration* → <i class="uil uil-setting"></i> *Settings* → *Advanced Settings*, and supply an address to use in your alert notifications.
+To configure your PMM Server’s Public Address, select <i class="uil uil-cog"></i> *Configuration* → <i class="uil uil-setting"></i> *Settings* → *Advanced Settings*, and supply an address to use in your alert notifications.
 
 ### What is 'Alertmanager integration'?
 
@@ -102,9 +103,9 @@ For PagerDuty you can configure in the notification channel tab of Integrated Al
 
 It depends on what kind of authentication your system uses:
 
-- `LOGIN`: Use Username/Password
-- `PLAIN`: Use either Username or Identity and Password
-- `CRAM-MD5`: Use Username and Secret
+- `LOGIN`: Use Username/Password.
+- `PLAIN`: Use either Username or Identity and Password.
+- `CRAM-MD5`: Use Username and Secret.
 
 ### Alert Rule Templates is disabled
 
@@ -118,11 +119,16 @@ If you create a custom alert rule template you will have access to edit.
 
 **I'm ready to create my first rule! I've chosen a template and given it a name...what is the format of the fields?**
 
-- Threshold - float value, it has different meanings depending on what template is used
-- Duration - The duration the condition must be satisfied in seconds
+- Threshold - float value, it has different meanings depending on what template is used.
+
+- Duration - The duration the condition must be satisfied in seconds.
+
 - Filters - A Key, Evaluator, and Value. E.g. `service_name=ps5.7`
-    - Key must be an exact match. You can find a complete list of keys by using the <i class="uil uil-compass"></i> *Explore* main menu item in PMM
-    - Evaluator can be any of: `=`, `=~`
+
+    - Key must be an exact match. You can find a complete list of keys by using the <i class="uil uil-compass"></i> *Explore* main menu item in PMM.
+
+    - Evaluator can be: `=` `=~`.
+
     - Value is an exact match or when used with a ‘fuzzy’ evaluator (`=~`) can be a regular expression. E.g. `service_name=~ps.*`
 
 ### Variables in Templates
