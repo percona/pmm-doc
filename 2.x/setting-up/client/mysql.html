@@ -639,19 +639,27 @@
 </code></pre></div>
 </li>
 </ul>
-<h2 id="add-a-service">Add a service<a class="headerlink" href="#add-a-service" title="Permanent link">&para;</a></h2>
+<h2 id="add-service">Add service<a class="headerlink" href="#add-service" title="Permanent link">&para;</a></h2>
 <p>When you have configured your database server, you can add a MySQL service with the user interface or on the command line.</p>
 <p>When adding a service with the command line, you must use the <code>pmm-admin --query-source=SOURCE</code> option to match the source you&rsquo;ve chosen and configured the database server for.</p>
 <p>With the PMM user interface, you select <em>Use performance schema</em>, or deselect it to use <em>slow query log</em>.</p>
-<h3 id="user-interface">User interface<a class="headerlink" href="#user-interface" title="Permanent link">&para;</a></h3>
+<h3 id="with-the-user-interface">With the user interface<a class="headerlink" href="#with-the-user-interface" title="Permanent link">&para;</a></h3>
 <ol>
-<li>Select <em>PMM</em> → <em>PMM Add Instance</em>.</li>
-<li>Select <em>MySQL &ndash; Add a remote instance</em>.</li>
-<li>Enter or select values for the fields.</li>
-<li>Click <em>Add service</em>.</li>
+<li>
+<p>Select <i class="uil uil-cog"></i> <em>Configuration</em> → <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.94602 8.89221L9.6093 9.55549L7.84915 11.3156L6.67493 10.1438L7.33821 9.48049L7.84915 9.99143L8.94602 8.89221Z" fill="#000"></path><path d="M16.4273 2.4679V4.04524H7.57258V2.4679H3.1593V22.6406H20.8382V2.4679H16.4273ZM5.87805 19.0429V14.5148H10.4062V19.0429H5.87805ZM11.8288 9.47102H17.7702V10.4085H11.8288V9.47102ZM11.8288 16.3101H17.7702V17.2476H11.8288V16.3101ZM10.4062 7.67571V12.2038H5.87805V7.67571H10.4062Z" fill="#000"></path><path d="M15.7242 1.73906V3.34219H8.27576V1.73906C8.27576 1.53047 8.44685 1.35938 8.65544 1.35938H15.3445C15.5554 1.35938 15.7242 1.53047 15.7242 1.73906Z" fill="#000"></path></svg> <em>PMM Inventory</em> → <svg width="16" height="16" class="css-6tlabr" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.9655 1.58789C6.16682 1.58789 1.46613 6.28859 1.46613 12.0873C1.46613 17.8859 6.16682 22.5866 11.9655 22.5866C17.7641 22.5866 22.4648 17.8859 22.4648 12.0873C22.4648 6.28859 17.7641 1.58789 11.9655 1.58789ZM16.0671 12.8059H12.6747V16.1736C12.6747 16.5702 12.3532 16.8917 11.9565 16.8917C11.7582 16.8917 11.5787 16.8114 11.4487 16.6814C11.3187 16.5514 11.2384 16.3719 11.2384 16.1736V12.8059H7.87073C7.47402 12.8059 7.1526 12.4844 7.1526 12.0877C7.1526 11.8894 7.23285 11.7098 7.36286 11.5798C7.49284 11.4499 7.6724 11.3696 7.87073 11.3696H11.2384V7.97714C11.2384 7.58046 11.5599 7.25904 11.9566 7.25904C12.1549 7.25904 12.3344 7.33926 12.4645 7.46927C12.5944 7.59928 12.6747 7.77881 12.6747 7.97714V11.3696H16.0672C16.4639 11.3696 16.7853 11.691 16.7853 12.0877C16.7852 12.4844 16.4638 12.8059 16.0671 12.8059Z" fill="#000"></path></svg> <em>Add Instance</em>.</p>
+</li>
+<li>
+<p>Select <em>MySQL &ndash; Add a remote instance</em>.</p>
+</li>
+<li>
+<p>Enter or select values for the fields.</p>
+</li>
+<li>
+<p>Click <em>Add service</em>.</p>
+</li>
 </ol>
 <p><div class="lightgallery"><a data-sub-html="" href="../../_images/PMM_Add_Instance_MySQL.jpg"><img alt="" src="../../_images/PMM_Add_Instance_MySQL.jpg" /></a></div></p>
-<h3 id="command-line">Command line<a class="headerlink" href="#command-line" title="Permanent link">&para;</a></h3>
+<h3 id="on-the-command-line">On the command line<a class="headerlink" href="#on-the-command-line" title="Permanent link">&para;</a></h3>
 <p>Add the database server as a service using one of these example commands. If successful, PMM Client will print <code>MySQL Service added</code> with the service&rsquo;s ID and name. Use the <code>--environment</code> and <code>-custom-labels</code> options to set tags for the service to help identify them.</p>
 <h3 id="examples_4">Examples<a class="headerlink" href="#examples_4" title="Permanent link">&para;</a></h3>
 <h4 id="tls-connection">TLS connection<a class="headerlink" href="#tls-connection" title="Permanent link">&para;</a></h4>
@@ -688,7 +696,7 @@
 <li>Look in the <em>Services</em> tab for a matching <em>Service Type</em> (MySQL), <em>Service name</em>, <em>Addresses</em>, and any other details entered in the form.</li>
 <li>Look in the <em>Agents</em> tab to check the desired data source is being used.</li>
 </ol>
-<h3 id="command-line_1">Command line<a class="headerlink" href="#command-line_1" title="Permanent link">&para;</a></h3>
+<h3 id="command-line">Command line<a class="headerlink" href="#command-line" title="Permanent link">&para;</a></h3>
 <p>Look for your service in the output of this command.</p>
 <div class="highlight"><pre><span></span><code>pmm-admin inventory list services --service-type<span class="o">=</span>mysql
 </code></pre></div>
@@ -722,7 +730,7 @@
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-06-28
+            <i class="uil uil-refresh"></i> Page updated 2021-06-29
         </li>
         
     </ul>
