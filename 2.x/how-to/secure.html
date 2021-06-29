@@ -153,8 +153,12 @@
 <p>With our Docker, OVF and AMI images, self-signed certificates are in <code>/srv/nginx</code>.</p>
 <p>To use your own, you can either:</p>
 <ul>
-<li>mount the local certificate directory to the same location, or,</li>
-<li>copy your certificates to a running PMM Server container.</li>
+<li>
+<p>mount the local certificate directory to the same location, or,</p>
+</li>
+<li>
+<p>copy your certificates to a running PMM Server container.</p>
+</li>
 </ul>
 <h3 id="mounting-certificates">Mounting certificates<a class="headerlink" href="#mounting-certificates" title="Permanent link">&para;</a></h3>
 <p>For example, if your own certificates are in <code>/etc/pmm-certs</code>:</p>
@@ -206,7 +210,7 @@ docker cp dhparam.pem pmm-server:/srv/nginx/dhparam.pem
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-06-25
+            <i class="uil uil-refresh"></i> Page updated 2021-06-29
         </li>
         
     </ul>

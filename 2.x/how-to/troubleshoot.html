@@ -136,7 +136,7 @@
 <p>If PMM server wasn&rsquo;t updated properly, or if you have concerns about the release, you can force the update process in 2 ways:</p>
 <ol>
 <li>
-<p>From the UI  -  Home panel: click with the Alt key on the reload icon in the Update panel (IMG needed) to make the Update Button visible even if you are on the same version as available for update. Pressing this button will force the system to rerun the update so that any broken or not installed components can be installed. In this case, you&rsquo;ll go through the usual update process with update logs and successful messages at the end.</p>
+<p>From the UI - Home panel: click with the Alt key on the reload icon in the Update panel to make the Update Button visible even if you are on the same version as available for update. Pressing this button will force the system to rerun the update so that any broken or not installed components can be installed. In this case, you&rsquo;ll go through the usual update process with update logs and successful messages at the end.</p>
 </li>
 <li>
 <p>By  API  call (if UI not available): You can call the Update API directly with:</p>
@@ -148,7 +148,7 @@
 </div>
 </li>
 </ol>
-<p>Refresh The Home page in 2-5 min and you should see that PMM was updated.</p>
+<p>Refresh The Home page in 2-5 minutes and you should see that PMM was updated.</p>
 <h2 id="troubleshoot-connection">PMM Server/PMM Client connection<a class="headerlink" href="#troubleshoot-connection" title="Permanent link">&para;</a></h2>
 <p>Broken network connectivity may be due to many reasons.  Particularly, when <a href="../setting-up/server/docker.html">using Docker</a>, the container is constrained by the host-level routing and firewall rules. For example, your hosting provider might have default <code>iptables</code> rules on their hosts that block communication between PMM Server and PMM Client, resulting in <em>DOWN</em> targets in VictoriaMetrics. If this happens, check the firewall and routing settings on the Docker host.</p>
 <p>PMM is also able to generate diagnostics data which can be examined and/or shared with our support team to help quickly solve an issue. You can get collected logs from PMM Client using the <code>pmm-admin summary</code> command.</p>
@@ -159,8 +159,12 @@
 <p>In a browser, visit <code>https://&lt;address-of-your-pmm-server&gt;/logs.zip</code>.</p>
 <h3 id="from-settings-page">From Settings page<a class="headerlink" href="#from-settings-page" title="Permanent link">&para;</a></h3>
 <ol>
-<li>Select <i class="uil uil-cog"></i> <em>Configuration</em> → <i class="uil uil-setting"></i> <em>Settings</em>.</li>
-<li>Click <em>Download server diagnostics</em>. (See <a href="configure.html#diagnostics">Diagnostics in PMM Settings</a>.)</li>
+<li>
+<p>Select <i class="uil uil-cog"></i> <em>Configuration</em> → <i class="uil uil-setting"></i> <em>Settings</em>.</p>
+</li>
+<li>
+<p>Click <em>Download server diagnostics</em>. (See <a href="configure.html#diagnostics">Diagnostics in PMM Settings</a>.)</p>
+</li>
 </ol>
 <h2 id="connection-difficulties">Connection difficulties<a class="headerlink" href="#connection-difficulties" title="Permanent link">&para;</a></h2>
 <h3 id="passwords">Passwords<a class="headerlink" href="#passwords" title="Permanent link">&para;</a></h3>
@@ -210,12 +214,24 @@
 <h3 id="creating-rules">Creating rules<a class="headerlink" href="#creating-rules" title="Permanent link">&para;</a></h3>
 <p><strong>I&rsquo;m ready to create my first rule! I&rsquo;ve chosen a template and given it a name&hellip;what is the format of the fields?</strong></p>
 <ul>
-<li>Threshold - float value, it has different meanings depending on what template is used</li>
-<li>Duration - The duration the condition must be satisfied in seconds</li>
-<li>Filters - A Key, Evaluator, and Value. E.g. <code>service_name=ps5.7</code><ul>
-<li>Key must be an exact match. You can find a complete list of keys by using the <i class="uil uil-compass"></i> <em>Explore</em> main menu item in PMM</li>
-<li>Evaluator can be any of: <code>=</code>, <code>=~</code></li>
-<li>Value is an exact match or when used with a ‘fuzzy’ evaluator (<code>=~</code>) can be a regular expression. E.g. <code>service_name=~ps.*</code></li>
+<li>
+<p>Threshold - float value, it has different meanings depending on what template is used.</p>
+</li>
+<li>
+<p>Duration - The duration the condition must be satisfied in seconds.</p>
+</li>
+<li>
+<p>Filters - A Key, Evaluator, and Value. E.g. <code>service_name=ps5.7</code></p>
+<ul>
+<li>
+<p>Key must be an exact match. You can find a complete list of keys by using the <i class="uil uil-compass"></i> <em>Explore</em> main menu item in PMM.</p>
+</li>
+<li>
+<p>Evaluator can be: <code>=</code> <code>=~</code>.</p>
+</li>
+<li>
+<p>Value is an exact match or when used with a ‘fuzzy’ evaluator (<code>=~</code>) can be a regular expression. E.g. <code>service_name=~ps.*</code></p>
+</li>
 </ul>
 </li>
 </ul>
@@ -232,7 +248,7 @@
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-06-28
+            <i class="uil uil-refresh"></i> Page updated 2021-06-29
         </li>
         
     </ul>

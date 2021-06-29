@@ -132,15 +132,12 @@
                 <div class="bodywrapper">
                     <div class="body">
                         <h1 id="proxysql">ProxySQL<a class="headerlink" href="#proxysql" title="Permanent link">&para;</a></h1>
-<p>Use the <code>proxysql</code> alias
-to enable ProxySQL performance metrics monitoring.</p>
+<p>Use the <code>proxysql</code> alias to enable ProxySQL performance metrics monitoring.</p>
 <h2 id="usage">USAGE<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>pmm-admin add proxysql --username<span class="o">=</span>admin --password<span class="o">=</span>admin
 </code></pre></div>
-<p>where username and password are credentials for the administration interface of the monitored ProxySQL instance.
-Additionally, two positional arguments can be appended to the command line flags: a service name to be used
-by PMM, and a service address. If not specified, they are substituted
-automatically as <code>&lt;node&gt;-proxysql</code> and <code>127.0.0.1:6032</code>.</p>
+<p>where <code>username</code> and <code>password</code> are credentials for the administration interface of the monitored ProxySQL instance.</p>
+<p>Additionally, two positional arguments can be appended to the command line flags: a service name to be used by PMM, and a service address. If not specified, they are substituted automatically as <code>&lt;node&gt;-proxysql</code> and <code>127.0.0.1:6032</code>.</p>
 <p>The output of this command may look as follows:</p>
 <div class="highlight"><pre><span></span><code>pmm-admin add proxysql --username<span class="o">=</span>admin --password<span class="o">=</span>admin
 </code></pre></div>
@@ -163,7 +160,7 @@ pmm-admin add proxysql --username<span class="o">=</span>pmm --password<span cla
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-06-25
+            <i class="uil uil-refresh"></i> Page updated 2021-06-29
         </li>
         
     </ul>

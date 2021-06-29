@@ -255,7 +255,7 @@ wget https://www.percona.com/downloads/pmm2/2.18.0/ova/pmm-server-2.18.0.sha256s
 <h3 id="import">Import<a class="headerlink" href="#import" title="Permanent link">&para;</a></h3>
 <h4 id="ui_1">UI<a class="headerlink" href="#ui_1" title="Permanent link">&para;</a></h4>
 <ol>
-<li>Select <em>File → Import</em>.</li>
+<li>Select <em>File</em> → <em>Import</em>.</li>
 <li>Click <em>Choose file&hellip;</em>.</li>
 <li>Navigate to the downloaded <code>.ova</code> file and select it.</li>
 <li>Click <em>Open</em>.</li>
@@ -305,7 +305,7 @@ pmm-server.vmx
 <ol>
 <li>If started, shut down the virtual machine.</li>
 <li>In the VMware main window, select the imported virtual machine.</li>
-<li>Click <em>Virtual Machine → Settings&hellip;</em></li>
+<li>Click <em>Virtual Machine</em> → <em>Settings&hellip;</em>.</li>
 <li>Click <em>Network Adapter</em>.</li>
 <li>In the <em>Bridged Networking</em> section, select <em>Autodetect</em>.</li>
 <li>Close the settings window.</li>
@@ -314,7 +314,7 @@ pmm-server.vmx
 <h4 id="ui_3">UI<a class="headerlink" href="#ui_3" title="Permanent link">&para;</a></h4>
 <ol>
 <li>In the VMware main window, select the imported virtual machine.</li>
-<li>Click the play button <i class="uil uil-caret-right"></i> or select <em>Virtual Machine → Start Up</em>.</li>
+<li>Click the play button <i class="uil uil-caret-right"></i> or select <em>Virtual Machine</em> → <em>Start Up</em>.</li>
 <li>When the instance has booted, note the IP address in the guest console.</li>
 </ol>
 <h4 id="cliui">CLI/UI<a class="headerlink" href="#cliui" title="Permanent link">&para;</a></h4>
@@ -340,7 +340,7 @@ pmm-server.vmx nogui
 <h3 id="import_1">Import<a class="headerlink" href="#import_1" title="Permanent link">&para;</a></h3>
 <h4 id="ui_4">UI<a class="headerlink" href="#ui_4" title="Permanent link">&para;</a></h4>
 <ol>
-<li>Select <em>File → Import appliance&hellip;</em>.</li>
+<li>Select <em>File</em> → <em>Import appliance&hellip;</em>.</li>
 <li>In the <em>File</em> field, type the path to the downloaded <code>.ova</code> file, or click the folder icon to navigate and open it.</li>
 <li>Click <em>Continue</em>.</li>
 <li>On the <em>Appliance settings</em> page, review the settings and click <em>Import</em>.</li>
@@ -449,26 +449,50 @@ pmm-server.vmx nogui
 <h2 id="log-into-user-interface">Log into user interface<a class="headerlink" href="#log-into-user-interface" title="Permanent link">&para;</a></h2>
 <h3 id="ui_7">UI<a class="headerlink" href="#ui_7" title="Permanent link">&para;</a></h3>
 <ol>
-<li>Open a web browser and visit the guest IP address.</li>
-<li>The PMM <a href="../../using/interface.html">login screen</a> appears.</li>
-<li>Enter the default username and password in the relevant fields and click <em>Log in</em>.<ul>
-<li>username: <code>admin</code></li>
-<li>password: <code>admin</code></li>
+<li>
+<p>Open a web browser and visit the guest IP address.</p>
+</li>
+<li>
+<p>The PMM <a href="../../using/interface.html">login screen</a> appears.</p>
+</li>
+<li>
+<p>Enter the default username and password in the relevant fields and click <em>Log in</em>.</p>
+<ul>
+<li>
+<p>username: <code>admin</code></p>
+</li>
+<li>
+<p>password: <code>admin</code></p>
+</li>
 </ul>
 </li>
-<li>(Recommended) Follow the prompts to change the default password.</li>
-<li>The PMM Home Dashboard appears.</li>
+<li>
+<p>(Recommended) Follow the prompts to change the default password.</p>
+</li>
+<li>
+<p>The PMM Home Dashboard appears.</p>
+</li>
 </ol>
 <h2 id="optional-change-root-password">(Optional) Change root password<a class="headerlink" href="#optional-change-root-password" title="Permanent link">&para;</a></h2>
 <h3 id="ui_8">UI<a class="headerlink" href="#ui_8" title="Permanent link">&para;</a></h3>
 <ol>
-<li>Start the virtual machine in GUI mode.</li>
-<li>Log in with the default superuser credentials:<ul>
-<li>Username: <code>root</code></li>
-<li>Password: <code>percona</code></li>
+<li>
+<p>Start the virtual machine in GUI mode.</p>
+</li>
+<li>
+<p>Log in with the default superuser credentials:</p>
+<ul>
+<li>
+<p>Username: <code>root</code></p>
+</li>
+<li>
+<p>Password: <code>percona</code></p>
+</li>
 </ul>
 </li>
-<li>Follow the prompts to change the password.</li>
+<li>
+<p>Follow the prompts to change the password.</p>
+</li>
 </ol>
 <h2 id="optional-set-up-ssh">(Optional) Set up SSH<a class="headerlink" href="#optional-set-up-ssh" title="Permanent link">&para;</a></h2>
 <h3 id="uicli">UI/CLI<a class="headerlink" href="#uicli" title="Permanent link">&para;</a></h3>
@@ -500,9 +524,15 @@ pmm-server.vmx nogui
 <p>When the guest OS starts, it will get an IP address from the hypervisor&rsquo;s DHCP server. This IP can change each time the guest OS is restarted. Setting a static IP for the guest OS avoids having to check the IP address whenever the guest is restarted.</p>
 <h3 id="cli_6">CLI<a class="headerlink" href="#cli_6" title="Permanent link">&para;</a></h3>
 <ol>
-<li>Start the virtual machine in non-headless (GUI) mode.</li>
-<li>Log in as <code>root</code>.</li>
-<li>Edit <code>/etc/sysconfig/network-scripts/ifcfg-eth0</code></li>
+<li>
+<p>Start the virtual machine in non-headless (GUI) mode.</p>
+</li>
+<li>
+<p>Log in as <code>root</code>.</p>
+</li>
+<li>
+<p>Edit <code>/etc/sysconfig/network-scripts/ifcfg-eth0</code></p>
+</li>
 <li>
 <p>Change the value of <code>BOOTPROTO</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="na">BOOTPROTO</span><span class="o">=</span><span class="s">none</span>
@@ -529,8 +559,12 @@ pmm-server.vmx nogui
 <h2 id="remove">Remove<a class="headerlink" href="#remove" title="Permanent link">&para;</a></h2>
 <h3 id="ui_9">UI<a class="headerlink" href="#ui_9" title="Permanent link">&para;</a></h3>
 <ol>
-<li>Stop the virtual machine: select <em>Close → Power Off</em>.</li>
-<li>Remove the virtual machine: select <em>Remove → Delete all files</em>.</li>
+<li>
+<p>Stop the virtual machine: select <em>Close</em> → <em>Power Off</em>.</p>
+</li>
+<li>
+<p>Remove the virtual machine: select <em>Remove</em> → <em>Delete all files</em>.</p>
+</li>
 </ol>
                     </div>
                 </div>
@@ -539,7 +573,7 @@ pmm-server.vmx nogui
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-06-28
+            <i class="uil uil-refresh"></i> Page updated 2021-06-29
         </li>
         
     </ul>

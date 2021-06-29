@@ -161,10 +161,8 @@
 Service ID  : /service_id/c481183f-70a2-443f-91e5-cae5cecd06a2
 Service name: Ubuntu-haproxy
 </code></pre></div>
-<p>Additionally, one positional argument can be appended to the command line flags: a service name to be used
-by PMM. If not specified, they are substituted automatically as <code>&lt;node&gt;-haproxy</code>.</p>
-<p>During adding here is connection check (can be skipped by flag <code>--skip-connection-check</code>).
-If HAProxy doesn&rsquo;t run properly on the given port then you will see an error message:</p>
+<p>Additionally, one positional argument can be appended to the command line flags: a service name to be used by PMM. If not specified, they are substituted automatically as <code>&lt;node&gt;-haproxy</code>.</p>
+<p>During adding here is connection check (can be skipped by flag <code>--skip-connection-check</code>). If HAProxy doesn&rsquo;t run properly on the given port then you will see an error message:</p>
 <div class="highlight"><pre><span></span><code>Connection check failed: Get &quot;http://127.0.0.1:8404/metrics&quot;: dial tcp 127.0.0.1:8404: connect: connection refused.
 </code></pre></div>
 <p>Beside positional argument shown above you can specify service name  with the following flags: <code>--username</code>, <code>--password</code>, <code>--metrics-path</code> (path for scraping metrics, default: /metrics) and <code>--scheme</code> (http or https). Here are some examples:</p>

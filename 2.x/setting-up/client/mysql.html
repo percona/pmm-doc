@@ -157,8 +157,8 @@
 <thead>
 <tr>
 <th scope="col"></th>
-<th scope="col"><i class="uil uil-thumbs-up"></i> <strong>Benefits</strong></th>
-<th scope="col"><i class="uil uil-thumbs-down"></i> <strong>Drawbacks</strong></th>
+<th scope="col"><i class="uil uil-thumbs-up"></i> Benefits</th>
+<th scope="col"><i class="uil uil-thumbs-down"></i> Drawbacks</th>
 </tr>
 </thead>
 <tbody>
@@ -262,7 +262,7 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar_slow_query_log"><code>slow_query_log</code></a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td><a href="https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar_slow_query_log"><code>slow_query_log</code></a></td>
 <td>ON</td>
 <td>Enables the slow query log.</td>
 </tr>
@@ -345,7 +345,7 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="https://www.percona.com/doc/percona-server/LATEST/diagnostics/slow_extended.html#log_slow_rate_limit"><code>log_slow_rate_limit</code></a>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td><a href="https://www.percona.com/doc/percona-server/LATEST/diagnostics/slow_extended.html#log_slow_rate_limit"><code>log_slow_rate_limit</code></a></td>
 <td>100</td>
 <td>Defines the rate of queries captured by the <em>slow query log</em>. A good rule of thumb is 100 queries logged per second. For example, if your Percona Server instance processes 10,000 queries per second, you should set <code>log_slow_rate_limit</code> to <code>100</code> and capture every 100<sup>th</sup> query for the <em>slow query log</em>. Depending on the amount of traffic, logging could become aggressive and resource consuming. This variable throttles the level of intensity of the data capture without compromising information.</td>
 </tr>
@@ -543,7 +543,7 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="https://www.percona.com/doc/percona-server/5.7/diagnostics/response_time_distribution.html#usage"><code>query_response_time_stats</code></a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td><a href="https://www.percona.com/doc/percona-server/5.7/diagnostics/response_time_distribution.html#usage"><code>query_response_time_stats</code></a></td>
 <td>ON</td>
 <td>Report <em>query response time distributions</em>. (Requires plugin installation. See below.)</td>
 </tr>
@@ -582,7 +582,7 @@
 </ul>
 <h2 id="tablestats">Tablestats<a class="headerlink" href="#tablestats" title="Permanent link">&para;</a></h2>
 <p>Some table metrics are automatically disabled when the number of tables exceeds a default limit of 1000 tables. This prevents PMM Client from affecting the performance of your database server.</p>
-<p>The limit can be changed <a href="#command-line">when adding a service on the command line </a> with the two <code>pmm-admin</code> options:</p>
+<p>The limit can be changed <a href="#command-line">when adding a service on the command line</a> with the two <code>pmm-admin</code> options:</p>
 <table class="table">
 <thead>
 <tr>
@@ -592,7 +592,7 @@
 </thead>
 <tbody>
 <tr>
-<td><code>--disable-tablestats</code> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td><code>--disable-tablestats</code></td>
 <td>Disables tablestats collection when the default limit is reached.</td>
 </tr>
 <tr>
