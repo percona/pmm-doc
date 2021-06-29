@@ -78,13 +78,13 @@ Verify the checksum of the downloaded .ova file.
 shasum -ca 256 pmm-server-{{release}}.sha256sum
 ```
 
-## VMware {: #vmware }
+## VMware
 
 ### Import
 
 #### UI
 
-1. Select *File → Import*.
+1. Select *File* → *Import*.
 2. Click *Choose file...*.
 3. Navigate to the downloaded `.ova` file and select it.
 4. Click *Open*.
@@ -132,7 +132,7 @@ shasum -ca 256 pmm-server-{{release}}.sha256sum
 
 1. If started, shut down the virtual machine.
 2. In the VMware main window, select the imported virtual machine.
-3. Click *Virtual Machine → Settings...*
+3. Click *Virtual Machine* → *Settings...*.
 4. Click *Network Adapter*.
 5. In the *Bridged Networking* section, select *Autodetect*.
 6. Close the settings window.
@@ -142,7 +142,7 @@ shasum -ca 256 pmm-server-{{release}}.sha256sum
 #### UI
 
 1. In the VMware main window, select the imported virtual machine.
-2. Click the play button <i class="uil uil-caret-right"></i> or select *Virtual Machine → Start Up*.
+2. Click the play button <i class="uil uil-caret-right"></i> or select *Virtual Machine* → *Start Up*.
 3. When the instance has booted, note the IP address in the guest console.
 
 #### CLI/UI
@@ -164,13 +164,13 @@ shasum -ca 256 pmm-server-{{release}}.sha256sum
     pmm-server.vmx nogui
     ```
 
-## VirtualBox {: #virtualbox }
+## VirtualBox
 
 ### Import
 
 #### UI
 
-1. Select *File → Import appliance...*.
+1. Select *File* → *Import appliance...*.
 2. In the *File* field, type the path to the downloaded `.ova` file, or click the folder icon to navigate and open it.
 3. Click *Continue*.
 4. On the *Appliance settings* page, review the settings and click *Import*.
@@ -271,20 +271,26 @@ shasum -ca 256 pmm-server-{{release}}.sha256sum
 
 5. (Optional) Stop the guest:
 
-        ```sh
-        VBoxManage controlvm "PMM Server" poweroff
-        ```
+    ```sh
+    VBoxManage controlvm "PMM Server" poweroff
+    ```
 
 ## Log into user interface
 
 ### UI
 
 1. Open a web browser and visit the guest IP address.
-2. The PMM [login screen] appears.
+
+2. The PMM [login screen](../../using/interface.md) appears.
+
 3. Enter the default username and password in the relevant fields and click *Log in*.
+
     - username: `admin`
+
     - password: `admin`
+
 4. (Recommended) Follow the prompts to change the default password.
+
 5. The PMM Home Dashboard appears.
 
 ## (Optional) Change root password
@@ -292,9 +298,13 @@ shasum -ca 256 pmm-server-{{release}}.sha256sum
 ### UI
 
 1. Start the virtual machine in GUI mode.
+
 2. Log in with the default superuser credentials:
+
     - Username: `root`
+
     - Password: `percona`
+
 3. Follow the prompts to change the password.
 
 ## (Optional) Set up SSH
@@ -328,8 +338,11 @@ When the guest OS starts, it will get an IP address from the hypervisor's DHCP s
 ### CLI
 
 1. Start the virtual machine in non-headless (GUI) mode.
+
 2. Log in as `root`.
+
 3. Edit `/etc/sysconfig/network-scripts/ifcfg-eth0`
+
 4. Change the value of `BOOTPROTO`:
 
     ```ini
@@ -360,12 +373,12 @@ When the guest OS starts, it will get an IP address from the hypervisor's DHCP s
 
 ### UI
 
-1. Stop the virtual machine: select *Close → Power Off*.
-2. Remove the virtual machine: select *Remove → Delete all files*.
+1. Stop the virtual machine: select *Close* → *Power Off*.
+
+2. Remove the virtual machine: select *Remove* → *Delete all files*.
 
 [OVA]: https://www.percona.com/downloads/pmm2/{{release}}/ova
 [OVF]: https://wikipedia.org/wiki/Open_Virtualization_Format
 [VirtualBox]: https://www.virtualbox.org/
 [VMware]: https://www.vmware.com/products/workstation-player/
 [OVFTool]: https://code.vmware.com/tool/ovf
-[login screen]: ../../using/interface.md

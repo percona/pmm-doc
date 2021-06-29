@@ -82,8 +82,8 @@ While you can use both at the same time we recommend using only one--there is so
 
 Here are the benefits and drawbacks of *Slow query log* and *Performance Schema* metrics sources.
 
-|                        | <i class="uil uil-thumbs-up"></i> **Benefits**                                   | <i class="uil uil-thumbs-down"></i> **Drawbacks**
-|------------------------|----------------------------------------------------------------------------------|------------------------------------------
+|                        | <i class="uil uil-thumbs-up"></i> Benefits                                       | <i class="uil uil-thumbs-down"></i> Drawbacks
+|------------------------|----------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------
 | **Slow query log**     | More detail.                                                                     | PMM Client must be on the same host as the database server or have access to the slow query log.
 |                        | Lower resource impact (with query sampling feature in Percona Server for MySQL). | Log files grow and must be actively managed.
 | **Performance Schema** | Faster parsing.                                                                  | Less detail.
@@ -99,7 +99,7 @@ Here are the benefits and drawbacks of *Slow query log* and *Performance Schema*
 | Percona Server for MySQL | 5.7, 8.0       | Slow query log     |
 | Percona XtraDB Cluster   | 5.6, 5.7, 8.0  | Slow query log     |
 
-### Slow query log {: #slow-query-log}
+### Slow query log
 
 This section covers how to configure a MySQL-based database server to use the *slow query log* as a source of metrics.
 
@@ -118,7 +118,7 @@ The *slow query log* records the details of queries that take more than a certai
 
 | Variable                                                        | Value  |Description
 |-----------------------------------------------------------------|--------|----------------------------------------------------------
-| [`slow_query_log`][sysvar_slow_query_log] {{pad.55}}            | ON     | Enables the slow query log.
+| [`slow_query_log`][sysvar_slow_query_log]                       | ON     | Enables the slow query log.
 | [`log_output`][sysvar_log_output]                               |`'FILE'`| Ensures the log is sent to a file. (This is the default on MariaDB.)
 | [`long_query_time`][sysvar_long_query_time]                     | 0      | The slow query threshold in seconds. In heavily-loaded applications, many quick queries can affect performance more than a few slow ones. Setting this value to `0` ensures all queries are captured.
 | [`log_slow_admin_statements`][sysvar_log_slow_admin_statements] | ON     | Includes the logging of slow administrative statements.
@@ -162,7 +162,7 @@ Some MySQL-based database servers support extended slow query log variables.
 
 | Variable                                                                 | Value | Description
 |--------------------------------------------------------------------------|-------|-----------------------------------------------------------------------------------
-| [`log_slow_rate_limit`][log_slow_rate_limit]  {{pad.70}}                 | 100   | Defines the rate of queries captured by the *slow query log*. A good rule of thumb is 100 queries logged per second. For example, if your Percona Server instance processes 10,000 queries per second, you should set `log_slow_rate_limit` to `100` and capture every 100th query for the *slow query log*. Depending on the amount of traffic, logging could become aggressive and resource consuming. This variable throttles the level of intensity of the data capture without compromising information.
+| [`log_slow_rate_limit`][log_slow_rate_limit]                             | 100   | Defines the rate of queries captured by the *slow query log*. A good rule of thumb is 100 queries logged per second. For example, if your Percona Server instance processes 10,000 queries per second, you should set `log_slow_rate_limit` to `100` and capture every 100th query for the *slow query log*. Depending on the amount of traffic, logging could become aggressive and resource consuming. This variable throttles the level of intensity of the data capture without compromising information.
 | [`log_slow_rate_type`][log_slow_rate_type]                               |'query'| Set so that it applies to queries, rather than sessions.
 | [`slow_query_log_always_write_time`][slow_query_log_always_write_time]   | 1     | Specifies which queries should ignore sampling. With query sampling this ensures that queries with longer execution time will always be captured by the slow query log, avoiding the possibility that infrequent slow queries might not get captured at all.
 | [`log_slow_verbosity`][log_slow_verbosity]                               |'full' | Ensures that all information about each captured query is stored in the slow query log.
@@ -212,7 +212,7 @@ Only one `.old` file is kept. Older ones are deleted.
 
 You can manage log rotation yourself, for example, with [`logrotate`][LOGROTATE]. If you do, you can disable PMM Client's log rotation with the `--slow-log-rotation=false` option when adding a service with `pmm-admin add`.
 
-### Performance Schema {: #performance-schema}
+### Performance Schema
 
 This section covers how to configure a MySQL-based database server to use *Performance Schema* as a source of metrics.
 
@@ -284,9 +284,9 @@ There is no *Explain* or *Example* data shown by default in Query Analytics when
 
 Set this variable to see query time distribution charts.
 
-| Variable                                                               | Value | Description
-|------------------------------------------------------------------------|-------|-----------------------------------------------------------------------------------
-| [`query_response_time_stats`][ps_query_response_time_stats] {{pad.35}} | ON    | Report *query response time distributions*. (Requires plugin installation. See below.)
+| Variable                                                    | Value | Description
+|-------------------------------------------------------------|-------|-----------------------------------------------------------------------------------
+| [`query_response_time_stats`][ps_query_response_time_stats] | ON    | Report *query response time distributions*. (Requires plugin installation. See below.)
 
 - Configuration file
 
@@ -323,12 +323,12 @@ You must also install the plugins.
 
 Some table metrics are automatically disabled when the number of tables exceeds a default limit of 1000 tables. This prevents PMM Client from affecting the performance of your database server.
 
-The limit can be changed [when adding a service on the command line ](#command-line) with the two `pmm-admin` options:
+The limit can be changed [when adding a service on the command line](#command-line) with the two `pmm-admin` options:
 
-| `pmm-admin` option                | Description
-|-----------------------------------|--------------------------------------------------------------------------
-| `--disable-tablestats` {{pad.65}} | Disables tablestats collection when the default limit is reached.
-| `--disable-tablestats-limit=N`    | Sets the number of tables (`N`) for which tablestats collection is disabled. 0 means no limit. A negative number means tablestats is completely disabled (for any number of tables).
+| `pmm-admin` option             | Description
+|--------------------------------|--------------------------------------------------------------------------
+| `--disable-tablestats`         | Disables tablestats collection when the default limit is reached.
+| `--disable-tablestats-limit=N` | Sets the number of tables (`N`) for which tablestats collection is disabled. 0 means no limit. A negative number means tablestats is completely disabled (for any number of tables).
 
 ## User statistics
 
@@ -336,11 +336,11 @@ The limit can be changed [when adding a service on the command line ](#command-l
 
 User activity, individual table and index access details are shown on the [MySQL User Details][DASH_MYSQLUSERDETAILS] dashboard when the `userstat` variable is set.
 
-| Server                    | Versions
-|---------------------------|---------------
-| Percona Server for MySQL  | 5.6, 5.7, 8.0
-| Percona XtraDB Cluster    | 5.6, 5.7, 8.0
-| MariaDB                   | 5.2.0+
+| Server                   | Versions
+|--------------------------|---------------
+| Percona Server for MySQL | 5.6, 5.7, 8.0
+| Percona XtraDB Cluster   | 5.6, 5.7, 8.0
+| MariaDB                  | 5.2.0+
 
 ### Examples
 
@@ -356,7 +356,7 @@ User activity, individual table and index access details are shown on the [MySQL
     SET GLOBAL userstat = ON;
     ```
 
-## Add a service
+## Add service
 
 When you have configured your database server, you can add a MySQL service with the user interface or on the command line.
 
@@ -364,16 +364,19 @@ When adding a service with the command line, you must use the `pmm-admin --query
 
 With the PMM user interface, you select *Use performance schema*, or deselect it to use *slow query log*.
 
-### User interface
+### With the user interface
 
-1. Select *PMM* → *PMM Add Instance*.
+1. Select <i class="uil uil-cog"></i> *Configuration* → {{icon.inventory}} *PMM Inventory* → {{icon.addinstance}} *Add Instance*.
+
 2. Select *MySQL -- Add a remote instance*.
+
 3. Enter or select values for the fields.
+
 4. Click *Add service*.
 
 ![!](../../_images/PMM_Add_Instance_MySQL.jpg)
 
-### Command line
+### On the command line
 
 Add the database server as a service using one of these example commands. If successful, PMM Client will print `MySQL Service added` with the service's ID and name. Use the `--environment` and `-custom-labels` options to set tags for the service to help identify them.
 
