@@ -38,11 +38,9 @@ Go to <i class="uil uil-cog"></i> *Configuration* → <i class="uil uil-setting"
 !!! seealso alert alert-info "See also"
     [Configure data retention](how-to/configure.md#data-retention)
 
-## How often are NGINX logs rotated?
+## How are PMM Server logs rotated?
 
-Daily.
-
-PMM Server runs `logrotate` daily to rotate NGINX logs, keeping up to ten of the most recent log files.
+PMM Server embeds multiple components, like Victoria Metrics, Query Analytics, grafana, managed, postgresql, clickhouse, etc (components). All PMM Server component logs are managed and rotated with supervisord. Each particular component has its own log rotation config, which defineds both the maximum size of a log file and the number of log files to keep. The log rotation takes place once the log file size reaches its maximum size. 
 
 ## What privileges are required to monitor a MySQL instance?
 
