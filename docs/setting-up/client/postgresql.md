@@ -2,49 +2,13 @@
 
 How to set up PMM to monitor a [PostgreSQL] or [Percona Distribution for PostgreSQL] database instance.
 
-Here is an overview of the steps involved.
-
-```plantuml
-@startuml "setting-up_client_postgresql"
-!include docs/_images/plantuml_styles.puml
-'title "Setting up PMM Client to monitor a PostgreSQL host\nOverview\n"
-legend bottom left
-Legend
-<#cce6ff>| Required |
-<#lightgrey>| Optional |
-endlegend
-#lightgrey:Create a database\naccount for PMM;
-partition "Choose and configure\nan extension" {
-    split
-        -> ""pg_stat_statements"";
-        :Install\n""postgresql-contrib"";
-    split again
-        -> ""ps_stat_monitor"";
-        split
-            -> Percona distribution;
-            :Install with\nLinux package\nmanager;
-        split again
-            -> PostgreSQL;
-            :Compile from\nsource code;
-        end split
-    end split
-    :Configure extension;
-}
-partition "Add a service " {
-    split
-    -> With user interface;
-        :PMM <&arrow-thick-right>\nPMM Add Instance <&arrow-thick-right>\nPostgreSQL -\nAdd a remote instance;
-    split again
-    -> On command line;
-            :<code>
-            pmm-admin add postgresql
-            ...
-            </code>;
-    end split
-}
-#lightgrey:Check the service;
-@enduml
-```
+!!! summary alert alert-info "Summary"
+    - Create PMM account and set permissions
+    - Choose, install and configure an extension:
+        - `pg_stat_statements` or
+        - `pg_stat_monitor`
+    - Add service
+    - Check service
 
 ## Before you start
 
@@ -57,7 +21,7 @@ Check that:
 
 (PMM follows [PostgreSQL's end-of-life policy][POSTGRESQL_VERSIONING]. For specific details on supported platforms and versions, see [Percona’s Software Platform Lifecycle page][PERCONA_LIFECYCLE].)
 
-## Create a database account for PMM {: #setting-up-client-user}
+## Create a database account for PMM
 
 We recommend creating a PMM database account that can connect to the `postgres` database with the `SUPERUSER` role.
 
@@ -112,11 +76,11 @@ We recommend choosing only one of these. **If you use both, you will get duplica
 
 Here are the benefits and drawbacks of each.
 
-|                        | <i class="uil uil-thumbs-up"></i> **Benefits**                                                   | <i class="uil uil-thumbs-down"></i> **Drawbacks**
-|------------------------|----------------------------------------------------------------------------------|------------------------------------------
-| `pg_stat_statements`   | Part of official `postgresql-contrib` package                                    | No aggregated statistics or histograms
-| `pg_stat_monitor`      | Builds on `pg_stat_monitor` features                                             | Beta software
-|                        | Bucket-based aggregation                                                         |
+|                      | <i class="uil uil-thumbs-up"></i> Benefits     | <i class="uil uil-thumbs-down"></i> Drawbacks
+|----------------------|------------------------------------------------|---------------------------------------------------
+| `pg_stat_statements` | Part of official `postgresql-contrib` package  | No aggregated statistics or histograms
+| `pg_stat_monitor`    | Builds on `pg_stat_monitor` features           | Beta software
+|                      | Bucket-based aggregation                       |
 
 !!! note alert alert-primary "Bucket-based data aggregation"
     `pg_stat_monitor` collects statistics and aggregates data in a data collection unit called a *bucket*. These are linked together to form a *bucket chain*.
@@ -203,7 +167,7 @@ You can now [add the service](#add-service).
     !!! note alert alert-primary ""
         See [`pg_stat_monitor` GitHub repository](https://github.com/percona/pg_stat_monitor/blob/master/docs/USER_GUIDE.md#configuration) for details about available parameters.
 
-3. Set bucket time to 60 seconds
+3. Set bucket time to 60 seconds.
 
     ```sql
     ALTER SYSTEM SET pg_stat_monitor.pgsm_bucket_time=60;
@@ -230,8 +194,11 @@ When you have configured your database server, you can add a PostgreSQL service 
 ### With the user interface
 
 1. Select <i class="uil uil-cog"></i> *Configuration* → {{icon.inventory}} *PMM Inventory* → {{icon.addinstance}} *Add Instance*.
+
 2. Select *PostgreSQL -- Add a remote instance*.
+
 3. Enter or select values for the fields.
+
 4. Click *Add service*.
 
 ![!](../../_images/PMM_Add_Instance_PostgreSQL.jpg)
@@ -292,8 +259,10 @@ where:
 
 ### Check service - PMM user interface
 
-1. Select <i class="uil uil-cog"></i> *Configuration* → {{icon.inventory}} *PMM Inventory* → {{icon.inventory}} *Inventory list*
+1. Select <i class="uil uil-cog"></i> *Configuration* → {{icon.inventory}} *PMM Inventory* → {{icon.inventory}} *Inventory list*.
+
 2. Look in the *Services* tab for a matching *Service Type* (PostgreSQL), *Service name*, *Addresses*, and any other details entered in the form.
+
 3. Look in the *Agents* tab to check the desired data source is being used.
 
 ### Check service - Command line
@@ -310,6 +279,7 @@ pmm-admin inventory list services
 ### Check data
 
 1. Open the *PostgreSQL Instance Summary* dashboard.
+
 2. Set the *Service Name* to the newly-added service.
 
 !!! seealso alert alert-info "See also"

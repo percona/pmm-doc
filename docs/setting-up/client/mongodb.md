@@ -2,33 +2,11 @@
 
 How to set up PMM to monitor a [MongoDB] or [Percona Server for MongoDB] database instance.
 
-Here is an overview of the steps involved.
-
-```plantuml
-@startuml "setting-up_client_mongodb"
-!include docs/_images/plantuml_styles.puml
-legend bottom left
-Legend
-<#cce6ff>| Required |
-<#lightgrey>| Optional |
-endlegend
-:Create PMM account and\nset permissions;
-#lightgrey:Configure profiling;
-partition "Add a service " {
-    split
-    -> With user interface;
-        :PMM <&arrow-thick-right>\nPMM Add Instance <&arrow-thick-right>\nMongoDB -\nAdd a remote instance;
-    split again
-    -> On command line;
-            :<code>
-            pmm-admin add mongodb
-            ...
-            </code>;
-    end split
-}
-#lightgrey:Check the service;
-@enduml
-```
+!!! summary alert alert-info "Summary"
+    - Create PMM account and set permissions
+    - Configure profiling
+    - Add service
+    - Check service
 
 ## Before you start
 
@@ -72,8 +50,8 @@ db.getSiblingDB("admin").createRole({
 })
 
 db.getSiblingDB("admin").createUser({
-   user: "{{pmm_mongodb_user}}",
-   pwd: "{{pmm_password}}",
+   user: "pmm_mongodb",
+   pwd: "password",
    roles: [
       { role: "explainRole", db: "admin" },
       { role: "clusterMonitor", db: "admin" },
@@ -150,8 +128,11 @@ When you have configured your database server, you can add a MongoDB service wit
 ### With the user interface
 
 1. Select <i class="uil uil-cog"></i> *Configuration* → {{icon.inventory}} *PMM Inventory* → {{icon.addinstance}} *Add Instance*.
+
 2. Select *MongoDB -- Add a remote instance*.
+
 3. Enter or select values for the fields.
+
 4. Click *Add service*.
 
 ![!](../../_images/PMM_Add_Instance_MongoDB.jpg)
@@ -170,19 +151,19 @@ When successful, PMM Client will print `MongoDB Service added` with the service'
 
 ```sh
 pmm-admin add mongodb \
---username={{pmm_mongodb_user}} --password={{pmm_password}} \
+--username=pmm_mongodb --password=password \
 --query-source=profiler --cluster=mycluster
 ```
 
 ```sh
 pmm-admin add mongodb \
---username={{pmm_mongodb_user}} --password={{pmm_password}} \
+--username=pmm_mongodb --password=password \
 mongo 127.0.0.1:27017
 ```
 
 ```sh
 pmm-admin add mongodb \
---username={{pmm_mongodb_user}} --password={{pmm_password}} \
+--username=pmm_mongodb --password=password \
 --service-name=mymongosvc --host=127.0.0.1 --port=27017
 ```
 
@@ -209,13 +190,13 @@ where:
 
 ## Check the service
 
-### PMM user interface
+### With the user interface
 
 1. Select <i class="uil uil-cog"></i> *Configuration* → {{icon.inventory}} *PMM Inventory* → {{icon.inventory}} *Inventory list*.
 2. Look in the *Services* tab for a matching *Service Type* (MongoDB), *Service name*, *Addresses*, and any other values used when adding the service.
 3. Look in the *Agents* tab to check the desired data source is being used.
 
-### Command line
+### On the command line
 
 Look for your service in the output of this command.
 
