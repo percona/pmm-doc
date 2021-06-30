@@ -332,6 +332,13 @@ dnf localinstall *.rpm
 
 5. Run the installer.
 
+    **If you dont have root permissions run this command before:
+    ```sh
+    PMM_DIR=YOURPATH
+    ```
+    where YOURPATH replace with you real path, where you have required access.
+
+
     This command require root permissions.
     ```sh
     ./install_tarball
@@ -340,23 +347,23 @@ dnf localinstall *.rpm
 6. Change the path.
 
     ```sh
-    PATH=$PATH:/usr/local/percona/pmm2/bin
+    PATH=$PATH:$PMM_DIR/bin
     ```
 
 7. Set up the agent
 
     This command require root permissions.
     ```sh
-    pmm-agent setup --config-file=/usr/local/percona/pmm2/config/pmm-agent.yaml --server-address=192.168.1.123 --server-insecure-tls --server-username=admin --server-password=admin
+    pmm-agent setup --config-file=$PMM_DIR/config/pmm-agent.yaml --server-address=192.168.1.123 --server-insecure-tls --server-username=admin --server-password=admin
     ```
 
-8. Open a new terminal and run the agent.
+8. Run the agent.
 
     ```sh
-    PATH=$PATH:/usr/local/percona/pmm2/bin pmm-agent --config-file=/usr/local/percona/pmm2/config/pmm-agent.yaml
+    pmm-agent --config-file=$PMM_DIR/config/pmm-agent.yaml
     ```
 
-9. In the first terminal, check.
+9. Open a new terminal and check.
 
     ```sh
     pmm-admin status
