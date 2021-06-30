@@ -32,7 +32,7 @@
 
 
 
-<title>Percona Monitoring and Management &mdash; PMM 2.15.1</title>
+<title>Percona Monitoring and Management &mdash; PMM 2.19.0</title>
 
 <head>
     
@@ -61,7 +61,7 @@
 
     <link rel="top" title="" href="https://www.percona.com/doc/percona-monitoring-and-management/2.x" />
     
-    <link rel="next" title="PMM 2.15.0" href="2.15.0.html" />
+    <link rel="next" title="PMM 2.18.0" href="2.18.0.html" />
     
     
 </head>
@@ -104,12 +104,12 @@
     <ul class="nav nav-pills">
         
         <li class="right" style="margin-right: 10px">
-            <a href="2.15.0.html" title="PMM 2.15.0">Next</a>
+            <a href="2.18.0.html" title="PMM 2.18.0">Next</a>
         </li>
         
         
         <li class="right" style="margin-right: 10px">
-            <a href="2.16.0.html" title="PMM 2.16.0">Previous</a>
+            <a href="index.html" title="Release Notes">Previous</a>
         </li>
         
         <li>
@@ -123,7 +123,7 @@
 <div class="small">
     <ul class="list-inline">
         <li class="pull-right">
-            <a href="https://github.com/percona/pmm-doc/edit/main/docs/release-notes/2.15.1.md" target="_blank" title="Edit this page on GitHub in Markdown format"><i class="uil uil-pen"></i> Edit this page</a>
+            <a href="https://github.com/percona/pmm-doc/edit/main/docs/release-notes/2.19.0.md" target="_blank" title="Edit this page on GitHub in Markdown format"><i class="uil uil-pen"></i> Edit this page</a>
         </li>
     </ul>
 </div>
@@ -131,7 +131,8 @@
 
                 <div class="bodywrapper">
                     <div class="body">
-                        <h1 id="percona-monitoring-and-management-2151">Percona Monitoring and Management 2.15.1<a class="headerlink" href="#percona-monitoring-and-management-2151" title="Permanent link">&para;</a></h1>
+                        <p><link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"></p>
+<h1 id="percona-monitoring-and-management-2190">Percona Monitoring and Management 2.19.0<a class="headerlink" href="#percona-monitoring-and-management-2190" title="Permanent link">&para;</a></h1>
 <table class="docutils field-list" frame="void" rules="none">
   <colgroup>
     <col class="field-name">
@@ -140,7 +141,7 @@
   <tbody valign="top">
     <tr class="field-odd field">
       <th class="field-name">Date:</th>
-      <td class="field-body">March 18, 2021</td>
+      <td class="field-body">June 30, 2021</td>
     </tr>
     <tr class="field-even field">
       <th class="field-name">Installation:</th>
@@ -152,13 +153,71 @@
 
 <p>Percona Monitoring and Management (PMM) is a free and open-source platform for managing and monitoring MySQL, MongoDB, and PostgreSQL performance.</p>
 <h2 id="release-highlights">Release Highlights<a class="headerlink" href="#release-highlights" title="Permanent link">&para;</a></h2>
-<p>This patch release fixes performance issues discovered in systems, together with other small fixes.</p>
+<ul>
+<li>
+<p>Backup Management can now be enabled from the UI. Go to <i class="uil uil-cog"></i> <em>Configuration</em> → <i class="uil uil-setting"></i> <em>Settings</em> → <em>Advanced Settings</em>, and you will see it in the <em>Technical Preview</em> section. We also added support for MongoDB services on-demand backup and restore. For now, it only supports ReplicaSet on S3-compatible storage.</p>
+</li>
+<li>
+<p>Dashboards improvements</p>
+<ul>
+<li>
+<p>There are several community-driven improvements to ProxySQL data collection, with new dashboards to expose such metrics like: <em>Queries Latency histograms</em> and <code>SHUNNED_REPLICATION_LAG</code> state.</p>
+</li>
+<li>
+<p>Fixes for Amazon Aurora service detection on <a href="https://pmmdemo.percona.com/graph/d/mysql-amazonaurora/mysql-amazon-aurora-details?var-service_name=rds-aurora57-instance-1">the dashboard</a>, MongoDB ReplicaSet Summary, and other MongoDB memory-related panels.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Improvements to DBaaS secrets by generating strong passwords for operators. This is an improvement to the Automated Operator Installation released in <a href="2.18.0.html">PMM 2.18</a>, which will greatly enhance security.</p>
+</li>
+</ul>
+<h2 id="new-features">New Features<a class="headerlink" href="#new-features" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://jira.percona.com/browse/PMM-7639">PMM-7639</a>: Backup Management: Ability to remove Backup Location even if there are some backup artifacts on it</li>
+<li><a href="https://jira.percona.com/browse/PMM-7567">PMM-7567</a>: Backup Management: Simple backup for MongoDB ReplicaSet</li>
+<li><a href="https://jira.percona.com/browse/PMM-7568">PMM-7568</a>: Backup Management: Simple restore for MongoDB ReplicaSet</li>
+</ul>
+<h2 id="improvements">Improvements<a class="headerlink" href="#improvements" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://jira.percona.com/browse/PMM-8112">PMM-8112</a>: Dashboards: Collect and present histograms from ProxySQL on Queries Latency dashboard (Thanks to <a href="https://github.com/foosinn">foosinn</a> for helping with this improvement)</li>
+<li><a href="https://jira.percona.com/browse/PMM-8081">PMM-8081</a>: Dashboards: Add collection and presentation for <code>SHUNNED_REPLICATION_LAG</code> state to <code>proxysql_connection_pool_status</code> (Thanks to <a href="https://github.com/spaceform">spaceform</a> for helping with this improvement)</li>
+<li><a href="https://jira.percona.com/browse/PMM-7584">PMM-7584</a>: Components Upgrade: VictoriaMetrics 1.53.1 to <a href="https://github.com/VictoriaMetrics/VictoriaMetrics/releases/tag/v1.60.0">1.60.0</a></li>
+<li><a href="https://jira.percona.com/browse/PMM-8001">PMM-8001</a>: Better error handling when <code>pg_stat_monitor</code> is an unsupported version</li>
+<li><a href="https://jira.percona.com/browse/PMM-7659">PMM-7659</a>: DBaaS: Ability to specify the type of connection for DBaaS cluster during DB Cluster creation</li>
+<li><a href="https://jira.percona.com/browse/PMM-7828">PMM-7828</a>: DBaaS: Select Database Type by default if only one operator is installed</li>
+<li><a href="https://jira.percona.com/browse/PMM-8153">PMM-8153</a>: Backup Management: Disable &lsquo;Restore&rsquo; button for backups whose service has been deleted</li>
+</ul>
 <h2 id="bugs-fixed">Bugs Fixed<a class="headerlink" href="#bugs-fixed" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a href="https://jira.percona.com/browse/PMM-7635">PMM-7635</a>: Fix high CPU consumption by Grafana server after upgrade by docker replacement to 2.15.0 with large numbers of services in &lsquo;push&rsquo; mode.</li>
-<li><a href="https://jira.percona.com/browse/PMM-7713">PMM-7713</a>: Fix high CPU and Memory consumption by Victoria Metrics after upgrade by docker replacement to 2.15.0 with large numbers of services in &lsquo;pull&rsquo; mode.</li>
-<li><a href="https://jira.percona.com/browse/PMM-7470">PMM-7470</a>: MongoDB exporter <code>IndexStatsCollections</code> is assigned values from wrong flag (intended for 2.15.0, omitted due to missing merge cutoff) (Thanks to Tim for reporting this issue).</li>
-<li><a href="https://jira.percona.com/browse/PMM-1531">PMM-1531</a>: Metrics not being collected due to rename of MySQL 8 information schema tables.</li>
+<li><a href="https://jira.percona.com/browse/PMM-7194">PMM-7194</a>: &lsquo;Share with Percona&rsquo; option doesn&rsquo;t export data from collapsed panels</li>
+<li><a href="https://jira.percona.com/browse/PMM-8060">PMM-8060</a>: User cannot add remote instances after OVF/AMI upgrade (previously was Known Issue)</li>
+<li><a href="https://jira.percona.com/browse/PMM-7104">PMM-7104</a>: Slowlog rotation by pmm-agent causing additional unexpected rotation of binary logs (Thanks to Arthur Tokarchuk for reporting this issue)</li>
+<li><a href="https://jira.percona.com/browse/PMM-8125">PMM-8125</a>: Error of monitoring GCP based PostgreSQL because of internal database <code>cloudsqladmin</code></li>
+<li><a href="https://jira.percona.com/browse/PMM-6778">PMM-6778</a>: Can&rsquo;t specify custom labels during node addition/configuration</li>
+<li><a href="https://jira.percona.com/browse/PMM-8090">PMM-8090</a>: Multi-request protection breaks metrics gathering (Thanks to <a href="https://github.com/fmbiete">Francisco Miguel Biete</a> for fixing this bug)</li>
+<li><a href="https://jira.percona.com/browse/PMM-5248">PMM-5248</a>: InnoDB TableSpace data is not collected for Percona Server 8</li>
+<li><a href="https://jira.percona.com/browse/PMM-4665">PMM-4665</a>: User&rsquo;s log file contains error messages about TokuDB and heartbeat despite not being used</li>
+<li><a href="https://jira.percona.com/browse/PMM-8014">PMM-8014</a>: Error when adding Amazon RDS MySQL with TLS over API</li>
+<li><a href="https://jira.percona.com/browse/PMM-3352">PMM-3352</a>: Low file descriptors limit (1024) with AMI or OVF images causes errors</li>
+<li><a href="https://jira.percona.com/browse/PMM-7948">PMM-7948</a>: <code>pmm-admin list</code> reports the wrong Node for External Services</li>
+<li><a href="https://jira.percona.com/browse/PMM-6295">PMM-6295</a>: Unclear/Incorrect statuses of the pmm-agent when Agent or PMM server went down (Thanks to Mikhail Solovyev for reporting this issue)</li>
+<li><a href="https://jira.percona.com/browse/PMM-5917">PMM-5917</a>: pmm-agent moves slow logs without checking privileges</li>
+<li><a href="https://jira.percona.com/browse/PMM-8021">PMM-8021</a>: &ldquo;Query Analytics&rdquo; misspelt on left side menu</li>
+<li><a href="https://jira.percona.com/browse/PMM-5283">PMM-5283</a>: Inconsistency with lengths of Example and Fingerprints in Query Analytics</li>
+<li><a href="https://jira.percona.com/browse/PMM-8121">PMM-8121</a>: Error message and help for &ldquo;Remove Service&rdquo; command is not helpful</li>
+<li><a href="https://jira.percona.com/browse/PMM-8196">PMM-8196</a>: Additional spaces in email/passwords fields on Sign up/Login pages causes Authentication problems</li>
+<li><a href="https://jira.percona.com/browse/PMM-8009">PMM-8009</a>: Long First/Last names causes errors when used in Register/Login form</li>
+<li><a href="https://jira.percona.com/browse/PMM-8220">PMM-8220</a>: Dashboards: Active Time Series Changes on Victoria Metrics dashboard report no data</li>
+<li><a href="https://jira.percona.com/browse/PMM-8202">PMM-8202</a>: Dashboards: No Amazon Aurora services are available on MySQL Amazon Aurora Details dashboard for selection</li>
+<li><a href="https://jira.percona.com/browse/PMM-8085">PMM-8085</a>: Dashboards: Wrong units are used in MongoDB dashboards on memory-related panels</li>
+<li><a href="https://jira.percona.com/browse/PMM-7154">PMM-7154</a>: Dashboards: No data on some panels from MongoDB ReplSet Summary dashboard</li>
+<li><a href="https://jira.percona.com/browse/PMM-8115">PMM-8115</a>: DBaaS: Delete PSMDB cluster action takes too long</li>
+<li><a href="https://jira.percona.com/browse/PMM-7737">PMM-7737</a>: DBaaS: Replace all default passwords in operator secrets during installation</li>
+<li><a href="https://jira.percona.com/browse/PMM-7970">PMM-7970</a>: DBaaS: Confusing message for Cluster name pattern on DB Cluster creation screen</li>
+<li><a href="https://jira.percona.com/browse/PMM-7755">PMM-7755</a>: DBaaS: Clusters with longer name not initializing</li>
+<li><a href="https://jira.percona.com/browse/PMM-7528">PMM-7528</a>: DBaaS: Error after Kubernetes cluster destroyed or removed externally to DBaaS</li>
+<li><a href="https://jira.percona.com/browse/PMM-8013">PMM-8013</a>: Backup Management: Unable to get Backup Artifact list after Service removal</li>
 </ul>
                     </div>
                 </div>
@@ -167,7 +226,7 @@
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-06-25
+            <i class="uil uil-refresh"></i> Page updated 2021-06-30
         </li>
         
     </ul>
@@ -178,12 +237,12 @@
     <ul class="nav nav-pills">
         
         <li class="right" style="margin-right: 10px">
-            <a href="2.15.0.html" title="PMM 2.15.0">Next</a>
+            <a href="2.18.0.html" title="PMM 2.18.0">Next</a>
         </li>
         
         
         <li class="right" style="margin-right: 10px">
-            <a href="2.16.0.html" title="PMM 2.16.0">Previous</a>
+            <a href="index.html" title="Release Notes">Previous</a>
         </li>
         
         <li>
@@ -1113,13 +1172,13 @@
 
 <h4>Previous page</h4>
 <p class="topless">
-    <a href="2.16.0.html" title="previous chapter">PMM 2.16.0</a>
+    <a href="index.html" title="previous chapter">Release Notes</a>
 </p>
 
 
 <h4>Next page</h4>
 <p class="topless">
-    <a href="2.15.0.html" title="next chapter">PMM 2.15.0</a>
+    <a href="2.18.0.html" title="next chapter">PMM 2.18.0</a>
 </p>
 
 
