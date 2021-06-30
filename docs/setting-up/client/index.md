@@ -332,7 +332,7 @@ dnf localinstall *.rpm
 
 5. Run the installer.
 
-    **If you dont have root permissions run this command before:
+    **If you dont have root permissions run this command before:**
     ```sh
     PMM_DIR=YOURPATH
     ```
