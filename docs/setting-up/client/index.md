@@ -339,7 +339,7 @@ dnf localinstall *.rpm
     where YOURPATH replace with you real path, where you have required access.
 
 
-    This command require root permissions.
+    This command require root permissions (if you skipped step above).
     ```sh
     ./install_tarball
     ```
