@@ -234,6 +234,7 @@ You can now add services with [`pmm-admin`](../../details/commands/pmm-admin.md)
 
 2. Install the PMM Client package.
 
+    These commands require root permissions.
     ```sh
     apt update
     apt install -y pmm2-client
@@ -331,6 +332,7 @@ dnf localinstall *.rpm
 
 5. Run the installer.
 
+    This command require root permissions.
     ```sh
     ./install_tarball
     ```
@@ -343,6 +345,7 @@ dnf localinstall *.rpm
 
 7. Set up the agent
 
+    This command require root permissions.
     ```sh
     pmm-agent setup --config-file=/usr/local/percona/pmm2/config/pmm-agent.yaml --server-address=192.168.1.123 --server-insecure-tls --server-username=admin --server-password=admin
     ```
