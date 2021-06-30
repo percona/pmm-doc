@@ -234,11 +234,11 @@ You can now add services with [`pmm-admin`](../../details/commands/pmm-admin.md)
 
 2. Install the PMM Client package.
 
-    These commands require root permissions.
-    ```sh
-    apt update
-    apt install -y pmm2-client
-    ```
+    !!! hint "Root permissions"
+        ```sh
+        apt update
+        apt install -y pmm2-client
+        ```
 
 3. Check.
 
@@ -332,14 +332,16 @@ dnf localinstall *.rpm
 
 5. Run the installer.
 
-    **If you dont have root permissions run this command before:**
-    ```sh
-    PMM_DIR=YOURPATH
-    ```
-    where YOURPATH replace with you real path, where you have required access.
+    !!! caution alert alert-warning "Non root users"
+        Run this command before next step:
+        ```sh
+        PMM_DIR=YOURPATH
+        ```
+        where YOURPATH replace with you real path, where you have required access.  
 
+        **Node, MySQL and PostgreSQL exporters wont be avalaible.**
 
-    This command require root permissions (if you skipped step above).
+    This command require root permissions (if you skipped step for non root users).
     ```sh
     ./install_tarball
     ```
@@ -352,15 +354,15 @@ dnf localinstall *.rpm
 
 7. Set up the agent
 
-    This command require root permissions.
-    ```sh
-    pmm-agent setup --config-file=$PMM_DIR/config/pmm-agent.yaml --server-address=192.168.1.123 --server-insecure-tls --server-username=admin --server-password=admin
-    ```
+    !!! hint "Root permissions"
+        ```sh
+        pmm-agent setup --config-file=${PMM_DIR}/config/pmm-agent.yaml --server-address=192.168.1.123 --server-insecure-tls --server-username=admin --server-password=admin
+        ```
 
 8. Run the agent.
 
     ```sh
-    pmm-agent --config-file=$PMM_DIR/config/pmm-agent.yaml
+    pmm-agent --config-file=${PMM_DIR}/config/pmm-agent.yaml
     ```
 
 9. Open a new terminal and check.
