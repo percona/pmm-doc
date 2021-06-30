@@ -216,7 +216,7 @@ Here's how it's done.
 The overlay image is merged with a copy of the latest home dashboard using [composite], one of the [ImageMagick] tools.
 
 ```sh
-$composite docs/_images/PMM_Home_Dashboard_Overlay.png docs/_images/PMM_Home_Dashboard.jpg docs/_images/PMM_Home_Dashboard_Numbered.png
+composite docs/_images/PMM_Home_Dashboard_Overlay.png docs/_images/PMM_Home_Dashboard.jpg docs/_images/PMM_Home_Dashboard_Numbered.png
 ```
 
 ## Spelling and grammar
@@ -224,14 +224,14 @@ $composite docs/_images/PMM_Home_Dashboard_Overlay.png docs/_images/PMM_Home_Das
 The GitHub actions build job performs a basic spell and grammar check. You can do these yourself on the command line if you have [Node.js] installed.
 
 ```sh
-$npm i markdown-spellcheck -g
-$mdspell --report --en-us --ignore-acronyms --ignore-numbers docs/<path to file>.md
+npm i markdown-spellcheck -g
+mdspell --report --en-us --ignore-acronyms --ignore-numbers docs/<path to file>.md
 ```
 
 To check all files:
 
 ```sh
-$mdspell --report --en-us --ignore-acronyms --ignore-numbers "docs/**/*.md"
+mdspell --report --en-us --ignore-acronyms --ignore-numbers "docs/**/*.md"
 ```
 
 Add any custom dictionary words to `.spelling`. If spell checking fails, the GitHub action will fail too, but after the MkDocs build and so can be safely ignored. The `publish` branch will still have the latest build and can be used. Meanwhile, see what the spelling error is and either fix it or add the word to `.spelling`.
