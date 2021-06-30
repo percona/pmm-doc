@@ -26,6 +26,8 @@ DATABASE:= [[MongoDB](#mongodb) | [MySQL](#mysql) | [PostgreSQL](#postgresql) | 
 
 `pmm-admin register [FLAGS] [node-address] [node-type] [node-name]`
 
+`pmm-admin unregister [FLAGS] [node-address] [node-type] [node-name]`
+
 `pmm-admin list [FLAGS] [node-address]`
 
 `pmm-admin status [FLAGS] [node-address]`
@@ -144,6 +146,38 @@ PMM communicates with the PMM Server via a PMM agent process.
 
 `pmm-admin register [FLAGS] [node-address] [node-type] [node-name]`
 : Register the current Node with the PMM Server.
+
+    `--server-url=server-url`
+    : PMM Server URL in `https://username:password@pmm-server-host/` format.
+
+    `--machine-id="/machine_id/9812826a1c45454a98ba45c56cc4f5b0"`
+    : Node machine-id (default is auto-detected).
+
+    `--distro="linux"`
+    : Node OS distribution (default is auto-detected).
+
+    `--container-id=container-id`
+    : Container ID.
+
+    `--container-name=container-name`
+    : Container name.
+
+    `--node-model=node-model`
+    : Node model.
+
+    `--region=region`
+    : Node region.
+
+    `--az=availability-zone`
+    : Node availability zone.
+
+    `--custom-labels=labels`
+    : Custom user-assigned labels.
+
+#### `pmm-admin unregister`
+
+`pmm-admin unregister [FLAGS] [node-address] [node-type] [node-name]`
+: Unregister the current Node with the PMM Server.
 
     `--server-url=server-url`
     : PMM Server URL in `https://username:password@pmm-server-host/` format.
