@@ -40,7 +40,7 @@ If you'd like to have a local copy of PMM documentation, or are thinking about c
 4. Use our [PMM documentation Docker image] to *build the documentation*:
 
     ```sh
-    docker run --rm -v $(pwd):/docs perconalab/pmm-doc-md mkdocs build
+    $docker run --rm -v $(pwd):/docs perconalab/pmm-doc-md mkdocs build
     ```
 
 5. Find the `site` directory, open `index.html` in a browser to view the first page of documentation.
@@ -48,7 +48,7 @@ If you'd like to have a local copy of PMM documentation, or are thinking about c
 If you want to see how things look as you edit, MkDocs has a built-in server for live previewing. After (or instead of) building, run:
 
 ```sh
-docker run --rm -v $(pwd):/docs -p 8000:8000 perconalab/pmm-doc-md mkdocs serve --dev-addr=0.0.0.0:8000
+$docker run --rm -v $(pwd):/docs -p 8000:8000 perconalab/pmm-doc-md mkdocs serve --dev-addr=0.0.0.0:8000
 ```
 
 Wait until you see `INFO    -  Start detecting changes` then point your browser to [http://0.0.0.0:8000](http://0.0.0.0:8000).
@@ -62,13 +62,13 @@ Wait until you see `INFO    -  Start detecting changes` then point your browser 
 2. Install MkDocs and required extensions:
 
     ```sh
-    pip install -r requirements.txt
+    $pip install -r requirements.txt
     ```
 
 3. Build the site:
 
     ```sh
-    mkdocs build
+    $mkdocs build
     ```
 
 4. Open `site/index.html`
@@ -76,7 +76,7 @@ Wait until you see `INFO    -  Start detecting changes` then point your browser 
 Or, to run the built-in web server:
 
 ```sh
-mkdocs serve
+$mkdocs serve
 ```
 
 View the site at <http://0.0.0.0:8000>
@@ -95,13 +95,13 @@ View the site at <http://0.0.0.0:8000>
     - With Docker:
 
         ```sh
-        docker run --rm -v $(pwd):/docs perconalab/pmm-doc-md mkdocs build -f mkdocs-pdf.yml
+        $docker run --rm -v $(pwd):/docs perconalab/pmm-doc-md mkdocs build -f mkdocs-pdf.yml
         ```
 
     - Without:
 
         ```sh
-        mkdocs build -f mkdocs-pdf.yml
+        $mkdocs build -f mkdocs-pdf.yml
         ```
 
 3. The PDF is in `site/_pdf`.
@@ -216,7 +216,7 @@ Here's how it's done.
 The overlay image is merged with a copy of the latest home dashboard using [composite], one of the [ImageMagick] tools.
 
 ```sh
-composite docs/_images/PMM_Home_Dashboard_Overlay.png docs/_images/PMM_Home_Dashboard.jpg docs/_images/PMM_Home_Dashboard_Numbered.png
+$composite docs/_images/PMM_Home_Dashboard_Overlay.png docs/_images/PMM_Home_Dashboard.jpg docs/_images/PMM_Home_Dashboard_Numbered.png
 ```
 
 ## Spelling and grammar
@@ -224,22 +224,26 @@ composite docs/_images/PMM_Home_Dashboard_Overlay.png docs/_images/PMM_Home_Dash
 The GitHub actions build job performs a basic spell and grammar check. You can do these yourself on the command line if you have [Node.js] installed.
 
 ```sh
-npm i markdown-spellcheck -g
-mdspell --report --en-us --ignore-acronyms --ignore-numbers docs/<path to file>.md
+$npm i markdown-spellcheck -g
+$mdspell --report --en-us --ignore-acronyms --ignore-numbers docs/<path to file>.md
 ```
 
 To check all files:
 
 ```sh
-mdspell --report --en-us --ignore-acronyms --ignore-numbers "docs/**/*.md"
+$mdspell --report --en-us --ignore-acronyms --ignore-numbers "docs/**/*.md"
 ```
 
 Add any custom dictionary words to `.spelling`. If spell checking fails, the GitHub action will fail too, but after the MkDocs build and so can be safely ignored. The `publish` branch will still have the latest build and can be used. Meanwhile, see what the spelling error is and either fix it or add the word to `.spelling`.
 
 Grammar is checked using [`write-good`](https://github.com/btford/write-good). (The results of this check are ignored and don't affect the GitHub action.)
 
+This command require root permissions.
 ```sh
 npm i write-good -g
+```
+
+```sh
 write-good docs/<path to file>.md
 ```
 
