@@ -64,7 +64,7 @@ mindmapDiagram {
 +++_ [[$base/using/interface.html User interface]]
 +++_ [[$base/using/query-analytics.html Using Query Analytics]]
 +++_ [[$base/using/alerting.html Using Integrated Alerting]]
-+++_ [[$base/using/dbaas.html DBaaS]]
++++_ [[$base/using/dbaas.html Using DBaaS]]
 +++_ [[$base/details/dashboards/ Dashboards reference]]
 @endmindmap
 ```
