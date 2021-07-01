@@ -26,7 +26,7 @@ DATABASE:= [[MongoDB](#mongodb) | [MySQL](#mysql) | [PostgreSQL](#postgresql) | 
 
 `pmm-admin register [FLAGS] [node-address] [node-type] [node-name]`
 
-`pmm-admin unregister [FLAGS] [node-address] [node-type] [node-name]`
+`pmm-admin unregister [FLAGS]`
 
 `pmm-admin list [FLAGS] [node-address]`
 
@@ -182,29 +182,11 @@ PMM communicates with the PMM Server via a PMM agent process.
     `--server-url=server-url`
     : PMM Server URL in `https://username:password@pmm-server-host/` format.
 
-    `--machine-id="/machine_id/9812826a1c45454a98ba45c56cc4f5b0"`
-    : Node machine-id (default is auto-detected).
+    `--node-name=099eb70ff64c`
+    : Optional Node name to unregister. By default, the local node is unregistered.
 
-    `--distro="linux"`
-    : Node OS distribution (default is auto-detected).
-
-    `--container-id=container-id`
-    : Container ID.
-
-    `--container-name=container-name`
-    : Container name.
-
-    `--node-model=node-model`
-    : Node model.
-
-    `--region=region`
-    : Node region.
-
-    `--az=availability-zone`
-    : Node availability zone.
-
-    `--custom-labels=labels`
-    : Custom user-assigned labels.
+    `--force`
+    : Force unregistering the node even if it has agents. Also removes the agents.
 
 #### `pmm-admin remove`
 
