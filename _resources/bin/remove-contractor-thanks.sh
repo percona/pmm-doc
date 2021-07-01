@@ -9,9 +9,6 @@ NAMES=(
     "Beata Handzelova"
     "Vojtech Koval"
     "David Mikus"
-    "Jiří Čtvrtka"
-    "Jan Prukner"
-    "Ivana Brecherova"
     )
 
 FILE=$1
