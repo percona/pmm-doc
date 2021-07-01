@@ -8,7 +8,8 @@ There are different ways to install PMM Client on a node and register it with PM
     - On Debian or Red Hat Linux, install `percona-release` and use a Linux package manager (`apt`/`dnf`) to install PMM Client.
     - On Debian or Red Hat, download `.deb`/`.rpm` PMM Client packages and manually install them.
 
-- [Binary package](#binary-package): For other Linux distributions, download and unpack generic PMM Client Linux binaries.
+!!! hint alert "Binary is only way to install PMM client without root permissions"
+    - [Binary package](#binary-package): For other Linux distributions, download and unpack generic PMM Client Linux binaries. 
 
 When you have installed PMM Client, you must:
 
