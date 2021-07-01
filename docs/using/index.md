@@ -10,6 +10,8 @@
 
 - [Integrated alerting](alerting.md)
 
+- [Backup and Restore](backup.md)
+
 - [Query Analytics](query-analytics.md), a specialized dashboard for detailed query analysis
 
 - [Security Threat Tool](security-threat-tool.md): Enabling and seeing the results of database security checks
@@ -27,5 +29,3 @@
     To use these features you must be logged in as a PMM Admin user and activate the features.
 
     If you are logged in as a user that has a Viewer or Editor role you'll see an 'insufficient access' message when trying to use these features.
-
-    ![!](../_images/PMM_Platform_Insufficient_Access.jpg)
