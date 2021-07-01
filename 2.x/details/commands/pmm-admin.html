@@ -145,7 +145,6 @@
 <p><code>pmm-admin add external-serverless [FLAGS] [NAME] [ADDRESS]</code></p>
 <p><code>pmm-admin remove [FLAGS] service-type [service-name]</code></p>
 <p><code>pmm-admin register [FLAGS] [node-address] [node-type] [node-name]</code></p>
-<p><code>pmm-admin unregister [FLAGS]</code></p>
 <p><code>pmm-admin list [FLAGS] [node-address]</code></p>
 <p><code>pmm-admin status [FLAGS] [node-address]</code></p>
 <p><code>pmm-admin summary [FLAGS] [node-address]</code></p>
@@ -264,21 +263,6 @@
 <dd>Node availability zone.</dd>
 <dt><code>--custom-labels=labels</code></dt>
 <dd>Custom user-assigned labels.</dd>
-</dl>
-</dd>
-</dl>
-<h4 id="pmm-admin-unregister"><code>pmm-admin unregister</code><a class="headerlink" href="#pmm-admin-unregister" title="Permanent link">&para;</a></h4>
-<dl>
-<dt><code>pmm-admin unregister [FLAGS] [node-address] [node-type] [node-name]</code></dt>
-<dd>
-<p>Unregister the current Node with the PMM Server.</p>
-<dl>
-<dt><code>--server-url=server-url</code></dt>
-<dd>PMM Server URL in <code>https://username:password@pmm-server-host/</code> format.</dd>
-<dt><code>--node-name=099eb70ff64c</code></dt>
-<dd>Optional Node name to unregister. By default, the local node is unregistered.</dd>
-<dt><code>--force</code></dt>
-<dd>Force unregistering the node even if it has agents. Also removes the agents.</dd>
 </dl>
 </dd>
 </dl>
