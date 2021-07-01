@@ -18,7 +18,7 @@ pmm-agent, part of the PMM Client package, runs as a daemon process on all monit
 : Run pmm-agent (default)
 
 `pmm-agent setup [node-address] [node-type] [node-name]`
-: Configure local pmm-agent (require root permissions)
+: Configure local pmm-agent (requires root permissions)
 
 `pmm-agent help [command]`
 : Show help (for command) and exit
