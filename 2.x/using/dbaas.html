@@ -32,7 +32,7 @@
 
 
 
-<title>Percona Monitoring and Management &mdash; PMM 2.1.0</title>
+<title>Percona Monitoring and Management &mdash; DBaaS</title>
 
 <head>
     
@@ -61,7 +61,7 @@
 
     <link rel="top" title="" href="https://www.percona.com/doc/percona-monitoring-and-management/2.x" />
     
-    <link rel="next" title="PMM 2.0.1" href="2.0.1.html" />
+    <link rel="next" title="Security Threat Tool" href="security-threat-tool.html" />
     
     
 </head>
@@ -104,12 +104,12 @@
     <ul class="nav nav-pills">
         
         <li class="right" style="margin-right: 10px">
-            <a href="2.0.1.html" title="PMM 2.0.1">Next</a>
+            <a href="security-threat-tool.html" title="Security Threat Tool">Next</a>
         </li>
         
         
         <li class="right" style="margin-right: 10px">
-            <a href="2.2.0.html" title="PMM 2.2.0">Previous</a>
+            <a href="query-analytics.html" title="Query Analytics">Previous</a>
         </li>
         
         <li>
@@ -123,7 +123,7 @@
 <div class="small">
     <ul class="list-inline">
         <li class="pull-right">
-            <a href="https://github.com/percona/pmm-doc/edit/main/docs/release-notes/2.1.0.md" target="_blank" title="Edit this page on GitHub in Markdown format"><i class="uil uil-pen"></i> Edit this page</a>
+            <a href="https://github.com/percona/pmm-doc/edit/main/docs/using/dbaas.md" target="_blank" title="Edit this page on GitHub in Markdown format"><i class="uil uil-pen"></i> Edit this page</a>
         </li>
     </ul>
 </div>
@@ -131,58 +131,248 @@
 
                 <div class="bodywrapper">
                     <div class="body">
-                        <h1 id="percona-monitoring-and-management-210">Percona Monitoring and Management 2.1.0<a class="headerlink" href="#percona-monitoring-and-management-210" title="Permanent link">&para;</a></h1>
-<table class="docutils field-list" frame="void" rules="none">
-  <colgroup>
-    <col class="field-name">
-    <col class="field-body">
-  </colgroup>
-  <tbody valign="top">
-    <tr class="field-odd field">
-      <th class="field-name">Date:</th>
-      <td class="field-body">November 11, 2019</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>Percona Monitoring and Management (PMM) is a free and open-source platform for managing and monitoring MySQL, MongoDB, and PostgreSQL performance. You can run PMM in your own environment for maximum security and reliability. It provides thorough time-based analysis for MySQL, MongoDB, and PostgreSQL servers to ensure that your data works as efficiently as possible.</p>
-<p>For install instructions, see <a href="../setting-up/index.html">Installing Percona Monitoring and Management</a>.</p>
+                        <h1 id="dbaas">DBaaS<a class="headerlink" href="#dbaas" title="Permanent link">&para;</a></h1>
 <div class="admonition caution alert alert-warning">
 <p class="admonition-title">Caution</p>
-<p>PMM 2 is designed to be used as a new installation — please don’t try to upgrade your existing PMM 1 environment.</p>
+<p>DBaaS functionality is currently in <a href="../details/glossary.html#technical-preview">technical preview</a> and is subject to change.</p>
 </div>
-<h2 id="improvements-and-new-features">Improvements and new features<a class="headerlink" href="#improvements-and-new-features" title="Permanent link">&para;</a></h2>
+<p>The DBaaS dashboard is where you add, remove, and operate on Kubernetes and database clusters.</p>
+<h2 id="activate-dbaas">Activate DBaaS<a class="headerlink" href="#activate-dbaas" title="Permanent link">&para;</a></h2>
+<p>The DBaaS feature is turned off by default. To turn it on:</p>
+<ol>
+<li>
+<p>Go to <i class="uil uil-cog"></i> <em>Configuration</em> → <i class="uil uil-setting"></i> <em>Settings</em> → <em>Advanced Settings</em>.</p>
+</li>
+<li>
+<p>Click the <i class="uil uil-toggle-off"></i> toggle in the <em>Technical preview features</em> section of the page.</p>
+</li>
+</ol>
+<h2 id="open-the-dbaas-dashboard">Open the DBaaS dashboard<a class="headerlink" href="#open-the-dbaas-dashboard" title="Permanent link">&para;</a></h2>
+<p>From the left menu, select <i class="uil uil-database"></i> <em>DBaaS</em>.</p>
+<p><div class="lightgallery"><a data-sub-html="" href="../_images/PMM_DBaaS_Kubernetes_Cluster_Panel.jpg"><img alt="" src="../_images/PMM_DBaaS_Kubernetes_Cluster_Panel.jpg" /></a></div></p>
+<h2 id="kubernetes-clusters">Kubernetes clusters<a class="headerlink" href="#kubernetes-clusters" title="Permanent link">&para;</a></h2>
+<h3 id="add-a-kubernetes-cluster">Add a Kubernetes cluster<a class="headerlink" href="#add-a-kubernetes-cluster" title="Permanent link">&para;</a></h3>
+<div class="admonition note alert alert-primary">
+<p>PXC and PSMDB operators are installed as part of the Kubernetes cluster registration process. It enables you to deploy database clusters into the Kubernetes cluster.</p>
+</div>
+<ol>
+<li>
+<p>Click <em>Register new Kubernetes Cluster</em></p>
+</li>
+<li>
+<p>Enter values for the <em>Kubernetes Cluster Name</em> and <em>Kubeconfig file</em> in the corresponding fields.</p>
+<p><div class="lightgallery"><a data-sub-html="" href="../_images/PMM_DBaaS_Kubernetes_Cluster_Details.jpg"><img alt="" src="../_images/PMM_DBaaS_Kubernetes_Cluster_Details.jpg" /></a></div></p>
+</li>
+<li>
+<p>Click <em>Register</em>.</p>
+</li>
+<li>
+<p>A message will momentarily display telling you whether the registration was successful or not.</p>
+<p><div class="lightgallery"><a data-sub-html="" href="../_images/PMM_DBaaS_Kubernetes_Cluster_Added.jpg"><img alt="" src="../_images/PMM_DBaaS_Kubernetes_Cluster_Added.jpg" /></a></div></p>
+</li>
+</ol>
+<h3 id="unregister-a-kubernetes-cluster">Unregister a Kubernetes cluster<a class="headerlink" href="#unregister-a-kubernetes-cluster" title="Permanent link">&para;</a></h3>
+<div class="admonition caution alert alert-warning">
+<p class="admonition-title">Important</p>
+<p>You can&rsquo;t unregister a Kubernetes cluster if there DB clusters associated with it.</p>
+</div>
+<ol>
+<li>
+<p>Click <em>Unregister</em>.</p>
+</li>
+<li>
+<p>Confirm the action by clicking <em>Proceed</em>, or abandon by clicking <em>Cancel</em>.</p>
+</li>
+</ol>
+<h3 id="view-a-kubernetes-clusters-configuration">View a Kubernetes cluster&rsquo;s configuration<a class="headerlink" href="#view-a-kubernetes-clusters-configuration" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>Find the row with the Kubernetes cluster you want to see.</p>
+</li>
+<li>
+<p>In the <em>Actions</em> column, open the <i class="uil uil-ellipsis-v"></i> menu and click <em>Show configuration</em>.</p>
+</li>
+</ol>
+<h3 id="manage-allowed-component-versions">Manage allowed component versions<a class="headerlink" href="#manage-allowed-component-versions" title="Permanent link">&para;</a></h3>
+<p>Administrators can select allowed and default versions of components versions for each cluster.</p>
+<ol>
+<li>
+<p>Find the row with the Kubernetes cluster you want to manage.</p>
+</li>
+<li>
+<p>In the <em>Actions</em> column, open the <i class="uil uil-ellipsis-v"></i> menu and click <em>Manage versions</em>.</p>
+<p><div class="lightgallery"><a data-sub-html="" href="../_images/PMM_DBaaS_Kubernetes_Manage_Versions.png"><img alt="" src="../_images/PMM_DBaaS_Kubernetes_Manage_Versions.png" /></a></div></p>
+</li>
+<li>
+<p>Select an <em>Operator</em> and <em>Component</em> from the drop-down menus.</p>
+<p><div class="lightgallery"><a data-sub-html="" href="../_images/PMM_DBaaS_Kubernetes_Manage_Components_Versions.png"><img alt="" src="../_images/PMM_DBaaS_Kubernetes_Manage_Components_Versions.png" /></a></div></p>
+</li>
+<li>
+<p>Activate or deactivate allowed versions, and select a default in the <em>Default</em> menu.</p>
+</li>
+<li>
+<p>Click <em>Save</em>.</p>
+</li>
+</ol>
+<h3 id="kubernetes-operator-status">Kubernetes operator status<a class="headerlink" href="#kubernetes-operator-status" title="Permanent link">&para;</a></h3>
+<p>The Kubernetes Cluster tab shows the status of operators.</p>
+<p><div class="lightgallery"><a data-sub-html="" href="../_images/PMM_DBaaS_Kubernetes_Cluster_Operator_Status.png"><img alt="" src="../_images/PMM_DBaaS_Kubernetes_Cluster_Operator_Status.png" /></a></div></p>
+<h2 id="db-clusters">DB clusters<a class="headerlink" href="#db-clusters" title="Permanent link">&para;</a></h2>
+<h3 id="add-a-db-cluster">Add a DB Cluster<a class="headerlink" href="#add-a-db-cluster" title="Permanent link">&para;</a></h3>
+<p>You must create at least one Kubernetes cluster to create a DB cluster.</p>
+<p>To monitor a DB cluster, set up a <a href="../how-to/configure.html#public-address">public address</a> for PMM Server first.</p>
+<ol>
+<li>
+<p>Select the <em>DB Cluster</em> tab.</p>
+</li>
+<li>
+<p>Click <em>Create DB Cluster</em>.</p>
+</li>
+<li>
+<p>In section 1, <em>Basic Options</em>:</p>
+<ol>
+<li>
+<p>Enter a value for <em>Cluster name</em>. A cluster name:</p>
 <ul>
-<li><a href="https://jira.percona.com/browse/PMM-4063">PMM-4063</a>: Update QAN filter panel to show only labels available for selection under currently applied filters</li>
-<li><a href="https://jira.percona.com/browse/PMM-815">PMM-815</a>: Latency Detail graph added to the MongoDB Instance Summary dashboard</li>
-<li><a href="https://jira.percona.com/browse/PMM-4768">PMM-4768</a>: Disable heavy-load collectors automatically when there are too many tables</li>
-<li><a href="https://jira.percona.com/browse/PMM-4821">PMM-4821</a>: Use color gradient in filled graphs on all dashboards</li>
-<li><a href="https://jira.percona.com/browse/PMM-4733">PMM-4733</a>: Add more log and configuration files to the downloadable <code>logs.zip</code> archive</li>
-<li><a href="https://jira.percona.com/browse/PMM-4672">PMM-4672</a>: Use integer percentage values in QAN filter panel</li>
-<li><a href="https://jira.percona.com/browse/PMM-4857">PMM-4857</a>: Update tooltips for all MongoDB dashboards</li>
-<li><a href="https://jira.percona.com/browse/PMM-4616">PMM-4616</a>: Rename column in the Query Details section in QAN from Total to Sum</li>
-<li><a href="https://jira.percona.com/browse/PMM-4770">PMM-4770</a>: Use Go 1.12.10</li>
-<li><a href="https://jira.percona.com/browse/PMM-4780">PMM-4780</a>: Update Grafana to version 6.4.1</li>
-<li><a href="https://jira.percona.com/browse/PMM-4918">PMM-4918</a>: Update Grafana plugins to newer versions, including the <code>clickhouse-datasource</code> plugin</li>
+<li>must begin with a lowercase letter;</li>
+<li>can comprise lowercase letters, numbers and dashes;</li>
+<li>must end with an alphanumeric character.</li>
 </ul>
-<h2 id="fixed-bugs">Fixed bugs<a class="headerlink" href="#fixed-bugs" title="Permanent link">&para;</a></h2>
+</li>
+<li>
+<p>Select a cluster from the <em>Kubernetes Cluster</em> menu.</p>
+</li>
+<li>
+<p>Select a database type from the <em>Database Type</em> menu.</p>
+<p><div class="lightgallery"><a data-sub-html="" href="../_images/PMM_DBaaS_DB_Cluster_Basic_Options_Filled.jpg"><img alt="" src="../_images/PMM_DBaaS_DB_Cluster_Basic_Options_Filled.jpg" /></a></div></p>
+</li>
+</ol>
+</li>
+<li>
+<p>Expand section 2, <em>Advanced Options</em>.</p>
+<ol>
+<li>
+<p>Select <em>Topology</em>, either <em>Cluster</em> or <em>Single Node</em>.</p>
+</li>
+<li>
+<p>Select the number of nodes. (The lower limit is 3.)</p>
+</li>
+<li>
+<p>Select <em>External Access</em> if you want to make your DB cluster available outside of Kubernetes cluster.</p>
+<p>By default, only internal access is provided.</p>
+<p><em>External Access</em> can&rsquo;t be granted for local Kubernetes clusters (e.g. minikube).</p>
+</li>
+<li>
+<p>Select a preset for <em>Resources per Node</em>.</p>
+<p><em>Small</em>, <em>Medium</em> and <em>Large</em> are fixed preset values for <em>Memory</em>, <em>CPU</em>, and <em>Disk</em>.</p>
+<p>Values for the <em>Custom</em> preset can be edited.</p>
+<p>Beside each resource type is an estimate of the required and available resources represented numerically in absolute and percentage values, and graphically as a colored, segmented bar showing the projected ratio of used to available resources. A red warning triangle <i style="color: red" class="uil uil-exclamation-triangle"></i> is shown if the requested resources exceed those available.</p>
+<p><div class="lightgallery"><a data-sub-html="" href="../_images/PMM_DBaaS_DB_Cluster_Advanced_Options.png"><img alt="" src="../_images/PMM_DBaaS_DB_Cluster_Advanced_Options.png" /></a></div></p>
+</li>
+</ol>
+</li>
+<li>
+<p>When both <em>Basic Options</em> and <em>Advanced Options</em> section icons are green, the <em>Create Cluster</em> button becomes active. (If inactive, check the values for fields in sections whose icon is red.)</p>
+<p>Click <em>Create Cluster</em> to create your cluster.</p>
+</li>
+<li>
+<p>A row appears with information on your cluster:</p>
+<p><div class="lightgallery"><a data-sub-html="" href="../_images/PMM_DBaaS_DB_Cluster_Created.png"><img alt="" src="../_images/PMM_DBaaS_DB_Cluster_Created.png" /></a></div></p>
 <ul>
-<li><a href="https://jira.percona.com/browse/PMM-4935">PMM-4935</a>: Wrong instance name displayed on the MySQL Instance Summary dashboard due to the incorrect string crop</li>
-<li><a href="https://jira.percona.com/browse/PMM-4916">PMM-4916</a>: Wrong values are shown when changing the time range for the Node Summary Dashboard in case of remote instances</li>
-<li><a href="https://jira.percona.com/browse/PMM-4895">PMM-4895</a> and <a href="https://jira.percona.com/browse/PMM-4814">PMM-4814</a>: The update process reports completion before it is actually done and therefore some dashboards, etc. may not be updated</li>
-<li><a href="https://jira.percona.com/browse/PMM-4876">PMM-4876</a>: PMM Server access credentials are shown by the <code>pmm-admin status</code> command instead of hiding them for security reasons</li>
-<li><a href="https://jira.percona.com/browse/PMM-4875">PMM-4875</a>: PostgreSQL error log gets flooded with warnings when <code>pg_stat_statements</code> extension is not installed in the database used by PMM Server or when PostgreSQL user is unable to connect to it</li>
-<li><a href="https://jira.percona.com/browse/PMM-4852">PMM-4852</a>: Node name has an incorrect value if the Home dashboard opened after QAN</li>
-<li><a href="https://jira.percona.com/browse/PMM-4847">PMM-4847</a>: Drill-downs from the Environment Overview dashboard doesn’t show data for the preselected host</li>
-<li><a href="https://jira.percona.com/browse/PMM-4841">PMM-4841</a> and <a href="https://jira.percona.com/browse/PMM-4845">PMM-4845</a>: <code>pg_stat_statement</code> QAN Agent leaks database connections</li>
-<li><a href="https://jira.percona.com/browse/PMM-4831">PMM-4831</a>: Clean-up representation of selectors names on MySQL-related dashboards for a better consistency</li>
-<li><a href="https://jira.percona.com/browse/PMM-4824">PMM-4824</a>: Incorrectly calculated singlestat values on MySQL Instances Overview dashboard</li>
-<li><a href="https://jira.percona.com/browse/PMM-4819">PMM-4819</a>: In case of the only one monitored host, its uptime is shown as a smaller value than the all hosts uptime due to the inaccurate rounding</li>
-<li><a href="https://jira.percona.com/browse/PMM-4816">PMM-4816</a>: Set equal thresholds to avoid confusing singlestat color differences on a Home dashboard</li>
-<li><a href="https://jira.percona.com/browse/PMM-4718">PMM-4718</a>: Labels are not fully displayed in the filter panel of the Query Details section in QAN</li>
-<li><a href="https://jira.percona.com/browse/PMM-4545">PMM-4545</a>: Long queries are not fully visible in the Query Examples section in QAN</li>
+<li><em>Name</em>: The cluster name.</li>
+<li><em>Database type</em>: The cluster database type.</li>
+<li><em>Connection</em>:<ul>
+<li><em>Host</em>: The hostname.</li>
+<li><em>Port</em>: The port number.</li>
+<li><em>Username</em>: The connection username.</li>
+<li><em>Password</em>: The connection password (click the eye icon <i class="uil uil-eye"></i> to reveal).</li>
 </ul>
-<p>Help us improve our software quality by reporting any Percona Monitoring and Management bugs you encounter using our <a href="https://jira.percona.com/secure/Dashboard.jspa">bug tracking system</a>.</p>
+</li>
+<li><em>DB Cluster Parameters</em>:<ul>
+<li><em>K8s cluster name</em>: The Kubernetes cluster name.</li>
+<li><em>CPU</em>: The number of CPUs allocated to the cluster.</li>
+<li><em>Memory</em>: The amount of memory allocated to the cluster.</li>
+<li><em>Disk</em>: The amount of disk space allocated to the cluster.</li>
+</ul>
+</li>
+<li><em>Cluster Status</em>:<ul>
+<li><em>PENDING</em>: The cluster is being created.</li>
+<li><em>ACTIVE</em>: The cluster is active.</li>
+<li><em>FAILED</em>: The cluster could not be created.</li>
+<li><em>DELETING</em>: The cluster is being deleted.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="delete-a-db-cluster">Delete a DB Cluster<a class="headerlink" href="#delete-a-db-cluster" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>Find the row with the database cluster you want to delete.</p>
+</li>
+<li>
+<p>In the <em>Actions</em> column, open the <i class="uil uil-ellipsis-v"></i> menu and click <em>Delete</em>.</p>
+</li>
+<li>
+<p>Confirm the action by clicking <em>Proceed</em>, or abandon by clicking <em>Cancel</em>.</p>
+<p><div class="lightgallery"><a data-sub-html="" href="../_images/PMM_DBaaS_DB_Cluster_Delete.png"><img alt="" src="../_images/PMM_DBaaS_DB_Cluster_Delete.png" /></a></div></p>
+</li>
+</ol>
+<div class="admonition danger alert alert-danger">
+<p class="admonition-title">Danger</p>
+<p>Deleting a cluster in this way also deletes any attached volumes.</p>
+</div>
+<h3 id="edit-a-db-cluster">Edit a DB Cluster<a class="headerlink" href="#edit-a-db-cluster" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>Select the <em>DB Cluster</em> tab.</p>
+</li>
+<li>
+<p>Find the row with the database cluster you want to change.</p>
+</li>
+<li>
+<p>In the <em>Actions</em> column, open the <i class="uil uil-ellipsis-v"></i> menu and click <em>Edit</em>.</p>
+</li>
+</ol>
+<p>A paused cluster can&rsquo;t be edited.</p>
+<h3 id="restart-a-db-cluster">Restart a DB Cluster<a class="headerlink" href="#restart-a-db-cluster" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>Select the <em>DB Cluster</em> tab.</p>
+</li>
+<li>
+<p>Identify the database cluster to be changed.</p>
+</li>
+<li>
+<p>In the <em>Actions</em> column, open the <i class="uil uil-ellipsis-v"></i> menu and click <em>Restart</em>.</p>
+</li>
+</ol>
+<h3 id="suspend-or-resume-a-db-cluster">Suspend or resume a DB Cluster<a class="headerlink" href="#suspend-or-resume-a-db-cluster" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>Select the <em>DB Cluster</em> tab.</p>
+</li>
+<li>
+<p>Identify the DB cluster to suspend or resume.</p>
+</li>
+<li>
+<p>In the <em>Actions</em> column, open the <i class="uil uil-ellipsis-v"></i> menu and click the required action:</p>
+<ul>
+<li>
+<p>For active clusters, click <em>Suspend</em>.</p>
+<p><div class="lightgallery"><a data-sub-html="DBaaS Suspend" href="../_images/PMM_DBaaS_DB_Cluster_Suspend.gif"><img alt="DBaaS Suspend" src="../_images/PMM_DBaaS_DB_Cluster_Suspend.gif" /></a></div></p>
+</li>
+<li>
+<p>For paused clusters, click <em>Resume</em>.</p>
+<p><div class="lightgallery"><a data-sub-html="DBaaS Resume" href="../_images/PMM_DBaaS_DB_Cluster_Resume.gif"><img alt="DBaaS Resume" src="../_images/PMM_DBaaS_DB_Cluster_Resume.gif" /></a></div></p>
+</li>
+</ul>
+</li>
+</ol>
+<div class="admonition seealso alert alert-info">
+<p class="admonition-title">See also</p>
+<p><a href="../setting-up/server/dbaas.html">Setting up a development environment for DBaaS</a></p>
+</div>
                     </div>
                 </div>
                 
@@ -190,7 +380,7 @@
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-06-25
+            <i class="uil uil-refresh"></i> Page updated 2021-07-02
         </li>
         
     </ul>
@@ -201,12 +391,12 @@
     <ul class="nav nav-pills">
         
         <li class="right" style="margin-right: 10px">
-            <a href="2.0.1.html" title="PMM 2.0.1">Next</a>
+            <a href="security-threat-tool.html" title="Security Threat Tool">Next</a>
         </li>
         
         
         <li class="right" style="margin-right: 10px">
-            <a href="2.2.0.html" title="PMM 2.2.0">Previous</a>
+            <a href="query-analytics.html" title="Query Analytics">Previous</a>
         </li>
         
         <li>
@@ -383,7 +573,7 @@
 
 
 <li class="toctree-l1">
-    <a class="reference internal" href="../using/index.html">Using</a>
+    <a class="reference internal" href="index.html">Using</a>
 
 
 
@@ -392,37 +582,37 @@
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../using/interface.html">User Interface</a>
+    <a class="reference internal" href="interface.html">User Interface</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../using/alerting.html">Integrated Alerting</a>
+    <a class="reference internal" href="alerting.html">Integrated Alerting</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../using/backup.html">Backup and Restore</a>
+    <a class="reference internal" href="backup.html">Backup and Restore</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../using/query-analytics.html">Query Analytics</a>
+    <a class="reference internal" href="query-analytics.html">Query Analytics</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../using/dbaas.html">DBaaS</a>
+    <a class="reference internal" href="dbaas.html">DBaaS</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../using/security-threat-tool.html">Security Threat Tool</a>
+    <a class="reference internal" href="security-threat-tool.html">Security Threat Tool</a>
 
 
 
@@ -935,7 +1125,7 @@
 
 
 <li class="toctree-l1">
-    <a class="reference internal" href="index.html">Release Notes</a>
+    <a class="reference internal" href="../release-notes/index.html">Release Notes</a>
 
 
 
@@ -944,169 +1134,169 @@
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.19.0.html">PMM 2.19.0</a>
+    <a class="reference internal" href="../release-notes/2.19.0.html">PMM 2.19.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.18.0.html">PMM 2.18.0</a>
+    <a class="reference internal" href="../release-notes/2.18.0.html">PMM 2.18.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.17.0.html">PMM 2.17.0</a>
+    <a class="reference internal" href="../release-notes/2.17.0.html">PMM 2.17.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.16.0.html">PMM 2.16.0</a>
+    <a class="reference internal" href="../release-notes/2.16.0.html">PMM 2.16.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.15.1.html">PMM 2.15.1</a>
+    <a class="reference internal" href="../release-notes/2.15.1.html">PMM 2.15.1</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.15.0.html">PMM 2.15.0</a>
+    <a class="reference internal" href="../release-notes/2.15.0.html">PMM 2.15.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.14.0.html">PMM 2.14.0</a>
+    <a class="reference internal" href="../release-notes/2.14.0.html">PMM 2.14.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.13.0.html">PMM 2.13.0</a>
+    <a class="reference internal" href="../release-notes/2.13.0.html">PMM 2.13.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.12.0.html">PMM 2.12.0</a>
+    <a class="reference internal" href="../release-notes/2.12.0.html">PMM 2.12.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.11.1.html">PMM 2.11.1</a>
+    <a class="reference internal" href="../release-notes/2.11.1.html">PMM 2.11.1</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.11.0.html">PMM 2.11.0</a>
+    <a class="reference internal" href="../release-notes/2.11.0.html">PMM 2.11.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.10.1.html">PMM 2.10.1</a>
+    <a class="reference internal" href="../release-notes/2.10.1.html">PMM 2.10.1</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.10.0.html">PMM 2.10.0</a>
+    <a class="reference internal" href="../release-notes/2.10.0.html">PMM 2.10.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.9.1.html">PMM 2.9.1</a>
+    <a class="reference internal" href="../release-notes/2.9.1.html">PMM 2.9.1</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.9.0.html">PMM 2.9.0</a>
+    <a class="reference internal" href="../release-notes/2.9.0.html">PMM 2.9.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.8.0.html">PMM 2.8.0</a>
+    <a class="reference internal" href="../release-notes/2.8.0.html">PMM 2.8.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.7.0.html">PMM 2.7.0</a>
+    <a class="reference internal" href="../release-notes/2.7.0.html">PMM 2.7.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.6.1.html">PMM 2.6.1</a>
+    <a class="reference internal" href="../release-notes/2.6.1.html">PMM 2.6.1</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.6.0.html">PMM 2.6.0</a>
+    <a class="reference internal" href="../release-notes/2.6.0.html">PMM 2.6.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.5.0.html">PMM 2.5.0</a>
+    <a class="reference internal" href="../release-notes/2.5.0.html">PMM 2.5.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.4.0.html">PMM 2.4.0</a>
+    <a class="reference internal" href="../release-notes/2.4.0.html">PMM 2.4.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.3.0.html">PMM 2.3.0</a>
+    <a class="reference internal" href="../release-notes/2.3.0.html">PMM 2.3.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.2.2.html">PMM 2.2.2</a>
+    <a class="reference internal" href="../release-notes/2.2.2.html">PMM 2.2.2</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.2.1.html">PMM 2.2.1</a>
+    <a class="reference internal" href="../release-notes/2.2.1.html">PMM 2.2.1</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.2.0.html">PMM 2.2.0</a>
+    <a class="reference internal" href="../release-notes/2.2.0.html">PMM 2.2.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.1.0.html">PMM 2.1.0</a>
+    <a class="reference internal" href="../release-notes/2.1.0.html">PMM 2.1.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.0.1.html">PMM 2.0.1</a>
+    <a class="reference internal" href="../release-notes/2.0.1.html">PMM 2.0.1</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="2.0.0.html">PMM 2.0.0</a>
+    <a class="reference internal" href="../release-notes/2.0.0.html">PMM 2.0.0</a>
 
 
 
@@ -1122,13 +1312,13 @@
 
 <h4>Previous page</h4>
 <p class="topless">
-    <a href="2.2.0.html" title="previous chapter">PMM 2.2.0</a>
+    <a href="query-analytics.html" title="previous chapter">Query Analytics</a>
 </p>
 
 
 <h4>Next page</h4>
 <p class="topless">
-    <a href="2.0.1.html" title="next chapter">PMM 2.0.1</a>
+    <a href="security-threat-tool.html" title="next chapter">Security Threat Tool</a>
 </p>
 
 
