@@ -336,7 +336,7 @@ dnf localinstall *.rpm
     !!! caution alert alert-warning "Non root users"
         Run this command before next step:
         ```sh
-        PMM_DIR=YOURPATH
+        export PMM_DIR=YOURPATH
         ```
         where YOURPATH replace with you real path, where you have required access.  
 
