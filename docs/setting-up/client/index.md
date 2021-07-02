@@ -353,12 +353,19 @@ dnf localinstall *.rpm
     PATH=$PATH:$PMM_DIR/bin
     ```
 
-7. Set up the agent
+7. Set up the agent (pick right command for you depends on permissions)
 
     !!! hint "Root permissions"
-        ```sh
-        pmm-agent setup --config-file=${PMM_DIR}/config/pmm-agent.yaml --server-address=192.168.1.123 --server-insecure-tls --server-username=admin --server-password=admin
-        ```
+    ```sh
+    pmm-agent setup --config-file=/usr/local/percona/pmm2/config/pmm-agent.yaml --server-address=192.168.1.123 --server-insecure-tls --server-username=admin --server-password=admin
+    ```
+
+    !!! caution alert alert-warning "Non root users"
+    ```sh
+    pmm-agent setup --config-file=${PMM_DIR}/config/pmm-agent.yaml --server-address=192.168.1.123 --server-insecure-tls --server-username=admin --server-password=admin --paths-tempdir=$PMM_DIR/tmp --paths-exporters_base=$PMM_DIR/exporters --paths-node_exporter=$PMM_DIR/exporters/node_exporter --paths-mongodb_exporter=$PMM_DIR/exporters/mongodb_exporter --paths-postgres_exporter=$PMM_DIR/exporters/postgres_exporter --paths-proxysql_exporter=$PMM_DIR/exporters/proxysql_exporter --paths-azure_exporter=$PMM_DIR/exporters/azure_exporter --paths-pt-summary=$PMM_DIR/tools/pt-summary --paths-pt-pg-summary=$PMM_DIR/tools/pt-pg-summary --paths-pt-mongodb-summary=$PMM_DIR/tools/pt-mongodb-summary --paths-pt-mysql-summary=$PMM_DIR/tools/pt-mysql-summary
+    ```
+
+
 
 8. Run the agent.
 
