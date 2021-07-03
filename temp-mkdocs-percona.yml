@@ -1,5 +1,7 @@
 # MkDocs configuration for HTML publishing to percona.com
-INHERIT: temp-mkdocs-base.yml
+INHERIT: mkdocs-base.yml
+
+site_url: https://www.percona.com/doc/percona-monitoring-and-management/
 
 plugins:
   section-index: {}

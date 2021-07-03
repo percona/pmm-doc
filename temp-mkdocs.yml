@@ -1,4 +1,5 @@
 # MkDocs configuration for default Material-themed build
-INHERIT: temp-mkdocs-base.yml
+INHERIT: mkdocs-base.yml
+site_url: https://pmm-doc.netlify.app/
 plugins:
   section-index: {}
