@@ -176,7 +176,7 @@
 <p><a href="how-to/configure.html#data-retention">Configure data retention</a></p>
 </div>
 <h2 id="how-are-pmm-server-logs-rotated">How are PMM Server logs rotated?<a class="headerlink" href="#how-are-pmm-server-logs-rotated" title="Permanent link">&para;</a></h2>
-<p>PMM Server embeds multiple components, like Victoria Metrics, Query Analytics, grafana, managed, postgresql, clickhouse, etc (components). All PMM Server component logs are rotated by <code>supervisord</code>. The components&rsquo; log rotation settings are stored in <code>*.ini</code> files within the <code>/etc/supervisord.d</code> directory. Those settings define both the maximum size of a log file and the number of log files to keep. The log rotation takes place once the log file reaches its maximum size. </p>
+<p>PMM Server embeds multiple components, like Victoria Metrics, Query Analytics, Grafana, <code>managed</code>, PostgreSQL, ClickHouse, etc. (components). All PMM Server component logs are rotated by <code>supervisord</code>. The components&rsquo; log rotation settings are stored in <code>*.ini</code> files within the <code>/etc/supervisord.d</code> directory. Those settings define both the maximum size of a log file and the number of log files to keep. The log rotation takes place once the log file reaches its maximum size.</p>
 <h2 id="what-privileges-are-required-to-monitor-a-mysql-instance">What privileges are required to monitor a MySQL instance?<a class="headerlink" href="#what-privileges-are-required-to-monitor-a-mysql-instance" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="p">,</span> <span class="n">PROCESS</span><span class="p">,</span> <span class="n">SUPER</span><span class="p">,</span> <span class="n">REPLICATION</span> <span class="n">CLIENT</span><span class="p">,</span> <span class="n">RELOAD</span>
 </code></pre></div>
@@ -296,7 +296,7 @@ docker <span class="nb">exec</span> -t pmm-server bash -c  <span class="s2">&qu
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-06-29
+            <i class="uil uil-refresh"></i> Page updated 2021-07-06
         </li>
         
     </ul>
