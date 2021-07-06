@@ -464,6 +464,16 @@ How to remove (uninstall) PMM Client.
     yum remove -y percona-release
     ```
 
+## Unregister
+
+How to unregister PMM Client from PMM Server.
+
+```sh
+pmm-admin unregister --force
+```
+
+All services monitored by this node will be removed from monitoring.
+
 ## Remove services
 
 You must specify the service type and service name to remove services from monitoring.
