@@ -520,6 +520,11 @@ apt install -y pmm2-client
 </code></pre></div>
 </li>
 </ol>
+<h2 id="unregister">Unregister<a class="headerlink" href="#unregister" title="Permanent link">&para;</a></h2>
+<p>How to unregister PMM Client from PMM Server.
+<div class="highlight"><pre><span></span><code>pmm-admin unregister --force
+</code></pre></div>
+All services that are monitored by this node will be removed from monitoring.</p>
 <h2 id="remove-services">Remove services<a class="headerlink" href="#remove-services" title="Permanent link">&para;</a></h2>
 <p>You must specify the service type and service name to remove services from monitoring.</p>
 <div class="highlight"><pre><span></span><code>pmm-admin remove &lt;service-type&gt; &lt;service-name&gt;
