@@ -521,10 +521,13 @@ apt install -y pmm2-client
 </li>
 </ol>
 <h2 id="remove-services">Remove services<a class="headerlink" href="#remove-services" title="Permanent link">&para;</a></h2>
-<p>You should specify service type and service name for removing from monitoring
-One of next types has to be set: <code>mysql</code>, <code>mongodb</code>, <code>postgresql</code>, <code>proxysql</code>, <code>haproxy</code>, <code>external</code>.</p>
+<p>You must specify the service type and service name to remove services from monitoring.</p>
 <div class="highlight"><pre><span></span><code>pmm-admin remove &lt;service-type&gt; &lt;service-name&gt;
 </code></pre></div>
+<dl>
+<dt><code>service-type</code></dt>
+<dd>One of <code>mysql</code>, <code>mongodb</code>, <code>postgresql</code>, <code>proxysql</code>, <code>haproxy</code>, <code>external</code>.</dd>
+</dl>
 <div class="admonition seealso alert alert-info">
 <p class="admonition-title">See also</p>
 <ul>
@@ -540,7 +543,7 @@ One of next types has to be set: <code>mysql</code>, <code>mongodb</code>, <code
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-06-25
+            <i class="uil uil-refresh"></i> Page updated 2021-07-06
         </li>
         
     </ul>
