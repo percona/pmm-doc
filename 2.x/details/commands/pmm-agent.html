@@ -133,19 +133,19 @@
                     <div class="body">
                         <h1 id="pmm-agent-pmm-client-agent">pmm-agent - PMM Client agent<a class="headerlink" href="#pmm-agent-pmm-client-agent" title="Permanent link">&para;</a></h1>
 <h2 id="name">NAME<a class="headerlink" href="#name" title="Permanent link">&para;</a></h2>
-<p><code>pmm-agent</code> - The PMM Client daemon program</p>
+<p><code>pmm-agent</code> - The PMM Client daemon program.</p>
 <h2 id="synopsis">SYNOPSIS<a class="headerlink" href="#synopsis" title="Permanent link">&para;</a></h2>
 <p><code>pmm-agent [command] [options]</code></p>
 <h2 id="description">DESCRIPTION<a class="headerlink" href="#description" title="Permanent link">&para;</a></h2>
-<p>pmm-agent, part of the PMM Client package, runs as a daemon process on all monitored hosts.</p>
+<p><code>pmm-agent</code>, part of the PMM Client package, runs as a daemon process on all monitored hosts.</p>
 <h2 id="commands">COMMANDS<a class="headerlink" href="#commands" title="Permanent link">&para;</a></h2>
 <dl>
 <dt><code>pmm-agent run</code></dt>
-<dd>Run pmm-agent (default)</dd>
+<dd>Run pmm-agent (default).</dd>
 <dt><code>pmm-agent setup [node-address] [node-type] [node-name]</code></dt>
-<dd>Configure local pmm-agent</dd>
+<dd>Configure local pmm-agent.</dd>
 <dt><code>pmm-agent help [command]</code></dt>
-<dd>Show help (for command) and exit</dd>
+<dd>Show help (for command) and exit.</dd>
 </dl>
 <h2 id="options-and-environment">OPTIONS AND ENVIRONMENT<a class="headerlink" href="#options-and-environment" title="Permanent link">&para;</a></h2>
 <p>Most options can be set via environment variables (shown in parentheses).</p>
@@ -340,7 +340,7 @@
 <li>Default value: <code>file:/var/log/pmm-agent.log</code></li>
 </ul>
 <p>Example:</p>
-<div class="highlight"><pre><span></span><code>StandardError=file:/var/log/pmm-agent.log
+<div class="highlight"><pre><span></span><code><span class="na">StandardError</span><span class="o">=</span><span class="s">file:/var/log/pmm-agent.log</span>
 </code></pre></div>
 <p><strong><code>initd</code>-based systems</strong></p>
 <ul>
@@ -349,7 +349,7 @@
 <li>Default value: <code>/var/log/pmm-agent.log</code></li>
 </ul>
 <p>Example:</p>
-<div class="highlight"><pre><span></span><code>    pmm_log=&quot;/var/log/pmm-agent.log&quot;
+<div class="highlight"><pre><span></span><code><span class="na">pmm_log</span><span class="o">=</span><span class="s">&quot;/var/log/pmm-agent.log&quot;</span>
 </code></pre></div>
 <p>If you change the default log file name, reflect the change in the log rotation rules file <code>/etc/logrotate.d/pmm-agent-logrotate</code>.</p>
                     </div>
@@ -359,7 +359,7 @@
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-03-01
+            <i class="uil uil-refresh"></i> Page updated 2021-07-07
         </li>
         
     </ul>

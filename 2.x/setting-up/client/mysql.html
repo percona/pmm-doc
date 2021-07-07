@@ -137,9 +137,9 @@
 <div class="admonition summary alert alert-info">
 <p class="admonition-title">Summary</p>
 <ul>
-<li>Create PMM account and set permissions</li>
+<li>Create PMM account and set permissions.</li>
 <li>Choose a data source:<ul>
-<li>Slow query log, or</li>
+<li>Slow query log, or,</li>
 <li>Performance Schema.</li>
 </ul>
 </li>
@@ -149,8 +149,8 @@
 <li>User statistics.</li>
 </ul>
 </li>
-<li>Add service</li>
-<li>Check service</li>
+<li>Add service.</li>
+<li>Check service.</li>
 </ul>
 </div>
 <h2 id="before-you-start">Before you start<a class="headerlink" href="#before-you-start" title="Permanent link">&para;</a></h2>
@@ -298,7 +298,7 @@
 <h4 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h4>
 <ul>
 <li>
-<p>Configuration file</p>
+<p>Configuration file.</p>
 <div class="highlight"><pre><span></span><code><span class="na">slow_query_log</span><span class="o">=</span><span class="s">ON</span>
 <span class="na">log_output</span><span class="o">=</span><span class="s">FILE</span>
 <span class="na">long_query_time</span><span class="o">=</span><span class="s">0</span>
@@ -307,7 +307,7 @@
 </code></pre></div>
 </li>
 <li>
-<p>Session</p>
+<p>Session.</p>
 <div class="highlight"><pre><span></span><code><span class="k">SET</span> <span class="k">GLOBAL</span> <span class="n">slow_query_log</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
 <span class="k">SET</span> <span class="k">GLOBAL</span> <span class="n">log_output</span> <span class="o">=</span> <span class="s1">&#39;FILE&#39;</span><span class="p">;</span>
 <span class="k">SET</span> <span class="k">GLOBAL</span> <span class="n">long_query_time</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
@@ -381,7 +381,7 @@
 <h5 id="examples_1">Examples<a class="headerlink" href="#examples_1" title="Permanent link">&para;</a></h5>
 <ul>
 <li>
-<p>Configuration file (Percona Server for MySQL, Percona XtraDB Cluster)</p>
+<p>Configuration file (Percona Server for MySQL, Percona XtraDB Cluster).</p>
 <div class="highlight"><pre><span></span><code><span class="na">log_slow_rate_limit</span><span class="o">=</span><span class="s">100</span>
 <span class="na">log_slow_rate_type</span><span class="o">=</span><span class="s">&#39;query&#39;</span>
 <span class="na">slow_query_log_always_write_time</span><span class="o">=</span><span class="s">1</span>
@@ -390,12 +390,12 @@
 </code></pre></div>
 </li>
 <li>
-<p>Configuration file (MariaDB)</p>
+<p>Configuration file (MariaDB).</p>
 <div class="highlight"><pre><span></span><code><span class="na">log_slow_rate_limit</span><span class="o">=</span><span class="s">100</span>
 </code></pre></div>
 </li>
 <li>
-<p>Session (Percona Server for MySQL, Percona XtraDB Cluster)</p>
+<p>Session (Percona Server for MySQL, Percona XtraDB Cluster).</p>
 <div class="highlight"><pre><span></span><code><span class="k">SET</span> <span class="k">GLOBAL</span> <span class="n">log_slow_rate_limit</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
 <span class="k">SET</span> <span class="k">GLOBAL</span> <span class="n">log_slow_rate_type</span> <span class="o">=</span> <span class="s1">&#39;query&#39;</span><span class="p">;</span>
 <span class="k">SET</span> <span class="k">GLOBAL</span> <span class="n">slow_query_log_always_write_time</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
@@ -476,7 +476,7 @@
 <h4 id="examples_2">Examples<a class="headerlink" href="#examples_2" title="Permanent link">&para;</a></h4>
 <ul>
 <li>
-<p>Configuration file</p>
+<p>Configuration file.</p>
 <div class="highlight"><pre><span></span><code><span class="na">performance_schema</span><span class="o">=</span><span class="s">ON</span>
 <span class="na">performance-schema-instrument</span><span class="o">=</span><span class="s">&#39;statement/%=ON&#39;</span>
 <span class="na">performance-schema-consumer-statements-digest</span><span class="o">=</span><span class="s">ON</span>
@@ -484,7 +484,7 @@
 </code></pre></div>
 </li>
 <li>
-<p>Session</p>
+<p>Session.</p>
 <p>(<code>performance_schema</code> cannot be set in a session and must be set at server start-up.)</p>
 <div class="highlight"><pre><span></span><code><span class="k">UPDATE</span> <span class="n">performance_schema</span><span class="p">.</span><span class="n">setup_consumers</span>
 <span class="k">SET</span> <span class="n">ENABLED</span> <span class="o">=</span> <span class="s1">&#39;YES&#39;</span> <span class="k">WHERE</span> <span class="n">NAME</span> <span class="k">LIKE</span> <span class="s1">&#39;%statements%&#39;</span><span class="p">;</span>
@@ -512,7 +512,7 @@
 </table>
 <ul>
 <li>
-<p>Session</p>
+<p>Session.</p>
 <div class="highlight"><pre><span></span><code><span class="k">UPDATE</span> <span class="n">performance_schema</span><span class="p">.</span><span class="n">setup_instruments</span> <span class="k">SET</span> <span class="n">ENABLED</span> <span class="o">=</span> <span class="s1">&#39;YES&#39;</span><span class="p">,</span> <span class="n">TIMED</span> <span class="o">=</span> <span class="s1">&#39;YES&#39;</span> <span class="k">WHERE</span> <span class="n">NAME</span> <span class="k">LIKE</span> <span class="s1">&#39;statement/%&#39;</span><span class="p">;</span>
 <span class="k">UPDATE</span> <span class="n">performance_schema</span><span class="p">.</span><span class="n">setup_consumers</span> <span class="k">SET</span> <span class="n">ENABLED</span> <span class="o">=</span> <span class="s1">&#39;YES&#39;</span> <span class="k">WHERE</span> <span class="n">NAME</span> <span class="k">LIKE</span> <span class="s1">&#39;%statements%&#39;</span><span class="p">;</span>
 </code></pre></div>
@@ -558,7 +558,7 @@
 </table>
 <ul>
 <li>
-<p>Configuration file</p>
+<p>Configuration file.</p>
 <div class="highlight"><pre><span></span><code><span class="na">query_response_time_stats</span><span class="o">=</span><span class="s">ON</span>
 </code></pre></div>
 </li>
@@ -566,7 +566,7 @@
 <p>You must also install the plugins.</p>
 <ul>
 <li>
-<p>Session</p>
+<p>Session.</p>
 <ol>
 <li>Check that <code>/usr/lib/mysql/plugin/query_response_time.so</code> exists.</li>
 <li>
@@ -636,12 +636,12 @@
 <h3 id="examples_3">Examples<a class="headerlink" href="#examples_3" title="Permanent link">&para;</a></h3>
 <ul>
 <li>
-<p>Configuration file</p>
+<p>Configuration file.</p>
 <div class="highlight"><pre><span></span><code><span class="na">userstat</span><span class="o">=</span><span class="s">ON</span>
 </code></pre></div>
 </li>
 <li>
-<p>Session</p>
+<p>Session.</p>
 <div class="highlight"><pre><span></span><code><span class="k">SET</span> <span class="k">GLOBAL</span> <span class="n">userstat</span> <span class="o">=</span> <span class="k">ON</span><span class="p">;</span>
 </code></pre></div>
 </li>
@@ -686,7 +686,7 @@
 <div class="highlight"><pre><span></span><code>pmm-admin add mysql --username<span class="o">=</span>pmm --password<span class="o">=</span>pass --socket<span class="o">=</span>/var/run/mysqld/mysqld.sock
 </code></pre></div>
 <h4 id="performance-schema_1">Performance Schema<a class="headerlink" href="#performance-schema_1" title="Permanent link">&para;</a></h4>
-<p>Performance schema query source, service name (<code>MYSQL_NODE</code>) and default service address/port (<code>127.0.0.1:3306</code>)</p>
+<p>Performance schema query source, service name (<code>MYSQL_NODE</code>) and default service address/port (<code>127.0.0.1:3306</code>).</p>
 <div class="highlight"><pre><span></span><code>pmm-admin add mysql --query-source<span class="o">=</span>perfschema --username<span class="o">=</span>pmm --password<span class="o">=</span>pass MYSQL_NODE
 </code></pre></div>
 <p>Performance schema query source, service name (<code>MYSQL_NODE</code>) and default service address/port (<code>127.0.0.1:3306</code>) specified with flags.</p>
@@ -737,7 +737,7 @@
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-07-04
+            <i class="uil uil-refresh"></i> Page updated 2021-07-07
         </li>
         
     </ul>

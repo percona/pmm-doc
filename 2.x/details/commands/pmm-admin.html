@@ -192,7 +192,7 @@
 <ul>
 <li>Agent: Agent ID, Node ID.</li>
 <li>PMM Server: URL and version.</li>
-<li>PMM Client: connection status, time drift, latency, vmagent status, pmm-admin version.</li>
+<li>PMM Client: connection status, time drift, latency, <code>vmagent</code> status, <code>pmm-admin</code> version.</li>
 <li>Agents: Agent ID path and client name.</li>
 </ul>
 <p>FLAGS:</p>
@@ -226,16 +226,16 @@
 <dt><code>--node-id=node-id</code></dt>
 <dd>Node ID (default is auto-detected).</dd>
 <dt><code>--node-model=node-model</code></dt>
-<dd>Node model</dd>
+<dd>Node model.</dd>
 <dt><code>--region=region</code></dt>
-<dd>Node region</dd>
+<dd>Node region.</dd>
 <dt><code>--az=availability-zone</code></dt>
-<dd>Node availability zone</dd>
+<dd>Node availability zone.</dd>
 <dt><code>--metrics-mode=mode</code></dt>
 <dd>Metrics flow mode for agents node-exporter. Allowed values:
-- <code>auto</code>: chosen by server (default)
-- <code>push</code>: agent will push metrics
-- <code>pull</code>: server scrapes metrics from agent</dd>
+- <code>auto</code>: chosen by server (default).
+- <code>push</code>: agent will push metrics.
+- <code>pull</code>: server scrapes metrics from agent.</dd>
 </dl>
 </dd>
 </dl>
@@ -303,31 +303,31 @@
 <p>Flags may be combined as shown in the following examples.</p>
 <dl>
 <dt><code>--node</code></dt>
-<dd>current node</dd>
+<dd>Current node.</dd>
 <dt><code>--node-name</code></dt>
-<dd>node with name</dd>
+<dd>Node with name.</dd>
 <dt><code>--node --node-name=NODE_NAME</code></dt>
-<dd>node with name</dd>
+<dd>Node with name.</dd>
 <dt><code>--node --service-name</code></dt>
-<dd>current node and service with name</dd>
+<dd>Current node and service with name.</dd>
 <dt><code>--node --node-name --service-name</code></dt>
-<dd>node with name and service with name</dd>
+<dd>Node with name and service with name.</dd>
 <dt><code>--node --service</code></dt>
-<dd>current node and all services of current node</dd>
+<dd>Current node and all services of current node.</dd>
 <dt><code>-node --node-name --service --service-name</code></dt>
-<dd>service with name and node with name</dd>
+<dd>Service with name and node with name.</dd>
 <dt><code>--service</code></dt>
-<dd>all services of the current node</dd>
+<dd>All services of the current node.</dd>
 <dt><code>--service-name</code></dt>
-<dd>service with name</dd>
+<dd>Service with name.</dd>
 <dt><code>--service --service-name</code></dt>
-<dd>service with name</dd>
+<dd>Service with name.</dd>
 <dt><code>--service --node-name</code></dt>
-<dd>all services of current node and node with name</dd>
+<dd>All services of current node and node with name.</dd>
 <dt><code>--service-name --node-name</code></dt>
-<dd>service with name and node with name</dd>
+<dd>Service with name and node with name.</dd>
 <dt><code>--service --service-name -node-name</code></dt>
-<dd>service with name and node with name</dd>
+<dd>Service with name and node with name.</dd>
 </dl>
 <div class="admonition hint alert alert-success">
 <p class="admonition-title">Tip</p>
@@ -375,9 +375,9 @@
 <dd>Path to certificate authority file.</dd>
 <dt><code>--metrics-mode=mode</code></dt>
 <dd>Metrics flow mode for agents node-exporter. Allowed values:
-- <code>auto</code>: chosen by server (default)
-- <code>push</code>: agent will push metrics
-- <code>pull</code>: server scrapes metrics from agent</dd>
+- <code>auto</code>: chosen by server (default).
+- <code>push</code>: agent will push metrics.
+- <code>pull</code>: server scrapes metrics from agent.</dd>
 </dl>
 </dd>
 </dl>
@@ -461,9 +461,9 @@
 <dd>Skip SSL certificate verification.</dd>
 <dt><code>--metrics-mode=mode</code></dt>
 <dd>Metrics flow mode for agents node-exporter. Allowed values:
-- <code>auto</code>: chosen by server (default)
-- <code>push</code>: agent will push metrics
-- <code>pull</code>: server scrapes metrics from agent</dd>
+- <code>auto</code>: chosen by server (default).
+- <code>push</code>: agent will push metrics.
+- <code>pull</code>: server scrapes metrics from agent.</dd>
 </dl>
 </dd>
 </dl>
@@ -489,7 +489,7 @@
 <dt><code>--cluster=&lt;cluster&gt;</code></dt>
 <dd>Cluster name.</dd>
 <dt><code>--replication-set=&lt;replication set&gt;</code></dt>
-<dd>Replication set name</dd>
+<dd>Replication set name.</dd>
 <dt><code>--custom-labels=&lt;custom labels&gt;</code></dt>
 <dd>Custom user-assigned labels.</dd>
 <dt><code>--skip-connection-check</code></dt>
@@ -500,9 +500,9 @@
 <dd>Skip TLS certificates validation.</dd>
 <dt><code>--metrics-mode=mode</code></dt>
 <dd>Metrics flow mode for agents node-exporter. Allowed values:
-- <code>auto</code>: chosen by server (default)
-- <code>push</code>: agent will push metrics
-- <code>pull</code>: server scrapes metrics from agent</dd>
+- <code>auto</code>: chosen by server (default).
+- <code>push</code>: agent will push metrics.
+- <code>pull</code>: server scrapes metrics from agent.</dd>
 </dl>
 </dd>
 </dl>
@@ -537,11 +537,11 @@
 <dd>Skip TLS certificates validation.</dd>
 <dt><code>--metrics-mode=mode</code></dt>
 <dd>Metrics flow mode for agents node-exporter. Allowed values:
-- <code>auto</code>: chosen by server (default)
-- <code>push</code>: agent will push metrics
-- <code>pull</code>: server scrapes metrics from agent</dd>
+- <code>auto</code>: chosen by server (default).
+- <code>push</code>: agent will push metrics.
+- <code>pull</code>: server scrapes metrics from agent.</dd>
 <dt><code>--disable-collectors</code></dt>
-<dd>Comma-separated list of collector names to exclude from exporter</dd>
+<dd>Comma-separated list of collector names to exclude from exporter.</dd>
 </dl>
 </dd>
 </dl>
@@ -553,7 +553,7 @@
 <p>FLAGS:</p>
 <dl>
 <dt><code>--server-url=SERVER-URL</code></dt>
-<dd>PMM Server URL in <code>https://username:password@pmm-server-host/</code> format</dd>
+<dd>PMM Server URL in <code>https://username:password@pmm-server-host/</code> format.</dd>
 <dt><code>--server-insecure-tls</code></dt>
 <dd>Skip PMM Server TLS certificate validation.</dd>
 <dt><code>--username=USERNAME</code></dt>
@@ -578,9 +578,9 @@
 <dd>Custom user-assigned labels. Example: region=east,app=app1.</dd>
 <dt><code>--metrics-mode=MODE</code></dt>
 <dd>Metrics flow mode for agents node-exporter. Allowed values:
-- <code>auto</code>: chosen by server (default)
-- <code>push</code>: agent will push metrics
-- <code>pull</code>: server scrapes metrics from agent</dd>
+- <code>auto</code>: chosen by server (default).
+- <code>push</code>: agent will push metrics.
+- <code>pull</code>: server scrapes metrics from agent.</dd>
 <dt><code>--skip-connection-check</code></dt>
 <dd>Skip connection check.</dd>
 </dl>
@@ -590,88 +590,87 @@
 <dl>
 <dt><code>pmm-admin add external [FLAGS]</code></dt>
 <dd>
-<p>Add External source of data (like a custom exporter running on a port) to the monitoring</p>
+<p>Add External source of data (like a custom exporter running on a port) to be monitored.</p>
 <p>FLAGS:</p>
 <dl>
 <dt><code>--service-name="current-hostname"</code></dt>
-<dd>Service name (autodetected defaults to the hostname where pmm-admin is running)</dd>
+<dd>Service name (autodetected defaults to the hostname where <code>pmm-admin</code> is running).</dd>
 <dt><code>--agent-node-id=AGENT-NODE-ID</code></dt>
-<dd>Node ID where agent runs (default is autodetected)</dd>
+<dd>Node ID where agent runs (default is autodetected).</dd>
 <dt><code>--username=USERNAME</code></dt>
-<dd>External username</dd>
+<dd>External username.</dd>
 <dt><code>--password=PASSWORD</code></dt>
-<dd>External password</dd>
+<dd>External password.</dd>
 <dt><code>--scheme=http or https</code></dt>
-<dd>Scheme to generate URI to exporter metrics endpoints</dd>
+<dd>Scheme to generate URI to exporter metrics endpoints.</dd>
 <dt><code>--metrics-path=/metrics</code></dt>
 <dd>Path under which metrics are exposed, used to generate URI.</dd>
 <dt><code>--listen-port=LISTEN-PORT</code></dt>
-<dd>Listen port of external exporter for scraping metrics. (Required)</dd>
+<dd>Listen port of external exporter for scraping metrics. (Required.)</dd>
 <dt><code>--service-node-id=SERVICE-NODE-ID</code></dt>
-<dd>Node ID where service runs (default is autodetected)</dd>
+<dd>Node ID where service runs (default is autodetected).</dd>
 <dt><code>--environment=prod</code></dt>
-<dd>Environment name like &lsquo;production&rsquo; or &lsquo;qa&rsquo;</dd>
+<dd>Environment name like &lsquo;production&rsquo; or &lsquo;qa&rsquo;.</dd>
 <dt><code>--cluster=east-cluster</code></dt>
-<dd>Cluster name</dd>
+<dd>Cluster name.</dd>
 <dt><code>--replication-set=rs1</code></dt>
-<dd>Replication set name</dd>
+<dd>Replication set name.</dd>
 <dt><code>--custom-labels=CUSTOM-LABELS</code></dt>
-<dd>Custom user-assigned labels. Example: region=east,app=app1</dd>
+<dd>Custom user-assigned labels. Example: <code>region=east,app=app1</code>.</dd>
 <dt><code>--metrics-mode=auto</code></dt>
 <dd>Metrics flow mode, can be <code>push</code>: agent will push metrics, <code>pull</code>: server scrape metrics from agent or <code>auto</code>: chosen by server.</dd>
 <dt><code>--group="external"</code></dt>
-<dd>Group name of external service (default: external)</dd>
+<dd>Group name of external service. (Default: <code>external</code>.)</dd>
 </dl>
 </dd>
 <dt><code>pmm-admin add external-serverless [FLAGS]</code></dt>
 <dd>
 <p>Add External Service on Remote node to monitoring.</p>
-<p>Usage example: <code>pmm-admin add external-serverless --url=http://1.2.3.4:9093/metrics</code></p>
-<p>Also, individual parameters can be set instead of <code>--url</code> like: <code>pmm-admin add external-serverless --scheme=http --host=1.2.3.4 --listen-port=9093 --metrics-path=/metrics --container-name=ddd --external-name=e125</code></p>
-<p>Notice that some parameters are mandatory depending on the context. For example, if you specify <code>--url</code>, <code>--schema</code> and other related parameters are not mandatory but, if you specify <code>--host</code> you must provide all other parameters needed to
-build the destination URL or even you can specify <code>--address</code> instead of host and port as individual parameters.</p>
+<p>Usage example: <code>pmm-admin add external-serverless --url=http://1.2.3.4:9093/metrics</code>.</p>
+<p>Also, individual parameters can be set instead of <code>--url</code> like: <code>pmm-admin add external-serverless --scheme=http --host=1.2.3.4 --listen-port=9093 --metrics-path=/metrics --container-name=ddd --external-name=e125</code>.</p>
+<p>Note that some parameters are mandatory depending on the context. For example, if you specify <code>--url</code>, <code>--schema</code> and other related parameters are not mandatory. But if you specify <code>--host</code> you must provide all other parameters needed to build the destination URL, or you can specify <code>--address</code> instead of host and port as individual parameters.</p>
 <p>FLAGS:</p>
 <dl>
 <dt><code>--url=URL</code></dt>
-<dd>Full URL to exporter metrics endpoints</dd>
+<dd>Full URL to exporter metrics endpoints.</dd>
 <dt><code>--scheme=https</code></dt>
-<dd>Scheme to generate URL to exporter metrics endpoints</dd>
+<dd>Scheme to generate URL to exporter metrics endpoints.</dd>
 <dt><code>--username=USERNAME</code></dt>
-<dd>External username</dd>
+<dd>External username.</dd>
 <dt><code>--password=PASSWORD</code></dt>
-<dd>External password</dd>
+<dd>External password.</dd>
 <dt><code>--address=1.2.3.4:9000</code></dt>
-<dd>External exporter address and port</dd>
+<dd>External exporter address and port.</dd>
 <dt><code>--host=1.2.3.4</code></dt>
-<dd>External exporters hostname or IP address</dd>
+<dd>External exporters hostname or IP address.</dd>
 <dt><code>--listen-port=9999</code></dt>
 <dd>Listen port of external exporter for scraping metrics.</dd>
 <dt><code>--metrics-path=/metrics</code></dt>
 <dd>Path under which metrics are exposed, used to generate URL.</dd>
 <dt><code>--environment=testing</code></dt>
-<dd>Environment name</dd>
+<dd>Environment name.</dd>
 <dt><code>--cluster=CLUSTER</code></dt>
-<dd>Cluster name</dd>
+<dd>Cluster name.</dd>
 <dt><code>--replication-set=rs1</code></dt>
-<dd>Replication set name</dd>
+<dd>Replication set name.</dd>
 <dt><code>--custom-labels='app=myapp,region=s1'</code></dt>
-<dd>Custom user-assigned labels</dd>
+<dd>Custom user-assigned labels.</dd>
 <dt><code>--group="external"</code></dt>
-<dd>Group name of external service (default: external)</dd>
+<dd>Group name of external service. (Default: <code>external</code>.)</dd>
 <dt><code>--machine-id=MACHINE-ID</code></dt>
-<dd>Node machine-id</dd>
+<dd>Node machine-id.</dd>
 <dt><code>--distro=DISTRO</code></dt>
-<dd>Node OS distribution</dd>
+<dd>Node OS distribution.</dd>
 <dt><code>--container-id=CONTAINER-ID</code></dt>
-<dd>Container ID</dd>
+<dd>Container ID.</dd>
 <dt><code>--container-name=CONTAINER-NAME</code></dt>
-<dd>Container name</dd>
+<dd>Container name.</dd>
 <dt><code>--node-model=NODE-MODEL</code></dt>
-<dd>Node model</dd>
+<dd>Node model.</dd>
 <dt><code>--region=REGION</code></dt>
-<dd>Node region</dd>
+<dd>Node region.</dd>
 <dt><code>--az=AZ</code></dt>
-<dd>Node availability zone</dd>
+<dd>Node availability zone.</dd>
 </dl>
 </dd>
 </dl>
@@ -706,11 +705,11 @@ Agents:
 </code></pre></div>
 <p>For other collectors that you can disable with the <code>--disable-collectors</code> option, please visit the official repositories for each exporter:</p>
 <ul>
-<li><a href="https://github.com/percona/node_exporter">node_exporter</a></li>
-<li><a href="https://github.com/percona/mysqld_exporter">mysqld_exporter</a></li>
-<li><a href="https://github.com/percona/mongodb_exporter">mongodb_exporter</a></li>
-<li><a href="https://github.com/percona/postgres_exporter">postgres_exporter</a></li>
-<li><a href="https://github.com/percona/proxysql_exporter">proxysql_exporter</a></li>
+<li><a href="https://github.com/percona/node_exporter"><code>node_exporter</code></a></li>
+<li><a href="https://github.com/percona/mysqld_exporter"><code>mysqld_exporter</code></a></li>
+<li><a href="https://github.com/percona/mongodb_exporter"><code>mongodb_exporter</code></a></li>
+<li><a href="https://github.com/percona/postgres_exporter"><code>postgres_exporter</code></a></li>
+<li><a href="https://github.com/percona/proxysql_exporter"><code>proxysql_exporter</code></a></li>
 </ul>
                     </div>
                 </div>
@@ -719,7 +718,7 @@ Agents:
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-07-01
+            <i class="uil uil-refresh"></i> Page updated 2021-07-07
         </li>
         
     </ul>

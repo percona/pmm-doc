@@ -153,7 +153,7 @@
 <p>Broken network connectivity may be due to many reasons.  Particularly, when <a href="../setting-up/server/docker.html">using Docker</a>, the container is constrained by the host-level routing and firewall rules. For example, your hosting provider might have default <code>iptables</code> rules on their hosts that block communication between PMM Server and PMM Client, resulting in <em>DOWN</em> targets in VictoriaMetrics. If this happens, check the firewall and routing settings on the Docker host.</p>
 <p>PMM is also able to generate diagnostics data which can be examined and/or shared with our support team to help quickly solve an issue. You can get collected logs from PMM Client using the <code>pmm-admin summary</code> command.</p>
 <p>Logs obtained in this way includes PMM Client logs and logs which were received from the PMM Server, stored separately in the <code>client</code> and <code>server</code> folders. The <code>server</code> folder also contains its own <code>client</code> subfolder with the self-monitoring client information collected on the PMM Server.</p>
-<p>Beginning with PMM version 2.4.0, there is an additional flag that enables the fetching of <a href="https://github.com/google/pprof"><code>pprof</code></a> debug profiles and adds them to the diagnostics data. To enable, run <code>pmm-admin summary --pprof</code>.</p>
+<p>Beginning with <a href="../release-notes/2.4.0.html">PMM 2.4.0</a>, there is an additional flag that enables the fetching of <a href="https://github.com/google/pprof"><code>pprof</code></a> debug profiles and adds them to the diagnostics data. To enable, run <code>pmm-admin summary --pprof</code>.</p>
 <p>You can get PMM Server logs with either of these methods:</p>
 <h3 id="direct-download">Direct download<a class="headerlink" href="#direct-download" title="Permanent link">&para;</a></h3>
 <p>In a browser, visit <code>https://&lt;address-of-your-pmm-server&gt;/logs.zip</code>.</p>
@@ -209,7 +209,7 @@
 </ul>
 <h3 id="alert-rule-templates-is-disabled">Alert Rule Templates is disabled<a class="headerlink" href="#alert-rule-templates-is-disabled" title="Permanent link">&para;</a></h3>
 <p>Built-In alerts are not editable.</p>
-<p>However, you can copy them and edit the copies. (PMM &gt;=2.14.0).</p>
+<p>However, you can copy them and edit the copies. (In <a href="../release-notes/2.14.0.html">PMM 2.14.0</a> and above).</p>
 <p>If you create a custom alert rule template you will have access to edit.</p>
 <h3 id="creating-rules">Creating rules<a class="headerlink" href="#creating-rules" title="Permanent link">&para;</a></h3>
 <p><strong>I&rsquo;m ready to create my first rule! I&rsquo;ve chosen a template and given it a name&hellip;what is the format of the fields?</strong></p>
@@ -248,7 +248,7 @@
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-06-29
+            <i class="uil uil-refresh"></i> Page updated 2021-07-07
         </li>
         
     </ul>
