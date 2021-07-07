@@ -331,10 +331,9 @@ dnf localinstall *.rpm
     tar xfz pmm2-client-{{release}}.tar.gz && cd pmm2-client-{{release}}
     ```
 
-5. Run the installer.
+5. Choose one of these two commands (depends on your permissions):
 
-    !!! caution alert alert-warning "Non root users"
-        Run this command before next step:
+    !!! caution alert alert-warning "Without root permissions"
         ```sh
         export PMM_DIR=YOURPATH
         ```
@@ -342,18 +341,25 @@ dnf localinstall *.rpm
 
         **Node, MySQL and PostgreSQL exporters wont be avalaible.**
 
-    !!! hint "Root permissions (if you skipped step for non root users)"
+    !!! caution alert alert-warning "With root permissions"
+        ```sh
+        export PMM_DIR=/usr/local/percona/pmm2
+        ```
+
+6. Run the installer.
+
+    !!! hint "Root permissions (if you skipped step 5 for non root users)"
         ```sh
         ./install_tarball
         ```
 
-6. Change the path.
+7. Change the path.
 
     ```sh
     PATH=$PATH:$PMM_DIR/bin
     ```
 
-7. Set up the agent (pick right command for you depends on permissions)
+8. Set up the agent (pick right command for you depends on permissions)
 
     !!! hint "Root permissions"
     ```sh
@@ -367,13 +373,13 @@ dnf localinstall *.rpm
 
 
 
-8. Run the agent.
+9. Run the agent.
 
     ```sh
     pmm-agent --config-file=${PMM_DIR}/config/pmm-agent.yaml
     ```
 
-9. Open a new terminal and check.
+10. Open a new terminal and check.
 
     ```sh
     pmm-admin status
