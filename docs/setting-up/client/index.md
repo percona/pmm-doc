@@ -342,10 +342,10 @@ dnf localinstall *.rpm
 
         **Node, MySQL and PostgreSQL exporters wont be avalaible.**
 
-    This command require root permissions (if you skipped step for non root users).
-    ```sh
-    ./install_tarball
-    ```
+    !!! hint "Root permissions (if you skipped step for non root users)"
+        ```sh
+        ./install_tarball
+        ```
 
 6. Change the path.
 
