@@ -16,7 +16,7 @@ When you have installed PMM Client, you must:
 - [Register the node with PMM Server](#register).
 - [Configure and add services according to type](#add-services).
 
-If you need to, you can [remove services](#remove-services) or [remove PMM Client](#remove).
+If you need to, you can [unregister](#unregister), [remove services](#remove-services) or [remove PMM Client](#remove).
 
 ---
 
@@ -76,7 +76,7 @@ end split
 - These Linux packages are installed: `curl`, `gnupg`, `sudo`, `wget`.
 - If using it, install [Docker].
 - If using it, install [Docker compose].
-- System requirements
+- System requirements:
     - Operating system -- PMM Client runs on any modern 64-bit Linux distribution. It is tested on supported versions of Debian, Ubuntu, CentOS, and Red Hat Enterprise Linux. (See [Percona software support life cycle]).
     - Disk -- A minimum of 100 MB of storage is required for installing the PMM Client package. With a good connection to PMM Server, additional storage is not required. However, the client needs to store any collected data that it cannot dispatch immediately, so additional storage may be required if the connection is unstable or the throughput is low. (Caching only applies to Query Analytics data; VictoriaMetrics data is never cached on the client side.)
 

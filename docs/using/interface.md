@@ -22,7 +22,7 @@ PMM's user interface is a browser application based on [Grafana].
 
 5. If this is your first time logging in, you'll be asked to set a new password. (We recommend you do.)
 
-    - Either enter a new password in both fields and click *Submit*, or
+    - Either enter a new password in both fields and click *Submit*, or,
 
     - click *Skip* to use the default password.
 
@@ -95,13 +95,13 @@ At the top of each panel and to the right of the panel name is the *panel menu*.
 !!! hint alert alert-success "Tip"
     The menu is hidden until you mouse over it. Look for the <i class="uil uil-angle-down"></i> symbol in the title bar of a panel.
 
-| Item                                      | Description                                                                  |
-|-------------------------------------------| -----------------------------------------------------------------------------|
-| <i class="uil uil-eye"></i> View          | Open the panel in full window mode                                           |
-| <i class="uil uil-share-alt"></i> Share   | [Render the panel's image for sharing](../how-to/render-dashboard-images.md) |
-| <i class="uil uil-compass"></i> Explore   | Run [PromQL] queries                                                         |
-| <i class="fa fa-info-circle"></i> Inspect | See the panel's data or definition                                           |
-| <i class="uil uil-cube"></i> More         | (Only charts and graphs) Additional options                                  |
+| Item                                      | Description
+|-------------------------------------------| -----------------------------------------------------------------------------
+| <i class="uil uil-eye"></i> View          | Open the panel in full window mode.
+| <i class="uil uil-share-alt"></i> Share   | [Render the panel's image for sharing](../how-to/render-dashboard-images.md).
+| <i class="uil uil-compass"></i> Explore   | Run [PromQL] queries.
+| <i class="fa fa-info-circle"></i> Inspect | See the panel's data or definition.
+| <i class="uil uil-cube"></i> More         | (Only charts and graphs) Additional options.
 
 ### View
 
