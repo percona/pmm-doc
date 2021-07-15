@@ -79,7 +79,7 @@ The Kubernetes Cluster tab shows the status of operators.
 
 ### Kubernetes operator update
 
-When a new version of the operator is available the *Operators* column shows a message with this information. Cick the message to go to the operator release notes to find out more about the update.
+When a new version of the operator is available the *Operators* column shows a message with this information. Click the message to go to the operator release notes to find out more about the update.
 
 ![!](../_images/PMM_DBaaS_Kubernetes_Cluster_Operator_Update.png)
 
