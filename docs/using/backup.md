@@ -83,7 +83,8 @@
 
     - [`qpress`][PERCONA_QPRESS].
 
-    **The versions of each must be compatible with the installed version of MySQL.**
+    !!! caution alert alert-warning "Important"
+        The versions of each must be compatible with the installed version of MySQL.
 
 ## MongoDB backup preconditions
 
