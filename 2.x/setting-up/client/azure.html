@@ -218,6 +218,17 @@ won&rsquo;t receive any query data.</p>
 <p>PMM Agent to collect queries related metrics using <a href="postgresql.html#pg_stat_statements"><code>pg_stat_statements</code></a> for PostgreSQL or Performance Schema for MySQL (MariaDB)</p>
 </li>
 </ul>
+<h3 id="adding-an-azure-instance-on-pmm-client-side">Adding an Azure Instance on pmm-client side<a class="headerlink" href="#adding-an-azure-instance-on-pmm-client-side" title="Permanent link">&para;</a></h3>
+<p>TLS/SSL is enforced on the server by default. So please download the certificate needed to communicate over SSL with your Azure Database.
+It can be done on Networking tab for your Azure Database instance.</p>
+<p><div class="lightgallery"><a data-sub-html="" href="../../_images/azure_certificate.png"><img alt="" src="../../_images/azure_certificate.png" /></a></div></p>
+<p>Also enforced TLS/SSL connection option can be disabled on server side.</p>
+<p>Command for adding an azure database service for monitoring without TLS/SSL.</p>
+<div class="highlight"><pre><span></span><code>pmm-admin add mysql --username<span class="o">=</span>azureuser --password<span class="o">=</span>secure --host<span class="o">=</span>azuremysql.mysql.database.azure.com --service-name<span class="o">=</span>azure1 --query-source<span class="o">=</span>perfschema
+</code></pre></div>
+<p>Downloaded ceritificate is named DigiCertGlobalRootCA.crt.pem. So command for adding an azure database service for monitoring with TLS/SSL is next.</p>
+<div class="highlight"><pre><span></span><code>pmm-admin add mysql --username<span class="o">=</span>azureuser --password<span class="o">=</span>secure --host<span class="o">=</span>azuremysql.mysql.database.azure.com --service-name<span class="o">=</span>azure1 --query-source<span class="o">=</span>perfschema --tls --tls-ca<span class="o">=</span>DigiCertGlobalRootCA.crt.pem --tls-cert<span class="o">=</span>client-cert.pem --tls-key<span class="o">=</span>client-key.pem --tls-skip-verify
+</code></pre></div>
                     </div>
                 </div>
                 
@@ -225,7 +236,7 @@ won&rsquo;t receive any query data.</p>
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-06-28
+            <i class="uil uil-refresh"></i> Page updated 2021-07-15
         </li>
         
     </ul>
