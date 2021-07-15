@@ -87,7 +87,7 @@
 
 ## MongoDB backup preconditions
 
-- [Percona Backup for MongoDB] is installed and the agent is running on all MongoDB nodes in the replica set.
+- [Percona Backup for MongoDB] is installed and `pbm-agent` is running on all MongoDB nodes in the replica set.
 
 - MongoDB is a member of a replica set.
 
