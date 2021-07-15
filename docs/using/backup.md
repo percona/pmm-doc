@@ -114,7 +114,7 @@
 
 3. In the *Actions* column for that row, click *Delete backup*.
 
-4. Check / uncheck "Delete from storage" - depending on this, your actual data might be erased.
+4. (Optional) Check "Delete from storage" to also delete the actual backup content besides just the backup register.
 
 5. Click "Delete" to proceed.
 
