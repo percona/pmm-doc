@@ -87,7 +87,7 @@ To update the cluster:
 
 1. Find the row with the operator you want to update.
 
-2. Click the *Update* button in front if the operator.
+2. Click the *Update* button in front of the operator.
 
 3. Confirm the action by clicking *Update*, or abandon by clicking *Cancel*.
 
