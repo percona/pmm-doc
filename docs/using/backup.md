@@ -11,7 +11,7 @@
             - Confirm instance service parameters and storage location.
             - Install required packages.
         - For [MongoDB](#mongodb-backup-preconditions):
-            - Install [Percona Backup for MongoDB] on every node in the replica set.
+            - Install and run [Percona Backup for MongoDB] on every node in the replica set.
     - [Make a backup](#make-a-backup), or,
     - [Restore a backup](#restore-a-backup).
 
