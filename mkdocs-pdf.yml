@@ -63,7 +63,7 @@ plugins:
     - with-pdf:
         output_path: '_pdf/PerconaMonitoringAndManagement-2.21.0.pdf'
         cover_title: 'Documentation'
-        cover_subtitle: 2.21.0 (August XX, 2021)
+        cover_subtitle: 2.21.0 (August 24, 2021)
         author: 'Percona Technical Documentation Team'
         cover_logo: docs/_images/PMM_Logo.svg
         custom_template_path: _resources/templates
