@@ -59,6 +59,8 @@
 
 ## MySQL backup preconditions
 
+- [PMM Client](../setting-up/client/index.md) is installed and running on the node.
+
 - There is only one MySQL instance running on the node.
 
 - MySQL is running:
