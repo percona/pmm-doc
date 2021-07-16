@@ -75,6 +75,8 @@
 
 - MySQL is using the `/var/lib/mysql` directory for database storage.
 
+- `pmm-agent` has read/write permissions to the `/var/lib/mysql` directory.
+
 - The following packages are installed. They should be included in the `$PATH` environment variable:
 
     - [`xtrabackup`][PERCONA_XTRABACKUP], which includes:
