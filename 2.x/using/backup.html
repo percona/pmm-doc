@@ -134,12 +134,92 @@
                         <h1 id="backup-and-restore">Backup and Restore<a class="headerlink" href="#backup-and-restore" title="Permanent link">&para;</a></h1>
 <div class="admonition caution alert alert-warning">
 <p class="admonition-title">Caution</p>
-<p>Backup and restore features are a technical preview and currently only work with MySQL database servers backing up to Amazon AWS S3 storage locations.  You must also enable this feature at container creation time by adding <code>-e ENABLE_BACKUP_MANAGEMENT=1</code> to your <code>docker run</code> command. After that, go to <code>/graph/backup</code> to check the Backup Management page.</p>
+<p>Backup and restore features are a technical preview and currently only works with a MySQL database server or a MongoDB replica set cluster, backing up to an Amazon AWS S3 storage location.</p>
+</div>
+<div class="admonition summary alert alert-info">
+<p class="admonition-title">Summary</p>
+<ul>
+<li>Enable backup features.</li>
+<li>Add a storage location.</li>
+<li>Satisfy preconditions:<ul>
+<li>For <a href="#mysql-backup-preconditions">MySQL</a>:<ul>
+<li>Confirm instance service parameters and storage location.</li>
+<li>Install required packages.</li>
+</ul>
+</li>
+<li>For <a href="#mongodb-backup-preconditions">MongoDB</a>:<ul>
+<li>Install and run <a href="https://www.percona.com/doc/percona-backup-mongodb/installation.html">Percona Backup for MongoDB</a> on every node in the replica set.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#make-a-backup">Make a backup</a>, or,</li>
+<li><a href="#restore-a-backup">Restore a backup</a>.</li>
+</ul>
 </div>
 <h2 id="before-you-start">Before you start<a class="headerlink" href="#before-you-start" title="Permanent link">&para;</a></h2>
 <ul>
 <li>
 <p>You have an AWS S3 storage account and location details for it.</p>
+</li>
+<li>
+<p>Backup management has been enabled:</p>
+<ol>
+<li>
+<p>Select <i class="uil uil-cog"></i> <em>Configuration</em> → <i class="uil uil-setting"></i> <em>Settings</em> → <em>Advanced Settings</em>.</p>
+</li>
+<li>
+<p>Activate <em>Backup Management</em>.</p>
+</li>
+<li>
+<p>Click <em>Apply changes</em>.</p>
+</li>
+<li>
+<p>Visit <code>&lt;pmm-server-IP&gt;/graph/backup</code> or click <i class="uil uil-history"></i> → <em>Backup</em> in the left menu bar.</p>
+<p><div class="lightgallery"><a data-sub-html="" href="../_images/PMM_Backup_Management.jpg"><img alt="" src="../_images/PMM_Backup_Management.jpg" /></a></div></p>
+</li>
+</ol>
+<div class="admonition note alert alert-primary">
+<p>If PMM Server runs as a Docker container, enable backup features at container creation time by adding <code>-e ENABLE_BACKUP_MANAGEMENT=1</code> to your <code>docker run</code> command.</p>
+</div>
+</li>
+</ul>
+<h2 id="add-a-storage-location">Add a storage location<a class="headerlink" href="#add-a-storage-location" title="Permanent link">&para;</a></h2>
+<ol>
+<li>
+<p>Select <i class="uil uil-history"></i> → <em>Backup</em> → <em>Storage locations</em>.</p>
+</li>
+<li>
+<p>Click <em>Add</em>.</p>
+</li>
+<li>
+<p>Fill in the form fields.</p>
+<p><div class="lightgallery"><a data-sub-html="" href="../_images/PMM_Backup_Management_Locations_Add_Storage_Location.jpg"><img alt="" src="../_images/PMM_Backup_Management_Locations_Add_Storage_Location.jpg" /></a></div></p>
+<ul>
+<li><em>Name</em>:</li>
+<li><em>Description</em>:</li>
+<li><em>Type</em>: Choose the type of storage.<ul>
+<li><em>S3</em>: Use <a href="https://aws.amazon.com/s3/">Amazon AWS S3</a><ul>
+<li><em>Endpoint</em>: The S3 backup location endpoint.</li>
+<li><em>Bucket Name</em>:</li>
+<li><em>Access Key</em>:</li>
+<li><em>Secret Key</em>:</li>
+</ul>
+</li>
+<li><em>Local Client:</em> (Not currently implemented)</li>
+<li><em>Local Server:</em> (Not currently implemented)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Click <em>Add</em> to add the location or <em>Test</em> to test the connection.</p>
+</li>
+</ol>
+<h2 id="mysql-backup-preconditions">MySQL backup preconditions<a class="headerlink" href="#mysql-backup-preconditions" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p><a href="../setting-up/client/index.html">PMM Client</a> is installed and running on the node.</p>
 </li>
 <li>
 <p>There is only one MySQL instance running on the node.</p>
@@ -165,25 +245,10 @@
 <p>MySQL is using the <code>/var/lib/mysql</code> directory for database storage.</p>
 </li>
 <li>
-<p>Backup management has been enabled:</p>
-<ol>
-<li>
-<p>Select <i class="uil uil-cog"></i> <em>Configuration</em> → <i class="uil uil-setting"></i> <em>Settings</em> → <em>Advanced Settings</em>.</p>
+<p><code>pmm-agent</code> has read/write permissions to the <code>/var/lib/mysql</code> directory.</p>
 </li>
 <li>
-<p>Activate <em>Backup Management</em>.</p>
-</li>
-<li>
-<p>Click <em>Apply changes</em>.</p>
-</li>
-<li>
-<p>In the left menu bar, click <i class="uil uil-history"></i> → <em>Backup</em>.</p>
-<p><div class="lightgallery"><a data-sub-html="" href="../_images/PMM_Backup_Management.jpg"><img alt="" src="../_images/PMM_Backup_Management.jpg" /></a></div></p>
-</li>
-</ol>
-</li>
-<li>
-<p>The following packages are needed for creating backups. They should be included in the <code>$PATH</code> environment variable:</p>
+<p>The following packages are installed. They should be included in the <code>$PATH</code> environment variable:</p>
 <ul>
 <li>
 <p><a href="https://www.percona.com/software/mysql-database/percona-xtrabackup"><code>xtrabackup</code></a>, which includes:</p>
@@ -200,47 +265,25 @@
 <p><a href="https://www.percona.com/doc/percona-xtrabackup/LATEST/backup_scenarios/compressed_backup.html"><code>qpress</code></a>.</p>
 </li>
 </ul>
-<p><strong>The versions of each must be compatible with the installed version of MySQL.</strong></p>
-</li>
-</ul>
-<h2 id="adding-a-storage-location">Adding a storage location<a class="headerlink" href="#adding-a-storage-location" title="Permanent link">&para;</a></h2>
-<ol>
-<li>
-<p>Navigate to Backup Management → Storage locations.</p>
-</li>
-<li>
-<p>Click <em>Add</em>.</p>
-</li>
-<li>
-<p>Fill in the form fields.</p>
-<p><div class="lightgallery"><a data-sub-html="" href="../_images/PMM_Backup_Management_Locations_Add_Storage_Location.jpg"><img alt="" src="../_images/PMM_Backup_Management_Locations_Add_Storage_Location.jpg" /></a></div></p>
-<ul>
-<li><em>Name</em>:</li>
-<li><em>Description</em>:</li>
-<li><em>Type:</em><ul>
-<li><em>S3</em>:</li>
-<li><em>Local Client:</em> (Not currently implemented)</li>
-<li><em>Local Server:</em> (Not currently implemented)</li>
-</ul>
-</li>
-<li><em>Endpoint:</em></li>
-<li><em>Bucket Name:</em></li>
-<li><em>Access Key:</em></li>
-<li><em>Secret Key:</em></li>
-</ul>
-</li>
-<li>
-<p>Click <em>Add</em> to add the location or <em>Test</em> to test the connection.</p>
-</li>
-</ol>
-<h2 id="creating-a-backup">Creating a backup<a class="headerlink" href="#creating-a-backup" title="Permanent link">&para;</a></h2>
-<div class="admonition hint alert alert-success">
-<p class="admonition-title">Tip</p>
-<p>You must <a href="#adding-a-storage-location">add a backup storage location</a> before backing up.</p>
+<div class="admonition caution alert alert-warning">
+<p class="admonition-title">Important</p>
+<p>The versions of each must be compatible with the installed version of MySQL.</p>
 </div>
+</li>
+</ul>
+<h2 id="mongodb-backup-preconditions">MongoDB backup preconditions<a class="headerlink" href="#mongodb-backup-preconditions" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p><a href="https://www.percona.com/doc/percona-backup-mongodb/installation.html">Percona Backup for MongoDB</a> is installed and <code>pbm-agent</code> is running on all MongoDB nodes in the replica set.</p>
+</li>
+<li>
+<p>MongoDB is a member of a replica set.</p>
+</li>
+</ul>
+<h2 id="make-a-backup">Make a backup<a class="headerlink" href="#make-a-backup" title="Permanent link">&para;</a></h2>
 <ol>
 <li>
-<p>Navigate to <em>Backup Management</em> → <em>Backup Inventory</em>.</p>
+<p>Select <i class="uil uil-history"></i> → <em>Backup</em> → <em>Backup Inventory</em>.</p>
 </li>
 <li>
 <p>Click <i class="uil uil-plus-square"></i> <em>Add</em>.</p>
@@ -248,14 +291,12 @@
 <li>
 <p>In the <em>Backup On Demand</em> dialog, enter values for:</p>
 <ul>
-<li><em>Service name</em> &ndash; The service being backed up.</li>
-<li><em>Backup name</em> &ndash; A unique name for the backup.</li>
-<li><em>Description</em> &ndash; A long description.</li>
-<li><em>Location</em> &ndash; The predefined storage location.</li>
+<li><em>Service name</em>: Choose from the menu the service to back up.</li>
+<li><em>Vendor</em>: A value is automatically selected based on the service type.</li>
+<li><em>Backup name</em>: Enter a unique name for this backup.</li>
+<li><em>Description</em>: Enter a long description for this backup.</li>
+<li><em>Location</em>: Choose from the menu the <a href="#add-a-storage-location">storage location</a>.</li>
 </ul>
-<div class="admonition note alert alert-primary">
-<p><em>Vendor</em> is a read-only value showing the database vendor name. (Currently only for the supported MySQL service.)</p>
-</div>
 </li>
 <li>
 <p>Click <em>Backup</em>.</p>
@@ -264,13 +305,13 @@
 <p>In the <em>Backup Inventory</em> pane, watch the <em>Status</em> column.</p>
 </li>
 </ol>
-<h2 id="restoring-a-backup">Restoring a backup<a class="headerlink" href="#restoring-a-backup" title="Permanent link">&para;</a></h2>
+<h2 id="restore-a-backup">Restore a backup<a class="headerlink" href="#restore-a-backup" title="Permanent link">&para;</a></h2>
 <div class="admonition note alert alert-primary">
-<p>For this release, you can only restore a backup to the same service. I.e. a MySQL backup of service <code>mysql-service-1</code> can only be restored to a MySQL database server registered with the same service name. Future releases will give more flexibility to restore backups to other service types.</p>
+<p>For now, you can only restore a backup to the same service it was created from. I.e. a MySQL backup of service <code>mysql-service-1</code> can only be restored to a MySQL database server registered with the same service name. Future releases will give more flexibility to restore backups to other service types.</p>
 </div>
 <ol>
 <li>
-<p>Navigate to <em>Backup Management</em> → <em>Backup Inventory</em>.</p>
+<p>Select <i class="uil uil-history"></i> → <em>Backup</em> → <em>Backup Inventory</em>.</p>
 </li>
 <li>
 <p>Find the row with the backup you want to restore.</p>
