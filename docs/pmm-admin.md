@@ -743,13 +743,13 @@ The following options can be used with the **pmm-admin config** command:
 `--server-insecure-ssl`
 : Enable insecure SSL (self-signed certificate).
 
-`--SERVER_PASSWORD`
+`--server-password`
 : Specify the HTTP password configured on PMM Server.
 
 `--server-ssl`
 : Enable SSL encryption for connection to PMM Server.
 
-`--SERVER_USER`
+`--server-user`
 : Specify the HTTP user configured on PMM Server (default is `pmm`).
 
 You can also use global options that apply to any other command.
