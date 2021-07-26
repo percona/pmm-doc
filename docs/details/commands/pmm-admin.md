@@ -464,7 +464,7 @@ When you remove a service, collected data remains on PMM Server for the specifie
     `--tls-ca-file`
     : TLS CA certificate file.
 
-    `tls-cert-file`
+    `--tls-cert-file`
     : TLS certificate file.
 
     `tls-key-file`
