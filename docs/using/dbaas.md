@@ -26,7 +26,7 @@ From the left menu, select <i class="uil uil-database"></i> *DBaaS*.
 !!! note alert alert-primary ""
     PXC and PSMDB operators are installed as part of the Kubernetes cluster registration process. It enables you to deploy database clusters into the Kubernetes cluster.
     
-    If public address is set VM Operator is also installed as part of the Kubernetes cluster registration process. It lets you monitor kubernetes cluster via PMM.
+    If a public address is set VM Operator is also installed as part of the Kubernetes cluster registration process. It lets you monitor a kubernetes cluster via PMM.
 
 1. Click *Register new Kubernetes Cluster*.
 
