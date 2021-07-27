@@ -462,6 +462,15 @@ When you remove a service, collected data remains on PMM Server for the specifie
     `--tls-skip-verify`
     : Skip TLS certificates validation.
 
+    `--tls-ca-file`
+    : TLS CA certificate file.
+
+    `--tls-cert-file`
+    : TLS certificate file.
+
+    `--tls-key-file`
+    : TLS certificate key file.
+
     `--metrics-mode=mode`
     : Metrics flow mode for agents node-exporter. Allowed values:
         - `auto`: chosen by server (default).
