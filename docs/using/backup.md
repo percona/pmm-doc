@@ -163,6 +163,8 @@ Make regular scheduled backups.
                 - In the second field, select one or more minutes (*00* to *59*).
         - *Enable*: Deselect to define the scheduled backup without enabling it.
 
+        ![!](../_images/PMM_Backup_Management_Schedule.png)
+
         !!! note ""
             For this release ({{release}}), times are UTC.
 
@@ -181,6 +183,8 @@ Make regular scheduled backups.
     - Click <i class="uil uil-pen"></i> to edit the backup schedule.
     - Click <i class="uil uil-times"></i> to delete the backup schedule.
     - Click <i class="uil uil-copy"></i> to create a (by default, disabled) copy of the backup schedule.
+
+        ![!](../_images/PMM_Backup_Management_Scheduled_Backups_Copy.png)
 
 ## Restore a backup
 
