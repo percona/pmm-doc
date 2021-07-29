@@ -132,37 +132,34 @@
                 <div class="bodywrapper">
                     <div class="body">
                         <h1 id="pmm-inventory">PMM Inventory<a class="headerlink" href="#pmm-inventory" title="Permanent link">&para;</a></h1>
+<p>The <em>Inventory</em> dashboard is a high level overview of all objects registered by PMM.</p>
+<p>To see it select <i class="uil uil-cog"></i> <em>Configuration</em> → <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.94602 8.89221L9.6093 9.55549L7.84915 11.3156L6.67493 10.1438L7.33821 9.48049L7.84915 9.99143L8.94602 8.89221Z" fill="#000"></path><path d="M16.4273 2.4679V4.04524H7.57258V2.4679H3.1593V22.6406H20.8382V2.4679H16.4273ZM5.87805 19.0429V14.5148H10.4062V19.0429H5.87805ZM11.8288 9.47102H17.7702V10.4085H11.8288V9.47102ZM11.8288 16.3101H17.7702V17.2476H11.8288V16.3101ZM10.4062 7.67571V12.2038H5.87805V7.67571H10.4062Z" fill="#000"></path><path d="M15.7242 1.73906V3.34219H8.27576V1.73906C8.27576 1.53047 8.44685 1.35938 8.65544 1.35938H15.3445C15.5554 1.35938 15.7242 1.53047 15.7242 1.73906Z" fill="#000"></path></svg> <em>PMM Inventory</em> → <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.94602 8.89221L9.6093 9.55549L7.84915 11.3156L6.67493 10.1438L7.33821 9.48049L7.84915 9.99143L8.94602 8.89221Z" fill="#000"></path><path d="M16.4273 2.4679V4.04524H7.57258V2.4679H3.1593V22.6406H20.8382V2.4679H16.4273ZM5.87805 19.0429V14.5148H10.4062V19.0429H5.87805ZM11.8288 9.47102H17.7702V10.4085H11.8288V9.47102ZM11.8288 16.3101H17.7702V17.2476H11.8288V16.3101ZM10.4062 7.67571V12.2038H5.87805V7.67571H10.4062Z" fill="#000"></path><path d="M15.7242 1.73906V3.34219H8.27576V1.73906C8.27576 1.53047 8.44685 1.35938 8.65544 1.35938H15.3445C15.5554 1.35938 15.7242 1.53047 15.7242 1.73906Z" fill="#000"></path></svg> <em>Inventory list</em>.</p>
 <p><div class="lightgallery"><a data-sub-html="image" href="../../_images/PMM_Inventory.jpg"><img alt="image" src="../../_images/PMM_Inventory.jpg" /></a></div></p>
-<p>The <em>Inventory</em> dashboard is a high level overview of all objects PMM “knows” about.</p>
-<p>It contains three tabs (<em>services</em>, <em>agents</em>, and <em>nodes</em>) with lists of the correspondent objects and details about them, so that users are better able to understand which objects are registered against PMM Server. These objects are composing a hierarchy with Node at the top, then Service and Agents assigned to a Node.</p>
+<p>Inventory objects form a hierarchy with Node at the top, then Service and Agents assigned to a Node.</p>
+<p>There are three tabs where items for each type are listed with their details:</p>
 <ul>
 <li>
-<p><strong>Nodes</strong> – Where the service and agents will run. Assigned a <code>node_id</code>, associated with a <code>machine_id</code> (from <code>/etc/machine-id</code>). Few examples are bare metal, virtualized, container.</p>
+<p><em>Services</em>
+    – Individual service names and where they run, against which agents will be assigned. Each instance of a service gets a <code>service_id</code> value that is related to a <code>node_id</code>. Examples are MySQL, Amazon Aurora MySQL. This feature also allows to support multiple mysqld instances on a single node, with different service names, e.g. <code>mysql1-3306</code>, and <code>mysql1-3307</code>.</p>
 </li>
 <li>
-<p><strong>Services</strong> – Individual service names and where they run, against which agents will be assigned. Each instance of a service gets a <code>service_id</code> value that is related to a <code>node_id</code>. Examples are MySQL, Amazon Aurora MySQL. This feature also allows to support multiple mysqld instances on a single node, with different service names, e.g. mysql1-3306, and mysql1-3307.</p>
+<p><em>Agents</em>
+    – Each binary (exporter, agent) running on a client will get an <code>agent_id</code> value. Examples:</p>
+<div class="highlight"><pre><span></span><code>- `pmm-agent` one is the top of the tree, assigned to a `node_id`
+- `node_exporter` is assigned to pmm-agent `agent_id`
+- `mysqld_exporter` and QAN MySQL Perfschema are assigned to a `service_id`.
+</code></pre></div>
 </li>
 <li>
-<p><strong>Agents</strong> – Each binary (exporter, agent) running on a client will get an <code>agent_id</code> value.</p>
-<ul>
-<li>
-<p><code>pmm-agent</code> one is the top of the tree, assigned to a <code>node_id</code></p>
-</li>
-<li>
-<p><code>node_exporter</code> is assigned to pmm-agent <code>agent_id</code></p>
-</li>
-<li>
-<p><code>mysqld_exporter</code> &amp; QAN MySQL Perfschema are assigned to a <code>service_id</code>.</p>
+<p><em>Nodes</em>
+    – Where the service and agents will run. Assigned a <code>node_id</code>, associated with a <code>machine_id</code> (from <code>/etc/machine-id</code>). Some examples are bare metal, virtualized, container.</p>
 </li>
 </ul>
-</li>
-</ul>
-<p>Examples are <code>pmm-agent</code>, <code>node_exporter</code>, <code>mysqld_exporter</code>, QAN MySQL Perfschema.</p>
 <h2 id="removing-items-from-the-inventory">Removing items from the inventory<a class="headerlink" href="#removing-items-from-the-inventory" title="Permanent link">&para;</a></h2>
 <p>You can remove items from the inventory.</p>
 <ol>
 <li>
-<p>Open <em>Home Dashboard &gt; PMM Inventory</em></p>
+<p>Select <i class="uil uil-cog"></i> <em>Configuration</em> → <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.94602 8.89221L9.6093 9.55549L7.84915 11.3156L6.67493 10.1438L7.33821 9.48049L7.84915 9.99143L8.94602 8.89221Z" fill="#000"></path><path d="M16.4273 2.4679V4.04524H7.57258V2.4679H3.1593V22.6406H20.8382V2.4679H16.4273ZM5.87805 19.0429V14.5148H10.4062V19.0429H5.87805ZM11.8288 9.47102H17.7702V10.4085H11.8288V9.47102ZM11.8288 16.3101H17.7702V17.2476H11.8288V16.3101ZM10.4062 7.67571V12.2038H5.87805V7.67571H10.4062Z" fill="#000"></path><path d="M15.7242 1.73906V3.34219H8.27576V1.73906C8.27576 1.53047 8.44685 1.35938 8.65544 1.35938H15.3445C15.5554 1.35938 15.7242 1.53047 15.7242 1.73906Z" fill="#000"></path></svg> <em>PMM Inventory</em> → <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.94602 8.89221L9.6093 9.55549L7.84915 11.3156L6.67493 10.1438L7.33821 9.48049L7.84915 9.99143L8.94602 8.89221Z" fill="#000"></path><path d="M16.4273 2.4679V4.04524H7.57258V2.4679H3.1593V22.6406H20.8382V2.4679H16.4273ZM5.87805 19.0429V14.5148H10.4062V19.0429H5.87805ZM11.8288 9.47102H17.7702V10.4085H11.8288V9.47102ZM11.8288 16.3101H17.7702V17.2476H11.8288V16.3101ZM10.4062 7.67571V12.2038H5.87805V7.67571H10.4062Z" fill="#000"></path><path d="M15.7242 1.73906V3.34219H8.27576V1.73906C8.27576 1.53047 8.44685 1.35938 8.65544 1.35938H15.3445C15.5554 1.35938 15.7242 1.53047 15.7242 1.73906Z" fill="#000"></path></svg> <em>Inventory list</em>.</p>
 </li>
 <li>
 <p>In the first column, select the items to be removed.</p>
@@ -180,7 +177,7 @@
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-05-11
+            <i class="uil uil-refresh"></i> Page updated 2021-07-29
         </li>
         
     </ul>
