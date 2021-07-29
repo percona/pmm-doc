@@ -275,6 +275,12 @@ When you remove a service, collected data remains on PMM Server for the specifie
     `--password=password`
     :  MongoDB password.
 
+    `--agent-password=password`
+    :  Override the default password for accessing the `/metrics` endpoint. (Username is `pmm` and default password is the agent ID.)
+
+        !!! caution ""
+            This password is visible in the [inventory].
+
     `--query-source=profiler`
     :  Source of queries, one of: `profiler`, `none` (default: `profiler`).
 
@@ -338,6 +344,12 @@ When you remove a service, collected data remains on PMM Server for the specifie
 
     `--password=password`
     : MySQL password.
+
+    `--agent-password=password`
+    :  Override the default password for accessing the `/metrics` endpoint. (Username is `pmm` and default password is the agent ID.)
+
+        !!! caution ""
+            This password is visible in the [inventory].
 
     `--query-source=slowlog`
     : Source of SQL queries, one of: `slowlog`, `perfschema`, `none` (default: `slowlog`). For `slowlog` query source you need change permissions for
@@ -438,6 +450,12 @@ When you remove a service, collected data remains on PMM Server for the specifie
     `--password=<password>`
     : PostgreSQL password.
 
+    `--agent-password=password`
+    :  Override the default password for accessing the `/metrics` endpoint. (Username is `pmm` and default password is the agent ID.)
+
+        !!! caution ""
+            This password is visible in the [inventory].
+
     `--query-source=<query source>`
     : Source of SQL queries, one of: `pgstatements`, `pgstatmonitor`, `none` (default: `pgstatements`).
 
@@ -495,6 +513,12 @@ When you remove a service, collected data remains on PMM Server for the specifie
 
     `--password=password`
     : ProxySQL password.
+
+    `--agent-password=password`
+    :  Override the default password for accessing the `/metrics` endpoint. (Username is `pmm` and default password is the agent ID.)
+
+        !!! caution ""
+            This password is visible in the [inventory].
 
     `--environment=environment`
     : Environment name.
@@ -750,3 +774,5 @@ For other collectors that you can disable with the `--disable-collectors` option
 - [`mongodb_exporter`](https://github.com/percona/mongodb_exporter)
 - [`postgres_exporter`](https://github.com/percona/postgres_exporter)
 - [`proxysql_exporter`](https://github.com/percona/proxysql_exporter)
+
+[inventory]: ../dashboards/dashboard-inventory.md
