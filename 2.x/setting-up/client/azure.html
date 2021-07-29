@@ -226,7 +226,8 @@ It can be done on Networking tab for your Azure Database instance.</p>
 <p>Command for adding an azure database service for monitoring without TLS/SSL.</p>
 <div class="highlight"><pre><span></span><code>pmm-admin add mysql --username<span class="o">=</span>azureuser --password<span class="o">=</span>secure --host<span class="o">=</span>azuremysql.mysql.database.azure.com --service-name<span class="o">=</span>azure1 --query-source<span class="o">=</span>perfschema
 </code></pre></div>
-<p>Downloaded ceritificate is named DigiCertGlobalRootCA.crt.pem. So command for adding an azure database service for monitoring with TLS/SSL is next.</p>
+<p>Downloaded certificate is named <code>DigiCertGlobalRootCA.crt.pem</code>.</p>
+<p>An example of the command for adding an Azure database service for monitoring with TLS/SSL would be:</p>
 <div class="highlight"><pre><span></span><code>pmm-admin add mysql --username<span class="o">=</span>azureuser --password<span class="o">=</span>secure --host<span class="o">=</span>azuremysql.mysql.database.azure.com --service-name<span class="o">=</span>azure1 --query-source<span class="o">=</span>perfschema --tls --tls-ca<span class="o">=</span>DigiCertGlobalRootCA.crt.pem --tls-cert<span class="o">=</span>client-cert.pem --tls-key<span class="o">=</span>client-key.pem --tls-skip-verify
 </code></pre></div>
                     </div>
@@ -236,7 +237,7 @@ It can be done on Networking tab for your Azure Database instance.</p>
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-07-15
+            <i class="uil uil-refresh"></i> Page updated 2021-07-29
         </li>
         
     </ul>
