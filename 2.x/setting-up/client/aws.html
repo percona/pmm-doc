@@ -227,7 +227,9 @@
 </div>
 <p>When adding a monitoring instance for Amazon RDS, specify a unique name to distinguish it from the local MySQL instance.  If you do not specify a name, it will use the client’s host name.</p>
 <p>Create the <code>pmm</code> user with the following privileges on the Amazon RDS instance that you want to monitor:</p>
-<div class="highlight"><pre><span></span><code><span class="k">GRANT</span> <span class="k">SELECT</span><span class="p">,</span> <span class="n">PROCESS</span><span class="p">,</span> <span class="n">REPLICATION</span> <span class="n">CLIENT</span> <span class="k">ON</span> <span class="o">*</span><span class="p">.</span><span class="o">*</span> <span class="k">TO</span> <span class="s1">&#39;pmm&#39;</span><span class="o">@</span><span class="s1">&#39;%&#39;</span> <span class="n">IDENTIFIED</span> <span class="k">BY</span> <span class="s1">&#39;pass&#39;</span> <span class="k">WITH</span> <span class="n">MAX_USER_CONNECTIONS</span> <span class="mi">10</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">CREATE</span> <span class="k">USER</span> <span class="s1">&#39;pmm&#39;</span><span class="o">@</span><span class="s1">&#39;%&#39;</span> <span class="n">IDENTIFIED</span> <span class="k">BY</span> <span class="s1">&#39;pass&#39;</span><span class="p">;</span>
+<span class="k">GRANT</span> <span class="k">SELECT</span><span class="p">,</span> <span class="n">PROCESS</span><span class="p">,</span> <span class="n">REPLICATION</span> <span class="n">CLIENT</span> <span class="k">ON</span> <span class="o">*</span><span class="p">.</span><span class="o">*</span> <span class="k">TO</span> <span class="s1">&#39;pmm&#39;</span><span class="o">@</span><span class="s1">&#39;%&#39;</span><span class="p">;</span>
+<span class="k">ALTER</span> <span class="k">USER</span> <span class="s1">&#39;pmm&#39;</span><span class="o">@</span><span class="s1">&#39;%&#39;</span> <span class="k">WITH</span> <span class="n">MAX_USER_CONNECTIONS</span> <span class="mi">10</span><span class="p">;</span>
 <span class="k">GRANT</span> <span class="k">SELECT</span><span class="p">,</span> <span class="k">UPDATE</span><span class="p">,</span> <span class="k">DELETE</span><span class="p">,</span> <span class="k">DROP</span> <span class="k">ON</span> <span class="n">performance_schema</span><span class="p">.</span><span class="o">*</span> <span class="k">TO</span> <span class="s1">&#39;pmm&#39;</span><span class="o">@</span><span class="s1">&#39;%&#39;</span><span class="p">;</span>
 </code></pre></div>
 <p>If you have Amazon RDS with a MySQL version prior to 5.5, <code>REPLICATION CLIENT</code> privilege is not available there and has to be excluded from the above statement.</p>
@@ -312,7 +314,7 @@ instances.</p>
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-06-29
+            <i class="uil uil-refresh"></i> Page updated 2021-07-29
         </li>
         
     </ul>
