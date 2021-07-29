@@ -155,8 +155,8 @@
 </div>
 <h2 id="upgrade-from-pmm-1">Upgrade from PMM 1<a class="headerlink" href="#upgrade-from-pmm-1" title="Permanent link">&para;</a></h2>
 <p>Because of the significant architectural changes between PMM1 and PMM2, there is no direct upgrade path. The approach to making the switch from PMM version 1 to 2 is a gradual transition, outlined <a href="https://www.percona.com/blog/2019/11/27/running-pmm1-and-pmm2-clients-on-the-same-host/">in this blog post</a>.</p>
-<p>In short, it involves first standing up a new PMM2 server on a new host and connecting clients to it.  As new data is reported to the PMM2 server, old metrics will age out during the course of the retention period (30 days, by default), at which point you&rsquo;ll be able to shut down your existing PMM1 server.</p>
-<p>Any alerts configured through the Grafana UI will have to be recreated due to the target dashboard id&rsquo;s not matching between PMM1 and PMM2.  In this instance we recommend moving to Alertmanager recipes in PMM2 for alerting which, for the time being, requires a separate Alertmanager instance. However, we are working on integrating this natively into PMM2 Server and expect to support your existing Alertmanager rules.</p>
+<p>In short, it involves first standing up a new PMM2 server on a new host and connecting clients to it. As new data is reported to the PMM2 server, old metrics will age with the retention period (30 days, by default), at which point you&rsquo;ll be able to shut down your existing PMM1 server.</p>
+<p>Any alerts configured through the Grafana UI will have to be recreated due to the target dashboard id&rsquo;s not matching between PMM1 and PMM2.  In this instance we recommend moving to Alertmanager recipes in PMM2 for alerting which, for the time being, requires a separate Alertmanager instance. We are working on integrating this natively into PMM2 Server and expect to support your existing Alertmanager rules.</p>
                     </div>
                 </div>
                 
@@ -164,7 +164,7 @@
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-06-17
+            <i class="uil uil-refresh"></i> Page updated 2021-07-29
         </li>
         
     </ul>

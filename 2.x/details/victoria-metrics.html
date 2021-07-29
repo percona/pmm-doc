@@ -134,13 +134,13 @@
                         <h1 id="victoriametrics">VictoriaMetrics<a class="headerlink" href="#victoriametrics" title="Permanent link">&para;</a></h1>
 <p><a href="https://victoriametrics.github.io/">VictoriaMetrics</a> is a third-party monitoring solution and time-series database that replaced Prometheus in <a href="../release-notes/2.12.0.html">PMM 2.12.0</a>.</p>
 <h2 id="pushpull-modes">Push/Pull modes<a class="headerlink" href="#pushpull-modes" title="Permanent link">&para;</a></h2>
-<p>VictoriaMetrics allows metrics data to be &lsquo;pushed&rsquo; to the server in addition to it being &lsquo;pulled&rsquo; by the server. When setting up services, you can decide which mode to use.</p>
+<p>VictoriaMetrics metrics data can be both &lsquo;pushed&rsquo; to the server and &lsquo;pulled&rsquo; by the server. When setting up services, you can decide which mode to use.</p>
 <div class="admonition note alert alert-primary">
 <p>The &lsquo;push&rsquo; mode is now default for newly-added services.
 (In PMM 2.12.0 the default mode was &lsquo;pull&rsquo;.)</p>
 </div>
 <p>The mode (push/pull) is controlled by the <code>--metrics-mode</code> flag for the <code>pmm-admin config</code> and <code>pmm-admin add</code> commands.</p>
-<p>If you need to change the metrics mode for an existing Service, you must remove it and re-add it with the same name and the required flags. (There is currently no ability to update a service.)</p>
+<p>If you need to change the metrics mode for an existing Service, you must remove it and re-add it with the same name and the required flags. (You cannot update a service.)</p>
 <h2 id="remapped-targets-for-direct-prometheus-paths">Remapped targets for direct Prometheus paths<a class="headerlink" href="#remapped-targets-for-direct-prometheus-paths" title="Permanent link">&para;</a></h2>
 <p>Direct Prometheus paths return structured information directly from Prometheus, bypassing the PMM application.</p>
 <p>They are accessed by requesting a URL of the form <code>&lt;PMM SERVER URL&gt;/prometheus/&lt;PATH&gt;</code>.</p>
@@ -159,7 +159,7 @@
 </tr>
 <tr>
 <td><code>/prometheus/config</code></td>
-<td>No equivalent. However, some information is at <code>/prometheus/targets</code>.</td>
+<td>No equivalent, but there is some information at <code>/prometheus/targets</code>.</td>
 </tr>
 <tr>
 <td><code>/prometheus/flags</code></td>
@@ -203,7 +203,7 @@
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-06-29
+            <i class="uil uil-refresh"></i> Page updated 2021-07-29
         </li>
         
     </ul>

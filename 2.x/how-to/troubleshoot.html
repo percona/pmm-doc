@@ -150,10 +150,11 @@
 </ol>
 <p>Refresh The Home page in 2-5 minutes and you should see that PMM was updated.</p>
 <h2 id="troubleshoot-connection">PMM Server/PMM Client connection<a class="headerlink" href="#troubleshoot-connection" title="Permanent link">&para;</a></h2>
-<p>Broken network connectivity may be due to many reasons.  Particularly, when <a href="../setting-up/server/docker.html">using Docker</a>, the container is constrained by the host-level routing and firewall rules. For example, your hosting provider might have default <code>iptables</code> rules on their hosts that block communication between PMM Server and PMM Client, resulting in <em>DOWN</em> targets in VictoriaMetrics. If this happens, check the firewall and routing settings on the Docker host.</p>
-<p>PMM is also able to generate diagnostics data which can be examined and/or shared with our support team to help quickly solve an issue. You can get collected logs from PMM Client using the <code>pmm-admin summary</code> command.</p>
+<p>There are many causes of broken network connectivity.</p>
+<p>When <a href="../setting-up/server/docker.html">using Docker</a> the container is constrained by the host-level routing and firewall rules. For example, your hosting provider might have default <code>iptables</code> rules on their hosts that block communication between PMM Server and PMM Client, resulting in <em>DOWN</em> targets in VictoriaMetrics. If this happens, check the firewall and routing settings on the Docker host.</p>
+<p>PMM is also able to generate diagnostics data which can be examined and/or shared with our support team to help solve an issue. You can get collected logs from PMM Client using the <code>pmm-admin summary</code> command.</p>
 <p>Logs obtained in this way includes PMM Client logs and logs which were received from the PMM Server, stored separately in the <code>client</code> and <code>server</code> folders. The <code>server</code> folder also contains its own <code>client</code> subfolder with the self-monitoring client information collected on the PMM Server.</p>
-<p>Beginning with <a href="../release-notes/2.4.0.html">PMM 2.4.0</a>, there is an additional flag that enables the fetching of <a href="https://github.com/google/pprof"><code>pprof</code></a> debug profiles and adds them to the diagnostics data. To enable, run <code>pmm-admin summary --pprof</code>.</p>
+<p>Beginning with <a href="../release-notes/2.4.0.html">PMM 2.4.0</a>, there is a flag that enables the fetching of <a href="https://github.com/google/pprof"><code>pprof</code></a> debug profiles and adds them to the diagnostics data. To enable, run <code>pmm-admin summary --pprof</code>.</p>
 <p>You can get PMM Server logs with either of these methods:</p>
 <h3 id="direct-download">Direct download<a class="headerlink" href="#direct-download" title="Permanent link">&para;</a></h3>
 <p>In a browser, visit <code>https://&lt;address-of-your-pmm-server&gt;/logs.zip</code>.</p>
@@ -168,9 +169,9 @@
 </ol>
 <h2 id="connection-difficulties">Connection difficulties<a class="headerlink" href="#connection-difficulties" title="Permanent link">&para;</a></h2>
 <h3 id="passwords">Passwords<a class="headerlink" href="#passwords" title="Permanent link">&para;</a></h3>
-<p>When adding a service, the host might not be detected correctly if the password contains special symbols (e.g. <code>@</code>, <code>%</code>, etc.).</p>
+<p>When adding a service, the host might not be detected if the password contains special symbols (e.g. <code>@</code>, <code>%</code>, etc.).</p>
 <p>In such cases, you should convert any password, replacing special characters with their escape sequence equivalents.</p>
-<p>One way to do this is to use the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent"><code>encodeURIComponent</code></a> JavaScript function in your browser&rsquo;s web console (usually found under <em>Development Tools</em>). Evaluate the function with your password as the parameter. For example:</p>
+<p>One way to do this is to use the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent"><code>encodeURIComponent</code></a> JavaScript function in your browser&rsquo;s web console (commonly found under a <em>Development Tools</em> menu). Run the function with your password as the parameter. For example:</p>
 <div class="highlight"><pre><span></span><code><span class="o">&gt;</span> <span class="nb">encodeURIComponent</span><span class="p">(</span><span class="s2">&quot;s3cR#tpa$$worD&quot;</span><span class="p">)</span>
 </code></pre></div>
 <p>will give:</p>
@@ -208,8 +209,7 @@
 <li><code>CRAM-MD5</code>: Use Username and Secret.</li>
 </ul>
 <h3 id="alert-rule-templates-is-disabled">Alert Rule Templates is disabled<a class="headerlink" href="#alert-rule-templates-is-disabled" title="Permanent link">&para;</a></h3>
-<p>Built-In alerts are not editable.</p>
-<p>However, you can copy them and edit the copies. (In <a href="../release-notes/2.14.0.html">PMM 2.14.0</a> and above).</p>
+<p>Built-In alerts are not editable, but you can copy them and edit the copies. (In <a href="../release-notes/2.14.0.html">PMM 2.14.0</a> and above).</p>
 <p>If you create a custom alert rule template you will have access to edit.</p>
 <h3 id="creating-rules">Creating rules<a class="headerlink" href="#creating-rules" title="Permanent link">&para;</a></h3>
 <p><strong>I&rsquo;m ready to create my first rule! I&rsquo;ve chosen a template and given it a name&hellip;what is the format of the fields?</strong></p>
@@ -236,7 +236,7 @@
 </li>
 </ul>
 <h3 id="variables-in-templates">Variables in Templates<a class="headerlink" href="#variables-in-templates" title="Permanent link">&para;</a></h3>
-<p><strong>The concept of <em>template</em> implies things like variable substitutions&hellip;where can I use these? Where can I find a complete list of them?</strong></p>
+<p><strong>The concept of <em>template</em> implies features like variable substitutions&hellip;where can I use these? Where can I find a complete list of them?</strong></p>
 <p>Here is a guide to creating templates for Alertmanager: <a href="https://prometheus.io/docs/prometheus/latest/configuration/template_examples/">https://prometheus.io/docs/prometheus/latest/configuration/template_examples/</a></p>
 <h2 id="missing-data">Missing data<a class="headerlink" href="#missing-data" title="Permanent link">&para;</a></h2>
 <p><strong>Why don&rsquo;t I see the whole query?</strong></p>
@@ -248,7 +248,7 @@
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-07-07
+            <i class="uil uil-refresh"></i> Page updated 2021-07-29
         </li>
         
     </ul>
