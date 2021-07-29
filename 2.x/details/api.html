@@ -148,8 +148,8 @@
 <p>An <strong>Agent</strong> represents something that runs on the Node which is not useful in itself but instead provides insights (metrics, query performance data, etc) about Nodes and/or Services. An agent always runs on the single Node (except External Exporters), and provides insights for zero or more Services and Nodes.</p>
 </li>
 </ul>
-<p>Nodes, Services, and Agents have <strong>Types</strong> which define specific their properties, and the specific logic they implement.</p>
-<p>Nodes and Services are external by nature – we do not manage them (create, destroy), but merely maintain a list of them (add to inventory, remove from inventory) in <code>pmm-managed</code>. Most Agents, however, are started and stopped by <code>pmm-agent</code>. The only exception is the External Exporter Type which is started externally.</p>
+<p>Nodes, Services, and Agents have <strong>Types</strong> which define specific their properties, and their specific logic.</p>
+<p>Nodes and Services are external by nature – we do not manage them (create, destroy), but merely maintain a list of them (add to inventory, remove from inventory) in <code>pmm-managed</code>. Most Agents are started and stopped by <code>pmm-agent</code>. One exception is the External Exporter Type which is started externally.</p>
                     </div>
                 </div>
                 
@@ -157,7 +157,7 @@
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-06-29
+            <i class="uil uil-refresh"></i> Page updated 2021-07-29
         </li>
         
     </ul>
