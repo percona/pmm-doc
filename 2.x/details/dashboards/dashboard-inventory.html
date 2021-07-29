@@ -139,20 +139,21 @@
 <p>There are three tabs where items for each type are listed with their details:</p>
 <ul>
 <li>
-<p><em>Services</em>
-    – Individual service names and where they run, against which agents will be assigned. Each instance of a service gets a <code>service_id</code> value that is related to a <code>node_id</code>. Examples are MySQL, Amazon Aurora MySQL. This feature also allows to support multiple mysqld instances on a single node, with different service names, e.g. <code>mysql1-3306</code>, and <code>mysql1-3307</code>.</p>
+<p><em>Services</em></p>
+<p>Individual service names and where they run, against which agents will be assigned. Each instance of a service gets a <code>service_id</code> value that is related to a <code>node_id</code>. Examples are MySQL, Amazon Aurora MySQL. This feature also allows to support multiple mysqld instances on a single node, with different service names, e.g. <code>mysql1-3306</code>, and <code>mysql1-3307</code>.</p>
 </li>
 <li>
-<p><em>Agents</em>
-    – Each binary (exporter, agent) running on a client will get an <code>agent_id</code> value. Examples:</p>
-<div class="highlight"><pre><span></span><code>- `pmm-agent` one is the top of the tree, assigned to a `node_id`
-- `node_exporter` is assigned to pmm-agent `agent_id`
-- `mysqld_exporter` and QAN MySQL Perfschema are assigned to a `service_id`.
-</code></pre></div>
+<p><em>Agents</em></p>
+<p>Each binary (exporter, agent) running on a client will get an <code>agent_id</code> value. Examples:</p>
+<ul>
+<li><code>pmm-agent</code> one is the top of the tree, assigned to a <code>node_id</code></li>
+<li><code>node_exporter</code> is assigned to pmm-agent <code>agent_id</code></li>
+<li><code>mysqld_exporter</code> and QAN MySQL Perfschema are assigned to a <code>service_id</code>.</li>
+</ul>
 </li>
 <li>
-<p><em>Nodes</em>
-    – Where the service and agents will run. Assigned a <code>node_id</code>, associated with a <code>machine_id</code> (from <code>/etc/machine-id</code>). Some examples are bare metal, virtualized, container.</p>
+<p><em>Nodes</em></p>
+<p>Where the service and agents will run. Assigned a <code>node_id</code>, associated with a <code>machine_id</code> (from <code>/etc/machine-id</code>). Some examples are bare metal, virtualized, container.</p>
 </li>
 </ul>
 <h2 id="removing-items-from-the-inventory">Removing items from the inventory<a class="headerlink" href="#removing-items-from-the-inventory" title="Permanent link">&para;</a></h2>
