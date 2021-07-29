@@ -276,7 +276,7 @@ When you remove a service, collected data remains on PMM Server for the specifie
     :  MongoDB password.
 
     `--agent-password=password`
-    :  Override the default password for accessing the `/metrics` end point. (Username is `pmm` and default password is the agent ID.)
+    :  Override the default password for accessing the `/metrics` endpoint. (Username is `pmm` and default password is the agent ID.)
 
         !!! caution ""
             This password is visible in the [inventory].
@@ -346,7 +346,7 @@ When you remove a service, collected data remains on PMM Server for the specifie
     : MySQL password.
 
     `--agent-password=password`
-    :  Override the default password for accessing the `/metrics` end point. (Username is `pmm` and default password is the agent ID.)
+    :  Override the default password for accessing the `/metrics` endpoint. (Username is `pmm` and default password is the agent ID.)
 
         !!! caution ""
             This password is visible in the [inventory].
@@ -451,7 +451,7 @@ When you remove a service, collected data remains on PMM Server for the specifie
     : PostgreSQL password.
 
     `--agent-password=password`
-    :  Override the default password for accessing the `/metrics` end point. (Username is `pmm` and default password is the agent ID.)
+    :  Override the default password for accessing the `/metrics` endpoint. (Username is `pmm` and default password is the agent ID.)
 
         !!! caution ""
             This password is visible in the [inventory].
@@ -515,7 +515,7 @@ When you remove a service, collected data remains on PMM Server for the specifie
     : ProxySQL password.
 
     `--agent-password=password`
-    :  Override the default password for accessing the `/metrics` end point. (Username is `pmm` and default password is the agent ID.)
+    :  Override the default password for accessing the `/metrics` endpoint. (Username is `pmm` and default password is the agent ID.)
 
         !!! caution ""
             This password is visible in the [inventory].
