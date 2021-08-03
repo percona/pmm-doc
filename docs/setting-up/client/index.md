@@ -118,6 +118,8 @@ The [PMM Client Docker image] is a convenient way to run PMM Client as a preconf
     --volumes-from pmm-client-data \
     percona/pmm-client:2
     ```
+!!! hint alert-success "Tips"
+    You can find a complete list of compatible environment variables [here](../../details/commands/pmm-agent.md).
 
 4. Check status.
 
@@ -359,7 +361,7 @@ dnf localinstall *.rpm
     PATH=$PATH:$PMM_DIR/bin
     ```
 
-8. Set up the agent (pick right command for you depends on permissions)
+8. Set up the agent (pick the command for you depending on permissions)
 
     !!! hint "Root permissions"
     ```sh
