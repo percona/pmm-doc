@@ -32,7 +32,7 @@
 
 
 
-<title>Percona Monitoring and Management &mdash; PMM 2.12.0</title>
+<title>Percona Monitoring and Management &mdash; PMM 2.20.0</title>
 
 <head>
     
@@ -61,7 +61,7 @@
 
     <link rel="top" title="" href="https://www.percona.com/doc/percona-monitoring-and-management/2.x" />
     
-    <link rel="next" title="PMM 2.11.1" href="2.11.1.html" />
+    <link rel="next" title="PMM 2.19.0" href="2.19.0.html" />
     
     
 </head>
@@ -104,12 +104,12 @@
     <ul class="nav nav-pills">
         
         <li class="right" style="margin-right: 10px">
-            <a href="2.11.1.html" title="PMM 2.11.1">Next</a>
+            <a href="2.19.0.html" title="PMM 2.19.0">Next</a>
         </li>
         
         
         <li class="right" style="margin-right: 10px">
-            <a href="2.13.0.html" title="PMM 2.13.0">Previous</a>
+            <a href="index.html" title="Release Notes">Previous</a>
         </li>
         
         <li>
@@ -123,7 +123,7 @@
 <div class="small">
     <ul class="list-inline">
         <li class="pull-right">
-            <a href="https://github.com/percona/pmm-doc/edit/main/docs/release-notes/2.12.0.md" target="_blank" title="Edit this page on GitHub in Markdown format"><i class="uil uil-pen"></i> Edit this page</a>
+            <a href="https://github.com/percona/pmm-doc/edit/main/docs/release-notes/2.20.0.md" target="_blank" title="Edit this page on GitHub in Markdown format"><i class="uil uil-pen"></i> Edit this page</a>
         </li>
     </ul>
 </div>
@@ -131,7 +131,7 @@
 
                 <div class="bodywrapper">
                     <div class="body">
-                        <h1 id="percona-monitoring-and-management-2120">Percona Monitoring and Management 2.12.0<a class="headerlink" href="#percona-monitoring-and-management-2120" title="Permanent link">&para;</a></h1>
+                        <h1 id="percona-monitoring-and-management-2200">Percona Monitoring and Management 2.20.0<a class="headerlink" href="#percona-monitoring-and-management-2200" title="Permanent link">&para;</a></h1>
 <table class="docutils field-list" frame="void" rules="none">
   <colgroup>
     <col class="field-name">
@@ -140,7 +140,7 @@
   <tbody valign="top">
     <tr class="field-odd field">
       <th class="field-name">Date:</th>
-      <td class="field-body">December 1, 2020</td>
+      <td class="field-body">August 3, 2021</td>
     </tr>
     <tr class="field-even field">
       <th class="field-name">Installation:</th>
@@ -153,61 +153,54 @@
 <p>Percona Monitoring and Management (PMM) is a free and open-source platform for managing and monitoring MySQL, MongoDB, and PostgreSQL performance.</p>
 <h2 id="release-highlights">Release Highlights<a class="headerlink" href="#release-highlights" title="Permanent link">&para;</a></h2>
 <ul>
-<li>VictoriaMetrics replaces Prometheus and is now the default data source. VictoriaMetrics supports both PUSH (client to server) and PULL metrics collection modes. (<a href="../details/victoria-metrics.html">Read more.</a>)</li>
-<li>PMM Client can be run as a Docker image.</li>
-<li>The &lsquo;Add Instance&rsquo; page and forms have been redesigned and look much better.</li>
+<li>The <a href="https://www.percona.com/doc/percona-monitoring-and-management/2.x/setting-up/server/easy-install.html">Easy-install script</a> for PMM Server is checksum verified.</li>
+<li>PMM will use <a href="https://grafana.com/docs/grafana/latest/whatsnew/whats-new-in-v7-5">Grafana 7.5</a> instead of 7.3. We are also preparing for Grafana 8.</li>
+<li>PostgreSQL monitoring with the <code>pg_stat_monitor</code> plugin enabled exposes new metrics such as Plan Times, WAL Fpi/Bytes/Records.</li>
+<li>For users who deploy PMM Server through the AWS Marketplace, AWS RDS service discovery will be executed without AWS credentials and tuning <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html">IAM roles</a>.</li>
+<li>For Backup Management (Technical Preview), we added the ability to schedule backups so you can schedule and see already scheduled <a href="https://www.percona.com/doc/percona-monitoring-and-management/2.x/using/backup.html">backups</a> in the UI.</li>
 </ul>
+<h2 id="important-note-for-users-of-pmm-via-docker-who-started-with-version-2160">Important note for users of PMM via Docker who started with version 2.16.0<a class="headerlink" href="#important-note-for-users-of-pmm-via-docker-who-started-with-version-2160" title="Permanent link">&para;</a></h2>
+<p>If you started using PMM from <a href="https://www.percona.com/doc/percona-monitoring-and-management/2.x/release-notes/2.16.0.html">version 2.16</a> and have already upgraded to 2.17, 2.18, or 2.19, you might have some problems with PMM Server monitoring, Remove Monitoring, or RDS/Azure monitoring. If you experience a problem, we recommend you upgrade and replace the Docker container by following the official instructions for an upgrade here: <a href="https://www.percona.com/doc/percona-monitoring-and-management/2.x/setting-up/server/docker.html#upgrade">https://www.percona.com/doc/percona-monitoring-and-management/2.x/setting-up/server/docker.html#upgrade</a>.</p>
+<p>If you can&rsquo;t do this, then you need to perform additional steps after upgrading to 2.20.</p>
+<ol>
+<li>Enter the container: <code>docker exec -it pmm-server bash</code></li>
+<li>Roll back <code>pmm2-client</code> package to stable version: <code>yum downgrade -y pmm2-client</code></li>
+</ol>
 <h2 id="new-features">New Features<a class="headerlink" href="#new-features" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a href="https://jira.percona.com/browse/PMM-5799">PMM-5799</a>: PMM Client now available as docker image in addition to RPM, DEB and <code>.tgz</code></li>
-<li><a href="https://jira.percona.com/browse/PMM-6968">PMM-6968</a>: Integrated Alerting: Basic notification channels actions API Create, Read, Update, Delete</li>
-<li><a href="https://jira.percona.com/browse/PMM-6842">PMM-6842</a>: VictoriaMetrics: Grafana dashboards to monitor <code>VictoriaMetricsDB</code> as replacement for dashboards that used to monitor Prometheus DB</li>
-<li><a href="https://jira.percona.com/browse/PMM-6395">PMM-6395</a>: Replace Prometheus with VictoriaMetrics in PMM for better performance and additional functionality</li>
+<li><a href="https://jira.percona.com/browse/PMM-8157">PMM-8157</a>: Backup Management: Show scheduled backups – A new view that shows the list of scheduled backups with quick actions to enable/disable, edit, copy, and delete.</li>
+<li><a href="https://jira.percona.com/browse/PMM-8155">PMM-8155</a>: Backup Management: Scheduling of backups – Support for Backup Scheduling has been added so that users can define backup jobs to run automatically in the future with the option of making the schedules recurring.</li>
+<li><a href="https://jira.percona.com/browse/PMM-7010">PMM-7010</a>: Option to unregister current node (<code>pmm-admin unregister</code>)</li>
 </ul>
 <h2 id="improvements">Improvements<a class="headerlink" href="#improvements" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a href="https://jira.percona.com/browse/PMM-6744">PMM-6744</a>: Prevent timeout of low resolution metrics in MySQL instances with many tables (~1000&rsquo;s)</li>
-<li><a href="https://jira.percona.com/browse/PMM-6504">PMM-6504</a>: MySQL Replication Summary: MySQL Replication Delay graph not factoring in value of intentionally set <code>SQL_Delay</code> thus inflating time displayed</li>
-<li><a href="https://jira.percona.com/browse/PMM-6820">PMM-6820</a>: <code>pmm-admin status --wait</code> option added to allow for configurable delay in checking status of <code>pmm-agent</code></li>
-<li><a href="https://jira.percona.com/browse/PMM-6710">PMM-6710</a>: <code>pmm-admin</code>: Allow user-specified custom &lsquo;group&rsquo; name when adding external services</li>
-<li><a href="https://jira.percona.com/browse/PMM-6825">PMM-6825</a>: Allow user to specify &lsquo;listen address&rsquo; to <code>pmm-agent</code> otherwise default to 127.0.0.1</li>
-<li><a href="https://jira.percona.com/browse/PMM-6793">PMM-6793</a>: Improve user experience of &lsquo;add remote instance&rsquo; workflow</li>
-<li><a href="https://jira.percona.com/browse/PMM-6759">PMM-6759</a>: Enable Kubernetes startup probes to get status of <code>pmm-agent</code> using &lsquo;GET HTTP&rsquo; verb</li>
-<li><a href="https://jira.percona.com/browse/PMM-6736">PMM-6736</a>: MongoDB Instance Summary dashboard: Ensure colors for ReplSet status matches those in MongoDB ReplSet Summary dashboard for better consistency</li>
-<li><a href="https://jira.percona.com/browse/PMM-6730">PMM-6730</a>: Node Overview/Summary Cleanup: Remove duplicate service type &lsquo;DB Service Connections&rsquo;</li>
-<li><a href="https://jira.percona.com/browse/PMM-6542">PMM-6542</a>: PMM Add Instance: Redesign page for more intuitive experience when adding various instance types to monitoring</li>
-<li><a href="https://jira.percona.com/browse/PMM-6518">PMM-6518</a>: Update default data source name from &lsquo;Prometheus&rsquo; to &lsquo;Metrics&rsquo; to ensure graphs are populated correctly after upgrade to VictoriaMetrics</li>
-<li><a href="https://jira.percona.com/browse/PMM-6428">PMM-6428</a>: Query Analytics dashboard - Ensure user-selected filter selections are always visible even if they don&rsquo;t appear in top 5 results</li>
-<li><a href="https://jira.percona.com/browse/PMM-5020">PMM-5020</a>: PMM Add Remote Instance: User can specify &lsquo;Table Statistics Limit&rsquo; for MySQL and AWS RDS MySQL to disable table stat metrics which can have an adverse impact on performance with too many tables</li>
+<li><a href="https://jira.percona.com/browse/PMM-7552">PMM-7552</a>: PMM Server Docker image: Add labels to PMM Server Docker image (Thanks to Nicolas for reporting this issue)</li>
+<li><a href="https://jira.percona.com/browse/PMM-8266">PMM-8266</a>: PMM Server Docker image: Decommission and remove Prometheus binaries and configuration</li>
+<li><a href="https://jira.percona.com/browse/PMM-8040">PMM-8040</a>: PMM Server Docker image: Remove yum cache to reduce size of image</li>
+<li><a href="https://jira.percona.com/browse/PMM-7809">PMM-7809</a>: Grafana upgrade from 7.3.7 to 7.5.7 – <a href="https://grafana.com/docs/grafana/latest/whatsnew/whats-new-in-v7-5">Read more at grafana.com</a></li>
+<li><a href="https://jira.percona.com/browse/PMM-8386">PMM-8386</a>: Overview text on the Home page is missing PostgreSQL as a supported technology</li>
+<li><a href="https://jira.percona.com/browse/PMM-7722">PMM-7722</a>: DBaaS: Announce new supported version of operator – Shows that a new version of the operator is available.</li>
+<li><a href="https://jira.percona.com/browse/PMM-6278">PMM-6278</a>: Modification of MySQL &lsquo;Delete&rsquo; queries to provide &lsquo;Explain&rsquo; information</li>
+<li><a href="https://jira.percona.com/browse/PMM-8468">PMM-8468</a>: Forbid the use of outdated ciphers for HTTPS protocol on exporters</li>
+<li><a href="https://jira.percona.com/browse/PMM-7649">PMM-7649</a>: Security Checks: Show &ldquo;Insufficient access permissions&rdquo; in UI for non admin users</li>
+<li><a href="https://jira.percona.com/browse/PMM-8059">PMM-8059</a>: Update Query Analytics UI to clarify estimated results on MySQL &lsquo;explain&rsquo; response where we modified original query</li>
+<li><a href="https://jira.percona.com/browse/PMM-8043">PMM-8043</a>: Return Service Name in GetCheckResults API response</li>
+<li><a href="https://jira.percona.com/browse/PMM-8000">PMM-8000</a>: Expose new numbered metrics available in <code>pg_stat_monitor</code> 0.9</li>
 </ul>
 <h2 id="bugs-fixed">Bugs Fixed<a class="headerlink" href="#bugs-fixed" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a href="https://jira.percona.com/browse/PMM-6811">PMM-6811</a>: MongoDB Cluster Summary: when secondary optime is newer than primary optime, lag incorrectly shows 136 years</li>
-<li><a href="https://jira.percona.com/browse/PMM-6650">PMM-6650</a>: Custom queries for MySQL 8 fail on 5.x (on update to <code>pmm-agent</code> 2.10) (Thanks to user debug for reporting this issue)</li>
-<li><a href="https://jira.percona.com/browse/PMM-6751">PMM-6751</a>: PXC/Galera dashboards: Empty service name with MySQL version &lt; 5.6.40</li>
-<li><a href="https://jira.percona.com/browse/PMM-5823">PMM-5823</a>: PMM Server: Timeout when simultaneously generating and accessing logs via download or API</li>
-<li><a href="https://jira.percona.com/browse/PMM-4547">PMM-4547</a>: MongoDB dashboard replication lag count incorrect (Thanks to user <code>vvol</code> for reporting this issue)</li>
-<li><a href="https://jira.percona.com/browse/PMM-7057">PMM-7057</a>: MySQL Instances Overview: Many monitored instances (~250+) gives &lsquo;too long query&rsquo; error</li>
-<li><a href="https://jira.percona.com/browse/PMM-6883">PMM-6883</a>: Query Analytics: &lsquo;Reset All&rsquo; and &lsquo;Show Selected&rsquo; filters behaving incorrectly</li>
-<li><a href="https://jira.percona.com/browse/PMM-6686">PMM-6686</a>: Query Analytics: Filters panel blank on Microsoft Edge 44.18362.449.0</li>
-<li><a href="https://jira.percona.com/browse/PMM-6007">PMM-6007</a>: PMM Server virtual appliance&rsquo;s IP address not shown in OVF console</li>
-<li><a href="https://jira.percona.com/browse/PMM-6754">PMM-6754</a>: Query Analytics: Bad alignment of percentage values in Filters panel</li>
-<li><a href="https://jira.percona.com/browse/PMM-6752">PMM-6752</a>: Query Analytics: Time interval not preserved when using filter panel dashboard shortcuts</li>
-<li><a href="https://jira.percona.com/browse/PMM-6664">PMM-6664</a>: Query Analytics: No horizontal scroll bar on Explain tab</li>
-<li><a href="https://jira.percona.com/browse/PMM-6632">PMM-6632</a>: Node Summary - Virtual Memory Utilization chart: incorrect formulas</li>
-<li><a href="https://jira.percona.com/browse/PMM-6537">PMM-6537</a>: MySQL InnoDB Details - Logging - Group Commit Batch Size: giving incorrect description</li>
-<li><a href="https://jira.percona.com/browse/PMM-6055">PMM-6055</a>: PMM Inventory - Services: &lsquo;Service Type&rsquo; column empty when it should be &lsquo;External&rsquo; for external services</li>
+<li><a href="https://jira.percona.com/browse/PMM-8299">PMM-8299</a>: Backup Management: Remove storage location shows wrong notification – When removing a storage location, PMM presents misleading information to the user in the form of two notification messages for both error and success.</li>
+<li><a href="https://jira.percona.com/browse/PMM-8283">PMM-8283</a>: Backup Management: Error when removing location with &lsquo;force delete&rsquo; option</li>
+<li><a href="https://jira.percona.com/browse/PMM-8064">PMM-8064</a>: Dashboards: Size of Temp Files Report Metric value has wrong unit on Postgresql Instance Summary Dashboard</li>
+<li><a href="https://jira.percona.com/browse/PMM-6981">PMM-6981</a>: Dashboards: Wrong version is shown for MariaDB services</li>
+<li><a href="https://jira.percona.com/browse/PMM-7738">PMM-7738</a>: Integrated Alerting: Alerts for some built-in templates missing service name label</li>
+<li><a href="https://jira.percona.com/browse/PMM-6877">PMM-6877</a>: <code>mongodb_exporter</code> doesn&rsquo;t recognize being on a mongos host and fills the syslog with replSetGetStatus errors (Thanks to Clyde Shillingford for reporting this issue)</li>
+<li><a href="https://jira.percona.com/browse/PMM-7627">PMM-7627</a>: Consistent PMM Server log management – Adds consistency to the log management of <code>nginx</code>, <code>postgresql</code> and <code>clickhouse-server</code>, which is now delegated to <code>supervisord</code>. Removes the <code>logrotate</code> daemon from the image.</li>
+<li><a href="https://jira.percona.com/browse/PMM-8492">PMM-8492</a>: PMM Client version is 2.21.0 inside PMM Server after upgrade from 2.16.0</li>
 </ul>
-<h2 id="known-issues">Known Issues<a class="headerlink" href="#known-issues" title="Permanent link">&para;</a></h2>
+<h2 id="known-issues-unfixed-problems-that-you-should-be-aware-of">Known Issues (unfixed problems that you should be aware of)<a class="headerlink" href="#known-issues-unfixed-problems-that-you-should-be-aware-of" title="Permanent link">&para;</a></h2>
 <ul>
-<li>
-<p><a href="https://jira.percona.com/browse/PMM-7092">PMM-7092</a>: Update docker <code>pmm-server</code> 2.11.1 to 2.12.0 results in an unhealthy container.</p>
-<p>Workaround: A folder is not created on container upgrade and will need to be created manually for one of the components. Before starting the new pmm-server 2.12.0, execute:  </p>
-<div class="highlight"><pre><span></span><code>docker <span class="nb">exec</span> -ti pmm-server mkdir -p /srv/victoriametrics/data
-docker <span class="nb">exec</span> -ti pmm-server chown -R pmm:pmm /srv/victoriametrics/
-docker restart pmm-server
-</code></pre></div>
-</li>
+<li><a href="https://jira.percona.com/browse/PMM-8414">PMM-8414</a>: Backup Scheduler not working if user specifies explicit job start time</li>
 </ul>
                     </div>
                 </div>
@@ -216,7 +209,7 @@ docker restart pmm-server
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-06-25
+            <i class="uil uil-refresh"></i> Page updated 2021-08-03
         </li>
         
     </ul>
@@ -227,12 +220,12 @@ docker restart pmm-server
     <ul class="nav nav-pills">
         
         <li class="right" style="margin-right: 10px">
-            <a href="2.11.1.html" title="PMM 2.11.1">Next</a>
+            <a href="2.19.0.html" title="PMM 2.19.0">Next</a>
         </li>
         
         
         <li class="right" style="margin-right: 10px">
-            <a href="2.13.0.html" title="PMM 2.13.0">Previous</a>
+            <a href="index.html" title="Release Notes">Previous</a>
         </li>
         
         <li>
@@ -1154,13 +1147,13 @@ docker restart pmm-server
 
 <h4>Previous page</h4>
 <p class="topless">
-    <a href="2.13.0.html" title="previous chapter">PMM 2.13.0</a>
+    <a href="index.html" title="previous chapter">Release Notes</a>
 </p>
 
 
 <h4>Next page</h4>
 <p class="topless">
-    <a href="2.11.1.html" title="next chapter">PMM 2.11.1</a>
+    <a href="2.19.0.html" title="next chapter">PMM 2.19.0</a>
 </p>
 
 

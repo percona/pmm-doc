@@ -401,7 +401,8 @@
 <dt><code>--password=password</code></dt>
 <dd>MySQL password.</dd>
 <dt><code>--query-source=slowlog</code></dt>
-<dd>Source of SQL queries, one of: <code>slowlog</code>, <code>perfschema</code>, <code>none</code> (default: <code>slowlog</code>).</dd>
+<dd>Source of SQL queries, one of: <code>slowlog</code>, <code>perfschema</code>, <code>none</code> (default: <code>slowlog</code>). For <code>slowlog</code> query source you need change permissions for
+specific files. Root permissions are needed for this.</dd>
 <dt><code>--size-slow-logs=N</code></dt>
 <dd>
 <p>Rotate slow log file at this size. If <code>0</code>, use server-defined default. Negative values disable log rotation. A unit suffix must be appended to the number and can be one of:</p>
@@ -718,7 +719,7 @@ Agents:
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-07-07
+            <i class="uil uil-refresh"></i> Page updated 2021-08-03
         </li>
         
     </ul>
@@ -1469,6 +1470,12 @@ Agents:
 
 
 <ul class="toctree" id="toctree">
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.20.0.html">PMM 2.20.0</a>
+
+
 
 
 <li class="toctree-l2">

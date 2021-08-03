@@ -151,6 +151,13 @@
 </table>
 
 <p>Percona Monitoring and Management (PMM) is a free and open-source platform for managing and monitoring MySQL, MongoDB, and PostgreSQL performance.</p>
+<h2 id="important-note-for-users-of-pmm-2160">Important note for users of PMM 2.16.0<a class="headerlink" href="#important-note-for-users-of-pmm-2160" title="Permanent link">&para;</a></h2>
+<p>If you started using PMM from version 2.16 and have already upgraded to 2.17, 2.18, or 2.19, you might have some problems with PMM Server monitoring, Remove Monitoring, or RDS/Azure monitoring. If you experience a problem, we recommend you upgrade and replace the Docker container by following the official instructions for an upgrade here: <a href="https://www.percona.com/doc/percona-monitoring-and-management/2.x/setting-up/server/docker.html#upgrade">https://www.percona.com/doc/percona-monitoring-and-management/2.x/setting-up/server/docker.html#upgrade</a>.</p>
+<p>If you can&rsquo;t do this, then you need to perform additional steps after upgrading to 2.20.</p>
+<ol>
+<li>Enter the container: <code>docker exec -it pmm-server bash</code></li>
+<li>Roll back <code>pmm2-client</code> package to stable version: <code>yum downgrade -y pmm2-client</code></li>
+</ol>
 <h2 id="release-highlights">Release Highlights<a class="headerlink" href="#release-highlights" title="Permanent link">&para;</a></h2>
 <ul>
 <li>
@@ -248,7 +255,7 @@
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-06-25
+            <i class="uil uil-refresh"></i> Page updated 2021-08-03
         </li>
         
     </ul>
@@ -999,6 +1006,12 @@
 
 
 <ul class="toctree" id="toctree">
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="2.20.0.html">PMM 2.20.0</a>
+
+
 
 
 <li class="toctree-l2">
