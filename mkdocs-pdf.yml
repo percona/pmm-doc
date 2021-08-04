@@ -61,7 +61,7 @@ plugins:
           - 'setting-up/client/docker.md'
     # https://github.com/orzih/mkdocs-with-pdf
     - with-pdf:
-        output_path: '_pdf/PerconaMonitoringAndManagement-2.19.0.pdf'
+        output_path: '_pdf/PerconaMonitoringAndManagement-2.22.0.pdf'
         cover_title: 'Documentation'
         cover_subtitle: 2.22.0 (September 21, 2021)
         author: 'Percona Technical Documentation Team'
@@ -69,8 +69,7 @@ plugins:
         custom_template_path: _resources/templates
     # Check links - but extends build time significantly
     # https://pypi.org/project/mkdocs-htmlproofer-plugin/
-#    - htmlproofer
-
+    - htmlproofer
 
 nav:
   - Welcome: index.md
@@ -189,6 +188,7 @@ nav:
   - faq.md
   - Release Notes:
       - release-notes/index.md
+      - 'PMM 2.20.0': release-notes/2.20.0.md
       - 'PMM 2.19.0': release-notes/2.19.0.md
       - 'PMM 2.18.0': release-notes/2.18.0.md
       - 'PMM 2.17.0': release-notes/2.17.0.md
