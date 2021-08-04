@@ -159,13 +159,13 @@
 <li>For users who deploy PMM Server through the AWS Marketplace, AWS RDS service discovery will be executed without AWS credentials and tuning <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html">IAM roles</a>.</li>
 <li>For Backup Management (Technical Preview), we added the ability to schedule backups so you can schedule and see already scheduled <a href="https://www.percona.com/doc/percona-monitoring-and-management/2.x/using/backup.html">backups</a> in the UI.</li>
 </ul>
-<h2 id="important-note-for-users-of-pmm-via-docker-who-started-with-version-2160">Important note for users of PMM via Docker who started with version 2.16.0<a class="headerlink" href="#important-note-for-users-of-pmm-via-docker-who-started-with-version-2160" title="Permanent link">&para;</a></h2>
-<p>If you started using PMM from <a href="https://www.percona.com/doc/percona-monitoring-and-management/2.x/release-notes/2.16.0.html">version 2.16</a> and have already upgraded to 2.17, 2.18, or 2.19, you might have some problems with PMM Server monitoring, Remove Monitoring, or RDS/Azure monitoring. If you experience a problem, we recommend you upgrade and replace the Docker container by following the official instructions for an upgrade here: <a href="https://www.percona.com/doc/percona-monitoring-and-management/2.x/setting-up/server/docker.html#upgrade">https://www.percona.com/doc/percona-monitoring-and-management/2.x/setting-up/server/docker.html#upgrade</a>.</p>
-<p>If you can&rsquo;t do this, then you need to perform additional steps after upgrading to 2.20.</p>
+<h2 id="important-note-for-users-of-pmm-who-started-out-using-the-docker-image-of-2160">Important note for users of PMM who started out using the Docker image of 2.16.0<a class="headerlink" href="#important-note-for-users-of-pmm-who-started-out-using-the-docker-image-of-2160" title="Permanent link">&para;</a></h2>
+<p>If you installed PMM <a href="https://www.percona.com/doc/percona-monitoring-and-management/2.x/release-notes/2.16.0.html">version 2.16</a> as a new docker image and have since used the home dashboard upgrade widget to upgrade to any of 2.17, 2.18, or 2.19, you might experience problems with monitoring the PMM server itself, Remote Monitoring, or RDS/Azure monitoring. If you experience any of these problems, you can simply run the following commands to get your instance working and it will be automatically resolved in the next release: </p>
 <ol>
 <li>Enter the container: <code>docker exec -it pmm-server bash</code></li>
 <li>Roll back <code>pmm2-client</code> package to stable version: <code>yum downgrade -y pmm2-client</code></li>
 </ol>
+<p>Alternatively you can replace the existing Docker container with a fresh install of the latest release by following the official instructions for an upgrade here (which will guide you through taking a backup of your PMM Server and restoring it after installing a fresh docker image of PMM Server): <a href="https://www.percona.com/doc/percona-monitoring-and-management/2.x/setting-up/server/docker.html#upgrade">https://www.percona.com/doc/percona-monitoring-and-management/2.x/setting-up/server/docker.html#upgrade</a>.</p>
 <h2 id="new-features">New Features<a class="headerlink" href="#new-features" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="https://jira.percona.com/browse/PMM-8157">PMM-8157</a>: Backup Management: Show scheduled backups – A new view that shows the list of scheduled backups with quick actions to enable/disable, edit, copy, and delete.</li>
@@ -209,7 +209,7 @@
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-08-03
+            <i class="uil uil-refresh"></i> Page updated 2021-08-04
         </li>
         
     </ul>
