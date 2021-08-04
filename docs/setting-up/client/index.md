@@ -361,7 +361,7 @@ dnf localinstall *.rpm
     PATH=$PATH:$PMM_DIR/bin
     ```
 
-8. Set up the agent (pick right command for you depends on permissions)
+8. Set up the agent (pick the command for you depending on permissions)
 
     !!! hint "Root permissions"
     ```sh

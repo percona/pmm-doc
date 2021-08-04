@@ -84,7 +84,7 @@ plugins:
       javascript_dir: js
       canonical_version: null
 
-extra: # Used in main.html template and can't be externalised
+extra: # Used in main.html template and can't be externalized
     open_issue_text: '<i class="uil uil-exclamation-triangle"></i> Report a problem
         with this page'
     open_issue_subject: 'PMM2: doc issue on page '
