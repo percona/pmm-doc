@@ -119,6 +119,8 @@ Before you can get alerts, you must activate the feature, and set up a *communic
 
 ## Add an Alert Rule Template
 
+If the provided alert rule templates don't do what you want, you can create your own.
+
 1. Select the *Alert Rule Templates* tab.
 
     ![!](../_images/PMM_Integrated_Alerting_Alert_Rule_Templates.jpg)
