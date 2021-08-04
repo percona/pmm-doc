@@ -86,7 +86,7 @@ View the site at <http://0.0.0.0:8000>
 
 *How to create a PDF version of the documentation.*
 
-1. (For Percona staff) If bulding for a release of PMM, edit `mkdocs-base.yml` and change:
+1. (For Percona staff) If building for a release of PMM, edit `mkdocs-base.yml` and change:
 
     - The release number in `plugins.with-pdf.output_path`
     - The release number and date in `plugins.with-pdf.cover_subtitle`
@@ -241,12 +241,8 @@ Add any custom dictionary words to `.spelling`. If spell checking fails, the Git
 
 Grammar is checked using [`write-good`](https://github.com/btford/write-good). (The results of this check are ignored and don't affect the GitHub action.)
 
-!!! hint "Root permissions"
-    ```sh
-    npm i write-good -g
-    ```
-
 ```sh
+npm i write-good -g
 write-good docs/<path to file>.md
 ```
 
