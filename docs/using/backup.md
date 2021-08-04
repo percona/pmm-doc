@@ -162,7 +162,7 @@ Make regular scheduled backups.
                 - In the first field, select one or more hours (*00* to *23*, *00* is midnight).
                 - In the second field, select one or more minutes (*00* to *59*).
 
-        - *Retention*: Number of backups to keep. Insert 0 if there is no limit.
+        - *Retention*: How many backups to keep. For unlimited, use `0` (zero).
         - *Enable*: Deselect to define the scheduled backup without enabling it.
 
         ![Screenshot 2021-08-04 at 11 33 23](https://user-images.githubusercontent.com/4190654/128168942-d2d02cf7-e885-424b-8033-84499a2b98e4.png)
