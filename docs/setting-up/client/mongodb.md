@@ -201,7 +201,7 @@ where:
 2. Look in the *Services* tab for a matching *Service Type* (MongoDB), *Service name*, *Addresses*, and any other values used when adding the service.
 3. Look in the *Agents* tab to check the desired data source is being used.
 4. If your MongoDB instance is configured to use TLS, click on the **Use TLS for database connection** check box and fill in TLS certificates and keys.
-    1. If you use TLS, the authentication mechaninsm is being set automatically to `MONGODB-X509`.
+    1. If you use TLS, the authentication mechanism is automatically set to `MONGODB-X509`.
 
 ![!](../../_images/PMM_Add_Instance_MongoDB_TLS.png)
 
