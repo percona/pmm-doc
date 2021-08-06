@@ -209,7 +209,7 @@ If your PostgreSQL instance is configured to use TLS, click on the *Use TLS for 
 ![!](../../_images/PMM_Add_Instance_PostgreSQL_TLS.png)
 
 !!! hint alert alert-success "Note"
-    For TLS connection to work SSL needs to configured in your PostgreSQL instance, make sure SSL is enabled in `postgresql.conf` and that hosts are allowed to connect in client authentication configuration file `pg_hba.conf`. For more information on this check the official PostgreSQL documentation on [Secure TCP/IP Connections with SSL].
+    For TLS connection to work SSL needs to configured in your PostgreSQL instance. Make sure SSL is enabled in the server configuration file `postgresql.conf`, and that hosts are allowed to connect in the client authentication configuration file `pg_hba.conf`. (See PostgreSQL documentation on [Secure TCP/IP Connections with SSL].)
 
 ### On the command line
 
