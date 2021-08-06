@@ -204,7 +204,7 @@ When you have configured your database server, you can add a PostgreSQL service 
 
 ![!](../../_images/PMM_Add_Instance_PostgreSQL.jpg)
 
-If your PostgreSQL instance is configured to use TLS, click on the *Use TLS for database connection* check box and fill in your TLS certificates and key.
+If your PostgreSQL instance is configured to use TLS, click on the *Use TLS for database connections* check box and fill in your TLS certificates and key.
 
 ![!](../../_images/PMM_Add_Instance_PostgreSQL_TLS.png)
 
