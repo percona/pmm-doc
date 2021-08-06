@@ -189,7 +189,7 @@ where:
 - `PATHTOCERT`: Path to TLS certificate file.
 - `IFPASSWORDTOCERTISSET`: Password for TLS certificate file.
 - `PATHTOCACERT`: Path to certificate authority file.
-- `AUTHENTICATION-MECHANISM`: Authentication mechanism. Default is empty. Use MONGODB-X509 for ssl certificates.
+- `AUTHENTICATION-MECHANISM`: Authentication mechanism. Default is empty. Use `MONGODB-X509` for SSL certificates.
 - `AUTHENTICATION-DATABASE`: Authentication database. Default is empty. Use $external for ssl certificates.
 
 
