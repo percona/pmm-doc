@@ -252,7 +252,7 @@ pmm-admin add postgresql --socket=/var/run/postgresql
 
 ```sh
 pmm-admin add postgresql --tls \
---tls-cert-file=PATHTOCER \
+--tls-cert-file=PATHTOCERT \
 --tls-ca-file=PATHTOCACERT \
 --tls-key-file=PATHTOKEY \
 --host=HOST \
