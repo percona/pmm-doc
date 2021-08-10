@@ -46,6 +46,7 @@ Most options can be set via environment variables (shown in parentheses).
 | `--machine-id=machine-id`              | `PMM_AGENT_SETUP_MACHINE_ID`        | Node machine ID (default is auto-detected).
 | `--metrics-mode=auto`                  | `PMM_AGENT_SETUP_METRICS_MODE`      | Metrics flow mode for agents node-exporter. Can be `push` (agent will push metrics), `pull` (server scrapes metrics from agent) or `auto` (chosen by server).
 | `--node-model=NODE-MODEL`              | `PMM_AGENT_SETUP_NODE_MODEL`        | Node model.
+| `--paths-base=PATH`                    | `PMM_AGENT_PATHS_BASE`              | Base path for PMM client.
 | `--paths-exporters_base=PATH`          | `PMM_AGENT_PATHS_EXPORTERS_BASE`    | Base path for exporters to use.
 | `--paths-mongodb_exporter=PATH`        | `PMM_AGENT_PATHS_MONGODB_EXPORTER`  | Path to `mongodb_exporter`.
 | `--paths-mysqld_exporter=PATH`         | `PMM_AGENT_PATHS_MYSQLD_EXPORTER`   | Path to `mysqld_exporter`.
