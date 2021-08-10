@@ -65,7 +65,7 @@ Most options can be set via environment variables (shown in parentheses).
 | `-h`, `--help`                         |                                     | Show help (synonym for `pmm-agent help`).
 | `--version`                            |                                     | Show application version, PMM version, time-stamp, git commit hash and branch.
 
-Flag --paths-base is a directory where all binaries, tools and collectors are located.
+- The value for `--paths-base` is the path to the directory where all binaries, tools and collectors are located.
 1. in case we pass only base_path, exporter_path should be generated based on base_path
 2. in case we pass only exporter_path, base_path will be default (/usr/local/percona/pmm2) and exporter_path will be custom one.
 3. in case both of them are passed, both of them will be custom and based on their values in flags.
