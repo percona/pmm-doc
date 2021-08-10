@@ -46,8 +46,8 @@ Most options can be set via environment variables (shown in parentheses).
 | `--machine-id=machine-id`              | `PMM_AGENT_SETUP_MACHINE_ID`        | Node machine ID (default is auto-detected).
 | `--metrics-mode=auto`                  | `PMM_AGENT_SETUP_METRICS_MODE`      | Metrics flow mode for agents node-exporter. Can be `push` (agent will push metrics), `pull` (server scrapes metrics from agent) or `auto` (chosen by server).
 | `--node-model=NODE-MODEL`              | `PMM_AGENT_SETUP_NODE_MODEL`        | Node model.
-| `--paths-base=PATH`                    | `PMM_AGENT_PATHS_BASE`              | Base path for PMM client.
-| `--paths-exporters_base=PATH`          | `PMM_AGENT_PATHS_EXPORTERS_BASE`    | Base path for exporters to use.
+| `--paths-base=PATH`                    | `PMM_AGENT_PATHS_BASE`              | Base path for PMM client, where all binaries, tools and collectors are located. If not set, default is `/usr/local/percona/pmm2`.
+| `--paths-exporters_base=PATH`          | `PMM_AGENT_PATHS_EXPORTERS_BASE`    | Base path for exporters to use. If not set, or set to a relative path, uses value of `--paths-base`.
 | `--paths-mongodb_exporter=PATH`        | `PMM_AGENT_PATHS_MONGODB_EXPORTER`  | Path to `mongodb_exporter`.
 | `--paths-mysqld_exporter=PATH`         | `PMM_AGENT_PATHS_MYSQLD_EXPORTER`   | Path to `mysqld_exporter`.
 | `--paths-node_exporter=PATH`           | `PMM_AGENT_PATHS_NODE_EXPORTER`     | Path to `node_exporter`.
@@ -64,13 +64,6 @@ Most options can be set via environment variables (shown in parentheses).
 | `--trace`                              | `PMM_AGENT_TRACE`                   | Enable trace output (implies `--debug`).
 | `-h`, `--help`                         |                                     | Show help (synonym for `pmm-agent help`).
 | `--version`                            |                                     | Show application version, PMM version, time-stamp, git commit hash and branch.
-
-- The value for `--paths-base` is the path to the directory where all binaries, tools and collectors are located.
-1. in case we pass only base_path, exporter_path should be generated based on base_path
-2. in case we pass only exporter_path, base_path will be default (`/usr/local/percona/pmm2`) and exporter_path will be custom one.
-3. in case both of them are passed, both of them will be custom and based on their values in flags.
-
-If exporters base is not absolute then it will be based on base path (if it is presented).
 
 ## LOGGING
 
