@@ -161,6 +161,7 @@ Make regular scheduled backups.
             - *Start time, h/m*: The hour and minute for the backup.
                 - In the first field, select one or more hours (*00* to *23*, *00* is midnight).
                 - In the second field, select one or more minutes (*00* to *59*).
+        - *Retention*: Set the number of backups to keep.
         - *Enable*: Deselect to define the scheduled backup without enabling it.
 
         ![!](../_images/PMM_Backup_Management_Schedule.png)
