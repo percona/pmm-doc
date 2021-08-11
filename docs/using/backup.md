@@ -123,7 +123,7 @@ Make a single on-demand backup.
 
 1. Click *Backup*.
 
-1. In the *Backup Inventory* pane, watch the *Status* column.
+1. In the *Backup Inventory* pane, watch the *Status* column. An animated ellipsis indicator {{icon.bouncingellipsis}} shows activity in progress.
 
 ## Make a scheduled backup
 
