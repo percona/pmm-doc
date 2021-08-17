@@ -123,7 +123,7 @@ To create an IAM role open the IAM console and click *Roles* on the navigation p
 After the role is created EC2 instances running PMM will have permissions to discover RDS DB instances.
 
 !!! note alert alert-primary ""
-    It’s also possible to create an IAM role to delegate permissions to an IAM user or to add permissions to a user belonging to other AWS account. Check the official AWS documentation for more information on  [Creating IAM roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create.html).
+    It’s also possible to create an IAM role to delegate permissions to an IAM user or to add permissions to a user belonging to another AWS account. See the [official AWS documentation on creating IAM roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create.html).
 
 ## Setting up the Amazon RDS DB Instance
 
