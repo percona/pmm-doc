@@ -98,7 +98,7 @@ The `AmazonRDSforPMMPolicy` is now added to your IAM user.
 
 ## Creating an IAM role
 
-Alternatively to creating an IAM user you can also create an IAM role for a service to discover Amazon RDS DB instances automatically without the need for access and secret keys. This only works if you are running PMM through AWS.
+Instead of creating an IAM user you can create an IAM role for a service, to discover Amazon RDS DB instances automatically without the need for access and secret keys. (But this only works if you are running PMM through AWS.)
 
 To create an IAM role open the IAM console and click *Roles* on the navigation pane.
 
