@@ -232,6 +232,10 @@ percona/pmm-server:2
 </ul>
 </div>
 <hr />
+<div class="admonition caution alert alert-warning">
+<p class="admonition-title">Important</p>
+<p>Downgrades are not possible. To go back to using a previous version you must have created a backup of it before upgrading.</p>
+</div>
 <div class="admonition hint alert alert-success">
 <p class="admonition-title">Tip</p>
 <p>To see what release you are running, use the <em>PMM Upgrade</em> panel on the <em>Home Dashboard</em>, or run:</p>
@@ -251,7 +255,7 @@ curl -ku admin:admin https://localhost/v1/version
 </li>
 <li>
 <p>Run it.</p>
-<div class="highlight"><pre><span></span><code>docker run <span class="se">\</span>
+<p><div class="highlight"><pre><span></span><code>docker run <span class="se">\</span>
 --detach <span class="se">\</span>
 --restart always <span class="se">\</span>
 --publish <span class="m">443</span>:443 <span class="se">\</span>
@@ -259,6 +263,7 @@ curl -ku admin:admin https://localhost/v1/version
 --name pmm-server <span class="se">\</span>
 percona/pmm-server:2
 </code></pre></div>
+4. Perform a <a href="#restore">restore</a></p>
 </li>
 </ol>
 <h2 id="restore">Restore<a class="headerlink" href="#restore" title="Permanent link">&para;</a></h2>
@@ -569,7 +574,7 @@ percona/pmm-server:2.20.0
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-07-07
+            <i class="uil uil-refresh"></i> Page updated 2021-08-26
         </li>
         
     </ul>
