@@ -116,6 +116,8 @@ nav:
       - using/query-analytics.md
       - using/dbaas.md
       - using/security-threat-tool.md
+#      - Advisors:
+#          - using/advisors/index.md
   - How to:
       - how-to/index.md
       - how-to/configure.md
