@@ -349,6 +349,12 @@ track_io_timing = on             # Capture read/write stats
 </li>
 </ol>
 <p><div class="lightgallery"><a data-sub-html="" href="../../_images/PMM_Add_Instance_PostgreSQL.jpg"><img alt="" src="../../_images/PMM_Add_Instance_PostgreSQL.jpg" /></a></div></p>
+<p>If your PostgreSQL instance is configured to use TLS, click on the <em>Use TLS for database connections</em> check box and fill in your TLS certificates and key.</p>
+<p><div class="lightgallery"><a data-sub-html="" href="../../_images/PMM_Add_Instance_PostgreSQL_TLS.png"><img alt="" src="../../_images/PMM_Add_Instance_PostgreSQL_TLS.png" /></a></div></p>
+<div class="admonition hint alert alert-success">
+<p class="admonition-title">Note</p>
+<p>For TLS connection to work SSL needs to be configured in your PostgreSQL instance. Make sure SSL is enabled in the server configuration file <code>postgresql.conf</code>, and that hosts are allowed to connect in the client authentication configuration file <code>pg_hba.conf</code>. (See PostgreSQL documentation on <a href="https://www.postgresql.org/docs/current/ssl-tcp.html">Secure TCP/IP Connections with SSL</a>.)</p>
+</div>
 <h3 id="on-the-command-line">On the command line<a class="headerlink" href="#on-the-command-line" title="Permanent link">&para;</a></h3>
 <p>Add the database server as a service using one of these example commands. If successful, PMM Client will print <code>PostgreSQL Service added</code> with the service&rsquo;s ID and name. Use the <code>--environment</code> and <code>-custom-labels</code> options to set tags for the service to help identify them.</p>
 <h3 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h3>
@@ -374,17 +380,25 @@ track_io_timing = on             # Capture read/write stats
 <p>Add instance to connect with a UNIX socket.</p>
 <div class="highlight"><pre><span></span><code>pmm-admin add postgresql --socket<span class="o">=</span>/var/run/postgresql
 </code></pre></div>
-<p>Add instance to connect with SSL/TLS.</p>
-<div class="highlight"><pre><span></span><code>pmm-admin add postgresql <span class="se">\</span>
---username<span class="o">=</span>pmm <span class="se">\</span>
---password<span class="o">=</span>password <span class="se">\</span>
---tls <span class="se">\</span>
---tls-skip-verify
+<h4 id="connecting-via-ssltls">Connecting via SSL/TLS<a class="headerlink" href="#connecting-via-ssltls" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>pmm-admin add postgresql --tls <span class="se">\</span>
+--tls-cert-file<span class="o">=</span>PATHTOCERT <span class="se">\</span>
+--tls-ca-file<span class="o">=</span>PATHTOCACERT <span class="se">\</span>
+--tls-key-file<span class="o">=</span>PATHTOKEY <span class="se">\</span>
+--host<span class="o">=</span>HOST <span class="se">\</span>
+--port<span class="o">=</span>PORT <span class="se">\</span>
+--username<span class="o">=</span>USER <span class="se">\</span>
+--service-name<span class="o">=</span>SERVICE
 </code></pre></div>
 <p>where:</p>
 <ul>
-<li><code>--tls</code>: Use TLS to connect to the database.</li>
-<li><code>--tls-skip-verify</code>: Skip TLS certificates validation.</li>
+<li><code>PATHTOCERT</code>: Path to client certificate file.</li>
+<li><code>PATHTOCACERT</code>: Path to certificate authority file.</li>
+<li><code>PATHTOKEY</code>: Path to client key file.</li>
+<li><code>HOST</code>: Instance hostname or IP.</li>
+<li><code>PORT</code>: PostgreSQL service port number.</li>
+<li><code>USER</code>: Database user allowed to connect via TLS. Should match the common name (CN) used in the client certificate.</li>
+<li><code>SERVICE</code>: Name to give to the service within PMM.</li>
 </ul>
 <h2 id="check-the-service">Check the service<a class="headerlink" href="#check-the-service" title="Permanent link">&para;</a></h2>
 <h3 id="check-service-pmm-user-interface">Check service - PMM user interface<a class="headerlink" href="#check-service-pmm-user-interface" title="Permanent link">&para;</a></h3>
@@ -429,7 +443,7 @@ track_io_timing = on             # Capture read/write stats
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-08-03
+            <i class="uil uil-refresh"></i> Page updated 2021-08-26
         </li>
         
     </ul>
@@ -1180,6 +1194,12 @@ track_io_timing = on             # Capture read/write stats
 
 
 <ul class="toctree" id="toctree">
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.21.0.html">PMM 2.21.0</a>
+
+
 
 
 <li class="toctree-l2">
