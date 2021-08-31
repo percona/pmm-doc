@@ -32,7 +32,7 @@
 
 
 
-<title>Percona Monitoring and Management &mdash; Advisors</title>
+<title>Percona Monitoring and Management &mdash; InnoDB Flush Method May Not Be Optimal</title>
 
 <head>
     
@@ -113,7 +113,7 @@
 <div class="small">
     <ul class="list-inline">
         <li class="pull-right">
-            <a href="https://github.com/percona/pmm-doc/edit/main/docs/using/advisors/index.md" target="_blank" title="Edit this page on GitHub in Markdown format"><i class="uil uil-pen"></i> Edit this page</a>
+            <a href="https://github.com/percona/pmm-doc/edit/main/docs/using/advisors/innodb_log_buffer_flushed_to_disk_after_each_trx.md" target="_blank" title="Edit this page on GitHub in Markdown format"><i class="uil uil-pen"></i> Edit this page</a>
         </li>
     </ul>
 </div>
@@ -121,13 +121,12 @@
 
                 <div class="bodywrapper">
                     <div class="body">
-                        <h1 id="advisors">Advisors<a class="headerlink" href="#advisors" title="Permanent link">&para;</a></h1>
-<h2 id="innodb-flush-method-may-not-be-optimal">InnoDB Flush Method May Not Be Optimal<a class="headerlink" href="#innodb-flush-method-may-not-be-optimal" title="Permanent link">&para;</a></h2>
-<h3 id="problem-description">Problem Description<a class="headerlink" href="#problem-description" title="Permanent link">&para;</a></h3>
+                        <h1 id="innodb-flush-method-may-not-be-optimal">InnoDB Flush Method May Not Be Optimal<a class="headerlink" href="#innodb-flush-method-may-not-be-optimal" title="Permanent link">&para;</a></h1>
+<h2 id="problem-description">Problem Description<a class="headerlink" href="#problem-description" title="Permanent link">&para;</a></h2>
 <p>By default, InnoDB&rsquo;s log buffer is written out to the log file at each transaction commit and a flush-to-disk operation is performed on the log file, which enforces ACID compliance. In the event of a crash, if you can afford to lose a second&rsquo;s worth of transactions, you can achieve better performance by setting <code>__innodb_flush_log_at_trx_commit__</code> to either 0 or 2. If you set the value to 2, then only an operating system crash or a power outage can erase the last second of transactions. This can be very useful on slave servers, where the loss of a second&rsquo;s worth of data can be recovered from the master server if needed.</p>
-<h3 id="links-and-further-reading">Links and Further Reading<a class="headerlink" href="#links-and-further-reading" title="Permanent link">&para;</a></h3>
+<h2 id="links-and-further-reading">Links and Further Reading<a class="headerlink" href="#links-and-further-reading" title="Permanent link">&para;</a></h2>
 <p><a href="http://dev.mysql.com/doc/mysql/en/innodb-parameters.html#optvar_innodb_flush_log_at_trx_commit">Variables</a> MySQL Manual: <a href="http://dev.mysql.com/doc/mysql/en/optimizing-innodb.html">InnoDB Performance Tuning Tips</a></p>
-<h3 id="expression">Expression<a class="headerlink" href="#expression" title="Permanent link">&para;</a></h3>
+<h2 id="expression">Expression<a class="headerlink" href="#expression" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>(%innodb_flush_log_at_trx_commit% == THRESHOLD)
 </code></pre></div>
                     </div>
@@ -137,7 +136,7 @@
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-08-26
+            <i class="uil uil-refresh"></i> Page updated 2021-08-31
         </li>
         
     </ul>
