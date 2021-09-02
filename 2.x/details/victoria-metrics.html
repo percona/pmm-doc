@@ -45,12 +45,6 @@
 
 <script src="../js/lightgallery.min.js" type="text/javascript"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js" type="text/javascript"></script>
-
-<script src="../js/table.number.js" type="text/javascript"></script>
-
-<script src="../js/tables.js" type="text/javascript"></script>
-
 
 <script>
     var elements = document.getElementsByClassName("lightgallery");
@@ -71,10 +65,6 @@
         
 <link rel="stylesheet" href="../css/version-select.css" type="text/css">
 <link rel="stylesheet" href="../css/toctree.css" type="text/css">
-<link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.3/css/line.css" type="text/css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" type="text/css">
-<link rel="stylesheet" href="../css/percona.css" type="text/css">
-<link rel="stylesheet" href="../css/lightgallery.min.css" type="text/css">
 
         
 <script src="../js/version-select.js" type="text/javascript"></script>
@@ -82,12 +72,6 @@
 <script src="../js/toctree.js" type="text/javascript"></script>
 
 <script src="../js/lightgallery.min.js" type="text/javascript"></script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js" type="text/javascript"></script>
-
-<script src="../js/table.number.js" type="text/javascript"></script>
-
-<script src="../js/tables.js" type="text/javascript"></script>
 
 
 <script>
@@ -123,7 +107,7 @@
 <div class="small">
     <ul class="list-inline">
         <li class="pull-right">
-            <a href="https://github.com/percona/pmm-doc/edit/main/docs/details/victoria-metrics.md" target="_blank" title="Edit this page on GitHub in Markdown format"><i class="uil uil-pen"></i> Edit this page</a>
+            <a href="https://github.com/percona/pmm-doc/edit/main/docs/details/victoria-metrics.md" target="_blank" title=""><i class="uil uil-pen"></i> <b>Edit this page</b></a>
         </li>
     </ul>
 </div>
@@ -145,11 +129,11 @@
 <p>Direct Prometheus paths return structured information directly from Prometheus, bypassing the PMM application.</p>
 <p>They are accessed by requesting a URL of the form <code>&lt;PMM SERVER URL&gt;/prometheus/&lt;PATH&gt;</code>.</p>
 <p>As a result of the move to VictoriaMetrics some direct Prometheus paths are no longer available.</p>
-<table class="table">
+<table>
 <thead>
 <tr>
-<th scope="col">Prometheus path</th>
-<th scope="col">VictoriaMetrics equivalent</th>
+<th>Prometheus path</th>
+<th>VictoriaMetrics equivalent</th>
 </tr>
 </thead>
 <tbody>
