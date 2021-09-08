@@ -1,9 +1,5 @@
 # MkDocs configuration
 # Used as base - look for .yml files with INHERIT
-# Maintained in parallel with existing config pending release of mike 1.1.0
-# https://github.com/jimporter/mike/issues/59
-# Thereafter tests to confirm working.
-# New config simplifies maintenance by keeping nav element in one place (this file).
 site_name: Percona Monitoring and Management
 site_description: Documentation
 site_author: Percona LLC
@@ -74,7 +70,7 @@ plugins:
     with-pdf:
         output_path: '_pdf/PerconaMonitoringAndManagement-2.21.0.pdf'
         cover_title: 'Documentation'
-        cover_subtitle: 2.21.0 (August 24, 2021)
+        cover_subtitle: 2.21.0 (August 26, 2021)
         author: 'Percona Technical Documentation Team'
         cover_logo: docs/_images/PMM_Logo.svg
         custom_template_path: _resources/templates
@@ -89,11 +85,6 @@ plugins:
       canonical_version: null
 
 extra: # Used in main.html template and can't be externalized
-    open_issue_text: '<i class="uil uil-exclamation-triangle"></i> Report a problem
-        with this page'
-    open_issue_subject: 'PMM2: doc issue on page '
-    open_issue_body: 'Please describe the issue here'
-    open_issue_tooltip: 'Report an issue with this page on GitHub'
     edit_page_text: '<i class="uil uil-pen"></i> <b>Edit this page</b>'
     updated_text: '<i class="uil uil-refresh"></i> Page updated'
     version:
@@ -134,7 +125,7 @@ nav:
       - using/dbaas.md
       - using/security-threat-tool.md
 #      - Advisors:
-#      - using/advisors/index.md
+#          - using/advisors/innodb_log_buffer_flushed_to_disk_after_each_trx.md
   - How to:
       - how-to/index.md
       - how-to/configure.md
