@@ -501,6 +501,15 @@
 <span class="k">UPDATE</span> <span class="n">performance_schema</span><span class="p">.</span><span class="n">setup_consumers</span> <span class="k">SET</span> <span class="n">ENABLED</span> <span class="o">=</span> <span class="s1">&#39;YES&#39;</span> <span class="k">WHERE</span> <span class="n">NAME</span> <span class="k">LIKE</span> <span class="s1">&#39;%statements%&#39;</span><span class="p">;</span>
 </code></pre></div>
 </li>
+<li>
+<p>Transactions</p>
+<p>MariaDB doesn&rsquo;t implement queries history for transactions. All queries executed within a transaction won&rsquo;t have query examples since PMM relies on the <code>performance_schema.events_statements_history</code> to grab the query example but that table won&rsquo;t have any query executed as part of a transaction.  </p>
+<p>This behavior is because MariaDB doesn&rsquo;t implement these consumers:</p>
+<div class="highlight"><pre><span></span><code>events_transactions_current
+events_transactions_history
+events_transactions_history_long
+</code></pre></div>
+</li>
 </ul>
 <h2 id="query-response-time">Query response time<a class="headerlink" href="#query-response-time" title="Permanent link">&para;</a></h2>
 <p><em>Query time distribution</em> is a chart in the <a href="../../using/query-analytics.html#details-tab"><em>Details</em> tab of Query Analytics</a> showing the proportion of query time spent on various activities. It is enabled with the <code>query_response_time_stats</code> variable and associated plugins.</p>
@@ -721,7 +730,7 @@
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-07-07
+            <i class="uil uil-refresh"></i> Page updated 2021-09-10
         </li>
         
     </ul>
