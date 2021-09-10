@@ -154,12 +154,12 @@
 <p>Decide which source of metrics to use, and configure your database server for it. The choices are <a href="#slow-query-log">Slow query log</a> and <a href="#performance-schema">Performance Schema</a>.</p>
 <p>While you can use both at the same time we recommend using only one&ndash;there is some overlap in the data reported, and each incurs a small performance penalty. The choice depends on the version and variant of your MySQL instance, and how much detail you want to see.</p>
 <p>Here are the benefits and drawbacks of <em>Slow query log</em> and <em>Performance Schema</em> metrics sources.</p>
-<table>
+<table class="table">
 <thead>
 <tr>
-<th></th>
-<th><i class="uil uil-thumbs-up"></i> Benefits</th>
-<th><i class="uil uil-thumbs-down"></i> Drawbacks</th>
+<th scope="col"></th>
+<th scope="col"><i class="uil uil-thumbs-up"></i> Benefits</th>
+<th scope="col"><i class="uil uil-thumbs-down"></i> Drawbacks</th>
 </tr>
 </thead>
 <tbody>
@@ -176,12 +176,12 @@
 </tbody>
 </table>
 <h3 id="data-source-recommendations">Data source recommendations<a class="headerlink" href="#data-source-recommendations" title="Permanent link">&para;</a></h3>
-<table>
+<table class="table">
 <thead>
 <tr>
-<th>Database server</th>
-<th>Versions</th>
-<th>Recommended source</th>
+<th scope="col">Database server</th>
+<th scope="col">Versions</th>
+<th scope="col">Recommended source</th>
 </tr>
 </thead>
 <tbody>
@@ -215,11 +215,11 @@
 <h3 id="slow-query-log">Slow query log<a class="headerlink" href="#slow-query-log" title="Permanent link">&para;</a></h3>
 <p>This section covers how to configure a MySQL-based database server to use the <em>slow query log</em> as a source of metrics.</p>
 <h3 id="applicable-versions">Applicable versions<a class="headerlink" href="#applicable-versions" title="Permanent link">&para;</a></h3>
-<table>
+<table class="table">
 <thead>
 <tr>
-<th>Server</th>
-<th>Versions</th>
+<th scope="col">Server</th>
+<th scope="col">Versions</th>
 </tr>
 </thead>
 <tbody>
@@ -243,12 +243,12 @@
 </table>
 <p>The <em>slow query log</em> records the details of queries that take more than a certain amount of time to complete. With the database server configured to write this information to a file rather than a table, PMM Client parses the file and sends aggregated data to PMM Server via the Query Analytics part of PMM Agent.</p>
 <h3 id="settings">Settings<a class="headerlink" href="#settings" title="Permanent link">&para;</a></h3>
-<table>
+<table class="table">
 <thead>
 <tr>
-<th>Variable</th>
-<th>Value</th>
-<th>Description</th>
+<th scope="col">Variable</th>
+<th scope="col">Value</th>
+<th scope="col">Description</th>
 </tr>
 </thead>
 <tbody>
@@ -303,11 +303,11 @@
 <h4 id="slow-query-log-extended">Slow query log &ndash; extended<a class="headerlink" href="#slow-query-log-extended" title="Permanent link">&para;</a></h4>
 <p>Some MySQL-based database servers support extended slow query log variables.</p>
 <h5 id="applicable-versions_1">Applicable versions<a class="headerlink" href="#applicable-versions_1" title="Permanent link">&para;</a></h5>
-<table>
+<table class="table">
 <thead>
 <tr>
-<th>Server</th>
-<th>Versions</th>
+<th scope="col">Server</th>
+<th scope="col">Versions</th>
 </tr>
 </thead>
 <tbody>
@@ -326,12 +326,12 @@
 </tbody>
 </table>
 <h5 id="settings_1">Settings<a class="headerlink" href="#settings_1" title="Permanent link">&para;</a></h5>
-<table>
+<table class="table">
 <thead>
 <tr>
-<th>Variable</th>
-<th>Value</th>
-<th>Description</th>
+<th scope="col">Variable</th>
+<th scope="col">Value</th>
+<th scope="col">Description</th>
 </tr>
 </thead>
 <tbody>
@@ -402,11 +402,11 @@
 <h3 id="performance-schema">Performance Schema<a class="headerlink" href="#performance-schema" title="Permanent link">&para;</a></h3>
 <p>This section covers how to configure a MySQL-based database server to use <em>Performance Schema</em> as a source of metrics.</p>
 <h4 id="applicable-versions_2">Applicable versions<a class="headerlink" href="#applicable-versions_2" title="Permanent link">&para;</a></h4>
-<table>
+<table class="table">
 <thead>
 <tr>
-<th>Server</th>
-<th>Versions</th>
+<th scope="col">Server</th>
+<th scope="col">Versions</th>
 </tr>
 </thead>
 <tbody>
@@ -426,12 +426,12 @@
 </table>
 <p>PMM&rsquo;s <a href="../../details/dashboards/dashboard-mysql-performance-schema-details.html"><em>MySQL Performance Schema Details</em> dashboard</a> charts the various <a href="https://dev.mysql.com/doc/refman/5.7/en/performance-schema-startup-configuration.html"><code>performance_schema</code></a> metrics.</p>
 <p>To use <em>Performance Schema</em>, set these variables.</p>
-<table>
+<table class="table">
 <thead>
 <tr>
-<th>Variable</th>
-<th>Value</th>
-<th>Description</th>
+<th scope="col">Variable</th>
+<th scope="col">Value</th>
+<th scope="col">Description</th>
 </tr>
 </thead>
 <tbody>
@@ -478,12 +478,12 @@
 </ul>
 <h4 id="mariadb-1057-or-lower">MariaDB 10.5.7 or lower<a class="headerlink" href="#mariadb-1057-or-lower" title="Permanent link">&para;</a></h4>
 <p>There is no <em>Explain</em> or <em>Example</em> data shown by default in Query Analytics when monitoring MariaDB instances version 10.5.7 or lower. A workaround is to set this variable.</p>
-<table>
+<table class="table">
 <thead>
 <tr>
-<th>Variable</th>
-<th>Value</th>
-<th>Description</th>
+<th scope="col">Variable</th>
+<th scope="col">Value</th>
+<th scope="col">Description</th>
 </tr>
 </thead>
 <tbody>
@@ -514,11 +514,11 @@ events_transactions_history_long
 <h2 id="query-response-time">Query response time<a class="headerlink" href="#query-response-time" title="Permanent link">&para;</a></h2>
 <p><em>Query time distribution</em> is a chart in the <a href="../../using/query-analytics.html#details-tab"><em>Details</em> tab of Query Analytics</a> showing the proportion of query time spent on various activities. It is enabled with the <code>query_response_time_stats</code> variable and associated plugins.</p>
 <h3 id="applicable-versions_3">Applicable versions<a class="headerlink" href="#applicable-versions_3" title="Permanent link">&para;</a></h3>
-<table>
+<table class="table">
 <thead>
 <tr>
-<th>Server</th>
-<th>Versions</th>
+<th scope="col">Server</th>
+<th scope="col">Versions</th>
 </tr>
 </thead>
 <tbody>
@@ -533,12 +533,12 @@ events_transactions_history_long
 </tbody>
 </table>
 <p>Set this variable to see query time distribution charts.</p>
-<table>
+<table class="table">
 <thead>
 <tr>
-<th>Variable</th>
-<th>Value</th>
-<th>Description</th>
+<th scope="col">Variable</th>
+<th scope="col">Value</th>
+<th scope="col">Description</th>
 </tr>
 </thead>
 <tbody>
@@ -583,11 +583,11 @@ events_transactions_history_long
 <h2 id="tablestats">Tablestats<a class="headerlink" href="#tablestats" title="Permanent link">&para;</a></h2>
 <p>Some table metrics are automatically disabled when the number of tables exceeds a default limit of 1000 tables. This prevents PMM Client from affecting the performance of your database server.</p>
 <p>The limit can be changed <a href="#command-line">when adding a service on the command line</a> with the two <code>pmm-admin</code> options:</p>
-<table>
+<table class="table">
 <thead>
 <tr>
-<th><code>pmm-admin</code> option</th>
-<th>Description</th>
+<th scope="col"><code>pmm-admin</code> option</th>
+<th scope="col">Description</th>
 </tr>
 </thead>
 <tbody>
@@ -604,11 +604,11 @@ events_transactions_history_long
 <h2 id="user-statistics">User statistics<a class="headerlink" href="#user-statistics" title="Permanent link">&para;</a></h2>
 <h3 id="applicable-versions_4">Applicable versions<a class="headerlink" href="#applicable-versions_4" title="Permanent link">&para;</a></h3>
 <p>User activity, individual table and index access details are shown on the <a href="../../details/dashboards/dashboard-mysql-user-details.html">MySQL User Details</a> dashboard when the <code>userstat</code> variable is set.</p>
-<table>
+<table class="table">
 <thead>
 <tr>
-<th>Server</th>
-<th>Versions</th>
+<th scope="col">Server</th>
+<th scope="col">Versions</th>
 </tr>
 </thead>
 <tbody>
