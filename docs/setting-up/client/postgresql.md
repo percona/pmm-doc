@@ -170,7 +170,7 @@ You can now [add the service](#add-service).
 
 3. Start or restart your PostgreSQL instance.
 
-5. In a `psql` session:
+4. In a `psql` session:
 
     ```sql
     CREATE EXTENSION pg_stat_monitor;
