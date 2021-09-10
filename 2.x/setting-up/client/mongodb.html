@@ -221,9 +221,10 @@
 </li>
 </ul>
 <h3 id="set-profiling-in-a-mongo-session">Set profiling in a <code>mongo</code> session<a class="headerlink" href="#set-profiling-in-a-mongo-session" title="Permanent link">&para;</a></h3>
-<p>In a <code>mongo</code> session:</p>
-<div class="highlight"><pre><span></span><code><span class="err">use</span> <span class="err">admi</span><span class="kc">n</span>
-<span class="err">db.se</span><span class="kc">t</span><span class="err">Pro</span><span class="kc">f</span><span class="err">ili</span><span class="kc">n</span><span class="err">gLevel(</span><span class="mi">2</span><span class="err">)</span>
+<p>In a <code>mongo</code> session, the profiler should be enabled <strong>per</strong> database.
+For example, to enable the profiler in the <code>testdb</code>, run this:</p>
+<div class="highlight"><pre><span></span><code><span class="err">use</span> <span class="kc">test</span><span class="err">db</span>
+<span class="err">db.se</span><span class="kc">t</span><span class="err">Pro</span><span class="kc">f</span><span class="err">ili</span><span class="kc">n</span><span class="err">gLevel(</span><span class="mi">2</span><span class="p">,</span> <span class="p">{</span><span class="err">slowms</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span><span class="err">)</span>
 </code></pre></div>
 <div class="admonition note alert alert-primary">
 <p>If you have already <a href="#add-service">added a service</a>, you should remove it and re-add it after changing the profiling level.</p>
@@ -350,7 +351,7 @@ mongo <span class="m">127</span>.0.0.1:27017
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-08-09
+            <i class="uil uil-refresh"></i> Page updated 2021-09-10
         </li>
         
     </ul>
