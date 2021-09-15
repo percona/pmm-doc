@@ -344,50 +344,6 @@ docker run --rm --volumes-from pmm-data -it percona/pmm-server:2 chown -R postgr
 </code></pre></div>
 </li>
 </ol>
-<h2 id="docker-compose">Docker compose<a class="headerlink" href="#docker-compose" title="Permanent link">&para;</a></h2>
-<div class="admonition summary alert alert-info">
-<p class="admonition-title">Summary</p>
-<ul>
-<li>Copy and paste the <code>docker-compose.yml</code> file.</li>
-<li>Run <code>docker-compose up</code>.</li>
-</ul>
-</div>
-<hr />
-<div class="admonition note alert alert-primary">
-<p>With this approach, data is stored in a volume, not in a <code>pmm-data</code> container.</p>
-</div>
-<ol>
-<li>
-<p>Copy and paste this text into a file called <code>docker-compose.yml</code>.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span> <span class="s">&#39;2&#39;</span>
-<span class="nt">services</span><span class="p">:</span>
-  <span class="nt">pmm-server</span><span class="p">:</span>
-    <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">percona/pmm-server:2</span>
-    <span class="nt">hostname</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">pmm-server</span>
-    <span class="nt">container_name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">pmm-server</span>
-    <span class="nt">restart</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">always</span>
-    <span class="nt">logging</span><span class="p">:</span>
-      <span class="nt">driver</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">json-file</span>
-      <span class="nt">options</span><span class="p">:</span>
-        <span class="nt">max-size</span><span class="p">:</span> <span class="s">&quot;10m&quot;</span>
-        <span class="nt">max-file</span><span class="p">:</span> <span class="s">&quot;5&quot;</span>
-    <span class="nt">ports</span><span class="p">:</span>
-      <span class="p p-Indicator">-</span> <span class="s">&quot;443:443&quot;</span>
-    <span class="nt">volumes</span><span class="p">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">data:/srv</span>
-<span class="nt">volumes</span><span class="p">:</span>
-  <span class="nt">data</span><span class="p">:</span>
-</code></pre></div>
-</li>
-<li>
-<p>Run:</p>
-<div class="highlight"><pre><span></span><code>docker-compose up
-</code></pre></div>
-</li>
-<li>
-<p>In a web browser, visit <code>https://localhost:443</code> to see the PMM user interface. (If you are accessing the docker host remotely, replace <code>localhost</code> with the IP or server name of the host.)</p>
-</li>
-</ol>
 <h2 id="environment-variables">Environment variables<a class="headerlink" href="#environment-variables" title="Permanent link">&para;</a></h2>
 <p>Use the following Docker container environment variables (with <code>-e var=value</code>) to set PMM Server parameters.</p>
 <table class="table">
@@ -558,7 +514,7 @@ percona/pmm-server:2.21.0
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-08-26
+            <i class="uil uil-refresh"></i> Page updated 2021-09-15
         </li>
         
     </ul>
