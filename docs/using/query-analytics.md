@@ -156,6 +156,15 @@ The *Explain* tab shows the `explain` output for the selected query, in Classic 
 - MongoDB: JSON only.
 - PostgreSQL: Not supported.
 
+#### Notes on explain for MongoDB.
+In order to run explain you need the same permissions requiered to execute the original query. For example, to run explain on `updates` you
+need to have update permissions.  
+Example: Grant the explainRole with update permissions
+
+```
+db.grantPrivilegesToRole( "explainRole", [ { resource: { db: "", collection: "" }, actions: [ "update" ] } ])
+```
+
 ![!image](../_images/PMM_Query_Analytics_Tabs_Explain.jpg)
 
 ### Tables Tab
