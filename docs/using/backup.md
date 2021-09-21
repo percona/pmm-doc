@@ -192,7 +192,7 @@ Make regular scheduled backups.
 ## Restore a backup
 
 !!! note alert alert-primary ""
-    For now, you can only restore a backup to the same service it was created from, or to one compatible one.
+    For now, you can only restore a backup to the same service it was created from, or to a compatible one.
 
 1. Select <i class="uil uil-history"></i> → *Backup* → *Backup Inventory*.
 
