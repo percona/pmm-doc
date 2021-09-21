@@ -160,11 +160,11 @@ The *Explain* tab shows the `explain` output for the selected query, in Classic 
 
     To run Explain you need the same permissions as for executing the original query. For example, to run explain on `updates` you need update permissions.  
 
-Example: Grant the `explainRole` with update permissions.
+    Example: Grant the `explainRole` with update permissions.
 
-```
-db.grantPrivilegesToRole( "explainRole", [ { resource: { db: "", collection: "" }, actions: [ "update" ] } ])
-```
+    ```
+    db.grantPrivilegesToRole( "explainRole", [ { resource: { db: "", collection: "" }, actions: [ "update" ] } ])
+    ```
 
 ![!image](../_images/PMM_Query_Analytics_Tabs_Explain.jpg)
 
