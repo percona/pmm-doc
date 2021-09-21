@@ -261,6 +261,13 @@
 <li>MongoDB: JSON only.</li>
 <li>PostgreSQL: Not supported.</li>
 </ul>
+<div class="admonition note alert alert-primary">
+<p class="admonition-title">&lsquo;Explain&rsquo; for MongoDB</p>
+<p>To run Explain you need the same permissions as for executing the original query. For example, to run explain on <code>updates</code> you need update permissions.  </p>
+<p>Example: Grant the <code>explainRole</code> with update permissions.</p>
+<div class="highlight"><pre><span></span><code>db.grantPrivilegesToRole( &quot;explainRole&quot;, [ { resource: { db: &quot;&quot;, collection: &quot;&quot; }, actions: [ &quot;update&quot; ] } ])
+</code></pre></div>
+</div>
 <p><div class="lightgallery"><a data-sub-html="image" href="../_images/PMM_Query_Analytics_Tabs_Explain.jpg"><img alt="image" src="../_images/PMM_Query_Analytics_Tabs_Explain.jpg" /></a></div></p>
 <h3 id="tables-tab">Tables Tab<a class="headerlink" href="#tables-tab" title="Permanent link">&para;</a></h3>
 <p>(For <em>Query</em> dimension.)</p>
@@ -278,7 +285,7 @@
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-06-29
+            <i class="uil uil-refresh"></i> Page updated 2021-09-21
         </li>
         
     </ul>
