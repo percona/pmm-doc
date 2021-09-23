@@ -362,13 +362,13 @@ apt install -y pmm2-client
 <p>(Alternatively, copy the link and use <code>wget</code> to download it.)</p>
 <p>Here are the download page links for each supported platform.</p>
 <ul>
-<li><a href="https://www.percona.com/downloads/pmm2/2.21.0/binary/debian/stretch/">Debian 9 (Stretch)</a></li>
-<li><a href="https://www.percona.com/downloads/pmm2/2.21.0/binary/debian/buster/">Debian 10 (Buster)</a></li>
-<li><a href="https://www.percona.com/downloads/pmm2/2.21.0/binary/redhat/7/">Red Hat/CentOS/Oracle 7</a></li>
-<li><a href="https://www.percona.com/downloads/pmm2/2.21.0/binary/redhat/8/">Red Hat/CentOS/Oracle 8</a></li>
-<li><a href="https://www.percona.com/downloads/pmm2/2.21.0/binary/debian/xenial/">Ubuntu 16.04 (Xenial Xerus)</a></li>
-<li><a href="https://www.percona.com/downloads/pmm2/2.21.0/binary/debian/bionic/">Ubuntu 18.04 (Bionic Beaver)</a></li>
-<li><a href="https://www.percona.com/downloads/pmm2/2.21.0/binary/debian/focal/">Ubuntu 20.04 (Focal Fossa)</a></li>
+<li><a href="https://www.percona.com/downloads/pmm2/2.22.0/binary/debian/stretch/">Debian 9 (Stretch)</a></li>
+<li><a href="https://www.percona.com/downloads/pmm2/2.22.0/binary/debian/buster/">Debian 10 (Buster)</a></li>
+<li><a href="https://www.percona.com/downloads/pmm2/2.22.0/binary/redhat/7/">Red Hat/CentOS/Oracle 7</a></li>
+<li><a href="https://www.percona.com/downloads/pmm2/2.22.0/binary/redhat/8/">Red Hat/CentOS/Oracle 8</a></li>
+<li><a href="https://www.percona.com/downloads/pmm2/2.22.0/binary/debian/xenial/">Ubuntu 16.04 (Xenial Xerus)</a></li>
+<li><a href="https://www.percona.com/downloads/pmm2/2.22.0/binary/debian/bionic/">Ubuntu 18.04 (Bionic Beaver)</a></li>
+<li><a href="https://www.percona.com/downloads/pmm2/2.22.0/binary/debian/focal/">Ubuntu 20.04 (Focal Fossa)</a></li>
 </ul>
 <h4 id="debian-based_1">Debian-based<a class="headerlink" href="#debian-based_1" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code>dpkg -i *.deb
@@ -380,22 +380,22 @@ apt install -y pmm2-client
 <ol>
 <li>
 <p>Download the PMM Client package:</p>
-<div class="highlight"><pre><span></span><code>wget https://downloads.percona.com/downloads/pmm2/2.21.0/binary/tarball/pmm2-client-2.21.0.tar.gz
+<div class="highlight"><pre><span></span><code>wget https://downloads.percona.com/downloads/pmm2/2.22.0/binary/tarball/pmm2-client-2.22.0.tar.gz
 </code></pre></div>
 </li>
 <li>
 <p>Download the PMM Client package checksum file:</p>
-<div class="highlight"><pre><span></span><code>wget https://downloads.percona.com/downloads/pmm2/2.21.0/binary/tarball/pmm2-client-2.21.0.tar.gz.sha256sum
+<div class="highlight"><pre><span></span><code>wget https://downloads.percona.com/downloads/pmm2/2.22.0/binary/tarball/pmm2-client-2.22.0.tar.gz.sha256sum
 </code></pre></div>
 </li>
 <li>
 <p>Verify the download.</p>
-<div class="highlight"><pre><span></span><code>sha256sum -c pmm2-client-2.21.0.tar.gz.sha256sum
+<div class="highlight"><pre><span></span><code>sha256sum -c pmm2-client-2.22.0.tar.gz.sha256sum
 </code></pre></div>
 </li>
 <li>
 <p>Unpack the package and move into the directory.</p>
-<div class="highlight"><pre><span></span><code>tar xfz pmm2-client-2.21.0.tar.gz <span class="o">&amp;&amp;</span> <span class="nb">cd</span> pmm2-client-2.21.0
+<div class="highlight"><pre><span></span><code>tar xfz pmm2-client-2.22.0.tar.gz <span class="o">&amp;&amp;</span> <span class="nb">cd</span> pmm2-client-2.22.0
 </code></pre></div>
 </li>
 <li>
@@ -1321,6 +1321,12 @@ where YOURPATH replace with you real path, where you have required access.</p>
 
 
 <ul class="toctree" id="toctree">
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.22.0.html">PMM 2.22.0</a>
+
+
 
 
 <li class="toctree-l2">

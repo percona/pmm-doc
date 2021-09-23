@@ -469,8 +469,8 @@ docker run --rm --volumes-from pmm-data -it percona/pmm-server:2 chown -R postgr
 <ol>
 <li>
 <p>On an internet-connected host, download the Docker image and its checksum file.</p>
-<div class="highlight"><pre><span></span><code>wget https://downloads.percona.com/downloads/pmm2/2.21.0/docker/pmm-server-2.21.0.docker
-wget https://downloads.percona.com/downloads/pmm2/2.21.0/docker/pmm-server-2.21.0.sha256sum
+<div class="highlight"><pre><span></span><code>wget https://downloads.percona.com/downloads/pmm2/2.22.0/docker/pmm-server-2.22.0.docker
+wget https://downloads.percona.com/downloads/pmm2/2.22.0/docker/pmm-server-2.22.0.sha256sum
 </code></pre></div>
 </li>
 <li>
@@ -481,18 +481,18 @@ wget https://downloads.percona.com/downloads/pmm2/2.21.0/docker/pmm-server-2.21.
 </li>
 <li>
 <p>(Optional) Check the Docker image file integrity.</p>
-<div class="highlight"><pre><span></span><code>shasum -ca <span class="m">256</span> pmm-server-2.21.0.sha256sum
+<div class="highlight"><pre><span></span><code>shasum -ca <span class="m">256</span> pmm-server-2.22.0.sha256sum
 </code></pre></div>
 </li>
 <li>
 <p>Load the image.</p>
-<div class="highlight"><pre><span></span><code>docker load -i pmm-server-2.21.0.docker
+<div class="highlight"><pre><span></span><code>docker load -i pmm-server-2.22.0.docker
 </code></pre></div>
 </li>
 <li>
 <p>Create the <code>pmm-data</code> persistent data container.</p>
 <div class="highlight"><pre><span></span><code>docker create --volume /srv <span class="se">\</span>
---name pmm-data percona/pmm-server:2.21.0 /bin/true
+--name pmm-data percona/pmm-server:2.22.0 /bin/true
 </code></pre></div>
 </li>
 <li>
@@ -503,7 +503,7 @@ wget https://downloads.percona.com/downloads/pmm2/2.21.0/docker/pmm-server-2.21.
 --publish <span class="m">443</span>:443 <span class="se">\</span>
 --volumes-from pmm-data <span class="se">\</span>
 --name pmm-server <span class="se">\</span>
-percona/pmm-server:2.21.0
+percona/pmm-server:2.22.0
 </code></pre></div>
 </li>
 </ol>
@@ -1265,6 +1265,12 @@ percona/pmm-server:2.21.0
 
 
 <ul class="toctree" id="toctree">
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.22.0.html">PMM 2.22.0</a>
+
+
 
 
 <li class="toctree-l2">
