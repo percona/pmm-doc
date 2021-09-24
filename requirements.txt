@@ -10,6 +10,5 @@ mkdocs-material-extensions
 mkdocs-bootstrap-tables-plugin
 mkdocs-section-index
 mkdocs-htmlproofer-plugin
-mike>=1.1.0
+mike
 lightgallery
-mkdocs-mermaid2-plugin
