@@ -8,7 +8,7 @@ The textfile collector allows exporting of statistics from batch jobs. It can al
 The collector is enabled by default. Next folders are used for different resolutions:
 
 | Resolution | Folder                                                                  |
-|--------------------------------------------------------------------------------------|
+|------------|-------------------------------------------------------------------------|
 |  High      | /usr/local/percona/pmm2/collectors/textfile-collector/high-resolution   |
 |  Medium    | /usr/local/percona/pmm2/collectors/textfile-collector/medium-resolution |
 |  Low       | /usr/local/percona/pmm2/collectors/textfile-collector/low-resolution    |
