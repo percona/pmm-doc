@@ -82,7 +82,7 @@
 
 - `pmm-agent` has read/write permissions to the `/var/lib/mysql` directory.
 
-- The following packages are installed. They should be included in the `$PATH` environment variable:
+- The latest versions of the following packages are installed. They should be included in the `$PATH` environment variable:
 
     - [`xtrabackup`][PERCONA_XTRABACKUP], which includes:
 
@@ -194,7 +194,7 @@ Make regular scheduled backups.
 ## Restore a backup
 
 !!! note alert alert-primary ""
-    For now, you can only restore a backup to the same service it was created from. I.e. a MySQL backup of service `mysql-service-1` can only be restored to a MySQL database server registered with the same service name. Future releases will give more flexibility to restore backups to other service types.
+    For now, you can only restore a backup to the same service it was created from, or to a compatible one.
 
 1. Select <i class="uil uil-history"></i> → *Backup* → *Backup Inventory*.
 
@@ -202,7 +202,15 @@ Make regular scheduled backups.
 
 1. In the *Actions* column for that row, click *Restore from backup*.
 
-1. In the *Restore from backup* dialog, check the values and click *Restore*.
+1. In the *Restore from backup* dialog:
+
+    - Select *Same service* to restore to a service with identical properties.
+        - Select the service in the *Service name* menu.
+
+    - Select *Compatible services* to restore to a compatible service.
+        - Select the compatible service in the *Service name* menu.
+
+1. Check the values and click *Restore*.
 
 1. Navigate to the *Restore History* tab to check the status of the restored backup.
 
