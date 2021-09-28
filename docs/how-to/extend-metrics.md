@@ -1,11 +1,11 @@
 # Extend Metrics
 
-## Enable the textfile collector
-
 Sometimes, though, you’ll have the need for a metric that’s not present in the list of node_exporter metrics out of the box. 
 The textfile collector allows exporting of statistics from batch jobs. It can also be used to export static metrics, such as what role a machine has. 
 
-By default next folders are used for different resolutions:
+## Enable the textfile collector
+
+The collector is enabled by default. Next folders are used for different resolutions:
 /usr/local/percona/pmm2/collectors/textfile-collector/high-resolution
 /usr/local/percona/pmm2/collectors/textfile-collector/medium-resolution
 /usr/local/percona/pmm2/collectors/textfile-collector/low-resolution
@@ -13,6 +13,8 @@ By default next folders are used for different resolutions:
 ![!image](../_images/node-exporter.textfile-collector.1.png)
 
 Exporter parse all files in that directories matching the glob *.prom using the text format.
+
+## Examples of shell commands for custom metrics
 
 To statically set roles for a machine using labels:
 
