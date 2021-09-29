@@ -1,11 +1,11 @@
 # Extend Metrics
 
-Sometimes, though, you’ll have the need for a metric that’s not present in the list of node_exporter metrics out of the box. 
+When you need a metric that’s not present in the default list of `node_exporter` metrics you may be able to use the `textfile` collector. 
 The textfile collector allows exporting of statistics from batch jobs. It can also be used to export static metrics, such as what role a machine has. 
 
 ## Enable the textfile collector
 
-The collector is enabled by default. Next folders are used for different resolutions:
+The collector is enabled by default. The following folders are used for different resolutions:
 
 | Resolution | Folder                                                                  |
 |------------|-------------------------------------------------------------------------|
@@ -15,8 +15,8 @@ The collector is enabled by default. Next folders are used for different resolut
 
 ![!image](../_images/node-exporter.textfile-collector.1.png)
 
-Exporter parse all files in that directories matching the glob *.prom using a simple text-based [exposition format](https://prometheus.io/docs/instrumenting/exposition_formats/#text-based-format).
-Metrics are stored on PMM Server-side with additional labels related to this Node.
+The exporter parses all files in these directories that match the filename wildcard expression `*.prom` using a simple text-based [exposition format](https://prometheus.io/docs/instrumenting/exposition_formats/#text-based-format).
+Metrics are stored on the PMM Server-side with additional labels related to this Node.
 
 ## Examples of shell commands for custom metrics
 
