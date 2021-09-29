@@ -26,7 +26,7 @@ To statically set roles for a machine using labels:
 echo 'node_role{role="my_monitored_server_1"} 1' > /usr/local/percona/pmm2/collectors/textfile-collector/low-resolution/node_role.prom
 ```
 
-To atomically push loggedin users for a cron job:
+Here's an example of a cron job that automatically pushes logged-in users:
 
 ```sh
 $ cat /etc/cron.d/loggedin_users
