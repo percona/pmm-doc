@@ -23,15 +23,15 @@ Metrics are stored on PMM Server-side with additional labels related to this Nod
 To statically set roles for a machine using labels:
 
 ```sh
-    echo 'node_role{role="my_monitored_server_1"} 1' > /usr/local/percona/pmm2/collectors/textfile-collector/low-resolution/node_role.prom
-    ```
+echo 'node_role{role="my_monitored_server_1"} 1' > /usr/local/percona/pmm2/collectors/textfile-collector/low-resolution/node_role.prom
+```
 
 To atomically push loggedin users for a cron job:
 
-    ```sh
-    $ cat /etc/cron.d/loggedin_users
-    */1 * * * *     root    /usr/bin/who | /usr/bin/wc -l | sed -ne 's/^/node_loggedin_users /p' > /usr/local/percona/pmm2/collectors/textfile-collector/high-resolution/node_users.prom
-    ```
+```sh
+$ cat /etc/cron.d/loggedin_users
+*/1 * * * *     root    /usr/bin/who | /usr/bin/wc -l | sed -ne 's/^/node_loggedin_users /p' > /usr/local/percona/pmm2/collectors/textfile-collector/high-resolution/node_users.prom
+```
 
 ![!image](../_images/node-exporter.textfile-collector.2.png)
 
