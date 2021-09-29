@@ -183,6 +183,7 @@ Enter your **public key** in the *SSH Key* field and click *Apply SSH Key*.
 Alertmanager manages alerts, de-duplicating, grouping, and routing them to the appropriate receiver or display component.
 
 This section lets you configure integration of VictoriaMetrics with an external Alertmanager.
+When possible, please resort to [Integrated Alerting](../using/alerting.md) over Alertmanager.
 
 - The *Alertmanager URL* field should contain the URL of the Alertmanager which would serve your PMM alerts.
 - The *Prometheus Alerting rules* field is used to specify alerting rules in the YAML configuration format.
