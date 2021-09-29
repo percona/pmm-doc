@@ -22,7 +22,7 @@ Metrics are stored on PMM Server-side with additional labels related to this Nod
 
 To statically set roles for a machine using labels:
 
-    ```sh
+```sh
     echo 'node_role{role="my_monitored_server_1"} 1' > /usr/local/percona/pmm2/collectors/textfile-collector/low-resolution/node_role.prom
     ```
 
