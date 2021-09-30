@@ -106,7 +106,44 @@
                 <div class="bodywrapper">
                     <div class="body">
                         <h1 id="extend-metrics">Extend Metrics<a class="headerlink" href="#extend-metrics" title="Permanent link">&para;</a></h1>
+<p>When you need a metric that’s not present in the default list of <code>node_exporter</code> metrics you may be able to use the <code>textfile</code> collector. 
+The textfile collector allows exporting of statistics from batch jobs. It can also be used to export static metrics, such as what role a machine has. </p>
 <h2 id="enable-the-textfile-collector">Enable the textfile collector<a class="headerlink" href="#enable-the-textfile-collector" title="Permanent link">&para;</a></h2>
+<p>The collector is enabled by default. The following folders are used for different resolutions:</p>
+<table class="table">
+<thead>
+<tr>
+<th scope="col">Resolution</th>
+<th scope="col">Folder</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>High</td>
+<td>/usr/local/percona/pmm2/collectors/textfile-collector/high-resolution</td>
+</tr>
+<tr>
+<td>Medium</td>
+<td>/usr/local/percona/pmm2/collectors/textfile-collector/medium-resolution</td>
+</tr>
+<tr>
+<td>Low</td>
+<td>/usr/local/percona/pmm2/collectors/textfile-collector/low-resolution</td>
+</tr>
+</tbody>
+</table>
+<p><div class="lightgallery"><a data-sub-html="image" href="../_images/node-exporter.textfile-collector.1.png"><img alt="image" src="../_images/node-exporter.textfile-collector.1.png" /></a></div></p>
+<p>The exporter parses all files in these directories that match the filename wildcard expression <code>*.prom</code> using a simple text-based <a href="https://prometheus.io/docs/instrumenting/exposition_formats/#text-based-format">exposition format</a>.
+Metrics are stored on the PMM Server-side with additional labels related to this Node.</p>
+<h2 id="examples-of-shell-commands-for-custom-metrics">Examples of shell commands for custom metrics<a class="headerlink" href="#examples-of-shell-commands-for-custom-metrics" title="Permanent link">&para;</a></h2>
+<p>To statically set roles for a machine using labels:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">echo</span> <span class="s1">&#39;node_role{role=&quot;my_monitored_server_1&quot;} 1&#39;</span> &gt; /usr/local/percona/pmm2/collectors/textfile-collector/low-resolution/node_role.prom
+</code></pre></div>
+<p>Here&rsquo;s an example of a cron job that automatically pushes logged-in users:</p>
+<div class="highlight"><pre><span></span><code>$ cat /etc/cron.d/loggedin_users
+*/1 * * * *     root    /usr/bin/who <span class="p">|</span> /usr/bin/wc -l <span class="p">|</span> sed -ne <span class="s1">&#39;s/^/node_loggedin_users /p&#39;</span> &gt; /usr/local/percona/pmm2/collectors/textfile-collector/high-resolution/node_users.prom
+</code></pre></div>
+<p><div class="lightgallery"><a data-sub-html="image" href="../_images/node-exporter.textfile-collector.2.png"><img alt="image" src="../_images/node-exporter.textfile-collector.2.png" /></a></div></p>
                     </div>
                 </div>
                 
@@ -114,7 +151,7 @@
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-09-09
+            <i class="uil uil-refresh"></i> Page updated 2021-09-30
         </li>
         
     </ul>
