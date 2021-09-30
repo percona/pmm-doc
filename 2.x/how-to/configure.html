@@ -331,6 +331,10 @@
 <h2 id="alertmanager-integration">Alertmanager integration<a class="headerlink" href="#alertmanager-integration" title="Permanent link">&para;</a></h2>
 <p>Alertmanager manages alerts, de-duplicating, grouping, and routing them to the appropriate receiver or display component.</p>
 <p>This section lets you configure integration of VictoriaMetrics with an external Alertmanager.</p>
+<div class="admonition hint alert alert-success">
+<p class="admonition-title">Tip</p>
+<p>If possible, use <a href="../using/alerting.html">Integrated Alerting</a> instead of Alertmanager.</p>
+</div>
 <ul>
 <li>The <em>Alertmanager URL</em> field should contain the URL of the Alertmanager which would serve your PMM alerts.</li>
 <li>The <em>Prometheus Alerting rules</em> field is used to specify alerting rules in the YAML configuration format.</li>
@@ -409,7 +413,7 @@
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-07-29
+            <i class="uil uil-refresh"></i> Page updated 2021-09-30
         </li>
         
     </ul>
