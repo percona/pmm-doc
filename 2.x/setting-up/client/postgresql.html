@@ -291,7 +291,14 @@ track_io_timing = on             # Capture read/write stats
 </li>
 <li>
 <p>Set configuration values.</p>
-<p>You can get a list of available settings with <code>SELECT * FROM pg_stat_monitor_settings;</code>.</p>
+<p>In your <code>postgresql.conf</code> file:
+<div class="highlight"><pre><span></span><code><span class="na">pg_stat_monitor.pgsm_query_max_len settings</span> <span class="o">=</span> <span class="s">2048</span>
+</code></pre></div></p>
+<div class="admonition caution alert alert-warning">
+<p class="admonition-title">Caution</p>
+<p>It is important to set maximal length of query to 2048 characters or more for PMM to work properly.</p>
+</div>
+<p>You can get a list of other available settings with <code>SELECT * FROM pg_stat_monitor_settings;</code>.</p>
 <div class="admonition note alert alert-primary">
 <p>See <a href="https://github.com/percona/pg_stat_monitor/blob/master/docs/USER_GUIDE.md#configuration"><code>pg_stat_monitor</code> GitHub repository</a> for details about available parameters.</p>
 </div>
@@ -427,7 +434,7 @@ track_io_timing = on             # Capture read/write stats
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-08-26
+            <i class="uil uil-refresh"></i> Page updated 2021-10-01
         </li>
         
     </ul>
