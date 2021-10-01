@@ -69,8 +69,6 @@ Decide which database extension to use, and configure your database server for i
 
 2. [`pg_stat_monitor`](#pg_stat_monitor) is a new extension created by Percona. `pg_stat_monitor` has all the features of `pg_stat_statements` but adds *bucket-based data aggregation*, provides more accurate data, and can expose Query Examples.
 
-We recommend choosing only one of these. **If you use both, you will get duplicate metrics.**
-
 !!! caution alert alert-warning "Caution"
     While we recommend use of the newer `pg_stat_monitor` extension, be aware it is currently in beta phase and unsupported.
 
