@@ -155,7 +155,7 @@ trace: false
 As you can see above behavior for --paths-base was the same, but paths for all exporters were overwritten by --paths-exporter_base flag. 
 
 **Summary:**
-Flag --paths-base will set path for all exporters and tools, but each one can be overrided by specific flag (like --paths-mongodb_exporter, --paths-pt-mysql-summary etc).
+Flag `--paths-base` will set path for all exporters and tools, but each one could be overridden by specific flag (like `--paths-mongodb_exporter`, `--paths-pt-mysql-summary` and etc).
 
 ## LOGGING
 
