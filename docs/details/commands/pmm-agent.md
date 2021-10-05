@@ -111,7 +111,7 @@ ports:
 debug: false
 trace: false
 ````
-As you can see above, base for all exporters and tools was changed only by setting --paths-base. With this tag you can specify folder for PMM where you don't have root access.
+As could be seen above, base for all exporters and tools was changed only by setting `--paths-base`. With this tag the folder for PMM that doesn't require root access could be specified.
 
 - **Case 2:** The older `--paths-exporters_base` flag could be passed along with the `--paths-base`
 Command:
