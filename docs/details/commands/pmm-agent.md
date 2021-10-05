@@ -81,7 +81,7 @@ Config output:
 ````
 # Updated by `pmm-agent setup`.
 ---
-id: /agent_id/fc546c21-0f8c-4621-b031-e228593a1d0a
+id: /agent_id/be568008-b1b4-4bd9-98c7-392d1f4b724e
 listen-address: 127.0.0.1
 listen-port: 7777
 server:
@@ -90,26 +90,27 @@ server:
     password: admin
     insecure-tls: true
 paths:
-    paths_base: /home/user/custom/pmm2
-    exporters_base: /home/user/pmm2/exporters
-    node_exporter: /home/user/pmm2/exporters/node_exporter
-    mysqld_exporter: /home/user/pmm2/exporters/mysqld_exporter
-    mongodb_exporter: /home/user/pmm2/exporters/mongodb_exporter
-    postgres_exporter: /home/user/pmm2/exporters/postgres_exporter
-    proxysql_exporter: /home/user/pmm2/exporters/proxysql_exporter
-    rds_exporter: /home/user/pmm2/exporters/rds_exporter
-    azure_exporter: /home/user/pmm2/exporters/azure_exporter
-    vmagent: /home/user/pmm2/exporters/vmagent
+    paths_base: /home/jirka/custom/pmm2
+    exporters_base: /home/jirka/custom/pmm2/exporters
+    node_exporter: /home/jirka/custom/pmm2/exporters/node_exporter
+    mysqld_exporter: /home/jirka/custom/pmm2/exporters/mysqld_exporter
+    mongodb_exporter: /home/jirka/custom/pmm2/exporters/mongodb_exporter
+    postgres_exporter: /home/jirka/custom/pmm2/exporters/postgres_exporter
+    proxysql_exporter: /home/jirka/custom/pmm2/exporters/proxysql_exporter
+    rds_exporter: /home/jirka/custom/pmm2/exporters/rds_exporter
+    azure_exporter: /home/jirka/custom/pmm2/exporters/azure_exporter
+    vmagent: /home/jirka/custom/pmm2/exporters/vmagent
     tempdir: /tmp
-    pt_summary: /home/user/pmm2/tools/pt-summary
-    pt_pg_summary: /home/user/pmm2/tools/pt-pg-summary
-    pt_mysql_summary: /home/user/pmm2/tools/pt-mysql-summary
-    pt_mongodb_summary: /home/user/pmm2/tools/pt-mongodb-summary
+    pt_summary: /home/jirka/custom/pmm2/tools/pt-summary
+    pt_pg_summary: /home/jirka/custom/pmm2/tools/pt-pg-summary
+    pt_mysql_summary: /home/jirka/custom/pmm2/tools/pt-mysql-summary
+    pt_mongodb_summary: /home/jirka/custom/pmm2/tools/pt-mongodb-summary
 ports:
     min: 42000
     max: 51999
 debug: false
 trace: false
+
 ````
 As could be seen above, base for all exporters and tools was changed only by setting `--paths-base`. With this tag the folder for PMM that doesn't require root access could be specified.
 
