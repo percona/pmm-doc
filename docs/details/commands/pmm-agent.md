@@ -65,6 +65,99 @@ Most options can be set via environment variables (shown in parentheses).
 | `-h`, `--help`                         |                                     | Show help (synonym for `pmm-agent help`).
 | `--version`                            |                                     | Show application version, PMM version, time-stamp, git commit hash and branch.
 
+## USAGE AND EXAMPLES OF `paths-base` FLAG
+
+Since 2.23.0 you can use this flag for easier setup of pmm agent. With this flag you dont need root permissions for PMM client anymore and it will be
+fully working.
+
+**Examples:**
+
+- **Case 1:** I dont have root permissions to `/usr/local/percona/pmm2` folder or I want to change default folder for PMM files.
+Command:
+````
+pmm-agent setup --paths-base=/home/user/custom/pmm2 --config-file=pmm-agent-dev.yaml --server-insecure-tls --server-address=127.0.0.1:443 --server-username=admin --server-password=admin
+````
+Config output:
+````
+# Updated by `pmm-agent setup`.
+---
+id: /agent_id/fc546c21-0f8c-4621-b031-e228593a1d0a
+listen-address: 127.0.0.1
+listen-port: 7777
+server:
+    address: 127.0.0.1:443
+    username: admin
+    password: admin
+    insecure-tls: true
+paths:
+    paths_base: /home/user/custom/pmm2
+    exporters_base: /home/user/pmm2/exporters
+    node_exporter: /home/user/pmm2/exporters/node_exporter
+    mysqld_exporter: /home/user/pmm2/exporters/mysqld_exporter
+    mongodb_exporter: /home/user/pmm2/exporters/mongodb_exporter
+    postgres_exporter: /home/user/pmm2/exporters/postgres_exporter
+    proxysql_exporter: /home/user/pmm2/exporters/proxysql_exporter
+    rds_exporter: /home/user/pmm2/exporters/rds_exporter
+    azure_exporter: /home/user/pmm2/exporters/azure_exporter
+    vmagent: /home/user/pmm2/exporters/vmagent
+    tempdir: /tmp
+    pt_summary: /home/user/pmm2/tools/pt-summary
+    pt_pg_summary: /home/user/pmm2/tools/pt-pg-summary
+    pt_mysql_summary: /home/user/pmm2/tools/pt-mysql-summary
+    pt_mongodb_summary: /home/user/pmm2/tools/pt-mongodb-summary
+ports:
+    min: 42000
+    max: 51999
+debug: false
+trace: false
+````
+As you can see above base for all exporters and tools were changed only by set --paths-base. By this you can specify folder for PMM where you have access to run
+PMM without root permissions. 
+
+- **Case 2:** You will pass older --paths-exporters_base flag and also --paths-base
+Command:
+````
+pmm-agent setup --paths-base=/home/user/custom/pmm2 --config-file=pmm-agent-dev.yaml --server-insecure-tls --server-address=127.0.0.1:443 --server-username=admin --server-password=admin
+````
+Config output:
+````
+# Updated by `pmm-agent setup`.
+---
+id: /agent_id/afce1917-8836-4857-b3e5-ad372c2ddbe5
+listen-address: 127.0.0.1
+listen-port: 7777
+server:
+    address: 127.0.0.1:443
+    username: admin
+    password: admin
+    insecure-tls: true
+paths:
+    paths_base: /home/user/custom/pmm2
+    exporters_base: /home/user/exporters
+    node_exporter: /home/user/exporters/node_exporter
+    mysqld_exporter: /home/user/exporters/mysqld_exporter
+    mongodb_exporter: /home/user/exporters/mongodb_exporter
+    postgres_exporter: /home/user/exporters/postgres_exporter
+    proxysql_exporter: /home/user/exporters/proxysql_exporter
+    rds_exporter: /home/user/exporters/rds_exporter
+    azure_exporter: /home/user/exporters/azure_exporter
+    vmagent: /home/user/exporters/vmagent
+    tempdir: /tmp
+    pt_summary: /home/user/custom/pmm2/tools/pt-summary
+    pt_pg_summary: /home/user/custom/pmm2/tools/pt-pg-summary
+    pt_mysql_summary: /home/user/custom/pmm2/tools/pt-mysql-summary
+    pt_mongodb_summary: /home/user/custom/pmm2/tools/pt-mongodb-summary
+ports:
+    min: 42000
+    max: 51999
+debug: false
+trace: false
+````
+As you can see above behavior for --paths-base were same, but we overrided paths for all exporters by --paths-exporter_base flag. 
+
+**Summary:**
+Flag --paths-base will set path for all exporters and tools, but each one can be overrided by specific flag (like --paths-mongodb_exporter, --paths-pt-mysql-summary etc).
+
 ## LOGGING
 
 By default, pmm-agent sends messages to stderr and to the system log (`syslogd` or `journald` on Linux).
