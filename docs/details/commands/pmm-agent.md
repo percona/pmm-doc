@@ -113,7 +113,7 @@ trace: false
 ````
 As you can see above, base for all exporters and tools was changed only by setting --paths-base. With this tag you can specify folder for PMM where you don't have root access.
 
-- **Case 2:** You will pass older --paths-exporters_base flag and also --paths-base
+- **Case 2:** The older `--paths-exporters_base` flag could be passed along with the `--paths-base`
 Command:
 ````
 pmm-agent setup --paths-base=/home/user/custom/pmm2 --config-file=pmm-agent-dev.yaml --server-insecure-tls --server-address=127.0.0.1:443 --server-username=admin --server-password=admin
