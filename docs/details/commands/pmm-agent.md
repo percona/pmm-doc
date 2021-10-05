@@ -67,12 +67,12 @@ Most options can be set via environment variables (shown in parentheses).
 
 ## USAGE AND EXAMPLES OF `paths-base` FLAG
 
-Since 2.23.0 you can use this flag for easier setup of pmm agent. With this flag you dont need root permissions for PMM client anymore and it will be
+Since 2.23.0 you can use this flag for easier setup of pmm agent. With this flag you don't need root permissions for PMM client anymore and it will be
 fully working.
 
 **Examples:**
 
-- **Case 1:** I dont have root permissions to `/usr/local/percona/pmm2` folder or I want to change default folder for PMM files.
+- **Case 1:** I don't have root permissions to `/usr/local/percona/pmm2` folder or I want to change default folder for PMM files.
 Command:
 ````
 pmm-agent setup --paths-base=/home/user/custom/pmm2 --config-file=pmm-agent-dev.yaml --server-insecure-tls --server-address=127.0.0.1:443 --server-username=admin --server-password=admin
@@ -111,8 +111,7 @@ ports:
 debug: false
 trace: false
 ````
-As you can see above base for all exporters and tools were changed only by set --paths-base. By this you can specify folder for PMM where you have access to run
-PMM without root permissions. 
+As you can see above, base for all exporters and tools was changed only by setting --paths-base. With this tag you can specify folder for PMM where you don't have root access.
 
 - **Case 2:** You will pass older --paths-exporters_base flag and also --paths-base
 Command:
@@ -153,7 +152,7 @@ ports:
 debug: false
 trace: false
 ````
-As you can see above behavior for --paths-base were same, but we overrided paths for all exporters by --paths-exporter_base flag. 
+As you can see above behavior for --paths-base was the same, but paths for all exporters were overwritten by --paths-exporter_base flag. 
 
 **Summary:**
 Flag --paths-base will set path for all exporters and tools, but each one can be overrided by specific flag (like --paths-mongodb_exporter, --paths-pt-mysql-summary etc).
