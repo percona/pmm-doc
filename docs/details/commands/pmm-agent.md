@@ -72,7 +72,7 @@ fully working.
 
 **Examples:**
 
-- **Case 1:** I don't have root permissions to `/usr/local/percona/pmm2` folder or I want to change default folder for PMM files.
+- **Case 1:** There are no root permissions for `/usr/local/percona/pmm2` folder or there is a need to change default folder for PMM files.
 Command:
 ````
 pmm-agent setup --paths-base=/home/user/custom/pmm2 --config-file=pmm-agent-dev.yaml --server-insecure-tls --server-address=127.0.0.1:443 --server-username=admin --server-password=admin
