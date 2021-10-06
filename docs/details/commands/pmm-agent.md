@@ -90,21 +90,21 @@ server:
     password: admin
     insecure-tls: true
 paths:
-    paths_base: /home/jirka/custom/pmm2
-    exporters_base: /home/jirka/custom/pmm2/exporters
-    node_exporter: /home/jirka/custom/pmm2/exporters/node_exporter
-    mysqld_exporter: /home/jirka/custom/pmm2/exporters/mysqld_exporter
-    mongodb_exporter: /home/jirka/custom/pmm2/exporters/mongodb_exporter
-    postgres_exporter: /home/jirka/custom/pmm2/exporters/postgres_exporter
-    proxysql_exporter: /home/jirka/custom/pmm2/exporters/proxysql_exporter
-    rds_exporter: /home/jirka/custom/pmm2/exporters/rds_exporter
-    azure_exporter: /home/jirka/custom/pmm2/exporters/azure_exporter
-    vmagent: /home/jirka/custom/pmm2/exporters/vmagent
+    paths_base: /home/user/custom/pmm2
+    exporters_base: /home/user/custom/pmm2/exporters
+    node_exporter: /home/user/custom/pmm2/exporters/node_exporter
+    mysqld_exporter: /home/user/custom/pmm2/exporters/mysqld_exporter
+    mongodb_exporter: /home/user/custom/pmm2/exporters/mongodb_exporter
+    postgres_exporter: /home/user/custom/pmm2/exporters/postgres_exporter
+    proxysql_exporter: /home/user/custom/pmm2/exporters/proxysql_exporter
+    rds_exporter: /home/user/custom/pmm2/exporters/rds_exporter
+    azure_exporter: /home/user/custom/pmm2/exporters/azure_exporter
+    vmagent: /home/user/custom/pmm2/exporters/vmagent
     tempdir: /tmp
-    pt_summary: /home/jirka/custom/pmm2/tools/pt-summary
-    pt_pg_summary: /home/jirka/custom/pmm2/tools/pt-pg-summary
-    pt_mysql_summary: /home/jirka/custom/pmm2/tools/pt-mysql-summary
-    pt_mongodb_summary: /home/jirka/custom/pmm2/tools/pt-mongodb-summary
+    pt_summary: /home/user/custom/pmm2/tools/pt-summary
+    pt_pg_summary: /home/user/custom/pmm2/tools/pt-pg-summary
+    pt_mysql_summary: /home/user/custom/pmm2/tools/pt-mysql-summary
+    pt_mongodb_summary: /home/user/custom/pmm2/tools/pt-mongodb-summary
 ports:
     min: 42000
     max: 51999
