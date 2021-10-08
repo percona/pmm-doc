@@ -183,6 +183,13 @@ percona/pmm-server:2
 </ul>
 </div>
 <hr />
+<div class="admonition caution alert alert-warning">
+<p class="admonition-title">Important</p>
+<p>Grafana plugins have been moved to the data volume <code>/srv</code> since 2.23.0 version. So if any plugin is installed manually then it should be installed again after the upgrade.</p>
+<p>To check used grafana plugins:</p>
+<div class="highlight"><pre><span></span><code>docker <span class="nb">exec</span> -it pmm-server ls /var/lib/grafana/plugins
+</code></pre></div>
+</div>
 <ol>
 <li>
 <p>Stop the container.</p>
@@ -514,7 +521,7 @@ percona/pmm-server:2.22.0
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-09-15
+            <i class="uil uil-refresh"></i> Page updated 2021-10-08
         </li>
         
     </ul>
