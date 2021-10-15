@@ -201,11 +201,6 @@ A paused cluster can't be edited.
 
 ### Suspend or resume a DB Cluster
 
-1. Select the *DB Cluster* tab.
-
-2. Identify the DB cluster to suspend or resume.
-
-3. In the *Actions* column, open the <i class="uil uil-ellipsis-v"></i> menu and click the required action:
 
     - For active clusters, click *Suspend*.
 
@@ -214,6 +209,20 @@ A paused cluster can't be edited.
     - For paused clusters, click *Resume*.
 
         ![!DBaaS Resume](../_images/PMM_DBaaS_DB_Cluster_Resume.gif)
+
+### Update a DB Cluster
+
+1. Select the *DB Cluster* tab.
+
+2. Identify the DB cluster to update.
+
+3. In the *Actions* column, open the <i class="uil uil-ellipsis-v"></i> menu and click *Update*:
+
+    ![!DBaaS Update](../_images/PMM_DBaaS_DB_Cluster_Update_menu.png)
+
+4. Confirm the update by clicking on *Update*, or abadon by clicking *Cancel*.
+
+    ![!DBaaS Update Confirmation](../_images/PMM_DBaaS_DB_Cluster_Update_confirmation.png)
 
 !!! seealso alert alert-info "See also"
     [Setting up a development environment for DBaaS](../setting-up/server/dbaas.md)
