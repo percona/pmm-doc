@@ -398,7 +398,7 @@
 <li>execute the MySQL command <code>FLUSH LOGS</code>.</li>
 </ul>
 <p>Only one <code>.old</code> file is kept. Older ones are deleted.</p>
-<p>You can manage log rotation yourself, for example, with <a href="https://linux.die.net/man/8/logrotate"><code>logrotate</code></a>. If you do, you can disable PMM Client&rsquo;s log rotation with the <code>--slow-log-rotation=false</code> option when adding a service with <code>pmm-admin add</code>.</p>
+<p>You can manage log rotation yourself, for example, with <a href="https://linux.die.net/man/8/logrotate"><code>logrotate</code></a>. If you do, you can disable PMM Client&rsquo;s log rotation by providing a negative value to <code>--size-slow-logs</code> option when adding a service with <code>pmm-admin add</code>.</p>
 <h3 id="performance-schema">Performance Schema<a class="headerlink" href="#performance-schema" title="Permanent link">&para;</a></h3>
 <p>This section covers how to configure a MySQL-based database server to use <em>Performance Schema</em> as a source of metrics.</p>
 <h4 id="applicable-versions_2">Applicable versions<a class="headerlink" href="#applicable-versions_2" title="Permanent link">&para;</a></h4>
@@ -670,10 +670,10 @@ events_transactions_history_long
 <div class="highlight"><pre><span></span><code>pmm-admin add mysql --username<span class="o">=</span>pmm --password<span class="o">=</span>pass
 </code></pre></div>
 <p>Slow query log source and log size limit (1 gigabyte), service name (<code>MYSQL_NODE</code>) and service address/port (<code>191.168.1.123:3306</code>).</p>
-<div class="highlight"><pre><span></span><code>pmm-admin add mysql --query-source<span class="o">=</span>slowlog --size-slow-logs<span class="o">=</span>1GB --username<span class="o">=</span>pmm --password<span class="o">=</span>pass MYSQL_NODE <span class="m">192</span>.168.1.123:3306
+<div class="highlight"><pre><span></span><code>pmm-admin add mysql --query-source<span class="o">=</span>slowlog --size-slow-logs<span class="o">=</span>1GiB --username<span class="o">=</span>pmm --password<span class="o">=</span>pass MYSQL_NODE <span class="m">192</span>.168.1.123:3306
 </code></pre></div>
 <p>Slow query log source, disabled log management (use <a href="https://linux.die.net/man/8/logrotate"><code>logrotate</code></a> or some other log management tool), service name (<code>MYSQL_NODE</code>) and service address/port (<code>191.168.1.123:3306</code>).</p>
-<div class="highlight"><pre><span></span><code>pmm-admin add mysql --query-source<span class="o">=</span>slowlog --size-slow-logs<span class="o">=</span><span class="nb">false</span> --username<span class="o">=</span>pmm --password<span class="o">=</span>pass MYSQL_NODE <span class="m">192</span>.168.1.123:3306
+<div class="highlight"><pre><span></span><code>pmm-admin add mysql --query-source<span class="o">=</span>slowlog --size-slow-logs<span class="o">=</span>-1GiB --username<span class="o">=</span>pmm --password<span class="o">=</span>pass MYSQL_NODE <span class="m">192</span>.168.1.123:3306
 </code></pre></div>
 <p>Default query source (<code>slowlog</code>), service name (<code>{node}-mysql</code>), connect via socket.</p>
 <div class="highlight"><pre><span></span><code>pmm-admin add mysql --username<span class="o">=</span>pmm --password<span class="o">=</span>pass --socket<span class="o">=</span>/var/run/mysqld/mysqld.sock
@@ -730,7 +730,7 @@ events_transactions_history_long
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-09-10
+            <i class="uil uil-refresh"></i> Page updated 2021-10-18
         </li>
         
     </ul>
