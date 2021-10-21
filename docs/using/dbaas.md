@@ -216,15 +216,19 @@ A paused cluster can't be edited.
 
         ![!DBaaS Resume](../_images/PMM_DBaaS_DB_Cluster_Resume.gif)
 
-### Update database version
+### Update a DB Cluster
 
-1. Find the row with the database cluster you want to update.
+1. Select the *DB Cluster* tab.
 
-2. In the *Actions* column, open the <i class="uil uil-ellipsis-v"></i> menu and click *Update* (if this option is disabled it means there's no version available to update).
+2. Identify the DB cluster to update.
 
-3. Confirm the action by clicking *Update*, or abandon by clicking *Cancel*.
+3. In the *Actions* column, open the <i class="uil uil-ellipsis-v"></i> menu and click *Update*:
 
-    ![!](../_images/PMM_DBaaS_DB_Cluster_Update.png)
+    ![!DBaaS Update](../_images/PMM_DBaaS_DB_Cluster_Update_menu.png)
+
+4. Confirm the update by clicking on *Update*, or abadon by clicking *Cancel*.
+
+    ![!DBaaS Update Confirmation](../_images/PMM_DBaaS_DB_Cluster_Update_confirmation.png)
 
 !!! seealso alert alert-info "See also"
     [Setting up a development environment for DBaaS](../setting-up/server/dbaas.md)
