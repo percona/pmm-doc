@@ -224,7 +224,7 @@ The very first thing you want to do is to enable PITR. Here’s how:
 
 Once you’ve enabled PITR, head to the list of Scheduled Backups to confirm PITR is enabled.
 
-    ![!](../_images/PMM_Backup_Management-MongoDB-PITR-Enable-Check.jpg)
+![!](../_images/PMM_Backup_Management-MongoDB-PITR-Enable-Check.jpg)
 
 To disable PITR use the corresponding switch available on the list.
 
