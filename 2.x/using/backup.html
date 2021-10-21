@@ -142,6 +142,7 @@
 </li>
 <li><a href="#make-a-backup">Make a backup</a>, or,</li>
 <li><a href="#make-a-scheduled-backup">Make</a> or <a href="#edit-a-scheduled-backup">edit</a> a scheduled backup, or,</li>
+<li><a href="#mongodb-point-in-time-recoverable-backups">Enable MongoDB Point-In-Time-Recoverable Backups</a>, or,</li>
 <li><a href="#restore-a-backup">Restore a backup</a>.</li>
 <li><a href="#delete-a-backup">Delete a backup</a>.</li>
 </ul>
@@ -240,7 +241,7 @@
 <p><code>pmm-agent</code> has read/write permissions to the <code>/var/lib/mysql</code> directory.</p>
 </li>
 <li>
-<p>The following packages are installed. They should be included in the <code>$PATH</code> environment variable:</p>
+<p>The latest versions of the following packages are installed. They should be included in the <code>$PATH</code> environment variable:</p>
 <ul>
 <li>
 <p><a href="https://www.percona.com/software/mysql-database/percona-xtrabackup"><code>xtrabackup</code></a>, which includes:</p>
@@ -366,7 +367,7 @@
 </ul>
 <p><div class="lightgallery"><a data-sub-html="" href="../_images/PMM_Backup_Management_Schedule.png"><img alt="" src="../_images/PMM_Backup_Management_Schedule.png" /></a></div></p>
 <div class="admonition note">
-<p>For this release (2.22.0), times are UTC.</p>
+<p>For this release (2.23.0), times are UTC.</p>
 </div>
 </li>
 </ul>
@@ -399,9 +400,50 @@
 </ul>
 </li>
 </ol>
+<h2 id="mongodb-point-in-time-recoverable-backups">MongoDB Point-In-Time-Recoverable Backups<a class="headerlink" href="#mongodb-point-in-time-recoverable-backups" title="Permanent link">&para;</a></h2>
+<div class="admonition caution alert alert-warning">
+<p class="admonition-title">Caution</p>
+<ul>
+<li>MongoDB Point-In-Time-Recoverable Backups is part of Backup Management which is a <a href="../details/glossary.html#technical-preview">technical preview</a> feature.</li>
+</ul>
+</div>
+<h3 id="what-is-it">What is it?<a class="headerlink" href="#what-is-it" title="Permanent link">&para;</a></h3>
+<p>Better described by our team mates that develop Percona Backup for MongoDB:</p>
+<div class="admonition note alert alert-primary">
+<p>Point-in-Time Recovery is restoring a database up to a specific moment. Point-in-Time Recovery includes restoring the data from a backup snapshot and replaying all events that occurred to this data up to a specified moment from <a href="https://www.percona.com/doc/percona-backup-mongodb/glossary.html#term-oplog-slice">oplog slices</a>. Point-in-Time Recovery helps you prevent data loss during a disaster such as crashed database, accidental data deletion or drop of tables, unwanted update of multiple fields instead of a single one.</p>
+</div>
+<p>Point-In-Time-Recovery (PITR) Backups for MongoDB is new functionality available with PMM 2.23.0 as part of the larger Backup Management feature. This implementation in PMM uses Percona Backup for MongoDB <code>pbm &gt;= 1.6.0</code> behind the scenes.</p>
+<div class="admonition caution alert alert-warning">
+<ul>
+<li>Percona Backup for MongoDB is a distributed, low-impact solution for achieving consistent backups of MongoDB sharded clusters and replica sets. Percona Backup for MongoDB supports <a href="https://www.percona.com/software/mongo-database/percona-server-for-mongodb">Percona Server for MongoDB</a> and MongoDB Community v3.6 or higher with <a href="https://docs.mongodb.com/manual/replication/">MongoDB Replication</a> enabled. Learn more about <a href="https://www.percona.com/doc/percona-backup-mongodb/installation.html">Percona Backup for MongoDB</a>.</li>
+</ul>
+</div>
+<h3 id="how-does-it-work">How does it work?<a class="headerlink" href="#how-does-it-work" title="Permanent link">&para;</a></h3>
+<h4 id="enabling-pitr">Enabling PITR<a class="headerlink" href="#enabling-pitr" title="Permanent link">&para;</a></h4>
+<p>The very first thing you want to do is to enable PITR. Here’s how:</p>
+<ol>
+<li>Go to <em>Backup Management</em>.</li>
+<li>Select <em>Scheduled Backups</em>.</li>
+<li>Click on <em>Add</em> to create a new scheduled backup.</li>
+<li>
+<p>Click on the PITR button to enable Point-In-Time-Recovery.</p>
+<p><div class="lightgallery"><a data-sub-html="" href="../_images/PMM_Backup_Management-MongoDB-PITR-Enable.jpg"><img alt="" src="../_images/PMM_Backup_Management-MongoDB-PITR-Enable.jpg" /></a></div></p>
+</li>
+</ol>
+<p>Once you’ve enabled PITR, head to the list of Scheduled Backups to confirm PITR is enabled.</p>
+<p><div class="lightgallery"><a data-sub-html="" href="../_images/PMM_Backup_Management-MongoDB-PITR-Enable-Check.jpg"><img alt="" src="../_images/PMM_Backup_Management-MongoDB-PITR-Enable-Check.jpg" /></a></div></p>
+<p>To disable PITR use the corresponding switch available on the list.</p>
+<h4 id="pitr-artifacts">PITR Artifacts<a class="headerlink" href="#pitr-artifacts" title="Permanent link">&para;</a></h4>
+<p>The PITR artifacts will be available once your PITR job has run for the first time. Go to Backup Inventory to see the corresponding PITR artifact.</p>
+<p><div class="lightgallery"><a data-sub-html="" href="../_images/PMM_Backup_Management-MongoDB-PITR-Inventory.jpg"><img alt="" src="../_images/PMM_Backup_Management-MongoDB-PITR-Inventory.jpg" /></a></div></p>
+<h4 id="pitr-and-other-scheduled-backups">PITR and Other Scheduled Backups<a class="headerlink" href="#pitr-and-other-scheduled-backups" title="Permanent link">&para;</a></h4>
+<p>It is important to notice that enabling PITR requires any other scheduled backup jobs to be disabled. If you try to enable PITR while other scheduled backup jobs are active, you will be shown an error message as seen in the image below.</p>
+<p><div class="lightgallery"><a data-sub-html="" href="../_images/PMM_Backup_Management-MongoDB-PITR-Enable-Error.jpg"><img alt="" src="../_images/PMM_Backup_Management-MongoDB-PITR-Enable-Error.jpg" /></a></div></p>
+<p>Go ahead to manually disable the existing scheduled jobs, then you’ll be able to enable PITR.</p>
+<p>The above constraint applies at the service level. That said, you can still have PITR enabled for one service while having regular scheduled backup jobs for other services.</p>
 <h2 id="restore-a-backup">Restore a backup<a class="headerlink" href="#restore-a-backup" title="Permanent link">&para;</a></h2>
 <div class="admonition note alert alert-primary">
-<p>For now, you can only restore a backup to the same service it was created from. I.e. a MySQL backup of service <code>mysql-service-1</code> can only be restored to a MySQL database server registered with the same service name. Future releases will give more flexibility to restore backups to other service types.</p>
+<p>For now, you can only restore a backup to the same service it was created from, or to a compatible one.</p>
 </div>
 <ol>
 <li>
@@ -414,7 +456,24 @@
 <p>In the <em>Actions</em> column for that row, click <em>Restore from backup</em>.</p>
 </li>
 <li>
-<p>In the <em>Restore from backup</em> dialog, check the values and click <em>Restore</em>.</p>
+<p>In the <em>Restore from backup</em> dialog:</p>
+<ul>
+<li>
+<p>Select <em>Same service</em> to restore to a service with identical properties.</p>
+<ul>
+<li>Select the service in the <em>Service name</em> menu.</li>
+</ul>
+</li>
+<li>
+<p>Select <em>Compatible services</em> to restore to a compatible service.</p>
+<ul>
+<li>Select the compatible service in the <em>Service name</em> menu.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Check the values and click <em>Restore</em>.</p>
 </li>
 <li>
 <p>Navigate to the <em>Restore History</em> tab to check the status of the restored backup.</p>
@@ -445,7 +504,7 @@
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-09-24
+            <i class="uil uil-refresh"></i> Page updated 2021-10-21
         </li>
         
     </ul>
@@ -1202,6 +1261,12 @@
 
 
 <ul class="toctree" id="toctree">
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/2.23.0.html">PMM 2.23.0</a>
+
+
 
 
 <li class="toctree-l2">

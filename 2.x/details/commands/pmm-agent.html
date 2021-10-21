@@ -228,9 +228,14 @@
 <td>Node model.</td>
 </tr>
 <tr>
+<td><code>--paths-base=PATH</code></td>
+<td><code>PMM_AGENT_PATHS_BASE</code></td>
+<td>Base path for PMM client, where all binaries, tools and collectors are located. If not set, default is <code>/usr/local/percona/pmm2</code>.</td>
+</tr>
+<tr>
 <td><code>--paths-exporters_base=PATH</code></td>
 <td><code>PMM_AGENT_PATHS_EXPORTERS_BASE</code></td>
-<td>Base path for exporters to use.</td>
+<td>Base path for exporters to use. If not set, or set to a relative path, uses value of <code>--paths-base</code> prepended to it.</td>
 </tr>
 <tr>
 <td><code>--paths-mongodb_exporter=PATH</code></td>
@@ -314,6 +319,94 @@
 </tr>
 </tbody>
 </table>
+<h2 id="usage-and-examples-of-paths-base-flag">USAGE AND EXAMPLES OF <code>paths-base</code> FLAG<a class="headerlink" href="#usage-and-examples-of-paths-base-flag" title="Permanent link">&para;</a></h2>
+<p>Since 2.23.0 this flag could be used for easier setup of pmm agent. With this flag the root permissions for PMM client aren&rsquo;t needed anymore and it will be
+fully working.</p>
+<p><strong>Examples:</strong></p>
+<ul>
+<li>
+<p><strong>Case 1:</strong> There are no root permissions for <code>/usr/local/percona/pmm2</code> folder or there is a need to change default folder for PMM files.
+Command:
+<div class="highlight"><pre><span></span><code>pmm-agent setup --paths-base=/home/user/custom/pmm2 --config-file=pmm-agent-dev.yaml --server-insecure-tls --server-address=127.0.0.1:443 --server-username=admin --server-password=admin
+</code></pre></div>
+Config output:
+<div class="highlight"><pre><span></span><code># Updated by `pmm-agent setup`.
+---
+id: /agent_id/be568008-b1b4-4bd9-98c7-392d1f4b724e
+listen-address: 127.0.0.1
+listen-port: 7777
+server:
+    address: 127.0.0.1:443
+    username: admin
+    password: admin
+    insecure-tls: true
+paths:
+    paths_base: /home/user/custom/pmm2
+    exporters_base: /home/user/custom/pmm2/exporters
+    node_exporter: /home/user/custom/pmm2/exporters/node_exporter
+    mysqld_exporter: /home/user/custom/pmm2/exporters/mysqld_exporter
+    mongodb_exporter: /home/user/custom/pmm2/exporters/mongodb_exporter
+    postgres_exporter: /home/user/custom/pmm2/exporters/postgres_exporter
+    proxysql_exporter: /home/user/custom/pmm2/exporters/proxysql_exporter
+    rds_exporter: /home/user/custom/pmm2/exporters/rds_exporter
+    azure_exporter: /home/user/custom/pmm2/exporters/azure_exporter
+    vmagent: /home/user/custom/pmm2/exporters/vmagent
+    tempdir: /tmp
+    pt_summary: /home/user/custom/pmm2/tools/pt-summary
+    pt_pg_summary: /home/user/custom/pmm2/tools/pt-pg-summary
+    pt_mysql_summary: /home/user/custom/pmm2/tools/pt-mysql-summary
+    pt_mongodb_summary: /home/user/custom/pmm2/tools/pt-mongodb-summary
+ports:
+    min: 42000
+    max: 51999
+debug: false
+trace: false
+</code></pre></div>
+As could be seen above, base for all exporters and tools was changed only by setting <code>--paths-base</code>. With this tag the folder for PMM that doesn&rsquo;t require root access could be specified.</p>
+</li>
+<li>
+<p><strong>Case 2:</strong> The older <code>--paths-exporters_base</code> flag could be passed along with the <code>--paths-base</code>
+Command:
+<div class="highlight"><pre><span></span><code>pmm-agent setup --paths-base=/home/user/custom/pmm2 --paths-exporters_base=/home/user/exporters --config-file=pmm-agent-dev.yaml --server-insecure-tls --server-address=127.0.0.1:443 --server-username=admin --server-password=admin
+</code></pre></div>
+Config output:
+<div class="highlight"><pre><span></span><code># Updated by `pmm-agent setup`.
+---
+id: /agent_id/afce1917-8836-4857-b3e5-ad372c2ddbe5
+listen-address: 127.0.0.1
+listen-port: 7777
+server:
+    address: 127.0.0.1:443
+    username: admin
+    password: admin
+    insecure-tls: true
+paths:
+    paths_base: /home/user/custom/pmm2
+    exporters_base: /home/user/exporters
+    node_exporter: /home/user/exporters/node_exporter
+    mysqld_exporter: /home/user/exporters/mysqld_exporter
+    mongodb_exporter: /home/user/exporters/mongodb_exporter
+    postgres_exporter: /home/user/exporters/postgres_exporter
+    proxysql_exporter: /home/user/exporters/proxysql_exporter
+    rds_exporter: /home/user/exporters/rds_exporter
+    azure_exporter: /home/user/exporters/azure_exporter
+    vmagent: /home/user/exporters/vmagent
+    tempdir: /tmp
+    pt_summary: /home/user/custom/pmm2/tools/pt-summary
+    pt_pg_summary: /home/user/custom/pmm2/tools/pt-pg-summary
+    pt_mysql_summary: /home/user/custom/pmm2/tools/pt-mysql-summary
+    pt_mongodb_summary: /home/user/custom/pmm2/tools/pt-mongodb-summary
+ports:
+    min: 42000
+    max: 51999
+debug: false
+trace: false
+</code></pre></div>
+As could be seen above the behavior for the <code>--paths-base</code> was the same, but paths for all exporters were overwritten by the <code>--paths-exporter_base</code> flag. </p>
+</li>
+</ul>
+<p><strong>Summary:</strong>
+Flag <code>--paths-base</code> will set path for all exporters and tools, but each one could be overridden by specific flag (like <code>--paths-mongodb_exporter</code>, <code>--paths-pt-mysql-summary</code> and etc).</p>
 <h2 id="logging">LOGGING<a class="headerlink" href="#logging" title="Permanent link">&para;</a></h2>
 <p>By default, pmm-agent sends messages to stderr and to the system log (<code>syslogd</code> or <code>journald</code> on Linux).</p>
 <p>To get a separate log file, edit the <code>pmm-agent</code> start-up script.</p>
@@ -343,7 +436,7 @@
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-08-03
+            <i class="uil uil-refresh"></i> Page updated 2021-10-21
         </li>
         
     </ul>
@@ -1100,6 +1193,12 @@
 
 
 <ul class="toctree" id="toctree">
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.23.0.html">PMM 2.23.0</a>
+
+
 
 
 <li class="toctree-l2">

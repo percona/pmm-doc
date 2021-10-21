@@ -32,7 +32,7 @@
 
 
 
-<title>Percona Monitoring and Management &mdash; Query Analytics</title>
+<title>Percona Monitoring and Management &mdash; PMM 2.23.0</title>
 
 <head>
     
@@ -55,7 +55,7 @@
 
     <link rel="top" title="" href="https://www.percona.com/doc/percona-monitoring-and-management/2.x" />
     
-    <link rel="next" title="DBaaS" href="dbaas.html" />
+    <link rel="next" title="PMM 2.22.0" href="2.22.0.html" />
     
     
 </head>
@@ -88,12 +88,12 @@
     <ul class="nav nav-pills">
         
         <li class="right" style="margin-right: 10px">
-            <a href="dbaas.html" title="DBaaS">Next</a>
+            <a href="2.22.0.html" title="PMM 2.22.0">Next</a>
         </li>
         
         
         <li class="right" style="margin-right: 10px">
-            <a href="backup.html" title="Backup and Restore">Previous</a>
+            <a href="index.html" title="Release Notes">Previous</a>
         </li>
         
         <li>
@@ -107,7 +107,7 @@
 <div class="small">
     <ul class="list-inline">
         <li class="pull-right">
-            <a href="https://github.com/percona/pmm-doc/edit/main/docs/using/query-analytics.md" target="_blank" title=""><i class="uil uil-pen"></i> <b>Edit this page</b></a>
+            <a href="https://github.com/percona/pmm-doc/edit/main/docs/release-notes/2.23.0.md" target="_blank" title=""><i class="uil uil-pen"></i> <b>Edit this page</b></a>
         </li>
     </ul>
 </div>
@@ -115,169 +115,83 @@
 
                 <div class="bodywrapper">
                     <div class="body">
-                        <h1 id="query-analytics">Query Analytics<a class="headerlink" href="#query-analytics" title="Permanent link">&para;</a></h1>
-<p>The <em>Query Analytics</em> dashboard shows how queries are executed and where they spend their time.  It helps you analyze database queries over time, optimize database performance, and find and remedy the source of problems.</p>
-<p><div class="lightgallery"><a data-sub-html="image" href="../_images/PMM_Query_Analytics.jpg"><img alt="image" src="../_images/PMM_Query_Analytics.jpg" /></a></div></p>
-<p>Query Analytics supports MySQL, MongoDB and PostgreSQL. The minimum requirements for MySQL are:</p>
+                        <h1 id="percona-monitoring-and-management-2230">Percona Monitoring and Management 2.23.0<a class="headerlink" href="#percona-monitoring-and-management-2230" title="Permanent link">&para;</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field-odd field">
+      <th class="field-name">Date:</th>
+      <td class="field-body">October 21, 2021</td>
+    </tr>
+    <tr class="field-even field">
+      <th class="field-name">Installation:</th>
+      <td class="field-body">
+        <a class="reference external" href="https://www.percona.com/software/pmm/quickstart">Installing Percona Monitoring and Management</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Percona Monitoring and Management (PMM) is a free and open-source platform for managing and monitoring MySQL, MongoDB, and PostgreSQL performance.</p>
+<h2 id="release-highlights">Release Highlights<a class="headerlink" href="#release-highlights" title="Permanent link">&para;</a></h2>
 <ul>
-<li>MySQL 5.1 or later (if using the slow query log).</li>
-<li>MySQL 5.6.9 or later (if using Performance Schema).</li>
-</ul>
-<p>Query Analytics displays metrics in both visual and numeric form. Performance-related characteristics appear as plotted graphics with summaries.</p>
-<p>The dashboard contains three panels:</p>
+<li>
+<p><strong>Grafana Upgrade</strong> Embedded Grafana version was upgraded from 7.5.7 to 7.5.11 to improve some Grafana instrumentation metrics. Also, the upgrade is delivering a security fix that impacted Grafana. Please upgrade to the latest version of PMM ASAP. Read more about CVE issue <a href="https://grafana.com/blog/2021/10/05/grafana-7.5.11-and-8.1.6-released-with-critical-security-fix/">here</a></p>
+</li>
+<li>
+<p><strong>Backup Management (Technical preview):</strong> </p>
 <ul>
-<li>the <a href="#filters-panel">Filters Panel</a>;</li>
-<li>the <a href="#overview-panel">Overview Panel</a>;</li>
-<li>the <a href="#details-panel">Details Panel</a>.</li>
+<li>An ability to view logs of the backup process for better visibility over the backup process </li>
+<li>An ability to schedule Point-In-Time-Recoverable backup from MongoDB clusters with the correct configuration. Note: there is no UI  to restore PITR for MongoDB at the moment. It will come with future releases, but it is possible to restore a PITR backup with <a href="https://www.percona.com/doc/percona-backup-mongodb/point-in-time-recovery.html">Percona Backup for MongoDB</a> manually</li>
 </ul>
-<div class="admonition note alert alert-primary">
-<p>Query Analytics data retrieval is not instantaneous and can be delayed due to network conditions. In such situations <em>no data</em> is reported and a gap appears in the sparkline.</p>
+</li>
+<li>
+<p><strong>DBaaS (Technical preview):</strong>  From this release on, PMM users who are using the DBaaS feature will be able to update versions of their DBaaS controlled Databases by the push of a button according to each DB&rsquo;s compatibility matrix. 
+Please note that we recently found a bug <a href="#bugs-fixed">PMM-8723</a> that was causing significant problems with DBaaS usage. This bug was fixed in this release, and no additional actions will be required.     </p>
+</li>
+</ul>
+<h2 id="new-features">New Features<a class="headerlink" href="#new-features" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://jira.percona.com/browse/PMM-8269">PMM-8269</a>: Backup Management: Ability to schedule Point-In-Time-Recoverable backups for MongoDB</li>
+<li><a href="https://jira.percona.com/browse/PMM-8159">PMM-8159</a>: Backup Management: Ability to see a logs of backup process for MongoDB</li>
+<li><a href="https://jira.percona.com/browse/PMM-7519">PMM-7519</a>: Backup Management: Version compatibility check prior to attempted MySQL data restoration</li>
+<li><a href="https://jira.percona.com/browse/PMM-8200">PMM-8200</a>: DBaaS: Admin can now initiate a DB version upgrade with just a button click</li>
+<li><a href="https://jira.percona.com/browse/PMM-8273">PMM-8273</a>: Integrated Alerting: Alert templates delivery from Percona.com for anonymous PMM servers</li>
+</ul>
+<h2 id="improvements">Improvements<a class="headerlink" href="#improvements" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://jira.percona.com/browse/PMM-8973">PMM-8973</a>: Grafana upgrade from 7.5.7 to 7.5.11 Includes better Grafana instrumentation metrics and fix for CVE-2021-39226 (read more on <a href="https://grafana.com/blog/2021/10/05/grafana-7.5.11-and-8.1.6-released-with-critical-security-fix/">Grafana blog</a>)</li>
+<li><a href="https://jira.percona.com/browse/PMM-8653">PMM-8653</a>: Added titles to Home Dashboard panels for better readability</li>
+<li><a href="https://jira.percona.com/browse/PMM-8669">PMM-8669</a>: Integrated Alerting: Create a clearer distinction about using PMM Alerting as preferred method vs using an external Alertmanager</li>
+<li><a href="https://jira.percona.com/browse/PMM-8539">PMM-8539</a>: Wrong Cluster Role presentation on MongoDB Cluster Summary</li>
+<li><a href="https://jira.percona.com/browse/PMM-7559">PMM-7559</a>: Integrated Alerting: Improve error message when trying to delete a channel that is used by a rule</li>
+<li><a href="https://jira.percona.com/browse/PMM-6763">PMM-6763</a>: Better color contrast in Time distribution in QAN details</li>
+<li><a href="https://jira.percona.com/browse/PMM-5669">PMM-5669</a>: New flag &ndash;paths-base in pmm-agent to avoid problems with hardcoded paths. Please note: this is possible if you run pmm-agent separately from pmm-admin. The ability to specify base paths over pmm-admin is not yet implemented</li>
+</ul>
+<h2 id="bugs-fixed">Bugs Fixed<a class="headerlink" href="#bugs-fixed" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p><a href="https://jira.percona.com/browse/PMM-7985">PMM-7985</a>: Users were losing manually installed Grafana plugins after upgrade via Docker</p>
+<div class="admonition caution alert alert-warning">
+<p class="admonition-title">Caution</p>
+<p>The issue is fixed automatically since 2.23.0 version forward. For the upgrades from versions before 2.23.0 please <a href="../setting-up/server/docker.html#backup">backup</a> plugins first.</p>
 </div>
-<h2 id="filters-panel">Filters Panel<a class="headerlink" href="#filters-panel" title="Permanent link">&para;</a></h2>
-<p><div class="lightgallery"><a data-sub-html="image" href="../_images/PMM_Query_Analytics_Panels_Filters.jpg"><img alt="image" src="../_images/PMM_Query_Analytics_Panels_Filters.jpg" /></a></div></p>
-<ul>
-<li>The Filter panel occupies the left side of the dashboard. It lists filters, grouped by category. Selecting one reduces the Overview list to those items matching the filter.</li>
-<li>The first five of each category are shown. If there are more, the list is expanded by clicking <em>Show all</em> beside the category name, and collapsed again with <em>Show top 5</em>.</li>
-<li>Applying a filter may make other filters inapplicable. These become grayed out and inactive.</li>
-<li>Click the chart symbol <i class="uil uil-graph-bar"></i> to navigate directly to an item&rsquo;s associated dashboard.</li>
-<li>Separately, the global <em>Time range</em> setting filters results by time, either your choice of <em>Absolute time range</em>, or one of the predefined <em>Relative time ranges</em>.</li>
-</ul>
-<p><div class="lightgallery"><a data-sub-html="image" href="../_images/PMM_Query_Analytics_Time_Range.jpg"><img alt="image" src="../_images/PMM_Query_Analytics_Time_Range.jpg" /></a></div></p>
-<h2 id="overview-panel">Overview Panel<a class="headerlink" href="#overview-panel" title="Permanent link">&para;</a></h2>
-<p>To the right of the Filters panel and occupying the upper part of the dashboard is the Overview panel.</p>
-<p><div class="lightgallery"><a data-sub-html="image" href="../_images/PMM_Query_Analytics_overview-table.jpg"><img alt="image" src="../_images/PMM_Query_Analytics_overview-table.jpg" /></a></div></p>
-<p>Each row of the table represents the metrics for a chosen object type, one of:</p>
-<ul>
-<li>Query;</li>
-<li>Service Name;</li>
-<li>Database;</li>
-<li>Schema;</li>
-<li>User Name;</li>
-<li>Client Host.</li>
-</ul>
-<p>At the top of the second column is the <em>dimension</em> menu. Use this to choose the object type.</p>
-<p><div class="lightgallery"><a data-sub-html="image" href="../_images/PMM_Query_Analytics_Menus_Dimension_Selector.jpg"><img alt="image" src="../_images/PMM_Query_Analytics_Menus_Dimension_Selector.jpg" /></a></div></p>
-<p>On the right side of the dimension column is the <em>Dimension Search</em> bar.</p>
-<p><div class="lightgallery"><a data-sub-html="image" href="../_images/PMM_Query_Analytics_Panels_Dimension_Search.jpg"><img alt="image" src="../_images/PMM_Query_Analytics_Panels_Dimension_Search.jpg" /></a></div></p>
-<p>Enter a string and press Enter to limit the view to queries containing only the specified keywords.</p>
-<p>Delete the search text and press Enter to see the full list again.</p>
-<h3 id="columns">Columns<a class="headerlink" href="#columns" title="Permanent link">&para;</a></h3>
-<ul>
-<li>The first column is the object’s identifier. For <em>Query</em>, it is the query’s <a href="../details/glossary/#fingerprint">Fingerprint</a>.</li>
-<li>The second column is the <em>Main metric</em>, containing a reduced graphical representation of the metric over time, called a <em>sparkline</em>, and a horizontal meter, filled to reflect a percentage of the total value.</li>
-<li>Additional values are revealed as mouse-over tool-tips.</li>
-</ul>
-<h3 id="tool-tips">Tool-tips<a class="headerlink" href="#tool-tips" title="Permanent link">&para;</a></h3>
-<ul>
-<li>For the <em>Query</em> dimension, hovering over the information icon <i class="fa fa-info-circle"></i> reveals the query ID and its example.</li>
-<li>Hovering on a column header reveals an informative tool-tip for that column.</li>
-<li>Hovering on the main metric sparkline highlights the data point and a tooltip shows the data value under the cursor.</li>
-</ul>
-<p><div class="lightgallery"><a data-sub-html="image" href="../_images/PMM_Query_Analytics_Main_Metric_Sparkline.jpg"><img alt="image" src="../_images/PMM_Query_Analytics_Main_Metric_Sparkline.jpg" /></a></div></p>
-<ul>
-<li>
-<p>Hovering on the main metric meter reveals the percentage of the total, and other details specific to the main metric.</p>
-<p><div class="lightgallery"><a data-sub-html="image" href="../_images/PMM_Query_Analytics_Tooltips_Metric_Tooltip.jpg"><img alt="image" src="../_images/PMM_Query_Analytics_Tooltips_Metric_Tooltip.jpg" /></a></div></p>
 </li>
 <li>
-<p>Hovering on column values reveals more details on the value. The contents depends on the type of value.</p>
-<p><div class="lightgallery"><a data-sub-html="image" href="../_images/PMM_Query_Analytics_Metric_Tooltip.jpg"><img alt="image" src="../_images/PMM_Query_Analytics_Metric_Tooltip.jpg" /></a></div></p>
+<p><a href="https://jira.percona.com/browse/PMM-8767">PMM-8767</a>: Copied dashboards with tags were endeding up in unexpected folder after upgrade</p>
 </li>
+<li><a href="https://jira.percona.com/browse/PMM-8635">PMM-8635</a>: MyRocks WAL panel from MySQL MyRocks Details Dashboard presented data in wrong units</li>
+<li><a href="https://jira.percona.com/browse/PMM-8527">PMM-8527</a>: Dashboards: ProxySQL/HAProxy DB Conns, DB QPS, DB uptime metrics were missing on Home dashboard panels</li>
+<li><a href="https://jira.percona.com/browse/PMM-8749">PMM-8749</a>: Adding more than 1 <code>mongos</code> was breaking MongoDB Cluster Summary dashboard</li>
+<li><a href="https://jira.percona.com/browse/PMM-8004">PMM-8004</a>: Fixed broken metrics reporting in case of lost connection to MongoDB. (Thanks to Álvaro López López for reporting this issue)</li>
+<li><a href="https://jira.percona.com/browse/PMM-8489">PMM-8489</a>: Failed to get topology labels when target server is <code>mongos</code></li>
+<li><a href="https://jira.percona.com/browse/PMM-6877">PMM-6877</a>: Fixed error flooding from when monitoring mongos (Thanks to Clyde Shillingford for reporting this issue)</li>
+<li><a href="https://jira.percona.com/browse/PMM-8851">PMM-8851</a>: Can&rsquo;t monitor GCP Cloud SQL or other PostgreSQL with custom SSL certificates (Thanks to Jyoti Prakash for reporting this issue)</li>
+<li><a href="https://jira.percona.com/browse/PMM-8646">PMM-8646</a>: PostgreSQL services monitoring was stalled after intermittent connection latency</li>
+<li><a href="https://jira.percona.com/browse/PMM-8723">PMM-8723</a>: PMM wouldn&rsquo;t restart DBaaS functionality and would break it after upgrade via UI. Affecting versions starting from 2.17.0</li>
 </ul>
-<h3 id="adding-and-removing-columns">Adding and removing columns<a class="headerlink" href="#adding-and-removing-columns" title="Permanent link">&para;</a></h3>
-<ul>
-<li>
-<p>Metrics columns are added with the <em>Add column</em> button.</p>
-<p><div class="lightgallery"><a data-sub-html="image" href="../_images/PMM_Query_Analytics_Devices_Add_Columns.jpg"><img alt="image" src="../_images/PMM_Query_Analytics_Devices_Add_Columns.jpg" /></a></div></p>
-</li>
-<li>
-<p>When clicked, a text field and list of available metrics are revealed. Select a metric or enter a search string to reduce the list. Selecting a metric adds it to the panel.</p>
-</li>
-<li>A metric column is removed by clicking on the column heading and selecting <em>Remove column</em>.</li>
-<li>The value plotted in the <em>main metric</em> column can be changed by clicking a metric column heading and selecting <em>Swap with main metric</em>.</li>
-</ul>
-<h3 id="sorting">Sorting<a class="headerlink" href="#sorting" title="Permanent link">&para;</a></h3>
-<ul>
-<li>The entire list is sorted by one of the columns.</li>
-<li>Click either the up or down caret to sort the list by that column’s ascending or descending values.</li>
-</ul>
-<h3 id="pagination">Pagination<a class="headerlink" href="#pagination" title="Permanent link">&para;</a></h3>
-<ul>
-<li>
-<p>The pagination device lets you move forwards or backwards through pages, jump to a specific page, and choose how many items are listed per page.</p>
-<p><div class="lightgallery"><a data-sub-html="image" href="../_images/PMM_Query_Analytics_Devices_Pagination.jpg"><img alt="image" src="../_images/PMM_Query_Analytics_Devices_Pagination.jpg" /></a></div></p>
-</li>
-<li>
-<p>Queries are grouped into pages of 25, 50 or 100 items.</p>
-</li>
-</ul>
-<h2 id="details-panel">Details Panel<a class="headerlink" href="#details-panel" title="Permanent link">&para;</a></h2>
-<ul>
-<li>Selecting an item in the Overview panel opens the <em>Details panel</em> with a <a href="#details-tab">Details Tab</a>.</li>
-<li>If the dimension is <em>Query</em>, the panel also contains the <a href="#examples-tab">Examples Tab</a>, <a href="#explain-tab">Explain Tab</a>, and <a href="#tables-tab">Tables Tab</a>.</li>
-</ul>
-<h3 id="details-tab">Details Tab<a class="headerlink" href="#details-tab" title="Permanent link">&para;</a></h3>
-<p>The <em>Details</em> tab contains a <em>Query time distribution</em> bar (only for MySQL databases) and a set of <em>Metrics</em> in collapsible subpanels.</p>
-<p><div class="lightgallery"><a data-sub-html="image" href="../_images/PMM_Query_Analytics_Tabs_Details.jpg"><img alt="image" src="../_images/PMM_Query_Analytics_Tabs_Details.jpg" /></a></div></p>
-<ul>
-<li>
-<p>The <em>Query time distribution</em> bar shows a query’s total time made up of colored segments, each segment representing the proportion of time spent on a named activity.</p>
-<ul>
-<li><code>query_time</code>: Statement execution time.</li>
-<li><code>lock_time</code>: Time to acquire locks.</li>
-<li><code>blk_read_time</code>: Total time the statement spent reading blocks (if <code>track_io_timing</code> is enabled, otherwise zero).</li>
-<li><code>blk_write_time</code>: Total time the statement spent writing blocks (if <code>track_io_timing</code> is enabled, otherwise zero).</li>
-<li><code>innodb_io_r_wait</code>: Time for InnoDB to read the data from storage.</li>
-<li><code>innodb_queue_wait</code>: Time the query spent either waiting to enter the InnoDB queue, or in it pending execution.</li>
-<li><code>innodb_rec_lock_wait</code>: Time the query waited for row locks.</li>
-<li><code>other</code>: Remaining uncategorized query time.</li>
-</ul>
-</li>
-<li>
-<p><em>Metrics</em> is a table with headings:</p>
-<ul>
-<li><em>Metric</em>: The Metric name, with a question-mark tool-tip that reveals a description of the metric on mouse-over;</li>
-<li><em>Rate/Second</em>: A sparkline chart of real-time values per unit time;</li>
-<li><em>Sum</em>: A summation of the metric for the selected query, and the percentage of the total;</li>
-<li><em>Per Query Stats</em>: The value of the metric per query.</li>
-</ul>
-</li>
-<li>
-<p>Each row in the table is a metric. The contents depends on the chosen dimension.</p>
-</li>
-</ul>
-<h3 id="examples-tab">Examples Tab<a class="headerlink" href="#examples-tab" title="Permanent link">&para;</a></h3>
-<p>(For <em>Query</em> dimension.)</p>
-<p>The <em>Examples</em> tab shows an example of the selected query’s fingerprint or table element.</p>
-<p><div class="lightgallery"><a data-sub-html="image" href="../_images/PMM_Query_Analytics_Tabs_Examples.jpg"><img alt="image" src="../_images/PMM_Query_Analytics_Tabs_Examples.jpg" /></a></div></p>
-<div class="admonition note alert alert-primary">
-<p>Query example and fingerprint can be truncated to 1024 long to reduce space usage. In this case, the query explains section will not work.</p>
-</div>
-<h3 id="explain-tab">Explain Tab<a class="headerlink" href="#explain-tab" title="Permanent link">&para;</a></h3>
-<p>(For <em>Query</em> dimension.)</p>
-<p>The <em>Explain</em> tab shows the <code>explain</code> output for the selected query, in Classic or JSON formats.</p>
-<ul>
-<li>MySQL: Classic and JSON.</li>
-<li>MongoDB: JSON only.</li>
-<li>PostgreSQL: Not supported.</li>
-</ul>
-<div class="admonition note alert alert-primary">
-<p class="admonition-title">&lsquo;Explain&rsquo; for MongoDB</p>
-<p>To run Explain you need the same permissions as for executing the original query. For example, to run explain on <code>updates</code> you need update permissions.  </p>
-<p>Example: Grant the <code>explainRole</code> with update permissions.</p>
-<div class="highlight"><pre><span></span><code>db.grantPrivilegesToRole( &quot;explainRole&quot;, [ { resource: { db: &quot;&quot;, collection: &quot;&quot; }, actions: [ &quot;update&quot; ] } ])
-</code></pre></div>
-</div>
-<p><div class="lightgallery"><a data-sub-html="image" href="../_images/PMM_Query_Analytics_Tabs_Explain.jpg"><img alt="image" src="../_images/PMM_Query_Analytics_Tabs_Explain.jpg" /></a></div></p>
-<h3 id="tables-tab">Tables Tab<a class="headerlink" href="#tables-tab" title="Permanent link">&para;</a></h3>
-<p>(For <em>Query</em> dimension.)</p>
-<p>The <em>Tables</em> tab shows information on the tables and indexes involved in the selected query.</p>
-<p><div class="lightgallery"><a data-sub-html="image" href="../_images/PMM_Query_Analytics_Tabs_Tables.jpg"><img alt="image" src="../_images/PMM_Query_Analytics_Tabs_Tables.jpg" /></a></div></p>
-<h2 id="query-analytics-for-mongodb">Query Analytics for MongoDB<a class="headerlink" href="#query-analytics-for-mongodb" title="Permanent link">&para;</a></h2>
-<p>MongoDB is conceptually different from relational database management systems, such as MySQL and MariaDB.</p>
-<p>Relational database management systems store data in tables that represent single entities. Complex objects are represented by linking tables.</p>
-<p>In contrast, MongoDB uses the concept of a document where all essential information for a complex object is stored in one place.</p>
-<p>Query Analytics can monitor MongoDB queries. Although MongoDB is not a relational database management system, you analyze its databases and collections in the same interface using the same tools.</p>
                     </div>
                 </div>
                 
@@ -285,7 +199,7 @@
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-09-21
+            <i class="uil uil-refresh"></i> Page updated 2021-10-21
         </li>
         
     </ul>
@@ -296,12 +210,12 @@
     <ul class="nav nav-pills">
         
         <li class="right" style="margin-right: 10px">
-            <a href="dbaas.html" title="DBaaS">Next</a>
+            <a href="2.22.0.html" title="PMM 2.22.0">Next</a>
         </li>
         
         
         <li class="right" style="margin-right: 10px">
-            <a href="backup.html" title="Backup and Restore">Previous</a>
+            <a href="index.html" title="Release Notes">Previous</a>
         </li>
         
         <li>
@@ -478,7 +392,7 @@
 
 
 <li class="toctree-l1">
-    <a class="reference internal" href="index.html">Using</a>
+    <a class="reference internal" href="../using/index.html">Using</a>
 
 
 
@@ -487,37 +401,37 @@
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="interface.html">User Interface</a>
+    <a class="reference internal" href="../using/interface.html">User Interface</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="alerting.html">Integrated Alerting</a>
+    <a class="reference internal" href="../using/alerting.html">Integrated Alerting</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="backup.html">Backup and Restore</a>
+    <a class="reference internal" href="../using/backup.html">Backup and Restore</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="query-analytics.html">Query Analytics</a>
+    <a class="reference internal" href="../using/query-analytics.html">Query Analytics</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="dbaas.html">DBaaS</a>
+    <a class="reference internal" href="../using/dbaas.html">DBaaS</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="security-threat-tool.html">Security Threat Tool</a>
+    <a class="reference internal" href="../using/security-threat-tool.html">Security Threat Tool</a>
 
 
 
@@ -1036,7 +950,7 @@
 
 
 <li class="toctree-l1">
-    <a class="reference internal" href="../release-notes/index.html">Release Notes</a>
+    <a class="reference internal" href="index.html">Release Notes</a>
 
 
 
@@ -1045,193 +959,193 @@
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../release-notes/2.23.0.html">PMM 2.23.0</a>
+    <a class="reference internal" href="2.23.0.html">PMM 2.23.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../release-notes/2.22.0.html">PMM 2.22.0</a>
+    <a class="reference internal" href="2.22.0.html">PMM 2.22.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../release-notes/2.21.0.html">PMM 2.21.0</a>
+    <a class="reference internal" href="2.21.0.html">PMM 2.21.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../release-notes/2.20.0.html">PMM 2.20.0</a>
+    <a class="reference internal" href="2.20.0.html">PMM 2.20.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../release-notes/2.19.0.html">PMM 2.19.0</a>
+    <a class="reference internal" href="2.19.0.html">PMM 2.19.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../release-notes/2.18.0.html">PMM 2.18.0</a>
+    <a class="reference internal" href="2.18.0.html">PMM 2.18.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../release-notes/2.17.0.html">PMM 2.17.0</a>
+    <a class="reference internal" href="2.17.0.html">PMM 2.17.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../release-notes/2.16.0.html">PMM 2.16.0</a>
+    <a class="reference internal" href="2.16.0.html">PMM 2.16.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../release-notes/2.15.1.html">PMM 2.15.1</a>
+    <a class="reference internal" href="2.15.1.html">PMM 2.15.1</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../release-notes/2.15.0.html">PMM 2.15.0</a>
+    <a class="reference internal" href="2.15.0.html">PMM 2.15.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../release-notes/2.14.0.html">PMM 2.14.0</a>
+    <a class="reference internal" href="2.14.0.html">PMM 2.14.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../release-notes/2.13.0.html">PMM 2.13.0</a>
+    <a class="reference internal" href="2.13.0.html">PMM 2.13.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../release-notes/2.12.0.html">PMM 2.12.0</a>
+    <a class="reference internal" href="2.12.0.html">PMM 2.12.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../release-notes/2.11.1.html">PMM 2.11.1</a>
+    <a class="reference internal" href="2.11.1.html">PMM 2.11.1</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../release-notes/2.11.0.html">PMM 2.11.0</a>
+    <a class="reference internal" href="2.11.0.html">PMM 2.11.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../release-notes/2.10.1.html">PMM 2.10.1</a>
+    <a class="reference internal" href="2.10.1.html">PMM 2.10.1</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../release-notes/2.10.0.html">PMM 2.10.0</a>
+    <a class="reference internal" href="2.10.0.html">PMM 2.10.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../release-notes/2.9.1.html">PMM 2.9.1</a>
+    <a class="reference internal" href="2.9.1.html">PMM 2.9.1</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../release-notes/2.9.0.html">PMM 2.9.0</a>
+    <a class="reference internal" href="2.9.0.html">PMM 2.9.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../release-notes/2.8.0.html">PMM 2.8.0</a>
+    <a class="reference internal" href="2.8.0.html">PMM 2.8.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../release-notes/2.7.0.html">PMM 2.7.0</a>
+    <a class="reference internal" href="2.7.0.html">PMM 2.7.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../release-notes/2.6.1.html">PMM 2.6.1</a>
+    <a class="reference internal" href="2.6.1.html">PMM 2.6.1</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../release-notes/2.6.0.html">PMM 2.6.0</a>
+    <a class="reference internal" href="2.6.0.html">PMM 2.6.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../release-notes/2.5.0.html">PMM 2.5.0</a>
+    <a class="reference internal" href="2.5.0.html">PMM 2.5.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../release-notes/2.4.0.html">PMM 2.4.0</a>
+    <a class="reference internal" href="2.4.0.html">PMM 2.4.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../release-notes/2.3.0.html">PMM 2.3.0</a>
+    <a class="reference internal" href="2.3.0.html">PMM 2.3.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../release-notes/2.2.2.html">PMM 2.2.2</a>
+    <a class="reference internal" href="2.2.2.html">PMM 2.2.2</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../release-notes/2.2.1.html">PMM 2.2.1</a>
+    <a class="reference internal" href="2.2.1.html">PMM 2.2.1</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../release-notes/2.2.0.html">PMM 2.2.0</a>
+    <a class="reference internal" href="2.2.0.html">PMM 2.2.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../release-notes/2.1.0.html">PMM 2.1.0</a>
+    <a class="reference internal" href="2.1.0.html">PMM 2.1.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../release-notes/2.0.1.html">PMM 2.0.1</a>
+    <a class="reference internal" href="2.0.1.html">PMM 2.0.1</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../release-notes/2.0.0.html">PMM 2.0.0</a>
+    <a class="reference internal" href="2.0.0.html">PMM 2.0.0</a>
 
 
 
@@ -1247,13 +1161,13 @@
 
 <h4>Previous page</h4>
 <p class="topless">
-    <a href="backup.html" title="previous chapter">Backup and Restore</a>
+    <a href="index.html" title="previous chapter">Release Notes</a>
 </p>
 
 
 <h4>Next page</h4>
 <p class="topless">
-    <a href="dbaas.html" title="next chapter">DBaaS</a>
+    <a href="2.22.0.html" title="next chapter">PMM 2.22.0</a>
 </p>
 
 
