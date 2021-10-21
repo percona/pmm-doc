@@ -15,7 +15,7 @@
             - Install and run [Percona Backup for MongoDB] on every node in the replica set.
     - [Make a backup](#make-a-backup), or,
     - [Make](#make-a-scheduled-backup) or [edit](#edit-a-scheduled-backup) a scheduled backup, or,
-    - [Enable MongoDB Point-In-Time-Recoverable Backups](#enable-mongodb-pitr-backups), or,
+    - [Enable MongoDB Point-In-Time-Recoverable Backups](#mongodb-point-in-time-recoverable-backups), or,
     - [Restore a backup](#restore-a-backup).
     - [Delete a backup](#delete-a-backup).
 
