@@ -246,6 +246,8 @@
 <p>Each row in the table is a metric. The contents depends on the chosen dimension.</p>
 </li>
 </ul>
+<p>For PostgreSQL queries (when using <em>pg_stat_monitor</em>) the top query will also be shown in the details section if the query was called by an outer query.</p>
+<p><div class="lightgallery"><a data-sub-html="image" href="../_images/PMM_Query_Analytics_Tabs_Details_TopQuery.png"><img alt="image" src="../_images/PMM_Query_Analytics_Tabs_Details_TopQuery.png" /></a></div></p>
 <h3 id="examples-tab">Examples Tab<a class="headerlink" href="#examples-tab" title="Permanent link">&para;</a></h3>
 <p>(For <em>Query</em> dimension.)</p>
 <p>The <em>Examples</em> tab shows an example of the selected query’s fingerprint or table element.</p>
@@ -273,6 +275,10 @@
 <p>(For <em>Query</em> dimension.)</p>
 <p>The <em>Tables</em> tab shows information on the tables and indexes involved in the selected query.</p>
 <p><div class="lightgallery"><a data-sub-html="image" href="../_images/PMM_Query_Analytics_Tabs_Tables.jpg"><img alt="image" src="../_images/PMM_Query_Analytics_Tabs_Tables.jpg" /></a></div></p>
+<h3 id="plan-tab">Plan Tab<a class="headerlink" href="#plan-tab" title="Permanent link">&para;</a></h3>
+<p>(For <em>Query</em> dimension.)</p>
+<p>The <em>Plan</em> tab shows the plan for PostgreSQL queries (only available when using <em>pg_stat_monitor</em>).</p>
+<p><div class="lightgallery"><a data-sub-html="image" href="../_images/PMM_Query_Analytics_Tabs_Plan.png"><img alt="image" src="../_images/PMM_Query_Analytics_Tabs_Plan.png" /></a></div></p>
 <h2 id="query-analytics-for-mongodb">Query Analytics for MongoDB<a class="headerlink" href="#query-analytics-for-mongodb" title="Permanent link">&para;</a></h2>
 <p>MongoDB is conceptually different from relational database management systems, such as MySQL and MariaDB.</p>
 <p>Relational database management systems store data in tables that represent single entities. Complex objects are represented by linking tables.</p>
@@ -285,7 +291,7 @@
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-09-21
+            <i class="uil uil-refresh"></i> Page updated 2021-11-02
         </li>
         
     </ul>
