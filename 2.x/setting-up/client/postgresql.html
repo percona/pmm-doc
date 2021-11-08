@@ -415,11 +415,37 @@ track_io_timing = on             # Capture read/write stats
 <p>Set the <em>Service Name</em> to the newly-added service.</p>
 </li>
 </ol>
+<h3 id="running-custom-queries">Running custom queries<a class="headerlink" href="#running-custom-queries" title="Permanent link">&para;</a></h3>
+<p>The Postgres exporter can run custom queries to add new metrics not provided by default.<br />
+Those custom queries must be defined in the <code>/usr/local/percona/pmm2/collectors/custom-queries/postgresql</code> in the same host where the exporter is
+running. There are 3 directories inside it:
+    - high-resolution/   - every 5 seconds
+    - medium-resolution/ - every 10 seconds
+    - low-resolution/ - every 60 seconds</p>
+<p>Depending on the desired resolution for your custom queries, you can place a file with the queries definition.
+The file is a yaml where each query can have these fields:</p>
+<p>query_name:
+   query: the query definition
+   master: boolean to specify if the query should be executed only in the master
+   metrics:
+     - metric name:
+         usage: GAUGE, LABEL, COUNTER, MAPPEDMETRIC or DURATION
+         description: a human readable description</p>
+<h4 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h4>
+<p>pg_postmaster_uptime:
+   query: &ldquo;select extract(epoch from current_timestamp - pg_postmaster_start_time()) as seconds&rdquo;
+   master: true
+   metrics:
+     - seconds:
+         usage: &ldquo;GAUGE&rdquo;
+         description: &ldquo;Service uptime&rdquo;</p>
+<p>Check the see also section for a more detailed description on MySQL custom queries with more examples about how to use custom queries in dashboards.</p>
 <div class="admonition seealso alert alert-info">
 <p class="admonition-title">See also</p>
 <ul>
 <li><a href="../../details/commands/pmm-admin.html#postgresql"><code>pmm-admin</code> man page for <code>pmm-admin add postgresql</code></a></li>
 <li><a href="https://www.percona.com/doc/percona-repo-config/percona-release.html">Configuring Percona Repositories with percona-release</a></li>
+<li><a href="https://www.percona.com/blog/2020/06/10/running-custom-queries-in-percona-monitoring-and-management/">Percona Blog &ndash; Running Custom MySQL Queries in Percona Monitoring and Management</a></li>
 </ul>
 </div>
                     </div>
@@ -429,7 +455,7 @@ track_io_timing = on             # Capture read/write stats
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-10-11
+            <i class="uil uil-refresh"></i> Page updated 2021-11-08
         </li>
         
     </ul>
