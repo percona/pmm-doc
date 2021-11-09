@@ -246,7 +246,7 @@ Use the following Docker container environment variables (with `-e var=value`) t
 
 | Variable                   | Description
 | -------------------------- | -----------------------------------------------------------------------
-| `DISABLE_UPDATES`          | Disable automatic updates.
+| `DISABLE_UPDATES`          | Disable automatic checks for updated PMM versions. *Updates are not automatically applied*
 | `DISABLE_TELEMETRY`        | Disable built-in telemetry and disable STT if telemetry is disabled.
 | `METRICS_RESOLUTION`       | High metrics resolution in seconds.
 | `METRICS_RESOLUTION_HR`    | High metrics resolution (same as above).
