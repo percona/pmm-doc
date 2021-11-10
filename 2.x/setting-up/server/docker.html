@@ -363,7 +363,7 @@ docker run --rm --volumes-from pmm-data -it percona/pmm-server:2 chown -R postgr
 <tbody>
 <tr>
 <td><code>DISABLE_UPDATES</code></td>
-<td>Disable automatic updates.</td>
+<td>Disables a periodic check for new PMM versions as well as ability to apply upgrades using the UI</td>
 </tr>
 <tr>
 <td><code>DISABLE_TELEMETRY</code></td>
@@ -462,7 +462,7 @@ docker run --rm --volumes-from pmm-data -it percona/pmm-server:2 chown -R postgr
 <h2 id="tips">Tips<a class="headerlink" href="#tips" title="Permanent link">&para;</a></h2>
 <ul>
 <li>
-<p>Disable manual updates via the Home Dashboard <em>PMM Upgrade</em> panel by adding <code>-e DISABLE_UPDATES=true</code> to the <code>docker run</code> command.</p>
+<p>To Disable the Home Dashboard <em>PMM Upgrade</em> panel you can either add <code>-e DISABLE_UPDATES=true</code> to the <code>docker run</code> command (for the life of the containter) or navigate to <em>PMM &rarr; PMM Settings &rarr; Advanced Settings</em> and disable &ldquo;Check for Updates&rdquo; (can be turned back on by any admin in the UI).</p>
 </li>
 <li>
 <p>Eliminate browser certificate warnings by configuring a <a href="../../how-to/secure.html#ssl-encryption">trusted certificate</a>.</p>
@@ -521,7 +521,7 @@ percona/pmm-server:2.23.0
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-10-12
+            <i class="uil uil-refresh"></i> Page updated 2021-11-10
         </li>
         
     </ul>
