@@ -139,7 +139,7 @@ For PostgreSQL queries (when using *pg_stat_monitor*) the top query will also be
 
 ![!image](../_images/PMM_Query_Analytics_Tabs_Details_TopQuery.png)
 
-Another metric available (when using *pg_stat_monitor*), especially to monitor PostgreSQL Server performance is *histogram*. 
+Another metric (when using *pg_stat_monitor*) to monitor PostgreSQL Server performance are *Histogram*. 
 *Histograms* provide more explicit information about number of queries for fingerprint (queryid). Ranges are from 0 seconds up to 100 seconds.  
 
 Ranges (numbers are in miliseconds):  
