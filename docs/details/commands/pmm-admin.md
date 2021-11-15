@@ -140,6 +140,9 @@ PMM communicates with the PMM Server via a PMM agent process.
         - `push`: agent will push metrics.
         - `pull`: server scrapes metrics from agent.
 
+    `--paths-base=dir`
+    : Base path where all binaries, tools and collectors of PMM client are located
+
 #### `pmm-admin register`
 
 `pmm-admin register [FLAGS] [node-address] [node-type] [node-name]`
