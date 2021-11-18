@@ -147,7 +147,10 @@
 <div class="highlight"><pre><span></span><code><span class="k">CREATE</span> <span class="k">USER</span> <span class="n">pmm</span> <span class="k">WITH</span> <span class="n">SUPERUSER</span> <span class="k">ENCRYPTED</span> <span class="n">PASSWORD</span> <span class="s1">&#39;******&#39;</span><span class="p">;</span>
 </code></pre></div>
 <p>If your database runs on Amazon RDS:</p>
-<div class="highlight"><pre><span></span><code><span class="k">CREATE</span> <span class="k">USER</span> <span class="n">pmm</span> <span class="k">WITH</span> <span class="n">rds_superuser</span> <span class="k">ENCRYPTED</span> <span class="n">PASSWORD</span> <span class="s1">&#39;******&#39;</span><span class="p">;</span>
+<p><div class="highlight"><pre><span></span><code><span class="k">CREATE</span> <span class="k">USER</span> <span class="n">pmm</span> <span class="k">WITH</span> <span class="n">rds_superuser</span> <span class="k">ENCRYPTED</span> <span class="n">PASSWORD</span> <span class="s1">&#39;******&#39;</span><span class="p">;</span>
+</code></pre></div>
+Optionally, you can also set up a connection limit (only if the user is not a SUPERUSER):</p>
+<div class="highlight"><pre><span></span><code><span class="k">ALTER</span> <span class="k">USER</span> <span class="n">pmm</span> <span class="k">CONNECTION</span> <span class="k">LIMIT</span> <span class="mi">10</span><span class="p">;</span>
 </code></pre></div>
 </li>
 <li>
@@ -455,7 +458,7 @@ The file is a yaml where each query can have these fields:</p>
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-11-08
+            <i class="uil uil-refresh"></i> Page updated 2021-11-18
         </li>
         
     </ul>
