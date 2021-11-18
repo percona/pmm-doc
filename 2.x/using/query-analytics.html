@@ -248,6 +248,21 @@
 </ul>
 <p>For PostgreSQL queries (when using <em>pg_stat_monitor</em>) the top query will also be shown in the details section if the query was called by an outer query.</p>
 <p><div class="lightgallery"><a data-sub-html="image" href="../_images/PMM_Query_Analytics_Tabs_Details_TopQuery.png"><img alt="image" src="../_images/PMM_Query_Analytics_Tabs_Details_TopQuery.png" /></a></div></p>
+<p>Other usefull metrics (when using <em>pg_stat_monitor</em>) to monitor PostgreSQL Server performance are <a href="https://github.com/percona/pg_stat_monitor/blob/master/docs/USER_GUIDE.md#histogram">Histograms</a>. 
+<em>Histograms</em> provide more explicit information about number of queries for fingerprint (queryid). Ranges are from 0 seconds up to 100 seconds.  </p>
+<p>Ranges (numbers are in miliseconds):<br />
+    0 - 3<br />
+    3 - 10<br />
+    10 - 31<br />
+    31 - 100<br />
+    100 - 316<br />
+    316 - 1000<br />
+    1000 - 3162<br />
+    3162 - 10000<br />
+    10000 - 31622<br />
+    31622 - 100000</p>
+<p>Here is picture of <em>histogram</em> in graph:
+<div class="lightgallery"><a data-sub-html="image" href="../_images/PMM_Query_Analytics_Tabs_Details_Histogram.png"><img alt="image" src="../_images/PMM_Query_Analytics_Tabs_Details_Histogram.png" /></a></div></p>
 <h3 id="examples-tab">Examples Tab<a class="headerlink" href="#examples-tab" title="Permanent link">&para;</a></h3>
 <p>(For <em>Query</em> dimension.)</p>
 <p>The <em>Examples</em> tab shows an example of the selected query’s fingerprint or table element.</p>
@@ -291,7 +306,7 @@
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-11-02
+            <i class="uil uil-refresh"></i> Page updated 2021-11-18
         </li>
         
     </ul>
@@ -1048,6 +1063,12 @@
 
 
 <ul class="toctree" id="toctree">
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/2.24.0.html">PMM 2.24.0</a>
+
+
 
 
 <li class="toctree-l2">
