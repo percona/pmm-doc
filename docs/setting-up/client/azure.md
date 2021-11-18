@@ -93,9 +93,9 @@ You need to get the Client ID, Client Secret, Tenant ID and Subscription ID.
 ![!](../../_images/azure_app_secret_04.png)
 6. Give API access permissions to your application.
 
-    6.1 Search for **Subscriptions** like in step 1.
+    6.1. Search for **Subscriptions** like in step 1.
 
-    6.2 Select your aplication and grant **Monitor Reader** permissions. This might require you have admin permissions in your Azure account.
+    6.2. Select your aplication and grant **Monitor Reader** permissions. This might require you have admin permissions in your Azure account.
 
 ![!](../../_images/azure_app_permissions_01.png)
 ![!](../../_images/azure_app_permissions_02.png)
