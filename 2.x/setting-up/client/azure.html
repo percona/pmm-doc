@@ -161,16 +161,40 @@ won&rsquo;t receive any query data.</p>
 </code></pre></div>
 <h2 id="to-discover-databases-on-azure">To discover databases on Azure<a class="headerlink" href="#to-discover-databases-on-azure" title="Permanent link">&para;</a></h2>
 <p>You need to get the Client ID, Client Secret, Tenant ID and Subscription ID.</p>
-<p><div class="lightgallery"><a data-sub-html="" href="../../_images/PMM_Add_Instance_Azure_1.png"><img alt="" src="../../_images/PMM_Add_Instance_Azure_1.png" /></a></div></p>
-<p>You can follow the steps here: <a href="https://www.inkoop.io/blog/how-to-get-azure-api-credentials/">https://www.inkoop.io/blog/how-to-get-azure-api-credentials/</a></p>
-<p>Navigate to:</p>
-<ul>
-<li>Create an application in Azure Active directory. <a href="https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview">https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview</a></li>
-<li>Get the subscription ID.</li>
-<li>Get the tenant ID.</li>
-<li>Get the client ID.</li>
-<li>Get the client secret.</li>
-</ul>
+<h3 id="get-the-subscription-id">Get the subscription ID<a class="headerlink" href="#get-the-subscription-id" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Search <strong>Subscriptions</strong>, click on your susbcription name
+<div class="lightgallery"><a data-sub-html="" href="../../_images/azure_subscription_section.png"><img alt="" src="../../_images/azure_subscription_section.png" /></a></div></li>
+<li>Copy the susbcription ID
+<div class="lightgallery"><a data-sub-html="" href="../../_images/azure_subscription_id.png"><img alt="" src="../../_images/azure_subscription_id.png" /></a></div></li>
+</ol>
+<h3 id="create-a-new-application-to-get-the-tenant-id-client-id-and-the-client-secret">Create a new application to get the tenant ID, client ID and the client secret.<a class="headerlink" href="#create-a-new-application-to-get-the-tenant-id-client-id-and-the-client-secret" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Search for <strong>Azure Active Directory</strong>
+<div class="lightgallery"><a data-sub-html="" href="../../_images/azure_active_directory_section.png"><img alt="" src="../../_images/azure_active_directory_section.png" /></a></div></li>
+<li>Register a new application
+<div class="lightgallery"><a data-sub-html="" href="../../_images/azure_app_registrations_section.png"><img alt="" src="../../_images/azure_app_registrations_section.png" />
+</a></div><div class="lightgallery"><a data-sub-html="" href="../../_images/azure_app_new_registration.png"><img alt="" src="../../_images/azure_app_new_registration.png" />
+</a></div><div class="lightgallery"><a data-sub-html="" href="../../_images/azure_app_new_details.png"><img alt="" src="../../_images/azure_app_new_details.png" /></a></div></li>
+<li>At this point you can copy the client and tenant IDs.
+<div class="lightgallery"><a data-sub-html="" href="../../_images/azure_app_client_tenant.png"><img alt="" src="../../_images/azure_app_client_tenant.png" /></a></div></li>
+<li>Create an application secret.
+<div class="lightgallery"><a data-sub-html="" href="../../_images/azure_app_secret_01.png"><img alt="" src="../../_images/azure_app_secret_01.png" />
+</a></div><div class="lightgallery"><a data-sub-html="" href="../../_images/azure_app_secret_02.png"><img alt="" src="../../_images/azure_app_secret_02.png" />
+</a></div><div class="lightgallery"><a data-sub-html="" href="../../_images/azure_app_secret_03.png"><img alt="" src="../../_images/azure_app_secret_03.png" /></a></div></li>
+<li>Copy the <strong>value</strong> of the application secret. Once you leave this page you won&rsquo;t be able to see the secret again and you will have to generate a new
+   one.
+<div class="lightgallery"><a data-sub-html="" href="../../_images/azure_app_secret_04.png"><img alt="" src="../../_images/azure_app_secret_04.png" /></a></div></li>
+<li>
+<p>Give API access permissions to your application.</p>
+<p>6.1. Search for <strong>Subscriptions</strong> like in step 1.</p>
+<p>6.2. Select your aplication and grant <strong>Monitor Reader</strong> permissions. This might require you have admin permissions in your Azure account.</p>
+</li>
+</ol>
+<p><div class="lightgallery"><a data-sub-html="" href="../../_images/azure_app_permissions_01.png"><img alt="" src="../../_images/azure_app_permissions_01.png" />
+</a></div><div class="lightgallery"><a data-sub-html="" href="../../_images/azure_app_permissions_02.png"><img alt="" src="../../_images/azure_app_permissions_02.png" />
+</a></div><div class="lightgallery"><a data-sub-html="" href="../../_images/azure_app_permissions_03.png"><img alt="" src="../../_images/azure_app_permissions_03.png" />
+</a></div><div class="lightgallery"><a data-sub-html="" href="../../_images/azure_app_permissions_04.png"><img alt="" src="../../_images/azure_app_permissions_04.png" /></a></div></p>
 <p>When you fill in all fields press the <em>Discover</em> button and you will see a list of available databases for monitoring.</p>
 <p><div class="lightgallery"><a data-sub-html="" href="../../_images/PMM_Add_Instance_Azure_2.png"><img alt="" src="../../_images/PMM_Add_Instance_Azure_2.png" /></a></div></p>
 <p>You can monitor 6 types of databases:</p>
@@ -236,7 +260,7 @@ It can be done on Networking tab for your Azure Database instance.</p>
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-10-18
+            <i class="uil uil-refresh"></i> Page updated 2021-11-24
         </li>
         
     </ul>
