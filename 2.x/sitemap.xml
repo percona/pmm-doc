@@ -51,6 +51,31 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://www.percona.com/doc/percona-monitoring-and-management/2.x/details/advisors/checks/security-anonymous-user.html</loc>
+         <lastmod>2021-11-26</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://www.percona.com/doc/percona-monitoring-and-management/2.x/details/advisors/checks/security-non-root-accounts-super-privileges.html</loc>
+         <lastmod>2021-11-26</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://www.percona.com/doc/percona-monitoring-and-management/2.x/details/advisors/checks/security-user-not-using-ssl-protocol.html</loc>
+         <lastmod>2021-11-26</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://www.percona.com/doc/percona-monitoring-and-management/2.x/details/advisors/checks/security-user-with-open-to-the-word-scope.html</loc>
+         <lastmod>2021-11-26</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://www.percona.com/doc/percona-monitoring-and-management/2.x/details/advisors/checks/security-user-without-password.html</loc>
+         <lastmod>2021-11-26</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://www.percona.com/doc/percona-monitoring-and-management/2.x/details/commands/index.html</loc>
          <lastmod>2021-11-26</lastmod>
          <changefreq>daily</changefreq>
