@@ -136,7 +136,7 @@ When you have configured your database server, you can add a MongoDB service wit
 
 4. Click *Add service*.
 
-![!](../../_images/PMM_Add_Instance_MongoDB.jpg)
+![!](../../_images/PMM_Add_Instance_MongoDB.png)
 
 ### On the command line
 
@@ -209,6 +209,9 @@ where:
 ### On the command line
 
 Look for your service in the output of this command.
+
+//TODO move image to right place
+![!](../../_images/PMM_Add_Instance_MongoDB_Collections.jpg)
 
 ```sh
 pmm-admin inventory list services --service-type=mongodb
