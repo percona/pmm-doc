@@ -209,7 +209,7 @@ Discovering mode will search for all databases and all colllections for collStat
 collections use the `--stats-collections=db1.col1,db2.col2` to get stats only for the database.collections specified.
 
 #### Prevent high resources consumption with discovering mode.
-If you have a high number of databases/collections, collecting stats for all of them could make the exporter use a high CPU percentage.
+If you have a high number of databases/collections, collecting stats for all of them could result in high CPU consumption by the exporter.
 To prevent this, use the `--max-collections-limit` parameter. For example, if you set this parameter to 1000, collstats and indexstats won't run
 unless you have less than 1000 collections in total. Collections in system databases (admin, config, local) are ignored.
 
