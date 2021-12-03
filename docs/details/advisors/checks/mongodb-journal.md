@@ -1,4 +1,4 @@
-# MongoDB Profiling level set to 2
+# MongoDB journal enable
 
 ## Description
 This check returns a warning if the journal is not enabled. 
