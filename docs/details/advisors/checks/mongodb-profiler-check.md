@@ -1,4 +1,4 @@
-# MongoDB Profiling level set to 2
+# MongoDB Profiling level set to high 
 
 ## Description
 This check returns a notice/warning if the global profiling level is set too high - anything other than 0. Having the profiler set to gather information at all times is not recommended. 
