@@ -1,4 +1,4 @@
-# MongoDB journal enable
+# MongoDB journal enabled
 
 ## Description
 This check returns a warning if the journal is not enabled. 
