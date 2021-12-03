@@ -17,6 +17,7 @@ profiling = parsed.get("operationProfiling", {})
 Can also be queried from within the database via the following commands:
 
 __db.getProfilingLevel();__
+
 __db.getProfilingStatus();__
 
 
