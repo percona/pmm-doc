@@ -116,12 +116,52 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://www.percona.com/doc/percona-monitoring-and-management/2.x/details/advisors/checks/configuration-pg-check-fsync-enabled.html</loc>
+         <lastmod>2021-12-06</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://www.percona.com/doc/percona-monitoring-and-management/2.x/details/advisors/checks/configuration-pg-high-max-connections.html</loc>
+         <lastmod>2021-12-06</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://www.percona.com/doc/percona-monitoring-and-management/2.x/details/advisors/checks/configuration-pg-log-autovacuum-disabled.html</loc>
+         <lastmod>2021-12-06</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://www.percona.com/doc/percona-monitoring-and-management/2.x/details/advisors/checks/configuration-pg-log-checkpoints-disabled.html</loc>
+         <lastmod>2021-12-06</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://www.percona.com/doc/percona-monitoring-and-management/2.x/details/advisors/checks/configuration-pg-settings-changed.html</loc>
+         <lastmod>2021-12-06</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://www.percona.com/doc/percona-monitoring-and-management/2.x/details/advisors/checks/mongodb-journal.html</loc>
          <lastmod>2021-12-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://www.percona.com/doc/percona-monitoring-and-management/2.x/details/advisors/checks/mongodb-profiler-check.html</loc>
+         <lastmod>2021-12-06</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://www.percona.com/doc/percona-monitoring-and-management/2.x/details/advisors/checks/performance-pg-archiver-failing.html</loc>
+         <lastmod>2021-12-06</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://www.percona.com/doc/percona-monitoring-and-management/2.x/details/advisors/checks/performance-pg-low-cache-hit-ratio.html</loc>
+         <lastmod>2021-12-06</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://www.percona.com/doc/percona-monitoring-and-management/2.x/details/advisors/checks/performance-pg-stale-replication-slot.html</loc>
          <lastmod>2021-12-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
