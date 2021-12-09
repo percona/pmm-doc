@@ -32,7 +32,7 @@
 
 
 
-<title>Percona Monitoring and Management &mdash; MongoDB Profiling level set to high</title>
+<title>Percona Monitoring and Management &mdash; MongoDB read ticket is more than 128.</title>
 
 <head>
     
@@ -97,7 +97,7 @@
 <div class="small">
     <ul class="list-inline">
         <li class="pull-right">
-            <a href="https://github.com/percona/pmm-doc/edit/main/docs/details/advisors/checks/mongodb-profiler-check.md" target="_blank" title=""><i class="uil uil-pen"></i> <b>Edit this page</b></a>
+            <a href="https://github.com/percona/pmm-doc/edit/main/docs/details/advisors/checks/mongodb-read-tickets.md" target="_blank" title=""><i class="uil uil-pen"></i> <b>Edit this page</b></a>
         </li>
     </ul>
 </div>
@@ -105,38 +105,28 @@
 
                 <div class="bodywrapper">
                     <div class="body">
-                        <h1 id="mongodb-profiling-level-set-to-high">MongoDB Profiling level set to high<a class="headerlink" href="#mongodb-profiling-level-set-to-high" title="Permanent link">&para;</a></h1>
+                        <h1 id="mongodb-read-ticket-is-more-than-128">MongoDB read ticket is more than 128.<a class="headerlink" href="#mongodb-read-ticket-is-more-than-128" title="Permanent link">&para;</a></h1>
 <h2 id="description">Description<a class="headerlink" href="#description" title="Permanent link">&para;</a></h2>
-<p>This check returns a notice/warning if the global profiling level is set too high - anything other than 0. Having the profiler set to gather information at all times is not recommended. 
-This is dangerous in busy and high traffic workloads where the database has to collect data for all the operations. This can add overhead that results in performance degradation - especially in very active environments.</p>
-<p>It is always recommended to only enable profiling (Level 1) for short periods of time in order to perform any needed query analysis or troubleshooting.  When necessary,  the profiler should be used during less busy windows and then turned off.  It is not recommended to set and use the profiler for long periods of time in production environments due to performance degradation
-<a href="https://docs.mongodb.com/manual/reference/method/db.setProfilingLevel/">https://docs.mongodb.com/manual/reference/method/db.setProfilingLevel/</a></p>
+<p>This check returns a warning if the read ticket is more than 128. This can cause performance issues.
+Ideally the number of tickets should be based on the number of CPU available.
+The default read ticket is 128.
+It can be adjusted for your mongod and your mongos nodes.</p>
+<p><a href="https://docs.mongodb.com/manual/reference/parameters/#mongodb-parameter-param.wiredTigerConcurrentReadTransactions">https://docs.mongodb.com/manual/reference/parameters/#mongodb-parameter-param.wiredTigerConcurrentReadTransactions</a></p>
 <h2 id="rule">Rule<a class="headerlink" href="#rule" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code>operationProfiling.mode
-profiling = parsed.get(&quot;operationProfiling&quot;, {})
-            profiler = (profiling.get(&quot;mode&quot;)
-</code></pre></div>
-Can also be queried from within the database via the following commands:</p>
-<p><strong>db.getProfilingLevel();</strong></p>
-<p><strong>db.getProfilingStatus();</strong></p>
+<p>MONGODB_GETPARAMETER</p>
+<p><code>db.adminCommand( { setParameter: 1, "wiredTigerConcurrentReadTransactions": "128"  } )</code></p>
 <h2 id="resolution">Resolution<a class="headerlink" href="#resolution" title="Permanent link">&para;</a></h2>
-<p>Please Perform the steps mentioned below to turn off profiler completely or reduce the level</p>
-<p>The profiler can be enabled or have the level changed at either the command line startup or via the config file.</p>
+<p>Please Perform the steps mentioned below to turn adjust the verbosity of your logs.</p>
+<p>It is possible to do it online:</p>
+<p><code>mongo&gt; db.adminCommand( { setParameter: 1, "wiredTigerConcurrentReadTransactions": "128"  } );</code></p>
 <ol>
-<li>To turn off profiler level globally, edit the mongod.conf file and disable/comment below parameter.\
-   “operationProfiling”\
-   OR, adjust the “mode”\
-   operationProfiling:\
-     mode: off</li>
-<li>Then Perform a rolling restart of your mongod nodes</li>
-<li>To reduce the profiler level, edit and adjust below parameter in mongod.conf
-    operationProfiling:
-        mode: slowOp</li>
-<li>To check the profiler status and level on a running system, performa the following commands from the mongo shell:
-        db.getProfilingStatus()
-        db.getProfilingLevel()</li>
+<li>Set to default. 
+Edit mongod.conf and set the below parameter.
+<div class="highlight"><pre><span></span><code>          setParameter:
+            wiredTigerConcurrentReadTransactions: 256
+</code></pre></div></li>
+<li>If resetting the read ticket in your mongod config file, be aware that this will not take effect until the next restart.</li>
 </ol>
-<p>Note: We can include different options here to manipulate collection of operations.</p>
                     </div>
                 </div>
                 

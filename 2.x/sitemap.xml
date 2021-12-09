@@ -146,7 +146,27 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://www.percona.com/doc/percona-monitoring-and-management/2.x/details/advisors/checks/mongodb-log-messages.html</loc>
+         <lastmod>2021-12-09</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://www.percona.com/doc/percona-monitoring-and-management/2.x/details/advisors/checks/mongodb-profiler-check.html</loc>
+         <lastmod>2021-12-09</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://www.percona.com/doc/percona-monitoring-and-management/2.x/details/advisors/checks/mongodb-read-tickets.html</loc>
+         <lastmod>2021-12-09</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://www.percona.com/doc/percona-monitoring-and-management/2.x/details/advisors/checks/mongodb-scram-sha-256.html</loc>
+         <lastmod>2021-12-09</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://www.percona.com/doc/percona-monitoring-and-management/2.x/details/advisors/checks/mongodb-write-tickets.html</loc>
          <lastmod>2021-12-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
