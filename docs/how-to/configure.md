@@ -231,7 +231,15 @@ To connect your PMM server to Percona Platform:
 2. Fill in the *Connect PMM to Percona Portal* form with the name of your PMM instance and the credentials of your Percona Account:
 3. Click *Connect*.
 
-After connecting, you can also use SSO for PMM server. 
+## Sign into PMM with your Percona Account
+Once you've successfully connected your PMM instance to Percona Platform, you can also sign into PMM usig your Percona Account:
+
+1. Log out of your existing PMM session.
+
+2. On the PMM login screen, click the **Sign in with Percona Account**. 
+
+ If you have an active Percona Account session on the same browser, PMM will log you in automatically. Otherwise, enter your Percona Account credentials to start a new session.
+
 
 ### Password Reset
 
