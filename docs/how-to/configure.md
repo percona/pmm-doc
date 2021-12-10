@@ -236,7 +236,7 @@ Once you've successfully connected your PMM instance to Percona Platform, you ca
 
 1. Log out of your existing PMM session.
 
-2. On the PMM login screen, click the **Sign in with Percona Account**. 
+2. On the PMM login screen, click *Sign in with Percona Account*. 
  If you have an active Percona Account session on the same browser, PMM will log you in automatically. Otherwise, enter your Percona Account credentials to start a new session.
 
 
