@@ -193,30 +193,6 @@ where:
 - `AUTHENTICATION-MECHANISM`: Authentication mechanism. Default is empty. Use `MONGODB-X509` for SSL certificates.
 - `AUTHENTICATION-DATABASE`: Authentication database. Default is empty. Use `$external` for SSL certificates.
 
-#### Disable some collectors
-
-By default, `mongodb_exporter` runs with all collectors enabled and discovering mode enabled. 
-If you want to disable some collectors, use the `--disable-collectors` parameter.  
-Example:  
-```
-pmm-admin add mongodb --disable-collectors=diagnosticdata,replicasetstatus
-```
-
-The valid collector names are: `diagnosticdata`, `replicasetstatus`, `dbstats` and `topmetrics`.  
-
-#### Collect collStats and indexStats only for some collections.
-Discovering mode will search for all databases and all colllections for collStats and indexStats. If you want to collect statistics only for some
-collections use the `--stats-collections=db1.col1,db2.col2` to get stats only for the database.collections specified.
-
-#### Prevent high resources consumption with discovering mode.
-If you have a high number of databases/collections, collecting stats for all of them could result in high CPU consumption by the exporter.
-To prevent this, use the `--max-collections-limit` parameter. For example, if you set this parameter to 1000, collstats and indexstats won't run
-unless you have less than 1000 collections in total. Collections in system databases (admin, config, local) are ignored.
-
-**Disabling collector, setting the collections number limit and filtering collection names** is possible via the web interface in the Add MongoDB
-section.
-
-![!](../../_images/PMM_Add_Instance_MongoDB_Collections.jpg)
 
 ## Check the service
 
