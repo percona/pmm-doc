@@ -134,6 +134,21 @@
   </tbody>
 </table>
 
+<div class="admonition caution alert alert-warning">
+<p class="admonition-title">Important note for users of PMM 2.24.0</p>
+<p>2.24.0 AMI image has only 8GB available for the data, it is a bug (see <a href="https://jira.percona.com/browse/PMM-9298">PMM-9298</a>). To resize a disk to full size you need to login to AMI instance with SSH and use the following command:</p>
+<div class="highlight"><pre><span></span><code>curl https://raw.githubusercontent.com/percona/pmm-update/main/ansible/playbook/tasks/create-lvm.yml -o lvn-fix.yml <span class="o">&amp;&amp;</span> sudo ansible-playbook lvn-fix.yml
+</code></pre></div>
+<p>For instructions about how to access your instances by using an SSH client, see <a href="https://www.percona.com/doc/percona-monitoring-and-management/2.x/setting-up/server/aws.html#:~:text=Connecting%20to%20Your%20Linux%20Instance%20Using%20SSH">Connecting to Your Linux Instance Using SSH</a>
+Make sure to replace the user name ec2-user used in this document with admin.</p>
+<p>What this command does:</p>
+<ol>
+<li>Downloads Ansible playbook and runs it</li>
+<li>Copy your data from /srv to the temporary directory</li>
+<li>Create lvm partition</li>
+<li>Copy data from system disk to a new LVM partition</li>
+</ol>
+</div>
 <p>Percona Monitoring and Management (PMM) is a free and open-source platform for managing and monitoring MySQL, MongoDB, and PostgreSQL performance.</p>
 <h2 id="release-highlights">Release Highlights<a class="headerlink" href="#release-highlights" title="Permanent link">&para;</a></h2>
 <ul>
@@ -142,9 +157,9 @@
 <li>
 <p>We&rsquo;ve made significant improvements in exposed data and added additional features if you monitor PostgreSQL together with the <a href="https://github.com/percona/pg_stat_monitor">pg_stat_monitor</a> extension (Part of Percona distribution for PostgreSQL). These features include:</p>
 <ul>
-<li>The PostgreSQL queries will have complete Query Execution Plan information. This will help with future optimization of queries and give a clear understanding of query performance </li>
-<li>Query execution histograms collection and presentation inside Query Analytics for a much more detailed understanding of query executions. </li>
-<li>Query analytics will both show and let the user drill down to the Top Query of the particular query if it&rsquo;s a subquery and have this parent query. This feature will allow users to see the dependencies between queries better and understand the impact of subqueries. </li>
+<li>The PostgreSQL queries will have complete Query Execution Plan information. This will help with future optimization of queries and give a clear understanding of query performance</li>
+<li>Query execution histograms collection and presentation inside Query Analytics for a much more detailed understanding of query executions.</li>
+<li>Query analytics will both show and let the user drill down to the Top Query of the particular query if it&rsquo;s a subquery and have this parent query. This feature will allow users to see the dependencies between queries better and understand the impact of subqueries.</li>
 <li>Query Analytics can filter PostgreSQL queries by query commands like SELECT, UPDATE, etc., and by Application Name if it&rsquo;s set for PostgreSQL connection from the application.</li>
 </ul>
 </li>
@@ -169,20 +184,20 @@
 <li><a href="https://jira.percona.com/browse/PMM-8644">PMM-8644</a>: Integrated Alerting: API should allow textual TLS configs for webhooks</li>
 <li><a href="https://jira.percona.com/browse/PMM-8122">PMM-8122</a>: Integrated Alerting: UI does not indicate a port is needed in configuration for SMTP communication channel</li>
 <li><a href="https://jira.percona.com/browse/PMM-8484">PMM-8484</a>: Added support for PostgreSQL 14 and Percona Distribution for PostgreSQL 14</li>
-<li><a href="https://jira.percona.com/browse/PMM-7297">PMM-7297</a>: Updated plugin for Clickhouse data source  from 2.1.0 to 2.3.1. This fixes some bugs and eliminates noise from warnings in logs as well as adding support of new types (DateTime64) and improved ARRAY JOIN parsing </li>
+<li><a href="https://jira.percona.com/browse/PMM-7297">PMM-7297</a>: Updated plugin for Clickhouse data source  from 2.1.0 to 2.3.1. This fixes some bugs and eliminates noise from warnings in logs as well as adding support of new types (DateTime64) and improved ARRAY JOIN parsing</li>
 </ul>
 <h2 id="bugs-fixed">Bugs Fixed<a class="headerlink" href="#bugs-fixed" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a href="https://jira.percona.com/browse/PMM-8975">PMM-8975</a>: Backup Management: long presentation of recurrent intervals in Backup scheduling </li>
+<li><a href="https://jira.percona.com/browse/PMM-8975">PMM-8975</a>: Backup Management: long presentation of recurrent intervals in Backup scheduling</li>
 <li><a href="https://jira.percona.com/browse/PMM-8541">PMM-8541</a>: Navigating through PMM Settings link at Failed security checks panel takes more than 30 seconds</li>
 <li><a href="https://jira.percona.com/browse/PMM-8387">PMM-8387</a>: MySQL InnoDB Details dashboard is not in the left menu</li>
-<li><a href="https://jira.percona.com/browse/PMM-8858">PMM-8858</a>: Dashboards: No Host uptime on Homepage for RDS instances </li>
+<li><a href="https://jira.percona.com/browse/PMM-8858">PMM-8858</a>: Dashboards: No Host uptime on Homepage for RDS instances</li>
 <li><a href="https://jira.percona.com/browse/PMM-8611">PMM-8611</a>: Dashboards: PMM Agents status presented as DOWN while there is no recent data yet on the status</li>
 <li><a href="https://jira.percona.com/browse/PMM-8393">PMM-8393</a>: Integrated Alerting: Alert rules not executed after upgrading PMM Server running as Docker container</li>
-<li><a href="https://jira.percona.com/browse/PMM-8058">PMM-8058</a>: Integrated Alerting: Firing alerts disappear after PMM server restart </li>
-<li><a href="https://jira.percona.com/browse/PMM-8089">PMM-8089</a>: PMM is not exposing data for memory used by MongoDB when it&rsquo;s mapped with the journal. This was inconsistent behavior compared to older versions of PMM. </li>
+<li><a href="https://jira.percona.com/browse/PMM-8058">PMM-8058</a>: Integrated Alerting: Firing alerts disappear after PMM server restart</li>
+<li><a href="https://jira.percona.com/browse/PMM-8089">PMM-8089</a>: PMM is not exposing data for memory used by MongoDB when it&rsquo;s mapped with the journal. This was inconsistent behavior compared to older versions of PMM.</li>
 <li><a href="https://jira.percona.com/browse/PMM-9100">PMM-9100</a>: Dashboards: Binary Log related metrics on MySQL Replication dashboard are not prevented and not collected for MySQL8</li>
-<li><a href="https://jira.percona.com/browse/PMM-8633">PMM-8633</a>: Unfinished queries are included in Query Analytics for PostgreSQL with pg_stat_monitor usage because of incorrect use of state_code. </li>
+<li><a href="https://jira.percona.com/browse/PMM-8633">PMM-8633</a>: Unfinished queries are included in Query Analytics for PostgreSQL with pg_stat_monitor usage because of incorrect use of state_code.</li>
 <li><a href="https://jira.percona.com/browse/PMM-8859">PMM-8859</a>: Increased memory consumption on Client-side for PostgreSQL monitoring when executing either too many custom queries or some queries against too many tables</li>
 <li><a href="https://jira.percona.com/browse/PMM-9046">PMM-9046</a>: Incorrect link to instructions about installing Image Rendering Plugin</li>
 <li><a href="https://jira.percona.com/browse/PMM-8952">PMM-8952</a>: Query Analytics: No table/indexes information for Views when PostgreSQL server monitored with pg_stat_monitor</li>
@@ -194,7 +209,7 @@
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-11-18
+            <i class="uil uil-refresh"></i> Page updated 2021-12-14
         </li>
         
     </ul>
