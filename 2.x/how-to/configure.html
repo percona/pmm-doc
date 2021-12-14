@@ -250,10 +250,7 @@
 <p>Grafana’s <a href="https://grafana.com/docs/grafana/latest/administration/configuration/#reporting-enabled">anonymous usage statistics</a> is not managed by PMM. To activate it, you must change the PMM Server container configuration after each update.</p>
 <p>As well as via the <em>PMM Settings</em> page, you can also disable telemetry with the <code>-e DISABLE_TELEMETRY=1</code> option in your docker run statement for the PMM Server.</p>
 <div class="admonition note alert alert-primary">
-<ul>
-<li>If the Security Threat Tool is enabled in PMM Settings, Telemetry is automatically enabled.</li>
-<li>Telemetry is sent straight away; the 24 hour grace period is not honored.</li>
-</ul>
+<p>Telemetry is sent straight away; the 24 hour grace period is not honored.</p>
 </div>
 <h3 id="check-for-updates">Check for updates<a class="headerlink" href="#check-for-updates" title="Permanent link">&para;</a></h3>
 <p>When active, PMM will automatically check for updates and put a notification in the home page <em>Updates</em> dashboard if any are available.</p>
@@ -342,28 +339,50 @@
 <p><div class="lightgallery"><a data-sub-html="" href="../_images/PMM_Settings_Alertmanager_Integration.jpg"><img alt="" src="../_images/PMM_Settings_Alertmanager_Integration.jpg" /></a></div></p>
 <p>Fill both fields and click the <em>Apply Alertmanager settings</em> button to proceed.</p>
 <h2 id="percona-platform">Percona Platform<a class="headerlink" href="#percona-platform" title="Permanent link">&para;</a></h2>
-<p>This panel is where you create, and log into and out of your Percona Platform account.</p>
-<h3 id="login">Login<a class="headerlink" href="#login" title="Permanent link">&para;</a></h3>
-<p><div class="lightgallery"><a data-sub-html="image" href="../_images/PMM_Settings_Percona_Platform_Login.jpg"><img alt="image" src="../_images/PMM_Settings_Percona_Platform_Login.jpg" /></a></div></p>
-<p>If you have a <em>Percona Platform</em> account, enter your credentials and click <em>Login</em>.</p>
-<p>Click <em>Sign out</em> to log out of your Percona Platform account.</p>
-<h3 id="sign-up">Sign up<a class="headerlink" href="#sign-up" title="Permanent link">&para;</a></h3>
-<p><div class="lightgallery"><a data-sub-html="image" href="../_images/PMM_Settings_Percona_Platform_Sign_Up.jpg"><img alt="image" src="../_images/PMM_Settings_Percona_Platform_Sign_Up.jpg" /></a></div></p>
-<p>To create a <em>Percona Platform</em> account:</p>
-<ol>
-<li>Click <em>Sign up</em>.</li>
-<li>Enter a valid email address in the <em>Email</em> field.</li>
-<li>Choose and enter a strong password in the <em>Password</em> field.</li>
-<li>Select the check box acknowledging our terms of service and privacy policy.</li>
-<li>Click <em>Sign up</em>.</li>
-</ol>
-<p>A brief message will confirm the creation of your new account and you may now log in with these credentials.</p>
+<p>This panel is where you connect your PMM server to your Percona Platform Account.</p>
 <div class="admonition note alert alert-primary">
-<p>Your Percona Platform account is separate from your PMM User account.</p>
+<p>Your Percona Platform Account is separate from your PMM User account.</p>
 </div>
+<h3 id="connect-pmm-to-percona-platform">Connect PMM to Percona Platform<a class="headerlink" href="#connect-pmm-to-percona-platform" title="Permanent link">&para;</a></h3>
+<p>Connect your PMM servers to Percona Platform to leverage Platform services that boost the monitoring capabilities of your PMM installations.</p>
+<p>To connect to Percona Platform, you need a Percona Account. With a Percona Account you also get access to various Percona services, including Percona Platform, Percona Customer Portal, and Community Forum.</p>
+<p>If you don&rsquo;t have a Percona Account, you can create one on the <a href="https://id.percona.com/signin/register/">Percona Account Sign Up</a> page.</p>
+<h4 id="pre-requisites">Pre-requisites<a class="headerlink" href="#pre-requisites" title="Permanent link">&para;</a></h4>
+<p>To ensure that PMM can establish a connection to Percona Platform: </p>
+<h3 id="check-that-you-are-a-member-of-an-existing-platform-organization">Check that you are a member of an existing Platform organization<a class="headerlink" href="#check-that-you-are-a-member-of-an-existing-platform-organization" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Log in to <a href="https://portal.percona.com">Percona Platform</a> using your Percona Account.</li>
+<li>On the <em>Getting Started page</em>, check that the <em>Create organization</em> step shows an option to view your organization.</li>
+</ol>
+<p>If you see an option to create a new organization instead, your Percona Account is not linked to any organization yet. If this is the case, contact your account administrator, or create a new organization for your Percona Account.</p>
+<h3 id="set-the-public-address-of-your-pmm-server">Set the public address of your PMM server<a class="headerlink" href="#set-the-public-address-of-your-pmm-server" title="Permanent link">&para;</a></h3>
+<ol>
+<li>In PMM, go to <em>Settings &gt; Advanced Settings</em>.</li>
+<li>Enter your address/hostname or click <em>Get from browser</em> to enable your browser to automatically detect and populate this field.</li>
+<li>Save the changes.</li>
+</ol>
+<h2 id="connect-pmm-to-percona-platform_1">Connect PMM to Percona Platform<a class="headerlink" href="#connect-pmm-to-percona-platform_1" title="Permanent link">&para;</a></h2>
+<p>To connect your PMM server to Percona Platform:</p>
+<ol>
+<li>In PMM go to <em>Settings &gt; Percona Platform</em> tab:
+    <div class="lightgallery"><a data-sub-html="image" href="../_images/PMM_Settings_Percona_Platform_Login.png"><img alt="image" src="../_images/PMM_Settings_Percona_Platform_Login.png" /></a></div></li>
+<li>Fill in the <em>Connect PMM to Percona Portal</em> form with the name of your PMM instance and the credentials of your Percona Account:</li>
+<li>Click <em>Connect</em>.</li>
+</ol>
+<h2 id="sign-into-pmm-with-your-percona-account">Sign into PMM with your Percona Account<a class="headerlink" href="#sign-into-pmm-with-your-percona-account" title="Permanent link">&para;</a></h2>
+<p>Once you&rsquo;ve successfully connected your PMM instance to Percona Platform, you can also sign into PMM usig your Percona Account:</p>
+<ol>
+<li>
+<p>Log out of your existing PMM session.</p>
+</li>
+<li>
+<p>On the PMM login screen, click <em>Sign in with Percona Account</em>. 
+ If you have an active Percona Account session on the same browser, PMM will log you in automatically. Otherwise, enter your Percona Account credentials to start a new session.</p>
+</li>
+</ol>
 <h3 id="password-reset">Password Reset<a class="headerlink" href="#password-reset" title="Permanent link">&para;</a></h3>
 <h4 id="password-forgotten">Password Forgotten<a class="headerlink" href="#password-forgotten" title="Permanent link">&para;</a></h4>
-<p>In case you forgot your password, click on the <em>Forgot password</em> link in the login page.</p>
+<p>In case you forgot your password, click on the <em>Forgot password</em> link on the login page.</p>
 <p>You will be redirected to a password reset page. Enter the email you are registered with in the field and click on <em>Reset via Email</em>.</p>
 <p><div class="lightgallery"><a data-sub-html="image" href="../_images/PMM_Settings_Percona_Platform_Password_Reset.jpg"><img alt="image" src="../_images/PMM_Settings_Percona_Platform_Password_Reset.jpg" /></a></div></p>
 <p>An email with a link to reset your password will be sent to you.</p>
@@ -413,7 +432,7 @@
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-09-30
+            <i class="uil uil-refresh"></i> Page updated 2021-12-14
         </li>
         
     </ul>
@@ -1170,6 +1189,12 @@
 
 
 <ul class="toctree" id="toctree">
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/2.25.0.html">PMM 2.25.0</a>
+
+
 
 
 <li class="toctree-l2">

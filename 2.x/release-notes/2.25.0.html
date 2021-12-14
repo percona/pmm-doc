@@ -32,7 +32,7 @@
 
 
 
-<title>Percona Monitoring and Management &mdash; How to</title>
+<title>Percona Monitoring and Management &mdash; PMM 2.25.0</title>
 
 <head>
     
@@ -55,7 +55,7 @@
 
     <link rel="top" title="" href="https://www.percona.com/doc/percona-monitoring-and-management/2.x" />
     
-    <link rel="next" title="Configure" href="configure.html" />
+    <link rel="next" title="PMM 2.24.0" href="2.24.0.html" />
     
     
 </head>
@@ -88,12 +88,12 @@
     <ul class="nav nav-pills">
         
         <li class="right" style="margin-right: 10px">
-            <a href="configure.html" title="Configure">Next</a>
+            <a href="2.24.0.html" title="PMM 2.24.0">Next</a>
         </li>
         
         
         <li class="right" style="margin-right: 10px">
-            <a href="../using/security-threat-tool.html" title="Security Threat Tool">Previous</a>
+            <a href="index.html" title="Release Notes">Previous</a>
         </li>
         
         <li>
@@ -107,7 +107,7 @@
 <div class="small">
     <ul class="list-inline">
         <li class="pull-right">
-            <a href="https://github.com/percona/pmm-doc/edit/main/docs/how-to/index.md" target="_blank" title=""><i class="uil uil-pen"></i> <b>Edit this page</b></a>
+            <a href="https://github.com/percona/pmm-doc/edit/main/docs/release-notes/2.25.0.md" target="_blank" title=""><i class="uil uil-pen"></i> <b>Edit this page</b></a>
         </li>
     </ul>
 </div>
@@ -115,16 +115,133 @@
 
                 <div class="bodywrapper">
                     <div class="body">
-                        <h1 id="how-to">How to<a class="headerlink" href="#how-to" title="Permanent link">&para;</a></h1>
+                        <h1 id="percona-monitoring-and-management-2250">Percona Monitoring and Management 2.25.0<a class="headerlink" href="#percona-monitoring-and-management-2250" title="Permanent link">&para;</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field-odd field">
+      <th class="field-name">Date:</th>
+      <td class="field-body">December 14, 2021</td>
+    </tr>
+    <tr class="field-even field">
+      <th class="field-name">Installation:</th>
+      <td class="field-body">
+        <a class="reference external" href="https://www.percona.com/software/pmm/quickstart">Installing Percona Monitoring and Management</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Percona Monitoring and Management (PMM) is a free and open-source platform for managing and monitoring MySQL, MongoDB, and PostgreSQL performance.</p>
+<h2 id="release-highlights">Release Highlights<a class="headerlink" href="#release-highlights" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a href="configure.html">Configure</a> via the PMM Settings page.</li>
-<li><a href="upgrade.html">Upgrade</a> PMM Server via the user interface.</li>
-<li><a href="secure.html">Secure</a> your PMM installation.</li>
-<li><a href="optimize.html">Optimize</a> the performance of your PMM installation.</li>
-<li><a href="annotate.html">Annotate</a> charts to mark significant events.</li>
-<li><a href="render-dashboard-images.html">Render dashboard images</a> to save or share.</li>
-<li><a href="extend-metrics.html">Extend Metrics</a> with textfile collector.</li>
-<li><a href="troubleshoot.html">Troubleshoot</a></li>
+<li>
+<p><strong>Percona Platform (Technology Preview):</strong> </p>
+<ul>
+<li>Connect Percona Monitoring and Management (PMM) to <a href="https://www.percona.com/software/percona-platform">Percona Platform</a> to boost the monitoring capabilities of your PMM installations and access all your Percona accounts and services from one single, centralized location. For more information, see the <a href="https://docs.percona.com/percona-platform/connect-pmm.html">Percona Platform Portal documentation</a></li>
+</ul>
+</li>
+<li>
+<p><strong>Enhanced PostgreSQL monitoring</strong></p>
+<ul>
+<li>
+<p>You can now [specify custom database names] (https://deploy-preview-643&ndash;pmm-doc.netlify.app/details/commands/pmm-admin.html#postgresql) when adding PostgreSQL Servers for monitoring. Previous PMM versions always used the default <code>postgres</code> name instead. </p>
+</li>
+<li>
+<p>Added support for the new version of <code>pg_stat_monitor</code> extension. <a href="https://github.com/percona/pg_stat_monitor/releases/tag/1.0.0-rc.1">Release Candidate v1.0.0-rc.1</a> brings many new PostgreSQL metrics, Dashboards and Query Analytics! To find out about all the features available in the new <code>pg_stat_monitor</code> version, see the <a href="https://github.com/percona/pg_stat_monitor/blob/1.0.0-rc.1/docs/USER_GUIDE.md">pg_stat_monitor User guide</a> </p>
+</li>
+<li>
+<p>Added compatibility for the latest Percona Distributions for PostgreSQL <a href="https://www.percona.com/doc/postgresql/LATEST/release-notes-v14.1.upd2.html">14</a>, <a href="https://www.percona.com/doc/postgresql/13/release-notes-v13.5.upd2.html">13</a>, <a href="https://www.percona.com/doc/postgresql/12/release-notes-v12.8.upd.html">12</a>, <a href="https://www.percona.com/doc/postgresql/11/release-notes-v11.13.upd.html">11</a> updated on December 7, 2021, which includes the newest version of the <code>pg_stat_monitor</code> extension.  </p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Grafana usability enhancements</strong></p>
+<ul>
+<li>
+<p>PMM is now using the native Grafana provisioning mechanism for adding dashboards, plug-ins, and data sources. This ensures faster and more reliable upgrading to newer PMM versions. 
+Your existing plug-ins and dashboard changes are preserved during upgrades, but always make sure to back them up before upgrading and check that everything transferred correctly afterward. </p>
+</li>
+<li>
+<p>Added option to change the time zone on dashboards. This selection is preserved while you navigate over Dashboards. If you need to change this setting permanently for your account, change it in your preferences by the URL: <code>https://YOUR_PMM_SERVER/graph/profile</code></p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>DBaaS (Technical Preview)</strong></p>
+<ul>
+<li>You can now deploy and update your DBaaS created PXC clusters to the latest version of Percona Distribution for MySQL Operator 1.9.0. This enables you to take advantage of the latest features and fixes. </li>
+</ul>
+</li>
+<li>
+<p><strong>PMM environment enhancements</strong></p>
+<ul>
+<li>
+<p>The pmm-client docker container can now be started as a sidecar.  For users that use PMM client in Kubernetes or build automation around it, you can now start the client as a sidecar container simply by passing a flag.  The client will also gracefully handle any instances where the connection to DB  is not available. For more details, see the <a href="https://www.percona.com/doc/percona-monitoring-and-management/2.x/setting-up/client/index.html#install">PMM Client documentation</a></p>
+</li>
+<li>
+<p>Removed support for Ubuntu 16.04. With the support of new products and new versions of already supported products, we also removed old, unsupported software. As of this release, we are no longer supporting Ubuntu 16.04 in PMM <a href="https://www.percona.com/blog/eol-pmmv1-mongo40-ubuntu1604">according to recent anouncements</a></p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="new-features">New Features<a class="headerlink" href="#new-features" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://jira.percona.com/browse/PMM-9050">PMM-9050</a>: Connect PMM Server to Percona Platform for additional account info in PMM and value added content</li>
+</ul>
+<h2 id="improvements">Improvements<a class="headerlink" href="#improvements" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://jira.percona.com/browse/PMM-8545">PMM-8545</a>: DBaaS: Support of Percona Distribution for MySQL Operator 1.9.0 in PMM</li>
+<li><a href="https://jira.percona.com/browse/PMM-7677">PMM-7677</a>: Docker container for <code>pmm-client</code>: Option to change behavior and follow sidecar pattern The flags <code>PMM_AGENT_SIDECAR</code> and <code>PMM_AGENT_SIDECAR_SLEEP</code> does this. Read more in <a href="https://www.percona.com/doc/percona-monitoring-and-management/2.x/setting-up/client/index.html#docker">documentation</a></li>
+<li><a href="https://jira.percona.com/browse/PMM-3516">PMM-3516</a>: Optimize provisioning mechanism of plugins, dashboards, and datasources in PMM</li>
+<li><a href="https://jira.percona.com/browse/PMM-8674">PMM-8674</a>: Integrated Alerting: Add Tooltips to <code>Add Alert Rule</code> fields to make it easier to understand what information is needed</li>
+<li><a href="https://jira.percona.com/browse/PMM-8505">PMM-8505</a>: Integrated Alerting: Clarify description of the &lsquo;Low memory&rsquo; Alert Template</li>
+<li><a href="https://jira.percona.com/browse/PMM-8503">PMM-8503</a>: Integrated Alerting: Field validation in Email and Slack tabs when updating settings</li>
+<li><a href="https://jira.percona.com/browse/PMM-7527">PMM-7527</a>: Integrated Alerting: Improvements to overall user experience for action buttons in Alerting</li>
+<li><a href="https://jira.percona.com/browse/PMM-7079">PMM-7079</a>: Integrated Alerting: New &lsquo;information&rsquo; icon to give additional details about Alerts without cluttering screen</li>
+<li><a href="https://jira.percona.com/browse/PMM-8259">PMM-8259</a>: Better clarification of error messages in <code>pmm-admin</code> when PMM server can&rsquo;t be unregistered</li>
+<li><a href="https://jira.percona.com/browse/PMM-8972">PMM-8972</a>: Add ability to specify custom base path to exporters and tools using <code>pmm-admin</code> command</li>
+<li><a href="https://jira.percona.com/browse/PMM-8282">PMM-8282</a>: Improved messaging for TLS option when adding Remote instances in PMM over UI</li>
+</ul>
+<h2 id="bugs-fixed">Bugs Fixed<a class="headerlink" href="#bugs-fixed" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://jira.percona.com/browse/PMM-9169">PMM-9169</a>: Security Advisor Checks are not working for MongoDB instances</li>
+<li><a href="https://jira.percona.com/browse/PMM-8982">PMM-8982</a>: Backup Management: User is not able to see MongoDB backup logs if backup was taken on older version of pmm-server</li>
+<li><a href="https://jira.percona.com/browse/PMM-9157">PMM-9157</a>: Dashboards: Changing the timezone on dashboards does not persist navigation</li>
+<li><a href="https://jira.percona.com/browse/PMM-7116">PMM-7116</a>: Dashboards: Incorrect STARTUP state on MongoDB ReplSet Summary dashboard</li>
+<li><a href="https://jira.percona.com/browse/PMM-8993">PMM-8993</a>: Integrated Alerting: Sending email using Gmail fails</li>
+<li><a href="https://jira.percona.com/browse/PMM-7802">PMM-7802</a>: PMM can&rsquo;t monitor MongoDB arbiter nodes (Thanks to Artem Meshcheryakov for reporting this issue)</li>
+<li><a href="https://jira.percona.com/browse/PMM-6937">PMM-6937</a>: Can&rsquo;t add PostgreSQL instances to PMM without <code>postgres</code> DB in PostgreSQL server (Thanks to Daniel Kowalewski for reporting this issue)</li>
+<li><a href="https://jira.percona.com/browse/PMM-7447">PMM-7447</a>: Can&rsquo;t add into PMM instances of PostgreSQL with SCRAM-SHA-256 authentication</li>
+<li><a href="https://jira.percona.com/browse/PMM-9085">PMM-9085</a>: PMM Server crashes after upgrading to 2.22 every 4 hours</li>
+<li><a href="https://jira.percona.com/browse/PMM-9156">PMM-9156</a>: <code>pmm-agent</code> paths-base option not working for pmm2-client binary installation in PMM 2.23.0</li>
+<li><a href="https://jira.percona.com/browse/PMM-8461">PMM-8461</a>: DBaaS: Confusing error when accessing DBaaS pages when it&rsquo;s disabled</li>
+<li><a href="https://jira.percona.com/browse/PMM-8110">PMM-8110</a>: DBaaS: Registering K8s cluster with operators already installed can cause error</li>
+<li><a href="https://jira.percona.com/browse/PMM-8694">PMM-8694</a>: Query Analytics: URLs in Query Analytics with a selected query and a timestamp range does not select the query</li>
+<li><a href="https://jira.percona.com/browse/PMM-9227">PMM-9227</a>: Pagination Reset on QAN after Time Range change doesn&rsquo;t work, results in wrong results</li>
+<li><a href="https://jira.percona.com/browse/PMM-9298">PMM-9298</a>: PMM AMI image in 2.24.0 has only 8GB space for data and Volume Size Check fails while upgrading to 2.25.0</li>
+</ul>
+<div class="admonition caution alert alert-warning">
+<p class="admonition-title">Important note for users of PMM 2.24.0</p>
+<p>2.24.0 AMI image has only 8GB available for the data, it is a bug (see <a href="https://jira.percona.com/browse/PMM-9298">PMM-9298</a>). To resize a disk to full size you need to login to AMI instance with SSH and use the following command:</p>
+<div class="highlight"><pre><span></span><code>curl https://raw.githubusercontent.com/percona/pmm-update/main/ansible/playbook/tasks/create-lvm.yml -o lvn-fix.yml <span class="o">&amp;&amp;</span> sudo ansible-playbook lvn-fix.yml
+</code></pre></div>
+<p>For instructions about how to access your instances by using an SSH client, see <a href="https://www.percona.com/doc/percona-monitoring-and-management/2.x/setting-up/server/aws.html#:~:text=Connecting%20to%20Your%20Linux%20Instance%20Using%20SSH">Connecting to Your Linux Instance Using SSH</a>
+Make sure to replace the user name ec2-user used in this document with admin.</p>
+<p>What this command does:</p>
+<ol>
+<li>Downloads Ansible playbook and runs it</li>
+<li>Copy your data from /srv to the temporary directory</li>
+<li>Create lvm partition</li>
+<li>Copy data from system disk to a new LVM partition</li>
+</ol>
+</div>
+<h2 id="known-issue">Known issue<a class="headerlink" href="#known-issue" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://jira.percona.com/browse/PMM-9255">PMM-9255</a>: After connecting PMM to Percona Platform, PMM occasionally shows a false permission issue notification, incorrectly suggesting that the connection could not be established due to missing permissions. Reload the page to remove the incorrect notification and confirm the connection.</li>
+<li><a href="https://jira.percona.com/browse/PMM-9312">PMM-9312</a>: It&rsquo;s not possible to enable collStats, indexStats and -max-collections-limit for MongoDB</li>
 </ul>
                     </div>
                 </div>
@@ -133,7 +250,7 @@
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-10-06
+            <i class="uil uil-refresh"></i> Page updated 2021-12-14
         </li>
         
     </ul>
@@ -144,12 +261,12 @@
     <ul class="nav nav-pills">
         
         <li class="right" style="margin-right: 10px">
-            <a href="configure.html" title="Configure">Next</a>
+            <a href="2.24.0.html" title="PMM 2.24.0">Next</a>
         </li>
         
         
         <li class="right" style="margin-right: 10px">
-            <a href="../using/security-threat-tool.html" title="Security Threat Tool">Previous</a>
+            <a href="index.html" title="Release Notes">Previous</a>
         </li>
         
         <li>
@@ -376,7 +493,7 @@
 
 
 <li class="toctree-l1">
-    <a class="reference internal" href="index.html">How to</a>
+    <a class="reference internal" href="../how-to/index.html">How to</a>
 
 
 
@@ -385,49 +502,49 @@
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="configure.html">Configure</a>
+    <a class="reference internal" href="../how-to/configure.html">Configure</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="upgrade.html">Upgrade</a>
+    <a class="reference internal" href="../how-to/upgrade.html">Upgrade</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="secure.html">Secure</a>
+    <a class="reference internal" href="../how-to/secure.html">Secure</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="optimize.html">Optimize</a>
+    <a class="reference internal" href="../how-to/optimize.html">Optimize</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="annotate.html">Annotate</a>
+    <a class="reference internal" href="../how-to/annotate.html">Annotate</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="render-dashboard-images.html">Render dashboard images</a>
+    <a class="reference internal" href="../how-to/render-dashboard-images.html">Render dashboard images</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="extend-metrics.html">Extend Metrics</a>
+    <a class="reference internal" href="../how-to/extend-metrics.html">Extend Metrics</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="troubleshoot.html">Troubleshoot</a>
+    <a class="reference internal" href="../how-to/troubleshoot.html">Troubleshoot</a>
 
 
 
@@ -884,7 +1001,7 @@
 
 
 <li class="toctree-l1">
-    <a class="reference internal" href="../release-notes/index.html">Release Notes</a>
+    <a class="reference internal" href="index.html">Release Notes</a>
 
 
 
@@ -893,205 +1010,205 @@
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../release-notes/2.25.0.html">PMM 2.25.0</a>
+    <a class="reference internal" href="2.25.0.html">PMM 2.25.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../release-notes/2.24.0.html">PMM 2.24.0</a>
+    <a class="reference internal" href="2.24.0.html">PMM 2.24.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../release-notes/2.23.0.html">PMM 2.23.0</a>
+    <a class="reference internal" href="2.23.0.html">PMM 2.23.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../release-notes/2.22.0.html">PMM 2.22.0</a>
+    <a class="reference internal" href="2.22.0.html">PMM 2.22.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../release-notes/2.21.0.html">PMM 2.21.0</a>
+    <a class="reference internal" href="2.21.0.html">PMM 2.21.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../release-notes/2.20.0.html">PMM 2.20.0</a>
+    <a class="reference internal" href="2.20.0.html">PMM 2.20.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../release-notes/2.19.0.html">PMM 2.19.0</a>
+    <a class="reference internal" href="2.19.0.html">PMM 2.19.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../release-notes/2.18.0.html">PMM 2.18.0</a>
+    <a class="reference internal" href="2.18.0.html">PMM 2.18.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../release-notes/2.17.0.html">PMM 2.17.0</a>
+    <a class="reference internal" href="2.17.0.html">PMM 2.17.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../release-notes/2.16.0.html">PMM 2.16.0</a>
+    <a class="reference internal" href="2.16.0.html">PMM 2.16.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../release-notes/2.15.1.html">PMM 2.15.1</a>
+    <a class="reference internal" href="2.15.1.html">PMM 2.15.1</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../release-notes/2.15.0.html">PMM 2.15.0</a>
+    <a class="reference internal" href="2.15.0.html">PMM 2.15.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../release-notes/2.14.0.html">PMM 2.14.0</a>
+    <a class="reference internal" href="2.14.0.html">PMM 2.14.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../release-notes/2.13.0.html">PMM 2.13.0</a>
+    <a class="reference internal" href="2.13.0.html">PMM 2.13.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../release-notes/2.12.0.html">PMM 2.12.0</a>
+    <a class="reference internal" href="2.12.0.html">PMM 2.12.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../release-notes/2.11.1.html">PMM 2.11.1</a>
+    <a class="reference internal" href="2.11.1.html">PMM 2.11.1</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../release-notes/2.11.0.html">PMM 2.11.0</a>
+    <a class="reference internal" href="2.11.0.html">PMM 2.11.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../release-notes/2.10.1.html">PMM 2.10.1</a>
+    <a class="reference internal" href="2.10.1.html">PMM 2.10.1</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../release-notes/2.10.0.html">PMM 2.10.0</a>
+    <a class="reference internal" href="2.10.0.html">PMM 2.10.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../release-notes/2.9.1.html">PMM 2.9.1</a>
+    <a class="reference internal" href="2.9.1.html">PMM 2.9.1</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../release-notes/2.9.0.html">PMM 2.9.0</a>
+    <a class="reference internal" href="2.9.0.html">PMM 2.9.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../release-notes/2.8.0.html">PMM 2.8.0</a>
+    <a class="reference internal" href="2.8.0.html">PMM 2.8.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../release-notes/2.7.0.html">PMM 2.7.0</a>
+    <a class="reference internal" href="2.7.0.html">PMM 2.7.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../release-notes/2.6.1.html">PMM 2.6.1</a>
+    <a class="reference internal" href="2.6.1.html">PMM 2.6.1</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../release-notes/2.6.0.html">PMM 2.6.0</a>
+    <a class="reference internal" href="2.6.0.html">PMM 2.6.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../release-notes/2.5.0.html">PMM 2.5.0</a>
+    <a class="reference internal" href="2.5.0.html">PMM 2.5.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../release-notes/2.4.0.html">PMM 2.4.0</a>
+    <a class="reference internal" href="2.4.0.html">PMM 2.4.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../release-notes/2.3.0.html">PMM 2.3.0</a>
+    <a class="reference internal" href="2.3.0.html">PMM 2.3.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../release-notes/2.2.2.html">PMM 2.2.2</a>
+    <a class="reference internal" href="2.2.2.html">PMM 2.2.2</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../release-notes/2.2.1.html">PMM 2.2.1</a>
+    <a class="reference internal" href="2.2.1.html">PMM 2.2.1</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../release-notes/2.2.0.html">PMM 2.2.0</a>
+    <a class="reference internal" href="2.2.0.html">PMM 2.2.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../release-notes/2.1.0.html">PMM 2.1.0</a>
+    <a class="reference internal" href="2.1.0.html">PMM 2.1.0</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../release-notes/2.0.1.html">PMM 2.0.1</a>
+    <a class="reference internal" href="2.0.1.html">PMM 2.0.1</a>
 
 
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../release-notes/2.0.0.html">PMM 2.0.0</a>
+    <a class="reference internal" href="2.0.0.html">PMM 2.0.0</a>
 
 
 
@@ -1107,13 +1224,13 @@
 
 <h4>Previous page</h4>
 <p class="topless">
-    <a href="../using/security-threat-tool.html" title="previous chapter">Security Threat Tool</a>
+    <a href="index.html" title="previous chapter">Release Notes</a>
 </p>
 
 
 <h4>Next page</h4>
 <p class="topless">
-    <a href="configure.html" title="next chapter">Configure</a>
+    <a href="2.24.0.html" title="next chapter">PMM 2.24.0</a>
 </p>
 
 

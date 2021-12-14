@@ -220,6 +220,8 @@
 - <code>auto</code>: chosen by server (default).
 - <code>push</code>: agent will push metrics.
 - <code>pull</code>: server scrapes metrics from agent.</dd>
+<dt><code>--paths-base=dir</code></dt>
+<dd>Base path where all binaries, tools and collectors of PMM client are located</dd>
 </dl>
 </dd>
 </dl>
@@ -481,6 +483,8 @@ specific files. Root permissions are needed for this.</dd>
 <dd>PostgreSQL username.</dd>
 <dt><code>--password=&lt;password&gt;</code></dt>
 <dd>PostgreSQL password.</dd>
+<dt><code>--database=&lt;database&gt;</code></dt>
+<dd>PostgreSQL database (default: postgres).</dd>
 <dt><code>--agent-password=password</code></dt>
 <dd>
 <p>Override the default password for accessing the <code>/metrics</code> endpoint. (Username is <code>pmm</code> and default password is the agent ID.)</p>
@@ -737,7 +741,7 @@ Agents:
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-08-27
+            <i class="uil uil-refresh"></i> Page updated 2021-12-14
         </li>
         
     </ul>
@@ -1494,6 +1498,12 @@ Agents:
 
 
 <ul class="toctree" id="toctree">
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.25.0.html">PMM 2.25.0</a>
+
+
 
 
 <li class="toctree-l2">
