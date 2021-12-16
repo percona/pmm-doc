@@ -282,7 +282,7 @@ These variables will be ignored by `pmm-managed` when starting the server. If an
 
 - Eliminate browser certificate warnings by configuring a [trusted certificate].
 
-- Optionally enable an (insecure) HTTP connection by adding `--publish 80:80` to the `docker run` command. However note that PMM Client *requires* TLS to communicate with the server so will only work on the secure port.
+- You can optionally enable an (insecure) HTTP connection by adding `--publish 80:80` to the `docker run` command but running PMM insecure is not recommended. You should also note that PMM Client *requires* TLS to communicate with the server so will only work on a secure port.
 
 ### Isolated hosts
 
