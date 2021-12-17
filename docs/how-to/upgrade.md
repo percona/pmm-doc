@@ -30,11 +30,11 @@ If one is available, click the update button to update to the version indicated.
 
 PMM-Agent can be updated from tarball:
 
-- download tar.gz with pmm2-client
-- unpack it
-- run ./install_tarball script with "-u" flag.
+ 1. Download tar.gz with pmm2-client.
+ 2. Extract it.
+ 3. Run ./install_tarball script with the "-u" flag.
 
-If you want update with rewriting config files run this script without any flags.
+**Hint!** The configuration file will be overwritten if you do not provide the "-u" flag while the pmm-agent is updated.
 
 ## Upgrade from PMM 1
 
