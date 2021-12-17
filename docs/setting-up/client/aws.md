@@ -132,7 +132,7 @@ Query Analytics requires Configuring Performance Schema as the query source, bec
 !!! caution alert alert-warning "Important"
     Enabling Performance Schema on T2 instances is not recommended because it can easily run the T2 instance out of memory.
 
-When adding a monitoring instance for Amazon RDS, specify a unique name to distinguish it from the local MySQL instance.  If you do not specify a name, it will use the client’s host name.
+When adding a monitoring instance for Amazon RDS, specify a unique name to distinguish it from the local instance.  If you do not specify a name, it will use the client’s host name.
 
 Create the `pmm` user with the following privileges on the Amazon RDS instance that you want to monitor:
 
