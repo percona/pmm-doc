@@ -171,7 +171,7 @@ percona/pmm-server:2
 </code></pre></div>
 </li>
 <li>
-<p>In a web browser, visit <code>https://localhost:443</code> (or <code>http://localhost:80</code> if enabled) to see the PMM user interface. (If you are accessing the docker host remotely, replace <code>localhost</code> with the IP or server name of the host.)</p>
+<p>In a web browser, visit <code>https://localhost:443</code> to see the PMM user interface. (If you are accessing the docker host remotely, replace <code>localhost</code> with the IP or server name of the host.)</p>
 </li>
 </ol>
 <h2 id="backup">Backup<a class="headerlink" href="#backup" title="Permanent link">&para;</a></h2>
@@ -470,7 +470,7 @@ docker run --rm --volumes-from pmm-data -it percona/pmm-server:2 chown -R postgr
 <p>Eliminate browser certificate warnings by configuring a <a href="../../how-to/secure.html#ssl-encryption">trusted certificate</a>.</p>
 </li>
 <li>
-<p>Optionally enable an (insecure) HTTP connection by adding <code>--publish 80:80</code> to the <code>docker run</code> command. However note that PMM Client <em>requires</em> TLS to communicate with the server so will only work on the secure port.</p>
+<p>You can optionally enable an (insecure) HTTP connection by adding <code>--publish 80:80</code> to the <code>docker run</code> command. However, running PMM insecure is not recommended. You should also note that PMM Client <em>requires</em> TLS to communicate with the server, only working on a secure port.</p>
 </li>
 </ul>
 <h3 id="isolated-hosts">Isolated hosts<a class="headerlink" href="#isolated-hosts" title="Permanent link">&para;</a></h3>
@@ -523,7 +523,7 @@ percona/pmm-server:2.25.0
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-11-18
+            <i class="uil uil-refresh"></i> Page updated 2021-12-17
         </li>
         
     </ul>
