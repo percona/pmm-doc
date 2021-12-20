@@ -141,7 +141,7 @@ Here are the benefits and drawbacks of each.
     This command creates the view where you can access the collected statistics.
 
 !!! note alert alert-primary ""
-    We recommend that you create the extension for the `postgres` database. In this case, you receive the access to the statistics, collected from every database.    
+    We recommend that you create the extension for the `postgres` database. In this case, you receive access to the statistics collected from every database.    
 
 You can now [add the service](#add-service).
 
