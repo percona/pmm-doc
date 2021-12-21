@@ -237,6 +237,11 @@ curl -ku admin:admin https://localhost/v1/version
 </div>
 <ol>
 <li>
+<p>Stop the container.</p>
+<div class="highlight"><pre><span></span><code>docker stop pmm-server
+</code></pre></div>
+</li>
+<li>
 <p>Perform a <a href="#backup">backup</a>.</p>
 </li>
 <li>
@@ -256,7 +261,7 @@ percona/pmm-server:2
 </code></pre></div>
 </li>
 <li>
-<p>Perform a <a href="#restore">restore</a></p>
+<p>Perform a <a href="#restore">restore</a>.</p>
 </li>
 </ol>
 <h2 id="restore">Restore<a class="headerlink" href="#restore" title="Permanent link">&para;</a></h2>
@@ -523,7 +528,7 @@ percona/pmm-server:2.25.0
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-12-17
+            <i class="uil uil-refresh"></i> Page updated 2021-12-21
         </li>
         
     </ul>
