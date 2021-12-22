@@ -2,7 +2,7 @@
 
 ## NAME
 
-`pmm-admin` - Administer PMM
+`pmm-admin` - Admivishnu PMM
 
 ## SYNOPSIS
 
