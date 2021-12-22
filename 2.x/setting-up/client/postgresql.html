@@ -256,14 +256,18 @@ track_io_timing = on             # Capture read/write stats
 </code></pre></div>
 </li>
 <li>
-<p>Restart the database server.</p>
+<p>Restart the database server. After the restart, the extension starts capturing statistics from every database.</p>
 </li>
 <li>
-<p>Install the extension.</p>
+<p>Install the extension. </p>
 <div class="highlight"><pre><span></span><code>psql postgres postgres -c <span class="s2">&quot;CREATE EXTENSION pg_stat_statements SCHEMA public&quot;</span>
 </code></pre></div>
+<p>This command creates the view where you can access the collected statistics.</p>
 </li>
 </ol>
+<div class="admonition note alert alert-primary">
+<p>We recommend that you create the extension for the <code>postgres</code> database. In this case, you receive access to the statistics collected from every database.    </p>
+</div>
 <p>You can now <a href="#add-service">add the service</a>.</p>
 <h3 id="pg_stat_monitor"><code>pg_stat_monitor</code><a class="headerlink" href="#pg_stat_monitor" title="Permanent link">&para;</a></h3>
 <div class="admonition caution alert alert-warning">
@@ -313,12 +317,16 @@ track_io_timing = on             # Capture read/write stats
 </div>
 </li>
 <li>
-<p>Start or restart your PostgreSQL instance.</p>
+<p>Start or restart your PostgreSQL instance. The extension starts capturing statistics from every database.</p>
 </li>
 <li>
 <p>In a <code>psql</code> session:</p>
 <div class="highlight"><pre><span></span><code><span class="k">CREATE</span> <span class="n">EXTENSION</span> <span class="n">pg_stat_monitor</span><span class="p">;</span>
 </code></pre></div>
+<p>This command creates the view where you can access the collected statistics.</p>
+<div class="admonition note alert alert-primary">
+<p>We recommend that you create the extension for the <code>postgres</code> database. In this case, you receive the access to the statistics, collected from every database.</p>
+</div>
 </li>
 <li>
 <p>Check the version.</p>
