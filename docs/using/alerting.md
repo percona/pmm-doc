@@ -41,7 +41,7 @@ Before you can get alerts, you must [activate Integrated Alerting](#activate-int
  - For *Email*, fill in the details of your SMTP email server, enforce TLS encryption if your SMTP server requires this, then click *Test* to confirm that you can connect to the SMTP server with the current settings. 
  - For *Slack*, specify the Slack webhook URL to use.
 3. Click *Apply changes* to save your settings.
-4. From the left menu, select <i class="uil uil-bell"></i> *Alerting* → <i class="uil uil-list-ul"></i> *Integrated Alerting*. The default tab of the *Integrated Alerting* page lists alerts, if any are set up.
+4. From the left menu, select <i class="uil uil-bell"></i> *Alerting* → <i class="uil uil-list-ul"></i> *Integrated Alerting*. The default tab of the *Integrated Alerting* page lists alerts (if set up).
 
     ![!](../_images/PMM_Integrated_Alerting_Alerts.jpg)
 
