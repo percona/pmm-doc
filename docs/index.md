@@ -44,7 +44,7 @@ mindmapDiagram {
   node {
     ' Gap within nodes
     Padding 7
-    ' Gap between nodes
+    ' Gap between nodevishnu
     Margin 5
   }
 }
