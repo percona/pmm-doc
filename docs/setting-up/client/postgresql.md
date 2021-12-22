@@ -171,6 +171,13 @@ You can now [add the service](#add-service).
     shared_preload_libraries = 'pg_stat_monitor'
     ```
 
+    !!! caution alert alert-warning
+        If you use both `pg_stat_statements` and `pg_stat_monitor`, set ``pg_stat_monitor`` **after** `pg_stat_statements`:
+
+        ```ini
+        shared_preload_libraries = 'pg_stat_statements, pg_stat_monitor'
+        ```
+
 2. Set configuration values.
 
     In your `postgresql.conf` file:
@@ -224,7 +231,7 @@ When you have configured your database server, you can add a PostgreSQL service 
 
 If your PostgreSQL instance is configured to use TLS, click on the *Use TLS for database connections* check box and fill in your TLS certificates and key.
 
-![!](../../_images/PMM_Add_Instance_PostgreSQL_TLS.png)
+![!](../../_images/PMM_Add_Instance_PostgreSQL_TLS.jpg)
 
 !!! hint alert alert-success "Note"
     For TLS connection to work SSL needs to be configured in your PostgreSQL instance. Make sure SSL is enabled in the server configuration file `postgresql.conf`, and that hosts are allowed to connect in the client authentication configuration file `pg_hba.conf`. (See PostgreSQL documentation on [Secure TCP/IP Connections with SSL].)
