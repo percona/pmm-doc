@@ -291,6 +291,12 @@ track_io_timing = on             # Capture read/write stats
 <p>In your <code>postgresql.conf</code> file:</p>
 <div class="highlight"><pre><span></span><code><span class="na">shared_preload_libraries</span> <span class="o">=</span> <span class="s">&#39;pg_stat_monitor&#39;</span>
 </code></pre></div>
+<div class="admonition caution alert alert-warning">
+<p class="admonition-title">Caution</p>
+<p>If you use both <code>pg_stat_statements</code> and <code>pg_stat_monitor</code>, set <code>pg_stat_monitor</code> <strong>after</strong> <code>pg_stat_statements</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="na">shared_preload_libraries</span> <span class="o">=</span> <span class="s">&#39;pg_stat_statements, pg_stat_monitor&#39;</span>
+</code></pre></div>
+</div>
 </li>
 <li>
 <p>Set configuration values.</p>
@@ -458,7 +464,7 @@ The file is a yaml where each query can have these fields:</p>
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-12-14
+            <i class="uil uil-refresh"></i> Page updated 2021-12-22
         </li>
         
     </ul>
