@@ -354,7 +354,7 @@ When the guest OS starts, it will get an IP address from the hypervisor's DHCP s
     ```ini
     IPADDR=192.168.1.123 # replace with desired static IP address
     NETMASK=255.255.255.0 # replace with actual netmask for your IP address
-    GATEWAY=192.168.1.1 #replace with your actual network gateway
+    GATEWAY=192.168.1.1 # replace with your actual network gateway
     PEERDNS=no
     DNS1=192.168.1.53 #replace with your actual DNS server IP
     ```
