@@ -370,7 +370,7 @@ When the guest OS starts, it will get an IP address from the hypervisor's DHCP s
     ```sh
     ip addr show eth0
     ```
-8. Preserve network configuration across reboots
+8. Preserve the network configuration across reboots.
 
     ```sh
     echo "network: {config: disabled}" > /etc/cloud/cloud.cfg.d/99-disable-network-config.cfg
