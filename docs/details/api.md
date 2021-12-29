@@ -53,7 +53,7 @@ curl -H "Authorization: Bearer <api_key>" http://127.0.0.1/v1/version
 
 ### Use an API key
 
-You can pass the API key into a REST API call as a query parameter in the following format. Replace `api_key` with your API key.
+You can pass the API key into a REST API call as a query parameter in the following format. Replace `API_KEY` with your API key.
 
 **Example**
 
