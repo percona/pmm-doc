@@ -48,7 +48,7 @@ You can authenticate your request using the HTTP header.
 **Example**
 
 ```sh
-curl -H "Authorization: Bearer <api_key> http://127.0.0.1/graph/api/dashboards/home
+curl -H "Authorization: Bearer <api_key> http://127.0.0.1/v1/version
 ```
 
 ### Use an API key
