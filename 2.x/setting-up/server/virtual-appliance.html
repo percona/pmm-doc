@@ -524,9 +524,11 @@ pmm-server.vmx nogui
 </li>
 <li>
 <p>Add these values:</p>
-<div class="highlight"><pre><span></span><code><span class="na">IPADDR</span><span class="o">=</span><span class="s">192.168.1.123 # Example</span>
-<span class="na">NETMASK</span><span class="o">=</span><span class="s">255.255.255.0</span>
-<span class="na">GATEWAY</span><span class="o">=</span><span class="s">192.168.1.1</span>
+<div class="highlight"><pre><span></span><code><span class="na">IPADDR</span><span class="o">=</span><span class="s">192.168.1.123 # replace with the desired static IP address</span>
+<span class="na">NETMASK</span><span class="o">=</span><span class="s">255.255.255.0 # replace with the netmask for your IP address</span>
+<span class="na">GATEWAY</span><span class="o">=</span><span class="s">192.168.1.1 # replace with the network gateway for your IP address</span>
+<span class="na">PEERDNS</span><span class="o">=</span><span class="s">no</span>
+<span class="na">DNS1</span><span class="o">=</span><span class="s">192.168.1.53 # replace with your DNS server IP</span>
 </code></pre></div>
 </li>
 <li>
@@ -536,7 +538,10 @@ pmm-server.vmx nogui
 </li>
 <li>
 <p>Check the IP.</p>
-<div class="highlight"><pre><span></span><code>ip addr show eth0
+<p><div class="highlight"><pre><span></span><code>ip addr show eth0
+</code></pre></div>
+8. Preserve the network configuration across reboots.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">echo</span> <span class="s2">&quot;network: {config: disabled}&quot;</span> &gt; /etc/cloud/cloud.cfg.d/99-disable-network-config.cfg
 </code></pre></div>
 </li>
 </ol>
@@ -557,7 +562,7 @@ pmm-server.vmx nogui
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-06-29
+            <i class="uil uil-refresh"></i> Page updated 2021-12-29
         </li>
         
     </ul>
