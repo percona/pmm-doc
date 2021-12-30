@@ -46,10 +46,7 @@ PMM uses the Grafana API keys for authentication. Following are the steps to gen
 You can authenticate your request using the HTTPS header.
 
 !!! caution alert alert-warning "Important"
-    Use the `-k` or `--insecure` parameter to force cURL to ignore invalid and self-signed SSL certificate errors. The option will skip the SSL verification process, and you can bypass any SSL errors while still having SSL-encrypted communication. However, using the `--insecure`  parameter is not recommended. Although the data transfer is encrypted, it is not entirely secure. For enhanced security of your PMM installation, you need valid SSL certificates. For information on validating SSL certificates, visit: https://github.com/percona/pmm-doc/blob/decdf601c580174c7daa245e12b3c06e4f1e6319/docs/how-to/secure.md
-
-
-**Example**
+    Use the `-k` or `--insecure` parameter to force cURL to ignore invalid and self-signed SSL certificate errors. The option will skip the SSL verification process, and you can bypass any SSL errors while still having SSL-encrypted communication. However, using the `--insecure`  parameter is not recommended. Although the data transfer is encrypted, it is not entirely secure. For enhanced security of your PMM installation, you need valid SSL certificates. For information on validating SSL certificates, refer to: [SSL certificates](../how-to/secure.md).
 
 ```sh
 curl -H "Authorization: Bearer <api_key>" https://127.0.0.1/v1/version
