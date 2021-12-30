@@ -48,7 +48,7 @@ You can authenticate your request using the HTTP header.
 **Example**
 
 ```sh
-curl -H "Authorization: Bearer <api_key> http://127.0.0.1/graph/api/dashboards/home
+curl -H "Authorization: Bearer <api_key> https://127.0.0.1/graph/api/dashboards/home
 ```
 
 ### Use an API key
@@ -59,5 +59,8 @@ You can pass the API key into a REST API call as a query parameter in the follow
 
 
 ```sh
-curl -X GET https://api_key:API_KEY@localhost/v1/version
+curl -k -X GET https://api_key:API_KEY@localhost/v1/version
 ```
+
+!!! caution alert alert-warning "Important"
+Use the -k or --insecure option to force cURL to ignore invalid and self-signed SSL certificate errors. The option will skip the SSL verification process, and you can bypass any SSL error while still having SSL-encrypted communication.
