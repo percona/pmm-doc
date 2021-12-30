@@ -43,7 +43,11 @@ PMM uses the Grafana API keys for authentication. Following are the steps to gen
 
 ### Authenticate
 
-You can authenticate your request using the HTTP header.
+You can authenticate your request using the HTTPS header.
+
+!!! caution alert alert-warning "Important"
+    Use the `-k` or `--insecure` option to force cURL to ignore invalid and self-signed SSL certificate errors. The option will skip the SSL verification process, and you can bypass any SSL error while still having SSL-encrypted communication.
+
 
 **Example**
 
@@ -62,5 +66,3 @@ You can pass the API key into a REST API call as a query parameter in the follow
 curl -k -X GET https://api_key:API_KEY@localhost/v1/version
 ```
 
-!!! caution alert alert-warning "Important"
-Use the `-k` or `--insecure` option to force cURL to ignore invalid and self-signed SSL certificate errors. The option will skip the SSL verification process, and you can bypass any SSL error while still having SSL-encrypted communication.
