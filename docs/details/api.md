@@ -48,12 +48,12 @@ You can authenticate your request using the HTTP header.
 **Example**
 
 ```sh
-curl -H "Authorization: Bearer <api_key> https://127.0.0.1/graph/api/dashboards/home
+curl -H "Authorization: Bearer <api_key>" https://127.0.0.1/v1/version
 ```
 
-### Use an API key
+### Use an API key in basic auth
 
-You can pass the API key into a REST API call as a query parameter in the following format. Replace `api_key` with your API key.
+You can pass the API key into a REST API call as a query parameter in the following format. Replace `API_KEY` with your API key.
 
 **Example**
 
