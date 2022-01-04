@@ -142,34 +142,34 @@
 <p>Values for username (<code>user</code>) and password (<code>pwd</code>) are examples. Replace them before using this code.</p>
 </div>
 <p>Run this in a <code>mongo</code> session.</p>
-<div class="highlight"><pre><span></span><code><span class="err">db.ge</span><span class="kc">t</span><span class="err">Sibli</span><span class="kc">n</span><span class="err">gDB(</span><span class="s2">&quot;admin&quot;</span><span class="err">).crea</span><span class="kc">te</span><span class="err">Role(</span><span class="p">{</span>
-    <span class="err">role</span><span class="p">:</span> <span class="s2">&quot;explainRole&quot;</span><span class="p">,</span>
-    <span class="err">privileges</span><span class="p">:</span> <span class="p">[{</span>
-        <span class="err">resource</span><span class="p">:</span> <span class="p">{</span>
-            <span class="err">db</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-            <span class="err">collec</span><span class="kc">t</span><span class="err">io</span><span class="kc">n</span><span class="p">:</span> <span class="s2">&quot;&quot;</span>
-            <span class="p">},</span>
-        <span class="err">ac</span><span class="kc">t</span><span class="err">io</span><span class="kc">ns</span><span class="p">:</span> <span class="p">[</span>
-            <span class="s2">&quot;listIndexes&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;listCollections&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;dbStats&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;dbHash&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;collStats&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;find&quot;</span>
-            <span class="p">]</span>
-        <span class="p">}],</span>
-    <span class="err">roles</span><span class="p">:[]</span>
-<span class="p">}</span><span class="err">)</span>
+<div class="highlight"><pre><span></span><code><span class="err">db.ge</span><span class="kc">t</span><span class="err">Sibli</span><span class="kc">n</span><span class="err">gDB(</span><span class="s2">&quot;admin&quot;</span><span class="err">).crea</span><span class="kc">te</span><span class="err">Role(</span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="err">role</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;explainRole&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="err">privileges</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w"></span>
+<span class="w">        </span><span class="err">resource</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="err">db</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="err">collec</span><span class="kc">t</span><span class="err">io</span><span class="kc">n</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w"></span>
+<span class="w">            </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="err">ac</span><span class="kc">t</span><span class="err">io</span><span class="kc">ns</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;listIndexes&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;listCollections&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;dbStats&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;dbHash&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;collStats&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;find&quot;</span><span class="w"></span>
+<span class="w">            </span><span class="p">]</span><span class="w"></span>
+<span class="w">        </span><span class="p">}],</span><span class="w"></span>
+<span class="w">    </span><span class="err">roles</span><span class="p">:[]</span><span class="w"></span>
+<span class="p">}</span><span class="err">)</span><span class="w"></span>
 
-<span class="err">db.ge</span><span class="kc">t</span><span class="err">Sibli</span><span class="kc">n</span><span class="err">gDB(</span><span class="s2">&quot;admin&quot;</span><span class="err">).crea</span><span class="kc">te</span><span class="err">User(</span><span class="p">{</span>
-   <span class="err">user</span><span class="p">:</span> <span class="s2">&quot;pmm_mongodb&quot;</span><span class="p">,</span>
-   <span class="err">pwd</span><span class="p">:</span> <span class="s2">&quot;password&quot;</span><span class="p">,</span>
-   <span class="err">roles</span><span class="p">:</span> <span class="p">[</span>
-      <span class="p">{</span> <span class="err">role</span><span class="p">:</span> <span class="s2">&quot;explainRole&quot;</span><span class="p">,</span> <span class="err">db</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span> <span class="p">},</span>
-      <span class="p">{</span> <span class="err">role</span><span class="p">:</span> <span class="s2">&quot;clusterMonitor&quot;</span><span class="p">,</span> <span class="err">db</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span> <span class="p">},</span>
-      <span class="p">{</span> <span class="err">role</span><span class="p">:</span> <span class="s2">&quot;read&quot;</span><span class="p">,</span> <span class="err">db</span><span class="p">:</span> <span class="s2">&quot;local&quot;</span> <span class="p">}</span>
-   <span class="p">]</span>
-<span class="p">}</span><span class="err">)</span>
+<span class="err">db.ge</span><span class="kc">t</span><span class="err">Sibli</span><span class="kc">n</span><span class="err">gDB(</span><span class="s2">&quot;admin&quot;</span><span class="err">).crea</span><span class="kc">te</span><span class="err">User(</span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="err">user</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pmm_mongodb&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">   </span><span class="err">pwd</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;password&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">   </span><span class="err">roles</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">      </span><span class="p">{</span><span class="w"> </span><span class="err">role</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;explainRole&quot;</span><span class="p">,</span><span class="w"> </span><span class="err">db</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;admin&quot;</span><span class="w"> </span><span class="p">},</span><span class="w"></span>
+<span class="w">      </span><span class="p">{</span><span class="w"> </span><span class="err">role</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;clusterMonitor&quot;</span><span class="p">,</span><span class="w"> </span><span class="err">db</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;admin&quot;</span><span class="w"> </span><span class="p">},</span><span class="w"></span>
+<span class="w">      </span><span class="p">{</span><span class="w"> </span><span class="err">role</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;read&quot;</span><span class="p">,</span><span class="w"> </span><span class="err">db</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;local&quot;</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+<span class="w">   </span><span class="p">]</span><span class="w"></span>
+<span class="p">}</span><span class="err">)</span><span class="w"></span>
 </code></pre></div>
 <h2 id="profiling">Profiling<a class="headerlink" href="#profiling" title="Permanent link">&para;</a></h2>
 <p>To use PMM Query Analytics, you must turn on MongoDB&rsquo;s <a href="https://docs.mongodb.com/manual/tutorial/manage-the-database-profiler/">profiling feature</a>.</p>
@@ -223,8 +223,8 @@
 <h3 id="set-profiling-in-a-mongo-session">Set profiling in a <code>mongo</code> session<a class="headerlink" href="#set-profiling-in-a-mongo-session" title="Permanent link">&para;</a></h3>
 <p>In a <code>mongo</code> session, the profiler should be enabled <strong>per</strong> database.
 For example, to enable the profiler in the <code>testdb</code>, run this:</p>
-<div class="highlight"><pre><span></span><code><span class="err">use</span> <span class="kc">test</span><span class="err">db</span>
-<span class="err">db.se</span><span class="kc">t</span><span class="err">Pro</span><span class="kc">f</span><span class="err">ili</span><span class="kc">n</span><span class="err">gLevel(</span><span class="mi">2</span><span class="p">,</span> <span class="p">{</span><span class="err">slowms</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span><span class="err">)</span>
+<div class="highlight"><pre><span></span><code><span class="err">use</span><span class="w"> </span><span class="kc">test</span><span class="err">db</span><span class="w"></span>
+<span class="err">db.se</span><span class="kc">t</span><span class="err">Pro</span><span class="kc">f</span><span class="err">ili</span><span class="kc">n</span><span class="err">gLevel(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="err">slowms</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">}</span><span class="err">)</span><span class="w"></span>
 </code></pre></div>
 <div class="admonition note alert alert-primary">
 <p>If you have already <a href="#add-service">added a service</a>, you should remove it and re-add it after changing the profiling level.</p>

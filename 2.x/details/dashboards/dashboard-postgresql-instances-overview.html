@@ -182,8 +182,8 @@
 <p class="admonition-title">Tip</p>
 <p>Capturing read and write time statistics is possible only if <code>track_io_timing</code> setting is enabled. This can be done either in configuration file or with the following query executed on the running system:</p>
 </div>
-<div class="highlight"><pre><span></span><code><span class="k">ALTER</span> <span class="k">SYSTEM</span> <span class="k">SET</span> <span class="n">track_io_timing</span><span class="o">=</span><span class="k">ON</span><span class="p">;</span>
-<span class="k">SELECT</span> <span class="n">pg_reload_conf</span><span class="p">();</span>
+<div class="highlight"><pre><span></span><code><span class="k">ALTER</span><span class="w"> </span><span class="k">SYSTEM</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">track_io_timing</span><span class="o">=</span><span class="k">ON</span><span class="p">;</span><span class="w"></span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">pg_reload_conf</span><span class="p">();</span><span class="w"></span>
 </code></pre></div>
 <dl>
 <dt>Buffers</dt>

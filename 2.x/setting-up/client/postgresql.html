@@ -144,13 +144,13 @@
 <ol>
 <li>
 <p>Create a user. This example uses <code>pmm</code>. (Replace <code>******</code> with a strong password of your choice.)</p>
-<div class="highlight"><pre><span></span><code><span class="k">CREATE</span> <span class="k">USER</span> <span class="n">pmm</span> <span class="k">WITH</span> <span class="n">SUPERUSER</span> <span class="k">ENCRYPTED</span> <span class="n">PASSWORD</span> <span class="s1">&#39;******&#39;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">USER</span><span class="w"> </span><span class="n">pmm</span><span class="w"> </span><span class="k">WITH</span><span class="w"> </span><span class="n">SUPERUSER</span><span class="w"> </span><span class="k">ENCRYPTED</span><span class="w"> </span><span class="n">PASSWORD</span><span class="w"> </span><span class="s1">&#39;******&#39;</span><span class="p">;</span><span class="w"></span>
 </code></pre></div>
 <p>If your database runs on Amazon RDS:</p>
-<p><div class="highlight"><pre><span></span><code><span class="k">CREATE</span> <span class="k">USER</span> <span class="n">pmm</span> <span class="k">WITH</span> <span class="n">rds_superuser</span> <span class="k">ENCRYPTED</span> <span class="n">PASSWORD</span> <span class="s1">&#39;******&#39;</span><span class="p">;</span>
+<p><div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">USER</span><span class="w"> </span><span class="n">pmm</span><span class="w"> </span><span class="k">WITH</span><span class="w"> </span><span class="n">rds_superuser</span><span class="w"> </span><span class="k">ENCRYPTED</span><span class="w"> </span><span class="n">PASSWORD</span><span class="w"> </span><span class="s1">&#39;******&#39;</span><span class="p">;</span><span class="w"></span>
 </code></pre></div>
 Optionally, you can also set up a connection limit (only if the user is not a SUPERUSER):</p>
-<div class="highlight"><pre><span></span><code><span class="k">ALTER</span> <span class="k">USER</span> <span class="n">pmm</span> <span class="k">CONNECTION</span> <span class="k">LIMIT</span> <span class="mi">10</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">ALTER</span><span class="w"> </span><span class="k">USER</span><span class="w"> </span><span class="n">pmm</span><span class="w"> </span><span class="k">CONNECTION</span><span class="w"> </span><span class="k">LIMIT</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"></span>
 </code></pre></div>
 </li>
 <li>
@@ -293,19 +293,19 @@ track_io_timing = on             # Capture read/write stats
 <li>
 <p>Set or change the value for <code>shared_preload_library</code>.</p>
 <p>In your <code>postgresql.conf</code> file:</p>
-<div class="highlight"><pre><span></span><code><span class="na">shared_preload_libraries</span> <span class="o">=</span> <span class="s">&#39;pg_stat_monitor&#39;</span>
+<div class="highlight"><pre><span></span><code><span class="na">shared_preload_libraries</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;pg_stat_monitor&#39;</span><span class="w"></span>
 </code></pre></div>
 <div class="admonition caution alert alert-warning">
 <p class="admonition-title">Caution</p>
 <p>If you use both <code>pg_stat_statements</code> and <code>pg_stat_monitor</code>, set <code>pg_stat_monitor</code> <strong>after</strong> <code>pg_stat_statements</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="na">shared_preload_libraries</span> <span class="o">=</span> <span class="s">&#39;pg_stat_statements, pg_stat_monitor&#39;</span>
+<div class="highlight"><pre><span></span><code><span class="na">shared_preload_libraries</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;pg_stat_statements, pg_stat_monitor&#39;</span><span class="w"></span>
 </code></pre></div>
 </div>
 </li>
 <li>
 <p>Set configuration values.</p>
 <p>In your <code>postgresql.conf</code> file:
-<div class="highlight"><pre><span></span><code><span class="na">pg_stat_monitor.pgsm_query_max_len</span> <span class="o">=</span> <span class="s">2048</span>
+<div class="highlight"><pre><span></span><code><span class="na">pg_stat_monitor.pgsm_query_max_len</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">2048</span><span class="w"></span>
 </code></pre></div></p>
 <div class="admonition caution alert alert-warning">
 <p class="admonition-title">Caution</p>
@@ -321,7 +321,7 @@ track_io_timing = on             # Capture read/write stats
 </li>
 <li>
 <p>In a <code>psql</code> session:</p>
-<div class="highlight"><pre><span></span><code><span class="k">CREATE</span> <span class="n">EXTENSION</span> <span class="n">pg_stat_monitor</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="n">EXTENSION</span><span class="w"> </span><span class="n">pg_stat_monitor</span><span class="p">;</span><span class="w"></span>
 </code></pre></div>
 <p>This command creates the view where you can access the collected statistics.</p>
 <div class="admonition note alert alert-primary">
@@ -330,7 +330,7 @@ track_io_timing = on             # Capture read/write stats
 </li>
 <li>
 <p>Check the version.</p>
-<div class="highlight"><pre><span></span><code><span class="k">SELECT</span> <span class="n">pg_stat_monitor_version</span><span class="p">();</span>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">pg_stat_monitor_version</span><span class="p">();</span><span class="w"></span>
 </code></pre></div>
 </li>
 </ol>

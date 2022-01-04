@@ -305,34 +305,34 @@
 </li>
 <li>
 <p>Enter a template in the <em>Alert Rule Template</em> text box.</p>
-<div class="highlight"><pre><span></span><code><span class="nn">---</span>
-<span class="nt">templates</span><span class="p">:</span>
-    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mysql_too_many_connections</span>
-      <span class="nt">version</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
-      <span class="nt">summary</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">MySQL connections in use</span>
-      <span class="nt">tiers</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">anonymous</span><span class="p p-Indicator">,</span> <span class="nv">registered</span><span class="p p-Indicator">]</span>
-      <span class="nt">expr</span><span class="p">:</span> <span class="p p-Indicator">|-</span>
-        <span class="no">max_over_time(mysql_global_status_threads_connected[5m]) / ignoring (job)</span>
-        <span class="no">mysql_global_variables_max_connections</span>
-        <span class="no">* 100</span>
-        <span class="no">&gt; [[ .threshold ]]</span>
-      <span class="nt">params</span><span class="p">:</span>
-        <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">threshold</span>
-          <span class="nt">summary</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">A percentage from configured maximum</span>
-          <span class="nt">unit</span><span class="p">:</span> <span class="s">&#39;%&#39;</span>
-          <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">float</span>
-          <span class="nt">range</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">0</span><span class="p p-Indicator">,</span> <span class="nv">100</span><span class="p p-Indicator">]</span>
-          <span class="nt">value</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">80</span>
-      <span class="nt">for</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">5m</span>
-      <span class="nt">severity</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">warning</span>
-      <span class="nt">labels</span><span class="p">:</span>
-        <span class="nt">foo</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">bar</span>
-      <span class="nt">annotations</span><span class="p">:</span>
-        <span class="nt">description</span><span class="p">:</span> <span class="p p-Indicator">|-</span>
-            <span class="no">More than [[ .threshold ]]% of MySQL connections are in use on {{ $labels.instance }}</span>
-            <span class="no">VALUE = {{ $value }}</span>
-            <span class="no">LABELS: {{ $labels }}</span>
-        <span class="nt">summary</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">MySQL too many connections (instance {{ $labels.instance }})</span>
+<div class="highlight"><pre><span></span><code><span class="nn">---</span><span class="w"></span>
+<span class="nt">templates</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mysql_too_many_connections</span><span class="w"></span>
+<span class="w">      </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span><span class="w"></span>
+<span class="w">      </span><span class="nt">summary</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MySQL connections in use</span><span class="w"></span>
+<span class="w">      </span><span class="nt">tiers</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">anonymous</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">registered</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="w">      </span><span class="nt">expr</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|-</span><span class="w"></span>
+<span class="w">        </span><span class="no">max_over_time(mysql_global_status_threads_connected[5m]) / ignoring (job)</span><span class="w"></span>
+<span class="w">        </span><span class="no">mysql_global_variables_max_connections</span><span class="w"></span>
+<span class="w">        </span><span class="no">* 100</span><span class="w"></span>
+<span class="w">        </span><span class="no">&gt; [[ .threshold ]]</span><span class="w"></span>
+<span class="w">      </span><span class="nt">params</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">threshold</span><span class="w"></span>
+<span class="w">          </span><span class="nt">summary</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A percentage from configured maximum</span><span class="w"></span>
+<span class="w">          </span><span class="nt">unit</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;%&#39;</span><span class="w"></span>
+<span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">float</span><span class="w"></span>
+<span class="w">          </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">100</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="w">          </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span><span class="w"></span>
+<span class="w">      </span><span class="nt">for</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5m</span><span class="w"></span>
+<span class="w">      </span><span class="nt">severity</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">warning</span><span class="w"></span>
+<span class="w">      </span><span class="nt">labels</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">foo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bar</span><span class="w"></span>
+<span class="w">      </span><span class="nt">annotations</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|-</span><span class="w"></span>
+<span class="w">            </span><span class="no">More than [[ .threshold ]]% of MySQL connections are in use on {{ $labels.instance }}</span><span class="w"></span>
+<span class="w">            </span><span class="no">VALUE = {{ $value }}</span><span class="w"></span>
+<span class="w">            </span><span class="no">LABELS: {{ $labels }}</span><span class="w"></span>
+<span class="w">        </span><span class="nt">summary</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MySQL too many connections (instance {{ $labels.instance }})</span><span class="w"></span>
 </code></pre></div>
 <p><div class="lightgallery"><a data-sub-html="" href="../_images/PMM_Integrated_Alerting_Alert_Rule_Templates_Add_Form.jpg"><img alt="" src="../_images/PMM_Integrated_Alerting_Alert_Rule_Templates_Add_Form.jpg" /></a></div></p>
 <div class="admonition note alert alert-primary">

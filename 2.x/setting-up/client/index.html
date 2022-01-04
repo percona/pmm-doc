@@ -218,33 +218,33 @@ pmm-admin status
 <ol>
 <li>
 <p>Copy and paste this text into a file called <code>docker-compose.yml</code>.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span> <span class="s">&#39;2&#39;</span>
-<span class="nt">services</span><span class="p">:</span>
-  <span class="nt">pmm-client</span><span class="p">:</span>
-    <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">percona/pmm-client:2</span>
-    <span class="nt">hostname</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">pmm-client-myhost</span>
-    <span class="nt">container_name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">pmm-client</span>
-    <span class="nt">restart</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">always</span>
-    <span class="nt">ports</span><span class="p">:</span>
-      <span class="p p-Indicator">-</span> <span class="s">&quot;42000:42000&quot;</span>
-      <span class="p p-Indicator">-</span> <span class="s">&quot;42001:42001&quot;</span>
-    <span class="nt">logging</span><span class="p">:</span>
-      <span class="nt">driver</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">json-file</span>
-      <span class="nt">options</span><span class="p">:</span>
-        <span class="nt">max-size</span><span class="p">:</span> <span class="s">&quot;10m&quot;</span>
-        <span class="nt">max-file</span><span class="p">:</span> <span class="s">&quot;5&quot;</span>
-    <span class="nt">volumes</span><span class="p">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">./pmm-agent.yaml:/etc/pmm-agent.yaml</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">pmm-client-data:/srv</span>
-    <span class="nt">environment</span><span class="p">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">PMM_AGENT_CONFIG_FILE=/etc/pmm-agent.yaml</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">PMM_AGENT_SERVER_USERNAME=admin</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">PMM_AGENT_SERVER_PASSWORD=admin</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">PMM_AGENT_SERVER_ADDRESS=X.X.X.X:443</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">PMM_AGENT_SERVER_INSECURE_TLS=true</span>
-    <span class="nt">entrypoint</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">pmm-agent setup</span>
-<span class="nt">volumes</span><span class="p">:</span>
-  <span class="nt">pmm-client-data</span><span class="p">:</span>
+<div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;2&#39;</span><span class="w"></span>
+<span class="nt">services</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">pmm-client</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">percona/pmm-client:2</span><span class="w"></span>
+<span class="w">    </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pmm-client-myhost</span><span class="w"></span>
+<span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pmm-client</span><span class="w"></span>
+<span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">always</span><span class="w"></span>
+<span class="w">    </span><span class="nt">ports</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;42000:42000&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;42001:42001&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">logging</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">driver</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">json-file</span><span class="w"></span>
+<span class="w">      </span><span class="nt">options</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">max-size</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;10m&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="nt">max-file</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;5&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">volumes</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./pmm-agent.yaml:/etc/pmm-agent.yaml</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pmm-client-data:/srv</span><span class="w"></span>
+<span class="w">    </span><span class="nt">environment</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PMM_AGENT_CONFIG_FILE=/etc/pmm-agent.yaml</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PMM_AGENT_SERVER_USERNAME=admin</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PMM_AGENT_SERVER_PASSWORD=admin</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PMM_AGENT_SERVER_ADDRESS=X.X.X.X:443</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PMM_AGENT_SERVER_INSECURE_TLS=true</span><span class="w"></span>
+<span class="w">    </span><span class="nt">entrypoint</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pmm-agent setup</span><span class="w"></span>
+<span class="nt">volumes</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">pmm-client-data</span><span class="p">:</span><span class="w"></span>
 </code></pre></div>
 <div class="admonition note alert alert-info">
 <ul>
@@ -265,8 +265,8 @@ pmm-admin status
 </li>
 <li>
 <p>Edit <code>docker-compose.yml</code>, comment out the <code>entrypoint</code> line (insert a <code>#</code>) and save.</p>
-<div class="highlight"><pre><span></span><code><span class="nn">...</span>
-<span class="c1">#        entrypoint: pmm-agent setup</span>
+<div class="highlight"><pre><span></span><code><span class="nn">...</span><span class="w"></span>
+<span class="c1">#        entrypoint: pmm-agent setup</span><span class="w"></span>
 </code></pre></div>
 </li>
 <li>
