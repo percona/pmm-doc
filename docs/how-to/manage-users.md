@@ -36,7 +36,7 @@ You can grant or revoke admin access to a user as follows:
 4. Click *Change*.
 
 !!! caution alert alert-warning "Important"
-Once your PMM instance is connected to the Percona Platform and you log in with your Percona Account, you will be granted *Viewer* access. For admin access, log in to PMM as an admin, and change the permissions for this user.
+    Once your PMM instance is connected to the Percona Platform and you log in with your Percona Account, you will be granted *Viewer* access. For admin access, log in to PMM as an admin, and change the permissions for this user.
 
 ### Change organization role
 
@@ -58,13 +58,13 @@ The following are the privileges for the various roles:
 
 - Viewer - Viewing dashboards.
 
-For detailed information on the privileges for these roles and the different tasks that they can perform, refer to: https://grafana.com/docs/grafana/latest/permissions/organization_roles/
+For detailed information on the privileges for these roles and the different tasks that they can perform, refer to: [Organization roles](https://grafana.com/docs/grafana/latest/permissions/organization_roles/).
 
 
 
 ## Delete Users
 
-You can delete a user as follows:
+You can delete a user in PMM as follows:
 
 1. On the *User* tab, click the user you want to delete.
 
