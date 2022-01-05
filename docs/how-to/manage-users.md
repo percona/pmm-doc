@@ -58,7 +58,7 @@ The following are the privileges for the various roles:
 
 - Viewer - Viewing dashboards.
 
-For detailed information on the privileges for these roles and the different tasks that they can perform, refer to: [Organization roles](https://grafana.com/docs/grafana/latest/permissions/organization_roles/).
+For detailed information on the privileges for these roles and the different tasks that they can perform, refer to: [Grafana organization roles](https://grafana.com/docs/grafana/latest/permissions/organization_roles/).
 
 
 
