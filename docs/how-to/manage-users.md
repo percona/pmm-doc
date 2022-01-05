@@ -36,7 +36,7 @@ You can grant or revoke admin access to a user as follows:
 4. Click *Change*.
 
 !!! caution alert alert-warning "Important"
-    Once your PMM instance is connected to the Percona Platform and you log in with your Percona Account, you will be granted *Viewer* access. For admin access, log in to PMM as an admin, and change the permissions for this user.
+    After connecting your PMM instance to the Percona Platform, when you log in using your Percona account, you will be granted the *Viewer* access. For *Admin* access, log in to PMM as an admin, and change the permissions for this user.
 
 ### Change organization role
 
