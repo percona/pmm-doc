@@ -1,6 +1,8 @@
 # How to
 
 - [Configure](configure.md) via the PMM Settings page.
+- [Manage users](manage-users.md) via the PMM Users page.
+- [Connect PMM to Percona Platform](connect-platform.md) vis the PMM Settings Page
 - [Upgrade](upgrade.md) PMM Server via the user interface.
 - [Secure](secure.md) your PMM installation.
 - [Optimize](optimize.md) the performance of your PMM installation.
