@@ -5,10 +5,15 @@ This topic explains user management in PMM.
 You can manage users from the [main menu](../details/interface.md#main-menu) by navigating to *Server Admin → Users* page.
 
 
-![!image](../_images/PMM-add-new-user.png)
+![!image](../_images/PMM-manage-users.png)
+
 
 
 ## Add users
+
+You can add a user in PMM from *User → New user* tab.
+
+![!image](../_images/PMM-add-new-user.png)
 
 To add a new user in PMM:
 
