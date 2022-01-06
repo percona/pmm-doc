@@ -149,6 +149,8 @@ nav:
               - details/dashboards/dashboard-victoriametrics-agents-overview.md
           - PMM:
               - details/dashboards/dashboard-inventory.md
+              - details/dashboards/dashboard-env-overview.md
+              - details/dashboards/dashboard-environent-summary.md
           - DBaas:
               - details/dashboards/dashboard-cluster-summary.md
           - OS Dashboards:
