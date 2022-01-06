@@ -48,7 +48,10 @@ You can grant or revoke admin access to a user as follows:
 
 ### Change organization role
 
-You can change the organization role assigned to your user account. 
+You can change the organization role assigned to your user account.
+
+
+![!image](../_images/PMM-change-role.png)
 
 To change the role:
 
