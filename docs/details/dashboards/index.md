@@ -9,6 +9,7 @@
 | Insight           | [VictoriaMetrics]                                                                        | 52
 | Insight           | [VictoriaMetrics Agents Overview]                                                        | 58
 | PMM               | [PMM Inventory]                                                                          | 0
+| DBaas             | [DB Cluster Summary]                                                                     | 0
 | OS                | [CPU Utilization Details]                                                                | 21
 | OS                | [Disk Details]                                                                           | 34
 | OS                | [Network Details]                                                                        | 70
@@ -57,6 +58,7 @@
 
 [Advanced Data Exploration]: dashboard-advanced-data-exploration.md
 [Home Dashboard]: dashboard-home.md
+[DB Cluster Summary]: dashboard-cluster-summary.md
 [Prometheus Exporter Status]: dashboard-prometheus-exporter-status.md
 [Prometheus Exporters Overview]: dashboard-prometheus-exporters-overview.md
 [VictoriaMetrics]: dashboard-victoriametrics.md
@@ -107,3 +109,4 @@
 [PXC/Galera Cluster Summary]: dashboard-pxc-galera-cluster-summary.md
 [PXC/Galera Nodes Compare]: dashboard-pxc-galera-nodes-compare.md
 [HAProxy Instance Summary]: dashboard-haproxy-instance-summary.md
+
