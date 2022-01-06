@@ -323,6 +323,48 @@ When you remove a service, collected data remains on PMM Server for the specifie
         - `push`: agent will push metrics.
         - `pull`: server scrapes metrics from agent.
 
+## Advanced Options
+
+### Enable all collectors
+
+By default, PMM starts the MongoDB exporter using these parameters:
+
+|Parameter|Description|
+|-----|-----|
+|`--collector.diagnosticdata`|Enable `getDiagnosticData` collector|
+|`--collector.replicasetstatus`|Enable `replSetGetStatus` collector|
+|`--discovering-mode`|Auto discover all databases and collections|
+|`--compatible-mode`|Enable MongoDB exporter v1 compatible metric names|
+|`--mongodb.global-conn-pool`|Use a single connection to the DB instead of connecting in each scrape|
+|`--collector.collstats-limit=200`|Enable collStats and indexStats only if there are less than n collections in total|
+
+To enable all collectors, add `--enable-all-collectors` to the `pmm-admin add mongodb` command.
+This will enable: `collstats`, `dbstats`, `indexstats` and the `topmetrics` collectors.
+
+### Disable some collectors.
+
+To enable some collectors but not all of them, it is posible to combine `--enable-all-collectors` along with `--disable-collectors`.  
+For example, if you want all collectors except `topmetrics`, specify:
+```
+--enable-all-collectors --disable-collectors=topmetrics
+```
+
+### Limiting dbStats, collStats and indexStats
+
+By default, all the collectors are enabled. However, collStats and indexStats are enabled if there are less than 
+200 collections across all the databases. This excludes the collections in the system databases admin, config, and local.
+
+The `--collector.collstats-limit` also accepts `-1` to indicate an unlimited number of collections collStats and indexStats can handle.
+
+Also, it is possible to enable collStats and indexStats only for some databases or collections.  
+
+Using --stats-collections, you can specify the databases and collections from which collStats and indexStats will collect data.  
+This parameter receives a comma-separated list of namespaces in the form database. collection.
+
+#### Usage example
+`--stats-collections=db1,db2.col1` will run the collectors for all collections in db1 but only for collection `col1` from database `db2`.
+
+
 #### MySQL
 
 `pmm-admin add mysql [FLAGS] node-name node-address | [--name=service-name] --address=address[:port] | --socket`
