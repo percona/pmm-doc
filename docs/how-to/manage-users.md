@@ -43,7 +43,7 @@ You can grant or revoke admin access to a user as follows:
 
 ### Change organization role
 
-You can change the organization role assigned to your account. 
+You can change the organization role assigned to your user account. 
 
 To change the role:
 
