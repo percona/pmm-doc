@@ -356,13 +356,13 @@ For example, if you want all collectors except `topmetrics`, specify:
 
  All the collectors are enabled by default. However, collStats and indexStats are enabled if there are less than 200 collections across all the databases, excluding the admin, config, and local system databases.
 
-For collStats and indexStats:
+For collStats and indexStats you can:
 
-- The value of the parameter `-collector.collstats-limit` -1 indicates that collStats and indexStats can handle unlimited collections.
+- Set the value of the parameter `-collector.collstats-limit` to -1, which indicates that collStats and indexStats can handle unlimited collections.
  
-- You can enable collStats and indexStats for some databases or collections also.
+- Enable collStats and indexStats for some databases or collections also.
  
-- You can specify the databases and collections that collStats and indexStats will use to collect data using the parameter `--stats-collections`. This parameter receives a comma-separated list of namespaces in the form `database.collection`.
+- Specify the databases and collections that collStats and indexStats will use to collect data using the parameter `--stats-collections`. This parameter receives a comma-separated list of namespaces in the form `database.collection`.
 
 
 #### Example
