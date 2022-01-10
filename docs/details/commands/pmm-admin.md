@@ -367,7 +367,7 @@ For collStats and indexStats:
 
 #### Example
 
-If `--stats-collections=db1,db2.col1`:
+If `--stats-collections=db1,db2.col1` then the collectors are run as:
 
 |Database|Collector is run on|
 |-----|-----|
