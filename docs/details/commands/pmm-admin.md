@@ -327,42 +327,53 @@ When you remove a service, collected data remains on PMM Server for the specifie
 
 ### Enable all collectors
 
-By default, PMM starts the MongoDB exporter using these parameters:
+PMM starts the MongoDB exporter by default by using these these parameters:
 
 |Parameter|Description|
 |-----|-----|
-|`--collector.diagnosticdata`|Enable `getDiagnosticData` collector|
-|`--collector.replicasetstatus`|Enable `replSetGetStatus` collector|
-|`--discovering-mode`|Auto discover all databases and collections|
-|`--compatible-mode`|Enable MongoDB exporter v1 compatible metric names|
-|`--mongodb.global-conn-pool`|Use a single connection to the DB instead of connecting in each scrape|
-|`--collector.collstats-limit=200`|Enable collStats and indexStats only if there are less than n collections in total|
+|`--collector.diagnosticdata`|Enables `getDiagnosticData` collector|
+|`--collector.replicasetstatus`|Enables `replSetGetStatus` collector|
+|`--discovering-mode`|Auto discovers all databases and collections|
+|`--compatible-mode`|Enables MongoDB exporter v1 compatible metric names|
+|`--mongodb.global-conn-pool`|Uses a single connection to the DB instead of connecting in each scrape|
+|`--collector.collstats-limit=200`|Enables collStats and indexStats only if there are less than n collections in total|
 
-To enable all collectors, add `--enable-all-collectors` to the `pmm-admin add mongodb` command.
-This will enable: `collstats`, `dbstats`, `indexstats` and the `topmetrics` collectors.
+To enable all collectors, pass the parameter `--enable-all-collectors` in the `pmm-admin add mongodb` command.
 
-### Disable some collectors.
+This will enable `collstats`, `dbstats`, `indexstats`, and `topmetrics` collectors.
 
-To enable some collectors but not all of them, it is posible to combine `--enable-all-collectors` along with `--disable-collectors`.  
+### Disable some collectors
+
+To enable only some collectors, pass the parameter `--enable-all-collectors` along with the parameter `--disable-collectors`.
+
 For example, if you want all collectors except `topmetrics`, specify:
+
 ```
 --enable-all-collectors --disable-collectors=topmetrics
 ```
 
-### Limiting dbStats, collStats and indexStats
+### Limit dbStats, collStats and indexStats
 
-By default, all the collectors are enabled. However, collStats and indexStats are enabled if there are less than 
-200 collections across all the databases. This excludes the collections in the system databases admin, config, and local.
+ All the collectors are enabled by default. However, collStats and indexStats are enabled if there are less than 200 collections across all the databases, excluding the admin, config, and local system databases.
 
-The `--collector.collstats-limit` also accepts `-1` to indicate an unlimited number of collections collStats and indexStats can handle.
+For collStats and indexStats:
 
-Also, it is possible to enable collStats and indexStats only for some databases or collections.  
+- The value of the parameter `-collector.collstats-limit` -1 indicates that collStats and indexStats can handle unlimited collections.
+ 
+- You can enable collStats and indexStats for some databases or collections also.
+ 
+- You can specify the databases and collections that collStats and indexStats will use to collect data using the parameter `--stats-collections`. This parameter receives a comma-separated list of namespaces in the form `database.collection`.
 
-Using --stats-collections, you can specify the databases and collections from which collStats and indexStats will collect data.  
-This parameter receives a comma-separated list of namespaces in the form database. collection.
 
-#### Usage example
-`--stats-collections=db1,db2.col1` will run the collectors for all collections in db1 but only for collection `col1` from database `db2`.
+#### Example
+
+If `--stats-collections=db1,db2.col1`:
+
+|Database|Collector is run on|
+|-----|-----|
+|db1| All the collections|
+|db2| **Only** for collection col1|
+
 
 
 #### MySQL
