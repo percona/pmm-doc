@@ -1,0 +1,3233 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentation">
+      
+      
+        <meta name="author" content="Percona LLC">
+      
+      
+        <link rel="canonical" href="https://pmm-doc.netlify.app/2.x/setting-up/server/aws.html">
+      
+      <link rel="icon" href="../../_images/percona-favicon.ico">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.5">
+    
+    
+      
+        <title>AWS Marketplace - Percona Monitoring and Management</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ee0f47ba.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.e6a45f82.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.3/css/line.css">
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+    
+      <link rel="stylesheet" href="../../css/percona.css">
+    
+      <link rel="stylesheet" href="../../css/lightgallery.min.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="percona-light" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#aws-marketplace" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-component="outdated" hidden>
+        <aside class="md-banner md-banner--warning">
+          
+        </aside>
+      </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../index.html" title="Percona Monitoring and Management" class="md-header__button md-logo" aria-label="Percona Monitoring and Management" data-md-component="logo">
+      
+  <img src="../../_images/percona-logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Percona Monitoring and Management
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              AWS Marketplace
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/percona/pmm-doc/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    percona/pmm-doc
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../index.html" title="Percona Monitoring and Management" class="md-nav__button md-logo" aria-label="Percona Monitoring and Management" data-md-component="logo">
+      
+  <img src="../../_images/percona-logo.svg" alt="logo">
+
+    </a>
+    Percona Monitoring and Management
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/percona/pmm-doc/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    percona/pmm-doc
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../index.html" class="md-nav__link">
+        Welcome
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../index.html">Setting up</a>
+          
+            <label for="__nav_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Setting up" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Setting up
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" type="checkbox" id="__nav_2_1" checked>
+      
+      
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="index.html">Server</a>
+          
+            <label for="__nav_2_1">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Server" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          Server
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="network.html" class="md-nav__link">
+        Network
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="docker.html" class="md-nav__link">
+        Docker
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="virtual-appliance.html" class="md-nav__link">
+        Virtual Appliance
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          AWS Marketplace
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="aws.html" class="md-nav__link md-nav__link--active">
+        AWS Marketplace
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#limiting-access-to-the-instance-security-group-and-a-key-pair" class="md-nav__link">
+    Limiting Access to the instance: security group and a key pair
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#applying-settings" class="md-nav__link">
+    Applying settings
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adjusting-instance-settings-in-the-ec2-console" class="md-nav__link">
+    Adjusting instance settings in the EC2 Console
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-the-instance" class="md-nav__link">
+    Running the instance
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resizing-the-ebs-volume" class="md-nav__link">
+    Resizing the EBS Volume
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#upgrading-pmm-server-on-aws" class="md-nav__link">
+    Upgrading PMM Server on AWS
+  </a>
+  
+    <nav class="md-nav" aria-label="Upgrading PMM Server on AWS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#change-public-ip-address" class="md-nav__link">
+    Change Public IP address
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#upgrading-ec2-instance-class" class="md-nav__link">
+    Upgrading EC2 instance class
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#expanding-the-pmm-data-ebs-volume" class="md-nav__link">
+    Expanding the PMM Data EBS Volume
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#expand-existing-ebs-volume" class="md-nav__link">
+    Expand existing EBS volume
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#expand-the-amazon-ebs-root-volume" class="md-nav__link">
+    Expand the Amazon EBS root volume
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#backup-pmm-server" class="md-nav__link">
+    Backup PMM Server
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#restore-pmm-server-from-a-backup" class="md-nav__link">
+    Restore PMM Server from a backup
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#remove-pmm-server" class="md-nav__link">
+    Remove PMM Server
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="easy-install.html" class="md-nav__link">
+        Easy-install script
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="dbaas.html" class="md-nav__link">
+        DBaaS
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" >
+      
+      
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../client/index.html">Client</a>
+          
+            <label for="__nav_2_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Client" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Client
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../client/mysql.html" class="md-nav__link">
+        MySQL
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../client/mongodb.html" class="md-nav__link">
+        MongoDB
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../client/postgresql.html" class="md-nav__link">
+        PostgreSQL
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../client/proxysql.html" class="md-nav__link">
+        ProxySQL
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../client/aws.html" class="md-nav__link">
+        Amazon RDS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../client/azure.html" class="md-nav__link">
+        Microsoft Azure
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../client/google.html" class="md-nav__link">
+        Google Cloud Platform
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../client/linux.html" class="md-nav__link">
+        Linux
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../client/external.html" class="md-nav__link">
+        External Services
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../client/haproxy.html" class="md-nav__link">
+        HAProxy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../client/remote.html" class="md-nav__link">
+        Remote instances
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../using/index.html">Using</a>
+          
+            <label for="__nav_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Using" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Using
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../using/interface.html" class="md-nav__link">
+        User Interface
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../using/alerting.html" class="md-nav__link">
+        Integrated Alerting
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../using/backup.html" class="md-nav__link">
+        Backup and Restore
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../using/query-analytics.html" class="md-nav__link">
+        Query Analytics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../using/dbaas.html" class="md-nav__link">
+        DBaaS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../using/security-threat-tool.html" class="md-nav__link">
+        Security Threat Tool
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../how-to/index.html">How to</a>
+          
+            <label for="__nav_4">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="How to" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          How to
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-to/configure.html" class="md-nav__link">
+        Configure
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-to/upgrade.html" class="md-nav__link">
+        Upgrade
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-to/secure.html" class="md-nav__link">
+        Secure
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-to/optimize.html" class="md-nav__link">
+        Optimize
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-to/annotate.html" class="md-nav__link">
+        Annotate
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-to/render-dashboard-images.html" class="md-nav__link">
+        Render dashboard images
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-to/extend-metrics.html" class="md-nav__link">
+        Extend Metrics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-to/troubleshoot.html" class="md-nav__link">
+        Troubleshoot
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../details/index.html">Details</a>
+          
+            <label for="__nav_5">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Details" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Details
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../details/architecture.html" class="md-nav__link">
+        Architecture
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../details/interface.html" class="md-nav__link">
+        UI components
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_3" type="checkbox" id="__nav_5_3" >
+      
+      
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../details/dashboards/index.html">Dashboards</a>
+          
+            <label for="__nav_5_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Dashboards" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_3">
+          <span class="md-nav__icon md-icon"></span>
+          Dashboards
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_3_1" type="checkbox" id="__nav_5_3_1" >
+      
+      
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../details/dashboards/dashboard-home.html">Insight</a>
+          
+            <label for="__nav_5_3_1">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Insight" data-md-level="3">
+        <label class="md-nav__title" for="__nav_5_3_1">
+          <span class="md-nav__icon md-icon"></span>
+          Insight
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../details/dashboards/dashboard-advanced-data-exploration.html" class="md-nav__link">
+        Advanced Data Exploration
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../details/dashboards/dashboard-victoriametrics.html" class="md-nav__link">
+        VictoriaMetrics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../details/dashboards/dashboard-victoriametrics-agents-overview.html" class="md-nav__link">
+        VictoriaMetrics Agents Overview
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../details/dashboards/dashboard-inventory.html" class="md-nav__link">
+        PMM
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_3_3" type="checkbox" id="__nav_5_3_3" >
+      
+      
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../details/dashboards/dashboard-cpu-utilization-details.html">OS Dashboards</a>
+          
+            <label for="__nav_5_3_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="OS Dashboards" data-md-level="3">
+        <label class="md-nav__title" for="__nav_5_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          OS Dashboards
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../details/dashboards/dashboard-disk-details.html" class="md-nav__link">
+        Disk Details
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../details/dashboards/dashboard-network-details.html" class="md-nav__link">
+        Network Details
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../details/dashboards/dashboard-memory-details.html" class="md-nav__link">
+        Memory Details
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../details/dashboards/dashboard-node-temperature-details.html" class="md-nav__link">
+        Node Temperature Details
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../details/dashboards/dashboard-nodes-compare.html" class="md-nav__link">
+        Nodes Compare
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../details/dashboards/dashboard-nodes-overview.html" class="md-nav__link">
+        Nodes Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../details/dashboards/dashboard-node-summary.html" class="md-nav__link">
+        Node Summary
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../details/dashboards/dashboard-numa-details.html" class="md-nav__link">
+        NUMA Details
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../details/dashboards/dashboard-processes-details.html" class="md-nav__link">
+        Processes Details
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_3_4" type="checkbox" id="__nav_5_3_4" >
+      
+      
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../details/dashboards/dashboard-prometheus-exporter-status.html">Prometheus Dashboards</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Prometheus Dashboards" data-md-level="3">
+        <label class="md-nav__title" for="__nav_5_3_4">
+          <span class="md-nav__icon md-icon"></span>
+          Prometheus Dashboards
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../details/dashboards/dashboard-prometheus-exporters-overview.html" class="md-nav__link">
+        Prometheus Exporters Overview
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_3_5" type="checkbox" id="__nav_5_3_5" >
+      
+      
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../details/dashboards/dashboard-mysql-amazon-aurora-details.html">MySQL Dashboards</a>
+          
+            <label for="__nav_5_3_5">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="MySQL Dashboards" data-md-level="3">
+        <label class="md-nav__title" for="__nav_5_3_5">
+          <span class="md-nav__icon md-icon"></span>
+          MySQL Dashboards
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../details/dashboards/dashboard-mysql-command-handler-counters-compare.html" class="md-nav__link">
+        MySQL Command/Handler Counters Compare
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../details/dashboards/dashboard-mysql-innodb-compression-details.html" class="md-nav__link">
+        MySQL InnoDB Compression Details
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../details/dashboards/dashboard-mysql-innodb-details.html" class="md-nav__link">
+        MySQL InnoDB Details
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../details/dashboards/dashboard-mysql-myisam-aria-details.html" class="md-nav__link">
+        MySQL MyISAM/Aria Details
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../details/dashboards/dashboard-mysql-myrocks-details.html" class="md-nav__link">
+        MySQL MyRocks Details
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../details/dashboards/dashboard-mysql-instance-summary.html" class="md-nav__link">
+        MySQL Instance Summary
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../details/dashboards/dashboard-mysql-instances-compare.html" class="md-nav__link">
+        MySQL Instances Compare
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../details/dashboards/dashboard-mysql-instances-overview.html" class="md-nav__link">
+        MySQL Instances Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../details/dashboards/dashboard-mysql-wait-event-analyses-details.html" class="md-nav__link">
+        MySQL Wait Event Analyses Details
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../details/dashboards/dashboard-mysql-performance-schema-details.html" class="md-nav__link">
+        MySQL Performance Schema Details
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../details/dashboards/dashboard-mysql-query-response-time-details.html" class="md-nav__link">
+        MySQL Query Response Time Details
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../details/dashboards/dashboard-mysql-replication-summary.html" class="md-nav__link">
+        MySQL Replication Summary
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../details/dashboards/dashboard-mysql-group-replication-summary.html" class="md-nav__link">
+        MySQL Group Replication Summary
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../details/dashboards/dashboard-mysql-table-details.html" class="md-nav__link">
+        MySQL Table Details
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../details/dashboards/dashboard-mysql-user-details.html" class="md-nav__link">
+        MySQL User Details
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../details/dashboards/dashboard-mysql-tokudb-details.html" class="md-nav__link">
+        MySQL TokuDB Details
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_3_6" type="checkbox" id="__nav_5_3_6" >
+      
+      
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../details/dashboards/dashboard-mongodb-cluster-summary.html">MongoDB Dashboards</a>
+          
+            <label for="__nav_5_3_6">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="MongoDB Dashboards" data-md-level="3">
+        <label class="md-nav__title" for="__nav_5_3_6">
+          <span class="md-nav__icon md-icon"></span>
+          MongoDB Dashboards
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../details/dashboards/dashboard-mongodb-instance-summary.html" class="md-nav__link">
+        MongoDB Instance Summary
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../details/dashboards/dashboard-mongodb-instances-overview.html" class="md-nav__link">
+        MongoDB Instances Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../details/dashboards/dashboard-mongodb-instances-compare.html" class="md-nav__link">
+        MongoDB Instances Compare
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../details/dashboards/dashboard-mongodb-replset-summary.html" class="md-nav__link">
+        MongoDB ReplSet Summary
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../details/dashboards/dashboard-mongodb-inmemory-details.html" class="md-nav__link">
+        MongoDB InMemory Details
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../details/dashboards/dashboard-mongodb-mmapv1-details.html" class="md-nav__link">
+        MongoDB MMAPv1 Details
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../details/dashboards/dashboard-mongodb-wiredtiger-details.html" class="md-nav__link">
+        MongoDB WiredTiger Details
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_3_7" type="checkbox" id="__nav_5_3_7" >
+      
+      
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../details/dashboards/dashboard-postgresql-instances-overview.html">PostgreSQL Dashboards</a>
+          
+            <label for="__nav_5_3_7">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="PostgreSQL Dashboards" data-md-level="3">
+        <label class="md-nav__title" for="__nav_5_3_7">
+          <span class="md-nav__icon md-icon"></span>
+          PostgreSQL Dashboards
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../details/dashboards/dashboard-postgresql-instance-summary.html" class="md-nav__link">
+        PostgreSQL Instance Summary
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../details/dashboards/dashboard-postgresql-instances-compare.html" class="md-nav__link">
+        PostgreSQL Instances Compare
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../details/dashboards/dashboard-proxysql-instance-summary.html" class="md-nav__link">
+        ProxySQL Dashboards
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_3_9" type="checkbox" id="__nav_5_3_9" >
+      
+      
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../details/dashboards/dashboard-pxc-galera-node-summary.html">HA Dashboards</a>
+          
+            <label for="__nav_5_3_9">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="HA Dashboards" data-md-level="3">
+        <label class="md-nav__title" for="__nav_5_3_9">
+          <span class="md-nav__icon md-icon"></span>
+          HA Dashboards
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../details/dashboards/dashboard-pxc-galera-cluster-summary.html" class="md-nav__link">
+        PXC/Galera Cluster Summary
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../details/dashboards/dashboard-pxc-galera-nodes-compare.html" class="md-nav__link">
+        PXC/Galera Nodes Compare
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../details/dashboards/dashboard-haproxy-instance-summary.html" class="md-nav__link">
+        HAProxy Instance Summary
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_4" type="checkbox" id="__nav_5_4" >
+      
+      
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../details/commands/index.html">Commands</a>
+          
+            <label for="__nav_5_4">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Commands" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_4">
+          <span class="md-nav__icon md-icon"></span>
+          Commands
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../details/commands/pmm-admin.html" class="md-nav__link">
+        pmm-admin - PMM Administration Tool
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../details/commands/pmm-agent.html" class="md-nav__link">
+        pmm-agent - PMM Client agent
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../details/api.html" class="md-nav__link">
+        API
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../details/victoria-metrics.html" class="md-nav__link">
+        VictoriaMetrics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../details/glossary.html" class="md-nav__link">
+        Glossary
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq.html" class="md-nav__link">
+        FAQ
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../release-notes/index.html">Release Notes</a>
+          
+            <label for="__nav_7">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Release Notes" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Release Notes
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/2.25.0.html" class="md-nav__link">
+        PMM 2.25.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/2.24.0.html" class="md-nav__link">
+        PMM 2.24.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/2.23.0.html" class="md-nav__link">
+        PMM 2.23.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/2.22.0.html" class="md-nav__link">
+        PMM 2.22.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/2.21.0.html" class="md-nav__link">
+        PMM 2.21.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/2.20.0.html" class="md-nav__link">
+        PMM 2.20.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/2.19.0.html" class="md-nav__link">
+        PMM 2.19.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/2.18.0.html" class="md-nav__link">
+        PMM 2.18.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/2.17.0.html" class="md-nav__link">
+        PMM 2.17.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/2.16.0.html" class="md-nav__link">
+        PMM 2.16.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/2.15.1.html" class="md-nav__link">
+        PMM 2.15.1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/2.15.0.html" class="md-nav__link">
+        PMM 2.15.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/2.14.0.html" class="md-nav__link">
+        PMM 2.14.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/2.13.0.html" class="md-nav__link">
+        PMM 2.13.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/2.12.0.html" class="md-nav__link">
+        PMM 2.12.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/2.11.1.html" class="md-nav__link">
+        PMM 2.11.1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/2.11.0.html" class="md-nav__link">
+        PMM 2.11.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/2.10.1.html" class="md-nav__link">
+        PMM 2.10.1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/2.10.0.html" class="md-nav__link">
+        PMM 2.10.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/2.9.1.html" class="md-nav__link">
+        PMM 2.9.1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/2.9.0.html" class="md-nav__link">
+        PMM 2.9.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/2.8.0.html" class="md-nav__link">
+        PMM 2.8.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/2.7.0.html" class="md-nav__link">
+        PMM 2.7.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/2.6.1.html" class="md-nav__link">
+        PMM 2.6.1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/2.6.0.html" class="md-nav__link">
+        PMM 2.6.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/2.5.0.html" class="md-nav__link">
+        PMM 2.5.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/2.4.0.html" class="md-nav__link">
+        PMM 2.4.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/2.3.0.html" class="md-nav__link">
+        PMM 2.3.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/2.2.2.html" class="md-nav__link">
+        PMM 2.2.2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/2.2.1.html" class="md-nav__link">
+        PMM 2.2.1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/2.2.0.html" class="md-nav__link">
+        PMM 2.2.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/2.1.0.html" class="md-nav__link">
+        PMM 2.1.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/2.0.1.html" class="md-nav__link">
+        PMM 2.0.1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/2.0.0.html" class="md-nav__link">
+        PMM 2.0.0
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#limiting-access-to-the-instance-security-group-and-a-key-pair" class="md-nav__link">
+    Limiting Access to the instance: security group and a key pair
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#applying-settings" class="md-nav__link">
+    Applying settings
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adjusting-instance-settings-in-the-ec2-console" class="md-nav__link">
+    Adjusting instance settings in the EC2 Console
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-the-instance" class="md-nav__link">
+    Running the instance
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resizing-the-ebs-volume" class="md-nav__link">
+    Resizing the EBS Volume
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#upgrading-pmm-server-on-aws" class="md-nav__link">
+    Upgrading PMM Server on AWS
+  </a>
+  
+    <nav class="md-nav" aria-label="Upgrading PMM Server on AWS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#change-public-ip-address" class="md-nav__link">
+    Change Public IP address
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#upgrading-ec2-instance-class" class="md-nav__link">
+    Upgrading EC2 instance class
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#expanding-the-pmm-data-ebs-volume" class="md-nav__link">
+    Expanding the PMM Data EBS Volume
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#expand-existing-ebs-volume" class="md-nav__link">
+    Expand existing EBS volume
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#expand-the-amazon-ebs-root-volume" class="md-nav__link">
+    Expand the Amazon EBS root volume
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#backup-pmm-server" class="md-nav__link">
+    Backup PMM Server
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#restore-pmm-server-from-a-backup" class="md-nav__link">
+    Restore PMM Server from a backup
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#remove-pmm-server" class="md-nav__link">
+    Remove PMM Server
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+<a href="https://github.com/percona/pmm-doc/edit/main/docs/setting-up/server/aws.md" title="Edit this page" class="md-content__button md-icon">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+</a>
+
+
+<h1 id="aws-marketplace">AWS Marketplace<a class="headerlink" href="#aws-marketplace" title="Permanent link">&para;</a></h1>
+<p>You can run an instance of PMM Server hosted at AWS Marketplace.</p>
+<p>Assuming that you have an AWS (Amazon Web Services) account, locate <em>Percona Monitoring and Management Server</em> in <a href="https://aws.amazon.com/marketplace">AWS Marketplace</a> or use <a href="https://aws.amazon.com/marketplace/pp/B077J7FYGX">this link</a>.</p>
+<p><div class="lightgallery"><a data-sub-html="" href="../../_images/PMM_AWS_Marketplace.png"><img alt="" src="../../_images/PMM_AWS_Marketplace.png" /></a></div></p>
+<p>Selecting a region and instance type in the <em>Pricing Information</em> section will give you an estimate of the costs involved. This is only an indication of costs. You will choose regions and instance types in later steps.</p>
+<p>Percona Monitoring and Management Server is provided at no cost, but you may need to pay for infrastructure costs.</p>
+<div class="admonition note alert alert-primary">
+<p>Disk space consumed by PMM Server depends on the number of hosts being monitored. Although each environment will be unique, you can consider the data consumption figures for the <a href="https://pmmdemo.percona.com/">PMM Demo</a> web site which consumes approximately 230 MB per host per day, or approximately 6.9 GB per host at the default 30 day retention period.</p>
+<p>For more information, see our blog post <a href="https://www.percona.com/blog/2017/05/04/how-much-disk-space-should-i-allocate-for-percona-monitoring-and-management/">How much disk space should I allocate for Percona Monitoring and Management?</a>.</p>
+</div>
+<ol>
+<li>
+<p>Click <em>Continue to Subscribe</em>.</p>
+</li>
+<li>
+<p><strong>Subscribe to this software</strong>: Check the terms and conditions and click <em>Continue to Configuration</em>.</p>
+</li>
+<li>
+<p><strong>Configure this software</strong>:</p>
+<ol>
+<li>Select a value for <em>Software Version</em>. (The latest is 2.25.0.)</li>
+<li>Select a region. (You can change this in the next step.)</li>
+<li>Click <em>Continue to Launch</em>.</li>
+</ol>
+</li>
+<li>
+<p><strong>Launch this software</strong>:</p>
+<ol>
+<li>
+<p><strong>Choose Action</strong>: Select a launch option. <em>Launch from Website</em> is a quick way to make your instance ready. For more control, choose <em>Launch through EC2</em>.</p>
+</li>
+<li>
+<p><strong>EC2 Instance Type</strong>: Select an instance type.</p>
+</li>
+<li>
+<p><strong>VPC Settings</strong>: Choose or create a VPC (virtual private cloud).</p>
+</li>
+<li>
+<p><strong>Subnet Settings</strong>: Choose or create a subnet.</p>
+</li>
+<li>
+<p><strong>Security Group Settings</strong>: Choose a security group or click *Create New Based On Seller Settings</p>
+</li>
+<li>
+<p><strong>Key Pair Settings</strong>: Choose or create a key pair.</p>
+</li>
+<li>
+<p>Click <em>Launch</em>.</p>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="limiting-access-to-the-instance-security-group-and-a-key-pair">Limiting Access to the instance: security group and a key pair<a class="headerlink" href="#limiting-access-to-the-instance-security-group-and-a-key-pair" title="Permanent link">&para;</a></h2>
+<p>In the <em>Security Group</em> section, which acts like a firewall, you may use the preselected option <code>Create new based on seller settings</code> to create a security group with recommended settings. In the <em>Key Pair</em> select an already set up EC2 key pair to limit access to your instance.</p>
+<p><div class="lightgallery"><a data-sub-html="image" href="../../_images/aws-marketplace.pmm.launch-on-ec2.1-click-launch.3.png"><img alt="image" src="../../_images/aws-marketplace.pmm.launch-on-ec2.1-click-launch.3.png" /></a></div></p>
+<div class="admonition caution alert alert-warning">
+<p class="admonition-title">Important</p>
+<p>The security group should allow communication via the the following ports: <em>22</em>, <em>80</em>, and <em>443</em>. PMM should also be able to access port <em>3306</em> on the RDS that uses the instance.</p>
+<p><div class="lightgallery"><a data-sub-html="image" href="../../_images/aws-marketplace.pmm.launch-on-ec2.1-click-launch.2.png"><img alt="image" src="../../_images/aws-marketplace.pmm.launch-on-ec2.1-click-launch.2.png" /></a></div></p>
+</div>
+<h2 id="applying-settings">Applying settings<a class="headerlink" href="#applying-settings" title="Permanent link">&para;</a></h2>
+<p>Scroll up to the top of the page to view your settings. Then, click the <em>Launch with 1 click</em> button to continue and adjust your settings in the EC2 console.</p>
+<p>Your instance settings are summarized in a special area. Click the Launch with 1 click button to continue.</p>
+<p><div class="lightgallery"><a data-sub-html="image" href="../../_images/aws-marketplace.pmm.launch-on-ec2.1-click-launch.3.png"><img alt="image" src="../../_images/aws-marketplace.pmm.launch-on-ec2.1-click-launch.3.png" /></a></div></p>
+<div class="admonition note alert alert-primary">
+<p>The <em>Launch with 1 click</em> button may alternatively be titled as <em>Accept Software Terms &amp; Launch with 1-Click</em>.</p>
+</div>
+<h2 id="adjusting-instance-settings-in-the-ec2-console">Adjusting instance settings in the EC2 Console<a class="headerlink" href="#adjusting-instance-settings-in-the-ec2-console" title="Permanent link">&para;</a></h2>
+<p>Your clicking the <em>Launch with 1 click</em> button, deploys your instance. To continue setting up your instance, run the EC2 console. It is available as a link at the top of the page that opens after you click the <em>Launch with 1 click</em> button.</p>
+<p>Your instance appears in the EC2 console in a table that lists all instances available to you. When a new instance is only created, it has no name. Make sure that you give it a name to distinguish from other instances managed via the EC2 console.</p>
+<p><div class="lightgallery"><a data-sub-html="image" href="../../_images/aws-marketplace.ec2-console.pmm.1.png"><img alt="image" src="../../_images/aws-marketplace.ec2-console.pmm.1.png" /></a></div></p>
+<h2 id="running-the-instance">Running the instance<a class="headerlink" href="#running-the-instance" title="Permanent link">&para;</a></h2>
+<p>After you add your new instance it will take some time to initialize it. When the AWS console reports that the instance is now in a running state, you many continue with configuration of PMM Server.</p>
+<div class="admonition note alert alert-primary">
+<p>When started the next time after rebooting, your instance may acquire another IP address. You may choose to set up an elastic IP to avoid this problem.</p>
+</div>
+<p>With your instance selected, open its IP address in a web browser. The IP address appears in the <em>IPv4 Public IP</em> column or as value of the <em>Public IP</em> field at the top of the <em>Properties</em> panel.</p>
+<p><div class="lightgallery"><a data-sub-html="image" href="../../_images/aws-marketplace.pmm.ec2.properties.png"><img alt="image" src="../../_images/aws-marketplace.pmm.ec2.properties.png" /></a></div></p>
+<p>To run the instance, copy and paste its public IP address to the location bar of your browser. In the <em>Percona Monitoring and Management</em> welcome page that opens, enter the instance ID.</p>
+<p><div class="lightgallery"><a data-sub-html="image" href="../../_images/installation-wizard.ami.instance-id-verification.png"><img alt="image" src="../../_images/installation-wizard.ami.instance-id-verification.png" /></a></div></p>
+<p>You can copy the instance ID from the <em>Properties</em> panel of your instance, select the <em>Description</em> tab back in the EC2 console. Click the <em>Copy</em> button next to the <em>Instance ID</em> field. This button appears as soon as you hover the cursor of your mouse over the ID.</p>
+<p>Hover the cursor over the instance ID for the Copy button to appear.</p>
+<p><div class="lightgallery"><a data-sub-html="image" href="../../_images/aws-marketplace.pmm.ec2.properties.instance-id.png"><img alt="image" src="../../_images/aws-marketplace.pmm.ec2.properties.instance-id.png" /></a></div></p>
+<p>Paste the instance in the <em>Instance ID</em> field of the <em>Percona Monitoring and Management</em> welcome page and click <em>Submit</em>.</p>
+<p>PMM Server provides user access control, and therefore you will need user credentials to access it:</p>
+<p><div class="lightgallery"><a data-sub-html="image" href="../../_images/PMM_Login.jpg"><img alt="image" src="../../_images/PMM_Login.jpg" /></a></div></p>
+<ul>
+<li>Default user name: <code>admin</code></li>
+<li>Default password: <code>admin</code></li>
+</ul>
+<p>You will be prompted to change the default password every time you log in.</p>
+<p>The PMM Server is now ready and the home page opens.</p>
+<p><div class="lightgallery"><a data-sub-html="image" href="../../_images/PMM_Home_Dashboard.png"><img alt="image" src="../../_images/PMM_Home_Dashboard.png" /></a></div></p>
+<p>You are creating a username and password that will be used for two purposes:</p>
+<ol>
+<li>
+<p>authentication as a user to PMM - the credentials to log in to PMM.</p>
+</li>
+<li>
+<p>authentication between PMM Server and PMM Clients - you will re-use these credentials on another host when configuring PMM Client for the first time on a server, for example (DO NOT RUN ON THIS PMM SERVER YOU JUST CREATED):</p>
+<div class="highlight"><pre><span></span><code>pmm-admin config --server-insecure-tls --server-url<span class="o">=</span>https://admin:admin@&lt;IP Address&gt;:443
+</code></pre></div>
+<div class="admonition note alert alert-primary">
+<p>For instructions about how to access your instances by using an SSH client, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstancesLinux.html">Connecting to Your Linux Instance Using SSH</a></p>
+</div>
+<p>Make sure to replace the user name <code>ec2-user</code> used in this document with <code>admin</code>.</p>
+</li>
+</ol>
+<h2 id="resizing-the-ebs-volume">Resizing the EBS Volume<a class="headerlink" href="#resizing-the-ebs-volume" title="Permanent link">&para;</a></h2>
+<p>Your AWS instance comes with a predefined size which can become a limitation. To make more disk space available to your instance, you need to increase the size of the EBS volume as needed and then your instance will reconfigure itself to use the new size.</p>
+<p>The procedure of resizing EBS volumes is described in the Amazon documentation: <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-modify-volume.html">Modifying the Size, IOPS, or Type of an EBS Volume on Linux</a>.</p>
+<p>After the EBS volume is updated, PMM Server instance will auto-detect changes in approximately 5 minutes or less and will reconfigure itself for the updated conditions.</p>
+<h2 id="upgrading-pmm-server-on-aws">Upgrading PMM Server on AWS<a class="headerlink" href="#upgrading-pmm-server-on-aws" title="Permanent link">&para;</a></h2>
+<h3 id="change-public-ip-address">Change Public IP address<a class="headerlink" href="#change-public-ip-address" title="Permanent link">&para;</a></h3>
+<p>To assign a public IP address for an Amazon EC2 instance, follow these steps:</p>
+<ol>
+<li>
+<p>Allocate Elastic IP address</p>
+<p><div class="lightgallery"><a data-sub-html="image" href="../../_images/aws-marketplace.pmm.ec2.ip.allocate.png"><img alt="image" src="../../_images/aws-marketplace.pmm.ec2.ip.allocate.png" /></a></div></p>
+</li>
+<li>
+<p>Associate Elastic IP address with a Network interface ID of your EC2 instance</p>
+<p>If you associate an Elastic IP address to an instance that already has an Elastic IP address associated, this previously associated Elastic IP address will be disassociated but still allocated to your account.</p>
+<p><div class="lightgallery"><a data-sub-html="image" href="../../_images/aws-marketplace.pmm.ec2.ip.associate.png"><img alt="image" src="../../_images/aws-marketplace.pmm.ec2.ip.associate.png" /></a></div></p>
+</li>
+</ol>
+<h3 id="upgrading-ec2-instance-class">Upgrading EC2 instance class<a class="headerlink" href="#upgrading-ec2-instance-class" title="Permanent link">&para;</a></h3>
+<p>Upgrading to a larger EC2 instance class is supported by PMM provided you follow the instructions from the <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-resize.html">AWS manual</a>. The PMM AMI image uses a distinct EBS volume for the PMM data volume which permits independent resizing of the EC2 instance without impacting the EBS volume.</p>
+<ol>
+<li>
+<p>Open the Amazon EC2 console.</p>
+</li>
+<li>
+<p>In the navigation pane, choose PMM Server Instances.</p>
+</li>
+<li>
+<p>Select the instance and choose Actions, Instance state, Stop instance.</p>
+</li>
+<li>
+<p>In the Change instance type dialog box, select the instance type that you want.</p>
+<p><div class="lightgallery"><a data-sub-html="image" href="../../_images/aws-marketplace.pmm.ec2.instance.upgrade.png"><img alt="image" src="../../_images/aws-marketplace.pmm.ec2.instance.upgrade.png" /></a></div></p>
+</li>
+<li>
+<p>Choose Apply to accept the new settings and start the stopped instance.</p>
+</li>
+</ol>
+<h3 id="expanding-the-pmm-data-ebs-volume">Expanding the PMM Data EBS Volume<a class="headerlink" href="#expanding-the-pmm-data-ebs-volume" title="Permanent link">&para;</a></h3>
+<p>The PMM data volume is mounted as an XFS formatted volume on top of an LVM volume. There are two ways to increase this volume size:</p>
+<ol>
+<li>
+<p>Add a new disk via EC2 console or API, and expand the LVM volume to include the new disk volume.</p>
+</li>
+<li>
+<p>Expand existing EBS volume and grow the LVM volume.</p>
+</li>
+</ol>
+<h3 id="expand-existing-ebs-volume">Expand existing EBS volume<a class="headerlink" href="#expand-existing-ebs-volume" title="Permanent link">&para;</a></h3>
+<p>To expand the existing EBS volume for increased capacity, follow these steps.</p>
+<ol>
+<li>
+<p>Expand the disk from AWS Console/CLI to the desired capacity.</p>
+</li>
+<li>
+<p>Login to the PMM EC2 instance and verify that the disk capacity has increased. For example, if you have expanded disk from 16G to 32G, <code>dmesg</code> output should look like below:</p>
+<div class="highlight"><pre><span></span><code>[  535.994494] xvdb: detected capacity change from 17179869184 to 34359738368
+</code></pre></div>
+</li>
+<li>
+<p>You can check information about volume groups and logical volumes with the <code>vgs</code> and <code>lvs</code> commands:</p>
+<div class="highlight"><pre><span></span><code>vgs
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>VG     #PV #LV #SN Attr   VSize  VFree
+DataVG   1   2   0 wz--n- &lt;16.00g    0
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>lvs
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>LV       VG     Attr       LSize   Pool Origin Data%  Meta% Move Log Cpy%Sync Convert
+DataLV   DataVG Vwi-aotz-- &lt;12.80g ThinPool        1.74
+ThinPool DataVG twi-aotz--  15.96g 1.39  1.29
+</code></pre></div>
+</li>
+<li>
+<p>Now we can use the <code>lsblk</code> command to see that our disk size has been identified by the kernel correctly, but LVM2 is not yet aware of the new size. We can use <code>pvresize</code> to make sure the PV device reflects the new size. Once <code>pvresize</code> is executed, we can see that the VG has the new free space available.</p>
+<div class="highlight"><pre><span></span><code>lsblk <span class="p">|</span> grep xvdb
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>xvdb                      202:16 0 32G 0 disk
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>pvscan
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>PV /dev/xvdb   VG DataVG    lvm2 [&lt;16.00 GiB / 0    free]
+Total: 1 [&lt;16.00 GiB] / in use: 1 [&lt;16.00 GiB] / in no VG: 0 [0   ]
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>pvresize /dev/xvdb
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Physical volume &quot;/dev/xvdb&quot; changed
+1 physical volume(s) resized / 0 physical volume(s) not resized
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>pvs
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>PV         VG     Fmt  Attr PSize   PFree
+/dev/xvdb  DataVG lvm2 a--  &lt;32.00g 16.00g
+</code></pre></div>
+</li>
+<li>
+<p>We then extend our logical volume. Since the PMM image uses thin provisioning, we need to extend both the pool and the volume:</p>
+<div class="highlight"><pre><span></span><code>lvs
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>LV       VG     Attr       LSize   Pool    Origin Data%  Meta% Move Log Cpy%Sync Convert
+DataLV   DataVG Vwi-aotz-- &lt;12.80g ThinPool        1.77
+ThinPool DataVG twi-aotz--  15.96g                 1.42   1.32
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>lvextend /dev/mapper/DataVG-ThinPool -l <span class="m">100</span>%VG
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Size of logical volume DataVG/ThinPool_tdata changed from 16.00 GiB (4096 extents) to 31.96 GiB (8183 extents).
+Logical volume DataVG/ThinPool_tdata successfully resized.
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>lvs
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>LV       VG     Attr       LSize   Pool    Origin Data%  Meta% Move Log Cpy%Sync Convert
+DataLV   DataVG Vwi-aotz-- &lt;12.80g ThinPool        1.77
+ThinPool DataVG twi-aotz--  31.96g                 0.71   1.71
+</code></pre></div>
+</li>
+<li>
+<p>Once the pool and volumes have been extended, we need to now extend the thin volume to consume the newly available space. In this example we’ve grown available space to almost 32GB, and already consumed 12GB, so we’re extending an additional 19GB:</p>
+<div class="highlight"><pre><span></span><code>lvs
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>LV       VG     Attr       LSize   Pool    Origin Data%  Meta% Move Log Cpy%Sync Convert
+DataLV   DataVG Vwi-aotz-- &lt;12.80g ThinPool        1.77
+ThinPool DataVG twi-aotz--  31.96g                 0.71   1.71
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>lvextend /dev/mapper/DataVG-DataLV -L +19G
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Size of logical volume DataVG/DataLV changed from &lt;12.80 GiB (3276 extents) to &lt;31.80 GiB (8140 extents).
+Logical volume DataVG/DataLV successfully resized.
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>lvs
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>LV       VG     Attr       LSize   Pool    Origin Data%  Meta% Move Log Cpy%Sync Convert
+DataLV   DataVG Vwi-aotz-- &lt;31.80g ThinPool        0.71
+ThinPool DataVG twi-aotz--  31.96g                 0.71   1.71
+</code></pre></div>
+</li>
+<li>
+<p>We then expand the XFS file system to reflect the new size using <code>xfs_growfs</code>, and confirm the file system is accurate using the <code>df</code> command.</p>
+<div class="highlight"><pre><span></span><code>df -h /srv
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Filesystem                  Size Used Avail Use% Mounted on
+/dev/mapper/DataVG-DataLV    13G 249M   13G   2% /srv
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>xfs_growfs /srv
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>meta-data=/dev/mapper/DataVG-DataLV isize=512    agcount=103, agsize=32752 blks
+         =                          sectsz=512   attr=2, projid32bit=1
+         =                          crc=1        finobt=0 spinodes=0
+data     =                          bsize=4096   blocks=3354624, imaxpct=25
+         =                          sunit=16     swidth=16 blks
+naming   =version 2                 bsize=4096   ascii-ci=0 ftype=1
+log      =internal                  bsize=4096   blocks=768, version=2
+         =                          sectsz=512   sunit=16 blks, lazy-count=1
+realtime =none                      extsz=4096   blocks=0, rtextents=0
+data blocks changed from 3354624 to 8335360
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>df -h /srv
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Filesystem                 Size Used Avail Use% Mounted on
+/dev/mapper/DataVG-DataLV   32G 254M   32G   1% /srv
+</code></pre></div>
+</li>
+</ol>
+<h3 id="expand-the-amazon-ebs-root-volume">Expand the Amazon EBS root volume<a class="headerlink" href="#expand-the-amazon-ebs-root-volume" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>Expand the disk from AWS Console/CLI to the desired capacity.</p>
+</li>
+<li>
+<p>Login to the PMM EC2 instance and verify that the disk capacity has increased. For example, if you have expanded disk from 8G to 10G, <code>dmesg</code> output should look like below:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># dmesg | grep &quot;capacity change&quot;</span>
+<span class="o">[</span><span class="m">63175</span>.044762<span class="o">]</span> nvme0n1: detected capacity change from <span class="m">8589934592</span> to <span class="m">10737418240</span>
+</code></pre></div>
+</li>
+<li>
+<p>Use the <code>lsblk</code> command to see that our disk size has been identified by the kernel correctly, but LVM2 is not yet aware of the new size.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># lsblk</span>
+NAME                      MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
+nvme0n1                   <span class="m">259</span>:1    <span class="m">0</span>    10G  <span class="m">0</span> disk
+└─nvme0n1p1               <span class="m">259</span>:2    <span class="m">0</span>     8G  <span class="m">0</span> part /
+...
+</code></pre></div>
+</li>
+<li>
+<p>For volumes that have a partition, such as the root volume shown in the previous step, use the <code>growpart</code> command to extend the partition.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># growpart /dev/nvme0n1 1</span>
+CHANGED: <span class="nv">partition</span><span class="o">=</span><span class="m">1</span> <span class="nv">start</span><span class="o">=</span><span class="m">2048</span> old: <span class="nv">size</span><span class="o">=</span><span class="m">16775168</span> <span class="nv">end</span><span class="o">=</span><span class="m">16777216</span> new: <span class="nv">size</span><span class="o">=</span><span class="m">20969439</span> <span class="nv">end</span><span class="o">=</span><span class="m">20971487</span>
+</code></pre></div>
+</li>
+<li>
+<p>To verify that the partition reflects the increased volume size, use the <code>lsblk</code> command again.</p>
+<div class="highlight"><pre><span></span><code># lsblk
+NAME                      MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
+nvme0n1                   259:1    0    10G  0 disk
+└─nvme0n1p1               259:2    0    10G  0 part /
+...
+</code></pre></div>
+</li>
+<li>
+<p>Extend the XFS file system on the root volume by <code>xfs_growfs</code> command. I</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># xfs_growfs -d /</span>
+meta-data<span class="o">=</span>/dev/nvme0n1p1         <span class="nv">isize</span><span class="o">=</span><span class="m">512</span>    <span class="nv">agcount</span><span class="o">=</span><span class="m">4</span>, <span class="nv">agsize</span><span class="o">=</span><span class="m">524224</span> <span class="nv">blks</span>
+         <span class="o">=</span>                       <span class="nv">sectsz</span><span class="o">=</span><span class="m">512</span>   <span class="nv">attr</span><span class="o">=</span><span class="m">2</span>, <span class="nv">projid32bit</span><span class="o">=</span><span class="nv">1</span>
+         <span class="o">=</span>                       <span class="nv">crc</span><span class="o">=</span><span class="m">1</span>        <span class="nv">finobt</span><span class="o">=</span><span class="m">0</span> <span class="nv">spinodes</span><span class="o">=</span><span class="m">0</span>
+<span class="nv">data</span>     <span class="o">=</span>                       <span class="nv">bsize</span><span class="o">=</span><span class="m">4096</span>   <span class="nv">blocks</span><span class="o">=</span><span class="m">2096896</span>, <span class="nv">imaxpct</span><span class="o">=</span><span class="nv">25</span>
+         <span class="o">=</span>                       <span class="nv">sunit</span><span class="o">=</span><span class="m">0</span>      <span class="nv">swidth</span><span class="o">=</span><span class="m">0</span> blks
+<span class="nv">naming</span>   <span class="o">=</span>version <span class="m">2</span>              <span class="nv">bsize</span><span class="o">=</span><span class="m">4096</span>   ascii-ci<span class="o">=</span><span class="m">0</span> <span class="nv">ftype</span><span class="o">=</span><span class="m">1</span>
+<span class="nv">log</span>      <span class="o">=</span>internal               <span class="nv">bsize</span><span class="o">=</span><span class="m">4096</span>   <span class="nv">blocks</span><span class="o">=</span><span class="m">2560</span>, <span class="nv">version</span><span class="o">=</span><span class="nv">2</span>
+         <span class="o">=</span>                       <span class="nv">sectsz</span><span class="o">=</span><span class="m">512</span>   <span class="nv">sunit</span><span class="o">=</span><span class="m">0</span> blks, lazy-count<span class="o">=</span><span class="m">1</span>
+<span class="nv">realtime</span> <span class="o">=</span>none                   <span class="nv">extsz</span><span class="o">=</span><span class="m">4096</span>   <span class="nv">blocks</span><span class="o">=</span><span class="m">0</span>, <span class="nv">rtextents</span><span class="o">=</span><span class="m">0</span>
+data blocks changed from <span class="m">2096896</span> to <span class="m">2621120</span>
+</code></pre></div>
+</li>
+<li>
+<p>Verify that file system reflects the increased volume size</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># df -hT /</span>
+Filesystem     Type  Size  Used Avail Use% Mounted on
+/dev/nvme0n1p1 xfs    10G  <span class="m">5</span>,6G  <span class="m">4</span>,5G  <span class="m">56</span>% /
+</code></pre></div>
+</li>
+</ol>
+<h2 id="backup-pmm-server">Backup PMM Server<a class="headerlink" href="#backup-pmm-server" title="Permanent link">&para;</a></h2>
+<p>All data are stored in the <code>/srv</code> partition, so it&rsquo;s enough to back the PMM data volume.
+You can create a point-in-time snapshot of the volume and use it for data backup.</p>
+<p>The procedure of creating a snapshot is described in the Amazon documentation: <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-creating-snapshot.html">Create Amazon EBS snapshots</a></p>
+<p><div class="lightgallery"><a data-sub-html="image" href="../../_images/aws-marketplace.pmm.ec2.backup1.png"><img alt="image" src="../../_images/aws-marketplace.pmm.ec2.backup1.png" /></a></div></p>
+<h2 id="restore-pmm-server-from-a-backup">Restore PMM Server from a backup<a class="headerlink" href="#restore-pmm-server-from-a-backup" title="Permanent link">&para;</a></h2>
+<ol>
+<li>
+<p>Create a new volume by using the latest snapshot of the PMM data volume.</p>
+<p><div class="lightgallery"><a data-sub-html="image" href="../../_images/aws-marketplace.pmm.ec2.backup2.png"><img alt="image" src="../../_images/aws-marketplace.pmm.ec2.backup2.png" /></a></div></p>
+</li>
+<li>
+<p>Stop the PMM Server instance.</p>
+</li>
+<li>
+<p>Detach the current PMM data volume.</p>
+<p><div class="lightgallery"><a data-sub-html="image" href="../../_images/aws-marketplace.pmm.ec2.backup3.png"><img alt="image" src="../../_images/aws-marketplace.pmm.ec2.backup3.png" /></a></div></p>
+</li>
+<li>
+<p>Attach the new volume.</p>
+<p><div class="lightgallery"><a data-sub-html="image" href="../../_images/aws-marketplace.pmm.ec2.backup4.png"><img alt="image" src="../../_images/aws-marketplace.pmm.ec2.backup4.png" /></a></div></p>
+</li>
+<li>
+<p>Start the PMM Server instance.</p>
+</li>
+</ol>
+<h2 id="remove-pmm-server">Remove PMM Server<a class="headerlink" href="#remove-pmm-server" title="Permanent link">&para;</a></h2>
+<ol>
+<li>
+<p>Find the instance in the EC2 Console</p>
+<p><div class="lightgallery"><a data-sub-html="image" href="../../_images/aws-marketplace.pmm.ec2.remove1.png"><img alt="image" src="../../_images/aws-marketplace.pmm.ec2.remove1.png" /></a></div></p>
+</li>
+<li>
+<p>Select &ldquo;Instance state&rdquo; menu and &ldquo;Terminate instance&rdquo;</p>
+<p><div class="lightgallery"><a data-sub-html="image" href="../../_images/aws-marketplace.pmm.ec2.remove2.png"><img alt="image" src="../../_images/aws-marketplace.pmm.ec2.remove2.png" /></a></div></p>
+</li>
+<li>
+<p>Confirm termination operation</p>
+<p><div class="lightgallery"><a data-sub-html="image" href="../../_images/aws-marketplace.pmm.ec2.remove3.png"><img alt="image" src="../../_images/aws-marketplace.pmm.ec2.remove3.png" /></a></div></p>
+</li>
+</ol>
+<div class="admonition seealso alert alert-info">
+<p class="admonition-title">See also</p>
+<p><a href="https://www.percona.com/blog/2021/04/29/improving-percona-monitoring-and-management-ec2-instance-resilience-using-cloudwatch-alarm-actions/">Improving Percona Monitoring and Management EC2 Instance Resilience Using CloudWatch Alarm Actions</a></p>
+</div>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      Last update:
+      2022-01-10
+    
+  </small>
+</div>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="virtual-appliance.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Virtual Appliance" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Virtual Appliance
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="easy-install.html" class="md-footer__link md-footer__link--next" aria-label="Next: Easy-install script" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Easy-install script
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Percona LLC, &#169; 2021
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.b6ff8c07.min.js", "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.5e13d264.min.js"></script>
+      
+        <script src="../../js/version-select.js"></script>
+      
+        <script src="../../js/toctree.js"></script>
+      
+        <script src="../../js/lightgallery.min.js"></script>
+      
+    
+  </body>
+</html>

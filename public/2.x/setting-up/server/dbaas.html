@@ -1,0 +1,3281 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentation">
+      
+      
+        <meta name="author" content="Percona LLC">
+      
+      
+        <link rel="canonical" href="https://pmm-doc.netlify.app/2.x/setting-up/server/dbaas.html">
+      
+      <link rel="icon" href="../../_images/percona-favicon.ico">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.5">
+    
+    
+      
+        <title>DBaaS - Percona Monitoring and Management</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ee0f47ba.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.e6a45f82.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.3/css/line.css">
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+    
+      <link rel="stylesheet" href="../../css/percona.css">
+    
+      <link rel="stylesheet" href="../../css/lightgallery.min.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="percona-light" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#dbaas" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-component="outdated" hidden>
+        <aside class="md-banner md-banner--warning">
+          
+        </aside>
+      </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../index.html" title="Percona Monitoring and Management" class="md-header__button md-logo" aria-label="Percona Monitoring and Management" data-md-component="logo">
+      
+  <img src="../../_images/percona-logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Percona Monitoring and Management
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              DBaaS
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/percona/pmm-doc/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    percona/pmm-doc
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../index.html" title="Percona Monitoring and Management" class="md-nav__button md-logo" aria-label="Percona Monitoring and Management" data-md-component="logo">
+      
+  <img src="../../_images/percona-logo.svg" alt="logo">
+
+    </a>
+    Percona Monitoring and Management
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/percona/pmm-doc/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    percona/pmm-doc
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../index.html" class="md-nav__link">
+        Welcome
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../index.html">Setting up</a>
+          
+            <label for="__nav_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Setting up" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Setting up
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" type="checkbox" id="__nav_2_1" checked>
+      
+      
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="index.html">Server</a>
+          
+            <label for="__nav_2_1">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Server" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          Server
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="network.html" class="md-nav__link">
+        Network
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="docker.html" class="md-nav__link">
+        Docker
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="virtual-appliance.html" class="md-nav__link">
+        Virtual Appliance
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="aws.html" class="md-nav__link">
+        AWS Marketplace
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="easy-install.html" class="md-nav__link">
+        Easy-install script
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          DBaaS
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="dbaas.html" class="md-nav__link md-nav__link--active">
+        DBaaS
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#software-prerequisites" class="md-nav__link">
+    Software prerequisites
+  </a>
+  
+    <nav class="md-nav" aria-label="Software prerequisites">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#docker" class="md-nav__link">
+    Docker
+  </a>
+  
+    <nav class="md-nav" aria-label="Docker">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#red-hat-centos" class="md-nav__link">
+    Red Hat, CentOS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debian-ubuntu" class="md-nav__link">
+    Debian, Ubuntu
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#minikube" class="md-nav__link">
+    minikube
+  </a>
+  
+    <nav class="md-nav" aria-label="minikube">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#red-hat-centos_1" class="md-nav__link">
+    Red Hat, CentOS
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#start-pmm-server-and-activate-a-dbaas-feature" class="md-nav__link">
+    Start PMM server and activate a DBaaS feature
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-a-kubernetes-cluster" class="md-nav__link">
+    Create a Kubernetes cluster
+  </a>
+  
+    <nav class="md-nav" aria-label="Create a Kubernetes cluster">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#minikube_1" class="md-nav__link">
+    Minikube
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#amazon-aws-eks" class="md-nav__link">
+    Amazon AWS EKS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#google-gke" class="md-nav__link">
+    Google GKE
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deleting-clusters" class="md-nav__link">
+    Deleting clusters
+  </a>
+  
+    <nav class="md-nav" aria-label="Deleting clusters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cleaning-up-kubernetes-cluster" class="md-nav__link">
+    Cleaning up Kubernetes cluster
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#run-pmm-server-as-a-docker-container-for-dbaas" class="md-nav__link">
+    Run PMM Server as a Docker container for DBaaS
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exposing-psmdb-and-xtradb-clusters-for-access-by-external-clients" class="md-nav__link">
+    Exposing PSMDB and XtraDB clusters for access by external clients
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" >
+      
+      
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../client/index.html">Client</a>
+          
+            <label for="__nav_2_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Client" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Client
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../client/mysql.html" class="md-nav__link">
+        MySQL
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../client/mongodb.html" class="md-nav__link">
+        MongoDB
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../client/postgresql.html" class="md-nav__link">
+        PostgreSQL
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../client/proxysql.html" class="md-nav__link">
+        ProxySQL
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../client/aws.html" class="md-nav__link">
+        Amazon RDS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../client/azure.html" class="md-nav__link">
+        Microsoft Azure
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../client/google.html" class="md-nav__link">
+        Google Cloud Platform
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../client/linux.html" class="md-nav__link">
+        Linux
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../client/external.html" class="md-nav__link">
+        External Services
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../client/haproxy.html" class="md-nav__link">
+        HAProxy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../client/remote.html" class="md-nav__link">
+        Remote instances
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../using/index.html">Using</a>
+          
+            <label for="__nav_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Using" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Using
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../using/interface.html" class="md-nav__link">
+        User Interface
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../using/alerting.html" class="md-nav__link">
+        Integrated Alerting
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../using/backup.html" class="md-nav__link">
+        Backup and Restore
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../using/query-analytics.html" class="md-nav__link">
+        Query Analytics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../using/dbaas.html" class="md-nav__link">
+        DBaaS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../using/security-threat-tool.html" class="md-nav__link">
+        Security Threat Tool
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../how-to/index.html">How to</a>
+          
+            <label for="__nav_4">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="How to" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          How to
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-to/configure.html" class="md-nav__link">
+        Configure
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-to/upgrade.html" class="md-nav__link">
+        Upgrade
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-to/secure.html" class="md-nav__link">
+        Secure
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-to/optimize.html" class="md-nav__link">
+        Optimize
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-to/annotate.html" class="md-nav__link">
+        Annotate
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-to/render-dashboard-images.html" class="md-nav__link">
+        Render dashboard images
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-to/extend-metrics.html" class="md-nav__link">
+        Extend Metrics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-to/troubleshoot.html" class="md-nav__link">
+        Troubleshoot
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../details/index.html">Details</a>
+          
+            <label for="__nav_5">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Details" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Details
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../details/architecture.html" class="md-nav__link">
+        Architecture
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../details/interface.html" class="md-nav__link">
+        UI components
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_3" type="checkbox" id="__nav_5_3" >
+      
+      
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../details/dashboards/index.html">Dashboards</a>
+          
+            <label for="__nav_5_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Dashboards" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_3">
+          <span class="md-nav__icon md-icon"></span>
+          Dashboards
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_3_1" type="checkbox" id="__nav_5_3_1" >
+      
+      
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../details/dashboards/dashboard-home.html">Insight</a>
+          
+            <label for="__nav_5_3_1">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Insight" data-md-level="3">
+        <label class="md-nav__title" for="__nav_5_3_1">
+          <span class="md-nav__icon md-icon"></span>
+          Insight
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../details/dashboards/dashboard-advanced-data-exploration.html" class="md-nav__link">
+        Advanced Data Exploration
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../details/dashboards/dashboard-victoriametrics.html" class="md-nav__link">
+        VictoriaMetrics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../details/dashboards/dashboard-victoriametrics-agents-overview.html" class="md-nav__link">
+        VictoriaMetrics Agents Overview
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../details/dashboards/dashboard-inventory.html" class="md-nav__link">
+        PMM
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_3_3" type="checkbox" id="__nav_5_3_3" >
+      
+      
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../details/dashboards/dashboard-cpu-utilization-details.html">OS Dashboards</a>
+          
+            <label for="__nav_5_3_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="OS Dashboards" data-md-level="3">
+        <label class="md-nav__title" for="__nav_5_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          OS Dashboards
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../details/dashboards/dashboard-disk-details.html" class="md-nav__link">
+        Disk Details
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../details/dashboards/dashboard-network-details.html" class="md-nav__link">
+        Network Details
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../details/dashboards/dashboard-memory-details.html" class="md-nav__link">
+        Memory Details
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../details/dashboards/dashboard-node-temperature-details.html" class="md-nav__link">
+        Node Temperature Details
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../details/dashboards/dashboard-nodes-compare.html" class="md-nav__link">
+        Nodes Compare
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../details/dashboards/dashboard-nodes-overview.html" class="md-nav__link">
+        Nodes Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../details/dashboards/dashboard-node-summary.html" class="md-nav__link">
+        Node Summary
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../details/dashboards/dashboard-numa-details.html" class="md-nav__link">
+        NUMA Details
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../details/dashboards/dashboard-processes-details.html" class="md-nav__link">
+        Processes Details
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_3_4" type="checkbox" id="__nav_5_3_4" >
+      
+      
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../details/dashboards/dashboard-prometheus-exporter-status.html">Prometheus Dashboards</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Prometheus Dashboards" data-md-level="3">
+        <label class="md-nav__title" for="__nav_5_3_4">
+          <span class="md-nav__icon md-icon"></span>
+          Prometheus Dashboards
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../details/dashboards/dashboard-prometheus-exporters-overview.html" class="md-nav__link">
+        Prometheus Exporters Overview
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_3_5" type="checkbox" id="__nav_5_3_5" >
+      
+      
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../details/dashboards/dashboard-mysql-amazon-aurora-details.html">MySQL Dashboards</a>
+          
+            <label for="__nav_5_3_5">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="MySQL Dashboards" data-md-level="3">
+        <label class="md-nav__title" for="__nav_5_3_5">
+          <span class="md-nav__icon md-icon"></span>
+          MySQL Dashboards
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../details/dashboards/dashboard-mysql-command-handler-counters-compare.html" class="md-nav__link">
+        MySQL Command/Handler Counters Compare
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../details/dashboards/dashboard-mysql-innodb-compression-details.html" class="md-nav__link">
+        MySQL InnoDB Compression Details
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../details/dashboards/dashboard-mysql-innodb-details.html" class="md-nav__link">
+        MySQL InnoDB Details
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../details/dashboards/dashboard-mysql-myisam-aria-details.html" class="md-nav__link">
+        MySQL MyISAM/Aria Details
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../details/dashboards/dashboard-mysql-myrocks-details.html" class="md-nav__link">
+        MySQL MyRocks Details
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../details/dashboards/dashboard-mysql-instance-summary.html" class="md-nav__link">
+        MySQL Instance Summary
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../details/dashboards/dashboard-mysql-instances-compare.html" class="md-nav__link">
+        MySQL Instances Compare
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../details/dashboards/dashboard-mysql-instances-overview.html" class="md-nav__link">
+        MySQL Instances Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../details/dashboards/dashboard-mysql-wait-event-analyses-details.html" class="md-nav__link">
+        MySQL Wait Event Analyses Details
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../details/dashboards/dashboard-mysql-performance-schema-details.html" class="md-nav__link">
+        MySQL Performance Schema Details
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../details/dashboards/dashboard-mysql-query-response-time-details.html" class="md-nav__link">
+        MySQL Query Response Time Details
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../details/dashboards/dashboard-mysql-replication-summary.html" class="md-nav__link">
+        MySQL Replication Summary
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../details/dashboards/dashboard-mysql-group-replication-summary.html" class="md-nav__link">
+        MySQL Group Replication Summary
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../details/dashboards/dashboard-mysql-table-details.html" class="md-nav__link">
+        MySQL Table Details
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../details/dashboards/dashboard-mysql-user-details.html" class="md-nav__link">
+        MySQL User Details
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../details/dashboards/dashboard-mysql-tokudb-details.html" class="md-nav__link">
+        MySQL TokuDB Details
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_3_6" type="checkbox" id="__nav_5_3_6" >
+      
+      
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../details/dashboards/dashboard-mongodb-cluster-summary.html">MongoDB Dashboards</a>
+          
+            <label for="__nav_5_3_6">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="MongoDB Dashboards" data-md-level="3">
+        <label class="md-nav__title" for="__nav_5_3_6">
+          <span class="md-nav__icon md-icon"></span>
+          MongoDB Dashboards
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../details/dashboards/dashboard-mongodb-instance-summary.html" class="md-nav__link">
+        MongoDB Instance Summary
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../details/dashboards/dashboard-mongodb-instances-overview.html" class="md-nav__link">
+        MongoDB Instances Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../details/dashboards/dashboard-mongodb-instances-compare.html" class="md-nav__link">
+        MongoDB Instances Compare
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../details/dashboards/dashboard-mongodb-replset-summary.html" class="md-nav__link">
+        MongoDB ReplSet Summary
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../details/dashboards/dashboard-mongodb-inmemory-details.html" class="md-nav__link">
+        MongoDB InMemory Details
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../details/dashboards/dashboard-mongodb-mmapv1-details.html" class="md-nav__link">
+        MongoDB MMAPv1 Details
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../details/dashboards/dashboard-mongodb-wiredtiger-details.html" class="md-nav__link">
+        MongoDB WiredTiger Details
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_3_7" type="checkbox" id="__nav_5_3_7" >
+      
+      
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../details/dashboards/dashboard-postgresql-instances-overview.html">PostgreSQL Dashboards</a>
+          
+            <label for="__nav_5_3_7">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="PostgreSQL Dashboards" data-md-level="3">
+        <label class="md-nav__title" for="__nav_5_3_7">
+          <span class="md-nav__icon md-icon"></span>
+          PostgreSQL Dashboards
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../details/dashboards/dashboard-postgresql-instance-summary.html" class="md-nav__link">
+        PostgreSQL Instance Summary
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../details/dashboards/dashboard-postgresql-instances-compare.html" class="md-nav__link">
+        PostgreSQL Instances Compare
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../details/dashboards/dashboard-proxysql-instance-summary.html" class="md-nav__link">
+        ProxySQL Dashboards
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_3_9" type="checkbox" id="__nav_5_3_9" >
+      
+      
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../details/dashboards/dashboard-pxc-galera-node-summary.html">HA Dashboards</a>
+          
+            <label for="__nav_5_3_9">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="HA Dashboards" data-md-level="3">
+        <label class="md-nav__title" for="__nav_5_3_9">
+          <span class="md-nav__icon md-icon"></span>
+          HA Dashboards
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../details/dashboards/dashboard-pxc-galera-cluster-summary.html" class="md-nav__link">
+        PXC/Galera Cluster Summary
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../details/dashboards/dashboard-pxc-galera-nodes-compare.html" class="md-nav__link">
+        PXC/Galera Nodes Compare
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../details/dashboards/dashboard-haproxy-instance-summary.html" class="md-nav__link">
+        HAProxy Instance Summary
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_4" type="checkbox" id="__nav_5_4" >
+      
+      
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../details/commands/index.html">Commands</a>
+          
+            <label for="__nav_5_4">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Commands" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_4">
+          <span class="md-nav__icon md-icon"></span>
+          Commands
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../details/commands/pmm-admin.html" class="md-nav__link">
+        pmm-admin - PMM Administration Tool
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../details/commands/pmm-agent.html" class="md-nav__link">
+        pmm-agent - PMM Client agent
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../details/api.html" class="md-nav__link">
+        API
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../details/victoria-metrics.html" class="md-nav__link">
+        VictoriaMetrics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../details/glossary.html" class="md-nav__link">
+        Glossary
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq.html" class="md-nav__link">
+        FAQ
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../release-notes/index.html">Release Notes</a>
+          
+            <label for="__nav_7">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Release Notes" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Release Notes
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/2.25.0.html" class="md-nav__link">
+        PMM 2.25.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/2.24.0.html" class="md-nav__link">
+        PMM 2.24.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/2.23.0.html" class="md-nav__link">
+        PMM 2.23.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/2.22.0.html" class="md-nav__link">
+        PMM 2.22.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/2.21.0.html" class="md-nav__link">
+        PMM 2.21.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/2.20.0.html" class="md-nav__link">
+        PMM 2.20.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/2.19.0.html" class="md-nav__link">
+        PMM 2.19.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/2.18.0.html" class="md-nav__link">
+        PMM 2.18.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/2.17.0.html" class="md-nav__link">
+        PMM 2.17.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/2.16.0.html" class="md-nav__link">
+        PMM 2.16.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/2.15.1.html" class="md-nav__link">
+        PMM 2.15.1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/2.15.0.html" class="md-nav__link">
+        PMM 2.15.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/2.14.0.html" class="md-nav__link">
+        PMM 2.14.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/2.13.0.html" class="md-nav__link">
+        PMM 2.13.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/2.12.0.html" class="md-nav__link">
+        PMM 2.12.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/2.11.1.html" class="md-nav__link">
+        PMM 2.11.1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/2.11.0.html" class="md-nav__link">
+        PMM 2.11.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/2.10.1.html" class="md-nav__link">
+        PMM 2.10.1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/2.10.0.html" class="md-nav__link">
+        PMM 2.10.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/2.9.1.html" class="md-nav__link">
+        PMM 2.9.1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/2.9.0.html" class="md-nav__link">
+        PMM 2.9.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/2.8.0.html" class="md-nav__link">
+        PMM 2.8.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/2.7.0.html" class="md-nav__link">
+        PMM 2.7.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/2.6.1.html" class="md-nav__link">
+        PMM 2.6.1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/2.6.0.html" class="md-nav__link">
+        PMM 2.6.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/2.5.0.html" class="md-nav__link">
+        PMM 2.5.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/2.4.0.html" class="md-nav__link">
+        PMM 2.4.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/2.3.0.html" class="md-nav__link">
+        PMM 2.3.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/2.2.2.html" class="md-nav__link">
+        PMM 2.2.2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/2.2.1.html" class="md-nav__link">
+        PMM 2.2.1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/2.2.0.html" class="md-nav__link">
+        PMM 2.2.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/2.1.0.html" class="md-nav__link">
+        PMM 2.1.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/2.0.1.html" class="md-nav__link">
+        PMM 2.0.1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/2.0.0.html" class="md-nav__link">
+        PMM 2.0.0
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#software-prerequisites" class="md-nav__link">
+    Software prerequisites
+  </a>
+  
+    <nav class="md-nav" aria-label="Software prerequisites">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#docker" class="md-nav__link">
+    Docker
+  </a>
+  
+    <nav class="md-nav" aria-label="Docker">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#red-hat-centos" class="md-nav__link">
+    Red Hat, CentOS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debian-ubuntu" class="md-nav__link">
+    Debian, Ubuntu
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#minikube" class="md-nav__link">
+    minikube
+  </a>
+  
+    <nav class="md-nav" aria-label="minikube">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#red-hat-centos_1" class="md-nav__link">
+    Red Hat, CentOS
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#start-pmm-server-and-activate-a-dbaas-feature" class="md-nav__link">
+    Start PMM server and activate a DBaaS feature
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-a-kubernetes-cluster" class="md-nav__link">
+    Create a Kubernetes cluster
+  </a>
+  
+    <nav class="md-nav" aria-label="Create a Kubernetes cluster">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#minikube_1" class="md-nav__link">
+    Minikube
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#amazon-aws-eks" class="md-nav__link">
+    Amazon AWS EKS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#google-gke" class="md-nav__link">
+    Google GKE
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deleting-clusters" class="md-nav__link">
+    Deleting clusters
+  </a>
+  
+    <nav class="md-nav" aria-label="Deleting clusters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cleaning-up-kubernetes-cluster" class="md-nav__link">
+    Cleaning up Kubernetes cluster
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#run-pmm-server-as-a-docker-container-for-dbaas" class="md-nav__link">
+    Run PMM Server as a Docker container for DBaaS
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exposing-psmdb-and-xtradb-clusters-for-access-by-external-clients" class="md-nav__link">
+    Exposing PSMDB and XtraDB clusters for access by external clients
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+<a href="https://github.com/percona/pmm-doc/edit/main/docs/setting-up/server/dbaas.md" title="Edit this page" class="md-content__button md-icon">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+</a>
+
+
+<h1 id="dbaas">DBaaS<a class="headerlink" href="#dbaas" title="Permanent link">&para;</a></h1>
+<div class="admonition caution alert alert-warning">
+<p class="admonition-title">Caution</p>
+<p>DBaaS functionality is currently in <a href="../../details/glossary.html#technical-preview">technical preview</a> and is subject to change.</p>
+</div>
+<h2 id="software-prerequisites">Software prerequisites<a class="headerlink" href="#software-prerequisites" title="Permanent link">&para;</a></h2>
+<h3 id="docker">Docker<a class="headerlink" href="#docker" title="Permanent link">&para;</a></h3>
+<h4 id="red-hat-centos">Red Hat, CentOS<a class="headerlink" href="#red-hat-centos" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+yum -y install docker-ce
+usermod -a -G docker centos
+systemctl <span class="nb">enable</span> docker
+systemctl start docker
+</code></pre></div>
+<h4 id="debian-ubuntu">Debian, Ubuntu<a class="headerlink" href="#debian-ubuntu" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>apt-add-repository https://download.docker.com/linux/centos/docker-ce.repo
+systemctl <span class="nb">enable</span> docker
+systemctl start docker
+</code></pre></div>
+<h3 id="minikube">minikube<a class="headerlink" href="#minikube" title="Permanent link">&para;</a></h3>
+<div class="admonition note alert alert-primary">
+<p>Please install minikube 1.16.0</p>
+</div>
+<h4 id="red-hat-centos_1">Red Hat, CentOS<a class="headerlink" href="#red-hat-centos_1" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>yum -y install curl
+curl -Lo /usr/local/sbin/minikube https://github.com/kubernetes/minikube/releases/download/v1.16.0/minikube-linux-amd64
+chmod +x /usr/local/sbin/minikube
+ln -s /usr/local/sbin/minikube /usr/sbin/minikube
+<span class="nb">alias</span> <span class="nv">kubectl</span><span class="o">=</span><span class="s1">&#39;minikube kubectl --&#39;</span>
+</code></pre></div>
+<h2 id="start-pmm-server-and-activate-a-dbaas-feature">Start PMM server and activate a DBaaS feature<a class="headerlink" href="#start-pmm-server-and-activate-a-dbaas-feature" title="Permanent link">&para;</a></h2>
+<div class="admonition note alert alert-primary">
+<ul>
+<li>To start a fully-working 3 node XtraDB cluster, consisting of sets of 3x HAProxy, 3x PXC and 6x PMM Client containers, you will need at least 9 vCPU available for minikube. (1x vCPU for HAProxy and PXC and 0.5vCPU for each pmm-client containers).</li>
+<li>DBaaS does not depend on PMM Client.</li>
+<li>You can pass the environment variable <code>--env ENABLE_DBAAS=1</code> to force the DBaaS feature when starting up pmm-server container. <strong>You can omit the variable and enable the feature later using PMM UI</strong>, please follow the link in step 3. below.</li>
+<li>Add the option <code>--network minikube</code> if you run PMM Server and minikube in the same Docker instance. (This will share a single network and the kubeconfig will work.)</li>
+<li>Add the options <code>--env PMM_DEBUG=1</code> and/or <code>--env PMM_TRACE=1</code> if you need extended debug details</li>
+</ul>
+</div>
+<ol>
+<li>
+<p>Start PMM server:</p>
+<div class="highlight"><pre><span></span><code>docker run --detach --publish <span class="m">80</span>:80 --publish <span class="m">443</span>:443 --name pmm-server percona/pmm-server:2
+</code></pre></div>
+</li>
+<li>
+<p>Change the default administrator credentials from CLI:</p>
+<p>(This step is optional, because the same can be done from the web interface of PMM on first login.)</p>
+<div class="highlight"><pre><span></span><code>docker <span class="nb">exec</span> -t pmm-server bash -c <span class="s1">&#39;ln -s /srv/grafana /usr/share/grafana/data; chown -R grafana:grafana /usr/share/grafana/data; grafana-cli --homepath /usr/share/grafana admin reset-admin-password &lt;RANDOM_PASS_GOES_IN_HERE&gt;&#39;</span>
+</code></pre></div>
+</li>
+</ol>
+<div class="admonition caution alert alert-warning">
+<p class="admonition-title">Important</p>
+<p>You must <a href="../../using/dbaas.html#activate-dbaas">activate DBaaS</a> using the PMM UI if you omitted <code>--env ENABLE_DBAAS=1</code> when starting up the container.</p>
+</div>
+<h2 id="create-a-kubernetes-cluster">Create a Kubernetes cluster<a class="headerlink" href="#create-a-kubernetes-cluster" title="Permanent link">&para;</a></h2>
+<div class="admonition note alert alert-primary">
+<p>The DBaaS feature uses Kubernetes clusters to deploy database clusters. You must first create a Kubernetes cluster and then add it to PMM using <code>kubeconfig</code> to get a successful setup.</p>
+</div>
+<h3 id="minikube_1">Minikube<a class="headerlink" href="#minikube_1" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>Configure and start minikube:</p>
+<div class="highlight"><pre><span></span><code>minikube config <span class="nb">set</span> cpus <span class="m">16</span>
+minikube config <span class="nb">set</span> memory <span class="m">32768</span>
+minikube config <span class="nb">set</span> kubernetes-version <span class="m">1</span>.20.1
+minikube start
+</code></pre></div>
+</li>
+<li>
+<p>Get your kubeconfig details from <code>minikube</code>. (You need these to register your Kubernetes cluster with PMM Server):</p>
+<div class="highlight"><pre><span></span><code>minikube kubectl -- config view --flatten --minify
+</code></pre></div>
+<div class="admonition note alert alert-primary">
+<p>You will need to copy this output to your clipboard and continue with <a href="../../using/dbaas.html#add-a-kubernetes-cluster">adding a Kubernetes cluster to PMM</a>.</p>
+</div>
+</li>
+</ol>
+<h3 id="amazon-aws-eks">Amazon AWS EKS<a class="headerlink" href="#amazon-aws-eks" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>Create your cluster via <code>eksctl</code> or the Amazon AWS interface. For example:</p>
+<div class="highlight"><pre><span></span><code>eksctl create cluster --write-kubeconfig --name<span class="o">=</span>your-cluster-name --zones<span class="o">=</span>us-west-2a,us-west-2b --kubeconfig &lt;PATH_TO_KUBECONFIG&gt;
+</code></pre></div>
+</li>
+<li>
+<p>When the cluster is running, modify your kubeconfig file, if it&rsquo;s not utilizing the <code>aws-iam-authenticator</code> or <code>client-certificate</code> method for authentication with Kubernetes. Here are two examples that you can use as templates to modify a copy of your existing kubeconfig:</p>
+<ul>
+<li>
+<p>For the <code>aws-iam-authenticator</code> method:</p>
+<div class="highlight"><pre><span></span><code>---
+apiVersion: v1
+clusters:
+- cluster:
+    certificate-authority-data: &lt;&lt; CERT_AUTH_DATA &gt;&gt;
+    server: &lt;&lt; K8S_CLUSTER_URL &gt;&gt;
+  name: &lt;&lt; K8S_CLUSTER_NAME &gt;&gt;
+contexts:
+- context:
+    cluster: &lt;&lt; K8S_CLUSTER_NAME &gt;&gt;
+    user: &lt;&lt; K8S_CLUSTER_USER &gt;&gt;
+  name: &lt;&lt; K8S_CLUSTER_NAME &gt;&gt;
+current-context: &lt;&lt; K8S_CLUSTER_NAME &gt;&gt;
+kind: Config
+preferences: {}
+users:
+- name: &lt;&lt; K8S_CLUSTER_USER &gt;&gt;
+  user:
+    exec:
+      apiVersion: client.authentication.k8s.io/v1alpha1
+      command: aws-iam-authenticator
+      args:
+        - &quot;token&quot;
+        - &quot;-i&quot;
+        - &quot;&lt;&lt; K8S_CLUSTER_NAME &gt;&gt;&quot;
+        - --region
+        - &lt;&lt; AWS_REGION &gt;&gt;
+      env:
+         - name: AWS_ACCESS_KEY_ID
+           value: &quot;&lt;&lt; AWS_ACCESS_KEY_ID &gt;&gt;&quot;
+         - name: AWS_SECRET_ACCESS_KEY
+           value: &quot;&lt;&lt; AWS_SECRET_ACCESS_KEY &gt;&gt;&quot;
+</code></pre></div>
+</li>
+<li>
+<p>For the <code>client-certificate</code> method:</p>
+<div class="highlight"><pre><span></span><code>---
+apiVersion: v1
+clusters:
+- cluster:
+    certificate-authority-data: &lt;&lt; CERT_AUTH_DATA &gt;&gt;
+    server: &lt;&lt; K8S_CLUSTER_URL &gt;&gt;
+  name: &lt;&lt; K8S_CLUSTER_NAME &gt;&gt;
+contexts:
+- context:
+    cluster: &lt;&lt; K8S_CLUSTER_NAME &gt;&gt;
+    user: &lt;&lt; K8S_CLUSTER_USER &gt;&gt;
+  name: &lt;&lt; K8S_CLUSTER_NAME &gt;&gt;
+current-context: &lt;&lt; K8S_CLUSTER_NAME &gt;&gt;
+kind: Config
+preferences: {}
+users:
+- name: &lt;&lt; K8S_CLUSTER_NAME &gt;&gt;
+  user:
+    client-certificate-data: &lt;&lt; CLIENT_CERT_DATA &gt;&gt;
+    client-key-data: &lt;&lt; CLIENT_KEY_DATA &gt;&gt;
+</code></pre></div>
+</li>
+</ul>
+</li>
+<li>
+<p>Follow the instructions on <a href="../../using/dbaas.html#add-a-kubernetes-cluster">How to add a Kubernetes cluster</a> with kubeconfig from the previous step.</p>
+<div class="admonition note alert alert-primary">
+<p>If possible, the connection details will show the cluster&rsquo;s external IP (not possible with minikube).</p>
+</div>
+</li>
+</ol>
+<h3 id="google-gke">Google GKE<a class="headerlink" href="#google-gke" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>Create your cluster either with <a href="https://console.cloud.google.com/">Google Cloud Console</a> or <a href="https://cloud.google.com/sdk/gcloud"><code>gcloud</code> command line tool</a>:</p>
+<p>The command below assumes that your <code>gcloud</code> command line tool is properly configured and your user authenticated and authorized to manage GKE Clusters. This example creates a minimal zonal cluster using preemptive node machines, ideal for testing the DBaaS functionality.</p>
+<div class="highlight"><pre><span></span><code>gcloud container clusters create --zone europe-west3-c pmm-dbaas-cluster --cluster-version <span class="m">1</span>.19 --machine-type e2-standard-4 --preemptible --num-nodes<span class="o">=</span><span class="m">3</span>
+gcloud container clusters get-credentials pmm-dbaas-cluster --zone<span class="o">=</span>europe-west3-c
+kubectl create clusterrolebinding cluster-admin-binding --clusterrole<span class="o">=</span>cluster-admin --user<span class="o">=</span><span class="s">&lt;&lt;your_user@your_</span>company.com&gt;&gt;
+</code></pre></div>
+</li>
+<li>
+<p>Create <code>ServiceAccount</code>, <code>ClusterRole</code> and <code>RoleBindings</code> (required Roles are deployed automatically when PMM deploys Operators) using the following command:</p>
+<div class="highlight"><pre><span></span><code>cat <span class="s">&lt;&lt;EOF | kubectl apply -f -</span>
+<span class="s">---</span>
+<span class="s">apiVersion: v1</span>
+<span class="s">kind: ServiceAccount</span>
+<span class="s">metadata:</span>
+<span class="s">  name: percona-dbaas-cluster-operator</span>
+<span class="s">---</span>
+<span class="s">kind: RoleBinding</span>
+<span class="s">apiVersion: rbac.authorization.k8s.io/v1beta1</span>
+<span class="s">metadata:</span>
+<span class="s">  name: service-account-percona-server-dbaas-xtradb-operator</span>
+<span class="s">subjects:</span>
+<span class="s">- kind: ServiceAccount</span>
+<span class="s">  name: percona-dbaas-cluster-operator</span>
+<span class="s">roleRef:</span>
+<span class="s">  kind: Role</span>
+<span class="s">  name: percona-xtradb-cluster-operator</span>
+<span class="s">  apiGroup: rbac.authorization.k8s.io</span>
+<span class="s">---</span>
+<span class="s">kind: RoleBinding</span>
+<span class="s">apiVersion: rbac.authorization.k8s.io/v1beta1</span>
+<span class="s">metadata:</span>
+<span class="s">  name: service-account-percona-server-dbaas-psmdb-operator</span>
+<span class="s">subjects:</span>
+<span class="s">- kind: ServiceAccount</span>
+<span class="s">  name: percona-dbaas-cluster-operator</span>
+<span class="s">roleRef:</span>
+<span class="s">  kind: Role</span>
+<span class="s">  name: percona-server-mongodb-operator</span>
+<span class="s">  apiGroup: rbac.authorization.k8s.io</span>
+<span class="s">---</span>
+<span class="s">apiVersion: rbac.authorization.k8s.io/v1beta1</span>
+<span class="s">kind: ClusterRole</span>
+<span class="s">metadata:</span>
+<span class="s">  name: service-account-percona-server-dbaas-admin</span>
+<span class="s">rules:</span>
+<span class="s">- apiGroups: [&quot;*&quot;]</span>
+<span class="s">  resources: [&quot;*&quot;]</span>
+<span class="s">  verbs: [&quot;*&quot;]</span>
+<span class="s">---</span>
+<span class="s">apiVersion: rbac.authorization.k8s.io/v1beta1</span>
+<span class="s">kind: ClusterRoleBinding</span>
+<span class="s">metadata:</span>
+<span class="s">  name: service-account-percona-server-dbaas-operator-admin</span>
+<span class="s">subjects:</span>
+<span class="s">- kind: ServiceAccount</span>
+<span class="s">  name: percona-dbaas-cluster-operator</span>
+<span class="s">  namespace: default</span>
+<span class="s">roleRef:</span>
+<span class="s">  kind: ClusterRole</span>
+<span class="s">  name: service-account-percona-server-dbaas-admin</span>
+<span class="s">  apiGroup: rbac.authorization.k8s.io</span>
+<span class="s">EOF</span>
+</code></pre></div>
+</li>
+<li>
+<p>Extract variables required to generate a kubeconfig:</p>
+<div class="highlight"><pre><span></span><code><span class="nv">name</span><span class="o">=</span><span class="sb">`</span>kubectl get serviceAccounts percona-dbaas-cluster-operator -o json <span class="p">|</span> jq  -r <span class="s1">&#39;.secrets[].name&#39;</span><span class="sb">`</span>
+<span class="nv">certificate</span><span class="o">=</span><span class="sb">`</span>kubectl get secret <span class="nv">$name</span> -o json <span class="p">|</span> jq -r  <span class="s1">&#39;.data.&quot;ca.crt&quot;&#39;</span><span class="sb">`</span>
+<span class="nv">token</span><span class="o">=</span><span class="sb">`</span>kubectl get secret <span class="nv">$name</span> -o json <span class="p">|</span> jq -r  <span class="s1">&#39;.data.token&#39;</span> <span class="p">|</span> base64 -d<span class="sb">`</span>
+<span class="nv">server</span><span class="o">=</span><span class="sb">`</span>kubectl cluster-info <span class="p">|</span> grep <span class="s1">&#39;Kubernetes master&#39;</span> <span class="p">|</span> cut -d <span class="s1">&#39; &#39;</span> -f <span class="m">6</span><span class="sb">`</span>
+</code></pre></div>
+</li>
+<li>
+<p>Generate your kubeconfig file (copy the output):</p>
+<div class="highlight"><pre><span></span><code><span class="nb">echo</span> <span class="s2">&quot;</span>
+<span class="s2">apiVersion: v1</span>
+<span class="s2">kind: Config</span>
+<span class="s2">users:</span>
+<span class="s2">- name: percona-dbaas-cluster-operator</span>
+<span class="s2">  user:</span>
+<span class="s2">    token: </span><span class="nv">$token</span><span class="s2"></span>
+<span class="s2">clusters:</span>
+<span class="s2">- cluster:</span>
+<span class="s2">    certificate-authority-data: </span><span class="nv">$certificate</span><span class="s2"></span>
+<span class="s2">    server: </span><span class="nv">$server</span><span class="s2"></span>
+<span class="s2">  name: self-hosted-cluster</span>
+<span class="s2">contexts:</span>
+<span class="s2">- context:</span>
+<span class="s2">    cluster: self-hosted-cluster</span>
+<span class="s2">    user: percona-dbaas-cluster-operator</span>
+<span class="s2">  name: svcs-acct-context</span>
+<span class="s2">current-context: svcs-acct-context</span>
+<span class="s2">&quot;</span>
+</code></pre></div>
+</li>
+<li>
+<p>Follow the instructions on <a href="../../using/dbaas.html#add-a-kubernetes-cluster">How to add a Kubernetes cluster</a> with kubeconfig from the previous step.</p>
+</li>
+</ol>
+<h2 id="deleting-clusters">Deleting clusters<a class="headerlink" href="#deleting-clusters" title="Permanent link">&para;</a></h2>
+<div class="admonition note alert alert-primary">
+<p>If a Public Address is set in PMM Settings, for each DB cluster an API Key is created which can be found on the page <code>/graph/org/apikeys</code>. You should not delete them (for now, until <a href="https://jira.percona.com/browse/PMM-8045">issue PMM-8045</a> is fixed) &ndash; once a DB cluster is removed from DBaaS, the related API Key is also removed.</p>
+</div>
+<p>For example, if you only run <code>eksctl delete cluster</code> to delete an Amazon EKS cluster without cleaning up the cluster first, there will be a lot of orphaned resources such as Cloud Formations, Load Balancers, EC2 instances, Network interfaces, etc. The same applies for Google GKE clusters.</p>
+<h3 id="cleaning-up-kubernetes-cluster">Cleaning up Kubernetes cluster<a class="headerlink" href="#cleaning-up-kubernetes-cluster" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>You should delete all database clusters, backups and restores.</p>
+<div class="highlight"><pre><span></span><code>kubectl delete perconaxtradbclusterbackups.pxc.percona.com --all
+kubectl delete perconaxtradbclusters.pxc.percona.com --all
+kubectl delete perconaxtradbclusterrestores.pxc.percona.com --all
+
+kubectl delete perconaservermongodbbackups.psmdb.percona.com --all
+kubectl delete perconaservermongodbs.psmdb.percona.com --all
+kubectl delete perconaservermongodbrestores.psmdb.percona.com --all
+</code></pre></div>
+</li>
+<li>
+<p>In the <code>dbaas-controller</code> repository, in the deploy directory there are manifests we use to deploy operators. Use them to delete operators and related resources from the cluster.</p>
+<div class="admonition caution alert alert-warning">
+<p class="admonition-title">Important</p>
+<ul>
+<li>Do NOT execute this step before all database clusters, backups and restores are deleted in the previous step. It may result in not being able to delete the namespace DBaaS lives in.</li>
+<li>Also be careful with this step if you are running DBaaS in more than one namespace as it deletes cluster level CustomResourceDefinitions needed to run DBaaS. This would break DBaaS in other namespaces. Delete just operators deployments in that case.</li>
+</ul>
+</div>
+<div class="highlight"><pre><span></span><code><span class="c1"># Delete the PXC operator and related resources.</span>
+curl https://raw.githubusercontent.com/percona-platform/dbaas-controller/7a5fff023994cecf6bde15705365114004b50b41/deploy/pxc-operator.yaml <span class="p">|</span> kubectl delete -f -
+
+<span class="c1"># Delete the PSMDB operator and related resources.</span>
+curl https://raw.githubusercontent.com/percona-platform/dbaas-controller/7a5fff023994cecf6bde15705365114004b50b41/deploy/psmdb-operator.yaml <span class="p">|</span> kubectl delete -f -
+</code></pre></div>
+</li>
+<li>
+<p>Delete the name space where the DBaaS is running, this will delete all remaining name space level resources if any are left.</p>
+<div class="highlight"><pre><span></span><code>kubectl delete namespace &lt;your-namespace&gt;
+</code></pre></div>
+</li>
+<li>
+<p>Delete the Kubernetes cluster. The method depends on your cloud provider:</p>
+<ul>
+<li><a href="https://cloud.google.com/kubernetes-engine/docs/how-to/deleting-a-cluster">Delete GKE cluster</a>.</li>
+<li><a href="https://docs.aws.amazon.com/eks/latest/userguide/delete-cluster.html">Delete Amazon EKS cluster</a>.</li>
+</ul>
+</li>
+</ol>
+<h2 id="run-pmm-server-as-a-docker-container-for-dbaas">Run PMM Server as a Docker container for DBaaS<a class="headerlink" href="#run-pmm-server-as-a-docker-container-for-dbaas" title="Permanent link">&para;</a></h2>
+<ol>
+<li>
+<p>Start PMM server from a feature branch:</p>
+<div class="highlight"><pre><span></span><code>docker run --detach --name pmm-server --publish <span class="m">80</span>:80 --publish <span class="m">443</span>:443 --env <span class="nv">ENABLE_DBAAS</span><span class="o">=</span><span class="m">1</span>  percona/pmm-server:2<span class="p">;</span>
+</code></pre></div>
+<div class="admonition caution alert alert-warning">
+<p class="admonition-title">Important</p>
+<ul>
+<li>Use <code>--network minikube</code> if running PMM Server and minikube in the same Docker instance. This way they will share single network and the kubeconfig will work.</li>
+<li>Use Docker variables <code>--env PMM_DEBUG=1 --env PMM_TRACE=1</code> to see extended debug details.</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Change the default administrator credentials:</p>
+<div class="admonition note alert alert-primary">
+<p>This step is optional, because the same can be done from the web interface of PMM on the first login.</p>
+</div>
+<div class="highlight"><pre><span></span><code>docker <span class="nb">exec</span> -t pmm-server bash -c <span class="s1">&#39;ln -s /srv/grafana /usr/share/grafana/data; chown -R grafana:grafana /usr/share/grafana/data; grafana-cli --homepath /usr/share/grafana admin reset-admin-password &lt;RANDOM_PASS_GOES_IN_HERE&gt;&#39;</span>
+</code></pre></div>
+</li>
+<li>
+<p>Set the public address for PMM Server in PMM settings UI</p>
+</li>
+<li>
+<p>Follow the steps for <a href="../../using/dbaas.html#add-a-kubernetes-cluster">Add a Kubernetes cluster</a>.</p>
+</li>
+<li>
+<p>Follow the steps for <a href="../../using/dbaas.html#add-a-db-cluster">Add a DB Cluster</a>.</p>
+</li>
+<li>
+<p>Get the IP address to connect your app/service:</p>
+<div class="highlight"><pre><span></span><code>minikube kubectl get services
+</code></pre></div>
+</li>
+</ol>
+<h2 id="exposing-psmdb-and-xtradb-clusters-for-access-by-external-clients">Exposing PSMDB and XtraDB clusters for access by external clients<a class="headerlink" href="#exposing-psmdb-and-xtradb-clusters-for-access-by-external-clients" title="Permanent link">&para;</a></h2>
+<p>To make services visible externally, you create a LoadBalancer service or manually run commands to expose ports:</p>
+<div class="highlight"><pre><span></span><code>kubectl expose deployment hello-world --type<span class="o">=</span>NodePort.
+</code></pre></div>
+<div class="admonition seealso alert alert-info">
+<p class="admonition-title">See also</p>
+<ul>
+<li><a href="../../using/dbaas.html">DBaaS Dashboard</a></li>
+<li><a href="https://minikube.sigs.k8s.io/docs/start/">Install minikube</a></li>
+<li><a href="https://medium.com/@chrisedrego/setting-up-a-standalone-mysql-instance-on-kubernetes-exposing-it-using-nginx-ingress-controller-262fc7af593a">Setting up a Standalone MYSQL Instance on Kubernetes &amp; exposing it using Nginx Ingress Controller</a></li>
+<li><a href="https://kubernetes.io/docs/tasks/access-application-cluster/service-access-application-cluster/">Use a Service to Access an Application in a Cluster</a></li>
+<li><a href="https://cloud.google.com/kubernetes-engine/docs/how-to/exposing-apps">Exposing applications using services</a></li>
+</ul>
+</div>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      Last update:
+      2021-07-30
+    
+  </small>
+</div>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="easy-install.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Easy-install script" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Easy-install script
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../client/index.html" class="md-footer__link md-footer__link--next" aria-label="Next: Client" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Client
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Percona LLC, &#169; 2021
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.b6ff8c07.min.js", "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.5e13d264.min.js"></script>
+      
+        <script src="../../js/version-select.js"></script>
+      
+        <script src="../../js/toctree.js"></script>
+      
+        <script src="../../js/lightgallery.min.js"></script>
+      
+    
+  </body>
+</html>
