@@ -1,0 +1,1300 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<title>Percona Monitoring and Management &mdash; Query Analytics</title>
+
+<head>
+    
+
+
+    
+<script src="../js/version-select.js" type="text/javascript"></script>
+
+<script src="../js/toctree.js" type="text/javascript"></script>
+
+<script src="../js/lightgallery.min.js" type="text/javascript"></script>
+
+
+<script>
+    var elements = document.getElementsByClassName("lightgallery");
+    for(var i=0; i<elements.length; i++) {
+       lightGallery(elements[i]);
+    }
+</script>
+
+    <link rel="top" title="" href="https://www.percona.com/doc/percona-monitoring-and-management/2.x" />
+    
+    <link rel="next" title="DBaaS" href="dbaas.html" />
+    
+    
+</head>
+
+<body>
+    <div class="container">
+        
+<link rel="stylesheet" href="../css/version-select.css" type="text/css">
+<link rel="stylesheet" href="../css/toctree.css" type="text/css">
+
+        
+<script src="../js/version-select.js" type="text/javascript"></script>
+
+<script src="../js/toctree.js" type="text/javascript"></script>
+
+<script src="../js/lightgallery.min.js" type="text/javascript"></script>
+
+
+<script>
+    var elements = document.getElementsByClassName("lightgallery");
+    for(var i=0; i<elements.length; i++) {
+       lightGallery(elements[i]);
+    }
+</script>
+
+        <div class="document row">
+            <div class="documentwrapper col-md-9 col-md-push-3">
+                
+<div class="related row">
+    <ul class="nav nav-pills">
+        
+        <li class="right" style="margin-right: 10px">
+            <a href="dbaas.html" title="DBaaS">Next</a>
+        </li>
+        
+        
+        <li class="right" style="margin-right: 10px">
+            <a href="backup.html" title="Backup and Restore">Previous</a>
+        </li>
+        
+        <li>
+            <a href="https://www.percona.com/doc/percona-monitoring-and-management/2.x">Home</a>
+        </li>
+    </ul>
+</div>
+
+                
+
+<div class="small">
+    <ul class="list-inline">
+        <li class="pull-right">
+            <a href="https://github.com/percona/pmm-doc/edit/main/docs/using/query-analytics.md" target="_blank" title=""><i class="uil uil-pen"></i> <b>Edit this page</b></a>
+        </li>
+    </ul>
+</div>
+
+
+                <div class="bodywrapper">
+                    <div class="body">
+                        <h1 id="query-analytics">Query Analytics<a class="headerlink" href="#query-analytics" title="Permanent link">&para;</a></h1>
+<p>The <em>Query Analytics</em> dashboard shows how queries are executed and where they spend their time.  It helps you analyze database queries over time, optimize database performance, and find and remedy the source of problems.</p>
+<p><div class="lightgallery"><a data-sub-html="image" href="../_images/PMM_Query_Analytics.jpg"><img alt="image" src="../_images/PMM_Query_Analytics.jpg" /></a></div></p>
+<p>Query Analytics supports MySQL, MongoDB and PostgreSQL. The minimum requirements for MySQL are:</p>
+<ul>
+<li>MySQL 5.1 or later (if using the slow query log).</li>
+<li>MySQL 5.6.9 or later (if using Performance Schema).</li>
+</ul>
+<p>Query Analytics displays metrics in both visual and numeric form. Performance-related characteristics appear as plotted graphics with summaries.</p>
+<p>The dashboard contains three panels:</p>
+<ul>
+<li>the <a href="#filters-panel">Filters Panel</a>;</li>
+<li>the <a href="#overview-panel">Overview Panel</a>;</li>
+<li>the <a href="#details-panel">Details Panel</a>.</li>
+</ul>
+<div class="admonition note alert alert-primary">
+<p>Query Analytics data retrieval is not instantaneous and can be delayed due to network conditions. In such situations <em>no data</em> is reported and a gap appears in the sparkline.</p>
+</div>
+<h2 id="filters-panel">Filters Panel<a class="headerlink" href="#filters-panel" title="Permanent link">&para;</a></h2>
+<p><div class="lightgallery"><a data-sub-html="image" href="../_images/PMM_Query_Analytics_Panels_Filters.jpg"><img alt="image" src="../_images/PMM_Query_Analytics_Panels_Filters.jpg" /></a></div></p>
+<ul>
+<li>The Filter panel occupies the left side of the dashboard. It lists filters, grouped by category. Selecting one reduces the Overview list to those items matching the filter.</li>
+<li>The first five of each category are shown. If there are more, the list is expanded by clicking <em>Show all</em> beside the category name, and collapsed again with <em>Show top 5</em>.</li>
+<li>Applying a filter may make other filters inapplicable. These become grayed out and inactive.</li>
+<li>Click the chart symbol <i class="uil uil-graph-bar"></i> to navigate directly to an item&rsquo;s associated dashboard.</li>
+<li>Separately, the global <em>Time range</em> setting filters results by time, either your choice of <em>Absolute time range</em>, or one of the predefined <em>Relative time ranges</em>.</li>
+</ul>
+<p><div class="lightgallery"><a data-sub-html="image" href="../_images/PMM_Query_Analytics_Time_Range.jpg"><img alt="image" src="../_images/PMM_Query_Analytics_Time_Range.jpg" /></a></div></p>
+<h2 id="overview-panel">Overview Panel<a class="headerlink" href="#overview-panel" title="Permanent link">&para;</a></h2>
+<p>To the right of the Filters panel and occupying the upper part of the dashboard is the Overview panel.</p>
+<p><div class="lightgallery"><a data-sub-html="image" href="../_images/PMM_Query_Analytics_overview-table.jpg"><img alt="image" src="../_images/PMM_Query_Analytics_overview-table.jpg" /></a></div></p>
+<p>Each row of the table represents the metrics for a chosen object type, one of:</p>
+<ul>
+<li>Query;</li>
+<li>Service Name;</li>
+<li>Database;</li>
+<li>Schema;</li>
+<li>User Name;</li>
+<li>Client Host.</li>
+</ul>
+<p>At the top of the second column is the <em>dimension</em> menu. Use this to choose the object type.</p>
+<p><div class="lightgallery"><a data-sub-html="image" href="../_images/PMM_Query_Analytics_Menus_Dimension_Selector.jpg"><img alt="image" src="../_images/PMM_Query_Analytics_Menus_Dimension_Selector.jpg" /></a></div></p>
+<p>On the right side of the dimension column is the <em>Dimension Search</em> bar.</p>
+<p><div class="lightgallery"><a data-sub-html="image" href="../_images/PMM_Query_Analytics_Panels_Dimension_Search.jpg"><img alt="image" src="../_images/PMM_Query_Analytics_Panels_Dimension_Search.jpg" /></a></div></p>
+<p>Enter a string and press Enter to limit the view to queries containing only the specified keywords.</p>
+<p>Delete the search text and press Enter to see the full list again.</p>
+<h3 id="columns">Columns<a class="headerlink" href="#columns" title="Permanent link">&para;</a></h3>
+<ul>
+<li>The first column is the object’s identifier. For <em>Query</em>, it is the query’s <a href="../details/glossary/#fingerprint">Fingerprint</a>.</li>
+<li>The second column is the <em>Main metric</em>, containing a reduced graphical representation of the metric over time, called a <em>sparkline</em>, and a horizontal meter, filled to reflect a percentage of the total value.</li>
+<li>Additional values are revealed as mouse-over tool-tips.</li>
+</ul>
+<h3 id="tool-tips">Tool-tips<a class="headerlink" href="#tool-tips" title="Permanent link">&para;</a></h3>
+<ul>
+<li>For the <em>Query</em> dimension, hovering over the information icon <i class="fa fa-info-circle"></i> reveals the query ID and its example.</li>
+<li>Hovering on a column header reveals an informative tool-tip for that column.</li>
+<li>Hovering on the main metric sparkline highlights the data point and a tooltip shows the data value under the cursor.</li>
+</ul>
+<p><div class="lightgallery"><a data-sub-html="image" href="../_images/PMM_Query_Analytics_Main_Metric_Sparkline.jpg"><img alt="image" src="../_images/PMM_Query_Analytics_Main_Metric_Sparkline.jpg" /></a></div></p>
+<ul>
+<li>
+<p>Hovering on the main metric meter reveals the percentage of the total, and other details specific to the main metric.</p>
+<p><div class="lightgallery"><a data-sub-html="image" href="../_images/PMM_Query_Analytics_Tooltips_Metric_Tooltip.jpg"><img alt="image" src="../_images/PMM_Query_Analytics_Tooltips_Metric_Tooltip.jpg" /></a></div></p>
+</li>
+<li>
+<p>Hovering on column values reveals more details on the value. The contents depends on the type of value.</p>
+<p><div class="lightgallery"><a data-sub-html="image" href="../_images/PMM_Query_Analytics_Metric_Tooltip.jpg"><img alt="image" src="../_images/PMM_Query_Analytics_Metric_Tooltip.jpg" /></a></div></p>
+</li>
+</ul>
+<h3 id="adding-and-removing-columns">Adding and removing columns<a class="headerlink" href="#adding-and-removing-columns" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p>Metrics columns are added with the <em>Add column</em> button.</p>
+<p><div class="lightgallery"><a data-sub-html="image" href="../_images/PMM_Query_Analytics_Devices_Add_Columns.jpg"><img alt="image" src="../_images/PMM_Query_Analytics_Devices_Add_Columns.jpg" /></a></div></p>
+</li>
+<li>
+<p>When clicked, a text field and list of available metrics are revealed. Select a metric or enter a search string to reduce the list. Selecting a metric adds it to the panel.</p>
+</li>
+<li>A metric column is removed by clicking on the column heading and selecting <em>Remove column</em>.</li>
+<li>The value plotted in the <em>main metric</em> column can be changed by clicking a metric column heading and selecting <em>Swap with main metric</em>.</li>
+</ul>
+<h3 id="sorting">Sorting<a class="headerlink" href="#sorting" title="Permanent link">&para;</a></h3>
+<ul>
+<li>The entire list is sorted by one of the columns.</li>
+<li>Click either the up or down caret to sort the list by that column’s ascending or descending values.</li>
+</ul>
+<h3 id="pagination">Pagination<a class="headerlink" href="#pagination" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p>The pagination device lets you move forwards or backwards through pages, jump to a specific page, and choose how many items are listed per page.</p>
+<p><div class="lightgallery"><a data-sub-html="image" href="../_images/PMM_Query_Analytics_Devices_Pagination.jpg"><img alt="image" src="../_images/PMM_Query_Analytics_Devices_Pagination.jpg" /></a></div></p>
+</li>
+<li>
+<p>Queries are grouped into pages of 25, 50 or 100 items.</p>
+</li>
+</ul>
+<h2 id="details-panel">Details Panel<a class="headerlink" href="#details-panel" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Selecting an item in the Overview panel opens the <em>Details panel</em> with a <a href="#details-tab">Details Tab</a>.</li>
+<li>If the dimension is <em>Query</em>, the panel also contains the <a href="#examples-tab">Examples Tab</a>, <a href="#explain-tab">Explain Tab</a>, and <a href="#tables-tab">Tables Tab</a>.</li>
+</ul>
+<h3 id="details-tab">Details Tab<a class="headerlink" href="#details-tab" title="Permanent link">&para;</a></h3>
+<p>The <em>Details</em> tab contains a <em>Query time distribution</em> bar (only for MySQL databases) and a set of <em>Metrics</em> in collapsible subpanels.</p>
+<p><div class="lightgallery"><a data-sub-html="image" href="../_images/PMM_Query_Analytics_Tabs_Details.jpg"><img alt="image" src="../_images/PMM_Query_Analytics_Tabs_Details.jpg" /></a></div></p>
+<ul>
+<li>
+<p>The <em>Query time distribution</em> bar shows a query’s total time made up of colored segments, each segment representing the proportion of time spent on a named activity.</p>
+<ul>
+<li><code>query_time</code>: Statement execution time.</li>
+<li><code>lock_time</code>: Time to acquire locks.</li>
+<li><code>blk_read_time</code>: Total time the statement spent reading blocks (if <code>track_io_timing</code> is enabled, otherwise zero).</li>
+<li><code>blk_write_time</code>: Total time the statement spent writing blocks (if <code>track_io_timing</code> is enabled, otherwise zero).</li>
+<li><code>innodb_io_r_wait</code>: Time for InnoDB to read the data from storage.</li>
+<li><code>innodb_queue_wait</code>: Time the query spent either waiting to enter the InnoDB queue, or in it pending execution.</li>
+<li><code>innodb_rec_lock_wait</code>: Time the query waited for row locks.</li>
+<li><code>other</code>: Remaining uncategorized query time.</li>
+</ul>
+</li>
+<li>
+<p><em>Metrics</em> is a table with headings:</p>
+<ul>
+<li><em>Metric</em>: The Metric name, with a question-mark tool-tip that reveals a description of the metric on mouse-over;</li>
+<li><em>Rate/Second</em>: A sparkline chart of real-time values per unit time;</li>
+<li><em>Sum</em>: A summation of the metric for the selected query, and the percentage of the total;</li>
+<li><em>Per Query Stats</em>: The value of the metric per query.</li>
+</ul>
+</li>
+<li>
+<p>Each row in the table is a metric. The contents depends on the chosen dimension.</p>
+</li>
+</ul>
+<p>For PostgreSQL queries (when using <em>pg_stat_monitor</em>) the top query will also be shown in the details section if the query was called by an outer query.</p>
+<p><div class="lightgallery"><a data-sub-html="image" href="../_images/PMM_Query_Analytics_Tabs_Details_TopQuery.png"><img alt="image" src="../_images/PMM_Query_Analytics_Tabs_Details_TopQuery.png" /></a></div></p>
+<p>Other usefull metrics (when using <em>pg_stat_monitor</em>) to monitor PostgreSQL Server performance are <a href="https://github.com/percona/pg_stat_monitor/blob/master/docs/USER_GUIDE.md#histogram">Histograms</a>. 
+<em>Histograms</em> provide more explicit information about number of queries for fingerprint (queryid). Ranges are from 0 seconds up to 100 seconds.  </p>
+<p>Ranges (numbers are in miliseconds):<br />
+    0 - 3<br />
+    3 - 10<br />
+    10 - 31<br />
+    31 - 100<br />
+    100 - 316<br />
+    316 - 1000<br />
+    1000 - 3162<br />
+    3162 - 10000<br />
+    10000 - 31622<br />
+    31622 - 100000</p>
+<p>Here is picture of <em>histogram</em> in graph:
+<div class="lightgallery"><a data-sub-html="image" href="../_images/PMM_Query_Analytics_Tabs_Details_Histogram.png"><img alt="image" src="../_images/PMM_Query_Analytics_Tabs_Details_Histogram.png" /></a></div></p>
+<h3 id="examples-tab">Examples Tab<a class="headerlink" href="#examples-tab" title="Permanent link">&para;</a></h3>
+<p>(For <em>Query</em> dimension.)</p>
+<p>The <em>Examples</em> tab shows an example of the selected query’s fingerprint or table element.</p>
+<p><div class="lightgallery"><a data-sub-html="image" href="../_images/PMM_Query_Analytics_Tabs_Examples.jpg"><img alt="image" src="../_images/PMM_Query_Analytics_Tabs_Examples.jpg" /></a></div></p>
+<div class="admonition note alert alert-primary">
+<p>Query example and fingerprint can be truncated to 1024 long to reduce space usage. In this case, the query explains section will not work.</p>
+</div>
+<h3 id="explain-tab">Explain Tab<a class="headerlink" href="#explain-tab" title="Permanent link">&para;</a></h3>
+<p>(For <em>Query</em> dimension.)</p>
+<p>The <em>Explain</em> tab shows the <code>explain</code> output for the selected query, in Classic or JSON formats.</p>
+<ul>
+<li>MySQL: Classic and JSON.</li>
+<li>MongoDB: JSON only.</li>
+<li>PostgreSQL: Not supported.</li>
+</ul>
+<div class="admonition note alert alert-primary">
+<p class="admonition-title">&lsquo;Explain&rsquo; for MongoDB</p>
+<p>To run Explain you need the same permissions as for executing the original query. For example, to run explain on <code>updates</code> you need update permissions.  </p>
+<p>Example: Grant the <code>explainRole</code> with update permissions.</p>
+<div class="highlight"><pre><span></span><code>db.grantPrivilegesToRole( &quot;explainRole&quot;, [ { resource: { db: &quot;&quot;, collection: &quot;&quot; }, actions: [ &quot;update&quot; ] } ])
+</code></pre></div>
+</div>
+<p><div class="lightgallery"><a data-sub-html="image" href="../_images/PMM_Query_Analytics_Tabs_Explain.jpg"><img alt="image" src="../_images/PMM_Query_Analytics_Tabs_Explain.jpg" /></a></div></p>
+<h3 id="tables-tab">Tables Tab<a class="headerlink" href="#tables-tab" title="Permanent link">&para;</a></h3>
+<p>(For <em>Query</em> dimension.)</p>
+<p>The <em>Tables</em> tab shows information on the tables and indexes involved in the selected query.</p>
+<p><div class="lightgallery"><a data-sub-html="image" href="../_images/PMM_Query_Analytics_Tabs_Tables.jpg"><img alt="image" src="../_images/PMM_Query_Analytics_Tabs_Tables.jpg" /></a></div></p>
+<h3 id="plan-tab">Plan Tab<a class="headerlink" href="#plan-tab" title="Permanent link">&para;</a></h3>
+<p>(For <em>Query</em> dimension.)</p>
+<p>The <em>Plan</em> tab shows the plan for PostgreSQL queries (only available when using <em>pg_stat_monitor</em>).</p>
+<p><div class="lightgallery"><a data-sub-html="image" href="../_images/PMM_Query_Analytics_Tabs_Plan.png"><img alt="image" src="../_images/PMM_Query_Analytics_Tabs_Plan.png" /></a></div></p>
+<h2 id="query-analytics-for-mongodb">Query Analytics for MongoDB<a class="headerlink" href="#query-analytics-for-mongodb" title="Permanent link">&para;</a></h2>
+<p>MongoDB is conceptually different from relational database management systems, such as MySQL and MariaDB.</p>
+<p>Relational database management systems store data in tables that represent single entities. Complex objects are represented by linking tables.</p>
+<p>In contrast, MongoDB uses the concept of a document where all essential information for a complex object is stored in one place.</p>
+<p>Query Analytics can monitor MongoDB queries. Although MongoDB is not a relational database management system, you analyze its databases and collections in the same interface using the same tools.</p>
+                    </div>
+                </div>
+                
+<div class="small">
+    <ul class="list-inline">
+        
+        <li class="left">
+            <i class="uil uil-refresh"></i> Page updated 2021-11-18
+        </li>
+        
+    </ul>
+</div>
+
+                
+<div class="related row">
+    <ul class="nav nav-pills">
+        
+        <li class="right" style="margin-right: 10px">
+            <a href="dbaas.html" title="DBaaS">Next</a>
+        </li>
+        
+        
+        <li class="right" style="margin-right: 10px">
+            <a href="backup.html" title="Backup and Restore">Previous</a>
+        </li>
+        
+        <li>
+            <a href="https://www.percona.com/doc/percona-monitoring-and-management/2.x">Home</a>
+        </li>
+    </ul>
+</div>
+
+            </div>
+            
+<div class="sphinxsidebar col-md-3 col-md-pull-9">
+    <div class="sphinxsidebarwrapper">
+        {@ product_logo @}
+        {@ product_pdf_download @}
+        
+<section class="select-wrapper" id="version-select-wrapper">
+    <!-- Empty locator section for version selector -->
+</section>
+
+        <h3 id="toctree-heading"><a href="https://www.percona.com/doc/percona-monitoring-and-management/2.x">Contents</a></h3>
+        
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l1">
+    <a class="reference internal" href="../index.html">Welcome</a>
+
+
+
+
+<li class="toctree-l1">
+    <a class="reference internal" href="../setting-up/index.html">Setting up</a>
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../setting-up/server/index.html">Server</a>
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../setting-up/server/network.html">Network</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../setting-up/server/docker.html">Docker</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../setting-up/server/virtual-appliance.html">Virtual Appliance</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../setting-up/server/aws.html">AWS Marketplace</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../setting-up/server/easy-install.html">Easy-install script</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../setting-up/server/dbaas.html">DBaaS</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../setting-up/client/index.html">Client</a>
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../setting-up/client/mysql.html">MySQL</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../setting-up/client/mongodb.html">MongoDB</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../setting-up/client/postgresql.html">PostgreSQL</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../setting-up/client/proxysql.html">ProxySQL</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../setting-up/client/aws.html">Amazon RDS</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../setting-up/client/azure.html">Microsoft Azure</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../setting-up/client/google.html">Google Cloud Platform</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../setting-up/client/linux.html">Linux</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../setting-up/client/external.html">External Services</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../setting-up/client/haproxy.html">HAProxy</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../setting-up/client/remote.html">Remote instances</a>
+
+
+
+</ul>
+
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l1">
+    <a class="reference internal" href="index.html">Using</a>
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="interface.html">User Interface</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="alerting.html">Integrated Alerting</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="backup.html">Backup and Restore</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="query-analytics.html">Query Analytics</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="dbaas.html">DBaaS</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="security-threat-tool.html">Security Threat Tool</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l1">
+    <a class="reference internal" href="../how-to/index.html">How to</a>
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../how-to/configure.html">Configure</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../how-to/upgrade.html">Upgrade</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../how-to/secure.html">Secure</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../how-to/optimize.html">Optimize</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../how-to/annotate.html">Annotate</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../how-to/render-dashboard-images.html">Render dashboard images</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../how-to/extend-metrics.html">Extend Metrics</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../how-to/troubleshoot.html">Troubleshoot</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l1">
+    <a class="reference internal" href="../details/index.html">Details</a>
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../details/architecture.html">Architecture</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../details/interface.html">UI components</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../details/dashboards/index.html">Dashboards</a>
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../details/dashboards/dashboard-home.html">Insight</a>
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-advanced-data-exploration.html">Advanced Data Exploration</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-victoriametrics.html">VictoriaMetrics</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-victoriametrics-agents-overview.html">VictoriaMetrics Agents Overview</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../details/dashboards/dashboard-inventory.html">PMM</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../details/dashboards/dashboard-cpu-utilization-details.html">OS Dashboards</a>
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-disk-details.html">Disk Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-network-details.html">Network Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-memory-details.html">Memory Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-node-temperature-details.html">Node Temperature Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-nodes-compare.html">Nodes Compare</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-nodes-overview.html">Nodes Overview</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-node-summary.html">Node Summary</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-numa-details.html">NUMA Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-processes-details.html">Processes Details</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../details/dashboards/dashboard-prometheus-exporter-status.html">Prometheus Dashboards</a>
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-prometheus-exporters-overview.html">Prometheus Exporters Overview</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../details/dashboards/dashboard-mysql-amazon-aurora-details.html">MySQL Dashboards</a>
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-mysql-command-handler-counters-compare.html">MySQL Command/Handler Counters Compare</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-mysql-innodb-compression-details.html">MySQL InnoDB Compression Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-mysql-innodb-details.html">MySQL InnoDB Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-mysql-myisam-aria-details.html">MySQL MyISAM/Aria Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-mysql-myrocks-details.html">MySQL MyRocks Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-mysql-instance-summary.html">MySQL Instance Summary</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-mysql-instances-compare.html">MySQL Instances Compare</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-mysql-instances-overview.html">MySQL Instances Overview</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-mysql-wait-event-analyses-details.html">MySQL Wait Event Analyses Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-mysql-performance-schema-details.html">MySQL Performance Schema Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-mysql-query-response-time-details.html">MySQL Query Response Time Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-mysql-replication-summary.html">MySQL Replication Summary</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-mysql-group-replication-summary.html">MySQL Group Replication Summary</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-mysql-table-details.html">MySQL Table Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-mysql-user-details.html">MySQL User Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-mysql-tokudb-details.html">MySQL TokuDB Details</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../details/dashboards/dashboard-mongodb-cluster-summary.html">MongoDB Dashboards</a>
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-mongodb-instance-summary.html">MongoDB Instance Summary</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-mongodb-instances-overview.html">MongoDB Instances Overview</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-mongodb-instances-compare.html">MongoDB Instances Compare</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-mongodb-replset-summary.html">MongoDB ReplSet Summary</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-mongodb-inmemory-details.html">MongoDB InMemory Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-mongodb-mmapv1-details.html">MongoDB MMAPv1 Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-mongodb-wiredtiger-details.html">MongoDB WiredTiger Details</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../details/dashboards/dashboard-postgresql-instances-overview.html">PostgreSQL Dashboards</a>
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-postgresql-instance-summary.html">PostgreSQL Instance Summary</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-postgresql-instances-compare.html">PostgreSQL Instances Compare</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../details/dashboards/dashboard-proxysql-instance-summary.html">ProxySQL Dashboards</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../details/dashboards/dashboard-pxc-galera-node-summary.html">HA Dashboards</a>
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-pxc-galera-cluster-summary.html">PXC/Galera Cluster Summary</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-pxc-galera-nodes-compare.html">PXC/Galera Nodes Compare</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-haproxy-instance-summary.html">HAProxy Instance Summary</a>
+
+
+
+</ul>
+
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../details/commands/index.html">Commands</a>
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../details/commands/pmm-admin.html">pmm-admin - PMM Administration Tool</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../details/commands/pmm-agent.html">pmm-agent - PMM Client agent</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../details/api.html">API</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../details/victoria-metrics.html">VictoriaMetrics</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../details/glossary.html">Glossary</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l1">
+    <a class="reference internal" href="../faq.html">FAQ</a>
+
+
+
+
+<li class="toctree-l1">
+    <a class="reference internal" href="../release-notes/index.html">Release Notes</a>
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/2.25.0.html">PMM 2.25.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/2.24.0.html">PMM 2.24.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/2.23.0.html">PMM 2.23.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/2.22.0.html">PMM 2.22.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/2.21.0.html">PMM 2.21.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/2.20.0.html">PMM 2.20.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/2.19.0.html">PMM 2.19.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/2.18.0.html">PMM 2.18.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/2.17.0.html">PMM 2.17.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/2.16.0.html">PMM 2.16.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/2.15.1.html">PMM 2.15.1</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/2.15.0.html">PMM 2.15.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/2.14.0.html">PMM 2.14.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/2.13.0.html">PMM 2.13.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/2.12.0.html">PMM 2.12.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/2.11.1.html">PMM 2.11.1</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/2.11.0.html">PMM 2.11.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/2.10.1.html">PMM 2.10.1</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/2.10.0.html">PMM 2.10.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/2.9.1.html">PMM 2.9.1</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/2.9.0.html">PMM 2.9.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/2.8.0.html">PMM 2.8.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/2.7.0.html">PMM 2.7.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/2.6.1.html">PMM 2.6.1</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/2.6.0.html">PMM 2.6.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/2.5.0.html">PMM 2.5.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/2.4.0.html">PMM 2.4.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/2.3.0.html">PMM 2.3.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/2.2.2.html">PMM 2.2.2</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/2.2.1.html">PMM 2.2.1</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/2.2.0.html">PMM 2.2.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/2.1.0.html">PMM 2.1.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/2.0.1.html">PMM 2.0.1</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/2.0.0.html">PMM 2.0.0</a>
+
+
+
+</ul>
+
+
+
+
+</ul>
+
+
+        
+
+<h4>Previous page</h4>
+<p class="topless">
+    <a href="backup.html" title="previous chapter">Backup and Restore</a>
+</p>
+
+
+<h4>Next page</h4>
+<p class="topless">
+    <a href="dbaas.html" title="next chapter">DBaaS</a>
+</p>
+
+
+        {@ product_series @}
+    </div>
+</div>
+
+            <div class="clearer"></div>
+        </div>
+    </div>
+</body>

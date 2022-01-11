@@ -1,0 +1,1726 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<title>Percona Monitoring and Management &mdash; MySQL</title>
+
+<head>
+    
+
+
+    
+<script src="../../js/version-select.js" type="text/javascript"></script>
+
+<script src="../../js/toctree.js" type="text/javascript"></script>
+
+<script src="../../js/lightgallery.min.js" type="text/javascript"></script>
+
+
+<script>
+    var elements = document.getElementsByClassName("lightgallery");
+    for(var i=0; i<elements.length; i++) {
+       lightGallery(elements[i]);
+    }
+</script>
+
+    <link rel="top" title="" href="https://www.percona.com/doc/percona-monitoring-and-management/2.x" />
+    
+    <link rel="next" title="MongoDB" href="mongodb.html" />
+    
+    
+</head>
+
+<body>
+    <div class="container">
+        
+<link rel="stylesheet" href="../../css/version-select.css" type="text/css">
+<link rel="stylesheet" href="../../css/toctree.css" type="text/css">
+
+        
+<script src="../../js/version-select.js" type="text/javascript"></script>
+
+<script src="../../js/toctree.js" type="text/javascript"></script>
+
+<script src="../../js/lightgallery.min.js" type="text/javascript"></script>
+
+
+<script>
+    var elements = document.getElementsByClassName("lightgallery");
+    for(var i=0; i<elements.length; i++) {
+       lightGallery(elements[i]);
+    }
+</script>
+
+        <div class="document row">
+            <div class="documentwrapper col-md-9 col-md-push-3">
+                
+<div class="related row">
+    <ul class="nav nav-pills">
+        
+        <li class="right" style="margin-right: 10px">
+            <a href="mongodb.html" title="MongoDB">Next</a>
+        </li>
+        
+        
+        <li class="right" style="margin-right: 10px">
+            <a href="index.html" title="Client">Previous</a>
+        </li>
+        
+        <li>
+            <a href="https://www.percona.com/doc/percona-monitoring-and-management/2.x">Home</a>
+        </li>
+    </ul>
+</div>
+
+                
+
+<div class="small">
+    <ul class="list-inline">
+        <li class="pull-right">
+            <a href="https://github.com/percona/pmm-doc/edit/main/docs/setting-up/client/mysql.md" target="_blank" title=""><i class="uil uil-pen"></i> <b>Edit this page</b></a>
+        </li>
+    </ul>
+</div>
+
+
+                <div class="bodywrapper">
+                    <div class="body">
+                        <h1 id="mysql">MySQL<a class="headerlink" href="#mysql" title="Permanent link">&para;</a></h1>
+<p>How to set up PMM to monitor a MySQL or MySQL-based database instance.</p>
+<p>PMM Client collects metrics from <a href="https://www.mysql.com/">MySQL</a>, <a href="https://www.percona.com/software/mysql-database/percona-server">Percona Server for MySQL</a>, <a href="https://www.percona.com/software/mysql-database/percona-xtradb-cluster">Percona XtraDB Cluster</a>, and <a href="https://mariadb.org/">MariaDB</a>. (Amazon RDS is also supported and explained in a <a href="aws.html">separate section</a>.)</p>
+<div class="admonition summary alert alert-info">
+<p class="admonition-title">Summary</p>
+<ul>
+<li>Create PMM account and set permissions.</li>
+<li>Choose a data source:<ul>
+<li>Slow query log, or,</li>
+<li>Performance Schema.</li>
+</ul>
+</li>
+<li>Configure:<ul>
+<li>Query response time,</li>
+<li>Tablestats,</li>
+<li>User statistics.</li>
+</ul>
+</li>
+<li>Add service.</li>
+<li>Check service.</li>
+</ul>
+</div>
+<h2 id="before-you-start">Before you start<a class="headerlink" href="#before-you-start" title="Permanent link">&para;</a></h2>
+<p>Check that:</p>
+<ul>
+<li><a href="../server/index.html">PMM Server is installed</a> and running with a known IP address accessible from the client node.</li>
+<li><a href="index.html">PMM Client is installed</a> and the <a href="index.html#register">node is registered with PMM Server</a>.</li>
+<li>You have superuser (root) access on the client host.</li>
+</ul>
+<h2 id="create-a-database-account-for-pmm">Create a database account for PMM<a class="headerlink" href="#create-a-database-account-for-pmm" title="Permanent link">&para;</a></h2>
+<p>It is good practice to use a non-superuser account to connect PMM Client to the monitored database instance. This example creates a database user with name <code>pmm</code>, password <code>pass</code>, and the necessary permissions.</p>
+<div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">USER</span><span class="w"> </span><span class="s1">&#39;pmm&#39;</span><span class="o">@</span><span class="s1">&#39;localhost&#39;</span><span class="w"> </span><span class="n">IDENTIFIED</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="s1">&#39;pass&#39;</span><span class="w"> </span><span class="k">WITH</span><span class="w"> </span><span class="n">MAX_USER_CONNECTIONS</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"></span>
+<span class="k">GRANT</span><span class="w"> </span><span class="k">SELECT</span><span class="p">,</span><span class="w"> </span><span class="n">PROCESS</span><span class="p">,</span><span class="w"> </span><span class="n">REPLICATION</span><span class="w"> </span><span class="n">CLIENT</span><span class="p">,</span><span class="w"> </span><span class="n">RELOAD</span><span class="p">,</span><span class="w"> </span><span class="n">BACKUP_ADMIN</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="o">*</span><span class="p">.</span><span class="o">*</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="s1">&#39;pmm&#39;</span><span class="o">@</span><span class="s1">&#39;localhost&#39;</span><span class="p">;</span><span class="w"></span>
+</code></pre></div>
+<h2 id="choose-and-configure-a-source">Choose and configure a source<a class="headerlink" href="#choose-and-configure-a-source" title="Permanent link">&para;</a></h2>
+<p>Decide which source of metrics to use, and configure your database server for it. The choices are <a href="#slow-query-log">Slow query log</a> and <a href="#performance-schema">Performance Schema</a>.</p>
+<p>While you can use both at the same time we recommend using only one&ndash;there is some overlap in the data reported, and each incurs a small performance penalty. The choice depends on the version and variant of your MySQL instance, and how much detail you want to see.</p>
+<p>Here are the benefits and drawbacks of <em>Slow query log</em> and <em>Performance Schema</em> metrics sources.</p>
+<table class="table">
+<thead>
+<tr>
+<th scope="col"></th>
+<th scope="col"><i class="uil uil-thumbs-up"></i> Benefits</th>
+<th scope="col"><i class="uil uil-thumbs-down"></i> Drawbacks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Slow query log</strong></td>
+<td>1. More detail.<br>2. Lower resource impact (with query sampling feature in Percona Server for MySQL).</td>
+<td>1. PMM Client must be on same host as database server or have access to slow query log.<br>2. Log files grow and must be actively managed.</td>
+</tr>
+<tr>
+<td><strong>Performance Schema</strong></td>
+<td>1. Faster parsing.<br>2. Enabled by default on newer versions of MySQL.</td>
+<td>1. Less detail.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="data-source-recommendations">Data source recommendations<a class="headerlink" href="#data-source-recommendations" title="Permanent link">&para;</a></h3>
+<table class="table">
+<thead>
+<tr>
+<th scope="col">Database server</th>
+<th scope="col">Versions</th>
+<th scope="col">Recommended source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MySQL</td>
+<td>5.1-5.5</td>
+<td>Slow query log</td>
+</tr>
+<tr>
+<td>MySQL</td>
+<td>5.6+</td>
+<td>Performance Schema</td>
+</tr>
+<tr>
+<td>MariaDB</td>
+<td>10.0+</td>
+<td>Performance Schema</td>
+</tr>
+<tr>
+<td>Percona Server for MySQL</td>
+<td>5.7, 8.0</td>
+<td>Slow query log</td>
+</tr>
+<tr>
+<td>Percona XtraDB Cluster</td>
+<td>5.6, 5.7, 8.0</td>
+<td>Slow query log</td>
+</tr>
+</tbody>
+</table>
+<h3 id="slow-query-log">Slow query log<a class="headerlink" href="#slow-query-log" title="Permanent link">&para;</a></h3>
+<p>This section covers how to configure a MySQL-based database server to use the <em>slow query log</em> as a source of metrics.</p>
+<h3 id="applicable-versions">Applicable versions<a class="headerlink" href="#applicable-versions" title="Permanent link">&para;</a></h3>
+<table class="table">
+<thead>
+<tr>
+<th scope="col">Server</th>
+<th scope="col">Versions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MySQL</td>
+<td>5.1-5.5</td>
+</tr>
+<tr>
+<td>MariaDB</td>
+<td>10.1.2+</td>
+</tr>
+<tr>
+<td>Percona Server for MySQL</td>
+<td>5.7.10+, 8.0.12+</td>
+</tr>
+<tr>
+<td>Percona XtraDB Cluster</td>
+<td>5.6, 5.7, 8.0</td>
+</tr>
+</tbody>
+</table>
+<p>The <em>slow query log</em> records the details of queries that take more than a certain amount of time to complete. With the database server configured to write this information to a file rather than a table, PMM Client parses the file and sends aggregated data to PMM Server via the Query Analytics part of PMM Agent.</p>
+<h3 id="settings">Settings<a class="headerlink" href="#settings" title="Permanent link">&para;</a></h3>
+<table class="table">
+<thead>
+<tr>
+<th scope="col">Variable</th>
+<th scope="col">Value</th>
+<th scope="col">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar_slow_query_log"><code>slow_query_log</code></a></td>
+<td>ON</td>
+<td>Enables the slow query log.</td>
+</tr>
+<tr>
+<td><a href="https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar_log_output"><code>log_output</code></a></td>
+<td><code>'FILE'</code></td>
+<td>Ensures the log is sent to a file. (This is the default on MariaDB.)</td>
+</tr>
+<tr>
+<td><a href="https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar_long_query_time"><code>long_query_time</code></a></td>
+<td>0</td>
+<td>The slow query threshold in seconds. In heavily-loaded applications, many quick queries can affect performance more than a few slow ones. Setting this value to <code>0</code> ensures all queries are captured.</td>
+</tr>
+<tr>
+<td><a href="https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar_log_slow_admin_statements"><code>log_slow_admin_statements</code></a></td>
+<td>ON</td>
+<td>Includes the logging of slow administrative statements.</td>
+</tr>
+<tr>
+<td><a href="https://dev.mysql.com/doc/refman/8.0/en/replication-options-replica.html#sysvar_log_slow_slave_statements"><code>log_slow_slave_statements</code></a></td>
+<td>ON</td>
+<td>Enables logging for queries that have taken more than <code>long_query_time</code> seconds to execute on the replica.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h4>
+<ul>
+<li>
+<p>Configuration file.</p>
+<div class="highlight"><pre><span></span><code><span class="na">slow_query_log</span><span class="o">=</span><span class="s">ON</span><span class="w"></span>
+<span class="na">log_output</span><span class="o">=</span><span class="s">FILE</span><span class="w"></span>
+<span class="na">long_query_time</span><span class="o">=</span><span class="s">0</span><span class="w"></span>
+<span class="na">log_slow_admin_statements</span><span class="o">=</span><span class="s">ON</span><span class="w"></span>
+<span class="na">log_slow_slave_statements</span><span class="o">=</span><span class="s">ON</span><span class="w"></span>
+</code></pre></div>
+</li>
+<li>
+<p>Session.</p>
+<div class="highlight"><pre><span></span><code><span class="k">SET</span><span class="w"> </span><span class="k">GLOBAL</span><span class="w"> </span><span class="n">slow_query_log</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="k">SET</span><span class="w"> </span><span class="k">GLOBAL</span><span class="w"> </span><span class="n">log_output</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;FILE&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="k">SET</span><span class="w"> </span><span class="k">GLOBAL</span><span class="w"> </span><span class="n">long_query_time</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="k">SET</span><span class="w"> </span><span class="k">GLOBAL</span><span class="w"> </span><span class="n">log_slow_admin_statements</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="k">SET</span><span class="w"> </span><span class="k">GLOBAL</span><span class="w"> </span><span class="n">log_slow_slave_statements</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+</code></pre></div>
+</li>
+</ul>
+<h4 id="slow-query-log-extended">Slow query log &ndash; extended<a class="headerlink" href="#slow-query-log-extended" title="Permanent link">&para;</a></h4>
+<p>Some MySQL-based database servers support extended slow query log variables.</p>
+<h5 id="applicable-versions_1">Applicable versions<a class="headerlink" href="#applicable-versions_1" title="Permanent link">&para;</a></h5>
+<table class="table">
+<thead>
+<tr>
+<th scope="col">Server</th>
+<th scope="col">Versions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Percona Server for MySQL</td>
+<td>5.7.10+, 8.0.12+</td>
+</tr>
+<tr>
+<td>Percona XtraDB Cluster</td>
+<td>5.6, 5.7, 8.0</td>
+</tr>
+<tr>
+<td>MariaDB</td>
+<td>10.0</td>
+</tr>
+</tbody>
+</table>
+<h5 id="settings_1">Settings<a class="headerlink" href="#settings_1" title="Permanent link">&para;</a></h5>
+<table class="table">
+<thead>
+<tr>
+<th scope="col">Variable</th>
+<th scope="col">Value</th>
+<th scope="col">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://www.percona.com/doc/percona-server/LATEST/diagnostics/slow_extended.html#log_slow_rate_limit"><code>log_slow_rate_limit</code></a></td>
+<td>100</td>
+<td>Defines the rate of queries captured by the <em>slow query log</em>. A good rule of thumb is 100 queries logged per second. For example, if your Percona Server instance processes 10,000 queries per second, you should set <code>log_slow_rate_limit</code> to <code>100</code> and capture every 100<sup>th</sup> query for the <em>slow query log</em>. Depending on the amount of traffic, logging could become aggressive and resource consuming. This variable throttles the level of intensity of the data capture without compromising information.</td>
+</tr>
+<tr>
+<td><a href="https://www.percona.com/doc/percona-server/LATEST/diagnostics/slow_extended.html#log_slow_rate_type"><code>log_slow_rate_type</code></a></td>
+<td>&lsquo;query&rsquo;</td>
+<td>Set so that it applies to queries, rather than sessions.</td>
+</tr>
+<tr>
+<td><a href="https://www.percona.com/doc/percona-server/LATEST/diagnostics/slow_extended.html#slow_query_log_always_write_time"><code>slow_query_log_always_write_time</code></a></td>
+<td>1</td>
+<td>Specifies which queries should ignore sampling. With query sampling this ensures that queries with longer execution time will always be captured by the slow query log, avoiding the possibility that infrequent slow queries might not get captured at all.</td>
+</tr>
+<tr>
+<td><a href="https://www.percona.com/doc/percona-server/LATEST/diagnostics/slow_extended.html#log_slow_verbosity"><code>log_slow_verbosity</code></a></td>
+<td>&lsquo;full&rsquo;</td>
+<td>Ensures that all information about each captured query is stored in the slow query log.</td>
+</tr>
+<tr>
+<td><a href="https://www.percona.com/doc/percona-server/LATEST/diagnostics/slow_extended.html#slow_query_log_use_global_control"><code>slow_query_log_use_global_control</code></a></td>
+<td>&lsquo;all&rsquo;</td>
+<td>Configure the slow query log during runtime and apply these settings to existing connections. (By default, slow query log settings apply only to new sessions.)</td>
+</tr>
+</tbody>
+</table>
+<h5 id="examples_1">Examples<a class="headerlink" href="#examples_1" title="Permanent link">&para;</a></h5>
+<ul>
+<li>
+<p>Configuration file (Percona Server for MySQL, Percona XtraDB Cluster).</p>
+<div class="highlight"><pre><span></span><code><span class="na">log_slow_rate_limit</span><span class="o">=</span><span class="s">100</span><span class="w"></span>
+<span class="na">log_slow_rate_type</span><span class="o">=</span><span class="s">&#39;query&#39;</span><span class="w"></span>
+<span class="na">slow_query_log_always_write_time</span><span class="o">=</span><span class="s">1</span><span class="w"></span>
+<span class="na">log_slow_verbosity</span><span class="o">=</span><span class="s">&#39;full&#39;</span><span class="w"></span>
+<span class="na">slow_query_log_use_global_control</span><span class="o">=</span><span class="s">&#39;all&#39;</span><span class="w"></span>
+</code></pre></div>
+</li>
+<li>
+<p>Configuration file (MariaDB).</p>
+<div class="highlight"><pre><span></span><code><span class="na">log_slow_rate_limit</span><span class="o">=</span><span class="s">100</span><span class="w"></span>
+</code></pre></div>
+</li>
+<li>
+<p>Session (Percona Server for MySQL, Percona XtraDB Cluster).</p>
+<div class="highlight"><pre><span></span><code><span class="k">SET</span><span class="w"> </span><span class="k">GLOBAL</span><span class="w"> </span><span class="n">log_slow_rate_limit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span><span class="w"></span>
+<span class="k">SET</span><span class="w"> </span><span class="k">GLOBAL</span><span class="w"> </span><span class="n">log_slow_rate_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;query&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="k">SET</span><span class="w"> </span><span class="k">GLOBAL</span><span class="w"> </span><span class="n">slow_query_log_always_write_time</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="k">SET</span><span class="w"> </span><span class="k">GLOBAL</span><span class="w"> </span><span class="n">log_slow_verbosity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;full&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="k">SET</span><span class="w"> </span><span class="k">GLOBAL</span><span class="w"> </span><span class="n">slow_query_log_use_global_control</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;all&#39;</span><span class="p">;</span><span class="w"></span>
+</code></pre></div>
+</li>
+</ul>
+<h4 id="slow-query-log-rotation">Slow query log rotation<a class="headerlink" href="#slow-query-log-rotation" title="Permanent link">&para;</a></h4>
+<p>Slow query log files can grow quickly and must be managed.</p>
+<p>When adding a service with the command line use the  <code>pmm-admin</code> option <code>--size-slow-logs</code> to set at what size the slow query log file is rotated. (The size is specified as a number with a suffix. See <a href="../../details/commands/pmm-admin.html#mysql"><code>pmm-admin add mysql</code></a>.)</p>
+<p>When the limit is reached, PMM Client will:</p>
+<ul>
+<li>remove the previous <code>.old</code> slow log file,</li>
+<li>rename the current file by adding the suffix <code>.old</code>,</li>
+<li>execute the MySQL command <code>FLUSH LOGS</code>.</li>
+</ul>
+<p>Only one <code>.old</code> file is kept. Older ones are deleted.</p>
+<p>You can manage log rotation yourself, for example, with <a href="https://linux.die.net/man/8/logrotate"><code>logrotate</code></a>. If you do, you can disable PMM Client&rsquo;s log rotation by providing a negative value to <code>--size-slow-logs</code> option when adding a service with <code>pmm-admin add</code>.</p>
+<h3 id="performance-schema">Performance Schema<a class="headerlink" href="#performance-schema" title="Permanent link">&para;</a></h3>
+<p>This section covers how to configure a MySQL-based database server to use <em>Performance Schema</em> as a source of metrics.</p>
+<h4 id="applicable-versions_2">Applicable versions<a class="headerlink" href="#applicable-versions_2" title="Permanent link">&para;</a></h4>
+<table class="table">
+<thead>
+<tr>
+<th scope="col">Server</th>
+<th scope="col">Versions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Percona Server for MySQL</td>
+<td>5.6, 5.7, 8.0</td>
+</tr>
+<tr>
+<td>Percona XtraDB Cluster</td>
+<td>5.6, 5.7, 8.0</td>
+</tr>
+<tr>
+<td>MariaDB</td>
+<td><a href="https://mariadb.com/kb/en/performance-schema-setup_instruments-table/">10.3+</a></td>
+</tr>
+</tbody>
+</table>
+<p>PMM&rsquo;s <a href="../../details/dashboards/dashboard-mysql-performance-schema-details.html"><em>MySQL Performance Schema Details</em> dashboard</a> charts the various <a href="https://dev.mysql.com/doc/refman/5.7/en/performance-schema-startup-configuration.html"><code>performance_schema</code></a> metrics.</p>
+<p>To use <em>Performance Schema</em>, set these variables.</p>
+<table class="table">
+<thead>
+<tr>
+<th scope="col">Variable</th>
+<th scope="col">Value</th>
+<th scope="col">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://dev.mysql.com/doc/refman/5.7/en/performance-schema-system-variables.html#sysvar_performance_schema"><code>performance_schema</code></a></td>
+<td><code>ON</code></td>
+<td>Enables <em>Performance Schema</em> metrics. This is the default in MySQL 5.6.6 and higher.</td>
+</tr>
+<tr>
+<td><a href="https://dev.mysql.com/doc/refman/5.7/en/performance-schema-options.html#option_mysqld_performance-schema-instrument"><code>performance-schema-instrument</code></a></td>
+<td><code>'statement/%=ON'</code></td>
+<td>Configures Performance Schema instruments.</td>
+</tr>
+<tr>
+<td><a href="https://dev.mysql.com/doc/refman/5.7/en/performance-schema-options.html#option_mysqld_performance-schema-consumer-statements-digest"><code>performance-schema-consumer-statements-digest</code></a></td>
+<td><code>ON</code></td>
+<td>Configures the <code>statements-digest</code> consumer.</td>
+</tr>
+<tr>
+<td><a href="https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html#sysvar_innodb_monitor_enable"><code>innodb_monitor_enable</code></a></td>
+<td>all</td>
+<td>Enables InnoDB metrics counters.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="examples_2">Examples<a class="headerlink" href="#examples_2" title="Permanent link">&para;</a></h4>
+<ul>
+<li>
+<p>Configuration file.</p>
+<div class="highlight"><pre><span></span><code><span class="na">performance_schema</span><span class="o">=</span><span class="s">ON</span><span class="w"></span>
+<span class="na">performance-schema-instrument</span><span class="o">=</span><span class="s">&#39;statement/%=ON&#39;</span><span class="w"></span>
+<span class="na">performance-schema-consumer-statements-digest</span><span class="o">=</span><span class="s">ON</span><span class="w"></span>
+<span class="na">innodb_monitor_enable</span><span class="o">=</span><span class="s">all</span><span class="w"></span>
+</code></pre></div>
+</li>
+<li>
+<p>Session.</p>
+<p>(<code>performance_schema</code> cannot be set in a session and must be set at server start-up.)</p>
+<div class="highlight"><pre><span></span><code><span class="k">UPDATE</span><span class="w"> </span><span class="n">performance_schema</span><span class="p">.</span><span class="n">setup_consumers</span><span class="w"></span>
+<span class="k">SET</span><span class="w"> </span><span class="n">ENABLED</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;YES&#39;</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">NAME</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;%statements%&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="k">SET</span><span class="w"> </span><span class="k">GLOBAL</span><span class="w"> </span><span class="n">innodb_monitor_enable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">all</span><span class="p">;</span><span class="w"></span>
+</code></pre></div>
+</li>
+</ul>
+<h4 id="mariadb-1057-or-lower">MariaDB 10.5.7 or lower<a class="headerlink" href="#mariadb-1057-or-lower" title="Permanent link">&para;</a></h4>
+<p>There is no <em>Explain</em> or <em>Example</em> data shown by default in Query Analytics when monitoring MariaDB instances version 10.5.7 or lower. A workaround is to set this variable.</p>
+<table class="table">
+<thead>
+<tr>
+<th scope="col">Variable</th>
+<th scope="col">Value</th>
+<th scope="col">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://mariadb.com/kb/en/performance-schema-setup_instruments-table/"><code>performance_schema.setup_instruments</code></a></td>
+<td><code>'statement/%'</code></td>
+<td>List of instrumented object classes.</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>
+<p>Session.</p>
+<div class="highlight"><pre><span></span><code><span class="k">UPDATE</span><span class="w"> </span><span class="n">performance_schema</span><span class="p">.</span><span class="n">setup_instruments</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">ENABLED</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;YES&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">TIMED</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;YES&#39;</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">NAME</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;statement/%&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="k">UPDATE</span><span class="w"> </span><span class="n">performance_schema</span><span class="p">.</span><span class="n">setup_consumers</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">ENABLED</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;YES&#39;</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">NAME</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;%statements%&#39;</span><span class="p">;</span><span class="w"></span>
+</code></pre></div>
+</li>
+<li>
+<p>Transactions</p>
+<p>MariaDB doesn&rsquo;t implement queries history for transactions. All queries executed within a transaction won&rsquo;t have query examples since PMM relies on the <code>performance_schema.events_statements_history</code> to grab the query example but that table won&rsquo;t have any query executed as part of a transaction.  </p>
+<p>This behavior is because MariaDB doesn&rsquo;t implement these consumers:</p>
+<div class="highlight"><pre><span></span><code>events_transactions_current
+events_transactions_history
+events_transactions_history_long
+</code></pre></div>
+</li>
+</ul>
+<h2 id="query-response-time">Query response time<a class="headerlink" href="#query-response-time" title="Permanent link">&para;</a></h2>
+<p><em>Query time distribution</em> is a chart in the <a href="../../using/query-analytics.html#details-tab"><em>Details</em> tab of Query Analytics</a> showing the proportion of query time spent on various activities. It is enabled with the <code>query_response_time_stats</code> variable and associated plugins.</p>
+<h3 id="applicable-versions_3">Applicable versions<a class="headerlink" href="#applicable-versions_3" title="Permanent link">&para;</a></h3>
+<table class="table">
+<thead>
+<tr>
+<th scope="col">Server</th>
+<th scope="col">Versions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Percona Server for MySQL</td>
+<td>5.7 (<strong>not</strong> <a href="https://www.percona.com/doc/percona-server/LATEST/changed_in_version.html">Percona Server for MySQL 8.0</a>.)</td>
+</tr>
+<tr>
+<td>MariaDB</td>
+<td>10.0.4</td>
+</tr>
+</tbody>
+</table>
+<p>Set this variable to see query time distribution charts.</p>
+<table class="table">
+<thead>
+<tr>
+<th scope="col">Variable</th>
+<th scope="col">Value</th>
+<th scope="col">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://www.percona.com/doc/percona-server/5.7/diagnostics/response_time_distribution.html#usage"><code>query_response_time_stats</code></a></td>
+<td>ON</td>
+<td>Report <em>query response time distributions</em>. (Requires plugin installation. See below.)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>
+<p>Configuration file.</p>
+<div class="highlight"><pre><span></span><code><span class="na">query_response_time_stats</span><span class="o">=</span><span class="s">ON</span><span class="w"></span>
+</code></pre></div>
+</li>
+</ul>
+<p>You must also install the plugins.</p>
+<ul>
+<li>
+<p>Session.</p>
+<ol>
+<li>Check that <code>/usr/lib/mysql/plugin/query_response_time.so</code> exists.</li>
+<li>
+<p>Install the plugins and activate.</p>
+<p>For <a href="https://mariadb.com/kb/en/query-response-time-plugin/">MariaDB 10.3</a>:</p>
+<div class="highlight"><pre><span></span><code><span class="n">INSTALL</span><span class="w"> </span><span class="n">PLUGIN</span><span class="w"> </span><span class="n">QUERY_RESPONSE_TIME_AUDIT</span><span class="w"> </span><span class="n">SONAME</span><span class="w"> </span><span class="s1">&#39;query_response_time.so&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="n">INSTALL</span><span class="w"> </span><span class="n">PLUGIN</span><span class="w"> </span><span class="n">QUERY_RESPONSE_TIME</span><span class="w"> </span><span class="n">SONAME</span><span class="w"> </span><span class="s1">&#39;query_response_time.so&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="k">SET</span><span class="w"> </span><span class="k">GLOBAL</span><span class="w"> </span><span class="n">query_response_time_stats</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">ON</span><span class="p">;</span><span class="w"></span>
+</code></pre></div>
+<p>For <a href="https://www.percona.com/doc/percona-server/5.7/diagnostics/response_time_distribution.html#usage">Percona Server for MySQL 5.7</a>:</p>
+<div class="highlight"><pre><span></span><code><span class="n">INSTALL</span><span class="w"> </span><span class="n">PLUGIN</span><span class="w"> </span><span class="n">QUERY_RESPONSE_TIME_AUDIT</span><span class="w"> </span><span class="n">SONAME</span><span class="w"> </span><span class="s1">&#39;query_response_time.so&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="n">INSTALL</span><span class="w"> </span><span class="n">PLUGIN</span><span class="w"> </span><span class="n">QUERY_RESPONSE_TIME</span><span class="w"> </span><span class="n">SONAME</span><span class="w"> </span><span class="s1">&#39;query_response_time.so&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="n">INSTALL</span><span class="w"> </span><span class="n">PLUGIN</span><span class="w"> </span><span class="n">QUERY_RESPONSE_TIME_READ</span><span class="w"> </span><span class="n">SONAME</span><span class="w"> </span><span class="s1">&#39;query_response_time.so&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="n">INSTALL</span><span class="w"> </span><span class="n">PLUGIN</span><span class="w"> </span><span class="n">QUERY_RESPONSE_TIME_WRITE</span><span class="w"> </span><span class="n">SONAME</span><span class="w"> </span><span class="s1">&#39;query_response_time.so&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="k">SET</span><span class="w"> </span><span class="k">GLOBAL</span><span class="w"> </span><span class="n">query_response_time_stats</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">ON</span><span class="p">;</span><span class="w"></span>
+</code></pre></div>
+</li>
+</ol>
+</li>
+</ul>
+<h2 id="tablestats">Tablestats<a class="headerlink" href="#tablestats" title="Permanent link">&para;</a></h2>
+<p>Some table metrics are automatically disabled when the number of tables exceeds a default limit of 1000 tables. This prevents PMM Client from affecting the performance of your database server.</p>
+<p>The limit can be changed <a href="#command-line">when adding a service on the command line</a> with the two <code>pmm-admin</code> options:</p>
+<table class="table">
+<thead>
+<tr>
+<th scope="col"><code>pmm-admin</code> option</th>
+<th scope="col">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--disable-tablestats</code></td>
+<td>Disables tablestats collection when the default limit is reached.</td>
+</tr>
+<tr>
+<td><code>--disable-tablestats-limit=N</code></td>
+<td>Sets the number of tables (<code>N</code>) for which tablestats collection is disabled. 0 means no limit. A negative number means tablestats is completely disabled (for any number of tables).</td>
+</tr>
+</tbody>
+</table>
+<h2 id="user-statistics">User statistics<a class="headerlink" href="#user-statistics" title="Permanent link">&para;</a></h2>
+<h3 id="applicable-versions_4">Applicable versions<a class="headerlink" href="#applicable-versions_4" title="Permanent link">&para;</a></h3>
+<p>User activity, individual table and index access details are shown on the <a href="../../details/dashboards/dashboard-mysql-user-details.html">MySQL User Details</a> dashboard when the <code>userstat</code> variable is set.</p>
+<table class="table">
+<thead>
+<tr>
+<th scope="col">Server</th>
+<th scope="col">Versions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Percona Server for MySQL</td>
+<td>5.6, 5.7, 8.0</td>
+</tr>
+<tr>
+<td>Percona XtraDB Cluster</td>
+<td>5.6, 5.7, 8.0</td>
+</tr>
+<tr>
+<td>MariaDB</td>
+<td>5.2.0+</td>
+</tr>
+</tbody>
+</table>
+<h3 id="examples_3">Examples<a class="headerlink" href="#examples_3" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p>Configuration file.</p>
+<div class="highlight"><pre><span></span><code><span class="na">userstat</span><span class="o">=</span><span class="s">ON</span><span class="w"></span>
+</code></pre></div>
+</li>
+<li>
+<p>Session.</p>
+<div class="highlight"><pre><span></span><code><span class="k">SET</span><span class="w"> </span><span class="k">GLOBAL</span><span class="w"> </span><span class="n">userstat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">ON</span><span class="p">;</span><span class="w"></span>
+</code></pre></div>
+</li>
+</ul>
+<h2 id="add-service">Add service<a class="headerlink" href="#add-service" title="Permanent link">&para;</a></h2>
+<p>When you have configured your database server, you can add a MySQL service with the user interface or on the command line.</p>
+<p>When adding a service with the command line, you must use the <code>pmm-admin --query-source=SOURCE</code> option to match the source you&rsquo;ve chosen and configured the database server for.</p>
+<p>With the PMM user interface, you select <em>Use performance schema</em>, or deselect it to use <em>slow query log</em>.</p>
+<h3 id="with-the-user-interface">With the user interface<a class="headerlink" href="#with-the-user-interface" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>Select <i class="uil uil-cog"></i> <em>Configuration</em> → <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.94602 8.89221L9.6093 9.55549L7.84915 11.3156L6.67493 10.1438L7.33821 9.48049L7.84915 9.99143L8.94602 8.89221Z" fill="#000"></path><path d="M16.4273 2.4679V4.04524H7.57258V2.4679H3.1593V22.6406H20.8382V2.4679H16.4273ZM5.87805 19.0429V14.5148H10.4062V19.0429H5.87805ZM11.8288 9.47102H17.7702V10.4085H11.8288V9.47102ZM11.8288 16.3101H17.7702V17.2476H11.8288V16.3101ZM10.4062 7.67571V12.2038H5.87805V7.67571H10.4062Z" fill="#000"></path><path d="M15.7242 1.73906V3.34219H8.27576V1.73906C8.27576 1.53047 8.44685 1.35938 8.65544 1.35938H15.3445C15.5554 1.35938 15.7242 1.53047 15.7242 1.73906Z" fill="#000"></path></svg> <em>PMM Inventory</em> → <svg width="16" height="16" class="css-6tlabr" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.9655 1.58789C6.16682 1.58789 1.46613 6.28859 1.46613 12.0873C1.46613 17.8859 6.16682 22.5866 11.9655 22.5866C17.7641 22.5866 22.4648 17.8859 22.4648 12.0873C22.4648 6.28859 17.7641 1.58789 11.9655 1.58789ZM16.0671 12.8059H12.6747V16.1736C12.6747 16.5702 12.3532 16.8917 11.9565 16.8917C11.7582 16.8917 11.5787 16.8114 11.4487 16.6814C11.3187 16.5514 11.2384 16.3719 11.2384 16.1736V12.8059H7.87073C7.47402 12.8059 7.1526 12.4844 7.1526 12.0877C7.1526 11.8894 7.23285 11.7098 7.36286 11.5798C7.49284 11.4499 7.6724 11.3696 7.87073 11.3696H11.2384V7.97714C11.2384 7.58046 11.5599 7.25904 11.9566 7.25904C12.1549 7.25904 12.3344 7.33926 12.4645 7.46927C12.5944 7.59928 12.6747 7.77881 12.6747 7.97714V11.3696H16.0672C16.4639 11.3696 16.7853 11.691 16.7853 12.0877C16.7852 12.4844 16.4638 12.8059 16.0671 12.8059Z" fill="#000"></path></svg> <em>Add Instance</em>.</p>
+</li>
+<li>
+<p>Select <em>MySQL &ndash; Add a remote instance</em>.</p>
+</li>
+<li>
+<p>Enter or select values for the fields.</p>
+</li>
+<li>
+<p>Click <em>Add service</em>.</p>
+</li>
+</ol>
+<p><div class="lightgallery"><a data-sub-html="" href="../../_images/PMM_Add_Instance_MySQL.jpg"><img alt="" src="../../_images/PMM_Add_Instance_MySQL.jpg" /></a></div></p>
+<p>If your MySQL instance is configured to use TLS, click on the <em>Use TLS for database connections</em> check box and fill in your TLS certificates and key.</p>
+<p><div class="lightgallery"><a data-sub-html="" href="../../_images/PMM_Add_Instance_MySQL_TLS.jpg"><img alt="" src="../../_images/PMM_Add_Instance_MySQL_TLS.jpg" /></a></div></p>
+<h3 id="on-the-command-line">On the command line<a class="headerlink" href="#on-the-command-line" title="Permanent link">&para;</a></h3>
+<p>Add the database server as a service using one of these example commands. If successful, PMM Client will print <code>MySQL Service added</code> with the service&rsquo;s ID and name. Use the <code>--environment</code> and <code>-custom-labels</code> options to set tags for the service to help identify them.</p>
+<h3 id="examples_4">Examples<a class="headerlink" href="#examples_4" title="Permanent link">&para;</a></h3>
+<h4 id="tls-connection">TLS connection<a class="headerlink" href="#tls-connection" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>pmm-admin add mysql --username<span class="o">=</span>user --password<span class="o">=</span>pass --tls --tls-skip-verify --tls-ca<span class="o">=</span>pathtoca.pem --tls-cert<span class="o">=</span>pathtocert.pem --tls-key<span class="o">=</span>pathtocertkey.pem --server-url<span class="o">=</span>http://admin:admin@127.0.0.1 --query-source<span class="o">=</span>perfschema name localhost:3306
+</code></pre></div>
+<h4 id="slow-query-log_1">Slow query log<a class="headerlink" href="#slow-query-log_1" title="Permanent link">&para;</a></h4>
+<p>Default query source (<code>slowlog</code>), service name (<code>{node name}-mysql</code>), and service address/port (<code>127.0.0.1:3306</code>), with database server account <code>pmm</code> and password <code>pass</code>.</p>
+<div class="highlight"><pre><span></span><code>pmm-admin add mysql --username<span class="o">=</span>pmm --password<span class="o">=</span>pass
+</code></pre></div>
+<p>Slow query log source and log size limit (1 gigabyte), service name (<code>MYSQL_NODE</code>) and service address/port (<code>191.168.1.123:3306</code>).</p>
+<div class="highlight"><pre><span></span><code>pmm-admin add mysql --query-source<span class="o">=</span>slowlog --size-slow-logs<span class="o">=</span>1GiB --username<span class="o">=</span>pmm --password<span class="o">=</span>pass MYSQL_NODE <span class="m">192</span>.168.1.123:3306
+</code></pre></div>
+<p>Slow query log source, disabled log management (use <a href="https://linux.die.net/man/8/logrotate"><code>logrotate</code></a> or some other log management tool), service name (<code>MYSQL_NODE</code>) and service address/port (<code>191.168.1.123:3306</code>).</p>
+<div class="highlight"><pre><span></span><code>pmm-admin add mysql --query-source<span class="o">=</span>slowlog --size-slow-logs<span class="o">=</span>-1GiB --username<span class="o">=</span>pmm --password<span class="o">=</span>pass MYSQL_NODE <span class="m">192</span>.168.1.123:3306
+</code></pre></div>
+<p>Default query source (<code>slowlog</code>), service name (<code>{node}-mysql</code>), connect via socket.</p>
+<div class="highlight"><pre><span></span><code>pmm-admin add mysql --username<span class="o">=</span>pmm --password<span class="o">=</span>pass --socket<span class="o">=</span>/var/run/mysqld/mysqld.sock
+</code></pre></div>
+<h4 id="performance-schema_1">Performance Schema<a class="headerlink" href="#performance-schema_1" title="Permanent link">&para;</a></h4>
+<p>Performance schema query source, service name (<code>MYSQL_NODE</code>) and default service address/port (<code>127.0.0.1:3306</code>).</p>
+<div class="highlight"><pre><span></span><code>pmm-admin add mysql --query-source<span class="o">=</span>perfschema --username<span class="o">=</span>pmm --password<span class="o">=</span>pass MYSQL_NODE
+</code></pre></div>
+<p>Performance schema query source, service name (<code>MYSQL_NODE</code>) and default service address/port (<code>127.0.0.1:3306</code>) specified with flags.</p>
+<div class="highlight"><pre><span></span><code>pmm-admin add mysql --query-source<span class="o">=</span>perfschema --username<span class="o">=</span>pmm --password<span class="o">=</span>pass --service-name<span class="o">=</span>MYSQL_NODE --host<span class="o">=</span><span class="m">127</span>.0.0.1 --port<span class="o">=</span><span class="m">3306</span>
+</code></pre></div>
+<h4 id="identifying-services">Identifying services<a class="headerlink" href="#identifying-services" title="Permanent link">&para;</a></h4>
+<p>Default query source (<code>slowlog</code>), environment labeled <code>test</code>, custom labels setting <code>source</code> to <code>slowlog</code>. (This example uses positional parameters for service name and service address.)</p>
+<div class="highlight"><pre><span></span><code>pmm-admin add mysql --environment<span class="o">=</span><span class="nb">test</span> --custom-labels<span class="o">=</span><span class="s1">&#39;source=slowlog&#39;</span>  --username<span class="o">=</span>root --password<span class="o">=</span>password --query-source<span class="o">=</span>slowlog MySQLSlowLog localhost:3306
+</code></pre></div>
+<h2 id="check-the-service">Check the service<a class="headerlink" href="#check-the-service" title="Permanent link">&para;</a></h2>
+<h3 id="pmm-user-interface">PMM user interface<a class="headerlink" href="#pmm-user-interface" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Select <i class="uil uil-cog"></i> <em>Configuration</em> → <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.94602 8.89221L9.6093 9.55549L7.84915 11.3156L6.67493 10.1438L7.33821 9.48049L7.84915 9.99143L8.94602 8.89221Z" fill="#000"></path><path d="M16.4273 2.4679V4.04524H7.57258V2.4679H3.1593V22.6406H20.8382V2.4679H16.4273ZM5.87805 19.0429V14.5148H10.4062V19.0429H5.87805ZM11.8288 9.47102H17.7702V10.4085H11.8288V9.47102ZM11.8288 16.3101H17.7702V17.2476H11.8288V16.3101ZM10.4062 7.67571V12.2038H5.87805V7.67571H10.4062Z" fill="#000"></path><path d="M15.7242 1.73906V3.34219H8.27576V1.73906C8.27576 1.53047 8.44685 1.35938 8.65544 1.35938H15.3445C15.5554 1.35938 15.7242 1.53047 15.7242 1.73906Z" fill="#000"></path></svg> <em>PMM Inventory</em> → <em>Inventory list</em>.</li>
+<li>Look in the <em>Services</em> tab for a matching <em>Service Type</em> (MySQL), <em>Service name</em>, <em>Addresses</em>, and any other details entered in the form.</li>
+<li>Look in the <em>Agents</em> tab to check the desired data source is being used.</li>
+</ol>
+<h3 id="command-line">Command line<a class="headerlink" href="#command-line" title="Permanent link">&para;</a></h3>
+<p>Look for your service in the output of this command.</p>
+<div class="highlight"><pre><span></span><code>pmm-admin inventory list services --service-type<span class="o">=</span>mysql
+</code></pre></div>
+<h3 id="check-data">Check data<a class="headerlink" href="#check-data" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Open the <em>MySQL Instance Summary</em> dashboard.</li>
+<li>Set the <em>Service Name</em> to the newly-added service.</li>
+</ol>
+<h4 id="percona-server-for-mysql-mariadb">Percona Server for MySQL, MariaDB<a class="headerlink" href="#percona-server-for-mysql-mariadb" title="Permanent link">&para;</a></h4>
+<p>If query response time plugin was installed, check for data in the <em>MySQL Query Response Time Details</em> dashboard or select a query in <em>PMM Query Analytics</em> to see the <em>Query time distribution</em> bar.</p>
+<h4 id="percona-xtradb-cluster">Percona XtraDB Cluster<a class="headerlink" href="#percona-xtradb-cluster" title="Permanent link">&para;</a></h4>
+<p>Open the <a href="../../details/dashboards/dashboard-pxc-galera-cluster-summary.html"><em>PXC/Galera Cluster Summary</em> dashboard</a>.</p>
+<div class="admonition seealso alert alert-info">
+<p class="admonition-title">See also</p>
+<ul>
+<li><a href="https://www.percona.com/doc/percona-server/LATEST/diagnostics/slow_extended.html">Percona Server for MySQL &ndash; Slow Query Log Extended</a></li>
+<li><a href="https://www.percona.com/doc/percona-server/LATEST/diagnostics/user_stats.html">Percona Server for MySQL &ndash; User Statistics</a></li>
+<li><a href="https://mariadb.com/kb/en/slow-query-log-overview/">MariaDB &ndash; Slow Query Log Overview</a></li>
+<li><a href="https://mariadb.com/kb/en/slow-query-log-extended-statistics/">MariaDB &ndash; Slow Query Log Extended Statistics</a></li>
+<li><a href="https://mariadb.com/kb/en/user-statistics/">MariaDB &ndash; User Statistics</a></li>
+<li><a href="https://www.percona.com/blog/2014/02/11/performance_schema-vs-slow-query-log/">Percona Blog &ndash; PERFORMANCE_SCHEMA vs Slow Query Log</a></li>
+<li><a href="https://www.percona.com/blog/2014/11/18/mysqls-innodb_metrics-table-how-much-is-the-overhead/">Percona Blog &ndash; MySQL&rsquo;s INNODB_METRICS table</a></li>
+<li><a href="https://www.percona.com/blog/2013/04/18/rotating-mysql-slow-logs-safely/">Percona Blog &ndash; Rotating MySQL Slow Logs Safely</a></li>
+<li><a href="https://www.percona.com/blog/2009/02/10/impact-of-logging-on-mysql%E2%80%99s-performance/">Percona Blog &ndash; Impact of logging on MySQL&rsquo;s performance</a></li>
+<li><a href="https://www.percona.com/blog/2020/06/10/running-custom-queries-in-percona-monitoring-and-management/">Percona Blog &ndash; Running Custom MySQL Queries in Percona Monitoring and Management</a></li>
+</ul>
+</div>
+                    </div>
+                </div>
+                
+<div class="small">
+    <ul class="list-inline">
+        
+        <li class="left">
+            <i class="uil uil-refresh"></i> Page updated 2021-12-14
+        </li>
+        
+    </ul>
+</div>
+
+                
+<div class="related row">
+    <ul class="nav nav-pills">
+        
+        <li class="right" style="margin-right: 10px">
+            <a href="mongodb.html" title="MongoDB">Next</a>
+        </li>
+        
+        
+        <li class="right" style="margin-right: 10px">
+            <a href="index.html" title="Client">Previous</a>
+        </li>
+        
+        <li>
+            <a href="https://www.percona.com/doc/percona-monitoring-and-management/2.x">Home</a>
+        </li>
+    </ul>
+</div>
+
+            </div>
+            
+<div class="sphinxsidebar col-md-3 col-md-pull-9">
+    <div class="sphinxsidebarwrapper">
+        {@ product_logo @}
+        {@ product_pdf_download @}
+        
+<section class="select-wrapper" id="version-select-wrapper">
+    <!-- Empty locator section for version selector -->
+</section>
+
+        <h3 id="toctree-heading"><a href="https://www.percona.com/doc/percona-monitoring-and-management/2.x">Contents</a></h3>
+        
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l1">
+    <a class="reference internal" href="../../index.html">Welcome</a>
+
+
+
+
+<li class="toctree-l1">
+    <a class="reference internal" href="../index.html">Setting up</a>
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../server/index.html">Server</a>
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../server/network.html">Network</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../server/docker.html">Docker</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../server/virtual-appliance.html">Virtual Appliance</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../server/aws.html">AWS Marketplace</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../server/easy-install.html">Easy-install script</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../server/dbaas.html">DBaaS</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="index.html">Client</a>
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="mysql.html">MySQL</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="mongodb.html">MongoDB</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="postgresql.html">PostgreSQL</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="proxysql.html">ProxySQL</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="aws.html">Amazon RDS</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="azure.html">Microsoft Azure</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="google.html">Google Cloud Platform</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="linux.html">Linux</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="external.html">External Services</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="haproxy.html">HAProxy</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="remote.html">Remote instances</a>
+
+
+
+</ul>
+
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l1">
+    <a class="reference internal" href="../../using/index.html">Using</a>
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../using/interface.html">User Interface</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../using/alerting.html">Integrated Alerting</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../using/backup.html">Backup and Restore</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../using/query-analytics.html">Query Analytics</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../using/dbaas.html">DBaaS</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../using/security-threat-tool.html">Security Threat Tool</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l1">
+    <a class="reference internal" href="../../how-to/index.html">How to</a>
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../how-to/configure.html">Configure</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../how-to/upgrade.html">Upgrade</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../how-to/secure.html">Secure</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../how-to/optimize.html">Optimize</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../how-to/annotate.html">Annotate</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../how-to/render-dashboard-images.html">Render dashboard images</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../how-to/extend-metrics.html">Extend Metrics</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../how-to/troubleshoot.html">Troubleshoot</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l1">
+    <a class="reference internal" href="../../details/index.html">Details</a>
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../details/architecture.html">Architecture</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../details/interface.html">UI components</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../details/dashboards/index.html">Dashboards</a>
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../details/dashboards/dashboard-home.html">Insight</a>
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-advanced-data-exploration.html">Advanced Data Exploration</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-victoriametrics.html">VictoriaMetrics</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-victoriametrics-agents-overview.html">VictoriaMetrics Agents Overview</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../details/dashboards/dashboard-inventory.html">PMM</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../details/dashboards/dashboard-cpu-utilization-details.html">OS Dashboards</a>
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-disk-details.html">Disk Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-network-details.html">Network Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-memory-details.html">Memory Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-node-temperature-details.html">Node Temperature Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-nodes-compare.html">Nodes Compare</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-nodes-overview.html">Nodes Overview</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-node-summary.html">Node Summary</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-numa-details.html">NUMA Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-processes-details.html">Processes Details</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../details/dashboards/dashboard-prometheus-exporter-status.html">Prometheus Dashboards</a>
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-prometheus-exporters-overview.html">Prometheus Exporters Overview</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../details/dashboards/dashboard-mysql-amazon-aurora-details.html">MySQL Dashboards</a>
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-mysql-command-handler-counters-compare.html">MySQL Command/Handler Counters Compare</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-mysql-innodb-compression-details.html">MySQL InnoDB Compression Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-mysql-innodb-details.html">MySQL InnoDB Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-mysql-myisam-aria-details.html">MySQL MyISAM/Aria Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-mysql-myrocks-details.html">MySQL MyRocks Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-mysql-instance-summary.html">MySQL Instance Summary</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-mysql-instances-compare.html">MySQL Instances Compare</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-mysql-instances-overview.html">MySQL Instances Overview</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-mysql-wait-event-analyses-details.html">MySQL Wait Event Analyses Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-mysql-performance-schema-details.html">MySQL Performance Schema Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-mysql-query-response-time-details.html">MySQL Query Response Time Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-mysql-replication-summary.html">MySQL Replication Summary</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-mysql-group-replication-summary.html">MySQL Group Replication Summary</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-mysql-table-details.html">MySQL Table Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-mysql-user-details.html">MySQL User Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-mysql-tokudb-details.html">MySQL TokuDB Details</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../details/dashboards/dashboard-mongodb-cluster-summary.html">MongoDB Dashboards</a>
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-mongodb-instance-summary.html">MongoDB Instance Summary</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-mongodb-instances-overview.html">MongoDB Instances Overview</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-mongodb-instances-compare.html">MongoDB Instances Compare</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-mongodb-replset-summary.html">MongoDB ReplSet Summary</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-mongodb-inmemory-details.html">MongoDB InMemory Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-mongodb-mmapv1-details.html">MongoDB MMAPv1 Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-mongodb-wiredtiger-details.html">MongoDB WiredTiger Details</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../details/dashboards/dashboard-postgresql-instances-overview.html">PostgreSQL Dashboards</a>
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-postgresql-instance-summary.html">PostgreSQL Instance Summary</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-postgresql-instances-compare.html">PostgreSQL Instances Compare</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../details/dashboards/dashboard-proxysql-instance-summary.html">ProxySQL Dashboards</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../details/dashboards/dashboard-pxc-galera-node-summary.html">HA Dashboards</a>
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-pxc-galera-cluster-summary.html">PXC/Galera Cluster Summary</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-pxc-galera-nodes-compare.html">PXC/Galera Nodes Compare</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-haproxy-instance-summary.html">HAProxy Instance Summary</a>
+
+
+
+</ul>
+
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../details/commands/index.html">Commands</a>
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../details/commands/pmm-admin.html">pmm-admin - PMM Administration Tool</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../details/commands/pmm-agent.html">pmm-agent - PMM Client agent</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../details/api.html">API</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../details/victoria-metrics.html">VictoriaMetrics</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../details/glossary.html">Glossary</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l1">
+    <a class="reference internal" href="../../faq.html">FAQ</a>
+
+
+
+
+<li class="toctree-l1">
+    <a class="reference internal" href="../../release-notes/index.html">Release Notes</a>
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.25.0.html">PMM 2.25.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.24.0.html">PMM 2.24.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.23.0.html">PMM 2.23.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.22.0.html">PMM 2.22.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.21.0.html">PMM 2.21.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.20.0.html">PMM 2.20.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.19.0.html">PMM 2.19.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.18.0.html">PMM 2.18.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.17.0.html">PMM 2.17.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.16.0.html">PMM 2.16.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.15.1.html">PMM 2.15.1</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.15.0.html">PMM 2.15.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.14.0.html">PMM 2.14.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.13.0.html">PMM 2.13.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.12.0.html">PMM 2.12.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.11.1.html">PMM 2.11.1</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.11.0.html">PMM 2.11.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.10.1.html">PMM 2.10.1</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.10.0.html">PMM 2.10.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.9.1.html">PMM 2.9.1</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.9.0.html">PMM 2.9.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.8.0.html">PMM 2.8.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.7.0.html">PMM 2.7.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.6.1.html">PMM 2.6.1</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.6.0.html">PMM 2.6.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.5.0.html">PMM 2.5.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.4.0.html">PMM 2.4.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.3.0.html">PMM 2.3.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.2.2.html">PMM 2.2.2</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.2.1.html">PMM 2.2.1</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.2.0.html">PMM 2.2.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.1.0.html">PMM 2.1.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.0.1.html">PMM 2.0.1</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.0.0.html">PMM 2.0.0</a>
+
+
+
+</ul>
+
+
+
+
+</ul>
+
+
+        
+
+<h4>Previous page</h4>
+<p class="topless">
+    <a href="index.html" title="previous chapter">Client</a>
+</p>
+
+
+<h4>Next page</h4>
+<p class="topless">
+    <a href="mongodb.html" title="next chapter">MongoDB</a>
+</p>
+
+
+        {@ product_series @}
+    </div>
+</div>
+
+            <div class="clearer"></div>
+        </div>
+    </div>
+</body>

@@ -1,0 +1,46 @@
+[data-md-color-scheme="percona-light"] {
+    --md-primary-fg-color:        #e97e03;
+    --md-primary-fg-color--light: #ECB7B7;
+    --md-primary-fg-color--dark:  #90030C;
+  }
+[data-md-color-scheme="slate"] {
+    --md-primary-fg-color:        #e97e03;
+    /*
+    --md-primary-fg-color--light: #ECB7B7;
+    --md-primary-fg-color--dark:  #90030C;
+    */
+    --md-hue: 210; /* [0, 360] */
+  }
+ul li p {
+	margin: 0;
+}
+
+.imgcenter {
+    display: block;
+    margin: 0 auto;
+}
+dd {
+    margin-left: 2em !important;
+}
+
+@keyframes bounce {
+    from {
+     transform: translate3d(0, 0, 0);
+    }
+    to {
+     transform: translate3d(0, -4px, 0);
+    }
+ }
+
+ .ellipsis {
+    animation: bounce 0.4s ease infinite;
+    animation-direction: alternate;
+ }
+
+ .ellipsis#ellipsis-two {
+    animation-delay: 0.2s;
+ }
+
+ .ellipsis#ellipsis-three {
+    animation-delay: 0.3s;
+ }
