@@ -11,9 +11,9 @@ curl -fsSL https://raw.githubusercontent.com/percona/pmm/main/get-pmm.sh | /bin/
 
 This script:
 
-- installs Docker if not already installed;
-- if there is a PMM Server docker container running, it's stopped and backed up;
-- pulls and runs the latest PMM Server docker image;
+- Installs Docker if it is not installed.
+- If a PMM Server Docker container is running, it is stopped and backed up.
+- Pulls and runs the latest PMM Server Docker image.
 
 
 [github]: https://github.com/percona/pmm/blob/main/get-pmm.sh
