@@ -27,12 +27,12 @@ To add a new user in PMM:
 3. Click *create user*.
 
 
-!!! caution alert alert-warning "Important"    
-    After changing the default admin password for the PMM server, register the pmm-agent using the same credentials and add the services again. Otherwise, PMM will cease to monitor the service/nodes.
-
 ## Edit users
 
 You can edit users by changing the information or settings for an individual user account.
+
+!!! caution alert alert-warning "Important"    
+    After changing the default admin password for the PMM server, register the pmm-agent using the same credentials and add the services again. Otherwise, PMM will cease to monitor the service/nodes.
 
 ### Grant or Revoke admin privileges
 
