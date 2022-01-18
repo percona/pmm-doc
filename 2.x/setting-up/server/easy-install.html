@@ -118,26 +118,16 @@
                         <h1 id="easy-install-script">Easy-install script<a class="headerlink" href="#easy-install-script" title="Permanent link">&para;</a></h1>
 <div class="admonition caution alert alert-warning">
 <p class="admonition-title">Caution</p>
-<p>Download and check <code>get-pmm.sh</code> before running it to make sure you know what it does.</p>
+<p>You can download and check <code>get-pmm.sh</code> before running it from our <a href="https://github.com/percona/pmm/blob/main/get-pmm.sh">github</a>:</p>
 </div>
 <h2 id="linux-or-macos">Linux or macOS<a class="headerlink" href="#linux-or-macos" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code>curl -fsSL -O https://raw.githubusercontent.com/percona/pmm/main/get-pmm.sh <span class="se">\</span>
--O https://raw.githubusercontent.com/percona/pmm/main/.sha256-oneline <span class="o">&amp;&amp;</span> <span class="se">\</span>
-shasum -a <span class="m">256</span> .sha256-oneline -c <span class="o">&amp;&amp;</span> <span class="se">\</span>
-chmod +x ./get-pmm.sh <span class="o">&amp;&amp;</span> <span class="se">\</span>
-./get-pmm.sh
+<div class="highlight"><pre><span></span><code>curl -fsSL https://www.percona.com/get/pmm <span class="p">|</span> /bin/bash
 </code></pre></div>
-<p>These commands:</p>
+<p>This script:</p>
 <ul>
-<li>Download the script;</li>
-<li>Check its integrity;</li>
-<li>Make the script executable;</li>
-<li>Run it. The script will:<ul>
-<li>install Docker if not already installed;</li>
-<li>if there is a PMM Server docker container running, stop it and back it up;</li>
-<li>pull and run the latest PMM Server docker image.</li>
-</ul>
-</li>
+<li>Installs Docker if it is not installed.</li>
+<li>If a PMM Server Docker container is running, it is stopped and backed up.</li>
+<li>Pulls and runs the latest PMM Server Docker image.</li>
 </ul>
                     </div>
                 </div>
@@ -146,7 +136,7 @@ chmod +x ./get-pmm.sh <span class="o">&amp;&amp;</span> <span class="se">\</span
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-10-18
+            <i class="uil uil-refresh"></i> Page updated 2022-01-18
         </li>
         
     </ul>
