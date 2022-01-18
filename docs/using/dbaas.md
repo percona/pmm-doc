@@ -32,7 +32,16 @@ From the left menu, select <i class="uil uil-database"></i> *DBaaS*.
 
 2. Enter values for the *Kubernetes Cluster Name* and *Kubeconfig file* in the corresponding fields.
 
-    ![!](../_images/PMM_DBaaS_Kubernetes_Cluster_Details.jpg)
+    ![!](../_images/PMM_DBaaS_Kubernetes_Cluster_Details.png)
+
+    !!! note alert alert-info ""
+        When using an [Amazon Elastic Kubernetes Service (EKS)] cluster and kubeconfig doesn't contain AWS 
+        access key ID and AWS secret access key, click the *Using Amazon Elastic Kubernetes Service (EKS)* 
+        checkbox and fill in the access key ID and secret access key in the fields that appear.
+        If you are not sure how to get these keys take a look at the official AWS documentation to 
+        [Understand and get your AWS credentials].
+
+    ![!](../_images/PMM_DBaaS_Kubernetes_Cluster_EKS.png)
 
 3. Click *Register*.
 
@@ -234,3 +243,5 @@ A paused cluster can't be edited.
     [Setting up a development environment for DBaaS](../setting-up/server/dbaas.md)
 
 [ALPHA]: https://en.wikipedia.org/wiki/Software_release_life_cycle#Alpha
+[Amazon Elastic Kubernetes Service (EKS)]: https://aws.amazon.com/eks/
+[Understand and get your AWS credentials]: https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html
