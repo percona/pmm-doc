@@ -6,7 +6,7 @@
 ## Linux or macOS
 
 ```sh
-curl -fsSL https://raw.githubusercontent.com/percona/pmm/main/get-pmm.sh | /bin/bash
+curl -fsSL https://www.percona.com/get/pmm | /bin/bash
 ```
 
 This script:
