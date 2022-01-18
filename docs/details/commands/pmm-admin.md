@@ -327,7 +327,7 @@ When you remove a service, collected data remains on PMM Server for the specifie
 
 ### Enable all collectors
 
-PMM starts the MongoDB exporter by default by using these these parameters:
+PMM starts the MongoDB exporter by default by using these parameters:
 
 |Parameter|Description|
 |-----|-----|
