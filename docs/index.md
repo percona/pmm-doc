@@ -16,7 +16,7 @@ PMM helps you improve the performance of your databases, simplify their manageme
 Here's how the home page looks on our <a href='https://pmmdemo.percona.com/' target='_blank'>free, live demo system</a>.
 
 <a href='https://pmmdemo.percona.com/' target='_blank'>
-    <img src="_images/PMM_Home_Dashboard.jpg" alt="PMM Demo Home Page" width=600px class="imgcenter"/>
+    <img src="_images/PMM_Home_Dashboard.png" alt="PMM Demo Home Page" width=800px class="imgcenter"/>
 </a>
 
 PMM runs in the cloud, on-prem, or across hybrid platforms. It's supported by our [legendary expertise][PERCONA_SERVICES] in open source databases, and by a vibrant developer and user [community].
@@ -121,6 +121,7 @@ mindmapDiagram {
 +++_ [[$base/using/dbaas.html DBaaS]]
 ++ <&task> [[$base/how-to/ How to]]
 +++_ [[$base/how-to/configure.html Configure]]
++++_ [[$base/how-to/manage-users.html Configure]]
 +++_ [[$base/how-to/upgrade.html Upgrade]]
 +++_ [[$base/how-to/secure.html Secure]]
 +++_ [[$base/how-to/optimize.html Optimize]]
