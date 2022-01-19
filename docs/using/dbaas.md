@@ -35,11 +35,10 @@ From the left menu, select <i class="uil uil-database"></i> *DBaaS*.
     ![!](../_images/PMM_DBaaS_Kubernetes_Cluster_Details.png)
 
     !!! note alert alert-info ""
-        When using an [Amazon Elastic Kubernetes Service (EKS)] cluster and kubeconfig doesn't contain AWS 
-        access key ID and AWS secret access key, click the *Using Amazon Elastic Kubernetes Service (EKS)* 
-        checkbox and fill in the access key ID and secret access key in the fields that appear.
-        If you are not sure how to get these keys take a look at the official AWS documentation to 
-        [Understand and get your AWS credentials].
+        When using an Amazon Elastic Kubernetes Service (EKS), cluster and kubeconfig do not contain AWS 
+        access key ID and AWS secret access key. Select *Using Amazon Elastic Kubernetes Service (EKS)* 
+        checkbox and enter the access key ID and secret access key in the respective fields.
+        For information on obtaining these keys, see the official AWS documentation to [Understand and get your AWS credentials](https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html).
 
     ![!](../_images/PMM_DBaaS_Kubernetes_Cluster_EKS.png)
 
