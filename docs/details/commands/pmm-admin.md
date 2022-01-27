@@ -323,9 +323,9 @@ When you remove a service, collected data remains on PMM Server for the specifie
         - `push`: agent will push metrics.
         - `pull`: server scrapes metrics from agent.
 
-## Advanced Options
+##### Advanced Options
 
-### Enable all collectors
+###### Enable all collectors
 
 PMM starts the MongoDB exporter by default by using these parameters:
 
@@ -342,7 +342,7 @@ To enable all collectors, pass the parameter `--enable-all-collectors` in the `p
 
 This will enable `collstats`, `dbstats`, `indexstats`, and `topmetrics` collectors.
 
-### Disable some collectors
+###### Disable some collectors
 
 To enable only some collectors, pass the parameter `--enable-all-collectors` along with the parameter `--disable-collectors`.
 
@@ -352,20 +352,20 @@ For example, if you want all collectors except `topmetrics`, specify:
 --enable-all-collectors --disable-collectors=topmetrics
 ```
 
-### Limit dbStats, collStats and indexStats
+###### Limit dbStats, collStats and indexStats
 
  All the collectors are enabled by default. However, collStats and indexStats are enabled if there are less than 200 collections across all the databases, excluding the admin, config, and local system databases.
 
 For collStats and indexStats you can:
 
-- Set the value of the parameter `-collector.collstats-limit` to -1, which indicates that collStats and indexStats can handle unlimited collections.
+- Set the value of the parameter `-max-collections-limit` to 0, which indicates that collStats and indexStats can handle unlimited collections.
  
-- Enable collStats and indexStats for some databases or collections also.
+Enable collStats and indexStats for some databases or collections also.
  
 - Specify the databases and collections that collStats and indexStats will use to collect data using the parameter `--stats-collections`. This parameter receives a comma-separated list of namespaces in the form `database.collection`.
 
 
-#### Example
+###### Example
 
 If `--stats-collections=db1,db2.col1` then the collectors are run as follows:
 
@@ -374,6 +374,18 @@ If `--stats-collections=db1,db2.col1` then the collectors are run as follows:
 |db1| All the collections|
 |db2| **Only** for collection col1|
 
+##### Resolutions
+
+PMM collects metrics in two resolutions to decrease CPU and Memory usage: high and low ones.
+In high resolution we collect metrics from collectors which works fast.
+- diagnosticdata
+- replicasetstatus
+- topmetrics
+
+In low resolution we collect metrics from collectors which takes time.
+- dbstats
+- indexstats
+- collstats
 
 
 #### MySQL
