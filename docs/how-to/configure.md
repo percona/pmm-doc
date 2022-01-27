@@ -202,12 +202,15 @@ This panel is where you connect your PMM server to your Percona Platform Account
     Your Percona Platform Account is separate from your PMM User account.
 
 ### Connect PMM to Percona Platform
+
+!!! alert alert-info ""
+    Disclaimer: Percona Platform is a Preview release and several functionalities are still under development or subject to change. As such, we recommend connecting PMM to Percona Platfotm only for testing purposes.
+
 Connect your PMM servers to Percona Platform to leverage Platform services that boost the monitoring capabilities of your PMM installations.
 
 To connect to Percona Platform, you need a Percona Account. With a Percona Account you also get access to various Percona services, including Percona Platform, Percona Customer Portal, and Community Forum.
 
 If you don't have a Percona Account, you can create one on the [Percona Account Sign Up](https://id.percona.com/signin/register/) page.
-
 
 #### Pre-requisites
 To ensure that PMM can establish a connection to Percona Platform: 
@@ -230,6 +233,14 @@ To connect your PMM server to Percona Platform:
     ![!image](../_images/PMM_Settings_Percona_Platform_Login.png)
 2. Fill in the *Connect PMM to Percona Portal* form with the name of your PMM instance and the credentials of your Percona Account:
 3. Click *Connect*.
+To confirm that you have successfully connected the server and check the list of all servers currently connected to an organization, go to [Percona Platform](https://portal.percona.com) > **Dashboard** tab and click **View Instances** next to the **Connect your PMM** step. 
+
+### Disconnect a PMM instance
+ Disconnect a PMM instance when you want to unlink it from your Percona Platform organization or stop monitoring it there. 
+
+To disconnect a PMM server, go to > <i class="uil uil-cog"></i> **Configuration > Settings > Percona Platform** and click **Disconnect**. 
+
+To confirm that the server disconnected successfully, go to Percona Platform >  **Dashboard** tab > **View instances**. This displays the **PMM instances** page where you can check the list of servers currently connected to your Platform organization. 
 
 ## Sign into PMM with your Percona Account
 Once you've successfully connected your PMM instance to Percona Platform, you can also sign into PMM usig your Percona Account:
@@ -287,6 +298,7 @@ Settings for the SMTP email server:
     - *CRAM-MD5*
 - *Username*: SMTP Auth using CRAM-MD5, LOGIN and PLAIN.
 - *Password*: SMTP Auth using CRAM-MD5, LOGIN and PLAIN.
+After setting up the SMTP server, click *Test* to confirm that you can connect to the server with the current settings.
 
 ### Slack
 
