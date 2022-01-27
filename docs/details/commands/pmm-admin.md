@@ -376,13 +376,14 @@ If `--stats-collections=db1,db2.col1` then the collectors are run as follows:
 
 ##### Resolutions
 
-PMM collects metrics in two resolutions to decrease CPU and Memory usage: high and low ones.
-In high resolution we collect metrics from collectors which works fast.
+PMM collects metrics in two resolutions to decrease CPU and Memory usage: high and low resolutions.
+
+In high resolution we collect metrics from collectors which work fast:
 - diagnosticdata
 - replicasetstatus
 - topmetrics
 
-In low resolution we collect metrics from collectors which takes time.
+In low resolution we collect metrics from collectors which could take some time:
 - dbstats
 - indexstats
 - collstats
