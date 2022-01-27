@@ -21,7 +21,7 @@ This script:
 - Pulls and runs the latest PMM Server Docker image.
 - this script also has an interactive mode if you'd like to change default settings:
 ```sh
-curl -fsSL https://www.percona.com/get/pmm (or wget https://www.percona.com/get/pmm)
+curl -fsSLO https://www.percona.com/get/pmm (or wget https://www.percona.com/get/pmm)
 chmod +x pmm
 ./pmm --interactive
 ```
