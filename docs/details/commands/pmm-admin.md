@@ -336,7 +336,7 @@ PMM starts the MongoDB exporter by default by using these parameters:
 |`--discovering-mode`|Auto discovers all databases and collections|
 |`--compatible-mode`|Enables MongoDB exporter v1 compatible metric names|
 |`--mongodb.global-conn-pool`|Uses a single connection to the DB instead of connecting in each scrape|
-|`--collector.collstats-limit=200`|Enables collStats and indexStats only if there are less than n collections in total|
+|`--collector.collstats-limit=0`|Enables collstats and indexstats collector with no limits|
 
 To enable all collectors, pass the parameter `--enable-all-collectors` in the `pmm-admin add mongodb` command.
 
