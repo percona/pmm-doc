@@ -23,11 +23,14 @@ jobs:
         with:
           credentials_json: "${{ secrets.GCP_BUILD_BUCKET_KEY }}"
 
+      - name: Compress output files
+        run: zip -r site.zip _resources
+
       - name: Upload files to GCS
         id: "upload-files"
         uses: google-github-actions/upload-cloud-storage@v0
         with:
-          path: "_resources"
-          destination: "doc-builds/${GITHUB_REF}"
+          files: "./site.zip"
+          destination: "doc-builds/${{ GITHUB_REF }}/site.zip"
           parent: false
           gzip: true
