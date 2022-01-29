@@ -48,6 +48,9 @@ jobs:
         run: |
           PATH=$PATH:_resources/bin mike deploy -F mkdocs-percona.yml 2.x -b publish -p
           mike retitle -F mkdocs-percona.yml 2.x "PMM2 (LATEST)" -b publish -p
+          mkdir - output
+          zip -r ./output/themeless.zip site
+          rm -rf site
 
       # Builds Material-themed static web site in 'netlify' branch
       - name: Build a themed site (2.x)
@@ -56,6 +59,9 @@ jobs:
           PATH=$PATH:_resources/bin mike deploy 2.x -b netlify -p
           mike set-default 2.x -b netlify -p
           mike retitle 2.x "PMM2 (LATEST)" -b netlify  -p
+          mkdir - output
+          zip -r ./output/themed.zip site
+          rm -rf site
 
       - name: Install Node.js 14.x
         uses: percona-platform/setup-node@v2
@@ -72,12 +78,6 @@ jobs:
         uses: google-github-actions/auth@v0
         with:
           credentials_json: "${{ secrets.GCP_BUILD_BUCKET_KEY }}"
-
-      - name: Compress output files
-        run: |
-          mkdir -p output
-          zip -r ./output/themeless.zip publish
-          zip -r ./output/themed.zip netlify
 
       - name: Upload files to GCS
         uses: google-github-actions/upload-cloud-storage@v0
