@@ -1,4 +1,4 @@
-name: BUILD PMM DOCS (2.x)
+name: Build PMM Docs (2.x)
 
 on:
   push:
@@ -43,14 +43,14 @@ jobs:
           echo "GIT_USER=percona-platform-robot:${ROBOT_TOKEN}" >> $GITHUB_ENV
 
       # Builds theme-less static web site in 'publish' branch for percona.com
-      - name: Run MkDocs (2.x)
+      - name: Build a theme-less site (2.x)
         if: github.ref == 'refs/heads/main'
         run: |
           PATH=$PATH:_resources/bin mike deploy -F mkdocs-percona.yml 2.x -b publish -p
           mike retitle -F mkdocs-percona.yml 2.x "PMM2 (LATEST)" -b publish -p
 
-      # Builds Material-themed static web site in 'netlify' branch for netlify.com
-      - name: Run MkDocs for Netlify (2.x)
+      # Builds Material-themed static web site in 'netlify' branch
+      - name: Build a themed site (2.x)
         if: github.ref == 'refs/heads/main'
         run: |
           PATH=$PATH:_resources/bin mike deploy 2.x -b netlify -p
@@ -64,10 +64,24 @@ jobs:
 
       - name: Spelling
         run: |
-          npx markdown-spellcheck --report --en-us --ignore-acronyms --ignore-numbers "docs/**/*.md" || true
           # Ignore errors, just inspect results
+          npx markdown-spellcheck --report --en-us --ignore-acronyms --ignore-numbers "docs/**/*.md" || true
 
-#      - name: Grammar
-#        run: |
-#          npx write-good --no-passive docs/**/*.md || true
-#          # Ignore errors, just inspect results
+      - name: Authenticate to Google Cloud
+        id: "auth"
+        uses: google-github-actions/auth@v0
+        with:
+          credentials_json: "${{ secrets.GCP_BUILD_BUCKET_KEY }}"
+
+      - name: Compress output files
+        run: |
+          mkdir -p output
+          zip -r ./output/themeless.zip publish
+          zip -r ./output/themed.zip netlify
+
+      - name: Upload files to GCS
+        uses: google-github-actions/upload-cloud-storage@v0
+        with:
+          path: "output"
+          destination: "doc-builds/${{ github.ref_name }}"
+          parent: false
