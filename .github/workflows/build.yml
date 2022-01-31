@@ -87,3 +87,7 @@ jobs:
           path: "output"
           destination: "doc-builds/${{ github.ref_name }}"
           parent: false
+
+      - name: Trigger deploy to render.com
+        if: github.ref == 'refs/heads/main'
+        run: curl "${{ secrets.RENDER_DEPLOY_URL }}"

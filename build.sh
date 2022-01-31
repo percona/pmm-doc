@@ -1,7 +1,7 @@
 @echo "Starting the build process..."
 
 mkdir -p dist
-wget -O ./themed.zip https://console.cloud.google.com/storage/browser/doc-builds/main/themed.zip
+wget -O ./themed.zip https://storage.googleapis.com/doc-builds/main/themed.zip
 
 cd dist
 unzip ../themed.zip
