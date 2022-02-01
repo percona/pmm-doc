@@ -12,7 +12,9 @@ RUN mkdir -p /usr/share/fonts/chivo && cd /usr/share/fonts/chivo && wget -O Chiv
 RUN fc-cache -f
 
 # plantuml: Install local copy (remote access via setting in mkdocs.yml)
-RUN mkdir -p /opt/plantuml && cd /opt/plantuml && wget -O plantuml.jar https://downloads.sourceforge.net/project/plantuml/plantuml.jar
+RUN mkdir -p /opt/plantuml && \
+  cd /opt/plantuml && \
+  wget -O plantuml.jar https://downloads.sourceforge.net/project/plantuml/plantuml.jar
 COPY ./_resources/bin/plantuml /usr/local/bin/
 RUN chmod +x /usr/local/bin/plantuml
 
