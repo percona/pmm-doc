@@ -336,7 +336,7 @@ PMM starts the MongoDB exporter by default only with `diagnosticdata` and `repli
     :  Comma-separated list of collector names to exclude from exporter
 
     `--max-collections-limit=-1`
-    :  Disable collstats & indexstats if there are more than <n> collections. 0: No limit, -1: Let PMM automatically set this value.
+    :  Disable collstats, dbstats, topmetrics and indexstats if there are more than <n> collections. 0: No limit. Default is -1, PMM automatically sets this value.
 
         !!! caution ""
             To high limit could affect CPU and Memory usage.
