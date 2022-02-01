@@ -50,9 +50,6 @@ jobs:
         run: |
           PATH=$PATH:_resources/bin mike deploy -F mkdocs-percona.yml 2.x -b publish -p
           mike retitle -F mkdocs-percona.yml 2.x "PMM2 (LATEST)" -b publish -p
-          mkdir -p output
-          zip -r ./output/themeless.zip site
-          rm -rf site
 
       # Builds Material-themed static web site in 'preview' branch
       - name: Build a themed site (2.x)
@@ -61,9 +58,6 @@ jobs:
           PATH=$PATH:_resources/bin mike deploy 2.x -b preview -p
           mike set-default 2.x -b preview -p
           mike retitle 2.x "PMM2 (LATEST)" -b preview  -p
-          mkdir -p output
-          zip -r ./output/themed.zip site
-          rm -rf site
 
       - name: Install Node.js 14.x
         uses: percona-platform/setup-node@v2

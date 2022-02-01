@@ -20,4 +20,3 @@ WORKDIR /docs
 
 EXPOSE 8000
 CMD ["mkdocs","build"]
-
