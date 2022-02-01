@@ -15,7 +15,7 @@ As soon as you connect your PMM instance to Percona Platform, you get additional
 
 By default, the Security Threat Tool (STT) is disabled. To enable it, select <i class="uil uil-cog"></i> *Configuration* → <i class="uil uil-setting"></i> *Settings* → *Advanced Settings*. ([Read more](../how-to/configure.md#advanced-settings)).
 
-Enabling STT in the settings also causes the PMM server to download STT checks from Percona Platform and run them once. This operation runs in the background so even though the settings update finishes instantly, it might take some time for the checks to complete download and execution and the results (if any) to be visible in the *PMM Database Checks* dashboard.
+Enabling STT in the settings causes the PMM server to download STT checks from Percona Platform and run them once. This operation runs in the background, so even though the settings update finishes instantly, it might take some time for the checks to complete download and execution and the results (if any) to be visible in the *PMM Database Checks* dashboard.
 
 ## Checks results
 The results are sent to PMM Server where you can review any failed checks on the **Home Dashboard > Failed security checks** panel. The summary count of failed checks is classified as <b style="color:#e02f44;">Critical</b>, <b style="color:#e36526;">Major</b> and <b style="color:#5794f2;">Trivial</b>:
