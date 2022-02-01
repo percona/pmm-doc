@@ -63,6 +63,7 @@ jobs:
           mike retitle -F mkdocs-percona.yml 2.x "PMM2 (LATEST)" -b publish -p
 
       - name: Build a themed site using docker
+        if: github.ref == 'refs/heads/main'
         run: |
           docker pull ghcr.io/percona/pmm-doc:1.0
           docker run --rm -v $(pwd):/doc ghcr.io/percona/pmm-doc:1.0 bash docker-build.sh -xe
