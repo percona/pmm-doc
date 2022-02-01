@@ -5,9 +5,9 @@ echo "Starting the build process..."
 
 # unzip ./themed.zip
 
-git fetch origin preview
+docker pull docker.io/atymchuk/pmm-doc-md:1.0
 
-git checkout preview
+docker run --rm -v $(pwd):/doc docker.io/atymchuk/pmm-doc-md:1.0 bash docker-build.sh -xe
 
 # rm ./themed.zip
 echo "End of the build process."
