@@ -1,4 +1,4 @@
 services:
   - type: web
-    name: preview
+    name: pmm-doc
     env: docker
