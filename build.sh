@@ -11,6 +11,4 @@ echo "Starting the build process..."
 
 # rm ./themed.zip
 
-echo "Which docker" && which docker
-
 echo "End of the build process."
