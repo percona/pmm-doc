@@ -1,4 +1,4 @@
-FROM docker.io/atymchuk/pmm-doc-md:1.0 as build
+FROM docker.io/perconalab/pmm-doc-md:1.0 as build
 
 COPY . ./
 COPY ./.git ./
