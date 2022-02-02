@@ -1,6 +1,7 @@
 FROM docker.io/atymchuk/pmm-doc-md:1.0 as build
 
 COPY . ./
+COPY .git ./
 RUN export PATH=$PATH:/docs/_resources/bin 
 RUN pwd
 RUN ls -lah .
