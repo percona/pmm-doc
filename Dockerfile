@@ -3,7 +3,7 @@ FROM docker.io/perconalab/pmm-doc-md:1.0 as build
 COPY . ./
 RUN export PATH=$PATH:/docs/_resources/bin 
 RUN pwd
-RUN ls -lah .
+RUN ls -lah /
 RUN mkdocs build
 RUN ls -lah .
 
