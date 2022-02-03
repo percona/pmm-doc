@@ -53,7 +53,6 @@ jobs:
 
       # Builds Material-themed static web site in 'preview' branch
       - name: Build a themed site (2.x)
-        if: github.ref == 'refs/heads/main'
         run: |
           PATH=$PATH:_resources/bin mike deploy 2.x -b preview -p
           mike set-default 2.x -b preview -p
