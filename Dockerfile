@@ -4,6 +4,7 @@ COPY . ./
 RUN export PATH=$PATH:/docs/_resources/bin 
 RUN pwd
 RUN ls -lah /
+RUN whoami
 RUN mkdocs build
 RUN ls -lah .
 
