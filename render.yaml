@@ -2,7 +2,3 @@ services:
   - type: web
     name: pmm-doc
     env: docker
-    envVars:
-      - key: DOCKER_BUILDKIT
-        value: 0
-    dockerContext: ../
