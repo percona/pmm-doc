@@ -11,7 +11,7 @@ PMM helps you improve the performance of your databases, simplify their manageme
 - Additional features include checking databases for [security threats](using/security-threat-tool.md).
 
 !!! alert alert-info ""
-    This is the documentation for the latest release, **PMM {{release}}** ([Release Notes](release-notes/{{release}}.md)).
+This is the documentation for the latest release, **PMM {{release}}** ([Release Notes](release-notes/{{release}}.md)).
 
 Here's how the home page looks on our <a href='https://pmmdemo.percona.com/' target='_blank'>free, live demo system</a>.
 
@@ -19,7 +19,7 @@ Here's how the home page looks on our <a href='https://pmmdemo.percona.com/' tar
     <img src="_images/PMM_Home_Dashboard.png" alt="PMM Demo Home Page" width=800px class="imgcenter"/>
 </a>
 
-PMM runs in the cloud, on-prem, or across hybrid platforms. It's supported by our [legendary expertise][PERCONA_SERVICES] in open source databases, and by a vibrant developer and user [community].
+PMM runs in the cloud, on-prem, or across hybrid platforms. It's supported by our [legendary expertise][percona_services] in open source databases, and by a vibrant developer and user [community].
 
 A minimal PMM set-up comprises one [server](details/architecture.md#pmm-server) and a [client agent](details/architecture.md#pmm-client) on every system you want to monitor.
 
@@ -71,80 +71,11 @@ mindmapDiagram {
 
 ??? note alert alert-info "Full section map (click to show/hide)"
 
-    ```plantuml format="svg_object" width="100%" height="100%"
-    @startwbs ""
-    skinparam svgLinkTarget _blank
-    skinparam defaultFontName Chivo
-    skinparam defaultFontSize 12
-    <style>
-    wbsDiagram {
-      node {
-        BackgroundColor #lightblue
-        Padding 5
-        Margin 5
-        RoundCorner 15
-      }
-    }
-    </style>
-    ' Absolute links - can be useful for exporting map as stand-alone image
-    ' relative links make testing easier but must be changed for local vs hosting' Hosted
-    !$base = "https://www.percona.com/doc/percona-monitoring-and-management/2.x"
-    '!$base = "../2.x"
-    ' !$base = ".."
-+ <&home> [[$base/index.html Welcome]]
-++ <&power-standby> [[$base/setting-up/ Setting up]]
---- <&heart> [[$base/setting-up/server/ Server]]
-----_ [[$base/setting-up/server/network.html Network]]
-----_ [[$base/setting-up/server/docker.html Docker]]
-----_ [[$base/setting-up/server/virtual-appliance.html Virtual\nAppliance]]
-----_ [[$base/setting-up/server/aws.html AWS\nMarketplace]]
-----_ [[$base/setting-up/server/easy-install.html Easy-install\nscript]]
-----_ [[$base/setting-up/server/dbaas.html DBaaS]]
-+++ <&laptop> [[$base/setting-up/client/ Client]]
-++++_ [[$base/setting-up/client/mysql.html MySQL]]
-++++_ [[$base/setting-up/client/mongodb.html MongoDB]]
-++++_ [[$base/setting-up/client/postgresql.html PostgreSQL]]
-++++_ [[$base/setting-up/client/proxysql.html ProxySQL]]
-++++_ [[$base/setting-up/client/aws.html Amazon RDS]]
-++++_ [[$base/setting-up/client/azure.html Microsoft Azure]]
-++++_ [[$base/setting-up/client/google.html Google Cloud Platform]]
-++++_ [[$base/setting-up/client/linux.html Linux]]
-++++_ [[$base/setting-up/client/external.html External\nServices]]
-++++_ [[$base/setting-up/client/haproxy.html HAProxy]]
-++++_ [[$base/setting-up/client/remote.html Remote\ninstances]]
-++ <&wrench> [[$base/using/ Using]]
-+++_ [[$base/using/interface.html User\ninterface]]
-+++_ [[$base/using/alerting.html Integrated\nAlerting]]
-+++_ [[$base/using/backup.html Backup and\nRestore]]
-+++_ [[$base/using/query-analytics.html Query\nAnalytics]]
-+++_ [[$base/using/security-threat-tool.html Security\nThreat Tool]]
-+++_ [[$base/using/dbaas.html DBaaS]]
-++ <&task> [[$base/how-to/ How to]]
-+++_ [[$base/how-to/configure.html Configure]]
-+++_ [[$base/how-to/manage-users.html Configure]]
-+++_ [[$base/how-to/upgrade.html Upgrade]]
-+++_ [[$base/how-to/secure.html Secure]]
-+++_ [[$base/how-to/optimize.html Optimize]]
-+++_ [[$base/how-to/annotate.html Annotate]]
-+++_ [[$base/how-to/render-dashboard-images.html Render\ndashboard\nimages]]
-+++_ [[$base/how-to/extend-metrics.html Extend\nmetrics]]
-+++_ [[$base/how-to/troubleshoot.html Troubleshoot]]
-++ <&magnifying-glass> [[$base/details/ Details]]
-+++_ [[$base/details/architecture.html Architecture]]
-+++_ [[$base/details/interface.html User Interface\ncomponents]]
-+++ <&graph> [[$base/details/dashboards/ Dashboards]]
-+++ <&code> [[$base/details/commands/ Commands]]
-++++_ [[$base/details/commands/pmm-admin.html pmm-admin]]
-++++_ [[$base/details/commands/pmm-agent.html pmm-agent]]
-+++_ [[$base/details/api.html API]]
-+++_ [[$base/details/victoria-metrics.html VictoriaMetrics]]
-+++_ [[$base/details/glossary.html Glossary]]
-    @endwbs
-    ```
+  <img src="_images/site-nav.svg" />
 
-[PERCONA_SERVICES]: https://www.percona.com/services
+[percona_services]: https://www.percona.com/services
 [community]: https://www.percona.com/forums/questions-discussions/percona-monitoring-and-management
-[Technical Preview]: details/glossary.md#technical-preview
+[technical preview]: details/glossary.md#technical-preview
 [easy install]: setting-up/server/easy-install.md
-[Setting Up]: setting-up/index.md
-[Quickstart install guide]: https://www.percona.com/software/pmm/quickstart
+[setting up]: setting-up/index.md
+[quickstart install guide]: https://www.percona.com/software/pmm/quickstart
