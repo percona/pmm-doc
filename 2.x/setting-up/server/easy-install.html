@@ -121,13 +121,22 @@
 <p>You can download and check <code>get-pmm.sh</code> before running it from our <a href="https://github.com/percona/pmm/blob/main/get-pmm.sh">github</a>:</p>
 </div>
 <h2 id="linux-or-macos">Linux or macOS<a class="headerlink" href="#linux-or-macos" title="Permanent link">&para;</a></h2>
+<p>Using Curl:
 <div class="highlight"><pre><span></span><code>curl -fsSL https://www.percona.com/get/pmm <span class="p">|</span> /bin/bash
-</code></pre></div>
+</code></pre></div></p>
+<p>Using wget: 
+<div class="highlight"><pre><span></span><code>wget -O - https://www.percona.com/get/pmm <span class="p">|</span> /bin/bash
+</code></pre></div></p>
 <p>This script:</p>
 <ul>
-<li>Installs Docker if it is not installed.</li>
-<li>If a PMM Server Docker container is running, it is stopped and backed up.</li>
+<li>Installs Docker if it is not already installed on your system.</li>
+<li>Stops and backs up any PMM Server Docker containers that are currently running.</li>
 <li>Pulls and runs the latest PMM Server Docker image.</li>
+<li>Can run in Interactive mode to change the default settings:
+<div class="highlight"><pre><span></span><code>curl -fsSLO https://www.percona.com/get/pmm <span class="o">(</span>or wget https://www.percona.com/get/pmm<span class="o">)</span>
+chmod +x pmm
+./pmm --interactive
+</code></pre></div></li>
 </ul>
                     </div>
                 </div>
@@ -136,7 +145,7 @@
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2022-01-18
+            <i class="uil uil-refresh"></i> Page updated 2022-02-04
         </li>
         
     </ul>
