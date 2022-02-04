@@ -33,41 +33,10 @@ A minimal PMM set-up comprises one [server](details/architecture.md#pmm-server) 
 
 ## Read more
 
-```plantuml format="svg_object" width="90%" height="90%"
-@startmindmap ""
-title Links to popular sections
-skinparam svgLinkTarget _blank
-skinparam defaultFontName Chivo
-skinparam defaultFontSize 11
-<style>
-mindmapDiagram {
-  node {
-    ' Gap within nodes
-    Padding 7
-    ' Gap between nodes
-    Margin 5
-  }
-}
-</style>
-' Absolute links - can be useful for exporting map as stand-alone image
-' relative links make testing easier but must be changed for local vs hosting
-!$base = "https://www.percona.com/doc/percona-monitoring-and-management/2.x"
-'!$base = "../2.x"
-'!$base = "."
-+[#goldenrod] For Sys Admins <&star> <<admin>>
---_ [[$base/setting-up/ Setting up]]
---_ [[$base/how-to/configure.html How to configure]]
---_ [[$base/how-to/upgrade.html How to upgrade]]
---_ [[$base/details/commands/pmm-admin.html pmm-admin]]
---_ [[$base/details/architecture.html Architecture]]
-++[#lightblue] For Users <&person> <<user>>
-+++_ [[$base/using/interface.html User interface]]
-+++_ [[$base/using/query-analytics.html Using Query Analytics]]
-+++_ [[$base/using/alerting.html Using Integrated Alerting]]
-+++_ [[$base/using/dbaas.html Using DBaaS]]
-+++_ [[$base/details/dashboards/ Dashboards reference]]
-@endmindmap
-```
+    <p>
+      <img src="_images/popular-links.svg" />
+    </p>
+
 
 ??? note alert alert-info "Full section map (click to show/hide)"
     <p>
