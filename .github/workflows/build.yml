@@ -28,7 +28,6 @@ jobs:
           python -m pip install --upgrade pip
           pip install wheel
           # need this file renamed to prevent render.com from installing the dependencies
-          if [ -f python-deps.txt ]; then pip install -r python-deps.txt; fi
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
       - name: Setup PlantUML dependencies
@@ -68,7 +67,3 @@ jobs:
         run: |
           # Ignore errors, just inspect results
           npx markdown-spellcheck --report --en-us --ignore-acronyms --ignore-numbers "docs/**/*.md" || true
-
-      - name: Trigger deploy to render.com
-        if: github.ref == 'refs/heads/main'
-        run: curl "${{ secrets.RENDER_DEPLOY_URL }}"
