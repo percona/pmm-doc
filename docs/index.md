@@ -33,9 +33,9 @@ A minimal PMM set-up comprises one [server](details/architecture.md#pmm-server) 
 
 ## Read more
 
-    <p>
-      <img src="_images/popular-links.svg" />
-    </p>
+<p>
+  <img src="_images/popular-links.svg" />
+</p>
 
 
 ??? note alert alert-info "Full section map (click to show/hide)"
