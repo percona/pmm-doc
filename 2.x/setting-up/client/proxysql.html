@@ -118,12 +118,13 @@
                         <h1 id="proxysql">ProxySQL<a class="headerlink" href="#proxysql" title="Permanent link">&para;</a></h1>
 <p>Use the <code>proxysql</code> alias to enable ProxySQL performance metrics monitoring.</p>
 <h2 id="usage">USAGE<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code>pmm-admin add proxysql --username<span class="o">=</span>admin --password<span class="o">=</span>admin
+<div class="highlight"><pre><span></span><code>pmm-admin add proxysql --username<span class="o">=</span>pmm --password<span class="o">=</span>pmm
 </code></pre></div>
-<p>where <code>username</code> and <code>password</code> are credentials for the administration interface of the monitored ProxySQL instance.</p>
+<p>where <code>username</code> and <code>password</code> are credentials for the administration interface of the monitored ProxySQL instance. 
+You should configure a read-only account for monitoring using the <a href="https://proxysql.com/documentation/global-variables/admin-variables/#admin-stats_credentials"><code>admin-stats_credentials</code></a> variable in ProxySQL</p>
 <p>Additionally, two positional arguments can be appended to the command line flags: a service name to be used by PMM, and a service address. If not specified, they are substituted automatically as <code>&lt;node&gt;-proxysql</code> and <code>127.0.0.1:6032</code>.</p>
 <p>The output of this command may look as follows:</p>
-<div class="highlight"><pre><span></span><code>pmm-admin add proxysql --username<span class="o">=</span>admin --password<span class="o">=</span>admin
+<div class="highlight"><pre><span></span><code>pmm-admin add proxysql --username<span class="o">=</span>pmm --password<span class="o">=</span>pmm
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>ProxySQL Service added.
 Service ID  : /service_id/f69df379-6584-4db5-a896-f35ae8c97573
@@ -144,7 +145,7 @@ pmm-admin add proxysql --username<span class="o">=</span>pmm --password<span cla
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-06-29
+            <i class="uil uil-refresh"></i> Page updated 2022-02-04
         </li>
         
     </ul>
