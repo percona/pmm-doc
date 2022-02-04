@@ -78,5 +78,5 @@ The PMM Client package consists of the following:
 To make data transfer from PMM Client to PMM Server secure, all exporters are able to use SSL/TLS encrypted connections, and their communication with the PMM server is protected by the HTTP basic authentication.
 
 <p>
-  <img src="_images/C_S_Interactions.jpg" />
+  <img src="../_images/C_S_Interactions.jpg" />
 </p>
