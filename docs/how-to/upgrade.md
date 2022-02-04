@@ -2,6 +2,10 @@
 
 !!! caution alert alert-warning "Important"
     Upgrade PMM Server before upgrading PMM Clients.
+    The default PMM update policy is: the Server needs to be on an earlier version than the Client. 
+This is because of the PMM Architecture and how the configuration for the Client is created (by Server). This is why the Server needs to be aware of some species of the Client's configuration of a specific version. If the Client is newer - then Server will not know about its configuration and will not be able to configure it. 
+Ex: pmm-client:2.26, pmm-server:2.20 - not guaranteed to be working. 
+    
 
 ## Updating a Server
 
