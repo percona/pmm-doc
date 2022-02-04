@@ -1,4 +1,0 @@
-services:
-  - type: web
-    name: pmm-doc
-    env: docker
