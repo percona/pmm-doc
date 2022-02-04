@@ -32,7 +32,15 @@ From the left menu, select <i class="uil uil-database"></i> *DBaaS*.
 
 2. Enter values for the *Kubernetes Cluster Name* and *Kubeconfig file* in the corresponding fields.
 
-    ![!](../_images/PMM_DBaaS_Kubernetes_Cluster_Details.jpg)
+    ![!](../_images/PMM_DBaaS_Kubernetes_Cluster_Details.png)
+
+    !!! note alert alert-info ""
+        For a Kubernetes cluster, when using Amazon Elastic Kubernetes Service (EKS) and the *kubeconfig file* does not contain the AWS 
+        access key ID and AWS secret access key. Select the *Using Amazon Elastic Kubernetes Service (EKS)* 
+        checkbox and enter the access key ID and secret access key in the respective fields.
+        For information on obtaining these, see the [AWS documentation].
+
+    ![!](../_images/PMM_DBaaS_Kubernetes_Cluster_EKS.png)
 
 3. Click *Register*.
 
@@ -151,7 +159,7 @@ To monitor a DB cluster, set up a [public address](../how-to/configure.md#public
     ![!](../_images/PMM_DBaaS_DB_Cluster_Created.png)
 
     - *Name*: The cluster name.
-    - *Database type*: The cluster database type.
+    - *Database*: The cluster database type and version.
     - *Connection*:
         - *Host*: The hostname.
         - *Port*: The port number.
@@ -167,6 +175,7 @@ To monitor a DB cluster, set up a [public address](../how-to/configure.md#public
         - *ACTIVE*: The cluster is active.
         - *FAILED*: The cluster could not be created.
         - *DELETING*: The cluster is being deleted.
+        - *UPDATING*: The cluster is being updated.
 
 ### Delete a DB Cluster
 
@@ -215,7 +224,23 @@ A paused cluster can't be edited.
 
         ![!DBaaS Resume](../_images/PMM_DBaaS_DB_Cluster_Resume.gif)
 
+### Update a DB Cluster
+
+1. Select the *DB Cluster* tab.
+
+2. Identify the DB cluster to update.
+
+3. In the *Actions* column, open the <i class="uil uil-ellipsis-v"></i> menu and click *Update*:
+
+    ![!DBaaS Update](../_images/PMM_DBaaS_DB_Cluster_Update_menu.png)
+
+4. Confirm the update by clicking on *Update*, or abadon by clicking *Cancel*.
+
+    ![!DBaaS Update Confirmation](../_images/PMM_DBaaS_DB_Cluster_Update_confirmation.png)
+
 !!! seealso alert alert-info "See also"
     [Setting up a development environment for DBaaS](../setting-up/server/dbaas.md)
 
 [ALPHA]: https://en.wikipedia.org/wiki/Software_release_life_cycle#Alpha
+[Amazon Elastic Kubernetes Service (EKS)]: https://aws.amazon.com/eks/
+[AWS documentation]: https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html

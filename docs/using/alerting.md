@@ -52,6 +52,7 @@ Before you can get alerts, you must [activate Integrated Alerting](#activate-int
             - *CRAM-MD5*
         - *Username*: Username for SMTP Auth using CRAM-MD5, LOGIN and PLAIN.
         - *Password*: Password for SMTP Auth using CRAM-MD5, LOGIN and PLAIN.
+        - *Require TLS*: The SMTP TLS requirement. Some SMTP servers may require enabling this option e.g. Gmail.
 
     1. For *Slack*, enter a value for *URL*, the Slack webhook URL to use.
 
@@ -91,6 +92,22 @@ Before you can get alerts, you must [activate Integrated Alerting](#activate-int
             - Service key:
         - Slack:
             - Channel:
+        - Webhook:
+            - URL:
+            - Authorization type: Basic
+                - Username (optional):
+                - Password (optional):
+            - Authorization type: Bearer Token
+                - Bearer Token (optional):
+            - Authorization type: None
+            - Use TLS
+                - CA Certificate (optional):
+                - Certificate (optional):
+                - Certificate Key (optional):
+                - Server Name (optional):
+                - Skip TLS verification:
+            - Notify about resolved alerts:
+            - Maximum number of alerts to include in message (0 to include all):
 
 1. Click *Add* to add the notification channel, or *Cancel* to abort the operation.
 

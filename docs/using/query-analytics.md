@@ -135,6 +135,28 @@ The *Details* tab contains a *Query time distribution* bar (only for MySQL datab
 
 - Each row in the table is a metric. The contents depends on the chosen dimension.
 
+For PostgreSQL queries (when using *pg_stat_monitor*) the top query will also be shown in the details section if the query was called by an outer query.
+
+![!image](../_images/PMM_Query_Analytics_Tabs_Details_TopQuery.png)
+
+Other usefull metrics (when using *pg_stat_monitor*) to monitor PostgreSQL Server performance are [Histograms](https://github.com/percona/pg_stat_monitor/blob/master/docs/USER_GUIDE.md#histogram). 
+*Histograms* provide more explicit information about number of queries for fingerprint (queryid). Ranges are from 0 seconds up to 100 seconds.  
+
+Ranges (numbers are in miliseconds):  
+    0 - 3  
+    3 - 10  
+    10 - 31  
+    31 - 100  
+    100 - 316  
+    316 - 1000  
+    1000 - 3162  
+    3162 - 10000  
+    10000 - 31622  
+    31622 - 100000
+
+Here is picture of *histogram* in graph:
+![!image](../_images/PMM_Query_Analytics_Tabs_Details_Histogram.png)
+
 ### Examples Tab
 
 (For *Query* dimension.)
@@ -175,6 +197,14 @@ The *Explain* tab shows the `explain` output for the selected query, in Classic 
 The *Tables* tab shows information on the tables and indexes involved in the selected query.
 
 ![!image](../_images/PMM_Query_Analytics_Tabs_Tables.jpg)
+
+### Plan Tab
+
+(For *Query* dimension.)
+
+The *Plan* tab shows the plan for PostgreSQL queries (only available when using *pg_stat_monitor*).
+
+![!image](../_images/PMM_Query_Analytics_Tabs_Plan.png)
 
 ## Query Analytics for MongoDB
 
