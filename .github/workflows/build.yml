@@ -56,7 +56,7 @@ jobs:
         run: |
           PATH=$PATH:_resources/bin mike deploy 2.x -b preview -p
           mike set-default 2.x -b preview -p
-          mike retitle 2.x "PMM2 (LATEST)" -b preview  -p
+          mike retitle 2.x "PMM2 (LATEST)" -b preview -p
 
       - name: Install Node.js 14.x
         uses: percona-platform/setup-node@v2

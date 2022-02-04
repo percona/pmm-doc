@@ -69,7 +69,7 @@ mindmapDiagram {
 @endmindmap
 ```
 
-??? note alert alert-info "Full section map (click to show/hide)"
+??? note alert alert-info "Full section map v2 (click to show/hide)"
 
   <img src="_images/site-nav.svg" />
 
