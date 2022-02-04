@@ -70,8 +70,9 @@ mindmapDiagram {
 ```
 
 ??? note alert alert-info "Full section map v2 (click to show/hide)"
-
-  <img src="_images/site-nav.svg" />
+  <p>
+    <img src="_images/site-nav.svg" />
+  </p>
 
 [percona_services]: https://www.percona.com/services
 [community]: https://www.percona.com/forums/questions-discussions/percona-monitoring-and-management
