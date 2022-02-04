@@ -69,10 +69,10 @@ mindmapDiagram {
 @endmindmap
 ```
 
-??? note alert alert-info "Full section map v2 (click to show/hide)"
-  <p>
-    <img src="_images/site-nav.svg" />
-  </p>
+??? note alert alert-info "Full section map (click to show/hide)"
+    <p>
+      <img src="_images/site-nav.svg" />
+    </p>
 
 [percona_services]: https://www.percona.com/services
 [community]: https://www.percona.com/forums/questions-discussions/percona-monitoring-and-management
