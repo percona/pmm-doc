@@ -137,10 +137,6 @@ View the site at <http://0.0.0.0:8000>
 
         - `grafana-dashboards-descriptions.py`: Script to extract dashboard descriptions from <https://github.com/percona/grafana-dashboards/>.
 
-        - `plantuml`: Wrapper script for running PlantUML.
-
-        - `plantuml.jar`: Copy of the PlantUML Java file (needed for Netlify builds).
-
     - `templates`: Stylesheet for PDF output (used by [mkdocs-with-pdf](https://github.com/orzih/mkdocs-with-pdf) extension).
 
     - `theme`:
