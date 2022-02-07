@@ -362,7 +362,7 @@ For example, if you want all collectors except `topmetrics`, specify:
 
 ###### Limit dbStats, collStats and indexStats
 
-By default, PMM decides the limit for the number of collections to monitor for the collStats and indexStats collectors.
+By default, PMM decides the limit for the number of collections to monitor the collStats and indexStats collectors.
 
 If you decide to set another limit you could do that with `--max-collections-limit` parameter.
 
