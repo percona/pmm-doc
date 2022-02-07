@@ -2,7 +2,7 @@
 
 There are different ways to install PMM Client on a node and register it with PMM Server. Choose from:
 
-- [Docker](#docker): Run PMM Client as a Docker container, either directly or with Docker compose.
+- [Docker](#docker): Run PMM Client as a Docker container.
 
 - [Package manager](#package-manager):
     - On Debian or Red Hat Linux, install `percona-release` and use a Linux package manager (`apt`/`dnf`) to install PMM Client.
@@ -437,11 +437,9 @@ pmm-admin remove <service-type> <service-name>
 !!! seealso alert alert-info "See also"
     - [Percona release]
     - [PMM Client architecture](../../details/architecture.md#pmm-client)
-    - Thanks to [paskal] for original Docker compose files
 
 [Debian 10 (Buster)]: https://www.percona.com/downloads/pmm2/{{release}}/binary/debian/buster/
 [Debian 9 (Stretch)]: https://www.percona.com/downloads/pmm2/{{release}}/binary/debian/stretch/
-[Docker compose]: https://docs.docker.com/compose/
 [Docker]: https://docs.docker.com/get-docker/
 [paskal]: https://gist.github.com/paskal/48f10a0a584f4849be6b0889ede9262b
 [Percona Monitoring and Management 2 download]: https://www.percona.com/downloads/pmm2/
