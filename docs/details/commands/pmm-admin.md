@@ -370,7 +370,7 @@ Set the value of the parameter `--max-collections-limit` to:
 
 - 0: which indicates that collStats and indexStats can handle unlimited collections.
 - n, which indicates that collStats and indexStats can handle <=n collections. If the limit is crossed - exporter stops collecting monitoring data for the collStats and indexStats collectors.
-- -1 (default) doesn't need to be explicitly set, it indicates that PMM decides how many collections it would monitor, currently <=200 (subject to change).
+- -1 (default) doesn't need to be explicitly set. It indicates that PMM decides how many collections it would monitor, currently <=200 (subject to change).
 
 
 To further limit collections to monitor, enable collStats and indexStats for some databases or collections:
