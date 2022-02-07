@@ -441,7 +441,6 @@ pmm-admin remove <service-type> <service-name>
 [Debian 10 (Buster)]: https://www.percona.com/downloads/pmm2/{{release}}/binary/debian/buster/
 [Debian 9 (Stretch)]: https://www.percona.com/downloads/pmm2/{{release}}/binary/debian/stretch/
 [Docker]: https://docs.docker.com/get-docker/
-[paskal]: https://gist.github.com/paskal/48f10a0a584f4849be6b0889ede9262b
 [Percona Monitoring and Management 2 download]: https://www.percona.com/downloads/pmm2/
 [Percona release]: https://www.percona.com/doc/percona-repo-config/percona-release.html
 [Percona software support life cycle]: https://www.percona.com/services/policies/percona-software-support-lifecycle#pt
