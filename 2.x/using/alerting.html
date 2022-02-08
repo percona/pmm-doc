@@ -152,45 +152,18 @@
 <p>Under <em>Technical preview features</em>, turn on <em>Integrated Alerting</em>.</p>
 </li>
 <li>
-<p>Click <em>Apply changes</em>. A new <em>Communication</em> tab will appear.</p>
+<p>Click <em>Apply changes</em>. This adds a new <em>Communication</em> tab to the <em>Settings</em> menu.</p>
 </li>
 </ol>
-<h3 id="set-up-a-communication-channel">Set up a communication channel<a class="headerlink" href="#set-up-a-communication-channel" title="Permanent link">&para;</a></h3>
+<h3 id="set-up-communication-channel">Set up communication channel<a class="headerlink" href="#set-up-communication-channel" title="Permanent link">&para;</a></h3>
 <ol>
+<li>Open the new <em>Communication</em> tab under <i class="uil uil-cog"></i> <em>Configuration</em> → <i class="uil uil-setting"></i> <em>Settings</em>.</li>
+<li>Choose whether you want to configure <em>Email</em> or <em>Slack</em> alerting:</li>
+<li>For <em>Email</em>, fill in the details of your SMTP email server, enforce TLS encryption if your SMTP server requires this, then click <em>Test</em> to confirm that you can connect to the SMTP server with the current settings. </li>
+<li>For <em>Slack</em>, specify the Slack webhook URL to use.</li>
+<li>Click <em>Apply changes</em> to save your settings.</li>
 <li>
-<p>When the <em>Communication</em> tab appears, select it.</p>
-</li>
-<li>
-<p>Select the tab for an alert method, <em>Email</em> or <em>Slack</em>.</p>
-<ol>
-<li>
-<p>For <em>Email</em>, enter values to define the SMTP email server</p>
-<ul>
-<li><em>Server Address</em>: The default SMTP smarthost used for sending emails, including port number.</li>
-<li><em>Hello</em>: The default hostname to identify to the SMTP server.</li>
-<li><em>From</em>: The sender&rsquo;s email address.</li>
-<li><em>Auth type</em>: Authentication type. Choose from:<ul>
-<li><em>None</em></li>
-<li><em>Plain</em></li>
-<li><em>Login</em></li>
-<li><em>CRAM-MD5</em></li>
-</ul>
-</li>
-<li><em>Username</em>: Username for SMTP Auth using CRAM-MD5, LOGIN and PLAIN.</li>
-<li><em>Password</em>: Password for SMTP Auth using CRAM-MD5, LOGIN and PLAIN.</li>
-<li><em>Require TLS</em>: The SMTP TLS requirement. Some SMTP servers may require enabling this option e.g. Gmail.</li>
-</ul>
-</li>
-<li>
-<p>For <em>Slack</em>, enter a value for <em>URL</em>, the Slack webhook URL to use.</p>
-</li>
-</ol>
-</li>
-<li>
-<p>Click <em>Apply changes</em>.</p>
-</li>
-<li>
-<p>From the left menu, select <i class="uil uil-bell"></i> <em>Alerting</em> → <i class="uil uil-list-ul"></i> <em>Integrated Alerting</em>. The default tab of the <em>Integrated Alerting</em> page lists alerts, if any are set up.</p>
+<p>From the left menu, select <i class="uil uil-bell"></i> <em>Alerting</em> → <i class="uil uil-list-ul"></i> <em>Integrated Alerting</em>. The default tab of the <em>Integrated Alerting</em> page lists alerts (if set up).</p>
 <p><div class="lightgallery"><a data-sub-html="" href="../_images/PMM_Integrated_Alerting_Alerts.jpg"><img alt="" src="../_images/PMM_Integrated_Alerting_Alerts.jpg" /></a></div></p>
 </li>
 </ol>
@@ -364,7 +337,7 @@
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-12-14
+            <i class="uil uil-refresh"></i> Page updated 2022-02-08
         </li>
         
     </ul>
@@ -738,6 +711,32 @@
 
 <li class="toctree-l3">
     <a class="reference internal" href="../details/dashboards/dashboard-inventory.html">PMM</a>
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-env-overview.html">Environment Overview</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-environent-summary.html">Environment Summary</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../details/dashboards/dashboard-cluster-summary.html">DBaas</a>
 
 
 
@@ -1127,6 +1126,12 @@
 
 
 <ul class="toctree" id="toctree">
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/2.26.0.html">PMM 2.26.0</a>
+
+
 
 
 <li class="toctree-l2">
