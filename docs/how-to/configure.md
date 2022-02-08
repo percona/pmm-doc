@@ -118,16 +118,13 @@ The [Security Threat Tool] performs a range of security-related checks on a regi
 !!! hint alert alert-success "Tip"
     To see the results of checks, select *{{icon.checks}} Security Checks* to open the *Security Checks/Failed Checks* dashboard, and select the *Failed Checks* tab.
 
-Checks are re-fetched and re-run at intervals. There are three named intervals:
+Checks are re-fetched and re-run at intervals. There are three customizable check intervals:
 
 | Interval name                 | Value (hours)  |
 |------------------------------ |:--------------:|
 | *Rare interval*               | 78             |
 | *Standard interval* (default) | 24             |
 | *Frequent interval*           | 4              |
-
-!!! note alert alert-primary ""
-    The values for each named interval are fixed.
 
 Checks use the *Standard* interval by default. To change a check's interval:
 
