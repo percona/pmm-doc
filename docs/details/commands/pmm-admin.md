@@ -407,7 +407,7 @@ If `--stats-collections=db1,db2.col1` then the collectors are run as follows:
 |db1| All the collections|
 |db2| **Only** for collection col1|
 
-Enable all collectors and limit monitoring for `dbstats` and `indexstats` to all collections in `db1` and `col1` collection in `db2`, without limiting `max-collections-limit` for a number of collections in `db1`:
+Enable all collectors and limit monitoring for `dbstats`, `indexstats`, `collstats` and `topmetrics` for all collections in `db1` and `col1` collection in `db2`, without limiting `max-collections-limit` for a number of collections in `db1`:
 
 `pmm-admin add mongodb --username=admin --password=admin_pass --enable-all-collectors --max-collections-limit=0 --stats-collections=db1,db2.col1 mongodb_srv_1 127.0.0.1:27017`
 
