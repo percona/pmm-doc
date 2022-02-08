@@ -135,6 +135,11 @@
 </table>
 
 <p>Percona Monitoring and Management (PMM) is a free and open-source platform for managing and monitoring MySQL, MongoDB, and PostgreSQL performance.</p>
+<div class="admonition caution alert alert-warning">
+<p class="admonition-title">Important note for users considering docker way upgrade to PMM 2.25.0</p>
+<p>If you upgrade from a PMM version less than or equal to 2.23.0 using docker, it will fail if your PMM does not have external access (access to &lsquo;repo. percona.com&rsquo;). Thus, it is recommended to upgrade to PMM 2.26.0 instead.</p>
+</div>
+<p>See <a href="https://jira.percona.com/browse/PMM-9416">PMM-9416</a> for more details. </p>
 <h2 id="release-highlights">Release Highlights<a class="headerlink" href="#release-highlights" title="Permanent link">&para;</a></h2>
 <ul>
 <li>
@@ -250,7 +255,7 @@ Make sure to replace the user name ec2-user used in this document with admin.</p
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-12-14
+            <i class="uil uil-refresh"></i> Page updated 2022-02-08
         </li>
         
     </ul>
