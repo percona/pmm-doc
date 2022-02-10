@@ -216,5 +216,15 @@ In contrast, MongoDB uses the concept of a document where all essential informat
 
 Query Analytics can monitor MongoDB queries. Although MongoDB is not a relational database management system, you analyze its databases and collections in the same interface using the same tools.
 
+## Sharing a link to Query Analytics
+
+To share a link to Query Analytics use the *Copy Link* button. This will copy a link to the clipboard with all relevant information so when the link is opened it shows exactly as you were seeing. This will copy information such as the selected query, table page, selected filters, details tab and time range.
+
+!!! caution alert alert-warning ""
+    If you copy the link from the browser's address bar or use the standard functionality from Grafana to share a dashboard, Query Analytics might not open with the same information you were seeing at the moment of sharing.
+    By default Grafana uses relative time range and not an absolute one, so when the copied link is opened it will have a different time.
+
+![!image](../_images/PMM_Query_Analytics_Share_Link.png)
+
 [SLOW_QUERY_LOG]: ../setting-up/client/mysql.md#slow-query-log
 [PERFORMANCE_SCHEMA]: ../setting-up/client/mysql.md#performance-schema
