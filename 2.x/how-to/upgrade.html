@@ -118,8 +118,10 @@
                         <h1 id="upgrade">Upgrade<a class="headerlink" href="#upgrade" title="Permanent link">&para;</a></h1>
 <div class="admonition caution alert alert-warning">
 <p class="admonition-title">Important</p>
-<p>Upgrade PMM Server before upgrading PMM Clients.</p>
 </div>
+<p>Upgrade the PMM Server before you upgrade the PMM Client.
+Ensure that the PMM Server version is higher than or equal to the PMM Client version. Otherwise, there might be configuration issues, thus leading to failure in the client-server communication as PMM Server might not be able to identify all the parameters in the configuration.</p>
+<p>For example, for a PMM Server version 2.25.0, the PMM Client version should be 2.25.0 or 2.24.0. If the PMM Client version is 2.26.0, PMM might not work as expected.</p>
 <h2 id="updating-a-server">Updating a Server<a class="headerlink" href="#updating-a-server" title="Permanent link">&para;</a></h2>
 <p>Client and server components are installed and updated separately.</p>
 <p>PMM Server can run natively, as a Docker image, a virtual appliance, or an AWS cloud instance. Each has its own installation and update steps.</p>
@@ -156,7 +158,7 @@
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2022-02-08
+            <i class="uil uil-refresh"></i> Page updated 2022-02-11
         </li>
         
     </ul>
