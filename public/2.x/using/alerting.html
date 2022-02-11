@@ -1,0 +1,2988 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentation">
+      
+      
+        <meta name="author" content="Percona LLC">
+      
+      
+        <link rel="canonical" href="https://pmm-doc.netlify.app/2.x/using/alerting.html">
+      
+      <link rel="icon" href="../_images/percona-favicon.ico">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.5">
+    
+    
+      
+        <title>Integrated Alerting - Percona Monitoring and Management</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ee0f47ba.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.e6a45f82.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.3/css/line.css">
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+    
+      <link rel="stylesheet" href="../css/percona.css">
+    
+      <link rel="stylesheet" href="../css/lightgallery.min.css">
+    
+    <script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="percona-light" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#integrated-alerting" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-component="outdated" hidden>
+        <aside class="md-banner md-banner--warning">
+          
+        </aside>
+      </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../index.html" title="Percona Monitoring and Management" class="md-header__button md-logo" aria-label="Percona Monitoring and Management" data-md-component="logo">
+      
+  <img src="../_images/percona-logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Percona Monitoring and Management
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Integrated Alerting
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/percona/pmm-doc/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    percona/pmm-doc
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../index.html" title="Percona Monitoring and Management" class="md-nav__button md-logo" aria-label="Percona Monitoring and Management" data-md-component="logo">
+      
+  <img src="../_images/percona-logo.svg" alt="logo">
+
+    </a>
+    Percona Monitoring and Management
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/percona/pmm-doc/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    percona/pmm-doc
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        Welcome
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../setting-up/index.html">Setting up</a>
+          
+            <label for="__nav_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Setting up" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Setting up
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" type="checkbox" id="__nav_2_1" >
+      
+      
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../setting-up/server/index.html">Server</a>
+          
+            <label for="__nav_2_1">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Server" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          Server
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../setting-up/server/network.html" class="md-nav__link">
+        Network
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../setting-up/server/docker.html" class="md-nav__link">
+        Docker
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../setting-up/server/virtual-appliance.html" class="md-nav__link">
+        Virtual Appliance
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../setting-up/server/aws.html" class="md-nav__link">
+        AWS Marketplace
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../setting-up/server/easy-install.html" class="md-nav__link">
+        Easy-install script
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../setting-up/server/dbaas.html" class="md-nav__link">
+        DBaaS
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" >
+      
+      
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../setting-up/client/index.html">Client</a>
+          
+            <label for="__nav_2_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Client" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Client
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../setting-up/client/mysql.html" class="md-nav__link">
+        MySQL
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../setting-up/client/mongodb.html" class="md-nav__link">
+        MongoDB
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../setting-up/client/postgresql.html" class="md-nav__link">
+        PostgreSQL
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../setting-up/client/proxysql.html" class="md-nav__link">
+        ProxySQL
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../setting-up/client/aws.html" class="md-nav__link">
+        Amazon RDS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../setting-up/client/azure.html" class="md-nav__link">
+        Microsoft Azure
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../setting-up/client/google.html" class="md-nav__link">
+        Google Cloud Platform
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../setting-up/client/linux.html" class="md-nav__link">
+        Linux
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../setting-up/client/external.html" class="md-nav__link">
+        External Services
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../setting-up/client/haproxy.html" class="md-nav__link">
+        HAProxy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../setting-up/client/remote.html" class="md-nav__link">
+        Remote instances
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="index.html">Using</a>
+          
+            <label for="__nav_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Using" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Using
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="interface.html" class="md-nav__link">
+        User Interface
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Integrated Alerting
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="alerting.html" class="md-nav__link md-nav__link--active">
+        Integrated Alerting
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#before-you-start" class="md-nav__link">
+    Before you start
+  </a>
+  
+    <nav class="md-nav" aria-label="Before you start">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#activate-integrated-alerting" class="md-nav__link">
+    Activate Integrated Alerting
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#set-up-a-communication-channel" class="md-nav__link">
+    Set up a communication channel
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#add-a-notification-channel" class="md-nav__link">
+    Add a Notification Channel
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#add-an-alert-rule" class="md-nav__link">
+    Add an Alert Rule
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#add-an-alert-rule-template" class="md-nav__link">
+    Add an Alert Rule Template
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="backup.html" class="md-nav__link">
+        Backup and Restore
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="query-analytics.html" class="md-nav__link">
+        Query Analytics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="dbaas.html" class="md-nav__link">
+        DBaaS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="security-threat-tool.html" class="md-nav__link">
+        Security Threat Tool
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../how-to/index.html">How to</a>
+          
+            <label for="__nav_4">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="How to" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          How to
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to/configure.html" class="md-nav__link">
+        Configure
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to/upgrade.html" class="md-nav__link">
+        Upgrade
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to/secure.html" class="md-nav__link">
+        Secure
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to/optimize.html" class="md-nav__link">
+        Optimize
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to/annotate.html" class="md-nav__link">
+        Annotate
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to/render-dashboard-images.html" class="md-nav__link">
+        Render dashboard images
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to/extend-metrics.html" class="md-nav__link">
+        Extend Metrics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to/troubleshoot.html" class="md-nav__link">
+        Troubleshoot
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../details/index.html">Details</a>
+          
+            <label for="__nav_5">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Details" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Details
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../details/architecture.html" class="md-nav__link">
+        Architecture
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../details/interface.html" class="md-nav__link">
+        UI components
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_3" type="checkbox" id="__nav_5_3" >
+      
+      
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../details/dashboards/index.html">Dashboards</a>
+          
+            <label for="__nav_5_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Dashboards" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_3">
+          <span class="md-nav__icon md-icon"></span>
+          Dashboards
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_3_1" type="checkbox" id="__nav_5_3_1" >
+      
+      
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../details/dashboards/dashboard-home.html">Insight</a>
+          
+            <label for="__nav_5_3_1">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Insight" data-md-level="3">
+        <label class="md-nav__title" for="__nav_5_3_1">
+          <span class="md-nav__icon md-icon"></span>
+          Insight
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../details/dashboards/dashboard-advanced-data-exploration.html" class="md-nav__link">
+        Advanced Data Exploration
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../details/dashboards/dashboard-victoriametrics.html" class="md-nav__link">
+        VictoriaMetrics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../details/dashboards/dashboard-victoriametrics-agents-overview.html" class="md-nav__link">
+        VictoriaMetrics Agents Overview
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../details/dashboards/dashboard-inventory.html" class="md-nav__link">
+        PMM
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_3_3" type="checkbox" id="__nav_5_3_3" >
+      
+      
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../details/dashboards/dashboard-cpu-utilization-details.html">OS Dashboards</a>
+          
+            <label for="__nav_5_3_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="OS Dashboards" data-md-level="3">
+        <label class="md-nav__title" for="__nav_5_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          OS Dashboards
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../details/dashboards/dashboard-disk-details.html" class="md-nav__link">
+        Disk Details
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../details/dashboards/dashboard-network-details.html" class="md-nav__link">
+        Network Details
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../details/dashboards/dashboard-memory-details.html" class="md-nav__link">
+        Memory Details
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../details/dashboards/dashboard-node-temperature-details.html" class="md-nav__link">
+        Node Temperature Details
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../details/dashboards/dashboard-nodes-compare.html" class="md-nav__link">
+        Nodes Compare
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../details/dashboards/dashboard-nodes-overview.html" class="md-nav__link">
+        Nodes Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../details/dashboards/dashboard-node-summary.html" class="md-nav__link">
+        Node Summary
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../details/dashboards/dashboard-numa-details.html" class="md-nav__link">
+        NUMA Details
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../details/dashboards/dashboard-processes-details.html" class="md-nav__link">
+        Processes Details
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_3_4" type="checkbox" id="__nav_5_3_4" >
+      
+      
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../details/dashboards/dashboard-prometheus-exporter-status.html">Prometheus Dashboards</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Prometheus Dashboards" data-md-level="3">
+        <label class="md-nav__title" for="__nav_5_3_4">
+          <span class="md-nav__icon md-icon"></span>
+          Prometheus Dashboards
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../details/dashboards/dashboard-prometheus-exporters-overview.html" class="md-nav__link">
+        Prometheus Exporters Overview
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_3_5" type="checkbox" id="__nav_5_3_5" >
+      
+      
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../details/dashboards/dashboard-mysql-amazon-aurora-details.html">MySQL Dashboards</a>
+          
+            <label for="__nav_5_3_5">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="MySQL Dashboards" data-md-level="3">
+        <label class="md-nav__title" for="__nav_5_3_5">
+          <span class="md-nav__icon md-icon"></span>
+          MySQL Dashboards
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../details/dashboards/dashboard-mysql-command-handler-counters-compare.html" class="md-nav__link">
+        MySQL Command/Handler Counters Compare
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../details/dashboards/dashboard-mysql-innodb-compression-details.html" class="md-nav__link">
+        MySQL InnoDB Compression Details
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../details/dashboards/dashboard-mysql-innodb-details.html" class="md-nav__link">
+        MySQL InnoDB Details
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../details/dashboards/dashboard-mysql-myisam-aria-details.html" class="md-nav__link">
+        MySQL MyISAM/Aria Details
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../details/dashboards/dashboard-mysql-myrocks-details.html" class="md-nav__link">
+        MySQL MyRocks Details
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../details/dashboards/dashboard-mysql-instance-summary.html" class="md-nav__link">
+        MySQL Instance Summary
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../details/dashboards/dashboard-mysql-instances-compare.html" class="md-nav__link">
+        MySQL Instances Compare
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../details/dashboards/dashboard-mysql-instances-overview.html" class="md-nav__link">
+        MySQL Instances Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../details/dashboards/dashboard-mysql-wait-event-analyses-details.html" class="md-nav__link">
+        MySQL Wait Event Analyses Details
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../details/dashboards/dashboard-mysql-performance-schema-details.html" class="md-nav__link">
+        MySQL Performance Schema Details
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../details/dashboards/dashboard-mysql-query-response-time-details.html" class="md-nav__link">
+        MySQL Query Response Time Details
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../details/dashboards/dashboard-mysql-replication-summary.html" class="md-nav__link">
+        MySQL Replication Summary
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../details/dashboards/dashboard-mysql-group-replication-summary.html" class="md-nav__link">
+        MySQL Group Replication Summary
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../details/dashboards/dashboard-mysql-table-details.html" class="md-nav__link">
+        MySQL Table Details
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../details/dashboards/dashboard-mysql-user-details.html" class="md-nav__link">
+        MySQL User Details
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../details/dashboards/dashboard-mysql-tokudb-details.html" class="md-nav__link">
+        MySQL TokuDB Details
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_3_6" type="checkbox" id="__nav_5_3_6" >
+      
+      
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../details/dashboards/dashboard-mongodb-cluster-summary.html">MongoDB Dashboards</a>
+          
+            <label for="__nav_5_3_6">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="MongoDB Dashboards" data-md-level="3">
+        <label class="md-nav__title" for="__nav_5_3_6">
+          <span class="md-nav__icon md-icon"></span>
+          MongoDB Dashboards
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../details/dashboards/dashboard-mongodb-instance-summary.html" class="md-nav__link">
+        MongoDB Instance Summary
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../details/dashboards/dashboard-mongodb-instances-overview.html" class="md-nav__link">
+        MongoDB Instances Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../details/dashboards/dashboard-mongodb-instances-compare.html" class="md-nav__link">
+        MongoDB Instances Compare
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../details/dashboards/dashboard-mongodb-replset-summary.html" class="md-nav__link">
+        MongoDB ReplSet Summary
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../details/dashboards/dashboard-mongodb-inmemory-details.html" class="md-nav__link">
+        MongoDB InMemory Details
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../details/dashboards/dashboard-mongodb-mmapv1-details.html" class="md-nav__link">
+        MongoDB MMAPv1 Details
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../details/dashboards/dashboard-mongodb-wiredtiger-details.html" class="md-nav__link">
+        MongoDB WiredTiger Details
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_3_7" type="checkbox" id="__nav_5_3_7" >
+      
+      
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../details/dashboards/dashboard-postgresql-instances-overview.html">PostgreSQL Dashboards</a>
+          
+            <label for="__nav_5_3_7">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="PostgreSQL Dashboards" data-md-level="3">
+        <label class="md-nav__title" for="__nav_5_3_7">
+          <span class="md-nav__icon md-icon"></span>
+          PostgreSQL Dashboards
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../details/dashboards/dashboard-postgresql-instance-summary.html" class="md-nav__link">
+        PostgreSQL Instance Summary
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../details/dashboards/dashboard-postgresql-instances-compare.html" class="md-nav__link">
+        PostgreSQL Instances Compare
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../details/dashboards/dashboard-proxysql-instance-summary.html" class="md-nav__link">
+        ProxySQL Dashboards
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_3_9" type="checkbox" id="__nav_5_3_9" >
+      
+      
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../details/dashboards/dashboard-pxc-galera-node-summary.html">HA Dashboards</a>
+          
+            <label for="__nav_5_3_9">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="HA Dashboards" data-md-level="3">
+        <label class="md-nav__title" for="__nav_5_3_9">
+          <span class="md-nav__icon md-icon"></span>
+          HA Dashboards
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../details/dashboards/dashboard-pxc-galera-cluster-summary.html" class="md-nav__link">
+        PXC/Galera Cluster Summary
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../details/dashboards/dashboard-pxc-galera-nodes-compare.html" class="md-nav__link">
+        PXC/Galera Nodes Compare
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../details/dashboards/dashboard-haproxy-instance-summary.html" class="md-nav__link">
+        HAProxy Instance Summary
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_4" type="checkbox" id="__nav_5_4" >
+      
+      
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../details/commands/index.html">Commands</a>
+          
+            <label for="__nav_5_4">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Commands" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_4">
+          <span class="md-nav__icon md-icon"></span>
+          Commands
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../details/commands/pmm-admin.html" class="md-nav__link">
+        pmm-admin - PMM Administration Tool
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../details/commands/pmm-agent.html" class="md-nav__link">
+        pmm-agent - PMM Client agent
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../details/api.html" class="md-nav__link">
+        API
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../details/victoria-metrics.html" class="md-nav__link">
+        VictoriaMetrics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../details/glossary.html" class="md-nav__link">
+        Glossary
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../faq.html" class="md-nav__link">
+        FAQ
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../release-notes/index.html">Release Notes</a>
+          
+            <label for="__nav_7">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Release Notes" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Release Notes
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../release-notes/2.25.0.html" class="md-nav__link">
+        PMM 2.25.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../release-notes/2.24.0.html" class="md-nav__link">
+        PMM 2.24.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../release-notes/2.23.0.html" class="md-nav__link">
+        PMM 2.23.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../release-notes/2.22.0.html" class="md-nav__link">
+        PMM 2.22.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../release-notes/2.21.0.html" class="md-nav__link">
+        PMM 2.21.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../release-notes/2.20.0.html" class="md-nav__link">
+        PMM 2.20.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../release-notes/2.19.0.html" class="md-nav__link">
+        PMM 2.19.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../release-notes/2.18.0.html" class="md-nav__link">
+        PMM 2.18.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../release-notes/2.17.0.html" class="md-nav__link">
+        PMM 2.17.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../release-notes/2.16.0.html" class="md-nav__link">
+        PMM 2.16.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../release-notes/2.15.1.html" class="md-nav__link">
+        PMM 2.15.1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../release-notes/2.15.0.html" class="md-nav__link">
+        PMM 2.15.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../release-notes/2.14.0.html" class="md-nav__link">
+        PMM 2.14.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../release-notes/2.13.0.html" class="md-nav__link">
+        PMM 2.13.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../release-notes/2.12.0.html" class="md-nav__link">
+        PMM 2.12.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../release-notes/2.11.1.html" class="md-nav__link">
+        PMM 2.11.1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../release-notes/2.11.0.html" class="md-nav__link">
+        PMM 2.11.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../release-notes/2.10.1.html" class="md-nav__link">
+        PMM 2.10.1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../release-notes/2.10.0.html" class="md-nav__link">
+        PMM 2.10.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../release-notes/2.9.1.html" class="md-nav__link">
+        PMM 2.9.1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../release-notes/2.9.0.html" class="md-nav__link">
+        PMM 2.9.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../release-notes/2.8.0.html" class="md-nav__link">
+        PMM 2.8.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../release-notes/2.7.0.html" class="md-nav__link">
+        PMM 2.7.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../release-notes/2.6.1.html" class="md-nav__link">
+        PMM 2.6.1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../release-notes/2.6.0.html" class="md-nav__link">
+        PMM 2.6.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../release-notes/2.5.0.html" class="md-nav__link">
+        PMM 2.5.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../release-notes/2.4.0.html" class="md-nav__link">
+        PMM 2.4.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../release-notes/2.3.0.html" class="md-nav__link">
+        PMM 2.3.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../release-notes/2.2.2.html" class="md-nav__link">
+        PMM 2.2.2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../release-notes/2.2.1.html" class="md-nav__link">
+        PMM 2.2.1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../release-notes/2.2.0.html" class="md-nav__link">
+        PMM 2.2.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../release-notes/2.1.0.html" class="md-nav__link">
+        PMM 2.1.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../release-notes/2.0.1.html" class="md-nav__link">
+        PMM 2.0.1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../release-notes/2.0.0.html" class="md-nav__link">
+        PMM 2.0.0
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#before-you-start" class="md-nav__link">
+    Before you start
+  </a>
+  
+    <nav class="md-nav" aria-label="Before you start">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#activate-integrated-alerting" class="md-nav__link">
+    Activate Integrated Alerting
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#set-up-a-communication-channel" class="md-nav__link">
+    Set up a communication channel
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#add-a-notification-channel" class="md-nav__link">
+    Add a Notification Channel
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#add-an-alert-rule" class="md-nav__link">
+    Add an Alert Rule
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#add-an-alert-rule-template" class="md-nav__link">
+    Add an Alert Rule Template
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+<a href="https://github.com/percona/pmm-doc/edit/main/docs/using/alerting.md" title="Edit this page" class="md-content__button md-icon">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+</a>
+
+
+<h1 id="integrated-alerting">Integrated Alerting<a class="headerlink" href="#integrated-alerting" title="Permanent link">&para;</a></h1>
+<div class="admonition caution alert alert-warning">
+<p class="admonition-title">Caution</p>
+<p>Integrated Alerting is a <a href="../details/glossary.html#technical-preview">technical preview</a> and is subject to change.</p>
+</div>
+<p><em>Integrated Alerting</em> lets you know when certain system events occur.</p>
+<ul>
+<li>Alerts are generated when their criteria (<em>alert rules</em>) are met; an <em>alert</em> is the result of an <em>alert rule</em> expression evaluating to <em>true</em>.</li>
+<li>Alert rules are based on <em>alert rule templates</em>. We provide a default set of templates. You can also create your own.</li>
+</ul>
+<div class="admonition summary alert alert-info">
+<p class="admonition-title">Summary</p>
+<ul>
+<li><a href="#activate-integrated-alerting">Activate Integrated Alerting</a></li>
+<li><a href="#set-up-a-communication-channel">Set up a communication channel</a></li>
+<li><a href="#add-a-notification-channel">Add a notification channel</a></li>
+<li><a href="#add-an-alert-rule">Add an alert rule</a> (based on a built-in alert rule template)</li>
+<li>(Optional) <a href="#add-an-alert-rule-template">Create your own alert rule template</a></li>
+</ul>
+</div>
+<p>This short video shows how to activate and configure Integrated Alerting.</p>
+<video width="100%" controls>
+  <source src="../_images/Integrated-Alerting.mp4" type="video/mp4">
+  Your browser does not support playing this video.
+</video>
+
+<h2 id="before-you-start">Before you start<a class="headerlink" href="#before-you-start" title="Permanent link">&para;</a></h2>
+<p>Before you can get alerts, you must <a href="#activate-integrated-alerting">activate Integrated Alerting</a>, and <a href="#set-up-a-communication-channel">set up a <em>communication channel</em></a> (define how alerts should arrive, as emails or slack messages).</p>
+<h3 id="activate-integrated-alerting">Activate Integrated Alerting<a class="headerlink" href="#activate-integrated-alerting" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>Select <i class="uil uil-cog"></i> <em>Configuration</em> → <i class="uil uil-setting"></i> <em>Settings</em> → <em>Advanced Settings</em>.</p>
+</li>
+<li>
+<p>Under <em>Technical preview features</em>, turn on <em>Integrated Alerting</em>.</p>
+</li>
+<li>
+<p>Click <em>Apply changes</em>. A new <em>Communication</em> tab will appear.</p>
+</li>
+</ol>
+<h3 id="set-up-a-communication-channel">Set up a communication channel<a class="headerlink" href="#set-up-a-communication-channel" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>When the <em>Communication</em> tab appears, select it.</p>
+</li>
+<li>
+<p>Select the tab for an alert method, <em>Email</em> or <em>Slack</em>.</p>
+<ol>
+<li>
+<p>For <em>Email</em>, enter values to define the SMTP email server</p>
+<ul>
+<li><em>Server Address</em>: The default SMTP smarthost used for sending emails, including port number.</li>
+<li><em>Hello</em>: The default hostname to identify to the SMTP server.</li>
+<li><em>From</em>: The sender&rsquo;s email address.</li>
+<li><em>Auth type</em>: Authentication type. Choose from:<ul>
+<li><em>None</em></li>
+<li><em>Plain</em></li>
+<li><em>Login</em></li>
+<li><em>CRAM-MD5</em></li>
+</ul>
+</li>
+<li><em>Username</em>: Username for SMTP Auth using CRAM-MD5, LOGIN and PLAIN.</li>
+<li><em>Password</em>: Password for SMTP Auth using CRAM-MD5, LOGIN and PLAIN.</li>
+<li><em>Require TLS</em>: The SMTP TLS requirement. Some SMTP servers may require enabling this option e.g. Gmail.</li>
+</ul>
+</li>
+<li>
+<p>For <em>Slack</em>, enter a value for <em>URL</em>, the Slack webhook URL to use.</p>
+</li>
+</ol>
+</li>
+<li>
+<p>Click <em>Apply changes</em>.</p>
+</li>
+<li>
+<p>From the left menu, select <i class="uil uil-bell"></i> <em>Alerting</em> → <i class="uil uil-list-ul"></i> <em>Integrated Alerting</em>. The default tab of the <em>Integrated Alerting</em> page lists alerts, if any are set up.</p>
+<p><div class="lightgallery"><a data-sub-html="" href="../_images/PMM_Integrated_Alerting_Alerts.jpg"><img alt="" src="../_images/PMM_Integrated_Alerting_Alerts.jpg" /></a></div></p>
+</li>
+</ol>
+<div class="admonition note alert alert-primary">
+<ul>
+<li>The <em>Alerting</em> menu also lists <i class="uil uil-list-ul"></i> <em>Alert Rules</em> and <i class="uil uil-comment-alt-share"></i> <em>Notification Channels</em>. These are for Grafana&rsquo;s alerting functionality.</li>
+<li>PMM&rsquo;s <em>Integrated Alerting</em> is a customized and separate instance of the Prometheus Alertmanager, and distinct from Grafana&rsquo;s alerting functionality.</li>
+</ul>
+</div>
+<h2 id="add-a-notification-channel">Add a Notification Channel<a class="headerlink" href="#add-a-notification-channel" title="Permanent link">&para;</a></h2>
+<div class="admonition note alert alert-primary">
+<p>A <em>notification channel</em> is a specific instance of a <em>communication channel</em>. For example, for email, the communication channel defines a server, while the notification channel specifies recipients (one or more email addresses) who receive alerts sent via the email server.</p>
+</div>
+<ol>
+<li>
+<p>Select <i class="uil uil-bell"></i> <em>Alerting</em> → <i class="uil uil-list-ul"></i> <em>Integrated Alerting</em>.</p>
+</li>
+<li>
+<p>Select the <em>Notification Channels</em> tab.</p>
+<p><div class="lightgallery"><a data-sub-html="" href="../_images/PMM_Integrated_Alerting_Notification_Channels.jpg"><img alt="" src="../_images/PMM_Integrated_Alerting_Notification_Channels.jpg" /></a></div></p>
+</li>
+<li>
+<p>Click <i class="uil uil-plus-square"></i> <em>Add</em>.</p>
+</li>
+<li>
+<p>Fill in the details:</p>
+<p><div class="lightgallery"><a data-sub-html="" href="../_images/PMM_Integrated_Alerting_Notification_Channels_Add_Form.jpg"><img alt="" src="../_images/PMM_Integrated_Alerting_Notification_Channels_Add_Form.jpg" /></a></div></p>
+<ul>
+<li>Name:</li>
+<li>Type:<ul>
+<li>Email:<ul>
+<li>Addresses:</li>
+</ul>
+</li>
+<li>Pager Duty:<ul>
+<li>Routing key:</li>
+<li>Service key:</li>
+</ul>
+</li>
+<li>Slack:<ul>
+<li>Channel:</li>
+</ul>
+</li>
+<li>Webhook:<ul>
+<li>URL:</li>
+<li>Authorization type: Basic<ul>
+<li>Username (optional):</li>
+<li>Password (optional):</li>
+</ul>
+</li>
+<li>Authorization type: Bearer Token<ul>
+<li>Bearer Token (optional):</li>
+</ul>
+</li>
+<li>Authorization type: None</li>
+<li>Use TLS<ul>
+<li>CA Certificate (optional):</li>
+<li>Certificate (optional):</li>
+<li>Certificate Key (optional):</li>
+<li>Server Name (optional):</li>
+<li>Skip TLS verification:</li>
+</ul>
+</li>
+<li>Notify about resolved alerts:</li>
+<li>Maximum number of alerts to include in message (0 to include all):</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Click <em>Add</em> to add the notification channel, or <em>Cancel</em> to abort the operation.</p>
+</li>
+</ol>
+<h2 id="add-an-alert-rule">Add an Alert Rule<a class="headerlink" href="#add-an-alert-rule" title="Permanent link">&para;</a></h2>
+<ol>
+<li>
+<p>Select the <em>Alert Rules</em> tab.</p>
+<p><div class="lightgallery"><a data-sub-html="" href="../_images/PMM_Integrated_Alerting_Alert_Rules.jpg"><img alt="" src="../_images/PMM_Integrated_Alerting_Alert_Rules.jpg" /></a></div></p>
+</li>
+<li>
+<p>Click <i class="uil uil-plus-square"></i> <em>Add</em>.</p>
+</li>
+<li>
+<p>Fill in the details</p>
+<p><div class="lightgallery"><a data-sub-html="" href="../_images/PMM_Integrated_Alerting_Alert_Rules_Add_Form.jpg"><img alt="" src="../_images/PMM_Integrated_Alerting_Alert_Rules_Add_Form.jpg" /></a></div></p>
+<ul>
+<li>Template:</li>
+<li>Name:</li>
+<li>Threshold:</li>
+<li>Duration(s):</li>
+<li>Severity:</li>
+<li>Filters:</li>
+<li>Channels:</li>
+<li>Activate:</li>
+</ul>
+</li>
+<li>
+<p>Click <em>Add</em> to add the alert rule, or <em>Cancel</em> to abort the operation.</p>
+</li>
+</ol>
+<h2 id="add-an-alert-rule-template">Add an Alert Rule Template<a class="headerlink" href="#add-an-alert-rule-template" title="Permanent link">&para;</a></h2>
+<p>If the provided alert rule templates don&rsquo;t do what you want, you can create your own.</p>
+<ol>
+<li>
+<p>Select the <em>Alert Rule Templates</em> tab.</p>
+<p><div class="lightgallery"><a data-sub-html="" href="../_images/PMM_Integrated_Alerting_Alert_Rule_Templates.jpg"><img alt="" src="../_images/PMM_Integrated_Alerting_Alert_Rule_Templates.jpg" /></a></div></p>
+</li>
+<li>
+<p>Click <i class="uil uil-plus-square"></i> <em>Add</em>.</p>
+</li>
+<li>
+<p>Enter a template in the <em>Alert Rule Template</em> text box.</p>
+<div class="highlight"><pre><span></span><code><span class="nn">---</span><span class="w"></span>
+<span class="nt">templates</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mysql_too_many_connections</span><span class="w"></span>
+<span class="w">      </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span><span class="w"></span>
+<span class="w">      </span><span class="nt">summary</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MySQL connections in use</span><span class="w"></span>
+<span class="w">      </span><span class="nt">tiers</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">anonymous</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">registered</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="w">      </span><span class="nt">expr</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|-</span><span class="w"></span>
+<span class="w">        </span><span class="no">max_over_time(mysql_global_status_threads_connected[5m]) / ignoring (job)</span><span class="w"></span>
+<span class="w">        </span><span class="no">mysql_global_variables_max_connections</span><span class="w"></span>
+<span class="w">        </span><span class="no">* 100</span><span class="w"></span>
+<span class="w">        </span><span class="no">&gt; [[ .threshold ]]</span><span class="w"></span>
+<span class="w">      </span><span class="nt">params</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">threshold</span><span class="w"></span>
+<span class="w">          </span><span class="nt">summary</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A percentage from configured maximum</span><span class="w"></span>
+<span class="w">          </span><span class="nt">unit</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;%&#39;</span><span class="w"></span>
+<span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">float</span><span class="w"></span>
+<span class="w">          </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">100</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="w">          </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span><span class="w"></span>
+<span class="w">      </span><span class="nt">for</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5m</span><span class="w"></span>
+<span class="w">      </span><span class="nt">severity</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">warning</span><span class="w"></span>
+<span class="w">      </span><span class="nt">labels</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">foo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bar</span><span class="w"></span>
+<span class="w">      </span><span class="nt">annotations</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|-</span><span class="w"></span>
+<span class="w">            </span><span class="no">More than [[ .threshold ]]% of MySQL connections are in use on {{ $labels.instance }}</span><span class="w"></span>
+<span class="w">            </span><span class="no">VALUE = {{ $value }}</span><span class="w"></span>
+<span class="w">            </span><span class="no">LABELS: {{ $labels }}</span><span class="w"></span>
+<span class="w">        </span><span class="nt">summary</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MySQL too many connections (instance {{ $labels.instance }})</span><span class="w"></span>
+</code></pre></div>
+<p><div class="lightgallery"><a data-sub-html="" href="../_images/PMM_Integrated_Alerting_Alert_Rule_Templates_Add_Form.jpg"><img alt="" src="../_images/PMM_Integrated_Alerting_Alert_Rule_Templates_Add_Form.jpg" /></a></div></p>
+<div class="admonition note alert alert-primary">
+<p class="admonition-title">Alert Rule Template parameters</p>
+<p>The parameters used in the template follow a format and might include different fields depending on their <code>type</code>:</p>
+<ul>
+<li><code>name</code> (required): the name of the parameter. Spaces and special characters not allowed.</li>
+<li><code>summary</code> (required): a short description of what this parameter represents.</li>
+<li><code>type</code> (required): PMM currently supports the <code>float</code> type. (More will be available in the future, such as <code>string</code> or <code>bool</code>.)</li>
+<li><code>unit</code> (optional): PMM currently supports either <code>s</code> (seconds) or <code>%</code> (percentage).</li>
+<li><code>value</code> (optional): the parameter value itself.</li>
+<li><code>range</code> (optional): only for <code>float</code> parameters, defining the boundaries for the value.</li>
+</ul>
+<p><strong>Restrictions</strong></p>
+<ul>
+<li>Value strings must not include any of these special characters: <code>&lt;</code> <code>&gt;</code> <code>!</code> <code>@</code> <code>#</code> <code>$</code> <code>%</code> <code>^</code> <code>&amp;</code> <code>*</code> <code>(</code> <code>)</code> <code>_</code> <code>/</code> <code>\</code> <code>'</code> <code>+</code> <code>-</code> <code>=</code> <code></code> (space)</li>
+<li>Any variables must be predefined.</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Click <em>Add</em> to add the alert rule template, or <em>Cancel</em> to abort the operation.</p>
+</li>
+</ol>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      Last update:
+      2021-12-14
+    
+  </small>
+</div>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="interface.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: User Interface" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              User Interface
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="backup.html" class="md-footer__link md-footer__link--next" aria-label="Next: Backup and Restore" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Backup and Restore
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Percona LLC, &#169; 2021
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.b6ff8c07.min.js", "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.5e13d264.min.js"></script>
+      
+        <script src="../js/version-select.js"></script>
+      
+        <script src="../js/toctree.js"></script>
+      
+        <script src="../js/lightgallery.min.js"></script>
+      
+    
+  </body>
+</html>
