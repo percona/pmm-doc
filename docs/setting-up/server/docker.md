@@ -58,8 +58,17 @@ How to run PMM Server with Docker based on our [Docker image].
 
 4. Change the password for the default admin user.
 
+    * For PMM versions 2.27.0 and above:
+    
+
     ```sh
-    docker exec -t pmm-server change-password <new_password>
+    docker exec -t pmm-server change-admin-password <new_password>
+    ```
+
+    * For PMM versions prior to 2.27.0:
+
+    ```sh
+    docker exec -t pmm-server bash -c 'grafana-cli --homepath /usr/share/grafana --configOverrides cfg:default.paths.data=/srv/grafana admin reset-admin-password newpass'
     ```
 
 
