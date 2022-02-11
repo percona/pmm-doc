@@ -56,7 +56,14 @@ How to run PMM Server with Docker based on our [Docker image].
     percona/pmm-server:2
     ```
 
-4. Visit `https://localhost:443` to see the PMM user interface in a web browser. (If you are accessing the docker host remotely, replace `localhost` with the IP or server name of the host.)
+4. Change the password for the default admin user.
+
+    ```sh
+    docker exec -t pmm-server change-password <new_password>
+    ```
+
+
+5. Visit `https://localhost:443` to see the PMM user interface in a web browser. (If you are accessing the docker host remotely, replace `localhost` with the IP or server name of the host.)
 
 ## Backup
 
