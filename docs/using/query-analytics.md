@@ -216,7 +216,7 @@ In contrast, MongoDB uses the concept of a document where all essential informat
 
 Query Analytics can monitor MongoDB queries. Although MongoDB is not a relational database management system, you analyze its databases and collections in the same interface using the same tools.
 
-## Sharing a link to Query Analytics
+## Sharing a link for Query Analytics
 
 To share a link to Query Analytics use the *Copy Link* button. This will copy a link to the clipboard with all relevant information so when the link is opened it shows exactly as you were seeing. This will copy information such as the selected query, table page, selected filters, details tab and time range.
 
