@@ -222,7 +222,7 @@ To share a link for Query Analytics, use *Copy Link*. It copies the link to the 
 
 !!! caution alert alert-warning ""
     If you copy the link from the browser's address bar or use the standard functionality from Grafana to share a dashboard, Query Analytics might not open with the same information you were seeing at the moment of sharing.
-    By default Grafana uses relative time range and not an absolute one, so when the copied link is opened it will have a different time.
+  By default, Grafana uses a relative time range and not an absolute range, so it will have a different timestamp when this link is opened.
 
 ![!image](../_images/PMM_Query_Analytics_Share_Link.png)
 
