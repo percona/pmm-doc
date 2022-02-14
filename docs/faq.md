@@ -156,7 +156,7 @@ docker exec -t pmm-server bash -c  "grafana-cli --homepath /usr/share/grafana a
 
 ## How to change the PMM password for a default admin user?
 
-If you're deploying through Docker you can use change the password for an admin user after starting the Docker container as follows:
+If you're deploying through Docker you can change the default password for an admin user after starting the Docker container as follows:
 
     * For PMM versions 2.27.0 and later:
 
