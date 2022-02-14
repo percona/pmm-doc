@@ -218,7 +218,7 @@ Query Analytics can monitor MongoDB queries. Although MongoDB is not a relationa
 
 ## Sharing a link for Query Analytics
 
-To share a link to Query Analytics use the *Copy Link* button. This will copy a link to the clipboard with all relevant information so when the link is opened it shows exactly as you were seeing. This will copy information such as the selected query, table page, selected filters, details tab and time range.
+To share a link for Query Analytics, use *Copy Link*. It copies the link to the clipboard with all the relevant information such as selected query, table page, selected filters, details tab, and time range. Thus, when you open the link, it will display the exact information.
 
 !!! caution alert alert-warning ""
     If you copy the link from the browser's address bar or use the standard functionality from Grafana to share a dashboard, Query Analytics might not open with the same information you were seeing at the moment of sharing.
