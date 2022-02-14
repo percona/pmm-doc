@@ -15,7 +15,7 @@
 - Client:
     - Disk: 100 MB
 
-!!! seealso alert alert-info "See also"
+!!! seealso alert alert-ifo "See also"
     - [Setting up PMM Server](setting-up/server/index.md)
     - [Setting up PMM Client](setting-up/client/index.md)
 
