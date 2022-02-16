@@ -2,6 +2,10 @@
 
 [VictoriaMetrics](https://victoriametrics.github.io/) is a third-party monitoring solution and time-series database that replaced Prometheus in [PMM 2.12.0](../release-notes/2.12.0.md).
 
+!!! caution alert alert-warning "Important"
+    We recommend using the latest released version of VictoriaMetrics for your PMM instance. This ensures that all the bugs for VictoriaMetrics are fixed. Also, you can access the latest features of VictoriaMetrics. One of the critical features is [stream parsing mode](https://docs.victoriametrics.com/vmagent.html#stream-parsing-mode), which enhances the performance of PMM and saves memory when scraping targets expose millions of metrics.
+
+
 ## Push/Pull modes
 
 VictoriaMetrics metrics data can be both 'pushed' to the server and 'pulled' by the server. When setting up services, you can decide which mode to use.
