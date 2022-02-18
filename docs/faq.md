@@ -172,7 +172,7 @@ docker exec -t pmm-server bash -c 'grafana-cli --homepath /usr/share/grafana --c
 
 ## How to use a non-default listen-port for pmm-admin?
 
-Although you configure `pmm-agent` to use a port other than the default port (7777), `pmm-admin` does not use this value from configuration file `/usr/local/percona/pmm2/config/pmm-agent.yml` and tries to connect to the default port. The workaround is to use the following global flag to use a non-default listen-port:
+Currently, if you configure `pmm-agent` to use a port other than the default port (7777), `pmm-admin` does not use this value from the configuration file `/usr/local/percona/pmm2/config/pmm-agent.yml` and tries to connect to the default port. The workaround is to use the following global flag to use a non-default listen-port:
 
 ```sh
 --pmm-agent-listen-port=LISTEN_PORT
