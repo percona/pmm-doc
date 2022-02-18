@@ -158,21 +158,21 @@ docker exec -t pmm-server bash -c  "grafana-cli --homepath /usr/share/grafana a
 
 If you're deploying through Docker you can change the default password for an admin user after starting the Docker container as follows:
 
-    * For PMM versions 2.27.0 and later:
+* For PMM versions 2.27.0 and later:
 
-    ```sh
-    docker exec -t pmm-server change-admin-password <new_password>
-    ```
+```sh
+docker exec -t pmm-server change-admin-password <new_password>
+```
 
-    * For PMM versions prior to 2.27.0:
+* For PMM versions prior to 2.27.0:
 
-        ```sh
-        docker exec -t pmm-server bash -c 'grafana-cli --homepath /usr/share/grafana --configOverrides cfg:default.paths.data=/srv/grafana admin reset-admin-password newpass'
-        ```
+```sh
+docker exec -t pmm-server bash -c 'grafana-cli --homepath /usr/share/grafana --configOverrides cfg:default.paths.data=/srv/grafana admin reset-admin-password newpass'
+```
 
 ## How to use a non-default listen-port for pmm-admin?
 
-Although pmm-agent is configured to use a port other than the default 7777, `pmm-admin` does not use the value from `/usr/local/percona/pmm2/config/pmm-agent.yml file` and tries to connect to the default port. The workaround is to use the following global flag to use a non-default listen-port:
+Although you configure `pmm-agent` to use a port other than the default port (7777), `pmm-admin` does not use this value from configuration file `/usr/local/percona/pmm2/config/pmm-agent.yml` and tries to connect to the default port. The workaround is to use the following global flag to use a non-default listen-port:
 
 ```sh
 --pmm-agent-listen-port=LISTEN_PORT
