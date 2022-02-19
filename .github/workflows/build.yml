@@ -15,8 +15,6 @@ jobs:
     steps:
       - name: Check out code
         uses: percona-platform/checkout@v2
-        with:
-          fetch-depth: 0
 
       - name: Setup Python
         uses: percona-platform/setup-python@v2
@@ -27,8 +25,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install wheel
-          # need this file renamed to prevent render.com from installing the dependencies
-          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+          test -f requirements.txt && pip install -r requirements.txt
 
       - name: Configure git
         env:
