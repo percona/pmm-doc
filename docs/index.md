@@ -33,15 +33,29 @@ A minimal PMM set-up comprises one [server](details/architecture.md#pmm-server) 
 
 ## Read more
 
-<p>
-  <img src="_images/popular-links.svg" />
-</p>
+### Links to popular sections
 
+#### For System Administrators
+
+- [Setting up](https://www.percona.com/doc/percona-monitoring-and-management/2.x/setting-up)
+- [How to configure](https://www.percona.com/doc/percona-monitoring-and-management/2.x/how-to/configure.html)
+- [How to upgrade](https://www.percona.com/doc/percona-monitoring-and-management/2.x/how-to/upgrade.html)
+- [pmm-admin](https://www.percona.com/doc/percona-monitoring-and-management/2.x/details/commands/pmm-admin.html)
+- [Acrhitecture](https://www.percona.com/doc/percona-monitoring-and-management/2.x/details/architecture.html)
+
+#### For Users
+
+- [User interface](https://www.percona.com/doc/percona-monitoring-and-management/2.x/using/interface.html)
+- [Using Query Analytics](https://www.percona.com/doc/percona-monitoring-and-management/2.x/using/query-analytics.html)
+- [Using Integrated Alerting](https://www.percona.com/doc/percona-monitoring-and-management/2.x/using/alerting.html)
+- [Using DBaaS](https://www.percona.com/doc/percona-monitoring-and-management/2.x/using/dbaas.html)
+- [Dashboards reference](https://www.percona.com/doc/percona-monitoring-and-management/2.x/details/dashboards/index.html)
 
 ??? note alert alert-info "Full section map (click to show/hide)"
-    <p>
-      <img src="_images/site-nav.svg" />
-    </p>
+
+<p>
+<img src="_images/site-nav.svg" />
+</p>
 
 [percona_services]: https://www.percona.com/services
 [community]: https://www.percona.com/forums/questions-discussions/percona-monitoring-and-management
