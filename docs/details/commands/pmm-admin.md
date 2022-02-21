@@ -184,9 +184,9 @@ PMM communicates with the PMM Server via a PMM agent process.
 : Configure the PMM agent with a listen port.
 
     ` --pmm-agent-listen-port=LISTEN_PORT`
-    : The pmm-agent listen port.
+    : The PMM agent listen port.
 
-    `DATABASE:= [[MongoDB](#mongodb) | [MySQL](#mysql) | [PostgreSQL](#postgresql) | [ProxySQL](#proxysql)]`
+DATABASE:= [[MongoDB](#mongodb) | [MySQL](#mysql) | [PostgreSQL](#postgresql) | [ProxySQL](#proxysql)]
      
 
 #### `pmm-admin remove`
