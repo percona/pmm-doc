@@ -177,6 +177,18 @@ PMM communicates with the PMM Server via a PMM agent process.
     `--custom-labels=labels`
     : Custom user-assigned labels.
 
+#### `pmm-admin add --pmm-agent-listen-port=LISTEN_PORT`
+
+`pmm-admin add --pmm-agent-listen-port=LISTEN_PORT DATABASE [FLAGS] [NAME] [ADDRESS]`
+
+: Configure the PMM agent with a listen port.
+
+    ` --pmm-agent-listen-port=LISTEN_PORT`
+    : The pmm-agent listen port.
+
+    `DATABASE:= [[MongoDB](#mongodb) | [MySQL](#mysql) | [PostgreSQL](#postgresql) | [ProxySQL](#proxysql)]`
+     
+
 #### `pmm-admin remove`
 
 `pmm-admin remove [FLAGS] service-type [service-name]`
