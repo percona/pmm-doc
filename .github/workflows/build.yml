@@ -46,6 +46,7 @@ jobs:
       # Builds Material-themed static web site in 'preview' branch
       - name: Build a themed site (2.x)
         run: |
+          mike list
           PATH=$PATH:_resources/bin mike deploy 2.x -b preview -p
           mike set-default 2.x -b preview -p
           mike retitle 2.x "PMM2 (LATEST)" -b preview -p
