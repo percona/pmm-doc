@@ -41,14 +41,14 @@ jobs:
       - name: Build a theme-less site (2.x)
         run: |
           mike list
-          PATH=$PATH:_resources/bin mike deploy -F mkdocs-percona.yml 2.x -b publish -p
+          PATH=$PATH:_resources/bin mike deploy -F mkdocs-percona.yml 2.x -b publish -p --rebase
           mike retitle -F mkdocs-percona.yml 2.x "PMM2 (LATEST)" -b publish -p
 
       # Builds Material-themed static web site in 'preview' branch
       - name: Build a themed site (2.x)
         run: |
           mike list
-          PATH=$PATH:_resources/bin mike deploy 2.x -b preview -p
+          PATH=$PATH:_resources/bin mike deploy 2.x -b preview -p --ignore
           mike set-default 2.x -b preview -p
           mike retitle 2.x "PMM2 (LATEST)" -b preview -p
 
