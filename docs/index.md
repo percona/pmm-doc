@@ -52,7 +52,6 @@ A minimal PMM set-up comprises one [server](details/architecture.md#pmm-server) 
 - [Dashboards reference](https://www.percona.com/doc/percona-monitoring-and-management/2.x/details/dashboards/index.html)
 
 ??? note alert alert-info "Full section map (click to show/hide)"
-
 <p>
 <img src="_images/site-nav.svg" />
 </p>
