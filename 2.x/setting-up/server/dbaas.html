@@ -198,77 +198,10 @@ minikube start
 <h3 id="amazon-aws-eks">Amazon AWS EKS<a class="headerlink" href="#amazon-aws-eks" title="Permanent link">&para;</a></h3>
 <ol>
 <li>
-<p>Create your cluster via <code>eksctl</code> or the Amazon AWS interface. For example:</p>
-<div class="highlight"><pre><span></span><code>eksctl create cluster --write-kubeconfig --name<span class="o">=</span>your-cluster-name --zones<span class="o">=</span>us-west-2a,us-west-2b --kubeconfig &lt;PATH_TO_KUBECONFIG&gt;
+<p>Create your cluster via <a href="https://github.com/weaveworks/eksctl#installation">eksctl</a> or the Amazon AWS interface. For example:</p>
+<p><div class="highlight"><pre><span></span><code>eksctl create cluster --write-kubeconfig --name<span class="o">=</span>your-cluster-name --zones<span class="o">=</span>us-west-2a,us-west-2b --kubeconfig &lt;PATH_TO_KUBECONFIG&gt;
 </code></pre></div>
-</li>
-<li>
-<p>When the cluster is running, modify your kubeconfig file, if it&rsquo;s not utilizing the <code>aws-iam-authenticator</code> or <code>client-certificate</code> method for authentication with Kubernetes. Here are two examples that you can use as templates to modify a copy of your existing kubeconfig:</p>
-<ul>
-<li>
-<p>For the <code>aws-iam-authenticator</code> method:</p>
-<div class="highlight"><pre><span></span><code>---
-apiVersion: v1
-clusters:
-- cluster:
-    certificate-authority-data: &lt;&lt; CERT_AUTH_DATA &gt;&gt;
-    server: &lt;&lt; K8S_CLUSTER_URL &gt;&gt;
-  name: &lt;&lt; K8S_CLUSTER_NAME &gt;&gt;
-contexts:
-- context:
-    cluster: &lt;&lt; K8S_CLUSTER_NAME &gt;&gt;
-    user: &lt;&lt; K8S_CLUSTER_USER &gt;&gt;
-  name: &lt;&lt; K8S_CLUSTER_NAME &gt;&gt;
-current-context: &lt;&lt; K8S_CLUSTER_NAME &gt;&gt;
-kind: Config
-preferences: {}
-users:
-- name: &lt;&lt; K8S_CLUSTER_USER &gt;&gt;
-  user:
-    exec:
-      apiVersion: client.authentication.k8s.io/v1alpha1
-      command: aws-iam-authenticator
-      args:
-        - &quot;token&quot;
-        - &quot;-i&quot;
-        - &quot;&lt;&lt; K8S_CLUSTER_NAME &gt;&gt;&quot;
-        - --region
-        - &lt;&lt; AWS_REGION &gt;&gt;
-      env:
-         - name: AWS_ACCESS_KEY_ID
-           value: &quot;&lt;&lt; AWS_ACCESS_KEY_ID &gt;&gt;&quot;
-         - name: AWS_SECRET_ACCESS_KEY
-           value: &quot;&lt;&lt; AWS_SECRET_ACCESS_KEY &gt;&gt;&quot;
-</code></pre></div>
-</li>
-<li>
-<p>For the <code>client-certificate</code> method:</p>
-<div class="highlight"><pre><span></span><code>---
-apiVersion: v1
-clusters:
-- cluster:
-    certificate-authority-data: &lt;&lt; CERT_AUTH_DATA &gt;&gt;
-    server: &lt;&lt; K8S_CLUSTER_URL &gt;&gt;
-  name: &lt;&lt; K8S_CLUSTER_NAME &gt;&gt;
-contexts:
-- context:
-    cluster: &lt;&lt; K8S_CLUSTER_NAME &gt;&gt;
-    user: &lt;&lt; K8S_CLUSTER_USER &gt;&gt;
-  name: &lt;&lt; K8S_CLUSTER_NAME &gt;&gt;
-current-context: &lt;&lt; K8S_CLUSTER_NAME &gt;&gt;
-kind: Config
-preferences: {}
-users:
-- name: &lt;&lt; K8S_CLUSTER_NAME &gt;&gt;
-  user:
-    client-certificate-data: &lt;&lt; CLIENT_CERT_DATA &gt;&gt;
-    client-key-data: &lt;&lt; CLIENT_KEY_DATA &gt;&gt;
-</code></pre></div>
-</li>
-</ul>
-</li>
-<li>
-<p>Follow the instructions on <a href="../../using/dbaas.html#add-a-kubernetes-cluster">How to add a Kubernetes cluster</a> with kubeconfig from the previous step.</p>
+2. Follow the instructions on <a href="../../using/dbaas.html#add-a-kubernetes-cluster">How to add a Kubernetes cluster</a> with kubeconfig from the previous step.</p>
 <div class="admonition note alert alert-primary">
 <p>If possible, the connection details will show the cluster&rsquo;s external IP (not possible with minikube).</p>
 </div>
@@ -481,7 +414,7 @@ curl https://raw.githubusercontent.com/percona-platform/dbaas-controller/7a5fff0
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-07-30
+            <i class="uil uil-refresh"></i> Page updated 2022-02-22
         </li>
         
     </ul>
