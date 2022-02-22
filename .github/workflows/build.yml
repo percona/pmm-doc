@@ -42,14 +42,14 @@ jobs:
         if: github.ref == 'refs/heads/main'
         run: |
           PATH=$PATH:_resources/bin mike deploy -F mkdocs-percona.yml 2.x -b publish -p
-          mike retitle -F mkdocs-percona.yml 2.x "PMM2 (LATEST)" -b publish -p
+          mike retitle -F mkdocs-percona.yml 2.x "PMM 2.x (LATEST)" -b publish -p
 
       # Builds Material-themed static web site in 'preview' branch
       - name: Build a themed site (2.x)
         run: |
           PATH=$PATH:_resources/bin mike deploy 2.x -b preview -p
           mike set-default 2.x -b preview -p
-          mike retitle 2.x "PMM2 (LATEST)" -b preview -p
+          mike retitle 2.x "PMM 2.x (LATEST)" -b preview -p
 
       - name: Install Node.js 14.x
         uses: percona-platform/setup-node@v2
