@@ -9,7 +9,7 @@ COPY requirements.txt ./requirements.txt
 RUN pip3 install -r requirements.txt
 
 RUN mkdir -p /usr/share/fonts/chivo && cd /usr/share/fonts/chivo && wget -O Chivo.zip https://fonts.google.com/download?family=Chivo && unzip Chivo.zip
-RUN fc-cache -f
+RUN rm Chivo.zip && fc-cache -f
 
 WORKDIR /docs
 

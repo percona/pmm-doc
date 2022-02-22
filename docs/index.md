@@ -53,7 +53,7 @@ A minimal PMM set-up comprises one [server](details/architecture.md#pmm-server) 
 
 ??? note alert alert-info "Full section map (click to show/hide)"
     <p>
-      <img src="_images/site-nav.svg" />
+      <img src="_images/sitemap.svg" />
     </p>
 
 [percona_services]: https://www.percona.com/services
