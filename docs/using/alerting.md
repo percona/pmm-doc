@@ -133,7 +133,7 @@ For example, to validate that a MongoDB instance is down, shut down a member of 
  
 ## Template compatibility
 ### With previous PMM versions
-PMM 2.26 introduced major changes to the core structure of rule templates. As a result, alert rules and templates created in previous PMM versions are not compatible with PMM 2.26.0 and cannot be migrated to this new version.
+PMM 2.26 introduced significant changes to the core structure of rule templates. As a result, alert rules and templates created in previous PMM versions are incompatible with PMM 2.26.0 and cannot be migrated to this new version.
  
 If you’re migrating from PMM 2.25 and earlier, make sure to manually recreate any custom alert rules and rule templates that you want to transfer to PMM 2.26.0 or later.
  
