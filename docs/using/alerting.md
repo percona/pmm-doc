@@ -146,7 +146,7 @@ If you have existing YAML alert templates that you want to leverage in PMM Integ
 ## Add an Alert Rule
 1. Go to **Alerting > Integrated Alerting** and select the **Alert Rules** tab.
 2. Click **Add** on the right-hand side of the table.
-3. In the **Add Alert** rule dialog, choose the template on which you want to base the new alert rule. This automatically populates the **Threshold**, **Duration**, **Severity** fields with information from the template. You can change these values if you want to override the default specifications in the template.
+3. In the **Add Alert** rule dialog, choose the template on which you want to base the new alert rule. This automatically populates the **Duration**, **Severity** fields with information from the template. You can change these values if you want to override the default specifications in the template.
 4. In the **Filters** field, specify if you want the alert rule to apply only to specific services or nodes. For example: *service_name=name123*.
 5. In the **Channels** field, select one or more notification channels that you have configured for sending out the notifications.  
  
