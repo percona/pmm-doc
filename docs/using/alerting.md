@@ -80,7 +80,7 @@ When creating custom templates, make sure to use the required template format be
 - **summary** (required field): a template description.
 - **expr** (required field): a MetricsQL query string with parameter placeholders.
 - **params**: contains parameter definitions required for the query. Each parameter has a name, type, and summary. It also may have a unit, available range, and default value.
-    - **name** (required): the name of the parameter. Spaces and special characters not allowed.
+    - **name** (required): the name of the parameter. Spaces and special characters are not allowed.
     - **summary** (required): a short description of what this parameter represents.
     - **unit** (optional): PMM currently supports either s (seconds) or % (percentage).
     - **type** (required): PMM currently supports the float type. string,  bool and another types will be available in a future release.
