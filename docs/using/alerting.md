@@ -162,7 +162,7 @@ To silence alerts:
 1. Click **Alerting** on the main menu.
 2. Choose **Integrated Alerting > Alerts** and choose if you want to disable an individual alert or all alerts:
     - To silence an individual alert, scroll through the list of current alerts and click on the bell in the Actions column.
-    - To silence all Alerts, click Silence All at the top right side of the Alerts table.
+    - To silence all alerts, click **Silence All at the top right side of the Alerts table.
  
 ## Alternative alerting options
 PMM Integrated Alerting was introduced as an alternative to Grafana Alerting and Prometheus’ Alertmanager.
@@ -323,12 +323,11 @@ Silencing an alert only stops notifications from being sent to your specified no
  
 Silenced alerts are still recorded under **Integrated Alerting > Alerts** so that you can review them later. A silenced alert is disabled until you reactivate the alert.
  
- 
 To silence alerts:
 1. Click **Alerting** on the main menu.
 2. Choose **Integrated Alerting > Alerts** and choose if you want to disable an individual alert or all alerts:
-    - To silence an individual alert, scroll through the list of current alerts and click on the bell in the Actions column.
-    - To silence all Alerts, click Silence All at the top right side of the Alerts table.
+    - To silence an individual alert, scroll through the list of current alerts and click on the bell in the **Actions** column.
+    - To silence all alerts, click **Silence All** at the top right side of the **Alerts** table.
  
 ## Alternative alerting options
 PMM Integrated Alerting was introduced as an alternative to Grafana Alerting and Prometheus’ Alertmanager.
