@@ -174,7 +174,7 @@ d Alerting is currently in [Technical Preview](../details/glossary.md#technical-
  
 Alerting notifies of important or unusual activity in your database environments so that you can identify and resolve problems quickly.
  
-In PMM you define what system metrics are critical for your environment and what thresholds are acceptable for each metric. When something needs your attention, PMM automatically sends you an alert through your specified communication channel.
+In PMM, you define what system metrics are critical for your environment and what thresholds are acceptable for each metric. When something needs your attention, PMM automatically sends you an alert through your specified communication channel.
  
 The alerting workflow is defined by the following three basic components:
 - **Alert template**: provides the framework for the alert rules. PMM includes a set of default templates with common events and expressions for alerting. If you need custom expressions on which to base your alert rules, create your own templates instead.
