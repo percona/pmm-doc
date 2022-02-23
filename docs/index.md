@@ -54,7 +54,7 @@ A minimal PMM set-up comprises one [server](details/architecture.md#pmm-server) 
 ??? note alert alert-info "Full section map (click to show/hide)"
     <p>
       <!-- Maintained at https://www.figma.com/file/UcK1mgqbZv2SPFa1M5AjsU/pmm-doc-sitemap?node-id=1%3A3 -->
-        <svg width="1544" height="980" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg width="1544" height="980" viewBox="0 0 1544 980" fill="none" xmlns="http://www.w3.org/2000/svg">
           <g clip-path="url(#a)">
             <path fill="#fff" d="M0 0h1544v980H0z"/>
             <path stroke="#9A1E39" stroke-width="2" d="M727 83v139M1297 149v73M277 372h82M318 150h978M319 149v224"/>
