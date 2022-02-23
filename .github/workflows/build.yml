@@ -47,9 +47,9 @@ jobs:
       # Builds Material-themed static web site in 'preview' branch
       - name: Build a themed site (2.x)
         run: |
-          PATH=$PATH:_resources/bin mike deploy 2.x -b preview -p
-          mike set-default 2.x -b preview -p
-          mike retitle 2.x "PMM 2.x (LATEST)" -b preview -p
+          PATH=$PATH:_resources/bin mike deploy 2.x -b preview
+          mike set-default 2.x -b preview
+          mike retitle 2.x "PMM 2.x (LATEST)" -b preview
 
       - name: Install Node.js 14.x
         uses: percona-platform/setup-node@v2
