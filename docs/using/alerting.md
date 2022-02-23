@@ -286,7 +286,7 @@ When creating custom templates, make sure to use the required template format be
                  by {{ $labels.service_name }} on {{ $labels.node_name }}.
     ```
 ## Test alert expressions
-If you want to create custom templates, you can test the MetricsQ expressions for your custom template in the **Explore** section of PMM. Here you can also query any PMM internal database.
+If you want to create custom templates, you can test the MetricsQL expressions for your custom template in the **Explore** section of PMM. Here you can also query any PMM internal database.
  
 To test expressions for custom templates:
 1. On the left menu of PMM, choose **Explore > Metrics**.
