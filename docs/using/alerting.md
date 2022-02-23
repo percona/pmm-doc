@@ -83,7 +83,7 @@ When creating custom templates, make sure to use the required template format be
     - **name** (required): the name of the parameter. Spaces and special characters are not allowed.
     - **summary** (required): a short description of what this parameter represents.
     - **unit** (optional): PMM currently supports either s (seconds) or % (percentage).
-    - **type** (required): PMM currently supports the float type. string,  bool and another types will be available in a future release.
+    - **type** (required):PMM currently supports the float type. string, bool, and other types will be available in a future release.
     - **range** (optional): defines the boundaries for the value of a  float parameter
    - **value** (optional): default  parameter value. Value strings must not include any of these special characters: < > ! @ # $ % ^ & * ( ) _ / \ ' + - = (space)
 - **for** (required): specifies the duration of time that the expression must be met before the alert will be fired
