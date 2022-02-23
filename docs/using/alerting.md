@@ -167,7 +167,7 @@ PMM Integrated Alerting was introduced as an alternative to Grafana Alerting and
 These third-party alerting tools continue to be available in PMM until Integrated Alerting moves from Technical Preview to General Availability.
  
 We recommend already using Integrated Alerting since it offers a simpler alerting setup and provides more robust alerting options.
-d Alerting is currently in [Technical Preview](../details/glossary.md#technical-preview). This means that this feature is still under development and is subject to change. Therefore, we recommend that early adopters use Integrated Alerting for testing purposes only.
+Alerting is currently in [Technical Preview](../details/glossary.md#technical-preview). This means that this feature is still under development and is subject to change. Therefore, we recommend that early adopters use Integrated Alerting for testing purposes only.
  
 Alerting notifies of important or unusual activity in your database environments so that you can identify and resolve problems quickly.
  
