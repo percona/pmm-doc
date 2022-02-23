@@ -2,6 +2,8 @@
 
 PMM is a client/server application built by us with our own and third-party open-source tools.
 
+<!-- The source of this image is maintained at https://miro.com/app/board/uXjVOPgKgrE=/ -->
+
 ![!image](../_images/C_S_Architecture.jpg)
 
 ## PMM Server
@@ -76,5 +78,7 @@ The PMM Client package consists of the following:
 - `azure_database_exporter` is an exporter that collects Azure database performance metrics.
 
 To make data transfer from PMM Client to PMM Server secure, all exporters are able to use SSL/TLS encrypted connections, and their communication with the PMM server is protected by the HTTP basic authentication.
+
+<!-- The source of this image is maintained at https://miro.com/app/board/uXjVOPgKgrE=/ -->
 
 ![!image](../_images/C_S_Interactions.jpg)
