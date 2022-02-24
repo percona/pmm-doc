@@ -176,7 +176,7 @@ A minimal PMM set-up comprises one [server](details/architecture.md#pmm-server) 
 
 [percona_services]: https://www.percona.com/services
 [community]: https://www.percona.com/forums/questions-discussions/percona-monitoring-and-management
-[Technical preview]: details/glossary.md#technical-preview
+[Technical Preview]: details/glossary.md#technical-preview
 [easy install]: setting-up/server/easy-install.md
-[Setting up]: setting-up/index.md
+[Setting Up]: setting-up/index.md
 [Quickstart install guide]: https://www.percona.com/software/pmm/quickstart
