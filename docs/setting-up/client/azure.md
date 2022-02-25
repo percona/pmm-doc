@@ -1,5 +1,16 @@
 # Microsoft Azure
 
+!!! caution alert alert-warning "Caution"
+    Microsoft Azure functionality is currently in [technical preview](../details/glossary.md#technical-preview) and is subject to change.
+
+## Activate Microsoft Azure
+
+The Microsoft Azure feature is turned off by default. To turn it on:
+
+1. Go to <i class="uil uil-cog"></i> *Configuration* → <i class="uil uil-setting"></i> *Settings* → *Advanced Settings*.
+
+2. Click the <i class="uil uil-toggle-off"></i> toggle in the *Technical preview features* section of the page.
+
 ## Required settings
 
 It is possible to use PMM for monitoring [Azure](https://azure.microsoft.com) database instances like other remote instances. In this case, the PMM Client is not installed on the host where the database server is deployed. By using the PMM web interface, you connect to the Azure DB instance. Discovery is not yet implemented in PMM but it is possible to add known instances by providing the connection parameters.
@@ -58,17 +69,38 @@ pg_stat_statements.track = all
 
 You need to get the Client ID, Client Secret, Tenant ID and Subscription ID.
 
-![!](../../_images/PMM_Add_Instance_Azure_1.png)
+### Get the subscription ID
+1. Search **Subscriptions**, click on your susbcription name
+![!](../../_images/azure_subscription_section.png )
+2. Copy the susbcription ID
+![!](../../_images/azure_subscription_id.png)
 
-You can follow the steps here: <https://www.inkoop.io/blog/how-to-get-azure-api-credentials/>
+### Create a new application to get the tenant ID, client ID and the client secret.
+1. Search for **Azure Active Directory**
+![!](../../_images/azure_active_directory_section.png)
+2. Register a new application
+![!](../../_images/azure_app_registrations_section.png)
+![!](../../_images/azure_app_new_registration.png)
+![!](../../_images/azure_app_new_details.png)
+3. At this point you can copy the client and tenant IDs.
+![!](../../_images/azure_app_client_tenant.png)
+4. Create an application secret.
+![!](../../_images/azure_app_secret_01.png)
+![!](../../_images/azure_app_secret_02.png)
+![!](../../_images/azure_app_secret_03.png)
+5. Copy the **value** of the application secret. Once you leave this page you won't be able to see the secret again and you will have to generate a new
+   one.
+![!](../../_images/azure_app_secret_04.png)
+6. Give API access permissions to your application.
 
-Navigate to:
+    6.1. Search for **Subscriptions** like in step 1.
 
-- Create an application in Azure Active directory. <https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview>
-- Get the subscription ID.
-- Get the tenant ID.
-- Get the client ID.
-- Get the client secret.
+    6.2. Select your aplication and grant **Monitor Reader** permissions. This might require you have admin permissions in your Azure account.
+
+![!](../../_images/azure_app_permissions_01.png)
+![!](../../_images/azure_app_permissions_02.png)
+![!](../../_images/azure_app_permissions_03.png)
+![!](../../_images/azure_app_permissions_04.png)
 
 When you fill in all fields press the *Discover* button and you will see a list of available databases for monitoring.
 

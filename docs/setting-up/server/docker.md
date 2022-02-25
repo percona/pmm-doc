@@ -11,7 +11,6 @@ How to run PMM Server with Docker based on our [Docker image].
 ## Before you start
 
 - Install [Docker] 1.12.6 or higher.
-- (Optional) Install [Docker compose].
 
 ## Run
 
@@ -57,7 +56,7 @@ How to run PMM Server with Docker based on our [Docker image].
     percona/pmm-server:2
     ```
 
-4. In a web browser, visit `https://localhost:443` (or `http://localhost:80` if enabled) to see the PMM user interface. (If you are accessing the docker host remotely, replace `localhost` with the IP or server name of the host.)
+4. Visit `https://localhost:443` to see the PMM user interface in a web browser. (If you are accessing the docker host remotely, replace `localhost` with the IP or server name of the host.)
 
 ## Backup
 
@@ -66,6 +65,15 @@ How to run PMM Server with Docker based on our [Docker image].
     - Take a local copy of the `pmm-data` container's `/srv` directory.
 
 ---
+
+!!! caution alert alert-warning "Important"
+    Grafana plugins have been moved to the data volume `/srv` since the 2.23.0 version. So if you are upgrading PMM from any version before 2.23.0 and have installed additional plugins then plugins should be installed again after the upgrade.
+    
+    To check used grafana plugins:
+
+    ```sh
+    docker exec -it pmm-server ls /var/lib/grafana/plugins
+    ```
 
 1. Stop the container.
 
@@ -114,15 +122,23 @@ How to run PMM Server with Docker based on our [Docker image].
 
     (If you are accessing the docker host remotely, replace `localhost` with the IP or server name of the host.)
 
-1. Perform a [backup](#backup).
 
-2. Pull the latest image.
+1. Stop the container.
+
+    ```sh
+    docker stop pmm-server
+    ```
+
+2. Perform a [backup](#backup).
+
+
+3. Pull the latest image.
 
     ```sh
     docker pull percona/pmm-server:2
     ```
 
-3. Run it.
+4. Run it.
 
     ```sh
     docker run \
@@ -133,7 +149,8 @@ How to run PMM Server with Docker based on our [Docker image].
     --name pmm-server \
     percona/pmm-server:2
     ```
-4. Perform a [restore](#restore)
+
+5. Perform a [restore](#restore).
 
 ## Restore
 
@@ -237,7 +254,7 @@ Use the following Docker container environment variables (with `-e var=value`) t
 
 | Variable                   | Description
 | -------------------------- | -----------------------------------------------------------------------
-| `DISABLE_UPDATES`          | Disable automatic updates.
+| `DISABLE_UPDATES`          | Disables a periodic check for new PMM versions as well as ability to apply upgrades using the UI
 | `DISABLE_TELEMETRY`        | Disable built-in telemetry and disable STT if telemetry is disabled.
 | `METRICS_RESOLUTION`       | High metrics resolution in seconds.
 | `METRICS_RESOLUTION_HR`    | High metrics resolution (same as above).
@@ -268,11 +285,11 @@ These variables will be ignored by `pmm-managed` when starting the server. If an
 
 ## Tips
 
-- Disable manual updates via the Home Dashboard *PMM Upgrade* panel by adding `-e DISABLE_UPDATES=true` to the `docker run` command.
+- To Disable the Home Dashboard *PMM Upgrade* panel you can either add `-e DISABLE_UPDATES=true` to the `docker run` command (for the life of the containter) or navigate to _PMM --> PMM Settings --> Advanced Settings_ and disable "Check for Updates" (can be turned back on by any admin in the UI).
 
 - Eliminate browser certificate warnings by configuring a [trusted certificate].
 
-- Optionally enable an (insecure) HTTP connection by adding `--publish 80:80` to the `docker run` command. However note that PMM Client *requires* TLS to communicate with the server so will only work on the secure port.
+- You can optionally enable an (insecure) HTTP connection by adding `--publish 80:80` to the `docker run` command. However, running PMM insecure is not recommended. You should also note that PMM Client *requires* TLS to communicate with the server, only working on a secure port.
 
 ### Isolated hosts
 

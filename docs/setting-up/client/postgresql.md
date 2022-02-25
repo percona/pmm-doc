@@ -38,6 +38,11 @@ We recommend creating a PMM database account that can connect to the `postgres` 
     CREATE USER pmm WITH PASSWORD '******';
     GRANT rds_superuser TO pmm;
     ```
+    Optionally, you can also set up a connection limit (only if the user is not a SUPERUSER):
+
+    ```sql
+    ALTER USER pmm CONNECTION LIMIT 10;
+    ```
 
 2. PMM must be able to log in locally as this user to the PostgreSQL instance. To enable this, edit the `pg_hba.conf` file. If not already enabled by an existing rule, add:
 
@@ -127,13 +132,18 @@ Here are the benefits and drawbacks of each.
     track_io_timing = on             # Capture read/write stats
     ```
 
-2. Restart the database server.
+2. Restart the database server. After the restart, the extension starts capturing statistics from every database.
 
-3. Install the extension.
+3. Install the extension. 
 
     ```sh
     psql postgres postgres -c "CREATE EXTENSION pg_stat_statements SCHEMA public"
     ```
+    
+    This command creates the view where you can access the collected statistics.
+
+!!! note alert alert-primary ""
+    We recommend that you create the extension for the `postgres` database. In this case, you receive access to the statistics collected from every database.    
 
 You can now [add the service](#add-service).
 
@@ -163,28 +173,43 @@ You can now [add the service](#add-service).
     shared_preload_libraries = 'pg_stat_monitor'
     ```
 
+    !!! caution alert alert-warning
+        If you use both `pg_stat_statements` and `pg_stat_monitor`, set ``pg_stat_monitor`` **after** `pg_stat_statements`:
+
+        ```ini
+        shared_preload_libraries = 'pg_stat_statements, pg_stat_monitor'
+        ```
+
 2. Set configuration values.
 
-    You can get a list of available settings with `SELECT * FROM pg_stat_monitor_settings;`.
+    In your `postgresql.conf` file:
+    ```ini
+    pg_stat_monitor.pgsm_query_max_len = 2048
+    ```
+
+    !!! caution alert alert-warning
+        It is important to set maximal length of query to 2048 characters or more for PMM to work properly.
+
+    You can get a list of other available settings with `SELECT * FROM pg_stat_monitor_settings;`.
 
     !!! note alert alert-primary ""
         See [`pg_stat_monitor` GitHub repository](https://github.com/percona/pg_stat_monitor/blob/master/docs/USER_GUIDE.md#configuration) for details about available parameters.
 
-3. Set bucket time to 60 seconds.
+3. Start or restart your PostgreSQL instance. The extension starts capturing statistics from every database.
 
-    ```sql
-    ALTER SYSTEM SET pg_stat_monitor.pgsm_bucket_time=60;
-    ```
-
-4. Start or restart your PostgreSQL instance.
-
-5. In a `psql` session:
+4. In a `psql` session:
 
     ```sql
     CREATE EXTENSION pg_stat_monitor;
     ```
+    
+    This command creates the view where you can access the collected statistics.
 
-6. Check the version.
+    !!! note alert alert-primary ""
+        We recommend that you create the extension for the `postgres` database. In this case, you receive the access to the statistics, collected from every database.
+
+
+5. Check the version.
 
     ```sql
     SELECT pg_stat_monitor_version();
@@ -208,7 +233,7 @@ When you have configured your database server, you can add a PostgreSQL service 
 
 If your PostgreSQL instance is configured to use TLS, click on the *Use TLS for database connections* check box and fill in your TLS certificates and key.
 
-![!](../../_images/PMM_Add_Instance_PostgreSQL_TLS.png)
+![!](../../_images/PMM_Add_Instance_PostgreSQL_TLS.jpg)
 
 !!! hint alert alert-success "Note"
     For TLS connection to work SSL needs to be configured in your PostgreSQL instance. Make sure SSL is enabled in the server configuration file `postgresql.conf`, and that hosts are allowed to connect in the client authentication configuration file `pg_hba.conf`. (See PostgreSQL documentation on [Secure TCP/IP Connections with SSL].)
@@ -301,9 +326,42 @@ pmm-admin inventory list services
 
 2. Set the *Service Name* to the newly-added service.
 
+### Running custom queries
+
+The Postgres exporter can run custom queries to add new metrics not provided by default.  
+Those custom queries must be defined in the `/usr/local/percona/pmm2/collectors/custom-queries/postgresql` in the same host where the exporter is
+running. There are 3 directories inside it:
+    - high-resolution/   - every 5 seconds
+    - medium-resolution/ - every 10 seconds
+    - low-resolution/ - every 60 seconds
+
+Depending on the desired resolution for your custom queries, you can place a file with the queries definition.
+The file is a yaml where each query can have these fields:
+
+query_name:
+   query: the query definition
+   master: boolean to specify if the query should be executed only in the master
+   metrics:
+     - metric name:
+         usage: GAUGE, LABEL, COUNTER, MAPPEDMETRIC or DURATION
+         description: a human readable description
+
+#### Example
+
+pg_postmaster_uptime:
+   query: "select extract(epoch from current_timestamp - pg_postmaster_start_time()) as seconds"
+   master: true
+   metrics:
+     - seconds:
+         usage: "GAUGE"
+         description: "Service uptime"
+
+Check the see also section for a more detailed description on MySQL custom queries with more examples about how to use custom queries in dashboards.
+
 !!! seealso alert alert-info "See also"
     - [`pmm-admin` man page for `pmm-admin add postgresql`](../../details/commands/pmm-admin.md#postgresql)
     - [Configuring Percona Repositories with percona-release][PERCONA_RELEASE]
+    - [Percona Blog -- Running Custom MySQL Queries in Percona Monitoring and Management][BLOG_CUSTOM_QUERIES_MYSQL]
 
 [PostgreSQL]: https://www.postgresql.org/
 [Percona Distribution for PostgreSQL]: https://www.percona.com/software/postgresql-distribution
@@ -314,3 +372,4 @@ pmm-admin inventory list services
 [PG_STAT_MONITOR_INSTALL]: https://github.com/percona/pg_stat_monitor#installation
 [PMM_ADMIN]: ../../details/pmm-admin.md
 [Secure TCP/IP Connections with SSL]: https://www.postgresql.org/docs/current/ssl-tcp.html
+[BLOG_CUSTOM_QUERIES_MYSQL]: https://www.percona.com/blog/2020/06/10/running-custom-queries-in-percona-monitoring-and-management/

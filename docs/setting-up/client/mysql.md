@@ -23,7 +23,6 @@ Check that:
 - [PMM Server is installed](../server/index.md) and running with a known IP address accessible from the client node.
 - [PMM Client is installed](index.md) and the [node is registered with PMM Server](index.md#register).
 - You have superuser (root) access on the client host.
-- You have superuser access to any database servers that you want to monitor.
 
 ## Create a database account for PMM
 
@@ -31,7 +30,7 @@ It is good practice to use a non-superuser account to connect PMM Client to the 
 
 ```sql
 CREATE USER 'pmm'@'localhost' IDENTIFIED BY 'pass' WITH MAX_USER_CONNECTIONS 10;
-GRANT SELECT, PROCESS, SUPER, REPLICATION CLIENT, RELOAD ON *.* TO 'pmm'@'localhost';
+GRANT SELECT, PROCESS, REPLICATION CLIENT, RELOAD, BACKUP_ADMIN ON *.* TO 'pmm'@'localhost';
 ```
 
 ## Choose and configure a source
@@ -168,7 +167,7 @@ When the limit is reached, PMM Client will:
 
 Only one `.old` file is kept. Older ones are deleted.
 
-You can manage log rotation yourself, for example, with [`logrotate`][LOGROTATE]. If you do, you can disable PMM Client's log rotation with the `--slow-log-rotation=false` option when adding a service with `pmm-admin add`.
+You can manage log rotation yourself, for example, with [`logrotate`][LOGROTATE]. If you do, you can disable PMM Client's log rotation by providing a negative value to `--size-slow-logs` option when adding a service with `pmm-admin add`.
 
 ### Performance Schema
 
@@ -346,6 +345,10 @@ With the PMM user interface, you select *Use performance schema*, or deselect it
 
 ![!](../../_images/PMM_Add_Instance_MySQL.jpg)
 
+If your MySQL instance is configured to use TLS, click on the *Use TLS for database connections* check box and fill in your TLS certificates and key.
+
+![!](../../_images/PMM_Add_Instance_MySQL_TLS.jpg)
+
 ### On the command line
 
 Add the database server as a service using one of these example commands. If successful, PMM Client will print `MySQL Service added` with the service's ID and name. Use the `--environment` and `-custom-labels` options to set tags for the service to help identify them.
@@ -369,13 +372,13 @@ pmm-admin add mysql --username=pmm --password=pass
 Slow query log source and log size limit (1 gigabyte), service name (`MYSQL_NODE`) and service address/port (`191.168.1.123:3306`).
 
 ```sh
-pmm-admin add mysql --query-source=slowlog --size-slow-logs=1GB --username=pmm --password=pass MYSQL_NODE 192.168.1.123:3306
+pmm-admin add mysql --query-source=slowlog --size-slow-logs=1GiB --username=pmm --password=pass MYSQL_NODE 192.168.1.123:3306
 ```
 
 Slow query log source, disabled log management (use [`logrotate`][LOGROTATE] or some other log management tool), service name (`MYSQL_NODE`) and service address/port (`191.168.1.123:3306`).
 
 ```sh
-pmm-admin add mysql --query-source=slowlog --size-slow-logs=false --username=pmm --password=pass MYSQL_NODE 192.168.1.123:3306
+pmm-admin add mysql --query-source=slowlog --size-slow-logs=-1GiB --username=pmm --password=pass MYSQL_NODE 192.168.1.123:3306
 ```
 
 Default query source (`slowlog`), service name (`{node}-mysql`), connect via socket.
@@ -445,6 +448,7 @@ Open the [*PXC/Galera Cluster Summary* dashboard][DASH_PXCGALERACLUSTER].
     - [Percona Blog -- MySQL's INNODB_METRICS table][BLOG_INNODB_METRICS]
     - [Percona Blog -- Rotating MySQL Slow Logs Safely][BLOG_LOG_ROTATION]
     - [Percona Blog -- Impact of logging on MySQL's performance][BLOG_LOGGING]
+    - [Percona Blog -- Running Custom MySQL Queries in Percona Monitoring and Management][BLOG_CUSTOM_QUERIES_MYSQL]
 
 [DASH_MYSQLUSERDETAILS]: ../../details/dashboards/dashboard-mysql-user-details.md
 [DASH_PXCGALERACLUSTER]: ../../details/dashboards/dashboard-pxc-galera-cluster-summary.md
@@ -453,6 +457,7 @@ Open the [*PXC/Galera Cluster Summary* dashboard][DASH_PXCGALERACLUSTER].
 [PERCONA_XTRADB_CLUSTER]: https://www.percona.com/software/mysql-database/percona-xtradb-cluster
 [ORACLE_MYSQL]: https://www.mysql.com/
 [MARIADB]: https://mariadb.org/
+[BLOG_CUSTOM_QUERIES_MYSQL]: https://www.percona.com/blog/2020/06/10/running-custom-queries-in-percona-monitoring-and-management/
 [BLOG_INNODB_METRICS]: https://www.percona.com/blog/2014/11/18/mysqls-innodb_metrics-table-how-much-is-the-overhead/
 [BLOG_LOGGING]: https://www.percona.com/blog/2009/02/10/impact-of-logging-on-mysql%E2%80%99s-performance/
 [BLOG_LOG_ROTATION]: https://www.percona.com/blog/2013/04/18/rotating-mysql-slow-logs-safely/
