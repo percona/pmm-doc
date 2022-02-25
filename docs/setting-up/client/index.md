@@ -22,45 +22,7 @@ If you need to, you can [unregister](#unregister), [remove services](#remove-ser
 
 Here's an overview of the choices.
 
-```plantuml
-@startuml "setting-up_client"
-!include docs/_images/plantuml_styles.puml
-split
-    -[hidden]->
-    partition "Docker" {
-            -[hidden]->
-            :""docker pull ..."";
-            :Create persistent\ndata store;
-            :""docker run ..."";
-    }
-split again
-    -[hidden]->
-    split
-        -[hidden]->
-        partition "Package manager" {
-            split
-                -[hidden]->
-                :Set up\n""percona-release"";
-                :""apt install"";
-            split again
-                -[hidden]->
-                :Download "".deb""/"".rpm"";
-                :""dpkg -i *.deb""\n""dnf localinstall *.rpm"";
-            end split
-        }
-    split again
-        partition "Binary package" {
-        -[hidden]->
-        :Download &\nverify;
-        :Unpack & \ninstall;
-        }
-    end split
-    :Set up pmm-agent;
-end split
-:Register;
-:Add services;
-@enduml
-```
+![!image](../../_images/PMM_Client_Setup.png)
 
 ## Before you start
 
@@ -307,6 +269,14 @@ dnf localinstall *.rpm
     ```sh
     pmm-admin status
     ```
+    
+    !!! hint PMM-Agent can be updated from tarball:
+
+     1. Download tar.gz with pmm2-client.
+     2. Extract it.
+     3. Run ./install_tarball script with the "-u" flag.
+
+    The configuration file will be overwritten if you do not provide the "-u" flag while the pmm-agent is updated.
 
 ## Register
 
