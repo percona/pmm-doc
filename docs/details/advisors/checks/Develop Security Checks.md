@@ -7,7 +7,7 @@ As a developer, you can create custom checks to cover additional use cases that 
 A check is a combination of:
 
 - SQL query or MongoDB query document for extracting data from the database;
-- Python script for converting extracted data into check results. This is actually a [starlark-go](https://github.com/google/starlark-go) script – [an extension](https://github.com/google/starlark-go/blob/master/doc/spec.md#dialect-differences) of the [original Starlark language](https://docs.bazel.build/versions/main/skylark/language.html) that adds more imperative features from the Python. Script's execution environment is sandboxed; no I/O can be done from it.
+- Python script for converting extracted data into check results. This is actually a [Starlark](https://github.com/google/starlark-go) script – a Python dialect that adds more imperative features from the Python. Script's execution environment is sandboxed; no I/O can be done from it.
 
 All checks in the first phase (and most of the planned ones) are self-contained. This means that extracted data is processed on the PMM side and not sent back to the SaaS. 
 
@@ -175,6 +175,8 @@ checks:
 
 Check script assumes that there is a function with a fixed name *check* that accepts a *list* of *dicts* containing returned rows for SQL databases and documents for MongoDB. It returns zero, one, or several check results that are then converted to alerts.
 
+Another function that should be implemented is **check_context**. PMM 2.12.0 and earlier use **context**, while newer versions use **check_context**. Both have the same meaning.
+
 The single query means that currently you cannot implement some advanced checks that would require several queries (and can't be implemented using SQL UNION). 
 
 Checks format and the current STT UI use different terminology for severities. Here is how different formats show up on the UI:
@@ -212,7 +214,7 @@ Our UI in Grafana uses Alertmanager API v2 to get information about failed secur
 
 1.  Download the latest PMM Server and PMM Client builds:
 
-    - PMM Server: *docker pull perconalab/pmm-server:dev-latest*
+    - PMM Server: [percona/pmm-server:2](https://www.percona.com/software/pmm/quickstart#)
     - PMM Client: *pmm2-client-2.9.1.tar.gz*
 2. Run PMM Server with special environment variables:
 
@@ -223,7 +225,8 @@ Our UI in Grafana uses Alertmanager API v2 to get information about failed secur
 
 
 
-    ```yaml docker run -p 80:80 -p 443:443 --name pmm-server \
+    ```
+    docker run -p 80:80 -p 443:443 --name pmm-server \
 
     -e PMM_DEBUG=1 \
     -e PERCONA_TEST_CHECKS_FILE=/srv/custom-checks.yml \
