@@ -4,12 +4,6 @@ The Security Threat Tool in PMM offers a set of checks that can detect common se
 As a developer, you can create custom checks to cover additional use cases that are relevant to your specific database infrastructure. 
 
 ## Check components
-<<<<<<< HEAD
-=======
-
-An advisor is a new feature being developed for PMM as part of the Percona Platform offering. While very similar to the Security Threat Tool, they have been created to be more encompassing of the needs of the end users by branching beyond the security realm. At its simplest, the advisors are informational checks run from PMM that can query the PMM database or the database server directly to perform specific checks against items that are valuable to the end user. These can include a variety of items such as, identifying security issues, configuration problems, performance concerns, policy compliance etc. The advisors are intended to increase in complexity and information in accordance with the level of entitlement of the user. This entitlement mapping is defined later in this document. 
-
->>>>>>> 02835aaeef9153567adb85e0fbfbb4f05307ac09
 A check is a combination of:
 
 - SQL query or MongoDB query document for extracting data from the database.
