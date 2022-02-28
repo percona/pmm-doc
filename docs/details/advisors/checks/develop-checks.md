@@ -4,14 +4,9 @@ The Security Threat Tool in PMM offers a set of checks that can detect common se
 As a developer, you can create custom checks to cover additional use cases that are relevant to your specific database infrastructure. 
 
 ## Check components
-
-An advisor is a new feature being developed for PMM as part of the Percona Platform offering. While very similar to the Security Threat Tool, they have been created to be more encompassing of the needs of the end users by branching beyond the security realm. At its simplest, the advisors are informational checks run from PMM that can query the PMM database or the database server directly to perform specific checks against items that are valuable to the end user. These can include a variety of items such as, identifying security issues, configuration problems, performance concerns, policy compliance etc. The advisors are intended to increase in complexity and information in accordance with the level of entitlement of the user. This entitlement mapping is defined later in this document. 
-
-
-
 A check is a combination of:
 
-- SQL query or MongoDB query document for extracting data from the database;
+- SQL query or MongoDB query document for extracting data from the database.
 - Python script for converting extracted data into check results. This is actually a [Starlark](https://github.com/google/starlark-go) script – a Python dialect that adds more imperative features from the Python. Script's execution environment is sandboxed; no I/O can be done from it.
 
 All checks in the first phase (and most of the planned ones) are self-contained. This means that extracted data is processed on the PMM side and not sent back to the SaaS. 
@@ -215,7 +210,6 @@ Checks format and the current STT UI use different terminology for severities. H
 Our UI in Grafana uses Alertmanager API v2 to get information about failed security checks.
 
 ## Develop custom checks
-
 
 1.  Download the latest PMM Server and PMM Client builds:
 
