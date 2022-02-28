@@ -222,8 +222,6 @@ Our UI in Grafana uses Alertmanager API v2 to get information about failed secur
     - *PERCONA_TEST_CHECKS_DISABLE_START_DELAY=true* to disable the default check execution start delay, which is currently set to 1 minute, so that checks are run immediately upon system start
     - *PERCONA_TEST_CHECKS_RESEND_INTERVAL=2s* to define the frequency for sending the SA-based alerts to Alertmanager.
 
-
-
     ```
     docker run -p 80:80 -p 443:443 --name pmm-server \
 
@@ -232,6 +230,7 @@ Our UI in Grafana uses Alertmanager API v2 to get information about failed secur
     -e PERCONA_TEST_CHECKS_DISABLE_START_DELAY=true
     -e PERCONA_TEST_CHECKS_RESEND_INTERVAL=2s \
     perconalab/pmm-server:dev-latest
+    ```
 
 3. Log in to Grafana (admin/admin) and enable STT in the settings: http://127.0.0.1/graph/d/pmm-settings/pmm-settings
 
@@ -254,7 +253,6 @@ docker exec -it pmm-server bash
 # print and watch the logs
 supervisorctl tail -f pmm-managed
 ```
-
 
 ## Sumbit feedback
 We welcome your feedback on the current process for developing and debugging checks. Send us your comments over [Slack](percona.slack.com) or post a question on the [Percona Forums](https://forums.percona.com/).
