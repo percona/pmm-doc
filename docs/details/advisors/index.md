@@ -1,6 +1,6 @@
 # Advisor Documentation
 
-## How to develop security checks ()
+## [How to develop security checks](./checks/develop-checks.md)
 
 ## MySQL Advisors
 
