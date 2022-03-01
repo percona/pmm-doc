@@ -1,8 +1,10 @@
 # Details
 
-- [Architecture](architecture.md): high-level architecture and main components.
+- [Architecture](architecture.md): High-level architecture and main components.
 
 - [User interface components](interface.md): Descriptions of the main menus and icons.
+
+- [Advisors](advisors/index.md): Database and security advisors.
 
 - [Dashboards reference](dashboards/index.md): A complete list of dashboards by category, with screenshots.
 
@@ -12,6 +14,6 @@
 
 - [API](api.md): How to access the Swagger API.
 
-- [VictoriaMetrics](victoria-metrics.md): the third-party monitoring solution and time-series database that replaced Prometheus in [PMM 2.12.0](../release-notes/2.12.0.md).
+- [VictoriaMetrics](victoria-metrics.md): The monitoring solution and time-series database that replaced Prometheus in [PMM 2.12.0](../release-notes/2.12.0.md).
 
 - [Glossary](glossary.md): A list of obscure terms and definitions.
