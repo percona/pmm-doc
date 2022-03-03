@@ -23,6 +23,10 @@ From the left menu, select <i class="uil uil-database"></i> *DBaaS*.
 
 ### Add a Kubernetes cluster
 
+!!! caution alert alert-warning "Caution"
+    Ensure that you set the <i class="uil uil-cog"></i> *Configuration* → <i class="uil uil-setting"></i> *Settings* → *Advanced Settings* before creating a Kubernetes cluster. Otherwise, PMM would not monitor this cluster.
+
+
 !!! note alert alert-primary ""
     PXC and PSMDB operators are installed as part of the Kubernetes cluster registration process. It enables you to deploy database clusters into the Kubernetes cluster.
     
