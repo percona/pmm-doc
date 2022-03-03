@@ -13,3 +13,7 @@
 
 - [MongoDB journal enabled](./checks/mongodb-journal.md)
 - [MongoDB logLevel is not default](./checks/mongodb-log-messages.md)
+
+## MongoDB Advisors
+
+- [PostgreSQL Archiver is failing](./checks/performance-pg-archiver-failing.md)

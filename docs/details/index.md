@@ -9,8 +9,9 @@
 - [Dashboards reference](dashboards/index.md): A complete list of dashboards by category, with screenshots.
 
 - Commands:
-    - [pmm-admin](commands/pmm-admin.md): The manual page for the PMM administration tool.
-    - [pmm-agent](commands/pmm-agent.md): The manual page for the PMM Client agent program.
+
+  - [pmm-admin](commands/pmm-admin.md): The manual page for the PMM administration tool.
+  - [pmm-agent](commands/pmm-agent.md): The manual page for the PMM Client agent program.
 
 - [API](api.md): How to access the Swagger API.
 
