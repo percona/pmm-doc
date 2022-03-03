@@ -24,7 +24,7 @@ From the left menu, select <i class="uil uil-database"></i> *DBaaS*.
 ### Add a Kubernetes cluster
 
 !!! caution alert alert-warning "Caution"
-    Ensure that you set *PMM Public Address* under <i class="uil uil-cog"></i> *Configuration* → <i class="uil uil-setting"></i> *Settings* → *Advanced Settings* before creating a Kubernetes cluster. Otherwise, PMM would not monitor this cluster.
+    Ensure that you set *PMM Public Address* under <i class="uil uil-cog"></i> *Configuration* → <i class="uil uil-setting"></i> *Settings* → *Advanced Settings* before creating a Kubernetes cluster. Otherwise, PMM would not monitor the database clusters created in this Kubernetes cluster.
 
 
 !!! note alert alert-primary ""
