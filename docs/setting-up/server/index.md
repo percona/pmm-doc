@@ -30,3 +30,7 @@
 [virtual appliance]: virtual-appliance.md
 [Amazon AWS]: aws.md
 [easy install]: easy-install.md
+
+1. Authenticating using API:
+
+    For adding clients to the PMM server, you use the `admin` user. However, if you change the password for the admin user, then the clients will not be able to access PMM, and the admin user will be locked out due to unsuccessful login attempts. The solution is to use [API key](../../details/api.md#api-keys-and-authentication) for authentication. You can use API keys as a replacement for basic authentication.
