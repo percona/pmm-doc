@@ -184,17 +184,16 @@ The single query means that currently you cannot implement some advanced checks 
 
 Checks format and the current STT UI use different terminology for severities. Here is how different formats show up on the UI:
 
-| Format | UI  |     |
-| ------ | --- | :-: |
-
-|emergency  
-|alert||
-|critical|
-|error| Critical
-|warning| Major|
-|notice|Trivial|
-|info |
-| debug |
+| Format    | UI       |
+| --------- | -------- |
+| emergency |          |
+| alert     |          |
+| critical  |          |
+| error     | Critical |
+| warning   | Major    |
+| notice    | Trivial  |
+| info      |          |
+| debug     |          |
 
 ## Backend
 
