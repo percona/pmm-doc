@@ -136,6 +136,10 @@
 <p><div class="lightgallery"><a data-sub-html="" href="../_images/PMM_DBaaS_Kubernetes_Cluster_Panel.jpg"><img alt="" src="../_images/PMM_DBaaS_Kubernetes_Cluster_Panel.jpg" /></a></div></p>
 <h2 id="kubernetes-clusters">Kubernetes clusters<a class="headerlink" href="#kubernetes-clusters" title="Permanent link">&para;</a></h2>
 <h3 id="add-a-kubernetes-cluster">Add a Kubernetes cluster<a class="headerlink" href="#add-a-kubernetes-cluster" title="Permanent link">&para;</a></h3>
+<div class="admonition caution alert alert-warning">
+<p class="admonition-title">Caution</p>
+<p>Ensure that you set PMM <em>Public Address</em> under <i class="uil uil-cog"></i> <em>Configuration</em> → <i class="uil uil-setting"></i> <em>Settings</em> → <em>Advanced Settings</em> before creating a Kubernetes cluster. Otherwise, PMM would <strong>not</strong> monitor the Kubernetes cluster along with the associated database clusters.</p>
+</div>
 <div class="admonition note alert alert-primary">
 <p>PXC and PSMDB operators are installed as part of the Kubernetes cluster registration process. It enables you to deploy database clusters into the Kubernetes cluster.</p>
 <p>If a public address is set VM Operator is also installed as part of the Kubernetes cluster registration process. It lets you monitor a kubernetes cluster via PMM.</p>
@@ -391,7 +395,7 @@ For information on obtaining these, see the <a href="https://docs.aws.amazon.com
 <p><div class="lightgallery"><a data-sub-html="DBaaS Update" href="../_images/PMM_DBaaS_DB_Cluster_Update_menu.png"><img alt="DBaaS Update" src="../_images/PMM_DBaaS_DB_Cluster_Update_menu.png" /></a></div></p>
 </li>
 <li>
-<p>Confirm the update by clicking on <em>Update</em>, or abadon by clicking <em>Cancel</em>.</p>
+<p>Confirm the update by clicking on <em>Update</em>, or abandon by clicking <em>Cancel</em>.</p>
 <p><div class="lightgallery"><a data-sub-html="DBaaS Update Confirmation" href="../_images/PMM_DBaaS_DB_Cluster_Update_confirmation.png"><img alt="DBaaS Update Confirmation" src="../_images/PMM_DBaaS_DB_Cluster_Update_confirmation.png" /></a></div></p>
 </li>
 </ol>
@@ -406,7 +410,7 @@ For information on obtaining these, see the <a href="https://docs.aws.amazon.com
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2022-01-19
+            <i class="uil uil-refresh"></i> Page updated 2022-03-04
         </li>
         
     </ul>

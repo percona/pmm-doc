@@ -1,0 +1,1420 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<title>Percona Monitoring and Management &mdash; Develop Security Checks</title>
+
+<head>
+    
+
+
+    
+<script src="../../../js/version-select.js" type="text/javascript"></script>
+
+<script src="../../../js/toctree.js" type="text/javascript"></script>
+
+<script src="../../../js/lightgallery.min.js" type="text/javascript"></script>
+
+
+<script>
+    var elements = document.getElementsByClassName("lightgallery");
+    for(var i=0; i<elements.length; i++) {
+       lightGallery(elements[i]);
+    }
+</script>
+
+    <link rel="top" title="" href="https://www.percona.com/doc/percona-monitoring-and-management/2.x" />
+    
+    
+</head>
+
+<body>
+    <div class="container">
+        
+<link rel="stylesheet" href="../../../css/version-select.css" type="text/css">
+<link rel="stylesheet" href="../../../css/toctree.css" type="text/css">
+
+        
+<script src="../../../js/version-select.js" type="text/javascript"></script>
+
+<script src="../../../js/toctree.js" type="text/javascript"></script>
+
+<script src="../../../js/lightgallery.min.js" type="text/javascript"></script>
+
+
+<script>
+    var elements = document.getElementsByClassName("lightgallery");
+    for(var i=0; i<elements.length; i++) {
+       lightGallery(elements[i]);
+    }
+</script>
+
+        <div class="document row">
+            <div class="documentwrapper col-md-9 col-md-push-3">
+                
+<div class="related row">
+    <ul class="nav nav-pills">
+        
+        
+        <li>
+            <a href="https://www.percona.com/doc/percona-monitoring-and-management/2.x">Home</a>
+        </li>
+    </ul>
+</div>
+
+                
+
+<div class="small">
+    <ul class="list-inline">
+        <li class="pull-right">
+            <a href="https://github.com/percona/pmm-doc/edit/main/docs/details/advisors/checks/develop-checks.md" target="_blank" title=""><i class="uil uil-pen"></i> <b>Edit this page</b></a>
+        </li>
+    </ul>
+</div>
+
+
+                <div class="bodywrapper">
+                    <div class="body">
+                        <h1 id="develop-security-checks">Develop Security Checks<a class="headerlink" href="#develop-security-checks" title="Permanent link">&para;</a></h1>
+<p>The Security Threat Tool in PMM offers a set of checks that can detect common security threats, performance degradation, data loss and data corruption. </p>
+<p>As a developer, you can create custom checks to cover additional use cases that are relevant to your specific database infrastructure. </p>
+<h2 id="check-components">Check components<a class="headerlink" href="#check-components" title="Permanent link">&para;</a></h2>
+<p>A check is a combination of:</p>
+<ul>
+<li>SQL query or MongoDB query document for extracting data from the database.</li>
+<li>Python script for converting extracted data into check results. This is actually a <a href="https://github.com/google/starlark-go">Starlark</a> script – a Python dialect that adds more imperative features from the Python. Script&rsquo;s execution environment is sandboxed; no I/O can be done from it.</li>
+</ul>
+<p>All checks in the first phase (and most of the planned ones) are self-contained. This means that extracted data is processed on the PMM side and not sent back to the SaaS. </p>
+<p>On the other hand, checks results and other metadata can be sent to SaaS to implement a history feature if the user opted-in and is entitled.</p>
+<p>For example, below is a single check that returns the static result:</p>
+<div class="highlight"><pre><span></span><code>---
+checks:
+    - version: 1
+      name: example
+      summary: Example check
+      description: This check is just an example.
+      tiers: [anonymous, registered]
+      type: MONGODB_BUILDINFO
+      script: |
+        def check(docs):
+            # for compatibility with PMM Server &lt; 2.12
+            context = {
+                &quot;format_version_num&quot;: format_version_num,
+                &quot;parse_version&quot;: parse_version,
+            }
+            return check_context(docs, context)
+
+
+        def check_context(docs, context):
+            # `docs` is a frozen (deeply immutable) list of dicts where each dict represents a single document in result set.
+            # `context` is a dict with additional functions.
+            #
+            # Global `print` and `fail` functions are available.
+            #
+            # `check_context` function is expected to return a list of dicts that are then converted to alerts;
+            # in particular, that list can be empty.
+            # Any other value (for example, string) is treated as script execution failure
+            # (Starlark does not support Python exceptions);
+            # it is recommended to use global function `fail` for that instead.
+
+            format_version_num = context.get(&quot;format_version_num&quot;, fail)
+            parse_version = context.get(&quot;parse_version&quot;, fail)
+
+            print(&quot;first doc =&quot;, repr(docs[0]))
+
+            return [{
+                &quot;summary&quot;: &quot;Example summary&quot;,
+                &quot;description&quot;: &quot;Example description&quot;,
+                &quot;severity&quot;: &quot;warning&quot;,
+                &quot;labels&quot;: {
+                    &quot;version&quot;: format_version_num(10203),
+                }
+            }]
+ ```
+
+Here is a much more realistic example:
+```yaml
+---
+checks:
+    - version: 1
+      name: mongodb_version
+      summary: MongoDB Version
+      description: This check returns warnings if MongoDB/PSMDB version is not the latest one.
+      tiers: [anonymous, registered]
+      type: MONGODB_BUILDINFO
+      script: |
+        LATEST_VERSIONS = {
+            &quot;mongodb&quot;: {
+                &quot;3.6&quot;: 30620,  # https://docs.mongodb.com/manual/release-notes/3.6/
+                &quot;4.0&quot;: 40020,  # https://docs.mongodb.com/manual/release-notes/4.0/
+                &quot;4.2&quot;: 40210,  # https://docs.mongodb.com/manual/release-notes/4.2/
+                &quot;4.4&quot;: 40401,  # https://docs.mongodb.com/manual/release-notes/4.4/
+            },
+            &quot;percona&quot;: {
+                &quot;3.6&quot;: 30620,  # https://www.percona.com/downloads/percona-server-mongodb-3.6/
+                &quot;4.0&quot;: 40020,  # https://www.percona.com/downloads/percona-server-mongodb-4.0/
+                &quot;4.2&quot;: 40209,  # https://www.percona.com/downloads/percona-server-mongodb-4.2/
+                &quot;4.4&quot;: 40401,  # https://www.percona.com/downloads/percona-server-mongodb-4.4/
+            },
+        }
+
+
+        def check(docs):
+            # for compatibility with PMM Server &lt; 2.12
+            context = {
+                &quot;format_version_num&quot;: format_version_num,
+                &quot;parse_version&quot;: parse_version,
+            }
+            return check_context(docs, context)
+
+
+        def check_context(docs, context):
+            # `docs` is a frozen (deeply immutable) list of dicts where each dict represents a single document in result set.
+            # `context` is a dict with additional functions.
+            #
+            # Global `print` and `fail` functions are available.
+            #
+            # `check_context` function is expected to return a list of dicts that are then converted to alerts;
+            # in particular, that list can be empty.
+            # Any other value (for example, string) is treated as script execution failure
+            # (Starlark does not support Python exceptions);
+            # it is recommended to use global function `fail` for that instead.
+
+            &quot;&quot;&quot;
+            This check returns warnings if MongoDB/PSMDB version is not the latest one.
+            &quot;&quot;&quot;
+
+            format_version_num = context.get(&quot;format_version_num&quot;, fail)
+            parse_version = context.get(&quot;parse_version&quot;, fail)
+
+            if len(docs) != 1:
+                return &quot;Unexpected number of documents&quot;
+
+            info = docs[0]
+
+            # extract information
+            is_percona = &#39;psmdbVersion&#39; in info
+
+            # parse_version returns a dict with keys: major, minor, patch, rest, num
+            version = parse_version(info[&quot;version&quot;])
+            print(&quot;version =&quot;, repr(version))
+            num = version[&quot;num&quot;]
+            mm = &quot;{}.{}&quot;.format(version[&quot;major&quot;], version[&quot;minor&quot;])
+
+            results = []
+
+            if is_percona:
+                latest = LATEST_VERSIONS[&quot;percona&quot;][mm]
+                if latest &gt; num:
+                    results.append({
+                        &quot;summary&quot;: &quot;Newer version of Percona Server for MongoDB is available&quot;,
+                        &quot;description&quot;: &quot;Current version is {}, latest available version is {}.&quot;.format(format_version_num(num), format_version_num(latest)),
+                        &quot;severity&quot;: &quot;warning&quot;,
+                        &quot;labels&quot;: {
+                            &quot;current&quot;: format_version_num(num),
+                            &quot;latest&quot;:  format_version_num(latest),
+                        },
+                    })
+
+                return results
+
+            if True:  # MongoDB
+                latest = LATEST_VERSIONS[&quot;mongodb&quot;][mm]
+                if latest &gt; num:
+                    results.append({
+                        &quot;summary&quot;: &quot;Newer version of MongoDB is available&quot;,
+                        &quot;description&quot;: &quot;Current version is {}, latest available version is {}.&quot;.format(format_version_num(num), format_version_num(latest)),
+                        &quot;severity&quot;: &quot;warning&quot;,
+                        &quot;labels&quot;: {
+                            &quot;current&quot;: format_version_num(num),
+                            &quot;latest&quot;:  format_version_num(latest),
+                        },
+                    })
+
+                return results
+</code></pre></div>
+<h2 id="check-fields">Check fields<a class="headerlink" href="#check-fields" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Version</strong> (integer, required) defines what other check properties are expected, what types are supported, what is expected from the script and what it can expect from the execution environment, etc.</li>
+<li><strong>Name</strong> (string, required) defined machine-readable name (ID).</li>
+<li><strong>Summary</strong> (string, required) defines short human-readable summary.</li>
+<li><strong>Description</strong> (string, required) defines long human-readable description.</li>
+<li><strong>Type</strong> (string/enum, required) defines PMM Service type for which check is performed and query type.</li>
+<li><strong>Query</strong> (string, optional) contains a SQL query or MongoDB query document (as a string with proper quoting) which is executed on the PMM Client side. It may be absent if type defines the whole query by itself.</li>
+<li><strong>Script</strong> (string, required) contains a small Python program that processes query results, and returns check results. It is executed on the PMM Server side.</li>
+</ul>
+<p>Check script assumes that there is a function with a fixed name <em>check</em> that accepts a <em>list</em> of <em>dicts</em> containing returned rows for SQL databases and documents for MongoDB. It returns zero, one, or several check results that are then converted to alerts.</p>
+<p>Another function that should be implemented is <strong>check_context</strong>. PMM 2.12.0 and earlier use <strong>context</strong>, while newer versions use <strong>check_context</strong>. Both have the same meaning.</p>
+<p>The single query means that currently you cannot implement some advanced checks that would require several queries (and can&rsquo;t be implemented using SQL UNION). </p>
+<p>Checks format and the current STT UI use different terminology for severities. Here is how different formats show up on the UI:</p>
+<table class="table">
+<thead>
+<tr>
+<th scope="col">Format</th>
+<th scope="col">UI</th>
+<th align="center"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>emergency</td>
+<td></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td>alert</td>
+<td></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td>critical</td>
+<td></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td>error</td>
+<td>Critical</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td>warning</td>
+<td>Major</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td>notice</td>
+<td>Trivial</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td>info</td>
+<td></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td>debug</td>
+<td></td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+<h2 id="backend">Backend<a class="headerlink" href="#backend" title="Permanent link">&para;</a></h2>
+<p><div class="lightgallery"><a data-sub-html="" href="../../../_images/BackendSTT.png"><img alt="" src="../../../_images/BackendSTT.png" /> </a></div></p>
+<ol>
+<li>pmm-managed checks that this installation is opted-in into STT.</li>
+<li>pmm-managed downloads checks file from SaaS.</li>
+<li>pmm-managed verifies file signatures using a list of hard-coded public keys. At least one signature should be correct.</li>
+<li>pmm-managed sends queries to pmm-agent and gathers results.</li>
+<li>pmm-managed executes check scripts that produce alert information.</li>
+<li>pmm-managed sends alerts to Alertmanager.<ul>
+<li>Due to Alertmanager design, pmm-managed has to send and re-send alerts to it much more often than the frequency of check execution. That&rsquo;s expected, and not important for using STT, but important for understanding how it works.</li>
+<li>Currently, Prometheus is not involved.</li>
+</ul>
+</li>
+</ol>
+<h2 id="frontend">Frontend<a class="headerlink" href="#frontend" title="Permanent link">&para;</a></h2>
+<p><div class="lightgallery"><a data-sub-html="" href="../../../_images/FrontEndSTT.png"><img alt="" src="../../../_images/FrontEndSTT.png" /> 
+Our UI in Grafana uses Alertmanager API v2 to get information about failed security checks.</a></div></p>
+<h2 id="develop-custom-checks">Develop custom checks<a class="headerlink" href="#develop-custom-checks" title="Permanent link">&para;</a></h2>
+<ol>
+<li>
+<p>Download the latest PMM Server and PMM Client builds:</p>
+<ul>
+<li>PMM Server: <a href="https://www.percona.com/software/pmm/quickstart#">percona/pmm-server:2</a></li>
+<li>PMM Client: <em>pmm2-client-2.9.1.tar.gz</em></li>
+<li>
+<p>Run PMM Server with special environment variables:</p>
+</li>
+<li>
+<p><em>PMM_DEBUG=1</em> to enable debug output that would be useful later;</p>
+</li>
+<li><em>PERCONA_TEST_CHECKS_FILE=/srv/custom-checks.yml</em> to use checks from the local files instead of downloading them from the SaaS</li>
+<li><em>PERCONA_TEST_CHECKS_DISABLE_START_DELAY=true</em> to disable the default check execution start delay, which is currently set to 1 minute, so that checks are run immediately upon system start</li>
+<li><em>PERCONA_TEST_CHECKS_RESEND_INTERVAL=2s</em> to define the frequency for sending the SA-based alerts to Alertmanager.</li>
+</ul>
+<div class="highlight"><pre><span></span><code>docker run -p 80:80 -p 443:443 --name pmm-server \
+
+-e PMM_DEBUG=1 \
+-e PERCONA_TEST_CHECKS_FILE=/srv/custom-checks.yml \
+-e PERCONA_TEST_CHECKS_DISABLE_START_DELAY=true
+-e PERCONA_TEST_CHECKS_RESEND_INTERVAL=2s \
+perconalab/pmm-server:dev-latest
+</code></pre></div>
+</li>
+<li>
+<p>Log in to Grafana (admin/admin) and enable STT in the settings: http://127.0.0.1/graph/d/pmm-settings/pmm-settings</p>
+</li>
+</ol>
+<p><div class="lightgallery"><a data-sub-html="" href="../../../_images/Grafana.png"><img alt="" src="../../../_images/Grafana.png" /> </a></div></p>
+<ol>
+<li>
+<p>Create <em>/srv/custom-checks.yml</em> inside a Docker container with the content from the Security Advisor (Security Threat Tool) section above.</p>
+</li>
+<li>
+<p>STT checks will run with a time interval defined via UI. You can see the result of running the advisor on the home dashboard:</p>
+</li>
+</ol>
+<p><div class="lightgallery"><a data-sub-html="" href="../../../_images/HomeDashboard.png"><img alt="" src="../../../_images/HomeDashboard.png" /> </a></div></p>
+<ol>
+<li>Click on the number of failed checks to open the Failed Checks dashboard:</li>
+</ol>
+<p><div class="lightgallery"><a data-sub-html="" href="../../../_images/FailedChecks.png"><img alt="" src="../../../_images/FailedChecks.png" /> </a></div></p>
+<ol>
+<li>Go into Docker container to output the logs of pmm-managed and read STT logs:
+<div class="highlight"><pre><span></span><code># get inside the container
+docker exec -it pmm-server bash
+# print and watch the logs
+supervisorctl tail -f pmm-managed
+</code></pre></div></li>
+</ol>
+<h2 id="sumbit-feedback">Sumbit feedback<a class="headerlink" href="#sumbit-feedback" title="Permanent link">&para;</a></h2>
+<p>We welcome your feedback on the current process for developing and debugging checks. Send us your comments over <a href="percona.slack.com">Slack</a> or post a question on the <a href="https://forums.percona.com/">Percona Forums</a>.</p>
+                    </div>
+                </div>
+                
+<div class="small">
+    <ul class="list-inline">
+        
+        <li class="left">
+            <i class="uil uil-refresh"></i> Page updated 2022-02-28
+        </li>
+        
+    </ul>
+</div>
+
+                
+<div class="related row">
+    <ul class="nav nav-pills">
+        
+        
+        <li>
+            <a href="https://www.percona.com/doc/percona-monitoring-and-management/2.x">Home</a>
+        </li>
+    </ul>
+</div>
+
+            </div>
+            
+<div class="sphinxsidebar col-md-3 col-md-pull-9">
+    <div class="sphinxsidebarwrapper">
+        {@ product_logo @}
+        {@ product_pdf_download @}
+        
+<section class="select-wrapper" id="version-select-wrapper">
+    <!-- Empty locator section for version selector -->
+</section>
+
+        <h3 id="toctree-heading"><a href="https://www.percona.com/doc/percona-monitoring-and-management/2.x">Contents</a></h3>
+        
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l1">
+    <a class="reference internal" href="../../../index.html">Welcome</a>
+
+
+
+
+<li class="toctree-l1">
+    <a class="reference internal" href="../../../setting-up/index.html">Setting up</a>
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../../setting-up/server/index.html">Server</a>
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../../setting-up/server/network.html">Network</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../../setting-up/server/docker.html">Docker</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../../setting-up/server/virtual-appliance.html">Virtual Appliance</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../../setting-up/server/aws.html">AWS Marketplace</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../../setting-up/server/easy-install.html">Easy-install script</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../../setting-up/server/dbaas.html">DBaaS</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../../setting-up/client/index.html">Client</a>
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../../setting-up/client/mysql.html">MySQL</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../../setting-up/client/mongodb.html">MongoDB</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../../setting-up/client/postgresql.html">PostgreSQL</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../../setting-up/client/proxysql.html">ProxySQL</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../../setting-up/client/aws.html">Amazon RDS</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../../setting-up/client/azure.html">Microsoft Azure</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../../setting-up/client/google.html">Google Cloud Platform</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../../setting-up/client/linux.html">Linux</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../../setting-up/client/external.html">External Services</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../../setting-up/client/haproxy.html">HAProxy</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../../setting-up/client/remote.html">Remote instances</a>
+
+
+
+</ul>
+
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l1">
+    <a class="reference internal" href="../../../using/index.html">Using</a>
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../../using/interface.html">User Interface</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../../using/alerting.html">Integrated Alerting</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../../using/backup.html">Backup and Restore</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../../using/query-analytics.html">Query Analytics</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../../using/dbaas.html">DBaaS</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../../using/security-threat-tool.html">Security Threat Tool</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l1">
+    <a class="reference internal" href="../../../how-to/index.html">How to</a>
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../../how-to/configure.html">Configure</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../../how-to/manage-users.html">Manage users</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../../how-to/upgrade.html">Upgrade</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../../how-to/secure.html">Secure</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../../how-to/optimize.html">Optimize</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../../how-to/annotate.html">Annotate</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../../how-to/render-dashboard-images.html">Render dashboard images</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../../how-to/extend-metrics.html">Extend Metrics</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../../how-to/troubleshoot.html">Troubleshoot</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l1">
+    <a class="reference internal" href="../../index.html">Details</a>
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../architecture.html">Architecture</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../interface.html">UI components</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../dashboards/index.html">Dashboards</a>
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../dashboards/dashboard-home.html">Insight</a>
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../dashboards/dashboard-advanced-data-exploration.html">Advanced Data Exploration</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../dashboards/dashboard-victoriametrics.html">VictoriaMetrics</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../dashboards/dashboard-victoriametrics-agents-overview.html">VictoriaMetrics Agents Overview</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../dashboards/dashboard-inventory.html">PMM</a>
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../dashboards/dashboard-env-overview.html">Environment Overview</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../dashboards/dashboard-environent-summary.html">Environment Summary</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../dashboards/dashboard-cluster-summary.html">DBaas</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../dashboards/dashboard-cpu-utilization-details.html">OS Dashboards</a>
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../dashboards/dashboard-disk-details.html">Disk Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../dashboards/dashboard-network-details.html">Network Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../dashboards/dashboard-memory-details.html">Memory Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../dashboards/dashboard-node-temperature-details.html">Node Temperature Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../dashboards/dashboard-nodes-compare.html">Nodes Compare</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../dashboards/dashboard-nodes-overview.html">Nodes Overview</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../dashboards/dashboard-node-summary.html">Node Summary</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../dashboards/dashboard-numa-details.html">NUMA Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../dashboards/dashboard-processes-details.html">Processes Details</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../dashboards/dashboard-prometheus-exporter-status.html">Prometheus Dashboards</a>
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../dashboards/dashboard-prometheus-exporters-overview.html">Prometheus Exporters Overview</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../dashboards/dashboard-mysql-amazon-aurora-details.html">MySQL Dashboards</a>
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../dashboards/dashboard-mysql-command-handler-counters-compare.html">MySQL Command/Handler Counters Compare</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../dashboards/dashboard-mysql-innodb-compression-details.html">MySQL InnoDB Compression Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../dashboards/dashboard-mysql-innodb-details.html">MySQL InnoDB Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../dashboards/dashboard-mysql-myisam-aria-details.html">MySQL MyISAM/Aria Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../dashboards/dashboard-mysql-myrocks-details.html">MySQL MyRocks Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../dashboards/dashboard-mysql-instance-summary.html">MySQL Instance Summary</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../dashboards/dashboard-mysql-instances-compare.html">MySQL Instances Compare</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../dashboards/dashboard-mysql-instances-overview.html">MySQL Instances Overview</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../dashboards/dashboard-mysql-wait-event-analyses-details.html">MySQL Wait Event Analyses Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../dashboards/dashboard-mysql-performance-schema-details.html">MySQL Performance Schema Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../dashboards/dashboard-mysql-query-response-time-details.html">MySQL Query Response Time Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../dashboards/dashboard-mysql-replication-summary.html">MySQL Replication Summary</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../dashboards/dashboard-mysql-group-replication-summary.html">MySQL Group Replication Summary</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../dashboards/dashboard-mysql-table-details.html">MySQL Table Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../dashboards/dashboard-mysql-user-details.html">MySQL User Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../dashboards/dashboard-mysql-tokudb-details.html">MySQL TokuDB Details</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../dashboards/dashboard-mongodb-cluster-summary.html">MongoDB Dashboards</a>
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../dashboards/dashboard-mongodb-instance-summary.html">MongoDB Instance Summary</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../dashboards/dashboard-mongodb-instances-overview.html">MongoDB Instances Overview</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../dashboards/dashboard-mongodb-instances-compare.html">MongoDB Instances Compare</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../dashboards/dashboard-mongodb-replset-summary.html">MongoDB ReplSet Summary</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../dashboards/dashboard-mongodb-inmemory-details.html">MongoDB InMemory Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../dashboards/dashboard-mongodb-mmapv1-details.html">MongoDB MMAPv1 Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../dashboards/dashboard-mongodb-wiredtiger-details.html">MongoDB WiredTiger Details</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../dashboards/dashboard-postgresql-instances-overview.html">PostgreSQL Dashboards</a>
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../dashboards/dashboard-postgresql-instance-summary.html">PostgreSQL Instance Summary</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../dashboards/dashboard-postgresql-instances-compare.html">PostgreSQL Instances Compare</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../dashboards/dashboard-proxysql-instance-summary.html">ProxySQL Dashboards</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../dashboards/dashboard-pxc-galera-node-summary.html">HA Dashboards</a>
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../dashboards/dashboard-pxc-galera-cluster-summary.html">PXC/Galera Cluster Summary</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../dashboards/dashboard-pxc-galera-nodes-compare.html">PXC/Galera Nodes Compare</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../dashboards/dashboard-haproxy-instance-summary.html">HAProxy Instance Summary</a>
+
+
+
+</ul>
+
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../commands/index.html">Commands</a>
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../commands/pmm-admin.html">pmm-admin - PMM Administration Tool</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../commands/pmm-agent.html">pmm-agent - PMM Client agent</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../api.html">API</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../victoria-metrics.html">VictoriaMetrics</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../glossary.html">Glossary</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l1">
+    <a class="reference internal" href="../../../faq.html">FAQ</a>
+
+
+
+
+<li class="toctree-l1">
+    <a class="reference internal" href="../../../release-notes/index.html">Release Notes</a>
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../../release-notes/2.26.0.html">PMM 2.26.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../../release-notes/2.25.0.html">PMM 2.25.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../../release-notes/2.24.0.html">PMM 2.24.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../../release-notes/2.23.0.html">PMM 2.23.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../../release-notes/2.22.0.html">PMM 2.22.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../../release-notes/2.21.0.html">PMM 2.21.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../../release-notes/2.20.0.html">PMM 2.20.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../../release-notes/2.19.0.html">PMM 2.19.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../../release-notes/2.18.0.html">PMM 2.18.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../../release-notes/2.17.0.html">PMM 2.17.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../../release-notes/2.16.0.html">PMM 2.16.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../../release-notes/2.15.1.html">PMM 2.15.1</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../../release-notes/2.15.0.html">PMM 2.15.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../../release-notes/2.14.0.html">PMM 2.14.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../../release-notes/2.13.0.html">PMM 2.13.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../../release-notes/2.12.0.html">PMM 2.12.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../../release-notes/2.11.1.html">PMM 2.11.1</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../../release-notes/2.11.0.html">PMM 2.11.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../../release-notes/2.10.1.html">PMM 2.10.1</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../../release-notes/2.10.0.html">PMM 2.10.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../../release-notes/2.9.1.html">PMM 2.9.1</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../../release-notes/2.9.0.html">PMM 2.9.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../../release-notes/2.8.0.html">PMM 2.8.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../../release-notes/2.7.0.html">PMM 2.7.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../../release-notes/2.6.1.html">PMM 2.6.1</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../../release-notes/2.6.0.html">PMM 2.6.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../../release-notes/2.5.0.html">PMM 2.5.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../../release-notes/2.4.0.html">PMM 2.4.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../../release-notes/2.3.0.html">PMM 2.3.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../../release-notes/2.2.2.html">PMM 2.2.2</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../../release-notes/2.2.1.html">PMM 2.2.1</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../../release-notes/2.2.0.html">PMM 2.2.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../../release-notes/2.1.0.html">PMM 2.1.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../../release-notes/2.0.1.html">PMM 2.0.1</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../../release-notes/2.0.0.html">PMM 2.0.0</a>
+
+
+
+</ul>
+
+
+
+
+</ul>
+
+
+        
+
+
+
+        {@ product_series @}
+    </div>
+</div>
+
+            <div class="clearer"></div>
+        </div>
+    </div>
+</body>
