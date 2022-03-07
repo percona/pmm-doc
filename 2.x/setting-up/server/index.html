@@ -142,6 +142,10 @@
 <li>Use the <a href="easy-install.html">easy install</a> script.</li>
 </ul>
 </li>
+<li>
+<p>Authenticating using API keys.</p>
+<p>While adding clients to the PMM server, you use the <code>admin</code> user. However, if you change the password for the admin user from the PMM UI, then the clients will not be able to access PMM. Also, due to multiple unsuccessful login attempts Grafana will lock out the <code>admin</code> user. The solution is to use <a href="../../details/api.html#api-keys-and-authentication">API key</a> for authentication. You can use API keys as a replacement for basic authentication.</p>
+</li>
 </ol>
                     </div>
                 </div>
@@ -150,7 +154,7 @@
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-06-29
+            <i class="uil uil-refresh"></i> Page updated 2022-03-07
         </li>
         
     </ul>
