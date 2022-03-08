@@ -328,7 +328,7 @@
 </tbody>
 </table>
 <h2 id="backend">Backend<a class="headerlink" href="#backend" title="Permanent link">&para;</a></h2>
-<p><div class="lightgallery"><a data-sub-html="" href="../../../_images/BackendSTT.png"><img alt="" src="../../../_images/BackendSTT.png" /></a></div></p>
+<p><div class="lightgallery"><a data-sub-html="" href="../_images/BackendSTT.png"><img alt="" src="../_images/BackendSTT.png" /></a></div></p>
 <ol>
 <li>pmm-managed checks that this installation is opted-in into STT.</li>
 <li>pmm-managed downloads checks file from SaaS.</li>
@@ -340,7 +340,7 @@
 <li>Currently, Prometheus is not involved.</li>
 </ol>
 <h2 id="frontend">Frontend<a class="headerlink" href="#frontend" title="Permanent link">&para;</a></h2>
-<p><div class="lightgallery"><a data-sub-html="" href="../../../_images/FrontEndSTT.png"><img alt="" src="../../../_images/FrontEndSTT.png" /></a></div></p>
+<p><div class="lightgallery"><a data-sub-html="" href="../_images/FrontEndSTT.png"><img alt="" src="../_images/FrontEndSTT.png" /></a></div></p>
 <p>Our UI in Grafana uses Alertmanager API v2 to get information about failed security checks.</p>
 <h2 id="develop-custom-checks">Develop custom checks<a class="headerlink" href="#develop-custom-checks" title="Permanent link">&para;</a></h2>
 <ol>
@@ -370,18 +370,18 @@ perconalab/pmm-server:dev-latest
 </li>
 <li>
 <p>Log in to Grafana (admin/admin) and enable STT in the settings: http://127.0.0.1/graph/d/pmm-settings/pmm-settings</p>
-<p><div class="lightgallery"><a data-sub-html="" href="../../../_images/Grafana.png"><img alt="" src="../../../_images/Grafana.png" /></a></div></p>
+<p><div class="lightgallery"><a data-sub-html="" href="../_images/Grafana.png"><img alt="" src="../_images/Grafana.png" /></a></div></p>
 </li>
 <li>
 <p>Create <em>/srv/custom-checks.yml</em> inside a Docker container with the content from the Security Advisor (Security Threat Tool) section above.</p>
 </li>
 <li>
 <p>STT checks will run with a time interval defined via UI. You can see the result of running the advisor on the home dashboard:</p>
-<p><div class="lightgallery"><a data-sub-html="" href="../../../_images/HomeDashboard.png"><img alt="" src="../../../_images/HomeDashboard.png" /></a></div></p>
+<p><div class="lightgallery"><a data-sub-html="" href="../_images/HomeDashboard.png"><img alt="" src="../_images/HomeDashboard.png" /></a></div></p>
 </li>
 <li>
 <p>Click on the number of failed checks to open the Failed Checks dashboard:</p>
-<p><div class="lightgallery"><a data-sub-html="" href="../../../_images/FailedChecks.png"><img alt="" src="../../../_images/FailedChecks.png" /></a></div></p>
+<p><div class="lightgallery"><a data-sub-html="" href="../_images/FailedChecks.png"><img alt="" src="../_images/FailedChecks.png" /></a></div></p>
 </li>
 <li>
 <p>Go into Docker container to output the logs of pmm-managed and read STT logs:</p>
@@ -401,7 +401,7 @@ supervisorctl tail -f pmm-managed
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2022-03-07
+            <i class="uil uil-refresh"></i> Page updated 2022-03-08
         </li>
         
     </ul>
