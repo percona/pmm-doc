@@ -170,6 +170,20 @@ docker exec -t pmm-server change-admin-password <new_password>
 docker exec -t pmm-server bash -c 'grafana-cli --homepath /usr/share/grafana --configOverrides cfg:default.paths.data=/srv/grafana admin reset-admin-password newpass'
 ```
 
+## How to use a non-default listen-port for pmm-admin?
+
+If you configure the PMM agent to use a non-default listen-port, for pmm-admin to communicate with the agent, use the global flag `--pmm-agent-listen-port=LISTEN_PORT`.
+
+```sh
+--pmm-agent-listen-port=LISTEN_PORT
+```
+
+Example: To use the listen-port 8000
+
+
+```sh
+pmm-admin --pmm-agent-listen-port=8000 add postgresql --username=pmm-agent --password=pmm-agent-password --query-source=pgstatmonitor nameofpostgres
+```
 If you are using OVF/AMI, you can change the default password through SSH by using the following command:
 
 ```sh
