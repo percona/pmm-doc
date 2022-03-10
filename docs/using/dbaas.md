@@ -23,6 +23,11 @@ From the left menu, select <i class="uil uil-database"></i> *DBaaS*.
 
 ### Add a Kubernetes cluster
 
+!!! caution alert alert-warning "Caution"
+    Ensure that you set PMM *Public Address* under <i class="uil uil-cog"></i> *Configuration* → <i class="uil uil-setting"></i> *Settings* → *Advanced Settings* before creating a Kubernetes cluster. Otherwise, PMM would **not** monitor the Kubernetes cluster along with the associated database clusters.
+
+
+
 !!! note alert alert-primary ""
     PXC and PSMDB operators are installed as part of the Kubernetes cluster registration process. It enables you to deploy database clusters into the Kubernetes cluster.
     
@@ -234,7 +239,7 @@ A paused cluster can't be edited.
 
     ![!DBaaS Update](../_images/PMM_DBaaS_DB_Cluster_Update_menu.png)
 
-4. Confirm the update by clicking on *Update*, or abadon by clicking *Cancel*.
+4. Confirm the update by clicking on *Update*, or abandon by clicking *Cancel*.
 
     ![!DBaaS Update Confirmation](../_images/PMM_DBaaS_DB_Cluster_Update_confirmation.png)
 
