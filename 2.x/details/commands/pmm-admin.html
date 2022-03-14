@@ -375,24 +375,27 @@
 </dd>
 </dl>
 <h5 id="advanced-options">Advanced Options<a class="headerlink" href="#advanced-options" title="Permanent link">&para;</a></h5>
+<dl>
+<dd>
 <p>PMM starts the MongoDB exporter by default only with <code>diagnosticdata</code> and <code>replicasetstatus</code> collectors enabled.</p>
-<div class="highlight"><pre><span></span><code>FLAGS:
-
-`--enable-all-collectors`
-:  Enable all collectors
-
-`--disable-collectors`
-:  Comma-separated list of collector names to exclude from exporter
-
-`--max-collections-limit=-1`
-:  Disable collstats, dbstats, topmetrics and indexstats if there are more than &lt;n&gt; collections. 0: No limit. Default is -1, PMM automatically sets this value.
-
-    !!! caution &quot;&quot;
-        A very high limit of `max-collections-limit` could impact the CPU and Memory usage. Check `--stats-collections` to limit the scope of collections and DB&#39;s metrics to be fetched.
-
-`--stats-collections=db1,db2.col1`
-:  Collections for collstats &amp; indexstats
-</code></pre></div>
+<p>FLAGS:</p>
+<dl>
+<dt><code>--enable-all-collectors</code></dt>
+<dd>Enable all collectors.</dd>
+<dt><code>--disable-collectors</code></dt>
+<dd>Comma-separated list of collector names to exclude from exporter.</dd>
+<dt><code>--max-collections-limit=-1</code></dt>
+<dd>
+<p>Disable collstats, dbstats, topmetrics and indexstats if there are more than <n> collections. 0: No limit. Default is -1, PMM automatically sets this value.</p>
+<div class="admonition caution">
+<p>A very high limit of <code>max-collections-limit</code> could impact the CPU and Memory usage. Check <code>--stats-collections</code> to limit the scope of collections and DB&rsquo;s metrics to be fetched.</p>
+</div>
+</dd>
+<dt><code>--stats-collections=db1,db2.col1</code></dt>
+<dd>Collections for collstats &amp; indexstats.</dd>
+</dl>
+</dd>
+</dl>
 <h6 id="enable-all-collectors">Enable all collectors<a class="headerlink" href="#enable-all-collectors" title="Permanent link">&para;</a></h6>
 <p>To enable all collectors, pass the parameter <code>--enable-all-collectors</code> in the <code>pmm-admin add mongodb</code> command.
 This will enable <code>collstats</code>, <code>dbstats</code>, <code>indexstats</code>, and <code>topmetrics</code> collectors.</p>
@@ -823,7 +826,7 @@ Agents:
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2022-02-11
+            <i class="uil uil-refresh"></i> Page updated 2022-03-14
         </li>
         
     </ul>
