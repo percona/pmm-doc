@@ -330,10 +330,10 @@ When you remove a service, collected data remains on PMM Server for the specifie
     FLAGS:
 
     `--enable-all-collectors`
-    :  Enable all collectors
+    :  Enable all collectors.
 
     `--disable-collectors`
-    :  Comma-separated list of collector names to exclude from exporter
+    :  Comma-separated list of collector names to exclude from exporter.
 
     `--max-collections-limit=-1`
     :  Disable collstats, dbstats, topmetrics and indexstats if there are more than <n> collections. 0: No limit. Default is -1, PMM automatically sets this value.
@@ -342,7 +342,7 @@ When you remove a service, collected data remains on PMM Server for the specifie
             A very high limit of `max-collections-limit` could impact the CPU and Memory usage. Check `--stats-collections` to limit the scope of collections and DB's metrics to be fetched.
 
     `--stats-collections=db1,db2.col1`
-    :  Collections for collstats & indexstats
+    :  Collections for collstats & indexstats.
 
 
 ###### Enable all collectors
