@@ -325,15 +325,15 @@ When you remove a service, collected data remains on PMM Server for the specifie
 
 ##### Advanced Options
 
-PMM starts the MongoDB exporter by default only with `diagnosticdata` and `replicasetstatus` collectors enabled.
+:  PMM starts the MongoDB exporter by default only with `diagnosticdata` and `replicasetstatus` collectors enabled.
 
-    FLAGS:
+      FLAGS:
 
-    `--enable-all-collectors`
-    : Enable all collectors.
+      `--enable-all-collectors`
+      : Enable all collectors.
 
-    `--disable-collectors`
-    : Comma-separated list of collector names to exclude from exporter.
+      `--disable-collectors`
+      : Comma-separated list of collector names to exclude from exporter.
 
 `--max-collections-limit=-1`
 
@@ -349,7 +349,7 @@ PMM starts the MongoDB exporter by default only with `diagnosticdata` and `repli
 
 ###### Enable all collectors
 
-To enable all collectors, pass the parameter `--enable-all-collectors` in the `pmm-admin add mongodb` command.
+: To enable all collectors, pass the parameter `--enable-all-collectors` in the `pmm-admin add mongodb` command.
 This will enable `collstats`, `dbstats`, `indexstats`, and `topmetrics` collectors.
 
 ###### Disable some collectors
