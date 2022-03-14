@@ -327,25 +327,21 @@ When you remove a service, collected data remains on PMM Server for the specifie
 
 PMM starts the MongoDB exporter by default only with `diagnosticdata` and `replicasetstatus` collectors enabled.
 
-FLAGS:
+  FLAGS:
 
-`--node-id=node-id`
-:  Node ID (default is auto-detected).
-
-
-    `--enable-all-collectors`
+`--enable-all-collectors`
     :  Enable all collectors.
 
-    `--disable-collectors`
+`--disable-collectors`
     :  Comma-separated list of collector names to exclude from exporter.
 
-    `--max-collections-limit=-1`
+`--max-collections-limit=-1`
     :  Disable collstats, dbstats, topmetrics and indexstats if there are more than <n> collections. 0: No limit. Default is -1, PMM automatically sets this value.
 
-    !!! caution ""
-        A very high limit of `max-collections-limit` could impact the CPU and Memory usage. Check `--stats-collections` to limit the scope of collections and DB's metrics to be fetched.
+!!! caution ""
+    A very high limit of `max-collections-limit` could impact the CPU and Memory usage. Check `--stats-collections` to limit the scope of collections and DB's metrics to be fetched.
 
-    `--stats-collections=db1,db2.col1`
+`--stats-collections=db1,db2.col1`
     :  Collections for collstats & indexstats.
 
 
