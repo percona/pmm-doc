@@ -327,10 +327,10 @@ When you remove a service, collected data remains on PMM Server for the specifie
 
 PMM starts the MongoDB exporter by default only with `diagnosticdata` and `replicasetstatus` collectors enabled.
 
-    FLAGS:
+FLAGS:
 
-    `--node-id=node-id`
-    :  Node ID (default is auto-detected).
+`--node-id=node-id`
+:  Node ID (default is auto-detected).
 
 
     `--enable-all-collectors`
