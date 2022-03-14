@@ -329,6 +329,10 @@ PMM starts the MongoDB exporter by default only with `diagnosticdata` and `repli
 
     FLAGS:
 
+    `--node-id=node-id`
+    :  Node ID (default is auto-detected).
+
+
     `--enable-all-collectors`
     :  Enable all collectors.
 
