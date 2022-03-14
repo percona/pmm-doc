@@ -325,7 +325,7 @@ When you remove a service, collected data remains on PMM Server for the specifie
 
 ##### Advanced Options
 
-PMM starts the MongoDB exporter by default only with `diagnosticdata` and `replicasetstatus` collectors enabled.
+:  PMM starts the MongoDB exporter by default only with `diagnosticdata` and `replicasetstatus` collectors enabled.
 
     FLAGS:
 
