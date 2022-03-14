@@ -329,12 +329,11 @@ PMM starts the MongoDB exporter by default only with `diagnosticdata` and `repli
 
     FLAGS:
 
-   `--enable-all-collectors`
+    `--enable-all-collectors`
     : Enable all collectors.
 
-`--disable-collectors`
-
-    :  Comma-separated list of collector names to exclude from exporter.
+    `--disable-collectors`
+    : Comma-separated list of collector names to exclude from exporter.
 
 `--max-collections-limit=-1`
 
