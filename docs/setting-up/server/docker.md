@@ -270,6 +270,7 @@ Use the following Docker container environment variables (with `-e var=value`) t
 | `ENABLE_DBAAS`             | Enable DBaaS features.
 | `PMM_DEBUG`                | Enables a more verbose log level.
 | `PMM_TRACE`                | Enables a more verbose log level including trace-back information.
+| `PMM_PUBLIC_ADDRESS`       | External IP address on which PMM is running.
 
 ### Ignored variables
 
