@@ -1,6 +1,6 @@
 # Percona Monitoring and Management Documentation
 
-[Percona Monitoring and Management] is a database monitoring solution that is free and open-source.
+[Percona Monitoring and Management] PMM is a database monitoring solution that is free and open-source.
 
 This repo holds the source files for the official [PMM technical documentation].
 
