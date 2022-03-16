@@ -1,4 +1,4 @@
-# Percona Monitoring and Management (PMM) Documentation
+# Percona Monitoring and Management Documentation
 
 [Percona Monitoring and Management] (PMM) is a database monitoring solution that is free and open-source.
 
