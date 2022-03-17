@@ -48,7 +48,7 @@ PMM sets the following flags that allow users to set all other [VictoriaMetrics 
 To set downsampling, use the `downsampling.period` parameter as follows:
 
 ```
--e VM_downsampling.period=20d:10m,120d:2h
+-e VM_downsampling_period=20d:10m,120d:2h
 ```
 
 This instructs VictoriaMetrics to [deduplicate](https://docs.victoriametrics.com/#deduplication) samples older than 20 days with 10 mins intervals and samples older than 120 days with two-hour intervals.
