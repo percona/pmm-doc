@@ -33,6 +33,23 @@ As a result of the move to VictoriaMetrics some direct Prometheus paths are no l
 | `/prometheus/status`            | Some information at `/prometheus/metrics`. High cardinality metrics information at `/prometheus/api/v1/status/tsdb`.
 | `/prometheus/targets`           | `/victoriametrics/targets`
 
+
+## Environment Variables
+
+
+You can start the PMM server by using the environment variable `-envflag.enable` to tune VictoriaMetrics.
+
+The environment variable prefix can be set via the `-envflag.prefix` flag. 
+
+`-envflag.prefix=VM_`, the environment variable must be prepended with `VM_`.
+
+Example
+
+```
+-e VM_httpAuth_username=admin 
+-e VM_httpAuth_password=admin
+```
+
 ## Troubleshooting
 
 To troubleshoot issues, see the VictoriaMetrics [troubleshooting documentation](https://victoriametrics.github.io/#troubleshooting).
