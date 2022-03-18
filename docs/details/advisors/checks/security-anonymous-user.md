@@ -1,4 +1,4 @@
-# Anonymous user(s)
+# Anonymous users
 
 ## Description
 MySQL allows the creation of users without names, this is very insecure, it is best practice to remove anonymous users to secure the MySQL installation. 

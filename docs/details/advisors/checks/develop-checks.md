@@ -1,4 +1,4 @@
-# Develop Security Checks
+# Develop security checks
 
 The Security Threat Tool in PMM offers a set of checks that can detect common security threats, performance degradation, data loss and data corruption. 
 

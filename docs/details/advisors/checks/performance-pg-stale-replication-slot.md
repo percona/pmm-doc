@@ -1,4 +1,4 @@
-# PostgreSQL Stale Replication Slot
+# PostgreSQL stale replication slot
 
 ## Description
 

@@ -1,4 +1,4 @@
-# Root Account Can Login Remotely
+# Root account can log in remotely
 
 ## Description
 Root user is a high privileges user that can perform any kind of operation on the system. 

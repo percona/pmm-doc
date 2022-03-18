@@ -1,4 +1,4 @@
-# MongoDB write ticket is more than 128.
+# MongoDB write ticket is more than 128
 
 ## Description
 This check returns a warning if the write ticket is more than 128. This can cause performance issues.
