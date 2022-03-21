@@ -150,7 +150,7 @@ nav:
               - details/checks/security-user-not-using-ssl-protocol.md
               - details/checks/security-user-with-open-to-the-word-scope.md
               - details/checks/security-user-without-password.md
-              - details/checks/oot-account-can-login-remotely.md
+              - details/checks/root-account-can-login-remotely.md
           - MongoDB checks:
               - details/checks/mongodb-log-messages.md
               - details/checks/mongodb-profiler-check.md
