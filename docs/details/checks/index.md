@@ -1,4 +1,6 @@
-# List of checks
+# Security checks
+
+- [How to develop security checks](develop-checks.md)
 
 ## MySQL Checks
 
