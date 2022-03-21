@@ -38,10 +38,9 @@ As a result of the move to VictoriaMetrics some direct Prometheus paths are no l
 ## Environment variables
 
 
-PMM sets the following flags that allow users to set all other [VictoriaMetrics parameters](https://docs.victoriametrics.com/#list-of-command-line-flags) as environment variables:
-
-- `-envflag.enable`  
-- `-envflag.prefix=VM_` - The environment variable must be prepended with `VM_`.
+PMM predefines certain flags that allow users to set all other [VictoriaMetrics parameters](https://docs.victoriametrics.com/#list-of-command-line-flags) as environment variables:
+ 
+The environment variable must be prepended with `VM_`.
 
 **Example**
 
