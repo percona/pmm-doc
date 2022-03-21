@@ -17,50 +17,50 @@ On the other hand, checks results and other metadata can be sent to SaaS to impl
 
 For example, below is a single check that returns the static result:
 
-```
+```yaml
 ---
 checks:
-    - version: 1
-      name: example
-      summary: Example check
-      description: This check is just an example.
-      tiers: [anonymous, registered]
-      type: MONGODB_BUILDINFO
-      script: |
-        def check(docs):
-            # for compatibility with PMM Server < 2.12
-            context = {
-                "format_version_num": format_version_num,
-                "parse_version": parse_version,
-            }
-            return check_context(docs, context)
+  - version: 1
+    name: example
+    summary: Example check
+    description: This check is just an example.
+    tiers: [anonymous, registered]
+    type: MONGODB_BUILDINFO
+    script: |
+      def check(docs):
+          # for compatibility with PMM Server < 2.12
+          context = {
+              "format_version_num": format_version_num,
+              "parse_version": parse_version,
+          }
+          return check_context(docs, context)
 
 
-        def check_context(docs, context):
-            # `docs` is a frozen (deeply immutable) list of dicts where each dict represents a single document in result set.
-            # `context` is a dict with additional functions.
-            #
-            # Global `print` and `fail` functions are available.
-            #
-            # `check_context` function is expected to return a list of dicts that are then converted to alerts;
-            # in particular, that list can be empty.
-            # Any other value (for example, string) is treated as script execution failure
-            # (Starlark does not support Python exceptions);
-            # it is recommended to use global function `fail` for that instead.
+      def check_context(docs, context):
+          # `docs` is a frozen (deeply immutable) list of dicts where each dict represents a single document in result set.
+          # `context` is a dict with additional functions.
+          #
+          # Global `print` and `fail` functions are available.
+          #
+          # `check_context` function is expected to return a list of dicts that are then converted to alerts;
+          # in particular, that list can be empty.
+          # Any other value (for example, string) is treated as script execution failure
+          # (Starlark does not support Python exceptions);
+          # it is recommended to use global function `fail` for that instead.
 
-            format_version_num = context.get("format_version_num", fail)
-            parse_version = context.get("parse_version", fail)
+          format_version_num = context.get("format_version_num", fail)
+          parse_version = context.get("parse_version", fail)
 
-            print("first doc =", repr(docs[0]))
+          print("first doc =", repr(docs[0]))
 
-            return [{
-                "summary": "Example summary",
-                "description": "Example description",
-                "severity": "warning",
-                "labels": {
-                    "version": format_version_num(10203),
-                }
-            }]
+          return [{
+              "summary": "Example summary",
+              "description": "Example description",
+              "severity": "warning",
+              "labels": {
+                  "version": format_version_num(10203),
+              }
+          }]
 ```
 
 Here is a much more realistic example:
@@ -184,17 +184,16 @@ The single query means that currently you cannot implement some advanced checks 
 
 Checks format and the current STT UI use different terminology for severities. Here is how different formats show up on the UI:
 
-| Format | UI  |     |
-| ------ | --- | :-: |
-
-|emergency  
-|alert||
-|critical|
-|error| Critical
-|warning| Major|
-|notice|Trivial|
-|info |
-| debug |
+| Format    | UI       |
+| --------- | -------- |
+| emergency |          |
+| alert     |          |
+| critical  |          |
+| error     | Critical |
+| warning   | Major    |
+| notice    | Trivial  |
+| info      |          |
+| debug     |          |
 
 ## Backend
 
@@ -212,6 +211,7 @@ Checks format and the current STT UI use different terminology for severities. H
 ## Frontend
 
 ![!](../../../_images/FrontEndSTT.png)
+
 Our UI in Grafana uses Alertmanager API v2 to get information about failed security checks.
 
 ## Develop custom checks
