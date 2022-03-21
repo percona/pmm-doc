@@ -1,6 +1,7 @@
 # List of checks
 
 ## MySQL Checks
+
 - [MySQL binaries are 32 bits](platform-mysql-binaries-32-bit.md)
 - [Anonymous users](security-anonymous-user.md)
 - [Non-root accounts with SUPER privileges](security-non-root-accounts-super-privileges.md)
@@ -12,7 +13,7 @@
 ## MongoDB Checks
 
 - [MongoDB logLevel is not default](mongodb-log-messages.md)
-- [MongoDB Profiling level set to high](mongodb-profiler-check.md) 
+- [MongoDB Profiling level set to high](mongodb-profiler-check.md)
 - [MongoDB read ticket is more than 128](mongodb-read-tickets.md)
 - [MongoDB write ticket is more than 128](mongodb-write-tickets.md)
 - [MongoDB not using the default SHA-256 hashing function](mongodb-scram-sha-256.md)

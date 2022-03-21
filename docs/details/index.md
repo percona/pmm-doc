@@ -4,7 +4,7 @@
 
 - [User interface components](interface.md): Descriptions of the main menus and icons.
 
-- [Advisors](advisors/index.md): Database security and performance advisors.
+- [Security checks](checks/index.md): Database security and performance advisors.
 
 - [Dashboards reference](dashboards/index.md): A complete list of dashboards by category, with screenshots.
 
