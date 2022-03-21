@@ -9,7 +9,7 @@ As a developer, you can create custom checks to cover additional use cases that 
 A check is a combination of:
 
 - SQL query or MongoDB query document for extracting data from the database.
-- Python script for converting extracted data into check results. This is actually a [Starlark](https://github.com/google/starlark-go) script – a Python dialect that adds more imperative features from the Python. Script's execution environment is sandboxed; no I/O can be done from it.
+- Python script for converting extracted data into check results. This is actually a [Starlark](https://github.com/google/starlark-go) script – a Python dialect that adds more imperative features from Python. Script's execution environment is sandboxed so no I/O can be done from it.
 
 All checks in the first phase (and most of the planned ones) are self-contained. This means that extracted data is processed on the PMM side and not sent back to the SaaS.
 
@@ -240,26 +240,26 @@ Our UI in Grafana uses Alertmanager API v2 to get information about failed secur
 
 3.  Log in to Grafana (admin/admin) and enable STT in the settings: http://127.0.0.1/graph/d/pmm-settings/pmm-settings
 
-![!](../../../_images/Grafana.png)
+    ![!](../../../_images/Grafana.png)
 
-4. Create _/srv/custom-checks.yml_ inside a Docker container with the content from the Security Advisor (Security Threat Tool) section above.
+4.  Create _/srv/custom-checks.yml_ inside a Docker container with the content from the Security Advisor (Security Threat Tool) section above.
 
-5. STT checks will run with a time interval defined via UI. You can see the result of running the advisor on the home dashboard:
+5.  STT checks will run with a time interval defined via UI. You can see the result of running the advisor on the home dashboard:
 
-![!](../../../_images/HomeDashboard.png)
+    ![!](../../../_images/HomeDashboard.png)
 
-6. Click on the number of failed checks to open the Failed Checks dashboard:
+6.  Click on the number of failed checks to open the Failed Checks dashboard:
 
-![!](../../../_images/FailedChecks.png)
+    ![!](../../../_images/FailedChecks.png)
 
-7. Go into Docker container to output the logs of pmm-managed and read STT logs:
+7.  Go into Docker container to output the logs of pmm-managed and read STT logs:
 
-```
-# get inside the container
-docker exec -it pmm-server bash
-# print and watch the logs
-supervisorctl tail -f pmm-managed
-```
+    ```
+    # get inside the container
+    docker exec -it pmm-server bash
+    # print and watch the logs
+    supervisorctl tail -f pmm-managed
+    ```
 
 ## Sumbit feedback
 
