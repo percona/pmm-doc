@@ -1,7 +1,7 @@
 # MySQL Temporary tables dimension is capped by max_heap_table_size
 
 ## Description
-MySQL can create temporary tables as part of normal query execution or with the CREATE TEMPORARY TABLE sql command. The maximum size of an in-memory temporary table is controlled by the smallest of tmp_table_sizeand max_heap_table_size. When the smaller of the two is exceeded, the temporary table is converted to an on-disk one, which has a performance impact. Consider setting these 2 variables the same value.
+MySQL can create temporary tables as part of normal query execution or with the CREATE TEMPORARY TABLE sql command. The maximum size of an in-memory temporary table is controlled by the smallest of tmp_table_sizeand max_heap_table_size. When the smaller of the two is exceeded, the temporary table is converted to an on-disk one, which has a performance impact. Consider setting these 2 variables the same value. 
 
 
 ## Rule
