@@ -2,7 +2,7 @@
 
 ## Description
 
-Stale replication slots will lead to WAL file accumulation and can result in a DB server outage.
+Stale replication slots will lead to WAL file accumulation and can result in a DB server outage. 
 
 A stale replication slot is a slot that satisfies the following criteria:
 - Not a temporary slot.
