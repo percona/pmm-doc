@@ -11,4 +11,4 @@ The parameters can be checked with the below query:
 SELECT name, setting, short_desc, reset_val FROM pg_settings WHERE pending_restart IS true;
 ```
 
-The PostgreSQL server needs to be restarted for the new value to be applied. 
+The PostgreSQL server needs to be restarted for the new value to be applied.  
