@@ -1,7 +1,7 @@
 # MongoDB logLevel is not default.
 
 ## Description
-This check returns a warning if the logLevel is not default. This can cause the disks to fill up.
+This check returns a warning if the logLevel is not default. This can cause the disks to fill up. 
 The logLevel can be set as an integer between 0 and 5, where 5 is the most verbose.
 The default logLevel is 0 (Informational).
 The logLevels can be adjusted for your __mongod__ and your __mongos__ nodes.
