@@ -4,7 +4,7 @@
 
 In an ideally, healthy and well configured PostgreSQL environment the hit ratio metric should be above 90%, which means each 9 from 10 reads are successfully resolved from in-memory reads rather than performing IO access to the disk, this produces a very performant environment. 
 
-When the hit ratio metric value gets below the 80% in a consistent way it can be related to a misconfigured instance in relation to the workload, typically the cache is not big enough to keep the most accessed data in memory.
+When the hit ratio metric value gets below the 80% in a consistent way it can be related to a misconfigured instance in relation to the workload, typically the cache is not big enough to keep the most accessed data in memory. 
 
 ## Resolution
 
