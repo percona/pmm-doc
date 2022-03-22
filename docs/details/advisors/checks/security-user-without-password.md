@@ -9,6 +9,6 @@ For details about [authentication](https://dev.mysql.com/doc/refman/8.0/en/plugg
 
 
 ## Resolution
-Assign a password to each MySQL root account that does not have one.
+Assign a password to each MySQL root account that does not have one. 
 To prevent clients from connecting as anonymous users without a password, either assign a password to each anonymous account or remove the accounts.
  
