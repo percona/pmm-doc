@@ -1,29 +1,29 @@
-# Develop Security Checks
+# Develop Advisors
 
-The Security Threat Tool in PMM offers a set of checks that can detect common security threats, performance degradation, data loss and data corruption.
+PMM Advisors offer a set of checks that can detect common security threats, performance degradation, data loss and data corruption.
 
-As a developer, you can create custom checks to cover additional use cases that are relevant to your specific database infrastructure.
+As a developer, you can create custom advisors to cover additional use cases that are relevant to your specific database infrastructure.
 
-## Check components
+## Advisor components
 
-A check is a combination of:
+An advisor is a combination of:
 
 - SQL query or MongoDB query document for extracting data from the database.
-- Python script for converting extracted data into check results. This is actually a [Starlark](https://github.com/google/starlark-go) script – a Python dialect that adds more imperative features from the Python. Script's execution environment is sandboxed; no I/O can be done from it.
+- Python script for converting extracted data into advisor results. This is actually a [Starlark](https://github.com/google/starlark-go) script – a Python dialect that adds more imperative features from the Python. Script's execution environment is sandboxed; no I/O can be done from it.
 
-All checks in the first phase (and most of the planned ones) are self-contained. This means that extracted data is processed on the PMM side and not sent back to the SaaS.
+All advisors in the first phase (and most of the planned ones) are self-contained. This means that extracted data is processed on the PMM side and not sent back to the SaaS.
 
-On the other hand, checks results and other metadata can be sent to SaaS to implement a history feature if the user opted-in and is entitled.
+On the other hand, advisors results and other metadata can be sent to SaaS to implement a history feature if the user opted-in and is entitled.
 
-For example, below is a single check that returns the static result:
+For example, below is a single advisor that returns the static result:
 
 ```yaml
 ---
 checks:
   - version: 1
     name: example
-    summary: Example check
-    description: This check is just an example.
+    summary: Example advisor
+    description: This advisor is just an example.
     tiers: [anonymous, registered]
     type: MONGODB_BUILDINFO
     script: |
@@ -71,7 +71,7 @@ checks:
   - version: 1
     name: mongodb_version
     summary: MongoDB Version
-    description: This check returns warnings if MongoDB/PSMDB version is not the latest one.
+    description: This advisor returns warnings if MongoDB/PSMDB version is not the latest one.
     tiers: [anonymous, registered]
     type: MONGODB_BUILDINFO
     script: |
@@ -113,7 +113,7 @@ checks:
           # it is recommended to use global function `fail` for that instead.
 
           """
-          This check returns warnings if MongoDB/PSMDB version is not the latest one.
+          This advisor returns warnings if MongoDB/PSMDB version is not the latest one.
           """
 
           format_version_num = context.get("format_version_num", fail)
@@ -166,23 +166,41 @@ checks:
               return results
 ```
 
-## Check fields
+## Advisor fields
 
-- **Version** (integer, required) defines what other check properties are expected, what types are supported, what is expected from the script and what it can expect from the execution environment, etc.
+- **Version** (integer, required) defines what other advisor properties are expected, what types are supported, what is expected from the script and what it can expect from the execution environment, etc.
 - **Name** (string, required) defined machine-readable name (ID).
 - **Summary** (string, required) defines short human-readable summary.
 - **Description** (string, required) defines long human-readable description.
-- **Type** (string/enum, required) defines PMM Service type for which check is performed and query type.
+- **Type** (string/enum, required) defines the query type and the PMM Service type for which the advisor runs. You can find the list of available types in the table below. 
 - **Query** (string, optional) contains a SQL query or MongoDB query document (as a string with proper quoting) which is executed on the PMM Client side. It may be absent if type defines the whole query by itself.
-- **Script** (string, required) contains a small Python program that processes query results, and returns check results. It is executed on the PMM Server side.
+- **Script** (string, required) contains a small Python program that processes query results, and returns advisor results. It is executed on the PMM Server side.
 
-Check script assumes that there is a function with a fixed name _check_ that accepts a _list_ of _dicts_ containing returned rows for SQL databases and documents for MongoDB. It returns zero, one, or several check results that are then converted to alerts.
+Advisor script assumes that there is a function with a fixed name _check_ that accepts a _list_ of _dicts_ containing returned rows for SQL databases and documents for MongoDB. It returns zero, one, or several check results that are then converted to alerts.
 
 Another function that should be implemented is **check_context**. PMM 2.12.0 and earlier use **context**, while newer versions use **check_context**. Both have the same meaning.
 
-The single query means that currently you cannot implement some advanced checks that would require several queries (and can't be implemented using SQL UNION).
+The single query means that, currently, you cannot implement some advanced advisors that would require several queries (and can't be implemented using SQL UNION).
 
-Checks format and the current STT UI use different terminology for severities. Here is how different formats show up on the UI:
+
+## Advisor types
+Use one of the following advisors types to define your query type and the PMM Service type for which your advisor check will runs:
+| Advisor type    | description       |  "query" required (must be empty if no)	| Documentation|
+| ---------       | --------          |---------                                | -------- |
+| MYSQL_SHOW |     Executes 'SHOW …' clause against MySQL database.	     |Yes | |
+| MYSQL_SELECT    |     Executes 'SELECT …' clause against MySQL database.	     |Yes| |
+| POSTGRESQL_SHOW	  |    Executes 'SHOW ALL' command against PosgreSQL database.	      | No| |
+| POSTGRESQL_SELECT	     | Executes 'SELECT …' clause against PosgreSQL database.	 | Yes| |
+| MONGODB_GETPARAMETER	   | Executes db.adminCommand( { getParameter: "*" } ) against MongoDB's "admin" database.    | No |[getParameter](https://docs.mongodb.com/manual/reference/command/getParameter/)|
+|
+| MONGODB_BUILDINFO    | Executes db.adminCommand( { buildInfo:  1 } ) against MongoDB's "admin" database.	  | No | [buildInfo](https://docs.mongodb.com/manual/reference/command/buildInfo/)| 
+| MONGODB_GETCMDLINEOPTS	      |    Executes db.adminCommand( { getCmdLineOpts: 1 } ) against MongoDB's "admin" database.      | No | [getCmdLineOpts](https://docs.mongodb.com/manual/reference/command/getCmdLineOpts/)|
+| MONGODB_REPLSETGETSTATUS     |   Executes db.adminCommand( { replSetGetStatus: 1 } ) against MongoDB's "admin" database.       | No | [replSetGetStatus](https://docs.mongodb.com/manual/reference/command/replSetGetStatus/)| 
+| MONGODB_GETDIAGNOSTICDATA	|Executes db.adminCommand( { getDiagnosticData: 1 } ) against MongoDB's "admin" database.	| No | [MongoDB Performance](https://docs.mongodb.com/manual/administration/analyzing-mongodb-performance/#full-time-diagnostic-data-capture)|
+
+
+## Advisor severites
+Advisor format and the current STT UI use different terminology for severities. Here is how different formats show up on the UI:
 
 | Format    | UI       |
 | --------- | -------- |
@@ -260,7 +278,10 @@ docker exec -it pmm-server bash
 # print and watch the logs
 supervisorctl tail -f pmm-managed
 ```
+# Advisor examples
+You can find working examples of the build-in checks on [Percona Github] (https://github.com/percona-platform/checked/tree/main/data/checks)
 
-## Sumbit feedback
+
+## Submit feedback
 
 We welcome your feedback on the current process for developing and debugging checks. Send us your comments over [Slack](https://percona.slack.com) or post a question on the [Percona Forums](https://forums.percona.com/).
