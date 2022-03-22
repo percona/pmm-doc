@@ -8,7 +8,7 @@ MySQL allows the creation of users without names, this is very insecure, it is b
 
 
 ## Resolution
-Remove any user that does not have a name in the mysql.user table. 
+Remove any user that does not have a name in the mysql.user table.  
 ```
 Delete from mysql.user where user=’’;
 FLUSH PRIVILEGES;
