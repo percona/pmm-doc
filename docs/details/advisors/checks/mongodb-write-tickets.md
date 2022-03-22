@@ -3,7 +3,7 @@
 ## Description
 This check returns a warning if the write ticket is more than 128. This can cause performance issues.
 Ideally the number of tickets should be based on the number of CPU available.
-The default write ticket is 128.
+The default write ticket is 128. 
 It can be adjusted for your mongod and your mongos nodes.
 
 [https://docs.mongodb.com/manual/reference/parameters/#mongodb-parameter-param.wiredTigerConcurrentWriteTransactions](https://docs.mongodb.com/manual/reference/parameters/#mongodb-parameter-param.wiredTigerConcurrentWriteTransactions)
