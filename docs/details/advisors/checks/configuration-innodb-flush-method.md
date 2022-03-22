@@ -8,7 +8,7 @@ From MySQL 8 The following InnoDB file format variables were removed:
 - Innodb_file_format_max
 - innodb_large_prefix
 
-File format variables were necessary for creating tables compatible with earlier versions of InnoDB in MySQL 5.1. Now that MySQL 5.1 has reached the end of its product lifecycle, these options are no longer required.
+File format variables were necessary for creating tables compatible with earlier versions of InnoDB in MySQL 5.1. Now that MySQL 5.1 has reached the end of its product lifecycle, these options are no longer required. 
 
 
 ## Rule
