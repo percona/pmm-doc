@@ -28,7 +28,7 @@ PMM's user interface is a browser application based on [Grafana].
 
 6. The PMM Home dashboard loads.
 
-    ![!PMM Home dashboard](../_images/PMM_Home_Dashboard.jpg)
+    ![!PMM Home dashboard](../_images/PMM_Home_Dashboard.png)
 
 ## Dashboards
 
