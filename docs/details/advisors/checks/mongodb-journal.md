@@ -20,7 +20,7 @@ It is always recommended to enable the journal. More recent versions of MongoDB 
 
 ## Resolution
 
-Please Perform the steps mentioned below to enable journaling
+Please Perform the steps mentioned below to enable journaling 
 
 Enable journal. 
 Edit mongod.conf and set the below parameter.
