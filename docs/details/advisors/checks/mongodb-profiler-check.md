@@ -2,7 +2,7 @@
 
 ## Description
 This check returns a notice/warning if the global profiling level is set too high - anything other than 0. Having the profiler set to gather information at all times is not recommended. 
-This is dangerous in busy and high traffic workloads where the database has to collect data for all the operations. This can add overhead that results in performance degradation - especially in very active environments.
+This is dangerous in busy and high traffic workloads where the database has to collect data for all the operations. This can add overhead that results in performance degradation - especially in very active environments. 
 
 It is always recommended to only enable profiling (Level 1) for short periods of time in order to perform any needed query analysis or troubleshooting.  When necessary,  the profiler should be used during less busy windows and then turned off.  It is not recommended to set and use the profiler for long periods of time in production environments due to performance degradation
 [https://docs.mongodb.com/manual/reference/method/db.setProfilingLevel/](https://docs.mongodb.com/manual/reference/method/db.setProfilingLevel/)
