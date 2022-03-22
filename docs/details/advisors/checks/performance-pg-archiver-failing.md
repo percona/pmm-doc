@@ -2,7 +2,7 @@
 
 ## Description
 
-For a robust and fault tolerant database solution the implementation of PTIR is a cornerstone of design, for a PostgreSQL database this is covered by the WAL archive process, which will capture the contents of each WAL segment file once it is filled, and save that data somewhere before the segment file is recycled for reuse. 
+For a robust and fault tolerant database solution the implementation of PTIR is a cornerstone of design, for a PostgreSQL database this is covered by the WAL archive process, which will capture the contents of each WAL segment file once it is filled, and save that data somewhere before the segment file is recycled for reuse.  
 
 From the official documentation:
 
