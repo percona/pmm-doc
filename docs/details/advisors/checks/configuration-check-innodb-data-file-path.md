@@ -8,5 +8,5 @@ Some of the InnoDB Tablespace has a max size limit that means the file size can 
 
 
 ## Resolution
-In most of the cases we do not recommend to have any max size limit on InnoDB Tablespaces. 
+In most of the cases we do not recommend to have any max size limit on InnoDB Tablespaces.  
 
