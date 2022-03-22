@@ -4,7 +4,7 @@
 
 It is recommended to enable the logging of autovacuum run information, as that provides a lot of useful information with almost no drawbacks.
 
-Information about autovacuum (and autoanalyze) executions in the logs is extremely useful and provides a detailed history of dead row garbage collection on the PostgreSQL instance, and may show signs of misconfiguration. It is a cheap way of augmenting the regular monitoring based on views, and the only downside is that the volume of logs will be increased slightly.
+Information about autovacuum (and autoanalyze) executions in the logs is extremely useful and provides a detailed history of dead row garbage collection on the PostgreSQL instance, and may show signs of misconfiguration. It is a cheap way of augmenting the regular monitoring based on views, and the only downside is that the volume of logs will be increased slightly. 
 
 ## Resolution
 
