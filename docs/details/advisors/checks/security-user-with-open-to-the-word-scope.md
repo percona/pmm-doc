@@ -1,7 +1,7 @@
 # User with open to the word scope
 
 ## Description
-MySQL users are composed of two parts, user name and host [see](https://dev.mysql.com/doc/refman/8.0/en/account-names.html ).
+MySQL users are composed of two parts, user name and host [see](https://dev.mysql.com/doc/refman/8.0/en/account-names.html ). 
 The host name part of an account name can take many forms, and wildcards are permitted:
 
 - A host value can be a host name or an IP address (IPv4 or IPv6). The name 'localhost' indicates the local host. The IP address '127.0.0.1' indicates the IPv4 loopback interface. The IP address '::1' indicates the IPv6 loopback interface.
