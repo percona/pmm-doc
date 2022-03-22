@@ -8,4 +8,4 @@ Information about checkpoints in the logs is extremely useful and provides a det
 
 ## Resolution
 
-Set log_checkpoints server configuration option to the value of on. That can be done online, and the change will reflect immediately. Next checkpoint information will be present in the PostgreSQL logs.
+Set log_checkpoints server configuration option to the value of on. That can be done online, and the change will reflect immediately. Next checkpoint information will be present in the PostgreSQL logs. 
