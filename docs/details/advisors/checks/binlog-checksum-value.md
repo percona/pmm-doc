@@ -2,7 +2,7 @@
 
 ## Description
 Not having binlog checksums can lead to corruption and consequent loss of data, and is considered a risky practice for production servers..\
-[See](https://dev.mysql.com/doc/refman/8.0/en/replication-options-binary-log.html#sysvar_binlog_checksum) 
+[See](https://dev.mysql.com/doc/refman/8.0/en/replication-options-binary-log.html#sysvar_binlog_checksum)  
 
 
 ## Rule
