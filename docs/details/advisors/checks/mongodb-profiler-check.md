@@ -1,11 +1,19 @@
 # MongoDB Profiling level set to high 
 
 ## Description
-This check returns a notice/warning if the global profiling level is set too high - anything other than 0. Having the profiler set to gather information at all times is not recommended. 
+This check warns if the global profiling level is set too high - anything other than 0.
+
+Having the profiler set to gather information at all times is not recommended. 
+
 This is dangerous in busy and high traffic workloads where the database has to collect data for all the operations. This can add overhead that results in performance degradation - especially in very active environments.
 
-It is always recommended to only enable profiling (Level 1) for short periods of time in order to perform any needed query analysis or troubleshooting.  When necessary,  the profiler should be used during less busy windows and then turned off.  It is not recommended to set and use the profiler for long periods of time in production environments due to performance degradation
-[https://docs.mongodb.com/manual/reference/method/db.setProfilingLevel/](https://docs.mongodb.com/manual/reference/method/db.setProfilingLevel/)
+It is always recommended to only enable profiling (Level 1) for short periods of time in order to perform any needed query analysis or troubleshooting. 
+
+When necessary, the profiler should be used during less busy windows and then turned off. 
+
+To avoid performance degradation, avoid stting and using the profiler for long periods of time in production environments.
+
+For more information, see [db.setProfilingLevel in the MongoDB documentation](https://docs.mongodb.com/manual/reference/method/db.setProfilingLevel/).
 
 
 ## Rule
@@ -22,21 +30,22 @@ __db.getProfilingStatus();__
 
 
 ## Resolution
-Please Perform the steps mentioned below to turn off profiler completely or reduce the level
+Turn off profiler or reduce the level. You can do this either from the command line startup or via the config file.
 
-The profiler can be enabled or have the level changed at either the command line startup or via the config file.
-
-
-1. To turn off profiler level globally, edit the mongod.conf file and disable/comment below parameter.\
+To turn off profiler level globally:
+1. Edit the mongod.conf file and disable/comment below parameter.\
    “operationProfiling”\
    OR, adjust the “mode”\
    operationProfiling:\
      mode: off
-2. Then Perform a rolling restart of your mongod nodes
-3. To reduce the profiler level, edit and adjust below parameter in mongod.conf
+2. Perform a rolling restart of your mongod nodes.
+
+
+To reduce the profiler level, edit and adjust the following parameter in mongod.conf:
 	operationProfiling:
    		mode: slowOp
-4. To check the profiler status and level on a running system, performa the following commands from the mongo shell:
+
+To check the profiler status and level on a running system, performa the following commands from the mongo shell:
 		db.getProfilingStatus()
 		db.getProfilingLevel()
 

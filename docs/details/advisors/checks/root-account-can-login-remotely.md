@@ -1,8 +1,9 @@
-# Root Account Can Login Remotely
+# Root account can log in remotely
 
 ## Description
-Root user is a high privileges user that can perform any kind of operation on the system. 
-It is best practice to  limit the access to this specific user only when connecting from local instances, 
+The Root user is a high-privileges user that can perform any kind of operation on the system. 
+
+It is best practice to limit the access to this specific user only when connecting from local instances, 
 and to eventually create another user with the specific DBA privileges, that will be able to connect from remote. 
 
 

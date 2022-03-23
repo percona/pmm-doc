@@ -9,6 +9,6 @@ MySQL can create temporary tables as part of normal query execution or with the 
 
 
 ## Resolution
-Set the tmp_table_size to a value that is equal to or less than max_heap_table_size value.
-Or increase the value of max_heap_table_size value to match tmp_table_size value. 
+Set the **tmp_table_size** to a value that is equal to or less than the **max_heap_table_size value**.
+Or increase the value of the **max_heap_table_size** value to match **tmp_table_size value**. 
 

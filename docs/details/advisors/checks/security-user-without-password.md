@@ -1,11 +1,15 @@
 # There are users without passwords
 
 ## Description
-MySQL allows user creation with an empty string. This is very insecure and should be correct to secure your installation.
-To identify the presence of any user without password:
+MySQL allows creating users with an empty string. 
+
+This can lead to important security issues and should be fixed to secure your installation.
+
+To identify user without a password:
 `SELECT User, Host, authentication_string FROM mysql.user where authentication_string = '';`
-The presence of accounts with empty passwords means that your MySQL installation is unprotected until you do something about it.
-For details about [authentication](https://dev.mysql.com/doc/refman/8.0/en/pluggable-authentication.html)   
+
+Having accounts with empty passwords means that your MySQL installation is unprotected until you fix this issue.
+For more information, see [Pluggable Authentication in the MySQL documentation](https://dev.mysql.com/doc/refman/8.0/en/pluggable-authentication.html).
 
 
 ## Resolution

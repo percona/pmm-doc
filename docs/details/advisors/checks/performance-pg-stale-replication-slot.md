@@ -1,8 +1,8 @@
-# PostgreSQL Stale Replication Slot
+# PostgreSQL stale replication slot
 
 ## Description
 
-Stale replication slots will lead to WAL file accumulation and can result in a DB server outage.
+Stale replication slots will lead to WAL file accumulation. This can result in a DB server outage.
 
 A stale replication slot is a slot that satisfies the following criteria:
 - Not a temporary slot.
@@ -11,4 +11,6 @@ A stale replication slot is a slot that satisfies the following criteria:
 
 ## Resolution
 
-Review the output of `SELECT * FROM pg_replication_slots` and identify the slots that are inactive and have an old `restart_lsn`. Drop such slots as soon as possible. You can recreate the slot, but note that the receiving end might need to be resynchronized.
+Review the output of `SELECT * FROM pg_replication_slots` and identify the slots that are inactive and have an old `restart_lsn`. 
+
+Drop such slots as soon as possible. You can recreate the slot, but note that the receiving end might need to be resynchronized.

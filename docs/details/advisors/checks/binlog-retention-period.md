@@ -1,7 +1,11 @@
 # MySQL binlog expire logs seconds too low
+
 ## Description
-Having too-short rotation cycles for binary logs can make Point In Time Recovery impossible, and make replicas maintenance harder, as a window of opportunity for performing maintenance will be as long as the rotation cycle.  
-[See](https://dev.mysql.com/doc/refman/8.0/en/replication-options-binary-log.html#sysvar_binlog_expire_logs_second) 
+Too-short rotation cycles for binary logs can make Point In Time Recovery impossible. 
+
+This can also make replicas maintenance more difficult since a window of opportunity for performing maintenance will be as long as the rotation cycle.  
+
+For more information, see [**binlog_expire_logs_seconds** in the MySQL documentation](https://dev.mysql.com/doc/refman/8.0/en/replication-options-binary-log.html#sysvar_binlog_expire_logs_second). 
 
 
 ## Rule
@@ -9,4 +13,4 @@ Having too-short rotation cycles for binary logs can make Point In Time Recovery
 
 
 ## Resolution
-Please consider increasing binlog_expire_logs_seconds to at least 604800 seconds (1 week).
+Consider increasing **binlog_expire_logs_seconds** to at least 604800 seconds (1 week).

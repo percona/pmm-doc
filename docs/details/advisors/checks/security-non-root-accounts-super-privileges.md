@@ -2,7 +2,7 @@
 
 ## Description
 The _Super_ privilege grants administrator privileges to a user and should be granted only to users that are supposed to act at MySQL instance level. 
-The _Super_ privilege grants:
+The _Super_ privilege:
 - Enables server configuration changes by modifying global system variables. For some system variables, setting the session value also requires the SUPER privilege. If a system variable is restricted and requires a special privilege to set the session value, the variable description indicates that restriction. Examples include binlog_format, sql_log_bin, and sql_log_off. See also Section 5.1.8.1, “System Variable Privileges”.
 - Enables changes to global transaction characteristics (see Section 13.3.6, “SET TRANSACTION Statement”).
 - Enables the account to start and stop replication.
@@ -21,5 +21,5 @@ The _Super_ privilege grants:
 
 
 ## Resolution
-Revoke Super grants from the users that are not supposed to be MySQL instance administrators. 
+Revoke Super grants from the users who are not supposed to be MySQL instance administrators. 
 Revoke super on *.* from user@'host';

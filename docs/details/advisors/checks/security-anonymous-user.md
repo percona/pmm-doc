@@ -1,7 +1,8 @@
-# Anonymous user(s)
+# Anonymous users
 
 ## Description
-MySQL allows the creation of users without names, this is very insecure, it is best practice to remove anonymous users to secure the MySQL installation. 
+MySQL allows creating users without names, which can create important security issues. 
+Best practices recommend removing anonymous users to secure the MySQL installation.
 
 ## Rule
 `Select user,host from mysql.user where user = ''`

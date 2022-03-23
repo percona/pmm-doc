@@ -1,7 +1,8 @@
-# MySQL binaries are 32 bits
+# MySQL binaries are 32-bits
 
 ## Description
-Older version MySQL server (plus some custom compilations) might be compiled for 32 bits whereas we suggest using the new 64 bits version. 
+Older version MySQL server (plus some custom compilations) might be compiled for 32 bits.
+However, we suggest using the new 64-bit version. 
 
 
 ## Rule
@@ -9,4 +10,4 @@ Older version MySQL server (plus some custom compilations) might be compiled for
 
 
 ## Resolution
-Binaries should be re installed but using the 64 bits version of the version binaries used
+Binaries should be reinstalled but using the 64-bits version of the version binaries used.
