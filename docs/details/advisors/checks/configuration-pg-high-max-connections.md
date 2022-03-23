@@ -14,8 +14,8 @@ Connection spikes and new applications will eventually move the number of connec
 
  a significant number of connections is required, a pooling solution should be used.
 
-This limitation comes from the fact that PostgreSQL maintains snapshots for each connection. Each new transaction will have to perform operations on the snapshots, and the more connections (and thus snapshots) there are, the higher the impact on TPS.
-
+This limitation comes from the fact that PostgreSQL maintains snapshots for each connection. Each new transaction will have to perform operations on the snapshots, and the more connections (and thus snapshots) there are, the higher the impact on TPS. 
+ 
 ## Resolution
 
 Review the number of connections that applications require at peak. 

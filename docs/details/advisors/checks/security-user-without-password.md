@@ -13,6 +13,6 @@ For more information, see [Pluggable Authentication in the MySQL documentation](
 
 
 ## Resolution
-Assign a password to each MySQL root account that does not have one.
+Assign a password to each MySQL root account that does not have one. 
 To prevent clients from connecting as anonymous users without a password, either assign a password to each anonymous account or remove the accounts.
  

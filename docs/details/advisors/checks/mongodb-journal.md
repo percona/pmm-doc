@@ -25,7 +25,7 @@ For more information, see the [Journaling section in the MongoDB documentation](
 
 ## Resolution
 
-Perform the following steps enable journaling:
+Please Perform the steps mentioned below to enable journaling 
 
 1. Enable journal. 
 2. Edit mongod.conf and set the following parameter:

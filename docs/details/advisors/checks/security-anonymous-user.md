@@ -9,7 +9,7 @@ Best practices recommend removing anonymous users to secure the MySQL installati
 
 
 ## Resolution
-Remove any user that does not have a name in the mysql.user table. 
+Remove any user that does not have a name in the mysql.user table.  
 ```
 Delete from mysql.user where user=’’;
 FLUSH PRIVILEGES;

@@ -9,7 +9,8 @@ Starting with MySQL 8, the following InnoDB file format variables are deprecated
 - Innodb_file_format_max
 - innodb_large_prefix
 
-The purpose of file format variables was to ensure compatibility with tables created in previous versions of InnoDB in MySQL 5.1. Since MySQL 5.1 has reached the end of its product lifecycle, these options are no longer required.
+File format variables were necessary for creating tables compatible with earlier versions of InnoDB in MySQL 5.1. Now that MySQL 5.1 has reached the end of its product lifecycle, these options are no longer required. 
+
 
 ## Rule
 `SELECT * from performance_schema.global_variables where VARIABLE_NAME in ('innodb_file_format','innodb_file_format_max','innodb_flush_method','innodb_data_file_path');`
