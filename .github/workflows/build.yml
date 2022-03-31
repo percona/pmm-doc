@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - 1.x
+      - PMM1-Release-Notes-1-17-5
 
   workflow_dispatch:
 
