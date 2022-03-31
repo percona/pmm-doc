@@ -48,10 +48,10 @@ jobs:
         if: github.ref == 'refs/heads/1.x'
         run: |
           mike deploy -F mkdocs-percona.yml 1.x -b publish -p
-          mike retitle -F mkdocs-percona.yml 1.x "PMM1 (1.17.4)" -b publish -p
+          mike retitle -F mkdocs-percona.yml 1.x "PMM1 (1.17.5)" -b publish -p
 
       - name: Run MkDocs for Netlify (1.x)
         if: github.ref == 'refs/heads/1.x'
         run: |
           mike deploy 1.x -b netlify -p
-          mike retitle 1.x "PMM1 (1.17.4)" -b netlify -p
+          mike retitle 1.x "PMM1 (1.17.5)" -b netlify -p
