@@ -18,7 +18,7 @@ db.createRole({
     privileges: [{
         resource: {
             db: "",
-            collection: ""
+            collection: "system.profile"
             },
         actions: [
             "listIndexes",
