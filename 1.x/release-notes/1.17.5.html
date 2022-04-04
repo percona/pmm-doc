@@ -104,7 +104,7 @@
 <ul>
 <li>
 <p><strong>Date</strong></p>
-<p>April 2, 2022</p>
+<p>April 7, 2022</p>
 </li>
 <li>
 <p><strong>Installation</strong></p>
@@ -112,13 +112,28 @@
 </li>
 </ul>
 <p><a href="https://www.percona.com/doc/percona-monitoring-and-management/">Percona Monitoring and Management (PMM)</a> is a free and open-source platform for managing and monitoring MySQL, MongoDB, and PostgreSQL performance.</p>
+<div class="admonition alert alert-info">
+<p class="admonition-title">Important</p>
+<p>This note aims to draw attention to the end of life of PMM1. As of May 2022, PMM1 goes End-of-life, and as such, there will be no updates (security or non-security), free or paid support, or online technical content updates. Thus, it is highly recommended to switch over to PMM2.</p>
+</div>
 <h2 id="bugs-fixed"><a class="toclink" href="#bugs-fixed">Bugs Fixed</a></h2>
+<div class="admonition alert alert-info">
+<p class="admonition-title">Note</p>
+<p>This PMM1 Security Release Notes contains details of security vulnerabilities addressed as part of PMM 1.17.5.</p>
+</div>
 <ul>
 <li><a href="https://jira.percona.com/browse/PMM-9461">PMM-9461</a> : Multiple CentOS vulnerabilities in PMM1</li>
 <li><a href="https://jira.percona.com/browse/PMM-9423">PMM-9423</a> : Upgrade nginx for PMM 1.X due to vulnerability              </li>
 <li><a href="https://jira.percona.com/browse/PMM-9651">PMM-9651</a> : Some packages weren&rsquo;t updated</li>
 <li><a href="https://jira.percona.com/browse/PMM-6268">PMM-6268</a> : Sensitive information exposure through logs in npm-registry-fetch</li>
 <li><a href="https://jira.percona.com/browse/PMM-9619">PMM-9619</a> : Wrong version on Add Instance and QAN pages </li>
+</ul>
+<h2 id="how-to-get-pmm2-server"><a class="toclink" href="#how-to-get-pmm2-server">How to get PMM2 Server</a></h2>
+<p>PMM2 is available for installation using three methods:</p>
+<ul>
+<li><a href="https://hub.docker.com/r/percona/pmm-server/">Docker Hub</a> – <code>docker pull percona/pmm-server</code> – <a href="https://www.percona.com/doc/percona-monitoring-and-management/2.x/setting-up/server/docker.html">Documentation</a></li>
+<li><a href="https://aws.amazon.com/marketplace/pp/B077J7FYGX">AWS Marketplace</a> – <a href="https://www.percona.com/doc/percona-monitoring-and-management/2.x/setting-up/server/aws.html">Documentation</a></li>
+<li><a href="https://www.percona.com/downloads/pmm2/2.26.0/ova/">Open Virtualization Format (OVF)</a> – <a href="https://www.percona.com/doc/percona-monitoring-and-management/2.x/setting-up/server/virtual-appliance.html">Documentation</a></li>
 </ul>
                     </div>
                 </div>
@@ -127,7 +142,7 @@
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2022-03-31
+            <i class="uil uil-refresh"></i> Page updated 2022-04-04
         </li>
         
     </ul>
