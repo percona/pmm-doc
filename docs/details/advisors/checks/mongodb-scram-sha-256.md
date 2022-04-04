@@ -8,7 +8,7 @@ For Production systems: ensure that auth and authentication methods are in place
 
 MongoDB enables journaling by default and  "authenticationMechanisms" are set to use "SCRAM-SHA-256" by default in  MongoDB  versions (4.0 +).
 MongoDB v3.0changed the default auth mechanism from MONGODB-CR to SCRAM-SHA-1.
-[Authentication Mechanisms in the MongoDB documentation](https://docs.mongodb.com/drivers/go/current/fundamentals/auth/).
+[Authentication Mechanisms in the MongoDB documentation](https://www.mongodb.com/docs/manual/core/authentication/#authentication).
 
 
 
