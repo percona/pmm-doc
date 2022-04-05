@@ -42,7 +42,7 @@ Our UI in Grafana uses Alertmanager API v2 to get information about failed check
  
 - **Version** (integer, required): defines what other properties are expected, what types are supported, what is expected from the script and what it can expect from the execution environment, etc.
 - **Name** (string, required): defined machine-readable name (ID).
-- **Summary** (string, required): defines short,  human-readable description.
+- **Summary** (string, required): defines short human-readable description.
 - **Description** (string, required): defines long human-readable description.
 - **Type** (string/enum, required): defines the query type and the PMM Service type for which the advisor runs. Check the list of available types in the table below.
 - **Query** (string, optional): contains a SQL query or MongoDB query document (as a string with proper quoting) which is executed on the PMM Client side. It may be absent if type defines the whole query by itself.
