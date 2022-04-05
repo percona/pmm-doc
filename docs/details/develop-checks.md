@@ -40,7 +40,7 @@ Our UI in Grafana uses Alert Manager API v2 to get information about failed chec
  
 - **Version** (integer, required): defines what other properties are expected, what types are supported, what is expected from the script and what it can expect from the execution environment, etc.
 - **Name** (string, required): defined machine-readable name (ID).
-- **Summary** (string, required): defines short,  human-readable description.
+- **Summary** (string, required): defines short human-readable description.
 - **Description** (string, required): defines long human-readable description.
 - **Type** (string/enum, required): defines the query type and the PMM Service type for which the advisor runs. Check the list of available types in the table below.
 - **Query** (string, optional): contains an SQL query as a string with proper quoting. The query for Security Checks (developed for PMM 2.26 and older) can also contain a MongoDB query document. Advisor checks for PMM 2.27 and later do not yet support a query parameter for MongoDB. 
@@ -335,7 +335,7 @@ checks:
  
 ### Function signature
  
-The function signature can be **def check(docs)**  or **def check_context** (docs, context), where docs are a list of dicts.
+The function signature can be **def check(docs)**  or **def check_context** (docs, context), where **docs** is a list of dicts.
   
  
 ## Check examples
