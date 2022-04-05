@@ -15,28 +15,26 @@ All checks are self-contained in the first phase, as well as in most of the plan
  
 This means that extracted data is processed on the PMM side and not sent back to the SaaS.
  
-However, if you have the right entitlements, you can send check results and other metadata to SaaS for implementing a History feature.
- 
+However, if you have the right entitlements, you can send check results and other metadata to SaaS for implementing a History feature. 
  
 ## Backend
  
-![!](../_images/BackendSTT.png)
+![!](../_images/BackendChecks.png)
  
 1. pmm-managed checks that the installation is opted-in for checks.
 2. pmm-managed downloads checks file from SaaS.
 3. pmm-managed verifies file signatures using a list of hard-coded public keys. At least one signature should be correct.
 4. pmm-managed sends queries to pmm-agent and gathers results.
 5. pmm-managed executes check scripts that produce alert information.
-6. pmm-managed sends alerts to Alertmanager.
+6. pmm-managed sends alerts to Alert Manager.
    - Due to Alertmanager design, pmm-managed has to send and re-send alerts to it much more often than the frequency with which checks are executed. This expected behaviour is not important for using checks but is important for understanding how checks work.
    - Currently, Prometheus is not involved.
  
 ## Frontend
  
-![!](../_images/FrontEndSTT.png)
+![!](../_images/FrontEndChecks.png)
  
-Our UI in Grafana uses Alertmanager API v2 to get information about failed checks.
- 
+Our UI in Grafana uses Alert Manager API v2 to get information about failed checks.
  
 ## Check fields
  
@@ -45,29 +43,31 @@ Our UI in Grafana uses Alertmanager API v2 to get information about failed check
 - **Summary** (string, required): defines short,  human-readable description.
 - **Description** (string, required): defines long human-readable description.
 - **Type** (string/enum, required): defines the query type and the PMM Service type for which the advisor runs. Check the list of available types in the table below.
-- **Query** (string, optional): contains a SQL query or MongoDB query document (as a string with proper quoting) which is executed on the PMM Client side. It may be absent if type defines the whole query by itself.
-- **Script** (string, required): contains a small Python program that processes query results, and returns advisor results. It is executed on the PMM Server side.
+- **Query** (string, optional): contains an SQL query as a string with proper quoting. The query for Security Checks (developed for PMM 2.26 and older) can also contain a MongoDB query document. Advisor checks for PMM 2.27 and later do not yet support a query parameter for MongoDB. 
+
+    The query is executed on the PMM Client side and can be absent if the type defines the whole query by itself.  
+or 
+- **Script** (string, required): contains a small Python program that processes query results, and returns check results. It is executed on the PMM Server side.
  
 ## Checks script
  
 The check script assumes that there is a function with a fixed name _check_ that accepts a _list_ of _docs_ containing returned rows for SQL databases and documents for MongoDB. It returns zero, one, or several check results that are then converted to alerts.
  
 PMM 2.12.0 and earlier use **context**, while newer versions use **check_context**. Both have the same meaning.
- 
- 
+  
 ## Check severities
-Checks format and the current PMM UI use different terminology for severities. Here is how different formats show up on the UI:
+The severity specified in the format of the checks is displayed differently on the UI:
  
-| Format    | UI       |
+| Check severity    |UI correspondence       |
 | --------- | -------- |
-| emergency |          |
-| alert     |          |
-| critical  |          |
+| emergency |-|
+| alert     |-|
+| critical  |-|
 | error     | Critical |
 | warning   | Major    |
 | notice    | Trivial  |
-| info      |          |
-| debug     |          |
+| info      |-|
+| debug     |-|
  
 ## Check types
 Use one of the following check types to define your query type and the PMM Service type for which the check will run:
@@ -139,7 +139,8 @@ Starting with the 2.27 release, checks are grouped into a set of Advisors, accor
 To reflect these changes, the old **Security Threat Tool** option has been renamed to **Advisors** and the checks use a slightly different format.
  
 ### Check format
- 
+Advisors checks use a slightly different format than security checks developed for PMM 2.26 and later. 
+
 To create advisor checks for PMM 2.27 and later, use the following format:
  
 ```yaml
@@ -171,6 +172,10 @@ checks:
 ### Function signature
  
 The function signature for PMM 2.27 and later can be **check_context** (docs, context), where docs are lists of docs (one list of dicts for each query). 
+
+### No query parameter for MongoDB
+ The query for Security Checks (developed for PMM 2.26 and older) can also contain a MongoDB query document.
+ Advisor checks for PMM 2.27 and later do not yet support a query parameter for MongoDB.
  
  
 ## Particularities of security checks for PMM 2.26 and older) 
