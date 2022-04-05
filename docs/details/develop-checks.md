@@ -60,14 +60,14 @@ The severity specified in the format of the checks is displayed differently on t
  
 | Check severity    |UI correspondence       |
 | --------- | -------- |
-| emergency |-|
-| alert     |-|
-| critical  |-|
-| error     | Critical |
-| warning   | Major    |
-| notice    | Trivial  |
-| info      |-|
-| debug     |-|
+| emergency |Critical|
+| alert     |Critical|
+| critical  |Critical|
+| error     |Critical |
+| warning   |Major    |
+| notice    |Trivial  |
+| info      |Trivial|
+| debug     |Trivial|
  
 ## Check types
 Use one of the following check types to define your query type and the PMM Service type for which the check will run:
