@@ -14,9 +14,7 @@ A check is a combination of:
 All checks are self-contained in the first phase, as well as in most of the planned phases.
  
 This means that extracted data is processed on the PMM side and not sent back to the SaaS.
- 
-However, if you have the right entitlements, you can send check results and other metadata to SaaS for implementing a History feature. 
- 
+  
 ## Backend
  
 ![!](../_images/BackendChecks.png)
