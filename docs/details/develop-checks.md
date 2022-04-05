@@ -63,17 +63,17 @@ PMM can display failed checks as Critical, Major or Trivial. These three severit
 ## Check types
 Use one of the following check types to define your query type and the PMM Service type for which the check will run:
  
-| Check type  |  Description | "query" required (must be empty if no)   |  Documentation |  Availability in PMM |
+| Check type  |  Description | "query" required (must be empty if no)   |  Availability in PMM | Documentation  |
 |---|---|---|---|---|
-| MYSQL_SHOW |     Executes 'SHOW …' clause against MySQL database.      |Yes | |
-| MYSQL_SELECT    |     Executes 'SELECT …' clause against MySQL database.       |Yes||   PMM 2.27 and older|
-| POSTGRESQL_SHOW     |    Executes 'SHOW ALL' command against PosgreSQL database.        | No| |PMM 2.27 and older |
-| POSTGRESQL_SELECT      | Executes 'SELECT …' clause against PosgreSQL database.    | Yes| | PMM 2.27 and older|
-| MONGODB_GETPARAMETER     | Executes db.adminCommand( { getParameter: "*" } ) against MongoDB's "admin" database.    | No |[getParameter](https://docs.mongodb.com/manual/reference/command/getParameter/)| PMM 2.27 and older| PMM 2.27 and older|
-| MONGODB_BUILDINFO    | Executes db.adminCommand( { buildInfo:  1 } ) against MongoDB's "admin" database.    | No | [buildInfo](https://docs.mongodb.com/manual/reference/command/buildInfo/)| PMM 2.27 and older|
-| MONGODB_GETCMDLINEOPTS          |    Executes db.adminCommand( { getCmdLineOpts: 1 } ) against MongoDB's "admin" database.      | No | [getCmdLineOpts](https://docs.mongodb.com/manual/reference/command/getCmdLineOpts/)| PMM 2.27 and older|
-| MONGODB_REPLSETGETSTATUS     |   Executes db.adminCommand( { replSetGetStatus: 1 } ) against MongoDB's "admin" database.       | No | [replSetGetStatus](https://docs.mongodb.com/manual/reference/command/replSetGetStatus/)| PMM 2.27 and newer|
-| MONGODB_GETDIAGNOSTICDATA |Executes db.adminCommand( { getDiagnosticData: 1 } ) against MongoDB's "admin" database.   | No | [MongoDB Performance](https://docs.mongodb.com/manual/administration/analyzing-mongodb-performance/#full-time-diagnostic-data-capture)| PMM 2.27 and newer|
+| MYSQL_SHOW |     Executes 'SHOW …' clause against MySQL database.      |Yes | PMM 2.27 and older||
+| MYSQL_SELECT    |     Executes 'SELECT …' clause against MySQL database.       |Yes|PMM 2.27 and older|   |
+| POSTGRESQL_SHOW     |    Executes 'SHOW ALL' command against PosgreSQL database.        | No| PMM 2.27 and older ||
+| POSTGRESQL_SELECT      | Executes 'SELECT …' clause against PosgreSQL database.    | Yes|  PMM 2.27 and older||
+| MONGODB_GETPARAMETER     | Executes db.adminCommand( { getParameter: "*" } ) against MongoDB's "admin" database.    | No | PMM 2.27 and older| [getParameter](https://docs.mongodb.com/manual/reference/command/getParameter/)|
+| MONGODB_BUILDINFO    | Executes db.adminCommand( { buildInfo:  1 } ) against MongoDB's "admin" database.    | No | PMM 2.27 and older| [buildInfo](https://docs.mongodb.com/manual/reference/command/buildInfo/) |
+| MONGODB_GETCMDLINEOPTS          |    Executes db.adminCommand( { getCmdLineOpts: 1 } ) against MongoDB's "admin" database.      | No | PMM 2.27 and older| [getCmdLineOpts](https://docs.mongodb.com/manual/reference/command/getCmdLineOpts/) |
+| MONGODB_REPLSETGETSTATUS     |   Executes db.adminCommand( { replSetGetStatus: 1 } ) against MongoDB's "admin" database.       | No |PMM 2.27 and newer |  [replSetGetStatus](https://docs.mongodb.com/manual/reference/command/replSetGetStatus/) |
+| MONGODB_GETDIAGNOSTICDATA |Executes db.adminCommand( { getDiagnosticData: 1 } ) against MongoDB's "admin" database.   | No | PMM 2.27 and newer| [MongoDB Performance](https://docs.mongodb.com/manual/administration/analyzing-mongodb-performance/#full-time-diagnostic-data-capture)| 
  
 ## Develop custom checks
  
