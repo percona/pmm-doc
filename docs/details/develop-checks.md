@@ -53,19 +53,12 @@ The check script assumes that there is a function with a fixed name _check_ that
  
 PMM 2.12.0 and earlier use **context**, while newer versions use **check_context**. Both have the same meaning.
   
-## Check severities
-The severity specified in the format of the checks is displayed differently on the UI:
+## Check severity levels
+PMM can display failed checks as Critical, Major or Trivial. These three severity levels can be linked to the following severity types in the check source:
  
-| Check severity    |UI correspondence       |
-| --------- | -------- |
-| emergency |Critical|
-| alert     |Critical|
-| critical  |Critical|
-| error     |Critical |
-| warning   |Major    |
-| notice    |Trivial  |
-| info      |Trivial|
-| debug     |Trivial|
+ - Critical: emergency, alert, critical
+ - Major: warning  
+ - Trivial: notice, info, debug
  
 ## Check types
 Use one of the following check types to define your query type and the PMM Service type for which the check will run:
