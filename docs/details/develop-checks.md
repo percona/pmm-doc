@@ -330,7 +330,7 @@ checks:
  
 ### Function signature
  
-The function signature can be **def check(docs)**  or **def check_context** (docs, context), where docs are a list of dicts.
+The function signature can be **def check(docs)**  or **def check_context** (docs, context), where **docs** is a list of dicts.
   
  
 ## Check examples
