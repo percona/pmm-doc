@@ -24,7 +24,7 @@ This means that extracted data is processed on the PMM side and not sent back to
 3. pmm-managed verifies file signatures using a list of hard-coded public keys. At least one signature should be correct.
 4. pmm-managed sends queries to pmm-agent and gathers results.
 5. pmm-managed executes check scripts that produce alert information.
-6. pmm-managed sends alerts to Alert Manager.
+6. pmm-managed sends alerts to Alermanager.
    - Due to Alertmanager design, pmm-managed has to send and re-send alerts to it much more often than the frequency with which checks are executed. This expected behaviour is not important for using checks but is important for understanding how checks work.
    - Currently, Prometheus is not involved.
  
