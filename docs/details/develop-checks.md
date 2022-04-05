@@ -77,11 +77,7 @@ Use one of the following check types to define your query type and the PMM Servi
  
 ## Develop custom checks
  
-1.  Download the latest PMM Server and PMM Client builds:
- 
-    - PMM Server: [percona/pmm-server:2](https://www.percona.com/software/pmm/quickstart#)
-    - PMM Client: _pmm2-client-2.9.1.tar.gz_
- 
+1.  Install the latest PMM Server and PMM Client builds following the [installation instructions](https://www.percona.com/software/pmm/quickstart#). 
 2.  Run PMM Server with special environment variables:
  
     - _PMM_DEBUG=1_ to enable debug output that would be useful later;
