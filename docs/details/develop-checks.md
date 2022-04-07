@@ -4,6 +4,47 @@ PMM offers a set of checks that can detect common security threats, performance 
  
 As a developer, you can create custom checks to cover additional use cases, relevant to your specific database infrastructure.
  
+## Advisor checks and security checks
+PMM 2.26 and older included a set of security checks grouped under the **Security Threat Tool** option.
+ 
+Starting with the 2.27 release, checks are grouped into a set of Advisors, according to the functionality and recommendations they provide.
+ 
+To reflect these changes, the old **Security Threat Tool** option has been renamed to **Advisors** and the checks use a slightly different format.
+
+
+
+To create advisor checks for PMM 2.27 and later, use the following format:
+ 
+```yaml
+---
+checks:
+  - version: 2             <------ version increment
+    name: exampleV2
+    summary: Check format V2
+    description: Checks something important
+    tiers: [ anonymous, registered ]
+    interval: standard
+    family: MYSQL          <------- family
+    queries:               <-------- queries
+      - type: MYSQL_SELECT
+        query: some query
+ 
+      - type: MYSQL_SHOW
+        query: some query
+ 
+    script: |
+      def check_context(docs, context):
+          firstQueryResults = docs[0]
+          secondQueryResults = docs[1]
+          // Process query results
+          return results          }
+          }]
+```
+
+
+
+ 
+
 ## Check components
  
 A check is a combination of:
@@ -43,8 +84,9 @@ Our UI in Grafana uses Alert Manager API v2 to get information about failed chec
 - **Type** (string/enum, required): defines the query type and the PMM Service type for which the advisor runs. Check the list of available types in the table below.
 - **Query** (string, optional): contains an SQL query as a string with proper quoting. The query for Security Checks (developed for PMM 2.26 and older) can also contain a MongoDB query document. Advisor checks for PMM 2.27 and later do not yet support a query parameter for MongoDB. 
 
-    The query is executed on the PMM Client side and can be absent if the type defines the whole query by itself.  
-or 
+
+The query is executed on the PMM Client side and can be absent if the type defines the whole query by itself.  
+
 - **Script** (string, required): contains a small Python program that processes query results, and returns check results. It is executed on the PMM Server side.
  
 ## Checks script
@@ -118,43 +160,6 @@ docker exec -it pmm-server bash
 supervisorctl tail -f pmm-managed
  
 ```
-## Advisor checks particularities (for PMM 2.27 and newer)
-PMM 2.26 and older included a set of security checks grouped under the **Security Threat Tool** option.
- 
-Starting with the 2.27 release, checks are grouped into a set of Advisors, according to the functionality and recommendations they provide.
- 
-To reflect these changes, the old **Security Threat Tool** option has been renamed to **Advisors** and the checks use a slightly different format.
- 
-### Check format
-Advisors checks use a slightly different format than security checks developed for PMM 2.26 and later. 
-
-To create advisor checks for PMM 2.27 and later, use the following format:
- 
-```yaml
----
-checks:
-  - version: 2             <------ version increment
-    name: exampleV2
-    summary: Check format V2
-    description: Checks something important
-    tiers: [ anonymous, registered ]
-    interval: standard
-    family: MYSQL          <------- family
-    queries:               <-------- queries
-      - type: MYSQL_SELECT
-        query: some query
- 
-      - type: MYSQL_SHOW
-        query: some query
- 
-    script: |
-      def check_context(docs, context):
-          firstQueryResults = docs[0]
-          secondQueryResults = docs[1]
-          // Process query results
-          return results          }
-          }]
-```
   
 ### Function signature
  
@@ -164,20 +169,13 @@ The function signature for PMM 2.27 and later can be **check_context** (docs, co
  The query for Security Checks (developed for PMM 2.26 and older) can also contain a MongoDB query document.
  Advisor checks for PMM 2.27 and later do not yet support a query parameter for MongoDB.
  
- 
+   
 
-  
+ ## Develop security checks for PMM 2.26 and older
  
-## Check examples
-You can find working examples of the build-in checks on [Percona Github](https://github.com/percona-platform/checked/tree/main/data/checks).
- 
-## Submit feedback
- We welcome your feedback on the current process for developing and debugging checks. Send us your comments over [Slack](https://percona.slack.com) or post a question on the [Percona Forums](https://forums.percona.com/).
 
   ??? note alert alert-info "Develop advisor checks for PMM 2.27 and older (click to show/hide)"
     <p>
-  ## Particularities of security checks for PMM 2.26 and older) 
- 
 ### Format
  
 The example below shows the format for a single check that returns the static result:
@@ -330,10 +328,19 @@ checks:
  
               return results
 ```
- 
+ </p>
 ### Function signature
  
 The function signature can be **def check(docs)**  or **def check_context** (docs, context), where **docs** is a list of dicts.
+
+
+## Check examples
+You can find working examples of the build-in checks on [Percona Github](https://github.com/percona-platform/checked/tree/main/data/checks).
+ 
+## Submit feedback
+ We welcome your feedback on the current process for developing and debugging checks. Send us your comments over [Slack](https://percona.slack.com) or post a question on the [Percona Forums](https://forums.percona.com/).
+
+??? note alert alert-info "Full section map (click to show/hide)"
+    <p>
+      test
     </p>
-
-
