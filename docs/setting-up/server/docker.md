@@ -260,7 +260,7 @@ Use the following Docker container environment variables (with `-e var=value`) t
 | `METRICS_RESOLUTION_HR`    | High metrics resolution (same as above).
 | `METRICS_RESOLUTION_MR`    | Medium metrics resolution in seconds.
 | `METRICS_RESOLUTION_LR`    | Low metrics resolution in seconds.
-| `DATA_RETENTION`           | How many days to keep time-series data in ClickHouse.
+| `DATA_RETENTION`           | How many days to keep time-series data in ClickHouse.<br />**N.B.** this must be set in hours,                           with a suffix of "h" and represent a complete number of days.
 | `ENABLE_VM_CACHE`          | Enable cache in VM.
 | `ENABLE_ALERTING`          | Enable integrated alerting.
 | `ENABLE_AZUREDISCOVER`     | Enable support for discovery of Azure databases.
