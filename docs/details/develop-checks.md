@@ -165,7 +165,18 @@ The function signature for PMM 2.27 and later can be **check_context** (docs, co
  Advisor checks for PMM 2.27 and later do not yet support a query parameter for MongoDB.
  
  
-## Particularities of security checks for PMM 2.26 and older) 
+
+  
+ 
+## Check examples
+You can find working examples of the build-in checks on [Percona Github](https://github.com/percona-platform/checked/tree/main/data/checks).
+ 
+## Submit feedback
+ We welcome your feedback on the current process for developing and debugging checks. Send us your comments over [Slack](https://percona.slack.com) or post a question on the [Percona Forums](https://forums.percona.com/).
+
+  ??? note alert alert-info "Develop advisor checks for PMM 2.27 and older (click to show/hide)"
+    <p>
+  ## Particularities of security checks for PMM 2.26 and older) 
  
 ### Format
  
@@ -323,16 +334,6 @@ checks:
 ### Function signature
  
 The function signature can be **def check(docs)**  or **def check_context** (docs, context), where **docs** is a list of dicts.
-  
- 
-## Check examples
-You can find working examples of the build-in checks on [Percona Github](https://github.com/percona-platform/checked/tree/main/data/checks).
- 
-## Submit feedback
- We welcome your feedback on the current process for developing and debugging checks. Send us your comments over [Slack](https://percona.slack.com) or post a question on the [Percona Forums](https://forums.percona.com/).
+    </p>
 
- ??? note
 
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
-    nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
-    massa, nec semper lorem quam in massa.
