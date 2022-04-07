@@ -68,7 +68,7 @@ How to run PMM Server with Docker based on our [Docker image].
 
 !!! caution alert alert-warning "Important"
     Grafana plugins have been moved to the data volume `/srv` since the 2.23.0 version. So if you are upgrading PMM from any version before 2.23.0 and have installed additional plugins then plugins should be installed again after the upgrade.
-    
+
     To check used grafana plugins:
 
     ```sh
@@ -260,7 +260,7 @@ Use the following Docker container environment variables (with `-e var=value`) t
 | `METRICS_RESOLUTION_HR`    | High metrics resolution (same as above).
 | `METRICS_RESOLUTION_MR`    | Medium metrics resolution in seconds.
 | `METRICS_RESOLUTION_LR`    | Low metrics resolution in seconds.
-| `DATA_RETENTION`           | How many days to keep time-series data in ClickHouse.<br />**N.B.** this must be set in hours,                           with a suffix of "h" and represent a complete number of days.
+| `DATA_RETENTION`           | How many days to keep time-series data in ClickHouse.<br />**N.B.** this must be set in in a format supported by time.ParseDuration and represent a complete number of days.
 | `ENABLE_VM_CACHE`          | Enable cache in VM.
 | `ENABLE_ALERTING`          | Enable integrated alerting.
 | `ENABLE_AZUREDISCOVER`     | Enable support for discovery of Azure databases.
