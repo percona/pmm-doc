@@ -1,4 +1,4 @@
-# Develop custom checks
+# Develop Advisor checks
  
 PMM offers a set of checks that can detect common security threats, performance degradation, data loss and data corruption.
  
@@ -330,3 +330,9 @@ You can find working examples of the build-in checks on [Percona Github](https:/
  
 ## Submit feedback
  We welcome your feedback on the current process for developing and debugging checks. Send us your comments over [Slack](https://percona.slack.com) or post a question on the [Percona Forums](https://forums.percona.com/).
+
+ ??? note
+
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
+    nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
+    massa, nec semper lorem quam in massa.

@@ -138,7 +138,7 @@ nav:
           - details/index.md
           - details/architecture.md
           - details/interface.md
-          - Developing custom checks:
+          - Developing Advisor checks:
                 - details/develop-checks.md
           - Dashboards:
                 - details/dashboards/index.md
