@@ -173,12 +173,12 @@ The function signature for PMM 2.27 and later can be **check_context** (docs, co
 
  ## Develop security checks for PMM 2.26 and older
  
-
-  ??? note alert alert-info "Develop advisor checks for PMM 2.27 and older (click to show/hide)"
-    <p>
 ### Format
  
-The example below shows the format for a single check that returns the static result:
+
+ ??? note alert alert-info "Full section map (click to show/hide)"
+    <p>
+      The example below shows the format for a single check that returns the static result:
  
 ```yaml
 ---
@@ -329,6 +329,8 @@ checks:
               return results
 ```
  </p>
+    
+
 ### Function signature
  
 The function signature can be **def check(docs)**  or **def check_context** (docs, context), where **docs** is a list of dicts.
@@ -340,7 +342,3 @@ You can find working examples of the build-in checks on [Percona Github](https:/
 ## Submit feedback
  We welcome your feedback on the current process for developing and debugging checks. Send us your comments over [Slack](https://percona.slack.com) or post a question on the [Percona Forums](https://forums.percona.com/).
 
-??? note alert alert-info "Full section map (click to show/hide)"
-    <p>
-      test
-    </p>
