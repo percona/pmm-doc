@@ -28,7 +28,7 @@ The results are sent to PMM Server where you can review any failed checks on the
 
 To see more details about the available checks and any checks that failed, click the *{{icon.checks}} Advisors* icon on the main menu. This icon is only available if you have enabled the Advisors options in the Advanced Settings.
 
-**Check results data *always* remains on the PMM Server.** It is not related to anonymous data sent for Telemetry purposes.
+**Check results data *always* remains on the PMM Server.** This is not related to anonymous data sent for Telemetry purposes.
 
 ## Change a check's interval
 The checks can be executed manually or automatically. By default, PMM runs automatic checks every 24 hours. To configure this interval:
