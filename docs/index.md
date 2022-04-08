@@ -5,41 +5,34 @@
     <p>
   
       ---
-       checks:
-        - version: 1
-     name: example
-      summary: Example check
-      description: This check is just an example.
-      tiers: [anonymous, registered]
-      type: MONGODB_BUILDINFO
-      script: |
-        def check(docs):
-           # for compatibility with PMM   Server < 2.12
-            context = {
-                "format_version_num": format_version_num,
-                "parse_version": parse_version,
-            }
-            return check_context(docs, context)
+    checks:
+      - version: 1
+    name: example
+    summary: Example check
+    description: This check is just an example.
+    tiers: [anonymous, registered]
+    type: MONGODB_BUILDINFO
+    script: |
+      def check(docs):
+          # for compatibility with PMM Server < 2.12
+          context = {
+              "format_version_num": format_version_num,
+              "parse_version": parse_version,
+          }
+          return check_context(docs, context)
 
 
-        def check_context(docs, context):
-            # `docs` is a frozen (deeply immutable) list of dicts where each dict represents a single document in result set.
-          
-           # `context` is a dict with additional functions.
-          
-            #
-         
-            # Global `print` and `fail` functions are available.
-               
-            # `check_context` function is expected to return a list of dicts that are then converted to alerts;
-          
-            # in particular, that list can be empty.
-          
-            # Any other value (for example, string) is treated as script execution failure
-          
-            # (Starlark does not support Python exceptions);
-         
-            # it is recommended to use global function `fail` for that instead.
+      def check_context(docs, context):
+          # `docs` is a frozen (deeply immutable) list of dicts where each dict represents a single document in result set.
+          # `context` is a dict with additional functions.
+          #
+          # Global `print` and `fail` functions are available.
+          #
+          # `check_context` function is expected to return a list of dicts that are then converted to alerts;
+          # in particular, that list can be empty.
+          # Any other value (for example, string) is treated as script execution failure
+          # (Starlark does not support Python exceptions);
+          # it is recommended to use global function `fail` for that instead.
 
           format_version_num = context.get("format_version_num", fail)
           parse_version = context.get("parse_version", fail)
