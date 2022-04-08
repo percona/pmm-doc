@@ -45,7 +45,6 @@
               }
           }]
            
-    </p> 
 
 === "Security check example"
     
