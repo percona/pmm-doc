@@ -3,8 +3,11 @@
 
 === "Format for Advisor Checks"
     <p>
+      
        ---
+      
       checks:
+        
         - version: 2             <------ version increment
           name: exampleV2
           summary: Check format V2
@@ -12,13 +15,14 @@
           tiers: [ anonymous, registered ]
           interval: standard
           family: MYSQL          <------- family
-          queries:               <-------- queries
+          queries:               
+          
+          <-------- queries
             - type: MYSQL_SELECT
-              query: some query
+             query: some query
 
             - type: MYSQL_SHOW
               query: some query 
-
           script: |
             def check_context(docs, context):
                 firstQueryResults = docs[0]
