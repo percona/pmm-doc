@@ -28,7 +28,6 @@ For example, below is a single check that returns the static result:
     - list item a
     - list item b
 
-
 === "Tab 1"
     <p> 
 ```yaml
