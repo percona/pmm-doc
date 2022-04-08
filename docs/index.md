@@ -4,16 +4,16 @@
 === "Format for Advisor Checks"
     <p>
     
-     ---
-     checks:
-    - version: 1
-      name: example
-      summary: Example check
-      description: This check is just an example.
-      tiers: [anonymous, registered]
-      type: MONGODB_BUILDINFO
-      script: |
-       def check(docs):
+      ---
+      checks:
+     - version: 1
+       name: example
+       summary: Example check
+       description: This check is just an example.
+       tiers: [anonymous, registered]
+       type: MONGODB_BUILDINFO
+       script: |
+        def check(docs):
             # for compatibility with PMM Server < 2.12
             context = {
                "format_version_num": format_version_num,
