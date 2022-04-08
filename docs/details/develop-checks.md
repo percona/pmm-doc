@@ -16,20 +16,11 @@ To create advisor checks for PMM 2.27 and later, use the following format:
 ## Format
 
 
-=== "Tab 1"
-    Markdown **content**.
 
-    Multiple paragraphs.
-
-=== "Tab 2"
-More Markdown **content**.
-
-- list item a
-- list item b
-  
-=== "Advisor checks"
+=== "Advisors checks"
     ```
-    ---
+    yaml
+---
 checks:
   - version: 2             <------ version increment
     name: exampleV2
@@ -50,12 +41,12 @@ checks:
           firstQueryResults = docs[0]
           secondQueryResults = docs[1]
           // Process query results
-          return results.
+          return results    
     ```
-
-=== "Tab B"
+=== "Security checks"
     ```
     yaml
+---
 checks:
   - version: 1
     name: example
@@ -71,8 +62,8 @@ checks:
               "parse_version": parse_version,
           }
           return check_context(docs, context)
- 
- 
+
+
       def check_context(docs, context):
           # `docs` is a frozen (deeply immutable) list of dicts where each dict represents a single document in result set.
           # `context` is a dict with additional functions.
@@ -84,12 +75,12 @@ checks:
           # Any other value (for example, string) is treated as script execution failure
           # (Starlark does not support Python exceptions);
           # it is recommended to use global function `fail` for that instead.
- 
+
           format_version_num = context.get("format_version_num", fail)
           parse_version = context.get("parse_version", fail)
- 
+
           print("first doc =", repr(docs[0]))
- 
+
           return [{
               "summary": "Example summary",
               "description": "Example description",
@@ -98,14 +89,7 @@ checks:
                   "version": format_version_num(10203),
               }
           }]
-    ```.
-
-=== "Tab B"
     ```
-    More content.
-    ```
-
-
 
 === "More realistic example"
     ```
@@ -207,7 +191,7 @@ checks:
                       },
                   })
  
-              return results.
+              return results
     ```
 
 ## Check components
