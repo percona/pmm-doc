@@ -177,7 +177,6 @@ The function signature for PMM 2.27 and later can be **check_context** (docs, co
  Advisor checks for PMM 2.27 and later do not yet support a query parameter for MongoDB.
  
    
-
  ## Develop security checks for PMM 2.26 and older
  
 ### Format
