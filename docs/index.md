@@ -1,5 +1,18 @@
 # Welcome
 
+
+=== "Tab 1"
+    Markdown **content**.
+
+    Multiple paragraphs.
+
+=== "Tab 2"
+    More Markdown **content**.
+
+    - list item a
+    - list item b
+
+
 **Percona Monitoring and Management** (PMM) is a free, open-source monitoring tool for MySQL, PostgreSQL, MongoDB, and ProxySQL, and the servers they run on.
 
 PMM helps you improve the performance of your databases, simplify their management, and strengthen their security. It's efficient, quick to [set up](setting-up/index.md), and easy to use.
