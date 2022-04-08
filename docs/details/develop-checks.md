@@ -4,7 +4,7 @@ PMM offers a set of checks that can detect common security threats, performance 
  
 As a developer, you can create custom checks to cover additional use cases, relevant to your specific database infrastructure.
  
-## Advisor checks and security checks
+## Advisor checks versus security checks
 PMM 2.26 and older included a set of security checks grouped under the **Security Threat Tool** option.
  
 Starting with the 2.27 release, checks are grouped into a set of Advisors, according to the functionality and recommendations they provide.
@@ -12,9 +12,21 @@ Starting with the 2.27 release, checks are grouped into a set of Advisors, accor
 To reflect these changes, the old **Security Threat Tool** option has been renamed to **Advisors** and the checks use a slightly different format.
 
 
-
 To create advisor checks for PMM 2.27 and later, use the following format:
  
+=== "Tab 1"
+    Markdown **content**.
+
+    Multiple paragraphs.
+
+=== "Tab 2"
+    More Markdown **content**.
+
+    - list item a
+    - list item b
+
+??? note alert alert-info "Full section map (click to show/hide)"
+    <p>   
 ```yaml
 ---
 checks:
@@ -40,10 +52,7 @@ checks:
           return results          }
           }]
 ```
-
-
-
- 
+    </p>
 
 ## Check components
  
@@ -84,8 +93,7 @@ Our UI in Grafana uses Alert Manager API v2 to get information about failed chec
 - **Type** (string/enum, required): defines the query type and the PMM Service type for which the advisor runs. Check the list of available types in the table below.
 - **Query** (string, optional): contains an SQL query as a string with proper quoting. The query for Security Checks (developed for PMM 2.26 and older) can also contain a MongoDB query document. Advisor checks for PMM 2.27 and later do not yet support a query parameter for MongoDB. 
 
-
-The query is executed on the PMM Client side and can be absent if the type defines the whole query by itself.  
+    The query is executed on the PMM Client side and can be absent if the type defines the whole query by itself.  
 
 - **Script** (string, required): contains a small Python program that processes query results, and returns check results. It is executed on the PMM Server side.
  
