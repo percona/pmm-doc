@@ -15,9 +15,21 @@ To create advisor checks for PMM 2.27 and later, use the following format:
 
 ## Format
 
+
+=== "Tab 1"
+    Markdown **content**.
+
+    Multiple paragraphs.
+
+=== "Tab 2"
+More Markdown **content**.
+
+- list item a
+- list item b
+  
 === "Advisor checks"
-```yaml
----
+    ```
+    ---
 checks:
   - version: 2             <------ version increment
     name: exampleV2
@@ -29,21 +41,21 @@ checks:
     queries:               <-------- queries
       - type: MYSQL_SELECT
         query: some query
- 
+
       - type: MYSQL_SHOW
-        query: some query
- 
+        query: some query 
+
     script: |
       def check_context(docs, context):
           firstQueryResults = docs[0]
           secondQueryResults = docs[1]
           // Process query results
-          return results          }
-          }] 
-  ```
+          return results.
+    ```
 
-=== "Security Checks format"
-    ```yaml
+=== "Tab B"
+    ```
+    yaml
 checks:
   - version: 1
     name: example
@@ -86,7 +98,14 @@ checks:
                   "version": format_version_num(10203),
               }
           }]
+    ```.
+
+=== "Tab B"
     ```
+    More content.
+    ```
+
+
 
 === "More realistic example"
     ```
