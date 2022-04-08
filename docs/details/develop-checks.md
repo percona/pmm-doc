@@ -17,6 +17,8 @@ On the other hand, checks results and other metadata can be sent to SaaS to impl
 
 For example, below is a single check that returns the static result:
 
+=== "Tab 1"
+    <p> 
 ```yaml
 ---
 checks:
@@ -62,10 +64,11 @@ checks:
               }
           }]
 ```
+    </p>
 
-Here is a much more realistic example:
-
-```yaml
+=== "Realistic"
+    <p> 
+    ```yaml
 ---
 checks:
   - version: 1
@@ -165,6 +168,18 @@ checks:
 
               return results
 ```
+    </p>
+
+=== "Tab B"
+    ```
+    More content.
+    ```
+
+
+
+Here is a much more realistic example:
+
+
 
 ## Check fields
 
