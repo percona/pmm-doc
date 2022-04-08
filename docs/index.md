@@ -1,16 +1,78 @@
 # Welcome
 
 
-=== "Tab 1"
-    Markdown **content**.
+=== "Format for Advisor Checks"
+    <p>---
+checks:
+  - version: 2             <------ version increment
+    name: exampleV2
+    summary: Check format V2
+    description: Checks something important
+    tiers: [ anonymous, registered ]
+    interval: standard
+    family: MYSQL          <------- family
+    queries:               <-------- queries
+      - type: MYSQL_SELECT
+        query: some query
 
-    Multiple paragraphs.
+      - type: MYSQL_SHOW
+        query: some query 
+
+    script: |
+      def check_context(docs, context):
+          firstQueryResults = docs[0]
+          secondQueryResults = docs[1]
+          // Process query results
+          return results
+
+    </p> 
 
 === "Tab 2"
-    More Markdown **content**.
+    <p>
+    ---
+checks:
+  - version: 1
+    name: example
+    summary: Example check
+    description: This check is just an example.
+    tiers: [anonymous, registered]
+    type: MONGODB_BUILDINFO
+    script: |
+      def check(docs):
+          # for compatibility with PMM Server < 2.12
+          context = {
+              "format_version_num": format_version_num,
+              "parse_version": parse_version,
+          }
+          return check_context(docs, context)
 
-    - list item a
-    - list item b
+
+      def check_context(docs, context):
+          # `docs` is a frozen (deeply immutable) list of dicts where each dict represents a single document in result set.
+          # `context` is a dict with additional functions.
+          #
+          # Global `print` and `fail` functions are available.
+          #
+          # `check_context` function is expected to return a list of dicts that are then converted to alerts;
+          # in particular, that list can be empty.
+          # Any other value (for example, string) is treated as script execution failure
+          # (Starlark does not support Python exceptions);
+          # it is recommended to use global function `fail` for that instead.
+
+          format_version_num = context.get("format_version_num", fail)
+          parse_version = context.get("parse_version", fail)
+
+          print("first doc =", repr(docs[0]))
+
+          return [{
+              "summary": "Example summary",
+              "description": "Example description",
+              "severity": "warning",
+              "labels": {
+                  "version": format_version_num(10203),
+              }
+          }]
+    </p>
 
 
 **Percona Monitoring and Management** (PMM) is a free, open-source monitoring tool for MySQL, PostgreSQL, MongoDB, and ProxySQL, and the servers they run on.
