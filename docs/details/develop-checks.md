@@ -14,6 +14,7 @@ To reflect these changes, the old **Security Threat Tool** option has been renam
 To create advisor checks for PMM 2.27 and later, use the following format:
 
 ## Format
+
 === "Advisor checks"
 ```yaml
 ---
@@ -38,12 +39,11 @@ checks:
           secondQueryResults = docs[1]
           // Process query results
           return results          }
-          }]
-```
+          }] 
+  ```
 
-=== "Format for Security Checks"
-The example below shows the format for a single check that returns the static result:
-```yaml
+=== "Security Checks format"
+    ```yaml
 checks:
   - version: 1
     name: example
@@ -85,12 +85,12 @@ checks:
               "labels": {
                   "version": format_version_num(10203),
               }
-          }]                    
-```
-=== "More realistic example of security check"
-    More Markdown **content**.
+          }]
+    ```
 
-```yaml
+=== "More realistic example"
+    ```
+    yaml
 ---
 checks:
   - version: 1
@@ -188,8 +188,9 @@ checks:
                       },
                   })
  
-              return results
-```
+              return results.
+    ```
+
 ## Check components
  
 A check is a combination of:
