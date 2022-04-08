@@ -116,17 +116,17 @@
                 <div class="bodywrapper">
                     <div class="body">
                         <h1 id="architecture">Architecture<a class="headerlink" href="#architecture" title="Permanent link">&para;</a></h1>
-<p>PMM is a client/server application built by us with our own and third-party open-source tools.</p>
+<p>PMM is a client/server application built by Percona comprising its own and third-party components and tools.```</p>
 <!-- The source of this image is maintained at https://miro.com/app/board/uXjVOPgKgrE=/ -->
 
 <p><div class="lightgallery"><a data-sub-html="image" href="../_images/C_S_Architecture.jpg"><img alt="image" src="../_images/C_S_Architecture.jpg" /></a></div></p>
 <h2 id="pmm-server">PMM Server<a class="headerlink" href="#pmm-server" title="Permanent link">&para;</a></h2>
-<p>PMM Server is the heart of PMM. It receives data from clients, collates it and stores it. Metrics are drawn as tables, charts and graphs within <a href="dashboards/"><em>dashboards</em></a>, each a part of the web-based <a href="../using/interface.html">user interface</a>.</p>
+<p>PMM Server is the heart of PMM. It receives data from clients, collects it, and stores it. Metrics are drawn as tables, charts and graphs within <a href="dashboards/"><em>dashboards</em></a>, each a part of the web-based <a href="../using/interface.html">user interface</a>.</p>
 <h2 id="pmm-client">PMM Client<a class="headerlink" href="#pmm-client" title="Permanent link">&para;</a></h2>
 <p>PMM Client is a collection of agents and exporters that run on the host being monitored.</p>
-<p>PMM Client runs on every database host or node you want to monitor. The client collects server metrics, general system metrics, and query analytics data, and sends it to the server. Except when monitoring AWS RDS instances, a PMM Client must be running on the host to be monitored.</p>
+<p>PMM Client runs on every database host or node you want to monitor. The client collects server metrics, general system metrics, query analytics and sends it to the server. Except when monitoring AWS RDS instances, a PMM Client must be running on the host to be monitored.</p>
 <h2 id="percona-platform">Percona Platform<a class="headerlink" href="#percona-platform" title="Permanent link">&para;</a></h2>
-<p><a href="../using/platform/">Percona Platform</a> (in development) provides value-added services for PMM.</p>
+<p><a href="../using/platform/">Percona Platform</a> provides value-added services for PMM.</p>
 <h2 id="pmm-context">PMM context<a class="headerlink" href="#pmm-context" title="Permanent link">&para;</a></h2>
 <p>The PMM Client package provides:</p>
 <ul>
@@ -136,23 +136,23 @@
 </ul>
 <p>The PMM Server package provides:</p>
 <ul>
-<li><code>pmm-managed</code>;</li>
-<li>Query Analytics;</li>
-<li>Grafana;</li>
-<li>VictoriaMetrics.</li>
+<li><code>pmm-managed</code></li>
+<li>Query Analytics</li>
+<li>Grafana</li>
+<li>VictoriaMetrics</li>
 </ul>
 <h3 id="pmm-server_1">PMM Server<a class="headerlink" href="#pmm-server_1" title="Permanent link">&para;</a></h3>
 <p><div class="lightgallery"><a data-sub-html="image" href="../_images/PMM_Architecture_Client_Server.jpg"><img alt="image" src="../_images/PMM_Architecture_Client_Server.jpg" /></a></div></p>
 <p>PMM Server includes the following tools:</p>
 <ul>
 <li>
-<p>Query Analytics (QAN) enables you to analyze MySQL query performance over periods of time. In addition to the client-side QAN agent, it includes the following:</p>
+<p>Query Analytics (QAN) enables you to analyze database query performance over periods of time. In addition to the client-side QAN agent, it includes the following:</p>
 </li>
 <li>
 <p>QAN API is the back-end for storing and accessing query data collected by the QAN agent running on a PMM Client.</p>
 </li>
 <li>
-<p>QAN Web App is a web application for visualizing collected Query Analytics data.</p>
+<p>QAN App is a web application for visualizing collected Query Analytics data which is part of the PMM Server&rsquo;s UI.</p>
 </li>
 <li>
 <p>Metrics Monitor provides a historical view of metrics that are critical to a MySQL or MongoDB server instance. It includes the following:</p>
@@ -160,9 +160,9 @@
 <li>
 <p><a href="https://github.com/VictoriaMetrics/VictoriaMetrics">VictoriaMetrics</a>, a scalable time-series database. (Replaced <a href="https://prometheus.io">Prometheus</a> in <a href="../release-notes/2.12.0.html">PMM 2.12.0</a>.)</p>
 </li>
-<li><a href="https://clickhouse.tech/">ClickHouse</a> is a third-party column-oriented database that facilitates the Query Analytics functionality.</li>
-<li><a href="http://docs.grafana.org/">Grafana</a> is a third-party dashboard and graph builder for visualizing data aggregated (by VictoriaMetrics or Prometheus) in an intuitive web interface.</li>
-<li>Percona Dashboards is a set of dashboards for Grafana developed by us.</li>
+<li><a href="https://clickhouse.com">ClickHouse</a> is a third-party column-oriented database that facilitates the Query Analytics functionality.</li>
+<li><a href="http://docs.grafana.org">Grafana</a> is a third-party dashboard and graph builder for visualizing data aggregated (by VictoriaMetrics or Prometheus) in an intuitive web interface.</li>
+<li><a href="https://github.com/percona/grafana-dashboards">Percona Dashboards</a> is a set of dashboards for Grafana developed by Percona.</li>
 </ul>
 <h3 id="pmm-client_1">PMM Client<a class="headerlink" href="#pmm-client_1" title="Permanent link">&para;</a></h3>
 <p><div class="lightgallery"><a data-sub-html="image" href="../_images/diagram.pmm.client-architecture.png"><img alt="image" src="../_images/diagram.pmm.client-architecture.png" /></a></div></p>
@@ -207,7 +207,7 @@
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2022-02-25
+            <i class="uil uil-refresh"></i> Page updated 2022-04-08
         </li>
         
     </ul>
