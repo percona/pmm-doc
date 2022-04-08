@@ -18,6 +18,18 @@ On the other hand, checks results and other metadata can be sent to SaaS to impl
 For example, below is a single check that returns the static result:
 
 === "Tab 1"
+    Markdown **content**.
+
+    Multiple paragraphs.
+
+=== "Tab 2"
+    More Markdown **content**.
+
+    - list item a
+    - list item b
+
+
+=== "Tab 1"
     <p> 
 ```yaml
 ---
