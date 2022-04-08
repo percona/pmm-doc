@@ -4,9 +4,8 @@
 === "Format for Advisor Checks"
     <p>
     
-    ```yaml
-
-      ---checks:
+      ---
+      checks:
        - version: 1
     name: example
     summary: Example check
@@ -48,14 +47,12 @@
                   "version": format_version_num(10203),
               }
           }]
-           ```
+           
     </p> 
 
 === "Security check example"
     
-    ```yaml
     ---
-  
     checks:
     - version: 1
     name: mongodb_version
@@ -153,7 +150,7 @@
                   })
 
               return results
-              ```
+              
 
 **Percona Monitoring and Management** (PMM) is a free, open-source monitoring tool for MySQL, PostgreSQL, MongoDB, and ProxySQL, and the servers they run on.
 
