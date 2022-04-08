@@ -3,28 +3,28 @@
 
 === "Format for Advisor Checks"
     <p>
-    ---
-  checks:
-    - version: 2             <------ version increment
-      name: exampleV2
-      summary: Check format V2
-      description: Checks something important
-      tiers: [ anonymous, registered ]
-      interval: standard
-      family: MYSQL          <------- family
-      queries:               <-------- queries
-        - type: MYSQL_SELECT
-          query: some query
+       ---
+      checks:
+        - version: 2             <------ version increment
+          name: exampleV2
+          summary: Check format V2
+          description: Checks something important
+          tiers: [ anonymous, registered ]
+          interval: standard
+          family: MYSQL          <------- family
+          queries:               <-------- queries
+            - type: MYSQL_SELECT
+              query: some query
 
-        - type: MYSQL_SHOW
-          query: some query 
+            - type: MYSQL_SHOW
+              query: some query 
 
-      script: |
-        def check_context(docs, context):
-            firstQueryResults = docs[0]
-            secondQueryResults = docs[1]
-            // Process query results
-            return results
+          script: |
+            def check_context(docs, context):
+                firstQueryResults = docs[0]
+                secondQueryResults = docs[1]
+                // Process query results
+                return results
     </p> 
 
 === "Tab 2"
