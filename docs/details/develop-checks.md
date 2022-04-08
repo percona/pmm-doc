@@ -11,7 +11,6 @@ Starting with the 2.27 release, checks are grouped into a set of Advisors, accor
  
 To reflect these changes, the old **Security Threat Tool** option has been renamed to **Advisors** and the checks use a slightly different format.
 
-
 To create advisor checks for PMM 2.27 and later, use the following format:
  
 === "Tab 1"
