@@ -5,21 +5,21 @@
     <p>
     
      ---
-    checks:
-    - version: 1
-      name: example
-      summary: Example check
-      description: This check is just an example.
-      tiers: [anonymous, registered]
-      type: MONGODB_BUILDINFO
+     checks:
+      - version: 1
+        name: example
+        summary: Example check
+        description: This check is just an example.
+       tiers: [anonymous, registered]
+        type: MONGODB_BUILDINFO
       script: |
-       def check(docs):
-            # for compatibility with PMM Server < 2.12
-            context = {
-               "format_version_num": format_version_num,
-                "parse_version": parse_version,
-            }
-            return check_context(docs, context)
+         def check(docs):
+              # for compatibility with PMM Server < 2.12
+              context = {
+                 "format_version_num": format_version_num,
+                  "parse_version": parse_version,
+              }
+             return check_context(docs, context)
 
         def check_context(docs, context):
             # `docs` is a frozen (deeply immutable) list of dicts where each dict represents a single document in result set.
