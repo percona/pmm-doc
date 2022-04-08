@@ -3,6 +3,7 @@
 
 === "Format for Advisor Checks"
     <p>
+    
     ```yaml
 
       ---checks:
