@@ -3,7 +3,7 @@
 
 === "Format for Advisor Checks"
     <p>
-    
+  
       ---
        checks:
         - version: 1
