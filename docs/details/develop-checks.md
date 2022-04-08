@@ -14,13 +14,36 @@ To reflect these changes, the old **Security Threat Tool** option has been renam
 To create advisor checks for PMM 2.27 and later, use the following format:
 
 ## Format
-=== "Format for Advisor Checks"
-    Markdown **content**.
-
-      The example below shows the format for a single check that returns the static result:
- 
+=== "Advisor checks"
 ```yaml
 ---
+checks:
+  - version: 2             <------ version increment
+    name: exampleV2
+    summary: Check format V2
+    description: Checks something important
+    tiers: [ anonymous, registered ]
+    interval: standard
+    family: MYSQL          <------- family
+    queries:               <-------- queries
+      - type: MYSQL_SELECT
+        query: some query
+ 
+      - type: MYSQL_SHOW
+        query: some query
+ 
+    script: |
+      def check_context(docs, context):
+          firstQueryResults = docs[0]
+          secondQueryResults = docs[1]
+          // Process query results
+          return results          }
+          }]
+```
+
+=== "Format for Security Checks"
+The example below shows the format for a single check that returns the static result:
+```yaml
 checks:
   - version: 1
     name: example
@@ -62,45 +85,12 @@ checks:
               "labels": {
                   "version": format_version_num(10203),
               }
-          }]
+          }]                    
 ```
-
-
-=== "Format for Security Checks"
+=== "More realistic example of security check"
     More Markdown **content**.
 
 ```yaml
----
-checks:
-  - version: 2             <------ version increment
-    name: exampleV2
-    summary: Check format V2
-    description: Checks something important
-    tiers: [ anonymous, registered ]
-    interval: standard
-    family: MYSQL          <------- family
-    queries:               <-------- queries
-      - type: MYSQL_SELECT
-        query: some query
- 
-      - type: MYSQL_SHOW
-        query: some query
- 
-    script: |
-      def check_context(docs, context):
-          firstQueryResults = docs[0]
-          secondQueryResults = docs[1]
-          // Process query results
-          return results          }
-          }]
-```
-
-
-
-=== "Format for Security Checks"
-    More Markdown **content**.
-
-   ```yaml
 ---
 checks:
   - version: 1
