@@ -1,5 +1,5 @@
 # Welcome
-??? note alert alert-info "Full section map (click to show/hide)"
+??? Full section map (click to show/hide)
 
     | Check type  |  Description | "query" required (must be empty if no)   |  Availability in PMM | Documentation  |
     |---|---|---|---|---|
