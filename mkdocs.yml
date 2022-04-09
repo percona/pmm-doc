@@ -14,8 +14,3 @@ markdown_extensions:
   - admonition
   - pymdownx.details
   - pymdownx.superfences
-  
- theme:
-  icon:
-    admonition:
-      note: material/table
