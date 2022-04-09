@@ -1,6 +1,6 @@
 # Welcome
 === "Security Checks"
-        ---
+```yaml        ---
         checks:
             - version: 1
             name: example
@@ -42,6 +42,7 @@
                             "version": format_version_num(10203),
                         }
                     }]
+```
 
 === "Tab 2"
     More Markdown **content**.
