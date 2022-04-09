@@ -1,5 +1,5 @@
 # Welcome
-=== "Tab 1"
+=== "Security Checks"
         ---
         checks:
             - version: 1
