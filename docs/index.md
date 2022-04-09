@@ -1,5 +1,5 @@
 # Welcome
-!!! note
+??? note
 
     | Check type  |  Description | "query" required (must be empty if no)   |  Availability in PMM | Documentation  |
     |---|---|---|---|---|
