@@ -8,7 +8,7 @@ As a developer, you can create custom checks to cover additional use cases, rele
  
 A check is a combination of:
  
-- SQL query or MongoDB query document for extracting data from the database.
+- SQL query for extracting data from the database.
 - Python script for converting extracted data into check results. This is actually a [Starlark](https://github.com/google/starlark-go) script, which is a Python dialect that adds more imperative features than Python. The script's execution environment is sandboxed, and no I/O can be done from it.
  
 All checks are self-contained in the first phase, as well as in most of the planned phases.
@@ -92,8 +92,7 @@ PMM can display failed checks as **Critical**, **Major** or **Trivial**. These t
 
 Use one of the following check types to define your query type and the PMM Service type for which the check will run:
  
-??? note
-
+???  note alert alert-info "Check types table (click to show/hide)"
 | Check type  |  Description | "query" required (must be empty if no)   |  Availability in PMM | Documentation  |
 |---|---|---|---|---|
 | MYSQL_SHOW |     Executes 'SHOW …' clause against MySQL database.      |Yes | PMM 2.27 and older||
