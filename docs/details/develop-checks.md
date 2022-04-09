@@ -90,7 +90,7 @@ PMM can display failed checks as **Critical**, **Major** or **Trivial**. These t
  
 ## Check types
 
-Use one of the following check types to define your query type and the PMM Service type for which the check will run:
+Expand the table below for the list of checks types that you can use to define your query type and the PMM Service type for which the check will run.
  
 ??? note alert alert-info "Check Types table (click to show/hide)"
 
