@@ -9,28 +9,34 @@ Open the *Settings* page from the [main menu](../details/interface.md#main-menu)
 On the left are the selector tabs:
 
 - [Configure](#configure)
-    - [Metrics resolution](#metrics-resolution)
-    - [Advanced Settings](#advanced-settings)
-        - [Data Retention](#data-retention)
-        - [Telemetry](#telemetry)
-        - [Check for updates](#check-for-updates)
-        - [Security Threat Tool](#security-threat-tool)
-    - [Public address](#public-address)
-        - [DBaaS](#dbaas)
-        - [Integrated Alerting](#integrated-alerting)
-        - [Microsoft Azure Monitoring](#microsoft-azure-monitoring)
-        - [Public Address](#public-address-1)
-    - [SSH Key](#ssh-key)
-    - [Alertmanager integration](#alertmanager-integration)
-    - [Percona Platform](#percona-platform)
-        - [Login](#login)
-        - [Sign up](#sign-up)
-        - [Password Reset](#password-reset)
-            - [Password Forgotten](#password-forgotten)
-            - [Change Password after Login](#change-password-after-login)
-    - [Communication](#communication)
-        - [Email](#email)
-        - [Slack](#slack)
+  - [Diagnostics](#diagnostics)
+  - [Metrics resolution](#metrics-resolution)
+  - [Advanced Settings](#advanced-settings)
+    - [Data Retention](#data-retention)
+    - [Telemetry](#telemetry)
+    - [Check for updates](#check-for-updates)
+    - [Advisors](#advisors)
+  - [Public address](#public-address)
+    - [DBaaS](#dbaas)
+    - [Integrated Alerting](#integrated-alerting)
+    - [Microsoft Azure Monitoring](#microsoft-azure-monitoring)
+    - [Public Address {: #public-address-1 }](#public-address--public-address-1-)
+  - [SSH Key](#ssh-key)
+  - [Alertmanager integration](#alertmanager-integration)
+  - [Percona Platform](#percona-platform)
+    - [Connect PMM to Percona Platform](#connect-pmm-to-percona-platform)
+      - [Pre-requisites](#pre-requisites)
+    - [Check that you are a member of an existing Platform organization](#check-that-you-are-a-member-of-an-existing-platform-organization)
+    - [Set the public address of your PMM server](#set-the-public-address-of-your-pmm-server)
+  - [Connect PMM to Percona Platform](#connect-pmm-to-percona-platform-1)
+    - [Disconnect a PMM instance](#disconnect-a-pmm-instance)
+  - [Sign into PMM with your Percona Account](#sign-into-pmm-with-your-percona-account)
+    - [Password Reset](#password-reset)
+      - [Password Forgotten](#password-forgotten)
+      - [Change Password after Login](#change-password-after-login)
+  - [Communication](#communication)
+    - [Email](#email)
+    - [Slack](#slack)
 
 !!! hint alert alert-success "Tip"
     Click *Apply changes* to save any changes made here.
@@ -86,7 +92,7 @@ The following information is gathered:
 - PMM Version;
 - Installation Method (Docker, AMI, OVF);
 - the Server Uptime;
-- Security Threat Tool Status (enabled or disabled);
+- Advisors (enabled or disabled);
 - Integrated Alerting Status (enabled or disabled).
 
 We do not gather anything that identify a system, but the following two points should be mentioned:
@@ -111,32 +117,15 @@ As well as via the *PMM Settings* page, you can also disable telemetry with the 
 
 When active, PMM will automatically check for updates and put a notification in the home page *Updates* dashboard if any are available.
 
-### Security Threat Tool
+### Advisors
 
-The [Security Threat Tool] performs a range of security-related checks on a registered instance and reports the findings. It is off by default.
+Advisors are set of checks grouped by functionality that run a range of database health checks on a registered instance. 
 
-!!! hint alert alert-success "Tip"
-    To see the results of checks, select *{{icon.checks}} Security Checks* to open the *Security Checks/Failed Checks* dashboard, and select the *Failed Checks* tab.
+The findings are repored in the Advisors > Failed Checks page and an overview is displayed on the Dasboard, in the Failed Advisor Checks panel.  
+By default, the Advisors option is disabled. 
 
-Checks are re-fetched and re-run at intervals. There are three customizable check intervals:
 
-| Interval name                 | Value (hours)  |
-|------------------------------ |:--------------:|
-| *Rare interval*               | 78             |
-| *Standard interval* (default) | 24             |
-| *Frequent interval*           | 4              |
-
-Checks use the *Standard* interval by default. To change a check's interval:
-
-- Go to {{icon.checks}} *PMM Database Checks*.
-- Select *All Checks*.
-- In the *Actions* column, select the <i class="uil uil-history"></i> icon.
-
-    ![!](../_images/PMM_Security_Checks_Actions.png)
-
-- Select an interval and click *Save*.
-
-    ![!](../_images/PMM_Security_Checks_Actions_Set_Interval.png)
+Checks are re-fetched and re-run at intervals. 
 
 ## Public address
 

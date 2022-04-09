@@ -30,12 +30,21 @@ If you see an option to create a new organization instead, your Percona Account 
 ## Connect PMM to Percona Platform
 To connect your PMM server to Percona Platform:
 
-1. In PMM go to *Settings > Percona Platform* tab to fill in the *Connect PMM to Percona Portal* form:
-    ![!image](../_images/PMM_Settings_Percona_Platform_Login.png)
-2. The **PMM server ID** field is automatically populated with the ID identified for your PMM instance. Enter the name of your PMM instance and click **Get token** to go to Percona Platform Portal to generate the access token.
-3. Log into Percona Platform if you are not already logged in and copy the code from the **Percona Platform Access Token** field.
-4. Back into PMM, paste the Access Token into the **Percona Platform Access Token** field and click  *Connect*.
+1. In PMM go to *Settings > Percona Platform* tab to fill in the *Connect PMM to Percona Portal* form: ![!image](../docs/_images/PMM_Settings_Percona_Platform_Login.png)
+
+2. The **PMM server ID** field is automatically populated with the ID identified for your PMM instance. Enter the name of your PMM instance and click **Get token** to go to Percona Platform Portal and generate your access token.
+3. Log into Percona Platform using your Percona Account (if you don't have an active current session).
+4. On the Profile Settings page, copy the code from the **Percona Platform Access Token** field.
+5. Back into PMM, paste the Access Token into the **Percona Platform Access Token** field and click  *Connect*.
+
 To confirm that you have successfully connected the server and check the list of all servers currently connected to an organization, go to [Percona Platform](https://portal.percona.com) > **Dashboard** tab and click **View Instances** next to the **Connect your PMM** step. 
+
+## Check Percona Portal entitlements
+After connecting to Percona Platform, PMM has access to additional alert templates and registered Advisors checks.
+
+If the Percona Account you used to connect PMM to Percona Platform is linked to a Percona Portal account, you have additional access to paid Advisor checks, which offer more advanced database heath assessments. 
+
+In addition, PMM displayes two new tabs on the main menu: **Entitlements** ![entitlements](../docs/_images/entitlements.png) and ![support_tickets](../docs/_images/support_tickets.png) **Support tickets**. Here you can check all the information available for your customer account, including general
 
 ### Disconnect a PMM instance
  Disconnect a PMM instance when you want to unlink it from your Percona Platform organization or stop monitoring it there. 
