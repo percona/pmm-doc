@@ -16,7 +16,6 @@
                 "parse_version": parse_version,
             }
             return check_context(docs, context)
-
         def check_context(docs, context):
             # `docs` is a frozen (deeply immutable) list of dicts where each dict represents a single document in result set.
             # `context` is a dict with additional functions.
@@ -65,7 +64,6 @@
                 "4.4": 40401,  # https://www.percona.com/downloads/percona-server-mongodb-4.4/
             },
         }
-
         def check(docs):
             # for compatibility with PMM Server < 2.12
             context = {
