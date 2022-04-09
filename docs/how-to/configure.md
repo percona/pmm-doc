@@ -121,15 +121,16 @@ When active, PMM will automatically check for updates and put a notification in 
 
 Advisors are set of checks grouped by functionality that run a range of database health checks on a registered instance. 
 
-The findings are repored in the Advisors > Failed Checks page and an overview is displayed on the Dasboard, in the Failed Advisor Checks panel.  
+The findings are repored in the **Advisors > Failed Checks** page and an overview is displayed on the Dasboard, in the Failed Advisor Checks panel.  
 By default, the Advisors option is disabled. 
-
 
 Checks are re-fetched and re-run at intervals. 
 
+See [Working with Advisor checks](advisors.md). 
+
 ## Public address
 
-The address or hostname PMM Server will be accessible at. Click *Get from browser* to have your browser detect and populate this field automatically.
+The address or hostname PMM Server will be accessible at. Click **Get from browser** to have your browser detect and populate this field automatically.
 
 ### DBaaS
 

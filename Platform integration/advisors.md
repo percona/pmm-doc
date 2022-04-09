@@ -1,4 +1,4 @@
-# Advisor checks
+# Working with Advisor checks
 
 Advisors are automated checks that you can run against connected databases to identify any potential security threats, configuration problems, performance concerns, policy non-compliance issues etc. 
 
