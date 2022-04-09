@@ -10,7 +10,3 @@ markdown_extensions:
   - pymdownx.tabbed:
       alternate_style: true 
 
-markdown_extensions:
-  - admonition
-  - pymdownx.details
-  - pymdownx.superfences
