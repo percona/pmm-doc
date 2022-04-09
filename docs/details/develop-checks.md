@@ -1,25 +1,23 @@
 # Develop Advisor checks
  
-PMM offers a set of checks that can detect common security threats, performance degradation, data loss and data corruption.
+PMM offer sets of checks that can detect common security threats, performance degradation, data loss and data corruption.
  
 As a developer, you can create custom checks to cover additional use cases, relevant to your specific database infrastructure.
  
-## Advisor checks versus security checks
-PMM 2.26 and older included a set of security checks grouped under the **Security Threat Tool** option.
+## Check components
  
-Starting with the 2.27 release, checks are grouped into a set of Advisors, according to the functionality and recommendations they provide.
+A check is a combination of:
  
-To reflect these changes, the old **Security Threat Tool** option has been renamed to **Advisors** and the checks use a slightly different format.
-
-To create advisor checks for PMM 2.27 and later, use the following format:
+- SQL query or MongoDB query document for extracting data from the database.
+- Python script for converting extracted data into check results. This is actually a [Starlark](https://github.com/google/starlark-go) script, which is a Python dialect that adds more imperative features than Python. The script's execution environment is sandboxed, and no I/O can be done from it.
+ 
+All checks are self-contained in the first phase, as well as in most of the planned phases.
+ 
+This means that extracted data is processed on the PMM side and not sent back to the SaaS.
 
 ## Format
 
-
-
-=== "Advisors checks"
-    ```
-    yaml
+``` yaml
 ---
 checks:
   - version: 2             <------ version increment
@@ -41,174 +39,11 @@ checks:
           firstQueryResults = docs[0]
           secondQueryResults = docs[1]
           // Process query results
-          return results    
-    ```
-=== "Security checks"
-    ```
-    yaml
----
-checks:
-  - version: 1
-    name: example
-    summary: Example check
-    description: This check is just an example.
-    tiers: [anonymous, registered]
-    type: MONGODB_BUILDINFO
-    script: |
-      def check(docs):
-          # for compatibility with PMM Server < 2.12
-          context = {
-              "format_version_num": format_version_num,
-              "parse_version": parse_version,
-          }
-          return check_context(docs, context)
-
-
-      def check_context(docs, context):
-          # `docs` is a frozen (deeply immutable) list of dicts where each dict represents a single document in result set.
-          # `context` is a dict with additional functions.
-          #
-          # Global `print` and `fail` functions are available.
-          #
-          # `check_context` function is expected to return a list of dicts that are then converted to alerts;
-          # in particular, that list can be empty.
-          # Any other value (for example, string) is treated as script execution failure
-          # (Starlark does not support Python exceptions);
-          # it is recommended to use global function `fail` for that instead.
-
-          format_version_num = context.get("format_version_num", fail)
-          parse_version = context.get("parse_version", fail)
-
-          print("first doc =", repr(docs[0]))
-
-          return [{
-              "summary": "Example summary",
-              "description": "Example description",
-              "severity": "warning",
-              "labels": {
-                  "version": format_version_num(10203),
-              }
-          }]
-    ```
-
-=== "More realistic example"
-    ```
-    yaml
----
-checks:
-  - version: 1
-    name: mongodb_version
-    summary: MongoDB Version
-    description: This advisor returns warnings if MongoDB/PSMDB version is not the latest one.
-    tiers: [anonymous, registered]
-    type: MONGODB_BUILDINFO
-    script: |
-      LATEST_VERSIONS = {
-          "mongodb": {
-              "3.6": 30620,  # https://docs.mongodb.com/manual/release-notes/3.6/
-              "4.0": 40020,  # https://docs.mongodb.com/manual/release-notes/4.0/
-              "4.2": 40210,  # https://docs.mongodb.com/manual/release-notes/4.2/
-              "4.4": 40401,  # https://docs.mongodb.com/manual/release-notes/4.4/
-          },
-          "percona": {
-              "3.6": 30620,  # https://www.percona.com/downloads/percona-server-mongodb-3.6/
-              "4.0": 40020,  # https://www.percona.com/downloads/percona-server-mongodb-4.0/
-              "4.2": 40209,  # https://www.percona.com/downloads/percona-server-mongodb-4.2/
-              "4.4": 40401,  # https://www.percona.com/downloads/percona-server-mongodb-4.4/
-          },
-      }
- 
- 
-      def check(docs):
-          # for compatibility with PMM Server < 2.12
-          context = {
-              "format_version_num": format_version_num,
-              "parse_version": parse_version,
-          }
-          return check_context(docs, context)
- 
- 
-      def check_context(docs, context):
-          # `docs` is a frozen (deeply immutable) list of dicts where each dict represents a single document in result set.
-          # `context` is a dict with additional functions.
-          #
-          # Global `print` and `fail` functions are available.
-          #
-          # `check_context` function is expected to return a list of dicts that are then converted to alerts;
-          # in particular, that list can be empty.
-          # Any other value (for example, string) is treated as script execution failure
-          # (Starlark does not support Python exceptions);
-          # it is recommended to use global function `fail` for that instead.
- 
-          """
-          This advisor returns warnings if MongoDB/PSMDB version is not the latest one.
-          """
- 
-          format_version_num = context.get("format_version_num", fail)
-          parse_version = context.get("parse_version", fail)
- 
-          if len(docs) != 1:
-              return "Unexpected number of documents"
- 
-          info = docs[0]
- 
-          # extract information
-          is_percona = 'psmdbVersion' in info
- 
-          # parse_version returns a dict with keys: major, minor, patch, rest, num
-          version = parse_version(info["version"])
-          print("version =", repr(version))
-          num = version["num"]
-          mm = "{}.{}".format(version["major"], version["minor"])
- 
-          results = []
- 
-          if is_percona:
-              latest = LATEST_VERSIONS["percona"][mm]
-              if latest > num:
-                  results.append({
-                      "summary": "Newer version of Percona Server for MongoDB is available",
-                      "description": "Current version is {}, latest available version is {}.".format(format_version_num(num), format_version_num(latest)),
-                      "severity": "warning",
-                      "labels": {
-                          "current": format_version_num(num),
-                          "latest":  format_version_num(latest),
-                      },
-                  })
- 
-              return results
- 
-          if True:  # MongoDB
-              latest = LATEST_VERSIONS["mongodb"][mm]
-              if latest > num:
-                  results.append({
-                      "summary": "Newer version of MongoDB is available",
-                      "description": "Current version is {}, latest available version is {}.".format(format_version_num(num), format_version_num(latest)),
-                      "severity": "warning",
-                      "labels": {
-                          "current": format_version_num(num),
-                          "latest":  format_version_num(latest),
-                      },
-                  })
- 
-              return results
-    ```
-
-## Check components
- 
-A check is a combination of:
- 
-- SQL query or MongoDB query document for extracting data from the database.
-- Python script for converting extracted data into check results. This is actually a [Starlark](https://github.com/google/starlark-go) script, which is a Python dialect that adds more imperative features than Python. The script's execution environment is sandboxed, and no I/O can be done from it.
- 
-All checks are self-contained in the first phase, as well as in most of the planned phases.
- 
-This means that extracted data is processed on the PMM side and not sent back to the SaaS.
+          return results
+```
   
 ## Backend
- 
-![!](../_images/BackendChecks.png)
- 
+
 1. pmm-managed checks that the installation is opted-in for checks.
 2. pmm-managed downloads checks file from SaaS.
 3. pmm-managed verifies file signatures using a list of hard-coded public keys. At least one signature should be correct.
@@ -217,21 +52,23 @@ This means that extracted data is processed on the PMM side and not sent back to
 6. pmm-managed sends alerts to Alermanager.
    - Due to Alertmanager design, pmm-managed has to send and re-send alerts to it much more often than the frequency with which checks are executed. This expected behaviour is not important for using checks but is important for understanding how checks work.
    - Currently, Prometheus is not involved.
- 
+
+![!](../_images/BackendChecks.png)
+
 ## Frontend
- 
+PMM UI in Grafana uses Alermanager API v2 to get information about failed checks:
+
 ![!](../_images/FrontEndChecks.png)
  
-Our UI in Grafana uses Alert Manager API v2 to get information about failed checks.
  
 ## Check fields
- 
+Checks include the following fields:  
 - **Version** (integer, required): defines what other properties are expected, what types are supported, what is expected from the script and what it can expect from the execution environment, etc.
 - **Name** (string, required): defined machine-readable name (ID).
 - **Summary** (string, required): defines short human-readable description.
 - **Description** (string, required): defines long human-readable description.
 - **Type** (string/enum, required): defines the query type and the PMM Service type for which the advisor runs. Check the list of available types in the table below.
-- **Query** (string, optional): contains an SQL query as a string with proper quoting. The query for Security Checks (developed for PMM 2.26 and older) can also contain a MongoDB query document. Advisor checks for PMM 2.27 and later do not yet support a query parameter for MongoDB. 
+- **Query** (string, optional): contains an SQL query as a string with proper quoting. Advisor checks for PMM 2.27 and later do not yet support a query parameter for MongoDB. 
 
     The query is executed on the PMM Client side and can be absent if the type defines the whole query by itself.  
 
@@ -244,15 +81,18 @@ The check script assumes that there is a function with a fixed name _check_ that
 PMM 2.12.0 and earlier use **context**, while newer versions use **check_context**. Both have the same meaning.
   
 ## Check severity levels
-PMM can display failed checks as Critical, Major or Trivial. These three severity levels can be linked to the following severity types in the check source:
+PMM can display failed checks as **Critical**, **Major** or **Trivial**. These three severity levels correspond to the following severity types in the check source:
  
- - Critical: emergency, alert, critical
- - Major: warning  
- - Trivial: notice, info, debug
+ - **Critical**: emergency, alert, critical
+ - **Major**: warning  
+ - **Trivial**: notice, info, debug
  
 ## Check types
+
 Use one of the following check types to define your query type and the PMM Service type for which the check will run:
  
+??? note alert alert-info "Check types table (click to show/hide)"
+    <p>
 | Check type  |  Description | "query" required (must be empty if no)   |  Availability in PMM | Documentation  |
 |---|---|---|---|---|
 | MYSQL_SHOW |     Executes 'SHOW …' clause against MySQL database.      |Yes | PMM 2.27 and older||
@@ -264,6 +104,9 @@ Use one of the following check types to define your query type and the PMM Servi
 | MONGODB_GETCMDLINEOPTS          |    Executes db.adminCommand( { getCmdLineOpts: 1 } ) against MongoDB's "admin" database.      | No | PMM 2.27 and older| [getCmdLineOpts](https://docs.mongodb.com/manual/reference/command/getCmdLineOpts/) |
 | MONGODB_REPLSETGETSTATUS     |   Executes db.adminCommand( { replSetGetStatus: 1 } ) against MongoDB's "admin" database.       | No |PMM 2.27 and newer |  [replSetGetStatus](https://docs.mongodb.com/manual/reference/command/replSetGetStatus/) |
 | MONGODB_GETDIAGNOSTICDATA |Executes db.adminCommand( { getDiagnosticData: 1 } ) against MongoDB's "admin" database.   | No | PMM 2.27 and newer| [MongoDB Performance](https://docs.mongodb.com/manual/administration/analyzing-mongodb-performance/#full-time-diagnostic-data-capture)| 
+    </p>
+    
+
  
 ## Develop custom checks
  
@@ -308,26 +151,35 @@ docker exec -it pmm-server bash
 supervisorctl tail -f pmm-managed
  
 ```
-  
 ### Function signature
  
 The function signature for PMM 2.27 and later can be **check_context** (docs, context), where docs are lists of docs (one list of dicts for each query). 
 
-### No query parameter for MongoDB
+### No query parameter for MongoDB advisors
  The query for Security Checks (developed for PMM 2.26 and older) can also contain a MongoDB query document.
  Advisor checks for PMM 2.27 and later do not yet support a query parameter for MongoDB.
  
-   
- ## Develop security checks for PMM 2.26 and older
+## Advisor checks versus security checks
+PMM 2.26 and older included a set of security checks grouped under the **Security Threat Tool** option.
  
+Starting with the 2.27 release PMM introduced new checks and grouped them into set of Advisors, according to the functionality and recommendations they provide.
+ 
+To reflect these changes, the old **Security Threat Tool** option in PMM 2.26 in earlier has been renamed to **Advisors** and the checks use a slightly different format.
+
+### Develop security checks for PMM 2.26 and older
+To create advisor checks for PMM 2.26 and older, use the following format:
+
 ### Format
  
 
 
-### Function signature
+
+### Query parameter for MongoDB security checks
+The query for Security Checks (developed for PMM 2.26 and older) can also contain a MongoDB query document.
+
+### Function signature for security checks
  
 The function signature can be **def check(docs)**  or **def check_context** (docs, context), where **docs** is a list of dicts.
-
 
 ## Check examples
 You can find working examples of the build-in checks on [Percona Github](https://github.com/percona-platform/checked/tree/main/data/checks).
