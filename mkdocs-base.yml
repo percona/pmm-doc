@@ -134,7 +134,8 @@ nav:
           - how-to/render-dashboard-images.md
           - how-to/extend-metrics.md
           - how-to/troubleshoot.md
-          - how-to/integrate-platform.md
+          - platform-integration/integrate-platform.md
+          - platform-integration/advisors.md
     - Details:
           - details/index.md
           - details/architecture.md

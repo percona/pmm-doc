@@ -1,4 +1,4 @@
-# Integrate with Percona Platform
+# Integrate PMM with Percona Platform
 !!! alert alert-info ""
     Disclaimer: Percona Platform is a Preview release and several functionalities are still under development or subject to change. As such, we recommend connecting PMM to Percona Platform only for testing purposes.
 
