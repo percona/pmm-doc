@@ -134,13 +134,15 @@ nav:
           - how-to/render-dashboard-images.md
           - how-to/extend-metrics.md
           - how-to/troubleshoot.md
-          - how-to/integrate-platform.md
-          - how-to/advisors.md
+          - Integrate with Percona Platform:
+                  - how-to/integrate-platform.md
+                  - how-to/advisors.md
+                  
     - Details:
           - details/index.md
           - details/architecture.md
           - details/interface.md
-          - Developing security checks:
+          - Developing Advisors:
                 - details/develop-checks.md
           - Dashboards:
                 - details/dashboards/index.md

@@ -43,7 +43,7 @@ After connecting to Percona Platform, PMM has access to additional alert templat
 
 If the Percona Account you used to connect PMM to Percona Platform is linked to a Percona Portal account, you have additional access to paid Advisor checks, which offer more advanced database heath assessments. 
 
-In addition, PMM displayes two new tabs on the main menu: **Entitlements** ![entitlements](../docs/_images/entitlements.png) and ![support_tickets](../docs/_images/support_tickets.png) **Support tickets**. Here you can check all the information available for your customer account, including general
+For such accounts PMM displays two new tabs on the main menu: **Entitlements** ![entitlements](../docs/_images/entitlements.png) and ![support_tickets](../docs/_images/support_tickets.png) **Support tickets**, where customers can check all the information available for their accounts.
 
 ### Disconnect a PMM instance
  Disconnect a PMM instance when you want to unlink it from your Percona Platform organization or stop monitoring it there. 
