@@ -43,12 +43,12 @@ After connecting to Percona Platform, PMM has access to additional alert templat
 
 If the Percona Account you used to connect PMM to Percona Platform is linked to a Percona Portal account, you have additional access to paid Advisor checks, which offer more advanced database heath assessments. 
 
-For such accounts PMM displays two new tabs on the main menu: **Entitlements** ![entitlements](../_images/entitlements.png) and ![support_tickets](../_images/support_tickets.png) **Support tickets**, where customers can check all the information available for their accounts.
+For such accounts PMM displays two new tabs on the main menu: **Entitlements**  and  **Support tickets**, where customers can check all the information available for their accounts.
 
 ### Disconnect a PMM instance
  Disconnect a PMM instance when you want to unlink it from your Percona Platform organization or stop monitoring it there. 
 
-To disconnect a PMM server, go to > <i class="uil uil-cog"></i> **Configuration > Settings > Percona Platform** and click **Disconnect**. 
+To disconnect a PMM server, go to <i class="uil uil-cog"></i> **Configuration > Settings > Percona Platform** and click **Disconnect**. 
 
 To confirm that the server disconnected successfully, go to Percona Platform >  **Dashboard** tab > **View instances**. This displays the **PMM instances** page where you can check the list of servers currently connected to your Platform organization. 
 
