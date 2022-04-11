@@ -6,7 +6,6 @@ Percona Platform Portal brings together database distributions, support expertis
 
 Connect your PMM servers to Percona Platform to boost the monitoring capabilities of your PMM installations and manage database deployments easier. In addition, you get access to PMM updates, automated insights, advanced advisor checks and more alert rule templates.
 
-
 ### Connect PMM to Percona Platform
 
 To connect to Percona Platform, you need a Percona Account. With a Percona Account you also get access to various Percona services, including Percona Platform, Percona Customer Portal, and Community Forum.
