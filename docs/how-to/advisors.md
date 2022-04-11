@@ -16,7 +16,6 @@ If you are a Percona customer with a Percona Customer Portal account, you also g
 
 ​To see the complete list of available checks, see the [Advisor Checks for PMM](https://docs.percona.com/percona-platform/checks.html) topic in the Percona Platform documentation.  
 
-
 ## How to enable
 
 By default, the **Advisors** option is disabled. To enable it, go to <i class="uil uil-cog"></i> **Configuration   <i class="uil uil-setting"></i> > Settings > Advanced Settings**. 
@@ -26,7 +25,7 @@ As soon as you enable Advisors, PMM Server starts downloading the checks availab
 ## Checks results
 The results are sent to PMM Server where you can review any failed checks on the **Home Dashboard > Failed Advisors Checks** panel. The summary count of failed checks is classified as <b style="color:#e02f44;">Critical</b>, <b style="color:#e36526;">Major</b> and <b style="color:#5794f2;">Trivial</b>:
 
-![!Failed Advisors Checks panel](../docs/_images/PMM_Home_Dashboard_Panels_Failed_Checks.jpg)
+![!Failed Advisors Checks panel](../_images/PMM_Home_Dashboard_Panels_Failed_Checks.jpg)
 
 To see more details about the available checks and any checks that failed, click the *{{icon.checks}} Advisors* icon on the main menu. This icon is only available if you have enabled the Advisors options in the Advanced Settings.
 
@@ -49,6 +48,6 @@ By default, automatic checks run every 24 hours. You can change this standard in
 2. Select the **All** tab.
 
 3. In the **Actions** column for a chosen check, click the <i class="uil uil-history"></i> *Interval* icon.
-![!](../docs/_images/PMM_Security_Checks_Actions.png)
-4. Chose an interval and click **Save**.
+![!](../_images/PMM_Security_Checks_Actions.png)
+1. Chose an interval and click **Save**.
     
