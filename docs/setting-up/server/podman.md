@@ -33,7 +33,9 @@ Percona recommends to run PMM as non-privilidged user and run it as part of Syst
 
 1. Install.
 
-Install Percona repositories if you are going to enable PMM server for the host system: [Set_up_PMM_Client Package_manager]
+[Set up repos] to enable PMM server for the host system.
+
+After you have repository added:
 
     ```sh
     #install package
@@ -42,13 +44,13 @@ Install Percona repositories if you are going to enable PMM server for the host 
 
     This creates and enables user and service that runs PMM.
 
-2. Start.
+1. Start.
 
     ```sh
     sudo systemctl start pmm-server
     ```
 
-3. Visit `https://localhost:8443` to see the PMM user interface in a web browser. (If you are accessing host remotely, replace `localhost` with the IP or server name of the host.)
+2. Visit `https://localhost:8443` to see the PMM user interface in a web browser. (If you are accessing host remotely, replace `localhost` with the IP or server name of the host.)
 
 ## Run as user to start PMM for the current user
 
@@ -86,7 +88,7 @@ Install Percona repositories if you are going to enable PMM server for the host 
 ### PMM Server
 
 SystemD service passes environment parameters to PMM from `pmm-server.env` file that is located in `/etc/pmm-server/pmm-server.env` or `~/.config/pmm-server/pmm-server.env`. File location depends on mode SystemD service was deployed (system or user).
-For more information about container environment variables please look [Docker Environment_variables]
+For more information about container environment variables please check [Docker Environment]
 
 ### Customize SystemD service
 
@@ -108,7 +110,7 @@ PMM_PUBLIC_PORT=4443
 
 !!! caution alert alert-warning "Important"
     It is NOT recommended to modify `PMM_TAG` for system settings (`/etc/pmm-server/env` file) as tag would be updated with newer packages during package update procedure.
-    
+
     Do modify `PMM_TAG` in `~/.config/pmm-server/env` and update it regularly, as for users there is is no way to update it from Percona side and it needs to be done by user.
 
 ## Backup
@@ -323,5 +325,8 @@ PMM_PUBLIC_PORT=4443
 
 [tags]: https://hub.docker.com/r/percona/pmm-server/tags
 [Podman]: https://podman.io/getting-started/installation
+[Docker]: docker.md
 [Docker image]: https://hub.docker.com/r/percona/pmm-server
+[Docker Environment]: docker.md#environment-variables
 [trusted certificate]: ../../how-to/secure.md#ssl-encryption
+[Set up repos]: ../client/index.md#package-manager
