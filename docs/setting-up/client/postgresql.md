@@ -77,7 +77,7 @@ Decide which database extension to use, and configure your database server for i
 We recommend choosing only one of these. **If you use both, you will get duplicate metrics.**
 
 !!! caution alert alert-warning "Caution"
-    `pg_stat_monitor` 1.0.0 does not work with PostgreSQL versions 11 and 12.
+    `pg_stat_monitor` 1.0.0 does not work with PostgreSQL versions 11 and 12 and will be fixed in the subsequent releases.
 
 Here are the benefits and drawbacks of each.
 
