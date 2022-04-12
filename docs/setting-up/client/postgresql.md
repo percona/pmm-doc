@@ -77,7 +77,7 @@ Decide which database extension to use, and configure your database server for i
 We recommend choosing only one of these. **If you use both, you will get duplicate metrics.**
 
 !!! caution alert alert-warning "Caution"
-    While we recommend use of the newer `pg_stat_monitor` extension, be aware it is currently in beta phase and unsupported.
+    `pg_stat_monitor` 1.0.0 does not work with PostgreSQL versions 11 and 12.
 
 Here are the benefits and drawbacks of each.
 
@@ -147,13 +147,11 @@ You can now [add the service](#add-service).
 
 ### `pg_stat_monitor`
 
-!!! caution alert alert-warning "Caution"
-    `pg_stat_monitor` is currently in beta phase and is unsupported.
 
 `pg_stat_monitor` has been tested with:
 
-- PostgreSQL versions 11, 12, 13.
-- Percona Distribution for PostgreSQL versions 11, 12, 13.
+- PostgreSQL versions 11, 12, 13, and 14.
+- Percona Distribution for PostgreSQL versions 11, 12, 13, and 14.
 
 #### Install
 
