@@ -33,9 +33,9 @@ Percona recommends to run PMM as non-privilidged user and run it as part of Syst
 
 1. Install.
 
-[Set up repos] to enable PMM server for the host system.
+    [Set up repos] to enable PMM server for the host system.
 
-After you have repository added:
+    After you have repository added:
 
     ```sh
     #install package
