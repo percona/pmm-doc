@@ -320,9 +320,6 @@ To create advisor checks for PMM 2.26 and older, use the following format:
                     return results
 
 
-## Check examples
-You can find working examples of the build-in checks on [Percona Github](https://github.com/percona-platform/checked/tree/main/data/checks).
- 
 ## Submit feedback
  We welcome your feedback on the current process for developing and debugging checks. Send us your comments over [Slack](https://percona.slack.com) or post a question on the [Percona Forums](https://forums.percona.com/).
 
