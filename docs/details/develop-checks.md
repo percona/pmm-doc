@@ -122,7 +122,7 @@ Expand the table below for the list of checks types that you can use to define y
  
     -e PMM_DEBUG=1 \
     -e PERCONA_TEST_CHECKS_FILE=/srv/custom-checks.yml \
-    -e PERCONA_TEST_CHECKS_DISABLE_START_DELAY=true
+    -e PERCONA_TEST_CHECKS_DISABLE_START_DELAY=true \
     -e PERCONA_TEST_CHECKS_RESEND_INTERVAL=2s \
     perconalab/pmm-server:dev-latest
     ```
