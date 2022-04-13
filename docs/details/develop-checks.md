@@ -45,7 +45,7 @@ checks:
 ## Backend
 
 1. pmm-managed checks that the installation is opted-in for checks.
-2. pmm-managed downloads checks file from SaaS.
+2. pmm-managed downloads files with checks from SaaS.
 3. pmm-managed verifies file signatures using a list of hard-coded public keys. At least one signature should be correct.
 4. pmm-managed sends queries to pmm-agent and gathers results.
 5. pmm-managed executes check scripts that produce alert information.
