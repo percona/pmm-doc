@@ -1,29 +1,26 @@
 # Integrate PMM with Percona Platform
-!!! alert alert-info ""
-    Disclaimer: Percona Platform is a Preview release and several functionalities are still under development or subject to change. As such, we recommend connecting PMM to Percona Platform only for testing purposes.
-
 Percona Platform Portal brings together database distributions, support expertise, services, management, and automated insights. 
 
 Connect your PMM servers to Percona Platform to boost the monitoring capabilities of your PMM installations and manage database deployments easier. In addition, you get access to PMM updates, automated insights, advanced advisor checks and more alert rule templates.
 
 ### Connect PMM to Percona Platform
+You can connect to Percona Platform with a Percona Account or via Google or GitHub authentication. If [Percona Support](https://www.percona.com/about-percona/contact) has enabled a custom identity provider for your account, you can also log in using your company's credentials.
 
-To connect to Percona Platform, you need a Percona Account. With a Percona Account you also get access to various Percona services, including Percona Platform, Percona Customer Portal, and Community Forum.
-
-If you don't have a Percona Account, you can create one on the [Percona Account Sign Up](https://id.percona.com/signin/register/) page.
+We recommend that you connect with a Percona Account, as this gives you access to other Percona services, including Percona Platform, Percona Customer Portal, and Community Forum. If you don’t have a Percona Account, you can create one on the [Percona Platform homepage](https://portal.percona.com/login) using the **Don't have an account? Create one?** link.
 
 #### Pre-requisites
 To ensure that PMM can establish a connection to Percona Platform: 
 
 ### Check that you are a member of an existing Platform organization
-1. Log in to [Percona Platform](https://portal.percona.com) using your Percona Account.
-2. On the *Getting Started page*, check that the *Create organization* step shows an option to view your organization.
+1. Log in to [Percona Platform](https://portal.percona.com) using your Percona Account. If you are connecting via GitHub, make sure that you  set your email address as **public** in your GitHub account. If your email address is private instead, Percona Platform cannot access it to authenticate you.
+
+2. On the **Getting Started** page, check that the **Create organization** step shows an option to view your organization.
 
 If you see an option to create a new organization instead, your Percona Account is not linked to any organization yet. If this is the case, contact your account administrator, or create a new organization for your Percona Account.
 
 ### Set the public address of your PMM server 
-1. In PMM, go to *Settings > Advanced Settings*.
-2. Enter your address/hostname or click *Get from browser* to enable your browser to automatically detect and populate this field.
+1. In PMM, go to **Settings > Advanced Settings**.
+2. Enter your address/hostname or click **Get from browser** to enable your browser to automatically detect and populate this field.
 3. Save the changes.
 
 ## Connect PMM to Percona Platform

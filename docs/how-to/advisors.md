@@ -11,7 +11,7 @@ All checks are hosted on Percona Platform. PMM Server automatically downloads th
 Depending on the entitlements available for your Percona Account, the set of advisor checks that PMM can download from Percona Platform differ in terms of complexity and functionality. 
 
 If your PMM instance is not connected to Percona Platform, PMM can only download the basic set of Anonymous advisor checks. 
-As soon as you connect your PMM instance to Percona Platform, has access to additional cheks, available only for Registered PMM instances. 
+As soon as you connect your PMM instance to Percona Platform, has access to additional checks, available only for Registered PMM instances. 
 
 If you are a Percona customer with a Percona Customer Portal account, you also get access to Paid checks, which offer more advanced database health information.
 
@@ -32,7 +32,7 @@ To see more details about the available checks and any checks that failed, click
 
 **Check results data *always* remains on the PMM Server.** This is not related to anonymous data sent for Telemetry purposes.
 
-## Change advisor's interva
+## Change advisor's interval
 
 Advisor checks can be executed manually or automatically. 
 By default, automatic checks run every 24 hours. You can change this standard interval to a custom frequency for each individual advisor:
@@ -48,7 +48,7 @@ By default, automatic checks run every 24 hours. You can change this standard in
 
 2. Select the **All** tab.
 
-3. In the **Actions** column for a chosen check, click the <i class="uil uil-history"></i> *Interval* icon.
+3. In the **Actions** column for a chosen check, click the <i class="uil uil-history"></i> **Interval** icon.
 ![!](../_images/PMM_Security_Checks_Actions.png)
 1. Chose an interval and click **Save**.
     
