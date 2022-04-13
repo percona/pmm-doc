@@ -150,7 +150,7 @@ docker exec -it pmm-server bash
 # print and watch the logs
 supervisorctl tail -f pmm-managed
  
-``'
+```
  
 ## Advisor checks versus security checks
 PMM 2.26 and older included a set of security checks grouped under the **Security Threat Tool** option.
@@ -160,10 +160,12 @@ Starting with the 2.27 release PMM introduced new checks and grouped them into s
 To reflect these changes, the old **Security Threat Tool** option in PMM 2.26 in earlier has been renamed to **Advisors** and the checks use a slightly different format.
 
 ### Develop security checks for PMM 2.26 and older
-The function signature checks developed for PMM 2.26 and older can be **def check(docs)**  or **def check_context** (docs, context), where **docs** is a list of dicts.
 
 ### Format
-To create advisor checks for PMM 2.26 and older, use the following format:
+To create advisor checks for PMM 2.26 and older, use the following format.
+
+The function signature checks developed for PMM 2.26 and older can be **def check(docs)**  or **def check_context** (docs, context), where **docs** is a list of dicts.
+
 
 === "Security Checks format"
             ---
