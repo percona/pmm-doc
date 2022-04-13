@@ -69,10 +69,8 @@ Checks include the following fields:
 - **Summary** (string, required): defines short human-readable description.
 - **Description** (string, required): defines long human-readable description.
 - **Type** (string/enum, required): defines the query type and the PMM Service type for which the advisor runs. Check the list of available types in the table below.
-- **Query** (string, optional): contains an SQL query as a string with proper quoting. Advisor checks for PMM 2.27 and later do not yet support a query parameter for MongoDB. 
-
+- **Query** (string, optional): contains an SQL query as a string with proper quoting. 
     The query is executed on the PMM Client side and can be absent if the type defines the whole query by itself.  
-
 - **Script** (string, required): contains a small Python program that processes query results, and returns check results. It is executed on the PMM Server side.
  
 ## Checks script
@@ -80,6 +78,10 @@ Checks include the following fields:
 The check script assumes that there is a function with a fixed name _check_ that accepts a _list_ of _docs_ containing returned rows for SQL databases and documents for MongoDB. It returns zero, one, or several check results that are then converted to alerts.
  
 PMM 2.12.0 and earlier use **context**, while newer versions use **check_context**. Both have the same meaning.
+
+### Function signature
+ 
+The function signature can be **check_context** (docs, context), where docs are lists of docs (one list of dicts for each query). 
   
 ## Check severity levels
 PMM can display failed checks as **Critical**, **Major** or **Trivial**. These three severity levels correspond to the following severity types in the check source:
@@ -105,7 +107,6 @@ Expand the table below for the list of checks types that you can use to define y
     | MONGODB_GETCMDLINEOPTS          |    Executes db.adminCommand( { getCmdLineOpts: 1 } ) against MongoDB's "admin" database.      | No | PMM 2.27 and older| [getCmdLineOpts](https://docs.mongodb.com/manual/reference/command/getCmdLineOpts/) |
     | MONGODB_REPLSETGETSTATUS     |   Executes db.adminCommand( { replSetGetStatus: 1 } ) against MongoDB's "admin" database.       | No |PMM 2.27 and newer |  [replSetGetStatus](https://docs.mongodb.com/manual/reference/command/replSetGetStatus/) |
     | MONGODB_GETDIAGNOSTICDATA |Executes db.adminCommand( { getDiagnosticData: 1 } ) against MongoDB's "admin" database.   | No | PMM 2.27 and newer| [MongoDB Performance](https://docs.mongodb.com/manual/administration/analyzing-mongodb-performance/#full-time-diagnostic-data-capture)| 
-
     
 ## Develop custom checks
  
@@ -122,7 +123,7 @@ Expand the table below for the list of checks types that you can use to define y
  
     -e PMM_DEBUG=1 \
     -e PERCONA_TEST_CHECKS_FILE=/srv/custom-checks.yml \
-    -e PERCONA_TEST_CHECKS_DISABLE_START_DELAY=true
+    -e PERCONA_TEST_CHECKS_DISABLE_START_DELAY=true 
     -e PERCONA_TEST_CHECKS_RESEND_INTERVAL=2s \
     perconalab/pmm-server:dev-latest
     ```
@@ -149,13 +150,7 @@ docker exec -it pmm-server bash
 # print and watch the logs
 supervisorctl tail -f pmm-managed
  
-```
-### Function signature for Advisor checks
- 
-The function signature for PMM 2.27 and later can be **check_context** (docs, context), where docs are lists of docs (one list of dicts for each query). 
-
-### No query parameter for MongoDB advisors
- Contrary to Security Checks (developed for PMM 2.26 and older) Advisor checks for PMM 2.27 and later do not yet support a query parameter for MongoDB.
+``'
  
 ## Advisor checks versus security checks
 PMM 2.26 and older included a set of security checks grouped under the **Security Threat Tool** option.
@@ -165,10 +160,6 @@ Starting with the 2.27 release PMM introduced new checks and grouped them into s
 To reflect these changes, the old **Security Threat Tool** option in PMM 2.26 in earlier has been renamed to **Advisors** and the checks use a slightly different format.
 
 ### Develop security checks for PMM 2.26 and older
-The query for Security Checks (developed for PMM 2.26 and older) can also contain a MongoDB query document (as a string with proper quoting).
-
-### Function signature for security checks
- 
 The function signature checks developed for PMM 2.26 and older can be **def check(docs)**  or **def check_context** (docs, context), where **docs** is a list of dicts.
 
 ### Format
