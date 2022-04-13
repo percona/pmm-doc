@@ -4,7 +4,8 @@ Advisors are automated checks that you can run against connected databases to id
 
 Checks are grouped into advisors according to the functionality and recommendations they provide.
 
-All checks are hosted on Percona Platform. PMM Server automatically downloads them from here when you enable the **Advisors** option in the PMM Advanced Settings.
+## Prerequisites for accessing Advisor checks
+All checks are hosted on Percona Platform. PMM Server automatically downloads them from here when the **Advisors** and **Telemetry** options are enabled in PMM under **Configuration > Settings > Advanced Settings**. By default the **Advisors** options is disabled.
 
 ### Advisor check tiers and Platform entitlements
 Depending on the entitlements available for your Percona Account, the set of advisor checks that PMM can download from Percona Platform differ in terms of complexity and functionality. 
