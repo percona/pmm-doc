@@ -65,7 +65,7 @@ PMM UI in Grafana uses Alermanager API v2 to get information about failed checks
 Checks include the following fields:  
 
 - **Version** (integer, required): defines what other properties are expected, what types are supported, what is expected from the script and what it can expect from the execution environment, etc.
-- **Name** (string, required): defined machine-readable name (ID).
+- **Name** (string, required): defines machine-readable name (ID).
 - **Summary** (string, required): defines short human-readable description.
 - **Description** (string, required): defines long human-readable description.
 - **Type** (string/enum, required): defines the query type and the PMM Service type for which the advisor runs. Check the list of available types in the table below.
