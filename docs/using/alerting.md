@@ -89,6 +89,7 @@ When creating custom templates, make sure to use the required template format be
 - **annotations** (optional): are additional annotations to be added to generated alerts.
 
 ### Template example
+
  ```yaml
 {% raw %}
 ---
