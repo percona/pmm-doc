@@ -421,6 +421,16 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://www.percona.com/doc/percona-monitoring-and-management/2.x/how-to/account-info.html</loc>
+         <lastmod>2022-04-14</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://www.percona.com/doc/percona-monitoring-and-management/2.x/how-to/advisors.html</loc>
+         <lastmod>2022-04-14</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://www.percona.com/doc/percona-monitoring-and-management/2.x/how-to/annotate.html</loc>
          <lastmod>2022-04-14</lastmod>
          <changefreq>daily</changefreq>
@@ -432,6 +442,11 @@
     </url>
     <url>
          <loc>https://www.percona.com/doc/percona-monitoring-and-management/2.x/how-to/extend-metrics.html</loc>
+         <lastmod>2022-04-14</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://www.percona.com/doc/percona-monitoring-and-management/2.x/how-to/integrate-platform.html</loc>
          <lastmod>2022-04-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -772,16 +787,6 @@
     </url>
     <url>
          <loc>https://www.percona.com/doc/percona-monitoring-and-management/2.x/using/query-analytics.html</loc>
-         <lastmod>2022-04-14</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://www.percona.com/doc/percona-monitoring-and-management/2.x/using/security-threat-tool.html</loc>
-         <lastmod>2022-04-14</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://www.percona.com/doc/percona-monitoring-and-management/2.x/using/advisors/innodb_log_buffer_flushed_to_disk_after_each_trx.html</loc>
          <lastmod>2022-04-14</lastmod>
          <changefreq>daily</changefreq>
     </url>

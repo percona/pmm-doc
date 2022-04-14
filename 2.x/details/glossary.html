@@ -137,8 +137,8 @@
 <p>Queries Per Second. A measure of the rate of queries being monitored.</p>
 <h2 id="query-analytics">Query Analytics<a class="headerlink" href="#query-analytics" title="Permanent link">&para;</a></h2>
 <p>Component of PMM Server that enables you to analyze MySQL query performance over periods of time.</p>
-<h2 id="stt">STT<a class="headerlink" href="#stt" title="Permanent link">&para;</a></h2>
-<p>Security Threat Tool.</p>
+<h2 id="advisors">Advisors<a class="headerlink" href="#advisors" title="Permanent link">&para;</a></h2>
+<p>Automated checks that you can run against connected databases to identify any potential security threats, configuration problems, performance concerns, policy non-compliance issues etc. </p>
 <h2 id="technical-preview">Technical Preview<a class="headerlink" href="#technical-preview" title="Permanent link">&para;</a></h2>
 <p>Releases intended for public preview and feedback but with no support or service level agreement (SLA). Should not be used on production or business-critical systems. May contain breaking changes to UI, API, CLI. (<a href="https://www.percona.com/services/policies/percona-release-lifecycle-overview">Read more</a>.)</p>
 <h2 id="vg">VG<a class="headerlink" href="#vg" title="Permanent link">&para;</a></h2>
@@ -150,7 +150,7 @@
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-06-29
+            <i class="uil uil-refresh"></i> Page updated 2022-04-14
         </li>
         
     </ul>
@@ -382,7 +382,7 @@
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../using/security-threat-tool.html">Security Threat Tool</a>
+    <a class="reference internal" href="../using/security-threat-tool.md">None</a>
 
 
 
@@ -454,6 +454,32 @@
 
 
 
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../how-to/integrate-platform.html">Integrate with Percona Platform</a>
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../how-to/account-info.html">Check Percona Portal account information</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../how-to/advisors.html">Working with Advisor checks</a>
+
+
+
+</ul>
+
+
+
+
 </ul>
 
 
@@ -482,135 +508,7 @@
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="checks/index.html">Security checks</a>
-
-
-
-
-<ul class="toctree" id="toctree">
-
-
-<li class="toctree-l3">
-    <a class="reference internal" href="checks/develop-checks.html">Developing security checks</a>
-
-
-
-
-<li class="toctree-l3">
-    <a class="reference internal" href="checks/platform-mysql-binaries-32-bit.html">MySQL checks</a>
-
-
-
-
-<ul class="toctree" id="toctree">
-
-
-<li class="toctree-l4">
-    <a class="reference internal" href="checks/security-anonymous-user.html">Anonymous users</a>
-
-
-
-
-<li class="toctree-l4">
-    <a class="reference internal" href="checks/security-non-root-accounts-super-privileges.html">Non-root accounts with SUPER privileges</a>
-
-
-
-
-<li class="toctree-l4">
-    <a class="reference internal" href="checks/security-user-not-using-ssl-protocol.html">User not using SSL protocol to connect</a>
-
-
-
-
-<li class="toctree-l4">
-    <a class="reference internal" href="checks/security-user-with-open-to-the-word-scope.html">User with open to the word scope</a>
-
-
-
-
-<li class="toctree-l4">
-    <a class="reference internal" href="checks/security-user-without-password.html">There are users without passwords</a>
-
-
-
-
-<li class="toctree-l4">
-    <a class="reference internal" href="checks/root-account-can-login-remotely.html">Root account can log in remotely</a>
-
-
-
-</ul>
-
-
-
-
-
-<li class="toctree-l3">
-    <a class="reference internal" href="checks/mongodb-log-messages.html">MongoDB checks</a>
-
-
-
-
-<ul class="toctree" id="toctree">
-
-
-<li class="toctree-l4">
-    <a class="reference internal" href="checks/mongodb-profiler-check.html">MongoDB Profiling level set to high</a>
-
-
-
-
-<li class="toctree-l4">
-    <a class="reference internal" href="checks/mongodb-read-tickets.html">MongoDB read ticket is more than 128</a>
-
-
-
-
-<li class="toctree-l4">
-    <a class="reference internal" href="checks/mongodb-write-tickets.html">MongoDB write ticket is more than 128</a>
-
-
-
-
-<li class="toctree-l4">
-    <a class="reference internal" href="checks/mongodb-scram-sha-256.html">MongoDB not using the default SHA-256 hashing function</a>
-
-
-
-</ul>
-
-
-
-
-
-<li class="toctree-l3">
-    <a class="reference internal" href="checks/performance-pg-archiver-failing.html">PostgreSQL checks</a>
-
-
-
-
-<ul class="toctree" id="toctree">
-
-
-<li class="toctree-l4">
-    <a class="reference internal" href="checks/performance-pg-low-cache-hit-ratio.html">PostgreSQL Cache Hit Ratio</a>
-
-
-
-
-<li class="toctree-l4">
-    <a class="reference internal" href="checks/performance-pg-stale-replication-slot.html">PostgreSQL stale replication slot</a>
-
-
-
-</ul>
-
-
-
-
-</ul>
-
+    <a class="reference internal" href="develop-checks.html">Developing Advisors</a>
 
 
 

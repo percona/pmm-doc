@@ -271,6 +271,28 @@ pmm-admin add mysql --username root --password root instance-02 <span class="m">
 docker <span class="nb">exec</span> -t pmm-server bash -c  <span class="s2">&quot;grafana-cli --homepath /usr/share/grafana admin reset-admin-password </span><span class="nv">$PMM_PASSWORD</span><span class="s2">&quot;</span>
 </code></pre></div>
 <p>(This example assumes your Docker container is named <code>pmm-server</code>.)</p>
+<h2 id="how-to-change-the-pmm-password-for-a-default-admin-user">How to change the PMM password for a default admin user?<a class="headerlink" href="#how-to-change-the-pmm-password-for-a-default-admin-user" title="Permanent link">&para;</a></h2>
+<p>If you&rsquo;re deploying through Docker you can change the default password for an admin user after starting the Docker container as follows:</p>
+<ul>
+<li>For PMM versions 2.27.0 and later:</li>
+</ul>
+<div class="highlight"><pre><span></span><code>docker <span class="nb">exec</span> -t pmm-server change-admin-password &lt;new_password&gt;
+</code></pre></div>
+<ul>
+<li>For PMM versions prior to 2.27.0:</li>
+</ul>
+<div class="highlight"><pre><span></span><code>docker <span class="nb">exec</span> -t pmm-server bash -c <span class="s1">&#39;grafana-cli --homepath /usr/share/grafana --configOverrides cfg:default.paths.data=/srv/grafana admin reset-admin-password newpass&#39;</span>
+</code></pre></div>
+<h2 id="how-to-use-a-non-default-listen-port-for-pmm-admin">How to use a non-default listen-port for pmm-admin?<a class="headerlink" href="#how-to-use-a-non-default-listen-port-for-pmm-admin" title="Permanent link">&para;</a></h2>
+<p>If you configure the PMM agent to use a non-default listen-port, for pmm-admin to communicate with the agent, use the global flag <code>--pmm-agent-listen-port=LISTEN_PORT</code>.</p>
+<div class="highlight"><pre><span></span><code>--pmm-agent-listen-port<span class="o">=</span>LISTEN_PORT
+</code></pre></div>
+<p>Example: To use the listen-port 8000</p>
+<p><div class="highlight"><pre><span></span><code>pmm-admin --pmm-agent-listen-port<span class="o">=</span><span class="m">8000</span> add postgresql --username<span class="o">=</span>pmm-agent --password<span class="o">=</span>pmm-agent-password --query-source<span class="o">=</span>pgstatmonitor nameofpostgres
+</code></pre></div>
+If you are using OVF/AMI, you can change the default password through SSH by using the following command:</p>
+<div class="highlight"><pre><span></span><code>change-admin-password &lt;new_password&gt;
+</code></pre></div>
                     </div>
                 </div>
                 
@@ -278,7 +300,7 @@ docker <span class="nb">exec</span> -t pmm-server bash -c  <span class="s2">&qu
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-08-27
+            <i class="uil uil-refresh"></i> Page updated 2022-04-14
         </li>
         
     </ul>
@@ -510,7 +532,7 @@ docker <span class="nb">exec</span> -t pmm-server bash -c  <span class="s2">&qu
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="using/security-threat-tool.html">Security Threat Tool</a>
+    <a class="reference internal" href="using/security-threat-tool.md">None</a>
 
 
 
@@ -582,6 +604,32 @@ docker <span class="nb">exec</span> -t pmm-server bash -c  <span class="s2">&qu
 
 
 
+
+<li class="toctree-l2">
+    <a class="reference internal" href="how-to/integrate-platform.html">Integrate with Percona Platform</a>
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="how-to/account-info.html">Check Percona Portal account information</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="how-to/advisors.html">Working with Advisor checks</a>
+
+
+
+</ul>
+
+
+
+
 </ul>
 
 
@@ -610,135 +658,7 @@ docker <span class="nb">exec</span> -t pmm-server bash -c  <span class="s2">&qu
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="details/checks/index.html">Security checks</a>
-
-
-
-
-<ul class="toctree" id="toctree">
-
-
-<li class="toctree-l3">
-    <a class="reference internal" href="details/checks/develop-checks.html">Developing security checks</a>
-
-
-
-
-<li class="toctree-l3">
-    <a class="reference internal" href="details/checks/platform-mysql-binaries-32-bit.html">MySQL checks</a>
-
-
-
-
-<ul class="toctree" id="toctree">
-
-
-<li class="toctree-l4">
-    <a class="reference internal" href="details/checks/security-anonymous-user.html">Anonymous users</a>
-
-
-
-
-<li class="toctree-l4">
-    <a class="reference internal" href="details/checks/security-non-root-accounts-super-privileges.html">Non-root accounts with SUPER privileges</a>
-
-
-
-
-<li class="toctree-l4">
-    <a class="reference internal" href="details/checks/security-user-not-using-ssl-protocol.html">User not using SSL protocol to connect</a>
-
-
-
-
-<li class="toctree-l4">
-    <a class="reference internal" href="details/checks/security-user-with-open-to-the-word-scope.html">User with open to the word scope</a>
-
-
-
-
-<li class="toctree-l4">
-    <a class="reference internal" href="details/checks/security-user-without-password.html">There are users without passwords</a>
-
-
-
-
-<li class="toctree-l4">
-    <a class="reference internal" href="details/checks/root-account-can-login-remotely.html">Root account can log in remotely</a>
-
-
-
-</ul>
-
-
-
-
-
-<li class="toctree-l3">
-    <a class="reference internal" href="details/checks/mongodb-log-messages.html">MongoDB checks</a>
-
-
-
-
-<ul class="toctree" id="toctree">
-
-
-<li class="toctree-l4">
-    <a class="reference internal" href="details/checks/mongodb-profiler-check.html">MongoDB Profiling level set to high</a>
-
-
-
-
-<li class="toctree-l4">
-    <a class="reference internal" href="details/checks/mongodb-read-tickets.html">MongoDB read ticket is more than 128</a>
-
-
-
-
-<li class="toctree-l4">
-    <a class="reference internal" href="details/checks/mongodb-write-tickets.html">MongoDB write ticket is more than 128</a>
-
-
-
-
-<li class="toctree-l4">
-    <a class="reference internal" href="details/checks/mongodb-scram-sha-256.html">MongoDB not using the default SHA-256 hashing function</a>
-
-
-
-</ul>
-
-
-
-
-
-<li class="toctree-l3">
-    <a class="reference internal" href="details/checks/performance-pg-archiver-failing.html">PostgreSQL checks</a>
-
-
-
-
-<ul class="toctree" id="toctree">
-
-
-<li class="toctree-l4">
-    <a class="reference internal" href="details/checks/performance-pg-low-cache-hit-ratio.html">PostgreSQL Cache Hit Ratio</a>
-
-
-
-
-<li class="toctree-l4">
-    <a class="reference internal" href="details/checks/performance-pg-stale-replication-slot.html">PostgreSQL stale replication slot</a>
-
-
-
-</ul>
-
-
-
-
-</ul>
-
+    <a class="reference internal" href="details/develop-checks.html">Developing Advisors</a>
 
 
 
