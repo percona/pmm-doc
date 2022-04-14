@@ -118,7 +118,7 @@ Advisors are sets of checks grouped by functionality that run a range of databas
 The findings are reported on the **Advisors > Failed Checks** page, and an overview is displayed on the Dashboard in the Failed Advisor Checks panel.  
 By default, the Advisors option is disabled. 
 
-Checks are re-fetched and re-run at intervals. 
+Checks are refetched and rerun at intervals. 
 
 See [Working with Advisor checks](advisors.md). 
 
