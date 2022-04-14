@@ -1,5 +1,5 @@
 # Integrate PMM with Percona Platform
-Percona Platform Portal brings together database distributions, support expertise, services, management, and automated insights. 
+Percona Platform brings together database distributions, support expertise, services, management, and automated insights. 
 
 Connect your PMM servers to Percona Platform to boost the monitoring capabilities of your PMM installations and manage database deployments easier. In addition, you get access to PMM updates, automated insights, advanced advisor checks and more alert rule templates.
 
