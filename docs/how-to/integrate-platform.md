@@ -33,7 +33,7 @@ If you see an option to create a new organization instead, your Percona Account 
 3. Save the changes.
 
 ## Connect PMM to Percona Platform
-To connect your PMM server to Percona Platform, generate a personal access token from Platform and paste it into PMM. 
+To connect your PMM server to Percona Platform, copy your personal access token from Platform Portal and paste it into PMM. You will find your access token in Platform Portal as part of your user profile page.
 #### Token validity
 For security reasons, access tokens expire after 30 minutes. Make sure to paste the code before that, or generate a new one if it expires.
 
