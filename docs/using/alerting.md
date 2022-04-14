@@ -17,6 +17,7 @@ The following three basic components define the alerting workflow:
 ## Prerequisites
 
 Before creating alert rules:
+
 1. Enable Integrated Alerting.
 2. Set up an Email (SMTP) or Slack sender settings for receiving alerts.
 3. Specify the Email/Slack/Webhooks/PagerDuty settings and channels to notify.
@@ -25,7 +26,6 @@ Before creating alert rules:
 ### Enable Integrated Alerting
 
 1. Select **Configuration > Settings > Advanced Settings**.
-
 2. Under **Technical preview** features, turn on Integrated Alerting.
 3. Click **Apply changes**. This adds a new **Communication** tab to the **Settings** menu.
 
@@ -97,27 +97,27 @@ templates:
  - name: pmm_mongodb_high_memory_usage
    version: 1
    summary: Memory used by MongoDB
-    expr: |-
+   expr: |-
       sum by (node_name) (mongodb_ss_mem_resident * 1024 * 1024)
       / on (node_name) (node_memory_MemTotal_bytes)
        * 100
        > [[ .threshold ]]
-    params:
-       - name: threshold
-          summary: A percentage from configured maximum
-          unit: "%"
-          type: float
-          range: [0, 100]
-          value: 80
-    for: 5m
-    severity: warning
-    labels:
-          cultom_label: demo
-    annotations:
-          summary: MongoDB high memory usage ({{ $labels.service_name }})
-          description: |-
-            {{ $value }}% of memory (more than [[ .threshold ]]%) is used
-            by {{ $labels.service_name }} on {{ $labels.node_name }}.
+   params:
+     - name: threshold
+        summary: A percentage from configured maximum
+        unit: "%"
+        type: float
+        range: [0, 100]
+        value: 80
+   for: 5m
+   severity: warning
+   labels:
+      cultom_label: demo
+   annotations:
+      summary: MongoDB high memory usage ({{ $labels.service_name }})
+      description: |-
+         {{ $value }}% of memory (more than [[ .threshold ]]%) is used
+         by {{ $labels.service_name }} on {{ $labels.node_name }}.
 {% endraw %}
 ```
 
@@ -125,6 +125,7 @@ templates:
 If you want to create custom templates, you can test the MetricsQ expressions for your custom template in the **Explore** section of PMM. Here you can also query any PMM internal database.
 
 To test expressions for custom templates:
+
 1. On the left menu of PMM, choose **Explore > Metrics**.
 2. Enter your expression in the **Metrics** field and click **Run query**.
 
@@ -139,6 +140,7 @@ If you’re migrating from PMM 2.25 and earlier, make sure to manually recreate 
 ### With other alerting tools
 
 If you have existing YAML alert templates that you want to leverage in PMM Integrated Alerting:
+
 1. Go to **Alerting > Integrated Alerting > Alert Rule Templates** tab and click **Add** at the top right-hand side of the table.
 2. Click **Add** and upload a local .yaml file from your computer.
 
@@ -158,6 +160,7 @@ Silenced alerts are still recorded under **Integrated Alerting > Alerts** so tha
 
 
 To silence alerts:
+
 1. Click **Alerting** on the main menu.
 2. Choose **Integrated Alerting > Alerts** and choose if you want to disable an individual alert or all alerts:
     - To silence an individual alert, scroll through the list of current alerts and click on the bell in the **Actions** column.
