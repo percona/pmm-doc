@@ -35,7 +35,7 @@ To see more details about the available checks and any checks that failed, click
 ## Change advisor's interval
 
 Advisor checks can be executed manually or automatically. 
-By default, automatic checks run every 24 hours. You can change this standard interval to a custom frequency for each individual advisor:
+By default, automatic checks run every 24 hours. You can change this standard interval to a custom frequency for each advisor:
 
 | Interval name                 | Value (hours)  |
 |------------------------------ |:--------------:|
