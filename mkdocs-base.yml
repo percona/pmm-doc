@@ -136,7 +136,7 @@ nav:
           - how-to/troubleshoot.md
           - Integrate with Percona Platform:
                   - how-to/integrate-platform.md
-                  - how-to/account.info
+                  - how-to/account-info.md
                   - how-to/advisors.md
                   
     - Details:
