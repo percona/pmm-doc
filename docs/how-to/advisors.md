@@ -21,7 +21,7 @@ If you are a Percona customer with a Percona Customer Portal account, you also g
 
 By default, the **Advisors** option is disabled. To enable it, go to <i class="uil uil-cog"></i> **Configuration   <i class="uil uil-setting"></i> > Settings > Advanced Settings**. 
 
-As soon as you enable Advisors, PMM Server starts downloading the checks available for your Percona Account and runs them automatically in the background. 
+As soon as you enable Advisors and Telemetry, PMM Server starts downloading the checks available for your Percona Account and runs them automatically in the background. 
 
 ## Checks results
 The results are sent to PMM Server where you can review any failed checks on the **Home Dashboard > Failed Advisors Checks** panel. The summary count of failed checks is classified as <b style="color:#e02f44;">Critical</b>, <b style="color:#e36526;">Major</b> and <b style="color:#5794f2;">Trivial</b>:
