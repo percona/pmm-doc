@@ -1,4 +1,4 @@
-## Check Percona Portal account information
+# Check Percona Portal account information
 
 When you connect your PMM instances to Percona Platform, PMM has access to additional alert templates and Registered Advisors checks from Percona Platform.
 
