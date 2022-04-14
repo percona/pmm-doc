@@ -29,7 +29,7 @@ If you see an option to create a new organization instead, your Percona Account 
 
 ### Set the public address of your PMM server 
 1. In PMM, go to **Settings > Advanced Settings**.
-2. Enter your address/hostname or click **Get from browser** to enable your browser to automatically detect and populate this field.
+2. Enter your address/hostname or click **Get from browser** so that your browser automatically detects and populates this field.
 3. Save the changes.
 
 ## Connect PMM to Percona Platform
