@@ -91,7 +91,7 @@ When creating custom templates, make sure to use the required template format be
 ### Template example
 
  ```yaml
-{% raw %}
+
 ---
 templates:
   - name: pmm_mongodb_high_memory_usage
@@ -114,11 +114,11 @@ templates:
     labels:
           cultom_label: demo
     annotations:
-          summary: MongoDB high memory usage ({{ $labels.service_name }})
+          summary: MongoDB high memory usage {% raw %}({{ $labels.service_name }}) {% endraw %}
           description: |-
-             {{ $value }}% of memory (more than [[ .threshold ]]%) is used
-             by {{ $labels.service_name }} on {{ $labels.node_name }}.
-{% endraw %}
+            {% raw %} {{ $value }}% of memory (more than [[ .threshold ]]%) is used {% endraw %}
+            {% raw %} by {{ $labels.service_name }} on {{ $labels.node_name }}. {% endraw %}
+
 ```
 
 ## Test alert expressions
