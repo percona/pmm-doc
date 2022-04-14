@@ -105,11 +105,11 @@ templates:
        > [[ .threshold ]]
    params:
      - name: threshold
-        summary: A percentage from configured maximum
-        unit: "%"
-        type: float
-        range: [0, 100]
-        value: 80
+       summary: A percentage from configured maximum
+       unit: "%"
+       type: float
+       range: [0, 100]
+       value: 80
    for: 5m
    severity: warning
    labels:
