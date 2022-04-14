@@ -90,8 +90,7 @@ When creating custom templates, make sure to use the required template format be
 
 ### Template example
 
- ```yaml
-
+```yaml
 ---
 templates:
   - name: pmm_mongodb_high_memory_usage
@@ -118,7 +117,6 @@ templates:
           description: |-
             {% raw %} {{ $value }}% of memory (more than [[ .threshold ]]%) is used {% endraw %}
             {% raw %} by {{ $labels.service_name }} on {{ $labels.node_name }}. {% endraw %}
-
 ```
 
 ## Test alert expressions
