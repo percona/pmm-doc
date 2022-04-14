@@ -113,7 +113,7 @@ When active, PMM will automatically check for updates and put a notification in 
 
 ### Advisors
 
-Advisors are set of checks grouped by functionality that run a range of database health checks on a registered instance. 
+Advisors are sets of checks grouped by functionality that run a range of database health checks on a registered instance. 
 
 The findings are repored in the **Advisors > Failed Checks** page and an overview is displayed on the Dasboard, in the Failed Advisor Checks panel.  
 By default, the Advisors option is disabled. 
