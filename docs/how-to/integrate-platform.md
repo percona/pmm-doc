@@ -11,6 +11,15 @@ We recommend that you connect with a Percona Account, as this gives you access t
 #### Pre-requisites
 To ensure that PMM can establish a connection to Percona Platform: 
 
+### Upgrade to PMM 2.27.0 or later
+ Before connecting your PMM server to Percona Platform, make sure you are using PMM version 2.27 or newer. Otherwise, upgrade your PMM installation beforehand. 
+ 
+ This is required because, starting with PMM 2.27, Percona Platform has replaced username/passoword authentication with access token authentication. Access-token authentication increases security and enables federated identity. 
+
+  This change did not affect existing connections to PMM Platform, which were not automatically terminated. 
+ 
+ For more information, see [Install and set up PMM](../setting-up/index.md).
+
 ### Check that you are a member of an existing Platform organization
 1. Log in to [Percona Platform](https://portal.percona.com) using your Percona Account. If you are connecting via GitHub, make sure that you  set your email address as **public** in your GitHub account. If your email address is private instead, Percona Platform cannot access it to authenticate you.
 
@@ -29,7 +38,7 @@ To connect your PMM server to Percona Platform, generate a personal access token
 For security reasons, access tokens expire after 30 minutes. Make sure to paste the code before that, or generate a new one if it expires.
 
 To connect your PMM server to Percona Platform:
-1. In PMM go to **Settings > Percona Platform** tab to fill in the **Connect PMM to Percona Portal** form: ![!image](../_images/PMM_Settings_Percona_Platform_Login.png)
+1. In PMM, go to **Settings > Percona Platform** tab to fill in the **Connect PMM to Percona Portal** form: ![!image](../_images/PMM_Settings_Percona_Platform_Login.png)
 
 2. The **PMM server ID** field is automatically populated with the ID identified for your PMM instance. Enter the name of your PMM instance and click **Get token** to go to Percona Platform Portal and generate your access token.
 3. Log into Percona Platform using your Percona Account (if you don't have an active current session).
@@ -39,11 +48,7 @@ To connect your PMM server to Percona Platform:
 To confirm that you have successfully connected the server and check the list of all servers currently connected to an organization, go to [Percona Platform](https://portal.percona.com) > **Dashboard** tab and click **View Instances** next to the **Connect your PMM** step. 
 
 ## Check Percona Portal entitlements
-After connecting to Percona Platform, PMM has access to additional alert templates and Rgistered Advisors checks.
-
-If the Percona Account you used to connect PMM to Percona Platform is linked to a Percona Portal account, you also have access to Paid Advisor checks, which offer more advanced database heath assessments. 
-
-For such accounts PMM displays two new tabs on the main menu: **Entitlements** ![entitlements](../_images/entitlements.png)  and  ![support_tickets](../_images/support_tickets.png) **Support tickets**, where Percona customers can check all the information available for their accounts.
+After connecting to Percona Platform, PMM has access to additional alert templates,   Advisors checks and account information. See (../how-to/account-info.md)
 
 ### Disconnect a PMM instance
  Disconnect a PMM instance when you want to unlink it from your Percona Platform organization or stop monitoring it there. 
@@ -56,6 +61,5 @@ To confirm that the server disconnected successfully, go to Percona Platform >  
 Once you've successfully connected your PMM instance to Percona Platform, you can also sign into PMM usig your Percona Account:
 
 1. Log out of your existing PMM session.
-
 2. On the PMM login screen, click *Sign in with Percona Account*. 
  If you have an active Percona Account session on the same browser, PMM will log you in automatically. Otherwise, enter your Percona Account credentials to start a new session.
