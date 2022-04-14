@@ -8,7 +8,7 @@ Checks are grouped into advisors according to the functionality and recommendati
 All checks are hosted on Percona Platform. PMM Server automatically downloads them from here when the **Advisors** and **Telemetry** options are enabled in PMM under **Configuration > Settings > Advanced Settings**. By default, the **Advisors** options is disabled.
 
 ### Advisor check tiers and Platform entitlements
-Depending on the entitlements available for your Percona Account, the set of advisor checks that PMM can download from Percona Platform differ in terms of complexity and functionality. 
+Depending on the entitlements available for your Percona Account, the set of advisor checks that PMM can download from the Percona Platform differs in terms of complexity and functionality. 
 
 If your PMM instance is not connected to Percona Platform, PMM can only download the basic set of Anonymous Advisor checks. 
 As soon as you connect your PMM instance to Percona Platform, has access to additional checks, available only for Registered PMM instances. 
