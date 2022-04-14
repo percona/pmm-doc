@@ -163,7 +163,7 @@ To silence alerts:
     - To silence an individual alert, scroll through the list of current alerts and click on the bell in the **Actions** column.
     - To silence all alerts, click **Silence All** at the top right side of the **Alerts** table.
 
-To reactivate silenced alerts, click **Unsilence All** or click on the disabled bell icon <i class="fa-solid fa-bell-slash"></i> corresponding to the alerts you want to reactivate.
+To reactivate silenced alerts, click **Unsilence All** or click on the disabled bell icon <i class="uil bell-slash"></i> corresponding to the alerts you want to reactivate.
 
 ## Alternative alerting options
 PMM Integrated Alerting was introduced as an alternative to Grafana Alerting and Prometheus’ Alertmanager.
