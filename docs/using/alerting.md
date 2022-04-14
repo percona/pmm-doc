@@ -94,7 +94,7 @@ When creating custom templates, make sure to use the required template format be
 {% raw %}
 ---
 templates:
-  - name: pmm_mongodb_high_memory_usage
+ - name: pmm_mongodb_high_memory_usage
    version: 1
    summary: Memory used by MongoDB
     expr: |-
