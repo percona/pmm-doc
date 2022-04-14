@@ -1,6 +1,7 @@
 # Check Percona Portal account information
 
 When you connect your PMM instances to Percona Platform, PMM gets access to:
+
 -  more alert templates 
 -  Registered Advisor Checks for additional database checks
 -  Paid Advisor Checks for more advanced database health checks. Paid checks are available when you  connect to Percona Platform with a customer account.
