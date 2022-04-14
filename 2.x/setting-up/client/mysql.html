@@ -146,8 +146,13 @@
 </ul>
 <h2 id="create-a-database-account-for-pmm">Create a database account for PMM<a class="headerlink" href="#create-a-database-account-for-pmm" title="Permanent link">&para;</a></h2>
 <p>It is good practice to use a non-superuser account to connect PMM Client to the monitored database instance. This example creates a database user with name <code>pmm</code>, password <code>pass</code>, and the necessary permissions.</p>
+<p><strong>On MySQL 8.0</strong></p>
 <div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">USER</span><span class="w"> </span><span class="s1">&#39;pmm&#39;</span><span class="o">@</span><span class="s1">&#39;localhost&#39;</span><span class="w"> </span><span class="n">IDENTIFIED</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="s1">&#39;pass&#39;</span><span class="w"> </span><span class="k">WITH</span><span class="w"> </span><span class="n">MAX_USER_CONNECTIONS</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"></span>
 <span class="k">GRANT</span><span class="w"> </span><span class="k">SELECT</span><span class="p">,</span><span class="w"> </span><span class="n">PROCESS</span><span class="p">,</span><span class="w"> </span><span class="n">REPLICATION</span><span class="w"> </span><span class="n">CLIENT</span><span class="p">,</span><span class="w"> </span><span class="n">RELOAD</span><span class="p">,</span><span class="w"> </span><span class="n">BACKUP_ADMIN</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="o">*</span><span class="p">.</span><span class="o">*</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="s1">&#39;pmm&#39;</span><span class="o">@</span><span class="s1">&#39;localhost&#39;</span><span class="p">;</span><span class="w"></span>
+</code></pre></div>
+<p><strong>On MySQL 5.7</strong></p>
+<div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">USER</span><span class="w"> </span><span class="s1">&#39;pmm&#39;</span><span class="o">@</span><span class="s1">&#39;localhost&#39;</span><span class="w"> </span><span class="n">IDENTIFIED</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="s1">&#39;pass&#39;</span><span class="w"> </span><span class="k">WITH</span><span class="w"> </span><span class="n">MAX_USER_CONNECTIONS</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"></span>
+<span class="k">GRANT</span><span class="w"> </span><span class="k">SELECT</span><span class="p">,</span><span class="w"> </span><span class="n">PROCESS</span><span class="p">,</span><span class="w"> </span><span class="n">REPLICATION</span><span class="w"> </span><span class="n">CLIENT</span><span class="p">,</span><span class="w"> </span><span class="n">RELOAD</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="o">*</span><span class="p">.</span><span class="o">*</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="s1">&#39;pmm&#39;</span><span class="o">@</span><span class="s1">&#39;localhost&#39;</span><span class="p">;</span><span class="w"></span>
 </code></pre></div>
 <h2 id="choose-and-configure-a-source">Choose and configure a source<a class="headerlink" href="#choose-and-configure-a-source" title="Permanent link">&para;</a></h2>
 <p>Decide which source of metrics to use, and configure your database server for it. The choices are <a href="#slow-query-log">Slow query log</a> and <a href="#performance-schema">Performance Schema</a>.</p>
@@ -732,7 +737,7 @@ events_transactions_history_long
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-12-14
+            <i class="uil uil-refresh"></i> Page updated 2022-04-14
         </li>
         
     </ul>
