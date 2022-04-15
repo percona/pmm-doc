@@ -161,7 +161,7 @@ To reflect these changes, the old **Security Threat Tool** option in PMM 2.26 in
 ### Format
 To create advisor checks for PMM 2.26 and older, use the following format.
 
-The function signature checks developed for PMM 2.26 and older can be **def check(docs)**  or **def check_context** (docs, context), where **docs** is a list of dicts.
+The function signature checks developed for PMM 2.26 and older should be **def check(docs)**, where **docs** is a list of dicts.
 
 
 === "Security Checks format"
