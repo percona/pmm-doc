@@ -74,9 +74,9 @@ Checks include the following fields:
  
 ## Checks script
  
-The check script assumes that there is a function with a fixed name _check_ that accepts a _list_ of _docs_ containing returned rows for SQL databases and documents for MongoDB. It returns zero, one, or several check results that are then converted to alerts.
+The check script assumes that there is a function with a fixed name, that accepts a _list_ of _docs_ containing returned rows for SQL databases and documents for MongoDB. It returns zero, one, or several check results that are then converted to alerts.
  
-PMM 2.12.0 and earlier use **context**, while newer versions use **check_context**. Both have the same meaning.
+PMM 2.12.0 and earlier function name is **check**, while newer versions use name **check_context**. Both have the same meaning.
 
 ### Function signature
  
@@ -119,7 +119,6 @@ Expand the table below for the list of checks types that you can use to define y
  
     ```
     docker run -p 80:80 -p 443:443 --name pmm-server \
- 
     -e PMM_DEBUG=1 \
     -e PERCONA_TEST_CHECKS_FILE=/srv/custom-checks.yml \
     -e PERCONA_TEST_CHECKS_DISABLE_START_DELAY=true \
