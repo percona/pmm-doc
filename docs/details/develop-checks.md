@@ -24,7 +24,6 @@ checks:
     name: exampleV2
     summary: Check format V2
     description: Checks something important
-    tiers: [ anonymous, registered ]
     interval: standard
     family: MYSQL          <------- family
     queries:               <-------- queries
@@ -96,17 +95,17 @@ Expand the table below for the list of checks types that you can use to define y
  
 ??? note alert alert-info "Check Types table (click to show/hide)"
 
-    | Check type  |  Description | "query" required (must be empty if no)   |  Availability in PMM | Documentation  |
-    |---|---|---|---|---|
-    | MYSQL_SHOW |     Executes 'SHOW …' clause against MySQL database.      |Yes | PMM 2.27 and older||
-    | MYSQL_SELECT    |     Executes 'SELECT …' clause against MySQL database.       |Yes|PMM 2.27 and older|   |
-    | POSTGRESQL_SHOW     |    Executes 'SHOW ALL' command against PosgreSQL database.        | No| PMM 2.27 and older ||
-    | POSTGRESQL_SELECT      | Executes 'SELECT …' clause against PosgreSQL database.    | Yes|  PMM 2.27 and older||
-    | MONGODB_GETPARAMETER     | Executes db.adminCommand( { getParameter: "*" } ) against MongoDB's "admin" database.    | No | PMM 2.27 and older| [getParameter](https://docs.mongodb.com/manual/reference/command/getParameter/)|
-    | MONGODB_BUILDINFO    | Executes db.adminCommand( { buildInfo:  1 } ) against MongoDB's "admin" database.    | No | PMM 2.27 and older| [buildInfo](https://docs.mongodb.com/manual/reference/command/buildInfo/) |
-    | MONGODB_GETCMDLINEOPTS          |    Executes db.adminCommand( { getCmdLineOpts: 1 } ) against MongoDB's "admin" database.      | No | PMM 2.27 and older| [getCmdLineOpts](https://docs.mongodb.com/manual/reference/command/getCmdLineOpts/) |
-    | MONGODB_REPLSETGETSTATUS     |   Executes db.adminCommand( { replSetGetStatus: 1 } ) against MongoDB's "admin" database.       | No |PMM 2.27 and newer |  [replSetGetStatus](https://docs.mongodb.com/manual/reference/command/replSetGetStatus/) |
-    | MONGODB_GETDIAGNOSTICDATA |Executes db.adminCommand( { getDiagnosticData: 1 } ) against MongoDB's "admin" database.   | No | PMM 2.27 and newer| [MongoDB Performance](https://docs.mongodb.com/manual/administration/analyzing-mongodb-performance/#full-time-diagnostic-data-capture)| 
+    | Check type  |  Description | "query" required (must be empty if no)   |  
+    |---|---|---|
+    | MYSQL_SHOW |Executes 'SHOW …' clause against MySQL database. This check is available for PMM 2.27 and older | |Yes|
+    | MYSQL_SELECT    |     Executes 'SELECT …' clause against MySQL database. This check is available for PMM 2.27 and older.       |Yes|
+    | POSTGRESQL_SHOW     |    Executes 'SHOW ALL' command against PosgreSQL database.  This check is available for PMM 2.27 and older.       |No|
+    | POSTGRESQL_SELECT      | Executes 'SELECT …' clause against PosgreSQL database. This check is available for PMM 2.27 and older.    |Yes|
+    | MONGODB_GETPARAMETER     | Executes db.adminCommand( { getParameter: "*" } ) against MongoDB's "admin" database.  This check is available for PMM 2.27 and older.   For more information, see [getParameter](https://docs.mongodb.com/manual/reference/command/getParameter/)| No|
+    | MONGODB_BUILDINFO    | Executes db.adminCommand( { buildInfo:  1 } ) against MongoDB's "admin" database. This check is available for PMM 2.27 and older. For more information, see [buildInfo](https://docs.mongodb.com/manual/reference/command/buildInfo/) | No|
+    | MONGODB_GETCMDLINEOPTS          |    Executes db.adminCommand( { getCmdLineOpts: 1 } ) against MongoDB's "admin" database. This check is available for PMM 2.27 and older. For more information, see [getCmdLineOpts](https://docs.mongodb.com/manual/reference/command/getCmdLineOpts/) |No|
+    | MONGODB_REPLSETGETSTATUS     |   Executes db.adminCommand( { replSetGetStatus: 1 } ) against MongoDB's "admin" database. This check is available in PMM 2.27 and newer. For more information, see  [replSetGetStatus](https://docs.mongodb.com/manual/reference/command/replSetGetStatus/) |No|
+    | MONGODB_GETDIAGNOSTICDATA |Executes db.adminCommand( { getDiagnosticData: 1 } ) against MongoDB's "admin" database. This check is available in PMM 2.27 and newer. For more information, see [MongoDB Performance](https://docs.mongodb.com/manual/administration/analyzing-mongodb-performance/#full-time-diagnostic-data-capture)| No|
     
 ## Develop custom checks
  
@@ -151,15 +150,14 @@ docker exec -it pmm-server bash
 supervisorctl tail -f pmm-managed
  
 ```
- 
-## Advisor checks versus security checks
+## Develop security checks for PMM 2.26 and older
+
+### Advisor checks versus security checks
 PMM 2.26 and older included a set of security checks grouped under the **Security Threat Tool** option.
  
 Starting with the 2.27 release PMM introduced new checks and grouped them into set of Advisors, according to the functionality and recommendations they provide.
  
 To reflect these changes, the old **Security Threat Tool** option in PMM 2.26 in earlier has been renamed to **Advisors** and the checks use a slightly different format.
-
-### Develop security checks for PMM 2.26 and older
 
 ### Format
 To create advisor checks for PMM 2.26 and older, use the following format.
@@ -174,7 +172,6 @@ The function signature checks developed for PMM 2.26 and older can be **def chec
             name: example
             summary: Example check
             description: This check is just an example.
-            tiers: [anonymous, registered]
             type: MONGODB_BUILDINFO
             script: |
             def check(docs):
@@ -219,7 +216,6 @@ The function signature checks developed for PMM 2.26 and older can be **def chec
             name: mongodb_version
             summary: MongoDB Version
             description: This check returns warnings if MongoDB/PSMDB version is not the latest one.
-            tiers: [anonymous, registered]
             type: MONGODB_BUILDINFO
             script: |
             LATEST_VERSIONS = {
