@@ -80,7 +80,7 @@ PMM 2.12.0 and earlier function name is **check**, while newer versions use name
 
 ### Function signature
  
-The function signature can be **check_context** (docs, context), where docs are lists of docs (one list of dicts for each query). 
+The function signature should be **check_context** (docs, context), where **docs** is lists of docs (one list of dicts for each query). 
   
 ## Check severity levels
 PMM can display failed checks as **Critical**, **Major** or **Trivial**. These three severity levels correspond to the following severity types in the check source:
