@@ -77,7 +77,7 @@ Checks include the following fields:
  
 The check script assumes that there is a function with a fixed name _check_ that accepts a _list_ of _docs_ containing returned rows for SQL databases and documents for MongoDB. It returns zero, one, or several check results that are then converted to alerts.
  
-PMM 2.12.0 and earlier use **context**, while newer versions use **check_context**. Both have the same meaning.
+PMM 2.12.0 and earlier function name is **check**, while newer versions use name **check_context**. Both have the same meaning.
 
 ### Function signature
  
