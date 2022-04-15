@@ -120,7 +120,6 @@ Expand the table below for the list of checks types that you can use to define y
  
     ```
     docker run -p 80:80 -p 443:443 --name pmm-server \
- 
     -e PMM_DEBUG=1 \
     -e PERCONA_TEST_CHECKS_FILE=/srv/custom-checks.yml \
     -e PERCONA_TEST_CHECKS_DISABLE_START_DELAY=true \
