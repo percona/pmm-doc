@@ -20,18 +20,13 @@ This means that extracted data is processed on the PMM side and not sent back to
 ``` yaml
 ---
 checks:
-  - version: 2             <------ version increment
-    name: exampleV2
-    summary: Check format V2
+  - version: 1             <------ version increment
+    name: exampleV1
+    summary: Check format V1
     description: Checks something important
     interval: standard
-    family: MYSQL          <------- family
-    queries:               <-------- queries
-      - type: MYSQL_SELECT
-        query: some query
-
-      - type: MYSQL_SHOW
-        query: some query 
+    type: MYSQL_SELECT
+    query:                   <-------- query
 
     script: |
       def check_context(docs, context):
