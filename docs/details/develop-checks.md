@@ -69,7 +69,7 @@ Expand the table below for the list of checks types that you can use to define y
  
 ??? note alert alert-info "Check Types table (click to show/hide)"
 
-    | Check type  |  Description | "query" required (must be empty if no)   |  
+    | Check type  |  Description | "query" required (must be empty if "No")   |  
     |---|---|---|
     | MYSQL_SHOW |Executes 'SHOW …' clause against MySQL database. This check is available  starting with PMM 2.26 | |Yes|
     | MYSQL_SELECT    |     Executes 'SELECT …' clause against MySQL database. This check is available  starting with PMM 2.26        |Yes|
