@@ -171,7 +171,7 @@ To create checks use the following format:
                     }
                 }]
 
-=== "Realistic example of security checks"
+=== "Realistic example"
             ---
         checks:
         - version: 1
@@ -269,7 +269,7 @@ To create checks use the following format:
                         })
 
                     return results
-## Advisor checks versus security checks
+## Security checks in PMM 2.26 and older
 PMM 2.26 and older included a set of security checks grouped under the **Security Threat Tool** option.
  
 With the 2.27 release, security checks have been renamed to Advisor checks, and the **Security Threat Tool** option in the PMM Settings was renamed to **Advisors**.
