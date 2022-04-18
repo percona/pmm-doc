@@ -15,32 +15,7 @@ All checks are self-contained in the first phase, as well as in most of the plan
  
 This means that extracted data is processed on the PMM side and not sent back to the SaaS.
 
-## Format
 
-``` yaml
----
-checks:
-  - version: 2             <------ version increment
-    name: exampleV2
-    summary: Check format V2
-    description: Checks something important
-    interval: standard
-    family: MYSQL          <------- family
-    queries:               <-------- queries
-      - type: MYSQL_SELECT
-        query: some query
-
-      - type: MYSQL_SHOW
-        query: some query 
-
-    script: |
-      def check_context(docs, context):
-          firstQueryResults = docs[0]
-          secondQueryResults = docs[1]
-          // Process query results
-          return results
-```
-  
 ## Backend
 
 1. pmm-managed checks that the installation is opted-in for checks.
@@ -55,7 +30,7 @@ checks:
 ![!](../_images/BackendChecks.png)
 
 ## Frontend
-PMM UI in Grafana uses Alermanager API v2 to get information about failed checks:
+PMM uses Aletmanager API to get information about failed checks and show them on the UI:
 
 ![!](../_images/FrontEndChecks.png)
  
@@ -68,9 +43,8 @@ Checks include the following fields:
 - **Summary** (string, required): defines short human-readable description.
 - **Description** (string, required): defines long human-readable description.
 - **Type** (string/enum, required): defines the query type and the PMM Service type for which the advisor runs. Check the list of available types in the table below.
-- **Query** (string, optional): contains an SQL query as a string with proper quoting. 
-    The query is executed on the PMM Client side and can be absent if the type defines the whole query by itself.  
-- **Script** (string, required): contains a small Python program that processes query results, and returns check results. It is executed on the PMM Server side.
+- **Query** (string, can be absent if the type defines the whole query by itself):  The query is executed on the PMM Client side and contains query specific for the target DBMS.
+- **Script** (string, required): contains a small Starlarck program that processes query results, and returns check results. It is executed on the PMM Server side.
  
 ## Checks script
  
@@ -80,8 +54,8 @@ PMM 2.12.0 and earlier function name is **check**, while newer versions use name
 
 ### Function signature
  
-The function signature can be **check_context** (docs, context), where docs are lists of docs (one list of dicts for each query). 
-  
+The function signature should be **check_context** (docs, context), where **docs** is lists of docs (one doc represents one row for SQL DBMS and one document for MongoDB).
+
 ## Check severity levels
 PMM can display failed checks as **Critical**, **Major** or **Trivial**. These three severity levels correspond to the following severity types in the check source:
  
@@ -97,15 +71,15 @@ Expand the table below for the list of checks types that you can use to define y
 
     | Check type  |  Description | "query" required (must be empty if no)   |  
     |---|---|---|
-    | MYSQL_SHOW |Executes 'SHOW …' clause against MySQL database. This check is available for PMM 2.27 and older | |Yes|
-    | MYSQL_SELECT    |     Executes 'SELECT …' clause against MySQL database. This check is available for PMM 2.27 and older.       |Yes|
-    | POSTGRESQL_SHOW     |    Executes 'SHOW ALL' command against PosgreSQL database.  This check is available for PMM 2.27 and older.       |No|
-    | POSTGRESQL_SELECT      | Executes 'SELECT …' clause against PosgreSQL database. This check is available for PMM 2.27 and older.    |Yes|
-    | MONGODB_GETPARAMETER     | Executes db.adminCommand( { getParameter: "*" } ) against MongoDB's "admin" database.  This check is available for PMM 2.27 and older.   For more information, see [getParameter](https://docs.mongodb.com/manual/reference/command/getParameter/)| No|
-    | MONGODB_BUILDINFO    | Executes db.adminCommand( { buildInfo:  1 } ) against MongoDB's "admin" database. This check is available for PMM 2.27 and older. For more information, see [buildInfo](https://docs.mongodb.com/manual/reference/command/buildInfo/) | No|
-    | MONGODB_GETCMDLINEOPTS          |    Executes db.adminCommand( { getCmdLineOpts: 1 } ) against MongoDB's "admin" database. This check is available for PMM 2.27 and older. For more information, see [getCmdLineOpts](https://docs.mongodb.com/manual/reference/command/getCmdLineOpts/) |No|
-    | MONGODB_REPLSETGETSTATUS     |   Executes db.adminCommand( { replSetGetStatus: 1 } ) against MongoDB's "admin" database. This check is available in PMM 2.27 and newer. For more information, see  [replSetGetStatus](https://docs.mongodb.com/manual/reference/command/replSetGetStatus/) |No|
-    | MONGODB_GETDIAGNOSTICDATA |Executes db.adminCommand( { getDiagnosticData: 1 } ) against MongoDB's "admin" database. This check is available in PMM 2.27 and newer. For more information, see [MongoDB Performance](https://docs.mongodb.com/manual/administration/analyzing-mongodb-performance/#full-time-diagnostic-data-capture)| No|
+    | MYSQL_SHOW |Executes 'SHOW …' clause against MySQL database. This check is available  starting with PMM 2.26 | |Yes|
+    | MYSQL_SELECT    |     Executes 'SELECT …' clause against MySQL database. This check is available  starting with PMM 2.26        |Yes|
+    | POSTGRESQL_SHOW     |    Executes 'SHOW ALL' command against PosgreSQL database. This check is available  starting with PMM 2.26.       |No|
+    | POSTGRESQL_SELECT      | Executes 'SELECT …' clause against PosgreSQL database. This check is available  starting with PMM 2.26.    |Yes|
+    | MONGODB_GETPARAMETER     | Executes db.adminCommand( { getParameter: "*" } ) against MongoDB's "admin" database. This check is available  starting with PMM 2.26. For more information, see [getParameter](https://docs.mongodb.com/manual/reference/command/getParameter/)| No|
+    | MONGODB_BUILDINFO    | Executes db.adminCommand( { buildInfo:  1 } ) against MongoDB's "admin" database. This check is available  starting with PMM 2.26. For more information, see [buildInfo](https://docs.mongodb.com/manual/reference/command/buildInfo/) | No|
+    | MONGODB_GETCMDLINEOPTS          |    Executes db.adminCommand( { getCmdLineOpts: 1 } ) against MongoDB's "admin" database. This check is available  starting with PMM 2.26. For more information, see [getCmdLineOpts](https://docs.mongodb.com/manual/reference/command/getCmdLineOpts/) |No|
+    | MONGODB_REPLSETGETSTATUS     |   Executes db.adminCommand( { replSetGetStatus: 1 } ) against MongoDB's "admin" database. This check is available  starting with PMM 2.27. For more information, see  [replSetGetStatus](https://docs.mongodb.com/manual/reference/command/replSetGetStatus/) |No|
+    | MONGODB_GETDIAGNOSTICDATA |Executes db.adminCommand( { getDiagnosticData: 1 } ) against MongoDB's "admin" database. This check is available  starting with PMM 2.27. For more information, see [MongoDB Performance](https://docs.mongodb.com/manual/administration/analyzing-mongodb-performance/#full-time-diagnostic-data-capture)| No|
     
 ## Develop custom checks
  
@@ -149,22 +123,11 @@ docker exec -it pmm-server bash
 supervisorctl tail -f pmm-managed
  
 ```
-## Develop security checks for PMM 2.26 and older
-
-### Advisor checks versus security checks
-PMM 2.26 and older included a set of security checks grouped under the **Security Threat Tool** option.
- 
-Starting with the 2.27 release PMM introduced new checks and grouped them into set of Advisors, according to the functionality and recommendations they provide.
- 
-To reflect these changes, the old **Security Threat Tool** option in PMM 2.26 in earlier has been renamed to **Advisors** and the checks use a slightly different format.
 
 ### Format
-To create advisor checks for PMM 2.26 and older, use the following format.
+To create checks use the following format:
 
-The function signature checks developed for PMM 2.26 and older can be **def check(docs)**  or **def check_context** (docs, context), where **docs** is a list of dicts.
-
-
-=== "Security Checks format"
+=== "Check format"
             ---
         checks:
         - version: 1
@@ -306,6 +269,10 @@ The function signature checks developed for PMM 2.26 and older can be **def chec
                         })
 
                     return results
+## Advisor checks versus security checks
+PMM 2.26 and older included a set of security checks grouped under the **Security Threat Tool** option.
+ 
+With the 2.27 release, security checks have been renamed to Advisor checks, and the **Security Threat Tool** option in the PMM Settings was renamed to **Advisors**.
 
 
 ## Submit feedback
