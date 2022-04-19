@@ -11,12 +11,12 @@ repo_url: https://github.com/percona/pmm-doc
 edit_uri: edit/main/docs/
 
 theme:
-    name: material
-    logo: _images/percona-logo.svg
-    favicon: _images/percona-favicon.ico
-    palette:
-        #    - media: "(prefers-color-scheme: light)"
-        scheme: percona-light
+  name: material
+  logo: _images/percona-logo.svg
+  favicon: _images/percona-favicon.ico
+  palette:
+    #    - media: "(prefers-color-scheme: light)"
+    scheme: percona-light
 #      toggle:
 #        icon: material/toggle-switch-off-outline
 #        name: Switch to night mode
@@ -27,70 +27,72 @@ theme:
 #        name: Switch to day mode
 
 extra_css:
-    - https://unicons.iconscout.com/release/v3.0.3/css/line.css
-    - https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css
-    - css/percona.css
-    - css/lightgallery.min.css
+  - https://unicons.iconscout.com/release/v3.0.3/css/line.css
+  - https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css
+  - css/percona.css
+  - css/lightgallery.min.css
 
 extra_javascript:
-    - js/version-select.js
-    - js/toctree.js
-    - js/lightgallery.min.js
+  - js/version-select.js
+  - js/toctree.js
+  - js/lightgallery.min.js
 
 markdown_extensions:
-    attr_list: {}
-    toc:
-        permalink: True
-    admonition: {}
-    def_list: {}
-    meta: {}
-    smarty: { smart_angled_quotes: true }
-    pymdownx.details: {}
-    pymdownx.mark: {}
-    pymdownx.smartsymbols: {}
-    pymdownx.tabbed: {}
-    pymdownx.tilde: {}
-    pymdownx.superfences: {}
-    pymdownx.highlight:
-        linenums: false
-    lightgallery: {}
+  attr_list: {}
+  toc:
+    permalink: True
+  admonition: {}
+  def_list: {}
+  meta: {}
+  smarty: { smart_angled_quotes: true }
+  pymdownx.details: {}
+  pymdownx.mark: {}
+  pymdownx.smartsymbols: {}
+  pymdownx.tabbed: {}
+  pymdownx.tilde: {}
+  pymdownx.superfences: {}
+  pymdownx.highlight:
+    linenums: false
+  lightgallery: {}
 
 plugins:
-    search: {}
-    git-revision-date: {}
-    macros:
-        include_yaml:
-            - "variables.yml"
-    # https://pypi.org/project/mkdocs-exclude/
-    exclude:
-        glob:
-            - "setting-up/client/docker.md"
-    # https://github.com/orzih/mkdocs-with-pdf
-    with-pdf:
-        output_path: "_pdf/PerconaMonitoringAndManagement-2.26.0.pdf"
-        cover_title: "Documentation"
-        cover_subtitle: 2.26.0 (February 8, 2022)
-        author: "Percona Technical Documentation Team"
-        cover_logo: docs/_images/PMM_Logo.svg
-        custom_template_path: _resources/templates
-        enabled_if_env: ENABLE_PDF_EXPORT
-    # Check links - but extends build time significantly
-    # https://pypi.org/project/mkdocs-htmlproofer-plugin/
-    #    htmlproofer: {}
-    mike:
-        version_selector: true
-        css_dir: css
-        javascript_dir: js
-        canonical_version: null
+  search: {}
+  git-revision-date: {}
+  macros:
+    include_yaml:
+      - "variables.yml"
+  # https://pypi.org/project/mkdocs-exclude/
+  exclude:
+    glob:
+      - "setting-up/client/docker.md"
+  # https://github.com/orzih/mkdocs-with-pdf
+  with-pdf:
+    output_path: "_pdf/PerconaMonitoringAndManagement-2.27.0.pdf"
+    cover_title: "Documentation"
+    cover_subtitle: 2.27.0 (April 14, 2022)
+    author: "Percona Technical Documentation Team"
+    cover_logo: docs/_images/PMM_Logo.svg
+    custom_template_path: _resources/templates
+    enabled_if_env: ENABLE_PDF_EXPORT
+  # Check links - but extends build time significantly
+  # https://pypi.org/project/mkdocs-htmlproofer-plugin/
+  #    htmlproofer: {}
+  mike:
+    version_selector: true
+    css_dir: css
+    javascript_dir: js
+    canonical_version: null
 
 extra: # Used in main.html template and can't be externalized
-    edit_page_text: '<i class="uil uil-pen"></i> <b>Edit this page</b>'
-    updated_text: '<i class="uil uil-refresh"></i> Page updated'
-    version:
-        provider: mike
+  edit_page_text: '<i class="uil uil-pen"></i> <b>Edit this page</b>'
+  updated_text: '<i class="uil uil-refresh"></i> Page updated'
+  version:
+    provider: mike
 
 # Common navigation for percona.com, render.com and PDF
 nav:
+
+
     - Welcome: index.md
     - Setting up:
           - setting-up/index.md
@@ -122,7 +124,7 @@ nav:
           - using/backup.md
           - using/query-analytics.md
           - using/dbaas.md
-          - using/security-threat-tool.md
+          
     - How to:
           - how-to/index.md
           - how-to/configure.md
@@ -134,12 +136,18 @@ nav:
           - how-to/render-dashboard-images.md
           - how-to/extend-metrics.md
           - how-to/troubleshoot.md
+          - Integrate with Percona Platform:
+                  - how-to/integrate-platform.md
+                  - how-to/account-info.md
+                  - how-to/advisors.md
+                  
     - Details:
           - details/index.md
           - details/architecture.md
           - details/interface.md
-          - Developing Advisor checks:
-                - details/develop-checks.md
+    - Developing Advisor checks:
+          - details/develop-checks.md
+            
           - Dashboards:
                 - details/dashboards/index.md
                 - Insight:
@@ -213,9 +221,10 @@ nav:
           - details/victoria-metrics.md
           - details/glossary.md
     - faq.md
+    
     - Release Notes:
           - release-notes/index.md
-
+          - "PMM 2.27.0": release-notes/2.27.0.md
           - "PMM 2.26.0": release-notes/2.26.0.md
           - "PMM 2.25.0": release-notes/2.25.0.md
           - "PMM 2.24.0": release-notes/2.24.0.md
