@@ -73,11 +73,11 @@ Expand the table below for the list of checks types that you can use to define y
     | Check type  |  Description | "query" required (must be empty if "No")   |  
     |---|---|---|
     | MYSQL_SHOW |Executes 'SHOW …' clause against MySQL database. This check is available  starting with PMM 2.6 | |Yes|
-    | MYSQL_SELECT    |     Executes 'SELECT …' clause against MySQL database. This check is available  starting with PMM 2.26        |Yes|
-    | POSTGRESQL_SHOW     |    Executes 'SHOW ALL' command against PosgreSQL database. This check is available  starting with PMM 2.26.       |No|
-    | POSTGRESQL_SELECT      | Executes 'SELECT …' clause against PosgreSQL database. This check is available  starting with PMM 2.26.    |Yes|
-    | MONGODB_GETPARAMETER     | Executes db.adminCommand( { getParameter: "*" } ) against MongoDB's "admin" database. This check is available  starting with PMM 2.26. For more information, see [getParameter](https://docs.mongodb.com/manual/reference/command/getParameter/)| No|
-    | MONGODB_BUILDINFO    | Executes db.adminCommand( { buildInfo:  1 } ) against MongoDB's "admin" database. This check is available  starting with PMM 2.26. For more information, see [buildInfo](https://docs.mongodb.com/manual/reference/command/buildInfo/) | No|
+    | MYSQL_SELECT    |     Executes 'SELECT …' clause against MySQL database. This check is available  starting with PMM 2.6        |Yes|
+    | POSTGRESQL_SHOW     |    Executes 'SHOW ALL' command against PosgreSQL database. This check is available  starting with PMM 2.6.       |No|
+    | POSTGRESQL_SELECT      | Executes 'SELECT …' clause against PosgreSQL database. This check is available  starting with PMM 2.6.    |Yes|
+    | MONGODB_GETPARAMETER     | Executes db.adminCommand( { getParameter: "*" } ) against MongoDB's "admin" database. This check is available  starting with PMM 2.6. For more information, see [getParameter](https://docs.mongodb.com/manual/reference/command/getParameter/)| No|
+    | MONGODB_BUILDINFO    | Executes db.adminCommand( { buildInfo:  1 } ) against MongoDB's "admin" database. This check is available  starting with PMM 2.6. For more information, see [buildInfo](https://docs.mongodb.com/manual/reference/command/buildInfo/) | No|
     | MONGODB_GETCMDLINEOPTS          |    Executes db.adminCommand( { getCmdLineOpts: 1 } ) against MongoDB's "admin" database. This check is available  starting with PMM 2.7. For more information, see [getCmdLineOpts](https://docs.mongodb.com/manual/reference/command/getCmdLineOpts/) |No|
     | MONGODB_REPLSETGETSTATUS     |   Executes db.adminCommand( { replSetGetStatus: 1 } ) against MongoDB's "admin" database. This check is available  starting with PMM 2.27. For more information, see  [replSetGetStatus](https://docs.mongodb.com/manual/reference/command/replSetGetStatus/) |No|
     | MONGODB_GETDIAGNOSTICDATA |Executes db.adminCommand( { getDiagnosticData: 1 } ) against MongoDB's "admin" database. This check is available  starting with PMM 2.27. For more information, see [MongoDB Performance](https://docs.mongodb.com/manual/administration/analyzing-mongodb-performance/#full-time-diagnostic-data-capture)| No|
