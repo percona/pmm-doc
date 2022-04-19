@@ -42,8 +42,9 @@ Checks include the following fields:
 - **Name** (string, required): defines machine-readable name (ID).
 - **Summary** (string, required): defines short human-readable description.
 - **Description** (string, required): defines long human-readable description.
+- **Interval** (string/enum, optional): defines running interval. Can be one of the predefined intervals in the UI: Standard, Frequent, Rare.
 - **Type** (string/enum, required): defines the query type and the PMM Service type for which the advisor runs. Check the list of available types in the table below.
-- **Query** (string, can be absent if the type defines the whole query by itself):  The query is executed on the PMM Client side and contains query specific for the target DBMS.
+- **Query** (string, can be absent if the type defines the whole query by itself): The query is executed on the PMM Client side and contains query specific for the target DBMS.
 - **Script** (string, required): contains a small Starlarck program that processes query results, and returns check results. It is executed on the PMM Server side.
  
 ## Checks script
@@ -83,8 +84,8 @@ Expand the table below for the list of checks types that you can use to define y
     
 ## Develop custom checks
  
-1.  Install the latest PMM Server and PMM Client builds following the [installation instructions](https://www.percona.com/software/pmm/quickstart#). 
-2.  Run PMM Server with special environment variables:
+1. Install the latest PMM Server and PMM Client builds following the [installation instructions](https://www.percona.com/software/pmm/quickstart#). 
+2. Run PMM Server with special environment variables:
  
     - _PMM_DEBUG=1_ to enable debug output that would be useful later;
     - _PERCONA_TEST_CHECKS_FILE=/srv/custom-checks.yml_ to use checks from the local files instead of downloading them from the SaaS.
