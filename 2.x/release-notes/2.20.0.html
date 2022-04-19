@@ -115,7 +115,7 @@
 
                 <div class="bodywrapper">
                     <div class="body">
-                        <h1 id="percona-monitoring-and-management-2200">Percona Monitoring and Management 2.20.0<a class="headerlink" href="#percona-monitoring-and-management-2200" title="Permanent link">&para;</a></h1>
+                        <h1 id="percona-monitoring-and-management-2200">Percona Monitoring and Management 2.20.0</h1>
 <table class="docutils field-list" frame="void" rules="none">
   <colgroup>
     <col class="field-name">
@@ -135,7 +135,7 @@
 </table>
 
 <p>Percona Monitoring and Management (PMM) is a free and open-source platform for managing and monitoring MySQL, MongoDB, and PostgreSQL performance.</p>
-<h2 id="release-highlights">Release Highlights<a class="headerlink" href="#release-highlights" title="Permanent link">&para;</a></h2>
+<h2 id="release-highlights">Release Highlights</h2>
 <ul>
 <li>The <a href="https://www.percona.com/doc/percona-monitoring-and-management/2.x/setting-up/server/easy-install.html">Easy-install script</a> for PMM Server is checksum verified.</li>
 <li>PMM will use <a href="https://grafana.com/docs/grafana/latest/whatsnew/whats-new-in-v7-5">Grafana 7.5</a> instead of 7.3. We are also preparing for Grafana 8.</li>
@@ -143,20 +143,20 @@
 <li>For users who deploy PMM Server through the AWS Marketplace, AWS RDS service discovery will be executed without AWS credentials and tuning <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html">IAM roles</a>.</li>
 <li>For Backup Management (Technical Preview), we added the ability to schedule backups so you can schedule and see already scheduled <a href="https://www.percona.com/doc/percona-monitoring-and-management/2.x/using/backup.html">backups</a> in the UI.</li>
 </ul>
-<h2 id="important-note-for-users-of-pmm-who-started-out-using-the-docker-image-of-2160">Important note for users of PMM who started out using the Docker image of 2.16.0<a class="headerlink" href="#important-note-for-users-of-pmm-who-started-out-using-the-docker-image-of-2160" title="Permanent link">&para;</a></h2>
+<h2 id="important-note-for-users-of-pmm-who-started-out-using-the-docker-image-of-2160">Important note for users of PMM who started out using the Docker image of 2.16.0</h2>
 <p>If you installed PMM <a href="https://www.percona.com/doc/percona-monitoring-and-management/2.x/release-notes/2.16.0.html">version 2.16</a> as a new Docker image and have since used the home dashboard upgrade widget to upgrade to any of 2.17, 2.18, or 2.19, you might experience problems with monitoring the PMM server itself, Remote Monitoring, or RDS/Azure monitoring. If you experience any of these problems, you can simply run the following commands to get your instance working and it will be automatically resolved in the next release:</p>
 <ol>
 <li>Enter the container: <code>docker exec -it pmm-server bash</code></li>
 <li>Roll back <code>pmm2-client</code> package to stable version: <code>yum downgrade -y pmm2-client</code></li>
 </ol>
 <p>Alternatively, you can replace the existing Docker container with a fresh install of the latest release by following the <a href="../setting-up/server/docker.html#upgrade">official instructions for an upgrade</a>. (This will guide you through taking a backup of your PMM Server and restoring it after installing a fresh docker image of PMM Server.)</p>
-<h2 id="new-features">New Features<a class="headerlink" href="#new-features" title="Permanent link">&para;</a></h2>
+<h2 id="new-features">New Features</h2>
 <ul>
 <li><a href="https://jira.percona.com/browse/PMM-8157">PMM-8157</a>: Backup Management: Show scheduled backups – A new view that shows the list of scheduled backups with quick actions to enable/disable, edit, copy, and delete.</li>
 <li><a href="https://jira.percona.com/browse/PMM-8155">PMM-8155</a>: Backup Management: Scheduling of backups – Support for Backup Scheduling has been added so that users can define backup jobs to run automatically in the future with the option of making the schedules recurring.</li>
 <li><a href="https://jira.percona.com/browse/PMM-7010">PMM-7010</a>: Option to unregister current node (<code>pmm-admin unregister</code>)</li>
 </ul>
-<h2 id="improvements">Improvements<a class="headerlink" href="#improvements" title="Permanent link">&para;</a></h2>
+<h2 id="improvements">Improvements</h2>
 <ul>
 <li><a href="https://jira.percona.com/browse/PMM-7552">PMM-7552</a>: PMM Server Docker image: Add labels to PMM Server Docker image (Thanks to Nicolas for reporting this issue)</li>
 <li><a href="https://jira.percona.com/browse/PMM-8266">PMM-8266</a>: PMM Server Docker image: Decommission and remove Prometheus binaries and configuration</li>
@@ -164,25 +164,25 @@
 <li><a href="https://jira.percona.com/browse/PMM-7809">PMM-7809</a>: Grafana upgrade from 7.3.7 to 7.5.7 – <a href="https://grafana.com/docs/grafana/latest/whatsnew/whats-new-in-v7-5">Read more at grafana.com</a></li>
 <li><a href="https://jira.percona.com/browse/PMM-8386">PMM-8386</a>: Overview text on the Home page is missing PostgreSQL as a supported technology</li>
 <li><a href="https://jira.percona.com/browse/PMM-7722">PMM-7722</a>: DBaaS: Announce new supported version of operator – Shows that a new version of the operator is available.</li>
-<li><a href="https://jira.percona.com/browse/PMM-6278">PMM-6278</a>: Modification of MySQL &lsquo;Delete&rsquo; queries to provide &lsquo;Explain&rsquo; information</li>
+<li><a href="https://jira.percona.com/browse/PMM-6278">PMM-6278</a>: Modification of MySQL 'Delete' queries to provide 'Explain' information</li>
 <li><a href="https://jira.percona.com/browse/PMM-8468">PMM-8468</a>: Forbid the use of outdated ciphers for HTTPS protocol on exporters</li>
-<li><a href="https://jira.percona.com/browse/PMM-7649">PMM-7649</a>: Security Checks: Show &ldquo;Insufficient access permissions&rdquo; in UI for non admin users</li>
-<li><a href="https://jira.percona.com/browse/PMM-8059">PMM-8059</a>: Update Query Analytics UI to clarify estimated results on MySQL &lsquo;explain&rsquo; response where we modified original query</li>
+<li><a href="https://jira.percona.com/browse/PMM-7649">PMM-7649</a>: Security Checks: Show "Insufficient access permissions" in UI for non admin users</li>
+<li><a href="https://jira.percona.com/browse/PMM-8059">PMM-8059</a>: Update Query Analytics UI to clarify estimated results on MySQL 'explain' response where we modified original query</li>
 <li><a href="https://jira.percona.com/browse/PMM-8043">PMM-8043</a>: Return Service Name in <code>GetCheckResults</code> API response</li>
 <li><a href="https://jira.percona.com/browse/PMM-8000">PMM-8000</a>: Expose new numbered metrics available in <code>pg_stat_monitor</code> 0.9</li>
 </ul>
-<h2 id="bugs-fixed">Bugs Fixed<a class="headerlink" href="#bugs-fixed" title="Permanent link">&para;</a></h2>
+<h2 id="bugs-fixed">Bugs Fixed</h2>
 <ul>
 <li><a href="https://jira.percona.com/browse/PMM-8299">PMM-8299</a>: Backup Management: Remove storage location shows wrong notification – When removing a storage location, PMM presents misleading information to the user in the form of two notification messages for both error and success.</li>
-<li><a href="https://jira.percona.com/browse/PMM-8283">PMM-8283</a>: Backup Management: Error when removing location with &lsquo;force delete&rsquo; option</li>
+<li><a href="https://jira.percona.com/browse/PMM-8283">PMM-8283</a>: Backup Management: Error when removing location with 'force delete' option</li>
 <li><a href="https://jira.percona.com/browse/PMM-8064">PMM-8064</a>: Dashboards: Size of Temp Files Report Metric value has wrong unit on PostgreSQL Instance Summary Dashboard</li>
 <li><a href="https://jira.percona.com/browse/PMM-6981">PMM-6981</a>: Dashboards: Wrong version is shown for MariaDB services</li>
 <li><a href="https://jira.percona.com/browse/PMM-7738">PMM-7738</a>: Integrated Alerting: Alerts for some built-in templates missing service name label</li>
-<li><a href="https://jira.percona.com/browse/PMM-6877">PMM-6877</a>: <code>mongodb_exporter</code> doesn&rsquo;t recognize being on a mongos host and fills the syslog with <code>replSetGetStatus</code> errors (Thanks to Clyde Shillingford for reporting this issue)</li>
+<li><a href="https://jira.percona.com/browse/PMM-6877">PMM-6877</a>: <code>mongodb_exporter</code> doesn't recognize being on a mongos host and fills the syslog with <code>replSetGetStatus</code> errors (Thanks to Clyde Shillingford for reporting this issue)</li>
 <li><a href="https://jira.percona.com/browse/PMM-7627">PMM-7627</a>: Consistent PMM Server log management – Adds consistency to the log management of <code>nginx</code>, <code>postgresql</code> and <code>clickhouse-server</code>, which is now delegated to <code>supervisord</code>. Removes the <code>logrotate</code> daemon from the image.</li>
 <li><a href="https://jira.percona.com/browse/PMM-8492">PMM-8492</a>: PMM Client version is 2.21.0 inside PMM Server after upgrade from 2.16.0</li>
 </ul>
-<h2 id="known-issues-unfixed-problems-that-you-should-be-aware-of">Known Issues (unfixed problems that you should be aware of)<a class="headerlink" href="#known-issues-unfixed-problems-that-you-should-be-aware-of" title="Permanent link">&para;</a></h2>
+<h2 id="known-issues-unfixed-problems-that-you-should-be-aware-of">Known Issues (unfixed problems that you should be aware of)</h2>
 <ul>
 <li><a href="https://jira.percona.com/browse/PMM-8414">PMM-8414</a>: Backup Scheduler not working if user specifies explicit job start time</li>
 </ul>
@@ -543,11 +543,19 @@
 
 
 
-
-<li class="toctree-l2">
-    <a class="reference internal" href="../details/develop-checks.html">Developing Advisors</a>
+</ul>
 
 
+
+
+
+<li class="toctree-l1">
+    <a class="reference internal" href="../details/develop-checks.html">Developing Advisor checks</a>
+
+
+
+
+<ul class="toctree" id="toctree">
 
 
 <li class="toctree-l2">

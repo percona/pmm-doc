@@ -115,10 +115,10 @@
 
                 <div class="bodywrapper">
                     <div class="body">
-                        <h1 id="google-cloud-platform">Google Cloud Platform<a class="headerlink" href="#google-cloud-platform" title="Permanent link">&para;</a></h1>
+                        <h1 id="google-cloud-platform">Google Cloud Platform</h1>
 <p>PMM can monitor MySQL or PostgreSQL instances hosted on the <a href="https://cloud.google.com/">Google Cloud Platform</a>.</p>
 <p>The connection can be direct, or indirect using <a href="https://cloud.google.com/sql/docs/mysql/connect-overview#cloud_sql_proxy">Cloud SQL Proxy</a>.</p>
-<h2 id="mysql">MySQL<a class="headerlink" href="#mysql" title="Permanent link">&para;</a></h2>
+<h2 id="mysql">MySQL</h2>
 <ol>
 <li>
 <p><a href="https://cloud.google.com/sql/docs/mysql/quickstart">Set up a MySQL instance on Google Cloud</a>.</p>
@@ -127,7 +127,7 @@
 <p>The database server must be accessible by PMM Client. If PMM Client is not also hosted on GCP, you will need to add a network interface with a public interface.</p>
 </li>
 <li>
-<p>Configure <em>Performance Schema</em> on the MySQL server. Using the GCP console&rsquo;s <em>Cloud Shell</em> or your own <code>gcloud</code> installation, run:</p>
+<p>Configure <em>Performance Schema</em> on the MySQL server. Using the GCP console's <em>Cloud Shell</em> or your own <code>gcloud</code> installation, run:</p>
 <div class="highlight"><pre><span></span><code>gcloud sql instances patch &lt;instance_name&gt; --database-flags <span class="nv">performance_schema</span><span class="o">=</span>on
 </code></pre></div>
 </li>
@@ -153,7 +153,7 @@
 <p>Check for values in the <em>MySQL Instance Overview</em> dashboard and in <em>Query Analytics</em>.</p>
 </li>
 </ol>
-<h2 id="postgresql">PostgreSQL<a class="headerlink" href="#postgresql" title="Permanent link">&para;</a></h2>
+<h2 id="postgresql">PostgreSQL</h2>
 <ol>
 <li>
 <p><a href="https://cloud.google.com/sql/docs/postgres/quickstart">Set up a PostgreSQL instance on Google Cloud</a>.</p>
@@ -188,8 +188,8 @@
 <p>Check for values in the <em>PostgreSQL Instance Overview</em> dashboard and <em>Query Analytics</em>.</p>
 </li>
 </ol>
-<h2 id="cloud-sql-proxy">Cloud SQL Proxy<a class="headerlink" href="#cloud-sql-proxy" title="Permanent link">&para;</a></h2>
-<h3 id="mysql_1">MySQL<a class="headerlink" href="#mysql_1" title="Permanent link">&para;</a></h3>
+<h2 id="cloud-sql-proxy">Cloud SQL Proxy</h2>
+<h3 id="mysql_1">MySQL</h3>
 <ol>
 <li>
 <p>Create instance on GCP.</p>
@@ -235,7 +235,7 @@ chmod +x cloud_sql_proxy
 </code></pre></div>
 </li>
 </ol>
-<h3 id="postgresql_1">PostgreSQL<a class="headerlink" href="#postgresql_1" title="Permanent link">&para;</a></h3>
+<h3 id="postgresql_1">PostgreSQL</h3>
 <ol>
 <li>
 <p>Create instance on GCP.</p>
@@ -624,11 +624,19 @@ chmod +x cloud_sql_proxy
 
 
 
-
-<li class="toctree-l2">
-    <a class="reference internal" href="../../details/develop-checks.html">Developing Advisors</a>
+</ul>
 
 
+
+
+
+<li class="toctree-l1">
+    <a class="reference internal" href="../../details/develop-checks.html">Developing Advisor checks</a>
+
+
+
+
+<ul class="toctree" id="toctree">
 
 
 <li class="toctree-l2">

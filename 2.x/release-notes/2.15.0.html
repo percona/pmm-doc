@@ -115,7 +115,7 @@
 
                 <div class="bodywrapper">
                     <div class="body">
-                        <h1 id="percona-monitoring-and-management-2150">Percona Monitoring and Management 2.15.0<a class="headerlink" href="#percona-monitoring-and-management-2150" title="Permanent link">&para;</a></h1>
+                        <h1 id="percona-monitoring-and-management-2150">Percona Monitoring and Management 2.15.0</h1>
 <table class="docutils field-list" frame="void" rules="none">
   <colgroup>
     <col class="field-name">
@@ -135,7 +135,7 @@
 </table>
 
 <p>Percona Monitoring and Management (PMM) is a free and open-source platform for managing and monitoring MySQL, MongoDB, and PostgreSQL performance.</p>
-<h2 id="release-highlights">Release Highlights<a class="headerlink" href="#release-highlights" title="Permanent link">&para;</a></h2>
+<h2 id="release-highlights">Release Highlights</h2>
 <ul>
 <li>
 <p>PMM 1 vs. 2 Parity</p>
@@ -165,9 +165,9 @@
 <p>Known Limitations: The progress bar will not provide valuable information for the Delete operation (will be in a later version when we’ll change the API with Operators Team), Operation of DB Cluster Modification will have “strange” behavior and will start changes from non-zero values of steps. (This will be modified after API changes.)</p>
 </li>
 </ul>
-<h2 id="new-features">New Features<a class="headerlink" href="#new-features" title="Permanent link">&para;</a></h2>
+<h2 id="new-features">New Features</h2>
 <ul>
-<li><a href="https://jira.percona.com/browse/PMM-4172">PMM-4172</a>, <a href="https://jira.percona.com/browse/PMM-4306">PMM-4306</a>, <a href="https://jira.percona.com/browse/PMM-5784">PMM-5784</a>, <a href="https://jira.percona.com/browse/PMM-7177">PMM-7177</a>: Services and Nodes Summary presentation. Present information about DB&rsquo;s and Node status using <code>pt-mysql-summary</code>, <code>pt-mongodb-summary</code>, <code>pt-pg-summary</code> outputs (in API and on Dashboards).</li>
+<li><a href="https://jira.percona.com/browse/PMM-4172">PMM-4172</a>, <a href="https://jira.percona.com/browse/PMM-4306">PMM-4306</a>, <a href="https://jira.percona.com/browse/PMM-5784">PMM-5784</a>, <a href="https://jira.percona.com/browse/PMM-7177">PMM-7177</a>: Services and Nodes Summary presentation. Present information about DB's and Node status using <code>pt-mysql-summary</code>, <code>pt-mongodb-summary</code>, <code>pt-pg-summary</code> outputs (in API and on Dashboards).</li>
 <li><a href="https://jira.percona.com/browse/PMM-7123">PMM-7123</a>: Ability to add External Services via the UI in PMM server.</li>
 <li><a href="https://jira.percona.com/browse/PMM-6711">PMM-6711</a>: Add <code>external-group</code> flag for <code>pmm-admin inventory</code> commands for simpler work with External services.</li>
 <li><a href="https://jira.percona.com/browse/PMM-7405">PMM-7405</a>: Check connection response format when adding External Service to monitoring.</li>
@@ -175,39 +175,39 @@
 <li><a href="https://jira.percona.com/browse/PMM-7487">PMM-7487</a>: HAProxy monitoring: Check connection to HAProxy services when adding them for monitoring.</li>
 <li><a href="https://jira.percona.com/browse/PMM-7496">PMM-7496</a>: HAProxy monitoring: New HAProxy PXC dashboards.</li>
 <li><a href="https://jira.percona.com/browse/PMM-6943">PMM-6943</a>: HAProxy monitoring: Show HAProxy type services in PMM Inventory.</li>
-<li><a href="https://jira.percona.com/browse/PMM-6924">PMM-6924</a>: Integrated Alerting: Show &lsquo;breadcrumbs&rsquo; navigation aid on non-dashboard pages as well as Grafana dashboard pages.</li>
+<li><a href="https://jira.percona.com/browse/PMM-6924">PMM-6924</a>: Integrated Alerting: Show 'breadcrumbs' navigation aid on non-dashboard pages as well as Grafana dashboard pages.</li>
 <li><a href="https://jira.percona.com/browse/PMM-7294">PMM-7294</a>: Integrated Alerting: Pagination for viewing large numbers of Alert Rules.</li>
 <li><a href="https://jira.percona.com/browse/PMM-7417">PMM-7417</a>: Security Threat Tool: Show list of all available security checks.</li>
 <li><a href="https://jira.percona.com/browse/PMM-7418">PMM-7418</a>: Security Threat Tool: Ability to disable specific security checks.</li>
 <li><a href="https://jira.percona.com/browse/PMM-7419">PMM-7419</a>: DBaaS: Ability to see DB Cluster creation/modification logs.</li>
-<li><a href="https://jira.percona.com/browse/PMM-7266">PMM-7266</a>: DBaaS: Cluster creation progress bar &ndash; You can now see the progress of DBaaS DB cluster creation. (The progress bar is based on the number of back-end technical steps, not the time required to perform the tasks.)</li>
+<li><a href="https://jira.percona.com/browse/PMM-7266">PMM-7266</a>: DBaaS: Cluster creation progress bar -- You can now see the progress of DBaaS DB cluster creation. (The progress bar is based on the number of back-end technical steps, not the time required to perform the tasks.)</li>
 </ul>
-<h2 id="improvements">Improvements<a class="headerlink" href="#improvements" title="Permanent link">&para;</a></h2>
+<h2 id="improvements">Improvements</h2>
 <ul>
 <li><a href="https://jira.percona.com/browse/PMM-4679">PMM-4679</a>: Docker: <code>:latest</code> tag for <code>pmm-server</code> and <code>pmm-client</code> images has been moved from v1 latest release to v2 latest release.  <strong>Note</strong>: use of the latest tag is not recommended in production environments, instead use <code>:2</code> tag.</li>
-<li><a href="https://jira.percona.com/browse/PMM-7472">PMM-7472</a>: Remove Prometheus data source &ndash; If you were using custom dashboards with a specified data source (not using empty to use default one) you may need to edit your dashboards to use the proper data source. PMM is no longer using Prometheus but uses compatible storage for metrics from VictoriaMetrics. We renamed the data source to be more technology-agnostic.</li>
-<li><a href="https://jira.percona.com/browse/PMM-6695">PMM-6695</a>: Software update: Grafana 7.1.3 to 7.3.7 (See <a href="https://grafana.com/docs/grafana/latest/whatsnew/whats-new-in-v7-2">What&rsquo;s new in Grafana 7.2</a> and <a href="https://grafana.com/docs/grafana/latest/whatsnew/whats-new-in-v7-3/">What&rsquo;s new in Grafana 7.3</a>.)</li>
+<li><a href="https://jira.percona.com/browse/PMM-7472">PMM-7472</a>: Remove Prometheus data source -- If you were using custom dashboards with a specified data source (not using empty to use default one) you may need to edit your dashboards to use the proper data source. PMM is no longer using Prometheus but uses compatible storage for metrics from VictoriaMetrics. We renamed the data source to be more technology-agnostic.</li>
+<li><a href="https://jira.percona.com/browse/PMM-6695">PMM-6695</a>: Software update: Grafana 7.1.3 to 7.3.7 (See <a href="https://grafana.com/docs/grafana/latest/whatsnew/whats-new-in-v7-2">What's new in Grafana 7.2</a> and <a href="https://grafana.com/docs/grafana/latest/whatsnew/whats-new-in-v7-3/">What's new in Grafana 7.3</a>.)</li>
 <li><a href="https://jira.percona.com/browse/PMM-7471">PMM-7471</a>: Software update: VictoriaMetrics 1.52.0 to 1.53.1 (See <a href="https://github.com/VictoriaMetrics/VictoriaMetrics/releases/tag/v1.53.0">VictoriaMetrics 1.53.0</a> and <a href="https://github.com/VictoriaMetrics/VictoriaMetrics/releases/tag/v1.53.1">VictoriaMetrics 1.53.1</a>.)</li>
-<li><a href="https://jira.percona.com/browse/PMM-6693">PMM-6693</a>: API keys usage &ndash; PMM users can now use API keys (generated in Grafana UI) for interaction with PMM server instead of username/password pairs. The API key should have the same level of access (Admin or Viewer) as is required for username/password pairs.</li>
-<li><a href="https://jira.percona.com/browse/PMM-7240">PMM-7240</a>: DBaaS: Change from Dashboard to Grafana Page &ndash; We changed the DBaaS page from a Grafana Dashboard to a Grafana Page to be better aligned with the DBaaS enable/disable status and avoid confusion when DBaaS is disabled.</li>
-<li><a href="https://jira.percona.com/browse/PMM-7328">PMM-7328</a>: Security Threat Tool: Download and run checks when activated, immediately, repeating every 24 hours thereafter (Previously, downloading and running new checks happened every 24 hours but the cycle didn&rsquo;t begin when STT was activated.)</li>
+<li><a href="https://jira.percona.com/browse/PMM-6693">PMM-6693</a>: API keys usage -- PMM users can now use API keys (generated in Grafana UI) for interaction with PMM server instead of username/password pairs. The API key should have the same level of access (Admin or Viewer) as is required for username/password pairs.</li>
+<li><a href="https://jira.percona.com/browse/PMM-7240">PMM-7240</a>: DBaaS: Change from Dashboard to Grafana Page -- We changed the DBaaS page from a Grafana Dashboard to a Grafana Page to be better aligned with the DBaaS enable/disable status and avoid confusion when DBaaS is disabled.</li>
+<li><a href="https://jira.percona.com/browse/PMM-7328">PMM-7328</a>: Security Threat Tool: Download and run checks when activated, immediately, repeating every 24 hours thereafter (Previously, downloading and running new checks happened every 24 hours but the cycle didn't begin when STT was activated.)</li>
 <li><a href="https://jira.percona.com/browse/PMM-7329">PMM-7329</a>: Security Threat Tool: Hide check results tab if STT is disabled.</li>
-<li><a href="https://jira.percona.com/browse/PMM-7331">PMM-7331</a>: Security Threat Tool: Failed checks have &lsquo;Read more&rsquo; links with helpful content.</li>
+<li><a href="https://jira.percona.com/browse/PMM-7331">PMM-7331</a>: Security Threat Tool: Failed checks have 'Read more' links with helpful content.</li>
 <li><a href="https://jira.percona.com/browse/PMM-7422">PMM-7422</a>: Security Threat Tool: View all active and silenced alerts.</li>
 <li><a href="https://jira.percona.com/browse/PMM-7257">PMM-7257</a>, <a href="https://jira.percona.com/browse/PMM-7433">PMM-7433</a>: Integrated Alerting: Easier-to-read rule details in Alert Rules list (API and UI presentation).</li>
 <li><a href="https://jira.percona.com/browse/PMM-7259">PMM-7259</a>: Integrated Alerting: Better UI error reporting for disabled Integrated Alerting. (Hint to users how to enable it.)</li>
 <li><a href="https://jira.percona.com/browse/PMM-5533">PMM-5533</a>: Better indentation of columns in <code>pmm-admin list</code> output.</li>
 <li><a href="https://jira.percona.com/browse/PMM-5888">PMM-5888</a>: Improve <code>pmm-admin --help</code> descriptions for external services.</li>
 </ul>
-<h2 id="bugs-fixed">Bugs Fixed<a class="headerlink" href="#bugs-fixed" title="Permanent link">&para;</a></h2>
+<h2 id="bugs-fixed">Bugs Fixed</h2>
 <ul>
-<li><a href="https://jira.percona.com/browse/PMM-5837">PMM-5837</a>: <code>pmm-agent</code> reports &ldquo;Malformed DSN&rdquo; error when adding PostgreSQL instance with a PMM user password containing <code>=</code> (equals sign) (Thanks to Alexandre Barth for reporting this issue).</li>
+<li><a href="https://jira.percona.com/browse/PMM-5837">PMM-5837</a>: <code>pmm-agent</code> reports "Malformed DSN" error when adding PostgreSQL instance with a PMM user password containing <code>=</code> (equals sign) (Thanks to Alexandre Barth for reporting this issue).</li>
 <li><a href="https://jira.percona.com/browse/PMM-5969">PMM-5969</a>: Removing Services or Nodes with <code>pmm-admin ... --force</code> mode does not stop running agents, VictoriaMetrics continues collecting data from exporters.</li>
-<li><a href="https://jira.percona.com/browse/PMM-6685">PMM-6685</a>: In low screen resolutions Services submenu wraps, becomes obscured, and can&rsquo;t be accessed.</li>
+<li><a href="https://jira.percona.com/browse/PMM-6685">PMM-6685</a>: In low screen resolutions Services submenu wraps, becomes obscured, and can't be accessed.</li>
 <li><a href="https://jira.percona.com/browse/PMM-6681">PMM-6681</a>: Not all PMM admin users can download diagnostic logs, only those with Grafana admin rights.</li>
 <li><a href="https://jira.percona.com/browse/PMM-7227">PMM-7227</a>: Table stats metrics not being collected in instances with millions of tables.</li>
-<li><a href="https://jira.percona.com/browse/PMM-7426">PMM-7426</a>: <code>vmagent</code> continually restarts, blocking comms between <code>pmm-agent</code> &amp; <code>pmm-managed</code> &ndash; Users running multiple services on the same PMM agent in &lsquo;push&rsquo; mode could face this issue when restarting the agent after bulk-adding services.</li>
-<li><a href="https://jira.percona.com/browse/PMM-6636">PMM-6636</a>: Dashboards: MySQL Replication Summary: &lsquo;Binlog Size&rsquo;, &lsquo;Binlog Data Written Hourly&rsquo;, &lsquo;Node&rsquo; not being charted when the instance is RDS.</li>
+<li><a href="https://jira.percona.com/browse/PMM-7426">PMM-7426</a>: <code>vmagent</code> continually restarts, blocking comms between <code>pmm-agent</code> &amp; <code>pmm-managed</code> -- Users running multiple services on the same PMM agent in 'push' mode could face this issue when restarting the agent after bulk-adding services.</li>
+<li><a href="https://jira.percona.com/browse/PMM-6636">PMM-6636</a>: Dashboards: MySQL Replication Summary: 'Binlog Size', 'Binlog Data Written Hourly', 'Node' not being charted when the instance is RDS.</li>
 <li><a href="https://jira.percona.com/browse/PMM-7325">PMM-7325</a>: Dashboards: MySQL User Details: user labels unreadable with high number (&gt;20) of users (Thanks to Andrei Fedorov for reporting this issue).</li>
 <li><a href="https://jira.percona.com/browse/PMM-7416">PMM-7416</a>: Dashboards: PostgreSQL Instance Summary: Some panels (e.g. Tuple) not using selected database.</li>
 <li><a href="https://jira.percona.com/browse/PMM-7235">PMM-7235</a>: Integrated Alerting: Filtered out alerts are shown in the UI as firing.</li>
@@ -217,7 +217,7 @@
 <li><a href="https://jira.percona.com/browse/PMM-7467">PMM-7467</a>: Integrated Alerting: <code>&lt;</code> (less-than symbol) wrongly interpreted by Alert templates (as <code>&amp;lt;</code>).</li>
 <li><a href="https://jira.percona.com/browse/PMM-7591">PMM-7591</a>: Integrated Alerting: User can not receive notifications on email after password update.</li>
 <li><a href="https://jira.percona.com/browse/PMM-7343">PMM-7343</a>: Security Threat Tool: Check results show previously failed checks after STT re-enabled.</li>
-<li><a href="https://jira.percona.com/browse/PMM-7250">PMM-7250</a>: DBaaS: Confusing error &ldquo;Cannot get PSMDB/PXC cluster&rdquo; appears after removing DB cluster.</li>
+<li><a href="https://jira.percona.com/browse/PMM-7250">PMM-7250</a>: DBaaS: Confusing error "Cannot get PSMDB/PXC cluster" appears after removing DB cluster.</li>
 <li><a href="https://jira.percona.com/browse/PMM-7193">PMM-7193</a>: DBaaS: Number of Nodes can be set as float.</li>
 <li><a href="https://jira.percona.com/browse/PMM-7349">PMM-7349</a>: DBaaS: Host and Password occasionally disappearing from Connection column.</li>
 </ul>
@@ -578,11 +578,19 @@
 
 
 
-
-<li class="toctree-l2">
-    <a class="reference internal" href="../details/develop-checks.html">Developing Advisors</a>
+</ul>
 
 
+
+
+
+<li class="toctree-l1">
+    <a class="reference internal" href="../details/develop-checks.html">Developing Advisor checks</a>
+
+
+
+
+<ul class="toctree" id="toctree">
 
 
 <li class="toctree-l2">

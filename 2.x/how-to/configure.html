@@ -115,10 +115,10 @@
 
                 <div class="bodywrapper">
                     <div class="body">
-                        <h1 id="configure">Configure<a class="headerlink" href="#configure" title="Permanent link">&para;</a></h1>
+                        <h1 id="configure">Configure</h1>
 <p>The <em>Settings</em> page is where you configure PMM.</p>
 <p>Open the <em>Settings</em> page from the <a href="../details/interface.html#main-menu">main menu</a> with <i class="uil uil-cog"></i> <em>Configuration</em> → <i class="uil uil-setting"></i> <em>Settings</em>. The page opens with the <em>Metrics Resolution</em> settings tab selected.</p>
-<p><div class="lightgallery"><a data-sub-html="image" href="../_images/PMM_Settings_Metrics_Resolution.jpg"><img alt="image" src="../_images/PMM_Settings_Metrics_Resolution.jpg" /></a></div></p>
+<p><img alt="!image" src="../_images/PMM_Settings_Metrics_Resolution.jpg" /></p>
 <p>On the left are the selector tabs:</p>
 <ul>
 <li><a href="#configure">Configure</a></li>
@@ -153,25 +153,20 @@
 </ul>
 </li>
 </ul>
-<div class="admonition hint alert alert-success">
-<p class="admonition-title">Tip</p>
-<p>Click <em>Apply changes</em> to save any changes made here.</p>
-</div>
-<h2 id="diagnostics">Diagnostics<a class="headerlink" href="#diagnostics" title="Permanent link">&para;</a></h2>
+<p>!!! hint alert alert-success "Tip"
+    Click <em>Apply changes</em> to save any changes made here.</p>
+<h2 id="diagnostics">Diagnostics</h2>
 <p>On all tabs is a <em>Diagnostics</em> section (top-right). Click <em>Download server diagnostics</em> to retrieve PMM diagnostics data which can be examined and/or shared with our support team should you need help.</p>
-<h2 id="metrics-resolution">Metrics resolution<a class="headerlink" href="#metrics-resolution" title="Permanent link">&para;</a></h2>
+<h2 id="metrics-resolution">Metrics resolution</h2>
 <p>Metrics are collected at three intervals representing low, medium and high resolutions.</p>
 <p>The <em>Metrics Resolution</em> settings tab contains a radio button with three fixed presets (<em>Rare</em>, <em>Standard</em> and <em>Frequent</em>) and one editable custom preset (<em>Custom</em>).</p>
-<p><div class="lightgallery"><a data-sub-html="image" href="../_images/PMM_Settings_Metrics_Resolution.jpg"><img alt="image" src="../_images/PMM_Settings_Metrics_Resolution.jpg" /></a></div></p>
+<p><img alt="!image" src="../_images/PMM_Settings_Metrics_Resolution.jpg" /></p>
 <p>Each preset is a group of low, medium and high resolutions. The values are in seconds.</p>
-<div class="admonition note alert alert-primary">
-<p class="admonition-title">Time intervals and resolutions</p>
-<p>Short time intervals are <em>high</em> resolution metrics. Longer time intervals are <em>low</em> resolution. So:</p>
-<ul>
-<li>A low resolution interval <em>increases</em> the time between collection, resulting in low-resolution metrics and lower disk usage.</li>
-<li>A high resolution interval <em>decreases</em> the time between collection, resulting in high-resolution metrics and higher disk usage.</li>
-</ul>
-</div>
+<p>!!! note alert alert-primary "Time intervals and resolutions"
+    Short time intervals are <em>high</em> resolution metrics. Longer time intervals are <em>low</em> resolution. So:</p>
+<pre><code>- A low resolution interval *increases* the time between collection, resulting in low-resolution metrics and lower disk usage.
+- A high resolution interval *decreases* the time between collection, resulting in high-resolution metrics and higher disk usage.
+</code></pre>
 <p>The default values (in seconds) for the fixed presets and their resolution names are:</p>
 <table class="table">
 <thead>
@@ -215,14 +210,13 @@
 </tbody>
 </table>
 <p>Values for the <em>Custom</em> preset can be entered as values, or changed with the arrows.</p>
-<div class="admonition note alert alert-primary">
-<p>If there is poor network connectivity between PMM Server and PMM Client, or between PMM Client and the database server being monitored, scraping every second may not be possible when the network latency is greater than 1 second.</p>
-</div>
-<h2 id="advanced-settings">Advanced Settings<a class="headerlink" href="#advanced-settings" title="Permanent link">&para;</a></h2>
-<p><div class="lightgallery"><a data-sub-html="" href="../_images/PMM_Settings_Advanced_Settings.jpg"><img alt="" src="../_images/PMM_Settings_Advanced_Settings.jpg" /></a></div></p>
-<h3 id="data-retention">Data Retention<a class="headerlink" href="#data-retention" title="Permanent link">&para;</a></h3>
-<p><em>Data retention</em> specifies how long data is stored by PMM Server. By default, time-series data is stored for 30 days. You can adjust the data retention time to balance your system&rsquo;s available disk space with your metrics history requirements.</p>
-<h3 id="telemetry">Telemetry<a class="headerlink" href="#telemetry" title="Permanent link">&para;</a></h3>
+<p>!!! note alert alert-primary ""
+    If there is poor network connectivity between PMM Server and PMM Client, or between PMM Client and the database server being monitored, scraping every second may not be possible when the network latency is greater than 1 second.</p>
+<h2 id="advanced-settings">Advanced Settings</h2>
+<p><img alt="!" src="../_images/PMM_Settings_Advanced_Settings.jpg" /></p>
+<h3 id="data-retention">Data Retention</h3>
+<p><em>Data retention</em> specifies how long data is stored by PMM Server. By default, time-series data is stored for 30 days. You can adjust the data retention time to balance your system's available disk space with your metrics history requirements.</p>
+<h3 id="telemetry">Telemetry</h3>
 <p>The <em>Telemetry</em> switch enables gathering and sending basic <strong>anonymous</strong> data to Percona, which helps us to determine where to focus the development and what is the uptake for each release of PMM. Specifically, gathering this information helps determine if we need to release patches to legacy versions beyond support, determining when supporting a particular version is no longer necessary, and even understanding how the frequency of release encourages or deters adoption.</p>
 <p>The following information is gathered:</p>
 <ul>
@@ -238,95 +232,84 @@
 <p>The Country Code is evaluated from the submitting IP address before being discarded.</p>
 </li>
 <li>
-<p>We do create an &ldquo;instance ID&rdquo; - a random string generated using UUID v4.  This instance ID is generated to distinguish new instances from existing ones, for figuring out instance upgrades.</p>
+<p>We do create an "instance ID" - a random string generated using UUID v4.  This instance ID is generated to distinguish new instances from existing ones, for figuring out instance upgrades.</p>
 </li>
 </ol>
 <p>The first telemetry reporting of a new PMM Server instance is delayed by 24 hours to allow enough time to disable the service for those that do not wish to share any information.</p>
 <p>The landing page for this service, <a href="https://check.percona.com">check.percona.com</a>, explains what this service is.</p>
 <p>Grafana’s <a href="https://grafana.com/docs/grafana/latest/administration/configuration/#reporting-enabled">anonymous usage statistics</a> is not managed by PMM. To activate it, you must change the PMM Server container configuration after each update.</p>
 <p>As well as via the <em>PMM Settings</em> page, you can also disable telemetry with the <code>-e DISABLE_TELEMETRY=1</code> option in your docker run statement for the PMM Server.</p>
-<div class="admonition note alert alert-primary">
-<p>Telemetry is sent straight away; the 24 hour grace period is not honored.</p>
-</div>
-<h3 id="check-for-updates">Check for updates<a class="headerlink" href="#check-for-updates" title="Permanent link">&para;</a></h3>
+<p>!!! note alert alert-primary ""</p>
+<pre><code>Telemetry is sent straight away; the 24 hour grace period is not honored.
+</code></pre>
+<h3 id="check-for-updates">Check for updates</h3>
 <p>When active, PMM will automatically check for updates and put a notification in the home page <em>Updates</em> dashboard if any are available.</p>
-<h3 id="advisors">Advisors<a class="headerlink" href="#advisors" title="Permanent link">&para;</a></h3>
+<h3 id="advisors">Advisors</h3>
 <p>Advisors are sets of checks grouped by functionality that run a range of database health checks on a registered instance. </p>
 <p>The findings are reported on the <strong>Advisors &gt; Failed Checks</strong> page, and an overview is displayed on the Dashboard in the Failed Advisor Checks panel.<br />
 By default, the Advisors option is disabled. </p>
 <p>Checks are refetched and rerun at intervals. </p>
 <p>See <a href="advisors.html">Working with Advisor checks</a>. </p>
-<h2 id="public-address">Public address<a class="headerlink" href="#public-address" title="Permanent link">&para;</a></h2>
+<h2 id="public-address">Public address</h2>
 <p>The address or hostname PMM Server will be accessible at. Click <strong>Get from browser</strong> to have your browser detect and populate this field automatically.</p>
-<h3 id="dbaas">DBaaS<a class="headerlink" href="#dbaas" title="Permanent link">&para;</a></h3>
-<div class="admonition caution alert alert-warning">
-<p class="admonition-title">Caution</p>
-<p>DBaaS functionality is a technical preview that must be turned on with a server feature flag. See <a href="../setting-up/server/dbaas.html">DBaaS</a>.</p>
-</div>
+<h3 id="dbaas">DBaaS</h3>
+<p>!!! caution alert alert-warning "Caution"
+    DBaaS functionality is a technical preview that must be turned on with a server feature flag. See <a href="../setting-up/server/dbaas.html">DBaaS</a>.</p>
 <p>Enables/disables <a href="../using/dbaas.html">DBaaS features</a> on this server.</p>
-<div class="admonition caution alert alert-warning">
-<p class="admonition-title">Important</p>
-<p>Deactivating DBaaS <strong><em>does not</em></strong> suspend or remove running DB clusters.</p>
-</div>
-<h3 id="integrated-alerting">Integrated Alerting<a class="headerlink" href="#integrated-alerting" title="Permanent link">&para;</a></h3>
+<p>!!! caution alert alert-warning "Important"
+    Deactivating DBaaS <strong><em>does not</em></strong> suspend or remove running DB clusters.</p>
+<h3 id="integrated-alerting">Integrated Alerting</h3>
 <p>Enables <a href="../using/alerting.html">Integrated Alerting</a> and reveals the <a href="#communication">Communication</a> tab.</p>
-<h3 id="microsoft-azure-monitoring">Microsoft Azure Monitoring<a class="headerlink" href="#microsoft-azure-monitoring" title="Permanent link">&para;</a></h3>
-<div class="admonition caution alert alert-warning">
-<p class="admonition-title">Caution</p>
-<p>This is a technical preview feature.</p>
-</div>
+<h3 id="microsoft-azure-monitoring">Microsoft Azure Monitoring</h3>
+<p>!!! caution alert alert-warning "Caution"
+    This is a technical preview feature.</p>
 <p>Activates Microsoft Azure monitoring.</p>
-<h3 id="public-address-1">Public Address<a class="headerlink" href="#public-address-1" title="Permanent link">&para;</a></h3>
+<h3 id="public-address-public-address-1">Public Address {: #public-address-1 }</h3>
 <p>Public address for accessing DBaaS features on this server.</p>
-<h2 id="ssh-key">SSH Key<a class="headerlink" href="#ssh-key" title="Permanent link">&para;</a></h2>
+<h2 id="ssh-key">SSH Key</h2>
 <p>This section lets you upload your public SSH key to access the PMM Server via SSH (for example, when accessing PMM Server as a <a href="../setting-up/server/virtual-appliance.html">virtual appliance</a>).</p>
-<p><div class="lightgallery"><a data-sub-html="" href="../_images/PMM_Settings_SSH_Key.jpg"><img alt="" src="../_images/PMM_Settings_SSH_Key.jpg" /></a></div></p>
+<p><img alt="!" src="../_images/PMM_Settings_SSH_Key.jpg" /></p>
 <p>Enter your <strong>public key</strong> in the <em>SSH Key</em> field and click <em>Apply SSH Key</em>.</p>
-<h2 id="alertmanager-integration">Alertmanager integration<a class="headerlink" href="#alertmanager-integration" title="Permanent link">&para;</a></h2>
+<h2 id="alertmanager-integration">Alertmanager integration</h2>
 <p>Alertmanager manages alerts, de-duplicating, grouping, and routing them to the appropriate receiver or display component.</p>
 <p>This section lets you configure integration of VictoriaMetrics with an external Alertmanager.</p>
-<div class="admonition hint alert alert-success">
-<p class="admonition-title">Tip</p>
-<p>If possible, use <a href="../using/alerting.html">Integrated Alerting</a> instead of Alertmanager.</p>
-</div>
+<p>!!! hint alert alert-success "Tip"
+    If possible, use <a href="../using/alerting.html">Integrated Alerting</a> instead of Alertmanager.</p>
 <ul>
 <li>The <em>Alertmanager URL</em> field should contain the URL of the Alertmanager which would serve your PMM alerts.</li>
 <li>The <em>Prometheus Alerting rules</em> field is used to specify alerting rules in the YAML configuration format.</li>
 </ul>
-<p><div class="lightgallery"><a data-sub-html="" href="../_images/PMM_Settings_Alertmanager_Integration.jpg"><img alt="" src="../_images/PMM_Settings_Alertmanager_Integration.jpg" /></a></div></p>
+<p><img alt="!" src="../_images/PMM_Settings_Alertmanager_Integration.jpg" /></p>
 <p>Fill both fields and click the <em>Apply Alertmanager settings</em> button to proceed.</p>
-<h2 id="percona-platform">Percona Platform<a class="headerlink" href="#percona-platform" title="Permanent link">&para;</a></h2>
+<h2 id="percona-platform">Percona Platform</h2>
 <p>This panel is where you connect your PMM server to your Percona Platform Account.</p>
-<div class="admonition note alert alert-primary">
-<p>Your Percona Platform Account is separate from your PMM User account.</p>
-</div>
-<h3 id="connect-pmm-to-percona-platform">Connect PMM to Percona Platform<a class="headerlink" href="#connect-pmm-to-percona-platform" title="Permanent link">&para;</a></h3>
+<p>!!! note alert alert-primary ""
+    Your Percona Platform Account is separate from your PMM User account.</p>
+<h3 id="connect-pmm-to-percona-platform">Connect PMM to Percona Platform</h3>
 <p>To learn how to connect your PMM servers to Percona Platform and leverage Platform services that boost the monitoring capabilities of your PMM installations, see <a href="integrate-platform.html">Integrate PMM with Percona Platform</a>. </p>
-<h3 id="password-reset">Password Reset<a class="headerlink" href="#password-reset" title="Permanent link">&para;</a></h3>
-<h4 id="password-forgotten">Password Forgotten<a class="headerlink" href="#password-forgotten" title="Permanent link">&para;</a></h4>
+<h3 id="password-reset">Password Reset</h3>
+<h4 id="password-forgotten">Password Forgotten</h4>
 <p>In case you forgot your password, click on the <em>Forgot password</em> link on the login page.</p>
 <p>You will be redirected to a password reset page. Enter the email you are registered with in the field and click on <em>Reset via Email</em>.</p>
-<p><div class="lightgallery"><a data-sub-html="image" href="../_images/PMM_Settings_Percona_Platform_Password_Reset.jpg"><img alt="image" src="../_images/PMM_Settings_Percona_Platform_Password_Reset.jpg" /></a></div></p>
+<p><img alt="!image" src="../_images/PMM_Settings_Percona_Platform_Password_Reset.jpg" /></p>
 <p>An email with a link to reset your password will be sent to you.</p>
-<h4 id="change-password-after-login">Change Password after Login<a class="headerlink" href="#change-password-after-login" title="Permanent link">&para;</a></h4>
+<h4 id="change-password-after-login">Change Password after Login</h4>
 <p>If you did not forget your password but you still want to change it, go to <a href="https://okta.percona.com/enduser/settings">https://okta.percona.com/enduser/settings</a> (make sure you are logged in).</p>
-<p><div class="lightgallery"><a data-sub-html="image" href="../_images/PMM_Settings_Percona_Platform_Password_Reset_Okta.jpg"><img alt="image" src="../_images/PMM_Settings_Percona_Platform_Password_Reset_Okta.jpg" /></a></div></p>
+<p><img alt="!image" src="../_images/PMM_Settings_Percona_Platform_Password_Reset_Okta.jpg" /></p>
 <p>Insert you current password and the new password in the form to the bottom right of the page. If you cannot see the form, you will need to click on the <em>Edit Profile</em> green button (you will be prompted for you password).</p>
 <p>Click on <em>Change Password</em>. If everything goes well, you will see a confirmation message.</p>
-<h2 id="communication">Communication<a class="headerlink" href="#communication" title="Permanent link">&para;</a></h2>
+<h2 id="communication">Communication</h2>
 <p>Global communications settings for <a href="../using/alerting.html">Integrated Alerting</a>.</p>
-<div class="admonition hint alert alert-success">
-<p class="admonition-title">Tip</p>
-<p>If there is no <em>Communication</em> tab, go to the <em>Advanced Settings</em> tab and activate <em>Integrated Alerting</em>.</p>
-</div>
-<p><div class="lightgallery"><a data-sub-html="" href="../_images/PMM_Settings_Communication.jpg"><img alt="" src="../_images/PMM_Settings_Communication.jpg" /></a></div></p>
+<p>!!! hint alert alert-success "Tip"
+    If there is no <em>Communication</em> tab, go to the <em>Advanced Settings</em> tab and activate <em>Integrated Alerting</em>.</p>
+<p><img alt="!" src="../_images/PMM_Settings_Communication.jpg" /></p>
 <p>(Integrated Alerting uses a separate instance of Alertmanager run by <code>pmm-managed</code>.)</p>
-<h3 id="email">Email<a class="headerlink" href="#email" title="Permanent link">&para;</a></h3>
+<h3 id="email">Email</h3>
 <p>Settings for the SMTP email server:</p>
 <ul>
 <li><em>Server Address</em>: The default SMTP smarthost used for sending emails, including port number.</li>
 <li><em>Hello</em>: The default hostname to identify to the SMTP server.</li>
-<li><em>From</em>: The sender&rsquo;s email address.</li>
+<li><em>From</em>: The sender's email address.</li>
 <li><em>Auth type</em>: Authentication type. Choose from:<ul>
 <li><em>None</em></li>
 <li><em>Plain</em></li>
@@ -338,16 +321,14 @@ By default, the Advisors option is disabled. </p>
 <li><em>Password</em>: SMTP Auth using CRAM-MD5, LOGIN and PLAIN.
 After setting up the SMTP server, click <em>Test</em> to confirm that you can connect to the server with the current settings.</li>
 </ul>
-<h3 id="slack">Slack<a class="headerlink" href="#slack" title="Permanent link">&para;</a></h3>
-<p><div class="lightgallery"><a data-sub-html="" href="../_images/PMM_Settings_Communication_Slack.png"><img alt="" src="../_images/PMM_Settings_Communication_Slack.png" /></a></div></p>
+<h3 id="slack">Slack</h3>
+<p><img alt="!" src="../_images/PMM_Settings_Communication_Slack.png" /></p>
 <p>Settings for Slack notifications:</p>
 <ul>
 <li><em>URL</em>: The Slack webhook URL to use for Slack notifications.</li>
 </ul>
-<div class="admonition seealso alert alert-info">
-<p class="admonition-title">See also</p>
-<p><a href="https://prometheus.io/docs/alerting/latest/configuration/">Prometheus Alertmanager configuration</a></p>
-</div>
+<p>!!! seealso alert alert-info "See also"
+    <a href="https://prometheus.io/docs/alerting/latest/configuration/">Prometheus Alertmanager configuration</a></p>
                     </div>
                 </div>
                 
@@ -705,11 +686,19 @@ After setting up the SMTP server, click <em>Test</em> to confirm that you can co
 
 
 
-
-<li class="toctree-l2">
-    <a class="reference internal" href="../details/develop-checks.html">Developing Advisors</a>
+</ul>
 
 
+
+
+
+<li class="toctree-l1">
+    <a class="reference internal" href="../details/develop-checks.html">Developing Advisor checks</a>
+
+
+
+
+<ul class="toctree" id="toctree">
 
 
 <li class="toctree-l2">

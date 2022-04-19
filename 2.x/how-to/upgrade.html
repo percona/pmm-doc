@@ -115,18 +115,16 @@
 
                 <div class="bodywrapper">
                     <div class="body">
-                        <h1 id="upgrade">Upgrade<a class="headerlink" href="#upgrade" title="Permanent link">&para;</a></h1>
-<div class="admonition caution alert alert-warning">
-<p class="admonition-title">Important</p>
-</div>
+                        <h1 id="upgrade">Upgrade</h1>
+<p>!!! caution alert alert-warning "Important"</p>
 <p>Upgrade the PMM Server before you upgrade the PMM Client.
 Ensure that the PMM Server version is higher than or equal to the PMM Client version. Otherwise, there might be configuration issues, thus leading to failure in the client-server communication as PMM Server might not be able to identify all the parameters in the configuration.</p>
 <p>For example, for a PMM Server version 2.25.0, the PMM Client version should be 2.25.0 or 2.24.0. If the PMM Client version is 2.26.0, PMM might not work as expected.</p>
-<h2 id="updating-a-server">Updating a Server<a class="headerlink" href="#updating-a-server" title="Permanent link">&para;</a></h2>
+<h2 id="updating-a-server">Updating a Server</h2>
 <p>Client and server components are installed and updated separately.</p>
 <p>PMM Server can run natively, as a Docker image, a virtual appliance, or an AWS cloud instance. Each has its own installation and update steps.</p>
 <p>The preferred and simplest way to update PMM Server is with the <em>PMM Upgrade</em> panel on the Home page.</p>
-<p><div class="lightgallery"><a data-sub-html="image" href="../_images/PMM_Home_Dashboard_Panels_Upgrade.jpg"><img alt="image" src="../_images/PMM_Home_Dashboard_Panels_Upgrade.jpg" /></a></div></p>
+<p><img alt="!image" src="../_images/PMM_Home_Dashboard_Panels_Upgrade.jpg" /></p>
 <p>The panel shows:</p>
 <ul>
 <li>the current server version and release date;</li>
@@ -135,22 +133,20 @@ Ensure that the PMM Server version is higher than or equal to the PMM Client ver
 </ul>
 <p>Click the refresh button to manually check for updates.</p>
 <p>If one is available, click the update button to update to the version indicated.</p>
-<div class="admonition seealso alert alert-info">
-<p class="admonition-title">See also</p>
-<p><a href="../setting-up/server/docker.html#upgrade">PMM Server Docker upgrade</a></p>
-</div>
-<h2 id="updating-a-pmm-agent">Updating a PMM-Agent<a class="headerlink" href="#updating-a-pmm-agent" title="Permanent link">&para;</a></h2>
+<p>!!! seealso alert alert-info "See also"
+    <a href="../setting-up/server/docker.html#upgrade">PMM Server Docker upgrade</a></p>
+<h2 id="updating-a-pmm-agent">Updating a PMM-Agent</h2>
 <p>PMM-Agent can be updated from tarball:</p>
 <ol>
 <li>Download tar.gz with pmm2-client.</li>
 <li>Extract it.</li>
-<li>Run ./install_tarball script with the &ldquo;-u&rdquo; flag.</li>
+<li>Run ./install_tarball script with the "-u" flag.</li>
 </ol>
-<p><strong>Hint!</strong> The configuration file will be overwritten if you do not provide the &ldquo;-u&rdquo; flag while the pmm-agent is updated.</p>
-<h2 id="upgrade-from-pmm-1">Upgrade from PMM 1<a class="headerlink" href="#upgrade-from-pmm-1" title="Permanent link">&para;</a></h2>
+<p><strong>Hint!</strong> The configuration file will be overwritten if you do not provide the "-u" flag while the pmm-agent is updated.</p>
+<h2 id="upgrade-from-pmm-1">Upgrade from PMM 1</h2>
 <p>Because of the significant architectural changes between PMM1 and PMM2, there is no direct upgrade path. The approach to making the switch from PMM version 1 to 2 is a gradual transition, outlined <a href="https://www.percona.com/blog/2019/11/27/running-pmm1-and-pmm2-clients-on-the-same-host/">in this blog post</a>.</p>
-<p>In short, it involves first standing up a new PMM2 server on a new host and connecting clients to it. As new data is reported to the PMM2 server, old metrics will age with the retention period (30 days, by default), at which point you&rsquo;ll be able to shut down your existing PMM1 server.</p>
-<p>Any alerts configured through the Grafana UI will have to be recreated due to the target dashboard id&rsquo;s not matching between PMM1 and PMM2.  In this instance we recommend moving to Alertmanager recipes in PMM2 for alerting which, for the time being, requires a separate Alertmanager instance. We are working on integrating this natively into PMM2 Server and expect to support your existing Alertmanager rules.</p>
+<p>In short, it involves first standing up a new PMM2 server on a new host and connecting clients to it. As new data is reported to the PMM2 server, old metrics will age with the retention period (30 days, by default), at which point you'll be able to shut down your existing PMM1 server.</p>
+<p>Any alerts configured through the Grafana UI will have to be recreated due to the target dashboard id's not matching between PMM1 and PMM2.  In this instance we recommend moving to Alertmanager recipes in PMM2 for alerting which, for the time being, requires a separate Alertmanager instance. We are working on integrating this natively into PMM2 Server and expect to support your existing Alertmanager rules.</p>
                     </div>
                 </div>
                 
@@ -508,11 +504,19 @@ Ensure that the PMM Server version is higher than or equal to the PMM Client ver
 
 
 
-
-<li class="toctree-l2">
-    <a class="reference internal" href="../details/develop-checks.html">Developing Advisors</a>
+</ul>
 
 
+
+
+
+<li class="toctree-l1">
+    <a class="reference internal" href="../details/develop-checks.html">Developing Advisor checks</a>
+
+
+
+
+<ul class="toctree" id="toctree">
 
 
 <li class="toctree-l2">

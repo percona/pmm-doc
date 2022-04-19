@@ -115,7 +115,7 @@
 
                 <div class="bodywrapper">
                     <div class="body">
-                        <h1 id="percona-monitoring-and-management-2130">Percona Monitoring and Management 2.13.0<a class="headerlink" href="#percona-monitoring-and-management-2130" title="Permanent link">&para;</a></h1>
+                        <h1 id="percona-monitoring-and-management-2130">Percona Monitoring and Management 2.13.0</h1>
 <table class="docutils field-list" frame="void" rules="none">
   <colgroup>
     <col class="field-name">
@@ -135,7 +135,7 @@
 </table>
 
 <p>Percona Monitoring and Management (PMM) is a free and open-source platform for managing and monitoring MySQL, MongoDB, and PostgreSQL performance.</p>
-<h2 id="release-highlights">Release Highlights<a class="headerlink" href="#release-highlights" title="Permanent link">&para;</a></h2>
+<h2 id="release-highlights">Release Highlights</h2>
 <ol>
 <li>
 <p>Ability to monitor SSL-enabled MongoDB</p>
@@ -143,10 +143,8 @@
 </li>
 <li>
 <p>Technical Previews</p>
-<div class="admonition caution alert alert-warning">
-<p class="admonition-title">Caution</p>
-<p>We do not recommend the use of technical preview features in enterprise or production environments until the functionality is released as general availability (GA). While in Technical Preview status, these features are not supported by Percona Support SLA, except by Product/Engineering on a best-efforts basis.</p>
-</div>
+<p>!!! caution alert alert-warning "Caution"
+    We do not recommend the use of technical preview features in enterprise or production environments until the functionality is released as general availability (GA). While in Technical Preview status, these features are not supported by Percona Support SLA, except by Product/Engineering on a best-efforts basis.</p>
 <ol>
 <li>
 <p>Integrated Alerting MVP</p>
@@ -164,21 +162,21 @@
 </ol>
 </li>
 </ol>
-<h2 id="improvements">Improvements<a class="headerlink" href="#improvements" title="Permanent link">&para;</a></h2>
+<h2 id="improvements">Improvements</h2>
 <ul>
 <li><a href="https://jira.percona.com/browse/PMM-5364">PMM-5364</a>: Ability to monitor SSL-enabled MongoDB by passing certificate parameters in <code>pmm-admin add</code> command (Thanks to Hubertus Krogmann for reporting this issue)</li>
 <li><a href="https://jira.percona.com/browse/PMM-7086">PMM-7086</a>: Re-mapped <code>/prometheus/&lt;end-point&gt;</code> to <code>/victoriametrics/&lt;end-point&gt;</code> but created aliases for users that still rely on the <code>/prometheus/&lt;end-point&gt;</code> in bookmarks and scripts (Thanks to Daniel Guzman Burgos for reporting this issue)</li>
 <li><a href="https://jira.percona.com/browse/PMM-6713">PMM-6713</a>: Node Summary/Nodes Overview dashboards: External exporters can now be added to dashboard and shown as part of grouping of a broader service</li>
 <li><a href="https://jira.percona.com/browse/PMM-7173">PMM-7173</a>: VictoriaMetrics updated to 1.50.2: Includes HTML pages vs JSON output and new functions available for alerting rules (<a href="https://github.com/VictoriaMetrics/VictoriaMetrics/releases/tag/v1.50.2">see all tags</a>)</li>
 </ul>
-<h2 id="bugs-fixed">Bugs Fixed<a class="headerlink" href="#bugs-fixed" title="Permanent link">&para;</a></h2>
+<h2 id="bugs-fixed">Bugs Fixed</h2>
 <ul>
 <li><a href="https://jira.percona.com/browse/PMM-7054">PMM-7054</a>: ProxySQL Instance Summary dashboard: no Node Metrics</li>
 <li><a href="https://jira.percona.com/browse/PMM-7092">PMM-7092</a>: PMM Server Docker update from 2.11.1 to 2.12.0 leaves container in unhealthy state (Thanks to Hubertus Krogmann for reporting this issue)</li>
-<li><a href="https://jira.percona.com/browse/PMM-7208">PMM-7208</a>: Confusing &ldquo;Access denied&rdquo; message for &lsquo;Viewer&rsquo; users on many dashboards</li>
+<li><a href="https://jira.percona.com/browse/PMM-7208">PMM-7208</a>: Confusing "Access denied" message for 'Viewer' users on many dashboards</li>
 <li><a href="https://jira.percona.com/browse/PMM-6987">PMM-6987</a>: No IP address shown in log file of OVF appliance running in headless mode</li>
 <li><a href="https://jira.percona.com/browse/PMM-7146">PMM-7146</a>: MongoDB Instance Summary dashboard: <code>ReplSet</code> element showing metric name instead of replication set</li>
-<li><a href="https://jira.percona.com/browse/PMM-6992">PMM-6992</a>: Administrators can&rsquo;t see user&rsquo;s actual IP address in Grafana profile-Preferences-Sessions</li>
+<li><a href="https://jira.percona.com/browse/PMM-6992">PMM-6992</a>: Administrators can't see user's actual IP address in Grafana profile-Preferences-Sessions</li>
 <li><a href="https://jira.percona.com/browse/PMM-6865">PMM-6865</a>: Rendered dashboard images partly obscured by error message</li>
 </ul>
                     </div>
@@ -538,11 +536,19 @@
 
 
 
-
-<li class="toctree-l2">
-    <a class="reference internal" href="../details/develop-checks.html">Developing Advisors</a>
+</ul>
 
 
+
+
+
+<li class="toctree-l1">
+    <a class="reference internal" href="../details/develop-checks.html">Developing Advisor checks</a>
+
+
+
+
+<ul class="toctree" id="toctree">
 
 
 <li class="toctree-l2">

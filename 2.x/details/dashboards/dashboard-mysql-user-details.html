@@ -115,26 +115,23 @@
 
                 <div class="bodywrapper">
                     <div class="body">
-                        <h1 id="mysql-user-details">MySQL User Details<a class="headerlink" href="#mysql-user-details" title="Permanent link">&para;</a></h1>
-<p><div class="lightgallery"><a data-sub-html="image" href="../../_images/PMM_MySQL_User_Details.jpg"><img alt="image" src="../../_images/PMM_MySQL_User_Details.jpg" /></a></div></p>
-<div class="admonition note alert alert-primary">
-<p>This dashboard requires Percona Server for MySQL 5.1+ or MariaDB 10.1/10.2 with XtraDB. Also <code>userstat</code> should be enabled, for example with the <code>SET GLOBAL userstat=1</code> statement. See <a href="../../setting-up/client/mysql.html">Setting up MySQL</a>.</p>
-</div>
+                        <h1 id="mysql-user-details">MySQL User Details</h1>
+<p><img alt="!image" src="../../_images/PMM_MySQL_User_Details.jpg" /></p>
+<p>!!! note alert alert-primary ""
+    This dashboard requires Percona Server for MySQL 5.1+ or MariaDB 10.1/10.2 with XtraDB. Also <code>userstat</code> should be enabled, for example with the <code>SET GLOBAL userstat=1</code> statement. See <a href="../../setting-up/client/mysql.html">Setting up MySQL</a>.</p>
 <p>Data is displayed for the 5 top users.</p>
-<dl>
-<dt>Top Users by Connections Created</dt>
-<dd>The number of times user’s connections connected using SSL to the server.</dd>
-<dt>Top Users by Traffic</dt>
-<dd>The number of bytes sent to the user’s connections.</dd>
-<dt>Top Users by Rows Fetched/Read</dt>
-<dd>The number of rows fetched by the user’s connections.</dd>
-<dt>Top Users by Rows Updated</dt>
-<dd>The number of rows updated by the user’s connections.</dd>
-<dt>Top Users by Busy Time</dt>
-<dd>The cumulative number of seconds there was activity on connections from the user.</dd>
-<dt>Top Users by CPU Time</dt>
-<dd>The cumulative CPU time elapsed, in seconds, while servicing connections of the user.</dd>
-</dl>
+<p>Top Users by Connections Created
+:    The number of times user’s connections connected using SSL to the server.</p>
+<p>Top Users by Traffic
+:    The number of bytes sent to the user’s connections.</p>
+<p>Top Users by Rows Fetched/Read
+:    The number of rows fetched by the user’s connections.</p>
+<p>Top Users by Rows Updated
+:    The number of rows updated by the user’s connections.</p>
+<p>Top Users by Busy Time
+:    The cumulative number of seconds there was activity on connections from the user.</p>
+<p>Top Users by CPU Time
+:    The cumulative CPU time elapsed, in seconds, while servicing connections of the user.</p>
                     </div>
                 </div>
                 
@@ -492,11 +489,19 @@
 
 
 
-
-<li class="toctree-l2">
-    <a class="reference internal" href="../develop-checks.html">Developing Advisors</a>
+</ul>
 
 
+
+
+
+<li class="toctree-l1">
+    <a class="reference internal" href="../develop-checks.html">Developing Advisor checks</a>
+
+
+
+
+<ul class="toctree" id="toctree">
 
 
 <li class="toctree-l2">

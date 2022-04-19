@@ -115,11 +115,11 @@
 
                 <div class="bodywrapper">
                     <div class="body">
-                        <h1 id="api">API<a class="headerlink" href="#api" title="Permanent link">&para;</a></h1>
+                        <h1 id="api">API</h1>
 <p>PMM Server lets you visually interact with API resources representing all objects within PMM. You can browse the API using the <a href="https://swagger.io/tools/swagger-ui/">Swagger</a> UI, accessible at the <code>/swagger/</code> endpoint URL:</p>
-<p><div class="lightgallery"><a data-sub-html="image" href="../_images/PMM_Swagger_API_Get_Logs_View.jpg"><img alt="image" src="../_images/PMM_Swagger_API_Get_Logs_View.jpg" /></a></div></p>
+<p><img alt="!image" src="../_images/PMM_Swagger_API_Get_Logs_View.jpg" /></p>
 <p>Clicking an object lets you examine objects and execute requests on them:</p>
-<p><div class="lightgallery"><a data-sub-html="image" href="../_images/PMM_Swagger_API_Get_Logs_Execute.jpg"><img alt="image" src="../_images/PMM_Swagger_API_Get_Logs_Execute.jpg" /></a></div></p>
+<p><img alt="!image" src="../_images/PMM_Swagger_API_Get_Logs_Execute.jpg" /></p>
 <p>The objects visible are nodes, services, and agents:</p>
 <ul>
 <li>
@@ -134,9 +134,9 @@
 </ul>
 <p>Nodes, Services, and Agents have <strong>Types</strong> which define specific their properties, and their specific logic.</p>
 <p>Nodes and Services are external by nature – we do not manage them (create, destroy), but merely maintain a list of them (add to inventory, remove from inventory) in <code>pmm-managed</code>. Most Agents are started and stopped by <code>pmm-agent</code>. One exception is the External Exporter Type which is started externally.</p>
-<h2 id="api-keys-and-authentication">API Keys and authentication<a class="headerlink" href="#api-keys-and-authentication" title="Permanent link">&para;</a></h2>
+<h2 id="api-keys-and-authentication">API Keys and authentication</h2>
 <p>API keys are used to control access to the PMM server components and resources. With an API key, you are authenticated to the PMM server, have access to PMM server components and resources, and perform various actions on them. You can use API keys as a replacement for basic authentication.</p>
-<h3 id="generate-api-keys">Generate API keys<a class="headerlink" href="#generate-api-keys" title="Permanent link">&para;</a></h3>
+<h3 id="generate-api-keys">Generate API keys</h3>
 <p>PMM uses the Grafana API keys for authentication. Following are the steps to generate the API keys:</p>
 <ol>
 <li>Login to PMM.</li>
@@ -156,15 +156,13 @@
 <p><em>API Key Created</em> window displays your newly created key. Make sure to copy your key and keep it secure. </p>
 </li>
 </ol>
-<h3 id="authenticate">Authenticate<a class="headerlink" href="#authenticate" title="Permanent link">&para;</a></h3>
+<h3 id="authenticate">Authenticate</h3>
 <p>You can authenticate your request using the HTTPS header.</p>
-<div class="admonition caution alert alert-warning">
-<p class="admonition-title">Important</p>
-<p>Use the <code>-k</code> or <code>--insecure</code> parameter to force cURL to ignore invalid and self-signed SSL certificate errors. The option will skip the SSL verification process, and you can bypass any SSL errors while still having SSL-encrypted communication. However, using the <code>--insecure</code>  parameter is not recommended. Although the data transfer is encrypted, it is not entirely secure. For enhanced security of your PMM installation, you need valid SSL certificates. For information on validating SSL certificates, refer to: <a href="../how-to/secure.html">SSL certificates</a>.</p>
-</div>
+<p>!!! caution alert alert-warning "Important"
+    Use the <code>-k</code> or <code>--insecure</code> parameter to force cURL to ignore invalid and self-signed SSL certificate errors. The option will skip the SSL verification process, and you can bypass any SSL errors while still having SSL-encrypted communication. However, using the <code>--insecure</code>  parameter is not recommended. Although the data transfer is encrypted, it is not entirely secure. For enhanced security of your PMM installation, you need valid SSL certificates. For information on validating SSL certificates, refer to: <a href="../how-to/secure.html">SSL certificates</a>.</p>
 <div class="highlight"><pre><span></span><code>curl -H <span class="s2">&quot;Authorization: Bearer &lt;api_key&gt;&quot;</span> https://127.0.0.1/v1/version
 </code></pre></div>
-<h3 id="use-an-api-key-in-basic-auth">Use an API key in basic auth<a class="headerlink" href="#use-an-api-key-in-basic-auth" title="Permanent link">&para;</a></h3>
+<h3 id="use-an-api-key-in-basic-auth">Use an API key in basic auth</h3>
 <p>You can pass the API key into a REST API call as a query parameter in the following format. Replace <code>API_KEY</code> with your API key.</p>
 <p><strong>Example</strong></p>
 <div class="highlight"><pre><span></span><code>curl -X GET https://api_key:API_KEY@localhost/v1/version
@@ -526,11 +524,19 @@
 
 
 
-
-<li class="toctree-l2">
-    <a class="reference internal" href="develop-checks.html">Developing Advisors</a>
+</ul>
 
 
+
+
+
+<li class="toctree-l1">
+    <a class="reference internal" href="develop-checks.html">Developing Advisor checks</a>
+
+
+
+
+<ul class="toctree" id="toctree">
 
 
 <li class="toctree-l2">

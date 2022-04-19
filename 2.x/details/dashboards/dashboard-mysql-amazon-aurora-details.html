@@ -115,9 +115,9 @@
 
                 <div class="bodywrapper">
                     <div class="body">
-                        <h1 id="mysql-amazon-aurora-details">MySQL Amazon Aurora Details<a class="headerlink" href="#mysql-amazon-aurora-details" title="Permanent link">&para;</a></h1>
-<p><div class="lightgallery"><a data-sub-html="image" href="../../_images/PMM_MySQL_Amazon_Aurora_Details_full.jpg"><img alt="image" src="../../_images/PMM_MySQL_Amazon_Aurora_Details_full.jpg" /></a></div></p>
-<h2 id="amazon-aurora-transaction-commits">Amazon Aurora Transaction Commits<a class="headerlink" href="#amazon-aurora-transaction-commits" title="Permanent link">&para;</a></h2>
+                        <h1 id="mysql-amazon-aurora-details">MySQL Amazon Aurora Details</h1>
+<p><img alt="!image" src="../../_images/PMM_MySQL_Amazon_Aurora_Details_full.jpg" /></p>
+<h2 id="amazon-aurora-transaction-commits">Amazon Aurora Transaction Commits</h2>
 <p>This graph shows the number of Commits which Amazon Aurora engine performed as well as average commit latency. Graph Latency does not always correlate with the number of performed commits and can be quite high in certain situations.</p>
 <ul>
 <li>
@@ -127,7 +127,7 @@
 <p><strong>Amazon Aurora Commit avg Latency</strong>: The average amount of latency for commit operations</p>
 </li>
 </ul>
-<h2 id="amazon-aurora-load">Amazon Aurora Load<a class="headerlink" href="#amazon-aurora-load" title="Permanent link">&para;</a></h2>
+<h2 id="amazon-aurora-load">Amazon Aurora Load</h2>
 <p>This graph shows us what statements contribute most load on the system as well as what load corresponds to Amazon Aurora transaction commit.</p>
 <ul>
 <li>
@@ -147,7 +147,7 @@
 </li>
 </ul>
 <p>An <em>active session</em> is a connection that has submitted work to the database engine and is waiting for a response from it. For example, if you submit an SQL query to the database engine, the database session is active while the database engine is processing that query.</p>
-<h2 id="aurora-memory-used">Aurora Memory Used<a class="headerlink" href="#aurora-memory-used" title="Permanent link">&para;</a></h2>
+<h2 id="aurora-memory-used">Aurora Memory Used</h2>
 <p>This graph shows how much memory is used by Amazon Aurora lock manager as well as amount of memory used by Amazon Aurora to store Data Dictionary.</p>
 <ul>
 <li>
@@ -157,7 +157,7 @@
 <p><strong>Aurora Dictionary Memory</strong>: the amount of memory used by the Dictionary, the space that contains metadata used to keep track of database objects, such as tables and indexes.</p>
 </li>
 </ul>
-<h2 id="amazon-aurora-statement-latency">Amazon Aurora Statement Latency<a class="headerlink" href="#amazon-aurora-statement-latency" title="Permanent link">&para;</a></h2>
+<h2 id="amazon-aurora-statement-latency">Amazon Aurora Statement Latency</h2>
 <p>This graph shows average latency for the most important types of statements. Latency spikes are often indicative of the instance overload.</p>
 <ul>
 <li>
@@ -176,7 +176,7 @@
 <p><strong>INSERT Latency</strong>: Average time to execute INSERT queries</p>
 </li>
 </ul>
-<h2 id="amazon-aurora-special-command-counters">Amazon Aurora Special Command Counters<a class="headerlink" href="#amazon-aurora-special-command-counters" title="Permanent link">&para;</a></h2>
+<h2 id="amazon-aurora-special-command-counters">Amazon Aurora Special Command Counters</h2>
 <p>Amazon Aurora MySQL allows a number of commands which are not available in standard MySQL. This graph shows usage of such commands.  Regular <code>unit_test</code> calls can be seen in default Amazon Aurora install, the rest will depend on your workload.</p>
 <ul>
 <li>
@@ -189,7 +189,7 @@
 <p><code>alter_system</code>: The number of executions per second of the special query ALTER SYSTEM, that is a special query to simulate an instance crash, a disk failure, a disk congestion or a replica failure. It’s a useful query for testing the system.</p>
 </li>
 </ul>
-<h2 id="amazon-aurora-problems">Amazon Aurora Problems<a class="headerlink" href="#amazon-aurora-problems" title="Permanent link">&para;</a></h2>
+<h2 id="amazon-aurora-problems">Amazon Aurora Problems</h2>
 <p>This graph shows different kinds of Internal Amazon Aurora MySQL Problems which general should be zero in normal operation.</p>
 <p>Anything non-zero is worth examining in greater depth.</p>
                     </div>
@@ -549,11 +549,19 @@
 
 
 
-
-<li class="toctree-l2">
-    <a class="reference internal" href="../develop-checks.html">Developing Advisors</a>
+</ul>
 
 
+
+
+
+<li class="toctree-l1">
+    <a class="reference internal" href="../develop-checks.html">Developing Advisor checks</a>
+
+
+
+
+<ul class="toctree" id="toctree">
 
 
 <li class="toctree-l2">

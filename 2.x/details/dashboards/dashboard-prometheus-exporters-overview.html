@@ -115,59 +115,48 @@
 
                 <div class="bodywrapper">
                     <div class="body">
-                        <h1 id="prometheus-exporters-overview">Prometheus Exporters Overview<a class="headerlink" href="#prometheus-exporters-overview" title="Permanent link">&para;</a></h1>
-<p><div class="lightgallery"><a data-sub-html="image" href="../../_images/PMM_Prometheus_Exporters_Overview.jpg"><img alt="image" src="../../_images/PMM_Prometheus_Exporters_Overview.jpg" /></a></div></p>
-<h2 id="prometheus-exporters-summary">Prometheus Exporters Summary<a class="headerlink" href="#prometheus-exporters-summary" title="Permanent link">&para;</a></h2>
+                        <h1 id="prometheus-exporters-overview">Prometheus Exporters Overview</h1>
+<p><img alt="!image" src="../../_images/PMM_Prometheus_Exporters_Overview.jpg" /></p>
+<h2 id="prometheus-exporters-summary">Prometheus Exporters Summary</h2>
 <p>This section provides a summary of how exporters are used across the selected hosts. It includes the average usage of CPU and memory as well as the number of hosts being monitored and the total number of running exporters.</p>
-<dl>
-<dt>Avg CPU Usage per Host</dt>
-<dd>Shows the average CPU usage in percent per host for all exporters.</dd>
-<dt>Avg Memory Usage per Host</dt>
-<dd>Shows the Exporters average Memory usage per host.</dd>
-<dt>Monitored Hosts</dt>
-<dd>Shows the number of monitored hosts that are running Exporters.</dd>
-<dt>Exporters Running</dt>
-<dd>Shows the total number of Exporters running with this PMM Server instance.</dd>
-</dl>
-<div class="admonition note alert alert-primary">
-<p>The CPU usage and memory usage do not include the additional CPU and memory usage required to produce metrics by the application or operating system.</p>
-</div>
-<h2 id="prometheus-exporters-resource-usage-by-node">Prometheus Exporters Resource Usage by Node<a class="headerlink" href="#prometheus-exporters-resource-usage-by-node" title="Permanent link">&para;</a></h2>
+<p>Avg CPU Usage per Host
+:   Shows the average CPU usage in percent per host for all exporters.</p>
+<p>Avg Memory Usage per Host
+:   Shows the Exporters average Memory usage per host.</p>
+<p>Monitored Hosts
+:   Shows the number of monitored hosts that are running Exporters.</p>
+<p>Exporters Running
+:  Shows the total number of Exporters running with this PMM Server instance.</p>
+<p>!!! note alert alert-primary ""
+    The CPU usage and memory usage do not include the additional CPU and memory usage required to produce metrics by the application or operating system.</p>
+<h2 id="prometheus-exporters-resource-usage-by-node">Prometheus Exporters Resource Usage by Node</h2>
 <p>This section shows how resources, such as CPU and memory, are being used by the
 exporters for the selected hosts.</p>
-<dl>
-<dt>CPU Usage</dt>
-<dd>Plots the Exporters&rsquo; CPU usage across each monitored host (by default, All hosts).</dd>
-<dt>Memory Usage</dt>
-<dd>Plots the Exporters&rsquo; Memory usage across each monitored host (by default, All hosts).</dd>
-</dl>
-<h2 id="prometheus-exporters-resource-usage-by-type">Prometheus Exporters Resource Usage by Type<a class="headerlink" href="#prometheus-exporters-resource-usage-by-type" title="Permanent link">&para;</a></h2>
+<p>CPU Usage
+:   Plots the Exporters' CPU usage across each monitored host (by default, All hosts).</p>
+<p>Memory Usage
+:   Plots the Exporters' Memory usage across each monitored host (by default, All hosts).</p>
+<h2 id="prometheus-exporters-resource-usage-by-type">Prometheus Exporters Resource Usage by Type</h2>
 <p>This section shows how resources, such as CPU and memory, are being used by the exporters for host types: MySQL, MongoDB, ProxySQL, and the system.</p>
-<dl>
-<dt>CPU Cores Used</dt>
-<dd>Shows the Exporters&rsquo; CPU Cores used for each type of Exporter.</dd>
-<dt>Memory Usage</dt>
-<dd>Shows the Exporters&rsquo; memory used for each type of Exporter.</dd>
-</dl>
-<h2 id="list-of-hosts">List of Hosts<a class="headerlink" href="#list-of-hosts" title="Permanent link">&para;</a></h2>
+<p>CPU Cores Used
+:   Shows the Exporters' CPU Cores used for each type of Exporter.</p>
+<p>Memory Usage
+:   Shows the Exporters' memory used for each type of Exporter.</p>
+<h2 id="list-of-hosts">List of Hosts</h2>
 <p>At the bottom, this dashboard shows details for each running host.</p>
-<dl>
-<dt>CPU Used</dt>
-<dd>Show the CPU usage as a percentage for all Exporters.</dd>
-<dt>Mem Used</dt>
-<dd>Shows total Memory Used by Exporters.</dd>
-<dt>Exporters Running</dt>
-<dd>Shows the number of Exporters running.</dd>
-<dt>RAM</dt>
-<dd>Shows the total amount of RAM of the host.</dd>
-<dt>Virtual CPUs</dt>
-<dd>Shows the total number of virtual CPUs on the host.</dd>
-</dl>
+<p>CPU Used
+:   Show the CPU usage as a percentage for all Exporters.</p>
+<p>Mem Used
+:   Shows total Memory Used by Exporters.</p>
+<p>Exporters Running
+:   Shows the number of Exporters running.</p>
+<p>RAM
+:   Shows the total amount of RAM of the host.</p>
+<p>Virtual CPUs
+:   Shows the total number of virtual CPUs on the host.</p>
 <p>You can click the value of the <em>CPU Used</em>, <em>Memory Used</em>, or <em>Exporters Running</em> columns to open the <a href="dashboard-prometheus-exporter-status.html">Prometheus Exporter Status</a> dashboard for further analysis.</p>
-<div class="admonition seealso alert alert-info">
-<p class="admonition-title">See also</p>
-<p><a href="https://www.percona.com/blog/2018/02/20/understand-prometheus-exporters-percona-monitoring-management-pmm/">Percona blog: Understand Your Prometheus Exporters with Percona Monitoring and Management (PMM)</a></p>
-</div>
+<p>!!! seealso alert alert-info "See also"
+    <a href="https://www.percona.com/blog/2018/02/20/understand-prometheus-exporters-percona-monitoring-management-pmm/">Percona blog: Understand Your Prometheus Exporters with Percona Monitoring and Management (PMM)</a></p>
                     </div>
                 </div>
                 
@@ -525,11 +514,19 @@ exporters for the selected hosts.</p>
 
 
 
-
-<li class="toctree-l2">
-    <a class="reference internal" href="../develop-checks.html">Developing Advisors</a>
+</ul>
 
 
+
+
+
+<li class="toctree-l1">
+    <a class="reference internal" href="../develop-checks.html">Developing Advisor checks</a>
+
+
+
+
+<ul class="toctree" id="toctree">
 
 
 <li class="toctree-l2">

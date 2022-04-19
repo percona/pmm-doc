@@ -115,7 +115,7 @@
 
                 <div class="bodywrapper">
                     <div class="body">
-                        <h1 id="percona-monitoring-and-management-2240">Percona Monitoring and Management 2.24.0<a class="headerlink" href="#percona-monitoring-and-management-2240" title="Permanent link">&para;</a></h1>
+                        <h1 id="percona-monitoring-and-management-2240">Percona Monitoring and Management 2.24.0</h1>
 <table class="docutils field-list" frame="void" rules="none">
   <colgroup>
     <col class="field-name">
@@ -134,33 +134,34 @@
   </tbody>
 </table>
 
-<div class="admonition caution alert alert-warning">
-<p class="admonition-title">Important note for users of PMM 2.24.0</p>
-<p>2.24.0 AMI image has only 8GB available for the data, it is a bug (see <a href="https://jira.percona.com/browse/PMM-9298">PMM-9298</a>). To resize a disk to full size you need to login to AMI instance with SSH and use the following command:</p>
-<div class="highlight"><pre><span></span><code>curl https://raw.githubusercontent.com/percona/pmm-update/main/ansible/playbook/tasks/create-lvm.yml -o lvn-fix.yml <span class="o">&amp;&amp;</span> sudo ansible-playbook lvn-fix.yml
-</code></pre></div>
-<p>For instructions about how to access your instances by using an SSH client, see <a href="https://www.percona.com/doc/percona-monitoring-and-management/2.x/setting-up/server/aws.html#:~:text=Connecting%20to%20Your%20Linux%20Instance%20Using%20SSH">Connecting to Your Linux Instance Using SSH</a>
-Make sure to replace the user name ec2-user used in this document with admin.</p>
-<p>What this command does:</p>
-<ol>
-<li>Downloads Ansible playbook and runs it</li>
-<li>Copy your data from /srv to the temporary directory</li>
-<li>Create lvm partition</li>
-<li>Copy data from system disk to a new LVM partition</li>
-</ol>
-</div>
+<p>!!! caution alert alert-warning "Important note for users of PMM 2.24.0"
+    2.24.0 AMI image has only 8GB available for the data, it is a bug (see <a href="https://jira.percona.com/browse/PMM-9298">PMM-9298</a>). To resize a disk to full size you need to login to AMI instance with SSH and use the following command:</p>
+<pre><code>```sh
+curl https://raw.githubusercontent.com/percona/pmm-update/main/ansible/playbook/tasks/create-lvm.yml -o lvn-fix.yml &amp;&amp; sudo ansible-playbook lvn-fix.yml
+```
+
+For instructions about how to access your instances by using an SSH client, see [Connecting to Your Linux Instance Using SSH](https://www.percona.com/doc/percona-monitoring-and-management/2.x/setting-up/server/aws.html#:~:text=Connecting%20to%20Your%20Linux%20Instance%20Using%20SSH)
+Make sure to replace the user name ec2-user used in this document with admin.
+
+What this command does:
+
+1. Downloads Ansible playbook and runs it
+2. Copy your data from /srv to the temporary directory
+3. Create lvm partition
+4. Copy data from system disk to a new LVM partition
+</code></pre>
 <p>Percona Monitoring and Management (PMM) is a free and open-source platform for managing and monitoring MySQL, MongoDB, and PostgreSQL performance.</p>
-<h2 id="release-highlights">Release Highlights<a class="headerlink" href="#release-highlights" title="Permanent link">&para;</a></h2>
+<h2 id="release-highlights">Release Highlights</h2>
 <ul>
 <li><strong>Enhanced PostgreSQL monitoring</strong></li>
 <li>Beginning with this release, PMM now supports monitoring of PostgreSQL 14, both - Community edition and <a href="https://www.percona.com/software/postgresql-distribution">Percona Distribution for PostgreSQL</a>.</li>
 <li>
-<p>We&rsquo;ve made significant improvements in exposed data and added additional features if you monitor PostgreSQL together with the <a href="https://github.com/percona/pg_stat_monitor">pg_stat_monitor</a> extension (Part of Percona distribution for PostgreSQL). These features include:</p>
+<p>We've made significant improvements in exposed data and added additional features if you monitor PostgreSQL together with the <a href="https://github.com/percona/pg_stat_monitor">pg_stat_monitor</a> extension (Part of Percona distribution for PostgreSQL). These features include:</p>
 <ul>
 <li>The PostgreSQL queries will have complete Query Execution Plan information. This will help with future optimization of queries and give a clear understanding of query performance</li>
 <li>Query execution histograms collection and presentation inside Query Analytics for a much more detailed understanding of query executions.</li>
-<li>Query analytics will both show and let the user drill down to the Top Query of the particular query if it&rsquo;s a subquery and have this parent query. This feature will allow users to see the dependencies between queries better and understand the impact of subqueries.</li>
-<li>Query Analytics can filter PostgreSQL queries by query commands like SELECT, UPDATE, etc., and by Application Name if it&rsquo;s set for PostgreSQL connection from the application.</li>
+<li>Query analytics will both show and let the user drill down to the Top Query of the particular query if it's a subquery and have this parent query. This feature will allow users to see the dependencies between queries better and understand the impact of subqueries.</li>
+<li>Query Analytics can filter PostgreSQL queries by query commands like SELECT, UPDATE, etc., and by Application Name if it's set for PostgreSQL connection from the application.</li>
 </ul>
 </li>
 <li>
@@ -170,14 +171,14 @@ Make sure to replace the user name ec2-user used in this document with admin.</p
 </ul>
 </li>
 </ul>
-<h2 id="new-features">New Features<a class="headerlink" href="#new-features" title="Permanent link">&para;</a></h2>
+<h2 id="new-features">New Features</h2>
 <ul>
 <li><a href="https://jira.percona.com/browse/PMM-8027">PMM-8027</a>: Integrated Alerting: New notification channel added: Webhooks</li>
 <li><a href="https://jira.percona.com/browse/PMM-8301">PMM-8301</a>: Add data collection support and visualization for newly added dimensions in pg_stat_monitor such as Application Name,Top Query, Plan in Query Analytics</li>
 <li><a href="https://jira.percona.com/browse/PMM-8588">PMM-8588</a>: PostgreSQL Histograms added to QAN when using pg_stat_monitor extension</li>
-<li><a href="https://jira.percona.com/browse/PMM-8632">PMM-8632</a>: New Filter: &ldquo;Command Type&rdquo; allows filtering queries based on type (SELECT, INSERT, UPDATE, DELETE, n/a) when pg_stat_monitor extension enabled</li>
+<li><a href="https://jira.percona.com/browse/PMM-8632">PMM-8632</a>: New Filter: "Command Type" allows filtering queries based on type (SELECT, INSERT, UPDATE, DELETE, n/a) when pg_stat_monitor extension enabled</li>
 </ul>
-<h2 id="improvements">Improvements<a class="headerlink" href="#improvements" title="Permanent link">&para;</a></h2>
+<h2 id="improvements">Improvements</h2>
 <ul>
 <li><a href="https://jira.percona.com/browse/PMM-8803">PMM-8803</a>: Backup Management: Improved error messages to indicate incompatible versions of software</li>
 <li><a href="https://jira.percona.com/browse/PMM-8636">PMM-8636</a>: Integrated Alerting: Additional context to alerts to better convey issue detected</li>
@@ -186,7 +187,7 @@ Make sure to replace the user name ec2-user used in this document with admin.</p
 <li><a href="https://jira.percona.com/browse/PMM-8484">PMM-8484</a>: Added support for PostgreSQL 14 and Percona Distribution for PostgreSQL 14</li>
 <li><a href="https://jira.percona.com/browse/PMM-7297">PMM-7297</a>: Updated plugin for Clickhouse data source  from 2.1.0 to 2.3.1. This fixes some bugs and eliminates noise from warnings in logs as well as adding support of new types (DateTime64) and improved ARRAY JOIN parsing</li>
 </ul>
-<h2 id="bugs-fixed">Bugs Fixed<a class="headerlink" href="#bugs-fixed" title="Permanent link">&para;</a></h2>
+<h2 id="bugs-fixed">Bugs Fixed</h2>
 <ul>
 <li><a href="https://jira.percona.com/browse/PMM-8975">PMM-8975</a>: Backup Management: long presentation of recurrent intervals in Backup scheduling</li>
 <li><a href="https://jira.percona.com/browse/PMM-8541">PMM-8541</a>: Navigating through PMM Settings link at Failed security checks panel takes more than 30 seconds</li>
@@ -195,7 +196,7 @@ Make sure to replace the user name ec2-user used in this document with admin.</p
 <li><a href="https://jira.percona.com/browse/PMM-8611">PMM-8611</a>: Dashboards: PMM Agents status presented as DOWN while there is no recent data yet on the status</li>
 <li><a href="https://jira.percona.com/browse/PMM-8393">PMM-8393</a>: Integrated Alerting: Alert rules not executed after upgrading PMM Server running as Docker container</li>
 <li><a href="https://jira.percona.com/browse/PMM-8058">PMM-8058</a>: Integrated Alerting: Firing alerts disappear after PMM server restart</li>
-<li><a href="https://jira.percona.com/browse/PMM-8089">PMM-8089</a>: PMM is not exposing data for memory used by MongoDB when it&rsquo;s mapped with the journal. This was inconsistent behavior compared to older versions of PMM.</li>
+<li><a href="https://jira.percona.com/browse/PMM-8089">PMM-8089</a>: PMM is not exposing data for memory used by MongoDB when it's mapped with the journal. This was inconsistent behavior compared to older versions of PMM.</li>
 <li><a href="https://jira.percona.com/browse/PMM-9100">PMM-9100</a>: Dashboards: Binary Log related metrics on MySQL Replication dashboard are not prevented and not collected for MySQL8</li>
 <li><a href="https://jira.percona.com/browse/PMM-8633">PMM-8633</a>: Unfinished queries are included in Query Analytics for PostgreSQL with pg_stat_monitor usage because of incorrect use of state_code.</li>
 <li><a href="https://jira.percona.com/browse/PMM-8859">PMM-8859</a>: Increased memory consumption on Client-side for PostgreSQL monitoring when executing either too many custom queries or some queries against too many tables</li>
@@ -559,11 +560,19 @@ Make sure to replace the user name ec2-user used in this document with admin.</p
 
 
 
-
-<li class="toctree-l2">
-    <a class="reference internal" href="../details/develop-checks.html">Developing Advisors</a>
+</ul>
 
 
+
+
+
+<li class="toctree-l1">
+    <a class="reference internal" href="../details/develop-checks.html">Developing Advisor checks</a>
+
+
+
+
+<ul class="toctree" id="toctree">
 
 
 <li class="toctree-l2">

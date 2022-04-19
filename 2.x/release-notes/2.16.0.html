@@ -115,7 +115,7 @@
 
                 <div class="bodywrapper">
                     <div class="body">
-                        <h1 id="percona-monitoring-and-management-2160">Percona Monitoring and Management 2.16.0<a class="headerlink" href="#percona-monitoring-and-management-2160" title="Permanent link">&para;</a></h1>
+                        <h1 id="percona-monitoring-and-management-2160">Percona Monitoring and Management 2.16.0</h1>
 <table class="docutils field-list" frame="void" rules="none">
   <colgroup>
     <col class="field-name">
@@ -135,14 +135,14 @@
 </table>
 
 <p>Percona Monitoring and Management (PMM) is a free and open-source platform for managing and monitoring MySQL, MongoDB, and PostgreSQL performance.</p>
-<h2 id="important-note-for-users-of-pmm-2160">Important note for users of PMM 2.16.0<a class="headerlink" href="#important-note-for-users-of-pmm-2160" title="Permanent link">&para;</a></h2>
+<h2 id="important-note-for-users-of-pmm-2160">Important note for users of PMM 2.16.0</h2>
 <p>If you started using PMM from version 2.16 and have already upgraded to 2.17, 2.18, or 2.19, you might have some problems with PMM Server monitoring, Remove Monitoring, or RDS/Azure monitoring. If you experience a problem, we recommend you upgrade and replace the Docker container by following the official instructions for an upgrade here: <a href="https://www.percona.com/doc/percona-monitoring-and-management/2.x/setting-up/server/docker.html#upgrade">https://www.percona.com/doc/percona-monitoring-and-management/2.x/setting-up/server/docker.html#upgrade</a>.</p>
-<p>If you can&rsquo;t do this, then you need to perform additional steps after upgrading to 2.20.</p>
+<p>If you can't do this, then you need to perform additional steps after upgrading to 2.20.</p>
 <ol>
 <li>Enter the container: <code>docker exec -it pmm-server bash</code></li>
 <li>Roll back <code>pmm2-client</code> package to stable version: <code>yum downgrade -y pmm2-client</code></li>
 </ol>
-<h2 id="release-highlights">Release Highlights<a class="headerlink" href="#release-highlights" title="Permanent link">&para;</a></h2>
+<h2 id="release-highlights">Release Highlights</h2>
 <ul>
 <li>
 <p><strong>Amazon RDS PostgreSQL monitoring</strong></p>
@@ -150,7 +150,7 @@
 </li>
 <li>
 <p><strong>Azure Discovery and Node metrics extraction</strong></p>
-<p><strong>Technical Preview</strong>: PMM will have the same level of support for Microsoft Azure Database as a Service (DBaaS) as we have for AWS&rsquo;s DBaaS (RDS/Aurora on MySQL or PostgreSQL). You will be able to easily discover and add Azure databases for monitoring by PMM complete with node-level monitoring. This feature is available only if you explicitly activate it on the <em>PMM Settings</em> page. Deactivating it will not remove added services from monitoring, but will just hide the ability to discover and add new Microsoft Azure Services.</p>
+<p><strong>Technical Preview</strong>: PMM will have the same level of support for Microsoft Azure Database as a Service (DBaaS) as we have for AWS's DBaaS (RDS/Aurora on MySQL or PostgreSQL). You will be able to easily discover and add Azure databases for monitoring by PMM complete with node-level monitoring. This feature is available only if you explicitly activate it on the <em>PMM Settings</em> page. Deactivating it will not remove added services from monitoring, but will just hide the ability to discover and add new Microsoft Azure Services.</p>
 <p>(This is a feature technical preview because we want to release it as soon as possible to get feedback from users. We are expecting to do more work on this feature to make it more API and resource efficient.)</p>
 </li>
 <li>
@@ -167,7 +167,7 @@
 </li>
 <li>
 <p><strong>Migration of Settings and other service pages in PMM from Grafana dashboards</strong></p>
-<p>The <em>PMM Settings</em> page and several others (including <em>Add Instance</em> and <em>Inventory</em>) are being converted to Grafana pages and will no longer be presented as dashboards. Additionally, we&rsquo;re moving the menu to the sidebar navigation for consistency and more flexibility compared to the older menu structure.</p>
+<p>The <em>PMM Settings</em> page and several others (including <em>Add Instance</em> and <em>Inventory</em>) are being converted to Grafana pages and will no longer be presented as dashboards. Additionally, we're moving the menu to the sidebar navigation for consistency and more flexibility compared to the older menu structure.</p>
 </li>
 <li>
 <p><strong>Integrated Alerting improvements</strong></p>
@@ -182,7 +182,7 @@
 <p>DBaaS in PMM will be using the recently-released <a href="https://www.percona.com/doc/kubernetes-operator-for-psmongodb/RN/Kubernetes-Operator-for-PSMONGODB-RN1.7.0.html">Percona Kubernetes Operator for Percona Server for MongoDB 1.7.0</a> to create MongoDB clusters.</p>
 </li>
 </ul>
-<h2 id="new-features">New Features<a class="headerlink" href="#new-features" title="Permanent link">&para;</a></h2>
+<h2 id="new-features">New Features</h2>
 <ul>
 <li><a href="https://jira.percona.com/browse/PMM-7313">PMM-7313</a>, <a href="https://jira.percona.com/browse/PMM-7610">PMM-7610</a>: Ability to discover and monitor Amazon RDS PostgreSQL instances with collecting PostgreSQL and RDS node metrics (Thanks to Daniel Guzman Burgos for reporting this issue).</li>
 <li><a href="https://jira.percona.com/browse/PMM-7345">PMM-7345</a>: Expose metrics for all available databases on a PMM monitored PostgreSQL server.</li>
@@ -207,7 +207,7 @@
 <li><a href="https://jira.percona.com/browse/PMM-7364">PMM-7364</a>: DBaaS: Show warning before starting creating the cluster if there are not enough resources in the K8s cluster to create DB Cluster with requested configuration.</li>
 <li><a href="https://jira.percona.com/browse/PMM-7580">PMM-7580</a>, <a href="https://jira.percona.com/browse/PMM-7359">PMM-7359</a>: DBaaS: Users can select the database version to use during DB Cluster creation.</li>
 </ul>
-<h2 id="improvements">Improvements<a class="headerlink" href="#improvements" title="Permanent link">&para;</a></h2>
+<h2 id="improvements">Improvements</h2>
 <ul>
 <li><a href="https://jira.percona.com/browse/PMM-7506">PMM-7506</a>: Security Threat Tool: Reduce False Positives due to Roles automatically created in PXC with no password but cannot be used to login.</li>
 <li><a href="https://jira.percona.com/browse/PMM-7569">PMM-7569</a>: Make PMM compatible with pg_stat_monitor 0.8 release.</li>
@@ -217,7 +217,7 @@
 <li><a href="https://jira.percona.com/browse/PMM-7375">PMM-7375</a>: Integrated Alerting: Inform users about the template that they are editing and warn them about the limitations.</li>
 <li><a href="https://jira.percona.com/browse/PMM-7260">PMM-7260</a>: Integrated Alerting: Make it clearer what rule is being edited.</li>
 </ul>
-<h2 id="bugs-fixed">Bugs Fixed<a class="headerlink" href="#bugs-fixed" title="Permanent link">&para;</a></h2>
+<h2 id="bugs-fixed">Bugs Fixed</h2>
 <ul>
 <li><a href="https://jira.percona.com/browse/PMM-7131">PMM-7131</a>, <a href="https://jira.percona.com/browse/PMM-7555">PMM-7555</a>: QAN for PostgreSQL attempts to connect to a database with the same name as the username. (Thanks to Daniel Guzman Burgos for reporting this issue)</li>
 <li><a href="https://jira.percona.com/browse/PMM-7481">PMM-7481</a>: Query Analytics is not showing “Query with Errors” in the Profile section.</li>
@@ -589,11 +589,19 @@
 
 
 
-
-<li class="toctree-l2">
-    <a class="reference internal" href="../details/develop-checks.html">Developing Advisors</a>
+</ul>
 
 
+
+
+
+<li class="toctree-l1">
+    <a class="reference internal" href="../details/develop-checks.html">Developing Advisor checks</a>
+
+
+
+
+<ul class="toctree" id="toctree">
 
 
 <li class="toctree-l2">

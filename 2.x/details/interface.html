@@ -55,7 +55,7 @@
 
     <link rel="top" title="" href="https://www.percona.com/doc/percona-monitoring-and-management/2.x" />
     
-    <link rel="next" title="Developing Advisors" href="develop-checks.html" />
+    <link rel="next" title="Developing Advisor checks" href="develop-checks.html" />
     
     
 </head>
@@ -88,7 +88,7 @@
     <ul class="nav nav-pills">
         
         <li class="right" style="margin-right: 10px">
-            <a href="develop-checks.html" title="Developing Advisors">Next</a>
+            <a href="develop-checks.html" title="Developing Advisor checks">Next</a>
         </li>
         
         
@@ -115,19 +115,15 @@
 
                 <div class="bodywrapper">
                     <div class="body">
-                        <h1 id="ui-components">UI components<a class="headerlink" href="#ui-components" title="Permanent link">&para;</a></h1>
-<p><div class="lightgallery"><a data-sub-html="" href="../_images/PMM_Home_Dashboard_Numbered.png"><img alt="" src="../_images/PMM_Home_Dashboard_Numbered.png" /></a></div></p>
-<div class="admonition note alert alert-light">
-<p class="admonition-title">Key</p>
-<ol>
-<li><a href="#main-menu">Main menu</a> (also <em>Grafana menu</em>, <em>side menu</em>)</li>
-<li><a href="#navigation-bar">Navigation bar</a></li>
-<li><a href="#view-controls">View controls</a></li>
-<li><a href="#view-selectors">View selectors</a> (dynamic contents)</li>
-<li><a href="#shortcut-menu">Shortcut menu</a> (dynamic contents)</li>
-</ol>
-</div>
-<h2 id="main-menu">Main menu<a class="headerlink" href="#main-menu" title="Permanent link">&para;</a></h2>
+                        <h1 id="ui-components">UI components</h1>
+<p><img alt="!" src="../_images/PMM_Home_Dashboard_Numbered.png" /></p>
+<p>!!! note alert alert-light "Key"
+    1. <a href="#main-menu">Main menu</a> (also <em>Grafana menu</em>, <em>side menu</em>)
+    2. <a href="#navigation-bar">Navigation bar</a>
+    3. <a href="#view-controls">View controls</a>
+    4. <a href="#view-selectors">View selectors</a> (dynamic contents)
+    5. <a href="#shortcut-menu">Shortcut menu</a> (dynamic contents)</p>
+<h2 id="main-menu">Main menu</h2>
 <p>The main menu is part of the Grafana framework and is visible on every page.</p>
 <table class="table">
 <thead>
@@ -200,11 +196,10 @@
 </tr>
 </tbody>
 </table>
-<div class="admonition hint alert alert-success">
-<p class="admonition-title">Tip</p>
-<p>The DBaaS icon appears only if a server feature flag has been set.</p>
-<p>The Backup Management icon appears when <em>Backup Management</em> is activated in <i class="uil uil-cog"></i> <em>Configuration</em> → <i class="uil uil-setting"></i> <em>Settings</em> → <em>Advanced Settings</em>.</p>
-</div>
+<p>!!! hint alert alert-success "Tip"
+    The DBaaS icon appears only if a server feature flag has been set.</p>
+<pre><code>The Backup Management icon appears when *Backup Management* is activated in &lt;i class="uil uil-cog"&gt;&lt;/i&gt; *Configuration* → &lt;i class="uil uil-setting"&gt;&lt;/i&gt; *Settings* → *Advanced Settings*.
+</code></pre>
 <table class="table">
 <thead>
 <tr>
@@ -223,8 +218,8 @@
 </tr>
 </tbody>
 </table>
-<h2 id="navigation-bar">Navigation bar<a class="headerlink" href="#navigation-bar" title="Permanent link">&para;</a></h2>
-<p><div class="lightgallery"><a data-sub-html="Common page elements top row" href="../_images/PMM_Home_Dashboard_Menus_Top_Navigation_Bar.jpg"><img alt="Common page elements top row" src="../_images/PMM_Home_Dashboard_Menus_Top_Navigation_Bar.jpg" /></a></div></p>
+<h2 id="navigation-bar">Navigation bar</h2>
+<p><img alt="!Common page elements top row" src="../_images/PMM_Home_Dashboard_Menus_Top_Navigation_Bar.jpg" /></p>
 <table class="table">
 <thead>
 <tr>
@@ -255,7 +250,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="view-controls">View controls<a class="headerlink" href="#view-controls" title="Permanent link">&para;</a></h2>
+<h2 id="view-controls">View controls</h2>
 <table class="table">
 <thead>
 <tr>
@@ -290,9 +285,9 @@
 </tr>
 </tbody>
 </table>
-<h2 id="view-selectors">View selectors<a class="headerlink" href="#view-selectors" title="Permanent link">&para;</a></h2>
+<h2 id="view-selectors">View selectors</h2>
 <p>This menu bar is context sensitive; it changes according to the page you are on. (With wide menus on small screens, items may wrap to the next row.)</p>
-<p><div class="lightgallery"><a data-sub-html="" href="../_images/PMM_Home_Dashboard_Menus_Submenu_Bar.jpg"><img alt="" src="../_images/PMM_Home_Dashboard_Menus_Submenu_Bar.jpg" /></a></div></p>
+<p><img alt="!" src="../_images/PMM_Home_Dashboard_Menus_Submenu_Bar.jpg" /></p>
 <table class="table">
 <thead>
 <tr>
@@ -335,11 +330,10 @@
 </tr>
 </tbody>
 </table>
-<h2 id="shortcut-menu">Shortcut menu<a class="headerlink" href="#shortcut-menu" title="Permanent link">&para;</a></h2>
-<p>This menu contains shortcuts to other dashboards. The list changes according to the page you&rsquo;re on.</p>
-<div class="admonition note alert alert-primary">
-<p>This menu will be removed in future releases. Its function will be replaced by the <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M7 3V21H3V3H7ZM15 18.7H21V21H15V18.7ZM15 3H21V10.7L15 10.7V3Z" stroke="#000" stroke-width="6"/></svg> <em>PMM Dashboards</em> main menu entry.</p>
-</div>
+<h2 id="shortcut-menu">Shortcut menu</h2>
+<p>This menu contains shortcuts to other dashboards. The list changes according to the page you're on.</p>
+<p>!!! note alert alert-primary ""
+    This menu will be removed in future releases. Its function will be replaced by the <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M7 3V21H3V3H7ZM15 18.7H21V21H15V18.7ZM15 3H21V10.7L15 10.7V3Z" stroke="#000" stroke-width="6"/></svg> <em>PMM Dashboards</em> main menu entry.</p>
 <table class="table">
 <thead>
 <tr>
@@ -378,11 +372,9 @@
 </tr>
 </tbody>
 </table>
-<div class="admonition hint alert alert-success">
-<p class="admonition-title">Tip</p>
-<p>The <em>Compare</em> menu links to the Instances Overview dashboard for the current service type.</p>
-</div>
-<h3 id="services-menu">Services menu<a class="headerlink" href="#services-menu" title="Permanent link">&para;</a></h3>
+<p>!!! hint alert alert-success "Tip"
+    The <em>Compare</em> menu links to the Instances Overview dashboard for the current service type.</p>
+<h3 id="services-menu">Services menu</h3>
 <p>The <em>Services</em> menu choice determines the Service Type menu.</p>
 <table class="table">
 <thead>
@@ -426,7 +418,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="pmm-menu">PMM menu<a class="headerlink" href="#pmm-menu" title="Permanent link">&para;</a></h3>
+<h3 id="pmm-menu">PMM menu</h3>
 <p>This item lists shortcuts to utility pages.</p>
 <table class="table">
 <thead>
@@ -476,7 +468,7 @@
     <ul class="nav nav-pills">
         
         <li class="right" style="margin-right: 10px">
-            <a href="develop-checks.html" title="Developing Advisors">Next</a>
+            <a href="develop-checks.html" title="Developing Advisor checks">Next</a>
         </li>
         
         
@@ -815,11 +807,19 @@
 
 
 
-
-<li class="toctree-l2">
-    <a class="reference internal" href="develop-checks.html">Developing Advisors</a>
+</ul>
 
 
+
+
+
+<li class="toctree-l1">
+    <a class="reference internal" href="develop-checks.html">Developing Advisor checks</a>
+
+
+
+
+<ul class="toctree" id="toctree">
 
 
 <li class="toctree-l2">
@@ -1515,7 +1515,7 @@
 
 <h4>Next page</h4>
 <p class="topless">
-    <a href="develop-checks.html" title="next chapter">Developing Advisors</a>
+    <a href="develop-checks.html" title="next chapter">Developing Advisor checks</a>
 </p>
 
 

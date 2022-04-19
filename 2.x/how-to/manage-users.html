@@ -115,13 +115,13 @@
 
                 <div class="bodywrapper">
                     <div class="body">
-                        <h1 id="manage-users">Manage users<a class="headerlink" href="#manage-users" title="Permanent link">&para;</a></h1>
+                        <h1 id="manage-users">Manage users</h1>
 <p>This topic explains user management in PMM.</p>
 <p>You can manage users from the <a href="../details/interface.html#main-menu">main menu</a> by navigating to <em>Server Admin → Users</em> page.</p>
-<p><div class="lightgallery"><a data-sub-html="image" href="../_images/PMM-manage-users.png"><img alt="image" src="../_images/PMM-manage-users.png" /></a></div></p>
-<h2 id="add-users">Add users<a class="headerlink" href="#add-users" title="Permanent link">&para;</a></h2>
+<p><img alt="!image" src="../_images/PMM-manage-users.png" /></p>
+<h2 id="add-users">Add users</h2>
 <p>You can add a user in PMM from <em>User → New user</em> tab.</p>
-<p><div class="lightgallery"><a data-sub-html="image" href="../_images/PMM-add-new-user.png"><img alt="image" src="../_images/PMM-add-new-user.png" /></a></div></p>
+<p><img alt="!image" src="../_images/PMM-add-new-user.png" /></p>
 <p>To add a new user in PMM:</p>
 <ol>
 <li>On the <em>Users</em> tab, click <em>New user</em>.</li>
@@ -138,13 +138,11 @@
 <p>Click <em>create user</em>.</p>
 </li>
 </ol>
-<h2 id="edit-users">Edit users<a class="headerlink" href="#edit-users" title="Permanent link">&para;</a></h2>
+<h2 id="edit-users">Edit users</h2>
 <p>You can edit users by changing the information or settings for an individual user account.</p>
-<div class="admonition caution alert alert-warning">
-<p class="admonition-title">Important</p>
-<p>After changing the default admin password for the PMM server, register the pmm-agent using the same credentials and add the services again. Otherwise, PMM will cease to monitor the service/nodes.</p>
-</div>
-<h3 id="grant-or-revoke-admin-privileges">Grant or Revoke admin privileges<a class="headerlink" href="#grant-or-revoke-admin-privileges" title="Permanent link">&para;</a></h3>
+<p>!!! caution alert alert-warning "Important"  <br />
+    After changing the default admin password for the PMM server, register the pmm-agent using the same credentials and add the services again. Otherwise, PMM will cease to monitor the service/nodes.</p>
+<h3 id="grant-or-revoke-admin-privileges">Grant or Revoke admin privileges</h3>
 <p>You can grant or revoke admin access to a user as follows:</p>
 <ol>
 <li>
@@ -160,13 +158,11 @@
 <p>Click <em>Change</em>.</p>
 </li>
 </ol>
-<div class="admonition caution alert alert-warning">
-<p class="admonition-title">Important</p>
-<p>After connecting your PMM instance to the Percona Platform, when you log in using your Percona account, you will be granted the <em>Viewer</em> access. For <em>Admin</em> access, log in to PMM as an admin, and change the permissions for this user.</p>
-</div>
-<h3 id="change-organization-role">Change organization role<a class="headerlink" href="#change-organization-role" title="Permanent link">&para;</a></h3>
+<p>!!! caution alert alert-warning "Important"
+    After connecting your PMM instance to the Percona Platform, when you log in using your Percona account, you will be granted the <em>Viewer</em> access. For <em>Admin</em> access, log in to PMM as an admin, and change the permissions for this user.</p>
+<h3 id="change-organization-role">Change organization role</h3>
 <p>You can change the organization role assigned to your user account.</p>
-<p><div class="lightgallery"><a data-sub-html="image" href="../_images/PMM-change-role.png"><img alt="image" src="../_images/PMM-change-role.png" /></a></div></p>
+<p><img alt="!image" src="../_images/PMM-change-role.png" /></p>
 <p>To change the role:</p>
 <ol>
 <li>
@@ -192,7 +188,7 @@
 </li>
 </ul>
 <p>For detailed information on the privileges for these roles and the different tasks that they can perform, refer to: <a href="https://grafana.com/docs/grafana/latest/permissions/organization_roles/">Grafana organization roles</a>.</p>
-<h2 id="delete-users">Delete Users<a class="headerlink" href="#delete-users" title="Permanent link">&para;</a></h2>
+<h2 id="delete-users">Delete Users</h2>
 <p>You can delete a user in PMM as follows:</p>
 <ol>
 <li>
@@ -559,11 +555,19 @@
 
 
 
-
-<li class="toctree-l2">
-    <a class="reference internal" href="../details/develop-checks.html">Developing Advisors</a>
+</ul>
 
 
+
+
+
+<li class="toctree-l1">
+    <a class="reference internal" href="../details/develop-checks.html">Developing Advisor checks</a>
+
+
+
+
+<ul class="toctree" id="toctree">
 
 
 <li class="toctree-l2">

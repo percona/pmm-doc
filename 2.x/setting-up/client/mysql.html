@@ -115,36 +115,28 @@
 
                 <div class="bodywrapper">
                     <div class="body">
-                        <h1 id="mysql">MySQL<a class="headerlink" href="#mysql" title="Permanent link">&para;</a></h1>
+                        <h1 id="mysql">MySQL</h1>
 <p>How to set up PMM to monitor a MySQL or MySQL-based database instance.</p>
 <p>PMM Client collects metrics from <a href="https://www.mysql.com/">MySQL</a>, <a href="https://www.percona.com/software/mysql-database/percona-server">Percona Server for MySQL</a>, <a href="https://www.percona.com/software/mysql-database/percona-xtradb-cluster">Percona XtraDB Cluster</a>, and <a href="https://mariadb.org/">MariaDB</a>. (Amazon RDS is also supported and explained in a <a href="aws.html">separate section</a>.)</p>
-<div class="admonition summary alert alert-info">
-<p class="admonition-title">Summary</p>
-<ul>
-<li>Create PMM account and set permissions.</li>
-<li>Choose a data source:<ul>
-<li>Slow query log, or,</li>
-<li>Performance Schema.</li>
-</ul>
-</li>
-<li>Configure:<ul>
-<li>Query response time,</li>
-<li>Tablestats,</li>
-<li>User statistics.</li>
-</ul>
-</li>
-<li>Add service.</li>
-<li>Check service.</li>
-</ul>
-</div>
-<h2 id="before-you-start">Before you start<a class="headerlink" href="#before-you-start" title="Permanent link">&para;</a></h2>
+<p>!!! summary alert alert-info "Summary"
+    - Create PMM account and set permissions.
+    - Choose a data source:
+        - Slow query log, or,
+        - Performance Schema.
+    - Configure:
+        - Query response time,
+        - Tablestats,
+        - User statistics.
+    - Add service.
+    - Check service.</p>
+<h2 id="before-you-start">Before you start</h2>
 <p>Check that:</p>
 <ul>
 <li><a href="../server/index.html">PMM Server is installed</a> and running with a known IP address accessible from the client node.</li>
 <li><a href="index.html">PMM Client is installed</a> and the <a href="index.html#register">node is registered with PMM Server</a>.</li>
 <li>You have superuser (root) access on the client host.</li>
 </ul>
-<h2 id="create-a-database-account-for-pmm">Create a database account for PMM<a class="headerlink" href="#create-a-database-account-for-pmm" title="Permanent link">&para;</a></h2>
+<h2 id="create-a-database-account-for-pmm">Create a database account for PMM</h2>
 <p>It is good practice to use a non-superuser account to connect PMM Client to the monitored database instance. This example creates a database user with name <code>pmm</code>, password <code>pass</code>, and the necessary permissions.</p>
 <p><strong>On MySQL 8.0</strong></p>
 <div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">USER</span><span class="w"> </span><span class="s1">&#39;pmm&#39;</span><span class="o">@</span><span class="s1">&#39;localhost&#39;</span><span class="w"> </span><span class="n">IDENTIFIED</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="s1">&#39;pass&#39;</span><span class="w"> </span><span class="k">WITH</span><span class="w"> </span><span class="n">MAX_USER_CONNECTIONS</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"></span>
@@ -154,9 +146,9 @@
 <div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">USER</span><span class="w"> </span><span class="s1">&#39;pmm&#39;</span><span class="o">@</span><span class="s1">&#39;localhost&#39;</span><span class="w"> </span><span class="n">IDENTIFIED</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="s1">&#39;pass&#39;</span><span class="w"> </span><span class="k">WITH</span><span class="w"> </span><span class="n">MAX_USER_CONNECTIONS</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"></span>
 <span class="k">GRANT</span><span class="w"> </span><span class="k">SELECT</span><span class="p">,</span><span class="w"> </span><span class="n">PROCESS</span><span class="p">,</span><span class="w"> </span><span class="n">REPLICATION</span><span class="w"> </span><span class="n">CLIENT</span><span class="p">,</span><span class="w"> </span><span class="n">RELOAD</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="o">*</span><span class="p">.</span><span class="o">*</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="s1">&#39;pmm&#39;</span><span class="o">@</span><span class="s1">&#39;localhost&#39;</span><span class="p">;</span><span class="w"></span>
 </code></pre></div>
-<h2 id="choose-and-configure-a-source">Choose and configure a source<a class="headerlink" href="#choose-and-configure-a-source" title="Permanent link">&para;</a></h2>
+<h2 id="choose-and-configure-a-source">Choose and configure a source</h2>
 <p>Decide which source of metrics to use, and configure your database server for it. The choices are <a href="#slow-query-log">Slow query log</a> and <a href="#performance-schema">Performance Schema</a>.</p>
-<p>While you can use both at the same time we recommend using only one&ndash;there is some overlap in the data reported, and each incurs a small performance penalty. The choice depends on the version and variant of your MySQL instance, and how much detail you want to see.</p>
+<p>While you can use both at the same time we recommend using only one--there is some overlap in the data reported, and each incurs a small performance penalty. The choice depends on the version and variant of your MySQL instance, and how much detail you want to see.</p>
 <p>Here are the benefits and drawbacks of <em>Slow query log</em> and <em>Performance Schema</em> metrics sources.</p>
 <table class="table">
 <thead>
@@ -179,7 +171,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="data-source-recommendations">Data source recommendations<a class="headerlink" href="#data-source-recommendations" title="Permanent link">&para;</a></h3>
+<h3 id="data-source-recommendations">Data source recommendations</h3>
 <table class="table">
 <thead>
 <tr>
@@ -216,9 +208,9 @@
 </tr>
 </tbody>
 </table>
-<h3 id="slow-query-log">Slow query log<a class="headerlink" href="#slow-query-log" title="Permanent link">&para;</a></h3>
+<h3 id="slow-query-log">Slow query log</h3>
 <p>This section covers how to configure a MySQL-based database server to use the <em>slow query log</em> as a source of metrics.</p>
-<h3 id="applicable-versions">Applicable versions<a class="headerlink" href="#applicable-versions" title="Permanent link">&para;</a></h3>
+<h3 id="applicable-versions">Applicable versions</h3>
 <table class="table">
 <thead>
 <tr>
@@ -246,7 +238,7 @@
 </tbody>
 </table>
 <p>The <em>slow query log</em> records the details of queries that take more than a certain amount of time to complete. With the database server configured to write this information to a file rather than a table, PMM Client parses the file and sends aggregated data to PMM Server via the Query Analytics part of PMM Agent.</p>
-<h3 id="settings">Settings<a class="headerlink" href="#settings" title="Permanent link">&para;</a></h3>
+<h3 id="settings">Settings</h3>
 <table class="table">
 <thead>
 <tr>
@@ -283,7 +275,7 @@
 </tr>
 </tbody>
 </table>
-<h4 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h4>
+<h4 id="examples">Examples</h4>
 <ul>
 <li>
 <p>Configuration file.</p>
@@ -304,9 +296,9 @@
 </code></pre></div>
 </li>
 </ul>
-<h4 id="slow-query-log-extended">Slow query log &ndash; extended<a class="headerlink" href="#slow-query-log-extended" title="Permanent link">&para;</a></h4>
+<h4 id="slow-query-log-extended">Slow query log -- extended</h4>
 <p>Some MySQL-based database servers support extended slow query log variables.</p>
-<h5 id="applicable-versions_1">Applicable versions<a class="headerlink" href="#applicable-versions_1" title="Permanent link">&para;</a></h5>
+<h5 id="applicable-versions_1">Applicable versions</h5>
 <table class="table">
 <thead>
 <tr>
@@ -329,7 +321,7 @@
 </tr>
 </tbody>
 </table>
-<h5 id="settings_1">Settings<a class="headerlink" href="#settings_1" title="Permanent link">&para;</a></h5>
+<h5 id="settings_1">Settings</h5>
 <table class="table">
 <thead>
 <tr>
@@ -342,11 +334,11 @@
 <tr>
 <td><a href="https://www.percona.com/doc/percona-server/LATEST/diagnostics/slow_extended.html#log_slow_rate_limit"><code>log_slow_rate_limit</code></a></td>
 <td>100</td>
-<td>Defines the rate of queries captured by the <em>slow query log</em>. A good rule of thumb is 100 queries logged per second. For example, if your Percona Server instance processes 10,000 queries per second, you should set <code>log_slow_rate_limit</code> to <code>100</code> and capture every 100<sup>th</sup> query for the <em>slow query log</em>. Depending on the amount of traffic, logging could become aggressive and resource consuming. This variable throttles the level of intensity of the data capture without compromising information.</td>
+<td>Defines the rate of queries captured by the <em>slow query log</em>. A good rule of thumb is 100 queries logged per second. For example, if your Percona Server instance processes 10,000 queries per second, you should set <code>log_slow_rate_limit</code> to <code>100</code> and capture every 100th query for the <em>slow query log</em>. Depending on the amount of traffic, logging could become aggressive and resource consuming. This variable throttles the level of intensity of the data capture without compromising information.</td>
 </tr>
 <tr>
 <td><a href="https://www.percona.com/doc/percona-server/LATEST/diagnostics/slow_extended.html#log_slow_rate_type"><code>log_slow_rate_type</code></a></td>
-<td>&lsquo;query&rsquo;</td>
+<td>'query'</td>
 <td>Set so that it applies to queries, rather than sessions.</td>
 </tr>
 <tr>
@@ -356,17 +348,17 @@
 </tr>
 <tr>
 <td><a href="https://www.percona.com/doc/percona-server/LATEST/diagnostics/slow_extended.html#log_slow_verbosity"><code>log_slow_verbosity</code></a></td>
-<td>&lsquo;full&rsquo;</td>
+<td>'full'</td>
 <td>Ensures that all information about each captured query is stored in the slow query log.</td>
 </tr>
 <tr>
 <td><a href="https://www.percona.com/doc/percona-server/LATEST/diagnostics/slow_extended.html#slow_query_log_use_global_control"><code>slow_query_log_use_global_control</code></a></td>
-<td>&lsquo;all&rsquo;</td>
+<td>'all'</td>
 <td>Configure the slow query log during runtime and apply these settings to existing connections. (By default, slow query log settings apply only to new sessions.)</td>
 </tr>
 </tbody>
 </table>
-<h5 id="examples_1">Examples<a class="headerlink" href="#examples_1" title="Permanent link">&para;</a></h5>
+<h5 id="examples_1">Examples</h5>
 <ul>
 <li>
 <p>Configuration file (Percona Server for MySQL, Percona XtraDB Cluster).</p>
@@ -392,7 +384,7 @@
 </code></pre></div>
 </li>
 </ul>
-<h4 id="slow-query-log-rotation">Slow query log rotation<a class="headerlink" href="#slow-query-log-rotation" title="Permanent link">&para;</a></h4>
+<h4 id="slow-query-log-rotation">Slow query log rotation</h4>
 <p>Slow query log files can grow quickly and must be managed.</p>
 <p>When adding a service with the command line use the  <code>pmm-admin</code> option <code>--size-slow-logs</code> to set at what size the slow query log file is rotated. (The size is specified as a number with a suffix. See <a href="../../details/commands/pmm-admin.html#mysql"><code>pmm-admin add mysql</code></a>.)</p>
 <p>When the limit is reached, PMM Client will:</p>
@@ -402,10 +394,10 @@
 <li>execute the MySQL command <code>FLUSH LOGS</code>.</li>
 </ul>
 <p>Only one <code>.old</code> file is kept. Older ones are deleted.</p>
-<p>You can manage log rotation yourself, for example, with <a href="https://linux.die.net/man/8/logrotate"><code>logrotate</code></a>. If you do, you can disable PMM Client&rsquo;s log rotation by providing a negative value to <code>--size-slow-logs</code> option when adding a service with <code>pmm-admin add</code>.</p>
-<h3 id="performance-schema">Performance Schema<a class="headerlink" href="#performance-schema" title="Permanent link">&para;</a></h3>
+<p>You can manage log rotation yourself, for example, with <a href="https://linux.die.net/man/8/logrotate"><code>logrotate</code></a>. If you do, you can disable PMM Client's log rotation by providing a negative value to <code>--size-slow-logs</code> option when adding a service with <code>pmm-admin add</code>.</p>
+<h3 id="performance-schema">Performance Schema</h3>
 <p>This section covers how to configure a MySQL-based database server to use <em>Performance Schema</em> as a source of metrics.</p>
-<h4 id="applicable-versions_2">Applicable versions<a class="headerlink" href="#applicable-versions_2" title="Permanent link">&para;</a></h4>
+<h4 id="applicable-versions_2">Applicable versions</h4>
 <table class="table">
 <thead>
 <tr>
@@ -428,7 +420,7 @@
 </tr>
 </tbody>
 </table>
-<p>PMM&rsquo;s <a href="../../details/dashboards/dashboard-mysql-performance-schema-details.html"><em>MySQL Performance Schema Details</em> dashboard</a> charts the various <a href="https://dev.mysql.com/doc/refman/5.7/en/performance-schema-startup-configuration.html"><code>performance_schema</code></a> metrics.</p>
+<p>PMM's <a href="../../details/dashboards/dashboard-mysql-performance-schema-details.html"><em>MySQL Performance Schema Details</em> dashboard</a> charts the various <a href="https://dev.mysql.com/doc/refman/5.7/en/performance-schema-startup-configuration.html"><code>performance_schema</code></a> metrics.</p>
 <p>To use <em>Performance Schema</em>, set these variables.</p>
 <table class="table">
 <thead>
@@ -461,7 +453,7 @@
 </tr>
 </tbody>
 </table>
-<h4 id="examples_2">Examples<a class="headerlink" href="#examples_2" title="Permanent link">&para;</a></h4>
+<h4 id="examples_2">Examples</h4>
 <ul>
 <li>
 <p>Configuration file.</p>
@@ -480,7 +472,7 @@
 </code></pre></div>
 </li>
 </ul>
-<h4 id="mariadb-1057-or-lower">MariaDB 10.5.7 or lower<a class="headerlink" href="#mariadb-1057-or-lower" title="Permanent link">&para;</a></h4>
+<h4 id="mariadb-1057-or-lower">MariaDB 10.5.7 or lower</h4>
 <p>There is no <em>Explain</em> or <em>Example</em> data shown by default in Query Analytics when monitoring MariaDB instances version 10.5.7 or lower. A workaround is to set this variable.</p>
 <table class="table">
 <thead>
@@ -507,17 +499,17 @@
 </li>
 <li>
 <p>Transactions</p>
-<p>MariaDB doesn&rsquo;t implement queries history for transactions. All queries executed within a transaction won&rsquo;t have query examples since PMM relies on the <code>performance_schema.events_statements_history</code> to grab the query example but that table won&rsquo;t have any query executed as part of a transaction.  </p>
-<p>This behavior is because MariaDB doesn&rsquo;t implement these consumers:</p>
+<p>MariaDB doesn't implement queries history for transactions. All queries executed within a transaction won't have query examples since PMM relies on the <code>performance_schema.events_statements_history</code> to grab the query example but that table won't have any query executed as part of a transaction.  </p>
+<p>This behavior is because MariaDB doesn't implement these consumers:</p>
 <div class="highlight"><pre><span></span><code>events_transactions_current
 events_transactions_history
 events_transactions_history_long
 </code></pre></div>
 </li>
 </ul>
-<h2 id="query-response-time">Query response time<a class="headerlink" href="#query-response-time" title="Permanent link">&para;</a></h2>
+<h2 id="query-response-time">Query response time</h2>
 <p><em>Query time distribution</em> is a chart in the <a href="../../using/query-analytics.html#details-tab"><em>Details</em> tab of Query Analytics</a> showing the proportion of query time spent on various activities. It is enabled with the <code>query_response_time_stats</code> variable and associated plugins.</p>
-<h3 id="applicable-versions_3">Applicable versions<a class="headerlink" href="#applicable-versions_3" title="Permanent link">&para;</a></h3>
+<h3 id="applicable-versions_3">Applicable versions</h3>
 <table class="table">
 <thead>
 <tr>
@@ -584,7 +576,7 @@ events_transactions_history_long
 </ol>
 </li>
 </ul>
-<h2 id="tablestats">Tablestats<a class="headerlink" href="#tablestats" title="Permanent link">&para;</a></h2>
+<h2 id="tablestats">Tablestats</h2>
 <p>Some table metrics are automatically disabled when the number of tables exceeds a default limit of 1000 tables. This prevents PMM Client from affecting the performance of your database server.</p>
 <p>The limit can be changed <a href="#command-line">when adding a service on the command line</a> with the two <code>pmm-admin</code> options:</p>
 <table class="table">
@@ -605,8 +597,8 @@ events_transactions_history_long
 </tr>
 </tbody>
 </table>
-<h2 id="user-statistics">User statistics<a class="headerlink" href="#user-statistics" title="Permanent link">&para;</a></h2>
-<h3 id="applicable-versions_4">Applicable versions<a class="headerlink" href="#applicable-versions_4" title="Permanent link">&para;</a></h3>
+<h2 id="user-statistics">User statistics</h2>
+<h3 id="applicable-versions_4">Applicable versions</h3>
 <p>User activity, individual table and index access details are shown on the <a href="../../details/dashboards/dashboard-mysql-user-details.html">MySQL User Details</a> dashboard when the <code>userstat</code> variable is set.</p>
 <table class="table">
 <thead>
@@ -630,7 +622,7 @@ events_transactions_history_long
 </tr>
 </tbody>
 </table>
-<h3 id="examples_3">Examples<a class="headerlink" href="#examples_3" title="Permanent link">&para;</a></h3>
+<h3 id="examples_3">Examples</h3>
 <ul>
 <li>
 <p>Configuration file.</p>
@@ -643,17 +635,17 @@ events_transactions_history_long
 </code></pre></div>
 </li>
 </ul>
-<h2 id="add-service">Add service<a class="headerlink" href="#add-service" title="Permanent link">&para;</a></h2>
+<h2 id="add-service">Add service</h2>
 <p>When you have configured your database server, you can add a MySQL service with the user interface or on the command line.</p>
-<p>When adding a service with the command line, you must use the <code>pmm-admin --query-source=SOURCE</code> option to match the source you&rsquo;ve chosen and configured the database server for.</p>
+<p>When adding a service with the command line, you must use the <code>pmm-admin --query-source=SOURCE</code> option to match the source you've chosen and configured the database server for.</p>
 <p>With the PMM user interface, you select <em>Use performance schema</em>, or deselect it to use <em>slow query log</em>.</p>
-<h3 id="with-the-user-interface">With the user interface<a class="headerlink" href="#with-the-user-interface" title="Permanent link">&para;</a></h3>
+<h3 id="with-the-user-interface">With the user interface</h3>
 <ol>
 <li>
 <p>Select <i class="uil uil-cog"></i> <em>Configuration</em> → <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.94602 8.89221L9.6093 9.55549L7.84915 11.3156L6.67493 10.1438L7.33821 9.48049L7.84915 9.99143L8.94602 8.89221Z" fill="#000"></path><path d="M16.4273 2.4679V4.04524H7.57258V2.4679H3.1593V22.6406H20.8382V2.4679H16.4273ZM5.87805 19.0429V14.5148H10.4062V19.0429H5.87805ZM11.8288 9.47102H17.7702V10.4085H11.8288V9.47102ZM11.8288 16.3101H17.7702V17.2476H11.8288V16.3101ZM10.4062 7.67571V12.2038H5.87805V7.67571H10.4062Z" fill="#000"></path><path d="M15.7242 1.73906V3.34219H8.27576V1.73906C8.27576 1.53047 8.44685 1.35938 8.65544 1.35938H15.3445C15.5554 1.35938 15.7242 1.53047 15.7242 1.73906Z" fill="#000"></path></svg> <em>PMM Inventory</em> → <svg width="16" height="16" class="css-6tlabr" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.9655 1.58789C6.16682 1.58789 1.46613 6.28859 1.46613 12.0873C1.46613 17.8859 6.16682 22.5866 11.9655 22.5866C17.7641 22.5866 22.4648 17.8859 22.4648 12.0873C22.4648 6.28859 17.7641 1.58789 11.9655 1.58789ZM16.0671 12.8059H12.6747V16.1736C12.6747 16.5702 12.3532 16.8917 11.9565 16.8917C11.7582 16.8917 11.5787 16.8114 11.4487 16.6814C11.3187 16.5514 11.2384 16.3719 11.2384 16.1736V12.8059H7.87073C7.47402 12.8059 7.1526 12.4844 7.1526 12.0877C7.1526 11.8894 7.23285 11.7098 7.36286 11.5798C7.49284 11.4499 7.6724 11.3696 7.87073 11.3696H11.2384V7.97714C11.2384 7.58046 11.5599 7.25904 11.9566 7.25904C12.1549 7.25904 12.3344 7.33926 12.4645 7.46927C12.5944 7.59928 12.6747 7.77881 12.6747 7.97714V11.3696H16.0672C16.4639 11.3696 16.7853 11.691 16.7853 12.0877C16.7852 12.4844 16.4638 12.8059 16.0671 12.8059Z" fill="#000"></path></svg> <em>Add Instance</em>.</p>
 </li>
 <li>
-<p>Select <em>MySQL &ndash; Add a remote instance</em>.</p>
+<p>Select <em>MySQL -- Add a remote instance</em>.</p>
 </li>
 <li>
 <p>Enter or select values for the fields.</p>
@@ -662,16 +654,16 @@ events_transactions_history_long
 <p>Click <em>Add service</em>.</p>
 </li>
 </ol>
-<p><div class="lightgallery"><a data-sub-html="" href="../../_images/PMM_Add_Instance_MySQL.jpg"><img alt="" src="../../_images/PMM_Add_Instance_MySQL.jpg" /></a></div></p>
+<p><img alt="!" src="../../_images/PMM_Add_Instance_MySQL.jpg" /></p>
 <p>If your MySQL instance is configured to use TLS, click on the <em>Use TLS for database connections</em> check box and fill in your TLS certificates and key.</p>
-<p><div class="lightgallery"><a data-sub-html="" href="../../_images/PMM_Add_Instance_MySQL_TLS.jpg"><img alt="" src="../../_images/PMM_Add_Instance_MySQL_TLS.jpg" /></a></div></p>
-<h3 id="on-the-command-line">On the command line<a class="headerlink" href="#on-the-command-line" title="Permanent link">&para;</a></h3>
-<p>Add the database server as a service using one of these example commands. If successful, PMM Client will print <code>MySQL Service added</code> with the service&rsquo;s ID and name. Use the <code>--environment</code> and <code>-custom-labels</code> options to set tags for the service to help identify them.</p>
-<h3 id="examples_4">Examples<a class="headerlink" href="#examples_4" title="Permanent link">&para;</a></h3>
-<h4 id="tls-connection">TLS connection<a class="headerlink" href="#tls-connection" title="Permanent link">&para;</a></h4>
+<p><img alt="!" src="../../_images/PMM_Add_Instance_MySQL_TLS.jpg" /></p>
+<h3 id="on-the-command-line">On the command line</h3>
+<p>Add the database server as a service using one of these example commands. If successful, PMM Client will print <code>MySQL Service added</code> with the service's ID and name. Use the <code>--environment</code> and <code>-custom-labels</code> options to set tags for the service to help identify them.</p>
+<h3 id="examples_4">Examples</h3>
+<h4 id="tls-connection">TLS connection</h4>
 <div class="highlight"><pre><span></span><code>pmm-admin add mysql --username<span class="o">=</span>user --password<span class="o">=</span>pass --tls --tls-skip-verify --tls-ca<span class="o">=</span>pathtoca.pem --tls-cert<span class="o">=</span>pathtocert.pem --tls-key<span class="o">=</span>pathtocertkey.pem --server-url<span class="o">=</span>http://admin:admin@127.0.0.1 --query-source<span class="o">=</span>perfschema name localhost:3306
 </code></pre></div>
-<h4 id="slow-query-log_1">Slow query log<a class="headerlink" href="#slow-query-log_1" title="Permanent link">&para;</a></h4>
+<h4 id="slow-query-log_1">Slow query log</h4>
 <p>Default query source (<code>slowlog</code>), service name (<code>{node name}-mysql</code>), and service address/port (<code>127.0.0.1:3306</code>), with database server account <code>pmm</code> and password <code>pass</code>.</p>
 <div class="highlight"><pre><span></span><code>pmm-admin add mysql --username<span class="o">=</span>pmm --password<span class="o">=</span>pass
 </code></pre></div>
@@ -684,52 +676,48 @@ events_transactions_history_long
 <p>Default query source (<code>slowlog</code>), service name (<code>{node}-mysql</code>), connect via socket.</p>
 <div class="highlight"><pre><span></span><code>pmm-admin add mysql --username<span class="o">=</span>pmm --password<span class="o">=</span>pass --socket<span class="o">=</span>/var/run/mysqld/mysqld.sock
 </code></pre></div>
-<h4 id="performance-schema_1">Performance Schema<a class="headerlink" href="#performance-schema_1" title="Permanent link">&para;</a></h4>
+<h4 id="performance-schema_1">Performance Schema</h4>
 <p>Performance schema query source, service name (<code>MYSQL_NODE</code>) and default service address/port (<code>127.0.0.1:3306</code>).</p>
 <div class="highlight"><pre><span></span><code>pmm-admin add mysql --query-source<span class="o">=</span>perfschema --username<span class="o">=</span>pmm --password<span class="o">=</span>pass MYSQL_NODE
 </code></pre></div>
 <p>Performance schema query source, service name (<code>MYSQL_NODE</code>) and default service address/port (<code>127.0.0.1:3306</code>) specified with flags.</p>
 <div class="highlight"><pre><span></span><code>pmm-admin add mysql --query-source<span class="o">=</span>perfschema --username<span class="o">=</span>pmm --password<span class="o">=</span>pass --service-name<span class="o">=</span>MYSQL_NODE --host<span class="o">=</span><span class="m">127</span>.0.0.1 --port<span class="o">=</span><span class="m">3306</span>
 </code></pre></div>
-<h4 id="identifying-services">Identifying services<a class="headerlink" href="#identifying-services" title="Permanent link">&para;</a></h4>
+<h4 id="identifying-services">Identifying services</h4>
 <p>Default query source (<code>slowlog</code>), environment labeled <code>test</code>, custom labels setting <code>source</code> to <code>slowlog</code>. (This example uses positional parameters for service name and service address.)</p>
 <div class="highlight"><pre><span></span><code>pmm-admin add mysql --environment<span class="o">=</span><span class="nb">test</span> --custom-labels<span class="o">=</span><span class="s1">&#39;source=slowlog&#39;</span>  --username<span class="o">=</span>root --password<span class="o">=</span>password --query-source<span class="o">=</span>slowlog MySQLSlowLog localhost:3306
 </code></pre></div>
-<h2 id="check-the-service">Check the service<a class="headerlink" href="#check-the-service" title="Permanent link">&para;</a></h2>
-<h3 id="pmm-user-interface">PMM user interface<a class="headerlink" href="#pmm-user-interface" title="Permanent link">&para;</a></h3>
+<h2 id="check-the-service">Check the service</h2>
+<h3 id="pmm-user-interface">PMM user interface</h3>
 <ol>
 <li>Select <i class="uil uil-cog"></i> <em>Configuration</em> → <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.94602 8.89221L9.6093 9.55549L7.84915 11.3156L6.67493 10.1438L7.33821 9.48049L7.84915 9.99143L8.94602 8.89221Z" fill="#000"></path><path d="M16.4273 2.4679V4.04524H7.57258V2.4679H3.1593V22.6406H20.8382V2.4679H16.4273ZM5.87805 19.0429V14.5148H10.4062V19.0429H5.87805ZM11.8288 9.47102H17.7702V10.4085H11.8288V9.47102ZM11.8288 16.3101H17.7702V17.2476H11.8288V16.3101ZM10.4062 7.67571V12.2038H5.87805V7.67571H10.4062Z" fill="#000"></path><path d="M15.7242 1.73906V3.34219H8.27576V1.73906C8.27576 1.53047 8.44685 1.35938 8.65544 1.35938H15.3445C15.5554 1.35938 15.7242 1.53047 15.7242 1.73906Z" fill="#000"></path></svg> <em>PMM Inventory</em> → <em>Inventory list</em>.</li>
 <li>Look in the <em>Services</em> tab for a matching <em>Service Type</em> (MySQL), <em>Service name</em>, <em>Addresses</em>, and any other details entered in the form.</li>
 <li>Look in the <em>Agents</em> tab to check the desired data source is being used.</li>
 </ol>
-<h3 id="command-line">Command line<a class="headerlink" href="#command-line" title="Permanent link">&para;</a></h3>
+<h3 id="command-line">Command line</h3>
 <p>Look for your service in the output of this command.</p>
 <div class="highlight"><pre><span></span><code>pmm-admin inventory list services --service-type<span class="o">=</span>mysql
 </code></pre></div>
-<h3 id="check-data">Check data<a class="headerlink" href="#check-data" title="Permanent link">&para;</a></h3>
+<h3 id="check-data">Check data</h3>
 <ol>
 <li>Open the <em>MySQL Instance Summary</em> dashboard.</li>
 <li>Set the <em>Service Name</em> to the newly-added service.</li>
 </ol>
-<h4 id="percona-server-for-mysql-mariadb">Percona Server for MySQL, MariaDB<a class="headerlink" href="#percona-server-for-mysql-mariadb" title="Permanent link">&para;</a></h4>
+<h4 id="percona-server-for-mysql-mariadb">Percona Server for MySQL, MariaDB</h4>
 <p>If query response time plugin was installed, check for data in the <em>MySQL Query Response Time Details</em> dashboard or select a query in <em>PMM Query Analytics</em> to see the <em>Query time distribution</em> bar.</p>
-<h4 id="percona-xtradb-cluster">Percona XtraDB Cluster<a class="headerlink" href="#percona-xtradb-cluster" title="Permanent link">&para;</a></h4>
+<h4 id="percona-xtradb-cluster">Percona XtraDB Cluster</h4>
 <p>Open the <a href="../../details/dashboards/dashboard-pxc-galera-cluster-summary.html"><em>PXC/Galera Cluster Summary</em> dashboard</a>.</p>
-<div class="admonition seealso alert alert-info">
-<p class="admonition-title">See also</p>
-<ul>
-<li><a href="https://www.percona.com/doc/percona-server/LATEST/diagnostics/slow_extended.html">Percona Server for MySQL &ndash; Slow Query Log Extended</a></li>
-<li><a href="https://www.percona.com/doc/percona-server/LATEST/diagnostics/user_stats.html">Percona Server for MySQL &ndash; User Statistics</a></li>
-<li><a href="https://mariadb.com/kb/en/slow-query-log-overview/">MariaDB &ndash; Slow Query Log Overview</a></li>
-<li><a href="https://mariadb.com/kb/en/slow-query-log-extended-statistics/">MariaDB &ndash; Slow Query Log Extended Statistics</a></li>
-<li><a href="https://mariadb.com/kb/en/user-statistics/">MariaDB &ndash; User Statistics</a></li>
-<li><a href="https://www.percona.com/blog/2014/02/11/performance_schema-vs-slow-query-log/">Percona Blog &ndash; PERFORMANCE_SCHEMA vs Slow Query Log</a></li>
-<li><a href="https://www.percona.com/blog/2014/11/18/mysqls-innodb_metrics-table-how-much-is-the-overhead/">Percona Blog &ndash; MySQL&rsquo;s INNODB_METRICS table</a></li>
-<li><a href="https://www.percona.com/blog/2013/04/18/rotating-mysql-slow-logs-safely/">Percona Blog &ndash; Rotating MySQL Slow Logs Safely</a></li>
-<li><a href="https://www.percona.com/blog/2009/02/10/impact-of-logging-on-mysql%E2%80%99s-performance/">Percona Blog &ndash; Impact of logging on MySQL&rsquo;s performance</a></li>
-<li><a href="https://www.percona.com/blog/2020/06/10/running-custom-queries-in-percona-monitoring-and-management/">Percona Blog &ndash; Running Custom MySQL Queries in Percona Monitoring and Management</a></li>
-</ul>
-</div>
+<p>!!! seealso alert alert-info "See also"
+    - <a href="https://www.percona.com/doc/percona-server/LATEST/diagnostics/slow_extended.html">Percona Server for MySQL -- Slow Query Log Extended</a>
+    - <a href="https://www.percona.com/doc/percona-server/LATEST/diagnostics/user_stats.html">Percona Server for MySQL -- User Statistics</a>
+    - <a href="https://mariadb.com/kb/en/slow-query-log-overview/">MariaDB -- Slow Query Log Overview</a>
+    - <a href="https://mariadb.com/kb/en/slow-query-log-extended-statistics/">MariaDB -- Slow Query Log Extended Statistics</a>
+    - <a href="https://mariadb.com/kb/en/user-statistics/">MariaDB -- User Statistics</a>
+    - <a href="https://www.percona.com/blog/2014/02/11/performance_schema-vs-slow-query-log/">Percona Blog -- PERFORMANCE_SCHEMA vs Slow Query Log</a>
+    - <a href="https://www.percona.com/blog/2014/11/18/mysqls-innodb_metrics-table-how-much-is-the-overhead/">Percona Blog -- MySQL's INNODB_METRICS table</a>
+    - <a href="https://www.percona.com/blog/2013/04/18/rotating-mysql-slow-logs-safely/">Percona Blog -- Rotating MySQL Slow Logs Safely</a>
+    - <a href="https://www.percona.com/blog/2009/02/10/impact-of-logging-on-mysql%E2%80%99s-performance/">Percona Blog -- Impact of logging on MySQL's performance</a>
+    - <a href="https://www.percona.com/blog/2020/06/10/running-custom-queries-in-percona-monitoring-and-management/">Percona Blog -- Running Custom MySQL Queries in Percona Monitoring and Management</a></p>
                     </div>
                 </div>
                 
@@ -1087,11 +1075,19 @@ events_transactions_history_long
 
 
 
-
-<li class="toctree-l2">
-    <a class="reference internal" href="../../details/develop-checks.html">Developing Advisors</a>
+</ul>
 
 
+
+
+
+<li class="toctree-l1">
+    <a class="reference internal" href="../../details/develop-checks.html">Developing Advisor checks</a>
+
+
+
+
+<ul class="toctree" id="toctree">
 
 
 <li class="toctree-l2">
