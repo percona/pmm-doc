@@ -45,7 +45,7 @@ Checks include the following fields:
 - **Interval** (string/enum, optional): defines running interval. Can be one of the predefined intervals in the UI: Standard, Frequent, Rare.
 - **Type** (string/enum, required): defines the query type and the PMM Service type for which the advisor runs. Check the list of available types in the table below.
 - **Query** (string, can be absent if the type defines the whole query by itself): The query is executed on the PMM Client side and contains query specific for the target DBMS.
-- **Script** (string, required): contains a small Starlarck program that processes query results, and returns check results. It is executed on the PMM Server side.
+- **Script** (string, required): contains a small Starlark program that processes query results, and returns check results. It is executed on the PMM Server side.
  
 ## Checks script
  
@@ -72,7 +72,7 @@ Expand the table below for the list of checks types that you can use to define y
 
     | Check type  |  Description | "query" required (must be empty if "No")   |  
     |---|---|---|
-    | MYSQL_SHOW |Executes 'SHOW …' clause against MySQL database. This check is available  starting with PMM 2.26 | |Yes|
+    | MYSQL_SHOW |Executes 'SHOW …' clause against MySQL database. This check is available  starting with PMM 2.6 | |Yes|
     | MYSQL_SELECT    |     Executes 'SELECT …' clause against MySQL database. This check is available  starting with PMM 2.26        |Yes|
     | POSTGRESQL_SHOW     |    Executes 'SHOW ALL' command against PosgreSQL database. This check is available  starting with PMM 2.26.       |No|
     | POSTGRESQL_SELECT      | Executes 'SELECT …' clause against PosgreSQL database. This check is available  starting with PMM 2.26.    |Yes|
