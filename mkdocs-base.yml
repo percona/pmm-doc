@@ -145,7 +145,7 @@ nav:
           - details/index.md
           - details/architecture.md
           - details/interface.md
-                - Dashboards:
+          - Dashboards:
                 - details/dashboards/index.md
                 - Insight:
                       - details/dashboards/dashboard-home.md
