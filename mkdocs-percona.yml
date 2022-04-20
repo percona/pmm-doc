@@ -58,9 +58,9 @@ plugins:
           - use-case.mysql-slow-log-rotation.md # Added to conf-mysql
           - use-case.external-monitoring-service.postgresql.rds.md # Added to conf-postgres
     - with-pdf:
-        output_path: '_pdf/PerconaMonitoringAndManagement-1.17.4.pdf'
+        output_path: '_pdf/PerconaMonitoringAndManagement-1.17.5.pdf'
         cover_title: 'Documentation'
-        cover_subtitle: 1.17.4
+        cover_subtitle: 1.17.5
         author: 'Percona Technical Documentation Team'
         cover_logo: docs/_images/PMM_Logo.svg
         debug_html: false
@@ -144,6 +144,7 @@ nav:
   - 'Reference':
     - 'Release Notes':
         - 'release-notes/index.md'
+        - 'release-notes/1.17.5.md'
         - 'release-notes/1.17.4.md'
         - 'release-notes/1.17.3.md'
         - 'release-notes/1.17.2.md'
