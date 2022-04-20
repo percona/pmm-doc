@@ -208,6 +208,7 @@ nav:
       - details/api.md
       - details/victoria-metrics.md
       - details/glossary.md
+      - details/develop-checks.md
   - faq.md
   - Release Notes:
       - release-notes/index.md
