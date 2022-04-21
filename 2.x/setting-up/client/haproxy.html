@@ -115,8 +115,8 @@
 
                 <div class="bodywrapper">
                     <div class="body">
-                        <h1 id="haproxy">HAProxy</h1>
-<h2 id="adding-haproxy-services">Adding HAProxy services</h2>
+                        <h1 id="haproxy">HAProxy<a class="headerlink" href="#haproxy" title="Permanent link">&para;</a></h1>
+<h2 id="adding-haproxy-services">Adding HAProxy services<a class="headerlink" href="#adding-haproxy-services" title="Permanent link">&para;</a></h2>
 <p>You can collect metrics from <a href="https://www.haproxy.com/">HAProxy</a> on a node when:</p>
 <ul>
 <li>
@@ -136,7 +136,7 @@
 <p>This node has been <a href="index.html">configured</a> using the <code>pmm-admin config</code> command.</p>
 </li>
 </ul>
-<h2 id="usage">USAGE</h2>
+<h2 id="usage">USAGE<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>pmm-admin add haproxy --listen-port<span class="o">=</span><span class="m">8404</span>
 </code></pre></div>
 <p>where <code>listen-port</code> is the port number where HAProxy running. (This is the only required flag.)</p>
@@ -146,7 +146,7 @@ Service ID  : /service_id/c481183f-70a2-443f-91e5-cae5cecd06a2
 Service name: Ubuntu-haproxy
 </code></pre></div>
 <p>Additionally, one positional argument can be appended to the command line flags: a service name to be used by PMM. If not specified, they are substituted automatically as <code>&lt;node&gt;-haproxy</code>.</p>
-<p>During adding here is connection check (can be skipped by flag <code>--skip-connection-check</code>). If HAProxy doesn't run properly on the given port then you will see an error message:</p>
+<p>During adding here is connection check (can be skipped by flag <code>--skip-connection-check</code>). If HAProxy doesn&rsquo;t run properly on the given port then you will see an error message:</p>
 <div class="highlight"><pre><span></span><code>Connection check failed: Get &quot;http://127.0.0.1:8404/metrics&quot;: dial tcp 127.0.0.1:8404: connect: connection refused.
 </code></pre></div>
 <p>Beside positional argument shown above you can specify service name  with the following flags: <code>--username</code>, <code>--password</code>, <code>--metrics-path</code> (path for scraping metrics, default: /metrics) and <code>--scheme</code> (http or https). Here are some examples:</p>
@@ -156,7 +156,7 @@ pmm-admin add haproxy --listen-port<span class="o">=</span><span class="m">8404<
 <p>Here you can check list of all available flags: <a href="../../details/commands/pmm-admin.html">pmm-admin</a>.</p>
 <p>You can also add HAProxy by UI in Grafana: Select <i class="uil uil-cog"></i> <em>Configuration</em> → <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.94602 8.89221L9.6093 9.55549L7.84915 11.3156L6.67493 10.1438L7.33821 9.48049L7.84915 9.99143L8.94602 8.89221Z" fill="#000"></path><path d="M16.4273 2.4679V4.04524H7.57258V2.4679H3.1593V22.6406H20.8382V2.4679H16.4273ZM5.87805 19.0429V14.5148H10.4062V19.0429H5.87805ZM11.8288 9.47102H17.7702V10.4085H11.8288V9.47102ZM11.8288 16.3101H17.7702V17.2476H11.8288V16.3101ZM10.4062 7.67571V12.2038H5.87805V7.67571H10.4062Z" fill="#000"></path><path d="M15.7242 1.73906V3.34219H8.27576V1.73906C8.27576 1.53047 8.44685 1.35938 8.65544 1.35938H15.3445C15.5554 1.35938 15.7242 1.53047 15.7242 1.73906Z" fill="#000"></path></svg> <em>PMM Inventory</em> → <svg width="16" height="16" class="css-6tlabr" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.9655 1.58789C6.16682 1.58789 1.46613 6.28859 1.46613 12.0873C1.46613 17.8859 6.16682 22.5866 11.9655 22.5866C17.7641 22.5866 22.4648 17.8859 22.4648 12.0873C22.4648 6.28859 17.7641 1.58789 11.9655 1.58789ZM16.0671 12.8059H12.6747V16.1736C12.6747 16.5702 12.3532 16.8917 11.9565 16.8917C11.7582 16.8917 11.5787 16.8114 11.4487 16.6814C11.3187 16.5514 11.2384 16.3719 11.2384 16.1736V12.8059H7.87073C7.47402 12.8059 7.1526 12.4844 7.1526 12.0877C7.1526 11.8894 7.23285 11.7098 7.36286 11.5798C7.49284 11.4499 7.6724 11.3696 7.87073 11.3696H11.2384V7.97714C11.2384 7.58046 11.5599 7.25904 11.9566 7.25904C12.1549 7.25904 12.3344 7.33926 12.4645 7.46927C12.5944 7.59928 12.6747 7.77881 12.6747 7.97714V11.3696H16.0672C16.4639 11.3696 16.7853 11.691 16.7853 12.0877C16.7852 12.4844 16.4638 12.8059 16.0671 12.8059Z" fill="#000"></path></svg> <em>Add Instance</em>.</p>
 <p>HAProxy data is visible in the <em>Advanced Data Exploration</em> dashboard:</p>
-<p><img alt="!" src="../../_images/PMM_Advanced_Data_Exploration_HAProxy.png" /></p>
+<p><div class="lightgallery"><a data-sub-html="" href="../../_images/PMM_Advanced_Data_Exploration_HAProxy.png"><img alt="" src="../../_images/PMM_Advanced_Data_Exploration_HAProxy.png" /></a></div></p>
                     </div>
                 </div>
                 
@@ -513,20 +513,6 @@ pmm-admin add haproxy --listen-port<span class="o">=</span><span class="m">8404<
     <a class="reference internal" href="../../details/interface.html">UI components</a>
 
 
-
-</ul>
-
-
-
-
-
-<li class="toctree-l1">
-    <a class="reference internal" href="../../details/develop-checks.html">Developing Advisor checks</a>
-
-
-
-
-<ul class="toctree" id="toctree">
 
 
 <li class="toctree-l2">
@@ -965,6 +951,12 @@ pmm-admin add haproxy --listen-port<span class="o">=</span><span class="m">8404<
 
 <li class="toctree-l2">
     <a class="reference internal" href="../../details/glossary.html">Glossary</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../details/develop-checks.html">Develop Advisor checks</a>
 
 
 

@@ -115,27 +115,27 @@
 
                 <div class="bodywrapper">
                     <div class="body">
-                        <h1 id="mongodb-inmemory-details">MongoDB InMemory Details</h1>
-<p><img alt="!image" src="../../_images/PMM_MongoDB_InMemory_Details.jpg" /></p>
-<h2 id="inmemory-transactions">InMemory Transactions</h2>
+                        <h1 id="mongodb-inmemory-details">MongoDB InMemory Details<a class="headerlink" href="#mongodb-inmemory-details" title="Permanent link">&para;</a></h1>
+<p><div class="lightgallery"><a data-sub-html="image" href="../../_images/PMM_MongoDB_InMemory_Details.jpg"><img alt="image" src="../../_images/PMM_MongoDB_InMemory_Details.jpg" /></a></div></p>
+<h2 id="inmemory-transactions">InMemory Transactions<a class="headerlink" href="#inmemory-transactions" title="Permanent link">&para;</a></h2>
 <p>WiredTiger internal transactions</p>
-<h2 id="inmemory-capacity">InMemory Capacity</h2>
+<h2 id="inmemory-capacity">InMemory Capacity<a class="headerlink" href="#inmemory-capacity" title="Permanent link">&para;</a></h2>
 <p>Configured max and current size of the WiredTiger cache.</p>
-<h2 id="inmemory-sessions">InMemory Sessions</h2>
+<h2 id="inmemory-sessions">InMemory Sessions<a class="headerlink" href="#inmemory-sessions" title="Permanent link">&para;</a></h2>
 <p>Internal WiredTiger storage engine cursors and sessions currently open.</p>
-<h2 id="inmemory-pages">InMemory Pages</h2>
+<h2 id="inmemory-pages">InMemory Pages<a class="headerlink" href="#inmemory-pages" title="Permanent link">&para;</a></h2>
 <p>Pages in the WiredTiger cache</p>
-<h2 id="inmemory-concurrency-tickets">InMemory Concurrency Tickets</h2>
-<p>A WT 'ticket' is assigned out for every operation running simultaneously in the WT storage engine. "Tickets available" = hard coded high value - "Tickets Out".</p>
-<h2 id="queued-operations">Queued Operations</h2>
+<h2 id="inmemory-concurrency-tickets">InMemory Concurrency Tickets<a class="headerlink" href="#inmemory-concurrency-tickets" title="Permanent link">&para;</a></h2>
+<p>A WT &lsquo;ticket&rsquo; is assigned out for every operation running simultaneously in the WT storage engine. &ldquo;Tickets available&rdquo; = hard coded high value - &ldquo;Tickets Out&rdquo;.</p>
+<h2 id="queued-operations">Queued Operations<a class="headerlink" href="#queued-operations" title="Permanent link">&para;</a></h2>
 <p>Operations queued due to a lock</p>
-<h2 id="document-changes">Document Changes</h2>
+<h2 id="document-changes">Document Changes<a class="headerlink" href="#document-changes" title="Permanent link">&para;</a></h2>
 <p>Mixed metrics: Docs per second inserted, updated, deleted or returned on any type of node (primary or secondary); + replicated write Ops/sec; + TTL deletes per second.</p>
-<h2 id="inmemory-cache-eviction">InMemory Cache Eviction</h2>
+<h2 id="inmemory-cache-eviction">InMemory Cache Eviction<a class="headerlink" href="#inmemory-cache-eviction" title="Permanent link">&para;</a></h2>
 <p>This panel shows the number of pages that have been evicted from the WiredTiger cache for the given time period. The InMemory storage engine only evicts modified pages which signals a compaction of the data and removal of the dirty pages.</p>
-<h2 id="scanned-and-moved-objects">Scanned and Moved Objects</h2>
+<h2 id="scanned-and-moved-objects">Scanned and Moved Objects<a class="headerlink" href="#scanned-and-moved-objects" title="Permanent link">&para;</a></h2>
 <p>This panel shows the number of objects (both data (<code>scanned_objects</code>) and index (<code>scanned</code>)) as well as the number of documents that were moved to a new location due to the size of the document growing. Moved documents only apply to the MMAPv1 storage engine.</p>
-<h2 id="page-faults">Page Faults</h2>
+<h2 id="page-faults">Page Faults<a class="headerlink" href="#page-faults" title="Permanent link">&para;</a></h2>
 <p>Unix or Window memory page faults. Not necessarily from MongoDB.</p>
                     </div>
                 </div>
@@ -493,20 +493,6 @@
     <a class="reference internal" href="../interface.html">UI components</a>
 
 
-
-</ul>
-
-
-
-
-
-<li class="toctree-l1">
-    <a class="reference internal" href="../develop-checks.html">Developing Advisor checks</a>
-
-
-
-
-<ul class="toctree" id="toctree">
 
 
 <li class="toctree-l2">
@@ -945,6 +931,12 @@
 
 <li class="toctree-l2">
     <a class="reference internal" href="../glossary.html">Glossary</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../develop-checks.html">Develop Advisor checks</a>
 
 
 

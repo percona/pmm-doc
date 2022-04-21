@@ -115,16 +115,16 @@
 
                 <div class="bodywrapper">
                     <div class="body">
-                        <h1 id="aws-marketplace">AWS Marketplace</h1>
+                        <h1 id="aws-marketplace">AWS Marketplace<a class="headerlink" href="#aws-marketplace" title="Permanent link">&para;</a></h1>
 <p>You can run an instance of PMM Server hosted at AWS Marketplace.</p>
 <p>Assuming that you have an AWS (Amazon Web Services) account, locate <em>Percona Monitoring and Management Server</em> in <a href="https://aws.amazon.com/marketplace">AWS Marketplace</a> or use <a href="https://aws.amazon.com/marketplace/pp/B077J7FYGX">this link</a>.</p>
-<p><img alt="!" src="../../_images/PMM_AWS_Marketplace.png" /></p>
+<p><div class="lightgallery"><a data-sub-html="" href="../../_images/PMM_AWS_Marketplace.png"><img alt="" src="../../_images/PMM_AWS_Marketplace.png" /></a></div></p>
 <p>Selecting a region and instance type in the <em>Pricing Information</em> section will give you an estimate of the costs involved. This is only an indication of costs. You will choose regions and instance types in later steps.</p>
 <p>Percona Monitoring and Management Server is provided at no cost, but you may need to pay for infrastructure costs.</p>
-<p>!!! note alert alert-primary ""
-    Disk space consumed by PMM Server depends on the number of hosts being monitored. Although each environment will be unique, you can consider the data consumption figures for the <a href="https://pmmdemo.percona.com/">PMM Demo</a> web site which consumes approximately 230 MB per host per day, or approximately 6.9 GB per host at the default 30 day retention period.</p>
-<pre><code>For more information, see our blog post [How much disk space should I allocate for Percona Monitoring and Management?](https://www.percona.com/blog/2017/05/04/how-much-disk-space-should-i-allocate-for-percona-monitoring-and-management/).
-</code></pre>
+<div class="admonition note alert alert-primary">
+<p>Disk space consumed by PMM Server depends on the number of hosts being monitored. Although each environment will be unique, you can consider the data consumption figures for the <a href="https://pmmdemo.percona.com/">PMM Demo</a> web site which consumes approximately 230 MB per host per day, or approximately 6.9 GB per host at the default 30 day retention period.</p>
+<p>For more information, see our blog post <a href="https://www.percona.com/blog/2017/05/04/how-much-disk-space-should-i-allocate-for-percona-monitoring-and-management/">How much disk space should I allocate for Percona Monitoring and Management?</a>.</p>
+</div>
 <ol>
 <li>
 <p>Click <em>Continue to Subscribe</em>.</p>
@@ -167,44 +167,47 @@
 </ol>
 </li>
 </ol>
-<h2 id="limiting-access-to-the-instance-security-group-and-a-key-pair">Limiting Access to the instance: security group and a key pair</h2>
+<h2 id="limiting-access-to-the-instance-security-group-and-a-key-pair">Limiting Access to the instance: security group and a key pair<a class="headerlink" href="#limiting-access-to-the-instance-security-group-and-a-key-pair" title="Permanent link">&para;</a></h2>
 <p>In the <em>Security Group</em> section, which acts like a firewall, you may use the preselected option <code>Create new based on seller settings</code> to create a security group with recommended settings. In the <em>Key Pair</em> select an already set up EC2 key pair to limit access to your instance.</p>
-<p><img alt="!image" src="../../_images/aws-marketplace.pmm.launch-on-ec2.1-click-launch.3.png" /></p>
-<p>!!! caution alert alert-warning "Important"
-    The security group should allow communication via the the following ports: <em>22</em>, <em>80</em>, and <em>443</em>. PMM should also be able to access port <em>3306</em> on the RDS that uses the instance.</p>
-<pre><code>![!image](../../_images/aws-marketplace.pmm.launch-on-ec2.1-click-launch.2.png)
-</code></pre>
-<h2 id="applying-settings">Applying settings</h2>
+<p><div class="lightgallery"><a data-sub-html="image" href="../../_images/aws-marketplace.pmm.launch-on-ec2.1-click-launch.3.png"><img alt="image" src="../../_images/aws-marketplace.pmm.launch-on-ec2.1-click-launch.3.png" /></a></div></p>
+<div class="admonition caution alert alert-warning">
+<p class="admonition-title">Important</p>
+<p>The security group should allow communication via the the following ports: <em>22</em>, <em>80</em>, and <em>443</em>. PMM should also be able to access port <em>3306</em> on the RDS that uses the instance.</p>
+<p><div class="lightgallery"><a data-sub-html="image" href="../../_images/aws-marketplace.pmm.launch-on-ec2.1-click-launch.2.png"><img alt="image" src="../../_images/aws-marketplace.pmm.launch-on-ec2.1-click-launch.2.png" /></a></div></p>
+</div>
+<h2 id="applying-settings">Applying settings<a class="headerlink" href="#applying-settings" title="Permanent link">&para;</a></h2>
 <p>Scroll up to the top of the page to view your settings. Then, click the <em>Launch with 1 click</em> button to continue and adjust your settings in the EC2 console.</p>
 <p>Your instance settings are summarized in a special area. Click the Launch with 1 click button to continue.</p>
-<p><img alt="!image" src="../../_images/aws-marketplace.pmm.launch-on-ec2.1-click-launch.3.png" /></p>
-<p>!!! note alert alert-primary ""
-    The <em>Launch with 1 click</em> button may alternatively be titled as <em>Accept Software Terms &amp; Launch with 1-Click</em>.</p>
-<h2 id="adjusting-instance-settings-in-the-ec2-console">Adjusting instance settings in the EC2 Console</h2>
+<p><div class="lightgallery"><a data-sub-html="image" href="../../_images/aws-marketplace.pmm.launch-on-ec2.1-click-launch.3.png"><img alt="image" src="../../_images/aws-marketplace.pmm.launch-on-ec2.1-click-launch.3.png" /></a></div></p>
+<div class="admonition note alert alert-primary">
+<p>The <em>Launch with 1 click</em> button may alternatively be titled as <em>Accept Software Terms &amp; Launch with 1-Click</em>.</p>
+</div>
+<h2 id="adjusting-instance-settings-in-the-ec2-console">Adjusting instance settings in the EC2 Console<a class="headerlink" href="#adjusting-instance-settings-in-the-ec2-console" title="Permanent link">&para;</a></h2>
 <p>Your clicking the <em>Launch with 1 click</em> button, deploys your instance. To continue setting up your instance, run the EC2 console. It is available as a link at the top of the page that opens after you click the <em>Launch with 1 click</em> button.</p>
 <p>Your instance appears in the EC2 console in a table that lists all instances available to you. When a new instance is only created, it has no name. Make sure that you give it a name to distinguish from other instances managed via the EC2 console.</p>
-<p><img alt="!image" src="../../_images/aws-marketplace.ec2-console.pmm.1.png" /></p>
-<h2 id="running-the-instance">Running the instance</h2>
+<p><div class="lightgallery"><a data-sub-html="image" href="../../_images/aws-marketplace.ec2-console.pmm.1.png"><img alt="image" src="../../_images/aws-marketplace.ec2-console.pmm.1.png" /></a></div></p>
+<h2 id="running-the-instance">Running the instance<a class="headerlink" href="#running-the-instance" title="Permanent link">&para;</a></h2>
 <p>After you add your new instance it will take some time to initialize it. When the AWS console reports that the instance is now in a running state, you many continue with configuration of PMM Server.</p>
-<p>!!! note alert alert-primary ""
-    When started the next time after rebooting, your instance may acquire another IP address. You may choose to set up an elastic IP to avoid this problem.</p>
+<div class="admonition note alert alert-primary">
+<p>When started the next time after rebooting, your instance may acquire another IP address. You may choose to set up an elastic IP to avoid this problem.</p>
+</div>
 <p>With your instance selected, open its IP address in a web browser. The IP address appears in the <em>IPv4 Public IP</em> column or as value of the <em>Public IP</em> field at the top of the <em>Properties</em> panel.</p>
-<p><img alt="!image" src="../../_images/aws-marketplace.pmm.ec2.properties.png" /></p>
+<p><div class="lightgallery"><a data-sub-html="image" href="../../_images/aws-marketplace.pmm.ec2.properties.png"><img alt="image" src="../../_images/aws-marketplace.pmm.ec2.properties.png" /></a></div></p>
 <p>To run the instance, copy and paste its public IP address to the location bar of your browser. In the <em>Percona Monitoring and Management</em> welcome page that opens, enter the instance ID.</p>
-<p><img alt="!image" src="../../_images/installation-wizard.ami.instance-id-verification.png" /></p>
+<p><div class="lightgallery"><a data-sub-html="image" href="../../_images/installation-wizard.ami.instance-id-verification.png"><img alt="image" src="../../_images/installation-wizard.ami.instance-id-verification.png" /></a></div></p>
 <p>You can copy the instance ID from the <em>Properties</em> panel of your instance, select the <em>Description</em> tab back in the EC2 console. Click the <em>Copy</em> button next to the <em>Instance ID</em> field. This button appears as soon as you hover the cursor of your mouse over the ID.</p>
 <p>Hover the cursor over the instance ID for the Copy button to appear.</p>
-<p><img alt="!image" src="../../_images/aws-marketplace.pmm.ec2.properties.instance-id.png" /></p>
+<p><div class="lightgallery"><a data-sub-html="image" href="../../_images/aws-marketplace.pmm.ec2.properties.instance-id.png"><img alt="image" src="../../_images/aws-marketplace.pmm.ec2.properties.instance-id.png" /></a></div></p>
 <p>Paste the instance in the <em>Instance ID</em> field of the <em>Percona Monitoring and Management</em> welcome page and click <em>Submit</em>.</p>
 <p>PMM Server provides user access control, and therefore you will need user credentials to access it:</p>
-<p><img alt="!image" src="../../_images/PMM_Login.jpg" /></p>
+<p><div class="lightgallery"><a data-sub-html="image" href="../../_images/PMM_Login.jpg"><img alt="image" src="../../_images/PMM_Login.jpg" /></a></div></p>
 <ul>
 <li>Default user name: <code>admin</code></li>
 <li>Default password: <code>admin</code></li>
 </ul>
 <p>You will be prompted to change the default password every time you log in.</p>
 <p>The PMM Server is now ready and the home page opens.</p>
-<p><img alt="!image" src="../../_images/PMM_Home_Dashboard.png" /></p>
+<p><div class="lightgallery"><a data-sub-html="image" href="../../_images/PMM_Home_Dashboard.png"><img alt="image" src="../../_images/PMM_Home_Dashboard.png" /></a></div></p>
 <p>You are creating a username and password that will be used for two purposes:</p>
 <ol>
 <li>
@@ -214,30 +217,31 @@
 <p>authentication between PMM Server and PMM Clients - you will re-use these credentials on another host when configuring PMM Client for the first time on a server, for example (DO NOT RUN ON THIS PMM SERVER YOU JUST CREATED):</p>
 <div class="highlight"><pre><span></span><code>pmm-admin config --server-insecure-tls --server-url<span class="o">=</span>https://admin:admin@&lt;IP Address&gt;:443
 </code></pre></div>
-<p>!!! note alert alert-primary ""
-    For instructions about how to access your instances by using an SSH client, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstancesLinux.html">Connecting to Your Linux Instance Using SSH</a></p>
+<div class="admonition note alert alert-primary">
+<p>For instructions about how to access your instances by using an SSH client, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstancesLinux.html">Connecting to Your Linux Instance Using SSH</a></p>
+</div>
 <p>Make sure to replace the user name <code>ec2-user</code> used in this document with <code>admin</code>.</p>
 </li>
 </ol>
-<h2 id="resizing-the-ebs-volume">Resizing the EBS Volume</h2>
+<h2 id="resizing-the-ebs-volume">Resizing the EBS Volume<a class="headerlink" href="#resizing-the-ebs-volume" title="Permanent link">&para;</a></h2>
 <p>Your AWS instance comes with a predefined size which can become a limitation. To make more disk space available to your instance, you need to increase the size of the EBS volume as needed and then your instance will reconfigure itself to use the new size.</p>
 <p>The procedure of resizing EBS volumes is described in the Amazon documentation: <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-modify-volume.html">Modifying the Size, IOPS, or Type of an EBS Volume on Linux</a>.</p>
 <p>After the EBS volume is updated, PMM Server instance will auto-detect changes in approximately 5 minutes or less and will reconfigure itself for the updated conditions.</p>
-<h2 id="upgrading-pmm-server-on-aws">Upgrading PMM Server on AWS</h2>
-<h3 id="change-public-ip-address">Change Public IP address</h3>
+<h2 id="upgrading-pmm-server-on-aws">Upgrading PMM Server on AWS<a class="headerlink" href="#upgrading-pmm-server-on-aws" title="Permanent link">&para;</a></h2>
+<h3 id="change-public-ip-address">Change Public IP address<a class="headerlink" href="#change-public-ip-address" title="Permanent link">&para;</a></h3>
 <p>To assign a public IP address for an Amazon EC2 instance, follow these steps:</p>
 <ol>
 <li>
 <p>Allocate Elastic IP address</p>
-<p><img alt="!image" src="../../_images/aws-marketplace.pmm.ec2.ip.allocate.png" /></p>
+<p><div class="lightgallery"><a data-sub-html="image" href="../../_images/aws-marketplace.pmm.ec2.ip.allocate.png"><img alt="image" src="../../_images/aws-marketplace.pmm.ec2.ip.allocate.png" /></a></div></p>
 </li>
 <li>
 <p>Associate Elastic IP address with a Network interface ID of your EC2 instance</p>
 <p>If you associate an Elastic IP address to an instance that already has an Elastic IP address associated, this previously associated Elastic IP address will be disassociated but still allocated to your account.</p>
-<p><img alt="!image" src="../../_images/aws-marketplace.pmm.ec2.ip.associate.png" /></p>
+<p><div class="lightgallery"><a data-sub-html="image" href="../../_images/aws-marketplace.pmm.ec2.ip.associate.png"><img alt="image" src="../../_images/aws-marketplace.pmm.ec2.ip.associate.png" /></a></div></p>
 </li>
 </ol>
-<h3 id="upgrading-ec2-instance-class">Upgrading EC2 instance class</h3>
+<h3 id="upgrading-ec2-instance-class">Upgrading EC2 instance class<a class="headerlink" href="#upgrading-ec2-instance-class" title="Permanent link">&para;</a></h3>
 <p>Upgrading to a larger EC2 instance class is supported by PMM provided you follow the instructions from the <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-resize.html">AWS manual</a>. The PMM AMI image uses a distinct EBS volume for the PMM data volume which permits independent resizing of the EC2 instance without impacting the EBS volume.</p>
 <ol>
 <li>
@@ -251,13 +255,13 @@
 </li>
 <li>
 <p>In the Change instance type dialog box, select the instance type that you want.</p>
-<p><img alt="!image" src="../../_images/aws-marketplace.pmm.ec2.instance.upgrade.png" /></p>
+<p><div class="lightgallery"><a data-sub-html="image" href="../../_images/aws-marketplace.pmm.ec2.instance.upgrade.png"><img alt="image" src="../../_images/aws-marketplace.pmm.ec2.instance.upgrade.png" /></a></div></p>
 </li>
 <li>
 <p>Choose Apply to accept the new settings and start the stopped instance.</p>
 </li>
 </ol>
-<h3 id="expanding-the-pmm-data-ebs-volume">Expanding the PMM Data EBS Volume</h3>
+<h3 id="expanding-the-pmm-data-ebs-volume">Expanding the PMM Data EBS Volume<a class="headerlink" href="#expanding-the-pmm-data-ebs-volume" title="Permanent link">&para;</a></h3>
 <p>The PMM data volume is mounted as an XFS formatted volume on top of an LVM volume. There are two ways to increase this volume size:</p>
 <ol>
 <li>
@@ -267,7 +271,7 @@
 <p>Expand existing EBS volume and grow the LVM volume.</p>
 </li>
 </ol>
-<h3 id="expand-existing-ebs-volume">Expand existing EBS volume</h3>
+<h3 id="expand-existing-ebs-volume">Expand existing EBS volume<a class="headerlink" href="#expand-existing-ebs-volume" title="Permanent link">&para;</a></h3>
 <p>To expand the existing EBS volume for increased capacity, follow these steps.</p>
 <ol>
 <li>
@@ -381,7 +385,7 @@ data blocks changed from 3354624 to 8335360
 </code></pre></div>
 </li>
 </ol>
-<h3 id="expand-the-amazon-ebs-root-volume">Expand the Amazon EBS root volume</h3>
+<h3 id="expand-the-amazon-ebs-root-volume">Expand the Amazon EBS root volume<a class="headerlink" href="#expand-the-amazon-ebs-root-volume" title="Permanent link">&para;</a></h3>
 <ol>
 <li>
 <p>Expand the disk from AWS Console/CLI to the desired capacity.</p>
@@ -439,49 +443,51 @@ Filesystem     Type  Size  Used Avail Use% Mounted on
 </code></pre></div>
 </li>
 </ol>
-<h2 id="backup-pmm-server">Backup PMM Server</h2>
-<p>All data are stored in the <code>/srv</code> partition, so it's enough to back the PMM data volume.
+<h2 id="backup-pmm-server">Backup PMM Server<a class="headerlink" href="#backup-pmm-server" title="Permanent link">&para;</a></h2>
+<p>All data are stored in the <code>/srv</code> partition, so it&rsquo;s enough to back the PMM data volume.
 You can create a point-in-time snapshot of the volume and use it for data backup.</p>
 <p>The procedure of creating a snapshot is described in the Amazon documentation: <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-creating-snapshot.html">Create Amazon EBS snapshots</a></p>
-<p><img alt="!image" src="../../_images/aws-marketplace.pmm.ec2.backup1.png" /></p>
-<h2 id="restore-pmm-server-from-a-backup">Restore PMM Server from a backup</h2>
+<p><div class="lightgallery"><a data-sub-html="image" href="../../_images/aws-marketplace.pmm.ec2.backup1.png"><img alt="image" src="../../_images/aws-marketplace.pmm.ec2.backup1.png" /></a></div></p>
+<h2 id="restore-pmm-server-from-a-backup">Restore PMM Server from a backup<a class="headerlink" href="#restore-pmm-server-from-a-backup" title="Permanent link">&para;</a></h2>
 <ol>
 <li>
 <p>Create a new volume by using the latest snapshot of the PMM data volume.</p>
-<p><img alt="!image" src="../../_images/aws-marketplace.pmm.ec2.backup2.png" /></p>
+<p><div class="lightgallery"><a data-sub-html="image" href="../../_images/aws-marketplace.pmm.ec2.backup2.png"><img alt="image" src="../../_images/aws-marketplace.pmm.ec2.backup2.png" /></a></div></p>
 </li>
 <li>
 <p>Stop the PMM Server instance.</p>
 </li>
 <li>
 <p>Detach the current PMM data volume.</p>
-<p><img alt="!image" src="../../_images/aws-marketplace.pmm.ec2.backup3.png" /></p>
+<p><div class="lightgallery"><a data-sub-html="image" href="../../_images/aws-marketplace.pmm.ec2.backup3.png"><img alt="image" src="../../_images/aws-marketplace.pmm.ec2.backup3.png" /></a></div></p>
 </li>
 <li>
 <p>Attach the new volume.</p>
-<p><img alt="!image" src="../../_images/aws-marketplace.pmm.ec2.backup4.png" /></p>
+<p><div class="lightgallery"><a data-sub-html="image" href="../../_images/aws-marketplace.pmm.ec2.backup4.png"><img alt="image" src="../../_images/aws-marketplace.pmm.ec2.backup4.png" /></a></div></p>
 </li>
 <li>
 <p>Start the PMM Server instance.</p>
 </li>
 </ol>
-<h2 id="remove-pmm-server">Remove PMM Server</h2>
+<h2 id="remove-pmm-server">Remove PMM Server<a class="headerlink" href="#remove-pmm-server" title="Permanent link">&para;</a></h2>
 <ol>
 <li>
 <p>Find the instance in the EC2 Console</p>
-<p><img alt="!image" src="../../_images/aws-marketplace.pmm.ec2.remove1.png" /></p>
+<p><div class="lightgallery"><a data-sub-html="image" href="../../_images/aws-marketplace.pmm.ec2.remove1.png"><img alt="image" src="../../_images/aws-marketplace.pmm.ec2.remove1.png" /></a></div></p>
 </li>
 <li>
-<p>Select "Instance state" menu and "Terminate instance"</p>
-<p><img alt="!image" src="../../_images/aws-marketplace.pmm.ec2.remove2.png" /></p>
+<p>Select &ldquo;Instance state&rdquo; menu and &ldquo;Terminate instance&rdquo;</p>
+<p><div class="lightgallery"><a data-sub-html="image" href="../../_images/aws-marketplace.pmm.ec2.remove2.png"><img alt="image" src="../../_images/aws-marketplace.pmm.ec2.remove2.png" /></a></div></p>
 </li>
 <li>
 <p>Confirm termination operation</p>
-<p><img alt="!image" src="../../_images/aws-marketplace.pmm.ec2.remove3.png" /></p>
+<p><div class="lightgallery"><a data-sub-html="image" href="../../_images/aws-marketplace.pmm.ec2.remove3.png"><img alt="image" src="../../_images/aws-marketplace.pmm.ec2.remove3.png" /></a></div></p>
 </li>
 </ol>
-<p>!!! seealso alert alert-info "See also"
-    <a href="https://www.percona.com/blog/2021/04/29/improving-percona-monitoring-and-management-ec2-instance-resilience-using-cloudwatch-alarm-actions/">Improving Percona Monitoring and Management EC2 Instance Resilience Using CloudWatch Alarm Actions</a></p>
+<div class="admonition seealso alert alert-info">
+<p class="admonition-title">See also</p>
+<p><a href="https://www.percona.com/blog/2021/04/29/improving-percona-monitoring-and-management-ec2-instance-resilience-using-cloudwatch-alarm-actions/">Improving Percona Monitoring and Management EC2 Instance Resilience Using CloudWatch Alarm Actions</a></p>
+</div>
                     </div>
                 </div>
                 
@@ -838,20 +844,6 @@ You can create a point-in-time snapshot of the volume and use it for data backup
     <a class="reference internal" href="../../details/interface.html">UI components</a>
 
 
-
-</ul>
-
-
-
-
-
-<li class="toctree-l1">
-    <a class="reference internal" href="../../details/develop-checks.html">Developing Advisor checks</a>
-
-
-
-
-<ul class="toctree" id="toctree">
 
 
 <li class="toctree-l2">
@@ -1290,6 +1282,12 @@ You can create a point-in-time snapshot of the volume and use it for data backup
 
 <li class="toctree-l2">
     <a class="reference internal" href="../../details/glossary.html">Glossary</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../details/develop-checks.html">Develop Advisor checks</a>
 
 
 

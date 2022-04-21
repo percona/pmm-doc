@@ -115,7 +115,7 @@
 
                 <div class="bodywrapper">
                     <div class="body">
-                        <h1 id="percona-monitoring-and-management-2210">Percona Monitoring and Management 2.21.0</h1>
+                        <h1 id="percona-monitoring-and-management-2210">Percona Monitoring and Management 2.21.0<a class="headerlink" href="#percona-monitoring-and-management-2210" title="Permanent link">&para;</a></h1>
 <table class="docutils field-list" frame="void" rules="none">
   <colgroup>
     <col class="field-name">
@@ -135,7 +135,7 @@
 </table>
 
 <p>Percona Monitoring and Management (PMM) is a free and open-source platform for managing and monitoring MySQL, MongoDB, and PostgreSQL performance.</p>
-<h2 id="release-highlights">Release Highlights:</h2>
+<h2 id="release-highlights">Release Highlights:<a class="headerlink" href="#release-highlights" title="Permanent link">&para;</a></h2>
 <ul>
 <li>
 <p><strong>Custom certificates support</strong>: We have added support for custom TLS certificates for remote monitoring of PostgreSQL and MongoDB services, configurable on the command line with <code>pmm-admin</code> or through the UI.</p>
@@ -147,11 +147,11 @@
 <p>New supported versions:</p>
 <ul>
 <li>DBaaS functionality now supports Kubernetes Operator for MongoDB version 1.9.0.</li>
-<li>PMM Client packages now support Debian 11 ("Bullseye").</li>
+<li>PMM Client packages now support Debian 11 (&ldquo;Bullseye&rdquo;).</li>
 </ul>
 </li>
 </ul>
-<h2 id="new-features">New Features</h2>
+<h2 id="new-features">New Features<a class="headerlink" href="#new-features" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="https://jira.percona.com/browse/PMM-8158">PMM-8158</a>: Backup Management: Delete option — When deleting a backup from Backup Management inventory a new option lets you also delete the data file from storage.</li>
 <li><a href="https://jira.percona.com/browse/PMM-8156">PMM-8156</a>: Backup Management: Retention — You can now define how many of the most recent scheduled backups to keep.</li>
@@ -159,45 +159,45 @@
 <li><a href="https://jira.percona.com/browse/PMM-7477">PMM-7477</a>: Support custom TLS certificates when monitoring remote MongoDB instances</li>
 <li><a href="https://jira.percona.com/browse/PMM-7888">PMM-7888</a>: Custom TLS certificates now allow SSL connections to PostgreSQL instances (Thanks to Jyoti Prakash for reporting this issue)</li>
 </ul>
-<h2 id="improvements">Improvements</h2>
+<h2 id="improvements">Improvements<a class="headerlink" href="#improvements" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="https://jira.percona.com/browse/PMM-8267">PMM-8267</a>: Backup Management: Active progress indicator</li>
 <li><a href="https://jira.percona.com/browse/PMM-8549">PMM-8549</a>: Backup Management: Show loading status on delete window</li>
 <li><a href="https://jira.percona.com/browse/PMM-8542">PMM-8542</a>: Backup Management: Inform that times should be entered in UTC timezone format</li>
-<li><a href="https://jira.percona.com/browse/PMM-8316">PMM-8316</a>: DBaaS: PSMDB 1.9 operator support —For what's new see <a href="https://www.percona.com/doc/kubernetes-operator-for-psmongodb/RN/Kubernetes-Operator-for-PSMONGODB-RN1.9.0.html">release notes</a>.</li>
-<li><a href="https://jira.percona.com/browse/PMM-7612">PMM-7612</a>: Integrated Alerting: Validate communication settings 'From' email address format</li>
+<li><a href="https://jira.percona.com/browse/PMM-8316">PMM-8316</a>: DBaaS: PSMDB 1.9 operator support —For what&rsquo;s new see <a href="https://www.percona.com/doc/kubernetes-operator-for-psmongodb/RN/Kubernetes-Operator-for-PSMONGODB-RN1.9.0.html">release notes</a>.</li>
+<li><a href="https://jira.percona.com/browse/PMM-7612">PMM-7612</a>: Integrated Alerting: Validate communication settings &lsquo;From&rsquo; email address format</li>
 <li><a href="https://jira.percona.com/browse/PMM-7570">PMM-7570</a>: Specify Custom Basic Auth password for Agents when adding Services</li>
-<li><a href="https://jira.percona.com/browse/PMM-8560">PMM-8560</a>: Add support for Debian 11 ("Bullseye") to <code>pmm-client</code> package</li>
+<li><a href="https://jira.percona.com/browse/PMM-8560">PMM-8560</a>: Add support for Debian 11 (&ldquo;Bullseye&rdquo;) to <code>pmm-client</code> package</li>
 <li><a href="https://jira.percona.com/browse/PMM-7087">PMM-7087</a>: Rename custom query file to <code>example-queries-postgres.yml</code> and include warning that the file will be overwritten on upgrade; user should create a copy with a new name to prevent losing metrics collection on future upgrades. (Thanks to Daniel Guzman Burgos for reporting this issue)</li>
 <li><a href="https://jira.percona.com/browse/PMM-8568">PMM-8568</a>: Use latest CentOS patches for creating OVA, AMI and Azure images</li>
 <li><a href="https://jira.percona.com/browse/PMM-5291">PMM-5291</a>: Update ClickHouse version from 19.7.5.27 to 21.3-lts</li>
 <li><a href="https://jira.percona.com/browse/PMM-8091">PMM-8091</a>: Collect and present additional ProxySQL metrics taken from <code>runtime_mysql_servers</code> table</li>
 </ul>
-<h2 id="bugs-fixed">Bugs Fixed</h2>
+<h2 id="bugs-fixed">Bugs Fixed<a class="headerlink" href="#bugs-fixed" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a href="https://jira.percona.com/browse/PMM-8616">PMM-8616</a>: Backup Management: No 'Delete from storage' action on backup inventory</li>
+<li><a href="https://jira.percona.com/browse/PMM-8616">PMM-8616</a>: Backup Management: No &lsquo;Delete from storage&rsquo; action on backup inventory</li>
 <li><a href="https://jira.percona.com/browse/PMM-8543">PMM-8543</a>: Backups are not visible after PMM Server upgrade</li>
-<li><a href="https://jira.percona.com/browse/PMM-8458">PMM-8458</a>: Backup Management: Inconsistent auto-fill of 'Vendor' field with on-demand backup</li>
+<li><a href="https://jira.percona.com/browse/PMM-8458">PMM-8458</a>: Backup Management: Inconsistent auto-fill of &lsquo;Vendor&rsquo; field with on-demand backup</li>
 <li><a href="https://jira.percona.com/browse/PMM-8404">PMM-8404</a>: Dashboard image rendering plugin renders image that includes error message</li>
-<li><a href="https://jira.percona.com/browse/PMM-7286">PMM-7286</a>: Query Analytics can't handle colon character (<code>:</code>) in service names (Thanks to Daniel Guzman Burgos for reporting this issue)</li>
+<li><a href="https://jira.percona.com/browse/PMM-7286">PMM-7286</a>: Query Analytics can&rsquo;t handle colon character (<code>:</code>) in service names (Thanks to Daniel Guzman Burgos for reporting this issue)</li>
 <li><a href="https://jira.percona.com/browse/PMM-7278">PMM-7278</a>: <code>mongo_exporter</code> fails to authorize when MongoDB running with <code>authMechanism=MONGODB-X509</code> (Thanks to Lena D for reporting this issue)</li>
 <li><a href="https://jira.percona.com/browse/PMM-8307">PMM-8307</a>: Default config limits for allowed connections prevents monitoring large numbers (500+) of DB servers</li>
 <li><a href="https://jira.percona.com/browse/PMM-2168">PMM-2168</a>: <code>rds_exporter</code> not stopped when all RDS instances are removed or disabled</li>
-<li><a href="https://jira.percona.com/browse/PMM-8219">PMM-8219</a>: PMM Server update panel "Current version" empty if no internet connectivity</li>
+<li><a href="https://jira.percona.com/browse/PMM-8219">PMM-8219</a>: PMM Server update panel &ldquo;Current version&rdquo; empty if no internet connectivity</li>
 <li><a href="https://jira.percona.com/browse/PMM-8559">PMM-8559</a>: Unauthorized error appears while logging in</li>
 </ul>
-<h2 id="known-issues">Known Issues</h2>
+<h2 id="known-issues">Known Issues<a class="headerlink" href="#known-issues" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Failure to upgrade when using a dashboard with custom tags.  </li>
 </ul>
-<p>!!! caution alert alert-warning "Important"
-    In some cases users may not be able to complete the upgrade to 2.21.0 and we have linked this back to dashboards with custom tags.  This is to be fixed in our upcoming 2.22.0 release but there are steps (more in the <a href="https://jira.percona.com/browse/PMM-8703">ticket</a>) that you can take if you're already impacted by this:</p>
-<pre><code>```
-curl -LJOs https://raw.githubusercontent.com/percona/pmm-server/c2e92bc3aec123affda5f1992c96c95ac74f4a2d/import-dashboards.py
+<div class="admonition caution alert alert-warning">
+<p class="admonition-title">Important</p>
+<p>In some cases users may not be able to complete the upgrade to 2.21.0 and we have linked this back to dashboards with custom tags.  This is to be fixed in our upcoming 2.22.0 release but there are steps (more in the <a href="https://jira.percona.com/browse/PMM-8703">ticket</a>) that you can take if you&rsquo;re already impacted by this:</p>
+<div class="highlight"><pre><span></span><code>curl -LJOs https://raw.githubusercontent.com/percona/pmm-server/c2e92bc3aec123affda5f1992c96c95ac74f4a2d/import-dashboards.py
 docker cp import-dashboards.py pmm-server:/usr/share/percona-dashboards/
 docker exec -it pmm-server chmod a+x /usr/share/percona-dashboards/import-dashboards.py
-```
-</code></pre>
+</code></pre></div>
+</div>
                     </div>
                 </div>
                 
@@ -554,20 +554,6 @@ docker exec -it pmm-server chmod a+x /usr/share/percona-dashboards/import-dashbo
     <a class="reference internal" href="../details/interface.html">UI components</a>
 
 
-
-</ul>
-
-
-
-
-
-<li class="toctree-l1">
-    <a class="reference internal" href="../details/develop-checks.html">Developing Advisor checks</a>
-
-
-
-
-<ul class="toctree" id="toctree">
 
 
 <li class="toctree-l2">
@@ -1006,6 +992,12 @@ docker exec -it pmm-server chmod a+x /usr/share/percona-dashboards/import-dashbo
 
 <li class="toctree-l2">
     <a class="reference internal" href="../details/glossary.html">Glossary</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../details/develop-checks.html">Develop Advisor checks</a>
 
 
 

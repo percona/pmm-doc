@@ -115,7 +115,7 @@
 
                 <div class="bodywrapper">
                     <div class="body">
-                        <h1 id="percona-monitoring-and-management-230">Percona Monitoring and Management 2.3.0</h1>
+                        <h1 id="percona-monitoring-and-management-230">Percona Monitoring and Management 2.3.0<a class="headerlink" href="#percona-monitoring-and-management-230" title="Permanent link">&para;</a></h1>
 <table class="docutils field-list" frame="void" rules="none">
   <colgroup>
     <col class="field-name">
@@ -131,9 +131,11 @@
 
 <p>Percona Monitoring and Management (PMM) is a free and open-source platform for managing and monitoring MySQL, MongoDB, and PostgreSQL performance.</p>
 <p>For <em>PMM</em> install instructions, see <a href="../setting-up/server/index.html">Installing PMM Server</a> and <a href="../setting-up/client/index.html">Installing PMM Client</a>.</p>
-<p>!!! caution alert alert-warning "Caution"
-    PMM 2 is designed to be used as a new installation — please don’t try to upgrade your existing PMM 1 environment.</p>
-<h2 id="improvements-and-new-features">Improvements and new features</h2>
+<div class="admonition caution alert alert-warning">
+<p class="admonition-title">Caution</p>
+<p>PMM 2 is designed to be used as a new installation — please don’t try to upgrade your existing PMM 1 environment.</p>
+</div>
+<h2 id="improvements-and-new-features">Improvements and new features<a class="headerlink" href="#improvements-and-new-features" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="https://jira.percona.com/browse/PMM-5064">PMM-5064</a> and <a href="https://jira.percona.com/browse/PMM-5065">PMM-5065</a>: Starting from this release, <a href="../faq.html">users will be able to integrate PMM with an external Alertmanager</a> by specifying the Alertmanager URL and the Alert Rules to be executed inside the PMM server (<strong>This feature is for advanced users only at this point</strong>)</li>
 <li><a href="https://jira.percona.com/browse/PMM-4954">PMM-4954</a>: Query Analytics dashboard now shows units both in the list of queries in a summary table and in the Details section to ease understanding of the presented data</li>
@@ -141,7 +143,7 @@
 <li><a href="https://jira.percona.com/browse/PMM-5115">PMM-5115</a>: The CPU frequency and temperature graphs were added to the CPU Utilization dashboard</li>
 <li><a href="https://jira.percona.com/browse/PMM-5394">PMM-5394</a>: A special treatment for the node-related dashboards was implemented for the situations when the data resolution change causes new metrics to be generated for existing nodes and services, to make graphs show continuous lines of the same colors</li>
 </ul>
-<h2 id="fixed-bugs">Fixed bugs</h2>
+<h2 id="fixed-bugs">Fixed bugs<a class="headerlink" href="#fixed-bugs" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="https://jira.percona.com/browse/PMM-4620">PMM-4620</a>: The high CPU usage by the pmm-agent process related to MongoDB Query Analytics was fixed</li>
 <li><a href="https://jira.percona.com/browse/PMM-5377">PMM-5377</a>:  <code>singlestats</code> showing percentage had sparklines scaled vertically along with the graph swing, which made it difficult to visually notice the difference between neighboring <code>singlestats</code>.</li>
@@ -505,20 +507,6 @@
     <a class="reference internal" href="../details/interface.html">UI components</a>
 
 
-
-</ul>
-
-
-
-
-
-<li class="toctree-l1">
-    <a class="reference internal" href="../details/develop-checks.html">Developing Advisor checks</a>
-
-
-
-
-<ul class="toctree" id="toctree">
 
 
 <li class="toctree-l2">
@@ -957,6 +945,12 @@
 
 <li class="toctree-l2">
     <a class="reference internal" href="../details/glossary.html">Glossary</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../details/develop-checks.html">Develop Advisor checks</a>
 
 
 

@@ -115,9 +115,11 @@
 
                 <div class="bodywrapper">
                     <div class="body">
-                        <h1 id="integrated-alerting">Integrated Alerting</h1>
-<p>!!! caution alert alert-warning "Disclaimer"
-    Integrated Alerting is currently in <a href="../details/glossary.html#technical-preview">Technical Preview</a>. This means that this feature is still under development and is subject to change. Therefore, we recommend that early adopters use Integrated Alerting for testing purposes only.</p>
+                        <h1 id="integrated-alerting">Integrated Alerting<a class="headerlink" href="#integrated-alerting" title="Permanent link">&para;</a></h1>
+<div class="admonition caution alert alert-warning">
+<p class="admonition-title">Disclaimer</p>
+<p>Integrated Alerting is currently in <a href="../details/glossary.html#technical-preview">Technical Preview</a>. This means that this feature is still under development and is subject to change. Therefore, we recommend that early adopters use Integrated Alerting for testing purposes only.</p>
+</div>
 <p>Alerting notifies of important or unusual activity in your database environments so that you can identify and resolve problems quickly.</p>
 <p>In PMM, you define what system metrics are critical for your environment and what thresholds are acceptable for each metric. When something needs your attention, PMM automatically sends you an alert through your specified communication channel.</p>
 <p>The following three basic components define the alerting workflow:</p>
@@ -126,21 +128,21 @@
 <li><strong>Alert rule</strong>: describes the circumstances under which you want to be alerted.</li>
 <li><strong>Alert communication channel</strong>: specifies how PMM should deliver alerts.</li>
 </ul>
-<p><img alt="!" src="../_images/workflow.png" /></p>
-<h2 id="prerequisites">Prerequisites</h2>
+<p><div class="lightgallery"><a data-sub-html="" href="../_images/workflow.png"><img alt="" src="../_images/workflow.png" /></a></div></p>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
 <p>Before creating alert rules:</p>
 <ol>
 <li>Enable Integrated Alerting.</li>
 <li>Set up an Email (SMTP) or Slack sender settings for receiving alerts.</li>
 <li>Specify the Email/Slack/Webhooks/PagerDuty settings and channels to notify.</li>
 </ol>
-<h3 id="enable-integrated-alerting">Enable Integrated Alerting</h3>
+<h3 id="enable-integrated-alerting">Enable Integrated Alerting<a class="headerlink" href="#enable-integrated-alerting" title="Permanent link">&para;</a></h3>
 <ol>
 <li>Select <strong>Configuration &gt; Settings &gt; Advanced Settings</strong>.</li>
 <li>Under <strong>Technical preview</strong> features, turn on Integrated Alerting.</li>
 <li>Click <strong>Apply changes</strong>. This adds a new <strong>Communication</strong> tab to the <strong>Settings</strong> menu.</li>
 </ol>
-<h3 id="set-up-a-communication-channel">Set up a communication channel</h3>
+<h3 id="set-up-a-communication-channel">Set up a communication channel<a class="headerlink" href="#set-up-a-communication-channel" title="Permanent link">&para;</a></h3>
 <p>Set up a communication channel to configure how alerts will be delivered. The following notification channels are supported: email via your SMTP server, Slack, PagerDuty, and Webhook.</p>
 <p>To set up a communication channel:</p>
 <ol>
@@ -157,7 +159,7 @@
 <p>The screenshot below shows how to configure email notifications through Gmail.
 If you’re using Two-Factor Authentication, first set up a <a href="https://www.google.com/url?q=https://support.google.com/accounts/answer/185833?hl%3Den&amp;sa=D&amp;source=docs&amp;ust=1645452547572745&amp;usg=AOvVaw0Ri4SS1RCdbkvGIM7AwRQz">Google App Password</a> for the account you want to use. You can then use those credentials to fill out the <strong>Communication</strong> form:</p>
 <p><img alt="Gmail example" src="../_images/gmail2FA.jpg" /></p>
-<h3 id="add-a-notification-channel">Add a Notification Channel</h3>
+<h3 id="add-a-notification-channel">Add a Notification Channel<a class="headerlink" href="#add-a-notification-channel" title="Permanent link">&para;</a></h3>
 <p>A notification channel is a specific instance of a communication channel. For example, for Email, the communication channel defines a server, while the notification channel specifies the email addresses where to send alerts sent via the email server.</p>
 <p>To add a notification channel:</p>
 <ol>
@@ -165,14 +167,14 @@ If you’re using Two-Factor Authentication, first set up a <a href="https://www
 <li>Click <strong>Add</strong> and fill in the details for your required channel.</li>
 <li>Click <strong>Add</strong> to add the notification channel.</li>
 </ol>
-<h2 id="about-alert-templates">About alert templates</h2>
+<h2 id="about-alert-templates">About alert templates<a class="headerlink" href="#about-alert-templates" title="Permanent link">&para;</a></h2>
 <p>Alerts templates are YAML files that provide the source framework for alert rules.
 Alert templates contain general template details and an alert expression defined in <a href="https://docs.victoriametrics.com/MetricsQL.html">MetricsQL</a>. This query language is backward compatible with Prometheus QL.</p>
 <p>Starting with PMM 2.26.0, alert rules are no longer dependent on their source rule template after creation. This means that you can update or delete rule templates without impacting existing rules that are based on that template.</p>
-<h2 id="create-custom-templates">Create custom templates</h2>
+<h2 id="create-custom-templates">Create custom templates<a class="headerlink" href="#create-custom-templates" title="Permanent link">&para;</a></h2>
 <p>If none of the default PMM templates contain a relevant expression for the alert rule that you need, you can create a custom template instead.</p>
 <p>You can base multiple alert rules on the same template. For example, you can create a <strong>pmm_node_high_cpu_load</strong> template that can be used as the source for alert rules for production versus staging, warning versus critical, etc.</p>
-<h3 id="template-format">Template format</h3>
+<h3 id="template-format">Template format<a class="headerlink" href="#template-format" title="Permanent link">&para;</a></h3>
 <p>When creating custom templates, make sure to use the required template format below:</p>
 <ul>
 <li><strong>name</strong> (required field): uniquely identifies template. Spaces and special characters are not allowed.</li>
@@ -187,13 +189,13 @@ Alert templates contain general template details and an alert expression defined
 <li><strong>range</strong> (optional): defines the boundaries for the value of a  float parameter</li>
 </ul>
 </li>
-<li><strong>value</strong> (optional): default  parameter value. Value strings must not include any of these special characters: &lt; &gt; ! @ # $ % ^ &amp; * ( ) _ / \ ' + - = (space)</li>
+<li><strong>value</strong> (optional): default  parameter value. Value strings must not include any of these special characters: &lt; &gt; ! @ # $ % ^ &amp; * ( ) _ /  &lsquo; + - = (space)</li>
 <li><strong>for</strong> (required): specifies the duration of time that the expression must be met before the alert will be fired</li>
 <li><strong>severity</strong> (required): specifies default alert severity level</li>
 <li><strong>labels</strong> (optional): are additional labels to be added to generated alerts</li>
 <li><strong>annotations</strong> (optional): are additional annotations to be added to generated alerts.</li>
 </ul>
-<h3 id="template-example">Template example</h3>
+<h3 id="template-example">Template example<a class="headerlink" href="#template-example" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="nn">---</span><span class="w"></span>
 <span class="nt">templates</span><span class="p">:</span><span class="w"></span>
 <span class="w"> </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pmm_mongodb_high_memory_usage</span><span class="w"></span>
@@ -221,25 +223,25 @@ Alert templates contain general template details and an alert expression defined
 <span class="w">         </span><span class="no">{{ $value }}% of memory (more than [[ .threshold ]]%) is used</span><span class="w"></span>
 <span class="w">         </span><span class="no">by {{ $labels.service_name }} on {{ $labels.node_name }}.</span><span class="w"></span>
 </code></pre></div>
-<h2 id="test-alert-expressions">Test alert expressions</h2>
+<h2 id="test-alert-expressions">Test alert expressions<a class="headerlink" href="#test-alert-expressions" title="Permanent link">&para;</a></h2>
 <p>If you want to create custom templates, you can test the MetricsQ expressions for your custom template in the <strong>Explore</strong> section of PMM. Here you can also query any PMM internal database.</p>
 <p>To test expressions for custom templates:</p>
 <ol>
 <li>On the left menu of PMM, choose <strong>Explore &gt; Metrics</strong>.</li>
 <li>Enter your expression in the <strong>Metrics</strong> field and click <strong>Run query</strong>.</li>
 </ol>
-<p>For example, to validate that a MongoDB instance is down, shut down a member of a three-node replica set, then check that the expression <strong>{service_type="mongodb"}</strong> returns <strong>0</strong> in <strong>Explore &gt; Metrics</strong>.</p>
-<h2 id="template-compatibility">Template compatibility</h2>
-<h3 id="with-previous-pmm-versions">With previous PMM versions</h3>
+<p>For example, to validate that a MongoDB instance is down, shut down a member of a three-node replica set, then check that the expression <strong>{service_type=&rdquo;mongodb&rdquo;}</strong> returns <strong>0</strong> in <strong>Explore &gt; Metrics</strong>.</p>
+<h2 id="template-compatibility">Template compatibility<a class="headerlink" href="#template-compatibility" title="Permanent link">&para;</a></h2>
+<h3 id="with-previous-pmm-versions">With previous PMM versions<a class="headerlink" href="#with-previous-pmm-versions" title="Permanent link">&para;</a></h3>
 <p>PMM 2.26 introduced significant changes to the core structure of rule templates. As a result, alert rules and templates created in previous PMM versions are incompatible with PMM 2.26.0 and cannot be migrated to this new version.</p>
 <p>If you’re migrating from PMM 2.25 and earlier, make sure to manually recreate any custom alert rules and rule templates that you want to transfer to PMM 2.26.0 or later.</p>
-<h3 id="with-other-alerting-tools">With other alerting tools</h3>
+<h3 id="with-other-alerting-tools">With other alerting tools<a class="headerlink" href="#with-other-alerting-tools" title="Permanent link">&para;</a></h3>
 <p>If you have existing YAML alert templates that you want to leverage in PMM Integrated Alerting:</p>
 <ol>
 <li>Go to <strong>Alerting &gt; Integrated Alerting &gt; Alert Rule Templates</strong> tab and click <strong>Add</strong> at the top right-hand side of the table.</li>
 <li>Click <strong>Add</strong> and upload a local .yaml file from your computer.</li>
 </ol>
-<h2 id="add-an-alert-rule">Add an Alert Rule</h2>
+<h2 id="add-an-alert-rule">Add an Alert Rule<a class="headerlink" href="#add-an-alert-rule" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Go to <strong>Alerting &gt; Integrated Alerting</strong> and select the <strong>Alert Rules</strong> tab.</li>
 <li>Click <strong>Add</strong> on the right-hand side of the table.</li>
@@ -247,7 +249,7 @@ Alert templates contain general template details and an alert expression defined
 <li>In the <strong>Filters</strong> field, specify if you want the alert rule to apply only to specific services or nodes. For example: <em>service_name=name123</em>.</li>
 <li>In the <strong>Channels</strong> field, select one or more notification channels that you have configured for sending out the notifications.</li>
 </ol>
-<h2 id="silence-alerts">Silence alerts</h2>
+<h2 id="silence-alerts">Silence alerts<a class="headerlink" href="#silence-alerts" title="Permanent link">&para;</a></h2>
 <p>Silence alerts when you want to stop notifications from one or more alerting rules.</p>
 <p>Silencing an alert only stops notifications from being sent to your specified notification channels.</p>
 <p>Silenced alerts are still recorded under <strong>Integrated Alerting &gt; Alerts</strong> so that you can review them later. A silenced alert is disabled until you reactivate the alert.</p>
@@ -261,7 +263,7 @@ Alert templates contain general template details and an alert expression defined
 </li>
 </ol>
 <p>To reactivate silenced alerts, click <strong>Unsilence All</strong> or click on the disabled bell icon <i class="uil uil-bell-slash"></i> corresponding to the alerts you want to reactivate.</p>
-<h2 id="alternative-alerting-options">Alternative alerting options</h2>
+<h2 id="alternative-alerting-options">Alternative alerting options<a class="headerlink" href="#alternative-alerting-options" title="Permanent link">&para;</a></h2>
 <p>PMM Integrated Alerting was introduced as an alternative to Grafana Alerting and Prometheus’ Alertmanager.</p>
 <p>These third-party alerting tools continue to be available in PMM until Integrated Alerting moves from Technical Preview to General Availability.</p>
 <p>We recommend already using Integrated Alerting since it offers a simpler alerting setup and provides more robust alerting options.</p>
@@ -621,20 +623,6 @@ Alert templates contain general template details and an alert expression defined
     <a class="reference internal" href="../details/interface.html">UI components</a>
 
 
-
-</ul>
-
-
-
-
-
-<li class="toctree-l1">
-    <a class="reference internal" href="../details/develop-checks.html">Developing Advisor checks</a>
-
-
-
-
-<ul class="toctree" id="toctree">
 
 
 <li class="toctree-l2">
@@ -1073,6 +1061,12 @@ Alert templates contain general template details and an alert expression defined
 
 <li class="toctree-l2">
     <a class="reference internal" href="../details/glossary.html">Glossary</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../details/develop-checks.html">Develop Advisor checks</a>
 
 
 

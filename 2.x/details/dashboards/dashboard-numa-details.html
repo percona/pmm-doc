@@ -115,56 +115,64 @@
 
                 <div class="bodywrapper">
                     <div class="body">
-                        <h1 id="numa-details">NUMA Details</h1>
-<p><img alt="!image" src="../../_images/PMM_NUMA_Details.jpg" /></p>
+                        <h1 id="numa-details">NUMA Details<a class="headerlink" href="#numa-details" title="Permanent link">&para;</a></h1>
+<p><div class="lightgallery"><a data-sub-html="image" href="../../_images/PMM_NUMA_Details.jpg"><img alt="image" src="../../_images/PMM_NUMA_Details.jpg" /></a></div></p>
 <p>For each node, this dashboard shows metrics related to Non-uniform memory
 access (NUMA).</p>
-<h2 id="memory-usage">Memory Usage</h2>
+<h2 id="memory-usage">Memory Usage<a class="headerlink" href="#memory-usage" title="Permanent link">&para;</a></h2>
 <p>Remotes over time the total, used, and free memory.</p>
-<h2 id="free-memory-percent">Free Memory Percent</h2>
+<h2 id="free-memory-percent">Free Memory Percent<a class="headerlink" href="#free-memory-percent" title="Permanent link">&para;</a></h2>
 <p>Shows the free memory as the ratio to the total available memory.</p>
-<h2 id="numa-memory-usage-types">NUMA Memory Usage Types</h2>
-<p><code>Dirty</code>
-: Memory waiting to be written back to disk</p>
-<p><code>Bounce</code>
-: Memory used for block device bounce buffers</p>
-<p><code>Mapped</code>
-: Files which have been mapped, such as libraries</p>
-<p><code>KernelStack</code>
-: The memory the kernel stack uses. This is not reclaimable.</p>
-<h2 id="numa-allocation-hits">NUMA Allocation Hits</h2>
+<h2 id="numa-memory-usage-types">NUMA Memory Usage Types<a class="headerlink" href="#numa-memory-usage-types" title="Permanent link">&para;</a></h2>
+<dl>
+<dt><code>Dirty</code></dt>
+<dd>Memory waiting to be written back to disk</dd>
+<dt><code>Bounce</code></dt>
+<dd>Memory used for block device bounce buffers</dd>
+<dt><code>Mapped</code></dt>
+<dd>Files which have been mapped, such as libraries</dd>
+<dt><code>KernelStack</code></dt>
+<dd>The memory the kernel stack uses. This is not reclaimable.</dd>
+</dl>
+<h2 id="numa-allocation-hits">NUMA Allocation Hits<a class="headerlink" href="#numa-allocation-hits" title="Permanent link">&para;</a></h2>
 <p>Memory successfully allocated on this node as intended.</p>
-<h2 id="numa-allocation-missed">NUMA Allocation Missed</h2>
+<h2 id="numa-allocation-missed">NUMA Allocation Missed<a class="headerlink" href="#numa-allocation-missed" title="Permanent link">&para;</a></h2>
 <p>Memory missed is allocated on a node despite the process preferring some different node.</p>
 <p>Memory foreign is intended for a node, but actually allocated on some different node.</p>
-<h2 id="anonymous-memory">Anonymous Memory</h2>
-<p>Active
-: Anonymous memory that has been used more recently and usually not swapped out.</p>
-<p>Inactive
-: Anonymous memory that has not been used recently and can be swapped out.</p>
-<h2 id="numa-file-pagecache">NUMA File (PageCache)</h2>
+<h2 id="anonymous-memory">Anonymous Memory<a class="headerlink" href="#anonymous-memory" title="Permanent link">&para;</a></h2>
+<dl>
+<dt>Active</dt>
+<dd>Anonymous memory that has been used more recently and usually not swapped out.</dd>
+<dt>Inactive</dt>
+<dd>Anonymous memory that has not been used recently and can be swapped out.</dd>
+</dl>
+<h2 id="numa-file-pagecache">NUMA File (PageCache)<a class="headerlink" href="#numa-file-pagecache" title="Permanent link">&para;</a></h2>
 <p>Active(file) Pagecache memory that has been used more recently and usually not reclaimed until needed.</p>
 <p>Inactive(file) Pagecache memory that can be reclaimed without huge performance impact.</p>
-<h2 id="shared-memory">Shared Memory</h2>
+<h2 id="shared-memory">Shared Memory<a class="headerlink" href="#shared-memory" title="Permanent link">&para;</a></h2>
 <p>Shmem Total used shared memory (shared between several processes, thus including RAM disks, SYS-V-IPC and BSD like SHMEM).</p>
-<h2 id="hugepages-statistics">HugePages Statistics</h2>
-<p>Total
-:   Number of hugepages being allocated by the kernel (Defined with <code>vm.nr_hugepages</code>).</p>
-<p>Free
-:   The number of hugepages not being allocated by a process</p>
-<p><code>Surp</code>
-:   The number of hugepages in the pool above the value in <code>vm.nr_hugepages</code>. The maximum number of surplus hugepages is controlled by <code>vm.nr_overcommit_hugepages</code>.</p>
-<h2 id="local-processes">Local Processes</h2>
+<h2 id="hugepages-statistics">HugePages Statistics<a class="headerlink" href="#hugepages-statistics" title="Permanent link">&para;</a></h2>
+<dl>
+<dt>Total</dt>
+<dd>Number of hugepages being allocated by the kernel (Defined with <code>vm.nr_hugepages</code>).</dd>
+<dt>Free</dt>
+<dd>The number of hugepages not being allocated by a process</dd>
+<dt><code>Surp</code></dt>
+<dd>The number of hugepages in the pool above the value in <code>vm.nr_hugepages</code>. The maximum number of surplus hugepages is controlled by <code>vm.nr_overcommit_hugepages</code>.</dd>
+</dl>
+<h2 id="local-processes">Local Processes<a class="headerlink" href="#local-processes" title="Permanent link">&para;</a></h2>
 <p>Memory allocated on a node while a process was running on it.</p>
-<h2 id="remote-processes">Remote Processes</h2>
+<h2 id="remote-processes">Remote Processes<a class="headerlink" href="#remote-processes" title="Permanent link">&para;</a></h2>
 <p>Memory allocated on a node while a process was running on some other node.</p>
-<h2 id="slab-memory">Slab Memory</h2>
-<p><code>Slab</code>
-: Allocation is a memory management mechanism intended for the efficient memory allocation of kernel objects.</p>
-<p><code>SReclaimable</code>
-: The part of the Slab that might be reclaimed (such as caches).</p>
-<p><code>SUnreclaim</code>
-: The part of the Slab that can’t be reclaimed under memory pressure</p>
+<h2 id="slab-memory">Slab Memory<a class="headerlink" href="#slab-memory" title="Permanent link">&para;</a></h2>
+<dl>
+<dt><code>Slab</code></dt>
+<dd>Allocation is a memory management mechanism intended for the efficient memory allocation of kernel objects.</dd>
+<dt><code>SReclaimable</code></dt>
+<dd>The part of the Slab that might be reclaimed (such as caches).</dd>
+<dt><code>SUnreclaim</code></dt>
+<dd>The part of the Slab that can’t be reclaimed under memory pressure</dd>
+</dl>
                     </div>
                 </div>
                 
@@ -521,20 +529,6 @@ access (NUMA).</p>
     <a class="reference internal" href="../interface.html">UI components</a>
 
 
-
-</ul>
-
-
-
-
-
-<li class="toctree-l1">
-    <a class="reference internal" href="../develop-checks.html">Developing Advisor checks</a>
-
-
-
-
-<ul class="toctree" id="toctree">
 
 
 <li class="toctree-l2">
@@ -973,6 +967,12 @@ access (NUMA).</p>
 
 <li class="toctree-l2">
     <a class="reference internal" href="../glossary.html">Glossary</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../develop-checks.html">Develop Advisor checks</a>
 
 
 

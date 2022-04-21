@@ -115,7 +115,7 @@
 
                 <div class="bodywrapper">
                     <div class="body">
-                        <h1 id="percona-monitoring-and-management-2190">Percona Monitoring and Management 2.19.0</h1>
+                        <h1 id="percona-monitoring-and-management-2190">Percona Monitoring and Management 2.19.0<a class="headerlink" href="#percona-monitoring-and-management-2190" title="Permanent link">&para;</a></h1>
 <table class="docutils field-list" frame="void" rules="none">
   <colgroup>
     <col class="field-name">
@@ -135,9 +135,10 @@
 </table>
 
 <p>Percona Monitoring and Management (PMM) is a free and open-source platform for managing and monitoring MySQL, MongoDB, and PostgreSQL performance.</p>
-<p>!!! alert alert-info ""
-    <a href="https://forums.percona.com/t/percona-monitoring-and-management-2-19-0-released/11174">Visit our forum</a> to comment on this release.</p>
-<h2 id="release-highlights">Release Highlights</h2>
+<div class="admonition alert alert-info">
+<p><a href="https://forums.percona.com/t/percona-monitoring-and-management-2-19-0-released/11174">Visit our forum</a> to comment on this release.</p>
+</div>
+<h2 id="release-highlights">Release Highlights<a class="headerlink" href="#release-highlights" title="Permanent link">&para;</a></h2>
 <ul>
 <li>
 <p>Backup Management can now be enabled from the UI. Go to <i class="uil uil-cog"></i> <em>Configuration</em> → <i class="uil uil-setting"></i> <em>Settings</em> → <em>Advanced Settings</em>, and you will see it in the <em>Technical Preview</em> section. We also added support for MongoDB services on-demand backup and restore. For now, it only supports ReplicaSet on S3-compatible storage.</p>
@@ -157,13 +158,13 @@
 <p>Improvements to DBaaS secrets by generating strong passwords for operators. This is an improvement to the Automated Operator Installation released in <a href="2.18.0.html">PMM 2.18</a>, which will greatly enhance security.</p>
 </li>
 </ul>
-<h2 id="new-features">New Features</h2>
+<h2 id="new-features">New Features<a class="headerlink" href="#new-features" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="https://jira.percona.com/browse/PMM-7639">PMM-7639</a>: Backup Management: Ability to remove Backup Location even if there are some backup artifacts on it</li>
 <li><a href="https://jira.percona.com/browse/PMM-7567">PMM-7567</a>: Backup Management: Simple backup for MongoDB ReplicaSet</li>
 <li><a href="https://jira.percona.com/browse/PMM-7568">PMM-7568</a>: Backup Management: Simple restore for MongoDB ReplicaSet</li>
 </ul>
-<h2 id="improvements">Improvements</h2>
+<h2 id="improvements">Improvements<a class="headerlink" href="#improvements" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="https://jira.percona.com/browse/PMM-8112">PMM-8112</a>: Dashboards: Collect and present histograms from ProxySQL on Queries Latency dashboard (Thanks to <a href="https://github.com/foosinn">foosinn</a> for helping with this improvement)</li>
 <li><a href="https://jira.percona.com/browse/PMM-8081">PMM-8081</a>: Dashboards: Add collection and presentation for <code>SHUNNED_REPLICATION_LAG</code> state to <code>proxysql_connection_pool_status</code> (Thanks to <a href="https://github.com/spaceform">spaceform</a> for helping with this improvement)</li>
@@ -171,26 +172,26 @@
 <li><a href="https://jira.percona.com/browse/PMM-8001">PMM-8001</a>: Better error handling when <code>pg_stat_monitor</code> is an unsupported version</li>
 <li><a href="https://jira.percona.com/browse/PMM-7659">PMM-7659</a>: DBaaS: Ability to specify the type of connection for DBaaS cluster during DB Cluster creation</li>
 <li><a href="https://jira.percona.com/browse/PMM-7828">PMM-7828</a>: DBaaS: Select Database Type by default if only one operator is installed</li>
-<li><a href="https://jira.percona.com/browse/PMM-8153">PMM-8153</a>: Backup Management: Disable 'Restore' button for backups whose service has been deleted</li>
+<li><a href="https://jira.percona.com/browse/PMM-8153">PMM-8153</a>: Backup Management: Disable &lsquo;Restore&rsquo; button for backups whose service has been deleted</li>
 </ul>
-<h2 id="bugs-fixed">Bugs Fixed</h2>
+<h2 id="bugs-fixed">Bugs Fixed<a class="headerlink" href="#bugs-fixed" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a href="https://jira.percona.com/browse/PMM-7194">PMM-7194</a>: 'Share with Percona' option doesn't export data from collapsed panels</li>
+<li><a href="https://jira.percona.com/browse/PMM-7194">PMM-7194</a>: &lsquo;Share with Percona&rsquo; option doesn&rsquo;t export data from collapsed panels</li>
 <li><a href="https://jira.percona.com/browse/PMM-8060">PMM-8060</a>: User cannot add remote instances after OVF/AMI upgrade (previously was Known Issue)</li>
 <li><a href="https://jira.percona.com/browse/PMM-7104">PMM-7104</a>: Slowlog rotation by pmm-agent causing additional unexpected rotation of binary logs (Thanks to Arthur Tokarchuk for reporting this issue)</li>
 <li><a href="https://jira.percona.com/browse/PMM-8125">PMM-8125</a>: Error of monitoring GCP based PostgreSQL because of internal database <code>cloudsqladmin</code></li>
-<li><a href="https://jira.percona.com/browse/PMM-6778">PMM-6778</a>: Can't specify custom labels during node addition/configuration</li>
+<li><a href="https://jira.percona.com/browse/PMM-6778">PMM-6778</a>: Can&rsquo;t specify custom labels during node addition/configuration</li>
 <li><a href="https://jira.percona.com/browse/PMM-8090">PMM-8090</a>: Multi-request protection breaks metrics gathering (Thanks to <a href="https://github.com/fmbiete">Francisco Miguel Biete</a> for fixing this bug)</li>
 <li><a href="https://jira.percona.com/browse/PMM-5248">PMM-5248</a>: InnoDB TableSpace data is not collected for Percona Server 8</li>
-<li><a href="https://jira.percona.com/browse/PMM-4665">PMM-4665</a>: User's log file contains error messages about TokuDB and heartbeat despite not being used</li>
+<li><a href="https://jira.percona.com/browse/PMM-4665">PMM-4665</a>: User&rsquo;s log file contains error messages about TokuDB and heartbeat despite not being used</li>
 <li><a href="https://jira.percona.com/browse/PMM-8014">PMM-8014</a>: Error when adding Amazon RDS MySQL with TLS over API</li>
 <li><a href="https://jira.percona.com/browse/PMM-3352">PMM-3352</a>: Low file descriptors limit (1024) with AMI or OVF images causes errors</li>
 <li><a href="https://jira.percona.com/browse/PMM-7948">PMM-7948</a>: <code>pmm-admin list</code> reports the wrong Node for External Services</li>
 <li><a href="https://jira.percona.com/browse/PMM-6295">PMM-6295</a>: Unclear/Incorrect statuses of the pmm-agent when Agent or PMM server went down (Thanks to Mikhail Solovyev for reporting this issue)</li>
 <li><a href="https://jira.percona.com/browse/PMM-5917">PMM-5917</a>: pmm-agent moves slow logs without checking privileges</li>
-<li><a href="https://jira.percona.com/browse/PMM-8021">PMM-8021</a>: "Query Analytics" misspelled on left side menu</li>
+<li><a href="https://jira.percona.com/browse/PMM-8021">PMM-8021</a>: &ldquo;Query Analytics&rdquo; misspelled on left side menu</li>
 <li><a href="https://jira.percona.com/browse/PMM-5283">PMM-5283</a>: Inconsistency with lengths of Example and Fingerprints in Query Analytics</li>
-<li><a href="https://jira.percona.com/browse/PMM-8121">PMM-8121</a>: Error message and help for "Remove Service" command is not helpful</li>
+<li><a href="https://jira.percona.com/browse/PMM-8121">PMM-8121</a>: Error message and help for &ldquo;Remove Service&rdquo; command is not helpful</li>
 <li><a href="https://jira.percona.com/browse/PMM-8196">PMM-8196</a>: Additional spaces in email/passwords fields on Sign up/Login pages causes Authentication problems</li>
 <li><a href="https://jira.percona.com/browse/PMM-8009">PMM-8009</a>: Long First/Last names causes errors when used in Register/Login form</li>
 <li><a href="https://jira.percona.com/browse/PMM-8220">PMM-8220</a>: Dashboards: Active Time Series Changes on Victoria Metrics dashboard report no data</li>
@@ -560,20 +561,6 @@
     <a class="reference internal" href="../details/interface.html">UI components</a>
 
 
-
-</ul>
-
-
-
-
-
-<li class="toctree-l1">
-    <a class="reference internal" href="../details/develop-checks.html">Developing Advisor checks</a>
-
-
-
-
-<ul class="toctree" id="toctree">
 
 
 <li class="toctree-l2">
@@ -1012,6 +999,12 @@
 
 <li class="toctree-l2">
     <a class="reference internal" href="../details/glossary.html">Glossary</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../details/develop-checks.html">Develop Advisor checks</a>
 
 
 

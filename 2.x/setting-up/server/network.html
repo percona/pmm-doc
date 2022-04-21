@@ -115,10 +115,10 @@
 
                 <div class="bodywrapper">
                     <div class="body">
-                        <h1 id="network">Network</h1>
-<h2 id="ports">Ports</h2>
+                        <h1 id="network">Network<a class="headerlink" href="#network" title="Permanent link">&para;</a></h1>
+<h2 id="ports">Ports<a class="headerlink" href="#ports" title="Permanent link">&para;</a></h2>
 <p>This is a list of ports used by the various components of PMM.</p>
-<p>For PMM to work correctly, your system's firewall should allow TCP traffic on these ports (UDP is not needed).</p>
+<p>For PMM to work correctly, your system&rsquo;s firewall should allow TCP traffic on these ports (UDP is not needed).</p>
 <p>Ports to expose:</p>
 <table class="table">
 <thead>
@@ -193,10 +193,12 @@
 </tr>
 </tbody>
 </table>
-<p>!!! caution alert alert-warning "Important"
-    Depending on your architecture other ports may also need to be exposed.
-    - For <code>pmm-agent</code>, the default listen port is 7777.
-    - The default range for agents ports can be changed with the flag <code>--ports-min</code> and  <code>--ports-max</code>, or in the configuration file.</p>
+<div class="admonition caution alert alert-warning">
+<p class="admonition-title">Important</p>
+<p>Depending on your architecture other ports may also need to be exposed.
+- For <code>pmm-agent</code>, the default listen port is 7777.
+- The default range for agents ports can be changed with the flag <code>--ports-min</code> and  <code>--ports-max</code>, or in the configuration file.</p>
+</div>
                     </div>
                 </div>
                 
@@ -553,20 +555,6 @@
     <a class="reference internal" href="../../details/interface.html">UI components</a>
 
 
-
-</ul>
-
-
-
-
-
-<li class="toctree-l1">
-    <a class="reference internal" href="../../details/develop-checks.html">Developing Advisor checks</a>
-
-
-
-
-<ul class="toctree" id="toctree">
 
 
 <li class="toctree-l2">
@@ -1005,6 +993,12 @@
 
 <li class="toctree-l2">
     <a class="reference internal" href="../../details/glossary.html">Glossary</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../details/develop-checks.html">Develop Advisor checks</a>
 
 
 

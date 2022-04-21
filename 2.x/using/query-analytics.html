@@ -115,9 +115,9 @@
 
                 <div class="bodywrapper">
                     <div class="body">
-                        <h1 id="query-analytics">Query Analytics</h1>
+                        <h1 id="query-analytics">Query Analytics<a class="headerlink" href="#query-analytics" title="Permanent link">&para;</a></h1>
 <p>The <em>Query Analytics</em> dashboard shows how queries are executed and where they spend their time.  It helps you analyze database queries over time, optimize database performance, and find and remedy the source of problems.</p>
-<p><img alt="!image" src="../_images/PMM_Query_Analytics.jpg" /></p>
+<p><div class="lightgallery"><a data-sub-html="image" href="../_images/PMM_Query_Analytics.jpg"><img alt="image" src="../_images/PMM_Query_Analytics.jpg" /></a></div></p>
 <p>Query Analytics supports MySQL, MongoDB and PostgreSQL. The minimum requirements for MySQL are:</p>
 <ul>
 <li>MySQL 5.1 or later (if using the slow query log).</li>
@@ -130,21 +130,22 @@
 <li>the <a href="#overview-panel">Overview Panel</a>;</li>
 <li>the <a href="#details-panel">Details Panel</a>.</li>
 </ul>
-<p>!!! note alert alert-primary ""
-    Query Analytics data retrieval is not instantaneous and can be delayed due to network conditions. In such situations <em>no data</em> is reported and a gap appears in the sparkline.</p>
-<h2 id="filters-panel">Filters Panel</h2>
-<p><img alt="!image" src="../_images/PMM_Query_Analytics_Panels_Filters.jpg" /></p>
+<div class="admonition note alert alert-primary">
+<p>Query Analytics data retrieval is not instantaneous and can be delayed due to network conditions. In such situations <em>no data</em> is reported and a gap appears in the sparkline.</p>
+</div>
+<h2 id="filters-panel">Filters Panel<a class="headerlink" href="#filters-panel" title="Permanent link">&para;</a></h2>
+<p><div class="lightgallery"><a data-sub-html="image" href="../_images/PMM_Query_Analytics_Panels_Filters.jpg"><img alt="image" src="../_images/PMM_Query_Analytics_Panels_Filters.jpg" /></a></div></p>
 <ul>
 <li>The Filter panel occupies the left side of the dashboard. It lists filters, grouped by category. Selecting one reduces the Overview list to those items matching the filter.</li>
 <li>The first five of each category are shown. If there are more, the list is expanded by clicking <em>Show all</em> beside the category name, and collapsed again with <em>Show top 5</em>.</li>
 <li>Applying a filter may make other filters inapplicable. These become grayed out and inactive.</li>
-<li>Click the chart symbol <i class="uil uil-graph-bar"></i> to navigate directly to an item's associated dashboard.</li>
+<li>Click the chart symbol <i class="uil uil-graph-bar"></i> to navigate directly to an item&rsquo;s associated dashboard.</li>
 <li>Separately, the global <em>Time range</em> setting filters results by time, either your choice of <em>Absolute time range</em>, or one of the predefined <em>Relative time ranges</em>.</li>
 </ul>
-<p><img alt="!image" src="../_images/PMM_Query_Analytics_Time_Range.jpg" /></p>
-<h2 id="overview-panel">Overview Panel</h2>
+<p><div class="lightgallery"><a data-sub-html="image" href="../_images/PMM_Query_Analytics_Time_Range.jpg"><img alt="image" src="../_images/PMM_Query_Analytics_Time_Range.jpg" /></a></div></p>
+<h2 id="overview-panel">Overview Panel<a class="headerlink" href="#overview-panel" title="Permanent link">&para;</a></h2>
 <p>To the right of the Filters panel and occupying the upper part of the dashboard is the Overview panel.</p>
-<p><img alt="!image" src="../_images/PMM_Query_Analytics_overview-table.jpg" /></p>
+<p><div class="lightgallery"><a data-sub-html="image" href="../_images/PMM_Query_Analytics_overview-table.jpg"><img alt="image" src="../_images/PMM_Query_Analytics_overview-table.jpg" /></a></div></p>
 <p>Each row of the table represents the metrics for a chosen object type, one of:</p>
 <ul>
 <li>Query;</li>
@@ -155,39 +156,39 @@
 <li>Client Host.</li>
 </ul>
 <p>At the top of the second column is the <em>dimension</em> menu. Use this to choose the object type.</p>
-<p><img alt="!image" src="../_images/PMM_Query_Analytics_Menus_Dimension_Selector.jpg" /></p>
+<p><div class="lightgallery"><a data-sub-html="image" href="../_images/PMM_Query_Analytics_Menus_Dimension_Selector.jpg"><img alt="image" src="../_images/PMM_Query_Analytics_Menus_Dimension_Selector.jpg" /></a></div></p>
 <p>On the right side of the dimension column is the <em>Dimension Search</em> bar.</p>
-<p><img alt="!image" src="../_images/PMM_Query_Analytics_Panels_Dimension_Search.jpg" /></p>
+<p><div class="lightgallery"><a data-sub-html="image" href="../_images/PMM_Query_Analytics_Panels_Dimension_Search.jpg"><img alt="image" src="../_images/PMM_Query_Analytics_Panels_Dimension_Search.jpg" /></a></div></p>
 <p>Enter a string and press Enter to limit the view to queries containing only the specified keywords.</p>
 <p>Delete the search text and press Enter to see the full list again.</p>
-<h3 id="columns">Columns</h3>
+<h3 id="columns">Columns<a class="headerlink" href="#columns" title="Permanent link">&para;</a></h3>
 <ul>
 <li>The first column is the object’s identifier. For <em>Query</em>, it is the query’s <a href="../details/glossary/#fingerprint">Fingerprint</a>.</li>
 <li>The second column is the <em>Main metric</em>, containing a reduced graphical representation of the metric over time, called a <em>sparkline</em>, and a horizontal meter, filled to reflect a percentage of the total value.</li>
 <li>Additional values are revealed as mouse-over tool-tips.</li>
 </ul>
-<h3 id="tool-tips">Tool-tips</h3>
+<h3 id="tool-tips">Tool-tips<a class="headerlink" href="#tool-tips" title="Permanent link">&para;</a></h3>
 <ul>
 <li>For the <em>Query</em> dimension, hovering over the information icon <i class="fa fa-info-circle"></i> reveals the query ID and its example.</li>
 <li>Hovering on a column header reveals an informative tool-tip for that column.</li>
 <li>Hovering on the main metric sparkline highlights the data point and a tooltip shows the data value under the cursor.</li>
 </ul>
-<p><img alt="!image" src="../_images/PMM_Query_Analytics_Main_Metric_Sparkline.jpg" /></p>
+<p><div class="lightgallery"><a data-sub-html="image" href="../_images/PMM_Query_Analytics_Main_Metric_Sparkline.jpg"><img alt="image" src="../_images/PMM_Query_Analytics_Main_Metric_Sparkline.jpg" /></a></div></p>
 <ul>
 <li>
 <p>Hovering on the main metric meter reveals the percentage of the total, and other details specific to the main metric.</p>
-<p><img alt="!image" src="../_images/PMM_Query_Analytics_Tooltips_Metric_Tooltip.jpg" /></p>
+<p><div class="lightgallery"><a data-sub-html="image" href="../_images/PMM_Query_Analytics_Tooltips_Metric_Tooltip.jpg"><img alt="image" src="../_images/PMM_Query_Analytics_Tooltips_Metric_Tooltip.jpg" /></a></div></p>
 </li>
 <li>
 <p>Hovering on column values reveals more details on the value. The contents depends on the type of value.</p>
-<p><img alt="!image" src="../_images/PMM_Query_Analytics_Metric_Tooltip.jpg" /></p>
+<p><div class="lightgallery"><a data-sub-html="image" href="../_images/PMM_Query_Analytics_Metric_Tooltip.jpg"><img alt="image" src="../_images/PMM_Query_Analytics_Metric_Tooltip.jpg" /></a></div></p>
 </li>
 </ul>
-<h3 id="adding-and-removing-columns">Adding and removing columns</h3>
+<h3 id="adding-and-removing-columns">Adding and removing columns<a class="headerlink" href="#adding-and-removing-columns" title="Permanent link">&para;</a></h3>
 <ul>
 <li>
 <p>Metrics columns are added with the <em>Add column</em> button.</p>
-<p><img alt="!image" src="../_images/PMM_Query_Analytics_Devices_Add_Columns.jpg" /></p>
+<p><div class="lightgallery"><a data-sub-html="image" href="../_images/PMM_Query_Analytics_Devices_Add_Columns.jpg"><img alt="image" src="../_images/PMM_Query_Analytics_Devices_Add_Columns.jpg" /></a></div></p>
 </li>
 <li>
 <p>When clicked, a text field and list of available metrics are revealed. Select a metric or enter a search string to reduce the list. Selecting a metric adds it to the panel.</p>
@@ -195,29 +196,29 @@
 <li>A metric column is removed by clicking on the column heading and selecting <em>Remove column</em>.</li>
 <li>The value plotted in the <em>main metric</em> column can be changed by clicking a metric column heading and selecting <em>Swap with main metric</em>.</li>
 </ul>
-<h3 id="sorting">Sorting</h3>
+<h3 id="sorting">Sorting<a class="headerlink" href="#sorting" title="Permanent link">&para;</a></h3>
 <ul>
 <li>The entire list is sorted by one of the columns.</li>
 <li>Click either the up or down caret to sort the list by that column’s ascending or descending values.</li>
 </ul>
-<h3 id="pagination">Pagination</h3>
+<h3 id="pagination">Pagination<a class="headerlink" href="#pagination" title="Permanent link">&para;</a></h3>
 <ul>
 <li>
 <p>The pagination device lets you move forwards or backwards through pages, jump to a specific page, and choose how many items are listed per page.</p>
-<p><img alt="!image" src="../_images/PMM_Query_Analytics_Devices_Pagination.jpg" /></p>
+<p><div class="lightgallery"><a data-sub-html="image" href="../_images/PMM_Query_Analytics_Devices_Pagination.jpg"><img alt="image" src="../_images/PMM_Query_Analytics_Devices_Pagination.jpg" /></a></div></p>
 </li>
 <li>
 <p>Queries are grouped into pages of 25, 50 or 100 items.</p>
 </li>
 </ul>
-<h2 id="details-panel">Details Panel</h2>
+<h2 id="details-panel">Details Panel<a class="headerlink" href="#details-panel" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Selecting an item in the Overview panel opens the <em>Details panel</em> with a <a href="#details-tab">Details Tab</a>.</li>
 <li>If the dimension is <em>Query</em>, the panel also contains the <a href="#examples-tab">Examples Tab</a>, <a href="#explain-tab">Explain Tab</a>, and <a href="#tables-tab">Tables Tab</a>.</li>
 </ul>
-<h3 id="details-tab">Details Tab</h3>
+<h3 id="details-tab">Details Tab<a class="headerlink" href="#details-tab" title="Permanent link">&para;</a></h3>
 <p>The <em>Details</em> tab contains a <em>Query time distribution</em> bar (only for MySQL databases) and a set of <em>Metrics</em> in collapsible subpanels.</p>
-<p><img alt="!image" src="../_images/PMM_Query_Analytics_Tabs_Details.jpg" /></p>
+<p><div class="lightgallery"><a data-sub-html="image" href="../_images/PMM_Query_Analytics_Tabs_Details.jpg"><img alt="image" src="../_images/PMM_Query_Analytics_Tabs_Details.jpg" /></a></div></p>
 <ul>
 <li>
 <p>The <em>Query time distribution</em> bar shows a query’s total time made up of colored segments, each segment representing the proportion of time spent on a named activity.</p>
@@ -246,7 +247,7 @@
 </li>
 </ul>
 <p>For PostgreSQL queries (when using <em>pg_stat_monitor</em>) the top query will also be shown in the details section if the query was called by an outer query.</p>
-<p><img alt="!image" src="../_images/PMM_Query_Analytics_Tabs_Details_TopQuery.png" /></p>
+<p><div class="lightgallery"><a data-sub-html="image" href="../_images/PMM_Query_Analytics_Tabs_Details_TopQuery.png"><img alt="image" src="../_images/PMM_Query_Analytics_Tabs_Details_TopQuery.png" /></a></div></p>
 <p>Other usefull metrics (when using <em>pg_stat_monitor</em>) to monitor PostgreSQL Server performance are <a href="https://github.com/percona/pg_stat_monitor/blob/master/docs/USER_GUIDE.md#histogram">Histograms</a>. 
 <em>Histograms</em> provide more explicit information about number of queries for fingerprint (queryid). Ranges are from 0 seconds up to 100 seconds.  </p>
 <p>Ranges (numbers are in miliseconds):<br />
@@ -261,14 +262,15 @@
     10000 - 31622<br />
     31622 - 100000</p>
 <p>Here is picture of <em>histogram</em> in graph:
-<img alt="!image" src="../_images/PMM_Query_Analytics_Tabs_Details_Histogram.png" /></p>
-<h3 id="examples-tab">Examples Tab</h3>
+<div class="lightgallery"><a data-sub-html="image" href="../_images/PMM_Query_Analytics_Tabs_Details_Histogram.png"><img alt="image" src="../_images/PMM_Query_Analytics_Tabs_Details_Histogram.png" /></a></div></p>
+<h3 id="examples-tab">Examples Tab<a class="headerlink" href="#examples-tab" title="Permanent link">&para;</a></h3>
 <p>(For <em>Query</em> dimension.)</p>
 <p>The <em>Examples</em> tab shows an example of the selected query’s fingerprint or table element.</p>
-<p><img alt="!image" src="../_images/PMM_Query_Analytics_Tabs_Examples.jpg" /></p>
-<p>!!! note alert alert-primary ""
-    Query example and fingerprint can be truncated to 1024 long to reduce space usage. In this case, the query explains section will not work.</p>
-<h3 id="explain-tab">Explain Tab</h3>
+<p><div class="lightgallery"><a data-sub-html="image" href="../_images/PMM_Query_Analytics_Tabs_Examples.jpg"><img alt="image" src="../_images/PMM_Query_Analytics_Tabs_Examples.jpg" /></a></div></p>
+<div class="admonition note alert alert-primary">
+<p>Query example and fingerprint can be truncated to 1024 long to reduce space usage. In this case, the query explains section will not work.</p>
+</div>
+<h3 id="explain-tab">Explain Tab<a class="headerlink" href="#explain-tab" title="Permanent link">&para;</a></h3>
 <p>(For <em>Query</em> dimension.)</p>
 <p>The <em>Explain</em> tab shows the <code>explain</code> output for the selected query, in Classic or JSON formats.</p>
 <ul>
@@ -276,35 +278,33 @@
 <li>MongoDB: JSON only.</li>
 <li>PostgreSQL: Not supported.</li>
 </ul>
-<p>!!! note alert alert-primary "'Explain' for MongoDB"</p>
-<pre><code>To run Explain you need the same permissions as for executing the original query. For example, to run explain on `updates` you need update permissions.
-
-Example: Grant the `explainRole` with update permissions.
-
-```
-db.grantPrivilegesToRole( "explainRole", [ { resource: { db: "", collection: "" }, actions: [ "update" ] } ])
-```
-</code></pre>
-<p><img alt="!image" src="../_images/PMM_Query_Analytics_Tabs_Explain.jpg" /></p>
-<h3 id="tables-tab">Tables Tab</h3>
+<div class="admonition note alert alert-primary">
+<p class="admonition-title">&lsquo;Explain&rsquo; for MongoDB</p>
+<p>To run Explain you need the same permissions as for executing the original query. For example, to run explain on <code>updates</code> you need update permissions.  </p>
+<p>Example: Grant the <code>explainRole</code> with update permissions.</p>
+<div class="highlight"><pre><span></span><code>db.grantPrivilegesToRole( &quot;explainRole&quot;, [ { resource: { db: &quot;&quot;, collection: &quot;&quot; }, actions: [ &quot;update&quot; ] } ])
+</code></pre></div>
+</div>
+<p><div class="lightgallery"><a data-sub-html="image" href="../_images/PMM_Query_Analytics_Tabs_Explain.jpg"><img alt="image" src="../_images/PMM_Query_Analytics_Tabs_Explain.jpg" /></a></div></p>
+<h3 id="tables-tab">Tables Tab<a class="headerlink" href="#tables-tab" title="Permanent link">&para;</a></h3>
 <p>(For <em>Query</em> dimension.)</p>
 <p>The <em>Tables</em> tab shows information on the tables and indexes involved in the selected query.</p>
-<p><img alt="!image" src="../_images/PMM_Query_Analytics_Tabs_Tables.jpg" /></p>
-<h3 id="plan-tab">Plan Tab</h3>
+<p><div class="lightgallery"><a data-sub-html="image" href="../_images/PMM_Query_Analytics_Tabs_Tables.jpg"><img alt="image" src="../_images/PMM_Query_Analytics_Tabs_Tables.jpg" /></a></div></p>
+<h3 id="plan-tab">Plan Tab<a class="headerlink" href="#plan-tab" title="Permanent link">&para;</a></h3>
 <p>(For <em>Query</em> dimension.)</p>
 <p>The <em>Plan</em> tab shows the plan for PostgreSQL queries (only available when using <em>pg_stat_monitor</em>).</p>
-<p><img alt="!image" src="../_images/PMM_Query_Analytics_Tabs_Plan.png" /></p>
-<h2 id="query-analytics-for-mongodb">Query Analytics for MongoDB</h2>
+<p><div class="lightgallery"><a data-sub-html="image" href="../_images/PMM_Query_Analytics_Tabs_Plan.png"><img alt="image" src="../_images/PMM_Query_Analytics_Tabs_Plan.png" /></a></div></p>
+<h2 id="query-analytics-for-mongodb">Query Analytics for MongoDB<a class="headerlink" href="#query-analytics-for-mongodb" title="Permanent link">&para;</a></h2>
 <p>MongoDB is conceptually different from relational database management systems, such as MySQL and MariaDB.</p>
 <p>Relational database management systems store data in tables that represent single entities. Complex objects are represented by linking tables.</p>
 <p>In contrast, MongoDB uses the concept of a document where all essential information for a complex object is stored in one place.</p>
 <p>Query Analytics can monitor MongoDB queries. Although MongoDB is not a relational database management system, you analyze its databases and collections in the same interface using the same tools.</p>
-<h2 id="sharing-a-link-for-query-analytics">Sharing a link for Query Analytics</h2>
+<h2 id="sharing-a-link-for-query-analytics">Sharing a link for Query Analytics<a class="headerlink" href="#sharing-a-link-for-query-analytics" title="Permanent link">&para;</a></h2>
 <p>To share a link for Query Analytics, use <em>Copy Link</em>. It copies the link to the clipboard with all the relevant information such as selected query, table page, selected filters, details tab, and time range. Thus, when you open the link, it will display the exact information.</p>
-<p>!!! caution alert alert-warning ""
-  Ensure that you use <em>Copy Link</em> to copy the link instead of using the browser address bar or the standard Grafana functionality (to share a dashboard). Otherwise, Query Analytics might not display the exact information that existed while sharing the link.
+<div class="admonition caution alert alert-warning"></div>
+<p>Ensure that you use <em>Copy Link</em> to copy the link instead of using the browser address bar or the standard Grafana functionality (to share a dashboard). Otherwise, Query Analytics might not display the exact information that existed while sharing the link.
   By default, Grafana uses a relative time range and not an absolute range, so it will have a different timestamp when this link is opened.</p>
-<p><img alt="!image" src="../_images/PMM_Query_Analytics_Share_Link.png" /></p>
+<p><div class="lightgallery"><a data-sub-html="image" href="../_images/PMM_Query_Analytics_Share_Link.png"><img alt="image" src="../_images/PMM_Query_Analytics_Share_Link.png" /></a></div></p>
                     </div>
                 </div>
                 
@@ -661,20 +661,6 @@ db.grantPrivilegesToRole( "explainRole", [ { resource: { db: "", collection: "" 
     <a class="reference internal" href="../details/interface.html">UI components</a>
 
 
-
-</ul>
-
-
-
-
-
-<li class="toctree-l1">
-    <a class="reference internal" href="../details/develop-checks.html">Developing Advisor checks</a>
-
-
-
-
-<ul class="toctree" id="toctree">
 
 
 <li class="toctree-l2">
@@ -1113,6 +1099,12 @@ db.grantPrivilegesToRole( "explainRole", [ { resource: { db: "", collection: "" 
 
 <li class="toctree-l2">
     <a class="reference internal" href="../details/glossary.html">Glossary</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../details/develop-checks.html">Develop Advisor checks</a>
 
 
 

@@ -115,8 +115,8 @@
 
                 <div class="bodywrapper">
                     <div class="body">
-                        <h1 id="remote-instances">Remote instances</h1>
-<h2 id="recommended-settings">Recommended settings</h2>
+                        <h1 id="remote-instances">Remote instances<a class="headerlink" href="#remote-instances" title="Permanent link">&para;</a></h1>
+<h2 id="recommended-settings">Recommended settings<a class="headerlink" href="#recommended-settings" title="Permanent link">&para;</a></h2>
 <p>When monitoring remote instances including RDS and Google instances, network latency might affect the scrape process and throw timeout errors.
 For this reason, it is recommended to <a href="../../how-to/configure.html#metrics-resolution">lower the metrics resolution</a>.</p>
 <p>Starting with PMM 2.18, the scrape timeout has been updated according to the following rules:</p>
@@ -125,15 +125,15 @@ For this reason, it is recommended to <a href="../../how-to/configure.html#metri
 <li>For resolutions &lt;= 10 seconds, timeout is set to resolution minus 1 second. For example, for 10 second resolution, timeout will be set at 9 seconds.</li>
 <li>For lower resolutions (values &gt; 10 seconds), the scrape timeout is set to 90% of the resolution time. For example, for 60 second resolution, the scrape timeout will be set to 54 seconds.</li>
 </ul>
-<h2 id="how-to-check-for-scrape-timeouts">How to check for scrape timeouts</h2>
+<h2 id="how-to-check-for-scrape-timeouts">How to check for scrape timeouts<a class="headerlink" href="#how-to-check-for-scrape-timeouts" title="Permanent link">&para;</a></h2>
 <p>Sometimes it is hard to check if you are using the correct values to scrape or if there some other reason why there is no data in a dashboard even when the instance has been added correctly and the agent is running.</p>
 <p>One additional step you can do is to check for scrape target statuses. Browse to <code>http://&lt;your-pmm-server-address&gt;/prometheus/targets</code> and then click on the Unhealthy button.</p>
-<p><img alt="!image" src="../../_images/scrape_targets_01.png" /></p>
+<p><div class="lightgallery"><a data-sub-html="image" href="../../_images/scrape_targets_01.png"><img alt="image" src="../../_images/scrape_targets_01.png" /></a></div></p>
 <p>The page will show only agents having issues while scrapping and the scrape result including the error messages.</p>
-<p><img alt="!image" src="../../_images/scrape_targets_02.png" /></p>
-<p>In the example here, there is a message that says: <em>context deadline exceeded</em> and the scrape duration column says the scrape took 10 seconds; this means that the exporter didn't respond in the 10 seconds the scrape process was allowed to run due to the configured metric resolutions and their timeouts.</p>
+<p><div class="lightgallery"><a data-sub-html="image" href="../../_images/scrape_targets_02.png"><img alt="image" src="../../_images/scrape_targets_02.png" /></a></div></p>
+<p>In the example here, there is a message that says: <em>context deadline exceeded</em> and the scrape duration column says the scrape took 10 seconds; this means that the exporter didn&rsquo;t respond in the 10 seconds the scrape process was allowed to run due to the configured metric resolutions and their timeouts.</p>
 <p>In this case, we can lower the metric resolutions increasing these values as shown in the image below.</p>
-<p><img alt="!image" src="../../_images/scrape_targets_03.png" /></p>
+<p><div class="lightgallery"><a data-sub-html="image" href="../../_images/scrape_targets_03.png"><img alt="image" src="../../_images/scrape_targets_03.png" /></a></div></p>
                     </div>
                 </div>
                 
@@ -490,20 +490,6 @@ For this reason, it is recommended to <a href="../../how-to/configure.html#metri
     <a class="reference internal" href="../../details/interface.html">UI components</a>
 
 
-
-</ul>
-
-
-
-
-
-<li class="toctree-l1">
-    <a class="reference internal" href="../../details/develop-checks.html">Developing Advisor checks</a>
-
-
-
-
-<ul class="toctree" id="toctree">
 
 
 <li class="toctree-l2">
@@ -942,6 +928,12 @@ For this reason, it is recommended to <a href="../../how-to/configure.html#metri
 
 <li class="toctree-l2">
     <a class="reference internal" href="../../details/glossary.html">Glossary</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../details/develop-checks.html">Develop Advisor checks</a>
 
 
 

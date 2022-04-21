@@ -115,7 +115,7 @@
 
                 <div class="bodywrapper">
                     <div class="body">
-                        <h1 id="percona-monitoring-and-management-2260">Percona Monitoring and Management 2.26.0</h1>
+                        <h1 id="percona-monitoring-and-management-2260">Percona Monitoring and Management 2.26.0<a class="headerlink" href="#percona-monitoring-and-management-2260" title="Permanent link">&para;</a></h1>
 <table class="docutils field-list" frame="void" rules="none">
   <colgroup>
     <col class="field-name">
@@ -135,7 +135,7 @@
 </table>
 
 <p>Percona Monitoring and Management (PMM) is a free and open-source platform for managing and monitoring MySQL, MongoDB, and PostgreSQL performance.</p>
-<h2 id="release-highlights">Release Highlights</h2>
+<h2 id="release-highlights">Release Highlights<a class="headerlink" href="#release-highlights" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>Experimental Dashboards</strong></li>
 </ul>
@@ -152,8 +152,10 @@
 <p><a href="https://www.percona.com/doc/percona-monitoring-and-management/2.x/details/dashboards/dashboard-environent-summary.html">Environment Summary dashboard</a></p>
 </li>
 </ul>
-<p>!!! caution alert alert-warning "Important"
-    These experimental dashboards are subject to change. It is recommended to use these dashboards for testing purposes only.   </p>
+<div class="admonition caution alert alert-warning">
+<p class="admonition-title">Important</p>
+<p>These experimental dashboards are subject to change. It is recommended to use these dashboards for testing purposes only.   </p>
+</div>
 <ul>
 <li><strong>SMTP Configuration Verification</strong></li>
 </ul>
@@ -164,16 +166,18 @@ For more information about setting up an SMTP email server, see <a href="https:/
 <li><strong>Breaking change for Integrated Alerting (Technical Preview)</strong></li>
 </ul>
 <p>This release introduces major changes to the core structure of rule templates. As a result, alert rules and templates created in previous PMM versions are not compatible with PMM 2.26.0 and cannot be migrated to this new version. After upgrading, make sure to manually recreate any custom alert rules and rule templates that you want to transfer to PMM 2.26.0.</p>
-<p>!!! caution alert alert-warning "Disclaimer"
-    Integrated Alerting is still a Preview functionality and, as such, subject to change. We recommend that early adopters use this feature for testing purposes only.</p>
-<h2 id="new-features">New Features</h2>
+<div class="admonition caution alert alert-warning">
+<p class="admonition-title">Disclaimer</p>
+<p>Integrated Alerting is still a Preview functionality and, as such, subject to change. We recommend that early adopters use this feature for testing purposes only.</p>
+</div>
+<h2 id="new-features">New Features<a class="headerlink" href="#new-features" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="https://jira.percona.com/browse/PMM-9059">PMM-9059</a>: Following the recently introduced support for connecting PMM to Percona Platform, you now have the option to also unlink any servers that are no longer relevant to your Platform organization.
  To disconnect a PMM server, go to <strong>Configuration &gt; Settings &gt; Percona Platform</strong> and click <strong>Disconnect</strong>.
  You can check the list of servers connected to an organization in Percona Platform by clicking <strong>View instances</strong> on the Dashboard page. For more information, see <a href="https://www.percona.com/doc/percona-monitoring-and-management/2.x/how-to/configure.html">Configure</a> for more details.</li>
 <li><a href="https://jira.percona.com/browse/PMM-9312">PMM-9312</a>: Tech Preview Feature: PMM now captures the MongoDB metrics such as dbStats, collStats, indexStats, and topmetrics. See <a href="https://www.percona.com/doc/percona-monitoring-and-management/2.x/details/commands/pmm-admin.html">Documentation</a> for more details.</li>
 </ul>
-<h2 id="improvements">Improvements</h2>
+<h2 id="improvements">Improvements<a class="headerlink" href="#improvements" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="https://jira.percona.com/browse/PMM-9176">PMM-9176</a>: DBaaS - PMM now supports Percona Distribution for MongoDB Operator 1.10.0.</li>
 <li><a href="https://jira.percona.com/browse/PMM-9159">PMM-9159</a>: DBaaS - PMM now supports Percona Kubernetes Operator for Percona XtraDB Cluster 1.10.0.</li>
@@ -182,12 +186,14 @@ For more information about setting up an SMTP email server, see <a href="https:/
 <li><a href="https://jira.percona.com/browse/PMM-9356">PMM-9356</a>: Added new experimental Environment dashboards in PMM.</li>
 <li><a href="https://jira.percona.com/browse/PMM-9296">PMM-9296</a>: Disclaimer about Technical Preview feature added to Percona Platform - Connect PMM to Percona portal page.</li>
 </ul>
-<h2 id="bugs-fixed">Bugs Fixed</h2>
+<h2 id="bugs-fixed">Bugs Fixed<a class="headerlink" href="#bugs-fixed" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="https://jira.percona.com/browse/PMM-9416">PMM-9416</a>: Upgrading to PMM 2.25.0 using docker (replacing the image) fails when upgrading from versions less than or equal to 2.23.0.</li>
 </ul>
-<p>!!! caution alert alert-warning
-    It is recommended to upgrade directly to PMM 2.26.0 instead of 2.25.0 when updating from versions less than or equal to PMM 2.23.0 if your PMM doesn't have external access (access to <code>repo.percona.com</code>).</p>
+<div class="admonition caution alert alert-warning">
+<p class="admonition-title">Caution</p>
+<p>It is recommended to upgrade directly to PMM 2.26.0 instead of 2.25.0 when updating from versions less than or equal to PMM 2.23.0 if your PMM doesn&rsquo;t have external access (access to <code>repo.percona.com</code>).</p>
+</div>
 <ul>
 <li><a href="https://jira.percona.com/browse/PMM-8867">PMM-8867</a>: Fixed an issue for PMM Client installation using the tarball script (without using RPMs) where the configuration was getting lost due to the configuration file pmm-agent.yml being recreated.</li>
 <li><a href="https://jira.percona.com/browse/PMM-8094">PMM-8094</a>: DBaaS - Fixed an issue for paused clusters that froze with PSMDB v1.8 operators when all the pods were terminated, providing no cluster resumption option.</li>
@@ -556,20 +562,6 @@ For more information about setting up an SMTP email server, see <a href="https:/
     <a class="reference internal" href="../details/interface.html">UI components</a>
 
 
-
-</ul>
-
-
-
-
-
-<li class="toctree-l1">
-    <a class="reference internal" href="../details/develop-checks.html">Developing Advisor checks</a>
-
-
-
-
-<ul class="toctree" id="toctree">
 
 
 <li class="toctree-l2">
@@ -1008,6 +1000,12 @@ For more information about setting up an SMTP email server, see <a href="https:/
 
 <li class="toctree-l2">
     <a class="reference internal" href="../details/glossary.html">Glossary</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../details/develop-checks.html">Develop Advisor checks</a>
 
 
 

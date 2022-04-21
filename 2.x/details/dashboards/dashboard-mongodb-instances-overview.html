@@ -115,26 +115,26 @@
 
                 <div class="bodywrapper">
                     <div class="body">
-                        <h1 id="mongodb-instances-overview">MongoDB Instances Overview</h1>
-<p><img alt="!image" src="../../_images/PMM_MongoDB_Instances_Overview.jpg" /></p>
+                        <h1 id="mongodb-instances-overview">MongoDB Instances Overview<a class="headerlink" href="#mongodb-instances-overview" title="Permanent link">&para;</a></h1>
+<p><div class="lightgallery"><a data-sub-html="image" href="../../_images/PMM_MongoDB_Instances_Overview.jpg"><img alt="image" src="../../_images/PMM_MongoDB_Instances_Overview.jpg" /></a></div></p>
 <p>This dashboard provides basic information about MongoDB instances.</p>
-<h2 id="command-operations">Command Operations</h2>
+<h2 id="command-operations">Command Operations<a class="headerlink" href="#command-operations" title="Permanent link">&para;</a></h2>
 <p>Shows how many times a command is executed per second on average during the selected interval.</p>
 <p>Look for peaks and drops and correlate them with other graphs.</p>
-<h2 id="connections">Connections</h2>
+<h2 id="connections">Connections<a class="headerlink" href="#connections" title="Permanent link">&para;</a></h2>
 <p>Keep in mind the hard limit on the maximum number of connections set by your distribution.</p>
 <p>Anything over 5,000 should be a concern, because the application may not close connections correctly.</p>
-<h2 id="cursors">Cursors</h2>
+<h2 id="cursors">Cursors<a class="headerlink" href="#cursors" title="Permanent link">&para;</a></h2>
 <p>Helps identify why connections are increasing.  Shows active cursors compared to cursors being automatically killed after 10 minutes due to an application not closing the connection.</p>
-<h2 id="document-operations">Document Operations</h2>
+<h2 id="document-operations">Document Operations<a class="headerlink" href="#document-operations" title="Permanent link">&para;</a></h2>
 <p>When used in combination with <em>Command Operations</em>, this graph can help identify <em>write amplification</em>.  For example, when one <code>insert</code> or <code>update</code> command actually inserts or updates hundreds, thousands, or even millions of documents.</p>
-<h2 id="queued-operations">Queued Operations</h2>
+<h2 id="queued-operations">Queued Operations<a class="headerlink" href="#queued-operations" title="Permanent link">&para;</a></h2>
 <p>Any number of queued operations for long periods of time is an indication of possible issues.  Find the cause and fix it before requests get stuck in the queue.</p>
-<h2 id="getlasterror-write-time-getlasterror-write-operations"><code>getLastError</code> Write Time, <code>getLastError</code> Write Operations</h2>
+<h2 id="getlasterror-write-time-getlasterror-write-operations"><code>getLastError</code> Write Time, <code>getLastError</code> Write Operations<a class="headerlink" href="#getlasterror-write-time-getlasterror-write-operations" title="Permanent link">&para;</a></h2>
 <p>This is useful for write-heavy workloads to understand how long it takes to verify writes and how many concurrent writes are occurring.</p>
-<h2 id="asserts">Asserts</h2>
+<h2 id="asserts">Asserts<a class="headerlink" href="#asserts" title="Permanent link">&para;</a></h2>
 <p>Asserts are not important by themselves, but you can correlate spikes with other graphs.</p>
-<h2 id="memory-faults">Memory Faults</h2>
+<h2 id="memory-faults">Memory Faults<a class="headerlink" href="#memory-faults" title="Permanent link">&para;</a></h2>
 <p>Memory faults indicate that requests are processed from disk either because an index is missing or there is not enough memory for the data set.  Consider increasing memory or sharding out.</p>
                     </div>
                 </div>
@@ -492,20 +492,6 @@
     <a class="reference internal" href="../interface.html">UI components</a>
 
 
-
-</ul>
-
-
-
-
-
-<li class="toctree-l1">
-    <a class="reference internal" href="../develop-checks.html">Developing Advisor checks</a>
-
-
-
-
-<ul class="toctree" id="toctree">
 
 
 <li class="toctree-l2">
@@ -944,6 +930,12 @@
 
 <li class="toctree-l2">
     <a class="reference internal" href="../glossary.html">Glossary</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../develop-checks.html">Develop Advisor checks</a>
 
 
 

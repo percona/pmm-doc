@@ -115,7 +115,7 @@
 
                 <div class="bodywrapper">
                     <div class="body">
-                        <h1 id="percona-monitoring-and-management-220">Percona Monitoring and Management 2.2.0</h1>
+                        <h1 id="percona-monitoring-and-management-220">Percona Monitoring and Management 2.2.0<a class="headerlink" href="#percona-monitoring-and-management-220" title="Permanent link">&para;</a></h1>
 <table class="docutils field-list" frame="void" rules="none">
   <colgroup>
     <col class="field-name">
@@ -137,9 +137,11 @@
 <li>The new Settings dashboard allows configuring PMM Server via the graphical interface</li>
 </ul>
 <p>For <em>PMM</em> install instructions, see <a href="../setting-up/server/index.html">Installing PMM Server</a> and <a href="../setting-up/client/index.html">Installing PMM Client</a>.</p>
-<p>!!! caution alert alert-warning "Caution"
-    PMM 2 is designed to be used as a new installation — please don’t try to upgrade your existing PMM 1 environment.</p>
-<h2 id="improvements-and-new-features">Improvements and new features</h2>
+<div class="admonition caution alert alert-warning">
+<p class="admonition-title">Caution</p>
+<p>PMM 2 is designed to be used as a new installation — please don’t try to upgrade your existing PMM 1 environment.</p>
+</div>
+<h2 id="improvements-and-new-features">Improvements and new features<a class="headerlink" href="#improvements-and-new-features" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="https://jira.percona.com/browse/PMM-4575">PMM-4575</a>: The new PMM Settings dashboard allows users to configure various PMM Server options: setting metrics resolution and data retention, enabling or disabling send usage data statistics back to Percona and checking for updates; this dashboard is now the proper place to upload your public key for the SSH login and to download PMM Server logs for diagnostics</li>
 <li><a href="https://jira.percona.com/browse/PMM-4907">PMM-4907</a> and <a href="https://jira.percona.com/browse/PMM-4767">PMM-4767</a>: The user’s AMI Instance ID is now used to setup running PMM Server using AWS Marketplace as an additional verification on the user, based on the Amazon Marketplace rules</li>
@@ -156,7 +158,7 @@
 <li><a href="https://jira.percona.com/browse/PMM-527">PMM-527</a>: <code>node_exporter</code> is now providing hardware monitoring information such as CPU temperatures and fan statuses; while this information is being collected by PMM Server, it will not be shown until a dedicated dashboard is added in a future release</li>
 <li><a href="https://jira.percona.com/browse/PMM-3198">PMM-3198</a>: Instead of showing All graphs for all services by default, MySQL Command/Handler Counters Compare dashboard now shows the predefined set of ten most informative ones, to reduce load on PMM Server at its first open</li>
 </ul>
-<h2 id="fixed-bugs">Fixed bugs</h2>
+<h2 id="fixed-bugs">Fixed bugs<a class="headerlink" href="#fixed-bugs" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="https://jira.percona.com/browse/PMM-4978">PMM-4978</a>: The “Top MySQL Questions” <code>singlestat</code> on the MySQL Instances Overview dashboard was changed to show ops instead of percentage</li>
 <li><a href="https://jira.percona.com/browse/PMM-4917">PMM-4917</a>: The “Systems under monitoring” and “Monitored DB Instances” <code>singlestats</code> on the Home dashboard now have a sparkline to make situation more clear with recently shut down nodes/instances</li>
@@ -531,20 +533,6 @@
     <a class="reference internal" href="../details/interface.html">UI components</a>
 
 
-
-</ul>
-
-
-
-
-
-<li class="toctree-l1">
-    <a class="reference internal" href="../details/develop-checks.html">Developing Advisor checks</a>
-
-
-
-
-<ul class="toctree" id="toctree">
 
 
 <li class="toctree-l2">
@@ -983,6 +971,12 @@
 
 <li class="toctree-l2">
     <a class="reference internal" href="../details/glossary.html">Glossary</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../details/develop-checks.html">Develop Advisor checks</a>
 
 
 

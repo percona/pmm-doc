@@ -115,13 +115,13 @@
 
                 <div class="bodywrapper">
                     <div class="body">
-                        <h1 id="network-details">Network Details</h1>
-<p><img alt="!image" src="../../_images/PMM_Network_Details.jpg" /></p>
-<h2 id="last-hour-statistic">Last Hour Statistic</h2>
+                        <h1 id="network-details">Network Details<a class="headerlink" href="#network-details" title="Permanent link">&para;</a></h1>
+<p><div class="lightgallery"><a data-sub-html="image" href="../../_images/PMM_Network_Details.jpg"><img alt="image" src="../../_images/PMM_Network_Details.jpg" /></a></div></p>
+<h2 id="last-hour-statistic">Last Hour Statistic<a class="headerlink" href="#last-hour-statistic" title="Permanent link">&para;</a></h2>
 <p>This section reports the <em>inbound speed</em>, <em>outbound speed</em>, <em>traffic errors and drops</em>, and <em>retransmit rate</em>.</p>
-<h2 id="network-traffic">Network Traffic</h2>
+<h2 id="network-traffic">Network Traffic<a class="headerlink" href="#network-traffic" title="Permanent link">&para;</a></h2>
 <p>This section contains the <em>Network traffic</em> and <em>network utilization hourly</em> metrics.</p>
-<h2 id="network-traffic-details">Network Traffic Details</h2>
+<h2 id="network-traffic-details">Network Traffic Details<a class="headerlink" href="#network-traffic-details" title="Permanent link">&para;</a></h2>
 <p>This section offers the following metrics:</p>
 <ul>
 <li>Network traffic by packets</li>
@@ -129,7 +129,7 @@
 <li>Network traffic drop</li>
 <li>Network traffic multicast</li>
 </ul>
-<h2 id="network-netstat-tcp">Network Netstat TCP</h2>
+<h2 id="network-netstat-tcp">Network Netstat TCP<a class="headerlink" href="#network-netstat-tcp" title="Permanent link">&para;</a></h2>
 <p>This section offers the following metrics:</p>
 <ul>
 <li>Timeout value used for retransmitting</li>
@@ -138,28 +138,30 @@
 <li>Netstat: TCP</li>
 <li>TCP segments</li>
 </ul>
-<h2 id="network-netstat-udp">Network Netstat UDP</h2>
+<h2 id="network-netstat-udp">Network Netstat UDP<a class="headerlink" href="#network-netstat-udp" title="Permanent link">&para;</a></h2>
 <p>In this section, you can find the following metrics:</p>
 <ul>
 <li>Netstat: UDP</li>
 <li>UDP Lite</li>
 </ul>
 <p>The graphs in the <em>UDP Lite</em> metric give statistics about:</p>
-<p><code>InDatagrams</code>
-: Packets received</p>
-<p><code>OutDatagrams</code>
-: Packets sent</p>
-<p><code>InCsumErrors</code>
-: Datagrams with checksum errors</p>
-<p><code>InErrors</code>
-: Datagrams that could not be delivered to an application</p>
-<p><code>RcvbufErrors</code>
-: Datagrams for which not enough socket buffer memory to receive</p>
-<p><code>SndbufErrors</code>
-: Datagrams for which not enough socket buffer memory to transmit</p>
-<p><code>NoPorts</code>
-: Datagrams received on a port with no listener</p>
-<h2 id="icmp">ICMP</h2>
+<dl>
+<dt><code>InDatagrams</code></dt>
+<dd>Packets received</dd>
+<dt><code>OutDatagrams</code></dt>
+<dd>Packets sent</dd>
+<dt><code>InCsumErrors</code></dt>
+<dd>Datagrams with checksum errors</dd>
+<dt><code>InErrors</code></dt>
+<dd>Datagrams that could not be delivered to an application</dd>
+<dt><code>RcvbufErrors</code></dt>
+<dd>Datagrams for which not enough socket buffer memory to receive</dd>
+<dt><code>SndbufErrors</code></dt>
+<dd>Datagrams for which not enough socket buffer memory to transmit</dd>
+<dt><code>NoPorts</code></dt>
+<dd>Datagrams received on a port with no listener</dd>
+</dl>
+<h2 id="icmp">ICMP<a class="headerlink" href="#icmp" title="Permanent link">&para;</a></h2>
 <p>This section has the following metrics:</p>
 <ul>
 <li>ICMP Errors</li>
@@ -167,58 +169,66 @@
 <li>Echos</li>
 <li>Timestamps/Mask Requests</li>
 </ul>
-<h3 id="icmp-errors">ICMP Errors</h3>
-<p><code>InErrors</code>
-:   Messages which the entity received but determined as having ICMP-specific errors (bad ICMP checksums, bad length, etc.)</p>
-<p><code>OutErrors</code>
-:   Messages which this entity did not send due to problems discovered within ICMP, such as a lack of buffers</p>
-<p><code>InDestUnreachs</code>
-:   Destination Unreachable messages received</p>
-<p><code>OutDestUnreachs</code>
-:   Destination Unreachable messages sent</p>
-<p><code>InType3</code>
-:   Destination unreachable</p>
-<p><code>OutType3</code>
-:   Destination unreachable</p>
-<p><code>InCsumErrors</code>
-:   Messages with ICMP checksum errors</p>
-<p><code>InTimeExcds</code>
-:   Time Exceeded messages received</p>
-<h3 id="messagesredirects">Messages/Redirects</h3>
-<p><code>InMsgs</code>
-:   Messages which the entity received. Note that this counter includes all those counted by <code>icmpInErrors</code></p>
-<p><code>InRedirects</code>
-:   Redirect messages received</p>
-<p><code>OutMsgs</code>
-:   Messages which this entity attempted to send. Note that this counter includes all those counted by <code>icmpOutErrors</code></p>
-<p><code>OutRedirects</code>
-:   Redirect messages sent. For a host, this object will always be zero, since hosts do not send redirects</p>
-<h3 id="echos">Echos</h3>
-<p><code>InEchoReps</code>
-: Echo Reply messages received</p>
-<p><code>InEchos</code>
-: Echo (request) messages received</p>
-<p><code>OutEchoReps</code>
-: Echo Reply messages sent</p>
-<p><code>OutEchos</code>
-: Echo (request) messages sent</p>
-<h3 id="timestampsmask-requests">Timestamps/Mask Requests</h3>
-<p><code>InAddrMaskReps</code>
-: Address Mask Reply messages received</p>
-<p><code>InAddrMasks</code>
-: Address Mask Request messages received</p>
-<p><code>OutAddrMaskReps</code>
-: Address Mask Reply messages sent</p>
-<p><code>OutAddrMasks</code>
-: Address Mask Request messages sent</p>
-<p><code>InTimestampReps</code>
-: Timestamp Reply messages received</p>
-<p><code>InTimestamps</code>
-: Timestamp Request messages received</p>
-<p><code>OutTimestampReps</code>
-: Timestamp Reply messages sent</p>
-<p><code>OutTimestamps</code>
-: Timestamp Request messages sent</p>
+<h3 id="icmp-errors">ICMP Errors<a class="headerlink" href="#icmp-errors" title="Permanent link">&para;</a></h3>
+<dl>
+<dt><code>InErrors</code></dt>
+<dd>Messages which the entity received but determined as having ICMP-specific errors (bad ICMP checksums, bad length, etc.)</dd>
+<dt><code>OutErrors</code></dt>
+<dd>Messages which this entity did not send due to problems discovered within ICMP, such as a lack of buffers</dd>
+<dt><code>InDestUnreachs</code></dt>
+<dd>Destination Unreachable messages received</dd>
+<dt><code>OutDestUnreachs</code></dt>
+<dd>Destination Unreachable messages sent</dd>
+<dt><code>InType3</code></dt>
+<dd>Destination unreachable</dd>
+<dt><code>OutType3</code></dt>
+<dd>Destination unreachable</dd>
+<dt><code>InCsumErrors</code></dt>
+<dd>Messages with ICMP checksum errors</dd>
+<dt><code>InTimeExcds</code></dt>
+<dd>Time Exceeded messages received</dd>
+</dl>
+<h3 id="messagesredirects">Messages/Redirects<a class="headerlink" href="#messagesredirects" title="Permanent link">&para;</a></h3>
+<dl>
+<dt><code>InMsgs</code></dt>
+<dd>Messages which the entity received. Note that this counter includes all those counted by <code>icmpInErrors</code></dd>
+<dt><code>InRedirects</code></dt>
+<dd>Redirect messages received</dd>
+<dt><code>OutMsgs</code></dt>
+<dd>Messages which this entity attempted to send. Note that this counter includes all those counted by <code>icmpOutErrors</code></dd>
+<dt><code>OutRedirects</code></dt>
+<dd>Redirect messages sent. For a host, this object will always be zero, since hosts do not send redirects</dd>
+</dl>
+<h3 id="echos">Echos<a class="headerlink" href="#echos" title="Permanent link">&para;</a></h3>
+<dl>
+<dt><code>InEchoReps</code></dt>
+<dd>Echo Reply messages received</dd>
+<dt><code>InEchos</code></dt>
+<dd>Echo (request) messages received</dd>
+<dt><code>OutEchoReps</code></dt>
+<dd>Echo Reply messages sent</dd>
+<dt><code>OutEchos</code></dt>
+<dd>Echo (request) messages sent</dd>
+</dl>
+<h3 id="timestampsmask-requests">Timestamps/Mask Requests<a class="headerlink" href="#timestampsmask-requests" title="Permanent link">&para;</a></h3>
+<dl>
+<dt><code>InAddrMaskReps</code></dt>
+<dd>Address Mask Reply messages received</dd>
+<dt><code>InAddrMasks</code></dt>
+<dd>Address Mask Request messages received</dd>
+<dt><code>OutAddrMaskReps</code></dt>
+<dd>Address Mask Reply messages sent</dd>
+<dt><code>OutAddrMasks</code></dt>
+<dd>Address Mask Request messages sent</dd>
+<dt><code>InTimestampReps</code></dt>
+<dd>Timestamp Reply messages received</dd>
+<dt><code>InTimestamps</code></dt>
+<dd>Timestamp Request messages received</dd>
+<dt><code>OutTimestampReps</code></dt>
+<dd>Timestamp Reply messages sent</dd>
+<dt><code>OutTimestamps</code></dt>
+<dd>Timestamp Request messages sent</dd>
+</dl>
                     </div>
                 </div>
                 
@@ -575,20 +585,6 @@
     <a class="reference internal" href="../interface.html">UI components</a>
 
 
-
-</ul>
-
-
-
-
-
-<li class="toctree-l1">
-    <a class="reference internal" href="../develop-checks.html">Developing Advisor checks</a>
-
-
-
-
-<ul class="toctree" id="toctree">
 
 
 <li class="toctree-l2">
@@ -1027,6 +1023,12 @@
 
 <li class="toctree-l2">
     <a class="reference internal" href="../glossary.html">Glossary</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../develop-checks.html">Develop Advisor checks</a>
 
 
 

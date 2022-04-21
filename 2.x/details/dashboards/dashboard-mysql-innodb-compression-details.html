@@ -115,33 +115,41 @@
 
                 <div class="bodywrapper">
                     <div class="body">
-                        <h1 id="mysql-innodb-compression-details">MySQL InnoDB Compression Details</h1>
-<p><img alt="!image" src="../../_images/PMM_MySQL_InnoDB_Compression_Details.jpg" /></p>
+                        <h1 id="mysql-innodb-compression-details">MySQL InnoDB Compression Details<a class="headerlink" href="#mysql-innodb-compression-details" title="Permanent link">&para;</a></h1>
+<p><div class="lightgallery"><a data-sub-html="image" href="../../_images/PMM_MySQL_InnoDB_Compression_Details.jpg"><img alt="image" src="../../_images/PMM_MySQL_InnoDB_Compression_Details.jpg" /></a></div></p>
 <p>This dashboard helps you analyze the efficiency of InnoDB compression.</p>
-<h2 id="compression-level-and-failure-rate-threshold">Compression level and failure rate threshold</h2>
-<p>InnoDB Compression Level
-:   The level of zlib compression to use for InnoDB compressed tables and indexes.</p>
-<p>InnoDB Compression Failure Threshold
-:   The compression failure rate threshold for a table.</p>
-<p>Compression Failure Rate Threshold
-:   The maximum percentage that can be reserved as free space within each compressed page, allowing room to reorganize the data and modification log within the page when a compressed table or index is updated and the data might be recompressed.</p>
-<p>Write Pages to the Redo Log
-:   Specifies whether images of re-compressed pages are written to the redo log. Re-compression may occur when changes are made to compressed data.</p>
-<h2 id="statistic-of-compression-operations">Statistic of compression operations</h2>
-<p>Compress Attempts
-:   Number of compression operations attempted. Pages are compressed whenever an empty page is created or the space for the uncompressed modification log runs out.</p>
-<p>Uncompressed Attempts
-:   Number of uncompression operations performed. Compressed InnoDB pages are uncompressed whenever compression fails, or the first time a compressed page is accessed in the buffer pool and the uncompressed page does not exist.</p>
-<h2 id="cpu-core-usage">CPU Core Usage</h2>
-<p>CPU Core Usage for Compression
-:   Shows the time in seconds spent by InnoDB Compression operations.</p>
-<p>CPU Core Usage for Uncompression
-:   Shows the time in seconds spent by InnoDB Uncompression operations.</p>
-<h2 id="buffer-pool-total">Buffer Pool Total</h2>
-<p>Total Used Pages
-:   Shows the total amount of used compressed pages into the InnoDB Buffer Pool split by page size.</p>
-<p>Total Free Pages
-:   Shows the total amount of free compressed pages into the InnoDB Buffer Pool split by page size.</p>
+<h2 id="compression-level-and-failure-rate-threshold">Compression level and failure rate threshold<a class="headerlink" href="#compression-level-and-failure-rate-threshold" title="Permanent link">&para;</a></h2>
+<dl>
+<dt>InnoDB Compression Level</dt>
+<dd>The level of zlib compression to use for InnoDB compressed tables and indexes.</dd>
+<dt>InnoDB Compression Failure Threshold</dt>
+<dd>The compression failure rate threshold for a table.</dd>
+<dt>Compression Failure Rate Threshold</dt>
+<dd>The maximum percentage that can be reserved as free space within each compressed page, allowing room to reorganize the data and modification log within the page when a compressed table or index is updated and the data might be recompressed.</dd>
+<dt>Write Pages to the Redo Log</dt>
+<dd>Specifies whether images of re-compressed pages are written to the redo log. Re-compression may occur when changes are made to compressed data.</dd>
+</dl>
+<h2 id="statistic-of-compression-operations">Statistic of compression operations<a class="headerlink" href="#statistic-of-compression-operations" title="Permanent link">&para;</a></h2>
+<dl>
+<dt>Compress Attempts</dt>
+<dd>Number of compression operations attempted. Pages are compressed whenever an empty page is created or the space for the uncompressed modification log runs out.</dd>
+<dt>Uncompressed Attempts</dt>
+<dd>Number of uncompression operations performed. Compressed InnoDB pages are uncompressed whenever compression fails, or the first time a compressed page is accessed in the buffer pool and the uncompressed page does not exist.</dd>
+</dl>
+<h2 id="cpu-core-usage">CPU Core Usage<a class="headerlink" href="#cpu-core-usage" title="Permanent link">&para;</a></h2>
+<dl>
+<dt>CPU Core Usage for Compression</dt>
+<dd>Shows the time in seconds spent by InnoDB Compression operations.</dd>
+<dt>CPU Core Usage for Uncompression</dt>
+<dd>Shows the time in seconds spent by InnoDB Uncompression operations.</dd>
+</dl>
+<h2 id="buffer-pool-total">Buffer Pool Total<a class="headerlink" href="#buffer-pool-total" title="Permanent link">&para;</a></h2>
+<dl>
+<dt>Total Used Pages</dt>
+<dd>Shows the total amount of used compressed pages into the InnoDB Buffer Pool split by page size.</dd>
+<dt>Total Free Pages</dt>
+<dd>Shows the total amount of free compressed pages into the InnoDB Buffer Pool split by page size.</dd>
+</dl>
                     </div>
                 </div>
                 
@@ -498,20 +506,6 @@
     <a class="reference internal" href="../interface.html">UI components</a>
 
 
-
-</ul>
-
-
-
-
-
-<li class="toctree-l1">
-    <a class="reference internal" href="../develop-checks.html">Developing Advisor checks</a>
-
-
-
-
-<ul class="toctree" id="toctree">
 
 
 <li class="toctree-l2">
@@ -950,6 +944,12 @@
 
 <li class="toctree-l2">
     <a class="reference internal" href="../glossary.html">Glossary</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../develop-checks.html">Develop Advisor checks</a>
 
 
 

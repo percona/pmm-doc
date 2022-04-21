@@ -115,11 +115,13 @@
 
                 <div class="bodywrapper">
                     <div class="body">
-                        <h1 id="dbaas">DBaaS</h1>
-<p>!!! caution alert alert-warning "Caution"
-    DBaaS functionality is currently in <a href="../details/glossary.html#technical-preview">technical preview</a> and is subject to change.</p>
+                        <h1 id="dbaas">DBaaS<a class="headerlink" href="#dbaas" title="Permanent link">&para;</a></h1>
+<div class="admonition caution alert alert-warning">
+<p class="admonition-title">Caution</p>
+<p>DBaaS functionality is currently in <a href="../details/glossary.html#technical-preview">technical preview</a> and is subject to change.</p>
+</div>
 <p>The DBaaS dashboard is where you add, remove, and operate on Kubernetes and database clusters.</p>
-<h2 id="activate-dbaas">Activate DBaaS</h2>
+<h2 id="activate-dbaas">Activate DBaaS<a class="headerlink" href="#activate-dbaas" title="Permanent link">&para;</a></h2>
 <p>The DBaaS feature is turned off by default. To turn it on:</p>
 <ol>
 <li>
@@ -129,42 +131,47 @@
 <p>Click the <i class="uil uil-toggle-off"></i> toggle in the <em>Technical preview features</em> section of the page.</p>
 </li>
 </ol>
-<h2 id="open-the-dbaas-dashboard">Open the DBaaS dashboard</h2>
+<h2 id="open-the-dbaas-dashboard">Open the DBaaS dashboard<a class="headerlink" href="#open-the-dbaas-dashboard" title="Permanent link">&para;</a></h2>
 <p>From the left menu, select <i class="uil uil-database"></i> <em>DBaaS</em>.</p>
-<p><img alt="!" src="../_images/PMM_DBaaS_Kubernetes_Cluster_Panel.jpg" /></p>
-<h2 id="kubernetes-clusters">Kubernetes clusters</h2>
-<h3 id="add-a-kubernetes-cluster">Add a Kubernetes cluster</h3>
-<p>!!! caution alert alert-warning "Caution"
-    Ensure that you set PMM <em>Public Address</em> under <i class="uil uil-cog"></i> <em>Configuration</em> → <i class="uil uil-setting"></i> <em>Settings</em> → <em>Advanced Settings</em> before creating a Kubernetes cluster. Otherwise, PMM would <strong>not</strong> monitor the Kubernetes cluster along with the associated database clusters.</p>
-<p>!!! note alert alert-primary ""
-    PXC and PSMDB operators are installed as part of the Kubernetes cluster registration process. It enables you to deploy database clusters into the Kubernetes cluster.</p>
-<pre><code>If a public address is set VM Operator is also installed as part of the Kubernetes cluster registration process. It lets you monitor a kubernetes cluster via PMM.
-</code></pre>
+<p><div class="lightgallery"><a data-sub-html="" href="../_images/PMM_DBaaS_Kubernetes_Cluster_Panel.jpg"><img alt="" src="../_images/PMM_DBaaS_Kubernetes_Cluster_Panel.jpg" /></a></div></p>
+<h2 id="kubernetes-clusters">Kubernetes clusters<a class="headerlink" href="#kubernetes-clusters" title="Permanent link">&para;</a></h2>
+<h3 id="add-a-kubernetes-cluster">Add a Kubernetes cluster<a class="headerlink" href="#add-a-kubernetes-cluster" title="Permanent link">&para;</a></h3>
+<div class="admonition caution alert alert-warning">
+<p class="admonition-title">Caution</p>
+<p>Ensure that you set PMM <em>Public Address</em> under <i class="uil uil-cog"></i> <em>Configuration</em> → <i class="uil uil-setting"></i> <em>Settings</em> → <em>Advanced Settings</em> before creating a Kubernetes cluster. Otherwise, PMM would <strong>not</strong> monitor the Kubernetes cluster along with the associated database clusters.</p>
+</div>
+<div class="admonition note alert alert-primary">
+<p>PXC and PSMDB operators are installed as part of the Kubernetes cluster registration process. It enables you to deploy database clusters into the Kubernetes cluster.</p>
+<p>If a public address is set VM Operator is also installed as part of the Kubernetes cluster registration process. It lets you monitor a kubernetes cluster via PMM.</p>
+</div>
 <ol>
 <li>
 <p>Click <em>Register new Kubernetes Cluster</em>.</p>
 </li>
 <li>
 <p>Enter values for the <em>Kubernetes Cluster Name</em> and <em>Kubeconfig file</em> in the corresponding fields.</p>
-<p><img alt="!" src="../_images/PMM_DBaaS_Kubernetes_Cluster_Details.png" /></p>
-<p>!!! note alert alert-info ""
-    For a Kubernetes cluster, when using Amazon Elastic Kubernetes Service (EKS) and the <em>kubeconfig file</em> does not contain the AWS 
-    access key ID and AWS secret access key. Select the <em>Using Amazon Elastic Kubernetes Service (EKS)</em> 
-    checkbox and enter the access key ID and secret access key in the respective fields.
-    For information on obtaining these, see the <a href="https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html">AWS documentation</a>.</p>
-<p><img alt="!" src="../_images/PMM_DBaaS_Kubernetes_Cluster_EKS.png" /></p>
+<p><div class="lightgallery"><a data-sub-html="" href="../_images/PMM_DBaaS_Kubernetes_Cluster_Details.png"><img alt="" src="../_images/PMM_DBaaS_Kubernetes_Cluster_Details.png" /></a></div></p>
+<div class="admonition note alert alert-info">
+<p>For a Kubernetes cluster, when using Amazon Elastic Kubernetes Service (EKS) and the <em>kubeconfig file</em> does not contain the AWS 
+access key ID and AWS secret access key. Select the <em>Using Amazon Elastic Kubernetes Service (EKS)</em> 
+checkbox and enter the access key ID and secret access key in the respective fields.
+For information on obtaining these, see the <a href="https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html">AWS documentation</a>.</p>
+</div>
+<p><div class="lightgallery"><a data-sub-html="" href="../_images/PMM_DBaaS_Kubernetes_Cluster_EKS.png"><img alt="" src="../_images/PMM_DBaaS_Kubernetes_Cluster_EKS.png" /></a></div></p>
 </li>
 <li>
 <p>Click <em>Register</em>.</p>
 </li>
 <li>
 <p>A message will momentarily display telling you whether the registration was successful or not.</p>
-<p><img alt="!" src="../_images/PMM_DBaaS_Kubernetes_Cluster_Added.png" /></p>
+<p><div class="lightgallery"><a data-sub-html="" href="../_images/PMM_DBaaS_Kubernetes_Cluster_Added.png"><img alt="" src="../_images/PMM_DBaaS_Kubernetes_Cluster_Added.png" /></a></div></p>
 </li>
 </ol>
-<h3 id="unregister-a-kubernetes-cluster">Unregister a Kubernetes cluster</h3>
-<p>!!! caution alert alert-warning "Important"
-    You can't unregister a Kubernetes cluster if there DB clusters associated with it.</p>
+<h3 id="unregister-a-kubernetes-cluster">Unregister a Kubernetes cluster<a class="headerlink" href="#unregister-a-kubernetes-cluster" title="Permanent link">&para;</a></h3>
+<div class="admonition caution alert alert-warning">
+<p class="admonition-title">Important</p>
+<p>You can&rsquo;t unregister a Kubernetes cluster if there DB clusters associated with it.</p>
+</div>
 <ol>
 <li>
 <p>Click <em>Unregister</em>.</p>
@@ -173,7 +180,7 @@
 <p>Confirm the action by clicking <em>Proceed</em>, or abandon by clicking <em>Cancel</em>.</p>
 </li>
 </ol>
-<h3 id="view-a-kubernetes-clusters-configuration">View a Kubernetes cluster's configuration</h3>
+<h3 id="view-a-kubernetes-clusters-configuration">View a Kubernetes cluster&rsquo;s configuration<a class="headerlink" href="#view-a-kubernetes-clusters-configuration" title="Permanent link">&para;</a></h3>
 <ol>
 <li>
 <p>Find the row with the Kubernetes cluster you want to see.</p>
@@ -182,7 +189,7 @@
 <p>In the <em>Actions</em> column, open the <i class="uil uil-ellipsis-v"></i> menu and click <em>Show configuration</em>.</p>
 </li>
 </ol>
-<h3 id="manage-allowed-component-versions">Manage allowed component versions</h3>
+<h3 id="manage-allowed-component-versions">Manage allowed component versions<a class="headerlink" href="#manage-allowed-component-versions" title="Permanent link">&para;</a></h3>
 <p>Administrators can select allowed and default versions of components versions for each cluster.</p>
 <ol>
 <li>
@@ -190,11 +197,11 @@
 </li>
 <li>
 <p>In the <em>Actions</em> column, open the <i class="uil uil-ellipsis-v"></i> menu and click <em>Manage versions</em>.</p>
-<p><img alt="!" src="../_images/PMM_DBaaS_Kubernetes_Manage_Versions.png" /></p>
+<p><div class="lightgallery"><a data-sub-html="" href="../_images/PMM_DBaaS_Kubernetes_Manage_Versions.png"><img alt="" src="../_images/PMM_DBaaS_Kubernetes_Manage_Versions.png" /></a></div></p>
 </li>
 <li>
 <p>Select an <em>Operator</em> and <em>Component</em> from the drop-down menus.</p>
-<p><img alt="!" src="../_images/PMM_DBaaS_Kubernetes_Manage_Components_Versions.png" /></p>
+<p><div class="lightgallery"><a data-sub-html="" href="../_images/PMM_DBaaS_Kubernetes_Manage_Components_Versions.png"><img alt="" src="../_images/PMM_DBaaS_Kubernetes_Manage_Components_Versions.png" /></a></div></p>
 </li>
 <li>
 <p>Activate or deactivate allowed versions, and select a default in the <em>Default</em> menu.</p>
@@ -203,12 +210,12 @@
 <p>Click <em>Save</em>.</p>
 </li>
 </ol>
-<h3 id="kubernetes-operator-status">Kubernetes operator status</h3>
+<h3 id="kubernetes-operator-status">Kubernetes operator status<a class="headerlink" href="#kubernetes-operator-status" title="Permanent link">&para;</a></h3>
 <p>The Kubernetes Cluster tab shows the status of operators.</p>
-<p><img alt="!" src="../_images/PMM_DBaaS_Kubernetes_Cluster_Operator_Status.png" /></p>
-<h3 id="kubernetes-operator-update">Kubernetes operator update</h3>
+<p><div class="lightgallery"><a data-sub-html="" href="../_images/PMM_DBaaS_Kubernetes_Cluster_Operator_Status.png"><img alt="" src="../_images/PMM_DBaaS_Kubernetes_Cluster_Operator_Status.png" /></a></div></p>
+<h3 id="kubernetes-operator-update">Kubernetes operator update<a class="headerlink" href="#kubernetes-operator-update" title="Permanent link">&para;</a></h3>
 <p>When a new version of the operator is available the <em>Operators</em> column shows a message with this information. Click the message to go to the operator release notes to find out more about the update.</p>
-<p><img alt="!" src="../_images/PMM_DBaaS_Kubernetes_Cluster_Operator_Update.png" /></p>
+<p><div class="lightgallery"><a data-sub-html="" href="../_images/PMM_DBaaS_Kubernetes_Cluster_Operator_Update.png"><img alt="" src="../_images/PMM_DBaaS_Kubernetes_Cluster_Operator_Update.png" /></a></div></p>
 <p>To update the cluster:</p>
 <ol>
 <li>
@@ -219,11 +226,11 @@
 </li>
 <li>
 <p>Confirm the action by clicking <em>Update</em>, or abandon by clicking <em>Cancel</em>.</p>
-<p><img alt="!" src="../_images/PMM_DBaaS_Kubernetes_Cluster_Operator_Update_Confirmation.png" /></p>
+<p><div class="lightgallery"><a data-sub-html="" href="../_images/PMM_DBaaS_Kubernetes_Cluster_Operator_Update_Confirmation.png"><img alt="" src="../_images/PMM_DBaaS_Kubernetes_Cluster_Operator_Update_Confirmation.png" /></a></div></p>
 </li>
 </ol>
-<h2 id="db-clusters">DB clusters</h2>
-<h3 id="add-a-db-cluster">Add a DB Cluster</h3>
+<h2 id="db-clusters">DB clusters<a class="headerlink" href="#db-clusters" title="Permanent link">&para;</a></h2>
+<h3 id="add-a-db-cluster">Add a DB Cluster<a class="headerlink" href="#add-a-db-cluster" title="Permanent link">&para;</a></h3>
 <p>You must create at least one Kubernetes cluster to create a DB cluster.</p>
 <p>To monitor a DB cluster, set up a <a href="../how-to/configure.html#public-address">public address</a> for PMM Server first.</p>
 <ol>
@@ -249,7 +256,7 @@
 </li>
 <li>
 <p>Select a database type from the <em>Database Type</em> menu.</p>
-<p><img alt="!" src="../_images/PMM_DBaaS_DB_Cluster_Basic_Options_Filled.jpg" /></p>
+<p><div class="lightgallery"><a data-sub-html="" href="../_images/PMM_DBaaS_DB_Cluster_Basic_Options_Filled.jpg"><img alt="" src="../_images/PMM_DBaaS_DB_Cluster_Basic_Options_Filled.jpg" /></a></div></p>
 </li>
 </ol>
 </li>
@@ -265,14 +272,14 @@
 <li>
 <p>Select <em>External Access</em> if you want to make your DB cluster available outside of Kubernetes cluster.</p>
 <p>By default, only internal access is provided.</p>
-<p><em>External Access</em> can't be granted for local Kubernetes clusters (e.g. minikube).</p>
+<p><em>External Access</em> can&rsquo;t be granted for local Kubernetes clusters (e.g. minikube).</p>
 </li>
 <li>
 <p>Select a preset for <em>Resources per Node</em>.</p>
 <p><em>Small</em>, <em>Medium</em> and <em>Large</em> are fixed preset values for <em>Memory</em>, <em>CPU</em>, and <em>Disk</em>.</p>
 <p>Values for the <em>Custom</em> preset can be edited.</p>
 <p>Beside each resource type is an estimate of the required and available resources represented numerically in absolute and percentage values, and graphically as a colored, segmented bar showing the projected ratio of used to available resources. A red warning triangle <i style="color: red" class="uil uil-exclamation-triangle"></i> is shown if the requested resources exceed those available.</p>
-<p><img alt="!" src="../_images/PMM_DBaaS_DB_Cluster_Advanced_Options.png" /></p>
+<p><div class="lightgallery"><a data-sub-html="" href="../_images/PMM_DBaaS_DB_Cluster_Advanced_Options.png"><img alt="" src="../_images/PMM_DBaaS_DB_Cluster_Advanced_Options.png" /></a></div></p>
 </li>
 </ol>
 </li>
@@ -282,7 +289,7 @@
 </li>
 <li>
 <p>A row appears with information on your cluster:</p>
-<p><img alt="!" src="../_images/PMM_DBaaS_DB_Cluster_Created.png" /></p>
+<p><div class="lightgallery"><a data-sub-html="" href="../_images/PMM_DBaaS_DB_Cluster_Created.png"><img alt="" src="../_images/PMM_DBaaS_DB_Cluster_Created.png" /></a></div></p>
 <ul>
 <li><em>Name</em>: The cluster name.</li>
 <li><em>Database</em>: The cluster database type and version.</li>
@@ -311,7 +318,7 @@
 </ul>
 </li>
 </ol>
-<h3 id="delete-a-db-cluster">Delete a DB Cluster</h3>
+<h3 id="delete-a-db-cluster">Delete a DB Cluster<a class="headerlink" href="#delete-a-db-cluster" title="Permanent link">&para;</a></h3>
 <ol>
 <li>
 <p>Find the row with the database cluster you want to delete.</p>
@@ -321,12 +328,14 @@
 </li>
 <li>
 <p>Confirm the action by clicking <em>Proceed</em>, or abandon by clicking <em>Cancel</em>.</p>
-<p><img alt="!" src="../_images/PMM_DBaaS_DB_Cluster_Delete.png" /></p>
+<p><div class="lightgallery"><a data-sub-html="" href="../_images/PMM_DBaaS_DB_Cluster_Delete.png"><img alt="" src="../_images/PMM_DBaaS_DB_Cluster_Delete.png" /></a></div></p>
 </li>
 </ol>
-<p>!!! danger alert alert-danger "Danger"
-    Deleting a cluster in this way also deletes any attached volumes.</p>
-<h3 id="edit-a-db-cluster">Edit a DB Cluster</h3>
+<div class="admonition danger alert alert-danger">
+<p class="admonition-title">Danger</p>
+<p>Deleting a cluster in this way also deletes any attached volumes.</p>
+</div>
+<h3 id="edit-a-db-cluster">Edit a DB Cluster<a class="headerlink" href="#edit-a-db-cluster" title="Permanent link">&para;</a></h3>
 <ol>
 <li>
 <p>Select the <em>DB Cluster</em> tab.</p>
@@ -338,8 +347,8 @@
 <p>In the <em>Actions</em> column, open the <i class="uil uil-ellipsis-v"></i> menu and click <em>Edit</em>.</p>
 </li>
 </ol>
-<p>A paused cluster can't be edited.</p>
-<h3 id="restart-a-db-cluster">Restart a DB Cluster</h3>
+<p>A paused cluster can&rsquo;t be edited.</p>
+<h3 id="restart-a-db-cluster">Restart a DB Cluster<a class="headerlink" href="#restart-a-db-cluster" title="Permanent link">&para;</a></h3>
 <ol>
 <li>
 <p>Select the <em>DB Cluster</em> tab.</p>
@@ -351,7 +360,7 @@
 <p>In the <em>Actions</em> column, open the <i class="uil uil-ellipsis-v"></i> menu and click <em>Restart</em>.</p>
 </li>
 </ol>
-<h3 id="suspend-or-resume-a-db-cluster">Suspend or resume a DB Cluster</h3>
+<h3 id="suspend-or-resume-a-db-cluster">Suspend or resume a DB Cluster<a class="headerlink" href="#suspend-or-resume-a-db-cluster" title="Permanent link">&para;</a></h3>
 <ol>
 <li>
 <p>Select the <em>DB Cluster</em> tab.</p>
@@ -364,16 +373,16 @@
 <ul>
 <li>
 <p>For active clusters, click <em>Suspend</em>.</p>
-<p><img alt="!DBaaS Suspend" src="../_images/PMM_DBaaS_DB_Cluster_Suspend.gif" /></p>
+<p><div class="lightgallery"><a data-sub-html="DBaaS Suspend" href="../_images/PMM_DBaaS_DB_Cluster_Suspend.gif"><img alt="DBaaS Suspend" src="../_images/PMM_DBaaS_DB_Cluster_Suspend.gif" /></a></div></p>
 </li>
 <li>
 <p>For paused clusters, click <em>Resume</em>.</p>
-<p><img alt="!DBaaS Resume" src="../_images/PMM_DBaaS_DB_Cluster_Resume.gif" /></p>
+<p><div class="lightgallery"><a data-sub-html="DBaaS Resume" href="../_images/PMM_DBaaS_DB_Cluster_Resume.gif"><img alt="DBaaS Resume" src="../_images/PMM_DBaaS_DB_Cluster_Resume.gif" /></a></div></p>
 </li>
 </ul>
 </li>
 </ol>
-<h3 id="update-a-db-cluster">Update a DB Cluster</h3>
+<h3 id="update-a-db-cluster">Update a DB Cluster<a class="headerlink" href="#update-a-db-cluster" title="Permanent link">&para;</a></h3>
 <ol>
 <li>
 <p>Select the <em>DB Cluster</em> tab.</p>
@@ -383,15 +392,17 @@
 </li>
 <li>
 <p>In the <em>Actions</em> column, open the <i class="uil uil-ellipsis-v"></i> menu and click <em>Update</em>:</p>
-<p><img alt="!DBaaS Update" src="../_images/PMM_DBaaS_DB_Cluster_Update_menu.png" /></p>
+<p><div class="lightgallery"><a data-sub-html="DBaaS Update" href="../_images/PMM_DBaaS_DB_Cluster_Update_menu.png"><img alt="DBaaS Update" src="../_images/PMM_DBaaS_DB_Cluster_Update_menu.png" /></a></div></p>
 </li>
 <li>
 <p>Confirm the update by clicking on <em>Update</em>, or abandon by clicking <em>Cancel</em>.</p>
-<p><img alt="!DBaaS Update Confirmation" src="../_images/PMM_DBaaS_DB_Cluster_Update_confirmation.png" /></p>
+<p><div class="lightgallery"><a data-sub-html="DBaaS Update Confirmation" href="../_images/PMM_DBaaS_DB_Cluster_Update_confirmation.png"><img alt="DBaaS Update Confirmation" src="../_images/PMM_DBaaS_DB_Cluster_Update_confirmation.png" /></a></div></p>
 </li>
 </ol>
-<p>!!! seealso alert alert-info "See also"
-    <a href="../setting-up/server/dbaas.html">Setting up a development environment for DBaaS</a></p>
+<div class="admonition seealso alert alert-info">
+<p class="admonition-title">See also</p>
+<p><a href="../setting-up/server/dbaas.html">Setting up a development environment for DBaaS</a></p>
+</div>
                     </div>
                 </div>
                 
@@ -748,20 +759,6 @@
     <a class="reference internal" href="../details/interface.html">UI components</a>
 
 
-
-</ul>
-
-
-
-
-
-<li class="toctree-l1">
-    <a class="reference internal" href="../details/develop-checks.html">Developing Advisor checks</a>
-
-
-
-
-<ul class="toctree" id="toctree">
 
 
 <li class="toctree-l2">
@@ -1200,6 +1197,12 @@
 
 <li class="toctree-l2">
     <a class="reference internal" href="../details/glossary.html">Glossary</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../details/develop-checks.html">Develop Advisor checks</a>
 
 
 

@@ -115,7 +115,7 @@
 
                 <div class="bodywrapper">
                     <div class="body">
-                        <h1 id="set-up-pmm-client">Set up PMM Client</h1>
+                        <h1 id="set-up-pmm-client">Set up PMM Client<a class="headerlink" href="#set-up-pmm-client" title="Permanent link">&para;</a></h1>
 <p>There are different ways to install PMM Client on a node and register it with PMM Server. Choose from:</p>
 <ul>
 <li>
@@ -129,8 +129,12 @@
 </ul>
 </li>
 </ul>
-<p>!!! hint alert "Binary is only way to install PMM client without root permissions"
-    - <a href="#binary-package">Binary package</a>: For other Linux distributions, download and unpack generic PMM Client Linux binaries.</p>
+<div class="admonition hint alert">
+<p class="admonition-title">Binary is only way to install PMM client without root permissions</p>
+<ul>
+<li><a href="#binary-package">Binary package</a>: For other Linux distributions, download and unpack generic PMM Client Linux binaries.</li>
+</ul>
+</div>
 <p>When you have installed PMM Client, you must:</p>
 <ul>
 <li><a href="#register">Register the node with PMM Server</a>.</li>
@@ -138,9 +142,9 @@
 </ul>
 <p>If you need to, you can <a href="#unregister">unregister</a>, <a href="#remove-services">remove services</a> or <a href="#remove">remove PMM Client</a>.</p>
 <hr />
-<p>Here's an overview of the choices.</p>
-<p><img alt="!image" src="../../_images/PMM_Client_Setup.png" /></p>
-<h2 id="before-you-start">Before you start</h2>
+<p>Here&rsquo;s an overview of the choices.</p>
+<p><div class="lightgallery"><a data-sub-html="image" href="../../_images/PMM_Client_Setup.png"><img alt="image" src="../../_images/PMM_Client_Setup.png" /></a></div></p>
+<h2 id="before-you-start">Before you start<a class="headerlink" href="#before-you-start" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="../server/index.html">Set up PMM Server</a> with a known IP address accessible from the client node.</li>
 <li>You have superuser (root) access on the client host.</li>
@@ -149,13 +153,13 @@
 <li>If using it, install <a href="https://docs.docker.com/get-docker/">Docker</a>.</li>
 <li>If using it, install <a href="https://docs.docker.com/compose/">Docker compose</a>.</li>
 <li>System requirements:<ul>
-<li>Operating system -- PMM Client runs on any modern 64-bit Linux distribution. It is tested on supported versions of Debian, Ubuntu, CentOS, and Red Hat Enterprise Linux. (See <a href="https://www.percona.com/services/policies/percona-software-support-lifecycle#pt">Percona software support life cycle</a>).</li>
-<li>Disk -- A minimum of 100 MB of storage is required for installing the PMM Client package. With a good connection to PMM Server, additional storage is not required. However, the client needs to store any collected data that it cannot dispatch immediately, so additional storage may be required if the connection is unstable or the throughput is low. (Caching only applies to Query Analytics data; VictoriaMetrics data is never cached on the client side.)</li>
+<li>Operating system &ndash; PMM Client runs on any modern 64-bit Linux distribution. It is tested on supported versions of Debian, Ubuntu, CentOS, and Red Hat Enterprise Linux. (See <a href="https://www.percona.com/services/policies/percona-software-support-lifecycle#pt">Percona software support life cycle</a>).</li>
+<li>Disk &ndash; A minimum of 100 MB of storage is required for installing the PMM Client package. With a good connection to PMM Server, additional storage is not required. However, the client needs to store any collected data that it cannot dispatch immediately, so additional storage may be required if the connection is unstable or the throughput is low. (Caching only applies to Query Analytics data; VictoriaMetrics data is never cached on the client side.)</li>
 </ul>
 </li>
 </ul>
-<h2 id="install">Install</h2>
-<h3 id="docker">Docker</h3>
+<h2 id="install">Install<a class="headerlink" href="#install" title="Permanent link">&para;</a></h2>
+<h3 id="docker">Docker<a class="headerlink" href="#docker" title="Permanent link">&para;</a></h3>
 <p>The <a href="https://hub.docker.com/r/percona/pmm-client/tags/">PMM Client Docker image</a> is a convenient way to run PMM Client as a preconfigured <a href="https://docs.docker.com/get-docker/">Docker</a> container.</p>
 <ol>
 <li>
@@ -174,7 +178,7 @@ percona/pmm-client:2 /bin/true
 </li>
 <li>
 <p>Run the container to start <a href="../../details/commands/pmm-agent.html">PMM Agent</a> in setup mode. Set <code>X.X.X.X</code> to the IP address of your PMM Server. (Do not use the <code>docker --detach</code> option as PMM agent only logs to the console.)</p>
-<p><div class="highlight"><pre><span></span><code><span class="nv">PMM_SERVER</span><span class="o">=</span>X.X.X.X:443
+<div class="highlight"><pre><span></span><code><span class="nv">PMM_SERVER</span><span class="o">=</span>X.X.X.X:443
 docker run <span class="se">\</span>
 --rm <span class="se">\</span>
 --name pmm-client <span class="se">\</span>
@@ -187,9 +191,13 @@ docker run <span class="se">\</span>
 --volumes-from pmm-client-data <span class="se">\</span>
 percona/pmm-client:2
 </code></pre></div>
-!!! hint alert-success "Tips"
-You can find a complete list of compatible environment variables <a href="../../details/commands/pmm-agent.html">here</a>.</p>
 </li>
+</ol>
+<div class="admonition hint alert-success">
+<p class="admonition-title">Tips</p>
+<p>You can find a complete list of compatible environment variables <a href="../../details/commands/pmm-agent.html">here</a>.</p>
+</div>
+<ol>
 <li>
 <p>Check status.</p>
 <div class="highlight"><pre><span></span><code>docker <span class="nb">exec</span> pmm-client <span class="se">\</span>
@@ -199,10 +207,14 @@ pmm-admin status
 </li>
 </ol>
 <p>You can now add services with <a href="../../details/commands/pmm-admin.html"><code>pmm-admin</code></a> by prefixing commands with <code>docker exec pmm-client</code>.</p>
-<p>!!! hint alert alert-success "Tips"
-    - Adjust host firewall and routing rules to allow Docker communications. (<a href="../../how-to/troubleshoot.html">Read more</a>)
-    - For help: <code>docker run --rm percona/pmm-client:2 --help</code></p>
-<h3 id="docker-compose">Docker compose</h3>
+<div class="admonition hint alert alert-success">
+<p class="admonition-title">Tips</p>
+<ul>
+<li>Adjust host firewall and routing rules to allow Docker communications. (<a href="../../how-to/troubleshoot.html">Read more</a>)</li>
+<li>For help: <code>docker run --rm percona/pmm-client:2 --help</code></li>
+</ul>
+</div>
+<h3 id="docker-compose">Docker compose<a class="headerlink" href="#docker-compose" title="Permanent link">&para;</a></h3>
 <ol>
 <li>
 <p>Copy and paste this text into a file called <code>docker-compose.yml</code>.</p>
@@ -234,9 +246,12 @@ pmm-admin status
 <span class="nt">volumes</span><span class="p">:</span><span class="w"></span>
 <span class="w">  </span><span class="nt">pmm-client-data</span><span class="p">:</span><span class="w"></span>
 </code></pre></div>
-<p>!!! note alert alert-info ""
-    - Check the values in the <code>environment</code> section match those for your PMM Server. (<code>X.X.X.X</code> is the IP address of your PMM Server.)
-    - Use unique hostnames across all PMM Clients (value for <code>services.pmm-client.hostname</code>).</p>
+<div class="admonition note alert alert-info">
+<ul>
+<li>Check the values in the <code>environment</code> section match those for your PMM Server. (<code>X.X.X.X</code> is the IP address of your PMM Server.)</li>
+<li>Use unique hostnames across all PMM Clients (value for <code>services.pmm-client.hostname</code>).</li>
+</ul>
+</div>
 </li>
 <li>
 <p>Ensure a writable agent configuration file.</p>
@@ -272,17 +287,19 @@ pmm-admin status
 </ul>
 </li>
 </ol>
-<p>!!! danger alert alert-danger "Danger"
-    <code>pmm-agent.yaml</code> contains sensitive credentials and should not be shared.</p>
-<h3 id="package-manager">Package manager</h3>
-<p>!!! hint alert alert-success "Tip"
-    If you have used <code>percona-release</code> before, disable and re-enable the repository:</p>
-<pre><code>```sh
-percona-release disable all
-percona-release enable original release
-```
-</code></pre>
-<h4 id="debian-based">Debian-based</h4>
+<div class="admonition danger alert alert-danger">
+<p class="admonition-title">Danger</p>
+<p><code>pmm-agent.yaml</code> contains sensitive credentials and should not be shared.</p>
+</div>
+<h3 id="package-manager">Package manager<a class="headerlink" href="#package-manager" title="Permanent link">&para;</a></h3>
+<div class="admonition hint alert alert-success">
+<p class="admonition-title">Tip</p>
+<p>If you have used <code>percona-release</code> before, disable and re-enable the repository:</p>
+<div class="highlight"><pre><span></span><code>percona-release disable all
+percona-release <span class="nb">enable</span> original release
+</code></pre></div>
+</div>
+<h4 id="debian-based">Debian-based<a class="headerlink" href="#debian-based" title="Permanent link">&para;</a></h4>
 <ol>
 <li>
 <p>Configure repositories.</p>
@@ -292,10 +309,12 @@ dpkg -i percona-release_latest.generic_all.deb
 </li>
 <li>
 <p>Install the PMM Client package.</p>
-<p>!!! hint "Root permissions"
-    <div class="highlight"><pre><span></span><code>apt update
+<div class="admonition hint">
+<p class="admonition-title">Root permissions</p>
+<div class="highlight"><pre><span></span><code>apt update
 apt install -y pmm2-client
-</code></pre></div></p>
+</code></pre></div>
+</div>
 </li>
 <li>
 <p>Check.</p>
@@ -306,7 +325,7 @@ apt install -y pmm2-client
 <p><a href="#register">Register the node</a>.</p>
 </li>
 </ol>
-<h4 id="red-hat-based">Red Hat-based</h4>
+<h4 id="red-hat-based">Red Hat-based<a class="headerlink" href="#red-hat-based" title="Permanent link">&para;</a></h4>
 <ol>
 <li>
 <p>Configure repositories.</p>
@@ -327,7 +346,7 @@ apt install -y pmm2-client
 <p><a href="#register">Register the node</a>.</p>
 </li>
 </ol>
-<h3 id="package-manager-manual-download">Package manager -- manual download</h3>
+<h3 id="package-manager-manual-download">Package manager &ndash; manual download<a class="headerlink" href="#package-manager-manual-download" title="Permanent link">&para;</a></h3>
 <ol>
 <li>Visit the <a href="https://www.percona.com/downloads/pmm2/">Percona Monitoring and Management 2 download</a> page.</li>
 <li>Under <em>Version:</em>, select the one you want (usually the latest).</li>
@@ -351,13 +370,13 @@ apt install -y pmm2-client
 <li><a href="https://www.percona.com/downloads/pmm2/2.27.0/binary/debian/bionic/">Ubuntu 18.04 (Bionic Beaver)</a></li>
 <li><a href="https://www.percona.com/downloads/pmm2/2.27.0/binary/debian/focal/">Ubuntu 20.04 (Focal Fossa)</a></li>
 </ul>
-<h4 id="debian-based_1">Debian-based</h4>
+<h4 id="debian-based_1">Debian-based<a class="headerlink" href="#debian-based_1" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code>dpkg -i *.deb
 </code></pre></div>
-<h4 id="red-hat-based_1">Red Hat-based</h4>
+<h4 id="red-hat-based_1">Red Hat-based<a class="headerlink" href="#red-hat-based_1" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code>dnf localinstall *.rpm
 </code></pre></div>
-<h3 id="binary-package">Binary package</h3>
+<h3 id="binary-package">Binary package<a class="headerlink" href="#binary-package" title="Permanent link">&para;</a></h3>
 <ol>
 <li>
 <p>Download the PMM Client package:</p>
@@ -381,19 +400,25 @@ apt install -y pmm2-client
 </li>
 <li>
 <p>Choose one of these two commands (depends on your permissions):</p>
-<p>!!! caution alert alert-warning "Without root permissions"
-    <div class="highlight"><pre><span></span><code><span class="nb">export</span> <span class="nv">PMM_DIR</span><span class="o">=</span>YOURPATH
+<div class="admonition caution alert alert-warning">
+<p class="admonition-title">Without root permissions</p>
+<p><div class="highlight"><pre><span></span><code><span class="nb">export</span> <span class="nv">PMM_DIR</span><span class="o">=</span>YOURPATH
 </code></pre></div>
-    where YOURPATH replace with you real path, where you have required access.</p>
-<p>!!! caution alert alert-warning "With root permissions"
-    <div class="highlight"><pre><span></span><code><span class="nb">export</span> <span class="nv">PMM_DIR</span><span class="o">=</span>/usr/local/percona/pmm2
-</code></pre></div></p>
+where YOURPATH replace with you real path, where you have required access.</p>
+</div>
+<div class="admonition caution alert alert-warning">
+<p class="admonition-title">With root permissions</p>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span> <span class="nv">PMM_DIR</span><span class="o">=</span>/usr/local/percona/pmm2
+</code></pre></div>
+</div>
 </li>
 <li>
 <p>Run the installer.</p>
-<p>!!! hint "Root permissions (if you skipped step 5 for non root users)"
-    <div class="highlight"><pre><span></span><code>./install_tarball
-</code></pre></div></p>
+<div class="admonition hint">
+<p class="admonition-title">Root permissions (if you skipped step 5 for non root users)</p>
+<div class="highlight"><pre><span></span><code>./install_tarball
+</code></pre></div>
+</div>
 </li>
 <li>
 <p>Change the path.</p>
@@ -402,12 +427,16 @@ apt install -y pmm2-client
 </li>
 <li>
 <p>Set up the agent (pick the command for you depending on permissions)</p>
-<p>!!! hint "Root permissions"
+<div class="admonition hint">
+<p class="admonition-title">Root permissions</p>
+</div>
 <div class="highlight"><pre><span></span><code>pmm-agent setup --config-file<span class="o">=</span>/usr/local/percona/pmm2/config/pmm-agent.yaml --server-address<span class="o">=</span><span class="m">192</span>.168.1.123 --server-insecure-tls --server-username<span class="o">=</span>admin --server-password<span class="o">=</span>admin
-</code></pre></div></p>
-<p>!!! caution alert alert-warning "Non root users"
+</code></pre></div>
+<div class="admonition caution alert alert-warning">
+<p class="admonition-title">Non root users</p>
+</div>
 <div class="highlight"><pre><span></span><code>pmm-agent setup --config-file<span class="o">=</span><span class="si">${</span><span class="nv">PMM_DIR</span><span class="si">}</span>/config/pmm-agent.yaml --server-address<span class="o">=</span><span class="m">192</span>.168.1.123 --server-insecure-tls --server-username<span class="o">=</span>admin --server-password<span class="o">=</span>admin --paths-tempdir<span class="o">=</span><span class="si">${</span><span class="nv">PMM_DIR</span><span class="si">}</span>/tmp --paths-base<span class="o">=</span><span class="si">${</span><span class="nv">PMM_DIR</span><span class="si">}</span>
-</code></pre></div></p>
+</code></pre></div>
 </li>
 <li>
 <p>Run the agent.</p>
@@ -422,12 +451,12 @@ apt install -y pmm2-client
 <ol>
 <li>Download tar.gz with pmm2-client.</li>
 <li>Extract it.</li>
-<li>Run ./install_tarball script with the "-u" flag.</li>
+<li>Run ./install_tarball script with the &ldquo;-u&rdquo; flag.</li>
 </ol>
-<p>The configuration file will be overwritten if you do not provide the "-u" flag while the pmm-agent is updated.</p>
+<p>The configuration file will be overwritten if you do not provide the &ldquo;-u&rdquo; flag while the pmm-agent is updated.</p>
 </li>
 </ol>
-<h2 id="register">Register</h2>
+<h2 id="register">Register<a class="headerlink" href="#register" title="Permanent link">&para;</a></h2>
 <p>Register your client node with PMM Server.</p>
 <div class="highlight"><pre><span></span><code>pmm-admin config --server-insecure-tls --server-url<span class="o">=</span>https://admin:admin@X.X.X.X:443
 </code></pre></div>
@@ -436,13 +465,15 @@ apt install -y pmm2-client
 <li><code>443</code> is the default port number.</li>
 <li><code>admin</code>/<code>admin</code> is the default PMM username and password. This is the same account you use to log into the PMM user interface, which you had the option to change when first logging in.</li>
 </ul>
-<p>!!! caution alert alert-warning "Important"
-    Clients <em>must</em> be registered with the PMM Server using a secure channel. If you use http as your server URL, PMM will try to connect via https on port 443. If a TLS connection can't be established you will get an error and you must use https along with the appropriate secure port.</p>
-<h3 id="examples">Examples</h3>
+<div class="admonition caution alert alert-warning">
+<p class="admonition-title">Important</p>
+<p>Clients <em>must</em> be registered with the PMM Server using a secure channel. If you use http as your server URL, PMM will try to connect via https on port 443. If a TLS connection can&rsquo;t be established you will get an error and you must use https along with the appropriate secure port.</p>
+</div>
+<h3 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h3>
 <p>Register on PMM Server with IP address <code>192.168.33.14</code> using the default <code>admin/admin</code> username and password, a node with IP address <code>192.168.33.23</code>, type <code>generic</code>, and name <code>mynode</code>.</p>
 <div class="highlight"><pre><span></span><code>pmm-admin config --server-insecure-tls --server-url<span class="o">=</span>https://admin:admin@192.168.33.14:443 <span class="m">192</span>.168.33.23 generic mynode
 </code></pre></div>
-<h2 id="add-services">Add services</h2>
+<h2 id="add-services">Add services<a class="headerlink" href="#add-services" title="Permanent link">&para;</a></h2>
 <p>You must configure and adding services according to the service type.</p>
 <ul>
 <li><a href="mysql.html">MySQL</a> (and variants Percona Server for MySQL, Percona XtraDB Cluster, MariaDB)</li>
@@ -457,13 +488,17 @@ apt install -y pmm2-client
 <li><a href="haproxy.html">HAProxy</a></li>
 <li><a href="remote.html">Remote instances</a></li>
 </ul>
-<p>!!! hint alert alert-success "Tip"
-    To change the parameters of a previously-added service, remove the service and re-add it with new parameters.</p>
-<h2 id="remove">Remove</h2>
+<div class="admonition hint alert alert-success">
+<p class="admonition-title">Tip</p>
+<p>To change the parameters of a previously-added service, remove the service and re-add it with new parameters.</p>
+</div>
+<h2 id="remove">Remove<a class="headerlink" href="#remove" title="Permanent link">&para;</a></h2>
 <p>How to remove (uninstall) PMM Client.</p>
-<h3 id="docker_1">Docker</h3>
-<p>!!! caution alert alert-warning "Caution"
-    These steps delete the PMM Client Docker image and client services configuration data.</p>
+<h3 id="docker_1">Docker<a class="headerlink" href="#docker_1" title="Permanent link">&para;</a></h3>
+<div class="admonition caution alert alert-warning">
+<p class="admonition-title">Caution</p>
+<p>These steps delete the PMM Client Docker image and client services configuration data.</p>
+</div>
 <ol>
 <li>
 <p>Stop pmm-client container.</p>
@@ -486,8 +521,8 @@ apt install -y pmm2-client
 </code></pre></div>
 </li>
 </ol>
-<h3 id="package-manager_1">Package manager</h3>
-<h4 id="debian-based-distributions">Debian-based distributions</h4>
+<h3 id="package-manager_1">Package manager<a class="headerlink" href="#package-manager_1" title="Permanent link">&para;</a></h3>
+<h4 id="debian-based-distributions">Debian-based distributions<a class="headerlink" href="#debian-based-distributions" title="Permanent link">&para;</a></h4>
 <ol>
 <li>
 <p>Uninstall the PMM Client package.</p>
@@ -500,7 +535,7 @@ apt install -y pmm2-client
 </code></pre></div>
 </li>
 </ol>
-<h4 id="red-hat-based-distributions">Red Hat-based distributions</h4>
+<h4 id="red-hat-based-distributions">Red Hat-based distributions<a class="headerlink" href="#red-hat-based-distributions" title="Permanent link">&para;</a></h4>
 <ol>
 <li>
 <p>Uninstall the PMM Client package.</p>
@@ -513,21 +548,27 @@ apt install -y pmm2-client
 </code></pre></div>
 </li>
 </ol>
-<h2 id="unregister">Unregister</h2>
+<h2 id="unregister">Unregister<a class="headerlink" href="#unregister" title="Permanent link">&para;</a></h2>
 <p>How to unregister PMM Client from PMM Server.</p>
 <div class="highlight"><pre><span></span><code>pmm-admin unregister --force
 </code></pre></div>
 <p>All services monitored by this node will be removed from monitoring.</p>
-<h2 id="remove-services">Remove services</h2>
+<h2 id="remove-services">Remove services<a class="headerlink" href="#remove-services" title="Permanent link">&para;</a></h2>
 <p>You must specify the service type and service name to remove services from monitoring.</p>
 <div class="highlight"><pre><span></span><code>pmm-admin remove &lt;service-type&gt; &lt;service-name&gt;
 </code></pre></div>
-<p><code>service-type</code>
-: One of <code>mysql</code>, <code>mongodb</code>, <code>postgresql</code>, <code>proxysql</code>, <code>haproxy</code>, <code>external</code>.</p>
-<p>!!! seealso alert alert-info "See also"
-    - <a href="https://www.percona.com/doc/percona-repo-config/percona-release.html">Percona release</a>
-    - <a href="../../details/architecture.html#pmm-client">PMM Client architecture</a>
-    - Thanks to <a href="https://gist.github.com/paskal/48f10a0a584f4849be6b0889ede9262b">paskal</a> for original Docker compose files</p>
+<dl>
+<dt><code>service-type</code></dt>
+<dd>One of <code>mysql</code>, <code>mongodb</code>, <code>postgresql</code>, <code>proxysql</code>, <code>haproxy</code>, <code>external</code>.</dd>
+</dl>
+<div class="admonition seealso alert alert-info">
+<p class="admonition-title">See also</p>
+<ul>
+<li><a href="https://www.percona.com/doc/percona-repo-config/percona-release.html">Percona release</a></li>
+<li><a href="../../details/architecture.html#pmm-client">PMM Client architecture</a></li>
+<li>Thanks to <a href="https://gist.github.com/paskal/48f10a0a584f4849be6b0889ede9262b">paskal</a> for original Docker compose files</li>
+</ul>
+</div>
                     </div>
                 </div>
                 
@@ -884,20 +925,6 @@ apt install -y pmm2-client
     <a class="reference internal" href="../../details/interface.html">UI components</a>
 
 
-
-</ul>
-
-
-
-
-
-<li class="toctree-l1">
-    <a class="reference internal" href="../../details/develop-checks.html">Developing Advisor checks</a>
-
-
-
-
-<ul class="toctree" id="toctree">
 
 
 <li class="toctree-l2">
@@ -1336,6 +1363,12 @@ apt install -y pmm2-client
 
 <li class="toctree-l2">
     <a class="reference internal" href="../../details/glossary.html">Glossary</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../details/develop-checks.html">Develop Advisor checks</a>
 
 
 
