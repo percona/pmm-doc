@@ -1,3 +1,4 @@
+.vscode
 site/*
 out/*
 .DS*
