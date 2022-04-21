@@ -73,7 +73,7 @@
 
     - as a service via `systemd`;
 
-    - with the name `mysql` (to confirm, use `systemctl status mysql`);
+    - with the name `mysql` or `mysqld` (to confirm, use `systemctl status mysql`);
 
     - from a `mysql` system user account.
 
