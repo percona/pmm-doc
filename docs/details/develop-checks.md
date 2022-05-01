@@ -141,14 +141,13 @@ Checks can include the following fields:
     These parameters  are equal to [prometheus API](https://prometheus.io/docs/prometheus/latest/querying/api/#range-queries).
     
     Both metrics queries can use placeholders in query string '{{ .NodeName }}' and `.{{ ServiceName }}`. Both match target service/node names
- 
+
 ### Format for checks v.2
 To create checks for PMM 2.28 and later, use the following format:
  
 ??? note alert alert-info "Check Types table (click to show/hide)"
  
 ```yaml 
- 
 checks:
   - version: 2
     name: exampleV2
