@@ -1,6 +1,6 @@
 # Develop Advisor checks
  
-PMM offer sets of checks that can detect common security threats, performance degradation, data loss and data corruption.
+PMM offers sets of checks that can detect common security threats, performance degradation, data loss and data corruption.
  
 As a developer, you can create custom checks to cover additional use cases, relevant to your specific database infrastructure.
  
@@ -309,7 +309,6 @@ checks:
 ??? note alert alert-info "A more realistic example of an check for PMM 2.27 and older. (click to show/hide)"
  
 ```yaml 
----
     checks:
      - version: 1
          name: mongodb_version
