@@ -145,7 +145,7 @@ Checks can include the following fields:
 .
     Both match target service/node names.
 
-### Format for v.2 checks 
+### Format for v.2 Checks 
 To create checks for PMM 2.28 and later, use the following format:
  
 ??? note alert alert-info "Version 2 Checks Format"
@@ -259,7 +259,7 @@ This is because, compared to 2.28 checks, 2.27 checks do not support:
 - Victoria Metrics as a data source
 - No database **Family** field 
  
-### Format for v.1 checks 
+### Format for v.1 Checks 
 To create checks for PMM 2.27 and older, use the following format:
  
 ??? note alert alert-info "Version 1 Checks Format"
@@ -309,7 +309,7 @@ To create checks for PMM 2.27 and older, use the following format:
             }]
     ```
 
-??? note alert alert-info "Realistic example of a check using  Advisor check format v.1."
+??? note alert alert-info "Realistic Example of Check in v.1 Format"
  
         ```yaml 
         checks:
