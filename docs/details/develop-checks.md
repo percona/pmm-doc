@@ -148,7 +148,10 @@ To create checks for PMM 2.28 and later, use the following format:
  
 ??? note alert alert-info "Check Types table (click to show/hide)"
  
-```yaml 
+```yaml
+
+    {% raw %}
+
 checks:
   - version: 2
     name: exampleV2
@@ -162,7 +165,9 @@ checks:
         query: VARIABLES
  
       - type: METRICS_INSTANT
-        query: `mysql_global_status_uptime{service_name=~"{{.ServiceName}}"}`
+        query: mysql_global_status_uptime{service_name=~"{{.ServiceName}}"}
+        
+        
  
       - type: METRICS_INSTANT
         query: mysql_global_status_uptime{service_name=~"{{.ServiceName}}"}
@@ -241,6 +246,8 @@ checks:
  
           return results
 ```
+    {% endraw %}
+
  
 ## Advisor checks v.1 for PMM 2.27 and older
  
