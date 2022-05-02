@@ -140,8 +140,17 @@ Checks can include the following fields:
       - `step` query resolution
     These parameters  are equal to [prometheus API](https://prometheus.io/docs/prometheus/latest/querying/api/#range-queries).
     
+    Both metrics queries can use placeholders in query string 1:
+    ```yaml
+     {{.NodeName}}
+    ``` 
+     and 
+
+     ```yaml
+      {{.ServiceName}}
+    ```
     
-    Both metrics queries can use placeholders in query string 1 ```{{.NodeName}}``` and ```{{.ServiceName}}```. Both match target service/node names.
+    Both match target service/node names.
 
 ### Format for checks v.2
 To create checks for PMM 2.28 and later, use the following format:
