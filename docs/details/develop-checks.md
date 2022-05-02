@@ -149,8 +149,7 @@ To create checks for PMM 2.28 and later, use the following format:
 ??? note alert alert-info "Check Types table (click to show/hide)"
  
 ```yaml
-
-    {% raw %}
+{% raw %}
 
 checks:
   - version: 2
@@ -246,7 +245,7 @@ checks:
  
           return results
 ```
-    {% endraw %}
+{% endraw %}
 
  
 ## Advisor checks v.1 for PMM 2.27 and older
