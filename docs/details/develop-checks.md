@@ -31,7 +31,7 @@ If you are creating checks for a previous PMM version, make sure to check the [A
  
 4. Go to **Configuration > Settings > Advanced Settings** and enable **Advisors**. For PMM 2.26 and older this option is called **Security Threat Tool**.
  
-4.  Create _/srv/custom-checks.yml_ inside a Docker container with the content of your check.
+4.  Create _/srv/custom-checks.yml_ inside the `pmm-server` container with the content of your check.
  
 5.  The checks will run according to the time interval defined on the UI. You can see the result of running the check on the home dashboard:
  
