@@ -101,7 +101,7 @@ PMM can display failed checks as **Critical**, **Major** or **Trivial**. These t
  
 Expand the table below for the list of checks types that you can use to define your query type and the PMM Service type for which the check will run.
  
-??? note alert alert-info "Check Types table (click to show/hide)"
+??? note alert alert-info "Check Types table"
  
     | Check type  |  Description | "query" required (must be empty if "No")   |  
     |---|---|---|
@@ -148,7 +148,7 @@ Checks can include the following fields:
 ### Format for v.2 checks 
 To create checks for PMM 2.28 and later, use the following format:
  
-??? note alert alert-info "Version 2 Checks Format (click to show/hide)"
+??? note alert alert-info "Version 2 Checks Format"
  
     {% raw %} 
     ```yaml
@@ -245,7 +245,7 @@ To create checks for PMM 2.28 and later, use the following format:
             }) 
     
             return results
-    ```
+```
     {% endraw %}
 
  
@@ -262,7 +262,7 @@ This is because, compared to 2.28 checks, 2.27 checks do not support:
 ### Format for v.1 checks 
 To create checks for PMM 2.27 and older, use the following format:
  
-??? note alert alert-info "Version 1 Checks Format (click to show/hide)"
+??? note alert alert-info "Version 1 Checks Format"
  
     ``` yaml 
     ---
@@ -308,9 +308,10 @@ To create checks for PMM 2.27 and older, use the following format:
                 }
             }]
 ```
-??? note alert alert-info "Realistic example of a check using  Advisor check format v.1. (click to show/hide)"
+
+??? note alert alert-info "Realistic example of a check using  Advisor check format v.1."
  
-    ```yaml 
+        ```yaml 
         checks:
         - version: 1
             name: mongodb_version
@@ -405,9 +406,10 @@ To create checks for PMM 2.27 and older, use the following format:
                                 "latest":  format_version_num(latest),
                             },
                         })
-    
-                    return results
+     
+                    return results 
 ```
+
 ### Security checks in PMM 2.26 and older
 PMM 2.26 and older included a set of security checks grouped under the **Security Threat Tool** option.
  
