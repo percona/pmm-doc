@@ -162,7 +162,7 @@ checks:
         query: VARIABLES
  
       - type: METRICS_INSTANT
-        query: mysql_global_status_uptime{service_name=~"{{.ServiceName}}"}
+        query: `mysql_global_status_uptime{service_name=~"{{.ServiceName}}"}`
  
       - type: METRICS_INSTANT
         query: mysql_global_status_uptime{service_name=~"{{.ServiceName}}"}
