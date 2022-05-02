@@ -245,7 +245,7 @@ To create checks for PMM 2.28 and later, use the following format:
             }) 
     
             return results
-```
+    ```
     {% endraw %}
 
  
@@ -307,7 +307,7 @@ To create checks for PMM 2.27 and older, use the following format:
                     "version": format_version_num(10203),
                 }
             }]
-```
+    ```
 
 ??? note alert alert-info "Realistic example of a check using  Advisor check format v.1."
  
@@ -408,7 +408,7 @@ To create checks for PMM 2.27 and older, use the following format:
                         })
      
                     return results 
-```
+        ```
 
 ### Security checks in PMM 2.26 and older
 PMM 2.26 and older included a set of security checks grouped under the **Security Threat Tool** option.
