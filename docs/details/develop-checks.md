@@ -148,104 +148,103 @@ To create checks for PMM 2.28 and later, use the following format:
  
 ??? note alert alert-info "Check Types table (click to show/hide)"
  
-```yaml
-{% raw %}
-
-checks:
-  - version: 2
-    name: exampleV2
-    summary: Check format V2
-    description: Checks something important
-    interval: standard
-    family: MYSQL
-    category: configuration
-    queries:
-      - type: MYSQL_SHOW
-        query: VARIABLES
- 
-      - type: METRICS_INSTANT
-        query: mysql_global_status_uptime{service_name=~"{{.ServiceName}}"}
+    {% raw %} 
+    ```yaml
+    checks:
+    - version: 2
+        name: exampleV2
+        summary: Check format V2
+        description: Checks something important
+        interval: standard
+        family: MYSQL
+        category: configuration
+        queries:
+        - type: MYSQL_SHOW
+            query: VARIABLES
+    
+        - type: METRICS_INSTANT
+            query: mysql_global_status_uptime{service_name=~"{{.ServiceName}}"}
+            
+            
+    
+        - type: METRICS_INSTANT
+            query: mysql_global_status_uptime{service_name=~"{{.ServiceName}}"}
+            parameters:
+            lookback: 5m
+    
+        - type: METRICS_RANGE
+            query: avg by (node_name) (avg_over_time(node_load1{node_name=~"{{.NodeName}}"}[5m]))
+            parameters:
+            range: 15m
+            step: 5m
+    
+        - type: METRICS_RANGE
+            query: avg by (node_name) (avg_over_time(node_load1{node_name=~"{{.NodeName}}"}[5m]))
+            parameters:
+            lookback: 5m
+            range: 15m
+            step: 5m
+    
+        script: |
+        def check_context(docs, context):
+            results = []
+    
+            for row in docs[0]:
+                name, value = row["Variable_name"], row["Value"]
+                if name == "version":
+                    results.append({
+                        "summary": "MySQL has version {}".format(value),
+                        "description": "Current version is {}".format(value),
+                        "read_more_url": "",
+                        "severity": "warning",
+                        "labels": {},
+                    })
+    
+            uptimeNow = int(int(docs[1][0]["value"][1])/60)
+            results.append({
+                "summary": "MySQL uptime {} min".format(uptimeNow),
+                "description": "Current uptime is {} min".format(uptimeNow),
+                "read_more_url": "",
+                "severity": "warning",
+                "labels": {},
+            }) 
+    
+            uptimeFiveMinAgo = int(int(docs[2][0]["value"][1])/60) 
+            results.append({
+                "summary": "MySQL uptime 5 min ago was {} min".format(uptimeFiveMinAgo),
+                "description": "5 min ago uptime was {} min".format(uptimeFiveMinAgo),
+                "read_more_url": "",
+                "severity": "warning",
+                "labels": {},
+            }) 
         
+            dataPoints = []
+            for row in docs[3][0]["values"]:
+                dataPoints.append(row[1])
         
- 
-      - type: METRICS_INSTANT
-        query: mysql_global_status_uptime{service_name=~"{{.ServiceName}}"}
-        parameters:
-          lookback: 5m
- 
-      - type: METRICS_RANGE
-        query: avg by (node_name) (avg_over_time(node_load1{node_name=~"{{.NodeName}}"}[5m]))
-        parameters:
-          range: 15m
-          step: 5m
- 
-      - type: METRICS_RANGE
-        query: avg by (node_name) (avg_over_time(node_load1{node_name=~"{{.NodeName}}"}[5m]))
-        parameters:
-          lookback: 5m
-          range: 15m
-          step: 5m
- 
-    script: |
-     def check_context(docs, context):
-          results = []
- 
-          for row in docs[0]:
-              name, value = row["Variable_name"], row["Value"]
-              if name == "version":
-                  results.append({
-                      "summary": "MySQL has version {}".format(value),
-                      "description": "Current version is {}".format(value),
-                      "read_more_url": "",
-                      "severity": "warning",
-                      "labels": {},
-                  })
- 
-          uptimeNow = int(int(docs[1][0]["value"][1])/60)
-          results.append({
-              "summary": "MySQL uptime {} min".format(uptimeNow),
-              "description": "Current uptime is {} min".format(uptimeNow),
-              "read_more_url": "",
-              "severity": "warning",
-              "labels": {},
-          }) 
-  
-          uptimeFiveMinAgo = int(int(docs[2][0]["value"][1])/60) 
-          results.append({
-              "summary": "MySQL uptime 5 min ago was {} min".format(uptimeFiveMinAgo),
-              "description": "5 min ago uptime was {} min".format(uptimeFiveMinAgo),
-              "read_more_url": "",
-              "severity": "warning",
-              "labels": {},
-          }) 
-      
-          dataPoints = []
-          for row in docs[3][0]["values"]:
-              dataPoints.append(row[1])
-      
-          results.append({
-              "summary": "Node has load average for last 15 minutes {}".format(dataPoints),
-              "description": "Data points {}".format(dataPoints),
-              "read_more_url": "",
-              "severity": "warning",
-              "labels": {},
-          }) 
- 
-          dataPoints = []
-          for row in docs[4][0]["values"]:
-              dataPoints.append(row[1])
-      
-          results.append({
-              "summary": "Five minutes ago node had load average for 15 minutes {}".format(dataPoints),
-              "description": "Data points {}".format(dataPoints),
-              "read_more_url": "",
-              "severity": "warning",
-              "labels": {},
-          }) 
- 
-          return results
-```
-{% endraw %}
+            results.append({
+                "summary": "Node has load average for last 15 minutes {}".format(dataPoints),
+                "description": "Data points {}".format(dataPoints),
+                "read_more_url": "",
+                "severity": "warning",
+                "labels": {},
+            }) 
+    
+            dataPoints = []
+            for row in docs[4][0]["values"]:
+                dataPoints.append(row[1])
+        
+            results.append({
+                "summary": "Five minutes ago node had load average for 15 minutes {}".format(dataPoints),
+                "description": "Data points {}".format(dataPoints),
+                "read_more_url": "",
+                "severity": "warning",
+                "labels": {},
+            }) 
+    
+            return results
+    ```
+    {% endraw %}
 
  
 ## Advisor checks v.1 for PMM 2.27 and older
@@ -307,7 +306,7 @@ checks:
             }
         }]
 ```
-??? note alert alert-info "A more realistic example of an check for PMM 2.27 and older"
+??? note alert alert-info "A more realistic example of an check for PMM 2.27 and older. (click to show/hide)"
  
 ```yaml 
 ---
