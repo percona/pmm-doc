@@ -32,7 +32,7 @@ If you are creating checks for a previous PMM version, make sure to check the [A
  
 4. Go to **Configuration > Settings > Advanced Settings** and enable **Advisors**. For PMM 2.26 and older this option is called **Security Threat Tool**.
  
-4.  Create _/srv/custom-checks.yml_ inside a Docker container with the content of your check.
+4.  Create _/srv/custom-checks.yml_ inside the `pmm-server` container with the content of your check.
  
 5.  The checks will run according to the time interval defined on the UI. You can see the result of running the check on the home dashboard:
  
@@ -145,7 +145,7 @@ Checks can include the following fields:
 .
     Both match target service/node names.
 
-### Format for checks v.2
+### Format for v.2 checks 
 To create checks for PMM 2.28 and later, use the following format:
  
 ??? note alert alert-info "Version 2 Checks Format (click to show/hide)"
@@ -249,7 +249,7 @@ To create checks for PMM 2.28 and later, use the following format:
     {% endraw %}
 
  
-## Advisor checks v.1 for PMM 2.27 and older
+## V1 Advisor checks for PMM 2.27 and older
  
 Advisor checks created for PMM 2.27 and older use a slightly different structure than checks created in 2.28. 
  
@@ -259,7 +259,7 @@ This is because, compared to 2.28 checks, 2.27 checks do not support:
 - Victoria Metrics as a data source
 - No database **Family** field 
  
-### Format for checks v.1
+### Format for v.1 checks 
 To create checks for PMM 2.27 and older, use the following format:
  
 ??? note alert alert-info "Version 1 Checks Format (click to show/hide)"
@@ -407,7 +407,7 @@ To create checks for PMM 2.27 and older, use the following format:
                         })
     
                     return results
-    ```
+```
 ### Security checks in PMM 2.26 and older
 PMM 2.26 and older included a set of security checks grouped under the **Security Threat Tool** option.
  
