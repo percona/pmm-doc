@@ -6,7 +6,8 @@ As a developer, you can create custom checks to cover additional use cases, rele
  
 ## Advisor check format versions
 This topic focuses on creating advisor checks for PMM 2.28 and later, which use the latest version of Advisor checks. 
-If you are creating checks for a previous PMM version, make sure to check the [Advisor checks v.1 for PMM 2.27 and older](#advisor-checks-v.1-for-PMM-2.27-and-older) section, at the bottom of this topic. This section describes the particularities of checks created for older PMM versions. 
+
+If you are creating checks for a previous PMM version, make sure to check the [Advisor checks v.1 for PMM 2.27 and older](#advisor-checks-v.1-for-PMM-2.27-and-older) section, at the bottom of this topic, which describes check particularities for older PMM versions. 
  
 ## Develop custom checks
  To develop custom checks: 
@@ -138,15 +139,16 @@ Checks can include the following fields:
     - **METRICS_RANGE** query type can also take **'lookback'** parameter with the same behavior. In addition, this type has two required parameters:
       - 'range' to  specifty he time window of the query
       - `step` query resolution
-    These parameters  are equal to [prometheus API](https://prometheus.io/docs/prometheus/latest/querying/api/#range-queries).
+    These parameters are equal to [prometheus API](https://prometheus.io/docs/prometheus/latest/querying/api/#range-queries).
     
-    Both metrics queries can use placeholders in query string **.NodeName** and **.ServiceName**.
+    Both metrics queries can use placeholders in query string {% raw %} **{{.NodeName**}} and **{{}}.ServiceName}}**  {% endraw %}
+.
     Both match target service/node names.
 
 ### Format for checks v.2
 To create checks for PMM 2.28 and later, use the following format:
  
-??? note alert alert-info "Check Types table (click to show/hide)"
+??? note alert alert-info "Version 2 Checks Format (click to show/hide)"
  
     {% raw %} 
     ```yaml
@@ -260,7 +262,7 @@ This is because, compared to 2.28 checks, 2.27 checks do not support:
 ### Format for checks v.1
 To create checks for PMM 2.27 and older, use the following format:
  
-??? note alert alert-info "Check Types table (click to show/hide)"
+??? note alert alert-info "Version 1 Checks Format (click to show/hide)"
  
     ``` yaml 
     ---
@@ -306,7 +308,7 @@ To create checks for PMM 2.27 and older, use the following format:
                 }
             }]
 ```
-??? note alert alert-info "A more realistic example of an check for PMM 2.27 and older. (click to show/hide)"
+??? note alert alert-info "Realistic example of a check using  Advisor check format v.1. (click to show/hide)"
  
     ```yaml 
         checks:
