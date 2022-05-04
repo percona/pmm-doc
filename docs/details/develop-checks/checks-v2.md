@@ -122,13 +122,7 @@ checks:
 
 ## Checks script
  
-The check script assumes that there is a function with a fixed name, that accepts a _list_ of _docs_ containing returned rows for SQL databases and documents for MongoDB. It returns zero, one, or several check results that are then converted to alerts.
- 
-PMM 2.12.0 and earlier function name is **check**, while newer versions use name **check_context**. Both have the same meaning.
- 
-### Function signature
- 
-The function signature should be **check_context** (docs, context), where **docs** is lists of docs (one doc represents one row for SQL DBMS and one document for MongoDB).
+The check script assumes that there is a function with **check_context**, that accepts a _list_ where each item represets result of a single query specified in check. Each result itself is a _list_ of _docs_ containing returned rows for SQL databases and documents for MongoDB. It returns zero, one, or several check results that are then converted to alerts.
  
 ## Check severity levels
 PMM can display failed checks as **Critical**, **Major** or **Trivial**. These three severity levels correspond to the following severity types in the check source:
@@ -145,22 +139,17 @@ Checks can include the following fields:
 - **Summary** (string, required): defines short human-readable description.
 - **Description** (string, required): defines long human-readable description.
 - **Interval** (string/enum, optional): defines running interval. Can be one of the predefined intervals in the UI: Standard, Frequent, Rare.
-- **Type** (string/enum, required): defines the query type and the PMM Service type for which the advisor runs. Check the list of available types in the table below.
+
 - **Script** (string, required): contains a small Starlark program that processes query results, and returns check results. It is executed on the PMM Server side.
 - **Family** (string, required): specifies one of the supported database families: MYSQL, POSTGRESQL, MONGODB. This field is only available for Advisor checks v.2, created for PMM 2.28 and later.
 - **Category** (string, required): specifies a custom or a default advisor check category. For example: Performance, Security. 
-- **Query** (string, can be absent if the type defines the whole query by itself): The query is executed on the PMM Client side and can contain multiple queries specific to the target DBMS.
-    Each entry should have type, and may or may not have query string, it depends of type. 
-    Queries can take parameters:
-    - **METRICS_INSTANT** query type can take  **'lookback'** parameter, which specifies how far in past to look back to metrics history. If this parameter is not specified, then query executed on the latest data.
-    - **METRICS_RANGE** query type can also take **'lookback'** parameter with the same behavior. In addition, this type has two required parameters:
-      - 'range' to  specifty he time window of the query
-      - `step` query resolution
-    These parameters are equal to [prometheus API](https://prometheus.io/docs/prometheus/latest/querying/api/#range-queries).
-    
-    Both metrics queries can use placeholders in query string {% raw %} **{{.NodeName**}} and **{{}}.ServiceName}}**  {% endraw %}. Both match target service/node names.
+- **Queries** (array, required): contains items that specify queries.
+  - **Type** (string/enum, required): defines the query type. Check the list of available types in the table below. 
+  - **Query** (string, can be absent if the type defines the whole query by itself): The query is executed on the PMM Client side and can contain multiple queries specific to the target DBMS.
+  - **Parameters** (key-value, can be absent if query doesn't have required parameters)
 
-## Check types for version 2 checks
+
+## Query types
  
 Expand the table below for the list of checks types that you can use to define your query type and the PMM Service type for which the check will run.
  
@@ -177,8 +166,19 @@ Expand the table below for the list of checks types that you can use to define y
     | MONGODB_GETCMDLINEOPTS          |    Executes db.adminCommand( { getCmdLineOpts: 1 } ) against MongoDB's "admin" database. For more information, see [getCmdLineOpts](https://docs.mongodb.com/manual/reference/command/getCmdLineOpts/) |No|
     | MONGODB_REPLSETGETSTATUS     |   Executes db.adminCommand( { replSetGetStatus: 1 } ) against MongoDB's "admin" database. For more information, see  [replSetGetStatus](https://docs.mongodb.com/manual/reference/command/replSetGetStatus/) |No|
     | MONGODB_GETDIAGNOSTICDATA |Executes db.adminCommand( { getDiagnosticData: 1 } ) against MongoDB's "admin" database. For more information, see [MongoDB Performance](https://docs.mongodb.com/manual/administration/analyzing-mongodb-performance/#full-time-diagnostic-data-capture)| No|
+    | METRICS_INSTANT |Executes instant [MetricsQL](https://docs.victoriametrics.com/MetricsQL.html) query. Query can use placeholders in query string {% raw %} **{{.NodeName**}} and **{{}}.ServiceName}}**  {% endraw %}. Both match target service/node names. To read more about instant queries see [Prometheus docs](https://prometheus.io/docs/prometheus/latest/querying/api/#instant-queries).|Yes|
+    | METRICS_RANGE |Executes range [MetricsQL](https://docs.victoriametrics.com/MetricsQL.html) query. Query can use placeholders in query string {% raw %} **{{.NodeName**}} and **{{}}.ServiceName}}**  {% endraw %}. Both match target service/node names. To read more about range queries see [Prometheus docs](https://prometheus.io/docs/prometheus/latest/querying/api/#range-queries).|Yes|
 
-    ## Develop version 2 checks
+## Query parameters
+- **METRICS_INSTANT**
+  - **lookback** (duration, optional): specifies how far in past to look back to metrics history. If this parameter is not specified, then query executed on the latest data. Example values: 30s, 5m, 8h.
+- **METRICS_RANGE**
+  - **lookback** (duration, optional): specifies how far in past to look back to metrics history. If this parameter is not specified, then query executed on the latest data. Example values: 30s, 5m, 8h.
+  - **range** (duration, required): specifies time window of the query. This parameter is equal to [prometheus API](https://prometheus.io/docs/prometheus/latest/querying/api/#range-queries).
+  - **step** (duration, required): query resolution. This parameter is equal to [prometheus API](https://prometheus.io/docs/prometheus/latest/querying/api/#range-queries).
+
+
+## Develop version 2 checks
 To develop custom checks for PMM 2.28 and later: 
 
 1. Install the latest PMM Server and PMM Client builds following the [installation instructions](https://www.percona.com/software/pmm/quickstart#). 
