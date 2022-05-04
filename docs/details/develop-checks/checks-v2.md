@@ -5,7 +5,7 @@
 - Victoria Metrics as a data source
 - Database **Family** field 
 
-## Format for v.2 vhecks 
+## Format for v.2 checks 
 Advisor checks for PMM 2.28 and later use the following format:
  
 ??? note alert alert-info "Version 2 Checks Format"

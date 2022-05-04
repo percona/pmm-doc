@@ -6,7 +6,7 @@
 - Victoria Metrics as a data source
 - No database **Family** field 
  
-## Format for v.1 Checks 
+## Format for v.1 checks 
 Checks for PMM 2.27 and older use the following format:
  
 ??? note alert alert-info "Version 1 Checks Format"
@@ -165,6 +165,7 @@ With the 2.27 release, security checks have been renamed to Advisor checks, and 
 
 ## Develop version 1 checks
 To develop custom checks for PMM 2.28 and later: 
+
 1. Install the latest PMM Server and PMM Client builds following the [installation instructions](https://www.percona.com/software/pmm/quickstart#). 
 2. Run PMM Server with special environment variables:
  
@@ -227,7 +228,7 @@ This means that extracted data is processed on the PMM side and not sent back to
    - Due to Alertmanager design, pmm-managed has to send and re-send alerts to it much more often than the frequency with which checks are executed. This expected behaviour is not important for using checks but is important for understanding how checks work.
    - Currently, Prometheus is not involved.
  
-![!](../../_images/BackEndChecks.png)
+![!](../../_images/BackendChecks.png)
  
 ## Frontend
 PMM uses Alertmanager API to get information about failed checks and show them on the UI:
