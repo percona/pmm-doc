@@ -220,6 +220,12 @@ nav:
           - details/api.md
           - details/victoria-metrics.md
           - details/glossary.md
+
+          - Develop checks:
+                - details/index.md
+                - details/checks-v1.md
+                - details/checks-v2.md
+            
     - faq.md
     
     - Release Notes:
