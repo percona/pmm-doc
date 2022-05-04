@@ -163,49 +163,6 @@ PMM 2.26 and older included a set of security checks grouped under the **Securit
  
 With the 2.27 release, security checks have been renamed to Advisor checks, and the **Security Threat Tool** option in the PMM Settings was renamed to **Advisors**. 
 
-## Develop version 1 checks
-To develop custom checks for PMM 2.28 and later: 
-
-1. Install the latest PMM Server and PMM Client builds following the [installation instructions](https://www.percona.com/software/pmm/quickstart#). 
-2. Run PMM Server with special environment variables:
- 
-    - _PMM_DEBUG=1_ to enable debug output that would be useful later;
-    - _PERCONA_TEST_CHECKS_FILE=/srv/custom-checks.yml_ to use checks from the local files instead of downloading them from Percona Portal.
-    - _PERCONA_TEST_CHECKS_DISABLE_START_DELAY=true_ to disable the default check execution start delay. This is currently set to one minute, so that checks run upon system start.
-    - _PERCONA_TEST_CHECKS_RESEND_INTERVAL=2s_ to define the frequency for sending the SA-based alerts to Alertmanager.
- 
-    ```
-    docker run -p 80:80 -p 443:443 --name pmm-server \
-    -e PMM_DEBUG=1 \
-    -e PERCONA_TEST_CHECKS_FILE=/srv/custom-checks.yml \
-    -e PERCONA_TEST_CHECKS_DISABLE_START_DELAY=true \
-    -e PERCONA_TEST_CHECKS_RESEND_INTERVAL=2s \
-    perconalab/pmm-server:dev-latest
-    ```
- 
-3.  Log in to Grafana with credentials **admin/admin**.
- 
-4. Go to **Configuration > Settings > Advanced Settings** and enable the **Security Threat Tool** option.
- 
-5.  Create _/srv/custom-checks.yml_ inside the `pmm-server` container with the content of your check.
- 
-6.  The checks will run according to the time interval defined on the UI. You can see the result of running the check on the home dashboard:
- 
-    ![!](../../_images/HomeDashboard.png)
- 
-7.  Click on the number of failed checks to open the Failed Checks dashboard:
- 
-    ![!](../../_images/FailedChecks.png)
- 
-8.  Go into Docker container to output the logs of pmm-managed and read check logs:
- 
-```
-# get inside the container
-docker exec -it pmm-server bash
-# print and watch the logs
-supervisorctl tail -f pmm-managed
- 
-```
 ## Checks script
  
 The check script assumes that there is a function with a fixed name, that accepts a _list_ of _docs_ containing returned rows for SQL databases and documents for MongoDB. It returns zero, one, or several check results that are then converted to alerts.
@@ -251,3 +208,46 @@ Expand the table below for the list of checks types that you can use to define y
     | MONGODB_GETPARAMETER     | Executes db.adminCommand( { getParameter: "*" } ) against MongoDB's "admin" database. For more information, see [getParameter](https://docs.mongodb.com/manual/reference/command/getParameter/)| No|
     | MONGODB_BUILDINFO    | Executes db.adminCommand( { buildInfo:  1 } ) against MongoDB's "admin" database.  For more information, see [buildInfo](https://docs.mongodb.com/manual/reference/command/buildInfo/) | No|
 
+## Develop version 1 checks
+To develop custom checks for PMM 2.28 and later: 
+
+1. Install the latest PMM Server and PMM Client builds following the [installation instructions](https://www.percona.com/software/pmm/quickstart#). 
+2. Run PMM Server with special environment variables:
+ 
+    - _PMM_DEBUG=1_ to enable debug output that would be useful later;
+    - _PERCONA_TEST_CHECKS_FILE=/srv/custom-checks.yml_ to use checks from the local files instead of downloading them from Percona Portal.
+    - _PERCONA_TEST_CHECKS_DISABLE_START_DELAY=true_ to disable the default check execution start delay. This is currently set to one minute, so that checks run upon system start.
+    - _PERCONA_TEST_CHECKS_RESEND_INTERVAL=2s_ to define the frequency for sending the SA-based alerts to Alertmanager.
+ 
+    ```
+    docker run -p 80:80 -p 443:443 --name pmm-server \
+    -e PMM_DEBUG=1 \
+    -e PERCONA_TEST_CHECKS_FILE=/srv/custom-checks.yml \
+    -e PERCONA_TEST_CHECKS_DISABLE_START_DELAY=true \
+    -e PERCONA_TEST_CHECKS_RESEND_INTERVAL=2s \
+    perconalab/pmm-server:dev-latest
+    ```
+ 
+3.  Log in to Grafana with credentials **admin/admin**.
+ 
+4. Go to **Configuration > Settings > Advanced Settings** and enable the **Security Threat Tool** option.
+ 
+5.  Create _/srv/custom-checks.yml_ inside the `pmm-server` container with the content of your check.
+ 
+6.  The checks will run according to the time interval defined on the UI. You can see the result of running the check on the home dashboard:
+ 
+    ![!](../../_images/HomeDashboard.png)
+ 
+7.  Click on the number of failed checks to open the Failed Checks dashboard:
+ 
+    ![!](../../_images/FailedChecks.png)
+ 
+8.  Go into Docker container to output the logs of pmm-managed and read check logs:
+ 
+```
+# get inside the container
+docker exec -it pmm-server bash
+# print and watch the logs
+supervisorctl tail -f pmm-managed
+ 
+```
