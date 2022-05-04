@@ -222,9 +222,9 @@ nav:
           - details/glossary.md
 
           - Develop checks:
-                - details/index.md
-                - details/checks-v1.md
-                - details/checks-v2.md
+                - details/develop-checks/index.md
+                - details/develop-checks/checks-v1.md
+                - details/develop-checls/checks-v2.md
             
     - faq.md
     
