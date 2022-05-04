@@ -1,4 +1,4 @@
-# Version 1 advisor checks for PMM 2.27 and older
+# Version 1 checks for PMM 2.27 and older
  Advisor checks created for PMM 2.27 and older use a slightly different structure than checks created in 2.28. 
  This is because, compared to 2.28 checks, 2.27 checks do not support: 
  
