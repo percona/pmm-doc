@@ -35,10 +35,6 @@ On the left are the selector tabs:
 !!! hint alert alert-success "Tip"
     Click *Apply changes* to save any changes made here.
 
-## Diagnostics
-
-On all tabs is a *Diagnostics* section (top-right). Click *Download server diagnostics* to retrieve PMM diagnostics data which can be examined and/or shared with our support team should you need help.
-
 ## Metrics resolution
 
 Metrics are collected at three intervals representing low, medium and high resolutions.
