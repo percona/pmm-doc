@@ -11,7 +11,7 @@ Advisor checks for PMM 2.28 and later use the following format:
 ??? note alert alert-info "Version 2 Checks Format"
  
 {% raw %} 
-```yaml
+    ```yaml
     ---
     checks:
       - version: 2
@@ -118,7 +118,7 @@ Advisor checks for PMM 2.28 and later use the following format:
               })
     
               return results
-```
+    ```
 {% endraw %}
 
 ## Checks script

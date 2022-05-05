@@ -11,7 +11,7 @@ Checks for PMM 2.27 and older use the following format:
  
 ??? note alert alert-info "Version 1 Checks Format"
  
-```yaml 
+```yaml
     ---
     checks:
       - version: 1
@@ -58,7 +58,7 @@ Checks for PMM 2.27 and older use the following format:
 
 ??? note alert alert-info "Realistic Example of Check in v.1 Format"
  
-```yaml 
+    ```yaml
     ---
     checks:
       - version: 1
@@ -156,7 +156,7 @@ Checks for PMM 2.27 and older use the following format:
                       })
     
                   return results
-```
+    ```
 
 
 ## Security checks in PMM 2.26 and older
