@@ -9,7 +9,6 @@ Open the *Settings* page from the [main menu](../details/interface.md#main-menu)
 On the left are the selector tabs:
 
 - [Configure](#configure)
-  - [Diagnostics](#diagnostics)
   - [Metrics resolution](#metrics-resolution)
   - [Advanced Settings](#advanced-settings)
     - [Data Retention](#data-retention)
