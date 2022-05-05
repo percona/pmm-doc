@@ -10,8 +10,8 @@ Advisor checks for PMM 2.28 and later use the following format:
  
 ??? note alert alert-info "Version 2 Checks Format"
  
-{% raw %} 
-    ```yaml
+
+    ```yaml {% raw %} 
     ---
     checks:
       - version: 2
@@ -119,8 +119,8 @@ Advisor checks for PMM 2.28 and later use the following format:
     
               return results
     ```
+    
 {% endraw %}
-
 ## Checks script
  
 The check script assumes that there is a function with **check_context**, that accepts a _list_ where each item represets result of a single query specified in check. Each result itself is a _list_ of _docs_ containing returned rows for SQL databases and documents for MongoDB. It returns zero, one, or several check results that are then converted to alerts.
