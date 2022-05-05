@@ -10,7 +10,7 @@ Advisor checks for PMM 2.28 and later use the following format:
  
 ??? note alert alert-info "Version 2 Checks Format"
  
-{% raw %} 
+    {% raw %} 
     ```yaml 
         ---
         checks:
@@ -118,8 +118,8 @@ Advisor checks for PMM 2.28 and later use the following format:
                   })
         
                   return results
-```
-{% endraw %}    
+    ```
+    {% endraw %}    
 
 ## Checks script
  
@@ -148,7 +148,6 @@ Checks can include the following fields:
   - **Type** (string/enum, required): defines the query type. Check the list of available types in the table below. 
   - **Query** (string, can be absent if the type defines the whole query by itself): The query is executed on the PMM Client side and can contain multiple queries specific to the target DBMS.
   - **Parameters** (key-value, can be absent if query doesn't have required parameters)
-
 
 ## Query types
  

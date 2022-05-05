@@ -1,5 +1,5 @@
 # Version 1 checks for PMM 2.27 and older
- Advisor checks created for PMM 2.27 and older use a slightly different structure than checks created in 2.28. 
+ Advisor checks created for PMM 2.27 and older use a slightly different structure than checks for 2.28. 
  This is because, compared to 2.28 checks, 2.27 checks do not support: 
  
 - Multiple queries
@@ -11,7 +11,7 @@ Checks for PMM 2.27 and older use the following format:
  
 ??? note alert alert-info "Version 1 Checks Format"
  
-```yaml
+    ```yaml
     ---
     checks:
       - version: 1
@@ -54,7 +54,7 @@ Checks for PMM 2.27 and older use the following format:
                       "version": format_version_num(10203),
                   }
               }]
-```
+    ```
 
 ??? note alert alert-info "Realistic Example of Check in v.1 Format"
  
