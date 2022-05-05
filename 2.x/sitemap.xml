@@ -26,11 +26,6 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://www.percona.com/percona-monitoring-and-management/2.x/details/develop-checks.html</loc>
-         <lastmod>2022-05-05</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://www.percona.com/percona-monitoring-and-management/2.x/details/glossary.html</loc>
          <lastmod>2022-05-05</lastmod>
          <changefreq>daily</changefreq>
