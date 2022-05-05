@@ -39,7 +39,7 @@ In a browser, visit `https://<address-of-your-pmm-server>/logs.zip`.
 
 ### From Help menu
 
-1. Select <i class="uil uil-cog"></i> *Help* → <i class="uil uil-setting"></i> *PMM Logs*.
+1. Select <i class="uil uil-question-circle"></i> *Help* → *PMM Logs*.
 
 2. Click *PMM Logs* to retrieve PMM diagnostics data which can be examined and/or shared with our support team should you need help.
 
