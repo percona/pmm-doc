@@ -17,7 +17,7 @@ This means that extracted data is processed on the PMM side and not sent back to
 ## Backend
  
 1. pmm-managed checks that the installation is opted-in for checks.
-2. pmm-managed downloads files with checks from Percona Portal.
+2. pmm-managed downloads files with checks from Percona Platform.
 3. pmm-managed verifies file signatures using a list of hard-coded public keys. At least one signature should be correct.
 4. pmm-managed sends queries to pmm-agent and gathers results.
 5. pmm-managed executes check scripts that produce alert information.
