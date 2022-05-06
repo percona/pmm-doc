@@ -216,7 +216,7 @@ To develop custom checks for PMM 2.26 and 2.27:
 2. Run PMM Server with special environment variables:
  
     - _PMM_DEBUG=1_ to enable debug output that would be useful later;
-    - _PERCONA_TEST_CHECKS_FILE=/srv/custom-checks.yml_ to use checks from the local files instead of downloading them from Percona Portal.
+    - _PERCONA_TEST_CHECKS_FILE=/srv/custom-checks.yml_ to use checks from the local files instead of downloading them from Percona Platform.
     - _PERCONA_TEST_CHECKS_DISABLE_START_DELAY=true_ to disable the default check execution start delay. This is currently set to one minute, so that checks run upon system start.
     - _PERCONA_TEST_CHECKS_RESEND_INTERVAL=2s_ to define the frequency for sending the SA-based alerts to Alertmanager.
  
