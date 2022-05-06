@@ -12,7 +12,7 @@ A check is a combination of:
  
 All checks are self-contained in the first phase, as well as in most of the planned phases.
  
-This means that extracted data is processed on the PMM side and not sent back to Percona Portal.
+This means that extracted data is processed on the PMM side and not sent back to Percona Platform.
  
 ## Backend
  
