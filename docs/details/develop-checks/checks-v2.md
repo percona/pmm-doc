@@ -12,8 +12,8 @@ Advisor checks for PMM 2.28 and later use the following format:
  
     {% raw %} 
     ```yaml 
-      ---
-      checks:
+    ---
+        checks:
         - version: 2
           name: exampleV2
           summary: Check format V2
