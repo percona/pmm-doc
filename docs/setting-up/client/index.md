@@ -482,7 +482,7 @@ pmm-admin remove <service-type> <service-name>
     - [PMM Client architecture](../../details/architecture.md#pmm-client)
     - Thanks to [paskal] for original Docker compose files
 
-[Debian 11 Bullseye)]: https://www.percona.com/downloads/pmm2/{{release}}/binary/debian/bullseye/
+[Debian 11 (Bullseye)]: https://www.percona.com/downloads/pmm2/{{release}}/binary/debian/bullseye/
 [Debian 10 (Buster)]: https://www.percona.com/downloads/pmm2/{{release}}/binary/debian/buster/
 [Debian 9 (Stretch)]: https://www.percona.com/downloads/pmm2/{{release}}/binary/debian/stretch/
 [Docker compose]: https://docs.docker.com/compose/
