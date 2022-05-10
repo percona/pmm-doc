@@ -9,7 +9,6 @@ Open the *Settings* page from the [main menu](../details/interface.md#main-menu)
 On the left are the selector tabs:
 
 - [Configure](#configure)
-  - [Diagnostics](#diagnostics)
   - [Metrics resolution](#metrics-resolution)
   - [Advanced Settings](#advanced-settings)
     - [Data Retention](#data-retention)
@@ -34,10 +33,6 @@ On the left are the selector tabs:
 
 !!! hint alert alert-success "Tip"
     Click *Apply changes* to save any changes made here.
-
-## Diagnostics
-
-On all tabs is a *Diagnostics* section (top-right). Click *Download server diagnostics* to retrieve PMM diagnostics data which can be examined and/or shared with our support team should you need help.
 
 ## Metrics resolution
 
