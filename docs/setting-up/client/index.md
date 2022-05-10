@@ -246,7 +246,7 @@ Here are the download page links for each supported platform.
 
 - [Debian 9 (Stretch)]
 - [Debian 10 (Buster)]
-- [Debian 11 Bullseye)]
+- [Debian 11 (Bullseye)]
 - [Red Hat/CentOS/Oracle 7]
 - [Red Hat/CentOS/Oracle 8]
 - [Ubuntu 18.04 (Bionic Beaver)]
