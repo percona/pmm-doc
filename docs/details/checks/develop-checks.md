@@ -197,7 +197,7 @@ Checks format and the current STT UI use different terminology for severities. H
 
 ## Backend
 
-![!](../../../_images/BackendSTT.png)
+![!](../../../_images/BackendChecks.png)
 
 1. pmm-managed checks that this installation is opted-in into STT.
 2. pmm-managed downloads checks file from SaaS.
@@ -210,7 +210,7 @@ Checks format and the current STT UI use different terminology for severities. H
 
 ## Frontend
 
-![!](../../../_images/FrontEndSTT.png)
+![!](../../../_images/FrontendChecks.png)
 
 Our UI in Grafana uses Alertmanager API v2 to get information about failed security checks.
 
