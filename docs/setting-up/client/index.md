@@ -174,11 +174,12 @@ Here are the download page links for each supported platform.
 
 - [Debian 9 (Stretch)]
 - [Debian 10 (Buster)]
+- [Debian 11 (Bullseye)]
 - [Red Hat/CentOS/Oracle 7]
 - [Red Hat/CentOS/Oracle 8]
-- [Ubuntu 16.04 (Xenial Xerus)]
 - [Ubuntu 18.04 (Bionic Beaver)]
 - [Ubuntu 20.04 (Focal Fossa)]
+- [Ubuntu 22.04 (Jammy Jellyfish)]
 
 #### Debian-based
 
@@ -408,6 +409,7 @@ pmm-admin remove <service-type> <service-name>
     - [Percona release]
     - [PMM Client architecture](../../details/architecture.md#pmm-client)
 
+[Debian 11 (Bullseye)]: https://www.percona.com/downloads/pmm2/{{release}}/binary/debian/bullseye/
 [Debian 10 (Buster)]: https://www.percona.com/downloads/pmm2/{{release}}/binary/debian/buster/
 [Debian 9 (Stretch)]: https://www.percona.com/downloads/pmm2/{{release}}/binary/debian/stretch/
 [Docker]: https://docs.docker.com/get-docker/
@@ -417,6 +419,6 @@ pmm-admin remove <service-type> <service-name>
 [PMM Client Docker image]: https://hub.docker.com/r/percona/pmm-client/tags/
 [Red Hat/CentOS/Oracle 7]: https://www.percona.com/downloads/pmm2/{{release}}/binary/redhat/7/
 [Red Hat/CentOS/Oracle 8]: https://www.percona.com/downloads/pmm2/{{release}}/binary/redhat/8/
-[Ubuntu 16.04 (Xenial Xerus)]: https://www.percona.com/downloads/pmm2/{{release}}/binary/debian/xenial/
 [Ubuntu 18.04 (Bionic Beaver)]: https://www.percona.com/downloads/pmm2/{{release}}/binary/debian/bionic/
 [Ubuntu 20.04 (Focal Fossa)]: https://www.percona.com/downloads/pmm2/{{release}}/binary/debian/focal/
+[Ubuntu 22.04 (Jammy Jellyfish)]: https://www.percona.com/downloads/pmm2/{{release}}/binary/debian/jammy/
