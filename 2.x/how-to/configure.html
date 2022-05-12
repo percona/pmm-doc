@@ -122,7 +122,6 @@
 <p>On the left are the selector tabs:</p>
 <ul>
 <li><a href="#configure">Configure</a></li>
-<li><a href="#diagnostics">Diagnostics</a></li>
 <li><a href="#metrics-resolution">Metrics resolution</a></li>
 <li><a href="#advanced-settings">Advanced Settings</a><ul>
 <li><a href="#data-retention">Data Retention</a></li>
@@ -157,8 +156,6 @@
 <p class="admonition-title">Tip</p>
 <p>Click <em>Apply changes</em> to save any changes made here.</p>
 </div>
-<h2 id="diagnostics">Diagnostics<a class="headerlink" href="#diagnostics" title="Permanent link">&para;</a></h2>
-<p>On all tabs is a <em>Diagnostics</em> section (top-right). Click <em>Download server diagnostics</em> to retrieve PMM diagnostics data which can be examined and/or shared with our support team should you need help.</p>
 <h2 id="metrics-resolution">Metrics resolution<a class="headerlink" href="#metrics-resolution" title="Permanent link">&para;</a></h2>
 <p>Metrics are collected at three intervals representing low, medium and high resolutions.</p>
 <p>The <em>Metrics Resolution</em> settings tab contains a radio button with three fixed presets (<em>Rare</em>, <em>Standard</em> and <em>Frequent</em>) and one editable custom preset (<em>Custom</em>).</p>
@@ -252,8 +249,8 @@
 <p>When active, PMM will automatically check for updates and put a notification in the home page <em>Updates</em> dashboard if any are available.</p>
 <h3 id="advisors">Advisors<a class="headerlink" href="#advisors" title="Permanent link">&para;</a></h3>
 <p>Advisors are sets of checks grouped by functionality that run a range of database health checks on a registered instance. </p>
-<p>The findings are reported on the <strong>Advisors &gt; Failed Checks</strong> page, and an overview is displayed on the Dashboard in the Failed Advisor Checks panel.<br />
-By default, the Advisors option is disabled. </p>
+<p>The findings are reported on the <strong>Advisors &gt; Failed Checks</strong> page, and an overview is displayed on the Dashboard in the Failed Advisor Checks panel.  </p>
+<p>The Advisors option is enabled by default. </p>
 <p>Checks are refetched and rerun at intervals. </p>
 <p>See <a href="advisors.html">Working with Advisor checks</a>. </p>
 <h2 id="public-address">Public address<a class="headerlink" href="#public-address" title="Permanent link">&para;</a></h2>
@@ -355,7 +352,7 @@ After setting up the SMTP server, click <em>Test</em> to confirm that you can co
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2022-05-06
+            <i class="uil uil-refresh"></i> Page updated 2022-05-12
         </li>
         
     </ul>
@@ -1147,7 +1144,27 @@ After setting up the SMTP server, click <em>Test</em> to confirm that you can co
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../details/develop-checks.md">None</a>
+    <a class="reference internal" href="../details/develop-checks/index.html">Develop checks</a>
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../details/develop-checks/checks-v1.html">Version 1 checks for PMM 2.27 and older</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../details/develop-checks/checks-v2.html">Version 2 advisor checks for PMM 2.28 and newer</a>
+
+
+
+</ul>
+
 
 
 
@@ -1170,6 +1187,12 @@ After setting up the SMTP server, click <em>Test</em> to confirm that you can co
 
 
 <ul class="toctree" id="toctree">
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/2.28.0.html">PMM 2.28.0</a>
+
+
 
 
 <li class="toctree-l2">
