@@ -15,6 +15,8 @@ jobs:
     steps:
       - name: Check out code
         uses: percona-platform/checkout@v2
+        with:
+          fetch-depth: 0
 
       - name: Setup Python
         uses: percona-platform/setup-python@v2
@@ -51,7 +53,7 @@ jobs:
           mike set-default 2.x -b preview
           mike retitle 2.x "PMM 2.x (LATEST)" -b preview
 
-      - name: Install Node.js 14.x
+      - name: Install NodeJS
         uses: percona-platform/setup-node@v2
         with:
           node-version: "14"
