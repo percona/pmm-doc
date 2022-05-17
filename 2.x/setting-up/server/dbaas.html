@@ -135,12 +135,10 @@ systemctl <span class="nb">enable</span> docker
 systemctl start docker
 </code></pre></div>
 <h3 id="minikube">minikube<a class="headerlink" href="#minikube" title="Permanent link">&para;</a></h3>
-<div class="admonition note alert alert-primary">
-<p>Please install minikube 1.16.0</p>
-</div>
+<p>Please follow minikube&rsquo;s <a href="https://minikube.sigs.k8s.io/docs/start/">documentation to install</a> it.</p>
 <h4 id="red-hat-centos_1">Red Hat, CentOS<a class="headerlink" href="#red-hat-centos_1" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code>yum -y install curl
-curl -Lo /usr/local/sbin/minikube https://github.com/kubernetes/minikube/releases/download/v1.16.0/minikube-linux-amd64
+curl -Lo /usr/local/sbin/minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
 chmod +x /usr/local/sbin/minikube
 ln -s /usr/local/sbin/minikube /usr/sbin/minikube
 <span class="nb">alias</span> <span class="nv">kubectl</span><span class="o">=</span><span class="s1">&#39;minikube kubectl --&#39;</span>
@@ -180,10 +178,7 @@ ln -s /usr/local/sbin/minikube /usr/sbin/minikube
 <ol>
 <li>
 <p>Configure and start minikube:</p>
-<div class="highlight"><pre><span></span><code>minikube config <span class="nb">set</span> cpus <span class="m">16</span>
-minikube config <span class="nb">set</span> memory <span class="m">32768</span>
-minikube config <span class="nb">set</span> kubernetes-version <span class="m">1</span>.20.1
-minikube start
+<div class="highlight"><pre><span></span><code>minikube start --cpus<span class="o">=</span><span class="m">16</span> --memory<span class="o">=</span>32G
 </code></pre></div>
 </li>
 <li>
@@ -414,7 +409,7 @@ curl https://raw.githubusercontent.com/percona-platform/dbaas-controller/7a5fff0
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2022-02-22
+            <i class="uil uil-refresh"></i> Page updated 2022-05-17
         </li>
         
     </ul>
