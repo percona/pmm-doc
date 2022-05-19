@@ -130,7 +130,7 @@ PMM communicates with the PMM Server via a PMM agent process.
 
     `pmm-admin add mysql --credentials-source=/myfolder/pmm-credentials.json`
 
-    : Format of JSON file:
+    Format of JSON file:
 
 ```js
 { 
