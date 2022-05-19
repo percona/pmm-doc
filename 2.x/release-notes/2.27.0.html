@@ -304,6 +304,14 @@
 </ul>
 </li>
 </ul>
+<h2 id="known-issues">Known Issues<a class="headerlink" href="#known-issues" title="Permanent link">&para;</a></h2>
+<p><a href="https://jira.percona.com/browse/PMM-9992">PMM-9992</a>: <strong>Error while using reverse proxy (like Nginx)</strong></p>
+<p>While using a reverse proxy (for example, Nginx) in front of PMM, you can run into the error <code>origin not allowed</code> after upgrading to PMM 2.27.0 or newer versions.</p>
+<p><strong>Solution</strong></p>
+<p>Add the <code>Host</code> header to the reverse proxy config file.</p>
+<p><strong>Example</strong> </p>
+<p>For Nginx, add the following:</p>
+<p><code>proxy_set_header Host $http_host;</code></p>
                     </div>
                 </div>
                 
@@ -311,7 +319,7 @@
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2022-04-15
+            <i class="uil uil-refresh"></i> Page updated 2022-05-19
         </li>
         
     </ul>
