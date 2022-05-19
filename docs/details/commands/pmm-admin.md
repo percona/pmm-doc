@@ -117,6 +117,7 @@ PMM communicates with the PMM Server via a PMM agent process.
     `--pprof`
     : Include performance profiling data in the summary.
 
+
 ### AUTHORIZATION COMMANDS
 
 #### `pmm-admin add --credentials-source=CREDENTIALS-SOURCE [FLAGS] [NAME] [ADDRESS]`
@@ -131,8 +132,8 @@ PMM communicates with the PMM Server via a PMM agent process.
 
     : Format of JSON file:
 
-```js
-   { 
+```
+    { 
        "username": string,
        "password": string,
        "agentpassword": string
