@@ -279,7 +279,7 @@ When you remove a service, collected data remains on PMM Server for the specifie
 :     Pass senstive information such as username and password via a JSON file instead of exposing this information in the existing flags `--username`, `--password` and `--agent-password`.
 
     ` ----credentials-source=CREDENTIALS-SOURCE`
-    : The path to the JSON file where the credentials are stored.
+    : Path to the JSON file where the credentials are stored.
 
 DATABASE:= [[MongoDB](#mongodb) | [MySQL](#mysql) | [PostgreSQL](#postgresql) | [ProxySQL](#proxysql)]
 
