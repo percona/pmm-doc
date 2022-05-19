@@ -280,6 +280,11 @@ When you remove a service, collected data remains on PMM Server for the specifie
 
     ` ----credentials-source=CREDENTIALS-SOURCE`
     : Path to the JSON file where the credentials are stored.
+    
+    Example
+
+    `pmm-admin add mysql --credentials-source=/myfolder/pmm-credentials.json`
+
 
 DATABASE:= [[MongoDB](#mongodb) | [MySQL](#mysql) | [PostgreSQL](#postgresql) | [ProxySQL](#proxysql)]
 
