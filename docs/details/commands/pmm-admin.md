@@ -132,7 +132,7 @@ PMM communicates with the PMM Server via a PMM agent process.
 
     : Format of JSON file:
 
-```
+```js
 { 
        "username": string,
        "password": string,
