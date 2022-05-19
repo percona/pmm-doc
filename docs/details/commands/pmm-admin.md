@@ -14,6 +14,8 @@
 
 DATABASE:= [[MongoDB](#mongodb) | [MySQL](#mysql) | [PostgreSQL](#postgresql) | [ProxySQL](#proxysql)]
 
+`pmm-admin add --credentials-source=CREDENTIALS-SOURCE [FLAGS] [NAME] [ADDRESS]`
+
 `pmm-admin add --pmm-agent-listen-port=LISTEN_PORT DATABASE [FLAGS] [NAME] [ADDRESS]`
 
 `pmm-admin add external [FLAGS] [NAME] [ADDRESS]` (CAUTION: Technical preview feature)
@@ -270,6 +272,17 @@ When you remove a service, collected data remains on PMM Server for the specifie
 
     !!! hint alert alert-success "Tip"
         If node or service name is specified, they are used instead of other parameters.
+
+### AUTHORIZATION COMMANDS
+
+#### `pmm-admin add --credentials-source=CREDENTIALS-SOURCE [FLAGS] [NAME] [ADDRESS]`
+:     Pass senstive information such as username and password via a JSON file instead of exposing this information in the existing flags `--username`, `--password` and `--agent-password`.
+
+    ` ----credentials-source=CREDENTIALS-SOURCE`
+    : The path to the JSON file where the credentials are stored.
+
+DATABASE:= [[MongoDB](#mongodb) | [MySQL](#mysql) | [PostgreSQL](#postgresql) | [ProxySQL](#proxysql)]
+
 
 ### DATABASE COMMANDS
 
