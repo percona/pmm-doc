@@ -22,51 +22,8 @@ If you need to, you can [unregister](#unregister), [remove services](#remove-ser
 
 Here's an overview of the choices.
 
-```plantuml
-@startuml "setting-up_client"
-!include docs/_images/plantuml_styles.puml
-split
-    -[hidden]->
-    partition "Docker/Docker compose" {
-        split
-            -[hidden]->
-            :""docker pull ..."";
-            :Create persistent\ndata store;
-            :""docker run ..."";
-        split again
-            -[hidden]->
-            :Create\n""docker-compose.yml"";
-            :""docker-compose up"";
-        end split
-    }
-split again
-    -[hidden]->
-    split
-        -[hidden]->
-        partition "Package manager" {
-            split
-                -[hidden]->
-                :Set up\n""percona-release"";
-                :""apt install"";
-            split again
-                -[hidden]->
-                :Download "".deb""/"".rpm"";
-                :""dpkg -i *.deb""\n""dnf localinstall *.rpm"";
-            end split
-        }
-    split again
-        partition "Binary package" {
-        -[hidden]->
-        :Download &\nverify;
-        :Unpack & \ninstall;
-        }
-    end split
-    :Set up pmm-agent;
-end split
-:Register;
-:Add services;
-@enduml
-```
+![!image](../../_images/PMM_Client_Setup.png)
+
 
 ## Before you start
 
@@ -289,11 +246,12 @@ Here are the download page links for each supported platform.
 
 - [Debian 9 (Stretch)]
 - [Debian 10 (Buster)]
+- [Debian 11 (Bullseye)]
 - [Red Hat/CentOS/Oracle 7]
 - [Red Hat/CentOS/Oracle 8]
-- [Ubuntu 16.04 (Xenial Xerus)]
 - [Ubuntu 18.04 (Bionic Beaver)]
 - [Ubuntu 20.04 (Focal Fossa)]
+- [Ubuntu 22.04 (Jammy Jellyfish)]
 
 #### Debian-based
 
@@ -524,6 +482,7 @@ pmm-admin remove <service-type> <service-name>
     - [PMM Client architecture](../../details/architecture.md#pmm-client)
     - Thanks to [paskal] for original Docker compose files
 
+[Debian 11 (Bullseye)]: https://www.percona.com/downloads/pmm2/{{release}}/binary/debian/bullseye/
 [Debian 10 (Buster)]: https://www.percona.com/downloads/pmm2/{{release}}/binary/debian/buster/
 [Debian 9 (Stretch)]: https://www.percona.com/downloads/pmm2/{{release}}/binary/debian/stretch/
 [Docker compose]: https://docs.docker.com/compose/
@@ -535,6 +494,6 @@ pmm-admin remove <service-type> <service-name>
 [PMM Client Docker image]: https://hub.docker.com/r/percona/pmm-client/tags/
 [Red Hat/CentOS/Oracle 7]: https://www.percona.com/downloads/pmm2/{{release}}/binary/redhat/7/
 [Red Hat/CentOS/Oracle 8]: https://www.percona.com/downloads/pmm2/{{release}}/binary/redhat/8/
-[Ubuntu 16.04 (Xenial Xerus)]: https://www.percona.com/downloads/pmm2/{{release}}/binary/debian/xenial/
 [Ubuntu 18.04 (Bionic Beaver)]: https://www.percona.com/downloads/pmm2/{{release}}/binary/debian/bionic/
 [Ubuntu 20.04 (Focal Fossa)]: https://www.percona.com/downloads/pmm2/{{release}}/binary/debian/focal/
+[Ubuntu 22.04 (Jammy Jellyfish)]: https://www.percona.com/downloads/pmm2/{{release}}/binary/debian/jammy/
