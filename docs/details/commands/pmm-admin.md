@@ -281,7 +281,10 @@ When you remove a service, collected data remains on PMM Server for the specifie
 
 #### AUTHORIZATION COMMANDS
 
-   `pmm-admin add --credentials-source=CREDENTIALS-SOURCE [FLAGS] [NAME] [ADDRESS]`
+##### pmm-admin add --credentials-source=CREDENTIALS-SOURCE
+
+`pmm-admin add --credentials-source=CREDENTIALS-SOURCE [FLAGS] [NAME] [ADDRESS]`
+
 :     Pass senstive information such as username and password via a JSON file instead of exposing this information in the existing flags `--username`, `--password` and `--agent-password`.
 
     ` ----credentials-source=CREDENTIALS-SOURCE`
