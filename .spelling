@@ -5,6 +5,7 @@
 5.x
 64-bit
 7.x
+8.x.
 Alertmanager
 Alexandre
 Álvaro
@@ -46,6 +47,7 @@ deduplicate
 defragmentation
 e.g.
 ElasticSearch
+enum
 ESXi
 ethernet
 expr
@@ -69,6 +71,7 @@ gRPC
 Guzman
 Handzelova
 haproxy
+hoc
 hostgroup
 hostname
 hotspot
@@ -96,7 +99,9 @@ Kubernetes
 Lifecycle
 LoadBalancer
 login
+lookback
 López
+lts
 macOS
 MariaDB
 md
@@ -9206,6 +9211,8 @@ spaceform
 sparkline
 sparklines
 ssl-enabled
+SSL-encrypted
+starlark
 stderr
 stdout
 subfolder
@@ -9241,9 +9248,13 @@ unpurged
 unregister
 unsilence
 uptime
+v.1
+v.2
 v1
+v1.8
 v2
 v4
+v8.0
 vcpu
 VictoriaMetrics
 virtualbox
@@ -9262,14 +9273,3 @@ yaml
 Yann
 Zaitzev
 zlib
-starlark
-hoc
-8.x.
-v8.0
-v1.8
-lts
-v.1
-v.2
-enum
-lookback
-SSL-encrypted
