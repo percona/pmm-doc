@@ -21,7 +21,7 @@ Before creating alert rules:
 
 1. Enable Integrated Alerting.
 2. Set up an Email (SMTP) or Slack sender settings for receiving alerts.
-3. Specify the Email/Slack/Webhooks/PagerDuty settings and channels to notify.
+3. Specify the Email/Slack/Webhook/PagerDuty settings and channels to notify.
 
 
 ### Enable Integrated Alerting
@@ -36,7 +36,7 @@ Set up a communication channel to configure how alerts will be delivered. The fo
 To set up a communication channel:
 
 1. Open the new **Communication** tab under **Configuration > Settings**.
-2. Choose whether you want to configure the settings for **Email** or **Slack** sender channel. Webhook and PagerDury can be configured when adding the notification channel.
+2. Choose whether you want to configure the settings for **Email** or **Slack** sender channel. Webhook and PagerDuty can be configured when adding the notification channel.
     - For **Email**, fill in the details of your SMTP email server. Enforce TLS encryption if your SMTP server requires this, then click **Test** to confirm that you can connect to the SMTP server with the current settings.
     - For **Slack**, specify the Slack Webhook URL to use. Currently, you can only configure one Slack channel for each Slack URL.
 3. Click **Apply changes** to save your settings.
@@ -68,7 +68,7 @@ Starting with PMM 2.26.0, alert rules are no longer dependent on their source ru
 
 If none of the default PMM templates contain a relevant expression for the alert rule that you need, you can create a custom template instead.
 
-You can base multiple alert rules on the same template. For example, you can create a **pmm_node_high_cpu_load** template that can be used as the source for alert rules for production versus staging, warning versus critical, etc.
+You can base multiple alert rules on the same template. For example, you can create a `pmm_node_high_cpu_load` template that can be used as the source for alert rules for production versus staging, warning versus critical, etc.
 
 ### Template format
 When creating custom templates, make sure to use the required template format below:
@@ -81,9 +81,9 @@ When creating custom templates, make sure to use the required template format be
     - **name** (required): the name of the parameter. Spaces and special characters are not allowed.
     - **summary** (required): a short description of what this parameter represents.
     - **unit** (optional): PMM currently supports either s (seconds) or % (percentage).
-    - **type** (required):PMM currently supports the float type. string, bool, and other types will be available in a future release.
+    - **type** (required):PMM currently supports the `float` type. `string`, `bool`, and other types will be available in a future release.
     - **range** (optional): defines the boundaries for the value of a  float parameter
-   - **value** (optional): default  parameter value. Value strings must not include any of these special characters: < > ! @ # $ % ^ & * ( ) _ / \ ' + - = (space)
+   - **value** (optional): default  parameter value. Value strings must not include any of these special characters: `< > ! @ # $ % ^ & * ( ) _ / \ ' + - = (space)`
 - **for** (required): specifies the duration of time that the expression must be met before the alert will be fired
 - **severity** (required): specifies default alert severity level
  - **labels** (optional): are additional labels to be added to generated alerts
@@ -123,14 +123,14 @@ templates:
 ```
 
 ## Test alert expressions
-If you want to create custom templates, you can test the MetricsQ expressions for your custom template in the **Explore** section of PMM. Here you can also query any PMM internal database.
+If you want to create custom templates, you can test the MetricsQL expressions for your custom template in the **Explore** section of PMM. Here you can also query any PMM internal database.
 
 To test expressions for custom templates:
 
 1. On the left menu of PMM, choose **Explore > Metrics**.
 2. Enter your expression in the **Metrics** field and click **Run query**.
 
-For example, to validate that a MongoDB instance is down, shut down a member of a three-node replica set, then check that the expression **{service_type="mongodb"}** returns **0** in **Explore > Metrics**.
+For example, to validate that a MongoDB instance is down, shut down a member of a three-node replica set, then check that the expression `{service_type="mongodb"}` returns **0** in **Explore > Metrics**.
 
 ## Template compatibility
 ### With previous PMM versions
@@ -143,13 +143,13 @@ If you’re migrating from PMM 2.25 and earlier, make sure to manually recreate 
 If you have existing YAML alert templates that you want to leverage in PMM Integrated Alerting:
 
 1. Go to **Alerting > Integrated Alerting > Alert Rule Templates** tab and click **Add** at the top right-hand side of the table.
-2. Click **Add** and upload a local .yaml file from your computer.
+2. Click **Add** and upload a local `.yaml` file from your computer.
 
 ## Add an Alert Rule
 1. Go to **Alerting > Integrated Alerting** and select the **Alert Rules** tab.
 2. Click **Add** on the right-hand side of the table.
 3. In the **Add Alert** rule dialog, choose the template on which you want to base the new alert rule. This automatically populates the **Duration**, **Severity** fields with information from the template. You can change these values if you want to override the default specifications in the template.
-4. In the **Filters** field, specify if you want the alert rule to apply only to specific services or nodes. For example: *service_name=name123*.
+4. In the **Filters** field, specify if you want the alert rule to apply only to specific services or nodes. For example: `service_name=name123`.
 5. In the **Channels** field, select one or more notification channels that you have configured for sending out the notifications.
 
 ## Silence alerts

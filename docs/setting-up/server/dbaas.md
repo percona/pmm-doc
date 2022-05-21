@@ -89,7 +89,7 @@ alias kubectl='minikube kubectl --'
 
 ### Amazon AWS EKS
 
-1. Create your cluster via [eksctl](https://github.com/weaveworks/eksctl#installation) or the Amazon AWS interface. For example:
+1. Create your cluster via [`eksctl`](https://github.com/weaveworks/eksctl#installation) or the Amazon AWS interface. For example:
 
     ```sh
     eksctl create cluster --write-kubeconfig --name=your-cluster-name --zones=us-west-2a,us-west-2b --kubeconfig <PATH_TO_KUBECONFIG>
