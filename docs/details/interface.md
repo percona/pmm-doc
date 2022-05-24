@@ -90,7 +90,7 @@ This menu contains shortcuts to other dashboards. The list changes according to 
 | <i class="uil uil-file-alt"></i> Home        | Home dashboard.
 | <i class="uil uil-apps"></i> Query Analytics | Query Analytics.
 | <i class="uil uil-bolt"></i> Compare         | Nodes compare.
-| (Service Type)                               | Service type menu (see [Services menu](#services-menu)]).
+| (Service Type)                               | Service type menu (see [Services menu](#services-menu)).
 | <i class="uil uil-bars"></i> HA              | HA dashboards.
 | <i class="uil uil-bars"></i> Services        | Services menu.
 | <i class="uil uil-bars"></i> PMM             | PMM menu.
