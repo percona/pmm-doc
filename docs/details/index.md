@@ -15,7 +15,6 @@
 
 - [API](api.md): How to access the Swagger API.
 
-- [VictoriaMetrics](victoria-metrics.md): The monitoring solution and time-series database that replaced Prometheus in [PMM 2.12.0](../release-notes/2.12.0.md).
 
 - [ClickHouse](clickhouse.md):  A third-party column-oriented database that facilitates the Query Analytics functionality.
 
