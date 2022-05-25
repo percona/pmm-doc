@@ -267,12 +267,12 @@ How to run PMM Server with Docker based on our [Docker image].
 
 Use the following Docker container environment variables (with `-e var=value`) to set PMM Server parameters.
 
-| Variable                   | Description
-| -------------------------- | -----------------------------------------------------------------------
-| `DISABLE_UPDATES`          | Disables a periodic check for new PMM versions as well as ability to apply upgrades using the UI
-| `DISABLE_TELEMETRY`        | Disable built-in telemetry and disable STT if telemetry is disabled.
-| `METRICS_RESOLUTION`       | High metrics resolution in seconds.
-| `METRICS_RESOLUTION_HR`    | High metrics resolution (same as above).
+| Variable                         | Description
+| -------------------------------- | -----------------------------------------------------------------------
+| `DISABLE_UPDATES`                | Disables a periodic check for new PMM versions as well as ability to apply upgrades using the UI
+| `DISABLE_TELEMETRY`              | Disable built-in telemetry and disable STT if telemetry is disabled.
+| `METRICS_RESOLUTION`             | High metrics resolution in seconds.
+| `METRICS_RESOLUTION_HR`          | High metrics resolution (same as above).
 | `METRICS_RESOLUTION_MR`    | Medium metrics resolution in seconds.
 | `METRICS_RESOLUTION_LR`    | Low metrics resolution in seconds.
 | `DATA_RETENTION`           | How many days to keep time-series data in ClickHouse.
