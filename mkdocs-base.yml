@@ -223,6 +223,7 @@ nav:
                 - details/commands/pmm-agent.md
           - details/api.md
           - details/victoria-metrics.md
+          - details/clickhouse.md
           - details/glossary.md
 
             
