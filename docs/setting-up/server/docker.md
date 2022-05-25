@@ -285,10 +285,10 @@ Use the following Docker container environment variables (with `-e var=value`) t
 | `ENABLE_DBAAS`             | Enable DBaaS features.
 | `PMM_DEBUG`                | Enables a more verbose log level.
 | `PMM_TRACE`                | Enables a more verbose log level including trace-back information.
-| `PERCONA_TEST_PMM_CLICKHOUSE_ADDR`| Name of the host and port of the external ClickHouse database instance.
-| `PERCONA_TEST_PMM_CLICKHOUSE_DATABASE`| Database name of the external ClickHouse database instance.
-| `​​PERCONA_TEST_PMM_CLICKHOUSE_POOL_SIZE`| The number of simultaneous queries you can run for this connection.
-| `PERCONA_TEST_PMM_CLICKHOUSE_BLOCK_SIZE`| The number of rows to load from tables in one block for this connection.
+| `PERCONA_TEST_PMM_CLICKHOUSE_ADDR`        | Name of the host and port of the external ClickHouse database instance.
+| `PERCONA_TEST_PMM_CLICKHOUSE_DATABASE`    | Database name of the external ClickHouse database instance.
+| `​​PERCONA_TEST_PMM_CLICKHOUSE_POOL_SIZE`   | The number of simultaneous queries you can run for this connection.
+| `PERCONA_TEST_PMM_CLICKHOUSE_BLOCK_SIZE`  | The number of rows to load from tables in one block for this connection.
 
 
 ### Ignored variables
