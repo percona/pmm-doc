@@ -12,7 +12,7 @@ To use ClickHouse as an external database instance, use the following environmen
 `PERCONA_TEST_PMM_CLICKHOUSE_ADDR -> hostname:port`
 :   Name of the host and port of the external ClickHouse database instance. 
 
-**Optional environment variables**:
+**Optional environment variables**
 
 `PERCONA_TEST_PMM_CLICKHOUSE_DATABASE -> database name`
 :   Database name of the external ClickHouse database instance.
