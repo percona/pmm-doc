@@ -25,7 +25,7 @@ To use ClickHouse as an external database instance, use the following environmen
  
 **Example**
 
-To use ClickHouse as an external database instance start the PMM docker with the specified variables for external Clickhouse:
+To use ClickHouse as an external database instance, start the PMM docker with the specified variables for external Clickhouse:
 ​​
 
 ```sh
