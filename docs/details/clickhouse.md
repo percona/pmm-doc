@@ -1,7 +1,7 @@
 # ClickHouse
 
 
-You can use an external Clickhouse database instance outside the PMM Server container running on other hosts.
+You can use an external ClickHouse database instance outside the PMM Server container running on other hosts.
 
 ## Environment variables
 
