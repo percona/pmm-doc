@@ -23,7 +23,7 @@ To use ClickHouse as an external database instance, use the following environmen
 :   The maximum number of threads in the current connection thread pool. This value cannot be bigger than max_thread_pool_size.
  
 
-`PERCONA_TEST_PMM_CLICKHOUSE_BLOCK_SIZE` -> [max_block_size](https://clickhouse.com/docs/en/operations/settings/settings/#setting-max_block_size)
+`PERCONA_TEST_PMM_CLICKHOUSE_BLOCK_SIZE` -> [max block size](https://clickhouse.com/docs/en/operations/settings/settings/#setting-max_block_size)
 :   The number of rows to load from tables in one block for this connection.
  
 **Example**
