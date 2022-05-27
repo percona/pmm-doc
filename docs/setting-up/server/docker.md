@@ -285,7 +285,7 @@ Use the following Docker container environment variables (with `-e var=value`) t
 | `PMM_TRACE`                                                     | Enables a more verbose log level including trace-back information.
 
 
-## Preview Environment variables
+## Preview environment variables
 
 !!! caution alert alert-warning "Warning"
      The `PERCONA_TEST_*` environment variables are experimental and subject to change. It is recommended that you use these variables for testing purposes only and not on production.
