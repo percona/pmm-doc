@@ -301,11 +301,12 @@ Use the following Docker container environment variables (with `-e var=value`) t
 
 | Variable                                                        | Description
 | --------------------------------------------------------------- | ------------------------------------------------------
-| `PERCONA_TEST_SAAS_HOST`                                        | Default environment variables.
-| `PERCONA_TEST_DBAAS`                                            | Grafana's environment variables.
-| `PERCONA_TEST_PMM_CLICKHOUSE_ADDR`                              | `supervisord` environment variables.
-| `PERCONA_TEST_PMM_CLICKHOUSE_DATABASE`                          | Unknown variable but won't prevent the server starting.
-| `PERCONA_TEST_PMM_CLICKHOUSE_BLOCK_SIZE`                        | Deprecated. Use `ENABLE_DBAAS`.
+| `PERCONA_TEST_SAAS_HOST`                                        | SaaS server hostname.
+| `PERCONA_TEST_DBAAS`                                            | Enable testing DBaaS features. (Will be deprecated in future versions.) 
+| `PERCONA_TEST_PMM_CLICKHOUSE_ADDR`                              | Name of the host and port of the external ClickHouse database instance.
+| `PERCONA_TEST_PMM_CLICKHOUSE_DATABASE`                          | Database name of the external ClickHouse database instance.
+| `PERCONA_TEST_PMM_CLICKHOUSE_POOL_SIZE`                         | The maximum number of threads in the current connection thread pool. This value cannot be bigger than max_thread_pool_size.
+| `PERCONA_TEST_PMM_CLICKHOUSE_BLOCK_SIZE`                        | The number of rows to load from tables in one block for this connection.
 
 
 ### Ignored variables
