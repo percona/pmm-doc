@@ -17,8 +17,13 @@ To use ClickHouse as an external database instance, use the following environmen
 `PERCONA_TEST_PMM_CLICKHOUSE_DATABASE` -> database name
 :   Database name of the external ClickHouse database instance.
 
-`​​PERCONA_TEST_PMM_CLICKHOUSE_POOL_SIZE` -> [pool size](https://github.com/ClickHouse/ClickHouse/blob/master/programs/server/config.xml#L1130)
+`​​PERCONA_TEST_PMM_CLICKHOUSE_POOL_SIZE` -> [pool size](https://github.com/ClickHouse/ClickHouse/blob/ba26b3cf4c982f681f7f9782bba2662f97620835/programs/server/config.xml#L288)
 :   The number of simultaneous queries  you can run for this connection.
+
+!!! hint alert alert-success "Important"
+    The maximum number of threads in the current connection thread pool can't be bigger than: max_thread_pool_size
+
+
 
 `PERCONA_TEST_PMM_CLICKHOUSE_BLOCK_SIZE` -> [max_block_size](https://clickhouse.com/docs/en/operations/settings/settings/#setting-max_block_size)
 :   The number of rows to load from tables in one block for this connection.
