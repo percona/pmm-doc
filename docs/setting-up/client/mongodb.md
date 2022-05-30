@@ -63,8 +63,8 @@ db.getSiblingDB("admin").createUser({
 
 To fetch advanced metrics, use the following to provide additional privileges to an existing PMM user:
 
-``json
- {
+```json
+{
        resource : {
             db : "",
             collection : "system.profile"
@@ -79,8 +79,7 @@ To fetch advanced metrics, use the following to provide additional privileges to
 
 If the role `explainRole` already exists, then you can use the following command to provide additional privileges:
 
-
-``json
+```json
  {
        db.runCommand(    {      
            grantPrivilegesToRole: "explainRole",      
