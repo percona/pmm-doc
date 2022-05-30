@@ -59,6 +59,11 @@ db.getSiblingDB("admin").createUser({
    ]
 })
 ```
+### Permissions for advanced metrics
+
+
+
+
 
 ## Profiling
 
