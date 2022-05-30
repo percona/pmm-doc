@@ -64,7 +64,7 @@ db.getSiblingDB("admin").createUser({
 To fetch advanced metrics, use the following to provide additional privileges to an existing PMM user:
 
 ```json
-{
+   {
        resource : {
             db : "",
             collection : "system.profile"
