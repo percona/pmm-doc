@@ -255,9 +255,9 @@ pmm-admin add postgresql \
 - `<user name>`: The PostgreSQL PMM user
 - `<password>`: The PostgreSQL user credentials.
 
-The service name and service ID will be automatically chosen.
+The service name will be automatically chosen.
 
-Add instance with specified node and service name.
+Add instance with specified service name.
 
 ```sh
 pmm-admin add postgresql \
@@ -265,6 +265,7 @@ pmm-admin add postgresql \
 --password=password \
 --server-url=https://admin:admin@X.X.X.X:443 \
 --server-insecure-tls \
+--service-name=SERVICE-NAME
 ```
 
 Add instance to connect with a UNIX socket.
@@ -283,7 +284,7 @@ pmm-admin add postgresql --tls \
 --host=HOST \
 --port=PORT \
 --username=USER \
---service-name=SERVICE
+--service-name=SERVICE-NAME
 ```
 
 where:
