@@ -361,7 +361,7 @@ track_io_timing = on             # Capture read/write stats
 <h3 id="on-the-command-line">On the command line<a class="headerlink" href="#on-the-command-line" title="Permanent link">&para;</a></h3>
 <p>Add the database server as a service using one of these example commands. If successful, PMM Client will print <code>PostgreSQL Service added</code> with the service&rsquo;s ID and name. Use the <code>--environment</code> and <code>-custom-labels</code> options to set tags for the service to help identify them.</p>
 <h3 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h3>
-<p>Add instance with default node (<code>&lt;node&gt;-postgresql</code>) and service name.</p>
+<p>Add instance with default node (<code>&lt;node&gt;-postgresql</code>).</p>
 <div class="highlight"><pre><span></span><code>pmm-admin add postgresql <span class="se">\</span>
 --username<span class="o">=</span>pmm <span class="se">\</span>
 --password<span class="o">=</span>password <span class="se">\</span>
@@ -372,13 +372,14 @@ track_io_timing = on             # Capture read/write stats
 <li><code>&lt;user name&gt;</code>: The PostgreSQL PMM user</li>
 <li><code>&lt;password&gt;</code>: The PostgreSQL user credentials.</li>
 </ul>
-<p>The service name and service ID will be automatically chosen.</p>
-<p>Add instance with specified node and service name.</p>
+<p>The service name will be automatically chosen.</p>
+<p>Add instance with specified service name.</p>
 <div class="highlight"><pre><span></span><code>pmm-admin add postgresql <span class="se">\</span>
 --username<span class="o">=</span>pmm <span class="se">\</span>
 --password<span class="o">=</span>password <span class="se">\</span>
 --server-url<span class="o">=</span>https://admin:admin@X.X.X.X:443 <span class="se">\</span>
 --server-insecure-tls <span class="se">\</span>
+--service-name<span class="o">=</span>SERVICE-NAME
 </code></pre></div>
 <p>Add instance to connect with a UNIX socket.</p>
 <div class="highlight"><pre><span></span><code>pmm-admin add postgresql --socket<span class="o">=</span>/var/run/postgresql
@@ -391,7 +392,7 @@ track_io_timing = on             # Capture read/write stats
 --host<span class="o">=</span>HOST <span class="se">\</span>
 --port<span class="o">=</span>PORT <span class="se">\</span>
 --username<span class="o">=</span>USER <span class="se">\</span>
---service-name<span class="o">=</span>SERVICE
+--service-name<span class="o">=</span>SERVICE-NAME
 </code></pre></div>
 <p>where:</p>
 <ul>
@@ -472,7 +473,7 @@ The file is a yaml where each query can have these fields:</p>
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-12-22
+            <i class="uil uil-refresh"></i> Page updated 2022-06-03
         </li>
         
     </ul>
