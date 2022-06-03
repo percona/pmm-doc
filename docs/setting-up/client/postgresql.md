@@ -242,7 +242,7 @@ Add the database server as a service using one of these example commands. If suc
 
 ### Examples
 
-Add instance with default node (`<node>-postgresql`) and service name.
+Add instance with default node (`<node>-postgresql`).
 
 ```sh
 pmm-admin add postgresql \
