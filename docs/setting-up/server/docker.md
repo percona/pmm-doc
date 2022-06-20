@@ -28,16 +28,15 @@ You can run Docker using the following ways:
 2. Host folder
 3. Volume
 
-Following is first step and is acommon for all the three methods:
+Following is first step and is common for all the three methods:
 
 Pull the image.
 
-    ```sh
+    ```
     docker pull percona/pmm-server:2
     ```
 
 ### Run Docker with the container
-
 
 1. Create a persistent data container.
 
