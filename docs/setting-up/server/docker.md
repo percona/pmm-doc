@@ -28,17 +28,22 @@ You can run Docker using the following ways:
 2. Host folder
 3. Volume
 
-Following is first step and is common for all the three methods:
 
-Pull the image.
+1. Pull the image.
 
-    ```
+    ```sh
     docker pull percona/pmm-server:2
     ```
 
 ### Run Docker with the container
 
-1. Create a persistent data container.
+1. Pull the image.
+
+    ```sh
+    docker pull percona/pmm-server:2
+    ```
+
+2. Create a persistent data container.
 
     ```sh
     docker create --volume /srv \
@@ -56,7 +61,7 @@ Pull the image.
         docker inspect pmm-server | grep Destination
         ```
 
-2. Run the image.
+3. Run the image.
 
     ```sh
     docker run --detach --restart always \
@@ -66,7 +71,7 @@ Pull the image.
     percona/pmm-server:2
     ```
 
-3. Change the password for the default `admin` user.
+4. Change the password for the default `admin` user.
 
     * For PMM versions 2.27.0 and later:
 
@@ -81,23 +86,29 @@ Pull the image.
         ```
 
 
-4. Visit `https://localhost:443` to see the PMM user interface in a web browser. (If you are accessing the docker host remotely, replace `localhost` with the IP or server name of the host.)
+5. Visit `https://localhost:443` to see the PMM user interface in a web browser. (If you are accessing the docker host remotely, replace `localhost` with the IP or server name of the host.)
 
 ### Run Docker with the host folder
 
+1. Pull the image.
 
-1. Backup the data.
+    ```sh
+    docker pull percona/pmm-server:2
+    ```
+
+
+2. Backup the data.
 
     ```sh
     docker cp <containerId>:/file/path/within/container /host/path/target
     ```
 
-2. Run the image.
+3. Run the image.
 
     ```sh
     docker run -v $HOME/srv:/srv -d --restart always --publish 80:80 --publish 443:443 --name pmm-server perconalab/pmm-server-fb:PR-2534-517015b
     ```
-3. Change the password for the default `admin` user.
+4. Change the password for the default `admin` user.
 
     * For PMM versions 2.27.0 and later:
 
@@ -112,17 +123,23 @@ Pull the image.
         ```
 
 
-4. Visit `https://localhost:443` to see the PMM user interface in a web browser. (If you are accessing the docker host remotely, replace `localhost` with the IP or server name of the host.)
+5. Visit `https://localhost:443` to see the PMM user interface in a web browser. (If you are accessing the docker host remotely, replace `localhost` with the IP or server name of the host.)
 
 ### Run Docker with volume
 
-1. Create a volume:
+1. Pull the image.
+
+    ```sh
+    docker pull percona/pmm-server:2
+    ```
+
+2. Create a volume:
 
     ```sh
     docker volume create pmm-data
     ```
 
-2. Run the image:
+3. Run the image:
 
     ```sh
     docker run --detach --restart always \
@@ -131,6 +148,23 @@ Pull the image.
     --name pmm-server \
     percona/pmm-server:2
     ```
+4. Change the password for the default `admin` user.
+
+    * For PMM versions 2.27.0 and later:
+
+    ```sh
+    docker exec -t pmm-server change-admin-password <new_password>
+    ```
+
+    * For PMM versions prior to 2.27.0:
+
+        ```sh
+        docker exec -t pmm-server bash -c 'grafana-cli --homepath /usr/share/grafana --configOverrides cfg:default.paths.data=/srv/grafana admin reset-admin-password newpass'
+        ```
+
+
+5. Visit `https://localhost:443` to see the PMM user interface in a web browser. (If you are accessing the docker host remotely, replace `localhost` with the IP or server name of the host.)
+
 
 ## Backup
 
