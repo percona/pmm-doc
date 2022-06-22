@@ -29,12 +29,6 @@ You can run Docker using the following ways:
 3. Volume
 
 
-1. Pull the image.
-
-    ```sh
-    docker pull percona/pmm-server:2
-    ```
-
 ### Run Docker with the container
 
 1. Pull the image.
