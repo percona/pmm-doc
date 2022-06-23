@@ -130,7 +130,7 @@ You can store data from your PMM in:
     docker pull percona/pmm-server:2
     ```
 
-3. Run the image.
+2. Run the image.
 
     ```sh
     export DATA_DIR=$HOME/srv
@@ -139,7 +139,7 @@ You can store data from your PMM in:
 
 `DATA_DIR` is a directory where you want to store the state for PMM.
 
-4. Change the password for the default `admin` user.
+3. Change the password for the default `admin` user.
 
     * For PMM versions 2.27.0 and later:
 
@@ -154,15 +154,15 @@ You can store data from your PMM in:
         ```
 
 
-5. Visit `https://localhost:443` to see the PMM user interface in a web browser. (If you are accessing the docker host remotely, replace `localhost` with the IP or server name of the host.)
+4. Visit `https://localhost:443` to see the PMM user interface in a web browser. (If you are accessing the docker host remotely, replace `localhost` with the IP or server name of the host.)
 
 
 ### Migrate from data container to host directory/volume
 
-1. To migrate your PMM from data container to host directory or volume run the following command:
+ To migrate your PMM from data container to host directory or volume run the following command:
 
     ```sh
-    docker cp <containerId>:/srv /host/directory
+      docker cp <containerId>:/srv /host/directory
     ```
 
 
