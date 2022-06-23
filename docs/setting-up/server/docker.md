@@ -122,7 +122,7 @@ You can store data from your PMM in:
 
 5. Visit `https://localhost:443` to see the PMM user interface in a web browser. (If you are accessing the docker host remotely, replace `localhost` with the IP or server name of the host.)
 
-### Run Docker with the host folder
+### Run Docker with the host directory
 
 1. Pull the image.
 
