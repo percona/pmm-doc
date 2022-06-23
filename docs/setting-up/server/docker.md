@@ -22,11 +22,11 @@ How to run PMM Server with Docker based on our [Docker image].
 
 ---
 
-You can run Docker using the following ways:
+You can store data from your PMM in:
 
 1. Volume (Preffered method)
-2. Container
-3. Host folder
+2. Data container
+3. Host directory
 
 
 ### Run Docker with volume
@@ -130,18 +130,15 @@ You can run Docker using the following ways:
     docker pull percona/pmm-server:2
     ```
 
-
-2. Backup the data.
-
-    ```sh
-    docker cp <containerId>:/file/path/within/container /host/path/target
-    ```
-
 3. Run the image.
 
     ```sh
-    docker run -v $HOME/srv:/srv -d --restart always --publish 80:80 --publish 443:443 --name pmm-server perconalab/pmm-server-fb:PR-2534-517015b
+    export DATA_DIR=$HOME/srv
+    docker run -v $DATA_DIR/srv:/srv -d --restart always --publish 80:80 --publish 443:443 --name pmm-server perconalab/pmm-server-fb:PR-2534-517015b
     ```
+
+`DATA_DIR` is a directory where you want to store the state for PMM.
+
 4. Change the password for the default `admin` user.
 
     * For PMM versions 2.27.0 and later:
