@@ -66,8 +66,8 @@ You can store data from your PMM in:
         docker exec -t pmm-server bash -c 'grafana-cli --homepath /usr/share/grafana --configOverrides cfg:default.paths.data=/srv/grafana admin reset-admin-password newpass'
         ```
 
-
 5. Visit `https://localhost:443` to see the PMM user interface in a web browser. (If you are accessing the docker host remotely, replace `localhost` with the IP or server name of the host.)
+       
 
 ### Run Docker with data container
 
@@ -159,11 +159,10 @@ You can store data from your PMM in:
 
 ### Migrate from data container to host directory/volume
 
- To migrate your PMM from data container to host directory or volume run the following command:
-
-    ```sh
-      docker cp <containerId>:/srv /host/directory
-    ```
+To migrate your PMM from data container to host directory or volume run the following command:
+```sh
+docker cp <containerId>:/srv /host/directory
+```
 
 
 
