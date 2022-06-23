@@ -119,7 +119,6 @@ You can store data from your PMM in:
         docker exec -t pmm-server bash -c 'grafana-cli --homepath /usr/share/grafana --configOverrides cfg:default.paths.data=/srv/grafana admin reset-admin-password newpass'
         ```
 
-
 5. Visit `https://localhost:443` to see the PMM user interface in a web browser. (If you are accessing the docker host remotely, replace `localhost` with the IP or server name of the host.)
 
 ### Run Docker with the host directory
@@ -136,7 +135,6 @@ You can store data from your PMM in:
     export DATA_DIR=$HOME/srv
     docker run -v $DATA_DIR/srv:/srv -d --restart always --publish 80:80 --publish 443:443 --name pmm-server perconalab/pmm-server-fb:PR-2534-517015b
     ```
-
 `DATA_DIR` is a directory where you want to store the state for PMM.
 
 3. Change the password for the default `admin` user.
@@ -152,7 +150,6 @@ You can store data from your PMM in:
         ```sh
         docker exec -t pmm-server bash -c 'grafana-cli --homepath /usr/share/grafana --configOverrides cfg:default.paths.data=/srv/grafana admin reset-admin-password newpass'
         ```
-
 
 4. Visit `https://localhost:443` to see the PMM user interface in a web browser. (If you are accessing the docker host remotely, replace `localhost` with the IP or server name of the host.)
 
