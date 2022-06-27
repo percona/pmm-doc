@@ -71,13 +71,9 @@ You can store data from your PMM in:
 
 ### Run Docker with data container
 
-1. Pull the image.
 
-    ```sh
-    docker pull percona/pmm-server:2
-    ```
 
-2. Create a persistent data container.
+1. Create a persistent data container.
 
     ```sh
     docker create --volume /srv \
@@ -95,7 +91,7 @@ You can store data from your PMM in:
         docker inspect pmm-server | grep Destination
         ```
 
-3. Run the image.
+2. Run the image.
 
     ```sh
     docker run --detach --restart always \
@@ -105,7 +101,7 @@ You can store data from your PMM in:
     percona/pmm-server:2
     ```
 
-4. Change the password for the default `admin` user.
+3. Change the password for the default `admin` user.
 
     * For PMM versions 2.27.0 and later:
 
@@ -119,7 +115,7 @@ You can store data from your PMM in:
         docker exec -t pmm-server bash -c 'grafana-cli --homepath /usr/share/grafana --configOverrides cfg:default.paths.data=/srv/grafana admin reset-admin-password newpass'
         ```
         
-5. Visit `https://localhost:443` to see the PMM user interface in a web browser. (If you are accessing the docker host remotely, replace `localhost` with the IP or server name of the host.)
+4. Visit `https://localhost:443` to see the PMM user interface in a web browser. (If you are accessing the docker host remotely, replace `localhost` with the IP or server name of the host.)
 
 ### Run Docker with the host directory
 
