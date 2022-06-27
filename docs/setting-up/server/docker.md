@@ -158,7 +158,7 @@ You can store data from your PMM in:
 
 To migrate your PMM from data container to host directory or volume run the following command:
 ```sh
-docker cp <containerId>:/srv /host/directory
+docker cp <containerId>:/srv /target/host/directory
 ```
 
 
