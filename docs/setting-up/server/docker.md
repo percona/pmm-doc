@@ -24,7 +24,7 @@ How to run PMM Server with Docker based on our [Docker image].
 
 You can store data from your PMM in:
 
-1. Volume (Preffered method)
+1. Docker volume (Preffered method)
 2. Data container
 3. Host directory
 
