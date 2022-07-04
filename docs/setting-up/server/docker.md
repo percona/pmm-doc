@@ -121,9 +121,9 @@ You can store data from your PMM in:
 
 1. Pull the image.
 
-    ```sh
-    docker pull percona/pmm-server:2
-    ```
+```sh
+docker pull percona/pmm-server:2
+```
 
 2. Run the image.
 
