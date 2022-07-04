@@ -133,7 +133,6 @@ docker run -v $DATA_DIR/srv:/srv -d --restart always --publish 80:80 --publish 4
 ```
 `DATA_DIR` is a directory where you want to store the state for PMM.
 
-        ```
 
 3. Visit `https://localhost:443` to see the PMM user interface in a web browser. (If you are accessing the docker host remotely, replace `localhost` with the IP or server name of the host.)
 
