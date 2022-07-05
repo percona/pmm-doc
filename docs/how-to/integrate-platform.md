@@ -55,7 +55,12 @@ After connecting to the Percona Platform, PMM has access to additional alert tem
 
 To disconnect a PMM server, go to > <i class="uil uil-cog"></i> **Configuration > Settings > Percona Platform** and click **Disconnect**. 
 
-To confirm that the server disconnected successfully, go to Percona Platform >  **Dashboard** tab > **View instances**. This displays the **PMM instances** page where you can check the list of servers currently connected to your Platform organization. 
+#### Disconnecting without a Percona Account
+If you are a PMM Admin and you want to terminate problematic connections during troubleshooting, you can disconnect servers from Percona Platform even if you are not logged in with a Percona Account. 
+
+However, any servers that you disconnect while not logged in with a Percona Account will not  automatically be removed from Percona Platform as well. To remove lingering servers from Percona Platform and ensure that your list of connected instances stays up to date, go to [PMM instances](https://portal.percona.com/login) and manually remove any servers that already have been disconnected from PMM.
+
+To remove disconnected servers from Percona Platform automatically, make sure that you are logged in with your Percona Account when disconnecting servers from PMM. 
 
 ## Sign into PMM with your Percona Account
 Once you've successfully connected your PMM instance to the Percona Platform, you can also sign into PMM using your Percona Account:
