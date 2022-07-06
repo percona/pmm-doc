@@ -14,6 +14,8 @@
 
 DATABASE:= [[MongoDB](#mongodb) | [MySQL](#mysql) | [PostgreSQL](#postgresql) | [ProxySQL](#proxysql)]
 
+`pmm-admin add --pmm-agent-listen-port=LISTEN_PORT DATABASE [FLAGS] [NAME] [ADDRESS]`
+
 `pmm-admin add external [FLAGS] [NAME] [ADDRESS]` (CAUTION: Technical preview feature)
 
 `pmm-admin add haproxy [FLAGS] [NAME]`
@@ -175,6 +177,18 @@ PMM communicates with the PMM Server via a PMM agent process.
     `--custom-labels=labels`
     : Custom user-assigned labels.
 
+#### `pmm-admin add --pmm-agent-listen-port=LISTEN_PORT`
+
+`pmm-admin add --pmm-agent-listen-port=LISTEN_PORT DATABASE [FLAGS] [NAME] [ADDRESS]`
+
+: Configure the PMM agent with a listen port.
+
+    ` --pmm-agent-listen-port=LISTEN_PORT`
+    : The PMM agent listen port.
+
+DATABASE:= [[MongoDB](#mongodb) | [MySQL](#mysql) | [PostgreSQL](#postgresql) | [ProxySQL](#proxysql)]
+     
+
 #### `pmm-admin remove`
 
 `pmm-admin remove [FLAGS] service-type [service-name]`
@@ -325,15 +339,15 @@ When you remove a service, collected data remains on PMM Server for the specifie
 
 ##### Advanced Options
 
-PMM starts the MongoDB exporter by default only with `diagnosticdata` and `replicasetstatus` collectors enabled.
+:  PMM starts the MongoDB exporter by default only with `diagnosticdata` and `replicasetstatus` collectors enabled.
 
     FLAGS:
 
     `--enable-all-collectors`
-    :  Enable all collectors
+    :  Enable all collectors.
 
     `--disable-collectors`
-    :  Comma-separated list of collector names to exclude from exporter
+    :  Comma-separated list of collector names to exclude from exporter.
 
     `--max-collections-limit=-1`
     :  Disable collstats, dbstats, topmetrics and indexstats if there are more than <n> collections. 0: No limit. Default is -1, PMM automatically sets this value.
@@ -342,7 +356,7 @@ PMM starts the MongoDB exporter by default only with `diagnosticdata` and `repli
             A very high limit of `max-collections-limit` could impact the CPU and Memory usage. Check `--stats-collections` to limit the scope of collections and DB's metrics to be fetched.
 
     `--stats-collections=db1,db2.col1`
-    :  Collections for collstats & indexstats
+    :  Collections for collstats & indexstats.
 
 
 ###### Enable all collectors

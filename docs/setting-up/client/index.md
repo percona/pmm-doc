@@ -71,7 +71,7 @@ The [PMM Client Docker image] is a convenient way to run PMM Client as a preconf
     -e PMM_AGENT_SERVER_PASSWORD=admin \
     -e PMM_AGENT_SERVER_INSECURE_TLS=1 \
     -e PMM_AGENT_SETUP=1 \
-    -e PMM_AGENT_CONFIG_FILE=pmm-agent.yml \
+    -e PMM_AGENT_CONFIG_FILE=config/pmm-agent.yaml \
     --volumes-from pmm-client-data \
     percona/pmm-client:2
     ```
@@ -246,11 +246,12 @@ Here are the download page links for each supported platform.
 
 - [Debian 9 (Stretch)]
 - [Debian 10 (Buster)]
+- [Debian 11 (Bullseye)]
 - [Red Hat/CentOS/Oracle 7]
 - [Red Hat/CentOS/Oracle 8]
-- [Ubuntu 16.04 (Xenial Xerus)]
 - [Ubuntu 18.04 (Bionic Beaver)]
 - [Ubuntu 20.04 (Focal Fossa)]
+- [Ubuntu 22.04 (Jammy Jellyfish)]
 
 #### Debian-based
 
@@ -481,6 +482,7 @@ pmm-admin remove <service-type> <service-name>
     - [PMM Client architecture](../../details/architecture.md#pmm-client)
     - Thanks to [paskal] for original Docker compose files
 
+[Debian 11 (Bullseye)]: https://www.percona.com/downloads/pmm2/{{release}}/binary/debian/bullseye/
 [Debian 10 (Buster)]: https://www.percona.com/downloads/pmm2/{{release}}/binary/debian/buster/
 [Debian 9 (Stretch)]: https://www.percona.com/downloads/pmm2/{{release}}/binary/debian/stretch/
 [Docker compose]: https://docs.docker.com/compose/
@@ -492,6 +494,6 @@ pmm-admin remove <service-type> <service-name>
 [PMM Client Docker image]: https://hub.docker.com/r/percona/pmm-client/tags/
 [Red Hat/CentOS/Oracle 7]: https://www.percona.com/downloads/pmm2/{{release}}/binary/redhat/7/
 [Red Hat/CentOS/Oracle 8]: https://www.percona.com/downloads/pmm2/{{release}}/binary/redhat/8/
-[Ubuntu 16.04 (Xenial Xerus)]: https://www.percona.com/downloads/pmm2/{{release}}/binary/debian/xenial/
 [Ubuntu 18.04 (Bionic Beaver)]: https://www.percona.com/downloads/pmm2/{{release}}/binary/debian/bionic/
 [Ubuntu 20.04 (Focal Fossa)]: https://www.percona.com/downloads/pmm2/{{release}}/binary/debian/focal/
+[Ubuntu 22.04 (Jammy Jellyfish)]: https://www.percona.com/downloads/pmm2/{{release}}/binary/debian/jammy/
