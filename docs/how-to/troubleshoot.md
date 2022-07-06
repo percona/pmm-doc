@@ -37,11 +37,11 @@ You can get PMM Server logs with either of these methods:
 
 In a browser, visit `https://<address-of-your-pmm-server>/logs.zip`.
 
-### From Settings page
+### From Help menu
 
-1. Select <i class="uil uil-cog"></i> *Configuration* → <i class="uil uil-setting"></i> *Settings*.
+1. Select <i class="uil uil-question-circle"></i> *Help* → <i class="uil uil-download-alt"></i> *PMM Logs*.
 
-2. Click *Download server diagnostics*. (See [Diagnostics in PMM Settings](configure.md#diagnostics).)
+2. Click *PMM Logs* to retrieve PMM diagnostics data which can be examined and shared with our support team should you need help.
 
 ## Connection difficulties
 
@@ -62,6 +62,12 @@ will give:
 ```txt
 "s3cR%23tpa%24%24worD"
 ```
+
+### Password change
+
+When adding clients to the PMM server, you use the `admin` user. However, if you change the password for the admin user from the PMM UI, then the clients will not be able to access PMM due to authentication issues. Also, due to multiple unsuccessful login attempts, Grafana will lock out the admin user.
+
+In such a scenario, use [API key](../../details/api.md#api-keys-and-authentication) for authentication. You can use API keys as a replacement for basic authentication.
 
 ## Integrated Alerting
 
@@ -144,3 +150,6 @@ Here is a guide to creating templates for Alertmanager: <https://prometheus.io/d
 To reduce space usage, long query examples and fingerprints can be truncated to 1024 symbols. In this case, the query explains section will not work.
 
 [ENCODE_URI]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent
+
+
+
