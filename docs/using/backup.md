@@ -67,7 +67,7 @@
 
 - [PMM Client](../setting-up/client/index.md) is installed and running on the node.
 
-- For MySQL 8.0+ the user that pmm-agent is using to connect to MySQL needs to have the BACKUP_ADMIN privilege for Xtrabackup to work.
+- For MySQL 8.0+, the user that pmm-agent uses to connect to MySQL must have the BACKUP_ADMIN privilege for Xtrabackup to work.
 
 - There is only one MySQL instance running on the node.
 
