@@ -100,6 +100,7 @@ nav:
                 - setting-up/server/index.md
                 - setting-up/server/network.md
                 - setting-up/server/docker.md
+                - setting-up/server/podman.md
                 - setting-up/server/virtual-appliance.md
                 - setting-up/server/aws.md
                 - setting-up/server/easy-install.md
