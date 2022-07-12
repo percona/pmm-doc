@@ -56,7 +56,7 @@ The results are sent to PMM Server where you can review any failed checks on the
 - <b style="color:#5794f2;">Warning</b>
 - <b style="color:#3274d9;">Notice</b> which also includes checks tagges as Info and Debug 
   
-![!Failed Advisors Checks panel](../_images/PMM_Home_Dashboard_Panels_Failed_Checks.jpg)
+![!Failed Advisors Checks panel](../_images/PMM_Home_Dashboard.png)
 
 To see more details about the available checks and any checks that failed, click the *{{icon.checks}} Advisors* icon on the main menu. 
 
