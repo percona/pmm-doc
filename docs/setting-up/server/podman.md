@@ -205,12 +205,14 @@ timeout 60 podman wait --condition=running pmm-server
     sed -i "s/PMM_TAG=.*/PMM_TAG=2.29.0/g" ~/.config/pmm-server/env
     ```
 
-<div hidden>
-```sh
-sed -i "s/PMM_TAG=.*/PMM_TAG=2.29.0-rc/g" ~/.config/pmm-server/env
-sed -i "s|PMM_IMAGE=.*|PMM_IMAGE=docker.io/perconalab/pmm-server|g" ~/.config/pmm-server/env
-```
-</div>
+    <div hidden>
+    Test code: 
+    
+    ```sh
+    sed -i "s/PMM_TAG=.*/PMM_TAG=2.29.0-rc/g" ~/.config/pmm-server/env
+    sed -i "s|PMM_IMAGE=.*|PMM_IMAGE=docker.io/perconalab/pmm-server|g" ~/.config/pmm-server/env
+    ```
+    </div>
 
 3. Pre-pull image for faster restart.
 
@@ -311,7 +313,7 @@ sleep 10
 2. Remove volume.
 
     ```sh
-    podman volume rm pmm-server
+    podman volume rm --force pmm-server
     ```
 
 3. Remove the images.
