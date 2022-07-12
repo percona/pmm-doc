@@ -52,10 +52,10 @@ To manually run all checks or individual ones:
 ## Checks results
 The results are sent to PMM Server where you can review any failed checks on the **Home Dashboard > Failed Advisors Checks** panel. The summary count of failed checks is classified as:
 
-- <b style="color:#e02f44;">Critical</b>, which also includes checks tagged as Alert and Emergency 
+- <b style="color:#e02f44;">Critical</b>, which also includes checks tagged as **Alert** and **Emergency** 
 - <b style="color:#e36526;">Error</b> 
 - <b style="color:#5794f2;">Warning</b>
-- <b style="color:#3274d9;">Notice</b> which also includes checks tagges as Info and Debug 
+- <b style="color:#3274d9;">Notice</b> which also includes checks tagges as **Info** and **Debug** 
   
 ![!Failed Advisors Checks panel](../_images/HomeDashboard.png)
 
