@@ -69,6 +69,7 @@ Percona recommends to run PMM as non-privileged user and run it as part of Syste
 
     [Install]
     Alias=%N
+    WantedBy=default.target
 
     EOF
     ```
@@ -205,16 +206,14 @@ timeout 60 podman wait --condition=running pmm-server
     sed -i "s/PMM_TAG=.*/PMM_TAG=2.29.0/g" ~/.config/pmm-server/env
     ```
 
+3. Pre-pull image for faster restart.
+
     <div hidden>
-    Test code: 
-    
     ```sh
     sed -i "s/PMM_TAG=.*/PMM_TAG=2.29.0-rc/g" ~/.config/pmm-server/env
     sed -i "s|PMM_IMAGE=.*|PMM_IMAGE=docker.io/perconalab/pmm-server|g" ~/.config/pmm-server/env
     ```
     </div>
-
-3. Pre-pull image for faster restart.
 
     ```sh
     source ~/.config/pmm-server/env
