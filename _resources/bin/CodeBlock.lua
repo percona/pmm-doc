@@ -1,3 +1,4 @@
+traverse = 'topdown'
 function CodeBlock(block)
 	if block.classes[1] == "sh" then
 		print("#-----CodeBlock-----")

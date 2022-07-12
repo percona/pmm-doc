@@ -134,7 +134,8 @@ Percona recommends to run PMM as non-privileged user and run it as part of Syste
 
 <div hidden>
 ```sh
-sleep 30
+#first pull can take time
+sleep 80
 timeout 60 podman wait --condition=running pmm-server
 ```
 </div>
@@ -186,10 +187,10 @@ timeout 60 podman wait --condition=running pmm-server
 !!! hint alert alert-success "Tip"
     To see what release you are running, use the *PMM Upgrade* panel on the *Home Dashboard*, or run:
 
-```sh
-podman exec -it pmm-server \
-curl -ku admin:admin https://localhost/v1/version
-```
+    ```sh
+    podman exec -it pmm-server \
+    curl -ku admin:admin https://localhost/v1/version
+    ```
 
 (If you are accessing the podman host remotely, replace `localhost` with the IP or server name of the host.)
 
@@ -276,7 +277,6 @@ timeout 60 podman wait --condition=running pmm-server
     ```
 
 <div hidden>
-```sh
 sleep 30
 timeout 60 podman wait --condition=running pmm-server
 ```
@@ -299,6 +299,14 @@ timeout 60 podman wait --condition=running pmm-server
     ```sh
     systemctl --user stop pmm-server
     ```
+
+<div hidden>
+```sh
+#wait for container to stop
+podman wait --condition=stopped pmm-server || true
+sleep 10
+```
+</div>
 
 2. Remove volume.
 

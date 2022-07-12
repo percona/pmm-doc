@@ -31,3 +31,14 @@ jobs:
 
       - name: Run podman tests
         run: ./docs_test_podman.sh
+
+      - name: Get debug
+        if: ${{ failure() }}
+        run: | 
+          cat ./docs_test_podman.sh
+          pandoc --version
+          podman version
+          podman ps --all || true
+          systemctl status --user pmm-server || true
+          podman inspect pmm-server || true
+          journalctl -r || true
