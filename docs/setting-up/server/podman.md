@@ -277,11 +277,11 @@ timeout 60 podman wait --condition=running pmm-server
     systemctl --user start pmm-server
     ```
 
-<div hidden>
-sleep 30
-timeout 60 podman wait --condition=running pmm-server
-```
-</div>
+    <div hidden>
+    sleep 30
+    timeout 60 podman wait --condition=running pmm-server
+    ```
+    </div>
 
 ## Remove
 
@@ -301,15 +301,15 @@ timeout 60 podman wait --condition=running pmm-server
     systemctl --user stop pmm-server
     ```
 
-<div hidden>
-```sh
-#wait for container to stop
-podman wait --condition=stopped pmm-server || true
-sleep 10
-```
-</div>
-
 2. Remove volume.
+
+    <div hidden>
+    ```sh
+    #wait for container to stop
+    podman wait --condition=stopped pmm-server || true
+    sleep 10
+    ```
+    </div>
 
     ```sh
     podman volume rm --force pmm-server
