@@ -134,7 +134,7 @@ Percona recommends to run PMM as non-privileged user and run it as part of Syste
 
 <div hidden>
 ```sh
-sleep 10
+sleep 30
 timeout 60 podman wait --condition=running pmm-server
 ```
 </div>
@@ -226,7 +226,7 @@ sed -i "s|PMM_IMAGE=.*|PMM_IMAGE=docker.io/perconalab/pmm-server|g" ~/.config/pm
 
 <div hidden>
 ```sh
-sleep 10
+sleep 30
 timeout 60 podman wait --condition=running pmm-server
 ```
 </div>
@@ -277,7 +277,7 @@ timeout 60 podman wait --condition=running pmm-server
 
 <div hidden>
 ```sh
-sleep 10
+sleep 30
 timeout 60 podman wait --condition=running pmm-server
 ```
 </div>
