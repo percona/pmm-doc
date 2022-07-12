@@ -29,6 +29,7 @@ Percona recommends to run PMM as non-privileged user and run it as part of Syste
 
 !!! summary alert alert-info "Summary"
     - Install.
+    - Configuration.
     - Start.
     - Open the PMM UI in a browser.
 
@@ -61,14 +62,13 @@ Percona recommends to run PMM as non-privileged user and run it as part of Syste
     # optional env file that could override previous env settings for this unit
     EnvironmentFile=-%h/.config/pmm-server/env
 
-    ExecStartPre=/usr/bin/bash -c '/usr/bin/podman stop -t 10 %N; /usr/bin/podman rm -f %N || true'
-    ExecStart=/usr/bin/podman run --rm --name %N -p ${PMM_PUBLIC_PORT}:443/tcp --ulimit=host --volume=${PMM_VOLUME_NAME}:/srv --env-file=${PMM_ENV_FILE} --health-cmd=none --health-interval=disable ${PMM_IMAGE}:${PMM_TAG}
+    ExecStart=/usr/bin/podman run --rm --replace=true --name=%N -p ${PMM_PUBLIC_PORT}:443/tcp --ulimit=host --volume=${PMM_VOLUME_NAME}:/srv --env-file=${PMM_ENV_FILE} --health-cmd=none --health-interval=disable ${PMM_IMAGE}:${PMM_TAG}
     ExecStop=/usr/bin/podman stop -t 10 %N
-    ExecStopPost=/usr/bin/podman stop -t 10 `%N`
     Restart=on-failure
     RestartSec=20
 
     [Install]
+    Alias=%N
 
     EOF
     ```
@@ -97,55 +97,51 @@ Percona recommends to run PMM as non-privileged user and run it as part of Syste
     systemctl --user enable pmm-server
     ```
 
-2. Start.
+2. Configuration
+
+    SystemD service passes environment parameters to PMM from `pmm-server.env` file that is located in `~/.config/pmm-server/pmm-server.env`. For more information about container environment variables please check [Docker Environment].
+
+    SystemD service uses some environment variables that could be customized if needed:
+
+    ```text
+    Environment=PMM_PUBLIC_PORT=8443
+    Environment=PMM_VOLUME_NAME=%N
+    Environment=PMM_TAG=2.29.0
+    Environment=PMM_IMAGE=docker.io/percona/pmm-server
+    ```
+
+    Those environment variables could be overridden by defining them in file  `~/.config/pmm-server/env`, for example to override path to custom registry `~/.config/pmm-server/env`:
+
+    ```sh
+    mkdir -p ~/.config/pmm-server/
+    cat << "EOF" > ~/.config/pmm-server/env
+    PMM_TAG=2.28.0
+    PMM_IMAGE=docker.io/percona/pmm-server
+    PMM_PUBLIC_PORT=8443
+    EOF
+    ```
+
+    !!! caution alert alert-warning "Important"
+        Do modify `PMM_TAG` in `~/.config/pmm-server/env` and update it regularly, as for users there is no way to update it from Percona side and it needs to be done by user.
+
+3. Start.
 
     ```sh
     systemctl --user start pmm-server
     ```
 
-3. Visit `https://localhost:8443` to see the PMM user interface in a web browser. (If you are accessing host remotely, replace `localhost` with the IP or server name of the host.)
+4. Visit `https://localhost:8443` to see the PMM user interface in a web browser. (If you are accessing host remotely, replace `localhost` with the IP or server name of the host.)
 
 <div hidden>
-```
-timeout 10 podman wait --condition=running pmm-server
+```sh
+sleep 10
+timeout 60 podman wait --condition=running pmm-server
 ```
 </div>
-
-## Configuration
-
-### PMM Server
-
-SystemD service passes environment parameters to PMM from `pmm-server.env` file that is located in `~/.config/pmm-server/pmm-server.env`. For more information about container environment variables please check [Docker Environment].
-
-### Customize SystemD service
-
-SystemD service uses some environment variables that could be customized if needed:
-
-```text
-Environment=PMM_PUBLIC_PORT=8443
-Environment=PMM_VOLUME_NAME=%N
-Environment=PMM_TAG=2.29.0
-Environment=PMM_IMAGE=docker.io/percona/pmm-server
-```
-
-Those environment variables could be overridden by defining them in file  `~/.config/pmm-server/env`, for example to override path to custom registry `~/.config/pmm-server/env`:
-
-```sh
-mkdir -p ~/.config/pmm-server/
-cat << "EOF" > ~/.config/pmm-server/env
-PMM_TAG=2.28.0
-PMM_IMAGE=docker.io/percona/pmm-server
-PMM_PUBLIC_PORT=8443
-EOF
-```
-
-!!! caution alert alert-warning "Important"
-    Do modify `PMM_TAG` in `~/.config/pmm-server/env` and update it regularly, as for users there is no way to update it from Percona side and it needs to be done by user.
 
 ## Backup
 
 !!! summary alert alert-info "Summary"
-    - Stop PMM server.
     - Backup the container image.
     - Backup the data.
 
@@ -155,24 +151,17 @@ EOF
     Grafana plugins have been moved to the data volume `/srv` since the 2.23.0 version. So if you are upgrading PMM from any version before 2.23.0 and have installed additional plugins then plugins should be installed again after the upgrade.
     To check used grafana plugins: `podman exec -it pmm-server ls /var/lib/grafana/plugins`
 
-1. Stop PMM server.
+1. Backup the container image.
 
     ```sh
-    systemctl --user stop pmm-server
-    ```
-
-2. Backup the container image.
-
-    ```sh
-    podman rename pmm-server pmm-server-backup
-    podman tag pmm-server-backup pmm-server-backup:2.28.0
+    podman commit pmm-server pmm-server-backup:2.28.0
     ```
 
     !!! caution alert alert-warning "Important"
         Change X.Y.Z (2.28.0) to PMM version you are running, or version of your choice that you could later restore from
 
 
-3. Backup the data.
+2. Backup the data.
 
     ```sh
     podman volume export pmm-server --output pmm-server-backup.tar
@@ -215,6 +204,13 @@ curl -ku admin:admin https://localhost/v1/version
     sed -i "s/PMM_TAG=.*/PMM_TAG=2.29.0/g" ~/.config/pmm-server/env
     ```
 
+<div hidden>
+```sh
+sed -i "s/PMM_TAG=.*/PMM_TAG=2.29.0-rc/g" ~/.config/pmm-server/env
+sed -i "s|PMM_IMAGE=.*|PMM_IMAGE=docker.io/perconalab/pmm-server|g" ~/.config/pmm-server/env
+```
+</div>
+
 3. Pre-pull image for faster restart.
 
     ```sh
@@ -227,6 +223,13 @@ curl -ku admin:admin https://localhost/v1/version
     ```sh
     systemctl --user restart pmm-server
     ```
+
+<div hidden>
+```sh
+sleep 10
+timeout 60 podman wait --condition=running pmm-server
+```
+</div>
 
 ## Restore
 
@@ -272,11 +275,18 @@ curl -ku admin:admin https://localhost/v1/version
     systemctl --user start pmm-server
     ```
 
+<div hidden>
+```sh
+sleep 10
+timeout 60 podman wait --condition=running pmm-server
+```
+</div>
+
 ## Remove
 
 !!! summary alert alert-info "Summary"
     - Stop PMM server.
-    - Remove (delete) both the server and volume.
+    - Remove (delete) volume.
     - Remove (delete) images.
 
 ---
@@ -290,17 +300,16 @@ curl -ku admin:admin https://localhost/v1/version
     systemctl --user stop pmm-server
     ```
 
-2. Remove container and volume.
+2. Remove volume.
 
     ```sh
-    podman rm pmm-server
     podman volume rm pmm-server
     ```
 
-3. Remove the image.
+3. Remove the images.
 
     ```sh
-    podman rmi $(podman images | grep "percona/pmm-server" | awk {'print $3'})
+    podman rmi $(podman images | grep "pmm-server" | awk {'print $3'})
     ```
 
 [tags]: https://hub.docker.com/r/percona/pmm-server/tags
