@@ -36,8 +36,11 @@ Percona recommends to run PMM as non-privileged user and run it as part of Syste
 
 1. Install.
 
-    Create `~/.config/systemd/user/pmm-server.service` file with this content:
-    ```text
+    Create `~/.config/systemd/user/pmm-server.service` file:
+
+    ```sh
+    mkdir -p ~/.config/systemd/user/
+    cat << "EOF" > ~/.config/systemd/user/pmm-server.service
     [Unit]
     Description=pmm-server
     Wants=network-online.target
@@ -55,7 +58,7 @@ Percona recommends to run PMM as non-privileged user and run it as part of Syste
     Environment=PMM_IMAGE=docker.io/percona/pmm-server
     Environment=PMM_ENV_FILE=%h/.config/pmm-server/pmm-server.env
 
-    # optional env file that could overide previous env settings for this unit
+    # optional env file that could override previous env settings for this unit
     EnvironmentFile=-%h/.config/pmm-server/env
 
     ExecStartPre=/usr/bin/bash -c '/usr/bin/podman stop -t 10 %N; /usr/bin/podman rm -f %N || true'
@@ -67,10 +70,14 @@ Percona recommends to run PMM as non-privileged user and run it as part of Syste
 
     [Install]
 
+    EOF
     ```
 
-    Create `~/.config/pmm-server/pmm-server.env` file with this content:
+    Create `~/.config/pmm-server/pmm-server.env` file:
+
     ```sh
+    mkdir -p ~/.config/pmm-server/
+    cat << "EOF" > ~/.config/pmm-server/pmm-server.env
     # env file passed to the container
     # full list of environment variables:
     # https://www.percona.com/doc/percona-monitoring-and-management/2.x/setting-up/server/docker.html#environment-variables
@@ -81,11 +88,12 @@ Percona recommends to run PMM as non-privileged user and run it as part of Syste
 
     # Enable DBaaS feature
     #ENABLE_DBAAS=1
+    EOF
     ```
 
-    Enable PMM sever service:
+    Enable PMM sever service to start with user:
+
     ```sh
-    # enable systemd service to start with user
     systemctl --user enable pmm-server
     ```
 
@@ -97,6 +105,12 @@ Percona recommends to run PMM as non-privileged user and run it as part of Syste
 
 3. Visit `https://localhost:8443` to see the PMM user interface in a web browser. (If you are accessing host remotely, replace `localhost` with the IP or server name of the host.)
 
+<div hidden>
+```
+timeout 10 podman wait --condition=running pmm-server
+```
+</div>
+
 ## Configuration
 
 ### PMM Server
@@ -107,7 +121,7 @@ SystemD service passes environment parameters to PMM from `pmm-server.env` file 
 
 SystemD service uses some environment variables that could be customized if needed:
 
-```
+```text
 Environment=PMM_PUBLIC_PORT=8443
 Environment=PMM_VOLUME_NAME=%N
 Environment=PMM_TAG=2.29.0
@@ -116,9 +130,13 @@ Environment=PMM_IMAGE=docker.io/percona/pmm-server
 
 Those environment variables could be overridden by defining them in file  `~/.config/pmm-server/env`, for example to override path to custom registry `~/.config/pmm-server/env`:
 
-```
-PMM_IMAGE=my.own/registry/pmm-server
-PMM_PUBLIC_PORT=4443
+```sh
+mkdir -p ~/.config/pmm-server/
+cat << "EOF" > ~/.config/pmm-server/env
+PMM_TAG=2.28.0
+PMM_IMAGE=docker.io/percona/pmm-server
+PMM_PUBLIC_PORT=8443
+EOF
 ```
 
 !!! caution alert alert-warning "Important"
@@ -135,12 +153,7 @@ PMM_PUBLIC_PORT=4443
 
 !!! caution alert alert-warning "Important"
     Grafana plugins have been moved to the data volume `/srv` since the 2.23.0 version. So if you are upgrading PMM from any version before 2.23.0 and have installed additional plugins then plugins should be installed again after the upgrade.
-    
-    To check used grafana plugins:
-
-    ```sh
-    podman exec -it pmm-server ls /var/lib/grafana/plugins
-    ```
+    To check used grafana plugins: `podman exec -it pmm-server ls /var/lib/grafana/plugins`
 
 1. Stop PMM server.
 
@@ -152,11 +165,11 @@ PMM_PUBLIC_PORT=4443
 
     ```sh
     podman rename pmm-server pmm-server-backup
-    podman tag pmm-server-backup pmm-server-backup:X.Y.Z
+    podman tag pmm-server-backup pmm-server-backup:2.28.0
     ```
 
     !!! caution alert alert-warning "Important"
-        Change X.Y.Z to PMM version you are running, or version of your choice that you could later restore from
+        Change X.Y.Z (2.28.0) to PMM version you are running, or version of your choice that you could later restore from
 
 
 3. Backup the data.
@@ -164,15 +177,16 @@ PMM_PUBLIC_PORT=4443
     ```sh
     podman volume export pmm-server --output pmm-server-backup.tar
     ```
+
     !!! caution alert alert-warning "Important"
         If you changed default name by `PMM_VOLUME_NAME` environment variable, use that name after `export` instead of `pmm-server` (which is default volume name).
 
 ## Upgrade
 
 !!! summary alert alert-info "Summary"
-    - Stop PMM server.
-    - Backup (rename) the container and volume.
-    - Update package or tag.
+    - Perform a backup.
+    - Update PMM tag.
+    - Pre-pull image.
     - Run it.
 
 ---
@@ -183,37 +197,36 @@ PMM_PUBLIC_PORT=4443
 !!! hint alert alert-success "Tip"
     To see what release you are running, use the *PMM Upgrade* panel on the *Home Dashboard*, or run:
 
-    ```sh
-    podman exec -it pmm-server \
-    curl -ku admin:admin https://localhost/v1/version
-    ```
+```sh
+podman exec -it pmm-server \
+curl -ku admin:admin https://localhost/v1/version
+```
 
-    (If you are accessing the podman host remotely, replace `localhost` with the IP or server name of the host.)
+(If you are accessing the podman host remotely, replace `localhost` with the IP or server name of the host.)
 
-
-1. Stop PMM server.
-
-    ```sh
-    systemctl --user stop pmm-server
-    ```
-
-2. Perform a [backup](#backup).
+1. Perform a [backup](#backup).
 
 
-3. Update PMM tag.
+2. Update PMM tag.
 
     Edit `~/.config/pmm-server/env` and create/update with a new tag from [latest release](https://per.co.na/pmm/latest):
+
     ```sh
-    PMM_TAG=2.29.0
+    sed -i "s/PMM_TAG=.*/PMM_TAG=2.29.0/g" ~/.config/pmm-server/env
+    ```
+
+3. Pre-pull image for faster restart.
+
+    ```sh
+    source ~/.config/pmm-server/env
+    podman pull ${PMM_IMAGE}:${PMM_TAG}
     ```
 
 4. Run it.
 
     ```sh
-    systemctl --user start pmm-server
+    systemctl --user restart pmm-server
     ```
-
-5. Perform a [restore](#restore).
 
 ## Restore
 
@@ -240,12 +253,12 @@ PMM_PUBLIC_PORT=4443
     Edit `~/.config/pmm-server/env` file:
 
     ```sh
-    PMM_IMAGE=pmm-server-backup
-    PMM_TAG=X.Y.Z
+    sed -i "s/PMM_TAG=.*/PMM_TAG=2.28.0/g" ~/.config/pmm-server/env
+    sed -i "s/PMM_IMAGE=.*/PMM_IMAGE=pmm-server-backup/g" ~/.config/pmm-server/env
     ```
 
     !!! caution alert alert-warning "Important"
-        X.Y.Z is the version you created during the Backup
+        X.Y.Z (2.28.0) is the version you created during the Backup
 
 3. Restore the volume.
 
