@@ -38,8 +38,8 @@ To change the frequency of an automatic advisor:
 2. Select the **All** tab.
 3. Scroll through the list to find a specific check, or use the **Filter** section to search by Name, Description, Status or Interval. 
    !!! hint alert alert-success "Tip"
-    If you need to share filtered alert results with your team members, send them the PMM URL. This saves your search criteria and results. 
-4. Select the check and click the ![Edit](..//_images/edit.png)  **Interval** icon in the **Actions** column. 
+    If you need to share filtered advisors results with your team members, send them the PMM URL. This saves your search criteria and results. 
+4. Select the check and click the ![Edit](..//_images/edit.png) **Interval** icon in the **Actions** column. 
 5. Chose an interval and click **Save**.
 
 ## Manual checks
