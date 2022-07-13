@@ -18,7 +18,7 @@ Non-privileged users could run containers under the control of Podman.
 
 It could be just aliased (`alias docker=podman`) with docker and work with the same way. All instructions from [Docker] section also apply here.
 
-Percona recommends to run PMM as non-privileged user and run it as part of SystemD service that is provided. SystemD service ensures that service is running, maintains logs and other management features (start, stop and etc).
+Percona recommends running PMM as a non-privileged user and running it as part of the SystemD service provided. SystemD service ensures that the service is running and maintains logs and other management features (start, stop, etc.).
 
 ## Before you start
 
