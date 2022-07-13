@@ -250,7 +250,7 @@ timeout 60 podman wait --condition=running pmm-server
     systemctl --user stop pmm-server
     ```
 
-2. Run on previous image.
+2. Run PMM on the previous image.
 
     Edit `~/.config/pmm-server/env` file:
 
