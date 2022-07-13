@@ -21,7 +21,9 @@ jobs:
           fetch-depth: 1
 
       - name: Install pandoc
-        run: sudo apt-get install -y pandoc
+        run: | 
+          wget https://github.com/jgm/pandoc/releases/download/2.18/pandoc-2.18-1-amd64.deb
+          sudo apt-get install -y ./pandoc-2.18-1-amd64.deb
 
       - name: Copy test template
         run: cp _resources/bin/doc_test_template.sh ./docs_test_podman.sh
