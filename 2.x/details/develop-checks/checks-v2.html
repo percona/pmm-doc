@@ -344,6 +344,10 @@
 <li><strong>step</strong> (duration, required): query resolution. This parameter is equal to <a href="https://prometheus.io/docs/prometheus/latest/querying/api/#range-queries">prometheus API</a>.</li>
 </ul>
 <h2 id="develop-version-2-checks">Develop version 2 checks<a class="headerlink" href="#develop-version-2-checks" title="Permanent link">&para;</a></h2>
+<div class="admonition note alert alert-primary">
+<p class="admonition-title">Development / Debugging Only</p>
+<p>Note that V2 check development in PMM 2.28+ is currently for <strong>debugging only</strong> and <strong>NOT for production use!</strong>  Future releases plan to include the option to run custom local checks in addition to hosted Percona Platform checks. </p>
+</div>
 <p>To develop custom checks for PMM 2.28 and later: </p>
 <ol>
 <li>Install the latest PMM Server and PMM Client builds following the <a href="https://www.percona.com/software/pmm/quickstart#">installation instructions</a>. </li>
@@ -396,7 +400,7 @@ supervisorctl tail -f pmm-managed
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2022-05-30
+            <i class="uil uil-refresh"></i> Page updated 2022-07-13
         </li>
         
     </ul>
