@@ -183,7 +183,7 @@ timeout 60 podman wait --condition=running pmm-server
     Downgrades are not possible. To go back to using a previous version you must have created a backup of it before upgrading.
 
 !!! hint alert alert-success "Tip"
-    To see what release you are running, use the *PMM Upgrade* panel on the *Home Dashboard*, or run:
+    To see the current release running on your system, use the *PMM Upgrade* panel on the *Home Dashboard*, or run:
 
     ```sh
     podman exec -it pmm-server \
