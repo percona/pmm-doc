@@ -289,7 +289,7 @@ timeout 60 podman wait --condition=running pmm-server
 ---
 
 !!! caution alert alert-warning "Caution"
-    These steps delete the PMM Server Docker image and any accumulated PMM metrics data.
+    These steps delete the PMM Server Docker image and the associated PMM metrics data.
 
 1. Stop PMM server.
 
