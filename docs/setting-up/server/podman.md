@@ -105,7 +105,7 @@ Percona recommends running PMM as a non-privileged user and running it as part o
     Environment=PMM_IMAGE=docker.io/percona/pmm-server
     ```
 
-    Those environment variables could be overridden by defining them in file  `~/.config/pmm-server/env`, for example to override path to custom registry `~/.config/pmm-server/env`:
+    You can override the environment variables by defining them in the file  `~/.config/pmm-server/env`. For example, to override the path to a custom registry `~/.config/pmm-server/env`:
 
     ```sh
     mkdir -p ~/.config/pmm-server/
