@@ -12,7 +12,7 @@ How to run PMM Server with Podman on our [Docker image]
     [Docker]
 
 
-Podman is an open-source project that is available on most Linux platforms and resides on [GitHub](https://github.com/containers/podman). Podman is a daemonless container engine for developing, managing, and running Open Container Initiative (OCI) containers and container images on your Linux System. 
+Podman is an open-source project available on most Linux platforms and resides on [GitHub](https://github.com/containers/podman). Podman is a daemonless container engine for developing, managing, and running Open Container Initiative (OCI) containers and container images on your Linux System. 
 
 Containers under the control of Podman could be run by non-privileged user.
 
