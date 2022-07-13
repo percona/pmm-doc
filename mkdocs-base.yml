@@ -231,6 +231,7 @@ nav:
     
     - Release Notes:
           - release-notes/index.md
+          - "PMM 2.29.0": release-notes/2.29.0.md
           - "PMM 2.28.0": release-notes/2.28.0.md
           - "PMM 2.27.0": release-notes/2.27.0.md
           - "PMM 2.26.0": release-notes/2.26.0.md
