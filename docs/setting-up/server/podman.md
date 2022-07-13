@@ -234,7 +234,7 @@ timeout 60 podman wait --condition=running pmm-server
 
 !!! summary alert alert-info "Summary"
     - Stop PMM server.
-    - Run on previous image.
+    - Run PMM on the previous image.
     - Restore the volume.
     - Start PMM Server.
 
