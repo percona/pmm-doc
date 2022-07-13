@@ -138,7 +138,6 @@ timeout 60 podman wait --condition=running pmm-server
 ## Backup
 
 !!! summary alert alert-info "Summary"
-    - Backup the container image.
     - Stop PMM server.
     - Backup the data.
 
@@ -148,22 +147,13 @@ timeout 60 podman wait --condition=running pmm-server
     Grafana plugins have been moved to the data volume `/srv` since the 2.23.0 version. So if you are upgrading PMM from any version before 2.23.0 and have installed additional plugins then plugins should be installed again after the upgrade.
     To check used grafana plugins: `podman exec -it pmm-server ls /var/lib/grafana/plugins`
 
-1. Backup the container image.
-
-    ```sh
-    podman commit pmm-server pmm-server-backup:2.28.0
-    ```
-
-    !!! caution alert alert-warning "Important"
-        Change X.Y.Z (2.28.0) to PMM version you are running, or version of your choice that you could later restore from
-
-2. Stop PMM server.
+1. Stop PMM server.
 
     ```sh
     systemctl --user stop pmm-server
     ```
 
-3. Backup the data.
+2. Backup the data.
 
     <div hidden>
     ```sh
@@ -244,7 +234,7 @@ timeout 60 podman wait --condition=running pmm-server
 
 !!! summary alert alert-info "Summary"
     - Stop PMM server.
-    - Run on the saved image.
+    - Run on previous image.
     - Restore the volume.
     - Start PMM Server.
 
@@ -260,17 +250,16 @@ timeout 60 podman wait --condition=running pmm-server
     systemctl --user stop pmm-server
     ```
 
-2. Run on the saved image.
+2. Run on previous image.
 
     Edit `~/.config/pmm-server/env` file:
 
     ```sh
     sed -i "s/PMM_TAG=.*/PMM_TAG=2.28.0/g" ~/.config/pmm-server/env
-    sed -i "s/PMM_IMAGE=.*/PMM_IMAGE=pmm-server-backup/g" ~/.config/pmm-server/env
     ```
 
     !!! caution alert alert-warning "Important"
-        X.Y.Z (2.28.0) is the version you created during the Backup
+        X.Y.Z (2.28.0) is the version you used before upgrade and you made Backup with it
 
 3. Restore the volume.
 
