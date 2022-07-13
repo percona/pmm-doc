@@ -30,7 +30,7 @@ Percona recommends to run PMM as non-privileged user and run it as part of Syste
 !!! summary alert alert-info "Summary"
     - Install.
     - Configuration.
-    - Start.
+    - Enable and Start.
     - Open the PMM UI in a browser.
 
 ---
@@ -92,12 +92,6 @@ Percona recommends to run PMM as non-privileged user and run it as part of Syste
     EOF
     ```
 
-    Enable PMM sever service to start with user:
-
-    ```sh
-    systemctl --user enable pmm-server
-    ```
-
 2. Configuration
 
     SystemD service passes environment parameters to PMM from `pmm-server.env` file that is located in `~/.config/pmm-server/pmm-server.env`. For more information about container environment variables please check [Docker Environment].
@@ -125,10 +119,10 @@ Percona recommends to run PMM as non-privileged user and run it as part of Syste
     !!! caution alert alert-warning "Important"
         Do modify `PMM_TAG` in `~/.config/pmm-server/env` and update it regularly, as for users there is no way to update it from Percona side and it needs to be done by user.
 
-3. Start.
+3. Enable and Start.
 
     ```sh
-    systemctl --user start pmm-server
+    systemctl --user enable --now pmm-server
     ```
 
 4. Visit `https://localhost:8443` to see the PMM user interface in a web browser. (If you are accessing host remotely, replace `localhost` with the IP or server name of the host.)
@@ -144,6 +138,7 @@ timeout 60 podman wait --condition=running pmm-server
 ## Backup
 
 !!! summary alert alert-info "Summary"
+    - Stop PMM server.
     - Backup the container image.
     - Backup the data.
 
@@ -153,7 +148,20 @@ timeout 60 podman wait --condition=running pmm-server
     Grafana plugins have been moved to the data volume `/srv` since the 2.23.0 version. So if you are upgrading PMM from any version before 2.23.0 and have installed additional plugins then plugins should be installed again after the upgrade.
     To check used grafana plugins: `podman exec -it pmm-server ls /var/lib/grafana/plugins`
 
-1. Backup the container image.
+1. Stop PMM server
+
+    ```sh
+    systemctl --user stop pmm-server
+    ```
+
+2. Backup the container image.
+
+    <div hidden>
+    ```sh
+    podman wait --condition=stopped pmm-server || true
+    sleep 30
+    ```
+    </div>
 
     ```sh
     podman commit pmm-server pmm-server-backup:2.28.0
@@ -163,7 +171,7 @@ timeout 60 podman wait --condition=running pmm-server
         Change X.Y.Z (2.28.0) to PMM version you are running, or version of your choice that you could later restore from
 
 
-2. Backup the data.
+3. Backup the data.
 
     ```sh
     podman volume export pmm-server --output pmm-server-backup.tar
