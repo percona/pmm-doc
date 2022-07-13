@@ -3,7 +3,7 @@
 !!! caution alert alert-warning "Caution"
     Podman support is currently in [technical preview](../../details/glossary.md#technical-preview) and is subject to change.
 
-How to run PMM Server with Podman on our [Docker image].
+How to run PMM Server with Podman on our [Docker image]
 
 !!! note alert alert-primary ""
     The tags used here are for the current release. Other [tags] are available.
