@@ -167,7 +167,7 @@ timeout 60 podman wait --condition=running pmm-server
     ```
 
     !!! caution alert alert-warning "Important"
-        If you changed default name by `PMM_VOLUME_NAME` environment variable, use that name after `export` instead of `pmm-server` (which is default volume name).
+        If you changed the default name to `PMM_VOLUME_NAME` environment variable, use that name after `export` instead of `pmm-server` (which is the default volume name).
 
 ## Upgrade
 
