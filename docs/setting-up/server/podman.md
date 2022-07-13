@@ -138,8 +138,8 @@ timeout 60 podman wait --condition=running pmm-server
 ## Backup
 
 !!! summary alert alert-info "Summary"
-    - Stop PMM server.
     - Backup the container image.
+    - Stop PMM server.
     - Backup the data.
 
 ---
@@ -148,20 +148,7 @@ timeout 60 podman wait --condition=running pmm-server
     Grafana plugins have been moved to the data volume `/srv` since the 2.23.0 version. So if you are upgrading PMM from any version before 2.23.0 and have installed additional plugins then plugins should be installed again after the upgrade.
     To check used grafana plugins: `podman exec -it pmm-server ls /var/lib/grafana/plugins`
 
-1. Stop PMM server
-
-    ```sh
-    systemctl --user stop pmm-server
-    ```
-
-2. Backup the container image.
-
-    <div hidden>
-    ```sh
-    podman wait --condition=stopped pmm-server || true
-    sleep 30
-    ```
-    </div>
+1. Backup the container image.
 
     ```sh
     podman commit pmm-server pmm-server-backup:2.28.0
@@ -170,8 +157,20 @@ timeout 60 podman wait --condition=running pmm-server
     !!! caution alert alert-warning "Important"
         Change X.Y.Z (2.28.0) to PMM version you are running, or version of your choice that you could later restore from
 
+2. Stop PMM server.
+
+    ```sh
+    systemctl --user stop pmm-server
+    ```
 
 3. Backup the data.
+
+    <div hidden>
+    ```sh
+    podman wait --condition=stopped pmm-server || true
+    sleep 30
+    ```
+    </div>
 
     ```sh
     podman volume export pmm-server --output pmm-server-backup.tar
