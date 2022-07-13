@@ -92,7 +92,7 @@ Percona recommends running PMM as a non-privileged user and running it as part o
     EOF
     ```
 
-2. Configuration
+2. Configure.
 
     SystemD service passes environment parameters to PMM from `pmm-server.env` file that is located in `~/.config/pmm-server/pmm-server.env`. For more information about container environment variables please check [Docker Environment].
 
