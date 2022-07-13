@@ -311,7 +311,7 @@ timeout 60 podman wait --condition=running pmm-server
     podman volume rm --force pmm-server
     ```
 
-3. Remove the images.
+3. Remove the PMM images.
 
     ```sh
     podman rmi $(podman images | grep "pmm-server" | awk {'print $3'})
