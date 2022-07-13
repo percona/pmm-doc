@@ -117,7 +117,7 @@ Percona recommends running PMM as a non-privileged user and running it as part o
     ```
 
     !!! caution alert alert-warning "Important"
-        Do modify `PMM_TAG` in `~/.config/pmm-server/env` and update it regularly, as for users there is no way to update it from Percona side and it needs to be done by user.
+        Ensure that you modify PMM_TAG in `~/.config/pmm-server/env` and update it regularly as Percona cannot update it. It needs to be done by you.
 
 3. Enable and Start.
 
