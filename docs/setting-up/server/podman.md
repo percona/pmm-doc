@@ -29,7 +29,7 @@ Percona recommends running PMM as a non-privileged user and running it as part o
 
 !!! summary alert alert-info "Summary"
     - Install.
-    - Configuration.
+    - Configure.
     - Enable and Start.
     - Open the PMM UI in a browser.
 
