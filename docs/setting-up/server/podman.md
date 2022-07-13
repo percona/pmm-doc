@@ -6,7 +6,7 @@
 How to run PMM Server with Podman on our [Docker image]
 
 !!! note alert alert-primary ""
-    The tags used here are for the current release. Other [tags] are available.
+    The tags used here are for the current release (PMM 2.29.0). Other [tags] are available.
 
 !!! seealso alert alert-info "See also"
     [Docker]
