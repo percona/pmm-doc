@@ -180,7 +180,7 @@ timeout 60 podman wait --condition=running pmm-server
 ---
 
 !!! caution alert alert-warning "Important"
-    Downgrades are not possible. To go back to using a previous version you must have created a backup of it before upgrading.
+    You cannot downgrade. To go to a previous version, you must create a backup before upgrading.
 
 !!! hint alert alert-success "Tip"
     To see the current release running on your system, use the *PMM Upgrade* panel on the *Home Dashboard*, or run:
