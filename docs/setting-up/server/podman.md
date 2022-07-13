@@ -217,7 +217,7 @@ timeout 60 podman wait --condition=running pmm-server
     podman pull ${PMM_IMAGE}:${PMM_TAG}
     ```
 
-4. Run it.
+4. Run PMM.
 
     ```sh
     systemctl --user restart pmm-server
