@@ -132,7 +132,7 @@ pmmEnv:
 
 Before updating the helm chart,  it is recommended to pre-pull the image on the node where PMM is running, as the PMM images could be large and could take time to download.
 
-PMM updates should happen in a standard way:
+Update PMM as follows:
 
 ```sh
 helm repo update percona
