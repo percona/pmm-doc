@@ -17,6 +17,7 @@ Choose from:
 |---|---|---
 | [Docker] | 1. Quick.<br>2. Simple. | 1. Docker installation required.<br>2. Additional network configuration required.
 | [Podman] Technical Preview | 1. Quick.<br>2. Simple.<br>3. Rootless. | 1. Podman installation required.
+| [Helm] Technical Preview | 1. Quick.<br>2. Simple.<br>3. Cloud. | 1. Requires running Kubernetes cluster.
 | [Virtual appliance]  | 1. Easily import into Hypervisor of your choice | 1. More system resources compared to Docker footprint.
 | [Amazon AWS] | 1. Wizard-driven install. | 1. Non-free solution (infrastructure costs).
 
@@ -65,6 +66,7 @@ How you do this depends on the type of service. You can monitor:
 [dashboards]: ../details/dashboards/
 [Docker]: server/docker.md
 [Podman]: server/podman.md
+[Helm]: server/helm.md
 [virtual appliance]: server/virtual-appliance.md
 [Amazon AWS]: server/aws.md
 [easy install]: server/easy-install.md
