@@ -83,13 +83,13 @@ The following information is gathered:
 - PMM Server Backup feature enabled/disabled
 - PMM Server DBaaS feature enabled/disabled
 - PMM Server Check Updates feature disabled
-- Version of monitored MySQL services
-- Version of monitored MongoDB services
-- Version of monitored PostgreSQL services
-- Grafana total users
+- Detailed information about version and comment of monitored MySQL services
+- Monitored MongoDB services version
+- Monitored PostgreSQL services version
+- Total Grafana users
 - Monitored nodes count
 - Monitored services count
-- Agents Versions
+- Agents version
 - Node type
 
 We do not gather anything that identify a system, but the following two points should be mentioned:
