@@ -17,11 +17,11 @@
 
 !!! summary alert alert-info "Summary"
     - Install
-    - Parameters
+    - Configuration parameters
     - PMM admin password
     - PMM environment variables
     - PMM SSL certificates
-    - Upgrades
+    - Upgrade
     - Uninstall
 
 ---
@@ -47,7 +47,7 @@ helm uninstall pmm
 
 ### Parameters
 
-The list of Parameters is subject to change from release to release, please check [Parameters](https://github.com/percona/percona-helm-charts/tree/main/charts/pmm#parameters) section of PMM Helm Chart.
+The list of Parameters is subject to change from release to release. Check the [Parameters](https://github.com/percona/percona-helm-charts/tree/main/charts/pmm#parameters) section of the PMM Helm Chart.
 
 !!! hint alert alert-success "Tip"
     You can list the default parameters [values.yaml](https://github.com/percona/percona-helm-charts/blob/main/charts/pmm/values.yaml) or get them from chart definition: `helm show values percona/pmm`
@@ -62,7 +62,7 @@ helm install pmm \
     percona/pmm
 ```
 
-The above command installs PMM with enabled the PMM DBaaS feature. Additionally, it sets the Service network type to `NodePort` and storage class to `linode-block-storage-retain` for persistence storage on LKE.
+The above command installs PMM with the enabled PMM DBaaS feature. Additionally, it sets the Service network type to `NodePort` and storage class to `linode-block-storage-retain` for persistence storage on LKE.
 
 <div hidden>
 ```sh
@@ -71,7 +71,7 @@ helm uninstall pmm
 </div>
 
 !!! caution alert alert-warning "Important"
-    Once this chart is deployed, it is not possible to change the application's access credentials, such as password, using Helm. To change these application credentials after deployment, delete any persistent volumes (PVs) used by the chart and re-deploy it, or use the application's built-in administrative tools if available.
+ Once this chart is deployed, it is impossible to change the application's access credentials, such as password, using Helm. To change these application credentials after deployment, delete any persistent volumes (PVs) used by the chart and re-deploy it, or use the application's built-in administrative tools (if available)
 
 Alternatively, a YAML file that specifies the values for the above parameters can be provided while installing the chart. For example:
 
@@ -106,7 +106,7 @@ pmmEnv:
 ### PMM SSL certificates
 
 PMM ships with self signed SSL certificates to provide secure connection between client and server ([check here](../../how-to/secure.md#ssl-encryption)).
-You could see the warning when connecting to PMM. To further harden security you could provide your own certificates, add values of certificates and secrets to the fields of the `cert` section:
+You could see the warning when connecting to PMM. To further increase security, you could provide your certificates and add values of credentials to the fields of the `cert` section:
 
 ```yaml
 certs:
@@ -121,16 +121,16 @@ certs:
 ### Upgrades
 
 
-Percona will release a new chart updating its containers if a new version of the main container, significant changes, or critical vulnerabilities exist.
+Percona will release a new chart updating its containers if a new version of the main container is available, there are any significant changes, or critical vulnerabilities exist.
 
-By default UI update feature is disabled abd should stay that way, please don't modify that parameter or/and add it if modifying custom `values.yaml` file:
+By default UI update feature is disabled and should not be enabled. Do not modify that parameter or add it while modifying the custom `values.yaml` file:
 
 ```yaml
 pmmEnv:
   DISABLE_UPDATES: "1"
 ```
 
-Before update it is recommended to pre-pull image on the node where PMM is running as PMM images could be large and could take some time to download.
+Before updating the helm chart,  it is recommended to pre-pull the image on the node where PMM is running, as the PMM images could be large and could take time to download.
 
 PMM updates should happen in a standard way:
 
@@ -139,11 +139,11 @@ helm repo update percona
 helm upgrade pmm -f values.yaml percona/pmm
 ```
 
-This will check updates and in repo and upgrade deployment if updates are available.
+This will check updates in the repo and upgrade deployment if the updates are available.
 
 ### Uninstall
 
-To uninstall/delete the `pmm` deployment:
+To uninstall `pmm` deployment:
 
 ```sh
 helm uninstall pmm
@@ -151,4 +151,4 @@ helm uninstall pmm
 
 This command takes a release name and uninstalls the release.
 
-It removes all of the resources associated with the last release of the chart as well as the release history, freeing it up for future use.
+It removes all of the resources associated with the last release of the chart as well as the release history.
