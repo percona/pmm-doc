@@ -71,7 +71,7 @@ helm uninstall pmm
 </div>
 
 !!! caution alert alert-warning "Important"
- Once this chart is deployed, it is impossible to change the application's access credentials, such as password, using Helm. To change these application credentials after deployment, delete any persistent volumes (PVs) used by the chart and re-deploy it, or use the application's built-in administrative tools (if available)
+    Once this chart is deployed, it is impossible to change the application's access credentials, such as password, using Helm. To change these application credentials after deployment, delete any persistent volumes (PVs) used by the chart and re-deploy it, or use the application's built-in administrative tools (if available)
 
 Alternatively, a YAML file that specifies the values for the above parameters can be provided while installing the chart. For example:
 
