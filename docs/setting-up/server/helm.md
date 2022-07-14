@@ -3,7 +3,7 @@
 !!! caution alert alert-warning "Caution"
     PMM on Kubernetes with Helm is currently in [technical preview](../../details/glossary.md#technical-preview) and is subject to change.
 
-[Helm](https://github.com/helm/helm) is the package manager for Kubernetes. Percona Helm charts can be found in [percona/percona-helm-charts](https://github.com/percona/percona-helm-charts) repository in Github.
+[Helm](https://github.com/helm/helm) is the package manager for Kubernetes. Percona Helm charts can be found in [percona/percona-helm-charts](https://github.com/percona/percona-helm-charts) repository on Github.
 
 ## Before you start
 
