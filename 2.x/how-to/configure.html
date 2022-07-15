@@ -223,11 +223,19 @@
 <p>The <em>Telemetry</em> switch enables gathering and sending basic <strong>anonymous</strong> data to Percona, which helps us to determine where to focus the development and what is the uptake for each release of PMM. Specifically, gathering this information helps determine if we need to release patches to legacy versions beyond support, determining when supporting a particular version is no longer necessary, and even understanding how the frequency of release encourages or deters adoption.</p>
 <p>The following information is gathered:</p>
 <ul>
-<li>PMM Version;</li>
-<li>Installation Method (Docker, AMI, OVF);</li>
-<li>the Server Uptime;</li>
-<li>Advisors (enabled or disabled);</li>
-<li>Integrated Alerting Status (enabled or disabled).</li>
+<li>PMM Server Integration Alerting feature enabled/disabled</li>
+<li>PMM Server Security Thread Tool feature enabled/disabled</li>
+<li>PMM Server Backup feature enabled/disabled</li>
+<li>PMM Server DBaaS feature enabled/disabled</li>
+<li>PMM Server Check Updates feature disabled</li>
+<li>Detailed information about the version of monitored MySQL services</li>
+<li>Monitored MongoDB services version</li>
+<li>Monitored PostgreSQL services version</li>
+<li>Total Grafana users</li>
+<li>Monitored nodes count</li>
+<li>Monitored services count</li>
+<li>Agents version</li>
+<li>Node type</li>
 </ul>
 <p>We do not gather anything that identify a system, but the following two points should be mentioned:</p>
 <ol>
@@ -352,7 +360,7 @@ After setting up the SMTP server, click <em>Test</em> to confirm that you can co
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2022-05-12
+            <i class="uil uil-refresh"></i> Page updated 2022-07-15
         </li>
         
     </ul>
