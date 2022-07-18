@@ -3,6 +3,6 @@
 !!! caution alert alert-warning "Disclaimer"
     This is an Experimental Dashboard that is not part of the official Percona Monitoring and Management (PMM) deployment and might be updated. We ship this Dashboard to obtain feedback from our users.
 
-The PXC/Galera Cluster Summary dashboard provides a high level information about the clusters and its state for MySQL database.
+The experimental PXC/Galera Cluster Summary dashboard provides a high level information about the clusters and its state for MySQL database.
 
 ![!image](../../_images/PMM_PXC_Galera_Cluster_Summary._Experimental.jpg)
