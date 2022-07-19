@@ -145,9 +145,12 @@ PMM communicates with the PMM Server via a PMM agent process.
     `--paths-base=dir`
     : Base path where all binaries, tools and collectors of PMM client are located
 
+    `--agent-password=password`
+    : Custom agent password.
+
 #### `pmm-admin register`
 
-`pmm-admin register [FLAGS] [node-address] [node-type] [node-name]`
+`pmm-admin register [FLAGS] [node-address] [node-type] [node-name]
 : Register the current Node with the PMM Server.
 
     `--server-url=server-url`
@@ -176,6 +179,9 @@ PMM communicates with the PMM Server via a PMM agent process.
 
     `--custom-labels=labels`
     : Custom user-assigned labels.
+
+    `--agent-password=password`
+    :Custom agent password.
 
 #### `pmm-admin add --pmm-agent-listen-port=LISTEN_PORT`
 
