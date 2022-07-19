@@ -26,6 +26,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://www.percona.com/percona-monitoring-and-management/2.x/details/clickhouse%202.html</loc>
+         <lastmod>2022-07-19</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://www.percona.com/percona-monitoring-and-management/2.x/details/clickhouse.html</loc>
          <lastmod>2022-07-19</lastmod>
          <changefreq>daily</changefreq>
@@ -401,6 +406,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://www.percona.com/percona-monitoring-and-management/2.x/how-to/share-dashboard%202.html</loc>
+         <lastmod>2022-07-19</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://www.percona.com/percona-monitoring-and-management/2.x/how-to/share-dashboard.html</loc>
          <lastmod>2022-07-19</lastmod>
          <changefreq>daily</changefreq>
@@ -557,6 +567,11 @@
     </url>
     <url>
          <loc>https://www.percona.com/percona-monitoring-and-management/2.x/release-notes/2.28.0.html</loc>
+         <lastmod>2022-07-19</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://www.percona.com/percona-monitoring-and-management/2.x/release-notes/2.29.0%202.html</loc>
          <lastmod>2022-07-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
