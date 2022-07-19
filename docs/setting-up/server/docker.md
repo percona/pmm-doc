@@ -119,6 +119,9 @@ You can store data from your PMM in:
 
 ### Run Docker with the host directory
 
+!!! note alert alert-primary "Availability"
+    This feature is available starting with PMM 2.29.0.
+
 1. Pull the image.
 
 ```sh

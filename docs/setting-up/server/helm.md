@@ -15,6 +15,10 @@
 
 ## Use Helm to install PMM server on Kubernetes clusters
 
+!!! note alert alert-primary "Availability"
+    This feature is available starting with PMM 2.29.0.
+
+
 !!! summary alert alert-info "Summary"
     - Install
     - Configuration parameters
