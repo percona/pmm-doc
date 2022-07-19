@@ -153,7 +153,7 @@ PMM communicates with the PMM Server via a PMM agent process.
 
 #### `pmm-admin register`
 
-`pmm-admin register [FLAGS] [node-address] [node-type] [node-name]
+`pmm-admin register [FLAGS] [node-address] [node-type] [node-name]`
 : Register the current Node with the PMM Server.
 
     `--server-url=server-url`
