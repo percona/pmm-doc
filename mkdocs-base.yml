@@ -217,6 +217,7 @@ nav:
                 - HA Dashboards:
                       - details/dashboards/dashboard-pxc-galera-node-summary.md
                       - details/dashboards/dashboard-pxc-galera-cluster-summary.md
+                      - details/dashboards/dashboard-pxc-galera-cluster-summary-experimental.md
                       - details/dashboards/dashboard-pxc-galera-nodes-compare.md
                       - details/dashboards/dashboard-haproxy-instance-summary.md
           - Commands:
