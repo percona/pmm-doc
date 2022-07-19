@@ -142,9 +142,6 @@ docker run -v $DATA_DIR/srv:/srv -d --restart always --publish 80:80 --publish 4
 
 ### Migrate from data container to host directory/volume
 
-!!! note alert alert-primary "Availability"
-    This feature is available starting with PMM 2.29.0.
-
 To migrate your PMM from data container to host directory or volume run the following command:
 ```sh
 docker cp <containerId>:/srv /target/host/directory
