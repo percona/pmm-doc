@@ -123,7 +123,7 @@
 <p>From the UI - Home panel: click with the Alt key on the reload icon in the Update panel to make the Update Button visible even if you are on the same version as available for update. Pressing this button will force the system to rerun the update so that any broken or not installed components can be installed. In this case, you&rsquo;ll go through the usual update process with update logs and successful messages at the end.</p>
 </li>
 <li>
-<p>By  API  call (if UI not available): You can call the Update API directly with:</p>
+<p>By API call (if UI not available): You can call the Update API directly with:</p>
 <div class="highlight"><pre><span></span><code>curl --user admin:admin --request POST <span class="s1">&#39;http://PMM_SERVER/v1/Updates/Start&#39;</span>
 </code></pre></div>
 <p>Replace <code>admin:admin</code> with your username/password, and replace <code>PMM_SERVER</code> with your server address.</p>
@@ -199,26 +199,16 @@
 <p>Built-In alerts are not editable, but you can copy them and edit the copies. (In <a href="../release-notes/2.14.0.html">PMM 2.14.0</a> and above).</p>
 <p>If you create a custom alert rule template you will have access to edit.</p>
 <h3 id="creating-rules">Creating rules<a class="headerlink" href="#creating-rules" title="Permanent link">&para;</a></h3>
-<p><strong>I&rsquo;m ready to create my first rule! I&rsquo;ve chosen a template and given it a name&hellip;what is the format of the fields?</strong></p>
+<p><strong>I&rsquo;m ready to create my first rule! I&rsquo;ve chosen a template and given it a name&hellip; what is the format of the fields?</strong></p>
 <ul>
 <li>
-<p>Threshold - float value, it has different meanings depending on what template is used.</p>
+<p>Duration - specifies the duration of time that the expression must be met before the alert will be fired.</p>
 </li>
 <li>
-<p>Duration - The duration the condition must be satisfied in seconds.</p>
-</li>
-<li>
-<p>Filters - A Key, Evaluator, and Value. E.g. <code>service_name=ps5.7</code></p>
+<p>Filters - A label, an operator, and a value. For example: Label: <code>service_name'</code>, Operator:<code>=(EQUAL)</code>, VALUE: <code>ps5.7</code>.</p>
 <ul>
-<li>
-<p>Key must be an exact match. You can find a complete list of keys by using the <i class="uil uil-compass"></i> <em>Explore</em> main menu item in PMM.</p>
-</li>
-<li>
-<p>Evaluator can be: <code>=</code> <code>=~</code>.</p>
-</li>
-<li>
-<p>Value is an exact match or when used with a ‘fuzzy’ evaluator (<code>=~</code>) can be a regular expression. E.g. <code>service_name=~ps.*</code></p>
-</li>
+<li>The <strong>Label</strong> field requires an exact match. You can find a complete list of labels under <i class="uil uil-compass"></i> <strong>Explore &gt; Metrics &gt; Metrics browser &gt; 2. Select labels to search in</strong>.</li>
+<li>The <strong>Value</strong> also requires an exact match, but when used with a ‘fuzzy’ (<code>=~</code>) evaluator, this can be a regular expression. For example: <em>=~ps.</em>*</li>
 </ul>
 </li>
 </ul>
@@ -235,7 +225,7 @@
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2022-05-12
+            <i class="uil uil-refresh"></i> Page updated 2022-07-19
         </li>
         
     </ul>
@@ -309,6 +299,18 @@
 
 <li class="toctree-l3">
     <a class="reference internal" href="../setting-up/server/docker.html">Docker</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../setting-up/server/podman.html">Podman</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../setting-up/server/helm.html">Helm</a>
 
 
 
@@ -517,7 +519,7 @@
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="render-dashboard-images.html">Render dashboard images</a>
+    <a class="reference internal" href="render-dashboard-images.md">None</a>
 
 
 
@@ -987,6 +989,12 @@
 
 
 <li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-pxc-galera-cluster-summary-experimental.html">Experimental PXC/Galera Cluster Summary</a>
+
+
+
+
+<li class="toctree-l4">
     <a class="reference internal" href="../details/dashboards/dashboard-pxc-galera-nodes-compare.html">PXC/Galera Nodes Compare</a>
 
 
@@ -1047,6 +1055,12 @@
 
 
 <li class="toctree-l2">
+    <a class="reference internal" href="../details/clickhouse.html">ClickHouse</a>
+
+
+
+
+<li class="toctree-l2">
     <a class="reference internal" href="../details/glossary.html">Glossary</a>
 
 
@@ -1070,6 +1084,12 @@
 
 
 <ul class="toctree" id="toctree">
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/2.29.0.html">PMM 2.29.0</a>
+
+
 
 
 <li class="toctree-l2">

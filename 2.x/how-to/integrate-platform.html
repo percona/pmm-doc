@@ -162,7 +162,16 @@
 <h3 id="disconnect-a-pmm-instance">Disconnect a PMM instance<a class="headerlink" href="#disconnect-a-pmm-instance" title="Permanent link">&para;</a></h3>
 <p>Disconnect a PMM instance when you want to unlink it from your Percona Platform organization or stop monitoring it there. </p>
 <p>To disconnect a PMM server, go to &gt; <i class="uil uil-cog"></i> <strong>Configuration &gt; Settings &gt; Percona Platform</strong> and click <strong>Disconnect</strong>. </p>
-<p>To confirm that the server disconnected successfully, go to Percona Platform &gt;  <strong>Dashboard</strong> tab &gt; <strong>View instances</strong>. This displays the <strong>PMM instances</strong> page where you can check the list of servers currently connected to your Platform organization. </p>
+<h4 id="disconnecting-instances-as-an-admin">Disconnecting instances as an Admin<a class="headerlink" href="#disconnecting-instances-as-an-admin" title="Permanent link">&para;</a></h4>
+<p>In situations where you are not able to disconnect servers yourself, ask your PMM Admin to disconnect the server for you. For example, you may not be able to disconnect servers when PMM is moved to a network segment without outbound connections to public networks.</p>
+<div class="admonition note alert alert-primary">
+<p class="admonition-title">Availability</p>
+<p>This feature is available starting with PMM 2.29.0.</p>
+</div>
+<p>If you cannot disconnect servers yourself, ask your PMM Admin to disconnect the server for you. For example, you may not be able to disconnect servers when PMM is moved to a network segment without outbound connections to public networks.</p>
+<p>If you are a PMM Admin, you can terminate any connections to Percona Platform, even if you are not logged into PMM with a Percona Account. However, we recommend logging in with a Percona Account before disconnecting servers, as this will automatically remove the disconnected servers from Percona Platform as well. </p>
+<p>If you do disconnect servers without being connected with a Percona Account, you&rsquo;ll have to manually remove the unavailable servers from Percona Platform. This ensures that your list of connected PMM instances stays up-to-date in Percona Platform. </p>
+<p>To do this, go to <a href="https://portal.percona.com/login">PMM instances</a>, and remove any servers that you have already disconnected from PMM.</p>
 <h2 id="sign-into-pmm-with-your-percona-account">Sign into PMM with your Percona Account<a class="headerlink" href="#sign-into-pmm-with-your-percona-account" title="Permanent link">&para;</a></h2>
 <p>Once you&rsquo;ve successfully connected your PMM instance to the Percona Platform, you can also sign into PMM using your Percona Account:</p>
 <ol>
@@ -177,7 +186,7 @@
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2022-04-14
+            <i class="uil uil-refresh"></i> Page updated 2022-07-19
         </li>
         
     </ul>
@@ -251,6 +260,18 @@
 
 <li class="toctree-l3">
     <a class="reference internal" href="../setting-up/server/docker.html">Docker</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../setting-up/server/podman.html">Podman</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../setting-up/server/helm.html">Helm</a>
 
 
 
@@ -459,7 +480,7 @@
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="render-dashboard-images.html">Render dashboard images</a>
+    <a class="reference internal" href="render-dashboard-images.md">None</a>
 
 
 
@@ -929,6 +950,12 @@
 
 
 <li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-pxc-galera-cluster-summary-experimental.html">Experimental PXC/Galera Cluster Summary</a>
+
+
+
+
+<li class="toctree-l4">
     <a class="reference internal" href="../details/dashboards/dashboard-pxc-galera-nodes-compare.html">PXC/Galera Nodes Compare</a>
 
 
@@ -989,6 +1016,12 @@
 
 
 <li class="toctree-l2">
+    <a class="reference internal" href="../details/clickhouse.html">ClickHouse</a>
+
+
+
+
+<li class="toctree-l2">
     <a class="reference internal" href="../details/glossary.html">Glossary</a>
 
 
@@ -1012,6 +1045,12 @@
 
 
 <ul class="toctree" id="toctree">
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/2.29.0.html">PMM 2.29.0</a>
+
+
 
 
 <li class="toctree-l2">

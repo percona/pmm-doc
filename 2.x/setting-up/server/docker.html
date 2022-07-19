@@ -55,7 +55,7 @@
 
     <link rel="top" title="" href="https://www.percona.com/percona-monitoring-and-management/2.x" />
     
-    <link rel="next" title="Virtual Appliance" href="virtual-appliance.html" />
+    <link rel="next" title="Podman" href="podman.html" />
     
     
 </head>
@@ -88,7 +88,7 @@
     <ul class="nav nav-pills">
         
         <li class="right" style="margin-right: 10px">
-            <a href="virtual-appliance.html" title="Virtual Appliance">Next</a>
+            <a href="podman.html" title="Podman">Next</a>
         </li>
         
         
@@ -139,12 +139,52 @@
 </ul>
 </div>
 <hr />
+<p>You can store data from your PMM in:</p>
+<ol>
+<li>Docker volume (Preffered method)</li>
+<li>Data container</li>
+<li>Host directory</li>
+</ol>
+<h3 id="run-docker-with-volume">Run Docker with volume<a class="headerlink" href="#run-docker-with-volume" title="Permanent link">&para;</a></h3>
 <ol>
 <li>
 <p>Pull the image.</p>
 <div class="highlight"><pre><span></span><code>docker pull percona/pmm-server:2
 </code></pre></div>
 </li>
+<li>
+<p>Create a volume:</p>
+<div class="highlight"><pre><span></span><code>docker volume create pmm-data
+</code></pre></div>
+</li>
+<li>
+<p>Run the image:</p>
+<p><div class="highlight"><pre><span></span><code>docker run --detach --restart always <span class="se">\</span>
+--publish <span class="m">443</span>:443 <span class="se">\</span>
+-v pmm-data:/srv <span class="se">\</span>
+--name pmm-server <span class="se">\</span>
+percona/pmm-server:2
+</code></pre></div>
+4. Change the password for the default <code>admin</code> user.</p>
+<ul>
+<li>For PMM versions 2.27.0 and later:</li>
+</ul>
+<div class="highlight"><pre><span></span><code>docker <span class="nb">exec</span> -t pmm-server change-admin-password &lt;new_password&gt;
+</code></pre></div>
+<ul>
+<li>
+<p>For PMM versions prior to 2.27.0:</p>
+<div class="highlight"><pre><span></span><code>docker <span class="nb">exec</span> -t pmm-server bash -c <span class="s1">&#39;grafana-cli --homepath /usr/share/grafana --configOverrides cfg:default.paths.data=/srv/grafana admin reset-admin-password newpass&#39;</span>
+</code></pre></div>
+</li>
+</ul>
+</li>
+<li>
+<p>Visit <code>https://localhost:443</code> to see the PMM user interface in a web browser. (If you are accessing the docker host remotely, replace <code>localhost</code> with the IP or server name of the host.)</p>
+</li>
+</ol>
+<h3 id="run-docker-with-data-container">Run Docker with data container<a class="headerlink" href="#run-docker-with-data-container" title="Permanent link">&para;</a></h3>
+<ol>
 <li>
 <p>Create a persistent data container.</p>
 <div class="highlight"><pre><span></span><code>docker create --volume /srv <span class="se">\</span>
@@ -188,6 +228,30 @@ percona/pmm-server:2
 <p>Visit <code>https://localhost:443</code> to see the PMM user interface in a web browser. (If you are accessing the docker host remotely, replace <code>localhost</code> with the IP or server name of the host.)</p>
 </li>
 </ol>
+<h3 id="run-docker-with-the-host-directory">Run Docker with the host directory<a class="headerlink" href="#run-docker-with-the-host-directory" title="Permanent link">&para;</a></h3>
+<div class="admonition note alert alert-primary">
+<p class="admonition-title">Availability</p>
+<p>This feature is available starting with PMM 2.29.0.</p>
+</div>
+<ol>
+<li>Pull the image.</li>
+</ol>
+<div class="highlight"><pre><span></span><code>docker pull percona/pmm-server:2
+</code></pre></div>
+<ol>
+<li>Run the image.</li>
+</ol>
+<p><div class="highlight"><pre><span></span><code><span class="nb">export</span> <span class="nv">DATA_DIR</span><span class="o">=</span><span class="nv">$HOME</span>/srv
+docker run -v <span class="nv">$DATA_DIR</span>/srv:/srv -d --restart always --publish <span class="m">80</span>:80 --publish <span class="m">443</span>:443 --name pmm-server perconalab/pmm-server-fb:PR-2534-517015b
+</code></pre></div>
+<code>DATA_DIR</code> is a directory where you want to store the state for PMM.</p>
+<ol>
+<li>Visit <code>https://localhost:443</code> to see the PMM user interface in a web browser. (If you are accessing the docker host remotely, replace <code>localhost</code> with the IP or server name of the host.)</li>
+</ol>
+<h3 id="migrate-from-data-container-to-host-directoryvolume">Migrate from data container to host directory/volume<a class="headerlink" href="#migrate-from-data-container-to-host-directoryvolume" title="Permanent link">&para;</a></h3>
+<p>To migrate your PMM from data container to host directory or volume run the following command:
+<div class="highlight"><pre><span></span><code>docker cp &lt;containerId&gt;:/srv /target/host/directory
+</code></pre></div></p>
 <h2 id="backup">Backup<a class="headerlink" href="#backup" title="Permanent link">&para;</a></h2>
 <div class="admonition summary alert alert-info">
 <p class="admonition-title">Summary</p>
@@ -424,14 +488,6 @@ docker run --rm --volumes-from pmm-data -it percona/pmm-server:2 chown -R postgr
 <td>Enable integrated backup tools.</td>
 </tr>
 <tr>
-<td><code>PERCONA_TEST_SAAS_HOST</code></td>
-<td>SaaS server hostname.</td>
-</tr>
-<tr>
-<td><code>PERCONA_TEST_DBAAS</code></td>
-<td>Enable testing DBaaS features. (Will be deprecated in future versions.)</td>
-</tr>
-<tr>
 <td><code>ENABLE_DBAAS</code></td>
 <td>Enable DBaaS features.</td>
 </tr>
@@ -443,9 +499,44 @@ docker run --rm --volumes-from pmm-data -it percona/pmm-server:2 chown -R postgr
 <td><code>PMM_TRACE</code></td>
 <td>Enables a more verbose log level including trace-back information.</td>
 </tr>
+</tbody>
+</table>
+<h2 id="preview-environment-variables">Preview environment variables<a class="headerlink" href="#preview-environment-variables" title="Permanent link">&para;</a></h2>
+<div class="admonition caution alert alert-warning">
+<p class="admonition-title">Warning</p>
+<p>The <code>PERCONA_TEST_*</code> environment variables are experimental and subject to change. It is recommended that you use these variables for testing purposes only and not on production.</p>
+</div>
+<table class="table">
+<thead>
 <tr>
-<td><code>PMM_PUBLIC_ADDRESS</code></td>
-<td>External IP address or the DNS name on which PMM server is running.</td>
+<th scope="col">Variable</th>
+<th scope="col">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>PERCONA_TEST_SAAS_HOST</code></td>
+<td>SaaS server hostname.</td>
+</tr>
+<tr>
+<td><code>PERCONA_TEST_DBAAS</code></td>
+<td>Enable testing DBaaS features. (Will be deprecated in future versions.)</td>
+</tr>
+<tr>
+<td><code>PERCONA_TEST_PMM_CLICKHOUSE_ADDR</code></td>
+<td>Name of the host and port of the external ClickHouse database instance.</td>
+</tr>
+<tr>
+<td><code>PERCONA_TEST_PMM_CLICKHOUSE_DATABASE</code></td>
+<td>Database name of the external ClickHouse database instance.</td>
+</tr>
+<tr>
+<td><code>​​PERCONA_TEST_PMM_CLICKHOUSE_POOL_SIZE</code></td>
+<td>The maximum number of threads in the current connection thread pool. This value cannot be bigger than max_thread_pool_size.</td>
+</tr>
+<tr>
+<td><code>PERCONA_TEST_PMM_CLICKHOUSE_BLOCK_SIZE</code></td>
+<td>The number of rows to load from tables in one block for this connection.</td>
 </tr>
 </tbody>
 </table>
@@ -470,6 +561,14 @@ docker run --rm --volumes-from pmm-data -it percona/pmm-server:2 chown -R postgr
 <tr>
 <td><code>SUPERVISOR_</code></td>
 <td><code>supervisord</code> environment variables.</td>
+</tr>
+<tr>
+<td><code>KUBERNETES_</code></td>
+<td>Kubernetes environment variables.</td>
+</tr>
+<tr>
+<td><code>MONITORING_</code></td>
+<td>Kubernetes monitoring environment variables.</td>
 </tr>
 <tr>
 <td><code>PERCONA_TEST_</code></td>
@@ -498,8 +597,8 @@ docker run --rm --volumes-from pmm-data -it percona/pmm-server:2 chown -R postgr
 <ol>
 <li>
 <p>On an internet-connected host, download the Docker image and its checksum file.</p>
-<div class="highlight"><pre><span></span><code>wget https://downloads.percona.com/downloads/pmm2/2.28.0/docker/pmm-server-2.28.0.docker
-wget https://downloads.percona.com/downloads/pmm2/2.28.0/docker/pmm-server-2.28.0.sha256sum
+<div class="highlight"><pre><span></span><code>wget https://downloads.percona.com/downloads/pmm2/2.29.0/docker/pmm-server-2.29.0.docker
+wget https://downloads.percona.com/downloads/pmm2/2.29.0/docker/pmm-server-2.29.0.sha256sum
 </code></pre></div>
 </li>
 <li>
@@ -510,18 +609,18 @@ wget https://downloads.percona.com/downloads/pmm2/2.28.0/docker/pmm-server-2.28.
 </li>
 <li>
 <p>(Optional) Check the Docker image file integrity.</p>
-<div class="highlight"><pre><span></span><code>shasum -ca <span class="m">256</span> pmm-server-2.28.0.sha256sum
+<div class="highlight"><pre><span></span><code>shasum -ca <span class="m">256</span> pmm-server-2.29.0.sha256sum
 </code></pre></div>
 </li>
 <li>
 <p>Load the image.</p>
-<div class="highlight"><pre><span></span><code>docker load -i pmm-server-2.28.0.docker
+<div class="highlight"><pre><span></span><code>docker load -i pmm-server-2.29.0.docker
 </code></pre></div>
 </li>
 <li>
 <p>Create the <code>pmm-data</code> persistent data container.</p>
 <div class="highlight"><pre><span></span><code>docker create --volume /srv <span class="se">\</span>
---name pmm-data percona/pmm-server:2.28.0 /bin/true
+--name pmm-data percona/pmm-server:2.29.0 /bin/true
 </code></pre></div>
 </li>
 <li>
@@ -532,7 +631,7 @@ wget https://downloads.percona.com/downloads/pmm2/2.28.0/docker/pmm-server-2.28.
 --publish <span class="m">443</span>:443 <span class="se">\</span>
 --volumes-from pmm-data <span class="se">\</span>
 --name pmm-server <span class="se">\</span>
-percona/pmm-server:2.28.0
+percona/pmm-server:2.29.0
 </code></pre></div>
 </li>
 </ol>
@@ -543,7 +642,7 @@ percona/pmm-server:2.28.0
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2022-05-20
+            <i class="uil uil-refresh"></i> Page updated 2022-07-19
         </li>
         
     </ul>
@@ -554,7 +653,7 @@ percona/pmm-server:2.28.0
     <ul class="nav nav-pills">
         
         <li class="right" style="margin-right: 10px">
-            <a href="virtual-appliance.html" title="Virtual Appliance">Next</a>
+            <a href="podman.html" title="Podman">Next</a>
         </li>
         
         
@@ -617,6 +716,18 @@ percona/pmm-server:2.28.0
 
 <li class="toctree-l3">
     <a class="reference internal" href="docker.html">Docker</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="podman.html">Podman</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="helm.html">Helm</a>
 
 
 
@@ -825,7 +936,7 @@ percona/pmm-server:2.28.0
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../../how-to/render-dashboard-images.html">Render dashboard images</a>
+    <a class="reference internal" href="../../how-to/render-dashboard-images.md">None</a>
 
 
 
@@ -1295,6 +1406,12 @@ percona/pmm-server:2.28.0
 
 
 <li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-pxc-galera-cluster-summary-experimental.html">Experimental PXC/Galera Cluster Summary</a>
+
+
+
+
+<li class="toctree-l4">
     <a class="reference internal" href="../../details/dashboards/dashboard-pxc-galera-nodes-compare.html">PXC/Galera Nodes Compare</a>
 
 
@@ -1355,6 +1472,12 @@ percona/pmm-server:2.28.0
 
 
 <li class="toctree-l2">
+    <a class="reference internal" href="../../details/clickhouse.html">ClickHouse</a>
+
+
+
+
+<li class="toctree-l2">
     <a class="reference internal" href="../../details/glossary.html">Glossary</a>
 
 
@@ -1378,6 +1501,12 @@ percona/pmm-server:2.28.0
 
 
 <ul class="toctree" id="toctree">
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.29.0.html">PMM 2.29.0</a>
+
+
 
 
 <li class="toctree-l2">
@@ -1619,7 +1748,7 @@ percona/pmm-server:2.28.0
 
 <h4>Next page</h4>
 <p class="topless">
-    <a href="virtual-appliance.html" title="next chapter">Virtual Appliance</a>
+    <a href="podman.html" title="next chapter">Podman</a>
 </p>
 
 

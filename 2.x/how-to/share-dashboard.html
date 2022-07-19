@@ -32,7 +32,7 @@
 
 
 
-<title>Percona Monitoring and Management &mdash; Render dashboard images</title>
+<title>Percona Monitoring and Management &mdash; Share dashboards and panels</title>
 
 <head>
     
@@ -54,8 +54,6 @@
 </script>
 
     <link rel="top" title="" href="https://www.percona.com/percona-monitoring-and-management/2.x" />
-    
-    <link rel="next" title="Extend Metrics" href="extend-metrics.html" />
     
     
 </head>
@@ -87,14 +85,6 @@
 <div class="related row">
     <ul class="nav nav-pills">
         
-        <li class="right" style="margin-right: 10px">
-            <a href="extend-metrics.html" title="Extend Metrics">Next</a>
-        </li>
-        
-        
-        <li class="right" style="margin-right: 10px">
-            <a href="annotate.html" title="Annotate">Previous</a>
-        </li>
         
         <li>
             <a href="https://www.percona.com/percona-monitoring-and-management/2.x">Home</a>
@@ -107,7 +97,7 @@
 <div class="small">
     <ul class="list-inline">
         <li class="pull-right">
-            <a href="https://github.com/percona/pmm-doc/edit/main/docs/how-to/render-dashboard-images.md" target="_blank" title=""><i class="uil uil-pen"></i> <b>Edit this page</b></a>
+            <a href="https://github.com/percona/pmm-doc/edit/main/docs/how-to/share-dashboard.md" target="_blank" title=""><i class="uil uil-pen"></i> <b>Edit this page</b></a>
         </li>
     </ul>
 </div>
@@ -115,9 +105,26 @@
 
                 <div class="bodywrapper">
                     <div class="body">
-                        <h1 id="render-dashboard-images">Render dashboard images<a class="headerlink" href="#render-dashboard-images" title="Permanent link">&para;</a></h1>
-<p>At the moment, PMM Server can&rsquo;t render dashboard images exported by Grafana without these steps.</p>
-<h2 id="part-1-install-dependencies">Part 1: Install dependencies<a class="headerlink" href="#part-1-install-dependencies" title="Permanent link">&para;</a></h2>
+                        <h1 id="share-dashboards-and-panels">Share dashboards and panels<a class="headerlink" href="#share-dashboards-and-panels" title="Permanent link">&para;</a></h1>
+<p>When you need to share a dashboard with your team members, you can either send them a direct link to the dashboard, or render and send the dashboard as a .PNG image.</p>
+<h2 id="share-as-direct-link">Share as direct link<a class="headerlink" href="#share-as-direct-link" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Go to the dashboard that you want to share.</li>
+<li>Click at the top of the dashboard to display the panel menu.</li>
+<li>Select <strong>Share</strong> to reveal the <strong>Share Panel</strong> and either:  </li>
+<li>copy and send the full URL for the dashboard, OR</li>
+<li>toggle the <strong>Short URL</strong> option to generate a simple link with a unique identifier</li>
+</ol>
+<div class="admonition hint alert alert-success">
+<p class="admonition-title">Tip</p>
+<p>If your current domain is different than the one specified in the Grafana .INI configuration file, PMM will ask you to correct this mismatch before you can generate a short URL:
+<div class="lightgallery"><a data-sub-html="image" href="../_images/PMM_Common_Panel_Menu_Share.png"><img alt="image" src="../_images/PMM_Common_Panel_Menu_Share.png" />
+To fix this </a></div></p>
+</div>
+<h2 id="share-as-a-png-file">Share as a PNG file<a class="headerlink" href="#share-as-a-png-file" title="Permanent link">&para;</a></h2>
+<p>Rendering images requires the Image Renderer plug-in. If your PMM Admin has not installed this for your PMM instance, you will see the following error message under <strong>Share Panel &gt; Link</strong>.
+<div class="lightgallery"><a data-sub-html="image" href="../_images/No_Image_Render_Plugin.png"><img alt="image" src="../_images/No_Image_Render_Plugin.png" /></a></div></p>
+<p>To install the dependencies:</p>
 <ol>
 <li>
 <p>Connect to your PMM Server Docker container.</p>
@@ -125,7 +132,7 @@
 </code></pre></div>
 </li>
 <li>
-<p>Install Grafana plugins.</p>
+<p>Install Grafana plug-ins.</p>
 <div class="highlight"><pre><span></span><code>grafana-cli plugins install grafana-image-renderer
 </code></pre></div>
 </li>
@@ -150,27 +157,14 @@ trousers xdg-utils xkeyboard-config alsa-lib
 </code></pre></div>
 </li>
 </ol>
-<h2 id="part-2-share-the-image">Part 2: Share the image<a class="headerlink" href="#part-2-share-the-image" title="Permanent link">&para;</a></h2>
+<p>To render the image: </p>
 <ol>
-<li>
-<p>Navigate to the dashboard you want to share.</p>
-</li>
-<li>
-<p>Open the panel menu.</p>
-</li>
-<li>
-<p>Select <em>Share</em> to reveal the <em>Share Panel</em>.</p>
-<p><div class="lightgallery"><a data-sub-html="image" href="../_images/PMM_Common_Panel_Menu_Share.jpg"><img alt="image" src="../_images/PMM_Common_Panel_Menu_Share.jpg" /></a></div></p>
-</li>
-<li>
-<p>Click <em>Direct link rendered image</em>.</p>
-</li>
-<li>
-<p>A new browser tab opens. Wait for the image to be rendered then use your browser&rsquo;s image save function to download the image.</p>
-</li>
+<li>Go to the dashboard that you want to share.</li>
+<li>Click at the top of the dashboard to display the panel menu.</li>
+<li>Select <strong>Share</strong> to reveal the <strong>Share Panel</strong>.</li>
+<li>Click <strong>Direct link rendered image</strong>. This opens a new browser tab.</li>
+<li>Wait for the image to be rendered, then use your browser&rsquo;s Image Save function to download the image.</li>
 </ol>
-<p>If the necessary plugins are not installed, a message in the Share Panel will say so.</p>
-<p><div class="lightgallery"><a data-sub-html="image" href="../_images/PMM_Common_Panel_Menu_Share_Link_Missing_Plugins.jpg"><img alt="image" src="../_images/PMM_Common_Panel_Menu_Share_Link_Missing_Plugins.jpg" /></a></div></p>
                     </div>
                 </div>
                 
@@ -178,7 +172,7 @@ trousers xdg-utils xkeyboard-config alsa-lib
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2021-06-29
+            <i class="uil uil-refresh"></i> Page updated 2022-07-19
         </li>
         
     </ul>
@@ -188,14 +182,6 @@ trousers xdg-utils xkeyboard-config alsa-lib
 <div class="related row">
     <ul class="nav nav-pills">
         
-        <li class="right" style="margin-right: 10px">
-            <a href="extend-metrics.html" title="Extend Metrics">Next</a>
-        </li>
-        
-        
-        <li class="right" style="margin-right: 10px">
-            <a href="annotate.html" title="Annotate">Previous</a>
-        </li>
         
         <li>
             <a href="https://www.percona.com/percona-monitoring-and-management/2.x">Home</a>
@@ -252,6 +238,18 @@ trousers xdg-utils xkeyboard-config alsa-lib
 
 <li class="toctree-l3">
     <a class="reference internal" href="../setting-up/server/docker.html">Docker</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../setting-up/server/podman.html">Podman</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../setting-up/server/helm.html">Helm</a>
 
 
 
@@ -460,7 +458,7 @@ trousers xdg-utils xkeyboard-config alsa-lib
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="render-dashboard-images.html">Render dashboard images</a>
+    <a class="reference internal" href="render-dashboard-images.md">None</a>
 
 
 
@@ -930,6 +928,12 @@ trousers xdg-utils xkeyboard-config alsa-lib
 
 
 <li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-pxc-galera-cluster-summary-experimental.html">Experimental PXC/Galera Cluster Summary</a>
+
+
+
+
+<li class="toctree-l4">
     <a class="reference internal" href="../details/dashboards/dashboard-pxc-galera-nodes-compare.html">PXC/Galera Nodes Compare</a>
 
 
@@ -990,6 +994,12 @@ trousers xdg-utils xkeyboard-config alsa-lib
 
 
 <li class="toctree-l2">
+    <a class="reference internal" href="../details/clickhouse.html">ClickHouse</a>
+
+
+
+
+<li class="toctree-l2">
     <a class="reference internal" href="../details/glossary.html">Glossary</a>
 
 
@@ -1013,6 +1023,12 @@ trousers xdg-utils xkeyboard-config alsa-lib
 
 
 <ul class="toctree" id="toctree">
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/2.29.0.html">PMM 2.29.0</a>
+
+
 
 
 <li class="toctree-l2">
@@ -1246,16 +1262,6 @@ trousers xdg-utils xkeyboard-config alsa-lib
 
         
 
-<h4>Previous page</h4>
-<p class="topless">
-    <a href="annotate.html" title="previous chapter">Annotate</a>
-</p>
-
-
-<h4>Next page</h4>
-<p class="topless">
-    <a href="extend-metrics.html" title="next chapter">Extend Metrics</a>
-</p>
 
 
         {@ product_series @}

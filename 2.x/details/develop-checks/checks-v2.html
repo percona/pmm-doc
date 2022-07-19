@@ -237,12 +237,8 @@
 <h2 id="checks-script">Checks script<a class="headerlink" href="#checks-script" title="Permanent link">&para;</a></h2>
 <p>The check script assumes that there is a function with <strong>check_context</strong>, that accepts a <em>list</em> where each item represents result of a single query specified in check. Each result itself is a <em>list</em> of <em>docs</em> containing returned rows for SQL databases and documents for MongoDB. It returns zero, one, or several check results that are then converted to alerts.</p>
 <h2 id="check-severity-levels">Check severity levels<a class="headerlink" href="#check-severity-levels" title="Permanent link">&para;</a></h2>
-<p>PMM can display failed checks as <strong>Critical</strong>, <strong>Major</strong> or <strong>Trivial</strong>. These three severity levels correspond to the following severity types in the check source:</p>
-<ul>
-<li><strong>Critical</strong>: emergency, alert, critical</li>
-<li><strong>Major</strong>: warning  </li>
-<li><strong>Trivial</strong>: notice, info, debug</li>
-</ul>
+<p>You can label your advisor checks with one of the following available severity levels: <strong>Emergency</strong>, <strong>Alert</strong>, <strong>Critical</strong>, <strong>Error</strong>, <strong>Warning</strong>, <strong>Notice</strong>, <strong>Info</strong>, <strong>Debug</strong>.
+PMM groups failed checks by their severity, and displays them under <strong>Advisors Checks &gt; Failed Checks</strong>. </p>
 <h2 id="check-fields">Check fields<a class="headerlink" href="#check-fields" title="Permanent link">&para;</a></h2>
 <p>Checks can include the following fields:</p>
 <ul>
@@ -400,7 +396,7 @@ supervisorctl tail -f pmm-managed
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2022-07-13
+            <i class="uil uil-refresh"></i> Page updated 2022-07-19
         </li>
         
     </ul>
@@ -474,6 +470,18 @@ supervisorctl tail -f pmm-managed
 
 <li class="toctree-l3">
     <a class="reference internal" href="../../setting-up/server/docker.html">Docker</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../setting-up/server/podman.html">Podman</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../setting-up/server/helm.html">Helm</a>
 
 
 
@@ -682,7 +690,7 @@ supervisorctl tail -f pmm-managed
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../../how-to/render-dashboard-images.html">Render dashboard images</a>
+    <a class="reference internal" href="../../how-to/render-dashboard-images.md">None</a>
 
 
 
@@ -1152,6 +1160,12 @@ supervisorctl tail -f pmm-managed
 
 
 <li class="toctree-l4">
+    <a class="reference internal" href="../dashboards/dashboard-pxc-galera-cluster-summary-experimental.html">Experimental PXC/Galera Cluster Summary</a>
+
+
+
+
+<li class="toctree-l4">
     <a class="reference internal" href="../dashboards/dashboard-pxc-galera-nodes-compare.html">PXC/Galera Nodes Compare</a>
 
 
@@ -1212,6 +1226,12 @@ supervisorctl tail -f pmm-managed
 
 
 <li class="toctree-l2">
+    <a class="reference internal" href="../clickhouse.html">ClickHouse</a>
+
+
+
+
+<li class="toctree-l2">
     <a class="reference internal" href="../glossary.html">Glossary</a>
 
 
@@ -1235,6 +1255,12 @@ supervisorctl tail -f pmm-managed
 
 
 <ul class="toctree" id="toctree">
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.29.0.html">PMM 2.29.0</a>
+
+
 
 
 <li class="toctree-l2">

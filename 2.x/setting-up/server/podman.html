@@ -1,0 +1,1549 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<title>Percona Monitoring and Management &mdash; Podman</title>
+
+<head>
+    
+
+
+    
+<script src="../../js/version-select.js" type="text/javascript"></script>
+
+<script src="../../js/toctree.js" type="text/javascript"></script>
+
+<script src="../../js/lightgallery.min.js" type="text/javascript"></script>
+
+
+<script>
+    var elements = document.getElementsByClassName("lightgallery");
+    for(var i=0; i<elements.length; i++) {
+       lightGallery(elements[i]);
+    }
+</script>
+
+    <link rel="top" title="" href="https://www.percona.com/percona-monitoring-and-management/2.x" />
+    
+    <link rel="next" title="Helm" href="helm.html" />
+    
+    
+</head>
+
+<body>
+    <div class="container">
+        
+<link rel="stylesheet" href="../../css/version-select.css" type="text/css">
+<link rel="stylesheet" href="../../css/toctree.css" type="text/css">
+
+        
+<script src="../../js/version-select.js" type="text/javascript"></script>
+
+<script src="../../js/toctree.js" type="text/javascript"></script>
+
+<script src="../../js/lightgallery.min.js" type="text/javascript"></script>
+
+
+<script>
+    var elements = document.getElementsByClassName("lightgallery");
+    for(var i=0; i<elements.length; i++) {
+       lightGallery(elements[i]);
+    }
+</script>
+
+        <div class="document row">
+            <div class="documentwrapper col-md-9 col-md-push-3">
+                
+<div class="related row">
+    <ul class="nav nav-pills">
+        
+        <li class="right" style="margin-right: 10px">
+            <a href="helm.html" title="Helm">Next</a>
+        </li>
+        
+        
+        <li class="right" style="margin-right: 10px">
+            <a href="docker.html" title="Docker">Previous</a>
+        </li>
+        
+        <li>
+            <a href="https://www.percona.com/percona-monitoring-and-management/2.x">Home</a>
+        </li>
+    </ul>
+</div>
+
+                
+
+<div class="small">
+    <ul class="list-inline">
+        <li class="pull-right">
+            <a href="https://github.com/percona/pmm-doc/edit/main/docs/setting-up/server/podman.md" target="_blank" title=""><i class="uil uil-pen"></i> <b>Edit this page</b></a>
+        </li>
+    </ul>
+</div>
+
+
+                <div class="bodywrapper">
+                    <div class="body">
+                        <h1 id="podman">Podman<a class="headerlink" href="#podman" title="Permanent link">&para;</a></h1>
+<div class="admonition caution alert alert-warning">
+<p class="admonition-title">Caution</p>
+<p>Podman support is currently in <a href="../../details/glossary.html#technical-preview">technical preview</a> and is subject to change.</p>
+</div>
+<p>How to run PMM Server with Podman on our <a href="https://hub.docker.com/r/percona/pmm-server">Docker image</a></p>
+<div class="admonition note alert alert-primary">
+<p>The tags used here are for the current release (PMM 2.29.0). Other <a href="https://hub.docker.com/r/percona/pmm-server/tags">tags</a> are available.</p>
+</div>
+<div class="admonition seealso alert alert-info">
+<p class="admonition-title">See also</p>
+<p><a href="docker.html">Docker</a></p>
+</div>
+<p>Podman is an open-source project available on most Linux platforms and resides on <a href="https://github.com/containers/podman">GitHub</a>. Podman is a daemonless container engine for developing, managing, and running Open Container Initiative (OCI) containers and container images on your Linux System. </p>
+<p>Non-privileged users could run containers under the control of Podman.</p>
+<p>It could be just aliased (<code>alias docker=podman</code>) with docker and work with the same way. All instructions from <a href="docker.html">Docker</a> section also apply here.</p>
+<p>Percona recommends running PMM as a non-privileged user and running it as part of the SystemD service provided. SystemD service ensures that the service is running and maintains logs and other management features (start, stop, etc.).</p>
+<h2 id="before-you-start">Before you start<a class="headerlink" href="#before-you-start" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Install <a href="https://podman.io/getting-started/installation">Podman</a>.</li>
+<li>Configure <a href="https://github.com/containers/podman/blob/main/docs/tutorials/rootless_tutorial.md">rootless</a>  Podman.</li>
+</ul>
+<h2 id="run-as-non-privileged-user-to-start-pmm">Run as non-privileged user to start PMM<a class="headerlink" href="#run-as-non-privileged-user-to-start-pmm" title="Permanent link">&para;</a></h2>
+<div class="admonition note alert alert-primary">
+<p class="admonition-title">Availability</p>
+<p>This feature is available starting with PMM 2.29.0.</p>
+</div>
+<div class="admonition summary alert alert-info">
+<p class="admonition-title">Summary</p>
+<ul>
+<li>Install.</li>
+<li>Configure.</li>
+<li>Enable and Start.</li>
+<li>Open the PMM UI in a browser.</li>
+</ul>
+</div>
+<hr />
+<ol>
+<li>
+<p>Install.</p>
+<p>Create <code>~/.config/systemd/user/pmm-server.service</code> file:</p>
+<div class="highlight"><pre><span></span><code>mkdir -p ~/.config/systemd/user/
+cat &lt;&lt; <span class="s2">&quot;EOF&quot;</span> &gt; ~/.config/systemd/user/pmm-server.service
+<span class="o">[</span>Unit<span class="o">]</span>
+<span class="nv">Description</span><span class="o">=</span>pmm-server
+<span class="nv">Wants</span><span class="o">=</span>network-online.target
+<span class="nv">After</span><span class="o">=</span>network-online.target
+<span class="nv">After</span><span class="o">=</span>nss-user-lookup.target nss-lookup.target
+<span class="nv">After</span><span class="o">=</span>time-sync.target
+
+<span class="o">[</span>Service<span class="o">]</span>
+<span class="nv">Type</span><span class="o">=</span>simple
+
+<span class="c1"># set environment for this unit</span>
+<span class="nv">Environment</span><span class="o">=</span><span class="nv">PMM_PUBLIC_PORT</span><span class="o">=</span><span class="m">8443</span>
+<span class="nv">Environment</span><span class="o">=</span><span class="nv">PMM_VOLUME_NAME</span><span class="o">=</span>%N
+<span class="nv">Environment</span><span class="o">=</span><span class="nv">PMM_TAG</span><span class="o">=</span><span class="m">2</span>.29.0
+<span class="nv">Environment</span><span class="o">=</span><span class="nv">PMM_IMAGE</span><span class="o">=</span>docker.io/percona/pmm-server
+<span class="nv">Environment</span><span class="o">=</span><span class="nv">PMM_ENV_FILE</span><span class="o">=</span>%h/.config/pmm-server/pmm-server.env
+
+<span class="c1"># optional env file that could override previous env settings for this unit</span>
+<span class="nv">EnvironmentFile</span><span class="o">=</span>-%h/.config/pmm-server/env
+
+<span class="nv">ExecStart</span><span class="o">=</span>/usr/bin/podman run --rm --replace<span class="o">=</span><span class="nb">true</span> --name<span class="o">=</span>%N -p <span class="si">${</span><span class="nv">PMM_PUBLIC_PORT</span><span class="si">}</span>:443/tcp --ulimit<span class="o">=</span>host --volume<span class="o">=</span><span class="si">${</span><span class="nv">PMM_VOLUME_NAME</span><span class="si">}</span>:/srv --env-file<span class="o">=</span><span class="si">${</span><span class="nv">PMM_ENV_FILE</span><span class="si">}</span> --health-cmd<span class="o">=</span>none --health-interval<span class="o">=</span>disable <span class="si">${</span><span class="nv">PMM_IMAGE</span><span class="si">}</span>:<span class="si">${</span><span class="nv">PMM_TAG</span><span class="si">}</span>
+<span class="nv">ExecStop</span><span class="o">=</span>/usr/bin/podman stop -t <span class="m">10</span> %N
+<span class="nv">Restart</span><span class="o">=</span>on-failure
+<span class="nv">RestartSec</span><span class="o">=</span><span class="m">20</span>
+
+<span class="o">[</span>Install<span class="o">]</span>
+<span class="nv">Alias</span><span class="o">=</span>%N
+<span class="nv">WantedBy</span><span class="o">=</span>default.target
+
+EOF
+</code></pre></div>
+<p>Create <code>~/.config/pmm-server/pmm-server.env</code> file:</p>
+<div class="highlight"><pre><span></span><code>mkdir -p ~/.config/pmm-server/
+cat &lt;&lt; <span class="s2">&quot;EOF&quot;</span> &gt; ~/.config/pmm-server/pmm-server.env
+<span class="c1"># env file passed to the container</span>
+<span class="c1"># full list of environment variables:</span>
+<span class="c1"># https://www.percona.com/doc/percona-monitoring-and-management/2.x/setting-up/server/docker.html#environment-variables</span>
+
+<span class="c1"># keep updates disabled</span>
+<span class="c1"># do image replacement instead (update the tag and restart the service)</span>
+<span class="nv">DISABLE_UPDATES</span><span class="o">=</span><span class="m">1</span>
+
+<span class="c1"># Enable DBaaS feature</span>
+<span class="c1">#ENABLE_DBAAS=1</span>
+EOF
+</code></pre></div>
+</li>
+<li>
+<p>Configure.</p>
+<p>There are 2 configuration files:
+1.  <code>~/.config/pmm-server/pmm-server.env</code> defines environment variables for PMM Server (PMM parameters like DBaaS feature and etc)
+2.  <code>~/.config/pmm-server/env</code> defines environment variables for SystemD service (image tags, repo and etc)</p>
+<p>SystemD service passes the environment parameters from the <code>pmm-server.env</code>file (in <code>~/.config/pmm-server/pmm-server.env</code>) to PMM. For more information about container environment variables, check <a href="docker.html#environment-variables">Docker Environment</a>.</p>
+<p>SystemD service uses some environment variables that could be customized if needed:</p>
+<div class="highlight"><pre><span></span><code>Environment=PMM_PUBLIC_PORT=8443
+Environment=PMM_VOLUME_NAME=%N
+Environment=PMM_TAG=2.29.0
+Environment=PMM_IMAGE=docker.io/percona/pmm-server
+</code></pre></div>
+<p>You can override the environment variables by defining them in the file  <code>~/.config/pmm-server/env</code>. For example, to override the path to a custom registry <code>~/.config/pmm-server/env</code>:</p>
+<div class="highlight"><pre><span></span><code>mkdir -p ~/.config/pmm-server/
+cat &lt;&lt; <span class="s2">&quot;EOF&quot;</span> &gt; ~/.config/pmm-server/env
+<span class="nv">PMM_TAG</span><span class="o">=</span><span class="m">2</span>.28.0
+<span class="nv">PMM_IMAGE</span><span class="o">=</span>docker.io/percona/pmm-server
+<span class="nv">PMM_PUBLIC_PORT</span><span class="o">=</span><span class="m">8443</span>
+EOF
+</code></pre></div>
+<div class="admonition caution alert alert-warning">
+<p class="admonition-title">Important</p>
+<p>Ensure that you modify PMM_TAG in <code>~/.config/pmm-server/env</code> and update it regularly as Percona cannot update it. It needs to be done by you.</p>
+</div>
+</li>
+<li>
+<p>Enable and Start.</p>
+<div class="highlight"><pre><span></span><code>systemctl --user <span class="nb">enable</span> --now pmm-server
+</code></pre></div>
+</li>
+<li>
+<p>Visit <code>https://localhost:8443</code> to see the PMM user interface in a web browser. (If you are accessing host remotely, replace <code>localhost</code> with the IP or server name of the host.)</p>
+</li>
+</ol>
+<div hidden>
+<div class="highlight"><pre><span></span><code><span class="c1">#first pull can take time</span>
+sleep <span class="m">80</span>
+timeout <span class="m">60</span> podman <span class="nb">wait</span> --condition<span class="o">=</span>running pmm-server
+</code></pre></div>
+</div>
+
+<h2 id="backup">Backup<a class="headerlink" href="#backup" title="Permanent link">&para;</a></h2>
+<div class="admonition summary alert alert-info">
+<p class="admonition-title">Summary</p>
+<ul>
+<li>Stop PMM server.</li>
+<li>Backup the data.</li>
+</ul>
+</div>
+<hr />
+<div class="admonition caution alert alert-warning">
+<p class="admonition-title">Important</p>
+<p>Grafana plugins have been moved to the data volume <code>/srv</code> since the 2.23.0 version. So if you are upgrading PMM from any version before 2.23.0 and have installed additional plugins then plugins should be installed again after the upgrade.
+To check used grafana plugins: <code>podman exec -it pmm-server ls /var/lib/grafana/plugins</code></p>
+</div>
+<ol>
+<li>
+<p>Stop PMM server.</p>
+<div class="highlight"><pre><span></span><code>systemctl --user stop pmm-server
+</code></pre></div>
+</li>
+<li>
+<p>Backup the data.</p>
+<p><div hidden>
+<div class="highlight"><pre><span></span><code>podman <span class="nb">wait</span> --condition<span class="o">=</span>stopped pmm-server <span class="o">||</span> <span class="nb">true</span>
+sleep <span class="m">30</span>
+</code></pre></div>
+</div></p>
+<div class="highlight"><pre><span></span><code>podman volume <span class="nb">export</span> pmm-server --output pmm-server-backup.tar
+</code></pre></div>
+<div class="admonition caution alert alert-warning">
+<p class="admonition-title">Important</p>
+<p>If you changed the default name to <code>PMM_VOLUME_NAME</code> environment variable, use that name after <code>export</code> instead of <code>pmm-server</code> (which is the default volume name).</p>
+</div>
+</li>
+</ol>
+<h2 id="upgrade">Upgrade<a class="headerlink" href="#upgrade" title="Permanent link">&para;</a></h2>
+<div class="admonition summary alert alert-info">
+<p class="admonition-title">Summary</p>
+<ul>
+<li>Perform a backup.</li>
+<li>Update PMM tag.</li>
+<li>Pre-pull image.</li>
+<li>Run it.</li>
+</ul>
+</div>
+<hr />
+<div class="admonition caution alert alert-warning">
+<p class="admonition-title">Important</p>
+<p>You cannot downgrade. To go to a previous version, you must create a backup before upgrading.</p>
+</div>
+<div class="admonition hint alert alert-success">
+<p class="admonition-title">Tip</p>
+<p>To see the current release running on your system, use the <em>PMM Upgrade</em> panel on the <em>Home Dashboard</em>, or run:</p>
+<div class="highlight"><pre><span></span><code>podman <span class="nb">exec</span> -it pmm-server <span class="se">\</span>
+curl -ku admin:admin https://localhost/v1/version
+</code></pre></div>
+</div>
+<p>(If you are accessing the podman host remotely, replace <code>localhost</code> with the IP or server name of the host.)</p>
+<ol>
+<li>
+<p>Perform a <a href="#backup">backup</a>.</p>
+</li>
+<li>
+<p>Update PMM tag.</p>
+<p>Edit <code>~/.config/pmm-server/env</code> and create/update with a new tag from <a href="https://per.co.na/pmm/latest">latest release</a>:</p>
+<div class="highlight"><pre><span></span><code>sed -i <span class="s2">&quot;s/PMM_TAG=.*/PMM_TAG=2.29.0/g&quot;</span> ~/.config/pmm-server/env
+</code></pre></div>
+</li>
+<li>
+<p>Pre-pull image for faster restart.</p>
+<p><div hidden>
+<div class="highlight"><pre><span></span><code>sed -i <span class="s2">&quot;s/PMM_TAG=.*/PMM_TAG=2.29.0-rc/g&quot;</span> ~/.config/pmm-server/env
+sed -i <span class="s2">&quot;s|PMM_IMAGE=.*|PMM_IMAGE=docker.io/perconalab/pmm-server|g&quot;</span> ~/.config/pmm-server/env
+</code></pre></div>
+</div></p>
+<div class="highlight"><pre><span></span><code><span class="nb">source</span> ~/.config/pmm-server/env
+podman pull <span class="si">${</span><span class="nv">PMM_IMAGE</span><span class="si">}</span>:<span class="si">${</span><span class="nv">PMM_TAG</span><span class="si">}</span>
+</code></pre></div>
+</li>
+<li>
+<p>Run PMM.</p>
+<div class="highlight"><pre><span></span><code>systemctl --user restart pmm-server
+</code></pre></div>
+</li>
+</ol>
+<div hidden>
+<div class="highlight"><pre><span></span><code>sleep <span class="m">30</span>
+timeout <span class="m">60</span> podman <span class="nb">wait</span> --condition<span class="o">=</span>running pmm-server
+</code></pre></div>
+</div>
+
+<h2 id="restore">Restore<a class="headerlink" href="#restore" title="Permanent link">&para;</a></h2>
+<div class="admonition summary alert alert-info">
+<p class="admonition-title">Summary</p>
+<ul>
+<li>Stop PMM server.</li>
+<li>Run PMM on the previous image.</li>
+<li>Restore the volume.</li>
+<li>Start PMM Server.</li>
+</ul>
+</div>
+<hr />
+<div class="admonition caution alert alert-warning">
+<p class="admonition-title">Important</p>
+<p>You must have a <a href="#backup">backup</a> to restore from.
+You need to perform restore only if you have issues with upgrade or with the data.</p>
+</div>
+<ol>
+<li>
+<p>Stop PMM server.</p>
+<div class="highlight"><pre><span></span><code>systemctl --user stop pmm-server
+</code></pre></div>
+</li>
+<li>
+<p>Run PMM on the previous image.</p>
+<p>Edit <code>~/.config/pmm-server/env</code> file:</p>
+<div class="highlight"><pre><span></span><code>sed -i <span class="s2">&quot;s/PMM_TAG=.*/PMM_TAG=2.28.0/g&quot;</span> ~/.config/pmm-server/env
+</code></pre></div>
+<div class="admonition caution alert alert-warning">
+<p class="admonition-title">Important</p>
+<p>X.Y.Z (2.28.0) is the version you used before upgrade and you made Backup with it</p>
+</div>
+</li>
+<li>
+<p>Restore the volume.</p>
+<div class="highlight"><pre><span></span><code>podman volume import pmm-server pmm-server-backup.tar
+</code></pre></div>
+</li>
+<li>
+<p>Start PMM Server.</p>
+<div class="highlight"><pre><span></span><code>systemctl --user start pmm-server
+</code></pre></div>
+<p><div hidden>
+sleep 30
+timeout 60 podman wait &ndash;condition=running pmm-server
+```
+</div></p>
+</li>
+</ol>
+<h2 id="remove">Remove<a class="headerlink" href="#remove" title="Permanent link">&para;</a></h2>
+<div class="admonition summary alert alert-info">
+<p class="admonition-title">Summary</p>
+<ul>
+<li>Stop PMM server.</li>
+<li>Remove (delete) volume.</li>
+<li>Remove (delete) images.</li>
+</ul>
+</div>
+<hr />
+<div class="admonition caution alert alert-warning">
+<p class="admonition-title">Caution</p>
+<p>These steps delete the PMM Server Docker image and the associated PMM metrics data.</p>
+</div>
+<ol>
+<li>
+<p>Stop PMM server.</p>
+<div class="highlight"><pre><span></span><code>systemctl --user stop pmm-server
+</code></pre></div>
+</li>
+<li>
+<p>Remove volume.</p>
+<p><div hidden>
+<div class="highlight"><pre><span></span><code><span class="c1">#wait for container to stop</span>
+podman <span class="nb">wait</span> --condition<span class="o">=</span>stopped pmm-server <span class="o">||</span> <span class="nb">true</span>
+sleep <span class="m">10</span>
+</code></pre></div>
+</div></p>
+<div class="highlight"><pre><span></span><code>podman volume rm --force pmm-server
+</code></pre></div>
+</li>
+<li>
+<p>Remove the PMM images.</p>
+<div class="highlight"><pre><span></span><code>podman rmi <span class="k">$(</span>podman images <span class="p">|</span> grep <span class="s2">&quot;pmm-server&quot;</span> <span class="p">|</span> awk <span class="o">{</span><span class="s1">&#39;print $3&#39;</span><span class="o">}</span><span class="k">)</span>
+</code></pre></div>
+</li>
+</ol>
+                    </div>
+                </div>
+                
+<div class="small">
+    <ul class="list-inline">
+        
+        <li class="left">
+            <i class="uil uil-refresh"></i> Page updated 2022-07-19
+        </li>
+        
+    </ul>
+</div>
+
+                
+<div class="related row">
+    <ul class="nav nav-pills">
+        
+        <li class="right" style="margin-right: 10px">
+            <a href="helm.html" title="Helm">Next</a>
+        </li>
+        
+        
+        <li class="right" style="margin-right: 10px">
+            <a href="docker.html" title="Docker">Previous</a>
+        </li>
+        
+        <li>
+            <a href="https://www.percona.com/percona-monitoring-and-management/2.x">Home</a>
+        </li>
+    </ul>
+</div>
+
+            </div>
+            
+<div class="sphinxsidebar col-md-3 col-md-pull-9">
+    <div class="sphinxsidebarwrapper">
+        {@ product_logo @}
+        {@ product_pdf_download @}
+        
+<section class="select-wrapper" id="version-select-wrapper">
+    <!-- Empty locator section for version selector -->
+</section>
+
+        <h3 id="toctree-heading"><a href="https://www.percona.com/percona-monitoring-and-management/2.x">Contents</a></h3>
+        
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l1">
+    <a class="reference internal" href="../../index.html">Welcome</a>
+
+
+
+
+<li class="toctree-l1">
+    <a class="reference internal" href="../index.html">Setting up</a>
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="index.html">Server</a>
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="network.html">Network</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="docker.html">Docker</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="podman.html">Podman</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="helm.html">Helm</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="virtual-appliance.html">Virtual Appliance</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="aws.html">AWS Marketplace</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="easy-install.html">Easy-install script</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="dbaas.html">DBaaS</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../client/index.html">Client</a>
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../client/mysql.html">MySQL</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../client/mongodb.html">MongoDB</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../client/postgresql.html">PostgreSQL</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../client/proxysql.html">ProxySQL</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../client/aws.html">Amazon RDS</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../client/azure.html">Microsoft Azure</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../client/google.html">Google Cloud Platform</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../client/linux.html">Linux</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../client/external.html">External Services</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../client/haproxy.html">HAProxy</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../client/remote.html">Remote instances</a>
+
+
+
+</ul>
+
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l1">
+    <a class="reference internal" href="../../using/index.html">Using</a>
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../using/interface.html">User Interface</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../using/alerting.html">Integrated Alerting</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../using/backup.html">Backup and Restore</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../using/query-analytics.html">Query Analytics</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../using/dbaas.html">DBaaS</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l1">
+    <a class="reference internal" href="../../how-to/index.html">How to</a>
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../how-to/configure.html">Configure</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../how-to/manage-users.html">Manage users</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../how-to/upgrade.html">Upgrade</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../how-to/secure.html">Secure</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../how-to/optimize.html">Optimize</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../how-to/annotate.html">Annotate</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../how-to/render-dashboard-images.md">None</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../how-to/extend-metrics.html">Extend Metrics</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../how-to/troubleshoot.html">Troubleshoot</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../how-to/integrate-platform.html">Integrate with Percona Platform</a>
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../how-to/account-info.html">Check Percona Portal account information</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../how-to/advisors.html">Work with Advisor checks</a>
+
+
+
+</ul>
+
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l1">
+    <a class="reference internal" href="../../details/index.html">Details</a>
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../details/architecture.html">Architecture</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../details/interface.html">UI components</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../details/develop-checks/index.html">Develop checks</a>
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../details/develop-checks/checks-v1.html">Version 1 checks for PMM 2.27 and older</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../details/develop-checks/checks-v2.html">Version 2 advisor checks for PMM 2.28 and newer</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../details/dashboards/index.html">Dashboards</a>
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../details/dashboards/dashboard-home.html">Insight</a>
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-advanced-data-exploration.html">Advanced Data Exploration</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-victoriametrics.html">VictoriaMetrics</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-victoriametrics-agents-overview.html">VictoriaMetrics Agents Overview</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../details/dashboards/dashboard-inventory.html">PMM</a>
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-env-overview.html">Environment Overview</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-environent-summary.html">Environment Summary</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../details/dashboards/dashboard-cluster-summary.html">DBaas</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../details/dashboards/dashboard-cpu-utilization-details.html">OS Dashboards</a>
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-disk-details.html">Disk Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-network-details.html">Network Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-memory-details.html">Memory Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-node-temperature-details.html">Node Temperature Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-nodes-compare.html">Nodes Compare</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-nodes-overview.html">Nodes Overview</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-node-summary.html">Node Summary</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-numa-details.html">NUMA Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-processes-details.html">Processes Details</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../details/dashboards/dashboard-prometheus-exporter-status.html">Prometheus Dashboards</a>
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-prometheus-exporters-overview.html">Prometheus Exporters Overview</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../details/dashboards/dashboard-mysql-amazon-aurora-details.html">MySQL Dashboards</a>
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-mysql-command-handler-counters-compare.html">MySQL Command/Handler Counters Compare</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-mysql-innodb-compression-details.html">MySQL InnoDB Compression Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-mysql-innodb-details.html">MySQL InnoDB Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-mysql-myisam-aria-details.html">MySQL MyISAM/Aria Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-mysql-myrocks-details.html">MySQL MyRocks Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-mysql-instance-summary.html">MySQL Instance Summary</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-mysql-instances-compare.html">MySQL Instances Compare</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-mysql-instances-overview.html">MySQL Instances Overview</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-mysql-wait-event-analyses-details.html">MySQL Wait Event Analyses Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-mysql-performance-schema-details.html">MySQL Performance Schema Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-mysql-query-response-time-details.html">MySQL Query Response Time Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-mysql-replication-summary.html">MySQL Replication Summary</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-mysql-group-replication-summary.html">MySQL Group Replication Summary</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-mysql-table-details.html">MySQL Table Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-mysql-user-details.html">MySQL User Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-mysql-tokudb-details.html">MySQL TokuDB Details</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../details/dashboards/dashboard-mongodb-cluster-summary.html">MongoDB Dashboards</a>
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-mongodb-instance-summary.html">MongoDB Instance Summary</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-mongodb-instances-overview.html">MongoDB Instances Overview</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-mongodb-instances-compare.html">MongoDB Instances Compare</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-mongodb-replset-summary.html">MongoDB ReplSet Summary</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-mongodb-inmemory-details.html">MongoDB InMemory Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-mongodb-mmapv1-details.html">MongoDB MMAPv1 Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-mongodb-wiredtiger-details.html">MongoDB WiredTiger Details</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../details/dashboards/dashboard-postgresql-instances-overview.html">PostgreSQL Dashboards</a>
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-postgresql-instance-summary.html">PostgreSQL Instance Summary</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-postgresql-instances-compare.html">PostgreSQL Instances Compare</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../details/dashboards/dashboard-proxysql-instance-summary.html">ProxySQL Dashboards</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../details/dashboards/dashboard-pxc-galera-node-summary.html">HA Dashboards</a>
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-pxc-galera-cluster-summary.html">PXC/Galera Cluster Summary</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-pxc-galera-cluster-summary-experimental.html">Experimental PXC/Galera Cluster Summary</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-pxc-galera-nodes-compare.html">PXC/Galera Nodes Compare</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../../details/dashboards/dashboard-haproxy-instance-summary.html">HAProxy Instance Summary</a>
+
+
+
+</ul>
+
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../details/commands/index.html">Commands</a>
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../details/commands/pmm-admin.html">pmm-admin - PMM Administration Tool</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../details/commands/pmm-agent.html">pmm-agent - PMM Client agent</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../details/api.html">API</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../details/victoria-metrics.html">VictoriaMetrics</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../details/clickhouse.html">ClickHouse</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../details/glossary.html">Glossary</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l1">
+    <a class="reference internal" href="../../faq.html">FAQ</a>
+
+
+
+
+<li class="toctree-l1">
+    <a class="reference internal" href="../../release-notes/index.html">Release Notes</a>
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.29.0.html">PMM 2.29.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.28.0.html">PMM 2.28.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.27.0.html">PMM 2.27.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.26.0.html">PMM 2.26.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.25.0.html">PMM 2.25.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.24.0.html">PMM 2.24.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.23.0.html">PMM 2.23.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.22.0.html">PMM 2.22.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.21.0.html">PMM 2.21.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.20.0.html">PMM 2.20.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.19.0.html">PMM 2.19.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.18.0.html">PMM 2.18.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.17.0.html">PMM 2.17.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.16.0.html">PMM 2.16.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.15.1.html">PMM 2.15.1</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.15.0.html">PMM 2.15.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.14.0.html">PMM 2.14.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.13.0.html">PMM 2.13.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.12.0.html">PMM 2.12.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.11.1.html">PMM 2.11.1</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.11.0.html">PMM 2.11.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.10.1.html">PMM 2.10.1</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.10.0.html">PMM 2.10.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.9.1.html">PMM 2.9.1</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.9.0.html">PMM 2.9.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.8.0.html">PMM 2.8.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.7.0.html">PMM 2.7.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.6.1.html">PMM 2.6.1</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.6.0.html">PMM 2.6.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.5.0.html">PMM 2.5.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.4.0.html">PMM 2.4.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.3.0.html">PMM 2.3.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.2.2.html">PMM 2.2.2</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.2.1.html">PMM 2.2.1</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.2.0.html">PMM 2.2.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.1.0.html">PMM 2.1.0</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.0.1.html">PMM 2.0.1</a>
+
+
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.0.0.html">PMM 2.0.0</a>
+
+
+
+</ul>
+
+
+
+
+</ul>
+
+
+        
+
+<h4>Previous page</h4>
+<p class="topless">
+    <a href="docker.html" title="previous chapter">Docker</a>
+</p>
+
+
+<h4>Next page</h4>
+<p class="topless">
+    <a href="helm.html" title="next chapter">Helm</a>
+</p>
+
+
+        {@ product_series @}
+    </div>
+</div>
+
+            <div class="clearer"></div>
+        </div>
+    </div>
+</body>

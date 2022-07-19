@@ -150,6 +150,8 @@
 <dd>Enable debug logging.</dd>
 <dt><code>--trace</code></dt>
 <dd>Enable trace logging (implies debug).</dd>
+<dt><code>--log-level</code> (This parameter is available starting with PMM 2.29.0.)</dt>
+<dd>Set the level for the logs as per your requirement such as INFO, WARNING, ERROR, and FATAL.</dd>
 <dt><code>--json</code></dt>
 <dd>Enable JSON output.</dd>
 <dt><code>--version</code></dt>
@@ -195,7 +197,7 @@
 <dd>The Summary Archive filename.</dd>
 <dt><code>--skip-server</code></dt>
 <dd>Skip fetching <code>logs.zip</code> from PMM Server.</dd>
-<dt><code>--pprof</code></dt>
+<dt><code>--pprof</code> (This parameter is available starting with PMM 2.29.0)</dt>
 <dd>Include performance profiling data in the summary.</dd>
 </dl>
 </dd>
@@ -223,6 +225,8 @@
 - <code>pull</code>: server scrapes metrics from agent.</dd>
 <dt><code>--paths-base=dir</code></dt>
 <dd>Base path where all binaries, tools and collectors of PMM client are located</dd>
+<dt><code>--agent-password=password</code> (This parameter i available starting with PMM 2.29.0.)</dt>
+<dd>Custom agent password.</dd>
 </dl>
 </dd>
 </dl>
@@ -250,6 +254,8 @@
 <dd>Node availability zone.</dd>
 <dt><code>--custom-labels=labels</code></dt>
 <dd>Custom user-assigned labels.</dd>
+<dt><code>--agent-password=password</code> (This parameter is available starting with PMM 2.29.0.)</dt>
+<dd>Custom agent password.</dd>
 </dl>
 </dd>
 </dl>
@@ -839,7 +845,7 @@ Agents:
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2022-04-14
+            <i class="uil uil-refresh"></i> Page updated 2022-07-19
         </li>
         
     </ul>
@@ -913,6 +919,18 @@ Agents:
 
 <li class="toctree-l3">
     <a class="reference internal" href="../../setting-up/server/docker.html">Docker</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../setting-up/server/podman.html">Podman</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../../setting-up/server/helm.html">Helm</a>
 
 
 
@@ -1121,7 +1139,7 @@ Agents:
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="../../how-to/render-dashboard-images.html">Render dashboard images</a>
+    <a class="reference internal" href="../../how-to/render-dashboard-images.md">None</a>
 
 
 
@@ -1591,6 +1609,12 @@ Agents:
 
 
 <li class="toctree-l4">
+    <a class="reference internal" href="../dashboards/dashboard-pxc-galera-cluster-summary-experimental.html">Experimental PXC/Galera Cluster Summary</a>
+
+
+
+
+<li class="toctree-l4">
     <a class="reference internal" href="../dashboards/dashboard-pxc-galera-nodes-compare.html">PXC/Galera Nodes Compare</a>
 
 
@@ -1651,6 +1675,12 @@ Agents:
 
 
 <li class="toctree-l2">
+    <a class="reference internal" href="../clickhouse.html">ClickHouse</a>
+
+
+
+
+<li class="toctree-l2">
     <a class="reference internal" href="../glossary.html">Glossary</a>
 
 
@@ -1674,6 +1704,12 @@ Agents:
 
 
 <ul class="toctree" id="toctree">
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../../release-notes/2.29.0.html">PMM 2.29.0</a>
+
+
 
 
 <li class="toctree-l2">
