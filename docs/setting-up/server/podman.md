@@ -24,7 +24,10 @@ Percona recommends running PMM as a non-privileged user and running it as part o
 - Install [Podman](https://podman.io/getting-started/installation).
 - Configure [rootless](https://github.com/containers/podman/blob/main/docs/tutorials/rootless_tutorial.md)  Podman.
 
-## Run as non-privileged user to start PMM (PMM 2.29.0 onwards)
+## Run as non-privileged user to start PMM
+
+!!! note alert alert-primary "Availability"
+    This feature is available starting with PMM 2.29.0.
 
 !!! summary alert alert-info "Summary"
     - Install.
