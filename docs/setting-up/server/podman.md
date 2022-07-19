@@ -11,7 +11,6 @@ How to run PMM Server with Podman on our [Docker image]
 !!! seealso alert alert-info "See also"
     [Docker]
 
-
 Podman is an open-source project available on most Linux platforms and resides on [GitHub](https://github.com/containers/podman). Podman is a daemonless container engine for developing, managing, and running Open Container Initiative (OCI) containers and container images on your Linux System. 
 
 Non-privileged users could run containers under the control of Podman.
@@ -25,7 +24,7 @@ Percona recommends running PMM as a non-privileged user and running it as part o
 - Install [Podman](https://podman.io/getting-started/installation).
 - Configure [rootless](https://github.com/containers/podman/blob/main/docs/tutorials/rootless_tutorial.md)  Podman.
 
-## Run as non-privileged user to start PMM
+## Run as non-privileged user to start PMM (PMM 2.29.0 onwards)
 
 !!! summary alert alert-info "Summary"
     - Install.
