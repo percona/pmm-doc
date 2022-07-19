@@ -195,7 +195,7 @@ You can now [add the service](#add-service).
     pg_stat_monitor.pgsm_normalized_query
     ```
 
-    If value is set to 1 then query acutal values are replaced by placeholders. If value is 0 then you will be able to see examples in QAN. 
+     If the value is set to 1, then query actual values are replaced by placeholders. If the value is 0, you can see the examples in QAN. 
 
     !!! note alert alert-primary ""
         See [`pg_stat_monitor` GitHub repository](https://github.com/percona/pg_stat_monitor/blob/master/docs/USER_GUIDE.md#configuration) for details about available parameters.
