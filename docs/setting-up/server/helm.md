@@ -13,7 +13,8 @@
 !!! note alert alert-primary ""
     Helm v3 is needed to run the following steps.
 
-## Use Helm to install PMM server on Kubernetes clusters (PMM 2.29.0 onwards)
+## Use Helm to install PMM server on Kubernetes clusters
+**PMM 2.29.0 onwards**
 
 !!! summary alert alert-info "Summary"
     - Install
