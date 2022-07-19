@@ -14,8 +14,6 @@
 
 DATABASE:= [[MongoDB](#mongodb) | [MySQL](#mysql) | [PostgreSQL](#postgresql) | [ProxySQL](#proxysql)]
 
-`pmm-admin add --credentials-source=CREDENTIALS-SOURCE [FLAGS] [NAME] [ADDRESS]`
-
 `pmm-admin add --pmm-agent-listen-port=LISTEN_PORT DATABASE [FLAGS] [NAME] [ADDRESS]`
 
 `pmm-admin add external [FLAGS] [NAME] [ADDRESS]` (CAUTION: Technical preview feature)
@@ -62,6 +60,9 @@ PMM communicates with the PMM Server via a PMM agent process.
 
 `--trace`
 :    Enable trace logging (implies debug).
+
+`--log-level` (This parameter is available starting with PMM 2.29.0.)
+:  Set the level for the logs as per your requirement such as INFO, WARNING, ERROR, and FATAL.
 
 `--json`
 :    Enable JSON output.
@@ -114,10 +115,8 @@ PMM communicates with the PMM Server via a PMM agent process.
     `--skip-server`
     : Skip fetching `logs.zip` from PMM Server.
 
-    `--pprof`
+    `--pprof` (This parameter is available starting with PMM 2.29.0)
     : Include performance profiling data in the summary.
-
-
 
 ### CONFIGURATION COMMANDS
 
@@ -148,6 +147,9 @@ PMM communicates with the PMM Server via a PMM agent process.
 
     `--paths-base=dir`
     : Base path where all binaries, tools and collectors of PMM client are located
+
+    `--agent-password=password` (This parameter i available starting with PMM 2.29.0.)
+    : Custom agent password.
 
 #### `pmm-admin register`
 
@@ -181,6 +183,9 @@ PMM communicates with the PMM Server via a PMM agent process.
     `--custom-labels=labels`
     : Custom user-assigned labels.
 
+    `--agent-password=password` (This parameter is available starting with PMM 2.29.0.)
+    : Custom agent password.
+ 
 #### `pmm-admin add --pmm-agent-listen-port=LISTEN_PORT`
 
 `pmm-admin add --pmm-agent-listen-port=LISTEN_PORT DATABASE [FLAGS] [NAME] [ADDRESS]`
@@ -275,34 +280,7 @@ When you remove a service, collected data remains on PMM Server for the specifie
     !!! hint alert alert-success "Tip"
         If node or service name is specified, they are used instead of other parameters.
 
-
-
 ### DATABASE COMMANDS
-
-#### AUTHORIZATION COMMANDS
-
-##### pmm-admin add --credentials-source=CREDENTIALS-SOURCE
-
-`pmm-admin add --credentials-source=CREDENTIALS-SOURCE [FLAGS] [NAME] [ADDRESS]`
-
-:     Pass senstive information such as username and password via a JSON file instead of exposing this information in the existing flags `--username`, `--password` and `--agent-password`.
-
-    ` ----credentials-source=CREDENTIALS-SOURCE`
-    : Path to the JSON file where the credentials are stored.
-
-    Example
-
-    `pmm-admin add mysql --credentials-source=/myfolder/pmm-credentials.json`
-
-    Format of JSON file:
-
-```js
-{ 
-       "username": "string",
-       "password": "string",
-       "agentpassword": "string"
-}
-```
 
 #### MongoDB
 
