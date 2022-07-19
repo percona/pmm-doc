@@ -54,7 +54,7 @@
 | PostgreSQL        | [PostgreSQL Instances Compare]                                                           | 89
 | ProxySQL          | [ProxySQL Instance Summary]                                                              | 55
 | High-availability | [PXC/Galera Node Summary]                                                                | 32
-| High-availability | [PXC/Galera Cluster Summary]                                                             | 19
+| High-availability | [PXC/Galera Cluster Summary]                                                             | 7
 | High-availability | [Experimentl PXC/Galera Cluster Summary]                                                 | 19
 | High-availability | [PXC/Galera Nodes Compare]                                                               | 55
 | High-availability | [HAProxy Instance Summary]                                                               | 113
