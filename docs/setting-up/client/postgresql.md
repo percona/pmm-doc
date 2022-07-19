@@ -190,7 +190,7 @@ You can now [add the service](#add-service).
 
     You can get a list of other available settings with `SELECT * FROM pg_stat_monitor_settings;`.
 
-    Another useful settings item is
+    Another useful settings parameter is:
     ```ini
     pg_stat_monitor.pgsm_normalized_query
     ```
