@@ -61,6 +61,9 @@ PMM communicates with the PMM Server via a PMM agent process.
 `--trace`
 :    Enable trace logging (implies debug).
 
+`--log-level` (This parameter is available starting with PMM 2.29.0.)
+:  Set the level for the logs as per your requirement such as INFO, WARNING, ERROR, and FATAL.
+
 `--json`
 :    Enable JSON output.
 
