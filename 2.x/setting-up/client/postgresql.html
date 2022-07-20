@@ -312,6 +312,10 @@ track_io_timing = on             # Capture read/write stats
 <p>It is important to set maximal length of query to 2048 characters or more for PMM to work properly.</p>
 </div>
 <p>You can get a list of other available settings with <code>SELECT * FROM pg_stat_monitor_settings;</code>.</p>
+<p>Another important parameter is:
+<div class="highlight"><pre><span></span><code><span class="na">pg_stat_monitor.pgsm_normalized_query</span><span class="w"></span>
+</code></pre></div></p>
+<p>If the value is set to 1, the actual query values are replaced by placeholders. If the value is 0, the examples are given in QAN. Examples can be found in QAN details tab example.</p>
 <div class="admonition note alert alert-primary">
 <p>See <a href="https://github.com/percona/pg_stat_monitor/blob/master/docs/USER_GUIDE.md#configuration"><code>pg_stat_monitor</code> GitHub repository</a> for details about available parameters.</p>
 </div>
@@ -473,7 +477,7 @@ The file is a yaml where each query can have these fields:</p>
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2022-06-03
+            <i class="uil uil-refresh"></i> Page updated 2022-07-20
         </li>
         
     </ul>
