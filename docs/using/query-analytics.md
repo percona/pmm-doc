@@ -24,7 +24,7 @@ The dashboard contains three panels:
 
 ![!image](../_images/PMM_Query_Analytics_Panels_Filters.jpg)
 
-- The Filter panel occupies the left side of the dashboard. It lists filters, grouped by category. Selecting one reduces the Overview list to those items matching the filter.
+- The Filter panel occupies the left side of the dashboard. It lists filters, grouped by category and also shows the percentage of main metric that is explained below. If you select different metric as main then percentages on left panel will be different and related to this metric. Selecting one reduces the Overview list to those items matching the filter.
 - The first five of each category are shown. If there are more, the list is expanded by clicking *Show all* beside the category name, and collapsed again with *Show top 5*.
 - Applying a filter may make other filters inapplicable. These become grayed out and inactive.
 - Click the chart symbol <i class="uil uil-graph-bar"></i> to navigate directly to an item's associated dashboard.
