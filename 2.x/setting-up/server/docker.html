@@ -242,7 +242,7 @@ percona/pmm-server:2
 <li>Run the image.</li>
 </ol>
 <p><div class="highlight"><pre><span></span><code><span class="nb">export</span> <span class="nv">DATA_DIR</span><span class="o">=</span><span class="nv">$HOME</span>/srv
-docker run -v <span class="nv">$DATA_DIR</span>/srv:/srv -d --restart always --publish <span class="m">80</span>:80 --publish <span class="m">443</span>:443 --name pmm-server perconalab/pmm-server-fb:PR-2534-517015b
+docker run -v <span class="nv">$DATA_DIR</span>/srv:/srv -d --restart always --publish <span class="m">80</span>:80 --publish <span class="m">443</span>:443 --name pmm-server percona/pmm-server:2
 </code></pre></div>
 <code>DATA_DIR</code> is a directory where you want to store the state for PMM.</p>
 <ol>
@@ -638,7 +638,7 @@ percona/pmm-server:2.29.0
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2022-07-20
+            <i class="uil uil-refresh"></i> Page updated 2022-07-25
         </li>
         
     </ul>
