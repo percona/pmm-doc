@@ -1,7 +1,7 @@
 # Integrated Alerting
 
 !!! caution alert alert-warning "Disclaimer"
-    Integrated Alerting is currently in [Technical Preview](../details/glossary.md#technical-preview). This means that this feature is still under development and is subject to change. Therefore, we recommend that early adopters use Integrated Alerting for testing purposes only.
+    Integrated Alerting is currently in [Technical Preview](../details/glossary.md#technical-preview). This means that this feature is still under development and is subject to change. For other cases, please see  [Alternative alerting options](#alternative-alerting-options) section
 
 Alerting notifies of important or unusual activity in your database environments so that you can identify and resolve problems quickly.
 
@@ -170,8 +170,10 @@ To silence alerts:
 To reactivate silenced alerts, click **Unsilence All** or click on the disabled bell icon <i class="uil uil-bell-slash"></i> corresponding to the alerts you want to reactivate.
 
 ## Alternative alerting options
-PMM Integrated Alerting was introduced as an alternative to Grafana Alerting and Prometheus’ Alertmanager.
+| Use | <i class="uil uil-thumbs-up"></i> **Benefits** | <i class="uil uil-thumbs-down"></i> **Drawbacks**
+|---|---|---
+| [External Alertmanager](/how-to/configure.html#alertmanager-integration) | 1. A way to integrate PMM when a company has an existing [Alertmanager](https://prometheus.io/docs/alerting/latest/alertmanager/). | 1.  For experts who use it already 
+| **Recommended**<br>[Native Grafana Alerting](https://grafana.com/docs/grafana/v8.5/alerting/) | 1. Build-in<br>2. Feature-rich. | 1. Available in the latest PMM versions only.
+| [Integrated Alerting](#) | 1. Simple. | 1. Technical Preview.<br>2. Less integrations then in _Native Grafana Alerting_.
+| [Legacy Grafana Alerting](https://grafana.com/docs/grafana-cloud/legacy-alerting/) | N/A | 1. Deprecated. 
 
-These third-party alerting tools continue to be available in PMM until Integrated Alerting moves from Technical Preview to General Availability.
-
-We recommend already using Integrated Alerting since it offers a simpler alerting setup and provides more robust alerting options.
