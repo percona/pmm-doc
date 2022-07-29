@@ -99,18 +99,7 @@ The default values (in seconds):
 
 ## How do I set up Alerting?
 
-When a monitored service metric reaches a defined threshold, PMM Server can trigger alerts for it either using the Grafana Alerting feature or by using an external alert manager.
-
-With these methods you must configure alerting rules that define conditions under which an alert should be triggered, and the channel used to send the alert (e.g. email).
-
-Alerting in Grafana allows attaching rules to your dashboard panels.  Grafana Alerts are already integrated into PMM Server and may be simpler to get set up.
-
-Alertmanager allows the creation of more sophisticated alerting rules and can be easier to manage installations with a large number of hosts. This additional flexibility comes at the expense of simplicity.
-
-We only offer support for creating custom rules to our customers, so you should already have a working Alertmanager instance prior to using this feature.
-
-!!! seealso alert alert-info "See also"
-    [PMM Alerting with Grafana: Working with Templated Dashboards](https://www.percona.com/blog/2017/02/02/pmm-alerting-with-grafana-working-with-templated-dashboards/)
+Please see the availible [Alerting Options](/using/alerting.html#alternative-alerting-options) 
 
 ## How do I use a custom Prometheus configuration file?
 
