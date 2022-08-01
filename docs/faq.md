@@ -99,7 +99,7 @@ The default values (in seconds):
 
 ## How do I set up Alerting?
 
-Please see the availible [Alerting Options](/using/alerting.html#alternative-alerting-options) 
+Check out the available [PMM Alerting Options](/using/alerting.html#alternative-alerting-options). 
 
 ## How do I use a custom Prometheus configuration file?
 
