@@ -1,4 +1,5 @@
 # Percona Monitoring and Management (PMM) Documentation
+[![render](https://img.shields.io/badge/pmm--doc-render-Green)](https://pmm-doc.onrender.com/)
 ![Build](https://github.com/percona/pmm-doc/actions/workflows/build.yml/badge.svg?branch=main)
 ![Helm](https://github.com/percona/pmm-doc/actions/workflows/helm-tests.yml/badge.svg?branch=main)
 ![Podman](https://github.com/percona/pmm-doc/actions/workflows/podman-tests.yml/badge.svg?branch=main)
