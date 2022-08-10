@@ -35,7 +35,7 @@ From the left menu, select <i class="uil uil-database"></i> *DBaaS*.
 
 1. Click *Register new Kubernetes Cluster*.
 
-2. Copy the value of *Kubeconfig file* and click *Paste from Clipboard* to copy the content of the kubeconfig file in the corresponding field. The value of *Kubernetes Cluster Name* gets auto-populated from the contents of the *kubeconfig file*.
+2. Copy the value of *Kubeconfig file* and click *Paste from clipboard* to copy the content of the kubeconfig file in the corresponding field. The value of *Kubernetes Cluster Name* gets auto-populated from the contents of the *kubeconfig file*.
 
     ![!](../_images/PMM_DBaaS_Kubernetes_Cluster_Details.png)
 
