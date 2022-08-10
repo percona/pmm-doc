@@ -17,7 +17,7 @@ The DBaaS feature is turned off by default. To turn it on:
 
 From the left menu, select <i class="uil uil-database"></i> *DBaaS*.
 
-![!](../_images/PMM_DBaaS_Kubernetes_Cluster_Panel.jpg)
+![!](../_images/PMM_DBaaS_Kubernetes_Cluster_Panel.png)
 
 ## Kubernetes clusters
 
