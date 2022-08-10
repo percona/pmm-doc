@@ -571,11 +571,6 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://www.percona.com/percona-monitoring-and-management/2.x/release-notes/2.29.0%202.html</loc>
-         <lastmod>2022-08-10</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://www.percona.com/percona-monitoring-and-management/2.x/release-notes/2.29.0.html</loc>
          <lastmod>2022-08-10</lastmod>
          <changefreq>daily</changefreq>
