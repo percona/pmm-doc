@@ -117,7 +117,7 @@ You must create at least one Kubernetes cluster to create a DB cluster.
 To monitor a DB cluster, set up a [public address](../how-to/configure.md#public-address) for PMM Server first.
 
 
-####Add one-click DB cluster
+####Add a one-click DB cluster
 
 
 !!! note alert alert-primary "Availability"
@@ -133,7 +133,7 @@ To create a DB cluster, do the following:
 
 3. Click *Create Cluster* to create your Cluster.
 
-####Add DB cluster with custom values
+####Add a DB cluster with custom values
 
 1. Select the *DB Cluster* tab.
 
