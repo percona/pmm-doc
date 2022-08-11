@@ -110,7 +110,7 @@ To update the cluster:
 
 ## DB clusters
 
-### Add a DB Cluster
+### Create a DB Cluster
 
 You must create at least one Kubernetes cluster to create a DB cluster.
 
