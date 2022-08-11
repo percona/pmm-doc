@@ -13,4 +13,5 @@ The Instance level includes two panels, one for the *Hottest Collections by Read
 The next panel displays data at the *Database Level*, where you can view MongoDB metrics such as *Commands*, *Inserts*, *Updates*, *Removes*, and *Getmore*.
 
 The last panel shows the number of operations in the chosen database.
-![!image](../../_images/PMM_Mongodb_Collections_Details_Experimental.png)
+
+![!image](../../_images/PMM_Mongodb_Collections_Overview_Experimental.png)
