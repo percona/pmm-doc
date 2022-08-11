@@ -6,6 +6,6 @@
 !!! note alert alert-primary "Availability"
     This experimental dashboard is available starting with PMM 2.30.0.
 
-The experimental MongoDB MongoDB Collection Details dashboard provides information about the top collections by document count, size, and document read  for MongoDB databases.
+This realtime experimental MongoDB Collection Details dashboard provides detailed information about the top collections by document count, size, and document read for MongoDB databases.
 
 ![!image](../../_images/PMM_Mongodb_Collections_Details_Experimental.png)
