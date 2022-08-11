@@ -37,6 +37,9 @@ From the left menu, select <i class="uil uil-database"></i> *DBaaS*.
 
 2. Copy the value of *Kubeconfig file* and click *Paste from clipboard* to copy the content of the kubeconfig file in the corresponding field. The value of *Kubernetes Cluster Name* gets auto-populated from the contents of the *kubeconfig file*.
 
+!!! note alert alert-primary "Availability"
+    This feature is available starting with PMM 2.30.0.
+
     ![!](../_images/PMM_DBaaS_Kubernetes_Cluster_Details.png)
 
     !!! note alert alert-info ""
