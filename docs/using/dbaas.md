@@ -119,6 +119,10 @@ To monitor a DB cluster, set up a [public address](../how-to/configure.md#public
 
 ####Add one-click DB cluster
 
+
+!!! note alert alert-primary "Availability"
+    This feature is available starting with PMM 2.30.0.
+
 You can create a DB cluster literally at the click of a button. All the fields will be automatically populated with the default values. 
 
 To create a DB cluster, do the following:
