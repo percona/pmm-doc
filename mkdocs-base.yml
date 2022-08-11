@@ -200,6 +200,9 @@ nav:
                       - details/dashboards/dashboard-mysql-user-details.md
                       - details/dashboards/dashboard-mysql-tokudb-details.md
                 - MongoDB Dashboards:
+                      - details/dashboards/dashboard-mongodb-experimental_collection_overview.md
+                      - details/dashboards/dashboard-mongodb-experimental_collection_details.md
+                      - details/dashboards/dashboard-mongodb-experimental_oplog.md
                       - details/dashboards/dashboard-mongodb-cluster-summary.md
                       - details/dashboards/dashboard-mongodb-instance-summary.md
                       - details/dashboards/dashboard-mongodb-instances-overview.md
