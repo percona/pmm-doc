@@ -230,7 +230,9 @@ Alert templates contain general template details and an alert expression defined
 <li>On the left menu of PMM, choose <strong>Explore &gt; Metrics</strong>.</li>
 <li>Enter your expression in the <strong>Metrics</strong> field and click <strong>Run query</strong>.</li>
 </ol>
-<p>For example, to validate that a MongoDB instance is down, shut down a member of a three-node replica set, then check that the expression <strong>{service_type=&rdquo;mongodb&rdquo;}</strong> returns <strong>0</strong> in <strong>Explore &gt; Metrics</strong>.</p>
+<p>For example, to validate that a MongoDB instance is down, shut down a member of a three-node replica set, then check that the following expression returns <strong>0</strong> in <strong>Explore &gt; Metrics</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="o">{</span><span class="nv">service_type</span><span class="o">=</span><span class="s2">&quot;mongodb&quot;</span><span class="o">}</span>
+</code></pre></div>
 <h2 id="template-compatibility">Template compatibility<a class="headerlink" href="#template-compatibility" title="Permanent link">&para;</a></h2>
 <h3 id="with-previous-pmm-versions">With previous PMM versions<a class="headerlink" href="#with-previous-pmm-versions" title="Permanent link">&para;</a></h3>
 <p>PMM 2.26 introduced significant changes to the core structure of rule templates. As a result, alert rules and templates created in previous PMM versions are incompatible with PMM 2.26.0 and cannot be migrated to this new version.</p>
@@ -274,7 +276,7 @@ Alert templates contain general template details and an alert expression defined
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2022-07-19
+            <i class="uil uil-refresh"></i> Page updated 2022-08-15
         </li>
         
     </ul>
