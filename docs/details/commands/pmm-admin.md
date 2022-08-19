@@ -14,6 +14,9 @@
 
 DATABASE:= [[MongoDB](#mongodb) | [MySQL](#mysql) | [PostgreSQL](#postgresql) | [ProxySQL](#proxysql)]
 
+
+`pmm-admin inventory add agent [FLAGS] [NAME] [ADDRESS]` (This command is available starting with PMM 2.30.0.)
+
 `pmm-admin add --pmm-agent-listen-port=LISTEN_PORT DATABASE [FLAGS] [NAME] [ADDRESS]`
 
 `pmm-admin add external [FLAGS] [NAME] [ADDRESS]` (CAUTION: Technical preview feature)
