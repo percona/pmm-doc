@@ -40,6 +40,10 @@ From the left menu, select <i class="uil uil-database"></i> *DBaaS*.
 !!! note alert alert-primary "Availability"
     This feature is available starting with PMM 2.30.0.
 
+!!! note alert alert-primary ""
+    This feature is available only in [secure contexts](https://developer.mozilla.org/en-US/docs/Web/Security/Secure_Contexts) (HTTPS) and some [supporting browsers](https://developer.mozilla.org/en-US/docs/Web/API/Clipboard#browser_compatibility).
+
+
     ![!](../_images/PMM_DBaaS_Kubernetes_Cluster_Details.png)
 
     !!! note alert alert-info ""
