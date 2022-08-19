@@ -1,26 +1,17 @@
-# Home Dashboard
+# Experimental Home Dashboard
 
-![!image](../../_images/PMM_Home_Dashboard.png)
+![!image](../../_images/PMM_Home_Dashboard_Experimental.png)
 
-The Home Dashboard is a high-level overview of your environment, the starting page of the PMM portal from which you can open the tools of PMM, and browse to online resources.
 
-On the PMM home page, you can also find the version number and a button to update your PMM Server.
 
-## General Information
+The experimental Home Dashboard is a high-level overview of your environment.
 
-This section contains links to online resources, such as PMM documentation, releases notes, and blogs.
+This new Home Dashboard displays data which is organized in panels as given below.
 
-## Shared and Recently Used Dashboards
 
-This section is automatically updated to show the most recent dashboards that you worked with. It also contains the dashboards that you have bookmarked.
+## Overview
 
-## Statistics
-
-This section shows the total number of hosts added to PMM and the total number of database instanced being monitored. This section also current the version number. Use the *Check for Updates Manually* button to see if you are using the most recent version of PMM.
-
-## Environment Overview
-
-This section lists all added hosts along with essential information about their performance. For each host, you can find the current values of the following metrics:
+This panel lists all added hosts along with essential information about their performance. For each host, you can find the current values of the following metrics:
 
 * CPU Busy
 * Memory Available
@@ -33,3 +24,34 @@ This section lists all added hosts along with essential information about their 
 * RAM
 * Host Uptime
 * DB Uptime
+
+## Anomaly Detection
+
+This panel lists all the anomalies suh as:
+
+* CPU anomalies
+* High CPU servers
+* Disk Queue anomalies
+* High disk queue
+
+## Command Center
+
+This panel provides critical information such as CPU and memory utilization, anomalies, read and write latency etc,. for your environment.
+
+## Service Summary
+
+This panel provides the following information for the serices being monitored:
+
+* DB connections
+* DB QPS (Query per sec)
+* DB uptime
+
+
+
+
+
+
+
+
+
+
