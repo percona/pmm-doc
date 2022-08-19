@@ -158,7 +158,7 @@ nav:
                 - details/dashboards/index.md
                 - Insight:
                       - details/dashboards/dashboard-home.md
-                      - details/dashbaords/dashboard-home-experimental.md
+                      - details/dashboards/dashboard-home-experimental.md
                       - details/dashboards/dashboard-advanced-data-exploration.md
                       - details/dashboards/dashboard-victoriametrics.md
                       - details/dashboards/dashboard-victoriametrics-agents-overview.md
