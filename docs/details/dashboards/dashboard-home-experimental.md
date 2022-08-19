@@ -3,7 +3,7 @@
 ![!image](../../_images/PMM_Home_Dashboard_Experimental.png)
 
 
-The experimental Home Dashboard provides a high level overview of your environment.
+The experimental Home Dashboard provides a high level view of your environment.
 
 This new Home Dashboard displays data that is organized in panels as given below.
 
