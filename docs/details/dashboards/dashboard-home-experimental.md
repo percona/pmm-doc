@@ -6,7 +6,7 @@
 
 The experimental Home Dashboard is a high-level overview of your environment.
 
-This new Home Dashboard displays data which is organized in panels as given below.
+This new Home Dashboard displays data that is organized in panels as given below.
 
 
 ## Overview
@@ -27,7 +27,7 @@ This panel lists all added hosts along with essential information about their pe
 
 ## Anomaly Detection
 
-This panel lists all the anomalies suh as:
+This panel lists all the anomalies such as:
 
 * CPU anomalies
 * High CPU servers
@@ -36,11 +36,11 @@ This panel lists all the anomalies suh as:
 
 ## Command Center
 
-This panel provides critical information such as CPU and memory utilization, anomalies, read and write latency etc,. for your environment.
+This panel provides critical information such as CPU utlization, memory utilization, anomalies, read and write latency, etc., for your environment.
 
 ## Service Summary
 
-This panel provides the following information for the serices being monitored:
+This panel provides the following information for the services being monitored:
 
 * DB connections
 * DB QPS (Query per sec)
