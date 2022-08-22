@@ -158,6 +158,7 @@ nav:
                 - details/dashboards/index.md
                 - Insight:
                       - details/dashboards/dashboard-home.md
+                      - details/dashboards/dashboard-home-experimental.md
                       - details/dashboards/dashboard-advanced-data-exploration.md
                       - details/dashboards/dashboard-victoriametrics.md
                       - details/dashboards/dashboard-victoriametrics-agents-overview.md
@@ -200,6 +201,9 @@ nav:
                       - details/dashboards/dashboard-mysql-user-details.md
                       - details/dashboards/dashboard-mysql-tokudb-details.md
                 - MongoDB Dashboards:
+                      - details/dashboards/dashboard-mongodb-experimental_collection_overview.md
+                      - details/dashboards/dashboard-mongodb-experimental_collection_details.md
+                      - details/dashboards/dashboard-mongodb-experimental_oplog.md
                       - details/dashboards/dashboard-mongodb-cluster-summary.md
                       - details/dashboards/dashboard-mongodb-instance-summary.md
                       - details/dashboards/dashboard-mongodb-instances-overview.md
