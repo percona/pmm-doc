@@ -172,7 +172,7 @@ To reactivate silenced alerts, click **Unsilence All** or click on the disabled 
 ## Alternative alerting options
 | Use | <i class="uil uil-thumbs-up"></i> **Benefits** | <i class="uil uil-thumbs-down"></i> **Drawbacks**
 |---|---|---
-| [External Alertmanager](/how-to/configure.html#alertmanager-integration) | 1. A way to integrate PMM when a company has an existing [Alertmanager](https://prometheus.io/docs/alerting/latest/alertmanager/). | 1.  For experts who use it already 
+| [External Alertmanager](/how-to/configure.html#alertmanager-integration) | A way to integrate PMM when an organization has an existing [Alertmanager](https://prometheus.io/docs/alerting/latest/alertmanager/). | For experts who already use it
 | **Recommended**<br>[Native Grafana Alerting](https://grafana.com/docs/grafana/v8.5/alerting/) | 1. Build-in<br>2. Feature-rich. | 1. Available in the latest PMM versions only.
 | [Integrated Alerting](#) | 1. Simple. | 1. Technical Preview.<br>2. Less integrations then in _Native Grafana Alerting_.
 | [Legacy Grafana Alerting](https://grafana.com/docs/grafana-cloud/legacy-alerting/) | N/A | 1. Deprecated. 
