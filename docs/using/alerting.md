@@ -1,7 +1,7 @@
 # Integrated Alerting
 
 !!! caution alert alert-warning "Disclaimer"
-    Integrated Alerting is currently in [Technical Preview](../details/glossary.md#technical-preview). This means that this feature is still under development and is subject to change. For other cases, see the [Alternative alerting options](#alternative-alerting-options) section.
+    Integrated Alerting is currently in [Technical Preview](../details/glossary.md#technical-preview). This means that this feature is still under development and is subject to change. For other alerting options, see [Alternative alerting options](#alternative-alerting-options).
 
 Alerting notifies of important or unusual activity in your database environments so that you can identify and resolve problems quickly.
 
