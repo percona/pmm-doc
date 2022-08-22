@@ -27,10 +27,8 @@ From the left menu, select <i class="uil uil-database"></i> *DBaaS*.
     Ensure that you set PMM *Public Address* under <i class="uil uil-cog"></i> *Configuration* → <i class="uil uil-setting"></i> *Settings* → *Advanced Settings* before creating a Kubernetes cluster. Otherwise, PMM would **not** monitor the Kubernetes cluster along with the associated database clusters.
 
 
-
 !!! note alert alert-primary ""
     PXC and PSMDB operators are installed as part of the Kubernetes cluster registration process. It enables you to deploy database clusters into the Kubernetes cluster.
-    
     If a public address is set VM Operator is also installed as part of the Kubernetes cluster registration process. It lets you monitor a kubernetes cluster via PMM.
 
 1. Click *Register new Kubernetes Cluster*.
@@ -45,7 +43,6 @@ From the left menu, select <i class="uil uil-database"></i> *DBaaS*.
 
 
 ![!](../_images/PMM_DBaaS_Kubernetes_Cluster_Details.png)
-
 
 
 !!! note alert alert-info ""
