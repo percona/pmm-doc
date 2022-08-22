@@ -42,7 +42,7 @@ alias kubectl='minikube kubectl --'
 ## Start PMM server and activate a DBaaS feature
 
 !!! note alert alert-primary ""
-    - To start a fully-working 3 node PXC cluster, consisting of sets of 3x HAProxy, 3x PXC and 6x PMM Client containers, you will require at least 0.5vCPU for HAProxy and 0.5vCPU for each pmm-client containers. CPU for PXC containers is set in UI by user.
+    - To start a fully-working three-node PXC cluster consisting of 3x HAProxy, 3x PXC, and 6x PMM Client containers, you will require at least 0.5vCPU for HAProxy and 0.5vCPU for each pmm-client container. CPU for PXC containers is set in UI by the user.
     - DBaaS does not depend on PMM Client.
     - You can pass the environment variable `--env ENABLE_DBAAS=1` to force the DBaaS feature when starting up pmm-server container. **You can omit the variable and enable the feature later using PMM UI**, please follow the link in step 3. below.
     - Add the option `--network minikube` if you run PMM Server and minikube in the same Docker instance. (This will share a single network and the kubeconfig will work.)
