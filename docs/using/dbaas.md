@@ -37,18 +37,18 @@ From the left menu, select <i class="uil uil-database"></i> *DBaaS*.
 
 2. Copy the value of *Kubeconfig file* and click *Paste from clipboard* to copy the content of the kubeconfig file in the corresponding field. The value of *Kubernetes Cluster Name* gets auto-populated from the contents of the *kubeconfig file*.
 
-!!! note alert alert-primary "Availability"
+    !!! note alert alert-primary "Availability"
     This feature is available starting with PMM 2.30.0.
 
-!!! note alert alert-primary ""
+    !!! note alert alert-primary ""
     This feature is available only in [secure contexts](https://developer.mozilla.org/en-US/docs/Web/Security/Secure_Contexts) (HTTPS) and some [supporting browsers](https://developer.mozilla.org/en-US/docs/Web/API/Clipboard#browser_compatibility).
 
 
-![!](../_images/PMM_DBaaS_Kubernetes_Cluster_Details.png)
+    ![!](../_images/PMM_DBaaS_Kubernetes_Cluster_Details.png)
 
 
 
-!!! note alert alert-info ""
+    !!! note alert alert-info ""
     For a Kubernetes cluster, when using Amazon Elastic Kubernetes Service (EKS) and the *kubeconfig file* does not contain the AWS 
     access key ID and AWS secret access key. Select the *Using Amazon Elastic Kubernetes Service (EKS)* 
     checkbox and enter the access key ID and secret access key in the respective fields.
@@ -56,7 +56,7 @@ From the left menu, select <i class="uil uil-database"></i> *DBaaS*.
 
 
 
-![!](../_images/PMM_DBaaS_Kubernetes_Cluster_EKS.png)
+    ![!](../_images/PMM_DBaaS_Kubernetes_Cluster_EKS.png)
 
 3. Click *Register*.
 
