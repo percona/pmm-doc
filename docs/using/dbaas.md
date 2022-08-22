@@ -53,8 +53,7 @@ From the left menu, select <i class="uil uil-database"></i> *DBaaS*.
     For information on obtaining these, see the [AWS documentation].
 
 
-
-    ![!](../_images/PMM_DBaaS_Kubernetes_Cluster_EKS.png)
+![!](../_images/PMM_DBaaS_Kubernetes_Cluster_EKS.png)
 
 3. Click *Register*.
 
