@@ -170,7 +170,7 @@ To silence alerts:
 To reactivate silenced alerts, click **Unsilence All** or click on the disabled bell icon <i class="uil uil-bell-slash"></i> corresponding to the alerts you want to reactivate.
 
 ## Alternative alerting options
-| Use | <i class="uil uil-thumbs-up"></i> **Benefits** | <i class="uil uil-thumbs-down"></i> **Drawbacks**
+| Use | <i class="uil uil-thumbs-up"></i> **Pros** | <i class="uil uil-thumbs-down"></i> **Cons**
 |---|---|---
 | [External Alertmanager](/how-to/configure.html#alertmanager-integration) | A way to integrate PMM when an organization has an existing [Alertmanager](https://prometheus.io/docs/alerting/latest/alertmanager/). | For experts who already use it
 | **Recommended**<br>[Native Grafana Alerting](https://grafana.com/docs/grafana/v8.5/alerting/) | 1. Build-in<br>2. Feature-rich. | 1. Available in the latest PMM versions only.
