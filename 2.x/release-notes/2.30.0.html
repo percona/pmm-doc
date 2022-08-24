@@ -218,10 +218,6 @@
 <p><a href="https://jira.percona.com/browse/PMM-5005">PMM-5005</a>: Logs: Added a more pronounced error message for the PMM agent to help you distinguish between potential problems, such as connectivity issues, unconfigured agent issues, connection time-out issues, etc.</p>
 </li>
 <li>
-<p><a href="https://jira.percona.com/browse/PMM-9968">PMM-9968</a>: Logs: You can now have more control over the logs you want to view with the <code>–log-level</code> parameter for the PMM agent. With this enhancement, you can experience more pronounced logging with the flexibility to choose options such as warning, error, and fatal as follows:</p>
-<p><code>pmm-admin inventory add agent * --log-level=debug|info|warn|error|fatal</code></p>
-</li>
-<li>
 <p><a href="https://jira.percona.com/browse/PMM-10147">PMM-10147</a>: To minimize resource consumption and DB connections, we have limited the number of concurrent jobs and actions that PMM Agent can execute concurrently. By default, PMM Agent will now run maximum 32 jobs and actions in parralel. You can configure this limit with the flag <code>--runner-capacity=&lt;some number&gt;</code> or environment variable <code>PMM_AGENT_RUNNER_CAPACITY=&lt;some number&gt;</code>. </p>
 </li>
 <li>
