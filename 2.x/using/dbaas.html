@@ -133,7 +133,7 @@
 </ol>
 <h2 id="open-the-dbaas-dashboard">Open the DBaaS dashboard<a class="headerlink" href="#open-the-dbaas-dashboard" title="Permanent link">&para;</a></h2>
 <p>From the left menu, select <i class="uil uil-database"></i> <em>DBaaS</em>.</p>
-<p><div class="lightgallery"><a data-sub-html="" href="../_images/PMM_DBaaS_Kubernetes_Cluster_Panel.jpg"><img alt="" src="../_images/PMM_DBaaS_Kubernetes_Cluster_Panel.jpg" /></a></div></p>
+<p><div class="lightgallery"><a data-sub-html="" href="../_images/PMM_DBaaS_Kubernetes_Cluster_Panel.png"><img alt="" src="../_images/PMM_DBaaS_Kubernetes_Cluster_Panel.png" /></a></div></p>
 <h2 id="kubernetes-clusters">Kubernetes clusters<a class="headerlink" href="#kubernetes-clusters" title="Permanent link">&para;</a></h2>
 <h3 id="add-a-kubernetes-cluster">Add a Kubernetes cluster<a class="headerlink" href="#add-a-kubernetes-cluster" title="Permanent link">&para;</a></h3>
 <div class="admonition caution alert alert-warning">
@@ -149,7 +149,16 @@
 <p>Click <em>Register new Kubernetes Cluster</em>.</p>
 </li>
 <li>
-<p>Enter values for the <em>Kubernetes Cluster Name</em> and <em>Kubeconfig file</em> in the corresponding fields.</p>
+<p>Copy the value of <em>Kubeconfig file</em> and click <em>Paste from clipboard</em> to copy the content of the kubeconfig file in the corresponding field. The value of <em>Kubernetes Cluster Name</em> gets auto-populated from the contents of the <em>kubeconfig file</em>.</p>
+</li>
+</ol>
+<div class="admonition note alert alert-primary">
+<p class="admonition-title">Availability</p>
+<p>This feature is available starting with PMM 2.30.0.</p>
+</div>
+<div class="admonition note alert alert-primary">
+<p>This feature is available only in <a href="https://developer.mozilla.org/en-US/docs/Web/Security/Secure_Contexts">secure contexts</a> (HTTPS) and some <a href="https://developer.mozilla.org/en-US/docs/Web/API/Clipboard#browser_compatibility">supporting browsers</a>.</p>
+</div>
 <p><div class="lightgallery"><a data-sub-html="" href="../_images/PMM_DBaaS_Kubernetes_Cluster_Details.png"><img alt="" src="../_images/PMM_DBaaS_Kubernetes_Cluster_Details.png" /></a></div></p>
 <div class="admonition note alert alert-info">
 <p>For a Kubernetes cluster, when using Amazon Elastic Kubernetes Service (EKS) and the <em>kubeconfig file</em> does not contain the AWS 
@@ -158,7 +167,7 @@ checkbox and enter the access key ID and secret access key in the respective fie
 For information on obtaining these, see the <a href="https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html">AWS documentation</a>.</p>
 </div>
 <p><div class="lightgallery"><a data-sub-html="" href="../_images/PMM_DBaaS_Kubernetes_Cluster_EKS.png"><img alt="" src="../_images/PMM_DBaaS_Kubernetes_Cluster_EKS.png" /></a></div></p>
-</li>
+<ol>
 <li>
 <p>Click <em>Register</em>.</p>
 </li>
@@ -233,6 +242,25 @@ For information on obtaining these, see the <a href="https://docs.aws.amazon.com
 <h3 id="add-a-db-cluster">Add a DB Cluster<a class="headerlink" href="#add-a-db-cluster" title="Permanent link">&para;</a></h3>
 <p>You must create at least one Kubernetes cluster to create a DB cluster.</p>
 <p>To monitor a DB cluster, set up a <a href="../how-to/configure.html#public-address">public address</a> for PMM Server first.</p>
+<h4 id="add-a-one-click-db-cluster">Add a one-click DB cluster<a class="headerlink" href="#add-a-one-click-db-cluster" title="Permanent link">&para;</a></h4>
+<div class="admonition note alert alert-primary">
+<p class="admonition-title">Availability</p>
+<p>This feature is available starting with PMM 2.30.0.</p>
+</div>
+<p>You can create a DB cluster literally at the click of a button. All the fields will be automatically populated with the default values. </p>
+<p>To create a DB cluster, do the following:</p>
+<ol>
+<li>
+<p>Select the <em>DB Cluster</em> tab.</p>
+</li>
+<li>
+<p>Click <em>Create DB Cluster</em>.</p>
+</li>
+<li>
+<p>Click <em>Create Cluster</em> to create your Cluster.</p>
+</li>
+</ol>
+<h4 id="add-a-db-cluster-with-custom-values">Add a DB cluster with custom values<a class="headerlink" href="#add-a-db-cluster-with-custom-values" title="Permanent link">&para;</a></h4>
 <ol>
 <li>
 <p>Select the <em>DB Cluster</em> tab.</p>
@@ -410,7 +438,7 @@ For information on obtaining these, see the <a href="https://docs.aws.amazon.com
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2022-03-04
+            <i class="uil uil-refresh"></i> Page updated 2022-08-24
         </li>
         
     </ul>
@@ -818,6 +846,12 @@ For information on obtaining these, see the <a href="https://docs.aws.amazon.com
 
 
 <li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-home-experimental.html">Experimental Home Dashboard</a>
+
+
+
+
+<li class="toctree-l4">
     <a class="reference internal" href="../details/dashboards/dashboard-advanced-data-exploration.html">Advanced Data Exploration</a>
 
 
@@ -1071,12 +1105,30 @@ For information on obtaining these, see the <a href="https://docs.aws.amazon.com
 
 
 <li class="toctree-l3">
-    <a class="reference internal" href="../details/dashboards/dashboard-mongodb-cluster-summary.html">MongoDB Dashboards</a>
+    <a class="reference internal" href="../details/dashboards/dashboard-mongodb-experimental_collection_overview.html">MongoDB Dashboards</a>
 
 
 
 
 <ul class="toctree" id="toctree">
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-mongodb-experimental_collection_details.html">Experimental MongoDB Collection Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-mongodb-experimental_oplog.html">Experimental MongoDB Oplog Details</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-mongodb-cluster-summary.html">MongoDB Cluster Summary</a>
+
+
 
 
 <li class="toctree-l4">
@@ -1269,6 +1321,12 @@ For information on obtaining these, see the <a href="https://docs.aws.amazon.com
 
 
 <ul class="toctree" id="toctree">
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/2.30.0.html">PMM 2.30.0</a>
+
+
 
 
 <li class="toctree-l2">
