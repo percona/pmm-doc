@@ -156,12 +156,13 @@ nav:
             
           - Dashboards:
                 - details/dashboards/index.md
-                - Insight:
-                      - details/dashboards/dashboard-home.md
-                      - details/dashboards/dashboard-home-experimental.md
-                      - details/dashboards/dashboard-advanced-data-exploration.md
-                      - details/dashboards/dashboard-victoriametrics.md
-                      - details/dashboards/dashboard-victoriametrics-agents-overview.md
+                - PMM dashboards
+                        - Insight:
+                          - details/dashboards/dashboard-home.md
+                          - details/dashboards/dashboard-home-experimental.md
+                          - details/dashboards/dashboard-advanced-data-exploration.md
+                          - details/dashboards/dashboard-victoriametrics.md
+                          - details/dashboards/dashboard-victoriametrics-agents-overview.md
                 - PMM:
                       - details/dashboards/dashboard-inventory.md
                       - details/dashboards/dashboard-env-overview.md
