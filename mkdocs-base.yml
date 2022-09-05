@@ -180,14 +180,14 @@ nav:
                               - details/dashboards/dashboard-node-summary.md
                               - details/dashboards/dashboard-numa-details.md
                               - details/dashboards/dashboard-processes-details.md
-                - Prometheus Dashboards:
-                      - details/dashboards/dashboard-prometheus-exporter-status.md
-                      - details/dashboards/dashboard-prometheus-exporters-overview.md
-                - MySQL Dashboards:
-                      - details/dashboards/dashboard-mysql-amazon-aurora-details.md
-                      - details/dashboards/dashboard-mysql-command-handler-counters-compare.md
-                      - details/dashboards/dashboard-mysql-innodb-compression-details.md
-                      - details/dashboards/dashboard-mysql-innodb-details.md
+                        - Prometheus Dashboards:
+                              - details/dashboards/dashboard-prometheus-exporter-status.md
+                              - details/dashboards/dashboard-prometheus-exporters-overview.md
+                        - MySQL Dashboards:
+                              - details/dashboards/dashboard-mysql-amazon-aurora-details.md
+                              - details/dashboards/dashboard-mysql-command-handler-counters-compare.md
+                              - details/dashboards/dashboard-mysql-innodb-compression-details.md
+                              - details/dashboards/dashboard-mysql-innodb-details.md
                       - details/dashboards/dashboard-mysql-myisam-aria-details.md
                       - details/dashboards/dashboard-mysql-myrocks-details.md
                       - details/dashboards/dashboard-mysql-instance-summary.md
