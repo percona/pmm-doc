@@ -167,19 +167,19 @@ nav:
                            - details/dashboards/dashboard-inventory.md
                            - details/dashboards/dashboard-env-overview.md
                            - details/dashboards/dashboard-environent-summary.md
-                - DBaas:
-                      - details/dashboards/dashboard-cluster-summary.md
-                - OS Dashboards:
-                      - details/dashboards/dashboard-cpu-utilization-details.md
-                      - details/dashboards/dashboard-disk-details.md
-                      - details/dashboards/dashboard-network-details.md
-                      - details/dashboards/dashboard-memory-details.md
-                      - details/dashboards/dashboard-node-temperature-details.md
-                      - details/dashboards/dashboard-nodes-compare.md
-                      - details/dashboards/dashboard-nodes-overview.md
-                      - details/dashboards/dashboard-node-summary.md
-                      - details/dashboards/dashboard-numa-details.md
-                      - details/dashboards/dashboard-processes-details.md
+                        - DBaas:
+                           - details/dashboards/dashboard-cluster-summary.md
+                        - OS Dashboards:
+                              - details/dashboards/dashboard-cpu-utilization-details.md
+                              - details/dashboards/dashboard-disk-details.md
+                              - details/dashboards/dashboard-network-details.md
+                              - details/dashboards/dashboard-memory-details.md
+                              - details/dashboards/dashboard-node-temperature-details.md
+                              - details/dashboards/dashboard-nodes-compare.md
+                              - details/dashboards/dashboard-nodes-overview.md
+                              - details/dashboards/dashboard-node-summary.md
+                              - details/dashboards/dashboard-numa-details.md
+                              - details/dashboards/dashboard-processes-details.md
                 - Prometheus Dashboards:
                       - details/dashboards/dashboard-prometheus-exporter-status.md
                       - details/dashboards/dashboard-prometheus-exporters-overview.md
