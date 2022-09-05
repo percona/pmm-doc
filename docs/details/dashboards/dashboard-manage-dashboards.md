@@ -1,23 +1,33 @@
-# Manage Dashboards
+# Manage dashboards
 
-![!image](../../_images/PMM_Advanced_Data_Exploration.jpg)
 
-The *Advanced Data Exploration* dashboard provides detailed information about the progress of a single Prometheus metric across one or more hosts.
+This section describes how to manage your PMM dashboards and the widgets on those dashboards including:
 
-## View actual metric values (Gauge)
+- Creating and managing dashboard folders
+- Setting custom Home Dashboard
+- Moving dasboards
 
-A gauge is a metric that represents a single numerical value that can arbitrarily go up and down.
 
-Gauges are typically used for measured values like temperatures or current memory usage, but also "counts" that can go up and down, like the number of running goroutines.
+## Create dashboard folders
 
-## View Metric Rate of Change (Counter)
+Folders help you organize and group PMM dashboards, which is crucial when you have multiple dashboards or teams using the same PMM instance.
 
-A counter is a cumulative metric that represents a single numerical value that only ever goes up. A counter is typically used to count requests served, tasks completed, errors occurred, etc. Counters should not be used to expose current counts of items whose number can also go down, e.g. the number of currently running goroutines. Use gauges for this use case.
+!!! note alert alert-primary "Note"
+    To create a dashbaord folder you must have PMM `Admin` priivileges.
 
-## Metric Rates
+To create a dashboard folder:
 
-Shows the number of samples Per second stored for a given interval in the time series.
+1. On the PMM dashboards page, from the side menu, go to <i class="uil uil-plus"></i> `Dashboards > New folder`.
 
-This dashboard supports metrics related to NUMA. The names of all these metrics start with `node_memory_numa`.
+2. Enter a unique name for your folder and click `Create`.
 
-![!image](../../_images/metrics-monitor.advanced-data-exploration.node-memory-numa.png)
+
+## Setting custom Home Dashbaord
+
+To set up custom Home Dashbaord:
+
+1. 
+
+
+
+
