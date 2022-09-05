@@ -156,6 +156,8 @@ nav:
             
           - Dashboards:
                 - details/dashboards/index.md
+                - Manage dashboards:
+                    - details/dashboards/manage-dashboards.md
                 - PMM dashboards:
                         - Insight:
                             - details/dashboards/dashboard-home.md
