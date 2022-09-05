@@ -163,7 +163,7 @@ nav:
                             - details/dashboards/dashboard-advanced-data-exploration.md
                             - details/dashboards/dashboard-victoriametrics.md
                             - details/dashboards/dashboard-victoriametrics-agents-overview.md
-                        - PMM:
+                        - PMM Inventory:
                             - details/dashboards/dashboard-inventory.md
                             - details/dashboards/dashboard-env-overview.md
                             - details/dashboards/dashboard-environent-summary.md
