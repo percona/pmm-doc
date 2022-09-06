@@ -47,7 +47,7 @@ To move dashboards from one folder to another:
 
 ![!image](../../_images/PMM_Move_dashbaords.png)
 
-2. On the *Choose Dashboard Folder* dialog box select the dashboard that you want to move from the drop-down. Click *Move*.
+2. On the *Choose Dashboard Folder* dialog box select the dashboards that you want to move from the drop-down. Click *Move*.
 
 
 ### Navigate to a dashboard folder page to assign permissions
