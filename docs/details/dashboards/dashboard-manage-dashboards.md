@@ -32,36 +32,51 @@ This section describes how to delete multiple dashboards, move dashboards from o
 
 To delete multiple dashboards at once:
 
-1. From the side menu, go to `Dashboards > Browse` and check the dashboards that you want to delete, and click `Delete'.
+1. From the side menu, go to <i class="uil uil-apps"></i> `Dashboards > Browse` and check the dashboards that you want to delete, and click `Delete'.
 
 2. On the `Delete` window, click `Delete`.
+
+
+![!image](../../_images/PMM_Delete_multiple_dashbaords.png)
 
 ### Move dashboards from one folder to another
 
 To move dashboards from one folder to another:
 
-1. From the side menu, go to `Dashboards > Browse` and check the dashboards that you want to move. Click `Move`.
+1. From the side menu, go to <i class="uil uil-apps"></i> `Dashboards > Browse` and check the dashboards that you want to move. Click `Move`.
+
+![!image](../../_images/PMM_Move_dashbaords.png)
 
 2. On the `Choose Dashboard Folder` dialog box select the dashboard that you want to move from the drop-down. Click `Move'.
 
 
 ### Navigate to a dashboard folder page to assign permissions
 
-1. From the side menu, go to `Dashboards > Browse` and hover over the dashboard folder whose permissions you want to set. Click `Go to Folder`.
+1. From the side menu, go to <i class="uil uil-apps"></i> `Dashboards > Browse` and hover over the dashboard folder whose permissions you want to set. Click `Go to Folder`.
 
 2. Go to the `Permissions` tab and select the requisite permission from the drop-down for the various roles.
 
+
+![!image](../../_images/PMM_Permissions_dashbaords_folder.png)
 
 
 ## Setting custom Home Dashboard
 
 To set up your custom Home Dashboard:
 
-1. From the side menu, go to `Dashboards > Browse` and select the dashboard you want to set as your home dashboard.
+1. From the side menu, go to <i class="uil uil-apps"></i> `Dashboards > Browse` and select the dashboard you want to set as your home dashboard.
 
 2. Click the star next to the dashboard title to mark it as a favorite.
 
-3. From the side menu go to `Configuration > Preferences`. In the `Home Dashboard` field, select the dashboard that you want to set as your home dashboard. 
+
+![!image](../../_images/PMM_click_to_add_favorite_dashbaord.png)
+
+
+
+3. From the side menu go to <i class="uil uil-cog"></i> `Configuration > Preferences`. In the `Home Dashboard` field, select the dashboard that you want to set as your home dashboard. 
+
+
+![!image](../../_images/PMM_set_home_dashboard.png)
 
 
 
