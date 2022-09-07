@@ -258,11 +258,11 @@ timeout 60 podman wait --condition=running pmm-server
     Edit `~/.config/pmm-server/env` file:
 
     ```sh
-    sed -i "s/PMM_TAG=.*/PMM_TAG=2.29.0/g" ~/.config/pmm-server/env
+    sed -i "s/PMM_TAG=.*/PMM_TAG=2.29.1/g" ~/.config/pmm-server/env
     ```
 
     !!! caution alert alert-warning "Important"
-        X.Y.Z (2.29.0) is the version you used before upgrade and you made Backup with it
+        X.Y.Z (2.29.1) is the version you used before upgrade and you made Backup with it
 
 3. Restore the volume.
 
