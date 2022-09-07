@@ -113,7 +113,7 @@ Percona recommends running PMM as a non-privileged user and running it as part o
     ```sh
     mkdir -p ~/.config/pmm-server/
     cat << "EOF" > ~/.config/pmm-server/env
-    PMM_TAG=2.31.0
+    PMM_TAG=2.30.0
     PMM_IMAGE=docker.io/percona/pmm-server
     PMM_PUBLIC_PORT=8443
     EOF
@@ -210,7 +210,7 @@ timeout 60 podman wait --condition=running pmm-server
 
     <div hidden>
     ```sh
-    sed -i "s/PMM_TAG=.*/PMM_TAG=2.31.0/g" ~/.config/pmm-server/env
+    sed -i "s/PMM_TAG=.*/PMM_TAG=2.30.0/g" ~/.config/pmm-server/env
     sed -i "s|PMM_IMAGE=.*|PMM_IMAGE=docker.io/perconalab/pmm-server|g" ~/.config/pmm-server/env
     ```
     </div>
@@ -258,11 +258,11 @@ timeout 60 podman wait --condition=running pmm-server
     Edit `~/.config/pmm-server/env` file:
 
     ```sh
-    sed -i "s/PMM_TAG=.*/PMM_TAG=2.30.0/g" ~/.config/pmm-server/env
+    sed -i "s/PMM_TAG=.*/PMM_TAG=2.29.0/g" ~/.config/pmm-server/env
     ```
 
     !!! caution alert alert-warning "Important"
-        X.Y.Z (2.30.0) is the version you used before upgrade and you made Backup with it
+        X.Y.Z (2.29.0) is the version you used before upgrade and you made Backup with it
 
 3. Restore the volume.
 
