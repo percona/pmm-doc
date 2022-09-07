@@ -210,7 +210,7 @@ timeout 60 podman wait --condition=running pmm-server
 
     <div hidden>
     ```sh
-    sed -i "s/PMM_TAG=.*/PMM_TAG=2.30.0/g" ~/.config/pmm-server/env
+    sed -i "s/PMM_TAG=.*/PMM_TAG=2.31.0/g" ~/.config/pmm-server/env
     sed -i "s|PMM_IMAGE=.*|PMM_IMAGE=docker.io/perconalab/pmm-server|g" ~/.config/pmm-server/env
     ```
     </div>
