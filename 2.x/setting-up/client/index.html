@@ -119,7 +119,7 @@
 <p>There are different ways to install PMM Client on a node and register it with PMM Server. Choose from:</p>
 <ul>
 <li>
-<p><a href="#docker">Docker</a>: Run PMM Client as a Docker container, either directly or with Docker compose.</p>
+<p><a href="#docker">Docker</a>: Run PMM Client as a Docker container.</p>
 </li>
 <li>
 <p><a href="#package-manager">Package manager</a>:</p>
@@ -151,7 +151,6 @@
 <li>You have superuser access to any database servers that you want to monitor.</li>
 <li>These Linux packages are installed: <code>curl</code>, <code>gnupg</code>, <code>sudo</code>, <code>wget</code>.</li>
 <li>If using it, install <a href="https://docs.docker.com/get-docker/">Docker</a>.</li>
-<li>If using it, install <a href="https://docs.docker.com/compose/">Docker compose</a>.</li>
 <li>System requirements:<ul>
 <li>Operating system &ndash; PMM Client runs on any modern 64-bit Linux distribution. It is tested on supported versions of Debian, Ubuntu, CentOS, and Red Hat Enterprise Linux. (See <a href="https://www.percona.com/services/policies/percona-software-support-lifecycle#pt">Percona software support life cycle</a>).</li>
 <li>Disk &ndash; A minimum of 100 MB of storage is required for installing the PMM Client package. With a good connection to PMM Server, additional storage is not required. However, the client needs to store any collected data that it cannot dispatch immediately, so additional storage may be required if the connection is unstable or the throughput is low. (Caching only applies to Query Analytics data; VictoriaMetrics data is never cached on the client side.)</li>
@@ -213,80 +212,13 @@ pmm-admin status
 <li>Adjust host firewall and routing rules to allow Docker communications. (<a href="../../how-to/troubleshoot.html">Read more</a>)</li>
 <li>For help: <code>docker run --rm percona/pmm-client:2 --help</code></li>
 </ul>
-</div>
-<h3 id="docker-compose">Docker compose<a class="headerlink" href="#docker-compose" title="Permanent link">&para;</a></h3>
-<ol>
-<li>
-<p>Copy and paste this text into a file called <code>docker-compose.yml</code>.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;2&#39;</span><span class="w"></span>
-<span class="nt">services</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">pmm-client</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">percona/pmm-client:2</span><span class="w"></span>
-<span class="w">    </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pmm-client-myhost</span><span class="w"></span>
-<span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pmm-client</span><span class="w"></span>
-<span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">always</span><span class="w"></span>
-<span class="w">    </span><span class="nt">ports</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;42000:42000&quot;</span><span class="w"></span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;42001:42001&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="nt">logging</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="nt">driver</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">json-file</span><span class="w"></span>
-<span class="w">      </span><span class="nt">options</span><span class="p">:</span><span class="w"></span>
-<span class="w">        </span><span class="nt">max-size</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;10m&quot;</span><span class="w"></span>
-<span class="w">        </span><span class="nt">max-file</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;5&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="nt">volumes</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./pmm-agent.yaml:/etc/pmm-agent.yaml</span><span class="w"></span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pmm-client-data:/srv</span><span class="w"></span>
-<span class="w">    </span><span class="nt">environment</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PMM_AGENT_CONFIG_FILE=/etc/pmm-agent.yaml</span><span class="w"></span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PMM_AGENT_SERVER_USERNAME=admin</span><span class="w"></span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PMM_AGENT_SERVER_PASSWORD=admin</span><span class="w"></span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PMM_AGENT_SERVER_ADDRESS=X.X.X.X:443</span><span class="w"></span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PMM_AGENT_SERVER_INSECURE_TLS=true</span><span class="w"></span>
-<span class="w">    </span><span class="nt">entrypoint</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pmm-agent setup</span><span class="w"></span>
-<span class="nt">volumes</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">pmm-client-data</span><span class="p">:</span><span class="w"></span>
-</code></pre></div>
-<div class="admonition note alert alert-info">
-<ul>
-<li>Check the values in the <code>environment</code> section match those for your PMM Server. (<code>X.X.X.X</code> is the IP address of your PMM Server.)</li>
-<li>Use unique hostnames across all PMM Clients (value for <code>services.pmm-client.hostname</code>).</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Ensure a writable agent configuration file.</p>
-<div class="highlight"><pre><span></span><code>touch pmm-agent.yaml <span class="o">&amp;&amp;</span> chmod <span class="m">0666</span> pmm-agent.yaml
-</code></pre></div>
-</li>
-<li>
-<p>Run the PMM Agent setup. This will run and stop.</p>
-<div class="highlight"><pre><span></span><code>docker-compose up
-</code></pre></div>
-</li>
-<li>
-<p>Edit <code>docker-compose.yml</code>, comment out the <code>entrypoint</code> line (insert a <code>#</code>) and save.</p>
-<div class="highlight"><pre><span></span><code><span class="nn">...</span><span class="w"></span>
-<span class="c1">#        entrypoint: pmm-agent setup</span><span class="w"></span>
-</code></pre></div>
-</li>
-<li>
-<p>Run again, this time with the Docker <em>detach</em> option.</p>
-<div class="highlight"><pre><span></span><code>docker-compose up -d
-</code></pre></div>
-</li>
-<li>
-<p>Verify.</p>
-<p>On the command line.</p>
-<div class="highlight"><pre><span></span><code>docker <span class="nb">exec</span> pmm-client pmm-admin status
-</code></pre></div>
 <p>In the GUI.</p>
 <ul>
 <li>Select <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M7 3V21H3V3H7ZM15 18.7H21V21H15V18.7ZM15 3H21V10.7L15 10.7V3Z" stroke="#000" stroke-width="6"/></svg> <em>PMM Dashboards</em> → <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M19.0374 13.0366V9.96332C19.3008 9.90668 19.5575 9.81334 19.7941 9.67666H19.7974C21.015 8.97178 21.4468 7.40818 20.7375 6.16665C19.8439 4.62697 17.7047 4.46883 16.5975 5.74331L13.9375 4.20998C14.4943 2.53956 13.2292 0.833313 11.5008 0.833313C9.74562 0.833313 8.51027 2.5584 9.0608 4.20998L6.40414 5.74664C5.22781 4.41796 3.12698 4.67417 2.26083 6.16665C1.43127 7.61735 2.16266 9.56505 3.96745 9.96665V13.0366C0.997887 13.6307 1.38358 18.12 4.48747 18.12C5.19572 18.12 5.90226 17.821 6.4008 17.2566L9.0608 18.7933C8.50807 20.4302 9.73952 22.1666 11.5008 22.1666C13.1589 22.1666 14.4973 20.5746 13.9375 18.7933L16.5975 17.2566C17.7585 18.5683 19.8627 18.3371 20.7375 16.84C20.7375 16.8366 20.7375 16.8366 20.7408 16.8333C21.5815 15.3502 20.8005 13.4161 19.0374 13.0366ZM16.2208 16.7033V16.7066L13.6475 18.19C12.6513 16.617 10.3413 16.7338 9.3508 18.19L6.78081 16.7066C7.00773 16.2523 7.10701 15.6689 7.01417 15.11C6.94874 15.0445 6.70491 13.0696 4.63412 12.9867V10.0166C6.23211 10.0166 7.66579 8.06995 6.78081 6.29999L9.35413 4.81334C9.36529 4.83566 9.52852 5.05628 9.55412 5.07335C10.2403 5.87945 11.3026 6.1337 12.2108 5.86664C12.2208 5.86664 12.2308 5.85997 12.2408 5.85997C12.756 5.68831 13.1361 5.41265 13.1675 5.34996C13.3508 5.1933 13.5142 5.01662 13.6475 4.81334L16.2208 6.29665C15.5381 7.74759 16.131 9.69945 18.3708 10.0166V12.9867C16.5823 13.0716 15.4079 14.917 16.2208 16.7033Z" fill="#000"></path></svg> <em>System (Node)</em> → <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M19.0374 13.0366V9.96332C19.3008 9.90668 19.5575 9.81334 19.7941 9.67666H19.7974C21.015 8.97178 21.4468 7.40818 20.7375 6.16665C19.8439 4.62697 17.7047 4.46883 16.5975 5.74331L13.9375 4.20998C14.4943 2.53956 13.2292 0.833313 11.5008 0.833313C9.74562 0.833313 8.51027 2.5584 9.0608 4.20998L6.40414 5.74664C5.22781 4.41796 3.12698 4.67417 2.26083 6.16665C1.43127 7.61735 2.16266 9.56505 3.96745 9.96665V13.0366C0.997887 13.6307 1.38358 18.12 4.48747 18.12C5.19572 18.12 5.90226 17.821 6.4008 17.2566L9.0608 18.7933C8.50807 20.4302 9.73952 22.1666 11.5008 22.1666C13.1589 22.1666 14.4973 20.5746 13.9375 18.7933L16.5975 17.2566C17.7585 18.5683 19.8627 18.3371 20.7375 16.84C20.7375 16.8366 20.7375 16.8366 20.7408 16.8333C21.5815 15.3502 20.8005 13.4161 19.0374 13.0366ZM16.2208 16.7033V16.7066L13.6475 18.19C12.6513 16.617 10.3413 16.7338 9.3508 18.19L6.78081 16.7066C7.00773 16.2523 7.10701 15.6689 7.01417 15.11C6.94874 15.0445 6.70491 13.0696 4.63412 12.9867V10.0166C6.23211 10.0166 7.66579 8.06995 6.78081 6.29999L9.35413 4.81334C9.36529 4.83566 9.52852 5.05628 9.55412 5.07335C10.2403 5.87945 11.3026 6.1337 12.2108 5.86664C12.2208 5.86664 12.2308 5.85997 12.2408 5.85997C12.756 5.68831 13.1361 5.41265 13.1675 5.34996C13.3508 5.1933 13.5142 5.01662 13.6475 4.81334L16.2208 6.29665C15.5381 7.74759 16.131 9.69945 18.3708 10.0166V12.9867C16.5823 13.0716 15.4079 14.917 16.2208 16.7033Z" fill="#000"></path></svg> <em>Node Overview</em>.</li>
 <li>In the <em>Node Names</em> menu, select the new node.</li>
 <li>Change the time range to see data.</li>
 </ul>
-</li>
-</ol>
+</div>
 <div class="admonition danger alert alert-danger">
 <p class="admonition-title">Danger</p>
 <p><code>pmm-agent.yaml</code> contains sensitive credentials and should not be shared.</p>
@@ -567,7 +499,6 @@ where YOURPATH replace with you real path, where you have required access.</p>
 <ul>
 <li><a href="https://www.percona.com/doc/percona-repo-config/percona-release.html">Percona release</a></li>
 <li><a href="../../details/architecture.html#pmm-client">PMM Client architecture</a></li>
-<li>Thanks to <a href="https://gist.github.com/paskal/48f10a0a584f4849be6b0889ede9262b">paskal</a> for original Docker compose files</li>
 </ul>
 </div>
                     </div>
@@ -577,7 +508,7 @@ where YOURPATH replace with you real path, where you have required access.</p>
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2022-06-14
+            <i class="uil uil-refresh"></i> Page updated 2022-09-09
         </li>
         
     </ul>
