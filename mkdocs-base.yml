@@ -4,7 +4,7 @@ site_name: Percona Monitoring and Management
 site_description: Documentation
 site_author: Percona LLC
 site_url: ""
-copyright: Percona LLC, &#169; 2021
+copyright: Percona LLC, &#169; 2022
 use_directory_urls: false
 repo_name: percona/pmm-doc
 repo_url: https://github.com/percona/pmm-doc
@@ -67,9 +67,9 @@ plugins:
       - "setting-up/client/docker.md"
   # https://github.com/orzih/mkdocs-with-pdf
   with-pdf:
-    output_path: "_pdf/PerconaMonitoringAndManagement-2.28.0.pdf"
+    output_path: "_pdf/PerconaMonitoringAndManagement-2.30.0.pdf"
     cover_title: "Documentation"
-    cover_subtitle: 2.28.0 (May 12, 2022)
+    cover_subtitle: 2.30.0 (Aug 24, 2022)
     author: "Percona Technical Documentation Team"
     cover_logo: docs/_images/PMM_Logo.svg
     custom_template_path: _resources/templates
@@ -100,6 +100,8 @@ nav:
                 - setting-up/server/index.md
                 - setting-up/server/network.md
                 - setting-up/server/docker.md
+                - setting-up/server/podman.md
+                - setting-up/server/helm.md
                 - setting-up/server/virtual-appliance.md
                 - setting-up/server/aws.md
                 - setting-up/server/easy-install.md
@@ -133,7 +135,7 @@ nav:
           - how-to/secure.md
           - how-to/optimize.md
           - how-to/annotate.md
-          - how-to/render-dashboard-images.md
+          - how-to/share-dashboard.md
           - how-to/extend-metrics.md
           - how-to/troubleshoot.md
           - Integrate with Percona Platform:
@@ -156,6 +158,7 @@ nav:
                 - details/dashboards/index.md
                 - Insight:
                       - details/dashboards/dashboard-home.md
+                      - details/dashboards/dashboard-home-experimental.md
                       - details/dashboards/dashboard-advanced-data-exploration.md
                       - details/dashboards/dashboard-victoriametrics.md
                       - details/dashboards/dashboard-victoriametrics-agents-overview.md
@@ -198,6 +201,9 @@ nav:
                       - details/dashboards/dashboard-mysql-user-details.md
                       - details/dashboards/dashboard-mysql-tokudb-details.md
                 - MongoDB Dashboards:
+                      - details/dashboards/dashboard-mongodb-experimental_collection_overview.md
+                      - details/dashboards/dashboard-mongodb-experimental_collection_details.md
+                      - details/dashboards/dashboard-mongodb-experimental_oplog.md
                       - details/dashboards/dashboard-mongodb-cluster-summary.md
                       - details/dashboards/dashboard-mongodb-instance-summary.md
                       - details/dashboards/dashboard-mongodb-instances-overview.md
@@ -215,6 +221,7 @@ nav:
                 - HA Dashboards:
                       - details/dashboards/dashboard-pxc-galera-node-summary.md
                       - details/dashboards/dashboard-pxc-galera-cluster-summary.md
+                      - details/dashboards/dashboard-pxc-galera-cluster-summary-experimental.md
                       - details/dashboards/dashboard-pxc-galera-nodes-compare.md
                       - details/dashboards/dashboard-haproxy-instance-summary.md
           - Commands:
@@ -223,6 +230,7 @@ nav:
                 - details/commands/pmm-agent.md
           - details/api.md
           - details/victoria-metrics.md
+          - details/clickhouse.md
           - details/glossary.md
 
             
@@ -230,6 +238,9 @@ nav:
     
     - Release Notes:
           - release-notes/index.md
+          - "PMM 2.30.0": release-notes/2.30.0.md
+          - "PMM 2.29.1": release-notes/2.29.1.md
+          - "PMM 2.29.0": release-notes/2.29.0.md
           - "PMM 2.28.0": release-notes/2.28.0.md
           - "PMM 2.27.0": release-notes/2.27.0.md
           - "PMM 2.26.0": release-notes/2.26.0.md
