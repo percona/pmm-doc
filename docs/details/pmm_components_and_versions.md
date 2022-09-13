@@ -1,12 +1,8 @@
-# Network
+# PMM components and versions
 
-## Ports
+The following table lists all the PMM client/server components and their versions:
 
-This is a list of ports used by the various components of PMM.
 
-For PMM to work correctly, your system's firewall should allow TCP traffic on these ports (UDP is not needed).
-
-Ports to expose:
 
 | PMM component | TCP port      | Direction     | Description
 |---------------|---------------|---------------|-----------------------------------------------------------------------------------------------------------------
