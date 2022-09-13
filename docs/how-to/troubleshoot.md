@@ -49,7 +49,7 @@ If PMM server wasn't updated properly, or if you have concerns about the release
     !!! note alert alert-primary ""
         You will not see the logs using this method.
 
-Refresh The Home page in 2-5 minutes and you should see that PMM was updated.
+    Refresh The Home page in 2-5 minutes and you should see that PMM was updated.
 
 3. Upgrade PMM server using [Docker](https://docs.percona.com/percona-monitoring-and-management/setting-up/server/docker.html#upgrade).
 
