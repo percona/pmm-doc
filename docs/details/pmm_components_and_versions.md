@@ -15,7 +15,7 @@ The following table lists all the PMM client/server components and their version
 | MongoDB exporter  | 0.34.0    | |[Github percona/mongodb_exporter](https://github.com/percona/mongodb_exporter)|                                          
 | RDS exporter  | 0.7.2    | |[Github percona/rds_exporter](https://github.com/percona/rds_exporter)|                                          
 | Mysqld exporter| V0.14.0 and Percona changes    | [MySQL Server Exporter Documentation](https://grafana.com/oss/prometheus/exporters/mysql-exporter/)|[Github prometheus/mysqld_exporter](github.com/percona/mysqld_exporter)    |                                          
-| Node exporter|v1.3.1 and Percona changes| [Node Exporter Documentation](https://prometheus.io/docs/guides/node-exporter/)|[Github node exporter](https://github.com/prometheus/node_exporter)    |                                          
-| Azure exporter|       |            |[Github azure_metrics_exporter](https://github.com/RobustPerception/azure_metrics_exporter)    |                                          
+| Node exporter|v1.3.1 and Percona changes| [Node Exporter Documentation](https://prometheus.io/docs/guides/node-exporter/)|[Github node exporter](https://github.com/percona/node_exporter)    |                                          
+| Azure exporter|       |            |[Github azure_metrics_exporter](https://github.com/percona/azure_metrics_exporter)    |                                          
 
 
