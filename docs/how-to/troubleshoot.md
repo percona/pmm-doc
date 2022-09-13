@@ -5,7 +5,7 @@ This section describes solutions to common problems and scenarios you might enco
 
 ## Troubleshooting checklist
 
-The following questions might help you identify the origin of the problem occurring with Percona Monitoring and Management:
+The following questions might help you identify the origin of the problem while using Percona Monitoring and Management:
 
 1. Are you using the latest PMM version?
 2. Did you check the known issues section in the Release Notes for that particular PMM release?
