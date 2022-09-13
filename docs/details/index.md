@@ -4,7 +4,7 @@
 
 - [User interface components](interface.md): Descriptions of the main menus and icons.
 
-- [PMM components and versions](pmm_components_and_versions.md)
+- [PMM components and versions](pmm_components_and_versions.md): PMM components and their version used in PMM.
 
 - [Developing Advisor checks](develop-checks/index.md): Database health assessments.
 
