@@ -22,6 +22,9 @@ The main menu is part of the Grafana framework and is visible on every page.
 | ![!image](../_images/os-dashboard.png)      | Operating System (OS)    | Operating System dashboard
 | ![!image](../_images/mysql-dashboard.png)    | MySQL      | MySQL dashboard
 | ![!image](../_images/mongo-dashboard.png)    | MongoDB      | MongoDB dashboard
+| ![!image](../_images/postresql-dashboard.png)    | PostgreSQL     | PostgreSQL dashboard
+| ![!image](../_images/postresql-dashboard.png)    | MongoDB      | MongoDB dashboard
+
 | <i class="uil uil-compass"></i>    | Explore              | Run queries with [PromQL].
 | <i class="uil uil-bell"></i>       | Alerting             | Alerting, [Integrated Alerting](../using/alerting.md), Alert Rules, Notification Channels.
 | <i class="uil uil-cog"></i>        | Configuration        |
