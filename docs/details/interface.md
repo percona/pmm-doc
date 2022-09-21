@@ -19,7 +19,7 @@ The main menu is part of the Grafana framework and is visible on every page.
 | <i class="uil uil-search"></i>     | Search               | Search dashboards by name.
 | <i class="uil uil-star"></i>       | Starred              | MArk your favorite dashboards.
 | <i class="uil uil-apps"></i>       | Dashboards           | Create dashboards or [folders][Folders], manage dashboards, import dashboards, create playlists, manage snapshots.
-| <i class="uil uil-MySQL"></i>      | MySQL Dashboards       | Replacement for [shortcut menu](#shortcut-menu).
+| <i class="uil uil-mysql"></i>      | MySQL Dashboards       | Replacement for [shortcut menu](#shortcut-menu).
 | <i class="uil uil-compass"></i>    | Explore              | Run queries with [PromQL].
 | <i class="uil uil-bell"></i>       | Alerting             | Alerting, [Integrated Alerting](../using/alerting.md), Alert Rules, Notification Channels.
 | <i class="uil uil-cog"></i>        | Configuration        |
