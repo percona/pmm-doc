@@ -12,18 +12,18 @@ If you need custom expressions on which to base your alert rules, you can also c
 - **Grafana managed alerts**: alerts that handle complex conditions and can span multiple different data sources like SQL, Prometheus, InfluxDB, etc. These alerts are stored and executed by Grafana.
 - **Mimir or Loki alerts**: alerts that consist of one single query, written in PromQL or LogQL. The alert rules are stored and executed on the Mimir or Loki ruler and are completely decoupled from the PMM and Grafana runtime.
 - **Mimir or Loki recording rules**: precompute the result of expensive queries and execute alerts faster. 
-With Mimir and Loki alert rules you can run alert expressions closer to your data and at massive scale, managed by the Grafana. 
+With Mimir and Loki alert rules, you can run alert expressions closer to your data and at massive scale, managed by the Grafana. 
 
 ## Alerting components
 Alerts are split into four key components: alert rules, contact points, notification policies, and silences. 
 
-- **Alert rules**: describe the circumstances under which you want to be alerted. The evaluation criteria that you define determines whether an alert will fire. 
+- **Alert rules**: describe the circumstances under which you want to be alerted. The evaluation criteria that you define determine whether an alert will fire. 
 An alert rule consists of one or more queries and expressions, a condition, the frequency of evaluation, and optionally, the duration over which the condition is met.
 For example, you might configure an alert to identify and notify you when MongoDB is down.
 
 - **Alert templates**: provide a simplified framework for configuring complex alert rules. PMM includes a set of default templates with common events and expressions for alerting. You can also create your own templates if you need custom expressions on which to base your alert rules.
 
-- **Silences**: specify periods of time to suppress notifications. During a silence, PMM continues to track metrics and trigger alerts, but does not send notifications to the specified contact points. Once the specified silence expires, notifications are resumed. 
+- **Silences**: specify periods of time to suppress notifications. During a silence, PMM continues to track metrics and trigger alerts but does not send notifications to the specified contact points. Once the specified silence expires, notifications are resumed. 
 For example, you can create a silence to suppress trivial notifications during weekends.
 
 - **Contact points**: specify how PMM should deliver Grafana-managed alerts. When an alert fires, a notification is sent to the specified contact points. 
@@ -31,7 +31,7 @@ Depending on the severity of an alert, you might want to send different alerts t
 You can choose from a variety of contact points, including Slack, email, webhooks, PagerDuty, and more. 
 
 - **Notification policies**: determine how Grafana alerts are routed to contact points by setting where, when, and how to send notifications. 
-For example, you might specify a limit for the number of times a notification is sent during a certain time period. This helps ensure that you don't spam your Slack channel with too many notifications about the same issue.
+For example, you might specify a limit for the number of times a notification is sent during a certain period. This helps ensure that you don't spam your Slack channel with too many notifications about the same issue.
 
 ## Create a Percona templated alert
 This topic focuses on creating an alert rule based on PMM templates. For information on working with the other alert types, check the Grafana documentation on [Grafana Labs](https://grafana.com/docs/grafana/latest/alerting/).
@@ -125,7 +125,7 @@ For example, to validate that a MongoDB instance is down, shut down a member of 
 After provisioning the resources required for creating Percona templated alerts, you are now ready to create your alert:
 1. Go to **Alerting > Alert Rules**, and click **New alert rule**.
 2. On the **Create alert rule** page, select the **Percona templated alert** option. If you want to learn about creating Grafana alerts instead, check our [Grafana's documentation](https://grafana.com/docs/grafana/latest/alerting/).
-3. In the **Template details** section, choose the template on which you want to base the new alert rule. This automatically populates the **Name**, **Duration** and **Severity** fields with information from the template. You can change these values if you want to override the default specifications in the template.
+3. In the **Template details** section, choose the template on which you want to base the new alert rule. This automatically populates the **Name**, **Duration**, and **Severity** fields with information from the template. You can change these values if you want to override the default specifications in the template.
 4. In the **Filters** field, specify if you want the alert rule to apply only to specific services or nodes. For example: `service_name'`, Operator:`=(EQUAL)`, VALUE: `ps5.7`.
 5. From the **Folder** drop-down menu, select the location where you want to store the rule.
 6. Click **Save and Exit** to close the page and go to the **Alert Rules** tab where you can review, edit and silence your new alert.
@@ -133,9 +133,9 @@ After provisioning the resources required for creating Percona templated alerts,
 ## Silencing alerts
 Create a silence when you want to stop notifications from one or more alerting rules.
 
-Silences stops notifications from being sent to your specified contact points.
+Silences stop notifications from being sent to your specified contact points.
 
-Silenced lerts are still recorded under **Alerting > Fired Alerts** so that you can review them later. A supressed alert is disabled for as long as it's speciffied in the Silence  Duration or until you remove a silence. 
+Silenced alerts are still recorded under **Alerting > Fired Alerts** so that you can review them later. Silenced alerts are disabled for as long as it's specified in the Silence  Duration or until you remove a silence. 
 
 For information on creating silences, see [About alerting silences](https://grafana.com/docs/grafana/latest/alerting/silences/) in the Grafana documentation. 
 
@@ -148,9 +148,9 @@ For information on creating silences, see [About alerting silences](https://graf
 
 If you have been using Integrated Alerting in the previous PMM version, your custom alert rule templates will be automatically migrated to PMM 2.31. After upgrading to this new version, you will find all your alert templates under **Alerting > Alert Templates**. 
 
-However, if you are upgrading from PMM 2.25 and earlier, alert templates cannot not be automatically migrated. This is becaause PMM 2.26.0 introduced significant changes to the core structure of rule templates.
+However, if you are upgrading from PMM 2.25 and earlier, alert templates cannot be automatically migrated. This is because PMM 2.26.0 introduced significant changes to the core structure of rule templates.
 
-In  this scenario, you will need to manually recreate any custom rule templates that you want to transfer to PMM 2.26.0 or later. 
+In this scenario, you will need to manually recreate any custom rule templates that you want to transfer to PMM 2.26.0 or later. 
 
 #### Compatibility with other alerting tools
 
@@ -178,4 +178,4 @@ Percona Alerting is enabled by default in the PMM Settings. This feature adds th
 If for some reason you want to disable PMM Alert templates and keep only Grafana-managed alerts:
 
 1. Go to **Configuration > PMM Settings**.
-2. Disable the **Alerting** option. The **Alerting** page will now displays only Grafana-managed alert rules.
+2. Disable the **Alerting** option. The **Alerting** page will now display only Grafana-managed alert rules.
