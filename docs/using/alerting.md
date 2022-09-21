@@ -1,34 +1,50 @@
-# Integrated Alerting
+# Percona Alerting
 
-!!! caution alert alert-warning "Disclaimer"
-    Integrated Alerting is currently in [Technical Preview](../details/glossary.md#technical-preview). This means that this feature is still under development and is subject to change. Therefore, we recommend that early adopters use Integrated Alerting for testing purposes only.
+Alerting notifies of important or unusual activity in your database environments so that you can identify and resolve problems quickly. When something needs your attention, PMM automatically sends you an alert through your specified contact points.
 
-Alerting notifies of important or unusual activity in your database environments so that you can identify and resolve problems quickly.
 
-In PMM, you define what system metrics are critical for your environment and what thresholds are acceptable for each metric. When something needs your attention, PMM automatically sends you an alert through your specified communication channel.
+## Alert types
+Percona Alerting is powered by Grafana infrastructure. PMM leverages Grafana's advanced alerting capabilities and includes templates as an added layer for simplifying complex alert rules.
 
-The following three basic components define the alerting workflow:
+Depending on the datasources that you want to query, and the complexity of your evaluation criteria, PMM enables you to create the following types of alerts: 
 
-- **Alert template**: provides the framework for the alert rules. PMM includes a set of default templates with common events and expressions for alerting. If you need custom expressions on which to base your alert rules, create your own templates instead.
-- **Alert rule**: describes the circumstances under which you want to be alerted.
-- **Alert communication channel**: specifies how PMM should deliver alerts.
+- **Percona templated alerts**: alerts based on a set of default templates with common events and expressions for alerting. 
+  If you need custom expressions on which to base your alert rules, you can also create your own templates. 
+- **Grafana managed alerts**: alers that handle compolex conditions and can span multiple different data sources like SQL, Prometheus, InfluxDB, etc. These alerts are stored and executed by Grafana.
+- **Mimir or Loki alert**: alerts that consist of one single query, written in PromQL or LogQL. The alert rules are stored and executed on the Mimir or Loki ruler and are completely decoupled from the PMM and Grafana runtime.
+- **Mimir or Loki recording rule**: can be used to precompute the result of expensive queries. The result will then be much faster than executing the query each time. With Mimir and Loki alert rules you can run alert expressions closer to your data and at massive scale, managed by the Grafana. 
 
-![!](../_images/workflow.png)
+## Alerting components
 
-## Prerequisites
+ Here are the key components of the alerting workflow:
 
-Before creating alert rules:
+- **Alert rules**: describe the circumstances under which you want to be alerted. The evaluation criteria that you define determines whether an alert will fire. 
+An alert rule consists of one or more queries and expressions, a condition, the frequency of evaluation, and optionally, the duration over which the condition is met.
+For example, you might configure an alert to identify and notify you know if MongoDB is down.
+- **Contact points**: specify how PMM should deliver alerts. When an alert fires, a notification is sent to the specified contact points. 
+Depending on the severity of an alert, you might want to send different alerts to different channels. For example, you can deliver common alerts via Slack channel, but page team members for potentially severe issues. 
+You can choose from a variety of contact points, including Slack, email, webhooks, PagerDuty, and more. 
+- **Notification policies**: determine how alerts are routed to contact points by setting where, when, and how to send notifications. 
+For example, you might specify a limit for the number of times a notification is sent during a certain time period, to prevent spamming your Slack channel for the same issue.
+- **Alert templates**: provide a simplified framework for configuring complex alert rules. PMM includes a set of default templates with common events and expressions for alerting. If you need  If you need custom expressions on which to base your alert rules, create your own templates instead.
+- **Silences**: specify periods of time to suppress notifications. During a silence, PMM continues to track metrics and trigger alerts, but does not send notifications to the specified contact points. Once the specified silence expires, notifications are resumed. 
+For example, you can create a silence to suppress trivial notifications during weekends.
 
-1. Enable Integrated Alerting.
+## Create a Percona templated alert
+This topic focuses on creating an alert rule based on PMM templates. For information on working with the other alert types, check the Grafana documentation on [Grafana Labs](https://grafana.com/docs/grafana/latest/alerting/).
+
+
+### Provision an alert rule
+Before creating PMM alert rules:
+
+1. Make sure that Percona Alerting is enabled in your PMM Settings. Starting with PMM 2.31, this option is enabled by default. When Alerting is disabled, the **Alerting** page displays only Grafana-managed alert rules, which means that you will not be able to create alerts based on PMM templates.
 2. Set up an Email (SMTP) or Slack sender settings for receiving alerts.
 3. Specify the Email/Slack/Webhooks/PagerDuty settings and channels to notify.
 
 
-### Enable Integrated Alerting
 
-1. Select **Configuration > Settings > Advanced Settings**.
-2. Under **Technical preview** features, turn on Integrated Alerting.
-3. Click **Apply changes**. This adds a new **Communication** tab to the **Settings** menu.
+
+
 
 ### Set up a communication channel
 Set up a communication channel to configure how alerts will be delivered. The following notification channels are supported: email via your SMTP server, Slack, PagerDuty, and Webhook.
@@ -173,9 +189,18 @@ To silence alerts:
 
 To reactivate silenced alerts, click **Unsilence All** or click on the disabled bell icon <i class="uil uil-bell-slash"></i> corresponding to the alerts you want to reactivate.
 
-## Alternative alerting options
+## Deprecated alerting options
 PMM Integrated Alerting was introduced as an alternative to Grafana Alerting and Prometheus’ Alertmanager.
 
 These third-party alerting tools continue to be available in PMM until Integrated Alerting moves from Technical Preview to General Availability.
 
 We recommend already using Integrated Alerting since it offers a simpler alerting setup and provides more robust alerting options.
+
+The new and improved features in the Grafana Alerting system are now enabled by default for all users in Grafana 9. While Grafana users currently have the option to roll back to the former alerting experience based on dashboard panels (now referred to as “legacy alerting”), we will officially remove that functionality in Grafana 10.
+
+
+### Disable Alerting
+
+1. Select **Configuration > Settings > Advanced Settings**.
+2. Under **Technical preview** features, turn on Integrated Alerting.
+3. Click **Apply changes**. This adds a new **Communication** tab to the **Settings** menu.
