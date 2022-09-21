@@ -69,7 +69,7 @@ When adding clients to the PMM server, you use the `admin` user. However, if you
 
 In such a scenario, use [API key](../../details/api.md#api-keys-and-authentication) for authentication. You can use API keys as a replacement for basic authentication.
 
-## Integrated Alerting
+## Percona Alerting
 
 ### No <i class="uil uil-bell"></i> Integrated Alerting icon
 
