@@ -249,7 +249,7 @@ The above constraint applies at the service level. That said, you can still have
 ## Restore a backup
 
 !!! note alert alert-primary ""
-    For now, you can only restore a backup to the same service it was created from, or to a compatible one.
+  MySQL backups can be restored to the same service it was created from, or to a compatible one. MongoDB backups   can only be restored to the same service it was created from. 
 
 1. Select <i class="uil uil-history"></i> → *Backup* → *Backup Inventory*.
 
