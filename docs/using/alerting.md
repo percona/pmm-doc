@@ -50,8 +50,6 @@ Before creating PMM alert rules, configure the required alert resources:
 Alerts templates are YAML files that provide the source framework for alert rules.
 Alert templates contain general template details and an alert expression defined in [MetricsQL](https://docs.victoriametrics.com/MetricsQL.html). This query language is backward compatible with Prometheus QL.
 
-Starting with PMM 2.26.0, alert rules are no longer dependent on their source rule template after creation. This means that you can update or delete rule templates without impacting existing rules that are based on that template.
-
 #### Create custom templates
 
 If none of the default PMM templates contain a relevant expression for the alert rule that you need, you can create a custom template instead.
