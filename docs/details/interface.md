@@ -25,7 +25,7 @@ The main menu is part of the Grafana framework and is visible on every page.
 | ![!image](../_images/postresql-dashboard.png)    | PostgreSQL     | PostgreSQL dashboard
 | ![!image](../_images/proxysql-dashboard.png)    | ProxySQL     | ProxySQL dashboard
 | ![!image](../_images/haproxy-dashboard.png)    | HAproxy     | HAproxy dashboard
-| ![!image](../_images/qan-dashboard.png)| Query Analytics (QAN) | Query Analytics dashboard
+| ![!image](../_images/qan-dashboard.png)| Query Analytics (QAN) | Query Analytics
 | <i class="uil uil-compass"></i>    | Explore              | Run queries with [PromQL].
 | <i class="uil uil-bell"></i>       | Alerting             | Alerting, [Integrated Alerting](../using/alerting.md), Alert Rules, Notification Channels.
 | <i class="uil uil-cog"></i>        | Configuration        |
