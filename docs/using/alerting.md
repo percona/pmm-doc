@@ -1,5 +1,8 @@
 # Percona Alerting
 
+!!! alert alert-info ""
+    Percona Alerting is the new Alerting feature introduced in PMM 2.31, and replaces Integrated Alerting available in previous versions.  
+    
 Alerting notifies of important or unusual activity in your database environments so that you can identify and resolve problems quickly. When something needs your attention, PMM automatically sends you an alert through your specified contact points.
 
 ## Alert types
@@ -27,7 +30,7 @@ For example, you might configure an alert to identify and notify you when MongoD
 For example, you can create a silence to suppress trivial notifications during weekends.
 
 - **Contact points**: specify how PMM should deliver Grafana-managed alerts. When an alert fires, a notification is sent to the specified contact points. 
-Depending on the severity of an alert, you might want to send different alerts to different channels. For example, you can deliver common alerts via Slack channel, but page team members for potentially severe issues. 
+Depending on the severity of an alert, you might want to send different alerts to different channels. For example, you can deliver common alerts via Slack channel, but send a page notification for potentially critical issues. 
 You can choose from a variety of contact points, including Slack, email, webhooks, PagerDuty, and more. 
 
 - **Notification policies**: determine how Grafana alerts are routed to contact points by setting where, when, and how to send notifications. 
@@ -41,7 +44,7 @@ Before creating PMM alert rules, configure the required alert resources:
 
 1. Go to **Configuration > PMM Settings** and ensure that the **Alerting** option is enabled. This is enabled by default starting with PMM 2.31. However, if you have disabled it, the **Alerting** page displays only Grafana-managed alert rules. This means that you will not be able to create alerts based on PMM templates.
 2. Go to **Dashboards > Browse** and check the folders available for storing alert rules. If none of the available folders are relevant for your future alert rules, click **New > New Folder** and create a custom one. 
-3. Go to **Alerting > Alert Rule Templates** and check the PMM built-in templates. If none of the templates include a relevant expression for the type of alerts that you want to create, click **Add** to create a custom template instead.
+3. Go to **Alerting > Alert Rule Templates** and check the adefault PMM templates. If none of the templates include a relevant expression for the type of alerts that you want to create, click **Add** to create a custom template instead.
 
 #### Configure alert templates
 Alerts templates are YAML files that provide the source framework for alert rules.
@@ -123,6 +126,7 @@ For example, to validate that a MongoDB instance is down, shut down a member of 
 
 ### Add an alert rule
 After provisioning the resources required for creating Percona templated alerts, you are now ready to create your alert:
+
 1. Go to **Alerting > Alert Rules**, and click **New alert rule**.
 2. On the **Create alert rule** page, select the **Percona templated alert** option. If you want to learn about creating Grafana alerts instead, check our [Grafana's documentation](https://grafana.com/docs/grafana/latest/alerting/).
 3. In the **Template details** section, choose the template on which you want to base the new alert rule. This automatically populates the **Name**, **Duration**, and **Severity** fields with information from the template. You can change these values if you want to override the default specifications in the template.
