@@ -147,8 +147,8 @@ Make regular scheduled backups.
     - *Vendor*: A value is automatically selected based on the service type.
     - *Location*: Choose from the menu the storage location.
     - *Data model*: Select one of the options:
-        - *Physical*: Backup the physical data model.
-        - *Logical*: (Not currently implemented)
+        - *Physical*: Takes a physical backup of the database files.
+        - *Logical*: Takes a logical backup of data in the database. Currently not supported for MySQL.
     - *Description*: (Optional) Enter a long description for this scheduled backup.
     - *Schedule*: The schedule for the backup.
         - *Every*: The backup interval. Choose from the menu one of:
