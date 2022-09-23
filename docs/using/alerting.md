@@ -1,7 +1,7 @@
 # Percona Alerting
 
 !!! alert alert-info ""
-    Percona Alerting is the new Alerting feature introduced in PMM 2.31, and replaces Integrated Alerting available in previous versions.  
+    Percona Alerting is the new Alerting feature introduced in PMM 2.31. This replaces the Integrated Alerting feature available in previous versions.  
     
 Alerting notifies of important or unusual activity in your database environments so that you can identify and resolve problems quickly. When something needs your attention, PMM automatically sends you an alert through your specified contact points.
 
@@ -20,20 +20,41 @@ With Mimir and Loki alert rules, you can run alert expressions closer to your da
 ## Alerting components
 Alerts are split into four key components: alert rules, contact points, notification policies, and silences. 
 
-- **Alert rules**: describe the circumstances under which you want to be alerted. The evaluation criteria that you define determine whether an alert will fire. 
+### Alert rules
+Describe the circumstances under which you want to be alerted. The evaluation criteria that you define determine whether an alert will fire. 
+
 An alert rule consists of one or more queries and expressions, a condition, the frequency of evaluation, and optionally, the duration over which the condition is met.
+
 For example, you might configure an alert to identify and notify you when MongoDB is down.
 
-- **Alert templates**: provide a simplified framework for configuring complex alert rules. PMM includes a set of default templates with common events and expressions for alerting. You can also create your own templates if you need custom expressions on which to base your alert rules.
+### Alert templates
 
-- **Silences**: specify periods of time to suppress notifications. During a silence, PMM continues to track metrics and trigger alerts but does not send notifications to the specified contact points. Once the specified silence expires, notifications are resumed. 
+Provide a simplified framework for configuring complex alert rules. 
+
+PMM includes a set of default templates with common events and expressions for alerting. You can also create your own templates if you need custom expressions on which to base your alert rules.
+
+You can check the  alert templates available for your account under **Alerting > Alert rule templats** tab. PMM lists here the following types of templates:
+
+1) Build-in templates, available out-of-the box with PMM.
+2) Alert templates fetched from Percona Platform, according to the entitlements available for your Percona Account. 
+3) Custom templates created or uploaded on the **Alerting page > Alert Templates**.tab. 
+4) Custom template files  available in your  ``yaml srv/alerting/templates`` directory. PMM load them during startup.
+
+### Silences
+Silences specify periods of time to suppress notifications. During a silence, PMM continues to track metrics and trigger alerts but does not send notifications to the specified contact points. Once the specified silence expires, notifications are resumed. 
+
 For example, you can create a silence to suppress trivial notifications during weekends.
 
-- **Contact points**: specify how PMM should deliver Grafana-managed alerts. When an alert fires, a notification is sent to the specified contact points. 
-Depending on the severity of an alert, you might want to send different alerts to different channels. For example, you can deliver common alerts via Slack channel, but send a page notification for potentially critical issues. 
+### Contact points
+Contact points specify how PMM should deliver Grafana-managed alerts. When an alert fires, a notification is sent to the specified contact points. 
+
+Depending on the severity of an alert, you might want to send different alerts to different channels. For example, you can deliver common alerts via Slack channel, but send an email notification for potentially critical issues. 
+
 You can choose from a variety of contact points, including Slack, email, webhooks, PagerDuty, and more. 
 
-- **Notification policies**: determine how Grafana alerts are routed to contact points by setting where, when, and how to send notifications. 
+### Notification policies
+Notification policies determine how Grafana alerts are routed to contact points by setting where, when, and how to send notifications. 
+
 For example, you might specify a limit for the number of times a notification is sent during a certain period. This helps ensure that you don't spam your Slack channel with too many notifications about the same issue.
 
 ## Create a Percona templated alert
@@ -116,11 +137,7 @@ To test expressions for custom templates:
 1. On the side menu in PMM, choose **Explore > Metrics**.
 2. Enter your expression in the **Metrics** field and click **Run query**.
 
-For example, to validate that a MongoDB instance is down, shut down a member of a three-node replica set, then check that the following expression returns **0** in **Explore > Metrics**:
-
-```sh
-{service_type="mongodb"}
-```
+For example, to validate that a MongoDB instance is down, shut down a member of a three-node replica set, then check that the following expression returns **0** in **Explore > Metrics**: ```sh {service_type="mongodb"}```
 
 ### Add an alert rule
 After provisioning the resources required for creating Percona templated alerts, you are now ready to create your alert:
@@ -148,9 +165,11 @@ For information on creating silences, see [About alerting silences](https://graf
 
 #### Compatibility with previous PMM versions
 
-If you have been using Integrated Alerting in the previous PMM version, your custom alert rule templates will be automatically migrated to PMM 2.31. After upgrading to this new version, you will find all your alert templates under **Alerting > Alert Templates**. 
+If you have used Integrated Alerting in previous PMM versions, your custom alert rule templates will be automatically migrated to PMM 2.31. After upgrading to this new version, you will find all your alert templates under **Alerting > Alert Templates**. 
 
-However, if you are upgrading from PMM 2.25 and earlier, alert templates cannot be automatically migrated. This is because PMM 2.26.0 introduced significant changes to the core structure of rule templates.
+If you have any templates available in the  ``/srv/ia/templates`` folder, make sure to transfer them to ``/srv/alerting/templates`` as PMM 2.31 and later will look for custom templates in this location. 
+
+If you are upgrading from PMM 2.25 and earlier, alert templates will not be automatically migrated. This is because PMM 2.26.0 introduced significant changes to the core structure of rule templates.
 
 In this scenario, you will need to manually recreate any custom rule templates that you want to transfer to PMM 2.26.0 or later. 
 
@@ -161,18 +180,20 @@ If you have existing YAML alert templates that you want to leverage in Percona A
 1. Go to **Alerting > Alert Rule Templates** tab and click **Add** at the top right-hand side of the table.
 2. Click **Add** and upload a local .yaml file from your computer.
 
-
 ### Alert rule compatibily
 Alert rules created with Integrated Alerting in PMM 2.30 and earlier are not automatically migrated to Percona Alerting. 
 
-After upgrading to PMM 2.31, make sure to manually migrate any alert rules that you want to transfer to PMM 2.31 using the **Migration script for Integrated Alerting alert rules**.
+After upgrading to PMM 2.31, make sure to manually migrate any alert rules that you want to transfer to PMM 2.31 using the **ia_migration.py** script.
 
 The script is available from ____ and the default command for migrating rules is:
 ```yaml 
 *python migration.py -u admin -p admin*
 ```
 
-For more information and advanced migration options, check out the help information embedded in the script.
+!!! caution alert alert-warning "Important"
+    The script sets all migrated alert rules to Active. Make sure to silence any alerts that should not be firing. 
+
+For more information about the script and advanced migration options, check out the help information embedded in the script.
 
 ### Disable Percona Alerting
 Percona Alerting is enabled by default in the PMM Settings. This feature adds the **Percona templated alerts** option on the **Alerting** page.

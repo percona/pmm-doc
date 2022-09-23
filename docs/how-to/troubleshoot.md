@@ -71,16 +71,15 @@ In such a scenario, use [API key](../../details/api.md#api-keys-and-authenticati
 
 ## Percona Alerting
 
-### No <i class="uil uil-bell"></i> Integrated Alerting icon
-
-You are not logged in as a privileged user. You need either Admin or Editor roles to work with Integrated Alerting.
-
-### <i class="uil uil-bell"></i> Integrated Alerting icon but no submenu
-
-Integrated Alerting isn't activated.
+### No Alert rule templates tab on the Alerting page
+Percona Alerting option isn't active.
 
 1. Go to <i class="uil uil-cog"></i> *Configuration* → <i class="uil uil-setting"></i> *Settings* → *Advanced Settings*.
-2. Enable *Integrated Alerting*.
+2. Enable *Alerting*.
+
+### Custom alert rule templates not migrated to Percona Alerting
+If you have used Integrated Alerting in previous PMM versions, and had custom templates under ``/srv/ia/templates``, make sure to transfer them to ``/srv/alerting/templates``. 
+PMM is no longer sourcing templates from the ``ia`` folder, since we have deprecated Integrated Alerting with the 2.31 release. 
 
 ### Unreachable external IP addresses
 
