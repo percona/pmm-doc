@@ -68,12 +68,15 @@ PMM Admins can set the home dashboard for their organization as follows:
 
 1. Navigate to the dashboard that you want to set as the home dashboard.
 2. Click the star next to the dashboard title to mark the dashboard as a favorite.
-3. Hover your cursor over *Configuration*
+3. Hover your cursor over <i class="uil uil-cog"></i> *Configuration*
 4. Click *Preferences*.
 5. In the Home Dashboard field, select the dashboard that you want to set as your home dashboard.
 6. Click *Save*.
 
-To set up your custom Home Dashboard:
+
+
+
+### Set your Personal Home Dashboard
 
 1. From the side menu, go to <i class="uil uil-apps"></i> *Dashboards > Browse* and select the dashboard you want to set as your home dashboard.
 2. Click the star next to the dashboard title to mark it as a favorite.
