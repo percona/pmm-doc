@@ -64,22 +64,33 @@ The home dashboard you set is the dashboard all the users will see after logging
 
 ### Set home dashboard for your organization
 
-PMM Admins can set the home dashboard for their organization as follows:
+Organization Admins can set the home dashboard for their organization as follows:
 
 1. Navigate to the dashboard that you want to set as the home dashboard.
-2. Click the star next to the dashboard title to mark the dashboard as a favorite.
+2. Click the <i class="uil uil-star"></i> star next to the dashboard title to mark the dashboard as a favorite.
 3. Hover your cursor over <i class="uil uil-cog"></i> *Configuration*
 4. Click *Preferences*.
 5. In the Home Dashboard field, select the dashboard that you want to set as your home dashboard.
 6. Click *Save*.
 
 
+### Set home dashboard for your team
+
+Organization and team Admins can set the home dashboard for their team as follows:
+
+1. Navigate to the dashboard that you want to set as your home dashboard.
+2. Click <i class="uil uil-star"></i> star next to the dashboard to mark the dashboard as a favorite.
+3. On the main menu, hover your cursor over <i class="uil uil-cog"></i>  *Configuration*. 
+4. Click *Teams*. Grafana displays the team list.
+5. Click on the team for whom you want to set the home dashboard and then navigate to the *Settings* tab.
+6. In the Home Dashboard field, select the dashboard that you want to use for your home dashboard.
+7. Click *Save*.
 
 
 ### Set your Personal Home Dashboard
 
 1. From the side menu, go to <i class="uil uil-apps"></i> *Dashboards > Browse* and select the dashboard you want to set as your home dashboard.
-2. Click the star next to the dashboard title to mark it as a favorite.
+2. Click the <i class="uil uil-star"></i> star next to the dashboard title to mark it as a favorite.
 
     ![!image](../../_images/PMM_click_to_add_favorite_dashbaord.png)
 
