@@ -185,7 +185,10 @@ Alert rules created with Integrated Alerting in PMM 2.30 and earlier are not aut
 
 After upgrading to PMM 2.31, make sure to manually migrate any alert rules that you want to transfer to PMM 2.31 using the **ia_migration.py** script.
 
-The script is available from ____ and the default command for migrating rules is:
+The script is available from ____ and  requires the [requests  library](https://requests.readthedocs.io/en/latest/user/install/#install), which you can install with the following command:
+ ```pip install requests```. 
+
+The default command for migrating rules is:
 ```yaml 
 *python migration.py -u admin -p admin*
 ```
