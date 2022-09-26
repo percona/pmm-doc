@@ -149,7 +149,7 @@ After provisioning the resources required for creating Percona templated alerts,
 5. From the **Folder** drop-down menu, select the location where you want to store the rule.
 6. Click **Save and Exit** to close the page and go to the **Alert Rules** tab where you can review, edit and silence your new alert.
 
-## Silencing alerts
+## Silence alerts
 Create a silence when you want to stop notifications from one or more alerting rules.
 
 Silences stop notifications from being sent to your specified contact points.
