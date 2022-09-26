@@ -121,6 +121,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://www.percona.com/percona-monitoring-and-management/2.x/details/dashboards/dashboard-manage-dashboards.html</loc>
+         <lastmod>2022-09-26</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://www.percona.com/percona-monitoring-and-management/2.x/details/dashboards/dashboard-memory-details.html</loc>
          <lastmod>2022-09-26</lastmod>
          <changefreq>daily</changefreq>
@@ -307,6 +312,11 @@
     </url>
     <url>
          <loc>https://www.percona.com/percona-monitoring-and-management/2.x/details/dashboards/dashboard-postgresql-instances-overview.html</loc>
+         <lastmod>2022-09-26</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://www.percona.com/percona-monitoring-and-management/2.x/details/dashboards/dashboard-postgresql-vacuum-monitoring-experimental.html</loc>
          <lastmod>2022-09-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -607,6 +617,11 @@
     </url>
     <url>
          <loc>https://www.percona.com/percona-monitoring-and-management/2.x/release-notes/2.30.0.html</loc>
+         <lastmod>2022-09-26</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://www.percona.com/percona-monitoring-and-management/2.x/release-notes/2.31.0.html</loc>
          <lastmod>2022-09-26</lastmod>
          <changefreq>daily</changefreq>
     </url>

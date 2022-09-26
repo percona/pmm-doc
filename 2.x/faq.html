@@ -230,14 +230,12 @@ pmm-admin add mysql --username root --password root instance-02 <span class="m">
 <p><a href="how-to/configure.html#metrics-resolution">Metrics resolution</a></p>
 </div>
 <h2 id="how-do-i-set-up-alerting">How do I set up Alerting?<a class="headerlink" href="#how-do-i-set-up-alerting" title="Permanent link">&para;</a></h2>
-<p>When a monitored service metric reaches a defined threshold, PMM Server can trigger alerts for it either using the Grafana Alerting feature or by using an external alert manager.</p>
-<p>With these methods you must configure alerting rules that define conditions under which an alert should be triggered, and the channel used to send the alert (e.g. email).</p>
-<p>Alerting in Grafana allows attaching rules to your dashboard panels.  Grafana Alerts are already integrated into PMM Server and may be simpler to get set up.</p>
-<p>Alertmanager allows the creation of more sophisticated alerting rules and can be easier to manage installations with a large number of hosts. This additional flexibility comes at the expense of simplicity.</p>
-<p>We only offer support for creating custom rules to our customers, so you should already have a working Alertmanager instance prior to using this feature.</p>
+<p>When a monitored service metric reaches a defined threshold, PMM Server can trigger alerts for it using embedded Grafana Alerting functionality.</p>
+<p>For this, you must configure alerting rules that define conditions under which an alert should be triggered, and the contact points used to send the alert (e.g. email).</p>
+<p>Percona templated alerts enable you to create alerts based on built-in or custom templates to simplify the alert setup process. Grafana managed alerts allows attaching rules to your dashboard panel and enables you to create more sophisticated alerting rules. In addition, it can be easier to manage installations with a large number of hosts. This additional flexibility comes at the expense of simplicity.</p>
 <div class="admonition seealso alert alert-info">
 <p class="admonition-title">See also</p>
-<p><a href="https://www.percona.com/blog/2017/02/02/pmm-alerting-with-grafana-working-with-templated-dashboards/">PMM Alerting with Grafana: Working with Templated Dashboards</a></p>
+<p><a href="https://grafana.com/docs/grafana/latest/alerting/">Grafana Alerting</a></p>
 </div>
 <h2 id="how-do-i-use-a-custom-prometheus-configuration-file">How do I use a custom Prometheus configuration file?<a class="headerlink" href="#how-do-i-use-a-custom-prometheus-configuration-file" title="Permanent link">&para;</a></h2>
 <p>Normally, PMM Server fully manages the <a href="https://prometheus.io/docs/prometheus/latest/configuration/configuration/">Prometheus configuration file</a>.</p>
@@ -300,7 +298,7 @@ If you are using OVF/AMI, you can change the default password through SSH by usi
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2022-04-14
+            <i class="uil uil-refresh"></i> Page updated 2022-09-26
         </li>
         
     </ul>
@@ -520,7 +518,7 @@ If you are using OVF/AMI, you can change the default password through SSH by usi
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="using/alerting.html">Integrated Alerting</a>
+    <a class="reference internal" href="using/alerting.html">Percona Alerting</a>
 
 
 
@@ -708,25 +706,25 @@ If you are using OVF/AMI, you can change the default password through SSH by usi
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="details/dashboards/dashboard-home-experimental.html">Experimental Home Dashboard</a>
+    <a class="reference internal" href="details/dashboards/dashboard-home-experimental.html">None</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="details/dashboards/dashboard-advanced-data-exploration.html">Advanced Data Exploration</a>
+    <a class="reference internal" href="details/dashboards/dashboard-advanced-data-exploration.html">None</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="details/dashboards/dashboard-victoriametrics.html">VictoriaMetrics</a>
+    <a class="reference internal" href="details/dashboards/dashboard-victoriametrics.html">None</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="details/dashboards/dashboard-victoriametrics-agents-overview.html">VictoriaMetrics Agents Overview</a>
+    <a class="reference internal" href="details/dashboards/dashboard-victoriametrics-agents-overview.html">None</a>
 
 
 
@@ -746,13 +744,13 @@ If you are using OVF/AMI, you can change the default password through SSH by usi
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="details/dashboards/dashboard-env-overview.html">Environment Overview</a>
+    <a class="reference internal" href="details/dashboards/dashboard-env-overview.html">None</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="details/dashboards/dashboard-environent-summary.html">Environment Summary</a>
+    <a class="reference internal" href="details/dashboards/dashboard-environent-summary.html">None</a>
 
 
 
@@ -778,55 +776,55 @@ If you are using OVF/AMI, you can change the default password through SSH by usi
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="details/dashboards/dashboard-disk-details.html">Disk Details</a>
+    <a class="reference internal" href="details/dashboards/dashboard-disk-details.html">None</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="details/dashboards/dashboard-network-details.html">Network Details</a>
+    <a class="reference internal" href="details/dashboards/dashboard-network-details.html">None</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="details/dashboards/dashboard-memory-details.html">Memory Details</a>
+    <a class="reference internal" href="details/dashboards/dashboard-memory-details.html">None</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="details/dashboards/dashboard-node-temperature-details.html">Node Temperature Details</a>
+    <a class="reference internal" href="details/dashboards/dashboard-node-temperature-details.html">None</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="details/dashboards/dashboard-nodes-compare.html">Nodes Compare</a>
+    <a class="reference internal" href="details/dashboards/dashboard-nodes-compare.html">None</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="details/dashboards/dashboard-nodes-overview.html">Nodes Overview</a>
+    <a class="reference internal" href="details/dashboards/dashboard-nodes-overview.html">None</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="details/dashboards/dashboard-node-summary.html">Node Summary</a>
+    <a class="reference internal" href="details/dashboards/dashboard-node-summary.html">None</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="details/dashboards/dashboard-numa-details.html">NUMA Details</a>
+    <a class="reference internal" href="details/dashboards/dashboard-numa-details.html">None</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="details/dashboards/dashboard-processes-details.html">Processes Details</a>
+    <a class="reference internal" href="details/dashboards/dashboard-processes-details.html">None</a>
 
 
 
@@ -846,7 +844,7 @@ If you are using OVF/AMI, you can change the default password through SSH by usi
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="details/dashboards/dashboard-prometheus-exporters-overview.html">Prometheus Exporters Overview</a>
+    <a class="reference internal" href="details/dashboards/dashboard-prometheus-exporters-overview.html">None</a>
 
 
 
@@ -866,97 +864,97 @@ If you are using OVF/AMI, you can change the default password through SSH by usi
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="details/dashboards/dashboard-mysql-command-handler-counters-compare.html">MySQL Command/Handler Counters Compare</a>
+    <a class="reference internal" href="details/dashboards/dashboard-mysql-command-handler-counters-compare.html">None</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="details/dashboards/dashboard-mysql-innodb-compression-details.html">MySQL InnoDB Compression Details</a>
+    <a class="reference internal" href="details/dashboards/dashboard-mysql-innodb-compression-details.html">None</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="details/dashboards/dashboard-mysql-innodb-details.html">MySQL InnoDB Details</a>
+    <a class="reference internal" href="details/dashboards/dashboard-mysql-innodb-details.html">None</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="details/dashboards/dashboard-mysql-myisam-aria-details.html">MySQL MyISAM/Aria Details</a>
+    <a class="reference internal" href="details/dashboards/dashboard-mysql-myisam-aria-details.html">None</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="details/dashboards/dashboard-mysql-myrocks-details.html">MySQL MyRocks Details</a>
+    <a class="reference internal" href="details/dashboards/dashboard-mysql-myrocks-details.html">None</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="details/dashboards/dashboard-mysql-instance-summary.html">MySQL Instance Summary</a>
+    <a class="reference internal" href="details/dashboards/dashboard-mysql-instance-summary.html">None</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="details/dashboards/dashboard-mysql-instances-compare.html">MySQL Instances Compare</a>
+    <a class="reference internal" href="details/dashboards/dashboard-mysql-instances-compare.html">None</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="details/dashboards/dashboard-mysql-instances-overview.html">MySQL Instances Overview</a>
+    <a class="reference internal" href="details/dashboards/dashboard-mysql-instances-overview.html">None</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="details/dashboards/dashboard-mysql-wait-event-analyses-details.html">MySQL Wait Event Analyses Details</a>
+    <a class="reference internal" href="details/dashboards/dashboard-mysql-wait-event-analyses-details.html">None</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="details/dashboards/dashboard-mysql-performance-schema-details.html">MySQL Performance Schema Details</a>
+    <a class="reference internal" href="details/dashboards/dashboard-mysql-performance-schema-details.html">None</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="details/dashboards/dashboard-mysql-query-response-time-details.html">MySQL Query Response Time Details</a>
+    <a class="reference internal" href="details/dashboards/dashboard-mysql-query-response-time-details.html">None</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="details/dashboards/dashboard-mysql-replication-summary.html">MySQL Replication Summary</a>
+    <a class="reference internal" href="details/dashboards/dashboard-mysql-replication-summary.html">None</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="details/dashboards/dashboard-mysql-group-replication-summary.html">MySQL Group Replication Summary</a>
+    <a class="reference internal" href="details/dashboards/dashboard-mysql-group-replication-summary.html">None</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="details/dashboards/dashboard-mysql-table-details.html">MySQL Table Details</a>
+    <a class="reference internal" href="details/dashboards/dashboard-mysql-table-details.html">None</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="details/dashboards/dashboard-mysql-user-details.html">MySQL User Details</a>
+    <a class="reference internal" href="details/dashboards/dashboard-mysql-user-details.html">None</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="details/dashboards/dashboard-mysql-tokudb-details.html">MySQL TokuDB Details</a>
+    <a class="reference internal" href="details/dashboards/dashboard-mysql-tokudb-details.html">None</a>
 
 
 
@@ -976,61 +974,61 @@ If you are using OVF/AMI, you can change the default password through SSH by usi
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="details/dashboards/dashboard-mongodb-experimental_collection_details.html">Experimental MongoDB Collection Details</a>
+    <a class="reference internal" href="details/dashboards/dashboard-mongodb-experimental_collection_details.html">None</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="details/dashboards/dashboard-mongodb-experimental_oplog.html">Experimental MongoDB Oplog Details</a>
+    <a class="reference internal" href="details/dashboards/dashboard-mongodb-experimental_oplog.html">None</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="details/dashboards/dashboard-mongodb-cluster-summary.html">MongoDB Cluster Summary</a>
+    <a class="reference internal" href="details/dashboards/dashboard-mongodb-cluster-summary.html">None</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="details/dashboards/dashboard-mongodb-instance-summary.html">MongoDB Instance Summary</a>
+    <a class="reference internal" href="details/dashboards/dashboard-mongodb-instance-summary.html">None</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="details/dashboards/dashboard-mongodb-instances-overview.html">MongoDB Instances Overview</a>
+    <a class="reference internal" href="details/dashboards/dashboard-mongodb-instances-overview.html">None</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="details/dashboards/dashboard-mongodb-instances-compare.html">MongoDB Instances Compare</a>
+    <a class="reference internal" href="details/dashboards/dashboard-mongodb-instances-compare.html">None</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="details/dashboards/dashboard-mongodb-replset-summary.html">MongoDB ReplSet Summary</a>
+    <a class="reference internal" href="details/dashboards/dashboard-mongodb-replset-summary.html">None</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="details/dashboards/dashboard-mongodb-inmemory-details.html">MongoDB InMemory Details</a>
+    <a class="reference internal" href="details/dashboards/dashboard-mongodb-inmemory-details.html">None</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="details/dashboards/dashboard-mongodb-mmapv1-details.html">MongoDB MMAPv1 Details</a>
+    <a class="reference internal" href="details/dashboards/dashboard-mongodb-mmapv1-details.html">None</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="details/dashboards/dashboard-mongodb-wiredtiger-details.html">MongoDB WiredTiger Details</a>
+    <a class="reference internal" href="details/dashboards/dashboard-mongodb-wiredtiger-details.html">None</a>
 
 
 
@@ -1050,13 +1048,19 @@ If you are using OVF/AMI, you can change the default password through SSH by usi
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="details/dashboards/dashboard-postgresql-instance-summary.html">PostgreSQL Instance Summary</a>
+    <a class="reference internal" href="details/dashboards/dashboard-postgresql-instance-summary.html">None</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="details/dashboards/dashboard-postgresql-instances-compare.html">PostgreSQL Instances Compare</a>
+    <a class="reference internal" href="details/dashboards/dashboard-postgresql-instances-compare.html">None</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="details/dashboards/dashboard-postgresql-vacuum-monitoring-experimental.html">Experimental PostgreSQL Vacuum Monitoring</a>
 
 
 
@@ -1082,25 +1086,138 @@ If you are using OVF/AMI, you can change the default password through SSH by usi
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="details/dashboards/dashboard-pxc-galera-cluster-summary.html">PXC/Galera Cluster Summary</a>
+    <a class="reference internal" href="details/dashboards/dashboard-pxc-galera-cluster-summary.html">None</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="details/dashboards/dashboard-pxc-galera-cluster-summary-experimental.html">Experimental PXC/Galera Cluster Summary</a>
+    <a class="reference internal" href="details/dashboards/dashboard-pxc-galera-cluster-summary-experimental.html">None</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="details/dashboards/dashboard-pxc-galera-nodes-compare.html">PXC/Galera Nodes Compare</a>
+    <a class="reference internal" href="details/dashboards/dashboard-pxc-galera-nodes-compare.html">None</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="details/dashboards/dashboard-haproxy-instance-summary.html">HAProxy Instance Summary</a>
+    <a class="reference internal" href="details/dashboards/dashboard-haproxy-instance-summary.html">None</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="details/dashboards/dashboard-manage-dashboards.html">Manage dashboards</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="javascript: void(0)" style="text-decoration: none">PMM dashboards</a>
+
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="details/dashboards/dashboard-home.html">Insight</a>
+
+
+
+
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="details/dashboards/dashboard-inventory.html">PMM Inventory</a>
+
+
+
+
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="details/dashboards/dashboard-cluster-summary.html">DBaas</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="details/dashboards/dashboard-cpu-utilization-details.html">OS Dashboards</a>
+
+
+
+
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="details/dashboards/dashboard-prometheus-exporter-status.html">Prometheus Dashboards</a>
+
+
+
+
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="details/dashboards/dashboard-mysql-amazon-aurora-details.html">MySQL Dashboards</a>
+
+
+
+
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="details/dashboards/dashboard-mongodb-experimental_collection_overview.html">MongoDB Dashboards</a>
+
+
+
+
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="details/dashboards/dashboard-postgresql-instances-overview.html">PostgreSQL Dashboards</a>
+
+
+
+
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="details/dashboards/dashboard-proxysql-instance-summary.html">ProxySQL Dashboards</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="details/dashboards/dashboard-pxc-galera-node-summary.html">HA Dashboards</a>
+
+
+
+
 
 
 
@@ -1183,6 +1300,12 @@ If you are using OVF/AMI, you can change the default password through SSH by usi
 
 
 <ul class="toctree" id="toctree">
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="release-notes/2.31.0.html">PMM 2.31.0</a>
+
+
 
 
 <li class="toctree-l2">

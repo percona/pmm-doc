@@ -32,7 +32,7 @@
 
 
 
-<title>Percona Monitoring and Management &mdash; Integrated Alerting</title>
+<title>Percona Monitoring and Management &mdash; Percona Alerting</title>
 
 <head>
     
@@ -115,66 +115,62 @@
 
                 <div class="bodywrapper">
                     <div class="body">
-                        <h1 id="integrated-alerting">Integrated Alerting<a class="headerlink" href="#integrated-alerting" title="Permanent link">&para;</a></h1>
-<div class="admonition caution alert alert-warning">
-<p class="admonition-title">Disclaimer</p>
-<p>Integrated Alerting is currently in <a href="../details/glossary.html#technical-preview">Technical Preview</a>. This means that this feature is still under development and is subject to change. Therefore, we recommend that early adopters use Integrated Alerting for testing purposes only.</p>
+                        <h1 id="percona-alerting">Percona Alerting<a class="headerlink" href="#percona-alerting" title="Permanent link">&para;</a></h1>
+<div class="admonition alert alert-info">
+<p>Percona Alerting is the new Alerting feature introduced in PMM 2.31. This replaces the Integrated Alerting feature available in previous versions.  </p>
 </div>
-<p>Alerting notifies of important or unusual activity in your database environments so that you can identify and resolve problems quickly.</p>
-<p>In PMM, you define what system metrics are critical for your environment and what thresholds are acceptable for each metric. When something needs your attention, PMM automatically sends you an alert through your specified communication channel.</p>
-<p>The following three basic components define the alerting workflow:</p>
+<p>Alerting notifies of important or unusual activity in your database environments so that you can identify and resolve problems quickly. When something needs your attention, PMM automatically sends you an alert through your specified contact points.</p>
+<h2 id="alert-types">Alert types<a class="headerlink" href="#alert-types" title="Permanent link">&para;</a></h2>
+<p>Percona Alerting is powered by Grafana infrastructure. PMM leverages Grafana&rsquo;s advanced alerting capabilities and adds an extra layer of alert templates that simplifies complex alert rules.</p>
+<p>Depending on the datasources that you want to query, and the complexity of your required evaluation criteria, PMM enables you to create the following types of alerts: </p>
 <ul>
-<li><strong>Alert template</strong>: provides the framework for the alert rules. PMM includes a set of default templates with common events and expressions for alerting. If you need custom expressions on which to base your alert rules, create your own templates instead.</li>
-<li><strong>Alert rule</strong>: describes the circumstances under which you want to be alerted.</li>
-<li><strong>Alert communication channel</strong>: specifies how PMM should deliver alerts.</li>
+<li><strong>Percona templated alerts</strong>: alerts based on a set of default templates with common events and expressions for alerting. 
+If you need custom expressions on which to base your alert rules, you can also create your own templates. </li>
+<li><strong>Grafana managed alerts</strong>: alerts that handle complex conditions and can span multiple different data sources like SQL, Prometheus, InfluxDB, etc. These alerts are stored and executed by Grafana.</li>
+<li><strong>Mimir or Loki alerts</strong>: alerts that consist of one single query, written in PromQL or LogQL. The alert rules are stored and executed on the Mimir or Loki ruler and are completely decoupled from the PMM and Grafana runtime.</li>
+<li><strong>Mimir or Loki recording rules</strong>: precompute the result of expensive queries and execute alerts faster. 
+With Mimir and Loki alert rules, you can run alert expressions closer to your data and at massive scale, managed by the Grafana. </li>
 </ul>
-<p><div class="lightgallery"><a data-sub-html="" href="../_images/workflow.png"><img alt="" src="../_images/workflow.png" /></a></div></p>
-<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
-<p>Before creating alert rules:</p>
+<h2 id="alerting-components">Alerting components<a class="headerlink" href="#alerting-components" title="Permanent link">&para;</a></h2>
+<p>Alerts are split into four key components: alert rules, contact points, notification policies, and silences. </p>
+<h3 id="alert-rules">Alert rules<a class="headerlink" href="#alert-rules" title="Permanent link">&para;</a></h3>
+<p>Describe the circumstances under which you want to be alerted. The evaluation criteria that you define determine whether an alert will fire. </p>
+<p>An alert rule consists of one or more queries and expressions, a condition, the frequency of evaluation, and optionally, the duration over which the condition is met.</p>
+<p>For example, you might configure an alert to identify and notify you when MongoDB is down.</p>
+<h3 id="alert-templates">Alert templates<a class="headerlink" href="#alert-templates" title="Permanent link">&para;</a></h3>
+<p>Provide a simplified framework for configuring complex alert rules. </p>
+<p>PMM includes a set of default templates with common events and expressions for alerting. You can also create your own templates if you need custom expressions on which to base your alert rules.</p>
+<p>You can check the  alert templates available for your account under <strong>Alerting &gt; Alert rule templats</strong> tab. PMM lists here the following types of templates:</p>
+<p>1) Build-in templates, available out-of-the box with PMM.
+2) Alert templates fetched from Percona Platform, according to the entitlements available for your Percona Account. 
+3) Custom templates created or uploaded on the <strong>Alerting page &gt; Alert Templates</strong>.tab. 
+4) Custom template files  available in your  <code>yaml srv/alerting/templates</code> directory. PMM load them during startup.</p>
+<h3 id="silences">Silences<a class="headerlink" href="#silences" title="Permanent link">&para;</a></h3>
+<p>Silences specify periods of time to suppress notifications. During a silence, PMM continues to track metrics and trigger alerts but does not send notifications to the specified contact points. Once the specified silence expires, notifications are resumed. </p>
+<p>For example, you can create a silence to suppress trivial notifications during weekends.</p>
+<h3 id="contact-points">Contact points<a class="headerlink" href="#contact-points" title="Permanent link">&para;</a></h3>
+<p>Contact points specify how PMM should deliver Grafana-managed alerts. When an alert fires, a notification is sent to the specified contact points. </p>
+<p>Depending on the severity of an alert, you might want to send different alerts to different channels. For example, you can deliver common alerts via Slack channel, but send an email notification for potentially critical issues. </p>
+<p>You can choose from a variety of contact points, including Slack, email, webhooks, PagerDuty, and more. </p>
+<h3 id="notification-policies">Notification policies<a class="headerlink" href="#notification-policies" title="Permanent link">&para;</a></h3>
+<p>Notification policies determine how Grafana alerts are routed to contact points by setting where, when, and how to send notifications. </p>
+<p>For example, you might specify a limit for the number of times a notification is sent during a certain period. This helps ensure that you don&rsquo;t spam your Slack channel with too many notifications about the same issue.</p>
+<h2 id="create-a-percona-templated-alert">Create a Percona templated alert<a class="headerlink" href="#create-a-percona-templated-alert" title="Permanent link">&para;</a></h2>
+<p>This topic focuses on creating an alert rule based on PMM templates. For information on working with the other alert types, check the Grafana documentation on <a href="https://grafana.com/docs/grafana/latest/alerting/">Grafana Labs</a>.</p>
+<h3 id="provision-alert-resources">Provision alert resources<a class="headerlink" href="#provision-alert-resources" title="Permanent link">&para;</a></h3>
+<p>Before creating PMM alert rules, configure the required alert resources:</p>
 <ol>
-<li>Enable Integrated Alerting.</li>
-<li>Set up an Email (SMTP) or Slack sender settings for receiving alerts.</li>
-<li>Specify the Email/Slack/Webhooks/PagerDuty settings and channels to notify.</li>
+<li>Go to <strong>Configuration &gt; PMM Settings</strong> and ensure that the <strong>Alerting</strong> option is enabled. This is enabled by default starting with PMM 2.31. However, if you have disabled it, the <strong>Alerting</strong> page displays only Grafana-managed alert rules. This means that you will not be able to create alerts based on PMM templates.</li>
+<li>Go to <strong>Dashboards &gt; Browse</strong> and check the folders available for storing alert rules. If none of the available folders are relevant for your future alert rules, click <strong>New &gt; New Folder</strong> and create a custom one. </li>
+<li>Go to <strong>Alerting &gt; Alert Rule Templates</strong> and check the default PMM templates. If none of the templates include a relevant expression for the type of alerts that you want to create, click <strong>Add</strong> to create a custom template instead.</li>
 </ol>
-<h3 id="enable-integrated-alerting">Enable Integrated Alerting<a class="headerlink" href="#enable-integrated-alerting" title="Permanent link">&para;</a></h3>
-<ol>
-<li>Select <strong>Configuration &gt; Settings &gt; Advanced Settings</strong>.</li>
-<li>Under <strong>Technical preview</strong> features, turn on Integrated Alerting.</li>
-<li>Click <strong>Apply changes</strong>. This adds a new <strong>Communication</strong> tab to the <strong>Settings</strong> menu.</li>
-</ol>
-<h3 id="set-up-a-communication-channel">Set up a communication channel<a class="headerlink" href="#set-up-a-communication-channel" title="Permanent link">&para;</a></h3>
-<p>Set up a communication channel to configure how alerts will be delivered. The following notification channels are supported: email via your SMTP server, Slack, PagerDuty, and Webhook.</p>
-<p>To set up a communication channel:</p>
-<ol>
-<li>Open the new <strong>Communication</strong> tab under <strong>Configuration &gt; Settings</strong>.</li>
-<li>Choose whether you want to configure the settings for <strong>Email</strong> or <strong>Slack</strong> sender channel. Webhook and PagerDury can be configured when adding the notification channel.<ul>
-<li>For <strong>Email</strong>, fill in the details of your SMTP email server. Enforce TLS encryption if your SMTP server requires this, then click <strong>Test</strong> to confirm that you can connect to the SMTP server with the current settings.</li>
-<li>For <strong>Slack</strong>, specify the Slack Webhook URL to use. Currently, you can only configure one Slack channel for each Slack URL.</li>
-</ul>
-</li>
-<li>Click <strong>Apply changes</strong> to save your settings.</li>
-<li>From the left menu, select <strong>Alerting &gt; Integrated Alerting &gt; Alerts</strong>. This tab lists all the alerts generated by your alert rules.</li>
-</ol>
-<p><strong>Example</strong></p>
-<p>The screenshot below shows how to configure email notifications through Gmail.
-If you’re using Two-Factor Authentication, first set up a <a href="https://www.google.com/url?q=https://support.google.com/accounts/answer/185833?hl%3Den&amp;sa=D&amp;source=docs&amp;ust=1645452547572745&amp;usg=AOvVaw0Ri4SS1RCdbkvGIM7AwRQz">Google App Password</a> for the account you want to use. You can then use those credentials to fill out the <strong>Communication</strong> form:</p>
-<p><img alt="Gmail example" src="../_images/gmail2FA.jpg" /></p>
-<h3 id="add-a-notification-channel">Add a Notification Channel<a class="headerlink" href="#add-a-notification-channel" title="Permanent link">&para;</a></h3>
-<p>A notification channel is a specific instance of a communication channel. For example, for Email, the communication channel defines a server, while the notification channel specifies the email addresses where to send alerts sent via the email server.</p>
-<p>To add a notification channel:</p>
-<ol>
-<li>Go to <strong>Alerting &gt; Integrated Alerting</strong> and select the <strong>Notification Channels</strong> tab.</li>
-<li>Click <strong>Add</strong> and fill in the details for your required channel.</li>
-<li>Click <strong>Add</strong> to add the notification channel.</li>
-</ol>
-<h2 id="about-alert-templates">About alert templates<a class="headerlink" href="#about-alert-templates" title="Permanent link">&para;</a></h2>
+<h4 id="configure-alert-templates">Configure alert templates<a class="headerlink" href="#configure-alert-templates" title="Permanent link">&para;</a></h4>
 <p>Alerts templates are YAML files that provide the source framework for alert rules.
 Alert templates contain general template details and an alert expression defined in <a href="https://docs.victoriametrics.com/MetricsQL.html">MetricsQL</a>. This query language is backward compatible with Prometheus QL.</p>
-<p>Starting with PMM 2.26.0, alert rules are no longer dependent on their source rule template after creation. This means that you can update or delete rule templates without impacting existing rules that are based on that template.</p>
-<h2 id="create-custom-templates">Create custom templates<a class="headerlink" href="#create-custom-templates" title="Permanent link">&para;</a></h2>
+<h4 id="create-custom-templates">Create custom templates<a class="headerlink" href="#create-custom-templates" title="Permanent link">&para;</a></h4>
 <p>If none of the default PMM templates contain a relevant expression for the alert rule that you need, you can create a custom template instead.</p>
 <p>You can base multiple alert rules on the same template. For example, you can create a <strong>pmm_node_high_cpu_load</strong> template that can be used as the source for alert rules for production versus staging, warning versus critical, etc.</p>
-<h3 id="template-format">Template format<a class="headerlink" href="#template-format" title="Permanent link">&para;</a></h3>
+<h4 id="template-format">Template format<a class="headerlink" href="#template-format" title="Permanent link">&para;</a></h4>
 <p>When creating custom templates, make sure to use the required template format below:</p>
 <ul>
 <li><strong>name</strong> (required field): uniquely identifies template. Spaces and special characters are not allowed.</li>
@@ -195,7 +191,7 @@ Alert templates contain general template details and an alert expression defined
 <li><strong>labels</strong> (optional): are additional labels to be added to generated alerts.</li>
 <li><strong>annotations</strong> (optional): are additional annotations to be added to generated alerts.</li>
 </ul>
-<h3 id="template-example">Template example<a class="headerlink" href="#template-example" title="Permanent link">&para;</a></h3>
+<h4 id="template-example">Template example<a class="headerlink" href="#template-example" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="nn">---</span><span class="w"></span>
 <span class="nt">templates</span><span class="p">:</span><span class="w"></span>
 <span class="w"> </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pmm_mongodb_high_memory_usage</span><span class="w"></span>
@@ -223,52 +219,72 @@ Alert templates contain general template details and an alert expression defined
 <span class="w">         </span><span class="no">{{ $value }}% of memory (more than [[ .threshold ]]%) is used</span><span class="w"></span>
 <span class="w">         </span><span class="no">by {{ $labels.service_name }} on {{ $labels.node_name }}.</span><span class="w"></span>
 </code></pre></div>
-<h2 id="test-alert-expressions">Test alert expressions<a class="headerlink" href="#test-alert-expressions" title="Permanent link">&para;</a></h2>
+<h3 id="test-alert-expressions">Test alert expressions<a class="headerlink" href="#test-alert-expressions" title="Permanent link">&para;</a></h3>
 <p>If you want to create custom templates, you can test the MetricsQ expressions for your custom template in the <strong>Explore</strong> section of PMM. Here you can also query any PMM internal database.</p>
 <p>To test expressions for custom templates:</p>
 <ol>
-<li>On the left menu of PMM, choose <strong>Explore &gt; Metrics</strong>.</li>
+<li>On the side menu in PMM, choose <strong>Explore &gt; Metrics</strong>.</li>
 <li>Enter your expression in the <strong>Metrics</strong> field and click <strong>Run query</strong>.</li>
 </ol>
-<p>For example, to validate that a MongoDB instance is down, shut down a member of a three-node replica set, then check that the following expression returns <strong>0</strong> in <strong>Explore &gt; Metrics</strong>:</p>
-<div class="highlight"><pre><span></span><code><span class="o">{</span><span class="nv">service_type</span><span class="o">=</span><span class="s2">&quot;mongodb&quot;</span><span class="o">}</span>
-</code></pre></div>
-<h2 id="template-compatibility">Template compatibility<a class="headerlink" href="#template-compatibility" title="Permanent link">&para;</a></h2>
-<h3 id="with-previous-pmm-versions">With previous PMM versions<a class="headerlink" href="#with-previous-pmm-versions" title="Permanent link">&para;</a></h3>
-<p>PMM 2.26 introduced significant changes to the core structure of rule templates. As a result, alert rules and templates created in previous PMM versions are incompatible with PMM 2.26.0 and cannot be migrated to this new version.</p>
-<p>If you’re migrating from PMM 2.25 and earlier, make sure to manually recreate any custom alert rules and rule templates that you want to transfer to PMM 2.26.0 or later.</p>
-<h3 id="with-other-alerting-tools">With other alerting tools<a class="headerlink" href="#with-other-alerting-tools" title="Permanent link">&para;</a></h3>
-<p>If you have existing YAML alert templates that you want to leverage in PMM Integrated Alerting:</p>
+<p>For example, to validate that a MongoDB instance is down, shut down a member of a three-node replica set, then check that the following expression returns <strong>0</strong> in <strong>Explore &gt; Metrics</strong>: <code>sh {service_type="mongodb"}</code></p>
+<h3 id="add-an-alert-rule">Add an alert rule<a class="headerlink" href="#add-an-alert-rule" title="Permanent link">&para;</a></h3>
+<p>After provisioning the resources required for creating Percona templated alerts, you are now ready to create your alert:</p>
 <ol>
-<li>Go to <strong>Alerting &gt; Integrated Alerting &gt; Alert Rule Templates</strong> tab and click <strong>Add</strong> at the top right-hand side of the table.</li>
-<li>Click <strong>Add</strong> and upload a local .yaml file from your computer.</li>
-</ol>
-<h2 id="add-an-alert-rule">Add an Alert Rule<a class="headerlink" href="#add-an-alert-rule" title="Permanent link">&para;</a></h2>
-<ol>
-<li>Go to <strong>Alerting &gt; Integrated Alerting</strong> and select the <strong>Alert Rules</strong> tab.</li>
-<li>Click <strong>Add</strong> on the right-hand side of the table.</li>
-<li>In the <strong>Add Alert</strong> rule dialog, choose the template on which you want to base the new alert rule. This automatically populates the <strong>Duration</strong>, <strong>Severity</strong> fields with information from the template. You can change these values if you want to override the default specifications in the template.</li>
-<li>In the <strong>Filters</strong> field, specify if you want the alert rule to apply only to specific services or nodes. For example: <code>service_name'</code>, Operator:<code>=(EQUAL)</code>, VALUE: <code>ps5.7</code>.</li>
-<li>In the <strong>Channels</strong> field, select one or more notification channels that you have configured for sending out the notifications.</li>
+<li>Go to <strong>Alerting &gt; Alert Rules</strong>, and click <strong>New alert rule</strong>.</li>
+<li>On the <strong>Create alert rule</strong> page, select the <strong>Percona templated alert</strong> option. If you want to learn about creating Grafana alerts instead, check our <a href="https://grafana.com/docs/grafana/latest/alerting/">Grafana&rsquo;s documentation</a>.</li>
+<li>In the <strong>Template details</strong> section, choose the template on which you want to base the new alert rule. This automatically populates the <strong>Name</strong>, <strong>Duration</strong>, and <strong>Severity</strong> fields with information from the template. You can change these values if you want to override the default specifications in the template.</li>
+<li>In the <strong>Filters</strong> field, specify if you want the alert rule to apply only to specific services or nodes. For example: <code>service_name'</code>, Operator:<code>MATCH</code>, VALUE: <code>ps5.7</code>.</li>
+<li>From the <strong>Folder</strong> drop-down menu, select the location where you want to store the rule.</li>
+<li>Click <strong>Save and Exit</strong> to close the page and go to the <strong>Alert Rules</strong> tab where you can review, edit and silence your new alert.</li>
 </ol>
 <h2 id="silence-alerts">Silence alerts<a class="headerlink" href="#silence-alerts" title="Permanent link">&para;</a></h2>
-<p>Silence alerts when you want to stop notifications from one or more alerting rules.</p>
-<p>Silencing an alert only stops notifications from being sent to your specified notification channels.</p>
-<p>Silenced alerts are still recorded under <strong>Integrated Alerting &gt; Alerts</strong> so that you can review them later. A silenced alert is disabled until you reactivate the alert.</p>
-<p>To silence alerts:</p>
+<p>Create a silence when you want to stop notifications from one or more alerting rules.</p>
+<p>Silences stop notifications from being sent to your specified contact points.</p>
+<p>Silenced alerts are still recorded under <strong>Alerting &gt; Fired Alerts</strong> so that you can review them later. Silenced alerts are disabled for as long as it&rsquo;s specified in the Silence  Duration or until you remove a silence. </p>
+<p>For information on creating silences, see <a href="https://grafana.com/docs/grafana/latest/alerting/silences/">About alerting silences</a> in the Grafana documentation. </p>
+<h2 id="deprecated-alerting-options">Deprecated alerting options<a class="headerlink" href="#deprecated-alerting-options" title="Permanent link">&para;</a></h2>
+<p>PMM 2.31 introduced Percona Alerting which replaces the old Integrated Alerting in previous PMM versions. In addition to full feature parity, Percona Alerting includes additional benefits like Grafana-based alert rules and a unified, easy-to-use alerting command center on the <strong>Alerting</strong> page.</p>
+<h3 id="alerting-compatibility">Alerting compatibility<a class="headerlink" href="#alerting-compatibility" title="Permanent link">&para;</a></h3>
+<h4 id="template-compatibility-with-previous-pmm-versions">Template compatibility with previous PMM versions<a class="headerlink" href="#template-compatibility-with-previous-pmm-versions" title="Permanent link">&para;</a></h4>
+<p>If you have used Integrated Alerting in previous PMM versions, your custom alert rule templates will be automatically migrated to PMM 2.31. After upgrading to this new version, you will find all your alert templates under <strong>Alerting &gt; Alert Templates</strong>. </p>
+<p>If you have any templates available in the  <code>/srv/ia/templates</code> folder, make sure to transfer them to <code>/srv/alerting/templates</code> as PMM 2.31 and later will look for custom templates in this location. </p>
+<p>If you are upgrading from PMM 2.25 and earlier, alert templates will not be automatically migrated. This is because PMM 2.26.0 introduced significant changes to the core structure of rule templates.</p>
+<p>In this scenario, you will need to manually recreate any custom rule templates that you want to transfer to PMM 2.26.0 or later. </p>
+<h4 id="template-compatibility-with-other-alerting-tools">Template compatibility with other alerting tools<a class="headerlink" href="#template-compatibility-with-other-alerting-tools" title="Permanent link">&para;</a></h4>
+<p>If you have existing YAML alert templates that you want to leverage in Percona Alerting:</p>
 <ol>
-<li>Click <strong>Alerting</strong> on the main menu.</li>
-<li>Choose <strong>Integrated Alerting &gt; Alerts</strong> and choose if you want to disable an individual alert or all alerts:<ul>
-<li>To silence an individual alert, scroll through the list of current alerts and click on the bell in the <strong>Actions</strong> column.</li>
-<li>To silence all alerts, click <strong>Silence All</strong> at the top right side of the <strong>Alerts</strong> table.</li>
-</ul>
-</li>
+<li>Go to <strong>Alerting &gt; Alert Rule Templates</strong> tab and click <strong>Add</strong> at the top right-hand side of the table.</li>
+<li>Click <strong>Add</strong> and upload a local .yaml file from your computer.</li>
 </ol>
-<p>To reactivate silenced alerts, click <strong>Unsilence All</strong> or click on the disabled bell icon <i class="uil uil-bell-slash"></i> corresponding to the alerts you want to reactivate.</p>
-<h2 id="alternative-alerting-options">Alternative alerting options<a class="headerlink" href="#alternative-alerting-options" title="Permanent link">&para;</a></h2>
-<p>PMM Integrated Alerting was introduced as an alternative to Grafana Alerting and Prometheus’ Alertmanager.</p>
-<p>These third-party alerting tools continue to be available in PMM until Integrated Alerting moves from Technical Preview to General Availability.</p>
-<p>We recommend already using Integrated Alerting since it offers a simpler alerting setup and provides more robust alerting options.</p>
+<h4 id="migrate-alert-rules">Migrate alert rules<a class="headerlink" href="#migrate-alert-rules" title="Permanent link">&para;</a></h4>
+<p>Alert rules created with Integrated Alerting in PMM 2.30 and earlier are not automatically migrated to Percona Alerting. </p>
+<p>After upgrading to PMM 2.31, make sure to manually migrate any alert rules that you want to transfer to PMM 2.31 using the <a href="https://github.com/percona/pmm/blob/main/ia_migration.py">Integrated Alerting Migration Script</a>.</p>
+<h5 id="script-commands">Script commands<a class="headerlink" href="#script-commands" title="Permanent link">&para;</a></h5>
+<p>The default command for migrating rules is:
+<div class="highlight"><pre><span></span><code><span class="nv">*python</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ia_migration.py -u admin -p admin*</span><span class="w"></span>
+</code></pre></div>
+To see all the available options, check the scrip help using <code>ia_migration.py -h</code></p>
+<h5 id="script-prerequisites">Script prerequisites<a class="headerlink" href="#script-prerequisites" title="Permanent link">&para;</a></h5>
+<ul>
+<li>
+<p>Python version 3.x, which you can download from <a href="https://www.python.org/downloads/">Python Downloads centre</a>.</p>
+</li>
+<li>
+<p><a href="https://requests.readthedocs.io/en/latest/user/install/#install">Requests  library</a>, which you can install with the following command: <code>pip install requests</code>. </p>
+</li>
+</ul>
+<div class="admonition caution alert alert-warning">
+<p class="admonition-title">Important</p>
+<p>The script sets all migrated alert rules to Active. Make sure to silence any alerts that should not be firing. </p>
+</div>
+<p>For more information about the script and advanced migration options, check out the help information embedded in the script.</p>
+<h3 id="disable-percona-alerting">Disable Percona Alerting<a class="headerlink" href="#disable-percona-alerting" title="Permanent link">&para;</a></h3>
+<p>Percona Alerting is enabled by default in the PMM Settings. This feature adds the <strong>Percona templated alerts</strong> option on the <strong>Alerting</strong> page.</p>
+<p>If for some reason you want to disable PMM Alert templates and keep only Grafana-managed alerts:</p>
+<ol>
+<li>Go to <strong>Configuration &gt; PMM Settings</strong>.</li>
+<li>Disable the <strong>Alerting</strong> option. The <strong>Alerting</strong> page will now display only Grafana-managed alert rules.</li>
+</ol>
                     </div>
                 </div>
                 
@@ -276,7 +292,7 @@ Alert templates contain general template details and an alert expression defined
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2022-08-15
+            <i class="uil uil-refresh"></i> Page updated 2022-09-26
         </li>
         
     </ul>
@@ -496,7 +512,7 @@ Alert templates contain general template details and an alert expression defined
 
 
 <li class="toctree-l2">
-    <a class="reference internal" href="alerting.html">Integrated Alerting</a>
+    <a class="reference internal" href="alerting.html">Percona Alerting</a>
 
 
 
@@ -684,25 +700,25 @@ Alert templates contain general template details and an alert expression defined
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="../details/dashboards/dashboard-home-experimental.html">Experimental Home Dashboard</a>
+    <a class="reference internal" href="../details/dashboards/dashboard-home-experimental.html">None</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="../details/dashboards/dashboard-advanced-data-exploration.html">Advanced Data Exploration</a>
+    <a class="reference internal" href="../details/dashboards/dashboard-advanced-data-exploration.html">None</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="../details/dashboards/dashboard-victoriametrics.html">VictoriaMetrics</a>
+    <a class="reference internal" href="../details/dashboards/dashboard-victoriametrics.html">None</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="../details/dashboards/dashboard-victoriametrics-agents-overview.html">VictoriaMetrics Agents Overview</a>
+    <a class="reference internal" href="../details/dashboards/dashboard-victoriametrics-agents-overview.html">None</a>
 
 
 
@@ -722,13 +738,13 @@ Alert templates contain general template details and an alert expression defined
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="../details/dashboards/dashboard-env-overview.html">Environment Overview</a>
+    <a class="reference internal" href="../details/dashboards/dashboard-env-overview.html">None</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="../details/dashboards/dashboard-environent-summary.html">Environment Summary</a>
+    <a class="reference internal" href="../details/dashboards/dashboard-environent-summary.html">None</a>
 
 
 
@@ -754,55 +770,55 @@ Alert templates contain general template details and an alert expression defined
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="../details/dashboards/dashboard-disk-details.html">Disk Details</a>
+    <a class="reference internal" href="../details/dashboards/dashboard-disk-details.html">None</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="../details/dashboards/dashboard-network-details.html">Network Details</a>
+    <a class="reference internal" href="../details/dashboards/dashboard-network-details.html">None</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="../details/dashboards/dashboard-memory-details.html">Memory Details</a>
+    <a class="reference internal" href="../details/dashboards/dashboard-memory-details.html">None</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="../details/dashboards/dashboard-node-temperature-details.html">Node Temperature Details</a>
+    <a class="reference internal" href="../details/dashboards/dashboard-node-temperature-details.html">None</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="../details/dashboards/dashboard-nodes-compare.html">Nodes Compare</a>
+    <a class="reference internal" href="../details/dashboards/dashboard-nodes-compare.html">None</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="../details/dashboards/dashboard-nodes-overview.html">Nodes Overview</a>
+    <a class="reference internal" href="../details/dashboards/dashboard-nodes-overview.html">None</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="../details/dashboards/dashboard-node-summary.html">Node Summary</a>
+    <a class="reference internal" href="../details/dashboards/dashboard-node-summary.html">None</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="../details/dashboards/dashboard-numa-details.html">NUMA Details</a>
+    <a class="reference internal" href="../details/dashboards/dashboard-numa-details.html">None</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="../details/dashboards/dashboard-processes-details.html">Processes Details</a>
+    <a class="reference internal" href="../details/dashboards/dashboard-processes-details.html">None</a>
 
 
 
@@ -822,7 +838,7 @@ Alert templates contain general template details and an alert expression defined
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="../details/dashboards/dashboard-prometheus-exporters-overview.html">Prometheus Exporters Overview</a>
+    <a class="reference internal" href="../details/dashboards/dashboard-prometheus-exporters-overview.html">None</a>
 
 
 
@@ -842,97 +858,97 @@ Alert templates contain general template details and an alert expression defined
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="../details/dashboards/dashboard-mysql-command-handler-counters-compare.html">MySQL Command/Handler Counters Compare</a>
+    <a class="reference internal" href="../details/dashboards/dashboard-mysql-command-handler-counters-compare.html">None</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="../details/dashboards/dashboard-mysql-innodb-compression-details.html">MySQL InnoDB Compression Details</a>
+    <a class="reference internal" href="../details/dashboards/dashboard-mysql-innodb-compression-details.html">None</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="../details/dashboards/dashboard-mysql-innodb-details.html">MySQL InnoDB Details</a>
+    <a class="reference internal" href="../details/dashboards/dashboard-mysql-innodb-details.html">None</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="../details/dashboards/dashboard-mysql-myisam-aria-details.html">MySQL MyISAM/Aria Details</a>
+    <a class="reference internal" href="../details/dashboards/dashboard-mysql-myisam-aria-details.html">None</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="../details/dashboards/dashboard-mysql-myrocks-details.html">MySQL MyRocks Details</a>
+    <a class="reference internal" href="../details/dashboards/dashboard-mysql-myrocks-details.html">None</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="../details/dashboards/dashboard-mysql-instance-summary.html">MySQL Instance Summary</a>
+    <a class="reference internal" href="../details/dashboards/dashboard-mysql-instance-summary.html">None</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="../details/dashboards/dashboard-mysql-instances-compare.html">MySQL Instances Compare</a>
+    <a class="reference internal" href="../details/dashboards/dashboard-mysql-instances-compare.html">None</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="../details/dashboards/dashboard-mysql-instances-overview.html">MySQL Instances Overview</a>
+    <a class="reference internal" href="../details/dashboards/dashboard-mysql-instances-overview.html">None</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="../details/dashboards/dashboard-mysql-wait-event-analyses-details.html">MySQL Wait Event Analyses Details</a>
+    <a class="reference internal" href="../details/dashboards/dashboard-mysql-wait-event-analyses-details.html">None</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="../details/dashboards/dashboard-mysql-performance-schema-details.html">MySQL Performance Schema Details</a>
+    <a class="reference internal" href="../details/dashboards/dashboard-mysql-performance-schema-details.html">None</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="../details/dashboards/dashboard-mysql-query-response-time-details.html">MySQL Query Response Time Details</a>
+    <a class="reference internal" href="../details/dashboards/dashboard-mysql-query-response-time-details.html">None</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="../details/dashboards/dashboard-mysql-replication-summary.html">MySQL Replication Summary</a>
+    <a class="reference internal" href="../details/dashboards/dashboard-mysql-replication-summary.html">None</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="../details/dashboards/dashboard-mysql-group-replication-summary.html">MySQL Group Replication Summary</a>
+    <a class="reference internal" href="../details/dashboards/dashboard-mysql-group-replication-summary.html">None</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="../details/dashboards/dashboard-mysql-table-details.html">MySQL Table Details</a>
+    <a class="reference internal" href="../details/dashboards/dashboard-mysql-table-details.html">None</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="../details/dashboards/dashboard-mysql-user-details.html">MySQL User Details</a>
+    <a class="reference internal" href="../details/dashboards/dashboard-mysql-user-details.html">None</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="../details/dashboards/dashboard-mysql-tokudb-details.html">MySQL TokuDB Details</a>
+    <a class="reference internal" href="../details/dashboards/dashboard-mysql-tokudb-details.html">None</a>
 
 
 
@@ -952,61 +968,61 @@ Alert templates contain general template details and an alert expression defined
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="../details/dashboards/dashboard-mongodb-experimental_collection_details.html">Experimental MongoDB Collection Details</a>
+    <a class="reference internal" href="../details/dashboards/dashboard-mongodb-experimental_collection_details.html">None</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="../details/dashboards/dashboard-mongodb-experimental_oplog.html">Experimental MongoDB Oplog Details</a>
+    <a class="reference internal" href="../details/dashboards/dashboard-mongodb-experimental_oplog.html">None</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="../details/dashboards/dashboard-mongodb-cluster-summary.html">MongoDB Cluster Summary</a>
+    <a class="reference internal" href="../details/dashboards/dashboard-mongodb-cluster-summary.html">None</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="../details/dashboards/dashboard-mongodb-instance-summary.html">MongoDB Instance Summary</a>
+    <a class="reference internal" href="../details/dashboards/dashboard-mongodb-instance-summary.html">None</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="../details/dashboards/dashboard-mongodb-instances-overview.html">MongoDB Instances Overview</a>
+    <a class="reference internal" href="../details/dashboards/dashboard-mongodb-instances-overview.html">None</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="../details/dashboards/dashboard-mongodb-instances-compare.html">MongoDB Instances Compare</a>
+    <a class="reference internal" href="../details/dashboards/dashboard-mongodb-instances-compare.html">None</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="../details/dashboards/dashboard-mongodb-replset-summary.html">MongoDB ReplSet Summary</a>
+    <a class="reference internal" href="../details/dashboards/dashboard-mongodb-replset-summary.html">None</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="../details/dashboards/dashboard-mongodb-inmemory-details.html">MongoDB InMemory Details</a>
+    <a class="reference internal" href="../details/dashboards/dashboard-mongodb-inmemory-details.html">None</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="../details/dashboards/dashboard-mongodb-mmapv1-details.html">MongoDB MMAPv1 Details</a>
+    <a class="reference internal" href="../details/dashboards/dashboard-mongodb-mmapv1-details.html">None</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="../details/dashboards/dashboard-mongodb-wiredtiger-details.html">MongoDB WiredTiger Details</a>
+    <a class="reference internal" href="../details/dashboards/dashboard-mongodb-wiredtiger-details.html">None</a>
 
 
 
@@ -1026,13 +1042,19 @@ Alert templates contain general template details and an alert expression defined
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="../details/dashboards/dashboard-postgresql-instance-summary.html">PostgreSQL Instance Summary</a>
+    <a class="reference internal" href="../details/dashboards/dashboard-postgresql-instance-summary.html">None</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="../details/dashboards/dashboard-postgresql-instances-compare.html">PostgreSQL Instances Compare</a>
+    <a class="reference internal" href="../details/dashboards/dashboard-postgresql-instances-compare.html">None</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-postgresql-vacuum-monitoring-experimental.html">Experimental PostgreSQL Vacuum Monitoring</a>
 
 
 
@@ -1058,25 +1080,138 @@ Alert templates contain general template details and an alert expression defined
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="../details/dashboards/dashboard-pxc-galera-cluster-summary.html">PXC/Galera Cluster Summary</a>
+    <a class="reference internal" href="../details/dashboards/dashboard-pxc-galera-cluster-summary.html">None</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="../details/dashboards/dashboard-pxc-galera-cluster-summary-experimental.html">Experimental PXC/Galera Cluster Summary</a>
+    <a class="reference internal" href="../details/dashboards/dashboard-pxc-galera-cluster-summary-experimental.html">None</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="../details/dashboards/dashboard-pxc-galera-nodes-compare.html">PXC/Galera Nodes Compare</a>
+    <a class="reference internal" href="../details/dashboards/dashboard-pxc-galera-nodes-compare.html">None</a>
 
 
 
 
 <li class="toctree-l4">
-    <a class="reference internal" href="../details/dashboards/dashboard-haproxy-instance-summary.html">HAProxy Instance Summary</a>
+    <a class="reference internal" href="../details/dashboards/dashboard-haproxy-instance-summary.html">None</a>
+
+
+
+</ul>
+
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="../details/dashboards/dashboard-manage-dashboards.html">Manage dashboards</a>
+
+
+
+
+<li class="toctree-l3">
+    <a class="reference internal" href="javascript: void(0)" style="text-decoration: none">PMM dashboards</a>
+
+
+
+
+
+<ul class="toctree" id="toctree">
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-home.html">Insight</a>
+
+
+
+
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-inventory.html">PMM Inventory</a>
+
+
+
+
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-cluster-summary.html">DBaas</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-cpu-utilization-details.html">OS Dashboards</a>
+
+
+
+
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-prometheus-exporter-status.html">Prometheus Dashboards</a>
+
+
+
+
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-mysql-amazon-aurora-details.html">MySQL Dashboards</a>
+
+
+
+
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-mongodb-experimental_collection_overview.html">MongoDB Dashboards</a>
+
+
+
+
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-postgresql-instances-overview.html">PostgreSQL Dashboards</a>
+
+
+
+
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-proxysql-instance-summary.html">ProxySQL Dashboards</a>
+
+
+
+
+<li class="toctree-l4">
+    <a class="reference internal" href="../details/dashboards/dashboard-pxc-galera-node-summary.html">HA Dashboards</a>
+
+
+
+
 
 
 
@@ -1159,6 +1294,12 @@ Alert templates contain general template details and an alert expression defined
 
 
 <ul class="toctree" id="toctree">
+
+
+<li class="toctree-l2">
+    <a class="reference internal" href="../release-notes/2.31.0.html">PMM 2.31.0</a>
+
+
 
 
 <li class="toctree-l2">
