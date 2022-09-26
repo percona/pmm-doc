@@ -187,7 +187,7 @@ After upgrading to PMM 2.31, make sure to manually migrate any alert rules that 
 
 The default command for migrating rules is:
 ```yaml 
-*python migration.py -u admin -p admin*
+*python ia_migration.py -u admin -p admin*
 ```
 ##### Script prerequisites
 - Python version 3.x, which you can download from [Python Downloads centre](https://www.python.org/downloads/).
