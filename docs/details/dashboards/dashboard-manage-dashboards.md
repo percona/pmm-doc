@@ -35,7 +35,7 @@ To delete multiple dashboards at once:
 From the side menu, go to <i class="uil uil-apps"></i> *Dashboards > Browse* and check the dashboards that you want to delete, and click *Delete*.
 
 
-![!image](../../_images/PMM_Delete_multiple_dashbaords.png)
+![!image](../../_images/PMM_Delete_multiple_dashboards.png)
 
 ### Move dashboards from one folder to another
 
@@ -44,7 +44,7 @@ You can move dashboards from one folder to another in the following two ways:
 
 1. From the side menu, go to <i class="uil uil-apps"></i> *Dashboards > Browse* and check the dashboards that you want to move. Click *Move*.
 
-    ![!image](../../_images/PMM_Move_dashbaords.png)
+    ![!image](../../_images/PMM_Move_dashboards.png)
 
 2. On the *Choose Dashboard Folder* dialog box select the dashboards that you want to move from the drop-down. Click *Move*.
 
@@ -55,19 +55,19 @@ The other way of moving dashboards from one folder to another is:
 2. Click on <i class="uil uil-cog"></i> icon to open *Dashboard Settings*.
 3. On the *General* page, under *Folder* select the folder name that you want to move from the dropdown.
 
-    ![!image](../../_images/PMM_Move_dashbaords-way2.png)
+    ![!image](../../_images/PMM_Move_dashboards-way2.png)
 
 4. Click *Save Dashboard* on the the left to save the change.
 
 !!! note alert alert-primary "Note"
-    You should have atleast an *Editor* role to move dashbaord.
+    You should have atleast an *Editor* role to move a dashboard.
 
 ### Navigate to a dashboard folder page to assign permissions
 
 1. From the side menu, go to <i class="uil uil-apps"></i> *Dashboards > Browse* and hover over the dashboard folder whose permissions you want to set. Click *Go to Folder*.
 2. Go to the *Permissions* tab and select the requisite permission from the drop-down for the various roles.
 
-    ![!image](../../_images/PMM_Permissions_dashbaords_folder.png)
+    ![!image](../../_images/PMM_Permissions_dashboards_folder.png)
 
 
 ## Setting custom Home Dashboard
