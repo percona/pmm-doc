@@ -183,10 +183,9 @@ If you have existing YAML alert templates that you want to leverage in Percona A
 ### Alert rule compatibily
 Alert rules created with Integrated Alerting in PMM 2.30 and earlier are not automatically migrated to Percona Alerting. 
 
-After upgrading to PMM 2.31, make sure to manually migrate any alert rules that you want to transfer to PMM 2.31 using the **ia_migration.py** script.
+After upgrading to PMM 2.31, make sure to manually migrate any alert rules that you want to transfer to PMM 2.31 using the [Integrated Alerting Migration Script](https://github.com/percona/pmm/blob/main/ia_migration.py).
 
-The script is available from ____ and  requires the [requests  library](https://requests.readthedocs.io/en/latest/user/install/#install), which you can install with the following command:
- ```pip install requests```. 
+The script requires the [requests  library](https://requests.readthedocs.io/en/latest/user/install/#install), which you can install with the following command: ```pip install requests```. 
 
 The default command for migrating rules is:
 ```yaml 
