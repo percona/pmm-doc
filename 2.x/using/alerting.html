@@ -141,10 +141,12 @@ With Mimir and Loki alert rules, you can run alert expressions closer to your da
 <p>Provide a simplified framework for configuring complex alert rules. </p>
 <p>PMM includes a set of default templates with common events and expressions for alerting. You can also create your own templates if you need custom expressions on which to base your alert rules.</p>
 <p>You can check the  alert templates available for your account under <strong>Alerting &gt; Alert rule templates</strong> tab. PMM lists here the following types of templates:</p>
-<p>1) Build-in templates, available out-of-the box with PMM.
-2) Alert templates fetched from Percona Platform, according to the entitlements available for your Percona Account. 
-3) Custom templates created or uploaded on the <strong>Alerting page &gt; Alert Templates</strong>.tab. 
-4) Custom template files  available in your  <code>yaml srv/alerting/templates</code> directory. PMM load them during startup.</p>
+<ol>
+<li>Built-in templates, available out-of-the-box with PMM.</li>
+<li>Alert templates fetched from Percona Platform, according to the entitlements available for your Percona Account. </li>
+<li>Custom templates created or uploaded on the <strong>Alerting page &gt; Alert Templates</strong> Tab. </li>
+<li>Custom template files available in your  <code>yaml srv/alerting/templates</code> directory. PMM loads them during startup.</li>
+</ol>
 <h3 id="silences">Silences<a class="headerlink" href="#silences" title="Permanent link">&para;</a></h3>
 <p>Silences specify periods of time to suppress notifications. During a silence, PMM continues to track metrics and trigger alerts but does not send notifications to the specified contact points. Once the specified silence expires, notifications are resumed. </p>
 <p>For example, you can create a silence to suppress trivial notifications during weekends.</p>
@@ -292,7 +294,7 @@ To see all the available options, check the scrip help using <code>ia_migration.
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2022-09-27
+            <i class="uil uil-refresh"></i> Page updated 2022-09-29
         </li>
         
     </ul>
