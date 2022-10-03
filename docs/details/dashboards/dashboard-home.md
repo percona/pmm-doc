@@ -1,6 +1,6 @@
 # Home Dashboard
 
-![!image](../../_images/PMM_Home_Dashboard.jpg)
+![!image](../../_images/PMM_Home_Dashboard.png)
 
 The Home Dashboard is a high-level overview of your environment, the starting page of the PMM portal from which you can open the tools of PMM, and browse to online resources.
 
@@ -16,7 +16,7 @@ This section is automatically updated to show the most recent dashboards that yo
 
 ## Statistics
 
-This section shows the total number of hosts added to PMM and the total number of database instanced being monitored. This section also current the version number. Use the *Check for Updates Manually* button to see if you are using the most recent version of PMM.
+This section shows the total number of hosts added to PMM and the total number of database instances being monitored. This section also displays the current version number. Use the *Upgrade to X.X.X version* to upgrade to the most recent version of PMM.
 
 ## Environment Overview
 

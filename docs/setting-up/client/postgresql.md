@@ -36,6 +36,11 @@ We recommend creating a PMM database account that can connect to the `postgres` 
     ```sql
     CREATE USER pmm WITH rds_superuser ENCRYPTED PASSWORD '******';
     ```
+    Optionally, you can also set up a connection limit (only if the user is not a SUPERUSER):
+
+    ```sql
+    ALTER USER pmm CONNECTION LIMIT 10;
+    ```
 
 2. PMM must be able to log in locally as this user to the PostgreSQL instance. To enable this, edit the `pg_hba.conf` file. If not already enabled by an existing rule, add:
 
@@ -125,13 +130,18 @@ Here are the benefits and drawbacks of each.
     track_io_timing = on             # Capture read/write stats
     ```
 
-2. Restart the database server.
+2. Restart the database server. After the restart, the extension starts capturing statistics from every database.
 
-3. Install the extension.
+3. Install the extension. 
 
     ```sh
     psql postgres postgres -c "CREATE EXTENSION pg_stat_statements SCHEMA public"
     ```
+    
+    This command creates the view where you can access the collected statistics.
+
+!!! note alert alert-primary ""
+    We recommend that you create the extension for the `postgres` database. In this case, you receive access to the statistics collected from every database.    
 
 You can now [add the service](#add-service).
 
@@ -161,6 +171,13 @@ You can now [add the service](#add-service).
     shared_preload_libraries = 'pg_stat_monitor'
     ```
 
+    !!! caution alert alert-warning
+        If you use both `pg_stat_statements` and `pg_stat_monitor`, set ``pg_stat_monitor`` **after** `pg_stat_statements`:
+
+        ```ini
+        shared_preload_libraries = 'pg_stat_statements, pg_stat_monitor'
+        ```
+
 2. Set configuration values.
 
     In your `postgresql.conf` file:
@@ -173,16 +190,29 @@ You can now [add the service](#add-service).
 
     You can get a list of other available settings with `SELECT * FROM pg_stat_monitor_settings;`.
 
+    Another important parameter is:
+    ```ini
+    pg_stat_monitor.pgsm_normalized_query
+    ```
+
+    If the value is set to 1, the actual query values are replaced by placeholders. If the value is 0, the examples are given in QAN. Examples can be found in QAN details tab example.
+
     !!! note alert alert-primary ""
         See [`pg_stat_monitor` GitHub repository](https://github.com/percona/pg_stat_monitor/blob/master/docs/USER_GUIDE.md#configuration) for details about available parameters.
 
-3. Start or restart your PostgreSQL instance.
+3. Start or restart your PostgreSQL instance. The extension starts capturing statistics from every database.
 
 4. In a `psql` session:
 
     ```sql
     CREATE EXTENSION pg_stat_monitor;
     ```
+    
+    This command creates the view where you can access the collected statistics.
+
+    !!! note alert alert-primary ""
+        We recommend that you create the extension for the `postgres` database. In this case, you receive the access to the statistics, collected from every database.
+
 
 5. Check the version.
 
@@ -208,7 +238,7 @@ When you have configured your database server, you can add a PostgreSQL service 
 
 If your PostgreSQL instance is configured to use TLS, click on the *Use TLS for database connections* check box and fill in your TLS certificates and key.
 
-![!](../../_images/PMM_Add_Instance_PostgreSQL_TLS.png)
+![!](../../_images/PMM_Add_Instance_PostgreSQL_TLS.jpg)
 
 !!! hint alert alert-success "Note"
     For TLS connection to work SSL needs to be configured in your PostgreSQL instance. Make sure SSL is enabled in the server configuration file `postgresql.conf`, and that hosts are allowed to connect in the client authentication configuration file `pg_hba.conf`. (See PostgreSQL documentation on [Secure TCP/IP Connections with SSL].)
@@ -219,7 +249,7 @@ Add the database server as a service using one of these example commands. If suc
 
 ### Examples
 
-Add instance with default node (`<node>-postgresql`) and service name.
+Add instance with default node (`<node>-postgresql`).
 
 ```sh
 pmm-admin add postgresql \
@@ -232,9 +262,9 @@ pmm-admin add postgresql \
 - `<user name>`: The PostgreSQL PMM user
 - `<password>`: The PostgreSQL user credentials.
 
-The service name and service ID will be automatically chosen.
+The service name will be automatically chosen.
 
-Add instance with specified node and service name.
+Add instance with specified service name.
 
 ```sh
 pmm-admin add postgresql \
@@ -242,6 +272,7 @@ pmm-admin add postgresql \
 --password=password \
 --server-url=https://admin:admin@X.X.X.X:443 \
 --server-insecure-tls \
+--service-name=SERVICE-NAME
 ```
 
 Add instance to connect with a UNIX socket.
@@ -260,7 +291,7 @@ pmm-admin add postgresql --tls \
 --host=HOST \
 --port=PORT \
 --username=USER \
---service-name=SERVICE
+--service-name=SERVICE-NAME
 ```
 
 where:

@@ -27,14 +27,13 @@ systemctl start docker
 
 ### minikube
 
-!!! note alert alert-primary ""
-    Please install minikube 1.16.0
+Please follow minikube's [documentation to install](https://minikube.sigs.k8s.io/docs/start/) it.
 
 #### Red Hat, CentOS
 
 ```sh
 yum -y install curl
-curl -Lo /usr/local/sbin/minikube https://github.com/kubernetes/minikube/releases/download/v1.16.0/minikube-linux-amd64
+curl -Lo /usr/local/sbin/minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
 chmod +x /usr/local/sbin/minikube
 ln -s /usr/local/sbin/minikube /usr/sbin/minikube
 alias kubectl='minikube kubectl --'
@@ -43,7 +42,7 @@ alias kubectl='minikube kubectl --'
 ## Start PMM server and activate a DBaaS feature
 
 !!! note alert alert-primary ""
-    - To start a fully-working 3 node XtraDB cluster, consisting of sets of 3x HAProxy, 3x PXC and 6x PMM Client containers, you will need at least 9 vCPU available for minikube. (1x vCPU for HAProxy and PXC and 0.5vCPU for each pmm-client containers).
+    - To start a fully functioning three-node PXC cluster consisting of 3x HAProxy, 3x PXC, and 6x PMM Client containers, you will require at least 0.5vCPU for HAProxy and 0.5vCPU for each PMM client container. You can set the CPU for the PXC containers from the UI.
     - DBaaS does not depend on PMM Client.
     - You can pass the environment variable `--env ENABLE_DBAAS=1` to force the DBaaS feature when starting up pmm-server container. **You can omit the variable and enable the feature later using PMM UI**, please follow the link in step 3. below.
     - Add the option `--network minikube` if you run PMM Server and minikube in the same Docker instance. (This will share a single network and the kubeconfig will work.)
@@ -76,10 +75,7 @@ alias kubectl='minikube kubectl --'
 1. Configure and start minikube:
 
     ```sh
-    minikube config set cpus 16
-    minikube config set memory 32768
-    minikube config set kubernetes-version 1.20.1
-    minikube start
+    minikube start --cpus=16 --memory=32G
     ```
 
 2. Get your kubeconfig details from `minikube`. (You need these to register your Kubernetes cluster with PMM Server):
@@ -93,77 +89,12 @@ alias kubectl='minikube kubectl --'
 
 ### Amazon AWS EKS
 
-1. Create your cluster via `eksctl` or the Amazon AWS interface. For example:
+1. Create your cluster via [eksctl](https://github.com/weaveworks/eksctl#installation) or the Amazon AWS interface. For example:
 
     ```sh
     eksctl create cluster --write-kubeconfig --name=your-cluster-name --zones=us-west-2a,us-west-2b --kubeconfig <PATH_TO_KUBECONFIG>
     ```
-
-2. When the cluster is running, modify your kubeconfig file, if it's not utilizing the `aws-iam-authenticator` or `client-certificate` method for authentication with Kubernetes. Here are two examples that you can use as templates to modify a copy of your existing kubeconfig:
-
-    - For the `aws-iam-authenticator` method:
-
-        ```yml
-        ---
-        apiVersion: v1
-        clusters:
-        - cluster:
-            certificate-authority-data: << CERT_AUTH_DATA >>
-            server: << K8S_CLUSTER_URL >>
-          name: << K8S_CLUSTER_NAME >>
-        contexts:
-        - context:
-            cluster: << K8S_CLUSTER_NAME >>
-            user: << K8S_CLUSTER_USER >>
-          name: << K8S_CLUSTER_NAME >>
-        current-context: << K8S_CLUSTER_NAME >>
-        kind: Config
-        preferences: {}
-        users:
-        - name: << K8S_CLUSTER_USER >>
-          user:
-            exec:
-              apiVersion: client.authentication.k8s.io/v1alpha1
-              command: aws-iam-authenticator
-              args:
-                - "token"
-                - "-i"
-                - "<< K8S_CLUSTER_NAME >>"
-                - --region
-                - << AWS_REGION >>
-              env:
-                 - name: AWS_ACCESS_KEY_ID
-                   value: "<< AWS_ACCESS_KEY_ID >>"
-                 - name: AWS_SECRET_ACCESS_KEY
-                   value: "<< AWS_SECRET_ACCESS_KEY >>"
-        ```
-
-    - For the `client-certificate` method:
-
-        ```yml
-        ---
-        apiVersion: v1
-        clusters:
-        - cluster:
-            certificate-authority-data: << CERT_AUTH_DATA >>
-            server: << K8S_CLUSTER_URL >>
-          name: << K8S_CLUSTER_NAME >>
-        contexts:
-        - context:
-            cluster: << K8S_CLUSTER_NAME >>
-            user: << K8S_CLUSTER_USER >>
-          name: << K8S_CLUSTER_NAME >>
-        current-context: << K8S_CLUSTER_NAME >>
-        kind: Config
-        preferences: {}
-        users:
-        - name: << K8S_CLUSTER_NAME >>
-          user:
-            client-certificate-data: << CLIENT_CERT_DATA >>
-            client-key-data: << CLIENT_KEY_DATA >>
-        ```
-
-3. Follow the instructions on [How to add a Kubernetes cluster](../../using/dbaas.md#add-a-kubernetes-cluster) with kubeconfig from the previous step.
+2. Follow the instructions on [How to add a Kubernetes cluster](../../using/dbaas.md#add-a-kubernetes-cluster) with kubeconfig from the previous step.
 
     !!! note alert alert-primary ""
         If possible, the connection details will show the cluster's external IP (not possible with minikube).
@@ -244,7 +175,7 @@ alias kubectl='minikube kubectl --'
     name=`kubectl get serviceAccounts percona-dbaas-cluster-operator -o json | jq  -r '.secrets[].name'`
     certificate=`kubectl get secret $name -o json | jq -r  '.data."ca.crt"'`
     token=`kubectl get secret $name -o json | jq -r  '.data.token' | base64 -d`
-    server=`kubectl cluster-info | grep 'Kubernetes master' | cut -d ' ' -f 6`
+    server=`kubectl cluster-info | grep 'Kubernetes control plane' | cut -d ' ' -f 7`
     ```
 
 4. Generate your kubeconfig file (copy the output):

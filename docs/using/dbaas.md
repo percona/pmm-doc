@@ -17,11 +17,15 @@ The DBaaS feature is turned off by default. To turn it on:
 
 From the left menu, select <i class="uil uil-database"></i> *DBaaS*.
 
-![!](../_images/PMM_DBaaS_Kubernetes_Cluster_Panel.jpg)
+![!](../_images/PMM_DBaaS_Kubernetes_Cluster_Panel.png)
 
 ## Kubernetes clusters
 
 ### Add a Kubernetes cluster
+
+!!! caution alert alert-warning "Caution"
+    Ensure that you set PMM *Public Address* under <i class="uil uil-cog"></i> *Configuration* → <i class="uil uil-setting"></i> *Settings* → *Advanced Settings* before creating a Kubernetes cluster. Otherwise, PMM would **not** monitor the Kubernetes cluster along with the associated database clusters.
+
 
 !!! note alert alert-primary ""
     PXC and PSMDB operators are installed as part of the Kubernetes cluster registration process. It enables you to deploy database clusters into the Kubernetes cluster.
@@ -30,9 +34,27 @@ From the left menu, select <i class="uil uil-database"></i> *DBaaS*.
 
 1. Click *Register new Kubernetes Cluster*.
 
-2. Enter values for the *Kubernetes Cluster Name* and *Kubeconfig file* in the corresponding fields.
+2. Copy the value of *Kubeconfig file* and click *Paste from clipboard* to copy the content of the kubeconfig file in the corresponding field. The value of *Kubernetes Cluster Name* gets auto-populated from the contents of the *kubeconfig file*.
 
-    ![!](../_images/PMM_DBaaS_Kubernetes_Cluster_Details.jpg)
+!!! note alert alert-primary "Availability"
+    This feature is available starting with PMM 2.30.0.
+
+!!! note alert alert-primary ""
+    This feature is available only in [secure contexts](https://developer.mozilla.org/en-US/docs/Web/Security/Secure_Contexts) (HTTPS) and some [supporting browsers](https://developer.mozilla.org/en-US/docs/Web/API/Clipboard#browser_compatibility).
+
+
+![!](../_images/PMM_DBaaS_Kubernetes_Cluster_Details.png)
+
+
+!!! note alert alert-info ""
+    For a Kubernetes cluster, when using Amazon Elastic Kubernetes Service (EKS) and the *kubeconfig file* does not contain the AWS 
+    access key ID and AWS secret access key. Select the *Using Amazon Elastic Kubernetes Service (EKS)* 
+    checkbox and enter the access key ID and secret access key in the respective fields.
+    For information on obtaining these, see the [AWS documentation].
+
+
+
+![!](../_images/PMM_DBaaS_Kubernetes_Cluster_EKS.png)
 
 3. Click *Register*.
 
@@ -102,6 +124,25 @@ To update the cluster:
 You must create at least one Kubernetes cluster to create a DB cluster.
 
 To monitor a DB cluster, set up a [public address](../how-to/configure.md#public-address) for PMM Server first.
+
+
+####Add a one-click DB cluster
+
+
+!!! note alert alert-primary "Availability"
+    This feature is available starting with PMM 2.30.0.
+
+You can create a DB cluster literally at the click of a button. All the fields will be automatically populated with the default values. 
+
+To create a DB cluster, do the following:
+
+1. Select the *DB Cluster* tab.
+
+2. Click *Create DB Cluster*.
+
+3. Click *Create Cluster* to create your Cluster.
+
+####Add a DB cluster with custom values
 
 1. Select the *DB Cluster* tab.
 
@@ -226,7 +267,7 @@ A paused cluster can't be edited.
 
     ![!DBaaS Update](../_images/PMM_DBaaS_DB_Cluster_Update_menu.png)
 
-4. Confirm the update by clicking on *Update*, or abadon by clicking *Cancel*.
+4. Confirm the update by clicking on *Update*, or abandon by clicking *Cancel*.
 
     ![!DBaaS Update Confirmation](../_images/PMM_DBaaS_DB_Cluster_Update_confirmation.png)
 
@@ -234,3 +275,5 @@ A paused cluster can't be edited.
     [Setting up a development environment for DBaaS](../setting-up/server/dbaas.md)
 
 [ALPHA]: https://en.wikipedia.org/wiki/Software_release_life_cycle#Alpha
+[Amazon Elastic Kubernetes Service (EKS)]: https://aws.amazon.com/eks/
+[AWS documentation]: https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html

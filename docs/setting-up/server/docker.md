@@ -11,7 +11,6 @@ How to run PMM Server with Docker based on our [Docker image].
 ## Before you start
 
 - Install [Docker] 1.12.6 or higher.
-- (Optional) Install [Docker compose].
 
 ## Run
 
@@ -23,13 +22,58 @@ How to run PMM Server with Docker based on our [Docker image].
 
 ---
 
+You can store data from your PMM in:
+
+1. Docker volume (Preffered method)
+2. Data container
+3. Host directory
+
+
+### Run Docker with volume
+
 1. Pull the image.
 
     ```sh
     docker pull percona/pmm-server:2
     ```
 
-2. Create a persistent data container.
+2. Create a volume:
+
+    ```sh
+    docker volume create pmm-data
+    ```
+
+3. Run the image:
+
+    ```sh
+    docker run --detach --restart always \
+    --publish 443:443 \
+    -v pmm-data:/srv \
+    --name pmm-server \
+    percona/pmm-server:2
+    ```
+4. Change the password for the default `admin` user.
+
+    * For PMM versions 2.27.0 and later:
+
+    ```sh
+    docker exec -t pmm-server change-admin-password <new_password>
+    ```
+
+    * For PMM versions prior to 2.27.0:
+
+        ```sh
+        docker exec -t pmm-server bash -c 'grafana-cli --homepath /usr/share/grafana --configOverrides cfg:default.paths.data=/srv/grafana admin reset-admin-password newpass'
+        ```
+
+5. Visit `https://localhost:443` to see the PMM user interface in a web browser. (If you are accessing the docker host remotely, replace `localhost` with the IP or server name of the host.)
+       
+
+### Run Docker with data container
+
+
+
+1. Create a persistent data container.
 
     ```sh
     docker create --volume /srv \
@@ -47,7 +91,7 @@ How to run PMM Server with Docker based on our [Docker image].
         docker inspect pmm-server | grep Destination
         ```
 
-3. Run the image.
+2. Run the image.
 
     ```sh
     docker run --detach --restart always \
@@ -57,7 +101,53 @@ How to run PMM Server with Docker based on our [Docker image].
     percona/pmm-server:2
     ```
 
-4. In a web browser, visit `https://localhost:443` (or `http://localhost:80` if enabled) to see the PMM user interface. (If you are accessing the docker host remotely, replace `localhost` with the IP or server name of the host.)
+3. Change the password for the default `admin` user.
+
+    * For PMM versions 2.27.0 and later:
+
+    ```sh
+    docker exec -t pmm-server change-admin-password <new_password>
+    ```
+
+    * For PMM versions prior to 2.27.0:
+
+        ```sh
+        docker exec -t pmm-server bash -c 'grafana-cli --homepath /usr/share/grafana --configOverrides cfg:default.paths.data=/srv/grafana admin reset-admin-password newpass'
+        ```
+        
+4. Visit `https://localhost:443` to see the PMM user interface in a web browser. (If you are accessing the docker host remotely, replace `localhost` with the IP or server name of the host.)
+
+### Run Docker with the host directory
+
+!!! note alert alert-primary "Availability"
+    This feature is available starting with PMM 2.29.0.
+
+1. Pull the image.
+
+```sh
+docker pull percona/pmm-server:2
+```
+
+2. Run the image.
+
+```sh
+export DATA_DIR=$HOME/srv
+docker run -v $DATA_DIR/srv:/srv -d --restart always --publish 80:80 --publish 443:443 --name pmm-server percona/pmm-server:2
+```
+`DATA_DIR` is a directory where you want to store the state for PMM.
+
+
+3. Visit `https://localhost:443` to see the PMM user interface in a web browser. (If you are accessing the docker host remotely, replace `localhost` with the IP or server name of the host.)
+
+
+### Migrate from data container to host directory/volume
+
+To migrate your PMM from data container to host directory or volume run the following command:
+```sh
+docker cp <containerId>:/srv /target/host/directory
+```
+
+
 
 ## Backup
 
@@ -123,15 +213,23 @@ How to run PMM Server with Docker based on our [Docker image].
 
     (If you are accessing the docker host remotely, replace `localhost` with the IP or server name of the host.)
 
-1. Perform a [backup](#backup).
 
-2. Pull the latest image.
+1. Stop the container.
+
+    ```sh
+    docker stop pmm-server
+    ```
+
+2. Perform a [backup](#backup).
+
+
+3. Pull the latest image.
 
     ```sh
     docker pull percona/pmm-server:2
     ```
 
-3. Run it.
+4. Run it.
 
     ```sh
     docker run \
@@ -142,7 +240,6 @@ How to run PMM Server with Docker based on our [Docker image].
     --name pmm-server \
     percona/pmm-server:2
     ```
-4. Perform a [restore](#restore)
 
 ## Restore
 
@@ -244,24 +341,37 @@ How to run PMM Server with Docker based on our [Docker image].
 
 Use the following Docker container environment variables (with `-e var=value`) to set PMM Server parameters.
 
-| Variable                   | Description
-| -------------------------- | -----------------------------------------------------------------------
-| `DISABLE_UPDATES`          | Disables a periodic check for new PMM versions as well as ability to apply upgrades using the UI
-| `DISABLE_TELEMETRY`        | Disable built-in telemetry and disable STT if telemetry is disabled.
-| `METRICS_RESOLUTION`       | High metrics resolution in seconds.
-| `METRICS_RESOLUTION_HR`    | High metrics resolution (same as above).
-| `METRICS_RESOLUTION_MR`    | Medium metrics resolution in seconds.
-| `METRICS_RESOLUTION_LR`    | Low metrics resolution in seconds.
-| `DATA_RETENTION`           | How many days to keep time-series data in ClickHouse.
-| `ENABLE_VM_CACHE`          | Enable cache in VM.
-| `ENABLE_ALERTING`          | Enable integrated alerting.
-| `ENABLE_AZUREDISCOVER`     | Enable support for discovery of Azure databases.
-| `ENABLE_BACKUP_MANAGEMENT` | Enable integrated backup tools.
-| `PERCONA_TEST_SAAS_HOST`   | SaaS server hostname.
-| `PERCONA_TEST_DBAAS`       | Enable testing DBaaS features. (Will be deprecated in future versions.)
-| `ENABLE_DBAAS`             | Enable DBaaS features.
-| `PMM_DEBUG`                | Enables a more verbose log level.
-| `PMM_TRACE`                | Enables a more verbose log level including trace-back information.
+| Variable                                                        | Description
+| --------------------------------------------------------------- | -----------------------------------------------------------------------
+| `DISABLE_UPDATES`                                               | Disables a periodic check for new PMM versions as well as ability to apply upgrades using the UI
+| `DISABLE_TELEMETRY`                                             | Disable built-in telemetry and disable STT if telemetry is disabled.
+| `METRICS_RESOLUTION`                                            | High metrics resolution in seconds.
+| `METRICS_RESOLUTION_HR`                                         | High metrics resolution (same as above).
+| `METRICS_RESOLUTION_MR`                                         | Medium metrics resolution in seconds.
+| `METRICS_RESOLUTION_LR`                                         | Low metrics resolution in seconds.
+| `DATA_RETENTION`                                                | How many days to keep time-series data in ClickHouse.
+| `ENABLE_VM_CACHE`                                               | Enable cache in VM.
+| `ENABLE_ALERTING`                                               | Enable integrated alerting.
+| `ENABLE_AZUREDISCOVER`                                          | Enable support for discovery of Azure databases.
+| `ENABLE_BACKUP_MANAGEMENT`                                      | Enable integrated backup tools.
+| `ENABLE_DBAAS`                                                  | Enable DBaaS features.
+| `PMM_DEBUG`                                                     | Enables a more verbose log level.
+| `PMM_TRACE`                                                     | Enables a more verbose log level including trace-back information.
+
+
+## Preview environment variables
+
+!!! caution alert alert-warning "Warning"
+     The `PERCONA_TEST_*` environment variables are experimental and subject to change. It is recommended that you use these variables for testing purposes only and not on production.
+
+| Variable                                                                   | Description
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------
+| `PERCONA_TEST_SAAS_HOST`                                                   | SaaS server hostname.
+| `PERCONA_TEST_PMM_CLICKHOUSE_ADDR`                                         | Name of the host and port of the external ClickHouse database instance.
+| `PERCONA_TEST_PMM_CLICKHOUSE_DATABASE`                                     | Database name of the external ClickHouse database instance.
+| `​​PERCONA_TEST_PMM_CLICKHOUSE_POOL_SIZE`                                    | The maximum number of threads in the current connection thread pool. This value cannot be bigger than max_thread_pool_size.
+| `PERCONA_TEST_PMM_CLICKHOUSE_BLOCK_SIZE`                                   | The number of rows to load from tables in one block for this connection.
+
 
 ### Ignored variables
 
@@ -272,6 +382,8 @@ These variables will be ignored by `pmm-managed` when starting the server. If an
 | `_`, `HOME`, `HOSTNAME`, `LANG`, `PATH`, `PWD`, `SHLVL`, `TERM` | Default environment variables.
 | `GF_*`                                                          | Grafana's environment variables.
 | `SUPERVISOR_`                                                   | `supervisord` environment variables.
+| `KUBERNETES_`                                                   | Kubernetes environment variables.
+| `MONITORING_`                                                   | Kubernetes monitoring environment variables.
 | `PERCONA_TEST_`                                                 | Unknown variable but won't prevent the server starting.
 | `PERCONA_TEST_DBAAS`                                            | Deprecated. Use `ENABLE_DBAAS`.
 
@@ -281,7 +393,7 @@ These variables will be ignored by `pmm-managed` when starting the server. If an
 
 - Eliminate browser certificate warnings by configuring a [trusted certificate].
 
-- Optionally enable an (insecure) HTTP connection by adding `--publish 80:80` to the `docker run` command. However note that PMM Client *requires* TLS to communicate with the server so will only work on the secure port.
+- You can optionally enable an (insecure) HTTP connection by adding `--publish 80:80` to the `docker run` command. However, running PMM insecure is not recommended. You should also note that PMM Client *requires* TLS to communicate with the server, only working on a secure port.
 
 ### Isolated hosts
 

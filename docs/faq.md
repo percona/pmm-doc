@@ -99,18 +99,14 @@ The default values (in seconds):
 
 ## How do I set up Alerting?
 
-When a monitored service metric reaches a defined threshold, PMM Server can trigger alerts for it either using the Grafana Alerting feature or by using an external alert manager.
+When a monitored service metric reaches a defined threshold, PMM Server can trigger alerts for it using embedded Grafana Alerting functionality.
 
-With these methods you must configure alerting rules that define conditions under which an alert should be triggered, and the channel used to send the alert (e.g. email).
+For this, you must configure alerting rules that define conditions under which an alert should be triggered, and the contact points used to send the alert (e.g. email).
 
-Alerting in Grafana allows attaching rules to your dashboard panels.  Grafana Alerts are already integrated into PMM Server and may be simpler to get set up.
-
-Alertmanager allows the creation of more sophisticated alerting rules and can be easier to manage installations with a large number of hosts. This additional flexibility comes at the expense of simplicity.
-
-We only offer support for creating custom rules to our customers, so you should already have a working Alertmanager instance prior to using this feature.
+Percona templated alerts enable you to create alerts based on built-in or custom templates to simplify the alert setup process. Grafana managed alerts allows attaching rules to your dashboard panel and enables you to create more sophisticated alerting rules. In addition, it can be easier to manage installations with a large number of hosts. This additional flexibility comes at the expense of simplicity.
 
 !!! seealso alert alert-info "See also"
-    [PMM Alerting with Grafana: Working with Templated Dashboards](https://www.percona.com/blog/2017/02/02/pmm-alerting-with-grafana-working-with-templated-dashboards/)
+    [Grafana Alerting](https://grafana.com/docs/grafana/latest/alerting/)
 
 ## How do I use a custom Prometheus configuration file?
 
@@ -152,3 +148,40 @@ docker exec -t pmm-server bash -c  "grafana-cli --homepath /usr/share/grafana a
 ```
 
 (This example assumes your Docker container is named `pmm-server`.)
+
+
+## How to change the PMM password for a default admin user?
+
+If you're deploying through Docker you can change the default password for an admin user after starting the Docker container as follows:
+
+* For PMM versions 2.27.0 and later:
+
+```sh
+docker exec -t pmm-server change-admin-password <new_password>
+```
+
+* For PMM versions prior to 2.27.0:
+
+```sh
+docker exec -t pmm-server bash -c 'grafana-cli --homepath /usr/share/grafana --configOverrides cfg:default.paths.data=/srv/grafana admin reset-admin-password newpass'
+```
+
+## How to use a non-default listen-port for pmm-admin?
+
+If you configure the PMM agent to use a non-default listen-port, for pmm-admin to communicate with the agent, use the global flag `--pmm-agent-listen-port=LISTEN_PORT`.
+
+```sh
+--pmm-agent-listen-port=LISTEN_PORT
+```
+
+Example: To use the listen-port 8000
+
+
+```sh
+pmm-admin --pmm-agent-listen-port=8000 add postgresql --username=pmm-agent --password=pmm-agent-password --query-source=pgstatmonitor nameofpostgres
+```
+If you are using OVF/AMI, you can change the default password through SSH by using the following command:
+
+```sh
+change-admin-password <new_password>
+```

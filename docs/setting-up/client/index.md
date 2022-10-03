@@ -2,7 +2,7 @@
 
 There are different ways to install PMM Client on a node and register it with PMM Server. Choose from:
 
-- [Docker](#docker): Run PMM Client as a Docker container, either directly or with Docker compose.
+- [Docker](#docker): Run PMM Client as a Docker container.
 
 - [Package manager](#package-manager):
     - On Debian or Red Hat Linux, install `percona-release` and use a Linux package manager (`apt`/`dnf`) to install PMM Client.
@@ -22,51 +22,7 @@ If you need to, you can [unregister](#unregister), [remove services](#remove-ser
 
 Here's an overview of the choices.
 
-```plantuml
-@startuml "setting-up_client"
-!include docs/_images/plantuml_styles.puml
-split
-    -[hidden]->
-    partition "Docker/Docker compose" {
-        split
-            -[hidden]->
-            :""docker pull ..."";
-            :Create persistent\ndata store;
-            :""docker run ..."";
-        split again
-            -[hidden]->
-            :Create\n""docker-compose.yml"";
-            :""docker-compose up"";
-        end split
-    }
-split again
-    -[hidden]->
-    split
-        -[hidden]->
-        partition "Package manager" {
-            split
-                -[hidden]->
-                :Set up\n""percona-release"";
-                :""apt install"";
-            split again
-                -[hidden]->
-                :Download "".deb""/"".rpm"";
-                :""dpkg -i *.deb""\n""dnf localinstall *.rpm"";
-            end split
-        }
-    split again
-        partition "Binary package" {
-        -[hidden]->
-        :Download &\nverify;
-        :Unpack & \ninstall;
-        }
-    end split
-    :Set up pmm-agent;
-end split
-:Register;
-:Add services;
-@enduml
-```
+![!image](../../_images/PMM_Client_Setup.png)
 
 ## Before you start
 
@@ -75,7 +31,6 @@ end split
 - You have superuser access to any database servers that you want to monitor.
 - These Linux packages are installed: `curl`, `gnupg`, `sudo`, `wget`.
 - If using it, install [Docker].
-- If using it, install [Docker compose].
 - System requirements:
     - Operating system -- PMM Client runs on any modern 64-bit Linux distribution. It is tested on supported versions of Debian, Ubuntu, CentOS, and Red Hat Enterprise Linux. (See [Percona software support life cycle]).
     - Disk -- A minimum of 100 MB of storage is required for installing the PMM Client package. With a good connection to PMM Server, additional storage is not required. However, the client needs to store any collected data that it cannot dispatch immediately, so additional storage may be required if the connection is unstable or the throughput is low. (Caching only applies to Query Analytics data; VictoriaMetrics data is never cached on the client side.)
@@ -114,7 +69,7 @@ The [PMM Client Docker image] is a convenient way to run PMM Client as a preconf
     -e PMM_AGENT_SERVER_PASSWORD=admin \
     -e PMM_AGENT_SERVER_INSECURE_TLS=1 \
     -e PMM_AGENT_SETUP=1 \
-    -e PMM_AGENT_CONFIG_FILE=pmm-agent.yml \
+    -e PMM_AGENT_CONFIG_FILE=config/pmm-agent.yaml \
     --volumes-from pmm-client-data \
     percona/pmm-client:2
     ```
@@ -136,76 +91,6 @@ You can now add services with [`pmm-admin`](../../details/commands/pmm-admin.md)
     - Adjust host firewall and routing rules to allow Docker communications. ([Read more](../../how-to/troubleshoot.md))
     - For help: `docker run --rm percona/pmm-client:2 --help`
 
-### Docker compose
-
-1. Copy and paste this text into a file called `docker-compose.yml`.
-
-    ```yaml
-    version: '2'
-    services:
-      pmm-client:
-        image: percona/pmm-client:2
-        hostname: pmm-client-myhost
-        container_name: pmm-client
-        restart: always
-        ports:
-          - "42000:42000"
-          - "42001:42001"
-        logging:
-          driver: json-file
-          options:
-            max-size: "10m"
-            max-file: "5"
-        volumes:
-          - ./pmm-agent.yaml:/etc/pmm-agent.yaml
-          - pmm-client-data:/srv
-        environment:
-          - PMM_AGENT_CONFIG_FILE=/etc/pmm-agent.yaml
-          - PMM_AGENT_SERVER_USERNAME=admin
-          - PMM_AGENT_SERVER_PASSWORD=admin
-          - PMM_AGENT_SERVER_ADDRESS=X.X.X.X:443
-          - PMM_AGENT_SERVER_INSECURE_TLS=true
-        entrypoint: pmm-agent setup
-    volumes:
-      pmm-client-data:
-    ```
-
-    !!! note alert alert-info ""
-        - Check the values in the `environment` section match those for your PMM Server. (`X.X.X.X` is the IP address of your PMM Server.)
-        - Use unique hostnames across all PMM Clients (value for `services.pmm-client.hostname`).
-
-2. Ensure a writable agent configuration file.
-
-    ```sh
-    touch pmm-agent.yaml && chmod 0666 pmm-agent.yaml
-    ```
-
-3. Run the PMM Agent setup. This will run and stop.
-
-    ```sh
-    docker-compose up
-    ```
-
-4. Edit `docker-compose.yml`, comment out the `entrypoint` line (insert a `#`) and save.
-
-    ```yaml
-    ...
-    #        entrypoint: pmm-agent setup
-    ```
-
-5. Run again, this time with the Docker *detach* option.
-
-    ```sh
-    docker-compose up -d
-    ```
-
-6. Verify.
-
-    On the command line.
-
-    ```sh
-    docker exec pmm-client pmm-admin status
-    ```
 
     In the GUI.
 
@@ -289,11 +174,12 @@ Here are the download page links for each supported platform.
 
 - [Debian 9 (Stretch)]
 - [Debian 10 (Buster)]
+- [Debian 11 (Bullseye)]
 - [Red Hat/CentOS/Oracle 7]
 - [Red Hat/CentOS/Oracle 8]
-- [Ubuntu 16.04 (Xenial Xerus)]
 - [Ubuntu 18.04 (Bionic Beaver)]
 - [Ubuntu 20.04 (Focal Fossa)]
+- [Ubuntu 22.04 (Jammy Jellyfish)]
 
 #### Debian-based
 
@@ -384,6 +270,14 @@ dnf localinstall *.rpm
     ```sh
     pmm-admin status
     ```
+    
+    !!! hint PMM-Agent can be updated from tarball:
+
+     1. Download tar.gz with pmm2-client.
+     2. Extract it.
+     3. Run ./install_tarball script with the "-u" flag.
+
+    The configuration file will be overwritten if you do not provide the "-u" flag while the pmm-agent is updated.
 
 ## Register
 
@@ -514,19 +408,17 @@ pmm-admin remove <service-type> <service-name>
 !!! seealso alert alert-info "See also"
     - [Percona release]
     - [PMM Client architecture](../../details/architecture.md#pmm-client)
-    - Thanks to [paskal] for original Docker compose files
 
+[Debian 11 (Bullseye)]: https://www.percona.com/downloads/pmm2/{{release}}/binary/debian/bullseye/
 [Debian 10 (Buster)]: https://www.percona.com/downloads/pmm2/{{release}}/binary/debian/buster/
 [Debian 9 (Stretch)]: https://www.percona.com/downloads/pmm2/{{release}}/binary/debian/stretch/
-[Docker compose]: https://docs.docker.com/compose/
 [Docker]: https://docs.docker.com/get-docker/
-[paskal]: https://gist.github.com/paskal/48f10a0a584f4849be6b0889ede9262b
 [Percona Monitoring and Management 2 download]: https://www.percona.com/downloads/pmm2/
 [Percona release]: https://www.percona.com/doc/percona-repo-config/percona-release.html
 [Percona software support life cycle]: https://www.percona.com/services/policies/percona-software-support-lifecycle#pt
 [PMM Client Docker image]: https://hub.docker.com/r/percona/pmm-client/tags/
 [Red Hat/CentOS/Oracle 7]: https://www.percona.com/downloads/pmm2/{{release}}/binary/redhat/7/
 [Red Hat/CentOS/Oracle 8]: https://www.percona.com/downloads/pmm2/{{release}}/binary/redhat/8/
-[Ubuntu 16.04 (Xenial Xerus)]: https://www.percona.com/downloads/pmm2/{{release}}/binary/debian/xenial/
 [Ubuntu 18.04 (Bionic Beaver)]: https://www.percona.com/downloads/pmm2/{{release}}/binary/debian/bionic/
 [Ubuntu 20.04 (Focal Fossa)]: https://www.percona.com/downloads/pmm2/{{release}}/binary/debian/focal/
+[Ubuntu 22.04 (Jammy Jellyfish)]: https://www.percona.com/downloads/pmm2/{{release}}/binary/debian/jammy/

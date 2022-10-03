@@ -1,7 +1,12 @@
 # Upgrade
 
 !!! caution alert alert-warning "Important"
-    Upgrade PMM Server before upgrading PMM Clients.
+    Upgrade the PMM Server before you upgrade the PMM Client.
+    Ensure that the PMM Server version is higher than or equal to the PMM Client version. Otherwise, there might be configuration issues, thus leading to failure in the client-server communication as PMM Server might not be able to identify all the parameters in the configuration.
+
+    For example, for a PMM Server version 2.25.0, the PMM Client version should be 2.25.0 or 2.24.0. If the PMM Client version is 2.26.0, PMM might not work as expected.
+
+    
 
 ## Updating a Server
 
@@ -25,6 +30,16 @@ If one is available, click the update button to update to the version indicated.
 
 !!! seealso alert alert-info "See also"
     [PMM Server Docker upgrade](../setting-up/server/docker.md#upgrade)
+
+## Updating a PMM-Agent
+
+PMM-Agent can be updated from tarball:
+
+ 1. Download tar.gz with pmm2-client.
+ 2. Extract it.
+ 3. Run ./install_tarball script with the "-u" flag.
+
+**Hint!** The configuration file will be overwritten if you do not provide the "-u" flag while the pmm-agent is updated.
 
 ## Upgrade from PMM 1
 

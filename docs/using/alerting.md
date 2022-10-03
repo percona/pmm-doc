@@ -1,182 +1,211 @@
-# Integrated Alerting
+# Percona Alerting
 
-!!! caution alert alert-warning "Caution"
-    Integrated Alerting is a [technical preview](../details/glossary.md#technical-preview) and is subject to change.
+!!! alert alert-info ""
+    Percona Alerting is the new Alerting feature introduced in PMM 2.31. This replaces the Integrated Alerting feature available in previous versions.  
+    
+Alerting notifies of important or unusual activity in your database environments so that you can identify and resolve problems quickly. When something needs your attention, PMM automatically sends you an alert through your specified contact points.
 
-*Integrated Alerting* lets you know when certain system events occur.
+## Alert types
+Percona Alerting is powered by Grafana infrastructure. PMM leverages Grafana's advanced alerting capabilities and adds an extra layer of alert templates that simplifies complex alert rules.
 
-- Alerts are generated when their criteria (*alert rules*) are met; an *alert* is the result of an *alert rule* expression evaluating to *true*.
-- Alert rules are based on *alert rule templates*. We provide a default set of templates. You can also create your own.
+Depending on the datasources that you want to query, and the complexity of your required evaluation criteria, PMM enables you to create the following types of alerts: 
 
-!!! summary alert alert-info "Summary"
-    - [Activate Integrated Alerting](#activate-integrated-alerting)
-    - [Set up a communication channel](#set-up-a-communication-channel)
-    - [Add a notification channel](#add-a-notification-channel)
-    - [Add an alert rule](#add-an-alert-rule) (based on a built-in alert rule template)
-    - (Optional) [Create your own alert rule template](#add-an-alert-rule-template)
+- **Percona templated alerts**: alerts based on a set of default templates with common events and expressions for alerting. 
+If you need custom expressions on which to base your alert rules, you can also create your own templates. 
+- **Grafana managed alerts**: alerts that handle complex conditions and can span multiple different data sources like SQL, Prometheus, InfluxDB, etc. These alerts are stored and executed by Grafana.
+- **Mimir or Loki alerts**: alerts that consist of one single query, written in PromQL or LogQL. The alert rules are stored and executed on the Mimir or Loki ruler and are completely decoupled from the PMM and Grafana runtime.
+- **Mimir or Loki recording rules**: precompute the result of expensive queries and execute alerts faster. 
+With Mimir and Loki alert rules, you can run alert expressions closer to your data and at massive scale, managed by the Grafana. 
 
-This short video shows how to activate and configure Integrated Alerting.
+## Alerting components
+Alerts are split into four key components: alert rules, contact points, notification policies, and silences. 
 
-<video width="100%" controls>
-  <source src="../_images/Integrated-Alerting.mp4" type="video/mp4">
-  Your browser does not support playing this video.
-</video>
+### Alert rules
+Describe the circumstances under which you want to be alerted. The evaluation criteria that you define determine whether an alert will fire. 
 
-## Before you start
+An alert rule consists of one or more queries and expressions, a condition, the frequency of evaluation, and optionally, the duration over which the condition is met.
 
-Before you can get alerts, you must [activate Integrated Alerting](#activate-integrated-alerting), and [set up a *communication channel*](#set-up-a-communication-channel) (define how alerts should arrive, as emails or slack messages).
+For example, you might configure an alert to identify and notify you when MongoDB is down.
 
-### Activate Integrated Alerting
+### Alert templates
 
-1. Select <i class="uil uil-cog"></i> *Configuration* → <i class="uil uil-setting"></i> *Settings* → *Advanced Settings*.
+Provide a simplified framework for configuring complex alert rules. 
 
-1. Under *Technical preview features*, turn on *Integrated Alerting*.
+PMM includes a set of default templates with common events and expressions for alerting. You can also create your own templates if you need custom expressions on which to base your alert rules.
 
-1. Click *Apply changes*. A new *Communication* tab will appear.
+You can check the  alert templates available for your account under **Alerting > Alert rule templates** tab. PMM lists here the following types of templates:
 
-### Set up a communication channel
+1. Built-in templates, available out-of-the-box with PMM.
+2. Alert templates fetched from Percona Platform, according to the entitlements available for your Percona Account. 
+3. Custom templates created or uploaded on the **Alerting page > Alert Templates** Tab. 
+4. Custom template files available in your  ``yaml srv/alerting/templates`` directory. PMM loads them during startup.
 
-1. When the *Communication* tab appears, select it.
+### Silences
+Silences specify periods of time to suppress notifications. During a silence, PMM continues to track metrics and trigger alerts but does not send notifications to the specified contact points. Once the specified silence expires, notifications are resumed. 
 
-1. Select the tab for an alert method, *Email* or *Slack*.
+For example, you can create a silence to suppress trivial notifications during weekends.
 
-    1. For *Email*, enter values to define the SMTP email server
+### Contact points
+Contact points specify how PMM should deliver Grafana-managed alerts. When an alert fires, a notification is sent to the specified contact points. 
 
-        - *Server Address*: The default SMTP smarthost used for sending emails, including port number.
-        - *Hello*: The default hostname to identify to the SMTP server.
-        - *From*: The sender's email address.
-        - *Auth type*: Authentication type. Choose from:
-            - *None*
-            - *Plain*
-            - *Login*
-            - *CRAM-MD5*
-        - *Username*: Username for SMTP Auth using CRAM-MD5, LOGIN and PLAIN.
-        - *Password*: Password for SMTP Auth using CRAM-MD5, LOGIN and PLAIN.
+Depending on the severity of an alert, you might want to send different alerts to different channels. For example, you can deliver common alerts via Slack channel, but send an email notification for potentially critical issues. 
 
-    1. For *Slack*, enter a value for *URL*, the Slack webhook URL to use.
+You can choose from a variety of contact points, including Slack, email, webhooks, PagerDuty, and more. 
 
-1. Click *Apply changes*.
+### Notification policies
+Notification policies determine how Grafana alerts are routed to contact points by setting where, when, and how to send notifications. 
 
-1. From the left menu, select <i class="uil uil-bell"></i> *Alerting* → <i class="uil uil-list-ul"></i> *Integrated Alerting*. The default tab of the *Integrated Alerting* page lists alerts, if any are set up.
+For example, you might specify a limit for the number of times a notification is sent during a certain period. This helps ensure that you don't spam your Slack channel with too many notifications about the same issue.
 
-    ![!](../_images/PMM_Integrated_Alerting_Alerts.jpg)
+## Create a Percona templated alert
+This topic focuses on creating an alert rule based on PMM templates. For information on working with the other alert types, check the Grafana documentation on [Grafana Labs](https://grafana.com/docs/grafana/latest/alerting/).
 
-!!! note alert alert-primary ""
-    - The *Alerting* menu also lists <i class="uil uil-list-ul"></i> *Alert Rules* and <i class="uil uil-comment-alt-share"></i> *Notification Channels*. These are for Grafana's alerting functionality.
-    - PMM's *Integrated Alerting* is a customized and separate instance of the Prometheus Alertmanager, and distinct from Grafana's alerting functionality.
+### Provision alert resources
+Before creating PMM alert rules, configure the required alert resources:
 
-## Add a Notification Channel
+1. Go to **Configuration > PMM Settings** and ensure that the **Alerting** option is enabled. This is enabled by default starting with PMM 2.31. However, if you have disabled it, the **Alerting** page displays only Grafana-managed alert rules. This means that you will not be able to create alerts based on PMM templates.
+2. Go to **Dashboards > Browse** and check the folders available for storing alert rules. If none of the available folders are relevant for your future alert rules, click **New > New Folder** and create a custom one. 
+3. Go to **Alerting > Alert Rule Templates** and check the default PMM templates. If none of the templates include a relevant expression for the type of alerts that you want to create, click **Add** to create a custom template instead.
 
-!!! note alert alert-primary ""
-    A *notification channel* is a specific instance of a *communication channel*. For example, for email, the communication channel defines a server, while the notification channel specifies recipients (one or more email addresses) who receive alerts sent via the email server.
+#### Configure alert templates
+Alerts templates are YAML files that provide the source framework for alert rules.
+Alert templates contain general template details and an alert expression defined in [MetricsQL](https://docs.victoriametrics.com/MetricsQL.html). This query language is backward compatible with Prometheus QL.
 
-1. Select <i class="uil uil-bell"></i> *Alerting* → <i class="uil uil-list-ul"></i> *Integrated Alerting*.
+#### Create custom templates
 
-1. Select the *Notification Channels* tab.
+If none of the default PMM templates contain a relevant expression for the alert rule that you need, you can create a custom template instead.
 
-    ![!](../_images/PMM_Integrated_Alerting_Notification_Channels.jpg)
+You can base multiple alert rules on the same template. For example, you can create a **pmm_node_high_cpu_load** template that can be used as the source for alert rules for production versus staging, warning versus critical, etc.
 
-1. Click <i class="uil uil-plus-square"></i> *Add*.
+#### Template format
+When creating custom templates, make sure to use the required template format below:
 
-1. Fill in the details:
+- **name** (required field): uniquely identifies template. Spaces and special characters are not allowed.
+- **version** (required): defines the template format version.
+- **summary** (required field): a template description.
+- **expr** (required field): a MetricsQL query string with parameter placeholders.
+- **params**: contains parameter definitions required for the query. Each parameter has a name, type, and summary. It also may have a unit, available range, and default value.
+    - **name** (required): the name of the parameter. Spaces and special characters are not allowed.
+    - **summary** (required): a short description of what this parameter represents.
+    - **unit** (optional): PMM currently supports either s (seconds) or % (percentage).
+    - **type** (required):PMM currently supports the float type. string, bool, and other types will be available in a future release.
+    - **range** (optional): defines the boundaries for the value of a  float parameter.
+   - **value** (optional): default  parameter value. Value strings must not include any of these special characters: < > ! @ # $ % ^ & * ( ) _ / \ ' + - = (space)
+- **for** (required): specifies the duration of time that the expression must be met before the alert will be fired.
+- **severity** (required): specifies default alert severity level.
+ - **labels** (optional): are additional labels to be added to generated alerts.
+- **annotations** (optional): are additional annotations to be added to generated alerts.
 
-    ![!](../_images/PMM_Integrated_Alerting_Notification_Channels_Add_Form.jpg)
+#### Template example
 
-    - Name:
-    - Type:
-        - Email:
-            - Addresses:
-        - Pager Duty:
-            - Routing key:
-            - Service key:
-        - Slack:
-            - Channel:
+```yaml
+{% raw %}
+---
+templates:
+ - name: pmm_mongodb_high_memory_usage
+   version: 1
+   summary: Memory used by MongoDB
+   expr: |-
+      sum by (node_name) (mongodb_ss_mem_resident * 1024 * 1024)
+      / on (node_name) (node_memory_MemTotal_bytes)
+       * 100
+       > [[ .threshold ]]
+   params:
+     - name: threshold
+       summary: A percentage from configured maximum
+       unit: "%"
+       type: float
+       range: [0, 100]
+       value: 80
+   for: 5m
+   severity: warning
+   labels:
+      custom_label: demo
+   annotations:
+      summary: MongoDB high memory usage ({{ $labels.service_name }})
+      description: |-
+         {{ $value }}% of memory (more than [[ .threshold ]]%) is used
+         by {{ $labels.service_name }} on {{ $labels.node_name }}.
+{% endraw %}
+```
 
-1. Click *Add* to add the notification channel, or *Cancel* to abort the operation.
+### Test alert expressions
+If you want to create custom templates, you can test the MetricsQ expressions for your custom template in the **Explore** section of PMM. Here you can also query any PMM internal database.
 
-## Add an Alert Rule
+To test expressions for custom templates:
 
-1. Select the *Alert Rules* tab.
+1. On the side menu in PMM, choose **Explore > Metrics**.
+2. Enter your expression in the **Metrics** field and click **Run query**.
 
-    ![!](../_images/PMM_Integrated_Alerting_Alert_Rules.jpg)
+For example, to validate that a MongoDB instance is down, shut down a member of a three-node replica set, then check that the following expression returns **0** in **Explore > Metrics**: ```sh {service_type="mongodb"}```
 
-1. Click <i class="uil uil-plus-square"></i> *Add*.
+### Add an alert rule
+After provisioning the resources required for creating Percona templated alerts, you are now ready to create your alert:
 
-1. Fill in the details
+1. Go to **Alerting > Alert Rules**, and click **New alert rule**.
+2. On the **Create alert rule** page, select the **Percona templated alert** option. If you want to learn about creating Grafana alerts instead, check our [Grafana's documentation](https://grafana.com/docs/grafana/latest/alerting/).
+3. In the **Template details** section, choose the template on which you want to base the new alert rule. This automatically populates the **Name**, **Duration**, and **Severity** fields with information from the template. You can change these values if you want to override the default specifications in the template.
+4. In the **Filters** field, specify if you want the alert rule to apply only to specific services or nodes. For example: `service_name'`, Operator:`MATCH`, VALUE: `ps5.7`.
+5. From the **Folder** drop-down menu, select the location where you want to store the rule.
+6. Click **Save and Exit** to close the page and go to the **Alert Rules** tab where you can review, edit and silence your new alert.
 
-    ![!](../_images/PMM_Integrated_Alerting_Alert_Rules_Add_Form.jpg)
+## Silence alerts
+Create a silence when you want to stop notifications from one or more alerting rules.
 
-    - Template:
-    - Name:
-    - Threshold:
-    - Duration(s):
-    - Severity:
-    - Filters:
-    - Channels:
-    - Activate:
+Silences stop notifications from being sent to your specified contact points.
 
-1. Click *Add* to add the alert rule, or *Cancel* to abort the operation.
+Silenced alerts are still recorded under **Alerting > Fired Alerts** so that you can review them later. Silenced alerts are disabled for as long as it's specified in the Silence  Duration or until you remove a silence. 
 
-## Add an Alert Rule Template
+For information on creating silences, see [About alerting silences](https://grafana.com/docs/grafana/latest/alerting/silences/) in the Grafana documentation. 
 
-If the provided alert rule templates don't do what you want, you can create your own.
+## Deprecated alerting options
+ PMM 2.31 introduced Percona Alerting which replaces the old Integrated Alerting in previous PMM versions. In addition to full feature parity, Percona Alerting includes additional benefits like Grafana-based alert rules and a unified, easy-to-use alerting command center on the **Alerting** page.
 
-1. Select the *Alert Rule Templates* tab.
+### Alerting compatibility 
 
-    ![!](../_images/PMM_Integrated_Alerting_Alert_Rule_Templates.jpg)
+#### Template compatibility with previous PMM versions
 
-1. Click <i class="uil uil-plus-square"></i> *Add*.
+If you have used Integrated Alerting in previous PMM versions, your custom alert rule templates will be automatically migrated to PMM 2.31. After upgrading to this new version, you will find all your alert templates under **Alerting > Alert Templates**. 
 
-1. Enter a template in the *Alert Rule Template* text box.
+If you have any templates available in the  ``/srv/ia/templates`` folder, make sure to transfer them to ``/srv/alerting/templates`` as PMM 2.31 and later will look for custom templates in this location. 
 
-    ```yaml
-    {% raw %}
-    ---
-    templates:
-        - name: mysql_too_many_connections
-          version: 1
-          summary: MySQL connections in use
-          tiers: [anonymous, registered]
-          expr: |-
-            max_over_time(mysql_global_status_threads_connected[5m]) / ignoring (job)
-            mysql_global_variables_max_connections
-            * 100
-            > [[ .threshold ]]
-          params:
-            - name: threshold
-              summary: A percentage from configured maximum
-              unit: '%'
-              type: float
-              range: [0, 100]
-              value: 80
-          for: 5m
-          severity: warning
-          labels:
-            foo: bar
-          annotations:
-            description: |-
-                More than [[ .threshold ]]% of MySQL connections are in use on {{ $labels.instance }}
-                VALUE = {{ $value }}
-                LABELS: {{ $labels }}
-            summary: MySQL too many connections (instance {{ $labels.instance }})
-    {% endraw %}
-    ```
+If you are upgrading from PMM 2.25 and earlier, alert templates will not be automatically migrated. This is because PMM 2.26.0 introduced significant changes to the core structure of rule templates.
 
-    ![!](../_images/PMM_Integrated_Alerting_Alert_Rule_Templates_Add_Form.jpg)
+In this scenario, you will need to manually recreate any custom rule templates that you want to transfer to PMM 2.26.0 or later. 
 
-    !!! note alert alert-primary "Alert Rule Template parameters"
-        The parameters used in the template follow a format and might include different fields depending on their `type`:
+#### Template compatibility with other alerting tools
 
-        - `name` (required): the name of the parameter. Spaces and special characters not allowed.
-        - `summary` (required): a short description of what this parameter represents.
-        - `type` (required): PMM currently supports the `float` type. (More will be available in the future, such as `string` or `bool`.)
-        - `unit` (optional): PMM currently supports either `s` (seconds) or `%` (percentage).
-        - `value` (optional): the parameter value itself.
-        - `range` (optional): only for `float` parameters, defining the boundaries for the value.
+If you have existing YAML alert templates that you want to leverage in Percona Alerting:
 
-        **Restrictions**
+1. Go to **Alerting > Alert Rule Templates** tab and click **Add** at the top right-hand side of the table.
+2. Click **Add** and upload a local .yaml file from your computer.
 
-        - Value strings must not include any of these special characters: `<` `>` `!` `@` `#` `$` `%` `^` `&` `*` `(` `)` `_` `/` `\` `'` `+` `-` `=` ` ` (space)
-        - Any variables must be predefined.
+#### Migrate alert rules
+Alert rules created with Integrated Alerting in PMM 2.30 and earlier are not automatically migrated to Percona Alerting. 
 
-1. Click *Add* to add the alert rule template, or *Cancel* to abort the operation.
+After upgrading to PMM 2.31, make sure to manually migrate any alert rules that you want to transfer to PMM 2.31 using the [Integrated Alerting Migration Script](https://github.com/percona/pmm/blob/main/ia_migration.py).
+
+##### Script commands
+The default command for migrating rules is:
+```yaml 
+*python ia_migration.py -u admin -p admin*
+```
+To see all the available options, check the scrip help using `ia_migration.py -h`
+
+##### Script prerequisites
+- Python version 3.x, which you can download from [Python Downloads centre](https://www.python.org/downloads/).
+  
+-  [Requests  library](https://requests.readthedocs.io/en/latest/user/install/#install), which you can install with the following command: ```pip install requests```. 
+
+!!! caution alert alert-warning "Important"
+    The script sets all migrated alert rules to Active. Make sure to silence any alerts that should not be firing. 
+
+For more information about the script and advanced migration options, check out the help information embedded in the script.
+
+### Disable Percona Alerting
+Percona Alerting is enabled by default in the PMM Settings. This feature adds the **Percona templated alerts** option on the **Alerting** page.
+
+If for some reason you want to disable PMM Alert templates and keep only Grafana-managed alerts:
+
+1. Go to **Configuration > PMM Settings**.
+2. Disable the **Alerting** option. The **Alerting** page will now display only Grafana-managed alert rules.
