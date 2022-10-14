@@ -126,7 +126,7 @@
 <p>PMM Client is a collection of agents and exporters that run on the host being monitored.</p>
 <p>PMM Client runs on every database host or node you want to monitor. The client collects server metrics, general system metrics, query analytics and sends it to the server. Except when monitoring AWS RDS instances, a PMM Client must be running on the host to be monitored.</p>
 <h2 id="percona-platform">Percona Platform<a class="headerlink" href="#percona-platform" title="Permanent link">&para;</a></h2>
-<p><a href="../using/platform/">Percona Platform</a> provides value-added services for PMM.</p>
+<p><a href="../how-to/integrate-patform.md">Percona Platform</a> provides value-added services for PMM.</p>
 <h2 id="pmm-context">PMM context<a class="headerlink" href="#pmm-context" title="Permanent link">&para;</a></h2>
 <p>The PMM Client package provides:</p>
 <ul>
@@ -147,12 +147,10 @@
 <ul>
 <li>
 <p>Query Analytics (QAN) enables you to analyze database query performance over periods of time. In addition to the client-side QAN agent, it includes the following:</p>
-</li>
-<li>
-<p>QAN API is the back-end for storing and accessing query data collected by the QAN agent running on a PMM Client.</p>
-</li>
-<li>
-<p>QAN App is a web application for visualizing collected Query Analytics data which is part of the PMM Server&rsquo;s UI.</p>
+<ul>
+<li>QAN API is the back-end for storing and accessing query data collected by the QAN agent running on a PMM Client.</li>
+<li>QAN App is a web application for visualizing collected Query Analytics data which is part of the PMM Server&rsquo;s UI.</li>
+</ul>
 </li>
 <li>
 <p>Metrics Monitor provides a historical view of metrics that are critical to a MySQL or MongoDB server instance. It includes the following:</p>
@@ -207,7 +205,7 @@
     <ul class="list-inline">
         
         <li class="left">
-            <i class="uil uil-refresh"></i> Page updated 2022-04-13
+            <i class="uil uil-refresh"></i> Page updated 2022-10-14
         </li>
         
     </ul>
