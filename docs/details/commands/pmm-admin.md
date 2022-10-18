@@ -560,6 +560,12 @@ In low resolution we collect metrics from collectors which could take some time:
         - `push`: agent will push metrics.
         - `pull`: server scrapes metrics from agent.
 
+    `--max-query-length=NUMBER`
+    : Limit query length in QAN. Allowed values:
+        - -1: No limit.
+        -  0: Default value. It means 2048 chars.
+        - >0: Query will be truncated on exact query length.
+
 #### PostgreSQL
 
 `pmm-admin add postgresql [FLAGS] [node-name] [node-address]`
