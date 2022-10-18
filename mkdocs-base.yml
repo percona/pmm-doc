@@ -33,8 +33,8 @@ extra_css:
   - css/lightgallery.min.css
 
 extra_javascript:
-  - js/version-select.js
-  - js/toctree.js
+  # - js/version-select.js
+  # - js/toctree.js
   - js/lightgallery.min.js
 
 markdown_extensions:
