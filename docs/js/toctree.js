@@ -8,7 +8,6 @@ function hideSubMenus() {
     const asideMenu = document.getElementsByClassName('sphinxsidebarwrapper')[0];
     const activeCheckboxClass = 'custom-button--active';
     const activeBackgroundClass = 'custom-button--main-active';
-    if (!asideMenu) { return; }
     const links = Array.from(asideMenu.getElementsByTagName('a'));
     const accordionLinks = links.filter(links => links.nextElementSibling && links.nextElementSibling.localName === 'ul');
     const simpleLinks = links.filter(links => !links.nextElementSibling && links.parentElement.localName === 'li');
