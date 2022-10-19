@@ -1,7 +1,6 @@
 {% extends "base.html" %}
 
 {% block extrahead %}
-
 {{ super() }}
 
 <script>
@@ -14,5 +13,16 @@
         'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
   })(window, document, 'script', 'dataLayer', 'GTM-K48FGP2');
 </script>
+{% endblock %}
 
+
+{% block scripts %}
+{{ super() }}
+
+<img src="https://tracking.g2crowd.com/attribution_tracking/conversions/1007137.gif?e=" />
+
+<noscript>
+  <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K48FGP2" height="0" width="0"
+    style="display:none;visibility:hidden"></iframe>
+</noscript>
 {% endblock %}
