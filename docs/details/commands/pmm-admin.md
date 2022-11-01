@@ -563,7 +563,7 @@ In low resolution we collect metrics from collectors which could take some time:
     `--max-query-length=NUMBER`
     : Limit query length in QAN. Allowed values:
         - -1: No limit.
-        -  0: Default value. It means 2048 chars.
+        -  0: Default value. The default value is 2048 chars.
         - >0: Query will be truncated after 2048 chars.
 
 #### PostgreSQL
