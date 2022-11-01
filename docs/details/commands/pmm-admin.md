@@ -350,7 +350,7 @@ When you remove a service, collected data remains on PMM Server for the specifie
     : Limit query length in QAN. Allowed values:
         - -1: No limit.
         -  0: Default value. The default value is 2048 chars.
-        - >0: Query will be truncated after 2048 chars.
+        - >0: Query will be truncated after <NUMBER> chars.
 
 ##### Advanced Options
 
