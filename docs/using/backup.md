@@ -1,31 +1,26 @@
-# Backup and Restore
+# Backup and restore
 
 !!! caution alert alert-warning "Caution"
     - Backup and restore are [technical preview](../details/glossary.md#technical-preview) features.
-    - Currently supported: MySQL database server or MongoDB replica set cluster, backing up to Amazon AWS S3 storage locations.
+    - Currently supported: MySQL database server or MongoDB replica set cluster, backing up to Amazon AWS S3 and local storage locations.
 
-!!! summary alert alert-info "Summary"
-    - [Enable backup features](#before-you-start).
-    - [Add a storage location].
-    - Satisfy preconditions:
-        - For [MySQL](#mysql-backup-preconditions):
-            - Confirm instance service parameters and storage location.
-            - Install required packages.
-        - For [MongoDB](#mongodb-backup-preconditions):
-            - Install and run [Percona Backup for MongoDB] on every node in the replica set.
-    - [Make a backup](#make-a-backup), or,
-    - [Make](#make-a-scheduled-backup) or [edit](#edit-a-scheduled-backup) a scheduled backup, or,
-    - [Enable MongoDB Point-In-Time-Recoverable Backups](#mongodb-point-in-time-recoverable-backups), or,
-    - [Restore a backup](#restore-a-backup).
-    - [Delete a backup](#delete-a-backup).
 
-## Before you start
+## Prerequisites
+
+
+### Enable Backup Management
+  1. Go to  <i class="uil uil-cog"></i> **Configuration > PMM Settings > Advanced Settings** and activate the **Backup Management** option. 
+  2. Click **Apply changes**. This adds 
+
+    !!! note alert alert-primary ""
+        If PMM Server runs as a Docker container, enable backup features at container creation time by adding `-e ENABLE_BACKUP_MANAGEMENT=1` to your `docker run` command.
+ 
 
 - You have an AWS S3 storage account and location details for it.
 
     !!! note alert alert-primary ""
-        In addition to bucket location details, you will also need to ensure proper S3 permissions.  General minimum permissions
-        are LIST/PUT/GET/DELETE.  A sample IAM policy is:
+        In addition to bucket location details, you will also need to ensure proper S3 permissions. General minimum permissions
+        are LIST/PUT/GET/DELETE. A sample IAM policy is:
 
         ```json
         {
@@ -56,15 +51,7 @@
 
 - Backup management has been enabled:
 
-    1. Select <i class="uil uil-cog"></i> *Configuration* → <i class="uil uil-setting"></i> *Settings* → *Advanced Settings*.
-
-    1. Activate *Backup Management*.
-
-    1. Click *Apply changes*.
-
-    !!! note alert alert-primary ""
-        If PMM Server runs as a Docker container, enable backup features at container creation time by adding `-e ENABLE_BACKUP_MANAGEMENT=1` to your `docker run` command.
-
+   
 ## Add a storage location
 
 1. Select <i class="uil uil-history"></i> → *Backup*.
