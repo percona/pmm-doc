@@ -30,10 +30,10 @@ This means that extracted data is processed on the PMM side and not sent back to
 ## Frontend
 PMM uses Alertmanager API to get information about failed checks and show them on the UI:
  
-![!](../../_images/FrontendChecks.png)
+![!](../../_images/FrontEndChecks.png)
  
 ## Advisor check format version 2
-PMM 2.28 upgraded Advisor checks to version 2, to accomodate the following major enhancements introduced in this release: 
+PMM 2.28 upgraded Advisor checks to version 2 to accommodate the following significant enhancements introduced in this release: 
 
 - Support for multiple queries
 - Support for Victoria Metrics as a data source
@@ -41,7 +41,7 @@ PMM 2.28 upgraded Advisor checks to version 2, to accomodate the following major
 
 The enhancements in version 2 enable you to create more intelligent advisor checks, that deliver more value to your connected PMM instances.
 
-If you are creating checks for PMM version 2.28 and newer, see [Advisor checks v.2](checks-v1.md) for information on developing custom checks for PMM 2.28 and later.
+If you are creating checks for PMM version 2.28 and newer, see [Advisor checks v.2](checks-v2.md) for information on developing custom checks for PMM 2.28 and later.
 
 ## Advisor check format version 1
 If you are creating checks for PMM version 2.27 and older, see [Advisor checks v.1](checks-v1.md), for information on creating custom checks for PMM 2.27 and older. 

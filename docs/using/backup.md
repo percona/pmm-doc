@@ -23,6 +23,37 @@
 
 - You have an AWS S3 storage account and location details for it.
 
+    !!! note alert alert-primary ""
+        In addition to bucket location details, you will also need to ensure proper S3 permissions.  General minimum permissions
+        are LIST/PUT/GET/DELETE.  A sample IAM policy is:
+
+        ```json
+        {
+            "Version": "2012-10-17",
+            "Statement": [
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "s3:ListBucket"
+                    ],
+                    "Resource": "arn:aws:s3:::pmm-backup-testing"
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "s3:PutObject",
+                        "s3:PutObjectAcl",
+                        "s3:GetObject",
+                        "s3:GetObjectAcl",
+                        "s3:DeleteObject"
+                    ],
+                    "Resource": "arn:aws:s3:::pmm-backup-testing/*"
+                }
+            ]
+        }
+        ```
+
+
 - Backup management has been enabled:
 
     1. Select <i class="uil uil-cog"></i> *Configuration* → <i class="uil uil-setting"></i> *Settings* → *Advanced Settings*.
@@ -66,6 +97,8 @@
 ## MySQL backup preconditions
 
 - [PMM Client](../setting-up/client/index.md) is installed and running on the node.
+
+- For MySQL 8.0+, the user that pmm-agent uses to connect to MySQL must have the BACKUP_ADMIN privilege for Xtrabackup to work.
 
 - There is only one MySQL instance running on the node.
 
@@ -145,8 +178,8 @@ Make regular scheduled backups.
     - *Vendor*: A value is automatically selected based on the service type.
     - *Location*: Choose from the menu the storage location.
     - *Data model*: Select one of the options:
-        - *Physical*: Backup the physical data model.
-        - *Logical*: (Not currently implemented)
+        - *Physical*: Takes a physical backup of the database files.
+        - *Logical*: Takes a logical backup of data in the database. Currently not supported for MySQL.
     - *Description*: (Optional) Enter a long description for this scheduled backup.
     - *Schedule*: The schedule for the backup.
         - *Every*: The backup interval. Choose from the menu one of:
@@ -247,7 +280,7 @@ The above constraint applies at the service level. That said, you can still have
 ## Restore a backup
 
 !!! note alert alert-primary ""
-    For now, you can only restore a backup to the same service it was created from, or to a compatible one.
+  MySQL backups can be restored to the same service it was created from, or to a compatible one. MongoDB backups   can only be restored to the same service it was created from. 
 
 1. Select <i class="uil uil-history"></i> → *Backup* → *Backup Inventory*.
 

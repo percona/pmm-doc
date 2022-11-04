@@ -1,4 +1,8 @@
 # Percona Monitoring and Management (PMM) Documentation
+[![render](https://img.shields.io/badge/pmm--doc-render-Green)](https://pmm-doc.onrender.com/)
+[![Build](https://github.com/percona/pmm-doc/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/percona/pmm-doc/actions/workflows/build.yml)
+[![Helm](https://github.com/percona/pmm-doc/actions/workflows/helm-tests.yml/badge.svg?branch=main)](https://github.com/percona/pmm-doc/actions/workflows/helm-tests.yml)
+[![Podman](https://github.com/percona/pmm-doc/actions/workflows/podman-tests.yml/badge.svg?branch=main)](https://github.com/percona/pmm-doc/actions/workflows/podman-tests.yml)
 
 [Percona Monitoring and Management] (PMM) is a database monitoring solution that is free and open-source.
 
@@ -137,11 +141,12 @@ View the site at <http://0.0.0.0:8000>
 
     - `theme`:
 
-        - `main.html`: MkDocs template for HTML published on percona.com.
+        - `main.html`: MkDocs template for HTML published on [docs.percona.com](https://docs.percona.com).
 
 - `requirements.txt`: Python package dependencies.
 
 - `variables.yml`: Values used throughout the Markdown, including the current PMM version/release number.
+
 
 - `.spelling`: Words regarded as correct by `mdspell` (See [Spelling and grammar](#spelling-and-grammar).)
 
@@ -149,7 +154,7 @@ View the site at <http://0.0.0.0:8000>
 
     - `workflows`:
 
-        - `build.yml`: Workflow specification for building the documentation via a GitHub action. (Uses `mike` which puts HTML in `publish` branch.)
+        - `build.yml`: Workflow specification for building the documentation via a GitHub action. (Uses `mike` which puts HTML in `preview` branch.)
 
 - `site`: When building locally, directory where HTML is put.
 
@@ -157,7 +162,7 @@ View the site at <http://0.0.0.0:8000>
 
 We use [mike] to build different versions of the documentation. Currently, only two are built, the latest PMM 1 and PMM 2 versions.
 
-A [GitHub actions] workflow runs `mike` which in turn runs `mkdocs`. The HTML is committed and pushed to the `publish` branch. The whole branch is then copied (by an internal Percona Jenkins job) to our web server.
+A [GitHub actions] workflow runs `mike`, which in turn runs `mkdocs`. The HTML is committed and pushed to the `preview` branch.
 
 ## Image overlays
 
@@ -211,17 +216,16 @@ composite docs/_images/PMM_Home_Dashboard_Overlay.png docs/_images/PMM_Home_Dash
 
 ## Spelling and grammar
 
-The GitHub actions build job performs a basic spell check. (A grammar check is currently commented out in the actions file.) You can do these yourself on the command line if you have [Node.js] installed.
+You can perform a basic spell check on the command line if you have [Node.js] installed.
 
 ```sh
-npm i markdown-spellcheck -g
-mdspell --report --en-us --ignore-acronyms --ignore-numbers docs/<path to file>.md
+npx markdown-spellcheck --report --en-us --ignore-acronyms --ignore-numbers docs/<path to file>.md
 ```
 
 To check all files:
 
 ```sh
-mdspell --report --en-us --ignore-acronyms --ignore-numbers "docs/**/*.md"
+npx mrkdown-spellcheck --report --en-us --ignore-acronyms --ignore-numbers "docs/**/*.md"
 ```
 
 Add any custom dictionary words to `.spelling`. The results of the spell check are printed but the job ignores the return status.
@@ -229,8 +233,7 @@ Add any custom dictionary words to `.spelling`. The results of the spell check a
 Grammar is checked using [`write-good`](https://github.com/btford/write-good).
 
 ```sh
-npm i write-good -g
-write-good docs/<path to file>.md
+npx write-good docs/<path to file>.md
 ```
 
 To check all files:
