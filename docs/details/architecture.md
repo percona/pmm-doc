@@ -37,14 +37,16 @@ The PMM Server package provides:
 
 ### PMM Server
 
-![!image](../_images/PMM_Architecture_Client_Server.jpg)
+<!-- The source of this image is maintained at https://miro.com/app/board/uXjVOPgKgrE=/ -->
+
+![!image](../_images/PMM-Server-Component-Based-View.jpg)
 
 PMM Server includes the following tools:
 
 - Query Analytics (QAN) enables you to analyze database query performance over periods of time. In addition to the client-side QAN agent, it includes the following:
 
-    - QAN API is the back-end for storing and accessing query data collected by the QAN agent running on a PMM Client.
-    - QAN App is a web application for visualizing collected Query Analytics data which is part of the PMM Server's UI.
+  - QAN API is the back-end for storing and accessing query data collected by the QAN agent running on a PMM Client.
+  - QAN App is a web application for visualizing collected Query Analytics data which is part of the PMM Server's UI.
 
 - Metrics Monitor provides a historical view of metrics that are critical to a MySQL or MongoDB server instance. It includes the following:
 
@@ -55,7 +57,7 @@ PMM Server includes the following tools:
 
 ### PMM Client
 
-![!image](../_images/diagram.pmm.client-architecture.png)
+![!image](../_images/PMM-Client-Component-Based-View.jpg)
 
 The PMM Client package consists of the following:
 
