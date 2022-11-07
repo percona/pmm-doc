@@ -46,15 +46,19 @@ The following anomalies are displayed on this panel:
 
 ## Command Center
 
-You can find critical information such as CPU utlization, memory utilization, anomalies, read and write latency, etc., about your environment on the **Command Center** panel. This information is represented graphically. In this panel, the graphs for the last hour and the previous week are displayed adjacently, making it easy to identify the trends.
+You can find critical information such as CPU utlization, memory utilization, anomalies, read and write latency, etc., about your environment on the **Command Center** panel. 
 
-The following information is displayed on the **Command Center**:
+The information is represented graphically on the **Command Center** panel. In this panel, the graphs for the last hour and the previous week are displayed adjacently, making it easy to identify the trends.
+
+The following information is displayed on the **Command Center** for the **Top 20** nodes:
 
 * CPU usage
 * Disk queue
 * Disk Write latency
 * Disk Read latency
 * Memory usage
+
+Command Center lists the 
 
 ## Service Summary
 
