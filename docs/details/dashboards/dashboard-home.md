@@ -2,7 +2,7 @@
 
 ![!image](../../_images/PMM_Home_Dashboard.png)
 
-The Home Dashboard provides a high-level overview of your environment, such as the services, infrastructure, and critical issues (if any). It is the starting page of the PMM portal from which you can open the tools of PMM and browse online resources.
+The Home Dashboard provides a high-level overview of your environment, such as the services, infrastructure, and critical issues (if any). It is the starting page of PMM from which you can open the tools of PMM and browse online resources.
 
 This Home Dashboard displays data that is organized in panels as given below.
 
