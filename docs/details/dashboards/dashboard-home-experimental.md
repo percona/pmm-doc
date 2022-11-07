@@ -1,6 +1,6 @@
 # Experimental Home Dashboard
 
-![!image](../../_images/PMM_Home_Dashboard_Experimental.png)
+![!image](../../_images/PMM_Home_Dashboard.png)
 
 
 The Home Dashboard provides a high-level overview of your environment, such as the services, infrastructure, and critical issues (if any). It is the starting page of the PMM portal from which you can open the tools of PMM and browse online resources.
