@@ -27,12 +27,12 @@ This panel lists all added hosts along with essential information about their pe
 * DB Uptime
 * Advisors check
 
- This panel also displays the current version number. Use *Upgrade to X.X.X version* to upgrade to the most recent version of PMM.
+ This panel also displays the current version number. Use **Upgrade to X.X.X version** to upgrade to the most recent version of PMM.
 
 
 ## Anomaly Detection
 
-The **Anomaly Detection** panel lists all the anomalies in your environment. Color-coded states on panels for a quick visual representation of the problem areas.
+The **Anomaly Detection** panel lists all the anomalies in your environment. Color-coded states on the panels provide a quick visual representation of the problem areas.
 
 The following anomalies are displayed on this panel:
 
@@ -46,9 +46,9 @@ The following anomalies are displayed on this panel:
 
 ## Command Center
 
-You can find critical information about your environment on the **Command Center** panel. This information is represented graphically. In this panel, the graphs for the last hour and the previous week are displayed adjacently, making it easy to identify the trends.
+You can find critical information such as CPU utlization, memory utilization, anomalies, read and write latency, etc., about your environment on the **Command Center** panel. This information is represented graphically. In this panel, the graphs for the last hour and the previous week are displayed adjacently, making it easy to identify the trends.
 
-The following information is displayed on the Command Center:
+The following information is displayed on the **Command Center**:
 
 * CPU usage
 * Disk queue
