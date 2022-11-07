@@ -3,16 +3,20 @@
 ![!image](../../_images/PMM_Home_Dashboard_Experimental.png)
 
 
-The experimental Home Dashboard provides a high level view of your environment.
+The Home Dashboard provides a high-level overview of your environment, such as the services, infrastructure, and critical issues (if any). It is the starting page of the PMM portal from which you can open the tools of PMM and browse online resources.
 
-This new Home Dashboard displays data that is organized in panels as given below.
+This Home Dashboard displays data that is organized in panels as given below.
+
+On the PMM home page, you can also find the version number and a link to update your PMM Server.
 
 
 ## Overview
 
 This panel lists all added hosts along with essential information about their performance. For each host, you can find the current values of the following metrics:
 
-* CPU Busy
+* Monitored DB Services
+* Monitored DB Instances
+* Monitored Nodes
 * Memory Available
 * Disk Reads
 * Disk Writes
@@ -23,23 +27,36 @@ This panel lists all added hosts along with essential information about their pe
 * RAM
 * Host Uptime
 * DB Uptime
+* Advisors check
 
 ## Anomaly Detection
 
 This panel lists all the anomalies such as:
 
-* CPU anomalies
+Color-coded states on panels for a quick visual representation of the problem areas
+
+* CPU anomalies (high as well as low)
 * High CPU servers
+* Low CPU servers
 * Disk Queue anomalies
 * High disk queue
+* High Memory Used
 
 ## Command Center
 
-This panel provides critical information such as CPU utlization, memory utilization, anomalies, read and write latency, etc., for your environment.
+You can find critical information about your environment on the Command Center panel. This information is represented graphically. In this panel, the graphs for the last hour and the previous week are displayed adjacently, making it easy to spot the trends.
+
+The following information is displayed on the Command Center:
+
+- CPU usage
+- Disk queue
+- Disk Write latency
+- Disk Read latency
+- Memory usage
 
 ## Service Summary
 
-This panel provides the following information for the services being monitored:
+The Service Summary panel provides the following information for the services being monitored:
 
 * DB connections
 * DB QPS (Query per sec)
