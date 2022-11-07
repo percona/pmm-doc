@@ -1,26 +1,28 @@
 # Backup and restore
 
-!!! caution alert alert-warning "Caution"
-    - Backup and restore are [technical preview](../details/glossary.md#technical-preview) features.
-    - Currently supported: MySQL database server or MongoDB replica set cluster, backing up to Amazon AWS S3 and local storage locations.
-
+## Supported setups 
+- Backups to Amazon AWS S3 and local storage locations 
+- MySQL database server replica set cluster
+- MongoDB replica set setups with the following actions:
+  - **Logical snapshot backups**:  Create and Restore 
+  - **Physical snapshot backups**: Create and Restore. This is only available with Percona Server for MongoDB and requires post-restore actions.
+  -  **PITR backups**: Create both logical local and S3 backups. Restore only from S3.
 
 ## Prerequisites
 
-
 ### Enable Backup Management
   1. Go to  <i class="uil uil-cog"></i> **Configuration > PMM Settings > Advanced Settings** and activate the **Backup Management** option. 
-  2. Click **Apply changes**. This adds 
+  2. Click **Apply changes**. This adds the <i class="uil uil-history"></i> Backup option on the side menu.
 
-    !!! note alert alert-primary ""
-        If PMM Server runs as a Docker container, enable backup features at container creation time by adding `-e ENABLE_BACKUP_MANAGEMENT=1` to your `docker run` command.
- 
+    !!! caution alert alert-warning "Important"
+      If PMM Server runs as a Docker container, enable backup features at container creation time by adding `-e ENABLE_BACKUP_MANAGEMENT=1` to your `docker run` command.
 
-- You have an AWS S3 storage account and location details for it.
-
-    !!! note alert alert-primary ""
-        In addition to bucket location details, you will also need to ensure proper S3 permissions. General minimum permissions
-        are LIST/PUT/GET/DELETE. A sample IAM policy is:
+### Prepare a storage location 
+- For local backups, make sure you have write permissions on the path you define.
+- For Amazon AWS S3 backups, make sure you have a storage account and location details ready.
+In addition to bucket location details, you will also need to ensure proper S3 permissions. 
+The general minimum permissions are **LIST**/**PUT**/**GET**/**DELETE**. 
+A sample IAM policy is:
 
         ```json
         {
@@ -47,39 +49,20 @@
             ]
         }
         ```
-
-
-- Backup management has been enabled:
-
    
 ## Add a storage location
 
-1. Select <i class="uil uil-history"></i> → *Backup*.
-
-1. Select *Storage locations*.
-
+1. Go to **Backup > Storage Locations**:
     ![!](../_images/PMM_Backup_Management.jpg)
 
-1. Click *Add*.
+2. Click **Add storage location** and fill in a name and description for this new location.
+3. Choose the type of storage location you are creating:
+     - **S3**: Specify the Amazon AWS S3 backup location endpoint (URL), bucket name, and connection details. 
+     - **Local Client**: specify the path on your local client for files to be backed up to.
 
-1. Fill in the form fields.
+4. Optionall, click **Test** to test the connection.
 
-    ![!](../_images/PMM_Backup_Management_Locations_Add_Storage_Location.jpg)
-
-    - *Name*: A short name for this location.
-    - *Description*: A long description for this location.
-    - *Type*: Choose the type of storage:
-        - *S3*: Use [Amazon AWS S3]
-            - *Endpoint*: The S3 backup location endpoint (URL).
-            - *Bucket Name*: The bucket name.
-            - *Access Key*: The access key string.
-            - *Secret Key*: The secret key string. (Click <i class="uil uil-eye"></i> to reveal and <i class="uil uil-eye-slash"></i> to hide again.)
-        - *Local Client:* (Not currently implemented)
-        - *Local Server:* (Not currently implemented)
-
-1. (Optional) Click *Test* to test the connection.
-
-1. Click *Add* to add the location.
+5.  Click **Add** to add the location.
 
 ## MySQL backup preconditions
 
