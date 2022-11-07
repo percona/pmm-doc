@@ -17,9 +17,12 @@
     !!! caution alert alert-warning "Important"
       If PMM Server runs as a Docker container, enable backup features at container creation time by adding `-e ENABLE_BACKUP_MANAGEMENT=1` to your `docker run` command.
 
-### Prepare a storage location 
-- For local backups, make sure you have write permissions on the path you define.
-- For Amazon AWS S3 backups, make sure you have a storage account and location details ready.
+### [Prepare a storage location](#prepare-a-storage-location) 
+#### For local backups
+If you prefer storing your backup artifacts on a remote filesystem, make sure that you have Write permissions on the path you define, and that you've mounted the remote folder to all the mongoDB nodes. For more information, see the [Percona Backup for MongoDB (PBM) documentation](https://www.google.com/url?q=https://docs.percona.com/percona-backup-mongodb/details/storage-configuration.html%23remote-filesystem-server-storage&sa=D&source=docs&ust=1667855380308508&usg=AOvVaw3B1N4tjh_mv8lt4msbf3Ui). 
+
+#### For Amazon AWS S3 backups
+If you want to store backup artifacts in the cloud, make sure you have your Amazon S3 storage account and location details ready.
 In addition to bucket location details, you will also need to ensure proper S3 permissions. 
 The general minimum permissions are **LIST**/**PUT**/**GET**/**DELETE**. 
 A sample IAM policy is:
@@ -66,6 +69,8 @@ A sample IAM policy is:
 
 ## MySQL backup prerequisites
 
+To be able to create MySQL backups, make sure that:
+
 - [PMM Client](../setting-up/client/index.md) is installed and running on the node.
 
 - For MySQL 8.0+, the user that pmm-agent uses to connect to MySQL must have the BACKUP_ADMIN privilege for Xtrabackup to work.
@@ -102,92 +107,33 @@ A sample IAM policy is:
 ## MongoDB backup prerequistes
 
 Before creating MongoDB backups, make sure that:
-- [Percona Backup for MongoDB] is installed and `pbm-agent` is running on all MongoDB nodes in the replica set.
-
+- [Percona Backup for MongoDB] (PBM) is installed and `pbm-agent` is running on all MongoDB nodes in the replica set. PMM 2.32 and later require PBM 2.0.1 or newer.
 - MongoDB is a member of a replica set.
+- Check out the current [supported configurations and limitations](mongodb_limitations.md).
 
 ## Make a backup
 
 To create a backup:
 1. Go to  <i class="uil uil-history"></i> **Backup > All Backups**.
-
 2. Click <i class="uil uil-plus-square"></i> **Create Backup**.
-
 3. Specify the type of backup that you want to create: **On Demand** or **Schedule Backup**.
-
-    - *Service name*: Choose from the menu the service to back up.
-    - *Vendor*: A value is automatically selected based on the service type.
-    - *Backup name*: Enter a unique name for this backup.
-    - *Description*: (Optional) Enter a long description for this backup.
-    - *Location*: Choose from the menu the storage location.
-
-4. Click *Backup*.
-
-5. In the *Backup Inventory* pane, watch the *Status* column. An animated ellipsis indicator {{icon.bouncingellipsis}} shows activity in progress.
-
-## Make a scheduled backup
-
-Make regular scheduled backups.
-
-1. [Add a storage location].
-
-1. Select <i class="uil uil-history"></i> → *Backup*.
-
-1. Select *Scheduled Backups*.
-
-1. Click <i class="uil uil-plus-square"></i> *Add*.
-
-1. In the *Schedule backup* dialog, enter values for:
-
-    - *Service name*: Choose from the menu the service to back up.
-    - *Backup name* : Enter a unique name for this scheduled backup.
-    - *Vendor*: A value is automatically selected based on the service type.
-    - *Location*: Choose from the menu the storage location.
-    - *Data model*: Select one of the options:
-        - *Physical*: Takes a physical backup of the database files.
-        - *Logical*: Takes a logical backup of data in the database. Currently not supported for MySQL.
-    - *Description*: (Optional) Enter a long description for this scheduled backup.
-    - *Schedule*: The schedule for the backup.
-        - *Every*: The backup interval. Choose from the menu one of:
-            - *Year*
-            - *Month*
-            - *Week*
-            - *Day*
-            - *Hour*
-            - *Minute*
-        - Depending on the interval chosen, the remaining options will be active or inactive.
-            - *Month*: Select one or more months.
-            - *Day*: Select one or more day numbers.
-            - *Weekday*: Select one or more week day names.
-            - *Start time, h/m*: The hour and minute for the backup.
-                - In the first field, select one or more hours (*00* to *23*, *00* is midnight).
-                - In the second field, select one or more minutes (*00* to *59*).
-
-        - *Retention*: How many backups to keep. For unlimited, use `0` (zero).
-        - *Retry mode*: In case of error, either let PMM retry the backup again ("Auto") or do it again yourself ("Manual").
-        - *Retry times and interval*: If "Auto" retry mode is selected, the maximum number of retries - up to 10 - and the interval between them - up to 8 hours - can be set here.
-        - *Enable*: Deselect to define the scheduled backup without enabling it.
-
-        ![!](../_images/PMM_Backup_Management_Schedule.png)
-
-        !!! note ""
-            For this release ({{release}}), times are UTC.
-
-1. Click *Schedule*.
-
-1. A new entry will appear in the list.
+4. Enter a unique name for this backup.
+5. Choose the service to back up from the Service name drop-down menu. This automatically populates the **DB Technology** field.
+6. Select whether you want to create a physical or logical backup of your data, depending on your use case and requirements.
+7. Choose a storage location for the backup. If no options are available here, see the [Prepare a storage location](#prepare-a-storage-location) 
+ section above.
+8. For schedule backups, also add a backup description specify a schedule and retention policy for the backup. If you wand to keep backup artifacts number of artifacts, type `0` (zero).
+9.  Expand **Advanced Settings** to specify the settings for retrying the backup in case of any issues. You can either let PMM retry the backup again ("Auto") or do it again yourself ("Manual").
+"Auto" retry mode enables you to select up to ten retries and an interval of up to eight hous between retries. 
+10.  Click **Backup** to start creating the backup artifact.
+11.  Go to the **All Backups** tab, and check the **Status** column. An animated ellipsis indicator {{icon.bouncingellipsis}} shows activity in progress.
 
 ## Edit a scheduled backup
 
-1. Select <i class="uil uil-history"></i> → *Backup*.
-
-1. Select *Scheduled Backups*.
-
-1. In the *Actions* column:
+1. Go to **Backup > Scheduled Backup Jobs**.
+2. In the *Actions* column:
     - Click the switch <i class="uil uil-toggle-on"></i> to enable or disable the backup.
-    - Click <i class="uil uil-pen"></i> to edit the backup schedule.
-    - Click <i class="uil uil-times"></i> to delete the backup schedule.
-    - Click <i class="uil uil-copy"></i> to create a (by default, disabled) copy of the backup schedule.
+    - Click ![!](../_images/dots-three-vertical.png) to edit, delete or create a (by default, disabled) copy of the backup schedule.
 
         ![!](../_images/PMM_Backup_Management_Scheduled_Backups_Copy.png)
 
