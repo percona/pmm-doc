@@ -50,7 +50,7 @@ A sample IAM policy is:
         }
         ```
    
-## Add a storage location
+## Create a storage location
 
 1. Go to **Backup > Storage Locations**:
     ![!](../_images/PMM_Backup_Management.jpg)
@@ -60,11 +60,11 @@ A sample IAM policy is:
      - **S3**: Specify the Amazon AWS S3 backup location endpoint (URL), bucket name, and connection details. 
      - **Local Client**: specify the path on your local client for files to be backed up to.
 
-4. Optionall, click **Test** to test the connection.
+4. Optionally, click **Test** to test the connection.
 
-5.  Click **Add** to add the location.
+5.  Click **Add** to create the location.
 
-## MySQL backup preconditions
+## MySQL backup prerequisites
 
 - [PMM Client](../setting-up/client/index.md) is installed and running on the node.
 
@@ -99,25 +99,21 @@ A sample IAM policy is:
     !!! caution alert alert-warning "Important"
         The versions of each must be compatible with the installed version of MySQL.
 
-## MongoDB backup preconditions
+## MongoDB backup prerequistes
 
+Before creating MongoDB backups, make sure that:
 - [Percona Backup for MongoDB] is installed and `pbm-agent` is running on all MongoDB nodes in the replica set.
 
 - MongoDB is a member of a replica set.
 
 ## Make a backup
 
-Make a single on-demand backup.
+To create a backup:
+1. Go to  <i class="uil uil-history"></i> **Backup > All Backups**.
 
-1. [Add a storage location].
+2. Click <i class="uil uil-plus-square"></i> **Create Backup**.
 
-1. Select <i class="uil uil-history"></i> → *Backup*.
-
-1. Select *Backup Inventory*.
-
-1. Click <i class="uil uil-plus-square"></i> *Add*.
-
-1. In the *Backup on demand* dialog, enter values for:
+3. Specify the type of backup that you want to create: **On Demand** or **Schedule Backup**.
 
     - *Service name*: Choose from the menu the service to back up.
     - *Vendor*: A value is automatically selected based on the service type.
@@ -125,9 +121,9 @@ Make a single on-demand backup.
     - *Description*: (Optional) Enter a long description for this backup.
     - *Location*: Choose from the menu the storage location.
 
-1. Click *Backup*.
+4. Click *Backup*.
 
-1. In the *Backup Inventory* pane, watch the *Status* column. An animated ellipsis indicator {{icon.bouncingellipsis}} shows activity in progress.
+5. In the *Backup Inventory* pane, watch the *Status* column. An animated ellipsis indicator {{icon.bouncingellipsis}} shows activity in progress.
 
 ## Make a scheduled backup
 
