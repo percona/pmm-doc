@@ -69,7 +69,7 @@ A sample IAM policy is:
 
 4. Optionally, click **Test** to test the connection.
 
-5.  Click **Add** to create the location.
+5. Click **Add** to create the location.
 
 ## MySQL backup prerequisites
 
@@ -141,7 +141,7 @@ To create a backup:
 1. Go to **Backup > Scheduled Backup Jobs**.
 2. In the *Actions* column:
     - Click the switch <i class="uil uil-toggle-on"></i> to enable or disable the backup.
-    - Click ![!](../_images/dots-three-vertical.png) to edit, delete or create a (by default, disabled) copy of the backup schedule.
+    - Click ![](../_images/dots-three-vertical.png) to edit, delete or create a (by default, disabled) copy of the backup schedule.
 
  ![!](../_images/PMM_Backup_Management_Scheduled_Backups_Copy.png)
 
@@ -187,9 +187,9 @@ This constraint applies at the service-level. You can still have PITR enabled fo
 MySQL backups can be restored to the same service it was created from, or to a compatible one. MongoDB backups can only be restored to the same service they were created from.
 
 To restore a backup:
-1. Go to <i class="uil uil-history"></i> **Backup > All backups** and find the backup that you want to restore.
-2. Click the arrow in the **Actions** column to check all the information for the backup, then click ![!](../_images/dots-three-vertical.png **> Restore from backup**.
 
+1. Go to <i class="uil uil-history"></i> **Backup > All backups** and find the backup that you want to restore.
+2. Click the arrow in the **Actions** column to check all the information for the backup, then click ![](../_images/dots-three-vertical.png) **> Restore from backup**.
 3. In the **Restore from backup** dialog, select **Same service** to restore to a service with identical properties or **Compatible services** to restore to a compatible service.
 4. Select one of the available service names from the drop-down menu.
 5. If you are restoring a PITR backujp, also  select the point for the date and time that you want to restore the database to.
@@ -205,13 +205,13 @@ Restoring from a physical backup will cause all **mongo** and **pbm-agent** inst
 ## Delete a backup
 
 1. Go to  <i class="uil uil-history"></i> **Backup > All Backups** and find the row with the backup you want to delete.
-2. Click the arrow in the **Actions** column to check all the information for the backup, then click ![!](../_images/dots-three-vertical.png) **> Delete backup**.
+2. Click the arrow in the **Actions** column to check all the information for the backup, then click ![](../_images/dots-three-vertical.png) **> Delete backup**.
 3. In the Delete backup artifact dialog box, enable **Delete from storage** if you also want to delete the actual backup content besides just the backup register.
 4. Click **Delete**.
 
 
 ### Resources
-- [Amazon AWS S3](: )https://aws.amazon.com/s3/
+- [Amazon AWS S3](: )https://aws.amazon.com/s3/)
 - [Percona Backup for MongoDB](https://www.percona.com/doc/percona-backup-mongodb/installation.html)
 - [PERCONA_QPRESS](https://www.percona.com/doc/percona-xtrabackup/LATEST/backup_scenarios/compressed_backup.html)
 - [PERCONA_XBCLOUD](https://www.percona.com/doc/percona-xtrabackup/2.3/xbcloud/xbcloud.html)
