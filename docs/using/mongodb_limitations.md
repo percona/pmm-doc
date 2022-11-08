@@ -33,25 +33,25 @@ Creating and restoring MongoDB backups in PMM currently has the following limita
 
 <style>
   table th:first-of-type {
-    width: 5%
+    width: 0.5%
   }
   table th:nth-of-type(2) {
-    width: 5%
+    width: 0.5%
   }
   table th:nth-of-type(3) {
-    width: 2%
+    width: 0.1%
   }
   table th:nth-of-type(4) {
-    width: 2%
+    width: 0.1%
   }
   table th:nth-of-type(5) {
-    width: 2%
+    width: 0.1%
   }
   table th:nth-of-type(6) {
-    width: 2%
-      }
+    width: 0.1%
+  }
   table th:nth-of-type(7) {
-    width: 10%
+    width: 90%
   }
   table td {
     text-align:left; vertical-align: top;

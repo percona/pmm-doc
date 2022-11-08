@@ -211,7 +211,7 @@ Restoring from a physical backup will cause all **mongo** and **pbm-agent** inst
 
 
 ### Resources
-- [Amazon AWS S3](: )https://aws.amazon.com/s3/)
+- [Amazon AWS S3](https://aws.amazon.com/s3/)
 - [Percona Backup for MongoDB](https://www.percona.com/doc/percona-backup-mongodb/installation.html)
 - [PERCONA_QPRESS](https://www.percona.com/doc/percona-xtrabackup/LATEST/backup_scenarios/compressed_backup.html)
 - [PERCONA_XBCLOUD](https://www.percona.com/doc/percona-xtrabackup/2.3/xbcloud/xbcloud.html)
