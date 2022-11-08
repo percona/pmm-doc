@@ -8,29 +8,7 @@ Creating and restoring MongoDB backups in PMM currently has the following limita
 - Retention policy is supported only for snapshot types of scheduled backups.
 - Before restoring, make sure to prevent clients from accessing database.
 
-<style>
-  table th:first-of-type {
-    width: 5%
-  }
-  table th:nth-of-type(2) {
-    width: 5%
-  }
-  table th:nth-of-type(3) {
-    width: 5%
-  }
-  table th:nth-of-type(4) {
-    width: 5%
-  }
-  table th:nth-of-type(5) {
-    width: 5%
-  }
-  table th:nth-of-type(6) {
-    width: 10%
-  }
-  table td {
-    text-align:left; vertical-align: top;
-  }
-</style>
+
 
 
 ## Support matrix
@@ -38,11 +16,9 @@ Creating and restoring MongoDB backups in PMM currently has the following limita
 ### Logical Backup/Restore
 
 |    Storage type           | Full   | PITR    |
-| ------------- | ------ | ------- |------- |
+| ------------- | ------ | ------- |
 | Local storage | Backup/Restore | Backup/ - |
 | S3            | Backup/Restore | Backup/Restore |
-
-
 
 ### Physical Backup/Restore
 
@@ -71,6 +47,9 @@ Creating and restoring MongoDB backups in PMM currently has the following limita
     width: 5%
   }
   table th:nth-of-type(6) {
+    width: 5%
+      }
+  table th:nth-of-type(7) {
     width: 10%
   }
   table td {

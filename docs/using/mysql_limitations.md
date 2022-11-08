@@ -2,8 +2,8 @@
 
 Before creating and restoring MySQL backups, make sure to check the support matrix below:
 
-| Backup/Restore | Logical/Physical | PITR | S3/Local | Containerized | Support level| Comments |
-| -------------- | ---------------- | ---- | -------- | ------------- | --------------------------------------- | -------- |
+| Backup/Restore | Logical/Physical | PITR | S3/Local | Containerized | Support level| 
+| -------------- | ---------------- | ---- | -------- | ------------- | --------------------------------------- | 
 | Backup         | Logical          | Yes  | S3       | Yes           | <b style="color:#e36526;">No</b>                                     |          |
 | Backup         | Logical          | Yes  | S3       | No            | <b style="color:#e36526;">No</b>                                      |          |
 | Backup         | Logical          | Yes  | Local    | Yes           | <b style="color:#e36526;">No</b>                                    |          |
