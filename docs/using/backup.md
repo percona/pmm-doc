@@ -6,7 +6,7 @@
   - Storing backups to Amazon S3 
 
 **- MongoDB replica set setups with support for:**
-  -  Storing backups on Amazon S3 and on local filesystem
+  -  Storing backups on Amazon S3 and on mounted filesystem
   -  Creating and restoring Logical snapshot backups
   -  Creating and restoring Physical snapshot backups. This is only available with Percona Server for MongoDB and requires post-restore actions.
   - Creating logical PITR backups both locally and on S3. Restoring logical PITR backups from S3.
