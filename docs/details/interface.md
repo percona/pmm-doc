@@ -105,7 +105,7 @@ The *Services* menu choice determines the Service Type menu.
 
 
 !!! hint alert alert-success "Note"
-    - You can easily access all dashboards for monitored service from the main menu via *Other Dashboards* in the services folder.
+    - You can easily access all dashboards for monitored services from the *Main menu* via *Other Dashboards* in the *Services* sub menu.
     - Only the services being monitored by PMM will appear on the main menu.
 
 ### PMM menu
