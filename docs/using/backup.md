@@ -7,7 +7,7 @@
   - **Physical snapshot backups**: Create and Restore. This is only available with Percona Server for MongoDB and requires post-restore actions.
   - **PITR backups**: Create both logical local and Amazon S3 backups. Restore only from S3.
   
-For a detalied overview of the supported setups, check out the [Support matrix for MongoDB](../using/mongodb_limitations.md) and the [Support matrix for MySQL](../using/mysql_limitations.md).
+   For a detalied overview of the supported setups for MongoDB, check out the [Support matrix](../using/mongodb_limitations.md) .
 
 ## Prerequisites
 
@@ -104,7 +104,6 @@ To be able to create MySQL backups, make sure that:
         - [`xbstream`][PERCONA_XBSTREAM];
 
     - [`qpress`][PERCONA_QPRESS].
-- Check out the current [MySQL supported configurations and limitations](mysql_limitations.md).
 
 !!! caution alert alert-warning "Important"
        The versions of each must be compatible with the installed version of MySQL.

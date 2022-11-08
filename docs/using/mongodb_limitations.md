@@ -58,7 +58,7 @@ Creating and restoring MongoDB backups in PMM currently has the following limita
   }
 </style>
 
-| Backup/Restore | Logical/Physical | PITR | S3/Local | Containerized | Support level| Comments                                                                      |
+| Backup Restore | Logical Physical | PITR | S3 Local | Containerized | Support level| Comments                                                                      |
 | -------------- | ---------------- | ---- | -------- | ------------- | --------------------------------------- | ----------------------------------------------------------------------------- |
 | Backup         | Logical          | Yes  | S3       | Yes           | <b style="color:#5794f2;"><b style="color:#5794f2;">Full</b></b>                                  |                                                                               |
 | Backup         | Logical          | Yes  | S3       | No            | <b style="color:#5794f2;">Full</b>                                    |                                                                               |
