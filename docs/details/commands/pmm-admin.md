@@ -353,7 +353,7 @@ When you remove a service, collected data remains on PMM Server for the specifie
         - >0: Query will be truncated after <NUMBER> chars.
 
         !!! caution ""
-        Ensure you do not set the value of max-query-length to 1, 2, or 3. Otherwise, the PMM agent will get terminated.
+            Ensure you do not set the value of `max-query-length` to 1, 2, or 3. Otherwise, the PMM agent will get terminated.
 
 ##### Advanced Options
 
@@ -652,7 +652,7 @@ In low resolution we collect metrics from collectors which could take some time:
         - >0: Query will be truncated after <NUMBER> chars.
 
         !!! caution ""
-        Ensure you do not set the value of max-query-length to 1, 2, or 3. Otherwise, the PMM agent will get terminated.
+            Ensure you do not set the value of `max-query-length` to 1, 2, or 3. Otherwise, the PMM agent will get terminated.
 
 #### ProxySQL
 
