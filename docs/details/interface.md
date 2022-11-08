@@ -105,7 +105,7 @@ The *Services* menu choice determines the Service Type menu.
 
 
 !!! hint alert alert-success "Tip"
-    The DBaaS icon appears only if a server feature flag has been set.
+    You can easily access all dashboards for monitored service from the main menu via *Other Dashboards* in the services folder.
 
 
 ### PMM menu
