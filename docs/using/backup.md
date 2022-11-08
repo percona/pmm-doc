@@ -1,7 +1,7 @@
 # Backup and restore
 
 ## Supported setups 
-- MySQL database server with support for:
+**- MySQL database server with support for:**
   - Creating and restoring physical backups
   - Storing backups to Amazon S3 
 
