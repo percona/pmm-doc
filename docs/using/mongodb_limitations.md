@@ -17,15 +17,15 @@ Creating and restoring MongoDB backups in PMM currently has the following limita
 
 |    Storage type           | Full   | PITR    |
 | ------------- | ------ | ------- |
-| Local storage | Backup/Restore | Backup/ - |
-| S3            | Backup/Restore | Backup/Restore |
+| Local storage | **Backup**/**Restore** |**Backup**/ - |
+| S3            | **Backup**/**Restore** | **Backup**/**Restore** |
 
 ### Physical Backup/Restore
 
 |      Storage type          | Full   | PITR      |
 | ------------- | ------ | --------- |
-| Local storage | Backup/Restore* (requires manual restart of mongod and pbm-agents) | -/-|
-| S3            | Backup/Restore (requires manual restart of mongod and pbm-agents) |  -/-|
+| Local storage | **Backup**/**Restore.** Restoring requires manual restart of mongod and pbm-agents. | -/-|
+| S3            | **Backup**/**Restore**. Restoring requires manual restart of mongod and pbm-agents. |  -/-|
 
 
 ### Full matrix
@@ -38,16 +38,16 @@ Creating and restoring MongoDB backups in PMM currently has the following limita
     width: 5%
   }
   table th:nth-of-type(3) {
-    width: 5%
+    width: 2%
   }
   table th:nth-of-type(4) {
-    width: 5%
+    width: 2%
   }
   table th:nth-of-type(5) {
-    width: 5%
+    width: 2%
   }
   table th:nth-of-type(6) {
-    width: 5%
+    width: 2%
       }
   table th:nth-of-type(7) {
     width: 10%
