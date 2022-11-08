@@ -20,7 +20,7 @@ Creating and restoring MongoDB backups in PMM currently has the following limita
 
 ### Physical Backup/Restore
 
-|      Storage type          | Full   | PITR      |
+|      Storage type          | Snapshot   | PITR      |
 | ------------- | ------ | --------- |
 | Local storage | **Backup**/**Restore.** Restoring requires manual restart of mongod and pbm-agents. | -/-|
 | S3            | **Backup**/**Restore**. Restoring requires manual restart of mongod and pbm-agents. |  -/-|
