@@ -1,4 +1,4 @@
-# MongoDB Backup and Restore limitations 
+# MongoDB Backup and Restore support matrix
 
 Creating and restoring MongoDB backups in PMM currently has the following limitations and requirements:
 
@@ -35,6 +35,23 @@ Creating and restoring MongoDB backups in PMM currently has the following limita
 
 ## Support matrix
 
+### Logical Backup/Restore
+
+|    Storage type           | Full   | PITR    |
+| ------------- | ------ | ------- |
+| Local storage | Backup | Restore | Backup | \- |
+| S3            | Backup | Restore | Backup | Restore |
+
+
+
+### Physical  Backup/Restore
+
+|      Storage type          | Full   | PITR      |
+| ------------- | ------ | --------- |
+| Local storage | Backup | Restore\* | N/A |
+| S3            | Backup | Restore\* |
+
+### Full matrix
 | Backup/Restore | Logical/Physical | PITR | S3/Local | Containerized | Support level| Comments                                                                      |
 | -------------- | ---------------- | ---- | -------- | ------------- | --------------------------------------- | ----------------------------------------------------------------------------- |
 | Backup         | Logical          | Yes  | S3       | Yes           | <b style="color:#5794f2;"><b style="color:#5794f2;">Full</b></b>                                  |                                                                               |

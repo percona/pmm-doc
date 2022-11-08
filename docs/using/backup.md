@@ -1,12 +1,12 @@
 # Backup and restore
 
 ## Supported setups 
-- Backups to Amazon AWS S3 and local storage locations 
-- MySQL database server replica set cluster
-- MongoDB replica set setups with the following actions:
-  - **Logical snapshot backups**:  Create and Restore 
+- MySQL database server replica set cluster with backups to Amazon S3 
+- MongoDB replica set setups with backups to both Amazon S3 and local filesystem. The following actions are supported:
+  - **Logical snapshot backups**: Create and Restore
   - **Physical snapshot backups**: Create and Restore. This is only available with Percona Server for MongoDB and requires post-restore actions.
-  -  **PITR backups**: Create both logical local and S3 backups. Restore only from S3.
+  - **PITR backups**: Create both logical local and Amazon S3 backups. Restore only from S3.
+For a detalied overview of the supported setups, check out the [Support matrix for MongoDB](../using/mongodb_limitations.md) and the [Support matrix for MySQL](../using/mysql_limitations.md).
 
 ## Prerequisites
 
@@ -17,7 +17,7 @@
     !!! caution alert alert-warning "Important"
       If PMM Server runs as a Docker container, enable backup features at container creation time by adding `-e ENABLE_BACKUP_MANAGEMENT=1` to your `docker run` command.
 
-### [Prepare a storage location](#prepare-a-storage-location) 
+### Prepare a storage location
 #### For local backups
 If you prefer storing your backup artifacts on a remote filesystem, make sure that you have Write permissions on the path you define, and that you've mounted the remote folder to all the mongoDB nodes. For more information, see the [Percona Backup for MongoDB (PBM) documentation](https://www.google.com/url?q=https://docs.percona.com/percona-backup-mongodb/details/storage-configuration.html%23remote-filesystem-server-storage&sa=D&source=docs&ust=1667855380308508&usg=AOvVaw3B1N4tjh_mv8lt4msbf3Ui). 
 
@@ -53,7 +53,7 @@ A sample IAM policy is:
         }
         ```
    
-## Create a storage location
+## [Create a storage location](#create-a-storage-location)
 
 1. Go to **Backup > Storage Locations**:
     ![!](../_images/PMM_Backup_Management.jpg)
@@ -100,6 +100,7 @@ To be able to create MySQL backups, make sure that:
         - [`xbstream`][PERCONA_XBSTREAM];
 
     - [`qpress`][PERCONA_QPRESS].
+- Check out the current [MySQL supported configurations and limitations](mysql_limitations.md).
 
     !!! caution alert alert-warning "Important"
         The versions of each must be compatible with the installed version of MySQL.
@@ -109,9 +110,9 @@ To be able to create MySQL backups, make sure that:
 Before creating MongoDB backups, make sure that:
 - [Percona Backup for MongoDB] (PBM) is installed and `pbm-agent` is running on all MongoDB nodes in the replica set. PMM 2.32 and later require PBM 2.0.1 or newer.
 - MongoDB is a member of a replica set.
-- Check out the current [supported configurations and limitations](mongodb_limitations.md).
+- Check out the current [MongoDB supported configurations and limitations](mongodb_limitations.md).
 
-## Make a backup
+## [Make a backup](#make-a-backup)
 
 To create a backup:
 1. Go to  <i class="uil uil-history"></i> **Backup > All Backups**.
@@ -119,14 +120,15 @@ To create a backup:
 3. Specify the type of backup that you want to create: **On Demand** or **Schedule Backup**.
 4. Enter a unique name for this backup.
 5. Choose the service to back up from the Service name drop-down menu. This automatically populates the **DB Technology** field.
-6. Select whether you want to create a physical or logical backup of your data, depending on your use case and requirements.
-7. Choose a storage location for the backup. If no options are available here, see the [Prepare a storage location](#prepare-a-storage-location) 
- section above.
-8. For schedule backups, also add a backup description specify a schedule and retention policy for the backup. If you wand to keep backup artifacts number of artifacts, type `0` (zero).
-9.  Expand **Advanced Settings** to specify the settings for retrying the backup in case of any issues. You can either let PMM retry the backup again ("Auto") or do it again yourself ("Manual").
-"Auto" retry mode enables you to select up to ten retries and an interval of up to eight hous between retries. 
-10.  Click **Backup** to start creating the backup artifact.
-11.  Go to the **All Backups** tab, and check the **Status** column. An animated ellipsis indicator {{icon.bouncingellipsis}} shows activity in progress.
+6. Select whether you want to create a **Physical** or **Logical** backup of your data, depending on your use case and requirements. For MySQL, you only the **Physical** data model is available.
+7. Choose a storage location for the backup. MysQL currently only supports storing backups to Amazon S3. If no options are available here, see the [Create a storage location](#create-a-storage-location) section above.
+8. If you're creating a schedule backups, also specify the backup type, the schedule, and a retention policy for your backup:
+    - **Backup Type**: currently, PMM supports both **Full** and Point-in-type recovery **(PITR)** backup types for MongoDB. However, the PITR option is only available for the **Logical** data model. For MySQL, only the **Full** type is supported.
+    - **Shedule**: configure the frequency and the start time for this backup.  Make sure that the the schedule you specify here does not overlap with production hours, and doesn't create an overhead on the production environment.
+    - **Retention**: this option is only available for PITR backup types. If you wand to keep an unlimited number of backup artifacts, type `0`.
+9. Expand **Advanced Settings** to specify the settings for retrying the backup in case of any issues. You can either let PMM retry the backup again (**Auto**), or do it again yourself **Manual**. Auto retry mode enables you to select up to ten retries and an interval of up to eight hous between retries.
+10. Click **Backup** to start creating the backup artifact.
+11. Go to the **All Backups** tab, and check the **Status** column. An animated ellipsis indicator {{icon.bouncingellipsis}} shows that a backup is currently being created.
 
 ## Edit a scheduled backup
 
@@ -135,94 +137,68 @@ To create a backup:
     - Click the switch <i class="uil uil-toggle-on"></i> to enable or disable the backup.
     - Click ![!](../_images/dots-three-vertical.png) to edit, delete or create a (by default, disabled) copy of the backup schedule.
 
-        ![!](../_images/PMM_Backup_Management_Scheduled_Backups_Copy.png)
+    ![!](../_images/PMM_Backup_Management_Scheduled_Backups_Copy.png)
 
-## MongoDB Point-In-Time-Recoverable Backups
+## MongoDB Point-In-Time-Recoverable Backups (PITR)
 
-!!! caution alert alert-warning "Caution"
-    - MongoDB Point-In-Time-Recoverable Backups is part of Backup Management which is a [technical preview](../details/glossary.md#technical-preview) feature.
+Point-in-Time Recovery restores databases up to a specific moment. PITR includes restoring the data from a backup snapshot and replaying all events that occurred to this data up to a specified moment from [oplog slices].
+Point-in-Time Recovery helps you prevent data loss during a disaster such as crashed database, accidental data deletion or drop of tables, unwanted update of multiple fields instead of a single one.
 
-### What is it?
+### Compatibility with Percona Backup for MongoDB
+PMM introduced the option to create PITR Backups for MongoDB in version 2.23, as part of the larger Backup Management feature. This implementation in PMM uses Percona Backup for MongoDB (pbm) behind the scenes. Percona Backup for MongoDB is a distributed, low-impact solution for achieving consistent backups of MongoDB sharded clusters and replica sets.
 
-Better described by our team mates that develop Percona Backup for MongoDB:
+Starting with PMM 2.32, restoring PITR backups is also available based on pbm ≤ 2.0.1. To  restore PITR backups, make sure you have pbm ≤ 2.0.1 installed.
 
-!!! note alert alert-primary ""
-    Point-in-Time Recovery is restoring a database up to a specific moment. Point-in-Time Recovery includes restoring the data from a backup snapshot and replaying all events that occurred to this data up to a specified moment from [oplog slices]. Point-in-Time Recovery helps you prevent data loss during a disaster such as crashed database, accidental data deletion or drop of tables, unwanted update of multiple fields instead of a single one.
-
-Point-In-Time-Recovery (PITR) Backups for MongoDB is new functionality available with PMM 2.23.0 as part of the larger Backup Management feature. This implementation in PMM uses Percona Backup for MongoDB `pbm >= 1.6.0` behind the scenes.
-
-!!! caution alert alert-warning ""
-    - Percona Backup for MongoDB is a distributed, low-impact solution for achieving consistent backups of MongoDB sharded clusters and replica sets. Percona Backup for MongoDB supports [Percona Server for MongoDB] and MongoDB Community v3.6 or higher with [MongoDB Replication] enabled. Learn more about [Percona Backup for MongoDB].
+ Percona Backup for MongoDB supports [Percona Server for MongoDB] and MongoDB Community ≤ 3.6, with [MongoDB Replication] enabled. For more information, see the [Percona Backup for MongoDB documentation](https://docs.percona.com/percona-backup-mongodb/installation.html).
 
 ### How does it work?
 
-#### Enabling PITR
+To create a PITR backup, select the **PITR** backup type option when creating scheduled backup for MongoDB. See the [Make a backup](#make-a-backup) section above.
 
-The very first thing you want to do is to enable PITR. Here’s how:
+![!](../_images/PMM_Backup_Management-MongoDB-PITR-Enable.jpg)
 
-1. Go to *Backup Management*.
-1. Select *Scheduled Backups*.
-1. Click on *Add* to create a new scheduled backup.
-1. Click on the PITR button to enable Point-In-Time-Recovery.
 
-    ![!](../_images/PMM_Backup_Management-MongoDB-PITR-Enable.jpg)
+#### PITR artifacts
 
-Once you’ve enabled PITR, head to the list of Scheduled Backups to confirm PITR is enabled.
-
-![!](../_images/PMM_Backup_Management-MongoDB-PITR-Enable-Check.jpg)
-
-To disable PITR use the corresponding switch available on the list.
-
-#### PITR Artifacts
-
-The PITR artifacts will be available once your PITR job has run for the first time. Go to Backup Inventory to see the corresponding PITR artifact.
+The PITR oplog is available a few minutes after your PITR job has run for the first time. To see the corresponding PITR artifact, check out the list under **Backup > All Backups**.
 
 ![!](../_images/PMM_Backup_Management-MongoDB-PITR-Inventory.jpg)
 
-#### PITR and Other Scheduled Backups
+#### PITR and other scheduled backups
 
-It is important to notice that enabling PITR requires any other scheduled backup jobs to be disabled. If you try to enable PITR while other scheduled backup jobs are active, you will be shown an error message as seen in the image below.
+Make sure to disable any other scheduled backup jobs before creating a PITR backup. PMM displays an error message if you try to enable PITR while other scheduled backup jobs are active:
 
 ![!](../_images/PMM_Backup_Management-MongoDB-PITR-Enable-Error.jpg)
 
-Go ahead to manually disable the existing scheduled jobs, then you’ll be able to enable PITR.
-
-The above constraint applies at the service level. That said, you can still have PITR enabled for one service while having regular scheduled backup jobs for other services.
+This constraint applies at the service-level. You can still have PITR enabled for one service while having regular scheduled backup jobs for other services.
 
 ## Restore a backup
 
-!!! note alert alert-primary ""
-  MySQL backups can be restored to the same service it was created from, or to a compatible one. MongoDB backups   can only be restored to the same service it was created from. 
+### Restore compatibility
+MySQL backups can be restored to the same service it was created from, or to a compatible one. MongoDB backups can only be restored to the same service they were created from.
 
-1. Select <i class="uil uil-history"></i> → *Backup* → *Backup Inventory*.
+To restore a backup:
+1. Go to <i class="uil uil-history"></i> **Backup > All backups** and find the backup that you want to restore.
+2. Click the arrow in the **Actions** column to check all the information for the backup, then click ![!](../_images/dots-three-vertical.png) **> Restore from backup**.
 
-1. Find the row with the backup you want to restore.
+3. In the **Restore from backup** dialog, select **Same service** to restore to a service with identical properties or **Compatible services** to restore to a compatible service.
+4. Select one of the available service names from the drop-down menu.
+5. If you are restoring a PITR backujp, also  select the point for the date and time that you want to restore the database to.
+6. Check the values, then click **Restore**.
+7. Go to the **Restores** tab to check the status of the restored backup.
+During restoring, PMM disables all the scheduled backup tasks for the current service. Remember to re-enable them manually after the restore.
 
-1. In the *Actions* column for that row, click *Restore from backup*.
-
-1. In the *Restore from backup* dialog:
-
-    - Select *Same service* to restore to a service with identical properties.
-        - Select the service in the *Service name* menu.
-
-    - Select *Compatible services* to restore to a compatible service.
-        - Select the compatible service in the *Service name* menu.
-
-1. Check the values and click *Restore*.
-
-1. Navigate to the *Restore History* tab to check the status of the restored backup.
+### Post-restore requirements for MongoDB
+Restoring from a physical backup will cause all **mongo** and **pbm-agent** instances to shut down. To bring them back up:
+1. Restart all **mongod** (and **mongos** if present) nodes.
+2. Restart all **pbm-agents**.
 
 ## Delete a backup
 
-1. Select <i class="uil uil-history"></i> → *Backup* → *Backup Inventory*.
-
-1. Find the row with the backup you want to delete.
-
-1. In the *Actions* column for that row, click *Delete backup*.
-
-1. (Optional) Check *Delete from storage* to also delete the actual backup content besides just the backup register.
-
-1. Click *Delete* to proceed.
+1. Go to  <i class="uil uil-history"></i> **Backup > All Backups** and find the row with the backup you want to delete.
+2. Click the arrow in the **Actions** column to check all the information for the backup, then click ![!](../_images/dots-three-vertical.png) **> Delete backup**.
+3. In the Delete backup artifact dialog box, enable **Delete from storage** if you also want to delete the actual backup content besides just the backup register.
+4. Click **Delete**.
 
 [Amazon AWS S3]: https://aws.amazon.com/s3/
 [Percona Backup for MongoDB]: https://www.percona.com/doc/percona-backup-mongodb/installation.html
