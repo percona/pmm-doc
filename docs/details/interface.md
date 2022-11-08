@@ -87,6 +87,9 @@ This menu bar is context sensitive; it changes according to the page you are on.
 | Service Name                  | Filter by service name.
 | PMM Annotations               | View [annotations](../how-to/annotate.md).
 
+## Shortcut menu
+
+This menu contains shortcut for **Home**, **Query Analytics**, **Services**, and **PMM**.
 
 ### Services menu
 
@@ -99,6 +102,11 @@ The *Services* menu choice determines the Service Type menu.
 |           | MySQL Instances Overview       | <i class="uil uil-bars"></i> MySQL      | MySQL dashboards.
 |           | Nodes Overview                 | <i class="uil uil-bars"></i> OS         | OS dashboards.
 |           | PostgreSQL Instances Overview  | <i class="uil uil-bars"></i> PostgreSQL | PostgreSQL dashboards.
+
+
+!!! hint alert alert-success "Tip"
+    The DBaaS icon appears only if a server feature flag has been set.
+
 
 ### PMM menu
 
