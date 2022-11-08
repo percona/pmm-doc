@@ -6,6 +6,7 @@
   - **Logical snapshot backups**: Create and Restore
   - **Physical snapshot backups**: Create and Restore. This is only available with Percona Server for MongoDB and requires post-restore actions.
   - **PITR backups**: Create both logical local and Amazon S3 backups. Restore only from S3.
+  
 For a detalied overview of the supported setups, check out the [Support matrix for MongoDB](../using/mongodb_limitations.md) and the [Support matrix for MySQL](../using/mysql_limitations.md).
 
 ## Prerequisites
@@ -14,16 +15,19 @@ For a detalied overview of the supported setups, check out the [Support matrix f
   1. Go to  <i class="uil uil-cog"></i> **Configuration > PMM Settings > Advanced Settings** and activate the **Backup Management** option. 
   2. Click **Apply changes**. This adds the <i class="uil uil-history"></i> Backup option on the side menu.
 
-    !!! caution alert alert-warning "Important"
-      If PMM Server runs as a Docker container, enable backup features at container creation time by adding `-e ENABLE_BACKUP_MANAGEMENT=1` to your `docker run` command.
+!!! caution alert alert-warning "Important"
+    If PMM Server runs as a Docker container, enable backup features at container creation time by adding `-e ENABLE_BACKUP_MANAGEMENT=1` to your `docker run` command.
 
 ### Prepare a storage location
 #### For local backups
-If you prefer storing your backup artifacts on a remote filesystem, make sure that you have Write permissions on the path you define, and that you've mounted the remote folder to all the mongoDB nodes. For more information, see the [Percona Backup for MongoDB (PBM) documentation](https://www.google.com/url?q=https://docs.percona.com/percona-backup-mongodb/details/storage-configuration.html%23remote-filesystem-server-storage&sa=D&source=docs&ust=1667855380308508&usg=AOvVaw3B1N4tjh_mv8lt4msbf3Ui). 
+If you prefer storing your backup artifacts on a remote filesystem, make sure that you have Write permissions on the path you define, and that you've mounted the remote folder to all the mongoDB nodes. 
+
+For more information, see the [Percona Backup for MongoDB (PBM) documentation](https://www.google.com/url?q=https://docs.percona.com/percona-backup-mongodb/details/storage-configuration.html%23remote-filesystem-server-storage&sa=D&source=docs&ust=1667855380308508&usg=AOvVaw3B1N4tjh_mv8lt4msbf3Ui). 
 
 #### For Amazon AWS S3 backups
 If you want to store backup artifacts in the cloud, make sure you have your Amazon S3 storage account and location details ready.
 In addition to bucket location details, you will also need to ensure proper S3 permissions. 
+
 The general minimum permissions are **LIST**/**PUT**/**GET**/**DELETE**. 
 A sample IAM policy is:
 
@@ -102,12 +106,13 @@ To be able to create MySQL backups, make sure that:
     - [`qpress`][PERCONA_QPRESS].
 - Check out the current [MySQL supported configurations and limitations](mysql_limitations.md).
 
-    !!! caution alert alert-warning "Important"
-        The versions of each must be compatible with the installed version of MySQL.
+!!! caution alert alert-warning "Important"
+       The versions of each must be compatible with the installed version of MySQL.
 
 ## MongoDB backup prerequistes
 
 Before creating MongoDB backups, make sure that:
+
 - [Percona Backup for MongoDB] (PBM) is installed and `pbm-agent` is running on all MongoDB nodes in the replica set. PMM 2.32 and later require PBM 2.0.1 or newer.
 - MongoDB is a member of a replica set.
 - Check out the current [MongoDB supported configurations and limitations](mongodb_limitations.md).
@@ -115,6 +120,7 @@ Before creating MongoDB backups, make sure that:
 ## [Make a backup](#make-a-backup)
 
 To create a backup:
+
 1. Go to  <i class="uil uil-history"></i> **Backup > All Backups**.
 2. Click <i class="uil uil-plus-square"></i> **Create Backup**.
 3. Specify the type of backup that you want to create: **On Demand** or **Schedule Backup**.
@@ -137,15 +143,18 @@ To create a backup:
     - Click the switch <i class="uil uil-toggle-on"></i> to enable or disable the backup.
     - Click ![!](../_images/dots-three-vertical.png) to edit, delete or create a (by default, disabled) copy of the backup schedule.
 
-    ![!](../_images/PMM_Backup_Management_Scheduled_Backups_Copy.png)
+ ![!](../_images/PMM_Backup_Management_Scheduled_Backups_Copy.png)
 
 ## MongoDB Point-In-Time-Recoverable Backups (PITR)
 
 Point-in-Time Recovery restores databases up to a specific moment. PITR includes restoring the data from a backup snapshot and replaying all events that occurred to this data up to a specified moment from [oplog slices].
+
 Point-in-Time Recovery helps you prevent data loss during a disaster such as crashed database, accidental data deletion or drop of tables, unwanted update of multiple fields instead of a single one.
 
 ### Compatibility with Percona Backup for MongoDB
-PMM introduced the option to create PITR Backups for MongoDB in version 2.23, as part of the larger Backup Management feature. This implementation in PMM uses Percona Backup for MongoDB (pbm) behind the scenes. Percona Backup for MongoDB is a distributed, low-impact solution for achieving consistent backups of MongoDB sharded clusters and replica sets.
+PMM introduced the option to create PITR Backups for MongoDB in version 2.23, as part of the larger Backup Management feature. This implementation in PMM uses Percona Backup for MongoDB (pbm) behind the scenes. 
+
+Percona Backup for MongoDB is a distributed, low-impact solution for achieving consistent backups of MongoDB sharded clusters and replica sets.
 
 Starting with PMM 2.32, restoring PITR backups is also available based on pbm ≤ 2.0.1. To  restore PITR backups, make sure you have pbm ≤ 2.0.1 installed.
 
@@ -179,7 +188,7 @@ MySQL backups can be restored to the same service it was created from, or to a c
 
 To restore a backup:
 1. Go to <i class="uil uil-history"></i> **Backup > All backups** and find the backup that you want to restore.
-2. Click the arrow in the **Actions** column to check all the information for the backup, then click ![!](../_images/dots-three-vertical.png) **> Restore from backup**.
+2. Click the arrow in the **Actions** column to check all the information for the backup, then click ![!](../_images/dots-three-vertical.png **> Restore from backup**.
 
 3. In the **Restore from backup** dialog, select **Same service** to restore to a service with identical properties or **Compatible services** to restore to a compatible service.
 4. Select one of the available service names from the drop-down menu.
@@ -200,13 +209,14 @@ Restoring from a physical backup will cause all **mongo** and **pbm-agent** inst
 3. In the Delete backup artifact dialog box, enable **Delete from storage** if you also want to delete the actual backup content besides just the backup register.
 4. Click **Delete**.
 
-[Amazon AWS S3]: https://aws.amazon.com/s3/
-[Percona Backup for MongoDB]: https://www.percona.com/doc/percona-backup-mongodb/installation.html
-[PERCONA_QPRESS]: https://www.percona.com/doc/percona-xtrabackup/LATEST/backup_scenarios/compressed_backup.html
-[PERCONA_XBCLOUD]: https://www.percona.com/doc/percona-xtrabackup/2.3/xbcloud/xbcloud.html
-[PERCONA_XBSTREAM]: https://www.percona.com/doc/percona-xtrabackup/2.3/xbstream/xbstream.html
-[PERCONA_XTRABACKUP]: https://www.percona.com/software/mysql-database/percona-xtrabackup
-[Add a storage location]: #add-a-storage-location
-[oplog slices]: https://www.percona.com/doc/percona-backup-mongodb/glossary.html#term-oplog-slice
-[Percona Server for MongoDB]: https://www.percona.com/software/mongo-database/percona-server-for-mongodb
-[MongoDB Replication]: https://docs.mongodb.com/manual/replication/
+
+### Resources
+- [Amazon AWS S3](: )https://aws.amazon.com/s3/
+- [Percona Backup for MongoDB](https://www.percona.com/doc/percona-backup-mongodb/installation.html)
+- [PERCONA_QPRESS](https://www.percona.com/doc/percona-xtrabackup/LATEST/backup_scenarios/compressed_backup.html)
+- [PERCONA_XBCLOUD](https://www.percona.com/doc/percona-xtrabackup/2.3/xbcloud/xbcloud.html)
+- [PERCONA_XBSTREAM](https://www.percona.com/doc/percona-xtrabackup/2.3/xbstream/xbstream.html)
+- [PERCONA_XTRABACKUP](https://www.percona.com/software/mysql-database/percona-xtrabackup)
+- [oplog slices](https://www.percona.com/doc/percona-backup-mongodb/glossary.html#term-oplog-slice)
+- [Percona Server for MongoDB](https://www.percona.com/software/mongo-database/percona-server-for-mongodb)
+- [MongoDB Replication](https://docs.mongodb.com/manual/replication/)
