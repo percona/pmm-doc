@@ -8,7 +8,7 @@ Creating and restoring MongoDB backups in PMM currently has the following limita
 - Physical backups are supported, but restoring from physical backups will cause all mongo and pbm-agent instances to shutdown. To bring them back up, restart all **mongod** and **mongos** nodes and restart all **pbm-agents**.
 - Retention policy is supported only for snapshot types of scheduled backups and for the S3 storage type.
 - Before restoring, make sure to prevent clients from accessing database.
-- 
+  
 ## Support matrix
 
 ### Logical Backup/Restore
