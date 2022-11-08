@@ -169,7 +169,7 @@ To create a PITR backup, select the **PITR** backup type option when creating sc
 
 #### PITR artifacts
 
-The PITR oplog is available a few minutes after your PITR job has run for the first time. To see the corresponding PITR artifact, check out the list under **Backup > All Backups**.
+The PITR oplog is available a few minutes (10 by default) after your PITR job has run for the first time. To see the corresponding PITR artifact, check out the list under **Backup > All Backups**.
 
 ![!](../_images/PMM_Backup_Management-MongoDB-PITR-Inventory.jpg)
 
