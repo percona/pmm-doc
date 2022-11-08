@@ -104,9 +104,9 @@ The *Services* menu choice determines the Service Type menu.
 |           | PostgreSQL Instances Overview  | <i class="uil uil-bars"></i> PostgreSQL | PostgreSQL dashboards.
 
 
-!!! hint alert alert-success "Tip"
-    You can easily access all dashboards for monitored service from the main menu via *Other Dashboards* in the services folder.
-
+!!! hint alert alert-success "Note"
+    - You can easily access all dashboards for monitored service from the main menu via *Other Dashboards* in the services folder.
+    - Only the services being monitored by PMM will appear on the main menu.
 
 ### PMM menu
 
