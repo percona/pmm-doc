@@ -38,20 +38,46 @@ Creating and restoring MongoDB backups in PMM currently has the following limita
 ### Logical Backup/Restore
 
 |    Storage type           | Full   | PITR    |
-| ------------- | ------ | ------- |
-| Local storage | Backup | Restore | Backup | \- |
-| S3            | Backup | Restore | Backup | Restore |
+| ------------- | ------ | ------- |------- |
+| Local storage | Backup/Restore | Backup/ - |
+| S3            | Backup/Restore | Backup/Restore |
 
 
 
-### Physical  Backup/Restore
+### Physical Backup/Restore
 
 |      Storage type          | Full   | PITR      |
 | ------------- | ------ | --------- |
-| Local storage | Backup | Restore\* | N/A |
-| S3            | Backup | Restore\* |
+| Local storage | Backup/Restore* (requires manual restart of mongod and pbm-agents) | -/-|
+| S3            | Backup/Restore (requires manual restart of mongod and pbm-agents) |  -/-|
+
 
 ### Full matrix
+
+<style>
+  table th:first-of-type {
+    width: 5%
+  }
+  table th:nth-of-type(2) {
+    width: 5%
+  }
+  table th:nth-of-type(3) {
+    width: 5%
+  }
+  table th:nth-of-type(4) {
+    width: 5%
+  }
+  table th:nth-of-type(5) {
+    width: 5%
+  }
+  table th:nth-of-type(6) {
+    width: 10%
+  }
+  table td {
+    text-align:left; vertical-align: top;
+  }
+</style>
+
 | Backup/Restore | Logical/Physical | PITR | S3/Local | Containerized | Support level| Comments                                                                      |
 | -------------- | ---------------- | ---- | -------- | ------------- | --------------------------------------- | ----------------------------------------------------------------------------- |
 | Backup         | Logical          | Yes  | S3       | Yes           | <b style="color:#5794f2;"><b style="color:#5794f2;">Full</b></b>                                  |                                                                               |
