@@ -120,7 +120,9 @@ nav:
       - using/index.md
       - using/interface.md
       - using/alerting.md
-      - using/backup.md
+      - Backup and restore:
+          - using/backup.md
+          - using/mongodb_limitations.md
       - using/query-analytics.md
       - using/dbaas.md
 
