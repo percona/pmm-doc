@@ -116,6 +116,7 @@ To be able to create MySQL backups, make sure that:
 
 Before creating MongoDB backups, make sure that:
 
+- [PMM Client](../setting-up/client/index.md) is installed and running at least on one node of replica set (the one which will be used for backup and restore jobs).
 - [Percona Backup for MongoDB] (PBM) is installed and `pbm-agent` is running on all MongoDB nodes in the replica set. PMM 2.32 and later require PBM 2.0.1 or newer.
 - MongoDB is a member of a replica set.
 - Check out the current [MongoDB supported configurations and limitations](mongodb_limitations.md).
@@ -129,14 +130,14 @@ To create a backup:
 3. Specify the type of backup that you want to create: **On Demand** or **Schedule Backup**.
 4. Enter a unique name for this backup.
 5. Choose the service to back up from the Service name drop-down menu. This automatically populates the **DB Technology** field.
-6. Select whether you want to create a **Physical** or **Logical** backup of your data, depending on your use case and requirements. For MySQL, you only the **Physical** data model is available.
-7. Choose a storage location for the backup. MysQL currently only supports storing backups to Amazon S3. If no options are available here, see the [Create a storage location](#create-a-storage-location) section above.
+6. Select whether you want to create a **Physical** or **Logical** backup of your data, depending on your use case and requirements. For MySQL, only the **Physical** data model is available.
+7. Choose a storage location for the backup. MySQL currently only supports storing backups to Amazon S3. If no options are available here, see the [Create a storage location](#create-a-storage-location) section above.
 8. If you're creating a schedule backups, also specify the backup type, the schedule, and a retention policy for your backup:
     - **Backup Type**: currently, PMM supports both **Full** and Point-in-type recovery **(PITR)** backup types for MongoDB. However, the PITR option is only available for the **Logical** data model. For MySQL, only the **Full** type is supported.
     - **Shedule**: configure the frequency and the start time for this backup. Make sure that the the schedule you specify here does not create overlapping jobs or overhead on the production environment. Also check that your specified shedule does not overlap with production hours.
     - **Retention**: this option is only available for Snapshot backups stored on Amazon S3. If you wand to keep an unlimited number of backup artifacts, type `0`.
-9. Expand **Advanced Settings** to specify the settings for retrying the backup in case of any issues. You can either let PMM retry the backup again (**Auto**), or do it again yourself **Manual**. Auto retry mode enables you to select up to ten retries and an interval of up to eight hous between retries.
-10. Click **Backup** to start creating the backup artifact.
+9. Expand **Advanced Settings** to specify the settings for retrying the backup in case of any issues. You can either let PMM retry the backup again (**Auto**), or do it again yourself **Manual**. Auto retry mode enables you to select up to ten retries and an interval of up to eight hours between retries.
+10. Click **Backup** to start creating the backup artifact or schedule a job.
 11. Go to the **All Backups** tab, and check the **Status** column. An animated ellipsis indicator {{icon.bouncingellipsis}} shows that a backup is currently being created.
 
 ## Edit a scheduled backup
@@ -159,7 +160,7 @@ PMM introduced the option to create PITR Backups for MongoDB in version 2.23, as
 
 Percona Backup for MongoDB is a distributed, low-impact solution for achieving consistent backups of MongoDB sharded clusters and replica sets.
 
-Starting with PMM 2.32, restoring PITR backups is also available based on pbm ≤ 2.0.1. To  restore PITR backups, make sure you have pbm ≤ 2.0.1 installed.
+Starting with PMM 2.32, restoring PITR backups is available for backups based on pbm ≤ 2.0.1. To  restore PITR backups, make sure you have pbm ≥ 2.0.1 installed.
 
  Percona Backup for MongoDB supports [Percona Server for MongoDB](https://www.percona.com/software/mongodb/percona-server-for-mongodb) and MongoDB Community ≤ 3.6, with [MongoDB Replication](https://docs.mongodb.com/manual/replication/) enabled. For more information, see the [Percona Backup for MongoDB documentation](https://docs.percona.com/percona-backup-mongodb/installation.html).
 

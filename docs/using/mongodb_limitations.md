@@ -3,6 +3,7 @@
 Creating and restoring MongoDB backups in PMM currently has the following limitations and requirements:
 
 - Restoring on different Replica set/Cluster is not supported.
+- Physical backups and restores suppoted only for **Percona Server for MongoDB**
 - Physical restores are not supported for deployments with arbiter nodes. For more information, see the [Percona Backup for MongoDB documentation](https://docs.percona.com/percona-backup-mongodb/usage/restore.html#physical-restore-known-limitations).
 - All types of backups on sharded cluster setups are currently not supported.
 - Physical backups are supported, but restoring from physical backups will cause all mongo and pbm-agent instances to shutdown. To bring them back up, restart all **mongod** and **mongos** nodes and restart all **pbm-agents**.
