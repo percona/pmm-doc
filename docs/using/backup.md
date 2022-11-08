@@ -160,7 +160,7 @@ PMM introduced the option to create PITR Backups for MongoDB in version 2.23, as
 
 Percona Backup for MongoDB is a distributed, low-impact solution for achieving consistent backups of MongoDB sharded clusters and replica sets.
 
-Starting with PMM 2.32, restoring PITR backups is also available based on pbm ≤ 2.0.1. To  restore PITR backups, make sure you have pbm ≤ 2.0.1 installed.
+Starting with PMM 2.32, restoring PITR backups is available for backups based on pbm ≤ 2.0.1. To  restore PITR backups, make sure you have pbm ≥ 2.0.1 installed.
 
  Percona Backup for MongoDB supports [Percona Server for MongoDB](https://www.percona.com/software/mongodb/percona-server-for-mongodb) and MongoDB Community ≤ 3.6, with [MongoDB Replication](https://docs.mongodb.com/manual/replication/) enabled. For more information, see the [Percona Backup for MongoDB documentation](https://docs.percona.com/percona-backup-mongodb/installation.html).
 
