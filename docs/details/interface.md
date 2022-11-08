@@ -89,7 +89,7 @@ This menu bar is context sensitive; it changes according to the page you are on.
 
 ## Shortcut menu
 
-This menu contains shortcut for **Home**, **Query Analytics**, **Services**, and **PMM**.
+This menu contains shortcut for *Home*, *Query Analytics*, *Services*, and *PMM*.
 
 ### Services menu
 
