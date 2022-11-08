@@ -574,10 +574,9 @@ In low resolution we collect metrics from collectors which could take some time:
         -  0: Default value. The default value is 2048 chars.
         - >0: Query will be truncated after <NUMBER> chars.
 
-        ```txt
-        !!! caution alert alert-warning "Important"
+        !!! caution ""
         Ensure you do not set the value of max-query-length to 1, 2, or 3. Otherwise, the PMM agent will get terminated.
-        ```
+        
 #### PostgreSQL
 
 `pmm-admin add postgresql [FLAGS] [node-name] [node-address]`
