@@ -11,23 +11,6 @@ Creating and restoring MongoDB backups in PMM currently has the following limita
   
 ## Support matrix
 
-### Logical Backup/Restore
-
-|    Storage type           | Snapshot   | PITR    |
-| ------------- | ------ | ------- |
-| Local storage | **Backup**/**Restore** |**Backup**/ - |
-| S3            | **Backup**/**Restore** | **Backup**/**Restore** |
-
-### Physical Backup/Restore
-
-|      Storage type          | Snapshot   | PITR      |
-| ------------- | ------ | --------- |
-| Local storage | **Backup**/**Restore.** Restoring requires manual restart of mongod and pbm-agents. | -/-|
-| S3            | **Backup**/**Restore**. Restoring requires manual restart of mongod and pbm-agents. |  -/-|
-
-
-### Full matrix
-
 <style>
   table th:first-of-type {
     width: 0.5%
