@@ -116,6 +116,7 @@ To be able to create MySQL backups, make sure that:
 
 Before creating MongoDB backups, make sure that:
 
+- [PMM Client](../setting-up/client/index.md) is installed and running at least on one node of replica set (the one which will be used for backup and restore jobs).
 - [Percona Backup for MongoDB] (PBM) is installed and `pbm-agent` is running on all MongoDB nodes in the replica set. PMM 2.32 and later require PBM 2.0.1 or newer.
 - MongoDB is a member of a replica set.
 - Check out the current [MongoDB supported configurations and limitations](mongodb_limitations.md).
