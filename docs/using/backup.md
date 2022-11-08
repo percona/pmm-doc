@@ -1,13 +1,17 @@
 # Backup and restore
 
 ## Supported setups 
-- MySQL database server replica set cluster with backups to Amazon S3 
-- MongoDB replica set setups with backups to both Amazon S3 and local filesystem. The following actions are supported:
-  - **Logical snapshot backups**: Create and Restore
-  - **Physical snapshot backups**: Create and Restore. This is only available with Percona Server for MongoDB and requires post-restore actions.
-  - **PITR backups**: Create both logical local and Amazon S3 backups. Restore only from S3.
+- MySQL database server with support for:
+  - Creating and restoring physical backups
+  - Storing backups to Amazon S3 
+
+- MongoDB replica set setups with support for:
+  -  Storing backups on Amazon S3 and on local filesystem
+  -  Creating and restoring Logical snapshot backups
+  -  Creating and restoring Physical snapshot backups. This is only available with Percona Server for MongoDB and requires post-restore actions.
+  - Creating logical PITR backups both locally and on S3. Restoring logical PITR backups from S3.
   
-   For a detalied overview of the supported setups for MongoDB, check out the [Support matrix](../using/mongodb_limitations.md) .
+   For a detalied overview of the supported setups for MongoDB, check out the [Support matrix](../using/mongodb_limitations.md).
 
 ## Prerequisites
 
@@ -57,7 +61,7 @@ A sample IAM policy is:
         }
         ```
    
-## [Create a storage location](#create-a-storage-location)
+### [Create a storage location](#create-a-storage-location)
 
 1. Go to **Backup > Storage Locations**:
     ![!](../_images/PMM_Backup_Management.jpg)
@@ -71,7 +75,7 @@ A sample IAM policy is:
 
 5. Click **Add** to create the location.
 
-## MySQL backup prerequisites
+### MySQL backup prerequisites
 
 To be able to create MySQL backups, make sure that:
 
@@ -108,7 +112,7 @@ To be able to create MySQL backups, make sure that:
 !!! caution alert alert-warning "Important"
        The versions of each must be compatible with the installed version of MySQL.
 
-## MongoDB backup prerequistes
+### MongoDB backup prerequistes
 
 Before creating MongoDB backups, make sure that:
 
