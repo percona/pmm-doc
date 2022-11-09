@@ -19,7 +19,21 @@ From the left menu, select <i class="uil uil-database"></i> *DBaaS*.
 
 ![!](../_images/PMM_DBaaS_Kubernetes_Cluster_Panel.png)
 
+
+
 ## Kubernetes clusters
+
+## Add a Kubernetes cluster automatically
+
+PMM users who deployed PMM in k8s need to add these k8s to PMM. To simplify the use of DBaaS, the k8s cluster is automatically added to PMM. 
+
+The steps for adding a k8s cluster to PMM are as follows:
+
+Prerequisites: 
+
+
+
+
 
 ### Add a Kubernetes cluster
 
