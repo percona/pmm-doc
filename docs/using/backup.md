@@ -5,14 +5,14 @@
 **- MySQL database server with support for:**
     
   - Creating and restoring physical backups
-  - Storing backups to Amazon S3 compatible object storage 
+  - Storing backups to Amazon S3-compatible object storage 
 
 **- MongoDB replica set setups with support for:**
 
-  -  Storing backups on Amazon S3 compatible object storageand on mounted filesystem
+  -  Storing backups on Amazon S3-compatible object storageand on mounted filesystem
   -  Creating and restoring Logical snapshot backups
   -  Creating and restoring Physical snapshot backups. This is only available with Percona Server for MongoDB and requires post-restore actions.
-  - Creating logical PITR backups both locally and on S3 compatible object storage. Restoring logical PITR backups from S3 compatible object storage.
+  - Creating logical PITR backups both locally and on S3-compatible object storage. Restoring logical PITR backups from S3 compatible object storage.
   
    For a detalied overview of the supported setups for MongoDB, check out the [Support matrix](../using/mongodb_limitations.md).
 
@@ -31,7 +31,7 @@ If you prefer storing your backup artifacts on a remote filesystem, make sure th
 
 For more information, see the [Percona Backup for MongoDB (PBM) documentation](https://www.google.com/url?q=https://docs.percona.com/percona-backup-mongodb/details/storage-configuration.html%23remote-filesystem-server-storage&sa=D&source=docs&ust=1667855380308508&usg=AOvVaw3B1N4tjh_mv8lt4msbf3Ui). 
 
-#### For Amazon AWS S3 compatible backups
+#### For Amazon AWS S3-compatible backups
 If you want to store backup artifacts in the cloud, make sure you have your Amazon S3 storage account and location details ready.
 In addition to bucket location details, you will also need to ensure proper S3 permissions. 
 
