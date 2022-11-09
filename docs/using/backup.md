@@ -12,7 +12,7 @@
   -  Storing backups on Amazon S3-compatible object storageand on mounted filesystem
   -  Creating and restoring Logical snapshot backups
   -  Creating and restoring Physical snapshot backups. This is only available with Percona Server for MongoDB and requires post-restore actions.
-  - Creating logical PITR backups both locally and on S3-compatible object storage. Restoring logical PITR backups from S3 compatible object storage.
+  - Creating logical PITR backups both locally and on S3-compatible object storage. Restoring logical PITR backups from S3-compatible object storage.
   
    For a detalied overview of the supported setups for MongoDB, check out the [Support matrix](../using/mongodb_limitations.md).
 
@@ -218,7 +218,6 @@ To delete a backup:
 2. Click the arrow in the **Actions** column to check all the information for the backup, then click ![](../_images/dots-three-vertical.png) **> Delete backup**.
 3. In the Delete backup artifact dialog box, enable **Delete from storage** if you also want to delete the actual backup content besides just the backup register.
 4. Click **Delete**.
-
 
 ### Resources
 - [Amazon AWS S3](https://aws.amazon.com/s3/)
