@@ -32,7 +32,7 @@ PMM users who deployed PMM in k8s need to add these k8s to PMM manually. To simp
 
 **Prerequisites:** Helm Chart/Manifest installed
 
-The steps for adding k8s cluster in PMM are as follows:
+The steps for automatically adding k8s cluster in PMM are as follows:
 
 1. Use [Helm](https://github.com/helm/helm) to install PMM server on Kubernetes clusters. For more information, see [documentation](../setting-up/server/helm.md).
 
