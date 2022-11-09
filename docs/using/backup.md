@@ -7,7 +7,7 @@
   - Creating and restoring physical backups
   - Storing backups to Amazon S3-compatible object storage 
 
-**- MongoDB replica set setups with support for:**
+**- MongoDB replica set setups (GA) with support for:**
 
   -  Storing backups on Amazon S3-compatible object storageand on mounted filesystem
   -  Creating and restoring Logical snapshot backups
@@ -15,6 +15,12 @@
   - Creating logical PITR backups both locally and on S3-compatible object storage. Restoring logical PITR backups from S3-compatible object storage.
   
    For a detalied overview of the supported setups for MongoDB, check out the [Support matrix](../using/mongodb_limitations.md).
+
+**- MySQL database server (Technical Preview) with support for:**
+    
+  - Creating and restoring physical backups
+  - Storing backups to Amazon S3 
+
 
 ## Prerequisites
 
@@ -78,8 +84,22 @@ A sample IAM policy is:
 
 5. Click **Add** to create the location.
 
+
+### MongoDB backup prerequistes
+
+Before creating MongoDB backups, make sure that:
+
+- [PMM Client](../setting-up/client/index.md) is installed and running at least on one node of replica set (the one which will be used for backup and restore jobs).
+- [Percona Backup for MongoDB] (PBM) is installed and `pbm-agent` is running on all MongoDB nodes in the replica set. PMM 2.32 and later require PBM 2.0.1 or newer.
+- MongoDB is a member of a replica set.
+- Check out the current [MongoDB supported configurations and limitations](mongodb_limitations.md).
+
 ### MySQL backup prerequisites
 
+!!! caution alert alert-warning "Important"
+    MySQL backup functionality is still Technical Preview
+    
+    
 To be able to create MySQL backups, make sure that:
 
 - [PMM Client](../setting-up/client/index.md) is installed and running on the node.
@@ -115,14 +135,6 @@ To be able to create MySQL backups, make sure that:
 !!! caution alert alert-warning "Important"
        The versions of each must be compatible with the installed version of MySQL.
 
-### MongoDB backup prerequistes
-
-Before creating MongoDB backups, make sure that:
-
-- [PMM Client](../setting-up/client/index.md) is installed and running at least on one node of replica set (the one which will be used for backup and restore jobs).
-- [Percona Backup for MongoDB] (PBM) is installed and `pbm-agent` is running on all MongoDB nodes in the replica set. PMM 2.32 and later require PBM 2.0.1 or newer.
-- MongoDB is a member of a replica set.
-- Check out the current [MongoDB supported configurations and limitations](mongodb_limitations.md).
 
 ## [Make a backup](#make-a-backup)
 
