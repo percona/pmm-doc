@@ -26,13 +26,13 @@ From the left menu, select <i class="uil uil-database"></i> *DBaaS*.
 ## Add a Kubernetes cluster automatically
 
 !!! note alert alert-primary "Availability"
-    Automatically addition of k8s cluster is available starting with PMM 2.32.0.
+    Automatic addition of k8s cluster in PMM is available starting with PMM 2.32.0.
 
-PMM users who deployed PMM in k8s need to add these k8s to PMM. To simplify the use of DBaaS, the k8s cluster is automatically added to PMM. 
+PMM users who deployed PMM in k8s need to add these k8s to PMM manually. To simplify the use of DBaaS, the k8s cluster is automatically added to PMM. 
 
 **Prerequisites:** Helm Chart/Manifest installed
 
-The steps for adding a k8s cluster to PMM are as follows:
+The steps for adding k8s cluster in PMM are as follows:
 
 1. Use [Helm](https://github.com/helm/helm) to install PMM server on Kubernetes clusters. For more information, see [documentation](../setting-up/server/helm.md).
 
