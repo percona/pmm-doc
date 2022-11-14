@@ -26,6 +26,9 @@
 !!! caution alert alert-warning "Important"
     If PMM Server runs as a Docker container, enable backup features at container creation time by adding `-e ENABLE_BACKUP_MANAGEMENT=1` to your `docker run` command.
 
+### Set permissions for creating and restoring backups
+
+For information on setting the required permissions for creating and restoring backups, see [Create PMM account and set permissions](/docs/setting-up/client/mongodb.md#create-pmm-account-and-set-permissions).
 ### Prepare a storage location
 #### For local backups
 If you prefer storing your backup artifacts on a remote filesystem, make sure that you have Write permissions on the path you define, and that you've mounted the remote folder to all the mongoDB nodes. 

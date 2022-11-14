@@ -22,40 +22,71 @@ Check that:
 
 We recommend using a dedicated account to connect PMM Client to the monitored database instance.
 
-This example creates a new custom role with the privileges needed by the Query Analyzer, and adds a database user with that role plus the built-in `clusterMonitor` role.
-
+Run the code below in a `mongo` session to:
+-  create custom roles with the privileges required for restoring backups and working with Query Analytics 
+-  create/update a database user with these roles above, plus the built-in  `clusterMonitor` role
+  
 !!! caution alert alert-warning ""
     Values for username (`user`) and password (`pwd`) are examples. Replace them before using this code.
 
-Run this in a `mongo` session.
+
 
 ```json
 db.getSiblingDB("admin").createRole({
-    role: "explainRole",
-    privileges: [{
-        resource: {
-            db: "",
-            collection: ""
-            },
-        actions: [
-            "listIndexes",
-            "listCollections",
-            "dbStats",
-            "dbHash",
-            "collStats",
-            "find"
-            ]
-        }],
-    roles:[]
+     role: "explainRole",
+     privileges: [{
+         resource: {
+             db: "",
+             collection: ""
+             },
+         actions: [
+             "listIndexes",
+             "listCollections",
+             "dbStats",
+             "dbHash",
+             "collStats",
+             "find"
+             ]
+         }],
+     roles:[]
 })
 
+db.getSiblingDB("admin").createRole({ "role": "pbmAnyAction",
+    "privileges": [
+       { "resource": { "anyResource": true },
+         "actions": [ "anyAction" ]
+       }
+    ],
+    "roles": []
+ });
+
+// If user do not exists:
 db.getSiblingDB("admin").createUser({
-   user: "pmm_mongodb",
-   pwd: "password",
+   user: "pmm",
+   pwd: "pmm",
    roles: [
       { role: "explainRole", db: "admin" },
       { role: "clusterMonitor", db: "admin" },
-      { role: "read", db: "local" }
+      { role: "read", db: "local" },
+      { "db" : "admin", "role" : "readWrite", "collection": "" },
+      { "db" : "admin", "role" : "backup" },
+      { "db" : "admin", "role" : "clusterMonitor" },
+      { "db" : "admin", "role" : "restore" },
+      { "db" : "admin", "role" : "pbmAnyAction" }
+   ]
+})
+
+// If user exists:
+db.getSiblingDB("admin").updateUser("pmm", {
+   roles: [
+      { role: "explainRole", db: "admin" },
+      { role: "clusterMonitor", db: "admin" },
+      { role: "read", db: "local" },
+      { "db" : "admin", "role" : "readWrite", "collection": "" },
+      { "db" : "admin", "role" : "backup" },
+      { "db" : "admin", "role" : "clusterMonitor" },
+      { "db" : "admin", "role" : "restore" },
+      { "db" : "admin", "role" : "pbmAnyAction" }
    ]
 })
 ```
