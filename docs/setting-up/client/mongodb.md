@@ -30,36 +30,26 @@ Run the code below in a `mongo` session to:
     Values for username (`user`) and password (`pwd`) are examples. Replace them before using this code.
 
 === "Example code"
-            ---
-            db.getSiblingDB("admin").createRole({
-        role: "explainRole",
-        privileges: [{
-            resource: {
-                db: "",
-                collection: ""
-                },
-            actions: [
-                "listIndexes",
-                "listCollections",
-                "dbStats",
-                "dbHash",
-                "collStats",
-                "find"
-                ]
-            }],
-        roles:[]
-     })
-        db.getSiblingDB("admin").createRole({ "role": "pbmAnyAction",
-            "privileges": [
-            { "resource": { "anyResource": true },
-                "actions": [ "anyAction" ]
-            }
-            ],
-            "roles": []
-        });
+        db.getSiblingDB("admin").createRole({
+     role: "explainRole",
+     privileges: [{
+         resource: {
+             db: "",
+             collection: ""
+             },
+         actions: [
+             "listIndexes",
+             "listCollections",
+             "dbStats",
+             "dbHash",
+             "collStats",
+             "find"
+             ]
+         }],
+     roles:[]
+})
 
 === "If user do not exists"
-            ---
         db.getSiblingDB("admin").createUser({
         user: "pmm",
         pwd: "pmm",
@@ -76,7 +66,6 @@ Run the code below in a `mongo` session to:
         })
 
 === "If user exists"
-            ---
         db.getSiblingDB("admin").updateUser("pmm", {
         roles: [
             { role: "explainRole", db: "admin" },
