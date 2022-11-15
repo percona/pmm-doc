@@ -2,12 +2,6 @@
 
 How to set up PMM to monitor a [MongoDB] or [Percona Server for MongoDB] database instance.
 
-!!! summary alert alert-info "Summary"
-    - [Create PMM account and set permissions.](#create-pmm-account-and-set-permissions)
-    - [Configure profiling](#profiling).
-    - [Add service](#add-service).
-    - [Check the service](#check-the-service).
-
 ## Before you start
 
 Check that:
@@ -22,13 +16,13 @@ Check that:
 
 We recommend using a dedicated account to connect PMM Client to the monitored database instance.
 
-Run the code below in a `mongo` session to:
+Run the example codes below in a `mongo` session to:
 
 -  create custom roles with the privileges required for creating/restoring backups and working with Query Analytics (QAN)
 -  create/update a database user with these roles above, plus the built-in  `clusterMonitor` role
   
 !!! caution alert alert-warning ""
-    Values for username (`user`) and password (`pwd`) are examples. Replace them before using this code.
+    Values for username (`user`) and password (`pwd`) are examples. Replace them before using these code snippets.
 
 === "Create roles with privileges for backups and QAN"
         db.getSiblingDB("admin").createRole({
