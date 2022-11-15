@@ -49,7 +49,6 @@ Run the code below in a `mongo` session to:
             }],
         roles:[]
      })
-
         db.getSiblingDB("admin").createRole({ "role": "pbmAnyAction",
             "privileges": [
             { "resource": { "anyResource": true },
