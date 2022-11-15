@@ -23,16 +23,15 @@ Check that:
 We recommend using a dedicated account to connect PMM Client to the monitored database instance.
 
 Run the code below in a `mongo` session to:
--  create custom roles with the privileges required for restoring backups and working with Query Analytics 
+-  create custom roles with the privileges required for creating/restoring backups and working with Query Analytics 
 -  create/update a database user with these roles above, plus the built-in  `clusterMonitor` role
   
 !!! caution alert alert-warning ""
     Values for username (`user`) and password (`pwd`) are examples. Replace them before using this code.
 
-
-
-```json
-db.getSiblingDB("admin").createRole({
+=== "Check format"
+            ---
+        db.getSiblingDB("admin").createRole({
      role: "explainRole",
      privileges: [{
          resource: {
@@ -89,7 +88,6 @@ db.getSiblingDB("admin").updateUser("pmm", {
       { "db" : "admin", "role" : "pbmAnyAction" }
    ]
 })
-```
 
 ## Profiling
 
