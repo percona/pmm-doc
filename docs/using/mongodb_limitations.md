@@ -39,52 +39,41 @@ Creating and restoring MongoDB backups in PMM currently has the following limita
   }
 </style>
 
+
 =======
 ## Backup: Logical
 
-| Full or PITR | Storage type (S3 or Local) | DB running in container (Containerized) | Support level|                                                                    
-| ---- | -------- | ------------- | --------------------------------------- |
-| PITR  | S3       | Yes           | <b style="color:#5794f2;"><b style="color:#5794f2;">Full</b></b>                                  |                   
-| PITR  | S3       | No            | <b style="color:#5794f2;">Full</b>                                    |                                               
-| PITR  | Local    | Yes           | <b style="color:#5794f2;">Full</b>                                    |
-| PITR  | Local    | No            | <b style="color:#5794f2;">Full</b>                                    |
-| Full   | S3       | Yes           | <b style="color:#5794f2;">Full</b>                                    |                                               
-| Full   | S3       | No            | <b style="color:#5794f2;">Full</b>                                    |                                               
-| Full   | Local    | Yes           | <b style="color:#5794f2;">Full</b>                                    |
-| Full   | Local    | No            | <b style="color:#5794f2;">Full</b>                                    |
+| Full or PITR | Storage type (S3 or Local) | Support level |                                                                    
+| ---- | -------- | ------------- |
+| PITR  | S3       | <b style="color:#5794f2;"><b style="color:#5794f2;">Full</b></b>                                  |                   
+| PITR  | Local    | <b style="color:#5794f2;">Full</b>                                    |
+| Full   | S3      | <b style="color:#5794f2;">Full</b>                                    |                                               
+| Full   | Local   | <b style="color:#5794f2;">Full</b>                                    |
+
 
 ## Backup: Physical
-| Full or PITR | Storage type (S3 or Local) | DB running in container (Containerized) | Support level|                                                                    
-| ---- | -------- | ------------- | --------------------------------------- |
-| PITR  | S3       | Yes           | <b style="color:#e36526;">No</b>                                       
-| PITR  | S3       | No            | <b style="color:#e36526;">No</b>                                       
-| PITR  | Local    | Yes           | <b style="color:#e36526;">No</b>                                       
-| PITR  | Local    | No            | <b style="color:#e36526;">No</b>                                      
-| Full   | S3       | Yes           | <b style="color:#5794f2;">Full</b>                                   
-| Full   | S3       | No            | <b style="color:#5794f2;">Full</b>                                    
-| Full   | Local    | Yes           | <b style="color:#5794f2;">Full</b>                                    
-| Full   | Local    | No            | <b style="color:#5794f2;">Full</b>                                    
+| Full or PITR | Storage type (S3 or Local) | Support level |                                                                    
+| ---- | -------- | ------------- |
+| PITR  | S3       | <b style="color:#e36526;">No</b>                                       
+| PITR  | Local    | <b style="color:#e36526;">No</b>                                       
+| Full   | S3      | <b style="color:#5794f2;">Full</b>                                   
+| Full   | Local   | <b style="color:#5794f2;">Full</b>                                    
+
 
 ## Restore: Logical
-| Full or PITR | Storage type (S3 or Local) | DB running in container (Containerized) | Support level|                                                                    
-| ---- | -------- | ------------- | --------------------------------------- |
-| PITR  | S3       | Yes           | <b style="color:#5794f2;">Full</b>                                    |                                               
-| PITR  | S3       | No            | <b style="color:#5794f2;">Full</b>                                    |                                               
-| PITR  | Local    | Yes           | <b style="color:#e36526;">No</b>                                      |
-| PITR  | Local    | No            |<b style="color:#e36526;">No</b>                                        |
-| Full   | S3       | Yes           | <b style="color:#5794f2;">Full</b>                                    |                                               
-| Full   | S3       | No            | <b style="color:#5794f2;">Full</b>                                    |                                               
-| Full   | Local    | Yes           | <b style="color:#5794f2;">Full</b>                                    |                                               
-| Full   | Local    | No            | <b style="color:#5794f2;">Full</b>                                    |                                               
+| Full or PITR | Storage type (S3 or Local) | Support level |                                                                    
+| ---- | -------- | ------------- |
+| PITR  | S3       | <b style="color:#5794f2;">Full</b>                                    |                                               
+| PITR  | Local    | <b style="color:#e36526;">No</b>                                      |
+| Full   | S3       | <b style="color:#5794f2;">Full</b>                                    |                                               
+| Full   | Local    | <b style="color:#5794f2;">Full</b>                                    |                                               
 
 ## Restore: Physical
-| Full or PITR | Storage type (S3 or Local) | DB running in container (Containerized) | Support level|                                                                    
-| ---- | -------- | ------------- | --------------------------------------- |
-| PITR  | S3       | Yes           | <b style="color:#e36526;">No</b>                                       
-| PITR  | S3       | No            | <b style="color:#e36526;">No</b>                                     
-| PITR  | Local    | Yes           | <b style="color:#e36526;">No</b>                                       
-| PITR  | Local    | No            | <b style="color:#e36526;">No</b>                                       
-| Full   | S3       | Yes           | <b style="color:#e36526;">No</b>                                      
-| Full   | S3       | No            | Partial                                
-| Full   | Local    | Yes           | <b style="color:#e36526;">No</b>                                    
-| Full   | Local    | No            | Partial                                
+| Full or PITR | Storage type (S3 or Local) | Support level|                                                                    
+| ---- | -------- | ------------- |
+| PITR  | S3       | <b style="color:#e36526;">No</b>                        |            
+| PITR  | Local    | <b style="color:#e36526;">No</b>                        |             
+| Full   | S3       | <b style="color:#e36526;">Partial*</b> |                                    
+| Full   | Local    | <b style="color:#e36526;">Partial*</b> |
+
+\* Partial support for non-containerized deployments and NO support for containerized deployments.
