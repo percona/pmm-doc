@@ -72,9 +72,7 @@ Decide which database extension to use, and configure your database server for i
 
 1. [`pg_stat_statements`](#pg_stat_statements), the original extension created by PostgreSQL, part of the `postgresql-contrib` package available on Linux.
 
-2. [`pg_stat_monitor`](#pg_stat_monitor) is a new extension created by Percona. It is based on and compatible with `pg_stat_statements`. `pg_stat_monitor` has all the features of `pg_stat_statements`, but adds *bucket-based data aggregation*.
-
-We recommend choosing only one of these. **If you use both, you will get duplicate metrics.**
+2. [`pg_stat_monitor`](#pg_stat_monitor) is a new extension created by Percona. `pg_stat_monitor` has all the features of `pg_stat_statements` but adds *bucket-based data aggregation*, provides more accurate data, and can expose Query Examples.
 
 Here are the benefits and drawbacks of each.
 
@@ -82,6 +80,8 @@ Here are the benefits and drawbacks of each.
 |----------------------|------------------------------------------------|---------------------------------------------------
 | `pg_stat_statements` | 1. Part of official `postgresql-contrib` package. | 1. No aggregated statistics or histograms.<br>2. No Query Examples.
 | `pg_stat_monitor`    | 1. Builds on `pg_stat_statements` features.<br>2. Bucket-based aggregation <br>3. Histogram <br> 4. [more...](https://github.com/percona/pg_stat_monitor#features) | 
+
+For a more detailed comparison of extensions, follow [pg_stat monitor User Guide](https://github.com/percona/pg_stat_monitor/blob/master/docs/USER_GUIDE.md#usage)
 
 !!! note alert alert-primary "Bucket-based data aggregation"
     `pg_stat_monitor` collects statistics and aggregates data in a data collection unit called a *bucket*. These are linked together to form a *bucket chain*.
@@ -334,7 +334,7 @@ pmm-admin inventory list services
 
 ### Running custom queries
 
-The Postgres exporter can run custom queries to add new metrics not provided by default.  
+The PostgreSQL exporter can run custom queries to add new metrics not provided by default.  
 Those custom queries must be defined in the `/usr/local/percona/pmm2/collectors/custom-queries/postgresql` in the same host where the exporter is
 running. There are 3 directories inside it:
     - high-resolution/   - every 5 seconds
@@ -344,6 +344,7 @@ running. There are 3 directories inside it:
 Depending on the desired resolution for your custom queries, you can place a file with the queries definition.
 The file is a yaml where each query can have these fields:
 
+```yml
 query_name:
    query: the query definition
    master: boolean to specify if the query should be executed only in the master
@@ -351,9 +352,11 @@ query_name:
      - metric name:
          usage: GAUGE, LABEL, COUNTER, MAPPEDMETRIC or DURATION
          description: a human readable description
+```
 
 #### Example
 
+```yml
 pg_postmaster_uptime:
    query: "select extract(epoch from current_timestamp - pg_postmaster_start_time()) as seconds"
    master: true
@@ -361,6 +364,7 @@ pg_postmaster_uptime:
      - seconds:
          usage: "GAUGE"
          description: "Service uptime"
+```
 
 Check the see also section for a more detailed description on MySQL custom queries with more examples about how to use custom queries in dashboards.
 
