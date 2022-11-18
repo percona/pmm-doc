@@ -11,7 +11,7 @@
 | PMM               | [PMM Inventory]                                                                          | 3
 | PMM               | [Environment Overview]                                                                   | 0
 | PMM               | [Environment Summary]                                                                    | 0
-| DBaas             | [DB Cluster Summary]                                                                     | 0
+| DBaaS             | [DB Cluster Summary]                                                                     | 0
 | OS                | [CPU Utilization Details]                                                                | 21
 | OS                | [Disk Details]                                                                           | 34
 | OS                | [Network Details]                                                                        | 70
@@ -40,21 +40,24 @@
 | MySQL             | [MySQL Group Replication Summary]                                                        | 18
 | MySQL             | [MySQL Table Details]                                                                    | 45
 | MySQL             | [MySQL User Details]                                                                     | 62
-| MySQL             | [MySQL TokuDB Details]                                                                   | 172
+| MongoDB           | [Experimental MongoDB Collection Overview]                                                             | 100
+| MongoDB           | [Experimental MongoDB Collection Details]                                                             | 100
+| MongoDB           | [Experimental MongoDB Oplog Details]                                                             | 100
 | MongoDB           | [MongoDB Cluster Summary]                                                                | 55
 | MongoDB           | [MongoDB Instance Summary]                                                               | 42
-| MongoDB           | [MongoDB Instances Overview]                                                             | 100
 | MongoDB           | [MongoDB Instances Compare]                                                              | 19
 | MongoDB           | [MongoDB ReplSet Summary]                                                                | 130
 | MongoDB           | [MongoDB InMemory Details]                                                               | 46
 | MongoDB           | [MongoDB MMAPv1 Details]                                                                 | 52
 | MongoDB           | [MongoDB WiredTiger Details]                                                             | 54
 | PostgreSQL        | [PostgreSQL Instances Overview]                                                          | 114
+| PostgreSQL        | [Experimental PostgreSQL Vacuum Monitoring]                                              | 114
 | PostgreSQL        | [PostgreSQL Instance Summary]                                                            | 67
 | PostgreSQL        | [PostgreSQL Instances Compare]                                                           | 89
 | ProxySQL          | [ProxySQL Instance Summary]                                                              | 55
 | High-availability | [PXC/Galera Node Summary]                                                                | 32
 | High-availability | [PXC/Galera Cluster Summary]                                                             | 19
+| High-availability | [Experimental PXC/Galera Cluster Summary]                                                 | 7
 | High-availability | [PXC/Galera Nodes Compare]                                                               | 55
 | High-availability | [HAProxy Instance Summary]                                                               | 113
 
@@ -97,6 +100,9 @@
 [MySQL Table Details]: dashboard-mysql-table-details.md
 [MySQL User Details]: dashboard-mysql-user-details.md
 [MySQL TokuDB Details]: dashboard-mysql-tokudb-details.md
+[Experimental MongoDB Collection Overview]: dashboard-mongodb-experimental_collection_overview.md
+[Experimental MongoDB Collection Details]: dashboard-mongodb-experimental_collection_details.md
+[Experimental MongoDB Oplog Details]: dashboard-mongodb-experimental_oplog.md
 [MongoDB Cluster Summary]: dashboard-mongodb-cluster-summary.md
 [MongoDB Instance Summary]: dashboard-mongodb-instance-summary.md
 [MongoDB Instances Overview]: dashboard-mongodb-instances-overview.md
@@ -105,12 +111,14 @@
 [MongoDB InMemory Details]: dashboard-mongodb-inmemory-details.md
 [MongoDB MMAPv1 Details]: dashboard-mongodb-mmapv1-details.md
 [MongoDB WiredTiger Details]: dashboard-mongodb-wiredtiger-details.md
+[Experimental PostgreSQL Vacuum Monitoring]: dashboard-postgresql-vacuum-monitoring-experimental.md
 [PostgreSQL Instances Overview]: dashboard-postgresql-instances-overview.md
 [PostgreSQL Instance Summary]: dashboard-postgresql-instance-summary.md
 [PostgreSQL Instances Compare]: dashboard-postgresql-instances-compare.md
 [ProxySQL Instance Summary]: dashboard-proxysql-instance-summary.md
 [PXC/Galera Node Summary]: dashboard-pxc-galera-node-summary.md
 [PXC/Galera Cluster Summary]: dashboard-pxc-galera-cluster-summary.md
+[Experimental PXC/Galera Cluster Summary]: dashboard-pxc-galera-cluster-summary-experimental.md
 [PXC/Galera Nodes Compare]: dashboard-pxc-galera-nodes-compare.md
 [HAProxy Instance Summary]: dashboard-haproxy-instance-summary.md
 
