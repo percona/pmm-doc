@@ -35,16 +35,18 @@ PMM uses Alertmanager API to get information about failed checks and show them o
 ## Advisor check format version 2
 PMM 2.28 upgraded Advisor checks to version 2, to accommodate the following major enhancements introduced in this release:
 
+
 - Support for multiple queries
 - Support for Victoria Metrics as a data source
 - Database **Family** field to specify one of the supported database families: MYSQL, POSTGRESQL, MONGODB.
 
 The enhancements in version 2 enable you to create more intelligent advisor checks, that deliver more value to your connected PMM instances.
 
-If you are creating checks for PMM version 2.28 and newer, see [Advisor checks v.2](checks-v1.md) for information on developing custom checks for PMM 2.28 and later.
+If you are creating checks for PMM version 2.28 and newer, see [Advisor checks v.2](checks-v2.md) for information on developing custom checks for PMM 2.28 and later.
 
 ## Advisor check format version 1
 If you are creating checks for PMM version 2.27 and older, see [Advisor checks v.1](checks-v1.md), for information on creating custom checks for PMM 2.27 and older.
 
 ## Submit feedback
 We welcome your feedback on the current process for developing and debugging checks. Send us your comments over [Slack](https://percona.slack.com) or post a question on the [Percona Forums](https://forums.percona.com/).
+

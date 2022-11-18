@@ -182,6 +182,7 @@ PMM can display failed checks as **Critical**, **Major** or **Trivial**. These t
  - **Trivial**: notice, info, debug
 
 ## Check fields
+
 Checks can include the following fields:
 
 - **Version** (integer, required): defines what other properties are expected, what types are supported, what is expected from the script and what it can expect from the execution environment, etc.
@@ -211,6 +212,7 @@ Expand the table below for the list of checks types that you can use to define y
 
 ## Develop version 1 checks
 To develop custom checks for PMM 2.26 and 2.27:
+
 
 1. Install the latest PMM Server and PMM Client builds following the [installation instructions](https://www.percona.com/software/pmm/quickstart#).
 2. Run PMM Server with special environment variables:
