@@ -24,7 +24,7 @@ The dashboard contains three panels:
 
 ![!image](../_images/PMM_Query_Analytics_Panels_Filters.jpg)
 
-- The Filter panel occupies the left side of the dashboard. It lists filters, grouped by category. Selecting one reduces the Overview list to those items matching the filter.
+- The *Filter* panel on the left hand side of the dashboard lists the filters grouped by category. It also shows the percentage of the main metrics (explained below). If you select a different metric, the percentages on the left panel will change as per this metric. When you select a metric, it reduces the overview list as per the matching filter.
 - The first five of each category are shown. If there are more, the list is expanded by clicking *Show all* beside the category name, and collapsed again with *Show top 5*.
 - Applying a filter may make other filters inapplicable. These become grayed out and inactive.
 - Click the chart symbol <i class="uil uil-graph-bar"></i> to navigate directly to an item's associated dashboard.
@@ -135,14 +135,14 @@ The *Details* tab contains a *Query time distribution* bar (only for MySQL datab
 
 - Each row in the table is a metric. The contents depends on the chosen dimension.
 
-For PostgreSQL queries (when using *pg_stat_monitor*) the top query will also be shown in the details section if the query was called by an outer query.
+For PostgreSQL queries (when using `pg_stat_monitor`) the top query will also be shown in the details section if the query was called by an outer query.
 
 ![!image](../_images/PMM_Query_Analytics_Tabs_Details_TopQuery.png)
 
-Other usefull metrics (when using *pg_stat_monitor*) to monitor PostgreSQL Server performance are [Histograms](https://github.com/percona/pg_stat_monitor/blob/master/docs/USER_GUIDE.md#histogram). 
-*Histograms* provide more explicit information about number of queries for fingerprint (queryid). Ranges are from 0 seconds up to 100 seconds.  
+Other useful metrics (when using *pg_stat_monitor*) to monitor PostgreSQL Server performance are [Histograms](https://github.com/percona/pg_stat_monitor/blob/master/docs/USER_GUIDE.md#histogram). 
+*Histograms* provide more explicit information about number of queries for fingerprint (`queryid`). Ranges are from 0 seconds up to 100 seconds.  
 
-Ranges (numbers are in miliseconds):  
+Ranges (numbers are in milliseconds):  
     0 - 3  
     3 - 10  
     10 - 31  
@@ -224,7 +224,7 @@ To share a link for Query Analytics, use *Copy Link*. It copies the link to the 
   Ensure that you use *Copy Link* to copy the link instead of using the browser address bar or the standard Grafana functionality (to share a dashboard). Otherwise, Query Analytics might not display the exact information that existed while sharing the link.
   By default, Grafana uses a relative time range and not an absolute range, so it will have a different timestamp when this link is opened.
 
-![!image](../_images/PMM_Query_Analytics_Share_Link.png)
+![!image](../_images/PMM_Query_Analytics_Share_Link.jpg)
 
 [SLOW_QUERY_LOG]: ../setting-up/client/mysql.md#slow-query-log
 [PERFORMANCE_SCHEMA]: ../setting-up/client/mysql.md#performance-schema

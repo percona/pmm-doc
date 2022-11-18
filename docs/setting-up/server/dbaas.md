@@ -1,11 +1,10 @@
 # DBaaS
 
-!!! caution alert alert-warning "Caution"
-    DBaaS functionality is currently in [technical preview](../../details/glossary.md#technical-preview) and is subject to change.
+To enable and use the Database as a Service (DBaaS) feature in PMM, see [DBaaS](../../using/dbaas.html).
 
-## Software prerequisites
+You can use [free K8s provided by Percona](https://www.percona.com/blog/private-dbaas-with-free-kubernetes-cluster/) for evaluation. 
+You can also create K8s on AWS using these [instructions](https://www.percona.com/blog/dbaas-kubernetes-in-under-20-min/). 
 
-### Docker
 
 #### Red Hat, CentOS
 
@@ -89,7 +88,7 @@ alias kubectl='minikube kubectl --'
 
 ### Amazon AWS EKS
 
-1. Create your cluster via [eksctl](https://github.com/weaveworks/eksctl#installation) or the Amazon AWS interface. For example:
+1. Create your cluster via [`eksctl`](https://github.com/weaveworks/eksctl#installation) or the Amazon AWS interface. For example:
 
     ```sh
     eksctl create cluster --write-kubeconfig --name=your-cluster-name --zones=us-west-2a,us-west-2b --kubeconfig <PATH_TO_KUBECONFIG>
@@ -175,7 +174,7 @@ alias kubectl='minikube kubectl --'
     name=`kubectl get serviceAccounts percona-dbaas-cluster-operator -o json | jq  -r '.secrets[].name'`
     certificate=`kubectl get secret $name -o json | jq -r  '.data."ca.crt"'`
     token=`kubectl get secret $name -o json | jq -r  '.data.token' | base64 -d`
-    server=`kubectl cluster-info | grep 'Kubernetes master' | cut -d ' ' -f 6`
+    server=`kubectl cluster-info | grep 'Kubernetes control plane' | cut -d ' ' -f 7`
     ```
 
 4. Generate your kubeconfig file (copy the output):
@@ -301,3 +300,4 @@ kubectl expose deployment hello-world --type=NodePort.
 [GOOGLE_EXPOSING_APPS]: https://cloud.google.com/kubernetes-engine/docs/how-to/exposing-apps
 [KUBERNETES_ACCESS_APP]: https://kubernetes.io/docs/tasks/access-application-cluster/service-access-application-cluster/
 [STANDALONE_MYSQL_K8S]: https://medium.com/@chrisedrego/setting-up-a-standalone-mysql-instance-on-kubernetes-exposing-it-using-nginx-ingress-controller-262fc7af593a
+
