@@ -3,12 +3,12 @@
 How to set up PMM to monitor a [PostgreSQL] or [Percona Distribution for PostgreSQL] database instance.
 
 !!! summary alert alert-info "Summary"
-    - Create PMM account and set permissions.
-    - Choose, install and configure an extension:
-        - `pg_stat_statements`, or,
-        - `pg_stat_monitor`.
-    - Add service.
-    - Check service.
+    - [Create PMM account and set permissions.](#create-a-database-account-for-pmm)
+    - [Choose, install and configure an extension](#choose-and-configure-an-extension):
+        - [`pg_stat_statements`](#pg_stat_statements), or,
+        - [`pg_stat_monitor`](#pg_stat_monitor).
+    - [Add service.](#add-service)
+    - [Check the service](#check-the-service).
 
 ## Before you start
 
@@ -76,15 +76,12 @@ Decide which database extension to use, and configure your database server for i
 
 We recommend choosing only one of these. **If you use both, you will get duplicate metrics.**
 
-!!! caution alert alert-warning "Caution"
-    While we recommend use of the newer `pg_stat_monitor` extension, be aware it is currently in beta phase and unsupported.
-
 Here are the benefits and drawbacks of each.
 
 |                      | <i class="uil uil-thumbs-up"></i> Benefits     | <i class="uil uil-thumbs-down"></i> Drawbacks
 |----------------------|------------------------------------------------|---------------------------------------------------
 | `pg_stat_statements` | 1. Part of official `postgresql-contrib` package. | 1. No aggregated statistics or histograms.<br>2. No Query Examples.
-| `pg_stat_monitor`    | 1. Builds on `pg_stat_monitor` features.<br>2. Bucket-based aggregation. | 1. Beta software.
+| `pg_stat_monitor`    | 1. Builds on `pg_stat_statements` features.<br>2. Bucket-based aggregation <br>3. Histogram <br> 4. [more...](https://github.com/percona/pg_stat_monitor#features) | 
 
 !!! note alert alert-primary "Bucket-based data aggregation"
     `pg_stat_monitor` collects statistics and aggregates data in a data collection unit called a *bucket*. These are linked together to form a *bucket chain*.
@@ -147,13 +144,10 @@ You can now [add the service](#add-service).
 
 ### `pg_stat_monitor`
 
-!!! caution alert alert-warning "Caution"
-    `pg_stat_monitor` is currently in beta phase and is unsupported.
-
 `pg_stat_monitor` has been tested with:
 
-- PostgreSQL versions 11, 12, 13.
-- Percona Distribution for PostgreSQL versions 11, 12, 13.
+- PostgreSQL versions 11, 12, 13, 14.
+- Percona Distribution for PostgreSQL versions 11, 12, 13, 14.
 
 #### Install
 
@@ -190,15 +184,21 @@ You can now [add the service](#add-service).
 
     You can get a list of other available settings with `SELECT * FROM pg_stat_monitor_settings;`.
 
-    Another important parameter is:
+    Other important parameters are:
     ```ini
     pg_stat_monitor.pgsm_normalized_query
     ```
+    and
+    ```ini
+    pg_stat_monitor.pgsm_enable_query_plan
+    ```
 
-    If the value is set to 1, the actual query values are replaced by placeholders. If the value is 0, the examples are given in QAN. Examples can be found in QAN details tab example.
+    If the value for `pg_stat_monitor.pgsm_normalized_query` is set to 1, the actual query values are replaced by placeholders. If the value is 0, the examples are given in QAN. Examples can be found in QAN details tab example.
+    
+    If `pg_stat_monitor.pgsm_enable_query_plan` is enabled, the query plans are captured and will be available in the `Plan` tab on the Query Analytics dashboard.
 
     !!! note alert alert-primary ""
-        See [`pg_stat_monitor` GitHub repository](https://github.com/percona/pg_stat_monitor/blob/master/docs/USER_GUIDE.md#configuration) for details about available parameters.
+        See [`pg_stat_monitor` online documentation](https://docs.percona.com/pg-stat-monitor/configuration.html) for details about available parameters.
 
 3. Start or restart your PostgreSQL instance. The extension starts capturing statistics from every database.
 
