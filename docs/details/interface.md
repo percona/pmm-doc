@@ -31,7 +31,7 @@ The main menu is part of the Grafana framework and is visible on every page.
 | <i class="uil uil-cog"></i>        | Configuration        |
 | ![!image](../_images/entitlements-white.png)       | Entitlements        |This tab is displayed after connecting PMM to Percona Portal, and shows all your Percona Platform account information. 
 | ![!image](../_images/support_tickets_white.png)       | Support Tickets        | Shows the list of tickets opened across your organization. This tab is only available after you connect PMM to Percona Platform.
-| ![!image](../_images/environment_overview.png)       | Environment Overview        | This tab is displayed after connecting PMM to Percona Portal. Shows the name and email of the Customer Success Manager assigned to your organization, who can help with any PMM queries. This tab tab will soon be populated with more useful information about your PMM environment. 
+| ![!image](../_images/environment_overview.png)       | Environment Overview        | This tab is displayed after connecting PMM to Percona Portal. Shows the name and email of the Customer Success Manager assigned to your organization, who can help with any PMM queries. This tab will soon be populated with more useful information about your PMM environment. 
 | <i class="uil uil-shield"></i>     | Server Admin         |
 | <i class="uil uil-history"></i>    | Backup Management    | [Backup management and storage location configuration][BACKUP].
 | {{icon.checks}}                    | PMM Advisor Checks  | Run health assessment checks against your connected databases and check any failed checks. 
@@ -72,7 +72,7 @@ The main menu is part of the Grafana framework and is visible on every page.
 
 ## View selectors
 
-This menu bar is context sensitive; it changes according to the page you are on. (With wide menus on small screens, items may wrap to the next row.)
+This menu bar is context-sensitive; it changes according to the page you are on. (With wide menus on small screens, items may wrap to the next row.)
 
 ![!](../_images/PMM_Home_Dashboard_Menus_Submenu_Bar.jpg)
 
@@ -87,6 +87,26 @@ This menu bar is context sensitive; it changes according to the page you are on.
 | Service Name                  | Filter by service name.
 | PMM Annotations               | View [annotations](../how-to/annotate.md).
 
+## Shortcut menu
+
+This menu contains shortcuts to other dashboards. The list changes according to the page you're on.
+
+!!! note alert alert-primary ""
+    This menu will be removed in future releases. Its function will be replaced by the {{icon.dashboards}} *PMM Dashboards* main menu entry.
+
+| Item                                         | Description
+|----------------------------------------------| ------------------------------
+| <i class="uil uil-file-alt"></i> Home        | Home dashboard.
+| <i class="uil uil-apps"></i> Query Analytics | Query Analytics.
+| <i class="uil uil-bolt"></i> Compare         | Nodes compare.
+| (Service Type)                               | Service type menu (see [Services menu](#services-menu)).
+| <i class="uil uil-bars"></i> HA              | HA dashboards.
+| <i class="uil uil-bars"></i> Services        | Services menu.
+| <i class="uil uil-bars"></i> PMM             | PMM menu.
+
+!!! hint alert alert-success "Tip"
+    The *Compare* menu links to the Instances Overview dashboard for the current service type.
+
 
 ### Services menu
 
@@ -99,6 +119,11 @@ The *Services* menu choice determines the Service Type menu.
 |           | MySQL Instances Overview       | <i class="uil uil-bars"></i> MySQL      | MySQL dashboards.
 |           | Nodes Overview                 | <i class="uil uil-bars"></i> OS         | OS dashboards.
 |           | PostgreSQL Instances Overview  | <i class="uil uil-bars"></i> PostgreSQL | PostgreSQL dashboards.
+
+
+!!! hint alert alert-success "Note"
+    - You can easily access all dashboards for monitored services from the *Main menu* via *Other Dashboards* in the *Services* sub menu.
+    - Only the services being monitored by PMM will appear on the main menu.
 
 ### PMM menu
 

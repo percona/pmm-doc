@@ -1,11 +1,10 @@
 # DBaaS
 
-!!! caution alert alert-warning "Caution"
-    DBaaS functionality is currently in [technical preview](../../details/glossary.md#technical-preview) and is subject to change.
+To enable and use the Database as a Service (DBaaS) feature in PMM, see [DBaaS](../../using/dbaas.html).
 
-## Software prerequisites
+You can use [free K8s provided by Percona](https://www.percona.com/blog/private-dbaas-with-free-kubernetes-cluster/) for evaluation. 
+You can also create K8s on AWS using these [instructions](https://www.percona.com/blog/dbaas-kubernetes-in-under-20-min/). 
 
-### Docker
 
 #### Red Hat, CentOS
 
@@ -42,7 +41,7 @@ alias kubectl='minikube kubectl --'
 ## Start PMM server and activate a DBaaS feature
 
 !!! note alert alert-primary ""
-    - To start a fully functioning three-node PXC cluster consisting of 3x HAProxy, 3x PXC, and 6x PMM Client containers, you will require at least 0.5vCPU for HAProxy and 0.5vCPU for each PMM client container. You can set the CPU for the PXC containers from the UI.
+    - To start a fully-working 3 node XtraDB cluster, consisting of sets of 3x HAProxy, 3x PXC and 6x PMM Client containers, you will need at least 9 vCPU available for minikube. (1x vCPU for HAProxy and PXC and 0.5vCPU for each pmm-client containers).
     - DBaaS does not depend on PMM Client.
     - You can pass the environment variable `--env ENABLE_DBAAS=1` to force the DBaaS feature when starting up pmm-server container. **You can omit the variable and enable the feature later using PMM UI**, please follow the link in step 3. below.
     - Add the option `--network minikube` if you run PMM Server and minikube in the same Docker instance. (This will share a single network and the kubeconfig will work.)
@@ -89,7 +88,7 @@ alias kubectl='minikube kubectl --'
 
 ### Amazon AWS EKS
 
-1. Create your cluster via [eksctl](https://github.com/weaveworks/eksctl#installation) or the Amazon AWS interface. For example:
+1. Create your cluster via [`eksctl`](https://github.com/weaveworks/eksctl#installation) or the Amazon AWS interface. For example:
 
     ```sh
     eksctl create cluster --write-kubeconfig --name=your-cluster-name --zones=us-west-2a,us-west-2b --kubeconfig <PATH_TO_KUBECONFIG>
@@ -301,3 +300,4 @@ kubectl expose deployment hello-world --type=NodePort.
 [GOOGLE_EXPOSING_APPS]: https://cloud.google.com/kubernetes-engine/docs/how-to/exposing-apps
 [KUBERNETES_ACCESS_APP]: https://kubernetes.io/docs/tasks/access-application-cluster/service-access-application-cluster/
 [STANDALONE_MYSQL_K8S]: https://medium.com/@chrisedrego/setting-up-a-standalone-mysql-instance-on-kubernetes-exposing-it-using-nginx-ingress-controller-262fc7af593a
+
