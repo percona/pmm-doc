@@ -61,6 +61,9 @@ PMM communicates with the PMM Server via a PMM agent process.
 `--trace`
 :    Enable trace logging (implies debug).
 
+`--log-level` (This parameter is available starting with PMM 2.29.0.)
+:  Set the level for the logs as per your requirement such as INFO, WARNING, ERROR, and FATAL.
+
 `--json`
 :    Enable JSON output.
 
@@ -112,7 +115,7 @@ PMM communicates with the PMM Server via a PMM agent process.
     `--skip-server`
     : Skip fetching `logs.zip` from PMM Server.
 
-    `--pprof`
+    `--pprof` (This parameter is available starting with PMM 2.29.0)
     : Include performance profiling data in the summary.
 
 ### CONFIGURATION COMMANDS
@@ -144,6 +147,9 @@ PMM communicates with the PMM Server via a PMM agent process.
 
     `--paths-base=dir`
     : Base path where all binaries, tools and collectors of PMM client are located
+
+    `--agent-password=password` (This parameter i available starting with PMM 2.29.0.)
+    : Custom agent password.
 
 #### `pmm-admin register`
 
@@ -177,6 +183,9 @@ PMM communicates with the PMM Server via a PMM agent process.
     `--custom-labels=labels`
     : Custom user-assigned labels.
 
+    `--agent-password=password` (This parameter is available starting with PMM 2.29.0.)
+    : Custom agent password.
+ 
 #### `pmm-admin add --pmm-agent-listen-port=LISTEN_PORT`
 
 `pmm-admin add --pmm-agent-listen-port=LISTEN_PORT DATABASE [FLAGS] [NAME] [ADDRESS]`
@@ -336,6 +345,15 @@ When you remove a service, collected data remains on PMM Server for the specifie
         - `push`: agent will push metrics.
         - `pull`: server scrapes metrics from agent.
 
+    `--max-query-length=NUMBER` (This parameter is available starting with PMM 2.32.0.)
+    : Limit query length in QAN. Allowed values:
+        - -1: No limit.
+        -  0: Default value. The default value is 2048 chars.
+        - >0: Query will be truncated after <NUMBER> chars.
+
+        !!! caution ""
+            Ensure you do not set the value of `max-query-length` to 1, 2, or 3. Otherwise, the PMM agent will get terminated.
+
 ##### Advanced Options
 
 PMM starts the MongoDB exporter by default only with `diagnosticdata` and `replicasetstatus` collectors enabled.
@@ -471,7 +489,7 @@ In low resolution we collect metrics from collectors which could take some time:
             Avoid using special characters like '\', ';' and '$' in the custom password.
 
     `--query-source=slowlog`
-    : Source of SQL queries, one of: `slowlog`, `perfschema`, `none` (default: `slowlog`). For `slowlog` query source you need change permissions for
+    : Source of SQL queries, one of: `slowlog`, `perfschema`, `none` (default: `slowlog`). For `slowlog` query source, you need change permissions for
     specific files. Root permissions are needed for this.
 
     `--size-slow-logs=N`
@@ -533,7 +551,7 @@ In low resolution we collect metrics from collectors which could take some time:
     : Path to certificate authority file.
 
     `--ssl-ca=PATHTOCACERT`
-    : The path name of the Certificate Authority (CA) certificate file. If used must specify the same certificate used by the server. (-ssl-capath is similar but specifies the path name of a directory of CA certificate files.)
+    : The path name of the Certificate Authority (CA) certificate file. If used, must specify the same certificate used by the server. (-ssl-capath is similar, but specifies the path name of a directory of CA certificate files.)
 
     `--ssl-cert=PATHTOCERTKEY`
     : The path name of the client public key certificate file.
@@ -550,6 +568,15 @@ In low resolution we collect metrics from collectors which could take some time:
         - `push`: agent will push metrics.
         - `pull`: server scrapes metrics from agent.
 
+    `--max-query-length=NUMBER` (This parameter is available starting with PMM 2.32.0.)
+    : Limit query length in QAN. Allowed values:
+        - -1: No limit.
+        -  0: Default value. The default value is 2048 chars.
+        - >0: Query will be truncated after <NUMBER> chars.
+
+        !!! caution ""
+            Ensure you do not set the value of `max-query-length` to 1, 2, or 3. Otherwise, the PMM agent will get terminated.
+        
 #### PostgreSQL
 
 `pmm-admin add postgresql [FLAGS] [node-name] [node-address]`
@@ -616,6 +643,15 @@ In low resolution we collect metrics from collectors which could take some time:
         - `auto`: chosen by server (default).
         - `push`: agent will push metrics.
         - `pull`: server scrapes metrics from agent.
+
+    `--max-query-length=NUMBER` (This parameter is available starting with PMM 2.32.0.)
+    : Limit query length in QAN. Allowed values:
+        - -1: No limit.
+        -  0: Default value. The default value is 2048 chars.
+        - >0: Query will be truncated after <NUMBER> chars.
+
+        !!! caution ""
+            Ensure you do not set the value of `max-query-length` to 1, 2, or 3. Otherwise, the PMM agent will get terminated.
 
 #### ProxySQL
 
