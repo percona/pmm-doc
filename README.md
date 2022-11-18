@@ -1,4 +1,8 @@
 # Percona Monitoring and Management (PMM) Documentation
+[![render](https://img.shields.io/badge/pmm--doc-render-Green)](https://pmm-doc.onrender.com/)
+[![Build](https://github.com/percona/pmm-doc/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/percona/pmm-doc/actions/workflows/build.yml)
+[![Helm](https://github.com/percona/pmm-doc/actions/workflows/helm-tests.yml/badge.svg?branch=main)](https://github.com/percona/pmm-doc/actions/workflows/helm-tests.yml)
+[![Podman](https://github.com/percona/pmm-doc/actions/workflows/podman-tests.yml/badge.svg?branch=main)](https://github.com/percona/pmm-doc/actions/workflows/podman-tests.yml)
 
 [Percona Monitoring and Management] (PMM) is a database monitoring solution that is free and open-source.
 
@@ -8,7 +12,7 @@ To contribute to that documentation, you can:
 
 - **report a general problem** -- open a [Jira] issue.
 
-- **fix a problem yourself** -- Use the *Edit this page* link to take you the Markdown source file for that page. Make your changes (you'll have to fork the repo unless you're Percona staff) and submit a PR which we'll review and adjust where necessary before merging and publishing. If the changes are more than a few lines, you might want to build the website locally to see how it looks in context. That's what the rest of this README covers.
+- **fix a problem yourself** -- Use the *Edit this page* link to take you to the Markdown source file for that page. Make your changes (you'll have to fork the repo unless you're Percona staff) and submit a PR which we'll review and adjust where necessary before merging and publishing. If the changes are more than a few lines, you might want to build the website locally to see how it looks in context. That's what the rest of this README covers.
 
 ## Introduction
 
@@ -224,7 +228,7 @@ To check all files:
 mdspell --report --en-us --ignore-acronyms --ignore-numbers "docs/**/*.md"
 ```
 
-Add any custom dictionary words to `.spelling`. The results of the spell check are printed but the job ignores the return status.
+Add any custom dictionary words to `.spelling`. The results of the spell check are printed, but the job ignores the return status.
 
 Grammar is checked using [`write-good`](https://github.com/btford/write-good).
 
@@ -241,9 +245,9 @@ write-good docs/**/*.md
 
 ## Link checking
 
-We're using the `mkdocs-htmlproofer-plugin` link checking plugin to detect broken URLs. It works great but increases the build time significantly (by between 10 and 50 times longer).
+We're using the `mkdocs-htmlproofer-plugin` link checking plugin to detect broken URLs. It works well, but increases the build time significantly (by between 10 and 50 times longer).
 
-The plugin is installed in our [PMM documentation Docker image] and by the GitHub action but it is commented out in `mkdocs.yml`.
+The plugin is installed in our [PMM documentation Docker image] and by the GitHub action, but it is commented out in `mkdocs.yml`.
 
 To enable it for local builds, uncomment the line with `htmlproofer` in the `plugins` section of `mkdocs.yml` and parse the build output for warnings.
 
