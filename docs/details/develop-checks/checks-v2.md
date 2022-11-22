@@ -124,10 +124,10 @@ Advisor checks for PMM 2.28 and later use the following format:
 ## Checks script
  
 The check script assumes that there is a function with **check_context**, that accepts a _list_ where each item represents result of a single query specified in check. Each result itself is a _list_ of _docs_ containing returned rows for SQL databases and documents for MongoDB. It returns zero, one, or several check results that are then converted to alerts.
- 
+
 ## Check severity levels
 You can label your advisor checks with one of the following available severity levels: **Emergency**, **Alert**, **Critical**, **Error**, **Warning**, **Notice**, **Info**, **Debug**.
-PMM groups failed checks by their severity, and displays them under **Advisors Checks > Failed Checks**. 
+PMM groups failed checks by their severity, and displays them under **Advisors Checks > Failed Checks**.
  
 ## Check fields 
 Checks can include the following fields:

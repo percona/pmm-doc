@@ -176,7 +176,7 @@ The function signature should be **check_context** (docs, context), where **docs
  
 ## Check severity levels
 You can label your advisor checks with one of the following available severity levels: **Emergency**, **Alert**, **Critical**, **Error**, **Warning**, **Notice**, **Info**, **Debug**.
-PMM groups failed checks by their severity, and displays them under **Advisors Checks > Failed Checks**. 
+PMM groups failed checks by their severity, and displays them under **Advisors Checks > Failed Checks**.
   
 ## Check fields 
 Checks can include the following fields:
