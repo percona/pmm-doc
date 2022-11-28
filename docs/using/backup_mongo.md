@@ -31,8 +31,8 @@ To create a backup:
 3. Specify the type of backup that you want to create: **On Demand** or **Schedule Backup**.
 4. Enter a unique name for this backup.
 5. Choose the service to back up from the Service name drop-down menu. This automatically populates the **DB Technology** field.
-6. Select whether you want to create a **Physical** or **Logical** backup of your data, depending on your use case and requirements. 
-7. Choose a storage location for the backup. MySQL currently only supports storing backups to Amazon S3. If no options are available here, see the [Create a storage location](#create-a-storage-location) section above.
+6. Select whether you want to create a **Physical** or **Logical** backup of your data, depending on your use case and requirements.
+7. Choose a storage location for the backup. MySQL currently only supports storing backups to Amazon S3. If no options are available here, see the [Create a storage location](prepare_storage_location.md) section above.
 8. If you're creating a schedule backups, also specify the backup type, the schedule, and a retention policy for your backup:
     - **Backup Type**: currently, PMM supports both **Full** and Point-in-type recovery **(PITR)** backup types for MongoDB. However, the PITR option is only available for the **Logical** data model. For MySQL, only the **Full** type is supported.
     - **Shedule**: configure the frequency and the start time for this backup. Make sure that the the schedule you specify here does not create overlapping jobs or overhead on the production environment. Also check that your specified shedule does not overlap with production hours.
@@ -71,61 +71,59 @@ Prerequisites:
 
 1. Install MongoDB and Percona Backup for MongoDB. For instructions, see the [PBM install documentation](https://docs.percona.com/percona-backup-mongodb/installation.html).
 2. Configure your environment:
-=== "Restoring a backup into a new environment"
+    === "Restoring a backup into a new environment"
 
-    When restoring to an environment with the same number of hosts and the same replica names, make sure to:
+        When restoring to an environment with the same number of hosts and the same replica names, make sure to:
 
-      - use the same replica set names in your new destination cluster and in the cluster that was backed up.
-      - Percona Backup for MongoDB configuration in the new environment point to the remote storage defined for the original environment, including the authentication credentials if it is an object store.
-      The easiest way to configure is create a config file (e.g. pbm_config.yaml):
-          Example for AWS S3 compatible storage:
-          ```storage:
-            type: s3
-            s3:
-              region: us-west-2
-              bucket: pbm-test-bucket
-              prefix: data/pbm/backup
-              credentials:
-                access-key-id: <your-access-key-id-here>
-                secret-access-key: <your-secret-key-here>
-              serverSideEncryption:
-                sseAlgorithm: aws:kms
-                kmsKeyID: <your-kms-key-here>```
-          where prefix is artifact name from PMM **All Backups** page.
-          Implement the config:
-         ```pbm config --file pbm_config.yaml```
+          - use the same replica set names in your new destination cluster and in the cluster that was backed up.
+          - Percona Backup for MongoDB configuration in the new environment point to the remote storage defined for the original environment, including the authentication credentials if it is an object store.
+          The easiest way to configure is create a config file (e.g. pbm_config.yaml):
+              Example for AWS S3 compatible storage:
+              ```storage:
+                type: s3
+                s3:
+                  region: us-west-2
+                  bucket: pbm-test-bucket
+                  prefix: data/pbm/backup
+                  credentials:
+                    access-key-id: <your-access-key-id-here>
+                    secret-access-key: <your-secret-key-here>
+                  serverSideEncryption:
+                    sseAlgorithm: aws:kms
+                    kmsKeyID: <your-kms-key-here>```
+              where prefix is artifact name from PMM **All Backups** page.
+              Implement the config:
+            ```pbm config --file pbm_config.yaml```
 
-    For more information, see **Restoring a backup into a new-environment** in [the PBM documentation](https://docs.percona.com/percona-backup-mongodb/usage/restore.html#restoring-a-backup-into-a-new-environment). 
+        For more information, see **Restoring a backup into a new-environment** in [the PBM documentation](https://docs.percona.com/percona-backup-mongodb/usage/restore.html#restoring-a-backup-into-a-new-environment). 
 
-=== "Restoring into a replica set with a different name"
+    === "Restoring into a replica set with a different name"
 
-    When restoring **logical backups** to a new environment that has the same (or more) number of shards with different replica set names, configure the name mapping between the source and target environments.
-    
-    To do this, you can either set the `PBM_REPLSET_REMAPPING` environment variable for pbm CLI or use the `--replset-remapping` flag for PBM commands. The mapping format is `<rsTarget>=<rsSource>`.
+        When restoring **logical backups** to a new environment that has the same (or more) number of shards with different replica set names, configure the name mapping between the source and target environments.
+        
+        To do this, you can either set the `PBM_REPLSET_REMAPPING` environment variable for pbm CLI or use the `--replset-remapping` flag for PBM commands. The mapping format is `<rsTarget>=<rsSource>`.
 
-    The mapping format is `<rsTarget>=<rsSource>`
-	  Example:
-	  ```$ export PBM_REPLSET_REMAPPING="rsX=rsA,rsY=rsB"``
-	    or
-	  ```$ pbm restore <timestamp> --replset-remapping="rsX=rsA,rsY=rsB"``
-    
-    For more information, see **Restoring into a cluster replica set with a different name** in [the PBM documentation](https://docs.percona.com/percona-backup-mongodb/usage/restore.html#restoring-into-a-cluster-replica-set-with-a-different-name). 
+        The mapping format is `<rsTarget>=<rsSource>`
+        Example:
+        ```$ export PBM_REPLSET_REMAPPING="rsX=rsA,rsY=rsB"``
+          or
+        ```$ pbm restore <timestamp> --replset-remapping="rsX=rsA,rsY=rsB"``
+        
+        For more information, see **Restoring into a cluster replica set with a different name** in [the PBM documentation](https://docs.percona.com/percona-backup-mongodb/usage/restore.html#restoring-into-a-cluster-replica-set-with-a-different-name). 
 
 3. Restore the backup. Once you run `pbm list` and see the backups made from the original environment, then you can run the `pbm restore` command:
-   
-- For snapshot backups: `pbm list`
-  Backup snapshots: `2022-11-23T19:40:06Z [restore_to_time: 2021-01-13T15:53:40Z]` supplying the timestamp of the backup to  the `pbm` command: `pbm restore 2022-11-23T19:40:06Z`. For more information, see [Restore a backup topic in the PBM documentation](https://docs.percona.com/percona-backup-mongodb/usage/restore.html)
+   - For snapshot backups: `pbm list`
+     Backup snapshots: `2022-11-23T19:40:06Z [restore_to_time: 2021-01-13T15:53:40Z]` supplying the timestamp of the backup to  the `pbm` command: `pbm restore 2022-11-23T19:40:06Z`. For more information, see [Restore a backup topic in the PBM documentation](https://docs.percona.com/percona-backup-mongodb/usage/restore.html)
 
-- For PITR backups: `pbm list`
-  Backup snapshots:
-  2022-11-23T19:40:06Z <logical> [restore_to_time: 2022-11-23T19:40:25Z]
-  2022-11-23T19:45:07Z <logical> [restore_to_time: 2022-11-23T19:45:22Z]
-  PITR <on>:
-    2022-11-23T19:40:26Z - 2022-11-23T19:45:22Z, supplying the timestamp from one of the PITR ranges to pbm command: ` pbm restore --time="2022-11-23T19:40:26"`. For more information, see [Point-in-time Recovery topic in the PBM documentation](https://docs.percona.com/percona-backup-mongodb/usage/point-in-time-recovery.html)
-4. Wait until restoring is done. To check the progress the following command can be used:
-`pbm list --restore`
+   - For PITR backups: `pbm list`
+     Backup snapshots:
+     2022-11-23T19:40:06Z <logical> [restore_to_time: 2022-11-23T19:40:25Z]
+     2022-11-23T19:45:07Z <logical> [restore_to_time: 2022-11-23T19:45:22Z]
+     PITR <on>:
+       2022-11-23T19:40:26Z - 2022-11-23T19:45:22Z, supplying the timestamp from one of the PITR ranges to pbm command: ` pbm restore --time="2022-11-23T19:40:26"`. For more information, see [Point-in-time Recovery topic in the PBM documentation](https://docs.percona.com/percona-backup-mongodb/usage/point-in-time-recovery.html)
+4. Check the restore progress using the following command: `pbm list --restore`
   !!! alert alert-info ""
-     Make sure not to run pbm backup from the new environment whilst the Percona Backup for MongoDB config is pointing to the remote storage location of the original environment.
+     Make sure not to run pbm backup from the new environment while the Percona Backup for MongoDB config is pointing to the remote storage location of the original environment.
 
 ## Delete a backup
 
@@ -137,4 +135,3 @@ To delete a backup:
 2. Click the arrow in the **Actions** column to check all the information for the backup, then click ![](../_images/dots-three-vertical.png) **> Delete backup**.
 3. In the Delete backup artifact dialog box, enable **Delete from storage** if you also want to delete the actual backup content besides just the backup register.
 4. Click **Delete**.
-
