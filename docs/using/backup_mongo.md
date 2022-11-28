@@ -111,6 +111,8 @@ Prerequisites:
       ```$ pbm restore <timestamp> --replset-remapping="rsX=rsA,rsY=rsB"``
           
       For more information, see **Restoring into a cluster replica set with a different name** in [the PBM documentation](https://docs.percona.com/percona-backup-mongodb/usage/restore.html#restoring-into-a-cluster-replica-set-with-a-different-name). 
+
+{:start="3"}      
 3. Restore the backup. Once you run `pbm list` and see the backups made from the original environment, then you can run the `pbm restore` command:
    - For snapshot backups: `pbm list`
      Backup snapshots: `2022-11-23T19:40:06Z [restore_to_time: 2021-01-13T15:53:40Z]` supplying the timestamp of the backup to  the `pbm` command: `pbm restore 2022-11-23T19:40:06Z`. 
