@@ -71,45 +71,47 @@ Prerequisites:
 
 1. Install MongoDB and Percona Backup for MongoDB. For instructions, see the [PBM install documentation](https://docs.percona.com/percona-backup-mongodb/installation.html).
 2. Configure your environment:
+
+
   === "Restoring a backup into a new environment"
 
-      When restoring to an environment with the same number of hosts and the same replica names, make sure to:
+     When restoring to an environment with the same number of hosts and the same replica names, make sure to:
 
-        - use the same replica set names in your new destination cluster and in the cluster that was backed up.
-        - Percona Backup for MongoDB configuration in the new environment point to the remote storage defined for the original environment, including the authentication credentials if it is an object store.
-        The easiest way to configure is create a config file (e.g. pbm_config.yaml):
-        Example for AWS S3 compatible storage:
-            ```storage:
-            type: s3
-            s3:
-              region: us-west-2
-              bucket: pbm-test-bucket
-              prefix: data/pbm/backup
-              credentials:
-                access-key-id: <your-access-key-id-here>
-                secret-access-key: <your-secret-key-here>
-              serverSideEncryption:
-                sseAlgorithm: aws:kms
-                kmsKeyID: <your-kms-key-here>```
-          where prefix is artifact name from PMM **All Backups** page.
-          Implement the config:
-        ```pbm config --file pbm_config.yaml```
+      - use the same replica set names in your new destination cluster and in the cluster that was backed up.
+      - Percona Backup for MongoDB configuration in the new environment point to the remote storage defined for the original environment, including the authentication credentials if it is an object store.
+      The easiest way to configure is create a config file (e.g. pbm_config.yaml):
+      Example for AWS S3 compatible storage:
+         ```storage:
+          type: s3
+          s3:
+             region: us-west-2
+             bucket: pbm-test-bucket
+            prefix: data/pbm/backup
+             credentials:
+               access-key-id: <your-access-key-id-here>
+              secret-access-key: <your-secret-key-here>
+            serverSideEncryption:
+               sseAlgorithm: aws:kms
+              kmsKeyID: <your-kms-key-here>```
+        where prefix is artifact name from PMM **All Backups** page.
+         Implement the config:
+       ```pbm config --file pbm_config.yaml```
 
-      For more information, see **Restoring a backup into a new-environment** in [the PBM documentation](https://docs.percona.com/percona-backup-mongodb/usage/restore.html#restoring-a-backup-into-a-new-environment). 
+    For more information, see **Restoring a backup into a new-environment** in [the PBM documentation](https://docs.percona.com/percona-backup-mongodb/usage/restore.html#restoring-a-backup-into-a-new-environment). 
 
-    === "Restoring into a replica set with a different name"
+  === "Restoring into a replica set with a different name"
 
-      When restoring **logical backups** to a new environment that has the same (or more) number of shards with different replica set names, configure the name mapping between the source and target environments.
+    When restoring **logical backups** to a new environment that has the same (or more) number of shards with different replica set names, configure the name mapping between the source and target environments.
         
-      To do this, you can either set the `PBM_REPLSET_REMAPPING` environment variable for pbm CLI or use the `--replset-remapping` flag for PBM commands. The mapping format is `<rsTarget>=<rsSource>`.
+    To do this, you can either set the `PBM_REPLSET_REMAPPING` environment variable for pbm CLI or use the `--replset-remapping` flag for PBM commands. The mapping format is `<rsTarget>=<rsSource>`.
 
-      The mapping format is `<rsTarget>=<rsSource>`
-      Example:
-      ```$ export PBM_REPLSET_REMAPPING="rsX=rsA,rsY=rsB"``
-        or
-      ```$ pbm restore <timestamp> --replset-remapping="rsX=rsA,rsY=rsB"``
+    The mapping format is `<rsTarget>=<rsSource>`
+    Example:
+    ```$ export PBM_REPLSET_REMAPPING="rsX=rsA,rsY=rsB"``
+      or
+    ```$ pbm restore <timestamp> --replset-remapping="rsX=rsA,rsY=rsB"``
         
-      For more information, see **Restoring into a cluster replica set with a different name** in [the PBM documentation](https://docs.percona.com/percona-backup-mongodb/usage/restore.html#restoring-into-a-cluster-replica-set-with-a-different-name). 
+    For more information, see **Restoring into a cluster replica set with a different name** in [the PBM documentation](https://docs.percona.com/percona-backup-mongodb/usage/restore.html#restoring-into-a-cluster-replica-set-with-a-different-name). 
 
 1. Restore the backup. Once you run `pbm list` and see the backups made from the original environment, then you can run the `pbm restore` command:
    - For snapshot backups: `pbm list`
