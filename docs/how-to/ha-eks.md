@@ -3,7 +3,7 @@
 **Prerequisites**
 - AWS CLI version 2.8.6 or later.
 - eksctl version 0.120.0 or later.
-
+- Route 53 as the DNS service for domain
 
 This manual for empty EKS cluster without any settings.
 
@@ -205,4 +205,60 @@ Where `your@email` your own contact email, this information will be included wit
     ```sh
     kubectl apply -f issuer.yml
     ```
-##
+
+## Deploy HA PMM
+
+1. Add the *percona-helm-charts* repo:
+
+    ```sh
+    helm repo add percona https://percona.github.io/percona-helm-charts/
+    ```
+
+2. Update your local repository:
+
+    ```sh
+    helm repo update
+    ```
+
+3. Define [Parameters](https://github.com/percona/percona-helm-charts/tree/main/charts/pmm#parameters). An ELB load balancer. You can use an ELB Classic, Application, or Network Load Balancer. If you want to use Application Load Balancer you should define this annotations:
+
+    ```sh
+    kubernetes.io/ingress.class: alb
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+    ```
+If you want to use Network Load Balancer you should define this annotations:
+
+    ```sh
+    kubernetes.io/ingress.class: nginx
+    ```
+
+For cert-manager define annotation from previous step:
+
+    ```sh
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    ```
+
+Other settings described in default values.yml.
+
+4. Install the PMM using Helm V3:
+
+    ```sh
+      helm install pmm -f values.yaml percona/pmm
+    ```
+
+## DNS settings
+
+
+
+1. Define load balancer name:
+
+    ```sh
+    kubectl get ingress -n default
+    ```
+
+2. (a) Open **Route 53**, choose your domain and create record for your PMM instance. Turn on "alias" choose "Alias Network Load Balancer", choose your Region and choose load balancer with name from previous request.
+
+2. (b) Open **Route 53**, choose your domain and create record for your PMM instance. Turn on "alias" choose "Alias to Application and Classic Load Balancer", choose your Region and choose load balancer with name from previous request.
+
+More detailes available [here](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-to-elb-load-balancer.html)
