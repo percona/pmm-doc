@@ -220,14 +220,9 @@ Where `your@email` your own contact email, this information will be included wit
     helm repo update
     ```
 
-3. Define [Parameters](https://github.com/percona/percona-helm-charts/tree/main/charts/pmm#parameters). An ELB load balancer. You can use an ELB Classic, Application, or Network Load Balancer. If you want to use Application Load Balancer you should define this annotations:
+3. Define [Parameters](https://github.com/percona/percona-helm-charts/tree/main/charts/pmm#parameters). An ELB load balancer. You can use an Network Load Balancer.
 
-    ```sh
-    kubernetes.io/ingress.class: alb
-    alb.ingress.kubernetes.io/scheme: internet-facing
-    alb.ingress.kubernetes.io/target-type: ip
-    ```
-If you want to use Network Load Balancer you should define this annotations:
+To use Network Load Balancer you should define this annotations:
 
     ```sh
     kubernetes.io/ingress.class: nginx
@@ -257,8 +252,7 @@ Other settings described in default values.yml.
     kubectl get ingress -n default
     ```
 
-2. (a) Open **Route 53**, choose your domain and create record for your PMM instance. Turn on "alias" choose "Alias Network Load Balancer", choose your Region and choose load balancer with name from previous request.
+2. Open **Route 53**, choose your domain and create record for your PMM instance. Turn on "alias" choose "Alias Network Load Balancer", choose your Region and choose load balancer with name from previous request.
 
-2. (b) Open **Route 53**, choose your domain and create record for your PMM instance. Turn on "alias" choose "Alias to Application and Classic Load Balancer", choose your Region and choose load balancer with name from previous request.
 
 More detailes available [here](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-to-elb-load-balancer.html)
