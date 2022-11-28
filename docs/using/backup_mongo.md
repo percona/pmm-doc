@@ -96,8 +96,9 @@ Prerequisites:
           where prefix is artifact name from PMM **All Backups** page.
           Implement the config:
         `pbm config --file pbm_config.yaml`
-  For more information, see **Restoring a backup into a new-environment** in [the PBM documentation].(https://docs.percona.com/percona-backup-mongodb/usage/restore.html#restoring-a-backup-into-a-new-environment).  
+     For more information, see **Restoring a backup into a new-environment** in [the PBM documentation].(https://docs.percona.com/percona-backup-mongodb/usage/restore.html#restoring-a-backup-into-a-new-environment).  
  
+
 === "Restoring into a replica set with a different name"
 
     When restoring **logical backups** to a new environment that has the same (or more) number of shards with different replica set names, configure the name mapping between the source and target environments.
@@ -111,6 +112,7 @@ Prerequisites:
       ```$ pbm restore <timestamp> --replset-remapping="rsX=rsA,rsY=rsB"``
           
       For more information, see **Restoring into a cluster replica set with a different name** in [the PBM documentation](https://docs.percona.com/percona-backup-mongodb/usage/restore.html#restoring-into-a-cluster-replica-set-with-a-different-name). 
+
 
 {:start="3"}      
 3. Restore the backup. Once you run `pbm list` and see the backups made from the original environment, then you can run the `pbm restore` command:
