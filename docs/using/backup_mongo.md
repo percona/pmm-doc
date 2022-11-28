@@ -73,15 +73,13 @@ Prerequisites:
 2. Configure your environment:
 
 
-
-
-  === "Using the environment variable for `pbm` CLI in your shell"
+=== "Using the environment variable for `pbm` CLI in your shell"
 
     ```
     $ export PBM_REPLSET_REMAPPING="rsX=rsA,rsY=rsB"
     ``` 
 
-  === "Using the command line"
+ === "Using the command line"
 
     ```
     $ pbm restore <timestamp> --replset-remapping="rsX=rsA,rsY=rsB"
