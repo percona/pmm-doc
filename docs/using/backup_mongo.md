@@ -80,7 +80,7 @@ Prerequisites:
         - use the same replica set names in your new destination cluster and in the cluster that was backed up.
         - Percona Backup for MongoDB configuration in the new environment point to the remote storage defined for the original environment, including the authentication credentials if it is an object store.
         The easiest way to configure is create a config file (e.g. pbm_config.yaml):
-        Example for AWS S3 compatible storage:
+      Example for AWS S3 compatible storage:
           ```storage:
             type: s3
             s3:
@@ -95,11 +95,9 @@ Prerequisites:
                 kmsKeyID: <your-kms-key-here>```
           where prefix is artifact name from PMM **All Backups** page.
           Implement the config:
-        ```pbm config --file pbm_config.yaml```
-
-      For more information, see **Restoring a backup into a new-environment** in [the PBM documentation](https://docs.percona.com/percona-backup-mongodb/usage/restore.html#restoring-a-backup-into-a-new-environment).  
+        `pbm config --file pbm_config.yaml`
+  For more information, see **Restoring a backup into a new-environment** in [the PBM documentation].(https://docs.percona.com/percona-backup-mongodb/usage/restore.html#restoring-a-backup-into-a-new-environment).  
  
-
 === "Restoring into a replica set with a different name"
 
     When restoring **logical backups** to a new environment that has the same (or more) number of shards with different replica set names, configure the name mapping between the source and target environments.
@@ -113,7 +111,6 @@ Prerequisites:
       ```$ pbm restore <timestamp> --replset-remapping="rsX=rsA,rsY=rsB"``
           
       For more information, see **Restoring into a cluster replica set with a different name** in [the PBM documentation](https://docs.percona.com/percona-backup-mongodb/usage/restore.html#restoring-into-a-cluster-replica-set-with-a-different-name). 
-
 3. Restore the backup. Once you run `pbm list` and see the backups made from the original environment, then you can run the `pbm restore` command:
    - For snapshot backups: `pbm list`
      Backup snapshots: `2022-11-23T19:40:06Z [restore_to_time: 2021-01-13T15:53:40Z]` supplying the timestamp of the backup to  the `pbm` command: `pbm restore 2022-11-23T19:40:06Z`. 
