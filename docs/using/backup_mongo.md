@@ -72,6 +72,25 @@ Prerequisites:
 1. Install MongoDB and Percona Backup for MongoDB. For instructions, see the [PBM install documentation](https://docs.percona.com/percona-backup-mongodb/installation.html).
 2. Configure your environment:
 
+
+
+
+  === "Using the environment variable for `pbm` CLI in your shell"
+
+    ```
+    $ export PBM_REPLSET_REMAPPING="rsX=rsA,rsY=rsB"
+    ``` 
+
+  === "Using the command line"
+
+    ```
+    $ pbm restore <timestamp> --replset-remapping="rsX=rsA,rsY=rsB"
+    ```
+
+    The `--replset-remapping` flag is available for the following commands: `pbm restore`, `pbm list`, `pbm status`, `pbm oplog-replay`.
+
+
+
   === "Restoring a backup into a new environment"
 
       When restoring to an environment with the same number of hosts and the same replica names, make sure to:
