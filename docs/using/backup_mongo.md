@@ -74,7 +74,7 @@ During restoring, PMM disables all the scheduled backup tasks for the current se
 3. Make sure that Percona Backup for MongoDB configuration in the new environment points to the remote storage defined for the original environment, including the authentication credentials if it is an object store. The easiest way to configure is create a config file (e.g. pbm_config.yaml).
 
     Example for AWS S3 compatible storage, where prefix is artifact name from PMM **All Backups** page:
-
+=== "Restoring into a replica set with a different name"
               storage:
                 type: s3
                 s3:
@@ -87,7 +87,7 @@ During restoring, PMM disables all the scheduled backup tasks for the current se
                   serverSideEncryption:
                     sseAlgorithm: aws:kms
                     kmsKeyID: <your-kms-key-here>
-=== "Restoring into a replica set with a different name"
+
       To implement the config, use the following command: `pbm config --file pbm_config.yaml`
       For more information, see **Restoring a backup into a new-environment** in [the PBM documentation](https://docs.percona.com/percona-backup-mongodb/usage/restore.html#restoring-a-backup-into-a-new-environment).  
 4. Restore the backup. Once you run `pbm list` and see the backups made from the original environment, then you can run the `pbm restore` command: <br/> 
