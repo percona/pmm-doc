@@ -71,7 +71,7 @@ During restoring, PMM disables all the scheduled backup tasks for the current se
 
     1. Install MongoDB and Percona Backup for MongoDB. For instructions, see the [PBM install documentation](https://docs.percona.com/percona-backup-mongodb/installation.html).
     2. Configure your environment use the same replica set names in your new destination cluster and in the cluster that was backed up.
-  Example:
+    Example:
     `$ export PBM_REPLSET_REMAPPING="rsX=rsA,rsY=rsB"`
      or 
      `$ pbm restore <timestamp> --replset-remapping="rsX=rsA,rsY=rsB`
