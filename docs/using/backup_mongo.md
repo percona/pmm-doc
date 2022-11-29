@@ -82,17 +82,18 @@ During restoring, PMM disables all the scheduled backup tasks for the current se
     `pbm config >> pbm_config.yaml`. <br>
     then copy the resulting file to the new environment. <br>
       Example config file content for AWS S3 compatible storage, where prefix is an artifact name from the PMM **All Backups** page
-      ```storage:
-        type: s3
-        s3:
-          region: us-west-2
-          bucket: pbm-test-bucket
-          prefix: data/pbm/backup
-          credentials:
-          access-key-id: <your-access-key-id-here>
-          secret-access-key: <your-secret-key-here>
-      ```
-      To implement the config, use the following command: `pbm config --file pbm_config.yaml`. <br>
+        ```yaml
+          storage:
+            type: s3
+            s3:
+              region: us-west-2
+              bucket: pbm-test-bucket
+              prefix: data/pbm/backup
+              credentials:
+              access-key-id: <your-access-key-id-here>
+              secret-access-key: <your-secret-key-here>
+        ```
+      <br> To implement the config, use the following command: `pbm config --file pbm_config.yaml`. <br>
 
       For more information, see **Restoring a backup into a new-environment** in [the PBM documentation](https://docs.percona.com/percona-backup-mongodb/usage/restore.html#restoring-a-backup-into-a-new-environment).  
     4. Perform the restoring. Once you run pbm list and see the backups made from the original environment, then you can run the pbm restore command. <br>
@@ -135,19 +136,6 @@ During restoring, PMM disables all the scheduled backup tasks for the current se
 
 Make sure not to run pbm backup from the new environment while the Percona Backup for MongoDB config is pointing to the remote storage location of the original environment.
 
-=== "Restoring into a replica set with a different name"
-
-When restoring **logical backups** to a new environment that has the same (or more) number of shards with different replica set names, configure the name mapping between the source and target environments.
-
-To do this, you can either set the `PBM_REPLSET_REMAPPING` environment variable for pbm CLI or use the `--replset-remapping` flag for PBM commands. The mapping format is `<rsTarget>=<rsSource>`.
-
-      The mapping format is `<rsTarget>=<rsSource>`
-      Example:
-      ```$ export PBM_REPLSET_REMAPPING="rsX=rsA,rsY=rsB"``
-        or
-      ```$ pbm restore <timestamp> --replset-remapping="rsX=rsA,rsY=rsB"``
-          
-      For more information, see **Restoring into a cluster replica set with a different name** in [the PBM documentation](https://docs.percona.com/percona-backup-mongodb/usage/restore.html#restoring-into-a-cluster-replica-set-with-a-different-name). 
 
 ## Delete a backup
 
