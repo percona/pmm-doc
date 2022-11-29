@@ -69,13 +69,11 @@ During restoring, PMM disables all the scheduled backup tasks for the current se
 
 === "Restoring a backup into a new environment"
 
-1. Install MongoDB and Percona Backup for MongoDB. For instructions, see the [PBM install documentation](https://docs.percona.com/percona-backup-mongodb/installation.html).
-2. Configure your environment use the same replica set names in your new destination cluster and in the cluster that was backed up.
-3. Make sure that Percona Backup for MongoDB configuration in the new environment points to the remote storage defined for the original environment, including the authentication credentials if it is an object store. The easiest way to configure is create a config file (e.g. pbm_config.yaml).
+      1. Install MongoDB and Percona Backup for MongoDB. For instructions, see the [PBM install documentation](https://docs.percona.com/percona-backup-mongodb/installation.html).
+      2. Configure your environment use the same replica set names in your new destination cluster and in the cluster that was backed up.
+      3. Make sure that Percona Backup for MongoDB configuration in the new environment points to the remote storage defined for the original environment, including the authentication credentials if it is an object store. The easiest way to configure is create a config file (e.g. pbm_config.yaml).
 
-Example for AWS S3 compatible storage, where prefix is artifact name from PMM **All Backups** page:
-
-=== "Restoring into a replica set with a different name"
+        Example for AWS S3 compatible storage, where prefix is artifact name from PMM **All Backups** page:
 
               storage:
                 type: s3
@@ -91,6 +89,9 @@ Example for AWS S3 compatible storage, where prefix is artifact name from PMM **
                     kmsKeyID: <your-kms-key-here>
       To implement the config, use the following command: `pbm config --file pbm_config.yaml`
       For more information, see **Restoring a backup into a new-environment** in [the PBM documentation](https://docs.percona.com/percona-backup-mongodb/usage/restore.html#restoring-a-backup-into-a-new-environment).  
+
+=== "Restoring into a replica set with a different name"
+
 1. Restore the backup. Once you run `pbm list` and see the backups made from the original environment, then you can run the `pbm restore` command: <br/> 
   
   - For snapshot backups: `pbm list`
