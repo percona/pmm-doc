@@ -67,20 +67,15 @@ During restoring, PMM disables all the scheduled backup tasks for the current se
 
 ### Restore to a new cluster manually
 
-Prerequisites:
-
-1. Install MongoDB and Percona Backup for MongoDB. For instructions, see the [PBM install documentation](https://docs.percona.com/percona-backup-mongodb/installation.html).
-2. Configure your environment:
 
 
 === "Restoring a backup into a new environment"
 
-    When restoring to an environment with the same number of hosts and the same replica names, make sure to:
+    1. Install MongoDB and Percona Backup for MongoDB. For instructions, see the [PBM install documentation](https://docs.percona.com/percona-backup-mongodb/installation.html).
+2. Configure your environment use the same replica set names in your new destination cluster and in the cluster that was backed up.
+3. Make sure that Percona Backup for MongoDB configuration in the new environment points to the remote storage defined for the original environment, including the authentication credentials if it is an object store. The easiest way to configure is create a config file (e.g. pbm_config.yaml). 
 
-        - use the same replica set names in your new destination cluster and in the cluster that was backed up.
-        - Percona Backup for MongoDB configuration in the new environment point to the remote storage defined for the original environment, including the authentication credentials if it is an object store.
-        The easiest way to configure is create a config file (e.g. pbm_config.yaml):
-      Example for AWS S3 compatible storage:
+  Example for AWS S3 compatible storage, where prefix is artifact name from PMM **All Backups** page:
           ```storage:
             type: s3
             s3:
@@ -93,12 +88,27 @@ Prerequisites:
               serverSideEncryption:
                 sseAlgorithm: aws:kms
                 kmsKeyID: <your-kms-key-here>```
-          where prefix is artifact name from PMM **All Backups** page.
-          Implement the config:
-        `pbm config --file pbm_config.yaml`
-     For more information, see **Restoring a backup into a new-environment** in [the PBM documentation].(https://docs.percona.com/percona-backup-mongodb/usage/restore.html#restoring-a-backup-into-a-new-environment).  
- 
+    To implement the config, use the following command:`pbm config --file pbm_config.yaml`
 
+  For more information, see **Restoring a backup into a new-environment** in [the PBM documentation].(https://docs.percona.com/percona-backup-mongodb/usage/restore.html#restoring-a-backup-into-a-new-environment).  
+
+4. Restore the backup. Once you run `pbm list` and see the backups made from the original environment, then you can run the `pbm restore` command:
+   - For snapshot backups: `pbm list`
+     Backup snapshots: `2022-11-23T19:40:06Z [restore_to_time: 2021-01-13T15:53:40Z]` supplying the timestamp of the backup to  the `pbm` command: `pbm restore 2022-11-23T19:40:06Z`. 
+     
+     For more information, see [Restore a backup topic in the PBM documentation](https://docs.percona.com/percona-backup-mongodb/usage/restore.html)
+
+   - For PITR backups: `pbm list`
+     Backup snapshots:
+
+     2022-11-23T19:40:06Z <logical> [restore_to_time: 2022-11-23T19:40:25Z]
+     2022-11-23T19:45:07Z <logical> [restore_to_time: 2022-11-23T19:45:22Z]
+     PITR <on>:
+       2022-11-23T19:40:26Z - 2022-11-23T19:45:22Z, supplying the timestamp from one of the PITR ranges to pbm command: ` pbm restore --time="2022-11-23T19:40:26"`. For more information, see [Point-in-time Recovery topic in the PBM documentation](https://docs.percona.com/percona-backup-mongodb/usage/point-in-time-recovery.html)
+5. Check the restore progress using the following command: `pbm list --restore`
+  !!! alert alert-info ""
+     Make sure not to run pbm backup from the new environment while the Percona Backup for MongoDB config is pointing to the remote storage location of the original environment.
+ 
 === "Restoring into a replica set with a different name"
 
     When restoring **logical backups** to a new environment that has the same (or more) number of shards with different replica set names, configure the name mapping between the source and target environments.
@@ -112,25 +122,6 @@ Prerequisites:
       ```$ pbm restore <timestamp> --replset-remapping="rsX=rsA,rsY=rsB"``
           
       For more information, see **Restoring into a cluster replica set with a different name** in [the PBM documentation](https://docs.percona.com/percona-backup-mongodb/usage/restore.html#restoring-into-a-cluster-replica-set-with-a-different-name). 
-
-
-{:start="3"}      
-3. Restore the backup. Once you run `pbm list` and see the backups made from the original environment, then you can run the `pbm restore` command:
-   - For snapshot backups: `pbm list`
-     Backup snapshots: `2022-11-23T19:40:06Z [restore_to_time: 2021-01-13T15:53:40Z]` supplying the timestamp of the backup to  the `pbm` command: `pbm restore 2022-11-23T19:40:06Z`. 
-     
-     For more information, see [Restore a backup topic in the PBM documentation](https://docs.percona.com/percona-backup-mongodb/usage/restore.html)
-
-   - For PITR backups: `pbm list`
-     Backup snapshots:
-
-     2022-11-23T19:40:06Z <logical> [restore_to_time: 2022-11-23T19:40:25Z]
-     2022-11-23T19:45:07Z <logical> [restore_to_time: 2022-11-23T19:45:22Z]
-     PITR <on>:
-       2022-11-23T19:40:26Z - 2022-11-23T19:45:22Z, supplying the timestamp from one of the PITR ranges to pbm command: ` pbm restore --time="2022-11-23T19:40:26"`. For more information, see [Point-in-time Recovery topic in the PBM documentation](https://docs.percona.com/percona-backup-mongodb/usage/point-in-time-recovery.html)
-4. Check the restore progress using the following command: `pbm list --restore`
-  !!! alert alert-info ""
-     Make sure not to run pbm backup from the new environment while the Percona Backup for MongoDB config is pointing to the remote storage location of the original environment.
 
 ## Delete a backup
 
