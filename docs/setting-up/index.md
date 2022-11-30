@@ -17,9 +17,10 @@ Choose from:
 |---|---|---
 | [Docker] | 1. Quick.<br>2. Simple. | 1. Docker installation required.<br>2. Additional network configuration required.
 | [Podman] | 1. Quick.<br>2. Simple.<br>3. Rootless. | 1. Podman installation required.
-| [Helm] Technical Preview | 1. Quick.<br>2. Simple.<br>3. Cloud. | 1. Requires running Kubernetes cluster.
+| [Helm] Technical Preview | 1. Quick.<br>2. Simple.<br>3. Cloud.<br>4. Availability and Reliability.| 1. Requires running Kubernetes cluster.
 | [Virtual appliance]  | 1. Easily import into Hypervisor of your choice | 1. More system resources compared to Docker footprint.
 | [Amazon AWS] | 1. Wizard-driven install. | 1. Non-free solution (infrastructure costs).
+| [High Availability Cluster]| 1. Availability and Reliability. | 1. Complex<br>2. Needs more resources
 
 ## Set up PMM Client
 
@@ -70,3 +71,4 @@ How you do this depends on the type of service. You can monitor:
 [virtual appliance]: server/virtual-appliance.md
 [Amazon AWS]: server/aws.md
 [easy install]: server/easy-install.md
+[High Availability Cluster]: server/ha.md

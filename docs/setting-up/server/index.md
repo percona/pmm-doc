@@ -26,7 +26,8 @@
     - [Helm];
     - [Virtual appliance];
     - [Amazon AWS];
-    - Use the [easy install] script.
+    - Use the [easy install] script;
+    - [High Availability Cluster].
 
 [Docker]: docker.md
 [Podman]: podman.md
@@ -34,6 +35,7 @@
 [virtual appliance]: virtual-appliance.md
 [Amazon AWS]: aws.md
 [easy install]: easy-install.md
+[High Availability Cluster]: ha.md
 
 1. Authenticating using API keys.
 
