@@ -73,37 +73,33 @@ During restoring, PMM disables all the scheduled backup tasks for the current se
      - to restore on a new environment with the same number of hosts and same replica names, make sure that the replica set names in your new destination cluster use the same names as those in the cluster that was backed up.
      For more information, see [Restoring a backup into a new-environment](https://docs.percona.com/percona-backup-mongodb/usage/restore in the PBM documentation. html#restoring-a-backup-into-a-new-environment). <br> 
      - to restore **logical backups** to a new environment that has the same or more numbers of shards with different replica set names, configure the name mapping between the source and target environments.
-      For the new environment you can either set the PBM_REPLSET_REMAPPING environment variable for pbm CLI or use the `--replset-remapping` flag for PBM commands. The mapping format is `<rsTarget>=<rsSource>`. 
+      For the new environment you can either set the PBM_REPLSET_REMAPPING environment variable for pbm CLI or use the `--replset-remapping` flag for PBM commands. The mapping format is `<rsTarget>=<rsSource>`.
       For example: `$ export PBM_REPLSET_REMAPPING="rsX=rsA,rsY=rsB"` OR `$ pbm restore <timestamp> --replset-remapping="rsX=rsA,rsY=rsB"` 
       For more information, see [Restoring into a replica set with a different name](https://docs.percona.com/percona-backup-mongodb/usage/restore.html#restoring-into-a-cluster-replica-set-with-a-different-name) in the PBM documentation.
 3. Make sure that Percona Backup for MongoDB configuration in the new environment points to the remote storage defined for the original environment, including the authentication credentials if it is an object store. <br/>
 
-The easiest way to configure it is to create a config file, called, for example, `pbm_config.yaml`. For this, you can either copy the config from the source host or create a new one.
+    The easiest way to configure it is to create a config file, called, for example, `pbm_config.yaml`. For this, you can either copy the config from the source host or create a new one.
 
-To redirect config output from the existing environment, use `pbm config >> pbm_config.yaml`, then copy the resulting file to the new environment. <br/>
+    To redirect config output from the existing environment, use `pbm config >> pbm_config.yaml`, then copy the resulting file to the new environment. <br/>
 
-Here's an example of config file content for AWS S3 compatible storage: 
-        ```yaml
-          storage:
-            type: s3
-            s3:
-              region: us-west-2
-              bucket: pbm-test-bucket
-              prefix: data/pbm/backup
-              credentials:
-              access-key-id: <your-access-key-id-here>
-              secret-access-key: <your-secret-key-here>
-        ```
+    Here's an example of config file content for AWS S3 compatible storage:
+    ```storage:
+      type: s3
+      s3:
+        region: us-west-2
+        bucket: pbm-test-bucket
+        prefix: data/pbm/backup
+        credentials:
+          access-key-id: <your-access-key-id-here>
+          secret-access-key: <your-secret-key-here>
+    ```
+    The prefix is the artifact name from the PMM **All Backups** page. <br/> 
+    To implement the config, use the following command: `pbm config --file pbm_config.yaml`. <br/>
 
-The prefix is the artifact name from the PMM **All Backups** page.
-
-<br/> To implement the config, use the following command: `pbm config --file pbm_config.yaml`. <br/>
-
-For more information, see **Restoring a backup into a new-environment** in [the PBM documentation](https://docs.percona.com/percona-backup-mongodb/usage/restore.html#restoring-a-backup-into-a-new-environment).  
-
-5. Run `pbm list' to start the restore process.
+    For more information, see **Restoring a backup into a new-environment** in [the PBM documentation](https://docs.percona.com/percona-backup-mongodb/usage/restore.html#restoring-a-backup-into-a-new-environment).  
+4. Run `pbm list' to start the restore process.
    
-6. Once all the backups made from the original environment are available, run the `pbm restore` command:
+5. Once all the backups made from the original environment are available, run the `pbm restore` command:
 === "For snapshot backups"
       
       1. Run the 'pbm restore command:
