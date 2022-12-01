@@ -20,7 +20,7 @@ First two phases would improve availability of PMM Server (or it's data) but don
 
 ## PMM on Kubernetes
 
-PMM could be deployed on Kubernetes via [Helm](helm.md) chart. This chart uses StatefulSet... 
+PMM could be deployed on Kubernetes via [Helm](helm.md) chart. This chart uses StatefulSet.
 
 ## Pacemaker
 
