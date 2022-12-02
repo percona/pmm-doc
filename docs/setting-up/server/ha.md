@@ -6,15 +6,15 @@ High Availability for PMM Server would be achieved in 3 phases:
 2. HA data sources
 3. Clustered PMM
 
-First phase improves PMM Client to survive broken connections and cache metrics that are configured for the `push` mode. This phase rely on external service to restore PMM Server, or to manual interventions to bring PMM Server and/or it's connectivity back to healthy state.
+The first phase improves PMM Client to survive broken connections and cache metrics that are configured for the `push` mode. This phase relies on external service to restore PMM Server, or for manual interventions to bring PMM Server and/or its connectivity back to a healthy state.
 
-Second phase would optionally separate PMM Server from it's data sources that could run in high available clusters (highly available [PostgreSQL cluster](https://docs.percona.com/postgresql/15/solutions/high-availability.html), VictoriaMetrics [HA](https://docs.victoriametrics.com/Single-server-VictoriaMetrics.html#high-availability) or [cluster](https://docs.victoriametrics.com/Cluster-VictoriaMetrics.html#cluster-availability), [ClickHouse Replication](https://clickhouse.com/docs/en/manage/replication-and-sharding)).
+The second phase would optionally separate PMM Server from its data sources that could run in highly available clusters (highly available [PostgreSQL cluster](https://docs.percona.com/postgresql/15/solutions/high-availability.html), VictoriaMetrics [HA](https://docs.victoriametrics.com/Single-server-VictoriaMetrics.html#high-availability) or [cluster](https://docs.victoriametrics.com/Cluster-VictoriaMetrics.html#cluster-availability), [ClickHouse Replication](https://clickhouse.com/docs/en/manage/replication-and-sharding)).
 
-Third phase would add Cluster support to PMM Server so it could run in cluster mode with other PMM Servers and possibly load balance the load as well.
+The third phase would add Cluster support to PMM Server so it could run in cluster mode with other PMM Servers and possibly load balance the load as well.
 
-First two phases requires PMM Server to be managed either by some services or manually, so in case of failures caused by network outages, resource saturation, hardware failures, operating system crashes, or unexpected reboots, something or someone would restore PMM Server and get it up and running so PMM Clients and users could connect to it. Also it is required to have additional external monitoring and alerting to detect PMM Server availability and notify PMM administrator to make some actions.
+The first two phases require PMM Server to be managed either by some services or manually, so in case of failures caused by network outages, resource saturation, hardware failures, operating system crashes, or unexpected reboots, something or someone would restore PMM Server and get it up and running so PMM Clients and users could connect to it. Also, it is required to have additional external monitoring and alerting to detect PMM Server availability and notify PMM administrator to make some actions.
 
-First two phases would improve availability of PMM Server (or it's data) but don't provide any management capabilities to restore PMM Server to desired healthy state. But there are available solutions that could help users to automate this process:
+The first two phases would improve the availability of PMM Server (or it's data) but don't provide any management capabilities to restore PMM Server to a desired healthy state. But there are available solutions that could help users to automate this process:
 - PMM on Kubernetes (see [Helm](helm.md))
 - Pacemaker: a high-availability cluster resource manager
 
@@ -26,34 +26,32 @@ PMM could be deployed on Kubernetes via [Helm](helm.md) chart. This chart uses S
 
 [Pacemaker] is a high-availability cluster resource manager.
 
-Pacemaker high availability clusters provide highly available services by eliminating single points of failure and by failing over services from one cluster node to another in case a node becomes inoperative. Typically, services in a high availability cluster read and write data (by means of read-write mounted file systems). Therefore, a high availability cluster must maintain data integrity as one cluster node takes over control of a service from another cluster node. Node failures in a high availability cluster are not visible from clients outside the cluster.
+Pacemaker high availability clusters provide highly available services by eliminating single points of failure and by failing over services from one cluster node to another in case a node becomes inoperative. Typically, services in a high availability cluster read and write data (utilizing read-write mounted file systems). Therefore, a high availability cluster must maintain data integrity as one cluster node takes over control of a service from another cluster node. Node failures in a high availability cluster are not visible from clients outside the cluster.
 
 All of the currently supported distributions ship a high availability add-on/extension, which is based on the Pacemaker clustering stack, for example:
 - [Red Hat High Availability Add-On]
 - [SUSE Linux Enterprise High Availability Extension]
 
-Please check your distribution documentation on Pacemaker HA as well as [Pacemaker] documentation. In this section we will give an example of possible PMM Server HA setup based on CentOS Stream 9.
+Please check your distribution documentation on Pacemaker HA as well as [Pacemaker] documentation. In this section, we will give an example of a possible PMM Server HA setup based on CentOS Stream 9.
 
-It is only possible currently to have PMM Server running in Active/Passive configuration, as there re currently two resources that are exclusivly owned by the PMM Server and should belong only to one instance of it:
+It is only possible currently to have PMM Server running in Active/Passive configuration, as there are currently two resources that are exclusively owned by the PMM Server and should belong only to one instance of it:
 - network address (DNS or IP)
 - storage
 
-So in one moment of a time only one PMM Server instance could own those resources to get connection and receive data from the client and write that data after processing to DBs on a mounted storage:
-
+So in one moment at a time only one PMM Server instance could own those resources to get the connection and receive data from the clients and write that data after processing it to DBs on a mounted storage:
 
 ![](../../_images/PMM-HA-Active-Standby.png "PMM Server, Two-Node (Active-Standby) High Availability Cluster")
 
-In case of failures Pacemaker should make sure that IP address migrates to another node and shared storage would be mounted there as well for the passive PMM Server that would be activated in a case of a failover.
+In case of failures, Pacemaker should make sure that IP address migrates to another node and shared storage would be mounted there as well for the passive PMM Server that would be activated in case of a failover.
 
-Fencing mechanism protects and restrict access to resources to avoid corruptions and collisions between cluster nodes.
+Fencing mechanism protects and restricts access to resources to avoid corruption and collisions between cluster nodes.
 
 In this example we would:
-- turn off fencing for demonstration purpose and as it depends on HW that is used
+- turn off the fencing for demonstration purposes and as it depends on HW that is used
 - use High availability LVM volumes
 
 !!! caution alert alert-warning "Important"
-    In a production cluster it is required to use proper Node Fencing as well as recommended to use network attached storage with a good performance (FC, iSCSI SAN, NVMEoF). Some of the storage solution provide additional protections to isolate storage between nodes (SCSI-3 PR). 
-
+    In a production cluster, it is required to use proper Node Fencing as well is recommended to use network-attached storage with good performance (FC, iSCSI SAN, NVMEoF). Some of the storage solutions provide additional protections to isolate storage between nodes (SCSI-3 PR). 
 ### Prerequisites
 
 - two Nodes
@@ -63,7 +61,7 @@ In this example we would:
 
 ### Setup two nodes
 
-Following instructions are done on both nodes.
+The following instructions are done on both nodes.
 
 Install packages and enable services:
 ```sh
@@ -80,7 +78,7 @@ passwd hacluster
 ```
 
 !!! note alert alert-primary ""
-    In this example we have firewall disabled, but in production you need to allow services and ports, so please refer to your distribution documentation for those procedures.
+    In this example, we have the firewall disabled, but in production, you need to allow services and ports, so please refer to your distribution documentation for those procedures.
 
 
 Make sure that chronyd is running and time is synced:
@@ -90,18 +88,18 @@ systemctl status chronyd
 
 ### Setup PMM Server
 
-In this example we would use SystemD to manage our PMM Server, full procedure described in [Podman].
+In this example, we would use SystemD to manage our PMM Server, the full procedure described in [Podman].
 
 But for Pacemaker HA it requires modifications:
 - config files should be located on a shared device
 - `/srv` is bind mounted on a shared device
 
 !!! caution alert alert-warning "Important"
-    It is required to put configuration files in some shared resource, for example NFS and mount it on all nodes. In our example it is mounted under `/mnt/nfs_share`.
-    Doing this we ensure that changing some PMM parameters we would have similar parameters on the passive node. For example updating PMM version through image tag.
-    If there would be version mismatch between active and passive nodes in case of failover there is a possibility that either data could be corrupted or PM< Server just wouldn't start.
+    It is required to put configuration files in some shared resource, for example, NFS and mount it on all nodes. In our example, it is mounted under `/mnt/nfs_share`.
+    By doing this we ensure that by changing some PMM parameters we would have similar parameters on the passive node. For example, updating PMM version through the image tag.
+    If there would be a version mismatch between active and passive nodes in case of failover there is a possibility that either data could be corrupted or PM< Server just wouldn't start.
 
-Create configuration file for PMM Server on shared storage:
+Create the configuration file for PMM Server on shared storage:
 
 ```sh
 cat << "EOF" > /mnt/nfs_share/pmm/pmm-server.env
@@ -118,10 +116,10 @@ DISABLE_UPDATES=1
 EOF
 ```
 
-Create configuration file for SystemD Service on shared storage:
+Create the configuration file for SystemD Service on shared storage:
 ```sh
 cat << "EOF" > /mnt/nfs_share/pmm/env
-PMM_TAG=2.32.0
+PMM_TAG=2.33.0
 PMM_IMAGE=docker.io/percona/pmm-server
 EOF
 ```
@@ -142,7 +140,7 @@ Type=simple
 # set environment for this unit
 Environment=PMM_PUBLIC_PORT=443
 Environment=PMM_VOLUME_PATH=/mnt/pmm/srv
-Environment=PMM_TAG=2.32.0
+Environment=PMM_TAG=2.33.0
 Environment=PMM_IMAGE=docker.io/percona/pmm-server
 Environment=PMM_ENV_FILE=/mnt/nfs_share/pmm/pmm-server.env
 
@@ -170,26 +168,25 @@ podman pull docker.io/percona/pmm-server:2.32.0
 
 ### Setup network
 
-On each node setup network so to nodes could resolve and access each other.
+On each node set up the network so to nodes could resolve and access each other.
 
-In this example we have configured network with `/etc/hosts` file:
+In this example we have configured the network with `/etc/hosts` file:
 ```sh
+[root@pmm1 ~]# hostnamectl hostname pmm1
+
 [root@pmm1 ~]# cat /etc/hosts
 127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
 ::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
 192.168.122.151 pmm1 
 192.168.122.126 pmm2
 
+[root@pmm2 ~]# hostnamectl hostname pmm2
+
 [root@pmm2 ~]# cat /etc/hosts
 127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
 ::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
 192.168.122.126 pmm2
 192.168.122.151 pmm1
-```
-
-```
-[root@pmm1 ~]# hostnamectl hostname pmm1
-[root@pmm2 ~]# hostnamectl hostname pmm2
 ```
 
 ### Configuring an LVM volume with an ext4 file system
@@ -237,7 +234,7 @@ restorecon -R /mnt/pmm-server/srv/
 
 ### Creating HA cluster
 
-Authorize nodes and create a cluster:
+Authorize the nodes and create a cluster:
 ```
 pcs host auth pmm1 pmm2
 
@@ -256,7 +253,7 @@ pcs property set stonith-enabled=false
 
 ### Adding resources to the cluster
 
-With following commands we will add:
+With the following commands we will add:
 - LVM HA that would be properly migrated and mounted by Pacemaker
 - VirtualIP that also would be migrated and added by the Pacemaker to the Active node
 - PMM Server systemd service that would start PMM Server with correct resources in place
@@ -295,25 +292,107 @@ Full List of Resources:
 And that it is, we have two nodes Active/Passive PMM Server HA cluster. 
 
 ### Failover
+
+In the case of node or service failure, Pacemaker would recover services and other resources on a passive/standby node. The cluster administrator would need to troubleshoot and recover failed node and bring it back online into the cluster.
+
+The cluster administrator might have preferences on which node resources should run. This could be achieved with [constraints](https://www.clusterlabs.org/pacemaker/doc/2.1/Clusters_from_Scratch/html/apache.html#prefer-one-node-over-another) and [stickiness](https://www.clusterlabs.org/pacemaker/doc/2.1/Clusters_from_Scratch/html/active-passive.html#prevent-resources-from-moving-after-recovery).
+
+Manually resources could be moved by:
+- marking the node they are running as `standby`
+- executing `pcs resource move` command
+
+Force Pacemaker to failover to another node:
 ```sh
 pcs node standby pmm1
-pcs node unstandby pmm1
+
+[root@pmm1 ~]# pcs status
+Cluster name: pmm_ha_cluster
+Cluster Summary:
+  * Stack: corosync
+  * Current DC: pmm2 (version 2.1.4-5.el9-dc6eb4362e) - partition with quorum
+  * Last updated: Thu Dec  1 07:26:19 2022
+  * Last change:  Thu Dec  1 07:01:54 2022 by root via cibadmin on pmm1
+  * 2 nodes configured
+  * 4 resource instances configured
+
+Node List:
+  * Node pmm1: standby
+  * Online: [ pmm2 ]
+
+Full List of Resources:
+  * Resource Group: pmm:
+    * pmm_lvm	(ocf:heartbeat:LVM-activate):	Started pmm2
+    * VirtualIP	(ocf:heartbeat:IPaddr2):	Started pmm2
+    * pmm_fs	(ocf:heartbeat:Filesystem):	Started pmm2
+    * pmm-server	(systemd:pmm-server):	Started pmm2
+
+Daemon Status:
+  corosync: active/disabled
+  pacemaker: active/enabled
+  pcsd: active/enabled
 ```
 
-pcs resource move...
+Don't forget to bring the node back online after resources migration:
+```sh
+pcs node unstandby pmm1
 
-stickyness
+[root@pmm1 ~]# pcs status                
+...
+Node List:
+  * Online: [ pmm1 pmm2 ]
+```
 
-TBD
+Move resources from one node to another:
+```sh
+[root@pmm1 ~]# pcs resource move pmm pmm1 
+Location constraint to move resource 'pmm' has been created
+Waiting for the cluster to apply configuration changes...
+Location constraint created to move resource 'pmm' has been removed
+Waiting for the cluster to apply configuration changes...
+resource 'pmm' is running on node 'pmm1'
+[root@pmm1 ~]# pcs status                
+Cluster name: pmm_ha_cluster
+Cluster Summary:
+  * Stack: corosync
+  * Current DC: pmm2 (version 2.1.4-5.el9-dc6eb4362e) - partition with quorum
+  * Last updated: Thu Dec  1 07:26:37 2022
+  * Last change:  Thu Dec  1 07:26:31 2022 by root via cibadmin on pmm1
+  * 2 nodes configured
+  * 4 resource instances configured
+
+Node List:
+  * Online: [ pmm1 pmm2 ]
+
+Full List of Resources:
+  * Resource Group: pmm:
+    * pmm_lvm	(ocf:heartbeat:LVM-activate):	Started pmm1
+    * VirtualIP	(ocf:heartbeat:IPaddr2):	Started pmm1
+    * pmm_fs	(ocf:heartbeat:Filesystem):	Started pmm1
+    * pmm-server	(systemd:pmm-server):	Started pmm1
+
+Daemon Status:
+  corosync: active/disabled
+  pacemaker: active/enabled
+  pcsd: active/enabled
+```
 
 ### PMM Server update
 
 To update PMM Server:
-- change TAG in the configuration file
+- change the PMM_TAG in the configuration file
 - pre pull image on all nodes
 - restart systemd service
 
-TBD
+```sh
+[root@pmm1 ~]# sed -i s/PMM_TAG=*./PMM_TAG=2.33.0/ /mnt/nfs_share/pmm/env
+
+[root@pmm1 ~]# podman pull docker.io/percona/pmm-server:2.33.0
+[root@pmm2 ~]# podman pull docker.io/percona/pmm-server:2.33.0
+
+[root@pmm1 ~]# systemctl restart pmm-server
+```
+
+Pre-pulling the image would make startup of the service faster.
 
 
 [Pacemaker]: https://wiki.clusterlabs.org/wiki/Pacemaker
