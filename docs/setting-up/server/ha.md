@@ -15,11 +15,13 @@ The third phase would add Cluster support to PMM Server so it could run in clust
 The first two phases require PMM Server to be managed by some services or manually. In case of failures caused by network outages, resource saturation, hardware failures, operating system crashes, or unexpected reboots, something or someone would restore PMM Server and get it up and running so PMM Clients and users could connect to it. Also, it is required to have additional external monitoring and alerting to detect PMM Server availability and notify the PMM administrator to take some actions.
 
 The first two phases would improve the availability of PMM Server (or it's data) but don't provide any management capabilities to restore PMM Server to a desired healthy state. Currently, the PMM administrator should do it manually and ensure that such resources are available:
+
 - the network which connects PMM Server, PMM Clients, and PMM users
 - storage where PMM Server store the data
 - PMM Server service is running (docker, podman, VM)
 
 There are available solutions that could help PMM administrator to automate the process of managing resources:
+
 - PMM on Kubernetes (see [Helm])
 - Pacemaker: a high-availability cluster resource manager
 
@@ -28,6 +30,7 @@ There are available solutions that could help PMM administrator to automate the 
 Kubernetes is an open-source system for automating containerized applications' deployment, scaling, and management.
 
 It helps PMM Administrator to avoid complexity in taking care of resources and shift this responsibility to the Kubernetes cluster:
+
 - networks: `Service` and `Ingress` provide DNS and IP access and connect PMM Server with clients and users
 - storage: `PVC` ensures that storage is claimed only by one PMM Server and attached to it
 - PMM Server: `StatefulSet` runs PMM as a container and connects it to the correct storage and network
@@ -40,6 +43,7 @@ Check our "How To": [Install PMM Server on Amazon EKS].
 [Pacemaker] is a high-availability cluster resource manager.
 
 All of the currently supported distributions ship a high availability add-on/extension, which is based on the Pacemaker clustering stack, for example:
+
 - [Red Hat High Availability Add-On]
 - [SUSE Linux Enterprise High Availability Extension]
 

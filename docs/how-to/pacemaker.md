@@ -9,12 +9,14 @@
 Pacemaker high availability clusters provide highly available services by eliminating single points of failure and by failing over services from one cluster node to another in case a node becomes inoperative. Typically, services in a high availability cluster read and write data (utilizing read-write mounted file systems). Therefore, a high availability cluster must maintain data integrity as one cluster node takes over control of a service from another cluster node. Node failures in a high availability cluster are not visible from clients outside the cluster.
 
 All of the currently supported distributions ship a high availability add-on/extension, which is based on the Pacemaker clustering stack, for example:
+
 - [Red Hat High Availability Add-On]
 - [SUSE Linux Enterprise High Availability Extension]
 
 Please check your distribution documentation on Pacemaker HA as well as [Pacemaker] documentation. In this section, we will give an example of a possible PMM Server HA setup based on CentOS Stream 9.
 
 It is only possible currently to have PMM Server running in Active/Passive configuration, as there are currently two resources that are exclusively owned by the PMM Server and should belong only to one instance of it:
+
 - network address (DNS or IP)
 - storage
 
@@ -27,6 +29,7 @@ In case of failures, Pacemaker should make sure that IP address migrates to anot
 Fencing mechanism protects and restricts access to resources to avoid corruption and collisions between cluster nodes.
 
 In this example we would:
+
 - turn off the fencing for demonstration purposes and as it depends on HW that is used
 - use High availability LVM volumes
 
