@@ -245,7 +245,6 @@ Other settings described in default values.yml.
 ## DNS settings
 
 
-
 1. Define load balancer name:
 
     ```sh
@@ -256,3 +255,13 @@ Other settings described in default values.yml.
 
 
 More detailes available [here](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-to-elb-load-balancer.html)
+
+
+## Summary
+
+Finally we have high availability instance of PMM. Kubernetes cluster (EKS) provide high availability from the box. Kubernetes cluster have "health" probes mechanism and service discovery that can detect when a pod is failed and reroute traffic to healthy pods. Unhealthy pods restarted and checking by health probes.
+
+In our case PMM running as Stateful Set and have a persistent volume. Kubernetes can attach a disk from one pod to another replacement pod, but an application would still suffer a temporary outage until the new pod has attached the disk and started up. Outage time is about 1-2 minutes.
+
+!!! caution alert alert-warning "Important"
+    EBS volume and instance must be in the same Availability Zone. 
