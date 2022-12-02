@@ -9,3 +9,4 @@
 - [Share dashboards and panels](share-dashboard.md) to save or share.
 - [Extend Metrics](extend-metrics.md) with textfile collector.
 - [Troubleshoot](troubleshoot.md)
+- [Install High-Available PMM](ha-eks.md) instance in EKS AWS cluster.
