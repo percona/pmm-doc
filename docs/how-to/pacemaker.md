@@ -363,6 +363,7 @@ Daemon Status:
 ## PMM Server update
 
 To update PMM Server:
+
 - change the PMM_TAG in the configuration file
 - pre pull image on all nodes
 - restart systemd service
