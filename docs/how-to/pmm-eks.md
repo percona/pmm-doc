@@ -1,13 +1,15 @@
-# Install High Available PMM instance in EKS
+# Install PMM instance on Amazon EKS
 
-**Prerequisites**
+In this "How To" we describe how one could deploy and configure EKS cluster and install PMM there.
+
+## Prerequisites
 - AWS CLI version 2.8.6 or later.
 - eksctl version 0.120.0 or later.
 - Route 53 as the DNS service for domain
 
 This manual for empty EKS cluster without any settings.
 
-## Creating an IAM OIDC provider for your cluster
+## Create an IAM OIDC provider for your cluster
 1. Retrieve your cluster's OIDC provider ID and store it in a variable.
 
     ```sh
@@ -28,7 +30,7 @@ This manual for empty EKS cluster without any settings.
     ```
     Where `my-cluster` your own cluster. Also, more details you can read [here](https://docs.aws.amazon.com/eks/latest/userguide/enable-iam-roles-for-service-accounts.html).
 
-## Creating the Amazon EBS CSI driver IAM role for service accounts
+## Create the Amazon EBS CSI driver IAM role for service accounts
 
 This plugin requires IAM permissions to make calls to AWS APIs on your behalf. When the plugin is deployed, it creates and is configured to use a service account that's named *ebs-csi-controller-sa*. The service account is bound to a Kubernetes *clusterrole* that's assigned the required Kubernetes permissions.
 
@@ -49,7 +51,7 @@ To create your Amazon EBS CSI plugin IAM role with *eksctl*:
 
     Where `my-cluster` your own cluster. If you use a custom KMS key for encryption on your Amazon EBS volumes you can get manual [here](https://docs.aws.amazon.com/eks/latest/userguide/csi-iam-role.html)
 
-## Adding the Amazon EBS CSI add-on
+## Add the Amazon EBS CSI add-on
 
 1. Run the following command to add the Amazon EBS CSI add-on. Replace `my-cluster` with the name of your cluster, `111122223333` with your account ID.
 
@@ -59,7 +61,7 @@ To create your Amazon EBS CSI plugin IAM role with *eksctl*:
 
 More details you can read [here](https://docs.aws.amazon.com/eks/latest/userguide/managing-ebs-csi.html).
 
-## Installing the AWS Load Balancer Controller add-on
+## Install the AWS Load Balancer Controller add-on
 
 1. Download an IAM policy for the AWS Load Balancer Controller that allows it to make calls to AWS APIs on your behalf:
 
@@ -206,7 +208,9 @@ Where `your@email` your own contact email, this information will be included wit
     kubectl apply -f issuer.yml
     ```
 
-## Deploy HA PMM
+## Deploy PMM
+
+PMM is deployed with the help of the [Helm chart].
 
 1. Add the *percona-helm-charts* repo:
 
@@ -254,14 +258,16 @@ Other settings described in default values.yml.
 2. Open **Route 53**, choose your domain and create record for your PMM instance. Turn on "alias" choose "Alias Network Load Balancer", choose your Region and choose load balancer with name from previous request.
 
 
-More detailes available [here](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-to-elb-load-balancer.html)
+More details available [here](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-to-elb-load-balancer.html).
 
 
-## Summary
+## PMM HA
 
-Finally we have high availability instance of PMM. Kubernetes cluster (EKS) provide high availability from the box. Kubernetes cluster have "health" probes mechanism and service discovery that can detect when a pod is failed and reroute traffic to healthy pods. Unhealthy pods restarted and checking by health probes.
+Kubernetes cluster (EKS) provides high availability from the box. Kubernetes clusters have "health" probes mechanism and service discovery that can detect when a pod is failed and reroute traffic to healthy pods. Unhealthy pods restarted and checked by health probes.
 
-In our case PMM running as Stateful Set and have a persistent volume. Kubernetes can attach a disk from one pod to another replacement pod, but an application would still suffer a temporary outage until the new pod has attached the disk and started up. Outage time is about 1-2 minutes.
+PMM is running as StatefulSet and has a persistent volume. Kubernetes can attach a disk from one pod to another replacement pod, but an application would still suffer a temporary outage until the new pod has attached the disk and started up. Outage time is around 1-2 minutes.
 
 !!! caution alert alert-warning "Important"
     EBS volume and instance must be in the same Availability Zone. 
+
+[Helm chart]: ../setting-up/server/helm.md

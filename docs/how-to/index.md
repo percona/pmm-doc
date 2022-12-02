@@ -8,5 +8,6 @@
 - [Annotate](annotate.md) charts to mark significant events.
 - [Share dashboards and panels](share-dashboard.md) to save or share.
 - [Extend Metrics](extend-metrics.md) with textfile collector.
-- [Troubleshoot](troubleshoot.md)
-- [Install High-Available PMM](ha-eks.md) instance in EKS AWS cluster.
+- [Troubleshoot](troubleshoot.md).
+- [Install PMM Server on Amazon EKS](pmm-eks.md).
+- [Configure Pacemaker](pacemaker.md) to manage PMM HA cluster.
