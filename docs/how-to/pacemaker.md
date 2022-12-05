@@ -15,7 +15,7 @@ All of the currently supported distributions ship a high availability add-on/ext
 
 Check your distribution documentation on Pacemaker HA as well as [Pacemaker] documentation. This section provides an example of a possible PMM Server HA setup based on CentOS Stream 9.
 
-It is only possible currently to have PMM Server running in Active/Passive configuration, as there are currently two resources that are exclusively owned by the PMM Server and should belong only to one instance of it:
+Currently, it is only possible to have PMM Server running in Active/Passive configuration, as there are currently two resources that are exclusively owned by the PMM Server and should belong only to one instance of it:
 
 - network address (DNS or IP)
 - storage
