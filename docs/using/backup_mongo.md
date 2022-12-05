@@ -114,7 +114,9 @@ During restoring, PMM disables all the scheduled backup tasks for the current se
     To implement the config, use the following command: `pbm config --file pbm_config.yaml`. 
 
     For more information, see **Restoring a backup into a new-environment** in [the PBM documentation](https://docs.percona.com/percona-backup-mongodb/usage/restore.html#restoring-a-backup-into-a-new-environment).  
+
 4. Run `pbm list` to start the restore process.
+   
 5. Once all the backups made from the original environment are available, run the `pbm restore` command:
 
 
