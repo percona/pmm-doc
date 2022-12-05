@@ -49,7 +49,7 @@ All of the currently supported distributions ship a high availability add-on/ext
 
 Check your distribution documentation on Pacemaker HA as well as [Pacemaker] documentation.
 
-Check our "How To": [Configure Pacemaker to manage PMM HA cluster](../../how-to/pacemaker.md).
+Check our **How To**: [Configure Pacemaker to manage PMM HA cluster](../../how-to/pacemaker.md).
 
 [Pacemaker]: https://wiki.clusterlabs.org/wiki/Pacemaker
 [Red Hat High Availability Add-On]: https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/configuring_and_managing_high_availability_clusters/index
