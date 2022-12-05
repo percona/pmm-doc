@@ -32,7 +32,7 @@ Kubernetes is an open-source system for automating containerized applications' d
 It helps PMM Administrator to avoid complexity in taking care of resources and shift this responsibility to the Kubernetes cluster:
 
 - Networks: `Service` and `Ingress` provide DNS and IP access and connect PMM Server with clients and users
-- storage: `PVC` ensures that storage is claimed only by one PMM Server and attached to it
+- Storage: `PVC` ensures that storage is claimed only by one PMM Server and attached to it
 - PMM Server: `StatefulSet` runs PMM as a container and connects it to the correct storage and network
 
 PMM administrator could deploy on Kubernetes via [Helm] chart. And Kubernetes would make sure that PMM is available in case of different failures.
