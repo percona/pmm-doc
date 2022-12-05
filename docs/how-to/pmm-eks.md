@@ -1,6 +1,6 @@
 # Install PMM instance on Amazon EKS
 
-In this "How To" we describe how one could deploy and configure EKS cluster and install PMM there.
+In this **How To**, we describe how to deploy and configure the EKS cluster and install PMM there.
 
 ## Prerequisites
 - AWS CLI version 2.8.6 or later.
@@ -15,14 +15,14 @@ This manual for empty EKS cluster without any settings.
     ```sh
     oidc_id=$(aws eks describe-cluster --name my-cluster --query "cluster.identity.oidc.issuer" --output text | cut -d '/' -f 5)
     ```
-    Where `my-cluster` your own cluster.
+    Where `my-cluster` is the name of your cluster.
 
-2. Determine whether an IAM OIDC provider with your cluster's ID is already in your account.
+2. Check if you have an existing IAM OIDC provider for your cluster.
 
     ```sh
     oidc_id=$(aws eks describe-cluster --name my-cluster --query "cluster.identity.oidc.issuer" --output text | cut -d  '/' -f 5)
     ```
-    If output is returned from the previous command, then you already have a provider for your cluster and you can skip the next step. If no output is returned, then you must create an IAM OIDC provider for your cluster.
+    If the output is returned from the previous command, you already have a provider for your cluster and can skip the next step. You must create an IAM OIDC provider for your cluster if no output is returned.
 
 3. Create an IAM OIDC identity provider for your cluster with the following command:
     ```sh
@@ -30,9 +30,9 @@ This manual for empty EKS cluster without any settings.
     ```
     Where `my-cluster` your own cluster. Also, more details you can read [here](https://docs.aws.amazon.com/eks/latest/userguide/enable-iam-roles-for-service-accounts.html).
 
-## Create the Amazon EBS CSI driver IAM role for service accounts
+## Create Amazon EBS CSI driver IAM role for service accounts
 
-This plugin requires IAM permissions to make calls to AWS APIs on your behalf. When the plugin is deployed, it creates and is configured to use a service account that's named *ebs-csi-controller-sa*. The service account is bound to a Kubernetes *clusterrole* that's assigned the required Kubernetes permissions.
+This plugin requires IAM permissions to make calls to AWS APIs on your behalf. When the plugin is deployed, it creates and is configured to use a service account that is named *ebs-csi-controller-sa*. The service account is bound to a Kubernetes *clusterrole* assigned the required Kubernetes permissions.
 
 To create your Amazon EBS CSI plugin IAM role with *eksctl*:
 
@@ -49,19 +49,19 @@ To create your Amazon EBS CSI plugin IAM role with *eksctl*:
     --role-name AmazonEKS_EBS_CSI_DriverRole
     ```
 
-    Where `my-cluster` your own cluster. If you use a custom KMS key for encryption on your Amazon EBS volumes you can get manual [here](https://docs.aws.amazon.com/eks/latest/userguide/csi-iam-role.html)
+    Where `my-cluster` is the name of your cluster. If you use a custom KMS key for encryption on your Amazon EBS volumes, you can see the documentation [here](https://docs.aws.amazon.com/eks/latest/userguide/csi-iam-role.html)
 
-## Add the Amazon EBS CSI add-on
+## Add Amazon EBS CSI add-on
 
-1. Run the following command to add the Amazon EBS CSI add-on. Replace `my-cluster` with the name of your cluster, `111122223333` with your account ID.
+1. Run the following command to add the Amazon EBS CSI add-on. Replace `my-cluster` with the name of your cluster, and `111122223333` with your account ID.
 
     ```sh
     eksctl create addon --name aws-ebs-csi-driver --cluster my-cluster --service-account-role-arn arn:aws:iam::111122223333:role/AmazonEKS_EBS_CSI_DriverRole --force
     ```
 
-More details you can read [here](https://docs.aws.amazon.com/eks/latest/userguide/managing-ebs-csi.html).
+For additional details, see [documentation](https://docs.aws.amazon.com/eks/latest/userguide/managing-ebs-csi.html).
 
-## Install the AWS Load Balancer Controller add-on
+## Install AWS Load Balancer Controller add-on
 
 1. Download an IAM policy for the AWS Load Balancer Controller that allows it to make calls to AWS APIs on your behalf:
 
@@ -83,7 +83,7 @@ More details you can read [here](https://docs.aws.amazon.com/eks/latest/userguid
     --policy-document file://iam_policy.json
     ```
 
-    If you downloaded *iam_policy_us-gov.json*, than change *iam_policy.json* to *iam_policy_us-gov.json*.
+    If you downloaded *iam_policy_us-gov.json*, then change *iam_policy.json* to *iam_policy_us-gov.json*.
 
 3. Create an IAM role.
 
@@ -97,7 +97,7 @@ More details you can read [here](https://docs.aws.amazon.com/eks/latest/userguid
       --approve
     ```
 
-    Replace `my-cluster` with the name of your cluster, `111122223333` with your account ID.
+    Replace `my-cluster` with the name of your cluster, and `111122223333` with your account ID.
 
 4. Add the *eks-charts* repo:
 
@@ -121,19 +121,19 @@ More details you can read [here](https://docs.aws.amazon.com/eks/latest/userguid
       --set serviceAccount.name=aws-load-balancer-controller
     ```
 
-More details you can read [here](https://docs.aws.amazon.com/eks/latest/userguide/aws-load-balancer-controller.html).
+For more details, see [documentation](https://docs.aws.amazon.com/eks/latest/userguide/aws-load-balancer-controller.html).
 
-## Deploy the NGINX ingress controller for Kubernetes
+## Deploy NGINX ingress controller for Kubernetes
 
-At this option installing NGINX ingress controller with TCP on Network Load Balancer.
+In this option, we will be installing an NGINX ingress controller with TCP on Network Load Balancer.
 
-1. Download YAML file to deploy the following Kubernetes objects: *namespace*, *serviceaccounts*, *configmap*, *clusterroles*, *clusterrolebindings*, *roles*, *rolebindings*, *services*, *deployments*, *ingressclasses*, and *validatingwebhookconfigurations*.
+1. Download the YAML file to deploy the following Kubernetes objects: *namespace*, *serviceaccounts*, *configmap*, *clusterroles*, *clusterrolebindings*, *roles*, *rolebindings*, *services*, *deployments*, *ingressclasses*, and *validatingwebhookconfigurations*.
 
     ```sh
     wget https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/aws/deploy.yaml
     ```
 
-2. Edit the file. Then, in the *ingress-nginx-controller* service object section replace all service.beta.kubernetes.io annotations with following:
+2. Edit the file. Then, in the *ingress-nginx-controller* service object section, replace all service.beta.kubernetes.io annotations with following:
 
     ```sh
     service.beta.kubernetes.io/aws-load-balancer-backend-protocol: tcp
@@ -148,7 +148,7 @@ At this option installing NGINX ingress controller with TCP on Network Load Bala
     kubectl apply -f deploy.yaml
     ```
 
-More details you can read [here](https://aws.amazon.com/ru/premiumsupport/knowledge-center/eks-access-kubernetes-services/).
+For additional details, see [documentation](https://aws.amazon.com/ru/premiumsupport/knowledge-center/eks-access-kubernetes-services/).
 
 ## Deploy cert-manager
 
@@ -175,11 +175,11 @@ More details you can read [here](https://aws.amazon.com/ru/premiumsupport/knowle
         --set installCRDs=true
     ```
 
-More details you can read [here](https://cert-manager.io/docs/installation/helm/).
+For additional details, see [documentation](https://cert-manager.io/docs/installation/helm/).
 
 ## Create an Issuer in Amazon EKS
 
-Issuers and cluster issuers are resources that supply certificates to your cluster. The basic Cert-Manager installation created so far is incapable of issuing certificates. Adding an issuer that’s configured to use Let’s Encrypt lets you dynamically acquire new certificates for services in your cluster.
+Issuers and cluster issuers are resources that supply certificates to your cluster. The basic Cert-Manager installation created so far is incapable of issuing certificates. Adding an issuer configured to use **Let’s Encrypt** allows you to acquire new certificates for services in your cluster dynamically.
 
 1. Create issuer.yml manifest:
 
@@ -200,7 +200,7 @@ Issuers and cluster issuers are resources that supply certificates to your clust
                 class: nginx
     ```
 
-Where `your@email` your own contact email, this information will be included with your certificates. Let’s Encrypt may also alert you at the address if it needs to send you alerts about your certificates.
+Where `your@email` is your contact email, this information will be included with your certificates.In the event that **Let's Encrypt** wants to alert you about your certificates, it may do so at this address.
 
 2. Apply this manifest:
 
@@ -238,7 +238,7 @@ For cert-manager define annotation from previous step:
 cert-manager.io/cluster-issuer: letsencrypt-prod
 ```
 
-Other settings described in default values.yml.
+The other settings are described in default values.yml.
 
 4. Install the PMM using Helm V3:
 
@@ -255,15 +255,15 @@ Other settings described in default values.yml.
     kubectl get ingress -n default
     ```
 
-2. Open **Route 53**, choose your domain and create record for your PMM instance. Turn on "alias" choose "Alias Network Load Balancer", choose your Region and choose load balancer with name from previous request.
+2. Open **Route 53**, choose your domain, and create a record for your PMM instance. Turn on the `alias`, choose **Alias Network Load Balancer**, choose your Region, and choose the load balancer with the name from the previous request.
 
 
-More details available [here](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-to-elb-load-balancer.html).
+For more details, see [documentation](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-to-elb-load-balancer.html).
 
 
 ## PMM HA
 
-Kubernetes cluster (EKS) provides high availability from the box. Kubernetes clusters have "health" probes mechanism and service discovery that can detect when a pod is failed and reroute traffic to healthy pods. Unhealthy pods restarted and checked by health probes.
+Kubernetes cluster (EKS) provides high availability. Kubernetes clusters have *health* probes mechanism and service discovery that can detect when a pod is failed and reroute traffic to healthy pods. Probes check the health of unhealthy pods and restart them if necessary.
 
 PMM is running as `StatefulSet` and has a persistent volume. Kubernetes can attach a disk from one pod to another replacement pod, but an application would still suffer a temporary outage until the new pod has attached the disk and started up. Outage time is around 1-2 minutes.
 

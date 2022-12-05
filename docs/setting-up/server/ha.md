@@ -1,12 +1,12 @@
 # High Availability Cluster for PMM Server
 
-High Availability for PMM Server would be achieved in 3 phases:
+High Availability for PMM Server will be achieved in three phases:
 
 1. Prevent data loss with VM integration for short outages
 2. HA data sources
 3. Clustered PMM
 
-The first phase improves PMM Client to survive broken connections and cache metrics that are configured for the `push` mode. This phase relies on external service to restore PMM Server, or for manual interventions to bring PMM Server and/or its connectivity back to a healthy state.
+The first phase improves PMM Client to survive broken connections and cache metrics configured for the `push` mode. This phase relies on external service to restore PMM Server or for manual interventions to bring PMM Server and/or its connectivity back to a healthy state.
 
 The second phase would optionally separate PMM Server from its data sources that could run in highly available clusters (highly available [PostgreSQL cluster](https://docs.percona.com/postgresql/15/solutions/high-availability.html), VictoriaMetrics [HA](https://docs.victoriametrics.com/Single-server-VictoriaMetrics.html#high-availability) or [cluster](https://docs.victoriametrics.com/Cluster-VictoriaMetrics.html#cluster-availability), [ClickHouse Replication](https://clickhouse.com/docs/en/manage/replication-and-sharding)).
 
@@ -14,11 +14,11 @@ The third phase would add Cluster support to PMM Server so it could run in clust
 
 The first two phases require PMM Server to be managed by some services or manually. In case of failures caused by network outages, resource saturation, hardware failures, operating system crashes, or unexpected reboots, something or someone would restore PMM Server and get it up and running so PMM Clients and users could connect to it. Also, it is required to have additional external monitoring and alerting to detect PMM Server availability and notify the PMM administrator to take some actions.
 
-The first two phases would improve the availability of PMM Server (or it's data) but don't provide any management capabilities to restore PMM Server to a desired healthy state. Currently, the PMM administrator should do it manually and ensure that such resources are available:
+The first two phases would improve the availability of the PMM Server (or its data) but need to provide management capabilities to restore PMM Server to a desired healthy state. Currently, the PMM administrator has to do it manually and ensure that such resources are available:
 
-- the network which connects PMM Server, PMM Clients, and PMM users
-- storage where PMM Server store the data
-- PMM Server service is running (docker, podman, VM)
+- The network which connects PMM Server, PMM Clients, and PMM users
+- Storage where PMM Server store the data
+- PMM Server service is running (Docker, Podman, VM)
 
 There are available solutions that could help PMM administrator to automate the process of managing resources:
 
