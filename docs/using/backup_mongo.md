@@ -83,9 +83,8 @@ During restoring, PMM disables all the scheduled backup tasks for the current se
 
         OR 
 
-        `$ pbm restore <timestamp> --replset-remapping="rsX=rsA,rsY=rsB"` 
-       
-        For more information, see [Restoring into a replica set with a different  name](https://docs.percona.com/percona-backup-mongodb/usage/restore.html#restoring-into-a-cluster-replica-set-with-a-different-name) in the PBM documentation.
+        `$ pbm restore <timestamp> --replset-remapping="rsX=rsA,rsY=rsB"`
+        For more information, see [Restoring into a replica set with a different name](https://docs.percona.com/percona-backup-mongodb/usage/restore.html#restoring-into-a-cluster-replica-set-with-a-different-name) in the PBM documentation.
 3. Make sure that Percona Backup for MongoDB configuration in the new environment points to the remote storage defined for the original environment, including the authentication credentials for object stores. 
 
 The easiest way to configure it is to create a config file, called, for example, `pbm_config.yaml`.
@@ -131,17 +130,17 @@ For more information, see **Restoring a backup into a new-environment** in [the 
 
 === "For PITR backups"
 
-    1. Run the 'pbm restore` command:
+       1. Run the 'pbm restore` command:
 
-      ```pbm list
+         ```pbm list
 
-        Backup snapshots:
-          2022-11-23T19:40:06Z <logical> [restore_to_time: 2022-11-23T19:40:25Z]
-          2022-11-23T19:45:07Z <logical> [restore_to_time: 2022-11-23T19:45:22Z]
-        PITR <on>:
-          2022-11-23T19:40:26Z - 2022-11-23T19:45:22Z
-      ```
-    2. Provide the timestamp from one of the PITR ranges to the `pbm` command: 
+           Backup snapshots:
+             2022-11-23T19:40:06Z <logical> [restore_to_time: 2022-11-23T19:40:25Z]
+             2022-11-23T19:45:07Z <logical> [restore_to_time: 2022-11-23T19:45:22Z]
+           PITR <on>:
+             2022-11-23T19:40:26Z - 2022-11-23T19:45:22Z
+         ```
+       2. Provide the timestamp from one of the PITR ranges to the `pbm` command: 
 
     `pbm restore --time="2022-11-23T19:40:26` 
     
