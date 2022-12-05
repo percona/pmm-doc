@@ -119,7 +119,6 @@ During restoring, PMM disables all the scheduled backup tasks for the current se
    
 5. Once all the backups made from the original environment are available, run the `pbm restore` command:
 
-
 === "For snapshot backups"
 
     1. Run the 'pbm restore` command:
@@ -129,7 +128,8 @@ During restoring, PMM disables all the scheduled backup tasks for the current se
     Backup snapshots: 2022-11-23T19:40:06Z [restore_to_time: 2021-01-13T15:53:40Z]
     ```
     2. Provide the timestamp of the backup to the `pbm` command:
-        `pbm restore 2022-11-23T19:40:06Z`
+   
+          `pbm restore 2022-11-23T19:40:06Z`
 
       For more information, see [Restore a backup](https://docs.percona.com/percona-backup-mongodb/usage/restore.html) topic in the PBM documentation.
 
@@ -146,11 +146,14 @@ During restoring, PMM disables all the scheduled backup tasks for the current se
               2022-11-23T19:40:26Z - 2022-11-23T19:45:22Z
       ```
     2. Provide the timestamp from one of the PITR ranges to the `pbm` command: 
+   
       `pbm restore --time="2022-11-23T19:40:26` 
     
     For more information, see [Point-in-time Recovery topic in the PBM documentation](https://docs.percona.com/percona-backup-mongodb/usage/point-in-time-recovery.html).
 
-To check the progress of the restore operation, use the following command: `pbm list --restore` 
+To check the progress of the restore operation, use the following command:
+
+ `pbm list --restore` 
 
 
 !!! caution alert alert-warning "Important"
