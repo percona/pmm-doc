@@ -37,7 +37,7 @@ It helps PMM Administrator to avoid complexity in taking care of resources and s
 
 PMM administrator could deploy on Kubernetes via [Helm] chart. And Kubernetes would make sure that PMM is available in case of different failures.
 
-Check our "How To": [Install PMM Server on Amazon EKS].
+Check our **How To**: [Install PMM Server on Amazon EKS].
 ## Pacemaker
 
 [Pacemaker] is a high-availability cluster resource manager.
