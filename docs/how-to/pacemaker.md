@@ -20,7 +20,7 @@ Currently, it is only possible to have PMM Server running in Active/Passive conf
 - network address (DNS or IP)
 - storage
 
-So in one moment at a time only one PMM Server instance could own those resources to get the connection and receive data from the clients and write that data after processing it to DBs on a mounted storage:
+So, at any point in time, only one PMM Server instance could own those resources to get the connection and receive data from the clients and write that data after processing it to databases on a mounted storage:
 
 ![](../_images/PMM-HA-Active-Standby.png "PMM Server, Two-Node (Active-Standby) High Availability Cluster")
 
