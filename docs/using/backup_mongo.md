@@ -124,35 +124,41 @@ During restoring, PMM disables all the scheduled backup tasks for the current se
 
     1. Run the 'pbm restore` command:
    
-      ```pbm list
-      Backup snapshots: 2022-11-23T19:40:06Z [restore_to_time: 2021-01-13T15:53:40Z]
-      ```
-    2. Provide the timestamp of the backup to the pbm command:
+    ```yaml
+    pbm list
+    Backup snapshots: 2022-11-23T19:40:06Z [restore_to_time: 2021-01-13T15:53:40Z]
+    ```
+
+    2. Provide the timestamp of the backup to the `pbm` command:
     `pbm restore 2022-11-23T19:40:06Z`
 
     For more information, see [Restore a backup](https://docs.percona.com/percona-backup-mongodb/usage/restore.html) topic in the PBM documentation.
 
 === "For PITR backups"
 
-       1. Run the 'pbm restore` command:
+     1. Run the `pbm restore` command:
 
-         ```pbm list
-
+    ```yaml
+      pbm list
            Backup snapshots:
              2022-11-23T19:40:06Z <logical> [restore_to_time: 2022-11-23T19:40:25Z]
              2022-11-23T19:45:07Z <logical> [restore_to_time: 2022-11-23T19:45:22Z]
            PITR <on>:
              2022-11-23T19:40:26Z - 2022-11-23T19:45:22Z
-         ```
+    ```
+
        2. Provide the timestamp from one of the PITR ranges to the `pbm` command: 
 
-    `pbm restore --time="2022-11-23T19:40:26` 
+        `pbm restore --time="2022-11-23T19:40:26` 
     
     For more information, see [Point-in-time Recovery topic in the PBM documentation](https://docs.percona.com/percona-backup-mongodb/usage/point-in-time-recovery.html).
 
-To check the progress of the restore operation, use the following command: `pbm list --restore` <br/>
+To check the progress of the restore operation, use the following command: `pbm list --restore` 
 
-Make sure not to run pbm backup from the new environment whilst the Percona Backup for MongoDB config is pointing to the remote storage location of the original environment.
+
+!!! caution alert alert-warning "Important"
+    Make sure not to run pbm backup from the new environment whilst the Percona Backup for MongoDB config is pointing to the remote storage location of the original environment.
+
 
 ## Delete a backup
 
