@@ -84,7 +84,9 @@ During restoring, PMM disables all the scheduled backup tasks for the current se
         OR 
 
         `$ pbm restore <timestamp> --replset-remapping="rsX=rsA,rsY=rsB"`
+
         For more information, see [Restoring into a replica set with a different name](https://docs.percona.com/percona-backup-mongodb/usage/restore.html#restoring-into-a-cluster-replica-set-with-a-different-name) in the PBM documentation.
+
 3. Make sure that Percona Backup for MongoDB configuration in the new environment points to the remote storage defined for the original environment, including the authentication credentials for object stores. 
 
 The easiest way to configure it is to create a config file, called, for example, `pbm_config.yaml`.
