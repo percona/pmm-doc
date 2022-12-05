@@ -77,21 +77,26 @@ During restoring, PMM disables all the scheduled backup tasks for the current se
       The mapping format is `<rsTarget>=<rsSource>`. 
 
       For example: 
+
       `$ export PBM_REPLSET_REMAPPING="rsX=rsA,rsY=rsB"` 
        OR 
+
        `$ pbm restore <timestamp> --replset-remapping="rsX=rsA,rsY=rsB"` 
        
       For more information, see [Restoring into a replica set with a different name](https://docs.percona.com/percona-backup-mongodb/usage/restore.html#restoring-into-a-cluster-replica-set-with-a-different-name) in the PBM documentation.
+
+
 3. Make sure that Percona Backup for MongoDB configuration in the new environment points to the remote storage defined for the original environment, including the authentication credentials for object stores. <br/>
 
-    The easiest way to configure it is to create a config file, called, for example, `pbm_config.yaml`.
-    For this, you can either copy the config from the source host or create a new one.
+The easiest way to configure it is to create a config file, called, for example, `pbm_config.yaml`.
 
-    To redirect config output from the existing environment, use `pbm config >> pbm_config.yaml`, then copy the resulting file to the new environment. <br/>
+For this, you can either copy the config from the source host or create a new one.
 
-    Here's an example of config file content for AWS S3 compatible storage:
+To redirect config output from the existing environment, use `pbm config >> pbm_config.yaml`, then copy the resulting file to the new environment. <br/>
 
-    ```yaml
+Here's an example of config file content for AWS S3 compatible storage:
+
+```yaml
     storage:
       type: s3
       s3:
@@ -101,12 +106,13 @@ During restoring, PMM disables all the scheduled backup tasks for the current se
         credentials:
           access-key-id: <your-access-key-id-here>
           secret-access-key: <your-secret-key-here>
-      ```
+```
 
-    The prefix is the artifact name from the PMM **All Backups** page. <br/> 
-    To implement the config, use the following command: `pbm config --file pbm_config.yaml`. <br/>
+The prefix is the artifact name from the PMM **All Backups** page. 
 
-    For more information, see **Restoring a backup into a new-environment** in [the PBM documentation](https://docs.percona.com/percona-backup-mongodb/usage/restore.html#restoring-a-backup-into-a-new-environment).  
+To implement the config, use the following command: `pbm config --file pbm_config.yaml`. 
+
+For more information, see **Restoring a backup into a new-environment** in [the PBM documentation](https://docs.percona.com/percona-backup-mongodb/usage/restore.html#restoring-a-backup-into-a-new-environment).  
 
 4. Run `pbm list` to start the restore process.
    
@@ -117,27 +123,28 @@ During restoring, PMM disables all the scheduled backup tasks for the current se
 
     1. Run the 'pbm restore` command:
    
-    ```pbm list
-    Backup snapshots: 2022-11-23T19:40:06Z [restore_to_time: 2021-01-13T15:53:40Z]```
+      ```pbm list
+      Backup snapshots: 2022-11-23T19:40:06Z [restore_to_time: 2021-01-13T15:53:40Z]```
 
     2. Provide the timestamp of the backup to the pbm command:
     `pbm restore 2022-11-23T19:40:06Z`
+
     For more information, see [Restore a backup](https://docs.percona.com/percona-backup-mongodb/usage/restore.html) topic in the PBM documentation.
 
 === "For PITR backups"
 
     1. Run the 'pbm restore command:
 
-    ```pbm list
-    Backup snapshots:
-     2022-11-23T19:40:06Z <logical> [restore_to_time: 2022-11-23T19:40:25Z]
-             2022-11-23T19:45:07Z <logical> [restore_to_time: 2022-11-23T19:45:22Z]
-           PITR <on>:
-             2022-11-23T19:40:26Z - 2022-11-23T19:45:22Z
-    ```
-
+      ```yaml
+        pbm list
+        Backup snapshots:
+        2022-11-23T19:40:06Z <logical> [restore_to_time: 2022-11-23T19:40:25Z]
+                2022-11-23T19:45:07Z <logical> [restore_to_time: 2022-11-23T19:45:22Z]
+              PITR <on>:
+                2022-11-23T19:40:26Z - 2022-11-23T19:45:22Z
+      ```
     2. Provide the timestamp from one of the PITR ranges to the `pbm` command: 
-  
+
     `pbm restore --time="2022-11-23T19:40:26` 
     
     For more information, see [Point-in-time Recovery topic in the PBM documentation](https://docs.percona.com/percona-backup-mongodb/usage/point-in-time-recovery.html).
