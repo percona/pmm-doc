@@ -178,6 +178,16 @@ The *Explain* tab shows the `explain` output for the selected query, in Classic 
 - MongoDB: JSON only.
 - PostgreSQL: Not supported.
 
+Since PMM version 2.33 is `explain` supported even without `examples` for MySQL now. If query to explain contains sensitive data they will be replaced by placeholders.
+You should provide values for these placeholders before you can run `explain`. Please check attached above below.
+
+![!image](../_images/PMM_Query_Analytics_Tabs_Explain_With_Placeholders.png)
+
+Query in the picture has 5 placeholders. So thats why you should fulfill 5 input fields with correct values. Once you have fulfilled these values you can click on `explain`
+and you will get result like in previous PMM versions. This method of `explain` prevents data leak.
+
+
+
 !!! note alert alert-primary "'Explain' for MongoDB"
 
     To run Explain you need the same permissions as for executing the original query. For example, to run explain on `updates` you need update permissions.  
