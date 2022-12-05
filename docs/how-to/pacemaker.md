@@ -17,7 +17,7 @@ Check your distribution documentation on Pacemaker HA as well as [Pacemaker] doc
 
 Currently, it is only possible to have PMM Server running in Active/Passive configuration, as there are currently two resources that are exclusively owned by the PMM Server and should belong only to one instance of it:
 
-- network address (DNS or IP)
+- Network address (DNS or IP)
 - storage
 
 So, at any point in time, only one PMM Server instance could own those resources to get the connection and receive data from the clients and write that data after processing it to databases on a mounted storage:
