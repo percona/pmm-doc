@@ -89,31 +89,31 @@ During restoring, PMM disables all the scheduled backup tasks for the current se
 
 3. Make sure that Percona Backup for MongoDB configuration in the new environment points to the remote storage defined for the original environment, including the authentication credentials for object stores. 
 
-The easiest way to configure it is to create a config file, called, for example, `pbm_config.yaml`.
+    The easiest way to configure it is to create a config file, called, for example, `pbm_config.yaml`.
 
-For this, you can either copy the config from the source host or create a new one.
+    For this, you can either copy the config from the source host or create a new one.
 
-To redirect config output from the existing environment, use `pbm config >> pbm_config.yaml`, then copy the resulting file to the new environment. 
+    To redirect config output from the existing environment, use `pbm config >> pbm_config.yaml`, then copy the resulting file to the new environment. 
 
-Here's an example of config file content for AWS S3 compatible storage:
+    Here's an example of config file content for AWS S3 compatible storage:
 
-```yaml
-storage:
-  type: s3
-  s3:
-    region: us-west-2
-    bucket: pbm-test-bucket
-    prefix: data/pbm/backup
-    credentials:
-      access-key-id: <your-access-key-id-here>
-      secret-access-key: <your-secret-key-here> 
-```
+    ```yaml
+    storage:
+      type: s3
+      s3:
+        region: us-west-2
+        bucket: pbm-test-bucket
+        prefix: data/pbm/backup
+        credentials:
+          access-key-id: <your-access-key-id-here>
+          secret-access-key: <your-secret-key-here> 
+    ```
 
-The prefix is the artifact name from the PMM **All Backups** page. 
+    The prefix is the artifact name from the PMM **All Backups** page. 
 
-To implement the config, use the following command: `pbm config --file pbm_config.yaml`. 
+    To implement the config, use the following command: `pbm config --file pbm_config.yaml`. 
 
-For more information, see **Restoring a backup into a new-environment** in [the PBM documentation](https://docs.percona.com/percona-backup-mongodb/usage/restore.html#restoring-a-backup-into-a-new-environment).  
+    For more information, see **Restoring a backup into a new-environment** in [the PBM documentation](https://docs.percona.com/percona-backup-mongodb/usage/restore.html#restoring-a-backup-into-a-new-environment).  
 4. Run `pbm list` to start the restore process.
 5. Once all the backups made from the original environment are available, run the `pbm restore` command:
 
