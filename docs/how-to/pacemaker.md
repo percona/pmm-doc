@@ -34,7 +34,7 @@ In this example we would:
 - use High availability LVM volumes
 
 !!! caution alert alert-warning "Important"
-    In a production cluster, it is required to use proper Node Fencing as well is recommended to use network-attached storage with good performance (FC, iSCSI SAN, NVMEoF). Some of the storage solutions provide additional protections to isolate storage between nodes (SCSI-3 PR).
+   For a production cluster, it is necessary to use proper Node Fencing along with network-attached storage with good performance (FC, iSCSI SAN, NVMEoF). Some storage solutions provide additional protections to isolate storage between nodes (SCSI-3 PR).
 
 ## Prerequisites
 
