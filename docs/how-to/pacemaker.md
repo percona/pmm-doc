@@ -2,7 +2,8 @@
 
 ## Pacemaker
 !!! caution alert alert-warning "Important"
-    This document describes best practices and some recommendations but is not intended for production use. For production use please refer to your distribution documentation and enterprise support.
+    This document describes the best practices and recommendations but is not intended to be used in the production environment. Refer to your distribution documentation and enterprise support to use it in production.
+
 
 [Pacemaker] is a high-availability cluster resource manager.
 
