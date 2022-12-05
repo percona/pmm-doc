@@ -38,7 +38,7 @@ In this example we would:
 
 ## Prerequisites
 
-- two Nodes
+- Two Nodes
 - shared storage attached to both nodes (visible on both nodes as a block device, /dev/sda in our example)
 - shared network
 - shared NFS mount (/mnt/nfs_share) to share configuration files
