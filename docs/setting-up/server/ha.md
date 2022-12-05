@@ -47,7 +47,7 @@ All of the currently supported distributions ship a high availability add-on/ext
 - [Red Hat High Availability Add-On]
 - [SUSE Linux Enterprise High Availability Extension]
 
-Please check your distribution documentation on Pacemaker HA as well as [Pacemaker] documentation.
+Check your distribution documentation on Pacemaker HA as well as [Pacemaker] documentation.
 
 Check our "How To": [Configure Pacemaker to manage PMM HA cluster](../../how-to/pacemaker.md).
 
