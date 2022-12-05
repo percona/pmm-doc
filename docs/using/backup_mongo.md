@@ -121,7 +121,7 @@ During restoring, PMM disables all the scheduled backup tasks for the current se
 
 === "For snapshot backups"
 
-    1. Run the 'pbm restore` command:
+  1. Run the 'pbm restore` command:
    
     ```yaml
     pbm list
@@ -135,7 +135,7 @@ During restoring, PMM disables all the scheduled backup tasks for the current se
 
 === "For PITR backups"
 
-    1. Run the `pbm restore` command:
+  1. Run the `pbm restore` command:
 
       ```yaml
         pbm list
