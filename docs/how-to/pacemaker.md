@@ -41,12 +41,12 @@ In this example we would:
 
 - Two Nodes
 - Shared storage attached to both nodes (visible on both nodes as a block device, /dev/sda in our example)
-- shared network
-- shared NFS mount (/mnt/nfs_share) to share configuration files
+- Shared network
+- Shared NFS mount (/mnt/nfs_share) to share configuration files
 
-## Setup two nodes
+## Set up two nodes
 
-The following instructions are done on both nodes.
+The following instructions are carried out on both nodes.
 
 Install packages and enable services:
 ```sh
@@ -57,13 +57,13 @@ dnf --enablerepo=highavailability -y install pacemaker pcs fence-agents-common p
 systemctl enable --now pacemaker corosync pcsd 
 ```
 
-Setup password:
+Set up password:
 ```sh
 passwd hacluster
 ```
 
 !!! note alert alert-primary ""
-    In this example, we have the firewall disabled, but in production, you need to allow services and ports, so please refer to your distribution documentation for those procedures.
+    In this example, the firewall is disabled, but in production, you should allow services and ports, so refer to your distribution documentation for the procedure.
 
 
 Make sure that chronyd is running and time is synced:
@@ -71,18 +71,18 @@ Make sure that chronyd is running and time is synced:
 systemctl status chronyd
 ```
 
-## Setup PMM Server
+## Set up PMM Server
 
-In this example, we would use SystemD to manage our PMM Server, the full procedure described in [Podman].
+In this example, we will use SystemD to manage our PMM Server, the full procedure is described in [Podman].
 
-But for Pacemaker HA it requires modifications:
+But for Pacemaker HA, it requires modifications:
 - config files should be located on a shared device
 - `/srv` is bind mounted on a shared device
 
 !!! caution alert alert-warning "Important"
-    It is required to put configuration files in some shared resource, for example, NFS and mount it on all nodes. In our example, it is mounted under `/mnt/nfs_share`.
-    By doing this we ensure that by changing some PMM parameters we would have similar parameters on the passive node. For example, updating PMM version through the image tag.
-    If there would be a version mismatch between active and passive nodes in case of failover there is a possibility that either data could be corrupted or PM< Server just wouldn't start.
+   Ensure that you put the configuration files in some shared resource, for example, NFS, and mount it on all the nodes. In this example, it is mounted under `/mnt/nfs_share`.
+   By doing this, we ensure that by changing some PMM parameters, we would have similar parameters on the passive node. For example, updating the PMM version through the image tag.
+    In case of a version mismatch between the active and passive nodes in case of failover, there is a possibility that either data could be corrupted or PMM Server just wouldn't start.
 
 Create the configuration file for PMM Server on shared storage:
 
@@ -146,14 +146,14 @@ EOF
 systemctl daemon-reload
 ```
 
-Pre pull PMM Server image on each node for fast start of the service:
+Pre-pull PMM Server image on each node to start the service fast:
 ```sh
 podman pull docker.io/percona/pmm-server:2.32.0
 ```
 
-## Setup network
+## Set up network
 
-On each node set up the network so to nodes could resolve and access each other.
+On each node, set up the network so nodes can resolve and access each other.
 
 In this example we have configured the network with `/etc/hosts` file:
 ```sh
@@ -176,7 +176,7 @@ In this example we have configured the network with `/etc/hosts` file:
 
 ## Configure an LVM volume with an ext4 file system
 
-This procedure is done on one node that we would initially assigned as Active. In this example `pmm1` node.
+This procedure is carried out on one node that we would initially assign as Active. In this example, it is  `pmm1` node.
 
 ```sh
 pvcreate /dev/sda1
@@ -234,14 +234,14 @@ pcs property set stonith-enabled=false
 ```
 
 !!! caution alert alert-warning "Important"
-    It is required to configure proper fencing on a production cluster.
+    Ensure that  you configure proper fencing on a production cluster.
 
 ## Add resources to the cluster
 
-With the following commands we will add:
-- LVM HA that would be properly migrated and mounted by Pacemaker
-- VirtualIP that also would be migrated and added by the Pacemaker to the Active node
-- PMM Server systemd service that would start PMM Server with correct resources in place
+With the following commands, we will add:
+* LVM HA that would be properly migrated and mounted by Pacemaker
+* VirtualIP that also would be migrated and added by the Pacemaker to the Active node
+* PMM Server systemd service that would start PMM Server with correct resources in place
 
 ```sh
 pcs resource create pmm_lvm ocf:heartbeat:LVM-activate vgname=pmm_server vg_access_mode=system_id --group pmm
@@ -274,17 +274,17 @@ Full List of Resources:
 
 ```
 
-And that it is, we have two nodes Active/Passive PMM Server HA cluster. 
+Thus, we have two nodes Active/Passive PMM Server HA cluster. 
 
 ## Failover
 
-In the case of node or service failure, Pacemaker would recover services and other resources on a passive/standby node. The cluster administrator would need to troubleshoot and recover failed node and bring it back online into the cluster.
+In case a node or service fails, Pacemaker restores services and other resources on a passive or standby node. In order to bring back a failed node online, the cluster administrator would need to troubleshoot and recover it.
 
-The cluster administrator might have preferences on which node resources should run. This could be achieved with [constraints](https://www.clusterlabs.org/pacemaker/doc/2.1/Clusters_from_Scratch/html/apache.html#prefer-one-node-over-another) and [stickiness](https://www.clusterlabs.org/pacemaker/doc/2.1/Clusters_from_Scratch/html/active-passive.html#prevent-resources-from-moving-after-recovery).
+The cluster administrator might have preferences on which node resources should run. Constraints and stickiness could accomplish this [constraints](https://www.clusterlabs.org/pacemaker/doc/2.1/Clusters_from_Scratch/html/apache.html#prefer-one-node-over-another) and [stickiness](https://www.clusterlabs.org/pacemaker/doc/2.1/Clusters_from_Scratch/html/active-passive.html#prevent-resources-from-moving-after-recovery).
 
 Manually resources could be moved by:
-- marking the node they are running as `standby`
-- executing `pcs resource move` command
+* marking the node they are running as `standby`
+* executing `pcs resource move` command
 
 Force Pacemaker to failover to another node:
 ```sh
@@ -378,7 +378,8 @@ To update PMM Server:
 [root@pmm1 ~]# systemctl restart pmm-server
 ```
 
-Pre-pulling the image would make startup of the service faster.
+!!! note alert alert-primary "Note"
+     Pre-pulling the image would start the service faster.
 
 
 [Pacemaker]: https://wiki.clusterlabs.org/wiki/Pacemaker
