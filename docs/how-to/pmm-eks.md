@@ -238,7 +238,7 @@ For cert-manager define annotation from previous step:
 cert-manager.io/cluster-issuer: letsencrypt-prod
 ```
 
-Other settings described in default values.yml.
+The other settings are described in default values.yml.
 
 4. Install the PMM using Helm V3:
 
