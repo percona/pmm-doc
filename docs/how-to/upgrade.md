@@ -7,8 +7,19 @@
     For example, for a PMM Server version 2.25.0, the PMM Client version should be 2.25.0 or 2.24.0. If the PMM Client version is 2.26.0, PMM might not work as expected.
 
 
-
 ## Updating a Server
+
+!!! caution alert alert-warning "Important"
+    While upgrading PMM server to 2.32.0, it fails. The issue persists on all the versions prior to 2.32.0. It has been fixed for PMM 2.33.0.
+
+    Solution
+
+    Before upgrading PMM, log in to the PMM server and execute the following command:
+
+    ```sh
+    sed -i 's/- nginx/- nginx*/' /usr/share/pmm-update/ansible/playbook/tasks/update.yml
+    ```
+
 
 Client and server components are installed and updated separately.
 
