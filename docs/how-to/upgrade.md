@@ -9,10 +9,10 @@
 
 ## Updating a Server
 
-!!! caution alert alert-warning "Important"
-    While upgrading PMM server to 2.32.0, it fails. The issue persists on all the versions prior to 2.32.0. It has been fixed for PMM 2.33.0.
+!!! caution alert alert-warning "Caution"
+    While upgrading PMM to version 2.32.0, it fails. The issue persists on all the versions prior to 2.32.0. It has been fixed for PMM 2.33.0.
 
-    Solution
+    **Solution**
 
     While PMM is being upgraded, log in to the PMM server and run the following command:
     
