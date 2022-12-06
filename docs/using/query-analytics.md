@@ -178,7 +178,7 @@ The *Explain* tab shows the `explain` output for the selected query, in Classic 
 - MongoDB: JSON only.
 - PostgreSQL: Not supported.
 
-Since PMM version 2.33 is `explain` supported even without `examples` for MySQL now. If query to explain contains sensitive data they will be replaced by placeholders.
+Starting with PMM 2.33.0, for MySQL, the *Explain* tab is supported without the *Examples* tab. If a query in the *Explain* tab contains sensitive data, placeholders will replace them.
 You should provide values for these placeholders before you can run `explain`. Please check attached above below.
 
 ![!image](../_images/PMM_Query_Analytics_Tabs_Explain_With_Placeholders.png)
