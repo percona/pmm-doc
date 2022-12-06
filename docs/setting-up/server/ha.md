@@ -8,6 +8,9 @@ High Availability for PMM Server will be achieved in three phases:
 
 The first phase improves PMM Client to survive broken connections and cache metrics configured for the `push` mode. This phase relies on external service to restore PMM Server or for manual interventions to bring PMM Server and/or its connectivity back to a healthy state.
 
+!!! note alert alert-primary ""
+    Currently, the first phase is that supported starting from PMM Server and PMM Client versions 2.33.0.
+
 The second phase would optionally separate PMM Server from its data sources that could run in highly available clusters (highly available [PostgreSQL cluster](https://docs.percona.com/postgresql/15/solutions/high-availability.html), VictoriaMetrics [HA](https://docs.victoriametrics.com/Single-server-VictoriaMetrics.html#high-availability) or [cluster](https://docs.victoriametrics.com/Cluster-VictoriaMetrics.html#cluster-availability), [ClickHouse Replication](https://clickhouse.com/docs/en/manage/replication-and-sharding)).
 
 The third phase would add Cluster support to PMM Server so it could run in cluster mode with other PMM Servers and possibly load balance the load as well.
