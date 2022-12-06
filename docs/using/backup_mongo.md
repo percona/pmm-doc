@@ -127,7 +127,7 @@ During restoring, PMM disables all the scheduled backup tasks for the current se
     pbm list
     Backup snapshots: 2022-11-23T19:40:06Z [restore_to_time: 2021-01-13T15:53:40Z]
     ```
-     2. Provide the timestamp of the backup to the `pbm` command:
+2. Provide the timestamp of the backup to the `pbm` command:
    
           `pbm restore 2022-11-23T19:40:06Z`
 
@@ -145,7 +145,7 @@ During restoring, PMM disables all the scheduled backup tasks for the current se
             PITR <on>:
               2022-11-23T19:40:26Z - 2022-11-23T19:45:22Z
       ```
-     2. Provide the timestamp from one of the PITR ranges to the `pbm` command: 
+  2. Provide the timestamp from one of the PITR ranges to the `pbm` command: 
    
       `pbm restore --time="2022-11-23T19:40:26` 
     
