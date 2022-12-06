@@ -3,6 +3,7 @@
 In this **How To**, we describe how to deploy and configure the EKS cluster and install PMM there.
 
 ## Prerequisites
+
 - AWS CLI version 2.8.6 or later.
 - eksctl version 0.120.0 or later.
 - Route 53 as the DNS service for domain
@@ -200,7 +201,8 @@ Issuers and cluster issuers are resources that supply certificates to your clust
                 class: nginx
     ```
 
-Where `your@email` is your contact email, this information will be included with your certificates.In the event that **Let's Encrypt** wants to alert you about your certificates, it may do so at this address.
+    !!! note alert alert-primary ""
+        Where `your@email` is your contact email, this information will be included with your certificates.In the event that **Let's Encrypt** wants to alert you about your certificates, it may do so at this address.
 
 2. Apply this manifest:
 
@@ -226,19 +228,20 @@ PMM is deployed with the help of the [Helm chart].
 
 3. Define [Parameters](https://github.com/percona/percona-helm-charts/tree/main/charts/pmm#parameters). An ELB load balancer. You can use an Network Load Balancer.
 
-To use Network Load Balancer you should define this annotations:
+    !!! note alert alert-primary ""
+        To use Network Load Balancer you should define this annotations:
 
-```sh
-kubernetes.io/ingress.class: nginx
-```
+        ```sh
+        kubernetes.io/ingress.class: nginx
+        ```
 
-For cert-manager define annotation from previous step:
+        For cert-manager define annotation from previous step:
 
-```sh
-cert-manager.io/cluster-issuer: letsencrypt-prod
-```
+        ```sh
+        cert-manager.io/cluster-issuer: letsencrypt-prod
+        ```
 
-The other settings are described in default values.yml.
+        The other settings are described in default values.yml.
 
 4. Install the PMM using Helm V3:
 

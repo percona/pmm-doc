@@ -31,11 +31,11 @@ Fencing mechanism protects and restricts access to resources to avoid corruption
 
 In this example we would:
 
-- turn off the fencing for demonstration purposes and as it depends on HW that is used
+- turn off the fencing for demonstration purposes and as it depends on Hardware that is used
 - use High availability LVM volumes
 
 !!! caution alert alert-warning "Important"
-   For a production cluster, it is necessary to use proper Node Fencing along with network-attached storage with good performance (FC, iSCSI SAN, NVMEoF). Some storage solutions provide additional protections to isolate storage between nodes (SCSI-3 PR).
+    For a production cluster, it is necessary to use proper Node Fencing along with network-attached storage with good performance (FC, iSCSI SAN, NVMEoF). Some storage solutions provide additional protections to isolate storage between nodes (SCSI-3 PR).
 
 ## Prerequisites
 
@@ -80,8 +80,8 @@ But for Pacemaker HA, it requires modifications:
 - `/srv` is bind mounted on a shared device
 
 !!! caution alert alert-warning "Important"
-   Ensure that you put the configuration files in some shared resource, for example, NFS, and mount it on all the nodes. In this example, it is mounted under `/mnt/nfs_share`.
-   By doing this, we ensure that by changing some PMM parameters, we would have similar parameters on the passive node. For example, updating the PMM version through the image tag.
+    Ensure that you put the configuration files in some shared resource, for example, NFS, and mount it on all the nodes. In this example, it is mounted under `/mnt/nfs_share`.
+    By doing this, we ensure that by changing some PMM parameters, we would have similar parameters on the passive node. For example, updating the PMM version through the image tag.
     In case of a version mismatch between the active and passive nodes in case of failover, there is a possibility that either data could be corrupted or PMM Server just wouldn't start.
 
 Create the configuration file for PMM Server on shared storage:
@@ -148,7 +148,7 @@ systemctl daemon-reload
 
 Pre-pull PMM Server image on each node to start the service fast:
 ```sh
-podman pull docker.io/percona/pmm-server:2.32.0
+podman pull docker.io/percona/pmm-server:2.33.0
 ```
 
 ## Set up network
@@ -239,6 +239,7 @@ pcs property set stonith-enabled=false
 ## Add resources to the cluster
 
 With the following commands, we will add:
+
 * LVM HA that would be properly migrated and mounted by Pacemaker
 * VirtualIP that also would be migrated and added by the Pacemaker to the Active node
 * PMM Server systemd service that would start PMM Server with correct resources in place
@@ -283,6 +284,7 @@ In case a node or service fails, Pacemaker restores services and other resources
 The cluster administrator might have preferences on which node resources should run. Constraints and stickiness could accomplish this [constraints](https://www.clusterlabs.org/pacemaker/doc/2.1/Clusters_from_Scratch/html/apache.html#prefer-one-node-over-another) and [stickiness](https://www.clusterlabs.org/pacemaker/doc/2.1/Clusters_from_Scratch/html/active-passive.html#prevent-resources-from-moving-after-recovery).
 
 Manually resources could be moved by:
+
 * marking the node they are running as `standby`
 * executing `pcs resource move` command
 

@@ -42,9 +42,8 @@ Check our **How To**: [Install PMM Server on Amazon EKS].
 
 [Pacemaker] is a high-availability cluster resource manager.
 
-Pacemaker high availability clusters provide highly available services by eliminating single points of failure and by failing over services from one cluster node to another in case a node becomes inoperative. Typically, services in a high availability cluster read and write data (by means of read-write mounted file systems). Therefore, a high availability cluster must maintain data integrity as one cluster node takes over control of a service from another cluster node. Node failures in a high availability cluster are not visible from clients outside the cluster.
-
 All the currently supported distributions ship a high availability add-on/extension, which is based on the Pacemaker clustering stack, for example:
+
 - [Red Hat High Availability Add-On]
 - [SUSE Linux Enterprise High Availability Extension]
 
