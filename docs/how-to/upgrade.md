@@ -14,8 +14,8 @@
 
     Solution
 
-    Before upgrading PMM, log in to the PMM server and execute the following command:
-
+    While PMM is being upgraded, log in to the PMM server and run the following command:
+    
     ```sh
     sed -i 's/- nginx/- nginx*/' /usr/share/pmm-update/ansible/playbook/tasks/update.yml
     ```
