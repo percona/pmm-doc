@@ -183,7 +183,7 @@ You have to specify the values for these placeholders before you can run *Explai
 
 ![!image](../_images/PMM_Query_Analytics_Tabs_Explain_With_Placeholders.png)
 
-Query in the picture has 5 placeholders. So thats why you should fulfill 5 input fields with correct values. Once you have fulfilled these values you can click on `explain`
+The image shows a query with five placeholders. Therefore, you must enter the correct values in all five fields. After filling in these values, click *Explain* to get the results like in the previous PMM versions without data leaks.
 and you will get result like in previous PMM versions. This method of `explain` prevents data leak.
 
 !!! note alert alert-primary "'Explain' for MongoDB"
