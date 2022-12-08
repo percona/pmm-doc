@@ -120,36 +120,36 @@ During restoring, PMM disables all the scheduled backup tasks for the current se
 5. Once all the backups made from the original environment are available, run the restore command:
    
      - For snapshot backups: 
-   - 
-          a) run the following command:
+        a) run the following command:
 
-          ```yaml
-              pbm list
-              Backup snapshots: 2022-11-23T19:40:06Z [restore_to_time: 2021-01-13T15:53:40Z]
-          ```
+         ```yaml
+        pbm list
+          Backup snapshots: 2022-11-23T19:40:06Z [restore_to_time: 2021-01-13T15:53:40Z]
+        ```
      
-          b) provide the timestamp of the backup to the `pbm` command:
+        b) provide the timestamp of the backup to the `pbm` command:
 
-            `pbm restore 2022-11-23T19:40:06Z`
+        `pbm restore 2022-11-23T19:40:06Z`
 
-        For more information, see [Restore a backup](https://docs.percona.com/percona-backup-mongodb/usage/restore.html) topic in the PBM documentation.
+      For more information, see [Restore a backup](https://docs.percona.com/percona-backup-mongodb/usage/restore.html) topic in the PBM documentation.
 
     - For PITR backups:
-      a) run the following command:
+        a) run the following command:
 
-          ```yaml
-            pbm list
-                Backup snapshots:
-                  2022-11-23T19:40:06Z <logical> [restore_to_time: 2022-11-23T19:40:25Z]
-                  2022-11-23T19:45:07Z <logical> [restore_to_time: 2022-11-23T19:45:22Z]
-                PITR <on>:
-                  2022-11-23T19:40:26Z - 2022-11-23T19:45:22Z
-          ```
-      b) provide the timestamp from one of the PITR ranges to the `pbm` command:
+        ```yaml
+          pbm list
 
-             `pbm restore --time="2022-11-23T19:40:26`
+            Backup snapshots:
+              2022-11-23T19:40:06Z <logical> [restore_to_time: 2022-11-23T19:40:25Z]
+              2022-11-23T19:45:07Z <logical> [restore_to_time: 2022-11-23T19:45:22Z]
+            PITR <on>:
+              2022-11-23T19:40:26Z - 2022-11-23T19:45:22Z
+        ```
+        b) provide the timestamp from one of the PITR ranges to the `pbm` command:
+
+          `pbm restore --time="2022-11-23T19:40:26`
         
-        For more information, see [Point-in-time Recovery topic in the PBM documentation](https://docs.percona.com/percona-backup-mongodb/usage/point-in-time-recovery.html).
+      For more information, see [Point-in-time Recovery topic in the PBM documentation](https://docs.percona.com/percona-backup-mongodb/usage/point-in-time-recovery.html).
 
 6. Check the progress of the restore operation, using the following command: 
 
