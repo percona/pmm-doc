@@ -8,7 +8,7 @@
     - Viewing graph details.
     - Annotating events.
 
-- [Percona alerting](alerting.md)
+- [Percona Alerting](alerting.md)
 
 - [Backup and Restore](backup.md)
 
