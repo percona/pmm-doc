@@ -120,9 +120,9 @@ During restoring, PMM disables all the scheduled backup tasks for the current se
 5. Once all the backups made from the original environment are available, run the restore command:
 
      - For snapshot backups:
+  
         a) run the following command:
-
-         ```yaml
+         ```
         pbm list
           Backup snapshots: 2022-11-23T19:40:06Z [restore_to_time: 2021-01-13T15:53:40Z]
         ```
