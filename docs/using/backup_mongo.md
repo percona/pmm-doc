@@ -71,17 +71,13 @@ During restoring, PMM disables all the scheduled backup tasks for the current se
    For instructions, see the [PBM install documentation](https://docs.percona.com/percona-backup-mongodb/installation.html).
 2. Configure your environment:
      - to restore on a new environment with the same number of hosts and same replica names, make sure that the replica set names in your new destination cluster use the same names as those in the cluster that was backed up.<br/>
-     
-     For more information, see [Restoring a backup into a new-environment](https://docs.percona.com/percona-backup-mongodb/usage/restore.html#restoring-a-backup-into-a-new-environment) in the PBM documentation. <br> 
+      For more information, see [Restoring a backup into a new-environment](https://docs.percona.com/percona-backup-mongodb/usage/restore.html#restoring-a-backup-into-a-new-environment) in the PBM documentation. <br> 
      - to restore **logical backups** to a new environment that has the same or more numbers of shards with different replica set names, configure the name mapping between the source and target environments. <br/>
-      
       For the new environment you can either set the PBM_REPLSET_REMAPPING environment variable for pbm CLI, or use the `--replset-remapping` flag for PBM commands.
 
-        
         The mapping format is `<rsTarget>=<rsSource>`.
 
-         
-         For example:
+        For example:
 
         `$ export PBM_REPLSET_REMAPPING="rsX=rsA,rsY=rsB"`
 
@@ -89,7 +85,6 @@ During restoring, PMM disables all the scheduled backup tasks for the current se
 
         `$ pbm restore <timestamp> --replset-remapping="rsX=rsA,rsY=rsB"`
 
-        
         For more information, see [Restoring into a replica set with a different name](https://docs.percona.com/percona-backup-mongodb/usage/restore.html#restoring-into-a-cluster-replica-set-with-a-different-name) in the PBM documentation.
 
 3. Make sure that Percona Backup for MongoDB configuration in the new environment points to the remote storage defined for the original environment, including the authentication credentials for object stores.
@@ -142,15 +137,15 @@ During restoring, PMM disables all the scheduled backup tasks for the current se
         
         a) run the following command:
 
-      ```yaml
-        pbm list
-        Backup snapshots:
-          2022-11-23T19:40:06Z <logical> [restore_to_time: 2022-11-23T19:40:25Z]
-          2022-11-23T19:45:07Z <logical> [restore_to_time: 2022-11-23T19:45:22Z]
-        PITR <on>:
-          2022-11-23T19:40:26Z - 2022-11-23T19:45:22Z
-        ```
-        b) provide the timestamp from one of the PITR ranges to the `pbm` command:
+          ```yaml
+            pbm list
+            Backup snapshots:
+              2022-11-23T19:40:06Z <logical> [restore_to_time: 2022-11-23T19:40:25Z]
+              2022-11-23T19:45:07Z <logical> [restore_to_time: 2022-11-23T19:45:22Z]
+            PITR <on>:
+              2022-11-23T19:40:26Z - 2022-11-23T19:45:22Z
+            ```
+    b) provide the timestamp from one of the PITR ranges to the `pbm` command:
 
           `pbm restore --time="2022-11-23T19:40:26`
         
