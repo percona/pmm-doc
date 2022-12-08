@@ -144,7 +144,7 @@ During restoring, PMM disables all the scheduled backup tasks for the current se
               2022-11-23T19:45:07Z <logical> [restore_to_time: 2022-11-23T19:45:22Z]
             PITR <on>:
               2022-11-23T19:40:26Z - 2022-11-23T19:45:22Z
-            ```
+          ```
     b) provide the timestamp from one of the PITR ranges to the `pbm` command:
 
           `pbm restore --time="2022-11-23T19:40:26`
