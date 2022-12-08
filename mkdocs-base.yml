@@ -120,8 +120,12 @@ nav:
       - using/index.md
       - using/interface.md
       - using/alerting.md
-      - Backup and restore:
+      - Backup and Restore:
           - using/backup.md
+          - using/prepare_storage_location.md
+          - using/backup_mongo.md
+                - using/on_demand_backups.md
+                - using/PITR_mongo.md
           - using/mongodb_limitations.md
       - using/query-analytics.md
       - using/dbaas.md

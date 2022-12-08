@@ -1,8 +1,8 @@
 # Backup and restore
 
+Backup your critical data with zero downtime and minimal performance impact. Schedule various types of backups (hot, incremental, physical) and restore databases up to a specific moment with MongoDB Point-in-Time-Recovery.
 
-
-### Resources
+## External resources
 - [Amazon AWS S3](https://aws.amazon.com/s3/)
 - [Percona Backup for MongoDB](https://www.percona.com/doc/percona-backup-mongodb/installation.html)
 - [PERCONA_QPRESS](https://www.percona.com/doc/percona-xtrabackup/LATEST/backup_scenarios/compressed_backup.html)
