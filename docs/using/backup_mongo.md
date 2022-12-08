@@ -115,7 +115,7 @@ During restoring, PMM disables all the scheduled backup tasks for the current se
 
     For more information, see **Restoring a backup into a new-environment** in [the PBM documentation](https://docs.percona.com/percona-backup-mongodb/usage/restore.html#restoring-a-backup-into-a-new-environment).  
 
-4. Run `pbm list` to start the restore process.
+4. Run `pbm list` to check if pbm is ready to perform the restore procedure. 
 
 5. Once all the backups made from the original environment are available, run the restore command:
 
@@ -123,7 +123,7 @@ During restoring, PMM disables all the scheduled backup tasks for the current se
   
         a) run the following command:
          
-          ```yaml
+          ```code
           pbm list
             Backup snapshots: 2022-11-23T19:40:06Z [restore_to_time: 2021-01-13T15:53:40Z]
           ```
@@ -137,7 +137,7 @@ During restoring, PMM disables all the scheduled backup tasks for the current se
         
         a) run the following command:
 
-          ```yaml
+          ```code
             pbm list
             Backup snapshots:
               2022-11-23T19:40:06Z <logical> [restore_to_time: 2022-11-23T19:40:25Z]
