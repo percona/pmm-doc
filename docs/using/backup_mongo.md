@@ -79,7 +79,7 @@ During restoring, PMM disables all the scheduled backup tasks for the current se
 
         For example:
 
-        `$ export PBM_REPLSET_REMAPPING="rsX=rsA,rsY=rsB"`
+        `$ export PBM_REPLSET_REMAPPING="targetRS=sourceRS"`
 
         OR 
 
