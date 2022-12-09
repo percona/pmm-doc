@@ -83,7 +83,7 @@ During restoring, PMM disables all the scheduled backup tasks for the current se
 
         OR 
 
-        `$ pbm restore <timestamp> --replset-remapping="rsX=rsA,rsY=rsB"`
+        `$ pbm restore <timestamp> --replset-remapping="targetRS=sourceRS"`
 
         For more information, see [Restoring into a replica set with a different name](https://docs.percona.com/percona-backup-mongodb/usage/restore.html#restoring-into-a-cluster-replica-set-with-a-different-name) in the PBM documentation.
 
