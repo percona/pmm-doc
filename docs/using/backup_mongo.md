@@ -153,7 +153,13 @@ During restoring, PMM disables all the scheduled backup tasks for the current se
 
 6. Check the progress of the restore operation, using the following command:
 
-    `pbm list --restore`
+For logical restores:
+    `pbm describe-restore <restore_name>`
+    
+For physical restores:
+    `pbm describe-restore --config=/path/to/pbm_config.yaml <restore_name>`
+
+Where <restore_name> will be given by PBM after starting the restoring, pbm_config.yaml - PBM config file you provided on the step 3.
 
 !!! caution alert alert-warning "Important"
     Make sure not to run pbm backup from the new environment while the Percona Backup for MongoDB config is pointing to the remote storage location of the original environment.
