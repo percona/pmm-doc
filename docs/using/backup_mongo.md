@@ -67,7 +67,7 @@ During restoring, PMM disables all the scheduled backup tasks for the current se
 
 ### Restore to a new cluster manually
 
-1. Install MongoDB and Percona Backup for MongoDB.
+1. Install MongoDB and Percona Backup for MongoDB. Pay attention to the versions. To minimize potential incompatibility, use the same versions that were used for taking backups.
    For instructions, see the [PBM install documentation](https://docs.percona.com/percona-backup-mongodb/installation.html).
 2. Configure your environment:
      - to restore on a new environment with the same number of hosts and same replica names, make sure that the replica set names in your new destination cluster use the same names as those in the cluster that was backed up.<br/>
