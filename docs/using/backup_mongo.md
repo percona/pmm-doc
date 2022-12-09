@@ -72,7 +72,7 @@ During restoring, PMM disables all the scheduled backup tasks for the current se
 2. Configure your environment:
      - to restore on a new environment with the same number of hosts and same replica set name, make sure that the replica set name in your new destination cluster use the same name as that in the cluster that was backed up.<br/>
       For more information, see [Restoring a backup into a new-environment](https://docs.percona.com/percona-backup-mongodb/usage/restore.html#restoring-a-backup-into-a-new-environment) in the PBM documentation. <br> 
-     - to restore **logical backups** to a new environment that has the same or more numbers of shards with different replica set names, configure the name mapping between the source and target environments. <br/>
+     - to restore **logical backups** to a new environment that has different replica set name, configure the name mapping between the source and target environments. <br/>
       For the new environment you can either set the **PBM_REPLSET_REMAPPING** environment variable for pbm CLI, or use the `--replset-remapping` flag for PBM commands.
 
         The mapping format is `<rsTarget>=<rsSource>`.
