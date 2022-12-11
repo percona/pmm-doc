@@ -1,9 +1,7 @@
-## Supported setups 
-
 !!! caution alert alert-warning "Important"
     MySQL backup functionality is still Technical Preview
     
-PMM supports MySQL database server (Technical Preview) for:
+PMM supports MySQL database server for:
     
   - Creating and restoring physical backups
   - Storing backups to Amazon S3-compatible object storage  

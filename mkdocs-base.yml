@@ -116,19 +116,21 @@ nav:
           - setting-up/client/external.md
           - setting-up/client/haproxy.md
           - setting-up/client/remote.md
-  - Using:
-      - using/index.md
-      - using/interface.md
-      - using/alerting.md
+  - Get Stared:
+      - get-started/index.md
+      - get-started/interface.md
+      - get-started/alerting.md
       - Backup and Restore:
-          - using/backup.md
-          - using/prepare_storage_location.md
-          - using/backup_mongo.md
-                - using/on_demand_backups.md
-                - using/PITR_mongo.md
-          - using/mongodb_limitations.md
-      - using/query-analytics.md
-      - using/dbaas.md
+          - get-started/backup.md
+          - get-started/prepare_storage_location.md
+          - get-started/backup_mongo.md
+                - get-started/on_demand_backups.md
+                - get-started/PITR_mongo.md
+                - get-started/mongodb_limitations.md
+          - get-started/backup_mysql.md
+      - get-started/query-analytics.md
+      - get-started/dbaas.md
+      - get-started/advisors.md
   - How to:
       - how-to/index.md
       - how-to/configure.md
@@ -143,7 +145,6 @@ nav:
       - Integrate with Percona Platform:
           - how-to/integrate-platform.md
           - how-to/account-info.md
-          - how-to/advisors.md
   - Details:
       - details/index.md
       - details/architecture.md
