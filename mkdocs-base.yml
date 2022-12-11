@@ -121,13 +121,14 @@ nav:
       - get-started/interface.md
       - get-started/alerting.md
       - Backup and Restore:
-          - get-started/backup.md
-          - get-started/prepare_storage_location.md
-          - get-started/backup_mongo.md
-                - get-started/on_demand_backups.md
-                - get-started/PITR_mongo.md
-                - get-started/mongodb_limitations.md
-          - get-started/backup_mysql.md
+          - get-started/backup/index.md
+          - get-started/backup/prepare_storage_location.md
+          - Create and restore MongoDB backups:
+                - get-started/backup/backup_mongo.md
+                - get-started/backup/on_demand_backups.md
+                - get-started/backup/PITR_mongo.md
+                - get-started/backup/mongodb_limitations.md
+          - get-started/backup/backup_mysql.md
       - get-started/query-analytics.md
       - get-started/dbaas.md
       - get-started/advisors.md

@@ -1,4 +1,4 @@
-# Using
+# Get Started
 
 - [User Interface](interface.md)
 
@@ -8,7 +8,7 @@
     - Viewing graph details.
     - Annotating events.
 
-- [Integrated alerting](alerting.md)
+- [Percona Alerting](alerting.md)
 
 - [Backup and Restore](backup.md)
 
@@ -21,10 +21,10 @@
 !!! note alert alert-primary ""
     These features are currently only available for PMM Admin users:
 
-    - Backup;
-    - DBaaS;
-    - Integrated Alerting;
-    - Advisors.
+    - Backup
+    - DBaaS
+    - Percona Alerting
+    - Advisors
 
     To use these features you must be logged in as a PMM Admin user and activate the features.
 
