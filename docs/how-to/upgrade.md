@@ -11,7 +11,7 @@
 ## Updating a Server
 
 !!! caution alert alert-warning "Caution"
-    PMM versions prior to 2.33.0 may not show the latest versions available with instances created from the AWS marketplace in specific environments, including AWS. For solution, see the [troubleshooting](../how-to/troubleshoot.md#PMM-server-not-showing-latest-versions-available-with-the-instances-created-from-AWS) section.
+    PMM versions prior to 2.33.0 may not show the latest versions available with instances created from the AWS marketplace in specific environments, including AWS. For solution, see the [troubleshooting](../how-to/troubleshoot.md#pmm-server-not-showing-latest-versions-available-with-the-instances-created-from-aws) section.
 
 
 Client and server components are installed and updated separately.
