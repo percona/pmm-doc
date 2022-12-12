@@ -183,6 +183,10 @@ You have to specify the values for these placeholders before you can run *Explai
 
 ![!image](../_images/PMM_Query_Analytics_Tabs_Explain_With_Placeholders.png)
 
+This is how it looks with placeholders. Check another image, where is same query, but fulfilled with values instead placeholders.
+
+![!image](../_images/PMM_Query_Analytics_Tabs_Explain_With_Values.png)
+
 The image shows a query with five placeholders. Therefore, you must enter the correct values in all five fields. After filling in these values, click *Explain* to get the results like in the previous PMM versions without data leaks.
 and you will get result like in previous PMM versions. This method of `explain` prevents data leak.
 
