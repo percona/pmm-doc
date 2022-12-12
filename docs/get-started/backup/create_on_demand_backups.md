@@ -1,6 +1,4 @@
-# Working with on-demand backups
-
-## [Make a backup](#make-a-backup)
+# Create MongoDB on-demand backups
 
 To create a backup:
 

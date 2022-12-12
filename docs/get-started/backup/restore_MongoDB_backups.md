@@ -1,4 +1,4 @@
-## Restore a backup
+# Restore a MongoDB backup
 
 ### Restore compatibility
 
