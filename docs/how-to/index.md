@@ -9,3 +9,4 @@
 - [Share dashboards and panels](share-dashboard.md) to save or share.
 - [Extend Metrics](extend-metrics.md) with textfile collector.
 - [Troubleshoot](troubleshoot.md)
+- [Install PMM Server on Amazon EC2](pmm-ec2.md).
