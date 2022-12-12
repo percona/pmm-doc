@@ -1,8 +1,7 @@
-# Work with Advisor checks
+# Advisors 
+Percona Advisors provide automated insights and recommendations within Percona Monitoring and Management. These proactive insights help you uncover problems before they become larger issues (e.g., security posture, configuration, performance)
 
-Advisors are automated checks that you can run against connected databases to identify any potential security threats, configuration problems, performance concerns, policy non-compliance issues etc.
-
-Checks are grouped into advisors according to the functionality and recommendations they provide.
+Advisor is a set of automated checks to investigate a specific case, and Advisors, before today, focused on Security, Configuration, and Performance. 
 
 ## Prerequisites for accessing Advisor checks
 All checks are hosted on Percona Platform. PMM Server automatically downloads them from here when the **Advisors** and **Telemetry** options are enabled in PMM under **Configuration > Settings > Advanced Settings**. Both these options are enabled by default.
