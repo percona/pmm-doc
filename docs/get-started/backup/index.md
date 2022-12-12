@@ -1,6 +1,7 @@
 # Backup and restore
 
 Losing your data can destroy your business. This is why backing up data is critical for all database operations.
+
 Even more important than backing up data, is the ability to restore it in the event of a disaster. PMM enables you to do all this with zero downtime and minimal performance impact.
 
 Currently, PMM provides Backup and Restore functionality to work with:

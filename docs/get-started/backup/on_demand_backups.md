@@ -140,6 +140,7 @@ During restoring, PMM disables all the scheduled backup tasks for the current se
     `pbm describe-restore --config=/path/to/pbm_config.yaml <restore_name>`
 
     Required arguments:
+
     - PBM generates the `<restore_name>` information after you start the restoring.
     - The pbm_config.yaml file required for physical restores is the PBM config file that you provided for step 3.
 
@@ -154,5 +155,5 @@ To delete a backup:
 
 1. Go to  <i class="uil uil-history"></i> **Backup > All Backups** and find the row with the backup you want to delete.
 2. Click the arrow in the **Actions** column to check all the information for the backup, then click ![](../_images/dots-three-vertical.png) **> Delete backup**.
-3. In the Delete backup artifact dialog box, enable **Delete from storage** if you also want to delete the actual backup content besides just the backup register.
+3. In the **Delete backup artifact** dialog box, enable **Delete from storage** if you also want to delete the actual backup content besides just the backup register.
 4. Click **Delete**.
