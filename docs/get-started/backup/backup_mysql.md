@@ -76,7 +76,7 @@ To create a backup:
     - Click the switch <i class="uil uil-toggle-on"></i> to enable or disable the backup.
     - Click ![](../_images/dots-three-vertical.png) to edit, delete or create a (by default, disabled) copy of the backup schedule.
 
- ![!](../_images/PMM_Backup_Management_Scheduled_Backups_Copy.png)
+ ![!](../../_images/PMM_Backup_Management_Scheduled_Backups_Copy.png)
 
 ## Restore a backup
 

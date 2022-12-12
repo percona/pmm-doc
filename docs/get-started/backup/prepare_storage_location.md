@@ -3,6 +3,7 @@
 Prepare a stogare location as a backup destination for creating and storing your backup artifacts.
 
 PMM supports the following types of storage:
+
 - **Amazon AWS S3-compatible**: enables you to use not only AWS S3, but also tools like **min.io** to host your storage.
 - **Local storage**: creates backups faster, but is  more risky since you can lose backups if the Server is lost. Percona recommends using local backups only as a temporary solution.
 
@@ -47,7 +48,7 @@ A sample IAM policy is:
 ## [Create the storage location](#create-a-storage-location)
 
 1. Go to **Backup > Storage Locations**:
-    ![!](../_images/PMM_Backup_Management.jpg)
+    ![!](../../_images/PMM_Backup_Management.jpg)
 
 2. Click **Add storage location** and fill in a name and description for this new location.
 3. Choose the type of storage location you are creating:

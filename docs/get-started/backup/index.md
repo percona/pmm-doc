@@ -28,7 +28,8 @@ To learn how to create and restore backups, check out subtopics and external res
 - [MongoDB Backup and Restore support matrix](mongodb_limitations.md)
 
 ### Additional resources
-Additional resources to learn more about databases backups.
+Additional resources to learn more about databases backups:
+
 - [Amazon AWS S3](https://aws.amazon.com/s3/)
 - [Percona Backup for MongoDB](https://www.percona.com/doc/percona-backup-mongodb/installation.html)
 - [PERCONA_QPRESS](https://www.percona.com/doc/percona-xtrabackup/LATEST/backup_scenarios/compressed_backup.html)

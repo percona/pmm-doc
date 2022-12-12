@@ -16,19 +16,19 @@ Starting with PMM 2.32, restoring PITR backups is available for backups based on
 
 To create a PITR backup, select the **PITR** backup type option when creating a scheduled backup for MongoDB. See the [Make a backup](#make-a-backup) section above.
 
-![!](../_images/PMM_Backup_Management-MongoDB-PITR-Enable.jpg)
+![!](../../_images/PMM_Backup_Management-MongoDB-PITR-Enable.jpg)
 
 
 #### PITR artifacts
 
 The PITR oplog is available a few minutes (10 by default) after your PITR job has run for the first time. To see the corresponding PITR artifact, check out the list under **Backup > All Backups**.
 
-![!](../_images/PMM_Backup_Management-MongoDB-PITR-Inventory.jpg)
+![!](../../_images/PMM_Backup_Management-MongoDB-PITR-Inventory.jpg)
 
 #### PITR and other scheduled backups
 
 Make sure to disable any other scheduled backup jobs before creating a PITR backup. PMM displays an error message if you try to enable PITR while other scheduled backup jobs are active:
 
-![!](../_images/PMM_Backup_Management-MongoDB-PITR-Enable-Error.jpg)
+![!](../../_images/PMM_Backup_Management-MongoDB-PITR-Enable-Error.jpg)
 
 This constraint applies at the service level. You can still have PITR enabled for one service while having regular scheduled backup jobs for other services.
