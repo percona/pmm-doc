@@ -1,4 +1,4 @@
-## Working with MongoDB PITR backups
+# Working with MongoDB PITR backups
 
 Point-in-Time Recovery (PITR) restores databases up to a specific moment. PITR includes restoring the data from a backup snapshot and replaying all events that occurred to this data up to a specified moment from [oplog slices].
 

@@ -1,4 +1,4 @@
-# Working with On-demand backups
+# Working with on-demand backups
 
 ## [Make a backup](#make-a-backup)
 

@@ -1,11 +1,17 @@
 # Prepare a storage location
 
-## For local backups
-If you prefer storing your backup artifacts on a remote filesystem, make sure that you have Write permissions on the path you define, and that you've mounted the remote folder to all the mongoDB nodes. 
+Prepare a stogare location as a backup destination for creating and storing your backup artifacts.
+
+PMM supports the following types of storage:
+- **Amazon AWS S3-compatible**: enables you to use not only AWS S3, but also tools like **min.io** to host your storage.
+- **Local storage**: creates backups faster, but is  more risky since you can lose backups if the Server is lost. Percona recommends using local backups only as a temporary solution.
+
+## Prepare a location for local backups
+If you prefer storing your backup artifacts on a remote filesystem, make sure that you have Write permissions on the path you define, and that you've mounted the remote folder to all the mongoDB nodes.
 
 For more information, see the [Percona Backup for MongoDB (PBM) documentation](https://www.google.com/url?q=https://docs.percona.com/percona-backup-mongodb/details/storage-configuration.html%23remote-filesystem-server-storage&sa=D&source=docs&ust=1667855380308508&usg=AOvVaw3B1N4tjh_mv8lt4msbf3Ui). 
 
-## For Amazon AWS S3-compatible backups
+## Prepare a location for Amazon AWS S3-compatible backups
 If you want to store backup artifacts in the cloud, make sure you have your Amazon S3 storage account and location details ready.
 In addition to bucket location details, you will also need to ensure proper S3 permissions.
 

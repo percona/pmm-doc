@@ -1,8 +1,14 @@
 # Backup and restore
 
-Back up your critical data with zero downtime and minimal performance impact. 
+Losing your data can destroy your business. This is why backing up data is critical for all database operations.
+Even more important than backing up data, is the ability to restore it in the event of a disaster. PMM enables you to do all this with zero downtime and minimal performance impact.
 
-PMM provides a command center for all things backup and restore. Enable **Backup Management** in PMM's Advanced Settings to activate the **Backup** page from where you can:
+Currently, PMM provides Backup and Restore functionality to work with:
+
+- MongoDB clusters (Generally Available)
+- MySQL Databases (in Technical Preview)
+
+Enable the **Backup Management** option in PMM's Advanced Settings to activate the **Backup** page from where you can: 
 
 - Create and restore MongoDB and MySQL backups 
 - Automate backup scheduling
