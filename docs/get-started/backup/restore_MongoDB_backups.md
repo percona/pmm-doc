@@ -49,7 +49,7 @@ During restoring, PMM disables all the scheduled backup tasks for the current se
     ```
     then copy the resulting file to the new environment.
 
-    Here's an example of config file content for AWS S3 compatible storage:
+    Here's an example of config file content for AWS S3-compatible storage:
 
     ```yaml
     storage:

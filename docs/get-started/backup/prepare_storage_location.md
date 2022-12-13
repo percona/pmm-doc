@@ -12,9 +12,10 @@ If you prefer storing your MongoDB backup artifacts on a remote filesystem, make
 
 For more information, see the [Percona Backup for MongoDB (PBM) documentation](https://docs.percona.com/percona-backup-mongodb/details/storage-configuration.html#remote-filesystem-server-storage).
 
-## Prepare a location for Amazon AWS S3-compatible backups
-If you want to store backup artifacts in the cloud, make sure you have your Amazon S3-compatible storage account and location details ready.
-In addition to bucket location details, you will also need to ensure proper S3 permissions.
+## Prepare a location for S3-compatible storage
+If you want to store backup artifacts in the cloud, you can use [Amazon S3](https://aws.amazon.com/s3/), [Min.io](https://min.io/) or any other similar storage solution.
+
+Before creating a cloud storage location for our future backups, make sure you have your S-3 compatible storage ready. In addition to bucket location details, you will also need to ensure proper S3 permissions.
 
 The general minimum permissions are **LIST**/**PUT**/**GET**/**DELETE**.
 A sample IAM policy is:
@@ -52,9 +53,9 @@ A sample IAM policy is:
 
 2. Click **Add storage location** and fill in a name and description for this new location.
 3. Choose the type of storage location you are creating:
-     - **S3**: Specify the Amazon AWS S3 backup location endpoint (URL), bucket name, and connection details. 
+     - **S3**: Specify the S3-compatible backup location endpoint (URL), bucket name, and connection details. 
      - **Local Client**: specify the path on your local client for files to be backed up to.
 
-4. Optionally, click **Test** to test the connection for S3-storages.
+4. Optionally, for S3-compatible storages, you can click **Test** to check the connection.
 
 5. Click **Add** to create the location.

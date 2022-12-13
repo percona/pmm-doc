@@ -1,4 +1,4 @@
-## Edit a scheduled backup
+# Edit a scheduled backup
 
 1. Go to **Backup > Scheduled Backup Jobs**.
 2. In the **Actions** column:

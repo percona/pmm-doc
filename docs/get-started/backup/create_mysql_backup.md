@@ -12,7 +12,7 @@ To create a backup:
 8. If you're creating a schedule backups, also specify the backup type, the schedule, and a retention policy for your backup:
     - **Backup Type**: currently, PMM only supports **Full** backup types for MySQL. 
     - **Shedule**: configure the frequency and the start time for this backup. Make sure that the the schedule you specify here does not create overlapping jobs or overhead on the production environment. Also check that your specified shedule does not overlap with production hours.
-    - **Retention**: this option is only available for Snapshot backups stored on Amazon S3. If you wand to keep an unlimited number of backup artifacts, type `0`.
+    - **Retention**: this option is only available for Snapshot backups stored on S3-compatible object storage. If you wand to keep an unlimited number of backup artifacts, type `0`.
 9. Expand **Advanced Settings** to specify the settings for retrying the backup in case of any issues. You can either let PMM retry the backup again (**Auto**), or do it again yourself **Manual**. Auto retry mode enables you to select up to ten retries and an interval of up to eight hours between retries.
 10. To start creating the backup artifact, click **Backup** or **Schedule** at the top of the window, depending on whether you are creating a scheduled or an on-demand backup.
 11. Go to the **All Backups** tab, and check the **Status** column. An animated ellipsis indicator {{icon.bouncingellipsis}} shows that a backup is currently being created.
