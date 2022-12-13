@@ -24,8 +24,10 @@ For MySQL databases, you can create and restore on-demand and scheduled physical
 To learn how to create and restore backups, check out subtopics below:
 
 - [Prepare a storage location](prepare_storage_location.md)
-- ![](../_images/MongoDB_Logo.png) [MongoDB backups](../../get-started/backup/backup_mongo.md)
-- ![](../_images/mysql_logo.png) [MySQL backups](backup_mysql.md)
+- ![!](../../_images/MongoDB_Logo.png) [MongoDB backups](../../get-started/backup/backup_mongo.md)
+- ![!](../../_images/mysql_logo.png) [MySQL backups](backup_mysql.md)
+
+
 
 ## Additional resources
 Here are some external resources for learning more about databases backups:

@@ -116,7 +116,7 @@ nav:
           - setting-up/client/external.md
           - setting-up/client/haproxy.md
           - setting-up/client/remote.md
-  - Get stared:
+  - Get started:
       - get-started/index.md
       - get-started/interface.md
       - get-started/alerting.md
