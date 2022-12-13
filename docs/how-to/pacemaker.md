@@ -245,7 +245,7 @@ With the following commands, we will add:
 * PMM Server systemd service that would start PMM Server with correct resources in place
 
 ```sh
-pcs resource create pmm_lvm ocf:heartbeat:LVM-activate vgname=pmm_server vg_access_mode=system_id --group pmm
+pcs resource create pmm_lvm ocf:heartbeat:LVM-activate vgname=pmm-server vg_access_mode=system_id --group pmm
 
 pcs resource create pmm_fs Filesystem device="/dev/pmm-server/srv" directory="/mnt/pmm-server/srv/" fstype="ext4" --group pmm
 
