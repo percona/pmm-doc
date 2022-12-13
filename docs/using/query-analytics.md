@@ -188,7 +188,7 @@ Below is an illustration of the same query using values instead of placeholders.
 ![!image](../_images/PMM_Query_Analytics_Tabs_Explain_With_Values.png)
 
 The image shown above illustrates a query with two placeholders. Therefore, you must enter the correct values in both fields. After filling in these values, click *Explain* to get the results like in the previous PMM versions without data leaks.
-and you will get result like in previous PMM versions. This method of `explain` prevents data leak.
+You will get result like in previous PMM versions. This method of `explain` prevents data leak.
 
 !!! note alert alert-primary "'Explain' for MongoDB"
 
