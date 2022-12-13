@@ -17,6 +17,6 @@ The following table lists all the PMM client/server components and their version
 | MySQL exporter| v0.14.0[^1]   | [MySQL Server Exporter Documentation](https://grafana.com/oss/prometheus/exporters/mysql-exporter/)|[Github Prometheus MySQL Exporter](github.com/percona/mysqld_exporter)    |                                          
 | Node exporter|v1.3.1[^1]| [Node Exporter Documentation](https://prometheus.io/docs/guides/node-exporter/)|[Github node exporter](https://github.com/percona/node_exporter)    |                                          
 | Azure exporter| 2.30.0   |            | [Github azure_metrics_exporter](https://github.com/percona/azure_metrics_exporter)    |                                          
-|[^1]:Original upstream version along with some changes authored by Percona                                                                                                       |
+|[^1]: Original upstream version along with some changes authored by Percona                                                                                                       |
 
 
