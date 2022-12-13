@@ -63,15 +63,14 @@ During restoring, PMM disables all the scheduled backup tasks for the current se
           secret-access-key: <your-secret-key-here> 
     ```
     The prefix name is the artifact name that appears in the **Backup name** column, under <i class="uil uil-history"></i> **Backup > All Backups** page.
+          ![!](../../_images/backup_name.png) 
 
-![](../_images/backup_name.png)
+      To implement the config, use the following command:
+        ``` code
+        pbm config --file pbm_config.yaml
+          ```
 
-    To implement the config, use the following command:
-      ``` code
-      pbm config --file pbm_config.yaml
-      ```
-
-    For more information, see **Restoring a backup into a new-environment** in [the PBM documentation](https://docs.percona.com/percona-backup-mongodb/usage/restore.html#restoring-a-backup-into-a-new-environment).  
+      For more information, see **Restoring a backup into a new-environment** in [the PBM documentation](https://docs.percona.com/percona-backup-mongodb/usage/restore.html#restoring-a-backup-into-a-new-environment).  
 
 4. Run `pbm list` to check if pbm is ready to perform the restore procedure.
 
