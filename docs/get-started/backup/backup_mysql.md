@@ -1,4 +1,4 @@
-# Create and restore MSQL backups
+# Supported setups for MySQL backups
 
 !!! caution alert alert-warning "Important"
     MySQL backup functionality is still in Technical Preview.

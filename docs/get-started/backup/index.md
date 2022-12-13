@@ -21,19 +21,18 @@ Enable the **Backup Management** option in PMM's Advanced Settings to activate t
 For MySQL databases, you can create and restore on-demand and scheduled physical backups. For MongoDB, you can create and restore physical, logical and Point-in-Time-Recovery (PITR) backups, both on-demand and scheduled.
 
 ## Start here
-To learn how to create and restore backups, check out subtopics and external resources below:
+To learn how to create and restore backups, check out subtopics below:
 
 - [Prepare a storage location](prepare_storage_location.md)
-- [Create and restore MongoDB backups](backup_mongo.md)
-- [Create and restore MySQL backups](backup_mysql.md)
-- [MongoDB Backup and Restore support matrix](mongodb_limitations.md)
+- ![](../_images/MongoDB_Logo.png) [MongoDB backups](../../get-started/backup/backup_mongo.md)
+- ![](../_images/mysql_logo.png) [MySQL backups](backup_mysql.md)
 
-### Additional resources
-Additional resources to learn more about databases backups:
+## Additional resources
+Here are some external resources for learning more about databases backups:
 
 - [Amazon AWS S3](https://aws.amazon.com/s3/)
 - [Percona Backup for MongoDB](https://www.percona.com/doc/percona-backup-mongodb/installation.html)
-- [PERCONA_QPRESS](https://www.percona.com/doc/percona-xtrabackup/LATEST/backup_scenarios/compressed_backup.html)
+- [PERCONA_QPRESS](https://docs.percona.com/percona-xtrabackup/2.4/backup_scenarios/compressed_backup.html)
 - [PERCONA_XBCLOUD](https://www.percona.com/doc/percona-xtrabackup/2.3/xbcloud/xbcloud.html)
 - [PERCONA_XBSTREAM](https://www.percona.com/doc/percona-xtrabackup/2.3/xbstream/xbstream.html)
 - [PERCONA_XTRABACKUP](https://www.percona.com/software/mysql-database/percona-xtrabackup)

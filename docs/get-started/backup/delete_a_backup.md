@@ -1,6 +1,6 @@
 ## Delete a backup
 
-You can only delete backup artifacts stored on Amazon S3. Local backups must be removed manually.
+You can only delete backup artifacts stored on Amazon S3-compatible. Local backups must be removed manually.
 
 To delete a backup:
 

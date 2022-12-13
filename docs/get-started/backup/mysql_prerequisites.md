@@ -7,7 +7,7 @@ Before creating MySQL backups, make sure to:
 
 2. Check that the [PMM Client](../../setting-up/client/index.md) is installed and running on the node.
 
-3. To enable Xtrabackup for MySQL 8.0+, check that pmm-agent connects to MySQL wit a user that has  BACKUP_ADMIN privilege. 
+3. To enable Xtrabackup for MySQL 8.0+, check that pmm-agent connects to MySQL with a user that has  BACKUP_ADMIN privilege. 
 
 4. Check that there is only one MySQL instance running on the node.
 
@@ -27,11 +27,11 @@ Before creating MySQL backups, make sure to:
 
 9.  Check that the latest versions of the following packages are installed and included in the `$PATH` environment variable:
 
-    - [`xtrabackup`][PERCONA_XTRABACKUP], which includes:
+    - [`xtrabackup`](https://www.percona.com/software/mysql-database/percona-xtrabackup), which includes:
 
-        - [`xbcloud`][PERCONA_XBCLOUD];
+        - [`xbcloud`](https://www.percona.com/doc/percona-xtrabackup/2.3/xbcloud/xbcloud.html)
 
-        - [`xbstream`][PERCONA_XBSTREAM];
+        - [`xbstream`](https://www.percona.com/doc/percona-xtrabackup/2.3/xbstream/xbstream.html)
 
     - [`qpress`][PERCONA_QPRESS].
 

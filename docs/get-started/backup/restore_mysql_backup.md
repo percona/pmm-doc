@@ -1,12 +1,12 @@
 # Restore a MySQL backup
 
 ### Restore compatibility
-MySQL backups can be restored to the same service it was created from, or to a compatible one. MongoDB backups can only be restored to the same service they were created from.
+MySQL backups can be restored to the same service it was created from, or to a compatible one. 
 
 To restore a backup:
 
 1. Go to <i class="uil uil-history"></i> **Backup > All backups** and find the backup that you want to restore.
-2. Click the arrow in the **Actions** column to check all the information for the backup, then click ![](../_images/dots-three-vertical.png) **> Restore from backup**.
+2. Click the three dots ![](../_images/dots-three-vertical.png) in the **Actions** column to check all the information for the backup, then click ![](../_images/dots-three-vertical.png) **Restore from backup**.
 3. In the **Restore from backup** dialog, select **Same service** to restore to a service with identical properties or **Compatible services** to restore to a compatible service.
 4. Select one of the available service names from the drop-down menu.
 5. Check the values, then click **Restore**.

@@ -126,7 +126,7 @@ nav:
           - MongoDB backups:
                 - get-started/backup/backup_mongo.md
                 - get-started/backup/mongo-prerequisites.md
-                - get-started/backup/create_on_demand_backups.md
+                - get-started/backup/create_mongo_on_demand.md
                 - get-started/backup/create_PITR_mongo.md
                 - get-started/backup/restore_MongoDB_backups.md
                 - get-started/backup/mongodb_limitations.md
@@ -134,6 +134,7 @@ nav:
                 - get-started/backup/backup_mysql.md
                 - get-started/backup/create_mysql_backup.md
                 - get-started/backup/restore_mysql_backup.md
+          - get-started/backup/edit_scheduled.md
           - get-started/backup/delete_a_backup.md
 
       - get-started/query-analytics.md
