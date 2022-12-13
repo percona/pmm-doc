@@ -10,3 +10,4 @@ Before creating MongoDB backups, make sure to:
 6. Check that MongoDB is a member of a replica set.
 7. Check that you set the [required permissions for creating and restoring MongoDB backups](../../setting-up/client/mongodb.md#create-pmm-account-and-set-permissions).
 8. Verify the [MongoDB supported configurations and limitations](../../get-started/backup/mongodb_limitations.md).
+9. 

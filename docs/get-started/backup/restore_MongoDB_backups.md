@@ -10,20 +10,20 @@ To restore a backup:
 2. Click the arrow in the **Actions** column to check all the information for the backup, then click ![](../_images/dots-three-vertical.png) **> Restore from backup**.
 3. In the **Restore from backup** dialog, select **Same service** to restore to a service with identical properties.
 4. Select one of the available service names from the drop-down menu.
-5. If you are restoring a PITR backup, also  select the point for the date and time that you want to restore the database to.
+5. If you are restoring a PITR backup, also select the point for the date and time that you want to restore the database to.
 6. Check the values, then click **Restore**.
 7. Go to the **Restores** tab to check the status of the restored backup.
 During restoring, PMM disables all the scheduled backup tasks for the current service. Remember to re-enable them manually after the restore.
 
-## Restore to a new environment manually
+## Restore to a new cluster manually
 
 1. Install MongoDB and Percona Backup for MongoDB. Pay attention to the versions. To minimize potential incompatibility, use the same versions that were used for taking backups.
    For instructions, see the [PBM install documentation](https://docs.percona.com/percona-backup-mongodb/installation.html).
 2. Configure your environment:
-     - to restore on a new environment with the same replica set name, make sure that the replica set name in your new destination cluster use the same name as that in the cluster that was backed up.<br/>
+     - to restore to a new environment with the same replica set name, make sure that the replica set name in your new destination cluster use the same name as that in the cluster that was backed up.<br/>
       For more information, see [Restoring a backup into a new-environment](https://docs.percona.com/percona-backup-mongodb/usage/restore.html#restoring-a-backup-into-a-new-environment) in the PBM documentation. <br> 
-     - to restore **logical backups** to a new environment that has different replica set name, configure the name mapping between the source and target environments. <br/>
-      For the new environment you can either set the **PBM_REPLSET_REMAPPING** environment variable for pbm CLI, or use the `--replset-remapping` flag for PBM commands.
+     - to restore **logical backups** to a new environment that has a different replica set name, configure the name mapping between the source and target environments. <br/>
+      For the new environment, you can either set the **PBM_REPLSET_REMAPPING** environment variable for pbm CLI, or use the `--replset-remapping` flag for PBM commands.
 
         The mapping format is `<rsTarget>=<rsSource>`.
 

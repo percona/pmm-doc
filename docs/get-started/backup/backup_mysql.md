@@ -7,4 +7,3 @@ PMM supports MySQL database server for:
     
   - Creating and restoring physical backups
   - Storing backups to Amazon S3-compatible object storage  
-
