@@ -179,15 +179,15 @@ The *Explain* tab shows the `explain` output for the selected query, in Classic 
 - PostgreSQL: Not supported.
 
 Starting with PMM 2.33.0, for MySQL, the *Explain* tab is supported without the *Examples* tab. If a query in the *Explain* tab contains sensitive data, placeholders will replace them.
-You have to specify the values for these placeholders before you can run *Explain*, as shown in the image below.
+Before you can run Explain, you must specify the values for these placeholders. This image illustrates the query with placeholders.
 
 ![!image](../_images/PMM_Query_Analytics_Tabs_Explain_With_Placeholders.png)
 
-This is how it looks with placeholders. Check another image, where is same query, but fulfilled with values instead placeholders.
+Below is an illustration of the same query using values instead of placeholders.
 
 ![!image](../_images/PMM_Query_Analytics_Tabs_Explain_With_Values.png)
 
-The image shows a query with five placeholders. Therefore, you must enter the correct values in all five fields. After filling in these values, click *Explain* to get the results like in the previous PMM versions without data leaks.
+The image shows a query with two placeholders. Therefore, you must enter the correct values in all two fields. After filling in these values, click *Explain* to get the results like in the previous PMM versions without data leaks.
 and you will get result like in previous PMM versions. This method of `explain` prevents data leak.
 
 !!! note alert alert-primary "'Explain' for MongoDB"
