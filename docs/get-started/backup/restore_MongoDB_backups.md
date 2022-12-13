@@ -62,7 +62,7 @@ During restoring, PMM disables all the scheduled backup tasks for the current se
           access-key-id: <your-access-key-id-here>
           secret-access-key: <your-secret-key-here> 
     ```
-    The prefix name is the artifact name that appears in the **Backup name** column, under <i class="uil uil-history"></i> **Backup > All Backups** page.
+    The prefix name is the artifact name that appears in the **Backup name** column, under <i class="uil uil-history"></i> **Backup > All Backups** page:
 
       ![!](../../_images/backup_name.png) 
 

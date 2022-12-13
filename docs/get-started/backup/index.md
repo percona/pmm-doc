@@ -28,7 +28,6 @@ To learn how to create and restore backups, check out subtopics below:
 - ![!](../../_images/mysql_logo.png) [MySQL backups](backup_mysql.md) 
 
 
-
 ## Additional resources
 Here are some external resources for learning more about databases backups:
 
