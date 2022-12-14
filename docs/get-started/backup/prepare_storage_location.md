@@ -5,7 +5,7 @@ Prepare a stogare location as a backup destination for creating and storing your
 PMM supports the following types of storage:
 
 - **Amazon AWS S3-compatible**: enables you to use not only AWS S3, but also other similar storage solutions that support S3 API, like [min.io](https://min.io/).
-- **Local storage**: Currently only available for MongoDB backups. Storing backups locally is faster, but is  more risky since you can lose backups if the Server is lost. Percona recommends using local backups only as a temporary solution.
+- **Local storage**: currently only available for MongoDB backups.
 
 ## Prepare a location for local backups
 If you prefer storing your MongoDB backup artifacts on a remote filesystem, make sure that you've mounted the remote folder to all the mongoDB nodes on the same path, and that PBM tool has Write permissions on the path you define.

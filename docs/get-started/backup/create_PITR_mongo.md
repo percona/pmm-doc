@@ -14,7 +14,8 @@ Starting with PMM 2.32, restoring PITR backups is available for backups based on
 
 ## How does it work?
 
-When you enable PITR, PMM backs up your database data automatically with per-second precision so that you can rewind it back to any given specific time in the past.
+When point-in-time recovery (PITR) is enabled, pbm-agent periodically saves consecutive slices of the oplog.
+To start saving oplog, PBM requires a backup snapshot. Such snapshots are being created when you activate a PITR scheduled task in PMM. Since PBM saves oplog slices and streams them into your storage between scheduled task runs, scheduling frequent PITR backups is not necessary. You can use the available oplog slices in your storage to restore a backup to any moment between snapshots.
 
 Before creating a backup, make sure to check the [MongoDB backup prerequisites](../backup/mongo-prerequisites.md).
 
@@ -26,13 +27,13 @@ Before creating a backup, make sure to check the [MongoDB backup prerequisites](
 6. Select **Logical** as this is the only data model that currently supports PITR backups.
 7. Choose a storage location for the backup. MongoDB supports both Amazon S3-compatible and local storage. However, restoring from local storage is not supported yet. 
 If no options are available here, see the [Create a storage location](prepare_storage_location.md) topic.
-8. Specify the backup type and the schedule for your backup:
+1. Specify the backup type and the schedule for your backup:
     - **Backup Type**: select the  **PITR** option.
     - **Schedule**: configure the frequency and the start time for this backup. Make sure that the schedule you specify here does not create overlapping jobs or overhead on the production environment. Also check that your specified schedule does not overlap with production hours.
     - **Retention**: this option is not available for PITR backups. Currently, retention policies can only be specified for Snapshot backups stored on Amazon S3-compatible storage.
-9. Expand **Advanced Settings** to specify the settings for retrying the backup in case of any issues. You can either let PMM retry the backup again (**Auto**), or do it again yourself (**Manual**). Auto retry mode enables you to select up to ten retries and an interval of up to eight hours between retries.
-10.  Click **Schedule** to start creating the backup artifact.
-11.  Go to the **All Backups** tab, and check the **Status** column. An animated ellipsis indicator {{icon.bouncingellipsis}} shows that a backup is currently being created.
+2. Expand **Advanced Settings** to specify the settings for retrying the backup in case of any issues. You can either let PMM retry the backup again (**Auto**), or do it again yourself (**Manual**). Auto retry mode enables you to select up to ten retries and an interval of up to eight hours between retries.
+3.   Click **Schedule** to start creating the backup artifact.
+4.   Go to the **All Backups** tab, and check the **Status** column. An animated ellipsis indicator {{icon.bouncingellipsis}} shows that a backup is currently being created.
 
 ![!](../../_images/PMM_Backup_Management-MongoDB-PITR-Enable.jpg)
 
