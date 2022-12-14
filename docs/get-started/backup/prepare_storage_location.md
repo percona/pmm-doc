@@ -4,21 +4,21 @@ Prepare a stogare location as a backup destination for creating and storing your
 
 PMM supports the following types of storage:
 
-- **Amazon AWS S3-compatible**: enables you to use not only AWS S3, but also on other similar storage solutions like [min.io](https://min.io/).
+- **Amazon AWS S3-compatible**: enables you to use not only AWS S3, but also other similar storage solutions that support S3 API, like [min.io](https://min.io/).
 - **Local storage**: Currently only available for MongoDB backups. Storing backups locally is faster, but is  more risky since you can lose backups if the Server is lost. Percona recommends using local backups only as a temporary solution.
 
 ## Prepare a location for local backups
-If you prefer storing your MongoDB backup artifacts on a remote filesystem, make sure that you have Write permissions on the path you define, and that you've mounted the remote folder to all the mongoDB nodes.
+If you prefer storing your MongoDB backup artifacts on a remote filesystem, make sure that you've mounted the remote folder to all the mongoDB nodes on the same path, and that PBM tool has Write permissions on the path you define.
 
 For more information, see the [Percona Backup for MongoDB (PBM) documentation](https://docs.percona.com/percona-backup-mongodb/details/storage-configuration.html#remote-filesystem-server-storage).
 
 ## Prepare a location for S3-compatible storage
-If you want to store backup artifacts in the cloud, you can use [Amazon S3](https://aws.amazon.com/s3/), [Min.io](https://min.io/) or any other similar storage solution.
+If you want to store backup artifacts in S3-compatible storage, you can use [Amazon S3](https://aws.amazon.com/s3/), [Min.io](https://min.io/) or any other storage solution with S3-compatible API.
 
 Before creating a cloud storage location for our future backups, make sure you have your S-3 compatible storage ready. In addition to bucket location details, you will also need to ensure proper S3 permissions.
 
 The general minimum permissions are **LIST**/**PUT**/**GET**/**DELETE**.
-A sample IAM policy is:
+A sample [IAM](https://aws.amazon.com/iam/) policy is:
 
         ```json
         {

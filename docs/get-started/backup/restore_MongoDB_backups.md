@@ -1,20 +1,19 @@
 # Restore a MongoDB backup
-
-## Restore compatibility
-
 MongoDB backups can only be restored to the same service they were created from.
 
 To restore a backup:
 
 1. Go to <i class="uil uil-history"></i> **Backup > All backups** and find the backup that you want to restore.
-2. Click the arrow in the **Actions** column to check all the information for the backup, then click ![](../_images/dots-three-vertical.png) **> Restore from backup**.
-3. In the **Restore from backup** dialog, select **Same service** to restore to a service with identical properties.
-4. Select one of the available service names from the drop-down menu.
-5. If you are restoring a PITR backup, also select the point for the date and time that you want to restore the database to.
-6. Check the values, then click **Restore**.
-7. Go to the **Restores** tab to check the status of the restored backup.
-During restoring, PMM disables all the scheduled backup tasks for the current service. Remember to re-enable them manually after the restore.
+2. Click the arrow in the **Actions** column to check all the information for the backup, then click ![](../_images/dots-three-vertical.png) **Restore from backup**.
+This opens the **Restore from backup** dialog, with the **Same service** option automatically preselected. This is because, currently, MongoDB backups can only be restored to a service with identical properties.
+3. If you are restoring a PITR backup, select the point for the date and time that you want to restore the database to.
+4. Check the values, then click **Restore**.
+5. Go to the **Restores** tab to check the status of the restored backup.
 
+!!! caution alert alert-warning "Important"
+    During restoring, PMM disables all the scheduled backup tasks for the current service. Remember to re-enable them manually after the restore.
+    
+    
 ## Restore to a new cluster manually
 
 1. Install MongoDB and Percona Backup for MongoDB. Pay attention to the versions. To minimize potential incompatibility, use the same versions that were used for taking backups.
@@ -57,7 +56,7 @@ During restoring, PMM disables all the scheduled backup tasks for the current se
       s3:
         region: us-west-2
         bucket: pbm-test-bucket
-        prefix: data/pbm/backup
+        prefix: backup_name_from_pmm
         credentials:
           access-key-id: <your-access-key-id-here>
           secret-access-key: <your-secret-key-here> 
@@ -67,7 +66,7 @@ During restoring, PMM disables all the scheduled backup tasks for the current se
       ![!](../../_images/backup_name.png) 
 
       To implement the config, use the following command:
-        ``` code
+        ```code
         pbm config --file pbm_config.yaml
           ```
 

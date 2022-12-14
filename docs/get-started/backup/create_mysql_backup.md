@@ -6,8 +6,7 @@ To create a backup:
 2. Click <i class="uil uil-plus-square"></i> **Create Backup**.
 3. Specify the type of backup that you want to create: **On Demand** or **Schedule Backup**.
 4. Enter a unique name for this backup.
-5. Choose the service to back up from the Service name drop-down menu. This automatically populates the **DB Technology** field.
-6. Select the **Physical** data model as this is the only model available for MySQL backups.
+5. Choose the service to back up from the Service name drop-down menu. This automatically populates the **DB Technology** field and selects the **Physical** data model as this is the only model available for MySQL backups.
 7. Choose a storage location for the backup. MySQL currently only supports storing backups to Amazon S3. If no options are available here, see the [Create a storage location topic](../backup/prepare_storage_location.md) section above.
 8. If you're creating scheduled backups, also specify the backup type, the schedule, and a retention policy for your backup:
     - **Backup Type**: currently, PMM only supports **Full** backup types for MySQL. 
