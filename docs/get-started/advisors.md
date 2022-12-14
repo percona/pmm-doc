@@ -1,5 +1,5 @@
 # Advisors 
-Percona Advisors provide automated insights and recommendations within Percona Monitoring and Management. These proactive insights help you uncover problems before they become larger issues (e.g., security posture, configuration, performance)
+Percona Advisors provide automated insights and recommendations within Percona Monitoring and Management. These proactive insights help you uncover problems before they become larger issues (e.g., security posture, configuration, performance).
 
 Advisor is a set of automated checks to investigate a specific case, and Advisors, before today, focused on Security, Configuration, and Performance. 
 
