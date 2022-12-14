@@ -7,8 +7,7 @@ To restore a backup:
 2. Click the arrow in the **Actions** column to check all the information for the backup, then click ![](../_images/dots-three-vertical.png) **Restore from backup**.
 This opens the **Restore from backup** dialog, with the **Same service** option automatically preselected. This is because, currently, MongoDB backups can only be restored to a service with identical properties.
 3. If you are restoring a PITR backup, select the point for the date and time that you want to restore the database to.
-4. Check the values, then click **Restore**.
-5. Go to the **Restores** tab to check the status of the restored backup.
+4. Click **Restore** then go to the **Restores** tab to check the status of the restored backup.
 
 !!! caution alert alert-warning "Important"
     During restoring, PMM disables all the scheduled backup tasks for the current service. Remember to re-enable them manually after the restore.
@@ -42,9 +41,9 @@ This opens the **Restore from backup** dialog, with the **Same service** option 
 
     For this, you can either copy the config from the source host or create a new one.
 
-    To redirect config output from the existing environment, use 
+    To redirect config output from the existing environment, use:
     ```code
-         pbm config >> pbm_config.yaml
+    pbm config >> pbm_config.yaml
     ```
     then copy the resulting file to the new environment.
 
