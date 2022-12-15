@@ -9,8 +9,8 @@ This opens the **Restore from backup** dialog, with the **Same service** option 
 3. If you are restoring a PITR backup, select the point for the date and time that you want to restore the database to.
 4. Click **Restore** then go to the **Restores** tab to check the status of the restored backup.
 
-  !!! caution alert alert-warning "Important"
-      During restoring, PMM disables all the scheduled backup tasks for the current service. Remember to re-enable them manually after the restore.
+!!! caution alert alert-warning "Important"
+    During restoring, PMM disables all the scheduled backup tasks for the current service. Remember to re-enable them manually after the restore.
     
     
 ## Restore to a new cluster manually
@@ -42,8 +42,8 @@ This opens the **Restore from backup** dialog, with the **Same service** option 
     For this, you can either copy the config from the source host or create a new one.
 
     To redirect config output from the existing environment, use:
-    ```code
-  pbm config >> pbm_config.yaml
+    ```yaml
+      pbm config >> pbm_config.yaml
     ```
     then copy the resulting file to the new environment.
 

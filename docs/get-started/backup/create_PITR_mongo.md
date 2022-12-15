@@ -30,9 +30,8 @@ Before creating a backup, make sure to check the [MongoDB backup prerequisites](
 5. Choose the service to back up from the **Service name** drop-down menu. This automatically populates the **DB Technology** field.
 6. Select **Logical** as this is the only data model that currently supports PITR backups.
 7. Choose a storage location for the backup. MongoDB supports both Amazon S3-compatible and local storage.
-
-However, restoring from local storage is not supported yet.
-If no options are available here, see the [Create a storage location](prepare_storage_location.md) topic.
+    However, restoring from local storage is not supported yet.
+    If no options are available here, see the [Create a storage location](prepare_storage_location.md) topic.
 8. Specify the backup type and the schedule for your backup:
     - **Backup Type**: select the  **PITR** option.
     - **Schedule**: configure the frequency and the start time for this backup.  
@@ -44,7 +43,7 @@ If no options are available here, see the [Create a storage location](prepare_st
 10.   Click **Schedule** to start creating the backup artifact.
 11.   Go to the **All Backups** tab, and check the **Status** column. An animated ellipsis indicator {{icon.bouncingellipsis}} shows that a backup is currently being created.
 
-    ![!](../../_images/PMM_Backup_Management-MongoDB-PITR-Enable.jpg)
+![!](../../_images/PMM_Backup_Management-MongoDB-PITR-Enable.jpg)
 
 
 ## PITR artifacts

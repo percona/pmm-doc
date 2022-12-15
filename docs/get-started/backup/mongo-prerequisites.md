@@ -11,5 +11,6 @@ Before creating MongoDB backups, make sure to:
 7. Check that you set the [required permissions for creating and restoring MongoDB backups](../../setting-up/client/mongodb.md#create-pmm-account-and-set-permissions).
 8. Verify the [MongoDB supported configurations and limitations](../../get-started/backup/mongodb_limitations.md).
    
- !!! caution alert alert-warning "Important"
-    Never use `pbm`  in manual mode! PMM already takes care of the pbm configuration and any manual intervention can break the state.
+
+!!! caution alert alert-warning "Important"
+       Never use `pbm`  in manual mode! PMM already takes care of the pbm configuration and any manual intervention can break the state.
