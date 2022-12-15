@@ -67,7 +67,7 @@ This opens the **Restore from backup** dialog, with the **Same service** option 
       To implement the config, use the following command:
         ```yaml
         pbm config --file pbm_config.yaml
-          ```
+        ```
 
       For more information, see **Restoring a backup into a new-environment** in [the PBM documentation](https://docs.percona.com/percona-backup-mongodb/usage/restore.html#restoring-a-backup-into-a-new-environment).  
 
