@@ -15,7 +15,7 @@ For more information, see the [Percona Backup for MongoDB (PBM) documentation](h
 ## Prepare a location for S3-compatible storage
 If you want to store backup artifacts in S3-compatible storage, you can use [Amazon S3](https://aws.amazon.com/s3/), [Min.io](https://min.io/) or any other storage solution with S3-compatible API.
 
-Before creating a cloud storage location for our future backups, make sure you have your S-3 compatible storage ready. In addition to bucket location details, you will also need to ensure proper S3 permissions.
+Before creating a cloud storage location for our future backups, make sure you have your S3-compatible storage ready. In addition to bucket location details, you will also need to ensure proper S3 permissions.
 
 The general minimum permissions are **LIST**/**PUT**/**GET**/**DELETE**.
 A sample [IAM](https://aws.amazon.com/iam/) policy is:
