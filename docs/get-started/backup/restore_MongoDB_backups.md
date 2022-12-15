@@ -41,7 +41,7 @@ This opens the **Restore from backup** dialog, with the **Same service** option 
 
     For this, you can either copy the config from the source host or create a new one.
 
-    To redirect config output from the existing environment, use:
+    To redirect the config output from the existing environment, use:
     ```yaml
       pbm config >> pbm_config.yaml
     ```
@@ -65,7 +65,7 @@ This opens the **Restore from backup** dialog, with the **Same service** option 
       ![!](../../_images/backup_name.png) 
 
       To implement the config, use the following command:
-        ```code
+        ```yaml
         pbm config --file pbm_config.yaml
           ```
 
