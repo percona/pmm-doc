@@ -31,7 +31,7 @@ To learn how to create and restore backups, check out subtopics below:
 ## Additional resources
 Here are some external resources for learning more about databases backups:
 
-- [Amazon AWS S3](https://aws.amazon.com/s3/)
+- [Amazon Web Services S3](https://aws.amazon.com/s3/)
 - [Percona Backup for MongoDB](https://www.percona.com/doc/percona-backup-mongodb/installation.html)
 - [PERCONA_QPRESS](https://docs.percona.com/percona-xtrabackup/2.4/backup_scenarios/compressed_backup.html)
 - [PERCONA_XBCLOUD](https://www.percona.com/doc/percona-xtrabackup/2.3/xbcloud/xbcloud.html)

@@ -4,7 +4,7 @@ Prepare a stogare location as a backup destination for creating and storing your
 
 PMM supports the following types of storage:
 
-- **Amazon AWS S3-compatible**: enables you to use not only AWS S3, but also other similar storage solutions that support S3 API, like [min.io](https://min.io/).
+- **Amazon S3-compatible**: enables you to use not only AWS S3, but also other storage solutions that support S3 API, like [min.io](https://min.io/).
 - **Local storage**: currently only available for MongoDB backups.
 
 ## Prepare a location for local backups
