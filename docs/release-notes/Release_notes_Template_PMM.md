@@ -7,7 +7,7 @@
 Percona Monitoring and Management (PMM) is an open source database monitoring, management, and observability solution for MySQL, PostgreSQL, and MongoDB.
 
 !!! caution alert alert-warning "Important/Caution"
-    Important points that need emphasis:
+    Crucial points that need emphasis:
 
     - Important: A significant point that deserves emphasis.
     - Caution: Used to mean 'Continue with care'.
@@ -73,7 +73,7 @@ Add more subsections for more release highlights.
 
 ## Coming Soon
 
-  Share what are the upcoming features on your roadmap to keep your users excited:
+  Share what are the upcoming features on your roadmap to keep users excited:
 
 - Planned item 1
 - Planned item 2 
