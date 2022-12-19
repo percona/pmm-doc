@@ -1,4 +1,4 @@
-# Percona Monitoring and Management v2.X.X
+# Percona Monitoring and Management 2.X.X
 
 | **Release date:** | [Date MM/DD/YY]                                                                                    |
 | ----------------- | ----------------------------------------------------------------------------------------------- |
@@ -32,9 +32,9 @@ Add more subsections for more release highlights.
 
 - List of new features with a comprehensive description of the feature with a link to the JIRA ticket.
 
-Example:
-
-[PMM-XXXX](https://jira.percona.com/browse/PMM-XXXX) - Comprehensive description.
+    Example:
+    
+    [PMM-XXXX](https://jira.percona.com/browse/PMM-XXXX) - Comprehensive description.
 
 
 
@@ -42,18 +42,18 @@ Example:
 
 - ​​List of improvements with a comprehensive description with a link to the JIRA ticket.
 
-Example:
+    Example:
 
-[PMM-XXXX](https://jira.percona.com/browse/PMM-XXXX) - Comprehensive description.
+    [PMM-XXXX](https://jira.percona.com/browse/PMM-XXXX) - Comprehensive description.
  
 
 ## Bugs Fixed
 
 - ​​List of bugs with a comprehensive description with a link to the JIRA ticket.
 
-Example:
+    Example:
 
-[PMM-XXXX](https://jira.percona.com/browse/PMM-XXXX) - Comprehensive description.
+    [PMM-XXXX](https://jira.percona.com/browse/PMM-XXXX) - Comprehensive description.
 
 
 
@@ -61,13 +61,14 @@ Example:
 
 ​​- List of known issues (if any) with a comprehensive description with a link to the JIRA ticket and workaround.
 
-Example:
+    Example:
 
-[PMM-XXXX](https://jira.percona.com/browse/PMM-XXXX) - Comprehensive description.
+    [PMM-XXXX](https://jira.percona.com/browse/PMM-XXXX) - Comprehensive description.
 
 
-**Solution**
-Description of the solution.
+    **Solution**
+    
+    Description of the solution.
 
 
 ## Coming Soon
