@@ -25,7 +25,7 @@ Add more subsections for more release highlights.
 
 
 ### Components Upgrade
-List the components which are upgraded as part of the Release.
+- List the components which are upgraded as part of the Release.
 
 ## New Features
 
