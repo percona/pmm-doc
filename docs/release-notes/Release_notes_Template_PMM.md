@@ -16,11 +16,11 @@ Percona Monitoring and Management (PMM) is an open source database monitoring, m
 ## Release Highlights
 
 ### Release Highlights1 
-Description of the feature  with a link to the documentation.
+Description of the feature with a link to the documentation
 
 
 ### Release Highlights2
-Description of the feature  with a link to the documentation.
+Description of the feature  with a link to the documentation
 
 Add more subsections for more release highlights.
 
