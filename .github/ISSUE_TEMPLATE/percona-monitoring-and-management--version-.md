@@ -1,7 +1,7 @@
 ---
 name: Percona Monitoring and Management <version>
 about: Release Notes Template for PMM
-title: ''
+title: 'Release Notes Template PMM'
 labels: ''
 assignees: rasika-chivate
 
