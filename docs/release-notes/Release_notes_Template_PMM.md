@@ -15,6 +15,7 @@ Percona Monitoring and Management (PMM) is an open source database monitoring, m
 
 ## Release Highlights
 
+
 ### Release Highlights1 
 Description of the feature with a link to the documentation
 
@@ -30,7 +31,7 @@ Add more subsections for more release highlights.
 
 ## New Features
 
-- List of new features with a comprehensive description of the feature with a link to the JIRA ticket.
+- List of new features with a comprehensive description of the feature and link to the JIRA ticket.
 
     Example:
     
