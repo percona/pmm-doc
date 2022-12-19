@@ -1,4 +1,4 @@
-# Percona Monitoring and Management 
+# Percona Monitoring and Management v2.X.X
 
 | **Release date:** | [Date MM/DD/YY]                                                                                    |
 | ----------------- | ----------------------------------------------------------------------------------------------- |
@@ -8,6 +8,7 @@ Percona Monitoring and Management (PMM) is an open source database monitoring, m
 
 !!! caution alert alert-warning "Important/Caution/"
     Important points that need emphasis as follows:
+    
     - Important: A significant point that deserves emphasis.
     - Caution: Used to mean 'Continue with care'.
 
