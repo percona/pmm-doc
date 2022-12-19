@@ -1,4 +1,5 @@
 # Release Notes
+- [Percona Monitoring and Management RN Template](Release_notes_Template_PMM.md)
 - [Percona Monitoring and Management 2.33.0](2.33.0.md)
 - [Percona Monitoring and Management 2.32.0](2.32.0.md)
 - [Percona Monitoring and Management 2.31.0](2.31.0.md)
