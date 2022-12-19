@@ -1,7 +1,7 @@
 ---
 name: Percona Monitoring and Management <version>
 about: Release Notes Template for PMM
-title: 'Release Notes Template PMM'
+title: ''
 labels: ''
 assignees: rasika-chivate
 
@@ -67,7 +67,7 @@ Add more subsections for more release highlights.
 
 ## Known issues
 
-- ​​List of known issues with a  comprehensive description and link to the JIRA ticket.
+- ​List of known issues with a  comprehensive description and link to the JIRA ticket.
 
     Example:
 
