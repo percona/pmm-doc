@@ -72,7 +72,8 @@ Add more subsections for more release highlights.
 
 
 ## Coming Soon
-Share what are the upcoming features on your roadmap to keep your users excited:
+
+  Share what are the upcoming features on your roadmap to keep your users excited:
 
 - Planned item 1
 - Planned item 2 
