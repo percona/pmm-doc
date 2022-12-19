@@ -40,7 +40,7 @@ Add more subsections for more release highlights.
 
 ## Improvements
 
-- ​​List of improvements with a comprehensive description with a link to the JIRA ticket.
+- ​​List of improvements with a comprehensive description and link to the JIRA ticket.
 
     Example:
 
@@ -49,7 +49,7 @@ Add more subsections for more release highlights.
 
 ## Bugs Fixed
 
-- ​​List of bugs with a comprehensive description with a link to the JIRA ticket.
+- ​​List of bugs with a comprehensive description and link to the JIRA ticket.
 
     Example:
 
@@ -59,7 +59,7 @@ Add more subsections for more release highlights.
 
 ## Known issues
 
-​​- List of known issues (if any) with a comprehensive description with a link to the JIRA ticket and workaround.
+- ​​List of known issues with a  comprehensive description and link to the JIRA ticket.
 
     Example:
 
@@ -67,7 +67,7 @@ Add more subsections for more release highlights.
 
 
     **Solution**
-    
+
     Description of the solution.
 
 
