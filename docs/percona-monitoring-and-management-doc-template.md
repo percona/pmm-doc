@@ -8,7 +8,12 @@
     - Caution: Used to mean 'Continue with care'.
 
 ## What is feature_name?
-Replace **feature_name** with the name of the feature and provide description of the feature.
+
+!!! note alert alert-primary "Note"
+    Replace **feature_name** with the name of the feature.
+
+
+Describe the feature.
 
 ## Prerequisites
 List the requirements before installing/configuring/using a feature.
@@ -26,9 +31,10 @@ Do specific settings in PMM for the feature to work as expected.
 
 ## Installing/Configuring/Using feature_name
 
-1. Replace **feature_name_ with the name of the feature.
+!!! note alert alert-primary "Note"
+    Replace **feature_name** with the name of the feature.
 
-2. Step by step instructions to install/confiigure/use the feature. Use just one instruction per step for clarity.
+use numbered list to provide step by step instructions to install/confiigure/use the feature. Use just one instruction per step for clarity.
 
  Use images (if required)
 
