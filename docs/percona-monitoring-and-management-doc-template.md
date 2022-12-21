@@ -1,10 +1,10 @@
 
 # Feature Name
 
-!!! caution alert alert-warning "Important/Caution" (Optional)
+!!! caution alert alert-warning "Important/Caution"
     Crucial points that need emphasis:
 
-    - Important: A significant point that needs emphasis.
+    - Important: A significant point that deserves emphasis.
     - Caution: Used to mean 'Continue with care'.
 
 ## What is feature_name?
