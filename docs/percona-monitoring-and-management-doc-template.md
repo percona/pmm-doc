@@ -34,7 +34,7 @@ Do specific settings in PMM for the feature to work as expected.
 !!! note alert alert-primary "Note"
     Replace **feature_name** with the name of the feature.
 
-use numbered list to provide step by step instructions to install/confiigure/use the feature. Use just one instruction per step for clarity.
+Use numbered list to provide step by step instructions to install/confiigure/use the feature. Use just one instruction per step for clarity.
 
  Use images (optional)
 
@@ -49,7 +49,7 @@ Preferred use is without the label (first form).
 
 ```txt
 !!! note alert alert-primary ""
-    Note ...
+    Text ...
 
 !!! note alert alert-primary "Note"
     Text ...
