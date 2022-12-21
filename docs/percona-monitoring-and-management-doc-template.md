@@ -36,7 +36,7 @@ Do specific settings in PMM for the feature to work as expected.
 
 use numbered list to provide step by step instructions to install/confiigure/use the feature. Use just one instruction per step for clarity.
 
- Use images (if required)
+ Use images (optional)
 
 ![!](../_images/image_name.png)
 
