@@ -16,7 +16,7 @@
 Describe the feature.
 
 ## Prerequisites
-List the requirements before installing/configuring/using a feature.
+List the requirements before installing/configuring/using the feature.
 
 **Example**
 
