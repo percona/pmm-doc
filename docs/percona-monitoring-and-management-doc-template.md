@@ -12,7 +12,7 @@
 !!! note alert alert-primary "Note"
     Replace **feature_name** with the name of the feature.
 
- 
+
 Describe the feature.
 
 ## Prerequisites
