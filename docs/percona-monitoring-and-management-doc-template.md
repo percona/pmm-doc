@@ -47,9 +47,9 @@ To give your users important or useful information that isn't part of the flow o
 
 Preferred use is without the label (first form).
 
-```txt
+
 !!! note alert alert-primary ""
-    Text ...
+    Note ...
 
 !!! note alert alert-primary "Note"
     Text ...
