@@ -2,12 +2,11 @@
 # Feature Name
 
 !! caution alert alert-warning "Important/Caution" (Optional)
-    Crucial points that need emphasis:
-
+   Crucial points that need emphasis:
     - Important: A significant point that deserves emphasis.
     - Caution: Used to mean 'Continue with care'.
 
-## What is <feature_name>?
+## What is feature_name?
 Description of the feature.
 
 ## Prerequisites
@@ -24,7 +23,7 @@ Configure the software or utility.
 Do specific settings in PMM for the feature to work as expected.
 
 
-## Installing/Configuring/Using <feature_name>
+## Installing/Configuring/Using feature_name
 
 1. Step by step instructions to install/confiigure/use the feature. Use just one instruction per step for clarity.
 
