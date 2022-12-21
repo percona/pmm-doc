@@ -1,84 +1,58 @@
----
-name: Percona Monitoring and Management <version>
-about: Release Notes Template for PMM
 
----
+# Feature Name
 
-| **Release date:** | [Month DD, YYYY]                                                                                    |
-| ----------------- | ----------------------------------------------------------------------------------------------- |
-| **Installation:** | [Installing Percona Monitoring and Management](https://www.percona.com/software/pmm/quickstart) |
-
-Percona Monitoring and Management (PMM) is an open source database monitoring, management, and observability solution for MySQL, PostgreSQL, and MongoDB.
-
-!!! caution alert alert-warning "Important/Caution"
+!! caution alert alert-warning "Important/Caution" (Optional)
     Crucial points that need emphasis:
 
     - Important: A significant point that deserves emphasis.
     - Caution: Used to mean 'Continue with care'.
 
+## What is <feature_name>?
+Description of the feature.
 
-## Release Highlights
+## Prerequisites
+List the requirements before installing/configuring/using a feature.
 
+**Example**
 
-### Release Highlights1 
-Description of the feature with a link to the documentation
+Install a particular software or utility.
 
+Configure the software or utility.
 
-### Release Highlights2
-Description of the feature  with a link to the documentation
+## Before you begin
 
-Add more subsections for more release highlights.
-
-
-### Components Upgrade
-- List the components which are upgraded as part of the Release.
-
-## New Features
-
-- List of new features with a comprehensive description of the feature and link to the JIRA ticket.
-
-    Example:
-    
-    [PMM-XXXX](https://jira.percona.com/browse/PMM-XXXX) - Comprehensive description.
+Do specific settings in PMM for the feature to work as expected.
 
 
+## Installing/Configuring/Using <feature_name>
 
-## Improvements
+1. Step by step instructions to install/confiigure/use the feature. Use just one instruction per step for clarity.
 
-- ​​List of improvements with a comprehensive description and link to the JIRA ticket.
+ Use images (if required)
 
-    Example:
+![!](../_images/image_name.png)
 
-    [PMM-XXXX](https://jira.percona.com/browse/PMM-XXXX) - Comprehensive description.
+
+**Note, Info (Optional)**
  
+To give your users important or useful information that isn't part of the flow of the text, you can offset the information with a note. 
 
-## Bugs Fixed
+Preferred use is without the label (first form).
 
-- ​​List of bugs with a comprehensive description and link to the JIRA ticket.
+```txt
+!!! note alert alert-primary ""
+    Text ...
 
-    Example:
+!!! note alert alert-primary "Note"
+    Text ...
 
-    [PMM-XXXX](https://jira.percona.com/browse/PMM-XXXX) - Comprehensive description.
+!!! note alert alert-primary "Info"
+    Text ...  
 
+**Caution, Warning, Important**
 
+Uses same type but different label text:
 
-## Known issues
+- Caution: Used to mean 'Continue with care'.
 
-- ​List of known issues with a  comprehensive description and link to the JIRA ticket.
-
-    Example:
-
-    [PMM-XXXX](https://jira.percona.com/browse/PMM-XXXX) - Comprehensive description.
-
-
-    **Solution**
-
-    Description of the solution.
-
-
-## Coming Soon
-
-  Share what are the upcoming features on your roadmap to keep users excited:
-
-- Planned item 1
-- Planned item 2
+- Important: A significant point that deserves emphasis.
