@@ -161,8 +161,8 @@ nav:
       - details/pmm_components_and_versions.md
       - Develop checks:
           - details/develop-checks/index.md
-          - details/develop-checks/checks-v1.md
           - details/develop-checks/checks-v2.md
+          - details/develop-checks/checks-v1.md
       - Dashboards:
           - details/dashboards/index.md
           - Manage dashboards:
