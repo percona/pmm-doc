@@ -36,8 +36,8 @@ To change the frequency of an automatic advisor:
 1. Click **{{icon.checks}} Advisors**.
 2. Select the **All** tab.
 3. Scroll through the list to find a specific check. In PMM 2.29 and later, you can also use the **Filter** section to search by Name, Description, Status, or Interval. 
-   !!! hint alert alert-success "Tip"
-    If you need to share filtered advisors results with your team members, send them the PMM URL. This saves your search criteria and results. 
+    !!! hint alert alert-success "Tip"
+        If you need to share filtered advisors results with your team members, send them the PMM URL. This saves your search criteria and results. 
 4. Select the check and click the ![Edit](..//_images/edit.png) **Interval** icon in the **Actions** column. 
 5. Chose an interval and click **Save**.
 
