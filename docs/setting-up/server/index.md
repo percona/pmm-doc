@@ -35,6 +35,7 @@
 [virtual appliance]: virtual-appliance.md
 [Amazon AWS]: aws.md
 [easy install]: easy-install.md
+[DBbaaS]: dbaas.md
 [High Availability Cluster]: ha.md
 
 1. Authenticating using API keys.
