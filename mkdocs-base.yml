@@ -92,7 +92,6 @@ extra: # Used in main.html template and can't be externalized
 # Common navigation for percona.com, render.com and PDF
 nav:
   - Welcome: index.md
-  - Doc Template: percona-monitoring-and-management-doc-template.md
   - Setting up:
       - setting-up/index.md
       - Server:
