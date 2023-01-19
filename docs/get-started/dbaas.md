@@ -165,8 +165,6 @@ To create a DB cluster, do the following:
 - *Database Type*
 - *Database Version*
 
-The *Cluster Name* is already populated.
-
 4. Expand  *Advanced Settings* panel.
 
     1. Select the number of nodes. (The lower limit is 3.)
