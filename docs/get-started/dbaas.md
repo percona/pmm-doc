@@ -161,9 +161,9 @@ To create a DB cluster, do the following:
 
 3. Select the values from the dropdown for the following:
 
-- *Kubernetes Cluster*
-- *Database Type*
-- *Database Version*
+    - *Kubernetes Cluster*
+    - *Database Type*
+    - *Database Version*
 
 4. Expand  *Advanced Settings* panel.
 
@@ -191,7 +191,6 @@ To create a DB cluster, do the following:
     - *Expose* - Select this checkbox to make this DB cluster available outside of the kubernetes cluster.
     - *Internet Facing* - Select this checkbox if you want the cluster to be accessible on the internet.
     - *Source Range* - For security, you can control the exposure level by providing the IP address in the *Source Range* field. This allows you to choose the IP addresses that can access your DB cluster. To add more than one source range, click *Add New*.
-
 
 
 5. Click *Create Cluster* to create your cluster.
