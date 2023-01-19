@@ -196,9 +196,9 @@ The *Cluster Name* is already populated.
 
 
 
-5. When both *Basic Options* and *Advanced Options* section icons are green, the *Create Cluster* button becomes active. (If inactive, check the values for fields in sections whose icon is red.)
+5. Click *Create Cluster* to create your cluster.
 
-    Click *Create Cluster* to create your cluster.
+    
 
 6. A row appears with information on your cluster:
 
