@@ -244,6 +244,7 @@ nav:
       - details/api.md
       - details/victoria-metrics.md
       - details/clickhouse.md
+      - details/postgresql.md
       - details/glossary.md
   - faq.md
   - Release Notes:
