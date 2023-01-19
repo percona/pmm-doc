@@ -161,9 +161,9 @@ To create a DB cluster, do the following:
 
 3. Select the values from the dropdown for the following:
 
-    - *Kubernetes Cluster*
-    - *Database Type*
-    - *Database Version*
+  - *Kubernetes Cluster*
+  - *Database Type*
+  - *Database Version*
 
 4. Expand  *Advanced Settings* panel.
 
