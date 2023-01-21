@@ -12,7 +12,7 @@ PMM predefines certain flags that allow you to use PostgreSQL parameters as envi
 To use PostgreSQL as an external database instance, use the following environment variables: 
  
 `POSTGRES_ADDR` -> [postgres-addr](https://www.postgresql.org/docs/14/libpq-connect.html#LIBPQ-CONNECT-HOST)
-:   Name of the host and port of the external or internal PostgreSQL database.
+:   Host name and port for external PostgreSQL database.
 
 **Optional environment variables**
 
@@ -37,13 +37,36 @@ To use PostgreSQL as an external database instance, use the following environmen
 `POSTGRES_SSL_CERT_PATH` -> [postgres-ssl-cert-path](https://www.postgresql.org/docs/14/libpq-connect.html#LIBPQ-CONNECT-SSLCERT)
 :   This parameter specifies the file name of the client SSL certificate.
 
-By default pmm-server/external-database communications are not encrypted. In order to secure connection you can read that [article](https://www.postgresql.org/docs/14/ssl-tcp.html) and provide `POSTGRES_SSL_*` variables. 
+By default communications between server and database are not encrypted. In order to secure connection you can read [this](https://www.postgresql.org/docs/14/ssl-tcp.html) article and provide `POSTGRES_SSL_*` variables. 
 
 **Example**
 
-To use PostgreSQL as an external database instance, start the PMM docker with the specified variables for external PostgreSQL:
-​
+To use PostgreSQL as an external database: 
+* Generate all nessesary SSL certificates.
+* Build Percona Server with certificates under read-only rights and  grafana user and group.
+* Build PostgreSQL image with pg_hba.conf and certificates.
+* Run PostgreSQL server.
 ```sh
+docker run 
+--name external-postgres 
+-e POSTGRES_PASSWORD=secret 
+<image_id> 
+postgres 
+-c shared_preload_libraries=pg_stat_statements 
+-c pg_stat_statements.max=10000 
+-c pg_stat_statements.track=all 
+-c pg_stat_statements.save=off 
+-c ssl=on
+-c ssl_ca_file=$CA_PATH
+-c ssl_key_file=$KEY_PATH
+-c ssl_cert_file=$CERT_PATH
+-c hba_file=$HBA_PATH
+```
+* Run Percona server:
+
+```sh
+docker run 
+--name percona-server 
 -e POSTGRES_ADDR=$ADDRESS:$PORT
 -e POSTGRES_DBNAME=$DBNAME
 -e POSTGRES_USERNAME=$USER
@@ -51,5 +74,6 @@ To use PostgreSQL as an external database instance, start the PMM docker with th
 -e POSTGRES_SSL_MODE=$SSL_MODE
 -e POSTGRES_SSL_CA_PATH=$CA_PATH
 -e POSTGRES_SSL_KEY_PATH=$KEY_PATH
--e POSTGRES_SSL_CERT_PATH=$CERT_PATH
+-e POSTGRES_SSL_CERT_PATH=$CERT_PATH 
+<image_id>
 ```
