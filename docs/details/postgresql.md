@@ -42,6 +42,7 @@ By default communications between server and database are not encrypted. In orde
 **Example**
 
 To use PostgreSQL as an external database: 
+
 * Generate all nessesary SSL certificates.
 * Build Percona Server with certificates under read-only rights and  grafana user and group.
 * Build PostgreSQL image with pg_hba.conf and certificates.
@@ -62,8 +63,7 @@ postgres
 -c ssl_cert_file=$CERT_PATH
 -c hba_file=$HBA_PATH
 ```
-* Run Percona server:
-
+* Run Percona server.
 ```sh
 docker run 
 --name percona-server 
