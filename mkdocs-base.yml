@@ -15,6 +15,9 @@ theme:
   custom_dir: overrides
   logo: _images/percona-logo.svg
   favicon: _images/percona-favicon.ico
+  features:
+    - content.action.edit
+    - content.action.view
   palette:
     # Light mode
     - media: "(prefers-color-scheme: light)"
