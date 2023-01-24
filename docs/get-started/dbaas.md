@@ -166,7 +166,7 @@ To create a DB cluster, do the following:
 
 4. Expand  *Advanced Settings* panel.
 
-    1. Select the number of nodes. (The lower limit is 3.)
+    1. Select the number of nodes. (The lower limit is 1.)
 
     2. Select a preset *Resources per Node*.
 
