@@ -45,7 +45,7 @@ To use PostgreSQL as an external database:
 
 * Generate all nessesary SSL certificates.
 * Deploy Percona Server with certificates under read-only rights and `grafana` user and group.
-* Build PostgreSQL image with pg_hba.conf and certificates.
+* Attach pg_hba.conf and certificates to the PostgreSQL image.
 * Run PostgreSQL server.
 ```sh
 docker run 
