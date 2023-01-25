@@ -1,6 +1,6 @@
 # PostgreSQL
 
-You can use an external PostgreSQL database instance outside the PMM Server container running on other hosts.
+You can use an external PostgreSQL database instance outside the PMM Server container running on the same or other hosts.
 
 ## Environment variables
 
