@@ -37,14 +37,14 @@ To use PostgreSQL as an external database instance, use the following environmen
 `POSTGRES_SSL_CERT_PATH` -> [postgres-ssl-cert-path](https://www.postgresql.org/docs/14/libpq-connect.html#LIBPQ-CONNECT-SSLCERT)
 :   This parameter specifies the file name of the client SSL certificate.
 
-By default, communications between the PMM server and the database are not encrypted. In order to secure a connection,please follow [PostgeSQL SSL instructions](https://www.postgresql.org/docs/14/ssl-tcp.html) and provide `POSTGRES_SSL_*` variables. 
+By default, communications between the PMM server and the database are not encrypted. In order to secure a connection, please follow [PostgeSQL SSL instructions](https://www.postgresql.org/docs/14/ssl-tcp.html) and provide `POSTGRES_SSL_*` variables. 
 
 **Example**
 
 To use PostgreSQL as an external database: 
 
 * Generate all nessesary SSL certificates.
-* Deploy Percona Server with certificates under read-only rights and `grafana` user and group.
+* Deploy Percona Server with certificates under read-only permissions and grafana user and grafana group.
 * Attach pg_hba.conf and certificates to the PostgreSQL image.
 * Run PostgreSQL server.
 ```sh
