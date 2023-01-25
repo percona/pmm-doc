@@ -119,11 +119,6 @@ Administrators can select allowed and default versions of components versions fo
 
 5. Click *Save*.
 
-### Kubernetes operator status
-
-The Kubernetes Cluster tab shows the status of operators.
-
-![!](../_images/PMM_DBaaS_Kubernetes_Cluster_Operator_Status.png)
 
 ### Kubernetes operator update
 
