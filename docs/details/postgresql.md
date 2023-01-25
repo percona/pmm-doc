@@ -44,7 +44,7 @@ By default communications between server and database are not encrypted. In orde
 To use PostgreSQL as an external database: 
 
 * Generate all nessesary SSL certificates.
-* Build Percona Server with certificates under read-only rights and  grafana user and group.
+* Deploy Percona Server with certificates under read-only rights and `grafana` user and group.
 * Build PostgreSQL image with pg_hba.conf and certificates.
 * Run PostgreSQL server.
 ```sh
