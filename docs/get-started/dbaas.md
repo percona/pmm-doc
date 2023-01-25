@@ -34,9 +34,9 @@ If you deploy PMM in k8s, you must manually add these k8s to PMM. In order to si
 
 1. Use [Helm](https://github.com/helm/helm) to install PMM server on Kubernetes clusters. For more information, see [documentation](../setting-up/server/helm.md).
 
-  ```sh
-  helm install pmm --set service.type="LoadBalancer" --set image.repository=percona/pmm-server --set image.tag=2.32.0 --set secret.pmm_password=admin percona/pmm
-  ```
+```sh
+helm install pmm --set service.type="LoadBalancer" --set image.repository=percona/pmm-server --set image.tag=2.32.0 --set secret.pmm_password=admin percona/pmm
+```
 
 2. Log in to PMM.
 
