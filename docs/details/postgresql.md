@@ -37,7 +37,7 @@ To use PostgreSQL as an external database instance, use the following environmen
 `POSTGRES_SSL_CERT_PATH` -> [postgres-ssl-cert-path](https://www.postgresql.org/docs/14/libpq-connect.html#LIBPQ-CONNECT-SSLCERT)
 :   This parameter specifies the file name of the client SSL certificate.
 
-By default communications between server and database are not encrypted. In order to secure connection you can read [this](https://www.postgresql.org/docs/14/ssl-tcp.html) article and provide `POSTGRES_SSL_*` variables. 
+By default, communications between the PMM server and the database are not encrypted. In order to secure a connection,please follow [PostgeSQL SSL instructions](https://www.postgresql.org/docs/14/ssl-tcp.html) and provide `POSTGRES_SSL_*` variables. 
 
 **Example**
 
