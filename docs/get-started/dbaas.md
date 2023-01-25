@@ -28,7 +28,7 @@ From the left menu, select <i class="uil uil-database"></i> *DBaaS*.
 !!! note alert alert-primary "Availability"
     Automatic addition of k8s cluster in PMM is available starting with PMM 2.32.0.
 
-If you deploy PMM in k8s, you must manually add these k8s to PMM. In order to simplify DBaaS, k8s clusters can now be automatically added to PMM as follows:
+In order to simplify DBaaS, k8s clusters can now be automatically added to PMM as follows:
 
 **Prerequisites:** Helm Chart/Manifest installed
 
@@ -118,6 +118,12 @@ Administrators can select allowed and default versions of components versions fo
 4. Activate or deactivate allowed versions, and select a default in the *Default* menu.
 
 5. Click *Save*.
+
+### Kubernetes operator status
+
+The Kubernetes Cluster tab shows the status of operators.
+
+![!](../_images/PMM_DBaaS_Kubernetes_Cluster_Operator_Status.png)
 
 
 ### Kubernetes operator update
