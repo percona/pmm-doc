@@ -12,7 +12,7 @@ PMM predefines certain flags that allow you to use PostgreSQL parameters as envi
 To use PostgreSQL as an external database instance, use the following environment variables: 
  
 `POSTGRES_ADDR` -> [postgres-addr](https://www.postgresql.org/docs/14/libpq-connect.html#LIBPQ-CONNECT-HOST)
-:   Host name and port for external PostgreSQL database.
+:   Hostname and port for external PostgreSQL database.
 
 **Optional environment variables**
 
