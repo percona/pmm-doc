@@ -4,7 +4,7 @@ site_name: Percona Monitoring and Management
 site_description: Documentation
 site_author: Percona LLC
 site_url: ""
-copyright: Percona LLC, &#169; 2023
+copyright: Percona LLC, &#169; 2022
 use_directory_urls: false
 repo_name: percona/pmm-doc
 repo_url: https://github.com/percona/pmm-doc
@@ -54,8 +54,7 @@ markdown_extensions:
     permalink: True
     title: Table of contents
   admonition: {}
-  footnotes: {}
-  def_list: {} # https://michelf.ca/projects/php-markdown/extra/#def-list
+  def_list: {}
   meta: {}
   md_in_html: {}
   smarty:
@@ -63,14 +62,13 @@ markdown_extensions:
   pymdownx.details: {}
   pymdownx.mark: {}
   pymdownx.smartsymbols: {}
-  pymdownx.tabbed: 
-      {alternate_style: true}
+  pymdownx.tabbed: {}
   pymdownx.tilde: {}
   pymdownx.superfences: {}
   pymdownx.highlight:
-      linenums: false
+    linenums: false
+  lightgallery: {}
   pymdownx.inlinehilite: {}
-  pymdownx.snippets: {}
   pymdownx.emoji:
       emoji_index: !!python/name:materialx.emoji.twemoji
       emoji_generator: !!python/name:materialx.emoji.to_svg

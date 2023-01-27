@@ -1,10 +1,8 @@
 [data-md-color-scheme="percona-light"] {
-  --md-primary-fg-color:        #e97e03;
-  --md-primary-fg-color--light: #ECB7B7;
-  --md-default-fg-color--lightest: #eba926;
-  --md-primary-fg-color--dark:  #90030C;
-  --md-typeset-a-color: var(--md-primary-fg-color);
-}
+    --md-primary-fg-color:        #e97e03;
+    --md-primary-fg-color--light: #ECB7B7;
+    --md-primary-fg-color--dark:  #90030C;
+  }
 [data-md-color-scheme="slate"] {
     --md-primary-fg-color:        #e97e03;
     /*
@@ -17,26 +15,32 @@ ul li p {
 	margin: 0;
 }
 
-.md-typeset {
-  font-size: .7rem;
-  line-height: 1.5;
+.imgcenter {
+    display: block;
+    margin: 0 auto;
+}
+dd {
+    margin-left: 2em !important;
 }
 
-.md-typeset h1 {
-  color: var(--md-default-fg-color--light);
-font-size: 2em;
-line-height: 1.3;
-margin: 0 0 0.9em;
-}
+@keyframes bounce {
+    from {
+     transform: translate3d(0, 0, 0);
+    }
+    to {
+     transform: translate3d(0, -4px, 0);
+    }
+ }
 
-.md-typeset h2 {
-font-size: 1.5625em;
-line-height: 1.4;
-margin: 1em 0 .54em;
-}
+ .ellipsis {
+    animation: bounce 0.4s ease infinite;
+    animation-direction: alternate;
+ }
 
+ .ellipsis#ellipsis-two {
+    animation-delay: 0.2s;
+ }
 
-
-/*.git-revision-date-localized-plugin:before {
-  content: url('https://api.iconify.design/mdi/clock-edit-outline.svg');
-}*/
+ .ellipsis#ellipsis-three {
+    animation-delay: 0.3s;
+ }
