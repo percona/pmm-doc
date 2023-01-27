@@ -3,8 +3,9 @@ INHERIT: mkdocs-base.yml
 
 site_url: https://docs.percona.com/percona-monitoring-and-management/
 
-plugins:
-  section-index: {}
+theme:
+  name: material
+  custom_dir: overrides
 
 #Google Analytics configuration
 extra:
@@ -12,9 +13,3 @@ extra:
     provider: google
     property: UA-343802-3
     
-markdown_extensions:
-  - admonition
-  - pymdownx.details
-  - pymdownx.superfences
-  - pymdownx.tabbed:
-      alternate_style: true

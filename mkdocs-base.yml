@@ -4,7 +4,7 @@ site_name: Percona Monitoring and Management
 site_description: Documentation
 site_author: Percona LLC
 site_url: ""
-copyright: Percona LLC, &#169; 2022
+copyright: Percona LLC, &#169; 2023
 use_directory_urls: false
 repo_name: percona/pmm-doc
 repo_url: https://github.com/percona/pmm-doc
@@ -30,6 +30,15 @@ theme:
         icon: material/toggle-switch
         name: Switch to light mode
 
+features:
+    - search.highlight
+    - navigation.top
+    - content.tabs.link
+    - content.code.copy 
+    - navigation.tracking 
+    - content.action.edit
+    - content.action.view 
+
 extra_css:
   - https://unicons.iconscout.com/release/v3.0.3/css/line.css
   - https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css
@@ -43,22 +52,33 @@ markdown_extensions:
   attr_list: {}
   toc:
     permalink: True
+    title: Table of contents
   admonition: {}
-  def_list: {}
+  footnotes: {}
+  def_list: {} # https://michelf.ca/projects/php-markdown/extra/#def-list
   meta: {}
-  smarty: { smart_angled_quotes: true }
+  md_in_html: {}
+  smarty:
+      {smart_angled_quotes: true}
   pymdownx.details: {}
   pymdownx.mark: {}
   pymdownx.smartsymbols: {}
-  pymdownx.tabbed: {}
+  pymdownx.tabbed: 
+      {alternate_style: true}
   pymdownx.tilde: {}
   pymdownx.superfences: {}
   pymdownx.highlight:
-    linenums: false
-  lightgallery: {}
+      linenums: false
+  pymdownx.inlinehilite: {}
+  pymdownx.snippets: {}
+  pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
 
 plugins:
-  search: {}
+  section-index: {}
+  search: 
+    separator: '[\s\-,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
   git-revision-date: {}
   macros:
     include_yaml:
