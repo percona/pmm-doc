@@ -61,5 +61,5 @@ docker run
 -e POSTGRES_SSL_CA_PATH=$CA_PATH
 -e POSTGRES_SSL_KEY_PATH=$KEY_PATH
 -e POSTGRES_SSL_CERT_PATH=$CERT_PATH 
-<image_id>
+percona/pmm-server:2
 ```
