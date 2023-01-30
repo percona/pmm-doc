@@ -180,7 +180,7 @@ To create a DB cluster, do the following:
 
     3. Enter the following on the *Database Configurations* panel:
 
-    - *Storage Class* - Select the storage class from the dropdown. Storage classes allow dynamic provisioning of persistent storage for PMM. Using storage classes, you can create and attach volumes on-demand without manually managing the underlying storage infrastructure. 
+    - *Storage Class* - Select the storage class from the drop-down. Storage classes allow dynamic provisioning of persistent storage for PMM. Using storage classes, you can create and attach volumes on-demand without manually managing the underlying storage infrastructure. 
     - *Database configuration*- Enter the config string into the Configuration text box to configure the database engine.
 
         ![!](../_images/PMM_DBaaS_DB_Cluster_Advanced_DB_Config.png)
