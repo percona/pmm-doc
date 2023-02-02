@@ -12,7 +12,6 @@ edit_uri: edit/main/docs/
 
 theme:
   name: material
-  logo: _images/percona-logo.png
   logo: _images/percona-logo.svg
   favicon: _images/percona-favicon.ico
   custom_dir: _resource/overrides/
