@@ -10,16 +10,6 @@ repo_name: percona/pmm-doc
 repo_url: https://github.com/percona/pmm-doc
 edit_uri: edit/main/docs/
 
-theme:
-  name: material
-  custom_dir: overrides
-  logo: _images/percona-logo.svg
-  favicon: _images/percona-favicon.ico
-  palette:
-  font:
-    text: Chivo, Colfax, Franziska
-  palette:
-
   theme:
   name: material
   logo: _images/percona-logo.png
