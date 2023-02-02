@@ -16,6 +16,10 @@ theme:
   logo: _images/percona-logo.svg
   favicon: _images/percona-favicon.ico
   palette:
+  font:
+    text: Chivo, Colfax, Franziska
+  palette:
+
     # Light mode
     - media: "(prefers-color-scheme: light)"
       scheme: percona-light
@@ -47,8 +51,8 @@ extra_css:
   - css/percona.css
   - css/lightgallery.min.css
 
-extra_javascript:
-  - js/lightgallery.min.js
+#extra_javascript:
+#  - js/lightgallery.min.js
 
 markdown_extensions:
   attr_list: {}
