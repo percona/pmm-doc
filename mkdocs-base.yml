@@ -13,7 +13,7 @@ edit_uri: edit/main/docs/
 theme:
   name: material
   logo: _images/percona-logo.png
-  favicon: _images/percona-favicon.ico
+  favicon: _images/percona-favicon_1.ico
   custom_dir: _resource/overrides/
   font:
     text: Poppins
