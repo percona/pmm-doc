@@ -10,7 +10,7 @@ repo_name: percona/pmm-doc
 repo_url: https://github.com/percona/pmm-doc
 edit_uri: edit/main/docs/
 
-  theme:
+theme:
   name: material
   logo: _images/percona-logo.png
   logo: _images/percona-logo.svg
