@@ -192,7 +192,7 @@ spec:
     persistentVolumeClaimName: pmm-storage-pmm-0
 EOF
 
-kubectl wait --for=jsonpath='{.status.readyToUse}'=true VolumeSnapshot/before-v2.34.0-upgrade-done
+kubectl wait --for=jsonpath='{.status.readyToUse}'=true VolumeSnapshot/before-v2.34.0-upgrade
 kubectl scale statefulset pmm --replicas=1
 ```
 
