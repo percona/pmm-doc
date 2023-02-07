@@ -119,7 +119,7 @@ extra:
 
 # Common navigation for percona.com, render.com and PDF
 nav:
-  - Welcome: index.md
+  - PMM overview: index.md
   - Setting up:
       - setting-up/index.md
       - Server:
