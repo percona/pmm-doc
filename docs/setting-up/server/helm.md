@@ -12,7 +12,7 @@
 
 Refer to [Kubernetes Supported versions](https://kubernetes.io/releases/version-skew-policy/#supported-versions) and [Helm Version Support Policy](https://helm.sh/docs/topics/version_skew/) to find the supported versions.
 
-PMM should be platform agnostic, but so far, it requires escalated privileges inside of a container. `root` user inside the PMM container is needed. Thus PMM would not work for Kubernetes Platforms such as OpenShift or others that have hardened Security Context Constraints, for example:
+PMM should be platform agnostic, but so far, it requires escalated privileges inside a container. `root` user inside the PMM container is needed. Thus PMM would not work for Kubernetes Platforms such as OpenShift or others that have hardened Security Context Constraints, for example:
 
 - https://docs.openshift.com/container-platform/latest/security/container_security/security-platform.html#security-deployment-sccs_security-platform
 - https://docs.openshift.com/container-platform/latest/authentication/managing-security-context-constraints.html
