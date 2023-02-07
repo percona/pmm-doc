@@ -79,7 +79,7 @@ To install the chart with the release name `pmm`:
 
 ```sh
 helm repo add percona https://percona.github.io/percona-helm-charts/
-helm install pmm \ 
+helm install pmm \
 --set secret.create=false \
 --set secret.name=pmm-secret \
 percona/pmm
