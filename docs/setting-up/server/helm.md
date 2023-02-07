@@ -79,7 +79,10 @@ To install the chart with the release name `pmm`:
 
 ```sh
 helm repo add percona https://percona.github.io/percona-helm-charts/
-helm install pmm percona/pmm --set secret.create=false --set secret.name=pmm-secret
+helm install pmm \ 
+--set secret.create=false \
+--set secret.name=pmm-secret \
+percona/pmm
 ```
 The command deploys PMM on the Kubernetes cluster in the default configuration and specified secret. The [Parameters](#parameters) section lists the parameters that can be configured during installation.
 
@@ -244,17 +247,24 @@ helm uninstall pmm
 
 And then use snapshot configuration to start the PMM server again with the correct version and correct storage configuration:
 ```sh
-helm install pmm --set image.tag="2.34.0" --set storage.name="pmm-storage-old" --set storage.dataSource.name="before-v2.34.0-upgrade" --set storage.dataSource.kind="VolumeSnapshot" --set storage.dataSource.apiGroup="snapshot.storage.k8s.io" --set secret.create=false --set secret.name=pmm-secret percona/pmm
+helm install pmm \
+--set image.tag="2.34.0" \
+--set storage.name="pmm-storage-old" \
+--set storage.dataSource.name="before-v2.34.0-upgrade" \
+--set storage.dataSource.kind="VolumeSnapshot" \
+--set storage.dataSource.apiGroup="snapshot.storage.k8s.io" \
+--set secret.create=false \
+--set secret.name=pmm-secret \
+percona/pmm
 ```
 
 Here we created a new `pmm-storage-old` PVC with data from the snapshot. So there are a couple of PV and PVCs available in a cluster.
 
 ```
-$ kubectl get pods
-NAME                                               READY   STATUS              RESTARTS   AGE
-percona-server-mongodb-operator-79f6f764c-prk2s    1/1     Running             0          80m
-percona-xtradb-cluster-operator-5dbc998f8b-2dv2j   1/1     Running             0          80m
-pmm-0                                              0/1     ContainerCreating   0          6s
+$ kubectl get pvc
+NAME                    STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS      AGE
+pmm-storage-old-pmm-0   Bound    pvc-70e5d2eb-570f-4087-9515-edf2f051666d   10Gi       RWO            csi-hostpath-sc   3s
+pmm-storage-pmm-0       Bound    pvc-9dbd9160-e4c5-47a7-bd90-bff36fc1463e   10Gi       RWO            csi-hostpath-sc   89m
 
 $ kubectl get pv
 NAME                                       CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS   CLAIM                           STORAGECLASS      REASON   AGE
