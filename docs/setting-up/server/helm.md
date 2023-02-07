@@ -10,7 +10,7 @@
 !!! note alert alert-primary ""
     Helm v3 is needed to run the following steps.
 
-Please refer to the [Kubernetes Supported versions](https://kubernetes.io/releases/version-skew-policy/#supported-versions) and [Helm Version Support Policy](https://helm.sh/docs/topics/version_skew/) to find out supported versions.
+Refer to [Kubernetes Supported versions](https://kubernetes.io/releases/version-skew-policy/#supported-versions) and [Helm Version Support Policy](https://helm.sh/docs/topics/version_skew/) to find the supported versions.
 
 PMM should be platform agnostic, but so far, it requires escalated privileges inside of a container. `root` user inside the PMM container is needed. Thus PMM would not work for Kubernetes Platforms such as OpenShift or others that have hardened Security Context Constraints, for example:
 
