@@ -1,4 +1,4 @@
 # PMM Fundamentals
 
-PMM fundamentals.
+PMM fundamentals
 
