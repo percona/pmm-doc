@@ -14,22 +14,23 @@ Refer to [Kubernetes Supported versions](https://kubernetes.io/releases/version-
 
 PMM should be platform agnostic, but so far, it requires escalated privileges inside a container. `root` user inside the PMM container is needed. Thus PMM would not work for Kubernetes Platforms such as OpenShift or others that have hardened Security Context Constraints, for example:
 
-- https://docs.openshift.com/container-platform/latest/security/container_security/security-platform.html#security-deployment-sccs_security-platform
+- [Security context constraints (SCCs)
+](https://docs.openshift.com/container-platform/latest/security/container_security/security-platform.html#security-deployment-sccs_security-platform)
 - [Managing security context constraints](https://docs.openshift.com/container-platform/latest/authentication/managing-security-context-constraints.html)
 
-Kubernetes platforms offer a different set of capabilities. To use PMM in production, you would need backups and, thus storage driver that supports snapshots. Please refer to your Kubernetes and Cloud provider for storage capabilities.
+Kubernetes platforms offer a different set of capabilities. To use PMM in production, you would need backups and, thus storage driver that supports snapshots. Consult your provider for Kubernetes and Cloud storage capabilities.
 
 ## Locality and Availability
 
-It is not recommended to run the PMM monitoring server on the same system together with monitored database clusters and services.
+You should not run the PMM monitoring server along with the monitored database clusters and services on the same system.
 
 Please ensure proper locality either by physically separating workloads in Kubernetes clusters or running separate Kubernetes clusters for the databases and monitoring workloads.
 
-Physical separation of workloads can be done with proper Kubernetes nodes configuration, affinity rules, label selections and etc.
+You can physically separate workloads by properly configuring Kubernetes nodes, affinity rules, label selections, etc.
 
-Please also ensure the Kubernetes cluster has [high availability](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/ha-topology/) so that in a case of a node failure, the monitoring service will be running and capturing needed data.
+Also, ensure that the Kubernetes cluster has [high availability](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/ha-topology/) so that in case of a node failure, the monitoring service will be running and capturing the required data.
 
-PMM, when correctly set up, would be highly available together with Kubernetes proper HA. Please ensure that your network and storage support high availability. In case of Kubernetes node failure - PMM will be rescheduled and available on any other node in a Kubernetes cluster.
+When configured correctly, PMM, along with Kubernetes' high availability, would be highly available. Ensure that your network and storage support high availability. In the event of a Kubernetes node failure, PMM will be scheduled on any other node in the Kubernetes cluster.
 
 ## Use Helm to install PMM server on Kubernetes clusters
 
@@ -160,7 +161,7 @@ certs:
     dhparam.pem: <content>
 ```
 
-Another approach to set up TLS certificates is to use Ingress controller, see [TLS](https://kubernetes.io/docs/concepts/services-networking/ingress/#tls). PMM helm chart supports Ingress; please see [PMM network configuration](https://github.com/percona/percona-helm-charts/tree/main/charts/pmm#pmm-network-configuration).
+Another approach to set up TLS certificates is to use the Ingress controller, see [TLS](https://kubernetes.io/docs/concepts/services-networking/ingress/#tls). PMM helm chart supports Ingress. See [PMM network configuration](https://github.com/percona/percona-helm-charts/tree/main/charts/pmm#pmm-network-configuration).
 
 ## Backup
 
@@ -170,16 +171,16 @@ Volumes could be pre-provisioned and dynamic. PMM chart supports both and expose
 
 Backups for the PMM server currently support only storage layer backups and thus require [StorageClass](https://kubernetes.io/docs/concepts/storage/storage-classes/) and [VolumeSnapshotClass](https://kubernetes.io/docs/concepts/storage/volume-snapshot-classes/).
 
-You could validate proper configuration by these commands:
+Validate the correct configuration by using these commands:
 ```sh
 kubectl get sc
 kubectl get volumesnapshotclass
 ```
 
 !!! note alert alert-primary "Storage"
-    Storage configuration is Hardware and Cloud specific. There could be additional costs associated with Volume Snapshots. Please check the documentation for your Cloud or for your Kubernetes cluster.
+    Storage configuration is Hardware and Cloud specific. There could be additional costs associated with Volume Snapshots. Check the documentation for your Cloud or for your Kubernetes cluster.
 
-It is recommended to stop the PMM server before taking the [VolumeSnapshot](https://kubernetes.io/docs/concepts/storage/volume-snapshots/). Here we will stop PMM (scale to 0 pods), take a snapshot, wait for unlit snapshot completes, and start PMM server (scale to 1 pod):
+Before taking a [VolumeSnapshot](https://kubernetes.io/docs/concepts/storage/volume-snapshots/), stop the PMM server. In this step, we will stop PMM (scale to 0 pods), take a snapshot, wait until the snapshot completes, then start PMM server (scale to 1 pod):
 ```sh
 kubectl scale statefulset pmm --replicas=0
 kubectl wait --for=jsonpath='{.status.replicas}'=0 statefulset pmm
@@ -209,9 +210,9 @@ statefulset.apps/pmm scaled
 ```
 
 !!! note alert alert-primary "PMM scale"
-    Only 1 replica set is currently supported.
+    Only one replica set is currently supported.
 
-You can view available snapshots by executing this command:
+You can view available snapshots by executing the following command:
 ```sh
 kubectl get volumesnapshot
 ```
@@ -240,7 +241,7 @@ This will check updates in the repo and upgrade deployment if the updates are av
 
 ## Restore
 
-The version of the PMM server should match or be greater than the version in a snapshot. To restore from the snapshot, you would need to delete the old deployment first:
+The version of the PMM server should be greater than or equal to the version in a snapshot. To restore from the snapshot, delete the old deployment first:
 ```sh
 helm uninstall pmm
 ```
@@ -258,7 +259,7 @@ helm install pmm \
 percona/pmm
 ```
 
-Here we created a new `pmm-storage-old` PVC with data from the snapshot. So there are a couple of PV and PVCs available in a cluster.
+Here, we created a new `pmm-storage-old` PVC with data from the snapshot. So, there are a couple of PV and PVCs available in a cluster.
 
 ```
 $ kubectl get pvc
@@ -288,7 +289,7 @@ It removes all resources associated with the last release of the chart as well a
 
 Helm will not delete PVC, PV, and any snapshots. Those need to be deleted manually.
 
-Also, delete PMM `Secret` if no longer needed:
+Also, delete PMM `Secret` if no longer required:
 ```sh
 kubectl delete secret pmm-secret
 ```
