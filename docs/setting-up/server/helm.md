@@ -15,7 +15,7 @@ Refer to [Kubernetes Supported versions](https://kubernetes.io/releases/version-
 PMM should be platform agnostic, but so far, it requires escalated privileges inside a container. `root` user inside the PMM container is needed. Thus PMM would not work for Kubernetes Platforms such as OpenShift or others that have hardened Security Context Constraints, for example:
 
 - https://docs.openshift.com/container-platform/latest/security/container_security/security-platform.html#security-deployment-sccs_security-platform
-- https://docs.openshift.com/container-platform/latest/authentication/managing-security-context-constraints.html
+- [Managing security context constraints](https://docs.openshift.com/container-platform/latest/authentication/managing-security-context-constraints.html)
 
 Kubernetes platforms offer a different set of capabilities. To use PMM in production, you would need backups and, thus storage driver that supports snapshots. Please refer to your Kubernetes and Cloud provider for storage capabilities.
 
