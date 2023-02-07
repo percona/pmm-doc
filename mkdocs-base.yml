@@ -119,8 +119,8 @@ extra:
 
 # Common navigation for percona.com, render.com and PDF
 nav:
-  - PMM overview: index.md
-  -PMM Fundamentals: fundamentals.md
+  -  Overview: index.md
+  - PMM Fundamentals: fundamentals.md
   - Setting up:
       - setting-up/index.md
       - Server:
