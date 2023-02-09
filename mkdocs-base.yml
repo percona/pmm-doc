@@ -123,24 +123,11 @@ nav:
   - PMM fundamentals: fundamentals.md
   - PMM architecture: architecture.md
   - Plan your PMM installation:
-    - plan-your-pmm-installation/index.md
+      - plan-your-pmm-installation/index.md
         - plan-your-pmm-installation/system_requirements.md
-        - plan-your-pmm-installation/resource.md
+            - plan-your-pmm-installation/resource.md
             - plan-your-pmm-installation/network_firewall.md
             - plan-your-pmm-installation/hardware.md
-      - Client:
-          - setting-up/client/index.md
-          - setting-up/client/mysql.md
-          - setting-up/client/mongodb.md
-          - setting-up/client/postgresql.md
-          - setting-up/client/proxysql.md
-          - setting-up/client/aws.md
-          - setting-up/client/azure.md
-          - setting-up/client/google.md
-          - setting-up/client/linux.md
-          - setting-up/client/external.md
-          - setting-up/client/haproxy.md
-          - setting-up/client/remote.md
   - Get started:
       - get-started/index.md
       - get-started/interface.md
