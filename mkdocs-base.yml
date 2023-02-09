@@ -127,10 +127,11 @@ nav:
       - plan-pmm-installation/resource.md
       - plan-pmm-installation/network_and_firewall.md
       - plan-pmm-installation/hardware.md
+
   - Install PMM:
       - install-pmm/index.md
-      - Server:
-          - setting-up/server/index.md
+      - Install PMM server:
+          - install-pmm/install-pmm-server/index.md
           - setting-up/server/network.md
           - setting-up/server/docker.md
           - setting-up/server/podman.md
