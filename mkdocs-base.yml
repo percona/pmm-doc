@@ -121,6 +121,7 @@ extra:
 nav:
   -  Overview: index.md
   - PMM Fundamentals: fundamentals.md
+  - PMM architecture: architecture.md
   - Setting up:
       - setting-up/index.md
       - Server:
