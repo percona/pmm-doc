@@ -1,4 +1,4 @@
-# Amazon RDS
+# Red-hat
 
 ## Required settings
 
