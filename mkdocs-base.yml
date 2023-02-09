@@ -123,9 +123,9 @@ nav:
   - PMM fundamentals: fundamentals.md
   - PMM architecture: architecture.md
   - Plan your PMM installation:
-      - plan-pmm-installation/index.md
-      - get-started/interface.md
-      - get-started/alerting.md
+      - Backup and Restore:
+          - get-started/backup/index.md
+          - get-started/backup/prepare_storage_location.md
   - Get started:
       - get-started/index.md
       - get-started/interface.md
