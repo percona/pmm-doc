@@ -155,7 +155,9 @@ nav:
       - Register client node with PMM server:      
         - install-pmm/register-client-node/index.md
       - Add services for monitoring:      
-        - install-pmm/add-services/index.md        
+        - install-pmm/add-services/index.md
+        - install-pmm/add-services/aws.md
+        
   - Get started:
       - get-started/index.md
       - get-started/interface.md
