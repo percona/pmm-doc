@@ -87,7 +87,7 @@ plugins:
   # https://pypi.org/project/mkdocs-exclude/
   exclude:
     glob:
-      - "setting-up/client/docker.md"
+      - "install-pmm/client/docker.md"
   # https://github.com/orzih/mkdocs-with-pdf
   with-pdf:
     output_path: '_pdf/PerconaMonitoringAndManagement-2.34.0.pdf'
@@ -132,14 +132,14 @@ nav:
       - install-pmm/index.md
       - Install PMM server:
           - install-pmm/install-pmm-server/index.md
-          - setting-up/server/network.md
-          - setting-up/server/docker.md
-          - setting-up/server/podman.md
-          - setting-up/server/helm.md
-          - setting-up/server/virtual-appliance.md
-          - setting-up/server/aws.md
-          - setting-up/server/easy-install.md
-          - setting-up/server/dbaas.md          
+          - install-pmm/server/network.md
+          - install-pmm/server/docker.md
+          - install-pmm/server/podman.md
+          - install-pmm/server/helm.md
+          - install-pmm/server/virtual-appliance.md
+          - install-pmm/server/aws.md
+          - install-pmm/server/easy-install.md
+          - install-pmm/server/dbaas.md          
   - Get started:
       - get-started/index.md
       - get-started/interface.md
