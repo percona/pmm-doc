@@ -1,4 +1,4 @@
-# Podman
+# Install PMM server with Podman on Docker image
 
 How to run PMM Server with Podman on our [Docker image]
 

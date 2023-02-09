@@ -1,4 +1,4 @@
-# DBaaS
+# Install PMM with DBaaS
 
 To enable and use the Database as a Service (DBaaS) feature in PMM, see [DBaaS](../../get-started/dbaas.html).
 
