@@ -1,4 +1,4 @@
-# Red-hat based package manager
+# Install PMM client with binary package
 
 ## Required settings
 
