@@ -146,7 +146,7 @@ nav:
         - install-pmm/install-pmm-client/docker.md
         - Install PMM client with package manager: 
           - Package managers:
-            - install-pmm/install-pmm-client/package_managers/red-hat.md
+            - install-pmm/install-pmm-client/package_managers/redhat.md
             - install-pmm/install-pmm-client/package_managers/debian.md
   - Get started:
       - get-started/index.md
