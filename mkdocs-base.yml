@@ -123,9 +123,9 @@ nav:
   - PMM fundamentals: fundamentals.md
   - PMM architecture: architecture.md
   - Plan your PMM installation:
-      - plan-your-pmm-installation/index.md
-          - plan-your-pmm-installation/system_requirements.md
-            - plan-your-pmm-installation/resource.md
+    - plan-your-pmm-installation/index.md
+        - plan-your-pmm-installation/system_requirements.md
+        - plan-your-pmm-installation/resource.md
             - plan-your-pmm-installation/network_firewall.md
             - plan-your-pmm-installation/hardware.md
       - Client:
