@@ -1,4 +1,4 @@
-# Network
+# Ports used by PMM components
 
 ## Ports
 

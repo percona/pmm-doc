@@ -127,13 +127,12 @@ nav:
       - plan-pmm-installation/resource.md
       - plan-pmm-installation/network_and_firewall.md
       - plan-pmm-installation/hardware.md
-
+      - plan-pmm-installation/ports.md
   - Install PMM:
       - install-pmm/index.md
       - Install PMM server:
           - install-pmm/install-pmm-server/index.md
           - install-pmm/install-pmm-server/prerequisites.md
-          - install-pmm/install-pmm-server/network.md
           - install-pmm/install-pmm-server/docker.md
           - install-pmm/install-pmm-server/podman.md
           - install-pmm/install-pmm-server/helm.md
@@ -143,15 +142,14 @@ nav:
           - install-pmm/install-pmm-server/dbaas.md
       - Install PMM client:
           - install-pmm/install-pmm-client/index.md
-          - install-pmm/install-pmm-server/prerequisites.md
-          - install-pmm/install-pmm-server/network.md
-          - install-pmm/install-pmm-server/docker.md
-          - install-pmm/install-pmm-server/podman.md
-          - install-pmm/install-pmm-server/helm.md
-          - install-pmm/install-pmm-server/virtual-appliance.md
-          - install-pmm/install-pmm-server/aws.md
-          - install-pmm/install-pmm-server/easy-install.md
-          - install-pmm/install-pmm-server/dbaas.md           
+          - install-pmm/install-pmm-client/prerequisites.md
+          - install-pmm/install-pmm-client/docker.md
+          - install-pmm/install-pmm-client/podman.md
+          - install-pmm/install-pmm-client/helm.md
+          - install-pmm/install-pmm-client/virtual-appliance.md
+          - install-pmm/install-pmm-client/aws.md
+          - install-pmm/install-pmm-client/easy-install.md
+          - install-pmm/install-pmm-client/dbaas.md            
   - Get started:
       - get-started/index.md
       - get-started/interface.md
