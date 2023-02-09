@@ -1,4 +1,4 @@
-# Set up PMM Server
+# Register client node on PMM server
 
 1. Check system requirements.
 

@@ -1,4 +1,4 @@
-# Debian-based package manager
+# Download Debian-based package manager
 
 ## Required settings
 
