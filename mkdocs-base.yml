@@ -147,6 +147,7 @@ nav:
         - Install PMM client with package manager: 
           - Package managers:
             - install-pmm/install-pmm-client/package_managers/red-hat.md
+            - install-pmm/install-pmm-client/package_managers/debian.md
   - Get started:
       - get-started/index.md
       - get-started/interface.md
