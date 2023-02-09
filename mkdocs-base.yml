@@ -122,6 +122,8 @@ nav:
   -  Overview: index.md
   - PMM fundamentals: fundamentals.md
   - PMM architecture: architecture.md
+  - Plan your PMM installation:
+      - plan-pmm-installation/index.md
   - Get started:
       - get-started/index.md
       - get-started/interface.md
