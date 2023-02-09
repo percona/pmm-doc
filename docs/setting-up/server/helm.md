@@ -60,6 +60,8 @@ apiVersion: v1
 kind: Secret
 metadata:
   name: pmm-secret
+  labels:
+    app.kubernetes.io/name: "pmm"
 type: Opaque
 data:
 # base64 encoded password
@@ -190,6 +192,8 @@ apiVersion: snapshot.storage.k8s.io/v1
 kind: VolumeSnapshot
 metadata:
   name: before-v2.34.0-upgrade
+  labels:
+    app.kubernetes.io/name: "pmm"
 spec:
   volumeSnapshotClassName: csi-hostpath-snapclass
   source:
