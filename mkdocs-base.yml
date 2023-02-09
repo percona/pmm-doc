@@ -145,7 +145,7 @@ nav:
           - install-pmm/install-pmm-client/prerequisites.md
           - install-pmm/install-pmm-client/docker.md
           - install-pmm/install-pmm-client/package_manager.md
-            - Package managers:
+              - Package managers:
                 - install-pmm/install-pmm-client/package_managers/debian.md
   - Get started:
       - get-started/index.md
