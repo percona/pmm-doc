@@ -151,7 +151,7 @@ nav:
           - install-pmm/install-pmm-client/docker.md
           - install-pmm/install-pmm-client/package_manager.md
             - Package managers:
-              - install-pmm/install-pmm-client/package_managers/index.md               
+                - install-pmm/install-pmm-client/package_managers/index.md               
   - Get started:
       - get-started/index.md
       - get-started/interface.md
