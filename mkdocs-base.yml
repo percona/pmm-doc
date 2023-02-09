@@ -120,20 +120,14 @@ extra:
 # Common navigation for percona.com, render.com and PDF
 nav:
   -  Overview: index.md
-  - PMM Fundamentals: fundamentals.md
+  - PMM fundamentals: fundamentals.md
   - PMM architecture: architecture.md
-  - Setting up:
-      - setting-up/index.md
-      - Server:
-          - setting-up/server/index.md
-          - setting-up/server/network.md
-          - setting-up/server/docker.md
-          - setting-up/server/podman.md
-          - setting-up/server/helm.md
-          - setting-up/server/virtual-appliance.md
-          - setting-up/server/aws.md
-          - setting-up/server/easy-install.md
-          - setting-up/server/dbaas.md
+  - Plan your PMM installation:
+      - plan-your-pmm-installation/index.md
+          - plan-your-pmm-installation/system_requirements.md
+            - plan-your-pmm-installation/resource.md
+            - plan-your-pmm-installation/network_firewall.md
+            - plan-your-pmm-installation/hardware.md
       - Client:
           - setting-up/client/index.md
           - setting-up/client/mysql.md
