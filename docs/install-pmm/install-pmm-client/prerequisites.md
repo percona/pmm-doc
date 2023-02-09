@@ -1,4 +1,4 @@
-# Amazon RDS
+# Prerequisites to install PMM client
 
 ## Required settings
 
