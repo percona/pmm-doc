@@ -150,7 +150,7 @@ nav:
             - install-pmm/install-pmm-client/package_managers/debian.md
           - Package manager download:
             - install-pmm/install-pmm-client/package_download/redhat.md
-            - install-pmm/install-pmm-client/package_managers/debian.md
+            - install-pmm/install-pmm-client/package_download/debian.md
   - Get started:
       - get-started/index.md
       - get-started/interface.md
