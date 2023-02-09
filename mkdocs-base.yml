@@ -133,14 +133,14 @@ nav:
       - Install PMM server:
           - install-pmm/install-pmm-server/index.md
           - install-pmm/install-pmm-server/prerequisites.md
-          - install-pmm/server/network.md
-          - install-pmm/server/docker.md
-          - install-pmm/server/podman.md
-          - install-pmm/server/helm.md
-          - install-pmm/server/virtual-appliance.md
-          - install-pmm/server/aws.md
-          - install-pmm/server/easy-install.md
-          - install-pmm/server/dbaas.md          
+          - install-pmm/install-pmm-server/network.md
+          - install-pmm/install-pmm-server/docker.md
+          - install-pmm/install-pmm-server/podman.md
+          - install-pmm/install-pmm-server/helm.md
+          - install-pmm/install-pmm-server/virtual-appliance.md
+          - install-pmm/install-pmm-server/aws.md
+          - install-pmm/install-pmm-server/easy-install.md
+          - install-pmm/install-pmm-server/dbaas.md          
   - Get started:
       - get-started/index.md
       - get-started/interface.md
