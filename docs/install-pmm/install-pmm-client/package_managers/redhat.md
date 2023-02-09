@@ -1,4 +1,4 @@
-# Red-hat
+# Red-hat based package manager
 
 ## Required settings
 
