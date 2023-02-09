@@ -123,7 +123,10 @@ nav:
   - PMM fundamentals: fundamentals.md
   - PMM architecture: architecture.md
   - Plan your PMM installation: 
-      - install.md      
+      - install.md
+      - resource.md
+      - network_and_firewall.md
+      - hardware.md      
   - Get started:
       - get-started/index.md
       - get-started/interface.md
