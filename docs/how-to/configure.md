@@ -81,6 +81,7 @@ The following information is gathered:
 - PMM Server DBaaS feature enabled/disabled
 - PMM Server Check Updates feature disabled
 - Detailed information about the version of monitored MySQL services
+- Basic information about Backup management configuration and performance
 - Monitored MongoDB services version
 - Monitored PostgreSQL services version
 - Total Grafana users
