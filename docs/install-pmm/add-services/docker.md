@@ -1,4 +1,4 @@
-# Install PMM client with Docker container
+# Monitor remote instances
 
 
 How to run PMM Server with Docker based on our [Docker image].

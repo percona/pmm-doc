@@ -1,4 +1,4 @@
-# Install PMM client with binary package
+# Monitor databases on LINUX
 
 ## Required settings
 

@@ -1,4 +1,4 @@
-# Google Cloud Platform
+# Monitor database instances on Google Cloud Platform
 
 PMM can monitor MySQL or PostgreSQL instances hosted on the [Google Cloud Platform][GOOGLE_CLOUD].
 
