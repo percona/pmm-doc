@@ -129,7 +129,6 @@ nav:
       - plan-pmm-installation/hardware.md
       - plan-pmm-installation/ports.md
   - Install PMM:
-      - install-pmm/index.md
       - Install PMM server:
         - install-pmm/install-pmm-server/index.md
         - install-pmm/install-pmm-server/prerequisites.md
