@@ -175,25 +175,8 @@ nav:
       - uninstall-pmm/unregister_client.md
   - PMM administration:
       - pmm-admin/index.md
-        - Manage users:
-          - pmm-admin/manage-users/add_users.md
-          - pmm-admin/manage-users/edit_users.md
-          - pmm-admin/manage-users/delete_users.md
-          - pmm-admin/manage-users/manage_users_in_org.md
-
-
-  - Backup and Restore:
-        - get-started/backup/index.md
-        - get-started/backup/prepare_storage_location.md
-        - MongoDB backups:
-          - get-started/backup/backup_mongo.md
-          - get-started/backup/mongo-prerequisites.md
-          - get-started/backup/create_mongo_on_demand.md
-          - get-started/backup/create_PITR_mongo.md
-          - get-started/backup/restore_MongoDB_backups.md
-          - get-started/backup/mongodb_limitations.md
-          - MySQL backups:
-            - get-started/backup/backup_mysql.md
+          - Manage users:
+            - pmm-admin/manage-users/add_users.md
             - get-started/backup/create_mysql_backup.md
             - get-started/backup/restore_mysql_backup.md
           - get-started/backup/edit_scheduled.md
