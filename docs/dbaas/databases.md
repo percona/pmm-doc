@@ -20,7 +20,7 @@ To create a DB cluster, do the following:
     - *Database Type*
     - *Database Version*
 
-4. Expand  *Advanced Settings* panel.
+4. Optionally expand *Advanced Settings* panel for further customization.
 
     1. Select the number of nodes. (1 is the minimum)
 
