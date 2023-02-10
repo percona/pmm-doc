@@ -93,7 +93,7 @@ alias kubectl='minikube kubectl --'
     ```sh
     eksctl create cluster --write-kubeconfig --name=your-cluster-name --zones=us-west-2a,us-west-2b --kubeconfig <PATH_TO_KUBECONFIG>
     ```
-2. Follow the instructions on [How to add a Kubernetes cluster](../dbaas/get-started.md#add-a-kubernetes-cluster) with kubeconfig from the previous step.
+2. Copy the resulting kubeconfig and follow these instructions to [register a Kubernetes cluster to PMM](../dbaas/get-started.md#add-a-kubernetes-cluster).
 
     !!! note alert alert-primary ""
         If possible, the connection details will show the cluster's external IP (not possible with minikube).
