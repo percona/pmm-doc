@@ -177,6 +177,10 @@ nav:
       - pmm-admin/index.md
         - Manage users:
           - pmm-admin/manage-users/add_users.md
+          - pmm-admin/manage-users/edit_users.md
+          - pmm-admin/manage-users/delete_users.md
+          - pmm-admin/manage-users/manage_users_in_org.md
+
 
   - Backup and Restore:
         - get-started/backup/index.md
