@@ -163,10 +163,9 @@ nav:
       - configure-pmm/advanced_settings.md
       - configure-pmm/ssh.md
       - configure-pmm/percona_platform.md
-  - Get started:
-      - get-started/index.md
-      - get-started/interface.md
-      - get-started/alerting.md
+  - PMM upgrade:
+      - pmm-upgrade/index.md
+      - pmm-upgrade/ui_upgrade.md
       - Backup and Restore:
         - get-started/backup/index.md
         - get-started/backup/prepare_storage_location.md
