@@ -178,7 +178,8 @@ nav:
             - uninstall-pmm/uninstall-pmm-client/package_managers/debian.md
         - Register client node with PMM server:      
         - install-pmm/register-client-node/index.md
-      - Backup and Restore:
+  
+  - Backup and Restore:
         - get-started/backup/index.md
         - get-started/backup/prepare_storage_location.md
         - MongoDB backups:
