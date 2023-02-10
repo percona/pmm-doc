@@ -162,7 +162,14 @@ nav:
       - configure-pmm/metrics_res.md
       - Advanced settings:
         - configure-pmm/advanced-settings/index.md
-        - configure-pmm/advanced-settings/telemetry.md
+        - configure-pmm/advanced-settings/telemetry.md        
+        - configure-pmm/advanced-settings/updates.md
+        - configure-pmm/advanced-settings/advisors.md
+        - configure-pmm/advanced-settings/public_address.md
+        - configure-pmm/advanced-settings/dbaas.md
+
+
+
   - Get started:
       - get-started/index.md
       - get-started/interface.md
