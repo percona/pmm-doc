@@ -2,7 +2,7 @@
 
 To enable and use the Database as a Service (DBaaS) feature in PMM, see [DBaaS](../dbaas/get-started.html).
 
-You can use [free K8s provided by Percona](https://www.percona.com/blog/private-dbaas-with-free-kubernetes-cluster/) for evaluation.
+If you don't have a Kubernetes cluster available you can use the [free K8s provided by Percona](https://www.percona.com/blog/private-dbaas-with-free-kubernetes-cluster/) for evaluation which will allow you to play around with DBaaS for 3 hours before the cluster expires.
 For a Kubernetes cluster that doesn't expire you can use our "easy script", you can find the instructions [here](https://www.percona.com/blog/dbaas-kubernetes-in-under-20-min/).  
 
 In the sections that follow we'll try to outline the steps to create your own Kubernetes cluster in a few popular ways.  
