@@ -1,4 +1,4 @@
-# DBaaS
+# Getting started with DBaaS
 
 !!! caution alert alert-warning "Caution"
     DBaaS functionality is currently in [technical preview](../details/glossary.md#technical-preview) and is subject to change.
@@ -39,7 +39,7 @@ In order to simplify DBaaS, k8s clusters can now be automatically added to PMM a
 
 2. Log in to PMM.
 
-3. [Enable PMM](dbaas.md#activate-dbaas) in DBaaS. 
+3. [Enable PMM](get-started.md#activate-dbaas) in DBaaS.
 
 4. You should see the default k8s cluster added in DBaaS.
 
@@ -53,7 +53,7 @@ In order to simplify DBaaS, k8s clusters can now be automatically added to PMM a
 
 !!! note alert alert-primary ""
     PXC and PSMDB operators are installed as part of the Kubernetes cluster registration process. It enables you to deploy database clusters into the Kubernetes cluster.
-    
+
     If a public address is set VM Operator is also installed as part of the Kubernetes cluster registration process. It lets you monitor a kubernetes cluster via PMM.
 
 1. Click *Register new Kubernetes Cluster*.
@@ -71,8 +71,8 @@ In order to simplify DBaaS, k8s clusters can now be automatically added to PMM a
 
 
 !!! note alert alert-info ""
-    For a Kubernetes cluster, when using Amazon Elastic Kubernetes Service (EKS) and the *kubeconfig file* does not contain the AWS 
-    access key ID and AWS secret access key. Select the *Using Amazon Elastic Kubernetes Service (EKS)* 
+    For a Kubernetes cluster, when using Amazon Elastic Kubernetes Service (EKS) and the *kubeconfig file* does not contain the AWS
+    access key ID and AWS secret access key. Select the *Using Amazon Elastic Kubernetes Service (EKS)*
     checkbox and enter the access key ID and secret access key in the respective fields.
     For information on obtaining these, see the [AWS documentation].
 
@@ -151,7 +151,7 @@ You must create at least one Kubernetes cluster to create a DB cluster.
 To monitor a DB cluster, set up a [public address](../how-to/configure.md#public-address) for PMM Server first.
 
 
-You can create a DB cluster literally at the click of a button. All the fields will be automatically populated with the default values. 
+You can create a DB cluster literally at the click of a button. All the fields will be automatically populated with the default values.
 
 To create a DB cluster, do the following:
 
@@ -161,7 +161,7 @@ To create a DB cluster, do the following:
 
 3. From the drop-down menu, select the values for the following:
     - *Kubernetes Cluster*
-    - *Database Type*  
+    - *Database Type*
     - *Database Version*
 
 4. Expand  *Advanced Settings* panel.
@@ -180,7 +180,7 @@ To create a DB cluster, do the following:
 
     3. Enter the following on the *Database Configurations* panel:
 
-    - *Storage Class* - Select the storage class from the drop-down. Storage classes allow dynamic provisioning of persistent storage for PMM. Using storage classes, you can create and attach volumes on-demand without manually managing the underlying storage infrastructure. 
+    - *Storage Class* - Select the storage class from the drop-down. Storage classes allow dynamic provisioning of persistent storage for PMM. Using storage classes, you can create and attach volumes on-demand without manually managing the underlying storage infrastructure.
     - *Database configuration*- Enter the config string into the Configuration text box to configure the database engine.
 
         ![!](../_images/PMM_DBaaS_DB_Cluster_Advanced_DB_Config.png)
@@ -194,7 +194,7 @@ To create a DB cluster, do the following:
 
 5. Click *Create Cluster* to create your cluster.
 
-    
+
 
 6. A row appears with information on your cluster:
 
@@ -281,7 +281,7 @@ A paused cluster can't be edited.
     ![!DBaaS Update Confirmation](../_images/PMM_DBaaS_DB_Cluster_Update_confirmation.png)
 
 !!! seealso alert alert-info "See also"
-    [Setting up a development environment for DBaaS](../setting-up/server/dbaas.md)
+    [Setting up a development environment for DBaaS](../dbaas/setting-up.md)
 
 [ALPHA]: https://en.wikipedia.org/wiki/Software_release_life_cycle#Alpha
 [Amazon Elastic Kubernetes Service (EKS)]: https://aws.amazon.com/eks/
