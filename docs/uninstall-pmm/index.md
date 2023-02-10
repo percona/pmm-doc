@@ -1,4 +1,4 @@
-# About PMM installation
+# About PMM uninstallation
 
 There are three stages to installing and setting up PMM.
 
