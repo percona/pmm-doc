@@ -1,4 +1,4 @@
-# HAProxy
+# Monitor a node on HAProxy
 
 ## Adding HAProxy services
 
