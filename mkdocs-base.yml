@@ -122,13 +122,14 @@ nav:
       - fundamentals.md
   - PMM architecture: 
       - architecture.md
+  - PMM components and versions:
+      - pmm_components_and_versions.md
   - Plan your PMM installation: 
       - plan-pmm-installation/resource.md
       - plan-pmm-installation/network_and_firewall.md
       - plan-pmm-installation/hardware.md
       - plan-pmm-installation/ports.md
       - plan-pmm-installation/platforms.md
-
   - Install PMM:
       - Install PMM server:
         - install-pmm/install-pmm-server/index.md

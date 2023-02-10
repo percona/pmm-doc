@@ -1,4 +1,4 @@
-# Choose an installation method
+# About PMM server installation
 
 
 You can run an instance of PMM Server hosted at AWS Marketplace.
