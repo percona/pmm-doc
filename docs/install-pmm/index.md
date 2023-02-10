@@ -1,4 +1,4 @@
-# Setting up
+# Install PMM
 
 There are three stages to installing and setting up PMM.
 
