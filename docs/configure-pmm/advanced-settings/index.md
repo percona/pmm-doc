@@ -1,24 +1,41 @@
-# Data retention
+# Data Retention
 
-- [Architecture](architecture.md): High-level architecture and main components.
+*Data retention* specifies how long data is stored by PMM Server. By default, time-series data is stored for 30 days. You can adjust the data retention time to balance your system's available disk space with your metrics history requirements.
 
-- [User interface components](interface.md): Descriptions of the main menus and icons.
+### Telemetry
 
-- [PMM components and versions](pmm_components_and_versions.md): PMM components and their version used in PMM.
+The *Telemetry* switch enables gathering and sending basic **anonymous** data to Percona, which helps us to determine where to focus the development and what is the uptake for each release of PMM. Specifically, gathering this information helps determine if we need to release patches to legacy versions beyond support, determining when supporting a particular version is no longer necessary, and even understanding how the frequency of release encourages or deters adoption.
 
-- [Developing Advisor checks](develop-checks/index.md): Database health assessments.
+The following information is gathered:
 
-- [Dashboards reference](dashboards/index.md): A complete list of dashboards by category, with screenshots.
+- PMM Server Integration Alerting feature enabled/disabled
+- PMM Server Security Thread Tool feature enabled/disabled
+- PMM Server Backup feature enabled/disabled
+- PMM Server DBaaS feature enabled/disabled
+- PMM Server Check Updates feature disabled
+- Detailed information about the version of monitored MySQL services
+- Monitored MongoDB services version
+- Monitored PostgreSQL services version
+- Total Grafana users
+- Monitored nodes count
+- Monitored services count
+- Agents version
+- Node type
 
-- Commands:
+We do not gather anything that identify a system, but the following two points should be mentioned:
 
-  - [pmm-admin](commands/pmm-admin.md): The manual page for the PMM administration tool.
-  - [pmm-agent](commands/pmm-agent.md): The manual page for the PMM Client agent program.
+1. The Country Code is evaluated from the submitting IP address before being discarded.
 
-- [API](api.md): How to access the Swagger API.
+2. We do create an "instance ID" - a random string generated using UUID v4.  This instance ID is generated to distinguish new instances from existing ones, for figuring out instance upgrades.
 
-- [VictoriaMetrics](victoria-metrics.md): The monitoring solution and time-series database that replaced Prometheus in [PMM 2.12.0](../release-notes/2.12.0.md).
+The first telemetry reporting of a new PMM Server instance is delayed by 24 hours to allow enough time to disable the service for those that do not wish to share any information.
 
-- [ClickHouse](clickhouse.md):  A third-party column-oriented database management system (DBMS) that facilitates the Query Analytics functionality.
+The landing page for this service, [check.percona.com](https://check.percona.com), explains what this service is.
 
-- [Glossary](glossary.md): A list of obscure terms and definitions.
+Grafana’s [anonymous usage statistics](https://grafana.com/docs/grafana/latest/administration/configuration/#reporting-enabled) is not managed by PMM. To activate it, you must change the PMM Server container configuration after each update.
+
+As well as via the *PMM Settings* page, you can also disable telemetry with the `-e DISABLE_TELEMETRY=1` option in your docker run statement for the PMM Server.
+
+!!! note alert alert-primary ""
+
+    Telemetry is sent straight away; the 24 hour grace period is not honored.
