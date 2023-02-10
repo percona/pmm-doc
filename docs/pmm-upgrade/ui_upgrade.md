@@ -1,4 +1,4 @@
-# About PMM upgrade
+# Upgrade PMM server using the UI
 
 There are three stages to installing and setting up PMM.
 
