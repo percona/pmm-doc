@@ -6,25 +6,36 @@ DBaaS is built on top of PMM and Kubernetes and the highlevel architecture is sh
 
 ## PMM
 
-PMM:q
+Areas of responsibility of PMM:
 
+1. Expose Public REST API
+2. Provision Kubernetes cluster and install the following operators:
+  * Install OLM (Operator Lifecycle Manager)
+  * Percona Operator for MongoDB
+  * Percona Operator for MySQL
+  * DBaaS operator
 
-All created database clusters using DBaaS are integrated with PMM monitoring feature and the user interface for managing database clusters is implemented in PMM. It allows the end user to register kubernetes cluster and spin-up a database cluster.
+## Operator Lifecycle Manager (OLM)
 
-PMM provisions kubernetes cluster using Operator Lifecycle Manager
+DBaaS uses [OLM](https://olm.operatorframework.io/docs/) to install and update operators and PMM installs OLM during the registration of Kubernetes cluster and installs Operator Catalog.
 
+An Operator catalog is a repository of metadata that Operator Lifecycle Manager (OLM) can query to discover and install Operators and their dependencies on a cluster. OLM always installs Operators from the latest version of a catalog. DBaaS uses its own catalog for OLM that has the following operators:
 
-1. PMM that has UI for registering k8s cluster and manage database clusters
-2. PMM-managed which is the backend part for the UI and responsible for the business logic implementation for DBaaS
-3. Operator lifecycle manager (OLM) to install and manage lifecycle of operators (installing, updating)
-4. PSMDB and PXC operators to run and manage underlying database clusters
-5. dbaasDBaaS-operator that simplifies a way of managing underlying database clusters and exposes a simplified APICRD to PMM
+1. DBaaS-operator
+2. PXC operator
+3. PSMDB operator
+4. Victoria Metrics operator
 
+![!](../_images/dbaas_catalog.jpg)
 
-PMM-managed will do validation of k8s cluster, check if its already registered and do some manipulations against provided kubeconfig to support the integration with AWS IAM after that the provision process starts and has the following steps
+Catalog also gives the benefits of using CatalogSource and ClusterServiceVersion. ClusterServiceVersion (CSV) can solve the issue by getting the current version of installed operators via OLM API.
 
-Install OLM to the Kubernetes cluster
-Wait for OLM to be ready
-Install Percona DBaaS catalog
-Install required operators for the DBaaS functionality: psmdboperator, pxc operator, victoriametrics operator, dbaas-operator and configures kube-state-metrics for k8s monitoring
+The installation of operators looks the following way
+
+![!](../_images/olm_install.jpg)
+
+## DBaaS operator
+
+DBaaS operator is responsible of creating and managing databases [following operator pattern](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/) and depends on underlying operators for running psmdb and pxc clusters. It provides a simplify API to the end user and allows to use one API to manage database clusters via kubectl
+
 

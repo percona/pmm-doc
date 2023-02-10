@@ -274,18 +274,22 @@ nav:
   - PMM/DBaaS:
     - "Introduction": dbaas/index.md
     - dbaas/architecture.md
-    - dbaas/get-started.md
-    - dbaas/setting-up.md
-    - "Kubernetes cluster":
-      - "Add a Kubernetes cluster automatically": dbaas/index.md
-      - "Add a Kubernetes cluster manually": dbaas/index.md
-      - "Manage allowed component versions": dbaas/index.md
-      - "Troubleshooting": dbaas/index.md
-    - "Database cluster":
-      - "Add a DB Cluster": dbaas/index.md
-      - "Manage a DB Cluster": dbaas/index.md
-      - "Delete a DB Cluster": dbaas/index.md
-      - "Troubleshooting": dbaas/index.md
+    - "Setting up":
+      - "Setting up DBaaS": dbaas/setting-up.md#setting-up-dbaas
+      - "Create a Kubernetes Cluster": dbaas/setting-up.html#create-a-kubernetes-cluster
+      - "Deleting clusters ": dbaas/setting-up.html#deleting-clusters
+    - "Getting started":
+      - "Activating DBaaS": dbaas/get-started.html#getting-started-with-dbaas
+      - "Add a Kubernetes cluster automatically": dbaas/get-started.html#getting-started-with-dbaas
+      - "Add a Kubernetes cluster manually": dbaas/get-started.html#add-a-kubernetes-cluster
+      - "Manage allowed component versions": dbaas/get-started.html#manage-allowed-component-versions
+      - "Troubleshooting":
+        - "OLM installation": dbaas/troubleshoot-kubernetes.html#troubleshooting-olm-installation
+        - "Operators installation": dbaas/troubleshoot-kubernetes.html#troubleshooting-operators-installation
+    - "Managing Database clusters":
+      - "Add a DB Cluster": dbaas/databases.html#add-a-db-cluster
+      - "Manage a DB Cluster": dbaas/databases.html#edit-a-db-cluster
+      - "Delete a DB Cluster": dbaas/databases.html#delete-a-db-cluster
   - faq.md
   - Release Notes:
       - release-notes/index.md

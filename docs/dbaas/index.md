@@ -11,8 +11,8 @@ It allows you to utilize benefits of Kubernetes and Percona's operators to run a
 
 ## Start here
 
-- [Architecture and how DBaaS works](dbaas/architecture.md)
-- [Getting started with DBaaS](dbaas/get-started.md)
-- [Setting up](dbaas/get-started.md)
-- [Registering and managing Kubernetes clusters](dbaas/get-started.md)
-- [Creating and managing database clusters](dbaas/get-started.md)
+- [Architecture and how DBaaS works](dbaas/architecture.html)
+- [Setting up](dbaas/get-started.html)
+- [Getting started with DBaaS](dbaas/get-started.html)
+- [Registering and managing Kubernetes clusters](dbaas/get-started.html)
+- [Creating and managing database clusters](dbaas/get-started.html)
