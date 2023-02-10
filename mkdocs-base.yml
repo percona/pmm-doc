@@ -163,8 +163,6 @@ nav:
       - configure-pmm/advanced_settings.md
       - configure-pmm/ssh.md
       - configure-pmm/percona_platform.md
-
-
   - Get started:
       - get-started/index.md
       - get-started/interface.md

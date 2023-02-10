@@ -2,11 +2,11 @@
 
 ![!](../_images/PMM_Settings_Advanced_Settings.jpg)
 
-### Data Retention
+## Data Retention
 
 *Data retention* specifies how long data is stored by PMM Server. By default, time-series data is stored for 30 days. You can adjust the data retention time to balance your system's available disk space with your metrics history requirements.
 
-### Telemetry
+## Telemetry
 
 The *Telemetry* switch enables gathering and sending basic **anonymous** data to Percona, which helps us to determine where to focus the development and what is the uptake for each release of PMM. Specifically, gathering this information helps determine if we need to release patches to legacy versions beyond support, determining when supporting a particular version is no longer necessary, and even understanding how the frequency of release encourages or deters adoption.
 
@@ -44,11 +44,11 @@ As well as via the *PMM Settings* page, you can also disable telemetry with the 
 
     Telemetry is sent straight away; the 24 hour grace period is not honored.
 
-### Check for updates
+## Check for updates
 
 When active, PMM will automatically check for updates and put a notification in the home page *Updates* dashboard if any are available.
 
-### Advisors
+## Advisors
 
 Advisors are sets of checks grouped by functionality that run a range of database health checks on a registered instance.
 
