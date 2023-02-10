@@ -1,4 +1,6 @@
-# ​​About organizations
+# Edit an organization
+
+
 
 
 

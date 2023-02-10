@@ -1,4 +1,4 @@
-# ​​About organizations
+# Delete an organization
 
 
 

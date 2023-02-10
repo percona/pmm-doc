@@ -1,4 +1,5 @@
-# ​​About organizations
+# Create an organization
+
 
 
 

@@ -190,7 +190,10 @@ nav:
           - pmm-admin/roles/access-control/assign_roles.md
           - pmm-admin/roles/access-control/usercase.md
       - Manage organizations:
-        - pmm-admin/manage-orgs/index.md               
+        - pmm-admin/manage-orgs/index.md
+        - pmm-admin/manage-orgs/create_org.md 
+        - pmm-admin/manage-orgs/edit_org.md 
+        - pmm-admin/manage-orgs/del_org.md                
   - How to:
       - how-to/index.md
       - how-to/configure.md
