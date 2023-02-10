@@ -1,4 +1,4 @@
-# Configure
+# About PMM configuration
 
 The *Settings* page is where you configure PMM.
 
