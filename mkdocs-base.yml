@@ -186,11 +186,9 @@ nav:
           - pmm-admin/roles/intro.md
           - pmm-admin/roles/labels.md
           - pmm-admin/roles/access_roles.md
-          - pmm-admin/manage-users/manage_users_in_org.md
-          - pmm-admin/roles/add_users.md
-          - pmm-admin/manage-users/edit_users.md
-          - pmm-admin/manage-users/delete_users.md
-          - pmm-admin/manage-users/manage_users_in_org.md
+          - pmm-admin/roles/default.md
+          - pmm-admin/roles/assign_roles.md
+          - pmm-admin/roles/usercase.md
                 
   - How to:
       - how-to/index.md
