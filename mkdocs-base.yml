@@ -183,7 +183,7 @@ nav:
       - Roles and permissions:
         - pmm-admin/roles/index.md      
         - Access Control in PMM:
-          - pmm-admin/roles/intro.md
+          - pmm-admin/roles/access-control/intro.md
           - pmm-admin/roles/labels.md
           - pmm-admin/roles/access_roles.md
           - pmm-admin/roles/default.md
