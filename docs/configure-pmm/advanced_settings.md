@@ -1,4 +1,4 @@
-## Advanced Settings
+# Advanced Settings
 
 ![!](../_images/PMM_Settings_Advanced_Settings.jpg)
 
