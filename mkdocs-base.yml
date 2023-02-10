@@ -171,7 +171,8 @@ nav:
   - Uninstall PMM:
       - uninstall-pmm/index.md
       - uninstall-pmm/uninstall_docker.md
-      - uninstall-pmm/uninstall_package_manager.md    
+      - uninstall-pmm/uninstall_package_manager.md
+      - uninstall-pmm/unregister_client.md       
   - Backup and Restore:
         - get-started/backup/index.md
         - get-started/backup/prepare_storage_location.md
