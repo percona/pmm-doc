@@ -171,8 +171,8 @@ nav:
   - Uninstall PMM:
       - uninstall-pmm/index.md
       - uninstall-pmm/uninstall_docker.md
-      - uninstall-pmm/upgrade_docker.md
-      - pmm-upgrade/upgrade_agent.md    
+      - uninstall-pmm/uninstall_docker.md
+      - pmm-uninstall/uninstall.md    
   - Backup and Restore:
         - get-started/backup/index.md
         - get-started/backup/prepare_storage_location.md
