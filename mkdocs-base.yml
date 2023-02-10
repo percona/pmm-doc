@@ -156,7 +156,11 @@ nav:
         - install-pmm/register-client-node/index.md
       - Add services:      
         - install-pmm/add-services/index.md
-        - install-pmm/add-services/aws.md        
+        - install-pmm/add-services/aws.md
+      - Configure PMM:      
+        - configure-pmm/configure.md
+        - configure-pmm/metrics_res.md
+
   - Get started:
       - get-started/index.md
       - get-started/interface.md
