@@ -184,8 +184,8 @@ nav:
         - pmm-admin/roles/index.md      
         - Access Control in PMM:
           - pmm-admin/roles/intro.md
-          - pmm-admin/manage-users/edit_users.md
-          - pmm-admin/manage-users/delete_users.md
+          - pmm-admin/roles/labels.md
+          - pmm-admin/roles/access_roles.md
           - pmm-admin/manage-users/manage_users_in_org.md
           - pmm-admin/roles/add_users.md
           - pmm-admin/manage-users/edit_users.md
