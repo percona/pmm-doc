@@ -168,13 +168,174 @@ nav:
       - pmm-upgrade/ui_upgrade.md
       - pmm-upgrade/upgrade_docker.md
       - pmm-upgrade/upgrade_agent.md
-  - Uninstall PMM:
-        - uninstall-pmm/uninstall-pmm-client/index.md
-        - install-pmm/install-pmm-client/uninstall_docker.md
-        - install-pmm/install-pmm-client/docker.md       
-        - Unstall PMM client with package manager: 
-          - Package managers:
-            - uninstall-pmm/uninstall-pmm-client/package_managers/redhat.md
-            - uninstall-pmm/uninstall-pmm-client/package_managers/debian.md
-        - Register client node with PMM server:      
-        - install-pmm/register-client-node/index.md
+  - Backup and Restore:
+        - get-started/backup/index.md
+        - get-started/backup/prepare_storage_location.md
+        - MongoDB backups:
+          - get-started/backup/backup_mongo.md
+          - get-started/backup/mongo-prerequisites.md
+          - get-started/backup/create_mongo_on_demand.md
+          - get-started/backup/create_PITR_mongo.md
+          - get-started/backup/restore_MongoDB_backups.md
+          - get-started/backup/mongodb_limitations.md
+          - MySQL backups:
+            - get-started/backup/backup_mysql.md
+            - get-started/backup/create_mysql_backup.md
+            - get-started/backup/restore_mysql_backup.md
+          - get-started/backup/edit_scheduled.md
+          - get-started/backup/delete_a_backup.md
+      - get-started/query-analytics.md
+      - get-started/dbaas.md
+      - get-started/advisors.md
+  - How to:
+      - how-to/index.md
+      - how-to/configure.md
+      - how-to/manage-users.md
+      - how-to/upgrade.md
+      - how-to/secure.md
+      - how-to/optimize.md
+      - how-to/annotate.md
+      - how-to/share-dashboard.md
+      - how-to/extend-metrics.md
+      - how-to/troubleshoot.md
+      - Integrate with Percona Platform:
+        - how-to/integrate-platform.md
+        - how-to/account-info.md
+  - Details:
+      - details/index.md
+      - details/architecture.md
+      - details/interface.md
+      - details/pmm_components_and_versions.md
+      - Develop checks:
+        - details/develop-checks/index.md
+        - details/develop-checks/checks-v1.md
+        - details/develop-checks/checks-v2.md
+      - Dashboards:
+        - details/dashboards/index.md
+        - Manage dashboards:
+          - details/dashboards/dashboard-manage-dashboards.md
+          - PMM dashboards:
+            - Insight:
+              - details/dashboards/dashboard-home.md
+              - details/dashboards/dashboard-advanced-data-exploration.md
+              - details/dashboards/dashboard-victoriametrics.md
+              - details/dashboards/dashboard-victoriametrics-agents-overview.md
+              - PMM Inventory:
+                - details/dashboards/dashboard-inventory.md
+                - details/dashboards/dashboard-env-overview.md
+                - details/dashboards/dashboard-environent-summary.md
+              - DBaas:
+                - details/dashboards/dashboard-cluster-summary.md
+              - OS Dashboards:
+                - details/dashboards/dashboard-cpu-utilization-details.md
+                - details/dashboards/dashboard-disk-details.md
+                - details/dashboards/dashboard-network-details.md
+                - details/dashboards/dashboard-memory-details.md
+                - details/dashboards/dashboard-node-temperature-details.md
+                - details/dashboards/dashboard-nodes-compare.md
+                - details/dashboards/dashboard-nodes-overview.md
+                - details/dashboards/dashboard-node-summary.md
+                - details/dashboards/dashboard-numa-details.md
+                - details/dashboards/dashboard-processes-details.md
+              - Prometheus Dashboards:
+                - details/dashboards/dashboard-prometheus-exporter-status.md
+                - details/dashboards/dashboard-prometheus-exporters-overview.md
+              - MySQL Dashboards:
+                - details/dashboards/dashboard-mysql-amazon-aurora-details.md
+                - details/dashboards/dashboard-mysql-command-handler-counters-compare.md
+                - details/dashboards/dashboard-mysql-innodb-compression-details.md
+                - details/dashboards/dashboard-mysql-innodb-details.md
+                - details/dashboards/dashboard-mysql-myisam-aria-details.md
+                - details/dashboards/dashboard-mysql-myrocks-details.md
+                - details/dashboards/dashboard-mysql-instance-summary.md
+                - details/dashboards/dashboard-mysql-instances-compare.md
+                - details/dashboards/dashboard-mysql-instances-overview.md
+                - details/dashboards/dashboard-mysql-wait-event-analyses-details.md
+                - details/dashboards/dashboard-mysql-performance-schema-details.md
+                - details/dashboards/dashboard-mysql-query-response-time-details.md
+                - details/dashboards/dashboard-mysql-replication-summary.md
+                - details/dashboards/dashboard-mysql-group-replication-summary.md
+                - details/dashboards/dashboard-mysql-table-details.md
+                - details/dashboards/dashboard-mysql-user-details.md
+                - details/dashboards/dashboard-mysql-tokudb-details.md
+              - MongoDB Dashboards:
+                - details/dashboards/dashboard-mongodb-experimental_collection_overview.md
+                - details/dashboards/dashboard-mongodb-experimental_collection_details.md
+                - details/dashboards/dashboard-mongodb-experimental_oplog.md
+                - details/dashboards/dashboard-mongodb-cluster-summary.md
+                - details/dashboards/dashboard-mongodb-instance-summary.md
+                - details/dashboards/dashboard-mongodb-instances-overview.md
+                - details/dashboards/dashboard-mongodb-instances-compare.md
+                - details/dashboards/dashboard-mongodb-replset-summary.md
+                - details/dashboards/dashboard-mongodb-inmemory-details.md
+                - details/dashboards/dashboard-mongodb-mmapv1-details.md
+                - details/dashboards/dashboard-mongodb-wiredtiger-details.md
+              - PostgreSQL Dashboards:
+                - details/dashboards/dashboard-postgresql-instances-overview.md
+                - details/dashboards/dashboard-postgresql-instance-summary.md
+                - details/dashboards/dashboard-postgresql-instances-compare.md
+                - details/dashboards/dashboard-postgresql-vacuum-monitoring-experimental.md
+              - ProxySQL Dashboards:
+                - details/dashboards/dashboard-proxysql-instance-summary.md
+              - HA Dashboards:
+                - details/dashboards/dashboard-pxc-galera-node-summary.md
+                - details/dashboards/dashboard-pxc-galera-cluster-summary.md
+                - details/dashboards/dashboard-pxc-galera-cluster-summary-experimental.md
+                - details/dashboards/dashboard-pxc-galera-nodes-compare.md
+                - details/dashboards/dashboard-haproxy-instance-summary.md
+      - Commands:
+        - details/commands/index.md
+        - details/commands/pmm-admin.md
+        - details/commands/pmm-agent.md
+      - details/api.md
+      - details/victoria-metrics.md
+      - details/clickhouse.md
+      - details/glossary.md
+  - FAQ: 
+      - faq.md
+  - Release Notes:
+      - Release notes index: release-notes/index.md
+      - "PMM 2.34.0": release-notes/2.34.0.md
+      - "PMM 2.33.0": release-notes/2.33.0.md
+      - "PMM 2.32.0": release-notes/2.32.0.md
+      - "PMM 2.31.0": release-notes/2.31.0.md
+      - "PMM 2.30.0": release-notes/2.30.0.md
+      - "PMM 2.29.1": release-notes/2.29.1.md
+      - "PMM 2.29.0": release-notes/2.29.0.md
+      - "PMM 2.28.0": release-notes/2.28.0.md
+      - "PMM 2.27.0": release-notes/2.27.0.md
+      - "PMM 2.26.0": release-notes/2.26.0.md
+      - "PMM 2.25.0": release-notes/2.25.0.md
+      - "PMM 2.24.0": release-notes/2.24.0.md
+      - "PMM 2.23.0": release-notes/2.23.0.md
+      - "PMM 2.22.0": release-notes/2.22.0.md
+      - "PMM 2.21.0": release-notes/2.21.0.md
+      - "PMM 2.20.0": release-notes/2.20.0.md
+      - "PMM 2.19.0": release-notes/2.19.0.md
+      - "PMM 2.18.0": release-notes/2.18.0.md
+      - "PMM 2.17.0": release-notes/2.17.0.md
+      - "PMM 2.16.0": release-notes/2.16.0.md
+      - "PMM 2.15.1": release-notes/2.15.1.md
+      - "PMM 2.15.0": release-notes/2.15.0.md
+      - "PMM 2.14.0": release-notes/2.14.0.md
+      - "PMM 2.13.0": release-notes/2.13.0.md
+      - "PMM 2.12.0": release-notes/2.12.0.md
+      - "PMM 2.11.1": release-notes/2.11.1.md
+      - "PMM 2.11.0": release-notes/2.11.0.md
+      - "PMM 2.10.1": release-notes/2.10.1.md
+      - "PMM 2.10.0": release-notes/2.10.0.md
+      - "PMM 2.9.1": release-notes/2.9.1.md
+      - "PMM 2.9.0": release-notes/2.9.0.md
+      - "PMM 2.8.0": release-notes/2.8.0.md
+      - "PMM 2.7.0": release-notes/2.7.0.md
+      - "PMM 2.6.1": release-notes/2.6.1.md
+      - "PMM 2.6.0": release-notes/2.6.0.md
+      - "PMM 2.5.0": release-notes/2.5.0.md
+      - "PMM 2.4.0": release-notes/2.4.0.md
+      - "PMM 2.3.0": release-notes/2.3.0.md
+      - "PMM 2.2.2": release-notes/2.2.2.md
+      - "PMM 2.2.1": release-notes/2.2.1.md
+      - "PMM 2.2.0": release-notes/2.2.0.md
+      - "PMM 2.1.0": release-notes/2.1.0.md
+      - "PMM 2.0.1": release-notes/2.0.1.md
+      - "PMM 2.0.0": release-notes/2.0.0.md
