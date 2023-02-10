@@ -160,7 +160,9 @@ nav:
   - Configure PMM:      
       - configure-pmm/configure.md
       - configure-pmm/metrics_res.md
-
+      - Advanced settings:
+        - configure-pmm/advanced-settings/index.md
+        - get-started/backup/prepare_storage_location.md
   - Get started:
       - get-started/index.md
       - get-started/interface.md
