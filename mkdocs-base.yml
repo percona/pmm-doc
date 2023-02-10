@@ -176,7 +176,7 @@ nav:
           - Package managers:
             - uninstall-pmm/uninstall-pmm-client/package_managers/redhat.md
             - uninstall-pmm/uninstall-pmm-client/package_managers/debian.md
-      - Register client node with PMM server:      
+        - Register client node with PMM server:      
         - install-pmm/register-client-node/index.md
       - Backup and Restore:
         - get-started/backup/index.md
