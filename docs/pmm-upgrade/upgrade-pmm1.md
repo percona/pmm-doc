@@ -1,4 +1,4 @@
-# Upgrade for PMM 1
+# Upgrade PMM server using Docker
 
 There are three stages to installing and setting up PMM.
 
