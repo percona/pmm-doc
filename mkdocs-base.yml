@@ -149,6 +149,7 @@ nav:
           - Package managers:
             - install-pmm/install-pmm-client/package_managers/redhat.md
             - install-pmm/install-pmm-client/package_managers/debian.md
+            - install-pmm/install-pmm-client/package_managers/redhat_pm.md
           - Package manager download:
             - install-pmm/install-pmm-client/package_download/redhat_pm.md
             - install-pmm/install-pmm-client/package_download/debian_pm.md
@@ -156,8 +157,7 @@ nav:
         - install-pmm/register-client-node/index.md
       - Add services for monitoring:      
         - install-pmm/add-services/index.md
-        - install-pmm/add-services/aws.md
-        
+        - install-pmm/add-services/aws.md        
   - Get started:
       - get-started/index.md
       - get-started/interface.md
