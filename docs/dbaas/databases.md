@@ -86,7 +86,7 @@ To create a DB cluster, do the following:
     ![!](../_images/PMM_DBaaS_DB_Cluster_Delete.png)
 
 !!! danger alert alert-danger "Danger"
-    Deleting a cluster in this way also deletes any attached volumes.
+    Deleting a cluster also deletes any attached volumes.  Please proceed with caution. 
 
 ### Edit a DB Cluster
 
