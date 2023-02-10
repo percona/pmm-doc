@@ -165,8 +165,8 @@ nav:
       - configure-pmm/percona_platform.md
   - PMM upgrade:
       - pmm-upgrade/index.md
-        - pmm-upgrade/upgrade-pmm1.md
       - pmm-upgrade/ui_upgrade.md
+      - pmm-upgrade/upgrade_docker.md
       - Backup and Restore:
         - get-started/backup/index.md
         - get-started/backup/prepare_storage_location.md
