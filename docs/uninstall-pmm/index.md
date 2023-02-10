@@ -1,4 +1,4 @@
-# Upgrade PMM agent
+# About PMM installation
 
 There are three stages to installing and setting up PMM.
 
