@@ -1,4 +1,4 @@
-# Add services for PMM monitoring
+# Monitoring services
 
 There are different ways to install PMM Client on a node and register it with PMM Server. Choose from:
 

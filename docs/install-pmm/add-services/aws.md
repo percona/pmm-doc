@@ -1,4 +1,4 @@
-# Monitroing Amazon RDS
+# Monitor Amazon RDS
 
 ## Required settings
 
