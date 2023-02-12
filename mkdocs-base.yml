@@ -193,7 +193,11 @@ nav:
         - pmm-admin/manage-orgs/index.md
         - pmm-admin/manage-orgs/create_org.md 
         - pmm-admin/manage-orgs/edit_org.md 
-        - pmm-admin/manage-orgs/del_org.md                
+        - pmm-admin/manage-orgs/del_org.md
+      - Security in PMM:
+        - pmm-admin/security/index.md
+        - pmm-admin/security/ssl_encryption.md 
+        - pmm-admin/security/grafana_cookies.md 
   - How to:
       - how-to/index.md
       - how-to/configure.md
