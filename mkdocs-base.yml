@@ -290,11 +290,11 @@ nav:
                 - details/dashboards/dashboard-pxc-galera-cluster-summary-experimental.md
                 - details/dashboards/dashboard-pxc-galera-nodes-compare.md
                 - details/dashboards/dashboard-haproxy-instance-summary.md
-
-
-      - Database-as-a-service (DBaaS):
-        - dbaas/index.md
-        - dbaas/architecture.md
+  - Database-as-a-service (DBaaS):
+      - dbaas/index.md
+      - dbaas/architecture.md
+      - Set up DBaaS:
+        - ui/dashboards-panels/index.md        
       - Commands:
         - details/commands/index.md
         - details/commands/pmm-admin.md
