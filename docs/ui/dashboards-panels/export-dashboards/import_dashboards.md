@@ -1,11 +1,4 @@
-# Manage dashboard folders
-
-## Delete multiple dashboards
-
-## Move dashboards from one folder to another
-
-## Navigate to a dashboard folder page to assign permissions
-
+# Import a dashboard
 
 ## Dashboards
 
