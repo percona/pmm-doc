@@ -1,4 +1,4 @@
-## Test alert expressions
+# Test alert expressions
 If you want to create custom templates, you can test the MetricsQL expressions for your custom template in the **Explore** section of PMM. Here you can also query any PMM internal database.
 
 
@@ -10,7 +10,7 @@ To test expressions for custom templates:
 For example, to validate that a MongoDB instance is down, shut down a member of a three-node replica set, then check that the expression `{service_type="mongodb"}` returns **0** in **Explore > Metrics**.
 
 
-### Add an alert rule
+## Add an alert rule
 After provisioning the resources required for creating Percona templated alerts, you are now ready to create your alert:
 
 1. Go to **Alerting > Alert Rules**, and click **New alert rule**.
