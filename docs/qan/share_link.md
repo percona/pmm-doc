@@ -1,4 +1,4 @@
-# Query Analytics for MongoDB
+# Share a link for Query Analytics
 
 
 QAN is
