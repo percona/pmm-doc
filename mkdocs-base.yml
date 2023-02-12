@@ -203,7 +203,7 @@ nav:
       - Dashboards and panels:
         - ui/dashboards-panels/use-dashboardsindex.md
         - Use dashboards:
-          - ui/dashboards-panels/use-dashboardsindex.md
+          - ui/dashboards-panels/use-dashboards/index.md
       - Dashboards:
         - details/dashboards/index.md
         - Manage dashboards:
