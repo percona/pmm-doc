@@ -220,7 +220,7 @@ nav:
           - ui/dashboards-panels/share-dashboards/share_dashboards.md
           - ui/dashboards-panels/export-dashboards/share_direct_link.md
           - ui/dashboards-panels/share-dashboards/publish_snapshot.md
-      
+          - ui/dashboards-panels/share-dashboards/dashboard_export.md      
           - PMM dashboards:
             - Insight:
               - details/dashboards/dashboard-home.md
@@ -290,6 +290,11 @@ nav:
                 - details/dashboards/dashboard-pxc-galera-cluster-summary-experimental.md
                 - details/dashboards/dashboard-pxc-galera-nodes-compare.md
                 - details/dashboards/dashboard-haproxy-instance-summary.md
+
+
+      - Database-as-a-service (DBaaS):
+        - dbaas/index.md
+        - dbaas/architecture.md
       - Commands:
         - details/commands/index.md
         - details/commands/pmm-admin.md
