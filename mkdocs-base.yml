@@ -203,8 +203,10 @@ nav:
       - Dashboards and panels:
         - ui/dashboards-panels/use-dashboards/index.md
         - Use dashboards:
-          - ui/dashboards-panels/use-dashboards/dashboard-feature.md
           - ui/dashboards-panels/use-dashboards/index.md
+          - ui/dashboards-panels/use-dashboards/dashboard-feature.md
+          - ui/dashboards-panels/use-dashboards/dashboard-settings.md
+          - ui/dashboards-panels/use-dashboards/dashboard-time-range.md
         - Manage dashboards:
           - details/dashboards/dashboard-manage-dashboards.md
           - PMM dashboards:

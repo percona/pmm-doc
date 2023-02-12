@@ -1,6 +1,4 @@
-# About using PMM dashbaords
-
-## Dashboard feature overview
+# Dashboard feature overview
 
 ## Dashboard settings
 
