@@ -325,9 +325,14 @@ nav:
       - commands/index.md
       - commands/pmm-admin.md
       - commands/pmm-agent.md
-
+  - Optimize PMM:
+      - optimize/index.md
+      - optimize/improve_perf.md
+      - optimize/change_number_tables.md
+      - optimize/disable_table_stats.md
       
-      
+  - Annotate:
+      - commands/index.md      
       
       - details/commands/pmm-agent.md
       - details/api.md
