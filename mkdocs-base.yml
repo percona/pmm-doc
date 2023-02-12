@@ -307,6 +307,18 @@ nav:
         - dbaas/manage-dbaas_clusters/del_cluster.md
   - Query Analytics:
       - qan/index.md
+      - qan/qan_mongo.md
+      - qan/share_link.md
+      - Panels on QAN dashboard:
+        - qan/panels/overview.md
+        - qan/panels/filters.md
+        - qan/panels/details.md
+        - qan/panels/explain.md
+        - qan/panels/tables.md
+        - qan/panels/plan.md
+
+  - Percona alerting:
+      - alert/index.md
       - dbaas/qan_mongo.md
       - dbaas/share_link.md
       - Panels on QAN dashboard:
@@ -316,7 +328,6 @@ nav:
         - qan/panels/explain.md
         - qan/panels/tables.md
         - qan/panels/plan.md
-
 
 
 
