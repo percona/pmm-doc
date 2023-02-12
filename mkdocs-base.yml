@@ -314,6 +314,7 @@ nav:
         - qan/panels/explain.md
         - qan/panels/tables.md
         - qan/panels/plan.md
+      - dbaas/qan_mongo.md
 
 
 
