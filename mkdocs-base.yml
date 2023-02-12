@@ -304,7 +304,20 @@ nav:
       - Manage database clusters:
         - dbaas/manage-dbaas_clusters/add_cluster.md
         - dbaas/manage-dbaas_clusters/edit_cluster.md
-        - dbaas/manage-dbaas_clusters/del_cluster.md   
+        - dbaas/manage-dbaas_clusters/del_cluster.md
+  - Query Analytics:
+      - qan/index.md
+      - Panels on QAN dashboard:
+        - qan/panels/overview.md
+        - qan/panels/filters.md
+        - qan/panels/details.md
+        - qan/panels/explain.md
+        - qan/panels/tables.md
+        - qan/panels/plan.md
+
+
+
+
       - Commands:
         - details/commands/index.md
         - details/commands/pmm-admin.md

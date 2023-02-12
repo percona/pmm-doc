@@ -1,3 +1,3 @@
-# Create a kubernetes cluster
+# Edit a DB cluster
 
 Dbaas is...

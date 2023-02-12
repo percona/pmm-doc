@@ -1,3 +1,3 @@
-# Delete Kubernetes cluster
+# Delete a DB cluster
 
 Dbaas is...
