@@ -1,3 +1,0 @@
-# Delete a DB cluster
-
-Dbaas is...

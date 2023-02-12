@@ -313,11 +313,12 @@ nav:
         - qan/panels/overview.md
         - qan/panels/filters.md
         - qan/panels/details.md
-
   - Percona alerting:
       - alert/index.md
-      - dbaas/qan_mongo.md
-      - dbaas/share_link.md
+      - alert/alert_type.md
+      - alert/alert_expressions.md
+      - alert/template_alert.md
+      - alert/alert_expressions.md
       - Panels on QAN dashboard:
         - qan/panels/overview.md
         - qan/panels/filters.md
@@ -328,7 +329,7 @@ nav:
   - Commands:
       - commands/index.md
       - commands/pmm-admin.md
-      - commands/pmm-admin.md
+      - commands/pmm-agent.md
 
       
       
