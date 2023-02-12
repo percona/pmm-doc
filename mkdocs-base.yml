@@ -325,10 +325,15 @@ nav:
         - qan/panels/explain.md
         - qan/panels/tables.md
         - qan/panels/plan.md
-      - Commands:
-        - details/commands/index.md
-        - details/commands/pmm-admin.md
-        - details/commands/pmm-agent.md
+  - Commands:
+      - commands/index.md
+      - commands/pmm-admin.md
+      - commands/pmm-admin.md
+
+      
+      
+      
+      - details/commands/pmm-agent.md
       - details/api.md
       - details/victoria-metrics.md
       - details/clickhouse.md
