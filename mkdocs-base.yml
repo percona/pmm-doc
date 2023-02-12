@@ -200,31 +200,10 @@ nav:
         - pmm-admin/security/grafana_cookies.md 
   - PMM user interface:
       - ui/index.md
-      - Manage users:
-        - pmm-admin/manage-users/edit_users.md
-        - pmm-admin/manage-users/delete_users.md
-        - pmm-admin/manage-users/manage_users_in_org.md      
-      - how-to/configure.md
-      - how-to/manage-users.md
-      - how-to/upgrade.md
-      - how-to/secure.md
-      - how-to/optimize.md
-      - how-to/annotate.md
-      - how-to/share-dashboard.md
-      - how-to/extend-metrics.md
-      - how-to/troubleshoot.md
-      - Integrate with Percona Platform:
-        - how-to/integrate-platform.md
-        - how-to/account-info.md
-  - Details:
-      - details/index.md
-      - details/architecture.md
-      - details/interface.md
-      - details/pmm_components_and_versions.md
-      - Develop checks:
-        - details/develop-checks/index.md
-        - details/develop-checks/checks-v1.md
-        - details/develop-checks/checks-v2.md
+      - Dashboards and panels:
+        - ui/dashboards-panels/use-dashboardsindex.md
+        - Use dashboards:
+          - ui/dashboards-panels/use-dashboardsindex.md
       - Dashboards:
         - details/dashboards/index.md
         - Manage dashboards:
