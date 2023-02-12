@@ -201,7 +201,7 @@ nav:
   - PMM user interface:
       - ui/index.md
       - Dashboards and panels:
-        - ui/dashboards-panels/use-dashboards/index.md
+        - ui/dashboards-panels/index.md
         - Use dashboards:
           - ui/dashboards-panels/use-dashboards/index.md
           - ui/dashboards-panels/use-dashboards/dashboard-feature.md
@@ -210,7 +210,6 @@ nav:
         - Manage dashboards:
           - ui/dashboards-panels/manage-dashboards/create-folders.md
           - ui/dashboards-panels/manage-dashboards/manage-folders.md
-
           - PMM dashboards:
             - Insight:
               - details/dashboards/dashboard-home.md
