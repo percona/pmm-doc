@@ -1,26 +1,4 @@
-## Test alert expressions
-If you want to create custom templates, you can test the MetricsQL expressions for your custom template in the **Explore** section of PMM. Here you can also query any PMM internal database.
-
-
-To test expressions for custom templates:
-
-1. On the side menu in PMM, choose **Explore > Metrics**.
-2. Enter your expression in the **Metrics** field and click **Run query**.
-
-For example, to validate that a MongoDB instance is down, shut down a member of a three-node replica set, then check that the expression `{service_type="mongodb"}` returns **0** in **Explore > Metrics**.
-
-
-### Add an alert rule
-After provisioning the resources required for creating Percona templated alerts, you are now ready to create your alert:
-
-1. Go to **Alerting > Alert Rules**, and click **New alert rule**.
-2. On the **Create alert rule** page, select the **Percona templated alert** option. If you want to learn about creating Grafana alerts instead, check our [Grafana's documentation](https://grafana.com/docs/grafana/latest/alerting/).
-3. In the **Template details** section, choose the template on which you want to base the new alert rule. This automatically populates the **Name**, **Duration**, and **Severity** fields with information from the template. You can change these values if you want to override the default specifications in the template.
-4. In the **Filters** field, specify if you want the alert rule to apply only to specific services or nodes. For example: `service_name'`, Operator:`MATCH`, VALUE: `ps5.7`.
-5. From the **Folder** drop-down menu, select the location where you want to store the rule.
-6. Click **Save and Exit** to close the page and go to the **Alert Rules** tab where you can review, edit and silence your new alert.
-
-## Silence alerts
+# Silence alerts
 Create a silence when you want to stop notifications from one or more alerting rules.
 
 Silences stop notifications from being sent to your specified contact points.
