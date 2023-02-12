@@ -201,11 +201,10 @@ nav:
   - PMM user interface:
       - ui/index.md
       - Dashboards and panels:
-        - ui/dashboards-panels/use-dashboardsindex.md
+        - ui/dashboards-panels/use-dashboards/index.md
         - Use dashboards:
+          - ui/dashboards-panels/use-dashboards/dashboard-feature.md
           - ui/dashboards-panels/use-dashboards/index.md
-      - Dashboards:
-        - details/dashboards/index.md
         - Manage dashboards:
           - details/dashboards/dashboard-manage-dashboards.md
           - PMM dashboards:
