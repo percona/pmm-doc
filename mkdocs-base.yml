@@ -210,6 +210,9 @@ nav:
         - Manage dashboards:
           - ui/dashboards-panels/manage-dashboards/create-folders.md
           - ui/dashboards-panels/manage-dashboards/manage-folders.md
+        - Export and import dashboards:
+          - ui/dashboards-panels/export-dashboards/export_dashboards.md
+          - ui/dashboards-panels/export-dashboards/import_dashboards.md
           - PMM dashboards:
             - Insight:
               - details/dashboards/dashboard-home.md
