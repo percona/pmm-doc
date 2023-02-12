@@ -313,9 +313,6 @@ nav:
         - qan/panels/overview.md
         - qan/panels/filters.md
         - qan/panels/details.md
-        - qan/panels/explain.md
-        - qan/panels/tables.md
-        - qan/panels/plan.md
 
   - Percona alerting:
       - alert/index.md
@@ -328,9 +325,6 @@ nav:
         - qan/panels/explain.md
         - qan/panels/tables.md
         - qan/panels/plan.md
-
-
-
       - Commands:
         - details/commands/index.md
         - details/commands/pmm-admin.md
