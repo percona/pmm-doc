@@ -1,3 +1,3 @@
-# About PMM Database-as-a=service (DBaaS)
+# About PMM (DBaaS)
 
 Dbaas is...
