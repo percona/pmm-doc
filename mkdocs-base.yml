@@ -307,6 +307,8 @@ nav:
         - dbaas/manage-dbaas_clusters/del_cluster.md
   - Query Analytics:
       - qan/index.md
+      - dbaas/qan_mongo.md
+      - dbaas/share_link.md
       - Panels on QAN dashboard:
         - qan/panels/overview.md
         - qan/panels/filters.md
@@ -314,7 +316,6 @@ nav:
         - qan/panels/explain.md
         - qan/panels/tables.md
         - qan/panels/plan.md
-      - dbaas/qan_mongo.md
 
 
 
