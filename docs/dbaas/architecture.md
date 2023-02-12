@@ -1,3 +1,3 @@
-## DBaaS architecture
+# DBaaS architecture
 
 Dbaas is...
