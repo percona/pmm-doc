@@ -294,12 +294,12 @@ nav:
       - dbaas/index.md
       - dbaas/architecture.md
       - Set up DBaaS:
-        - dbaas/index.md
-        - dbaas/create_k8s.md
-        - dbaas/del_k8s.md
-        - dbaas/activate_k8s.md    
-        - dbaas/add_k8s_auto.md    
-        - dbaas/add_k8s_manually.md    
+        - dbaas/setup-dbaas/index.md
+        - dbaas/setup-dbaas/create_k8s.md
+        - dbaas/setup-dbaas/del_k8s.md
+        - dbaas/setup-dbaas/activate_k8s.md    
+        - dbaas/setup-dbaas/add_k8s_auto.md    
+        - dbaas/setup-dbaas/add_k8s_manual.md    
 
       - Commands:
         - details/commands/index.md
