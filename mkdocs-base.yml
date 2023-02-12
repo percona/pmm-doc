@@ -208,7 +208,9 @@ nav:
           - ui/dashboards-panels/use-dashboards/dashboard-settings.md
           - ui/dashboards-panels/use-dashboards/dashboard-time-range.md
         - Manage dashboards:
-          - details/dashboards/dashboard-manage-dashboards.md
+          - ui/dashboards-panels/manage-dashboards/create-folders.md
+          - ui/dashboards-panels/manage-dashboards/manage-folders.md
+
           - PMM dashboards:
             - Insight:
               - details/dashboards/dashboard-home.md
