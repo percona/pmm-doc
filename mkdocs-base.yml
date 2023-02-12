@@ -332,7 +332,7 @@ nav:
       - optimize/disable_table_stats.md
       
   - Annotate:
-      - commands/index.md      
+      - annotate/index.md      
       
       - details/commands/pmm-agent.md
       - details/api.md
