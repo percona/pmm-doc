@@ -316,7 +316,7 @@ nav:
   - Percona alerting:
       - alert/index.md
       - alert/alert_type.md
-      - alert/alert_expressions.md
+      - alert/alert_components.md
       - alert/template_alert.md
       - alert/alert_expressions.md
       - alert/silence_alerts.md
