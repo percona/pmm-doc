@@ -1,12 +1,5 @@
 # About using PMM dashbaords
 
-## Dashboard feature overview
-
-## Dashboard settings
-
-## Set dashboard time range
-
-### Time units and relative ranges
 
 
 How to log in, how the user interface is laid out, and what the controls do.
