@@ -294,7 +294,13 @@ nav:
       - dbaas/index.md
       - dbaas/architecture.md
       - Set up DBaaS:
-        - ui/dashboards-panels/index.md        
+        - dbaas/index.md
+        - dbaas/create_k8s.md
+        - dbaas/del_k8s.md
+        - dbaas/activate_k8s.md    
+        - dbaas/add_k8s_auto.md    
+        - dbaas/add_k8s_manually.md    
+
       - Commands:
         - details/commands/index.md
         - details/commands/pmm-admin.md
