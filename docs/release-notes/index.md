@@ -1,6 +1,6 @@
 # Release Notes Index
 
-- [Percona Monitoring and Management 2.34.0](2.34.0.md)
+- [Percona Monitoring and Management 2.34.0 (2023-01-30)](2.34.0.md)
 - [Percona Monitoring and Management 2.33.0](2.33.0.md)
 - [Percona Monitoring and Management 2.32.0](2.32.0.md)
 - [Percona Monitoring and Management 2.31.0](2.31.0.md)
