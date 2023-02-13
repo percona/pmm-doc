@@ -347,7 +347,7 @@ nav:
       - alert/disable_alerts.md 
    - Troubleshooting:
       - trouble/checklist.md
-  
+      - trouble/areas.md 
   - FAQ: 
       - faq.md
   - Release Notes:
