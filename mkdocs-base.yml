@@ -351,8 +351,8 @@ nav:
       - faq.md
   - Release Notes:
       - Release notes index: release-notes/index.md
-      - "PMM 2.34.0": release-notes/2.34.0.md
-      - "PMM 2.33.0": release-notes/2.33.0.md
+      - "PMM 2.34.0 (2023-01-30)": release-notes/2.34.0.md
+      - "PMM 2.33.0" (2022-11-13)": release-notes/2.33.0.md
       - "PMM 2.32.0": release-notes/2.32.0.md
       - "PMM 2.31.0": release-notes/2.31.0.md
       - "PMM 2.30.0": release-notes/2.30.0.md
