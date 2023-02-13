@@ -44,8 +44,6 @@ A bug in PMM Server ansible scripts caused PMM to upgrade Nginx's dependencies w
 !!! caution alert alert-warning "Important"
     This issue has been resolved for PMM version 2.33.0. However, the issue persists on all the versions prior to 2.33.0.
 
-  
-
 
 **Solution**
 
@@ -141,13 +139,15 @@ This section focuses on problems with QAN, such as queries not being retrieved s
 
 ## DBaaS issues
 
+## Dashboard issues
+
 ## External components issues
 
 ### ClickHouse issues
 
 ### VictoriaMetrics issues
 
-#### Missing data
+## Missing data
 
 **Why don't I see any query-related information?**
 
