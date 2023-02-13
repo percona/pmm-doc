@@ -313,6 +313,10 @@ nav:
         - qan/panels/overview.md
         - qan/panels/filters.md
         - qan/panels/details.md
+    - Metrics in PMM
+      - metrics/index.md
+      - metrics/extend_metrics.md
+
   - Percona alerting:
       - alert/index.md
       - alert/alert_type.md
@@ -330,7 +334,7 @@ nav:
       - api/index.md
       - api/authentication.md
 
-  
+
   
   
   
