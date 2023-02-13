@@ -323,27 +323,8 @@ nav:
         - qan/panels/details.md
   - Metrics in PMM: 
       - metrics/index.md
-      - metrics/extend_metrics.md
-
-  - Third-party components in PMM: 
-      - third-party/index.md
-      - third-party/victoria.md
-      - third-party/clickhouse.md
-
-
-  
-  
-  
-  
-  - Percona alerting:
-      - alert/index.md
-      - alert/alert_type.md
-      - alert/alert_components.md
-      - alert/template_alert.md
-      - alert/alert_expressions.md
-      - alert/silence_alerts.md
-      - alert/disable_alerts.md
-  - Commands:
+      - metrics/extend_metrics.md 
+  - Commandsin PMM:
       - commands/index.md
       - commands/pmm-admin.md
       - commands/pmm-agent.md
@@ -351,12 +332,22 @@ nav:
       - api/index.md
       - api/authentication.md
 
+  - Third-party components in PMM: 
+      - third-party/index.md
+      - third-party/victoria.md
+      - third-party/clickhouse.md  
 
+  - Percona alerting:
+      - alert/index.md
+      - alert/alert_type.md
+      - alert/alert_components.md
+      - alert/template_alert.md
+      - alert/alert_expressions.md
+      - alert/silence_alerts.md
+      - alert/disable_alerts.md 
+   - Troubleshooting:
+      - trouble/checklist.md
   
-  
-  
-    
-
   - FAQ: 
       - faq.md
   - Release Notes:
