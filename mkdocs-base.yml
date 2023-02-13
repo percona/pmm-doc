@@ -203,7 +203,6 @@ nav:
       - optimize/improve_perf.md
       - optimize/change_number_tables.md
       - optimize/disable_table_stats.md 
-
   - PMM user interface:
       - ui/index.md
       - Dashboards and panels:
@@ -313,6 +312,31 @@ nav:
         - dbaas/manage-dbaas_clusters/add_cluster.md
         - dbaas/manage-dbaas_clusters/edit_cluster.md
         - dbaas/manage-dbaas_clusters/del_cluster.md
+  - Percona Alerting:
+      - alert/index.md
+      - alert/alert_type.md
+      - alert/alert_components.md
+      - alert/template_alert.md
+      - alert/alert_expressions.md
+      - alert/silence_alerts.md
+      - alert/disable_alerts.md 
+  - Backup and Restore:
+      - backup/backup/index.md
+      - backup/backup/prepare_storage_location.md
+      - MongoDB backups:
+        - backup/backup/backup_mongo.md
+        - backup/backup/mongo-prerequisites.md
+        - backup/backup/create_mongo_on_demand.md
+        - backup/backup/create_PITR_mongo.md
+        - backup/backup/restore_MongoDB_backups.md
+        - backup/backup/mongodb_limitations.md
+      - MySQL backups:
+        - backup/backup/backup_mysql.md
+        - backup/backup/create_mysql_backup.md
+        - backup/backup/restore_mysql_backup.md
+      - backup/backup/edit_scheduled.md
+      - backup/backup/delete_a_backup.md
+  - advisors/advisors.md
   - Query Analytics:
       - qan/index.md
       - qan/qan_mongo.md
@@ -331,19 +355,11 @@ nav:
   - PMM API:
       - api/index.md
       - api/authentication.md
-
   - Third-party components in PMM: 
       - third-party/index.md
       - third-party/victoria.md
       - third-party/clickhouse.md
-  - Percona alerting:
-      - alert/index.md
-      - alert/alert_type.md
-      - alert/alert_components.md
-      - alert/template_alert.md
-      - alert/alert_expressions.md
-      - alert/silence_alerts.md
-      - alert/disable_alerts.md 
+
   - Troubleshooting:
       - troubleshoot/troubleshoot.md
       - troubleshoot/areas.md 
