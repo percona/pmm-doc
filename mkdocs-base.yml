@@ -328,7 +328,7 @@ nav:
 
   - PMM API:
       - api/index.md
-      - api/authenticate.md
+      - api/authentication.md
 
   
   
