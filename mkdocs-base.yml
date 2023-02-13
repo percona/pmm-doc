@@ -197,7 +197,13 @@ nav:
       - Security in PMM:
         - pmm-admin/security/index.md
         - pmm-admin/security/ssl_encryption.md 
-        - pmm-admin/security/grafana_cookies.md 
+        - pmm-admin/security/grafana_cookies.md  
+  - Optimize PMM:
+      - optimize/index.md
+      - optimize/improve_perf.md
+      - optimize/change_number_tables.md
+      - optimize/disable_table_stats.md 
+
   - PMM user interface:
       - ui/index.md
       - Dashboards and panels:
@@ -313,10 +319,20 @@ nav:
         - qan/panels/overview.md
         - qan/panels/filters.md
         - qan/panels/details.md
-    - Metrics in PMM
+  - Metrics in PMM: 
       - metrics/index.md
       - metrics/extend_metrics.md
 
+  - Third-party components used in PMM: 
+      - third-party/index.md
+      - third-party/victoria.md
+      - third-party/clickhouse.md
+
+
+  
+  
+  
+  
   - Percona alerting:
       - alert/index.md
       - alert/alert_type.md
@@ -329,7 +345,6 @@ nav:
       - commands/index.md
       - commands/pmm-admin.md
       - commands/pmm-agent.md
-
   - PMM API:
       - api/index.md
       - api/authentication.md
@@ -338,11 +353,7 @@ nav:
   
   
   
-  - Optimize PMM:
-      - optimize/index.md
-      - optimize/improve_perf.md
-      - optimize/change_number_tables.md
-      - optimize/disable_table_stats.md     
+    
   - Annotate:
       - annotate/index.md      
       
