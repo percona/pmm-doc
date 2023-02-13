@@ -226,7 +226,9 @@ nav:
           - ui/dashboards-panels/share-dashboards/share_dashboards.md
           - ui/dashboards-panels/export-dashboards/share_direct_link.md
           - ui/dashboards-panels/share-dashboards/publish_snapshot.md
-          - ui/dashboards-panels/share-dashboards/dashboard_export.md      
+          - ui/dashboards-panels/share-dashboards/dashboard_export.md
+        - Annotate:
+          - ui/dashboards-panels/annotate/annotate.md              
           - PMM dashboards:
             - Insight:
               - details/dashboards/dashboard-home.md
@@ -323,7 +325,7 @@ nav:
       - metrics/index.md
       - metrics/extend_metrics.md
 
-  - Third-party components used in PMM: 
+  - Third-party components in PMM: 
       - third-party/index.md
       - third-party/victoria.md
       - third-party/clickhouse.md
@@ -354,14 +356,7 @@ nav:
   
   
     
-  - Annotate:
-      - annotate/index.md      
-      
-      - details/commands/pmm-agent.md
-      - details/api.md
-      - details/victoria-metrics.md
-      - details/clickhouse.md
-      - details/glossary.md
+
   - FAQ: 
       - faq.md
   - Release Notes:

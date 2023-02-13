@@ -1,4 +1,4 @@
-# Annotate
+#  Annotation in dashboards
 
 Annotations mark a moment in time. They are useful for marking system changes or other significant application events. They can be set globally or for specific nodes or services.
 
