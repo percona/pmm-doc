@@ -335,8 +335,7 @@ nav:
   - Third-party components in PMM: 
       - third-party/index.md
       - third-party/victoria.md
-      - third-party/clickhouse.md  
-
+      - third-party/clickhouse.md
   - Percona alerting:
       - alert/index.md
       - alert/alert_type.md
@@ -346,7 +345,7 @@ nav:
       - alert/silence_alerts.md
       - alert/disable_alerts.md 
   - Troubleshooting:
-      - trouble/checklist.md
+      - trouble/troubleshoot.md
       - trouble/areas.md 
   - FAQ: 
       - faq.md
