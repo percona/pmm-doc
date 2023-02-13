@@ -345,7 +345,7 @@ nav:
       - alert/alert_expressions.md
       - alert/silence_alerts.md
       - alert/disable_alerts.md 
-   - Troubleshooting:
+  - Troubleshooting:
       - trouble/checklist.md
       - trouble/areas.md 
   - FAQ: 
