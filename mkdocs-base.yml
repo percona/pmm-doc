@@ -275,7 +275,7 @@ nav:
     - "Introduction": dbaas/index.md
     - dbaas/architecture.md
     - "Setting up":
-      - "Setting up DBaaS": dbaas/setting-up.md#setting-up-dbaas
+      - "Setting up DBaaS": dbaas/setting-up.html#setting-up-dbaas
       - "Create a Kubernetes Cluster": dbaas/setting-up.html#create-a-kubernetes-cluster
       - "Deleting clusters ": dbaas/setting-up.html#deleting-clusters
     - "Getting started":
