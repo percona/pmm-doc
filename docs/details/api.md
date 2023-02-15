@@ -3,7 +3,6 @@
 ## Interactive API documentation 
 To integrate your applications or CI/CD, you can use our [online interactive documentation](https://percona-pmm.readme.io/reference/introduction).
 
-https://percona-pmm.readme.io/reference/introduction
 
 ## Swagger API documentation
 
