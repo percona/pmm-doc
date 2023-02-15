@@ -21,7 +21,7 @@ DBaaS uses [OLM](https://olm.operatorframework.io/docs/) to install and update o
 
 An Operator catalog is a repository of metadata that Operator Lifecycle Manager (OLM) can query to discover and install Operators and their dependencies on a cluster. OLM always installs Operators from the latest version of a catalog. DBaaS uses its own catalog for OLM that has the following operators:
 
-1. DBaaS-operator
+1. DBaaS operator
 2. PXC operator
 3. PSMDB operator
 4. Victoria Metrics operator
