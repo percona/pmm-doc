@@ -17,7 +17,7 @@ Areas of responsibility of PMM:
 
 ## Operator Lifecycle Manager (OLM)
 
-DBaaS uses [OLM](https://olm.operatorframework.io/docs/) to install and update operators and PMM installs OLM during the registration of Kubernetes cluster and installs Operator Catalog.
+DBaaS uses [OLM](https://olm.operatorframework.io/docs/) to install and update operators. PMM installs OLM and Operator Catalog during the registration of the Kubernetes cluster.
 
 An Operator catalog is a repository of metadata that Operator Lifecycle Manager (OLM) can query to discover and install Operators and their dependencies on a cluster. OLM always installs Operators from the latest version of a catalog. DBaaS uses its own catalog for OLM that has the following operators:
 
