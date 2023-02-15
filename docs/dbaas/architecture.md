@@ -36,6 +36,6 @@ The installation of operators looks the following way
 
 ## DBaaS operator
 
-DBaaS operator is responsible of creating and managing databases [following operator pattern](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/) and depends on underlying operators for running psmdb and pxc clusters. It provides a simplify API to the end user and allows to use one API to manage database clusters via kubectl
+DBaaS operator is responsible for creating and managing databases [following operator pattern](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/) and depends on underlying operators for running psmdb and pxc clusters. It provides a simplified API to the end user and allows to use of one API to manage database clusters via `kubectl`.
 
 
