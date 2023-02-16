@@ -28,7 +28,7 @@ An Operator catalog is a repository of metadata that Operator Lifecycle Manager 
 
 ![!](../_images/dbaas_catalog.jpg)
 
-Catalog also gives the benefits of using CatalogSource and ClusterServiceVersion. ClusterServiceVersion (CSV) can solve the issue by getting the current version of installed operators via OLM API.
+Percona Catalog is an OLM catalog that stores ClusterServiceVersionss and CustomResourceDefinitions for creation in a cluster, and stores metadata about packages and channels. It's a source of truth about available versions of operators ready to use in DBaaS
 
 The installation of operators looks the following way
 
