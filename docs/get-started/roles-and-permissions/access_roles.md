@@ -102,3 +102,17 @@ To remove access roles, do the following:
 
 3. Click *Confirm* and delete the role.
 
+## Assigning roles to users in PMM
+
+To assign access roles to users, do the following:
+
+1. From the *Main* menu, navigate to *Configuration > Users*. *Users* tab opens.
+
+ ![!](../../_images/PMM_access_control_assign_role.png)
+
+
+2. Select the *Access Role* you want to assign to a user from the dropdown.
+
+ ![!](../../_images/PMM_access_control_select_role.png)
+
+
