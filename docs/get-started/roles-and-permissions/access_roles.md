@@ -116,3 +116,28 @@ To assign access roles to users, do the following:
  ![!](../../_images/PMM_access_control_select_role.png)
 
 
+## Use Case
+
+This use case demonstrates the following scenario:
+
+- There are two environments: **prod** and **qa**
+
+- There are two projects: **shop** and **bank**
+
+An overview of the infrastructure can be seen in the diagram below. PMM monitors several services. The metrics that are stored in VictoriaMetrics have the appropriate labels.
+
+ ![!](../../_images/PMM_access_control_usecase_metrics.jpg)
+
+
+ This diagram shows several roles within a company structure that have access to PMM, as well as the permissions they should be granted:
+
+- Admin role - has access to all the metrics
+- DBA role - has access to all metrics within **env=prod** only
+- QA role - has access to all metrics within **env=qa** only
+
+![!](../../_images/PMM_access_control_usecase_roles.jpg)
+
+
+
+
+

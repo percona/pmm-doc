@@ -24,7 +24,7 @@ PMM supports predefined as well as custom labels. PMM always assigns predefined 
 
 You can add custom or predefined labels in PMM while adding a service for monitoring in PMM. 
 
-You can set the labels using User Interface as follows:
+You can set the labels using User interface as follows:
 
 1. On the *Main* menu, navigate to *Configuration > Add Service*.
 
