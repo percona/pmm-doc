@@ -1,9 +1,5 @@
 # Roles and permissions in PMM
 
-!!! caution alert alert-warning "Caution"
-    PMM Access Control is currently in [technical preview](../details/glossary.md#technical-preview) and is subject to change. We recommend that early adopters use this feature for testing purposes only.
-
-
 
 Roles are the sets of permissions and configurations that determine which metrics a user can access.
 
