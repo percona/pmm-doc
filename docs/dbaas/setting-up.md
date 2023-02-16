@@ -1,11 +1,11 @@
 # Setting up DBaaS
 
-To use the Database as a Service (DBaaS) solution in PMM there are a few things that need to be setup first including a suitable Kubernetes Cluster.  If you've already got a kubernetes cluster you can jump ahead enabling it in [PMM](../dbaas/get-started.html). 
+To use the Database as a Service (DBaaS) solution in PMM there are a few things that need to be setup first including a suitable Kubernetes Cluster.  If you've already got a kubernetes cluster you can jump ahead enabling it in [PMM](../dbaas/get-started.html).
 
 If you don't have a Kubernetes cluster available you can use the [free K8s provided by Percona](https://www.percona.com/blog/private-dbaas-with-free-kubernetes-cluster/) for evaluation which will allow you to play around with DBaaS for 3 hours before the cluster expires.
-For a Kubernetes cluster that doesn't expire you can use our "easy script", you can find the instructions [here](https://www.percona.com/blog/dbaas-kubernetes-in-under-20-min/).  
+For a Kubernetes cluster that doesn't expire you can use our "easy script", you can find the instructions [here](https://www.percona.com/blog/dbaas-kubernetes-in-under-20-min/).
 
-In the sections that follow we'll try to outline the steps to create your own Kubernetes cluster in a few popular ways.  
+In the sections that follow we'll try to outline the steps to create your own Kubernetes cluster in a few popular ways.
 
 
 #### Red Hat, CentOS
@@ -96,9 +96,6 @@ alias kubectl='minikube kubectl --'
     eksctl create cluster --write-kubeconfig --name=your-cluster-name --zones=us-west-2a,us-west-2b --kubeconfig <PATH_TO_KUBECONFIG>
     ```
 2. Copy the resulting kubeconfig and follow these instructions to [register a Kubernetes cluster to PMM](../dbaas/get-started.md#add-a-kubernetes-cluster).
-
-    !!! note alert alert-primary ""
-        If possible, the connection details will show the cluster's external IP (not possible with minikube).
 
 ### Google GKE
 
