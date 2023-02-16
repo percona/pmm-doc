@@ -168,6 +168,7 @@ nav:
       - Roles and permissions:
           - get-started/roles-and-permissions/index.md
           - get-started/roles-and-permissions/access_control.md
+          - get-started/roles-and-permissions/lbac.md
   - How to:
       - how-to/index.md
       - how-to/configure.md
