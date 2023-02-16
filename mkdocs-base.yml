@@ -165,10 +165,9 @@ nav:
                 - get-started/backup/restore_mysql_backup.md
           - get-started/backup/edit_scheduled.md
           - get-started/backup/delete_a_backup.md
-
-      - get-started/query-analytics.md
-      - get-started/dbaas.md
-      - get-started/advisors.md
+- Roles and permissions:
+          - get-started/roles-and-permissions/index.md
+          - get-started/roles-and-permissions/backup/access_control.md
   - How to:
       - how-to/index.md
       - how-to/configure.md
