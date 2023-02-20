@@ -29,7 +29,7 @@ To create a backup schedule do the following:
 
 2. Click <i class="uil uil-toggle-off"></i> toggle in the *Enable backups* panel.
 
-![!](../_images/PMM_DBaaS_Backup.png)
+    ![!](../_images/PMM_DBaaS_Backup.png)
 
 3. In the *Backup Information* panel, enter the backup details.
 
@@ -50,7 +50,7 @@ To restore backup, do the following:
 
 2. Click <i class="uil uil-toggle-off"></i> toggle in the *Enable restore* panel.
 
-![!](../_images/PMM_DBaaS_restore.png)
+    ![!](../_images/PMM_DBaaS_restore.png)
 
 3. Enter the information on the *Enable restore* panel.
 
