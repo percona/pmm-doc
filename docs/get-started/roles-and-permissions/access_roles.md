@@ -134,7 +134,6 @@ The following roles are created as part of this use case:
 
 An overview of the infrastructure can be seen in the diagram below. PMM monitors several services. The metrics that are stored in VictoriaMetrics have the appropriate labels.
 
-
     ![!](../../_images/PMM_access_control_usecase_metrics.jpg)
 
 
