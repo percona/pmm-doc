@@ -1,7 +1,6 @@
 # Access roles in PMM
 
-Roles are a vital part of Access Management. Roles provide users with access to specific, role-based metrics. Roles in PMM allow administrators to define what kind of access users have to metrics.
-
+Roles are a vital part of Access Management. Roles provide users with access to specific, role-based metrics.
 ## Enabling access roles in PMM
 
 You can enable access roles in PMM as follows:
@@ -14,7 +13,7 @@ To enable access roles in a ``pmm-server`` docker container, pass an additional 
 docker run … -e RBAC_ENABLE=1
 ```
 
-For compose an add additional variable:
+For compose add additional an variable:
 
 ```
 services:
