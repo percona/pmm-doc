@@ -32,14 +32,14 @@ To create access roles in PMM, do the following:
 1. From the *Main* menu, navigate to *Configuration > Access Roles*. *Access Roles* tab
  opens.
 
- ![!](../../_images/PMM_access_control_create_role.png)
+  ![!](../../_images/PMM_access_control_create_role.png)
 
 2. Click *Create*. Create role page opens.
 
 
 3. Enter the Role name and Role description.
 
- ![!](../../_images/PMM_access_control_role_name.png)
+  ![!](../../_images/PMM_access_control_role_name.png)
 
 4. Select the following from the dropdowns for metrics access:
     - Label
@@ -67,11 +67,11 @@ To edit access roles, do the following:
 
 2. On the role you want to edit, click the *ellipsis (three vertical dots) > edit role* in the *Options* column. The *Edit* role page opens.
 
- ![!](../../_images/PMM_access_control_edit_role.png)
+  ![!](../../_images/PMM_access_control_edit_role.png)
 
 3. Make the required changes to the role.
 
- ![!](../../_images/PMM_access_control_edit_role_changes.png)
+  ![!](../../_images/PMM_access_control_edit_role_changes.png)
 
 
 4. Click Save Changes.
@@ -99,7 +99,7 @@ To remove access roles, do the following:
 
 2. On the role you want to remove, click the *ellipsis (three vertical dots) > Delete* in the *Options* column. Delete role pop-up opens.
 
- ![!](../../_images/PMM_access_control_delete_role.png)
+  ![!](../../_images/PMM_access_control_delete_role.png)
 
 
 3. Click *Confirm* and delete the role.
@@ -110,12 +110,12 @@ To assign access roles to users, do the following:
 
 1. From the *Main* menu, navigate to *Configuration > Users*. *Users* tab opens.
 
- ![!](../../_images/PMM_access_control_assign_role.png)
+  ![!](../../_images/PMM_access_control_assign_role.png)
 
 
 2. Select the *Access Role* you want to assign to a user from the dropdown. You can assign several roles to a user.
 
- ![!](../../_images/PMM_access_control_select_role.png)
+  ![!](../../_images/PMM_access_control_select_role.png)
 
 
 ## Use Case
@@ -134,7 +134,7 @@ The following roles are created as part of this use case:
 
 An overview of the infrastructure can be seen in the diagram below. PMM monitors several services. The metrics that are stored in VictoriaMetrics have the appropriate labels.
 
- ![!](../../_images/PMM_access_control_usecase_metrics.jpg)
+  ![!](../../_images/PMM_access_control_usecase_metrics.jpg)
 
 
  This diagram shows several roles within a company structure that have access to PMM, as well as the permissions they should be granted:
@@ -143,7 +143,7 @@ An overview of the infrastructure can be seen in the diagram below. PMM monitors
 - DBA role - has access to all metrics within **env=prod** only
 - QA role - has access to all metrics within **env=qa** only
 
-![!](../../_images/PMM_access_control_usecase_roles.jpg)
+  ![!](../../_images/PMM_access_control_usecase_roles.jpg)
 
 
 
