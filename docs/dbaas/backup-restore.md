@@ -15,8 +15,12 @@ To create a scheduled backup do the following:
 
 2. Add add a backup storage location:
 
-   From the main menu, navigate to *Backups > Storage Locations > Add storage location* and enter all the required information to add a backup storage location. For details, see [Prepare a storage location](../get-started/backup/prepare_storage_location.md).
+!!! note alert alert-primary "Note"
+    Currently, only S3 is supported.
 
+   From the main menu, navigate to *Backups → Storage Locations → Add storage location* and enter all the required information to add a backup storage location. For details, see [Prepare a storage location](../get-started/backup/prepare_storage_location.md).
+
+  
 ## Create a backup schedule
 
 To create a backup schedule do the following:
@@ -29,9 +33,29 @@ To create a backup schedule do the following:
 
 3. In the *Backup Information* panel, enter the backup details.
 
-4. Set the schedule for when scheduled backups should take place.
+4. Set the schedule for when scheduled backups should take place:
+
+    - From the drop-down select the *Scheduled time* when you want the backup to take place.
 
 5. Click *Create*.
+
+
+## Restore backup
+
+To restore backup, do the following:
+
+1. From the main menu navigate to <i class="uil uil-database"></i> *DBaaS* > *DB Cluster*.
+
+2. Click <i class="uil uil-toggle-off"></i> toggle in the *Enable restore* panel.
+
+3. Enter the information on the *Enable restore* panel.
+
+
+
+
+
+
+
 
 
 
