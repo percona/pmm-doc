@@ -10,10 +10,10 @@ Areas of responsibility of PMM:
 
 1. Expose Public REST API
 2. Provision Kubernetes cluster and install the following operators:
-    * Install OLM (Operator Lifecycle Manager)
-    * Percona Operator for MongoDB
-    * Percona Operator for MySQL
-    * DBaaS operator
+    1. Install OLM (Operator Lifecycle Manager)
+    2. Percona Operator for MongoDB
+    3. Percona Operator for MySQL
+    4. DBaaS operator
 
 ## Operator Lifecycle Manager (OLM)
 
