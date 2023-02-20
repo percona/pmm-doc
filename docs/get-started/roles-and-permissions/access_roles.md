@@ -113,7 +113,7 @@ To assign access roles to users, do the following:
  ![!](../../_images/PMM_access_control_assign_role.png)
 
 
-2. Select the *Access Role* you want to assign to a user from the dropdown.
+2. Select the *Access Role* you want to assign to a user from the dropdown. You can assign several roles to a user.
 
  ![!](../../_images/PMM_access_control_select_role.png)
 
@@ -145,14 +145,6 @@ An overview of the infrastructure can be seen in the diagram below. PMM monitors
 
 ![!](../../_images/PMM_access_control_usecase_roles.jpg)
 
-
-**Assigning Roles**
-
-You can [assign roles to users](access_roles.md#assigning-roles-to-users-in-PMM) as follows:
-
-1. Admin: Full Access
-
-2. Dev: 
 
 
 
