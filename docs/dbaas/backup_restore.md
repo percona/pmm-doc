@@ -25,7 +25,7 @@ To create a scheduled backup do the following:
 
 To create a backup schedule do the following:
 
-1. From the main menu navigate to <i class="uil uil-database"></i> *DBaaS* > *DB Cluster*.
+1. From the main menu navigate to <i class="uil uil-database"></i> *DBaaS* → *DB Cluster*.
 
 2. Click <i class="uil uil-toggle-off"></i> toggle in the *Enable backups* panel.
 
@@ -46,7 +46,7 @@ You can create a DBaaS cluster from a backup stored on S3. You can use backups f
 
 To restore backup, do the following:
 
-1. From the main menu navigate to <i class="uil uil-database"></i> *DBaaS* > *DB Cluster*.
+1. From the main menu navigate to <i class="uil uil-database"></i> *DBaaS* → *DB Cluster*.
 
 2. Click <i class="uil uil-toggle-off"></i> toggle in the *Enable restore* panel.
 
