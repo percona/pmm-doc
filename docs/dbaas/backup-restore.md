@@ -42,6 +42,8 @@ To create a backup schedule do the following:
 
 ## Restore backup
 
+You can create a DBaaS cluster from a backup stored on S3. You can use backups from an existing cluster to spin up a new database cluster from this backup. 
+
 To restore backup, do the following:
 
 1. From the main menu navigate to <i class="uil uil-database"></i> *DBaaS* > *DB Cluster*.
@@ -51,6 +53,8 @@ To restore backup, do the following:
 [!](../_images/PMM_DBaaS_restore.png)
 
 3. Enter the information on the *Enable restore* panel.
+
+4. Click *Create*.
 
 
 
