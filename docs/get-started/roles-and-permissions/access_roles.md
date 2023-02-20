@@ -1,6 +1,7 @@
 # Access roles in PMM
 
-Roles are a vital part of Access Management. Roles provide users with access to specific, role-based metrics.
+Roles are a vital part of Access control. Roles provide users with access to specific, role-based metrics.
+
 ## Enabling access roles in PMM
 
 You can enable access roles in PMM as follows:
@@ -10,7 +11,7 @@ You can enable access roles in PMM as follows:
 To enable access roles in a ``pmm-server`` docker container, pass an additional environment variable ``RBAC_ENABLE=1`` when starting the container.
 
 ```sh
-docker run … -e RBAC_ENABLE=1
+docker run … RBAC_ENABLE=1
 ```
 
 For compose add additional an variable:
@@ -121,9 +122,15 @@ To assign access roles to users, do the following:
 
 This use case demonstrates the following scenario:
 
-- There are two environments: **prod** and **qa**
+The following labels are there as part of this use case:
 
-- There are two projects: **shop** and **bank**
+-  Environments: **prod** and **qa**
+
+-  Projects: **shop** and **bank**
+
+The following roles are created as part of this use case:
+
+- Roles: Admin, Dev and QA
 
 An overview of the infrastructure can be seen in the diagram below. PMM monitors several services. The metrics that are stored in VictoriaMetrics have the appropriate labels.
 
@@ -137,6 +144,25 @@ An overview of the infrastructure can be seen in the diagram below. PMM monitors
 - QA role - has access to all metrics within **env=qa** only
 
 ![!](../../_images/PMM_access_control_usecase_roles.jpg)
+
+
+**Assigning Roles**
+
+You can [assign roles to users](access_roles.md#assigning-roles-to-users-in-PMM) as follows:
+
+1. Admin: Full Access
+
+2. Dev: 
+
+
+
+
+
+
+
+
+
+
 
 
 

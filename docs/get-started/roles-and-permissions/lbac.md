@@ -15,7 +15,7 @@ PMM supports predefined as well as custom labels. PMM always assigns predefined 
 
 | **Label Type**| **Object**| **Label name **| **Example** |                                                                                                
 |----------|--------|-------|------------------------------|
-| **Standard**  | Node   | node_id |/node_id/123|                                          
+| **Predefined**  | Node   | node_id |/node_id/123|                                          
 |          | Service|service_type   |   - mysql, mongodb, postgresql etc.                                     
 | **Custom**| Node, Service, Agent| Any string matching regular expression: <br /> [a-zA-Z_][a-zA-Z0-9_]*. <br /> Also, it cannot start with two underscores.| owner="joe"<br/> _rack="12345"|
 
@@ -23,6 +23,8 @@ PMM supports predefined as well as custom labels. PMM always assigns predefined 
 ## Adding labels in PMM
 
 You can add custom or predefined labels in PMM while adding a service for monitoring in PMM. 
+
+**Using PMM UI**
 
 You can set the labels using User interface as follows:
 
@@ -33,3 +35,7 @@ You can set the labels using User interface as follows:
 3. Enter the details such as *Hostname, Service name, Port, Username, Password,* etc., along with Label or Custom labels.
 
  ![!](../../_images/PMM_access_control_add_labels_services.png)
+
+ **Using pmm-admin**
+
+ You can also assign labels using `[pmm-admin](../../details/commands/pmm-admin.md)`.
