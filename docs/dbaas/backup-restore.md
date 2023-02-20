@@ -48,7 +48,12 @@ To restore backup, do the following:
 
 2. Click <i class="uil uil-toggle-off"></i> toggle in the *Enable restore* panel.
 
+[!](../_images/PMM_DBaaS_restore.png)
+
 3. Enter the information on the *Enable restore* panel.
+
+
+
 
 
 
