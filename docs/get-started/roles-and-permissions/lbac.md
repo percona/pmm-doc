@@ -8,7 +8,7 @@ With Label-based access control, you can associate multiple labels with a role, 
 
 ## Predefined vs Custom labels
 
-PMM supports predefined as well as custom labels. PMM always assigns predefined labels. When an object (Node, Service, or Agent) is created, a user can set initial values.  Predefined labels are automatically assigned and updated by PMM. Custom labels are assigned and updated only by a user.
+PMM supports predefined as well as custom labels. PMM automatically assigns predefined labels. You can also set predefined labels when an object (Node, Service, or Agent) is created. Custom labels are assigned and updated only by a user.
 
 **Examples**
 
