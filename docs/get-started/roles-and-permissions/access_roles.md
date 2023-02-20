@@ -32,14 +32,14 @@ To create access roles in PMM, do the following:
 1. From the *Main* menu, navigate to *Configuration > Access Roles*. *Access Roles* tab
  opens.
 
-  ![!](../../_images/PMM_access_control_create_role.png)
+   ![!](../../_images/PMM_access_control_create_role.png)
 
 2. Click *Create*. Create role page opens.
 
 
 3. Enter the Role name and Role description.
 
-  ![!](../../_images/PMM_access_control_role_name.png)
+   ![!](../../_images/PMM_access_control_role_name.png)
 
 4. Select the following from the dropdowns for metrics access:
     - Label
