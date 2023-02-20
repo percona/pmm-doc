@@ -52,8 +52,8 @@ To create access roles in PMM, do the following:
 
 5. Click *Create* role.
 
-!!! note alert alert-primary "Note"
-    To create roles, you must have admin privileges. For more information, see [Manage users](../../how-to/manage-users.md).
+  !!! note alert alert-primary "Note"
+      To create roles, you must have admin privileges. For more information, see [Manage users](../../how-to/manage-users.md).
 
 ## Managing access roles in PMM
 
