@@ -36,7 +36,7 @@ Once OLM is installed PMM does the following actions to install operator
 1. Creates a subscription for an operator
 2. Approves the first available install plan automatically
 
-Once install plan is approved OLM will create ClusterServiceVersion automatically and install the operator.
+Once the install plan is approved OLM will create a corresponding ClusterServiceVersion automatically and install the operator.
 
 During this process the following steps might go wrong
 
