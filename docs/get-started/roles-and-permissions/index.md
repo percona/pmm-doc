@@ -7,12 +7,6 @@ Each PMM user is associated with a role that includes permissions. Permissions d
 
 By creating roles, you can specify which data can be queried based on specific label criteria, for instance, allowing the QA team to view data related to test environments.
 
-
-- [Configure access control](configure_access_roles.md)
-- [Labels for access control](lbac.md)
-- [Create access roles](configure_access_roles.md)
-- [Use case](use_case.md)
-
 # About Access Control
 
 !!! caution alert alert-warning "Caution"
@@ -20,3 +14,10 @@ By creating roles, you can specify which data can be queried based on specific l
 
 
 Access control in PMM allows you to manage who has access to individual Prometheus (Victoria Metrics)  metrics based on **labels**. Thus, access management provides a standardized way of granting, changing, and revoking access to metrics based on the role assigned to the users.
+
+The following topics are covered as part of access control:
+
+- [Configure access control](configure_access_roles.md)
+- [Labels for access control](lbac.md)
+- [Create access roles](configure_access_roles.md)
+- [Use case](use_case.md)
