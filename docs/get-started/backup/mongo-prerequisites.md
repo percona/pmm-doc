@@ -12,6 +12,11 @@ Before creating MongoDB backups, make sure to:
        <pre>pmm-admin add mongodb
        username=pmm_mongodb --password=password 
        query-source=profiler <mark>--cluster=mycluster</mark></code></pre>
+
+       <pre>pmm-admin add mongodb
+       username=pmm_mongodb --password=password 
+       query-source=profiler ==--cluster=mycluster==</code></pre>
+
 7. Check that MongoDB nodes are members of replica set.
 8. Check that you set the [required permissions for creating and restoring MongoDB backups](../../setting-up/client/mongodb.md#create-pmm-account-and-set-permissions).
 9.  Verify the [MongoDB supported configurations and limitations](../../get-started/backup/mongodb_limitations.md).
