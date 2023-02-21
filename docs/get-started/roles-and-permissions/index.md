@@ -1,4 +1,4 @@
-# Roles and permissions in PMM
+# Roles and permissions
 
 
 Roles are the sets of permissions and configurations that determine which metrics a user can access.

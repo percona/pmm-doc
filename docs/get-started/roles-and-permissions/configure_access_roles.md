@@ -1,4 +1,4 @@
-# Configure access control in PMM
+# Configure access control
 
 You can configure access control in PMM as follows:
 
