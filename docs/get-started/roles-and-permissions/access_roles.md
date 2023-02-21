@@ -1,4 +1,4 @@
-# Creating access roles
+# Create access roles
 
 Roles are a vital part of Access control. Roles provide users with access to specific, role-based metrics.
 
@@ -30,11 +30,11 @@ To create access roles in PMM, do the following:
 !!! note alert alert-primary "Note"
     To create roles, you must have admin privileges. For more information, see [Manage users](../../how-to/manage-users.md).
 
-## Managing access roles in PMM
+## Manage access roles
 
 You can manage roles in PMM by editing or deleting a role.
 
-### Editing a role
+### Edid roles
 
 To edit access roles, do the following:
 
@@ -52,7 +52,7 @@ To edit access roles, do the following:
 4. Click Save Changes.
 
 
-### Setting a role as default
+### Set a role as default
 
 When a user signs in to PMM for the first time and the user has no role assigned, the user is automatically assigned the *Default* role. For administrators, the default role provides a convenient way to configure default permissions for new users.
 
@@ -66,7 +66,7 @@ To set a role as default, do the following:
  ![!](../../_images/PMM_access_control_default_role_changes.png)
 
 
-### Removing a role
+### Remove a role
 
 To remove access roles, do the following:
 
@@ -79,7 +79,7 @@ To remove access roles, do the following:
 
 3. Click *Confirm* and delete the role.
 
-## Assigning roles to users in PMM
+## Assign roles to users
 
 To assign access roles to users, do the following:
 
