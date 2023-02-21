@@ -12,7 +12,7 @@ To configure access roles in a ``pmm-server`` docker container, pass an addition
 docker run … -e ENABLE_RBAC=1
 ```
 
-For compose add additional an variable:
+For compose add an additional variable:
 
 ```
 services:
