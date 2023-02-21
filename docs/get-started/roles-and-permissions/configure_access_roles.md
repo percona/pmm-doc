@@ -27,8 +27,7 @@ services:
 
 To configure access control with the User Interface, do the following:
 
-From the main menu, navigate to <i class="uil uil-cog"></i> *Configuration* → <i class="uil uil-setting"></i> *Settings* → *Advanced Settings* → *Access Control* to enable *Access Control*.
-
+From the main menu, navigate to <i class="uil uil-cog"></i> *Configuration* → <i class="uil uil-setting"></i> *Settings* → *Advanced Settings* → *Access Control* and click <i class="uil uil-toggle-off"></i> toggle.
 
 
 ## Creating access roles in PMM

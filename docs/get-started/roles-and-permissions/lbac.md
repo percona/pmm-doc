@@ -6,7 +6,7 @@ Label-based access control in PMM allows you to manage who has access to metrics
 With Label-based access control, you can associate multiple labels with a role, ensuring only data from series that match your defined labels is returned. 
 
 
-## Predefined vs Custom labels
+## Predefined vs custom labels
 
 PMM supports predefined as well as custom labels. PMM automatically assigns predefined labels. You can also set predefined labels when an object (Node, Service, or Agent) is created. Custom labels are assigned and updated only by a user.
 
