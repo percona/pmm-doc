@@ -1,4 +1,3 @@
-
 # Use Case
 
 This use case demonstrates the following scenario:
