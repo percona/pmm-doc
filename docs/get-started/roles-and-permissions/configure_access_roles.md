@@ -2,6 +2,9 @@
 
 You can configure access control in PMM as follows:
 
+- Docker
+- User Interface
+
 ## Configure access control using Docker
 
 To configure access roles in a ``pmm-server`` docker container, pass an additional environment variable ``ENABLE_RBAC=1`` when starting the container.
