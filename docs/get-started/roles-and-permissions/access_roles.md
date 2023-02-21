@@ -20,7 +20,7 @@ To create access roles in PMM, do the following:
     - Operator
     - Value of the label.
 
- If you want to add more than one label for a role, click *+* and select the values from the dropdown.
+ If you want to add more than one label for a role, click *+* and select the values from the drop-down.
 
  For information on how the Prometheus selectors work, see [Prometheus selectors](https://prometheus.io/docs/prometheus/latest/querying/basics/#time-series-selectors).
 
