@@ -27,7 +27,7 @@ Note: the output may be longer but it shows what needs to be installed automatic
 3. Packageserver is responsible for providing metadata to the operators like ClusterServiceVersion that is used for installing/upgrading operators.
 4. percona-dbaas-catalog is Percona's managed catalog that defines which operators' versions are available. This component has information about tested and supported versions of operators.
 
-You can use `kubectl describe pod -n olm podName` to understand what went wrong during the installation
+You can use `kubectl describe pod -n olm podName` to understand what went wrong during the installation.
 
 ### Troubleshooting operators installation
 
