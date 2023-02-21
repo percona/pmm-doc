@@ -2,7 +2,7 @@
 
 Roles are a vital part of Access control. Roles provide users with access to specific, role-based metrics.
 
-You can configure access roles in PMM as follows:
+You can configure access control in PMM as follows:
 
 ## Configure access control using Docker
 
