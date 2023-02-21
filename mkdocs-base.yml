@@ -170,6 +170,8 @@ nav:
           - get-started/roles-and-permissions/configure_access_roles.md
           - get-started/roles-and-permissions/lbac.md
           - get-started/roles-and-permissions/access_roles.md
+          - get-started/roles-and-permissions/manage_roles.md
+          - get-started/roles-and-permissions/assign_roles.md
           - get-started/roles-and-permissions/use_case.md
 
   - How to:
