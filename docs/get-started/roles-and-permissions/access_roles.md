@@ -15,7 +15,7 @@ To create access roles in PMM, do the following:
 
     ![!](../../_images/PMM_access_control_role_name.png)
 
-4. Select the following from the dropdowns for metrics access:
+4. Select the following from the drop-downs for metrics access:
     - Label
     - Operator
     - Value of the label.
