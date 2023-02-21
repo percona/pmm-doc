@@ -8,10 +8,10 @@ You can enable access roles in PMM as follows:
 
 **Docker**
 
-To enable access roles in a ``pmm-server`` docker container, pass an additional environment variable ``RBAC_ENABLE=1`` when starting the container.
+To enable access roles in a ``pmm-server`` docker container, pass an additional environment variable ``ENABLE_RBAC=1`` when starting the container.
 
 ```sh
-docker run … RBAC_ENABLE=1
+docker run … -e ENABLE_RBAC=1
 ```
 
 For compose add additional an variable:
