@@ -38,4 +38,4 @@ You can set the labels using User interface as follows:
 
  **Using pmm-admin**
 
- You can also assign labels using `[pmm-admin](../../details/commands/pmm-admin.md)`.
+ You can also assign labels using [pmm-admin](../../details/commands/pmm-admin.md).
