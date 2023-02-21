@@ -78,11 +78,13 @@ To create a DB cluster, do the following:
 
 ### Delete a DB Cluster
 
-1. Find the row with the database cluster you want to delete.
+1. Select the *DB Cluster* tab.
 
-2. In the *Actions* column, open the <i class="uil uil-ellipsis-v"></i> menu and click *Delete*.
+2. Find the row with the database cluster you want to delete.
 
-3. Confirm the action by clicking *Proceed*, or abandon by clicking *Cancel*.
+3. In the *Actions* column, open the <i class="uil uil-ellipsis-v"></i> menu and click *Delete*.
+
+4. Confirm the action by clicking *Proceed*, or abandon by clicking *Cancel*.
 
     ![!](../_images/PMM_DBaaS_DB_Cluster_Delete.png)
 
