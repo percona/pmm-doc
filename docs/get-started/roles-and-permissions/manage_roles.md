@@ -27,9 +27,9 @@ When a user signs in to PMM for the first time and the user has no role assigned
 
 To set a role as default, do the following:
 
-1. From the *Main* menu, navigate to *Configuration > Access Roles*. The *Access Roles* tab opens.
+1. From the *Main* menu, navigate to <i class="uil uil-cog"></i> *Configuration → Access Roles*. The *Access Roles* tab opens.
 
-2. On the role you want to set as default, click the *ellipsis (three vertical dots) > set as default* in the *Options* column.
+2. On the role you want to set as default, click the *ellipsis (three vertical dots) → set as default* in the *Options* column.
 
  ![!](../../_images/PMM_access_control_default_role_changes.png)
 
@@ -38,28 +38,14 @@ To set a role as default, do the following:
 
 To remove access roles, do the following:
 
-1. From the *Main* menu, navigate to *Configuration > Access Roles*. The *Access Roles* tab opens.
+1. From the *Main* menu, navigate to <i class="uil uil-cog"></i> *Configuration → Access Roles*. The *Access Roles* tab opens.
 
-2. On the role you want to remove, click the *ellipsis (three vertical dots) > Delete* in the *Options* column. Delete role pop-up opens.
+2. On the role you want to remove, click the *ellipsis (three vertical dots) →  Delete* in the *Options* column. Delete role pop-up opens.
 
     ![!](../../_images/PMM_access_control_delete_role.png)
 
 
 3. Click *Confirm* and delete the role.
-
-## Assign roles to users
-
-To assign access roles to users, do the following:
-
-1. From the *Main* menu, navigate to *Configuration > Users*. *Users* tab opens.
-
-    ![!](../../_images/PMM_access_control_assign_role.png)
-
-
-2. Select the *Access Role* you want to assign to a user from the dropdown. You can assign several roles to a user.
-
-    ![!](../../_images/PMM_access_control_select_role.png)
-
 
 
 
