@@ -1,6 +1,8 @@
 
 # Creating access roles in PMM
 
+Roles are a vital part of Access control. Roles provide users with access to specific, role-based metrics.
+
 To create access roles in PMM, do the following:
 
 1. From the *Main* menu, navigate to <i class="uil uil-cog"></i> *Configuration → Access Roles*. *Access Roles* tab
