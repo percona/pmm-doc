@@ -1,6 +1,6 @@
 # Architecture of DBaaS
 
-DBaaS is built on top of PMM and Kubernetes and the highlevel architecture is shown below
+DBaaS is built on top of PMM and Kubernetes and the high-level architecture is shown below
 
 ![!](../_images/dbaas_arch.jpg)
 
