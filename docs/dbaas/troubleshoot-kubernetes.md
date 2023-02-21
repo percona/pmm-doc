@@ -31,7 +31,7 @@ You can use `kubectl describe pod -n olm podName` to understand what went wrong 
 
 ### Troubleshooting operators installation
 
-Once OLM is installed PMM does the following actions to install operator
+Once OLM is installed, PMM does the following actions to install each operator:
 
 1. Creates a subscription for an operator
 2. Approves the first available install plan automatically
