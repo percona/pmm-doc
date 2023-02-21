@@ -6,7 +6,7 @@ You can manage roles in PMM by editing or deleting a role.
 
 To edit access roles, do the following:
 
-1. From the *Main* menu, navigate to *Configuration > Access Roles*. The Access Roles tab opens.
+1. From the *Main* menu, navigate to <i class="uil uil-cog"></i> *Configuration → Access Roles*. The *Access Roles* tab opens.
 
 2. On the role you want to edit, click the *ellipsis (three vertical dots) > edit role* in the *Options* column. The *Edit* role page opens.
 
