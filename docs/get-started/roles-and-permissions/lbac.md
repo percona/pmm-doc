@@ -1,4 +1,4 @@
-# Labels for access control in PMM
+# Labels for access control
 
 
 Label-based access control in PMM allows you to manage who has access to metrics based on labels. By creating roles, you can specify which data can be queried based on specific label criteria, for instance, allowing the QA team to view data related to test environments. 
@@ -20,7 +20,7 @@ PMM supports standard as well as custom labels. PMM automatically assigns standa
 | **Custom**| Node, Service, Agent| Any string matching regular expression: <br /> [a-zA-Z_][a-zA-Z0-9_]*. <br /> Also, it cannot start with two underscores.| owner="joe"<br/> _rack="12345"|
 
 
-## Adding labels in PMM
+## Adding labels
 
 You can add custom or standard labels in PMM while adding a service for monitoring in PMM. 
 
