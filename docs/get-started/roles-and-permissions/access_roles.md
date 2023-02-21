@@ -29,7 +29,7 @@ services:
 
 To create access roles in PMM, do the following:
 
-1. From the *Main* menu, navigate to *Configuration > Access Roles*. *Access Roles* tab
+1. From the *Main* menu, navigate to <i class="uil uil-cog"></i> *Configuration → Access Roles*. *Access Roles* tab
  opens.
 
     ![!](../../_images/PMM_access_control_create_role.png)

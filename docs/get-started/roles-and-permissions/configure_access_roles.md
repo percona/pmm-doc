@@ -1,14 +1,12 @@
-# Access roles in PMM
+# Configure access control in PMM
 
 Roles are a vital part of Access control. Roles provide users with access to specific, role-based metrics.
 
-## Enabling access roles in PMM
+You can configure access roles in PMM as follows:
 
-You can enable access roles in PMM as follows:
+## Configure access control using Docker
 
-**Docker**
-
-To enable access roles in a ``pmm-server`` docker container, pass an additional environment variable ``ENABLE_RBAC=1`` when starting the container.
+To configure access roles in a ``pmm-server`` docker container, pass an additional environment variable ``ENABLE_RBAC=1`` when starting the container.
 
 ```sh
 docker run … -e ENABLE_RBAC=1
@@ -24,6 +22,14 @@ services:
       …
       ENABLE_RBAC=1
 ```
+
+## Configure access control using the User Interface
+
+To configure access control with the User Interface, do the following:
+
+From the main menu, navigate to <i class="uil uil-cog"></i> *Configuration* → <i class="uil uil-setting"></i> *Settings* → *Advanced Settings* → *Access Control* to enable *Access Control*.
+
+
 
 ## Creating access roles in PMM
 
