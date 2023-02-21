@@ -24,7 +24,7 @@ Note: the output may be longer but it shows what needs to be installed automatic
 
 1. OLM Operator is responsible for deploying applications defined by CSV resources after the required resources specified in the CSV are present in the cluster.
 2. The Catalog Operator is responsible for resolving and installing CSVs and the required resources they specify. It is also responsible for watching CatalogSources for updates to packages in channels and upgrading them (optionally automatically) to the latest available versions.
-3. Packageserver is responsible for providing metadata for the operators like ClusterServiceVersion that used in installing/upgrading of operators
+3. Packageserver is responsible for providing metadata to the operators like ClusterServiceVersion that is used for installing/upgrading operators.
 4. percona-dbaas-catalog is Percona managed catalog is a source to manage and control the versions of operators available. This component has information about tested and supported versions of operators
 
 You can use `kubectl describe pod -n olm podName` to understand what went wrong during the installation
