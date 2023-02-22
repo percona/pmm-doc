@@ -8,11 +8,9 @@ Before creating MongoDB backups, make sure to:
 4. Check that [PMM Client](../../setting-up/client/index.md) is installed. For creating logical backups, the PMM client should run on at least one node of the replica set. Make sure this is the one that will be used for backup and restore jobs. For physical backups, make sure PMM client runs on all nodes instead.  
 5. Check that [Percona Backup for MongoDB](https://docs.percona.com/percona-backup-mongodb/index.html) (PBM) is installed and `pbm-agent` is running on all MongoDB nodes in the replica set. PMM 2.32 and later require PBM 2.0.1 or newer.
 6. Check that your MongoDB Services are managed as clusters in PMM. Go to **PMM Inventory > Services** page and make sure that all the services in the table specify a cluster name in the **Other Details** column. Services that do not specify a cluster name should be removed and re-added using command like the following:
-   <pre><code>
-   pmm-admin add mongodb \
+   <pre><code>pmm-admin add mongodb \
    --username=pmm_mongodb --password=password \
-   query-source=profiler <mark>--cluster=mycluster</mark>
-   </code></pre>
+   query-source=profiler <mark>--cluster=mycluster</mark></code></pre>
 
 7. Check that MongoDB nodes are members of replica set.
 8. Check that you set the [required permissions for creating and restoring MongoDB backups](../../setting-up/client/mongodb.md#create-pmm-account-and-set-permissions).
