@@ -4,13 +4,13 @@
 
 This use case demonstrates the following scenario:
 
-The following labels are created as part of this use case:
+**Labels**
 
 -  Environments: **prod** and **qa**
 
 -  Projects: **shop** and **bank**
 
-The following roles are created as part of this use case:
+**Roles**
 
 - Roles: Admin, Dev and QA
 
@@ -29,20 +29,26 @@ An overview of the infrastructure can be seen in the diagram below. PMM monitors
 
 ## Use case 2
 
-The following use case demonstares the following scenario:
+The use case demonstrates the following scenario:
 
-The following labels are there:
+**Labels**
 
-1. Environments: prod and dev
+- Environments: prod and dev
 
-2. Services: postgresql and mysql
+ - Services: postgresql and mysql
+
+**Roles**
+
+
+
+
 
 
 | **Component**|**Role assigned**|**Labels applied to the role**|**Accessible Metrics**                                                                                                  |
 |----------|--------|---------------------------------------------- |-------------------------------------------------------------------------------------------------------------|
-| **User 1**  | dev    | `environment="dev", service="postgresql"`|The metrics for service postgresql on the dev environment will be accessible.|                                          
-| **User 2**  | prod    | `environment="prod", service="mysql"`|The metrics for service mysql on the dev environment will be accessible.|                                          
-| **User 3**  | dev    | `environment="dev", service="postgresql"` and </br> `environment="prod", service="mysql"` |The metrics for both the services mysql and postresql on the prod as well as dev environments will be accessible.|                                          
+| **User 1**  | `role_dev`    |`environment="dev", service="postgresql"`|The metrics for service postgresql on the dev environment will be accessible.|                                          
+| **User 2**  | `role_prod`    |`environment="prod", service="mysql"`|The metrics for service mysql on the dev environment will be accessible.|                                          
+| **User 3**  | `role_dev` and `role_prod`|`environment="dev", service="postgresql"` and </br> `environment="prod", service="mysql"` |The metrics for both the services mysql and postresql on the prod as well as dev environments will be accessible.|                                          
 
 
 
