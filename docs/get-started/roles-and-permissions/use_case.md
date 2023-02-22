@@ -35,13 +35,12 @@ The use case demonstrates the following scenario:
 
 - Environments: prod and dev
 
- - Services: postgresql and mysql
+- Services: postgresql and mysql
 
 **Roles**
 
-
-
-
+- role_dev
+- role_prod
 
 
 | **Component**|**Role assigned**|**Labels applied to the role**|**Accessible Metrics**                                                                                                  |
