@@ -1,8 +1,10 @@
 # Use Case
 
+## Use case 1
+
 This use case demonstrates the following scenario:
 
-The following labels are there as part of this use case:
+The following labels are created as part of this use case:
 
 -  Environments: **prod** and **qa**
 
@@ -23,6 +25,27 @@ An overview of the infrastructure can be seen in the diagram below. PMM monitors
 - QA role - has access to all metrics within **env=qa** only
 
     ![!](../../_images/PMM_access_control_usecase_roles.jpg)
+
+
+## Use case 2
+
+The following use case demonstares the following scenario:
+
+The following labels are there:
+
+1. Environments: prod and dev
+
+2. Services: postgresql and mysql
+
+
+| **Component**|**Role assigned**|**Labels applied to the role**|**Accessible Metrics**                                                                                                  |
+|----------|--------|---------------------------------------------- |-------------------------------------------------------------------------------------------------------------|
+| **User 1**  | dev    | `environment="dev", service="postgresql"`|The metrics for service postgresql on the dev environment will be accessible.|                                          
+| **User 2**  | prod    | `environment="prod", service="mysql"`|The metrics for service mysql on the dev environment will be accessible.|                                          
+| **User 3**  | dev    | `environment="dev", service="postgresql"` and </br> `environment="prod", service="mysql"` |The metrics for both the services mysql and postresql on the prod as well as dev environments will be accessible.|                                          
+
+
+
 
 
 
