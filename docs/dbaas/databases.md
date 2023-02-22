@@ -2,7 +2,7 @@
 
 ### Add a DB Cluster
 
-You must create at least one Kubernetes cluster to create a DB cluster.
+In order to create a database cluster you must have at least one Kubernetes cluster registered to PMM.  Start [here](dbaas/setting-up.md#create-a-kubernetes-cluster) if you haven't done that yet.  
 
 !!! caution alert alert-warning "Important"
 In order for PMM to collect metrics from your DB clusters, you must first set the [public address](../how-to/configure.md#public-address) of your PMM server.
