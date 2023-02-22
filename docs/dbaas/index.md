@@ -1,6 +1,6 @@
 # Welcome to PMM/DBaaS
 
-DBaaS feature of Percona Monitoring and Management (PMM) is an open source solution to run MySQL and MongoDB clusters on Kubernetes
+DBaaS feature of Percona Monitoring and Management (PMM) is an open source solution to run MySQL and MongoDB clusters on Kubernetes.
 
 It allows you to utilize benefits of Kubernetes and Percona's operators to run and manage database clusters
 
