@@ -74,7 +74,7 @@ In order to simplify DBaaS, k8s clusters can now be automatically added to PMM a
     For a Kubernetes cluster, when using Amazon Elastic Kubernetes Service (EKS) and the *kubeconfig file* does not contain the AWS
     access key ID and AWS secret access key. Select the *Using Amazon Elastic Kubernetes Service (EKS)*
     checkbox and enter the access key ID and secret access key in the respective fields.
-    Please refer to the [AWS documentation] for instructions on how to get these.
+    Please refer to the [AWS documentation](https://docs.aws.amazon.com/) for instructions on how to get these.
 
 
 
