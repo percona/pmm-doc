@@ -103,7 +103,7 @@ In order to simplify DBaaS, k8s clusters can now be automatically added to PMM a
 
 ## Manage allowed component versions
 
-Administrators can select allowed and default versions of components versions for each cluster.
+Administrators can select allowed and default versions of components for each cluster.
 
 1. Find the row with the Kubernetes cluster you want to manage.
 
