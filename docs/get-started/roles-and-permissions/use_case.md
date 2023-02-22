@@ -43,7 +43,7 @@ The use case demonstrates the following scenario:
 - role_mysql
 
 
-| **Component**|**Role assigned**|**Labels applied to the role**|**Accessible Metrics**                                                                                                  |
+|           |**Role assigned**|**Labels applied to the role**|**Accessible Metrics**                                                                                                  |
 |----------|--------|---------------------------------------------- |-------------------------------------------------------------------------------------------------------------|
 | **User 1**  | `role_postresql`    |`dev, service_name="postgresql"`|The metrics for service postgresql on the dev environment will be accessible.|                                          
 | **User 2**  | `role_mysql`    |`"prod, service_name="mysql"`|The metrics for service mysql on the dev environment will be accessible.|                                          
