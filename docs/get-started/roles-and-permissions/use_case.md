@@ -39,15 +39,15 @@ The use case demonstrates the following scenario:
 
 **Roles**
 
-- role_dev
-- role_prod
+- role_postresql
+- role_mysql
 
 
 | **Component**|**Role assigned**|**Labels applied to the role**|**Accessible Metrics**                                                                                                  |
 |----------|--------|---------------------------------------------- |-------------------------------------------------------------------------------------------------------------|
-| **User 1**  | `role_dev`    |`environment="dev", service="postgresql"`|The metrics for service postgresql on the dev environment will be accessible.|                                          
-| **User 2**  | `role_prod`    |`environment="prod", service="mysql"`|The metrics for service mysql on the dev environment will be accessible.|                                          
-| **User 3**  | `role_dev` and `role_prod`|`environment="dev", service="postgresql"` and </br> `environment="prod", service="mysql"` |The metrics for both the services mysql and postresql on the prod as well as dev environments will be accessible.|                                          
+| **User 1**  | `role_postresql`    |`dev, service_name="postgresql"`|The metrics for service postgresql on the dev environment will be accessible.|                                          
+| **User 2**  | `role_mysql`    |`"prod, service_name="mysql"`|The metrics for service mysql on the dev environment will be accessible.|                                          
+| **User 3**  | `role_postgresql` and `role_mysql`|`dev, service_name="postgresql"` and </br> `prod, service_name="mysql"` |The metrics for both the services mysql and postresql on the prod as well as dev environments will be accessible.|                                          
 
 
 
