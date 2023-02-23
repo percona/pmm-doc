@@ -1,4 +1,4 @@
-# Architecture of DBaaS
+# DBaaS architecture
 
 DBaaS is built on top of PMM and Kubernetes and the high-level architecture is shown below
 
