@@ -150,7 +150,11 @@ pmmEnv:
 
 PMM ships with self signed SSL certificates to provide secure connection between client and server ([check here](../../how-to/secure.md#ssl-encryption)).
 
-You will see the warning when connecting to PMM. To further increase security, you should provide your certificates and add values of credentials to the fields of the `cert` section:
+You will see the warning when connecting to PMM. To further increase security, you should set up TLS certificates with Ingress controller, see [TLS](https://kubernetes.io/docs/concepts/services-networking/ingress/#tls). PMM helm chart supports Ingress. See [PMM network configuration](https://github.com/percona/percona-helm-charts/tree/main/charts/pmm#pmm-network-configuration). 
+
+For detailed instruction please check [Install PMM instance on Amazon EKS](../../how-to/pmm-eks.md#deploy-cert-manager).
+
+Another approach to set up TLS certificates is to provide your certificates and add values of credentials to the fields of the `cert` section:
 
 ```yaml
 certs:
@@ -161,8 +165,6 @@ certs:
     ca-certs.pem: <content>
     dhparam.pem: <content>
 ```
-
-Another approach to set up TLS certificates is to use the Ingress controller, see [TLS](https://kubernetes.io/docs/concepts/services-networking/ingress/#tls). PMM helm chart supports Ingress. See [PMM network configuration](https://github.com/percona/percona-helm-charts/tree/main/charts/pmm#pmm-network-configuration).
 
 ## Backup
 
@@ -220,7 +222,7 @@ You can view available snapshots by executing the following command:
 kubectl get volumesnapshot
 ```
 
-### Upgrades
+## Upgrades
 
 Percona will release a new chart updating its containers if a new version of the main container is available, there are any significant changes, or critical vulnerabilities exist.
 
@@ -278,7 +280,7 @@ pvc-9dbd9160-e4c5-47a7-bd90-bff36fc1463e   10Gi       RWO            Delete     
 
 Delete unneeded PVC when you are sure you don't need them.
 
-### Uninstall
+## Uninstall
 
 To uninstall `pmm` deployment:
 
