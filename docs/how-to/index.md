@@ -10,4 +10,3 @@
 - [Extend Metrics](extend-metrics.md) with textfile collector.
 - [Troubleshoot](troubleshoot.md).
 - [Install PMM Server on Amazon EKS](pmm-eks.md).
-- [Configure Pacemaker](pacemaker.md) to manage PMM HA cluster.
