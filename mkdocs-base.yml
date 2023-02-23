@@ -185,6 +185,7 @@ nav:
       - how-to/share-dashboard.md
       - how-to/extend-metrics.md
       - how-to/troubleshoot.md
+      - how-to/pmm-eks.md
       - Integrate with Percona Platform:
           - how-to/integrate-platform.md
           - how-to/account-info.md
