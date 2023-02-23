@@ -1,4 +1,4 @@
-# Introduction to PMM DBaaS
+# Introduction to PMM Database as a service (DBaaS)
 
 Database as a service (DBaaS) feature of Percona Monitoring and Management (PMM) is an open source solution to run MySQL and MongoDB clusters on Kubernetes.
 
