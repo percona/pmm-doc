@@ -263,14 +263,5 @@ PMM is deployed with the help of the [Helm chart].
 
 For more details, see [documentation](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-to-elb-load-balancer.html).
 
-
-## PMM HA
-
-Kubernetes cluster (EKS) provides high availability. Kubernetes clusters have *health* probes mechanism and service discovery that can detect when a pod is failed and reroute traffic to healthy pods. Probes check the health of unhealthy pods and restart them if necessary.
-
-PMM is running as `StatefulSet` and has a persistent volume. Kubernetes can attach a disk from one pod to another replacement pod, but an application would still suffer a temporary outage until the new pod has attached the disk and started up. Outage time is around 1-2 minutes.
-
-!!! caution alert alert-warning "Important"
-    EBS volume and instance must be in the same Availability Zone. 
-
 [Helm chart]: ../setting-up/server/helm.md
+
