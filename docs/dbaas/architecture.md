@@ -4,9 +4,8 @@ DBaaS is built on top of PMM and Kubernetes and the high-level architecture is s
 
 ![!](../_images/dbaas_arch.jpg)
 
-## PMM
 
-Areas of responsibility of PMM:
+In DBaaS, the role of PMM is as follows:
 
 1. Expose Public REST API
 2. Provision Kubernetes cluster and install the following operators:
