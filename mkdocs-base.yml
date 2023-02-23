@@ -271,7 +271,7 @@ nav:
       - details/victoria-metrics.md
       - details/clickhouse.md
       - details/glossary.md
-  - PMM Database-as-a-service (DBaaS:
+  - PMM DBaaS:
     - "Introduction": dbaas/index.md
     - dbaas/architecture.md
     - "Setting up":
