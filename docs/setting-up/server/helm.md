@@ -61,7 +61,7 @@ kind: Secret
 metadata:
   name: pmm-secret
   labels:
-    app.kubernetes.io/name: "pmm"
+    app.kubernetes.io/name: pmm
 type: Opaque
 data:
 # base64 encoded password
@@ -132,7 +132,7 @@ Alternatively, a YAML file that specifies the values for the above parameters ca
 ```sh
 helm show values percona/pmm > values.yaml
 
-#change needed parameters in values.yaml
+#change needed parameters in values.yaml, you need `yq` tool pre-installed
 yq -i e '.secret.create |= false' values.yaml
 
 helm install pmm -f values.yaml percona/pmm
@@ -193,7 +193,7 @@ kind: VolumeSnapshot
 metadata:
   name: before-v2.34.0-upgrade
   labels:
-    app.kubernetes.io/name: "pmm"
+    app.kubernetes.io/name: pmm
 spec:
   volumeSnapshotClassName: csi-hostpath-snapclass
   source:
