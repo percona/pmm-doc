@@ -4,7 +4,6 @@
 |-------------------|------------------------------------------------------------------------------------------|:-------------------------------------:|
 | Insight           | [Advanced Data Exploration]                                                              | 7
 | Insight           | [Home Dashboard]                                                                         | 26
-| Insight           | [Experimental Home Dashboard]                                                            | 26
 | Insight           | [Prometheus Exporter Status]                                                             | 57
 | Insight           | [Prometheus Exporters Overview]                                                          | 27
 | Insight           | [VictoriaMetrics]                                                                        | 52
@@ -12,7 +11,7 @@
 | PMM               | [PMM Inventory]                                                                          | 3
 | PMM               | [Environment Overview]                                                                   | 0
 | PMM               | [Environment Summary]                                                                    | 0
-| DBaas             | [DB Cluster Summary]                                                                     | 0
+| DBaaS             | [DB Cluster Summary]                                                                     | 0
 | OS                | [CPU Utilization Details]                                                                | 21
 | OS                | [Disk Details]                                                                           | 34
 | OS                | [Network Details]                                                                        | 70
@@ -64,7 +63,6 @@
 
 [Advanced Data Exploration]: dashboard-advanced-data-exploration.md
 [Home Dashboard]: dashboard-home.md
-[Experimental Home Dashboard]: dashboard-home-experimental.md
 [DB Cluster Summary]: dashboard-cluster-summary.md
 [Prometheus Exporter Status]: dashboard-prometheus-exporter-status.md
 [Prometheus Exporters Overview]: dashboard-prometheus-exporters-overview.md

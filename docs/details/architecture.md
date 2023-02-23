@@ -8,7 +8,7 @@ PMM is a client/server application built by Percona comprising its own and third
 
 ## PMM Server
 
-PMM Server is the heart of PMM. It receives data from clients, collects it, and stores it. Metrics are drawn as tables, charts and graphs within [_dashboards_](dashboards/), each a part of the web-based [user interface](../using/interface.md).
+PMM Server is the heart of PMM. It receives data from clients, collects it, and stores it. Metrics are drawn as tables, charts and graphs within [_dashboards_](dashboards/), each a part of the web-based [user interface](../get-started/interface.md).
 
 ## PMM Client
 
@@ -37,7 +37,9 @@ The PMM Server package provides:
 
 ### PMM Server
 
-![!image](../_images/PMM_Architecture_Client_Server.jpg)
+<!-- The source of this image is maintained at https://miro.com/app/board/uXjVOPgKgrE=/ -->
+
+![!image](../_images/PMM-Server-Component-Based-View.jpg)
 
 PMM Server includes the following tools:
 
@@ -45,6 +47,7 @@ PMM Server includes the following tools:
 
     - QAN API is the back-end for storing and accessing query data collected by the QAN agent running on a PMM Client.
     - QAN App is a web application for visualizing collected Query Analytics data, which is part of the PMM Server's UI.
+
 
 - Metrics Monitor provides a historical view of metrics that are critical to a MySQL or MongoDB server instance. It includes the following:
 
@@ -55,7 +58,7 @@ PMM Server includes the following tools:
 
 ### PMM Client
 
-![!image](../_images/diagram.pmm.client-architecture.png)
+![!image](../_images/PMM-Client-Component-Based-View.jpg)
 
 The PMM Client package consists of the following:
 
@@ -77,7 +80,7 @@ The PMM Client package consists of the following:
 
 - `azure_database_exporter` is an exporter that collects Azure database performance metrics.
 
-To make data transfer from PMM Client to PMM Server secure, all exporters are able to use SSL/TLS encrypted connections, and their communication with the PMM server is protected by the HTTP basic authentication.
+To make data transfer from PMM Client to PMM Server secure, all exporters are able to use SSL/TLS encrypted connections, and their communication with PMM server is protected by the HTTP basic authentication.
 
 <!-- The source of this image is maintained at https://miro.com/app/board/uXjVOPgKgrE=/ -->
 

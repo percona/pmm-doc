@@ -5,16 +5,16 @@ How to set up PMM to monitor a MySQL or MySQL-based database instance.
 PMM Client collects metrics from [MySQL][ORACLE_MYSQL], [Percona Server for MySQL][PERCONA_SERVER_MYSQL], [Percona XtraDB Cluster][PERCONA_XTRADB_CLUSTER], and [MariaDB][MARIADB]. (Amazon RDS is also supported and explained in a [separate section](aws.md).)
 
 !!! summary alert alert-info "Summary"
-    - Create PMM account and set permissions.
-    - Choose a data source:
-        - Slow query log, or,
-        - Performance Schema.
+    - [Create PMM account and set permissions.](#create-a-database-account-for-pmm)
+    - [Choose a data source](#choose-and-configure-a-source):
+        - [Slow query log](#slow-query-log), or,
+        - [Performance Schema](#performance-schema).
     - Configure:
-        - Query response time,
-        - Tablestats,
-        - User statistics.
-    - Add service.
-    - Check service.
+        - [Query response time](#query-response-time),
+        - [Tablestats](#tablestats),
+        - [User statistics](#user-statistics).
+    - [Add service](#add-service).
+    - [Check the service](#check-the-service).
 
 ## Before you start
 
@@ -253,7 +253,7 @@ There is no *Explain* or *Example* data shown by default in Query Analytics when
 
 ## Query response time
 
-*Query time distribution* is a chart in the [*Details* tab of Query Analytics](../../using/query-analytics.md#details-tab) showing the proportion of query time spent on various activities. It is enabled with the `query_response_time_stats` variable and associated plugins.
+*Query time distribution* is a chart in the [*Details* tab of Query Analytics](../../get-started/query-analytics.md#details-tab) showing the proportion of query time spent on various activities. It is enabled with the `query_response_time_stats` variable and associated plugins.
 
 ### Applicable versions
 

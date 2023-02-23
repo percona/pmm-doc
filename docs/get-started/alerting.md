@@ -27,8 +27,6 @@ An alert rule consists of one or more queries and expressions, a condition, the 
 
 For example, you might configure an alert to identify and notify you when MongoDB is down.
 
-### Alert templates
-
 Provide a simplified framework for configuring complex alert rules. 
 
 PMM includes a set of default templates with common events and expressions for alerting. You can also create your own templates if you need custom expressions on which to base your alert rules.
@@ -41,7 +39,7 @@ You can check the  alert templates available for your account under **Alerting >
 4. Custom template files available in your  ``yaml srv/alerting/templates`` directory. PMM loads them during startup.
 
 ### Silences
-Silences specify periods of time to suppress notifications. During a silence, PMM continues to track metrics and trigger alerts but does not send notifications to the specified contact points. Once the specified silence expires, notifications are resumed. 
+Silences specify periods of time to suppress notifications. During a silence, PMM continues to track metrics and trigger alerts but does not send notifications to the specified contact points. Once the specified silence expires, notifications are resumed.
 
 For example, you can create a silence to suppress trivial notifications during weekends.
 
@@ -75,7 +73,7 @@ Alert templates contain general template details and an alert expression defined
 
 If none of the default PMM templates contain a relevant expression for the alert rule that you need, you can create a custom template instead.
 
-You can base multiple alert rules on the same template. For example, you can create a **pmm_node_high_cpu_load** template that can be used as the source for alert rules for production versus staging, warning versus critical, etc.
+You can base multiple alert rules on the same template. For example, you can create a `pmm_node_high_cpu_load` template that can be used as the source for alert rules for production versus staging, warning versus critical, etc.
 
 #### Template format
 When creating custom templates, make sure to use the required template format below:
@@ -88,12 +86,13 @@ When creating custom templates, make sure to use the required template format be
     - **name** (required): the name of the parameter. Spaces and special characters are not allowed.
     - **summary** (required): a short description of what this parameter represents.
     - **unit** (optional): PMM currently supports either s (seconds) or % (percentage).
-    - **type** (required):PMM currently supports the float type. string, bool, and other types will be available in a future release.
-    - **range** (optional): defines the boundaries for the value of a  float parameter.
-   - **value** (optional): default  parameter value. Value strings must not include any of these special characters: < > ! @ # $ % ^ & * ( ) _ / \ ' + - = (space)
-- **for** (required): specifies the duration of time that the expression must be met before the alert will be fired.
-- **severity** (required): specifies default alert severity level.
- - **labels** (optional): are additional labels to be added to generated alerts.
+    - **type** (required):PMM currently supports the `float` type. `string`, `bool`, and other types will be available in a future release.
+    - **range** (optional): defines the boundaries for the value of a  float parameter
+   - **value** (optional): default  parameter value. Value strings must not include any of these special characters: `< > ! @ # $ % ^ & * ( ) _ / \ ' + - = (space)`
+- **for** (required): specifies the duration of time that the expression must be met before the alert will be fired
+- **severity** (required): specifies default alert severity level
+ - **labels** (optional): are additional labels to be added to generated alerts
+
 - **annotations** (optional): are additional annotations to be added to generated alerts.
 
 #### Template example
@@ -129,15 +128,17 @@ templates:
 {% endraw %}
 ```
 
-### Test alert expressions
-If you want to create custom templates, you can test the MetricsQ expressions for your custom template in the **Explore** section of PMM. Here you can also query any PMM internal database.
+## Test alert expressions
+If you want to create custom templates, you can test the MetricsQL expressions for your custom template in the **Explore** section of PMM. Here you can also query any PMM internal database.
+
 
 To test expressions for custom templates:
 
 1. On the side menu in PMM, choose **Explore > Metrics**.
 2. Enter your expression in the **Metrics** field and click **Run query**.
 
-For example, to validate that a MongoDB instance is down, shut down a member of a three-node replica set, then check that the following expression returns **0** in **Explore > Metrics**: ```sh {service_type="mongodb"}```
+For example, to validate that a MongoDB instance is down, shut down a member of a three-node replica set, then check that the expression `{service_type="mongodb"}` returns **0** in **Explore > Metrics**.
+
 
 ### Add an alert rule
 After provisioning the resources required for creating Percona templated alerts, you are now ready to create your alert:
@@ -154,9 +155,9 @@ Create a silence when you want to stop notifications from one or more alerting r
 
 Silences stop notifications from being sent to your specified contact points.
 
-Silenced alerts are still recorded under **Alerting > Fired Alerts** so that you can review them later. Silenced alerts are disabled for as long as it's specified in the Silence  Duration or until you remove a silence. 
+Silenced alerts are still recorded under **Alerting > Fired Alerts** so that you can review them later. Silenced alerts are disabled for as long as it's specified in the Silence Duration or until you remove a silence.
 
-For information on creating silences, see [About alerting silences](https://grafana.com/docs/grafana/latest/alerting/silences/) in the Grafana documentation. 
+For information on creating silences, see [About alerting silences](https://grafana.com/docs/grafana/latest/alerting/silences/) in the Grafana documentation.
 
 ## Deprecated alerting options
  PMM 2.31 introduced Percona Alerting which replaces the old Integrated Alerting in previous PMM versions. In addition to full feature parity, Percona Alerting includes additional benefits like Grafana-based alert rules and a unified, easy-to-use alerting command center on the **Alerting** page.

@@ -143,7 +143,7 @@ shasum -ca 256 pmm-server-{{release}}.sha256sum
 
 1. In the VMware main window, select the imported virtual machine.
 2. Click the play button <i class="uil uil-caret-right"></i> or select *Virtual Machine* → *Start Up*.
-3. When the instance has booted, note the IP address in the guest console.
+3. When the instance has been booted, note the IP address in the guest console.
 
 #### CLI/UI
 
@@ -154,7 +154,7 @@ shasum -ca 256 pmm-server-{{release}}.sha256sum
     pmm-server.vmx gui
     ```
 
-2. When the instance has booted, note the IP address in the guest console.
+2. When the instance has been booted, note the IP address in the guest console.
 
 3. (Optional) Stop and restart the instance in headless mode.
 
@@ -281,7 +281,7 @@ shasum -ca 256 pmm-server-{{release}}.sha256sum
 
 1. Open a web browser and visit the guest IP address.
 
-2. The PMM [login screen](../../using/interface.md) appears.
+2. The PMM [login screen](../../get-started/interface.md) appears.
 
 3. Enter the default username and password in the relevant fields and click *Log in*.
 

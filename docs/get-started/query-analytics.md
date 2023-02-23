@@ -135,14 +135,14 @@ The *Details* tab contains a *Query time distribution* bar (only for MySQL datab
 
 - Each row in the table is a metric. The contents depends on the chosen dimension.
 
-For PostgreSQL queries (when using *pg_stat_monitor*) the top query will also be shown in the details section if the query was called by an outer query.
+For PostgreSQL queries (when using `pg_stat_monitor`) the top query will also be shown in the details section if the query was called by an outer query.
 
 ![!image](../_images/PMM_Query_Analytics_Tabs_Details_TopQuery.png)
 
-Other usefull metrics (when using *pg_stat_monitor*) to monitor PostgreSQL Server performance are [Histograms](https://github.com/percona/pg_stat_monitor/blob/master/docs/USER_GUIDE.md#histogram). 
-*Histograms* provide more explicit information about number of queries for fingerprint (queryid). Ranges are from 0 seconds up to 100 seconds.  
+Other useful metrics (when using *pg_stat_monitor*) to monitor PostgreSQL Server performance are [Histograms](https://github.com/percona/pg_stat_monitor/blob/master/docs/USER_GUIDE.md#histogram). 
+*Histograms* provide more explicit information about number of queries for fingerprint (`queryid`). Ranges are from 0 seconds up to 100 seconds.  
 
-Ranges (numbers are in miliseconds):  
+Ranges (numbers are in milliseconds):  
     0 - 3  
     3 - 10  
     10 - 31  
@@ -177,6 +177,18 @@ The *Explain* tab shows the `explain` output for the selected query, in Classic 
 - MySQL: Classic and JSON.
 - MongoDB: JSON only.
 - PostgreSQL: Not supported.
+
+Starting with PMM 2.33.0, for MySQL, the *Explain* tab is supported without the *Examples* enabled. If a query in the *Explain* tab contains sensitive data, placeholders will replace them.
+Before you can run Explain, you must specify the values for these placeholders. This image illustrates the query with placeholders.
+
+![!image](../_images/PMM_Query_Analytics_Tabs_Explain_With_Placeholders.png)
+
+Below is an illustration of the same query using values instead of placeholders.
+
+![!image](../_images/PMM_Query_Analytics_Tabs_Explain_With_Values.png)
+
+The image shown above illustrates a query with two placeholders. Therefore, you must enter the correct values in both fields. After filling in these values, click *Explain* to get the results like in the previous PMM versions without data leaks.
+You will get result like in previous PMM versions. This method of `explain` prevents data leak.
 
 !!! note alert alert-primary "'Explain' for MongoDB"
 

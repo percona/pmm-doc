@@ -104,7 +104,7 @@ Grafana’s [anonymous usage statistics](https://grafana.com/docs/grafana/latest
 As well as via the *PMM Settings* page, you can also disable telemetry with the `-e DISABLE_TELEMETRY=1` option in your docker run statement for the PMM Server.
 
 !!! note alert alert-primary ""
-    
+
     Telemetry is sent straight away; the 24 hour grace period is not honored.
 
 ### Check for updates
@@ -113,15 +113,15 @@ When active, PMM will automatically check for updates and put a notification in 
 
 ### Advisors
 
-Advisors are sets of checks grouped by functionality that run a range of database health checks on a registered instance. 
+Advisors are sets of checks grouped by functionality that run a range of database health checks on a registered instance.
 
-The findings are reported on the **Advisors > Failed Checks** page, and an overview is displayed on the Dashboard in the Failed Advisor Checks panel.  
+The findings are reported on the **Advisors > Failed Checks** page, and an overview is displayed on the Dashboard in the Failed Advisor Checks panel.
 
-The Advisors option is enabled by default. 
+The Advisors option is enabled by default.
 
-Checks are refetched and rerun at intervals. 
+Checks are re-fetched and rerun at intervals.
 
-See [Working with Advisor checks](advisors.md). 
+See [Working with Advisor checks](advisors.md).
 
 ## Public address
 
@@ -132,14 +132,14 @@ The address or hostname PMM Server will be accessible at. Click **Get from brows
 !!! caution alert alert-warning "Caution"
     DBaaS functionality is a technical preview that must be turned on with a server feature flag. See [DBaaS](../setting-up/server/dbaas.md).
 
-Enables/disables [DBaaS features](../using/dbaas.md) on this server.
+Enables/disables [DBaaS features](../get-started/dbaas.md) on this server.
 
 !!! caution alert alert-warning "Important"
     Deactivating DBaaS ***does not*** suspend or remove running DB clusters.
 
 ### Alerting
 
-Enables [Percona Alerting](../using/alerting.md) and reveals the **Percona templated alerts** option on the Alerting page.
+Enables [Percona Alerting](../get-started/alerting.md) and reveals the **Percona templated alerts** option on the Alerting page.
 
 ### Microsoft Azure Monitoring
 
@@ -167,7 +167,7 @@ Alertmanager manages alerts, de-duplicating, grouping, and routing them to the a
 This section lets you configure integration of VictoriaMetrics with an external Alertmanager.
 
 !!! hint alert alert-success "Tip"
-    If possible, use [Integrated Alerting](../using/alerting.md) instead of Alertmanager.
+    If possible, use [Integrated Alerting](../get-started/alerting.md) instead of Alertmanager.
 
 - The *Alertmanager URL* field should contain the URL of the Alertmanager which would serve your PMM alerts.
 - The *Prometheus Alerting rules* field is used to specify alerting rules in the YAML configuration format.
@@ -185,7 +185,7 @@ This panel is where you connect your PMM server to your Percona Platform Account
 
 ### Connect PMM to Percona Platform
 
-To learn how to connect your PMM servers to Percona Platform and leverage Platform services that boost the monitoring capabilities of your PMM installations, see [Integrate PMM with Percona Platform](integrate-platform.md). 
+To learn how to connect your PMM servers to Percona Platform and leverage Platform services that boost the monitoring capabilities of your PMM installations, see [Integrate PMM with Percona Platform](integrate-platform.md).
 
 ### Password Reset
 

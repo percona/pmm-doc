@@ -229,7 +229,14 @@ docker cp <containerId>:/srv /target/host/directory
     docker pull percona/pmm-server:2
     ```
 
-4. Run it.
+4. Rename the original container
+
+    ```sh
+    docker rename pmm-server pmm-server-old
+    ```
+
+
+5. Run it.
 
     ```sh
     docker run \
@@ -341,7 +348,7 @@ docker cp <containerId>:/srv /target/host/directory
 
 Use the following Docker container environment variables (with `-e var=value`) to set PMM Server parameters.
 
-| Variable                                                        | Description
+| Variable  &nbsp; &nbsp; &nbsp; &nbsp;                              | Description
 | --------------------------------------------------------------- | -----------------------------------------------------------------------
 | `DISABLE_UPDATES`                                               | Disables a periodic check for new PMM versions as well as ability to apply upgrades using the UI
 | `DISABLE_TELEMETRY`                                             | Disable built-in telemetry and disable STT if telemetry is disabled.
@@ -349,7 +356,7 @@ Use the following Docker container environment variables (with `-e var=value`) t
 | `METRICS_RESOLUTION_HR`                                         | High metrics resolution (same as above).
 | `METRICS_RESOLUTION_MR`                                         | Medium metrics resolution in seconds.
 | `METRICS_RESOLUTION_LR`                                         | Low metrics resolution in seconds.
-| `DATA_RETENTION`                                                | How many days to keep time-series data in ClickHouse.
+| `DATA_RETENTION`                                                | The number of days to keep time-series data. <br />**N.B.** This must be set in a format supported by `time.ParseDuration` <br /> and represent the complete number of days. <br /> The supported units are `ns`, `us` (or `µs`), `ms`, `s`, `m`, and `h`. <br /> The value must be a multiple of 24, e.g., for 90 days 2160h (90 * 24).
 | `ENABLE_VM_CACHE`                                               | Enable cache in VM.
 | `ENABLE_ALERTING`                                               | Enable integrated alerting.
 | `ENABLE_AZUREDISCOVER`                                          | Enable support for discovery of Azure databases.
@@ -390,7 +397,7 @@ These variables will be ignored by `pmm-managed` when starting the server. If an
 
 ## Tips
 
-- To Disable the Home Dashboard *PMM Upgrade* panel you can either add `-e DISABLE_UPDATES=true` to the `docker run` command (for the life of the containter) or navigate to _PMM --> PMM Settings --> Advanced Settings_ and disable "Check for Updates" (can be turned back on by any admin in the UI).
+- To Disable the Home Dashboard *PMM Upgrade* panel you can either add `-e DISABLE_UPDATES=true` to the `docker run` command (for the life of the container) or navigate to _PMM --> PMM Settings --> Advanced Settings_ and disable "Check for Updates" (can be turned back on by any admin in the UI).
 
 - Eliminate browser certificate warnings by configuring a [trusted certificate].
 

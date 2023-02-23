@@ -4,7 +4,7 @@ site_name: Percona Monitoring and Management
 site_description: Documentation
 site_author: Percona LLC
 site_url: ""
-copyright: Percona LLC, &#169; 2022
+copyright: Percona LLC, &#169; 2023
 use_directory_urls: false
 repo_name: percona/pmm-doc
 repo_url: https://github.com/percona/pmm-doc
@@ -12,20 +12,37 @@ edit_uri: edit/main/docs/
 
 theme:
   name: material
-  custom_dir: overrides
   logo: _images/percona-logo.svg
   favicon: _images/percona-favicon.ico
+  custom_dir: overrides
+  font:
+    text: Poppins
   palette:
-    scheme: percona-light
-#    - media: "(prefers-color-scheme: light)"
-#      toggle:
-#        icon: material/toggle-switch-off-outline
-#        name: Switch to night mode
-#    - media: "(prefers-color-scheme: dark)"
-#      scheme: slate
-#      toggle:
-#        icon: material/toggle-switch
-#        name: Switch to day mode
+
+    # Light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: percona-light
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Switch to dark mode
+
+    # Dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to light mode
+
+# Theme features
+
+  features:
+    - search.highlight
+    - navigation.top
+    - content.tabs.link
+    - content.code.copy 
+    - navigation.tracking 
+    - content.action.edit
+    - content.action.view 
 
 extra_css:
   - https://unicons.iconscout.com/release/v3.0.3/css/line.css
@@ -33,8 +50,8 @@ extra_css:
   - css/percona.css
   - css/lightgallery.min.css
 
-extra_javascript:
-  - js/lightgallery.min.js
+#extra_javascript:
+#  - js/lightgallery.min.js
 
 markdown_extensions:
   attr_list: {}
@@ -53,9 +70,16 @@ markdown_extensions:
   pymdownx.highlight:
     linenums: false
   lightgallery: {}
+  pymdownx.inlinehilite: {}
+  pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
 
 plugins:
   search: {}
+  section-index: {}
+  search: 
+    separator: '[\s\-,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
   git-revision-date: {}
   macros:
     include_yaml:
@@ -66,11 +90,11 @@ plugins:
       - "setting-up/client/docker.md"
   # https://github.com/orzih/mkdocs-with-pdf
   with-pdf:
-    output_path: "_pdf/PerconaMonitoringAndManagement-2.32.0.pdf"
-    cover_title: "Documentation"
-    cover_subtitle: 2.32.0 (Nov 7, 2022)
+    output_path: '_pdf/PerconaMonitoringAndManagement-2.34.0.pdf'
+    cover_title: 'Percona Monitoring and Management Documentation'
+    cover_subtitle: 2.34.0 (Jan 30, 2023)
     author: "Percona Technical Documentation Team"
-    cover_logo: docs/_images/PMM_Logo.svg
+    cover_logo: docs/_images/Percona_Logo_Color.png
     custom_template_path: _resources/templates
     enabled_if_env: ENABLE_PDF_EXPORT
   # Check links - but extends build time significantly
@@ -82,9 +106,16 @@ plugins:
     javascript_dir: js
     canonical_version: null
 
-extra: # Used in main.html template and can't be externalized
-  edit_page_text: '<i class="uil uil-pen"></i> <b>Edit this page</b>'
-  updated_text: '<i class="uil uil-refresh"></i> Page updated'
+extra:
+  homepage:
+    https://docs.percona.com
+  consent:
+    title: Cookie consent
+    description: >- 
+      We use cookies to recognize your repeated visits and preferences, as well
+      as to measure the effectiveness of our documentation and whether users
+      find what they're searching for. With your consent, you're helping us to
+      make our documentation better.
 
 # Common navigation for percona.com, render.com and PDF
 nav:
@@ -100,6 +131,7 @@ nav:
           - setting-up/server/virtual-appliance.md
           - setting-up/server/aws.md
           - setting-up/server/easy-install.md
+          - setting-up/server/dbaas.md
       - Client:
           - setting-up/client/index.md
           - setting-up/client/mysql.md
@@ -113,14 +145,30 @@ nav:
           - setting-up/client/external.md
           - setting-up/client/haproxy.md
           - setting-up/client/remote.md
-  - Using:
-      - using/index.md
-      - using/interface.md
-      - using/alerting.md
-      - using/backup.md
-      - using/query-analytics.md
-      - using/dbaas.md
+  - Get started:
+      - get-started/index.md
+      - get-started/interface.md
+      - get-started/alerting.md
+      - Backup and Restore:
+          - get-started/backup/index.md
+          - get-started/backup/prepare_storage_location.md
+          - MongoDB backups:
+                - get-started/backup/backup_mongo.md
+                - get-started/backup/mongo-prerequisites.md
+                - get-started/backup/create_mongo_on_demand.md
+                - get-started/backup/create_PITR_mongo.md
+                - get-started/backup/restore_MongoDB_backups.md
+                - get-started/backup/mongodb_limitations.md
+          - MySQL backups:
+                - get-started/backup/backup_mysql.md
+                - get-started/backup/create_mysql_backup.md
+                - get-started/backup/restore_mysql_backup.md
+          - get-started/backup/edit_scheduled.md
+          - get-started/backup/delete_a_backup.md
 
+      - get-started/query-analytics.md
+      - get-started/dbaas.md
+      - get-started/advisors.md
   - How to:
       - how-to/index.md
       - how-to/configure.md
@@ -135,19 +183,15 @@ nav:
       - Integrate with Percona Platform:
           - how-to/integrate-platform.md
           - how-to/account-info.md
-          - how-to/advisors.md
-
   - Details:
       - details/index.md
       - details/architecture.md
       - details/interface.md
       - details/pmm_components_and_versions.md
-
       - Develop checks:
           - details/develop-checks/index.md
           - details/develop-checks/checks-v1.md
           - details/develop-checks/checks-v2.md
-
       - Dashboards:
           - details/dashboards/index.md
           - Manage dashboards:
@@ -155,7 +199,6 @@ nav:
           - PMM dashboards:
               - Insight:
                   - details/dashboards/dashboard-home.md
-                  - details/dashboards/dashboard-home-experimental.md
                   - details/dashboards/dashboard-advanced-data-exploration.md
                   - details/dashboards/dashboard-victoriametrics.md
                   - details/dashboards/dashboard-victoriametrics-agents-overview.md
@@ -230,11 +273,12 @@ nav:
       - details/victoria-metrics.md
       - details/clickhouse.md
       - details/glossary.md
-
   - faq.md
-
   - Release Notes:
       - release-notes/index.md
+      - "PMM 2.34.0": release-notes/2.34.0.md
+      - "PMM 2.33.0": release-notes/2.33.0.md
+      - "PMM 2.32.0": release-notes/2.32.0.md
       - "PMM 2.31.0": release-notes/2.31.0.md
       - "PMM 2.30.0": release-notes/2.30.0.md
       - "PMM 2.29.1": release-notes/2.29.1.md
