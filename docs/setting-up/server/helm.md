@@ -30,8 +30,6 @@ You can physically separate workloads by properly configuring Kubernetes nodes, 
 
 Also, ensure that the Kubernetes cluster has [high availability](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/ha-topology/) so that in case of a node failure, the monitoring service will be running and capturing the required data.
 
-When configured correctly, PMM, along with Kubernetes' high availability, would be highly available. Ensure that your network and storage support high availability. In the event of a Kubernetes node failure, PMM will be scheduled on any other node in the Kubernetes cluster.
-
 ## Use Helm to install PMM server on Kubernetes clusters
 
 !!! note alert alert-primary "Availability"
