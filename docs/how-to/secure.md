@@ -55,6 +55,24 @@ docker cp dhparam.pem pmm-server:/srv/nginx/dhparam.pem
 
 ### Enabling SSL when connecting PMM Client to PMM Server
 
+Copy or mount (for the pmm-client container) certificate to the appropriate [location](https://github.com/golang/go/blob/master/src/crypto/x509/root_linux.go):
+```sh
+PMM_SERVER=X.X.X.X:443
+docker run \
+--rm \
+--name pmm-client \
+-e PMM_AGENT_SERVER_ADDRESS=${PMM_SERVER} \
+-e PMM_AGENT_SERVER_USERNAME=admin \
+-e PMM_AGENT_SERVER_PASSWORD=admin \
+-e PMM_AGENT_SETUP=1 \
+-e PMM_AGENT_CONFIG_FILE=config/pmm-agent.yaml \
+-v certificate.key:/etc/pki/tls/certs/ca-bundle.crt \
+--volumes-from pmm-client-data \
+percona/pmm-client:2
+```
+
+Connect securely to the PMM Server:
+
 ```sh
 pmm-admin config --server-url=https://<user>:<password>@<server IP>
 ```
