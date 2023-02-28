@@ -1,4 +1,4 @@
-# nstall PMM server with Helm on the Kubernetes clusters
+# Install PMM server with Helm on the Kubernetes clusters
 
 !!! caution alert alert-warning "Caution"
     PMM on Kubernetes with Helm is currently in [technical preview](../../details/glossary.md#technical-preview) and is subject to change.
