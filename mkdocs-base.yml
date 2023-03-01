@@ -150,7 +150,6 @@ nav:
             - install-pmm/install-pmm-client/package_managers/redhat_pm.md
             - install-pmm/install-pmm-client/package_managers/debian_pm.md
       - Register client node with PMM server: register_node_pmm_server.md 
-        - install-pmm/register-client-node/index.md
       - Add services:      
         - install-pmm/add-services/index.md
         - install-pmm/add-services/aws.md
