@@ -118,14 +118,12 @@ extra:
 # Common navigation for percona.com, render.com and PDF
 nav:
   - Getting Started: index.md
-      - pmm-basics/why_pmm.md
-      - pmm-basics/fundamentals.md
-      - pmm-basics/quickstart.md
-      - pmm-basics/architecture.md
-  - PMM fundamentals: 
-      - pmm-basics/fundamentals.md
-  - PMM architecture: 
-      - pmm-basics/architecture.md
+      - get-started/why_pmm.md
+      - get-started/fundamentals.md
+      - get-started/quickstart.md
+      - get-started/architecture.md
+
+
   - PMM components and versions:
       - pmm-basics/pmm_components_and_versions.md
   
