@@ -117,7 +117,11 @@ extra:
 
 # Common navigation for percona.com, render.com and PDF
 nav:
-  - Overview: index.md
+  - Getting Started: index.md
+      - pmm-basics/why_pmm.md
+      - pmm-basics/fundamentals.md
+      - pmm-basics/quickstart.md
+      - pmm-basics/architecture.md
   - PMM fundamentals: 
       - pmm-basics/fundamentals.md
   - PMM architecture: 
@@ -343,10 +347,10 @@ nav:
         - qan/panels/overview.md
         - qan/panels/filters.md
         - qan/panels/details.md
-  - Metrics in PMM: 
+  - PMM Metrics: 
       - metrics/index.md
       - metrics/extend_metrics.md 
-  - Commandsin PMM:
+  - PMM commands :
       - commands/index.md
       - commands/pmm-admin.md
       - commands/pmm-agent.md
