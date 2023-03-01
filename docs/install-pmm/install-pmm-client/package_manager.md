@@ -1,459 +1,96 @@
 # Install PMM client with package manager
 
-
-How to run PMM Server with Docker based on our [Docker image].
-
-!!! note alert alert-primary ""
-    The tags used here are for the current release. Other [tags] are available.
-
-!!! seealso alert alert-info "See also"
-    [Easy-install script]
-
-## Before you start
-
-- Install [Docker] 1.12.6 or higher.
-
-## Run
-
-!!! summary alert alert-info "Summary"
-    - Pull the Docker image.
-    - Copy it to create a persistent data container.
-    - Run the image.
-    - Open the PMM UI in a browser.
-
----
-
-You can store data from your PMM in:
-
-1. Docker volume (Preffered method)
-2. Data container
-3. Host directory
-
-
-### Run Docker with volume
-
-1. Pull the image.
-
-    ```sh
-    docker pull percona/pmm-server:2
-    ```
-
-2. Create a volume:
-
-    ```sh
-    docker volume create pmm-data
-    ```
-
-3. Run the image:
-
-    ```sh
-    docker run --detach --restart always \
-    --publish 443:443 \
-    -v pmm-data:/srv \
-    --name pmm-server \
-    percona/pmm-server:2
-    ```
-4. Change the password for the default `admin` user.
-
-    * For PMM versions 2.27.0 and later:
-
-    ```sh
-    docker exec -t pmm-server change-admin-password <new_password>
-    ```
-
-    * For PMM versions prior to 2.27.0:
-
-        ```sh
-        docker exec -t pmm-server bash -c 'grafana-cli --homepath /usr/share/grafana --configOverrides cfg:default.paths.data=/srv/grafana admin reset-admin-password newpass'
-        ```
-
-5. Visit `https://localhost:443` to see the PMM user interface in a web browser. (If you are accessing the docker host remotely, replace `localhost` with the IP or server name of the host.)
-       
-
-### Run Docker with data container
-
-
-
-1. Create a persistent data container.
-
-    ```sh
-    docker create --volume /srv \
-    --name pmm-data \
-    percona/pmm-server:2 /bin/true
-    ```
-
-    !!! caution alert alert-warning "Important"
-        PMM Server expects the data volume to be `/srv`. Using any other value will result in **data loss** when upgrading.
-
-        To check server and data container mount points:
-
-        ```sh
-        docker inspect pmm-data | grep Destination && \
-        docker inspect pmm-server | grep Destination
-        ```
-
-2. Run the image.
-
-    ```sh
-    docker run --detach --restart always \
-    --publish 443:443 \
-    --volumes-from pmm-data \
-    --name pmm-server \
-    percona/pmm-server:2
-    ```
-
-3. Change the password for the default `admin` user.
-
-    * For PMM versions 2.27.0 and later:
-
-    ```sh
-    docker exec -t pmm-server change-admin-password <new_password>
-    ```
-
-    * For PMM versions prior to 2.27.0:
-
-        ```sh
-        docker exec -t pmm-server bash -c 'grafana-cli --homepath /usr/share/grafana --configOverrides cfg:default.paths.data=/srv/grafana admin reset-admin-password newpass'
-        ```
-        
-4. Visit `https://localhost:443` to see the PMM user interface in a web browser. (If you are accessing the docker host remotely, replace `localhost` with the IP or server name of the host.)
-
-### Run Docker with the host directory
-
-!!! note alert alert-primary "Availability"
-    This feature is available starting with PMM 2.29.0.
-
-1. Pull the image.
-
-```sh
-docker pull percona/pmm-server:2
-```
-
-2. Run the image.
-
-```sh
-export DATA_DIR=$HOME/srv
-docker run -v $DATA_DIR/srv:/srv -d --restart always --publish 80:80 --publish 443:443 --name pmm-server percona/pmm-server:2
-```
-`DATA_DIR` is a directory where you want to store the state for PMM.
-
-
-3. Visit `https://localhost:443` to see the PMM user interface in a web browser. (If you are accessing the docker host remotely, replace `localhost` with the IP or server name of the host.)
-
-
-### Migrate from data container to host directory/volume
-
-To migrate your PMM from data container to host directory or volume run the following command:
-```sh
-docker cp <containerId>:/srv /target/host/directory
-```
-
-
-
-## Backup
-
-!!! summary alert alert-info "Summary"
-    - Stop and rename the `pmm-server` container.
-    - Take a local copy of the `pmm-data` container's `/srv` directory.
-
----
-
-!!! caution alert alert-warning "Important"
-    Grafana plugins have been moved to the data volume `/srv` since the 2.23.0 version. So if you are upgrading PMM from any version before 2.23.0 and have installed additional plugins then plugins should be installed again after the upgrade.
-    
-    To check used grafana plugins:
-
-    ```sh
-    docker exec -it pmm-server ls /var/lib/grafana/plugins
-    ```
-
-1. Stop the container.
-
-    ```sh
-    docker stop pmm-server
-    ```
-
-2. Move the image.
-
-    ```sh
-    docker rename pmm-server pmm-server-backup
-    ```
-
-3. Create a subdirectory (e.g., `pmm-data-backup`) and move to it.
-
-    ```sh
-    mkdir pmm-data-backup && cd pmm-data-backup
-    ```
-
-4. Backup the data.
-
-    ```sh
-    docker cp pmm-data:/srv .
-    ```
-
-## Upgrade
-
-!!! summary alert alert-info "Summary"
-    - Stop the running container.
-    - Backup (rename) the container and copy data.
-    - Pull the latest Docker image.
-    - Run it.
-
----
-
-!!! caution alert alert-warning "Important"
-    Downgrades are not possible. To go back to using a previous version you must have created a backup of it before upgrading.
+On Debian or Red Hat Linux, install `percona-release` and use a Linux package manager (`apt`/`dnf`) to install PMM Client.
 
 !!! hint alert alert-success "Tip"
-    To see what release you are running, use the *PMM Upgrade* panel on the *Home Dashboard*, or run:
+    If you have used `percona-release` before, disable and re-enable the repository:
 
     ```sh
-    docker exec -it pmm-server \
-    curl -ku admin:admin https://localhost/v1/version
+    percona-release disable all
+    percona-release enable original release
     ```
 
-    (If you are accessing the docker host remotely, replace `localhost` with the IP or server name of the host.)
+### Debian-based
 
+Do the following steps to install the PMM Client package:
 
-1. Stop the container.
+1. Configure repositories.
 
     ```sh
-    docker stop pmm-server
+    wget https://repo.percona.com/apt/percona-release_latest.generic_all.deb
+    dpkg -i percona-release_latest.generic_all.deb
     ```
 
-2. Perform a [backup](#backup).
+2. Install the PMM Client package.
 
+    !!! hint "Root permissions"
+        ```sh
+        apt update
+        apt install -y pmm2-client
+        ```
 
-3. Pull the latest image.
+3. Check.
 
     ```sh
-    docker pull percona/pmm-server:2
+    pmm-admin --version
     ```
 
-4. Rename the original container
+4. [Register the node](#register).
+
+### Red Hat-based
+
+1. Configure repositories.
 
     ```sh
-    docker rename pmm-server pmm-server-old
+    yum install -y https://repo.percona.com/yum/percona-release-latest.noarch.rpm
     ```
 
-
-5. Run it.
+2. Install the PMM Client package.
 
     ```sh
-    docker run \
-    --detach \
-    --restart always \
-    --publish 443:443 \
-    --volumes-from pmm-data \
-    --name pmm-server \
-    percona/pmm-server:2
+    yum install -y pmm2-client
     ```
 
-## Restore
-
-!!! summary alert alert-info "Summary"
-    - Stop and remove the container.
-    - Restore (rename) the backup container.
-    - Restore saved data to the data container.
-    - Restore permissions to the data.
-
----
-
-!!! caution alert alert-warning "Important"
-    You must have a [backup](#backup) to restore from.
-
-1. Stop the container.
+3. Check.
 
     ```sh
-    docker stop pmm-server
+    pmm-admin --version
     ```
 
-2. Remove it.
+4. [Register the node](#register).
 
-    ```sh
-    docker rm pmm-server
-    ```
+## Package manager -- manual download
 
-3. Revert to the saved image.
+1. Visit the [Percona Monitoring and Management 2 download] page.
+2. Under *Version:*, select the one you want (usually the latest).
+3. Under *Software:*, select the item matching your software platform.
+4. Click to download the package file:
 
-    ```sh
-    docker rename pmm-server-backup pmm-server
-    ```
+    - For Debian, Ubuntu: `.deb`
+    - For Red Hat, CentOS, Oracle Linux: `.rpm`
 
-4. Change directory to the backup directory (e.g. `pmm-data-backup`).
+(Alternatively, copy the link and use `wget` to download it.)
 
-5. Remove Victoria Metrics data folder.
+Here are the download page links for each supported platform.
 
-    ```sh
-    docker run --rm --volumes-from pmm-data -it percona/pmm-server:2 rm -r /srv/victoriametrics/data
-    ```
+- [Debian 9 (Stretch)](https://www.percona.com/downloads/pmm2/{{release}}/binary/debian/stretch/)
+- [Debian 10 (Buster)](https://www.percona.com/downloads/pmm2/{{release}}/binary/debian/buster/)
+- [Debian 11 (Bullseye)](https://www.percona.com/downloads/pmm2/{{release}}/binary/debian/bullseye/)
+- [Red Hat/CentOS/Oracle 7](https://www.percona.com/downloads/pmm2/{{release}}/binary/redhat/7/)
+- [Red Hat/CentOS/Oracle 8](https://www.percona.com/downloads/pmm2/{{release}}/binary/redhat/8/)
+- [Ubuntu 18.04 (Bionic Beaver)](https://www.percona.com/downloads/pmm2/{{release}}/binary/debian/bionic/)
+- [Ubuntu 20.04 (Focal Fossa)](https://www.percona.com/downloads/pmm2/{{release}}/binary/debian/focal/)
+- [Ubuntu 22.04 (Jammy Jellyfish)](https://www.percona.com/downloads/pmm2/{{release}}/binary/debian/jammy/)
 
-6. Copy the data.
+### Debian-based
 
-    ```sh
-    docker cp srv pmm-data:/
-    ```
+```sh
+dpkg -i *.deb
+```
 
-7. Restore permissions.
+### Red Hat-based
 
-    ```sh
-    docker run --rm --volumes-from pmm-data -it percona/pmm-server:2 chown -R root:root /srv && \
-    docker run --rm --volumes-from pmm-data -it percona/pmm-server:2 chown -R pmm:pmm /srv/alertmanager && \
-    docker run --rm --volumes-from pmm-data -it percona/pmm-server:2 chown -R root:pmm /srv/clickhouse && \
-    docker run --rm --volumes-from pmm-data -it percona/pmm-server:2 chown -R grafana:grafana /srv/grafana && \
-    docker run --rm --volumes-from pmm-data -it percona/pmm-server:2 chown -R pmm:pmm /srv/logs && \
-    docker run --rm --volumes-from pmm-data -it percona/pmm-server:2 chown -R postgres:postgres /srv/postgres && \
-    docker run --rm --volumes-from pmm-data -it percona/pmm-server:2 chown -R pmm:pmm /srv/prometheus && \
-    docker run --rm --volumes-from pmm-data -it percona/pmm-server:2 chown -R pmm:pmm /srv/victoriametrics && \
-    docker run --rm --volumes-from pmm-data -it percona/pmm-server:2 chown -R postgres:postgres /srv/logs/postgresql.log
-    ```
+```sh
+dnf localinstall *.rpm
+```
 
-8. Start the image.
-
-    ```sh
-    docker start pmm-server
-    ```
-
-## Remove
-
-!!! summary alert alert-info "Summary"
-    - Stop the container.
-    - Remove (delete) both the server and data containers.
-    - Remove (delete) both images.
-
----
-
-!!! caution alert alert-warning "Caution"
-    These steps delete the PMM Server Docker image and any accumulated PMM metrics data.
-
-1. Stop pmm-server container.
-
-    ```sh
-    docker stop pmm-server
-    ```
-
-2. Remove containers.
-
-    ```sh
-    docker rm pmm-server pmm-data
-    ```
-
-3. Remove the image.
-
-    ```sh
-    docker rmi $(docker images | grep "percona/pmm-server" | awk {'print $3'})
-    ```
-
-
-## Environment variables
-
-Use the following Docker container environment variables (with `-e var=value`) to set PMM Server parameters.
-
-| Variable  &nbsp; &nbsp; &nbsp; &nbsp;                              | Description
-| --------------------------------------------------------------- | -----------------------------------------------------------------------
-| `DISABLE_UPDATES`                                               | Disables a periodic check for new PMM versions as well as ability to apply upgrades using the UI
-| `DISABLE_TELEMETRY`                                             | Disable built-in telemetry and disable STT if telemetry is disabled.
-| `METRICS_RESOLUTION`                                            | High metrics resolution in seconds.
-| `METRICS_RESOLUTION_HR`                                         | High metrics resolution (same as above).
-| `METRICS_RESOLUTION_MR`                                         | Medium metrics resolution in seconds.
-| `METRICS_RESOLUTION_LR`                                         | Low metrics resolution in seconds.
-| `DATA_RETENTION`                                                | The number of days to keep time-series data. <br />**N.B.** This must be set in a format supported by `time.ParseDuration` <br /> and represent the complete number of days. <br /> The supported units are `ns`, `us` (or `µs`), `ms`, `s`, `m`, and `h`. <br /> The value must be a multiple of 24, e.g., for 90 days 2160h (90 * 24).
-| `ENABLE_VM_CACHE`                                               | Enable cache in VM.
-| `ENABLE_ALERTING`                                               | Enable integrated alerting.
-| `ENABLE_AZUREDISCOVER`                                          | Enable support for discovery of Azure databases.
-| `ENABLE_BACKUP_MANAGEMENT`                                      | Enable integrated backup tools.
-| `ENABLE_DBAAS`                                                  | Enable DBaaS features.
-| `PMM_DEBUG`                                                     | Enables a more verbose log level.
-| `PMM_TRACE`                                                     | Enables a more verbose log level including trace-back information.
-| `PMM_PUBLIC_ADDRESS`                                            | External IP address or the DNS name on which PMM server is running.
-
-
-## Preview environment variables
-
-!!! caution alert alert-warning "Warning"
-     The `PERCONA_TEST_*` environment variables are experimental and subject to change. It is recommended that you use these variables for testing purposes only and not on production.
-
-| Variable                                                                   | Description
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------
-| `PERCONA_TEST_SAAS_HOST`                                                   | SaaS server hostname.
-| `PERCONA_TEST_PMM_CLICKHOUSE_ADDR`                                         | Name of the host and port of the external ClickHouse database instance.
-| `PERCONA_TEST_PMM_CLICKHOUSE_DATABASE`                                     | Database name of the external ClickHouse database instance.
-| `​​PERCONA_TEST_PMM_CLICKHOUSE_POOL_SIZE`                                    | The maximum number of threads in the current connection thread pool. This value cannot be bigger than max_thread_pool_size.
-| `PERCONA_TEST_PMM_CLICKHOUSE_BLOCK_SIZE`                                   | The number of rows to load from tables in one block for this connection.
-
-
-### Ignored variables
-
-These variables will be ignored by `pmm-managed` when starting the server. If any other variable is found, it will be considered invalid and the server won't start.
-
-| Variable                                                        | Description
-| --------------------------------------------------------------- | ------------------------------------------------------
-| `_`, `HOME`, `HOSTNAME`, `LANG`, `PATH`, `PWD`, `SHLVL`, `TERM` | Default environment variables.
-| `GF_*`                                                          | Grafana's environment variables.
-| `SUPERVISOR_`                                                   | `supervisord` environment variables.
-| `KUBERNETES_`                                                   | Kubernetes environment variables.
-| `MONITORING_`                                                   | Kubernetes monitoring environment variables.
-| `PERCONA_TEST_`                                                 | Unknown variable but won't prevent the server starting.
-| `PERCONA_TEST_DBAAS`                                            | Deprecated. Use `ENABLE_DBAAS`.
-
-## Tips
-
-- To Disable the Home Dashboard *PMM Upgrade* panel you can either add `-e DISABLE_UPDATES=true` to the `docker run` command (for the life of the container) or navigate to _PMM --> PMM Settings --> Advanced Settings_ and disable "Check for Updates" (can be turned back on by any admin in the UI).
-
-- Eliminate browser certificate warnings by configuring a [trusted certificate].
-
-- You can optionally enable an (insecure) HTTP connection by adding `--publish 80:80` to the `docker run` command. However, running PMM insecure is not recommended. You should also note that PMM Client *requires* TLS to communicate with the server, only working on a secure port.
-
-### Isolated hosts
-
-If the host where you will run PMM Server has no internet connection, you can download the Docker image on a separate (internet-connected) host and securely copy it.
-
-1. On an internet-connected host, download the Docker image and its checksum file.
-
-    ```sh
-    wget https://downloads.percona.com/downloads/pmm2/{{release}}/docker/pmm-server-{{release}}.docker
-    wget https://downloads.percona.com/downloads/pmm2/{{release}}/docker/pmm-server-{{release}}.sha256sum
-    ```
-
-2. Copy both files to where you will run PMM Server.
-
-3. Open a terminal on the PMM Server host.
-
-4. (Optional) Check the Docker image file integrity.
-
-    ```sh
-    shasum -ca 256 pmm-server-{{release}}.sha256sum
-    ```
-
-5. Load the image.
-
-    ```sh
-    docker load -i pmm-server-{{release}}.docker
-    ```
-
-6. Create the `pmm-data` persistent data container.
-
-    ```sh
-    docker create --volume /srv \
-    --name pmm-data percona/pmm-server:{{release}} /bin/true
-    ```
-
-7. Run the container.
-
-    ```sh
-    docker run \
-    --detach \
-    --restart always \
-    --publish 443:443 \
-    --volumes-from pmm-data \
-    --name pmm-server \
-    percona/pmm-server:{{release}}
-    ```
-
-[tags]: https://hub.docker.com/r/percona/pmm-server/tags
-[Docker]: https://docs.docker.com/get-docker/
-[Docker image]: https://hub.docker.com/r/percona/pmm-server
-[Docker compose]: https://docs.docker.com/compose/
-[PMMC_COMPOSE]: ../client/index.md#docker-compose
-[trusted certificate]: ../../how-to/secure.md#ssl-encryption
-[Easy-install script]: easy-install.md

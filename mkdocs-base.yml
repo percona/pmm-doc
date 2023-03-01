@@ -120,22 +120,18 @@ nav:
   - Getting Started:
       - get-started/index.md 
       - get-started/why_pmm.md
-      - get-started/fundamentals.md
+      - get-started/fundamentals.md # Do we need this page? If yes what info should we have there there?
       - get-started/quickstart.md
       - get-started/architecture.md
-
-
   - PMM components and versions:
       - pmm-basics/pmm_components_and_versions.md
-  
   - Install PMM:
-
       - Plan your PMM installation: 
-        - plan-pmm-installation/harware_and_system.md
+        - plan-pmm-installation/hardware_and_system.md
         - plan-pmm-installation/network_and_firewall.md
       - Install PMM server:
-        - install-pmm/install-pmm-server/index.md
-        - install-pmm/install-pmm-server/prerequisites.md
+        - install-pmm/install-pmm-server/index.md # We can call this page Install PMM Server.
+        - install-pmm/install-pmm-server/prerequisites.md  
         - install-pmm/install-pmm-server/docker.md
         - install-pmm/install-pmm-server/podman.md
         - install-pmm/install-pmm-server/helm.md
@@ -144,17 +140,17 @@ nav:
         - install-pmm/install-pmm-server/easy-install.md
         - install-pmm/install-pmm-server/dbaas.md
       - Install PMM client:
-        - install-pmm/install-pmm-client/index.md
-        - install-pmm/install-pmm-client/prerequisites.md
+        - install-pmm/install-pmm-client/index.md # We can call this page Install PMM Client.
+        - install-pmm/install-pmm-client/prerequisites.md 
         - install-pmm/install-pmm-client/docker.md
         - install-pmm/install-pmm-client/binary_package.md          
-        - Install PMM client with package manager: 
-          - Package managers:
+        - Install PMM client with package manager: install-pmm/install-pmm-client/package_manager.md # remove the title if not needed
+          - Package managers: # I suggest removing the whole section.
             - install-pmm/install-pmm-client/package_managers/redhat.md
             - install-pmm/install-pmm-client/package_managers/debian.md
             - install-pmm/install-pmm-client/package_managers/redhat_pm.md
             - install-pmm/install-pmm-client/package_managers/debian_pm.md
-      - Register client node: install-pmm/register_node_pmm_server.md 
+      - Register client node: install-pmm/register_client_node/index.md 
       - Add services:      
         - install-pmm/add-services/index.md
         - install-pmm/add-services/aws.md
