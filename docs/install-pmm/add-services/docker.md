@@ -1,6 +1,5 @@
 # Monitor remote instances
 
-
 How to run PMM Server with Docker based on our [Docker image].
 
 !!! note alert alert-primary ""

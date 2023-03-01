@@ -1,6 +1,5 @@
 # Install PMM server with Docker container
 
-
 How to run PMM Server with Docker based on our [Docker image].
 
 !!! note alert alert-primary ""
