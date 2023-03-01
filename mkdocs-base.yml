@@ -152,7 +152,7 @@ nav:
             - install-pmm/install-pmm-client/package_managers/debian.md
             - install-pmm/install-pmm-client/package_managers/redhat_pm.md
             - install-pmm/install-pmm-client/package_managers/debian_pm.md
-      - Register client node with PMM server:      
+      - Register client node with PMM server: index.md   
         - install-pmm/register-client-node/index.md
       - Add services:      
         - install-pmm/add-services/index.md
@@ -173,7 +173,7 @@ nav:
       - uninstall-pmm/uninstall_docker.md
       - uninstall-pmm/uninstall_package_manager.md
       - uninstall-pmm/unregister_client.md
-  - PMM administration:
+  - Administer PMM:
       - pmm-admin/index.md
       - Manage users:
         - pmm-admin/manage-users/add_users.md
