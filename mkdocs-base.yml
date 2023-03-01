@@ -366,7 +366,6 @@ nav:
       - troubleshoot/areas.md 
   - Reference:
       - reference/index.md 
-      - reference/why_pmm.md
       -  reference/fundamentals.md
       -  reference/pmm_components_and_versions.md
       -  reference/faq.md
