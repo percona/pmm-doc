@@ -364,8 +364,12 @@ nav:
   - Troubleshooting:
       - troubleshoot/troubleshoot.md
       - troubleshoot/areas.md 
-  - FAQ: 
-      - faq.md
+  - Reference:
+      - reference/index.md 
+      - reference/why_pmm.md
+      -  reference/fundamentals.md
+      -  reference/pmm_components_and_versions.md
+      -  reference/faq.md
   - Release Notes:
       - Release notes index: release-notes/index.md
       - "PMM 2.34.0 (2023-01-30)": release-notes/2.34.0.md
