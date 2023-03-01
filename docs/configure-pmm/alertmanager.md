@@ -1,5 +1,3 @@
-
-
 # Alertmanager integration
 
 Alertmanager manages alerts, de-duplicating, grouping, and routing them to the appropriate receiver or display component.
