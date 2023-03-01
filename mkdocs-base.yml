@@ -117,7 +117,8 @@ extra:
 
 # Common navigation for percona.com, render.com and PDF
 nav:
-  - Getting Started: index.md
+  - Getting Started:
+      - get-started/index.md 
       - get-started/why_pmm.md
       - get-started/fundamentals.md
       - get-started/quickstart.md
