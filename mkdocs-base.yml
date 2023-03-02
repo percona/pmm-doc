@@ -311,11 +311,16 @@ nav:
         - dbaas/setup-dbaas/create_k8s.md
         - dbaas/setup-dbaas/del_k8s.md
         - dbaas/setup-dbaas/run_as_docker.md    
-        - dbaas/setup-dbaas/expose_clusters.md    
+        - dbaas/setup-dbaas/expose_clusters.md
+      - dbaas/setup-dbaas/K8s_cluster.md    
       - Manage database clusters:
         - dbaas/manage-dbaas_clusters/add_cluster.md
         - dbaas/manage-dbaas_clusters/edit_cluster.md
         - dbaas/manage-dbaas_clusters/del_cluster.md
+        - dbaas/manage-dbaas_clusters/restart_cluster.md
+        - dbaas/manage-dbaas_clusters/suspend_cluster.md
+        - dbaas/manage-dbaas_clusters/update_cluster.md
+
   - Percona Alerting:
       - alert/index.md
       - alert/alert_type.md

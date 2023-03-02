@@ -1,3 +1,0 @@
-# About setting DBaaS
-
-Dbaas is...
