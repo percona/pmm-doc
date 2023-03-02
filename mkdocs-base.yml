@@ -184,7 +184,7 @@ nav:
           - pmm-admin/roles/access-control/manage_roles.md
           - pmm-admin/roles/access-control/assign_roles.md
           - pmm-admin/roles/access-control/usecase.md
-      - Manage organizations:
+      - Organizations:
         - pmm-admin/manage-orgs/index.md
         - pmm-admin/manage-orgs/create_org.md 
         - pmm-admin/manage-orgs/edit_org.md 
