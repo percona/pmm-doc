@@ -204,7 +204,7 @@ nav:
       - ui/controls.md
       - ui/nav.md
       - ui/panels.md     
-      - Dashboards and panels:
+      - Dashboards:
         - ui/dashboards-panels/index.md
         - Use dashboards:
           - ui/dashboards-panels/use-dashboards/index.md
