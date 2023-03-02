@@ -207,7 +207,6 @@ nav:
       - Dashboards:
         - ui/dashboards-panels/index.md
         - Use dashboards:
-          - ui/dashboards-panels/use-dashboards/index.md
           - ui/dashboards-panels/use-dashboards/dashboard-feature.md
           - ui/dashboards-panels/use-dashboards/dashboard-settings.md
           - ui/dashboards-panels/use-dashboards/dashboard-time-range.md
