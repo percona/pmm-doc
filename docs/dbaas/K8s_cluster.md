@@ -1,4 +1,4 @@
-# Kubernetes clusters¶
+# Kubernetes clusters
 
  ## Add a Kubernetes cluster
 
