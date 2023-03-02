@@ -220,10 +220,8 @@ nav:
           - ui/dashboards-panels/export-dashboards/export_dashboards.md
           - ui/dashboards-panels/export-dashboards/import_dashboards.md
         - Share dashboards and panels:
-          - ui/dashboards-panels/share-dashboards/share_dashboards.md
-          - ui/dashboards-panels/export-dashboards/share_direct_link.md
+          - ui/dashboards-panels/share-dashboards/share_dashboard.md
           - ui/dashboards-panels/share-dashboards/publish_snapshot.md
-          - ui/dashboards-panels/share-dashboards/dashboard_export.md
         - Annotate:
           - ui/dashboards-panels/annotate/annotate.md              
           - PMM dashboards:
