@@ -1,41 +1,22 @@
 # Register client node on PMM server
 
-1. Check system requirements.
+Register your client node with PMM Server.
 
-    **Disk**
+```sh
+pmm-admin config --server-insecure-tls --server-url=https://admin:admin@X.X.X.X:443
+```
 
-    Approximately 1 GB of storage per monitored database node with data retention set to one week. By default, [retention](../../how-to/configure.md#data-retention) is 30 days.
+- `X.X.X.X` is the address of your PMM Server.
+- `443` is the default port number.
+- `admin`/`admin` is the default PMM username and password. This is the same account you use to log into the PMM user interface, which you had the option to change when first logging in.
 
-    !!! hint alert alert-success "Tip"
-        [Disable table statistics](../../how-to/optimize.md) to decrease the VictoriaMetrics database size.
+!!! caution alert alert-warning "Important"
+    Clients *must* be registered with the PMM Server using a secure channel. If you use http as your server URL, PMM will try to connect via https on port 443. If a TLS connection can't be established you will get an error and you must use https along with the appropriate secure port.
 
-    **Memory**
+## Examples
 
-    A minimum of 2 GB per monitored database node. The increase in memory usage is not proportional to the number of nodes. For example, data from 20 nodes should be easily handled with 16 GB.
+Register on PMM Server with IP address `192.168.33.14` using the default `admin/admin` username and password, a node with IP address `192.168.33.23`, type `generic`, and name `mynode`.
 
-    **Architecture**
-
-    Your CPU must support the [`SSE4.2`](https://wikipedia.org/wiki/SSE4#SSE4.2) instruction set, a requirement of ClickHouse, a third-party column-oriented database used by Query Analytics. If your CPU is lacking this instruction set you won't be able to use Query Analytics.
-
-1. Configure your [network](network.md).
-
-1. Decide how you want to run PMM Server. Choose from:
-
-    - [Docker];
-    - [Podman];
-    - [Helm];
-    - [Virtual appliance];
-    - [Amazon AWS];
-    - Use the [easy install] script.
-
-[Docker]: docker.md
-[Podman]: podman.md
-[Helm]: helm.md
-[virtual appliance]: virtual-appliance.md
-[Amazon AWS]: aws.md
-[easy install]: easy-install.md
-[DBbaaS]: dbaas.md
-
-1. Authenticating using API keys.
-
-    While adding clients to the PMM server, you use the `admin` user. However, if you change the password for the admin user from the PMM UI, then the clients will not be able to access PMM. Also, due to multiple unsuccessful login attempts Grafana will lock out the `admin` user. The solution is to use [API key](../../details/api.md#api-keys-and-authentication) for authentication. You can use API keys as a replacement for basic authentication.
+```sh
+pmm-admin config --server-insecure-tls --server-url=https://admin:admin@192.168.33.14:443 192.168.33.23 generic mynode
+```

@@ -1,3 +1,9 @@
-# Unregister PMM client from PMM server
+# Unregister PMM Client from PMM Server
 
-PMM collects Linux metrics automatically starting from the moment when you have configured your node for monitoring with `pmm-admin config`.
+To unregister PMM Client from PMM Server, run the following command:
+
+```sh
+pmm-admin unregister --force
+```
+
+All services monitored by this node will be removed from monitoring.
