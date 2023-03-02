@@ -320,21 +320,21 @@ nav:
       - alert/silence_alerts.md
       - alert/disable_alerts.md 
   - Backup and Restore:
-      - backup/backup/index.md
-      - backup/backup/prepare_storage_location.md
+      - backup/index.md
+      - backup/prepare_storage_location.md
       - MongoDB backups:
-        - backup/backup/backup_mongo.md
-        - backup/backup/mongo-prerequisites.md
-        - backup/backup/create_mongo_on_demand.md
-        - backup/backup/create_PITR_mongo.md
-        - backup/backup/restore_MongoDB_backups.md
-        - backup/backup/mongodb_limitations.md
+        - backup/mongodb-backup/backup_mongo.md
+        - backup/mongodb-backup/mongo-prerequisites.md
+        - backup/mongodb-backup/create_mongo_on_demand.md
+        - backupmongodb-backup/create_PITR_mongo.md
+        - backup/mongodb-backup/restore_MongoDB_backups.md
+        - backup/mongodb-backup/mongodb_limitations.md
       - MySQL backups:
-        - backup/backup/backup_mysql.md
-        - backup/backup/create_mysql_backup.md
-        - backup/backup/restore_mysql_backup.md
-      - backup/backup/edit_scheduled.md
-      - backup/backup/delete_a_backup.md
+        - backup/mysql-backup/backup_mysql.md
+        - backup/mysql-backup/create_mysql_backup.md
+        - backup/mysql-backup/restore_mysql_backup.md
+      - backup/mysql-backup/edit_scheduled.md
+      - backup/mysql-backup/delete_a_backup.md
   - advisors/advisors.md
   - Query Analytics:
       - qan/index.md
