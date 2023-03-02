@@ -1,104 +1,88 @@
 # Manage dashboard folders
 
+This section describes how to delete multiple dashboards, move dashboards from one folder to another and navigate to a folder page where you can assign folder and dashboard permissions.
+
 ## Delete multiple dashboards
+
+To delete multiple dashboards at once:
+
+From the side menu, go to <i class="uil uil-apps"></i> *Dashboards > Browse* and check the dashboards that you want to delete, and click *Delete*.
+
+
+![!image](../../_images/PMM_Delete_multiple_dashboards.png)
 
 ## Move dashboards from one folder to another
 
+You can move dashboards from one folder to another in the following two ways:
+
+
+1. From the side menu, go to <i class="uil uil-apps"></i> *Dashboards > Browse* and check the dashboards that you want to move. Click *Move*.
+
+    ![!image](../../_images/PMM_Move_dashboards.png)
+
+2. On the *Choose Dashboard Folder* dialog box select the dashboards that you want to move from the drop-down. Click *Move*.
+
+The other way of moving dashboards from one folder to another is:
+
+
+1. Open the dashboard that you want to move to another folder.
+2. Click on <i class="uil uil-cog"></i> icon to open *Dashboard Settings*.
+3. On the *General* page, under *Folder* select the folder name that you want to move from the dropdown.
+
+    ![!image](../../_images/PMM_Move_dashboards-way2.png)
+
+4. Click *Save Dashboard* on the the left to save the change.
+
+!!! note alert alert-primary "Note"
+    You should have atleast an *Editor* role to move a dashboard.
+
 ## Navigate to a dashboard folder page to assign permissions
 
+1. From the side menu, go to <i class="uil uil-apps"></i> *Dashboards > Browse* and hover over the dashboard folder whose permissions you want to set. Click *Go to Folder*.
+2. Go to the *Permissions* tab and select the requisite permission from the drop-down for the various roles.
 
-## Dashboards
+    ![!image](../../_images/PMM_Permissions_dashboards_folder.png)
 
-The interface is a collection of web pages called _dashboards_.
 
-Dashboards are grouped into _folders_. You can customize these, by renaming them or creating new ones.
+## Setting custom Home Dashboard
 
-The area inside dashboards is populated by _panels_. Some are in collapsible panel groups. A panel can show a value, a graph, a chart, or a visual representation of a set.
+The home dashboard you set is the dashboard all the users will see after logging in to PMM UI. You can set the home dashboard for a server, an organization, a team, or your user account. 
 
-## Controls
+### Set home dashboard for your organization
 
-These menus and controls appear on all dashboards:
+Organization Admins can set the home dashboard for their organization. For information on managing users in an organization, see [Manage Users](../../how-to/manage-users.md)
 
-1. Main menu (also _Grafana menu_, _side menu_).
+1. Navigate to the dashboard that you want to set as the home dashboard.
+2. Click the <i class="uil uil-star"></i> star next to the dashboard title to mark the dashboard as a favorite.
+3. Hover your cursor over <i class="uil uil-cog"></i> *Configuration*
+4. Click *Preferences*.
+5. In the Home Dashboard field, select the dashboard that you want to set as your home dashboard.
+6. Click *Save*.
 
-2. Navigation bar.
 
-3. View controls.
+### Set home dashboard for your team
 
-4. View selectors (with dynamic contents).
+Organization and team Admins can set the home dashboard for their team as follows:
 
-5. Shortcut menu (with dynamic contents).
+1. Navigate to the dashboard that you want to set as your home dashboard.
+2. Click <i class="uil uil-star"></i> star next to the dashboard to mark the dashboard as a favorite.
+3. On the main menu, hover your cursor over <i class="uil uil-cog"></i> *Configuration*. 
+4. Click *Teams*. Grafana displays the team list.
+5. Click on the team for whom you want to set the home dashboard and then navigate to the *Settings* tab.
+6. In the Home Dashboard field, select the dashboard that you want to use for your home dashboard.
+7. Click *Save*.
 
-(For details see [UI Components](../details/interface.md).)
 
-![!](../_images/PMM_Home_Dashboard_Numbered.png)
+### Set your Personal Home Dashboard
 
-## Navigation
+1. From the main menu, go to <i class="uil uil-apps"></i> *Dashboards > Browse* and select the dashboard you want to set as your home dashboard.
+2. Click the <i class="uil uil-star"></i> star next to the dashboard title to mark it as a favorite.
 
-### Search for a dashboard by name
+    ![!image](../../_images/PMM_click_to_add_favorite_dashboard.png)
 
-There are two ways to open the dashboard search page. (Each takes you to the same search screen.)
 
-- Click the <i class="uil uil-search"></i> icon in the main menu.
+3. From the side menu go to <i class="uil uil-cog"></i> *Configuration > Preferences*. In the *Home Dashboard* field, select the dashboard that you want to set as your home dashboard. 
 
-- Click the dashboard name in the navigation bar (top row, to the right of the <i class="uil uil-apps"></i> icon). (To search within the current folder, click the folder name instead of the dashboard name.)
+    ![!image](../../_images/PMM_set_home_dashboard.png)
 
-![!Search dashboards by name](../_images/PMM_Home_Dashboard_Search.jpg)
-
-1. Click _Search dashboards by name_ and begin typing any part of the dashboard name (in this example, "_Instances_").
-
-   ![!Search dashboards by name](../_images/PMM_Home_Dashboard_Search_String.jpg)
-
-2. Click one of the search results to go to that dashboard. Change the search text to refine the list.
-
-3. To abandon the search, click the <i class="uil uil-times"></i> icon at the end of the search bar.
-
-### Open a dashboard with the menu
-
-In the [main menu](../details/interface.md#main-menu), the {{icon.dashboards}} _PMM Dashboards_ icon reveals a submenu containing links to all PMM dashboards grouped by service type. (This menu will replace the [shortcut menu](../details/interface.md#shortcut-menu) which has links to commonly-used dashboards.)
-
-## Panels
-
-Charts, graphs and set-based panels reveal extra information when the mouse is moved over them.
-
-Some panels have an information icon <i class="fa fa-info"></i> in the top left corner. Mouse over this to reveal panel information.
-
-### Panel menu
-
-At the top of each panel and to the right of the panel name is the _panel menu_.
-
-![!image](../_images/PMM_Common_Panel_Menu.jpg)
-
-!!! hint alert alert-success "Tip"
-      The menu is hidden until you mouse over it. Look for the <i class="uil uil-angle-down"></i> symbol in the title bar of a panel.
-
-| Item                                      | Description                                                                   |
-| ----------------------------------------- | ----------------------------------------------------------------------------- |
-| <i class="uil uil-eye"></i> View          | Open the panel in full window mode.                                           |
-| <i class="uil uil-share-alt"></i> Share   | [Share the panel's link or image](../how-to/share-dashboard.md). |
-| <i class="uil uil-compass"></i> Explore   | Run [PromQL] queries.                                                         |
-| <i class="fa fa-info-circle"></i> Inspect | See the panel's data or definition.                                           |
-| <i class="uil uil-cube"></i> More         | (Only charts and graphs) Additional options.                                  |
-
-### View
-
-The _View_ menu items opens panels in full-window mode. This is useful for graphs with several metrics.
-
-Exit a panel's full window mode by pressing _Escape_ or clicking the left arrow <i class="uil uil-arrow-left"></i> next to the dashboard name.
-
-!!! info alert alert-info "See also"
-- [How to render dashboard images](../how-to/render-dashboard-images.md)
-- [How to annotate special events](../how-to/annotate.md)
-
-[grafana]: https://grafana.com/docs/grafana/latest/
-[promql]: https://prometheus.io/docs/prometheus/latest/querying/basics/
-
-## Timezones
-
-By default Grafana uses the timezone from your web browser. However, you can change this setting.
-
-### Set user timezone
-
-1. On the left menu, hover your cursor over your avatar and then click _Preferences_.
-2. Click to select an option in the _Timezone list_.
-3. Click _Save_.
+4. Click *Save*.
