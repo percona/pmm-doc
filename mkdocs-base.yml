@@ -320,7 +320,7 @@ nav:
         - dbaas/manage-dbaas_clusters/restart_cluster.md
         - dbaas/manage-dbaas_clusters/suspend_cluster.md
         - dbaas/manage-dbaas_clusters/update_cluster.md
-
+      - dbaas/K8s_cluster.md
   - Percona Alerting:
       - alert/index.md
       - alert/alert_type.md
