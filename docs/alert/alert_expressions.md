@@ -10,7 +10,6 @@ To test expressions for custom templates:
 
 For example, to validate that a MongoDB instance is down, shut down a member of a three-node replica set, then check that the expression `{service_type="mongodb"}` returns **0** in **Explore > Metrics**.
 
-
 ## Add an alert rule
 After provisioning the resources required for creating Percona templated alerts, you are now ready to create your alert:
 

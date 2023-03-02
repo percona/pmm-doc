@@ -1,4 +1,4 @@
-# Logging in
+# Log in
 
 1. Start a web browser and in the address bar enter the server name or IP address of the PMM server host.
 

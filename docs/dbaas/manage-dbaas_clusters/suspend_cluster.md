@@ -8,8 +8,8 @@
 
     - For active clusters, click *Suspend*.
 
-        ![!DBaaS Suspend](../_images/PMM_DBaaS_DB_Cluster_Suspend.gif)
+        ![!DBaaS Suspend](../../_images/PMM_DBaaS_DB_Cluster_Suspend.gif)
 
     - For paused clusters, click *Resume*.
 
-        ![!DBaaS Resume](../_images/PMM_DBaaS_DB_Cluster_Resume.gif)
+        ![!DBaaS Resume](../../_images/PMM_DBaaS_DB_Cluster_Resume.gif)

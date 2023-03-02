@@ -1,4 +1,3 @@
-                                 |
 # View
 
 The _View_ menu items opens panels in full-window mode. This is useful for graphs with several metrics.

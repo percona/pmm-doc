@@ -8,7 +8,6 @@ It allows you to utilize the benefits of Kubernetes and Percona's operators to r
     DBaaS feature is available for PMM Admin users
     DBaaS functionality is currently in [technical preview](../details/glossary.md#technical-preview) and is subject to change.
 
-
 ## Start here
 
 - [Architecture and how DBaaS works](architecture.html)
