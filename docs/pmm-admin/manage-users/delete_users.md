@@ -1,4 +1,7 @@
-# Add users in PMM
+## Delete Users
 
+You can delete a user in PMM as follows:
 
-PMM collects Linux metrics automatically starting from the moment when you have configured your node for monitoring with `pmm-admin config`.
+1. On the *User* tab, click the user you want to delete.
+
+2. Click *Delete user*.
