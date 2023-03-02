@@ -158,7 +158,7 @@ nav:
       - configure-pmm/advanced_settings.md
       - configure-pmm/ssh.md
       - configure-pmm/percona_platform.md
-  - PMM upgrade:
+  - Upgrade PMM:
       - pmm-upgrade/index.md
       - pmm-upgrade/ui_upgrade.md
       - pmm-upgrade/upgrade_docker.md
