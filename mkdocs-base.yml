@@ -217,8 +217,9 @@ nav:
           - ui/dashboards-panels/export-dashboards/export_dashboards.md
           - ui/dashboards-panels/export-dashboards/import_dashboards.md
         - Set custom home dashboard:
-          - ui/dashboards-panels/export-dashboards/export_dashboards.md
-          - ui/dashboards-panels/export-dashboards/import_dashboards.md
+          - ui/dashboards-panels/custom_dashboard/set_personal_home.md
+          - ui/dashboards-panels/custom_dashboard/set_custom_team.md
+          - ui/dashboards-panels/custom_dashboard/set_custom_for_org.md
         - Share dashboards and panels:
           - ui/dashboards-panels/share-dashboards/share_dashboard.md
           - ui/dashboards-panels/share-dashboards/publish_snapshot.md
