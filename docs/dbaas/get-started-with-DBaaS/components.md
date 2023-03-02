@@ -1,0 +1,1 @@
+# Manage allowed component versions
