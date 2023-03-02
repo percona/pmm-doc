@@ -1,8 +1,17 @@
-# Manage users
 
-This topic explains user management in PMM.
+# Add users
 
-You can manage users from the [main menu](../details/interface.md#main-menu) by navigating to *Server Admin → Users* page.
+You can add a user in PMM from *User → New user* tab.
 
+![!image](../_images/PMM-add-new-user.png)
 
-![!image](../_images/PMM-manage-users.png)
+To add a new user in PMM:
+
+1. On the *Users* tab, click *New user*.
+2. On the *Add new user* dialog box, enter the following:
+    - Name
+    - email address or username (if this is an existing grafana user)
+    - Username
+    - Password
+
+3. Click *create user*.

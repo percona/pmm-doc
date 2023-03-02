@@ -1,4 +1,4 @@
 # ​​Manage users in an organization
 
-
-PMM collects Linux metrics automatically starting from the moment when you have configured your node for monitoring with `pmm-admin config`.
+!!! caution alert alert-warning "Important"
+    The content for this topic is yet to be developed.
