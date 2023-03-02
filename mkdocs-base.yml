@@ -176,12 +176,11 @@ nav:
         - pmm-admin/manage-users/manage_users_in_org.md
       - Roles and permissions:
         - pmm-admin/roles/index.md
-        - pmm-admin/roles/access-control.md   
         - Access Control in PMM:
           - pmm-admin/roles/access-control/intro.md
           - pmm-admin/roles/access-control/labels.md
           - pmm-admin/roles/access-control/config_access_cntrl.md
-          - pmm-admin/roles/access-control/access_roles.md
+          - pmm-admin/roles/access-control/create_roles.md
           - pmm-admin/roles/access-control/manage_roles.md
           - pmm-admin/roles/access-control/assign_roles.md
           - pmm-admin/roles/access-control/usecase.md
