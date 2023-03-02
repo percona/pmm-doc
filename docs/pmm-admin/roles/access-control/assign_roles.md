@@ -1,9 +1,12 @@
-# ​​Manage access roles in PMM
+# Assign roles to users
+
+To assign access roles to users, do the following:
+
+1. From the *Main* menu, navigate to <i class="uil uil-cog"></i> *Configuration → Users*. *Users* tab opens.
+
+    ![!](../../_images/PMM_access_control_assign_role.png)
 
 
-PMM collects Linux metrics automatically starting from the moment when you have configured your node for monitoring with `pmm-admin config`.
+2. Select the *Access Role* you want to assign to a user from the dropdown. You can assign several roles to a user.
 
-## Edit a role
-
-
-## Remove a role
+    ![!](../../_images/PMM_access_control_select_role.png)
