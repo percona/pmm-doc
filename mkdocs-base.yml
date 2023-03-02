@@ -333,17 +333,18 @@ nav:
       - backup/prepare_storage_location.md
       - MongoDB backups:
         - backup/mongodb-backup/backup_mongo.md
-        - backup/mongodb-backup/mongo-prerequisites.md
+        - backup/mongodb-backup/mongo_prerequisites.md
         - backup/mongodb-backup/create_mongo_on_demand.md
-        - backupmongodb-backup/create_PITR_mongo.md
+        - backup/mongodb-backup/create_PITR_mongo.md
         - backup/mongodb-backup/restore_MongoDB_backups.md
         - backup/mongodb-backup/mongodb_limitations.md
       - MySQL backups:
+        - backup/mysql-backup/mysql_prerequisites.md
         - backup/mysql-backup/backup_mysql.md
         - backup/mysql-backup/create_mysql_backup.md
         - backup/mysql-backup/restore_mysql_backup.md
-      - backup/mysql-backup/edit_scheduled.md
-      - backup/mysql-backup/delete_a_backup.md
+      - backup/edit_scheduled.md
+      - backup/delete_a_backup.md
   - advisors/advisors.md
   - Query Analytics:
       - qan/index.md

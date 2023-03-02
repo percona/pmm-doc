@@ -49,7 +49,7 @@ A sample [IAM](https://aws.amazon.com/iam/) policy is:
 ## [Create the storage location](#create-a-storage-location)
 
 1. Go to **Backup > Storage Locations**:
-    ![!](../../_images/PMM_Backup_Management.jpg)
+    ![!](../_images/PMM_Backup_Management.jpg)
 
 2. Click **Add storage location** and fill in a name and description for this new location.
 3. Choose the type of storage location you are creating:

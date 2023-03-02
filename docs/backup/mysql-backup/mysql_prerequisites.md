@@ -1,8 +1,10 @@
 # MySQL backup prerequisites
+
 Before creating MySQL backups, make sure to: 
 
 1. Enable **Backup Management** from <i class="uil uil-cog"></i> **Configuration > PMM Settings > Advanced Settings**. Click **Apply changes**. This adds the <i class="uil uil-history"></i> Backup option on the side menu.
-2.  !!! caution alert alert-warning "Important"
+  
+    !!! caution alert alert-warning "Important"
     If PMM Server runs as a Docker container, enable backup features at container creation time by adding `-e ENABLE_BACKUP_MANAGEMENT=1` to your `docker run` command.
 
 2. Check that the [PMM Client](../../setting-up/client/index.md) is installed and running on the node.

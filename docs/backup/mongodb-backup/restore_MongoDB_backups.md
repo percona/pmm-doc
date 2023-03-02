@@ -1,4 +1,5 @@
 # Restore a MongoDB backup
+
 MongoDB backups can only be restored to the same service they were created from.
 
 To restore a backup:
@@ -11,8 +12,7 @@ This opens the **Restore from backup** dialog, with the **Same service** option 
 
 !!! caution alert alert-warning "Important"
     During restoring, PMM disables all the scheduled backup tasks for the current service. Remember to re-enable them manually after the restore.
-    
-    
+       
 ## Restore to a new cluster manually
 
 1. Install MongoDB and Percona Backup for MongoDB. Pay attention to the versions. To minimize potential incompatibility, use the same versions that were used for taking backups.
