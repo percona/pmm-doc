@@ -178,7 +178,6 @@ nav:
       - uninstall-pmm/uninstall_docker.md
       - uninstall-pmm/uninstall_package_manager.md
       - uninstall-pmm/unregister_client.md
-      - uninstall-pmm/remove_services.md
   - Administer PMM:
       - pmm-admin/index.md
       - Manage users:

@@ -19,5 +19,15 @@ You must configure and add services according to the service type.
 
 ## Remove services for PMM monitoring
 
-Find the information on how to remove services for PMM monitoring in the [Remove services](..//..//uninstall-pmm/remove_services.md) document.
+You must specify the service type and service name to remove services from monitoring.
 
+```sh
+pmm-admin remove <service-type> <service-name>
+```
+
+`service-type`
+: One of `mysql`, `mongodb`, `postgresql`, `proxysql`, `haproxy`, `external`.
+
+!!! seealso alert alert-info "See also"
+    - [Percona release](https://www.percona.com/doc/percona-repo-config/percona-release.html)
+    - [PMM Client architecture](../../details/architecture.md#pmm-client)
