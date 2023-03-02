@@ -123,11 +123,11 @@ nav:
       - get-started/quickstart.md
   - Install PMM:
       - Plan your PMM installation: 
-        - plan-pmm-installation/harware_and_system.md
+        - plan-pmm-installation/hardware_and_system.md
         - plan-pmm-installation/network_and_firewall.md
       - Install PMM server:
         - install-pmm/install-pmm-server/index.md
-        - install-pmm/install-pmm-server/prerequisites.md
+        - install-pmm/install-pmm-server/prerequisites.md  
         - install-pmm/install-pmm-server/docker.md
         - install-pmm/install-pmm-server/podman.md
         - install-pmm/install-pmm-server/helm.md
@@ -137,30 +137,38 @@ nav:
         - install-pmm/install-pmm-server/dbaas.md
       - Install PMM client:
         - install-pmm/install-pmm-client/index.md
-        - install-pmm/install-pmm-client/prerequisites.md
+        - install-pmm/install-pmm-client/prerequisites.md 
         - install-pmm/install-pmm-client/docker.md
         - install-pmm/install-pmm-client/binary_package.md          
-        - Install PMM client with package manager: 
-          - Package managers:
-            - install-pmm/install-pmm-client/package_managers/redhat.md
-            - install-pmm/install-pmm-client/package_managers/debian.md
-            - install-pmm/install-pmm-client/package_managers/redhat_pm.md
-            - install-pmm/install-pmm-client/package_managers/debian_pm.md
-      - Register client node: install-pmm/register_node_pmm_server.md 
+        - install-pmm/install-pmm-client/package_manager.md
+      - Register client node: install-pmm/register_client_node/index.md 
       - Add services:      
         - install-pmm/add-services/index.md
         - install-pmm/add-services/aws.md
+        - install-pmm/add-services/azure.md
+        - install-pmm/add-services/external.md
+        - install-pmm/add-services/google.md
+        - install-pmm/add-services/haproxy.md
+        - install-pmm/add-services/linux.md
+        - install-pmm/add-services/mongodb.md
+        - install-pmm/add-services/mysql.md
+        - install-pmm/add-services/postgresql.md
+        - install-pmm/add-services/proxysql.md
+        - install-pmm/add-services/remote.md
   - Configure PMM:      
       - configure-pmm/configure.md
       - configure-pmm/metrics_res.md
       - configure-pmm/advanced_settings.md
+      - configure-pmm/public-address.md
       - configure-pmm/ssh.md
+      - configure-pmm/alertmanager.md
       - configure-pmm/percona_platform.md
   - Upgrade PMM:
       - pmm-upgrade/index.md
       - pmm-upgrade/ui_upgrade.md
       - pmm-upgrade/upgrade_docker.md
       - pmm-upgrade/upgrade_agent.md
+      - pmm-upgrade/upgrade_from_pmm_1.md
   - Uninstall PMM:
       - uninstall-pmm/index.md
       - uninstall-pmm/uninstall_docker.md

@@ -1,72 +1,15 @@
-# About PMM upgrade
+# Updgrade PMM
 
-There are three stages to installing and setting up PMM.
+Upgrade the PMM Server before you upgrade the PMM Client. Ensure that the PMM Server version is higher than or equal to the PMM Client version. Otherwise, there might be configuration issues, thus leading to failure in the client-server communication as PMM Server might not be able to identify all the parameters in the configuration.
 
-!!! summary alert alert-info "Summary"
-    1. [Set up a PMM Server](#set-up-pmm-server).
-    2. [Set up PMM Client(s)](#set-up-pmm-client).
-    3. [Add services](#add-services).
+For example, for a PMM Server version 2.25.0, the PMM Client version should be 2.25.0 or 2.24.0. If the PMM Client version is 2.26.0, PMM might not work as expected.
 
-## Set up PMM Server
+Find the detailed information on how to upgrade PMM in the following documets:
 
-Install and run at least one PMM Server.
+* [Upgrade PMM server using the UI](ui_upgrade.md)
 
-Choose from:
+* [Upgrade PMM agent](upgrade_agent.md)
 
-| Use | <i class="uil uil-thumbs-up"></i> **Benefits** | <i class="uil uil-thumbs-down"></i> **Drawbacks**|
-|---|---|---
-| [Docker] | 1. Quick.<br>2. Simple. | 1. Docker installation required.<br>2. Additional network configuration required.
-| [Podman] | 1. Quick.<br>2. Simple.<br>3. Rootless. | 1. Podman installation required.
-| [Helm] Technical Preview | 1. Quick.<br>2. Simple.<br>3. Cloud. | 1. Requires running Kubernetes cluster.
-| [Virtual appliance]  | 1. Easily import into Hypervisor of your choice | 1. More system resources compared to Docker footprint.
-| [Amazon AWS] | 1. Wizard-driven install. | 1. Non-free solution (infrastructure costs).
+* [Upgrade PMM server using Docker](upgrade_docker.md)
 
-## Set up PMM Client
-
-Install and run PMM Client on every node where there is a service you want to monitor.
-
-The choices:
-
-- With [Docker](client/index.md#docker);
-- Natively, installed from:
-    - [Linux package](client/index.md#package-manager) (installed with `apt`, `apt-get`, `dnf`, `yum`);
-    - [Binary package](client/index.md#binary-package) (a downloaded `.tar.gz` file).
-
-!!! hint alert "Binary is only way to install PMM client without root permissions"
-
-## Add services
-
-On each PMM Client, you configure then add to PMM Server's inventory the node or service you want to monitor.
-
-How you do this depends on the type of service. You can monitor:
-
-- [MySQL] (and variants: Percona Server for MySQL, Percona XtraDB Cluster, MariaDB);
-- [MongoDB];
-- [PostgreSQL];
-- [ProxySQL];
-- [Amazon RDS];
-- [Microsoft Azure];
-- [Google Cloud Platform] (MySQL and PostgreSQL);
-- [Linux];
-- [External services];
-- [HAProxy];
-- [Remote instances].
-
-[MySQL]: client/mysql.md
-[MongoDB]: client/mongodb.md
-[PostgreSQL]: client/postgresql.md
-[ProxySQL]: client/proxysql.md
-[Amazon RDS]: client/aws.md
-[Microsoft Azure]: client/azure.md
-[Google Cloud Platform]: client/google.md
-[Linux]: client/linux.md
-[External services]: client/external.md
-[HAProxy]: client/haproxy.md
-[Remote instances]: client/remote.md
-[dashboards]: ../details/dashboards/
-[Docker]: server/docker.md
-[Podman]: server/podman.md
-[Helm]: server/helm.md
-[virtual appliance]: server/virtual-appliance.md
-[Amazon AWS]: server/aws.md
-[easy install]: server/easy-install.md
+* [Upgrade from PMM 1](upgrade_from_pmm_1.md)

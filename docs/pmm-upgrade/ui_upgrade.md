@@ -1,72 +1,26 @@
 # Upgrade PMM server using the UI
 
-There are three stages to installing and setting up PMM.
+!!! caution alert alert-warning "Caution"
+    - While upgrading PMM to version 2.32.0, it fails. This issue has been resolved for PMM version 2.33.0. However, the issue persists on all the versions prior to 2.33.0. For solution, see the [troubleshooting](../how-to/troubleshoot.md#pmm-server-fails-while-upgrading) section.
+    - PMM versions prior to 2.33.0 may not show the latest versions available with instances created from the AWS marketplace in specific environments, including AWS. For solution, see the [troubleshooting](../how-to/troubleshoot.md#pmm-server-not-showing-latest-versions-available-with-the-instances-created-from-aws) section.
 
-!!! summary alert alert-info "Summary"
-    1. [Set up a PMM Server](#set-up-pmm-server).
-    2. [Set up PMM Client(s)](#set-up-pmm-client).
-    3. [Add services](#add-services).
+Client and server components are installed and updated separately.
 
-## Set up PMM Server
+PMM Server can run natively, as a Docker image, a virtual appliance, or an AWS cloud instance. Each has its own installation and update steps.
 
-Install and run at least one PMM Server.
+The preferred and simplest way to update PMM Server is with the *PMM Upgrade* panel on the Home page.
 
-Choose from:
+![!image](../_images/PMM_Home_Dashboard_Panels_Upgrade.jpg)
 
-| Use | <i class="uil uil-thumbs-up"></i> **Benefits** | <i class="uil uil-thumbs-down"></i> **Drawbacks**|
-|---|---|---
-| [Docker] | 1. Quick.<br>2. Simple. | 1. Docker installation required.<br>2. Additional network configuration required.
-| [Podman] | 1. Quick.<br>2. Simple.<br>3. Rootless. | 1. Podman installation required.
-| [Helm] Technical Preview | 1. Quick.<br>2. Simple.<br>3. Cloud. | 1. Requires running Kubernetes cluster.
-| [Virtual appliance]  | 1. Easily import into Hypervisor of your choice | 1. More system resources compared to Docker footprint.
-| [Amazon AWS] | 1. Wizard-driven install. | 1. Non-free solution (infrastructure costs).
+The panel shows:
 
-## Set up PMM Client
+- the current server version and release date;
+- whether the server is up to date;
+- the last time a check was made for updates.
 
-Install and run PMM Client on every node where there is a service you want to monitor.
+Click the refresh button to manually check for updates.
 
-The choices:
+If one is available, click the update button to update to the version indicated.
 
-- With [Docker](client/index.md#docker);
-- Natively, installed from:
-    - [Linux package](client/index.md#package-manager) (installed with `apt`, `apt-get`, `dnf`, `yum`);
-    - [Binary package](client/index.md#binary-package) (a downloaded `.tar.gz` file).
-
-!!! hint alert "Binary is only way to install PMM client without root permissions"
-
-## Add services
-
-On each PMM Client, you configure then add to PMM Server's inventory the node or service you want to monitor.
-
-How you do this depends on the type of service. You can monitor:
-
-- [MySQL] (and variants: Percona Server for MySQL, Percona XtraDB Cluster, MariaDB);
-- [MongoDB];
-- [PostgreSQL];
-- [ProxySQL];
-- [Amazon RDS];
-- [Microsoft Azure];
-- [Google Cloud Platform] (MySQL and PostgreSQL);
-- [Linux];
-- [External services];
-- [HAProxy];
-- [Remote instances].
-
-[MySQL]: client/mysql.md
-[MongoDB]: client/mongodb.md
-[PostgreSQL]: client/postgresql.md
-[ProxySQL]: client/proxysql.md
-[Amazon RDS]: client/aws.md
-[Microsoft Azure]: client/azure.md
-[Google Cloud Platform]: client/google.md
-[Linux]: client/linux.md
-[External services]: client/external.md
-[HAProxy]: client/haproxy.md
-[Remote instances]: client/remote.md
-[dashboards]: ../details/dashboards/
-[Docker]: server/docker.md
-[Podman]: server/podman.md
-[Helm]: server/helm.md
-[virtual appliance]: server/virtual-appliance.md
-[Amazon AWS]: server/aws.md
-[easy install]: server/easy-install.md
+!!! seealso alert alert-info "See also"
+    [PMM Server Docker upgrade](upgrade_docker.md) and [Upgrade PMM agent](upgrade_agent.md)

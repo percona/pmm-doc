@@ -124,7 +124,6 @@ certs:
 
 ### Upgrades
 
-
 Percona will release a new chart updating its containers if a new version of the main container is available, there are any significant changes, or critical vulnerabilities exist.
 
 By default UI update feature is disabled and should not be enabled. Do not modify that parameter or add it while modifying the custom `values.yaml` file:

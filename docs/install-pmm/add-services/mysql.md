@@ -1,4 +1,4 @@
-# MySQL
+# Monitor a MySQL or MySQL-based database instance
 
 How to set up PMM to monitor a MySQL or MySQL-based database instance.
 
@@ -42,7 +42,6 @@ GRANT SELECT, PROCESS, REPLICATION CLIENT, RELOAD, BACKUP_ADMIN ON *.* TO 'pmm'@
 CREATE USER 'pmm'@'localhost' IDENTIFIED BY 'pass' WITH MAX_USER_CONNECTIONS 10;
 GRANT SELECT, PROCESS, REPLICATION CLIENT, RELOAD ON *.* TO 'pmm'@'localhost';
 ```
-
 
 ## Choose and configure a source
 
