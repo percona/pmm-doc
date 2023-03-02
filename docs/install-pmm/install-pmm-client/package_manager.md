@@ -10,58 +10,56 @@ On Debian or Red Hat Linux, install `percona-release` and use a Linux package ma
     percona-release enable original release
     ```
 
-### Debian-based
+=== "Debian-based"
 
-Do the following steps to install the PMM Client package:
+    1. Configure repositories.
 
-1. Configure repositories.
-
-    ```sh
-    wget https://repo.percona.com/apt/percona-release_latest.generic_all.deb
-    dpkg -i percona-release_latest.generic_all.deb
-    ```
-
-2. Install the PMM Client package.
-
-    !!! hint "Root permissions"
         ```sh
-        apt update
-        apt install -y pmm2-client
+        wget https://repo.percona.com/apt/percona-release_latest.generic_all.deb
+        dpkg -i percona-release_latest.generic_all.deb
         ```
 
-3. Check.
+    2. Install the PMM Client package.
 
-    ```sh
-    pmm-admin --version
-    ```
+        !!! hint "Root permissions"
+            ```sh
+            apt update
+            apt install -y pmm2-client
+            ```
 
-4. [Register the node](#register).
+    3. Check.
 
-### Red Hat-based
+        ```sh
+        pmm-admin --version
+        ```
 
-1. Configure repositories.
+    4. [Register the node](..//register-client-node/index.md).
 
-    ```sh
-    yum install -y https://repo.percona.com/yum/percona-release-latest.noarch.rpm
-    ```
+=== "Red Hat-based"
 
-2. Install the PMM Client package.
+    1. Configure repositories.
 
-    ```sh
-    yum install -y pmm2-client
-    ```
+        ```sh
+        yum install -y https://repo.percona.com/yum/percona-release-latest.noarch.rpm
+        ```
 
-3. Check.
+    2. Install the PMM Client package.
 
-    ```sh
-    pmm-admin --version
-    ```
+        ```sh
+        yum install -y pmm2-client
+        ```
 
-4. [Register the node](#register).
+    3. Check.
+
+        ```sh
+        pmm-admin --version
+        ```
+
+    4. [Register the node](..//register-client-node/index.md).
 
 ## Package manager -- manual download
 
-1. Visit the [Percona Monitoring and Management 2 download] page.
+1. Visit the [Percona Monitoring and Management 2 download](https://www.percona.com/downloads/pmm2/) page.
 2. Under *Version:*, select the one you want (usually the latest).
 3. Under *Software:*, select the item matching your software platform.
 4. Click to download the package file:
@@ -82,15 +80,15 @@ Here are the download page links for each supported platform.
 - [Ubuntu 20.04 (Focal Fossa)](https://www.percona.com/downloads/pmm2/{{release}}/binary/debian/focal/)
 - [Ubuntu 22.04 (Jammy Jellyfish)](https://www.percona.com/downloads/pmm2/{{release}}/binary/debian/jammy/)
 
-### Debian-based
+=== "Debian-based"
 
-```sh
-dpkg -i *.deb
-```
+    ```sh
+    dpkg -i *.deb
+    ```
 
-### Red Hat-based
+=== "Red Hat-based"
 
-```sh
-dnf localinstall *.rpm
-```
+    ```sh
+    dnf localinstall *.rpm
+    ```
 

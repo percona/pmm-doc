@@ -1,4 +1,4 @@
-# MongoDB
+# Monitor MongoDB database instance
 
 How to set up PMM to monitor a [MongoDB] or [Percona Server for MongoDB] database instance.
 
