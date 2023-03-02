@@ -358,7 +358,6 @@ nav:
       - third-party/index.md
       - third-party/victoria.md
       - third-party/clickhouse.md
-
   - Troubleshoot:
       - troubleshoot/index.md
       - troubleshoot/checklist.md
