@@ -1,6 +1,9 @@
 # Disable per-table statistics for an instance
 
+When adding an instance with `pmm-admin add`, the `--disable-tablestats` option disables table statistics collection when there are more than the default number (1000) of tables in the instance.
 
+## USAGE
 
-Percona Monitoring and Management (PMM) is an open source database monitoring, management, and observability solution for MySQL, PostgreSQL, and MongoDB.
-
+```sh
+pmm-admin add mysql --disable-tablestats
+```
