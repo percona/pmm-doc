@@ -359,7 +359,7 @@ nav:
       - third-party/victoria.md
       - third-party/clickhouse.md
 
-  - Troubleshooting:
+  - Troubleshoot:
       - troubleshoot/index.md
       - troubleshoot/checklist.md
       - troubleshoot/upgrade_issues.md
