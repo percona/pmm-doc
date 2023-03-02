@@ -386,6 +386,10 @@ nav:
       -  reference/fundamentals.md
       -  reference/pmm_components_and_versions.md
       -  reference/faq.md
+      - Third-party components in PMM: 
+        - third-party/index.md
+        - third-party/victoria.md
+        - third-party/clickhouse.md
   - Release Notes:
       - Release notes index: release-notes/index.md
       - "PMM 2.34.0 (2023-01-30)": release-notes/2.34.0.md
