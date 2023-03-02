@@ -120,9 +120,7 @@ nav:
   - Getting Started:
       - get-started/index.md 
       - get-started/why_pmm.md
-      - get-started/fundamentals.md
       - get-started/quickstart.md
-      - get-started/architecture.md
   - Install PMM:
       - Plan your PMM installation: 
         - plan-pmm-installation/harware_and_system.md
