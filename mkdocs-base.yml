@@ -200,6 +200,10 @@ nav:
       - optimize/disable_table_stats.md 
   - PMM user interface:
       - ui/index.md
+      - ui/log_in.md
+      - ui/controls.md
+      - ui/nav.md
+      - ui/panels.md     
       - Dashboards and panels:
         - ui/dashboards-panels/index.md
         - Use dashboards:
