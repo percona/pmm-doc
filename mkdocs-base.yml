@@ -168,7 +168,8 @@ nav:
       - uninstall-pmm/unregister_client.md
   - Administer PMM:
       - pmm-admin/index.md
-      - Manage users:
+      - Users:
+        - pmm-admin/manage-users/index.md
         - pmm-admin/manage-users/add_users.md
         - pmm-admin/manage-users/edit_users.md
         - pmm-admin/manage-users/delete_users.md
