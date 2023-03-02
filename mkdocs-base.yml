@@ -360,8 +360,19 @@ nav:
       - third-party/clickhouse.md
 
   - Troubleshooting:
-      - troubleshoot/troubleshoot.md
-      - troubleshoot/areas.md 
+      - troubleshoot/index.md
+      - troubleshoot/checklist.md
+      - troubleshoot/upgrade_issues.md
+      - troubleshoot/config_issues.md
+      - DBaaS:
+        - troubleshoot/dbaas/index.md      
+        - troubleshoot/dbaas/olm_issues.md
+        - troubleshoot/dbaas/operator_issues.md
+      - troubleshoot/alerting_issues.md
+      - troubleshoot/qan_issues.md
+      - troubleshoot/dashboard_issues.md
+      - troubleshoot/components_issues.md
+      - troubleshoot/data_issues.md 
   - Reference:
       - reference/index.md 
       -  reference/fundamentals.md

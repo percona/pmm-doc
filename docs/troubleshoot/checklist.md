@@ -1,8 +1,4 @@
-# Resolve issues in PMM
-
-This section describes solutions to common problems and scenarios you might encounter while using PMM.
-
-## Troubleshooting checklist
+# Troubleshooting checklist
 
 The following questions might help you identify the origin of the problem while using Percona Monitoring and Management:
 
