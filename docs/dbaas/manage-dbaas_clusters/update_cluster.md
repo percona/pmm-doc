@@ -6,11 +6,11 @@
 
 3. In the *Actions* column, open the <i class="uil uil-ellipsis-v"></i> menu and click *Update*:
 
-    ![!DBaaS Update](../_images/PMM_DBaaS_DB_Cluster_Update_menu.png)
+    ![!DBaaS Update](../../_images/PMM_DBaaS_DB_Cluster_Update_menu.png)
 
 4. Confirm the update by clicking on *Update*, or abandon by clicking *Cancel*.
 
-    ![!DBaaS Update Confirmation](../_images/PMM_DBaaS_DB_Cluster_Update_confirmation.png)
+    ![!DBaaS Update Confirmation](../../_images/PMM_DBaaS_DB_Cluster_Update_confirmation.png)
 
 !!! seealso alert alert-info "See also"
     [Setting up a development environment for DBaaS](../dbaas/setting-up.md)

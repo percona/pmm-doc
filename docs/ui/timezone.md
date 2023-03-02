@@ -1,4 +1,3 @@
-
 # Timezones
 
 By default Grafana uses the timezone from your web browser. However, you can change this setting.
