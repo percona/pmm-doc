@@ -1,4 +1,3 @@
-
 # Panels
 
 Charts, graphs and set-based panels reveal extra information when the mouse is moved over them.

@@ -1,7 +1,9 @@
 # Alerting components
+
 Alerts are split into four key components: alert rules, contact points, notification policies, and silences. 
 
 ## Alert rules
+
 Describe the circumstances under which you want to be alerted. The evaluation criteria that you define determine whether an alert will fire. 
 
 An alert rule consists of one or more queries and expressions, a condition, the frequency of evaluation, and optionally, the duration over which the condition is met.

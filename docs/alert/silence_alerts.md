@@ -1,4 +1,5 @@
 # Silence alerts
+
 Create a silence when you want to stop notifications from one or more alerting rules.
 
 Silences stop notifications from being sent to your specified contact points.
@@ -8,6 +9,7 @@ Silenced alerts are still recorded under **Alerting > Fired Alerts** so that you
 For information on creating silences, see [About alerting silences](https://grafana.com/docs/grafana/latest/alerting/silences/) in the Grafana documentation.
 
 ## Deprecated alerting options
+
  PMM 2.31 introduced Percona Alerting which replaces the old Integrated Alerting in previous PMM versions. In addition to full feature parity, Percona Alerting includes additional benefits like Grafana-based alert rules and a unified, easy-to-use alerting command center on the **Alerting** page.
 
 ### Alerting compatibility 
@@ -30,11 +32,13 @@ If you have existing YAML alert templates that you want to leverage in Percona A
 2. Click **Add** and upload a local .yaml file from your computer.
 
 #### Migrate alert rules
+
 Alert rules created with Integrated Alerting in PMM 2.30 and earlier are not automatically migrated to Percona Alerting. 
 
 After upgrading to PMM 2.31, make sure to manually migrate any alert rules that you want to transfer to PMM 2.31 using the [Integrated Alerting Migration Script](https://github.com/percona/pmm/blob/main/ia_migration.py).
 
 ##### Script commands
+
 The default command for migrating rules is:
 ```yaml 
 *python ia_migration.py -u admin -p admin*
@@ -42,6 +46,7 @@ The default command for migrating rules is:
 To see all the available options, check the scrip help using `ia_migration.py -h`
 
 ##### Script prerequisites
+
 - Python version 3.x, which you can download from [Python Downloads centre](https://www.python.org/downloads/).
   
 -  [Requests  library](https://requests.readthedocs.io/en/latest/user/install/#install), which you can install with the following command: ```pip install requests```. 
@@ -52,6 +57,7 @@ To see all the available options, check the scrip help using `ia_migration.py -h
 For more information about the script and advanced migration options, check out the help information embedded in the script.
 
 ### Disable Percona Alerting
+
 Percona Alerting is enabled by default in the PMM Settings. This feature adds the **Percona templated alerts** option on the **Alerting** page.
 
 If for some reason you want to disable PMM Alert templates and keep only Grafana-managed alerts:

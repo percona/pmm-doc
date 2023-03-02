@@ -1,7 +1,9 @@
 # Create a Percona templated alert
+
 This topic focuses on creating an alert rule based on PMM templates. For information on working with the other alert types, check the Grafana documentation on [Grafana Labs](https://grafana.com/docs/grafana/latest/alerting/).
 
 ### Provision alert resources
+
 Before creating PMM alert rules, configure the required alert resources:
 
 1. Go to **Configuration > PMM Settings** and ensure that the **Alerting** option is enabled. This is enabled by default starting with PMM 2.31. However, if you have disabled it, the **Alerting** page displays only Grafana-managed alert rules. This means that you will not be able to create alerts based on PMM templates.
@@ -9,6 +11,7 @@ Before creating PMM alert rules, configure the required alert resources:
 3. Go to **Alerting > Alert Rule Templates** and check the default PMM templates. If none of the templates include a relevant expression for the type of alerts that you want to create, click **Add** to create a custom template instead.
 
 #### Configure alert templates
+
 Alerts templates are YAML files that provide the source framework for alert rules.
 Alert templates contain general template details and an alert expression defined in [MetricsQL](https://docs.victoriametrics.com/MetricsQL.html). This query language is backward compatible with Prometheus QL.
 
@@ -19,6 +22,7 @@ If none of the default PMM templates contain a relevant expression for the alert
 You can base multiple alert rules on the same template. For example, you can create a `pmm_node_high_cpu_load` template that can be used as the source for alert rules for production versus staging, warning versus critical, etc.
 
 #### Template format
+
 When creating custom templates, make sure to use the required template format below:
 
 - **name** (required field): uniquely identifies template. Spaces and special characters are not allowed.

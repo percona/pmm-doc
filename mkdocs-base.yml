@@ -212,7 +212,9 @@ nav:
       - ui/log_in.md
       - ui/controls.md
       - ui/nav.md
-      - ui/panels.md     
+      - ui/panels.md
+      - ui/timezone.md
+      - ui/view.md     
       - Dashboards:
         - ui/dashboards-panels/index.md
         - Use dashboards:
@@ -311,7 +313,8 @@ nav:
         - dbaas/setup-dbaas/activate_k8s.md
         - dbaas/setup-dbaas/create_k8s.md
         - dbaas/setup-dbaas/del_k8s.md
-        - dbaas/setup-dbaas/run_as_docker.md    
+        - dbaas/setup-dbaas/components.md  
+        - dbaas/setup-dbaas/run_as_docker.md  
         - dbaas/setup-dbaas/expose_clusters.md
       - Manage database clusters:
         - dbaas/manage-dbaas_clusters/add_cluster.md
@@ -321,6 +324,7 @@ nav:
         - dbaas/manage-dbaas_clusters/suspend_cluster.md
         - dbaas/manage-dbaas_clusters/update_cluster.md
       - dbaas/K8s_cluster.md
+      - dbaas/dbaas_backup.md
   - Percona Alerting:
       - alert/index.md
       - alert/alert_type.md
@@ -358,7 +362,7 @@ nav:
   - PMM Metrics: 
       - metrics/index.md
       - metrics/extend_metrics.md 
-  - PMM commands :
+  - PMM commands:
       - commands/index.md
       - commands/pmm-admin.md
       - commands/pmm-agent.md
@@ -381,9 +385,9 @@ nav:
       - troubleshoot/data_issues.md 
   - Reference:
       - reference/index.md 
-      -  reference/fundamentals.md
-      -  reference/pmm_components_and_versions.md
-      -  reference/faq.md
+      - reference/fundamentals.md
+      - reference/pmm_components_and_versions.md
+      - reference/faq.md
       - Third-party components in PMM: 
         - reference/third-party/index.md
         - reference/third-party/victoria.md
