@@ -1,6 +1,6 @@
 # Create MongoDB on-demand and scheduled backups
 
-Before creating a backup, make sure to check the [MongoDB backup prerequisites](../backup/mongo-prerequisites.md).
+Before creating a backup, make sure to check the [MongoDB backup prerequisites](mongo_prerequisites.md).
 
 To schedule or create an on-demand backup, check the instructions below. If you want to create a Point-in-time-recovery (PITR) backup instead, see [Create MongoDB PITR backups](create_PITR_mongo.md).
 

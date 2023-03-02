@@ -1,6 +1,7 @@
 # Restore a MySQL backup
 
 ## Restore compatibility
+
 MySQL backups can be restored to the same service it was created from, or to a compatible one. 
 
 To restore a backup:
