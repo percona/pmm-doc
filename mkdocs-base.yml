@@ -364,7 +364,7 @@ nav:
       - troubleshoot/checklist.md
       - troubleshoot/upgrade_issues.md
       - troubleshoot/config_issues.md
-      - DBaaS:
+      - DBaaS issues:
         - troubleshoot/dbaas/index.md      
         - troubleshoot/dbaas/olm_issues.md
         - troubleshoot/dbaas/operator_issues.md
