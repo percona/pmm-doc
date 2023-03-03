@@ -18,26 +18,27 @@ You can also create K8s on AWS using these [instructions](https://www.percona.co
 
 
 === "Debian, Ubuntu"
-        ```sh
-        apt-add-repository https://download.docker.com/linux/centos/docker-ce.repo
-        systemctl enable docker
-        systemctl start docker
-        ```
+
+    ```sh
+    apt-add-repository https://download.docker.com/linux/centos/docker-ce.repo
+    systemctl enable docker
+    systemctl start docker
+    ```
 
 
 === "minikube"
 
     Follow minikube's [documentation to install](https://minikube.sigs.k8s.io/docs/start/) it.
 
-    ## Red Hat, CentOS
+      **Red Hat, CentOS**
 
-        ```sh
-        yum -y install curl
-        curl -Lo /usr/local/sbin/minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
-        chmod +x /usr/local/sbin/minikube
-        ln -s /usr/local/sbin/minikube /usr/sbin/minikube
-        alias kubectl='minikube kubectl --'
-        ```
+    ```sh
+      yum -y install curl
+      curl -Lo /usr/local/sbin/minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+      chmod +x /usr/local/sbin/minikube
+      ln -s /usr/local/sbin/minikube /usr/sbin/minikube
+      alias kubectl='minikube kubectl --'
+      ```
 
 ## Start PMM server and activate a DBaaS feature
 
