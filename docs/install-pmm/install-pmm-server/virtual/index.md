@@ -48,35 +48,10 @@ Most steps can be done with either a user interface or on the command line, but 
 | `root`           | `percona`
 | `admin`          | `admin`
 
-## Download
 
-### UI
 
-1. Open a web browser.
-2. [Visit the PMM Server download page][OVA].
-3. Choose a *Version* or use the default (the latest).
-4. Click the link for `pmm-server-{{release}}.ova` to download it. Note where your browser saves it.
-5. Right click the link for `pmm-server-{{release}}.sha256sum` and save it in the same place as the `.ova` file.
-6. (Optional) [Verify](#verify).
 
-### CLI
 
-Download the latest PMM Server OVA and checksum files.
-
-```sh
-wget https://www.percona.com/downloads/pmm2/{{release}}/ova/pmm-server-{{release}}.ova
-wget https://www.percona.com/downloads/pmm2/{{release}}/ova/pmm-server-{{release}}.sha256sum
-```
-
-## Verify
-
-### CLI
-
-Verify the checksum of the downloaded .ova file.
-
-```sh
-shasum -ca 256 pmm-server-{{release}}.sha256sum
-```
 
 ## VMware
 
