@@ -118,8 +118,8 @@ extra:
 
 # Common navigation for percona.com, render.com and PDF
 nav:
-  - Home:
-      - get-started/index.md
+ 
+  -index.md
   - why_pmm.md
   - quickstart.md
   - Install PMM:
