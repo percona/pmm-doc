@@ -384,7 +384,7 @@ nav:
         - qan/panels/overview.md
         - qan/panels/filters.md
         - qan/panels/details.md
-  - PMM Metrics: 
+  - PMM metrics: 
       - metrics/index.md
       - metrics/extend_metrics.md 
   - PMM commands:
