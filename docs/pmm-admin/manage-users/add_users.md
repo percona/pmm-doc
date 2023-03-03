@@ -3,7 +3,7 @@
 
 You can add a user in PMM from *User → New user* tab.
 
-![!](../_images/PMM-manage-users.png)
+![!](../../_images/PMM-manage-users.png)
 
 To add a new user in PMM:
 
