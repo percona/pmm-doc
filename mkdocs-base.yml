@@ -129,7 +129,7 @@ nav:
       - Install PMM server:
         - install-pmm/install-pmm-server/index.md
         - install-pmm/install-pmm-server/prerequisites.md
-        - Docker:
+        - Install PMM with Docker:
           - install-pmm/install-pmm-server/docker/index.md
           - install-pmm/install-pmm-server/docker/run_with_vol.md
           - install-pmm/install-pmm-server/docker/run_with_data_container.md
@@ -142,14 +142,13 @@ nav:
           - install-pmm/install-pmm-server/docker/isolated_hosts.md        
         - install-pmm/install-pmm-server/podman.md
         - install-pmm/install-pmm-server/helm.md
-        - Virtual Applinace:
+        - Install PMM with Virtual Applinace:
           - install-pmm/install-pmm-server/virtual/index.md
           - install-pmm/install-pmm-server/virtual/download_ova.md
           - install-pmm/install-pmm-server/virtual/vmware.md
           - install-pmm/install-pmm-server/virtual/virtualbox.md
           - install-pmm/install-pmm-server/virtual/login_UI.md
           - install-pmm/install-pmm-server/virtual/remove_virtual_machine.md
-
       - Install PMM client:
         - install-pmm/install-pmm-client/index.md
         - install-pmm/install-pmm-client/prerequisites.md 

@@ -1,4 +1,4 @@
-## Log into user interface
+# Log into user interface
 
 1. Open a web browser and visit the guest IP address.
 
