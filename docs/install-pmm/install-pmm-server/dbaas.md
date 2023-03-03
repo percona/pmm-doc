@@ -8,17 +8,16 @@ You can also create K8s on AWS using these [instructions](https://www.percona.co
 
 === "Red Hat, CentOS"
 
-        ```sh
-        yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
-        yum -y install docker-ce
-        usermod -a -G docker centos
-        systemctl enable docker
-        systemctl start docker
-        ```
+  ```sh
+  yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+  yum -y install docker-ce
+  usermod -a -G docker centos
+  systemctl enable docker
+  systemctl start docker
+  ```
 
 
 === "Debian, Ubuntu"
-
         ```sh
         apt-add-repository https://download.docker.com/linux/centos/docker-ce.repo
         systemctl enable docker
@@ -30,7 +29,7 @@ You can also create K8s on AWS using these [instructions](https://www.percona.co
 
     Follow minikube's [documentation to install](https://minikube.sigs.k8s.io/docs/start/) it.
 
-    #### Red Hat, CentOS
+    ## Red Hat, CentOS
 
         ```sh
         yum -y install curl
