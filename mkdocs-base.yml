@@ -131,7 +131,16 @@ nav:
         - install-pmm/install-pmm-server/prerequisites.md
         - Docker:
           - install-pmm/install-pmm-server/docker/docker.md
-          - install-pmm/install-pmm-server/docker/run_with_vol.md        
+          - install-pmm/install-pmm-server/docker/run_with_vol.md
+          - install-pmm/install-pmm-server/docker/run_with_data_container.md
+          - install-pmm/install-pmm-server/docker/run_with_host_dir.md      
+          - install-pmm/install-pmm-server/docker/backup_container.md      
+          - install-pmm/install-pmm-server/docker/upgrade_container.md      
+          - install-pmm/install-pmm-server/docker/restore_container.md      
+          - install-pmm/install-pmm-server/docker/remove_container.md      
+          - install-pmm/install-pmm-server/docker/env_var.md      
+          - install-pmm/install-pmm-server/docker/preview_env_var.md      
+          - install-pmm/install-pmm-server/docker/isolated_hosts.md        
         - install-pmm/install-pmm-server/docker.md
         - install-pmm/install-pmm-server/podman.md
         - install-pmm/install-pmm-server/helm.md
