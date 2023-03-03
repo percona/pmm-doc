@@ -149,7 +149,16 @@ nav:
           - install-pmm/install-pmm-server/virtual/virtualbox.md
           - install-pmm/install-pmm-server/virtual/login_UI.md
           - install-pmm/install-pmm-server/virtual/remove_virtual_machine.md
-        - install-pmm/install-pmm-server/aws.md
+        - Install PMM with AWS marketplace:
+          - install-pmm/install-pmm-server/aws/aws.md
+          - install-pmm/install-pmm-server/aws/limit_access.md
+          - install-pmm/install-pmm-server/aws/settings.md
+          - install-pmm/install-pmm-server/aws/settings.md
+          - install-pmm/install-pmm-server/aws/run.md
+          - install-pmm/install-pmm-server/aws/back_pmm_server.md
+          - install-pmm/install-pmm-server/aws/restore_pmm_server.md
+          - install-pmm/install-pmm-server/aws/remove_pmm_server.md
+
         - install-pmm/install-pmm-server/dbaas.md
         - install-pmm/install-pmm-server/easy-install.md
 
