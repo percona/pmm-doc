@@ -161,7 +161,6 @@ nav:
           - install-pmm/install-pmm-server/dbaas/activate_dbaas.md
           - install-pmm/install-pmm-server/dbaas/create_k8s_cluster.md
           - install-pmm/install-pmm-server/dbaas/del_cluster.md
-          - install-pmm/install-pmm-server/dbaas/del_cluster.md
           - install-pmm/install-pmm-server/dbaas/run_as_docker.md
           - install-pmm/install-pmm-server/dbaas/expose_clusters_for external_clients.md
         - install-pmm/install-pmm-server/easy-install.md
