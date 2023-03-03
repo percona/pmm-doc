@@ -153,7 +153,6 @@ nav:
           - install-pmm/install-pmm-server/aws/aws.md
           - install-pmm/install-pmm-server/aws/limit_access.md
           - install-pmm/install-pmm-server/aws/settings.md
-          - install-pmm/install-pmm-server/aws/settings.md
           - install-pmm/install-pmm-server/aws/run.md
           - install-pmm/install-pmm-server/aws/back_pmm_server.md
           - install-pmm/install-pmm-server/aws/restore_pmm_server.md
