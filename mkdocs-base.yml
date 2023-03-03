@@ -149,6 +149,10 @@ nav:
           - install-pmm/install-pmm-server/virtual/virtualbox.md
           - install-pmm/install-pmm-server/virtual/login_UI.md
           - install-pmm/install-pmm-server/virtual/remove_virtual_machine.md
+        - install-pmm/install-pmm-server/aws.md
+        - install-pmm/install-pmm-server/dbaas.md
+        - install-pmm/install-pmm-server/easy-install.md
+
       - Install PMM client:
         - install-pmm/install-pmm-client/index.md
         - install-pmm/install-pmm-client/prerequisites.md 
