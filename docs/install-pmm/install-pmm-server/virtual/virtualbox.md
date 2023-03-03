@@ -1,4 +1,4 @@
-# VirtualBox: Import OVA file
+# VirtualBox - Import OVA file
 
 ## OVA file downloaded from UI
 
