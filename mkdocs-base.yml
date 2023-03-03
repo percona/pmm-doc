@@ -135,7 +135,6 @@ nav:
           - install-pmm/install-pmm-server/docker/run_with_data_container.md
           - install-pmm/install-pmm-server/docker/run_with_host_dir.md      
           - install-pmm/install-pmm-server/docker/backup_container.md      
-          - install-pmm/install-pmm-server/docker/upgrade_container.md      
           - install-pmm/install-pmm-server/docker/restore_container.md      
           - install-pmm/install-pmm-server/docker/remove_container.md      
           - install-pmm/install-pmm-server/docker/env_var.md      
