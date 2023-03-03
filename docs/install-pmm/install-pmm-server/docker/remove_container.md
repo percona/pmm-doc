@@ -1,4 +1,4 @@
-# Remove
+# Remove container
 
 !!! summary alert alert-info "Summary"
     - Stop the container.

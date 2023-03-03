@@ -141,7 +141,6 @@ nav:
           - install-pmm/install-pmm-server/docker/env_var.md      
           - install-pmm/install-pmm-server/docker/preview_env_var.md      
           - install-pmm/install-pmm-server/docker/isolated_hosts.md        
-        - install-pmm/install-pmm-server/docker.md
         - install-pmm/install-pmm-server/podman.md
         - install-pmm/install-pmm-server/helm.md
         - install-pmm/install-pmm-server/virtual-appliance.md
