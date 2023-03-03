@@ -128,7 +128,10 @@ nav:
         - plan-pmm-installation/network_and_firewall.md
       - Install PMM server:
         - install-pmm/install-pmm-server/index.md
-        - install-pmm/install-pmm-server/prerequisites.md  
+        - install-pmm/install-pmm-server/prerequisites.md
+        - Docker:
+          - install-pmm/install-pmm-server/docker/docker.md
+          - install-pmm/install-pmm-server/docker/run_with_vol.md        
         - install-pmm/install-pmm-server/docker.md
         - install-pmm/install-pmm-server/podman.md
         - install-pmm/install-pmm-server/helm.md
