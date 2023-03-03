@@ -156,17 +156,15 @@ nav:
           - install-pmm/install-pmm-server/aws/back_pmm_server.md
           - install-pmm/install-pmm-server/aws/restore_pmm_server.md
           - install-pmm/install-pmm-server/aws/remove_pmm_server.md
-
         - install-pmm/install-pmm-server/dbaas.md
         - install-pmm/install-pmm-server/easy-install.md
-
       - Install PMM client:
         - install-pmm/install-pmm-client/index.md
         - install-pmm/install-pmm-client/prerequisites.md 
         - install-pmm/install-pmm-client/docker.md
         - install-pmm/install-pmm-client/binary_package.md          
         - install-pmm/install-pmm-client/package_manager.md
-      - Register client node: install-pmm/register_client_node/index.md 
+      - Register client node: install-pmm/register-client-node/index.md 
       - Add services:      
         - install-pmm/add-services/index.md
         - install-pmm/add-services/aws.md
