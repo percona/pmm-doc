@@ -45,7 +45,7 @@ You are creating a username and password that will be used for two purposes:
     ```
 
     !!! note alert alert-primary ""
-        For instructions about how to access your instances by using an SSH client, see [Connecting to Your Linux Instance Using SSH](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstancesLinux.html)
+        For instructions about how to access your instances by using an SSH client, see [Connecting to Your Linux Instance Using SSH](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstancesLinux.html)
 
     Make sure to replace the user name `ec2-user` used in this document with `admin`.
 

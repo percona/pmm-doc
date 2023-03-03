@@ -22,6 +22,7 @@
     --name pmm-server \
     percona/pmm-server:2
     ```
+    
 4. Change the password for the default `admin` user.
 
     * For PMM versions 2.27.0 and later:

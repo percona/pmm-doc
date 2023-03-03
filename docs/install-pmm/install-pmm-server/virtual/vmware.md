@@ -1,45 +1,45 @@
 # VMware - Import OVA file
 
-## OVA file downloaded from UI
+=== "OVA file downloaded from UI"
 
-1. Select *File* → *Import*.
-2. Click *Choose file...*.
-3. Navigate to the downloaded `.ova` file and select it.
-4. Click *Open*.
-5. Click *Continue*.
-6. In the *Save as* dialog:
+    1. Select *File* → *Import*.
+    2. Click *Choose file...*.
+    3. Navigate to the downloaded `.ova` file and select it.
+    4. Click *Open*.
+    5. Click *Continue*.
+    6. In the *Save as* dialog:
 
-    a. (Optional) Change the directory or file name.
+        a. (Optional) Change the directory or file name.
 
-    b. Click *Save*.
+        b. Click *Save*.
 
-7. Choose one of:
+    7. Choose one of:
 
-    - (Optional) Click *Finish*. This starts the virtual machine.
-    - (Recommended) Click *Customize Settings*. This opens the VM's settings page without starting the machine.
+        * (Optional) Click *Finish*. This starts the virtual machine.
+        * (Recommended) Click *Customize Settings*. This opens the VM's settings page without starting the machine.
 
-## OVA file downloaded via CLI
+=== "OVA file downloaded via CLI"
 
-1. Install [`ovftool`][OVFTool]. (You need to register.)
-2. Import and convert the OVA file. (`ovftool` can't change CPU or memory settings during import but it can set the default interface.)
+    1. Install [`ovftool`][OVFTool]. (You need to register.)
+    2. Import and convert the OVA file. (`ovftool` can't change CPU or memory settings during import but it can set the default interface.)
 
-    Choose one of:
+        Choose one of:
 
-    - Download and import the OVA file.
+        * Download and import the OVA file.
 
-        ```sh
-        ovftool --name="PMM Server" --net:NAT=Wi-Fi \
-        https://www.percona.com/downloads/pmm2/{{release}}/ova/pmm-server-{{release}}.ova \
-        pmm-server-{{release}}.vmx
-        ```
+            ```sh
+            ovftool --name="PMM Server" --net:NAT=Wi-Fi \
+            https://www.percona.com/downloads/pmm2/{{release}}/ova/pmm-server-{{release}}.ova \
+            pmm-server-{{release}}.vmx
+            ```
 
-    - Import an already-downloaded OVA file.
+        * Import an already-downloaded OVA file.
 
-        ```sh
-        ovftool --name="PMM Server" --net:NAT=WiFi \
-        pmm-server-{{release}}.ova \
-        pmm-server.vmx
-        ```
+            ```sh
+            ovftool --name="PMM Server" --net:NAT=WiFi \
+            pmm-server-{{release}}.ova \
+            pmm-server.vmx
+            ```
 
 ## Reconfigure interface
 
@@ -79,3 +79,9 @@
     vmrun -gu root -gp percona start \
     pmm-server.vmx nogui
     ```
+
+[OVA]: https://www.percona.com/downloads/pmm2/{{release}}/ova
+[OVF]: https://wikipedia.org/wiki/Open_Virtualization_Format
+[VirtualBox]: https://www.virtualbox.org/
+[VMware]: https://www.vmware.com/products/workstation-player/
+[OVFTool]: https://code.vmware.com/tool/ovf

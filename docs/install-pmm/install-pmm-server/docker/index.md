@@ -1,16 +1,16 @@
 # Install PMM server with Docker container
 
-How to run PMM Server with Docker based on our [Docker image].
+How to run PMM Server with Docker based on our [Docker image](https://hub.docker.com/r/percona/pmm-server).
 
 !!! note alert alert-primary ""
-    The tags used here are for the current release. Other [tags] are available.
+    The tags used here are for the current release. Other [tags](https://hub.docker.com/r/percona/pmm-server/tags) are available.
 
 !!! seealso alert alert-info "See also"
-    [Easy-install script]
+    [Easy-install script](../easy-install.md)
 
 **Prerequisites**
 
-- Install [Docker] 1.12.6 or higher.
+- Install [Docker](https://docs.docker.com/get-docker/) 1.12.6 or higher.
 
 ## Run docker container
 

@@ -1,38 +1,40 @@
 # VirtualBox - Import OVA file
 
-## OVA file downloaded from UI
+=== "OVA file downloaded from UI"
 
-1. Select *File* → *Import appliance...*.
-2. In the *File* field, type the path to the downloaded `.ova` file, or click the folder icon to navigate and open it.
-3. Click *Continue*.
-4. On the *Appliance settings* page, review the settings and click *Import*.
-5. Click *Start*.
-6. When the guest has booted, note the IP address in the guest console.
+    1. Select *File* → *Import appliance...*.
+    2. In the *File* field, type the path to the downloaded `.ova` file, or click the folder icon to navigate and open it.
+    3. Click *Continue*.
+    4. On the *Appliance settings* page, review the settings and click *Import*.
+    5. Click *Start*.
+    6. When the guest has booted, note the IP address in the guest console.
 
-## OVA file downloaded via CLI
+=== "OVA file downloaded via CLI"
 
-1. Open a terminal and change directory to where the downloaded `.ova` file is.
+    1. Open a terminal and change directory to where the downloaded `.ova` file is.
 
-2. (Optional) Do a 'dry run' import to see what values will be used.
-
-    ```sh
-    VBoxManage import pmm-server-{{release}}.ova --dry-run
-    ```
-
-3. Import the image.
-    Choose one of:
-    - With the default settings.
+    2. (Optional) Do a 'dry run' import to see what values will be used.
 
         ```sh
-        VBoxManage import pmm-server-{{release}}.ova
+        VBoxManage import pmm-server-{{release}}.ova --dry-run
         ```
 
-    - With custom settings (in this example, Name: "PMM Server", CPUs: 2, RAM: 8192 MB).
+    3. Import the image.
+        
+        Choose one of:
+        
+        * With the default settings.
 
-        ```sh
-        VBoxManage import --vsys 0 --vmname "PMM Server" \
-        --cpus 2 --memory 8192 pmm-server-{{release}}.ova
-        ```
+            ```sh
+            VBoxManage import pmm-server-{{release}}.ova
+            ```
+
+        * With custom settings (in this example, Name: "PMM Server", CPUs: 2, RAM: 8192 MB).
+
+            ```sh
+            VBoxManage import --vsys 0 --vmname "PMM Server" \
+            --cpus 2 --memory 8192 pmm-server-{{release}}.ova
+            ```
 
 ## Reconfigure interface
 

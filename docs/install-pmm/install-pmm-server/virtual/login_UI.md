@@ -2,7 +2,7 @@
 
 1. Open a web browser and visit the guest IP address.
 
-2. The PMM [login screen](../../get-started/interface.md) appears.
+2. The PMM [login screen](../../../interface.md) appears.
 
 3. Enter the default username and password in the relevant fields and click *Log in*.
 

@@ -1,7 +1,6 @@
 
 # Run Docker with data container
 
-
 1. Create a persistent data container.
 
     ```sh
