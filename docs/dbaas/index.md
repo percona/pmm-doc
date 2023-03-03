@@ -10,8 +10,8 @@ It allows you to utilize the benefits of Kubernetes and Percona's operators to r
 
 ## Start here
 
-- [Architecture and how DBaaS works](architecture.html)
-- [Setting up](get-started.html)
-- [Getting started with DBaaS](get-started.html)
-- [Registering and managing Kubernetes clusters](get-started.html)
-- [Creating and managing database clusters](get-started.html)
+- [Architecture and how DBaaS works](architecture.md)
+- [Setting up](./setup-dbaas/index.md)
+- [Getting started with DBaaS](get-started.md)
+- [Registering and managing Kubernetes clusters](get-started.md)
+- [Creating and managing database clusters](get-started.md)
