@@ -1,4 +1,4 @@
-# Checklist
+# Troubleshooting checklist
 
 The following questions might help you identify the origin of the problem while using Percona Monitoring and Management:
 
