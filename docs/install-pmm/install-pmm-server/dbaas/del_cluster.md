@@ -1,4 +1,4 @@
-# Deleting clusters
+# Delete clusters
 
 !!! note alert alert-primary ""
     If a Public Address is set in PMM Settings, for each DB cluster an API Key is created which can be found on the page `/graph/org/apikeys`. You should not delete them (for now, until [issue PMM-8045](https://jira.percona.com/browse/PMM-8045) is fixed) -- once a DB cluster is removed from DBaaS, the related API Key is also removed.
