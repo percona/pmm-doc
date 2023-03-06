@@ -14,7 +14,7 @@ To assign a public IP address for an Amazon EC2 instance, follow these steps:
 
     ![!image](../../_images/aws-marketplace.pmm.ec2.ip.associate.png)
 
-## Upgrading EC2 instance class
+## Upgrade EC2 instance class
 
 Upgrading to a larger EC2 instance class is supported by PMM provided you follow the instructions from the [AWS manual](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-resize.html). The PMM AMI image uses a distinct EBS volume for the PMM data volume which permits independent resizing of the EC2 instance without impacting the EBS volume.
 
@@ -30,7 +30,7 @@ Upgrading to a larger EC2 instance class is supported by PMM provided you follow
 
 5. Choose Apply to accept the new settings and start the stopped instance.
 
-## Expanding the PMM Data EBS Volume
+## Expand PMM Data EBS Volume
 
 The PMM data volume is mounted as an XFS formatted volume on top of an LVM volume. There are two ways to increase this volume size:
 
