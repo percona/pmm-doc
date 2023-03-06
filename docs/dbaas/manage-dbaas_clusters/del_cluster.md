@@ -8,7 +8,7 @@
 
 4. Confirm the action by clicking *Proceed*, or abandon by clicking *Cancel*.
 
-    ![!](../_images/PMM_DBaaS_DB_Cluster_Delete.png)
+    ![!](../../_images/PMM_DBaaS_DB_Cluster_Delete.png)
 
 !!! danger alert alert-danger "Danger"
     Deleting a cluster also deletes any attached volumes.  Please proceed with caution. 

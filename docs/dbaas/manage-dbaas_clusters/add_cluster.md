@@ -33,14 +33,14 @@ To create a DB cluster, do the following:
 
         Beside each resource type is an estimate of the required and available resources represented numerically in absolute and percentage values, and graphically as a colored, segmented bar showing the projected ratio of used to available resources. A red warning triangle <i style="color: red" class="uil uil-exclamation-triangle"></i> is shown if the requested resources exceed those available.
 
-        ![!](../_images/PMM_DBaaS_DB_Cluster_Advanced_Options.png)
+        ![!](../../_images/PMM_DBaaS_DB_Cluster_Advanced_Options.png)
 
     3. Enter the following on the *Database Configurations* panel:
 
     - *Storage Class* - Select the storage class from the drop-down. Storage classes allow dynamic provisioning of persistent storage for PMM. Using storage classes, you can create and attach volumes on-demand without manually managing the underlying storage infrastructure.
     - *Database configuration*- Enter the config string into the Configuration text box to configure the database engine.
 
-        ![!](../_images/PMM_DBaaS_DB_Cluster_Advanced_DB_Config.png)
+        ![!](../../_images/PMM_DBaaS_DB_Cluster_Advanced_DB_Config.png)
 
     4. Enter the following on the *Network and Security* panel:
 
@@ -55,7 +55,7 @@ To create a DB cluster, do the following:
 
 6. A row appears with information on your cluster:
 
-    ![!](../_images/PMM_DBaaS_DB_Cluster_Created.png)
+    ![!](../../_images/PMM_DBaaS_DB_Cluster_Created.png)
 
     - *Name*: The cluster name.
     - *Database*: The cluster database type and version.

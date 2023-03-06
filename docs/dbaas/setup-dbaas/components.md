@@ -20,4 +20,4 @@ Administrators can select allowed and default versions of components for each cl
 
 The Kubernetes Cluster tab shows the status of operators.
 
-![!](../_images/PMM_DBaaS_Kubernetes_Cluster_Operator_Status.png)
+![!](../../_images/PMM_DBaaS_Kubernetes_Cluster_Operator_Status.png)
