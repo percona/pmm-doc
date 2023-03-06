@@ -1,4 +1,4 @@
-## Query Analytics for MongoDB
+# Query Analytics for MongoDB
 
 MongoDB is conceptually different from relational database management systems, such as MySQL and MariaDB.
 

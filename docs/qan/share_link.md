@@ -1,4 +1,4 @@
-# Sharing a link for Query Analytics
+# Share a link for Query Analytics
 
 To share a link for Query Analytics, use *Copy Link*. It copies the link to the clipboard with all the relevant information such as selected query, table page, selected filters, details tab, and time range. Thus, when you open the link, it will display the exact information.
 
