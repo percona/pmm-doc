@@ -195,6 +195,7 @@ nav:
   - Upgrade PMM:
       - pmm-upgrade/index.md
       - pmm-upgrade/ui_upgrade.md
+      - pmm-upgrade/upgrade_aws.md    
       - pmm-upgrade/upgrade_docker.md
       - pmm-upgrade/upgrade_agent.md
       - pmm-upgrade/upgrade_from_pmm_1.md
