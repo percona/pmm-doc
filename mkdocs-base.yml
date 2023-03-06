@@ -288,10 +288,10 @@ nav:
               - details/dashboards/dashboard-node-summary.md
               - details/dashboards/dashboard-numa-details.md
               - details/dashboards/dashboard-processes-details.md
-          - Prometheus Dashboards:
+          - Prometheus dashboards:
               - details/dashboards/dashboard-prometheus-exporter-status.md
               - details/dashboards/dashboard-prometheus-exporters-overview.md
-          - MySQL Dashboards:
+          - MySQL dashboards:
               - details/dashboards/dashboard-mysql-amazon-aurora-details.md
               - details/dashboards/dashboard-mysql-command-handler-counters-compare.md
               - details/dashboards/dashboard-mysql-innodb-compression-details.md
@@ -309,7 +309,7 @@ nav:
               - details/dashboards/dashboard-mysql-table-details.md
               - details/dashboards/dashboard-mysql-user-details.md
               - details/dashboards/dashboard-mysql-tokudb-details.md
-          - MongoDB Dashboards:
+          - MongoDB dashboards:
               - details/dashboards/dashboard-mongodb-experimental_collection_overview.md
               - details/dashboards/dashboard-mongodb-experimental_collection_details.md
               - details/dashboards/dashboard-mongodb-experimental_oplog.md
@@ -321,14 +321,14 @@ nav:
               - details/dashboards/dashboard-mongodb-inmemory-details.md
               - details/dashboards/dashboard-mongodb-mmapv1-details.md
               - details/dashboards/dashboard-mongodb-wiredtiger-details.md
-          - PostgreSQL Dashboards:
+          - PostgreSQL dashboards:
               - details/dashboards/dashboard-postgresql-instances-overview.md
               - details/dashboards/dashboard-postgresql-instance-summary.md
               - details/dashboards/dashboard-postgresql-instances-compare.md
               - details/dashboards/dashboard-postgresql-vacuum-monitoring-experimental.md
-          - ProxySQL Dashboards:
+          - ProxySQL dashboards:
               - details/dashboards/dashboard-proxysql-instance-summary.md
-          - HA Dashboards:
+          - HA dashboards:
               - details/dashboards/dashboard-pxc-galera-node-summary.md
               - details/dashboards/dashboard-pxc-galera-cluster-summary.md
               - details/dashboards/dashboard-pxc-galera-cluster-summary-experimental.md
@@ -362,7 +362,7 @@ nav:
       - alert/alert_expressions.md
       - alert/silence_alerts.md
       - alert/disable_alerts.md 
-  - Backup and Restore:
+  - Backup and restore:
       - backup/index.md
       - backup/prepare_storage_location.md
       - MongoDB backups:
