@@ -15,7 +15,7 @@ If you need custom expressions on which to base your alert rules, you can also c
 - **Grafana managed alerts**: alerts that handle complex conditions and can span multiple different data sources like SQL, Prometheus, InfluxDB, etc. These alerts are stored and executed by Grafana.
 - **Mimir or Loki alerts**: alerts that consist of one single query, written in PromQL or LogQL. The alert rules are stored and executed on the Mimir or Loki ruler and are completely decoupled from the PMM and Grafana runtime.
 - **Mimir or Loki recording rules**: precompute the result of expensive queries and execute alerts faster. 
-With Mimir and Loki alert rules, you can run alert expressions closer to your data and at massive scale, managed by the Grafana. 
+With Mimir and Loki alert rules, you can run alert expressions closer to your data and at massive scale, managed by Grafana. 
 
 ## Alerting components
 Alerts are split into four key components: alert rules, contact points, notification policies, and silences. 
@@ -34,9 +34,8 @@ PMM includes a set of default templates with common events and expressions for a
 You can check the  alert templates available for your account under **Alerting > Alert rule templates** tab. PMM lists here the following types of templates:
 
 1. Built-in templates, available out-of-the-box with PMM.
-2. Alert templates fetched from Percona Platform, according to the entitlements available for your Percona Account. 
-3. Custom templates created or uploaded on the **Alerting page > Alert Templates** Tab. 
-4. Custom template files available in your  ``yaml srv/alerting/templates`` directory. PMM loads them during startup.
+2. Custom templates created or uploaded on the **Alerting page > Alert Templates** Tab. 
+3. Custom template files available in your  ``yaml srv/alerting/templates`` directory. PMM loads them during startup.
 
 ### Silences
 Silences specify periods of time to suppress notifications. During a silence, PMM continues to track metrics and trigger alerts but does not send notifications to the specified contact points. Once the specified silence expires, notifications are resumed.
