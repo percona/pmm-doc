@@ -6,9 +6,13 @@
 
     For example, for a PMM Server version 2.25.0, the PMM Client version should be 2.25.0 or 2.24.0. If the PMM Client version is 2.26.0, PMM might not work as expected.
 
-    
 
 ## Updating a Server
+
+!!! caution alert alert-warning "Caution"
+    - While upgrading PMM to version 2.32.0, it fails. This issue has been resolved for PMM version 2.33.0. However, the issue persists on all the versions prior to 2.33.0. For solution, see the [troubleshooting](../how-to/troubleshoot.md#pmm-server-fails-while-upgrading) section.
+    - PMM versions prior to 2.33.0 may not show the latest versions available with instances created from the AWS marketplace in specific environments, including AWS. For solution, see the [troubleshooting](../how-to/troubleshoot.md#pmm-server-not-showing-latest-versions-available-with-the-instances-created-from-aws) section.
+
 
 Client and server components are installed and updated separately.
 
@@ -35,11 +39,11 @@ If one is available, click the update button to update to the version indicated.
 
 PMM-Agent can be updated from tarball:
 
- 1. Download tar.gz with pmm2-client.
+ 1. Download `tar.gz` with `pmm2-client`.
  2. Extract it.
- 3. Run ./install_tarball script with the "-u" flag.
+ 3. Run `./install_tarball` script with the `-u` flag.
 
-**Hint!** The configuration file will be overwritten if you do not provide the "-u" flag while the pmm-agent is updated.
+**Hint!** The configuration file will be overwritten if you do not provide the `-u` flag while the `pmm-agent` is updated.
 
 ## Upgrade from PMM 1
 
