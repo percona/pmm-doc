@@ -4,7 +4,7 @@ site_name: Percona Monitoring and Management
 site_description: Documentation
 site_author: Percona LLC
 site_url: ""
-copyright: Percona LLC, &#169; 2022
+copyright: Percona LLC, &#169; 2023
 use_directory_urls: false
 repo_name: percona/pmm-doc
 repo_url: https://github.com/percona/pmm-doc
@@ -12,10 +12,13 @@ edit_uri: edit/main/docs/
 
 theme:
   name: material
-  custom_dir: overrides
   logo: _images/percona-logo.svg
   favicon: _images/percona-favicon.ico
+  custom_dir: overrides
+  font:
+    text: Poppins
   palette:
+
     # Light mode
     - media: "(prefers-color-scheme: light)"
       scheme: percona-light
@@ -30,14 +33,25 @@ theme:
         icon: material/toggle-switch
         name: Switch to light mode
 
+# Theme features
+
+  features:
+    - search.highlight
+    - navigation.top
+    - content.tabs.link
+    - content.code.copy
+    - navigation.tracking
+    - content.action.edit
+    - content.action.view
+
 extra_css:
   - https://unicons.iconscout.com/release/v3.0.3/css/line.css
   - https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css
   - css/percona.css
   - css/lightgallery.min.css
 
-extra_javascript:
-  - js/lightgallery.min.js
+#extra_javascript:
+#  - js/lightgallery.min.js
 
 markdown_extensions:
   attr_list: {}
@@ -56,9 +70,16 @@ markdown_extensions:
   pymdownx.highlight:
     linenums: false
   lightgallery: {}
+  pymdownx.inlinehilite: {}
+  pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
 
 plugins:
   search: {}
+  section-index: {}
+  search:
+    separator: '[\s\-,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
   git-revision-date: {}
   macros:
     include_yaml:
@@ -69,11 +90,11 @@ plugins:
       - "setting-up/client/docker.md"
   # https://github.com/orzih/mkdocs-with-pdf
   with-pdf:
-    output_path: "_pdf/PerconaMonitoringAndManagement-2.33.0.pdf"
-    cover_title: "Documentation"
-    cover_subtitle: 2.33.0 (Dec 13, 2022)
+    output_path: '_pdf/PerconaMonitoringAndManagement-2.35.0.pdf'
+    cover_title: 'Percona Monitoring and Management Documentation'
+    cover_subtitle: 2.35.0 (Feb 23, 2023)
     author: "Percona Technical Documentation Team"
-    cover_logo: docs/_images/PMM_Logo.svg
+    cover_logo: docs/_images/Percona_Logo_Color.png
     custom_template_path: _resources/templates
     enabled_if_env: ENABLE_PDF_EXPORT
   # Check links - but extends build time significantly
@@ -85,9 +106,16 @@ plugins:
     javascript_dir: js
     canonical_version: null
 
-extra: # Used in main.html template and can't be externalized
-  edit_page_text: '<i class="uil uil-pen"></i> <b>Edit this page</b>'
-  updated_text: '<i class="uil uil-refresh"></i> Page updated'
+extra:
+  homepage:
+    https://docs.percona.com
+  consent:
+    title: Cookie consent
+    description: >-
+      We use cookies to recognize your repeated visits and preferences, as well
+      as to measure the effectiveness of our documentation and whether users
+      find what they're searching for. With your consent, you're helping us to
+      make our documentation better.
 
 # Common navigation for percona.com, render.com and PDF
 nav:
@@ -136,9 +164,15 @@ nav:
                 - get-started/backup/restore_mysql_backup.md
           - get-started/backup/edit_scheduled.md
           - get-started/backup/delete_a_backup.md
-
+      - Roles and permissions:
+          - get-started/roles-and-permissions/index.md
+          - get-started/roles-and-permissions/configure_access_roles.md
+          - get-started/roles-and-permissions/lbac.md
+          - get-started/roles-and-permissions/access_roles.md
+          - get-started/roles-and-permissions/manage_roles.md
+          - get-started/roles-and-permissions/assign_roles.md
+          - get-started/roles-and-permissions/use_case.md
       - get-started/query-analytics.md
-      - get-started/dbaas.md
       - get-started/advisors.md
   - How to:
       - how-to/index.md
@@ -244,9 +278,32 @@ nav:
       - details/victoria-metrics.md
       - details/clickhouse.md
       - details/glossary.md
+  - DBaaS:
+    - "Introduction": dbaas/index.md
+    - dbaas/architecture.md
+    - "Setting up":
+      - "Setting up DBaaS": dbaas/setting-up.html#setting-up-dbaas
+      - "Create a Kubernetes Cluster": dbaas/setting-up.html#create-a-kubernetes-cluster
+      - "Deleting Kubernetes clusters ": dbaas/setting-up.html#deleting-clusters
+    - "Getting started":
+      - "Activating DBaaS": dbaas/get-started.html#getting-started-with-dbaas
+      - "Add a Kubernetes cluster automatically": dbaas/get-started.html#getting-started-with-dbaas
+      - "Add a Kubernetes cluster manually": dbaas/get-started.html#add-a-kubernetes-cluster
+      - "Manage allowed component versions": dbaas/get-started.html#manage-allowed-component-versions
+      - "Troubleshooting":
+        - "OLM installation": dbaas/troubleshoot-kubernetes.html#troubleshooting-olm-installation
+        - "Operators installation": dbaas/troubleshoot-kubernetes.html#troubleshooting-operators-installation
+    - "Managing Database clusters":
+      - "Add a DB Cluster": dbaas/databases.html#add-a-db-cluster
+      - "Manage a DB Cluster": dbaas/databases.html#edit-a-db-cluster
+      - "Delete a DB Cluster": dbaas/databases.html#delete-a-db-cluster
+    - "Backup and restore": dbaas/backup_restore.md
+
   - faq.md
   - Release Notes:
       - release-notes/index.md
+      - "PMM 2.35.0": release-notes/2.35.0.md
+      - "PMM 2.34.0": release-notes/2.34.0.md
       - "PMM 2.33.0": release-notes/2.33.0.md
       - "PMM 2.32.0": release-notes/2.32.0.md
       - "PMM 2.31.0": release-notes/2.31.0.md
