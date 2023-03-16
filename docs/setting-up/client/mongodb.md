@@ -2,12 +2,6 @@
 
 How to set up PMM to monitor a [MongoDB] or [Percona Server for MongoDB] database instance.
 
-!!! summary alert alert-info "Summary"
-    - Create PMM account and set permissions.
-    - Configure profiling.
-    - Add service.
-    - Check service.
-
 ## Before you start
 
 Check that:
@@ -22,42 +16,96 @@ Check that:
 
 We recommend using a dedicated account to connect PMM Client to the monitored database instance.
 
-This example creates a new custom role with the privileges needed by the Query Analyzer, and adds a database user with that role plus the built-in `clusterMonitor` role.
+Run the example codes below in a `mongo` session to:
 
+-  create custom roles with the privileges required for creating/restoring backups and working with Query Analytics (QAN)
+-  create/update a database user with these roles above, plus the built-in  `clusterMonitor` role
+  
 !!! caution alert alert-warning ""
-    Values for username (`user`) and password (`pwd`) are examples. Replace them before using this code.
+    Values for username (`user`) and password (`pwd`) are examples. Replace them before using these code snippets.
 
-Run this in a `mongo` session.
+=== "Create roles with privileges for backups and QAN"
+        db.getSiblingDB("admin").createRole({
+            role: "explainRole",
+            privileges: [{
+                resource: {
+                    db: "",
+                    collection: ""
+                    },
+                actions: [
+                    "listIndexes",
+                    "listCollections",
+                    "dbStats",
+                    "dbHash",
+                    "collStats",
+                    "find"
+                    ]
+                }],
+            roles:[]
+        })
+
+        db.getSiblingDB("admin").createRole({ "role": "pbmAnyAction",
+            "privileges": [
+            { "resource": { "anyResource": true },
+                "actions": [ "anyAction" ]
+            }
+            ],
+            "roles": []
+         });
+
+=== "Ceate/update user and assign created roles"
+        db.getSiblingDB("admin").createUser({
+            user: "pmm",
+            pwd: "pmm",
+            roles: [
+                { role: "explainRole", db: "admin" },
+                { role: "clusterMonitor", db: "admin" },
+                { role: "read", db: "local" },
+                { "db" : "admin", "role" : "readWrite", "collection": "" },
+                { "db" : "admin", "role" : "backup" },
+                { "db" : "admin", "role" : "clusterMonitor" },
+                { "db" : "admin", "role" : "restore" },
+                { "db" : "admin", "role" : "pbmAnyAction" }
+            ]
+        })
+        db.getSiblingDB("admin").updateUser("pmm", {
+        roles: [
+            { role: "explainRole", db: "admin" },
+            { role: "clusterMonitor", db: "admin" },
+            { role: "read", db: "local" },
+            { "db" : "admin", "role" : "readWrite", "collection": "" },
+            { "db" : "admin", "role" : "backup" },
+            { "db" : "admin", "role" : "clusterMonitor" },
+            { "db" : "admin", "role" : "restore" },
+            { "db" : "admin", "role" : "pbmAnyAction" }
+        ]
+        })
+
+### Permissions for advanced metrics
+
+To fetch advanced metrics, use the following to provide additional privileges to an existing PMM user:
 
 ```json
-db.getSiblingDB("admin").createRole({
-    role: "explainRole",
-    privileges: [{
-        resource: {
-            db: "",
-            collection: ""
+   {
+       resource : {
+            db : "",
+            collection : "system.profile"
             },
-        actions: [
-            "listIndexes",
-            "listCollections",
-            "dbStats",
-            "dbHash",
+       actions : [
             "collStats",
-            "find"
-            ]
-        }],
-    roles:[]
-})
+            "dbStats",
+           "indexStats"
+           ]
+       }
+```
 
-db.getSiblingDB("admin").createUser({
-   user: "pmm_mongodb",
-   pwd: "password",
-   roles: [
-      { role: "explainRole", db: "admin" },
-      { role: "clusterMonitor", db: "admin" },
-      { role: "read", db: "local" }
-   ]
-})
+If the role `explainRole` already exists, then you can use the following command to provide additional privileges:
+
+```json
+ {
+       db.runCommand(    {      
+           grantPrivilegesToRole: "explainRole",      
+           privileges: [          { "resource" : { "db" : "", "collection" : "system.profile" }, "actions" : [ "indexStats", "dbStats", "collStats" ] } ] } )
 ```
 
 ## Profiling
