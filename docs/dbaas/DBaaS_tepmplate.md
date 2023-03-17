@@ -2,7 +2,7 @@
 
 Database clusters can be created from templates using PMM. Templates allow you to customize the creation of database clusters. You can adapt templates to tweak K8s-specific settings such as **liveness probes**, changing **config maps**, or tuning **database engines**. 
 
-## Create template Custom Resource Definition (CRD)
+## Create Custom Resource Definition (CRD) template
 
 To create a template, do the following:
 
