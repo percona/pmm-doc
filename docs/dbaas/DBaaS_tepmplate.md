@@ -1,6 +1,5 @@
 # Create or update a database cluster from a DBaaS template
 
-
 Database clusters can be created from templates using PMM. Templates allow you to customize the creation of database clusters. You can adapt templates to tweak K8s-specific settings such as **liveness probes**, changing **config maps**, or tuning **database engines**. 
 
 ## Create template Custom Resource Definition (CRD)
@@ -135,15 +134,24 @@ metadata:
 ```sh
 $ kubectl apply -f databasecluster.yaml
 databasecluster.dbaas.percona.com/test-pxc-cluster configured
-
+```
 4. To see the details of the cluster, run the following command:
 
-```
+```sh
 $ kubectl describe pxc/test-pxc-cluster | grep -A2 'Update Strategy'
   Update Strategy:    SmartUpdate
   Upgrade Options:
     Apply:     Disabled
 ```
+
+## Create a DB cluster from template
+
+To create a DB cluster from a template, do the following:
+
+1. From the main menu navigate to <i class="uil uil-database"></i> *DBaaS* → *Create DB Cluster*.
+
+2. On the *Advanced Settings* panel, select the template from the *Templates* dropdown.
+
 
 
 
