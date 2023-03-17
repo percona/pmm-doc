@@ -11,7 +11,7 @@ To create a template, do the following:
 
 2. Create a template CRD `pxctpl-crd-upgrade-options.yaml` as follows:
 
-```sh
+    ```sh
 apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
