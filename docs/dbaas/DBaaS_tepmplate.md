@@ -69,6 +69,82 @@ $ kubectl apply -f pxctpl-crd-upgrade-options.yaml
 customresourcedefinition.apiextensions.k8s.io/pxctemplateupgradeoptions.dbaas.percona.com created
 ```
 
-## Add Read permissions
+## Add Read permissions for pxctemplateugradeoptions
 
-To add read permissions for the dbaas-operator to get the PXCTemplateUpgradeOptions CRs
+For the dbaas-operator to apply the template it needs access to the template CRs.
+
+```sh
+$ DBAAS_OPERATOR_MANAGER_ROLE=$(kubectl get clusterroles | grep dbaas-operator | grep -v metrics | grep -v proxy | cut -f 1 -d ' '); kubectl get clusterroles/"$DBAAS_OPERATOR_MANAGER_ROLE" -o yaml > dbaas-operator-manager-role.yaml
+
+$ cat <<EOF >>dbaas-operator-manager-role.yaml
+- apiGroups:
+  - dbaas.percona.com
+  resources:
+  - pxctemplateupgradeoptions
+  verbs:
+  - get
+  - list
+EOF
+$ kubectl apply -f dbaas-operator-manager-role.yaml
+
+clusterrole.rbac.authorization.k8s.io/dbaas-operator-manager-role configured
+```
+
+## Create Custom Resources (CR) template
+
+1. Create the CR `pxctpl-disable-automatic-upgrades.yaml` file with the desired values as follows:
+
+```sh
+apiVersion: dbaas.percona.com/v1
+kind: PXCTemplateUpgradeOptions
+metadata:
+  name: disable-automatic-upgrades
+  labels:
+    dbaas.percona.com/template: "yes"
+    dbaas.percona.com/engine: "pxc"
+spec:
+  updateStrategy: SmartUpdate
+  upgradeOptions:
+    apply: Disabled
+```
+
+2. Run the following command:
+
+```sh
+$ kubectl apply -f pxctpl-disable-automatic-upgrades.yaml
+
+pxctemplateugradeoptions.dbaas.percona.com/disable-automatic-upgrades created
+```
+
+## Apply template to existing DB clusters
+
+To apply the template to an existing DB cluster, update the DB cluster CR to include the following annotations:
+
+```sh
+apiVersion: dbaas.percona.com/v1
+kind: DatabaseCluster
+metadata:
+  name: test-pxc-cluster
+  annotations:
+    dbaas.percona.com/dbtemplate-kind: PXCTemplateUpgradeOptions
+    dbaas.percona.com/dbtemplate-name: disable-automatic-upgrades
+...
+```
+3. Apply the configuration by running the following command:
+
+```sh
+$ kubectl apply -f databasecluster.yaml
+databasecluster.dbaas.percona.com/test-pxc-cluster configured
+
+4. To see the details of the cluster, run the following command:
+
+```
+$ kubectl describe pxc/test-pxc-cluster | grep -A2 'Update Strategy'
+  Update Strategy:    SmartUpdate
+  Upgrade Options:
+    Apply:     Disabled
+```
+
+
+
+
