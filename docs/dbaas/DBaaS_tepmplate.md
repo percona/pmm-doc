@@ -116,34 +116,6 @@ $ kubectl apply -f dbaas-operator-manager-role.yaml
     pxctemplateugradeoptions.dbaas.percona.com/disable-automatic-upgrades created
     ```
 
-## Apply template to existing DB clusters
-
-To apply the template to an existing DB cluster, update the DB cluster CR to include the following annotations:
-
-    ```sh
-    apiVersion: dbaas.percona.com/v1
-    kind: DatabaseCluster
-    metadata:
-    name: test-pxc-cluster
-    annotations:
-        dbaas.percona.com/dbtemplate-kind: PXCTemplateUpgradeOptions
-        dbaas.percona.com/dbtemplate-name: disable-automatic-upgrades
-    ...
-    ```
-3. Apply the configuration by running the following command:
-
-    ```sh
-    $ kubectl apply -f databasecluster.yaml
-    databasecluster.dbaas.percona.com/test-pxc-cluster configured
-    ```
-4. To see the details of the cluster, run the following command:
-
-    ```sh
-    $ kubectl describe pxc/test-pxc-cluster | grep -A2 'Update Strategy'
-    Update Strategy:    SmartUpdate
-    Upgrade Options:
-        Apply:     Disabled
-    ```
 
 ## Create a DB cluster from template
 
