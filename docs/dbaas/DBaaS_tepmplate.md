@@ -150,7 +150,14 @@ To create a DB cluster from a template, do the following:
 
 1. From the main menu navigate to <i class="uil uil-database"></i> *DBaaS* → *Create DB Cluster*.
 
-2. On the *Advanced Settings* panel, select the template from the *Templates* dropdown.
+2. On the *Advanced Settings* panel, select the template from the *Templates* drop-down.
+
+
+![!](../_images/PMM_dbaas_template.png)
+
+
+3. Click `Create`.
+
 
 
 
