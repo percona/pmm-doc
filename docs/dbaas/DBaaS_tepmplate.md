@@ -12,61 +12,61 @@ To create a template, do the following:
 2. Create a template CRD `pxctpl-crd-upgrade-options.yaml` as follows:
 
     ```sh
-apiVersion: apiextensions.k8s.io/v1
-kind: CustomResourceDefinition
-metadata:
-  creationTimestamp: null
-  name: pxctemplateupgradeoptions.dbaas.percona.com
-  labels:
-    dbaas.percona.com/template: "yes"
-    dbaas.percona.com/engine: "pxc"
-spec:
-  group: dbaas.percona.com
-  names:
-    kind: PXCTemplateUpgradeOptions
-    listKind: PXCTemplateUpgradeOptionsList
-    plural: pxctemplateupgradeoptions
-    singular: pxctemplateupgradeoptions
-  scope: Namespaced
-  versions:
-  - name: v1
-    schema:
-      openAPIV3Schema:
-        properties:
-          apiVersion:
-            type: string
-          kind:
-            type: string
-          metadata:
-            type: object
-          spec:
+    apiVersion: apiextensions.k8s.io/v1
+    kind: CustomResourceDefinition
+    metadata:
+    creationTimestamp: null
+    name: pxctemplateupgradeoptions.dbaas.percona.com
+    labels:
+        dbaas.percona.com/template: "yes"
+        dbaas.percona.com/engine: "pxc"
+    spec:
+    group: dbaas.percona.com
+    names:
+        kind: PXCTemplateUpgradeOptions
+        listKind: PXCTemplateUpgradeOptionsList
+        plural: pxctemplateupgradeoptions
+        singular: pxctemplateupgradeoptions
+    scope: Namespaced
+    versions:
+    - name: v1
+        schema:
+        openAPIV3Schema:
             properties:
-              updateStrategy:
+            apiVersion:
                 type: string
-              upgradeOptions:
+            kind:
+                type: string
+            metadata:
+                type: object
+            spec:
                 properties:
-                  apply:
+                updateStrategy:
                     type: string
-                  schedule:
-                    type: string
-                  versionServiceEndpoint:
-                    type: string
+                upgradeOptions:
+                    properties:
+                    apply:
+                        type: string
+                    schedule:
+                        type: string
+                    versionServiceEndpoint:
+                        type: string
+                    type: object
+                type: object
+            status:
                 type: object
             type: object
-          status:
-            type: object
-        type: object
-    served: true
-    storage: true
-```
+        served: true
+        storage: true
+    ```
 
 3. Run the following command:
 
-```sh
-$ kubectl apply -f pxctpl-crd-upgrade-options.yaml
+    ```sh
+    $ kubectl apply -f pxctpl-crd-upgrade-options.yaml
 
-customresourcedefinition.apiextensions.k8s.io/pxctemplateupgradeoptions.dbaas.percona.com created
-```
+    customresourcedefinition.apiextensions.k8s.io/pxctemplateupgradeoptions.dbaas.percona.com created
+    ```
 
 ## Add Read permissions for pxctemplateugradeoptions
 
@@ -93,56 +93,56 @@ clusterrole.rbac.authorization.k8s.io/dbaas-operator-manager-role configured
 
 1. Create the CR `pxctpl-disable-automatic-upgrades.yaml` file with the desired values as follows:
 
-```sh
-apiVersion: dbaas.percona.com/v1
-kind: PXCTemplateUpgradeOptions
-metadata:
-  name: disable-automatic-upgrades
-  labels:
-    dbaas.percona.com/template: "yes"
-    dbaas.percona.com/engine: "pxc"
-spec:
-  updateStrategy: SmartUpdate
-  upgradeOptions:
-    apply: Disabled
-```
+    ```sh
+    apiVersion: dbaas.percona.com/v1
+    kind: PXCTemplateUpgradeOptions
+    metadata:
+    name: disable-automatic-upgrades
+    labels:
+        dbaas.percona.com/template: "yes"
+        dbaas.percona.com/engine: "pxc"
+    spec:
+    updateStrategy: SmartUpdate
+    upgradeOptions:
+        apply: Disabled
+    ```
 
 2. Run the following command:
 
-```sh
-$ kubectl apply -f pxctpl-disable-automatic-upgrades.yaml
+    ```sh
+    $ kubectl apply -f pxctpl-disable-automatic-upgrades.yaml
 
-pxctemplateugradeoptions.dbaas.percona.com/disable-automatic-upgrades created
-```
+    pxctemplateugradeoptions.dbaas.percona.com/disable-automatic-upgrades created
+    ```
 
 ## Apply template to existing DB clusters
 
 To apply the template to an existing DB cluster, update the DB cluster CR to include the following annotations:
 
-```sh
-apiVersion: dbaas.percona.com/v1
-kind: DatabaseCluster
-metadata:
-  name: test-pxc-cluster
-  annotations:
-    dbaas.percona.com/dbtemplate-kind: PXCTemplateUpgradeOptions
-    dbaas.percona.com/dbtemplate-name: disable-automatic-upgrades
-...
-```
+    ```sh
+    apiVersion: dbaas.percona.com/v1
+    kind: DatabaseCluster
+    metadata:
+    name: test-pxc-cluster
+    annotations:
+        dbaas.percona.com/dbtemplate-kind: PXCTemplateUpgradeOptions
+        dbaas.percona.com/dbtemplate-name: disable-automatic-upgrades
+    ...
+    ```
 3. Apply the configuration by running the following command:
 
-```sh
-$ kubectl apply -f databasecluster.yaml
-databasecluster.dbaas.percona.com/test-pxc-cluster configured
-```
+    ```sh
+    $ kubectl apply -f databasecluster.yaml
+    databasecluster.dbaas.percona.com/test-pxc-cluster configured
+    ```
 4. To see the details of the cluster, run the following command:
 
-```sh
-$ kubectl describe pxc/test-pxc-cluster | grep -A2 'Update Strategy'
-  Update Strategy:    SmartUpdate
-  Upgrade Options:
-    Apply:     Disabled
-```
+    ```sh
+    $ kubectl describe pxc/test-pxc-cluster | grep -A2 'Update Strategy'
+    Update Strategy:    SmartUpdate
+    Upgrade Options:
+        Apply:     Disabled
+    ```
 
 ## Create a DB cluster from template
 
@@ -153,7 +153,7 @@ To create a DB cluster from a template, do the following:
 2. On the *Advanced Settings* panel, select the template from the *Templates* drop-down.
 
 
-![!](../_images/PMM_dbaas_template.png)
+    ![!](../_images/PMM_dbaas_template.png)
 
 
 3. Click `Create`.
