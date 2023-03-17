@@ -64,8 +64,6 @@ To create a template, do the following:
 
     ```sh
     $ kubectl apply -f pxctpl-crd-upgrade-options.yaml
-
-    customresourcedefinition.apiextensions.k8s.io/pxctemplateupgradeoptions.dbaas.percona.com created
     ```
 
 ## Add Read permissions for pxctemplateugradeoptions
@@ -84,9 +82,12 @@ $ cat <<EOF >>dbaas-operator-manager-role.yaml
   - get
   - list
 EOF
-$ kubectl apply -f dbaas-operator-manager-role.yaml
+```
 
-clusterrole.rbac.authorization.k8s.io/dbaas-operator-manager-role configured
+Run the following command to apply the configuration:
+
+```sh
+$ kubectl apply -f dbaas-operator-manager-role.yaml
 ```
 
 ## Create Custom Resources (CR) template
