@@ -14,7 +14,7 @@ To create a template, do the following:
 2. Create a template CRD `pxctpl-crd-upgrade-options.yaml` as follows:
 
 !!! note alert alert-primary "Note"   
-    Template CRDs must have an `openAPIV3Schema` that must be a subset of the parent engine CRD. For this case, the parent engine CRD is https://github.com/percona/percona-xtradb-cluster-operator/blob/v1.11.0/deploy/crd.yaml).    
+    Template CRDs must have an `openAPIV3Schema` that must be a subset of the parent engine CRD. For this case, the parent engine CRD is [this](https://github.com/percona/percona-xtradb-cluster-operator/blob/v1.11.0/deploy/crd.yaml).    
     
 ```sh
 apiVersion: apiextensions.k8s.io/v1
