@@ -72,7 +72,7 @@ apiVersion: apiextensions.k8s.io/v1
     ```
 For more information, see [DatabaseCluster templates](https://github.com/percona/dbaas-operator/blob/main/docs/templates.md#creating-the-template-crd).
 
-## Add Read permissions for pxctemplateugradeoptions
+## Add Read permissions for pxctemplateupgradeoptions
 
 For the dbaas-operator to apply the template it needs access to the template CRs.
 
