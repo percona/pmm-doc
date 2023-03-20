@@ -70,6 +70,7 @@ To create a template, do the following:
     ```sh
     $ kubectl apply -f pxctpl-crd-upgrade-options.yaml
     ```
+For more information, see [DatabaseCluster templates](https://github.com/percona/dbaas-operator/blob/main/docs/templates.md#creating-the-template-crd).
 
 ## Add Read permissions for pxctemplateugradeoptions
 
