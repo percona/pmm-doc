@@ -6,7 +6,6 @@ Database clusters can be created from templates using PMM. Templates allow you t
 
 To create a template, do the following:
 
-
 !!! note alert alert-primary "Note"   
     The example below shows how to change the `upgradeOptions` field, but it would be different if you wanted to customize another field.
 
@@ -14,6 +13,9 @@ To create a template, do the following:
 
 2. Create a template CRD `pxctpl-crd-upgrade-options.yaml` as follows:
 
+!!! note alert alert-primary "Note"   
+    Template CRDs must have an `openAPIV3Schema` that must be a subset of the parent engine CRD. For this case, the parent engine CRD is https://github.com/percona/percona-xtradb-cluster-operator/blob/v1.11.0/deploy/crd.yaml.    
+    
     ```sh
     apiVersion: apiextensions.k8s.io/v1
     kind: CustomResourceDefinition
