@@ -9,7 +9,7 @@ To create a template, do the following:
 !!! note alert alert-primary "Note"   
     The example below shows how to change the `upgradeOptions` field, but it would be different if you wanted to customize some other field.
 
-1. Change the `updateStrategy` and `upgradeOptions` fields as per the [PXC operator documentation](https://docs.percona.com/percona-operator-for-mysql/pxc/update.html#manual-upgrade_1) and [PXC CRD](https://github.com/percona/percona-xtradb-cluster-operator/blob/v1.11.0/deploy/crd.yaml#L8379-L8392).
+1. Identify the fields of interest by reading the operator documentation and corresponding CRDs. In this case, `updateStrategy` and `upgradeOptions` fields as per the [PXC operator documentation](https://docs.percona.com/percona-operator-for-mysql/pxc/update.html#manual-upgrade_1) and [PXC CRD](https://github.com/percona/percona-xtradb-cluster-operator/blob/v1.11.0/deploy/crd.yaml#L8379-L8392).
 
 2. Create a template CRD `pxctpl-crd-upgrade-options.yaml` as follows:
 
