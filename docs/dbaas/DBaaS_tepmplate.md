@@ -119,7 +119,7 @@ $ kubectl apply -f dbaas-operator-manager-role.yaml
     ```sh
     $ kubectl apply -f pxctpl-disable-automatic-upgrades.yaml
 
-    pxctemplateugradeoptions.dbaas.percona.com/disable-automatic-upgrades created
+    pxctemplateupgradeoptions.dbaas.percona.com/disable-automatic-upgrades created
     ```
 
 
