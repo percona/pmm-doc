@@ -11,7 +11,7 @@ To create a template, do the following:
 
 1. Identify the fields of interest by reading the operator documentation and corresponding CRDs. In this case, `updateStrategy` and `upgradeOptions` fields as per the [PXC operator documentation](https://docs.percona.com/percona-operator-for-mysql/pxc/update.html#manual-upgrade_1) and [PXC CRD](https://github.com/percona/percona-xtradb-cluster-operator/blob/v1.11.0/deploy/crd.yaml#L8379-L8392).
 
-2. Create a template CRD `pxctpl-crd-upgrade-options.yaml` as follows:
+2. Create a template CRD `pxctpl-crd-upgrade-options.yaml` with the fields of interest as follows:
 
 !!! note alert alert-primary "Note"   
     Template CRDs must have an `openAPIV3Schema` that must be a subset of the parent engine CRD. For this case, the parent engine CRD is [this](https://github.com/percona/percona-xtradb-cluster-operator/blob/v1.11.0/deploy/crd.yaml).    
