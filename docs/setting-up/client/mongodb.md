@@ -102,10 +102,9 @@ To fetch advanced metrics, use the following to provide additional privileges to
 If the role `explainRole` already exists, then you can use the following command to provide additional privileges:
 
 ```json
- {
        db.runCommand(    {      
            grantPrivilegesToRole: "explainRole",      
-           privileges: [          { "resource" : { "db" : "", "collection" : "system.profile" }, "actions" : [ "indexStats", "dbStats", "collStats" ] } ] } )
+           privileges: [          { "resource" : { "db" : "", "collection" : "system.profile" }, "actions" : [ "indexStats", "dbStats", "collStats" ] } ] }        )
 ```
 
 ## Profiling
