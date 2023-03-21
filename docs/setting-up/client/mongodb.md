@@ -33,7 +33,7 @@ Run the example codes below in a `mongo` session to:
         resource: {
             db: "",
             collection: ""
-            },
+        },
         actions: [
             "listIndexes",
             "listCollections",
@@ -41,23 +41,23 @@ Run the example codes below in a `mongo` session to:
             "dbHash",
             "collStats",
             "find"
-            ]
-        }],
-    roles:[]
+        ]
+    }],
+    roles: []
 })
 ```    
 
 ```{.javascript data-prompt=">"}
-> db.getSiblingDB("admin").createRole({ 
+> db.getSiblingDB("admin").createRole({
     "role": "pbmAnyAction",
-    "privileges": [{ 
-        "resource": { 
-            "anyResource": true 
-             },
-         "actions": [ 
-            "anyAction" 
-             ]
-        }],
+    "privileges": [{
+        "resource": {
+            "anyResource": true
+        },
+        "actions": [
+            "anyAction"
+        ]
+    }],
     "roles": []
 });
 ```
@@ -114,19 +114,19 @@ actions : [
 If the role `explainRole` already exists, then you can use the following command to provide additional privileges:
 
 ```{.javascript data-prompt=">"}
-> db.runCommand({      
-   grantPrivilegesToRole: "explainRole",      
-   privileges: [{ 
-       "resource" : { 
-           "db" : "", 
-           "collection" : "system.profile" 
-       }, 
-       "actions" : [ 
-           "indexStats", 
-           "dbStats", 
-           "collStats" 
-       ] 
-   }] 
+> db.runCommand({
+    grantPrivilegesToRole: "explainRole",
+    privileges: [{
+        "resource": {
+            "db": "",
+            "collection": "system.profile"
+        },
+        "actions": [
+            "indexStats",
+            "dbStats",
+            "collStats"
+        ]
+    }]
 })
 ```
 
