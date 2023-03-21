@@ -97,7 +97,7 @@ Run the example codes below in a `mongo` session to:
 
 To fetch advanced metrics, use the following to provide additional privileges to an existing PMM user:
 
-```json 
+```json
 {
 resource : {
     db : "",
