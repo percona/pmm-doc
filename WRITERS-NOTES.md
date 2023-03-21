@@ -6,7 +6,7 @@
 
 ## Admonitions
 
-Admonitions use a combined MkDocs/Bootstrap definition to get acceptable and similar rendering on both Percona.com (Drupal-based) and Netlify.
+Admonitions use a combined MkDocs/Bootstrap definition to get acceptable and similar rendering on both Percona.com (Drupal-based) and Render.com.
 
 Percona.com uses Bootstrap 4. Admonitions are styled as [Alerts](https://getbootstrap.com/docs/4.0/components/alerts/).
 
@@ -25,13 +25,13 @@ Admonitions are to highlight something special, not to make every point signific
 By using a subset of all MkDocs, we can get some alignment between those and Bootstrap.
 
 | Admonition                  | MkDocs colour | Bootstrap colour |
-|-----------------------------|---------------|------------------|
+| --------------------------- | ------------- | ---------------- |
 | Notes, info                 | Blue          | Blue             |
-| See also                    | Blue          | Turqoise         |
+| See also                    | Blue          | Turquoise        |
 | Tip                         | Green         | Green            |
 | Caution, Warning, Important | Amber         | Amber            |
 | Danger                      | Red           | Red              |
-| Summary                     | Turquoise     | Turqoise         |
+| Summary                     | Turquoise     | Turquoise        |
 
 ### Note, Info
 
@@ -54,9 +54,9 @@ Preferred use is without the label (first form).
 
 Uses same type but different label text:
 
-- Caution: Use to mean 'Continue with care'. Less strong than 'Warning' IMHO.
+- Caution: Used to mean 'Continue with care'. Less strong than 'Warning' IMHO.
 
-- Important: A significant point that deserves emphasis. (MkDocs default for 'important' admonition is green which is why I don't use it.)
+- Important: A significant point that deserves emphasis. (MkDocs default for 'important' admonition is green, which is why I don't use it.)
 
 Style:
 
@@ -118,14 +118,13 @@ An exception would be when there is an equivalent or closely related section els
 !!! seealso alert alert-info "See also"
 ```
 
-
 ## Variables
 
-We use the `mkdocs-macros` plugin for variable expansion. For example, the variable `release` in `variables.yml` is used in the code so that the current PMM release number is always up to date. (Search the markdown files for `{{release}}`.)
+We use the `mkdocs-macros` plugin for variable expansion. For example, the variable `release` in `variables.yml` is used in the code so that the current PMM release number is always up-to-date. (Search the markdown files for `{{release}}`.)
 
-This plugin can have problems when Jinja-like constructs are used in code. This happens when refering to Docker variables. Work arounds are explained here: https://github.com/fralau/mkdocs_macros_plugin/blob/master/webdoc/docs/advanced.md#solutions
+This plugin can have problems when Jinja-like constructs are used in code. This happens when referring to Docker variables. Workarounds are explained here: https://github.com/fralau/mkdocs_macros_plugin/blob/master/webdoc/docs/advanced.md#solutions
 
-In some places we have used variables themselves to solve the problem. In others, `{% raw %}/{% endraw %}` surrounds the conflicting text.
+In some places, we have used variables themselves to solve the problem. In others, `{% raw %}/{% endraw %}` surrounds the conflicting text.
 
 ## Icons
 
@@ -134,67 +133,67 @@ Use HTML for icons:
 - For PMM UI (Grafana) icons (`uil-` prefix), go to <https://iconscout.com/unicons/explore/line>, find an icon, select 'Font' and copy the code here.
 - For Font Awesome (`fa-` prefix), go to <https://fontawesome.com/icons>, find an icon, copy the code.
 
-| Unicons icon code                             | Description                        | Used where
-|-----------------------------------------------|------------------------------------|----------------------------------
-| <i class="uil uil-angle-down"></i>            | Down chevron                       | PMM UI
-| <i class="uil uil-apps"></i>                  | Four boxes in square               | PMM UI - QAN
-| <i class="uil uil-arrow-left"></i>            | Left arrow                         | PMM UI
-| <i class="uil uil-bars"></i>                  | 3 horizontal lines                 | PMM UI - HA dashboards
-| <i class="uil uil-bell"></i>                  | Bell                               | PMM UI - Alerting
-| <i class="uil uil-bolt"></i>                  | Lightening flash/bolt              | PMM UI - Nodes compare
-| <i class="uil uil-caret-right"></i>           | Right caret                        | General
-| <i class="uil uil-clock-nine"></i>            | Clock (at nine)                    | PMM UI - Time range selector
-| <i class="uil uil-cog"></i>                   | Cog wheel                          | PMM UI Configuration
-| <i class="uil uil-comment-alt-share"></i>     | Share comment symbol               | PMM UI - Share dashboard image
-| <i class="uil uil-compass"></i>               | Compass                            | PMM UI - Explore
-| <i class="uil uil-copy"></i>                  | Copy                               | PMM UI - Copy (e.g. backup schedule)
-| <i class="uil uil-cube"></i>                  | Cube                               | PMM UI
-| <i class="uil uil-database"></i>              | Database                           | PMM UI DBaaS symbol
-| <i class="uil uil-ellipsis-v"></i>            | Vertical ellipsis                  | PMM UI column menus
-| <i class="uil uil-exclamation-triangle"></i>  | Exclamation mark in triangle       | PMM UI - Warnings
-| <i class="uil uil-eye-slash"></i>             | Eye with slash                     | PMM UI Password hide
-| <i class="uil uil-eye"></i>                   | Eye                                | PMM UI Password reveal
-| <i class="uil uil-file-alt"></i>              | File symbol                        | PMM UI - Home dashboard
-| <i class="uil uil-graph-bar"></i>             | 3-bar chart                        | PMM UI link to dashboard
-| <i class="uil uil-history"></i>               | Backward arrow circle around clock | PMM UI - Backups and checks
-| <i class="uil uil-list-ul"></i>               | List                               | PMM UI - Alert rules
-| <i class="uil uil-monitor"></i>               | Computer monitor                   | PMM UI - Cycle view mode
-| <i class="uil uil-pen"></i>                   | Pen                                | PMM UI - Edit
-| <i class="uil uil-plus-circle"></i>           | Plus within circle                 | PMM UI Inventory->Add Instance
-| <i class="uil uil-plus-square"></i>           | Plus within square                 | PMM UI - Add
-| <i class="uil uil-question-circle"></i>       | Question mark in circle            | PMM UI - Help
-| <i class="uil uil-search-minus"></i>          | Minus in magnifying glass          | PMM UI - Time range zoom out
-| <i class="uil uil-search"></i>                | Magnifying glass                   | PMM UI - Search
-| <i class="uil uil-setting"></i>               | Cog wheel                          | PMM UI Configuration->Settings
-| <i class="uil uil-share-alt"></i>             | Share symbol                       | PMM UI - Share dashboard
-| <i class="uil uil-shield"></i>                | Shield                             | PMM UI - Server admin
-| <i class="uil uil-star"></i>                  | Star                               | PMM UI - Dashboard favourites
-| <i class="uil uil-sync"></i>                  | Twin backward arrows               | PMM UI - Refresh dashboard
-| <i class="uil uil-thumbs-down"></i>           | Hand, thumbs down                  | For Benefits/Drawbacks tables
-| <i class="uil uil-thumbs-up"></i>             | Hand, thumbs up                    | For Benefits/Drawbacks tables
-| <i class="uil uil-times"></i>                 | Large 'X'                          | PMM UI
-| <i class="uil uil-toggle-off"></i>            | Toggle (off)                       | PMM UI - Toggle switch
-| <i class="uil uil-toggle-on"></i>             | Toggle (on)                        | PMM UI - Toggle switch
-| <i class="uil uil-trash-alt"></i>             | Trash can                          | PMM UI - Various 'Delete' operation
+| Unicons icon code                            | Description                        | Used where                           |
+| -------------------------------------------- | ---------------------------------- | ------------------------------------ |
+| <i class="uil uil-angle-down"></i>           | Down chevron                       | PMM UI                               |
+| <i class="uil uil-apps"></i>                 | Four boxes in square               | PMM UI - QAN                         |
+| <i class="uil uil-arrow-left"></i>           | Left arrow                         | PMM UI                               |
+| <i class="uil uil-bars"></i>                 | 3 horizontal lines                 | PMM UI - HA dashboards               |
+| <i class="uil uil-bell"></i>                 | Bell                               | PMM UI - Alerting                    |
+| <i class="uil uil-bolt"></i>                 | Lightening flash/bolt              | PMM UI - Nodes compare               |
+| <i class="uil uil-caret-right"></i>          | Right caret                        | General                              |
+| <i class="uil uil-clock-nine"></i>           | Clock (at nine)                    | PMM UI - Time range selector         |
+| <i class="uil uil-cog"></i>                  | Cog wheel                          | PMM UI Configuration                 |
+| <i class="uil uil-comment-alt-share"></i>    | Share comment symbol               | PMM UI - Share dashboard image       |
+| <i class="uil uil-compass"></i>              | Compass                            | PMM UI - Explore                     |
+| <i class="uil uil-copy"></i>                 | Copy                               | PMM UI - Copy (e.g. backup schedule) |
+| <i class="uil uil-cube"></i>                 | Cube                               | PMM UI                               |
+| <i class="uil uil-database"></i>             | Database                           | PMM UI DBaaS symbol                  |
+| <i class="uil uil-ellipsis-v"></i>           | Vertical ellipsis                  | PMM UI column menus                  |
+| <i class="uil uil-exclamation-triangle"></i> | Exclamation mark in triangle       | PMM UI - Warnings                    |
+| <i class="uil uil-eye-slash"></i>            | Eye with slash                     | PMM UI Password hide                 |
+| <i class="uil uil-eye"></i>                  | Eye                                | PMM UI Password reveal               |
+| <i class="uil uil-file-alt"></i>             | File symbol                        | PMM UI - Home dashboard              |
+| <i class="uil uil-graph-bar"></i>            | 3-bar chart                        | PMM UI link to dashboard             |
+| <i class="uil uil-history"></i>              | Backward arrow circle around clock | PMM UI - Backups and checks          |
+| <i class="uil uil-list-ul"></i>              | List                               | PMM UI - Alert rules                 |
+| <i class="uil uil-monitor"></i>              | Computer monitor                   | PMM UI - Cycle view mode             |
+| <i class="uil uil-pen"></i>                  | Pen                                | PMM UI - Edit                        |
+| <i class="uil uil-plus-circle"></i>          | Plus within circle                 | PMM UI Inventory->Add Instance       |
+| <i class="uil uil-plus-square"></i>          | Plus within square                 | PMM UI - Add                         |
+| <i class="uil uil-question-circle"></i>      | Question mark in circle            | PMM UI - Help                        |
+| <i class="uil uil-search-minus"></i>         | Minus in magnifying glass          | PMM UI - Time range zoom out         |
+| <i class="uil uil-search"></i>               | Magnifying glass                   | PMM UI - Search                      |
+| <i class="uil uil-setting"></i>              | Cog wheel                          | PMM UI Configuration->Settings       |
+| <i class="uil uil-share-alt"></i>            | Share symbol                       | PMM UI - Share dashboard             |
+| <i class="uil uil-shield"></i>               | Shield                             | PMM UI - Server admin                |
+| <i class="uil uil-star"></i>                 | Star                               | PMM UI - Dashboard favourites        |
+| <i class="uil uil-sync"></i>                 | Twin backward arrows               | PMM UI - Refresh dashboard           |
+| <i class="uil uil-thumbs-down"></i>          | Hand, thumbs down                  | For Benefits/Drawbacks tables        |
+| <i class="uil uil-thumbs-up"></i>            | Hand, thumbs up                    | For Benefits/Drawbacks tables        |
+| <i class="uil uil-times"></i>                | Large 'X'                          | PMM UI                               |
+| <i class="uil uil-toggle-off"></i>           | Toggle (off)                       | PMM UI - Toggle switch               |
+| <i class="uil uil-toggle-on"></i>            | Toggle (on)                        | PMM UI - Toggle switch               |
+| <i class="uil uil-trash-alt"></i>            | Trash can                          | PMM UI - Various 'Delete' operation  |
 
 Custom (in-house design) icons are defined as SVG code in `variables.yml`.
 
-| Usage                  | Description                           | Used where
-|------------------------|---------------------------------------|-----------------
-| `{{icon.addinstance}}` | Thin + in circle                      | PMM Add Instance
-| `{{icon.checks}}`      | Checkbox list items                   | Inventory list
-| `{{icon.inventory}}`   | Checkbox list items                   | PMM Inventory & Inventory List
-| `{{icon.dashboards}}`  | Abstract blocks assembly              | PMM Dashboards
-| `{{icon.node}}`        | Circle surrounded by smaller circles  | Node dashboards
-| `{{icon.percona}}`     | Percona logo                          | Wherever PMM home icon is needed
+| Usage                  | Description                          | Used where                       |
+| ---------------------- | ------------------------------------ | -------------------------------- |
+| `{{icon.addinstance}}` | Thin + in circle                     | PMM Add Instance                 |
+| `{{icon.checks}}`      | Checkbox list items                  | Inventory list                   |
+| `{{icon.inventory}}`   | Checkbox list items                  | PMM Inventory & Inventory List   |
+| `{{icon.dashboards}}`  | Abstract blocks assembly             | PMM Dashboards                   |
+| `{{icon.node}}`        | Circle surrounded by smaller circles | Node dashboards                  |
+| `{{icon.percona}}`     | Percona logo                         | Wherever PMM home icon is needed |
 
 ## Symbols
 
 While MkDocs will automatically replace certain strings with symbols, it's preferable where possible to use unicode symbols for other icons, so that they appear when the raw Markdown is exported as HTML and imported into Google Docs.
 
-| For     | Use
-|---------|-----
-| -->     | →
+| For | Use |
+| --- | --- |
+| --> | →   |
 
 ## Language
 
@@ -215,7 +214,7 @@ Most Markdown processors automatically number lists when they are like this:
 1. Item
 1. Item
 1. Item
-...
+   ...
 ```
 
 But to make the raw Markdown easier to read, we recommend explicitly numbering items:
@@ -224,7 +223,7 @@ But to make the raw Markdown easier to read, we recommend explicitly numbering i
 1. Item
 2. Item
 3. Item
-...
+   ...
 ```
 
 Other advantages:

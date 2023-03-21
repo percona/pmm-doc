@@ -14,7 +14,7 @@ How to run PMM Server as a virtual machine.
 
 ---
 
-Most steps can be done with either a user interface or on the command line, but some steps can only be done in one or the other. Sections are labeled **UI** for user interface or **CLI** for command line instructions.
+Most steps can be done with either a user interface or on the command line, but some steps can only be done in one or the other. Sections are labelled **UI** for user interface or **CLI** for command line instructions.
 
 ## Terminology
 
@@ -56,7 +56,7 @@ Most steps can be done with either a user interface or on the command line, but 
 2. [Visit the PMM Server download page][OVA].
 3. Choose a *Version* or use the default (the latest).
 4. Click the link for `pmm-server-{{release}}.ova` to download it. Note where your browser saves it.
-5. Right click the link for `pmm-server-{{release}}.sha256sum` and save it in the same place as the `.ova` file.
+5. Right-click the link for `pmm-server-{{release}}.sha256sum` and save it in the same place as the `.ova` file.
 6. (Optional) [Verify](#verify).
 
 ### CLI
@@ -103,7 +103,7 @@ shasum -ca 256 pmm-server-{{release}}.sha256sum
 #### CLI
 
 1. Install [`ovftool`][OVFTool]. (You need to register.)
-2. Import and convert the OVA file. (`ovftool` can't change CPU or memory settings during import but it can set the default interface.)
+2. Import and convert the OVA file. (`ovftool` can't change CPU or memory settings during import, but it can set the default interface.)
 
     Choose one of:
 
@@ -143,7 +143,7 @@ shasum -ca 256 pmm-server-{{release}}.sha256sum
 
 1. In the VMware main window, select the imported virtual machine.
 2. Click the play button <i class="uil uil-caret-right"></i> or select *Virtual Machine* → *Start Up*.
-3. When the instance has booted, note the IP address in the guest console.
+3. When the instance has been booted, note the IP address in the guest console.
 
 #### CLI/UI
 
@@ -154,7 +154,7 @@ shasum -ca 256 pmm-server-{{release}}.sha256sum
     pmm-server.vmx gui
     ```
 
-2. When the instance has booted, note the IP address in the guest console.
+2. When the instance has been booted, note the IP address in the guest console.
 
 3. (Optional) Stop and restart the instance in headless mode.
 
@@ -179,7 +179,7 @@ shasum -ca 256 pmm-server-{{release}}.sha256sum
 
 #### CLI
 
-1. Open a terminal and change directory to where the downloaded `.ova` file is.
+1. Open a terminal and change the directory to where the downloaded `.ova` file is.
 
 2. (Optional) Do a 'dry run' import to see what values will be used.
 
@@ -281,7 +281,7 @@ shasum -ca 256 pmm-server-{{release}}.sha256sum
 
 1. Open a web browser and visit the guest IP address.
 
-2. The PMM [login screen](../../using/interface.md) appears.
+2. The PMM [login screen](../../get-started/interface.md) appears.
 
 3. Enter the default username and password in the relevant fields and click *Log in*.
 
@@ -290,6 +290,9 @@ shasum -ca 256 pmm-server-{{release}}.sha256sum
     - password: `admin`
 
 4. (Recommended) Follow the prompts to change the default password.
+
+!!! note alert alert-primary ""
+    You also can change the default password through SSH by using the `change-admin-password` command.
 
 5. The PMM Home Dashboard appears.
 
@@ -352,9 +355,11 @@ When the guest OS starts, it will get an IP address from the hypervisor's DHCP s
 5. Add these values:
 
     ```ini
-    IPADDR=192.168.1.123 # Example
-    NETMASK=255.255.255.0
-    GATEWAY=192.168.1.1
+    IPADDR=192.168.1.123 # replace with the desired static IP address
+    NETMASK=255.255.255.0 # replace with the netmask for your IP address
+    GATEWAY=192.168.1.1 # replace with the network gateway for your IP address
+    PEERDNS=no
+    DNS1=192.168.1.53 # replace with your DNS server IP
     ```
 
 6. Restart the interface.
@@ -367,6 +372,11 @@ When the guest OS starts, it will get an IP address from the hypervisor's DHCP s
 
     ```sh
     ip addr show eth0
+    ```
+8. Preserve the network configuration across reboots.
+
+    ```sh
+    echo "network: {config: disabled}" > /etc/cloud/cloud.cfg.d/99-disable-network-config.cfg
     ```
 
 ## Remove

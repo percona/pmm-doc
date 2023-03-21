@@ -1,17 +1,24 @@
 # Details
 
-- [Architecture](architecture.md): high-level architecture and main components.
+- [Architecture](architecture.md): High-level architecture and main components.
 
 - [User interface components](interface.md): Descriptions of the main menus and icons.
+
+- [PMM components and versions](pmm_components_and_versions.md): PMM components and their version used in PMM.
+
+- [Developing Advisor checks](develop-checks/index.md): Database health assessments.
 
 - [Dashboards reference](dashboards/index.md): A complete list of dashboards by category, with screenshots.
 
 - Commands:
-    - [pmm-admin](commands/pmm-admin.md): The manual page for the PMM administration tool.
-    - [pmm-agent](commands/pmm-agent.md): The manual page for the PMM Client agent program.
+
+  - [pmm-admin](commands/pmm-admin.md): The manual page for the PMM administration tool.
+  - [pmm-agent](commands/pmm-agent.md): The manual page for the PMM Client agent program.
 
 - [API](api.md): How to access the Swagger API.
 
-- [VictoriaMetrics](victoria-metrics.md): the third-party monitoring solution and time-series database that replaced Prometheus in [PMM 2.12.0](../release-notes/2.12.0.md).
+- [VictoriaMetrics](victoria-metrics.md): The monitoring solution and time-series database that replaced Prometheus in [PMM 2.12.0](../release-notes/2.12.0.md).
+
+- [ClickHouse](clickhouse.md):  A third-party column-oriented database management system (DBMS) that facilitates the Query Analytics functionality.
 
 - [Glossary](glossary.md): A list of obscure terms and definitions.

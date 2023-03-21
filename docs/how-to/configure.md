@@ -9,35 +9,27 @@ Open the *Settings* page from the [main menu](../details/interface.md#main-menu)
 On the left are the selector tabs:
 
 - [Configure](#configure)
-    - [Metrics resolution](#metrics-resolution)
-    - [Advanced Settings](#advanced-settings)
-        - [Data Retention](#data-retention)
-        - [Telemetry](#telemetry)
-        - [Check for updates](#check-for-updates)
-        - [Security Threat Tool](#security-threat-tool)
-    - [Public address](#public-address)
-        - [DBaaS](#dbaas)
-        - [Integrated Alerting](#integrated-alerting)
-        - [Microsoft Azure Monitoring](#microsoft-azure-monitoring)
-        - [Public Address](#public-address-1)
-    - [SSH Key](#ssh-key)
-    - [Alertmanager integration](#alertmanager-integration)
-    - [Percona Platform](#percona-platform)
-        - [Login](#login)
-        - [Sign up](#sign-up)
-        - [Password Reset](#password-reset)
-            - [Password Forgotten](#password-forgotten)
-            - [Change Password after Login](#change-password-after-login)
-    - [Communication](#communication)
-        - [Email](#email)
-        - [Slack](#slack)
+  - [Metrics resolution](#metrics-resolution)
+  - [Advanced Settings](#advanced-settings)
+    - [Data Retention](#data-retention)
+    - [Telemetry](#telemetry)
+    - [Check for updates](#check-for-updates)
+    - [Advisors](#advisors)
+  - [Public address](#public-address)
+    - [DBaaS](#dbaas)
+    - [Alerting](#alerting)
+    - [Microsoft Azure Monitoring](#microsoft-azure-monitoring)
+    - [Public Address](#public-address)
+  - [SSH Key](#ssh-key)
+  - [Alertmanager integration](#alertmanager-integration)
+  - [Percona Platform](#percona-platform)
+    - [Connect PMM to Percona Platform](#connect-pmm-to-percona-platform)
+    - [Password Reset](#password-reset)
+      - [Password Forgotten](#password-forgotten)
+      - [Change Password after Login](#change-password-after-login)
 
 !!! hint alert alert-success "Tip"
     Click *Apply changes* to save any changes made here.
-
-## Diagnostics
-
-On all tabs is a *Diagnostics* section (top-right). Click *Download server diagnostics* to retrieve PMM diagnostics data which can be examined and/or shared with our support team should you need help.
 
 ## Metrics resolution
 
@@ -83,11 +75,19 @@ The *Telemetry* switch enables gathering and sending basic **anonymous** data to
 
 The following information is gathered:
 
-- PMM Version;
-- Installation Method (Docker, AMI, OVF);
-- the Server Uptime;
-- Security Threat Tool Status (enabled or disabled);
-- Integrated Alerting Status (enabled or disabled).
+- PMM Server Integration Alerting feature enabled/disabled
+- PMM Server Security Thread Tool feature enabled/disabled
+- PMM Server Backup feature enabled/disabled
+- PMM Server DBaaS feature enabled/disabled
+- PMM Server Check Updates feature disabled
+- Detailed information about the version of monitored MySQL services
+- Monitored MongoDB services version
+- Monitored PostgreSQL services version
+- Total Grafana users
+- Monitored nodes count
+- Monitored services count
+- Agents version
+- Node type
 
 We do not gather anything that identify a system, but the following two points should be mentioned:
 
@@ -104,60 +104,42 @@ Grafana’s [anonymous usage statistics](https://grafana.com/docs/grafana/latest
 As well as via the *PMM Settings* page, you can also disable telemetry with the `-e DISABLE_TELEMETRY=1` option in your docker run statement for the PMM Server.
 
 !!! note alert alert-primary ""
-    - If the Security Threat Tool is enabled in PMM Settings, Telemetry is automatically enabled.
-    - Telemetry is sent straight away; the 24 hour grace period is not honored.
+
+    Telemetry is sent straight away; the 24 hour grace period is not honored.
 
 ### Check for updates
 
 When active, PMM will automatically check for updates and put a notification in the home page *Updates* dashboard if any are available.
 
-### Security Threat Tool
+### Advisors
 
-The [Security Threat Tool] performs a range of security-related checks on a registered instance and reports the findings. It is off by default.
+Advisors are sets of checks grouped by functionality that run a range of database health checks on a registered instance.
 
-!!! hint alert alert-success "Tip"
-    To see the results of checks, select *{{icon.checks}} Security Checks* to open the *Security Checks/Failed Checks* dashboard, and select the *Failed Checks* tab.
+The findings are reported on the **Advisors > Failed Checks** page, and an overview is displayed on the Dashboard in the Failed Advisor Checks panel.
 
-Checks are re-fetched and re-run at intervals. There are three named intervals:
+The Advisors option is enabled by default.
 
-| Interval name                 | Value (hours)  |
-|------------------------------ |:--------------:|
-| *Rare interval*               | 78             |
-| *Standard interval* (default) | 24             |
-| *Frequent interval*           | 4              |
+Checks are re-fetched and rerun at intervals.
 
-!!! note alert alert-primary ""
-    The values for each named interval are fixed.
-
-Checks use the *Standard* interval by default. To change a check's interval:
-
-- Go to {{icon.checks}} *PMM Database Checks*.
-- Select *All Checks*.
-- In the *Actions* column, select the <i class="uil uil-history"></i> icon.
-
-    ![!](../_images/PMM_Security_Checks_Actions.png)
-
-- Select an interval and click *Save*.
-
-    ![!](../_images/PMM_Security_Checks_Actions_Set_Interval.png)
+See [Working with Advisor checks](advisors.md).
 
 ## Public address
 
-The address or hostname PMM Server will be accessible at. Click *Get from browser* to have your browser detect and populate this field automatically.
+The address or hostname PMM Server will be accessible at. Click **Get from browser** to have your browser detect and populate this field automatically.
 
 ### DBaaS
 
 !!! caution alert alert-warning "Caution"
     DBaaS functionality is a technical preview that must be turned on with a server feature flag. See [DBaaS](../setting-up/server/dbaas.md).
 
-Enables/disables [DBaaS features](../using/dbaas.md) on this server.
+Enables/disables [DBaaS features](../get-started/dbaas.md) on this server.
 
 !!! caution alert alert-warning "Important"
     Deactivating DBaaS ***does not*** suspend or remove running DB clusters.
 
-### Integrated Alerting
+### Alerting
 
-Enables [Integrated Alerting](../using/alerting.md) and reveals the [Communication](#communication) tab.
+Enables [Percona Alerting](../get-started/alerting.md) and reveals the **Percona templated alerts** option on the Alerting page.
 
 ### Microsoft Azure Monitoring
 
@@ -185,7 +167,7 @@ Alertmanager manages alerts, de-duplicating, grouping, and routing them to the a
 This section lets you configure integration of VictoriaMetrics with an external Alertmanager.
 
 !!! hint alert alert-success "Tip"
-    If possible, use [Integrated Alerting](../using/alerting.md) instead of Alertmanager.
+    If possible, use [Integrated Alerting](../get-started/alerting.md) instead of Alertmanager.
 
 - The *Alertmanager URL* field should contain the URL of the Alertmanager which would serve your PMM alerts.
 - The *Prometheus Alerting rules* field is used to specify alerting rules in the YAML configuration format.
@@ -196,38 +178,20 @@ Fill both fields and click the *Apply Alertmanager settings* button to proceed.
 
 ## Percona Platform
 
-This panel is where you create, and log into and out of your Percona Platform account.
-
-### Login
-
-![!image](../_images/PMM_Settings_Percona_Platform_Login.jpg)
-
-If you have a *Percona Platform* account, enter your credentials and click *Login*.
-
-Click *Sign out* to log out of your Percona Platform account.
-
-### Sign up
-
-![!image](../_images/PMM_Settings_Percona_Platform_Sign_Up.jpg)
-
-To create a *Percona Platform* account:
-
-1. Click *Sign up*.
-2. Enter a valid email address in the *Email* field.
-3. Choose and enter a strong password in the *Password* field.
-4. Select the check box acknowledging our terms of service and privacy policy.
-5. Click *Sign up*.
-
-A brief message will confirm the creation of your new account and you may now log in with these credentials.
+This panel is where you connect your PMM server to your Percona Platform Account.
 
 !!! note alert alert-primary ""
-    Your Percona Platform account is separate from your PMM User account.
+    Your Percona Platform Account is separate from your PMM User account.
+
+### Connect PMM to Percona Platform
+
+To learn how to connect your PMM servers to Percona Platform and leverage Platform services that boost the monitoring capabilities of your PMM installations, see [Integrate PMM with Percona Platform](integrate-platform.md).
 
 ### Password Reset
 
 #### Password Forgotten
 
-In case you forgot your password, click on the *Forgot password* link in the login page.
+In case you forgot your password, click on the *Forgot password* link on the login page.
 
 You will be redirected to a password reset page. Enter the email you are registered with in the field and click on *Reset via Email*.
 
@@ -244,42 +208,3 @@ If you did not forget your password but you still want to change it, go to <http
 Insert you current password and the new password in the form to the bottom right of the page. If you cannot see the form, you will need to click on the *Edit Profile* green button (you will be prompted for you password).
 
 Click on *Change Password*. If everything goes well, you will see a confirmation message.
-
-## Communication
-
-Global communications settings for [Integrated Alerting](../using/alerting.md).
-
-!!! hint alert alert-success "Tip"
-    If there is no *Communication* tab, go to the *Advanced Settings* tab and activate *Integrated Alerting*.
-
-![!](../_images/PMM_Settings_Communication.jpg)
-
-(Integrated Alerting uses a separate instance of Alertmanager run by `pmm-managed`.)
-
-### Email
-
-Settings for the SMTP email server:
-
-- *Server Address*: The default SMTP smarthost used for sending emails, including port number.
-- *Hello*: The default hostname to identify to the SMTP server.
-- *From*: The sender's email address.
-- *Auth type*: Authentication type. Choose from:
-    - *None*
-    - *Plain*
-    - *Login*
-    - *CRAM-MD5*
-- *Username*: SMTP Auth using CRAM-MD5, LOGIN and PLAIN.
-- *Password*: SMTP Auth using CRAM-MD5, LOGIN and PLAIN.
-
-### Slack
-
-![!](../_images/PMM_Settings_Communication_Slack.png)
-
-Settings for Slack notifications:
-
-- *URL*: The Slack webhook URL to use for Slack notifications.
-
-!!! seealso alert alert-info "See also"
-    [Prometheus Alertmanager configuration](https://prometheus.io/docs/alerting/latest/configuration/)
-
-[Security Threat Tool]: ../using/security-threat-tool.md

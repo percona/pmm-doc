@@ -41,13 +41,13 @@ Queries Per Second. A measure of the rate of queries being monitored.
 
 Component of PMM Server that enables you to analyze MySQL query performance over periods of time.
 
-## STT
+## Advisors
 
-Security Threat Tool.
+Automated checks that you can run against connected databases to identify any potential security threats, configuration problems, performance concerns, policy non-compliance issues etc. 
 
 ## Technical Preview
 
-Releases intended for public preview and feedback but with no support or service level agreement (SLA). Should not be used on production or business-critical systems. May contain breaking changes to UI, API, CLI. ([Read more](https://www.percona.com/services/policies/percona-release-lifecycle-overview).)
+Releases intended for public preview and feedback, but with no support or service level agreement (SLA). Should not be used on production or business-critical systems. May contain breaking changes to UI, API, CLI. ([Read more](https://www.percona.com/services/policies/percona-release-lifecycle-overview).)
 
 ## VG
 

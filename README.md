@@ -1,6 +1,8 @@
 # Percona Monitoring and Management (PMM) Documentation
-
-[![Netlify Status](https://api.netlify.com/api/v1/badges/52970fb0-4de9-4b89-ab41-bd1cf83564b4/deploy-status)](https://app.netlify.com/sites/pmm-doc/deploys)
+[![render](https://img.shields.io/badge/pmm--doc-render-Green)](https://pmm-doc.onrender.com/)
+[![Build](https://github.com/percona/pmm-doc/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/percona/pmm-doc/actions/workflows/build.yml)
+[![Helm](https://github.com/percona/pmm-doc/actions/workflows/helm-tests.yml/badge.svg?branch=main)](https://github.com/percona/pmm-doc/actions/workflows/helm-tests.yml)
+[![Podman](https://github.com/percona/pmm-doc/actions/workflows/podman-tests.yml/badge.svg?branch=main)](https://github.com/percona/pmm-doc/actions/workflows/podman-tests.yml)
 
 [Percona Monitoring and Management] (PMM) is a database monitoring solution that is free and open-source.
 
@@ -10,7 +12,7 @@ To contribute to that documentation, you can:
 
 - **report a general problem** -- open a [Jira] issue.
 
-- **fix a problem yourself** -- Use the *Edit this page* link to take you the Markdown source file for that page. Make your changes (you'll have to fork the repo unless you're Percona staff) and submit a PR which we'll review and adjust where necessary before merging and publishing. If the changes are more than a few lines, you might want to build the website locally to see how it looks in context. That's what the rest of this README covers.
+- **fix a problem yourself** -- Use the *Edit this page* link to take you to the Markdown source file for that page. Make your changes (you'll have to fork the repo unless you're Percona staff) and submit a PR which we'll review and adjust where necessary before merging and publishing. If the changes are more than a few lines, you might want to build the website locally to see how it looks in context. That's what the rest of this README covers.
 
 ## Introduction
 
@@ -115,8 +117,6 @@ View the site at <http://0.0.0.0:8000>
 
 - `mkdocs-pdf.yml`: MkDocs configuration file. Creates themed [PDF](#pdf).
 
-- `temp-mkdocs*.yml`: Set of in-test MkDocs configuration files. Uses a base file with a single `nav` element. Pending compatibility with `mike`. (Fails with mike 1.0.1.)
-
 - `docs`:
 
     - `*.md`: Markdown files.
@@ -137,10 +137,6 @@ View the site at <http://0.0.0.0:8000>
 
         - `grafana-dashboards-descriptions.py`: Script to extract dashboard descriptions from <https://github.com/percona/grafana-dashboards/>.
 
-        - `plantuml`: Wrapper script for running PlantUML.
-
-        - `plantuml.jar`: Copy of the PlantUML Java file (needed for Netlify builds).
-
     - `templates`: Stylesheet for PDF output (used by [mkdocs-with-pdf](https://github.com/orzih/mkdocs-with-pdf) extension).
 
     - `theme`:
@@ -149,11 +145,7 @@ View the site at <http://0.0.0.0:8000>
 
 - `requirements.txt`: Python package dependencies.
 
-- `runtime.txt`: Python version specifier (used by netlify).
-
 - `variables.yml`: Values used throughout the Markdown, including the current PMM version/release number.
-
-- `netlify.toml`: Netlify build definition.
 
 - `.spelling`: Words regarded as correct by `mdspell` (See [Spelling and grammar](#spelling-and-grammar).)
 
@@ -189,7 +181,7 @@ Here's how it's done.
 
     4. Navigate to `pmm-doc/docs/_images` and select `PMM_Home_Dashboard_Overlay.drawio`
 
-    5. If the dashboard layout has changed, replace the *Guide* Layer with a new screenshot and adjust the elements on the *Overlay* layer as needed (To show layers, click View --> Layers). Untick the *Guide* Layer so it is not exported.
+    5. If the dashboard layout has changed, replace the *Guide* Layer with a new screenshot and adjust the elements on the *Overlay* layer as required (To show layers, click View --> Layers). Untick the *Guide* Layer so it is not exported.
 
     6. Click File --> Export as --> PNG
 
@@ -236,7 +228,7 @@ To check all files:
 mdspell --report --en-us --ignore-acronyms --ignore-numbers "docs/**/*.md"
 ```
 
-Add any custom dictionary words to `.spelling`. The results of the spell check are printed but the job ignores the return status.
+Add any custom dictionary words to `.spelling`. The results of the spell check are printed, but the job ignores the return status.
 
 Grammar is checked using [`write-good`](https://github.com/btford/write-good).
 
@@ -253,9 +245,9 @@ write-good docs/**/*.md
 
 ## Link checking
 
-We're using the `mkdocs-htmlproofer-plugin` link checking plugin to detect broken URLs. It works great but increases the build time significantly (by between 10 and 50 times longer).
+We're using the `mkdocs-htmlproofer-plugin` link checking plugin to detect broken URLs. It works well, but increases the build time significantly (by between 10 and 50 times longer).
 
-The plugin is installed in our [PMM documentation Docker image] and by the GitHub action but it is commented out in `mkdocs.yml`.
+The plugin is installed in our [PMM documentation Docker image] and by the GitHub action, but it is commented out in `mkdocs.yml`.
 
 To enable it for local builds, uncomment the line with `htmlproofer` in the `plugins` section of `mkdocs.yml` and parse the build output for warnings.
 
