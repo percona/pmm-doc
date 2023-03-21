@@ -29,7 +29,7 @@ By default, communication between the PMM server and the database is not encrypt
 
 To use PostgreSQL as an external database: 
 
-* Generate all nessesary SSL certificates.
+1. Generate all necessary SSL certificates.
 * Deploy Percona Server with certificates under read-only permissions and grafana user and grafana group.
 * Attach pg_hba.conf and certificates to the PostgreSQL image.
 * Run PostgreSQL server.
