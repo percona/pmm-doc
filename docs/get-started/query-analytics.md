@@ -176,7 +176,7 @@ The *Explain* tab shows the `explain` output for the selected query, in Classic 
 
 - MySQL: Classic and JSON.
 - MongoDB: JSON only.
-- PostgreSQL: Not supported.
+- PostgreSQL: Supported by pg_stat_monitor (PGSM), not by pg_stat_statements (PGSS).
 
 Starting with PMM 2.33.0, for MySQL, the *Explain* tab is supported without the *Examples* enabled. If a query in the *Explain* tab contains sensitive data, placeholders will replace them.
 Before you can run Explain, you must specify the values for these placeholders. This image illustrates the query with placeholders.
@@ -217,6 +217,26 @@ The *Tables* tab shows information on the tables and indexes involved in the sel
 The *Plan* tab shows the plan for PostgreSQL queries (only available when using *pg_stat_monitor*).
 
 ![!image](../_images/PMM_Query_Analytics_Tabs_Plan.png)
+
+## Query Analytics for PostgreSQL
+
+In QAN we supporting two types of query source. Its `pg_stat_monitor` and pg_stat_statements `pg_stat_statements`. In the past PGSS were default query source, but since this version its newly PGSM. 
+
+We are excited to announce PMM 2.36 now supports [pg_stat_monitor](https://docs.percona.com/pg-stat-monitor/index.html) 2.0 (PGSM 2.0) in QAN, a powerful PostgreSQL query performance monitoring tool. By downloading this update, you will have access to the latest improvements and fixes covered by PGSM2, including:
+
+- Improved internal architecture that results in fewer lock acquisitions and increases performance by approximately 20%.
+- Support for PostgreSQL 15 
+- Enhanced consistency with `pg_stat_statements` so that the `pg_stat_monitor` view has identical column names, columns, and data types as `pg_stat_statements` for every major version of PostgreSQL from versions 11 to 15.
+- A bucket status indication (done vs. current) eliminates the need for the tool to evaluate bucket status and facilitates accurate data display.
+- The generation of a unique ID for a query makes it easier to monitor query planning, execution, and performance regardless of version, database, user, or schema.
+- It has backaward compatibility with your historical data (data collected by older PMM and PGSM)
+- More detailed histgoram ranges
+- Security improvements
+- All previous PGSM versions are still supported
+
+!!! caution alert alert-warning ""
+In case of PG 15 you will probably need grant more permissions to user. You will see error message in pmm-agent log, if more permissions are needed. Its nothing related to PMM, but new behaviour in case of PG 15 itself.
+
 
 ## Query Analytics for MongoDB
 
