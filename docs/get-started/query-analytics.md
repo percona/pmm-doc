@@ -235,7 +235,7 @@ PMM 2.36 now supports [pg_stat_monitor](https://docs.percona.com/pg-stat-monitor
 - All previous PGSM versions are still supported
 
 !!! caution alert alert-warning ""
-In case of PG 15 you will probably need grant more permissions to user. You will see error message in pmm-agent log, if more permissions are needed. Its nothing related to PMM, but new behaviour in case of PG 15 itself.
+You will probably need to grant more permissions to the user in PostgreSQL 15. An error message will appear in the `pmm-agent` log if more permissions are required. This behavior is pertaining to PostgreSQL and not PMM.
 
 You can use this query:
 CREATE USER pmm WITH SUPERUSER ENCRYPTED PASSWORD 'USERNAME';
