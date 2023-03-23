@@ -237,6 +237,9 @@ We are excited to announce PMM 2.36 now supports [pg_stat_monitor](https://docs.
 !!! caution alert alert-warning ""
 In case of PG 15 you will probably need grant more permissions to user. You will see error message in pmm-agent log, if more permissions are needed. Its nothing related to PMM, but new behaviour in case of PG 15 itself.
 
+You can use this query:
+CREATE USER pmm WITH SUPERUSER ENCRYPTED PASSWORD 'USERNAME';
+where USERNAME should be replaced by your user.
 
 ## Query Analytics for MongoDB
 
