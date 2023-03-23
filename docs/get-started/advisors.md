@@ -1,7 +1,7 @@
 # Advisors 
-Percona Advisors provide automated insights and recommendations within Percona Monitoring and Management. These proactive insights help you uncover problems before they become larger issues (e.g., security posture, configuration, performance).
+Percona Advisors provide automated insights and recommendations within Percona Monitoring and Management. These proactive insights help you uncover problems before they become larger issues:  security risks, misconfigurations, poor performance, etc.
 
-Advisors offer a set of automated checks to investigate a broad range of possible issues. Previously, Advisors focused only on Security, Configuration, and Performance issues. 
+Advisors offer a set of automated checks to investigate a broad range of possible issues grouped by category: Security, Configuration, Performance and Query issues.
 
 ## Prerequisites for accessing Advisor checks
 All checks are hosted on Percona Platform. PMM Server automatically downloads them from here when the **Advisors** and **Telemetry** options are enabled in PMM under **Configuration > Settings > Advanced Settings**. Both these options are enabled by default.
@@ -27,9 +27,9 @@ By default, PMM runs all the checks available for your PMM instances every 24 ho
 ### Change run interval for automatic advisors
  You can change the standard 24 hours interval to a custom frequency for each advisor:
 
- - *Rare interval*   -  78 hours
- - *Standard interval* (default) -  24 hours
- - *Frequent interval*   - 4   hours
+ - *Rare interval* - 78 hours
+ - *Standard interval* (default) - 24 hours
+ - *Frequent interval* - 4 hours
 
 To change the frequency of an automatic advisor:
 
