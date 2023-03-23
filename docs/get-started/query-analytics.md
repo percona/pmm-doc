@@ -142,18 +142,6 @@ For PostgreSQL queries (when using `pg_stat_monitor`) the top query will also be
 Other useful metrics (when using *pg_stat_monitor*) to monitor PostgreSQL Server performance are [Histograms](https://github.com/percona/pg_stat_monitor/blob/master/docs/USER_GUIDE.md#histogram). 
 *Histograms* provide more explicit information about number of queries for fingerprint (`queryid`). Ranges are from 0 seconds up to 100 seconds.  
 
-Ranges (numbers are in milliseconds):  
-    0 - 3  
-    3 - 10  
-    10 - 31  
-    31 - 100  
-    100 - 316  
-    316 - 1000  
-    1000 - 3162  
-    3162 - 10000  
-    10000 - 31622  
-    31622 - 100000
-
 Here is picture of *histogram* in graph:
 ![!image](../_images/PMM_Query_Analytics_Tabs_Details_Histogram.png)
 
@@ -220,7 +208,7 @@ The *Plan* tab shows the plan for PostgreSQL queries (only available when using 
 
 ## Query Analytics for PostgreSQL
 
-In QAN we supporting two types of query source. Its `pg_stat_monitor` and `pg_stat_statements`. In the past PGSS were default query source, but since this version its newly PGSM. 
+In QAN we do support two types of query sources, pg_stat_monitor and pg_stat_statements. In the past PGSS was the default query source, but since this version, it's now PGSM.
 
 PMM 2.36 now supports [pg_stat_monitor](https://docs.percona.com/pg-stat-monitor/index.html) 2.0 (PGSM 2.0) in QAN, a powerful PostgreSQL query performance monitoring tool. By downloading this update, you will have access to the latest improvements and fixes covered by PGSM2, including:
 
@@ -229,7 +217,7 @@ PMM 2.36 now supports [pg_stat_monitor](https://docs.percona.com/pg-stat-monitor
 - Enhanced consistency with `pg_stat_statements` so that the `pg_stat_monitor` view has identical column names, columns, and data types as `pg_stat_statements` for every major version of PostgreSQL from versions 11 to 15.
 - A bucket status indication (done vs. current) eliminates the need for the tool to evaluate bucket status and facilitates accurate data display.
 - The generation of a unique ID for a query makes it easier to monitor query planning, execution, and performance regardless of version, database, user, or schema.
-- It has backaward compatibility with your historical data (data collected by older PMM and PGSM)
+- It has backward compatibility with your historical data (data collected by older PMM and PGSM)
 - More detailed histogram ranges
 - Security improvements
 - All previous PGSM versions are still supported
