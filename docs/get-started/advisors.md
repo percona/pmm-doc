@@ -8,9 +8,12 @@ All checks are hosted on Percona Platform. PMM Server automatically downloads th
 
 ### Advisor check tiers and Platform entitlements
 Depending on the entitlements available for your Percona Account, the set of Advisor checks that PMM can download from the Percona Platform differs in terms of complexity and functionality.
+As soon as you connect your PMM instance to Percona Platform, has access to additional checks, available only for Registered PMM instances.
 
 If your PMM instance is not connected to Percona Platform, PMM can only download the basic set of Anonymous Advisor checks.
 As soon as you connect your PMM instance to Percona Platform, has access to additional checks, available only for Registered PMM instances. If you are a Percona customer with a Percona Customer Portal account, you also get access to Paid Advisor checks, which offer more advanced database health information.
+
+If you are a Percona customer with a Percona Customer Portal account, you also get access to Paid Advisor checks, which offer more advanced database health information.
 
 To see the complete list of available checks, see the [Advisor Checks for PMM](https://docs.percona.com/percona-platform/checks.html) topic in the Percona Platform documentation.
 
@@ -25,7 +28,6 @@ By default, PMM runs all the checks available for your PMM instances every 24 ho
 
 ### Change run interval for automatic advisors
 You can change the standard 24-hour interval to a custom frequency for each Advisor check:
-
  - *Rare interval* - 78 hours
  - *Standard interval* (default) - 24 hours
  - *Frequent interval* - 4 hours
@@ -58,7 +60,7 @@ The results are sent to PMM Server where you can review any failed checks on the
 - <b style="color:#e36526;">Error</b>
 - <b style="color:#5794f2;">Warning</b>
 - <b style="color:#3274d9;">Notice</b>, which also includes checks tagged as **Info** and **Debug**
- 
+
 ![!Failed Advisor Checks panel](../_images/HomeDashboard.png)
 
 To see more details about the available checks and any checks that failed, click the *{{icon.checks}} Advisors* icon on the main menu.
