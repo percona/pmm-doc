@@ -230,7 +230,7 @@ PMM 2.36 now supports [pg_stat_monitor](https://docs.percona.com/pg-stat-monitor
 - A bucket status indication (done vs. current) eliminates the need for the tool to evaluate bucket status and facilitates accurate data display.
 - The generation of a unique ID for a query makes it easier to monitor query planning, execution, and performance regardless of version, database, user, or schema.
 - It has backaward compatibility with your historical data (data collected by older PMM and PGSM)
-- More detailed histgoram ranges
+- More detailed histogram ranges
 - Security improvements
 - All previous PGSM versions are still supported
 
