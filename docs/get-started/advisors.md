@@ -9,10 +9,10 @@ All checks are hosted on Percona Platform. PMM Server automatically downloads th
 ### Advisor check tiers and Platform entitlements
 Depending on the entitlements available for your Percona Account, the set of advisor checks that PMM can download from the Percona Platform differs in terms of complexity and functionality.
 
-If your PMM instance is not connected to Percona Platform, PMM can only download the basic set of Anonymous Advisor checks.
-As soon as you connect your PMM instance to Percona Platform, has access to additional checks, available only for Registered PMM instances.
+If your PMM instance is not connected to Percona Platform, PMM can only use its built-in Advisor checks.
+As soon as you connect your PMM instance to Percona Platform, has access to additional checks, available only for registered PMM instances.
 
-If you are a Percona customer with a Percona Customer Portal account, you also get access to Paid Advisor checks, which offer more advanced database health information.
+If you are a Percona customer with a Percona Customer Portal account, you also get access to Standard/Premium Advisor checks, which offer more advanced database health information.
 
 To see the complete list of available checks, see the [Advisor Checks for PMM](https://docs.percona.com/percona-platform/advisors.html) topic in the Percona Platform documentation.
 
