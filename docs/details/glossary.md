@@ -41,7 +41,7 @@ Queries Per Second. A measure of the rate of queries being monitored.
 
 Component of PMM Server that enables you to analyze MySQL query performance over periods of time.
 
-## Advisor checks
+## Advisors
 
 Automated checks that you can run against connected databases to identify any potential security threats, configuration problems, performance concerns, policy non-compliance issues etc. 
 
