@@ -1,4 +1,4 @@
-# Working with Advisor checks
+# Working with Advisors
 Percona Advisors provide automated insights and recommendations within Percona Monitoring and Management. These proactive insights help you uncover problems before they become larger issues: security risks, misconfigurations, poor performance, etc.
 
 Advisors offer a set of automated checks to investigate a broad range of possible issues. Previously, Advisors focused only on Security, Configuration, and Performance issues. 
