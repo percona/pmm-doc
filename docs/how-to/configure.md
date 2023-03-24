@@ -111,7 +111,7 @@ As well as via the *PMM Settings* page, you can also disable telemetry with the 
 
 When active, PMM will automatically check for updates and put a notification in the home page *Updates* dashboard if any are available.
 
-### Advisor checks
+### Advisors
 
 Advisors are sets of checks grouped by functionality that run a range of database health checks on a registered PMM instance.
 
