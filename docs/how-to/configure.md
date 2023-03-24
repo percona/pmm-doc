@@ -14,7 +14,7 @@ On the left are the selector tabs:
     - [Data Retention](#data-retention)
     - [Telemetry](#telemetry)
     - [Check for updates](#check-for-updates)
-    - [Advisor checks](#advisor-checks)
+    - [Advisors](#advisors)
   - [Public address](#public-address)
     - [DBaaS](#dbaas)
     - [Alerting](#alerting)
