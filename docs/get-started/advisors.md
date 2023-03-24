@@ -1,5 +1,5 @@
-# Advisors 
-Percona Advisors provide automated insights and recommendations within Percona Monitoring and Management. These proactive insights help you uncover problems before they become larger issues (e.g., security posture, configuration, performance).
+# Working with Advisor checks
+Percona Advisors provide automated insights and recommendations within Percona Monitoring and Management. These proactive insights help you uncover problems before they become larger issues: security risks, misconfigurations, poor performance, etc.
 
 Advisors offer a set of automated checks to investigate a broad range of possible issues. Previously, Advisors focused only on Security, Configuration, and Performance issues. 
 
@@ -14,7 +14,7 @@ As soon as you connect your PMM instance to Percona Platform, has access to addi
 
 If you are a Percona customer with a Percona Customer Portal account, you also get access to Paid Advisor checks, which offer more advanced database health information.
 
-To see the complete list of available checks, see the [Advisor Checks for PMM](https://docs.percona.com/percona-platform/checks.html) topic in the Percona Platform documentation.
+To see the complete list of available checks, see the [Advisor Checks for PMM](https://docs.percona.com/percona-platform/advisors.html) topic in the Percona Platform documentation.
 
 ## Enable/Disable
 To download the checks available for your Percona Account, the Advisors and Telemetry options have to be enabled under <i class="uil uil-cog"></i> **Configuration <i class="uil uil-setting"></i> > Settings > Advanced Settings**.
