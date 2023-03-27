@@ -17,6 +17,7 @@ To use PostgreSQL as an external database instance, use the following environmen
 | `POSTGRES_DBNAME`     | [postgres-name](https://www.postgresql.org/docs/14/libpq-connect.html#LIBPQ-CONNECT-DBNAME)               | Database name for external or internal PostgreSQL database.
 | `POSTGRES_USERNAME`       | [postgres-username](https://www.postgresql.org/docs/14/libpq-connect.html#LIBPQ-CONNECT-USER)              | PostgreSQL user name to connect as.
 | `POSTGRES_DBPASSWORD`       | [postgres-password](https://www.postgresql.org/docs/14/libpq-connect.html#LIBPQ-CONNECT-PASSWORD)           | Password to be used for database authentication.
+| `PMM_DISABLE_BUILTIN_POSTGRES`       |           | Environment variable to disable built-in PMM-Server database.
 | `POSTGRES_SSL_MODE`      | [postgres-ssl-mode](https://www.postgresql.org/docs/14/libpq-connect.html#LIBPQ-CONNECT-SSLMODE)    | This option determines whether or with what priority a secure SSL TCP/IP connection will be negotiated with the database. Currently supported: `disable`, `require`, `verify-ca`, `verify-full`.
 | `POSTGRES_SSL_CA_PATH`    | [postgres-ssl-ca-path](https://www.postgresql.org/docs/14/libpq-connect.html#LIBPQ-CONNECT-SSLROOTCERT)      | This parameter specifies the name of a file containing SSL certificate authority (CA) certificate(s).
 | `POSTGRES_SSL_KEY_PATH`    | [postgres-ssl-key-path](https://www.postgresql.org/docs/14/libpq-connect.html#LIBPQ-CONNECT-SSLKEY)      | This parameter specifies the location for the secret key used for the client certificate.
@@ -61,5 +62,6 @@ docker run
 -e POSTGRES_SSL_CA_PATH=$CA_PATH
 -e POSTGRES_SSL_KEY_PATH=$KEY_PATH
 -e POSTGRES_SSL_CERT_PATH=$CERT_PATH 
+-e PMM_DISABLE_BUILTIN_POSTGRES=true 
 percona/pmm-server:2
 ```
