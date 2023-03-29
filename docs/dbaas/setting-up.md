@@ -8,15 +8,16 @@ For a Kubernetes cluster that doesn't expire you can use our "easy script", you 
 In the sections that follow we'll try to outline the steps to create your own Kubernetes cluster in a few popular ways.
 
 
-#### Red Hat, CentOS
 
-```sh
-yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
-yum -y install docker-ce
-usermod -a -G docker centos
-systemctl enable docker
-systemctl start docker
-```
+=== "Red Hat, CentOS"
+
+    ```sh
+    yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+    yum -y install docker-ce
+    usermod -a -G docker centos
+    systemctl enable docker
+    systemctl start docker
+    ```
 
 #### Debian, Ubuntu
 
