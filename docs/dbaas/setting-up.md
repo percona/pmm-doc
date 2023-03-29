@@ -9,7 +9,6 @@ In the sections that follow we'll try to outline the steps to create your own Ku
 
 
 === "Red Hat, CentOS"
-
     ```sh
     yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
     yum -y install docker-ce
@@ -19,7 +18,6 @@ In the sections that follow we'll try to outline the steps to create your own Ku
     ```
 
 === "Debian, Ubuntu"
-
     ```sh
     apt-add-repository https://download.docker.com/linux/centos/docker-ce.repo
     systemctl enable docker
@@ -31,7 +29,6 @@ In the sections that follow we'll try to outline the steps to create your own Ku
   Follow minikube's [documentation to install](https://minikube.sigs.k8s.io/docs/start/) it.
 
 === "Red Hat, CentOS"
-
     ```sh
     yum -y install curl
     curl -Lo /usr/local/sbin/minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
