@@ -10,40 +10,38 @@ In the sections that follow we'll try to outline the steps to create your own Ku
 
 === "Red Hat, CentOS"
 
-    ```sh
-    yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
-    yum -y install docker-ce
-    usermod -a -G docker centos
-    systemctl enable docker
-    systemctl start docker
-
-    ```
+      ```sh
+      yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+      yum -y install docker-ce
+      usermod -a -G docker centos
+      systemctl enable docker
+      systemctl start docker
+      ```
 === "Debian, Ubuntu"
 
-    ```sh
-    apt-add-repository https://download.docker.com/linux/centos/docker-ce.repo
-    systemctl enable docker
-    systemctl start docker
-    ```
+      ```sh
+      apt-add-repository https://download.docker.com/linux/centos/docker-ce.repo
+      systemctl enable docker
+      systemctl start docker
+      ```
 
 === "minikube"
 
-  Follow minikube's [documentation to install](https://minikube.sigs.k8s.io/docs/start/) it.
+     Follow minikube's [documentation to install](https://minikube.sigs.k8s.io/docs/start/) it.
 
 === "minikube"
 
-    Follow minikube's [documentation to install](https://minikube.sigs.k8s.io/docs/start/) it.
+     Follow minikube's [documentation to install](https://minikube.sigs.k8s.io/docs/start/) it.
 
-      **Red Hat, CentOS**
+     **Red Hat, CentOS**
 
-    ```sh
+      ```sh
       yum -y install curl
       curl -Lo /usr/local/sbin/minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
       chmod +x /usr/local/sbin/minikube
       ln -s /usr/local/sbin/minikube /usr/sbin/minikube
       alias kubectl='minikube kubectl --'
-    ```
-
+      ```
 
 ## Start PMM server and activate DBaaS feature
 
