@@ -42,7 +42,8 @@ In the sections that follow we'll try to outline the steps to create your own Ku
       chmod +x /usr/local/sbin/minikube
       ln -s /usr/local/sbin/minikube /usr/sbin/minikube
       alias kubectl='minikube kubectl --'
-      ```
+    ```
+
 
 ## Start PMM server and activate DBaaS feature
 
