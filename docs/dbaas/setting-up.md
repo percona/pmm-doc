@@ -8,7 +8,6 @@ For a Kubernetes cluster that doesn't expire you can use our "easy script", you 
 In the sections that follow we'll try to outline the steps to create your own Kubernetes cluster in a few popular ways.
 
 
-
 === "Red Hat, CentOS"
 
     ```sh
