@@ -15,9 +15,9 @@ To use Database-as-a-Service (DBaaS) in PMM following are the prerequisites:
   
   It will help you to choose the right types of instances based on the number of vCPU and the amount of memory and create clusters. It can even deploy the clusters and Kubernetes operators for MySQL, PXC, and MongoDB.
 
-## Create your own Kubernetes Cluster
+## Install Docker
 
-In the following sections you can see the steps to create your own Kubernetes cluster in a few popular ways.
+Following are the ways to install Docker on the various platforms:
 
 
 === "Red Hat, CentOS"
