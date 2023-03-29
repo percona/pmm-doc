@@ -41,7 +41,7 @@ In the sections that follow we'll try to outline the steps to create your own Ku
     alias kubectl='minikube kubectl --'
     ```
 
-## Start PMM server and activate a DBaaS feature
+## Start PMM server and activate DBaaS feature
 
 !!! note alert alert-primary ""
     - To start a fully-working 3 node XtraDB cluster, consisting of sets of 3x HAProxy, 3x PXC and 6x PMM Client containers, you will need at least 9 vCPU available for minikube. (1x vCPU for HAProxy and PXC and 0.5vCPU for each pmm-client containers).
