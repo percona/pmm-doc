@@ -29,10 +29,6 @@ In the sections that follow we'll try to outline the steps to create your own Ku
 
      Follow minikube's [documentation to install](https://minikube.sigs.k8s.io/docs/start/) it.
 
-=== "minikube"
-
-     Follow minikube's [documentation to install](https://minikube.sigs.k8s.io/docs/start/) it.
-
      **Red Hat, CentOS**
 
       ```sh
