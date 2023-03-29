@@ -1,11 +1,23 @@
 # Setting up DBaaS
 
-To use the Database as a Service (DBaaS) solution in PMM there are a few things that need to be setup first including a suitable Kubernetes Cluster.  If you've already got a kubernetes cluster you can jump ahead and [enable DBaaS in PMM](../dbaas/get-started.html).
+## Prerequisites
 
-If you don't have a Kubernetes cluster available you can use the [free K8s provided by Percona](https://www.percona.com/blog/private-dbaas-with-free-kubernetes-cluster/) for evaluation which will allow you to play around with DBaaS for 3 hours before the cluster expires.
-For a Kubernetes cluster that doesn't expire you can use our "easy script", you can find the instructions [here](https://www.percona.com/blog/dbaas-kubernetes-in-under-20-min/).
+To use Database-as-a-Service (DBaaS) in PMM following are the prerequisites:
 
-In the sections that follow we'll try to outline the steps to create your own Kubernetes cluster in a few popular ways.
+- Set up a suitable Kubernetes Cluster.  
+
+  !!! note alert alert-primary ""
+      If you already have got a kubernetes cluster you can just [enable DBaaS in PMM](../dbaas/get-started.html).
+
+- If you don't already have a Kubernetes cluster, Percona offers [free K8s](https://www.percona.com/blog/private-dbaas-with-free-kubernetes-cluster/) as an evaluation product, allowing you to test DBaaS for 3 hours before it expires.
+
+- If you are interested in a PMM DBaaS but want to avoid dealing with Kubernetes, Percona DbaaS Infrastructure Creator might be your solution. It creates the infrastructure in an AWS account.
+  
+  It will help you to choose the right types of instances based on the number of vCPU and the amount of memory and create clusters. It can even deploy the clusters and Kubernetes operators for MySQL, PXC, and MongoDB.
+
+## Create your own Kubernetes Cluster
+
+In the following sections you can see the steps to create your own Kubernetes cluster in a few popular ways.
 
 
 === "Red Hat, CentOS"
