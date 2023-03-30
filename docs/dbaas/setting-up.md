@@ -91,9 +91,9 @@ You can create a Kubernetes cluster as follows:
 
       1. Configure and start minikube:
 
-        ```sh
-        minikube start --cpus=16 --memory=32G
-        ```
+          ```sh
+          minikube start --cpus=16 --memory=32G
+          ```
 
       2. Obtain a `Kubeconfig` for your minikube cluster and register it in PMM to make it functional.
 
