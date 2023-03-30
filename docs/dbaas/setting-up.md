@@ -85,29 +85,35 @@ The following are the steps to start PMM and activate DBaaS:
 
 The DBaaS feature uses Kubernetes clusters to deploy database clusters. To set up PMM successfully, you must first create a Kubernetes cluster and then add it using `Kubeconfig`.
 
-### Minikube
+You can create a Kubernetes cluster as follows:
 
-1. Configure and start minikube:
+=== "**Minikube**"
 
-    ```sh
-    minikube start --cpus=16 --memory=32G
-    ```
+      1. Configure and start minikube:
 
-2. Obtain a `Kubeconfig` for your minikube cluster and register it in PMM to make it functional.
+        ```sh
+        minikube start --cpus=16 --memory=32G
+        ```
 
-    ```sh
-    minikube kubectl -- config view --flatten --minify
-    ```
-Take this output and copy it to your clipboard. Then, proceed to [add a Kubernetes cluster to PMM](../dbaas/get-started.md#add-a-kubernetes-cluster).
+      2. Obtain a `Kubeconfig` for your minikube cluster and register it in PMM to make it functional.
 
-### Amazon AWS EKS
+          ```sh
+          minikube kubectl -- config view --flatten --minify
+          ```
+      Take this output and copy it to your clipboard. Then, proceed to [add a Kubernetes cluster to PMM](../dbaas/get-started.md#add-a-kubernetes-cluster).
 
-1. Create your cluster via [`eksctl`](https://github.com/weaveworks/eksctl#installation) or the Amazon AWS interface. For example:
 
-    ```sh
-    eksctl create cluster --write-kubeconfig --name=your-cluster-name --zones=us-west-2a,us-west-2b --kubeconfig <PATH_TO_KUBECONFIG>
-    ```
-2. Copy the resulting kubeconfig and follow these instructions to [register a Kubernetes cluster to PMM](../dbaas/get-started.md#add-a-kubernetes-cluster).
+
+=== "**Amazon AWS EKS**"
+
+    1. Create your cluster via [`eksctl`](https://github.com/weaveworks/eksctl#installation) or the Amazon AWS interface. 
+
+    **Example**
+
+        ```sh
+        eksctl create cluster --write-kubeconfig --name=your-cluster-name --zones=us-west-2a,us-west-2b --kubeconfig <PATH_TO_KUBECONFIG>
+        ```
+    2. Copy the resulting kubeconfig and follow these instructions to [register a Kubernetes cluster to PMM](../dbaas/get-started.md#add-a-kubernetes-cluster).
 
 ### Google GKE
 
