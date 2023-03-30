@@ -51,14 +51,19 @@ Following are the ways to install Docker on the various platforms:
       alias kubectl='minikube kubectl --'
       ```
 
-## Start PMM server and activate DBaaS feature
+## Start PMM server and activate DBaaS
 
-!!! note alert alert-primary ""
-    - To start a fully-working 3 node XtraDB cluster, consisting of sets of 3x HAProxy, 3x PXC and 6x PMM Client containers, you will need at least 9 vCPU available for minikube. (1x vCPU for HAProxy and PXC and 0.5vCPU for each pmm-client containers).
+These are some key points worth noting:
+
+!!! note alert alert-primary "Important"
+    - Minikube requires 9 vCPUs for a fully-functional 3-node XtraDB cluster composed of 3x HAProxy, 3x PXC, and 6x PMM Client containers (1 vCPU each for HAProxy and PXC, and 0.5 vCPU for PMM-client containers).    
     - DBaaS does not depend on PMM Client.
-    - You can pass the environment variable `--env ENABLE_DBAAS=1` to force the DBaaS feature when starting up pmm-server container. **You can omit the variable and enable the feature later using PMM UI**, please follow the link in step 3. below.
-    - Add the option `--network minikube` if you run PMM Server and minikube in the same Docker instance. (This will share a single network and the kubeconfig will work.)
-    - Add the options `--env PMM_DEBUG=1` and/or `--env PMM_TRACE=1` if you need extended debug details
+    - You can pass the environment variable `--env ENABLE_DBAAS=1` to force the DBaaS feature when starting the pmm-server container. If you omit the variable, you can enable the feature later using PMM UI. Follow the link in step 3.    
+    -  Add the parameter `--network minikube` if you are running PMM Server and minikube in the same Docker instance, which will share a network.
+    -  Add the parameters `-env PMM_DEBUG=1`, `-env PMM_TRACE=`1 if you require extended debugging information.
+
+
+The following are the steps to start PMM and activate DBaaS:
 
 1. Start PMM server:
 
