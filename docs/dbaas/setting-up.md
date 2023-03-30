@@ -83,7 +83,7 @@ The following are the steps to start PMM and activate DBaaS:
 
 ## Create a Kubernetes cluster
 
-The DBaaS feature uses Kubernetes clusters to deploy database clusters. To set up PMM successfully, you must first create a Kubernetes cluster and then add it using `kubeconfig`.
+The DBaaS feature uses Kubernetes clusters to deploy database clusters. To set up PMM successfully, you must first create a Kubernetes cluster and then add it using `Kubeconfig`.
 
 ### Minikube
 
@@ -93,14 +93,12 @@ The DBaaS feature uses Kubernetes clusters to deploy database clusters. To set u
     minikube start --cpus=16 --memory=32G
     ```
 
-2. Get your kubeconfig details from `minikube`. (You need these to register your Kubernetes cluster with PMM Server):
+2. Obtain a `Kubeconfig` for your minikube cluster and register it in PMM to make it functional.
 
     ```sh
     minikube kubectl -- config view --flatten --minify
     ```
-
-    !!! note alert alert-primary ""
-        You will need to copy this output to your clipboard and continue with [adding a Kubernetes cluster to PMM](../dbaas/get-started.md#add-a-kubernetes-cluster).
+Take this output and copy it to your clipboard. Then, proceed to [add a Kubernetes cluster to PMM](../dbaas/get-started.md#add-a-kubernetes-cluster).
 
 ### Amazon AWS EKS
 
