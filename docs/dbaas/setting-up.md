@@ -108,11 +108,11 @@ You can create a Kubernetes cluster as follows:
 
     1. Create your cluster via [`eksctl`](https://github.com/weaveworks/eksctl#installation) or the Amazon AWS interface. 
 
-    **Example**
+      **Example**
 
-        ```sh
-        eksctl create cluster --write-kubeconfig --name=your-cluster-name --zones=us-west-2a,us-west-2b --kubeconfig <PATH_TO_KUBECONFIG>
-        ```
+          ```sh
+          eksctl create cluster --write-kubeconfig --name=your-cluster-name --zones=us-west-2a,us-west-2b --kubeconfig <PATH_TO_KUBECONFIG>
+          ```
     2. Copy the resulting kubeconfig and follow these instructions to [register a Kubernetes cluster to PMM](../dbaas/get-started.md#add-a-kubernetes-cluster).
 
 ### Google GKE
