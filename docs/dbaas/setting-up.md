@@ -1,53 +1,69 @@
 # Setting up DBaaS
 
-To use the Database as a Service (DBaaS) solution in PMM there are a few things that need to be setup first including a suitable Kubernetes Cluster.  If you've already got a kubernetes cluster you can jump ahead and [enable DBaaS in PMM](../dbaas/get-started.html).
+## Prerequisites
 
-If you don't have a Kubernetes cluster available you can use the [free K8s provided by Percona](https://www.percona.com/blog/private-dbaas-with-free-kubernetes-cluster/) for evaluation which will allow you to play around with DBaaS for 3 hours before the cluster expires.
-For a Kubernetes cluster that doesn't expire you can use our "easy script", you can find the instructions [here](https://www.percona.com/blog/dbaas-kubernetes-in-under-20-min/).
+To use Database-as-a-Service (DBaaS) in PMM following are the prerequisites:
 
-In the sections that follow we'll try to outline the steps to create your own Kubernetes cluster in a few popular ways.
+- Set up a suitable Kubernetes Cluster.  
+
+  !!! note alert alert-primary ""
+      If you already have got a kubernetes cluster you can just [enable DBaaS in PMM](../dbaas/get-started.html).
+
+- If you don't already have a Kubernetes cluster, Percona offers [free K8s](https://www.percona.com/blog/private-dbaas-with-free-kubernetes-cluster/) as an evaluation product, allowing you to test DBaaS for 3 hours before it expires.
+
+- If you are interested in a PMM DBaaS but want to avoid dealing with Kubernetes, Percona DbaaS Infrastructure Creator might be your solution. It creates the infrastructure in an AWS account.
+  
+  It will help you to choose the right types of instances based on the number of vCPU and the amount of memory and create clusters. It can even deploy the clusters and Kubernetes operators for MySQL, PXC, and MongoDB.
+
+## Install Docker
+
+Following are the ways to install Docker on the various platforms:
 
 
-#### Red Hat, CentOS
+=== "Red Hat, CentOS"
 
-```sh
-yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
-yum -y install docker-ce
-usermod -a -G docker centos
-systemctl enable docker
-systemctl start docker
-```
+      ```sh
+      yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+      yum -y install docker-ce
+      usermod -a -G docker centos
+      systemctl enable docker
+      systemctl start docker
+      ```
+=== "Debian, Ubuntu"
 
-#### Debian, Ubuntu
+      ```sh
+      apt-add-repository https://download.docker.com/linux/centos/docker-ce.repo
+      systemctl enable docker
+      systemctl start docker
+      ```
 
-```sh
-apt-add-repository https://download.docker.com/linux/centos/docker-ce.repo
-systemctl enable docker
-systemctl start docker
-```
+=== "minikube"
 
-### minikube
+     Follow minikube's [documentation to install](https://minikube.sigs.k8s.io/docs/start/) it.
 
-Please follow minikube's [documentation to install](https://minikube.sigs.k8s.io/docs/start/) it.
+     **Red Hat, CentOS**
 
-#### Red Hat, CentOS
+      ```sh
+      yum -y install curl
+      curl -Lo /usr/local/sbin/minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+      chmod +x /usr/local/sbin/minikube
+      ln -s /usr/local/sbin/minikube /usr/sbin/minikube
+      alias kubectl='minikube kubectl --'
+      ```
 
-```sh
-yum -y install curl
-curl -Lo /usr/local/sbin/minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
-chmod +x /usr/local/sbin/minikube
-ln -s /usr/local/sbin/minikube /usr/sbin/minikube
-alias kubectl='minikube kubectl --'
-```
+## Start PMM server and activate DBaaS
 
-## Start PMM server and activate a DBaaS feature
+These are some of the key points worth noting:
 
-!!! note alert alert-primary ""
-    - To start a fully-working 3 node XtraDB cluster, consisting of sets of 3x HAProxy, 3x PXC and 6x PMM Client containers, you will need at least 9 vCPU available for minikube. (1x vCPU for HAProxy and PXC and 0.5vCPU for each pmm-client containers).
+!!! note alert alert-primary "Important"
+    - Minikube requires 9 vCPUs for a fully-functional 3-node XtraDB cluster composed of 3x HAProxy, 3x PXC, and 6x PMM Client containers (1 vCPU each for HAProxy and PXC, and 0.5 vCPU for PMM-client containers).    
     - DBaaS does not depend on PMM Client.
-    - You can pass the environment variable `--env ENABLE_DBAAS=1` to force the DBaaS feature when starting up pmm-server container. **You can omit the variable and enable the feature later using PMM UI**, please follow the link in step 3. below.
-    - Add the option `--network minikube` if you run PMM Server and minikube in the same Docker instance. (This will share a single network and the kubeconfig will work.)
-    - Add the options `--env PMM_DEBUG=1` and/or `--env PMM_TRACE=1` if you need extended debug details
+    - You can pass the environment variable `--env ENABLE_DBAAS=1` to force the DBaaS feature when starting the pmm-server container. If you omit the variable, you can enable the feature later using PMM UI. Follow the link in step 3.    
+    -  Add the parameter `--network minikube` if you are running PMM Server and minikube in the same Docker instance, which will share a network.
+    -  Add the parameters `-env PMM_DEBUG=1`, `-env PMM_TRACE=`1 if you require extended debugging information.
+
+
+The following are the steps to start PMM and activate DBaaS:
 
 1. Start PMM server:
 
@@ -55,47 +71,49 @@ alias kubectl='minikube kubectl --'
     docker run --detach --publish 80:80 --publish 443:443 --name pmm-server percona/pmm-server:2
     ```
 
-2. Change the default administrator credentials from CLI:
+2. Change the default administrator credentials from CLI (optional):
 
-    (This step is optional, because the same can be done from the web interface of PMM on first login.)
+    You can be change the default credentails from the PMM UI on first login.
 
     ```sh
     docker exec -t pmm-server bash -c 'ln -s /srv/grafana /usr/share/grafana/data; chown -R grafana:grafana /usr/share/grafana/data; grafana-cli --homepath /usr/share/grafana admin reset-admin-password <RANDOM_PASS_GOES_IN_HERE>'
     ```
 
-!!! caution alert alert-warning "Important"
-    You must [activate DBaaS](../dbaas/get-started.md#activate-dbaas) using the PMM UI if you omitted `--env ENABLE_DBAAS=1` when starting up the container.
+3. [Activate DBaaS](../dbaas/get-started.md#activate-dbaas) using the PMM UI if you omitted the parameter `--env ENABLE_DBAAS=1` when starting up the container.
 
 ## Create a Kubernetes cluster
 
-!!! note alert alert-primary ""
-    The DBaaS feature uses Kubernetes clusters to deploy database clusters. You must first create a Kubernetes cluster and then add it to PMM using `kubeconfig` to get a successful setup.
+The DBaaS feature uses Kubernetes clusters to deploy database clusters. To set up PMM successfully, you must first create a Kubernetes cluster and then add it using `Kubeconfig`.
 
-### Minikube
+You can create a Kubernetes cluster as follows:
 
-1. Configure and start minikube:
+=== "**Minikube**"
 
-    ```sh
-    minikube start --cpus=16 --memory=32G
-    ```
+      1. Configure and start minikube:
 
-2. Get your kubeconfig details from `minikube`. (You need these to register your Kubernetes cluster with PMM Server):
+          ```sh
+          minikube start --cpus=16 --memory=32G
+          ```
 
-    ```sh
-    minikube kubectl -- config view --flatten --minify
-    ```
+      2. Obtain a `Kubeconfig` for your minikube cluster and register it in PMM to make it functional.
 
-    !!! note alert alert-primary ""
-        You will need to copy this output to your clipboard and continue with [adding a Kubernetes cluster to PMM](../dbaas/get-started.md#add-a-kubernetes-cluster).
+          ```sh
+          minikube kubectl -- config view --flatten --minify
+          ```
+      Take this output and copy it to your clipboard. Then, proceed to [add a Kubernetes cluster to PMM](../dbaas/get-started.md#add-a-kubernetes-cluster).
 
-### Amazon AWS EKS
 
-1. Create your cluster via [`eksctl`](https://github.com/weaveworks/eksctl#installation) or the Amazon AWS interface. For example:
 
-    ```sh
-    eksctl create cluster --write-kubeconfig --name=your-cluster-name --zones=us-west-2a,us-west-2b --kubeconfig <PATH_TO_KUBECONFIG>
-    ```
-2. Copy the resulting kubeconfig and follow these instructions to [register a Kubernetes cluster to PMM](../dbaas/get-started.md#add-a-kubernetes-cluster).
+=== "**Amazon AWS EKS**"
+
+    1. Create your cluster via [`eksctl`](https://github.com/weaveworks/eksctl#installation) or the Amazon AWS interface. 
+
+      **Example**
+
+          ```sh
+          eksctl create cluster --write-kubeconfig --name=your-cluster-name --zones=us-west-2a,us-west-2b --kubeconfig <PATH_TO_KUBECONFIG>
+          ```
+    2. Copy the resulting kubeconfig and follow these instructions to [register a Kubernetes cluster to PMM](../dbaas/get-started.md#add-a-kubernetes-cluster).
 
 ### Google GKE
 
