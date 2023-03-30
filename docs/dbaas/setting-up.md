@@ -53,7 +53,7 @@ Following are the ways to install Docker on the various platforms:
 
 ## Start PMM server and activate DBaaS
 
-These are some key points worth noting:
+These are some of the key points worth noting:
 
 !!! note alert alert-primary "Important"
     - Minikube requires 9 vCPUs for a fully-functional 3-node XtraDB cluster composed of 3x HAProxy, 3x PXC, and 6x PMM Client containers (1 vCPU each for HAProxy and PXC, and 0.5 vCPU for PMM-client containers).    
@@ -71,21 +71,19 @@ The following are the steps to start PMM and activate DBaaS:
     docker run --detach --publish 80:80 --publish 443:443 --name pmm-server percona/pmm-server:2
     ```
 
-2. Change the default administrator credentials from CLI:
+2. Change the default administrator credentials from CLI (optional):
 
-    (This step is optional, because the same can be done from the web interface of PMM on first login.)
+    You can be change the default credentails from the PMM UI on first login.
 
     ```sh
     docker exec -t pmm-server bash -c 'ln -s /srv/grafana /usr/share/grafana/data; chown -R grafana:grafana /usr/share/grafana/data; grafana-cli --homepath /usr/share/grafana admin reset-admin-password <RANDOM_PASS_GOES_IN_HERE>'
     ```
 
-!!! caution alert alert-warning "Important"
-    You must [activate DBaaS](../dbaas/get-started.md#activate-dbaas) using the PMM UI if you omitted `--env ENABLE_DBAAS=1` when starting up the container.
+3. [Activate DBaaS](../dbaas/get-started.md#activate-dbaas) using the PMM UI if you omitted the parameter `--env ENABLE_DBAAS=1` when starting up the container.
 
 ## Create a Kubernetes cluster
 
-!!! note alert alert-primary ""
-    The DBaaS feature uses Kubernetes clusters to deploy database clusters. You must first create a Kubernetes cluster and then add it to PMM using `kubeconfig` to get a successful setup.
+The DBaaS feature uses Kubernetes clusters to deploy database clusters. To set up PMM successfully, you must first create a Kubernetes cluster and then add it using `kubeconfig`.
 
 ### Minikube
 
