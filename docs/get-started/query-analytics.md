@@ -229,7 +229,7 @@ PMM 2.36 now supports [pg_stat_monitor](https://docs.percona.com/pg-stat-monitor
     ```
     CREATE USER pmm WITH SUPERUSER ENCRYPTED PASSWORD 'USERNAME';
     ```
-    where USERNAME should be replaced by your user.
+    where `USERNAME` should be replaced by the user.
 
 ## Query Analytics for MongoDB
 
