@@ -15,12 +15,94 @@ Examples
 
 DBaaS operators create PXC DB clusters with the following default configuration:
 
-```
+```sh
 [mysqld]
 wsrep_provider_options="gcache.size=600M"
 ```
 !!! note alert alert-primary "Note"   
     PXC DB configuration can be customized based on your needs. This can be accomplished by creating a template and changing that field.
+
+
+# Create PXCTemplatePXCConfiguration Template CRD
+
+1. Identify the fields of interest by reading the [PXC operator documentation](https://docs.percona.com/percona-operator-for-mysql/pxc/update.html#manual-upgrade_1) and PXC CRD. In this case, you have to change `spec.updateStrategy` and `spec.upgradeOptions` fields. Thus, create a template CRD `pxctpl-crd-upgrade-options.yaml` with just those small subset of fields.
+
+        ```sh
+        apiVersion: apiextensions.k8s.io/v1
+        kind: CustomResourceDefinition
+        metadata:
+        creationTimestamp: null
+        name: pxctemplateupgradeoptions.dbaas.percona.com
+        labels:
+            dbaas.percona.com/template: "yes"
+            dbaas.percona.com/engine: "pxc"
+        spec:
+        group: dbaas.percona.com
+        names:
+            kind: PXCTemplateUpgradeOptions
+            listKind: PXCTemplateUpgradeOptionsList
+            plural: pxctemplateupgradeoptions
+            singular: pxctemplateupgradeoptions
+        scope: Namespaced
+        versions:
+        - name: v1
+            schema:
+            openAPIV3Schema:
+                properties:
+                apiVersion:
+                    type: string
+                kind:
+                    type: string
+                metadata:
+                    type: object
+                spec:
+                    properties:
+                    updateStrategy:
+                        type: string
+                    upgradeOptions:
+                        properties:
+                        apply:
+                            type: string
+                        schedule:
+                            type: string
+                        versionServiceEndpoint:
+                            type: string
+                        type: object
+                    type: object
+                status:
+                    type: object
+                type: object
+            served: true
+            storage: true
+        ```
+
+2. Run the following command:
+
+```sh
+kubectl apply -f pxctpl-crd-upgrade-options.yaml
+```
+
+## Add read permissions for dbaas-operator
+
+In order for the dbaas-operator to apply the template it needs access to the template CRs:
+
+```sh
+DBAAS_OPERATOR_MANAGER_ROLE=$(kubectl get clusterroles | grep dbaas-operator | grep -v metrics | grep -v proxy | cut -f 1 -d ' '); kubectl get clusterroles/"$DBAAS_OPERATOR_MANAGER_ROLE" -o yaml > dbaas-operator-manager-role.yaml
+cat <<EOF >>dbaas-operator-manager-role.yaml
+- apiGroups:
+  - dbaas.percona.com
+  resources:
+  - pxctemplateupgradeoptions
+  verbs:
+  - get
+  - list
+EOF
+
+Run the following command:
+
+```sh
+kubectl apply -f dbaas-operator-manager-role.yaml
+```
 
 # Create a database cluster from a template
 
@@ -145,7 +227,6 @@ $ kubectl apply -f dbaas-operator-manager-role.yaml
 
     pxctemplateupgradeoptions.dbaas.percona.com/disable-automatic-upgrades created
     ```
-
 
 ## Create a DB cluster from template
 
