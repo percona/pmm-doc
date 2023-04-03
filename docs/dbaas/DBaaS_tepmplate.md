@@ -11,6 +11,16 @@ Examples
 - **Environment**: Combination of database cluster and infrastructure that will affect the database cluster configuration.
 
 
+# Customize PXC DB configuration
+
+By default, when creating a PXC DB cluster, the DBaaS operator sets PXC DB configuration to the following:
+
+```
+[mysqld]
+wsrep_provider_options="gcache.size=600M"
+```
+
+
 
 # Create a database cluster from a template
 
