@@ -2,13 +2,13 @@
 
 DatabaseCluster Template allows operators to customize Database Clusters based on their requirements, environments, or infrastructure.
 
-**Examples**:
+Examples
 
-- Database cluster - Different load patterns: simple reads, heavy writes, 50/50% read/write, number of connections, etc.
+- **Data clusters**: Different load patterns, such as simple reads, heavy writes, 50%/50% read/write, and the number of connections.
 
-- Infrastructure - Different parameters and tuning for the resulting cluster: network configuration (load balancing, exposure), storage classes/types, etc.
+- **Infrastructure** - Different parameters and tuning for the resulting cluster: such as network configuration (load balancing, exposure), storage classes/types, etc.
 
-- Environments - Combine database cluster and infratructure that will affect the configuration of the resulting Database Cluster.
+- **Environment**: Combination of database cluster and infrastructure that will affect the database cluster configuration.
 
 
 
