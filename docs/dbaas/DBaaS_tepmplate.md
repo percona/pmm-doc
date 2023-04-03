@@ -19,8 +19,8 @@ DBaaS operators create PXC DB clusters with the following default configuration:
 [mysqld]
 wsrep_provider_options="gcache.size=600M"
 ```
-
-
+!!! note alert alert-primary "Note"   
+    PXC DB configuration can be customized based on your needs. This can be accomplished by creating a template and changing that field.
 
 # Create a database cluster from a template
 
