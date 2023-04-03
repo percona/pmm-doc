@@ -13,7 +13,7 @@ Examples
 
 # Customize PXC DB configuration
 
-By default, when creating a PXC DB cluster, the DBaaS operator sets PXC DB configuration to the following:
+DBaaS operators create PXC DB clusters with the following default configuration:
 
 ```
 [mysqld]
