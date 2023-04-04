@@ -117,6 +117,9 @@ You can create a Kubernetes cluster as follows:
 
 ### Google GKE
 
+You can also create Kubernetes cluster with google GKE as follows:
+
+
 1. Create your cluster either with [Google Cloud Console](https://console.cloud.google.com/) or [`gcloud` command line tool](https://cloud.google.com/sdk/gcloud):
 
     The command below assumes that your `gcloud` command line tool is properly configured and your user authenticated and authorized to manage GKE Clusters. This example creates a minimal zonal cluster using preemptive node machines, ideal for testing the DBaaS functionality.
@@ -185,7 +188,7 @@ You can create a Kubernetes cluster as follows:
     EOF
     ```
 
-3. Extract variables required to generate a kubeconfig:
+3. Extract variables required to generate a Kubeconfig:
 
     ```sh
     name=`kubectl get serviceAccounts percona-dbaas-cluster-operator -o json | jq  -r '.secrets[].name'`
@@ -217,13 +220,11 @@ You can create a Kubernetes cluster as follows:
     current-context: svcs-acct-context
     "
     ```
-
 5. Follow the instructions on [How to add a Kubernetes cluster](../dbaas/get-started.md#add-a-kubernetes-cluster) with kubeconfig from the previous step.
 
 ## Deleting clusters
 
-!!! note alert alert-primary ""
-    If a Public Address is set in PMM Settings, for each DB cluster an API Key is created which can be found on the page `/graph/org/apikeys`. You should not delete them (for now, until [issue PMM-8045](https://jira.percona.com/browse/PMM-8045) is fixed) -- once a DB cluster is removed from DBaaS, the related API Key is also removed.
+If a Public Address is set in PMM Settings, for each DB cluster an API Key is created which can be found on the page `/graph/org/apikeys`. You should not delete them (for now, until [issue PMM-8045](https://jira.percona.com/browse/PMM-8045) is fixed) -- once a DB cluster is removed from DBaaS, the related API Key is also removed.
 
 For example, if you only run `eksctl delete cluster` to delete an Amazon EKS cluster without cleaning up the cluster first, there will be a lot of orphaned resources such as Cloud Formations, Load Balancers, EC2 instances, Network interfaces, etc. The same applies for Google GKE clusters.
 
