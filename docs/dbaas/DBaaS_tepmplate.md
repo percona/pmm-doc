@@ -104,36 +104,6 @@ Run the following command:
 kubectl apply -f dbaas-operator-manager-role.yaml
 ```
 
-## Apply PXCTemplatePXCConfiguration template to DB clusters
-
-To apply the template to an existing DB, you should update the DB cluster CR to include the following annotations:
-
-```sh
-apiVersion: dbaas.percona.com/v1
-kind: DatabaseCluster
-metadata:
-  name: test-pxc-cluster
-  annotations:
-    dbaas.percona.com/dbtemplate-kind: PXCTemplatePXCConfiguration
-    dbaas.percona.com/dbtemplate-name: pxc-config-max-connections-789
-...
-```
-
-Run the following commands:
-
-```sh
-$ kubectl apply -f databasecluster.yaml
-```
-
-```sh
-$ kubectl describe pxc/test-pxc-cluster | grep -A2 'Configuration'
-```
-
-
-
-
-
-
 # Create a database cluster from a template
 
 Database clusters can be created from templates using PMM. Templates allow you to customize the creation of database clusters. You can adapt templates to tweak K8s-specific settings such as **liveness probes**, changing **config maps**, or tuning **database engines**. 
