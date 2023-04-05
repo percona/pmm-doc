@@ -33,7 +33,7 @@ To create a template, do the following:
 
 1. Identify the fields of interest by reading the [PXC operator documentation](https://docs.percona.com/percona-operator-for-mysql/pxc/update.html#manual-upgrade_1) and PXC CRD. In this case, you have to change `spec.updateStrategy` and `spec.upgradeOptions` fields. 
 
-2. Create a template CRD `pxctpl-crd-upgrade-options.yaml` with just those small subset of fields.
+2. Create a template CRD `pxctpl-crd-pxc-configuration.yaml` with just those small subset of fields.
 
         ```sh
         apiVersion: apiextensions.k8s.io/v1
@@ -84,7 +84,7 @@ To create a template, do the following:
             storage: true
         ```
 
-2. Run the following command:
+2. Run the following command.
 
 ```sh
 kubectl apply -f pxctpl-crd-upgrade-options.yaml
@@ -93,7 +93,7 @@ kubectl apply -f pxctpl-crd-upgrade-options.yaml
 
 For more information, see [DatabaseCluster templates](https://github.com/percona/dbaas-operator/blob/main/docs/templates.md#creating-the-template-crd).
 
-## Add read permissions for dbaas-operator
+### Add read permissions for dbaas-operator
 
 In order for the dbaas-operator to apply the template it needs access to the template CRs:
 
@@ -113,6 +113,31 @@ Run the following command:
 
 ```sh
 kubectl apply -f dbaas-operator-manager-role.yaml
+```
+
+### Create PXCTemplatePXCConfiguration Template CR
+
+
+1. Create a corresponding CR `pxctpl-pxc-config-max-connection-789.yaml` with the required values.
+
+    ```sh
+    apiVersion: dbaas.percona.com/v1
+    kind: PXCTemplatePXCConfiguration
+    metadata:
+    name: pxc-config-max-connections-789
+    labels:
+        dbaas.percona.com/template: "yes"
+        dbaas.percona.com/engine: "pxc"
+    spec:
+    pxc:
+        configuration: |
+        [mysqld]
+        max_connections = 789
+    ```
+2. Run the following command:
+
+```sh
+kubectl apply -f pxctpl-pxc-config-max-connection-789.yaml
 ```
 
 ## Create Custom Resources (CR) template
