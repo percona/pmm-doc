@@ -13,7 +13,7 @@ Examples
 
 # Customize PXC DB configuration
 
-The following **example** shows how DBaaS operators create PXC DB clusters with the following default settings:
+The following **example** shows how DBaaS users can create PXC DB clusters from a template that sets a custom MySQL configuration. The default MySQL configuration is the following:
 
 ```sh
 [mysqld]
