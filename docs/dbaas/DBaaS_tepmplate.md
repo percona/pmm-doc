@@ -25,7 +25,7 @@ wsrep_provider_options="gcache.size=600M"
 
 # Create a database cluster from a template
 
-Database clusters can be created from templates using PMM. Templates allow you to customize the creation of database clusters. You can adapt templates to tweak K8s-specific settings such as **liveness probes**, changing **config maps**, or tuning **database engines**. 
+Database clusters can be created from templates using PMM.
 
 ## Create Custom Resource Definition (CRD) template
 
