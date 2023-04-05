@@ -134,32 +134,6 @@ kubectl apply -f dbaas-operator-manager-role.yaml
 kubectl apply -f pxctpl-pxc-config-max-connection-789.yaml
 ```
 
-## Create Custom Resources (CR) template
-
-1. Create the CR `pxctpl-disable-automatic-upgrades.yaml` file with the desired values as follows:
-
-    ```sh
-    apiVersion: dbaas.percona.com/v1
-    kind: PXCTemplateUpgradeOptions
-    metadata:
-    name: disable-automatic-upgrades
-    labels:
-        dbaas.percona.com/template: "yes"
-        dbaas.percona.com/engine: "pxc"
-    spec:
-    updateStrategy: SmartUpdate
-    upgradeOptions:
-        apply: Disabled
-    ```
-
-2. Run the following command:
-
-    ```sh
-    $ kubectl apply -f pxctpl-disable-automatic-upgrades.yaml
-
-    pxctemplateupgradeoptions.dbaas.percona.com/disable-automatic-upgrades created
-    ```
-
 ## Create a DB cluster from template
 
 To create a DB cluster from a template, do the following:
