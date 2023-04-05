@@ -1,6 +1,6 @@
-# DatabaseCluster Templates
+# Database cluster Templates
 
-Database clusters can be created from templates using PMM. DatabaseCluster Template allows operators to customize Database Clusters based on their requirements, environments, or infrastructure.
+Database clusters can be created from templates using PMM. Database cluster Template allows operators to customize Database Clusters based on their requirements, environments, or infrastructure.
 
 Examples
 
