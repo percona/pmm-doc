@@ -31,7 +31,7 @@ Database clusters can be created from templates using PMM.
 
 To create a template, do the following:
 
-1. Identify the fields of interest by reading the [PXC operator documentation](https://docs.percona.com/percona-operator-for-mysql/pxc/update.html#manual-upgrade_1) and PXC CRD. In this case, you have to change `spec.updateStrategy` and `spec.upgradeOptions` fields. 
+1. Identify the field(s) of interest by reading the [PXC operator documentation](https://docs.percona.com/percona-operator-for-mysql/pxc/index.html) and the [PXC CRD](https://github.com/percona/percona-xtradb-cluster-operator/blob/v1.11.0/deploy/crd.yaml#L6378-L6379). In this case, you have to change the `spec.pxc.configuration` field.
 
 2. Create a template CRD `pxctpl-crd-pxc-configuration.yaml` with just those small subset of fields.
 
