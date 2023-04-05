@@ -1,6 +1,6 @@
 # DatabaseCluster Templates
 
-DatabaseCluster Template allows operators to customize Database Clusters based on their requirements, environments, or infrastructure.
+Database clusters can be created from templates using PMM. DatabaseCluster Template allows operators to customize Database Clusters based on their requirements, environments, or infrastructure.
 
 Examples
 
@@ -23,9 +23,7 @@ wsrep_provider_options="gcache.size=600M"
     PXC DB configuration can be customized based on your needs. This can be accomplished by creating a template and changing that field.
 
 
-# Create a database cluster from a template
 
-Database clusters can be created from templates using PMM.
 
 ## Create Custom Resource Definition (CRD) template
 
