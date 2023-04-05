@@ -37,18 +37,20 @@ To create a template, do the following:
         apiVersion: apiextensions.k8s.io/v1
         kind: CustomResourceDefinition
         metadata:
+        annotations:
+            controller-gen.kubebuilder.io/version: v0.8.0
         creationTimestamp: null
-        name: pxctemplateupgradeoptions.dbaas.percona.com
+        name: pxctemplatepxcconfiguration.dbaas.percona.com
         labels:
             dbaas.percona.com/template: "yes"
             dbaas.percona.com/engine: "pxc"
         spec:
         group: dbaas.percona.com
         names:
-            kind: PXCTemplateUpgradeOptions
-            listKind: PXCTemplateUpgradeOptionsList
-            plural: pxctemplateupgradeoptions
-            singular: pxctemplateupgradeoptions
+            kind: PXCTemplatePXCConfiguration
+            listKind: PXCTemplatePXCConfigurationList
+            plural: pxctemplatepxcconfiguration
+            singular: pxctemplatepxcconfiguration
         scope: Namespaced
         versions:
         - name: v1
@@ -63,15 +65,9 @@ To create a template, do the following:
                     type: object
                 spec:
                     properties:
-                    updateStrategy:
-                        type: string
-                    upgradeOptions:
+                    pxc:
                         properties:
-                        apply:
-                            type: string
-                        schedule:
-                            type: string
-                        versionServiceEndpoint:
+                        configuration:
                             type: string
                         type: object
                     type: object
@@ -101,20 +97,20 @@ cat <<EOF >>dbaas-operator-manager-role.yaml
 - apiGroups:
   - dbaas.percona.com
   resources:
-  - pxctemplateupgradeoptions
+  - pxctemplatepxcconfiguration
   verbs:
   - get
   - list
 EOF
+```
 
-Run the following command:
+2. Run the following command:
 
 ```sh
 kubectl apply -f dbaas-operator-manager-role.yaml
 ```
 
 ### Create PXCTemplatePXCConfiguration Template CR
-
 
 1. Create a corresponding CR `pxctpl-pxc-config-max-connection-789.yaml` with the required values.
 
