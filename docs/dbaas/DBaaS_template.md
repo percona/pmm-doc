@@ -31,7 +31,7 @@ To create a template, do the following:
 
 2. Create a template CRD `pxctpl-crd-pxc-configuration.yaml` with just those small subset of fields.
 
-```sh
+    ```sh
         apiVersion: apiextensions.k8s.io/v1
         kind: CustomResourceDefinition
         metadata:
@@ -74,9 +74,9 @@ To create a template, do the following:
                 type: object
             served: true
             storage: true
-        ```
+    ```
 
-2. Run the following command.
+3. Run the following command.
 
 ```sh
 kubectl apply -f pxctpl-crd-upgrade-options.yaml
