@@ -101,7 +101,7 @@ cat <<EOF >>dbaas-operator-manager-role.yaml
 EOF
 ```
 
-2. Run the following command:
+Run the following command:
 
 ```sh
 kubectl apply -f dbaas-operator-manager-role.yaml
@@ -127,9 +127,9 @@ kubectl apply -f dbaas-operator-manager-role.yaml
     ```
 2. Run the following command:
 
-```sh
-kubectl apply -f pxctpl-pxc-config-max-connection-789.yaml
-```
+    ```sh
+    kubectl apply -f pxctpl-pxc-config-max-connection-789.yaml
+    ```
 
 ## Create a DB cluster from template
 
