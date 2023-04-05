@@ -23,8 +23,6 @@ wsrep_provider_options="gcache.size=600M"
     PXC DB configuration can be customized based on your needs. This can be accomplished by creating a template and changing that field.
 
 
-
-
 ## Create Custom Resource Definition (CRD) template
 
 To create a template, do the following:
@@ -33,7 +31,7 @@ To create a template, do the following:
 
 2. Create a template CRD `pxctpl-crd-pxc-configuration.yaml` with just those small subset of fields.
 
-        ```sh
+```sh
         apiVersion: apiextensions.k8s.io/v1
         kind: CustomResourceDefinition
         metadata:
