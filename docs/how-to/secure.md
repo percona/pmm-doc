@@ -42,9 +42,11 @@ docker run -d -p 443:443 --volumes-from pmm-data \
     - The mounted certificate directory (`/etc/pmm-certs` in this example) must contain the files `certificate.crt`, `certificate.key`, `ca-certs.pem` and `dhparam.pem`.
     - For SSL encryption, the container must publish on port 443 instead of 80.
 
-### Copying certificates
 
-If PMM Server is running as a Docker image, use `docker cp` to copy certificates. This example copies certificate files from the current working directory to a running PMM Server docker container.
+<details>
+  <summary>Copying certificates</summary>
+  
+  If PMM Server is running as a Docker image, use `docker cp` to copy certificates. This example copies certificate files from the current working directory to a running PMM Server docker container.
 
 ```sh
 docker cp certificate.crt pmm-server:/srv/nginx/certificate.crt
@@ -52,6 +54,9 @@ docker cp certificate.key pmm-server:/srv/nginx/certificate.key
 docker cp ca-certs.pem pmm-server:/srv/nginx/ca-certs.pem
 docker cp dhparam.pem pmm-server:/srv/nginx/dhparam.pem
 ```
+
+</details>
+
 
 ### Enabling SSL when connecting PMM Client to PMM Server
 
