@@ -373,6 +373,7 @@ The following variables are also supported but values passed are not verified by
 | --------------------------------------------------------------- | ------------------------------------------------------
 | `_`, `HOME`, `HOSTNAME`, `LANG`, `PATH`, `PWD`, `SHLVL`, `TERM` | Default environment variables.
 | `GF_*`                                                          | Grafana's environment variables.
+| `VM_*`                                                         | Victoria metrics' environment variables.
 | `SUPERVISOR_`                                                   | `supervisord` environment variables.
 | `KUBERNETES_`                                                   | Kubernetes environment variables.
 | `MONITORING_`                                                   | Kubernetes monitoring environment variables.
