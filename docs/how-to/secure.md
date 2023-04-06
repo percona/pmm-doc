@@ -56,6 +56,20 @@ pmm-admin config --server-url=https://<user>:<password>@<server IP>
 !!! hint alert alert-success "Remember"
     Your client machine(s) must trust the issuer of the certificate or you will still see "untrusted connections" messages when accessing the web interface and your client will need the `--server-insecure-tls` paramater when running the `pmm-admin config` command.  Follow your operating systems instructions to install the issuer certificate (ca-certs.pem). 
 
+In case of pmm-client running in the container, mount certificates to `etc/pki/tls/certs`:
+```sh
+PMM_SERVER=X.X.X.X:443
+docker run \
+--rm \
+--name pmm-client \
+-e PMM_AGENT_SERVER_ADDRESS=${PMM_SERVER} \
+-e PMM_AGENT_SERVER_USERNAME=admin \
+-e PMM_AGENT_SERVER_PASSWORD=admin \
+-e PMM_AGENT_SETUP=1 \
+-e PMM_AGENT_CONFIG_FILE=config/pmm-agent.yaml \
+-v /your_directory_with/certs:/etc/pki/tls/certs \
+--volumes-from pmm-client-data \
+percona/pmm-client:2
 
 ## Grafana HTTPS secure cookies
 
