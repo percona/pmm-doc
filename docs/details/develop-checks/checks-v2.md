@@ -20,7 +20,8 @@ Advisor checks for PMM 2.28 and later use the following format:
         description: Checks something important
         interval: standard
         family: MYSQL
-        advisor: dev
+        category: configuration ## Deprecated
+        advisor: dev            ## Since PMM 2.36
         queries:
           - type: MYSQL_SHOW
             query: VARIABLES
