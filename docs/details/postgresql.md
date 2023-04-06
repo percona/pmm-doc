@@ -31,14 +31,14 @@ By default, communication between the PMM server and the database is not encrypt
 To use PostgreSQL as an external database: 
 
 1. Generate all necessary SSL certificates.
-2. Deploy Percona Server with certificates under read-only permissions and Grafana user and Grafana group.
+2. Deploy PMM Server with certificates under read-only permissions and Grafana user and Grafana group.
 ```
-/percona-server-certificates# la -la
+/pmm-server-certificates# la -la
 drwxr-xr-x 1 root    root    4096 Apr  5 12:43 .
 drwxr-xr-x 1 root    root    4096 Apr  5 12:43 ..
 -rw------- 1 grafana grafana 1391 Apr  5 12:38 certificate_authority.crt
--rw------- 1 grafana grafana 1257 Apr  5 12:38 percona_server.crt
--rw------- 1 grafana grafana 1708 Apr  5 12:38 percona_server.key
+-rw------- 1 grafana grafana 1257 Apr  5 12:38 pmm_server.crt
+-rw------- 1 grafana grafana 1708 Apr  5 12:38 pmm_server.key
 ```
 3. Attach `pg_hba.conf` and certificates to the PostgreSQL image.
 ```
@@ -55,8 +55,9 @@ drwxr-xr-x 1 root     root     4096 Apr  5 12:43 ..
 -rw------- 1 postgres postgres 1407 Apr  5 12:38 external_postgres.crt
 -rw------- 1 postgres postgres 1708 Apr  5 12:38 external_postgres.key
 ```
-4. Install `pg_stat_statements` in PostgreSQL in order to have all metrics according to [this](../setting-up/client/postgresql.md) handy document.
-5. Run PostgreSQL server.
+4. Create `user` and `database` for pmm-server to use. Set appropriate rights and access.
+5. Install `pg_stat_statements` in PostgreSQL in order to have all metrics according to [this](../setting-up/client/postgresql.md) handy document.
+6. Run PostgreSQL server.
 ```sh
 docker run 
 --name external-postgres 
@@ -73,10 +74,10 @@ postgres
 -c ssl_cert_file=$CERT_PATH
 -c hba_file=$HBA_PATH
 ```
-* Run Percona server.
+7. Run PMM server.
 ```sh
 docker run 
---name percona-server 
+--name pmm-server 
 -e POSTGRES_ADDR=$ADDRESS:$PORT
 -e POSTGRES_DBNAME=$DBNAME
 -e POSTGRES_USERNAME=$USER
