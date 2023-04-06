@@ -44,7 +44,7 @@ docker run -d -p 443:443 --volumes-from pmm-data \
 
 
 <details>
-  <summary>Copying certificates</summary>
+  <summary>###Copying certificates</summary>
   
   If PMM Server is running as a Docker image, use `docker cp` to copy certificates. This example copies certificate files from the current working directory to a running PMM Server docker container.
 
