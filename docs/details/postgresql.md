@@ -51,7 +51,7 @@ postgres
 -c hba_file=$HBA_PATH
 ```
 
-- Run Percona server.
+- Run PMM Server.
 
 ```sh
 docker run
