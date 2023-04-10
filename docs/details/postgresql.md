@@ -24,7 +24,9 @@ To use PostgreSQL as an external database instance, use the following environmen
 | `PERCONA_TEST_PMM_DISABLE_BUILTIN_POSTGRES`       |           | Environment variable to disable built-in PMM server database.
 
 
-By default, communication between the PMM server and the database is not encrypted. To secure a connection, follow [PostgeSQL SSL instructions](https://www.postgresql.org/docs/14/ssl-tcp.html) and provide `POSTGRES_SSL_*` variables. 
+By default, communication between the PMM server and the database is not encrypted. To secure a connection, follow [PostgeSQL SSL instructions](https://www.postgresql.org/docs/14/ssl-tcp.html) and provide `POSTGRES_SSL_*` variables.
+
+To use grafana with external PostgreSQL add `GF_DATABASE_*` environment variables accordingly.
 
 **Example**
 
@@ -86,6 +88,11 @@ docker run
 -e PERCONA_TEST_POSTGRES_SSL_CA_PATH=$CA_PATH
 -e PERCONA_TEST_POSTGRES_SSL_KEY_PATH=$KEY_PATH
 -e PERCONA_TEST_POSTGRES_SSL_CERT_PATH=$CERT_PATH 
--e PERCONA_TEST_PMM_DISABLE_BUILTIN_POSTGRES=true 
+-e PERCONA_TEST_PMM_DISABLE_BUILTIN_POSTGRES=true
+-e GF_DATABASE_URL=$GF_DATABASE_URL
+-e GF_DATABASE_SSL_MODE=$GF_SSL_MODE
+-e GF_DATABASE_CA_CERT_PATH=$GF_CA_PATH
+-e GF_DATABASE_CLIENT_KEY_PATH=$GF_KEY_PATH
+-e GF_DATABASE_CLIENT_CERT_PATH=$GF_CERT_PATH
 percona/pmm-server:2
 ```
