@@ -30,7 +30,7 @@ docker run -d -p 443:443 --volumes-from pmm-data \
 
 !!! note alert alert-primary ""
     - All certificates must be owned by root. You can do this with: `chown 0:0 /etc/pmm-certs/*`
-    - The mounted certificate directory (`/etc/pmm-certs` in this example) must contain the files named as `certificate.crt`, `certificate.key`, `ca-certs.pem` and `dhparam.pem`.
+    - The mounted certificate directory (`/etc/pmm-certs` in this example) must contain the files named `certificate.crt`, `certificate.key`, `ca-certs.pem`, and `dhparam.pem`.
     - For SSL encryption, the container should publish on port 443 instead of 80.
 
 ### Copying certificates
