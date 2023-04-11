@@ -13,7 +13,7 @@ Valid and trusted SSL certificates are needed to encrypt traffic between the cli
  * this can be a [direct mount](#mounting-certificates) to a local directory containing the needed certificates or
  * you can [copy the files](#copying-certificates) to the appropriate directory in your Container|AMI|OVF
 2. Restarting PMM
-3. Ensuring the client(s) trust the certificate issuer ([Ubuntu}(https://ubuntu.com/server/docs/security-trust-store) | [RedHat](https://www.redhat.com/sysadmin/configure-ca-trust-list) can get you started but this is somewhat OS specific)
+3. Ensuring the client(s) trust the certificate issuer ([Ubuntu](https://ubuntu.com/server/docs/security-trust-store) | [RedHat](https://www.redhat.com/sysadmin/configure-ca-trust-list) can get you started but this is somewhat OS specific)
 
 
 With our Docker, OVF and AMI images, certificates are stored in `/srv/nginx` and our self-signed certificates are staged there by default.
@@ -72,6 +72,7 @@ docker run \
 -v /your_directory_with/certs:/etc/pki/tls/certs \
 --volumes-from pmm-client-data \
 percona/pmm-client:2
+```
 
 ## Grafana HTTPS secure cookies
 
