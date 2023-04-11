@@ -46,7 +46,7 @@ docker cp dhparam.pem pmm-server:/srv/nginx/dhparam.pem
 
 ### Use trusted SSL when connecting PMM Client to PMM Server
 
-At this point a restart of the PMM server (or advanced users can restart just nginx from a shell: `supervisorctl restart nginx`) is all that's needed for the server to start using the new trusted certificates.  
+For the new trusted certificates to take effect, you'll just need to restart the PMM server (or advanced users can restart just nginx from a shell: supervisorctl restart nginx). 
 
 You can now register clients to the PMM Server using the following:
 ```sh
