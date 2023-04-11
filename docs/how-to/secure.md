@@ -20,7 +20,7 @@ With our Docker, OVF and AMI images, certificates are stored in `/srv/nginx` and
 
 ### Mounting certificates
 
-For container based installs, if your own certificates are in a directory called `/etc/pmm-certs` on the container host, you would run the following to mount that directory in the proper location for PMM to find at container start:
+For container-based installation, if your certificates are in a directory called `/etc/pmm-certs` on the container host, run the following to mount that directory in the proper location so that PMM can find it when the container starts:
 
 ```sh
 docker run -d -p 443:443 --volumes-from pmm-data \
