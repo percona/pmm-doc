@@ -11,8 +11,9 @@ By Default, PMM ships with a self-signed certificate to enable usage out of the 
 Valid and trusted SSL certificates are needed to encrypt traffic between the client and server.  Certificates can be purchased online from various sources, or some organizations generate their own trusted certificates.  Regardless of which path you choose for enabling maximum security, the process to secure PMM consists of the following components:
 
 1. Staging the files in the proper locations
- * this can be a [direct mount](#mounting-certificates) to a local directory containing the needed certificates or
- * you can [copy the files](#copying-certificates) to the appropriate directory in your Container|AMI|OVF
+  - This can be a [direct mount](#mounting-certificates) to a local directory containing the needed certificates or
+  - You can [copy the files](#copying-certificates) to the appropriate directory in your Container|AMI|OVF
+
 2. Restarting PMM
 3. Ensuring the client(s) trust the certificate issuer ([Ubuntu](https://ubuntu.com/server/docs/security-trust-store) | [RedHat](https://www.redhat.com/sysadmin/configure-ca-trust-list) can get you started but this is somewhat OS specific)
 
