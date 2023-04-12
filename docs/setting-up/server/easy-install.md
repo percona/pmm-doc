@@ -17,7 +17,7 @@ wget -O - https://www.percona.com/get/pmm | /bin/bash
 This script:
 
 - Installs Docker if it is not already installed on your system.
-- Stops and backs up any PMM Server Docker containers that are currently running.
+- Stops and renames any PMM Server Docker container found to be running (not a recoverable backup being taken)
 - Pulls and runs the latest PMM Server Docker image.
 - Can run in Interactive mode to change the default settings:
 ```sh
