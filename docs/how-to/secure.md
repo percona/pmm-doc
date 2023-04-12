@@ -12,7 +12,7 @@ Valid and trusted SSL certificates are needed to encrypt traffic between the cli
 
 1. Staging the files in the proper locations:
 
-    - This can be a [direct mount](#mounting-certificates) to a local directory containing the needed certificates or
+    - You can [directly mount](#mounting-certificates) to a local directory containing the required certificates or
     - You can [copy the files](#copying-certificates) to the appropriate directory in your Container|AMI|OVF
 
 2. Restarting PMM
