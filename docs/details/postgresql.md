@@ -7,22 +7,21 @@ You can use an external PostgreSQL database instance outside the PMM Server cont
 PMM predefines certain flags that allow you to use PostgreSQL parameters as environment variables:
 
 !!! caution alert alert-warning "Warning"
-     The `POSTGRES_*` environment variables are experimental and subject to change. It is recommended that you use these variables for testing purposes only and not on production. The minimum supported PostgreSQL server version is 14.
+The `PERCONA_TEST_*` environment variables are experimental and subject to change. It is recommended that you use these variables for testing purposes only and not on production. The minimum supported PostgreSQL server version is 14.
 
-To use PostgreSQL as an external database instance, use the following environment variables: 
- 
- | Environment&nbsp;&nbsp;variable&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| Flag&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| Description
-|:----------------------------------:|----------------------|-------------------------------
-| `PERCONA_TEST_POSTGRES_ADDR`                  | [postgres-addr](https://www.postgresql.org/docs/14/libpq-connect.html#LIBPQ-CONNECT-HOST)                 | Hostname and port for external PostgreSQL database.
-| `PERCONA_TEST_POSTGRES_DBNAME`     | [postgres-name](https://www.postgresql.org/docs/14/libpq-connect.html#LIBPQ-CONNECT-DBNAME)               | Database name for external or internal PostgreSQL database.
-| `PERCONA_TEST_POSTGRES_USERNAME`       | [postgres-username](https://www.postgresql.org/docs/14/libpq-connect.html#LIBPQ-CONNECT-USER)              | PostgreSQL user name to connect as.
-| `PERCONA_TEST_POSTGRES_DBPASSWORD`       | [postgres-password](https://www.postgresql.org/docs/14/libpq-connect.html#LIBPQ-CONNECT-PASSWORD)           | Password to be used for database authentication.
-| `PERCONA_TEST_POSTGRES_SSL_MODE`      | [postgres-ssl-mode](https://www.postgresql.org/docs/14/libpq-connect.html#LIBPQ-CONNECT-SSLMODE)    | This option determines whether or with what priority a secure SSL TCP/IP connection will be negotiated with the database. Currently supported: `disable`, `require`, `verify-ca`, `verify-full`.
-| `PERCONA_TEST_POSTGRES_SSL_CA_PATH`    | [postgres-ssl-ca-path](https://www.postgresql.org/docs/14/libpq-connect.html#LIBPQ-CONNECT-SSLROOTCERT)      | This parameter specifies the name of a file containing SSL certificate authority (CA) certificate(s).
-| `PERCONA_TEST_POSTGRES_SSL_KEY_PATH`    | [postgres-ssl-key-path](https://www.postgresql.org/docs/14/libpq-connect.html#LIBPQ-CONNECT-SSLKEY)      | This parameter specifies the location for the secret key used for the client certificate.
-| `PERCONA_TEST_POSTGRES_SSL_CERT_PATH`    | [postgres-ssl-cert-path](https://www.postgresql.org/docs/14/libpq-connect.html#LIBPQ-CONNECT-SSLCERT)     | This parameter specifies the file name of the client SSL certificate.
-| `PERCONA_TEST_PMM_DISABLE_BUILTIN_POSTGRES`       |           | Environment variable to disable built-in PMM server database.
+To use PostgreSQL as an external database instance, use the following environment variables:
 
+| Environment variable         | Flag                                                                                                    | Description                                                                                                                                                                                      |
+| ---------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| PERCONA_TEST_POSTGRES_ADDR                | [postgres-addr](https://www.postgresql.org/docs/14/libpq-connect.html#LIBPQ-CONNECT-HOST)               | Hostname and port for external PostgreSQL database.                                                                                                                                              |
+| PERCONA_TEST_POSTGRES_DBNAME              | [postgres-name](https://www.postgresql.org/docs/14/libpq-connect.html#LIBPQ-CONNECT-DBNAME)             | Database name for external or internal PostgreSQL database.                                                                                                                                      |
+| PERCONA_TEST_POSTGRES_USERNAME            | [postgres-username](https://www.postgresql.org/docs/14/libpq-connect.html#LIBPQ-CONNECT-USER)           | PostgreSQL user name to connect as.                                                                                                                                                              |
+| PERCONA_TEST_POSTGRES_DBPASSWORD          | [postgres-password](https://www.postgresql.org/docs/14/libpq-connect.html#LIBPQ-CONNECT-PASSWORD)       | Password to be used for database authentication.                                                                                                                                                 |
+| PERCONA_TEST_POSTGRES_SSL_MODE            | [postgres-ssl-mode](https://www.postgresql.org/docs/14/libpq-connect.html#LIBPQ-CONNECT-SSLMODE)        | This option determines whether or with what priority a secure SSL TCP/IP connection will be negotiated with the database. Currently supported: `disable`, `require`, `verify-ca`, `verify-full`. |
+| PERCONA_TEST_POSTGRES_SSL_CA_PATH         | [postgres-ssl-ca-path](https://www.postgresql.org/docs/14/libpq-connect.html#LIBPQ-CONNECT-SSLROOTCERT) | This parameter specifies the name of a file containing SSL certificate authority (CA) certificate(s).                                                                                            |
+| PERCONA_TEST_POSTGRES_SSL_KEY_PATH        | [postgres-ssl-key-path](https://www.postgresql.org/docs/14/libpq-connect.html#LIBPQ-CONNECT-SSLKEY)     | This parameter specifies the location for the secret key used for the client certificate.                                                                                                        |
+| PERCONA_TEST_POSTGRES_SSL_CERT_PATH       | [postgres-ssl-cert-path](https://www.postgresql.org/docs/14/libpq-connect.html#LIBPQ-CONNECT-SSLCERT)   | This parameter specifies the file name of the client SSL certificate.                                                                                                                            |
+| PERCONA_TEST_PMM_DISABLE_BUILTIN_POSTGRES |                                                                                                         | Environment variable to disable built-in PMM server database.                                                                                                                                    |
 
 By default, communication between the PMM server and the database is not encrypted. To secure a connection, follow [PostgeSQL SSL instructions](https://www.postgresql.org/docs/14/ssl-tcp.html) and provide `POSTGRES_SSL_*` variables.
 
@@ -30,7 +29,7 @@ To use grafana with external PostgreSQL add `GF_DATABASE_*` environment variable
 
 **Example**
 
-To use PostgreSQL as an external database: 
+To use PostgreSQL as an external database:
 
 1. Generate all necessary SSL certificates.
 2. Deploy PMM Server with certificates under read-only permissions and Grafana user and Grafana group.
@@ -61,15 +60,15 @@ drwxr-xr-x 1 root     root     4096 Apr  5 12:43 ..
 5. Install `pg_stat_statements` in PostgreSQL in order to have all metrics according to [this](../setting-up/client/postgresql.md) handy document.
 6. Run PostgreSQL server.
 ```sh
-docker run 
---name external-postgres 
--e POSTGRES_PASSWORD=secret 
-<image_id> 
-postgres 
--c shared_preload_libraries=pg_stat_statements 
--c pg_stat_statements.max=10000 
--c pg_stat_statements.track=all 
--c pg_stat_statements.save=off 
+docker run
+--name external-postgres
+-e POSTGRES_PASSWORD=secret
+<image_id>
+postgres
+-c shared_preload_libraries=pg_stat_statements
+-c pg_stat_statements.max=10000
+-c pg_stat_statements.track=all
+-c pg_stat_statements.save=off
 -c ssl=on
 -c ssl_ca_file=$CA_PATH
 -c ssl_key_file=$KEY_PATH
