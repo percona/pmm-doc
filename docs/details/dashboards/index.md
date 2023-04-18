@@ -66,6 +66,7 @@
 
 [Advanced Data Exploration]: dashboard-advanced-data-exploration.md
 [Home Dashboard]: dashboard-home.md
+[Kubernetes Cluster Summary]: kubernetes_cluster_summary.md
 [DB Cluster Summary]: dashboard-cluster-summary.md
 [Prometheus Exporter Status]: dashboard-prometheus-exporter-status.md
 [Prometheus Exporters Overview]: dashboard-prometheus-exporters-overview.md
