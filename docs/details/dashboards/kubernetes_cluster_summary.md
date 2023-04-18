@@ -1,23 +1,16 @@
 # Kubernetes Cluster Summary
 
-![!image](../../_images/PMM_Advanced_Data_Exploration.jpg)
+![!image](../../_images/PMM_K8s_Cluster_Summary.png)
 
-The *Advanced Data Exploration* dashboard provides detailed information about the progress of a single Prometheus metric across one or more hosts.
+The *Kubernetes Cluster Summary* provides a comprehensive overview of your Kubernetes cluster, including:
 
-## View actual metric values (Gauge)
+- Resources
+- Node Status
+- [Pod](https://kubernetes.io/docs/concepts/workloads/pods/) Status
+- [PVC](https://kubernetes.io/docs/concepts/storage/persistent-volumes/) status
+- CPU Overview
+- Memory Overview and more
 
-A gauge is a metric that represents a single numerical value that can arbitrarily go up and down.
+With this dashboard, you can view all workloads running in the cluster and optimize their performance.
 
-Gauges are typically used for measured values like temperatures or current memory usage, but also "counts" that can go up and down, like the number of running goroutines.
 
-## View Metric Rate of Change (Counter)
-
-A counter is a cumulative metric that represents a single numerical value that only ever goes up. A counter is typically used to count requests served, tasks completed, errors occurred, etc. Counters should not be used to expose current counts of items whose number can also go down, e.g. the number of currently running goroutines. Use gauges for this use case.
-
-## Metric Rates
-
-Shows the number of samples Per second stored for a given interval in the time series.
-
-This dashboard supports metrics related to NUMA. The names of all these metrics start with `node_memory_numa`.
-
-![!image](../../_images/metrics-monitor.advanced-data-exploration.node-memory-numa.png)
