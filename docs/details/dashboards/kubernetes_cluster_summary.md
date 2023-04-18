@@ -1,5 +1,12 @@
 # Kubernetes Cluster Summary
 
+!!! caution alert alert-warning "Disclaimer"
+    This is an Experimental Dashboard that is not part of the official Percona Monitoring and Management (PMM) deployment and might be updated. We ship this Dashboard to obtain feedback from our users.
+
+!!! note alert alert-primary "Availability"
+    This experimental dashboard is available starting with PMM 2.30.0.
+
+
 ![!image](../../_images/PMM_K8s_Cluster_Summary.png)
 
 The *Kubernetes Cluster Summary* provides a comprehensive overview of your Kubernetes cluster, including:
