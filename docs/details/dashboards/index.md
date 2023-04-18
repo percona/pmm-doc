@@ -2,6 +2,9 @@
 
 | Category          | Dashboard                                                                                | Elements { data-sort-method='number'} |
 |-------------------|------------------------------------------------------------------------------------------|:-------------------------------------:|
+| Kubernetes        | [Kubernetes Cluster Summary]                                                              | 7
+| Kubernetes        | [Kubernetes Pods Status]                                                                         | 26
+| Kubernetes        | [Kubernetes Volumes]                                                             | 57
 | Insight           | [Advanced Data Exploration]                                                              | 7
 | Insight           | [Home Dashboard]                                                                         | 26
 | Insight           | [Prometheus Exporter Status]                                                             | 57
