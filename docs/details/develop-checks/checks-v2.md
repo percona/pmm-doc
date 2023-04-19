@@ -142,7 +142,7 @@ Checks can include the following fields:
 
 - **Script** (string, required): contains a small Starlark program that processes query results, and returns check results. It is executed on the PMM Server side.
 - **Family** (string, required): specifies one of the supported database families: MYSQL, POSTGRESQL, MONGODB. This field is only available for Advisor checks v.2, created for PMM 2.28 and later.
-- **Advisor** (string, required): specifies what advisor this check belongs to. In local environments specify **dev**.
+- **Advisor** (string, required): specifies the advisor to which this check belongs. For local environments, specify **dev**.
 - **Queries** (array, required): contains items that specify queries.
   - **Type** (string/enum, required): defines the query type. Check the list of available types in the table below.
   - **Query** (string, can be absent if the type defines the whole query by itself): The query is executed on the PMM Client side and can contain multiple queries specific to the target DBMS.
