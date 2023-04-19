@@ -7,9 +7,9 @@
     This experimental dashboard is available starting with PMM 2.30.0.
 
 
-![!image](../../_images/PMM_K8s_Cluster_Summary.png)
+![!image](../../_images/PMM_K8s_volume.png)
 
-The *Kubernetes Cluster Summary* provides a comprehensive overview of your Kubernetes cluster, including:
+*Kubernetes Volumes* dashboard provides a comprehensive overview of your Kubernetes cluster, including:
 
 - Resources
 - Node Status
