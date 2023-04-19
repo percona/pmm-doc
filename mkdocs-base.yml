@@ -160,6 +160,7 @@ nav:
                 - get-started/backup/mongodb_limitations.md
           - MySQL backups:
                 - get-started/backup/backup_mysql.md
+                - get-started/backup/mysql_prerequisites.md
                 - get-started/backup/create_mysql_backup.md
                 - get-started/backup/restore_mysql_backup.md
           - get-started/backup/edit_scheduled.md
@@ -298,7 +299,7 @@ nav:
       - "Add a DB Cluster": dbaas/databases.html#add-a-db-cluster
       - "Manage a DB Cluster": dbaas/databases.html#edit-a-db-cluster
       - "Delete a DB Cluster": dbaas/databases.html#delete-a-db-cluster
-      - "Create a database cluster from a template": dbaas/DBaaS_tepmplate.md
+      - "Create a database cluster from a template": dbaas/DBaaS_template.md
     - "Backup and restore": dbaas/backup_restore.md
   - faq.md
   - Release Notes:
