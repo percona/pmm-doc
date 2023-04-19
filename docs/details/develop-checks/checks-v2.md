@@ -21,7 +21,7 @@ Advisor checks for PMM 2.28 and later use the following format:
         interval: standard
         family: MYSQL
         category: configuration ## Deprecated since PMM 2.36
-        advisor: dev            ## Added in PMM 2.36
+        advisor: dev            ## Required since PMM 2.36
         queries:
           - type: MYSQL_SHOW
             query: VARIABLES
