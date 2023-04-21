@@ -6,10 +6,7 @@ To check your inventory list, go to <i class="uil uil-cog"></i> **Configuration*
 
 ![!image](../../_images/Inventory.png)
 
-Inventory objects form a hierarchy with Node at the top, then Service and Agents assigned to a Node.
-
-This information is detailed in the two tabs available on this page:
-
+Inventory objects form a hierarchy with Node at the top, then Service and Agents assigned to a Node. This information is detailed in the two tabs available on this page.
 ### **Services** tab
 
 Shows individual services, the nodes on which they run, and the Agents against which they are assigned.
@@ -17,6 +14,7 @@ The **Status** column shows the status of your databases based on metrics coming
 The **Monitoring** column summarizes the status of all the Agents assigned to the service.
 
 You can check Query Analytics information and the Service Overview Dashboard for each service by clicking on the <image src="../../_images/dots-three-vertical.ico" width="20px" /> icon in the **Options** column.
+
 From here you can also check additional information about the service, by clicking on the <image src="../../_images/arrow-downward.ico" width="20px" /> icon. This expands the service entry to show reference information like service labels and IDs.
 
 Each instance of a service gets a `service_id` value that is related to a `node_id`. Examples are MySQL, Amazon Aurora MySQL. This feature also allows to support multiple mysqld instances on a single node, with different service names, e.g. `mysql1-3306`, and `mysql1-3307`.
@@ -39,7 +37,7 @@ By expanding the entry from the options column, you can check the node labels an
 
 To remove items from the inventory:
 
-1. Go to <i class="uil uil-cog"></i> **Configuration** > → {{icon.inventory}} **Inventory**.
+1. Go to <i class="uil uil-cog"></i> **Configuration** > {{icon.inventory}} **Inventory**.
 
 2. In the first column, select the items to be removed.
 
