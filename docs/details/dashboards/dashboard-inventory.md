@@ -31,7 +31,7 @@ Each binary (exporter, agent) running on a client will get an `agent_type` value
 
 Shows where the service and agents run.
 
-Each `node_id` is associated with a `machine_id` (from `/etc/machine-id`). Some examples are bare metal, virtualized, container.
+Each `node_id` is associated with a `machine_id` (from `/etc/machine-id`). Nodes also have `node_type` attributes, which give an idea about their nature. Some examples are: generic, container, remote, remote_rds, etc.
 
 By expanding the entry from the options column, you can check the node labels and attributes.
 
