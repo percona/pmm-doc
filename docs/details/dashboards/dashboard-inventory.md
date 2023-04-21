@@ -30,7 +30,7 @@ Each binary (exporter, agent) running on a client will get an `agent_id` value. 
 
 ### **Nodes** tab
 
-Shows where the service and agents will run. 
+Shows where the service and agents run. 
 
 Each `node_id` is associated with a `machine_id` (from `/etc/machine-id`). Some examples are bare metal, virtualized, container.
 
