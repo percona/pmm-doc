@@ -10,7 +10,7 @@ Inventory objects form a hierarchy with Node at the top, then Service and Agents
 
 ### **Services** tab
 
-Shows individual services, the nodes on which they run, and the Agents against which they are assigned.
+Shows individual services, the nodes on which they run, and the Agents that help collect the service metrics.
 The **Status** column shows the status of your databases based on metrics coming directly from the database.
 The **Monitoring** column summarizes the status of all the Agents assigned to the service.
 
