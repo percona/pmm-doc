@@ -28,7 +28,7 @@ Each binary (exporter, agent) running on a client will get an `agent_id` value. 
 - `node_exporter` is assigned to pmm-agent `agent_id`
 - `mysqld_exporter` and QAN MySQL Perfschema are assigned to a `service_id`.
 
-**Nodes** tab
+### **Nodes** tab
 
 Shows where the service and agents will run. 
 
