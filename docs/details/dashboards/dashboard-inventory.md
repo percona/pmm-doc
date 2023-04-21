@@ -34,7 +34,7 @@ Shows where the service and agents run.
 
 Each `node_id` is associated with a `machine_id` (from `/etc/machine-id`). Some examples are bare metal, virtualized, container.
 
-By expanding the entry from the options column, you can check the labels available for each node. 
+By expanding the entry from the options column, you can check the node labels and attributes. 
 
 ## Removing items from the inventory
 To remove items from the inventory:
