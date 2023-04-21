@@ -1,7 +1,7 @@
 # MySQL backup prerequisites
 Before creating MySQL backups, make sure to: 
 
-1. Check that **Backup Management** is enabled and the <i class="uil uil-history"></i> Backup option is available on the side menu. If Backup Managemt has been disabled on your instance, go to <i class="uil uil-cog"></i> **Configuration > PMM Settings > Advanced Settings**, re-enable **Backup Management**  then click **Apply changes**. 
+1. Check that **Backup Management** is enabled and the <i class="uil uil-history"></i> Backup option is available on the side menu. If Backup Management has been disabled on your instance, go to <i class="uil uil-cog"></i> **Configuration > PMM Settings > Advanced Settings**, re-enable **Backup Management**  then click **Apply changes**. 
 2. Check that the [PMM Client](../../setting-up/client/index.md) is installed and running on the node.
 
 3. To enable Xtrabackup for MySQL 8.0+, check that pmm-agent connects to MySQL with a user that has BACKUP_ADMIN privilege. 

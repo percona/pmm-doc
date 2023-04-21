@@ -2,7 +2,7 @@
 
 Before creating MongoDB backups, make sure to:
 
-1. Enable Backup Management from <i class="uil uil-cog"></i> **Configuration > PMM Settings > Advanced Settings** and activate the **Backup Management** option. This adds the <i class="uil uil-history"></i> Backup option on the side menu.
+1. Check that **Backup Management** is enabled and the <i class="uil uil-history"></i> Backup option is available on the side menu. If Backup Management has been disabled on your instance, go to <i class="uil uil-cog"></i> **Configuration > PMM Settings > Advanced Settings**, re-enable **Backup Management**  then click **Apply changes**.
 2. [Prepare and create a storage location for your backups](../../get-started/backup/prepare_storage_location.md).
 3. Check that [PMM Client](../../setting-up/client/index.md) is installed. For creating logical backups, the PMM client should run on at least one node of the replica set. Make sure this is the one that will be used for backup and restore jobs. For physical backups, make sure PMM client runs on all nodes instead.  
 4. Check that [Percona Backup for MongoDB](https://docs.percona.com/percona-backup-mongodb/index.html) (PBM) is installed and `pbm-agent` is running on all MongoDB nodes in the replica set. PMM 2.32 and later require PBM 2.0.1 or newer.
