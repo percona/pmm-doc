@@ -25,7 +25,7 @@ Each instance of a service gets a `service_id` value that is related to a `node_
 Each binary (exporter, agent) running on a client will get an `agent_type` value. Examples:
 
 - `pmm-agent` is at the top of the tree, assigned to PMM Agent itself
-- `node_exporter` is assigned to pmm-agent `agent_id`
+- `node_exporter` is assigned to an agent that extracts the node metrics
 - `mysqld_exporter` and QAN MySQL Perfschema are assigned to a `service_id`.
 
 ### **Nodes** tab
