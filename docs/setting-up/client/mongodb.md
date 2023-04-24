@@ -270,7 +270,7 @@ where:
 
 1. Select <i class="uil uil-cog"></i> *Configuration* → {{icon.inventory}} *Inventory*.
 2. In the *Services* tab, verify the *Service name*, *Addresses*, and any other relevant values used when adding the service.
-3. Expand the *Details* section in the *Options* column to make sure that the Agents are using the desired data source.
+3. In the *Options* column, expand the *Details* section and check that the Agents are using the desired data source.
 4. If your MongoDB instance is configured to use TLS, click on the **Use TLS for database connection** check box and fill in TLS certificates and keys.
     1. If you use TLS, the authentication mechanism is automatically set to `MONGODB-X509`.
 

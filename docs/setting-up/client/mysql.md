@@ -425,7 +425,7 @@ pmm-admin add mysql --environment=test --custom-labels='source=slowlog'  --usern
 
 1. Select <i class="uil uil-cog"></i> *Configuration* → {{icon.inventory}} *Inventory*.
 2. In the *Services* tab, verify the *Service name*, *Addresses*, and any other relevant information in the form.
-3. Expand the *Details* section in the *Options* column to make sure hat the *Agents* are using the desired data source.
+3. In the *Options* column, expand the *Details* section and check that the Agents are using the desired data source.
 
 ### Command line
 
