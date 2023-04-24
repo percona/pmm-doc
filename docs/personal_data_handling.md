@@ -11,11 +11,11 @@ Th following data is collected from database host to PMM:
 - Metrics
 - SQL query examples for query analytics (optional)
 
-**From PMM to DB Host:**
+**From PMM to DB Host**
 
 Th following data is collected from PMM to database host:
 
-- DSN+credentials for accessing database (a separate DB user is used (read-only) for accessing the database)
+DSN+credentials for accessing database (a separate DB user is used (read-only) for accessing the database)
 
 **From DB Host to Cloud S3**
 
@@ -28,23 +28,6 @@ DB backup (optionally if PMM Admin configures this)
 Telemetry (the exact data varies from version to version of the PMM Server, but nothing personal/confidential information)
 
 
-
-
-
-
-DB host PMM collects Metrics ans SQL query examples?
-
-Which data specifically is being transmitted (non-personal data, only metrics?)
-A:
-DB Host->PMM:
-Metrics
-SQL query examples for query analytics (optionally)
-PMM->DB Host:
-DSN+credentials for accessing DB (we use a separate DB user (read-only) for accessing DB)
-DB Host->Cloud S3:
-DB backup (optionally if PMM Admin configures this)
-PMM Server -> Percona Cloud:
-Telemetry (the exact data varies from version to version of PMM Server, but nothing personal/confidential)
 
 b) Where are we transmitting data?
 A:
