@@ -5,7 +5,7 @@ The following questions are being answered related to personal and confidential 
 1. Which type of data is being transmitted (non-personal data, only metrics)?
 
 
-|**Data collected &nbsp; from**   &nbsp;  &nbsp; &nbsp;  &nbsp;    | **Description**
+|**Data collected from**                                          | **Description** |
 | --------------------------------------------------------------- | ------------------------------------------------------
 | DB host to PMM                                                  | - Metrics <br /> - SQL query examples for query analytics (optional).
 | PMM to DB Host                                                  | DSN and credentials for database access. A separate DB user is used (read-only) to access the database.
