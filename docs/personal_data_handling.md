@@ -1,4 +1,4 @@
-# Personal or Confedential data
+# Personal or confedential data
 
 Following questions are being answered related to personal and confedential data handling in PMM:
 
