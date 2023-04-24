@@ -43,7 +43,6 @@ CREATE USER 'pmm'@'localhost' IDENTIFIED BY 'pass' WITH MAX_USER_CONNECTIONS 10;
 GRANT SELECT, PROCESS, REPLICATION CLIENT, RELOAD ON *.* TO 'pmm'@'localhost';
 ```
 
-
 ## Choose and configure a source
 
 Decide which source of metrics to use, and configure your database server for it. The choices are [Slow query log](#slow-query-log) and [Performance Schema](#performance-schema).
@@ -346,7 +345,7 @@ With the PMM user interface, you select *Use performance schema*, or deselect it
 
 ### With the user interface
 
-1. Select <i class="uil uil-cog"></i> *Configuration* → {{icon.inventory}} *PMM Inventory* → {{icon.addinstance}} *Add Instance*.
+1. Select <i class="uil uil-cog"></i> *Configuration* → {{icon.inventory}} *Inventory* → {{icon.addinstance}} *Add Service*.
 
 2. Select *MySQL -- Add a remote instance*.
 
@@ -354,11 +353,11 @@ With the PMM user interface, you select *Use performance schema*, or deselect it
 
 4. Click *Add service*.
 
-![!](../../_images/PMM_Add_Instance_MySQL.jpg)
+![!](../../_images/PMM_Add_Instance_MySQL.png)
 
 If your MySQL instance is configured to use TLS, click on the *Use TLS for database connections* check box and fill in your TLS certificates and key.
 
-![!](../../_images/PMM_Add_Instance_MySQL_TLS.jpg)
+![!](../../_images/PMM_Add_Instance_MySQL_TLS.png)
 
 ### On the command line
 
@@ -424,7 +423,7 @@ pmm-admin add mysql --environment=test --custom-labels='source=slowlog'  --usern
 
 ### PMM user interface
 
-1. Select <i class="uil uil-cog"></i> *Configuration* → {{icon.inventory}} *PMM Inventory* → *Inventory list*.
+1. Select <i class="uil uil-cog"></i> *Configuration* → {{icon.inventory}} *Inventory*.
 2. Look in the *Services* tab for a matching *Service Type* (MySQL), *Service name*, *Addresses*, and any other details entered in the form.
 3. Look in the *Agents* tab to check the desired data source is being used.
 

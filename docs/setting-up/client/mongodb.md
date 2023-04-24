@@ -198,7 +198,7 @@ When you have configured your database server, you can add a MongoDB service wit
 
 ### With the user interface
 
-1. Select <i class="uil uil-cog"></i> *Configuration* → {{icon.inventory}} *PMM Inventory* → {{icon.addinstance}} *Add Instance*.
+1. Select <i class="uil uil-cog"></i> *Configuration* → {{icon.inventory}} * Inventory*.
 
 2. Select *MongoDB -- Add a remote instance*.
 
@@ -206,7 +206,7 @@ When you have configured your database server, you can add a MongoDB service wit
 
 4. Click *Add service*.
 
-![!](../../_images/PMM_Add_Instance_MongoDB.jpg)
+![!](../../_images/PMM_Add_Instance_MongoDB.png)
 
 ### On the command line
 
@@ -300,7 +300,7 @@ pmm-admin inventory list services --service-type=mongodb
 
 ### With the user interface
 
-1. Select <i class="uil uil-cog"></i> *Configuration* → {{icon.inventory}} *PMM Inventory* → {{icon.inventory}} *Inventory List*.
+1. Select <i class="uil uil-cog"></i> *Configuration* → {{icon.inventory}} *Inventory*.
 2. In the first column, click the tick box for the service you want to remove.
 3. Click <i class="uil uil-trash-alt"></i> *Delete*.
 4. On the *Confirm action* dialog window:
