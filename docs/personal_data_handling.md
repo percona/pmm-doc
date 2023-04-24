@@ -29,8 +29,8 @@ Telemetry (the exact data varies from version to version of the PMM Server, but 
 
 
 
-b) Where are we transmitting data?
-A:
+2. Where is the data being transmitted
+
 Right now all data gathered from DB Host is transmitted to PMM Server.
 It is possible to transmit DB backups to Cloud S3 storage(optionally). PMM Admin defines which Cloud S3 storage is used as backup storage.
 
