@@ -2,20 +2,20 @@
 
 The following questions are being answered related to personal and confidential data handling in PMM:
 
-1. Which data specifically is being transmitted (non-personal data, only metrics)?
+1. Which type of data is being transmitted (non-personal data, only metrics)?
 
 **From the DB host to PMM**
 
 The following data is collected from the database host to PMM:
 
 - Metrics
-- SQL query examples for query analytics (optional)
+- SQL query examples for query analytics (optional).
 
 **From PMM to DB Host**
 
 Th following data is collected from PMM to database host:
 
-DSN+credentials for accessing the database (a separate DB user is used (read-only) for accessing the database)
+DSN and credentials for database access. A separate DB user is used (read-only) to access the database.
 
 **From DB Host to Cloud S3**
 
