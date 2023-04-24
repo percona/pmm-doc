@@ -1,4 +1,4 @@
-# Personal or confedential data
+# Sensitive data handling
 
 Following questions are being answered related to personal and confedential data handling in PMM:
 
