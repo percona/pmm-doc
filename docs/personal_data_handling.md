@@ -74,7 +74,3 @@ We use TLS for connections between:
 - PMM Server to Percona Cloud
 - PMM Server to remote DB (optionally, depends on configuration provided by User PMM Admin).
 
-
-
-
-
