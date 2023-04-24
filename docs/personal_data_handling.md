@@ -1,12 +1,12 @@
 # Sensitive data handling
 
-Following questions are being answered related to personal and confedential data handling in PMM:
+The following questions are being answered related to personal and confidential data handling in PMM:
 
 1. Which data specifically is being transmitted (non-personal data, only metrics)?
 
 **From the DB host to PMM**
 
-Th following data is collected from database host to PMM:
+The following data is collected from the database host to PMM:
 
 - Metrics
 - SQL query examples for query analytics (optional)
@@ -15,7 +15,7 @@ Th following data is collected from database host to PMM:
 
 Th following data is collected from PMM to database host:
 
-DSN+credentials for accessing database (a separate DB user is used (read-only) for accessing the database)
+DSN+credentials for accessing the database (a separate DB user is used (read-only) for accessing the database)
 
 **From DB Host to Cloud S3**
 
