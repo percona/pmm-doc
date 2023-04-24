@@ -13,13 +13,13 @@ The following questions are being answered related to personal and confidential 
 
     **From PMM to DB Host**
 
-    Th following data is collected from PMM to database host:
+    The following data is collected from PMM to database host:
 
     DSN and credentials for database access. A separate DB user is used (read-only) to access the database.
 
     **From DB Host to Cloud S3**
 
-    Th following data is collected from the database host to Cloud S3:
+    The following data is collected from the database host to Cloud S3:
 
     Database backup (optional if PMM Admin configures this)
 
@@ -29,8 +29,8 @@ The following questions are being answered related to personal and confidential 
 
 2. Where is the data transmitted?
 
-- As of now, all data gathered from the DB Host is transmitted to the PMM Server.
-- It is possible to transmit DB backups to Cloud S3 storage(optional). PMM Admin defines which Cloud S3 storage is used as a backup storage.
+    - As of now, all data gathered from the DB Host is transmitted to the PMM Server.
+    - It is possible to transmit DB backups to Cloud S3 storage(optional). PMM Admin defines which Cloud S3 storage is used as a backup storage.
 
 ## Personal data collection and processing 
 
