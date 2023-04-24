@@ -21,26 +21,24 @@ DSN and credentials for database access. A separate DB user is used (read-only) 
 
 Th following data is collected from the database host to Cloud S3:
 
-DB backup (optionally if PMM Admin configures this)
+Database backup (optional if PMM Admin configures this)
 
 **From PMM Server to Percona Cloud**
 
-Telemetry (the exact data varies from version to version of the PMM Server, but nothing personal/confidential information)
+Telemetry data is collected. PMM Server collects varying amounts of data from version to version, but no personal or confidential information is collected.
 
+2. Where is the data transmitted?
 
-2. Where is the data being transmitted
-
-- As of now, all the data gathered from the DB Host is transmitted to the PMM Server.
+- As of now, all data gathered from the DB Host is transmitted to the PMM Server.
 - It is possible to transmit DB backups to Cloud S3 storage(optional). PMM Admin defines which Cloud S3 storage is used as a backup storage.
 
 ## Personal Data colection and processing 
 
 Define the purpose of collecting and processing personal data.
 
-As per our [Privacy Policy](https://www.percona.com/privacy-policy) the data collection purpose is to provide the services and product enhancements.
+Our [Privacy Policy] (https://www.percona.com/privacy-policy) states that the data collection is conducted in order to provide the services and to improve the products we offer.
 
-We do not collect/transfer personal data explicitly. But in case query analytics is enabled and collecting of query examples are not disabled we gather SQL query examples with real data and personal data may appear there if it is stored in DB.  All QAN data always remains within the PMM server, and is never transmitted anywhere else.
-
+We do not collect/transfer personal data explicitly. However, if query analytics is enabled and query example collection isn't disabled, we gather SQL query examples with real data, and personal data may appear there if it is stored. Data pertaining to QAN is always stored on the PMM server and is never sent elsewhere.
 1. How often (frequency), how much (volume and) and which fields are processed? during data collection? For example, name, birth date etc.,.
 
 In case Query Analytics is enabled and SQL query examples are gathered, we don't use any special processing for personal or confidential data. PMM server has no clue about the meaning of the data inside the SQL query. So it is processed as usual, which is to store inside the PMM server and present on the PMM UI by request. Data is gathered each minute.
