@@ -31,8 +31,8 @@ Telemetry (the exact data varies from version to version of the PMM Server, but 
 
 2. Where is the data being transmitted
 
-Right now all data gathered from DB Host is transmitted to PMM Server.
-It is possible to transmit DB backups to Cloud S3 storage(optionally). PMM Admin defines which Cloud S3 storage is used as backup storage.
+- As of now, all the data gathered from the DB Host is transmitted to the PMM Server.
+- It is possible to transmit DB backups to Cloud S3 storage(optional). PMM Admin defines which Cloud S3 storage is used as a backup storage.
 
 c) Personal Data: Purpose of collection and processing? Define the purpose of data collection or data processing
 
