@@ -302,6 +302,7 @@ nav:
       - "Create a database cluster from a template": dbaas/DBaaS_template.md
     - "Backup and restore": dbaas/backup_restore.md
   - faq.md
+  - personal_data_handling.md
   - Release Notes:
       - release-notes/index.md
       - "PMM 2.36.0": release-notes/2.36.0.md
