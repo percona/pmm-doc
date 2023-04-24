@@ -4,28 +4,28 @@ The following questions are being answered related to personal and confidential 
 
 1. Which type of data is being transmitted (non-personal data, only metrics)?
 
-**From the DB host to PMM**
+    **From the DB host to PMM**
 
-The following data is collected from the database host to PMM:
+    The following data is collected from the database host to PMM:
 
-- Metrics
-- SQL query examples for query analytics (optional).
+    - Metrics
+    - SQL query examples for query analytics (optional).
 
-**From PMM to DB Host**
+    **From PMM to DB Host**
 
-Th following data is collected from PMM to database host:
+    Th following data is collected from PMM to database host:
 
-DSN and credentials for database access. A separate DB user is used (read-only) to access the database.
+    DSN and credentials for database access. A separate DB user is used (read-only) to access the database.
 
-**From DB Host to Cloud S3**
+    **From DB Host to Cloud S3**
 
-Th following data is collected from the database host to Cloud S3:
+    Th following data is collected from the database host to Cloud S3:
 
-Database backup (optional if PMM Admin configures this)
+    Database backup (optional if PMM Admin configures this)
 
-**From PMM Server to Percona Cloud**
+    **From PMM Server to Percona Cloud**
 
-Telemetry data is collected. PMM Server collects varying amounts of data from version to version, but no personal or confidential information is collected.
+    Telemetry data is collected. PMM Server collects varying amounts of data from version to version, but no personal or confidential information is collected.
 
 2. Where is the data transmitted?
 
@@ -34,17 +34,17 @@ Telemetry data is collected. PMM Server collects varying amounts of data from ve
 
 ## Personal data collection and processing 
 
-Define the purpose of collecting and processing personal data.
+1. Define the purpose of collecting and processing personal data.
 
-Our [Privacy Policy] (https://www.percona.com/privacy-policy) states that the data collection is conducted in order to provide the services and to improve the products we offer.
+    Our [Privacy Policy] (https://www.percona.com/privacy-policy) states that the data collection is conducted in order to provide the services and to improve the products we offer.
 
-We do not collect/transfer personal data explicitly. However, if query analytics is enabled and query example collection isn't disabled, we gather SQL query examples with real data, and personal data may appear there if it is stored. Data pertaining to QAN is always stored on the PMM server and is never sent elsewhere.
+    We do not collect/transfer personal data explicitly. However, if query analytics is enabled and query example collection isn't disabled, we gather SQL query examples with real data, and personal data may appear there if it is stored. Data pertaining to QAN is always stored on the PMM server and is never sent elsewhere.
 
-1. In the process of collecting data, how often (frequency), how much (volume), and which fields are processed (example, name, birth date, etc.)?
+2. In the process of collecting data, how often (frequency), how much (volume), and which fields are processed (example, name, birth date, etc.)?
 
-If Query Analytics is enabled and SQL query examples are gathered, we do not process personal or confidential information in any special way. The PMM server is unable to understand the meaning of the data contained within the SQL query. It is therefore processed as usual, which involves storing it on the PMM server and making it available to the user upon request. Data is gathered every minute.
+    If Query Analytics is enabled and SQL query examples are gathered, we do not process personal or confidential information in any special way. The PMM server is unable to understand the meaning of the data contained within the SQL query. It is therefore processed as usual, which involves storing it on the PMM server and making it available to the user upon request. Data is gathered every minute.
 
-Except for Grafana email addresses, PMM does not directly request or collect PII data. For more information about the collected telemetry data, refer to the [Percona Privacy Policy](http://www.percona.com/privacy-policy/).
+    Except for Grafana email addresses, PMM does not directly request or collect PII data. For more information about the collected telemetry data, refer to the [Percona Privacy Policy](http://www.percona.com/privacy-policy/).
 
 ### Data processed for other applications/third parties
 
@@ -54,23 +54,22 @@ Third parties or other applications are not able to access the data gathered by 
 
 ## Confidential data colection and processing 
 
-Define the purpose of collecting and processing confidential data.
+1. Define the purpose of collecting and processing confidential data.
 
-We do not collect/transfer confidential data explicitly. However, if query analytics is enabled and query example collection isn't disabled, we gather SQL query examples with real data, and confidential data may appear there if it is stored. Data pertaining to QAN is always stored on the PMM server and is never sent elsewhere.
+    We do not collect/transfer confidential data explicitly. However, if query analytics is enabled and query example collection isn't disabled, we gather SQL query examples with real data, and confidential data may appear there if it is stored. Data pertaining to QAN is always stored on the PMM server and is never sent elsewhere.
 
-1. In the process of collecting data, how often (frequency), how much (volume), and which fields are processed (example, name, birth date, etc.)?
+2. In the process of collecting data, how often (frequency), how much (volume), and which fields are processed (example, name, birth date, etc.)?
 
+    If Query Analytics is enabled and SQL query examples are gathered, we do not process confidential information in any special way. The PMM server is unable to understand the meaning of the data contained within the SQL query. It is therefore processed as usual, which involves storing it on the PMM server and making it available to the user upon request. Data is gathered every minute.
 
-If Query Analytics is enabled and SQL query examples are gathered, we do not process confidential information in any special way. The PMM server is unable to understand the meaning of the data contained within the SQL query. It is therefore processed as usual, which involves storing it on the PMM server and making it available to the user upon request. Data is gathered every minute.
+3. Is confidential data processed for other applications or parties? Should the data that is created and processed in the cloud service be available to other applications or even 3rd parties?
 
-2. Is confidential data processed for other applications or parties? Should the data that is created and processed in the cloud service be available to other applications or even 3rd parties?
+    We do not transmit personal or confidential data to Percona Cloud or third-party services/applications.
 
-We do not transmit personal or confidential data to Percona Cloud or third-party services/applications.
+4. How safe is the encryption? It's a must to encrypt all connections to and from the cloud including the data in the cloud storage.
 
-3. How safe is the encryption? It's a must to encrypt all connections to and from the cloud including the data in the cloud storage.
+    We use TLS for connections between:
 
-We use TLS for connections between:
-
-- Database host to PMM Server
-- PMM Server to Percona Cloud
-- PMM Server to remote database or optionally, depending on user configuration
+    - Database host to PMM Server
+    - PMM Server to Percona Cloud
+    - PMM Server to remote database or optionally, depending on user configuration
