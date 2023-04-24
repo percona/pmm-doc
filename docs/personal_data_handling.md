@@ -1,6 +1,6 @@
-# Personal or sensitive data handling in PMM
+# Personal data handling
 
-Following questions are being answered related to personal data handling in PMM:
+Following questions are being answered related to personal and confedential data handling in PMM:
 
 1. Which data specifically is being transmitted (non-personal data, only metrics)?
 
