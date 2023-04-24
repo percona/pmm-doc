@@ -424,8 +424,8 @@ pmm-admin add mysql --environment=test --custom-labels='source=slowlog'  --usern
 ### PMM user interface
 
 1. Select <i class="uil uil-cog"></i> *Configuration* → {{icon.inventory}} *Inventory*.
-2. Look in the *Services* tab for a matching *Service Type* (MySQL), *Service name*, *Addresses*, and any other details entered in the form.
-3. Look in the *Agents* tab to check the desired data source is being used.
+2. In the *Services* tab, verify the *Service name*, *Addresses*, and any other relevant information in the form.
+3. Expand the *Details* section in the *Options* column to make sure hat the *Agents* are using the desired data source.
 
 ### Command line
 
