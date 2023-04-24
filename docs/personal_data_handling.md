@@ -54,24 +54,24 @@ Third parties or other applications are not able to access the data gathered by 
 
 ## Confidential data colection and processing 
 
-1. Is confidential data processed? Describe which confidential data is used. Define the purpose of collecting and processing confidential data.
+Define the purpose of collecting and processing confidential data.
 
-We don't collect/transfer confidential data explicitly. But in case query analytics is enabled we gather SQL query examples with real data and confidential data may appear there if it is stored in the database.
+We do not collect/transfer confidential data explicitly. However, if query analytics is enabled and query example collection isn't disabled, we gather SQL query examples with real data, and confidential data may appear there if it is stored. Data pertaining to QAN is always stored on the PMM server and is never sent elsewhere.
 
-2. How often (frequency), how much (volume and) and which fields are processed during **confidential** data collection? For example, name, birth date etc.,.
+1. In the process of collecting data, how often (frequency), how much (volume), and which fields are processed (example, name, birth date, etc.)?
 
-In case Query Analytics is enabled and SQL query examples are gathered-  we don't use any special processing for personal or confidential data. PMM server has no clue about the meaning of the data inside the SQL query. So it is processed as usual - store inside the PMM server and present on the PMM UI by request.
-Data is gathered each minute.
 
-3. Is confidential data processed for other applications or parties? Should the data that is created and processed in the cloud service be available to other applications or even 3rd parties?
+If Query Analytics is enabled and SQL query examples are gathered, we do not process confidential information in any special way. The PMM server is unable to understand the meaning of the data contained within the SQL query. It is therefore processed as usual, which involves storing it on the PMM server and making it available to the user upon request. Data is gathered every minute.
 
-We don't transmit any personal or confidential data to Percona Cloud or third party services/applications.
+2. Is confidential data processed for other applications or parties? Should the data that is created and processed in the cloud service be available to other applications or even 3rd parties?
 
-4. Is the encryption guaranteed? All the connections from and to the cloud must be encrypted. The data in the cloud storage too.
+We do not transmit personal or confidential data to Percona Cloud or third-party services/applications.
+
+3. How safe is the encryption? It's a must to encrypt all connections to and from the cloud including the data in the cloud storage.
 
 We use TLS for connections between:
 
-- DB Host to PMM Server
+- Database host to PMM Server
 - PMM Server to Percona Cloud
-- PMM Server to remote DB (optionally, depends on configuration provided by User PMM Admin).
+- PMM Server to remote DB (optionally, depends on configuration provided by the user).
 
