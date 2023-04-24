@@ -52,7 +52,7 @@ What applications or third parties can access the data created and processed by 
 
 Third parties or other applications are not able to access the data gathered by PMM server.
 
-## Confidential data colection and processing 
+## Confidential data collection and processing 
 
 1. Define the purpose of collecting and processing confidential data.
 
