@@ -5,14 +5,12 @@ The following questions are being answered related to personal and confidential 
 
 1. Which type of data is transmitted?
 
-
-|**Data collection source**                                          | **Data collected** |
-| --------------------------------------------------------------- | ------------------------------------------------------
-| DB host to PMM                                                  | Database performance metrics <br/> SQL query examples for query analytics (optional).
-| PMM to DB Host                                                  | DSN and credentials for database access. A separate DB user is used (read-only) to access the database.
-| DB Host to Cloud S3                                             | Database backup - optional if PMM Administrator configures it.
-| PMM Server to Percona Cloud                                     | Telemetry data is collected. </br/> PMM Server collects varying amounts of data from version to version. <br/> No personal or confidential information is collected.
-
+      |**Data collection source**                                       | **Data collected** |
+      | --------------------------------------------------------------- | ------------------------------------------------------
+      | DB host to PMM                                                  | Database performance metrics <br/> SQL query examples for query analytics (optional).
+      | PMM to DB Host                                                  | DSN and credentials for database access. A separate DB user is used (read-only) to access the database.
+      | DB Host to Cloud S3                                             | Database backup - optional if PMM Administrator configures it.
+      | PMM Server to Percona Cloud                                     | Telemetry data is collected. </br/> PMM Server collects varying amounts of data from version to version. <br/> No personal or confidential information is collected.
 
 
 2. Where is the data transmitted?
