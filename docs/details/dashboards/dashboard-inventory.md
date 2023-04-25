@@ -8,13 +8,12 @@ To see it select <i class="uil uil-cog"></i> *Configuration* → {{icon.inventor
 
 Inventory objects form a hierarchy with Node at the top, then Service and Agents assigned to a Node.
 
-There are three tabs where items for each type are listed with their details:
+There are two tabs where items for each type are listed with their details:
 
 - *Services*
 
     Individual service names and where they run, against which agents will be assigned. Each instance of a service gets a `service_id` value that is related to a `node_id`. Examples are MySQL, Amazon Aurora MySQL. This feature also allows to support multiple mysqld instances on a single node, with different service names, e.g. `mysql1-3306`, and `mysql1-3307`.
 
-- *Agents*
 
     Each binary (exporter, agent) running on a client will get an `agent_id` value. Examples:
 
