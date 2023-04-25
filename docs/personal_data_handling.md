@@ -1,16 +1,17 @@
-# Sensitive data handling
+# Data handling in PMM - FAQ
+
 
 The following questions are being answered related to personal and confidential data handling in PMM:
 
-1. Which type of data is being transmitted (non-personal data, only metrics)?
+1. Which type of data is transmitted?
 
 
-|**Data collected from**                                          | **Description** |
+|**Data collection source**                                          | **Data collected** |
 | --------------------------------------------------------------- | ------------------------------------------------------
-| DB host to PMM                                                  | - Metrics <br /> - SQL query examples for query analytics (optional).
+| DB host to PMM                                                  | Database performance metrics <br/> SQL query examples for query analytics (optional).
 | PMM to DB Host                                                  | DSN and credentials for database access. A separate DB user is used (read-only) to access the database.
-| DB Host to Cloud S3                                             | Database backup (optional if PMM Admin configures this)
-| PMM Server to Percona Cloud                                     | Telemetry data is collected. PMM Server collects varying amounts of data from version to version, but no personal or confidential information is collected.
+| DB Host to Cloud S3                                             | Database backup - optional if PMM Administrator configures it.
+| PMM Server to Percona Cloud                                     | Telemetry data is collected. </br/> PMM Server collects varying amounts of data from version to version. <br/> No personal or confidential information is collected.
 
 
 
