@@ -46,7 +46,6 @@ Although PMM does not collect nor transfer personal data explicitly, in case que
 
 6. Is Personal Data processed for other applications or parties, and should the data that is processed in the cloud service be available to other applications or 3rd parties?
 
-
 PMM server doesn't pass any gathered, personal or confidential data to any third party or other applications nor to Percona Cloud.
 
 7. How safe is the encryption? It's a must to encrypt all connections to and from the cloud including the data in the cloud storage.
