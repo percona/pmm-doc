@@ -19,14 +19,11 @@ The following questions are being answered related to personal and confidential 
 
     PMM Administrator defines which Cloud S3 storage is used as a backup storage.
 
-
 3. What is the purpose and nature of data processing?
 
     As per our [Privacy Policy](https://www.percona.com/privacy-policy), the data collection purposes are to provide the services and product enhancements.
 
     Although, PMM does not collect nor transfer personal data explicitly, in case query analytics is enabled and query examples collection is not disabled, we gather SQL query examples with real data and personal data may appear there if it is stored in DB.  All QAN data always remains within the PMM server, and is never transmitted anywhere else.
-
-
 
 4. What is the frequency and volume of processed data?
 
