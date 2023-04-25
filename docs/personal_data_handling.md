@@ -15,38 +15,37 @@ The following questions are being answered related to personal and confidential 
 
 2. Where is the data transmitted?
 
-All data gathered from the DB Host is transmitted to the PMM Server. It is possible to transmit DB backups to Cloud S3 storage (optional). 
+    All data gathered from the DB Host is transmitted to the PMM Server. It is possible to transmit DB backups to Cloud S3 storage (optional). 
 
-PMM Administrator defines which Cloud S3 storage is used as a backup storage.
+    PMM Administrator defines which Cloud S3 storage is used as a backup storage.
 
 
 3. What is the purpose and nature of data processing?
 
-As per our [Privacy Policy](https://www.percona.com/privacy-policy), the data collection purposes are to provide the services and product enhancements.
+    As per our [Privacy Policy](https://www.percona.com/privacy-policy), the data collection purposes are to provide the services and product enhancements.
 
-Although, PMM does not collect nor transfer personal data explicitly, in case query analytics is enabled and query examples collection is not disabled, we gather SQL query examples with real data and personal data may appear there if it is stored in DB.  All QAN data always remains within the PMM server, and is never transmitted anywhere else.
+    Although, PMM does not collect nor transfer personal data explicitly, in case query analytics is enabled and query examples collection is not disabled, we gather SQL query examples with real data and personal data may appear there if it is stored in DB.  All QAN data always remains within the PMM server, and is never transmitted anywhere else.
 
 
 
 4. What is the frequency and volume of processed data?
 
+    Data is gathered each minute. In case Query Analytics is enabled and SQL query examples are gathered, we don't use any special processing for personal or confidential data. PMM server has no clue about the meaning of the data inside the SQL query. 
 
-Data is gathered each minute. In case Query Analytics is enabled and SQL query examples are gathered, we don't use any special processing for personal or confidential data. PMM server has no clue about the meaning of the data inside the SQL query. 
+    So it is processed as usual, which is to store inside the PMM server and present on the PMM UI by request.
 
-So it is processed as usual, which is to store inside the PMM server and present on the PMM UI by request.
-
-Other than email addresses for Grafana users, PMM does not directly ask or collect any other personal data. For more information about the telemetry data that is collected, please refer to the [Percona Privacy Policy](http://www.percona.com/privacy-policy/). 
+    Other than email addresses for Grafana users, PMM does not directly ask or collect any other personal data. For more information about the telemetry data that is collected, please refer to the [Percona Privacy Policy](http://www.percona.com/privacy-policy/). 
 
 5. What applications or third parties can access the data created and processed by the cloud service?
 
-Third parties or other applications are not able to access the data gathered by the PMM server.
+    Third parties or other applications are not able to access the data gathered by the PMM server.
 
-Although PMM does not collect nor transfer personal data explicitly, in case query analytics is enabled and query examples collection is not disabled, PMM gathers SQL query examples with real data and personal data may appear there if it is stored in DB.  All QAN data always remains within the PMM server, and is never transmitted anywhere else
+    Although PMM does not collect nor transfer personal data explicitly, in case query analytics is enabled and query examples collection is not disabled, PMM gathers SQL query examples with real data and personal data may appear there if it is stored in DB.  All QAN data always remains within the PMM server, and is never transmitted anywhere else
 
 
 6. Is Personal Data processed for other applications or parties, and should the data that is processed in the cloud service be available to other applications or 3rd parties?
 
-PMM server doesn't pass any gathered, personal or confidential data to any third party or other applications nor to Percona Cloud.
+    PMM server doesn't pass any gathered, personal or confidential data to any third party or other applications nor to Percona Cloud.
 
 7. How safe is the encryption? It's a must to encrypt all connections to and from the cloud including the data in the cloud storage.
 
