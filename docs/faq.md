@@ -185,9 +185,3 @@ If you are using OVF/AMI, you can change the default password through SSH by usi
 ```sh
 change-admin-password <new_password>
 ```
-
-
-
-
-
-
