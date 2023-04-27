@@ -4,7 +4,7 @@
     This is an Experimental Dashboard that is not part of the official Percona Monitoring and Management (PMM) deployment and might be updated. We ship this Dashboard to obtain feedback from our users.
 
 !!! note alert alert-primary ""
-    This dashboard will not work for minikube cluster because there are no drivers for it.
+    This dashboard will not work for minikube cluster as there are no drivers for it.
 
 
 ![!image](../../_images/PMM_K8s_volume.png)
