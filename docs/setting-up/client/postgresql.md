@@ -28,7 +28,7 @@ We recommend creating a PMM database account that can connect to the `postgres` 
 1. Create a user. This example uses `pmm`. (Replace `******` with a strong password of your choice.)
 
     ```sql
-    CREATE USER pmm WITH SUPERUSER ENCRYPTED PASSWORD '******';
+    CREATE USER pmm ENCRYPTED PASSWORD '******';
     ```
 
     If your database runs on Amazon RDS / Aurora PostgreSQL, The SUPERUSER cannot be assigned.  
