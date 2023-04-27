@@ -429,7 +429,7 @@ If the host where you will run PMM Server has no internet connection, you can do
     docker load -i pmm-server-{{release}}.docker
     ```
 
-6. [Run the container](#run) as if your image is already pulled.
+6. [Run the container](#run) as if your image is already pulled using your desired method for a storage volume (you can step over any docker pull commands as the image has been pre-staged).
 
 [tags]: https://hub.docker.com/r/percona/pmm-server/tags
 [Docker]: https://docs.docker.com/get-docker/
