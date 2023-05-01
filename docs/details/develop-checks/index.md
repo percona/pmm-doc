@@ -270,8 +270,6 @@ supervisorctl tail -f pmm-managed
 - There are to ways to reload check file:
    - Click `Run check` button (but it’s unavailable if you don’t have any tabs on advisors page and most likely that is the case during development)
    - Reload managed: `supervisorctl restart pmm-managed` (execute inside PMM server)
-- You can apply formatting rules to check file with tools from checked repo. Just invoke there `make init` to install tools (locally for checked project) and then `make format`. All check files in `checked/data` dir will be formatted.
-- Another useful
 
 
 ## Submit feedback
