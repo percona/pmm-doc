@@ -118,8 +118,7 @@ extra:
 
 # Common navigation for percona.com, render.com and PDF
 nav:
-  - Home: index.md 
-
+  - Home: index.md
   - Release Notes:
       - Release notes index: release-notes/index.md
       - "PMM 2.34.0 (2023-01-30)": release-notes/2.34.0.md
@@ -166,7 +165,7 @@ nav:
       - "PMM 2.1.0 (2019-11-11)": release-notes/2.1.0.md
       - "PMM 2.0.1 (2019-10-09)": release-notes/2.0.1.md
       - "PMM 2.0.0 (2019-09-19)": release-notes/2.0.0.md
-  - why_pmm.md
+  - features.md
   - quickstart.md
   - Install PMM:
       - Plan your PMM installation: 
