@@ -166,7 +166,7 @@ nav:
       - "PMM 2.0.1 (2019-10-09)": release-notes/2.0.1.md
       - "PMM 2.0.0 (2019-09-19)": release-notes/2.0.0.md
   - features.md
-  - quickstart.md
+  - getstarted.md
   - Install PMM:
       - Plan your PMM installation: 
         - plan-pmm-installation/hardware_and_system.md
