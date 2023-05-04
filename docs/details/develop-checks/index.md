@@ -252,14 +252,10 @@ To develop custom checks for PMM:
 
     ![!](../../_images/FailedChecks.png)
 
-8.  Go into the Docker container to output the logs of pmm-managed and read the check logs:
-
-```sh
-# get inside the container
-docker exec -it pmm-server bash
-# print and watch the logs
-supervisorctl tail -f pmm-managed
-```
+8.  Check out pmm-managed logs:
+    ```sh
+    docker exec -it pmm-server supervisorctl tail -f pmm-managed
+    ```
 
 # Troubleshooting and tips
 
