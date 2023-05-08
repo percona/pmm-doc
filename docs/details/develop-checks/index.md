@@ -33,7 +33,7 @@ PMM uses Alertmanager API to get information about failed checks and show them o
 ![!](../../_images/FrontEndChecks.png)
 
 ## Check format versions
-Since version 2.28 PMM uses Advisor checks format version 2. Format version 1 is deprecated.
+Starting with the 2.28 release, PMM uses Advisor checks format version 2. Format version 1 is deprecated.
 
 # Version 2 advisor checks for PMM 2.28 and newer
 PMM 2.28 upgraded Advisor Checks to version 2, which uses a slightly different structure than version 1 checks, created in 2.7 and earlier. This is because, compared to version 1 checks, checks created in 2.28 and later offer additional support for:
