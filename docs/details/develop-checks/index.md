@@ -263,7 +263,7 @@ To develop custom checks for PMM:
 If debug logging is enabled, you can disable it with the following environment variable: `PMM_DEBUG=0`.
 - All logs from checks subsystem has `component=checks` tag, so you can just filter `pmm-managed` logs with grep.
 - Local check file should always be linked to fake dev advisor: `advisor: dev`. If PMM does not display the **Development** tab on the **Advisors** page, make sure that you specify dev advisor in the check file.
-- If you still don't see `Development` tab on advisors page, that means that PMM can't load your file. Most likely it happened due formatting problems, check pmm-managed logs for details.
+- If this still doesn't display the **Development** tab, probably PMM could not load your file due to formatting issues. Check pmm-managed logs for details.
 - There are to ways to reload check file:
    - Click `Run check` button (but it’s unavailable if you don’t have any tabs on advisors page and most likely that is the case during development)
    - Reload managed: `supervisorctl restart pmm-managed` (execute inside PMM server)
