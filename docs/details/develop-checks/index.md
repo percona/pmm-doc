@@ -259,7 +259,8 @@ To develop custom checks for PMM:
 
 # Troubleshooting and tips
 
-- PMM produces a lot of logs in debug mode that bring no value for checks development but pollute log files with redundant information. If debug logging is enabled you can disable it with `PMM_DEBUG=0` environment variable.
+- in Debug mode, PMM generates a lot of redundant information in the log files, information that is not useful for developing checks. 
+If debug logging is enabled, you can disable it with the following environment variable: `PMM_DEBUG=0`.
 - All logs from checks subsystem has `component=checks` tag, so you can just filter `pmm-managed` logs with grep.
 - Local check file should be always linked to fake dev advisor: `advisor: dev`. If you don't see any tabs on Advisors page make sure that you specified dev advisor in the check file.
 - If you still don't see `Development` tab on advisors page, that means that PMM can't load your file. Most likely it happened due formatting problems, check pmm-managed logs for details.
