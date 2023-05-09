@@ -44,7 +44,9 @@ The following questions are being answered related to personal and confidential 
 
     PMM server doesn't pass any gathered, personal or confidential data to any third party or other applications nor to Percona Cloud.
 
-7. How safe is the encryption? It's a must to encrypt all connections to and from the cloud including the data in the cloud storage.
+7. How safe is the encryption? 
+
+It's a must to encrypt all connections to and from the cloud including the data in the cloud storage and PMM does so by default. 
 
     We use TLS for connections between:
 
