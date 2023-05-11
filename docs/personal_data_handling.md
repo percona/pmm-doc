@@ -9,15 +9,17 @@ The following questions are being answered related to personal and confidential 
       | --------------------------------------------------------------- | ------------------------------------------------------
       | DB host to PMM                                                  | Database performance metrics <br/> SQL query examples for query analytics (optional).
       | PMM to DB Host                                                  | DSN and credentials for database access. A separate DB user is used (limited access) to retreive metrics from the database.
-      | DB Host to Cloud S3                                             | Database backup - optional if PMM Administrator configures it.
-      | PMM Server to Percona Cloud                                     | Telemetry data is collected. </br/> PMM Server collects varying amounts of data from version to version. <br/> No personal or confidential information is collected.
+      | DB Host to S3 compatible storage location                       | Database backup - optional if PMM Administrator configures it with Public Cloud (AWS, GCP, etc) as a possible storage location.
+      | PMM Server to Percona Cloud                                     | Telemetry data is collected. </br/> PMM Server collects varying amounts of data from version to version, and no personal or confidential information is collected. See [here](https://docs.percona.com/percona-monitoring-and-management/how-to/configure.html#telemetry) for details on the data being transmitted.
 
 
-2. Where is the data transmitted?
+
+
+2. Where is the data obtained from the DB host transmitted?
 
     All data gathered from the DB Host is transmitted to the PMM Server. It is possible to transmit DB backups to Cloud S3 storage (optional). 
 
-    PMM Administrator defines which Cloud S3 storage is used as a backup storage.
+    Telemetry data is sent to Percona Cloud. This does not contain any sensitive or personally identifiable information.
 
 3. What is the purpose and nature of data processing?
 
@@ -27,8 +29,8 @@ The following questions are being answered related to personal and confidential 
 
 4. What is the frequency and volume of processed data?
 
-    Data is gathered each minute. In case Query Analytics is enabled and SQL query examples are gathered, we don't use any special processing for personal or confidential data. PMM server has no clue about the meaning of the data inside the SQL query. 
-
+    By default, metrics data is gathered every 5, 10 or 60 minutes. In case Query Analytics is enabled and SQL query examples are gathered every minute, we don't use any special processing for personal or confidential data. PMM server has no clue about the meaning of the data inside the SQL query.
+    
     So it is processed as usual, which is to store inside the PMM server and present on the PMM UI by request.
 
     Other than email addresses for Grafana users, PMM does not directly ask or collect any other personal data. For more information about the telemetry data that is collected, please refer to the [Percona Privacy Policy](http://www.percona.com/privacy-policy/). 
@@ -37,8 +39,6 @@ The following questions are being answered related to personal and confidential 
 
     Third parties or other applications are not able to access the data gathered by the PMM server.
 
-    Although PMM does not collect nor transfer personal data explicitly, in case query analytics is enabled and query examples collection is not disabled, PMM gathers SQL query examples with real data and personal data may appear there if it is stored in DB.  All QAN data always remains within the PMM server, and is never transmitted anywhere else
-
 
 6. Is Personal Data processed for other applications or parties, and should the data that is processed in the cloud service be available to other applications or 3rd parties?
 
@@ -46,13 +46,15 @@ The following questions are being answered related to personal and confidential 
 
 7. How safe is the encryption? 
 
-It's a must to encrypt all connections to and from the cloud including the data in the cloud storage and PMM does so by default. 
+    It's a must to encrypt all connections to and from the cloud including the data in the cloud storage and PMM does so by default. 
 
-    We use TLS for connections between:
+    We use TLS (v1.2 at least) for connections between:
 
-    - Database host to PMM Server
+    - Database host to PMM Server (optionally, depending on user configuration)
+
     - PMM Server to Percona Cloud
     - PMM Server to remote database (optionally, depending on user configuration)
+    - End-user to PMM Server web interface/api (self-signed by default)
 
     For more information about Percona security posture, please refer to our [Trust Center here](https://trust.percona.com/).
 
