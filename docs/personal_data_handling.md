@@ -14,7 +14,6 @@ The following questions are being answered related to personal and confidential 
 
 
 
-
 2. Where is the data obtained from the DB host transmitted?
 
     All data gathered from the DB Host is transmitted to the PMM Server. It is possible to transmit DB backups to Cloud S3 storage (optional). 
