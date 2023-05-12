@@ -81,6 +81,12 @@ plugins:
   search:
     separator: '[\s\-,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
   git-revision-date: {}
+  meta-descriptions:
+    export_csv: false
+    quiet: false
+    enable_checks: false
+    min_length: 50
+    max_length: 160
   macros:
     include_yaml:
       - "variables.yml"
@@ -304,6 +310,7 @@ nav:
       - "Create a database cluster from a template": dbaas/DBaaS_template.md
     - "Backup and restore": dbaas/backup_restore.md
   - faq.md
+  - personal_data_handling.md
   - Release Notes:
       - release-notes/index.md
       - "PMM 2.37.0": release-notes/2.37.0.md
