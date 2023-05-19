@@ -187,4 +187,4 @@ change-admin-password <new_password>
 
 ## How PMM handles personal and confidential data
 
-For information on how PMM handles personal and confidential data refer to our [Privacy Policy](https://www.percona.com/privacy-policy).
+Read our [Privacy Policy](https://www.percona.com/privacy-policy) for information on how PMM handles personal and confidential data. For more technical details, see []()
