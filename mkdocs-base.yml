@@ -81,6 +81,12 @@ plugins:
   search:
     separator: '[\s\-,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
   git-revision-date: {}
+  meta-descriptions:
+    export_csv: false
+    quiet: false
+    enable_checks: false
+    min_length: 50
+    max_length: 160
   macros:
     include_yaml:
       - "variables.yml"
@@ -194,6 +200,7 @@ nav:
       - details/architecture.md
       - details/interface.md
       - details/pmm_components_and_versions.md
+      - details/personal_data_handling.md
       - Develop Advisor checks:
           - details/develop-checks/index.md
       - Dashboards:
