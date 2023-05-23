@@ -50,8 +50,10 @@ extra_css:
   - css/percona.css
   - css/lightgallery.min.css
 
-#extra_javascript:
+extra_javascript:
 #  - js/lightgallery.min.js
+  - js/promptremover.js
+
 
 markdown_extensions:
   attr_list: {}
