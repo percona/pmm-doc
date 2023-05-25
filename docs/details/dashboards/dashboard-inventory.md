@@ -18,6 +18,8 @@ You can check Query Analytics information and the Service Overview Dashboard for
 
 From here you can also check additional information about the service, by clicking on the <image src="../../_images/arrow-downward.ico" width="15px" aria-label="downward arrow"/> icon. This expands the service entry to show reference information like service labels and IDs.
 
+![!image](../../_images/PMM_Inventory_Service_Selection.png)
+
 Each instance of a service gets a `service_type` attribute so one can clearly tell what type of database it is, for instance: `mysql`, `postgresql`, `mongodb`, etc. Every service is related to a certain node via its `node_id` attribute. This feature allows to support multiple instances on a single node, with different service names, e.g. `mysql1-3306`, and `mysql1-3307`.
 
 Each binary (exporter, agent) running on a client will get an `agent_type` value. Examples:
@@ -25,6 +27,10 @@ Each binary (exporter, agent) running on a client will get an `agent_type` value
 - `pmm-agent` is at the top of the tree, assigned to PMM Agent itself
 - `node_exporter` is assigned to an agent that extracts the node metrics
 - `mysqld_exporter` and `qan-mysql-perfschema-agent` are assigned to agents that extract metrics from mysql and its performance schema respectively.
+
+To view the agents running on a service and their health status, click **OK** under the **Monitoring** column. Furthermore, you can also check the properties of a particular agent by clicking the <image src="../../_images/dots-three-vertical.ico" width="15px" aria-label="triple dots" /> icon under the **Options** column.
+![!image](../../_images/PMM_Inventory_Service_Agent_Properties.png)
+
 
 ### **Nodes** tab
 
@@ -43,7 +49,7 @@ To see the details of the agents running, do the following:
 
 - Click on the down arrow under the Options column for further details about a specific agent.
 - Select the node and click the down key to check details about an agent and their current health status.
-        ![!image](../../_images/PMM_Inventory_Agent_Details.png)
+        ![!image](../../_images/PMM_Inventory_Node_Agent_Properties.png)
 
 
 ## Removing items from the inventory
