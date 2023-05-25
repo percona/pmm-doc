@@ -34,6 +34,14 @@ Each `node_id` is associated with a `machine_id` (from `/etc/machine-id`). Nodes
 
 By expanding the entry from the options column, you can check the node labels and attributes.
 
+Starting with PMM 2.380, you can see the number of agents running on any particular node. When you click on any node, the UI navigates to the view of agents, which is filtered to display only agents related to that specific node. 
+
+To see the details of the agents running, do the following:
+
+- Select the node and click OK. A page that provides the user with crucial information regarding the total number of agents deployed is displayed.
+- Click on the down arrow under the Options column for further details about a specific agent.
+- Select the node and click the down key to check details about an agent and their current health status.
+
 ## Removing items from the inventory
 
 To remove items from the inventory:
