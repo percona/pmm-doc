@@ -44,11 +44,11 @@ Starting with PMM 2.38.0, you can see the number of agents running on any partic
 
 To see the details of the agents running, do the following:
 
-1. Select the node and click **OK** or **Failed**. A page that provides the user with crucial information regarding the total number of agents deployed is displayed.
+1. Under the **Moitoring** column, click **OK** or **Failed**. A page that provides the user with crucial information regarding the total number of agents deployed is displayed.
         ![!image](../../_images/PMM_Inventory_Node_Selection.png)
 
-2. Click on the down arrow under the Options column for further details about a specific agent.
-3. Select the node and click the down key to check details about an agent and their current health status.
+2. Click on the <image src="../../_images/dots-three-vertical.ico" width="15px" aria-label="triple dots" /> icon under the **Options** column to view the properties of a specific agent.
+3.Under the **Options** column, click on the <image src="../../_images/dots-three-vertical.ico" width="15px" aria-label="triple dots" /> icon to check the properties and the current health status of an agent.
         ![!image](../../_images/PMM_Inventory_Node_Agent_Properties.png)
 
 
