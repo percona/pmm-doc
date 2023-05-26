@@ -28,7 +28,7 @@ Each binary (exporter, agent) running on a client will get an `agent_type` value
 - `node_exporter` is assigned to an agent that extracts the node metrics
 - `mysqld_exporter` and `qan-mysql-perfschema-agent` are assigned to agents that extract metrics from mysql and its performance schema respectively.
 
-To view the agents running on a service and their health status, click **OK** under the **Monitoring** column. Furthermore, you can also check the properties of a particular agent by clicking the <image src="../../_images/dots-three-vertical.ico" width="15px" aria-label="triple dots" /> icon under the **Options** column.
+To view the agents running on a service and their health status, click **OK** or **Failed** under the **Monitoring** column. Furthermore, you can also check the properties of a particular agent by clicking the <image src="../../_images/dots-three-vertical.ico" width="15px" aria-label="triple dots" /> icon under the **Options** column.
 ![!image](../../_images/PMM_Inventory_Service_Agent_Properties.png)
 
 
@@ -44,7 +44,7 @@ Starting with PMM 2.38.0, you can see the number of agents running on any partic
 
 To see the details of the agents running, do the following:
 
-1. Select the node and click OK. A page that provides the user with crucial information regarding the total number of agents deployed is displayed.
+1. Select the node and click **OK** or **Failed**. A page that provides the user with crucial information regarding the total number of agents deployed is displayed.
         ![!image](../../_images/PMM_Inventory_Node_Selection.png)
 
 2. Click on the down arrow under the Options column for further details about a specific agent.
