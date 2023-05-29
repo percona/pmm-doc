@@ -28,7 +28,7 @@ Each binary (exporter, agent) running on a client will get an `agent_type` value
 - `node_exporter` is assigned to an agent that extracts the node metrics
 - `mysqld_exporter` and `qan-mysql-perfschema-agent` are assigned to agents that extract metrics from mysql and its performance schema respectively.
 
-To view the agents running on a service and their health status, click **OK** or **Failed** under the **Monitoring** column. Furthermore, you can also check the properties of a particular agent by clicking the <image src="../../_images/dots-three-vertical.ico" width="15px" aria-label="triple dots"/> icon under the **Options** column.
+To view the agents running on a service and their health status, click **OK** or **Failed** under the **Monitoring** column. Furthermore, you can also check the properties of a particular agent by clicking the <image src="../../_images/arrow-downward.ico" width="15px" aria-label="downward arrow"/> icon under the **Options** column.
 ![!image](../../_images/PMM_Inventory_Service_Agent_Properties.png)
 
 
