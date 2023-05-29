@@ -14,7 +14,7 @@ Shows individual services, the nodes on which they run, and the Agents that help
 The **Status** column shows the status of your databases based on metrics coming directly from the database.
 The **Monitoring** column summarizes the status of all the Agents assigned to the service.
 
-You can check Query Analytics information and the Service Overview Dashboard for each service by clicking on the <image src="../../_images/dots-three-vertical.ico" width="15px" aria-label="triple dots" /> icon in the **Options** column.
+You can check Query Analytics information and the Service Overview Dashboard for each service by clicking on the <image src="../../_images/dots-three-vertical.ico" width="15px" aria-label="triple dots"/> icon in the **Options** column.
 
 From here you can also check additional information about the service, by clicking on the <image src="../../_images/arrow-downward.ico" width="15px" aria-label="downward arrow"/> icon. This expands the service entry to show reference information like service labels and IDs.
 
@@ -44,11 +44,14 @@ Starting with PMM 2.38.0, you can see the number of agents running on any partic
 
 To see the details of the agents running, do the following:
 
-1.On the **Nodes** tab,  under the **Monitoring** column, click **OK** or **Failed** depending on the status of the node that you have selected. A page that provides the user with crucial information regarding the total number of agents deployed on that node is displayed.. A page that provides the user with crucial information regarding the total number of agents deployed on that node is displayed.
+1.On the **Nodes** tab,  under the **Monitoring** column, click **OK** or **Failed** depending on the status of the node that you have selected. A page that provides the user with crucial information regarding the total number of agents deployed on that node is displayed.
+
         ![!image](../../_images/PMM_Inventory_Node_Selection.png)
 
 2. Click on the <image src="../../_images/dots-three-vertical.ico" width="15px" aria-label="triple dots" /> icon under the **Options** column to view the properties of a specific agent.
-3.  On the **Nodes** tab, under the **Options** column, click on the <image src="../../_images/dots-three-vertical.ico" width="15px" aria-label="triple dots" /> icon for the selected node to check the properties and the current health status of an agent.
+
+3.  On the **Nodes** tab, under the **Options** column, click on the <image src="../../_images/dots-three-vertical.ico" width="15px" aria-label="triple dots"/> icon for the selected node to check the properties and the current health status of an agent.
+        
         ![!image](../../_images/PMM_Inventory_Node_Agent_Properties.png)
 
 
