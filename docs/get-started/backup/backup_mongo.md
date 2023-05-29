@@ -1,6 +1,6 @@
 Supported setups for MongoDB backups
 
-PMM supports the following actions for For MongoDB backups. Restoring for sharded cluster configurations is currently supported from the CLI, and is handled via [Percona Backup for MongoDB](https://docs.percona.com/percona-backup-mongodb/usage/restore.html).
+PMM supports the following actions for MongoDB backups. Restoring for sharded cluster configurations is currently supported from the CLI, and is handled via [Percona Backup for MongoDB](https://docs.percona.com/percona-backup-mongodb/usage/restore.html).
 
 Replica set setups for:
 
