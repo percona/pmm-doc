@@ -18,7 +18,14 @@ Enable the **Backup Management** option in PMM's Advanced Settings to activate t
 
 ## Supported setups
 
-For MySQL databases, you can create and restore on-demand and scheduled physical backups. For MongoDB, you can create and restore physical, logical and Point-in-Time-Recovery (PITR) backups, both on-demand and scheduled.
+For MySQL databases, you can create and restore on-demand and scheduled physical backups. 
+For MongoDB, you can create and restore physical, logical and Point-in-Time-Recovery (PITR) backups, both on-demand and scheduled. 
+
+### Sharded cluster configurations
+PMM supports creating backups of a sharded clustes. However, restoring these backup artifacts is not handled end-to-end, and requires Percona Backup for MongoDB.
+
+For information on restoring sharded backups, check the [PBM documentation](https://docs.percona.com/percona-backup-mongodb/usage/restore.html)
+  
 
 ## Start here
 To learn how to create and restore backups, check out subtopics below:
