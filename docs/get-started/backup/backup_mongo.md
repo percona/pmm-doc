@@ -15,4 +15,4 @@ Sharded clusters for:
   - Creating Physical snapshot backups
   - Creating logical PITR backups both locally and on S3-compatible object storage
  
-For a detailed overview of the supported setups for MongoDB, check out the [Support matrix](../backup/mongodb_limitations.md)
+For a detailed overview of the supported setups for MongoDB, check out the [Support matrix](../backup/mongodb_limitations.md).
