@@ -10,6 +10,7 @@ Replica set setups for:
   - Creating logical PITR backups both locally and on S3-compatible object storage. Restoring logical PITR backups from S3-compatible object storage.
   
 Sharded clusters for:
+
   - Storing backups on Amazon S3-compatible object storage, and on mounted filesystem
   - Creating Logical snapshot backups
   - Creating Physical snapshot backups
