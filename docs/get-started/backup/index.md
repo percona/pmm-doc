@@ -22,7 +22,7 @@ For MySQL databases, you can create and restore on-demand and scheduled physical
 For MongoDB, you can create and restore physical, logical and Point-in-Time-Recovery (PITR) backups, both on-demand and scheduled.
 
 ### Sharded cluster configurations
-PMM supports creating backups of sharded clusters. However, the restoring process is not handled end-to-end, and requires you to manually restore the artifacts using the CLI in Percona Backup for MongoDB.
+PMM 2.38 added support for creating backups of sharded clusters. However, the restoring process is not handled end-to-end, and requires you to manually restore the artifacts using the CLI in Percona Backup for MongoDB.
 
 For information on restoring sharded backups, check the [PBM documentation](https://docs.percona.com/percona-backup-mongodb/usage/restore.html)
   
