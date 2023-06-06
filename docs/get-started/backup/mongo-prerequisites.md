@@ -19,4 +19,4 @@ Services that do not specify a cluster name should be removed and re-added using
    
 
 !!! caution alert alert-warning "Important"
-      Use `pbm` in manual mode only for restoring sharded cluster backups or other operations that can only be completed via the PBM CLI! Since PMM takes care of the PBM configuration, any unecessary manual intervention can break the state.
+      Use `pbm` in manual mode only for restoring sharded cluster backups or other operations that can only be completed via the PBM CLI! Since PMM takes care of the PBM configuration, any unnecessary manual intervention can break the state.
