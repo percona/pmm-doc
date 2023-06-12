@@ -41,11 +41,6 @@ You can check the alert templates available for your account under **Alerting > 
 2. Custom templates created or uploaded on the **Alerting page > Alert Templates** tab.
 3. Custom template files available in your ``yaml srv/alerting/templates`` directory. PMM loads them during startup.
 
-### Silences
-
-Silences specify periods of time to suppress alerts and their associated notifications. During a silence, PMM continues to track metrics but does not trigger alerts or send notifications to any specified contact points. Once the silence expires alerts and notifications will resume.
-For example, you can create a silence to suppress trivial notifications during weekends.
-
 ### Notification policies
 
 Notification policies determine how Grafana alerts are routed to contact points by setting where, when, and how to send notifications.
@@ -73,82 +68,64 @@ To use SMTP with a PMM Docker installation:
 
 2. Pass in the `.env` file to Docker run using the `--env-file` flag: ```docker run --env-file=.env -p 443:443 -p 80:80 percona/pmm-server:2```.
 
-3. In the grafana.ini file, add the following section and lines:
-       ` [smtp]`
-       ` enabled = true`
-        `host = name and port of SMTP server (i.e. smtp.gmail.com:465) `
-       ` user = user@domain.com`
-    `    password = app email password` 
-    For information about app passowrds, see the [Gmail documentation](https://support.google.com/mail/answer/185833?hl=en)
-4. Save the file and restart grafana from *(/etc/grafana)* using the following command: `supervisorctl restart grafana`.
-
-
 #### Restore SMTP settings following an upgrade
 
-Upgrading PMM will overwrite the **grafana.ini** file with a newer version. If you configured PMM to use SMTP settings via environment variables, you do not need to do anything after an upgrade as your settings will be transferred. If the SMTP settings were configured directly in the **grafana.ini** file, you will need to manually backup the .ini file and copy your SMTP settings after the upgrade. This is because upgrading PMM will overwrite the grafana.ini .
+Upgrading PMM will overwrite the **grafana.ini** file with a newer version. If you configured PMM to use SMTP settings via environment variables, you do not need to do anything after an upgrade as your settings will be transferred.
+
+If the SMTP settings were configured directly in the **grafana.ini** file, make sure to manually back up the .ini file and copy your SMTP settings after the upgrade. This is because upgrading PMM will overwrite the grafana.ini file.
+
+PMM's root notification policy,**grafana-default-email**, uses Email as the default contact point. To use this default contact, configure it with your email user account information so PMM can out PMM will show a **No Attempts** status next to this contact point.
+
+To edit the root notification policy:
+1. Click the Edit button in the **Actions** column.
+2. Enter the email addresses of the recipients for the alert notifications.
+3. Fill in any relevant optional email settings. For example, you could choose to send one single email to all the recepients, or include an optional message. 
+6. If you do not want to be notified when an alert resolves, expand **Notification settings**, and tick the **Disable Resolved Message** checkbox.
+7. Click the **Save** button then click **Test** to send a test email and make sure your contact point works as expected.
+
 
 ### Contact points
 
-Contact points specify how PMM should deliver Grafana-managed alerts. When an alert fires, a notification is sent to the specified contact points.
+Contact points specify how PMM should deliver Grafana-managed alerts. When an alert fires, PMM sends a notification to the specified contact points.
 
 Depending on the severity of an alert, you might want to send different alerts to different channels. For example, you can deliver common alerts via Slack channel, but send an email notification for potentially critical issues.  
 
-PMM's root notification policy, **grafana-default-email**,  uses Email as the default contact point. Howeverm the default contact ocv vxYou change the default contact point of this notification policy to use another contact point. You can even create the contact point at the same time as editing the root policy.
-
-This default contact point needs to be configured , as there is some additional configuration that must be done before email can be used to send out notifications to a contact point (SMTP - discussed above). That is why you will see the health says “no attempts”. 
-
+#### Create a new contact point
 
 To create a new contact point:
-
 1. Go to **Alerting > Contact points** and click **New Contact Point**.
-2. Enter a name and choose the contact point type from the dropdown list. You can choose from a variety of contact points, including Slack, email, webhooks, PagerDuty, and more.
-3. Dependinf on the type of contact point, the n slack as our Contact Point, the information fields have changed to reflect additional information that is required to send notifications through slack, like the recipient, webhook URL etc. We will use the webhook URL, which needs to be provided to you by your slack administrator. 
-The last setting is at the bottom of the page under notification settings called Disable Resolved Message. By default, when the alert threshold that generated the alert falls below the alert’s configured threshold, a notification can be sent to advise of this. Check the box if you don’t want to enable this feature.
+2. Enter a name and choose the contact point type from the drop-down list. You can choose from a variety of contact points, including Slack, email, webhooks, PagerDuty, and more.
+3. Fill out the mandatory fields. For example, for Slack, PMM requires the recipient information, the API token and the webhook URL, which you can get from your Slack administrator.
+4. Expand **Optional settings** and fill in any other relevant settings.
+5. If you do not want to be notified when an alert resolves, expand **Notification settings**, and tick the **Disable Resolved Message** checkbox.
+6. If you want your contact point to notify via multiple channels, for example both via Email and Teams, click **New contact point type** and fill out additional contact point type details.
+7. Click **Save contact point** button at the bottom of the page. Your new contact point is now listed under **Alerting > Contact points**.
 
 
-Before we finish our discussion on contact points, let’s go back for a moment to look at the slack contact point we just created.
+#### Add new notification policy
+After setting up a contact point, you can use it to create new notification policies. 
+Open the **Notifications** tab and edit the default Root policy or click **New specific policy** to create a custom one.
 
-Notice at the bottom of the page we have an option to create a new contact point within the current one….Within any contact point, you can add additional contact points…we could also add another contact point like teams, in which case notifications will be sent to both slack and teams.
-[TIP] If you are going to use a contact point with multiple channels as we just described, name your contact points to reflect this. For the previous example, we could call it  “slack/teams[action – add teams to name]”. This could be useful down the road if you have to decide whether to keep or delete a contact point, as you can see by the name of the person who receives the notifications.
-Question: What do you think would happen if you tried to delete a contact point that is associated with an existing notification policy? We wouldn’t want that. If you ever want to delete a contact point, rest assured that PMM will NOT allow you to delete a contact point if it is being used in a notification policy. If I try to delete this contact point, we will receive a message that this contact point cannot be deleted because it is currently being used in one or more notification policies. 
-Now that we have the required SMTP information in the grafana.ini file, we can start using email as a contact points; 
-Let’s create an email contact point:
-Name the contact point
-Choose email as contact point type
-Addresses – these are the email addresses of the recipients of the alert notification
-Optional email settings – we can send only 1 single email to all recipients if we wish
-Optional message to be included with the email
-As we saw with our slack notification, we also have the option to disable resolved messages
-Save
+### Root policy fields
+- **Default contact point **- The contact point to send notifications to that did not match any specific policy.
+- **Group by** - Defines how alert rules are processed into notifications. If multiple alerts are matched for this policy, they will be grouped based on these labels and a notification will be sent per group. Mandatory for root policy, optional for nested specific policies. If a specific policy does not specify own grouping, root policy grouping will be used instead.
+- **Group timing options**- defines how notification wait times are processed. These are short pauses the system can take to efficiently process multiple sets of alerts for notifications.
+- **Group wait** - How long to wait to buffer alerts of the same group before sending a notification initially. Default is 30 seconds.
+- **Group interval** - Default is to wait 5 minutes to send a batch of new alerts after the first notification was sent.
+**Repeat interval** - Default is to wait four hours to resend an alert after being successfully sent and no new alerts were added to the group. 
 
-Now we can observe this contact point on the contact points page 
-
-[Demo] Lets Create a New Notification Policy with the contact point we created called slack test march 30 : 
-
-Matchers (labels):
-Match all alert instances (default); No matchers, this policy will handle ALL ALERT INSTANCES (could be a LOT); use alert rule, template name, nodename, alerting=1
-Choose Contact point: 
-Continue matching subsequent sibling nodes? (currently re-writing this section)
-Override grouping (for testing choose “1” to get notifications every 60 secs – otherwise use defaults)
-Investigate - Override general timings (for testing choose “1” to get notifications every 60 secs – otherwise use defaults)
-Mute Timings: This is NOT the same as an alert silence…it will not affect what you see on alert rules/fired alert pages (confirm)…it only STOPS notifications getting created/sent out to contact points, nothing else
-If you have already created  a mute timing, it can be applied at the time you are creating a notification policy, or the mute timing can be added to the notification policy by editing the policy and then adding the mute timing
-TIP: VERY IMPORTANT: Time specified in mute timing must be in UTC and military format i.e. 14:00 not 2:00 PM
-
-
-
-
-
-
-
-
-
-
-
+### Specific policy fields
+- **Contact point**- The contact point to send notification to if alert matched this specific policy but did not match any of it’s nested policies, or there were no nested specific policies.
+- **Matching labels** - define the rules for matching alert labels. A policy will match an alert if alert’s labels match all of the matching labels specified on the policy. If there are no matchers, the policy will handle ALL ALERT INSTANCES. 
+- **Continue matching subsequent sibling nodes** - If not enabled and an alert matches this policy but not any of it’s nested policies, matching will stop and a notification will be sent to the contact point defined on this policy. If enabled, notification will be sent but alert will continue matching subsequent siblings of this policy, thus sending more than one notification. Use this if for example you want to send notification to a catch-all contact point as well as to one of more specific contact points handled by subsequent policies.
+- **Override grouping** - Toggle if you want to override grouping for this policy. If toggled, you will be able to specify grouping same as for root policy described above. If not toggled, root policy grouping will be used. 
+Toggle if you want to override group timings for this policy. If toggled, you will be able to specify group timings same as for root policy described above. If not toggled, root policy group timings will be used.
+- **Mute Timings**: This stops notifications from being sent out to contact points. 
+IMPORTANT: Time specified in mute timing must be in UTC and military format i.e. 14:00 not 2:00 PM.
 
 
 ## Create a Percona templated alert
-This topic focuses on creating an alert rule based on PMM templates. For information on working with the other alert types, check the Grafana documentation on [Grafana Labs](https://grafana.com/docs/grafana/latest/alerting/).
+This section focuses on creating an alert rule based on PMM templates. For information on working with the other alert types, check the Grafana documentation on [Grafana Labs](https://grafana.com/docs/grafana/latest/alerting/).
 
 ### Provision alert resources
 Before creating PMM alert rules, configure the required alert resources:
@@ -243,11 +220,29 @@ After provisioning the resources required for creating Percona templated alerts,
 ## Silence alerts
 Create a silence when you want to stop notifications from one or more alerting rules.
 
-Silences stop notifications from being sent to your specified contact points.
+ During a silence, PMM continues to track metrics but does not trigger alerts or send notifications to any specified contact points. Once the silence expires alerts and notifications will resume.
+
+ For example, you can create a silence to suppress trivial notifications during a specific weekend.
 
 Silenced alerts are still recorded under **Alerting > Fired Alerts** so that you can review them later. Silenced alerts are disabled for as long as it's specified in the Silence Duration or until you remove a silence.
 
-For information on creating silences, see [About alerting silences](https://grafana.com/docs/grafana/latest/alerting/manage-notifications/create-silence/) in the Grafana documentation.
+#### Add a silences
+
+You can easily silence an alert from the **Fired alerts** page or from the **Alert rules** page.
+
+You can also create a silence from the **Silences** page, but here you would also need to define labels that match the alert to you want to silence.
+To create a new silence from the **Silences** page:
+
+1. Click the **New Silence** button.
+2. Select the start and end date to indicate when the silence should go into effect and expire.
+3. Optionally, update the duration to alter the time for the end of silence in the previous step to correspond to the start plus the duration.
+4. Enter one or more matching labels by filling out the **Name** and **Value** fields. Matchers determine which rules the silence will apply to.
+5. Enter a comment.
+6. Review the affected alert intstances that will be silenced.
+7. Click **Sumbit** to create the silence.
+ 
+
+For more information on working with silences, see [About alerting silences](https://grafana.com/docs/grafana/latest/alerting/manage-notifications/create-silence/) in the Grafana documentation.
 
 ## Deprecated alerting options
  PMM 2.31 introduced Percona Alerting which replaces the old Integrated Alerting in previous PMM versions. In addition to full feature parity, Percona Alerting includes additional benefits like Grafana-based alert rules and a unified, easy-to-use alerting command center on the **Alerting** page.
