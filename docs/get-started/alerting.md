@@ -39,7 +39,7 @@ You can check the alert templates available for your account under **Alerting > 
 
 1. Built-in templates, available out-of-the-box with PMM.
 2. Custom templates created or uploaded on the **Alerting page > Alert Templates** tab.
-3. Custom template files available in your ``yaml srv/alerting/templates`` directory. PMM loads them during startup.
+3. Custom template files available in your ``srv/alerting/templates`` directory. PMM loads them during startup.
 
 ### Contact points
 
