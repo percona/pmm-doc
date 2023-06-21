@@ -73,7 +73,9 @@ Values for the *Custom* preset can be entered as values, or changed with the arr
 
 The *Telemetry* switch enables gathering and sending basic **anonymous** data to Percona, which helps us to determine where to focus the development and what is the uptake for each release of PMM. Specifically, gathering this information helps determine if we need to release patches to legacy versions beyond support, determining when supporting a particular version is no longer necessary, and even understanding how the frequency of release encourages or deters adoption.
 
-To see that information that is being collected bt telemetry navigate to *Settings* page from the [main menu](../details/interface.md#main-menu) with <i class="uil uil-cog"></i> *Configuration* → <i class="uil uil-setting"></i> *Settings*.
+To see the information that is being collected by telemetry navigate to *Settings* page from the [main menu](../details/interface.md#main-menu) with <i class="uil uil-cog"></i> *Configuration* → <i class="uil uil-setting"></i> *Settings* → *Advanced Settings* → *Telemetry* and hover over the exclamation mark.
+
+![!image](../_images/PMM_Settings_Advanced_Settings_Telemetry.png)
 
 
 We do not gather anything that identify a system, but the following two points should be mentioned:
@@ -89,10 +91,6 @@ The landing page for this service, [check.percona.com](https://check.percona.com
 Grafana’s [anonymous usage statistics](https://grafana.com/docs/grafana/latest/administration/configuration/#reporting-enabled) is not managed by PMM. To activate it, you must change the PMM Server container configuration after each update.
 
 As well as via the *PMM Settings* page, you can also disable telemetry with the `-e DISABLE_TELEMETRY=1` option in your docker run statement for the PMM Server.
-
-!!! note alert alert-primary ""
-
-    Telemetry is sent straight away; the 24 hour grace period is not honored.
 
 ### Check for updates
 
