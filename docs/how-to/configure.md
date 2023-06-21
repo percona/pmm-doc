@@ -97,29 +97,23 @@ The following are some of the commonly used environment varibles for telemetry:
 ```sh
 DISABLE_TELEMETRY=true
 ```
-     Disable telemetry feature
+      Disable telemetry feature
 
 ```sh
 PERCONA_TEST_TELEMETRY_DISABLE_SEND=true
 ```
-  fetch metrics, but do not send to Platform
+    fetch metrics, but do not send to Platform
 
 ```sh
 PERCONA_TEST_TELEMETRY_DISABLE_START_DELAY=true  
-``
-   fetch metrics during PMM startup
+```
+    fetch metrics during PMM startup
 
 ```sh
 PERCONA_TEST_TELEMETRY_INTERVAL=24h 
 ```
+    change interval for telemetry iteration (fetching+sending metrics)
 
-   change interval for telemetry iteration (fetching+sending metrics)
-
-
-
-
-
-3:27
 
 
 For information on the various config parameters for telemetry, see the [config file](https://github.com/percona/pmm/blob/main/managed/services/telemetry/config.default.yml).
