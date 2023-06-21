@@ -77,7 +77,6 @@ To see the metrics being collected by telemetry navigate to *Settings* page from
 
 ![!image](../_images/PMM_Settings_Advanced_Settings_Telemetry.png)
 
-
 We do not gather anything that identify a system, but the following two points should be mentioned:
 
 1. The Country Code is evaluated from the submitting IP address before being discarded.
@@ -92,9 +91,15 @@ Grafana’s [anonymous usage statistics](https://grafana.com/docs/grafana/latest
 
 As well as via the *PMM Settings* page, you can also disable telemetry with the `-e DISABLE_TELEMETRY=1` option in your docker run statement for the PMM Server.
 
+For details on the various parameters for telemetry, see the [config file](https://github.com/percona/pmm/blob/main/managed/services/telemetry/config.default.yml).
+
+
+
 !!! note alert alert-primary ""
 
     PMM retains the telemetry data by default for 30 days. However, this can be modified by an admin from the settings page.
+
+For deta
 
 ### Check for updates
 
