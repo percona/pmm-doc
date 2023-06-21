@@ -93,7 +93,6 @@ As well as via the *PMM Settings* page, you can also disable telemetry with the 
 
 The following are some of the commonly used environment varibles for telemetry:
 
-
 ```sh
 DISABLE_TELEMETRY=true
 ```
