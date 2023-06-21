@@ -91,7 +91,26 @@ Grafana’s [anonymous usage statistics](https://grafana.com/docs/grafana/latest
 
 As well as via the *PMM Settings* page, you can also disable telemetry with the `-e DISABLE_TELEMETRY=1` option in your docker run statement for the PMM Server.
 
-For details on the various parameters for telemetry, see the [config file](https://github.com/percona/pmm/blob/main/managed/services/telemetry/config.default.yml).
+The following are some of the commonly used environment varibles for telemetry:
+
+
+```sh
+DISABLE_TELEMETRY=true
+```
+    Disable telemetry feature
+
+PERCONA_TEST_TELEMETRY_DISABLE_SEND=true - fetch metrics, but do not send to Platform
+PERCONA_TEST_TELEMETRY_DISABLE_START_DELAY=true  - fetch metrics during PMM startup
+PERCONA_TEST_TELEMETRY_INTERVAL=24h - change interval for telemetry iteration (fetching+sending metrics)
+
+
+
+
+
+3:27
+
+
+For information on the various config parameters for telemetry, see the [config file](https://github.com/percona/pmm/blob/main/managed/services/telemetry/config.default.yml).
 
 
 
