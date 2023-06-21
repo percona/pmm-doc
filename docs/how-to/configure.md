@@ -97,22 +97,22 @@ The following are some of the commonly used environment varibles for telemetry:
 ```sh
 DISABLE_TELEMETRY=true
 ```
-      Disable telemetry feature
+      Disable the telemetry feature
 
 ```sh
 PERCONA_TEST_TELEMETRY_DISABLE_SEND=true
 ```
-    fetch metrics, but do not send to Platform
+    Fetch metrics, but do not send to Platform
 
 ```sh
 PERCONA_TEST_TELEMETRY_DISABLE_START_DELAY=true  
 ```
-    fetch metrics during PMM startup
+    Fetch metrics while PMM is starting
 
 ```sh
 PERCONA_TEST_TELEMETRY_INTERVAL=24h 
 ```
-    change interval for telemetry iteration (fetching+sending metrics)
+    Change interval for telemetry iteration
 
 
 
@@ -124,7 +124,6 @@ For information on the various config parameters for telemetry, see the [config 
 
     PMM retains the telemetry data by default for 30 days. However, this can be modified by an admin from the settings page.
 
-For deta
 
 ### Check for updates
 
