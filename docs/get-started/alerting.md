@@ -162,16 +162,14 @@ Depending on the severity of an alert, you might want to send different alerts t
 
 PMM uses Email as the default contact point but you can choose from a variety of contact points, including Slack, Email, Webhooks, PagerDuty, and more.
 
-Before PMM can send out email notifications via Email contact points, you will need to:
+Before PMM can send out email notifications via email contact points, you will need to:
 
-1. Configure Email (SMTP) server settings to add your email account settings
+1. Configure Email (SMTP) server settings.
 2. Configure a contact point to define the email delivery options
 
 Contact points with invalid settings show a **No Attempts** status under {{icon.bell}}  **Alerting > Contact points**.
 
 ### Configure Email (SMTP) server settings
-
-To set up email notifications, edit the PMM’s **grafana.ini** file. This holds the settings for [Grafana’s Alertmanager](https://grafana.com/docs/grafana/latest/alerting/manage-notifications/alertmanager/) which routes notifications to contact points.
 
 To use SMTP with a PMM Docker installation:
 
@@ -186,14 +184,28 @@ To use SMTP with a PMM Docker installation:
         GF_SMTP_FROM_ADDRESS=email@domain.com
         GF_SMTP_FROM_NAME=Percona Alerting
         ```
+    Below is a summary of each environment variable above:
+    * `GF_SMTP_ENABLED`: When true, enables Grafana to send emails. 
+    * `GF_SMTP_HOST`: Host address of your SMTP server.
+    * `GF_SMTP_USER`: Username for SMTP authentication.
+    * `GF_SMTP_PASSWORD`: Password for SMTP authentication
+    * `GF_SMTP_SKIP_VERIFY`: When true, verifies SSL for the SMTP server.
+    * `GF_SMTP_FROM_ADDRESS`: Email address to be used when sending out emails.
+    * `GF_SMTP_FROM_NAME`: Name to be used when sending out emails.
 
-2. Pass in the `.env` file to Docker run using the `--env-file` flag: ```docker run --env-file=.env -p 443:443 -p 80:80 percona/pmm-server:2```.
+    *NB: If you are using your Gmail’s SMTP credentials as shown above, you will have to generate an app password and fill it in as the value of your $GF_SMTP_PASSWORD variable.*
+
+
+2. Pass in the `.env` file to Docker run using the `--env-file` flag: 
+
+    ```
+    docker run --env-file=.env -p 443:443 -p 80:80 percona/pmm-server:2
+    ```
+    This command starts a docker container and will keep running as long as the container is also running. Stopping the command (e.g with Ctrl+C) will stop the container hence, subsequent commands should be run in a new terminal.
 
 ### Restore SMTP settings following an upgrade
 
-Upgrading PMM will overwrite the **grafana.ini** file with a newer version. If you configured PMM to use SMTP settings via environment variables, you do not need to do anything after an upgrade as your settings will be transferred.
-
-If the SMTP settings were configured directly in the **grafana.ini** file, make sure to manually back up the .ini file and copy your SMTP settings after the upgrade. This is because upgrading PMM will overwrite the grafana.ini file.
+If you configured PMM to use SMTP settings via environment variables, you do not need to do anything after an upgrade as your settings will be transferred.
 
 ### Configure an Email contact point
 
