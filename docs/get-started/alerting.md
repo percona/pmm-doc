@@ -156,13 +156,13 @@ After provisioning the resources required for creating Percona templated alerts,
 
 ## Contact points
 
-Contact points specify how PMM should deliver Grafana-managed alerts. When an alert fires, PMM sends a notification to the specified contact points.
+Contact points specify where Percona Alerting should deliver notifications for Grafana-managed alerts. PMM can be configured via a Notification policy to send a notification to specified contact points whenever an alert is fired.
 
-Depending on the severity of an alert, you might want to send different alerts to different channels. For example, you can deliver common alerts via Slack channel, but send an email notification for potentially critical issues.  
+Depending on the severity of an alert, you might want to send different alert notifications to different channels. For example, you can deliver common notifications via a Slack channel, but send an email notification for potentially critical issues.  
 
-PMM uses Email as the default contact point but you can choose from a variety of contact points, including Slack, Email, Webhooks, PagerDuty, and more.
+Percona Alerting uses email as the default contact point but you can choose from a variety of other contact points, including Slack, Webhooks, PagerDuty, and more.
 
-Before PMM can send out email notifications via email contact points, you will need to:
+Before Percona Alerting can send out email notifications via email contact points, you will need to:
 
 1. Configure Email (SMTP) server settings.
 2. Configure a contact point to define the email delivery options
@@ -221,6 +221,7 @@ After configuring the SMTP settings, specify email delivery options for an Email
 5. If you do not want to be notified when an alert resolves, expand **Notification settings**, and tick the **Disable Resolved Message** checkbox.
 6. If you want your contact point to notify via multiple channels, for example both via Email and Teams, click **New contact point type** and fill out additional contact point type details.
 7. Click the **Test** button to send a test email and make sure your contact point works as expected.
+    ![!](../_images/alerting-test-contact-point.png)
 8. Click the **Save contact point** button at the bottom of the page. The contact point is now listed under **Alerting > Contact points**.
 
 #### Create additional contact points
@@ -237,13 +238,11 @@ For example, you might specify a limit for the number of times a notification is
 
 #### Root Notification policy
 
-Percona Alerting comes pre-configured with a Notification Root Policy, which is the default notification policy that PMM applies to all the alerts that don’t have a custom notification policy assigned to them. This is the **grafana-default-email** policy, which uses Email as the default contact point.
+Percona Alerting comes pre-configured with a Notification Root Policy, which is the default notification policy. It uses the **grafana-default-email** contact point and is applied all alerts that don’t have a custom notification policy assigned to them.
 
 #### How matching works
 
 Policies can have one or more child policies. An alert matches if the alert’s labels match all the **Matching Labels** specified on the policy.
-
-Alerts are first verified against the main policy, then against any matching child policies if the **Continue matching subsequent sibling nodes** is enabled.
 
 Alerts that don't match any specific policies are handled by the root policy. The root policy also handles any alert rules for which the assigned custom notification policy has been deleted, to ensure notifications for existing alerts continue to be delivered.
 
