@@ -73,7 +73,9 @@ Values for the *Custom* preset can be entered as values, or changed with the arr
 
 The *Telemetry* switch enables gathering and sending basic **anonymous** data to Percona, which helps us to determine where to focus the development and what is the uptake for each release of PMM. Specifically, gathering this information helps determine if we need to release patches to legacy versions beyond support, determining when supporting a particular version is no longer necessary, and even understanding how the frequency of release encourages or deters adoption.
 
-To see the metrics being collected by telemetry navigate to *Settings* page from the [main menu](../details/interface.md#main-menu) with <i class="uil uil-cog"></i> *Configuration* → <i class="uil uil-setting"></i> *Settings* → *Advanced Settings* → *Telemetry* and hover over the exclamation mark.
+PMM collects data through exporters and Query Analytics, which is then utilized by the Telemetry subsystem through aggregated metrics.
+
+To see the metrics being collected by telemetry, from the [main menu](../details/interface.md#main-menu) navigate to <i class="uil uil-cog"></i> *Configuration* → <i class="uil uil-setting"></i> *Settings* → *Advanced Settings* → *Telemetry* and hover over the exclamation mark.
 
 ![!image](../_images/PMM_Settings_Advanced_Settings_Telemetry.png)
 
