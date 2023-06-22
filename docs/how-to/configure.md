@@ -116,9 +116,7 @@ PERCONA_TEST_TELEMETRY_INTERVAL=24h
     Change interval for telemetry iteration
 
 
-
 For information on the various config parameters for telemetry, see the [config file](https://github.com/percona/pmm/blob/main/managed/services/telemetry/config.default.yml).
-
 
 
 !!! note alert alert-primary ""
