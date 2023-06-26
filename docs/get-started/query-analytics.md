@@ -59,7 +59,7 @@ Queries from the database running on Linux are tagged with:
 /* OperationSystem='linux' */. 
 ```
 
-All types of comments and multicomments are supported `(/* */, --, # etc). 
+All types of comments and multicomments are supported `(/* */, --, # etc)`. 
 
 So the queries are as follows:
 
@@ -72,7 +72,7 @@ In the output you can see another custom group in filter called `OperationSystem
 
 #### Enabling custom filter groups
 
-- *CLI*: While adding a service through CLI use the flag `comments-parsing`. Possible values are "on"/"off". 
+- *CLI*: While adding a service through CLI use the flag `comments-parsing`. Possible values are `on/off`. 
 
 Example for adding MySQL with comments parsing on:
 
