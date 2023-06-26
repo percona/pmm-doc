@@ -74,14 +74,15 @@ In the output you can see another custom group in filter called `OperationSystem
 
 - *CLI*: While adding a service through CLI use the flag `comments-parsing`. Possible values are `on/off`. 
 
-Example for adding MySQL with comments parsing on:
+    Example for adding MySQL with comments parsing on:
 
-```sh
-pmm-admin add mysql --username=root --password=root-password --comments-parsing="on"
-```
+    ```sh
+    pmm-admin add mysql --username=root --password=root-password --comments-parsing="on"
+    ```
+
 - *UI*: While adding a service through the UI you will see new checkbox to `enable/disable` comments parsing for current service.
 
-![!image](../_images/PMM_QAN_Parsing.png)
+    ![!image](../_images/PMM_QAN_Parsing.png)
 
 !!! note alert alert-primary "MySQL CLI"
     - If you are using official MySQL CLI to trigger queries,st art mysql with `--comments `flag. Otherwise comments will not be parsed.
