@@ -41,7 +41,7 @@ Starting with PMM 2.38.0, you can filter queries by custom filter groups based o
 
 The following are the supported technologies and agents:
 
--  MySQL (`perfschema`, `slowlog`),
+- MySQL (`perfschema`, `slowlog`),
 - PostgreSQL (`pg_stat_statements`, `pg_stat_monitor`)
 
 **Example**
@@ -58,7 +58,7 @@ SELECT city /* OperationSystem='linux' */ FROM world;
 
 As output we got another custom group in filter called "OperationSystem". With this you can easilly filter by any custom key or value.
 
-[^2] How to enable it?
+*How to enable it?*
 - *CLI*: When you adding service through CLI use new flag called *comments-parsing*. Possible values are "on"/"off". Example for adding MySQL with comments parsing on:
 ```pmm-admin add mysql --username=root --password=root-password --comments-parsing="on"```
 - *UI*: During adding service in UI you will see new checkbox to enable/disable comments parsing for current service.
