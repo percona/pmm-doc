@@ -32,6 +32,38 @@ The dashboard contains three panels:
 
 ![!image](../_images/PMM_Query_Analytics_Time_Range.jpg)
 
+### Custom filter groups in PMM 2.38 and above
+Please be aware this is stil technical preview.
+
+[^1] What is it?
+- You can filter queries by custom filter groups based on key/value pairs separated from query comment.
+- Supported technologies and agents: *MySQL* (`perfschema`, `slowlog`), *PostgreSQL* (`pg_stat_statements`, `pg_stat_monitor`).
+- Feature is disabled by default.
+- Example on next picture: 
+
+![!image](../_images/PMM_QAN_Custom_Filter.png)
+
+In picture above we tagged queries which running DB on windows by comment: /* OperationSystem='windows' */. Queries from DB running on Linux were tag with /* OperationSystem='linux' */. All types of comments and multicomments are supported (/* */, --, # etc). So for example queries looked like:
+```
+SELECT * /* OperationSystem='windows' */ FROM city;
+SELECT city /* OperationSystem='linux' */ FROM world;
+```
+
+As output we got another custom group in filter called "OperationSystem". With this you can easilly filter by any custom key or value.
+
+[^2] How to enable it?
+- *CLI*: When you adding service through CLI use new flag called *comments-parsing*. Possible values are "on"/"off". Example for adding MySQL with comments parsing on:
+```pmm-admin add mysql --username=root --password=root-password --comments-parsing="on"```
+- *UI*: During adding service in UI you will see new checkbox to enable/disable comments parsing for current service.
+
+![!image](../_images/PMM_QAN_Parsing.png)
+
+!!! note alert alert-primary "MySQL CLI"
+    If you using official MySQL CLI to trigger queries please start mysql with --comments flag. Otherwise comments will not be parsed.
+
+!!! note alert alert-primary "Agent `pg_stat_monitor`"
+    In case of PGSM (`pg_stat_monitor`) please set DB variable pgsm_extract_comments=yes
+
 ## Overview Panel
 
 To the right of the Filters panel and occupying the upper part of the dashboard is the Overview panel.
