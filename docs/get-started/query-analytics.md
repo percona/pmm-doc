@@ -32,18 +32,25 @@ The dashboard contains three panels:
 
 ![!image](../_images/PMM_Query_Analytics_Time_Range.jpg)
 
-### Custom filter groups in PMM 2.38 and above
-Please be aware this is stil technical preview.
+### Custom filter groups
 
-*1. What is it?*
-- You can filter queries by custom filter groups based on key=value pairs separated from query comment.
-- Supported technologies and agents: *MySQL* (`perfschema`, `slowlog`), *PostgreSQL* (`pg_stat_statements`, `pg_stat_monitor`).
-- Feature is disabled by default.
-- Example on next picture: 
+!!! caution alert alert-warning "Important/Caution"
+    This feature is still in [Technical Preview](https://docs.percona.com/percona-monitoring-and-management/details/glossary.html#technical-preview) and is subject to change. We recommend that early adopters use this feature for testing purposes only.
+
+Starting with PMM 2.38.0, you can filter queries by custom filter groups based on key/value pairs separated from query comment. This feature is disabled by default.
+
+The following are the supported technologies and agents:
+
+-  MySQL (`perfschema`, `slowlog`),
+- PostgreSQL (`pg_stat_statements`, `pg_stat_monitor`)
+
+**Example**
 
 ![!image](../_images/PMM_QAN_Custom_Filter.png)
 
-In picture above we tagged queries which running DB on windows by comment: /* OperationSystem='windows' */. Queries from DB running on Linux were tag with /* OperationSystem='linux' */. All types of comments and multicomments are supported (/* */, --, # etc). So for example queries looked like:
+In the image above we tagged queries which running DB on windows by comment: /* OperationSystem='windows' */. Queries from DB running on Linux were tag with /* OperationSystem='linux' */. All types of comments and multicomments are supported (/* */, --, # etc). 
+
+So for example queries looked like:
 ```
 SELECT * /* OperationSystem='windows' */ FROM city;
 SELECT city /* OperationSystem='linux' */ FROM world;
@@ -51,7 +58,7 @@ SELECT city /* OperationSystem='linux' */ FROM world;
 
 As output we got another custom group in filter called "OperationSystem". With this you can easilly filter by any custom key or value.
 
-*2. How to enable it?*
+[^2] How to enable it?
 - *CLI*: When you adding service through CLI use new flag called *comments-parsing*. Possible values are "on"/"off". Example for adding MySQL with comments parsing on:
 ```pmm-admin add mysql --username=root --password=root-password --comments-parsing="on"```
 - *UI*: During adding service in UI you will see new checkbox to enable/disable comments parsing for current service.
