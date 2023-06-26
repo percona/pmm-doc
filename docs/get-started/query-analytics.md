@@ -48,28 +48,45 @@ The following are the supported technologies and agents:
 
 ![!image](../_images/PMM_QAN_Custom_Filter.png)
 
-In the image above we tagged queries which running DB on windows by comment: /* OperationSystem='windows' */. Queries from DB running on Linux were tag with /* OperationSystem='linux' */. All types of comments and multicomments are supported (/* */, --, # etc). 
+In the image above we have tagged queries running database on windows by the following comment: 
 
-So for example queries looked like:
+```sh
+comment: /* OperationSystem='windows' */. 
 ```
+Queries from the database running on Linux are tagged with:
+
+```sh
+/* OperationSystem='linux' */. 
+```
+
+All types of comments and multicomments are supported `(/* */, --, # etc). 
+
+So the queries are as follows:
+
+```sh
 SELECT * /* OperationSystem='windows' */ FROM city;
 SELECT city /* OperationSystem='linux' */ FROM world;
 ```
 
-As output we got another custom group in filter called "OperationSystem". With this you can easilly filter by any custom key or value.
+In the output you can see another custom group in filter called `OperationSystem`. With this you can easilly filter by any custom key or value.
 
-[^2] How to enable it?
-- *CLI*: When you adding service through CLI use new flag called *comments-parsing*. Possible values are "on"/"off". Example for adding MySQL with comments parsing on:
-```pmm-admin add mysql --username=root --password=root-password --comments-parsing="on"```
-- *UI*: During adding service in UI you will see new checkbox to enable/disable comments parsing for current service.
+#### Enabling custom filter groups
+
+- *CLI*: While adding a service through CLI use the flag `comments-parsing`. Possible values are "on"/"off". 
+
+Example for adding MySQL with comments parsing on:
+
+```sh
+pmm-admin add mysql --username=root --password=root-password --comments-parsing="on"
+```
+- *UI*: While adding a service through the UI you will see new checkbox to `enable/disable` comments parsing for current service.
 
 ![!image](../_images/PMM_QAN_Parsing.png)
 
 !!! note alert alert-primary "MySQL CLI"
-    If you using official MySQL CLI to trigger queries please start mysql with --comments flag. Otherwise comments will not be parsed.
-
-!!! note alert alert-primary "Agent `pg_stat_monitor`"
-    In case of PGSM (`pg_stat_monitor`) please set DB variable pgsm_extract_comments=yes
+    - If you are using official MySQL CLI to trigger queries,st art mysql with `--comments `flag. Otherwise comments will not be parsed.
+    - In case of PGSM (`pg_stat_monitor`), set the DB variable `pgsm_extract_comments=yes`
+    
 
 ## Overview Panel
 
