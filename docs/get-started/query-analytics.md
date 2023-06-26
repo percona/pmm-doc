@@ -43,7 +43,7 @@ Please be aware this is stil technical preview.
 
 ![!image](../_images/PMM_QAN_Custom_Filter.png)
 
-In picture above we tagged queries which running DB on windows by comment: /* OperationSystem='windows' */. Queries from DB running on Linux were tag with /* OperationSystem='linux' */. All types of comments and multicomments are supported (/* */, --, # etc). So for example queries looked like:
+In picture above we tagged queries which running DB on windows by comment: ```/* OperationSystem='windows' */```. Queries from DB running on Linux were tag with ```/* OperationSystem='linux' */```. All types of comments and multicomments are supported (/* */, --, #). So for example queries looked like:
 ```
 SELECT * /* OperationSystem='windows' */ FROM city;
 SELECT city /* OperationSystem='linux' */ FROM world;
