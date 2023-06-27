@@ -76,8 +76,7 @@ The *Telemetry* switch enables gathering and sending basic **anonymous** data to
 PMM collects data through exporters and Query Analytics, which is then utilized by the Telemetry subsystem through aggregated metrics. 
 
 -!!! note alert alert-primary ""
-    Telemetry is sent straight away. The 24-hour grace period is not applicable.
-
+    When PMM is installed, telemetry is not sent immediately. Before the first telemetry report is generated, PMM provides users with a 24-hour grace period to disable telemetry.
 
 To see the metrics being collected by telemetry, from the [main menu](../details/interface.md#main-menu) navigate to <i class="uil uil-cog"></i> *Configuration* → <i class="uil uil-setting"></i> *Settings* → *Advanced Settings* → *Telemetry* and hover over the exclamation mark.
 
