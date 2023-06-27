@@ -575,6 +575,11 @@ In low resolution we collect metrics from collectors which could take some time:
 
         !!! caution ""
             Ensure you do not set the value of `max-query-length` to 1, 2, or 3. Otherwise, the PMM agent will get terminated.
+
+    `--comments-parsing=off/on`
+    : Enable/disable parsing comments from queries into QAN filter groups:
+        - off: Disabled.
+        - on: Enabled.
         
 #### PostgreSQL
 
@@ -654,6 +659,11 @@ In low resolution we collect metrics from collectors which could take some time:
 
         !!! caution ""
             Ensure you do not set the value of `max-query-length` to 1, 2, or 3. Otherwise, the PMM agent will get terminated.
+
+    `--comments-parsing=off/on`
+    : Enable/disable parsing comments from queries into QAN filter groups:
+        - off: Disabled.
+        - on: Enabled.
 
 #### ProxySQL
 
