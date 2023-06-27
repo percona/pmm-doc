@@ -37,9 +37,9 @@ The dashboard contains three panels:
 !!! caution alert alert-warning "Important/Caution"
     This feature is still in [Technical Preview](https://docs.percona.com/percona-monitoring-and-management/details/glossary.html#technical-preview) and is subject to change. We recommend that early adopters use this feature for testing purposes only.
 
-Starting with PMM 2.38.0, you can filter queries by custom filter groups based on key=value pairs separated from query comment. This feature is disabled by default.
+Starting with PMM 2.38.0, you can filter queries by custom filter groups based on key=value pairs separated from query comments. By default, this feature is disabled.
 
-The following are the supported technologies and agents:
+#### Supported technologies and agents
 
 - MySQL (`perfschema`, `slowlog`),
 - PostgreSQL (`pg_stat_statements`, `pg_stat_monitor`)
@@ -48,7 +48,7 @@ The following are the supported technologies and agents:
 
 ![!image](../_images/PMM_QAN_Custom_Filter.png)
 
-In the image above we have tagged queries running database on windows by the following comment: 
+In the image above we have tagged queries running databases on Windows using the following comment: 
 
 ```sh
 comment: /* OperationSystem='windows' */. 
@@ -68,7 +68,7 @@ SELECT * /* OperationSystem='windows' */ FROM city;
 SELECT city /* OperationSystem='linux' */ FROM world;
 ```
 
-In the output you can see another custom group in filter called `OperationSystem`. With this you can easilly filter by any custom key or value.
+In the output, you can see another custom group in the `OperationSystem` filter. Use this to easily filter by any custom key or value.
 
 #### Enabling custom filter groups
 
@@ -91,7 +91,7 @@ In the output you can see another custom group in filter called `OperationSystem
 
 ## Overview Panel
 
-To the right of the Filters panel and occupying the upper part of the dashboard is the Overview panel.
+ The **Overview** panel is located above the dashboard, on the right side of the **Filters** panel.
 
 ![!image](../_images/PMM_Query_Analytics_overview-table.jpg)
 
