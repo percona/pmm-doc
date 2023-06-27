@@ -48,7 +48,7 @@ Starting with PMM 2.38.0, you can filter queries by custom filter groups based o
 
 ![!image](../_images/PMM_QAN_Custom_Filter.png)
 
-In the image above we have tagged queries running database on windows by the following comment: 
+In the image above we have tagged queries running databases on Windows using the following comment: 
 
 ```sh
 comment: /* OperationSystem='windows' */. 
