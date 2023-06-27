@@ -91,7 +91,7 @@ In the output you can see another custom group in filter called `OperationSystem
 
 ## Overview Panel
 
-To the right of the Filters panel and occupying the upper part of the dashboard is the Overview panel.
+ The **Overview** panel is located above the dashboard, on the right side of the **Filters** panel.
 
 ![!image](../_images/PMM_Query_Analytics_overview-table.jpg)
 
