@@ -85,7 +85,7 @@ In the output you can see another custom group in filter called `OperationSystem
     ![!image](../_images/PMM_QAN_Parsing.png)
 
 !!! note alert alert-primary "MySQL CLI"
-    - If you are using official MySQL CLI to trigger queries,st art mysql with `--comments `flag. Otherwise comments will not be parsed.
+    - If you are using official MySQL CLI to trigger queries, start mysql with `--comments` flag. Otherwise comments will not be parsed.
     - In case of PGSM (`pg_stat_monitor`), set the DB variable `pgsm_extract_comments=yes`
     
 
