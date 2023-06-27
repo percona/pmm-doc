@@ -32,7 +32,9 @@ The Alerting page contains are split into eight (8) tabs which include: Fired Al
 
 ## Alert rules
 
-Alert rules describe the circumstances under which you want to be alerted. The evaluation criteria that you define determine whether an alert will fire. An alert rule consists of one or more queries and expressions, a condition, the frequency of evaluation, and the duration over which the condition is met. For example, you might configure an alert to fire and triger a notification when MongoDB is down.
+Alert rules describe the circumstances under which you want to be alerted. The evaluation criteria that you define determine whether an alert will fire. 
+
+An alert rule consists of one or more queries and expressions, a condition, the frequency of evaluation, and the duration over which the condition is met. For example, you might configure an alert to fire and trigger a notification when MongoDB is down.
 
 ![!](../_images/alerting-normal-alert-rule.png)
 
@@ -43,7 +45,7 @@ An alert rule can be in three possible states:
 
 It takes at least one evaluation cycle for an alert rule to transition from one state to another (e.g., from `Normal` to `Pending`).
 
-## Alert Rules Templates
+## Alert rules templates
 
 PMM provides a set of Alert Rule templates with common events and expressions for alerting. These templates can be used as a basis for creating Alert Rules. You can also create your own templates if you need custom expressions.
 
@@ -53,7 +55,7 @@ You can check the alert templates available for your account under **Alerting > 
 2. Templates downloaded from Percona Platform. 
 3. Custom templates created or uploaded on the **Alerting page > Alert Templates** tab. You can also store your custom template files in your ``/srv/alerting/templates`` directory and PMM will load them during startup.
 
-### Create Alert Rule from Alert Rule Templates
+### Create alert rule from alert rule templates
 
 This section focuses on creating an alert rule based on PMM templates. For information on working with the other alert types, check the Grafana documentation on [Grafana Labs](https://grafana.com/docs/grafana/latest/alerting/).
 
@@ -140,7 +142,7 @@ For example, to check the CPU usage, Go to **Explore > Metrics** in your PMM das
 ```
 ![!](../_images/alerting-sample-query.png)
 
-Note that to paste the query above, **Explore** must in `Code` mode and not in `Builder` mode.
+Note that to paste the query above, **Explore** must be in `Code` mode, and not in `Builder` mode.
 
 ### Add an alert rule
 
@@ -149,7 +151,11 @@ After provisioning the resources required for creating Percona templated alerts,
 1. Go to **Alerting > Alert Rules**, and click **New alert rule**.
 2. On the **Create alert rule** page, select the **Percona templated alert** option. If you want to learn about creating Grafana alerts instead, check our [Grafana's documentation](https://grafana.com/docs/grafana/latest/alerting/).
 3. In the **Template details** section, choose the template on which you want to base the new alert rule. This automatically populates the **Name**, **Duration**, and **Severity** fields with information from the template. You can change these values if you want to override the default specifications in the template.
-4. In the **Filters** field, specify if you want the alert rule to apply only to specific services or nodes. For example `service_name'`, Operator:`MATCH`, VALUE: `ps5.7`.
+4. In the **Filters** field, specify if you want the alert rule to apply only to specific services or nodes. For example: `service_name=ps5.7`. When creating alert rule filters, consider the following:
+   
+    - Filters use conjunction semantics. This means that if you add more than one filter, PMM will combine their conditions to search for matches: filter 1 AND filter 2 AND filter 3.
+    - **Label** must be an exact match. You can find a complete list of labels using the <i class="uil uil-cog"></i> *Explore* → {{icon.compass}} menu in PMM.
+
 5. From the **Folder** drop-down menu, select the location where you want to store the rule.
 6. Click **Save and Exit** to close the page and go to the **Alert Rules** tab where you can review, edit and silence your new alert.
 
@@ -209,7 +215,7 @@ If you configured PMM to use SMTP settings via environment variables, you do not
 
 ### Configure an Email contact point
 
-After configuring the SMTP settings, specify email delivery options for an Email contact point: 
+After configuring the SMTP settings, specify email delivery options for an Email contact point:
 
 1. Go to **Alerting > Contact points**.
 2. Click the edit button next to the **grafana-default-email** to update PMM's default Email contact point, or click **New contact point** to create a custom one.
@@ -217,9 +223,9 @@ After configuring the SMTP settings, specify email delivery options for an Email
 4. Expand **Optional settings** and fill in any other relevant settings:
     - Enable the **Single email** option to send a single email to the recipients containing alerts that are firing. For example, if an alert fires for three nodes, this would send only one email listing all three alerts.
     - Add an optional message to include with the email notifications.
-    - Edit the email subject for the notifications. The default subject line uses the following format [FIRING:*number of alerts firing for the alert rule*](*Name of alert rule and instance*).
+    - Edit the email subject for the notifications. The default subject line uses the following format [FIRING: *number of alerts firing for the alert rule*](*Name of alert rule and instance*).
 5. If you do not want to be notified when an alert resolves, expand **Notification settings**, and tick the **Disable Resolved Message** checkbox.
-6. If you want your contact point to notify via multiple channels, for example both via Email and Teams, click **New contact point type** and fill out additional contact point type details.
+6. If you want your contact point to notify via multiple channels, for example, both via Email and Teams, click **New contact point type** and fill out additional contact point type details.
 7. Click the **Test** button to send a test email and make sure your contact point works as expected.
     ![!](../_images/alerting-test-contact-point.png)
 8. Click the **Save contact point** button at the bottom of the page. The contact point is now listed under **Alerting > Contact points**.
@@ -238,7 +244,7 @@ For example, you might specify a limit for the number of times a notification is
 
 #### Root Notification policy
 
-Percona Alerting comes pre-configured with a Notification Root Policy, which is the default notification policy. It uses the **grafana-default-email** contact point and is applied all alerts that don’t have a custom notification policy assigned to them.
+Percona Alerting comes pre-configured with a Notification Root Policy, which is the default notification policy. It uses the **grafana-default-email** contact point and is applied to all alerts that don’t have a custom notification policy assigned to them.
 
 #### How matching works
 
@@ -266,7 +272,7 @@ To create a new notification policy:
 ![!](../_images/alerting-new-notification-policy.png)
 
 2. Click **New specific Policy**.
-3. The **Matching labels** section define the rules for matching alert labels. The matching label is a combination of label name, operator and label value, where the label name is any valid label in your environment (e.g `node_name`, `cluster`, etc). A policy will match an alert if the alert’s labels match all the matching labels specified on the policy. If there are no matchers, **the policy will handle all the alert instances**. For  example, you could add a **node_name=pmm-server** matcher to send out notifications only for this node.
+3. The **Matching labels** section define the rules for matching alert labels. The matching label is a combination of label name, operator and label value, where the label name is any valid label in your environment (e.g `node_name`, `cluster`, etc). A policy will match an alert if the alert’s labels match all the matching labels specified on the policy. If there are no matchers, **the policy will handle all the alert instances**. For example, you could add a **node_name=pmm-server** matcher to send out notifications only for this node.
 4. Select an existing contact point for the policy.
 5. Enable **Continue matching subsequent sibling nodes** to continue matching subsequent siblings of the policy after an alert matched the parent policy.
 This can be useful, for example, when you want to send notifications to a catch-all contact point as well as to one of more specific contact points handled by subsequent policies.
@@ -284,7 +290,7 @@ During a silence, PMM continues to track metrics but does not trigger alerts or 
 
 Silenced alerts are still recorded under **Alerting > Fired Alerts** (and appear on the page as `surpressed`) so that you can review them later. Silenced alerts are disabled for as long as it's specified in the Silence Duration or until you remove a silence.
 
-#### Adding/Using Silences
+#### Adding/Using silences
 
 You can silence an alert from the **Fired alerts** page or from the **Alert rules** page by expanding the Alert Rule and clicking the *Silence* button.
 
@@ -340,7 +346,7 @@ To see all the available options, check the scrip help using `ia_migration.py -h
 ##### Script prerequisites
 
 - Python version 3.x, which you can download from [Python Downloads centre](https://www.python.org/downloads/).
-- [Requests  library](https://requests.readthedocs.io/en/latest/user/install/#install), which you can install with the following command: ```pip install requests```.
+- [Requests library](https://requests.readthedocs.io/en/latest/user/install/#install), which you can install with the following command: ```pip install requests```.
 
 !!! caution alert alert-warning "Important"
     The script sets all migrated alert rules to Active. Make sure to silence any alerts that should not be firing.
