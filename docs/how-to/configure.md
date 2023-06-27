@@ -73,7 +73,11 @@ Values for the *Custom* preset can be entered as values, or changed with the arr
 
 The *Telemetry* switch enables gathering and sending basic **anonymous** data to Percona, which helps us to determine where to focus the development and what is the uptake for each release of PMM. Specifically, gathering this information helps determine if we need to release patches to legacy versions beyond support, determining when supporting a particular version is no longer necessary, and even understanding how the frequency of release encourages or deters adoption.
 
-PMM collects data through exporters and Query Analytics, which is then utilized by the Telemetry subsystem through aggregated metrics.
+PMM collects data through exporters and Query Analytics, which is then utilized by the Telemetry subsystem through aggregated metrics. 
+
+-!!! note alert alert-primary ""
+    Telemetry is sent straight away. The 24-hour grace period is not applicable.
+
 
 To see the metrics being collected by telemetry, from the [main menu](../details/interface.md#main-menu) navigate to <i class="uil uil-cog"></i> *Configuration* → <i class="uil uil-setting"></i> *Settings* → *Advanced Settings* → *Telemetry* and hover over the exclamation mark.
 
@@ -94,11 +98,6 @@ Grafana’s [anonymous usage statistics](https://grafana.com/docs/grafana/latest
 As well as via the *PMM Settings* page, you can also disable telemetry with the `-e DISABLE_TELEMETRY=1` option in your docker run statement for the PMM Server.
 
 For information on the various config parameters for telemetry, see the [config file](https://github.com/percona/pmm/blob/main/managed/services/telemetry/config.default.yml).
-
-
-!!! note alert alert-primary ""
-
-    PMM retains the telemetry data by default for 30 days. However, this can be modified by an admin from the settings page.
 
 
 ### Check for updates
