@@ -68,7 +68,7 @@ SELECT * /* OperationSystem='windows' */ FROM city;
 SELECT city /* OperationSystem='linux' */ FROM world;
 ```
 
-In the output you can see another custom group in filter called `OperationSystem`. With this you can easilly filter by any custom key or value.
+In the output, you can see another custom group in the `OperationSystem` filter. Use this to easily filter by any custom key or value.
 
 #### Enabling custom filter groups
 
