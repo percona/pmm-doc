@@ -73,7 +73,7 @@ Values for the *Custom* preset can be entered as values, or changed with the arr
 
 The *Telemetry* switch enables gathering and sending basic **anonymous** data to Percona, which helps us to determine where to focus the development and what is the uptake for each release of PMM. Specifically, gathering this information helps determine if we need to release patches to legacy versions beyond support, determining when supporting a particular version is no longer necessary, and even understanding how the frequency of release encourages or deters adoption.
 
-PMM collects data through exporters and Query Analytics, which is then utilized by the Telemetry subsystem through aggregated metrics. 
+PMM Telemetry is based on data collected by various PMM components and stored inside PMM server 
 
 -!!! note alert alert-primary ""
     Telemetry is sent straight away. The 24-hour grace period is not applicable.
