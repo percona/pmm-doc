@@ -580,7 +580,7 @@ In low resolution we collect metrics from collectors which could take some time:
     : Enable/disable parsing comments from queries into QAN filter groups:
         - off: Disabled.
         - on: Enabled.
-        
+
 #### PostgreSQL
 
 `pmm-admin add postgresql [FLAGS] [node-name] [node-address]`
