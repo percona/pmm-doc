@@ -242,7 +242,7 @@ Notification policies determine how notifications (triggered by alerts) are rout
 
 For example, you might specify a limit for the number of times a notification is sent during a certain period. This helps ensure that you don't spam your Slack channel with too many notifications about the same issue.
 
-#### Root Notification policy
+#### Root notification policy
 
 Percona Alerting comes pre-configured with a Notification Root Policy, which is the default notification policy. It uses the **grafana-default-email** contact point and is applied to all alerts that don’t have a custom notification policy assigned to them.
 
@@ -251,6 +251,10 @@ Percona Alerting comes pre-configured with a Notification Root Policy, which is 
 Policies can have one or more child policies. An alert matches if the alert’s labels match all the **Matching Labels** specified on the policy.
 
 Alerts that don't match any specific policies are handled by the root policy. The root policy also handles any alert rules for which the assigned custom notification policy has been deleted, to ensure notifications for existing alerts continue to be delivered.
+
+Notifications for alerts are hamdled based on the labels assigned to alerts. These labels connect alerts to contact points and silence alert instances that have matching labels.
+
+![!](../_images/alert_flow.png)
 
 #### Edit the root notification policy
 
@@ -271,7 +275,7 @@ To create a new notification policy:
 1. Go to {{icon.bell}} **Alerting > Notification policies** tab.
 ![!](../_images/alerting-new-notification-policy.png)
 
-2. Click **New specific Policy**.
+2. Click **New specific policy**.
 3. The **Matching labels** section define the rules for matching alert labels. The matching label is a combination of label name, operator and label value, where the label name is any valid label in your environment (e.g `node_name`, `cluster`, etc). A policy will match an alert if the alert’s labels match all the matching labels specified on the policy. If there are no matchers, **the policy will handle all the alert instances**. For example, you could add a **node_name=pmm-server** matcher to send out notifications only for this node.
 4. Select an existing contact point for the policy.
 5. Enable **Continue matching subsequent sibling nodes** to continue matching subsequent siblings of the policy after an alert matched the parent policy.
