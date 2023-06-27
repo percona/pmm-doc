@@ -39,7 +39,7 @@ The dashboard contains three panels:
 
 Starting with PMM 2.38.0, you can filter queries by custom filter groups based on key=value pairs separated from query comment. This feature is disabled by default.
 
-The following are the supported technologies and agents:
+#### Supported technologies and agents
 
 - MySQL (`perfschema`, `slowlog`),
 - PostgreSQL (`pg_stat_statements`, `pg_stat_monitor`)
