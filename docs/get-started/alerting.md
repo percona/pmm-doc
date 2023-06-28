@@ -252,10 +252,6 @@ Policies can have one or more child policies. An alert matches if the alert’s 
 
 Alerts that don't match any specific policies are handled by the root policy. The root policy also handles any alert rules for which the assigned custom notification policy has been deleted, to ensure notifications for existing alerts continue to be delivered.
 
-Notifications for alerts are hamdled based on the labels assigned to alerts. These labels connect alerts to contact points and silence alert instances that have matching labels.
-
-![!](../_images/alert_flow.png)
-
 #### Edit the root notification policy
 
 1. Go to {{icon.bell}} **Alerting > Notification policies** tab.
