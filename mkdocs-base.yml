@@ -72,7 +72,6 @@ markdown_extensions:
   pymdownx.superfences: {}
   pymdownx.highlight:
     linenums: false
-  lightgallery: {}
   pymdownx.inlinehilite: {}
   pymdownx.emoji:
       emoji_index: !!python/name:materialx.emoji.twemoji
@@ -99,9 +98,9 @@ plugins:
       - "setting-up/client/docker.md"
   # https://github.com/orzih/mkdocs-with-pdf
   with-pdf:
-    output_path: '_pdf/PerconaMonitoringAndManagement-2.37.0.pdf'
+    output_path: '_pdf/PerconaMonitoringAndManagement-2.37.1.pdf'
     cover_title: 'Percona Monitoring and Management Documentation'
-    cover_subtitle: 2.37.0 (May 02, 2023)
+    cover_subtitle: 2.37.1 (Jun 05, 2023)
     author: "Percona Technical Documentation Team"
     cover_logo: docs/_images/Percona_Logo_Color.png
     custom_template_path: _resources/templates
@@ -124,7 +123,7 @@ extra:
       We use cookies to recognize your repeated visits and preferences, as well
       as to measure the effectiveness of our documentation and whether users
       find what they're searching for. With your consent, you're helping us to
-      make our documentation better.
+      make our documentation better. Read more about <a class="reference external" href="https://www.percona.com/20180524-cookie-policy" target="_blank">Percona Cookie Policy</a>.
 
 # Common navigation for percona.com, render.com and PDF
 nav:
@@ -316,6 +315,7 @@ nav:
   - faq.md
   - Release Notes:
       - release-notes/index.md
+      - "PMM 2.37.1": release-notes/2.37.1.md
       - "PMM 2.37.0": release-notes/2.37.0.md
       - "PMM 2.36.0": release-notes/2.36.0.md
       - "PMM 2.35.0": release-notes/2.35.0.md
@@ -363,3 +363,6 @@ nav:
       - "PMM 2.1.0": release-notes/2.1.0.md
       - "PMM 2.0.1": release-notes/2.0.1.md
       - "PMM 2.0.0": release-notes/2.0.0.md
+  - Reference:
+    - "Copyright and licensing information": copyright.md
+    - trademark-policy.md
