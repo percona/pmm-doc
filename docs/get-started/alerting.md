@@ -11,7 +11,7 @@ Percona Alerting is enabled by default in the PMM Settings. This feature adds th
 
 ## Alert types
 
-Percona Alerting is powered by Grafana infrastructure. It leverages Grafana's advanced alerting capabilities and adds provides pre-configured Alert Rule Templates that simplify creating powerful alerting rules.
+Percona Alerting is powered by Grafana infrastructure. It leverages Grafana's advanced alerting capabilities and provides pre-configured Alert Rule Templates that simplify creating powerful alerting rules.
 
 Depending on the datasources that you want to query, and the complexity of your required evaluation criteria, Percona Alerting enables you to create the following types of alerts:
 
