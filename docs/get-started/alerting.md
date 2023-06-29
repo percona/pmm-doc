@@ -162,7 +162,7 @@ After provisioning the resources required for creating Percona templated alerts,
 
 ## Contact points
 
-Contact points specify where Percona Alerting should deliver notifications for Grafana-managed alerts. PMM can be configured via a Notification policy to send a notification to specified contact points whenever an alert is fired.
+Contact points specify where Percona Alerting should deliver notifications for alerts. PMM can be configured via a Notification policy to send a notification to specified contact points whenever an alert is fired.
 
 Depending on the severity of an alert, you might want to send different alert notifications to different channels. For example, you can deliver common notifications via a Slack channel, but send an email notification for potentially critical issues.  
 
