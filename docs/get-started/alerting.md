@@ -26,7 +26,7 @@ With Mimir and Loki alert rules, you can run alert expressions closer to your da
 
 -->
 
-The Alerting page contains are split into eight (8) tabs which include: Fired Alerts, Alert Rules, Alert Rule Templates, Contact Points, Notification Policies, Silences, Alert Groups and Admin.
+The Alerting page contains are split into eight tabs: Fired Alerts, Alert Rules, Alert Rule Templates, Contact Points, Notification Policies, Silences, Alert Groups and Admin.
 
 ![!](../_images/alerting-page-tabs.png)
 
@@ -39,9 +39,10 @@ An alert rule consists of one or more queries and expressions, a condition, the 
 ![!](../_images/alerting-normal-alert-rule.png)
 
 An alert rule can be in three possible states:
-- Normal: Everthing is working correctly and the condition(s) specified in the rule has not been met. This is the default state for newly created rules.
-- Pending: The condition(s) specified in the alert rule has been met, but for a time that is less than the configured duration.
-- Firing: Both the condition(s) and the duration specified in the alert rule have both been met.
+
+- Normal: Everything is working correctly and the conditions specified in the rule has not been met. This is the default state for newly created rules.
+- Pending: The conditions specified in the alert rule has been met, but for a time that is less than the configured duration.
+- Firing: Both the conditions and the duration specified in the alert rule have both been met.
 
 It takes at least one evaluation cycle for an alert rule to transition from one state to another (e.g., from `Normal` to `Pending`).
 
@@ -51,11 +52,11 @@ PMM provides a set of Alert Rule templates with common events and expressions fo
 
 You can check the alert templates available for your account under **Alerting > Alert rule templates** tab. PMM lists here the following types of templates:
 
-1. Built-in templates, available out-of-the-box with PMM.
-2. Templates downloaded from Percona Platform. 
-3. Custom templates created or uploaded on the **Alerting page > Alert Templates** tab. You can also store your custom template files in your ``/srv/alerting/templates`` directory and PMM will load them during startup.
+- Built-in templates, available out-of-the-box with PMM.
+- Templates downloaded from Percona Platform.
+- Custom templates created or uploaded on the **Alerting page > Alert Templates** tab. You can also store your custom template files in your ``/srv/alerting/templates`` directory and PMM will load them during startup.
 
-### Create alert rule from alert rule templates
+### Create alert rules from alert rule templates
 
 This section focuses on creating an alert rule based on PMM templates. For information on working with the other alert types, check the Grafana documentation on [Grafana Labs](https://grafana.com/docs/grafana/latest/alerting/).
 
@@ -154,7 +155,7 @@ After provisioning the resources required for creating Percona templated alerts,
 4. In the **Filters** field, specify if you want the alert rule to apply only to specific services or nodes. For example: `service_name=ps5.7`. When creating alert rule filters, consider the following:
    
     - Filters use conjunction semantics. This means that if you add more than one filter, PMM will combine their conditions to search for matches: filter 1 AND filter 2 AND filter 3.
-    - **Label** must be an exact match. You can find a complete list of labels using the <i class="uil uil-cog"></i> *Explore* → {{icon.compass}} menu in PMM.
+    - **Label** must be an exact match. You can find a complete list of labels using the <i class="uil uil-compass"></i> **Explore** menu in PMM.
 
 5. From the **Folder** drop-down menu, select the location where you want to store the rule.
 6. Click **Save and Exit** to close the page and go to the **Alert Rules** tab where you can review, edit and silence your new alert.
@@ -173,7 +174,7 @@ Before Percona Alerting can send out email notifications via email contact point
 1. Configure Email (SMTP) server settings.
 2. Configure a contact point to define the email delivery options
 
-Contact points with invalid settings show a **No Attempts** status under {{icon.bell}}  **Alerting > Contact points**.
+Contact points with invalid settings show a **No Attempts** status under <i class="uil uil-bell"><  **Alerting > Contact points**.
 
 ### Configure Email (SMTP) server settings
 
@@ -254,7 +255,7 @@ Alerts that don't match any specific policies are handled by the root policy. Th
 
 #### Edit the root notification policy
 
-1. Go to {{icon.bell}} **Alerting > Notification policies** tab.
+1. Go to <i class="uil uil-bell"><**Alerting > Notification policies** tab.
 2. Click **Edit** on the top right of the root policy box.
 3. Choose whether to keep the default Email contact point, select a new available contact point or create a new one.
 4. In the **Group by** field, specify how alert rules should be processed into notifications. If multiple alerts are matched for this policy, they will be grouped based on the labels you specify, and a notification will be sent per group.
@@ -268,11 +269,12 @@ Alerts that don't match any specific policies are handled by the root policy. Th
 
 To create a new notification policy:
 
-1. Go to {{icon.bell}} **Alerting > Notification policies** tab.
+1. Go to <i class="uil uil-bell"><**Alerting > Notification policies** tab.
 ![!](../_images/alerting-new-notification-policy.png)
 
 2. Click **New specific policy**.
-3. The **Matching labels** section define the rules for matching alert labels. The matching label is a combination of label name, operator and label value, where the label name is any valid label in your environment (e.g `node_name`, `cluster`, etc). A policy will match an alert if the alert’s labels match all the matching labels specified on the policy. If there are no matchers, **the policy will handle all the alert instances**. For example, you could add a **node_name=pmm-server** matcher to send out notifications only for this node.
+3. The **Matching labels** section defines the rules for matching alert labels. The matching label is a combination of label name, operator and label value, where the label name is any valid label in your environment. For example:  `node_name`, `cluster`, etc.
+A policy will match an alert if the alert’s labels match all the matching labels specified on the policy. If there are no matchers, **the policy will handle all the alert instances**. For example, you could add a **node_name=pmm-server** matcher to send out notifications only for this node.
 4. Select an existing contact point for the policy.
 5. Enable **Continue matching subsequent sibling nodes** to continue matching subsequent siblings of the policy after an alert matched the parent policy.
 This can be useful, for example, when you want to send notifications to a catch-all contact point as well as to one of more specific contact points handled by subsequent policies.
@@ -284,13 +286,16 @@ This can be useful, for example, when you want to send notifications to a catch-
     Time specified in mute timing must be in UTC and military format i.e. 14:00 not 2:00 PM.
 
 ## Silence alerts
-Create a silence when you want to suppress (or stop) any Alerts (and their associated Notifications) for a very specific amount of time. Silences default to today’s current date and have a default duration of two hours which can be changed if required. You can also schedule a silence for a future date and time. This is referred to as a `Pending` silence, which can be observed on the Silences page.
+Create a silence when you want to suppress (or stop) alerts and their associated notifications for a very specific amount of time. 
+Silences default to today’s current date and have a default duration of two hours. 
+
+You can also schedule a silence for a future date and time. This is referred to as a `Pending` silence, which can be observed on the Silences page.
 
 During a silence, PMM continues to track metrics but does not trigger alerts or send notifications to any specified contact points. Once the silence expires alerts and notifications will resume.
 
-Silenced alerts are still recorded under **Alerting > Fired Alerts** (and appear on the page as `surpressed`) so that you can review them later. Silenced alerts are disabled for as long as it's specified in the Silence Duration or until you remove a silence.
+Silenced alerts are still recorded under **Alerting > Fired Alerts** so that you can review them later. Silenced alerts show up as **Surpressed** and are disabled for as long as it's specified in the **Silence Duration**, or until you remove a silence.
 
-#### Adding/Using silences
+#### Using silences
 
 You can silence an alert from the **Fired alerts** page or from the **Alert rules** page by expanding the Alert Rule and clicking the *Silence* button.
 
@@ -306,7 +311,7 @@ To create a new silence from the **Silences** page:
 4. Enter one or more matching labels by filling out the **Name** and **Value** fields. Matchers determine which rules the silence will apply to. Note that all labels specified here must be matched by an alert for it to be silenced.
 5. Enter any additional comments you would like about this silence - by default, the date the silence was created is placed here.
 6. Review the affected alert instances that will be silenced.
-7. Click **Sumbit** to create the silence.
+7. Click **Submit** to create the silence.
 
 For more information on working with silences, see [About alerting silences](https://grafana.com/docs/grafana/latest/alerting/manage-notifications/create-silence/) in the Grafana documentation.
 
