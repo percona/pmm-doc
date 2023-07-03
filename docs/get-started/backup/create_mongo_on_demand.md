@@ -16,6 +16,7 @@ To schedule or create an on-demand backup, check the instructions below. If you 
     - **Schedule**: if you're creating a scheduled backup, configure its frequency and start time.
     !!! caution alert alert-warning "Important"
     Make sure that the schedule you specify here does not create overlapping jobs or overhead on the production environment. Also, check that your specified schedule does not overlap with production hours.
+    
     - **Retention**: this option is only available for snapshot backups stored on S3-compatible storage. If you want to keep an unlimited number of backup artifacts, type `0`.
 9. Expand **Advanced Settings** to specify the settings for retrying the backup in case of any issues. You can either let PMM retry the backup again (**Auto**), or do it again yourself (**Manual**). Auto-retry mode enables you to select up to ten retries and an interval of up to eight hours between retries. <a id="folder-field"></a>
 10. In the **Folder** field, check the target directory available for the specified service and location. By default, this field is prefilled with the cluster label to ensure that all the backups for a cluster are stored in the same directory. If the field is not automatically populated, the service you have specified is not member of a cluster and should be re-added using the following set of commands:
