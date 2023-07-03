@@ -49,9 +49,12 @@ extra_css:
   - https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css
   - css/percona.css
   - css/lightgallery.min.css
+  - css/nocopy.css
 
-#extra_javascript:
+extra_javascript:
 #  - js/lightgallery.min.js
+  - js/promptremover.js
+
 
 markdown_extensions:
   attr_list: {}
@@ -69,7 +72,6 @@ markdown_extensions:
   pymdownx.superfences: {}
   pymdownx.highlight:
     linenums: false
-  lightgallery: {}
   pymdownx.inlinehilite: {}
   pymdownx.emoji:
       emoji_index: !!python/name:materialx.emoji.twemoji
@@ -81,6 +83,12 @@ plugins:
   search:
     separator: '[\s\-,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
   git-revision-date: {}
+  meta-descriptions:
+    export_csv: false
+    quiet: false
+    enable_checks: false
+    min_length: 50
+    max_length: 160
   macros:
     include_yaml:
       - "variables.yml"
@@ -90,9 +98,10 @@ plugins:
       - "setting-up/client/docker.md"
   # https://github.com/orzih/mkdocs-with-pdf
   with-pdf:
-    output_path: '_pdf/PerconaMonitoringAndManagement-2.37.0.pdf'
+    output_path: '_pdf/PerconaMonitoringAndManagement-2.38.0.pdf'
     cover_title: 'Percona Monitoring and Management Documentation'
-    cover_subtitle: 2.37.0 (May 02, 2023)
+    cover_subtitle: 2.38.0 (May 02, 2023)
+
     author: "Percona Technical Documentation Team"
     cover_logo: docs/_images/Percona_Logo_Color.png
     custom_template_path: _resources/templates
@@ -115,7 +124,7 @@ extra:
       We use cookies to recognize your repeated visits and preferences, as well
       as to measure the effectiveness of our documentation and whether users
       find what they're searching for. With your consent, you're helping us to
-      make our documentation better.
+      make our documentation better. Read more about <a class="reference external" href="https://www.percona.com/20180524-cookie-policy" target="_blank">Percona Cookie Policy</a>.
 
 # Common navigation for percona.com, render.com and PDF
 nav:
@@ -194,10 +203,13 @@ nav:
       - details/architecture.md
       - details/interface.md
       - details/pmm_components_and_versions.md
+      - details/personal_data_handling.md
       - Develop Advisor checks:
           - details/develop-checks/index.md
-          - details/develop-checks/checks-v1.md
-          - details/develop-checks/checks-v2.md
+      - PMM Inventory:
+          - details/dashboards/dashboard-inventory.md
+          - details/dashboards/dashboard-env-overview.md
+          - details/dashboards/dashboard-environent-summary.md
       - Dashboards:
           - details/dashboards/index.md
           - Manage dashboards:
@@ -212,10 +224,6 @@ nav:
                   - details/dashboards/kubernetes_cluster_summary.md
                   - details/dashboards/kubernetes_pods_status.md
                   - details/dashboards/kubernetes_volume.md
-              - PMM Inventory:
-                  - details/dashboards/dashboard-inventory.md
-                  - details/dashboards/dashboard-env-overview.md
-                  - details/dashboards/dashboard-environent-summary.md
               - DBaas:
                   - details/dashboards/dashboard-cluster-summary.md
               - OS Dashboards:
@@ -308,6 +316,8 @@ nav:
   - faq.md
   - Release Notes:
       - release-notes/index.md
+      - "PMM 2.38.0": release-notes/2.38.0.md
+      - "PMM 2.37.1": release-notes/2.37.1.md
       - "PMM 2.37.0": release-notes/2.37.0.md
       - "PMM 2.36.0": release-notes/2.36.0.md
       - "PMM 2.35.0": release-notes/2.35.0.md
@@ -355,3 +365,6 @@ nav:
       - "PMM 2.1.0": release-notes/2.1.0.md
       - "PMM 2.0.1": release-notes/2.0.1.md
       - "PMM 2.0.0": release-notes/2.0.0.md
+  - Reference:
+    - "Copyright and licensing information": copyright.md
+    - trademark-policy.md
