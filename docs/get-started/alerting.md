@@ -174,7 +174,7 @@ Before Percona Alerting can send out email notifications via email contact point
 1. Configure Email (SMTP) server settings.
 2. Configure a contact point to define the email delivery options
 
-Contact points with invalid settings show a **No Attempts** status under <i class="uil uil-bell"><  **Alerting > Contact points**.
+Contact points with invalid settings show a **No Attempts** status under <i class="uil uil-bell"> **Alerting > Contact points**.
 
 ### Configure Email (SMTP) server settings
 
@@ -201,7 +201,6 @@ To use SMTP with a PMM Docker installation:
     * `GF_SMTP_FROM_NAME`: Name to be used when sending out emails.
 
     *NB: If you are using your Gmail’s SMTP credentials as shown above, you will have to generate an app password and fill it in as the value of your $GF_SMTP_PASSWORD variable.*
-
 
 2. Pass in the `.env` file to Docker run using the `--env-file` flag: 
 
@@ -255,7 +254,7 @@ Alerts that don't match any specific policies are handled by the root policy. Th
 
 #### Edit the root notification policy
 
-1. Go to <i class="uil uil-bell"><**Alerting > Notification policies** tab.
+1. Go to <i class="uil uil-bell"> **Alerting > Notification policies** tab.
 2. Click **Edit** on the top right of the root policy box.
 3. Choose whether to keep the default Email contact point, select a new available contact point or create a new one.
 4. In the **Group by** field, specify how alert rules should be processed into notifications. If multiple alerts are matched for this policy, they will be grouped based on the labels you specify, and a notification will be sent per group.
@@ -269,7 +268,7 @@ Alerts that don't match any specific policies are handled by the root policy. Th
 
 To create a new notification policy:
 
-1. Go to <i class="uil uil-bell"><**Alerting > Notification policies** tab.
+1. Go to <i class="uil uil-bell"> **Alerting > Notification policies** tab.
 ![!](../_images/alerting-new-notification-policy.png)
 
 2. Click **New specific policy**.
@@ -286,7 +285,7 @@ This can be useful, for example, when you want to send notifications to a catch-
     Time specified in mute timing must be in UTC and military format i.e. 14:00 not 2:00 PM.
 
 ## Silence alerts
-Create a silence when you want to suppress (or stop) alerts and their associated notifications for a very specific amount of time. 
+Create a silence when you want to suppress/stop alerts and their associated notifications for a very specific amount of time. 
 Silences default to today’s current date and have a default duration of two hours. 
 
 You can also schedule a silence for a future date and time. This is referred to as a `Pending` silence, which can be observed on the Silences page.
