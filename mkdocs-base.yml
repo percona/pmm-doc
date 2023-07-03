@@ -206,6 +206,10 @@ nav:
       - details/personal_data_handling.md
       - Develop Advisor checks:
           - details/develop-checks/index.md
+      - PMM Inventory:
+          - details/dashboards/dashboard-inventory.md
+          - details/dashboards/dashboard-env-overview.md
+          - details/dashboards/dashboard-environent-summary.md
       - Dashboards:
           - details/dashboards/index.md
           - Manage dashboards:
@@ -220,10 +224,6 @@ nav:
                   - details/dashboards/kubernetes_cluster_summary.md
                   - details/dashboards/kubernetes_pods_status.md
                   - details/dashboards/kubernetes_volume.md
-              - PMM Inventory:
-                  - details/dashboards/dashboard-inventory.md
-                  - details/dashboards/dashboard-env-overview.md
-                  - details/dashboards/dashboard-environent-summary.md
               - DBaas:
                   - details/dashboards/dashboard-cluster-summary.md
               - OS Dashboards:
