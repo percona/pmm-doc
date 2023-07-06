@@ -37,7 +37,32 @@ If one is available, click the update button to update to the version indicated.
 
 ## Updating a PMM-Agent
 
-PMM-Agent can be updated from tarball:
+### Package Manager
+
+The easiest way to manage the agent installation and updates is to rely on the operating system package manager. Use the [percona-release](https://docs.percona.com/percona-software-repositories/installing.html) package to handle access to Percona repositories.
+
+The pmm agent is available in the `tools` repository. To deploy a new version of the agent, simply replace the currently installed package. 
+
+For example the following commands install the latest version of the agent on Red Hat or derivatives:
+```
+percona-release enable tools
+yum update pmm2-client
+```
+This keeps the existing agent configuration.
+
+To deploy a specific version, you can check the available versions and then provide the full name of the package, for example:
+```
+yum --showduplicates search pmm2-client
+pmm2-client-2.36.0-6.el7.x86_64 : PMM-agent
+pmm2-client-2.37.0-6.el7.x86_64 : PMM-agent
+pmm2-client-2.37.1-6.el7.x86_64 : PMM-agent
+
+yum update pmm2-client-2.37.1-6.el7.x86_64
+```
+
+### Tarball
+
+PMM-Agent can also be updated from tarball:
 
  1. Download `tar.gz` with `pmm2-client`.
  2. Extract it.
