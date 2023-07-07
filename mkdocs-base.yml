@@ -294,7 +294,7 @@ nav:
       - details/postgresql.md
       - details/glossary.md
   - DBaaS:
-    - DBaaS: "Introduction": dbaas/index.md
+    - "Introduction": dbaas/index.md
     - dbaas/architecture.md
     - "Setting up":
       - "Setting up DBaaS": dbaas/setting-up.html#setting-up-dbaas
