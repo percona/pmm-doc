@@ -132,7 +132,7 @@ nav:
   - Setting up:
       - setting-up/index.md
       - Server:
-          - setting-up/server/index.md
+          - Server: setting-up/server/index.md
           - setting-up/server/network.md
           - setting-up/server/docker.md
           - setting-up/server/podman.md
@@ -141,7 +141,7 @@ nav:
           - setting-up/server/aws.md
           - setting-up/server/easy-install.md
       - Client:
-          - setting-up/client/index.md
+          - Client: setting-up/client/index.md
           - setting-up/client/mysql.md
           - setting-up/client/mongodb.md
           - setting-up/client/postgresql.md
@@ -154,28 +154,28 @@ nav:
           - setting-up/client/haproxy.md
           - setting-up/client/remote.md
   - Get started:
-      - get-started/index.md
+      - Get started: get-started/index.md
       - get-started/interface.md
       - get-started/alerting.md
       - Backup and Restore:
-          - get-started/backup/index.md
+          - Backup and Restore: get-started/backup/index.md
           - get-started/backup/prepare_storage_location.md
           - MongoDB backups:
-                - get-started/backup/backup_mongo.md
+                - MongoDB backups: get-started/backup/backup_mongo.md
                 - get-started/backup/mongo-prerequisites.md
                 - get-started/backup/create_mongo_on_demand.md
                 - get-started/backup/create_PITR_mongo.md
                 - get-started/backup/restore_MongoDB_backups.md
                 - get-started/backup/mongodb_limitations.md
           - MySQL backups:
-                - get-started/backup/backup_mysql.md
+                - MySQL backups: get-started/backup/backup_mysql.md
                 - get-started/backup/mysql_prerequisites.md
                 - get-started/backup/create_mysql_backup.md
                 - get-started/backup/restore_mysql_backup.md
           - get-started/backup/edit_scheduled.md
           - get-started/backup/delete_a_backup.md
       - Roles and permissions:
-          - get-started/roles-and-permissions/index.md
+          - Roles and permissions: get-started/roles-and-permissions/index.md
           - get-started/roles-and-permissions/configure_access_roles.md
           - get-started/roles-and-permissions/lbac.md
           - get-started/roles-and-permissions/access_roles.md
@@ -185,7 +185,7 @@ nav:
       - get-started/query-analytics.md
       - get-started/advisors.md
   - How to:
-      - how-to/index.md
+      - How to: how-to/index.md
       - how-to/configure.md
       - how-to/manage-users.md
       - how-to/upgrade.md
@@ -196,10 +196,10 @@ nav:
       - how-to/extend-metrics.md
       - how-to/troubleshoot.md
       - Integrate with Percona Platform:
-          - how-to/integrate-platform.md
+          - Integrate with Percona Platform: how-to/integrate-platform.md
           - how-to/account-info.md
   - Details:
-      - details/index.md
+      - Details: details/index.md
       - details/architecture.md
       - details/interface.md
       - details/pmm_components_and_versions.md
@@ -214,21 +214,21 @@ nav:
               - details/dashboards/dashboard-manage-dashboards.md
           - PMM dashboards:
               - Insight:
-                  - details/dashboards/dashboard-home.md
+                  - Insight: details/dashboards/dashboard-home.md
                   - details/dashboards/dashboard-advanced-data-exploration.md
                   - details/dashboards/dashboard-victoriametrics.md
                   - details/dashboards/dashboard-victoriametrics-agents-overview.md
               - Environments:
-                  - details/dashboards/dashboard-env-overview.md
+                  - Environments: details/dashboards/dashboard-env-overview.md
                   - details/dashboards/dashboard-environent-summary.md
               - Kubernetes:
-                  - details/dashboards/kubernetes_cluster_summary.md
+                  - Kubernetes: details/dashboards/kubernetes_cluster_summary.md
                   - details/dashboards/kubernetes_pods_status.md
                   - details/dashboards/kubernetes_volume.md
               - DBaas:
                   - details/dashboards/dashboard-cluster-summary.md
               - OS Dashboards:
-                  - details/dashboards/dashboard-cpu-utilization-details.md
+                  - OS Dashboards: details/dashboards/dashboard-cpu-utilization-details.md
                   - details/dashboards/dashboard-disk-details.md
                   - details/dashboards/dashboard-network-details.md
                   - details/dashboards/dashboard-memory-details.md
@@ -239,10 +239,10 @@ nav:
                   - details/dashboards/dashboard-numa-details.md
                   - details/dashboards/dashboard-processes-details.md
               - Prometheus Dashboards:
-                  - details/dashboards/dashboard-prometheus-exporter-status.md
+                  - Prometheus Dashboards: details/dashboards/dashboard-prometheus-exporter-status.md
                   - details/dashboards/dashboard-prometheus-exporters-overview.md
               - MySQL Dashboards:
-                  - details/dashboards/dashboard-mysql-amazon-aurora-details.md
+                  - MySQL Dashboards: details/dashboards/dashboard-mysql-amazon-aurora-details.md
                   - details/dashboards/dashboard-mysql-command-handler-counters-compare.md
                   - details/dashboards/dashboard-mysql-innodb-compression-details.md
                   - details/dashboards/dashboard-mysql-innodb-details.md
@@ -260,7 +260,7 @@ nav:
                   - details/dashboards/dashboard-mysql-user-details.md
                   - details/dashboards/dashboard-mysql-tokudb-details.md
               - MongoDB Dashboards:
-                  - details/dashboards/dashboard-mongodb-experimental_collection_overview.md
+                  - MongoDB Dashboards: details/dashboards/dashboard-mongodb-experimental_collection_overview.md
                   - details/dashboards/dashboard-mongodb-experimental_collection_details.md
                   - details/dashboards/dashboard-mongodb-experimental_oplog.md
                   - details/dashboards/dashboard-mongodb-cluster-summary.md
@@ -272,20 +272,20 @@ nav:
                   - details/dashboards/dashboard-mongodb-mmapv1-details.md
                   - details/dashboards/dashboard-mongodb-wiredtiger-details.md
               - PostgreSQL Dashboards:
-                  - details/dashboards/dashboard-postgresql-instances-overview.md
+                  - PostgreSQL Dashboards: details/dashboards/dashboard-postgresql-instances-overview.md
                   - details/dashboards/dashboard-postgresql-instance-summary.md
                   - details/dashboards/dashboard-postgresql-instances-compare.md
                   - details/dashboards/dashboard-postgresql-vacuum-monitoring-experimental.md
               - ProxySQL Dashboards:
                   - details/dashboards/dashboard-proxysql-instance-summary.md
               - HA Dashboards:
-                  - details/dashboards/dashboard-pxc-galera-node-summary.md
+                  - HA Dashboards: details/dashboards/dashboard-pxc-galera-node-summary.md
                   - details/dashboards/dashboard-pxc-galera-cluster-summary.md
                   - details/dashboards/dashboard-pxc-galera-cluster-summary-experimental.md
                   - details/dashboards/dashboard-pxc-galera-nodes-compare.md
                   - details/dashboards/dashboard-haproxy-instance-summary.md
       - Commands:
-          - details/commands/index.md
+          - Commands: details/commands/index.md
           - details/commands/pmm-admin.md
           - details/commands/pmm-agent.md
       - details/api.md
@@ -294,7 +294,7 @@ nav:
       - details/postgresql.md
       - details/glossary.md
   - DBaaS:
-    - "Introduction": dbaas/index.md
+    - DBaaS: "Introduction": dbaas/index.md
     - dbaas/architecture.md
     - "Setting up":
       - "Setting up DBaaS": dbaas/setting-up.html#setting-up-dbaas
@@ -316,7 +316,7 @@ nav:
     - "Backup and restore": dbaas/backup_restore.md
   - faq.md
   - Release Notes:
-      - release-notes/index.md
+      - Release Notes: release-notes/index.md
       - "PMM 2.38.0": release-notes/2.38.0.md
       - "PMM 2.37.1": release-notes/2.37.1.md
       - "PMM 2.37.0": release-notes/2.37.0.md
