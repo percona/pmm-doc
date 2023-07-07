@@ -122,9 +122,9 @@ The address or hostname PMM Server will be accessible at. Click **Get from brows
 ### DBaaS
 
 !!! caution alert alert-warning "Caution"
-    DBaaS functionality is a technical preview that must be turned on with a server feature flag. See [DBaaS](../setting-up/server/dbaas.md).
+    DBaaS functionality is a technical preview that must be turned on with a server feature flag. See [DBaaS](../dbaas/setting-up.md).
 
-Enables/disables [DBaaS features](../get-started/dbaas.md) on this server.
+Enables/disables [DBaaS features](../dbaas/index.md) on this server.
 
 !!! caution alert alert-warning "Important"
     Deactivating DBaaS ***does not*** suspend or remove running DB clusters.
