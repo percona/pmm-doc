@@ -121,6 +121,12 @@ nav:
   - Home: index.md
   - Release Notes:
       - Release notes index: release-notes/index.md
+      - "PMM 2.38.1 (2023-07-13)": release-notes/2.38.1.md
+      - "PMM 2.38.0 (2023-07-3)": release-notes/2.38.0.md
+      - "PMM 2.37.1 (2023-06-5)": release-notes/2.37.1.md
+      - "PMM 2.37.0 (2023-05-2)": release-notes/2.37.0.md
+      - "PMM 2.36.0 (2023-03-23)": release-notes/2.36.0.md
+      - "PMM 2.35.0 (2023-02-23)": release-notes/2.35.0.md
       - "PMM 2.34.0 (2023-01-30)": release-notes/2.34.0.md
       - "PMM 2.33.0 (2022-12-13)": release-notes/2.33.0.md
       - "PMM 2.32.0 (2022-11-08)": release-notes/2.32.0.md
@@ -289,7 +295,9 @@ nav:
       - ui/nav.md
       - ui/panels.md
       - ui/timezone.md
-      - ui/view.md     
+      - ui/view.md
+      - PMM Inventory:
+        - details/dashboards/dashboard-inventory.md     
       - Dashboards:
         - ui/dashboards-panels/index.md
         - Use dashboards:
@@ -317,8 +325,7 @@ nav:
               - details/dashboards/dashboard-advanced-data-exploration.md
               - details/dashboards/dashboard-victoriametrics.md
               - details/dashboards/dashboard-victoriametrics-agents-overview.md
-          - PMM Inventory:
-              - details/dashboards/dashboard-inventory.md
+          - Environments:
               - details/dashboards/dashboard-env-overview.md
               - details/dashboards/dashboard-environent-summary.md
           - DBaas:
