@@ -128,53 +128,59 @@ nav:
       - "PMM 2.36.0 (2023-03-23)": release-notes/2.36.0.md
       - "PMM 2.35.0 (2023-02-23)": release-notes/2.35.0.md
       - "PMM 2.34.0 (2023-01-30)": release-notes/2.34.0.md
-      - "PMM 2.33.0 (2022-12-13)": release-notes/2.33.0.md
-      - "PMM 2.32.0 (2022-11-08)": release-notes/2.32.0.md
-      - "PMM 2.31.0 (2022-09-26)": release-notes/2.31.0.md
-      - "PMM 2.30.0 (2022-08-24)": release-notes/2.30.0.md
-      - "PMM 2.29.1 (2022-07-28)": release-notes/2.29.1.md
-      - "PMM 2.29.0 (2022-07-19)": release-notes/2.29.0.md
-      - "PMM 2.28.0 (2022-05-12)": release-notes/2.28.0.md
-      - "PMM 2.27.0 (2022-04-14)": release-notes/2.27.0.md
-      - "PMM 2.26.0 (2022-02-08)": release-notes/2.26.0.md
-      - "PMM 2.25.0 (2021-12-14)": release-notes/2.25.0.md
-      - "PMM 2.24.0 (2021-11-18)": release-notes/2.24.0.md
-      - "PMM 2.23.0 (2021-10-21)": release-notes/2.23.0.md
-      - "PMM 2.22.0 (2021-09-23)": release-notes/2.22.0.md
-      - "PMM 2.21.0 (2021-08-26)": release-notes/2.21.0.md
-      - "PMM 2.20.0 (2021-08-03)": release-notes/2.20.0.md
-      - "PMM 2.19.0 (2021-06-30)": release-notes/2.19.0.md
-      - "PMM 2.18.0 (2021-06-01)": release-notes/2.18.0.md
-      - "PMM 2.17.0 (2021-05-11)": release-notes/2.17.0.md
-      - "PMM 2.16.0 (2021-05-15)": release-notes/2.16.0.md
-      - "PMM 2.15.1 (2021-03-18)": release-notes/2.15.1.md
-      - "PMM 2.15.0 (2021-03-01)": release-notes/2.15.0.md
-      - "PMM 2.14.0 (2021-01-28)": release-notes/2.14.0.md
-      - "PMM 2.13.0 (2020-12-29)": release-notes/2.13.0.md
-      - "PMM 2.12.0 (2020-12-01)": release-notes/2.12.0.md
-      - "PMM 2.11.1 (2020-10-19)": release-notes/2.11.1.md
-      - "PMM 2.11.0 (2020-10-14)": release-notes/2.11.0.md
-      - "PMM 2.10.1 (2020-09-22)": release-notes/2.10.1.md
-      - "PMM 2.10.0 (2020-09-15)": release-notes/2.10.0.md
-      - "PMM 2.9.1 (2020-08-04)": release-notes/2.9.1.md
-      - "PMM 2.9.0 (2020-07-14)": release-notes/2.9.0.md
-      - "PMM 2.8.0 (2020-06-25)": release-notes/2.8.0.md
-      - "PMM 2.7.0 (2020-06-09)": release-notes/2.7.0.md
-      - "PMM 2.6.1 (2020-05-18)": release-notes/2.6.1.md
-      - "PMM 2.6.0 (2020-05-11)": release-notes/2.6.0.md
-      - "PMM 2.5.0 (2020-04-14)": release-notes/2.5.0.md
-      - "PMM 2.4.0 (2020-03-18))": release-notes/2.4.0.md
-      - "PMM 2.3.0 (2020-02-19)": release-notes/2.3.0.md
-      - "PMM 2.2.2 (2020-02-04)": release-notes/2.2.2.md
-      - "PMM 2.2.1 (2020-01-23)": release-notes/2.2.1.md
-      - "PMM 2.2.0 (2019-11-24)": release-notes/2.2.0.md
-      - "PMM 2.1.0 (2019-11-11)": release-notes/2.1.0.md
-      - "PMM 2.0.1 (2019-10-09)": release-notes/2.0.1.md
-      - "PMM 2.0.0 (2019-09-19)": release-notes/2.0.0.md
-  - features.md
-  - getstarted.md
+      - 2022:
+        - "PMM 2.33.0 (2022-12-13)": release-notes/2.33.0.md
+        - "PMM 2.32.0 (2022-11-08)": release-notes/2.32.0.md
+        - "PMM 2.31.0 (2022-09-26)": release-notes/2.31.0.md
+        - "PMM 2.30.0 (2022-08-24)": release-notes/2.30.0.md
+        - "PMM 2.29.1 (2022-07-28)": release-notes/2.29.1.md
+        - "PMM 2.29.0 (2022-07-19)": release-notes/2.29.0.md
+        - "PMM 2.28.0 (2022-05-12)": release-notes/2.28.0.md
+        - "PMM 2.27.0 (2022-04-14)": release-notes/2.27.0.md
+        - "PMM 2.26.0 (2022-02-08)": release-notes/2.26.0.md
+      - 2021:
+          - "PMM 2.25.0 (2021-12-14)": release-notes/2.25.0.md
+          - "PMM 2.24.0 (2021-11-18)": release-notes/2.24.0.md
+          - "PMM 2.23.0 (2021-10-21)": release-notes/2.23.0.md
+          - "PMM 2.22.0 (2021-09-23)": release-notes/2.22.0.md
+          - "PMM 2.21.0 (2021-08-26)": release-notes/2.21.0.md
+          - "PMM 2.20.0 (2021-08-03)": release-notes/2.20.0.md
+          - "PMM 2.19.0 (2021-06-30)": release-notes/2.19.0.md
+          - "PMM 2.18.0 (2021-06-01)": release-notes/2.18.0.md
+          - "PMM 2.17.0 (2021-05-11)": release-notes/2.17.0.md
+          - "PMM 2.16.0 (2021-05-15)": release-notes/2.16.0.md
+          - "PMM 2.15.1 (2021-03-18)": release-notes/2.15.1.md
+          - "PMM 2.15.0 (2021-03-01)": release-notes/2.15.0.md
+          - "PMM 2.14.0 (2021-01-28)": release-notes/2.14.0.md
+      - 2020:
+          - "PMM 2.13.0 (2020-12-29)": release-notes/2.13.0.md
+          - "PMM 2.12.0 (2020-12-01)": release-notes/2.12.0.md
+          - "PMM 2.11.1 (2020-10-19)": release-notes/2.11.1.md
+          - "PMM 2.11.0 (2020-10-14)": release-notes/2.11.0.md
+          - "PMM 2.10.1 (2020-09-22)": release-notes/2.10.1.md
+          - "PMM 2.10.0 (2020-09-15)": release-notes/2.10.0.md
+          - "PMM 2.9.1 (2020-08-04)": release-notes/2.9.1.md
+          - "PMM 2.9.0 (2020-07-14)": release-notes/2.9.0.md
+          - "PMM 2.8.0 (2020-06-25)": release-notes/2.8.0.md
+          - "PMM 2.7.0 (2020-06-09)": release-notes/2.7.0.md
+          - "PMM 2.6.1 (2020-05-18)": release-notes/2.6.1.md
+          - "PMM 2.6.0 (2020-05-11)": release-notes/2.6.0.md
+          - "PMM 2.5.0 (2020-04-14)": release-notes/2.5.0.md
+          - "PMM 2.4.0 (2020-03-18))": release-notes/2.4.0.md
+          - "PMM 2.3.0 (2020-02-19)": release-notes/2.3.0.md
+          - "PMM 2.2.2 (2020-02-04)": release-notes/2.2.2.md
+          - "PMM 2.2.1 (2020-01-23)": release-notes/2.2.1.md
+      - 2019:      
+          - "PMM 2.2.0 (2019-11-24)": release-notes/2.2.0.md
+          - "PMM 2.1.0 (2019-11-11)": release-notes/2.1.0.md
+          - "PMM 2.0.1 (2019-10-09)": release-notes/2.0.1.md
+          - "PMM 2.0.0 (2019-09-19)": release-notes/2.0.0.md
+  - Discover PMM: features.md
+  - Quickstart Guide:
+      - getstarted.md
   - Install PMM:
-      - Plan your PMM installation: 
+      - install-pmm/index.md
+      - Before you start: 
         - plan-pmm-installation/hardware_and_system.md
         - plan-pmm-installation/network_and_firewall.md
       - Install PMM server:
@@ -222,7 +228,7 @@ nav:
         - install-pmm/install-pmm-client/docker.md
         - install-pmm/install-pmm-client/binary_package.md          
         - install-pmm/install-pmm-client/package_manager.md
-      - Register client node: install-pmm/register-client-node/index.md 
+        - Register client node: install-pmm/register-client-node/index.md 
       - Add services:      
         - install-pmm/add-services/index.md
         - install-pmm/add-services/aws.md
@@ -236,13 +242,18 @@ nav:
         - install-pmm/add-services/postgresql.md
         - install-pmm/add-services/proxysql.md
         - install-pmm/add-services/remote.md
-  - Upgrade PMM:
-      - pmm-upgrade/index.md
-      - pmm-upgrade/ui_upgrade.md
-      - pmm-upgrade/upgrade_aws.md    
-      - pmm-upgrade/upgrade_docker.md
-      - pmm-upgrade/upgrade_agent.md
-      - pmm-upgrade/upgrade_from_pmm_1.md
+      - Uninstall PMM:
+        - uninstall-pmm/index.md
+        - uninstall-pmm/uninstall_docker.md
+        - uninstall-pmm/uninstall_package_manager.md
+        - uninstall-pmm/unregister_client.md
+      - Upgrade PMM:
+        - pmm-upgrade/index.md
+        - pmm-upgrade/ui_upgrade.md
+        - pmm-upgrade/upgrade_aws.md    
+        - pmm-upgrade/upgrade_docker.md
+        - pmm-upgrade/upgrade_agent.md
+        - pmm-upgrade/upgrade_from_pmm_1.md
   - Use PMM: 
        - PMM user interface:
         - ui/index.md
@@ -343,7 +354,7 @@ nav:
               - details/dashboards/dashboard-pxc-galera-cluster-summary-experimental.md
               - details/dashboards/dashboard-pxc-galera-nodes-compare.md
               - details/dashboards/dashboard-haproxy-instance-summary.md
-  - Database-as-a-Service:
+    - Database-as-a-Service:
       - dbaas/index.md
       - dbaas/architecture.md
       - Set up DBaaS:
@@ -363,7 +374,7 @@ nav:
         - dbaas/manage-dbaas_clusters/update_cluster.md
       - dbaas/K8s_cluster.md
       - dbaas/dbaas_backup.md
-  - Percona Alerting:
+    - Percona Alerting:
       - alert/index.md
       - alert/alert_type.md
       - alert/alert_components.md
@@ -371,7 +382,7 @@ nav:
       - alert/alert_expressions.md
       - alert/silence_alerts.md
       - alert/disable_alerts.md 
-  - Backup and restore:
+    - Backup and restore:
       - backup/index.md
       - backup/prepare_storage_location.md
       - MongoDB backups:
@@ -388,8 +399,8 @@ nav:
         - backup/mysql-backup/restore_mysql_backup.md
       - backup/edit_scheduled.md
       - backup/delete_a_backup.md
-  - Advisors: advisors/advisors.md
-  - Query Analytics:
+    - Advisors: advisors/advisors.md
+    - Query Analytics:
       - qan/index.md
       - qan/qan_mongo.md
       - qan/share_link.md
@@ -397,10 +408,10 @@ nav:
         - qan/panels/overview.md
         - qan/panels/filters.md
         - qan/panels/details.md
-  - PMM metrics: 
+    - PMM metrics: 
       - metrics/index.md
       - metrics/extend_metrics.md 
-  - PMM commands:
+    - PMM commands:
       - commands/index.md
       - commands/pmm-admin.md
       - commands/pmm-agent.md 
@@ -444,11 +455,6 @@ nav:
         - optimize/improve_perf.md
         - optimize/change_number_tables.md
         - optimize/disable_table_stats.md 
-      - Uninstall PMM:
-        - uninstall-pmm/index.md
-        - uninstall-pmm/uninstall_docker.md
-        - uninstall-pmm/uninstall_package_manager.md
-        - uninstall-pmm/unregister_client.md
   - Troubleshoot:
       - troubleshoot/index.md
       - troubleshoot/checklist.md
