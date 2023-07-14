@@ -254,9 +254,8 @@ nav:
         - pmm-upgrade/upgrade_docker.md
         - pmm-upgrade/upgrade_agent.md
         - pmm-upgrade/upgrade_from_pmm_1.md
-  - Use PMM: 
-      - PMM user interface:
-        - ui/index.md
+  - Use PMM:
+      - PMM user interface: ui/index.md
         - ui/log_in.md
         - ui/controls.md
         - ui/nav.md
@@ -354,8 +353,7 @@ nav:
               - details/dashboards/dashboard-pxc-galera-cluster-summary-experimental.md
               - details/dashboards/dashboard-pxc-galera-nodes-compare.md
               - details/dashboards/dashboard-haproxy-instance-summary.md
-    - Database-as-a-Service:
-      - dbaas/index.md
+    - Database-as-a-Service: dbaas/index.md
       - dbaas/architecture.md
       - Set up DBaaS:
         - dbaas/setup-dbaas/index.md
