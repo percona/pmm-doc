@@ -121,7 +121,7 @@ nav:
   - Home: index.md
   - Release Notes:
       - Release notes index: release-notes/index.md
-      - "PMM 2.38.1 (2023-07-13)": release-notes/2.38.1.md
+      - "PMM 2.38.1 (2023-07-14)": release-notes/2.38.1.md
       - "PMM 2.38.0 (2023-07-3)": release-notes/2.38.0.md
       - "PMM 2.37.1 (2023-06-5)": release-notes/2.37.1.md
       - "PMM 2.37.0 (2023-05-2)": release-notes/2.37.0.md
