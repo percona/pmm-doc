@@ -255,7 +255,7 @@ nav:
         - pmm-upgrade/upgrade_agent.md
         - pmm-upgrade/upgrade_from_pmm_1.md
   - Use PMM: 
-       - PMM user interface:
+      - PMM user interface:
         - ui/index.md
         - ui/log_in.md
         - ui/controls.md
