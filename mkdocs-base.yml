@@ -236,14 +236,6 @@ nav:
         - install-pmm/add-services/postgresql.md
         - install-pmm/add-services/proxysql.md
         - install-pmm/add-services/remote.md
-  - Configure PMM:      
-      - configure-pmm/configure.md
-      - configure-pmm/metrics_res.md
-      - configure-pmm/advanced_settings.md
-      - configure-pmm/public-address.md
-      - configure-pmm/ssh.md
-      - configure-pmm/alertmanager.md
-      - configure-pmm/percona_platform.md
   - Upgrade PMM:
       - pmm-upgrade/index.md
       - pmm-upgrade/ui_upgrade.md
@@ -251,51 +243,15 @@ nav:
       - pmm-upgrade/upgrade_docker.md
       - pmm-upgrade/upgrade_agent.md
       - pmm-upgrade/upgrade_from_pmm_1.md
-  - Uninstall PMM:
-      - uninstall-pmm/index.md
-      - uninstall-pmm/uninstall_docker.md
-      - uninstall-pmm/uninstall_package_manager.md
-      - uninstall-pmm/unregister_client.md
-  - Manage PMM:
-      - pmm-admin/index.md
-      - Manage users:
-        - pmm-admin/manage-users/index.md
-        - pmm-admin/manage-users/add_users.md
-        - pmm-admin/manage-users/edit_users.md
-        - pmm-admin/manage-users/delete_users.md
-        - pmm-admin/manage-users/manage_users_in_org.md
-      - Roles and permissions:
-        - pmm-admin/roles/index.md
-        - Access Control in PMM:
-          - pmm-admin/roles/access-control/intro.md
-          - pmm-admin/roles/access-control/labels.md
-          - pmm-admin/roles/access-control/config_access_cntrl.md
-          - pmm-admin/roles/access-control/create_roles.md
-          - pmm-admin/roles/access-control/manage_roles.md
-          - pmm-admin/roles/access-control/assign_roles.md
-          - pmm-admin/roles/access-control/usecase.md
-      - Organizations:
-        - pmm-admin/manage-orgs/index.md
-        - pmm-admin/manage-orgs/create_org.md 
-        - pmm-admin/manage-orgs/edit_org.md 
-        - pmm-admin/manage-orgs/del_org.md
-      - Security in PMM:
-        - pmm-admin/security/index.md
-        - pmm-admin/security/ssl_encryption.md 
-        - pmm-admin/security/grafana_cookies.md  
-  - Optimize PMM:
-      - optimize/index.md
-      - optimize/improve_perf.md
-      - optimize/change_number_tables.md
-      - optimize/disable_table_stats.md 
-  - PMM user interface:
-      - ui/index.md
-      - ui/log_in.md
-      - ui/controls.md
-      - ui/nav.md
-      - ui/panels.md
-      - ui/timezone.md
-      - ui/view.md
+  - Use PMM: 
+       - PMM user interface:
+        - ui/index.md
+        - ui/log_in.md
+        - ui/controls.md
+        - ui/nav.md
+        - ui/panels.md
+        - ui/timezone.md
+        - ui/view.md
       - PMM Inventory:
         - details/dashboards/dashboard-inventory.md     
       - Dashboards:
@@ -447,10 +403,52 @@ nav:
   - PMM commands:
       - commands/index.md
       - commands/pmm-admin.md
-      - commands/pmm-agent.md
-  - PMM API:
-      - api/index.md
-      - api/authentication.md
+      - commands/pmm-agent.md 
+  - Configure PMM:      
+      - configure-pmm/configure.md
+      - configure-pmm/metrics_res.md
+      - configure-pmm/advanced_settings.md
+      - configure-pmm/public-address.md
+      - configure-pmm/ssh.md
+      - configure-pmm/alertmanager.md
+      - configure-pmm/percona_platform.md
+  - Manage PMM:
+      - pmm-admin/index.md
+      - Manage users:
+        - pmm-admin/manage-users/index.md
+        - pmm-admin/manage-users/add_users.md
+        - pmm-admin/manage-users/edit_users.md
+        - pmm-admin/manage-users/delete_users.md
+        - pmm-admin/manage-users/manage_users_in_org.md
+      - Roles and permissions:
+        - pmm-admin/roles/index.md
+        - Access Control in PMM:
+          - pmm-admin/roles/access-control/intro.md
+          - pmm-admin/roles/access-control/labels.md
+          - pmm-admin/roles/access-control/config_access_cntrl.md
+          - pmm-admin/roles/access-control/create_roles.md
+          - pmm-admin/roles/access-control/manage_roles.md
+          - pmm-admin/roles/access-control/assign_roles.md
+          - pmm-admin/roles/access-control/usecase.md
+      - Organizations:
+        - pmm-admin/manage-orgs/index.md
+        - pmm-admin/manage-orgs/create_org.md 
+        - pmm-admin/manage-orgs/edit_org.md 
+        - pmm-admin/manage-orgs/del_org.md
+      - Security in PMM:
+        - pmm-admin/security/index.md
+        - pmm-admin/security/ssl_encryption.md 
+        - pmm-admin/security/grafana_cookies.md  
+      - Optimize PMM:
+        - optimize/index.md
+        - optimize/improve_perf.md
+        - optimize/change_number_tables.md
+        - optimize/disable_table_stats.md 
+      - Uninstall PMM:
+        - uninstall-pmm/index.md
+        - uninstall-pmm/uninstall_docker.md
+        - uninstall-pmm/uninstall_package_manager.md
+        - uninstall-pmm/unregister_client.md
   - Troubleshoot:
       - troubleshoot/index.md
       - troubleshoot/checklist.md
@@ -474,3 +472,6 @@ nav:
         - reference/third-party/victoria.md
         - reference/third-party/clickhouse.md
       -  reference/faq.md
+      - PMM API:
+        - api/index.md
+        - api/authentication.md
