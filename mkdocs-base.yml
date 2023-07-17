@@ -355,7 +355,8 @@ nav:
               - details/dashboards/dashboard-pxc-galera-cluster-summary-experimental.md
               - details/dashboards/dashboard-pxc-galera-nodes-compare.md
               - details/dashboards/dashboard-haproxy-instance-summary.md
-    - Database-as-a-Service: dbaas/index.md
+    - Database-as-a-Service: 
+      - dbaas/index.md
       - dbaas/architecture.md
       - Set up DBaaS:
         - dbaas/setup-dbaas/index.md
