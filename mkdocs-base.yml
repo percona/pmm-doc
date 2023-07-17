@@ -121,13 +121,13 @@ nav:
   - Home: index.md
   - Release Notes:
       - Release notes index: release-notes/index.md
-      - "PMM 2.38.1 (2023-07-13)": release-notes/2.38.1.md
-      - "PMM 2.38.0 (2023-07-3)": release-notes/2.38.0.md
-      - "PMM 2.37.1 (2023-06-5)": release-notes/2.37.1.md
-      - "PMM 2.37.0 (2023-05-2)": release-notes/2.37.0.md
-      - "PMM 2.36.0 (2023-03-23)": release-notes/2.36.0.md
-      - "PMM 2.35.0 (2023-02-23)": release-notes/2.35.0.md
-      - "PMM 2.34.0 (2023-01-30)": release-notes/2.34.0.md
+      - "PMM 2.38.1 (13 July 2023)": release-notes/2.38.1.md
+      - "PMM 2.38.0 (3 July 2023)": release-notes/2.38.0.md
+      - "PMM 2.37.1 (5 June 2023)": release-notes/2.37.1.md
+      - "PMM 2.37.0 (2 May 2023)": release-notes/2.37.0.md
+      - "PMM 2.36.0 (23 March 2023)": release-notes/2.36.0.md
+      - "PMM 2.35.0 (23 February 2023)": release-notes/2.35.0.md
+      - "PMM 2.34.0 (30 January 2023)": release-notes/2.34.0.md
       - 2022:
         - "PMM 2.33.0 (2022-12-13)": release-notes/2.33.0.md
         - "PMM 2.32.0 (2022-11-08)": release-notes/2.32.0.md
@@ -176,8 +176,7 @@ nav:
           - "PMM 2.0.1 (2019-10-09)": release-notes/2.0.1.md
           - "PMM 2.0.0 (2019-09-19)": release-notes/2.0.0.md
   - Discover PMM: features.md
-  - Quickstart Guide:
-      - getstarted.md
+  - Quickstart Guide: getstarted.md
   - Install PMM:
       - install-pmm/index.md
       - Before you start: 
@@ -242,11 +241,6 @@ nav:
         - install-pmm/add-services/postgresql.md
         - install-pmm/add-services/proxysql.md
         - install-pmm/add-services/remote.md
-      - Uninstall PMM:
-        - uninstall-pmm/index.md
-        - uninstall-pmm/uninstall_docker.md
-        - uninstall-pmm/uninstall_package_manager.md
-        - uninstall-pmm/unregister_client.md
       - Upgrade PMM:
         - pmm-upgrade/index.md
         - pmm-upgrade/ui_upgrade.md
@@ -254,6 +248,11 @@ nav:
         - pmm-upgrade/upgrade_docker.md
         - pmm-upgrade/upgrade_agent.md
         - pmm-upgrade/upgrade_from_pmm_1.md
+      - Uninstall PMM:
+        - uninstall-pmm/index.md
+        - uninstall-pmm/uninstall_docker.md
+        - uninstall-pmm/uninstall_package_manager.md
+        - uninstall-pmm/unregister_client.md
 
   - Use PMM:
     - PMM user interface: 
