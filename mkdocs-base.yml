@@ -253,7 +253,15 @@ nav:
         - pmm-upgrade/upgrade_aws.md    
         - pmm-upgrade/upgrade_docker.md
         - pmm-upgrade/upgrade_agent.md
-        - pmm-upgrade/upgrade_from_pmm_1.md
+        - pmm-upgrade/upgrade_from_pmm_1.md  
+  - Use PMM:
+      - PMM user interface: ui/index.md
+        - ui/log_in.md
+        - ui/controls.md
+        - ui/nav.md
+        - ui/panels.md
+        - ui/timezone.md
+        - ui/view.md
     - PMM Inventory:
       - details/dashboards/dashboard-inventory.md     
       - Dashboards:
