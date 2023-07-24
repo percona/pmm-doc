@@ -32,5 +32,5 @@ You can install PMM server using CuRL and wget as follows:
 === "wget"
 
     ```sh
-    curl -fsSL https://www.percona.com/get/pmm | /bin/bash
+    wget -qO - https://www.percona.com/get/pmm | /bin/bash    
     ```
