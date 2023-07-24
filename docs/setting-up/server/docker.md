@@ -54,14 +54,12 @@ You can store data from your PMM in:
     ```
 4. Change the password for the default `admin` user.
 
-    * For PMM versions 2.27.0 and later:
-
+    - For PMM versions 2.27.0 and later:
         ```sh
         docker exec -t pmm-server change-admin-password <new_password>
         ```
 
-    * For PMM versions prior to 2.27.0:
-
+    - For PMM versions prior to 2.27.0:
             ```sh
             docker exec -t pmm-server bash -c 'grafana-cli --homepath /usr/share/grafana --configOverrides cfg:default.paths.data=/srv/grafana admin reset-admin-password newpass'
             ```
