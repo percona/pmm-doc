@@ -8,7 +8,7 @@ This guide covers how you can quickly get started using PMM.
 
 The following are the prerequisites for using PMM:
 
-- Install [Docker](https://docs.docker.com/engine/install/) 1.12.6 or higher version.
+- Install [Docker](https://docs.docker.com/engine/install/) 1.12.6 or higher.
 
 - Docker compatible *nix based systems
 
@@ -18,9 +18,7 @@ You can use the [easy installation](https://docs.percona.com/percona-monitoring-
 
 ## Install PMM
 
-
-
-You can install PMM server using CuRL and wget as follows:
+You can install PMM server using `cURL` and `wget` as follows:
 
 
 === "cURL"
