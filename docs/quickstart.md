@@ -134,7 +134,7 @@ For detailed instructions on installing the PMM server, see [Setting up PMM](htt
 
     5. For the instance that you would like to monitor, select **Start monitoring**.
 
-    6. On the resulting page you do not have to change any values, just enter the credentials for your database instance.
+    6. Enter your database credentials on the resulting page without changing any values.
 
     7. Optional: Enter the information on the **Labels** or **Additional Options** section. 
 
