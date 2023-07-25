@@ -57,7 +57,7 @@ For detailed instructions on installing the PMM server, see [Setting up PMM](htt
     5. Click **Add Service** at the bottom.
 
 
-    For detailed information, see [Adding a MySQL database for monitoring](https://docs.percona.com/percona-monitoring-and-management/setting-up/client/mysql.html#applicable-versions).
+    For detailed information, see [Adding a MySQL database for monitoring](https://docs.percona.com/percona-monitoring-and-management/setting-up/client/mysql.html).
 
 === "MongoDB"
 
