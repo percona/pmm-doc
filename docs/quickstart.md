@@ -23,7 +23,15 @@ To install PMM server, do the following
 
 2. Install PMM server using `cURL` or `wget` as follows:
 
-=== "cURL"
+=== "Debian, Ubuntu"
+
+    ```sh
+    apt-add-repository https://download.docker.com/linux/centos/docker-ce.repo
+    systemctl enable docker
+    systemctl start docker
+    ```
+
+=== ""cURL"
 
     ```sh
     curl -fsSL https://www.percona.com/get/pmm | /bin/bash
