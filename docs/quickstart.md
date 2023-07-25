@@ -8,6 +8,21 @@ This guide covers how you can quickly get started using PMM. This is applicable 
 
 [Docker](https://docs.docker.com/engine/install/) 1.12.6 or higher.
 
+## System requirements
+
+**Disk**
+
+Approximately 1 GB of storage per monitored database node with data retention set to one week. 
+
+**Memory**
+
+A minimum of 2 GB per monitored database node. The increase in memory usage is not proportional to the number of nodes. For example, data from 20 nodes should be easily handled with 16 GB.
+
+**Ports**
+
+This is a list of [ports](setting-up/server/network.md) used by the various components of PMM.
+
+For PMM to work correctly, your system’s firewall should allow TCP traffic on these ports (UDP is not needed).
 
 ## Install PMM
 
