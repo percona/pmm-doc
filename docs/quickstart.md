@@ -6,7 +6,7 @@ This guide covers how you can quickly get started using PMM. This is applicable 
 
 ## Prerequisites
 
-Install [Docker](https://docs.docker.com/engine/install/) 1.12.6 or higher.
+[Docker](https://docs.docker.com/engine/install/) 1.12.6 or higher.
 
 
 ## Install PMM
