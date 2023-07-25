@@ -13,7 +13,6 @@ Install [Docker](https://docs.docker.com/engine/install/) 1.12.6 or higher.
 
 ## Install PMM
 
-```txt
 !!! caution alert alert-warning "Important"
     You can use the [easy installation](https://docs.percona.com/percona-monitoring-and-management/setting-up/server/easy-install.html) script that will verify and install any missing software and dependencies. To use it, run the command with sudo privileges or as root.
     You can download the script from [github](https://github.com/percona/pmm/blob/main/get-pmm.sh).
