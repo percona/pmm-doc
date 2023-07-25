@@ -4,7 +4,6 @@
 This guide covers how you can quickly get started using PMM. This is applicable to Docker compatible *nix based systems.
 
 
-
 ## Prerequisites
 
 The following are the prerequisites for using PMM:
@@ -12,14 +11,18 @@ The following are the prerequisites for using PMM:
 Install [Docker](https://docs.docker.com/engine/install/) 1.12.6 or higher.
 
 
-
-You can use the [easy installation](https://docs.percona.com/percona-monitoring-and-management/setting-up/server/easy-install.html) script that will verify and install any missing software and dependencies. To use it, run the command with sudo privileges or as root.
-
-You can download the script the [github](https://github.com/percona/pmm/blob/main/get-pmm.sh).
-
 ## Install PMM
 
-You can install PMM server using `cURL` and `wget` as follows:
+```txt
+!!! caution alert alert-warning "Important"
+    You can use the [easy installation](https://docs.percona.com/percona-monitoring-and-management/setting-up/server/easy-install.html) script that will verify and install any missing software and dependencies. To use it, run the command with sudo privileges or as root.
+    You can download the script from [github](https://github.com/percona/pmm/blob/main/get-pmm.sh).
+
+To install PMM server, do the following
+
+1. Set up Docker on [Mac](https://docs.docker.com/docker-for-mac/install) or [Linux](https://docs.docker.com/install/linux/docker-ce/ubuntu).
+
+2. Install PMM server using `cURL` or `wget` as follows:
 
 
 === "cURL"
@@ -33,3 +36,44 @@ You can install PMM server using `cURL` and `wget` as follows:
     ```sh
     wget -qO - https://www.percona.com/get/pmm | /bin/bash    
     ```
+
+After the installation is completed, you will receive instructions on how to access the interface, along with default login credentials.
+
+
+## Add database for monitoring
+
+You can use PMM for monitoring [Amazon RDS](https://aws.amazon.com/rds/). By using the PMM web interface, you connect to the Amazon RDS DB instance. 
+
+You only need to provide the [IAM user access key](https://docs.percona.com/percona-monitoring-and-management/setting-up/client/aws.html#creating-an-access-key-for-an-iam-user) or assign an [IAM role](https://docs.percona.com/percona-monitoring-and-management/setting-up/client/aws.html#creating-an-iam-role) and PMM discovers the Amazon RDS DB instances available for monitoring.
+
+
+Before you add Amazon instance for moniitoring you should have the following:
+
+- AWS RDS Access Key and RDS Secret Access Key. This key should have permission to monitor RDS.
+- Recommended: Enable *Enhanced Monitoring* option in the settings of your Amazon RDS DB instance.
+- Database username and password with access to login to the RDS instance.
+- Access to the RDS instance via a TCP port.
+
+
+The following steps are needed to add an Amazon RDS database instance to PMM:
+
+1. In the PMM web interface, go to  *Configuration* →  *PMM Inventory* →  *Add Instance*.
+
+2. Select *Amazon RDS – Add a remote instance*.
+
+3. Enter the *access key ID* and the *secret access key* of your IAM user or leave these fields empty if an IAM role was created.
+
+4.Click *Discover* for PMM to retrieve the available Amazon RDS instances.
+
+5. For the instance that you would like to monitor, select *Start monitoring*.
+
+6. On the resulting screen you do not have to change any values, just enter the credentials for your database instance.
+
+7. Optional: Fill in information on the *Labels* or *Additional Options* section. 
+
+8. Click *Add Service* at the bottom.
+
+
+
+
+
