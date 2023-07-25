@@ -131,7 +131,7 @@ For detailed instructions on installing PMM server, see [here](https://docs.perc
 
 ## Next steps
 
-Deepen your knowledge with the following topics:
+Explore the following topics to gain a deeper understanding of PMM:
 
 - [Configure](how-to/configure.md) - Learn how to configure PMM via the interface.
 - [Manage users](how-to/manage-users.md) - Learn how to manage users in PMM.
