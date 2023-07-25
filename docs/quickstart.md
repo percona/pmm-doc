@@ -57,7 +57,7 @@ For detailed instructions on installing the PMM server, see [Setting up PMM](htt
     5. Click **Add Service** at the bottom.
 
 
-    For more information on adding a MySQL database, see [here](https://docs.percona.com/percona-monitoring-and-management/setting-up/client/mysql.html#applicable-versions).
+    For detailed information, see [Adding a MySQL database for monitoring](https://docs.percona.com/percona-monitoring-and-management/setting-up/client/mysql.html#applicable-versions).
 
 === "MongoDB"
 
@@ -79,7 +79,7 @@ For detailed instructions on installing the PMM server, see [Setting up PMM](htt
 
 === "PostgreSQL"
 
-    Before you add a PostgreSQL database for monitoring you should have a database account for PMM. To create an account using PostgreSQL CLI, see [Create a database account for PMM](https://docs.percona.com/percona-monitoring-and-management/setting-up/client/postgresql.html#create-a-database-account-for-pmm).
+    Before you add a PostgreSQL database for monitoring you should have a [database account for PMM]((https://docs.percona.com/percona-monitoring-and-management/setting-up/client/postgresql.html#create-a-database-account-for-pmm). To create an account using PostgreSQL CLI, see [Create a database account for PMM](https://docs.percona.com/percona-monitoring-and-management/setting-up/client/postgresql.html#create-a-database-account-for-pmm).
 
     To add PostgreSWL database for monitoring, do the following:
 
