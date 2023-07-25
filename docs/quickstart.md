@@ -43,10 +43,49 @@ For detailed instructions on installing PMM server, see [here](https://docs.perc
 
 ## Add database for monitoring
 
+=== "MySQL 8.0"
+
+Before you add MySQL datbase for moniitoring you should have a database account for PMM. To create an account using MySQL CLI, see [here](https://docs.percona.com/percona-monitoring-and-management/setting-up/client/mysql.html#create-a-database-account-for-pmm).
+
+To add MySQL database for monitoring, do the following:
+
+1. In the PMM web interface, go to  *Configuration* →  *PMM Inventory* →  *Add Instance*.
+
+2. Select *MySQL*. The *Add Service* page opens.
+
+3. On the resulting page you do not have to change any values, just enter the credentials for your database instance.
+
+4. Optional: Enter the information on the *Labels* or *Additional Options* section. 
+
+5. Click *Add Service* at the bottom.
+
+
+For more information on adding MySQL database, see [here](https://docs.percona.com/percona-monitoring-and-management/setting-up/client/mysql.html#applicable-versions).
+
+=== "MongoDB"
+
+Before you add MongoDB datbase for moniitoring you should have a database account for PMM. To create an account using MongoDB CLI, see [here](https://docs.percona.com/percona-monitoring-and-management/setting-up/client/mongodb.html#create-pmm-account-and-set-permissions).
+
+To add MongoDB database for monitoring, do the following:
+
+1. In the PMM web interface, go to  *Configuration* →  *PMM Inventory* →  *Add Instance*.
+
+2. Select *MongoDB*. The *Add Service* page opens.
+
+3. On the resulting page you do not have to change any values, just enter the credentials for your database instance.
+
+4. Optional: Enter the information on the *Labels* or *Additional Options* section. 
+
+5. Click *Add Service* at the bottom.
+
+
+For more information on adding MySQL database, see [here](https://docs.percona.com/percona-monitoring-and-management/setting-up/client/mysql.html#applicable-versions).
+
+=== "Amazon RDS"
+
 You can use PMM for monitoring [Amazon RDS](https://aws.amazon.com/rds/). By using the PMM web interface, you connect to the Amazon RDS DB instance. 
 
 You only need to provide the [IAM user access key](https://docs.percona.com/percona-monitoring-and-management/setting-up/client/aws.html#creating-an-access-key-for-an-iam-user) or assign an [IAM role](https://docs.percona.com/percona-monitoring-and-management/setting-up/client/aws.html#creating-an-iam-role) and PMM discovers the Amazon RDS DB instances available for monitoring.
-
 
 Before you add Amazon instance for moniitoring you should have the following:
 
@@ -56,7 +95,7 @@ Before you add Amazon instance for moniitoring you should have the following:
 - Access to the RDS instance via a TCP port.
 
 
-The following steps are needed to add an Amazon RDS database instance to PMM:
+To add an Amazon RDS database instance to PMM, do the following:
 
 1. In the PMM web interface, go to  *Configuration* →  *PMM Inventory* →  *Add Instance*.
 
@@ -68,9 +107,9 @@ The following steps are needed to add an Amazon RDS database instance to PMM:
 
 5. For the instance that you would like to monitor, select *Start monitoring*.
 
-6. On the resulting screen you do not have to change any values, just enter the credentials for your database instance.
+6. On the resulting page you do not have to change any values, just enter the credentials for your database instance.
 
-7. Optional: Fill in information on the *Labels* or *Additional Options* section. 
+7. Optional: Enter the information on the *Labels* or *Additional Options* section. 
 
 8. Click *Add Service* at the bottom.
 
