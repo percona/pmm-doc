@@ -50,28 +50,28 @@ To install PMM server, do the following
 
     Before you add Amazon instance for moniitoring you should have the following:
 
-        - AWS RDS Access Key and RDS Secret Access Key. This key should have permission to monitor RDS.
-        - Recommended: Enable *Enhanced Monitoring* option in the settings of your Amazon RDS DB instance.
-        - Database username and password with access to login to the RDS instance.
-        - Access to the RDS instance via a TCP port.
+    - AWS RDS Access Key and RDS Secret Access Key. This key should have permission to monitor RDS.
+    - Recommended: Enable *Enhanced Monitoring* option in the settings of your Amazon RDS DB instance.
+    - Database username and password with access to login to the RDS instance.
+    - Access to the RDS instance via a TCP port.
 
     To add an Amazon RDS database instance to PMM, do the following:
 
-        1. In the PMM web interface, go to  *Configuration* →  *PMM Inventory* →  *Add Instance*.
+    1. In the PMM web interface, go to  *Configuration* →  *PMM Inventory* →  *Add Instance*.
 
-        2. Select *Amazon RDS – Add a remote instance*.
+    2. Select *Amazon RDS – Add a remote instance*.
 
-        3. Enter the *access key ID* and the *secret access key* of your IAM user or leave these fields empty if an IAM role was created.
+    3. Enter the *access key ID* and the *secret access key* of your IAM user or leave these fields empty if an IAM role was created.
 
-        4. Click *Discover* for PMM to retrieve the available Amazon RDS instances.
+    4. Click *Discover* for PMM to retrieve the available Amazon RDS instances.
 
-        5. For the instance that you would like to monitor, select *Start monitoring*.
+    5. For the instance that you would like to monitor, select *Start monitoring*.
 
-        6. On the resulting page you do not have to change any values, just enter the credentials for your database instance.
+    6. On the resulting page you do not have to change any values, just enter the credentials for your database instance.
 
-        7. Optional: Enter the information on the *Labels* or *Additional Options* section. 
+    7. Optional: Enter the information on the *Labels* or *Additional Options* section. 
 
-        8. Click *Add Service* at the bottom.
+    8. Click *Add Service* at the bottom.
 
     For more information on adding Amazon RDS, see [here](https://docs.percona.com/percona-monitoring-and-management/setting-up/client/aws.html).
 
