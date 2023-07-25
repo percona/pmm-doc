@@ -39,6 +39,7 @@ To install PMM server, do the following
 
 After the installation is completed, you will receive instructions on how to access the interface, along with default login credentials.
 
+For detailed instructions on installing PMM server, see [here](https://docs.percona.com/percona-monitoring-and-management/setting-up/server/index.html).
 
 ## Add database for monitoring
 
@@ -63,7 +64,7 @@ The following steps are needed to add an Amazon RDS database instance to PMM:
 
 3. Enter the *access key ID* and the *secret access key* of your IAM user or leave these fields empty if an IAM role was created.
 
-4.Click *Discover* for PMM to retrieve the available Amazon RDS instances.
+4. Click *Discover* for PMM to retrieve the available Amazon RDS instances.
 
 5. For the instance that you would like to monitor, select *Start monitoring*.
 
@@ -72,6 +73,8 @@ The following steps are needed to add an Amazon RDS database instance to PMM:
 7. Optional: Fill in information on the *Labels* or *Additional Options* section. 
 
 8. Click *Add Service* at the bottom.
+
+For more information on adding Amazon RDS, see [here](https://docs.percona.com/percona-monitoring-and-management/setting-up/client/aws.html).
 
 
 
