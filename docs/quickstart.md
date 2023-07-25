@@ -129,7 +129,15 @@ For detailed instructions on installing PMM server, see [here](https://docs.perc
     For more information on adding Amazon RDS, see [here](https://docs.percona.com/percona-monitoring-and-management/setting-up/client/aws.html).
 
 
-## Whats next?
+## Next steps
+
+Deepen your knowledge with the following topics:
+
+- [Configure](how-to/configure.md) Learn how to configure PMM via the interface.
+- [Manage users](how-to/manage-users.md) - Learn how to manage in PMM.
+- [Roles and permissions](get-started/roles-and-permissions/index.md) - Learn more about roles and permissions in PMM.
+- [Backup and restore](get-started/backup/index.md) — Learn more about how backup and to restore data.
+
 
 
 
