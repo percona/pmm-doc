@@ -15,11 +15,11 @@ This guide covers how you can quickly get started using PMM. This is applicable 
     You can use the [easy installation](https://docs.percona.com/percona-monitoring-and-management/setting-up/server/easy-install.html) script that will verify and install any missing software and dependencies. To use it, run the command with sudo privileges or as root.
     You can download the script from [github](https://github.com/percona/pmm/blob/main/get-pmm.sh).
 
-To install PMM server, do the following
+To install the PMM server, do the following:
 
 1. Set up Docker on [Mac](https://docs.docker.com/docker-for-mac/install) or [Linux](https://docs.docker.com/install/linux/docker-ce/ubuntu).
 
-2. Install PMM server using `cURL` or `wget` as follows:
+2. Install the PMM server using `cURL` or `wget` as follows:
 
 
     === "cURL"
@@ -36,36 +36,36 @@ To install PMM server, do the following
 
 3. Log in to PMM with the default login credentials provided after the installation is completed.
 
-For detailed instructions on installing PMM server, see [here](https://docs.percona.com/percona-monitoring-and-management/setting-up/server/index.html).
+For detailed instructions on installing the PMM server, see [Setting up PMM](https://docs.percona.com/percona-monitoring-and-management/setting-up/server/index.html).
 
 ## Add database for monitoring
 
 === "MySQL 5.7 or 8.0"
 
-    Before you add MySQL database for moniitoring you should have a database account for PMM. To create an account using MySQL CLI, see [here](https://docs.percona.com/percona-monitoring-and-management/setting-up/client/mysql.html#create-a-database-account-for-pmm).
+    Before you add a MySQL database for monitoring you should have a database account for PMM. To create an account using MySQL CLI, see [here](https://docs.percona.com/percona-monitoring-and-management/setting-up/client/mysql.html#create-a-database-account-for-pmm).
 
     To add MySQL database for monitoring, do the following:
 
-    1. In the PMM web interface, go to  *Configuration* →  *PMM Inventory* →  *Add Instance*.
+    1. In the PMM web interface, go to  **Configuration** →  **PMM Inventory** →  **Add Instance**.
 
     2. Select *MySQL*. The *Add Service* page opens.
 
-    3. On the resulting page you do not have to change any values, just enter the credentials for your database instance.
+    3. On the resulting page, you do not have to change any values. Enter the credentials for your database instance.
 
     4. Optional: Enter the information on the *Labels* or *Additional Options* section. 
 
     5. Click *Add Service* at the bottom.
 
 
-    For more information on adding MySQL database, see [here](https://docs.percona.com/percona-monitoring-and-management/setting-up/client/mysql.html#applicable-versions).
+    For more information on adding a MySQL database, see [here](https://docs.percona.com/percona-monitoring-and-management/setting-up/client/mysql.html#applicable-versions).
 
 === "MongoDB"
 
-    Before you add MongoDB database for moniitoring you should have a database account for PMM. To create an account using MongoDB CLI, see [here](https://docs.percona.com/percona-monitoring-and-management/setting-up/client/mongodb.html#create-pmm-account-and-set-permissions).
+    Before you add a MongoDB database for monitoring you should have a database account for PMM. To create an account using MongoDB CLI, see [here](https://docs.percona.com/percona-monitoring-and-management/setting-up/client/mongodb.html#create-pmm-account-and-set-permissions).
 
-    To add MongoDB database for monitoring, do the following:
+    To add a MongoDB database for monitoring, do the following:
 
-    1. In the PMM web interface, go to  *Configuration* →  *PMM Inventory* →  *Add Instance*.
+    1. In the PMM web interface, go to  **Configuration** →  **PMM Inventory** →  **Add Instance**.
 
     2. Select *MongoDB*. The *Add Service* page opens.
 
@@ -79,7 +79,7 @@ For detailed instructions on installing PMM server, see [here](https://docs.perc
 
 === "PostgreSQL"
 
-    Before you add PostgreSQL database for moniitoring you should have a database account for PMM. To create an account using PostgreSQL CLI, see [here](https://docs.percona.com/percona-monitoring-and-management/setting-up/client/postgresql.html#create-a-database-account-for-pmm).
+    Before you add a PostgreSQL database for monitoring you should have a database account for PMM. To create an account using PostgreSQL CLI, see [here](https://docs.percona.com/percona-monitoring-and-management/setting-up/client/postgresql.html#create-a-database-account-for-pmm).
 
     To add PostgreSWL database for monitoring, do the following:
 
