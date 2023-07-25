@@ -42,20 +42,20 @@ To install PMM server, do the following
 
 ## Add database for monitoring
 
-    === "Amazon RDS"
+=== "Amazon RDS"
 
-        You can use PMM for monitoring [Amazon RDS](https://aws.amazon.com/rds/). By using the PMM web interface, you connect to the Amazon RDS DB instance. 
+    You can use PMM for monitoring [Amazon RDS](https://aws.amazon.com/rds/). By using the PMM web interface, you connect to the Amazon RDS DB instance. 
 
-        You only need to provide the [IAM user access key](https://docs.percona.com/percona-monitoring-and-management/setting-up/client/aws.html#creating-an-access-key-for-an-iam-user) or assign an [IAM role](https://docs.percona.com/percona-monitoring-and-management/setting-up/client/aws.html#creating-an-iam-role) and PMM discovers the Amazon RDS DB instances available for monitoring.
+    You only need to provide the [IAM user access key](https://docs.percona.com/percona-monitoring-and-management/setting-up/client/aws.html#creating-an-access-key-for-an-iam-user) or assign an [IAM role](https://docs.percona.com/percona-monitoring-and-management/setting-up/client/aws.html#creating-an-iam-role) and PMM discovers the Amazon RDS DB instances available for monitoring.
 
-        Before you add Amazon instance for moniitoring you should have the following:
+    Before you add Amazon instance for moniitoring you should have the following:
 
         - AWS RDS Access Key and RDS Secret Access Key. This key should have permission to monitor RDS.
         - Recommended: Enable *Enhanced Monitoring* option in the settings of your Amazon RDS DB instance.
         - Database username and password with access to login to the RDS instance.
         - Access to the RDS instance via a TCP port.
 
-        To add an Amazon RDS database instance to PMM, do the following:
+    To add an Amazon RDS database instance to PMM, do the following:
 
         1. In the PMM web interface, go to  *Configuration* →  *PMM Inventory* →  *Add Instance*.
 
@@ -73,7 +73,7 @@ To install PMM server, do the following
 
         8. Click *Add Service* at the bottom.
 
-        For more information on adding Amazon RDS, see [here](https://docs.percona.com/percona-monitoring-and-management/setting-up/client/aws.html).
+    For more information on adding Amazon RDS, see [here](https://docs.percona.com/percona-monitoring-and-management/setting-up/client/aws.html).
 
 === "MySQL 8.0"
 
