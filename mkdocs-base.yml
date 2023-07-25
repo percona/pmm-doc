@@ -68,7 +68,8 @@ markdown_extensions:
   pymdownx.mark: {}
   pymdownx.smartsymbols: {}
   pymdownx.superfences: {}
-  pymdownx.tabbed: {}
+  pymdownx.tabbed:
+    alternate_style: true
   pymdownx.tilde: {}
   pymdownx.highlight:
     linenums: false
@@ -78,7 +79,6 @@ markdown_extensions:
       emoji_generator: !!python/name:materialx.emoji.to_svg
 
 plugins:
-  search: {}
   section-index: {}
   search:
     separator: '[\s\-,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
