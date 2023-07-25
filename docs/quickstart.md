@@ -42,7 +42,7 @@ For detailed instructions on installing PMM server, see [here](https://docs.perc
 
 === "MySQL 5.7 or 8.0"
 
-    Before you add MySQL datbase for moniitoring you should have a database account for PMM. To create an account using MySQL CLI, see [here](https://docs.percona.com/percona-monitoring-and-management/setting-up/client/mysql.html#create-a-database-account-for-pmm).
+    Before you add MySQL database for moniitoring you should have a database account for PMM. To create an account using MySQL CLI, see [here](https://docs.percona.com/percona-monitoring-and-management/setting-up/client/mysql.html#create-a-database-account-for-pmm).
 
     To add MySQL database for monitoring, do the following:
 
@@ -61,7 +61,7 @@ For detailed instructions on installing PMM server, see [here](https://docs.perc
 
 === "MongoDB"
 
-    Before you add MongoDB datbase for moniitoring you should have a database account for PMM. To create an account using MongoDB CLI, see [here](https://docs.percona.com/percona-monitoring-and-management/setting-up/client/mongodb.html#create-pmm-account-and-set-permissions).
+    Before you add MongoDB database for moniitoring you should have a database account for PMM. To create an account using MongoDB CLI, see [here](https://docs.percona.com/percona-monitoring-and-management/setting-up/client/mongodb.html#create-pmm-account-and-set-permissions).
 
     To add MongoDB database for monitoring, do the following:
 
