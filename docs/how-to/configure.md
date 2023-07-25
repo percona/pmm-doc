@@ -164,12 +164,3 @@ This section lets you configure how VictoriaMetrics integrates with an external 
 - The *Prometheus Alerting rules* field is used to specify alerting rules in the YAML configuration format.
 
 ![!]Fill in both fields and click the *Apply Alertmanager settings* button to proceed.
-
-## Percona Platform
-
-This is where you connect your PMM server to your Percona Platform Account.
-
-To learn how to connect your PMM servers to Percona Platform and leverage Platform services that boost the monitoring capabilities of your PMM installations, see [Integrate PMM with Percona Platform](integrate-platform.md).
-
-!!! note alert alert-primary ""
-    Your Percona Platform Account is separate from your PMM User account.
