@@ -52,7 +52,7 @@ For detailed instructions on installing the PMM server, see [Setting up PMM](htt
 
     3. Enter your database credentials on the resulting page without changing any values.
 
-    4. Optional: Enter the information in the **Labels** and **Additional Options** section. 
+    4. Optional: Enter the information on the **Labels** and **Additional Options** section. 
 
     5. Click **Add Service** at the bottom.
 
@@ -74,7 +74,7 @@ For detailed instructions on installing the PMM server, see [Setting up PMM](htt
 
     5. Click *Add Service* at the bottom.
 
-    For detailed information on adding a MongoDB database, see [Adding a MySQL database](https://docs.percona.com/percona-monitoring-and-management/setting-up/client/mongodb.html).
+    For detailed information on adding a MongoDB database, see [Adding a MySQL database for monitoring](https://docs.percona.com/percona-monitoring-and-management/setting-up/client/mongodb.html).
 
 === "PostgreSQL"
 
