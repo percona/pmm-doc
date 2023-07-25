@@ -57,7 +57,7 @@ For detailed instructions on installing the PMM server, see [Setting up PMM](htt
     5. Click **Add Service** at the bottom.
 
 
-    For detailed information, see [Adding a MySQL database for monitoring](https://docs.percona.com/percona-monitoring-and-management/setting-up/client/mysql.html).
+    For detailed information, see [Adding a MySQL database](https://docs.percona.com/percona-monitoring-and-management/setting-up/client/mysql.html).
 
 === "MongoDB"
 
@@ -75,25 +75,25 @@ For detailed instructions on installing the PMM server, see [Setting up PMM](htt
 
     5. Click *Add Service* at the bottom.
 
-    For more information on adding MongoDB database, see [here](https://docs.percona.com/percona-monitoring-and-management/setting-up/client/mongodb.html).
+    For detailed information on adding a MongoDB database, see [Adding a MySQL database](https://docs.percona.com/percona-monitoring-and-management/setting-up/client/mongodb.html).
 
 === "PostgreSQL"
 
-    Before you add a PostgreSQL database for monitoring you should have a [database account for PMM]((https://docs.percona.com/percona-monitoring-and-management/setting-up/client/postgresql.html#create-a-database-account-for-pmm). To create an account using PostgreSQL CLI, see [Create a database account for PMM](https://docs.percona.com/percona-monitoring-and-management/setting-up/client/postgresql.html#create-a-database-account-for-pmm).
-
-    To add PostgreSWL database for monitoring, do the following:
+    Before you add a PostgreSQL database for monitoring you should have a [database account for PMM]((https://docs.percona.com/percona-monitoring-and-management/setting-up/client/postgresql.html#create-a-database-account-for-pmm).
+    
+    To add PostgreSQL database for monitoring, do the following:
 
     1. In the PMM web interface, go to  *Configuration* →  *PMM Inventory* →  *Add Instance*.
 
-    2. Select *PostgreSQL*. The *Add Service* page opens.
+    2. Select **PostgreSQL**. The **Add Service** page opens.
 
     3. On the resulting page you do not have to change any values, just enter the credentials for your database instance.
 
     4. Optional: Enter the information on the *Labels* or *Additional Options* section. 
 
-    5. Click *Add Service* at the bottom.
+    5. Click **Add Service** at the bottom.
 
-    For more information on adding PostgreSQL database, see [here](https://docs.percona.com/percona-monitoring-and-management/setting-up/client/postgresql.html).
+    For detailed information, see [Adding a PostgreSQL database](https://docs.percona.com/percona-monitoring-and-management/setting-up/client/postgresql.html).
 
 === "Amazon RDS"
 
