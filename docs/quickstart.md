@@ -34,9 +34,9 @@ To install PMM server, do the following
         wget -qO - https://www.percona.com/get/pmm | /bin/bash    
         ```
 
-    After the installation is completed, you will receive instructions on how to access the interface, along with default login credentials.
+3. Log in to PMM with the default login credentials provided after the installation is completed.
 
-    For detailed instructions on installing PMM server, see [here](https://docs.percona.com/percona-monitoring-and-management/setting-up/server/index.html).
+For detailed instructions on installing PMM server, see [here](https://docs.percona.com/percona-monitoring-and-management/setting-up/server/index.html).
 
 ## Add database for monitoring
 
@@ -128,6 +128,8 @@ To install PMM server, do the following
 
     For more information on adding Amazon RDS, see [here](https://docs.percona.com/percona-monitoring-and-management/setting-up/client/aws.html).
 
+
+## Whats next?
 
 
 
