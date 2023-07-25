@@ -52,7 +52,7 @@ For detailed instructions on installing the PMM server, see [Setting up PMM](htt
 
     3. Enter your database credentials on the resulting page without changing any values.
 
-    4. Optional: Enter the information in the **Labels** or **Additional Options** section. 
+    4. Optional: Enter the information in the **Labels** and **Additional Options** section. 
 
     5. Click **Add Service** at the bottom.
 
@@ -60,17 +60,17 @@ For detailed instructions on installing the PMM server, see [Setting up PMM](htt
 
 === "MongoDB"
 
-    Before you add a MongoDB database for monitoring you should have a database account for PMM. To create an account using MongoDB CLI, see [Create PMM account and set permissions](https://docs.percona.com/percona-monitoring-and-management/setting-up/client/mongodb.html#create-pmm-account-and-set-permissions).
+    Before you add a MongoDB database for monitoring you should have a [database account for PMM](https://docs.percona.com/percona-monitoring-and-management/setting-up/client/mongodb.html#create-pmm-account-and-set-permissions).
 
     To add a MongoDB database for monitoring, do the following:
 
-    1. In the PMM web interface, go to **Configuration** → **PMM Inventory** → **Add Instance**.
+    1. From the PMM UI, go to **Configuration** → **PMM Inventory** → **Add Instance**.
 
     2. Select *MongoDB*. The *Add Service* page opens.
 
-    3. On the resulting page you do not have to change any values, just enter the credentials for your database instance.
+    3. Enter your database credentials on the resulting page without changing any values.
 
-    4. Optional: Enter the information on the *Labels* or *Additional Options* section. 
+    4. Optional: Enter the information in the *Labels* and *Additional Options* section. 
 
     5. Click *Add Service* at the bottom.
 
@@ -82,13 +82,13 @@ For detailed instructions on installing the PMM server, see [Setting up PMM](htt
     
     To add PostgreSQL database for monitoring, do the following:
 
-    1. In the PMM web interface, go to  *Configuration* →  *PMM Inventory* →  *Add Instance*.
+    1. From the PMM UI, go to *Configuration* → *PMM Inventory* → *Add Instance*.
 
     2. Select **PostgreSQL**. The **Add Service** page opens.
 
-    3. On the resulting page you do not have to change any values, just enter the credentials for your database instance.
+    3. Enter your database credentials on the resulting page without changing any values.
 
-    4. Optional: Enter the information on the *Labels* or *Additional Options* section. 
+    4. Optional: Enter the information in the *Labels* or *Additional Options* section. 
 
     5. Click **Add Service** at the bottom.
 
