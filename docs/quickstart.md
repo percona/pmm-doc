@@ -38,7 +38,7 @@ To install the PMM server, do the following:
 
 For detailed instructions on installing the PMM server, see [Setting up PMM](https://docs.percona.com/percona-monitoring-and-management/setting-up/server/index.html).
 
-## Add database for monitoring
+## Add a database instance
 
 === "MySQL 5.7 or 8.0"
 
@@ -56,7 +56,7 @@ For detailed instructions on installing the PMM server, see [Setting up PMM](htt
 
     5. Click **Add Service** at the bottom.
 
-    For detailed information, see [Adding a MySQL database](https://docs.percona.com/percona-monitoring-and-management/setting-up/client/mysql.html).
+    For detailed information, see [Adding a MySQL database for momitoring](https://docs.percona.com/percona-monitoring-and-management/setting-up/client/mysql.html).
 
 === "MongoDB"
 
