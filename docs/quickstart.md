@@ -81,13 +81,13 @@ For detailed instructions on installing the PMM server, see [Setting up PMM](htt
 
     1. From the PMM UI, go to **Configuration** → **PMM Inventory** → **Add Instance**.
 
-    2. Select *MongoDB*. The *Add Service* page opens.
+    2. Select **MongoDB**. The *Add Service* page opens.
 
     3. Enter your database credentials on the resulting page without changing any values.
 
-    4. Optional: Enter the information in the *Labels* and *Additional Options* section. 
+    4. Optional: Enter the information in the **Labels** and **Additional Options** section. 
 
-    5. Click *Add Service* at the bottom.
+    5. Click **Add Service** at the bottom.
 
     For detailed information on adding a MongoDB database, see [Adding a MySQL database for monitoring](https://docs.percona.com/percona-monitoring-and-management/setting-up/client/mongodb.html).
 
@@ -128,7 +128,7 @@ For detailed instructions on installing the PMM server, see [Setting up PMM](htt
 
     2. Select **Amazon RDS – Add a remote instance**.
 
-    3. Enter the *access key ID* and the *secret access key* of your IAM user or leave these fields empty if an IAM role was created.
+    3. Enter the **access key ID** and the **secret access key** of your IAM user or leave these fields empty if an IAM role was created.
 
     4. Click **Discover** for PMM to retrieve the available Amazon RDS instances.
 
