@@ -88,7 +88,7 @@ For detailed instructions on installing the PMM server, see [Setting up PMM](htt
 
     3. Enter your database credentials on the resulting page without changing any values.
 
-    4. Optional: Enter the information in the *Labels* or *Additional Options* section. 
+    4. Optional: Enter the information on the *Labels* or *Additional Options* section. 
 
     5. Click **Add Service** at the bottom.
 
@@ -125,7 +125,7 @@ For detailed instructions on installing the PMM server, see [Setting up PMM](htt
 
     8. Click **Add Service** at the bottom.
 
-    For detailed information, see [Adding an Amazon RDS instance](https://docs.percona.com/percona-monitoring-and-management/setting-up/client/aws.html).
+    For detailed information, see [Adding an Amazon RDS instance for monitoring](https://docs.percona.com/percona-monitoring-and-management/setting-up/client/aws.html).
 
 
 ## Next steps
