@@ -31,17 +31,17 @@ To install PMM server, do the following
     systemctl start docker
     ```
 
-=== ""cURL"
+    === "cURL"
 
-    ```sh
-    curl -fsSL https://www.percona.com/get/pmm | /bin/bash
-    ```
+        ```sh
+        curl -fsSL https://www.percona.com/get/pmm | /bin/bash
+        ```
 
-=== "wget"
+    === "wget"
 
-    ```sh
-    wget -qO - https://www.percona.com/get/pmm | /bin/bash    
-    ```
+        ```sh
+        wget -qO - https://www.percona.com/get/pmm | /bin/bash    
+        ```
 
     After the installation is completed, you will receive instructions on how to access the interface, along with default login credentials.
 
