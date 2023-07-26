@@ -51,7 +51,7 @@ Here are the steps for installing the PMM server:
 
 3. Log in to PMM with the default login credentials provided after the installation is completed.
 
-For detailed instructions on installing the PMM server, see [Setting up PMM](https://docs.percona.com/percona-monitoring-and-management/setting-up/server/index.html).
+For detailed instructions on installing the PMM server with the other methods, see [Setting up PMM](https://docs.percona.com/percona-monitoring-and-management/setting-up/server/index.html).
 
 ## Add a database instance
 
