@@ -156,6 +156,7 @@ nav:
           - setting-up/client/remote.md
   - Get started:
       - get-started/index.md
+      - get-started/interface.md
       - get-started/alerting.md
       - Backup and Restore:
           - get-started/backup/index.md
@@ -368,6 +369,5 @@ nav:
       - "PMM 2.0.1": release-notes/2.0.1.md
       - "PMM 2.0.0": release-notes/2.0.0.md
   - Reference:
-    - interface.md
     - "Copyright and licensing information": copyright.md
     - trademark-policy.md
