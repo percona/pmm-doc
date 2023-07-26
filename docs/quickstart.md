@@ -124,7 +124,7 @@ For detailed instructions on installing the PMM server, see [Setting up PMM](htt
 
     Here are the steps to add an Amazon RDS database instance for monitoring:
 
-    1. In the PMM web interface, go to  **Configuration** →  **PMM Inventory** →  **Add Instance**.
+    1. From the PMM UI, go to  **Configuration** →  **PMM Inventory** →  **Add Instance**.
 
     2. Select **Amazon RDS – Add a remote instance**.
 
