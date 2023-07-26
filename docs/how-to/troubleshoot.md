@@ -190,5 +190,5 @@ Users have encountered issues with installing, updating and removing plugins fro
 
 **Solution**
 
-Set the user ownership on the directory`/srv/grafana/plugins` to `grafana:grafana`.
+Set the ownership on the directory`/srv/grafana/plugins` to `grafana:grafana`.
 
