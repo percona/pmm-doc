@@ -12,7 +12,7 @@ This guide helps you quickly get started with PMM using Docker-compatible Linux-
 
 **Disk**
 
-Approximately 1 GB of storage per monitored database node with data retention set to one week. 
+Approximately 1 GB of storage per monitored database node, with data retention set to one week. 
 
 **Memory**
 
