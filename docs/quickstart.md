@@ -49,7 +49,7 @@ Here are the steps for installing the PMM server:
         wget -qO - https://www.percona.com/get/pmm | /bin/bash    
         ```
 
-3. Log in to PMM with the default login credentials provided after the installation is completed.
+3. Log in to PMM with the default login credentials that are provided after the installation is completed.
 
 For detailed instructions on installing the PMM server with the other methods, see [Setting up PMM](https://docs.percona.com/percona-monitoring-and-management/setting-up/server/index.html).
 
