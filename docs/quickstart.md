@@ -128,7 +128,7 @@ For detailed instructions on installing the PMM server with the other methods, s
 
     2. Select **Amazon RDS – Add a remote instance**.
 
-    3. Enter the **access key ID** and the **secret access key** of your IAM user or leave these fields empty if an IAM role was created.
+    3. Enter the **access key ID** and the **secret access key** of your IAM user, or leave these fields empty if an IAM role was created.
 
     4. Click **Discover** for PMM to retrieve the available Amazon RDS instances.
 
