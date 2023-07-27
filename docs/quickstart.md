@@ -20,7 +20,7 @@ A minimum of 2 GB per monitored database node. The increase in memory usage is n
 
 **Ports**
 
-This is a list of [ports](setting-up/server/network.md) used by the various components of PMM.
+Check out the [list of ports used by PMM components](setting-up/server/network.md).
 
 For PMM to work correctly, your system’s firewall should allow TCP traffic on these ports (UDP is not needed).
 
