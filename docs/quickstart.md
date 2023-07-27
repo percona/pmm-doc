@@ -136,7 +136,7 @@ For detailed instructions on installing the PMM server with the other methods, s
 
     6. Enter your database credentials on the resulting page without changing any values.
 
-    7. Optional: Enter the information on the **Labels** or **Additional Options** section. 
+    7. (Optional) Enter the information on the **Labels** or **Additional Options** section. 
 
     8. Click **Add Service** at the bottom.
 
