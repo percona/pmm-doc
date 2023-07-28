@@ -188,7 +188,7 @@ nav:
       - Integrate with Percona Platform:
           - how-to/integrate-platform.md
           - how-to/account-info.md
-  Configure:
+  - Configure:
         - Roles and permissions:
           - use/roles-and-permissions/index.md
           - use/roles-and-permissions/configure_access_roles.md
