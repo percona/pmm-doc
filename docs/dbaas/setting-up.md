@@ -55,12 +55,12 @@ alias kubectl='minikube kubectl --'
     docker run --detach --publish 80:80 --publish 443:443 --name pmm-server percona/pmm-server:2
     ```
 
-2. Change the default administrator credentials from CLI:
+2. Change the default administrator credentials:
 
     (This step is optional, because the same can be done from the web interface of PMM on first login.)
 
     ```sh
-    docker exec -t pmm-server bash -c 'ln -s /srv/grafana /usr/share/grafana/data; chown -R grafana:grafana /usr/share/grafana/data; grafana-cli --homepath /usr/share/grafana admin reset-admin-password <RANDOM_PASS_GOES_IN_HERE>'
+    docker exec -t pmm-server change-admin-password <new_password>'
     ```
 
 !!! caution alert alert-warning "Important"
