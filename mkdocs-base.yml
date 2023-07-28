@@ -154,38 +154,27 @@ nav:
           - setting-up/client/external.md
           - setting-up/client/haproxy.md
           - setting-up/client/remote.md
-  - Get started:
-      - get-started/index.md
-      - get-started/interface.md
-      - get-started/alerting.md
+  - Use:
+      - use/alerting.md
       - Backup and Restore:
-          - get-started/backup/index.md
-          - get-started/backup/prepare_storage_location.md
+          - use/backup/index.md
+          - use/backup/prepare_storage_location.md
           - MongoDB backups:
-                - get-started/backup/backup_mongo.md
-                - get-started/backup/mongo-prerequisites.md
-                - get-started/backup/create_mongo_on_demand.md
-                - get-started/backup/create_PITR_mongo.md
-                - get-started/backup/restore_MongoDB_backups.md
-                - get-started/backup/mongodb_limitations.md
+                - use/backup/backup_mongo.md
+                - use/backup/mongo-prerequisites.md
+                - use/backup/create_mongo_on_demand.md
+                - use/backup/create_PITR_mongo.md
+                - use/backup/restore_MongoDB_backups.md
+                - use/backup/mongodb_limitations.md
           - MySQL backups:
-                - get-started/backup/backup_mysql.md
-                - get-started/backup/mysql_prerequisites.md
-                - get-started/backup/create_mysql_backup.md
-                - get-started/backup/restore_mysql_backup.md
-          - get-started/backup/edit_scheduled.md
-          - get-started/backup/delete_a_backup.md
-      - Roles and permissions:
-          - get-started/roles-and-permissions/index.md
-          - get-started/roles-and-permissions/configure_access_roles.md
-          - get-started/roles-and-permissions/lbac.md
-          - get-started/roles-and-permissions/access_roles.md
-          - get-started/roles-and-permissions/manage_roles.md
-          - get-started/roles-and-permissions/assign_roles.md
-          - get-started/roles-and-permissions/use_case.md
-      - get-started/query-analytics.md
-      - get-started/advisors.md
-  - How to:
+                - use/backup/backup_mysql.md
+                - use/backup/mysql_prerequisites.md
+                - use/backup/create_mysql_backup.md
+                - use/backup/restore_mysql_backup.md
+          - use/backup/edit_scheduled.md
+          - use/backup/delete_a_backup.md
+      - use/query-analytics.md
+      - use/advisors.md
       - how-to/index.md
       - how-to/configure.md
       - how-to/manage-users.md
@@ -199,8 +188,18 @@ nav:
       - Integrate with Percona Platform:
           - how-to/integrate-platform.md
           - how-to/account-info.md
-  - Details:
+  Configure:
+        - Roles and permissions:
+          - use/roles-and-permissions/index.md
+          - use/roles-and-permissions/configure_access_roles.md
+          - use/roles-and-permissions/lbac.md
+          - use/roles-and-permissions/access_roles.md
+          - use/roles-and-permissions/manage_roles.md
+          - use/roles-and-permissions/assign_roles.md
+          - use/roles-and-permissions/use_case.md
+    - Details:
       - details/index.md
+      - details/interface.md
       - details/architecture.md
       - details/interface.md
       - details/pmm_components_and_versions.md
