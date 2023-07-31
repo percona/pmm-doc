@@ -194,10 +194,10 @@ The *Details* tab contains a *Query time distribution* bar (only for MySQL datab
 
 - *Metadata* table:
 
-    PMM 2.39.0 now includes a metadata table for QAN to address the issue of identifying problematic queries. This feature allows you easily identify the services, nodes, and labels associated with your identified queries.    The metadata table contains the information such as:
+    PMM 2.39.0 now includes a metadata table for QAN to address the issue of identifying problematic queries. This feature allows you easily identify the services, nodes, and labels associated with your identified queries.
     
     The **Metadata** table shows the following information:
-    
+
     - *Database*: The database being monitored.
     - *Environment*: Environment being used such as Dev, Staging, Production, etc.
     - *Node Name*: Name or identifier of a node.
