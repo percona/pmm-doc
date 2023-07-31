@@ -60,7 +60,7 @@ alias kubectl='minikube kubectl --'
     (This step is optional, because the same can be done from the web interface of PMM on first login.)
 
     ```sh
-    docker exec -t pmm-server change-admin-password <new_password>'
+    docker exec -t pmm-server change-admin-password <new_password>
     ```
 
 !!! caution alert alert-warning "Important"
