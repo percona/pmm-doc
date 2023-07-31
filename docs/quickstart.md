@@ -12,11 +12,12 @@ This guide helps you quickly get started with PMM using Docker-compatible Linux-
 
 **Disk**
 
-Approximately 1 GB of storage per monitored database node, with data retention set to one week. 
+- Approximately 1 GB of storage per monitored database node 
+- Data retention set to one week 
 
 **Memory**
 
-A minimum of 2 GB per monitored database node. The increase in memory usage is not proportional to the number of nodes. For example, data from 20 nodes should be easily handled with 16 GB.
+Each database node should have at least 2 GB of memory for effective monitoring. The increase in memory usage is not proportional to the number of nodes. For example, data from 20 nodes should be easily handled with 16 GB.
 
 **Ports**
 
@@ -75,7 +76,7 @@ For detailed instructions on installing the PMM server with the other methods, s
 
 === "MongoDB"
 
-    Before you add a MongoDB database for monitoring you should have a [database account for PMM](https://docs.percona.com/percona-monitoring-and-management/setting-up/client/mongodb.html#create-pmm-account-and-set-permissions).
+    Before you add a MongoDB database for monitoring, you should have a [database account for PMM](https://docs.percona.com/percona-monitoring-and-management/setting-up/client/mongodb.html#create-pmm-account-and-set-permissions).
 
     To add a MongoDB database instance for monitoring:
 
@@ -93,7 +94,7 @@ For detailed instructions on installing the PMM server with the other methods, s
 
 === "PostgreSQL"
 
-    Before you add a PostgreSQL database for monitoring you should have a [database account for PMM]((https://docs.percona.com/percona-monitoring-and-management/setting-up/client/postgresql.html#create-a-database-account-for-pmm).
+    Before you add a PostgreSQL database for monitoring, you should have a [database account for PMM]((https://docs.percona.com/percona-monitoring-and-management/setting-up/client/postgresql.html#create-a-database-account-for-pmm).
     
     To add a PostgreSQL database instance for monitoring:
 
