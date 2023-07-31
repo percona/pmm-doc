@@ -59,7 +59,7 @@ For detailed instructions on installing the PMM server with the other methods, s
 
     Before you add a MySQL database for monitoring you should have a [database account for PMM](https://docs.percona.com/percona-monitoring-and-management/setting-up/client/mysql.html#create-a-database-account-for-pmm).
 
-    Here are the steps to add a MySQL database for monitoring:
+    The steps to add a MySQL database for monitoring are as follows:
 
     1. From the PMM UI, go to **Configuration** → **PMM Inventory** → **Add Instance**.
 
@@ -67,7 +67,7 @@ For detailed instructions on installing the PMM server with the other methods, s
 
     3. Enter your database credentials on the resulting page without changing any values.
 
-    4. Optional: Enter the information on the **Labels** and **Additional Options** section. 
+    4. (Optional) Enter the information on the **Labels** and **Additional Options** section. 
 
     5. Click **Add Service** at the bottom.
 
@@ -77,7 +77,7 @@ For detailed instructions on installing the PMM server with the other methods, s
 
     Before you add a MongoDB database for monitoring you should have a [database account for PMM](https://docs.percona.com/percona-monitoring-and-management/setting-up/client/mongodb.html#create-pmm-account-and-set-permissions).
 
-    Here are the steps to add a MongoDB database for monitoring:
+    The steps to add a MongoDB database for monitoring are as follows:
 
     1. From the PMM UI, go to **Configuration** → **PMM Inventory** → **Add Instance**.
 
@@ -85,7 +85,7 @@ For detailed instructions on installing the PMM server with the other methods, s
 
     3. Enter your database credentials on the resulting page without changing any values.
 
-    4. Optional: Enter the information in the **Labels** and **Additional Options** section. 
+    4. (Optional) Enter the information in the **Labels** and **Additional Options** section. 
 
     5. Click **Add Service** at the bottom.
 
@@ -95,7 +95,7 @@ For detailed instructions on installing the PMM server with the other methods, s
 
     Before you add a PostgreSQL database for monitoring you should have a [database account for PMM]((https://docs.percona.com/percona-monitoring-and-management/setting-up/client/postgresql.html#create-a-database-account-for-pmm).
     
-    Here are the steps to add a PostgreSQL database for monitoring:
+    To add a PostgreSQL database instance for monitoring:
 
     1. From the PMM UI, go to *Configuration* → *PMM Inventory* → *Add Instance*.
 
@@ -103,7 +103,7 @@ For detailed instructions on installing the PMM server with the other methods, s
 
     3. Enter your database credentials on the resulting page without changing any values.
 
-    4. Optional: Enter the information on the *Labels* or *Additional Options* section. 
+    4. (Optional) Enter the information on the *Labels* or *Additional Options* section. 
 
     5. Click **Add Service** at the bottom.
 
