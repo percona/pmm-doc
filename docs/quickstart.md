@@ -122,7 +122,7 @@ For detailed instructions on installing the PMM server with the other methods, s
     - Database username and password with access to login to the RDS instance.
     - Access to the RDS instance via a TCP port.
 
-    Here are the steps to add an Amazon RDS database instance for monitoring:
+    To add an Amazon RDS database instance for monitoring:
 
     1. From the PMM UI, go to **Configuration > PMM Inventory > Add Instance**.
 
