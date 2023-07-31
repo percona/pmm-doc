@@ -30,7 +30,7 @@ For PMM to work correctly, your system’s firewall should allow TCP traffic on 
     - You can use the [easy installation](https://docs.percona.com/percona-monitoring-and-management/setting-up/server/easy-install.html) script that will verify and install any missing software and dependencies. To use it, run the command with sudo privileges or as root.
     - You can download the script from [github](https://github.com/percona/pmm/blob/main/get-pmm.sh).
 
-The steps for installing the PMM server are as follows:
+To install the PMM server, follows the steps below:
 
 1. Set up Docker on [Mac](https://docs.docker.com/docker-for-mac/install) or [Linux](https://docs.docker.com/install/linux/docker-ce/ubuntu).
 
