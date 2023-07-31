@@ -193,15 +193,18 @@ The *Details* tab contains a *Query time distribution* bar (only for MySQL datab
 - Each row in the table is a metric. The contents depends on the chosen dimension.
 
 - *Metadata* table:
-    PMM 2.39.0 now includes a metadata table for QAN to address the issue of identyfying problematic queries. With this feature, you can easily identify the services, nodes, and labels associated with your identified queries.
-    The metadata table contains the following information:
-    - *Cluster*: Cluster name
+    PMM 2.39.0 now includes a metadata table for QAN to address the issue of identifying problematic queries. This feature allows you easily identify the services, nodes, and labels associated with your identified queries.    The metadata table contains the information such as:
+    The **Metadata** table shows the following information:
+    - *Database*: The database being monitored.
     - *Environment*: Environment being used such as Dev, Staging, Production, etc.
     - *Node Name*: Name or identifier of a node.
     - *Node type*: Type of the node.
-    - *Replication set*: The name of the replication node being used.
+    - *User name*: User name of database being monitored.
     - *Service Name*: The name or identifier of the service.
     - *Service type*: The service which is being monitored. For example, MySQL, PostgreSQl, etc.
+
+    ![!image](../_images/PMM_QAN_metadata.png)
+
 
 For PostgreSQL queries (when using `pg_stat_monitor`) the top query will also be shown in the details section if the query was called by an outer query.
 
