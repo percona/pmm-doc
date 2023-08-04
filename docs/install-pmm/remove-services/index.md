@@ -1,4 +1,4 @@
-# Remove services for PMM monitoring
+# Remove services from monitoring
 
 You must specify the service type and service name to remove services from monitoring.
 
