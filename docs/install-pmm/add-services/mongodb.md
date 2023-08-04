@@ -24,7 +24,7 @@ Run the example codes below in a `mongo` session to:
 !!! caution alert alert-warning ""
     Values for username (`user`) and password (`pwd`) are examples. Replace them before using these code snippets.
 
-=== "Create roles with privileges for backups and QAN"
+=== "### Create roles with privileges for backups and QAN"
         db.getSiblingDB("admin").createRole({
             role: "explainRole",
             privileges: [{
@@ -80,6 +80,43 @@ Run the example codes below in a `mongo` session to:
             { "db" : "admin", "role" : "pbmAnyAction" }
         ]
         })
+
+### Permissions for advanced metrics
+
+To fetch advanced metrics, use the following to provide additional privileges to an existing PMM user:
+
+```json
+{
+resource : {
+    db : "",
+    collection : "system.profile"
+    },
+actions : [
+    "collStats",
+    "dbStats",
+    "indexStats"
+   ]
+}
+```
+
+If the role `explainRole` already exists, then you can use the following command to provide additional privileges:
+
+```{.javascript data-prompt=">"}
+ db.runCommand({
+    grantPrivilegesToRole: "explainRole",
+    privileges: [{
+        "resource": {
+            "db": "",
+            "collection": "system.profile"
+        },
+        "actions": [
+            "indexStats",
+            "dbStats",
+            "collStats"
+        ]
+    }]
+})
+```
 
 ## Profiling
 
