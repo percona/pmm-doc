@@ -1,6 +1,7 @@
 # Uninstall PMM 
 
-Find the detailed information on how to uninstall PMM in the following documets:
+ Refer to the following sections for detailed instructions on uninstalling PMM:
+
 
 * [Uninstall PMM client with Docker container](uninstall_docker.md)
 
