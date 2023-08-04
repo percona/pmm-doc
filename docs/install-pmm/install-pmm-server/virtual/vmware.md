@@ -15,8 +15,8 @@
 
     7. Choose one of:
 
-        * (Optional) Click *Finish*. This starts the virtual machine.
-        * (Recommended) Click *Customize Settings*. This opens the VM's settings page without starting the machine.
+        a. (Optional) Click *Finish*. This starts the virtual machine.
+        b. (Recommended) Click *Customize Settings*. This opens the VM's settings page without starting the machine.
 
 === "OVA file downloaded via CLI"
 
