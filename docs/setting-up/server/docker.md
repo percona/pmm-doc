@@ -57,9 +57,9 @@ You can store data from your PMM in:
 
     * For PMM versions 2.27.0 and later:
 
-        ```sh
-        docker exec -t pmm-server change-admin-password <new_password>
-        ```
+    ```sh
+    docker exec -t pmm-server change-admin-password <new_password>
+    ```
 
     * For PMM versions prior to 2.27.0:
 
@@ -128,7 +128,6 @@ You can store data from your PMM in:
     ```sh
     docker pull percona/pmm-server:2
     ```
-    
 2. Run the image.
 
     ```sh
