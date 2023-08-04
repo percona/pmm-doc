@@ -26,24 +26,8 @@ If the host where you will run PMM Server has no internet connection, you can do
     docker load -i pmm-server-{{release}}.docker
     ```
 
-6. Create the `pmm-data` persistent data container.
+6. [Run the container](#run) as if your image is already pulled using your desired method for a storage volume (you can step over any docker pull commands as the image has been pre-staged).
 
-    ```sh
-    docker create --volume /srv \
-    --name pmm-data percona/pmm-server:{{release}} /bin/true
-    ```
-
-7. Run the container.
-
-    ```sh
-    docker run \
-    --detach \
-    --restart always \
-    --publish 443:443 \
-    --volumes-from pmm-data \
-    --name pmm-server \
-    percona/pmm-server:{{release}}
-    ```
 
 [tags]: https://hub.docker.com/r/percona/pmm-server/tags
 [Docker]: https://docs.docker.com/get-docker/
