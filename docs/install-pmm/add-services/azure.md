@@ -73,26 +73,33 @@ You need to get the Client ID, Client Secret, Tenant ID and Subscription ID.
 
 1. Search **Subscriptions**, click on your subscription name
 ![!](../../_images/azure_subscription_section.png )
+
 2. Copy the subscription ID
+
 ![!](../../_images/azure_subscription_id.png)
 
 ### Create a new application to get the tenant ID, client ID and the client secret.
 
 1. Search for **Azure Active Directory**
 ![!](../../_images/azure_active_directory_section.png)
+
 2. Register a new application
 ![!](../../_images/azure_app_registrations_section.png)
 ![!](../../_images/azure_app_new_registration.png)
 ![!](../../_images/azure_app_new_details.png)
+
 3. At this point you can copy the client and tenant IDs.
 ![!](../../_images/azure_app_client_tenant.png)
+
 4. Create an application secret.
 ![!](../../_images/azure_app_secret_01.png)
 ![!](../../_images/azure_app_secret_02.png)
 ![!](../../_images/azure_app_secret_03.png)
+
 5. Copy the **value** of the application secret. Once you leave this page you won't be able to see the secret again and you will have to generate a new
    one.
 ![!](../../_images/azure_app_secret_04.png)
+
 
 6. Give API access permissions to your application.
 
