@@ -105,3 +105,4 @@
 
     ```sh
     VBoxManage controlvm "PMM Server" poweroff
+    ```
