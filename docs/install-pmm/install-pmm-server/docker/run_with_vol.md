@@ -27,9 +27,9 @@
 
     * For PMM versions 2.27.0 and later:
 
-    ```sh
-    docker exec -t pmm-server change-admin-password <new_password>
-    ```
+        ```sh
+        docker exec -t pmm-server change-admin-password <new_password>
+        ```
 
     * For PMM versions prior to 2.27.0:
 
