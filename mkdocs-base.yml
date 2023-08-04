@@ -241,6 +241,8 @@ nav:
         - install-pmm/add-services/postgresql.md
         - install-pmm/add-services/proxysql.md
         - install-pmm/add-services/remote.md
+      - Remove services:      
+        - install-pmm/remove-services/index.md
       - Upgrade PMM:
         - pmm-upgrade/index.md
         - pmm-upgrade/ui_upgrade.md
