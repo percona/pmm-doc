@@ -15,7 +15,8 @@ Refer to [Kubernetes Supported versions](https://kubernetes.io/releases/version-
 
 PMM should be platform-agnostic, but it requires escalated privileges inside a container. It is necessary to have a `root` user inside the PMM container. Thus, PMM would not work for Kubernetes Platforms such as OpenShift or others that have hardened Security Context Constraints, for example:
 
-- [Security context constraints (SCCs)](https://docs.openshift.com/container-platform/latest/security/container_security/security-platform.html#security-deployment-sccs_security-platform)
+- [Security context constraints (SCCs)
+](https://docs.openshift.com/container-platform/latest/security/container_security/security-platform.html#security-deployment-sccs_security-platform)
 - [Managing security context constraints](https://docs.openshift.com/container-platform/latest/authentication/managing-security-context-constraints.html)
 
 Kubernetes platforms offer a different set of capabilities. To use PMM in production, you would need backups and, thus storage driver that supports snapshots. Consult your provider for Kubernetes and Cloud storage capabilities.
@@ -52,7 +53,6 @@ Also, ensure that the Kubernetes cluster has [high availability](https://kuberne
 ### Setup PMM admin password
 
 Create Kubernetes secret with PMM admin password:
-
 ```sh
 cat <<EOF | kubectl create -f -
 apiVersion: v1
@@ -74,6 +74,7 @@ To get admin password execute:
 ```sh
 kubectl get secret pmm-secret -o jsonpath='{.data.PMM_ADMIN_PASSWORD}' | base64 --decode
 ```
+
 ### Install
 
 To install the chart with the release name `pmm`:
