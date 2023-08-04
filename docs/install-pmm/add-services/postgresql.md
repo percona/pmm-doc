@@ -314,11 +314,9 @@ where:
 
 ### Check service - PMM user interface
 
-1. Select <i class="uil uil-cog"></i> *Configuration* → {{icon.inventory}} *PMM Inventory* → {{icon.inventory}} *Inventory list*.
-
-2. Look in the *Services* tab for a matching *Service Type* (PostgreSQL), *Service name*, *Addresses*, and any other details entered in the form.
-
-3. Look in the *Agents* tab to check the desired data source is being used.
+1. Select <i class="uil uil-cog"></i> *Configuration* → {{icon.inventory}} *Inventory*.
+2. In the *Services* tab, verify the *Service name*, *Address* and any other relevant details.
+3. In the *Options* column, expand the *Details* section and check that the Agents are using the desired data source.
 
 ### Check service - Command line
 
