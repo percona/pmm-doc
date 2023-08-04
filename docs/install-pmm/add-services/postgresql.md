@@ -228,7 +228,7 @@ When you have configured your database server, you can add a PostgreSQL service 
 
 ### With the user interface
 
-1. Select <i class="uil uil-cog"></i> *Configuration* → {{icon.inventory}} *PMM Inventory* → {{icon.addinstance}} *Add Instance*.
+1. Select <i class="uil uil-cog"></i> *Configuration* → {{icon.inventory}} *Inventory* → {{icon.addinstance}} *Add Service*.
 
 2. Select *PostgreSQL -- Add a remote instance*.
 
@@ -282,6 +282,9 @@ Add instance to connect with a UNIX socket.
 ```sh
 pmm-admin add postgresql --socket=/var/run/postgresql
 ```
+
+where:
+- `SOCKET`: directory containing the socket
 
 #### Connecting via SSL/TLS
 
