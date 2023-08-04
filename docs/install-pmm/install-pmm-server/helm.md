@@ -1,7 +1,5 @@
 # Install PMM server with Helm on the Kubernetes clusters
 
-!!! caution alert alert-warning "Caution"
-    PMM on Kubernetes with Helm is currently in [technical preview](../../details/glossary.md#technical-preview) and is subject to change.
 
 [Helm](https://github.com/helm/helm) is the package manager for Kubernetes. Percona Helm charts can be found in [percona/percona-helm-charts](https://github.com/percona/percona-helm-charts) repository on Github.
 
@@ -13,6 +11,25 @@
 !!! note alert alert-primary ""
     Helm v3 is needed to run the following steps.
 
+Refer to [Kubernetes Supported versions](https://kubernetes.io/releases/version-skew-policy/#supported-versions) and [Helm Version Support Policy](https://helm.sh/docs/topics/version_skew/) to find the supported versions.
+
+PMM should be platform-agnostic, but it requires escalated privileges inside a container. It is necessary to have a `root` user inside the PMM container. Thus, PMM would not work for Kubernetes Platforms such as OpenShift or others that have hardened Security Context Constraints, for example:
+
+- [Security context constraints (SCCs)](https://docs.openshift.com/container-platform/latest/security/container_security/security-platform.html#security-deployment-sccs_security-platform)
+- [Managing security context constraints](https://docs.openshift.com/container-platform/latest/authentication/managing-security-context-constraints.html)
+
+Kubernetes platforms offer a different set of capabilities. To use PMM in production, you would need backups and, thus storage driver that supports snapshots. Consult your provider for Kubernetes and Cloud storage capabilities.
+
+## Locality and Availability
+
+You should not run the PMM monitoring server along with the monitored database clusters and services on the same system.
+
+Please ensure proper locality either by physically separating workloads in Kubernetes clusters or running separate Kubernetes clusters for the databases and monitoring workloads.
+
+You can physically separate workloads by properly configuring Kubernetes nodes, affinity rules, label selections, etc.
+
+Also, ensure that the Kubernetes cluster has [high availability](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/ha-topology/) so that in case of a node failure, the monitoring service will be running and capturing the required data.
+
 ## Use Helm to install PMM server on Kubernetes clusters
 
 !!! note alert alert-primary "Availability"
@@ -20,12 +37,14 @@
 
 
 !!! summary alert alert-info "Summary"
+    - Setup PMM admin password
     - Install
     - Configuration parameters
-    - PMM admin password
     - PMM environment variables
     - PMM SSL certificates
+    - Backup
     - Upgrade
+    - Restore
     - Uninstall
 
 ---
