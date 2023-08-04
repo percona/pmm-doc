@@ -70,12 +70,14 @@ pg_stat_statements.track = all
 You need to get the Client ID, Client Secret, Tenant ID and Subscription ID.
 
 ### Get the subscription ID
+
 1. Search **Subscriptions**, click on your subscription name
 ![!](../../_images/azure_subscription_section.png )
 2. Copy the subscription ID
 ![!](../../_images/azure_subscription_id.png)
 
 ### Create a new application to get the tenant ID, client ID and the client secret.
+
 1. Search for **Azure Active Directory**
 ![!](../../_images/azure_active_directory_section.png)
 2. Register a new application
@@ -91,6 +93,7 @@ You need to get the Client ID, Client Secret, Tenant ID and Subscription ID.
 5. Copy the **value** of the application secret. Once you leave this page you won't be able to see the secret again and you will have to generate a new
    one.
 ![!](../../_images/azure_app_secret_04.png)
+
 6. Give API access permissions to your application.
 
     6.1. Search for **Subscriptions** like in step 1.
