@@ -49,6 +49,31 @@ Also, ensure that the Kubernetes cluster has [high availability](https://kuberne
 
 ---
 
+### Setup PMM admin password
+
+Create Kubernetes secret with PMM admin password:
+
+```sh
+cat <<EOF | kubectl create -f -
+apiVersion: v1
+kind: Secret
+metadata:
+  name: pmm-secret
+  labels:
+    app.kubernetes.io/name: pmm
+type: Opaque
+data:
+# base64 encoded password
+# encode some password: `echo -n "admin" | base64`
+  PMM_ADMIN_PASSWORD: YWRtaW4=
+EOF
+```
+
+To get admin password execute:
+
+```sh
+kubectl get secret pmm-secret -o jsonpath='{.data.PMM_ADMIN_PASSWORD}' | base64 --decode
+```
 ### Install
 
 To install the chart with the release name `pmm`:
