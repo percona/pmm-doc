@@ -290,12 +290,13 @@ pmm-admin inventory list services --service-type=mongodb
 
 ### With the user interface
 
-1. Select <i class="uil uil-cog"></i> *Configuration* → {{icon.inventory}} *PMM Inventory* → {{icon.inventory}} *Inventory List*.
-2. In the first column, click the tick box for the service you want to remove.
-3. Click <i class="uil uil-trash-alt"></i> *Delete*.
-4. On the *Confirm action* dialog window:
-    1. (Optional) Select *Force mode* to also delete associated agents.
-    2. Click *Proceed*.
+1. Select <i class="uil uil-cog"></i> *Configuration* → {{icon.inventory}} *Inventory*.
+2. In the *Services* tab, verify the *Service name*, *Addresses*, and any other relevant values used when adding the service.
+3. In the *Options* column, expand the *Details* section and check that the Agents are using the desired data source.
+4. If your MongoDB instance is configured to use TLS, click on the **Use TLS for database connection** check box and fill in TLS certificates and keys.
+If you use TLS, the authentication mechanism is automatically set to `MONGODB-X509`.
+
+    ![!](../../_images/PMM_Add_Instance_MongoDB_TLS.jpg)
 
 ### On the command line
 
