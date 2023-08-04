@@ -80,9 +80,12 @@ To install the chart with the release name `pmm`:
 
 ```sh
 helm repo add percona https://percona.github.io/percona-helm-charts/
-helm install pmm percona/pmm
+helm install pmm \
+--set secret.create=false \
+--set secret.name=pmm-secret \
+percona/pmm
 ```
-The command deploys PMM on the Kubernetes cluster in the default configuration. The [Parameters](#parameters) section lists the parameters that can be configured during installation.
+The command deploys PMM on the Kubernetes cluster in the default configuration and specified secret. The [Parameters](#parameters) section lists the parameters that can be configured during installation.
 
 <div hidden>
 ```sh
@@ -104,6 +107,7 @@ Specify each parameter using the `--set key=value[,key=value]` or `--set-string 
 
 ```sh
 helm install pmm \
+--set secret.create=false --set secret.name=pmm-secret \
 --set-string pmmEnv.ENABLE_DBAAS="1" \
 --set service.type="NodePort" \
 --set storage.storageClassName="linode-block-storage-retain" \
@@ -125,23 +129,14 @@ Alternatively, a YAML file that specifies the values for the above parameters ca
 
 ```sh
 helm show values percona/pmm > values.yaml
-#change needed parameters in values.yaml
+
+#change needed parameters in values.yaml, you need `yq` tool pre-installed
+yq -i e '.secret.create |= false' values.yaml
+
 helm install pmm -f values.yaml percona/pmm
 ```
 
-### PMM admin password
-
-PMM admin password would be set only on the first deployment. That setting is ignored if PMM was already provisioned and just restarted and/or updated.
-
-If PMM admin password is not set explicitly (default), it will be generated.
-
-To get admin password execute:
-
-```sh
-kubectl get secret pmm-secret -o jsonpath='{.data.PMM_ADMIN_PASSWORD}' | base64 --decode
-```
-
-### [PMM environment variables](.//docker/env_var.md)
+### [PMM environment variables](docker.md#environment-variables)
 
 In case you want to add extra environment variables (useful for advanced operations like custom init scripts), you can use the `pmmEnv` property.
 
@@ -153,8 +148,9 @@ pmmEnv:
 
 ### PMM SSL certificates
 
-PMM ships with self signed SSL certificates to provide secure connection between client and server ([check here](../../pmm-admin/security/ssl_encryption.md)).
-You will see the warning when connecting to PMM. To further increase security, you could provide your certificates and add values of credentials to the fields of the `cert` section:
+PMM ships with self signed SSL certificates to provide secure connection between client and server ([check here](../../how-to/secure.md#ssl-encryption)).
+
+You will see the warning when connecting to PMM. To further increase security, you should provide your certificates and add values of credentials to the fields of the `cert` section:
 
 ```yaml
 certs:
@@ -164,6 +160,64 @@ certs:
     certificate.key: <content>
     ca-certs.pem: <content>
     dhparam.pem: <content>
+```
+
+Another approach to set up TLS certificates is to use the Ingress controller, see [TLS](https://kubernetes.io/docs/concepts/services-networking/ingress/#tls). PMM helm chart supports Ingress. See [PMM network configuration](https://github.com/percona/percona-helm-charts/tree/main/charts/pmm#pmm-network-configuration).
+
+## Backup
+
+PMM helm chart uses [PersistentVolume and PersistentVolumeClaim](https://kubernetes.io/docs/concepts/storage/persistent-volumes/) to allocate storage in the Kubernetes cluster.
+
+Volumes could be pre-provisioned and dynamic. PMM chart supports both and exposes it through [PMM storage configuration](https://github.com/percona/percona-helm-charts/tree/main/charts/pmm#pmm-storage-configuration).
+
+Backups for the PMM server currently support only storage layer backups and thus require [StorageClass](https://kubernetes.io/docs/concepts/storage/storage-classes/) and [VolumeSnapshotClass](https://kubernetes.io/docs/concepts/storage/volume-snapshot-classes/).
+
+Validate the correct configuration by using these commands:
+```sh
+kubectl get sc
+kubectl get volumesnapshotclass
+```
+
+!!! note alert alert-primary "Storage"
+    Storage configuration is Hardware and Cloud specific. There could be additional costs associated with Volume Snapshots. Check the documentation for your Cloud or for your Kubernetes cluster.
+
+Before taking a [VolumeSnapshot](https://kubernetes.io/docs/concepts/storage/volume-snapshots/), stop the PMM server. In this step, we will stop PMM (scale to 0 pods), take a snapshot, wait until the snapshot completes, then start PMM server (scale to 1 pod):
+```sh
+kubectl scale statefulset pmm --replicas=0
+kubectl wait --for=jsonpath='{.status.replicas}'=0 statefulset pmm
+
+cat <<EOF | kubectl create -f -
+apiVersion: snapshot.storage.k8s.io/v1
+kind: VolumeSnapshot
+metadata:
+  name: before-v2.34.0-upgrade
+  labels:
+    app.kubernetes.io/name: pmm
+spec:
+  volumeSnapshotClassName: csi-hostpath-snapclass
+  source:
+    persistentVolumeClaimName: pmm-storage-pmm-0
+EOF
+
+kubectl wait --for=jsonpath='{.status.readyToUse}'=true VolumeSnapshot/before-v2.34.0-upgrade
+kubectl scale statefulset pmm --replicas=1
+```
+
+Output:
+```
+statefulset.apps/pmm scaled
+statefulset.apps/pmm condition met
+volumesnapshot.snapshot.storage.k8s.io/before-v2.34.0-upgrade created
+volumesnapshot.snapshot.storage.k8s.io/before-v2.34.0-upgrade condition met
+statefulset.apps/pmm scaled
+```
+
+!!! note alert alert-primary "PMM scale"
+    Only one replica set is currently supported.
+
+You can view available snapshots by executing the following command:
+```sh
+kubectl get volumesnapshot
 ```
 
 ### Upgrades
@@ -188,6 +242,42 @@ helm upgrade pmm -f values.yaml percona/pmm
 
 This will check updates in the repo and upgrade deployment if the updates are available.
 
+## Restore
+
+The version of the PMM server should be greater than or equal to the version in a snapshot. To restore from the snapshot, delete the old deployment first:
+```sh
+helm uninstall pmm
+```
+
+And then use snapshot configuration to start the PMM server again with the correct version and correct storage configuration:
+```sh
+helm install pmm \
+--set image.tag="2.34.0" \
+--set storage.name="pmm-storage-old" \
+--set storage.dataSource.name="before-v2.34.0-upgrade" \
+--set storage.dataSource.kind="VolumeSnapshot" \
+--set storage.dataSource.apiGroup="snapshot.storage.k8s.io" \
+--set secret.create=false \
+--set secret.name=pmm-secret \
+percona/pmm
+```
+
+Here, we created a new `pmm-storage-old` PVC with data from the snapshot. So, there are a couple of PV and PVCs available in a cluster.
+
+```
+$ kubectl get pvc
+NAME                    STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS      AGE
+pmm-storage-old-pmm-0   Bound    pvc-70e5d2eb-570f-4087-9515-edf2f051666d   10Gi       RWO            csi-hostpath-sc   3s
+pmm-storage-pmm-0       Bound    pvc-9dbd9160-e4c5-47a7-bd90-bff36fc1463e   10Gi       RWO            csi-hostpath-sc   89m
+
+$ kubectl get pv
+NAME                                       CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS   CLAIM                           STORAGECLASS      REASON   AGE
+pvc-70e5d2eb-570f-4087-9515-edf2f051666d   10Gi       RWO            Delete           Bound    default/pmm-storage-old-pmm-0   csi-hostpath-sc            4m50s
+pvc-9dbd9160-e4c5-47a7-bd90-bff36fc1463e   10Gi       RWO            Delete           Bound    default/pmm-storage-pmm-0       csi-hostpath-sc            93m
+```
+
+Delete unneeded PVC when you are sure you don't need them.
+
 ### Uninstall
 
 To uninstall `pmm` deployment:
@@ -198,4 +288,11 @@ helm uninstall pmm
 
 This command takes a release name and uninstalls the release.
 
-It removes all of the resources associated with the last release of the chart as well as the release history.
+It removes all resources associated with the last release of the chart as well as the release history.
+
+Helm will not delete PVC, PV, and any snapshots. Those need to be deleted manually.
+
+Also, delete PMM `Secret` if no longer required:
+```sh
+kubectl delete secret pmm-secret
+```
