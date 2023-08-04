@@ -39,7 +39,7 @@ GRANT SELECT, PROCESS, REPLICATION CLIENT, RELOAD, BACKUP_ADMIN ON *.* TO 'pmm'@
 **On MySQL 5.7**
 
 ```sql
-CREATE USER 'pmm'@'localhost' IDENTIFIED BY 'pass' WITH MAX_USER_CONNECTIONS 10;
+CREATE USER 'pmm'@'127.0.0.1' IDENTIFIED BY 'pass' WITH MAX_USER_CONNECTIONS 10;
 GRANT SELECT, PROCESS, REPLICATION CLIENT, RELOAD ON *.* TO 'pmm'@'localhost';
 ```
 
@@ -345,7 +345,7 @@ With the PMM user interface, you select *Use performance schema*, or deselect it
 
 ### With the user interface
 
-1. Select <i class="uil uil-cog"></i> *Configuration* → {{icon.inventory}} *PMM Inventory* → {{icon.addinstance}} *Add Instance*.
+1. Select <i class="uil uil-cog"></i> *Configuration* → {{icon.inventory}} *Inventory* → {{icon.addinstance}} *Add Service*.
 
 2. Select *MySQL -- Add a remote instance*.
 
@@ -423,9 +423,9 @@ pmm-admin add mysql --environment=test --custom-labels='source=slowlog'  --usern
 
 ### PMM user interface
 
-1. Select <i class="uil uil-cog"></i> *Configuration* → {{icon.inventory}} *PMM Inventory* → *Inventory list*.
-2. Look in the *Services* tab for a matching *Service Type* (MySQL), *Service name*, *Addresses*, and any other details entered in the form.
-3. Look in the *Agents* tab to check the desired data source is being used.
+1. Select <i class="uil uil-cog"></i> *Configuration* → {{icon.inventory}} *Inventory*.
+2. In the *Services* tab, verify the *Service name*, *Addresses*, and any other relevant information in the form.
+3. In the *Options* column, expand the *Details* section and check that the Agents are using the desired data source.
 
 ### Command line
 
