@@ -17,4 +17,4 @@ Add a MySQL instance, disabling per-table statistics collection when the number 
 
 ```sh
 pmm-admin add mysql --disable-tablestats-limit=2000
-
+```
