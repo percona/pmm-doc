@@ -1,15 +1,14 @@
 # MySQL backup prerequisites
 
-Before creating MySQL backups, make sure to: 
+Before creating MySQL backups, make sure to:
 
-1. Enable **Backup Management** from <i class="uil uil-cog"></i> **Configuration > PMM Settings > Advanced Settings**. Click **Apply changes**. This adds the <i class="uil uil-history"></i> Backup option on the side menu.
-  
-    !!! caution alert alert-warning "Important"
+1. Check that **Backup Management** is enabled and the <i class="uil uil-history"></i> Backup option is available on the side menu. If Backup Managemt has been disabled on your instance, go to <i class="uil uil-cog"></i> **Configuration > PMM Settings > Advanced Settings**, re-enable **Backup Management** then click **Apply changes**.
+   !!! caution alert alert-warning "Important"
     If PMM Server runs as a Docker container, enable backup features at container creation time by adding `-e ENABLE_BACKUP_MANAGEMENT=1` to your `docker run` command.
 
 2. Check that the [PMM Client](../../setting-up/client/index.md) is installed and running on the node.
 
-3. To enable Xtrabackup for MySQL 8.0+, check that pmm-agent connects to MySQL with a user that has  BACKUP_ADMIN privilege. 
+3. To enable Xtrabackup for MySQL 8.0+, check that pmm-agent connects to MySQL with a user that has BACKUP_ADMIN privilege.
 
 4. Check that there is only one MySQL instance running on the node.
 
@@ -27,7 +26,7 @@ Before creating MySQL backups, make sure to:
 
 8.  Make sure that `pmm-agent` has read/write permissions to the `/var/lib/mysql` directory.
 
-9.  Check that the latest versions of the following packages are installed and included in the `$PATH` environment variable:
+9. Check that the latest versions of the following packages are installed and included in the `$PATH` environment variable:
 
     - [`xtrabackup`](https://www.percona.com/software/mysql-database/percona-xtrabackup), which includes:
 
