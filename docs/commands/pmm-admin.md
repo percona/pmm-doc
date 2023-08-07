@@ -16,8 +16,6 @@ DATABASE:= [[MongoDB](#mongodb) | [MySQL](#mysql) | [PostgreSQL](#postgresql) | 
 
 `pmm-admin add --pmm-agent-listen-port=LISTEN_PORT DATABASE [FLAGS] [NAME] [ADDRESS]`
 
-`pmm-admin add external [FLAGS] [NAME] [ADDRESS]` (CAUTION: Technical preview feature)
-
 `pmm-admin add haproxy [FLAGS] [NAME]`
 
 `pmm-admin add external [FLAGS] [NAME] [ADDRESS]`
@@ -577,7 +575,12 @@ In low resolution we collect metrics from collectors which could take some time:
 
         !!! caution ""
             Ensure you do not set the value of `max-query-length` to 1, 2, or 3. Otherwise, the PMM agent will get terminated.
-        
+
+    `--comments-parsing=off/on`
+    : Enable/disable parsing comments from queries into QAN filter groups:
+        - off: Disabled.
+        - on: Enabled.
+
 #### PostgreSQL
 
 `pmm-admin add postgresql [FLAGS] [node-name] [node-address]`
@@ -609,6 +612,9 @@ In low resolution we collect metrics from collectors which could take some time:
     `--query-source=<query source>`
     : Source of SQL queries, one of: `pgstatements`, `pgstatmonitor`, `none` (default: `pgstatements`).
 
+    `--disable-queryexamples`
+    : Disable collection of query examples. Applicable only if `query-source` is set to `pgstatmonitor`.
+    
     `--environment=<environment>`
     : Environment name.
 
@@ -653,6 +659,11 @@ In low resolution we collect metrics from collectors which could take some time:
 
         !!! caution ""
             Ensure you do not set the value of `max-query-length` to 1, 2, or 3. Otherwise, the PMM agent will get terminated.
+
+    `--comments-parsing=off/on`
+    : Enable/disable parsing comments from queries into QAN filter groups:
+        - off: Disabled.
+        - on: Enabled.
 
 #### ProxySQL
 
