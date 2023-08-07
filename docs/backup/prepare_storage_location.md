@@ -1,6 +1,6 @@
 # Prepare a storage location
 
-Prepare a stogare location as a backup destination for creating and storing your backup artifacts.
+Prepare a storage location as a backup destination for creating and storing your backup artifacts.
 
 PMM supports the following types of storage:
 
