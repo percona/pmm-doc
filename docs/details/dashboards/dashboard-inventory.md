@@ -63,3 +63,4 @@ To remove items from the inventory:
         ![!image](../../_images/PMM_Inventory_Item_Selection.png)
 3. Click **Delete** and confirm the removal.
 
+
