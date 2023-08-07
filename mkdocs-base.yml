@@ -472,6 +472,7 @@ nav:
         - troubleshoot/dbaas/operator_issues.md
       - troubleshoot/alerting_issues.md
       - troubleshoot/qan_issues.md
+      - troubleshoot/plugin_issues.md
       - troubleshoot/dashboard_issues.md
       - troubleshoot/components_issues.md
       - troubleshoot/data_issues.md 
