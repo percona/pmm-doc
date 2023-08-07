@@ -12,7 +12,8 @@ This opens the **Restore from backup** dialog, with the **Same service** option 
 
 !!! caution alert alert-warning "Important"
     During restoring, PMM disables all the scheduled backup tasks for the current service. Remember to re-enable them manually after the restore.
-       
+    
+    
 ## Restore to a new cluster manually
 
 1. Install MongoDB and Percona Backup for MongoDB. Pay attention to the versions. To minimize potential incompatibility, use the same versions that were used for taking backups.
@@ -105,9 +106,9 @@ This opens the **Restore from backup** dialog, with the **Same service** option 
 
           `pbm restore --time="2022-11-23T19:40:26`
         
-      For more information, see [Point-in-time Recovery topic in the PBM documentation](https://docs.percona.com/percona-backup-mongodb/usage/point-in-time-recovery.html).
+      For more information, see the [Point-in-time Recovery topic in the PBM documentation](https://docs.percona.com/percona-backup-mongodb/usage/point-in-time-recovery.html).
 
-6. Check the progress of the restore operation, using one of the commands below.
+6. Check the progress of the restore operation, using one of the commands below:
 
     - For logical restores:
     `pbm describe-restore <restore_name>`
@@ -118,7 +119,13 @@ This opens the **Restore from backup** dialog, with the **Same service** option 
     Required arguments:
 
     - PBM generates the `<restore_name>` information after you start the restoring.
-    - The pbm_config.yaml file required for physical restores is the PBM config file that you provided for step 3.
+    - The *pbm_config.yaml* file required for physical restores is the PBM config file that you provided for step 3.
 
 !!! caution alert alert-warning "Important"
     Make sure not to run pbm backup from the new environment while the Percona Backup for MongoDB config is pointing to the remote storage location of the original environment.
+
+### Restoring from a sharded cluster
+
+Backups of sharded clusters is supported starting with PMM 2.38, and PMM handles the backup process end-to-end. However, restoring such artifacts is currenlty possibile only via the CLI, using Percona Backup for MongoDB. 
+
+For information on restoring sharded backups, check the [PBM documentation](https://docs.percona.com/percona-backup-mongodb/usage/restore.html)
