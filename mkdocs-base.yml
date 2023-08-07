@@ -479,6 +479,7 @@ nav:
       - reference/index.md 
       - reference/fundamentals.md
       - reference/pmm_components_and_versions.md
+      - reference/personal_data_handling.md
       - Third-party components in PMM: 
         - reference/third-party/index.md
         - reference/third-party/victoria.md
