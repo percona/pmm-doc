@@ -297,6 +297,10 @@ nav:
           - Environments:
               - details/dashboards/dashboard-env-overview.md
               - details/dashboards/dashboard-environent-summary.md
+          - Kubernetes:
+              - details/dashboards/kubernetes_cluster_summary.md
+              - details/dashboards/kubernetes_pods_status.md
+              - details/dashboards/kubernetes_volume.md
           - DBaas:
               - details/dashboards/dashboard-cluster-summary.md
           - OS Dashboards:

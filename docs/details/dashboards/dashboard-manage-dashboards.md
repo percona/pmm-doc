@@ -35,7 +35,7 @@ To delete multiple dashboards at once:
 From the side menu, go to <i class="uil uil-apps"></i> *Dashboards > Browse* and check the dashboards that you want to delete, and click *Delete*.
 
 
-![!image](../../_images/PMM_Delete_multiple_dashboards.png)
+![!image](../../_images/PMM_Delete_multiple_dashbaords.png)
 
 ### Move dashboards from one folder to another
 
