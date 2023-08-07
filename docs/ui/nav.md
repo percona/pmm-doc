@@ -12,7 +12,7 @@ There are two ways to open the dashboard search page. (Each takes you to the sam
 
 1. Click _Search dashboards by name_ and begin typing any part of the dashboard name (in this example, "_Instances_").
 
-      ![!Search dashboards by name](../_images/PMM_Home_Dashboard_Search_String.jpg)
+         ![!Search dashboards by name](../_images/PMM_Home_Dashboard_Search_String.jpg)
 
 2. Click one of the search results to go to that dashboard. Change the search text to refine the list.
 
