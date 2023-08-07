@@ -1,17 +1,8 @@
 # About security in PMM
 
 
-You can improve the security of your PMM installation with:
+By Default, PMM ships with a self-signed certificate to enable usage out of the box.  While this does enable users to have encrypted connections between clients (database clients and web/API clients) and the PMM server, it shouldn't be considered a properly secured connection.  Taking the following precautions will ensure that you are truly secure:
 
-- [SSL encryption](#ssl-encryption) to secure traffic between client and server;
+- [SSL encryption with trusted certificates](#ssl-encryption) to secure traffic between clients and server;
 
 - [Grafana HTTPS secure cookies](#grafana-https-secure-cookies)
-
-To see which security features are enabled:
-
-```sh
-pmm-admin status
-```
-
-!!! hint alert alert-success "Tip"
-    You can gain an extra level of security by keeping PMM Server isolated from the internet, if possible.
