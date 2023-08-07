@@ -49,6 +49,7 @@ A sample [IAM](https://aws.amazon.com/iam/) policy is:
 ## [Create the storage location](#create-a-storage-location)
 
 1. Go to **Backup > Storage Locations**:
+
     ![!](../_images/PMM_Backup_Management.jpg)
 
 2. Click **Add storage location** and fill in a name and description for this new location.
@@ -59,3 +60,11 @@ A sample [IAM](https://aws.amazon.com/iam/) policy is:
 4. Optionally, for S3-compatible storages, you can click **Test** to check the connection.
 
 5. Click **Add** to create the location.
+
+
+## Specific target directories for backups
+
+During backup creation, PMM enables you to set a specific folder within the local or S3-compatible location that you prepared following the instructions above.  
+Organizing backups in folders not only makes it easier to group backups for an entire cluster, but also improves PMM-PBM (Percona Backup for MongoDB) integration workflows. 
+
+The **Folder** field on the Create Backup pages is automatically populated with the value of the cluster label. You can change this default folder from PMM’s Advanced Settings, but make sure you understand how your custom folder will impact PBM integration workflows.
