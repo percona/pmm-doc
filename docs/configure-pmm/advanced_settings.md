@@ -36,48 +36,49 @@ As well as via the *PMM Settings* page, you can also disable telemetry with the 
 
 For information on the various config parameters for telemetry, see the [config file](https://github.com/percona/pmm/blob/main/managed/services/telemetry/config.default.yml).
 
-## Check for updates
-
 When active, PMM will automatically check for updates and put a notification in the home page *Updates* dashboard if any are available.
 
-## Advisors
+### Advisors
 
-Advisors are sets of checks grouped by functionality that run a range of database health checks on a registered instance.
+Advisors are sets of checks grouped by functionality that run a range of database health checks on a registered PMM instance.
 
-The findings are reported on the **Advisors > Failed Checks** page, and an overview is displayed on the Dashboard in the Failed Advisor Checks panel.
+The findings are reported on the **Advisors > Advisor Insights** page, and an overview is displayed on the Home dashboard.
 
-The Advisors option is enabled by default.
+The Advisors option is enabled by default.  Checks are re-fetched and rerun at intervals.
 
-Checks are re-fetched and rerun at intervals.
+See [Working with Advisor checks](../get-started/advisors.md).
 
-See [Working with Advisor checks](advisors.md).
+### Percona Alerting
 
-## Public address
+Enables [Percona Alerting](../get-started/alerting.md) and reveals the **Percona templated alerts** option on the **Alerting** page.
+
+### Backup Management
+
+Enables [Backup Management](../get-started/backup/index.md) option and reveals the **Backup** page from where you can:
+
+- Create and restore MongoDB and MySQL backups
+- Automate backup scheduling
+- Set retention policies
+- Monitor your backup and restore activity
+
+### Public Address
 
 The address or hostname PMM Server will be accessible at. Click **Get from browser** to have your browser detect and populate this field automatically.
 
-### DBaaS
+### Database as a Service (DBaaS)
 
 !!! caution alert alert-warning "Caution"
-    DBaaS functionality is a technical preview that must be turned on with a server feature flag. See [DBaaS](../setting-up/server/dbaas.md).
+    DBaaS functionality is a technical preview that must be turned on with a server feature flag. See [DBaaS](../dbaas/index.md).
 
-Enables/disables [DBaaS features](../get-started/dbaas.md) on this server.
+Enables/disables [DBaaS features](../dbaas/get-started.md) on this server.
 
 !!! caution alert alert-warning "Important"
     Deactivating DBaaS ***does not*** suspend or remove running DB clusters.
 
-### Alerting
-
-Enables [Percona Alerting](../get-started/alerting.md) and reveals the **Percona templated alerts** option on the Alerting page.
-
-### Microsoft Azure Monitoring
+### Microsoft Azure monitoring
 
 !!! caution alert alert-warning "Caution"
     This is a technical preview feature.
 
 Activates Microsoft Azure monitoring.
-
-### Public Address {: #public-address-1 }
-
-Public address for accessing DBaaS features on this server.
 
