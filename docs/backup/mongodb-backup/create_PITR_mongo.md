@@ -16,7 +16,7 @@ Starting with PMM 2.32, restoring PITR backups is available for backups based on
 
 When point-in-time recovery (PITR) is enabled, pbm-agent periodically saves consecutive slices of the oplog.
 
-To start saving oplog, PBM requires a backup snapshot. Such snapshots are being created when you activate a PITR scheduled task in PMM. 
+To start saving oplog, PBM requires a backup snapshot. Such snapshots are being created when you activate a PITR-scheduled task in PMM. 
 
 Since PBM saves oplog slices and streams them into your storage between scheduled task runs, scheduling frequent PITR backups is not necessary. 
 You can use the available oplog slices in your storage to restore a backup to any moment between snapshots.
