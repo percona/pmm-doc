@@ -10,3 +10,12 @@ Query Analytics supports MySQL, MongoDB and PostgreSQL. The minimum requirements
 - MySQL 5.6.9 or later (if using Performance Schema).
 
 Query Analytics displays metrics in both visual and numeric form. Performance-related characteristics appear as plotted graphics with summaries.
+
+The dashboard contains three panels:
+
+- the [Filters Panel](#filters-panel);
+- the [Overview Panel](#overview-panel);
+- the [Details Panel](#details-panel).
+
+!!! note alert alert-primary ""
+    Query Analytics data retrieval is not instantaneous and can be delayed due to network conditions. In such situations *no data* is reported and a gap appears in the sparkline.
