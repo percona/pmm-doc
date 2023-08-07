@@ -38,7 +38,7 @@ For information on the various config parameters for telemetry, see the [config 
 
 When active, PMM will automatically check for updates and put a notification in the home page *Updates* dashboard if any are available.
 
-### Advisors
+## Advisors
 
 Advisors are sets of checks grouped by functionality that run a range of database health checks on a registered PMM instance.
 
@@ -48,11 +48,11 @@ The Advisors option is enabled by default.  Checks are re-fetched and rerun at i
 
 See [Working with Advisor checks](../get-started/advisors.md).
 
-### Percona Alerting
+## Percona Alerting
 
 Enables [Percona Alerting](../get-started/alerting.md) and reveals the **Percona templated alerts** option on the **Alerting** page.
 
-### Backup Management
+## Backup Management
 
 Enables [Backup Management](../get-started/backup/index.md) option and reveals the **Backup** page from where you can:
 
@@ -61,11 +61,11 @@ Enables [Backup Management](../get-started/backup/index.md) option and reveals t
 - Set retention policies
 - Monitor your backup and restore activity
 
-### Public Address
+## Public Address
 
 The address or hostname PMM Server will be accessible at. Click **Get from browser** to have your browser detect and populate this field automatically.
 
-### Database as a Service (DBaaS)
+## Database as a Service (DBaaS)
 
 !!! caution alert alert-warning "Caution"
     DBaaS functionality is a technical preview that must be turned on with a server feature flag. See [DBaaS](../dbaas/index.md).
@@ -75,7 +75,7 @@ Enables/disables [DBaaS features](../dbaas/get-started.md) on this server.
 !!! caution alert alert-warning "Important"
     Deactivating DBaaS ***does not*** suspend or remove running DB clusters.
 
-### Microsoft Azure monitoring
+## Microsoft Azure monitoring
 
 !!! caution alert alert-warning "Caution"
     This is a technical preview feature.

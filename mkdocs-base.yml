@@ -425,7 +425,6 @@ nav:
       - configure-pmm/configure.md
       - configure-pmm/metrics_res.md
       - configure-pmm/advanced_settings.md
-      - configure-pmm/public-address.md
       - configure-pmm/ssh.md
       - configure-pmm/alertmanager.md
       - configure-pmm/percona_platform.md
