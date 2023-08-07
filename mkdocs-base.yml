@@ -485,6 +485,7 @@ nav:
         - reference/third-party/victoria.md
         - reference/third-party/clickhouse.md
         - reference/third-party/postgresql.md
+      -  reference/glossary.md
       -  reference/faq.md
       - PMM API:
         - api/index.md
