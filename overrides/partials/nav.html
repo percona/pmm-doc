@@ -21,7 +21,8 @@
   {% endif %}
   <ul class="md-nav__list" data-md-scrollfix>
     {% for nav_item in nav %}
-    {{ item.render(nav_item, path, 1) }}
+      {% set path = "__nav_" ~ loop.index %}
+      {{ item.render(nav_item, path, 1) }}
     {% endfor %}
     <br/>
    <label class="md-nav__title" for="__drawer">
