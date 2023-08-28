@@ -14,6 +14,8 @@ Shows individual services, the nodes on which they run, and the Agents that help
 The **Status** column shows the status of your databases based on metrics coming directly from the database.
 The **Monitoring** column summarizes the status of all the Agents assigned to the service.
 
+You click on the link in the **Node Name** column and you can see the details of the node running on that service.
+
 You can check Query Analytics information and the Service Overview Dashboard for each service by clicking on the <image src="../../_images/dots-three-vertical.ico" width="15px" aria-label="triple dots"/> icon in the **Options** column.
 
 From here you can also check additional information about the service, by clicking on the <image src="../../_images/arrow-downward.ico" width="15px" aria-label="downward arrow"/> icon. This expands the service entry to show reference information like service labels and IDs.
