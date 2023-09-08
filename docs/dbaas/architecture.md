@@ -1,7 +1,6 @@
 # DBaaS architecture
 
-!!! caution alert alert-primary "Do not use for mission critical workloads"
-    DBaaS feature is available for PMM Admin users
+!!! caution alert alert-warning "Caution"
     DBaaS functionality is currently in [technical preview](../details/glossary.md#technical-preview) and is subject to change.
 
 
