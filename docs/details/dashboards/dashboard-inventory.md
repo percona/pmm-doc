@@ -10,11 +10,25 @@ Inventory objects form a hierarchy with Node at the top, then Service and Agents
 
 ### **Services** tab
 
-Shows individual services, the nodes on which they run, and the Agents that help collect the service metrics.
-The **Status** column shows the status of your databases based on metrics coming directly from the database.
-The **Monitoring** column summarizes the status of all the Agents assigned to the service.
+The **Services** tab displays the individual services, the nodes on which they run, and the Agents that help collect the service metrics along with the following information:
 
-You click on the link in the **Node Name** column and you can see the details of the node running on that service.
+**Status** - The **Status** column shows the status of your databases based on metrics coming directly from the database.
+**Service name** -  The name or identifier associated with the service being monitored.
+**Node Name** - Name or identifier associated with a specific node. 
+**Monitoring status** - Is the service currently being monitored, or has it failed.
+**Address** -The IP address or DNS where the service is currently running.
+**Port** - The port number on which the service is running.
+
+Starting with PMM 2.40.0, you click on the link in the **Node Name** column to view the node on which a specific service is running and analyze how node-level resource utilization impacts the performance of those services.
+
+Understanding the relationship between nodes and services is key to gaining insights into the distribution and performance of individual services across nodes.
+
+**Node-service relationship**
+
+**Deployment**: Services within PMM are deployed on nodes and rely on them for resources, such as CPU, memory, and storage, to execute tasks.
+**Resource allocation**: It is essential to know which nodes host which services to allocate resources appropriately to avoid underuse or overload.
+**Performance optimization**: By analyzing node and service-level metrics, you can pinpoint and resolve issues that impede service performance, such as resource limitations and performance bottlenecks.
+**Incident response**: When an issue or incident occurs, understanding the node-service relationship helps in troubleshooting. You can quickly identify which nodes and services are affected and focus your efforts on resolving the problem.
 
 You can check Query Analytics information and the Service Overview Dashboard for each service by clicking on the <image src="../../_images/dots-three-vertical.ico" width="15px" aria-label="triple dots"/> icon in the **Options** column.
 
