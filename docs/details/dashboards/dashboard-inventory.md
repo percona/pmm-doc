@@ -8,7 +8,7 @@ To check your inventory list, go to <i class="uil uil-cog"></i> **Configuration*
 
 Inventory objects form a hierarchy with Node at the top, then Service and Agents assigned to a Node. This information is detailed in the two tabs available on this page.
 
-### **Services** tab
+### Services tab
 
 The **Services** tab displays the individual services, the nodes on which they run, and the Agents that help collect the service metrics along with the following information:
 
@@ -26,14 +26,17 @@ The **Services** tab displays the individual services, the nodes on which they r
 
 Starting with PMM 2.40.0, you click on the link in the **Node Name** column to view the node on which a specific service is running and analyze how node-level resource utilization impacts the performance of those services.
 
+#### Node-service relationship
+
 Understanding the relationship between nodes and services is key to gaining insights into the distribution and performance of individual services across nodes.
 
-**Node-service relationship**
+- **Deployment**: Services within PMM are deployed on nodes and rely on them for resources, such as CPU, memory, and storage, to execute tasks.
 
-**Deployment**: Services within PMM are deployed on nodes and rely on them for resources, such as CPU, memory, and storage, to execute tasks.
-**Resource allocation**: It is essential to know which nodes host which services to allocate resources appropriately to avoid underuse or overload.
-**Performance optimization**: By analyzing node and service-level metrics, you can pinpoint and resolve issues that impede service performance, such as resource limitations and performance bottlenecks.
-**Incident response**: When an issue or incident occurs, understanding the node-service relationship helps in troubleshooting. You can quickly identify which nodes and services are affected and focus your efforts on resolving the problem.
+- **Resource allocation**: It is essential to know which nodes host which services to allocate resources appropriately to avoid underuse or overload.
+
+- **Performance optimization**: By analyzing node and service-level metrics, you can pinpoint and resolve issues that impede service performance, such as resource limitations and performance bottlenecks.
+
+- **Incident response**: When an issue or incident occurs, understanding the node-service relationship helps in troubleshooting. You can quickly identify which nodes and services are affected and focus your efforts on resolving the problem.
 
 You can check Query Analytics information and the Service Overview Dashboard for each service by clicking on the <image src="../../_images/dots-three-vertical.ico" width="15px" aria-label="triple dots"/> icon in the **Options** column.
 
