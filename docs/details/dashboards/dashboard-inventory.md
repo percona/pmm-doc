@@ -24,19 +24,7 @@ The **Services** tab displays the individual services, the nodes on which they r
 
 **Port** - The port number on which the service is running.
 
-Starting with PMM 2.40.0, you click on the link in the **Node Name** column to view the node on which a specific service is running and analyze how node-level resource utilization impacts the performance of those services.
 
-#### Node-service relationship
-
-Understanding the relationship between nodes and services is key to gaining insights into the distribution and performance of individual services across nodes.
-
-- **Deployment**: Services within PMM are deployed on nodes and rely on them for resources, such as CPU, memory, and storage, to execute tasks.
-
-- **Resource allocation**: It is essential to know which nodes host which services to allocate resources appropriately to avoid underuse or overload.
-
-- **Performance optimization**: By analyzing node and service-level metrics, you can pinpoint and resolve issues that impede service performance, such as resource limitations and performance bottlenecks.
-
-- **Incident response**: When an issue or incident occurs, understanding the node-service relationship helps in troubleshooting. You can quickly identify which nodes and services are affected and focus your efforts on resolving the problem.
 
 You can check Query Analytics information and the Service Overview Dashboard for each service by clicking on the <image src="../../_images/dots-three-vertical.ico" width="15px" aria-label="triple dots"/> icon in the **Options** column.
 
@@ -55,6 +43,19 @@ Each binary (exporter, agent) running on a client will get an `agent_type` value
 To view the agents running on a service and their health status, click **OK** or **Failed** under the **Monitoring** column. Furthermore, you can also check the properties of a particular agent by clicking the <image src="../../_images/arrow-downward.ico" width="15px" aria-label="downward arrow"/> icon under the **Options** column.
 ![!image](../../_images/PMM_Inventory_Service_Agent_Properties.png)
 
+#### Node-service relationship
+
+Starting with PMM 2.40.0, you click on the link in the **Node Name** column to view the node on which a specific service is running and analyze how node-level resource utilization impacts the performance of those services.
+
+Understanding the relationship between nodes and services is key to gaining insights into the distribution and performance of individual services across nodes.
+
+- **Deployment**: Services within PMM are deployed on nodes and rely on them for resources, such as CPU, memory, and storage, to execute tasks.
+
+- **Resource allocation**: It is essential to know which nodes host which services to allocate resources appropriately to avoid underuse or overload.
+
+- **Performance optimization**: By analyzing node and service-level metrics, you can pinpoint and resolve issues that impede service performance, such as resource limitations and performance bottlenecks.
+
+- **Incident response**: When an issue or incident occurs, understanding the node-service relationship helps in troubleshooting. You can quickly identify which nodes and services are affected and focus your efforts on resolving the problem.
 
 ### **Nodes** tab
 
