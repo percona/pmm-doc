@@ -12,13 +12,12 @@ Inventory objects form a hierarchy with Node at the top, then Service and Agents
 
 The **Services** tab displays the individual services, the nodes on which they run, and the Agents that help collect the service metrics along with the following information:
 
-**Status** - The **Status** column shows the status of your databases based on metrics coming directly from the database.
 
 **Service name** -  The name or identifier associated with the service being monitored.
 
 **Node Name** - Name or identifier associated with a specific node. 
 
-**Monitoring status** - Is the service currently being monitored, or has it failed.
+**Monitoring status** - The **Monitoring** column summarizes the status of all the Agents assigned to the service.
 
 **Address** -The IP address or DNS where the service is currently running.
 
@@ -45,7 +44,7 @@ To view the agents running on a service and their health status, click **OK** or
 
 #### Node-service relationship
 
-Starting with PMM 2.40.0, you click on the link in the **Node Name** column to view the node on which a specific service is running and analyze how node-level resource utilization impacts the performance of those services.
+Starting with PMM 2.40.0, you can click on the link in the **Node Name** column to view the node on which a specific service is running and analyze how node-level resource utilization impacts the performance of those services.
 
 Understanding the relationship between nodes and services is key to gaining insights into the distribution and performance of individual services across nodes.
 
@@ -67,7 +66,7 @@ By expanding the entry from the options column, you can check the node labels an
 
 Starting with PMM 2.38.0, you can see the number of agents running on any particular node. When you click on any node, the UI navigates to the view of agents, which is filtered to display only agents related to that specific node. 
 
-Also, starting with PMM 2.40.0, when you click on the link in the **Services** column, you can see the services that are running on that specific node.
+Furthermore, starting with PMM 2.40.0, you can see the service running on that specific node when you click on the link in the **Services** column.
 
 To see the details of the agents running, do the following:
 
