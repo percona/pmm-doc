@@ -13,10 +13,15 @@ Inventory objects form a hierarchy with Node at the top, then Service and Agents
 The **Services** tab displays the individual services, the nodes on which they run, and the Agents that help collect the service metrics along with the following information:
 
 **Status** - The **Status** column shows the status of your databases based on metrics coming directly from the database.
+
 **Service name** -  The name or identifier associated with the service being monitored.
+
 **Node Name** - Name or identifier associated with a specific node. 
+
 **Monitoring status** - Is the service currently being monitored, or has it failed.
+
 **Address** -The IP address or DNS where the service is currently running.
+
 **Port** - The port number on which the service is running.
 
 Starting with PMM 2.40.0, you click on the link in the **Node Name** column to view the node on which a specific service is running and analyze how node-level resource utilization impacts the performance of those services.
@@ -57,6 +62,8 @@ Each `node_id` is associated with a `machine_id` (from `/etc/machine-id`). Nodes
 By expanding the entry from the options column, you can check the node labels and attributes.
 
 Starting with PMM 2.38.0, you can see the number of agents running on any particular node. When you click on any node, the UI navigates to the view of agents, which is filtered to display only agents related to that specific node. 
+
+Also, starting with PMM 2.40.0, when you click on the link in the **Services** column, you can see the services that are running on that specific node.
 
 To see the details of the agents running, do the following:
 
