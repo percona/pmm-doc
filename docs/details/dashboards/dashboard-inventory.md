@@ -56,7 +56,7 @@ Understanding the relationship between nodes and services is key to gaining insi
 
 - **Incident response**: When an issue or incident occurs, understanding the node-service relationship helps in troubleshooting. You can quickly identify which nodes and services are affected and focus your efforts on resolving the problem.
 
-### **Nodes** tab
+### Nodes tab
 
 Shows where the service and agents run.
 
