@@ -46,16 +46,16 @@ You can set the labels using the User interface as follows:
 
 5. (Optional) Check the **Addtional Options** that you want to include such as:
 
-- Skip connection check: 
+- Skip connection check: Do not check the connection to the database.
 
  - Use TLS for database connections: Enabling TLS (Transport Layer Security) for database connections is an important security measure to protect the confidentiality and integrity of data transmitted between the PMM Server and the monitored database instances.
 
 - Skip TLS certificate and hostname validation: For certain purposes, like debugging and testing, it may be necessary to bypass TLS certificate and hostname validation.
 
-- Table statistics limit: Constraint on the number of statistics or performance metrics that can be collected, stored, or maintained for database tables. 
+- Table statistics limit: Do not collect table statistics if the number of tables in a database exceeds this limit (defaults to 1000).
 
 - Disable comments parsing: Filter out comments in log files or data streams to isolate valid data.
-- Use performance schema - You can use Performance Schema for monitoring, profiling, and diagnosing performance issues in your databases.
+- Use performance schema - Performance Schema vs Slow Query Log (default) for monitoring and diagnosing performance issues in your database.
  
  **Using pmm-admin**
 
@@ -72,6 +72,9 @@ You can edit the labels as follows:
 3. Click **Edit**. The **Edit Service** page opens.
 
 4. Edit the labels as per your requirement and click **Save Changes**. The dditing service dialogue box opens.
+
+![!](../../_images/PMM_access_edit_labels.png)
+
 
 5. Click **Confirm and save changes**. You will be taken back to the **Inventory/Services** page.
 
