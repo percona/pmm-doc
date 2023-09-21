@@ -44,16 +44,17 @@ You can set the labels using the User interface as follows:
 
 5. (Optional) Check the **Addtional Options** that you want to include such as:
 
-- Skip connection check: Do not check the connection to the database.
+    - Skip connection check: Do not check the connection to the database.
 
- - Use TLS for database connections: Enabling TLS (Transport Layer Security) for database connections is an important security measure to protect the confidentiality and integrity of data transmitted between the PMM Server and the monitored database instances.
+    - Use TLS for database connections: Enabling TLS (Transport Layer Security) for database connections is an important security measure to protect the confidentiality and integrity of data transmitted between the PMM Server and the monitored database instances.
 
-- Skip TLS certificate and hostname validation: For certain purposes, like debugging and testing, it may be necessary to bypass TLS certificate and hostname validation.
+    - Skip TLS certificate and hostname validation: For certain purposes, like debugging and testing, it may be necessary to bypass TLS certificate and hostname validation.
 
-- Table statistics limit: Do not collect table statistics if the number of tables in a database exceeds this limit (defaults to 1000).
+    - Table statistics limit: Do not collect table statistics if the number of tables in a database exceeds this limit (defaults to 1000).
 
-- Disable comments parsing: Filter out comments in log files or data streams to isolate valid data.
-- Use performance schema - Performance Schema vs Slow Query Log (default) for monitoring and diagnosing performance issues in your database.
+    - Disable comments parsing: Filter out comments in log files or data streams to isolate valid data.
+
+    - Use performance schema - Performance Schema vs Slow Query Log (default) for monitoring and diagnosing performance issues in your database.
  
  **Using pmm-admin**
 
