@@ -26,8 +26,6 @@ In PMM, labels enable you to identify, categorize, and organize your monitored s
 
 While adding a service for monitoring in PMM, you can add custom or standard labels. The following labels are available.
 
- ![!](../../_images/PMM_access_control_labels_types.png)
-
 **Using PMM UI**
 
 You can set the labels using the User interface as follows:
@@ -38,11 +36,11 @@ You can set the labels using the User interface as follows:
 
 3. Enter the details such as *Hostname, Service name, Port, Username, Password,* etc., along with Label or Custom labels.
 
- ![!](../../_images/PMM_access_control_add_labels_services.png)
+    ![!](../../_images/PMM_access_control_add_labels_services.png)
 
 4. (Optional) Add the **Labels**.
 
-![!](../../_images/PMM_access_control_add_labels_to_add.png)
+    ![!](../../_images/PMM_access_control_add_labels_to_add.png)
 
 5. (Optional) Check the **Addtional Options** that you want to include such as:
 
@@ -73,7 +71,7 @@ You can edit the labels as follows:
 
 4. Edit the labels as per your requirement and click **Save Changes**. The dditing service dialogue box opens.
 
-![!](../../_images/PMM_access_edit_labels.png)
+    ![!](../../_images/PMM_access_edit_labels.png)
 
 
 5. Click **Confirm and save changes**. You will be taken back to the **Inventory/Services** page.
