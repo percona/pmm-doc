@@ -22,10 +22,11 @@ PMM supports standard as well as custom labels. PMM automatically assigns standa
 
 ## Adding labels
 
-Labels in PMM can be used to identify, categorize and organize your monitored services and resources. These labels help you filter, group, and analyze data efficiently. 
+In PMM, labels enable you to identify, categorize, and organize your monitored services and resources. Labels also simplify filtering, grouping, and analyzing data. 
 
+While adding a service for monitoring in PMM, you can add custom or standard labels. The following labels are available.
 
-You can add custom or standard labels in PMM while adding a service for monitoring in PMM. 
+ ![!](../../_images/PMM_access_control_labels_types.png)
 
 **Using PMM UI**
 
@@ -39,6 +40,27 @@ You can set the labels using User interface as follows:
 
  ![!](../../_images/PMM_access_control_add_labels_services.png)
 
+4. (Optional) Add the **Labels**.
+
+![!](../../_images/PMM_access_control_add_labels_to_add.png)
+
+5. (Optional) Check the **Addtional Options** that you want to include such as:
+
+- Skip connection check
+
+ - Use TLS for database connections
+
+- Skip TLS certificate and hostname validation
+
+- Table statistics limit
+
+- Disable comments parsing
+- Use performance schema
+ 
  **Using pmm-admin**
 
  You can also assign labels using [pmm-admin](../../details/commands/pmm-admin.md).
+
+## Editing labels
+
+
