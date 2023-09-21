@@ -30,11 +30,11 @@ While adding a service for monitoring in PMM, you can add custom or standard lab
 
 You can set the labels using the User interface as follows:
 
-1. From the *Main* menu, navigate to <i class="uil uil-cog"></i> *Configuration → Add Service*.
+1. From the **Main** menu, navigate to <i class="uil uil-cog"></i> **Configuration → Add Service**.
 
 2. Select the service you want to add to PMM for monitoring. The page to add the service opens.
 
-3. Enter the details such as *Hostname, Service name, Port, Username, Password,* etc., along with Label or Custom labels.
+3. Enter the details such as **Hostname, Service name, Port, Username, Password**.
 
     ![!](../../_images/PMM_access_control_add_labels_services.png)
 
