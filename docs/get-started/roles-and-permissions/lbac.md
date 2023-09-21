@@ -28,7 +28,7 @@ You can add custom or standard labels in PMM while adding a service for monitori
 
 You can set the labels using User interface as follows:
 
-1. From the *Main* menu, navigate to <i class="uil uil-cog"></i> *Configuration → Add Service*.
+1. From the *Main* menu, navigate to {{icon.configuration}} *Configuration → Add Service*.
 
 2. Select the service you want to add to PMM for monitoring. The page to add the service opens.
 
