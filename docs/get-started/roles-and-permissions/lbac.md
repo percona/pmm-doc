@@ -42,7 +42,7 @@ You can set the labels using the User interface as follows:
 
     ![!](../../_images/PMM_access_control_add_labels_to_add.png)
 
-5. (Optional) Check the **Addtional Options** that you want to include such as:
+5. (Optional) Check the **Additional Options** that you want to include, such as:
 
     - **Skip connection check**: Do not check the connection to the database.
 
