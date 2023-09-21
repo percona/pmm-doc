@@ -30,7 +30,7 @@ While adding a service for monitoring in PMM, you can add custom or standard lab
 
 **Using PMM UI**
 
-You can set the labels using User interface as follows:
+You can set the labels using the User interface as follows:
 
 1. From the *Main* menu, navigate to <i class="uil uil-cog"></i> *Configuration → Add Service*.
 
@@ -46,21 +46,34 @@ You can set the labels using User interface as follows:
 
 5. (Optional) Check the **Addtional Options** that you want to include such as:
 
-- Skip connection check
+- Skip connection check: 
 
- - Use TLS for database connections
+ - Use TLS for database connections: Enabling TLS (Transport Layer Security) for database connections is an important security measure to protect the confidentiality and integrity of data transmitted between the PMM Server and the monitored database instances.
 
-- Skip TLS certificate and hostname validation
+- Skip TLS certificate and hostname validation: For certain purposes, like debugging and testing, it may be necessary to bypass TLS certificate and hostname validation.
 
-- Table statistics limit
+- Table statistics limit: Constraint on the number of statistics or performance metrics that can be collected, stored, or maintained for database tables. 
 
-- Disable comments parsing
-- Use performance schema
+- Disable comments parsing: Filter out comments in log files or data streams to isolate valid data.
+- Use performance schema - You can use Performance Schema for monitoring, profiling, and diagnosing performance issues in your databases.
  
  **Using pmm-admin**
 
  You can also assign labels using [pmm-admin](../../details/commands/pmm-admin.md).
 
 ## Editing labels
+
+You can edit the labels as follows:
+
+1. From the *Main* menu, navigate to <i class="uil uil-cog"></i> *Configuration → Inventory*.
+
+2. Click on the three dots next to the service you want to edit labels for.
+
+3. Click **Edit**. The **Edit Service** page opens.
+
+4. Edit the labels as per your requirement and click **Save Changes**. The dditing service dialogue box opens.
+
+5. Click **Confirm and save changes**. You will be taken back to the **Inventory/Services** page.
+
 
 
