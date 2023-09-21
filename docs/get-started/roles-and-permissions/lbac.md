@@ -39,7 +39,7 @@ You can set the labels using the User interface as follows:
 3. Enter the details such as **Hostname, Service name, Port, Username, Password**.
 
 
-4. (Optional) Add the **Labels** to the service being monitored.
+4. (Optional) Enter the **Labels** for the service being monitored.
 
     ![!](../../_images/PMM_access_control_add_labels_to_add.png)
 
