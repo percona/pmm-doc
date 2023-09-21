@@ -2,7 +2,7 @@
 
 The **Inventory** dashboard is a high-level overview of all objects registered in PMM.
 
-To check your inventory list, go to <i class="uil uil-cog"></i> **Configuration** > **Inventory**.
+To check your inventory list, go to {{icon.configuration}} **Configuration** → **Inventory**.
 
 ![!image](../../_images/Inventory.png)
 
@@ -16,7 +16,7 @@ The **Monitoring** column summarizes the status of all the Agents assigned to th
 
 You can check Query Analytics information and the Service Overview Dashboard for each service by clicking on the <image src="../../_images/dots-three-vertical.ico" width="15px" aria-label="triple dots"/> icon in the **Options** column.
 
-From here you can also check additional information about the service, by clicking on the <image src="../../_images/arrow-downward.ico" width="15px" aria-label="downward arrow"/> icon. This expands the service entry to show reference information like service labels and IDs.
+From here you can also check additional information about the service, by clicking on the {{icon.arrowdown}} icon. This expands the service entry to show reference information like service labels and IDs.
 
 ![!image](../../_images/PMM_Inventory_Service_Selection.png)
 
@@ -28,7 +28,7 @@ Each binary (exporter, agent) running on a client will get an `agent_type` value
 - `node_exporter` is assigned to an agent that extracts the node metrics
 - `mysqld_exporter` and `qan-mysql-perfschema-agent` are assigned to agents that extract metrics from mysql and its performance schema respectively.
 
-To view the agents running on a service and their health status, click **OK** or **Failed** under the **Monitoring** column. Furthermore, you can also check the properties of a particular agent by clicking the <image src="../../_images/arrow-downward.ico" width="15px" aria-label="downward arrow"/> icon under the **Options** column.
+To view the agents running on a service and their health status, click **OK** or **Failed** under the **Monitoring** column. Furthermore, you can also check the properties of a particular agent by clicking the {{icon.arrowdown}} icon under the **Options** column.
 ![!image](../../_images/PMM_Inventory_Service_Agent_Properties.png)
 
 ### **Nodes** tab
@@ -46,9 +46,9 @@ To see the details of the agents running, do the following:
 1. On the **Nodes** tab, under the **Monitoring** column, click **OK** or **Failed** depending on the status of the node that you have selected. A page that provides the user with crucial information regarding the total number of agents deployed on that node is displayed.
    ![!image](../../_images/PMM_Inventory_Node_Selection.png)
 
-2. Click on the <image src="../../_images/arrow-downward.ico" width="15px" aria-label="downward arrow"/> icon under the **Options** column to view the properties of a specific agent.
+2. Click on the {{icon.arrowdown}} icon under the **Options** column to view the properties of a specific agent.
 
-3. On the **Nodes** tab, under the **Options** column, click on the <image src="../../_images/arrow-downward.ico" width="15px" aria-label="downward arrow"/> icon for the selected node to check the properties and the current health status of an agent.  
+3. On the **Nodes** tab, under the **Options** column, click on the {{icon.arrowdown}} icon for the selected node to check the properties and the current health status of an agent.  
    ![!image](../../_images/PMM_Inventory_Node_Agent_Properties.png)
 
 ## Removing items from the inventory
