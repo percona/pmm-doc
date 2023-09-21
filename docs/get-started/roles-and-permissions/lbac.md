@@ -34,11 +34,12 @@ You can set the labels using the User interface as follows:
 
 2. Select the service you want to add to PMM for monitoring. The page to add the service opens.
 
-3. Enter the details such as **Hostname, Service name, Port, Username, Password**.
-
     ![!](../../_images/PMM_access_control_add_labels_services.png)
 
-4. (Optional) Add the **Labels**.
+3. Enter the details such as **Hostname, Service name, Port, Username, Password**.
+
+
+4. (Optional) Add the **Labels** to the service being monitored.
 
     ![!](../../_images/PMM_access_control_add_labels_to_add.png)
 
