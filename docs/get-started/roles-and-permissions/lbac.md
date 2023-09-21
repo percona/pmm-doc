@@ -24,7 +24,7 @@ PMM supports standard as well as custom labels. PMM automatically assigns standa
 
 In PMM, labels enable you to identify, categorize, and organize your monitored services and resources. Labels also simplify filtering, grouping, and analyzing data. 
 
-While adding a service for monitoring in PMM, you can add custom or standard labels. The following labels are available.
+While adding a service for monitoring in PMM, you can add custom or standard labels.
 
 **Using PMM UI**
 
