@@ -55,7 +55,7 @@ You can set the labels using the User interface as follows:
 
     - **Disable comments parsing**: Filter out comments in log files or data streams to isolate valid data.
 
-    - **Use performance schema**:Performance Schema vs Slow Query Log (default) for monitoring and diagnosing performance issues in your database.
+    - **Use performance schema**: Use Performance Schema instead of Slow Query Log (default) for monitoring and diagnosing performance issues in your database.
  
  **Using pmm-admin**
 
