@@ -63,7 +63,7 @@ The main menu is part of the Grafana framework and is visible on every page.
 
 | Item (right)                                    | Description
 |-------------------------------------------------| --------------------
-| {{icon.configuration}}                     | Dashboard settings.
+| {{icon.configuration}}                          | Dashboard settings.
 | <i class="uil uil-monitor"></i>                 | Cycle view mode.
 | <i class="uil uil-clock-nine"></i> (time range) | Time range selector.
 | <i class="uil uil-search-minus"></i>            | Time range zoom out.
@@ -141,4 +141,3 @@ This item lists shortcuts to utility pages.
 [PromQL]: https://grafana.com/blog/2020/02/04/introduction-to-promql-the-prometheus-query-language/
 
 [BACKUP]: ../get-started/backup/index.md
-
