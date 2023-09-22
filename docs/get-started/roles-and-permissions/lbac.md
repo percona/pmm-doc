@@ -87,13 +87,13 @@ Editing existing labels can impact the following PMM functions:
 
     Editing labels without updating alerting rules can lead to missed alerts. If an alert rule is based on specific labels that are changed or no longer apply, the alert may not trigger when it should.
 
-    To avoid this, ensure that you update the alert rules after editing the labels.
+    Update the alert rules promptly after ediitng the labels to avoid any problems.
 
 - **Scheduled backup**s: Editing the cluster label will remove all scheduled backups for the imapcted service or cluster.
 
-    To avoid this, ensure that you recreate the your backups after cluster configuration.
+    To prevent any issues, make sure to recreate your backups once you've configured the cluster.
 
-- **Dashboard data** - If labels are used extensively in dashboard configurations, editing labels may require updates to existing dashboards to ensure that they correctly reference the new labels.
+- **Dashboard data**: If labels are used extensively in dashboard configurations, editing labels may require updating existing dashboards to ensure they correctly reference the new labels.
 
 
 
