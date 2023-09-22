@@ -44,7 +44,7 @@ You can set the labels using the User interface as follows:
 
     ![!](../../_images/PMM_access_control_add_labels_to_add.png)
 
-    Starting with PMM 2.40.0, you do not have to explicitly add the cluster label while adding a service to PMM for monitoring. The service name will be automatically assigned to the cluster label.
+    With PMM 2.40.0, we start enforcing the cluster label. If you choose not to provide it explicitly while adding a service to PMM for monitoring, PMM will automatically assign the value of the service name to the cluster label.
 
     ![!](../../_images/PMM_access_control_service_name_assigned_cluster.png)
 
