@@ -36,7 +36,7 @@ You can set the labels using the User interface as follows:
 
     ![!](../../_images/PMM_access_control_add_services.png)
 
-3. Enter the details such as **Hostname, Service name, Port, Username, Password, Max query lenght**.
+3. Enter the details such as **Hostname, Service name, Port, Username, Password, Max query length**.
 
     ![!](../../_images/PMM_access_control_add_main_details.png)
 
