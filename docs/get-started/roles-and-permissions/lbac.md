@@ -61,44 +61,12 @@ You can set the labels using the User interface as follows:
     - **Disable comments parsing**: Filter out comments in log files or data streams to isolate valid data.
 
     - **Use performance schema**: Use Performance Schema instead of Slow Query Log (default) for monitoring and diagnosing performance issues in your database.
+
+You can also edit the labels for a service with the PMM user interface. For details on editing labels for a service, see [Editing labels for a service](../../details/dashboards/dashboard-inventory.md)
  
- **Using pmm-admin**
+**Using pmm-admin**
 
  You can also assign labels using [pmm-admin](../../details/commands/pmm-admin.md).
-
-## Editing labels
-
-You can edit the labels as follows:
-
-1. From the **Main** menu, navigate to <i class="uil uil-cog"></i> **Configuration → Inventory**.
-
-2. Click on the three dots next to the service you want to edit labels for.
-
-3. Click **Edit**. The **Edit Service** page opens.
-
-4. Edit the labels as per your requirement and click **Save Changes**. The editing service dialogue box opens.
-
-    ![!](../../_images/PMM_access_edit_labels.png)
-
-
-5. Click **Confirm and save changes**. You will be taken back to the **Inventory/Services** page.
-
-### Effect of editing labels
-
-Editing existing labels can impact the following PMM functions:
-
-- **Alerting** 
-
-    Editing labels without updating alerting rules can lead to missed alerts. If an alert rule is based on specific labels that are changed or no longer apply, the alert may not trigger when it should.
-
-    Update the alert rules promptly after editing the labels for a smooth alerting experience.
-
-- **Scheduled backup**s: Editing the cluster label will remove all scheduled backups for the imapcted service or cluster.
-
-    To prevent any issues, make sure to recreate your backups once you've configured the cluster.
-
-- **Dashboard data**: If labels are used extensively in dashboard configurations, editing labels may require updating existing dashboards to ensure they correctly reference the new labels.
-
 
 
 
