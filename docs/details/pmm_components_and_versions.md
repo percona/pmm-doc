@@ -18,7 +18,5 @@ The following table lists all the PMM client/server components and their version
 | RDS exporter  | 0.7.2    | |[Github percona/rds_exporter](https://github.com/percona/rds_exporter)|                                          
 | Node exporter|v1.4.0[*]| [Node Exporter Documentation](https://prometheus.io/docs/guides/node-exporter/)|[Github node exporter](https://github.com/percona/node_exporter)    |                                          
 | Azure exporter| 2.30.0   |            | [Github azure_metrics_exporter](https://github.com/percona/azure_metrics_exporter)    |                                          
-|[*]: Original upstream version along with some changes authored by Percona                                                                                                       |
 
-
-
+[*]: Original upstream version along with some changes authored by Percona
