@@ -34,12 +34,13 @@ You can set the labels using the User interface as follows:
 
 2. Select the service you want to add to PMM for monitoring. The page to add the service opens.
 
-    ![!](../../_images/PMM_access_control_add_labels_services.png)
+    ![!](../../_images/PMM_access_control_add_services.png)
 
-3. Enter the details such as **Hostname, Service name, Port, Username, Password**.
+3. Enter the details such as **Hostname, Service name, Port, Username, Password, Max query lenght**.
 
+    ![!](../../_images/PMM_access_control_add_main_details.png)
 
-4. (Optional) Enter the **Labels** for the service being monitored.
+4. (Optional) Enter the **Labels** to the service being monitored.
 
     ![!](../../_images/PMM_access_control_add_labels_to_add.png)
 
@@ -77,6 +78,25 @@ You can edit the labels as follows:
 
 
 5. Click **Confirm and save changes**. You will be taken back to the **Inventory/Services** page.
+
+### Effect of editing labels
+
+Editing existing labels can impact the following PMM functions:
+
+- **Alerting** 
+
+    Editing labels without updating alerting rules can lead to missed alerts. If an alert rule is based on specific labels that are changed or no longer apply, the alert may not trigger when it should.
+
+    To avoid this, ensure that you update the alert rules after editing the labels.
+
+- **Scheduled backup**s: Editing the cluster label will remove all scheduled backups for the imapcted service or cluster.
+
+    To avoid this, ensure that you recreate the your backups after cluster configuration.
+
+- **Dashboard data** - If labels are used extensively in dashboard configurations, editing labels may require updates to existing dashboards to ensure that they correctly reference the new labels.
+
+
+
 
 
 
