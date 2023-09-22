@@ -87,6 +87,8 @@ Editing existing labels can impact the following PMM functions:
 
 - **Dashboard data**: If labels are used extensively in dashboard configurations, editing labels may require updating existing dashboards to ensure they correctly reference the new labels.
 
+     Edited labels do not affect the existing time-series(metrics). It will only affect the new time-series(metrics).
+
 ### Nodes tab
 
 Shows where the service and agents run.
