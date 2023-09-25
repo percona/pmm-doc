@@ -85,9 +85,7 @@ Editing existing labels can impact the following PMM functions:
 
     To prevent any issues, make sure to recreate your backups once you've configured the cluster.
 
-- **Dashboard data**: If labels are used extensively in dashboard configurations, editing labels may require updating existing dashboards to ensure they correctly reference the new labels.
-
-     Edited labels do not affect the existing time-series(metrics). It will only affect the new time-series(metrics).
+- **Dashboard data**: Edited labels do not affect the existing time-series(metrics). It will only affect the new time-series(metrics).
 
 ### Nodes tab
 
