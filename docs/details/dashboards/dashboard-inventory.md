@@ -40,6 +40,7 @@ Each binary (exporter, agent) running on a client will get an `agent_type` value
 - `mysqld_exporter` and `qan-mysql-perfschema-agent` are assigned to agents that extract metrics from mysql and its performance schema respectively.
 
 To view the agents running on a service and their health status, click **OK** or **Failed** under the **Monitoring** column. Furthermore, you can also check the properties of a particular agent by clicking the <image src="../../_images/arrow-downward.ico" width="15px" aria-label="downward arrow"/> icon under the **Options** column.
+
 ![!image](../../_images/PMM_Inventory_Service_Agent_Properties.png)
 
 #### Node-service relationship
@@ -55,6 +56,17 @@ Understanding the relationship between nodes and services is key to gaining insi
 - **Performance optimization**: By analyzing node and service-level metrics, you can pinpoint and resolve issues that impede service performance, such as resource limitations and performance bottlenecks.
 
 - **Incident response**: When an issue or incident occurs, understanding the node-service relationship helps in troubleshooting. You can quickly identify which nodes and services are affected and focus your efforts on resolving the problem.
+
+#### Cluster view
+
+Starting with PMM 2.40.0, you can effortlessly group services into clusters based on the labels with the **Organize by Clusters** toggle.
+
+![!image](../../_images/PMM_Inventory_cluster_view.png)
+
+Click the downward arrow to view cluster details, including the services running on that cluster, agents, and labels.
+
+![!image](../../_images/PMM_Inventory_cluster_view_details.png)
+
 
 ### Nodes tab
 
