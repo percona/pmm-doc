@@ -13,13 +13,13 @@ Inventory objects form a hierarchy with Node at the top, then Service and Agents
 The **Services** tab displays the individual services, the nodes on which they run, and the Agents that help collect the service metrics along with the following information:
 
 
-**Service name** -  The name or identifier associated with the service being monitored.
+**Service name** - The name or identifier associated with the service being monitored.
 
 **Node Name** - Name or identifier associated with a specific node. 
 
 **Monitoring status** - The **Monitoring** column summarizes the status of all the Agents assigned to the service.
 
-**Address** -The IP address or DNS where the service is currently running.
+**Address** - The IP address or DNS where the service is currently running.
 
 **Port** - The port number on which the service is running.
 
