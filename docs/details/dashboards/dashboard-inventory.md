@@ -8,11 +8,22 @@ To check your inventory list, go to <i class="uil uil-cog"></i> **Configuration*
 
 Inventory objects form a hierarchy with Node at the top, then Service and Agents assigned to a Node. This information is detailed in the two tabs available on this page.
 
-### **Services** tab
+### Services tab
 
-Shows individual services, the nodes on which they run, and the Agents that help collect the service metrics.
-The **Status** column shows the status of your databases based on metrics coming directly from the database.
-The **Monitoring** column summarizes the status of all the Agents assigned to the service.
+The **Services** tab displays the individual services, the nodes on which they run, and the Agents that help collect the service metrics along with the following information:
+
+
+**Service name** -  The name or identifier associated with the service being monitored.
+
+**Node Name** - Name or identifier associated with a specific node. 
+
+**Monitoring status** - The **Monitoring** column summarizes the status of all the Agents assigned to the service.
+
+**Address** -The IP address or DNS where the service is currently running.
+
+**Port** - The port number on which the service is running.
+
+
 
 You can check Query Analytics information and the Service Overview Dashboard for each service by clicking on the <image src="../../_images/dots-three-vertical.ico" width="15px" aria-label="triple dots"/> icon in the **Options** column.
 
@@ -31,8 +42,21 @@ Each binary (exporter, agent) running on a client will get an `agent_type` value
 To view the agents running on a service and their health status, click **OK** or **Failed** under the **Monitoring** column. Furthermore, you can also check the properties of a particular agent by clicking the <image src="../../_images/arrow-downward.ico" width="15px" aria-label="downward arrow"/> icon under the **Options** column.
 ![!image](../../_images/PMM_Inventory_Service_Agent_Properties.png)
 
+#### Node-service relationship
 
-### **Nodes** tab
+Starting with PMM 2.40.0, you can click on the link in the **Node Name** column to view the node on which a specific service is running and analyze how node-level resource utilization impacts the performance of those services.
+
+Understanding the relationship between nodes and services is key to gaining insights into the distribution and performance of individual services across nodes.
+
+- **Deployment**: Services within PMM are deployed on nodes and rely on them for resources, such as CPU, memory, and storage, to execute tasks.
+
+- **Resource allocation**: It is essential to know which nodes host which services to allocate resources appropriately to avoid underuse or overload.
+
+- **Performance optimization**: By analyzing node and service-level metrics, you can pinpoint and resolve issues that impede service performance, such as resource limitations and performance bottlenecks.
+
+- **Incident response**: When an issue or incident occurs, understanding the node-service relationship helps in troubleshooting. You can quickly identify which nodes and services are affected and focus your efforts on resolving the problem.
+
+### Nodes tab
 
 Shows where the service and agents run.
 
@@ -41,6 +65,8 @@ Each `node_id` is associated with a `machine_id` (from `/etc/machine-id`). Nodes
 By expanding the entry from the options column, you can check the node labels and attributes.
 
 Starting with PMM 2.38.0, you can see the number of agents running on any particular node. When you click on any node, the UI navigates to the view of agents, which is filtered to display only agents related to that specific node. 
+
+Furthermore, starting with PMM 2.40.0, you can see the service running on that specific node when you click on the link in the **Services** column.
 
 To see the details of the agents running, do the following:
 
