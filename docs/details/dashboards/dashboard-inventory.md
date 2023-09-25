@@ -59,6 +59,10 @@ Understanding the relationship between nodes and services is key to gaining insi
 
 #### Cluster view
 
+!!! caution alert alert-warning "Disclaimer"
+     This feature is still [technical preview](../details/glossary.md#technical-preview) and is subject to change. We recommend that early adopters use this feature for testing purposes only.
+
+
 Starting with PMM 2.40.0, you can effortlessly group services into clusters based on the labels with the **Organize by Clusters** toggle.
 
 ![!image](../../_images/PMM_Inventory_cluster_view.png)
