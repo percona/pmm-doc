@@ -13,13 +13,13 @@ Inventory objects form a hierarchy with Node at the top, then Service and Agents
 The **Services** tab displays the individual services, the nodes on which they run, and the Agents that help collect the service metrics along with the following information:
 
 
-**Service name** -  The name or identifier associated with the service being monitored.
+**Service name** - The name or identifier associated with the service being monitored.
 
 **Node Name** - Name or identifier associated with a specific node. 
 
 **Monitoring status** - The **Monitoring** column summarizes the status of all the Agents assigned to the service.
 
-**Address** -The IP address or DNS where the service is currently running.
+**Address** - The IP address or DNS where the service is currently running.
 
 **Port** - The port number on which the service is running.
 
@@ -38,6 +38,7 @@ Each binary (exporter, agent) running on a client will get an `agent_type` value
 - `mysqld_exporter` and `qan-mysql-perfschema-agent` are assigned to agents that extract metrics from mysql and its performance schema respectively.
 
 To view the agents running on a service and their health status, click **OK** or **Failed** under the **Monitoring** column. Furthermore, you can also check the properties of a particular agent by clicking the <image src="../../_images/arrow-downward.ico" width="15px" aria-label="downward arrow"/> icon under the **Options** column.
+
 ![!image](../../_images/PMM_Inventory_Service_Agent_Properties.png)
 
 #### Node-service relationship
@@ -86,6 +87,22 @@ Editing existing labels can impact the following PMM functions:
     To prevent any issues, make sure to recreate your backups once you've configured the cluster.
 
 - **Dashboard data**: Edited labels do not affect the existing time-series(metrics). It will only affect the new time-series(metrics).
+
+
+#### Cluster view
+
+!!! caution alert alert-warning "Disclaimer"
+     This feature is still [technical preview](../details/glossary.md#technical-preview) and is subject to change. We recommend that early adopters use this feature for testing purposes only.
+
+
+Starting with PMM 2.40.0, you can choose to view a group of services as a single cluster  with the **Organize by Clusters** toggle. PMM uses the `cluster` label to display services under the same cluster.
+
+![!image](../../_images/PMM_Inventory_cluster_view.png)
+
+Click the downward arrow to view cluster details, including the services running on that cluster, agents, and labels.
+
+![!image](../../_images/PMM_Inventory_cluster_view_details.png)
+
 
 ### Nodes tab
 
