@@ -23,8 +23,6 @@ The **Services** tab displays the individual services, the nodes on which they r
 
 **Port** - The port number on which the service is running.
 
-
-
 You can check Query Analytics information and the Service Overview Dashboard for each service by clicking on the <image src="../../_images/dots-three-vertical.ico" width="15px" aria-label="triple dots"/> icon in the **Options** column.
 
 From here you can also check additional information about the service, by clicking on the <image src="../../_images/arrow-downward.ico" width="15px" aria-label="downward arrow"/> icon. This expands the service entry to show reference information like service labels and IDs.
@@ -56,6 +54,40 @@ Understanding the relationship between nodes and services is key to gaining insi
 - **Performance optimization**: By analyzing node and service-level metrics, you can pinpoint and resolve issues that impede service performance, such as resource limitations and performance bottlenecks.
 
 - **Incident response**: When an issue or incident occurs, understanding the node-service relationship helps in troubleshooting. You can quickly identify which nodes and services are affected and focus your efforts on resolving the problem.
+
+### Editing labels for a service
+
+You can edit the labels as follows:
+
+1. From the **Main** menu, navigate to <i class="uil uil-cog"></i> **Configuration → Inventory**.
+
+2. Click on the three dots next to the service you want to edit labels for.
+
+3. Click **Edit**. The **Edit Service** page opens.
+
+4. Edit the labels as per your requirement and click **Save Changes**. The editing service dialogue box opens.
+
+    ![!](../../_images/PMM_access_edit_labels.png)
+
+
+5. Click **Confirm and save changes**. You will be taken back to the **Inventory/Services** page.
+
+#### Effect of editing labels for a service
+
+Editing existing labels can impact the following PMM functions:
+
+- **Alerting** 
+
+    Editing labels without updating alerting rules can lead to missed alerts. If an alert rule is based on specific labels that are changed or no longer apply, the alert may not trigger when it should.
+
+    Update the alert rules promptly after editing the labels for a smooth alerting experience.
+
+- **Scheduled backup**s: Editing the cluster label will remove all scheduled backups for the imapcted service or cluster.
+
+    To prevent any issues, make sure to recreate your backups once you've configured the cluster.
+
+- **Dashboard data**: Edited labels do not affect the existing time-series(metrics). It will only affect the new time-series(metrics).
+
 
 #### Cluster view
 
