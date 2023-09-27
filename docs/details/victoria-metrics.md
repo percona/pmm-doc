@@ -62,7 +62,7 @@ The environment variable `PMM_VM_URL` has been added, which should point to the 
 http(s)://hostname:port/path.
 ```
 
-If the external VictoriaMetrics requires basic authentication, the following environment  variables should be used:
+If the external VictoriaMetrics database requires basic authentication, the following environment variables should be used:
 
 ```sh
 VMAGENT_remoteWrite_basicAuth_username={username}
