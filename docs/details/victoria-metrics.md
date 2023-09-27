@@ -74,7 +74,7 @@ When external VictoriaMetrics is configured, internal VictoriaMetrics stops. In 
 
 !!! note alert alert-primary ""
     VM Agents running on PMM Clients push data directly to external VictoriaMetrics. 
-    Ensure that they can connect to external Victoria metrics.
+    Ensure that they can connect to external VictoriaMetrics.
 
 ## Troubleshooting
 
