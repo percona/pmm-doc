@@ -68,9 +68,9 @@ If the external VictoriaMetrics database requires basic authentication, the foll
 VMAGENT_remoteWrite_basicAuth_username={username}
 VMAGENT_remoteWrite_basicAuth_password={password}
 ```
-If other authentication methods are used on the VictoriaMetrics side, users can use any of the `vmagent` env variables by prepending the `VMAGENT_ prefix`.
+If other authentication methods are used on the VictoriaMetrics side, users can use any of the `vmagent` environment variables by prepending `VMAGENT_ prefix`.
 
-When external VictoriaMetrics is configured, internal VictoriaMetrics stops. In this case, VM Agent on PMM Server pull smetrics from agents configured in pull metrics mode and remote nodes. Data is then pushed to external VictoriaMetrics.
+When external VictoriaMetrics is configured, internal VictoriaMetrics stops. In this case, VM Agent on PMM Server pulls metrics from agents configured in the `pull metrics mode` and remote nodes. Data is then pushed to external VictoriaMetrics.
 
 !!! note alert alert-primary "Note"
     VM Agents running on PMM Clients push data directly to external VictoriaMetrics. 
