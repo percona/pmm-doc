@@ -219,6 +219,7 @@ nav:
                   - details/dashboards/kubernetes_cluster_summary.md
                   - details/dashboards/kubernetes_pods_status.md
                   - details/dashboards/kubernetes_volume.md
+                  - details/dashboards/kubernetes_monitor_operators.md
               - DBaas:
                   - details/dashboards/dashboard-cluster-summary.md
               - OS Dashboards:
