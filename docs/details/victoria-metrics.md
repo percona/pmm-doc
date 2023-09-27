@@ -58,9 +58,9 @@ Starting with PMM 2.40.0, you can now use an external VictoriaMetrics database f
 
 The environment variable `PMM_VM_URL` has been added, which should point to the external VictoriaMetrics database and should have the following format:
 
-    ```sh
-    http(s)://hostname:port/path.
-    ```
+```sh
+http(s)://hostname:port/path.
+```
 
 If the external VictoriaMetrics requires basic authentication, the following environment  variables should be used:
 
