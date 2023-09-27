@@ -72,8 +72,9 @@ If other authentication methods are used on the VictoriaMetrics side, users can 
 
 When external VictoriaMetrics is configured, internal VictoriaMetrics stops. In this case, VM Agent on PMM Server pull smetrics from agents configured in pull metrics mode and remote nodes. Data is then pushed to external VictoriaMetrics.
 
-!!! note alert alert-primary ""
+!!! note alert alert-primary "Note"
     VM Agents running on PMM Clients push data directly to external VictoriaMetrics. 
+    
     Ensure that they can connect to external VictoriaMetrics.
 
 ## Troubleshooting
