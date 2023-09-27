@@ -24,7 +24,7 @@ The Kubernetes Cluster overview dashboard gives you an overview of Kubernetes he
 
 ## DB clusters managed with Percona Kubernetes Operators
 
-This dashboard displays the primary parameters of DB clusters created by Percona Operators for various databases and helps identify the performance issues.
+This dashboard displays the primary parameters of database clusters created by Percona Operators for various databases and helps identify the performance issues.
 
 ![!image](../../_images/PMM_DB_clusters_managed_percona_kubernetes_operators.png)
 
