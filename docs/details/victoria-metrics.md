@@ -54,6 +54,10 @@ This instructs VictoriaMetrics to [deduplicate](https://docs.victoriametrics.com
 
 ## Using VictoriaMetrics external database instance
 
+!!! caution alert alert-warning "Important/Caution"
+    This feature is still in [Technical Preview](https://docs.percona.com/percona-monitoring-and-management/details/glossary.html#technical-preview) and is subject to change. We recommend that early adopters use this feature for evaluation purposes only.
+
+
 Starting with PMM 2.40.0, you can now use an external VictoriaMetrics database for monitoring in PMM.
 
 The environment variable `PMM_VM_URL` has been added, which should point to the external VictoriaMetrics database and should have the following format:
