@@ -12,20 +12,10 @@ For inforamtion on setting up monitoring for the Kubernetes cluster health, see 
 This setup has been tested with the PMM server as the centralized data storage and the Victoria Metrics Kubernetes monitoring stack as the metrics collector. These steps may also apply if you use another Prometheus-compatible storage.
 
 
-## New dashboards: Kubernetes monitoring for Percona Operators
-
-Starting with PMM 2.40.0, the following new dashboards have been added:
-
 ## Kubernetes overview
 
 The Kubernetes Cluster overview dashboard gives you an overview of Kubernetes health and its objects, including Percona custom resources.
 
 ![!image](../../_images/K8s_overview_dashboard_for_operators.png)
-
-## DB clusters managed with Percona Kubernetes Operators
-
-This dashboard displays the primary parameters of database clusters created by Percona Operators for various databases and helps identify the performance issues.
-
-![!image](../../_images/PMM_DB_clusters_managed_percona_kubernetes_operators.png)
 
 
