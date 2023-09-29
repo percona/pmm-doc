@@ -45,7 +45,6 @@ You can set the labels using the User interface as follows:
     ![!](../../_images/PMM_access_control_add_labels_to_add.png)
 
 
-    ![!](../../_images/PMM_access_control_service_name_assigned_cluster.png)
 
 5. (Optional) Check the **Additional Options** that you want to include, such as:
 
