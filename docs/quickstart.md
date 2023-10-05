@@ -157,7 +157,7 @@ Explore the following topics to gain a deeper understanding of PMM:
 
 - [Configure](how-to/configure.md) - Learn how to configure PMM via the interface.
 - [Manage users](how-to/manage-users.md) - Learn how to manage users in PMM.
-- [Roles and permissions](get-started/roles-and-permissions/index.md) - Learn more about roles and permissions in PMM.
+- [Roles and permissions](use/roles-and-permissions/index.md) - Learn more about roles and permissions in PMM.
 - [Backup and restore](get-started/backup/index.md) — Learn how to backup and to restore data in PMM.
 
 
