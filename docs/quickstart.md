@@ -87,7 +87,7 @@ For instructions on installing the PMM Server with other methods, see [Setting u
 
     Before adding a MongoDB database for monitoring,  [create a database account for PMM](https://docs.percona.com/percona-monitoring-and-management/setting-up/client/mongodb.html#create-pmm-account-and-set-permissions).
 
-    To add a MongoDB database instance for monitoring:
+    **Adding a MongoDB database instance for monitoring**
 
     1. From the PMM UI, go to **Configuration >PMM Inventory > Add Instance** and select **MongoDB**.
 
