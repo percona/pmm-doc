@@ -127,7 +127,7 @@ For instructions on installing the PMM Server with other methods, see [Setting u
     - Get your AWS RDS Access Key and RDS Secret Access Key. This key should have permission to monitor RDS.
     - Recommended: Enable **Enhanced Monitoring** option in the settings of your Amazon RDS DB instance.
     - Database username and password with access to login to the RDS instance.
-    - Access to the RDS instance via a TCP port.
+    - Access the RDS instance via a TCP port.
 
     To add an Amazon RDS database instance for monitoring:
 
