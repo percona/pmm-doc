@@ -62,9 +62,9 @@ These menus and controls appear on all dashboards:
 
 There are two ways to open the dashboard search page. (Each takes you to the same search screen.)
 
-- Click the <i class="uil uil-search"></i> icon in the main menu.
+1. Click the <i class="uil uil-search"></i> icon in the main menu.
 
-- Click the dashboard name in the navigation bar (top row, to the right of the <i class="uil uil-apps"></i> icon). (To search within the current folder, click the folder name instead of the dashboard name.)
+2. Click the dashboard name in the navigation bar (top row, to the right of the <i class="uil uil-apps"></i> icon). (To search within the current folder, click the folder name instead of the dashboard name.)
 
 ![!Search dashboards by name](../_images/PMM_Home_Dashboard_Search.jpg)
 
