@@ -124,7 +124,7 @@ For detailed instructions on installing the PMM server with the other methods, s
 
     You only need to provide the [IAM user access key](https://docs.percona.com/percona-monitoring-and-management/setting-up/client/aws.html#creating-an-access-key-for-an-iam-user) or assign an [IAM role](https://docs.percona.com/percona-monitoring-and-management/setting-up/client/aws.html#creating-an-iam-role) and PMM discovers the Amazon RDS DB instances available for monitoring.
 
-    Before you add Amazon instance for monitoring you should have the following:
+    Before you add Amazon instance for monitoring, do the following:
 
     - AWS RDS Access Key and RDS Secret Access Key. This key should have permission to monitor RDS.
     - Recommended: Enable **Enhanced Monitoring** option in the settings of your Amazon RDS DB instance.
