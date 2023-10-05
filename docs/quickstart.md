@@ -107,7 +107,6 @@ For instructions on installing the PMM Server with other methods, see [Setting u
 
     1. From the PMM UI, go to **Configuration > PMM Inventory > Add Instance** and choose **PostgreSQL**.
 
-    2. Select **PostgreSQL**. The **Add Service** page opens.
 
     3. Enter your database credentials on the resulting page.
 
