@@ -103,9 +103,9 @@ For instructions on installing the PMM Server with other methods, see [Setting u
 
     **Prerequisites**
      
-    Before adding a PostgreSQL database for monitoring,  [create a database account for PMM](https://docs.percona.com/percona-monitoring-and-management/setting-up/client/postgresql.html#create-a-database-account-for-pmm)
+    Before adding a PostgreSQL database for monitoring, [create a database account for PMM](https://docs.percona.com/percona-monitoring-and-management/setting-up/client/postgresql.html#create-a-database-account-for-pmm)
     
-    To add a PostgreSQL database instance for monitoring:
+    **Adding a PostgreSQL database instance for monitoring**
 
     1. From the PMM UI, go to **Configuration > PMM Inventory > Add Instance** and choose **PostgreSQL**.
 
