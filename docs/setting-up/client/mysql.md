@@ -33,14 +33,14 @@ It is good practice to use a non-superuser account to connect PMM Client to the 
 
 ```sql
 CREATE USER 'pmm'@'127.0.0.1' IDENTIFIED BY 'pass' WITH MAX_USER_CONNECTIONS 10;
-GRANT SELECT, PROCESS, REPLICATION CLIENT, RELOAD, BACKUP_ADMIN ON *.* TO 'pmm'@'localhost';
+GRANT SELECT, PROCESS, REPLICATION CLIENT, RELOAD, BACKUP_ADMIN ON *.* TO 'pmm'@'127.0.0.1';
 ```
 
 **On MySQL 5.7**
 
 ```sql
 CREATE USER 'pmm'@'127.0.0.1' IDENTIFIED BY 'pass' WITH MAX_USER_CONNECTIONS 10;
-GRANT SELECT, PROCESS, REPLICATION CLIENT, RELOAD ON *.* TO 'pmm'@'localhost';
+GRANT SELECT, PROCESS, REPLICATION CLIENT, RELOAD ON *.* TO 'pmm'@'127.0.0.1';
 ```
 
 
@@ -194,7 +194,10 @@ This section covers how to configure a MySQL-based database server to use *Perfo
 
 PMM's [*MySQL Performance Schema Details* dashboard](../../details/dashboards/dashboard-mysql-performance-schema-details.md) charts the various [`performance_schema`][performance-schema-startup-configuration] metrics.
 
-To use *Performance Schema*, set these variables.
+To use *Performance Schema*, set the variables below. 
+
+!!! caution alert alert-warning "Important"
+    Make sure to restart pmm-agent after making any changes to MySQL perfschema.
 
 | Variable                                                                                   | Value              | Description
 |--------------------------------------------------------------------------------------------|--------------------|---------------------------------------------------------------------------------
