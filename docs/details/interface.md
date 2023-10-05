@@ -10,7 +10,7 @@ PMM's user interface is a browser application based on [Grafana].
 
 2. The page loads showing the PMM login screen.
 
-   ![!](../_images/PMM_Login.jpg)
+    ![!](../_images/PMM_Login.jpg)
 
 3. Enter the username and password given to you by your system administrator. The defaults are:
 
