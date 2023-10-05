@@ -66,7 +66,7 @@ For detailed instructions on installing the PMM server with the other methods, s
 
 === "MySQL 5.7 or 8.0"
 
-    Before you add a MySQL database for monitoring you should have a [database account for PMM](https://docs.percona.com/percona-monitoring-and-management/setting-up/client/mysql.html#create-a-database-account-for-pmm).
+        Before you add a MySQL database for monitoring you should have a [database account for PMM](https://docs.percona.com/percona-monitoring-and-management/setting-up/client/mysql.html#create-a-database-account-for-pmm).
 
     To add a MySQL database instance for monitoring:
 
