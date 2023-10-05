@@ -88,7 +88,7 @@ For instructions on installing the PMM Server with other methods, see [Setting u
 
     To add a MongoDB database instance for monitoring:
 
-    1. From the PMM UI, go to **Configuration** → **PMM Inventory** → **Add Instance**.
+    1. From the PMM UI, go to **Configuration >PMM Inventory > Add Instance** and select **MongoDB**.
 
     2. Select **MongoDB**. The *Add Service* page opens.
 
