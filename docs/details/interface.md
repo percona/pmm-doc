@@ -52,7 +52,7 @@ These menus and controls appear on all dashboards:
 
 5. Shortcut menu (with dynamic contents).
 
-(For details see [UI Components](../details/interface.md).)
+(For details see [UI Components](#ui-components).)
 
 ![!](../_images/PMM_Home_Dashboard_Numbered.png)
 
