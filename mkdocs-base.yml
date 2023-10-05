@@ -199,7 +199,6 @@ nav:
       - details/index.md
       - details/interface.md
       - details/architecture.md
-      - details/interface.md
       - details/pmm_components_and_versions.md
       - details/personal_data_handling.md
       - Develop Advisor checks:
