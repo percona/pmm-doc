@@ -1,7 +1,7 @@
 # Quickstart Guide
 
 
-This guide helps you quickly get started with PMM using Docker-compatible Linux-based systems.
+This guide helps you quickly get started with PMM using Docker installation.
 
 
 ## Prerequisites
