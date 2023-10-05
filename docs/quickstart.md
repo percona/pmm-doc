@@ -105,7 +105,7 @@ For instructions on installing the PMM Server with other methods, see [Setting u
     
     To add a PostgreSQL database instance for monitoring:
 
-    1. From the PMM UI, go to *Configuration* → *PMM Inventory* → *Add Instance*.
+    1. From the PMM UI, go to **Configuration > PMM Inventory > Add Instance** and choose **PostgreSQL**.
 
     2. Select **PostgreSQL**. The **Add Service** page opens.
 
