@@ -155,12 +155,12 @@ nav:
           - use/backup/index.md
           - use/backup/prepare_storage_location.md
           - MongoDB backups:
-                - get-started/backup/backup_mongo.md
-                - get-started/backup/mongo-prerequisites.md
-                - get-started/backup/create_mongo_on_demand.md
-                - get-started/backup/create_PITR_mongo.md
-                - get-started/backup/restore_MongoDB_backups.md
-                - get-started/backup/mongodb_limitations.md
+              - get-started/backup/backup_mongo.md
+              - get-started/backup/mongo-prerequisites.md
+              - get-started/backup/create_mongo_on_demand.md
+              - get-started/backup/create_PITR_mongo.md
+              - get-started/backup/restore_MongoDB_backups.md
+              - get-started/backup/mongodb_limitations.md
           - MySQL backups:
                 - get-started/backup/backup_mysql.md
                 - get-started/backup/mysql_prerequisites.md
@@ -206,7 +206,6 @@ nav:
       - details/index.md
       - details/interface.md
       - details/architecture.md
-      - details/interface.md
       - details/pmm_components_and_versions.md
       - details/personal_data_handling.md
       - Develop Advisor checks:
