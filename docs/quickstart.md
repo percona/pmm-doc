@@ -21,9 +21,8 @@ Each database node should have at least 2 GB of memory for effective monitoring.
 
 **Ports**
 
-Check out the [list of ports used by PMM components](setting-up/server/network.md).
-
-For PMM to work correctly, your system’s firewall should allow TCP traffic on these ports (UDP is not needed).
+- By default, port 443 should be opened on the PMM Server.
+- The database port should be open for the PMM Server.
 
 ## Install PMM
 
@@ -92,7 +91,7 @@ For detailed instructions on installing the PMM server with the other methods, s
 
     2. Select **MongoDB**. The *Add Service* page opens.
 
-    3. Enter your database credentials on the resulting page without changing any values.
+    3. Enter your database credentials on the resulting page.
 
     4. (Optional) Enter the information in the **Labels** and **Additional Options** section. 
 
@@ -110,7 +109,7 @@ For detailed instructions on installing the PMM server with the other methods, s
 
     2. Select **PostgreSQL**. The **Add Service** page opens.
 
-    3. Enter your database credentials on the resulting page without changing any values.
+    3. Enter your database credentials on the resulting page.
 
     4. (Optional) Enter the information on the *Labels* or *Additional Options* section. 
 
@@ -143,7 +142,7 @@ For detailed instructions on installing the PMM server with the other methods, s
 
     5. For the instance that you would like to monitor, select **Start monitoring**.
 
-    6. Enter your database credentials on the resulting page without changing any values.
+    6. Enter your database credentials on the resulting page.
 
     7. (Optional) Enter the information on the **Labels** or **Additional Options** section. 
 
