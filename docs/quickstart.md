@@ -60,7 +60,7 @@ For instructions on installing the PMM Server with other methods, see [Setting u
 ## Add a database instance
 
 !!! caution alert alert-warning "Important"
-    Text
+    If you have access to the database node, install a PMM agent on it to reduce server-side resource utilization.
 
 
 === "MySQL 5.7 or 8.0"
