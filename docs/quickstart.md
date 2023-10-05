@@ -83,7 +83,8 @@ For detailed instructions on installing the PMM server with the other methods, s
 
 === "MongoDB"
 
-    Before you add a MongoDB database for monitoring, you should have a [database account for PMM](https://docs.percona.com/percona-monitoring-and-management/setting-up/client/mongodb.html#create-pmm-account-and-set-permissions).
+ **Prerequisites**
+ Before adding a MongoDB database for monitoring,  [create a database account for PMM](https://docs.percona.com/percona-monitoring-and-management/setting-up/client/mongodb.html#create-pmm-account-and-set-permissions).
 
     To add a MongoDB database instance for monitoring:
 
