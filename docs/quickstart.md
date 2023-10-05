@@ -6,7 +6,7 @@ This guide helps you quickly get started with PMM using Docker installation.
 
 ## Prerequisites
 
-[Docker](https://docs.docker.com/engine/install/) 1.12.6 or higher.
+[Docker](https://docs.docker.com/engine/install/)
 
 ## System requirements
 
@@ -52,9 +52,17 @@ To install the PMM server, follows the steps below:
 
 3. Log in to PMM with the default login credentials that are provided after the installation is completed.
 
+    !!! note alert alert-primary "Note"
+        Default credentials are admin:admin
+
+
 For detailed instructions on installing the PMM server with the other methods, see [Setting up PMM](https://docs.percona.com/percona-monitoring-and-management/setting-up/server/index.html).
 
 ## Add a database instance
+
+!!! caution alert alert-warning "Important"
+    Text
+
 
 === "MySQL 5.7 or 8.0"
 
