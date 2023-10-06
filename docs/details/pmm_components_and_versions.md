@@ -3,7 +3,7 @@
 The following table lists all the PMM client/server components and their versions:
 
 
-| Component| Version| Documentation                                 | Repository                                                                                                  |
+| Component| Version| Documentation | Repository                                                                                                  |
 |----------|--------|---------------------------------------------- |-------------------------------------------------------------------------------------------------------------|
 | Grafana  | 9.2.20*    | [Grafana Documentation](https://grafana.com/docs/grafana/latest/)|[Github Grafana](https://github.com/percona-platform/grafana)|
 | VictoriaMetrics| 1.82.1    | [VictoriaMetrics Documentation](https://docs.victoriametrics.com/)|[Github VictoriaMetrics](https://github.com/VictoriaMetrics/VictoriaMetrics)    |
