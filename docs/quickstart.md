@@ -26,7 +26,9 @@ Each database node should have at least 2 GB of memory for effective monitoring.
 
 To install the PMM server, follow the steps below:
 
-1. Download and run the [PMM easy installation script](https://docs.percona.com/percona-monitoring-and-management/setting-up/server/easy-install.html) from [github](https://github.com/percona/pmm/blob/main/get-pmm.sh) to verify and install any missing software and dependencies. The install script only runs on Linux-compatible systems. To use it, run the command with sudo privileges or as root.
+1. Download and run the [PMM easy installation script](https://docs.percona.com/percona-monitoring-and-management/setting-up/server/easy-install.html) from [github](https://github.com/percona/pmm/blob/main/get-pmm.sh) to verify and install any missing software and dependencies. 
+
+    The install script only runs on Linux-compatible systems. To use it, run the command with sudo privileges or as root.
     
 2. [Set up Docker on Mac](https://docs.docker.com/docker-for-mac/install) or [Linux](https://docs.docker.com/install/linux/docker-ce/ubuntu).
 
