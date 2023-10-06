@@ -73,7 +73,7 @@ markdown_extensions:
   attr_list: {}
   toc:
     permalink: true
-    admonition: {}
+  admonition: {}
   footnotes: {}
   def_list: {}
   meta: {}
@@ -151,7 +151,7 @@ extra:
       make our documentation better. Read more about <a class="reference external" href="https://www.percona.com/20180524-cookie-policy" target="_blank">Percona Cookie Policy</a>.
   edit_page_text: '<i class="uil uil-pen"></i> <b>Edit this page</b>'
   updated_text: '<i class="uil uil-refresh"></i> Page updated'
-  
+
 # Common navigation for percona.com, render.com and PDF
 nav:
   - Welcome: index.md
