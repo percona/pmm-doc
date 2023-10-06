@@ -4,7 +4,7 @@ This guide helps you quickly get started with PMM using Docker.
 
 ## Prerequisites
 
-[Docker](https://docs.docker.com/engine/install/)
+Install [Docker](https://docs.docker.com/engine/install/).
 
 ## System requirements
 
