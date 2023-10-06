@@ -1,22 +1,8 @@
 {# Import the theme's layout. #}
 {% extends "base.html" %}
 
-  {%- macro relbar2 () %}
-  <div class="md-relbar2__inner md-grid">
-  <div class="md-content">
-    <article class="md-content__inner md-typeset" role="main">    
-      <h3>Contact us </h3>
-         <p>For free technical help, visit the Percona <a class="reference external" href="https://forums.percona.com/c/percona-monitoring-and-management-pmm/30/all" target="_blank">Community Forum</a>.<br>
-          <p>To report bugs or submit feature requests, open a <a class="reference external" href="https://jira.percona.com/projects/PMM/issues/" target="_blank">JIRA</a> ticket.<br>
-           <p>For paid <a class="reference external" href="https://www.percona.com/services/support"> support </a> and <a class="reference external" href="https://www.percona.com/services/managed-services"> managed </a> or <a class="reference external" href="https://www.percona.com/services/consulting">consulting services </a>, contact <a class="reference external" href="https://www.percona.com/about-percona/contact" target="_blank">Percona Sales</a>.</p>
-    </article>
-  </div>
-  </div>
-  
-  {%- endmacro %}
-                
-                 {% block extrahead %}
-                 {{ super() }}
+{% block extrahead %}
+{{ super() }}
                  {% set title = config.site_name %}
                  {% if page and page.meta and page.meta.title %}
                  {% set title = title ~ " - " ~ page.meta.title %}
@@ -40,6 +26,9 @@
                       {% include "partials/nav.html" %}
                       <br>
                       <label class="md-nav__title" for="__drawer">
+      <a href="https://learn.percona.com/download-percona-monitoring-and-management-pmm-manual-2-2" onclick="_gaq.push(['b._trackEvent', 'Percona Monitoring and Management', 'Download', 'Download Manual Percona Monitoring and Management']);" class="md-nav__link md-nav__link--active" style="font-size: .7rem;">
+        Download PDF
+      </a>
     </label> 
                     </div>
                   </div>
