@@ -20,7 +20,7 @@ Each database node should have at least 2 GB of memory for effective monitoring.
 **Ports**
 
 - By default, port 443 should be opened on the PMM Server.
-- The database port should be open for the PMM Server.
+- The database port should be open for the PMM Agent.
 
 ## Install PMM
 
