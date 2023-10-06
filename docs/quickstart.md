@@ -30,7 +30,7 @@ To install the PMM server, follow the steps below:
     
     You can download the script from [github](https://github.com/percona/pmm/blob/main/get-pmm.sh).
 
-2. [Set up Docker on Mac](https://docs.docker.com/docker-for-mac/install) or [on Linux](https://docs.docker.com/install/linux/docker-ce/ubuntu).
+2. [Set up Docker on Mac](https://docs.docker.com/docker-for-mac/install) or [Linux](https://docs.docker.com/install/linux/docker-ce/ubuntu).
 
 3. Install the PMM Server using `cURL` or `wget`:
 
