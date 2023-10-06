@@ -7,5 +7,5 @@ If you need assistance, visit the community forum for comprehensive and free dat
 
 <div class="actions" markdown>
 
-[:material-forum-outline: Community Forum](https://forums.percona.com/) [:percona-logo: Get a Percona Expert](https://www.percona.com/about/contact)
+[:material-forum-outline: Community Forum](https://forums.percona.com/c/percona-monitoring-and-management-pmm/percona-monitoring-and-management-pmm-v2/31) [:percona-logo: Get a Percona Expert](https://www.percona.com/about/contact)
 </div></div>
