@@ -15,6 +15,7 @@ Install [Docker](https://docs.docker.com/engine/install/).
 ## Install PMM
 
 To install the PMM server, follow the steps below:
+{.power-number}
 
 1. Download and run the [PMM easy installation script](https://docs.percona.com/percona-monitoring-and-management/setting-up/server/easy-install.html) from [github](https://github.com/percona/pmm/blob/main/get-pmm.sh) to verify and install any missing software and dependencies. 
 
@@ -58,6 +59,7 @@ For instructions on installing the PMM Server with other methods, see [Setting u
     Before you add a MySQL database for monitoring you should have a [database account for PMM](https://docs.percona.com/percona-monitoring-and-management/setting-up/client/mysql.html#create-a-database-account-for-pmm).
 
     **Add a MySQL database instance**
+    {.power-number}
 
     1. From the PMM UI, go to **Configuration > PMM Inventory > Add Instance** and select **MySQL**.
 
@@ -76,6 +78,7 @@ For instructions on installing the PMM Server with other methods, see [Setting u
     Before adding a MongoDB database for monitoring,  [create a database account for PMM](https://docs.percona.com/percona-monitoring-and-management/setting-up/client/mongodb.html#create-pmm-account-and-set-permissions).
 
     **Add a MongoDB database instance**
+    {.power-number}
 
     1. From the PMM UI, go to **Configuration >PMM Inventory > Add Instance** and select **MongoDB**.
 
@@ -94,6 +97,7 @@ For instructions on installing the PMM Server with other methods, see [Setting u
     Before adding a PostgreSQL database for monitoring, [create a database account for PMM](https://docs.percona.com/percona-monitoring-and-management/setting-up/client/postgresql.html#create-a-database-account-for-pmm)
     
     **Add a PostgreSQL database instance**
+    {.power-number}
 
     1. From the PMM UI, go to **Configuration > PMM Inventory > Add Instance** and choose **PostgreSQL**.
 
@@ -119,6 +123,7 @@ For instructions on installing the PMM Server with other methods, see [Setting u
     - Access the RDS instance via a TCP port.
 
     To add an Amazon RDS database instance for monitoring:
+    {.power-number}
 
     1. From the PMM UI, go to **Configuration > PMM Inventory > Add Instance**.
 
@@ -141,13 +146,12 @@ For instructions on installing the PMM Server with other methods, see [Setting u
 
 ## Next steps
 
-Explore the following topics to gain a deeper understanding of PMM:
+[Configure PMM via the interface :material-arrow-right:](how-to/configure.md){.md-button}
 
-- [Configure](how-to/configure.md) - Learn how to configure PMM via the interface.
-- [Manage users](how-to/manage-users.md) - Learn how to manage users in PMM.
-- [Roles and permissions](use/roles-and-permissions/index.md) - Learn more about roles and permissions in PMM.
-- [Backup and restore](use/backup/index.md) — Learn how to backup and to restore data in PMM.
+[Manage users in PMM :material-arrow-right:](how-to/manage-users.md){.md-button}
 
+[Set up roles and permissions :material-arrow-right:](get-started/roles-and-permissions/index.md){.md-button}
 
+[Back up and restore data in PMM :material-arrow-right:](get-started/backup/index.md){.md-button}
 
 
