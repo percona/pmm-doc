@@ -1,4 +1,4 @@
-# Quickstart Guide
+# Quickstart guide
 
 The procedure on this page is designed to guide you through the simplest way to get up and running with Percona Monitoring and Management (PMM).
 
