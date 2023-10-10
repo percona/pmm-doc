@@ -13,7 +13,7 @@ The procedure on this page is designed to guide you through the simplest way to 
 The following steps will guide you through the installation of PMM server:
 {.power-number}
 
-1. Download and run the PMM easy installation script from [github](https://github.com/percona/pmm/blob/main/get-pmm.sh).
+1. Download and run the PMM easy installation script from [github](https://github.com/percona/pmm/blob/main/get-pmm.sh). The install script only runs on Linux-compatible systems. To use it, run the command with `sudo` privileges or as root.
 
     !!! note alert alert-primary ""
         This script does the following:
@@ -28,11 +28,6 @@ The following steps will guide you through the installation of PMM server:
         chmod +x pmm
         ./pmm --interactive
         ```
-    
-    !!! note alert alert-primary "Note"
-        The install script only runs on Linux-compatible systems. 
-        
-        To use it, run the command with sudo privileges or as root.
     
 2. Install the PMM Server using `cURL` or `wget`:
 
