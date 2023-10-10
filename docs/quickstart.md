@@ -72,6 +72,8 @@ For instructions on installing the PMM Server with other methods, see [Setting u
     **Add a MySQL database instance**
     {.power-number}
 
+    To add a MySQL database instance for monitoring, do the following:
+
     1. From the PMM UI, go to **Configuration > PMM Inventory > Add Instance** and select **MySQL**.
 
     3. Enter your database credentials on the resulting page without changing any values.
@@ -91,6 +93,9 @@ For instructions on installing the PMM Server with other methods, see [Setting u
     **Add a MongoDB database instance**
     {.power-number}
 
+    To add a MongoDB database instance for monitoring, do the following:
+
+
     1. From the PMM UI, go to **Configuration >PMM Inventory > Add Instance** and select **MongoDB**.
 
     3. Enter your database credentials on the resulting page.
@@ -109,6 +114,8 @@ For instructions on installing the PMM Server with other methods, see [Setting u
     
     **Add a PostgreSQL database instance**
     {.power-number}
+
+    To add a PostgreSQL database instance for monitoring, do the following:
 
     1. From the PMM UI, go to **Configuration > PMM Inventory > Add Instance** and choose **PostgreSQL**.
 
