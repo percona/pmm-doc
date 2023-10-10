@@ -2,9 +2,6 @@
 
 This guide helps you quickly get started with PMM using Docker.
 
-## Prerequisites
-
-Install [Docker](https://docs.docker.com/engine/install/).
 
 ## System requirements
 
@@ -21,17 +18,21 @@ To install the PMM server, follow the steps below:
 
     This script does the following:
 
-    - Installs Docker if it is not already installed on your system.
+    - Installs Docker if it is not installed on your system.
     - Stops and renames any currently running PMM Server Docker container from `pmm-server` to `pmm-server-{timestamp}`. This old pmm-server container is not a recoverable backup.
     - Pulls and runs the latest PMM Server Docker image.
-    - Can run in Interactive mode to change the default settings:
+    - Can run in `Interactive` mode to change the default settings:
 
     ```sh
     curl -fsSLO https://www.percona.com/get/pmm (or wget https://www.percona.com/get/pmm)
     chmod +x pmm
     ./pmm --interactive
     ```
-    The install script only runs on Linux-compatible systems. To use it, run the command with sudo privileges or as root.
+    
+    !!! note alert alert-primary "Note"
+        The install script only runs on Linux-compatible systems. 
+        
+        To use it, run the command with sudo privileges or as root.
     
 2. Install the PMM Server using `cURL` or `wget`:
 
