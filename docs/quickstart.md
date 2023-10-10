@@ -15,7 +15,6 @@ The following steps will guide you through the installation of PMM server:
 
 1. Download and run the PMM easy installation script from [github](https://github.com/percona/pmm/blob/main/get-pmm.sh).
 
-    ```txt
     !!! note alert alert-primary ""
         This script does the following:
 
