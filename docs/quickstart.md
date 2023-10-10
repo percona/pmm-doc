@@ -17,13 +17,23 @@ Install [Docker](https://docs.docker.com/engine/install/).
 To install the PMM server, follow the steps below:
 {.power-number}
 
-1. Download and run the [PMM easy installation script](https://docs.percona.com/percona-monitoring-and-management/setting-up/server/easy-install.html) from [github](https://github.com/percona/pmm/blob/main/get-pmm.sh) to verify and install any missing software and dependencies. 
+1. Download and run the PMM easy installation script from [github](https://github.com/percona/pmm/blob/main/get-pmm.sh).
 
+    This script does the following:
+
+    - Installs Docker if it is not already installed on your system.
+    - Stops and renames any currently running PMM Server Docker container from `pmm-server` to `pmm-server-{timestamp}`. This old pmm-server container is not a recoverable backup.
+    - Pulls and runs the latest PMM Server Docker image.
+    - Can run in Interactive mode to change the default settings:
+
+    ```sh
+    curl -fsSLO https://www.percona.com/get/pmm (or wget https://www.percona.com/get/pmm)
+    chmod +x pmm
+    ./pmm --interactive
+    ```
     The install script only runs on Linux-compatible systems. To use it, run the command with sudo privileges or as root.
     
-2. [Set up Docker on Mac](https://docs.docker.com/docker-for-mac/install) or [Linux](https://docs.docker.com/install/linux/docker-ce/ubuntu).
-
-3. Install the PMM Server using `cURL` or `wget`:
+2. Install the PMM Server using `cURL` or `wget`:
 
 
     === "cURL"
@@ -38,7 +48,7 @@ To install the PMM server, follow the steps below:
         wget -qO - https://www.percona.com/get/pmm | /bin/bash    
         ```
 
-4. Log in to PMM with the default login credentials that are provided after the installation is completed.
+3. Log in to PMM with the default login credentials that are provided after the installation is completed.
 
     !!! note alert alert-primary "Note"
         Default credentials are **admin:admin**
