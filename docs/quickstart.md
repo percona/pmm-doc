@@ -15,12 +15,14 @@ The following steps will guide you through the installation of PMM server:
 
 1. Download and run the PMM easy installation script from [github](https://github.com/percona/pmm/blob/main/get-pmm.sh).
 
-    This script does the following:
+    ```txt
+    !!! note alert alert-primary ""
+        This script does the following:
 
-    - Installs Docker if it is not installed on your system.
-    - Stops and renames any currently running PMM Server Docker container from `pmm-server` to `pmm-server-{timestamp}`. This old pmm-server container is not a recoverable backup.
-    - Pulls and runs the latest PMM Server Docker image.
-    - Can run in `Interactive` mode to change the default settings:
+        - Installs Docker if it is not installed on your system.
+        - Stops and renames any currently running PMM Server Docker container from `pmm-server` to `pmm-server-{timestamp}`. This old pmm-server container is not a recoverable backup.
+        - Pulls and runs the latest PMM Server Docker image.
+        - Can run in `Interactive` mode to change the default settings:
 
     ```sh
     curl -fsSLO https://www.percona.com/get/pmm (or wget https://www.percona.com/get/pmm)
