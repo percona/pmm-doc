@@ -10,7 +10,7 @@ Install [Docker](https://docs.docker.com/engine/install/).
 
 | Disk      |Memory  | Ports         |
 |-----------|--------|---------------|
-| * 1 GB of storage per monitored database node. <br/> * 1 GB of storage per monitored database node for data retention set to one week.| Each database node should have at least 2 GB of memory for effective monitoring. <br/> The increase in memory usage is not proportional to the number of nodes. </br>  **Example**: Data from 20 nodes should be easily handled with 16 GB.| ***** By default, port 443 should be opened on the PMM Server. <br/> * The database port should be open for the PMM Agent.|
+|* 1 GB of storage per monitored database node. <br/> * 1 GB of storage per monitored database node for data retention set to one week.| Each database node should have at least 2 GB of memory for effective monitoring. <br/> The increase in memory usage is not proportional to the number of nodes. </br>  **Example**: Data from 20 nodes should be easily handled with 16 GB.| ***** By default, port 443 should be opened on the PMM Server. <br/> * The database port should be open for the PMM Agent.|
 
 ## Install PMM
 
