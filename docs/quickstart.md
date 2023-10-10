@@ -23,11 +23,11 @@ The following steps will guide you through the installation of PMM server:
         - Pulls and runs the latest PMM Server Docker image.
         - Can run in `Interactive` mode to change the default settings:
 
-    ```sh
-    curl -fsSLO https://www.percona.com/get/pmm (or wget https://www.percona.com/get/pmm)
-    chmod +x pmm
-    ./pmm --interactive
-    ```
+        ```sh
+        curl -fsSLO https://www.percona.com/get/pmm (or wget https://www.percona.com/get/pmm)
+        chmod +x pmm
+        ./pmm --interactive
+        ```
     
     !!! note alert alert-primary "Note"
         The install script only runs on Linux-compatible systems. 
