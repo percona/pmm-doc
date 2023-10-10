@@ -1,7 +1,6 @@
 # Quickstart Guide
 
-This guide helps you quickly get started with PMM using Docker.
-
+The procedure on this page is designed to guide you through the simplest way to get up and running with Percona Monitoring and Management (PMM).
 
 ## System requirements
 
@@ -11,7 +10,7 @@ This guide helps you quickly get started with PMM using Docker.
 
 ## Install PMM
 
-To install the PMM server, follow the steps below:
+The following steps will guide you through the installation of PMM server:
 {.power-number}
 
 1. Download and run the PMM easy installation script from [github](https://github.com/percona/pmm/blob/main/get-pmm.sh).
@@ -62,6 +61,7 @@ For instructions on installing the PMM Server with other methods, see [Setting u
 !!! caution alert alert-warning "Important"
     If you have access to the database node, install a PMM agent on it to reduce server-side resource utilization.
 
+Before monitoring a database instance, it must be added to PMM's list of monitored databases. This section outlines the steps for adding a database instance.
 
 === "MySQL 5.7 or 8.0"
 
@@ -88,7 +88,7 @@ For instructions on installing the PMM Server with other methods, see [Setting u
 
     **Prerequisites**
 
-    Before adding a MongoDB database for monitoring,  [create a database account for PMM](https://docs.percona.com/percona-monitoring-and-management/setting-up/client/mongodb.html#create-pmm-account-and-set-permissions).
+    Before adding a MongoDB database for monitoring, [create a database account for PMM](https://docs.percona.com/percona-monitoring-and-management/setting-up/client/mongodb.html#create-pmm-account-and-set-permissions).
 
     **Add a MongoDB database instance**
     {.power-number}
