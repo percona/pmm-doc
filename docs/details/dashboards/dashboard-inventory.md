@@ -34,7 +34,13 @@ These are some of the atributes for a service:
 
 - Every service is related to a certain node via its `node_id` attribute. This feature allows to support multiple instances on a single node, with different service names, e.g. `mysql1-3306`, and `mysql1-3307`.
 
-- Each instance of a service gets a `version` attribute to the response of the endpoint that provides a list of services being monitored by PMM. This makes it easy to visualize the database server version.
+- Starting with PMM 2.41.0, each instance of a service gets a `version` attribute to the response of the endpoint that provides a list of services being monitored by PMM. This makes it easy to visualize the database server version.
+
+    However, following are the imitations:
+    - The version is not captured for the internal PostgreSQL database (currently version 14.9).
+    - The version is only captured when a new service is being added to PMM and the agent installed on the client side is equal to or greater than v2.41.0.
+    - When a database is upgraded, you will not see the database version updated automatically. It will be updated if you remove and then re-add the service.
+
 
 Each binary (exporter, agent) running on a client will get an `agent_type` value. 
 
@@ -48,7 +54,6 @@ To view the agents running on a service and their health status, click **OK** or
 
 ![!image](../../_images/PMM_Inventory_Service_Agent_Properties.png)
 
-Starting with PMM 2.41.0, 
 
 #### Node-service relationship
 
