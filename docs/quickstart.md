@@ -21,7 +21,7 @@ The following steps will guide you through the installation of PMM Server:
         - Installs Docker if it is not installed on your system.
         - Stops and renames any currently running PMM Server Docker container from `pmm-server` to `pmm-server-{timestamp}`. This old pmm-server container is not a recoverable backup.
         - Pulls and runs the latest PMM Server Docker image.
-        - To run PMM in the `Interactive` mode execute the following command:
+        - To run PMM in the `Interactive` mode, execute the following command:
 
             ```sh
             curl -fsSLO https://www.percona.com/get/pmm (or wget https://www.percona.com/get/pmm)
