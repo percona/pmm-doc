@@ -42,6 +42,7 @@ These are some of the atributes for a service:
     - The version is only captured when a new service is being added to PMM and the agent installed on the client side is equal to or greater than v2.41.0.
     - When a database is upgraded, you will not see the database version updated automatically. It will be updated if you remove and then re-add the service.
 
+#### Agents
 
 Each binary (exporter, agent) running on a client will get an `agent_type` value. 
 
