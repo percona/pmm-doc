@@ -13,25 +13,32 @@ Inventory objects form a hierarchy with Node at the top, then Service and Agents
 The **Services** tab displays the individual services, the nodes on which they run, and the Agents that help collect the service metrics along with the following information:
 
 
-**Service name** - The name or identifier associated with the service being monitored.
+| **Column Name**| **Description**|
+|--------------|--------------------------------|
+| Service name|The name or identifier associated with the service being monitored.|                                        
+| Node name | Name or identifier associated with a specific node.| 
+| Monitoring status| The **Monitoring** column summarizes the status of all the Agents assigned to the service.             | 
+|  Address         | The IP address or DNS where the service is currently running. |
+|  Port         | The port number on which the service is running. |
+|  QAN         | You can check Query Analytics information and the Service Overview Dashboard for each service by clicking on the <image src="../../_images/dots-three-vertical.ico" width="15px" aria-label="triple dots"/> icon in the **Options** column.|
+|  Additional information | You can also check additional information about the service, by clicking on the <image src="../../_images/arrow-downward.ico" width="15px" aria-label="downward arrow"/> icon. This expands the service entry to show reference information like service labels and IDs. |
 
-**Node Name** - Name or identifier associated with a specific node. 
-
-**Monitoring status** - The **Monitoring** column summarizes the status of all the Agents assigned to the service.
-
-**Address** - The IP address or DNS where the service is currently running.
-
-**Port** - The port number on which the service is running.
-
-You can check Query Analytics information and the Service Overview Dashboard for each service by clicking on the <image src="../../_images/dots-three-vertical.ico" width="15px" aria-label="triple dots"/> icon in the **Options** column.
-
-From here you can also check additional information about the service, by clicking on the <image src="../../_images/arrow-downward.ico" width="15px" aria-label="downward arrow"/> icon. This expands the service entry to show reference information like service labels and IDs.
 
 ![!image](../../_images/PMM_Inventory_Service_Selection.png)
 
-Each instance of a service gets a `service_type` attribute so one can clearly tell what type of database it is, for instance: `mysql`, `postgresql`, `mongodb`, etc. Every service is related to a certain node via its `node_id` attribute. This feature allows to support multiple instances on a single node, with different service names, e.g. `mysql1-3306`, and `mysql1-3307`.
+#### Attributes
 
-Each binary (exporter, agent) running on a client will get an `agent_type` value. Examples:
+These are some of the atributes for a service:
+
+- Each instance of a service gets a `service_type` attribute so one can clearly tell what type of database it is, for instance: `mysql`, `postgresql`, `mongodb`, etc. 
+
+- Every service is related to a certain node via its `node_id` attribute. This feature allows to support multiple instances on a single node, with different service names, e.g. `mysql1-3306`, and `mysql1-3307`.
+
+- Each instance of a service gets a `version` attribute to the response of the endpoint that provides a list of services being monitored by PMM. This makes it easy to visualize the database server version.
+
+Each binary (exporter, agent) running on a client will get an `agent_type` value. 
+
+Example
 
 - `pmm-agent` is at the top of the tree, assigned to PMM Agent itself
 - `node_exporter` is assigned to an agent that extracts the node metrics
@@ -40,6 +47,8 @@ Each binary (exporter, agent) running on a client will get an `agent_type` value
 To view the agents running on a service and their health status, click **OK** or **Failed** under the **Monitoring** column. Furthermore, you can also check the properties of a particular agent by clicking the <image src="../../_images/arrow-downward.ico" width="15px" aria-label="downward arrow"/> icon under the **Options** column.
 
 ![!image](../../_images/PMM_Inventory_Service_Agent_Properties.png)
+
+Starting with PMM 2.41.0, 
 
 #### Node-service relationship
 
