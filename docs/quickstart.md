@@ -50,7 +50,7 @@ The following steps will guide you through the installation of PMM server:
         Default credentials are **admin:admin**
 
 
-For instructions on installing the PMM Server with other methods, see [Setting up PMM](https://docs.percona.com/percona-monitoring-and-management/setting-up/server/index.html).
+For detailed instructions on installing the PMM Server through other methods, see [Setting up PMM](https://docs.percona.com/percona-monitoring-and-management/setting-up/server/index.html).
 
 ## Add a database instance
 
