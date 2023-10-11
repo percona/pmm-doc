@@ -10,7 +10,7 @@ The procedure on this page is designed to guide you through the simplest way to 
 
 ## Install PMM
 
-The following steps will guide you through the installation of PMM server:
+The following steps will guide you through the installation of PMM Server:
 {.power-number}
 
 1. Download and run the PMM easy installation script from [github](https://github.com/percona/pmm/blob/main/get-pmm.sh). The install script only runs on Linux-compatible systems. To use it, run the command with `sudo` privileges or as root.
@@ -21,7 +21,7 @@ The following steps will guide you through the installation of PMM server:
         - Installs Docker if it is not installed on your system.
         - Stops and renames any currently running PMM Server Docker container from `pmm-server` to `pmm-server-{timestamp}`. This old pmm-server container is not a recoverable backup.
         - Pulls and runs the latest PMM Server Docker image.
-        - Can run in `Interactive` mode to change the default settings:
+        - To run PMM in the `Interactive` mode execute the following command:
 
             ```sh
             curl -fsSLO https://www.percona.com/get/pmm (or wget https://www.percona.com/get/pmm)
@@ -29,7 +29,7 @@ The following steps will guide you through the installation of PMM server:
             ./pmm --interactive
             ```
     
-2. Install the PMM Server using `cURL` or `wget`:
+2. Install PMM Server using `cURL` or `wget`:
 
 
     === "cURL"
@@ -45,12 +45,11 @@ The following steps will guide you through the installation of PMM server:
         ```
 
 3. Log in to PMM with the default login credentials that are provided after the installation is completed.
+    
+    The default credentials are **admin:admin**.
 
-    !!! note alert alert-primary "Note"
-        Default credentials are **admin:admin**
 
-
-For detailed instructions on installing the PMM Server through other methods, see [Setting up PMM](https://docs.percona.com/percona-monitoring-and-management/setting-up/server/index.html).
+    For detailed instructions on installing the PMM Server through other methods, see [Setting up PMM](https://docs.percona.com/percona-monitoring-and-management/setting-up/server/index.html).
 
 ## Add a database instance
 
