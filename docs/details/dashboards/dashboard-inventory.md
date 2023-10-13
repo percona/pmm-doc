@@ -19,7 +19,7 @@ The **Services** tab displays the individual services, the nodes on which they r
 | Node name | Name or identifier associated with a specific node.| 
 | Monitoring status| The **Monitoring** column summarizes the status of all the Agents assigned to the service.             | 
 |  Address         | The IP address or DNS where the service is currently running. |
-|  Port         | The **port** number on which the service is running. ||
+|  Port         | The port number on which the service is running. ||
 |  Options |* You can check **QAN** information and the **Service Overview Dashboard** for each service by clicking on the **<image src="../../_images/dots-three-vertical.ico" width="15px" aria-label="triple dots"/>** icon </br> </br> * You can also check additional information about the service, by clicking on the **<image src="../../_images/arrow-downward.ico" width="15px" aria-label="downward arrow"/>** icon. This expands the service entry to show reference information like service labels and IDs.|
 
 
