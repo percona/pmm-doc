@@ -1,4 +1,4 @@
-# Working with Ad
+# Working with Advisors
 
 Percona Advisors provide automated insights and recommendations within Percona Monitoring and Management. These proactive insights help you uncover problems before they become larger issues: security risks, misconfigurations, poor performance, etc.
 
