@@ -92,7 +92,7 @@ grafana=> update "user" set id='1' where login='admin';
 UPDATE 1
 grafana=> \q
 
-# grafana-cli --homepath=/usr/share/grafana --config=/etc/grafana/grafana.ini admin reset-admin-password <PASS>
+# grafana cli --homepath=/usr/share/grafana --config=/etc/grafana/grafana.ini admin reset-admin-password <PASS>
 ``` 
 
 ### Configuration issues
