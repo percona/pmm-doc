@@ -4,7 +4,7 @@
     
     - DBaaS feature is deprecated. We encourage you to use [Percona Everest](https://www.percona.com/blog/announcing-the-alpha-release-of-percona-everest-an-open-source-private-dbaas/) instead. Check our [Migration guide](https://github.com/percona/everest-doc). 
     - DBaaS feature is available for PMM Admin users.
-    - DBaaS functionality is currently in [technical preview](../details/glossary.md#technical-preview) and is subject to change.
+
 
 Database as a service (DBaaS) feature of Percona Monitoring and Management (PMM) is an open source solution to run MySQL and MongoDB clusters on Kubernetes.
 

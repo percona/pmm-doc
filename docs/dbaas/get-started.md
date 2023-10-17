@@ -2,8 +2,7 @@
 
 !!! caution alert alert-primary "Do not use for mission critical workloads"
     
-    - DBaaS feature is deprecated. We encourage you to use [Percona Everest](https://www.percona.com/blog/announcing-the-alpha-release-of-percona-everest-an-open-source-private-dbaas/) instead. Check our [Migration guide](https://github.com/percona/everest-doc). 
-    - DBaaS functionality is currently in [technical preview](../details/glossary.md#technical-preview) and is subject to change.
+  DBaaS feature is deprecated. We encourage you to use [Percona Everest](https://www.percona.com/blog/announcing-the-alpha-release-of-percona-everest-an-open-source-private-dbaas/) instead. Check our [Migration guide](https://github.com/percona/everest-doc). 
 
 The DBaaS dashboard is where you add, remove, and operate on Kubernetes and database clusters.
 
