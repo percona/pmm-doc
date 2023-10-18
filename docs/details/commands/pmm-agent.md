@@ -64,6 +64,7 @@ Most options can be set via environment variables (shown in parentheses).
 | `--trace`                              | `PMM_AGENT_TRACE`                   | Enable trace output (implies `--debug`).
 | `-h`, `--help`                         |                                     | Show help (synonym for `pmm-agent help`).
 | `--version`                            |                                     | Show application version, PMM version, time-stamp, git commit hash and branch.
+| `--expose-exporter-address`            |                                     | When this flag is enabled, the node exporter for that agent will use the `0.0.0.0` address, otherwise it will use the address `127.0.0.1`.
 
 ## USAGE AND EXAMPLES OF `paths-base` FLAG
 
