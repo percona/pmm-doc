@@ -2,7 +2,7 @@
 
 !!! caution alert alert-primary "Do not use for mission critical workloads"
     
-    - DBaaS feature is deprecated. We encourage you to use [Percona Everest](https://www.percona.com/blog/announcing-the-alpha-release-of-percona-everest-an-open-source-private-dbaas/) instead. Check our [Migration guide](https://github.com/percona/everest-doc). 
+  DBaaS feature is deprecated. We encourage you to use [Percona Everest](http://per.co.na/pmm-to-everest) instead. Check our [Migration guide](http://per.co.na/pmm-to-everest-guide).
 
 
 There are two things that might go wrong during the provisioning:
