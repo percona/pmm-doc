@@ -510,3 +510,123 @@ The PMM server orchestrates the collection, storage, and visualization of metric
 
     !!! note alert alert-primary "Note"
         Make sure you have all environment variables from Step 1 set in each instance where you run these commands.
+
+Replace `/path/to/haproxy.cfg` with the path to the haproxy.cfg file you created in step 4, and `/path/to/certs` with the path to the directory containing the SSL certificate and private key. Note: If you're running services on separate instances, you can remove the `--network` flag.
+
+
+### **Step 7: Running HAProxy**
+
+HAProxy is a reliable solution for providing high availability to your PMM setup. It directs the incoming traffic to the current leader server in your high-availability (HA) setup. The leader server is identified by using the `/v1/leaderHealthCheck` endpoint.
+
+1. Pull the HAProxy Docker image.
+    
+    ```bash
+    docker pull haproxy:2.4.2-alpine
+    ```
+    
+2. Create a directory to store the SSL certificate.
+    
+    ```bash
+    mkdir -p /path/to/certs
+    ```
+    
+    Replace `/path/to/certs` with the path where you want to store your SSL certificates.
+    
+3. Navigate into this directory and generate a new private key.
+    
+    ```bash
+    openssl genrsa -out pmm.key 2048
+    ```
+    
+    This command generates a 2048-bit RSA private key and saves it to a file named **`pmm.key`**.
+    
+4. Using the private key, generate a self-signed certificate.
+    
+    ```bash
+    openssl req -new -x509 -key pmm.key -out pmm.crt -days 365
+    ```
+    
+    You will be asked to enter details such as your country, state, organization name, etc. The `-days 365` option sets the certificate to be valid for the next 365 days.
+    
+5. Copy your SSL certificate and private key to the directory you created in the previous step. Ensure that the certificate file is named **`pmm.crt`** and the private key file is named **`pmm.key`**. Concatenate these two files to create a PEM file.
+    
+    ```bash
+    cat pmm.crt pmm.key > pmm.pem
+    ```
+    
+6. Create a directory to store HA Proxy configuration.
+    
+    ```bash
+    mkdir -p /path/to/haproxy-config
+    ```
+    
+    Replace `/path/to/haproxy-config` with the path where you want to store your HAProxy configuration.
+    
+7. Create an HAProxy configuration file named **`haproxy.cfg.template`** in that directory. This configuration tells HAProxy to use the `/v1/leaderHealthCheck` endpoint of each PMM server to identify the leader:
+    
+    ```
+    global
+        log stdout    local0 debug
+        log stdout    local1 info
+        log stdout    local2 info
+        daemon
+    
+    defaults
+        log     global
+        mode    http
+        option  httplog
+        option  dontlognull
+        timeout connect 5000
+        timeout client  50000
+        timeout server  50000
+    
+    frontend http_front
+        bind *:80
+        default_backend http_back
+    
+    frontend https_front
+        bind *:443 ssl crt /etc/haproxy/certs/pmm.pem
+        default_backend https_back
+    
+    backend http_back
+        option httpchk
+        http-check send meth POST uri /v1/leaderHealthCheck ver HTTP/1.1 hdr Host www
+        http-check expect status 200
+        server pmm-server-active-http PMM_ACTIVE_IP:80 check
+        server pmm-server-passive-http PMM_PASSIVE_IP:80 check backup
+        server pmm-server-passive-2-http PMM_PASSIVE2_IP:80 check backup
+    
+    backend https_back
+        option httpchk
+        http-check send meth POST uri /v1/leaderHealthCheck ver HTTP/1.1 hdr Host www
+        http-check expect status 200
+        server pmm-server-active-https PMM_ACTIVE_IP:443 check ssl verify none
+        server pmm-server-passive-https PMM_PASSIVE_IP:443 check ssl verify none
+        server pmm-server-passive-2-https PMM_PASSIVE2_IP:443 check ssl verify none
+    ```
+    
+8. Then, before starting the HAProxy container, use `sed` to replace the placeholders in `haproxy.cfg.template` with the environment variables, and write the output to `haproxy.cfg`:
+    
+    ```bash
+    sed -e "s/PMM_ACTIVE_IP/${PMM_ACTIVE_IP}/g" \
+        -e "s/PMM_PASSIVE_IP/${PMM_PASSIVE_IP}/g" \
+        -e "s/PMM_PASSIVE2_IP/${PMM_PASSIVE2_IP}/g" \
+        /path/to/haproxy.cfg.template > /path/to/haproxy.cfg    
+    ```
+    
+9. Run the HAProxy container:
+    
+    ```bash
+    docker run -d \
+      --name haproxy \
+      --network pmm-network \
+      -p 80:80 \
+      -p 443:443 \
+      -v /path/to/haproxy-config:/usr/local/etc/haproxy \
+      -v /path/to/certs:/etc/haproxy/certs \
+      haproxy:2.4.2-alpine
+    ```
+    
+    Replace `/path/to/haproxy.cfg` with the path to the haproxy.cfg file you created in step 4, and `/path/to/certs` with the path to the directory containing the SSL certificate and private key. Note: If you're running services on separate instances, you can remove the `--network` flag.
+    
+    Now, HAProxy is set up and will direct incoming traffic to the leader PMM managed server. This ensures a highly reliable service by redirecting requests to the remaining servers if the leader server becomes unresponsive.
