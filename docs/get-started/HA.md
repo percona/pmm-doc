@@ -129,3 +129,44 @@ To set up ClickHouse:
         In the first case, the `--network` and `--ip` flags assign a specific IP address to the container within the Docker network created in the previous step. This IP address is referenced in subsequent steps as the ClickHouse service address. These flags are not necessary in the second case, where the services are running on separate instances since ClickHouse will bind to the default network interface.
 
 
+### Step 4: Set up VictoriaMetrics
+
+VictoriaMetrics provides a long-term storage solution for your time-series data. In PMM, it is used to store Prometheus metrics.
+
+To set up VictoriaMetrics:
+
+1. Pull the VictoriaMetrics Docker image.
+
+    ```sh
+    docker pull victoriametrics/victoria-metrics:v1.93.4
+    ```
+
+2. Create a Docker volume for VictoriaMetrics data.
+
+    ```sh
+    docker volume create vm_data
+    ```
+
+3. Run the VictoriaMetrics container.
+
+    If you're running all services on the same instance, use the following command:
+
+    ```sh
+    docker run -d \
+   --name vm \
+   --network pmm-network \
+   --ip ${VM_HOST_IP} \
+   -p 8428:8428 \
+   -p 8089:8089 \
+   -p 8089:8089/udp \
+   -p 2003:2003 \
+   -p 2003:2003/udp \
+   -p 4242:4242 \
+	-v vm_data:/storage \
+   victoriametrics/victoria-metrics:v1.93.4 \
+   --storageDataPath=/storage \
+   --graphiteListenAddr=:2003 \
+   --opentsdbListenAddr=:4242 \
+   --httpListenAddr=:8428 \
+   --influxListenAddr=:8089
+   ```
