@@ -102,7 +102,7 @@ To set up ClickHouse:
 
 3. Run the ClickHouse container.
 
-If you are running all services on the same instance, use the following command:
+    If you are running all services on the same instance, use the following command:
 
     ```sh
     docker run -d \
@@ -113,15 +113,15 @@ If you are running all services on the same instance, use the following command:
 	-v ch_data:/var/lib/clickhouse \
   clickhouse/clickhouse-server:23.8.2.7-alpine
   ```
-If you're running the service on a separate instance, use the following command:
+    If you're running the service on a separate instance, use the following command:
 
     ```sh
     docker run -d \
-  --name ch \
-  -p 9000:9000 \
+    --name ch \
+    -p 9000:9000 \
 	-v ch_data:/var/lib/clickhouse \
-  clickhouse/clickhouse-server:23.8.2.7-alpine
-  ```
+    clickhouse/clickhouse-server:23.8.2.7-alpine
+   ```
 
 !!! note alert alert-primary "Note"
     In the first case, the `--network` and `--ip` flags assign a specific IP address to the container within the Docker network created in the previous step. This IP address is referenced in subsequent steps as the ClickHouse service address. These flags are not necessary in the second case, where the services are running on separate instances since ClickHouse will bind to the default network interface.
