@@ -280,3 +280,233 @@ To set up PostgreSQL:
     
     !!! note alert alert-primary "Note"
         In the first case, the **`--network`** and **`--ip`** flags are used to assign a specific IP address to the container within the Docker network created in Step 2. This IP address is referenced in subsequent steps as the address of the PostgreSQL service. In the second case, where the services are running on separate instances, these flags are not necessary as PostgreSQL will bind to the default network interface.
+
+### Step 6: Running PMM Services
+
+The PMM server orchestrates the collection, storage, and visualization of metrics. In our high-availability setup, we'll have one active PMM server and two passive PMM servers.
+
+1. Pull the PMM Server Docker image:
+    
+    ```bash
+    docker pull ${PMM_DOCKER_IMAGE}
+    ```
+    
+2. Create a Docker volume for PMM-Server data:
+    
+    ```bash
+    docker volume create pmm-server-active_data
+    docker volume create pmm-server-passive_data
+    docker volume create pmm-server-passive-2_data
+    ```
+    
+3. Run the active PMM managed server. This server will serve as the primary monitoring server.
+    
+    If you're running all services on the same instance, use the following command:
+    
+    ```bash
+    docker run -d \
+      --name ${PMM_ACTIVE_NODE_ID} \
+      --hostname ${PMM_ACTIVE_NODE_ID} \
+      --network pmm-network \
+      --ip ${PMM_ACTIVE_IP} \
+      -e PERCONA_TEST_PMM_DISABLE_BUILTIN_CLICKHOUSE=1 \
+      -e PERCONA_TEST_PMM_DISABLE_BUILTIN_POSTGRES=1 \
+      -e PERCONA_TEST_PMM_CLICKHOUSE_ADDR=${CH_HOST_IP}:9000 \
+      -e PERCONA_TEST_PMM_CLICKHOUSE_DATABASE=pmm \
+      -e PERCONA_TEST_PMM_CLICKHOUSE_BLOCK_SIZE=10000 \
+      -e PERCONA_TEST_PMM_CLICKHOUSE_POOL_SIZE=2 \
+      -e PERCONA_TEST_POSTGRES_ADDR=${PG_HOST_IP}:5432 \
+      -e PERCONA_TEST_POSTGRES_USERNAME=${PG_USERNAME} \
+      -e PERCONA_TEST_POSTGRES_DBPASSWORD=${PG_PASSWORD} \
+      -e GF_DATABASE_URL=postgres://${GF_USERNAME}:${GF_PASSWORD}@${PG_HOST_IP}:5432/grafana \
+      -e PMM_VM_URL=http://${VM_HOST_IP}:8428 \
+      -e PMM_TEST_HA_ENABLE=1 \
+      -e PMM_TEST_HA_BOOTSTRAP=1 \
+      -e PMM_TEST_HA_NODE_ID=${PMM_ACTIVE_NODE_ID} \
+      -e PMM_TEST_HA_ADVERTISE_ADDRESS=${PMM_ACTIVE_IP} \
+      -e PMM_TEST_HA_GOSSIP_PORT=9096 \
+      -e PMM_TEST_HA_RAFT_PORT=9097 \
+      -e PMM_TEST_HA_GRAFANA_GOSSIP_PORT=9094 \
+      -e PMM_TEST_HA_PEERS=${PMM_ACTIVE_IP},${PMM_PASSIVE_IP},${PMM_PASSIVE2_IP} \
+      -v pmm-server-active_data:/srv \
+      ${PMM_DOCKER_IMAGE}
+    ```
+    
+    If you're running the service on a separate instance, use the following command:
+    
+    ```bash
+    docker run -d \
+      --name ${PMM_ACTIVE_NODE_ID} \
+      -p 80:80 \
+      -p 443:443 \
+      -p 9094:9094 \
+      -p 9096:9096 \
+      -p 9094:9094/udp \
+      -p 9096:9096/udp \
+      -p 9097:9097 \
+      -e PERCONA_TEST_PMM_DISABLE_BUILTIN_CLICKHOUSE=1 \
+      -e PERCONA_TEST_PMM_DISABLE_BUILTIN_POSTGRES=1 \
+      -e PERCONA_TEST_PMM_CLICKHOUSE_ADDR=${CH_HOST_IP}:9000 \
+      -e PERCONA_TEST_PMM_CLICKHOUSE_DATABASE=pmm \
+      -e PERCONA_TEST_PMM_CLICKHOUSE_BLOCK_SIZE=10000 \
+      -e PERCONA_TEST_PMM_CLICKHOUSE_POOL_SIZE=2 \
+      -e PERCONA_TEST_POSTGRES_ADDR=${PG_HOST_IP}:5432 \
+      -e PERCONA_TEST_POSTGRES_USERNAME=${PG_USERNAME} \
+      -e PERCONA_TEST_POSTGRES_DBPASSWORD=${PG_PASSWORD} \
+      -e GF_DATABASE_URL=postgres://${GF_USERNAME}:${GF_PASSWORD}@${PG_HOST_IP}:5432/grafana \
+      -e PMM_VM_URL=http://${VM_HOST_IP}:8428 \
+      -e PMM_TEST_HA_ENABLE=1 \
+      -e PMM_TEST_HA_BOOTSTRAP=1 \
+      -e PMM_TEST_HA_NODE_ID=${PMM_ACTIVE_NODE_ID} \
+      -e PMM_TEST_HA_ADVERTISE_ADDRESS=${PMM_ACTIVE_IP} \
+      -e PMM_TEST_HA_GOSSIP_PORT=9096 \
+      -e PMM_TEST_HA_RAFT_PORT=9097 \
+      -e PMM_TEST_HA_GRAFANA_GOSSIP_PORT=9094 \
+      -e PMM_TEST_HA_PEERS=${PMM_ACTIVE_IP},${PMM_PASSIVE_IP},${PMM_PASSIVE2_IP} \
+      -v pmm-server-active_data:/srv \
+      ${PMM_DOCKER_IMAGE}
+    ```
+    
+4. Run the first passive PMM managed server. This server will act as a standby server, ready to take over if the active server fails.
+    
+    If you're running all services on the same instance, use the following command:
+    
+    ```bash
+    docker run -d \
+      --name ${PMM_PASSIVE_NODE_ID} \
+      --hostname ${PMM_PASSIVE_NODE_ID} \
+      --network pmm-network \
+      --ip ${PMM_PASSIVE_IP} \
+      -e PERCONA_TEST_PMM_DISABLE_BUILTIN_CLICKHOUSE=1 \
+      -e PERCONA_TEST_PMM_DISABLE_BUILTIN_POSTGRES=1 \
+      -e PERCONA_TEST_PMM_CLICKHOUSE_ADDR=${CH_HOST_IP}:9000 \
+      -e PERCONA_TEST_PMM_CLICKHOUSE_DATABASE=pmm \
+      -e PERCONA_TEST_PMM_CLICKHOUSE_BLOCK_SIZE=10000 \
+      -e PERCONA_TEST_PMM_CLICKHOUSE_POOL_SIZE=2 \
+      -e PERCONA_TEST_POSTGRES_ADDR=${PG_HOST_IP}:5432 \
+      -e PERCONA_TEST_POSTGRES_USERNAME=${PG_USERNAME} \
+      -e PERCONA_TEST_POSTGRES_DBPASSWORD=${PG_PASSWORD} \
+      -e GF_DATABASE_URL=postgres://${GF_USERNAME}:${GF_PASSWORD}@${PG_HOST_IP}:5432/grafana \
+      -e PMM_VM_URL=http://${VM_HOST_IP}:8428 \
+      -e PMM_TEST_HA_ENABLE=1 \
+      -e PMM_TEST_HA_BOOTSTRAP=0 \
+      -e PMM_TEST_HA_NODE_ID=${PMM_PASSIVE_NODE_ID} \
+      -e PMM_TEST_HA_ADVERTISE_ADDRESS=${PMM_PASSIVE_IP} \
+      -e PMM_TEST_HA_GOSSIP_PORT=9096 \
+      -e PMM_TEST_HA_RAFT_PORT=9097 \
+      -e PMM_TEST_HA_GRAFANA_GOSSIP_PORT=9094 \
+      -e PMM_TEST_HA_PEERS=${PMM_ACTIVE_IP},${PMM_PASSIVE_IP},${PMM_PASSIVE2_IP} \
+      -v pmm-server-passive_data:/srv \
+      ${PMM_DOCKER_IMAGE}
+    ```
+    
+    If you're running the service on a separate instance, use the following command:
+    
+    ```bash
+    docker run -d \
+      --name ${PMM_PASSIVE_NODE_ID} \
+      -p 80:80 \
+      -p 443:443 \
+      -p 9094:9094 \
+      -p 9096:9096 \
+      -p 9094:9094/udp \
+      -p 9096:9096/udp \
+      -p 9097:9097 \
+      -e PERCONA_TEST_PMM_DISABLE_BUILTIN_CLICKHOUSE=1 \
+      -e PERCONA_TEST_PMM_DISABLE_BUILTIN_POSTGRES=1 \
+      -e PERCONA_TEST_PMM_CLICKHOUSE_ADDR=${CH_HOST_IP}:9000 \
+      -e PERCONA_TEST_PMM_CLICKHOUSE_DATABASE=pmm \
+      -e PERCONA_TEST_PMM_CLICKHOUSE_BLOCK_SIZE=10000 \
+      -e PERCONA_TEST_PMM_CLICKHOUSE_POOL_SIZE=2 \
+      -e PERCONA_TEST_POSTGRES_ADDR=${PG_HOST_IP}:5432 \
+      -e PERCONA_TEST_POSTGRES_USERNAME=${PG_USERNAME} \
+      -e PERCONA_TEST_POSTGRES_DBPASSWORD=${PG_PASSWORD} \
+      -e GF_DATABASE_URL=postgres://${GF_USERNAME}:${GF_PASSWORD}@${PG_HOST_IP}:5432/grafana \
+      -e PMM_VM_URL=http://${VM_HOST_IP}:8428 \
+      -e PMM_TEST_HA_ENABLE=1 \
+      -e PMM_TEST_HA_BOOTSTRAP=0 \
+      -e PMM_TEST_HA_NODE_ID=${PMM_PASSIVE_NODE_ID} \
+      -e PMM_TEST_HA_ADVERTISE_ADDRESS=${PMM_PASSIVE_IP} \
+      -e PMM_TEST_HA_GOSSIP_PORT=9096 \
+      -e PMM_TEST_HA_RAFT_PORT=9097 \
+      -e PMM_TEST_HA_GRAFANA_GOSSIP_PORT=9094 \
+      -e PMM_TEST_HA_PEERS=${PMM_ACTIVE_IP},${PMM_PASSIVE_IP},${PMM_PASSIVE2_IP} \
+      -v pmm-server-passive_data:/srv \
+      ${PMM_DOCKER_IMAGE}
+    ```
+    
+5. Run the second passive PMM managed server. Like the first passive server, this server will also act as a standby server.
+    
+    If you're running all services on the same instance, use the same command as for the first passive server, but change the container name, hostname, and **`--ip`** flag to the appropriate values for your second passive server.
+    
+    ```bash
+    docker run -d \
+      --name ${PMM_PASSIVE2_NODE_ID} \
+      --hostname ${PMM_PASSIVE2_NODE_ID} \
+      --network pmm-network \
+      --ip ${PMM_PASSIVE2_IP} \
+      -e PERCONA_TEST_PMM_DISABLE_BUILTIN_CLICKHOUSE=1 \
+      -e PERCONA_TEST_PMM_DISABLE_BUILTIN_POSTGRES=1 \
+      -e PERCONA_TEST_PMM_CLICKHOUSE_ADDR=${CH_HOST_IP}:9000 \
+      -e PERCONA_TEST_PMM_CLICKHOUSE_DATABASE=pmm \
+      -e PERCONA_TEST_PMM_CLICKHOUSE_BLOCK_SIZE=10000 \
+      -e PERCONA_TEST_PMM_CLICKHOUSE_POOL_SIZE=2 \
+      -e PERCONA_TEST_POSTGRES_ADDR=${PG_HOST_IP}:5432 \
+      -e PERCONA_TEST_POSTGRES_USERNAME=${PG_USERNAME} \
+      -e PERCONA_TEST_POSTGRES_DBPASSWORD=${PG_PASSWORD} \
+      -e GF_DATABASE_URL=postgres://${GF_USERNAME}:${GF_PASSWORD}@${PG_HOST_IP}:5432/grafana \
+      -e PMM_VM_URL=http://${VM_HOST_IP}:8428 \
+      -e PMM_TEST_HA_ENABLE=1 \
+      -e PMM_TEST_HA_BOOTSTRAP=0 \
+      -e PMM_TEST_HA_NODE_ID=${PMM_PASSIVE2_NODE_ID} \
+      -e PMM_TEST_HA_ADVERTISE_ADDRESS=${PMM_PASSIVE2_IP} \
+      -e PMM_TEST_HA_GOSSIP_PORT=9096 \
+      -e PMM_TEST_HA_RAFT_PORT=9097 \
+      -e PMM_TEST_HA_GRAFANA_GOSSIP_PORT=9094 \
+      -e PMM_TEST_HA_PEERS=${PMM_ACTIVE_IP},${PMM_PASSIVE_IP},${PMM_PASSIVE2_IP} \
+      -v pmm-server-passive-2_data:/srv \
+      ${PMM_DOCKER_IMAGE}
+    ```
+    
+    If you're running the service on a separate instance, use the following command:
+    
+    ```bash
+    docker run -d \
+      --name ${PMM_PASSIVE2_NODE_ID} \
+      -p 80:80 \
+      -p 443:443 \
+      -p 9094:9094 \
+      -p 9096:9096 \
+      -p 9094:9094/udp \
+      -p 9096:9096/udp \
+      -p 9097:9097 \
+      -e PERCONA_TEST_PMM_DISABLE_BUILTIN_CLICKHOUSE=1 \
+      -e PERCONA_TEST_PMM_DISABLE_BUILTIN_POSTGRES=1 \
+      -e PERCONA_TEST_PMM_CLICKHOUSE_ADDR=${CH_HOST_IP}:9000 \
+      -e PERCONA_TEST_PMM_CLICKHOUSE_DATABASE=pmm \
+      -e PERCONA_TEST_PMM_CLICKHOUSE_BLOCK_SIZE=10000 \
+      -e PERCONA_TEST_PMM_CLICKHOUSE_POOL_SIZE=2 \
+      -e PERCONA_TEST_POSTGRES_ADDR=${PG_HOST_IP}:5432 \
+      -e PERCONA_TEST_POSTGRES_USERNAME=${PG_USERNAME} \
+      -e PERCONA_TEST_POSTGRES_DBPASSWORD=${PG_PASSWORD} \
+      -e GF_DATABASE_URL=postgres://${GF_USERNAME}:${GF_PASSWORD}@${PG_HOST_IP}:5432/grafana \
+      -e PMM_VM_URL=http://${VM_HOST_IP}:8428 \
+      -e PMM_TEST_HA_ENABLE=1 \
+      -e PMM_TEST_HA_BOOTSTRAP=0 \
+      -e PMM_TEST_HA_NODE_ID=${PMM_PASSIVE2_NODE_ID} \
+      -e PMM_TEST_HA_ADVERTISE_ADDRESS=${PMM_PASSIVE2_IP} \
+      -e PMM_TEST_HA_GOSSIP_PORT=9096 \
+      -e PMM_TEST_HA_RAFT_PORT=9097 \
+      -e PMM_TEST_HA_GRAFANA_GOSSIP_PORT=9094 \
+      -e PMM_TEST_HA_PEERS=${PMM_ACTIVE_IP},${PMM_PASSIVE_IP},${PMM_PASSIVE2_IP} \
+      -v /srv/pmm-data:/srv \
+      ${PMM_DOCKER_IMAGE}
+    ```
+    
+    Remember, if you're running the service on a the same instance, you should remove the **`-p`** flags.
+    
+    Remember, if you're running the service on a separate instance, you can remove the **`--network`** and **`--ip`** flags.
+    
+
+    !!! note alert alert-primary "Note"
+        Make sure you have all environment variables from Step 1 set in each instance where you run these commands.
