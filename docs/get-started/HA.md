@@ -94,6 +94,7 @@ To set up ClickHouse:
     ```sh
     docker pull clickhouse/clickhouse-server:23.8.2.7-alpine
     ```
+
 2. Create a Docker volume for ClickHouse data.
 
     ```sh
@@ -106,13 +107,14 @@ To set up ClickHouse:
 
     ```sh
     docker run -d \
-  --name ch \
-  --network pmm-network \
-  --ip ${CH_HOST_IP} \
-  -p 9000:9000 \
+    --name ch \
+    --network pmm-network \
+    --ip ${CH_HOST_IP} \
+    -p 9000:9000 \
 	-v ch_data:/var/lib/clickhouse \
-  clickhouse/clickhouse-server:23.8.2.7-alpine
-  ```
+    clickhouse/clickhouse-server:23.8.2.7-alpine
+   ```
+    
     If you're running the service on a separate instance, use the following command:
 
     ```sh
