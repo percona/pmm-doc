@@ -189,3 +189,6 @@ To set up VictoriaMetrics:
     --httpListenAddr=:8428 \
     --influxListenAddr=:8089
     ```
+
+    !!! note alert alert-primary "Note"
+        In the first case, the `--network` and `--ip` flags are used to assign a specific IP address to the container within the Docker network created in Step 2. This IP address is referenced in subsequent steps as the address of the VictoriaMetrics service. In the second case, where the services are running on separate instances, these flags are not necessary as VictoriaMetrics will bind to the default network interface.
