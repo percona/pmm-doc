@@ -82,3 +82,48 @@ Run the following command to create a Docker network:
 ```sh
 docker network create pmm-network --subnet=17.10.1.0/16
 ```
+
+### Step 3: Set up ClickHouse
+
+ClickHouse is an open-source column-oriented database management system. In PMM, ClickHouse stores Query Analytics (QAN) metrics, which provide detailed information about your queries.
+
+To set up ClickHouse:
+
+1. Pull the ClickHouse Docker image.
+
+    ```sh
+    docker pull clickhouse/clickhouse-server:23.8.2.7-alpine
+    ```
+2. Create a Docker volume for ClickHouse data.
+
+    ```sh
+    docker volume create ch_data
+    ```
+
+3. Run the ClickHouse container.
+
+If you are running all services on the same instance, use the following command:
+
+    ```sh
+    docker run -d \
+  --name ch \
+  --network pmm-network \
+  --ip ${CH_HOST_IP} \
+  -p 9000:9000 \
+	-v ch_data:/var/lib/clickhouse \
+  clickhouse/clickhouse-server:23.8.2.7-alpine
+  ```
+If you're running the service on a separate instance, use the following command:
+
+    ```sh
+    docker run -d \
+  --name ch \
+  -p 9000:9000 \
+	-v ch_data:/var/lib/clickhouse \
+  clickhouse/clickhouse-server:23.8.2.7-alpine
+  ```
+
+!!! note alert alert-primary "Note"
+    In the first case, the `--network` and `--ip` flags assign a specific IP address to the container within the Docker network created in the previous step. This IP address is referenced in subsequent steps as the ClickHouse service address. These flags are not necessary in the second case, where the services are running on separate instances since ClickHouse will bind to the default network interface.
+
+
