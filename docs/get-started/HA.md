@@ -192,3 +192,90 @@ To set up VictoriaMetrics:
 
     !!! note alert alert-primary "Note"
         In the first case, the `--network` and `--ip` flags are used to assign a specific IP address to the container within the Docker network created in Step 2. This IP address is referenced in subsequent steps as the address of the VictoriaMetrics service. In the second case, where the services are running on separate instances, these flags are not necessary as VictoriaMetrics will bind to the default network interface.
+
+### Step 5: Set up PostgreSQL
+
+PostgreSQL is a powerful, open-source object-relational database system. In PMM, it's used to store data related to inventory, settings, and other features.
+
+To set up PostgreSQL:
+
+1. Pull the Postgres Docker image.
+
+    ```sh
+    docker pull postgres:14
+    ```
+    
+2. Create a Docker volume for Postgres data:
+    
+    ```bash
+    docker volume create pg_data
+    ```
+    
+3. Create a directory to store init SQL queries:
+    
+    ```bash
+    mkdir -p /path/to/queries
+    ```
+    
+    Replace `/path/to/queries` with the path where you want to store your init SQL queries.
+    
+4. Create an `init.sql.template` file in newly created directory with the following content:
+    
+    ```sql
+    CREATE DATABASE "pmm-managed";
+    CREATE USER <YOUR_PG_USERNAME> WITH ENCRYPTED PASSWORD '<YOUR_PG_PASSWORD>';
+    GRANT ALL PRIVILEGES ON DATABASE "pmm-managed" TO <YOUR_PG_USERNAME>;
+    CREATE DATABASE grafana;
+    CREATE USER <YOUR_GF_USERNAME> WITH ENCRYPTED PASSWORD '<YOUR_GF_PASSWORD>';
+    GRANT ALL PRIVILEGES ON DATABASE grafana TO <YOUR_GF_USERNAME>;
+    
+    \c pmm-managed
+    
+    CREATE EXTENSION IF NOT EXISTS pg_stat_statements;
+    ```
+    
+    Replace `<YOUR_PG_USERNAME>`, `<YOUR_PG_PASSWORD>`, `<YOUR_GF_USERNAME>`, and `<YOUR_GF_PASSWORD>` with your specific values.
+    
+5. Use **`sed`** to replace the placeholders with the environment variables and write the output to **`init.sql`**.
+    
+    ```bash
+    sed -e 's/<YOUR_PG_USERNAME>/'"$PG_USERNAME"'/g' \
+        -e 's/<YOUR_PG_PASSWORD>/'"$PG_PASSWORD"'/g' \
+        -e 's/<YOUR_GF_USERNAME>/'"$GF_USERNAME"'/g' \
+        -e 's/<YOUR_GF_PASSWORD>/'"$GF_PASSWORD"'/g' \
+        init.sql.template > init.sql
+    ```
+    
+6. Run the PostgreSQL container.
+
+    If you're running all services on the same instance, use the following command:
+    
+    ```bash
+    docker run -d \
+      --name pg \
+      --network pmm-network \
+      --ip ${PG_HOST_IP} \
+      -p 5432:5432 \
+      -e POSTGRES_PASSWORD=${PG_PASSWORD} \
+      -v /path/to/queries:/docker-entrypoint-initdb.d/ \
+      -v pg_data:/var/lib/postgresql/data \
+      postgres:14
+    ```
+    
+    Replace `/path/to/init.sql` with the path to your `init.sql` file. This command mounts the `init.sql` file to the `docker-entrypoint-initdb.d` directory, which is automatically executed upon container startup.
+    
+    If you're running the service on a separate instance, use the following command:
+    
+    ```bash
+    docker run -d \
+      --name pg \
+      -p 5432:5432 \
+      -e POSTGRES_PASSWORD=${PG_PASSWORD} \
+      -v /path/to/queries:/docker-entrypoint-initdb.d \
+    	-v pg_data:/var/lib/postgresql/data \
+      postgres:14
+    ```
+    
+    Replace **`/path/to/init.sql`** with the path to your **`init.sql`** file. This command mounts the **`init.sql`** file to the **`docker-entrypoint-initdb.d`** directory, which is automatically executed upon container startup.
+    
+    Note: In the first case, the **`--network`** and **`--ip`** flags are used to assign a specific IP address to the container within the Docker network created in Step 2. This IP address is referenced in subsequent steps as the address of the PostgreSQL service. In the second case, where the services are running on separate instances, these flags are not necessary as PostgreSQL will bind to the default network interface.
