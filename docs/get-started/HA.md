@@ -630,3 +630,53 @@ HAProxy is a reliable solution for providing high availability to your PMM setup
     Replace `/path/to/haproxy.cfg` with the path to the haproxy.cfg file you created in step 4, and `/path/to/certs` with the path to the directory containing the SSL certificate and private key. Note: If you're running services on separate instances, you can remove the `--network` flag.
     
     Now, HAProxy is set up and will direct incoming traffic to the leader PMM managed server. This ensures a highly reliable service by redirecting requests to the remaining servers if the leader server becomes unresponsive.
+
+### Step 8: Accessing PMM
+
+Once all the components have been properly set up and configured, you can access the PMM web interface via HAProxy.
+
+1. Access the PMM services by navigating to `https://<HAProxy_IP>` in your web browser. Replace `<HAProxy_IP>` with the IP address or hostname of the machine running the HAProxy container.
+2. You should now see the PMM login screen. Log in using the default credentials, unless you have changed them during setup.
+3. After logging in, you can start monitoring your database infrastructure, analyze metrics, and perform various database management tasks using the PMM web interface.
+
+Now that your PMM environment is set up in high-availability (HA) mode, it's crucial to note that when registering PMM Clients, you must use the HAProxy IP address (or hostname) instead of the PMM Server address. This ensures that the clients can still communicate with the PMM servers even if one becomes unavailable.
+
+You've now successfully set up PMM in HA mode using Docker containers. Your PMM environment is more resilient to failures and can continue providing monitoring services if one of the instances becomes unavailable.
+
+Remember that in the event of a failure, HAProxy will automatically redirect traffic to the remaining active PMM servers. You won't need to manually intervene or change your database's monitoring configuration.
+
+    !!! note alert alert-primary "Note"
+        Ensure that all containers are running and accessible. You can use `docker ps` to check the status of your Docker containers. If any container is not running, you can investigate the issue by viewing the container's logs using the `docker logs <container_name>` command.
+
+Keep this document as a reference for your PMM deployment. Please adjust the IP addresses, container names, usernames, passwords, and other configuration parameters according to your specific environment.
+
+### Cleanup
+
+```bash
+docker stop haproxy
+docker rm haproxy
+
+docker stop pmm-server-passive2
+docker rm pmm-server-passive2
+docker volume rm pmm-server-passive2_data
+
+docker stop pmm-server-passive
+docker rm pmm-server-passive
+docker volume rm pmm-server-passive_data
+
+docker stop pmm-server-active
+docker rm pmm-server-active
+docker volume rm pmm-server-active_data
+
+docker stop pg
+docker rm pg
+docker volume rm pg_data
+
+docker stop vm
+docker rm vm
+docker volume rm vm_data
+
+docker stop ch
+docker rm ch
+docker volume rm ch_data
+```
