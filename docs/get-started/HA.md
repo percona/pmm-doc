@@ -278,4 +278,5 @@ To set up PostgreSQL:
     
     Replace **`/path/to/init.sql`** with the path to your **`init.sql`** file. This command mounts the **`init.sql`** file to the **`docker-entrypoint-initdb.d`** directory, which is automatically executed upon container startup.
     
-    Note: In the first case, the **`--network`** and **`--ip`** flags are used to assign a specific IP address to the container within the Docker network created in Step 2. This IP address is referenced in subsequent steps as the address of the PostgreSQL service. In the second case, where the services are running on separate instances, these flags are not necessary as PostgreSQL will bind to the default network interface.
+    !!! note alert alert-primary "Note"
+        In the first case, the **`--network`** and **`--ip`** flags are used to assign a specific IP address to the container within the Docker network created in Step 2. This IP address is referenced in subsequent steps as the address of the PostgreSQL service. In the second case, where the services are running on separate instances, these flags are not necessary as PostgreSQL will bind to the default network interface.
