@@ -123,7 +123,7 @@ To set up ClickHouse:
     -p 9000:9000 \
 	-v ch_data:/var/lib/clickhouse \
     clickhouse/clickhouse-server:23.8.2.7-alpine
-   ```
+    ```
 
 !!! note alert alert-primary "Note"
     In the first case, the `--network` and `--ip` flags assign a specific IP address to the container within the Docker network created in the previous step. This IP address is referenced in subsequent steps as the ClickHouse service address. These flags are not necessary in the second case, where the services are running on separate instances since ClickHouse will bind to the default network interface.
