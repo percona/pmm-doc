@@ -113,7 +113,7 @@ To set up ClickHouse:
     -p 9000:9000 \
 	-v ch_data:/var/lib/clickhouse \
     clickhouse/clickhouse-server:23.8.2.7-alpine
-   ```
+    ```
     
     If you're running the service on a separate instance, use the following command:
 
