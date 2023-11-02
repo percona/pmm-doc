@@ -153,23 +153,23 @@ To set up VictoriaMetrics:
 
     ```sh
     docker run -d \
-   --name vm \
-   --network pmm-network \
-   --ip ${VM_HOST_IP} \
-   -p 8428:8428 \
-   -p 8089:8089 \
-   -p 8089:8089/udp \
-   -p 2003:2003 \
-   -p 2003:2003/udp \
-   -p 4242:4242 \
+    --name vm \
+    --network pmm-network \
+    --ip ${VM_HOST_IP} \
+    -p 8428:8428 \
+    -p 8089:8089 \
+    -p 8089:8089/udp \
+    -p 2003:2003 \
+    -p 2003:2003/udp \
+    -p 4242:4242 \
 	-v vm_data:/storage \
-   victoriametrics/victoria-metrics:v1.93.4 \
-   --storageDataPath=/storage \
-   --graphiteListenAddr=:2003 \
-   --opentsdbListenAddr=:4242 \
-   --httpListenAddr=:8428 \
-   --influxListenAddr=:8089
-   ```
+    victoriametrics/victoria-metrics:v1.93.4 \
+    --storageDataPath=/storage \
+    --graphiteListenAddr=:2003 \
+    --opentsdbListenAddr=:4242 \
+    --httpListenAddr=:8428 \
+    --influxListenAddr=:8089
+    ```
     If you're running the service on a separate instance, use the following command.
 
     ```sh
