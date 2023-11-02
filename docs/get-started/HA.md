@@ -72,3 +72,13 @@ export PMM_DOCKER_IMAGE=perconalab/pmm-server-fb:PR-3251-a24d4f4
 
 !!! note alert alert-primary "Note"
     Ensure that you have all the environment variables from Step 1 set in each instance where you run these commands.
+
+### Step 2: Create Docker network (Optional)
+
+Set up a Docker network for PMM services if you plan to run all the services on the same instance. As a result of this Docker network, your containers will be able to communicate with each other, which is essential for the High Availability (HA) mode to function properly in PMM. This step may be optional if you run your services on separate instances.
+
+Run the following command to create a Docker network:
+
+```sh
+docker network create pmm-network --subnet=17.10.1.0/16
+```
