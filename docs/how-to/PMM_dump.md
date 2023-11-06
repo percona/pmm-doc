@@ -2,7 +2,7 @@
 
 PMM data dumps are compressed tarball files containing a comprehensive export of your PMM metrics and QAN data collected by PMM Server.
 
-You can download these dataset files locally, or share them with Percona Support via an FTP server. This enables you to share PMM data securely, which is especially useful when you need you troubleshoot PMM issues without without providing access to your PMM instance.
+You can download these dataset files locally, or share them with Percona Support via an SFTP server. This enables you to share PMM data securely, which is especially useful when you need you troubleshoot PMM issues without without providing access to your PMM instance.
 
 ## Dump contents
 
@@ -27,10 +27,10 @@ To create a dump of your dataset:
 
 ## Send a data dump to Percona Support
 
-If you are a Percona Customer, you can securely share PMM data dumps with Percona Support via FTP.
+If you are a Percona Customer, you can securely share PMM data dumps with Percona Support via SFTP.
 
-1. From the main menu on the left, go to <i class="uil uil-question-circle"></i>  **Help > PMM Dump**. 
+1. From the main menu on the left, go to <i class="uil uil-question-circle"></i>  **Help > PMM Dump**.
 2. Select the PMM dump entry which you want to send to Support.
 3. In the **Options** column, expand the table row to check the PMM Service associated with the dataset, click the ellipsis (three vertical dots) and select **Send to Support**.
-4. Fill in the details of the FTP server then click **Send**. 
-5. Update your Support ticket to let Percona know that you've uploaded the dataset on the FTP server.
+4. Fill in the [details of the SFTP server](https://percona.service-now.com/percona?id=kb_article_view&sysparm_article=KB0010247&sys_kb_id=bebd04da87e329504035b8c9cebb35a7&spa=1), then click **Send**.
+5. Update your Support ticket to let Percona know that you've uploaded the dataset on the SFTP server.
