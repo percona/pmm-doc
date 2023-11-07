@@ -80,10 +80,10 @@ For all IP addresses, use the format `17.10.1.x`, and for all usernames and pass
         
 Set up a Docker network for PMM services if you plan to run all the services on the same instance. As a result of this Docker network, your containers will be able to communicate with each other, which is essential for the High Availability (HA) mode to function properly in PMM. This step may be optional if you run your services on separate instances.
 
-Run the following command to create a Docker network:
+  Run the following command to create a Docker network:
 
     ```sh
-    docker network create pmm-network --subnet=17.10.1.0/16
+    docker pull clickhouse/clickhouse-server:23.8.2.7-alpine
     ```
 
 ### Step 3: Set up ClickHouse
@@ -384,7 +384,7 @@ The PMM server orchestrates the collection, storage, and visualization of metric
     
     === "Run services on same instance"
 
-        ```bash
+        ```sh
         docker run -d \
         --name ${PMM_PASSIVE_NODE_ID} \
         --hostname ${PMM_PASSIVE_NODE_ID} \
@@ -415,7 +415,7 @@ The PMM server orchestrates the collection, storage, and visualization of metric
     
     === "Run services on a seperate instance"
     
-        ```bash
+        ```sh
         docker run -d \
         --name ${PMM_PASSIVE_NODE_ID} \
         -p 80:80 \
