@@ -33,9 +33,12 @@ Before you start with the setup, define the necessary environment variables on e
 
 For all IP addresses, use the format `17.10.1.x`, and for all usernames and passwords, use a string format like `example`. Replace each `<Your_Variable_Value>` with the desired values.
 
+??? example
+
+    ```{.text .no-copy}
 
 | **Variable**  &nbsp; &nbsp; &nbsp; &nbsp;                  | **Description**
-| ------------------------------------------------| -------------------------------------------------------------------------------------------------------------------------------
+| ------------------------------------------------| -------------------------------------------------------------------------------------------------------------------------------|
 | `CH_HOST_IP`                                     | The IP address of the instance where the ClickHouse service is running or the desired IP address for the ClickHouse container within the Docker network, depending on your setup.</br></br>Example: `17.10.1.2`
 | `VM_HOST_IP`                                     | The IP address of the instance where the VictoriaMetrics service is running or the desired IP address for the VictoriaMetrics container within the Docker network, depending on your setup.</br></br>Example: `17.10.1.3`
 | `PG_HOST_IP`                                     | The IP address of the instance where the PostgreSQL service is running or the desired IP address for the PostgreSQL container within the Docker network, depending on your setup.</br></br> Example: `17.10.1.4`
@@ -48,8 +51,8 @@ For all IP addresses, use the format `17.10.1.x`, and for all usernames and pass
 | `PMM_PASSIVE_IP`                                   | The IP address of the instance where the first passive PMM server is running or the desired IP address for your first passive PMM server container within the Docker network, depending on your setup. </br></br>Example: `17.10.1.6`
 | `PMM_PASSIVE_NODE_ID`                                  | The unique ID for your first passive PMM server node.</br></br>Example: `pmm-server-passive`
 | `PMM_PASSIVE2_IP`                                         | The IP address of the instance where the second passive PMM server is running or the desired IP address for your second passive PMM server container within the Docker network, depending on your setup.</br></br>Example: `17.10.1.7`
-| `PMM_PASSIVE2_NODE_ID`                                    | The unique ID for your second passive PMM server node.</br></br>Example: `pmm-server-passive2`
-| `PMM_DOCKER_IMAGE`                                      | The specific PMM Server Docker image for this guide.</br></br>Example: `perconalab/pmm-server-fb:PR-3251-a24d4f4`
+| `PMM_PASSIVE2_NODE_ID`                                    | The unique ID for your second passive PMM server node.</br></br>Example: `pmm-server-passive2`|
+| `PMM_DOCKER_IMAGE`                                      | The specific PMM Server Docker image for this guide.</br></br>Example: `perconalab/pmm-server-fb:PR-3251-a24d4f4`|
 
 ??? example "Expected output"
         
@@ -73,13 +76,11 @@ For all IP addresses, use the format `17.10.1.x`, and for all usernames and pass
 !!! note alert alert-primary "Note"
     Ensure that you have all the environment variables from Step 1 set in each instance where you run these commands.
 
-??? example "Step 2: Create Docker network (Optional)"
+### Step 2: Create Docker network (Optional)
         
-    ```{.text .no-copy}
+Set up a Docker network for PMM services if you plan to run all the services on the same instance. As a result of this Docker network, your containers will be able to communicate with each other, which is essential for the High Availability (HA) mode to function properly in PMM. This step may be optional if you run your services on separate instances.
 
-    Set up a Docker network for PMM services if you plan to run all the services on the same instance. As a result of this Docker network, your containers will be able to communicate with each other, which is essential for the High Availability (HA) mode to function properly in PMM. This step may be optional if you run your services on separate instances.
-
-    Run the following command to create a Docker network:
+Run the following command to create a Docker network:
 
     ```sh
     docker network create pmm-network --subnet=17.10.1.0/16
