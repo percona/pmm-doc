@@ -660,7 +660,7 @@ Remember that in the event of a failure, HAProxy will automatically redirect tra
 
 Keep this document as a reference for your PMM deployment. Please adjust the IP addresses, container names, usernames, passwords, and other configuration parameters according to your specific environment.
 
-### Cleanup
+### Cleanup PMM
 
 ```bash
 docker stop haproxy
