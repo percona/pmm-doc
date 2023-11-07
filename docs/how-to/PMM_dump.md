@@ -19,7 +19,7 @@ To create a dump of your dataset:
 
 1. From the main menu on the left, go to <i class="uil uil-question-circle"></i>  **Help > PMM Dump**.
 2. Click **Create dataset** to go to the **Export new dataset** page.
-3. Choose the service for which you want to create the dataset.
+3. Choose the service for which you want to create the dataset or leave it empty to export all data.
 4. Define the time range for the dataset.
 5. Enable **Export QAN** to include Query Analytics (QAN) metrics alongside the core metrics.
 6. Enable **Ignore load** to export the dump bypassing the default resource limit restrictions.
