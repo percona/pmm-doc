@@ -51,23 +51,23 @@ For all IP addresses, use the format `17.10.1.x`, and for all usernames and pass
 | `PMM_PASSIVE2_NODE_ID`                            | The unique ID for your second passive PMM server node.</br></br>Example: `pmm-server-passive2`
 | `PMM_DOCKER_IMAGE`                            | The specific PMM Server Docker image for this guide.</br></br>Example: `perconalab/pmm-server-fb:PR-3251-a24d4f4`
 
-**Example**
-
-```sh
-export CH_HOST_IP=17.10.1.2
-export VM_HOST_IP=17.10.1.3
-export PG_HOST_IP=17.10.1.4
-export PG_USERNAME=pmmuser
-export PG_PASSWORD=pgpassword
-export GF_USERNAME=gfuser
-export GF_PASSWORD=gfpassword
-export PMM_ACTIVE_IP=17.10.1.5
-export PMM_ACTIVE_NODE_ID=pmm-server-active
-export PMM_PASSIVE_IP=17.10.1.6
-export PMM_PASSIVE_NODE_ID=pmm-server-passive
-export PMM_PASSIVE2_IP=17.10.1.7
-export PMM_PASSIVE2_NODE_ID=pmm-server-passive2
-export PMM_DOCKER_IMAGE=perconalab/pmm-server-fb:PR-3251-a24d4f4
+??? example "Expected output"
+        
+    ```{.text .no-copy}
+    export CH_HOST_IP=17.10.1.2
+    export VM_HOST_IP=17.10.1.3
+    export PG_HOST_IP=17.10.1.4
+    export PG_USERNAME=pmmuser
+    export PG_PASSWORD=pgpassword
+    export GF_USERNAME=gfuser
+    export GF_PASSWORD=gfpassword
+    export PMM_ACTIVE_IP=17.10.1.5
+    export PMM_ACTIVE_NODE_ID=pmm-server-active
+    export PMM_PASSIVE_IP=17.10.1.6
+    export PMM_PASSIVE_NODE_ID=pmm-server-passive
+    export PMM_PASSIVE2_IP=17.10.1.7
+    export PMM_PASSIVE2_NODE_ID=pmm-server-passive2
+    export PMM_DOCKER_IMAGE=perconalab/pmm-server-fb:PR-3251-a24d4f4
 ```
 
 !!! note alert alert-primary "Note"
