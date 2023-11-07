@@ -256,7 +256,7 @@ To set up PostgreSQL:
 
     === "Run services on same instance"
 
-        ```bash
+        ```sh
         docker run -d \
         --name pg \
         --network pmm-network \
@@ -272,7 +272,7 @@ To set up PostgreSQL:
     
     === "Run services on a seperate instance"
     
-        ```bash
+        ```sh
         docker run -d \
         --name pg \
         -p 5432:5432 \
@@ -311,7 +311,7 @@ The PMM server orchestrates the collection, storage, and visualization of metric
     
     === "Run services on same instance"
 
-        ```bash
+        ```sh
         docker run -d \
         --name ${PMM_ACTIVE_NODE_ID} \
         --hostname ${PMM_ACTIVE_NODE_ID} \
@@ -342,7 +342,7 @@ The PMM server orchestrates the collection, storage, and visualization of metric
     
     === "Run services on a seperate instance"
     
-        ```bash
+        ```sh
         docker run -d \
         --name ${PMM_ACTIVE_NODE_ID} \
         -p 80:80 \
