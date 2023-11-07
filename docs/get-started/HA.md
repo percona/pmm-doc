@@ -149,46 +149,48 @@ To set up VictoriaMetrics:
 
 3. Run the VictoriaMetrics container.
 
-    If you're running all services on the same instance, use the following command:
+    
+    === "Run services on same instance"
 
-    ```sh
-    docker run -d \
-    --name vm \
-    --network pmm-network \
-    --ip ${VM_HOST_IP} \
-    -p 8428:8428 \
-    -p 8089:8089 \
-    -p 8089:8089/udp \
-    -p 2003:2003 \
-    -p 2003:2003/udp \
-    -p 4242:4242 \
-	-v vm_data:/storage \
-    victoriametrics/victoria-metrics:v1.93.4 \
-    --storageDataPath=/storage \
-    --graphiteListenAddr=:2003 \
-    --opentsdbListenAddr=:4242 \
-    --httpListenAddr=:8428 \
-    --influxListenAddr=:8089
-    ```
-    If you're running the service on a separate instance, use the following command.
+        ```sh
+        docker run -d \
+        --name vm \
+        --network pmm-network \
+        --ip ${VM_HOST_IP} \
+        -p 8428:8428 \
+        -p 8089:8089 \
+        -p 8089:8089/udp \
+        -p 2003:2003 \
+        -p 2003:2003/udp \
+        -p 4242:4242 \
+        -v vm_data:/storage \
+        victoriametrics/victoria-metrics:v1.93.4 \
+        --storageDataPath=/storage \
+        --graphiteListenAddr=:2003 \
+        --opentsdbListenAddr=:4242 \
+        --httpListenAddr=:8428 \
+        --influxListenAddr=:8089
+        ```
+    
+    === "Run services on a seperate instance"
 
-    ```sh
-    docker run -d \
-    --name vm \
-    -p 8428:8428 \
-    -p 8089:8089 \
-    -p 8089:8089/udp \
-    -p 2003:2003 \
-    -p 2003:2003/udp \
-    -p 4242:4242 \
-	-v vm_data:/storage \
-    victoriametrics/victoria-metrics:v1.93.4 \
-    --storageDataPath=/storage \
-    --graphiteListenAddr=:2003 \
-    --opentsdbListenAddr=:4242 \
-    --httpListenAddr=:8428 \
-    --influxListenAddr=:8089
-    ```
+        ```sh
+        docker run -d \
+        --name vm \
+        -p 8428:8428 \
+        -p 8089:8089 \
+        -p 8089:8089/udp \
+        -p 2003:2003 \
+        -p 2003:2003/udp \
+        -p 4242:4242 \
+        -v vm_data:/storage \
+        victoriametrics/victoria-metrics:v1.93.4 \
+        --storageDataPath=/storage \
+        --graphiteListenAddr=:2003 \
+        --opentsdbListenAddr=:4242 \
+        --httpListenAddr=:8428 \
+        --influxListenAddr=:8089
+        ```
 
     !!! note alert alert-primary "Note"
         In the first case, the `--network` and `--ip` flags are used to assign a specific IP address to the container within the Docker network created in Step 2. This IP address is referenced in subsequent steps as the address of the VictoriaMetrics service. In the second case, where the services are running on separate instances, these flags are not necessary as VictoriaMetrics will bind to the default network interface.
