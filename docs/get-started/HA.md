@@ -639,7 +639,10 @@ HAProxy is a reliable solution for providing high availability to your PMM setup
       haproxy:2.4.2-alpine
     ```
     
-    Replace `/path/to/haproxy.cfg` with the path to the haproxy.cfg file you created in step 4, and `/path/to/certs` with the path to the directory containing the SSL certificate and private key. Note: If you're running services on separate instances, you can remove the `--network` flag.
+    Replace `/path/to/haproxy.cfg` with the path to the `haproxy.cfg` file you created in step 4, and `/path/to/certs` with the path to the directory containing the SSL certificate and private key. 
+    
+    !!! note alert alert-primary "Note"
+        If you're running services on separate instances, you can remove the `--network` flag.
     
     Now, HAProxy is set up and will direct incoming traffic to the leader PMM managed server. This ensures a highly reliable service by redirecting requests to the remaining servers if the leader server becomes unresponsive.
 
