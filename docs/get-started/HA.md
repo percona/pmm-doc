@@ -451,7 +451,7 @@ The PMM server orchestrates the collection, storage, and visualization of metric
     
     === "Run services on same instance"
     
-        ```bash
+        ```sh
         docker run -d \
         --name ${PMM_PASSIVE2_NODE_ID} \
         --hostname ${PMM_PASSIVE2_NODE_ID} \
@@ -482,7 +482,7 @@ The PMM server orchestrates the collection, storage, and visualization of metric
     
     === "Run services on a seperate instance"
     
-        ```bash
+        ```sh
         docker run -d \
         --name ${PMM_PASSIVE2_NODE_ID} \
         -p 80:80 \
