@@ -76,17 +76,17 @@ For all IP addresses, use the format `17.10.1.x`, and for all usernames and pass
 !!! note alert alert-primary "Note"
     Ensure that you have all the environment variables from Step 1 set in each instance where you run these commands.
 
-### Step 2: Create Docker network (Optional)
+### **Step 2: Create Docker network (Optional)**
         
-Set up a Docker network for PMM services if you plan to run all the services on the same instance. As a result of this Docker network, your containers will be able to communicate with each other, which is essential for the High Availability (HA) mode to function properly in PMM. This step may be optional if you run your services on separate instances.
+1. Set up a Docker network for PMM services if you plan to run all the services on the same instance. As a result of this Docker network, your containers will be able to communicate with each other, which is essential for the High Availability (HA) mode to function properly in PMM. This step may be optional if you run your services on separate instances.
 
-  Run the following command to create a Docker network:
+2. Run the following command to create a Docker network:
 
     ```sh
-    docker pull clickhouse/clickhouse-server:23.8.2.7-alpine
+    docker network create pmm-network --subnet=17.10.1.0/16
     ```
 
-### Step 3: Set up ClickHouse
+### **Step 3: Set up ClickHouse**
 
 ClickHouse is an open-source column-oriented database management system. In PMM, ClickHouse stores Query Analytics (QAN) metrics, which provide detailed information about your queries.
 
@@ -132,7 +132,7 @@ To set up ClickHouse:
         In the first case, the `--network` and `--ip` flags assign a specific IP address to the container within the Docker network created in the previous step. This IP address is referenced in subsequent steps as the ClickHouse service address. These flags are not necessary in the second case, where the services are running on separate instances since ClickHouse will bind to the default network interface.
 
 
-### Step 4: Set up VictoriaMetrics
+### **Step 4: Set up VictoriaMetrics**
 
 VictoriaMetrics provides a long-term storage solution for your time-series data. In PMM, it is used to store Prometheus metrics.
 
@@ -290,7 +290,7 @@ To set up PostgreSQL:
     !!! note alert alert-primary "Note"
         In the first case, the **`--network`** and **`--ip`** flags are used to assign a specific IP address to the container within the Docker network created in Step 2. This IP address is referenced in subsequent steps as the address of the PostgreSQL service. In the second case, where the services are running on separate instances, these flags are not necessary as PostgreSQL will bind to the default network interface.
 
-### Step 6: Running PMM Services
+### **Step 6: Running PMM Services**
 
 The PMM server orchestrates the collection, storage, and visualization of metrics. In our high-availability setup, we'll have one active PMM server and two passive PMM servers.
 
@@ -647,7 +647,7 @@ HAProxy is a reliable solution for providing high availability to your PMM setup
     
     Now, HAProxy is set up and will direct incoming traffic to the leader PMM managed server. This ensures a highly reliable service by redirecting requests to the remaining servers if the leader server becomes unresponsive.
 
-### Step 8: Accessing PMM
+### **Step 8: Accessing PMM**
 
 Once all the components have been properly set up and configured, you can access the PMM web interface via HAProxy.
 
