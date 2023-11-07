@@ -655,38 +655,5 @@ You've now successfully set up PMM in HA mode using Docker containers. Your PMM 
 
 Remember that in the event of a failure, HAProxy will automatically redirect traffic to the remaining active PMM servers. You won't need to manually intervene or change your database's monitoring configuration.
 
-    !!! note alert alert-primary "Note"
-        Ensure that all containers are running and accessible. You can use `docker ps` to check the status of your Docker containers. If any container is not running, you can investigate the issue by viewing the container's logs using the `docker logs <container_name>` command.
-
-Keep this document as a reference for your PMM deployment. Please adjust the IP addresses, container names, usernames, passwords, and other configuration parameters according to your specific environment.
-
-### Cleanup PMM
-
-```bash
-docker stop haproxy
-docker rm haproxy
-
-docker stop pmm-server-passive2
-docker rm pmm-server-passive2
-docker volume rm pmm-server-passive2_data
-
-docker stop pmm-server-passive
-docker rm pmm-server-passive
-docker volume rm pmm-server-passive_data
-
-docker stop pmm-server-active
-docker rm pmm-server-active
-docker volume rm pmm-server-active_data
-
-docker stop pg
-docker rm pg
-docker volume rm pg_data
-
-docker stop vm
-docker rm vm
-docker volume rm vm_data
-
-docker stop ch
-docker rm ch
-docker volume rm ch_data
-```
+!!! note alert alert-primary "Note"
+    Ensure that all containers are running and accessible. You can use `docker ps` to check the status of your Docker containers. If any container is not running, you can investigate the issue by viewing the container's logs using the `docker logs <container_name>` command.
