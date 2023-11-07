@@ -655,7 +655,7 @@ Now that your PMM environment is set up in high-availability (HA) mode, it's cru
 
 You've now successfully set up PMM in HA mode using Docker containers. Your PMM environment is more resilient to failures and can continue providing monitoring services if one of the instances becomes unavailable.
 
-Remember that in the event of a failure, HAProxy will automatically redirect traffic to the remaining active PMM servers. You won't need to manually intervene or change your database's monitoring configuration.
+In the event of a failure, HAProxy will automatically redirect traffic to the remaining active PMM servers. You won't need to manually intervene or change your database's monitoring configuration.
 
 !!! note alert alert-primary "Note"
     Ensure that all containers are running and accessible. You can use `docker ps` to check the status of your Docker containers. If any container is not running, you can investigate the issue by viewing the container's logs using the `docker logs <container_name>` command.
