@@ -73,7 +73,7 @@ For all IP addresses, use the format `17.10.1.x`, and for all usernames and pass
 !!! note alert alert-primary "Note"
     Ensure that you have all the environment variables from Step 1 set in each instance where you run these commands.
 
-### ??? example "Step 2: Create Docker network (Optional) "
+### ??? example "Step 2: Create Docker network (Optional)"
         
     ```{.text .no-copy}
 
