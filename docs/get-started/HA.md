@@ -73,15 +73,17 @@ For all IP addresses, use the format `17.10.1.x`, and for all usernames and pass
 !!! note alert alert-primary "Note"
     Ensure that you have all the environment variables from Step 1 set in each instance where you run these commands.
 
-### Step 2: Create Docker network (Optional)
+### ??? example "Step 2: Create Docker network (Optional) "
+        
+    ```{.text .no-copy}
 
-Set up a Docker network for PMM services if you plan to run all the services on the same instance. As a result of this Docker network, your containers will be able to communicate with each other, which is essential for the High Availability (HA) mode to function properly in PMM. This step may be optional if you run your services on separate instances.
+    Set up a Docker network for PMM services if you plan to run all the services on the same instance. As a result of this Docker network, your containers will be able to communicate with each other, which is essential for the High Availability (HA) mode to function properly in PMM. This step may be optional if you run your services on separate instances.
 
-Run the following command to create a Docker network:
+    Run the following command to create a Docker network:
 
-```sh
-docker network create pmm-network --subnet=17.10.1.0/16
-```
+    ```sh
+    docker network create pmm-network --subnet=17.10.1.0/16
+    ```
 
 ### Step 3: Set up ClickHouse
 
