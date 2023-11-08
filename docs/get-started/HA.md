@@ -271,17 +271,17 @@ To set up PostgreSQL:
             postgres:14
         ```
         
-     === "Run services on a seperate instance"
+    === "Run services on a seperate instance"
     
-         ```sh
-            docker run -d \
+        ```sh
+           docker run -d \
             --name pg \
             -p 5432:5432 \
             -e POSTGRES_PASSWORD=${PG_PASSWORD} \
             -v /path/to/queries:/docker-entrypoint-initdb.d \
                 -v pg_data:/var/lib/postgresql/data \
             postgres:14
-         ```
+        ```
     
     Replace **`/path/to/init.sql`** with the path to your **`init.sql`** file. This command mounts the **`init.sql`** file to the **`docker-entrypoint-initdb.d`** directory, which is automatically executed upon container startup.
     Replace `/path/to/init.sql` with the path to your `init.sql` file. This command mounts the `init.sql` file to the `docker-entrypoint-initdb.d` directory, which is automatically executed upon container startup.
