@@ -289,8 +289,8 @@ To set up PostgreSQL:
     
     
     !!! note alert alert-primary "Note"
-        - In the first case, the **`--network`** and **`--ip`** flags are used to assign a specific IP address to the container within the Docker network created in Step 2. This IP address is referenced in subsequent steps as the address of the PostgreSQL service.
-        - In the second case, where the services are running on separate instances, these flags are not necessary as PostgreSQL will bind to the default network interface.
+        - If you run the services on the same instance, the `--network` and `--ip` flags are used to assign a specific IP address to the container within the Docker network created in Step 2. This IP address is referenced in subsequent steps as the PostgreSQL service address.        - In the second case, where the services are running on separate instances, these flags are not necessary as PostgreSQL will bind to the default network interface.
+        - The `--network` and `--ip` flags are not required if the services are running on separate instances, as PostgreSQL will bind to the default network interface.
 
 ### **Step 6: Running PMM Services**
 
