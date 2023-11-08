@@ -129,7 +129,8 @@ To set up ClickHouse:
         ```
 
     !!! note alert alert-primary "Note"
-        In the first case, the `--network` and `--ip` flags assign a specific IP address to the container within the Docker network created in the previous step. This IP address is referenced in subsequent steps as the ClickHouse service address. These flags are not necessary in the second case, where the services are running on separate instances since ClickHouse will bind to the default network interface.
+        - If you run the services on the same instance, the `--network` and `--ip` flags assign a specific IP address to the container within the Docker network created in the previous step. This IP address is referenced in subsequent steps as the ClickHouse service address. 
+        - The `--network` and `--ip` flags are not required if the services are running on separate instances since ClickHouse will bind to the default network interface.
 
 
 ### **Step 4: Set up VictoriaMetrics**
@@ -198,7 +199,8 @@ To set up VictoriaMetrics:
         ```
 
     !!! note alert alert-primary "Note"
-        In the first case, the `--network` and `--ip` flags are used to assign a specific IP address to the container within the Docker network created in Step 2. This IP address is referenced in subsequent steps as the address of the VictoriaMetrics service. In the second case, where the services are running on separate instances, these flags are not necessary as VictoriaMetrics will bind to the default network interface.
+        - If you run the services on the same instance,  the `--network` and `--ip` flags are used to assign a specific IP address to the container within the Docker network created in Step 2. This IP address is referenced in subsequent steps as the VictoriaMetrics service address. 
+        - The `--network` and `--ip` flags are not required if the services are running on separate instances, as VictoriaMetrics will bind to the default network interface.
 
 ### **Step 5: Set up PostgreSQL**
 
