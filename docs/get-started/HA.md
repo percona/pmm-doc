@@ -547,13 +547,13 @@ HAProxy provides high availability for your PMM setup by directing traffic to th
     
     Replace `/path/to/certs` with the path where you want to store your SSL certificates.
     
-3. Navigate into this directory and generate a new private key.
+3. Navigate to this directory and generate a new private key.
     
     ```bash
     openssl genrsa -out pmm.key 2048
     ```
     
-    This command generates a 2048-bit RSA private key and saves it to a file named **`pmm.key`**.
+    This command generates a 2048-bit RSA private key and saves it to a file named `pmm.key`.
     
 4. Using the private key, generate a self-signed certificate.
     
@@ -561,9 +561,11 @@ HAProxy provides high availability for your PMM setup by directing traffic to th
     openssl req -new -x509 -key pmm.key -out pmm.crt -days 365
     ```
     
-    You will be asked to enter details such as your country, state, organization name, etc. The `-days 365` option sets the certificate to be valid for the next 365 days.
-    
-5. Copy your SSL certificate and private key to the directory you created in the previous step. Ensure that the certificate file is named **`pmm.crt`** and the private key file is named **`pmm.key`**. Concatenate these two files to create a PEM file.
+    Enter country, state, organization name, etc. when asked. Use `-days 365` option for 365-day certificate validity.    
+
+5. Copy your SSL certificate and private key to the directory you created in the step 4. Ensure that the certificate file is named `pmm.crt` and the private key file is named `pmm.key`. 
+
+    Concatenate these two files to create a PEM file:
     
     ```bash
     cat pmm.crt pmm.key > pmm.pem
