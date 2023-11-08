@@ -38,7 +38,7 @@ For all IP addresses, use the format `17.10.1.x`, and for all usernames and pass
     ```{.text .no-copy}
 
     | **Variable**  &nbsp; &nbsp; &nbsp; &nbsp;                  | **Description**
-    | ------------------------------------------------| -------------------------------------------------------------------------------------------------------------------------------|
+    | ------------------------------------------------| -------------------------------------------------------------------------------------------------------------------------------
     | `CH_HOST_IP`                                     | The IP address of the instance where the ClickHouse service is running or the desired IP address for the ClickHouse container within the Docker network, depending on your setup.</br></br>Example: `17.10.1.2`
     | `VM_HOST_IP`                                     | The IP address of the instance where the VictoriaMetrics service is running or the desired IP address for the VictoriaMetrics container within the Docker network, depending on your setup.</br></br>Example: `17.10.1.3`
     | `PG_HOST_IP`                                     | The IP address of the instance where the PostgreSQL service is running or the desired IP address for the PostgreSQL container within the Docker network, depending on your setup.</br></br> Example: `17.10.1.4`
@@ -51,8 +51,8 @@ For all IP addresses, use the format `17.10.1.x`, and for all usernames and pass
     | `PMM_PASSIVE_IP`                                   | The IP address of the instance where the first passive PMM server is running or the desired IP address for your first passive PMM server container within the Docker network, depending on your setup. </br></br>Example: `17.10.1.6`
     | `PMM_PASSIVE_NODE_ID`                                  | The unique ID for your first passive PMM server node.</br></br>Example: `pmm-server-passive`
     | `PMM_PASSIVE2_IP`                                         | The IP address of the instance where the second passive PMM server is running or the desired IP address for your second passive PMM server container within the Docker network, depending on your setup.</br></br>Example: `17.10.1.7`
-    | `PMM_PASSIVE2_NODE_ID`                                    | The unique ID for your second passive PMM server node.</br></br>Example: `pmm-server-passive2`|
-    | `PMM_DOCKER_IMAGE`                                      | The specific PMM Server Docker image for this guide.</br></br>Example: `perconalab/pmm-server-fb:PR-3251-a24d4f4`|
+    | `PMM_PASSIVE2_NODE_ID`                                    | The unique ID for your second passive PMM server node.</br></br>Example: `pmm-server-passive2`
+    | `PMM_DOCKER_IMAGE`                                      | The specific PMM Server Docker image for this guide.</br></br>Example: `perconalab/pmm-server-fb:PR-3251-a24d4f4`
     ```
 ??? example "Expected output"
         
@@ -579,7 +579,7 @@ HAProxy provides high availability for your PMM setup by directing traffic to th
     
     Replace `/path/to/haproxy-config` with the path where you want to store your HAProxy configuration.
     
-7. Create an HAProxy configuration file named **`haproxy.cfg.template`** in that directory. This configuration tells HAProxy to use the `/v1/leaderHealthCheck` endpoint of each PMM server to identify the leader:
+7. Create an HAProxy configuration file named `haproxy.cfg.template` in that directory. This configuration tells HAProxy to use the `/v1/leaderHealthCheck` endpoint of each PMM server to identify the leader.
     
     ```
     global
@@ -631,7 +631,7 @@ HAProxy provides high availability for your PMM setup by directing traffic to th
         /path/to/haproxy.cfg.template > /path/to/haproxy.cfg    
     ```
     
-9. Run the HAProxy container:
+9. Run the HAProxy container.
     
     ```bash
     docker run -d \
