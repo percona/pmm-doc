@@ -27,7 +27,7 @@ You will need the following before you can begin the deployment:
 
 The steps to set up PMM in HA mode are:
 
-### Step 1: Define environment variables
+### **Step 1: Define environment variables**
 
 Before you start with the setup, define the necessary environment variables on each instance where the services will be running. These variables will be used in subsequent commands. 
 
@@ -200,7 +200,7 @@ To set up VictoriaMetrics:
     !!! note alert alert-primary "Note"
         In the first case, the `--network` and `--ip` flags are used to assign a specific IP address to the container within the Docker network created in Step 2. This IP address is referenced in subsequent steps as the address of the VictoriaMetrics service. In the second case, where the services are running on separate instances, these flags are not necessary as VictoriaMetrics will bind to the default network interface.
 
-### Step 5: Set up PostgreSQL
+### **Step 5: Set up PostgreSQL**
 
 PostgreSQL is a powerful, open-source object-relational database system. In PMM, it's used to store data related to inventory, settings, and other features.
 
