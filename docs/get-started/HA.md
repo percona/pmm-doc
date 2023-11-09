@@ -651,17 +651,16 @@ HAProxy is now configured to redirect traffic to the leader PMM managed server. 
 
 ### **Step 8: Accessing PMM**
 
-Once all the components have been properly set up and configured, you can access the PMM web interface via HAProxy.
+You can access the PMM web interface via HAProxy once all the components are set up and configured:
 
 1. Access the PMM services by navigating to `https://<HAProxy_IP>` in your web browser. Replace `<HAProxy_IP>` with the IP address or hostname of the machine running the HAProxy container.
-2. You should now see the PMM login screen. Log in using the default credentials, unless you have changed them during setup.
-3. After logging in, you can start monitoring your database infrastructure, analyze metrics, and perform various database management tasks using the PMM web interface.
+2. You should now see the PMM login screen. Log in using the default credentials, unless you changed them during setup.
+3. You can use the PMM web interface to monitor your database infrastructure, analyze metrics, and perform various database management tasks.
 
-Now that your PMM environment is set up in high-availability (HA) mode, it's crucial to note that when registering PMM Clients, you must use the HAProxy IP address (or hostname) instead of the PMM Server address. This ensures that the clients can still communicate with the PMM servers even if one becomes unavailable.
+When you register PMM Clients, you must use the HAProxy IP address (or hostname) rather than the PMM Server address once your PMM environment has been set up in high-availability (HA) mode. Even if one PMM server becomes unavailable, clients will still be able to communicate with the servers.
 
-You've now successfully set up PMM in HA mode using Docker containers. Your PMM environment is more resilient to failures and can continue providing monitoring services if one of the instances becomes unavailable.
+You have now successfully set up PMM in HA mode using Docker containers. Your PMM environment is more resilient to failures and can continue providing monitoring services if any of the instances fail.
 
-In the event of a failure, HAProxy will automatically redirect traffic to the remaining active PMM servers. You won't need to manually intervene or change your database's monitoring configuration.
 
 !!! note alert alert-primary "Note"
-    Ensure that all containers are running and accessible. You can use `docker ps` to check the status of your Docker containers. If any container is not running, you can investigate the issue by viewing the container's logs using the `docker logs <container_name>` command.
+    Ensure that all containers are running and accessible. You can use `docker ps` to check the status of your Docker containers. If a container is not running, you can view its logs using the command `docker logs <container_name>` to investigate the issue.
