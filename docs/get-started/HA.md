@@ -34,7 +34,7 @@ Before you start with the setup, define the necessary environment variables on e
 For all IP addresses, use the format `17.10.1.x`, and for all usernames and passwords, use a string format like `example`. Replace each `<Your_Variable_Value>` with the desired values.
 
 
-| **Variable**  &nbsp; &nbsp; &nbsp; &nbsp;       | **Description**
+| **Variable**        | **Description**
 | ------------------------------------------------| -------------------------------------------------------------------------------------------------------------------------------
 | `CH_HOST_IP`                                     | The IP address of the instance where the ClickHouse service is running or the desired IP address for the ClickHouse container within the Docker network, depending on your setup.</br></br>Example: `17.10.1.2`
 | `VM_HOST_IP`                                     | The IP address of the instance where the VictoriaMetrics service is running or the desired IP address for the VictoriaMetrics container within the Docker network, depending on your setup.</br></br>Example: `17.10.1.3`
@@ -49,7 +49,7 @@ For all IP addresses, use the format `17.10.1.x`, and for all usernames and pass
 | `PMM_PASSIVE_NODE_ID`                                  | The unique ID for your first passive PMM server node.</br></br>Example: `pmm-server-passive`
 | `PMM_PASSIVE2_IP`                                         | The IP address of the instance where the second passive PMM server is running or the desired IP address for your second passive PMM server container within the Docker network, depending on your setup.</br></br>Example: `17.10.1.7`
 | `PMM_PASSIVE2_NODE_ID`                                    | The unique ID for your second passive PMM server node.</br></br>Example: `pmm-server-passive2`
-| `PMM_DOCKER_IMAGE`                                      | The specific PMM Server Docker image for this guide.</br></br>Example: `perconalab/pmm-server-fb:PR-3251-a24d4f4`
+| `PMM_DOCKER_IMAGE` &nbsp; &nbsp; &nbsp; &nbsp;                                      | The specific PMM Server Docker image for this guide.</br></br>Example: `perconalab/pmm-server-fb:PR-3251-a24d4f4`
 
 
 ??? example "Expected output"
@@ -561,7 +561,7 @@ HAProxy provides high availability for your PMM setup by directing traffic to th
     
     Enter country, state, organization name, etc. when asked. Use `-days 365` option for 365-day certificate validity.    
 
-5. Copy your SSL certificate and private key to the directory you created in the step 4. Ensure that the certificate file is named `pmm.crt` and the private key file is named `pmm.key`. 
+5. Copy your SSL certificate and private key to the directory you created in step 4. Ensure that the certificate file is named `pmm.crt` and the private key file is named `pmm.key`. 
 
     Concatenate these two files to create a PEM file:
     
