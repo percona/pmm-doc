@@ -620,7 +620,7 @@ HAProxy provides high availability for your PMM setup by directing traffic to th
         server pmm-server-passive-2-https PMM_PASSIVE2_IP:443 check ssl verify none
     ```
     
-8. Then, before starting the HAProxy container, use `sed` to replace the placeholders in `haproxy.cfg.template` with the environment variables, and write the output to `haproxy.cfg`:
+8. Before starting the HAProxy container, use `sed` to replace the placeholders in `haproxy.cfg.template` with the environment variables, and write the output to `haproxy.cfg`.
     
     ```bash
     sed -e "s/PMM_ACTIVE_IP/${PMM_ACTIVE_IP}/g" \
@@ -647,7 +647,7 @@ HAProxy provides high availability for your PMM setup by directing traffic to th
     !!! note alert alert-primary "Note"
         If you're running services on separate instances, you can remove the `--network` flag.
     
-    Now, HAProxy is set up and will direct incoming traffic to the leader PMM managed server. This ensures a highly reliable service by redirecting requests to the remaining servers if the leader server becomes unresponsive.
+HAProxy is now configured to redirect traffic to the leader PMM managed server. This ensures highly reliable service by redirecting requests to the remainder of the servers in the event that the leader server goes down.
 
 ### **Step 8: Accessing PMM**
 
