@@ -198,6 +198,7 @@ To use SMTP with a PMM Docker installation:
     - `GF_SMTP_SKIP_VERIFY`: When true, verifies SSL for the SMTP server.
     - `GF_SMTP_FROM_ADDRESS`: Email address to be used when sending out emails.
     - `GF_SMTP_FROM_NAME`: Name to be used when sending out emails.
+
     *NB: If you are using your Gmail’s SMTP credentials as shown above, you will have to generate an app password and fill it in as the value of your $GF_SMTP_PASSWORD variable.*
 2. Pass in the `.env` file to Docker run using the `--env-file` flag: 
     ```
