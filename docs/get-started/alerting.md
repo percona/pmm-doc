@@ -193,6 +193,7 @@ To use SMTP with a PMM Docker installation:
    ```
 
    Below is a summary of each environment variable above: 
+     
     - `GF_SMTP_ENABLED`: When true, enables Grafana to send emails. 
     - `GF_SMTP_HOST`: Host address of your SMTP server.
     - `GF_SMTP_USER`: Username for SMTP authentication.
