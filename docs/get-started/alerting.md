@@ -203,7 +203,7 @@ To use SMTP with a PMM Docker installation:
 
    *NB: If you are using your Gmail’s SMTP credentials as shown above, you will have to generate an app password and fill it in as the value of your $GF_SMTP_PASSWORD variable.*
 
-3. Pass in the `.env` file to Docker run using the `--env-file` flag: 
+2. Pass in the `.env` file to Docker run using the `--env-file` flag: 
 
     ```
     docker run --env-file=.env -p 443:443 -p 80:80 percona/pmm-server:2
