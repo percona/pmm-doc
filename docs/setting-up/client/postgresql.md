@@ -340,8 +340,6 @@ If you set the limit to 10 and your PostgreSQL instance has 11 databases, Automa
 
 
 
-
-
 ## Check the service
 
 ### Check service - PMM user interface
