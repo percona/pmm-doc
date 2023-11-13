@@ -245,6 +245,17 @@ If your PostgreSQL instance is configured to use TLS, click on the *Use TLS for 
 !!! hint alert alert-success "Note"
     For TLS connection to work SSL needs to be configured in your PostgreSQL instance. Make sure SSL is enabled in the server configuration file `postgresql.conf`, and that hosts are allowed to connect in the client authentication configuration file `pg_hba.conf`. (See PostgreSQL documentation on [Secure TCP/IP Connections with SSL].)
 
+
+
+### Auto-discovery
+
+PMM 2.41.0 introduces **Auto-discovery** for PostgreSQL, a feature that dynamically discovers all databases in your PostgreSQL instance. 
+
+Limiting **Auto-discovery** reduces connections and prevents high CPU and RAM usage caused by multiple databases.
+
+By default, **Auto-discovery** is disabled. To enable it, click **Enabled** in the **Additional options** section. For a custom value, click **Custom** and enter your desired value in the **Auto-discovery limit **field.
+
+
 ### On the command line
 
 Add the database server as a service using one of these example commands. If successful, PMM Client will print `PostgreSQL Service added` with the service's ID and name. Use the `--environment` and `-custom-labels` options to set tags for the service to help identify them.
