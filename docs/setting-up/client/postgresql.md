@@ -245,8 +245,6 @@ If your PostgreSQL instance is configured to use TLS, click on the *Use TLS for 
 !!! hint alert alert-success "Note"
     For TLS connection to work SSL needs to be configured in your PostgreSQL instance. Make sure SSL is enabled in the server configuration file `postgresql.conf`, and that hosts are allowed to connect in the client authentication configuration file `pg_hba.conf`. (See PostgreSQL documentation on [Secure TCP/IP Connections with SSL].)
 
-
-
 ### Auto-discovery
 
 PMM 2.41.0 introduces **Auto-discovery** for PostgreSQL, a feature that dynamically discovers all databases in your PostgreSQL instance. 
@@ -260,6 +258,8 @@ By default, **Auto-discovery** is disabled. To enable it, click **Enabled** in t
 ### On the command line
 
 Add the database server as a service using one of these example commands. If successful, PMM Client will print `PostgreSQL Service added` with the service's ID and name. Use the `--environment` and `-custom-labels` options to set tags for the service to help identify them.
+
+
 
 ### Examples
 
@@ -320,6 +320,26 @@ where:
 - `PORT`: PostgreSQL service port number.
 - `USER`: Database user allowed to connect via TLS. Should match the common name (CN) used in the client certificate.
 - `SERVICE`: Name to give to the service within PMM.
+
+#### Automatic discovery via CLI
+
+Starting with PMM 2.41.0, there is a new flag in `pmm-admin` to limit Auto-discovery:
+
+`--auto-discovery-limit=XXX`
+
+If the limit is equal to or greater than the number of databases, Automatic-discovery is enabled. If the limit is exceeded, then Automatic-discovery is disabled.
+
+In case of a default value of zero, `Automatic- discovery` is enabled with no limit.
+
+
+Example:
+
+If you set the limit to 10 and your PostgreSQL instance has 11 databases, Automatic-discovery will be disabled.
+
+`pmm-admin add postgresql --username="pmm-agent" --password="pmm-agent-password" --auto-discovery-limit=18`
+
+
+
 
 
 ## Check the service
