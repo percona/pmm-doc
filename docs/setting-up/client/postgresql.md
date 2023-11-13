@@ -253,8 +253,9 @@ PMM 2.41.0 introduces **Auto-discovery** for PostgreSQL, a feature that dynamica
 
 Limiting **Auto-discovery** reduces connections and prevents high CPU and RAM usage caused by multiple databases.
 
-By default, **Auto-discovery** is disabled. To enable it, click **Enabled** in the **Additional options** section. For a custom value, click **Custom** and enter your desired value in the **Auto-discovery limit **field.
+By default, **Auto-discovery** is disabled. To enable it, click **Enabled** in the **Additional options** section. For a custom value, select **Custom** and enter or choose your preferred value from the **Auto-discovery limit** field.
 
+![!](../../_images/PMM_Add_Instance_PostgreSQL_autodiscovery.png)
 
 ### On the command line
 
