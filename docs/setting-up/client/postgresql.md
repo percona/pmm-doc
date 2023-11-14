@@ -327,12 +327,10 @@ Starting with PMM 2.41.0, there is a new flag in `pmm-admin` to limit Auto-disco
 
 `--auto-discovery-limit=XXX`
 
-If the limit is equal to or greater than the number of databases, Automatic-discovery is enabled. If the limit is exceeded, then Automatic-discovery is disabled.
-
-- If number of databases > **Automatic discovery limit** then automatic discovery is **OFF**
-- If number of databases <= **Automatic discovery limit** then automatic discovery is **ON**
-- If **Automatic discovery limit** = 0 (default - server defined). The server defined limit is 10.  If the database count is equal or less, then automatic discovery is **ON**
-- If **Automatic discovery limit** < 0 then automatic discovery is **OFF**.
+- If number of databases > Automatic discovery limit, then automatic discovery is **OFF**
+- If number of databases <= Automatic discovery limit, then automatic discovery is **ON**
+- If Automatic discovery limit = 0 (default - server defined). The server defined limit is 10. If the database count is equal or less, then automatic discovery is **ON**
+- If Automatic discovery limit < 0 then automatic discovery is **OFF**.
 
 
 Example:
