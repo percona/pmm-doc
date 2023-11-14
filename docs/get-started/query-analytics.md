@@ -20,6 +20,8 @@ The dashboard contains three panels:
 !!! note alert alert-primary ""
     Query Analytics data retrieval is not instantaneous and can be delayed due to network conditions. In such situations *no data* is reported and a gap appears in the sparkline.
 
+    During a network outage, QAN data continues to be gathered and is delivered as soon as the connection is re-established. 
+
 ## Filters Panel
 
 ![!image](../_images/PMM_Query_Analytics_Panels_Filters.jpg)
