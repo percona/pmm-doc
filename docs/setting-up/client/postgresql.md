@@ -245,7 +245,7 @@ If your PostgreSQL instance is configured to use TLS, click on the *Use TLS for 
 !!! hint alert alert-success "Note"
     For TLS connection to work SSL needs to be configured in your PostgreSQL instance. Make sure SSL is enabled in the server configuration file `postgresql.conf`, and that hosts are allowed to connect in the client authentication configuration file `pg_hba.conf`. (See PostgreSQL documentation on [Secure TCP/IP Connections with SSL].)
 
-### Auto-discovery
+### Auto-discovery limit
 
 PMM 2.41.0 introduces limit for **Auto-discovery** in PostgreSQL, a feature that dynamically discovers all databases in your PostgreSQL instance. 
 
