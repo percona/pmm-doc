@@ -334,14 +334,12 @@ If the limit is equal to or greater than the number of databases, Automatic-disc
 - If **Automatic discovery limit** = 0 (default - server defined). The server defined limit is 10.  If the database count is equal or less, then automatic discovery is **ON**
 - If **Automatic discovery limit** < 0 then automatic discovery is **OFF**.
 
-In case of a default value of zero, `Automatic- discovery` is enabled with no limit.
-
 
 Example:
 
-If you set the limit to 10 and your PostgreSQL instance has 11 databases, Automatic-discovery will be disabled.
+If you set the limit to 10 and your PostgreSQL instance has 11 databases, automatic discovery will be disabled.
 
-`pmm-admin add postgresql --username="pmm-agent" --password="pmm-agent-password" --auto-discovery-limit=18`
+`pmm-admin add postgresql --username="pmm-agent" --password="pmm-agent-password" --auto-discovery-limit=10`
 
 
 
