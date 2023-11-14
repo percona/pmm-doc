@@ -247,7 +247,7 @@ If your PostgreSQL instance is configured to use TLS, click on the *Use TLS for 
 
 ### Auto-discovery
 
-PMM 2.41.0 introduces **Auto-discovery** for PostgreSQL, a feature that dynamically discovers all databases in your PostgreSQL instance. 
+PMM 2.41.0 introduces limit for **Auto-discovery** in PostgreSQL, a feature that dynamically discovers all databases in your PostgreSQL instance. 
 
 Limiting **Auto-discovery** reduces connections and prevents high CPU and RAM usage caused by multiple databases.
 
