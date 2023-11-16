@@ -78,7 +78,7 @@ PMM communicates with the PMM Server via a PMM agent process.
 : Group name for external services. Default: `external`
 
 `--expose-exporter-address` (This flag is availble starting with PMM 2.41.0.)
-: When enabled, the exporter created for that service will use the `0.0.0.0` address.
+: When enabled, the exporter created for that service will be available from the network.
 
 ## COMMANDS
 
