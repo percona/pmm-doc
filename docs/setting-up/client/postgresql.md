@@ -253,7 +253,7 @@ Limiting **Auto-discovery** reduces connections and prevents high CPU and RAM us
 
 !!! caution alert alert-warning
     Limiting auto-discovery may result in fewer metrics being captured from the secondary database.  Ensure that you set the limit appropriately:
-    
+
     - Setting a high limit may impact performance adversely.
     - Setting a low limit might result in some missing metrics due to Auto-discovery being disabled.
 
@@ -344,7 +344,7 @@ Starting with PMM 2.41.0, there is a new flag in `pmm-admin` to limit Auto-disco
 
 - If number of databases > Auto-discovery limit, then auto discovery is **OFF**
 - If number of databases <= Auto-discovery limit, then auto discovery is **ON**
-- If the Auto-discovery limit is not defined, it takes the default value, which is 0 (server defined with limit 10), and Auto-discovery is **ON** (if you dont have more than 10 databases)
+- If the Auto-discovery limit is not defined, it takes the default value, which is 0 (server defined with limit 10), and Auto-discovery is **ON**(if you do not have more than 10 databases).
 - If Auto-discovery limit < 0 then auto discovery is **OFF**.
 
 
