@@ -253,6 +253,7 @@ Limiting **Auto-discovery** reduces connections and prevents high CPU and RAM us
 
 !!! caution alert alert-warning
     Limiting auto-discovery may result in fewer metrics being captured from the secondary database.  Ensure that you set the limit appropriately:
+    
     - Setting a high limit may impact performance adversely.
     - Setting a low limit might result in some missing metrics due to Auto-discovery being disabled.
 
