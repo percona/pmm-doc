@@ -252,8 +252,9 @@ PMM 2.41.0 introduces limit for **Auto-discovery** in PostgreSQL, a feature that
 Limiting **Auto-discovery** reduces connections and prevents high CPU and RAM usage caused by multiple databases.
 
 !!! caution alert alert-warning
-    Limiting auto-discovery may result in fewer metrics being captured from the secondary database. 
-
+    Limiting auto-discovery may result in fewer metrics being captured from the secondary database.  Ensure that you set the limit appropriately:
+    - Setting a high limit may impact performance adversely.
+    - Setting a low limit might result in some missing metrics due to Auto-discovery being disabled.
 
 By default, **Auto-discovery** is enabled (server defined with a limit 10). 
 
@@ -342,7 +343,7 @@ Starting with PMM 2.41.0, there is a new flag in `pmm-admin` to limit Auto-disco
 
 - If number of databases > Auto-discovery limit, then auto discovery is **OFF**
 - If number of databases <= Auto-discovery limit, then auto discovery is **ON**
-- If Auto-discovery limit = 0 (default - server defined). The server defined limit is 10. If the database count is equal or less, then auto discovery is **ON**
+- If the Auto-discovery limit is not defined, it takes the default value, which is 10, and Auto-discovery is **ON**
 - If Auto-discovery limit < 0 then auto discovery is **OFF**.
 
 
