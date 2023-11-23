@@ -330,7 +330,7 @@ where:
 - `USER`: Database user allowed to connect via TLS. Should match the common name (CN) used in the client certificate.
 - `SERVICE`: Name to give to the service within PMM.
 
-#### Automatic discovery via CLI
+#### Automatic discovery limit via CLI
 
 Starting with PMM 2.41.0, there is a new flag in `pmm-admin` to limit Auto-discovery:
 
