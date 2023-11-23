@@ -253,9 +253,16 @@ Limiting **Auto-discovery** reduces connections and prevents high CPU and RAM us
 
 By default, **Auto-discovery** is enabled (server defined with a limit 10). 
 
+![!](../../_images/PMM_Add_Instance_PostgreSQL_autodiscovery_enabled.png)
+
+When you select **Disabled**, the **Auto-discovery limit** will be set to `-1`.
+
+![!](../../_images/PMM_Add_Instance_PostgreSQL_autodiscovery_disabled.png)
+
 For a custom value, select **Custom** and enter or choose your preferred value from the **Auto-discovery limit** field.
 
-![!](../../_images/PMM_Add_Instance_PostgreSQL_autodiscovery.png)
+![!](../../_images/PMM_Add_Instance_PostgreSQL_autodiscovery_custom.png)
+
 
 ### On the command line
 
