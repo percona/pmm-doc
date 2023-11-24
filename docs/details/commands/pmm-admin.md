@@ -77,7 +77,7 @@ PMM communicates with the PMM Server via a PMM agent process.
 `--group=<group-name>`
 : Group name for external services. Default: `external`
 
-`--expose-exporter-address` (This flag is availble starting with PMM 2.41.0.)
+`--expose-exporter` (This flag is availble starting with PMM 2.41.0.)
 : If you enable this flag, any IP address on the local network and anywhere on the internet can access exporter endpoints. If the flag is disabled, exporter endpoints can be accessed only locally.
 
 ## COMMANDS
