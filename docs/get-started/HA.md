@@ -629,9 +629,9 @@ HAProxy provides high availability for your PMM setup by directing traffic to th
 8. Before starting the HAProxy container, use `sed` to replace the placeholders in `haproxy.cfg.template` with the environment variables, and write the output to `haproxy.cfg`.
     
     ```bash
-    sed -e "s/PMM_ACTIVE_IP/${PMM_ACTIVE_IP}/g" \
-        -e "s/PMM_PASSIVE_IP/${PMM_PASSIVE_IP}/g" \
-        -e "s/PMM_PASSIVE2_IP/${PMM_PASSIVE2_IP}/g" \
+    sed -e "s/PMM_ACTIVE_IP/$PMM_ACTIVE_IP/g" \
+        -e "s/PMM_PASSIVE_IP/$PMM_PASSIVE_IP/g" \
+        -e "s/PMM_PASSIVE2_IP/$PMM_PASSIVE2_IP/g" \
         /path/to/haproxy.cfg.template > /path/to/haproxy.cfg    
     ```
     
