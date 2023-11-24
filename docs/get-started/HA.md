@@ -28,6 +28,9 @@ You will need the following before you can begin the deployment:
 
 ## Procedure to set up PMM in HA mode
 
+!!! note alert alert-primary "Note"
+    The sections below provide instructions for setting up the services on both the same and separate instances. However, it is not recommended to run the services on a single machine for production purposes. This approach is only recommended for the development environment.
+
 The steps to set up PMM in HA mode are:
 
 ### **Step 1: Define environment variables**
