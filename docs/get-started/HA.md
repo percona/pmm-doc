@@ -1,5 +1,9 @@
 # Set up PMM in HA mode
 
+!!! caution alert alert-warning "Important"
+    This feature is still in [Technical Preview](https://docs.percona.com/percona-monitoring-and-management/details/glossary.html#technical-preview) and is subject to change. We recommend that early adopters use this feature for testing purposes only.
+
+
 Set up PMM using Docker containers in a high-availability (HA) configuration following these instructions. 
 
 PMM Server is deployed in a high-availability setup where two PMM Server instances are configured, one being the leader and the other follower. These servers provide services including:
@@ -283,7 +287,7 @@ To set up PostgreSQL:
             postgres:14
         ```
     
-    Replace **`/path/to/queries`** with the path to your **`init.sql`** file. This command mounts the **`init.sql`** file to the **`docker-entrypoint-initdb.d`** directory, which is automatically executed upon container startup.
+    Replace **`/path/to/init.sql`** with the path to your **`init.sql`** file. This command mounts the **`init.sql`** file to the **`docker-entrypoint-initdb.d`** directory, which is automatically executed upon container startup.
     
     
     !!! note alert alert-primary "Note"
