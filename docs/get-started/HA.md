@@ -25,7 +25,6 @@ You will need the following before you can begin the deployment:
 
 - Docker installed and configured on your system. If you haven't installed Docker, you can follow **[this guide](https://docs.docker.com/get-docker/)**.Docker installed and configured on your system. If you haven't installed Docker yet, you can follow **[this guide](https://docs.docker.com/get-docker/)**.
 - Access credentials for ClickHouse, PostgreSQL, and VictoriaMetrics. 
-- The specific PMM Server Docker image: `perconalab/pmm-server-fb:PR-3251-a24d4f4`.
 
 ## Procedure to set up PMM in HA mode
 
