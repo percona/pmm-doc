@@ -659,7 +659,7 @@ HAProxy provides high availability for your PMM setup by directing traffic to th
       haproxy:2.4.2-alpine
     ```
     
-    Replace `/path/to/haproxy.cfg` with the path to the `haproxy.cfg` file you created in step 4, and `/path/to/certs` with the path to the directory containing the SSL certificate and private key. 
+    Replace `/path/to/haproxy-config` with the path to the `haproxy.cfg` file you created in step 4, and `/path/to/certs` with the path to the directory containing the SSL certificate and private key. 
     
     !!! note alert alert-primary "Note"
         If you're running services on separate instances, you can remove the `--network` flag.
