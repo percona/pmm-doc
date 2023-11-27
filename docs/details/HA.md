@@ -275,6 +275,7 @@ To set up PostgreSQL:
             -v /path/to/queries:/docker-entrypoint-initdb.d/ \
             -v pg_data:/var/lib/postgresql/data \
             postgres:14
+            postgres -c shared_preload_libraries=pg_stat_statements
         ```
         
     === "Run services on a seperate instance"
@@ -286,6 +287,7 @@ To set up PostgreSQL:
             -e POSTGRES_PASSWORD=${PG_PASSWORD} \
             -v /path/to/queries:/docker-entrypoint-initdb.d \
                 -v pg_data:/var/lib/postgresql/data \
+                postgres -c shared_preload_libraries=pg_stat_statements
             postgres:14
         ```
     
