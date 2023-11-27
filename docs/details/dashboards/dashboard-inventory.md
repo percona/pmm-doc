@@ -118,6 +118,9 @@ Click the downward arrow to view cluster details, including the services running
 
 ![!image](../../_images/PMM_Inventory_cluster_view_details.png)
 
+Furthermore, you can filter the clusters by criteria such as Cluster name, Status, Service name, Node name, Monitoring, Address, and Port. 
+
+![!image](../../_images/PMM_Inventory_cluster_view_filter.png)
 
 ### Nodes tab
 
