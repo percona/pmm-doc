@@ -296,7 +296,7 @@ To set up PostgreSQL:
             postgres:14
         ```
     
-    Replace **`/path/to/init.sql`** with the path to your **`init.sql`** file. This command mounts the **`init.sql`** file to the **`docker-entrypoint-initdb.d`** directory, which is automatically executed upon container startup.
+    Replace **`/path/to/queries`** with the path to your **`init.sql`** file. This command mounts the **`init.sql`** file to the **`docker-entrypoint-initdb.d`** directory, which is automatically executed upon container startup.
     
     
     !!! note alert alert-primary "Note"
