@@ -29,7 +29,9 @@ You will need the following before you can begin the deployment:
 ## Procedure to set up PMM in HA mode
 
 !!! note alert alert-primary "Note"
-    The sections below provide instructions for setting up the services on both the same and separate instances. However, it is not recommended to run the services on a single machine for production purposes. This approach is only recommended for the development environment.
+    - The sections below provide instructions for setting up the services on both the same and separate instances. However, it is not recommended to run the services on a single machine for production purposes. This approach is only recommended for the development environment.
+    - It is recommended to use clustered versions of PosgreSQL, Victoriametrics, Clickhouse, etc., instead of standalone versions when setting up the services.
+    - 
 
 The steps to set up PMM in HA mode are:
 
@@ -262,6 +264,10 @@ To set up PostgreSQL:
 6. Run the PostgreSQL container.
 
     You can either run all the services on the same instance or on a seperate instance.
+
+    !!! note alert alert-primary "Note"
+        It is recommended to use absolute paths instead of relative paths for volume mounts.
+
 
     === "Run services on same instance"
 
@@ -538,6 +544,10 @@ The PMM server orchestrates the collection, storage, and visualization of metric
 ### **Step 7: Running HAProxy**
 
 HAProxy provides high availability for your PMM setup by directing traffic to the current leader server via the `/v1/leaderHealthCheck` endpoint.
+    
+!!! note alert alert-primary "Note"
+    It is recommended to use absolute paths instead of relative paths for volume mounts.
+
 
 1. Pull the HAProxy Docker image.
     
