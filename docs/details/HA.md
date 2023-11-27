@@ -291,9 +291,9 @@ To set up PostgreSQL:
             -p 5432:5432 \
             -e POSTGRES_PASSWORD=${PG_PASSWORD} \
             -v /path/to/queries:/docker-entrypoint-initdb.d \
-                -v pg_data:/var/lib/postgresql/data \
-                postgres -c shared_preload_libraries=pg_stat_statements
+            -v pg_data:/var/lib/postgresql/data \
             postgres:14
+            postgres -c shared_preload_libraries=pg_stat_statements
         ```
     
     Replace **`/path/to/queries`** with the path to your **`init.sql`** file. This command mounts the **`init.sql`** file to the **`docker-entrypoint-initdb.d`** directory, which is automatically executed upon container startup.
