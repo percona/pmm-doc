@@ -31,7 +31,6 @@ You will need the following before you can begin the deployment:
 !!! note alert alert-primary "Note"
     - The sections below provide instructions for setting up the services on both the same and separate instances. However, it is not recommended to run the services on a single machine for production purposes. This approach is only recommended for the development environment.
     - It is recommended to use clustered versions of PosgreSQL, Victoriametrics, Clickhouse, etc., instead of standalone versions when setting up the services.
-    - 
 
 The steps to set up PMM in HA mode are:
 
