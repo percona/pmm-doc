@@ -6,7 +6,7 @@
 
 Set up PMM using Docker containers in a high-availability (HA) configuration following these instructions. 
 
-PMM Server is deployed in a high-availability setup where two PMM Server instances are configured, one being the leader and the other follower. These servers provide services including:
+PMM Server is deployed in a high-availability setup where three PMM Server instances are configured, one being the leader and others are followers. These servers provide services including:
 
 - ClickHouse: A fast, open-source analytical database.
 - VictoriaMetrics: A scalable, long-term storage solution for time series data.
@@ -61,7 +61,7 @@ For all IP addresses, use the format `17.10.1.x`, and for all usernames and pass
 
 ??? example "Expected output"
         
-    ```{.text .no-copy}
+    ```
     export CH_HOST_IP=17.10.1.2
     export VM_HOST_IP=17.10.1.3
     export PG_HOST_IP=17.10.1.4
@@ -278,7 +278,7 @@ To set up PostgreSQL:
             -e POSTGRES_PASSWORD=${PG_PASSWORD} \
             -v /path/to/queries:/docker-entrypoint-initdb.d/ \
             -v pg_data:/var/lib/postgresql/data \
-            postgres:14
+            postgres:14 \
             postgres -c shared_preload_libraries=pg_stat_statements
         ```
         
@@ -577,7 +577,7 @@ HAProxy provides high availability for your PMM setup by directing traffic to th
     
     Enter country, state, organization name, etc. when asked. Use `-days 365` option for 365-day certificate validity.    
 
-5. Copy your SSL certificate and private key to the directory you created in step 4. Ensure that the certificate file is named `pmm.crt` and the private key file is named `pmm.key`. 
+5. Copy your SSL certificate and private key to the directory you created in step 2. Ensure that the certificate file is named `pmm.crt` and the private key file is named `pmm.key`. 
 
     Concatenate these two files to create a PEM file:
     
