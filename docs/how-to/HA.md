@@ -536,7 +536,6 @@ The PMM server orchestrates the collection, storage, and visualization of metric
         - Ensure to set the environment variables from Step 1  in each instance where you run these commands.
         - If you run the service on the same instance, remove the **`-p`** flags.
         - If you run the service on a separate instance, remove the **`--network`** and **`--ip`** flags.
-        - Replace `/path/to/haproxy.cfg` with the path to the haproxy.cfg file you created in step 4, and `/path/to/certs` with the path to the directory containing the SSL certificate and private key. 
 
 
 ### **Step 7: Running HAProxy**
@@ -658,7 +657,7 @@ HAProxy provides high availability for your PMM setup by directing traffic to th
       haproxy:2.4.2-alpine
     ```
     
-    Replace `/path/to/haproxy-config` with the path to the `haproxy.cfg` file you created in step 4, and `/path/to/certs` with the path to the directory containing the SSL certificate and private key. 
+    Replace `/path/to/haproxy-config` with the path to the `haproxy.cfg` file you created in step 6, and `/path/to/certs` with the path to the directory containing the SSL certificate and private key. 
     
     !!! note alert alert-primary "Note"
         If you're running services on separate instances, you can remove the `--network` flag.
