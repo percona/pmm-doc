@@ -187,6 +187,7 @@ nav:
       - how-to/upgrade.md
       - how-to/secure.md
       - how-to/optimize.md
+      - how-to/HA.md
       - how-to/annotate.md
       - how-to/share-dashboard.md
       - how-to/extend-metrics.md
