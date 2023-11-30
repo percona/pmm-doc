@@ -38,7 +38,7 @@ The steps to set up PMM in HA mode are:
 
 Before you start with the setup, define the necessary environment variables on each instance where the services will be running. These variables will be used in subsequent commands. 
 
-For all IP addresses, use the format `17.10.1.x`, and for all usernames and passwords, use a string format like `example`. Replace each `<Your_Variable_Value>` with the desired values.
+For all IP addresses, use the format `17.10.1.x`, and for all usernames and passwords, use a string format like `example`.
 
 
 | **Variable**        | **Description**
@@ -248,7 +248,6 @@ To set up PostgreSQL:
     CREATE EXTENSION IF NOT EXISTS pg_stat_statements;
     ```
     
-    Replace `<YOUR_PG_USERNAME>`, `<YOUR_PG_PASSWORD>`, `<YOUR_GF_USERNAME>`, and `<YOUR_GF_PASSWORD>` with your specific values.
     
 5. Use **`sed`** to replace the placeholders with the environment variables and write the output to **`init.sql`**.
     
