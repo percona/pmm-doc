@@ -23,7 +23,7 @@ Having high availability increases the reliability of the PMM service, as the le
 
 You will need the following before you can begin the deployment:
 
-- Docker installed and configured on your system. If you haven't installed Docker, you can follow **[this guide](https://docs.docker.com/get-docker/)**.Docker installed and configured on your system. If you haven't installed Docker yet, you can follow **[this guide](https://docs.docker.com/get-docker/)**.
+- Docker installed and configured on your system. If you haven't installed Docker, you can follow **[this guide](https://docs.docker.com/get-docker/)**.
 - Access credentials for ClickHouse, PostgreSQL, and VictoriaMetrics. 
 
 ## Procedure to set up PMM in HA mode
