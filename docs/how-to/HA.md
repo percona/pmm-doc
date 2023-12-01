@@ -23,7 +23,6 @@ Having high availability increases the reliability of the PMM service, as the le
 You will need the following before you can begin the deployment:
 
 - Docker installed and configured on your system. If you haven't installed Docker, you can follow **[this guide](https://docs.docker.com/get-docker/)**.
-- Access credentials for ClickHouse, PostgreSQL, and VictoriaMetrics. 
 
 ## Procedure to set up PMM in HA mode
 
@@ -55,7 +54,7 @@ For all IP addresses, use the format `17.10.1.x`, and for all usernames and pass
 | `PMM_PASSIVE_NODE_ID`                                  | The unique ID for your first passive PMM server node.</br></br>Example: `pmm-server-passive`
 | `PMM_PASSIVE2_IP`                                         | The IP address of the instance where the second passive PMM server is running or the desired IP address for your second passive PMM server container within the Docker network, depending on your setup.</br></br>Example: `17.10.1.7`
 | `PMM_PASSIVE2_NODE_ID`                                    | The unique ID for your second passive PMM server node.</br></br>Example: `pmm-server-passive2`
-| `PMM_DOCKER_IMAGE` &nbsp; &nbsp; &nbsp; &nbsp;                                      | The specific PMM Server Docker image for this guide.</br></br>Example: `perconalab/pmm-server-fb:PR-3251-a24d4f4`
+| `PMM_DOCKER_IMAGE` &nbsp; &nbsp; &nbsp; &nbsp;                                      | The specific PMM Server Docker image for this guide.</br></br>Example: `percona/pmm-server:2`
 
 
 ??? example "Expected output"
@@ -290,7 +289,7 @@ To set up PostgreSQL:
             -e POSTGRES_PASSWORD=${PG_PASSWORD} \
             -v /path/to/queries:/docker-entrypoint-initdb.d \
             -v pg_data:/var/lib/postgresql/data \
-            postgres:14
+            postgres:14 \
             postgres -c shared_preload_libraries=pg_stat_statements
         ```
     
@@ -298,7 +297,7 @@ To set up PostgreSQL:
     
     
     !!! note alert alert-primary "Note"
-        - If you run the services on the same instance, the `--network` and `--ip` flags are used to assign a specific IP address to the container within the Docker network created in Step 2. This IP address is referenced in subsequent steps as the PostgreSQL service address.        - In the second case, where the services are running on separate instances, these flags are not necessary as PostgreSQL will bind to the default network interface.
+        - If you run the services on the same instance, the `--network` and `--ip` flags are used to assign a specific IP address to the container within the Docker network created in Step 2. This IP address is referenced in subsequent steps as the PostgreSQL service address.
         - The `--network` and `--ip` flags are not required if the services are running on separate instances, as PostgreSQL will bind to the default network interface.
 
 ### **Step 6: Running PMM Services**
@@ -541,9 +540,6 @@ The PMM server orchestrates the collection, storage, and visualization of metric
 
 HAProxy provides high availability for your PMM setup by directing traffic to the current leader server via the `/v1/leaderHealthCheck` endpoint.
     
-!!! note alert alert-primary "Note"
-    It is recommended to use absolute paths instead of relative paths for volume mounts.
-
 
 1. Pull the HAProxy Docker image.
     
@@ -657,9 +653,10 @@ HAProxy provides high availability for your PMM setup by directing traffic to th
     ```
     
     Replace `/path/to/haproxy-config` with the path to the `haproxy.cfg` file you created in step 6, and `/path/to/certs` with the path to the directory containing the SSL certificate and private key. 
-    
-    !!! note alert alert-primary "Note"
-        If you're running services on separate instances, you can remove the `--network` flag.
+
+!!! note alert alert-primary "Note"
+    - It is recommended to use absolute paths instead of relative paths for volume mounts.
+    - If you're running services on separate instances, you can remove the `--network` flag.
     
 HAProxy is now configured to redirect traffic to the leader PMM managed server. This ensures highly reliable service by redirecting requests to the remainder of the servers in the event that the leader server goes down.
 
