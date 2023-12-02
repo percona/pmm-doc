@@ -58,7 +58,7 @@ Decide where you want to run PMM. You can choose from a wide array of hosts belo
         wget -qO - https://www.percona.com/get/pmm | /bin/bash    
         ```
    
-    To run PMM in **Interactive** mode and  change the default settings, use the following command:
+    To run PMM in the **Interactive** mode and  change the default settings, use the following command:
 
         ```sh
         curl -fsSLO https://www.percona.com/get/pmm (or wget https://www.percona.com/get/pmm)
@@ -70,7 +70,7 @@ Decide where you want to run PMM. You can choose from a wide array of hosts belo
 
 === ":simple-kubernetes: Kubernetes"
 
-    Learn how to [install PMM Server in a Kubernetes cluster using Helm](../setting-up/server/helm.md).
+    Learn how to [install PMM in a Kubernetes cluster using Helm](../setting-up/server/helm.md).
 
 === ":simple-amazonaws: Amazon"
 
@@ -78,11 +78,11 @@ Decide where you want to run PMM. You can choose from a wide array of hosts belo
 
 === ":simple-microsoftazure: Azure"
 
-    Azure links for this section???
+    Azure links here...
 
 === ":simple-googlecloud: Google Cloud"
 
-    Google Cloud links for  this section ??
+    Google Cloud links here...
 
 ### Install PMM Client
 
@@ -133,7 +133,7 @@ PC -- Transmission --> PS
 
 === "Other technologies"
 
-    To install PMM Client on other technologies, see the options in the [Setting up PMM Client chapter](../setting-up/client.index.md)
+    Others' links here...
 
 ### Connect database
 
@@ -212,8 +212,8 @@ Once the PMM Server and Client are set up, choose the database that you want to 
     Before you add Amazon instance for monitoring, do the following:
 
     - Get your AWS RDS Access Key and RDS Secret Access Key. This key should have permission to monitor RDS.
-    - Enable **Enhanced Monitoring** option in the settings of your Amazon RDS DB instance. (Recommended)
-    - Find your database username and password with access to login to the RDS instance.
+    - Recommended: Enable **Enhanced Monitoring** option in the settings of your Amazon RDS DB instance.
+    - Database username and password with access to login to the RDS instance.
     - Access the RDS instance via a TCP port.
 
     To add an Amazon RDS database instance for monitoring:
@@ -231,7 +231,7 @@ Once the PMM Server and Client are set up, choose the database that you want to 
 
     6. Enter your database credentials on the resulting page.
 
-    7. (Optional) Enter the information in the **Labels** or **Additional Options** section. 
+    7. (Optional) Enter the information on the **Labels** or **Additional Options** section. 
 
     8. Click **Add Service** at the bottom.
 
