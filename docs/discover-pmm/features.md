@@ -1,6 +1,6 @@
 # Learn about some of our features
 
-The following features make Percona Monitoring and Management a powerful tool for database administrators and DevOps teams to monitor, analyze, and optimize the performance of their database infrastructure.
+The following features make Percona Monitoring and Management a powerful tool for database administrators and DevOps teams to monitor, analyze, and optimize the performance of their database infrastructure:
 
 1. **Query Analytics**: PMM provides insights into database query performance and enables you to identify slow queries, analyze query execution plans, and optimize them.
 
@@ -10,6 +10,6 @@ The following features make Percona Monitoring and Management a powerful tool fo
 
 4. **Alerting**: PMM enables setting up alerts based on predefined thresholds for various metrics. When these thresholds are exceeded, PMM sends notifications via email or other channels, facilitating proactive management and quick resolution.
 
-5. **Advisors**: Built-in Advisors run regular checks on the databases connected to PMM. The checks identify and alert you of potential security threats, performance degradation, data loss, and data corruption.
+5. **Percona Advisors**: Built-in Advisors run regular checks on the databases connected to PMM. The checks identify and alert you of potential security threats, performance degradation, data loss, and data corruption.
 
 6. **Backup and restore**: PMM enables you to back up critical data with zero downtime and minimal performance impact. Furthermore, you can schedule various backups (hot, incremental, physical) and restore databases up to a specific moment with the Point-in-Time-Recovery feature.
