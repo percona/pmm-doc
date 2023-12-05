@@ -120,7 +120,11 @@ extra:
 nav:
   - Home: index.md
   
-  - Discover PMM: features.md
+  - Discover PMM:
+      - discover-pmm/features.md
+      - discover-pmm/why-pmm.md
+
+
   - Quickstart Guide: getstarted.md
   - Install PMM:
       - install-pmm/index.md
