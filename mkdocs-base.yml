@@ -123,7 +123,7 @@ nav:
       - discover-pmm/why-pmm.md
       - discover-pmm/features.md
   - Quickstart Guide: getstarted.md
-  - Install PMM:
+  - Install:
       - install-pmm/index.md
       - Before you start: 
         - plan-pmm-installation/hardware_and_system.md
@@ -189,14 +189,14 @@ nav:
         - install-pmm/add-services/remote.md
       - Remove services:      
         - install-pmm/remove-services/index.md
-      - Upgrade PMM:
+      - Upgrade:
         - pmm-upgrade/index.md
         - pmm-upgrade/ui_upgrade.md
         - pmm-upgrade/upgrade_aws.md    
         - pmm-upgrade/upgrade_docker.md
         - pmm-upgrade/upgrade_agent.md
         - pmm-upgrade/upgrade_from_pmm_1.md
-      - Uninstall PMM:
+      - Uninstall:
         - uninstall-pmm/index.md
         - uninstall-pmm/uninstall_docker.md
         - uninstall-pmm/uninstall_package_manager.md
@@ -367,14 +367,14 @@ nav:
       - commands/index.md
       - commands/pmm-admin.md
       - commands/pmm-agent.md 
-  - Configure PMM:      
+  - Configure:      
       - configure-pmm/configure.md
       - configure-pmm/metrics_res.md
       - configure-pmm/advanced_settings.md
       - configure-pmm/ssh.md
       - configure-pmm/alertmanager.md
       - configure-pmm/percona_platform.md
-  - Manage PMM:
+  - Administer:
       - pmm-admin/index.md
       - Manage users:
         - pmm-admin/manage-users/index.md
@@ -384,7 +384,7 @@ nav:
         - pmm-admin/manage-users/manage_users_in_org.md
       - Roles and permissions:
         - pmm-admin/roles/index.md
-        - Access Control in PMM:
+        - Access Control:
           - pmm-admin/roles/access-control/intro.md
           - pmm-admin/roles/access-control/labels.md
           - pmm-admin/roles/access-control/config_access_cntrl.md
@@ -401,7 +401,7 @@ nav:
         - pmm-admin/security/index.md
         - pmm-admin/security/ssl_encryption.md 
         - pmm-admin/security/grafana_cookies.md  
-      - Optimize PMM:
+      - Optimize:
         - optimize/index.md
         - optimize/improve_perf.md
         - optimize/change_number_tables.md
