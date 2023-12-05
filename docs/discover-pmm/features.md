@@ -13,5 +13,3 @@ The following features make Percona Monitoring and Management a powerful tool fo
 5. **Advisors**: Built-in Advisors run regular checks on the databases connected to PMM. The checks identify and alert you of potential security threats, performance degradation, data loss, and data corruption.
 
 6. **Backup and restore**: PMM enables you to back up critical data with zero downtime and minimal performance impact. Furthermore, you can schedule various backups (hot, incremental, physical) and restore databases up to a specific moment with the Point-in-Time-Recovery feature.
-
-7. **Community Support**: PMM, being an open-source tool, has a community of users and developers who actively contribute to its improvement. The tool undergoes regular updates and bug fixes to enhance its functionality and address any issues that may arise. 
