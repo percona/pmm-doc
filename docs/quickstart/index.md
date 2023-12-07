@@ -6,7 +6,7 @@ For alternative setups, explore the additional installation options detailed in 
 
 ## Prerequisites
 
-Before you start installing PMM Bare Metal/Virtual via the Easy-install script for Docker, verify that your system meets the compatibility requirements. 
+Before you start installing PMM Bare Metal/Virtual via the Easy-install script for Docker, verify that your system meets the compatibility requirements.
 
 <details>
   <summary>Verify system compatibility</summary>
@@ -37,7 +37,8 @@ To install on Bare Metal/Virtual using the recommended Easy-install script proce
 The script only runs on Linux-compatible systems. To use it, run the command with `sudo` privileges or as **root**.
 
 <details>
-  <summary>"What's happening under the hood"</summary>
+  <summary>What's happening under the hood?</summary>
+
         This script does the following:
 
         - Installs Docker if it is not installed on your system.
@@ -59,8 +60,8 @@ The script only runs on Linux-compatible systems. To use it, run the command wit
         ```sh
         wget -qO - https://www.percona.com/get/pmm | /bin/bash    
         ```
-        
-    To run PMM in the **Interactive** mode and  change the default settings, use the following command:
+
+2. (Optional) To run PMM in the **Interactive** mode and  change the default settings, use the following command:
 
         ```sh
         curl -fsSLO https://www.percona.com/get/pmm (or wget https://www.percona.com/get/pmm)
@@ -81,10 +82,10 @@ Once PMM is set up, choose the database that you want it to monitor:
 
     1. Create database account for PMM using the following command example. This creates a database user with name **pmm**, password **pass**, and the necessary permissions:
 
-    ```sql
-    CREATE USER 'pmm'@'127.0.0.1' IDENTIFIED BY 'pass' WITH MAX_USER_CONNECTIONS 10;
-    GRANT SELECT, PROCESS, REPLICATION CLIENT, RELOAD, BACKUP_ADMIN ON *.* TO 'pmm'@'127.0.0.1';
-    ```
+        ```sql
+        CREATE USER 'pmm'@'127.0.0.1' IDENTIFIED BY 'pass' WITH MAX_USER_CONNECTIONS 10;
+        GRANT SELECT, PROCESS, REPLICATION CLIENT, RELOAD, BACKUP_ADMIN ON *.* TO 'pmm'@'127.0.0.1';
+        ```
 
     2. Install PMM Client on the database node to reduce resource utilization on the server side. 
     Follow the procedure below to install PMM Client using Package Manager (Default). 
@@ -93,36 +94,36 @@ Once PMM is set up, choose the database that you want it to monitor:
 
     If you don't have access to the database node, [install PMM Client from the User interface](../setting-up/client/mysql.html#with-the-user-interface) instead. 
 
-    To install PMM Client using Package Manager:
-    { .power-number } 
+        To install PMM Client using Package Manager:
+        { .power-number } 
 
-    2.1. Install Percona Release Tool:
+        2.1. Install Percona Release Tool:
 
-    ```sh
-    wget https://repo.percona.com/apt/percona-release_latest.generic_all.deb
-    dpkg -i percona-release_latest.generic_all.deb
-    ```
-    2.2. Install the PMM Client package:
-    !!! hint "Root permissions"
-    
-    ```sh
-    apt update
-    apt install -y pmm2-client
-    ```
+        ```sh
+        wget https://repo.percona.com/apt/percona-release_latest.generic_all.deb
+        dpkg -i percona-release_latest.generic_all.deb
+        ```
+        2.2. Install the PMM Client package:
+        !!! hint "Root permissions"
+        
+        ```sh
+        apt update
+        apt install -y pmm2-client
+        ```
 
-    2.3. [Register Node with PMM](../setting-up/client/index.html#register):
-          
-    ```sh
-    pmm-admin config --server-insecure-tls --server-url=https://admin:admin@X.X.X.X:443
-    ```
+        2.3. [Register Node with PMM](../setting-up/client/index.html#register):
+            
+        ```sh
+        pmm-admin config --server-insecure-tls --server-url=https://admin:admin@X.X.X.X:443
+        ```
 
-    2.4 Add the MySQL database using Performance schema:  
+        2.4 Add the MySQL database using Performance schema:  
 
-    ```sh 
-    pmm-admin add mysql --query-source=perfschema --username=pmm --password=pass MYSQL_NODE
-    ```
+        ```sh 
+        pmm-admin add mysql --query-source=perfschema --username=pmm --password=pass MYSQL_NODE
+        ```
 
-    2.5. Optionally, [add the database using Slow log](../setting-up/client/mysql.md#data-source-recommendations).
+        2.5. (Optional) [Add the database using Slow log](../setting-up/client/mysql.md#data-source-recommendations).
 
 === "PostgreSQL"
 
