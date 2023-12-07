@@ -59,7 +59,7 @@ The script only runs on Linux-compatible systems. To use it, run the command wit
         ```sh
         wget -qO - https://www.percona.com/get/pmm | /bin/bash    
         ```
- 
+        
     To run PMM in the **Interactive** mode and  change the default settings, use the following command:
 
         ```sh
@@ -115,14 +115,14 @@ Once PMM is set up, choose the database that you want it to monitor:
     ```sh
     pmm-admin config --server-insecure-tls --server-url=https://admin:admin@X.X.X.X:443
     ```
-    
+
     2.4 Add the MySQL database using Performance schema:  
 
     ```sh 
     pmm-admin add mysql --query-source=perfschema --username=pmm --password=pass MYSQL_NODE
     ```
 
-    2.5. Optionally, [add the database using Slow log](../setting-up/client/mysql.md#data-source-recommendations)
+    2.5. Optionally, [add the database using Slow log](../setting-up/client/mysql.md#data-source-recommendations).
 
 === "PostgreSQL"
 
@@ -168,9 +168,9 @@ Once PMM is set up, choose the database that you want it to monitor:
     For detailed information on adding a MongoDB database, see [Adding a MySQL database for monitoring](https://docs.percona.com/percona-monitoring-and-management/setting-up/client/mongodb.html).
 
 === "ProxySQL"
-
-   - To [enable ProxySQL performance metrics monitoring](../setting-up/client/proxysql.md)
-   - To [add HAproxy services](../setting-up/client/haproxy.md)
+    When connecting a ProxySQL database, you can:
+    - [Enable ProxySQL performance metrics monitoring](../setting-up/client/proxysql.md).
+    - [Add HAproxy services](../setting-up/client/haproxy.md).
 
 ## Next steps
 
