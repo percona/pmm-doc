@@ -30,10 +30,11 @@ However, PMM can run on a wide array of alternative hosts:
 - [Run a PMM instancehosted at AWS Marketplace](../setting-up/server/aws.md)
 
 To install on Bare Metal/Virtual using the recommended Easy-install script procedure for Docker:
-    { .power-number }
+{ .power-number }
 
-    1. Download and run the PMM Easy-install script from [GitHub](https://github.com/percona/pmm/blob/main/get-pmm.sh). 
-    The script only runs on Linux-compatible systems. To use it, run the command with `sudo` privileges or as **root**.
+1. Download and run the PMM Easy-install script from [GitHub](https://github.com/percona/pmm/blob/main/get-pmm.sh).
+
+The script only runs on Linux-compatible systems. To use it, run the command with `sudo` privileges or as **root**.
 
 <details>
   <summary>
@@ -45,7 +46,7 @@ To install on Bare Metal/Virtual using the recommended Easy-install script proce
 
 </details>
 
-    1. Install PMM using `cURL` or `wget`:
+2. Install PMM using `cURL` or `wget`:
 
     === "cURL"
 
@@ -67,7 +68,7 @@ To install on Bare Metal/Virtual using the recommended Easy-install script proce
         ./pmm --interactive
         ```
 
-    2. Log into PMM with the default credentials provided after the installation is completed.
+3. Log into PMM with the default credentials provided after the installation is completed.
 
 ### Connect database
 
@@ -75,49 +76,49 @@ Once PMM is set up, choose the database that you want it to monitor:
 
 === "MySQL 8.0"
 
-        Follow the instructions below to connect a Self-hosted MySQL database. Alternatively, you can connect a [AWS RDS](../setting-up/client/aws.md), [Azure MySQL](../setting-up/client/azure.md) or [Google Cloud MySQL ](../setting-up/client/google.md) database.
+    Follow the instructions below to connect a Self-hosted MySQL database. Alternatively, you can connect a [AWS RDS](../setting-up/client/aws.md), [Azure MySQL](../setting-up/client/azure.md) or a [Google Cloud MySQL ](../setting-up/client/google.md) database.
 
-        1. Create database account for PMM using the following command example. This creates a database user with name **pmm**, password **pass**, and the necessary permissions:
+    1. Create database account for PMM using the following command example. This creates a database user with name **pmm**, password **pass**, and the necessary permissions:
 
-        ```sql
-        CREATE USER 'pmm'@'127.0.0.1' IDENTIFIED BY 'pass' WITH MAX_USER_CONNECTIONS 10;
-        GRANT SELECT, PROCESS, REPLICATION CLIENT, RELOAD, BACKUP_ADMIN ON *.* TO 'pmm'@'127.0.0.1';
-        ```
-        2. Install PMM Client on the database node to reduce resource utilization on the server side. 
-        Follow the procedure below to install PMM Client using Package Manager (Default). 
+    ```sql
+    CREATE USER 'pmm'@'127.0.0.1' IDENTIFIED BY 'pass' WITH MAX_USER_CONNECTIONS 10;
+    GRANT SELECT, PROCESS, REPLICATION CLIENT, RELOAD, BACKUP_ADMIN ON *.* TO 'pmm'@'127.0.0.1';
+    ```
+    2. Install PMM Client on the database node to reduce resource utilization on the server side. 
+    Follow the procedure below to install PMM Client using Package Manager (Default). 
         
-        Alternatively, you can install PMM Client as a Docker container or as a binary package. See [alternative PMM Client installation options](../setting-up/client/index.html#binary-package).
+    Alternatively, you can install PMM Client as a Docker container or as a binary package. See [alternative PMM Client installation options](../setting-up/client/index.html#binary-package).
 
-        If you don't have access to the database node, [install PMM Client from the User interface](../setting-up/client/mysql.html#with-the-user-interface) instead. 
+    If you don't have access to the database node, [install PMM Client from the User interface](../setting-up/client/mysql.html#with-the-user-interface) instead. 
 
-        To install PMM Client using Package Manager:
-        { .power-number } 
+    To install PMM Client using Package Manager:
+    { .power-number } 
 
-            2.1. Install Percona Release Tool:
-            ```sh
-            wget https://repo.percona.com/apt/percona-release_latest.generic_all.deb
-            dpkg -i percona-release_latest.generic_all.deb
-            ```
-            2.2. Install the PMM Client package:
-            !!! hint "Root permissions"
-            
-            ```sh
-            apt update
-            apt install -y pmm2-client
-            ```
+    2.1. Install Percona Release Tool:
+    ```sh
+    wget https://repo.percona.com/apt/percona-release_latest.generic_all.deb
+    dpkg -i percona-release_latest.generic_all.deb
+    ```
+    2.2. Install the PMM Client package:
+    !!! hint "Root permissions"
+    
+    ```sh
+    apt update
+    apt install -y pmm2-client
+    ```
 
-            2.3. [Register Node with PMM](../setting-up/client/index.html#register):
-            
-            ```sh
-            pmm-admin config --server-insecure-tls --server-url=https://admin:admin@X.X.X.X:443
-            ```
-            2.4 Add the MySQL database using Performance schema:  
+    2.3. [Register Node with PMM](../setting-up/client/index.html#register):
+          
+    ```sh
+    pmm-admin config --server-insecure-tls --server-url=https://admin:admin@X.X.X.X:443
+    ```
+    2.4 Add the MySQL database using Performance schema:  
 
-            ```sh 
-            pmm-admin add mysql --query-source=perfschema --username=pmm --password=pass MYSQL_NODE
-            ```
-            
-            2.5. Optionally, [add the database using Slow log](../setting-up/client/mysql.md#data-source-recommendations)
+    ```sh 
+    pmm-admin add mysql --query-source=perfschema --username=pmm --password=pass MYSQL_NODE
+    ```
+
+    2.5. Optionally, [add the database using Slow log](../setting-up/client/mysql.md#data-source-recommendations)
 
 === "PostgreSQL"
 
@@ -132,11 +133,11 @@ Once PMM is set up, choose the database that you want it to monitor:
 
     1. From the PMM UI, go to **Configuration > PMM Inventory > Add Instance** and choose **PostgreSQL**.
 
-    3. Enter your database credentials on the resulting page.
+    2. Enter your database credentials on the resulting page.
 
-    4. (Optional) Enter the information on the **Labels** or **Additional Options** section. 
+    3. (Optional) Enter the information on the **Labels** or **Additional Options** section. 
 
-    5. Click **Add Service** at the bottom.
+    4. Click **Add Service** at the bottom.
 
     For detailed information, see [Adding a PostgreSQL database](../setting-up/client/postgresql.md).
 
@@ -164,8 +165,8 @@ Once PMM is set up, choose the database that you want it to monitor:
 
 === "ProxySQL"
 
-- To [enable ProxySQL performance metrics monitoring](../setting-up/client/proxysql.md)
-- To [add HAproxy services](../setting-up/client/haproxy.md)
+   - To [enable ProxySQL performance metrics monitoring](../setting-up/client/proxysql.md)
+   - To [add HAproxy services](../setting-up/client/haproxy.md)
 
 ## Next steps
 

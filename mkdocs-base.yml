@@ -154,10 +154,8 @@ extra:
 
 # Common navigation for percona.com, render.com and PDF
 nav:
-  - Welcome: 
-      - index.md
-  - Quickstart Guide: 
-      - quickstart.md
+  - Welcome: index.md
+  - Quickstart Guide: quickstart/index.md
   - Setting up: 
       - setting-up/index.md
       - Server:
