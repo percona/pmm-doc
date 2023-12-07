@@ -9,12 +9,11 @@ For alternative setups, explore the additional installation options detailed in 
 Before you start installing PMM Bare Metal/Virtual via the Easy-install script for Docker, verify that your system meets the compatibility requirements.
 
 <details>
-  <summary>Verify system compatibility</summary>
+<summary>Verify system compatibility</summary>
   
 | Disk      |Memory  | Ports         |
 |-----------|--------|---------------|
 | * 1 GB of storage per monitored database node. <br/><br/>  * 1 GB of storage per monitored database node for data retention set to one week.| Each database node should have at least 2 GB of memory for effective monitoring. <br/><br/> **Note:** The increase in memory usage is not proportional to the number of nodes. </br> </br>  **Example**: Data from 20 nodes should be easily handled with 16 GB.| * By default, port 443 should be opened on the PMM Server. <br/><br/>  * The database port should be open for the PMM Agent.|
-
 </details>
 
 ## Install PMM
@@ -36,16 +35,15 @@ To install on Bare Metal/Virtual using the recommended Easy-install script proce
 
 The script only runs on Linux-compatible systems. To use it, run the command with `sudo` privileges or as **root**.
 
-<details>
-  <summary>What's happening under the hood?</summary>
+    <details>
+    <summary>What's happening under the hood?</summary>
+            This script does the following:
 
-        This script does the following:
+            - Installs Docker if it is not installed on your system.
+            - Stops and renames any currently running PMM Docker container from `pmm-server` to `pmm-server-{timestamp}`. This old pmm-server container is not a recoverable backup.
+            - Pulls and runs the latest PMM Docker image.
 
-        - Installs Docker if it is not installed on your system.
-        - Stops and renames any currently running PMM Docker container from `pmm-server` to `pmm-server-{timestamp}`. This old pmm-server container is not a recoverable backup.
-        - Pulls and runs the latest PMM Docker image.
-
-</details>
+    </details>
 
 2. Install PMM using `cURL` or `wget`:
 
@@ -89,13 +87,11 @@ Once PMM is set up, choose the database that you want it to monitor:
 
     2. Install PMM Client on the database node to reduce resource utilization on the server side. 
     Follow the procedure below to install PMM Client using Package Manager (Default). 
-        
     Alternatively, you can install PMM Client as a Docker container or as a binary package. See [alternative PMM Client installation options](../setting-up/client/index.html#binary-package).
-
     If you don't have access to the database node, [install PMM Client from the User interface](../setting-up/client/mysql.html#with-the-user-interface) instead. 
 
-        To install PMM Client using Package Manager:
-        { .power-number } 
+    To install PMM Client using Package Manager:
+    { .power-number } 
 
         2.1. Install Percona Release Tool:
 
@@ -104,7 +100,6 @@ Once PMM is set up, choose the database that you want it to monitor:
         dpkg -i percona-release_latest.generic_all.deb
         ```
         2.2. Install the PMM Client package:
-        !!! hint "Root permissions"
         
         ```sh
         apt update
@@ -170,6 +165,7 @@ Once PMM is set up, choose the database that you want it to monitor:
 
 === "ProxySQL"
     When connecting a ProxySQL database, you can:
+
     - [Enable ProxySQL performance metrics monitoring](../setting-up/client/proxysql.md).
     - [Add HAproxy services](../setting-up/client/haproxy.md).
 
