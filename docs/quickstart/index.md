@@ -37,9 +37,9 @@ To install on Bare Metal/Virtual using the recommended Easy-install script proce
 The script only runs on Linux-compatible systems. To use it, run the command with `sudo` privileges or as **root**.
 
 <details>
-  <summary>
-    ??? note "What's happening under the hood" </summary>
+  <summary>"What's happening under the hood"</summary>
         This script does the following:
+
         - Installs Docker if it is not installed on your system.
         - Stops and renames any currently running PMM Docker container from `pmm-server` to `pmm-server-{timestamp}`. This old pmm-server container is not a recoverable backup.
         - Pulls and runs the latest PMM Docker image.
@@ -77,6 +77,7 @@ Once PMM is set up, choose the database that you want it to monitor:
 === "MySQL 8.0"
 
     Follow the instructions below to connect a Self-hosted MySQL database. Alternatively, you can connect a [AWS RDS](../setting-up/client/aws.md), [Azure MySQL](../setting-up/client/azure.md) or a [Google Cloud MySQL ](../setting-up/client/google.md) database.
+    { .power-number }
 
     1. Create database account for PMM using the following command example. This creates a database user with name **pmm**, password **pass**, and the necessary permissions:
 
@@ -84,6 +85,7 @@ Once PMM is set up, choose the database that you want it to monitor:
     CREATE USER 'pmm'@'127.0.0.1' IDENTIFIED BY 'pass' WITH MAX_USER_CONNECTIONS 10;
     GRANT SELECT, PROCESS, REPLICATION CLIENT, RELOAD, BACKUP_ADMIN ON *.* TO 'pmm'@'127.0.0.1';
     ```
+
     2. Install PMM Client on the database node to reduce resource utilization on the server side. 
     Follow the procedure below to install PMM Client using Package Manager (Default). 
         
@@ -95,6 +97,7 @@ Once PMM is set up, choose the database that you want it to monitor:
     { .power-number } 
 
     2.1. Install Percona Release Tool:
+
     ```sh
     wget https://repo.percona.com/apt/percona-release_latest.generic_all.deb
     dpkg -i percona-release_latest.generic_all.deb
@@ -112,6 +115,7 @@ Once PMM is set up, choose the database that you want it to monitor:
     ```sh
     pmm-admin config --server-insecure-tls --server-url=https://admin:admin@X.X.X.X:443
     ```
+    
     2.4 Add the MySQL database using Performance schema:  
 
     ```sh 
