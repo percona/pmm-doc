@@ -1,12 +1,14 @@
 # Get started with PMM
 
-To get up and running with Percona Monitoring and Management (PMM) in no time, install PMM on Docker using the Easy-install script. This is a simple and efficient way to install PMM.
+To get up and running with Percona Monitoring and Management (PMM) in no time, install PMM on Bare Metal/Virtual using the Easy-install script for Docker. This is a simple and efficient way to install PMM.
 
-For alternative setups, explore the additional installation options detailed in the [Setting up chapter](../setting-up/index.md). 
+For alternative setups, explore the additional installation options detailed in the [Setting up chapter](../setting-up/index.md).
 
 ## Prerequisites
 
-Before you start installing PMM on Docker via the Easy-install script, verify that your system meets the compatibility requirements. <details>
+Before you start installing PMM Bare Metal/Virtual via the Easy-install script for Docker, verify that your system meets the compatibility requirements. 
+
+<details>
   <summary>Verify system compatibility</summary>
   
 | Disk      |Memory  | Ports         |
@@ -15,36 +17,35 @@ Before you start installing PMM on Docker via the Easy-install script, verify th
 
 </details>
 
-## Install PMM Server
+## Install PMM
 
-``` mermaid
-graph RL
-subgraph s1[Now: Step 1]
-    PS(PMM Server)
-end
-DB[(Database)] -- Data collection --> PC(PMM Client)
-PC -- Transmission --> PS
-```
+We recommend deploying PMM on Bare Metal/Virtual using the Docker Easy-install script below, as this is a fast and efficient method for getting started with PMM.
 
-Decide where you want to run PMM. You can choose from a wide array of hosts below:
+However, PMM can run on a wide array of alternative hosts:
 
-=== "Bare Metal/Virtual (recommended)"
+- [Deploy on Podman](../setting-up/server/podman.md)
+- [Deploy based on a Docker image](../setting-up/server/docker.md) 
+- [Deploy on Virtual Appliance](../setting-up/server/virtual-appliance.md).
+- [Deploy on Kubernetes via Helm](../setting-up/server/helm.md)
+- [Run a PMM instancehosted at AWS Marketplace](../setting-up/server/aws.md)
 
-    You can [Deploy PMM on Docker manually], (../setting-up/index.md) via [Podman](../setting-up/server/podman.md), a [Docker image](../setting-up/server/docker.md) or [Virtual Appliance](../setting-up/server/virtual-appliance.md). 
-    However, we recommend using the Easy-install script below, as this is a fast and efficient method for getting started with PMM: 
+To install on Bare Metal/Virtual using the recommended Easy-install script procedure for Docker:
     { .power-number }
 
     1. Download and run the PMM Easy-install script from [GitHub](https://github.com/percona/pmm/blob/main/get-pmm.sh). 
     The script only runs on Linux-compatible systems. To use it, run the command with `sudo` privileges or as **root**.
 
-    ??? note "What's happening under the hood"
+<details>
+  <summary>
+    ??? note "What's happening under the hood" </summary>
         This script does the following:
         - Installs Docker if it is not installed on your system.
-        - Stops and renames any currently running PMM Server Docker container from `pmm-server` to `pmm-server-{timestamp}`. This old pmm-server container is not a recoverable backup.
-        - Pulls and runs the latest PMM Server Docker image.
+        - Stops and renames any currently running PMM Docker container from `pmm-server` to `pmm-server-{timestamp}`. This old pmm-server container is not a recoverable backup.
+        - Pulls and runs the latest PMM Docker image.
 
+</details>
 
-    2. Install PMM Server using `cURL` or `wget`:
+    1. Install PMM using `cURL` or `wget`:
 
     === "cURL"
 
@@ -57,7 +58,7 @@ Decide where you want to run PMM. You can choose from a wide array of hosts belo
         ```sh
         wget -qO - https://www.percona.com/get/pmm | /bin/bash    
         ```
-   
+ 
     To run PMM in the **Interactive** mode and  change the default settings, use the following command:
 
         ```sh
@@ -66,121 +67,57 @@ Decide where you want to run PMM. You can choose from a wide array of hosts belo
         ./pmm --interactive
         ```
 
-    3. Log into PMM with the default credentials provided after the installation is completed.
-
-=== ":simple-kubernetes: Kubernetes"
-
-    Learn how to [install PMM in a Kubernetes cluster using Helm](../setting-up/server/helm.md).
-
-=== ":simple-amazonaws: Amazon"
-
-    Learn how to [run an instance of PMM Server hosted at AWS Marketplace](../setting-up/server/aws.md).
-
-=== ":simple-microsoftazure: Azure"
-
-    Azure links here...
-
-=== ":simple-googlecloud: Google Cloud"
-
-    Google Cloud links here...
-
-### Install PMM Client
-
-Once PMM Server is set up, you can install a PMM Client on the database node to reduce resource utilization on the server side. 
-
-Select the database technology you're using to find the right setup for PMM Client and start collecting data signals back to PMM Server.
-
-``` mermaid
-graph RL
-PS(PMM Server)
-subgraph s2[Now: Step 2]
-    DB[(Database)] -- Data collection --> PC(PMM Client)
-end
-PC -- Transmission --> PS
-```
-
-=== ":material-dolphin: MySQL"
-
-    To connect a MySQL database, check the type of host that you have and follow the instructions required to set up PMM Client.
-
-    | <small>*Host*</small> | <small>*Recommended set up*</small> | <small>*Other advanced options*</small> |
-    | --------------------- | ----------------------------------- | ------------------------------ |
-    | **Self-hosted / AWS EC2** | [**Add database using Percona Repositories** :material-arrow-right:](../setting-up/client/index.md) | [Using a PMM Docker image](../add-DB.md/pmm-image.md)<br><br>[Download and install PMM files](../add-DB.md/) |
-    | **AWS RDS / AWS Aurora** | [**Configure AWS settings** :material-arrow-right:](../add-DB.md/configure-aws.md) |
-    | **Azure Database for MySQL** | [**Configure Azure settings** :material-arrow-right:](../add-DB.md/configure-azure.md) |
-    | **Google Cloud SQL for MySQL** | [**Configure Google Cloud Settings** :material-arrow-right:](../add-DB.md/configure-gc.md) |
-    | **Other hosts/No access to the node** | [**Remote monitoring** :material-arrow-right:](../add-DB.md/remote-monitoring.md) |
-
-=== ":material-elephant: PostgreSQL"
-
-    Learn how to [set up PMM to monitor a PostgreSQL or Percona Distribution for PostgreSQL database](../setting-up/client/postgresql.md) instance.
-
-=== ":material-leaf: MongoDB"
-
-    Learn to [set up PMM to monitor a MongoDB or Percona Server for MongoDB database](../setting-up/client/mongodb.md) instance.
-
-=== ":material-database: ProxySQL"
-
-    Learn to [set up PMM to monitor a ProxySQL database](../setting-up/client/proxysql.md.md) instance.
-
-=== ":material-database: HAproxy"
-
-    Learn to [collect metrics from HAProxy on a database node](../setting-up/client/haproxy.md).
-
-=== ":simple-linux: Linux"
-
-    Learn to [collect metrics from Linux on a database node](../setting-up/client/linux.md).
-
-=== "Other technologies"
-
-    Others' links here...
+    2. Log into PMM with the default credentials provided after the installation is completed.
 
 ### Connect database
 
-Once the PMM Server and Client are set up, choose the database that you want to monitor with PMM.
+Once PMM is set up, choose the database that you want it to monitor:
 
 === "MySQL 8.0"
 
-    **Prerequisites**
+        Follow the instructions below to connect a Self-hosted MySQL database. Alternatively, you can connect a [AWS RDS](../setting-up/client/aws.md), [Azure MySQL](../setting-up/client/azure.md) or [Google Cloud MySQL ](../setting-up/client/google.md) database.
 
-    Before you add a MySQL database for monitoring you should have a [database account for PMM](https://docs.percona.com/percona-monitoring-and-management/setting-up/client/mysql.html#create-a-database-account-for-pmm).
+        1. Create database account for PMM using the following command example. This creates a database user with name **pmm**, password **pass**, and the necessary permissions:
 
-    **Add a MySQL database instance**
-    {.power-number}
+        ```sql
+        CREATE USER 'pmm'@'127.0.0.1' IDENTIFIED BY 'pass' WITH MAX_USER_CONNECTIONS 10;
+        GRANT SELECT, PROCESS, REPLICATION CLIENT, RELOAD, BACKUP_ADMIN ON *.* TO 'pmm'@'127.0.0.1';
+        ```
+        2. Install PMM Client on the database node to reduce resource utilization on the server side. 
+        Follow the procedure below to install PMM Client using Package Manager (Default). 
+        
+        Alternatively, you can install PMM Client as a Docker container or as a binary package. See [alternative PMM Client installation options](../setting-up/client/index.html#binary-package).
 
-    To add a MySQL database instance for monitoring, do the following:
+        If you don't have access to the database node, [install PMM Client from the User interface](../setting-up/client/mysql.html#with-the-user-interface) instead. 
 
-    1. From the PMM UI, go to **Configuration > PMM Inventory > Add Instance** and select **MySQL**.
+        To install PMM Client using Package Manager:
+        { .power-number } 
 
-    2. Enter your database credentials on the resulting page without changing any values.
+            2.1. Install Percona Release Tool:
+            ```sh
+            wget https://repo.percona.com/apt/percona-release_latest.generic_all.deb
+            dpkg -i percona-release_latest.generic_all.deb
+            ```
+            2.2. Install the PMM Client package:
+            !!! hint "Root permissions"
+            
+            ```sh
+            apt update
+            apt install -y pmm2-client
+            ```
 
-    3. (Optional) Enter the information on the **Labels** and **Additional Options** section. 
+            2.3. [Register Node with PMM](../setting-up/client/index.html#register):
+            
+            ```sh
+            pmm-admin config --server-insecure-tls --server-url=https://admin:admin@X.X.X.X:443
+            ```
+            2.4 Add the MySQL database using Performance schema:  
 
-    4. Click **Add Service** at the bottom.
-
-    For detailed information, see [Adding a MySQL database for monitoring](https://docs.percona.com/percona-monitoring-and-management/setting-up/client/mysql.html).
-
-=== "MongoDB"
-
-    **Prerequisites**
-
-    Before adding a MongoDB database for monitoring, [create a database account for PMM](https://docs.percona.com/percona-monitoring-and-management/setting-up/client/mongodb.html#create-pmm-account-and-set-permissions).
-
-    **Add a MongoDB database instance**
-    {.power-number}
-
-    To add a MongoDB database instance for monitoring, do the following:
-
-
-    1. From the PMM UI, go to **Configuration >PMM Inventory > Add Instance** and select **MongoDB**.
-
-    3. Enter your database credentials on the resulting page.
-
-    4. (Optional) Enter the information in the **Labels** and **Additional Options** section. 
-
-    5. Click **Add Service** at the bottom.
-
-    For detailed information on adding a MongoDB database, see [Adding a MySQL database for monitoring](https://docs.percona.com/percona-monitoring-and-management/setting-up/client/mongodb.html).
+            ```sh 
+            pmm-admin add mysql --query-source=perfschema --username=pmm --password=pass MYSQL_NODE
+            ```
+            
+            2.5. Optionally, [add the database using Slow log](../setting-up/client/mysql.md#data-source-recommendations)
 
 === "PostgreSQL"
 
@@ -203,49 +140,36 @@ Once the PMM Server and Client are set up, choose the database that you want to 
 
     For detailed information, see [Adding a PostgreSQL database](../setting-up/client/postgresql.md).
 
-=== "Amazon RDS"
+=== "MongoDB"
 
-    You can use PMM for monitoring [Amazon RDS](https://aws.amazon.com/rds/). By using the PMM web interface, you connect to the Amazon RDS DB instance. 
+    **Prerequisites**
 
-    You only need to provide the [IAM user access key](https://docs.percona.com/percona-monitoring-and-management/setting-up/client/aws.html#creating-an-access-key-for-an-iam-user) or assign an [IAM role](https://docs.percona.com/percona-monitoring-and-management/setting-up/client/aws.html#creating-an-iam-role) and PMM discovers the Amazon RDS DB instances available for monitoring.
+    Before adding a MongoDB database for monitoring, [create a database account for PMM](https://docs.percona.com/percona-monitoring-and-management/setting-up/client/mongodb.html#create-pmm-account-and-set-permissions).
 
-    Before you add Amazon instance for monitoring, do the following:
-
-    - Get your AWS RDS Access Key and RDS Secret Access Key. This key should have permission to monitor RDS.
-    - Recommended: Enable **Enhanced Monitoring** option in the settings of your Amazon RDS DB instance.
-    - Database username and password with access to login to the RDS instance.
-    - Access the RDS instance via a TCP port.
-
-    To add an Amazon RDS database instance for monitoring:
+    **Add a MongoDB database instance**
     {.power-number}
 
-    1. From the PMM UI, go to **Configuration > PMM Inventory > Add Instance**.
+    To add a MongoDB database instance for monitoring, do the following:
 
-    2. Select **Amazon RDS – Add a remote instance**.
 
-    3. Enter the **access key ID** and the **secret access key** of your IAM user, or leave these fields empty if an IAM role was created.
+    1. From the PMM UI, go to **Configuration >PMM Inventory > Add Instance** and select **MongoDB**.
 
-    4. Click **Discover** for PMM to retrieve the available Amazon RDS instances.
+    2. Enter your database credentials on the resulting page.
 
-    5. For the instance that you would like to monitor, select **Start monitoring**.
+    3. (Optional) Enter the information in the **Labels** and **Additional Options** section. 
 
-    6. Enter your database credentials on the resulting page.
+    4. Click **Add Service** at the bottom.
 
-    7. (Optional) Enter the information on the **Labels** or **Additional Options** section. 
+    For detailed information on adding a MongoDB database, see [Adding a MySQL database for monitoring](https://docs.percona.com/percona-monitoring-and-management/setting-up/client/mongodb.html).
 
-    8. Click **Add Service** at the bottom.
+=== "ProxySQL"
 
-    For detailed information, see [Adding an Amazon RDS instance for monitoring](../setting-up/).
-
-</details>
-
+- To [enable ProxySQL performance metrics monitoring](../setting-up/client/proxysql.md)
+- To [add HAproxy services](../setting-up/client/haproxy.md)
 
 ## Next steps
 
-[Configure PMM via the interface :material-arrow-right:](../how-to/configure.md){.md-button}
-
-[Manage users in PMM :material-arrow-right:](../how-to/manage-users.md){.md-button}
-
-[Set up roles and permissions :material-arrow-right:](../get-started/roles-and-permissions/index.md){.md-button}
-
-[Back up and restore data in PMM :material-arrow-right:](../get-started/backup/index.md){.md-button}
+- [Configure PMM via the interface :material-arrow-right:](../how-to/configure.md)
+- [Manage users in PMM :material-arrow-right:](../how-to/manage-users.md)
+- [Set up roles and permissions :material-arrow-right:](../get-started/roles-and-permissions/index.md)
+- [Back up and restore data in PMM :material-arrow-right:](../get-started/backup/index.md)
