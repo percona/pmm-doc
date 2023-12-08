@@ -66,7 +66,7 @@ Once PMM is set up, choose the database that you want it to monitor:
         GRANT SELECT, PROCESS, REPLICATION CLIENT, RELOAD, BACKUP_ADMIN ON *.* TO 'pmm'@'127.0.0.1';
         ```
 
-    2. To optimize server-side resources, install PMM Client via the Package Manager on the database node. This will help streamline resource utilization effectively.
+    2. To optimize server-side resources, install PMM Client via Package Manager on the database node:
          
         1. Install Percona Release Tool:
 
