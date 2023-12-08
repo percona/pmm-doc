@@ -1,6 +1,8 @@
 # Get started with PMM
 
-To get up and running with Percona Monitoring and Management (PMM) in no time, install PMM on Bare Metal/Virtual using the Easy-install script for Docker. This is a simple and efficient way to install PMM.
+To get up and running with Percona Monitoring and Management (PMM) in no time, install PMM on Bare Metal/Virtual using the Easy-install script for Docker.
+
+This is a simple and efficient way to install PMM.
 
 ??? info "Alternative installation options"
      For alternative setups, explore the additional installation options detailed in the **Setting up** chapter:
@@ -11,7 +13,7 @@ To get up and running with Percona Monitoring and Management (PMM) in no time, i
     - [Deploy on Kubernetes via Helm](../setting-up/server/helm.md)
     - [Run a PMM instance hosted at AWS Marketplace](../setting-up/server/aws.md)
 
-#### Prerequisites
+##### Prerequisites
 
 Before you start installing PMM, verify that your system meets the compatibility requirements.
 
@@ -54,10 +56,10 @@ Once PMM is set up, choose the database that you want it to monitor:
 
 === "MySQL"
 
-    Follow the instructions below to connect a Self-hosted MySQL database. Alternatively, you can connect a [AWS RDS](../setting-up/client/aws.md), [Azure MySQL](../setting-up/client/azure.md) or a [Google Cloud MySQL ](../setting-up/client/google.md) database.
+    Follow the instructions below to connect a Self-hosted MySQL database. Alternatively, you can connect an [AWS RDS](../setting-up/client/aws.md), [Azure MySQL](../setting-up/client/azure.md) or a [Google Cloud MySQL ](../setting-up/client/google.md) database.
     { .power-number }
 
-    1. Create database account for PMM using the following command example. This creates a database user with name **pmm**, password **pass**, and the necessary permissions:
+    1. Create database account for PMM using the following command example. This creates a database user with name `pmm``, password `pass``, and the necessary permissions:
 
         ```sql
         CREATE USER 'pmm'@'127.0.0.1' IDENTIFIED BY 'pass' WITH MAX_USER_CONNECTIONS 10;
@@ -79,7 +81,7 @@ Once PMM is set up, choose the database that you want it to monitor:
             apt install -y pmm2-client
             ```
 
-        3. [Register Node with PMM](../setting-up/client/index.html#register):
+        3. [Register database node with PMM](../setting-up/client/index.html#register):
                 
             ```sh
             pmm-admin config --server-insecure-tls --server-url=https://admin:admin@X.X.X.X:443
@@ -93,7 +95,7 @@ Once PMM is set up, choose the database that you want it to monitor:
 
     Alternatively, you can install PMM Client as a Docker container or as a binary package. See [alternative PMM Client installation options](../setting-up/client/index.html#binary-package).
 
-    If you don't have access to the database node, [install PMM Client from the User interface](../setting-up/client/mysql.html#with-the-user-interface) instead. 
+    If you don't have access to the database node, [install PMM Client from the User Interface](../setting-up/client/mysql.html#with-the-user-interface) instead. 
 
 === "PostgreSQL"
 
