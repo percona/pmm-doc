@@ -18,7 +18,7 @@ The dashboard contains three panels:
 - the [Details Panel](#details-panel).
 
 !!! note alert alert-primary ""
-    Query Analytics data retrieval is not instantaneous and can be delayed due to network conditions. In such situations QAN data continues to be gathered and is delivered as soon as the connection is re-established.
+    Query Analytics data retrieval is not instantaneous and can be delayed due to network conditions. In such situations *no data* is reported and a gap appears in the sparkline.
 
 ## Filters Panel
 
