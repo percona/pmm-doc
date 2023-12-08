@@ -13,7 +13,7 @@ This is a simple and efficient way to install PMM.
     - [Deploy on Kubernetes via Helm](../setting-up/server/helm.md)
     - [Run a PMM instance hosted at AWS Marketplace](../setting-up/server/aws.md)
 
-##### Prerequisites
+#### Prerequisites
 
 Before you start installing PMM, verify that your system meets the compatibility requirements.
 
@@ -92,7 +92,7 @@ Once PMM is set up, choose the database that you want it to monitor:
             ```sh 
             pmm-admin add mysql --query-source=perfschema --username=pmm --password=pass MYSQL_NODE
             ```
-
+            
     Alternatively, you can install PMM Client as a Docker container or as a binary package. See [alternative PMM Client installation options](../setting-up/client/index.html#binary-package).
 
     If you don't have access to the database node, [install PMM Client from the User Interface](../setting-up/client/mysql.html#with-the-user-interface) instead. 
