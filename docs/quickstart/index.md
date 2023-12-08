@@ -2,33 +2,29 @@
 
 To get up and running with Percona Monitoring and Management (PMM) in no time, install PMM on Bare Metal/Virtual using the Easy-install script for Docker. This is a simple and efficient way to install PMM.
 
-For alternative setups, explore the additional installation options detailed in the [Setting up chapter](../setting-up/index.md):
+???+ info "Alternative installation options"
+     For alternative setups, explore the additional installation options detailed in the **Setting up** chapter:
 
-- [Deploy on Podman](../setting-up/server/podman.md)
-- [Deploy based on a Docker image](../setting-up/server/docker.md)
-- [Deploy on Virtual Appliance](../setting-up/server/virtual-appliance.md).
-- [Deploy on Kubernetes via Helm](../setting-up/server/helm.md)
-- [Run a PMM instance hosted at AWS Marketplace](../setting-up/server/aws.md)
+    - [Deploy on Podman](../setting-up/server/podman.md)
+    - [Deploy based on a Docker image](../setting-up/server/docker.md)
+    - [Deploy on Virtual Appliance](../setting-up/server/virtual-appliance.md).
+    - [Deploy on Kubernetes via Helm](../setting-up/server/helm.md)
+    - [Run a PMM instance hosted at AWS Marketplace](../setting-up/server/aws.md)
 
 ## Prerequisites
 
 Before you start installing PMM Bare Metal/Virtual via the Easy-install script for Docker, verify that your system meets the compatibility requirements.
 
-???+ note "Verify system compatibility"
-    - **Disk**: Approximately 1 GB of storage per monitored database node with data retention set to one week. By default, retention is 30 days. 
-    - 1 GB of storage per monitored database node. =
-    -  1 GB of storage per monitored database node for data retention set to one week.
-    -  **Memory**: A minimum of 2 GB per monitored database node. The increase in memory usage is not proportional to the number of nodes. For example, the data from 20 nodes should be easily handled with 16 GB.
-    - **Ports**: By default, port 443 should be opened on the PMM Server.
-    - The database port should be open for the PMM Agent.|
-
-</details>
+??? info "Verify system compatibility"
+    - **Disk**: Approximately 1 GB of storage per monitored database node with data retention set to one week. By default, retention is 30 days.
+    - **Memory**: A minimum of 2 GB per monitored database node. The increase in memory usage is not proportional to the number of nodes. For example, the data from 20 nodes should be easily handled with 16 GB.
+    - **Ports**: Your system’s firewall should allow TCP traffic on port 80 and 443.
 
 ## Install PMM
 
 We recommend deploying PMM on Bare Metal/Virtual using the Docker Easy-install script below, as this is a fast and efficient method for getting started with PMM.
 
-The script only runs on Linux-compatible systems. To use it, run the command with `sudo` privileges or as **root**:
+The script only runs on Linux-compatible systems. To use it, run the command with `sudo` privileges or as `root`:
 { .power-number }
 
 1. Download and install PMM using `cURL` or `wget`:
@@ -47,14 +43,13 @@ The script only runs on Linux-compatible systems. To use it, run the command wit
 
 2. After the installation is complete, log into PMM with the default `admin:` `admin` credentials.
 
-???+ note "Verify system compatibility"
+??? info "What's happening under the hood?"
      This script does the following:
 
      * Installs Docker if it is not installed on your system.
-     * Stops and renames any currently running PMM Docker container from `pmm-server` to `pmm-server-{timestamp}`. This old pmm-server container is not a recoverable backup.
+     * Stops and renames any currently running PMM Docker container from `pmm-server` to `pmm-server-{timestamp}`. This old `pmm-server container is not a recoverable backup.
      * Pulls and runs the latest PMM Docker image.
 
-</details>
 
 ### Connect database
 
@@ -72,38 +67,35 @@ Once PMM is set up, choose the database that you want it to monitor:
         GRANT SELECT, PROCESS, REPLICATION CLIENT, RELOAD, BACKUP_ADMIN ON *.* TO 'pmm'@'127.0.0.1';
         ```
 
-    2. Install PMM Client on the database node to reduce resource utilization on the server side. 
-    Follow the procedure below to install PMM Client using Package Manager (Default). 
+    2. Install PMM Client on the database node to reduce resource utilization on the server side. To install PMM Client using Package Manager:
+        { .power-number }
 
-    To install PMM Client using Package Manager:
-    { .power-number }
+        2.1. Install Percona Release Tool:
 
-      2.1. Install Percona Release Tool:
-
-        ```sh
-        wget https://repo.percona.com/apt/percona-release_latest.generic_all.deb
-        dpkg -i percona-release_latest.generic_all.deb
-        ```
-      - 2.2. Install the PMM Client package:
-        
-        ```sh
-        apt update
-        apt install -y pmm2-client
-        ```
-
-      - 2.3. [Register Node with PMM](../setting-up/client/index.html#register):
+            ```sh
+            wget https://repo.percona.com/apt/percona-release_latest.generic_all.deb
+            dpkg -i percona-release_latest.generic_all.deb
+            ```
+         2.2. Install the PMM Client package:
             
-        ```sh
-        pmm-admin config --server-insecure-tls --server-url=https://admin:admin@X.X.X.X:443
-        ```
+            ```sh
+            apt update
+            apt install -y pmm2-client
+            ```
 
-      - 2.4 Add the MySQL database using Performance schema:  
+        - 2.3. [Register Node with PMM](../setting-up/client/index.html#register):
+                
+            ```sh
+            pmm-admin config --server-insecure-tls --server-url=https://admin:admin@X.X.X.X:443
+            ```
 
-        ```sh 
-        pmm-admin add mysql --query-source=perfschema --username=pmm --password=pass MYSQL_NODE
-        ```
+        - 2.4 Add the MySQL database using Performance schema:  
 
-      - 2.5. (Optional) [Add the database using Slow log](../setting-up/client/mysql.md#data-source-recommendations).
+            ```sh 
+            pmm-admin add mysql --query-source=perfschema --username=pmm --password=pass MYSQL_NODE
+            ```
+
+        - 2.5. (Optional) [Add the database using Slow log](../setting-up/client/mysql.md#data-source-recommendations).
 
     Alternatively, you can install PMM Client as a Docker container or as a binary package. See [alternative PMM Client installation options](../setting-up/client/index.html#binary-package).
 
