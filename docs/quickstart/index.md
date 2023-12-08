@@ -7,7 +7,7 @@ To get up and running with Percona Monitoring and Management (PMM) in no time, i
 
     - [Deploy on Podman](../setting-up/server/podman.md)
     - [Deploy based on a Docker image](../setting-up/server/docker.md)
-    - [Deploy on Virtual Appliance](../setting-up/server/virtual-appliance.md).
+    - [Deploy on Virtual Appliance](../setting-up/server/virtual-appliance.md)
     - [Deploy on Kubernetes via Helm](../setting-up/server/helm.md)
     - [Run a PMM instance hosted at AWS Marketplace](../setting-up/server/aws.md)
 
@@ -66,8 +66,8 @@ Once PMM is set up, choose the database that you want it to monitor:
         GRANT SELECT, PROCESS, REPLICATION CLIENT, RELOAD, BACKUP_ADMIN ON *.* TO 'pmm'@'127.0.0.1';
         ```
 
-    2. Install PMM Client on the database node to reduce resource utilization on the server side. To install PMM Client using Package Manager:
-       
+    2. To optimize server-side resources, install PMM Client via the Package Manager on the database node. This will help streamline resource utilization effectively.
+         
         1. Install Percona Release Tool:
 
             ```sh
@@ -150,7 +150,7 @@ Once PMM is set up, choose the database that you want it to monitor:
 
 ## Next steps
 
-- [Configure PMM via the interface :material-arrow-right:](../how-to/configure.md)
-- [Manage users in PMM :material-arrow-right:](../how-to/manage-users.md)
-- [Set up roles and permissions :material-arrow-right:](../get-started/roles-and-permissions/index.md)
-- [Back up and restore data in PMM :material-arrow-right:](../get-started/backup/index.md)
+- [Configure PMM via the interface](../how-to/configure.md)
+- [Manage users in PMM](../how-to/manage-users.md)
+- [Set up roles and permissions](../get-started/roles-and-permissions/index.md)
+- [Back up and restore data in PMM](../get-started/backup/index.md)
