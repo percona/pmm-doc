@@ -56,7 +56,7 @@ Once PMM is set up, choose the database that you want it to monitor:
 
 === "MySQL"
 
-    Follow the instructions below to connect a Self-hosted MySQL database:
+    To connect a Self-hosted MySQL database:
     { .power-number}
 
     1. Create database account for PMM using the following command example. This creates a database user with name `pmm``, password `pass``, and the necessary permissions:
@@ -101,52 +101,87 @@ Once PMM is set up, choose the database that you want it to monitor:
 
 === "PostgreSQL"
 
-    **Prerequisites**
-     
-    Before adding a PostgreSQL database for monitoring, [create a database account for PMM](https://docs.percona.com/percona-monitoring-and-management/setting-up/client/postgresql.html#create-a-database-account-for-pmm)
-    
-    **Add a PostgreSQL database instance**
-    {.power-number}
+    To connect a PostgreSQL database using the Postgres CLI: 
+    { .power-number}
 
-    To add a PostgreSQL database instance for monitoring, do the following:
-
-    1. From the PMM UI, go to **Configuration > PMM Inventory > Add Instance** and choose **PostgreSQL**.
-
-    2. Enter your database credentials on the resulting page.
-
-    3. (Optional) Enter the information on the **Labels** or **Additional Options** section. 
-
-    4. Click **Add Service** at the bottom.
+    1. Create a PMM-specific user for monitoring:
+        
+        ```
+        CREATE USER pmm WITH SUPERUSER ENCRYPTED PASSWORD '<password>';
+        ```
+    2. Register the server for monitoring:
+       
+       ```
+       sudo pmm-admin add postgresql --username='pmm' --password=<password>
+       ```
 
     For detailed information, see [Adding a PostgreSQL database](../setting-up/client/postgresql.md).
 
 === "MongoDB"
 
-    **Prerequisites**
+    To connect a MongoDB database from the MongoDB CLI:
+    { .power-number}
+    
+    1. Create a PMM-specific user for monitoring from the MongoDB Console. Use `mongo` and `admin`:
+    
+    ```
+        db.createRole({
+    "role":"explainRole",
+    "privileges":[
+        {
+            "resource":{
+                "db":"",
+                "collection":""
+            },
+            "actions":[
+                "collStats",
+                "dbHash",
+                "dbStats",
+                "find",
+                "listIndexes",
+                "listCollections"
+            ]
+        }
+    ],
+    "roles":[]
+    })
+    ```
 
-    Before adding a MongoDB database for monitoring, [create a database account for PMM](https://docs.percona.com/percona-monitoring-and-management/setting-up/client/mongodb.html#create-pmm-account-and-set-permissions).
+    ```
+        db.getSiblingDB("admin").createUser({
+    "user":"pmm",
+    "pwd":"<password>",
+    "roles":[
+        {
+            "role":"explainRole",
+            "db":"admin"
+        },
+        {
+            "role":"clusterMonitor",
+            "db":"admin"
+        },
+        {
+            "role":"read",
+            "db":"local"
+        }
+    ]
+    })
+    exit
+    ```
+    2. Register the server for monitoring:
 
-    **Add a MongoDB database instance**
-    {.power-number}
+    ```
+    sudo pmm-admin add mongodb --username=pmm --password=<password>
+    ```
 
-    To add a MongoDB database instance for monitoring, do the following:
-
-
-    1. From the PMM UI, go to **Configuration >PMM Inventory > Add Instance** and select **MongoDB**.
-
-    2. Enter your database credentials on the resulting page.
-
-    3. (Optional) Enter the information in the **Labels** and **Additional Options** section. 
-
-    4. Click **Add Service** at the bottom.
 
     For detailed information on adding a MongoDB database, see [Adding a MySQL database for monitoring](https://docs.percona.com/percona-monitoring-and-management/setting-up/client/mongodb.html).
 
 === "ProxySQL"
-    When connecting a ProxySQL database, you can:
-
-    - [Enable ProxySQL performance metrics monitoring](../setting-up/client/proxysql.md).
-    - [Add HAproxy services](../setting-up/client/haproxy.md).
+    To connect a ProxySQL database, see [Enable ProxySQL performance metrics monitoring](../setting-up/client/proxysql.md).
+    
+=== "HAProxy"
+  To add HAProxy services, see [HAProxy ](../setting-up/client/haproxy.md).
 
 ### Check your database
 
