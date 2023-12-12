@@ -56,8 +56,8 @@ Once PMM is set up, choose the database that you want it to monitor:
 
 === "MySQL"
 
-    Follow the instructions below to connect a Self-hosted MySQL database. Alternatively, you can connect an [AWS RDS](../setting-up/client/aws.md), [Azure MySQL](../setting-up/client/azure.md) or a [Google Cloud MySQL ](../setting-up/client/google.md) database.
-    { .power-number }
+    Follow the instructions below to connect a Self-hosted MySQL database:
+    { .power-number}
 
     1. Create database account for PMM using the following command example. This creates a database user with name `pmm``, password `pass``, and the necessary permissions:
 
@@ -92,10 +92,12 @@ Once PMM is set up, choose the database that you want it to monitor:
             ```sh 
             pmm-admin add mysql --query-source=perfschema --username=pmm --password=pass MYSQL_NODE
             ```
-            
-    Alternatively, you can install PMM Client as a Docker container or as a binary package. See [alternative PMM Client installation options](../setting-up/client/index.html#binary-package).
+    ??? info "Alternative database connection workflows"
+        While the default instructions above focus on connecting a Self-hosted MySQL database, PMM offers the flexibility to connect to various MySQL databases, including [AWS RDS](../setting-up/client/aws.md), [Azure MySQL](../setting-up/client/azure.md) or [Google Cloud MySQL ](../setting-up/client/google.md). 
 
-    If you don't have access to the database node, [install PMM Client from the User Interface](../setting-up/client/mysql.html#with-the-user-interface) instead. 
+        The PMM Client installation also comes with options: in addition to the installation via Package Manager described above, you can also install it as a Docker container or as a binary package. Explore [alternative PMM Client installation options](../setting-up/client/index.html#binary-package) for more information.
+
+        Additionally, if direct access to the database node isn't available, opt for the [PMM Client installation via User Interface](../setting-up/client/mysql.html#with-the-user-interface) instead. 
 
 === "PostgreSQL"
 
@@ -145,6 +147,10 @@ Once PMM is set up, choose the database that you want it to monitor:
 
     - [Enable ProxySQL performance metrics monitoring](../setting-up/client/proxysql.md).
     - [Add HAproxy services](../setting-up/client/haproxy.md).
+
+### Check your database
+
+After installing PMM And connecting the database, go to the database's [Instance Summary dashboard](../details/dashboards/dashboard-mysql-instance-summary.md). This shows essential information about your database performance and an overview of your environment. For more information, see [PMM Dashboards](../details//dashboards/index.md).
 
 ## Next steps
 
