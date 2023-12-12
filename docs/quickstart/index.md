@@ -124,52 +124,52 @@ Once PMM is set up, choose the database that you want it to monitor:
     
     1. Create a PMM-specific user for monitoring from the MongoDB Console. 
     
-    Use `mongo` and `admin`:
-    
-    ```
-        db.createRole({
-    "role":"explainRole",
-    "privileges":[
-        {
-            "resource":{
-                "db":"",
-                "collection":""
-            },
-            "actions":[
-                "collStats",
-                "dbHash",
-                "dbStats",
-                "find",
-                "listIndexes",
-                "listCollections"
-            ]
-        }
-    ],
-    "roles":[]
-    })
-    ```
+        Use `mongo` and `admin`:
+        
+        ```
+            db.createRole({
+        "role":"explainRole",
+        "privileges":[
+            {
+                "resource":{
+                    "db":"",
+                    "collection":""
+                },
+                "actions":[
+                    "collStats",
+                    "dbHash",
+                    "dbStats",
+                    "find",
+                    "listIndexes",
+                    "listCollections"
+                ]
+            }
+        ],
+        "roles":[]
+        })
+        ```
 
-    ```
-        db.getSiblingDB("admin").createUser({
-    "user":"pmm",
-    "pwd":"<password>",
-    "roles":[
-        {
-            "role":"explainRole",
-            "db":"admin"
-        },
-        {
-            "role":"clusterMonitor",
-            "db":"admin"
-        },
-        {
-            "role":"read",
-            "db":"local"
-        }
-    ]
-    })
-    exit
-    ```
+        ```
+            db.getSiblingDB("admin").createUser({
+        "user":"pmm",
+        "pwd":"<password>",
+        "roles":[
+            {
+                "role":"explainRole",
+                "db":"admin"
+            },
+            {
+                "role":"clusterMonitor",
+                "db":"admin"
+            },
+            {
+                "role":"read",
+                "db":"local"
+            }
+        ]
+        })
+        exit
+        ```
 
     2. Register the server for monitoring:
 
@@ -181,9 +181,9 @@ Once PMM is set up, choose the database that you want it to monitor:
 
 === "ProxySQL"
     To connect a ProxySQL database, see [Enable ProxySQL performance metrics monitoring](../setting-up/client/proxysql.md).
-    
+
 === "HAProxy"
-     To add HAProxy services, see [HAProxy ](../setting-up/client/haproxy.md).
+    To add HAProxy services, see [HAProxy](../setting-up/client/haproxy.md).
 
 ### Check your database
 
