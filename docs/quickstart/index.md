@@ -111,9 +111,9 @@ Once PMM is set up, choose the database that you want it to monitor:
         ```
     2. Register the server for monitoring:
        
-       ```
-       sudo pmm-admin add postgresql --username='pmm' --password=<password>
-       ```
+        ```
+        sudo pmm-admin add postgresql --username='pmm' --password=<password>
+        ```
 
     For detailed information, see [Adding a PostgreSQL database](../setting-up/client/postgresql.md).
 
@@ -122,7 +122,9 @@ Once PMM is set up, choose the database that you want it to monitor:
     To connect a MongoDB database from the MongoDB CLI:
     { .power-number}
     
-    1. Create a PMM-specific user for monitoring from the MongoDB Console. Use `mongo` and `admin`:
+    1. Create a PMM-specific user for monitoring from the MongoDB Console. 
+    
+    Use `mongo` and `admin`:
     
     ```
         db.createRole({
@@ -168,12 +170,12 @@ Once PMM is set up, choose the database that you want it to monitor:
     })
     exit
     ```
+
     2. Register the server for monitoring:
 
     ```
     sudo pmm-admin add mongodb --username=pmm --password=<password>
     ```
-
 
     For detailed information on adding a MongoDB database, see [Adding a MySQL database for monitoring](https://docs.percona.com/percona-monitoring-and-management/setting-up/client/mongodb.html).
 
@@ -181,7 +183,7 @@ Once PMM is set up, choose the database that you want it to monitor:
     To connect a ProxySQL database, see [Enable ProxySQL performance metrics monitoring](../setting-up/client/proxysql.md).
     
 === "HAProxy"
-  To add HAProxy services, see [HAProxy ](../setting-up/client/haproxy.md).
+     To add HAProxy services, see [HAProxy ](../setting-up/client/haproxy.md).
 
 ### Check your database
 
