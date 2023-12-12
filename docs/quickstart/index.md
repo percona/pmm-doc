@@ -173,9 +173,9 @@ Once PMM is set up, choose the database that you want it to monitor:
 
     2. Register the server for monitoring:
 
-    ```
-    sudo pmm-admin add mongodb --username=pmm --password=<password>
-    ```
+        ```
+        sudo pmm-admin add mongodb --username=pmm --password=<password>
+        ```
 
     For detailed information on adding a MongoDB database, see [Adding a MySQL database for monitoring](https://docs.percona.com/percona-monitoring-and-management/setting-up/client/mongodb.html).
 

@@ -155,7 +155,7 @@ extra:
 # Common navigation for percona.com, render.com and PDF
 nav:
   - Welcome: index.md
-  - Quickstart Guide: quickstart/index.md
+  - Quickstart guide: quickstart/index.md
   - Setting up: 
       - setting-up/index.md
       - Server:
@@ -344,7 +344,7 @@ nav:
           - "Create a database cluster from a template": dbaas/DBaaS_template.md
       - "Backup and restore": dbaas/backup_restore.md
   - faq.md
-  - Release Notes:
+  - Release notes:
       - release-notes/index.md
       - "PMM 2.40.1": release-notes/2.40.1.md
       - "PMM 2.40.0": release-notes/2.40.0.md
