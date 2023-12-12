@@ -109,11 +109,25 @@ Once PMM is set up, choose the database that you want it to monitor:
         ```
         CREATE USER pmm WITH SUPERUSER ENCRYPTED PASSWORD '<password>';
         ```
-    2. Register the server for monitoring:
+     2. To optimize server-side resources, install PMM Client via Package Manager on the database node:
+         
+        1. Install Percona Release Tool:
+
+            ```sh
+            wget https://repo.percona.com/apt/percona-release_latest.generic_all.deb
+            dpkg -i percona-release_latest.generic_all.deb
+            ```
+        2. Install the PMM Client package:
+            
+            ```sh
+            apt update
+            apt install -y pmm2-client
+            ```
+        3. Register the server for monitoring:
        
-        ```
-        sudo pmm-admin add postgresql --username='pmm' --password=<password>
-        ```
+            ```
+            sudo pmm-admin add postgresql --username='pmm' --password=<password>
+            ```
 
     For detailed information, see [Adding a PostgreSQL database](../setting-up/client/postgresql.md).
 
@@ -170,24 +184,120 @@ Once PMM is set up, choose the database that you want it to monitor:
         })
         exit
         ```
+     2. To optimize server-side resources, install PMM Client via Package Manager on the database node:
+         
+        1. Install Percona Release Tool:
 
-    2. Register the server for monitoring:
+            ```sh
+            wget https://repo.percona.com/apt/percona-release_latest.generic_all.deb
+            dpkg -i percona-release_latest.generic_all.deb
+            ```
+        2. Install the PMM Client package:
+            
+            ```sh
+            apt update
+            apt install -y pmm2-client
+            ```
 
-        ```
-        sudo pmm-admin add mongodb --username=pmm --password=<password>
-        ```
+        3. Register the server for monitoring:
 
-    For detailed information on adding a MongoDB database, see [Adding a MySQL database for monitoring](https://docs.percona.com/percona-monitoring-and-management/setting-up/client/mongodb.html).
+            ```
+            sudo pmm-admin add mongodb --username=pmm --password=<password>
+            ```
+   
+    For detailed information on adding a MongoDB database, see [Adding a MongoDB database for monitoring](https://docs.percona.com/percona-monitoring-and-management/setting-up/client/mongodb.html).
 
 === "ProxySQL"
-    To connect a ProxySQL database, see [Enable ProxySQL performance metrics monitoring](../setting-up/client/proxysql.md).
+    To enable ProxySQL performance metrics monitoring:
+     { .power-number}
+
+    1. Configure a read-only account for monitoring using the [`admin-stats_credentials`](https://proxysql.com/documentation/global-variables/admin-variables/#admin-stats_credentials) variable in ProxySQL.
+    2. To optimize server-side resources, install PMM Client via Package Manager on the database node:
+         
+        1. Install Percona Release Tool:
+
+            ```sh
+            wget https://repo.percona.com/apt/percona-release_latest.generic_all.deb
+            dpkg -i percona-release_latest.generic_all.deb
+            ```
+        2. Install the PMM Client package:
+            
+            ```sh
+            apt update
+            apt install -y pmm2-client
+            ```
+
+        3. Register the server for monitoring:
+
+            ```
+            sudo pmm-admin add mongodb --username=pmm --password=<password>
+            ```
+    
+    2. Run the following command, keeping in mind that:
+
+        - `username` and `password` are credentials for the administration interface of the monitored ProxySQL.
+        -  two positional arguments can be appended to the command line flags: a service name to be used by PMM, and a service address. If not specified, they are substituted automatically as `<node>-proxysql` and `127.0.0.1:6032`.
+        - `--service-name`, and `--host` are the hostname or IP address of the service, `--port` is the port number of the service and `--socket` is the UNIX socket path.
+        - when both flag and positional argument are present, flag gains higher priority. 
+
+        ```sh
+        pmm-admin add proxysql --username=pmm --password=pmm --service-name=my-new-proxysql --host=127.0.0.1 --port=6032
+        pmm-admin add proxysql --username=pmm --password=pmm --service-name=my-new-proxysql --socket=/tmp/proxysql_admin.sock
+        ``` 
+    For more information, see [Enable ProxySQL performance metrics monitoring](../setting-up/client/proxysql.md).
 
 === "HAProxy"
-    To add HAProxy services, see [HAProxy](../setting-up/client/haproxy.md).
+    To add HAProxy services:
+    { .power-number}
+
+    1. Configure an haproxy instance:
+    { .power-number} 
+         1. See [How to configure HAProxy](https://www.haproxy.com/blog/haproxy-exposes-a-prometheus-metrics-endpoint).
+         2. After HAProxy is running (default address <http://localhost:8404/metrics>) you can add it to PMM.
+         3. Use the `haproxy` alias to enable HAProxy metrics monitoring.
+    2. To optimize server-side resources, install PMM Client via Package Manager on the database node:
+         
+        1. Install Percona Release Tool:
+
+            ```sh
+            wget https://repo.percona.com/apt/percona-release_latest.generic_all.deb
+            dpkg -i percona-release_latest.generic_all.deb
+            ```
+        2. Install the PMM Client package:
+            
+            ```sh
+            apt update
+            apt install -y pmm2-client
+            ```
+
+        3. Register your client node with PMM Server:
+
+            ```sh
+            pmm-admin config --server-insecure-tls --server-url=https://admin:admin@X.X.X.X:443
+            ```
+
+            - `X.X.X.X` is the address of your PMM Server.
+            - `443` is the default port number.
+            - `admin`/`admin` is the default PMM username and password. This is the same account you use to log into the PMM user interface, which you had the option to change when first logging in.
+    
+    3. Run the following command, where `listen-port` is the port number where HAProxy running. (This is the only required flag.)
+
+        ```sh
+        pmm-admin add haproxy --listen-port=8404
+        ```
+
+    The output of this command should look as follows:
+    
+        ```txt
+        HAProxy Service added.
+        Service ID  : /service_id/c481183f-70a2-443f-91e5-cae5cecd06a2
+        Service name: Ubuntu-haproxy
+        ```
+    For more information on the command arguments, see the [HAProxy topic](../setting-up/client/haproxy.md).
 
 ### Check your database
 
-After installing PMM And connecting the database, go to the database's [Instance Summary dashboard](../details/dashboards/dashboard-mysql-instance-summary.md). This shows essential information about your database performance and an overview of your environment. For more information, see [PMM Dashboards](../details//dashboards/index.md).
+After installing PMM And connecting the database, go to the database's Instance Summary dashboard. This shows essential information about your database performance and an overview of your environment. For more information, see [PMM Dashboards](../details//dashboards/index.md).
 
 ## Next steps
 
