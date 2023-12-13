@@ -1,4 +1,4 @@
-# Prerequisites to install PMM client
+# Prerequisites
 
 1. [Set up PMM Server](../server/index.md) with a known IP address accessible from the client node.
 
