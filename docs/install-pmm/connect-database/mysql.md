@@ -1,6 +1,5 @@
-# Monitor a MySQL or MySQL-based database instance
+# Connect a self-hosted or an AWS EC2 MySQL database to PMM¶
 
-How to set up PMM to monitor a MySQL or MySQL-based database instance.
 
 PMM Client collects metrics from [MySQL][ORACLE_MYSQL], [Percona Server for MySQL][PERCONA_SERVER_MYSQL], [Percona XtraDB Cluster][PERCONA_XTRADB_CLUSTER], and [MariaDB][MARIADB]. (Amazon RDS is also supported and explained in a [separate section](aws.md).)
 
