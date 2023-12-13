@@ -207,14 +207,7 @@ nav:
       - uninstall-pmm/unregister_client.md
 
   - Use PMM:
-    - PMM user interface: 
-      - ui/index.md
-      - ui/log_in.md
-      - ui/controls.md
-      - ui/nav.md
-      - ui/panels.md
-      - ui/timezone.md
-      - ui/view.md
+
     - PMM Inventory:
       - details/dashboards/dashboard-inventory.md     
       - Dashboards:
@@ -484,6 +477,14 @@ nav:
   - Reference:
       - reference/index.md 
       - reference/fundamentals.md
+      - PMM user interface: 
+        - ui/index.md
+        - ui/log_in.md
+        - ui/controls.md
+        - ui/nav.md
+        - ui/panels.md
+        - ui/timezone.md
+        - ui/view.md
       - reference/pmm_components_and_versions.md
       - reference/personal_data_handling.md
       - Third-party components in PMM: 
