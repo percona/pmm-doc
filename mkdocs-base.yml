@@ -128,7 +128,7 @@ nav:
       - Before you start: 
         - plan-pmm-installation/hardware_and_system.md
         - plan-pmm-installation/network_and_firewall.md
-      - Server:
+      - Install PMM server:
         - install-pmm/install-pmm-server/index.md
         - install-pmm/install-pmm-server/prerequisites.md
         - Bare metal:
@@ -171,7 +171,7 @@ nav:
           - install-pmm/install-pmm-server/dbaas/del_cluster.md
           - install-pmm/install-pmm-server/dbaas/run_as_docker.md
           - install-pmm/install-pmm-server/dbaas/expose_clusters_for external_clients.md
-      - Client:
+      - Install PMM client:
         - install-pmm/install-pmm-client/index.md
         - install-pmm/install-pmm-client/prerequisites.md
         - install-pmm/install-pmm-client/package_manager.md          
