@@ -179,18 +179,18 @@ nav:
         - install-pmm/install-pmm-client/binary_package.md          
         - Register client node: install-pmm/register-client-node/index.md 
       - Connect database:      
-        - install-pmm/add-services/index.md
-        - install-pmm/add-services/aws.md
-        - install-pmm/add-services/azure.md
-        - install-pmm/add-services/external.md
-        - install-pmm/add-services/google.md
-        - install-pmm/add-services/haproxy.md
-        - install-pmm/add-services/linux.md
-        - install-pmm/add-services/mongodb.md
-        - install-pmm/add-services/mysql.md
-        - install-pmm/add-services/postgresql.md
-        - install-pmm/add-services/proxysql.md
-        - install-pmm/add-services/remote.md
+        - install-pmm/connect-database/index.md
+        - install-pmm/connect-database/aws.md
+        - install-pmm/connect-database/azure.md
+        - install-pmm/connect-database/external.md
+        - install-pmm/connect-database/google.md
+        - install-pmm/connect-database/haproxy.md
+        - install-pmm/connect-database/linux.md
+        - install-pmm/connect-database/mongodb.md
+        - install-pmm/connect-databasemysql.md
+        - install-pmm/connect-database/postgresql.md
+        - install-pmm/connect-database/proxysql.md
+        - install-pmm/connect-database/remote.md
       - Remove services:      
         - install-pmm/remove-services/index.md
       - Upgrade:
