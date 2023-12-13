@@ -173,7 +173,11 @@ nav:
           - install-pmm/install-pmm-server/dbaas/expose_clusters_for external_clients.md
       - Install PMM client:
         - install-pmm/install-pmm-client/index.md
-        - install-pmm/install-pmm-client/prerequisites.md 
+        - install-pmm/install-pmm-client/prerequisites.md
+        - Install PMM client with Percona repositories:
+          - install-pmm/install-pmm-client/package_manager.md
+          - install-pmm/install-pmm-client/docker.md
+
         - install-pmm/install-pmm-client/docker.md
         - install-pmm/install-pmm-client/binary_package.md          
         - install-pmm/install-pmm-client/package_manager.md
