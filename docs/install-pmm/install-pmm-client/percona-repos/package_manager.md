@@ -1,4 +1,4 @@
-# Install PMM client with package manager
+# Install PMM client with Percona repositories
 
 On Debian or Red Hat Linux, install `percona-release` and use a Linux package manager (`apt`/`dnf`) to install PMM Client.
 
