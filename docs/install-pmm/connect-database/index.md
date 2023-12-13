@@ -1,6 +1,6 @@
-# Add services for PMM monitoring
+# Connect databases for PMM monitoring
 
-You must configure and add services according to the service type.
+You must configure and add database/service according to the service type.
 
 - [MySQL](mysql.md) (and variants Percona Server for MySQL, Percona XtraDB Cluster, MariaDB)
 - [MongoDB](mongodb.md)
