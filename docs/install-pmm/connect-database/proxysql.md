@@ -1,4 +1,4 @@
-# Monitor ProxySQL performance metrics
+# ProxySQL
 
 Use the `proxysql` alias to enable ProxySQL performance metrics monitoring.
 

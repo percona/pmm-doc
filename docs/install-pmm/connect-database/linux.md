@@ -1,4 +1,4 @@
-# Monitor databases on Linux
+# Linux
 
 ## Add general system metrics service
 

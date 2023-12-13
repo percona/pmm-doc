@@ -1,6 +1,6 @@
-# Monitor a node on HAProxy
+# HAProxy
 
-## Adding HAProxy services
+## Adding HAProxy
 
 You can collect metrics from [HAProxy](https://www.haproxy.com/) on a node when:
 

@@ -1,4 +1,4 @@
-# Monitor PostgreSQL database instance
+# PostgreSQL
 
 How to set up PMM to monitor a [PostgreSQL] or [Percona Distribution for PostgreSQL] database instance.
 
