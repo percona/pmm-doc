@@ -1,4 +1,4 @@
-# AWS Marketplace
+# Install PMM server on AWS Marketplace
 
 You can run an instance of PMM Server hosted at AWS Marketplace.
 
