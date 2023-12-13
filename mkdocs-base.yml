@@ -148,7 +148,7 @@ nav:
           - Install PMM with Podman:
             - install-pmm/install-pmm-server/baremetal/podman/podman.md
           - Install PMM with Helm:
-          - install-pmm/install-pmm-server/aremetal/helm/bhelm.md
+            - install-pmm/install-pmm-server/baremetal/helm/helm.md
           - Install PMM with Virtual Applinace:
             - install-pmm/install-pmm-server/baremetal/virtual/index.md
             - install-pmm/install-pmm-server/baremetal/virtual/download_ova.md
