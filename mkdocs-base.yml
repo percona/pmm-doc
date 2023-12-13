@@ -132,7 +132,8 @@ nav:
         - install-pmm/install-pmm-server/index.md
         - install-pmm/install-pmm-server/prerequisites.md
         - Install PMM with Bare metal:
-          - install-pmm/install-pmm-server/easy-install.md  
+          - Install PMM with easy-install script:
+            - install-pmm/install-pmm-server/easy-install/easy-install.md  
           - Install PMM with Docker:
             - install-pmm/install-pmm-server/baremetal/docker/index.md
             - install-pmm/install-pmm-server/baremetal/docker/run_with_vol.md
