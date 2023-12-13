@@ -1,4 +1,4 @@
-# Prerequisites to install PMM server
+# Prerequisites
 
 1. Check your system [requirements](..//..//plan-pmm-installation/hardware_and_system.md#server-requirements).
 
