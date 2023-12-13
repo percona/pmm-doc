@@ -225,10 +225,12 @@ Once PMM is set up, choose the database that you want it to monitor:
 
 === "ProxySQL"
     To connect a ProxySQL service:
-     { .power-number}
+    { .power-number}
 
     1. Configure a read-only account for monitoring using the [`admin-stats_credentials`](https://proxysql.com/documentation/global-variables/admin-variables/#admin-stats_credentials) variable in ProxySQL.
+
     2. To optimize server-side resources, install PMM Client via Package Manager on the database node: 
+    
         1. Install Percona Release Tool:
 
             ```sh
@@ -258,12 +260,12 @@ Once PMM is set up, choose the database that you want it to monitor:
     For detailed instructions, see [Enable ProxySQL performance metrics monitoring](../setting-up/client/proxysql.md).
 
 === "HAProxy"
-    To connect a HAProxy service:
+    To connect an HAProxy service:
     { .power-number}
 
     1. [Set up an HAproxy instance](https://www.haproxy.com/blog/haproxy-exposes-a-prometheus-metrics-endpoint). 
-    2. When HAProxy is running, add the instance's addresss (default is <http://localhost:8404/metrics>) to PMM, and use the `haproxy`alias to enable HAProxy metrics monitoring.
-    2. To optimize server-side resources, install PMM Client via Package Manager on the database node:
+    2. Add the instance to PMM (default address is <http://localhost:8404/metrics>), and use the `haproxy` alias to enable HAProxy metrics monitoring.
+    3. To optimize server-side resources, install PMM Client via Package Manager on the database node:
          
         1. Install Percona Release Tool:
 
@@ -284,7 +286,7 @@ Once PMM is set up, choose the database that you want it to monitor:
             pmm-admin config --server-insecure-tls --server-url=https://admin:admin@X.X.X.X:443
             ```
 
-    3. Run the command below, specifying the `listen-port`` as the port number where HAProxy is running. (This flag is mandatory.)
+    4. Run the command below, specifying the `listen-port`` as the port number where HAProxy is running. (This flag is mandatory.)
 
         ```sh
         pmm-admin add haproxy --listen-port=8404 HAPROXY_SERVICE
