@@ -133,7 +133,7 @@ nav:
         - install-pmm/install-pmm-server/prerequisites.md
         - Install PMM with Bare metal:
           - Install PMM with easy-install script:
-            - install-pmm/install-pmm-server/easy-install/easy-install.md  
+            - install-pmm/install-pmm-server/baremetal/easy-install/easy-install.md  
           - Install PMM with Docker:
             - install-pmm/install-pmm-server/baremetal/docker/index.md
             - install-pmm/install-pmm-server/baremetal/docker/run_with_vol.md
@@ -145,8 +145,10 @@ nav:
             - install-pmm/install-pmm-server/baremetal/docker/env_var.md      
             - install-pmm/install-pmm-server/baremetal/docker/preview_env_var.md      
             - install-pmm/install-pmm-server/baremetal/docker/isolated_hosts.md        
-          - install-pmm/install-pmm-server/podman.md
-          - install-pmm/install-pmm-server/helm.md
+          - Install PMM with Podman:
+            - install-pmm/install-pmm-server/baremetal/podman/podman.md
+          - Install PMM with Helm:
+          - install-pmm/install-pmm-server/aremetal/helm/bhelm.md
           - Install PMM with Virtual Applinace:
             - install-pmm/install-pmm-server/baremetal/virtual/index.md
             - install-pmm/install-pmm-server/baremetal/virtual/download_ova.md
