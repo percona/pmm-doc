@@ -11,8 +11,6 @@ Install and run at least one PMM Server using one of the following ways:
 | [Helm](helm.md) Technical Preview | 1. Quick.<br>2. Simple.<br>3. Cloud. | 1. Requires running Kubernetes cluster.
 | [Virtual appliance](virtual/index.md)  | 1. Easily import into Hypervisor of your choice | 1. More system resources compared to Docker footprint.
 | [Amazon AWS](aws/aws.md) | 1. Wizard-driven install. | 1. Non-free solution (infrastructure costs).|
-| Use the [easy install](easy-install.md) script|   |     |
-
 
 
 
