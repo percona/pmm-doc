@@ -131,19 +131,20 @@ nav:
       - Install PMM server:
         - install-pmm/install-pmm-server/index.md
         - install-pmm/install-pmm-server/prerequisites.md
-        - Install PMM with Docker:
-          - install-pmm/install-pmm-server/docker/index.md
-          - install-pmm/install-pmm-server/docker/run_with_vol.md
-          - install-pmm/install-pmm-server/docker/run_with_data_container.md
-          - install-pmm/install-pmm-server/docker/run_with_host_dir.md      
-          - install-pmm/install-pmm-server/docker/backup_container.md      
-          - install-pmm/install-pmm-server/docker/restore_container.md      
-          - install-pmm/install-pmm-server/docker/remove_container.md      
-          - install-pmm/install-pmm-server/docker/env_var.md      
-          - install-pmm/install-pmm-server/docker/preview_env_var.md      
-          - install-pmm/install-pmm-server/docker/isolated_hosts.md        
-        - install-pmm/install-pmm-server/podman.md
-        - install-pmm/install-pmm-server/helm.md
+        - Install PMM with Bare metal:  
+          - Install PMM with Docker:
+            - install-pmm/install-pmm-server/docker/index.md
+            - install-pmm/install-pmm-server/docker/run_with_vol.md
+            - install-pmm/install-pmm-server/docker/run_with_data_container.md
+            - install-pmm/install-pmm-server/docker/run_with_host_dir.md      
+            - install-pmm/install-pmm-server/docker/backup_container.md      
+            - install-pmm/install-pmm-server/docker/restore_container.md      
+            - install-pmm/install-pmm-server/docker/remove_container.md      
+            - install-pmm/install-pmm-server/docker/env_var.md      
+            - install-pmm/install-pmm-server/docker/preview_env_var.md      
+            - install-pmm/install-pmm-server/docker/isolated_hosts.md        
+          - install-pmm/install-pmm-server/podman.md
+          - install-pmm/install-pmm-server/helm.md
         - Install PMM with Virtual Applinace:
           - install-pmm/install-pmm-server/virtual/index.md
           - install-pmm/install-pmm-server/virtual/download_ova.md
