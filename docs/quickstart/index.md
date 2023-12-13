@@ -66,7 +66,7 @@ Once PMM is set up, choose the database that you want it to monitor:
         GRANT SELECT, PROCESS, REPLICATION CLIENT, RELOAD, BACKUP_ADMIN ON *.* TO 'pmm'@'127.0.0.1';
         ```
 
-    2. To optimize server-side resources, install PMM Client via Package Manager on the database node:
+    2. Install PMM Client via Package Manager on the database node to optimize server-side resources:
          
         1. Install Percona Release Tool:
 
@@ -89,9 +89,9 @@ Once PMM is set up, choose the database that you want it to monitor:
 
     3. Add the MySQL database using Performance schema:  
 
-            ```sh 
-            pmm-admin add mysql --query-source=perfschema --username=pmm --password=<your_password> MYSQL_SERVICE
-            ```
+        ```sh 
+        pmm-admin add mysql --query-source=perfschema --username=pmm --password=<your_password> MYSQL_SERVICE
+        ```
     ??? info "Alternative database connection workflows"
         While the default instructions above focus on connecting a Self-hosted MySQL database, PMM offers the flexibility to connect to various MySQL databases, including [AWS RDS](../setting-up/client/aws.md), [Azure MySQL](../setting-up/client/azure.md) or [Google Cloud MySQL ](../setting-up/client/google.md). 
 
@@ -109,7 +109,8 @@ Once PMM is set up, choose the database that you want it to monitor:
         ```
         CREATE USER pmm WITH SUPERUSER ENCRYPTED PASSWORD '<your_password>';
         ```
-    2. To optimize server-side resources, install PMM Client via Package Manager on the database node:
+
+    2. Install PMM Client via Package Manager on the database node to optimize server-side resources:
          
         1. Install Percona Release Tool:
 
@@ -123,7 +124,7 @@ Once PMM is set up, choose the database that you want it to monitor:
             apt update
             apt install -y pmm2-client
             ```
-        3. [Register PMM Client]:
+        3. Register PMM Client:
         
             ```sh
             pmm-admin config --server-insecure-tls --server-url=https://admin:admin@X.X.X.X:443
@@ -131,9 +132,9 @@ Once PMM is set up, choose the database that you want it to monitor:
 
     3. Add the PostgreSQL database:
 
-            ```sh 
-                pmm-admin add postgresql --username=pmm --password=<your_password> POSTGRESQL_SERVICE
-            ```
+        ```sh 
+        pmm-admin add postgresql --username=pmm --password=<your_password> POSTGRESQL_SERVICE
+        ```
             
     For detailed instructions, see [Adding a PostgreSQL database](../setting-up/client/postgresql.md).
 
@@ -142,9 +143,8 @@ Once PMM is set up, choose the database that you want it to monitor:
     To connect a MongoDB database from the MongoDB CLI:
     { .power-number}
     
-    1.   Use `mongo` shell to create user and grant the required permissions for monitoring:
-    
-        Run the following command to create role and grant the required permissions: 
+    1.  Run the following command in `mongo` shell to create a role with the monitoring permissions: 
+ 
         ```
             db.createRole({
         "role":"explainRole",
@@ -167,7 +167,9 @@ Once PMM is set up, choose the database that you want it to monitor:
         "roles":[]
         })
         ```
-    Run the following command to create user with the role created above: 
+
+    2. Create a user and grant it the role created above:
+
         ```
             db.getSiblingDB("admin").createUser({
         "user":"pmm",
@@ -189,27 +191,31 @@ Once PMM is set up, choose the database that you want it to monitor:
         })
         exit
         ```
-    2. To optimize server-side resources, install PMM Client via Package Manager on the database node:
-         
+
+    3. Install PMM Client via Package Manager on the database node to optimize server-side resources:
+        { .power-number}     
+
         1. Install Percona Release Tool:
 
             ```sh
             wget https://repo.percona.com/apt/percona-release_latest.generic_all.deb
             dpkg -i percona-release_latest.generic_all.deb
             ```
+
         2. Install the PMM Client package:
             
             ```sh
             apt update
             apt install -y pmm2-client
             ```
+
         3. [Register PMM Client]:
         
             ```sh
             pmm-admin config --server-insecure-tls --server-url=https://admin:admin@X.X.X.X:443
             ```
 
-     3. Add the MongoDB database:
+     4. Add the MongoDB database:
 
             ```
             sudo pmm-admin add mongodb --username=pmm --password=<your_password> MONGODB_SERVICE 
@@ -223,7 +229,7 @@ Once PMM is set up, choose the database that you want it to monitor:
 
     1. Configure a read-only account for monitoring using the [`admin-stats_credentials`](https://proxysql.com/documentation/global-variables/admin-variables/#admin-stats_credentials) variable in ProxySQL.
     2. To optimize server-side resources, install PMM Client via Package Manager on the database node:
-         
+    { .power-number}     
         1. Install Percona Release Tool:
 
             ```sh
@@ -236,6 +242,7 @@ Once PMM is set up, choose the database that you want it to monitor:
             apt update
             apt install -y pmm2-client
             ```
+
         3. [Register PMM Client]:
         
             ```sh
@@ -244,9 +251,9 @@ Once PMM is set up, choose the database that you want it to monitor:
             
     3. Add the ProxySQL service:
 
-            ```
-            pmm-admin add proxysql --username=pmm --password=<your_password> PROXYSQL_SERVICE 
-            ```
+        ```
+        pmm-admin add proxysql --username=pmm --password=<your_password> PROXYSQL_SERVICE 
+        ```
 
     For detailed instructions, see [Enable ProxySQL performance metrics monitoring](../setting-up/client/proxysql.md).
 
@@ -254,11 +261,7 @@ Once PMM is set up, choose the database that you want it to monitor:
     To connect a HAProxy service:
     { .power-number}
 
-    1. Configure a HAproxy instance:
-    { .power-number} 
-         1. See [How to configure HAProxy](https://www.haproxy.com/blog/haproxy-exposes-a-prometheus-metrics-endpoint).
-         2. After HAProxy is running (default address <http://localhost:8404/metrics>) you can add it to PMM.
-         3. Use the `haproxy` alias to enable HAProxy metrics monitoring.
+    1. [Set up an HAproxy instance](https://www.haproxy.com/blog/haproxy-exposes-a-prometheus-metrics-endpoint). When HAProxy is running, add the default <http://localhost:8404/metrics> address or your specifed one to PMM, and use the `haproxy` alias to enable HAProxy metrics monitoring.
     2. To optimize server-side resources, install PMM Client via Package Manager on the database node:
          
         1. Install Percona Release Tool:
@@ -274,13 +277,13 @@ Once PMM is set up, choose the database that you want it to monitor:
             apt install -y pmm2-client
             ```
 
-        3. [Register PMM Client](../setting-up/client/index.html#register):
+        3. Register PMM Client:
                 
             ```sh
             pmm-admin config --server-insecure-tls --server-url=https://admin:admin@X.X.X.X:443
             ```
 
-    3. Run the following command, where `listen-port` is the port number where HAProxy running. (This is the only required flag.)
+    3. Run the command below, specifying the `listen-port`` as the port number where HAProxy is running. (This flag is mandatory.)
 
         ```sh
         pmm-admin add haproxy --listen-port=8404 HAPROXY_SERVICE
@@ -290,7 +293,9 @@ Once PMM is set up, choose the database that you want it to monitor:
 
 ## Check database monitoring results
 
-After installing PMM And connecting the database, go to the database's Instance Summary dashboard. This shows essential information about your database performance and an overview of your environment. For more information, see [PMM Dashboards](../details//dashboards/index.md).
+After installing PMM And connecting the database, go to the database's Instance Summary dashboard. This shows essential information about your database performance and an overview of your environment. 
+
+For more information, see [PMM Dashboards](../details//dashboards/index.md).
 
 ## Next steps
 
