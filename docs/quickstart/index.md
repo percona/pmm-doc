@@ -101,7 +101,7 @@ Once PMM is set up, choose the database that you want it to monitor:
 
 === "PostgreSQL"
 
-    To connect a PostgreSQL database using the Postgres CLI: 
+    To connect a PostgreSQL database: 
     { .power-number}
 
     1. Create a PMM-specific user for monitoring:
@@ -140,7 +140,7 @@ Once PMM is set up, choose the database that you want it to monitor:
 
 === "MongoDB"
 
-    To connect a MongoDB database from the MongoDB CLI:
+    To connect a MongoDB database:
     { .power-number}
     
     1.  Run the following command in `mongo` shell to create a role with the monitoring permissions: 
@@ -192,7 +192,7 @@ Once PMM is set up, choose the database that you want it to monitor:
         exit
         ```
 
-    3. Install PMM Client via Package Manager on the database node to optimize server-side resources:
+    3. To optimize server-side resources, install PMM Client via Package Manager on the database node:
         { .power-number}     
 
         1. Install Percona Release Tool:
@@ -209,7 +209,7 @@ Once PMM is set up, choose the database that you want it to monitor:
             apt install -y pmm2-client
             ```
 
-        3. [Register PMM Client]:
+        3. Register PMM Client:
         
             ```sh
             pmm-admin config --server-insecure-tls --server-url=https://admin:admin@X.X.X.X:443
@@ -217,25 +217,25 @@ Once PMM is set up, choose the database that you want it to monitor:
 
      4. Add the MongoDB database:
 
-            ```
-            sudo pmm-admin add mongodb --username=pmm --password=<your_password> MONGODB_SERVICE 
-            ```
+        ```
+        sudo pmm-admin add mongodb --username=pmm --password=<your_password> MONGODB_SERVICE 
+        ```
    
     For detailed instructions, see [Adding a MongoDB database for monitoring](https://docs.percona.com/percona-monitoring-and-management/setting-up/client/mongodb.html).
 
 === "ProxySQL"
-    To connect a ProxySQL server:
+    To connect a ProxySQL service:
      { .power-number}
 
     1. Configure a read-only account for monitoring using the [`admin-stats_credentials`](https://proxysql.com/documentation/global-variables/admin-variables/#admin-stats_credentials) variable in ProxySQL.
-    2. To optimize server-side resources, install PMM Client via Package Manager on the database node:
-    { .power-number}     
+    2. To optimize server-side resources, install PMM Client via Package Manager on the database node: 
         1. Install Percona Release Tool:
 
             ```sh
             wget https://repo.percona.com/apt/percona-release_latest.generic_all.deb
             dpkg -i percona-release_latest.generic_all.deb
             ```
+
         2. Install the PMM Client package:
             
             ```sh
@@ -261,7 +261,8 @@ Once PMM is set up, choose the database that you want it to monitor:
     To connect a HAProxy service:
     { .power-number}
 
-    1. [Set up an HAproxy instance](https://www.haproxy.com/blog/haproxy-exposes-a-prometheus-metrics-endpoint). When HAProxy is running, add the default <http://localhost:8404/metrics> address or your specifed one to PMM, and use the `haproxy` alias to enable HAProxy metrics monitoring.
+    1. [Set up an HAproxy instance](https://www.haproxy.com/blog/haproxy-exposes-a-prometheus-metrics-endpoint). 
+    2. When HAProxy is running, add the instance's addresss (default is <http://localhost:8404/metrics>) to PMM, and use the `haproxy`alias to enable HAProxy metrics monitoring.
     2. To optimize server-side resources, install PMM Client via Package Manager on the database node:
          
         1. Install Percona Release Tool:
