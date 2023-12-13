@@ -147,12 +147,12 @@ nav:
           - install-pmm/install-pmm-server/podman.md
           - install-pmm/install-pmm-server/helm.md
           - Install PMM with Virtual Applinace:
-            - install-pmm/install-pmm-server/virtual/index.md
-            - install-pmm/install-pmm-server/virtual/download_ova.md
-            - install-pmm/install-pmm-server/virtual/vmware.md
-            - install-pmm/install-pmm-server/virtual/virtualbox.md
-            - install-pmm/install-pmm-server/virtual/login_UI.md
-            - install-pmm/install-pmm-server/virtual/remove_virtual_machine.md
+            - install-pmm/install-pmm-server/baremetal/virtual/index.md
+            - install-pmm/install-pmm-server/baremetal/virtual/download_ova.md
+            - install-pmm/install-pmm-server/baremetal/virtual/vmware.md
+            - install-pmm/install-pmm-server/baremetal/virtual/virtualbox.md
+            - install-pmm/install-pmm-server/baremetal/virtual/login_UI.md
+            - install-pmm/install-pmm-server/baremetal/virtual/remove_virtual_machine.md
         - Install PMM with AWS marketplace:
           - install-pmm/install-pmm-server/aws/aws.md
           - install-pmm/install-pmm-server/aws/limit_access.md
