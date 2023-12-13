@@ -193,18 +193,18 @@ nav:
         - install-pmm/connect-database/remote.md
       - Remove services:      
         - install-pmm/remove-services/index.md
-      - Upgrade:
-        - pmm-upgrade/index.md
-        - pmm-upgrade/ui_upgrade.md
-        - pmm-upgrade/upgrade_aws.md    
-        - pmm-upgrade/upgrade_docker.md
-        - pmm-upgrade/upgrade_agent.md
-        - pmm-upgrade/upgrade_from_pmm_1.md
-      - Uninstall:
-        - uninstall-pmm/index.md
-        - uninstall-pmm/uninstall_docker.md
-        - uninstall-pmm/uninstall_package_manager.md
-        - uninstall-pmm/unregister_client.md
+  - Upgrade:
+      - pmm-upgrade/index.md
+      - pmm-upgrade/ui_upgrade.md
+      - pmm-upgrade/upgrade_aws.md    
+      - pmm-upgrade/upgrade_docker.md
+      - pmm-upgrade/upgrade_agent.md
+      - pmm-upgrade/upgrade_from_pmm_1.md
+  - Uninstall:
+      - uninstall-pmm/index.md
+      - uninstall-pmm/uninstall_docker.md
+      - uninstall-pmm/uninstall_package_manager.md
+      - uninstall-pmm/unregister_client.md
 
   - Use PMM:
     - PMM user interface: 
