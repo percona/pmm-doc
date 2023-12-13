@@ -1,4 +1,4 @@
-# Install PMM server
+# About PMM server installation
 
 Before installing PMM server, read the [Prerequisites to install PMM server](prerequisites.md).
 
