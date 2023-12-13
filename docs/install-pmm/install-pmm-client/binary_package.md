@@ -1,4 +1,4 @@
-# Install PMM client with binary package
+# Install PMM client manually
 
 To install PMM client with binary package, do the following:
 

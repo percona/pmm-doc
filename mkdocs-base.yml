@@ -178,7 +178,7 @@ nav:
         - install-pmm/install-pmm-client/docker.md
         - install-pmm/install-pmm-client/binary_package.md          
         - Register client node: install-pmm/register-client-node/index.md 
-      - Add services:      
+      - Connect database:      
         - install-pmm/add-services/index.md
         - install-pmm/add-services/aws.md
         - install-pmm/add-services/azure.md
