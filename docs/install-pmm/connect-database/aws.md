@@ -143,7 +143,6 @@ ALTER USER 'pmm'@'%' WITH MAX_USER_CONNECTIONS 10;
 GRANT SELECT, UPDATE, DELETE, DROP ON performance_schema.* TO 'pmm'@'%';
 ```
 
-
 ## Adding an Amazon RDS, Aurora or Remote Instance
 
 The preferred method of adding an Amazon RDS database instance to PMM is via the  <i class="uil uil-cog"></i> *Configuration* → {{icon.inventory}} *PMM Inventory* → {{icon.addinstance}} *Add Instance* menu option.
