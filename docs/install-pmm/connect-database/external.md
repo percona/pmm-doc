@@ -1,4 +1,4 @@
-# Monitor external services
+# External
 
 ## Adding general external services
 
