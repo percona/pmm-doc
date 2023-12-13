@@ -171,7 +171,6 @@ nav:
           - install-pmm/install-pmm-server/dbaas/del_cluster.md
           - install-pmm/install-pmm-server/dbaas/run_as_docker.md
           - install-pmm/install-pmm-server/dbaas/expose_clusters_for external_clients.md
-        - install-pmm/install-pmm-server/easy-install.md
       - Install PMM client:
         - install-pmm/install-pmm-client/index.md
         - install-pmm/install-pmm-client/prerequisites.md 
