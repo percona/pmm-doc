@@ -119,7 +119,7 @@ extra:
 # Common navigation for percona.com, render.com and PDF
 nav:
   - Home: index.md  
-  - Discover PMM:
+  - Discover:
       - discover-pmm/why-pmm.md
       - discover-pmm/features.md
   - Quickstart Guide: getstarted.md
@@ -128,13 +128,13 @@ nav:
       - Before you start: 
         - plan-pmm-installation/hardware_and_system.md
         - plan-pmm-installation/network_and_firewall.md
-      - Install PMM server:
+      - Server:
         - install-pmm/install-pmm-server/index.md
         - install-pmm/install-pmm-server/prerequisites.md
-        - Install PMM with Bare metal:
-          - Install PMM with easy-install script:
+        - Bare metal:
+          - Easy-install script:
             - install-pmm/install-pmm-server/baremetal/easy-install/easy-install.md  
-          - Install PMM with Docker:
+          - Docker:
             - install-pmm/install-pmm-server/baremetal/docker/index.md
             - install-pmm/install-pmm-server/baremetal/docker/run_with_vol.md
             - install-pmm/install-pmm-server/baremetal/docker/run_with_data_container.md
@@ -145,18 +145,18 @@ nav:
             - install-pmm/install-pmm-server/baremetal/docker/env_var.md      
             - install-pmm/install-pmm-server/baremetal/docker/preview_env_var.md      
             - install-pmm/install-pmm-server/baremetal/docker/isolated_hosts.md        
-          - Install PMM with Podman:
+          - Podman:
             - install-pmm/install-pmm-server/baremetal/podman/podman.md
-          - Install PMM with Helm:
+          - Helm:
             - install-pmm/install-pmm-server/baremetal/helm/helm.md
-          - Install PMM with Virtual Applinace:
+          - Virtual Applinace:
             - install-pmm/install-pmm-server/baremetal/virtual/index.md
             - install-pmm/install-pmm-server/baremetal/virtual/download_ova.md
             - install-pmm/install-pmm-server/baremetal/virtual/vmware.md
             - install-pmm/install-pmm-server/baremetal/virtual/virtualbox.md
             - install-pmm/install-pmm-server/baremetal/virtual/login_UI.md
             - install-pmm/install-pmm-server/baremetal/virtual/remove_virtual_machine.md
-        - Install PMM with AWS marketplace:
+        - AWS marketplace:
           - install-pmm/install-pmm-server/aws/aws.md
           - install-pmm/install-pmm-server/aws/limit_access.md
           - install-pmm/install-pmm-server/aws/settings.md
@@ -171,7 +171,7 @@ nav:
           - install-pmm/install-pmm-server/dbaas/del_cluster.md
           - install-pmm/install-pmm-server/dbaas/run_as_docker.md
           - install-pmm/install-pmm-server/dbaas/expose_clusters_for external_clients.md
-      - Install PMM client:
+      - Client:
         - install-pmm/install-pmm-client/index.md
         - install-pmm/install-pmm-client/prerequisites.md
         - install-pmm/install-pmm-client/package_manager.md          
@@ -207,7 +207,6 @@ nav:
       - uninstall-pmm/unregister_client.md
 
   - Use PMM:
-
     - PMM Inventory:
       - details/dashboards/dashboard-inventory.md     
       - Dashboards:
