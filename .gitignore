@@ -1,4 +1,5 @@
-site/*
-out/*
-.DS*
 .vscode
+.github
+WRITERS-NOTES.md
+README.md
+LICENSE
