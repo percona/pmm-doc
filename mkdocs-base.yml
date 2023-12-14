@@ -214,19 +214,19 @@ nav:
         - install-pmm/install-pmm-client/docker.md
         - install-pmm/install-pmm-client/binary_package.md          
         - Register client node: install-pmm/register-client-node/index.md 
-      - Connect database:      
-        - install-pmm/connect-database/index.md
-        - install-pmm/connect-database/aws.md
-        - install-pmm/connect-database/azure.md
-        - install-pmm/connect-database/external.md
-        - install-pmm/connect-database/google.md
-        - install-pmm/connect-database/haproxy.md
-        - install-pmm/connect-database/linux.md
-        - install-pmm/connect-database/mongodb.md
-        - install-pmm/connect-databasemysql.md
-        - install-pmm/connect-database/postgresql.md
-        - install-pmm/connect-database/proxysql.md
-        - install-pmm/connect-database/remote.md
+        - Connect database:      
+          - install-pmm/connect-database/index.md
+          - install-pmm/connect-database/aws.md
+          - install-pmm/connect-database/azure.md
+          - install-pmm/connect-database/external.md
+          - install-pmm/connect-database/google.md
+          - install-pmm/connect-database/haproxy.md
+          - install-pmm/connect-database/linux.md
+          - install-pmm/connect-database/mongodb.md
+          - install-pmm/connect-databasemysql.md
+          - install-pmm/connect-database/postgresql.md
+          - install-pmm/connect-database/proxysql.md
+          - install-pmm/connect-database/remote.md
       - Remove services:      
         - install-pmm/remove-services/index.md
   - Upgrade:
