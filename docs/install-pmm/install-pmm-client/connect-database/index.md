@@ -17,17 +17,3 @@ You must configure and add database/service according to the service type.
 !!! hint alert alert-success "Tip"
     To change the parameters of a previously-added service, remove the service and re-add it with new parameters.
 
-## Remove services from PMM monitoring
-
-You must specify the service type and service name to remove services from monitoring.
-
-```sh
-pmm-admin remove <service-type> <service-name>
-```
-
-`service-type`
-: One of `mysql`, `mongodb`, `postgresql`, `proxysql`, `haproxy`, `external`.
-
-!!! seealso alert alert-info "See also"
-    - [Percona release](https://www.percona.com/doc/percona-repo-config/percona-release.html)
-    - [PMM Client architecture](../../details/architecture.md#pmm-client)
