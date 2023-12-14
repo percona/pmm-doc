@@ -110,7 +110,49 @@ Once PMM is set up, choose the database that you want it to monitor:
         CREATE USER pmm WITH SUPERUSER ENCRYPTED PASSWORD '<your_password>';
         ```
 
-    2. Install PMM Client via Package Manager on the database node to optimize server-side resources:
+    2. Set up a database extension and configure your database server accordingly. By default, PMM will use the default `pg_stat_monitor` extension, developed by Percona. This extension mirrors PostgreSQL's `pg_stat_statements` extension` with added functionalities such as bucket-based data aggregation, enhanced accuracy, and the ability to expose query examples.
+
+    3. Set or change the value for `shared_preload_library` in your `postgresql.conf` file:
+
+        ```ini
+        shared_preload_libraries = 'pg_stat_monitor'
+        ```
+
+    !!! caution alert alert-warning
+        If you use both `pg_stat_statements` and `pg_stat_monitor`, set ``pg_stat_monitor`` **after** `pg_stat_statements`:
+
+        ```ini
+        shared_preload_libraries = 'pg_stat_statements, pg_stat_monitor'
+        ```
+
+    4. Set configuration values in your `postgresql.conf` file:
+
+        ```ini
+        pg_stat_monitor.pgsm_query_max_len = 2048
+        ```
+
+        !!! caution alert alert-warning
+            It is important to set maximal length of query to 2048 characters or more for PMM to work properly.
+
+        You can get a list of other available settings with `SELECT * FROM pg_stat_monitor_settings;`.
+
+        Other important parameters are:
+        ```ini
+        pg_stat_monitor.pgsm_normalized_query
+        ```
+        and
+        ```ini
+        pg_stat_monitor.pgsm_enable_query_plan
+        ```
+
+        If the value for `pg_stat_monitor.pgsm_normalized_query` is set to 1, the actual query values are replaced by placeholders. If the value is 0, the examples are given in QAN. Examples can be found in QAN details tab example.
+        
+        If `pg_stat_monitor.pgsm_enable_query_plan` is enabled, the query plans are captured and will be available in the `Plan` tab on the Query Analytics dashboard.
+
+        !!! note alert alert-primary ""
+            See [`pg_stat_monitor` online documentation](https://docs.percona.com/pg-stat-monitor/configuration.html) for details about available parameters.
+
+    5. Install PMM Client via Package Manager on the database node to optimize server-side resources:
          
         1. Install Percona Release Tool:
 
@@ -130,7 +172,7 @@ Once PMM is set up, choose the database that you want it to monitor:
             pmm-admin config --server-insecure-tls --server-url=https://admin:admin@X.X.X.X:443
             ```
 
-    3. Add the PostgreSQL database:
+    6. Add the PostgreSQL database:
 
         ```sh 
         pmm-admin add postgresql --username=pmm --password=<your_password> POSTGRESQL_SERVICE
