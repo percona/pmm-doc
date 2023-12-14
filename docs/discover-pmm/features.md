@@ -1,4 +1,4 @@
-# Learn about some of our features
+# Key features
 
 The following features make Percona Monitoring and Management a powerful tool for database administrators and DevOps teams to monitor, analyze, and optimize the performance of their database infrastructure:
 

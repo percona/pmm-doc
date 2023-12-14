@@ -1,4 +1,4 @@
-# Why should you use PMM?
+# Why PMM?
 
 There are several compelling reasons why you should choose to use Percona Monitoring and Management (PMM) for your database monitoring and management needs:
 
