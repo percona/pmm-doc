@@ -1,4 +1,4 @@
-# PMM Inventory
+# About PMM Inventory
 
 The **Inventory** dashboard is a high-level overview of all objects registered in PMM.
 
