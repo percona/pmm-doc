@@ -1,4 +1,4 @@
-# About PMM uninstallation
+# About uninstalling PMM 
 
  Refer to the following sections for detailed instructions on uninstalling PMM:
 
