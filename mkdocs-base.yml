@@ -223,7 +223,7 @@ nav:
           - install-pmm/install-pmm-client/connect-database/haproxy.md
           - install-pmm/install-pmm-client/connect-database/linux.md
           - install-pmm/install-pmm-client/connect-database/mongodb.md
-          - install-pmm/install-pmm-client/connect-databasemysql.md
+          - install-pmm/install-pmm-client/connect-database/mysql.md
           - install-pmm/install-pmm-client/connect-database/postgresql.md
           - install-pmm/install-pmm-client/connect-database/proxysql.md
           - install-pmm/install-pmm-client/connect-database/remote.md
