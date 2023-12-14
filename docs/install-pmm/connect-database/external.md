@@ -1,4 +1,4 @@
-# External
+# Connect an External instance
 
 ## Adding general external services
 

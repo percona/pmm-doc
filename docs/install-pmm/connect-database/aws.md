@@ -1,4 +1,4 @@
-# Amazon RDS
+# Connect Amazon RDS instance
 
 ## Required settings
 

@@ -1,4 +1,4 @@
-# Linux
+# Connect Linux instance
 
 ## Add general system metrics service
 
