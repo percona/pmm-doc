@@ -1,4 +1,4 @@
-# Connect databases for PMM monitoring
+# About connecting databases
 
 You must configure and add database/service according to the service type.
 
