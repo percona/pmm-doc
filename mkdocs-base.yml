@@ -242,8 +242,7 @@ nav:
       - uninstall-pmm/uninstall_package_manager.md
       - uninstall-pmm/unregister_client.md
 
-  - Use PMM:
-    - PMM Inventory:
+  - Use:
       - details/dashboards/dashboard-inventory.md     
       - Dashboards:
         - ui/dashboards-panels/index.md
