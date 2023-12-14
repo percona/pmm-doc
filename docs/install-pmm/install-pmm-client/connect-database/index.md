@@ -1,4 +1,4 @@
-# About connecting databases
+# About connecting services for monitoring
 
 You must configure and add database/service according to the service type.
 

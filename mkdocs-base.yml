@@ -214,7 +214,7 @@ nav:
         - Docker image: install-pmm/install-pmm-client/docker.md
         - Manual install: install-pmm/install-pmm-client/binary_package.md          
         - Register client node: install-pmm/register-client-node/index.md 
-        - Connect database:
+        - Connect services:
           - install-pmm/install-pmm-client/connect-database/index.md
           - MySQL: install-pmm/install-pmm-client/connect-database/mysql.md    
           - AWS: install-pmm/install-pmm-client/connect-database/aws.md
@@ -227,7 +227,7 @@ nav:
           - ProxySQL: install-pmm/install-pmm-client/connect-database/proxysql.md
           - External: install-pmm/install-pmm-client/connect-database/external.md
           - Remote: install-pmm/install-pmm-client/connect-database/remote.md
-        - Remove databases: install-pmm/install-pmm-client/connect-database/remove-services/index.md
+        - Remove services: install-pmm/install-pmm-client/connect-database/remove-services/index.md
   - Upgrade:
       - pmm-upgrade/index.md
       - pmm-upgrade/ui_upgrade.md
