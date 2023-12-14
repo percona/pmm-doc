@@ -211,8 +211,8 @@ nav:
         - install-pmm/install-pmm-client/index.md
         - install-pmm/install-pmm-client/prerequisites.md
         - Percona Repositories: install-pmm/install-pmm-client/package_manager.md          
-        - install-pmm/install-pmm-client/docker.md
-        - install-pmm/install-pmm-client/binary_package.md          
+        - Docker image: install-pmm/install-pmm-client/docker.md
+        - Manual install: install-pmm/install-pmm-client/binary_package.md          
         - Register client node: install-pmm/register-client-node/index.md 
         - Connect database:      
           - install-pmm/install-pmm-client/connect-database/index.md
