@@ -237,8 +237,8 @@ nav:
       - pmm-upgrade/upgrade_from_pmm_1.md
   - Uninstall:
       - uninstall-pmm/index.md
-      - uninstall-pmm/uninstall_docker.md
-      - uninstall-pmm/uninstall_package_manager.md
+      - Docker: uninstall-pmm/uninstall_docker.md
+      - Package manager: uninstall-pmm/uninstall_package_manager.md
       - uninstall-pmm/unregister_client.md
 
   - Use:
