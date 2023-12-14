@@ -1,4 +1,4 @@
-# Remote
+# Connect Remote instance
 
 ## Recommended settings
 

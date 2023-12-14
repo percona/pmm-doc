@@ -1,4 +1,4 @@
-# ProxySQL
+# Connect ProxySQL instance
 
 Use the `proxysql` alias to enable ProxySQL performance metrics monitoring.
 
