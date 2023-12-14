@@ -112,7 +112,7 @@ Once PMM is set up, choose the database that you want it to monitor:
 
     2. Set up the `pg_stat_monitor` database extension and configure your database server accordingly. This default extension is developed by Percona and mirrors PostgreSQL's `pg_stat_statements` extension with added functionalities such as bucket-based data aggregation, enhanced accuracy, and the ability to expose query examples. 
     
-    If you need to use the `pg_stat_statements` extension instead, see [Adding a PostgreSQL database](../setting-up/client/postgresql.md) and the [`pg_stat_monitor` online documentation](https://docs.percona.com/pg-stat-monitor/configuration.html) for details about available parameters.
+        If you need to use the `pg_stat_statements` extension instead, see [Adding a PostgreSQL database](../setting-up/client/postgresql.md) and the [`pg_stat_monitor` online documentation](https://docs.percona.com/pg-stat-monitor/configuration.html) for details about available parameters.
 
     3. Set or change the value for `shared_preload_library` in your `postgresql.conf` file:
 
