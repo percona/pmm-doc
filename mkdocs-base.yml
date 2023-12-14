@@ -12,9 +12,9 @@ edit_uri: edit/main/docs/
 
 theme:
   name: material
-  custom_dir: overrides
-  logo: images/percona-logo.svg
-  favicon: images/percona-favicon.ico
+  logo: _images/percona-logo.svg
+  favicon: _images/percona-favicon.ico
+  custom_dir: overrides/
   font:
     text: Roboto
     code: Roboto Mono
@@ -56,30 +56,35 @@ extra_css:
   - https://unicons.iconscout.com/release/v3.0.3/css/line.css
   - https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css
   - css/percona.css
-  - css/design.css
+  - css/lightgallery.min.css
+  - css/extra.css
   - css/nocopy.css
-
-extra_javascript:
-  #  - js/lightgallery.min.js
-  - js/promptremover.js
+  - css/design.css
 
 #Copyright
 copyright: >
   <a href="https://www.percona.com/about">Percona LLC</a> and/or its affiliates © 2023 — <a href="#__consent">Cookie Consent</a>
 
-#Extensions
+extra_javascript:
+  #  - js/lightgallery.min.js
+  - js/promptremover.js
+
 markdown_extensions:
   attr_list: {}
   toc:
     permalink: true
-  md_in_html: {}
   admonition: {}
+  footnotes: {}
   def_list: {}
   meta: {}
-  smarty: { smart_angled_quotes: true }
+  md_in_html: {}
+  smarty:
+      {smart_angled_quotes: true}
   pymdownx.details: {}
   pymdownx.mark: {}
   pymdownx.smartsymbols: {}
+  pymdownx.tabbed: 
+      {alternate_style: true}
   pymdownx.tilde: {}
   pymdownx.superfences: {}
   pymdownx.tabbed:
@@ -93,8 +98,8 @@ markdown_extensions:
   pymdownx.highlight:
     use_pygments: true
   pymdownx.emoji:
-    emoji_index: !!python/name:material.extensions.emoji.twemoji
-    emoji_generator: !!python/name:material.extensions.emoji.to_svg
+    emoji_index: !!python/name:materialx.emoji.twemoji
+    emoji_generator: !!python/name:materialx.emoji.to_svg
     options:
       custom_icons:
         - overrides/.icons
@@ -114,15 +119,17 @@ plugins:
       - "variables.yml"
   # https://pypi.org/project/mkdocs-exclude/
   exclude:
-    glob: []
+    glob:
+      - "setting-up/client/docker.md"
   # https://github.com/orzih/mkdocs-with-pdf
   with-pdf:
-    output_path: "pdf/Everest-0.1.0.pdf"
-    cover_title: "Everest Documentation"
-    cover_subtitle: version (Date, Year)
+    output_path: "_pdf/PerconaMonitoringAndManagement-2.40.1.pdf"
+    cover_title: "Percona Monitoring and Management Documentation"
+    cover_subtitle: 2.40.1 (Oct 20, 2023)
 
-    author: "Everest Team"
-    cover_logo: docs/images/Percona_Logo_Color.png
+    author: "Percona Technical Documentation Team"
+    cover_logo: docs/_images/Percona_Logo_Color.png
+    custom_template_path: _resources/templates
     enabled_if_env: ENABLE_PDF_EXPORT
   # Check links - but extends build time significantly
   # https://pypi.org/project/mkdocs-htmlproofer-plugin/
