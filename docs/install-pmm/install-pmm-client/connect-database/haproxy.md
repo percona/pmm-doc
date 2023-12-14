@@ -1,4 +1,4 @@
-# Connect HAProxy
+# Connect HAProxy instance
 
 ## Adding HAProxy
 
