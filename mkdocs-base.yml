@@ -227,8 +227,7 @@ nav:
           - ProxySQL: install-pmm/install-pmm-client/connect-database/proxysql.md
           - External: install-pmm/install-pmm-client/connect-database/external.md
           - Remote: install-pmm/install-pmm-client/connect-database/remote.md
-        - Remove databases:      
-          - install-pmm/remove-services/index.md
+        - Remove databases: install-pmm/remove-services/index.md
   - Upgrade:
       - pmm-upgrade/index.md
       - pmm-upgrade/ui_upgrade.md
