@@ -17,7 +17,7 @@ You must configure and add database/service according to the service type.
 !!! hint alert alert-success "Tip"
     To change the parameters of a previously-added service, remove the service and re-add it with new parameters.
 
-## Remove services for PMM monitoring
+## Remove services from PMM monitoring
 
 You must specify the service type and service name to remove services from monitoring.
 
