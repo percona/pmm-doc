@@ -214,19 +214,19 @@ nav:
         - Docker image: install-pmm/install-pmm-client/docker.md
         - Manual install: install-pmm/install-pmm-client/binary_package.md          
         - Register client node: install-pmm/register-client-node/index.md 
-        - Connect database:      
+        - Connect database:
           - install-pmm/install-pmm-client/connect-database/index.md
-          - install-pmm/install-pmm-client/connect-database/aws.md
-          - install-pmm/install-pmm-client/connect-database/azure.md
-          - install-pmm/install-pmm-client/connect-database/external.md
-          - install-pmm/install-pmm-client/connect-database/google.md
-          - install-pmm/install-pmm-client/connect-database/haproxy.md
-          - install-pmm/install-pmm-client/connect-database/linux.md
-          - install-pmm/install-pmm-client/connect-database/mongodb.md
-          - install-pmm/install-pmm-client/connect-database/mysql.md
-          - install-pmm/install-pmm-client/connect-database/postgresql.md
-          - install-pmm/install-pmm-client/connect-database/proxysql.md
-          - install-pmm/install-pmm-client/connect-database/remote.md
+          - MySQL: install-pmm/install-pmm-client/connect-database/mysql.md    
+          - AWS: install-pmm/install-pmm-client/connect-database/aws.md
+          - Azure: install-pmm/install-pmm-client/connect-database/azure.md
+          - Google Cloud: install-pmm/install-pmm-client/connect-database/google.md
+          - PostgreSQL: install-pmm/install-pmm-client/connect-database/postgresql.md
+          - MongoDB: install-pmm/install-pmm-client/connect-database/mongodb.md
+          - HAproxy: install-pmm/install-pmm-client/connect-database/haproxy.md
+          - Linux: install-pmm/install-pmm-client/connect-database/linux.md
+          - ProxySQL: install-pmm/install-pmm-client/connect-database/proxysql.md
+          - External: install-pmm/install-pmm-client/connect-database/external.md
+          - Remote: install-pmm/install-pmm-client/connect-database/remote.md
       - Remove services:      
         - install-pmm/remove-services/index.md
   - Upgrade:
