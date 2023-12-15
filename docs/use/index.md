@@ -1,4 +1,4 @@
-# About monitoring PMM
+# About monitoring in PMM
 
 After installing PMM, it provides a user-friendly web-based interface that enables you to monitor your database instances. It offers comprehensive insights into the performance metrics and query analytics, which helps you optimize your database performance and troubleshoot any underlying issues.
 
