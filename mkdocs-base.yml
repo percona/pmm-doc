@@ -341,8 +341,7 @@ nav:
               - details/dashboards/dashboard-haproxy-instance-summary.md
       - PMM metrics: 
         - metrics/index.md
-        - metrics/extend_metrics.md 
-
+        - metrics/extend_metrics.md
     - Query Analytics:
       - qan/index.md
       - qan/qan_mongo.md
