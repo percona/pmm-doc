@@ -262,7 +262,7 @@ nav:
           - ui/dashboards-panels/share-dashboards/publish_snapshot.md
         - Annotate:
           - ui/dashboards-panels/annotate/annotate.md              
-        - List of available dashboards:
+        - Available dashboards:
           - Insight:
               - details/dashboards/dashboard-home.md
               - details/dashboards/dashboard-advanced-data-exploration.md
