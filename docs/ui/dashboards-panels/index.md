@@ -1,4 +1,4 @@
-# About PMM dashboards
+# About dashboards
 
 !!! caution alert alert-warning "Important"
     The content is under development.
