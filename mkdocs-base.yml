@@ -246,7 +246,7 @@ nav:
       - use/index.md
       - PMM Inventory: use/dashboard-inventory.md  
       - Dashboards:
-        - ui/dashboards-panels/index.md
+        - use/dashboards-panels/index.md
         - Use dashboards:
           - ui/dashboards-panels/use-dashboards/dashboard-feature.md
           - ui/dashboards-panels/use-dashboards/dashboard-settings.md
