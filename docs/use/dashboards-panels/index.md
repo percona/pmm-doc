@@ -1,4 +1,4 @@
-# About dashboards
+# Dashboards overview
 
 !!! caution alert alert-warning "Important"
     The content is under development.
