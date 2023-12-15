@@ -339,26 +339,18 @@ nav:
               - details/dashboards/dashboard-pxc-galera-cluster-summary-experimental.md
               - details/dashboards/dashboard-pxc-galera-nodes-compare.md
               - details/dashboards/dashboard-haproxy-instance-summary.md
-    - Database-as-a-Service: 
-      - dbaas/index.md
-      - dbaas/architecture.md
-      - Set up DBaaS:
-        - dbaas/setup-dbaas/index.md
-        - dbaas/setup-dbaas/activate_k8s.md
-        - dbaas/setup-dbaas/create_k8s.md
-        - dbaas/setup-dbaas/del_k8s.md
-        - dbaas/setup-dbaas/components.md  
-        - dbaas/setup-dbaas/run_as_docker.md  
-        - dbaas/setup-dbaas/expose_clusters.md
-      - Manage database clusters:
-        - dbaas/manage-dbaas_clusters/add_cluster.md
-        - dbaas/manage-dbaas_clusters/edit_cluster.md
-        - dbaas/manage-dbaas_clusters/del_cluster.md
-        - dbaas/manage-dbaas_clusters/restart_cluster.md
-        - dbaas/manage-dbaas_clusters/suspend_cluster.md
-        - dbaas/manage-dbaas_clusters/update_cluster.md
-      - dbaas/K8s_cluster.md
-      - dbaas/dbaas_backup.md
+      - PMM metrics: 
+        - metrics/index.md
+        - metrics/extend_metrics.md 
+
+    - Query Analytics:
+      - qan/index.md
+      - qan/qan_mongo.md
+      - qan/share_link.md
+      - Panels on QAN dashboard:
+        - qan/panels/overview.md
+        - qan/panels/filters.md
+        - qan/panels/details.md
     - Percona Alerting:
       - alert/index.md
       - alert/alert_type.md
@@ -385,21 +377,32 @@ nav:
       - backup/edit_scheduled.md
       - backup/delete_a_backup.md
     - Advisors: advisors/advisors.md
-    - Query Analytics:
-      - qan/index.md
-      - qan/qan_mongo.md
-      - qan/share_link.md
-      - Panels on QAN dashboard:
-        - qan/panels/overview.md
-        - qan/panels/filters.md
-        - qan/panels/details.md
-    - PMM metrics: 
-      - metrics/index.md
-      - metrics/extend_metrics.md 
+
+
     - PMM commands:
       - commands/index.md
       - commands/pmm-admin.md
-      - commands/pmm-agent.md 
+      - commands/pmm-agent.md
+    - Database-as-a-Service: 
+      - dbaas/index.md
+      - dbaas/architecture.md
+      - Set up DBaaS:
+        - dbaas/setup-dbaas/index.md
+        - dbaas/setup-dbaas/activate_k8s.md
+        - dbaas/setup-dbaas/create_k8s.md
+        - dbaas/setup-dbaas/del_k8s.md
+        - dbaas/setup-dbaas/components.md  
+        - dbaas/setup-dbaas/run_as_docker.md  
+        - dbaas/setup-dbaas/expose_clusters.md
+      - Manage database clusters:
+        - dbaas/manage-dbaas_clusters/add_cluster.md
+        - dbaas/manage-dbaas_clusters/edit_cluster.md
+        - dbaas/manage-dbaas_clusters/del_cluster.md
+        - dbaas/manage-dbaas_clusters/restart_cluster.md
+        - dbaas/manage-dbaas_clusters/suspend_cluster.md
+        - dbaas/manage-dbaas_clusters/update_cluster.md
+      - dbaas/K8s_cluster.md
+      - dbaas/dbaas_backup.md
   - Configure:      
       - configure-pmm/configure.md
       - configure-pmm/metrics_res.md
