@@ -1,10 +1,7 @@
 # Dashboards overview
 
-!!! caution alert alert-warning "Important"
-    The content is under development.
+Dashboards are a compilation of visualizations, including charts and metrics, that enable you to view performance metrics from node to single query for multiple databases in a centralized location. 
 
-The interface is a collection of web pages called dashboards.
+A dashboard is a group of one or more panels organized and arranged into rows. Panels refer to individual components or visual elements that display specific data or visualizations within the dashboard's layout. These panels are the building blocks that collectively form a dashboard, providing a means to present and visualize data in various formats. Dashboards are grouped into folders. You can customize these by renaming them or creating new ones. 
 
-Dashboards are grouped into folders. You can customize these, by renaming them or creating new ones.
-
-The area inside dashboards is populated by panels. Some are in collapsible panel groups. A panel can show a value, a graph, a chart, or a visual representation of a set.
+Dashboards provide insightful and actionable data, enabling you to gain an overview of your system status quickly. These dashboards enable you to drill down into specific time frames, apply filters, and analyze data trends for troubleshooting and performance optimization. Customizable dashboards and real-time alerting facilitate seamless monitoring of database performance.
