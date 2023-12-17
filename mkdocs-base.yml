@@ -345,6 +345,8 @@ nav:
         - qan/panels/overview.md
         - qan/panels/filters.md
         - qan/panels/details.md
+      - Advisors: advisors/advisors.md
+
     - Percona Alerting:
       - alert/index.md
       - alert/alert_type.md
@@ -370,7 +372,6 @@ nav:
         - backup/mysql-backup/restore_mysql_backup.md
       - backup/edit_scheduled.md
       - backup/delete_a_backup.md
-    - Advisors: advisors/advisors.md
 
 
     - PMM commands:
