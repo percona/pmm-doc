@@ -7,17 +7,17 @@
 
 Download and install PMM server using `cURL` or `wget`:
 
-    === "cURL"
+  === "cURL"
 
-        ```sh
-        curl -fsSL https://www.percona.com/get/pmm | /bin/bash
-        ```
+    ```sh
+    curl -fsSL https://www.percona.com/get/pmm | /bin/bash
+    ```
 
-    === "wget"
+=== "wget"
 
-        ```sh
-        wget -O - https://www.percona.com/get/pmm | /bin/bash
-        ```
+    ```sh
+    wget -O - https://www.percona.com/get/pmm | /bin/bash
+    ```
 
 
 ??? info "What does the script do?"
