@@ -2,17 +2,19 @@
 
 How to run PMM Server as a virtual machine.
 
-!!! summary alert alert-info "Summary"
-    - Download and verify the [latest](https://www.percona.com/downloads) OVF file.
-    - Import it.
-    - Reconfigure network.
-    - Start the VM and get IP.
-    - Log into PMM UI.
-    - (Optional) Change VM root password.
-    - (Optional) Set up SSH.
-    - (Optional) Set up static IP.
+??? "Summary"
 
----
+    !!! summary alert alert-info ""
+        - Download and verify the [latest](https://www.percona.com/downloads) OVF file.
+        - Import it.
+        - Reconfigure network.
+        - Start the VM and get IP.
+        - Log into PMM UI.
+        - (Optional) Change VM root password.
+        - (Optional) Set up SSH.
+        - (Optional) Set up static IP.
+
+    ---
 
 Most steps can be done with either a user interface or on the command line, but some steps can only be done in one or the other. Sections are labelled **UI** for user interface or **CLI** for command line instructions.
 
