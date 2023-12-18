@@ -15,7 +15,7 @@ The main menu is part of the Grafana framework and is visible on every page.
 
 | Item (Top)                         | Name                 | Description
 |:----------------------------------:|----------------------|-------------------------------
-| ![!image](../_images/pmm-logo.png) | Home                 | Link to home dashboard.
+| {{icon.percona}}                   | Home                 | Link to home dashboard.
 | <i class="uil uil-search"></i>     | Search               | Search dashboards by name.
 | <i class="uil uil-star"></i>       | Starred              | Mark your favorite dashboards.
 | <i class="uil uil-apps"></i>       | Dashboards           | Create dashboards or [folders][Folders], manage dashboards, import dashboards, create playlists, manage snapshots.
@@ -133,12 +133,10 @@ This item lists shortcuts to utility pages.
 |------|---------------------
 | PMM  |
 |      | PMM Add Instance
-|      | PMM Advisor Checks
+|      | PMM Database Checks
 |      | PMM Inventory
 |      | PMM Settings
 
 [Folders]: https://grafana.com/docs/grafana/latest/dashboards/dashboard_folders/
 [PromQL]: https://grafana.com/blog/2020/02/04/introduction-to-promql-the-prometheus-query-language/
-
 [BACKUP]: ../get-started/backup/index.md
-

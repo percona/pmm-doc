@@ -1,9 +1,6 @@
 # DBaaS architecture
 
-!!! caution alert alert-primary "Do not use for mission-critical workloads"
-    DBaaS feature is deprecated. We encourage you to use [Percona Everest](http://per.co.na/pmm-to-everest) instead. Check our [Migration guide](http://per.co.na/pmm-to-everest-guide).
-
-DBaaS is built on top of PMM and Kubernetes and the high-level architecture is shown below:
+DBaaS is built on top of PMM and Kubernetes and the high-level architecture is shown below
 
 ![!](../_images/dbaas_arch.jpg)
 
@@ -38,5 +35,3 @@ The installation of operators looks the following way
 ## DBaaS operator
 
 DBaaS operator is responsible for creating and managing databases [following operator pattern](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/) and depends on underlying operators for running database clusters. It provides a simplified API to manage database clusters via `kubectl`.
-
-

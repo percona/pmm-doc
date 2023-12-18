@@ -2,15 +2,13 @@
 
 | Category          | Dashboard                                                                                | Elements { data-sort-method='number'} |
 |-------------------|------------------------------------------------------------------------------------------|:-------------------------------------:|
-| Kubernetes        | [Kubernetes Cluster Summary]                                                              | 7
-| Kubernetes        | [Kubernetes Pods Status]                                                                         | 26
-| Kubernetes        | [Kubernetes Volumes]                                                             | 57
 | Insight           | [Advanced Data Exploration]                                                              | 7
 | Insight           | [Home Dashboard]                                                                         | 26
 | Insight           | [Prometheus Exporter Status]                                                             | 57
 | Insight           | [Prometheus Exporters Overview]                                                          | 27
 | Insight           | [VictoriaMetrics]                                                                        | 52
 | Insight           | [VictoriaMetrics Agents Overview]                                                        | 58
+| PMM               | [PMM Inventory]                                                                          | 3
 | PMM               | [Environment Overview]                                                                   | 0
 | PMM               | [Environment Summary]                                                                    | 0
 | DBaaS             | [DB Cluster Summary]                                                                     | 0
@@ -65,14 +63,12 @@
 
 [Advanced Data Exploration]: dashboard-advanced-data-exploration.md
 [Home Dashboard]: dashboard-home.md
-[Kubernetes Cluster Summary]: kubernetes_cluster_summary.md
-[Kubernetes Pods Status]: kubernetes_pods_status.md
-[Kubernetes Volumes]: kubernetes_volume.md
 [DB Cluster Summary]: dashboard-cluster-summary.md
 [Prometheus Exporter Status]: dashboard-prometheus-exporter-status.md
 [Prometheus Exporters Overview]: dashboard-prometheus-exporters-overview.md
 [VictoriaMetrics]: dashboard-victoriametrics.md
 [VictoriaMetrics Agents Overview]: dashboard-victoriametrics-agents-overview.md
+[PMM Inventory]: dashboard-inventory.md
 [Environment Overview]: dashboard-env-overview.md
 [Environment Summary]: dashboard-environent-summary.md
 [CPU Utilization Details]: dashboard-cpu-utilization-details.md
