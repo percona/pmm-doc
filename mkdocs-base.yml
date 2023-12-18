@@ -161,7 +161,7 @@ nav:
   - Quickstart Guide: getstarted.md
   - Install:
       - install-pmm/index.md
-      - Before you start: 
+      - Plan your PMM installation: 
         - plan-pmm-installation/hardware_and_system.md
         - plan-pmm-installation/network_and_firewall.md
       - Install PMM server:
