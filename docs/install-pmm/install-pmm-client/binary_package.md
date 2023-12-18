@@ -77,7 +77,7 @@ To install PMM client with binary package, do the following:
     pmm-admin status
     ```
     
-!!! hint PMM-Agent can be updated from tarball:
+!!! hint alert alert-success "Tips"
     - Download tar.gz with pmm2-client.
     - Extract it.
     - Run `./install_tarball script `with the `-u` flag.
