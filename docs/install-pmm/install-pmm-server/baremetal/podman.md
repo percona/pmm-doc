@@ -33,6 +33,8 @@ Percona recommends running PMM as a non-privileged user and running it as part o
     - Open the PMM UI in a browser.
 
 ---
+To run Podman as a non-privileged user:
+{.power-number}
 
 1. Install.
 
