@@ -1,9 +1,6 @@
 # About PMM metrics
 
-
-!!! caution alert alert-warning "Important"
-    The content for this topic is under development.
-
+Percona Monitoring and Management (PMM) collects a range of metrics across database systems to provide comprehensive monitoring and analysis capabilities. PMM supports monitoring for databases such as MySQL, PostgreSQL,  MongoDB, among many others. It gathers metrics related to database performance, resource utilization, health, and other important aspects. 
 
 
 
