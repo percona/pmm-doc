@@ -16,7 +16,7 @@ How to run PMM Server with Docker based on our [Docker image](https://hub.docker
 
 ## Run docker container
 
-??? info "Summary?"
+??? info "Summary"
 
     !!! summary alert alert-info ""
         - Pull the Docker image.
@@ -33,7 +33,7 @@ You can store data from PMM in:
 3. [Host directory](run_with_host_dir.md)
 
 
-??? info "Key points?"
+??? info "Key points"
 
     - To Disable the Home Dashboard *PMM Upgrade* panel you can either add `-e DISABLE_UPDATES=true` to the `docker run` command (for the life of the container) or navigate to _PMM --> PMM Settings --> Advanced Settings_ and disable "Check for Updates" (can be turned back on by any admin in the UI).
 

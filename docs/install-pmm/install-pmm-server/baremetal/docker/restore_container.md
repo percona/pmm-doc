@@ -1,12 +1,14 @@
 # Restore container
 
-!!! summary alert alert-info "Summary"
-    - Stop and remove the container.
-    - Restore (rename) the backup container.
-    - Restore saved data to the data container.
-    - Restore permissions to the data.
+??? info "Summary"
 
----
+    !!! summary alert alert-info ""
+        - Stop and remove the container.
+        - Restore (rename) the backup container.
+        - Restore saved data to the data container.
+        - Restore permissions to the data.
+
+    ---
 
 !!! caution alert alert-warning "Important"
     You must have a [backup](#backup) to restore from.

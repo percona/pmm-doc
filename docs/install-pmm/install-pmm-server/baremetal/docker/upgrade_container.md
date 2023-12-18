@@ -1,12 +1,14 @@
 # Upgrade container
 
-!!! summary alert alert-info "Summary"
-    - Stop the running container.
-    - Backup (rename) the container and copy data.
-    - Pull the latest Docker image.
-    - Run it.
+??? info "Summary"
 
----
+    !!! summary alert alert-info ""
+        - Stop the running container.
+        - Backup (rename) the container and copy data.
+        - Pull the latest Docker image.
+        - Run it.
+
+    ---
 
 !!! caution alert alert-warning "Important"
     Downgrades are not possible. To go back to using a previous version you must have created a backup of it before upgrading.
@@ -20,6 +22,9 @@
     ```
 
     (If you are accessing the docker host remotely, replace `localhost` with the IP or server name of the host.)
+
+To upgrade the container:
+{.power-number}
 
 
 1. Stop the container.

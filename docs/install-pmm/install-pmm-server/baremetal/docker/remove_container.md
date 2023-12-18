@@ -1,11 +1,13 @@
 # Remove container
 
-!!! summary alert alert-info "Summary"
-    - Stop the container.
-    - Remove (delete) both the server and data containers.
-    - Remove (delete) both images.
+??? info "Summary"
 
----
+    !!! summary alert alert-info ""
+        - Stop the container.
+        - Remove (delete) both the server and data containers.
+        - Remove (delete) both images.
+
+    ---
 
 !!! caution alert alert-warning "Caution"
     These steps delete the PMM Server Docker image and any accumulated PMM metrics data.

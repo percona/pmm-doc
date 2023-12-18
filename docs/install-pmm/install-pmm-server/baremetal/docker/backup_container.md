@@ -1,11 +1,13 @@
 
 # Backup container
 
-!!! summary alert alert-info "Summary"
-    - Stop and rename the `pmm-server` container.
-    - Take a local copy of the `pmm-data` container's `/srv` directory.
+??? info "Summary"
 
----
+    !!! summary alert alert-info ""
+        - Stop and rename the `pmm-server` container.
+        - Take a local copy of the `pmm-data` container's `/srv` directory.
+
+    ---
 
 !!! caution alert alert-warning "Important"
     Grafana plugins have been moved to the data volume `/srv` since the 2.23.0 version. So if you are upgrading PMM from any version before 2.23.0 and have installed additional plugins then plugins should be installed again after the upgrade.
