@@ -35,7 +35,7 @@ Connection schema of external serverless exporter:
 
 ![!](../../_images/PMM_External_Serverless_Exporter_Schema.jpg)
 
-## Add something not supported by PMM
+## Add a service not supported by PMM
 
 PMM can collect any metrics in [Open metrics](https://openmetrics.io) or [Prometheus exposition](https://prometheus.io/docs/instrumenting/exposition_formats/) format. You must specify the host and port of these metrics using the `pmm-admin add external` or `pmm-admin add external-serverless` commands.
 
