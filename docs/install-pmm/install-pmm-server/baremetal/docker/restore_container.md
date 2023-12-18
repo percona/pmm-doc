@@ -11,7 +11,7 @@
 !!! caution alert alert-warning "Important"
     You must have a [backup](#backup) to restore from.
 
-To restore container:
+To restore the container:
 {.power-number}
 
 1. Stop the container.
