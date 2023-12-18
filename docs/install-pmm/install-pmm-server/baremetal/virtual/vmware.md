@@ -4,21 +4,18 @@
     To import downloaded file from UI:
     {.power-number}
 
-    1. Select *File* → *Import*.
-    2. Click *Choose file...*.
+    1. Select **File** → **Import**.
+    2. Click **Choose* file...*.
     3. Navigate to the downloaded `.ova` file and select it.
-    4. Click *Open*.
-    5. Click *Continue*.
-    6. In the *Save as* dialog:
-
-        a. (Optional) Change the directory or file name.
-
-        b. Click *Save*.
+    4. Click **Open**.
+    5. Click **Continue**.
+    6. In the **Save as** dialog:
+        -  (Optional) Change the directory or file name.
+        -  Click **Save**.
 
     7. Choose one of:
-
-        a. (Optional) Click *Finish*. This starts the virtual machine.
-        b. (Recommended) Click *Customize Settings*. This opens the VM's settings page without starting the machine.
+        - (Optional) Click **Finish**. This starts the virtual machine.
+        - (Recommended) Click **Customize Settings**. This opens the VM's settings page without starting the machine.
 
 === "OVA file downloaded via CLI"
     To import downloaded file from the CLI:
@@ -58,9 +55,9 @@ To reconfigure the interface with the UI:
 
 1. If started, shut down the virtual machine.
 2. In the VMware main window, select the imported virtual machine.
-3. Click *Virtual Machine* → *Settings...*.
-4. Click *Network Adapter*.
-5. In the *Bridged Networking* section, select *Autodetect*.
+3. Click **Virtual Machine** → **Settings...**.
+4. Click **Network Adapter**.
+5. In the **Bridged Networking** section, select **Autodetect**.
 6. Close the settings window.
 
 ### Start guest and get IP address from UI
