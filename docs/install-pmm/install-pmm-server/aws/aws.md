@@ -15,6 +15,8 @@ Percona Monitoring and Management Server is provided at no cost, but you may nee
 
     For more information, see our blog post [How much disk space should I allocate for Percona Monitoring and Management?](https://www.percona.com/blog/2017/05/04/how-much-disk-space-should-i-allocate-for-percona-monitoring-and-management/).
 
+{.power-number}
+
 1. Click *Continue to Subscribe*.
 
 2. **Subscribe to this software**: Check the terms and conditions and click *Continue to Configuration*.
