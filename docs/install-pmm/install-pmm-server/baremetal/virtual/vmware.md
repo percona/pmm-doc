@@ -48,6 +48,10 @@
 
 ### Reconfigure with UI
 
+To reconfigure the interface with the UI:
+{.power-number}
+
+
 1. If started, shut down the virtual machine.
 2. In the VMware main window, select the imported virtual machine.
 3. Click *Virtual Machine* → *Settings...*.
@@ -57,11 +61,18 @@
 
 ### Start guest and get IP address from UI
 
+To start the guest and get the IP address from the UI:
+{.power-number}
+
+
 1. In the VMware main window, select the imported virtual machine.
 2. Click the play button <i class="uil uil-caret-right"></i> or select *Virtual Machine* → *Start Up*.
 3. When the instance has been booted, note the IP address in the guest console.
 
 ### Start guest and get IP address from CLI
+
+To start the guest and get the IP address from the CLI:
+{.power-number}
 
 1. Start the virtual machine in GUI mode. (There's no way to redirect a VMware VM's console to the host.)
 
