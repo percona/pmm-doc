@@ -5,7 +5,7 @@ To log in to the PMM user interface:
 
 1. Open a web browser and visit the guest IP address.
 
-2. The PMM [login screen](../../../interface.md) appears.
+2. The PMM [login screen](../../../reference/ui/dashboards-panels/log_in.md) appears.
 
 3. Enter the default username and password in the relevant fields and click *Log in*.
 
