@@ -225,20 +225,20 @@ To use *Performance Schema*, set these variables.
 
 #### MariaDB 10.5.7 or lower
 
-There is no *Explain* or *Example* data shown by default in Query Analytics when monitoring MariaDB instances version 10.5.7 or lower. A workaround is to set this variable.
+There is no **Explain** or **Example** data shown by default in Query Analytics when monitoring MariaDB instances version 10.5.7 or lower. A workaround is to set this variable.
 
 | Variable                                                                  | Value           | Description
 |---------------------------------------------------------------------------|-----------------|-----------------------------
 | [`performance_schema.setup_instruments`][mariadb_perfschema_instr_table]  | `'statement/%'` | List of instrumented object classes.
 
-- Session.
+- **Session**
 
     ```sql
     UPDATE performance_schema.setup_instruments SET ENABLED = 'YES', TIMED = 'YES' WHERE NAME LIKE 'statement/%';
     UPDATE performance_schema.setup_consumers SET ENABLED = 'YES' WHERE NAME LIKE '%statements%';
     ```
 
-- Transactions
+- **Transactions**
 
     MariaDB doesn't implement queries history for transactions. All queries executed within a transaction won't have query examples since PMM relies on the `performance_schema.events_statements_history` to grab the query example but that table won't have any query executed as part of a transaction.  
 
@@ -275,12 +275,12 @@ Set this variable to see query time distribution charts.
 
 You must also install the plugins.
 
-- Session.
+- **Session**
 
     1. Check that `/usr/lib/mysql/plugin/query_response_time.so` exists.
     2. Install the plugins and activate.
 
-        For [MariaDB 10.3][mariadb_query_response_time]:
+    === "For [MariaDB 10.3][mariadb_query_response_time]"
 
         ```sql
         INSTALL PLUGIN QUERY_RESPONSE_TIME_AUDIT SONAME 'query_response_time.so';
@@ -288,7 +288,7 @@ You must also install the plugins.
         SET GLOBAL query_response_time_stats = ON;
         ```
 
-        For [Percona Server for MySQL 5.7][ps_query_response_time_stats]:
+    ===  "For [Percona Server for MySQL 5.7][ps_query_response_time_stats]"
 
         ```sql
         INSTALL PLUGIN QUERY_RESPONSE_TIME_AUDIT SONAME 'query_response_time.so';
@@ -424,8 +424,8 @@ Add the database server as a service using one of these example commands. If suc
 ### PMM user interface
 
 1. Select <i class="uil uil-cog"></i> **Configuration** → {{icon.inventory}} **Inventory**.
-2. In the *Services* tab, verify the **Service name**, **Addresses**, and any other relevant information in the form.
-3. In the *Options* column, expand the **Details** section and check that the Agents are using the desired data source.
+2. In the **Services** tab, verify the **Service name**, **Addresses**, and any other relevant information in the form.
+3. In the **Options** column, expand the **Details** section and check that the Agents are using the desired data source.
 
 ### Command line
 
