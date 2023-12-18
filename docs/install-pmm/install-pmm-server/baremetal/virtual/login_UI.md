@@ -47,11 +47,11 @@ To log in to the PMM user interface:
 
     2. Log into the PMM user interface.
 
-    3. Select *PMM → PMM Settings → SSH Key*.
+    3. Select **PMM → PMM Settings → SSH Key**.
 
-    4. Copy and paste the contents of the `admin.pub` file into the *SSH Key* field.
+    4. Copy and paste the contents of the `admin.pub` file into the **SSH Key** field.
 
-    5. Click *Apply SSH Key*. (This copies the public key to `/home/admin/.ssh/authorized_keys` in the guest).
+    5. Click **Apply SSH Key**. (This copies the public key to `/home/admin/.ssh/authorized_keys` in the guest).
 
     6. Log in via SSH (`N.N.N.N` is the guest IP address).
 
