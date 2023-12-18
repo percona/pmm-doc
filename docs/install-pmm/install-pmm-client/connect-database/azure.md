@@ -6,10 +6,11 @@
 ## Activate Microsoft Azure
 
 The Microsoft Azure feature is turned off by default. To turn it on:
+{.power-number}
 
-1. Go to <i class="uil uil-cog"></i> *Configuration* → <i class="uil uil-setting"></i> *Settings* → *Advanced Settings*.
+1. Go to <i class="uil uil-cog"></i> **Configuration** → <i class="uil uil-setting"></i> **Settings** → **Advanced Settings**.
 
-2. Click the <i class="uil uil-toggle-off"></i> toggle in the *Technical preview features* section of the page.
+2. Click the <i class="uil uil-toggle-off"></i> toggle in the **Technical preview features** section of the page.
 
 ## Required settings
 
@@ -71,6 +72,9 @@ You need to get the Client ID, Client Secret, Tenant ID and Subscription ID.
 
 ### Get the subscription ID
 
+To get a subscription ID:
+{.power-number}
+
 1. Search **Subscriptions**, click on your subscription name
 ![!](../../_images/azure_subscription_section.png )
 
@@ -79,6 +83,9 @@ You need to get the Client ID, Client Secret, Tenant ID and Subscription ID.
 ![!](../../_images/azure_subscription_id.png)
 
 ### Create a new application to get the tenant ID, client ID and the client secret.
+
+To get the tenant ID, client ID and the client secret:
+{.power-number}
 
 1. Search for **Azure Active Directory**
 ![!](../../_images/azure_active_directory_section.png)
@@ -162,10 +169,11 @@ PMM can use 3 exporters to collect metrics:
 
 TLS/SSL is enforced on the server by default. So please download the certificate needed to communicate over SSL with your Azure Database.
 It can be done on Networking tab for your Azure Database instance.
-
-![!](../../_images/azure_certificate.png)
+{.power-number}
 
 Also enforced TLS/SSL connection option can be disabled on server side.
+
+![!](../../_images/azure_certificate.png)
 
 Command for adding an azure database service for monitoring without TLS/SSL.
 
