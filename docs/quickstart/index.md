@@ -205,7 +205,6 @@ Once PMM is set up, choose the database that you want it to monitor:
             }
         ]
         })
-        exit
         ```
 
     3. To optimize server-side resources, install PMM Client via Package Manager on the database node:
