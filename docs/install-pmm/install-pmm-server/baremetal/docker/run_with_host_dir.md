@@ -4,6 +4,9 @@
 !!! note alert alert-primary "Availability"
     This feature is available starting with PMM 2.29.0.
 
+To run Docker with the host directory:
+{.power-number}
+
 1. Pull the image.
 
     ```sh
