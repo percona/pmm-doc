@@ -93,6 +93,7 @@ To start the guest and get the IP address from the UI:
 ### Start guest and get IP address from CLI
 
 To start the guest and get the IP address from the CLI:
+{.power-number}
 
 1. Start the guest.
 
