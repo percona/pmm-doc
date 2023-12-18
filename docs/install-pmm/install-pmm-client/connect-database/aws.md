@@ -27,11 +27,9 @@ The first step is to define a policy which will hold all the necessary permissio
 A policy defines how AWS services can be accessed. Once defined it can be associated with an existing user or group.
 {.power-number}
 
-![!image](../../../_images/aws.iam.png)
-
-
-
 1. Select the **Policies** option on the navigation panel and click the **Create policy** button.
+
+    ![!image](../../../_images/aws.iam.png)
 
 2. On the **Create policy** page, select the JSON tab and replace the existing contents with the following JSON document.
 
@@ -64,9 +62,9 @@ A policy defines how AWS services can be accessed. Once defined it can be associ
 Policies are attached to existing IAM users or groups. To create a new IAM user, select *Users* on the Identity and Access Management page at AWS. Then click *Add user* and complete the following steps:
 {.power-number}
 
-![!image](../../../_images/aws.iam-users.1.png)
-
 1. On the **Add user** page, set the user name and select the **Programmatic access** option under **Select AWS access type**. Set a custom password and then proceed to permissions by clicking the **Permissions** button.
+
+    ![!image](../../../_images/aws.iam-users.1.png)
 
 2. On the **Set permissions** page, add the new user to one or more groups if necessary. Then, click *Review*.
 
