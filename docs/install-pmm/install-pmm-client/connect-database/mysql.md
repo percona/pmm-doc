@@ -29,19 +29,18 @@ Check that:
 
 It is good practice to use a non-superuser account to connect PMM Client to the monitored database instance. This example creates a database user with name `pmm`, password `pass`, and the necessary permissions.
 
+=== "On MySQL 5.7"
+
+    ```sql
+    CREATE USER 'pmm'@'127.0.0.1' IDENTIFIED BY 'pass' WITH MAX_USER_CONNECTIONS 10;
+    GRANT SELECT, PROCESS, REPLICATION CLIENT, RELOAD ON *.* TO 'pmm'@'localhost';
+    ```
 
 === "On MySQL 8.0"
 
     ```sql
     CREATE USER 'pmm'@'localhost' IDENTIFIED BY 'pass' WITH MAX_USER_CONNECTIONS 10;
     GRANT SELECT, PROCESS, REPLICATION CLIENT, RELOAD, BACKUP_ADMIN ON *.* TO 'pmm'@'localhost';
-    ```
-
-=== "On MySQL 5.7"
-
-    ```sql
-    CREATE USER 'pmm'@'127.0.0.1' IDENTIFIED BY 'pass' WITH MAX_USER_CONNECTIONS 10;
-    GRANT SELECT, PROCESS, REPLICATION CLIENT, RELOAD ON *.* TO 'pmm'@'localhost';
     ```
 
 ## Choose and configure a source
@@ -136,33 +135,33 @@ Some MySQL-based database servers support extended slow query log variables.
 | [`log_slow_verbosity`][log_slow_verbosity]                               |'full' | Ensures that all information about each captured query is stored in the slow query log.
 | [`slow_query_log_use_global_control`][slow_query_log_use_global_control] |'all'  | Configure the slow query log during runtime and apply these settings to existing connections. (By default, slow query log settings apply only to new sessions.)
 
-##### Examples
+??? info "Examples"
 
-- Configuration file (Percona Server for MySQL, Percona XtraDB Cluster).
+    - Configuration file (Percona Server for MySQL, Percona XtraDB Cluster).
 
-    ```ini
-    log_slow_rate_limit=100
-    log_slow_rate_type='query'
-    slow_query_log_always_write_time=1
-    log_slow_verbosity='full'
-    slow_query_log_use_global_control='all'
-    ```
+        ```ini
+        log_slow_rate_limit=100
+        log_slow_rate_type='query'
+        slow_query_log_always_write_time=1
+        log_slow_verbosity='full'
+        slow_query_log_use_global_control='all'
+        ```
 
-- Configuration file (MariaDB).
+    - Configuration file (MariaDB).
 
-    ```ini
-    log_slow_rate_limit=100
-    ```
+        ```ini
+        log_slow_rate_limit=100
+        ```
 
-- Session (Percona Server for MySQL, Percona XtraDB Cluster).
+    - Session (Percona Server for MySQL, Percona XtraDB Cluster).
 
-    ```sql
-    SET GLOBAL log_slow_rate_limit = 100;
-    SET GLOBAL log_slow_rate_type = 'query';
-    SET GLOBAL slow_query_log_always_write_time = 1;
-    SET GLOBAL log_slow_verbosity = 'full';
-    SET GLOBAL slow_query_log_use_global_control = 'all';
-    ```
+        ```sql
+        SET GLOBAL log_slow_rate_limit = 100;
+        SET GLOBAL log_slow_rate_type = 'query';
+        SET GLOBAL slow_query_log_always_write_time = 1;
+        SET GLOBAL log_slow_verbosity = 'full';
+        SET GLOBAL slow_query_log_use_global_control = 'all';
+        ```
 
 #### Slow query log rotation
 
