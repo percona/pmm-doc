@@ -42,6 +42,7 @@
 
 ## Reconfigure interface
 
+The 
 
 ### Reconfigure with UI
 
@@ -86,8 +87,8 @@ To reconfigure via the CLI:
 To start the guest and get the IP address from the UI:
 {.power-number}
 
-1. Select the *PMM Server* virtual machine in the list.
-2. Click *Start*.
+1. Select the **PMM Server** virtual machine in the list.
+2. Click **Start**.
 3. When the guest has booted, note the IP address in the guest console.
 
 ### Start guest and get IP address from CLI
