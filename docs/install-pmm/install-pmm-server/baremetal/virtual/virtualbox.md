@@ -1,7 +1,8 @@
 # VirtualBox - Import OVA file
 
 === "OVA file downloaded from UI"
-{.power-number}
+    To import downloaded file from UI:
+    {.power-number}
 
     1. Select *File* → *Import appliance...*.
     2. In the *File* field, type the path to the downloaded `.ova` file, or click the folder icon to navigate and open it.
@@ -11,7 +12,8 @@
     6. When the guest has booted, note the IP address in the guest console.
 
 === "OVA file downloaded via CLI"
-{.power-number}
+    To import downloaded file from CLI:
+    {.power-number}
 
     1. Open a terminal and change directory to where the downloaded `.ova` file is.
 
@@ -42,6 +44,8 @@
 
 
 ### Reconfigure with UI
+
+To reconfigure with the UI:
 {.power-number}
 
 1. Click *Settings*.
@@ -51,6 +55,9 @@
 5. Click *OK*.
 
 ### Reconfigure via CLI
+
+To reconfigure via the CLI:
+{.power-number}
 
 1. Show the list of available bridge interfaces.
 
@@ -76,11 +83,16 @@
 
 ### Start guest and get IP address from UI
 
+To start the guest and get the IP address from the UI:
+{.power-number}
+
 1. Select the *PMM Server* virtual machine in the list.
 2. Click *Start*.
 3. When the guest has booted, note the IP address in the guest console.
 
 ### Start guest and get IP address from CLI
+
+To start the guest and get the IP address from the CLI:
 
 1. Start the guest.
 
