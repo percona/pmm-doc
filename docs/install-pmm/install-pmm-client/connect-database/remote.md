@@ -3,7 +3,7 @@
 ## Recommended settings
 
 When monitoring remote instances including RDS and Google instances, network latency might affect the scrape process and throw timeout errors.
-For this reason, it is recommended to [lower the metrics resolution](../../how-to/configure.md#metrics-resolution).
+For this reason, it is recommended to [lower the metrics resolution](../../../configure-pmm/metrics_res.md).
 
 Starting with PMM 2.18, the scrape timeout has been updated according to the following rules:
 
