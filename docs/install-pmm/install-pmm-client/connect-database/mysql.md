@@ -3,17 +3,19 @@
 
 PMM Client collects metrics from [MySQL][ORACLE_MYSQL], [Percona Server for MySQL][PERCONA_SERVER_MYSQL], [Percona XtraDB Cluster][PERCONA_XTRADB_CLUSTER], and [MariaDB][MARIADB]. (Amazon RDS is also supported and explained in a [separate section](aws.md).)
 
-!!! summary alert alert-info "Summary"
-    - [Create PMM account and set permissions.](#create-a-database-account-for-pmm)
-    - [Choose a data source](#choose-and-configure-a-source):
-        - [Slow query log](#slow-query-log), or,
-        - [Performance Schema](#performance-schema).
-    - Configure:
-        - [Query response time](#query-response-time),
-        - [Tablestats](#tablestats),
-        - [User statistics](#user-statistics).
-    - [Add service](#add-service).
-    - [Check the service](#check-the-service).
+??? info "Summary"
+
+    !!! summary alert alert-info ""
+        - [Create PMM account and set permissions.](#create-a-database-account-for-pmm)
+        - [Choose a data source](#choose-and-configure-a-source):
+            - [Slow query log](#slow-query-log), or,
+            - [Performance Schema](#performance-schema).
+        - Configure:
+            - [Query response time](#query-response-time),
+            - [Tablestats](#tablestats),
+            - [User statistics](#user-statistics).
+        - [Add service](#add-service).
+        - [Check the service](#check-the-service).
 
 ## Before you start
 
@@ -352,11 +354,11 @@ With the PMM user interface, you select *Use performance schema*, or deselect it
 
 4. Click *Add service*.
 
-![!](../../_images/PMM_Add_Instance_MySQL.jpg)
+![!](../../../_images/PMM_Add_Instance_MySQL.jpg)
 
 If your MySQL instance is configured to use TLS, click on the *Use TLS for database connections* check box and fill in your TLS certificates and key.
 
-![!](../../_images/PMM_Add_Instance_MySQL_TLS.jpg)
+![!](../../../_images/PMM_Add_Instance_MySQL_TLS.jpg)
 
 ### On the command line
 
