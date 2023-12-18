@@ -10,6 +10,9 @@
 !!! caution alert alert-warning "Caution"
     These steps delete the PMM Server Docker image and any accumulated PMM metrics data.
 
+To remove container:
+{.power-number}
+
 1. Stop pmm-server container.
 
     ```sh

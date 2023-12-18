@@ -2,6 +2,7 @@
 # Isolated hosts
 
 If the host where you will run PMM Server has no internet connection, you can download the Docker image on a separate (internet-connected) host and securely copy it.
+{.power-number}
 
 1. On an internet-connected host, download the Docker image and its checksum file.
 
