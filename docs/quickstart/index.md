@@ -162,25 +162,25 @@ Once PMM is set up, choose the database that you want it to monitor:
     1.  Run the following command in `mongo` shell to create a role with the monitoring permissions: 
  
         ```
-            db.createRole({
-        "role":"explainRole",
-        "privileges":[
-            {
-                "resource":{
-                    "db":"",
-                    "collection":""
-                },
-                "actions":[
-                    "collStats",
-                    "dbHash",
-                    "dbStats",
-                    "find",
-                    "listIndexes",
-                    "listCollections"
-                ]
-            }
-        ],
-        "roles":[]
+        db.createRole({
+            "role":"explainRole",
+            "privileges":[
+                {
+                    "resource":{
+                        "db":"",
+                        "collection":""
+                    },
+                    "actions":[
+                        "collStats",
+                        "dbHash",
+                        "dbStats",
+                        "find",
+                        "listIndexes",
+                        "listCollections"
+                    ]
+                }
+            ],
+            "roles":[]
         })
         ```
 
