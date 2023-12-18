@@ -25,35 +25,35 @@ The first step is to define a policy which will hold all the necessary permissio
 ## Creating a policy
 
 A policy defines how AWS services can be accessed. Once defined it can be associated with an existing user or group.
-
-To define a new policy use the IAM page at AWS.
 {.power-number}
 
 ![!image](../../../_images/aws.iam.png)
+
+
 
 1. Select the **Policies** option on the navigation panel and click the **Create policy** button.
 
 2. On the **Create policy** page, select the JSON tab and replace the existing contents with the following JSON document.
 
-??? info "JSON"
+    ??? info "JSON"
 
-    ```json
-    { "Version": "2012-10-17",
-      "Statement": [{ "Sid": "Stmt1508404837000",
-                  "Effect": "Allow",
-                  "Action": [ "rds:DescribeDBInstances",
-                              "cloudwatch:GetMetricStatistics",
-                              "cloudwatch:ListMetrics"],
-                              "Resource": ["*"] },
-                 { "Sid": "Stmt1508410723001",
-                   "Effect": "Allow",
-                   "Action": [ "logs:DescribeLogStreams",
-                               "logs:GetLogEvents",
-                               "logs:FilterLogEvents" ],
-                               "Resource": [ "arn:aws:logs:*:*:log-group:RDSOSMetrics:*" ]}
-               ]
-    }
-    ```
+        ```json
+        { "Version": "2012-10-17",
+        "Statement": [{ "Sid": "Stmt1508404837000",
+                    "Effect": "Allow",
+                    "Action": [ "rds:DescribeDBInstances",
+                                "cloudwatch:GetMetricStatistics",
+                                "cloudwatch:ListMetrics"],
+                                "Resource": ["*"] },
+                    { "Sid": "Stmt1508410723001",
+                    "Effect": "Allow",
+                    "Action": [ "logs:DescribeLogStreams",
+                                "logs:GetLogEvents",
+                                "logs:FilterLogEvents" ],
+                                "Resource": [ "arn:aws:logs:*:*:log-group:RDSOSMetrics:*" ]}
+                ]
+        }
+        ```
 
 3. Click **Review policy** and set a name to your policy, such as `AmazonRDSforPMMPolicy`. Then, click the **Create policy** button.
 
@@ -199,7 +199,7 @@ instances.
 
     - when adding a MongoDB instance, you will be able to choose using Query Analytics MongoDB profiler.
 
-7. Finally press the *Add service* button to start monitoring your instance.
+7. Finally press the **Add service** button to start monitoring your instance.
 
 ## Adding an Amazon RDS PostgreSQL instance
 
