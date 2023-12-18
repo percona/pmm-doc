@@ -11,4 +11,4 @@ pmm-admin remove <service-type> <service-name>
 
 !!! seealso alert alert-info "See also"
     - [Percona release](https://www.percona.com/doc/percona-repo-config/percona-release.html)
-    - [PMM Client architecture](../../details/architecture.md#pmm-client)
+    - [PMM Client architecture](../../reference/ui/index.md)
