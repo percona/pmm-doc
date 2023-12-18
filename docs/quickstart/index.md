@@ -140,7 +140,7 @@ Once PMM is set up, choose the database or the application that you want it to m
         # TYPE  DATABASE        USER        ADDRESS                METHOD
         ```
 
-    3. Set up the `pg_stat_monitor` database extension and configure your database server accordingly. This default extension is developed by Percona and mirrors PostgreSQL's `pg_stat_statements` extension with added functionalities such as bucket-based data aggregation, enhanced accuracy, and the ability to expose query examples. 
+    3. Set up the `pg_stat_monitor` database extension and configure your database server accordingly. 
     
         If you need to use the `pg_stat_statements` extension instead, see [Adding a PostgreSQL database](../setting-up/client/postgresql.md) and the [`pg_stat_monitor` online documentation](https://docs.percona.com/pg-stat-monitor/configuration.html) for details about available parameters.
 
@@ -188,12 +188,12 @@ Once PMM is set up, choose the database or the application that you want it to m
             Install the following with `root` permission: 
             { .power-number}   
 
-            1. Install [percona-release](https://docs.percona.com/percona-software-repositories/installing.html) tool.  If this is already installed, [update percona-release](https://docs.percona.com/percona-software-repositories/updating.html) to the latest version:
+            3. Install [percona-release](https://docs.percona.com/percona-software-repositories/installing.html) tool.  If this is already installed, [update percona-release](https://docs.percona.com/percona-software-repositories/updating.html) to the latest version:
 
                 ```sh
                 yum install -y https://repo.percona.com/yum/percona-release-latest.noarch.rpm
                 ```
-            2. Install the PMM Client package:
+            4. Install the PMM Client package:
 
                 ```sh
                 yum install -y pmm2-client
@@ -290,7 +290,6 @@ Once PMM is set up, choose the database or the application that you want it to m
         === "Red Hat-based"
 
             Install the following with `root` permission: 
-        { .power-number}     
 
             1. Install [percona-release](https://docs.percona.com/percona-software-repositories/installing.html) tool.  If this is already installed, [update percona-release](https://docs.percona.com/percona-software-repositories/updating.html) to the latest version:
 
