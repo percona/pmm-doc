@@ -187,23 +187,23 @@ Once PMM is set up, choose the database that you want it to monitor:
     2. Create a user and grant it the role created above:
 
         ```
-            db.getSiblingDB("admin").createUser({
-        "user":"pmm",
-        "pwd":"<your_password>",
-        "roles":[
-            {
-                "role":"explainRole",
-                "db":"admin"
-            },
-            {
-                "role":"clusterMonitor",
-                "db":"admin"
-            },
-            {
-                "role":"read",
-                "db":"local"
-            }
-        ]
+        db.getSiblingDB("admin").createUser({
+            "user":"pmm",
+            "pwd":"<your_password>",
+            "roles":[
+                {
+                    "role":"explainRole",
+                    "db":"admin"
+                },
+                {
+                    "role":"clusterMonitor",
+                    "db":"admin"
+                },
+                {
+                    "role":"read",
+                    "db":"local"
+                }
+            ]
         })
         ```
 
