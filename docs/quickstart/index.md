@@ -269,7 +269,7 @@ Once PMM is set up, choose the database that you want it to monitor:
     3. Add the ProxySQL service:
 
         ```
-        pmm-admin add proxysql --username=pmm --password=<your_password> PROXYSQL_SERVICE 
+        pmm-admin add proxysql --username=pmm --password=<your_password>
         ```
 
     For detailed instructions, see [Enable ProxySQL performance metrics monitoring](../setting-up/client/proxysql.md).
