@@ -3,7 +3,7 @@
 How to run PMM Server as a virtual machine.
 
 !!! summary alert alert-info "Summary"
-    - Download and verify the [latest][OVA] OVF file.
+    - Download and verify the [latest](https://www.percona.com/downloads) OVF file.
     - Import it.
     - Reconfigure network.
     - Start the VM and get IP.
@@ -19,7 +19,7 @@ Most steps can be done with either a user interface or on the command line, but 
 ## Terminology
 
 - *Host* is the desktop or server machine running the hypervisor.
-- *Hypervisor* is software (e.g. [VirtualBox], [VMware]) that runs the guest OS as a virtual machine.
+- *Hypervisor* is software (e.g. VirtualBox, VMware) that runs the guest OS as a virtual machine.
 - *Guest* is the CentOS virtual machine that runs PMM Server.
 
 ## OVA file details
