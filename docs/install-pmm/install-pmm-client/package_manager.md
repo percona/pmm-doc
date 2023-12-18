@@ -83,7 +83,7 @@ To manually download package manager:
     ```sh
     dnf localinstall *.rpm
     ```
-??? info "Download page link"s
+??? info "Download page links"
 
     Here are the download page links for each supported platform.
 
