@@ -15,13 +15,13 @@ To log in to the PMM user interface:
 
 4. (Recommended) Follow the prompts to change the default password.
 
-!!! note alert alert-primary ""
-    You also can change the default password through SSH by using the `change-admin-password` command.
+    !!! note alert alert-primary "Note"
+        You also can change the default password through SSH by using the `change-admin-password` command.
 
 5. The PMM Home Dashboard appears.
 
 
-??? info "(optional) Change root password from UO"
+??? info # "(optional) Change root password from UO"
 
     1. Start the virtual machine in GUI mode.
 
@@ -59,46 +59,46 @@ To log in to the PMM user interface:
         ssh -i admin admin@N.N.N.N
         ```
 
-## (Optional) Set up static IP via CLI
+ ??? info ## (Optional) Set up static IP via CLI
 
-When the guest OS starts, it will get an IP address from the hypervisor's DHCP server. This IP can change each time the guest OS is restarted. Setting a static IP for the guest OS avoids having to check the IP address whenever the guest is restarted.
+    When the guest OS starts, it will get an IP address from the hypervisor's DHCP server. This IP can change each time the guest OS is restarted. Setting a static IP for the guest OS avoids having to check the IP address whenever the guest is restarted.
+    {.power-number}
 
+    1. Start the virtual machine in non-headless (GUI) mode.
 
-1. Start the virtual machine in non-headless (GUI) mode.
+    2. Log in as `root`.
 
-2. Log in as `root`.
+    3. Edit `/etc/sysconfig/network-scripts/ifcfg-eth0`
 
-3. Edit `/etc/sysconfig/network-scripts/ifcfg-eth0`
+    4. Change the value of `BOOTPROTO`:
 
-4. Change the value of `BOOTPROTO`:
+        ```ini
+        BOOTPROTO=none
+        ```
 
-    ```ini
-    BOOTPROTO=none
-    ```
+    5. Add these values:
 
-5. Add these values:
+        ```ini
+        IPADDR=192.168.1.123 # replace with the desired static IP address
+        NETMASK=255.255.255.0 # replace with the netmask for your IP address
+        GATEWAY=192.168.1.1 # replace with the network gateway for your IP address
+        PEERDNS=no
+        DNS1=192.168.1.53 # replace with your DNS server IP
+        ```
 
-    ```ini
-    IPADDR=192.168.1.123 # replace with the desired static IP address
-    NETMASK=255.255.255.0 # replace with the netmask for your IP address
-    GATEWAY=192.168.1.1 # replace with the network gateway for your IP address
-    PEERDNS=no
-    DNS1=192.168.1.53 # replace with your DNS server IP
-    ```
+    6. Restart the interface.
 
-6. Restart the interface.
+        ```sh
+        ifdown eth0 && ifup eth0
+        ```
 
-    ```sh
-    ifdown eth0 && ifup eth0
-    ```
+    7. Check the IP.
 
-7. Check the IP.
+        ```sh
+        ip addr show eth0
+        ```
+    8. Preserve the network configuration across reboots.
 
-    ```sh
-    ip addr show eth0
-    ```
-8. Preserve the network configuration across reboots.
-
-    ```sh
-    echo "network: {config: disabled}" > /etc/cloud/cloud.cfg.d/99-disable-network-config.cfg
-    ```
+        ```sh
+        echo "network: {config: disabled}" > /etc/cloud/cloud.cfg.d/99-disable-network-config.cfg
+        ```
