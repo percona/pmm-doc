@@ -1,4 +1,4 @@
-# Back up helm charts
+# Back up Helm charts
 
 PMM helm chart uses [PersistentVolume and PersistentVolumeClaim](https://kubernetes.io/docs/concepts/storage/persistent-volumes/) to allocate storage in the Kubernetes cluster.
 
