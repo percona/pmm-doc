@@ -1,5 +1,8 @@
 # Log into user interface
 
+To log in to the PMM user interface:
+{.power-number}
+
 1. Open a web browser and visit the guest IP address.
 
 2. The PMM [login screen](../../../interface.md) appears.
