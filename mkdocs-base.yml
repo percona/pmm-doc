@@ -181,6 +181,11 @@ nav:
             - install-pmm/install-pmm-server/baremetal/docker/preview_env_var.md      
             - install-pmm/install-pmm-server/baremetal/docker/isolated_hosts.md        
           - Podman: install-pmm/install-pmm-server/baremetal/podman.md
+            - install-pmm/install-pmm-server/baremetal/podman/podman.md
+            - install-pmm/install-pmm-server/baremetal/podman/backup_container_podman.md
+            - install-pmm/install-pmm-server/baremetal/podman/restore.md
+            - install-pmm/install-pmm-server/baremetal/podman/remove.md
+
           - Helm:   install-pmm/install-pmm-server/baremetal/helm.md
 
           - Virtual Applinace:
