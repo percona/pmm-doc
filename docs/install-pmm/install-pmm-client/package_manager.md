@@ -72,16 +72,19 @@ To manually download package manager:
 
 (Alternatively, copy the link and use `wget` to download it.)
 
-Here are the download page links for each supported platform.
 
-- [Debian 9 (Stretch)](https://www.percona.com/downloads/pmm2/{{release}}/binary/debian/stretch/)
-- [Debian 10 (Buster)](https://www.percona.com/downloads/pmm2/{{release}}/binary/debian/buster/)
-- [Debian 11 (Bullseye)](https://www.percona.com/downloads/pmm2/{{release}}/binary/debian/bullseye/)
-- [Red Hat/CentOS/Oracle 7](https://www.percona.com/downloads/pmm2/{{release}}/binary/redhat/7/)
-- [Red Hat/CentOS/Oracle 8](https://www.percona.com/downloads/pmm2/{{release}}/binary/redhat/8/)
-- [Ubuntu 18.04 (Bionic Beaver)](https://www.percona.com/downloads/pmm2/{{release}}/binary/debian/bionic/)
-- [Ubuntu 20.04 (Focal Fossa)](https://www.percona.com/downloads/pmm2/{{release}}/binary/debian/focal/)
-- [Ubuntu 22.04 (Jammy Jellyfish)](https://www.percona.com/downloads/pmm2/{{release}}/binary/debian/jammy/)
+??? info "Download page link"s
+
+    Here are the download page links for each supported platform.
+
+    - [Debian 9 (Stretch)](https://www.percona.com/downloads/pmm2/{{release}}/binary/debian/stretch/)
+    - [Debian 10 (Buster)](https://www.percona.com/downloads/pmm2/{{release}}/binary/debian/buster/)
+    - [Debian 11 (Bullseye)](https://www.percona.com/downloads/pmm2/{{release}}/binary/debian/bullseye/)
+    - [Red Hat/CentOS/Oracle 7](https://www.percona.com/downloads/pmm2/{{release}}/binary/redhat/7/)
+    - [Red Hat/CentOS/Oracle 8](https://www.percona.com/downloads/pmm2/{{release}}/binary/redhat/8/)
+    - [Ubuntu 18.04 (Bionic Beaver)](https://www.percona.com/downloads/pmm2/{{release}}/binary/debian/bionic/)
+    - [Ubuntu 20.04 (Focal Fossa)](https://www.percona.com/downloads/pmm2/{{release}}/binary/debian/focal/)
+    - [Ubuntu 22.04 (Jammy Jellyfish)](https://www.percona.com/downloads/pmm2/{{release}}/binary/debian/jammy/)
 
 === "Debian-based"
 
