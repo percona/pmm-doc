@@ -1,6 +1,7 @@
 # VirtualBox - Import OVA file
 
 === "OVA file downloaded from UI"
+{.power-number}
 
     1. Select *File* → *Import appliance...*.
     2. In the *File* field, type the path to the downloaded `.ova` file, or click the folder icon to navigate and open it.
@@ -10,6 +11,7 @@
     6. When the guest has booted, note the IP address in the guest console.
 
 === "OVA file downloaded via CLI"
+{.power-number}
 
     1. Open a terminal and change directory to where the downloaded `.ova` file is.
 
