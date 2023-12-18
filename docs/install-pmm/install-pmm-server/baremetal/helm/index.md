@@ -168,45 +168,8 @@ Another approach to set up TLS certificates is to use the Ingress controller, se
 
 
 
-### Upgrades
-
-Percona will release a new chart updating its containers if a new version of the main container is available, there are any significant changes, or critical vulnerabilities exist.
-
-By default UI update feature is disabled and should not be enabled. Do not modify that parameter or add it while modifying the custom `values.yaml` file:
-
-```yaml
-pmmEnv:
-  DISABLE_UPDATES: "1"
-```
-
-Before updating the helm chart,  it is recommended to pre-pull the image on the node where PMM is running, as the PMM images could be large and could take time to download.
-
-Update PMM as follows:
-
-```sh
-helm repo update percona
-helm upgrade pmm -f values.yaml percona/pmm
-```
-
-This will check updates in the repo and upgrade deployment if the updates are available.
 
 
 
-### Uninstall
 
-To uninstall `pmm` deployment:
 
-```sh
-helm uninstall pmm
-```
-
-This command takes a release name and uninstalls the release.
-
-It removes all resources associated with the last release of the chart as well as the release history.
-
-Helm will not delete PVC, PV, and any snapshots. Those need to be deleted manually.
-
-Also, delete PMM `Secret` if no longer required:
-```sh
-kubectl delete secret pmm-secret
-```
