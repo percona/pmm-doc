@@ -66,28 +66,53 @@ Once PMM is set up, choose the database that you want it to monitor:
         GRANT SELECT, PROCESS, REPLICATION CLIENT, RELOAD, BACKUP_ADMIN ON *.* TO 'pmm'@'127.0.0.1';
         ```
 
-    2. Install PMM Client via Package Manager on the database node to optimize server-side resources:
-         
-        1. Install Percona Release Tool:
-
-            ```sh
-            wget https://repo.percona.com/apt/percona-release_latest.generic_all.deb
-            dpkg -i percona-release_latest.generic_all.deb
-            ```
-        2. Install the PMM Client package:
-            
-            ```sh
-            apt update
-            apt install -y pmm2-client
-            ```
-
-        3. [Register PMM Client](../setting-up/client/index.html#register):
+    2. To optimize server-side resources, install PMM Client via Package Manager on the database node:
+        { .power-number}     
+        
+        === "Debian-based"
                 
-            ```sh
-            pmm-admin config --server-insecure-tls --server-url=https://admin:admin@X.X.X.X:443
-            ```
+            1. Install the [Percona Release Tool](https://docs.percona.com/percona-software-repositories/installing.html).  If you have it installed, update it to the latest version:
 
-    3. Add the MySQL database using Performance Schema:  
+                ```sh
+                wget https://repo.percona.com/apt/percona-release_latest.generic_all.deb
+                dpkg -i percona-release_latest.generic_all.deb
+                ```
+
+            2. Install the PMM Client package:
+
+                !!! hint "Root permissions"
+
+                    ```sh
+                    apt update
+                    apt install -y pmm2-client
+                    ```
+
+        === "Red Hat-based"
+
+            1. Install the [Percona Release Tool](https://docs.percona.com/percona-software-repositories/installing.html).  If you have it installed, update it to the latest version:
+
+                    ```sh
+                     yum install -y https://repo.percona.com/yum/percona-release-latest.noarch.rpm
+                    ```
+
+            2. Install the PMM Client package:
+
+                    ```sh
+                    yum install -y pmm2-client
+                    ```
+
+                    ```sh
+                    apt update
+                    apt install -y pmm2-client
+                    ```
+
+    3. Register PMM Client:
+        
+        ```sh
+        pmm-admin config --server-insecure-tls --server-url=https://admin:admin@X.X.X.X:443
+        ```
+
+    4. Add the MySQL database using Performance Schema:  
 
         ```sh 
         pmm-admin add mysql --query-source=perfschema --username=pmm --password=<your_password> MYSQL_SERVICE
@@ -97,7 +122,7 @@ Once PMM is set up, choose the database that you want it to monitor:
 
         The PMM Client installation also comes with options: in addition to the installation via Package Manager described above, you can also install it as a Docker container or as a binary package. Explore [alternative PMM Client installation options](../setting-up/client/index.html#binary-package) for more information.
 
-        Additionally, if direct access to the database node isn't available, opt for the [PMM Client installation via User Interface](../setting-up/client/mysql.html#with-the-user-interface) instead. 
+        Additionally, if direct access to the database node isn't available, opt to [Add remote instance via User Interface](../setting-up/client/mysql.html#with-the-user-interface) instead. 
 
 === "PostgreSQL"
 
@@ -110,43 +135,78 @@ Once PMM is set up, choose the database that you want it to monitor:
         CREATE USER pmm WITH SUPERUSER ENCRYPTED PASSWORD '<your_password>';
         ```
 
-    2. Set up the `pg_stat_monitor` database extension and configure your database server accordingly. This default extension is developed by Percona and mirrors PostgreSQL's `pg_stat_statements` extension with added functionalities such as bucket-based data aggregation, enhanced accuracy, and the ability to expose query examples. 
+    2. Ensure that PMM can log in locally as this user to the PostgreSQL instance. To enable this, edit the `pg_hba.conf` file. If  not already enabled by an existing rule, add:
+
+       ```conf
+       local   all             pmm                                md5
+       # TYPE  DATABASE        USER        ADDRESS                METHOD
+       ```
+
+    3. Set up the `pg_stat_monitor` database extension and configure your database server accordingly. This default extension is developed by Percona and mirrors PostgreSQL's `pg_stat_statements` extension with added functionalities such as bucket-based data aggregation, enhanced accuracy, and the ability to expose query examples. 
     
         If you need to use the `pg_stat_statements` extension instead, see [Adding a PostgreSQL database](../setting-up/client/postgresql.md) and the [`pg_stat_monitor` online documentation](https://docs.percona.com/pg-stat-monitor/configuration.html) for details about available parameters.
 
-    3. Set or change the value for `shared_preload_library` in your `postgresql.conf` file:
+    4. Set or change the value for `shared_preload_library` in your `postgresql.conf` file:
 
         ```ini
         shared_preload_libraries = 'pg_stat_monitor'
         ```
 
-    4. Set up configuration values in your `postgresql.conf` file:
+    5. Set up configuration values in your `postgresql.conf` file:
 
         ```ini
         pg_stat_monitor.pgsm_query_max_len = 2048
         ```
 
-    5. Install PMM Client via Package Manager on the database node to optimize server-side resources:
-         
-        1. Install Percona Release Tool:
+    6. In a `psql` session, run the following command to create the view where you can access the collected statistics. We recommend that you create the extension for the `postgres` database so that you can receive access to statistics from each database.
 
-            ```sh
-            wget https://repo.percona.com/apt/percona-release_latest.generic_all.deb
-            dpkg -i percona-release_latest.generic_all.deb
-            ```
-        2. Install the PMM Client package:
-            
-            ```sh
-            apt update
-            apt install -y pmm2-client
-            ```
-        3. Register PMM Client:
+        ```
+        CREATE EXTENSION pg_stat_monitor;
+        ```
+
+    7. To optimize server-side resources, install PMM Client via Package Manager on the database node:
+        { .power-number}     
+
+            #### Debian-based
+                
+
+            1. Install the [Percona Release Tool](https://docs.percona.com/percona-software-repositories/installing.html).  If you have it installed, update it to the latest version:
+
+                ```sh
+                wget https://repo.percona.com/apt/percona-release_latest.generic_all.deb
+                dpkg -i percona-release_latest.generic_all.deb
+                ```
+
+            1. Install the PMM Client package:
+
+                !!! hint "Root permissions"
+
+                    ```sh
+                    apt update
+                    apt install -y pmm2-client
+                    ```
+
+            #### Red Hat-based
+
+            1. Install the [Percona Release Tool](https://docs.percona.com/percona-software-repositories/installing.html).  If you have it installed, update it to the latest version:
+
+                    ```sh
+                     yum install -y https://repo.percona.com/yum/percona-release-latest.noarch.rpm
+                    ```
+
+            2. Install the PMM Client package:
+
+                    ```sh
+                    yum install -y pmm2-client
+                    ```
+
+    7. Register PMM Client:
         
             ```sh
             pmm-admin config --server-insecure-tls --server-url=https://admin:admin@X.X.X.X:443
             ```
 
-    6. Add the PostgreSQL database:
+    8. Add the PostgreSQL database:
 
         ```sh 
         pmm-admin add postgresql --username=pmm --password=<your_password> POSTGRESQL_SERVICE 
@@ -211,27 +271,47 @@ Once PMM is set up, choose the database that you want it to monitor:
     3. To optimize server-side resources, install PMM Client via Package Manager on the database node:
         { .power-number}     
 
-        1. Install Percona Release Tool:
+            #### Debian-based
+                
 
-            ```sh
-            wget https://repo.percona.com/apt/percona-release_latest.generic_all.deb
-            dpkg -i percona-release_latest.generic_all.deb
-            ```
+            1. Install the [Percona Release Tool](https://docs.percona.com/percona-software-repositories/installing.html).  If you have it installed, update it to the latest version:
 
-        2. Install the PMM Client package:
-            
-            ```sh
-            apt update
-            apt install -y pmm2-client
-            ```
+                ```sh
+                wget https://repo.percona.com/apt/percona-release_latest.generic_all.deb
+                dpkg -i percona-release_latest.generic_all.deb
+                ```
 
-        3. Register PMM Client:
+            2. Install the PMM Client package:
+
+                !!! hint "Root permissions"
+
+                    ```sh
+                    apt update
+                    apt install -y pmm2-client
+                    ```
+
+
+            #### Red Hat-based
+
+            1. Install the [Percona Release Tool](https://docs.percona.com/percona-software-repositories/installing.html).  If you have it installed, update it to the latest version:
+
+                    ```sh
+                     yum install -y https://repo.percona.com/yum/percona-release-latest.noarch.rpm
+                    ```
+
+            2. Install the PMM Client package:
+
+                    ```sh
+                    yum install -y pmm2-client
+                    ```
+
+    4. Register PMM Client:
         
-            ```sh
-            pmm-admin config --server-insecure-tls --server-url=https://admin:admin@X.X.X.X:443
-            ```
+        ```sh
+        pmm-admin config --server-insecure-tls --server-url=https://admin:admin@X.X.X.X:443
+        ```
 
-     4. Add the MongoDB database:
+    5. Add the MongoDB database:
 
         ```
         sudo pmm-admin add mongodb --username=pmm --password=<your_password> MONGODB_SERVICE 
@@ -245,29 +325,47 @@ Once PMM is set up, choose the database that you want it to monitor:
 
     1. Configure a read-only account for monitoring using the [`admin-stats_credentials`](https://proxysql.com/documentation/global-variables/admin-variables/#admin-stats_credentials) variable in ProxySQL.
 
-    2. To optimize server-side resources, install PMM Client via Package Manager on the database node: 
-    
-        1. Install Percona Release Tool:
+    2. To optimize server-side resources, install PMM Client via Package Manager on the database node:
+        { .power-number}     
 
-            ```sh
-            wget https://repo.percona.com/apt/percona-release_latest.generic_all.deb
-            dpkg -i percona-release_latest.generic_all.deb
-            ```
+            #### Debian-based              
 
-        2. Install the PMM Client package:
-            
-            ```sh
-            apt update
-            apt install -y pmm2-client
-            ```
+            1. Install the [Percona Release Tool](https://docs.percona.com/percona-software-repositories/installing.html).  If you have it installed, update it to the latest version:
+                ```sh
+                wget https://repo.percona.com/apt/percona-release_latest.generic_all.deb
+                dpkg -i percona-release_latest.generic_all.deb
+                ```
 
-        3. [Register PMM Client]:
+            2. Install the PMM Client package:
+
+                !!! hint "Root permissions"
+
+                    ```sh
+                    apt update
+                    apt install -y pmm2-client
+                    ```
+
+            #### Red Hat-based
+
+            1. Install the [Percona Release Tool](https://docs.percona.com/percona-software-repositories/installing.html).  If you have it installed, update it to the latest version:
+
+                    ```sh
+                     yum install -y https://repo.percona.com/yum/percona-release-latest.noarch.rpm
+                    ```
+
+            2. Install the PMM Client package:
+
+                    ```sh
+                    yum install -y pmm2-client
+                    ```
+
+    3. Register PMM Client:
         
             ```sh
             pmm-admin config --server-insecure-tls --server-url=https://admin:admin@X.X.X.X:443
             ```
             
-    3. Add the ProxySQL service:
+    4. Add the ProxySQL service:
 
         ```
         pmm-admin add proxysql --username=pmm --password=<your_password> PROXYSQL_SERVICE 
@@ -281,23 +379,44 @@ Once PMM is set up, choose the database that you want it to monitor:
 
     1. [Set up an HAproxy instance](https://www.haproxy.com/blog/haproxy-exposes-a-prometheus-metrics-endpoint). 
     2. Add the instance to PMM (default address is <http://localhost:8404/metrics>), and use the `haproxy` alias to enable HAProxy metrics monitoring.
-    3. To optimize server-side resources, install PMM Client via Package Manager on the database node:
-         
-        1. Install Percona Release Tool:
+    2. To optimize server-side resources, install PMM Client via Package Manager on the database node:
+        { .power-number}     
 
-            ```sh
-            wget https://repo.percona.com/apt/percona-release_latest.generic_all.deb
-            dpkg -i percona-release_latest.generic_all.deb
-            ```
-        2. Install the PMM Client package:
-            
-            ```sh
-            apt update
-            apt install -y pmm2-client
-            ```
-
-        3. Register PMM Client:
+            #### Debian-based
                 
+
+            1. Install the [Percona Release Tool](https://docs.percona.com/percona-software-repositories/installing.html).  If you have it installed, update it to the latest version:
+
+                ```sh
+                wget https://repo.percona.com/apt/percona-release_latest.generic_all.deb
+                dpkg -i percona-release_latest.generic_all.deb
+                ```
+
+            2. Install the PMM Client package:
+
+                !!! hint "Root permissions"
+
+                    ```sh
+                    apt update
+                    apt install -y pmm2-client
+                    ```
+
+            #### Red Hat-based
+
+            1. Install the [Percona Release Tool](https://docs.percona.com/percona-software-repositories/installing.html).  If you have it installed, update it to the latest version:
+
+                    ```sh
+                     yum install -y https://repo.percona.com/yum/percona-release-latest.noarch.rpm
+                    ```
+
+            2. Install the PMM Client package:
+
+                    ```sh
+                    yum install -y pmm2-client
+                    ```
+
+    3. Register PMM Client:
+        
             ```sh
             pmm-admin config --server-insecure-tls --server-url=https://admin:admin@X.X.X.X:443
             ```
