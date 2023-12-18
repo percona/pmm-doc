@@ -142,11 +142,13 @@ timeout 60 podman wait --condition=running pmm-server
 
 ## Backup
 
-!!! summary alert alert-info "Summary"
-    - Stop PMM server.
-    - Backup the data.
+??? info "Summary"
 
----
+    !!! summary alert alert-info ""
+        - Stop PMM server.
+        - Backup the data.
+
+    ---
 
 !!! caution alert alert-warning "Important"
     Grafana plugins have been moved to the data volume `/srv` since the 2.23.0 version. So if you are upgrading PMM from any version before 2.23.0 and have installed additional plugins then plugins should be installed again after the upgrade.
@@ -176,13 +178,15 @@ timeout 60 podman wait --condition=running pmm-server
 
 ## Upgrade
 
-!!! summary alert alert-info "Summary"
-    - Perform a backup.
-    - Update PMM tag.
-    - Pre-pull image.
-    - Run it.
+??? info "Summary"
 
----
+    !!! summary alert alert-info ""
+        - Perform a backup.
+        - Update PMM tag.
+        - Pre-pull image.
+        - Run it.
+
+    ---
 
 !!! caution alert alert-warning "Important"
     You cannot downgrade. To go to a previous version, you must create a backup before upgrading.
@@ -237,13 +241,15 @@ timeout 60 podman wait --condition=running pmm-server
 
 ## Restore
 
-!!! summary alert alert-info "Summary"
-    - Stop PMM server.
-    - Run PMM on the previous image.
-    - Restore the volume.
-    - Start PMM Server.
+??? info "Summary"
 
----
+    !!! summary alert alert-info ""
+        - Stop PMM server.
+        - Run PMM on the previous image.
+        - Restore the volume.
+        - Start PMM Server.
+
+    ---
 
 !!! caution alert alert-warning "Important"
     You must have a [backup](#backup) to restore from.
