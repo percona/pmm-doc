@@ -252,7 +252,7 @@ There is no *Explain* or *Example* data shown by default in Query Analytics when
 
 ## Query response time
 
-*Query time distribution* is a chart in the [*Details* tab of Query Analytics](../../get-started/query-analytics.md#details-tab) showing the proportion of query time spent on various activities. It is enabled with the `query_response_time_stats` variable and associated plugins.
+**Query time distribution** is a chart in the [**Details** tab of Query Analytics](../../get-started/query-analytics.md#details-tab) showing the proportion of query time spent on various activities. It is enabled with the `query_response_time_stats` variable and associated plugins.
 
 ### Applicable versions
 
@@ -437,8 +437,8 @@ pmm-admin inventory list services --service-type=mysql
 
 ### Check data
 
-1. Open the *MySQL Instance Summary* dashboard.
-2. Set the *Service Name* to the newly-added service.
+1. Open the **MySQL Instance Summary** dashboard.
+2. Set the **Service Name** to the newly-added service.
 
 #### Percona Server for MySQL, MariaDB
 
@@ -447,6 +447,8 @@ If query response time plugin was installed, check for data in the *MySQL Query 
 #### Percona XtraDB Cluster
 
 Open the [*PXC/Galera Cluster Summary* dashboard][DASH_PXCGALERACLUSTER].
+
+
 
 !!! seealso alert alert-info "See also"
     - [Percona Server for MySQL -- Slow Query Log Extended][ps_slow_query_ext]
