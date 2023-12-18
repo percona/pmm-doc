@@ -110,9 +110,9 @@ To get the tenant ID, client ID and the client secret:
 
 6. Give API access permissions to your application.
 
-    6.1. Search for **Subscriptions** like in step 1.
+    - Search for **Subscriptions** like in step 1.
 
-    6.2. Select your application and grant **Monitor Reader** permissions. This might require you to have admin permissions in your Azure account.
+    - Select your application and grant **Monitor Reader** permissions. This might require you to have admin permissions in your Azure account.
 
 ![!](../../_images/azure_app_permissions_01.png)
 ![!](../../_images/azure_app_permissions_02.png)
