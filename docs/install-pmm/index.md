@@ -3,8 +3,8 @@
 ??? info "Summary"
 
     !!! summary alert alert-info ""
-        1. [Install PMM Server](#set-up-pmm-server).
-        2. [Install PMM Client(s)](#set-up-pmm-client).
+        1. [Install PMM Server](#install-pmm-server).
+        2. [Install PMM Client(s)](#install-pmm-client).
         3. [Add services](#add-services).
 
 ## Install PMM Server
