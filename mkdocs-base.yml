@@ -244,6 +244,7 @@ nav:
   - Uninstall:
       - uninstall-pmm/index.md
       - Docker: uninstall-pmm/uninstall_docker.md
+      - Helm: uninstall-pmm/uninstall_helm.md 
       - Package manager: uninstall-pmm/uninstall_package_manager.md
       - uninstall-pmm/unregister_client.md
 
