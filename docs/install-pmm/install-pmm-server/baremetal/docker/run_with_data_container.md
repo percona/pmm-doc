@@ -1,6 +1,9 @@
 
 # Run Docker with data container
 
+To run Docker with data container:
+{.power-number}
+
 1. Create a persistent data container.
 
     ```sh
