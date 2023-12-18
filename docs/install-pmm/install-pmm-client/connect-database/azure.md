@@ -82,7 +82,7 @@ To get a subscription ID:
 
 ![!](../../../_images/azure_subscription_id.png)
 
-### Create a new application to get the tenant ID, client ID and the client secret.
+### Create a new application to get the tenant ID, client ID and the client secret
 
 To get the tenant ID, client ID and the client secret:
 {.power-number}
