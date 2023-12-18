@@ -202,26 +202,26 @@ To use *Performance Schema*, set these variables.
 | [`performance-schema-consumer-statements-digest`][perfschema-consumer-statements-digest]   | `ON`               | Configures the `statements-digest` consumer.
 | [`innodb_monitor_enable`][sysvar_innodb_monitor_enable]                                    | all                | Enables InnoDB metrics counters.
 
-#### Examples
+??? info "Examples"
 
-- Configuration file.
+    - Configuration file.
 
-    ```ini
-    performance_schema=ON
-    performance-schema-instrument='statement/%=ON'
-    performance-schema-consumer-statements-digest=ON
-    innodb_monitor_enable=all
-    ```
+        ```ini
+        performance_schema=ON
+        performance-schema-instrument='statement/%=ON'
+        performance-schema-consumer-statements-digest=ON
+        innodb_monitor_enable=all
+        ```
 
-- Session.
+    - Session.
 
-    (`performance_schema` cannot be set in a session and must be set at server start-up.)
+        (`performance_schema` cannot be set in a session and must be set at server start-up.)
 
-    ```sql
-    UPDATE performance_schema.setup_consumers
-    SET ENABLED = 'YES' WHERE NAME LIKE '%statements%';
-    SET GLOBAL innodb_monitor_enable = all;
-    ```
+        ```sql
+        UPDATE performance_schema.setup_consumers
+        SET ENABLED = 'YES' WHERE NAME LIKE '%statements%';
+        SET GLOBAL innodb_monitor_enable = all;
+        ```
 
 #### MariaDB 10.5.7 or lower
 
