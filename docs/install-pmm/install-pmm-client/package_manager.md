@@ -72,7 +72,17 @@ To manually download package manager:
 
 (Alternatively, copy the link and use `wget` to download it.)
 
+=== "Debian-based"
 
+    ```sh
+    dpkg -i *.deb
+    ```
+
+=== "Red Hat-based"
+
+    ```sh
+    dnf localinstall *.rpm
+    ```
 ??? info "Download page link"s
 
     Here are the download page links for each supported platform.
@@ -85,16 +95,4 @@ To manually download package manager:
     - [Ubuntu 18.04 (Bionic Beaver)](https://www.percona.com/downloads/pmm2/{{release}}/binary/debian/bionic/)
     - [Ubuntu 20.04 (Focal Fossa)](https://www.percona.com/downloads/pmm2/{{release}}/binary/debian/focal/)
     - [Ubuntu 22.04 (Jammy Jellyfish)](https://www.percona.com/downloads/pmm2/{{release}}/binary/debian/jammy/)
-
-=== "Debian-based"
-
-    ```sh
-    dpkg -i *.deb
-    ```
-
-=== "Red Hat-based"
-
-    ```sh
-    dnf localinstall *.rpm
-    ```
 
