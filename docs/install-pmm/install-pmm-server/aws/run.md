@@ -5,21 +5,21 @@ After you add your new instance ,it will take some time to initialize it. When t
 !!! note alert alert-primary ""
     When started the next time after rebooting, your instance may acquire another IP address. You may choose to set up an elastic IP to avoid this problem.
 
-With your instance selected, open its IP address in a web browser. The IP address appears in the *IPv4 Public IP* column or as value of the *Public IP* field at the top of the *Properties* panel.
+With your instance selected, open its IP address in a web browser. The IP address appears in the **IPv4 Public IP** column or as value of the **Public IP** field at the top of the **Properties** panel.
 
 ![!image](../../../_images/aws-marketplace.pmm.ec2.properties.png)
 
-To run the instance, copy and paste its public IP address into the location bar of your browser. In the *Percona Monitoring and Management* welcome page that opens, enter the instance ID.
+To run the instance, copy and paste its public IP address into the location bar of your browser. In the **Percona Monitoring and Management** welcome page that opens, enter the instance ID.
 
 ![!image](../../../_images/installation-wizard.ami.instance-id-verification.png)
 
-You can copy the instance ID from the *Properties* panel of your instance, select the *Description* tab back in the EC2 console. Click the *Copy* button next to the *Instance ID* field. This button appears as soon as you hover the cursor of your mouse over the ID.
+You can copy the instance ID from the **Properties** panel of your instance, select the **Description** tab back in the EC2 console. Click the **Copy** button next to the *Instance ID* field. This button appears as soon as you hover the cursor of your mouse over the ID.
 
 Hover the cursor over the instance ID for the Copy button to appear.
 
 ![!image](../../../_images/aws-marketplace.pmm.ec2.properties.instance-id.png)
 
-Paste the instance in the *Instance ID* field of the *Percona Monitoring and Management* welcome page and click *Submit*.
+Paste the instance in the **Instance ID** field of the **Percona Monitoring and Management** welcome page and click **Submit**.
 
 PMM Server provides user access control, and therefore you will need user credentials to access it:
 
