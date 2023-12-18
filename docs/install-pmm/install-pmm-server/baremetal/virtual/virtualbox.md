@@ -4,11 +4,11 @@
     To import downloaded file from UI:
     {.power-number}
 
-    1. Select *File* → *Import appliance...*.
-    2. In the *File* field, type the path to the downloaded `.ova` file, or click the folder icon to navigate and open it.
-    3. Click *Continue*.
-    4. On the *Appliance settings* page, review the settings and click *Import*.
-    5. Click *Start*.
+    1. Select **File** → **Import appliance...**.
+    2. In the **File** field, type the path to the downloaded `.ova` file, or click the folder icon to navigate and open it.
+    3. Click **Continue**.
+    4. On the **Appliance settings** page, review the settings and click *Import*.
+    5. Click **Start**.
     6. When the guest has booted, note the IP address in the guest console.
 
 === "OVA file downloaded via CLI"
@@ -48,11 +48,11 @@
 To reconfigure the interface with the UI:
 {.power-number}
 
-1. Click *Settings*.
-2. Click *Network*.
-3. In the *Adapter 1* field, click *Attached to* and change to *Bridged Adapter*.
-4. In the *Name* field, select your host's active network interface (e.g. `en0: Wi-Fi (Wireless)`).
-5. Click *OK*.
+1. Click **Settings**.
+2. Click **Network**.
+3. In the **Adapter 1** field, click **Attached to** and change to **Bridged Adapter**.
+4. In the **Name** field, select your host's active network interface (e.g. `en0: Wi-Fi (Wireless)`).
+5. Click **OK**.
 
 ### Reconfigure via CLI
 

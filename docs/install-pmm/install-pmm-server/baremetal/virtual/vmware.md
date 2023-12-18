@@ -1,6 +1,8 @@
 # VMware - Import OVA file
 
 === "OVA file downloaded from UI"
+    To import downloaded file from UI:
+    {.power-number}
 
     1. Select *File* → *Import*.
     2. Click *Choose file...*.
@@ -19,6 +21,8 @@
         b. (Recommended) Click *Customize Settings*. This opens the VM's settings page without starting the machine.
 
 === "OVA file downloaded via CLI"
+    To import downloaded file from the CLI:
+    {.power-number}
 
     1. Install [`ovftool`][OVFTool]. (You need to register.)
     2. Import and convert the OVA file. (`ovftool` can't change CPU or memory settings during import but it can set the default interface.)
