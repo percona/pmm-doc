@@ -342,17 +342,17 @@ When you have configured your database server, you can add a MySQL service with 
 
 When adding a service with the command line, you must use the `pmm-admin --query-source=SOURCE` option to match the source you've chosen and configured the database server for.
 
-With the PMM user interface, you select *Use performance schema*, or deselect it to use *slow query log*.
+With the PMM user interface, you select **Use performance schema**, or deselect it to use **slow query log**.
 
 ### With the user interface
 
-1. Select <i class="uil uil-cog"></i> *Configuration* → {{icon.inventory}} *Inventory* → {{icon.addinstance}} *Add Service*.
+1. Select <i class="uil uil-cog"></i> **Configuration** → {{icon.inventory}} **Inventory** → {{icon.addinstance}} **Add Service**.
 
-2. Select *MySQL -- Add a remote instance*.
+2. Select **MySQL -- Add a remote instance**.
 
 3. Enter or select values for the fields.
 
-4. Click *Add service*.
+4. Click **Add service**.
 
 ![!](../../../_images/PMM_Add_Instance_MySQL.jpg)
 
@@ -424,9 +424,9 @@ pmm-admin add mysql --environment=test --custom-labels='source=slowlog'  --usern
 
 ### PMM user interface
 
-1. Select <i class="uil uil-cog"></i> *Configuration* → {{icon.inventory}} *Inventory*.
-2. In the *Services* tab, verify the *Service name*, *Addresses*, and any other relevant information in the form.
-3. In the *Options* column, expand the *Details* section and check that the Agents are using the desired data source.
+1. Select <i class="uil uil-cog"></i> **Configuration** → {{icon.inventory}} **Inventory**.
+2. In the *Services* tab, verify the **Service name**, **Addresses**, and any other relevant information in the form.
+3. In the *Options* column, expand the **Details** section and check that the Agents are using the desired data source.
 
 ### Command line
 
