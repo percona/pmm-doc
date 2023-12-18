@@ -20,7 +20,6 @@ To log in to the PMM user interface:
 
 5. The PMM Home Dashboard appears.
 
-## (Optional) Change root password from UO
 
 ??? info "(optional) Change root password from UO"
 
@@ -34,28 +33,31 @@ To log in to the PMM user interface:
 
     3. Follow the prompts to change the password.
 
-## (Optional) Set up SSH from UI/CLI
 
+??? info "(optional) Set up SSH from UI/CLI"
 
-1. Create a key pair for the `admin` user.
+    To set up SSH from UI/CLI:
+    {.power-number}
 
-    ```sh
-    ssh-keygen -f admin
-    ```
+    1. Create a key pair for the `admin` user.
 
-2. Log into the PMM user interface.
+        ```sh
+        ssh-keygen -f admin
+        ```
 
-3. Select *PMM → PMM Settings → SSH Key*.
+    2. Log into the PMM user interface.
 
-4. Copy and paste the contents of the `admin.pub` file into the *SSH Key* field.
+    3. Select *PMM → PMM Settings → SSH Key*.
 
-5. Click *Apply SSH Key*. (This copies the public key to `/home/admin/.ssh/authorized_keys` in the guest).
+    4. Copy and paste the contents of the `admin.pub` file into the *SSH Key* field.
 
-6. Log in via SSH (`N.N.N.N` is the guest IP address).
+    5. Click *Apply SSH Key*. (This copies the public key to `/home/admin/.ssh/authorized_keys` in the guest).
 
-    ```sh
-    ssh -i admin admin@N.N.N.N
-    ```
+    6. Log in via SSH (`N.N.N.N` is the guest IP address).
+
+        ```sh
+        ssh -i admin admin@N.N.N.N
+        ```
 
 ## (Optional) Set up static IP via CLI
 
