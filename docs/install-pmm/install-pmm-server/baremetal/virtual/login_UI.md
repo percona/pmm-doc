@@ -22,15 +22,17 @@ To log in to the PMM user interface:
 
 ## (Optional) Change root password from UO
 
-1. Start the virtual machine in GUI mode.
+??? info "(optional) Change root password from UO?"
 
-2. Log in with the default superuser credentials:
+    1. Start the virtual machine in GUI mode.
 
-    - Username: `root`
+    2. Log in with the default superuser credentials:
 
-    - Password: `percona`
+        - Username: `root`
 
-3. Follow the prompts to change the password.
+        - Password: `percona`
+
+    3. Follow the prompts to change the password.
 
 ## (Optional) Set up SSH from UI/CLI
 
