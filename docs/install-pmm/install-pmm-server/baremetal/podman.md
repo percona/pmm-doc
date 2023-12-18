@@ -26,13 +26,15 @@ Percona recommends running PMM as a non-privileged user and running it as part o
 !!! note alert alert-primary "Availability"
     This feature is available starting with PMM 2.29.0.
 
-!!! summary alert alert-info "Summary"
-    - Install.
-    - Configure.
-    - Enable and Start.
-    - Open the PMM UI in a browser.
+??? info "Summary"
 
----
+    !!! summary alert alert-info ""
+        - Install.
+        - Configure.
+        - Enable and Start.
+        - Open the PMM UI in a browser.
+
+    ---
 To run Podman as a non-privileged user:
 {.power-number}
 
@@ -154,6 +156,9 @@ timeout 60 podman wait --condition=running pmm-server
     Grafana plugins have been moved to the data volume `/srv` since the 2.23.0 version. So if you are upgrading PMM from any version before 2.23.0 and have installed additional plugins then plugins should be installed again after the upgrade.
     To check used grafana plugins: `podman exec -it pmm-server ls /var/lib/grafana/plugins`
 
+To back up your container:
+{.power-number}
+
 1. Stop PMM server.
 
     ```sh
@@ -200,6 +205,7 @@ timeout 60 podman wait --condition=running pmm-server
     ```
 
 (If you are accessing the podman host remotely, replace `localhost` with the IP or server name of the host.)
+{.power-number}
 
 1. Perform a [backup](#backup).
 
@@ -255,6 +261,9 @@ timeout 60 podman wait --condition=running pmm-server
     You must have a [backup](#backup) to restore from.
     You need to perform restore only if you have issues with upgrade or with the data.
 
+To restore your container:
+{.power-number}
+
 1. Stop PMM server.
 
     ```sh
@@ -292,15 +301,20 @@ timeout 60 podman wait --condition=running pmm-server
 
 ## Remove
 
-!!! summary alert alert-info "Summary"
-    - Stop PMM server.
-    - Remove (delete) volume.
-    - Remove (delete) images.
+??? info "Summary"
 
----
+    !!! summary alert alert-info ""
+        - Stop PMM server.
+        - Remove (delete) volume.
+        - Remove (delete) images.
+
+    ---
 
 !!! caution alert alert-warning "Caution"
     These steps delete the PMM Server Docker image and the associated PMM metrics data.
+
+To remove your contiainer:
+{.power-number}
 
 1. Stop PMM server.
 
