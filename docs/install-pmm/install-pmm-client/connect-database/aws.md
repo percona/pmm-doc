@@ -27,6 +27,7 @@ The first step is to define a policy which will hold all the necessary permissio
 A policy defines how AWS services can be accessed. Once defined it can be associated with an existing user or group.
 
 To define a new policy use the IAM page at AWS.
+{.power-number}
 
 ![!image](../../../_images/aws.iam.png)
 
@@ -61,6 +62,7 @@ To define a new policy use the IAM page at AWS.
 ## Creating an IAM user
 
 Policies are attached to existing IAM users or groups. To create a new IAM user, select *Users* on the Identity and Access Management page at AWS. Then click *Add user* and complete the following steps:
+{.power-number}
 
 ![!image](../../../_images/aws.iam-users.1.png)
 
@@ -83,6 +85,7 @@ In case, the PMM Server and Amazon RDS DB instance were created by using the sam
 The last step before you are ready to create an Amazon RDS DB instance is to attach the policy with the required permissions to the IAM user.
 
 First, make sure that the Identity and Access Management page is open and open *Users*. Then, locate and open the IAM user that you plan to use with Amazon RDS DB instances. Complete the following steps, to apply the policy:
+{.power-number}
 
 1. On the **Permissions** tab, click the **Add permissions** button.
 
@@ -103,6 +106,7 @@ The `AmazonRDSforPMMPolicy` is now added to your IAM user.
 Instead of creating an IAM user you can create an IAM role for a service, to discover Amazon RDS DB instances automatically without the need for access and secret keys. (But this only works if you are running PMM through AWS.)
 
 To create an IAM role open the IAM console and click **Roles** on the navigation pane.
+{.power-number}
 
 1. Click the **Create role** button.
 
@@ -156,6 +160,7 @@ The preferred method of adding an Amazon RDS database instance to PMM is via the
 This method supports Amazon RDS database instances that use Amazon Aurora, MySQL, or MariaDB engines, as well as any remote PostgreSQL, ProxySQL, MySQL and MongoDB instances.
 
 The following steps are needed to add an Amazon RDS database instance to PMM:
+{.power-number}
 
 1. In the PMM web interface, go to <i class="uil uil-cog"></i> **Configuration** → {{icon.inventory}} **PMM Inventory** → {{icon.addinstance}} **Add Instance**.
 
@@ -199,6 +204,7 @@ instances.
 ## Adding an Amazon RDS PostgreSQL instance
 
 For PostgreSQL, use the same method described above.
+{.power-number}
 
 1. In the PMM web interface, go to <i class="uil uil-cog"></i> **Configuration** → {{icon.inventory}} **PMM Inventory** → {{icon.addinstance}} **Add Instance**..
 
