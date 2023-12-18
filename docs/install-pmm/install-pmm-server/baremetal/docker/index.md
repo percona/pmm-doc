@@ -16,13 +16,15 @@ How to run PMM Server with Docker based on our [Docker image](https://hub.docker
 
 ## Run docker container
 
-!!! summary alert alert-info "Summary"
-    - Pull the Docker image.
-    - Copy it to create a persistent data container.
-    - Run the image.
-    - Open the PMM UI in a browser.
+??? info "Summary?"
 
----
+    !!! summary alert alert-info ""
+        - Pull the Docker image.
+        - Copy it to create a persistent data container.
+        - Run the image.
+        - Open the PMM UI in a browser.
+
+    ---
 
 You can store data from your PMM in:
 
