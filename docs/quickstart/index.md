@@ -135,10 +135,10 @@ Once PMM is set up, choose the database or the application that you want it to m
 
     2. Ensure that PMM can log in locally as this user to the PostgreSQL instance. To enable this, edit the `pg_hba.conf` file. If  not already enabled by an existing rule, add:
 
-       ```conf
-       local   all             pmm                                md5
-       # TYPE  DATABASE        USER        ADDRESS                METHOD
-       ```
+        ```conf
+        local   all             pmm                                md5
+        # TYPE  DATABASE        USER        ADDRESS                METHOD
+        ```
 
     3. Set up the `pg_stat_monitor` database extension and configure your database server accordingly. This default extension is developed by Percona and mirrors PostgreSQL's `pg_stat_statements` extension with added functionalities such as bucket-based data aggregation, enhanced accuracy, and the ability to expose query examples. 
     
