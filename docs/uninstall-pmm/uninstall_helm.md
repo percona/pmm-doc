@@ -13,6 +13,7 @@ It removes all resources associated with the last release of the chart as well a
 Helm will not delete PVC, PV, and any snapshots. Those need to be deleted manually.
 
 Also, delete PMM `Secret` if no longer required:
+
 ```sh
 kubectl delete secret pmm-secret
 ```
