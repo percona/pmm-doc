@@ -2,6 +2,9 @@
 
 ## Download OVA file from the UI
 
+To download an OVA file from the UI:
+{.power-number}
+
 1. Open a web browser.
 2. [Visit the PMM Server download page](https://www.percona.com/downloads).
 3. Choose a *Version* or use the default (the latest).
