@@ -38,6 +38,7 @@ kubectl scale statefulset pmm --replicas=1
 ```
 
 Output:
+
 ```
 statefulset.apps/pmm scaled
 statefulset.apps/pmm condition met
