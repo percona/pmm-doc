@@ -20,7 +20,7 @@ First of all, ensure that there is the minimal latency between PMM Server and th
 
 Second, add a firewall rule to enable access from PMM Client like this:
 
-![!image](../../_images/azure-firewall.png)
+![!image](../../../_images/azure-firewall.png)
 
 ## Setting up a MySQL instance
 
@@ -42,11 +42,11 @@ Follow the instructions for remotes instances explained [here](aws.md), Azure My
 
 Example:
 
-![!image](../../_images/azure-add-mysql-1.png)
+![!image](../../../_images/azure-add-mysql-1.png)
 
 and be sure to set *Performance Schema* as the query collection method for Query Analytics.
 
-![!image](../../_images/azure-add-mysql-2.png)
+![!image](../../../_images/azure-add-mysql-2.png)
 
 ### MariaDB
 
@@ -58,7 +58,7 @@ won't receive any query data.
 
 For PostgreSQL follow the same methods used for MySQL and MariaDB and enable `track_io_timing` in the instance configuration to enable Query Analytics.
 
-![!image](../../_images/azure-postgresql-config.png)
+![!image](../../../_images/azure-postgresql-config.png)
 
 For Query Analytics, set the server parameter:
 
@@ -76,11 +76,11 @@ To get a subscription ID:
 {.power-number}
 
 1. Search **Subscriptions**, click on your subscription name
-![!](../../_images/azure_subscription_section.png )
+![!](../../../_images/azure_subscription_section.png )
 
 2. Copy the subscription ID
 
-![!](../../_images/azure_subscription_id.png)
+![!](../../../_images/azure_subscription_id.png)
 
 ### Create a new application to get the tenant ID, client ID and the client secret.
 
@@ -88,24 +88,24 @@ To get the tenant ID, client ID and the client secret:
 {.power-number}
 
 1. Search for **Azure Active Directory**
-![!](../../_images/azure_active_directory_section.png)
+![!](../../../_images/azure_active_directory_section.png)
 
 2. Register a new application
-![!](../../_images/azure_app_registrations_section.png)
-![!](../../_images/azure_app_new_registration.png)
-![!](../../_images/azure_app_new_details.png)
+![!](../../../_images/azure_app_registrations_section.png)
+![!](../../../_images/azure_app_new_registration.png)
+![!](../../../_images/azure_app_new_details.png)
 
 3. At this point you can copy the client and tenant IDs.
-![!](../../_images/azure_app_client_tenant.png)
+![!](../../../_images/azure_app_client_tenant.png)
 
 4. Create an application secret.
-![!](../../_images/azure_app_secret_01.png)
-![!](../../_images/azure_app_secret_02.png)
-![!](../../_images/azure_app_secret_03.png)
+![!](../../../_images/azure_app_secret_01.png)
+![!](../../../_images/azure_app_secret_02.png)
+![!](../../../_images/azure_app_secret_03.png)
 
 5. Copy the **value** of the application secret. Once you leave this page you won't be able to see the secret again and you will have to generate a new
    one.
-![!](../../_images/azure_app_secret_04.png)
+![!](../../../_images/azure_app_secret_04.png)
 
 
 6. Give API access permissions to your application.
@@ -114,14 +114,14 @@ To get the tenant ID, client ID and the client secret:
 
     - Select your application and grant **Monitor Reader** permissions. This might require you to have admin permissions in your Azure account.
 
-![!](../../_images/azure_app_permissions_01.png)
-![!](../../_images/azure_app_permissions_02.png)
-![!](../../_images/azure_app_permissions_03.png)
-![!](../../_images/azure_app_permissions_04.png)
+![!](../../../_images/azure_app_permissions_01.png)
+![!](../../../_images/azure_app_permissions_02.png)
+![!](../../../_images/azure_app_permissions_03.png)
+![!](../../../_images/azure_app_permissions_04.png)
 
 When you fill in all fields press the *Discover* button and you will see a list of available databases for monitoring.
 
-![!](../../_images/PMM_Add_Instance_Azure_2.png)
+![!](../../../_images/PMM_Add_Instance_Azure_2.png)
 
 You can monitor 6 types of databases:
 
@@ -140,13 +140,13 @@ You can find more details on how to create DB on Azure at:
 !!! hint alert alert-success "Tip"
     You must set `pg_stat_statements.track = all` in your PostgreSQL Server settings to use PMM Query Analytics. ([Read more.](postgresql.md#pg_stat_statements))
 
-![!](../../_images/PMM_Add_Instance_Azure_3.png)
+![!](../../../_images/PMM_Add_Instance_Azure_3.png)
 
 In the list of databases on the Discovery page click *Start Monitoring* to add the selected Azure Database to PMM.
 
 Fill in all required fields and click *Add service*.
 
-![!](../../_images/PMM_Add_Instance_Azure_4.png)
+![!](../../../_images/PMM_Add_Instance_Azure_4.png)
 
 PMM can use 3 exporters to collect metrics:
 
@@ -173,7 +173,7 @@ It can be done on Networking tab for your Azure Database instance.
 
 Also enforced TLS/SSL connection option can be disabled on server side.
 
-![!](../../_images/azure_certificate.png)
+![!](../../../_images/azure_certificate.png)
 
 Command for adding an azure database service for monitoring without TLS/SSL.
 
