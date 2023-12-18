@@ -1,5 +1,8 @@
 # Remove PMM Server
 
+To remove PMM server:
+{.power-number}
+
 1. Find the instance in the EC2 Console
 
     ![!image](../../../_images/aws-marketplace.pmm.ec2.remove1.png)

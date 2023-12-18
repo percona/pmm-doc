@@ -35,6 +35,7 @@ The PMM Server is now ready and the home page opens.
 ![!image](../../../_images/PMM_Home_Dashboard.png)
 
 You are creating a username and password that will be used for two purposes:
+{.power-number}
 
 1. authentication as a user to PMM - the credentials to log in to PMM.
 

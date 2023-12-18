@@ -1,5 +1,8 @@
 # Restore PMM Server from a backup
 
+To restore your PMM server from a backup:
+{.power-number}
+
 1. Create a new volume by using the latest snapshot of the PMM data volume.
 
     ![!image](../../../_images/aws-marketplace.pmm.ec2.backup2.png)

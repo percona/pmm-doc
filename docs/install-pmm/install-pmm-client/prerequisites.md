@@ -1,5 +1,8 @@
 # Prerequisites
 
+The prerequisites to install PMM client are:
+{.power-number}
+
 1. [Set up PMM Server](../server/index.md) with a known IP address accessible from the client node.
 
 2. Check that you have superuser (root) access on the client host. 
