@@ -34,3 +34,9 @@ wget -O - https://www.percona.com/get/pmm | /bin/bash
 
 
 [github]: https://github.com/percona/pmm/blob/main/get-pmm.sh
+
+### Next steps
+
+Start by installing PMM client: 
+
+[Install PMM client :material-arrow-right:](install-pmm-client/index.md){.md-button}
