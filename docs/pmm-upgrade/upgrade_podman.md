@@ -24,7 +24,7 @@
 (If you are accessing the podman host remotely, replace `localhost` with the IP or server name of the host.)
 {.power-number}
 
-1. Perform a [backup](#backup).
+1. Perform a [backup](../install-pmm/install-pmm-server/baremetal/podman/backup_container_podman.md).
 
 
 2. Update PMM tag.
