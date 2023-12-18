@@ -1,6 +1,6 @@
 # Limit Access to the instance
 
-In the *Security Group* section, which acts like a firewall, you may use the preselected option `Create new based on seller settings` to create a security group with recommended settings. In the *Key Pair* select an already set up EC2 key pair to limit access to your instance.
+In the **Security Group** section, which acts like a firewall, you may use the preselected option `Create new based on seller settings` to create a security group with recommended settings. In the **Key Pair** select an already set up EC2 key pair to limit access to your instance.
 
 ![!image](../../../_images/aws-marketplace.pmm.launch-on-ec2.1-click-launch.3.png)
 
