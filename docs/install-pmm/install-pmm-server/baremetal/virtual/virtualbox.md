@@ -39,6 +39,7 @@
             ```
 
 ## Reconfigure interface
+{.power-number}
 
 ### Reconfigure with UI
 
