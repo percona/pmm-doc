@@ -59,7 +59,7 @@ Once PMM is set up, choose the database that you want it to monitor:
     To connect a Self-hosted MySQL database:
     { .power-number}
 
-    1. Create database account for PMM using the following command example. This creates a database user with name `pmm`, password `pass`, and the necessary permissions:
+    1. Create database account for PMM using the following command example. This creates a database user with name `pmm`, password `<your_password>`, and the necessary permissions:
 
         ```sql
         CREATE USER 'pmm'@'127.0.0.1' IDENTIFIED BY '<your_password>' WITH MAX_USER_CONNECTIONS 10;
