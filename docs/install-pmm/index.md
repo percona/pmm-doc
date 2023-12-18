@@ -2,7 +2,7 @@
 
 ??? info "Summary"
 
-    !!! summary alert alert-info "Summary"
+    !!! summary alert alert-info ""
         1. [Install PMM Server](#set-up-pmm-server).
         2. [Install PMM Client(s)](#set-up-pmm-client).
         3. [Add services](#add-services).
@@ -25,7 +25,7 @@ Choose from:
 
 Install and run PMM Client on every node where there is a service you want to monitor.
 
-The choices:
+The choices are:
 
 - With [Docker](client/index.md#docker);
 - Natively, installed from:
@@ -38,19 +38,19 @@ The choices:
 
 On each PMM Client, you configure then add to PMM Server's inventory the node or service you want to monitor.
 
-How you do this depends on the type of service. You can monitor:
+??? info "Services that you can monitor"
 
-- [MySQL] (and variants: Percona Server for MySQL, Percona XtraDB Cluster, MariaDB);
-- [MongoDB];
-- [PostgreSQL];
-- [ProxySQL];
-- [Amazon RDS];
-- [Microsoft Azure];
-- [Google Cloud Platform] (MySQL and PostgreSQL);
-- [Linux];
-- [External services];
-- [HAProxy];
-- [Remote instances].
+    - [MySQL] (and variants: Percona Server for MySQL, Percona XtraDB Cluster, MariaDB);
+    - [MongoDB];
+    - [PostgreSQL];
+    - [ProxySQL];
+    - [Amazon RDS];
+    - [Microsoft Azure];
+    - [Google Cloud Platform] (MySQL and PostgreSQL);
+    - [Linux];
+    - [External services];
+    - [HAProxy];
+    - [Remote instances].
 
 [MySQL]: client/mysql.md
 [MongoDB]: client/mongodb.md
