@@ -12,7 +12,7 @@ You can collect metrics from [HAProxy](https://www.haproxy.com/) on a node when:
 
 - There is already a PMM Agent instance running.
 
-- This node has been [configured](index.md) using the `pmm-admin config` command.
+- This node has been configured using the `pmm-admin config` command.
 
 ## USAGE
 
