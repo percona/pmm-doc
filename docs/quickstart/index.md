@@ -59,7 +59,7 @@ Once PMM is set up, choose the database that you want it to monitor:
     To connect a Self-hosted MySQL database:
     { .power-number}
 
-    1. Create database account for PMM using the following command example. This creates a database user with name `pmm`, password `pass`, and the necessary permissions:
+    1. Create database account for PMM using the following command example. This creates a database user with name `pmm`, password `<your_password>`, and the necessary permissions:
 
         ```sql
         CREATE USER 'pmm'@'127.0.0.1' IDENTIFIED BY '<your_password>' WITH MAX_USER_CONNECTIONS 10;
@@ -115,7 +115,7 @@ Once PMM is set up, choose the database that you want it to monitor:
     4. Add the MySQL database using Performance Schema:  
 
         ```sh 
-        pmm-admin add mysql --query-source=perfschema --username=pmm --password=<your_password> MYSQL_SERVICE
+        pmm-admin add mysql --query-source=perfschema --username=pmm --password=<your_password>
         ```
     ??? info "Alternative database connection workflows"
         While the default instructions above focus on connecting a Self-hosted MySQL database, PMM offers the flexibility to connect to various MySQL databases, including [AWS RDS](../setting-up/client/aws.md), [Azure MySQL](../setting-up/client/azure.md) or [Google Cloud MySQL](../setting-up/client/google.md). 
@@ -209,7 +209,7 @@ Once PMM is set up, choose the database that you want it to monitor:
     8. Add the PostgreSQL database:
 
         ```sh 
-        pmm-admin add postgresql --username=pmm --password=<your_password> POSTGRESQL_SERVICE 
+        pmm-admin add postgresql --username=pmm --password=<your_password>
         ```
             
     For detailed instructions and advanced installation options, see [Adding a PostgreSQL database](../setting-up/client/postgresql.md).
@@ -222,50 +222,49 @@ Once PMM is set up, choose the database that you want it to monitor:
     1.  Run the following command in `mongo` shell to create a role with the monitoring permissions: 
  
         ```
-            db.createRole({
-        "role":"explainRole",
-        "privileges":[
-            {
-                "resource":{
-                    "db":"",
-                    "collection":""
-                },
-                "actions":[
-                    "collStats",
-                    "dbHash",
-                    "dbStats",
-                    "find",
-                    "listIndexes",
-                    "listCollections"
-                ]
-            }
-        ],
-        "roles":[]
+        db.createRole({
+            "role":"explainRole",
+            "privileges":[
+                {
+                    "resource":{
+                        "db":"",
+                        "collection":""
+                    },
+                    "actions":[
+                        "collStats",
+                        "dbHash",
+                        "dbStats",
+                        "find",
+                        "listIndexes",
+                        "listCollections"
+                    ]
+                }
+            ],
+            "roles":[]
         })
         ```
 
     2. Create a user and grant it the role created above:
 
         ```
-            db.getSiblingDB("admin").createUser({
-        "user":"pmm",
-        "pwd":"<your_password>",
-        "roles":[
-            {
-                "role":"explainRole",
-                "db":"admin"
-            },
-            {
-                "role":"clusterMonitor",
-                "db":"admin"
-            },
-            {
-                "role":"read",
-                "db":"local"
-            }
-        ]
+        db.getSiblingDB("admin").createUser({
+            "user":"pmm",
+            "pwd":"<your_password>",
+            "roles":[
+                {
+                    "role":"explainRole",
+                    "db":"admin"
+                },
+                {
+                    "role":"clusterMonitor",
+                    "db":"admin"
+                },
+                {
+                    "role":"read",
+                    "db":"local"
+                }
+            ]
         })
-        exit
         ```
 
     3. To optimize server-side resources, install PMM Client via Package Manager on the database node:
@@ -314,7 +313,7 @@ Once PMM is set up, choose the database that you want it to monitor:
     5. Add the MongoDB database:
 
         ```
-        sudo pmm-admin add mongodb --username=pmm --password=<your_password> MONGODB_SERVICE 
+        sudo pmm-admin add mongodb --username=pmm --password=<your_password>
         ```
    
     For detailed instructions, see [Adding a MongoDB database for monitoring](https://docs.percona.com/percona-monitoring-and-management/setting-up/client/mongodb.html).
@@ -368,7 +367,7 @@ Once PMM is set up, choose the database that you want it to monitor:
     4. Add the ProxySQL service:
 
         ```
-        pmm-admin add proxysql --username=pmm --password=<your_password> PROXYSQL_SERVICE 
+        pmm-admin add proxysql --username=pmm --password=<your_password>
         ```
 
     For detailed instructions, see [Enable ProxySQL performance metrics monitoring](../setting-up/client/proxysql.md).
@@ -424,14 +423,14 @@ Once PMM is set up, choose the database that you want it to monitor:
     4. Run the command below, specifying the `listen-port`` as the port number where HAProxy is running. (This flag is mandatory.)
 
         ```sh
-        pmm-admin add haproxy --listen-port=8404 HAPROXY_SERVICE
+        pmm-admin add haproxy --listen-port=8404
         ```
 
     For detailed instructions and more information on the command arguments, see the [HAProxy topic](../setting-up/client/haproxy.md).
 
 ## Check database monitoring results
 
-After installing PMM And connecting the database, go to the database's Instance Summary dashboard. This shows essential information about your database performance and an overview of your environment.
+After installing PMM and connecting the database, go to the database's Instance Summary dashboard. This shows essential information about your database performance and an overview of your environment.
 
 For more information, see [PMM Dashboards](../details//dashboards/index.md).
 
