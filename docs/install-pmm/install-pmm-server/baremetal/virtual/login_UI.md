@@ -21,7 +21,7 @@ To log in to the PMM user interface:
 5. The PMM Home Dashboard appears.
 
 
-??? info "(optional) Change root password from UO"
+??? info "(optional) Change root password from UI"
 
     1. Start the virtual machine in GUI mode.
 
