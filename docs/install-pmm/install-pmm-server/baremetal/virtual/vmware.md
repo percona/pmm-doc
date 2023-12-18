@@ -44,7 +44,7 @@
 
 ## Reconfigure interface
 
-!!! note alert alert-primary ""
+!!! note alert alert-primary "Note"
     When using the command line, the interface is remapped during import.
 
 ### Reconfigure with UI
