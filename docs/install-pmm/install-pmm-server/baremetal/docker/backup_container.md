@@ -15,6 +15,8 @@
     ```sh
     docker exec -it pmm-server ls /var/lib/grafana/plugins
     ```
+To backup container:
+{.power-number}
 
 1. Stop the container.
 
