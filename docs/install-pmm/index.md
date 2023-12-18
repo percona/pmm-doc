@@ -1,15 +1,13 @@
 # About PMM installation
 
-There are three stages to installing and setting up PMM.
-
 ??? info "Summary"
 
     !!! summary alert alert-info "Summary"
-        1. [Set up a PMM Server](#set-up-pmm-server).
-        2. [Set up PMM Client(s)](#set-up-pmm-client).
+        1. [Install PMM Server](#set-up-pmm-server).
+        2. [Install PMM Client(s)](#set-up-pmm-client).
         3. [Add services](#add-services).
 
-## Set up PMM Server
+## Install PMM Server
 
 Install and run at least one PMM Server.
 
@@ -23,7 +21,7 @@ Choose from:
 | [Virtual appliance]  | 1. Easily import into Hypervisor of your choice | 1. More system resources compared to Docker footprint.
 | [Amazon AWS] | 1. Wizard-driven install. | 1. Non-free solution (infrastructure costs).
 
-## Set up PMM Client
+## Install PMM Client
 
 Install and run PMM Client on every node where there is a service you want to monitor.
 
