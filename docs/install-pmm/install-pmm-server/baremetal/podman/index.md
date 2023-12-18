@@ -1,6 +1,6 @@
 # Install PMM server with Podman on Docker image
 
-How to run PMM Server with Podman on our [Docker image]
+This section provides instructions for running PMM Server with Podman based on our [Docker image](https://hub.docker.com/r/percona/pmm-server).
 
 !!! note alert alert-primary ""
     The tags used here are for the current release (PMM 2.33.0). Other [tags](https://hub.docker.com/r/percona/pmm-server/tags) are available.
