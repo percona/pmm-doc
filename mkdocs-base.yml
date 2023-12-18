@@ -168,8 +168,7 @@ nav:
         - install-pmm/install-pmm-server/index.md
         - install-pmm/install-pmm-server/prerequisites.md
         - Bare metal:
-          - Easy-install script:
-            - install-pmm/install-pmm-server/baremetal/easy-install/easy-install.md  
+          - Easy-install script: install-pmm/install-pmm-server/baremetal/easy-install/easy-install.md  
           - Docker:
             - install-pmm/install-pmm-server/baremetal/docker/index.md
             - install-pmm/install-pmm-server/baremetal/docker/run_with_vol.md
@@ -336,7 +335,7 @@ nav:
               - details/dashboards/dashboard-haproxy-instance-summary.md
       - PMM metrics: 
         - use/metrics/index.md
-        - metrics/extend_metrics.md
+        - use/metrics/extend_metrics.md
     - Query Analytics:
       - qan/index.md
       - qan/qan_mongo.md
