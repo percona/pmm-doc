@@ -1,4 +1,4 @@
-## Restore Helm chart
+# Restore Helm chart
 
 The version of the PMM server should be greater than or equal to the version in a snapshot. To restore from the snapshot, delete the old deployment first:
 ```sh
