@@ -293,52 +293,52 @@ nav:
         - Prometheus dashboards:
             - details/dashboards/dashboard-prometheus-exporter-status.md
               - details/dashboards/dashboard-prometheus-exporters-overview.md
-          - MySQL dashboards:
-              - details/dashboards/dashboard-mysql-amazon-aurora-details.md
-              - details/dashboards/dashboard-mysql-command-handler-counters-compare.md
-              - details/dashboards/dashboard-mysql-innodb-compression-details.md
-              - details/dashboards/dashboard-mysql-innodb-details.md
-              - details/dashboards/dashboard-mysql-myisam-aria-details.md
-              - details/dashboards/dashboard-mysql-myrocks-details.md
-              - details/dashboards/dashboard-mysql-instance-summary.md
-              - details/dashboards/dashboard-mysql-instances-compare.md
-              - details/dashboards/dashboard-mysql-instances-overview.md
-              - details/dashboards/dashboard-mysql-wait-event-analyses-details.md
-              - details/dashboards/dashboard-mysql-performance-schema-details.md
-              - details/dashboards/dashboard-mysql-query-response-time-details.md
-              - details/dashboards/dashboard-mysql-replication-summary.md
-              - details/dashboards/dashboard-mysql-group-replication-summary.md
-              - details/dashboards/dashboard-mysql-table-details.md
-              - details/dashboards/dashboard-mysql-user-details.md
-              - details/dashboards/dashboard-mysql-tokudb-details.md
-          - MongoDB dashboards:
-              - details/dashboards/dashboard-mongodb-experimental_collection_overview.md
-              - details/dashboards/dashboard-mongodb-experimental_collection_details.md
-              - details/dashboards/dashboard-mongodb-experimental_oplog.md
-              - details/dashboards/dashboard-mongodb-cluster-summary.md
-              - details/dashboards/dashboard-mongodb-instance-summary.md
-              - details/dashboards/dashboard-mongodb-instances-overview.md
-              - details/dashboards/dashboard-mongodb-instances-compare.md
-              - details/dashboards/dashboard-mongodb-replset-summary.md
-              - details/dashboards/dashboard-mongodb-inmemory-details.md
-              - details/dashboards/dashboard-mongodb-mmapv1-details.md
-              - details/dashboards/dashboard-mongodb-wiredtiger-details.md
-          - PostgreSQL dashboards:
-              - details/dashboards/dashboard-postgresql-instances-overview.md
-              - details/dashboards/dashboard-postgresql-instance-summary.md
-              - details/dashboards/dashboard-postgresql-instances-compare.md
-              - details/dashboards/dashboard-postgresql-vacuum-monitoring-experimental.md
-          - ProxySQL dashboards:
-              - details/dashboards/dashboard-proxysql-instance-summary.md
-          - HA dashboards:
-              - details/dashboards/dashboard-pxc-galera-node-summary.md
-              - details/dashboards/dashboard-pxc-galera-cluster-summary.md
-              - details/dashboards/dashboard-pxc-galera-cluster-summary-experimental.md
-              - details/dashboards/dashboard-pxc-galera-nodes-compare.md
-              - details/dashboards/dashboard-haproxy-instance-summary.md
-      - PMM metrics: 
-        - use/metrics/index.md
-        - use/metrics/extend_metrics.md
+        - MySQL dashboards:
+            - details/dashboards/dashboard-mysql-amazon-aurora-details.md
+            - details/dashboards/dashboard-mysql-command-handler-counters-compare.md
+            - details/dashboards/dashboard-mysql-innodb-compression-details.md
+            - details/dashboards/dashboard-mysql-innodb-details.md
+            - details/dashboards/dashboard-mysql-myisam-aria-details.md
+            - details/dashboards/dashboard-mysql-myrocks-details.md
+            - details/dashboards/dashboard-mysql-instance-summary.md
+            - details/dashboards/dashboard-mysql-instances-compare.md
+            - details/dashboards/dashboard-mysql-instances-overview.md
+            - details/dashboards/dashboard-mysql-wait-event-analyses-details.md
+            - details/dashboards/dashboard-mysql-performance-schema-details.md
+            - details/dashboards/dashboard-mysql-query-response-time-details.md
+            - details/dashboards/dashboard-mysql-replication-summary.md
+            - details/dashboards/dashboard-mysql-group-replication-summary.md
+            - details/dashboards/dashboard-mysql-table-details.md
+            - details/dashboards/dashboard-mysql-user-details.md
+            - details/dashboards/dashboard-mysql-tokudb-details.md
+        - MongoDB dashboards:
+            - details/dashboards/dashboard-mongodb-experimental_collection_overview.md
+            - details/dashboards/dashboard-mongodb-experimental_collection_details.md
+            - details/dashboards/dashboard-mongodb-experimental_oplog.md
+            - details/dashboards/dashboard-mongodb-cluster-summary.md
+            - details/dashboards/dashboard-mongodb-instance-summary.md
+            - details/dashboards/dashboard-mongodb-instances-overview.md
+            - details/dashboards/dashboard-mongodb-instances-compare.md
+            - details/dashboards/dashboard-mongodb-replset-summary.md
+            - details/dashboards/dashboard-mongodb-inmemory-details.md
+            - details/dashboards/dashboard-mongodb-mmapv1-details.md
+            - details/dashboards/dashboard-mongodb-wiredtiger-details.md
+        - PostgreSQL dashboards:
+            - details/dashboards/dashboard-postgresql-instances-overview.md
+            - details/dashboards/dashboard-postgresql-instance-summary.md
+            - details/dashboards/dashboard-postgresql-instances-compare.md
+            - details/dashboards/dashboard-postgresql-vacuum-monitoring-experimental.md
+        - ProxySQL dashboards:
+            - details/dashboards/dashboard-proxysql-instance-summary.md
+        - HA dashboards:
+            - details/dashboards/dashboard-pxc-galera-node-summary.md
+            - details/dashboards/dashboard-pxc-galera-cluster-summary.md
+            - details/dashboards/dashboard-pxc-galera-cluster-summary-experimental.md
+            - details/dashboards/dashboard-pxc-galera-nodes-compare.md
+            - details/dashboards/dashboard-haproxy-instance-summary.md
+    - PMM metrics: 
+      - use/metrics/index.md
+      - use/metrics/extend_metrics.md
     - Query Analytics:
       - qan/index.md
       - qan/qan_mongo.md
@@ -347,7 +347,7 @@ nav:
         - qan/panels/overview.md
         - qan/panels/filters.md
         - qan/panels/details.md
-      - Advisors: advisors/advisors.md
+    - Advisors: advisors/advisors.md
 
     - Percona Alerting:
       - alert/index.md
