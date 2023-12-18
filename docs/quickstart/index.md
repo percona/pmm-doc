@@ -90,7 +90,7 @@ Once PMM is set up, choose the database that you want it to monitor:
     3. Add the MySQL database using Performance Schema:  
 
         ```sh 
-        pmm-admin add mysql --query-source=perfschema --username=pmm --password=<your_password> MYSQL_SERVICE
+        pmm-admin add mysql --query-source=perfschema --username=pmm --password=<your_password>
         ```
     ??? info "Alternative database connection workflows"
         While the default instructions above focus on connecting a Self-hosted MySQL database, PMM offers the flexibility to connect to various MySQL databases, including [AWS RDS](../setting-up/client/aws.md), [Azure MySQL](../setting-up/client/azure.md) or [Google Cloud MySQL](../setting-up/client/google.md). 
