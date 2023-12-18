@@ -139,7 +139,7 @@ Some MySQL-based database servers support extended slow query log variables.
 
     - Configuration file (Percona Server for MySQL, Percona XtraDB Cluster).
 
-        ```ini
+        ```sh
         log_slow_rate_limit=100
         log_slow_rate_type='query'
         slow_query_log_always_write_time=1
@@ -149,13 +149,13 @@ Some MySQL-based database servers support extended slow query log variables.
 
     - Configuration file (MariaDB).
 
-        ```ini
+        ```sh
         log_slow_rate_limit=100
         ```
 
     - Session (Percona Server for MySQL, Percona XtraDB Cluster).
 
-        ```sql
+        ```sh
         SET GLOBAL log_slow_rate_limit = 100;
         SET GLOBAL log_slow_rate_type = 'query';
         SET GLOBAL slow_query_log_always_write_time = 1;
