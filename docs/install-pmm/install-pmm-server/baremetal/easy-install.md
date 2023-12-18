@@ -39,4 +39,4 @@ wget -O - https://www.percona.com/get/pmm | /bin/bash
 
 Start by installing PMM client: 
 
-[Install PMM client :material-arrow-right:](install-pmm-client/index.md){.md-button}
+[Install PMM client :material-arrow-right:](../../install-pmm-client/index.md){.md-button}
