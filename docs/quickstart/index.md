@@ -311,7 +311,7 @@ Once PMM is set up, choose the database that you want it to monitor:
 
 ## Check database monitoring results
 
-After installing PMM And connecting the database, go to the database's Instance Summary dashboard. This shows essential information about your database performance and an overview of your environment.
+After installing PMM and connecting the database, go to the database's Instance Summary dashboard. This shows essential information about your database performance and an overview of your environment.
 
 For more information, see [PMM Dashboards](../details//dashboards/index.md).
 
