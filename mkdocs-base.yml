@@ -259,8 +259,7 @@ nav:
       - Share dashboards and panels:
         - ui/dashboards-panels/share-dashboards/share_dashboard.md
         - ui/dashboards-panels/share-dashboards/publish_snapshot.md
-      - Annotate:
-        - ui/dashboards-panels/annotate/annotate.md              
+      - Annotate: use/dashboards-panels/annotate/annotate.md              
       - Available dashboards:
         - Insight:
             - details/dashboards/dashboard-home.md
