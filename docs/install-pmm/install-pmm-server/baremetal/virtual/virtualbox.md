@@ -39,9 +39,10 @@
             ```
 
 ## Reconfigure interface
-{.power-number}
+
 
 ### Reconfigure with UI
+{.power-number}
 
 1. Click *Settings*.
 2. Click *Network*.
