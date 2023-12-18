@@ -59,6 +59,9 @@ On Debian or Red Hat Linux, install `percona-release` and use a Linux package ma
 
 ## Package manager -- manual download
 
+To manually download package manager:
+{.power-number}
+
 1. Visit the [Percona Monitoring and Management 2 download](https://www.percona.com/downloads/pmm2/) page.
 2. Under *Version:*, select the one you want (usually the latest).
 3. Under *Software:*, select the item matching your software platform.
