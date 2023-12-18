@@ -304,7 +304,7 @@ Once PMM is set up, choose the database that you want it to monitor:
     4. Run the command below, specifying the `listen-port`` as the port number where HAProxy is running. (This flag is mandatory.)
 
         ```sh
-        pmm-admin add haproxy --listen-port=8404 HAPROXY_SERVICE
+        pmm-admin add haproxy --listen-port=8404
         ```
 
     For detailed instructions and more information on the command arguments, see the [HAProxy topic](../setting-up/client/haproxy.md).
