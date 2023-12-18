@@ -243,8 +243,7 @@ nav:
       - uninstall-pmm/unregister_client.md
 
   - Use:
-    - Monitor: 
-      - use/index.md
+    - Monitor: use/index.md
     - PMM Inventory: 
       - use/dashboard-inventory.md  
     - Dashboards:
