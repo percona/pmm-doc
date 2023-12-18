@@ -1,4 +1,4 @@
-# Connect a self-hosted or an AWS EC2 MySQL database to PMM¶
+# Connect a self-hosted or an AWS EC2 MySQL database to PMM
 
 
 PMM Client collects metrics from [MySQL][ORACLE_MYSQL], [Percona Server for MySQL][PERCONA_SERVER_MYSQL], [Percona XtraDB Cluster][PERCONA_XTRADB_CLUSTER], and [MariaDB][MARIADB]. (Amazon RDS is also supported and explained in a [separate section](aws.md).)
@@ -28,19 +28,19 @@ Check that:
 It is good practice to use a non-superuser account to connect PMM Client to the monitored database instance. This example creates a database user with name `pmm`, password `pass`, and the necessary permissions.
 
 
-**On MySQL 8.0**
+=== "On MySQL 8.0"
 
-```sql
-CREATE USER 'pmm'@'localhost' IDENTIFIED BY 'pass' WITH MAX_USER_CONNECTIONS 10;
-GRANT SELECT, PROCESS, REPLICATION CLIENT, RELOAD, BACKUP_ADMIN ON *.* TO 'pmm'@'localhost';
-```
+    ```sql
+    CREATE USER 'pmm'@'localhost' IDENTIFIED BY 'pass' WITH MAX_USER_CONNECTIONS 10;
+    GRANT SELECT, PROCESS, REPLICATION CLIENT, RELOAD, BACKUP_ADMIN ON *.* TO 'pmm'@'localhost';
+    ```
 
-**On MySQL 5.7**
+=== "On MySQL 5.7"
 
-```sql
-CREATE USER 'pmm'@'127.0.0.1' IDENTIFIED BY 'pass' WITH MAX_USER_CONNECTIONS 10;
-GRANT SELECT, PROCESS, REPLICATION CLIENT, RELOAD ON *.* TO 'pmm'@'localhost';
-```
+    ```sql
+    CREATE USER 'pmm'@'127.0.0.1' IDENTIFIED BY 'pass' WITH MAX_USER_CONNECTIONS 10;
+    GRANT SELECT, PROCESS, REPLICATION CLIENT, RELOAD ON *.* TO 'pmm'@'localhost';
+    ```
 
 ## Choose and configure a source
 
