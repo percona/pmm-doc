@@ -67,7 +67,7 @@ To start the guest and get the IP address from the UI:
 
 
 1. In the VMware main window, select the imported virtual machine.
-2. Click the play button <i class="uil uil-caret-right"></i> or select *Virtual Machine* → *Start Up*.
+2. Click the play button <i class="uil uil-caret-right"></i> or select **Virtual Machine** → **Start Up**.
 3. When the instance has been booted, note the IP address in the guest console.
 
 ### Start guest and get IP address from CLI
