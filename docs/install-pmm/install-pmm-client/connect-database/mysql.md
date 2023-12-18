@@ -91,27 +91,27 @@ The *slow query log* records the details of queries that take more than a certai
 | [`log_slow_admin_statements`][sysvar_log_slow_admin_statements] | ON     | Includes the logging of slow administrative statements.
 | [`log_slow_slave_statements`][sysvar_log_slow_slave_statements] | ON     | Enables logging for queries that have taken more than `long_query_time` seconds to execute on the replica.
 
-#### Examples
+??? info "Examples"
 
-- Configuration file.
+    - Configuration file.
 
-    ```ini
-    slow_query_log=ON
-    log_output=FILE
-    long_query_time=0
-    log_slow_admin_statements=ON
-    log_slow_slave_statements=ON
-    ```
+        ```ini
+        slow_query_log=ON
+        log_output=FILE
+        long_query_time=0
+        log_slow_admin_statements=ON
+        log_slow_slave_statements=ON
+        ```
 
-- Session.
+    - Session.
 
-    ```sql
-    SET GLOBAL slow_query_log = 1;
-    SET GLOBAL log_output = 'FILE';
-    SET GLOBAL long_query_time = 0;
-    SET GLOBAL log_slow_admin_statements = 1;
-    SET GLOBAL log_slow_slave_statements = 1;
-    ```
+        ```sql
+        SET GLOBAL slow_query_log = 1;
+        SET GLOBAL log_output = 'FILE';
+        SET GLOBAL long_query_time = 0;
+        SET GLOBAL log_slow_admin_statements = 1;
+        SET GLOBAL log_slow_slave_statements = 1;
+        ```
 
 #### Slow query log -- extended
 
@@ -321,19 +321,19 @@ User activity, individual table and index access details are shown on the [MySQL
 | Percona XtraDB Cluster   | 5.6, 5.7, 8.0
 | MariaDB                  | 5.2.0+
 
-### Examples
+??? info "Examples"
 
-- Configuration file.
+    - Configuration file.
 
-    ```ini
-    userstat=ON
-    ```
+        ```ini
+        userstat=ON
+        ```
 
-- Session.
+    - Session.
 
-    ```sql
-    SET GLOBAL userstat = ON;
-    ```
+        ```sql
+        SET GLOBAL userstat = ON;
+        ```
 
 ## Add service
 
