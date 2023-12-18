@@ -363,61 +363,61 @@ If your MySQL instance is configured to use TLS, click on the *Use TLS for datab
 
 Add the database server as a service using one of these example commands. If successful, PMM Client will print `MySQL Service added` with the service's ID and name. Use the `--environment` and `-custom-labels` options to set tags for the service to help identify them.
 
-### Examples
+??? info "Examples"
 
-#### TLS connection
+    #### TLS connection
 
-```sh
-pmm-admin add mysql --username=user --password=pass --tls --tls-skip-verify --tls-ca=pathtoca.pem --tls-cert=pathtocert.pem --tls-key=pathtocertkey.pem --server-url=http://admin:admin@127.0.0.1 --query-source=perfschema name localhost:3306
-```
+    ```sh
+    pmm-admin add mysql --username=user --password=pass --tls --tls-skip-verify --tls-ca=pathtoca.pem --tls-cert=pathtocert.pem --tls-key=pathtocertkey.pem --server-url=http://admin:admin@127.0.0.1 --query-source=perfschema name localhost:3306
+    ```
 
-#### Slow query log
+    #### Slow query log
 
-Default query source (`slowlog`), service name (`{node name}-mysql`), and service address/port (`127.0.0.1:3306`), with database server account `pmm` and password `pass`.
+    Default query source (`slowlog`), service name (`{node name}-mysql`), and service address/port (`127.0.0.1:3306`), with database server account `pmm` and password `pass`.
 
-```sh
-pmm-admin add mysql --username=pmm --password=pass
-```
+    ```sh
+    pmm-admin add mysql --username=pmm --password=pass
+    ```
 
-Slow query log source and log size limit (1 gigabyte), service name (`MYSQL_NODE`) and service address/port (`191.168.1.123:3306`).
+    Slow query log source and log size limit (1 gigabyte), service name (`MYSQL_NODE`) and service address/port (`191.168.1.123:3306`).
 
-```sh
-pmm-admin add mysql --query-source=slowlog --size-slow-logs=1GiB --username=pmm --password=pass MYSQL_NODE 192.168.1.123:3306
-```
+    ```sh
+    pmm-admin add mysql --query-source=slowlog --size-slow-logs=1GiB --username=pmm --password=pass MYSQL_NODE 192.168.1.123:3306
+    ```
 
-Slow query log source, disabled log management (use [`logrotate`][LOGROTATE] or some other log management tool), service name (`MYSQL_NODE`) and service address/port (`191.168.1.123:3306`).
+    Slow query log source, disabled log management (use [`logrotate`][LOGROTATE] or some other log management tool), service name (`MYSQL_NODE`) and service address/port (`191.168.1.123:3306`).
 
-```sh
-pmm-admin add mysql --query-source=slowlog --size-slow-logs=-1GiB --username=pmm --password=pass MYSQL_NODE 192.168.1.123:3306
-```
+    ```sh
+    pmm-admin add mysql --query-source=slowlog --size-slow-logs=-1GiB --username=pmm --password=pass MYSQL_NODE 192.168.1.123:3306
+    ```
 
-Default query source (`slowlog`), service name (`{node}-mysql`), connect via socket.
+    Default query source (`slowlog`), service name (`{node}-mysql`), connect via socket.
 
-```sh
-pmm-admin add mysql --username=pmm --password=pass --socket=/var/run/mysqld/mysqld.sock
-```
+    ```sh
+    pmm-admin add mysql --username=pmm --password=pass --socket=/var/run/mysqld/mysqld.sock
+    ```
 
-#### Performance Schema
+    #### Performance Schema
 
-Performance schema query source, service name (`MYSQL_NODE`) and default service address/port (`127.0.0.1:3306`).
+    Performance schema query source, service name (`MYSQL_NODE`) and default service address/port (`127.0.0.1:3306`).
 
-```sh
-pmm-admin add mysql --query-source=perfschema --username=pmm --password=pass MYSQL_NODE
-```
+    ```sh
+    pmm-admin add mysql --query-source=perfschema --username=pmm --password=pass MYSQL_NODE
+    ```
 
-Performance schema query source, service name (`MYSQL_NODE`) and default service address/port (`127.0.0.1:3306`) specified with flags.
+    Performance schema query source, service name (`MYSQL_NODE`) and default service address/port (`127.0.0.1:3306`) specified with flags.
 
-```sh
-pmm-admin add mysql --query-source=perfschema --username=pmm --password=pass --service-name=MYSQL_NODE --host=127.0.0.1 --port=3306
-```
+    ```sh
+    pmm-admin add mysql --query-source=perfschema --username=pmm --password=pass --service-name=MYSQL_NODE --host=127.0.0.1 --port=3306
+    ```
 
-#### Identifying services
+    #### Identifying services
 
-Default query source (`slowlog`), environment labeled `test`, custom labels setting `source` to `slowlog`. (This example uses positional parameters for service name and service address.)
+    Default query source (`slowlog`), environment labeled `test`, custom labels setting `source` to `slowlog`. (This example uses positional parameters for service name and service address.)
 
-```sh
-pmm-admin add mysql --environment=test --custom-labels='source=slowlog'  --username=root --password=password --query-source=slowlog MySQLSlowLog localhost:3306
-```
+    ```sh
+    pmm-admin add mysql --environment=test --custom-labels='source=slowlog'  --username=root --password=password --query-source=slowlog MySQLSlowLog localhost:3306
+    ```
 
 ## Check the service
 
