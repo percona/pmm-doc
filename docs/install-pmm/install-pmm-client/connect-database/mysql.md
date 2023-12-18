@@ -345,6 +345,9 @@ With the PMM user interface, you select **Use performance schema**, or deselect 
 
 ### With the user interface
 
+To add a service using the UI:
+{.power-number}
+
 1. Select <i class="uil uil-cog"></i> **Configuration** → {{icon.inventory}} **Inventory** → {{icon.addinstance}} **Add Service**.
 
 2. Select **MySQL -- Add a remote instance**.
@@ -423,6 +426,10 @@ Add the database server as a service using one of these example commands. If suc
 
 ### PMM user interface
 
+To check the service with the UI:
+{.power-number}
+
+
 1. Select <i class="uil uil-cog"></i> **Configuration** → {{icon.inventory}} **Inventory**.
 2. In the **Services** tab, verify the **Service name**, **Addresses**, and any other relevant information in the form.
 3. In the **Options** column, expand the **Details** section and check that the Agents are using the desired data source.
@@ -436,6 +443,9 @@ pmm-admin inventory list services --service-type=mysql
 ```
 
 ### Check data
+
+To check the data:
+{.power-number}
 
 1. Open the **MySQL Instance Summary** dashboard.
 2. Set the **Service Name** to the newly-added service.
