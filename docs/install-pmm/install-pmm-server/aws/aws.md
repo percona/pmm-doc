@@ -18,19 +18,19 @@ Percona Monitoring and Management Server is provided at no cost, but you may nee
 To install PMM server on AWS:
 {.power-number}
 
-1. Click *Continue to Subscribe*.
+1. Click **Continue to Subscribe**.
 
 2. **Subscribe to this software**: Check the terms and conditions and click *Continue to Configuration*.
 
 3. **Configure this software**:
 
-    1. Select a value for *Software Version*. (The latest is {{release}}.)
+    1. Select a value for **Software Version**. (The latest is {{release}}.)
     2. Select a region. (You can change this in the next step.)
-    3. Click *Continue to Launch*.
+    3. Click **Continue to Launch**.
 
 4. **Launch this software**:
 
-    1. **Choose Action**: Select a launch option. *Launch from Website* is a quick way to make your instance ready. For more control, choose *Launch through EC2*.
+    1. **Choose Action**: Select a launch option. **Launch from Website** is a quick way to make your instance ready. For more control, choose *Launch through EC2*.
 
     2. **EC2 Instance Type**: Select an instance type.
 
@@ -42,6 +42,6 @@ To install PMM server on AWS:
 
     6. **Key Pair Settings**: Choose or create a key pair.
 
-    7. Click *Launch*.
+    7. Click **Launch**.
 
 
