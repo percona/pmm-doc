@@ -6,11 +6,14 @@ The connection can be direct, or indirect using [Cloud SQL Proxy][GOOGLE_CLOUD_S
 
 ## MySQL
 
+To add a MySQL instance on Google Cloud:
+{.power-number}
+
 1. [Set up a MySQL instance on Google Cloud][GOOGLE_CLOUD_MYSQL].
 
 2. The database server must be accessible by PMM Client. If PMM Client is not also hosted on GCP, you will need to add a network interface with a public interface.
 
-3. Configure *Performance Schema* on the MySQL server. Using the GCP console's *Cloud Shell* or your own `gcloud` installation, run:
+3. Configure **Performance Schema** on the MySQL server. Using the GCP console's *Cloud Shell* or your own `gcloud` installation, run:
 
     ```sh
     gcloud sql instances patch <instance_name> --database-flags performance_schema=on
@@ -18,19 +21,22 @@ The connection can be direct, or indirect using [Cloud SQL Proxy][GOOGLE_CLOUD_S
 
 4. Log into the PMM user interface.
 
-5. Select <i class="uil uil-cog"></i> *Configuration* → {{icon.inventory}} *PMM Inventory* → {{icon.addinstance}} *Add Instance*.
+5. Select <i class="uil uil-cog"></i> **Configuration** → {{icon.inventory}} **PMM Inventory** → {{icon.addinstance}} **Add Instance**.
 
-6. Click *MySQL Add a remote instance*.
+6. Click **MySQL Add a remote instance**.
 
 7. Fill in the details for the remote MySQL instance.
 
-    - Ensure *Use performance schema* is selected.
+    - Ensure **Use performance schema** is selected.
 
-8. Click *Add service*.
+8. Click **Add service**.
 
-9. Check for values in the *MySQL Instance Overview* dashboard and in *Query Analytics*.
+9. Check for values in the **MySQL Instance Overview** dashboard and in **Query Analytics**.
 
 ## PostgreSQL
+
+To add a PostgreSQL instance on Google Cloud:
+{.power-number}
 
 1. [Set up a PostgreSQL instance on Google Cloud][GOOGLE_CLOUD_POSTGRESQL].
 
@@ -59,6 +65,9 @@ The connection can be direct, or indirect using [Cloud SQL Proxy][GOOGLE_CLOUD_S
 ## Cloud SQL Proxy
 
 ### MySQL
+
+To add a MySQL instance:
+{.power-number}
 
 1. Create instance on GCP.
 
@@ -100,6 +109,9 @@ The connection can be direct, or indirect using [Cloud SQL Proxy][GOOGLE_CLOUD_S
     ```
 
 ### PostgreSQL
+
+To add a PostgreSQL instance:
+{.power-number}
 
 1. Create instance on GCP.
 
