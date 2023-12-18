@@ -36,19 +36,20 @@ Also, ensure that the Kubernetes cluster has [high availability](https://kuberne
 !!! note alert alert-primary "Availability"
     This feature is available starting with PMM 2.29.0.
 
+??? info "Summary"
 
-!!! summary alert alert-info "Summary"
-    - Setup PMM admin password
-    - Install
-    - Configuration parameters
-    - PMM environment variables
-    - PMM SSL certificates
-    - Backup
-    - Upgrade
-    - Restore
-    - Uninstall
+    !!! summary alert alert-info ""
+        - Setup PMM admin password
+        - Install
+        - Configuration parameters
+        - PMM environment variables
+        - PMM SSL certificates
+        - Backup
+        - Upgrade
+        - Restore
+        - Uninstall
 
----
+    ---
 
 ### Setup PMM admin password
 
@@ -165,61 +166,7 @@ certs:
 
 Another approach to set up TLS certificates is to use the Ingress controller, see [TLS](https://kubernetes.io/docs/concepts/services-networking/ingress/#tls). PMM helm chart supports Ingress. See [PMM network configuration](https://github.com/percona/percona-helm-charts/tree/main/charts/pmm#pmm-network-configuration).
 
-## Backup
 
-PMM helm chart uses [PersistentVolume and PersistentVolumeClaim](https://kubernetes.io/docs/concepts/storage/persistent-volumes/) to allocate storage in the Kubernetes cluster.
-
-Volumes could be pre-provisioned and dynamic. PMM chart supports both and exposes it through [PMM storage configuration](https://github.com/percona/percona-helm-charts/tree/main/charts/pmm#pmm-storage-configuration).
-
-Backups for the PMM server currently support only storage layer backups and thus require [StorageClass](https://kubernetes.io/docs/concepts/storage/storage-classes/) and [VolumeSnapshotClass](https://kubernetes.io/docs/concepts/storage/volume-snapshot-classes/).
-
-Validate the correct configuration by using these commands:
-```sh
-kubectl get sc
-kubectl get volumesnapshotclass
-```
-
-!!! note alert alert-primary "Storage"
-    Storage configuration is Hardware and Cloud specific. There could be additional costs associated with Volume Snapshots. Check the documentation for your Cloud or for your Kubernetes cluster.
-
-Before taking a [VolumeSnapshot](https://kubernetes.io/docs/concepts/storage/volume-snapshots/), stop the PMM server. In this step, we will stop PMM (scale to 0 pods), take a snapshot, wait until the snapshot completes, then start PMM server (scale to 1 pod):
-```sh
-kubectl scale statefulset pmm --replicas=0
-kubectl wait --for=jsonpath='{.status.replicas}'=0 statefulset pmm
-
-cat <<EOF | kubectl create -f -
-apiVersion: snapshot.storage.k8s.io/v1
-kind: VolumeSnapshot
-metadata:
-  name: before-v2.34.0-upgrade
-  labels:
-    app.kubernetes.io/name: pmm
-spec:
-  volumeSnapshotClassName: csi-hostpath-snapclass
-  source:
-    persistentVolumeClaimName: pmm-storage-pmm-0
-EOF
-
-kubectl wait --for=jsonpath='{.status.readyToUse}'=true VolumeSnapshot/before-v2.34.0-upgrade
-kubectl scale statefulset pmm --replicas=1
-```
-
-Output:
-```
-statefulset.apps/pmm scaled
-statefulset.apps/pmm condition met
-volumesnapshot.snapshot.storage.k8s.io/before-v2.34.0-upgrade created
-volumesnapshot.snapshot.storage.k8s.io/before-v2.34.0-upgrade condition met
-statefulset.apps/pmm scaled
-```
-
-!!! note alert alert-primary "PMM scale"
-    Only one replica set is currently supported.
-
-You can view available snapshots by executing the following command:
-```sh
-kubectl get volumesnapshot
-```
 
 ### Upgrades
 
@@ -243,41 +190,7 @@ helm upgrade pmm -f values.yaml percona/pmm
 
 This will check updates in the repo and upgrade deployment if the updates are available.
 
-## Restore
 
-The version of the PMM server should be greater than or equal to the version in a snapshot. To restore from the snapshot, delete the old deployment first:
-```sh
-helm uninstall pmm
-```
-
-And then use snapshot configuration to start the PMM server again with the correct version and correct storage configuration:
-```sh
-helm install pmm \
---set image.tag="2.34.0" \
---set storage.name="pmm-storage-old" \
---set storage.dataSource.name="before-v2.34.0-upgrade" \
---set storage.dataSource.kind="VolumeSnapshot" \
---set storage.dataSource.apiGroup="snapshot.storage.k8s.io" \
---set secret.create=false \
---set secret.name=pmm-secret \
-percona/pmm
-```
-
-Here, we created a new `pmm-storage-old` PVC with data from the snapshot. So, there are a couple of PV and PVCs available in a cluster.
-
-```
-$ kubectl get pvc
-NAME                    STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS      AGE
-pmm-storage-old-pmm-0   Bound    pvc-70e5d2eb-570f-4087-9515-edf2f051666d   10Gi       RWO            csi-hostpath-sc   3s
-pmm-storage-pmm-0       Bound    pvc-9dbd9160-e4c5-47a7-bd90-bff36fc1463e   10Gi       RWO            csi-hostpath-sc   89m
-
-$ kubectl get pv
-NAME                                       CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS   CLAIM                           STORAGECLASS      REASON   AGE
-pvc-70e5d2eb-570f-4087-9515-edf2f051666d   10Gi       RWO            Delete           Bound    default/pmm-storage-old-pmm-0   csi-hostpath-sc            4m50s
-pvc-9dbd9160-e4c5-47a7-bd90-bff36fc1463e   10Gi       RWO            Delete           Bound    default/pmm-storage-pmm-0       csi-hostpath-sc            93m
-```
-
-Delete unneeded PVC when you are sure you don't need them.
 
 ### Uninstall
 

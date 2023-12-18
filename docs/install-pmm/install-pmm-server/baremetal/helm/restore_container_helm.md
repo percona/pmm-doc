@@ -1,56 +1,37 @@
-# Restore podman container
+## Restore Helm chart
 
+The version of the PMM server should be greater than or equal to the version in a snapshot. To restore from the snapshot, delete the old deployment first:
+```sh
+helm uninstall pmm
+```
 
-??? info "Summary"
+And then use snapshot configuration to start the PMM server again with the correct version and correct storage configuration:
+```sh
+helm install pmm \
+--set image.tag="2.34.0" \
+--set storage.name="pmm-storage-old" \
+--set storage.dataSource.name="before-v2.34.0-upgrade" \
+--set storage.dataSource.kind="VolumeSnapshot" \
+--set storage.dataSource.apiGroup="snapshot.storage.k8s.io" \
+--set secret.create=false \
+--set secret.name=pmm-secret \
+percona/pmm
+```
 
-    !!! summary alert alert-info ""
-        - Stop PMM server.
-        - Run PMM on the previous image.
-        - Restore the volume.
-        - Start PMM Server.
+Here, we created a new `pmm-storage-old` PVC with data from the snapshot. So, there are a couple of PV and PVCs available in a cluster.
 
-    ---
+```
+$ kubectl get pvc
+NAME                    STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS      AGE
+pmm-storage-old-pmm-0   Bound    pvc-70e5d2eb-570f-4087-9515-edf2f051666d   10Gi       RWO            csi-hostpath-sc   3s
+pmm-storage-pmm-0       Bound    pvc-9dbd9160-e4c5-47a7-bd90-bff36fc1463e   10Gi       RWO            csi-hostpath-sc   89m
 
-!!! caution alert alert-warning "Important"
-    You must have a [backup](#backup) to restore from.
-    You need to perform restore only if you have issues with upgrade or with the data.
+$ kubectl get pv
+NAME                                       CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS   CLAIM                           STORAGECLASS      REASON   AGE
+pvc-70e5d2eb-570f-4087-9515-edf2f051666d   10Gi       RWO            Delete           Bound    default/pmm-storage-old-pmm-0   csi-hostpath-sc            4m50s
+pvc-9dbd9160-e4c5-47a7-bd90-bff36fc1463e   10Gi       RWO            Delete           Bound    default/pmm-storage-pmm-0       csi-hostpath-sc            93m
+```
 
-To restore your container:
-{.power-number}
-
-1. Stop PMM server.
-
-    ```sh
-    systemctl --user stop pmm-server
-    ```
-
-2. Run PMM on the previous image.
-
-    Edit `~/.config/pmm-server/env` file:
-
-    ```sh
-    sed -i "s/PMM_TAG=.*/PMM_TAG=2.31.0/g" ~/.config/pmm-server/env
-    ```
-
-    !!! caution alert alert-warning "Important"
-        X.Y.Z (2.31.0) is the version you used before upgrade and you made Backup with it
-
-3. Restore the volume.
-
-    ```sh
-    podman volume import pmm-server pmm-server-backup.tar
-    ```
-
-4. Start PMM Server.
-
-    ```sh
-    systemctl --user start pmm-server
-    ```
-
-    <div hidden>
-    sleep 30
-    timeout 60 podman wait --condition=running pmm-server
-    ```
-    </div>
+Delete unneeded PVC when you are sure you don't need them.
 
 
