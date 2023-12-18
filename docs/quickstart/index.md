@@ -149,7 +149,7 @@ Once PMM is set up, choose the database that you want it to monitor:
     6. Add the PostgreSQL database:
 
         ```sh 
-        pmm-admin add postgresql --username=pmm --password=<your_password> POSTGRESQL_SERVICE 
+        pmm-admin add postgresql --username=pmm --password=<your_password>
         ```
             
     For detailed instructions and advanced installation options, see [Adding a PostgreSQL database](../setting-up/client/postgresql.md).
