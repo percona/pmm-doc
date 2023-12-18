@@ -211,7 +211,7 @@ For PostgreSQL, use the same method described above.
     !!! note alert alert-primary ""
         At the moment of writing this guide, the Add button doesn't mention PostgreSQL but the discovery function already supports it.
 
-    ![!image](../../_images/PMM_rds_postgre_02_discover.png)
+    ![!image](../../../_images/PMM_rds_postgre_02_discover.png)
 
 3. Follow steps 4 to 6 as in the previous section. Fill the form and remember to select `PG Stat Statement` to enable Query Analytics.
 
@@ -221,5 +221,5 @@ For PostgreSQL, use the same method described above.
     CREATE EXTENSION pg_stat_statements SCHEMA public;
     ```
 
-    ![!image](../../_images/PMM_rds_postgre_03_form_1.png)
-    ![!image](../../_images/PMM_rds_postgre_04_add_btn.png)
+    ![!image](../../../_images/PMM_rds_postgre_03_form_1.png)
+    ![!image](../../../_images/PMM_rds_postgre_04_add_btn.png)
