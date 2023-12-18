@@ -1,5 +1,7 @@
 # Download and verify OVA file
 
+This section contains guidelines on how to download and verify the OVA file.
+
 ## Download OVA file from the UI
 
 To download an OVA file from the UI:
