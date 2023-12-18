@@ -45,7 +45,7 @@
 
 ### Reconfigure with UI
 
-To reconfigure with the UI:
+To reconfigure the interface with the UI:
 {.power-number}
 
 1. Click *Settings*.

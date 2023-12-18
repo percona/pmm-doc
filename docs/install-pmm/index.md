@@ -2,10 +2,12 @@
 
 There are three stages to installing and setting up PMM.
 
-!!! summary alert alert-info "Summary"
-    1. [Set up a PMM Server](#set-up-pmm-server).
-    2. [Set up PMM Client(s)](#set-up-pmm-client).
-    3. [Add services](#add-services).
+??? info "Summary"
+
+    !!! summary alert alert-info "Summary"
+        1. [Set up a PMM Server](#set-up-pmm-server).
+        2. [Set up PMM Client(s)](#set-up-pmm-client).
+        3. [Add services](#add-services).
 
 ## Set up PMM Server
 
