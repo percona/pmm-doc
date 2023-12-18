@@ -335,7 +335,7 @@ nav:
               - details/dashboards/dashboard-pxc-galera-nodes-compare.md
               - details/dashboards/dashboard-haproxy-instance-summary.md
       - PMM metrics: 
-        - metrics/index.md
+        - use/metrics/index.md
         - metrics/extend_metrics.md
     - Query Analytics:
       - qan/index.md
