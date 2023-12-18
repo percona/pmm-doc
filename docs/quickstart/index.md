@@ -70,7 +70,8 @@ Once PMM is set up, choose the database or the application that you want it to m
         { .power-number}     
         
         === "Debian-based"
-                
+         Install the following with `root` permission:
+
             1. Install the [Percona Release Tool](https://docs.percona.com/percona-software-repositories/installing.html).  If this is already, make sure to update it to the latest version:
 
                 ```sh
@@ -80,31 +81,25 @@ Once PMM is set up, choose the database or the application that you want it to m
 
             2. Install the PMM Client package:
 
-                !!! hint "Root permissions"
-
-                    ```sh
-                    apt update
-                    apt install -y pmm2-client
-                    ```
+                ```sh
+                apt update
+                apt install -y pmm2-client
+                ```
 
         === "Red Hat-based"
+            Install the following with `root` permission:
 
-            1. Install [percona-release](https://docs.percona.com/percona-software-repositories/installing.html) tool.  If this is already installed, [update percona-release](https://docs.percona.com/percona-software-repositories/updating.html) to the latest version.
+            3. Install [percona-release](https://docs.percona.com/percona-software-repositories/installing.html) tool.  If this is already installed, [update percona-release](https://docs.percona.com/percona-software-repositories/updating.html) to the latest version.
 
-                    ```sh
-                     yum install -y https://repo.percona.com/yum/percona-release-latest.noarch.rpm
-                    ```
+                ```sh
+                yum install -y https://repo.percona.com/yum/percona-release-latest.noarch.rpm
+                ```
 
-            2. Install the PMM Client package:
+            4. Install the PMM Client package:
 
-                    ```sh
-                    yum install -y pmm2-client
-                    ```
-
-                    ```sh
-                    apt update
-                    apt install -y pmm2-client
-                    ```
+                ```sh
+                yum install -y pmm2-client
+                ```
 
     3. Register PMM Client:
         
@@ -168,7 +163,8 @@ Once PMM is set up, choose the database or the application that you want it to m
         { .power-number}     
         
         === "Debian-based"
-                
+            Install the following with `root` permission: 
+
             1. Install [percona-release](https://docs.percona.com/percona-software-repositories/installing.html) tool.  If this is already installed, [update percona-release](https://docs.percona.com/percona-software-repositories/updating.html) to the latest version:
 
                 ```sh
@@ -178,37 +174,31 @@ Once PMM is set up, choose the database or the application that you want it to m
 
             2. Install the PMM Client package:
 
-                !!! hint "Root permissions"
-
-                    ```sh
-                    apt update
-                    apt install -y pmm2-client
-                    ```
+                ```sh
+                apt update
+                apt install -y pmm2-client
+                ```
 
         === "Red Hat-based"
+            Install the following with `root` permission: 
+         
+            3. Install [percona-release](https://docs.percona.com/percona-software-repositories/installing.html) tool.  If this is already installed, [update percona-release](https://docs.percona.com/percona-software-repositories/updating.html) to the latest version:
 
-            1. Install [percona-release](https://docs.percona.com/percona-software-repositories/installing.html) tool.  If this is already installed, [update percona-release](https://docs.percona.com/percona-software-repositories/updating.html) to the latest version:
+                ```sh
+                yum install -y https://repo.percona.com/yum/percona-release-latest.noarch.rpm
+                ```
 
-                    ```sh
-                     yum install -y https://repo.percona.com/yum/percona-release-latest.noarch.rpm
-                    ```
+            4. Install the PMM Client package:
 
-            2. Install the PMM Client package:
-
-                    ```sh
-                    yum install -y pmm2-client
-                    ```
-
-                    ```sh
-                    apt update
-                    apt install -y pmm2-client
-                    ```
+                ```sh
+                yum install -y pmm2-client
+                ```
 
     8. Register PMM Client:
         
-            ```sh
-            pmm-admin config --server-insecure-tls --server-url=https://admin:admin@X.X.X.X:443
-            ```
+        ```sh
+        pmm-admin config --server-insecure-tls --server-url=https://admin:admin@X.X.X.X:443
+        ```
 
     9. Add the PostgreSQL database:
 
@@ -275,41 +265,41 @@ Once PMM is set up, choose the database or the application that you want it to m
         { .power-number}     
         
         === "Debian-based"
-                
+            Install the following with `root` permission: 
+                         
             1. Install [percona-release](https://docs.percona.com/percona-software-repositories/installing.html) tool.  If this is already installed, [update percona-release](https://docs.percona.com/percona-software-repositories/updating.html) to the latest version:
 
-                ```sh
-                wget https://repo.percona.com/apt/percona-release_latest.generic_all.deb
-                dpkg -i percona-release_latest.generic_all.deb
-                ```
+            ```sh
+            wget https://repo.percona.com/apt/percona-release_latest.generic_all.deb
+            dpkg -i percona-release_latest.generic_all.deb
+            ```
 
             2. Install the PMM Client package:
 
-                !!! hint "Root permissions"
-
-                    ```sh
-                    apt update
-                    apt install -y pmm2-client
-                    ```
+            ```sh
+            apt update
+            apt install -y pmm2-client
+            ```
 
         === "Red Hat-based"
+            Install the following with `root` permission: 
+         
+            3. Install [percona-release](https://docs.percona.com/percona-software-repositories/installing.html) tool.  If this is already installed, [update percona-release](https://docs.percona.com/percona-software-repositories/updating.html) to the latest version:
 
-            1. Install [percona-release](https://docs.percona.com/percona-software-repositories/installing.html) tool.  If this is already installed, [update percona-release](https://docs.percona.com/percona-software-repositories/updating.html) to the latest version:
+                ```sh
+                yum install -y https://repo.percona.com/yum/percona-release-latest.noarch.rpm
+                ```
 
-                    ```sh
-                     yum install -y https://repo.percona.com/yum/percona-release-latest.noarch.rpm
-                    ```
+            4. Install the PMM Client package:
 
-            2. Install the PMM Client package:
+                ```sh
+                yum install -y pmm2-client
+                ```
 
-                    ```sh
-                    yum install -y pmm2-client
-                    ```
-
-                    ```sh
-                    apt update
-                    apt install -y pmm2-client
-                    ```
+                ```sh
+                apt update
+                apt install -y pmm2-client
+                ```
 
     4. Register PMM Client:
         
@@ -335,7 +325,8 @@ Once PMM is set up, choose the database or the application that you want it to m
         { .power-number}     
         
         === "Debian-based"
-                
+            Install the following with `root` permission: 
+                         
             1. Install [percona-release](https://docs.percona.com/percona-software-repositories/installing.html) tool.  If this is already installed, [update percona-release](https://docs.percona.com/percona-software-repositories/updating.html) to the latest version:
 
                 ```sh
@@ -345,37 +336,31 @@ Once PMM is set up, choose the database or the application that you want it to m
 
             2. Install the PMM Client package:
 
-                !!! hint "Root permissions"
-
-                    ```sh
-                    apt update
-                    apt install -y pmm2-client
-                    ```
+                ```sh
+                apt update
+                apt install -y pmm2-client
+                ```
 
         === "Red Hat-based"
-
+            Install the following with `root` permission: 
+         
             1. Install [percona-release](https://docs.percona.com/percona-software-repositories/installing.html) tool.  If this is already installed, [update percona-release](https://docs.percona.com/percona-software-repositories/updating.html) to the latest version:
 
-                    ```sh
-                     yum install -y https://repo.percona.com/yum/percona-release-latest.noarch.rpm
-                    ```
+                ```sh
+                yum install -y https://repo.percona.com/yum/percona-release-latest.noarch.rpm
+                ```
 
             2. Install the PMM Client package:
 
-                    ```sh
-                    yum install -y pmm2-client
-                    ```
-
-                    ```sh
-                    apt update
-                    apt install -y pmm2-client
-                    ```
+                ```sh
+                yum install -y pmm2-client
+                ```
 
     3. Register PMM Client:
         
-            ```sh
-            pmm-admin config --server-insecure-tls --server-url=https://admin:admin@X.X.X.X:443
-            ```
+        ```sh
+        pmm-admin config --server-insecure-tls --server-url=https://admin:admin@X.X.X.X:443
+        ```
             
     4. Add the ProxySQL service:
 
@@ -391,11 +376,12 @@ Once PMM is set up, choose the database or the application that you want it to m
 
     1. [Set up an HAproxy instance](https://www.haproxy.com/blog/haproxy-exposes-a-prometheus-metrics-endpoint). 
     2. Add the instance to PMM (default address is <http://localhost:8404/metrics>), and use the `haproxy` alias to enable HAProxy metrics monitoring.
-    2. To optimize server-side resources, install PMM Client via Package Manager on the database node:
+    3. To optimize server-side resources, install PMM Client via Package Manager on the database node:
         { .power-number}     
         
         === "Debian-based"
-                
+            Install the following with `root` permission: 
+                         
             1. Install [percona-release](https://docs.percona.com/percona-software-repositories/installing.html) tool.  If this is already installed, [update percona-release](https://docs.percona.com/percona-software-repositories/updating.html) to the latest version:
 
                 ```sh
@@ -405,39 +391,33 @@ Once PMM is set up, choose the database or the application that you want it to m
 
             2. Install the PMM Client package:
 
-                !!! hint "Root permissions"
-
-                    ```sh
-                    apt update
-                    apt install -y pmm2-client
-                    ```
+                ```sh
+                apt update
+                apt install -y pmm2-client
+                ```
 
         === "Red Hat-based"
-
+            Install the following with `root` permission: 
+         
             1. Install [percona-release](https://docs.percona.com/percona-software-repositories/installing.html) tool.  If this is already installed, [update percona-release](https://docs.percona.com/percona-software-repositories/updating.html) to the latest version:
 
-                    ```sh
-                     yum install -y https://repo.percona.com/yum/percona-release-latest.noarch.rpm
-                    ```
+                ```sh
+                yum install -y https://repo.percona.com/yum/percona-release-latest.noarch.rpm
+                ```
 
             2. Install the PMM Client package:
 
-                    ```sh
-                    yum install -y pmm2-client
-                    ```
+                ```sh
+                yum install -y pmm2-client
+                ```
 
-                    ```sh
-                    apt update
-                    apt install -y pmm2-client
-                    ```
-
-    3. Register PMM Client:
+    4. Register PMM Client:
         
-            ```sh
-            pmm-admin config --server-insecure-tls --server-url=https://admin:admin@X.X.X.X:443
-            ```
+        ```sh
+        pmm-admin config --server-insecure-tls --server-url=https://admin:admin@X.X.X.X:443
+        ```
 
-    4. Run the command below, specifying the `listen-port`` as the port number where HAProxy is running. (This flag is mandatory.)
+    5. Run the command below, specifying the `listen-port`` as the port number where HAProxy is running. (This flag is mandatory.)
 
         ```sh
         pmm-admin add haproxy --listen-port=8404
