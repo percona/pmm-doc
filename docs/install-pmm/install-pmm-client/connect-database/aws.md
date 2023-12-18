@@ -30,9 +30,11 @@ To define a new policy use the IAM page at AWS.
 
 ![!image](../../../_images/aws.iam.png)
 
-1. Select the *Policies* option on the navigation panel and click the *Create policy* button.
+1. Select the **Policies** option on the navigation panel and click the **Create policy** button.
 
-2. On the *Create policy* page, select the JSON tab and replace the existing contents with the following JSON document.
+2. On the **Create policy** page, select the JSON tab and replace the existing contents with the following JSON document.
+
+??? info "JSON"
 
     ```json
     { "Version": "2012-10-17",
@@ -52,7 +54,7 @@ To define a new policy use the IAM page at AWS.
     }
     ```
 
-3. Click *Review policy* and set a name to your policy, such as `AmazonRDSforPMMPolicy`. Then, click the *Create policy* button.
+3. Click **Review policy** and set a name to your policy, such as `AmazonRDSforPMMPolicy`. Then, click the **Create policy** button.
 
     ![!image](../../../_images/aws.iam.create-policy.png)
 
@@ -62,17 +64,17 @@ Policies are attached to existing IAM users or groups. To create a new IAM user,
 
 ![!image](../../../_images/aws.iam-users.1.png)
 
-1. On the *Add user* page, set the user name and select the *Programmatic access* option under *Select AWS access type*. Set a custom password and then proceed to permissions by clicking the *Permissions* button.
+1. On the **Add user** page, set the user name and select the **Programmatic access** option under **Select AWS access type**. Set a custom password and then proceed to permissions by clicking the **Permissions** button.
 
-2. On the *Set permissions* page, add the new user to one or more groups if necessary. Then, click *Review*.
+2. On the **Set permissions** page, add the new user to one or more groups if necessary. Then, click *Review*.
 
-3. On the *Add user* page, click *Create user*.
+3. On the **Add user** page, click **Create user**.
 
 ## Creating an access key for an IAM user
 
-To discover an Amazon RDS DB instance in PMM, you either need to use the access key and secret access key of an existing IAM user or an IAM role. To create an access key for use with PMM, open the IAM console and click *Users* on the navigation pane. Then, select your IAM user.
+To discover an Amazon RDS DB instance in PMM, you either need to use the access key and secret access key of an existing IAM user or an IAM role. To create an access key for use with PMM, open the IAM console and click **Users** on the navigation pane. Then, select your IAM user.
 
-To create the access key, open the *Security credentials* tab and click the *Create access key* button. The system automatically generates a new access key ID and a secret access key that you can provide on the *PMM Add Instance* dashboard to have your Amazon RDS DB instances discovered.
+To create the access key, open the **Security credentials** tab and click the **Create access key** button. The system automatically generates a new access key ID and a secret access key that you can provide on the **PMM Add Instance** dashboard to have your Amazon RDS DB instances discovered.
 
 In case, the PMM Server and Amazon RDS DB instance were created by using the same AWS account, you do not need create the access key ID and secret access key manually. PMM retrieves this information automatically and attempts to discover your Amazon RDS DB instances.
 
@@ -82,15 +84,15 @@ The last step before you are ready to create an Amazon RDS DB instance is to att
 
 First, make sure that the Identity and Access Management page is open and open *Users*. Then, locate and open the IAM user that you plan to use with Amazon RDS DB instances. Complete the following steps, to apply the policy:
 
-1. On the *Permissions* tab, click the *Add permissions* button.
+1. On the **Permissions** tab, click the **Add permissions** button.
 
-2. On the *Add permissions* page, click *Attach existing policies directly*.
+2. On the **Add permissions** page, click **Attach existing policies directly**.
 
-3. Using the *Filter*, locate the policy with the required permissions (such as `AmazonRDSforPMMPolicy`).
+3. Using the **Filter**, locate the policy with the required permissions (such as `AmazonRDSforPMMPolicy`).
 
-4. Select a check-box next to the name of the policy and click *Review*.
+4. Select a check-box next to the name of the policy and click **Review**.
 
-5. The selected policy appears on the *Permissions summary* page. Click *Add permissions*.
+5. The selected policy appears on the **Permissions summary** page. Click **Add permissions**.
 
 The `AmazonRDSforPMMPolicy` is now added to your IAM user.
 
@@ -100,25 +102,25 @@ The `AmazonRDSforPMMPolicy` is now added to your IAM user.
 
 Instead of creating an IAM user you can create an IAM role for a service, to discover Amazon RDS DB instances automatically without the need for access and secret keys. (But this only works if you are running PMM through AWS.)
 
-To create an IAM role open the IAM console and click *Roles* on the navigation pane.
+To create an IAM role open the IAM console and click **Roles** on the navigation pane.
 
-1. Click the *Create role* button.
+1. Click the **Create role** button.
 
-2. Select *AWS service* and select *EC2* for the use case.
+2. Select **AWS service** and select **EC2** for the use case.
 
-3. Click the *Next: Permissions* button.
+3. Click the **Next: Permissions** button.
 
 4. Find the policy created previously and select it.
 
-5. Click the *Next: Tags* button.
+5. Click the **Next: Tags** button.
 
 6. (Optional) Add a metadata tag to the role.
 
-7. Click the *Next: Review* button.
+7. Click the **Next: Review** button.
 
 8. Fill the role name and description.
 
-9. Click the *Create role* button
+9. Click the **Create role** button
 
 After the role is created EC2 instances running PMM will have permissions to discover RDS DB instances.
 
@@ -149,21 +151,21 @@ GRANT SELECT, UPDATE, DELETE, DROP ON performance_schema.* TO 'pmm'@'%';
     It may take longer for PMM to discover Amazon RDS instances in the `creating` state. You must wait a bit longer until PMM discovers these instances.
 
 
-The preferred method of adding an Amazon RDS database instance to PMM is via the  <i class="uil uil-cog"></i> *Configuration* → {{icon.inventory}} *PMM Inventory* → {{icon.addinstance}} *Add Instance* menu option.
+The preferred method of adding an Amazon RDS database instance to PMM is via the  <i class="uil uil-cog"></i> **Configuration** → {{icon.inventory}} **PMM Inventory** → {{icon.addinstance}} **Add Instance** menu option.
 
 This method supports Amazon RDS database instances that use Amazon Aurora, MySQL, or MariaDB engines, as well as any remote PostgreSQL, ProxySQL, MySQL and MongoDB instances.
 
 The following steps are needed to add an Amazon RDS database instance to PMM:
 
-1. In the PMM web interface, go to <i class="uil uil-cog"></i> *Configuration* → {{icon.inventory}} *PMM Inventory* → {{icon.addinstance}} *Add Instance*.
+1. In the PMM web interface, go to <i class="uil uil-cog"></i> **Configuration** → {{icon.inventory}} **PMM Inventory** → {{icon.addinstance}} **Add Instance**.
 
-2. Select *Amazon RDS -- Add a remote instance*.
+2. Select **Amazon RDS -- Add a remote instance**.
 
     ![!image](../../../_images/PMM_Add_Instance_AWS_RDS.png)
 
 3. Enter the access key ID and the secret access key of your IAM user or leave these fields empty if an IAM role was created.
 
-4. Click the *Discover* button for PMM to retrieve the available Amazon RDS
+4. Click the **Discover** button for PMM to retrieve the available Amazon RDS
 instances.
 
     ![!image](../../../_images/PMM_Add_Instance_AWS_RDS_Discover.png)
@@ -174,15 +176,15 @@ instances.
 
     ![!](../../../_images/PMM_Add_Instance_AWS_RDS_Main_Details.png)
 
-    The *Main details* section allows you to specify the DNS hostname of your instance, the service name to use within PMM, the port your service is listening on, and the database user name and password.
+    The **Main details** section allows you to specify the DNS hostname of your instance, the service name to use within PMM, the port your service is listening on, and the database user name and password.
 
     ![!image](../../../_images/PMM_Add_Instance_AWS_RDS_Labels.png)
 
-    The *Labels* section allows you to specify labels for the environment, the AWS region and availability zone to be used, the Replication set and Cluster names and also it allows you to set the list of custom labels in a key:value format.
+    The **Labels** section allows you to specify labels for the environment, the AWS region and availability zone to be used, the Replication set and Cluster names and also it allows you to set the list of custom labels in a key:value format.
 
     ![!](../../../_images/PMM_Add_Instance_AWS_RDS_Additional_Options.png)
 
-    The *Additional options* section contains specific flags which allow you to tune the RDS monitoring. They can allow you to skip connection check, to use TLS for the database connection, not to validate the TLS certificate and the hostname, as well as to disable basic and/or enhanced metrics collection for the RDS instance to reduce costs.
+    The **Additional options** section contains specific flags which allow you to tune the RDS monitoring. They can allow you to skip connection check, to use TLS for the database connection, not to validate the TLS certificate and the hostname, as well as to disable basic and/or enhanced metrics collection for the RDS instance to reduce costs.
 
     Also this section contains a database-specific flag, which would allow Query Analytics for the selected remote database:
 
@@ -198,9 +200,9 @@ instances.
 
 For PostgreSQL, use the same method described above.
 
-1. In the PMM web interface, go to <i class="uil uil-cog"></i> *Configuration* → {{icon.inventory}} *PMM Inventory* → {{icon.addinstance}} *Add Instance*..
+1. In the PMM web interface, go to <i class="uil uil-cog"></i> **Configuration** → {{icon.inventory}} **PMM Inventory** → {{icon.addinstance}} **Add Instance**..
 
-2. Select *Amazon RDS -- Add a remote instance*.
+2. Select **Amazon RDS -- Add a remote instance**.
 
     !!! note alert alert-primary ""
         At the moment of writing this guide, the Add button doesn't mention PostgreSQL but the discovery function already supports it.
