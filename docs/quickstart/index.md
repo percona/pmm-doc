@@ -66,11 +66,12 @@ Once PMM is set up, choose the database or the application that you want it to m
         GRANT SELECT, PROCESS, REPLICATION CLIENT, RELOAD, BACKUP_ADMIN ON *.* TO 'pmm'@'127.0.0.1';
         ```
 
-    2. To optimize server-side resources, install PMM Client via Package Manager on the database node:
-        { .power-number}     
+    2. To optimize server-side resources, install PMM Client via Package Manager on the database node:    
         
         === "Debian-based"
-         Install the following with `root` permission:
+
+            Install the following with `root` permission:
+            { .power-number} 
 
             1. Install the [Percona Release Tool](https://docs.percona.com/percona-software-repositories/installing.html).  If this is already, make sure to update it to the latest version:
 
@@ -87,15 +88,17 @@ Once PMM is set up, choose the database or the application that you want it to m
                 ```
 
         === "Red Hat-based"
-            Install the following with `root` permission:
 
-            3. Install [percona-release](https://docs.percona.com/percona-software-repositories/installing.html) tool.  If this is already installed, [update percona-release](https://docs.percona.com/percona-software-repositories/updating.html) to the latest version.
+            Install the following with `root` permission:
+            { .power-number} 
+
+            1. Install [percona-release](https://docs.percona.com/percona-software-repositories/installing.html) tool.  If this is already installed, [update percona-release](https://docs.percona.com/percona-software-repositories/updating.html) to the latest version.
 
                 ```sh
                 yum install -y https://repo.percona.com/yum/percona-release-latest.noarch.rpm
                 ```
 
-            4. Install the PMM Client package:
+            2. Install the PMM Client package:
 
                 ```sh
                 yum install -y pmm2-client
@@ -159,11 +162,12 @@ Once PMM is set up, choose the database or the application that you want it to m
         CREATE EXTENSION pg_stat_monitor;
         ```
 
-    7. To optimize server-side resources, install PMM Client via Package Manager on the database node:
-        { .power-number}     
+    7. To optimize server-side resources, install PMM Client via Package Manager on the database node:  
         
         === "Debian-based"
+
             Install the following with `root` permission: 
+            { .power-number} 
 
             1. Install [percona-release](https://docs.percona.com/percona-software-repositories/installing.html) tool.  If this is already installed, [update percona-release](https://docs.percona.com/percona-software-repositories/updating.html) to the latest version:
 
@@ -180,15 +184,16 @@ Once PMM is set up, choose the database or the application that you want it to m
                 ```
 
         === "Red Hat-based"
+
             Install the following with `root` permission: 
-         
-            3. Install [percona-release](https://docs.percona.com/percona-software-repositories/installing.html) tool.  If this is already installed, [update percona-release](https://docs.percona.com/percona-software-repositories/updating.html) to the latest version:
+            { .power-number}   
+
+            1. Install [percona-release](https://docs.percona.com/percona-software-repositories/installing.html) tool.  If this is already installed, [update percona-release](https://docs.percona.com/percona-software-repositories/updating.html) to the latest version:
 
                 ```sh
                 yum install -y https://repo.percona.com/yum/percona-release-latest.noarch.rpm
                 ```
-
-            4. Install the PMM Client package:
+            2. Install the PMM Client package:
 
                 ```sh
                 yum install -y pmm2-client
@@ -265,6 +270,7 @@ Once PMM is set up, choose the database or the application that you want it to m
         { .power-number}     
         
         === "Debian-based"
+
             Install the following with `root` permission: 
                          
             1. Install [percona-release](https://docs.percona.com/percona-software-repositories/installing.html) tool.  If this is already installed, [update percona-release](https://docs.percona.com/percona-software-repositories/updating.html) to the latest version:
@@ -282,23 +288,20 @@ Once PMM is set up, choose the database or the application that you want it to m
             ```
 
         === "Red Hat-based"
+
             Install the following with `root` permission: 
-         
-            3. Install [percona-release](https://docs.percona.com/percona-software-repositories/installing.html) tool.  If this is already installed, [update percona-release](https://docs.percona.com/percona-software-repositories/updating.html) to the latest version:
+        { .power-number}     
+
+            1. Install [percona-release](https://docs.percona.com/percona-software-repositories/installing.html) tool.  If this is already installed, [update percona-release](https://docs.percona.com/percona-software-repositories/updating.html) to the latest version:
 
                 ```sh
                 yum install -y https://repo.percona.com/yum/percona-release-latest.noarch.rpm
                 ```
 
-            4. Install the PMM Client package:
+            2. Install the PMM Client package:
 
                 ```sh
                 yum install -y pmm2-client
-                ```
-
-                ```sh
-                apt update
-                apt install -y pmm2-client
                 ```
 
     4. Register PMM Client:
@@ -326,7 +329,8 @@ Once PMM is set up, choose the database or the application that you want it to m
         
         === "Debian-based"
             Install the following with `root` permission: 
-                         
+            { .power-number} 
+
             1. Install [percona-release](https://docs.percona.com/percona-software-repositories/installing.html) tool.  If this is already installed, [update percona-release](https://docs.percona.com/percona-software-repositories/updating.html) to the latest version:
 
                 ```sh
@@ -343,7 +347,8 @@ Once PMM is set up, choose the database or the application that you want it to m
 
         === "Red Hat-based"
             Install the following with `root` permission: 
-         
+            { .power-number}      
+
             1. Install [percona-release](https://docs.percona.com/percona-software-repositories/installing.html) tool.  If this is already installed, [update percona-release](https://docs.percona.com/percona-software-repositories/updating.html) to the latest version:
 
                 ```sh
@@ -376,10 +381,10 @@ Once PMM is set up, choose the database or the application that you want it to m
 
     1. [Set up an HAproxy instance](https://www.haproxy.com/blog/haproxy-exposes-a-prometheus-metrics-endpoint). 
     2. Add the instance to PMM (default address is <http://localhost:8404/metrics>), and use the `haproxy` alias to enable HAProxy metrics monitoring.
-    3. To optimize server-side resources, install PMM Client via Package Manager on the database node:
-        { .power-number}     
+    3. To optimize server-side resources, install PMM Client via Package Manager on the database node: 
         
         === "Debian-based"
+            { .power-number} 
             Install the following with `root` permission: 
                          
             1. Install [percona-release](https://docs.percona.com/percona-software-repositories/installing.html) tool.  If this is already installed, [update percona-release](https://docs.percona.com/percona-software-repositories/updating.html) to the latest version:
@@ -398,6 +403,7 @@ Once PMM is set up, choose the database or the application that you want it to m
 
         === "Red Hat-based"
             Install the following with `root` permission: 
+            { .power-number} 
          
             1. Install [percona-release](https://docs.percona.com/percona-software-repositories/installing.html) tool.  If this is already installed, [update percona-release](https://docs.percona.com/percona-software-repositories/updating.html) to the latest version:
 
