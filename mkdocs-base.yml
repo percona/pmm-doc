@@ -243,54 +243,55 @@ nav:
       - uninstall-pmm/unregister_client.md
 
   - Use:
-    - Monitor: use/index.md
+    - Monitor: 
+      - use/index.md
     - PMM Inventory: 
       - use/dashboard-inventory.md  
-      - Dashboards:
-        - use/dashboards-panels/index.md
-        - Manage dashboards:
-          - ui/dashboards-panels/manage-dashboards/create-folders.md
-          - ui/dashboards-panels/manage-dashboards/manage-folders.md
-        - Export and import dashboards:
-          - ui/dashboards-panels/export-dashboards/export_dashboards.md
-          - ui/dashboards-panels/export-dashboards/import_dashboards.md
-        - Set custom home dashboard:
-          - ui/dashboards-panels/custom_dashboard/set_personal_home.md
-          - ui/dashboards-panels/custom_dashboard/set_custom_team.md
-          - ui/dashboards-panels/custom_dashboard/set_custom_for_org.md
-        - Share dashboards and panels:
-          - ui/dashboards-panels/share-dashboards/share_dashboard.md
-          - ui/dashboards-panels/share-dashboards/publish_snapshot.md
-        - Annotate:
-          - ui/dashboards-panels/annotate/annotate.md              
-        - Available dashboards:
-          - Insight:
-              - details/dashboards/dashboard-home.md
-              - details/dashboards/dashboard-advanced-data-exploration.md
-              - details/dashboards/dashboard-victoriametrics.md
-              - details/dashboards/dashboard-victoriametrics-agents-overview.md
-          - Environments:
-              - details/dashboards/dashboard-env-overview.md
-              - details/dashboards/dashboard-environent-summary.md
-          - Kubernetes:
-              - details/dashboards/kubernetes_cluster_summary.md
-              - details/dashboards/kubernetes_pods_status.md
-              - details/dashboards/kubernetes_volume.md
-          - DBaas:
-              - details/dashboards/dashboard-cluster-summary.md
-          - OS Dashboards:
-              - details/dashboards/dashboard-cpu-utilization-details.md
-              - details/dashboards/dashboard-disk-details.md
-              - details/dashboards/dashboard-network-details.md
-              - details/dashboards/dashboard-memory-details.md
-              - details/dashboards/dashboard-node-temperature-details.md
-              - details/dashboards/dashboard-nodes-compare.md
-              - details/dashboards/dashboard-nodes-overview.md
-              - details/dashboards/dashboard-node-summary.md
-              - details/dashboards/dashboard-numa-details.md
-              - details/dashboards/dashboard-processes-details.md
-          - Prometheus dashboards:
-              - details/dashboards/dashboard-prometheus-exporter-status.md
+    - Dashboards:
+      - use/dashboards-panels/index.md
+      - Manage dashboards:
+        - ui/dashboards-panels/manage-dashboards/create-folders.md
+        - ui/dashboards-panels/manage-dashboards/manage-folders.md
+      - Export and import dashboards:
+        - ui/dashboards-panels/export-dashboards/export_dashboards.md
+        - ui/dashboards-panels/export-dashboards/import_dashboards.md
+      - Set custom home dashboard:
+        - ui/dashboards-panels/custom_dashboard/set_personal_home.md
+        - ui/dashboards-panels/custom_dashboard/set_custom_team.md
+        - ui/dashboards-panels/custom_dashboard/set_custom_for_org.md
+      - Share dashboards and panels:
+        - ui/dashboards-panels/share-dashboards/share_dashboard.md
+        - ui/dashboards-panels/share-dashboards/publish_snapshot.md
+      - Annotate:
+        - ui/dashboards-panels/annotate/annotate.md              
+      - Available dashboards:
+        - Insight:
+            - details/dashboards/dashboard-home.md
+            - details/dashboards/dashboard-advanced-data-exploration.md
+            - details/dashboards/dashboard-victoriametrics.md
+            - details/dashboards/dashboard-victoriametrics-agents-overview.md
+        - Environments:
+            - details/dashboards/dashboard-env-overview.md
+            - details/dashboards/dashboard-environent-summary.md
+        - Kubernetes:
+            - details/dashboards/kubernetes_cluster_summary.md
+            - details/dashboards/kubernetes_pods_status.md
+            - details/dashboards/kubernetes_volume.md
+        - DBaas:
+            - details/dashboards/dashboard-cluster-summary.md
+        - OS Dashboards:
+            - details/dashboards/dashboard-cpu-utilization-details.md
+            - details/dashboards/dashboard-disk-details.md
+            - details/dashboards/dashboard-network-details.md
+            - details/dashboards/dashboard-memory-details.md
+            - details/dashboards/dashboard-node-temperature-details.md
+            - details/dashboards/dashboard-nodes-compare.md
+            - details/dashboards/dashboard-nodes-overview.md
+            - details/dashboards/dashboard-node-summary.md
+            - details/dashboards/dashboard-numa-details.md
+            - details/dashboards/dashboard-processes-details.md
+        - Prometheus dashboards:
+            - details/dashboards/dashboard-prometheus-exporter-status.md
               - details/dashboards/dashboard-prometheus-exporters-overview.md
           - MySQL dashboards:
               - details/dashboards/dashboard-mysql-amazon-aurora-details.md
