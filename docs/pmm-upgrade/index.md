@@ -6,7 +6,7 @@
 
     For example, for a PMM Server version 2.25.0, the PMM Client version should be 2.25.0 or 2.24.0. If the PMM Client version is 2.26.0, PMM might not work as expected.
 
-Find the detailed information on how to upgrade PMM in the following documets:
+Find the detailed information on how to upgrade PMM in the following sections:
 
 * [Upgrade PMM server using the UI](ui_upgrade.md)
 
