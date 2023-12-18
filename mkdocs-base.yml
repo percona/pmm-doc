@@ -204,13 +204,7 @@ nav:
           - install-pmm/install-pmm-server/aws/back_pmm_server.md
           - install-pmm/install-pmm-server/aws/restore_pmm_server.md
           - install-pmm/install-pmm-server/aws/remove_pmm_server.md
-        - DBaaS:
-          - install-pmm/install-pmm-server/dbaas/dbaas.md
-          - install-pmm/install-pmm-server/dbaas/activate_dbaas.md
-          - install-pmm/install-pmm-server/dbaas/create_k8s_cluster.md
-          - install-pmm/install-pmm-server/dbaas/del_cluster.md
-          - install-pmm/install-pmm-server/dbaas/run_as_docker.md
-          - install-pmm/install-pmm-server/dbaas/expose_clusters_for external_clients.md
+
       - Install PMM client:
         - install-pmm/install-pmm-client/index.md
         - install-pmm/install-pmm-client/prerequisites.md
