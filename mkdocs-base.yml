@@ -247,7 +247,7 @@ nav:
     - PMM Inventory: use/dashboard-inventory.md  
     - Dashboards: use/dashboards-panels/index.md
       - Manage dashboards:
-        - ui/dashboards-panels/manage-dashboards/create-folders.md
+        - use/dashboards-panels/manage-dashboards/create-folders.md
         - ui/dashboards-panels/manage-dashboards/manage-folders.md
       - Export and import dashboards:
         - ui/dashboards-panels/export-dashboards/export_dashboards.md
