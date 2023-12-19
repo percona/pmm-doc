@@ -15,13 +15,15 @@ To share a dashboard with as a direct link:
 
 !!! hint alert alert-success "Tip"
        If your current domain is different than the one specified in the Grafana .INI configuration file, PMM will ask you to correct this mismatch before you can generate a short URL:
-    ![!image](../_images/PMM_Common_Panel_Menu_Share.png)
-    To fix this
+    
+    ![!image](../../../_images/PMM_Common_Panel_Menu_Share.png)
+    
     
 ## Share as a PNG file
 
 Rendering images requires the Image Renderer plug-in. If your PMM Admin has not installed this for your PMM instance, you will see the following error message under **Share Panel > Link**.
-    ![!image](../_images/No_Image_Render_Plugin.png)
+    
+    ![!image](../../../_images/No_Image_Render_Plugin.png)
 
 To install the dependencies:
 {.power-number}
