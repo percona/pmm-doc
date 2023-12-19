@@ -441,6 +441,10 @@ nav:
       - troubleshoot/plugin_issues.md
   - Release Notes:
       - Release notes index: release-notes/index.md
+      - "PMM 2.41.0 (Dec 12, 2023)": release-notes/2.41.0.md
+      - "PMM 2.40.1 (Oct 20, 2023)": release-notes/2.40.1.md
+      - "PMM 2.40.0 (Oct 5 2023)": release-notes/2.40.0.md
+      - "PMM 2.39.0 (Aug 14, 2023)": release-notes/2.39.0.md
       - "PMM 2.38.1 (July 13, 2023)": release-notes/2.38.1.md
       - "PMM 2.38.0 (July 3, 2023)": release-notes/2.38.0.md
       - "PMM 2.37.1 (June 5, 2023)": release-notes/2.37.1.md
