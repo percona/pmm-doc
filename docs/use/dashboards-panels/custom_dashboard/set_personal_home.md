@@ -1,5 +1,14 @@
-# About setting custom Home dashboard
+# Set your Personal Home dashboard¶
 
+1. From the main menu, go to  **Dashboards > Browse** and select the dashboard you want to set as your home dashboard.
+2. Click the  star next to the dashboard title to mark it as a favorite.
 
-The home dashboard you set is the dashboard all the users will see after logging in to PMM UI. You can set the home dashboard for a server, an organization, a team, or your user account. 
+![!image](../../_images/PMM_click_to_add_favorite_dashboard.png)
+
+3. From the side menu go to **Configuration > Preferences**. In the Home Dashboard field, select the dashboard that you want to set as your home dashboard.
+
+![!image](../../_images/PMM_set_home_dashboard.png)
+
+4. Click **Save**.
+
 
