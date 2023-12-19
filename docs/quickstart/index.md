@@ -54,7 +54,7 @@ The Easy-install script only runs on Linux-compatible systems. To use it, run th
 
 Once PMM is set up, choose the database or the application that you want it to monitor:
 
-=== "MySQL"
+=== ":simple-mysql: MySQL"
 
     To connect a self-hosted MySQL database:
     { .power-number}
@@ -68,7 +68,7 @@ Once PMM is set up, choose the database or the application that you want it to m
 
     2. To optimize server-side resources, install PMM Client via Package Manager on the database node:    
         
-        === "Debian-based"
+        === ":material-debian: Debian-based"
 
             Install the following with `root` permission:
             { .power-number} 
@@ -87,7 +87,7 @@ Once PMM is set up, choose the database or the application that you want it to m
                 apt install -y pmm2-client
                 ```
 
-        === "Red Hat-based"
+        === ":material-redhat: Red Hat-based"
 
             Install the following with `root` permission:
             { .power-number} 
@@ -122,7 +122,7 @@ Once PMM is set up, choose the database or the application that you want it to m
 
         Additionally, if direct access to the database node isn't available, opt to [Add remote instance via User Interface](../setting-up/client/mysql.html#with-the-user-interface) instead. 
 
-=== "PostgreSQL"
+=== ":simple-postgresql: PostgreSQL"
 
     To connect a PostgreSQL database: 
     { .power-number}
@@ -164,7 +164,7 @@ Once PMM is set up, choose the database or the application that you want it to m
 
     7. To optimize server-side resources, install PMM Client via Package Manager on the database node:  
         
-        === "Debian-based"
+        === ":material-debian: Debian-based"
 
             Install the following with `root` permission: 
             { .power-number} 
@@ -183,7 +183,7 @@ Once PMM is set up, choose the database or the application that you want it to m
                 apt install -y pmm2-client
                 ```
 
-        === "Red Hat-based"
+        === ":material-redhat: Red Hat-based"
 
             Install the following with `root` permission: 
             { .power-number}   
@@ -213,7 +213,7 @@ Once PMM is set up, choose the database or the application that you want it to m
             
     For detailed instructions and advanced installation options, see [Adding a PostgreSQL database](../setting-up/client/postgresql.md).
 
-=== "MongoDB"
+=== ":simple-mongodb: MongoDB"
 
     To connect a MongoDB database:
     { .power-number}
@@ -269,7 +269,7 @@ Once PMM is set up, choose the database or the application that you want it to m
     3. To optimize server-side resources, install PMM Client via Package Manager on the database node:
         { .power-number}     
         
-        === "Debian-based"
+        === ":material-debian: Debian-based"
 
             Install the following with `root` permission: 
                          
@@ -287,7 +287,7 @@ Once PMM is set up, choose the database or the application that you want it to m
             apt install -y pmm2-client
             ```
 
-        === "Red Hat-based"
+        === ":material-redhat: Red Hat-based"
 
             Install the following with `root` permission: 
 
@@ -312,12 +312,12 @@ Once PMM is set up, choose the database or the application that you want it to m
     5. Add the MongoDB database:
 
         ```
-        sudo pmm-admin add mongodb --username=pmm --password=<your_password>
+        pmm-admin add mongodb --username=pmm --password=<your_password>
         ```
    
     For detailed instructions, see [Adding a MongoDB database for monitoring](https://docs.percona.com/percona-monitoring-and-management/setting-up/client/mongodb.html).
 
-=== "ProxySQL"
+=== ":simple-nginxproxymanager: ProxySQL"
     To connect a ProxySQL service:
     { .power-number}
 
@@ -326,7 +326,7 @@ Once PMM is set up, choose the database or the application that you want it to m
     2. To optimize server-side resources, install PMM Client via Package Manager on the database node:
         { .power-number}     
         
-        === "Debian-based"
+        === ":material-debian: Debian-based"
             Install the following with `root` permission: 
             { .power-number} 
 
@@ -344,7 +344,7 @@ Once PMM is set up, choose the database or the application that you want it to m
                 apt install -y pmm2-client
                 ```
 
-        === "Red Hat-based"
+        === ":material-redhat: Red Hat-based"
             Install the following with `root` permission: 
             { .power-number}      
 
@@ -374,7 +374,7 @@ Once PMM is set up, choose the database or the application that you want it to m
 
     For detailed instructions, see [Enable ProxySQL performance metrics monitoring](../setting-up/client/proxysql.md).
 
-=== "HAProxy"
+=== ":material-database: HAProxy"
     To connect an HAProxy service:
     { .power-number}
 
@@ -382,7 +382,7 @@ Once PMM is set up, choose the database or the application that you want it to m
     2. Add the instance to PMM (default address is <http://localhost:8404/metrics>), and use the `haproxy` alias to enable HAProxy metrics monitoring.
     3. To optimize server-side resources, install PMM Client via Package Manager on the database node: 
         
-        === "Debian-based"
+        === ":material-debian: Debian-based"
             { .power-number} 
             Install the following with `root` permission: 
                          
@@ -400,7 +400,7 @@ Once PMM is set up, choose the database or the application that you want it to m
                 apt install -y pmm2-client
                 ```
 
-        === "Red Hat-based"
+        === ":material-redhat: Red Hat-based"
             Install the following with `root` permission: 
             { .power-number} 
          
