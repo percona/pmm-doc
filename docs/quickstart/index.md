@@ -383,9 +383,9 @@ Once PMM is set up, choose the database or the application that you want it to m
     3. To optimize server-side resources, install PMM Client via Package Manager on the database node: 
         
         === ":material-debian: Debian-based"
-            { .power-number} 
             Install the following with `root` permission: 
-                         
+            { .power-number} 
+                                     
             1. Install [percona-release](https://docs.percona.com/percona-software-repositories/installing.html) tool.  If this is already installed, [update percona-release](https://docs.percona.com/percona-software-repositories/updating.html) to the latest version:
 
                 ```sh
