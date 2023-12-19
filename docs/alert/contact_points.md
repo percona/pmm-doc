@@ -21,8 +21,6 @@ To use SMTP with a PMM Docker installation:
 
 1. Create an `.env` file and populate it with your SMTP credentials (and other environment variables) as follows:
 
-??? info ""
-
     ```
     GF_SMTP_ENABLED=true  
     GF_SMTP_HOST=smtp.gmail.com:587

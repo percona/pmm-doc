@@ -3,6 +3,7 @@
 MongoDB backups can only be restored to the same service they were created from.
 
 To restore a backup:
+{.power-number}
 
 1. Go to <i class="uil uil-history"></i> **Backup > All backups** and find the backup that you want to restore.
 2. Click the arrow in the **Actions** column to check all the information for the backup, then click ![](../_images/dots-three-vertical.png) **Restore from backup**.
@@ -15,6 +16,9 @@ This opens the **Restore from backup** dialog, with the **Same service** option 
     
     
 ## Restore to a new cluster manually
+
+To restore to a new cluster manually:
+{.power-number}
 
 1. Install MongoDB and Percona Backup for MongoDB. Pay attention to the versions. To minimize potential incompatibility, use the same versions that were used for taking backups.
    For instructions, see the [PBM install documentation](https://docs.percona.com/percona-backup-mongodb/installation.html).
@@ -126,6 +130,6 @@ This opens the **Restore from backup** dialog, with the **Same service** option 
 
 ### Restoring from a sharded cluster
 
-Backups of sharded clusters is supported starting with PMM 2.38, and PMM handles the backup process end-to-end. However, restoring such artifacts is currenlty possibile only via the CLI, using Percona Backup for MongoDB. 
+Sharded cluster backups are supported starting with PMM 2.38 and PMM handles the backup process end-to-end. However, restoring such artifacts is currently possible only via the CLI, using Percona Backup for MongoDB.
 
 For information on restoring sharded backups, check the [PBM documentation](https://docs.percona.com/percona-backup-mongodb/usage/restore.html)

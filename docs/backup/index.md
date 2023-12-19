@@ -1,10 +1,8 @@
 # Backup and restore
 
 Losing your data can destroy your business. This is why backing up data is critical for all database operations.
-
-Even more important than backing up data, is the ability to restore it in the event of a disaster. PMM enables you to do all this with zero downtime and minimal performance impact.
-
-Currently, PMM provides Backup and Restore functionality to work with:
+Even more important than backing up data, is the ability to restore it in the event of data loss.
+PMM enables you to do all this with zero downtime and minimal performance impact.
 
 - MongoDB (Generally Available)
 - MySQL (in Technical Preview)
@@ -19,6 +17,11 @@ Enable the **Backup Management** option in PMM's Advanced Settings to activate t
 ## Supported setups
 
 For MySQL databases, you can create and restore on-demand and scheduled physical backups. For MongoDB, you can create and restore physical, logical and Point-in-Time-Recovery (PITR) backups, both on-demand and scheduled.
+
+### Sharded MongoDB cluster configurations
+
+PMM 2.38 added support for creating backups of sharded MongoDB clusters. However, the restoring process is not handled end-to-end, and requires you to manually restore the artifacts using the CLI in Percona Backup for MongoDB.
+
 
 ## Start here
 To learn how to create and restore backups, check out subtopics below:

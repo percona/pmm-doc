@@ -5,6 +5,7 @@
 MySQL backups can be restored to the same service it was created from, or to a compatible one. 
 
 To restore a backup:
+{.power-number}
 
 1. Go to <i class="uil uil-history"></i> **Backup > All backups** and find the backup that you want to restore.
 2. Click the three dots ![](../_images/dots-three-vertical.png) in the **Actions** column to check all the information for the backup, then click ![](../_images/dots-three-vertical.png) **Restore from backup**.

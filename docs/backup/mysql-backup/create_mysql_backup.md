@@ -3,6 +3,7 @@
 Before creating a backup, make sure to check the [MySQL backup prerequisites](mysql_prerequisites.md).
 
 To create a backup:
+{.power-number}
 
 1. Go to  <i class="uil uil-history"></i> **Backup > All Backups**.
 2. Click <i class="uil uil-plus-square"></i> **Create Backup**.

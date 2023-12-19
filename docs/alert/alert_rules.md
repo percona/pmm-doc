@@ -1,25 +1,5 @@
+
 # Alert rules
-
-Percona Alerting is powered by Grafana infrastructure. It leverages Grafana's advanced alerting capabilities and provides pre-configured Alert Rule Templates that simplify creating powerful alerting rules.
-
-Depending on the datasources that you want to query, and the complexity of your required evaluation criteria, Percona Alerting enables you to create the following types of alerts:
-
-- **Percona templated alerts**: alerts based on a set of Percona-supplied templates with common events and expressions for alerting.
-If you need custom expressions on which to base your alert rules, you can also create your own templates.
-- **Grafana managed alerts**: alerts that handle complex conditions and can span multiple different data sources like SQL, Prometheus, InfluxDB, etc. These alerts are stored and executed by Grafana.
-<!--- we dont use support these for now so commenting them out
-
-- **Mimir or Loki alerts**: alerts that consist of one single query, written in PromQL or LogQL. The alert rules are stored and executed on the Mimir or Loki ruler and are completely decoupled from the PMM and Grafana runtime.
-- **Mimir or Loki recording rules**: precompute the result of expensive queries and execute alerts faster.
-With Mimir and Loki alert rules, you can run alert expressions closer to your data and at massive scale, managed by Grafana.
-
--->
-
-The Alerting page contains are split into eight tabs: Fired Alerts, Alert Rules, Alert Rule Templates, Contact Points, Notification Policies, Silences, Alert Groups and Admin.
-
-![!](../_images/alerting-page-tabs.png)
-
-## Alert rules
 
 Alert rules describe the circumstances under which you want to be alerted. The evaluation criteria that you define determine whether an alert will fire. 
 
