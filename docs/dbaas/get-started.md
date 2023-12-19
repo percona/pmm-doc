@@ -1,6 +1,51 @@
-# Kubernetes clusters
+# Getting started with DBaaS
 
- ## Add a Kubernetes cluster
+!!! caution alert alert-primary "Do not use for mission-critical workloads"
+    DBaaS feature is deprecated. We encourage you to use [Percona Everest](http://per.co.na/pmm-to-everest) instead. Check our [Migration guide](http://per.co.na/pmm-to-everest-guide).
+
+The DBaaS dashboard is where you add, remove, and operate on Kubernetes and database clusters.
+
+## Activate DBaaS
+
+The DBaaS feature is turned off by default. To turn it on:
+
+1. Go to <i class="uil uil-cog"></i> *Configuration* → <i class="uil uil-setting"></i> *Settings* → *Advanced Settings*.
+
+2. Click the <i class="uil uil-toggle-off"></i> toggle in the *Technical preview features* section of the page.
+
+## Open the DBaaS dashboard
+
+From the left menu, select <i class="uil uil-database"></i> *DBaaS*.
+
+![!](../_images/PMM_DBaaS_Kubernetes_Cluster_Panel.png)
+
+
+
+## Kubernetes clusters
+
+## Add a Kubernetes cluster automatically
+
+!!! note alert alert-primary "Availability"
+    Automatic addition of k8s cluster in PMM is available starting with PMM 2.34.0.
+
+In order to simplify DBaaS, k8s clusters can now be automatically added to PMM as follows:
+
+**Prerequisites:** Helm Chart/Manifest installed
+
+1. Use [Helm](https://github.com/helm/helm) to install PMM server on Kubernetes clusters. For more information, see [documentation](../setting-up/server/helm.md).
+    ```sh
+    helm install pmm --set service.type="LoadBalancer" --set image.repository=percona/pmm-server --set image.tag=2.34.0 --set secret.pmm_password=admin percona/pmm
+    ```
+
+2. Log in to PMM.
+
+3. [Enable PMM](get-started.md#activate-dbaas) in DBaaS.
+
+4. You should see the default k8s cluster added in DBaaS.
+
+
+
+## Add a Kubernetes cluster
 
 !!! caution alert alert-warning "Caution"
     Ensure that you set PMM *Public Address* under <i class="uil uil-cog"></i> *Configuration* → <i class="uil uil-setting"></i> *Settings* → *Advanced Settings* before creating a Kubernetes cluster. Otherwise, PMM would **not** monitor the Kubernetes cluster along with the associated database clusters.
@@ -40,7 +85,6 @@
 4. A message will momentarily display telling you whether the registration was successful or not.
 
     ![!](../_images/PMM_DBaaS_Kubernetes_Cluster_Added.png)
-
 
 ## Unregister a Kubernetes cluster
 
@@ -97,3 +141,4 @@ To update the cluster:
 3. Confirm the action by clicking *Update*, or abandon by clicking *Cancel*.
 
     ![!](../_images/PMM_DBaaS_Kubernetes_Cluster_Operator_Update_Confirmation.png)
+
