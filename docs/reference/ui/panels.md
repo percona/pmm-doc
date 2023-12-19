@@ -8,7 +8,7 @@ Some panels have an information icon <i class="fa fa-info"></i> in the top left 
 
 At the top of each panel and to the right of the panel name is the _panel menu_.
 
-![!image](../_images/PMM_Common_Panel_Menu.jpg)
+![!image](../../_images/PMM_Common_Panel_Menu.jpg)
 
 !!! hint alert alert-success "Tip"
       The menu is hidden until you mouse over it. Look for the <i class="uil uil-angle-down"></i> symbol in the title bar of a panel.

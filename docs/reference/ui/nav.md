@@ -4,15 +4,16 @@
 
 There are two ways to open the dashboard search page. (Each takes you to the same search screen.)
 
+
 - Click the <i class="uil uil-search"></i> icon in the main menu.
 
 - Click the dashboard name in the navigation bar (top row, to the right of the <i class="uil uil-apps"></i> icon). (To search within the current folder, click the folder name instead of the dashboard name.)
 
-   ![!Search dashboards by name](../_images/PMM_Home_Dashboard_Search.jpg)
+   ![!Search dashboards by name](../../_images/PMM_Home_Dashboard_Search.jpg)
 
 1. Click _Search dashboards by name_ and begin typing any part of the dashboard name (in this example, "_Instances_").
 
-      ![!Search dashboards by name](../_images/PMM_Home_Dashboard_Search_String.jpg)
+      ![!Search dashboards by name](../../_images/PMM_Home_Dashboard_Search_String.jpg)
 
 2. Click one of the search results to go to that dashboard. Change the search text to refine the list.
 

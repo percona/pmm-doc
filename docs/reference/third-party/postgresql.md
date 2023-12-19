@@ -30,17 +30,21 @@ To use grafana with external PostgreSQL add `GF_DATABASE_*` environment variable
 **Example**
 
 To use PostgreSQL as an external database:
+{.power-number}
 
 1. Generate all necessary SSL certificates.
 2. Deploy PMM Server with certificates under read-only permissions and Grafana user and Grafana group.
-```
-/pmm-server-certificates# la -la
-drwxr-xr-x 1 root    root    4096 Apr  5 12:43 .
-drwxr-xr-x 1 root    root    4096 Apr  5 12:43 ..
--rw------- 1 grafana grafana 1391 Apr  5 12:38 certificate_authority.crt
--rw------- 1 grafana grafana 1257 Apr  5 12:38 pmm_server.crt
--rw------- 1 grafana grafana 1708 Apr  5 12:38 pmm_server.key
-```
+
+??? info ""
+
+    ```
+    /pmm-server-certificates# la -la
+    drwxr-xr-x 1 root    root    4096 Apr  5 12:43 .
+    drwxr-xr-x 1 root    root    4096 Apr  5 12:43 ..
+    -rw------- 1 grafana grafana 1391 Apr  5 12:38 certificate_authority.crt
+    -rw------- 1 grafana grafana 1257 Apr  5 12:38 pmm_server.crt
+    -rw------- 1 grafana grafana 1708 Apr  5 12:38 pmm_server.key
+    ```
 3. Attach `pg_hba.conf` and certificates to the PostgreSQL image.
 ```
 /external-postgres-configuration# cat pg_hba.conf 
