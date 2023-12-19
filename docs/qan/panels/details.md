@@ -1,11 +1,11 @@
 # Details Panel
 
-- Selecting an item in the Overview panel opens the *Details panel* with a [Details Tab](#details-tab).
-- If the dimension is *Query*, the panel also contains the [Examples Tab](#examples-tab), [Explain Tab](#explain-tab), and [Tables Tab](#tables-tab).
+- Selecting an item in the Overview panel opens the **Details panel** with a [Details Tab](#details-tab).
+- If the dimension is **Query**, the panel also contains the [Examples Tab](#examples-tab), [Explain Tab](#explain-tab), and [Tables Tab](#tables-tab).
 
 ## Details Tab
 
-The *Details* tab contains a *Query time distribution* bar (only for MySQL databases) and a set of *Metrics* in collapsible subpanels.
+The **Details** tab contains a **Query time distribution** bar (only for MySQL databases) and a set of **Metrics** in collapsible subpanels.
 
 ![!image](../../_images/PMM_Query_Analytics_Tabs_Details.jpg)
 
@@ -20,12 +20,12 @@ The *Details* tab contains a *Query time distribution* bar (only for MySQL datab
     - `innodb_rec_lock_wait`: Time the query waited for row locks.
     - `other`: Remaining uncategorized query time.
 
-- *Metrics* is a table with headings:
+- **Metrics** is a table with headings:
 
-    - *Metric*: The Metric name, with a question-mark tool-tip that reveals a description of the metric on mouse-over;
-    - *Rate/Second*: A sparkline chart of real-time values per unit time;
-    - *Sum*: A summation of the metric for the selected query, and the percentage of the total;
-    - *Per Query Stats*: The value of the metric per query.
+    - **Metric**: The Metric name, with a question-mark tool-tip that reveals a description of the metric on mouse-over;
+    - **Rate/Second**: A sparkline chart of real-time values per unit time;
+    - **Sum**: A summation of the metric for the selected query, and the percentage of the total;
+    - **Per Query Stats**: The value of the metric per query.
 
 - Each row in the table is a metric. The contents depends on the chosen dimension.
 
@@ -38,13 +38,14 @@ Other useful metrics (when using *pg_stat_monitor*) to monitor PostgreSQL Server
 
 
 Here is picture of *histogram* in graph:
+
 ![!image](../../_images/PMM_Query_Analytics_Tabs_Details_Histogram.png)
 
 ## Examples Tab
 
-(For *Query* dimension.)
+(For **Query** dimension.)
 
-The *Examples* tab shows an example of the selected query’s fingerprint or table element.
+The **Examples** tab shows an example of the selected query’s fingerprint or table element.
 
 ![!image](../../_images/PMM_Query_Analytics_Tabs_Examples.jpg)
 
@@ -53,9 +54,9 @@ The *Examples* tab shows an example of the selected query’s fingerprint or tab
 
 ## Explain Tab
 
-(For *Query* dimension.)
+(For **Query** dimension.)
 
-The *Explain* tab shows the `explain` output for the selected query, in Classic or JSON formats.
+The **Explain** tab shows the `explain` output for the selected query, in Classic or JSON formats.
 
 - MySQL: Classic and JSON.
 - MongoDB: JSON only.
@@ -87,17 +88,17 @@ You will get result like in previous PMM versions. This method of `explain` prev
 
 ## Tables Tab
 
-(For *Query* dimension.)
+(For **Query** dimension.)
 
-The *Tables* tab shows information on the tables and indexes involved in the selected query.
+The **Tables** tab shows information on the tables and indexes involved in the selected query.
 
 ![!image](../../_images/PMM_Query_Analytics_Tabs_Tables.jpg)
 
 ## Plan Tab
 
-(For *Query* dimension.)
+(For **Query** dimension.)
 
-The *Plan* tab shows the plan for PostgreSQL queries (only available when using *pg_stat_monitor*).
+The **Plan** tab shows the plan for PostgreSQL queries (only available when using *pg_stat_monitor*).
 
 ![!image](../../_images/PMM_Query_Analytics_Tabs_Plan.png)
 

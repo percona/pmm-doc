@@ -2,11 +2,11 @@
 
 ![!image](../../_images/PMM_Query_Analytics_Panels_Filters.jpg)
 
-- The *Filter* panel on the left hand side of the dashboard lists the filters grouped by category. It also shows the percentage of the main metrics (explained below). If you select a different metric, the percentages on the left panel will change as per this metric. When you select a metric, it reduces the overview list as per the matching filter.
-- The first five of each category are shown. If there are more, the list is expanded by clicking *Show all* beside the category name, and collapsed again with *Show top 5*.
+- The **Filter** panel on the left hand side of the dashboard lists the filters grouped by category. It also shows the percentage of the main metrics (explained below). If you select a different metric, the percentages on the left panel will change as per this metric. When you select a metric, it reduces the overview list as per the matching filter.
+- The first five of each category are shown. If there are more, the list is expanded by clicking **Show all** beside the category name, and collapsed again with **Show top 5**.
 - Applying a filter may make other filters inapplicable. These become grayed out and inactive.
 - Click the chart symbol <i class="uil uil-graph-bar"></i> to navigate directly to an item's associated dashboard.
-- Separately, the global *Time range* setting filters results by time, either your choice of *Absolute time range*, or one of the predefined *Relative time ranges*.
+- Separately, the global **Time range** setting filters results by time, either your choice of **Absolute time range**, or one of the predefined **Relative time ranges**.
 
 ![!image](../../_images/PMM_Query_Analytics_Time_Range.jpg)
 
@@ -25,7 +25,7 @@ Starting with PMM 2.38.0, you can filter queries by custom filter groups based o
 
 **Example**
 
-![!image](../_images/PMM_QAN_Custom_Filter.png)
+![!image](../../_images/PMM_QAN_Custom_Filter.png)
 
 In the image above we have tagged queries running databases on Windows using the following comment: 
 
@@ -61,7 +61,7 @@ In the output, you can see another custom group in the `OperationSystem` filter.
 
 - *UI*: While adding a service through the UI you will see new checkbox to `enable/disable` comments parsing for current service.
 
-    ![!image](../_images/PMM_QAN_Parsing.png)
+    ![!image](../../_images/PMM_QAN_Parsing.png)
 
 !!! note alert alert-primary "MySQL CLI"
     - If you are using official MySQL CLI to trigger queries, start mysql with `--comments` flag. Otherwise comments will not be parsed.
