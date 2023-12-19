@@ -11,7 +11,7 @@
     ---
 
 !!! caution alert alert-warning "Important"
-    You must have a [backup](#backup) to restore from.
+    You must have a [backup](backup_container.md) to restore from.
 
 To restore the container:
 {.power-number}
