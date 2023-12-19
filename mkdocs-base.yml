@@ -252,9 +252,6 @@ nav:
         - Manage dashboards:
           - use/dashboards-panels/manage-dashboards/create-folders.md
           - use/dashboards-panels/manage-dashboards/manage-folders.md
-        - Export and import dashboards:
-          - use/dashboards-panels/export-dashboards/export_dashboards.md
-          - use/dashboards-panels/export-dashboards/import_dashboards.md
         - Set custom home dashboard:
           - use/dashboards-panels/custom_dashboard/set_personal_home.md
           - use/dashboards-panels/custom_dashboard/set_custom_team.md
