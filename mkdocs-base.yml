@@ -252,10 +252,12 @@ nav:
         - Manage dashboards:
           - use/dashboards-panels/manage-dashboards/create-folders.md
           - use/dashboards-panels/manage-dashboards/manage-folders.md
-        - Set custom home dashboard: 
-          - use/dashboards-panels/custom_dashboard/set_personal_home.md
+        - Set custom home dashboard:
+          - use/dashboards-panels/custom_dashboard/index.md
           - use/dashboards-panels/custom_dashboard/set_custom_team.md
           - use/dashboards-panels/custom_dashboard/set_custom_for_org.md
+          - use/dashboards-panels/custom_dashboard/set_personal_home.md
+
         - Share dashboards and panels:
           - use/dashboards-panels/share-dashboards/share_dashboard.md
           - use/dashboards-panels/share-dashboards/publish_snapshot.md
