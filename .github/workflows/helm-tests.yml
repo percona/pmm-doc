@@ -6,7 +6,7 @@ on:
       - main
   pull_request:
     paths:
-      - 'docs/setting-up/server/helm.md'
+      - 'docs/install-pmm/install-pmm-server/baremetal/helm.md'
 
   workflow_dispatch:
 
