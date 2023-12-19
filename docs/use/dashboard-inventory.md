@@ -132,6 +132,8 @@ By expanding the entry from the options column, you can check the node labels an
 
 Starting with PMM 2.38.0, you can see the number of agents running on any particular node. When you click on any node, the UI navigates to the view of agents, which is filtered to display only agents related to that specific node. 
 
+Furthermore, starting with PMM 2.40.0, you can see the service running on that specific node when you click on the link in the Services column.
+
 To see the details of the agents running, do the following:
 {.power-number}
 
