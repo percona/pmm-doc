@@ -339,13 +339,13 @@ nav:
       - use/metrics/index.md
       - use/metrics/extend_metrics.md
     - Query Analytics:
-      - qan/index.md
-      - qan/qan_mongo.md
-      - qan/share_link.md
-      - Panels on QAN dashboard:
-        - qan/panels/overview.md
-        - qan/panels/filters.md
-        - qan/panels/details.md
+      - use/qan/index.md
+      - use/qan/qan_mongo.md
+      - use/qan/share_link.md
+      - use/Panels on QAN dashboard:
+        - use/qan/panels/overview.md
+        - use/qan/panels/filters.md
+        - use/qan/panels/details.md
     - Advisors: advisors/advisors.md
 
     - Percona Alerting:

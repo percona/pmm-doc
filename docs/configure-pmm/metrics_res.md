@@ -2,7 +2,7 @@
 
 Metrics are collected at three intervals representing low, medium and high resolutions.
 
-The *Metrics Resolution* settings tab contains a radio button with three fixed presets (*Rare*, *Standard* and *Frequent*) and one editable custom preset (*Custom*).
+The **Metrics Resolution** settings tab contains a radio button with three fixed presets (*Rare*, *Standard* and *Frequent*) and one editable custom preset (*Custom*).
 
 ![!image](../_images/PMM_Settings_Metrics_Resolution.jpg)
 

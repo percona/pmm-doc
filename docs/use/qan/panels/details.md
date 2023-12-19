@@ -9,7 +9,7 @@ The **Details** tab contains a **Query time distribution** bar (only for MySQL d
 
 ![!image](../../_images/PMM_Query_Analytics_Tabs_Details.jpg)
 
-- The *Query time distribution* bar shows a query’s total time made up of colored segments, each segment representing the proportion of time spent on a named activity.
+- The **Query time distribution** bar shows a query’s total time made up of colored segments, each segment representing the proportion of time spent on a named activity.
 
     - `query_time`: Statement execution time.
     - `lock_time`: Time to acquire locks.
@@ -31,7 +31,7 @@ The **Details** tab contains a **Query time distribution** bar (only for MySQL d
 
 For PostgreSQL queries (when using `pg_stat_monitor`) the top query will also be shown in the details section if the query was called by an outer query.
 
-![!image](../../_images/PMM_Query_Analytics_Tabs_Details_TopQuery.png)
+![!image](../../../_images/PMM_Query_Analytics_Tabs_Details_TopQuery.png)
 
 Other useful metrics (when using *pg_stat_monitor*) to monitor PostgreSQL Server performance are [Histograms](https://github.com/percona/pg_stat_monitor/blob/master/docs/USER_GUIDE.md#histogram). 
 *Histograms* provide more explicit information about number of queries for fingerprint (`queryid`). Ranges are from 0 seconds up to 100 seconds.  
@@ -39,7 +39,7 @@ Other useful metrics (when using *pg_stat_monitor*) to monitor PostgreSQL Server
 
 Here is picture of *histogram* in graph:
 
-![!image](../../_images/PMM_Query_Analytics_Tabs_Details_Histogram.png)
+![!image](../../../_images/PMM_Query_Analytics_Tabs_Details_Histogram.png)
 
 ## Examples Tab
 
@@ -47,7 +47,7 @@ Here is picture of *histogram* in graph:
 
 The **Examples** tab shows an example of the selected query’s fingerprint or table element.
 
-![!image](../../_images/PMM_Query_Analytics_Tabs_Examples.jpg)
+![!image](../../../_images/PMM_Query_Analytics_Tabs_Examples.jpg)
 
 !!! note alert alert-primary ""
     Query example and fingerprint can be truncated to 1024 long to reduce space usage. In this case, the query explains section will not work.
@@ -65,11 +65,11 @@ The **Explain** tab shows the `explain` output for the selected query, in Classi
 Starting with PMM 2.33.0, for MySQL, the *Explain* tab is supported without the *Examples* enabled. If a query in the *Explain* tab contains sensitive data, placeholders will replace them.
 Before you can run Explain, you must specify the values for these placeholders. This image illustrates the query with placeholders.
 
-![!image](../../_images/PMM_Query_Analytics_Tabs_Explain_With_Placeholders.png)
+![!image](../../../_images/PMM_Query_Analytics_Tabs_Explain_With_Placeholders.png)
 
 Below is an illustration of the same query using values instead of placeholders.
 
-![!image](../../_images/PMM_Query_Analytics_Tabs_Explain_With_Values.png)
+![!image](../../../_images/PMM_Query_Analytics_Tabs_Explain_With_Values.png)
 
 The image shown above illustrates a query with two placeholders. Therefore, you must enter the correct values in both fields. After filling in these values, click *Explain* to get the results like in the previous PMM versions without data leaks.
 You will get result like in previous PMM versions. This method of `explain` prevents data leak.
@@ -84,7 +84,7 @@ You will get result like in previous PMM versions. This method of `explain` prev
     db.grantPrivilegesToRole( "explainRole", [ { resource: { db: "", collection: "" }, actions: [ "update" ] } ])
     ```
 
-![!image](../../_images/PMM_Query_Analytics_Tabs_Explain.jpg)
+![!image](../../../_images/PMM_Query_Analytics_Tabs_Explain.jpg)
 
 ## Tables Tab
 
@@ -92,7 +92,7 @@ You will get result like in previous PMM versions. This method of `explain` prev
 
 The **Tables** tab shows information on the tables and indexes involved in the selected query.
 
-![!image](../../_images/PMM_Query_Analytics_Tabs_Tables.jpg)
+![!image](../../../_images/PMM_Query_Analytics_Tabs_Tables.jpg)
 
 ## Plan Tab
 
@@ -100,5 +100,5 @@ The **Tables** tab shows information on the tables and indexes involved in the s
 
 The **Plan** tab shows the plan for PostgreSQL queries (only available when using *pg_stat_monitor*).
 
-![!image](../../_images/PMM_Query_Analytics_Tabs_Plan.png)
+![!image](../../../_images/PMM_Query_Analytics_Tabs_Plan.png)
 
