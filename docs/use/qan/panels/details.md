@@ -7,7 +7,7 @@
 
 The **Details** tab contains a **Query time distribution** bar (only for MySQL databases) and a set of **Metrics** in collapsible subpanels.
 
-![!image](../../_images/PMM_Query_Analytics_Tabs_Details.jpg)
+![!image](../../../_images/PMM_Query_Analytics_Tabs_Details.jpg)
 
 - The **Query time distribution** bar shows a query’s total time made up of colored segments, each segment representing the proportion of time spent on a named activity.
 

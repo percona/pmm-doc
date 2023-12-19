@@ -1,4 +1,7 @@
 # About PMM administration
 
-!!! caution alert alert-warning "Important"
-    The content for this topic is yet to be developed.
+Percona Monitoring and Management (PMM) administration involves  crucial tasks, including the following:
+
+- User management
+- Access control
+- Security

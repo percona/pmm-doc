@@ -10,13 +10,13 @@ You can edit users by changing the information or settings for an individual use
 
 You can grant or revoke admin access to a user as follows:
 
-1. On the *Users* tab, click the user account you want to edit.
+1. On the **Users** tab, click the user account you want to edit.
 
 2. To grant or revoke the privileges, click the user. User information dialog box opens.
 
-3. In the *Permissions* section, click *Change* and then select *Yes/No*, depending on whether you want to provide admin access or not.
+3. In the **Permissions** section, click **Change** and then select **Yes/No**, depending on whether you want to provide admin access or not.
 
-4. Click *Change*.
+4. Click **Change**.
 
 !!! caution alert alert-warning "Important"
     After connecting your PMM instance to the Percona Platform, when you log in using your Percona account, you will be granted the *Viewer* access. For *Admin* access, log in to PMM as an admin, and change the permissions for this user.
@@ -26,17 +26,17 @@ You can grant or revoke admin access to a user as follows:
 You can change the organization role assigned to your user account.
 
 
-![!image](../_images/PMM-change-role.png)
+![!image](../../_images/PMM-change-role.png)
 
 To change the role:
 
-1. On the *Users* tab, click the user for whom you want to change the role.
+1. On the **Users** tab, click the user for whom you want to change the role.
 
-2. In the *Organisations* section, click *Change role*.
+2. In the **Organisations** section, click **Change role**.
 
-3. Select the role from the drop-down and click *save*.
+3. Select the role from the drop-down and click **save**.
 
-The following are the privileges for the various roles:
+The following are the privileges for the various *roles*:
 
 - Admin - Managing data sources, teams, and users within an organization.
 

@@ -8,7 +8,7 @@ Access control in PMM allows you to manage who has access to individual Promethe
 
 The following topics are covered as part of access control:
 
-- [Configure access control](configure_access_roles.md)
-- [Labels for access control](lbac.md)
-- [Create access roles](access_roles.md)
-- [Use case](use_case.md)
+- [Configure access control](config_access_cntrl.md)
+- [Labels for access control](labels.md)
+- [Create access roles](create_roles.md)
+- [Use case](usecase.md)

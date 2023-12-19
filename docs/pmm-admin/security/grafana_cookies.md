@@ -1,6 +1,7 @@
 # Grafana HTTPS secure cookies
 
 To enable:
+{.power-number}
 
 1. Start a shell within the Docker container.
 

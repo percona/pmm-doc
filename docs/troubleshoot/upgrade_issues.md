@@ -4,6 +4,7 @@
 
 
 If the PMM server wasn't updated correctly, or if you have concerns about the release, you can force the update process in 2 ways:
+{.power-number}
 
 1. From the UI - Home panel: click the Alt key on the reload icon in the Update panel to make the Update Button visible even if you are on the same version as available for update. Pressing this button will force the system to rerun the update so that any broken or not installed components can be installed. In this case, you'll go through the usual update process with update logs and successful messages at the end.
 
@@ -52,5 +53,19 @@ While PMM is being upgraded, log in to the PMM server and run the following comm
 ```
 
 
+## Admin user cannot access PMM after upgrading
+
+After upgrading PMM from version 2.39.0 to 2.40.0 (not el7) using Docker, the `admin` user cannot access the PMM UI.
+
+**Solution**: To fix the problem and gain back admin access to the PMM interface execute the following:
+
+```sh
+# psql -U grafana
+grafana=> update "user" set id='1' where login='admin';
+UPDATE 1
+grafana=> \q
+
+# grafana cli --homepath=/usr/share/grafana --config=/etc/grafana/grafana.ini admin reset-admin-password <PASS>
+``` 
 
 
