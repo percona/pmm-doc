@@ -4,7 +4,7 @@ The **Inventory** dashboard is a high-level overview of all objects registered i
 
 To check your inventory list, go to <i class="uil uil-cog"></i> **Configuration** > **Inventory**.
 
-![!image](../../_images/Inventory.png)
+![!image](../../../_images/Inventory.png)
 
 Inventory objects form a hierarchy with Node at the top, then Service and Agents assigned to a Node. This information is detailed in the two tabs available on this page.
 
@@ -18,7 +18,7 @@ You can check Query Analytics information and the Service Overview Dashboard for
 
 From here you can also check additional information about the service, by clicking on the <image src="../../_images/arrow-downward.ico" width="15px" aria-label="downward arrow"/> icon. This expands the service entry to show reference information like service labels and IDs.
 
-![!image](../../_images/PMM_Inventory_Service_Selection.png)
+![!image](../../../_images/PMM_Inventory_Service_Selection.png)
 
 Each instance of a service gets a `service_type` attribute so one can clearly tell what type of database it is, for instance: `mysql`, `postgresql`, `mongodb`, etc. Every service is related to a certain node via its `node_id` attribute. This feature allows to support multiple instances on a single node, with different service names, e.g. `mysql1-3306`, and `mysql1-3307`.
 
@@ -43,24 +43,27 @@ By expanding the entry from the options column, you can check the node labels an
 Starting with PMM 2.38.0, you can see the number of agents running on any particular node. When you click on any node, the UI navigates to the view of agents, which is filtered to display only agents related to that specific node. 
 
 To see the details of the agents running, do the following:
+{.power-number}
 
 1. On the **Nodes** tab, under the **Monitoring** column, click **OK** or **Failed** depending on the status of the node that you have selected. A page that provides the user with crucial information regarding the total number of agents deployed on that node is displayed.
-     ![!image](../../_images/PMM_Inventory_Node_Selection.png)
+     ![!image](../../../_images/PMM_Inventory_Node_Selection.png)
 
 2. Click on the <image src="../../_images/arrow-downward.ico" width="15px" aria-label="downward arrow"/> icon under the **Options** column to view the properties of a specific agent.
 
 3.  On the **Nodes** tab, under the **Options** column, click on the <image src="../../_images/arrow-downward.ico" width="15px" aria-label="downward arrow"/> icon for the selected node to check the properties and the current health status of an agent.       
-     ![!image](../../_images/PMM_Inventory_Node_Agent_Properties.png)
+     ![!image](../../../_images/PMM_Inventory_Node_Agent_Properties.png)
 
 
 ## Removing items from the inventory
 
 To remove items from the inventory:
+{.power-number}
 
 1. Go to <i class="uil uil-cog"></i> **Configuration** > {{icon.inventory}} **Inventory**.
 
 2. In the first column, select the items to be removed.
-        ![!image](../../_images/PMM_Inventory_Item_Selection.png)
+        ![!image](../../.._images/PMM_Inventory_Item_Selection.png)
+
 3. Click **Delete** and confirm the removal.
 
 
