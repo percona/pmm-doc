@@ -4,7 +4,7 @@ The **Inventory** dashboard is a high-level overview of all objects registered i
 
 To check your inventory list, go to <i class="uil uil-cog"></i> **Configuration** > **Inventory**.
 
-![!image](../../../_images/Inventory.png)
+![!image](../../_images/Inventory.png)
 
 Inventory objects form a hierarchy with Node at the top, then Service and Agents assigned to a Node. This information is detailed in the two tabs available on this page.
 
@@ -18,7 +18,7 @@ You can check Query Analytics information and the Service Overview Dashboard for
 
 From here you can also check additional information about the service, by clicking on the <image src="../../_images/arrow-downward.ico" width="15px" aria-label="downward arrow"/> icon. This expands the service entry to show reference information like service labels and IDs.
 
-![!image](../../../_images/PMM_Inventory_Service_Selection.png)
+![!image](../../_images/PMM_Inventory_Service_Selection.png)
 
 Each instance of a service gets a `service_type` attribute so one can clearly tell what type of database it is, for instance: `mysql`, `postgresql`, `mongodb`, etc. Every service is related to a certain node via its `node_id` attribute. This feature allows to support multiple instances on a single node, with different service names, e.g. `mysql1-3306`, and `mysql1-3307`.
 
