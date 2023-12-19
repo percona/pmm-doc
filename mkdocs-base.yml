@@ -250,20 +250,20 @@ nav:
       - Dashboards:
         - use/dashboards-panels/index.md
         - Manage dashboards:
-          - ui/dashboards-panels/manage-dashboards/create-folders.md
-          - ui/dashboards-panels/manage-dashboards/manage-folders.md
+          - use/dashboards-panels/manage-dashboards/create-folders.md
+          - use/dashboards-panels/manage-dashboards/manage-folders.md
         - Export and import dashboards:
-          - ui/dashboards-panels/export-dashboards/export_dashboards.md
-          - ui/dashboards-panels/export-dashboards/import_dashboards.md
+          - use/dashboards-panels/export-dashboards/export_dashboards.md
+          - use/dashboards-panels/export-dashboards/import_dashboards.md
         - Set custom home dashboard:
-          - ui/dashboards-panels/custom_dashboard/set_personal_home.md
-          - ui/dashboards-panels/custom_dashboard/set_custom_team.md
-          - ui/dashboards-panels/custom_dashboard/set_custom_for_org.md
+          - use/dashboards-panels/custom_dashboard/set_personal_home.md
+          - use/dashboards-panels/custom_dashboard/set_custom_team.md
+          - use/dashboards-panels/custom_dashboard/set_custom_for_org.md
         - Share dashboards and panels:
-          - ui/dashboards-panels/share-dashboards/share_dashboard.md
-          - ui/dashboards-panels/share-dashboards/publish_snapshot.md
+          - use/dashboards-panels/share-dashboards/share_dashboard.md
+          - use/dashboards-panels/share-dashboards/publish_snapshot.md
         - Annotate:
-          - ui/dashboards-panels/annotate/annotate.md              
+          - use/dashboards-panels/annotate/annotate.md              
         - Available dashboards:
           - Insight:
               - details/dashboards/dashboard-home.md
