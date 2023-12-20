@@ -133,6 +133,9 @@ You can set profiling:
 
 ### Set profiling in the configuration file
 
+To set profiling in the configuration file:
+{.power-number}
+
 1. Edit the configuration file (usually `/etc/mongod.conf`).
 
 2. Create or add this to the `operationProfiling` section. ([Read more][MONGODB_CONFIG_OP_PROF].)
@@ -185,6 +188,9 @@ db.setProfilingLevel(2, {slowms: 0})
 When you have configured your database server, you can add a MongoDB service with the user interface or on the command line.
 
 ### With the user interface
+
+To add a service with the UI:
+{.power-number}
 
 1. Select <i class="uil uil-cog"></i> *Configuration* → {{icon.inventory}} *PMM Inventory* → {{icon.addinstance}} *Add Instance*.
 
@@ -256,6 +262,9 @@ where:
 
 ### With the user interface
 
+To check the servie with the UI:
+{.power-number}
+
 1. Select <i class="uil uil-cog"></i> **Configuration** → {{icon.inventory}} **Inventory**.
 
 2. Select **MongoDB -- Add a remote instance**.
@@ -276,10 +285,16 @@ pmm-admin inventory list services --service-type=mongodb
 
 ### Check data
 
+To check the data:
+{.power-number}
+
 1. Open the **MongoDB Instances Overview** dashboard.
 2. Set the **Service Name** to the newly-added service.
 
 #### Query Analytics
+
+To see the query analytics for the service:
+{.power-number}
 
 1. Open **PMM Query Analytics**.
 2. In the **Filters** panel:
@@ -289,6 +304,9 @@ pmm-admin inventory list services --service-type=mongodb
 ## Remove service
 
 ### With the user interface
+
+To remove the service from the UI:
+{.power-number}
 
 1. Select <i class="uil uil-cog"></i> **Configuration** → {{icon.inventory}} **Inventory**.
 2. In the **Services** tab, verify the **Service name**, **Addresses**, and any other relevant values used when adding the service.
@@ -316,5 +334,5 @@ pmm-admin remove mongodb SERVICE_NAME
 [YAML]: http://yaml.org/spec/
 [MONGODB_CONFIG_OP_PROF]: https://docs.mongodb.com/manual/reference/configuration-options/#operationprofiling-options
 [PSMDB_RATELIMIT]: https://www.percona.com/doc/percona-server-for-mongodb/LATEST/rate-limit.html#enabling-the-rate-limit
-[PMM_ADMIN_MAN_PAGE]: ../../details/commands/pmm-admin.md
+[PMM_ADMIN_MAN_PAGE]: ../../../use/commands/pmm-admin.md#mongodb
 [Troubleshooting connection difficulties]: ../../../troubleshoot/config_issues.md#connection-difficulties

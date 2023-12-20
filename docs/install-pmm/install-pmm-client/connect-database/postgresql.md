@@ -2,20 +2,23 @@
 
 How to set up PMM to monitor a [PostgreSQL] or [Percona Distribution for PostgreSQL] database instance.
 
-!!! summary alert alert-info "Summary"
-    - [Create PMM account and set permissions.](#create-a-database-account-for-pmm)
-    - [Choose, install and configure an extension](#choose-and-configure-an-extension):
-        - [`pg_stat_statements`](#pg_stat_statements), or,
-        - [`pg_stat_monitor`](#pg_stat_monitor).
-    - [Add service.](#add-service)
-    - [Check the service](#check-the-service).
+
+??? info "Summary"
+
+    !!! summary alert alert-info ""
+        - [Create PMM account and set permissions.](#create-a-database-account-for-pmm)
+        - [Choose, install and configure an extension](#choose-and-configure-an-extension):
+            - [`pg_stat_statements`](#pg_stat_statements), or,
+            - [`pg_stat_monitor`](#pg_stat_monitor).
+        - [Add service.](#add-service)
+        - [Check the service](#check-the-service).
 
 ## Before you start
 
 Check that:
 
-- [PMM Server is installed](../server/index.md) and running with a known IP address accessible from the client node.
-- [PMM Client is installed](index.md) and the [node is registered with PMM Server](index.md#register).
+- [PMM Server is installed](../../install-pmm-server/index.md) and running with a known IP address accessible from the client node.
+- [PMM Client is installed](../../install-pmm-client/index.md)and the [node is registered with PMM Server](../../register-client-node/index.md).
 - You have superuser (root) access on the client host.
 - You have superuser access to any database servers that you want to monitor.
 
@@ -24,6 +27,7 @@ Check that:
 ## Create a database account for PMM
 
 We recommend creating a PMM database account that can connect to the `postgres` database with the `SUPERUSER` role.
+{.power-number}
 
 1. Create a user. This example uses `pmm`. (Replace `******` with a strong password of your choice.)
 
@@ -71,6 +75,7 @@ We recommend creating a PMM database account that can connect to the `postgres` 
 ## Choose and configure an extension
 
 Decide which database extension to use, and configure your database server for it. The choices are:
+{.power-number}
 
 1. [`pg_stat_statements`](#pg_stat_statements), the original extension created by PostgreSQL, part of the `postgresql-contrib` package available on Linux.
 
@@ -120,6 +125,8 @@ For a more detailed comparison of extensions, follow [pg_stat monitor User Guide
 
 #### Configure
 
+To configure the extension:
+
 1. Add these lines to your `postgresql.conf` file:
 
     ```conf
@@ -153,11 +160,17 @@ You can now [add the service](#add-service).
 
 #### Install
 
+To install the extension:
+{.power-number}
+
 - If you use *Percona Distribution for PostgreSQL*, you can install the extension with your Linux package manager. See [Installing Percona Distribution for PostgreSQL][PERCONA_POSTGRESQL_INSTALL].
 
 - If you use *PostgreSQL* you can install by downloading and compiling the source code. See [Installing `pg_stat_monitor`][PG_STAT_MONITOR_INSTALL].
 
 #### Configure
+
+To configure the extension:
+{.power-number}
 
 1. Set or change the value for `shared_preload_library`.
 
@@ -228,6 +241,9 @@ When you have configured your database server, you can add a PostgreSQL service 
 
 ### With the user interface
 
+To add the service With the user interface:
+{.power-number}
+
 1. Select <i class="uil uil-cog"></i> *Configuration* → {{icon.inventory}} *Inventory* → {{icon.addinstance}} *Add Service*.
 
 2. Select *PostgreSQL -- Add a remote instance*.
@@ -236,11 +252,11 @@ When you have configured your database server, you can add a PostgreSQL service 
 
 4. Click *Add service*.
 
-![!](../../_images/PMM_Add_Instance_PostgreSQL.jpg)
+![!](../../../_images/PMM_Add_Instance_PostgreSQL.jpg)
 
 If your PostgreSQL instance is configured to use TLS, click on the *Use TLS for database connections* check box and fill in your TLS certificates and key.
 
-![!](../../_images/PMM_Add_Instance_PostgreSQL_TLS.jpg)
+![!](../../../_images/PMM_Add_Instance_PostgreSQL_TLS.jpg)
 
 !!! hint alert alert-success "Note"
     For TLS connection to work SSL needs to be configured in your PostgreSQL instance. Make sure SSL is enabled in the server configuration file `postgresql.conf`, and that hosts are allowed to connect in the client authentication configuration file `pg_hba.conf`. (See PostgreSQL documentation on [Secure TCP/IP Connections with SSL].)
@@ -249,42 +265,42 @@ If your PostgreSQL instance is configured to use TLS, click on the *Use TLS for 
 
 Add the database server as a service using one of these example commands. If successful, PMM Client will print `PostgreSQL Service added` with the service's ID and name. Use the `--environment` and `-custom-labels` options to set tags for the service to help identify them.
 
-### Examples
+??? info "Examples"
 
-Add instance with default node (`<node>-postgresql`).
+    Add instance with default node (`<node>-postgresql`).
 
-```sh
-pmm-admin add postgresql \
---username=pmm \
---password=password \
---server-url=https://admin:admin@X.X.X.X:443 \
---server-insecure-tls
-```
+    ```sh
+    pmm-admin add postgresql \
+    --username=pmm \
+    --password=password \
+    --server-url=https://admin:admin@X.X.X.X:443 \
+    --server-insecure-tls
+    ```
 
-- `<user name>`: The PostgreSQL PMM user
-- `<password>`: The PostgreSQL user credentials.
+    - `<user name>`: The PostgreSQL PMM user
+    - `<password>`: The PostgreSQL user credentials.
 
-The service name will be automatically chosen.
+    The service name will be automatically chosen.
 
-Add instance with specified service name.
+    Add instance with specified service name.
 
-```sh
-pmm-admin add postgresql \
---username=pmm \
---password=password \
---server-url=https://admin:admin@X.X.X.X:443 \
---server-insecure-tls \
---service-name=SERVICE-NAME
-```
+    ```sh
+    pmm-admin add postgresql \
+    --username=pmm \
+    --password=password \
+    --server-url=https://admin:admin@X.X.X.X:443 \
+    --server-insecure-tls \
+    --service-name=SERVICE-NAME
+    ```
 
-Add instance to connect with a UNIX socket.
+    Add instance to connect with a UNIX socket.
 
-```sh
-pmm-admin add postgresql --socket=/var/run/postgresql
-```
+    ```sh
+    pmm-admin add postgresql --socket=/var/run/postgresql
+    ```
 
-where:
-- `SOCKET`: directory containing the socket
+    where:
+    - `SOCKET`: directory containing the socket
 
 #### Connecting via SSL/TLS
 
@@ -314,6 +330,9 @@ where:
 
 ### Check service - PMM user interface
 
+To check the service from the PMM UI:
+{.power-number}
+
 1. Select <i class="uil uil-cog"></i> *Configuration* → {{icon.inventory}} *Inventory*.
 2. In the *Services* tab, verify the *Service name*, *Address* and any other relevant details.
 3. In the *Options* column, expand the *Details* section and check that the Agents are using the desired data source.
@@ -331,9 +350,12 @@ pmm-admin inventory list services
 
 ### Check data
 
-1. Open the *PostgreSQL Instance Summary* dashboard.
+To check the data:
+{.power-number}
 
-2. Set the *Service Name* to the newly-added service.
+1. Open the **PostgreSQL Instance Summary** dashboard.
+
+2. Set the **Service Name** to the newly-added service.
 
 ### Running custom queries
 
@@ -357,22 +379,24 @@ query_name:
          description: a human readable description
 ```
 
-#### Example
 
-```yml
-pg_postmaster_uptime:
-   query: "select extract(epoch from current_timestamp - pg_postmaster_start_time()) as seconds"
-   master: true
-   metrics:
-     - seconds:
-         usage: "GAUGE"
-         description: "Service uptime"
-```
+
+??? info "Example"
+
+    ```yml
+    pg_postmaster_uptime:
+    query: "select extract(epoch from current_timestamp - pg_postmaster_start_time()) as seconds"
+    master: true
+    metrics:
+        - seconds:
+            usage: "GAUGE"
+            description: "Service uptime"
+    ```
 
 Check the see also section for a more detailed description on MySQL custom queries with more examples about how to use custom queries in dashboards.
 
 !!! seealso alert alert-info "See also"
-    - [`pmm-admin` man page for `pmm-admin add postgresql`](../../details/commands/pmm-admin.md#postgresql)
+    - [`pmm-admin` man page for `pmm-admin add postgresql`](../../../use/commands/pmm-admin.md#postgresql)
     - [Configuring Percona Repositories with percona-release][PERCONA_RELEASE]
     - [Percona Blog -- Running Custom MySQL Queries in Percona Monitoring and Management][BLOG_CUSTOM_QUERIES_MYSQL]
 
@@ -383,6 +407,6 @@ Check the see also section for a more detailed description on MySQL custom queri
 [PERCONA_RELEASE]: https://www.percona.com/doc/percona-repo-config/percona-release.html
 [PERCONA_POSTGRESQL_INSTALL]: https://www.percona.com/doc/postgresql/LATEST/installing.html
 [PG_STAT_MONITOR_INSTALL]: https://github.com/percona/pg_stat_monitor#installation
-[PMM_ADMIN]: ../../details/pmm-admin.md
+[PMM_ADMIN]: ../../../use/commands/pmm-admin.md
 [Secure TCP/IP Connections with SSL]: https://www.postgresql.org/docs/current/ssl-tcp.html
 [BLOG_CUSTOM_QUERIES_MYSQL]: https://www.percona.com/blog/2020/06/10/running-custom-queries-in-percona-monitoring-and-management/
