@@ -5,7 +5,7 @@
 You can collect metrics from an external (custom) exporter on a node when:
 
 - there is already a PMM Agent instance running and,
-- this node has been [configured](index.md) using the `pmm-admin config` command.
+- this node has been [configured](../index.md) using the `pmm-admin config` command.
 
 ### Usage
 
@@ -78,9 +78,9 @@ For more details see <https://prometheus.io/docs/instrumenting/writing_exporters
 To add an external service via PMM UI:
 {.power-number}
 
-1. In the PMM web interface, go to <i class="uil uil-cog"></i> *Configuration* → {{icon.inventory}} *PMM Inventory* → {{icon.addinstance}} *Add Instance*.
+1. In the PMM web interface, go to <i class="uil uil-cog"></i> **Configuration** → {{icon.inventory}} **PMM Inventory** → {{icon.addinstance}} **Add Instance**.
 
-2. Select *External Service -- Add a remote instance*.
+2. Select **External Service -- Add a remote instance**.
 
     ![!](../../../_images/PMM_External_Serverless.png)
 

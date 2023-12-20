@@ -3,6 +3,7 @@
 ## Change Public IP address
 
 To assign a public IP address for an Amazon EC2 instance, follow these steps:
+{.power-number}
 
 1. Allocate Elastic IP address
 
@@ -17,6 +18,7 @@ To assign a public IP address for an Amazon EC2 instance, follow these steps:
 ## Upgrade EC2 instance class
 
 Upgrading to a larger EC2 instance class is supported by PMM provided you follow the instructions from the [AWS manual](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-resize.html). The PMM AMI image uses a distinct EBS volume for the PMM data volume which permits independent resizing of the EC2 instance without impacting the EBS volume.
+{.power-number}
 
 1. Open the Amazon EC2 console.
 
@@ -33,6 +35,7 @@ Upgrading to a larger EC2 instance class is supported by PMM provided you follow
 ## Expand PMM Data EBS Volume
 
 The PMM data volume is mounted as an XFS formatted volume on top of an LVM volume. There are two ways to increase this volume size:
+{.power-number}
 
 1. Add a new disk via EC2 console or API, and expand the LVM volume to include the new disk volume.
 
@@ -41,6 +44,7 @@ The PMM data volume is mounted as an XFS formatted volume on top of an LVM volum
 ## Expand existing EBS volume
 
 To expand the existing EBS volume for increased capacity, follow these steps.
+{.power-number}
 
 1. Expand the disk from AWS Console/CLI to the desired capacity.
 
@@ -207,7 +211,10 @@ To expand the existing EBS volume for increased capacity, follow these steps.
     /dev/mapper/DataVG-DataLV   32G 254M   32G   1% /srv
     ```
 
-## Expand the Amazon EBS root volume
+## Expand Amazon EBS root volume
+
+To expand the Amazon EBS root volume:
+{.power-number}
 
 1. Expand the disk from AWS Console/CLI to the desired capacity.
 

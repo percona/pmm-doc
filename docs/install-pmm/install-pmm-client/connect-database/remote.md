@@ -6,6 +6,7 @@ When monitoring remote instances including RDS and Google instances, network lat
 For this reason, it is recommended to [lower the metrics resolution](../../../configure-pmm/metrics_res.md).
 
 Starting with PMM 2.18, the scrape timeout has been updated according to the following rules:
+{.power-number}
 
 - For resolutions <= 2 seconds, scrape timeout is 1 second.
 - For resolutions <= 10 seconds, timeout is set to resolution minus 1 second. For example, for 10 second resolution, timeout will be set at 9 seconds.

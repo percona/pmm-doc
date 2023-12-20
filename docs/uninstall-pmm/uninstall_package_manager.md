@@ -4,6 +4,9 @@ To uninstall PMM client with package manager, do the following steps:
 
 === "Debian-based distributions"
 
+    To uninstall PMM client with Debian-based distributions:
+    {.power-number}
+
     1. Uninstall the PMM Client package.
 
         ```sh
@@ -17,6 +20,9 @@ To uninstall PMM client with package manager, do the following steps:
         ```
 
 === "Red Hat-based distributions"
+
+    To uninstall PMM client with Red Hat based distributions:
+    {.power-number}
 
     1. Uninstall the PMM Client package.
 

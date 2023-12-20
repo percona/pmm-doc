@@ -1,8 +1,8 @@
 # Upgrade PMM server using the UI
 
 !!! caution alert alert-warning "Caution"
-    - While upgrading PMM to version 2.32.0, it fails. This issue has been resolved for PMM version 2.33.0. However, the issue persists on all the versions prior to 2.33.0. For solution, see the [troubleshooting](../how-to/troubleshoot.md#pmm-server-fails-while-upgrading) section.
-    - PMM versions prior to 2.33.0 may not show the latest versions available with instances created from the AWS marketplace in specific environments, including AWS. For solution, see the [troubleshooting](../how-to/troubleshoot.md#pmm-server-not-showing-latest-versions-available-with-the-instances-created-from-aws) section.
+    - While upgrading PMM to version 2.32.0, it fails. This issue has been resolved for PMM version 2.33.0. However, the issue persists on all the versions prior to 2.33.0. For solution, see the [troubleshooting](../troubleshoot/upgrade_issues.md) section.
+    - PMM versions prior to 2.33.0 may not show the latest versions available with instances created from the AWS marketplace in specific environments, including AWS. For solution, see the [troubleshooting](../troubleshoot/upgrade_issues.md#pmm-server-not-showing-latest-versions-available-with-the-instances-created-from-aws) section.
 
 Client and server components are installed and updated separately.
 
