@@ -258,8 +258,7 @@ nav:
           - use/dashboards-panels/custom_dashboard/set_custom_for_org.md
           - use/dashboards-panels/custom_dashboard/set_personal_home.md
 
-        - Share dashboards and panels:
-          - use/dashboards-panels/share-dashboards/share_dashboard.md
+        - Share dashboards and panels: use/dashboards-panels/share-dashboards/share_dashboard.md
         - Annotate: use/dashboards-panels/annotate/annotate.md              
         - Available dashboards:
           - Insight:
