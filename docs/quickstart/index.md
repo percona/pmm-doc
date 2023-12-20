@@ -275,17 +275,17 @@ Once PMM is set up, choose the database or the application that you want it to m
                          
             1. Install [percona-release](https://docs.percona.com/percona-software-repositories/installing.html) tool.  If this is already installed, [update percona-release](https://docs.percona.com/percona-software-repositories/updating.html) to the latest version:
 
-            ```sh
-            wget https://repo.percona.com/apt/percona-release_latest.generic_all.deb
-            dpkg -i percona-release_latest.generic_all.deb
-            ```
+                ```sh
+                wget https://repo.percona.com/apt/percona-release_latest.generic_all.deb
+                dpkg -i percona-release_latest.generic_all.deb
+                ```
 
             2. Install the PMM Client package:
 
-            ```sh
-            apt update
-            apt install -y pmm2-client
-            ```
+                ```sh
+                apt update
+                apt install -y pmm2-client
+                ```
 
         === ":material-redhat: Red Hat-based"
 
