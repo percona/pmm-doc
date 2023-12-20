@@ -3,7 +3,7 @@
 The prerequisites to install PMM client are:
 {.power-number}
 
-1. [Set up PMM Server](../server/index.md) with a known IP address accessible from the client node.
+1. [Install PMM Server](../install-pmm-server/index.md) with a known IP address accessible from the client node.
 
 2. Check that you have superuser (root) access on the client host. 
 
@@ -21,4 +21,4 @@ The prerequisites to install PMM client are:
 
 5. If you use it, install [Docker](https://docs.docker.com/get-docker/).
 
-6. Check system [requirements](..//..//plan-pmm-installation/hardware_and_system.md#client-requirements).
+6. Check system [requirements](../../plan-pmm-installation/hardware_and_system.md#client-requirements).

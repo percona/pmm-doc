@@ -173,9 +173,9 @@ instances.
 
     ![!image](../../../_images/PMM_Add_Instance_AWS_RDS_Discover.png)
 
-5. For the instance that you would like to monitor, select the *Start monitoring* button.
+5. For the instance that you would like to monitor, select the **Start monitoring** button.
 
-6. You will see a new page with the number of fields. The list is divided into the following groups: *Main details*, *RDS database*, *Labels*, and *Additional options*. Some already known data, such as already entered *AWS access key*, are filled in automatically, and some fields are optional.
+6. You will see a new page with the number of fields. The list is divided into the following groups: **Main details**, **RDS database**, **Labels**, and **Additional options**. Some already known data, such as already entered **AWS access key**, are filled in automatically, and some fields are optional.
 
     ![!](../../../_images/PMM_Add_Instance_AWS_RDS_Main_Details.png)
 

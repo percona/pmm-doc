@@ -6,8 +6,8 @@ How to set up PMM to monitor a [MongoDB] or [Percona Server for MongoDB] databas
 
 Check that:
 
-- [PMM Server is installed](../server/index.md) and running with a known IP address or hostname accessible from the client node.
-- [PMM Client is installed](index.md) and the [node is registered with PMM Server](index.md#register).
+- [PMM Server is installed](../../install-pmm-server/index.md) and running with a known IP address or hostname accessible from the client node.
+- [PMM Client is installed](../../install-pmm-client/index.md) and the [node is registered with PMM Server](../../register-client-node/index.md).
 - You have superuser (root) access on the client host.
 - You have `adminUserAnyDatabase` or superuser role privilege to any database servers that you want to monitor.
 - Your MongoDB server is version 4.0 or higher.
@@ -194,7 +194,7 @@ When you have configured your database server, you can add a MongoDB service wit
 
 4. Click *Add service*.
 
-![!](../../_images/PMM_Add_Instance_MongoDB.jpg)
+![!](../../../_images/PMM_Add_Instance_MongoDB.jpg)
 
 ### On the command line
 
@@ -256,15 +256,15 @@ where:
 
 ### With the user interface
 
-1. Select <i class="uil uil-cog"></i> *Configuration* → {{icon.inventory}} *Inventory*.
+1. Select <i class="uil uil-cog"></i> **Configuration** → {{icon.inventory}} **Inventory**.
 
-2. Select *MongoDB -- Add a remote instance*.
+2. Select **MongoDB -- Add a remote instance**.
 
 3. Enter or select values for the fields.
 
-4. Click *Add service*.
+4. Click **Add service**.
 
-![!](../../_images/PMM_Add_Instance_MongoDB_TLS.jpg)
+![!](../../../_images/PMM_Add_Instance_MongoDB_TLS.jpg)
 
 ### On the command line
 
@@ -276,27 +276,27 @@ pmm-admin inventory list services --service-type=mongodb
 
 ### Check data
 
-1. Open the *MongoDB Instances Overview* dashboard.
-2. Set the *Service Name* to the newly-added service.
+1. Open the **MongoDB Instances Overview** dashboard.
+2. Set the **Service Name** to the newly-added service.
 
 #### Query Analytics
 
-1. Open *PMM Query Analytics*.
-2. In the *Filters* panel:
-    1. Under *Service Name*, select your service.
-    2. Under *Service Type* select `mongodb`.
+1. Open **PMM Query Analytics**.
+2. In the **Filters** panel:
+    1. Under **Service Name**, select your service.
+    2. Under **Service Type** select `mongodb`.
 
 ## Remove service
 
 ### With the user interface
 
-1. Select <i class="uil uil-cog"></i> *Configuration* → {{icon.inventory}} *Inventory*.
-2. In the *Services* tab, verify the *Service name*, *Addresses*, and any other relevant values used when adding the service.
-3. In the *Options* column, expand the *Details* section and check that the Agents are using the desired data source.
+1. Select <i class="uil uil-cog"></i> **Configuration** → {{icon.inventory}} **Inventory**.
+2. In the **Services** tab, verify the **Service name**, **Addresses**, and any other relevant values used when adding the service.
+3. In the **Options** column, expand the **Details** section and check that the Agents are using the desired data source.
 4. If your MongoDB instance is configured to use TLS, click on the **Use TLS for database connection** check box and fill in TLS certificates and keys.
 If you use TLS, the authentication mechanism is automatically set to `MONGODB-X509`.
 
-    ![!](../../_images/PMM_Add_Instance_MongoDB_TLS.jpg)
+    ![!](../../../_images/PMM_Add_Instance_MongoDB_TLS.jpg)
 
 ### On the command line
 
@@ -307,7 +307,7 @@ pmm-admin remove mongodb SERVICE_NAME
 - `SERVICE_NAME`: The name the service was added as. (Find it with `pmm-admin list`.)
 
 !!! seealso alert alert-info "See also"
-    - [`pmm-admin add mongodb`](../../details/commands/pmm-admin.md#mongodb)
+    - [`pmm-admin add mongodb`](../../../use/commands/pmm-admin.md#mongodb)
     - [Troubleshooting connection difficulties]
 
 [MongoDB]: https://www.mongodb.com/
@@ -317,4 +317,4 @@ pmm-admin remove mongodb SERVICE_NAME
 [MONGODB_CONFIG_OP_PROF]: https://docs.mongodb.com/manual/reference/configuration-options/#operationprofiling-options
 [PSMDB_RATELIMIT]: https://www.percona.com/doc/percona-server-for-mongodb/LATEST/rate-limit.html#enabling-the-rate-limit
 [PMM_ADMIN_MAN_PAGE]: ../../details/commands/pmm-admin.md
-[Troubleshooting connection difficulties]: ../../how-to/troubleshoot.md#connection-difficulties
+[Troubleshooting connection difficulties]: ../../../troubleshoot/config_issues.md#connection-difficulties

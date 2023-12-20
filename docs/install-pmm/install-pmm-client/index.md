@@ -14,9 +14,9 @@ There are different ways to install PMM Client on a node and register it with PM
 When you have installed PMM Client, you must:
 
 - [Register the node with PMM Server](../register-client-node/index.md).
-- [Configure and add services according to type](..//add-services/index.md).
+- [Configure and add services according to type](connect-database/index.md).
 
-If you need to, you can [unregister](..//..//uninstall-pmm/unregister_client.md), [remove services](..//..//uninstall-pmm/remove_services.md) or [remove PMM Client](..//..//uninstall-pmm/uninstall_docker.md).
+If you need to, you can [unregister](../../uninstall-pmm/unregister_client.md), [remove services](..//..//uninstall-pmm/remove_services.md) or [remove PMM Client](..//..//uninstall-pmm/uninstall_docker.md).
 
 ---
 
@@ -28,21 +28,21 @@ Here's an overview of the choices.
 
 Before installing the PMM client, check [Prerequisites to install PMM client](./prerequisites.md).
 
-## Add services
+## Connect services
 
 You must configure and adding services according to the service type.
 
-- [MySQL](..//add-services/mysql.md) (and variants Percona Server for MySQL, Percona XtraDB Cluster, MariaDB)
-- [MongoDB](..//add-services/mongodb.md)
-- [PostgreSQL](..//add-services/postgresql.md)
-- [ProxySQL](..//add-services/proxysql.md)
-- [Amazon RDS](..//add-services/aws.md)
-- [Microsoft Azure](..//add-services/azure.md)
-- [Google Cloud Platform](..//add-services/google) (MySQL and PostgreSQL)
-- [Linux](..//add-services/linux.md)
-- [External services](..//add-services/external.md)
-- [HAProxy](..//add-services/haproxy.md)
-- [Remote instances](..//add-services/remote.md)
+- [MySQL](connect-database/mysql.md) (and variants Percona Server for MySQL, Percona XtraDB Cluster, MariaDB)
+- [MongoDB](connect-database/mongodb.md)
+- [PostgreSQL](connect-database/postgresql.md)
+- [ProxySQL](connect-database/proxysql.md)
+- [Amazon RDS](connect-database/aws.md)
+- [Microsoft Azure](connect-database/azure.md)
+- [Google Cloud Platform](connect-database/google) (MySQL and PostgreSQL)
+- [Linux](connect-database/linux.md)
+- [External services](connect-database/external.md)
+- [HAProxy](connect-database/haproxy.md)
+- [Remote instances](connect-database/remote.md)
 
 !!! hint alert alert-success "Tip"
     To change the parameters of a previously-added service, remove the service and re-add it with new parameters.

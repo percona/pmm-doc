@@ -21,8 +21,8 @@ PMM Client collects metrics from [MySQL][ORACLE_MYSQL], [Percona Server for MySQ
 
 Check that:
 
-- [PMM Server is installed](../server/index.md) and running with a known IP address accessible from the client node.
-- [PMM Client is installed](index.md) and the [node is registered with PMM Server](index.md#register).
+- [PMM Server is installed](../../install-pmm-server/index.md) and running with a known IP address accessible from the client node.
+- [PMM Client is installed](../../install-pmm-client/index.md) and the [node is registered with PMM Server](../../register-client-node/index.md).
 - You have superuser (root) access on the client host.
 
 ## Create a database account for PMM
@@ -191,7 +191,7 @@ This section covers how to configure a MySQL-based database server to use *Perfo
 | Percona XtraDB Cluster   | 5.6, 5.7, 8.0
 | MariaDB                  | [10.3+][mariadb_perfschema_instr_table]
 
-PMM's [*MySQL Performance Schema Details* dashboard](../../details/dashboards/dashboard-mysql-performance-schema-details.md) charts the various [`performance_schema`][performance-schema-startup-configuration] metrics.
+PMM's [*MySQL Performance Schema Details* dashboard](../../../use/dashboards/dashboard-mysql-performance-schema-details.md) charts the various [`performance_schema`][performance-schema-startup-configuration] metrics.
 
 To use *Performance Schema*, set these variables.
 
@@ -252,7 +252,7 @@ There is no **Explain** or **Example** data shown by default in Query Analytics 
 
 ## Query response time
 
-**Query time distribution** is a chart in the [**Details** tab of Query Analytics](../../get-started/query-analytics.md#details-tab) showing the proportion of query time spent on various activities. It is enabled with the `query_response_time_stats` variable and associated plugins.
+**Query time distribution** is a chart in the [**Details** tab of Query Analytics](../../../use/qan/panels/details.md#details-tab) showing the proportion of query time spent on various activities. It is enabled with the `query_response_time_stats` variable and associated plugins.
 
 ### Applicable versions
 
@@ -472,8 +472,8 @@ Open the [*PXC/Galera Cluster Summary* dashboard][DASH_PXCGALERACLUSTER].
         - [Percona Blog -- Impact of logging on MySQL's performance][BLOG_LOGGING]
         - [Percona Blog -- Running Custom MySQL Queries in Percona Monitoring and Management][BLOG_CUSTOM_QUERIES_MYSQL]
 
-[DASH_MYSQLUSERDETAILS]: ../../details/dashboards/dashboard-mysql-user-details.md
-[DASH_PXCGALERACLUSTER]: ../../details/dashboards/dashboard-pxc-galera-cluster-summary.md
+[DASH_MYSQLUSERDETAILS]: ../../../use/dashboards/dashboard-mysql-user-details.md
+[DASH_PXCGALERACLUSTER]: ../../../use/dashboards/dashboard-pxc-galera-cluster-summary.md
 [LOGROTATE]: https://linux.die.net/man/8/logrotate
 [PERCONA_SERVER_MYSQL]: https://www.percona.com/software/mysql-database/percona-server
 [PERCONA_XTRADB_CLUSTER]: https://www.percona.com/software/mysql-database/percona-xtradb-cluster
