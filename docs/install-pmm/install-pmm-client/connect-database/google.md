@@ -79,7 +79,7 @@ To add a MySQL instance:
 
 5. Run Cloud SQL Proxy (runs on PMM Client node).
 
-    - As a Docker container:
+    === "As a Docker container"
 
         ```sh
         docker run -d \
@@ -91,7 +91,7 @@ To add a MySQL instance:
         -credential_file=/config
         ```
 
-    - On Linux:
+    === "On Linux"
 
         ```sh
         wget https://dl.google.com/cloudsql/cloud_sql_proxy.linux.amd64 -O cloud_sql_proxy
