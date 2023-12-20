@@ -4,7 +4,7 @@ The **Inventory** dashboard is a high-level overview of all objects registered i
 
 To check your inventory list, go to <i class="uil uil-cog"></i> **Configuration** > **Inventory**.
 
-![!image](../../_images/Inventory.png)
+![!image](../_images/Inventory.png)
 
 Inventory objects form a hierarchy with Node at the top, then Service and Agents assigned to a Node. This information is detailed in the two tabs available on this page.
 
@@ -23,7 +23,7 @@ The **Services** tab displays the individual services, the nodes on which they r
 
 
 
-![!image](../../_images/PMM_Inventory_Service_Selection.png)
+![!image](../_images/PMM_Inventory_Service_Selection.png)
 
 #### Attributes
 
@@ -53,7 +53,7 @@ Example
 
 To view the agents running on a service and their health status, click **OK** or **Failed** under the **Monitoring** column. Furthermore, you can also check the properties of a particular agent by clicking the <image src="../../_images/arrow-downward.ico" width="15px" aria-label="downward arrow"/> icon under the **Options** column.
 
-![!image](../../_images/PMM_Inventory_Service_Agent_Properties.png)
+![!image](../_images/PMM_Inventory_Service_Agent_Properties.png)
 
 #### Node-service relationship
 
@@ -81,7 +81,7 @@ You can edit the labels as follows:
 
 4. Edit the labels as per your requirement and click **Save Changes**. The editing service dialogue box opens.
 
-    ![!](../../_images/PMM_access_edit_labels.png)
+    ![!](../_images/PMM_access_edit_labels.png)
 
 
 5. Click **Confirm and save changes**. You will be taken back to the **Inventory/Services** page.
@@ -106,7 +106,7 @@ Editing existing labels can impact the following PMM functions:
 #### Cluster view
 
 !!! caution alert alert-warning "Disclaimer"
-     This feature is still [technical preview](../details/glossary.md#technical-preview) and is subject to change. We recommend that early adopters use this feature for testing purposes only.
+     This feature is still [technical preview](../reference/glossary.md#technical-preview) and is subject to change. We recommend that early adopters use this feature for testing purposes only.
 
 
 Starting with PMM 2.40.0, you can choose to view a group of services as a single cluster  with the **Organize by Clusters** toggle. PMM uses the `cluster` label to display services under the same cluster.
@@ -139,13 +139,13 @@ To see the details of the agents running, do the following:
 
 1. On the **Nodes** tab, under the **Monitoring** column, click **OK** or **Failed** depending on the status of the node that you have selected. A page that provides the user with crucial information regarding the total number of agents deployed on that node is displayed.
      
-     ![!image](../../../_images/PMM_Inventory_Node_Selection.png)
+     ![!image](../_images/PMM_Inventory_Node_Selection.png)
 
 2. Click on the <image src="../../_images/arrow-downward.ico" width="15px" aria-label="downward arrow"/> icon under the **Options** column to view the properties of a specific agent.
 
 3.  On the **Nodes** tab, under the **Options** column, click on the <image src="../../_images/arrow-downward.ico" width="15px" aria-label="downward arrow"/> icon for the selected node to check the properties and the current health status of an agent.       
      
-     ![!image](../../../_images/PMM_Inventory_Node_Agent_Properties.png)
+     ![!image](../_images/PMM_Inventory_Node_Agent_Properties.png)
 
 
 ## Removing items from the inventory
@@ -157,7 +157,7 @@ To remove items from the inventory:
 
 2. In the first column, select the items to be removed.
         
-        ![!image](../../.._images/PMM_Inventory_Item_Selection.png)
+    ![!image](../_images/PMM_Inventory_Item_Selection.png)
 
 3. Click **Delete** and confirm the removal.
 
