@@ -7,7 +7,7 @@ Your instance settings are summarized in a special area. Click the Launch with 1
 ![!image](../../../_images/aws-marketplace.pmm.launch-on-ec2.1-click-launch.3.png)
 
 !!! note alert alert-primary "Note"
-    The *Launch with 1 click* button may alternatively be titled as *Accept Software Terms & Launch with 1-Click*.
+    The **Launch with 1 click** button may alternatively be titled as **Accept Software Terms & Launch with 1-Click**.
 
 ## Adjusting instance settings in the EC2 Console
 

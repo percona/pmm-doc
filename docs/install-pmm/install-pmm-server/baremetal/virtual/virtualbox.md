@@ -41,8 +41,7 @@
             ```
 
 ## Reconfigure interface
-
-The 
+ 
 
 ### Reconfigure with UI
 

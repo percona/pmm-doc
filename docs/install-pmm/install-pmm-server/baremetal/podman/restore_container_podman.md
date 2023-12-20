@@ -12,7 +12,7 @@
     ---
 
 !!! caution alert alert-warning "Important"
-    You must have a [backup](#backup) to restore from.
+    You must have a [backup](backup_container_podman.md) to restore from.
     You need to perform restore only if you have issues with upgrade or with the data.
 
 To restore your container:

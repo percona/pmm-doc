@@ -2,7 +2,7 @@
 
 After you add your new instance ,it will take some time to initialize it. When the AWS console reports that the instance is now in a running state, you may continue with configuration of PMM Server.
 
-!!! note alert alert-primary ""
+!!! note alert alert-primary "Note"
     When started the next time after rebooting, your instance may acquire another IP address. You may choose to set up an elastic IP to avoid this problem.
 
 With your instance selected, open its IP address in a web browser. The IP address appears in the **IPv4 Public IP** column or as value of the **Public IP** field at the top of the **Properties** panel.

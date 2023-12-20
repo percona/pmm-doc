@@ -138,7 +138,7 @@ yq -i e '.secret.create |= false' values.yaml
 helm install pmm -f values.yaml percona/pmm
 ```
 
-### [PMM environment variables](docker.md#environment-variables)
+### [PMM environment variables](../docker/env_var.md)
 
 In case you want to add extra environment variables (useful for advanced operations like custom init scripts), you can use the `pmmEnv` property.
 
@@ -150,7 +150,7 @@ pmmEnv:
 
 ### PMM SSL certificates
 
-PMM ships with self signed SSL certificates to provide secure connection between client and server ([check here](../../how-to/secure.md#ssl-encryption)).
+PMM ships with self signed SSL certificates to provide secure connection between client and server ([check here](../../../../pmm-admin/security/ssl_encryption.md)).
 
 You will see the warning when connecting to PMM. To further increase security, you should provide your certificates and add values of credentials to the fields of the `cert` section:
 
