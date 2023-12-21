@@ -13,11 +13,11 @@ Each row of the table represents the metrics for a chosen object type, one of:
 - User Name;
 - Client Host.
 
-At the top of the second column is the *dimension* menu. Use this to choose the object type.
+At the top of the second column is the **dimension** menu. Use this to choose the object type.
 
 ![!image](../../../_images/PMM_Query_Analytics_Menus_Dimension_Selector.jpg)
 
-On the right side of the dimension column is the *Dimension Search* bar.
+On the right side of the dimension column is the **Dimension Search** bar.
 
 ![!image](../../../_images/PMM_Query_Analytics_Panels_Dimension_Search.jpg)
 
@@ -27,8 +27,8 @@ Delete the search text and press Enter to see the full list again.
 
 ## Columns
 
-- The first column is the object’s identifier. For *Query*, it is the query’s [Fingerprint](../details/glossary/#fingerprint).
-- The second column is the *Main metric*, containing a reduced graphical representation of the metric over time, called a *sparkline*, and a horizontal meter, filled to reflect a percentage of the total value.
+- The first column is the object’s identifier. For **Query**, it is the query’s [Fingerprint](../../../reference/glossary.md#fingerprint).
+- The second column is the **Main metric**, containing a reduced graphical representation of the metric over time, called a **sparkline**, and a horizontal meter, filled to reflect a percentage of the total value.
 - Additional values are revealed as mouse-over tool-tips.
 
 ## Tool-tips
@@ -49,13 +49,13 @@ Delete the search text and press Enter to see the full list again.
 
 ## Adding and removing columns
 
-- Metrics columns are added with the *Add column* button.
+- Metrics columns are added with the **Add column** button.
 
     ![!image](../../../_images/PMM_Query_Analytics_Devices_Add_Columns.jpg)
 
 - When clicked, a text field and list of available metrics are revealed. Select a metric or enter a search string to reduce the list. Selecting a metric adds it to the panel.
-- A metric column is removed by clicking on the column heading and selecting *Remove column*.
-- The value plotted in the *main metric* column can be changed by clicking a metric column heading and selecting *Swap with main metric*.
+- A metric column is removed by clicking on the column heading and selecting **Remove column**.
+- The value plotted in the **main metric** column can be changed by clicking a metric column heading and selecting **Swap with main metric**.
 
 ## Sorting
 

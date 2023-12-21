@@ -1,6 +1,6 @@
 # About Percona Alerting
 
-!!! alert alert-info ""
+!!! alert alert-info "Important"
     Percona Alerting is the new Alerting feature introduced in PMM 2.31. This replaces the Integrated Alerting feature available in previous versions.  
     
 Alerting notifies of important or unusual activity in your database environments so that you can identify and resolve problems quickly. When something needs your attention, Percona Alerting can be configured to automatically send you a notification through your specified contact points.

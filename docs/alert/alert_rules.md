@@ -70,34 +70,34 @@ When creating custom templates, make sure to use the required template format be
 
 - **annotations** (optional): are additional annotations to be added to generated alerts.
 
-### Template example
+??? info "Template example"
 
-```yaml
-{% raw %}
----
-templates:
-  - name: pmm_node_high_cpu_load
-    version: 1
-    summary: Node high CPU load
-    expr: |-
-      (1 - avg by(node_name) (rate(node_cpu_seconds_total{mode="idle"}[5m])))
-      * 100
-      > bool [[ .threshold ]]
-    params:
-      - name: threshold
-        summary: A percentage from configured maximum
-        unit: "%"
-        type: float
-        range: [0, 100]
-        value: 80
-    for: 5m
-    severity: warning
-    annotations:
-      summary: Node high CPU load ({{ $labels.node_name }})
-      description: |-
-        {{ $labels.node_name }} CPU load is more than [[ .threshold ]]%.
-{% endraw %}
-```
+    ```yaml
+    {% raw %}
+    ---
+    templates:
+      - name: pmm_node_high_cpu_load
+        version: 1
+        summary: Node high CPU load
+        expr: |-
+          (1 - avg by(node_name) (rate(node_cpu_seconds_total{mode="idle"}[5m])))
+          * 100
+          > bool [[ .threshold ]]
+        params:
+          - name: threshold
+            summary: A percentage from configured maximum
+            unit: "%"
+            type: float
+            range: [0, 100]
+            value: 80
+        for: 5m
+        severity: warning
+        annotations:
+          summary: Node high CPU load ({{ $labels.node_name }})
+          description: |-
+            {{ $labels.node_name }} CPU load is more than [[ .threshold ]]%.
+    {% endraw %}
+    ```
 
 ### Test alert expressions
 If you want to create custom templates, you can test the MetricsQL expressions for your custom template in the **Explore** section of PMM. Here you can also query any PMM internal database.
