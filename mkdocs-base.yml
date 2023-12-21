@@ -353,7 +353,8 @@ nav:
       - alert/alert_rules.md
       - alert/contact_points.md
       - alert/silence_alerts.md
-    - Backup and restore: backup/index.md
+    - Backup and restore: 
+      - backup/index.md
       - backup/prepare_storage_location.md
       - MongoDB backups:
         - backup/mongodb-backup/backup_mongo.md
