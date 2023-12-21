@@ -378,13 +378,9 @@ nav:
       - dbaas/index.md
       - dbaas/architecture.md
       - Set up DBaaS:
-        - dbaas/setup-dbaas/index.md
-        - dbaas/setup-dbaas/activate_k8s.md
-        - dbaas/setup-dbaas/create_k8s.md
-        - dbaas/setup-dbaas/del_k8s.md
-        - dbaas/setup-dbaas/components.md  
-        - dbaas/setup-dbaas/run_as_docker.md  
-        - dbaas/setup-dbaas/expose_clusters.md
+        - "Setting up DBaaS": dbaas/setting-up.html#setting-up-dbaas
+        - "Create a Kubernetes Cluster": dbaas/setting-up.html#create-a-kubernetes-cluster
+        - "Deleting Kubernetes clusters ": dbaas/setting-up.html#deleting-clusters
       - Manage database clusters:
         - dbaas/manage-dbaas_clusters/add_cluster.md
         - dbaas/manage-dbaas_clusters/edit_cluster.md
