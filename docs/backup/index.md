@@ -27,8 +27,8 @@ PMM 2.38 added support for creating backups of sharded MongoDB clusters. However
 To learn how to create and restore backups, check out subtopics below:
 
 - [Prepare a storage location](prepare_storage_location.md)
-- ![!](../_images/MongoDB_Logo.png)  [MongoDB  backups](../../get-started/backup/backup_mongo.md)
-- ![!](../_images/mysql_logo.png) [MySQL backups](backup_mysql.md) 
+- ![!](../_images/MongoDB_Logo.png)  [MongoDB  backups](mongodb-backup/create_mongo_on_demand.md)
+- ![!](../_images/mysql_logo.png) [MySQL backups](mysql-backup/create_mysql_backup.md) 
 
 
 ## Additional resources
