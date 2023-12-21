@@ -31,21 +31,6 @@ The following charts are present in the second part, available for each host:
 - Number of Threads
 - Percentage of Max Threads Limit
 
-## Number of PIDs
-
-No description
-
-## Percentage of Max PIDs Limit
-
-No description
-
-## Number of Threads
-
-No description
-
-## Percentage of Max Threads Limit
-
-No description
 
 ## Runnable Processes
 
@@ -59,26 +44,3 @@ The Processes graph shows how many processes/threads are either in the kernel ru
 
 The Processes graph shows how many processes/threads are either in the kernel run queue (runnable state) or in the blocked queue (waiting for I/O).  When the number of process in the runnable state is constantly higher than the number of CPU cores available, the load is CPU bound.  When the number of process blocked waiting for I/O is large, the load is disk bound.  The running average of the sum of these two quantities is the basis of the `loadavg` metric.
 
-## Sleeping Processes
-
-No description
-
-## Running Processes
-
-No description
-
-## Disk Sleep Processes
-
-No description
-
-## Stopped Processes
-
-No description
-
-## Zombie Processes
-
-No description
-
-## Dead Processes
-
-No description

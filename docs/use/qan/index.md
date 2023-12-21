@@ -13,9 +13,9 @@ Query Analytics displays metrics in both visual and numeric form. Performance-re
 
 The dashboard contains three panels:
 
-- the [Filters Panel](#filters-panel);
-- the [Overview Panel](#overview-panel);
-- the [Details Panel](#details-panel).
+- the [Filters Panel](panels/filters.md);
+- the [Overview Panel](panels/overview.md);
+- the [Details Panel](panels/details.md).
 
-!!! note alert alert-primary ""
+!!! note alert alert-primary "Note"
     Query Analytics data retrieval is not instantaneous and can be delayed due to network conditions. In such situations *no data* is reported and a gap appears in the sparkline.

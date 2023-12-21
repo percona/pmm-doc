@@ -20,21 +20,6 @@ Interrupt is an input signal to the processor indicating an event that needs imm
 
 Context switch is the process of storing the state of a process or thread, so that it can be restored and resume execution at a later point. This allows multiple processes to share a single CPU, and is an essential feature of a multitasking operating system.
 
-## Processes
-
-No description
-
-## Memory Utilization
-
-No description
-
-## Virtual Memory Utilization
-
-No description
-
-## Swap Space
-
-No description
 
 ## Swap Activity
 
@@ -44,9 +29,6 @@ Swap Activity is memory management that involves swapping sections of memory to 
 
 Disk I/O includes read or write or input/output operations involving a physical disk. It is the speed with which the data transfer takes place between the hard disk drive and RAM.
 
-## Global File Descriptors Usage
-
-No description
 
 ## Disk IO Latency
 
@@ -60,9 +42,6 @@ Shows how much disk was loaded for reads or writes as average number of outstand
 
 Network traffic refers to the amount of data moving across a network at a given point in time.
 
-## Network Utilization Hourly
-
-No description
 
 ## Local Network Errors
 
