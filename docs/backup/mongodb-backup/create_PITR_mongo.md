@@ -21,7 +21,7 @@ To start saving oplog, PBM requires a backup snapshot. Such snapshots are create
 Since PBM saves oplog slices and streams them into your storage between scheduled task runs, scheduling frequent PITR backups is not necessary.
 You can use the available oplog slices in your storage to restore a backup to any moment between snapshots.
 
-Before creating a backup, make sure to check the [MongoDB backup prerequisites](../backup/mongo-prerequisites.md).
+Before creating a backup, make sure to check the [MongoDB backup prerequisites](mongo_prerequisites.md).
 {.power-number}
 
 1. Go to <i class="uil uil-history"></i> **Backup > All Backups**.
@@ -32,7 +32,7 @@ Before creating a backup, make sure to check the [MongoDB backup prerequisites](
 6. Select **Logical** as this is the only data model that currently supports PITR backups.
 7. Choose a storage location for the backup. MongoDB supports both Amazon S3-compatible and local storage.
     However, restoring from local storage is not supported yet.
-    If no options are available here, see the [Create a storage location](prepare_storage_location.md) topic.
+    If no options are available here, see the [Create a storage location](../prepare_storage_location.md) topic.
 8. Specify the backup type and the schedule for your backup:
     - **Backup Type**: select the  **PITR** option.
     - **Schedule**: configure the frequency and the start time for this backup.  
@@ -55,7 +55,7 @@ Before creating a backup, make sure to check the [MongoDB backup prerequisites](
 
 ## Failed backup alerts
 
-If you want to be notified of any MongoDB backups that fail, you can create an alert based on the Backup Failed alert template. For information on working with alert templates, see the [Percona Alerting](../get-started/alerting.md) topic.
+If you want to be notified of any MongoDB backups that fail, you can create an alert based on the Backup Failed alert template. For information on working with alert templates, see the [Percona Alerting](../../alert/index.md) topic.
  
 ## PITR artifacts
 

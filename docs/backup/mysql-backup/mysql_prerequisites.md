@@ -7,7 +7,7 @@ Before creating MySQL backups, make sure to:
    !!! caution alert alert-warning "Important"
     If PMM Server runs as a Docker container, enable backup features at container creation time by adding `-e ENABLE_BACKUP_MANAGEMENT=1` to your `docker run` command.
 
-2. Check that the [PMM Client](../../setting-up/client/index.md) is installed and running on the node.
+2. Check that the [PMM Client](../../install-pmm/install-pmm-client/index.md) is installed and running on the node.
 
 3. To enable Xtrabackup for MySQL 8.0+, check that pmm-agent connects to MySQL with a user that has BACKUP_ADMIN privilege.
 
