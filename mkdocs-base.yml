@@ -268,7 +268,7 @@ nav:
               - use/dashboards/dashboard-victoriametrics-agents-overview.md
           - Environments:
               - use/dashboards/dashboard-env-overview.md
-              - details/dashboards/dashboard-environent-summary.md
+              - use/dashboards/dashboard-environent-summary.md
           - Kubernetes:
               - use/dashboards/kubernetes_cluster_summary.md
               - use/dashboards/kubernetes_pods_status.md
@@ -370,8 +370,6 @@ nav:
         - backup/mysql-backup/restore_mysql_backup.md
       - backup/edit_scheduled.md
       - backup/delete_a_backup.md
-
-
     - PMM commands:
       - use/commands/index.md
       - use/commands/pmm-admin.md

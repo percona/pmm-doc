@@ -23,7 +23,7 @@ To share a dashboard with as a direct link:
 
 Rendering images requires the Image Renderer plug-in. If your PMM Admin has not installed this for your PMM instance, you will see the following error message under **Share Panel > Link**.
     
-    ![!image](../../../_images/No_Image_Render_Plugin.png)
+![!image](../../../_images/No_Image_Render_Plugin.png)
 
 To install the dependencies:
 {.power-number}
