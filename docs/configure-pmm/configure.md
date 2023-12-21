@@ -1,8 +1,8 @@
 # Configure PMM
 
-The *Settings* page is where you configure PMM.
+The **Settings** page is where you configure PMM.
 
-Open the *Settings* page from the [main menu](../details/interface.md#main-menu) with <i class="uil uil-cog"></i> *Configuration* → <i class="uil uil-setting"></i> *Settings*. The page opens with the *Metrics Resolution* settings tab selected.
+Open the **Settings** page from the [main menu](../details/interface.md#main-menu) with <i class="uil uil-cog"></i> **Configuration** → <i class="uil uil-setting"></i> **Settings**. The page opens with the **Metrics Resolution** settings tab selected.
 
 ![!image](../_images/PMM_Settings_Metrics_Resolution.jpg)
 
@@ -28,4 +28,4 @@ On the left are the selector tabs:
       * [Change Password after Login](percona_platform.md#change-password-after-login)
 
 !!! hint alert alert-success "Tip"
-    Click *Apply changes* to save any changes made here.
+    Click **Apply changes** to save any changes made here.

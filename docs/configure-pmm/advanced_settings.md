@@ -4,11 +4,11 @@
 
 ## Data Retention
 
-*Data retention* specifies how long data is stored by PMM Server. By default, time-series data is stored for 30 days. You can adjust the data retention time to balance your system's available disk space with your metrics history requirements.
+**Data retention** specifies how long data is stored by PMM Server. By default, time-series data is stored for 30 days. You can adjust the data retention time to balance your system's available disk space with your metrics history requirements.
 
 ## Telemetry
 
-The *Telemetry* switch enables gathering and sending basic **anonymous** data to Percona, which helps us to determine where to focus the development and what is the uptake for each release of PMM. 
+The **Telemetry** switch enables gathering and sending basic **anonymous** data to Percona, which helps us to determine where to focus the development and what is the uptake for each release of PMM. 
 Specifically, gathering this information helps determine if we need to release patches to legacy versions beyond support, determine when supporting a particular version is no longer necessary, and understand the best frequency of releases.
 
 PMM Telemetry is based on data collected by various PMM components and stored inside PMM server 
@@ -16,7 +16,7 @@ PMM Telemetry is based on data collected by various PMM components and stored in
 -!!! note alert alert-primary ""
     When PMM is installed, telemetry is not sent immediately. Before the first telemetry report is generated, PMM provides users with a 24-hour grace period to disable telemetry.
 
-To see the metrics being collected by telemetry, from the [main menu](../details/interface.md#main-menu) navigate to <i class="uil uil-cog"></i> *Configuration* → <i class="uil uil-setting"></i> *Settings* → *Advanced Settings* → *Telemetry* and hover over the exclamation mark.
+To see the metrics being collected by telemetry, from the [main menu](../details/interface.md#main-menu) navigate to <i class="uil uil-cog"></i> **Configuration** → <i class="uil uil-setting"></i> **Settings** → **Advanced Settings** → **Telemetry** and hover over the exclamation mark.
 
 ![!image](../_images/PMM_Settings_Advanced_Settings_Telemetry.png)
 
@@ -32,11 +32,11 @@ The landing page for this service, [check.percona.com](https://check.percona.com
 
 Grafana’s [anonymous usage statistics](https://grafana.com/docs/grafana/latest/administration/configuration/#reporting-enabled) is not managed by PMM. To activate it, you must change the PMM Server container configuration after each update.
 
-As well as via the *PMM Settings* page, you can also disable telemetry with the `-e DISABLE_TELEMETRY=1` option in your docker run statement for the PMM Server.
+As well as via the **PMM Settings** page, you can also disable telemetry with the `-e DISABLE_TELEMETRY=1` option in your docker run statement for the PMM Server.
 
 For information on the various config parameters for telemetry, see the [config file](https://github.com/percona/pmm/blob/main/managed/services/telemetry/config.default.yml).
 
-When active, PMM will automatically check for updates and put a notification in the home page *Updates* dashboard if any are available.
+When active, PMM will automatically check for updates and put a notification in the home page **Updates** dashboard if any are available.
 
 ## Advisors
 
@@ -46,15 +46,15 @@ The findings are reported on the **Advisors > Advisor Insights** page, and an ov
 
 The Advisors option is enabled by default.  Checks are re-fetched and rerun at intervals.
 
-See [Working with Advisor checks](../get-started/advisors.md).
+See [Working with Advisor checks](../advisors/advisors.md).
 
 ## Percona Alerting
 
-Enables [Percona Alerting](../get-started/alerting.md) and reveals the **Percona templated alerts** option on the **Alerting** page.
+Enables [Percona Alerting](../alert/index.md) and reveals the **Percona templated alerts** option on the **Alerting** page.
 
 ## Backup Management
 
-Enables [Backup Management](../get-started/backup/index.md) option and reveals the **Backup** page from where you can:
+Enables [Backup Management](../backup/index.md) option and reveals the **Backup** page from where you can:
 
 - Create and restore MongoDB and MySQL backups
 - Automate backup scheduling
