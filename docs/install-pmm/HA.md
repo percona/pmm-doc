@@ -80,6 +80,9 @@ For all IP addresses, use the format `17.10.1.x`, and for all usernames and pass
     Ensure that you have all the environment variables from Step 1 set in each instance where you run these commands.
 
 ### **Step 2: Create Docker network (Optional)**
+
+To create Docker network:
+{.power-number}
         
 1. Set up a Docker network for PMM services if you plan to run all the services on the same instance. As a result of this Docker network, your containers will be able to communicate with each other, which is essential for the High Availability (HA) mode to function properly in PMM. This step may be optional if you run your services on separate instances.
 
@@ -94,6 +97,7 @@ For all IP addresses, use the format `17.10.1.x`, and for all usernames and pass
 ClickHouse is an open-source column-oriented database management system. In PMM, ClickHouse stores Query Analytics (QAN) metrics, which provide detailed information about your queries.
 
 To set up ClickHouse:
+{.power-number}
 
 1. Pull the ClickHouse Docker image.
 
@@ -141,6 +145,7 @@ To set up ClickHouse:
 VictoriaMetrics provides a long-term storage solution for your time-series data. In PMM, it is used to store Prometheus metrics.
 
 To set up VictoriaMetrics:
+{.power-number}
 
 1. Pull the VictoriaMetrics Docker image.
 
@@ -210,6 +215,7 @@ To set up VictoriaMetrics:
 PostgreSQL is a powerful, open-source object-relational database system. In PMM, it's used to store data related to inventory, settings, and other features.
 
 To set up PostgreSQL:
+{.power-number}
 
 1. Pull the Postgres Docker image.
 
@@ -303,6 +309,7 @@ To set up PostgreSQL:
 ### **Step 6: Running PMM Services**
 
 The PMM server orchestrates the collection, storage, and visualization of metrics. In our high-availability setup, we'll have one active PMM server and two passive PMM servers.
+{.power-number}
 
 1. Pull the PMM Server Docker image:
     
@@ -542,6 +549,7 @@ HAProxy provides high availability for your PMM setup by directing traffic to th
     
 
 1. Pull the HAProxy Docker image.
+{.power-number}
     
     ```bash
     docker pull haproxy:2.4.2-alpine
@@ -663,6 +671,7 @@ HAProxy is now configured to redirect traffic to the leader PMM managed server. 
 ### **Step 8: Accessing PMM**
 
 You can access the PMM web interface via HAProxy once all the components are set up and configured:
+{.power-number}
 
 1. Access the PMM services by navigating to `https://<HAProxy_IP>` in your web browser. Replace `<HAProxy_IP>` with the IP address or hostname of the machine running the HAProxy container.
 2. You should now see the PMM login screen. Log in using the default credentials, unless you changed them during setup.
