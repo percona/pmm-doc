@@ -161,6 +161,7 @@ nav:
   - Quickstart Guide: quickstart.md
   - Install:
       - install-pmm/index.md
+      - install-pmm/HA.md
       - Plan your PMM installation: 
         - install-pmm/plan-pmm-installation/hardware_and_system.md
         - install-pmm/plan-pmm-installation/network_and_firewall.md
