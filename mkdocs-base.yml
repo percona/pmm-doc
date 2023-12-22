@@ -402,8 +402,8 @@ nav:
       - configure-pmm/ssh.md
       - configure-pmm/alertmanager.md
       - Percona Platform:
-        - configure-pmm/integrate_with_percona_platform.md
-        - configure-pmm/check_percona_platform.md
+        - configure-pmm/percona_platform/integrate_with_percona_platform.md
+        - configure-pmm/percona_platform/check_percona_platform.md
   - Administer:
       - pmm-admin/index.md
       - Manage users:
