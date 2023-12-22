@@ -9,6 +9,7 @@ You can edit users by changing the information or settings for an individual use
 ## Grant or Revoke admin privileges
 
 You can grant or revoke admin access to a user as follows:
+{.power-number}
 
 1. On the **Users** tab, click the user account you want to edit.
 
@@ -29,6 +30,7 @@ You can change the organization role assigned to your user account.
 ![!image](../../_images/PMM-change-role.png)
 
 To change the role:
+{.power-number}
 
 1. On the **Users** tab, click the user for whom you want to change the role.
 
