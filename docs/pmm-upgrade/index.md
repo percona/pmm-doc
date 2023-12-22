@@ -1,4 +1,4 @@
-# Updgrade PMM
+# Upgrade PMM
 
 !!! caution alert alert-warning "Important"
     Upgrade the PMM Server before you upgrade the PMM Client.

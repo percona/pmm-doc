@@ -1,4 +1,4 @@
-# Uninstall PMM client with package manager
+# Uninstall PMM client using package manager
 
 To uninstall PMM client with package manager, do the following steps:
 
