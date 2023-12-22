@@ -158,7 +158,7 @@ nav:
   - Discover:
       - discover-pmm/why-pmm.md
       - discover-pmm/features.md
-  - Quickstart Guide: getstarted.md
+  - Quickstart Guide: quickstart.md
   - Install:
       - install-pmm/index.md
       - Plan your PMM installation: 
@@ -407,6 +407,7 @@ nav:
   - Administer:
       - pmm-admin/index.md
       - Manage users:
+        - pmm-admin/manage-users/index.md
         - pmm-admin/manage-users/add_users.md
         - pmm-admin/manage-users/edit_users.md
         - pmm-admin/manage-users/delete_users.md
@@ -511,6 +512,9 @@ nav:
         - reference/ui/panels.md
         - reference/ui/timezone.md
         - reference/ui/view.md
+      - PMM API:
+        - api/index.md
+        - api/authentication.md
       - reference/pmm_dump.md
       - reference/pmm_components_and_versions.md
       - reference/develop_advisor_checks.md
@@ -521,6 +525,5 @@ nav:
         - reference/third-party/postgresql.md
       -  reference/glossary.md
       -  reference/faq.md
-      - PMM API:
-        - api/index.md
-        - api/authentication.md
+      - trademark-policy.md
+      - copyright.md
