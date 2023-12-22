@@ -2,6 +2,7 @@
 
 
 The following questions are being answered related to personal and confidential data handling in PMM:
+{.power-number}
 
 1. Which type of data is transmitted?
 

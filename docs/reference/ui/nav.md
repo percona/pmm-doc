@@ -9,7 +9,7 @@ There are two ways to open the dashboard search page. (Each takes you to the sam
 
 - Click the dashboard name in the navigation bar (top row, to the right of the <i class="uil uil-apps"></i> icon). (To search within the current folder, click the folder name instead of the dashboard name.)
 
-   ![!Search dashboards by name](../../_images/PMM_Home_Dashboard_Search.jpg)
+      ![!Search dashboards by name](../../_images/PMM_Home_Dashboard_Search.jpg)
 
 1. Click _Search dashboards by name_ and begin typing any part of the dashboard name (in this example, "_Instances_").
 
@@ -21,5 +21,5 @@ There are two ways to open the dashboard search page. (Each takes you to the sam
 
 ## Open a dashboard with the menu
 
-In the [main menu](../details/interface.md#main-menu), the {{icon.dashboards}} _PMM Dashboards_ icon reveals a submenu containing links to all PMM dashboards grouped by service type. (This menu will replace the [shortcut menu](../details/interface.md#shortcut-menu) which has links to commonly-used dashboards.)
+In the [main menu](../../reference/ui/ui_components.md#main-menu), the {{icon.dashboards}} _PMM Dashboards_ icon reveals a submenu containing links to all PMM dashboards grouped by service type. (This menu will replace the [shortcut menu](../../reference/ui/ui_components.md#shortcut-menu) which has links to commonly-used dashboards.)
 

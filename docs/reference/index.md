@@ -8,7 +8,7 @@ PMM is a client/server application built by Percona comprising its own and third
 
 ## PMM Server
 
-PMM Server is the heart of PMM. It receives data from clients, collects it, and stores it. Metrics are drawn as tables, charts and graphs within [_dashboards_](dashboards/), each a part of the web-based [user interface](../get-started/interface.md).
+PMM Server is the heart of PMM. It receives data from clients, collects it, and stores it. Metrics are drawn as tables, charts and graphs within [_dashboards_](../use/dashboards-panels/index.md), each a part of the web-based [user interface](../reference/ui/index.md).
 
 ## PMM Client
 
@@ -18,7 +18,7 @@ PMM Client runs on every database host or node you want to monitor. The client c
 
 ## Percona Platform
 
-[Percona Platform](../how-to/integrate-patform.md) provides value-added services for PMM.
+[Percona Platform](../configure-pmm/percona_platform/integrate_with_percona_platform.md) provides value-added services for PMM.
 
 ## PMM context
 

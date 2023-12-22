@@ -162,8 +162,8 @@ nav:
   - Install:
       - install-pmm/index.md
       - Plan your PMM installation: 
-        - plan-pmm-installation/hardware_and_system.md
-        - plan-pmm-installation/network_and_firewall.md
+        - install-pmm/plan-pmm-installation/hardware_and_system.md
+        - install-pmm/plan-pmm-installation/network_and_firewall.md
       - Install PMM server:
         - install-pmm/install-pmm-server/index.md
         - install-pmm/install-pmm-server/prerequisites.md
@@ -502,7 +502,8 @@ nav:
   
   - Reference:
       - reference/index.md 
-      - PMM user interface: 
+      - PMM user interface:
+        - reference/ui/ui_components.md  
         - reference/ui/index.md
         - reference/ui/log_in.md
         - reference/ui/controls.md

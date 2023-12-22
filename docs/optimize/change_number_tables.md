@@ -1,4 +1,4 @@
-# Change the number of tables beyond which per-table statistics is disabled
+# Change the number of tables
 
 When adding an instance with `pmm-admin add`, the `--disable-tablestats-limit` option changes the number of tables (from the default of 1000) beyond which per-table statistics collection is disabled.
 

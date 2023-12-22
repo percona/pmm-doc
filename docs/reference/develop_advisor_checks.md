@@ -17,6 +17,9 @@ This means that extracted data is processed on the PMM side and not sent back to
 
 ## Backend
 
+At the backend, pmm-managed does the following:
+{.power-number}
+
 1. pmm-managed checks that the installation is opted-in for checks.
 2. pmm-managed downloads files with checks from Percona Platform.
 3. pmm-managed verifies file signatures using a list of hard-coded public keys. At least one signature should be correct.

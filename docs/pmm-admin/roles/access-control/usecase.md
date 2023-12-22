@@ -16,7 +16,7 @@ This use case demonstrates the following scenario:
 
 An overview of the infrastructure can be seen in the diagram below. PMM monitors several services. The metrics that are stored in VictoriaMetrics have the appropriate labels.
 
-   ![!](../../_images/PMM_access_control_usecase_metrics.jpg)
+   ![!](../../../_images/PMM_access_control_usecase_metrics.jpg)
 
  This diagram shows several roles within a company structure that have access to PMM, as well as the permissions they should be granted:
 
@@ -24,7 +24,7 @@ An overview of the infrastructure can be seen in the diagram below. PMM monitors
 - DBA role - has access to all metrics within **env=prod** only
 - QA role - has access to all metrics within **env=qa** only
 
-    ![!](../../_images/PMM_access_control_usecase_roles.jpg)
+    ![!](../../../_images/PMM_access_control_usecase_roles.jpg)
 
 
 ## Use case 2

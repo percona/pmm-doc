@@ -16,12 +16,12 @@ If the PMM server wasn't updated correctly, or if you have concerns about the re
 
     Replace `admin:admin` with your username/password, and replace `PMM_SERVER` with your server address.
 
-    !!! note alert alert-primary ""
+    !!! note alert alert-primary "Note"
         You will not see the logs using this method.
 
     Refresh The Home page in 2-5 minutes, and you should see that PMM was updated.
 
-3. Upgrade PMM server using [Docker](../setting-up/server/docker.md#upgrade).
+3. Upgrade PMM server using [Docker](../pmm-upgrade/upgrade_docker.md).
 
 
 ## PMM server not showing latest versions available with the instances created from AWS

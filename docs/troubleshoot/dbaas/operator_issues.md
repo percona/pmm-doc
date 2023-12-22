@@ -1,6 +1,7 @@
 # Troubleshooting operators installation
 
 Once OLM is installed, PMM does the following actions to install each operator:
+{.power-number}
 
 1. Creates a subscription for an operator
 2. Approves the first available install plan automatically

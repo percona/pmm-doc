@@ -7,7 +7,7 @@ This section focuses on configuration issues, such as PMM-agent connection, addi
 
 There are many causes of broken network connectivity.
 
-The container is constrained by the host-level routing and firewall rules when using [using Docker](../setting-up/server/docker.md). For example, your hosting provider might have default `iptables` rules on their hosts that block communication between PMM Server and PMM Client, resulting in *DOWN* targets in VictoriaMetrics. If this happens, check the firewall and routing settings on the Docker host.
+The container is constrained by the host-level routing and firewall rules when using [using Docker](../install-pmm/install-pmm-server/index.md). For example, your hosting provider might have default `iptables` rules on their hosts that block communication between PMM Server and PMM Client, resulting in *DOWN* targets in VictoriaMetrics. If this happens, check the firewall and routing settings on the Docker host.
 
 PMM can also generate diagnostics data that can be examined and/or shared with our support team to help solve an issue. You can get collected logs from PMM Client using the pmm-admin summary command.
 
@@ -23,9 +23,13 @@ In a browser, visit `https://<address-of-your-pmm-server>/logs.zip`.
 
 **From Help menu**
 
-1. Select <i class="uil uil-question-circle"></i> *Help* → <i class="uil uil-download-alt"></i> *PMM Logs*.
+To obtain the logs from the **Help** menu:
+{.power-number}
 
-2. Click *PMM Logs* to retrieve PMM diagnostics data which can be examined and shared with our support team should you need help.
+
+1. Select <i class="uil uil-question-circle"></i> **Help** → <i class="uil uil-download-alt"></i> **PMM Logs**.
+
+2. Click **PMM Logs** to retrieve PMM diagnostics data which can be examined and shared with our support team should you need help.
 
 ## Connection difficulties
 
@@ -51,7 +55,7 @@ will give:
 
 When adding clients to the PMM server, you use the `admin` user. However, if you change the password for the admin user from the PMM UI, then the clients will not be able to access PMM due to authentication issues. Also, Grafana will lock out the admin user due to multiple unsuccessful login attempts.
 
-In such a scenario, use [API key](../details/api.md#api-keys-and-authentication) for authentication. You can use API keys as a replacement for basic authentication.
+In such a scenario, use [API key](../api/authentication.md#api-keys-and-authentication) for authentication. You can use API keys as a replacement for basic authentication.
 
 
 
