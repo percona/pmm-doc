@@ -62,7 +62,7 @@ extra_css:
 
 #Copyright
 copyright: >
-  "<a href='https://www.percona.com/about>Percona LLC</a> and/or its affiliates' &copy; <script>document.write(new Date().getFullYear())</script>"
+  <a href='https://www.percona.com/about'>Percona LLC</a> and/or its affiliates &copy; <script>document.write(new Date().getFullYear())</script>
   
 extra_javascript:
   #  - js/lightgallery.min.js
