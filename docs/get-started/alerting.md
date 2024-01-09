@@ -181,29 +181,27 @@ Contact points with invalid settings show a **No Attempts** status under <i clas
 To use SMTP with a PMM Docker installation:
 
 1. Create an `.env` file and populate it with your SMTP credentials (and other environment variables) as follows:
-
-        ```
-        GF_SMTP_ENABLED=true  
-        GF_SMTP_HOST=smtp.gmail.com:587
-        GF_SMTP_USER=email@domain.com
-        GF_SMTP_PASSWORD=<YOUR_SMTP_PASSWORD>
-        GF_SMTP_SKIP_VERIFY=false
-        GF_SMTP_FROM_ADDRESS=email@domain.com
-        GF_SMTP_FROM_NAME=Percona Alerting
-        ```
-    Below is a summary of each environment variable above:
-    * `GF_SMTP_ENABLED`: When true, enables Grafana to send emails. 
-    * `GF_SMTP_HOST`: Host address of your SMTP server.
-    * `GF_SMTP_USER`: Username for SMTP authentication.
-    * `GF_SMTP_PASSWORD`: Password for SMTP authentication
-    * `GF_SMTP_SKIP_VERIFY`: When true, verifies SSL for the SMTP server.
-    * `GF_SMTP_FROM_ADDRESS`: Email address to be used when sending out emails.
-    * `GF_SMTP_FROM_NAME`: Name to be used when sending out emails.
+    ```
+    GF_SMTP_ENABLED=true  
+    GF_SMTP_HOST=smtp.gmail.com:587
+    GF_SMTP_USER=email@domain.com
+    GF_SMTP_PASSWORD=<YOUR_SMTP_PASSWORD>
+    GF_SMTP_SKIP_VERIFY=false
+    GF_SMTP_FROM_ADDRESS=email@domain.com
+    GF_SMTP_FROM_NAME=Percona Alerting
+    ```
+    Below is a summary of each environment variable above: 
+    - `GF_SMTP_ENABLED`: When true, enables Grafana to send emails. 
+    - `GF_SMTP_HOST`: Host address of your SMTP server.
+    - `GF_SMTP_USER`: Username for SMTP authentication.
+    - `GF_SMTP_PASSWORD`: Password for SMTP authentication
+    - `GF_SMTP_SKIP_VERIFY`: When true, verifies SSL for the SMTP server.
+    - `GF_SMTP_FROM_ADDRESS`: Email address to be used when sending out emails.
+    - `GF_SMTP_FROM_NAME`: Name to be used when sending out emails.
 
     *NB: If you are using your Gmail’s SMTP credentials as shown above, you will have to generate an app password and fill it in as the value of your $GF_SMTP_PASSWORD variable.*
 
 2. Pass in the `.env` file to Docker run using the `--env-file` flag: 
-
     ```
     docker run --env-file=.env -p 443:443 -p 80:80 percona/pmm-server:2
     ```
@@ -343,14 +341,14 @@ After upgrading to PMM 2.31, make sure to manually migrate any alert rules that 
 
 The default command for migrating rules is:
 ```yaml 
-*python ia_migration.py -u admin -p admin*
+python3 ia_migration.py -u admin -p admin
 ```
 To see all the available options, check the scrip help using `ia_migration.py -h`
 
 ##### Script prerequisites
 
 - Python version 3.x, which you can download from [Python Downloads centre](https://www.python.org/downloads/).
-- [Requests library](https://requests.readthedocs.io/en/latest/user/install/#install), which you can install with the following command: ```pip install requests```.
+- [Requests library](https://requests.readthedocs.io/en/latest/user/install/#install), which you can install with the following command: ```pip3 install requests```.
 
 !!! caution alert alert-warning "Important"
     The script sets all migrated alert rules to Active. Make sure to silence any alerts that should not be firing.
