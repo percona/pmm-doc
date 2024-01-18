@@ -12,7 +12,7 @@ For example, for a PMM Server version 2.25.0, the PMM Client version should be 2
 
 ### Staged upgrade approach
 
-When upgrading PMM from older versions (2.30.0 and below), we recommend following a staged approach: first, upgrade to version 2.32.0, and then proceed to the latest version. 
+When upgrading PMM from older versions (2.30.0 and below), we recommend following a staged approach: first, upgrade to version 2.33.0, and then proceed to the latest version. 
 
 This sequential upgrading process ensures that PMM's internal components are migrated and updated correctly.
 
