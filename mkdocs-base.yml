@@ -4,7 +4,6 @@ site_name: Percona Monitoring and Management
 site_description: Documentation
 site_author: Percona LLC
 site_url: ""
-copyright: Percona LLC, &#169; 2023
 use_directory_urls: false
 repo_name: percona/pmm-doc
 repo_url: https://github.com/percona/pmm-doc
@@ -14,12 +13,20 @@ theme:
   name: material
   logo: _images/percona-logo.svg
   favicon: _images/percona-favicon.ico
+  custom_dir: overrides/
   font:
-    text: Poppins
+    text: Roboto
+    code: Roboto Mono
+  icon:
+    edit: material/file-edit-outline
+    view: material/file-eye-outline
+  
   palette:
     # Light mode
     - media: "(prefers-color-scheme: light)"
       scheme: percona-light
+      primary: custom
+      accent: custom
       toggle:
         icon: material/toggle-switch-off-outline
         name: Switch to dark mode
@@ -27,6 +34,8 @@ theme:
     # Dark mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
+      primary: custom
+      accent: custom
       toggle:
         icon: material/toggle-switch
         name: Switch to light mode
@@ -43,12 +52,18 @@ theme:
     - content.action.view
 
 extra_css:
-  - https://unicons.iconscout.com/release/v3.0.3/css/line.css
+  - https://unicons.iconscout.com/release/v4.0.8/css/line.css
   - https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css
   - css/percona.css
   - css/lightgallery.min.css
   - css/extra.css
+  - css/nocopy.css
+  - css/design.css
 
+#Copyright
+copyright: >
+  <a href='https://www.percona.com/about'>Percona LLC</a> and/or its affiliates &copy; <script>document.write(new Date().getFullYear())</script>
+  
 extra_javascript:
   #  - js/lightgallery.min.js
   - js/promptremover.js
@@ -56,11 +71,14 @@ extra_javascript:
 markdown_extensions:
   attr_list: {}
   toc:
-    permalink: True
+    permalink: true
   admonition: {}
+  footnotes: {}
   def_list: {}
   meta: {}
-  smarty: { smart_angled_quotes: true }
+  md_in_html: {}
+  smarty:
+      {smart_angled_quotes: true}
   pymdownx.details: {}
   pymdownx.mark: {}
   pymdownx.smartsymbols: {}
@@ -68,12 +86,22 @@ markdown_extensions:
       {alternate_style: true}
   pymdownx.tilde: {}
   pymdownx.superfences: {}
+  pymdownx.tabbed:
+    alternate_style: true
+  pymdownx.tasklist:
+    custom_checkbox: true
+  pymdownx.snippets:
+      base_path: ["snippets"]
+      auto_append:
+        - services-banner.md
   pymdownx.highlight:
-    linenums: false
-  pymdownx.inlinehilite: {}
+    use_pygments: true
   pymdownx.emoji:
-    emoji_index: !!python/name:materialx.emoji.twemoji
-    emoji_generator: !!python/name:materialx.emoji.to_svg
+    emoji_index: !!python/name:material.extensions.emoji.twemoji
+    emoji_generator: !!python/name:material.extensions.emoji.to_svg
+    options:
+      custom_icons:
+        - overrides/.icons
 
 plugins:
   search:
@@ -85,6 +113,7 @@ plugins:
     enable_checks: false
     min_length: 50
     max_length: 160
+  # https://mkdocs-macros-plugin.readthedocs.io/en/latest/
   macros:
     include_yaml:
       - "variables.yml"
@@ -94,9 +123,9 @@ plugins:
       - "setting-up/client/docker.md"
   # https://github.com/orzih/mkdocs-with-pdf
   with-pdf:
-    output_path: "_pdf/PerconaMonitoringAndManagement-2.41.0.pdf"
+    output_path: "_pdf/PerconaMonitoringAndManagement-2.41.1.pdf"
     cover_title: "Percona Monitoring and Management Documentation"
-    cover_subtitle: 2.41.0 (Dec 12, 2023)
+    cover_subtitle: 2.41.1 (Feb 2, 2024)
     author: "Percona Technical Documentation Team"
     cover_logo: docs/_images/Percona_Logo_Color.png
     custom_template_path: _resources/templates
@@ -119,11 +148,14 @@ extra:
       as to measure the effectiveness of our documentation and whether users
       find what they're searching for. With your consent, you're helping us to
       make our documentation better. Read more about <a class="reference external" href="https://www.percona.com/20180524-cookie-policy" target="_blank">Percona Cookie Policy</a>.
+  edit_page_text: '<i class="uil uil-pen"></i> <b>Edit this page</b>'
+  updated_text: '<i class="uil uil-refresh"></i> Page updated'
 
 # Common navigation for percona.com, render.com and PDF
 nav:
   - Welcome: index.md
-  - Setting up:
+  - Quickstart guide: quickstart/index.md
+  - Setting up: 
       - setting-up/index.md
       - Server:
           - setting-up/server/index.md
@@ -313,8 +345,9 @@ nav:
           - "Create a database cluster from a template": dbaas/DBaaS_template.md
       - "Backup and restore": dbaas/backup_restore.md
   - faq.md
-  - Release Notes:
+  - Release notes:
       - release-notes/index.md
+      - "PMM 2.41.1": release-notes/2.41.1.md
       - "PMM 2.41.0": release-notes/2.41.0.md
       - "PMM 2.40.1": release-notes/2.40.1.md
       - "PMM 2.40.0": release-notes/2.40.0.md
