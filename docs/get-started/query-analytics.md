@@ -286,7 +286,7 @@ QAN offers support for two types of query sources: `pg_stat_monitor` (PGSM) and 
 If PGSM is unavailable on your system, QAN will seamlessly fall back to PGSS and you will be notified of this in pmm-admin.
 
 
-PMM has integrated support for support for [pg_stat_monitor](https://docs.percona.com/pg-stat-monitor/index.html) 2.0 (PGSM 2.0)  into  QAN starting with version 2.36. This robust tool enhances PostgreSQL query performance monitoring by providing access to the latest improvements and fixes included in PGSM2, including:
+PMM has integrated support for [pg_stat_monitor](https://docs.percona.com/pg-stat-monitor/index.html) 2.0 (PGSM 2.0)  into  QAN starting with version 2.36. This robust tool enhances PostgreSQL query performance monitoring by providing access to the latest improvements and fixes included in PGSM2, including:
 
 - Improved internal architecture that results in fewer lock acquisitions and increases performance by approximately 20%.
 - Support for PostgreSQL 15 
