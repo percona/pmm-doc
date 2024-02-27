@@ -280,7 +280,7 @@ The *Plan* tab shows the plan for PostgreSQL queries (only available when using 
 
 ![!image](../_images/PMM_Query_Analytics_Tabs_Plan.png)
 
-## Query Analytics for PostgreSQL
+## Query Analytics (QAN) for PostgreSQL
 
 In QAN we support two types of query sources, `pg_stat_monitor` and `pg_stat_statements`. Before PGSS was the default query source, but now it's PGSM. In case PGSM is not available on your system it will fallback to PGSS with a warning message in pmm-admin during adding. 
 
