@@ -282,7 +282,8 @@ The *Plan* tab shows the plan for PostgreSQL queries (only available when using 
 
 ## Query Analytics (QAN) for PostgreSQL
 
-In QAN we support two types of query sources, `pg_stat_monitor` and `pg_stat_statements`. Before PGSS was the default query source, but now it's PGSM. In case PGSM is not available on your system it will fallback to PGSS with a warning message in pmm-admin during adding. 
+QAN offers support for two types of query sources: `pg_stat_monitor` (PGSM) and `pg_stat_statements` (PGSS).  While PGSS used to be the default query source, recent PMM versions have transitioned to PGSM. 
+If PGSM is unavailable on your system, QAN will seamlessly fall back to PGSS and you will be notified of this in pmm-admin.
 
 PMM 2.36 now supports [pg_stat_monitor](https://docs.percona.com/pg-stat-monitor/index.html) 2.0 (PGSM 2.0) in QAN, a powerful PostgreSQL query performance monitoring tool. By downloading this update, you will have access to the latest improvements and fixes covered by PGSM2, including:
 
