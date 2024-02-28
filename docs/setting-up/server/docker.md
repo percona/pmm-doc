@@ -373,7 +373,8 @@ The following variables are also supported but values passed are not verified by
 | --------------------------------------------------------------- | ------------------------------------------------------
 | `_`, `HOME`, `HOSTNAME`, `LANG`, `PATH`, `PWD`, `SHLVL`, `TERM` | Default environment variables.
 | `GF_*`                                                          | [Grafana](https://grafana.com/docs/grafana/latest/setup-grafana/configure-grafana/) environment variables.
-| `VM_*`                                                          | [VictoriaMetrics'](https://docs.victoriametrics.com/Single-server-VictoriaMetrics.html#environment-variables) environment variables. Note that environment variables inherit their names from the command line flags. To find out which variables are available to you, see the full list of [CLI Command Flags](https://docs.victoriametrics.com/Single-server-VictoriaMetrics.html#list-of-command-line-flags). 
+| `VM_*`                                                          | [VictoriaMetrics'](https://docs.victoriametrics.com/Single-server-VictoriaMetrics.html#environment-variables) environment variables. 
+Note that environment variables inherit their names from the command line flags. To find out which variables are available to you, see the full list of [CLI command flags](https://docs.victoriametrics.com/Single-server-VictoriaMetrics.html#list-of-command-line-flags). 
 
 | `SUPERVISOR_`                                                   | `supervisord` environment variables.
 | `KUBERNETES_`                                                   | Kubernetes environment variables.
