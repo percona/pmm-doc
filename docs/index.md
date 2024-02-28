@@ -14,7 +14,7 @@ Percona Monitoring and Management (PMM) is an open source database observability
 
 !!! warning "Important"
 
-    Are you curious to see what our Home page looks like? You can get a glimpse of it with our free, [live demo](https://pmmdemo.percona.com/graph/)! 
+    Are you curious to see what our Home page looks like? You can get a glimpse of it with our free, [live demo](https://pmmdemo.percona.com/graph/)!
 
 <div data-grid markdown><div data-banner markdown>
 
