@@ -1,8 +1,8 @@
 # Prerequisites
 
-1. Check your system [requirements](..//..//plan-pmm-installation/hardware_and_system.md#server-requirements).
+1. Check your system [requirements](../plan-pmm-installation/hardware_and_system.md#server-requirements).
 
-2. Configure your [network](..//..//plan-pmm-installation/network_and_firewall.md).
+2. Configure your [network](../plan-pmm-installation/network_and_firewall.md).
 
 3. Authenticate using API keys.
 
