@@ -231,6 +231,8 @@ nav:
             - install-pmm/install-pmm-client/connect-database/external.md
             - HAproxy: install-pmm/install-pmm-client/connect-database/haproxy.md
             - ProxySQL: install-pmm/install-pmm-client/connect-database/proxysql.md
+          - install-pmm/install-pmm-client/connect-database/extend_metrics.md
+
         - Remove services: install-pmm/install-pmm-client/connect-database/remove-services/index.md
 
   - Upgrade: 
