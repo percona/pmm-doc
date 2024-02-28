@@ -12,9 +12,9 @@ Percona Monitoring and Management (PMM) is an open source database observability
 - To set up basic PMM, you just need to install a [server](reference/index.md#server) and a [client](reference/index.md#client) on each system you intend to monitor.
 
 
-!!! quote ""
+!!! warning "Important"
 
-    Would you like to see a preview of our Home page? Take a look at our free, live [demo](https://pmmdemo.percona.com/).
+    Are you curious to see what our Home page looks like? You can get a glimpse of it with our free, live demo! 
 
 <div data-grid markdown><div data-banner markdown>
 
