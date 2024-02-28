@@ -170,6 +170,7 @@ nav:
     - Install PMM server:
       - install-pmm/install-pmm-server/index.md
       - install-pmm/install-pmm-server/prerequisites.md
+      - install-pmm/install-pmm-server/secure.md
       - Bare metal:
         - Easy-install script: install-pmm/install-pmm-server/baremetal/easy-install.md  
         - Docker:
