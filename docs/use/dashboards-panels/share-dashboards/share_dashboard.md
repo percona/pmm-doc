@@ -16,7 +16,7 @@ To share a dashboard with as a direct link:
 !!! hint alert alert-success "Tip"
        If your current domain is different than the one specified in the Grafana .INI configuration file, PMM will ask you to correct this mismatch before you can generate a short URL:
     
-    ![!image](../../../_images/PMM_Common_Panel_Menu_Share.png)
+![!image](../../../_images/PMM_Common_Panel_Menu_Share.png)
     
     
 ## Share as a PNG file
