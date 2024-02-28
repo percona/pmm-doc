@@ -33,7 +33,7 @@ To upgrade PMM server using Docker:
     docker stop pmm-server
     ```
 
-2. Perform a [backup](#backup).
+2. Perform a [backup](../backup/index.md).
 
 
 3. Pull the latest image.
