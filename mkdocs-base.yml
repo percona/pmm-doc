@@ -257,14 +257,14 @@ nav:
   - Use:
     - use/using-pmm.md
     - PMM user interface:
-      - reference/ui/ui_components.md  
-      - reference/ui/index.md
-      - reference/ui/log_in.md
-      - reference/ui/controls.md
-      - reference/ui/nav.md
-      - reference/ui/panels.md
-      - reference/ui/timezone.md
-      - reference/ui/view.md
+      - use/ui/ui_components.md  
+      - use/ui/index.md
+      - use/ui/log_in.md
+      - use/ui/controls.md
+      - use/ui/nav.md
+      - use/ui/panels.md
+      - use/ui/timezone.md
+      - use/ui/view.md
     - PMM Inventory: use/dashboard-inventory.md
     - Metrics monitoring: 
       - use/monitor.md
