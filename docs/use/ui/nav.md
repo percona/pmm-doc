@@ -21,5 +21,5 @@ There are two ways to open the dashboard search page. (Each takes you to the sam
 
 ## Open a dashboard with the menu
 
-In the [main menu](../../reference/ui/ui_components.md#main-menu), the {{icon.dashboards}} _PMM Dashboards_ icon reveals a submenu containing links to all PMM dashboards grouped by service type. (This menu will replace the [shortcut menu](../../reference/ui/ui_components.md#shortcut-menu) which has links to commonly-used dashboards.)
+In the [main menu](../../use/ui/ui_components.md#main-menu), the {{icon.dashboards}} _PMM Dashboards_ icon reveals a submenu containing links to all PMM dashboards grouped by service type. (This menu will replace the [shortcut menu](../../reference/ui/ui_components.md#shortcut-menu) which has links to commonly-used dashboards.)
 
