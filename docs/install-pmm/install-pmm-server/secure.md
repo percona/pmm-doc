@@ -2,9 +2,7 @@
 
 You can improve the security of your PMM installation with:
 
-- [SSL encryption](#ssl-encryption) to secure traffic between client and server;
-
-- [Grafana HTTPS secure cookies](#grafana-https-secure-cookies)
+[SSL encryption](#ssl-encryption) to secure traffic between client and server;
 
 To see which security features are enabled:
 
