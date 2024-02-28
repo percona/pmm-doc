@@ -472,6 +472,53 @@ Open the [*PXC/Galera Cluster Summary* dashboard][DASH_PXCGALERACLUSTER].
         - [Percona Blog -- Impact of logging on MySQL's performance][BLOG_LOGGING]
         - [Percona Blog -- Running Custom MySQL Queries in Percona Monitoring and Management][BLOG_CUSTOM_QUERIES_MYSQL]
 
+## Optimize
+
+The following section provides instructions for optimizing PMM.
+
+### Improve PMM Performance
+
+You can improve PMM perfromance with the Table Statistics Options as follows:
+
+If a MySQL instance has a lot of schemas or tables, there are two options to help improve the performance of PMM when adding instances with `pmm-admin add`:
+
+- `--disable-tablestats`, or,
+- `--disable-tablestats-limit`.
+
+!!! warning "Important"
+    - These settings are only for adding an instance. To change them, you must remove and re-add the instances.
+    - Only one of these options can be used when adding an instance.
+
+
+### Change the number of tables
+
+When adding an instance with `pmm-admin add`, the `--disable-tablestats-limit` option changes the number of tables (from the default of 1000) beyond which per-table statistics collection is disabled.
+
+#### USAGE
+
+```sh
+pmm-admin add mysql --disable-tablestats-limit=<LIMIT>
+```
+
+??? info "Examples"
+
+    Add a MySQL instance, disabling per-table statistics collection when the number of tables in the instance reaches 2000.
+
+    ```sh
+    pmm-admin add mysql --disable-tablestats-limit=2000
+    ```
+
+### Disable per-table statistics
+
+You can optimize PMM by disabling per-table statistics for an instance as follows:
+
+When adding an instance with `pmm-admin add`, the `--disable-tablestats` option disables table statistics collection when there are more than the default number (1000) of tables in the instance.
+
+#### USAGE
+
+```sh
+pmm-admin add mysql --disable-tablestats
+```
 [DASH_MYSQLUSERDETAILS]: ../../../use/dashboards/dashboard-mysql-user-details.md
 [DASH_PXCGALERACLUSTER]: ../../../use/dashboards/dashboard-pxc-galera-cluster-summary.md
 [LOGROTATE]: https://linux.die.net/man/8/logrotate
