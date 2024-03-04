@@ -321,7 +321,6 @@ nav:
       - use/commands/index.md
       - use/commands/pmm-admin.md
       - use/commands/pmm-agent.md
-      - Backup and restore: dbaas/backup_restore.md
   - Configure:      
     - configure-pmm/configure.md
     - configure-pmm/metrics_res.md
@@ -358,10 +357,6 @@ nav:
     - troubleshoot/checklist.md
     - troubleshoot/upgrade_issues.md
     - troubleshoot/config_issues.md
-    - DBaaS issues:
-      - troubleshoot/dbaas/index.md      
-      - troubleshoot/dbaas/olm_issues.md
-      - troubleshoot/dbaas/operator_issues.md
     - troubleshoot/alerting_issues.md
     - troubleshoot/qan_issues.md
     - troubleshoot/plugin_issues.md
