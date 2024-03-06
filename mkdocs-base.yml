@@ -453,8 +453,6 @@ nav:
         - reference/dashboards/kubernetes_volume.md
         - reference/dashboards/kubernetes_monitor_operators.md
         - reference/dashboards/kubernetes_monitor_db_clusters_managed.md
-      - DBaas:
-        - reference/dashboards/dashboard-cluster-summary.md
       - OS Dashboards:
         - reference/dashboards/dashboard-cpu-utilization-details.md
         - reference/dashboards/dashboard-disk-details.md
