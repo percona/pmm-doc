@@ -210,6 +210,8 @@ nav:
           - get-started/roles-and-permissions/use_case.md
       - get-started/query-analytics.md
       - get-started/advisors.md
+      - Advisors Details:
+          - get-started/advisors-details.md
   - How to:
       - how-to/index.md
       - how-to/configure.md
