@@ -13,7 +13,7 @@ The collector is enabled by default. The following folders are used for differen
 |  Medium    | `/usr/local/percona/pmm2/collectors/textfile-collector/medium-resolution` |
 |  Low       | `/usr/local/percona/pmm2/collectors/textfile-collector/low-resolution`    |
 
-![!image](../_images/node-exporter.textfile-collector.1.png)
+![!image](../../_images/node-exporter.textfile-collector.1.png)
 
 The exporter parses all files in these directories that match the filename wildcard expression `*.prom` using a simple text-based [exposition format](https://prometheus.io/docs/instrumenting/exposition_formats/#text-based-format).
 Metrics are stored on the PMM Server-side with additional labels related to this Node.
@@ -33,5 +33,5 @@ $ cat /etc/cron.d/loggedin_users
 */1 * * * *     root    /usr/bin/who | /usr/bin/wc -l | sed -ne 's/^/node_loggedin_users /p' > /usr/local/percona/pmm2/collectors/textfile-collector/high-resolution/node_users.prom
 ```
 
-![!image](../_images/node-exporter.textfile-collector.2.png)
+![!image](../../_images/node-exporter.textfile-collector.2.png)
 

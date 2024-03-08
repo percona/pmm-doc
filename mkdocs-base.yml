@@ -4,7 +4,7 @@ site_name: Percona Monitoring and Management
 site_description: Documentation
 site_author: Percona LLC
 site_url: ""
-copyright: Percona LLC, &#169; 2023
+copyright: Percona LLC, &#169; 2024
 use_directory_urls: false
 repo_name: percona/pmm-doc
 repo_url: https://github.com/percona/pmm-doc
@@ -127,9 +127,9 @@ plugins:
       - "setting-up/client/docker.md"
   # https://github.com/orzih/mkdocs-with-pdf
   with-pdf:
-    output_path: "_pdf/PerconaMonitoringAndManagement-2.41.0.pdf"
+    output_path: "_pdf/PerconaMonitoringAndManagement-2.41.1.pdf"
     cover_title: "Percona Monitoring and Management Documentation"
-    cover_subtitle: 2.41.0 (Oct 20, 2023)
+    cover_subtitle: 2.41.1 (Feb 01, 2024)
 
     author: "Percona Technical Documentation Team"
     cover_logo: docs/_images/Percona_Logo_Color.png
@@ -202,6 +202,8 @@ nav:
         - install-pmm/install-pmm-server/aws/back_pmm_server.md
         - install-pmm/install-pmm-server/aws/restore_pmm_server.md
         - install-pmm/install-pmm-server/aws/remove_pmm_server.md
+      - install-pmm/install-pmm-server/secure.md
+  
     - Set up PMM client:
       - Install PMM client:
         - install-pmm/install-pmm-client/index.md
@@ -210,20 +212,22 @@ nav:
         - Images: install-pmm/install-pmm-client/docker.md
         - Manual binaries: install-pmm/install-pmm-client/binary_package.md          
         - Register client node: install-pmm/register-client-node/index.md 
-        - Add services to PMM: 
-          - install-pmm/install-pmm-client/connect-database/index.md
-          - MySQL: install-pmm/install-pmm-client/connect-database/mysql.md
-          - MongoDB: install-pmm/install-pmm-client/connect-database/mongodb.md
-          - PostgreSQL: install-pmm/install-pmm-client/connect-database/postgresql.md
-          - AWS: install-pmm/install-pmm-client/connect-database/aws.md
-          - Azure: install-pmm/install-pmm-client/connect-database/azure.md
-          - Google Cloud: install-pmm/install-pmm-client/connect-database/google.md
-          - Linux: install-pmm/install-pmm-client/connect-database/linux.md
-          - Remote: install-pmm/install-pmm-client/connect-database/remote.md
-          - External:
-            - install-pmm/install-pmm-client/connect-database/external.md
-            - HAproxy: install-pmm/install-pmm-client/connect-database/haproxy.md
-            - ProxySQL: install-pmm/install-pmm-client/connect-database/proxysql.md
+      - Add services to PMM: 
+        - install-pmm/install-pmm-client/connect-database/index.md
+        - MySQL: install-pmm/install-pmm-client/connect-database/mysql.md
+        - MongoDB: install-pmm/install-pmm-client/connect-database/mongodb.md
+        - PostgreSQL: install-pmm/install-pmm-client/connect-database/postgresql.md
+        - AWS: install-pmm/install-pmm-client/connect-database/aws.md
+        - Azure: install-pmm/install-pmm-client/connect-database/azure.md
+        - Google Cloud: install-pmm/install-pmm-client/connect-database/google.md
+        - Linux: install-pmm/install-pmm-client/connect-database/linux.md
+        - Remote: install-pmm/install-pmm-client/connect-database/remote.md
+        - External:
+          - install-pmm/install-pmm-client/connect-database/external.md
+          - HAproxy: install-pmm/install-pmm-client/connect-database/haproxy.md
+          - ProxySQL: install-pmm/install-pmm-client/connect-database/proxysql.md
+        - install-pmm/install-pmm-client/connect-database/extend_metrics.md
+
         - Remove services: install-pmm/install-pmm-client/connect-database/remove-services/index.md
 
   - Upgrade: 
@@ -248,24 +252,17 @@ nav:
   - Use:
     - use/using-pmm.md
     - PMM user interface:
-      - reference/ui/ui_components.md  
-      - reference/ui/index.md
-      - reference/ui/log_in.md
-      - reference/ui/controls.md
-      - reference/ui/nav.md
-      - reference/ui/panels.md
-      - reference/ui/timezone.md
-      - reference/ui/view.md
+      - use/ui/ui_components.md  
+      - use/ui/index.md
+      - use/ui/log_in.md
+      - use/ui/controls.md
+      - use/ui/nav.md
+      - use/ui/panels.md
+      - use/ui/timezone.md
+      - use/ui/view.md
     - PMM Inventory: use/dashboard-inventory.md
     - Metrics monitoring: 
       - use/monitor.md
-      - PMM metrics: 
-        - use/metrics/index.md
-        - use/metrics/extend_metrics.md
-      - Optimize:
-        - optimize/improve_perf.md
-        - optimize/disable_table_stats.md
-        - optimize/change_number_tables.md
       - Dashboards:
         - use/dashboards-panels/index.md
         - Manage dashboards:
@@ -316,16 +313,11 @@ nav:
       - use/commands/index.md
       - use/commands/pmm-admin.md
       - use/commands/pmm-agent.md
-      - Backup and restore: dbaas/backup_restore.md
   - Configure:      
     - configure-pmm/configure.md
     - configure-pmm/metrics_res.md
     - configure-pmm/advanced_settings.md
     - configure-pmm/ssh.md
-    - Security in PMM:
-      - pmm-admin/security/index.md
-      - pmm-admin/security/ssl_encryption.md 
-      - pmm-admin/security/grafana_cookies.md  
     - Percona Platform:
       - configure-pmm/percona_platform/integrate_with_percona_platform.md
       - configure-pmm/percona_platform/check_percona_platform.md

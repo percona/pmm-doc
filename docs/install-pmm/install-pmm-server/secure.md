@@ -1,10 +1,8 @@
-# Secure
+# Security in PMM
 
 You can improve the security of your PMM installation with:
 
-- [SSL encryption](#ssl-encryption) to secure traffic between client and server;
-
-- [Grafana HTTPS secure cookies](#grafana-https-secure-cookies)
+[SSL encryption](#ssl-encryption) to secure traffic between client and server;
 
 To see which security features are enabled:
 
@@ -58,23 +56,3 @@ docker cp dhparam.pem pmm-server:/srv/nginx/dhparam.pem
 ```sh
 pmm-admin config --server-url=https://<user>:<password>@<server IP>
 ```
-
-## Grafana HTTPS secure cookies
-
-To enable:
-
-1. Start a shell within the Docker container.
-
-    ```sh
-    docker exec -it pmm-server bash
-    ```
-
-2. Edit `/etc/grafana/grafana.ini`.
-
-3. Enable `cookie_secure` and set the value to `true`.
-
-4. Restart Grafana.
-
-    ```sh
-    supervisorctl restart grafana
-    ```
