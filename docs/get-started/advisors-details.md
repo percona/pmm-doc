@@ -3,7 +3,7 @@
 
 The [**Advisors**](https://portal.percona.com/advisors) page in the Percona Portal lists the Percona Advisors you can run from PMM. That Page will show the Advisors available for your subscription tier.
 
-For simplicity, we also listening all Advisors and checks on this page:
+For simplicity, we also listing all Advisors and checks on this page:
 
 
 ### Configuration Advisors
@@ -43,8 +43,8 @@ For simplicity, we also listening all Advisors and checks on this page:
 | **Schema Design Query** | Helps create efficient database schemas by analyzing queries and offering suggestions for optimization. | All Users |MySQL|
 
 ## List of checks
-Every Advisor consists of the advisor checks inside. 
-We have listed the checks and their details here for more detailed information.
+Every Advisor consists of one or more Advisor checks. 
+We have listed the checks and their details here.
 
 ### MongoDB
 | Advisor| Check Name | Description | Summary |
