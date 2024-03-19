@@ -52,7 +52,7 @@ We have listed the checks and their details here.
 ### MongoDB
 | Advisor| Check Name | Description | Summary |
 | :--------- | :---------- | :--- |:--- |
-|Connection Configuration| mongodb\_connection\_sudden_spike | Warns about any significant increase in the number of connections exceeding 50% of the recent or typical connection count. | MongoDB Sudden Increase in Connection Count. |
+|Connection Configuration| mongodb\_connection\_sudden_spike | Warns about any significant increase in the number of connections exceeding 50% of the recent or typical connection count. | MongoDB Sudden Increase in Connection Count |
 |Connection Configuration| mongodb_connections | Returns the current number of connections as an informational notice when connection counts exceed 5000. | MongoDB High Connections |
 | Generic Configuration | mongo\_cache\_size | Warns when Mongo wiredtiger cache size is greater than the default 50%. | Mongo Storage Cache |
 | Generic Configuration | mongodb\_active\_vs\_available\_connections | Warns if the ratio between active and available connections is higher than 75%. | MongoDB Active vs Available Connections |
@@ -60,7 +60,7 @@ We have listed the checks and their details here.
 | Generic Configuration | mongodb_loglevel | Warns if MongoDB is not using the default Log level. | MongoDB Non-Default Log Level |
 | Generic Configuration | mongodb\_read\_tickets | Warns if MongoDB is using more than 128 read tickets. | MongoDB Read Tickets |
 | Generic Configuration | mongodb\_write\_tickets | Warns if MongoDB is using more than 128 write tickets. | MongoDB Write Tickets |
-| Generic Configuration | mongodb\_write\_tickets_runtime | Warns if MongoDB is using more than 128 write tickets during runtime. | MongoDB - Configuration Write ticket Check |
+| Generic Configuration | mongodb\_write\_tickets_runtime | Warns if MongoDB is using more than 128 write tickets during runtime. | MongoDB - Configuration Write Ticket Check |
 | Replication Configuration| mongodb\_psa\_architecture_check | Raises an error if the replicaSet is utilizing a PSA (Primary-Secondary-Arbiter) architecture.| MongoDB PSA Architecture |
 | Replication Configuration| mongodb\_replicaset\_topology | Warns if the Replica Set has less than thee data-bearing nodes.| MongoDB Replica Set Topology |
 | Resources Configuration| mongodb\_collection\_fragmented | Warns if the storage size exceeds the data size of a collection, indicating potential fragmentation. This suggests the need for compaction or an initial sync to reclaim disk space.| MongoDB Collections Fragmented |
@@ -80,7 +80,7 @@ We have listed the checks and their details here.
 | Replication Performance| mongodb\_replication\_lag | Warns if the replica set member lags behind the primary by more than 10 seconds. | MongoDB Replication Lag |
 | Index Query| mongodb\_shard\_collection\_inconsistent\_indexes | Warns if there are inconsistent indexes across shards for sharded collections. Missing or inconsistent indexes across shards can have a negative impact on performance. | MongoDB Sharding - Inconsistent Indexes Across Shards |
 | Index Query| mongodb\_unused\_index | Warns if there are unused indexes on any database collection in your instance. This requires enabling the "indexStats" collector. | MongoDB - Unused Indexes |
-| Authentication Security| mongodb_auth | Warns if MongoDB authentication is disabled. | MongoDB authentication |
+| Authentication Security| mongodb_auth | Warns if MongoDB authentication is disabled. | MongoDB Authentication |
 | Authentication Security| mongodb\_localhost\_auth_bypass | Warns if MongoDB localhost bypass is enabled. | MongoDB localhost authentication bypass enabled |
 | Configuration Security| mongodb\_authmech\_scramsha256 | Warns if MongoDB is not using the default SHA-256 hashing function as its SCRAM authentication method. | MongoDB Security AuthMech Check |
 | Connection Security| mongodb_bindip | Warns if the MongoDB network binding is not set as Recommended. | MonogDB IP Bindings |
@@ -90,40 +90,41 @@ We have listed the checks and their details here.
 ### MySQL
 | Advisor| Check Name | Description | Summary |
 | :--------- | :---------- | :--- |:--- |
-|Connection Configuration| mysql\_configuration\_max\_connections\_usage | Checks for MySQL max_connections configuration option for maximum utilization | Check max connections usage |
-| Generic Configuration | mysql\_automatic\_sp\_privileges\_enabled | This check reviews the automatic\_sp\_privileges configuration is ON. | Checks if automatic\_sp\_privileges configuration is ON. |
-| Generic Configuration | mysql\_config\_binlog\_retention\_period | Binlogs should not be rotated too often, except very specific cases. | Binlogs retention check |
-| Generic Configuration | mysql\_config\_binlog\_row\_image | Please consider setting binlog\_row\_image=FULL. | Binlogs raw image is not set to FULL |
-| Generic Configuration | mysql\_config\_binlogs_checksummed | Please consider setting binlog_checksum=CRC32 to improve consistency and reliability. | Server is not configured to enforce data integrity |
-| Generic Configuration | mysql\_config\_general_log | Check if the general log is enabled. | General Log is enabled |
-| Generic Configuration | mysql\_config\_log_bin | Check if the binlog is enabled or disabled. | Binary Log is disabled |
-| Generic Configuration | mysql\_config\_sql_mode | In order for maximum data integrity to be set, the server should have specific values configured in sql_mode. | Server is not configured to enforce data integrity |
-| Generic Configuration | mysql\_config\_tmp\_table\_size_limit | Check if the Temporary table size exceeds the heap table size. | Temp table size is larger than Heap Table size |
-| Generic Configuration | mysql\_configuration\_log_verbosity | Checks that warnings are being printed on the log | Check log verbosity |
-| Generic Configuration | mysql\_test\_database | This check returns a notice if there is database with name 'test' or 'test_%'. | MySQL test Database |
-| Generic Configuration | mysql_timezone | Checks if time zone is correctly loaded. | MySQL configuration check |
-| InnoDB Configuration| innodb\_redo\_logs\_not\_sized_correctly | This check reviews InnoDB redo log size and suggests if it is configured too low. | Checks if InnoDB redo log size is not configured correctly. |
-| InnoDB Configuration| mysql\_ahi\_efficiency\_performance\_basic_check | Check the efficiency and effectiveness of InnoDB's Adaptive Hash Index (AHI). | InnoDB Adaptive Hash Index (AHI) efficiency checker |
-| InnoDB Configuration| mysql\_config\_innodb\_redolog\_disabled | The MySQL InnoDB Redo log, is one of the core components to fulfil the ACID paradigm in MySQL. This element is currently OFF, the setting is highly insecure. | Redo log is disabled in this instance |
-| InnoDB Configuration| mysql\_configuration\_innodb\_file\_format | Check if InnoDB is configured with recommended file format | MySQL InnoDB file format |
-| InnoDB Configuration| mysql\_configuration\_innodb\_file\_maxlimit | Check if InnoDB is configured with recommended auto-extend | InnoDB Tablespace size has a maximum limit. |
-| InnoDB Configuration| mysql\_configuration\_innodb\_file\_per\_table\_not_enabled | innodb\_file\_per_table not enabled | innodb\_file\_per_table not enabled |
-| InnoDB Configuration| mysql\_configuration\_innodb\_flush\_method | Check if InnoDB is configured with recommended flush method | MySQL InnoDB flush method |
-| InnoDB Configuration| mysql\_configuration\_innodb\_strict\_mode | This check warns about password lifetime. | InnoDB strict mode |
-| Replication Configuration| mysql\_config\_relay\_log\_purge | Identify if a replica node has relay-logs purge set. | Automatic relay log purging is off |
-| Replication Configuration| mysql\_config\_replication_bp1 | Identify if a replica node is in read-only mode and if checksum. | Checks for basic best practices when setting a replica node. |
-| Replication Configuration| mysql\_config\_slave\_parallel\_workers | Identify if a replication is single threaded. | Replication is single threaded |
-| Replication Configuration| mysql\_config\_sync_binlog | Check if the binlog synchronized before transaction is committed. | Sync binlog is disabled |
-| Replication Configuration| mysql\_log\_replica_updates | Checks if a replica is safely logging replicated transactions. | MySQL configuration check |
-| Replication Configuration| replica\_running\_skipping\_errors\_or\_idempotent\_mode | This check reviews replication status to review if it is configured to skip errors or if the slave\_exec\_mode is configured to be idempotent. | Checks if replica configured is skipping errors or slave\_exec\_mode is idempotent. |
-| Resources Configuration| mysql\_32binary\_on_64system | This check returns a notice if version\_compile\_machine equals i686. | Check if binaries are 32 bits |
-| Version Configuration| mysql\_unsupported\_version_check | This check warns against an unsupported mysql version | Checks mysql version for support |
-| Version Configuration| mysql_version | This check returns warnings if MySQL, Percona Server for MySQL, or MariaDB version is not the latest one. | MySQL Version |
-| Version Configuration| mysql\_version\_eol_57 | Check if server version is EOL | End Of Life server version (5.7). |
-| Index Query| mysql\_performance\_temp\_ondisk\_table_high | This check warns against too many ondisk temporary tables created due to unoptimized query execution. | Too many on disk temporary tables |
+|Connection Configuration| mysql\_configuration\_max\_connections\_usage |Checks the MySQL max_connections configuration option to ensure maximum utilization is achieved.| Check Max Connections Usage |
+| Generic Configuration | mysql\_automatic\_sp\_privileges\_enabled | Checks if the automatic\_sp\_privileges configuration is ON. | Checks if automatic\_sp\_privileges configuration is ON. |
+| Generic Configuration | mysql\_config\_binlog\_retention\_period | | Binlogs Retention Check |
+| Generic Configuration | mysql\_config\_binlog\_row\_image | Advises when to set binlog\_row\_image=FULL. | Binlogs Raw Image is Not Set to FULL |
+| Generic Configuration | mysql\_config\_binlogs_checksummed | Advises when to set binlog_checksum=CRC32 to improve consistency and reliability. | Server is Not Configured to Enforce Data Integrity |
+| Generic Configuration | mysql\_config\_general_log | Checks whether the general log is enabled. | General Log is Enabled |
+| Generic Configuration | mysql\_config\_log_bin | Checks whether the binlog is enabled or disabled. | Binary Log is disabled |
+| Generic Configuration | mysql\_config\_sql_mode | Checks whether the server has specific values configured in sql_mode to ensure maximum data integrity. | Server is Not Configured to Enforce Data Integrity |
+| Generic Configuration | mysql\_config\_tmp\_table\_size_limit | Checks whether the size of temporary tables exceeds the size of heap tables.| Temp Table Size is Larger Than Heap Table Size |
+| Generic Configuration | mysql\_configuration\_log_verbosity | Checks whether warnings are being printed on the log. | Check Log Verbosity |
+| Generic Configuration | mysql\_test\_database | Notifies if there are database nameed 'test' or 'test_%'. | MySQL Test Database |
+| Generic Configuration | mysql_timezone | Verifies whether the time zone is correctly loaded.| MySQL configuration check |
+| InnoDB Configuration| innodb\_redo\_logs\_not\_sized_correctly | Reviews the InnoDB redo log size and provides suggestions if it is configured too low. | InnoDB Redo Log Size is Not Configured Correctly. |
+| InnoDB Configuration| mysql\_ahi\_efficiency\_performance\_basic_check | Checks the efficiency and effectiveness of InnoDB's Adaptive Hash Index (AHI). | InnoDB Adaptive Hash Index (AHI) Efficiency |
+| InnoDB Configuration| mysql\_config\_innodb\_redolog\_disabled | Warns when the MySQL InnoDB Redo log is set to OFF, which poses a significant security risk and compromises data integrity. 
+The MySQL InnoDB Redo log is a crucial component for maintaining the ACID (Atomicity, Consistency, Isolation, Durability) properties in MySQL databases. | Redo Log is Disabled in This Instance |
+| InnoDB Configuration| mysql\_configuration\_innodb\_file\_format | Verifies whether InnoDB is configured with the recommended file format. | MySQL InnoDB File Format |
+| InnoDB Configuration| mysql\_configuration\_innodb\_file\_maxlimit | Checks whether InnoDB is configured with the recommended auto-extend settings. | InnoDB Tablespace Size Has a Maximum Limit. |
+| InnoDB Configuration| mysql\_configuration\_innodb\_file\_per\_table\_not_enabled | Warns when innodb\_file\_per_table is not enabled. | innodb\_file\_per_table Not Enabled |
+| InnoDB Configuration| mysql\_configuration\_innodb\_flush\_method | Checks whether InnoDB is configured with the recommended flush method. | MySQL InnoDB Flush Method |
+| InnoDB Configuration| mysql\_configuration\_innodb\_strict\_mode | Warns about password lifetime. | InnoDB strict mode |
+| Replication Configuration| mysql\_config\_relay\_log\_purge | Identifies whether a replica node has relay-logs purge set.| Automatic Relay Log Purging is OFF |
+| Replication Configuration| mysql\_config\_replication_bp1 | Identifies whether a replica node is in read-only mode and if checksum is enabled. | Checks Basic Best Practices When Setting Replica Node. |
+| Replication Configuration| mysql\_config\_slave\_parallel\_workers | Identifies whether replication is single-threaded.| Replication is Single-Threaded |
+| Replication Configuration| mysql\_config\_sync_binlog | Checks whether the binlog is synchronized before a transaction is committed. | Sync Binlog Disabled |
+| Replication Configuration| mysql\_log\_replica_updates | Checks if a replica is safely logging replicated transactions. | MySQL Configuration Check |
+| Replication Configuration| replica\_running\_skipping\_errors\_or\_idempotent\_mode | Reviews replication status to check if it is configured to skip errors or if the slave\_exec\_mode is set to be idempotent. | Replica is skipping errors or slave\_exec\_mode is Idempotent. |
+| Resources Configuration| mysql\_32binary\_on_64system | Notifies if version\_compile\_machine equals i686. | Check if Binaries are 32 Bits |
+| Version Configuration| mysql\_unsupported\_version_check | Warns against an unsupported Mysql version. | Checks Mysql Version |
+| Version Configuration| mysql_version | Warns if MySQL, Percona Server for MySQL, or MariaDB version is not the latest available one. | MySQL Version |
+| Version Configuration| mysql\_version\_eol_57 | Checks if server version is EOL. | End Of Life Server Version (5.7). |
+| Index Query| mysql\_performance\_temp\_ondisk\_table_high | Warns if there are too many on-disk temporary tables being created due to unoptimized query execution. | Too Many on Disk Temporary Tables |
 | Index Query| mysql\_tables\_without_pk | Checks tables without primary keys. | MySQL check for table without Primary Key |
-| Schema Design Query | mysql\_indexes\_larger | Check all the tables to see if any have indexes larger than data. This indicates sub-optimial schema and should be reviewed. | Are there tables with index sizes larger than data? |
-| Authentication Security| mysql\_automatic\_expired_password | This check warns if MySQL parameter automatic password expiry is not active. | MySQL Automatic User Expired Password |
+| Schema Design Query | mysql\_indexes\_larger | Check all the tables to see if any have indexes larger than data. This indicates sub-optimial schema and should be reviewed. |Tables With Index Sizes Larger Than Data |
+| Authentication Security| mysql\_automatic\_expired_password | Warns if MySQL parameter automatic password expiry is not active. | MySQL Automatic User Expired Password |
 | Authentication Security| mysql\_security\_anonymous_user | Anonymous user should never be present, that is a security safe best practices. | Anonymous user (you must remove any anonymous user) |
 | Authentication Security| mysql\_security\_open\_to\_world_host | Host definition should never be '%' given it is too open . | User(s) has/have host definition '%' which is too open |
 | Authentication Security| mysql\_security\_root\_not\_local | Root user has host definition that is not 127.0.0.1 or localhost. | Root user can connect from non local location |
