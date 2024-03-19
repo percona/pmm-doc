@@ -92,7 +92,7 @@ We have listed the checks and their details here.
 | :--------- | :---------- | :--- |:--- |
 |Connection Configuration| mysql\_configuration\_max\_connections\_usage |Checks the MySQL max_connections configuration option to ensure maximum utilization is achieved.| Check Max Connections Usage |
 | Generic Configuration | mysql\_automatic\_sp\_privileges\_enabled | Checks if the automatic\_sp\_privileges configuration is ON. | Checks if automatic\_sp\_privileges configuration is ON. |
-| Generic Configuration | mysql\_config\_binlog\_retention\_period | | Binlogs Retention Check |
+| Generic Configuration | mysql\_config\_binlog\_retention\_period | Checks whether binlogs are being rotated too frequently, which is not recommended, except in very specific cases. | Binlogs Retention Check |
 | Generic Configuration | mysql\_config\_binlog\_row\_image | Advises when to set binlog\_row\_image=FULL. | Binlogs Raw Image is Not Set to FULL |
 | Generic Configuration | mysql\_config\_binlogs_checksummed | Advises when to set binlog_checksum=CRC32 to improve consistency and reliability. | Server is Not Configured to Enforce Data Integrity |
 | Generic Configuration | mysql\_config\_general_log | Checks whether the general log is enabled. | General Log is Enabled |
@@ -104,19 +104,18 @@ We have listed the checks and their details here.
 | Generic Configuration | mysql_timezone | Verifies whether the time zone is correctly loaded.| MySQL configuration check |
 | InnoDB Configuration| innodb\_redo\_logs\_not\_sized_correctly | Reviews the InnoDB redo log size and provides suggestions if it is configured too low. | InnoDB Redo Log Size is Not Configured Correctly. |
 | InnoDB Configuration| mysql\_ahi\_efficiency\_performance\_basic_check | Checks the efficiency and effectiveness of InnoDB's Adaptive Hash Index (AHI). | InnoDB Adaptive Hash Index (AHI) Efficiency |
-| InnoDB Configuration| mysql\_config\_innodb\_redolog\_disabled | Warns when the MySQL InnoDB Redo log is set to OFF, which poses a significant security risk and compromises data integrity. 
-The MySQL InnoDB Redo log is a crucial component for maintaining the ACID (Atomicity, Consistency, Isolation, Durability) properties in MySQL databases. | Redo Log is Disabled in This Instance |
+| InnoDB Configuration| mysql\_config\_innodb\_redolog\_disabled | Warns when the MySQL InnoDB Redo log is set to OFF, which poses a significant security risk and compromises data integrity. The MySQL InnoDB Redo log is a crucial component for maintaining the ACID (Atomicity, Consistency, Isolation, Durability) properties in MySQL databases. | Redo Log is Disabled in This Instance |
 | InnoDB Configuration| mysql\_configuration\_innodb\_file\_format | Verifies whether InnoDB is configured with the recommended file format. | MySQL InnoDB File Format |
 | InnoDB Configuration| mysql\_configuration\_innodb\_file\_maxlimit | Checks whether InnoDB is configured with the recommended auto-extend settings. | InnoDB Tablespace Size Has a Maximum Limit. |
 | InnoDB Configuration| mysql\_configuration\_innodb\_file\_per\_table\_not_enabled | Warns when innodb\_file\_per_table is not enabled. | innodb\_file\_per_table Not Enabled |
 | InnoDB Configuration| mysql\_configuration\_innodb\_flush\_method | Checks whether InnoDB is configured with the recommended flush method. | MySQL InnoDB Flush Method |
 | InnoDB Configuration| mysql\_configuration\_innodb\_strict\_mode | Warns about password lifetime. | InnoDB strict mode |
 | Replication Configuration| mysql\_config\_relay\_log\_purge | Identifies whether a replica node has relay-logs purge set.| Automatic Relay Log Purging is OFF |
-| Replication Configuration| mysql\_config\_replication_bp1 | Identifies whether a replica node is in read-only mode and if checksum is enabled. | Checks Basic Best Practices When Setting Replica Node. |
+| Replication Configuration| mysql\_config\_replication_bp1 | Identifies whether a replica node is in read-only mode and if *checksum* is enabled. | Checks Basic Best Practices When Setting Replica Node. |
 | Replication Configuration| mysql\_config\_slave\_parallel\_workers | Identifies whether replication is single-threaded.| Replication is Single-Threaded |
 | Replication Configuration| mysql\_config\_sync_binlog | Checks whether the binlog is synchronized before a transaction is committed. | Sync Binlog Disabled |
 | Replication Configuration| mysql\_log\_replica_updates | Checks if a replica is safely logging replicated transactions. | MySQL Configuration Check |
-| Replication Configuration| replica\_running\_skipping\_errors\_or\_idempotent\_mode | Reviews replication status to check if it is configured to skip errors or if the slave\_exec\_mode is set to be idempotent. | Replica is skipping errors or slave\_exec\_mode is Idempotent. |
+| Replication Configuration| replica\_running\_skipping\_errors\_or\_idempotent\_mode | Reviews replication status to check if it is configured to skip errors or if the slave\_exec\_mode is set to be *idempotent*. | Replica is skipping errors or slave\_exec\_mode is Idempotent. |
 | Resources Configuration| mysql\_32binary\_on_64system | Notifies if version\_compile\_machine equals i686. | Check if Binaries are 32 Bits |
 | Version Configuration| mysql\_unsupported\_version_check | Warns against an unsupported Mysql version. | Checks Mysql Version |
 | Version Configuration| mysql_version | Warns if MySQL, Percona Server for MySQL, or MariaDB version is not the latest available one. | MySQL Version |
@@ -124,50 +123,50 @@ The MySQL InnoDB Redo log is a crucial component for maintaining the ACID (Atomi
 | Index Query| mysql\_performance\_temp\_ondisk\_table_high | Warns if there are too many on-disk temporary tables being created due to unoptimized query execution. | Too Many on Disk Temporary Tables |
 | Index Query| mysql\_tables\_without_pk | Checks tables without primary keys. | MySQL check for table without Primary Key |
 | Schema Design Query | mysql\_indexes\_larger | Check all the tables to see if any have indexes larger than data. This indicates sub-optimial schema and should be reviewed. |Tables With Index Sizes Larger Than Data |
-| Authentication Security| mysql\_automatic\_expired_password | Warns if MySQL parameter automatic password expiry is not active. | MySQL Automatic User Expired Password |
-| Authentication Security| mysql\_security\_anonymous_user | Anonymous user should never be present, that is a security safe best practices. | Anonymous user (you must remove any anonymous user) |
-| Authentication Security| mysql\_security\_open\_to\_world_host | Host definition should never be '%' given it is too open . | User(s) has/have host definition '%' which is too open |
-| Authentication Security| mysql\_security\_root\_not\_local | Root user has host definition that is not 127.0.0.1 or localhost. | Root user can connect from non local location |
-| Authentication Security| mysql\_security\_user_ssl | User(s) not using secure SSL protocol to connect. | User(s) not using secure SSL protocol to connect |
-| Authentication Security| mysql\_security\_user\_super\_not_local | User has Super privileges but is not connecting from local or the host is not fully restricted (ie 192.168.%). | User(s) has/have Super privileges with remote and too open access |
-| Authentication Security| mysql\_security\_user\_without\_password | There is/are user(s) without password . | User(s) without password |
-| Configuration Security| mysql\_config\_local_infile | Identify if a load data in file is active. | Load data in file active |
-| Configuration Security| mysql\_configuration\_secure\_file\_priv_empty | The secure\_file\_priv when empty allows users with FILE privilege to create files at any location where MySQL server has write permission. | secure\_file\_priv is empty |
-| Configuration Security| mysql\_password\_expiry | Checks for MySQL user password expired or expiring within 30 days | Check MySQL user password expiry |
-| Configuration Security| mysql\_require\_secure_transport | Checks mysql\_secure\_transport_only . | MySQL configuration check |
-| Configuration Security| mysql\_security\_password_lifetime | This check warns about password lifetime. | InnoDB password lifetime |
-| Configuration Security| mysql\_security\_password_policy | This check for password policy. | MySQL security check for password |
-| Connection Security| mysql\_private\_networks_only | This check returns a notice about MySQL accouns allowed to be connected from public networks. | MySQL Users With Granted Public Networks Access |
-| Replication Security| mysql\_replication\_grants | This check if node has replication configured without a user grants | MySQL security check for replication user |
-| Replication Security| mysql\_security\_replication\_grants\_mixed | Check if replication privileges is mixed with more elevated privileges | Replication privileges |
+| Authentication Security| mysql\_automatic\_expired_password | Warns if the MySQL parameter for automatic password expiry is not active. | MySQL Automatic User Expired Password |
+| Authentication Security| mysql\_security\_anonymous_user | Verifies if anonymous users are present, as this would contradict security best practices.| Anonymous User (You Must Remove Any Anonymous User) |
+| Authentication Security| mysql\_security\_open\_to\_world_host | Checks whether host definitions are set as '%' since this is overly permissive and could pose security risks. | UserS Have Host Definition '%' Which is Too Open |
+| Authentication Security| mysql\_security\_root\_not\_local | Checks whether the root user has a host definition that is not set to 127.0.0.1 or localhost.| Root User Can Connect From Non-local Location |
+| Authentication Security| mysql\_security\_user_ssl | Reports users who are not using a secure SSL protocol to connect.| Users Not Using Secure SSL |
+| Authentication Security| mysql\_security\_user\_super\_not_local | Reports users with super privileges who are not connecting from the local host or the host is not fully restricted (e.g., 192.168.%). | Users have Super privileges With Remote and Too Open Access |
+| Authentication Security| mysql\_security\_user\_without\_password | Reports users without passwords. | Users Without Password |
+| Configuration Security| mysql\_config\_local_infile | Checks if "LOAD DATA INFILE" functionality is active.| Load Data in File Active |
+| Configuration Security| mysql\_configuration\_secure\_file\_priv_empty | Warns when  secure\_file\_priv is empty as this enables users with FILE privilege to create files at any location where MySQL server has Write permission. | secure\_file\_priv is Empty |
+| Configuration Security| mysql\_password\_expiry |Checks if MySQL user passwords are expired or expiring within the next 30 days. | Check MySQL User Password Expiry |
+| Configuration Security| mysql\_require\_secure_transport | Checks the status of *mysql_secure_transport_only*. | MySQL configuration check |
+| Configuration Security| mysql\_security\_password_lifetime |Warns about password lifetime. | InnoDB Password Lifetime |
+| Configuration Security| mysql\_security\_password_policy | Checks for password policy. | MySQL Security Check for Password |
+| Connection Security| mysql\_private\_networks_only | Notifies about MySQL accounts that are allowed to connect from public networks. | MySQL Users With Granted Public Networks Access |
+| Replication Security| mysql\_replication\_grants | Checks if replication is configured on a node without user grants.| MySQL Security Check for Replication User |
+| Replication Security| mysql\_security\_replication\_grants\_mixed | Checks if replication privileges are mixed with more elevated privileges. | Replication Privileges |
 
 
 ### PostgreSQL
-| Advisor| Check Name | Description | Summary |
-| :--------- | :---------- | :--- |:--- |
-|Connection Configuration| postgresql\_max\_connections_1 | This check returns a notice if the max_connections configuration option is set to a high value (above 300). PostgreSQL doesn't cope well with having many connections even if they are idle. Recommended value is below 300. |
-| Generic Configuration | postgresql\_archiver\_failing_1 | This check verify if the archiver has failed. |
-| Generic Configuration | postgresql\_fsync\_1 | This check returns a error if the fsync configuration option is set to off which can lead to database corruptions. |
-| Generic Configuration | postgresql\_log\_checkpoints_1 | This check returns a notice if the log_checkpoints configuration option is not enabled. It is recommended to enable the logging of checkpoint information, as that provides a lot of useful information with almost no drawbacks. |
-| Generic Configuration | postgresql\_logging\_recommendation_checks | Checks to see if recommended minimum logging features are enabled." |
-| Generic Configuration | postgresql\_wal\_retention_check | Checks to see if there are too many WAL files retained in the WAL directory |
-| Vacuum Configuration| postgresql\_log\_autovacuum\_min\_duration_1 | This check returns a notice if the log\_autovacuum\_min_duration configuration option is set to -1 (disabled). It is recommended to enable the logging of autovacuum run information, as that provides a lot of useful information with almost no drawbacks. |
-| Vacuum Configuration| postgresql\_table\_autovac_settings | This check returns those tables where autovacuum paramters are specified along with autovacuum settings specified |
-| Vacuum Configuration| postgresql\_txid\_wraparound_approaching | This check verifies databases age and alert if the transaction ID wraparound issue is near |
-| Vacuum Configuration| postgresql\_vacuum\_sanity_check | This performs a quick check of some vacuum parameters |
-| Version Configuration| postgresql\_eol\_check | Checks to see if the currently installed PostgreSQL version is end of life and no longer supported |
-| Version Configuration| postgresql\_extension\_check | This check will list outdated extensions with newer versions available |
-| Version Configuration| postgresql\_unsupported\_check | Checks to see if the currently installed version is supported by percona |
-| Version Configuration| postgresql\_version\_check | Checks to see if the currently installed version is outdated for it's release level |
-| Generic Performance| postgresql\_cache\_hit\_ratio\_1 | This check the hitratio of one or more databases and complains when they are too low. |
-| Generic Performance| postgresql\_config\_changes\_need\_restart_1 | This check returns a warning if there is any setting/configuration that was changed and needs a server restart/reload. |
-| Generic Performance| postgresql\_tmpfiles\_check | This check reports the number of temporary files and number of bytes written to disk since last stats reset. |
-| Replication Performance| postgresql\_stale\_replication\_slot\_1 | This check returns a warning if there is a stale replication slot. Stale replication slots will lead to WAL file accumulation and can result in a DB server outage. |
-| Vacuum Performance| postgresql\_table\_bloat_bytes | Checks check verifies the size of the table bloat in bytes accross all databases and alert accordingly |
-| Vacuum Performance| postgresql\_table\_bloat\_in\_percentage | This check verifies the size of the table bloat in percentage of the total table size and alert accordingly |
-| Index Query| postgresql\_number\_of\_index\_check | This check will list relations with more than 10 indexes |
-| Index Query| postgresql\_sequential\_scan_check | This check for tables with excessive sequential scans |
-| Index Query| postgresql\_unused\_index_check | This check will list relations with indexes that have not been used since statistics where last reset |
-| Authentication Security| postgresql\_super\_role | This check returns a notice if there are users with superuser role. |
-| Configuration Security| postgresql\_expiring\_passwd_check | Check for passwords which are expiring and displays the time left beofre it expires |
-| CVE Security| postgresql\_cve\_check | Checks to see if the currently installed version has reported security vulnerabilities |
+| Advisor| Check Name | Description | 
+| :--------- | :---------- | :--- |
+|Connection Configuration| postgresql\_max\_connections_1 | Notifies if the *max_connections* configuration option is set to a high value (above 300). PostgreSQL doesn't cope well with having many connections even if they are idle. The recommended value is below 300. |
+| Generic Configuration | postgresql\_archiver\_failing_1 | Verifies if the archiver has failed. |
+| Generic Configuration | postgresql\_fsync\_1 | Returns an error if the *fsync* configuration option is set to OFF, as this can lead to database corruptions. |
+| Generic Configuration | postgresql\_log\_checkpoints_1 | Notifies if the *log_checkpoints* configuration option is not enabled. It is recommended to enable the logging of checkpoint information, as that provides a lot of useful information with almost no drawbacks. |
+| Generic Configuration | postgresql\_logging\_recommendation_checks | Verifies whether the recommended minimum logging features are enabled.|
+| Generic Configuration | postgresql\_wal\_retention_check | Checks if there are too many WAL files retained in the WAL directory. |
+| Vacuum Configuration| postgresql\_log\_autovacuum\_min\_duration_1 | Notifies if the *log\_autovacuum\_min_duration configuration* option is set to -1 (disabled). It is recommended to enable the logging of autovacuum run information, as it provides a lot of useful information with almost no drawbacks. |
+| Vacuum Configuration| postgresql\_table\_autovac_settings | Returns tables where autovacuum parameters are specified along with the corresponding autovacuum settings.|
+| Vacuum Configuration| postgresql\_txid\_wraparound_approaching | Verifies the age of databases and alerts if the transaction ID wraparound issue is nearing. |
+| Vacuum Configuration| postgresql\_vacuum\_sanity_check | This performs a quick check of some vacuum parameters. |
+| Version Configuration| postgresql\_eol\_check |Checks if the currently installed PostgreSQL version has reached its EOL and is no longer supported. |
+| Version Configuration| postgresql\_extension\_check | Lists outdated extensions with newer versions available. |
+| Version Configuration| postgresql\_unsupported\_check | Verifies if the currently installed version is supported by Percona. |
+| Version Configuration| postgresql\_version\_check | Checks if the currently installed version is outdated for its release level. |
+| Generic Performance| postgresql\_cache\_hit\_ratio\_1 |Checks the hit ratio of one or more databases and raises a complaint when they are too low. |
+| Generic Performance| postgresql\_config\_changes\_need\_restart_1 | Warns if there are any settings or configurations that have been changed and require a server restart or reload.|
+| Generic Performance| postgresql\_tmpfiles\_check | Reports the number of temporary files and number of bytes written to disk since the last statistics reset.|
+| Replication Performance| postgresql\_stale\_replication\_slot\_1 | Warns if there is a stale replication slot. Stale replication slots will lead to WAL file accumulation and can result in a database server outage. |
+| Vacuum Performance| postgresql\_table\_bloat_bytes | Verifies the size of the table bloat in bytes accross all databases and raises alerts accordingly.|
+| Vacuum Performance| postgresql\_table\_bloat\_in\_percentage | Verifies the size of the table bloat in percentage of the total table size and alerts accordingly. |
+| Index Query| postgresql\_number\_of\_index\_check | Lists relations with more than ten indexes. |
+| Index Query| postgresql\_sequential\_scan_check | Checks for tables with excessive sequential scans. |
+| Index Query| postgresql\_unused\_index_check | Lists relations with indexes that have not been used since the statistics where last reset. |
+| Authentication Security| postgresql\_super\_role | Notifies if there are users with Superuser role. |
+| Configuration Security| postgresql\_expiring\_passwd_check |Checks for passwords that are expiring and displays the time left before they expire. |
+| CVE Security| postgresql\_cve\_check | Checks if the currently installed version has reported security vulnerabilities. |
