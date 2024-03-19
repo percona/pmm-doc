@@ -1,10 +1,13 @@
 
-## List of Advisors
+## List of database Advisors
+ 
+Percona Monitoring and Management (PMM) offers four categories of database Advisors to help you improve database performance: Configuration, Performance, Query and Security Advisors.
 
-The [**Advisors**](https://portal.percona.com/advisors) page in the Percona Portal lists the Percona Advisors you can run from PMM. That Page will show the Advisors available for your subscription tier.
+Each Advisor includes a set of automated checks, which investigate a specific range of possible issues and areas of improvement: security threats, non-compliance issues, performance degradation, query and index optimization strategies etc.
 
-For simplicity, we also listing all Advisors and checks on this page:
+This page presents the complete list of database Advisors along with the corresponding subscription tier for which they are available.
 
+You can also access this list through the [**Advisor checks for PMM**](https://portal.percona.com/advisors) section in the Percona Portal documentation, as the Advisors are hosted on the Percona Platform. PMM Server automatically downloads them from this source when the Advisors and Telemetry options are enabled in PMM under **Configuration > Settings > Advanced Settings**. Both options are enabled by default.
 
 ### Configuration Advisors
 
@@ -49,39 +52,39 @@ We have listed the checks and their details here.
 ### MongoDB
 | Advisor| Check Name | Description | Summary |
 | :--------- | :---------- | :--- |:--- |
-|Connection Configuration| mongodb\_connection\_sudden_spike | This check returns a warning if there is an increase in the number of connections that is higher than 50% of the most recent or normal number of connections. | MongoDB - sudden increase in connection count |
-|Connection Configuration| mongodb_connections | This check returns the current number of connections as an informational notice when connection counts are above 5000. | MongoDB High connections |
-| Generic Configuration | mongo\_cache\_size | Mongo wiredtiger cache size is greater then default 50% | Mongo Storage Cache |
-| Generic Configuration | mongodb\_active\_vs\_available\_connections | This check returns warnings if the ratio between active and available connections is higher than 75% | MongoDB Active vs Available Connections |
-| Generic Configuration | mongodb_journal | This check returns warnings if journal is disabled. | MongoDB Journal |
-| Generic Configuration | mongodb_loglevel | This check returns warnings if MongoDB is not using the default log level. | MongoDB Non-Default Log Level |
-| Generic Configuration | mongodb\_read\_tickets | This check returns warnings if MongoDB is using more than 128 read tickets. | MongoDB Read Tickets |
-| Generic Configuration | mongodb\_write\_tickets | This check returns warnings if MongoDB is using more than 128 write tickets. | MongoDB write Tickets |
-| Generic Configuration | mongodb\_write\_tickets_runtime | This check returns warnings if MongoDB is using more than 128 write tickets during runtime. | MongoDB Configuration Write ticket Check |
-| Replication Configuration| mongodb\_psa\_architecture_check | This check returns an error if the replicaSet is using a PSA architecture. | MongoDB PSA Architecture |
-| Replication Configuration| mongodb\_replicaset\_topology | This check returns warnings if the Replica Set has less than 3 data bearing nodes | MongoDB Replica Set Topology |
-| Resources Configuration| mongodb\_collection\_fragmented | This check returns a warning if the Storage size is greater than the Data size of a collection. That condition indicates that the collection is fragmented and needs a Compaction or Initial sync to reclaim disk space. | MongoDB Collections Fragmented |
-| Resources Configuration| mongodb_cpucores | This check returns warnings if the number of CPU cores does not meet the minimum recommended requirements according to best practices. | MongoDB CPU cores |
-| Resources Configuration| mongodb\_dbpath\_mount | This check returns a warning if dbpath does not have a dedicated mount point. | MongoDB - separate mount point other than "/" partition for dbpath. |
-| Resources Configuration| mongodb\_fcv\_check | This check returns a warning if there is a mismatch between the MongoDB version and the internal FCV parameter setting. | MongoDB - FCV mismatch |
-| Resources Configuration| mongodb_maxsessions | This check returns warnings if MongoDB is using more maxSessions value other than the default one 1000000 2 | MongoDB maxSessions |
-| Resources Configuration| mongodb\_swap\_allocation | This check returns a warning if there is no swap memory allocated to your instance. | MongoDB - allocate swap memory |
-| Resources Configuration| mongodb_taskexecutor | MongoDB TaskExecutorPoolSize count is higher than available CPU cores | MongoDB TaskExecutorPoolSize High |
-| Resources Configuration| mongodb\_xfs\_ftype | This check returns a warning if dbpath is not using xfs filesystem type. | MongoDB - xfs |
-| Version Configuration| mongodb_EOL | This check returns errors or warnings if your current PSMDB or MongoDB version has reached or is about to reach End-of-Life. | MongoDB version EOL |
-| Version Configuration| mongodb\_unsupported\_version | This check returns errors if your current PSMDB or MongoDB version is not supported. | MongoDB Unspported version check |
-| Version Configuration| mongodb_version | This check returns information on current MongoDB or Percona Server for MongoDB versions used in your environment. It also provides information on other available minor or major versions to consider for upgrades. | MongoDB version check |
-| Generic Performance| mongodb\_multiple\_services | This check returns a notice if multiple mongod services are running in a single node. | MongoDB - Multiple mongod services |
-| Replication Performance| mongodb\_chunk\_imbalance | This check warns if the chunks are imbalanced across shards. | MongoDB Sharding - Chunk Imbalance Across Shards. |
-| Replication Performance| mongodb\_oplog\_size_recommendation | This check returns a warning if the oplog window is below a 24 hour period and offers a recommended oplog size based on your instance. | MongoDB - Oplog Recovery Window is low. Please consider resizing your oplog according to the provided recommendation. |
-| Replication Performance| mongodb\_replication\_lag | This check returns warnings if the Replica Set member is more than 10 sec behind the primary | MongoDB Replication Lag |
-| Index Query| mongodb\_shard\_collection\_inconsistent\_indexes | This check warns if there are inconsistent indexes across shards for sharded collections. Missing or inconsistent indexes across the shards can have a negative impact on performance. | MongoDB Sharding - Inconsistent Indexes Across Shards. |
-| Index Query| mongodb\_unused\_index | This check returns a warning if there are unused indexes on any database collection in your instance (Need to enable "indexStats" collector). | MongoDB - Unused Indexes |
+|Connection Configuration| mongodb\_connection\_sudden_spike | Warns about any significant increase in the number of connections exceeding 50% of the recent or typical connection count. | MongoDB Sudden Increase in Connection Count. |
+|Connection Configuration| mongodb_connections | Returns the current number of connections as an informational notice when connection counts exceed 5000. | MongoDB High Connections |
+| Generic Configuration | mongo\_cache\_size | Warns when Mongo wiredtiger cache size is greater than the default 50%. | Mongo Storage Cache |
+| Generic Configuration | mongodb\_active\_vs\_available\_connections | Warns if the ratio between active and available connections is higher than 75%. | MongoDB Active vs Available Connections |
+| Generic Configuration | mongodb_journal | Warns if journal is disabled. | MongoDB Journal |
+| Generic Configuration | mongodb_loglevel | Warns if MongoDB is not using the default Log level. | MongoDB Non-Default Log Level |
+| Generic Configuration | mongodb\_read\_tickets | Warns if MongoDB is using more than 128 read tickets. | MongoDB Read Tickets |
+| Generic Configuration | mongodb\_write\_tickets | Warns if MongoDB is using more than 128 write tickets. | MongoDB Write Tickets |
+| Generic Configuration | mongodb\_write\_tickets_runtime | Warns if MongoDB is using more than 128 write tickets during runtime. | MongoDB - Configuration Write ticket Check |
+| Replication Configuration| mongodb\_psa\_architecture_check | Raises an error if the replicaSet is utilizing a PSA (Primary-Secondary-Arbiter) architecture.| MongoDB PSA Architecture |
+| Replication Configuration| mongodb\_replicaset\_topology | Warns if the Replica Set has less than thee data-bearing nodes.| MongoDB Replica Set Topology |
+| Resources Configuration| mongodb\_collection\_fragmented | Warns if the storage size exceeds the data size of a collection, indicating potential fragmentation. This suggests the need for compaction or an initial sync to reclaim disk space.| MongoDB Collections Fragmented |
+| Resources Configuration| mongodb_cpucores | Warns if the number of CPU cores does not meet the minimum recommended requirements according to best practices. | MongoDB CPU Cores |
+| Resources Configuration| mongodb\_dbpath\_mount | Warns if dbpath does not have a dedicated mount point. | MongoDB - Separate Mount Point Other Than "/" Partition for dbpath. |
+| Resources Configuration| mongodb\_fcv\_check | Warns if there is a mismatch between the MongoDB version and the internal FCV (Feature Compatibility Version) parameter setting. | MongoDB - FCV Mismatch |
+| Resources Configuration| mongodb_maxsessions | Warns if MongoDB is configured with a maxSessions value other than the default value of 1000000.| MongoDB maxSessions |
+| Resources Configuration| mongodb\_swap\_allocation | Warns if there is no swap memory allocated to your instance. | MongoDB - Allocate Swap Memory |
+| Resources Configuration| mongodb_taskexecutor | Warns if the count of MongoDB TaskExecutorPoolSize exceeds the number of available CPU cores. | MongoDB TaskExecutorPoolSize High |
+| Resources Configuration| mongodb\_xfs\_ftype | Warns if dbpath is not using the XFS filesystem type.| MongoDB - XFS |
+| Version Configuration| mongodb_EOL | Raises an error or a warning if your current PSMDB or MongoDB version has reached or is nearing its End-of-Life (EOL) status. | MongoDB Version EOL |
+| Version Configuration| mongodb\_unsupported\_version | Raises an error if your current PSMDB or MongoDB version is not supported. | MongoDB Unspported Version |
+| Version Configuration| mongodb_version | Provides information on current MongoDB or Percona Server for MongoDB versions used in your environment. It also offers details on other available minor or major versions that you may consider for upgrades. | MongoDB Version Check |
+| Generic Performance| mongodb\_multiple\_services | Warns if multiple mongod services are are detected running on a single node. | MongoDB - Multiple mongod Services |
+| Replication Performance| mongodb\_chunk\_imbalance | Warns if the distribution of chunks across shards is imbalanced.| MongoDB Sharding - Chunk Imbalance Across Shards |
+| Replication Performance| mongodb\_oplog\_size_recommendation |Warns if the oplog window is below a 24-hour period and provides a recommended oplog size based on your instance. | MongoDB - Oplog Recovery Window is Low |
+| Replication Performance| mongodb\_replication\_lag | Warns if the replica set member lags behind the primary by more than 10 seconds. | MongoDB Replication Lag |
+| Index Query| mongodb\_shard\_collection\_inconsistent\_indexes | Warns if there are inconsistent indexes across shards for sharded collections. Missing or inconsistent indexes across shards can have a negative impact on performance. | MongoDB Sharding - Inconsistent Indexes Across Shards |
+| Index Query| mongodb\_unused\_index | Warns if there are unused indexes on any database collection in your instance. This requires enabling the "indexStats" collector. | MongoDB - Unused Indexes |
 | Authentication Security| mongodb_auth | Warns if MongoDB authentication is disabled. | MongoDB authentication |
-| Authentication Security| mongodb\_localhost\_auth_bypass | This check returns warnings if MongoDB localhost bypass is enabled. | MongoDB localhost authentication bypass enabled |
-| Configuration Security| mongodb\_authmech\_scramsha256 | This check returns warnings if MongoDB is not using the default SHA-256 hashing function as its SCRAM authentication method. | MongoDB Security AuthMech Check |
-| Connection Security| mongodb_bindip | This check returns warnings if the MongoDB network binding is not set as recommended. | MonogDB IP bindings |
-| CVE Security| mongodb\_cve\_version | This check returns errors if MongoDB or Percona Server for MongoDB version is less than the latest one with CVE fixes. | MongoDB CVE Version |
+| Authentication Security| mongodb\_localhost\_auth_bypass | Warns if MongoDB localhost bypass is enabled. | MongoDB localhost authentication bypass enabled |
+| Configuration Security| mongodb\_authmech\_scramsha256 | Warns if MongoDB is not using the default SHA-256 hashing function as its SCRAM authentication method. | MongoDB Security AuthMech Check |
+| Connection Security| mongodb_bindip | Warns if the MongoDB network binding is not set as Recommended. | MonogDB IP Bindings |
+| CVE Security| mongodb\_cve\_version | Shows an error if MongoDB or Percona Server for MongoDB version is older than the latest version containing CVE (Common Vulnerabilities and Exposures) fixes. | MongoDB CVE Version |
 
 
 ### MySQL
