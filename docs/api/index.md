@@ -30,7 +30,7 @@ Service accounts are used to control access to the PMM server components and res
 
 Service account contains Service Tokens, which is direct replacement for API key.
 
-###  Generate Service Token 
+### Generate Service Token 
 
 PMM uses the Grafana Service Token for authentication. Following are the steps to generate the Service Token:
 
@@ -62,7 +62,7 @@ You can authenticate your request using the HTTPS header.
 curl -H "Authorization: Bearer <service_token>" https://127.0.0.1/v1/version
 ```
 
-## Use an Service Token in basic auth
+### Use an Service Token in basic auth
 
 You can pass the Service Token into a REST API call as a query parameter in the following format. Replace `SERVICE_TOKEN` with your Service Token.
 
