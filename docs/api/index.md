@@ -21,7 +21,7 @@ Nodes, Services, and Agents have **Types** which define specific their propertie
 Nodes and Services are external by nature – we do not manage them (create, destroy), but merely maintain a list of them (add to inventory, remove from inventory) in `pmm-managed`. Most Agents are started and stopped by `pmm-agent`. One exception is the External Exporter Type which is started externally.
 
 
-# Service accounts authentication
+## Service accounts authentication
 
 !!! caution alert alert-warning "Important"
     API keys are deprecated now. During update to version PMM v3 all of them you be converted into Service Accounts with Service Token. In such case API key persist same, but it is just covnerted into Service Token.
@@ -30,7 +30,7 @@ Service accounts are used to control access to the PMM server components and res
 
 Service account contains Service Tokens, which is direct replacement for API key.
 
-##  Generate Service Token 
+###  Generate Service Token 
 
 PMM uses the Grafana Service Token for authentication. Following are the steps to generate the Service Token:
 
@@ -51,7 +51,7 @@ PMM uses the Grafana Service Token for authentication. Following are the steps t
 12. Copy your Service Token to clipboard and save it on secure place.
 13. Now you can use your new Service Token for authentication in PMM API calls (or in your PMM agent config).
 
-## Authenticate
+### Authenticate
 
 You can authenticate your request using the HTTPS header.
 
