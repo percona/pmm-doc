@@ -184,7 +184,7 @@ You can now [add the service](#add-service).
     !!! caution alert alert-warning
         It is important to set maximal length of query to 2048 characters or more for PMM to work properly.
 
-    You can get a list of other available settings with `SELECT * FROM pg_stat_monitor_settings;`.
+    You can get a list of other available settings with `SELECT * FROM pg_settings WHERE name LIKE 'pg_stat_monitor.%';`.
 
     Other important parameters are:
     ```ini
