@@ -56,13 +56,13 @@ We have listed the checks and their details here.
 |Connection Configuration| mongodb_connections | Returns the current number of connections as an informational notice when connection counts exceed 5000. | MongoDB High Connections |
 | Generic Configuration | mongo\_cache\_size | Warns when Mongo wiredtiger cache size is greater than the default 50%. | Mongo Storage Cache |
 | Generic Configuration | mongodb\_active\_vs\_available\_connections | Warns if the ratio between active and available connections is higher than 75%. | MongoDB Active vs Available Connections |
-| Generic Configuration | mongodb_journal | Warns if journal is disabled. | MongoDB Journal |
+| Generic Configuration | mongodb_journal | Warns if the journal is disabled. | MongoDB Journal |
 | Generic Configuration | mongodb_loglevel | Warns if MongoDB is not using the default Log level. | MongoDB Non-Default Log Level |
 | Generic Configuration | mongodb\_read\_tickets | Warns if MongoDB is using more than 128 read tickets. | MongoDB Read Tickets |
 | Generic Configuration | mongodb\_write\_tickets | Warns if MongoDB is using more than 128 write tickets. | MongoDB Write Tickets |
 | Generic Configuration | mongodb\_write\_tickets_runtime | Warns if MongoDB is using more than 128 write tickets during runtime. | MongoDB - Configuration Write Ticket Check |
 | Replication Configuration| mongodb\_psa\_architecture_check | Raises an error if the replicaSet is utilizing a PSA (Primary-Secondary-Arbiter) architecture.| MongoDB PSA Architecture |
-| Replication Configuration| mongodb\_replicaset\_topology | Warns if the Replica Set has less than thee data-bearing nodes.| MongoDB Replica Set Topology |
+| Replication Configuration| mongodb\_replicaset\_topology | Warns if the Replica Set has less than three data-bearing nodes.| MongoDB Replica Set Topology |
 | Resources Configuration| mongodb\_collection\_fragmented | Warns if the storage size exceeds the data size of a collection, indicating potential fragmentation. This suggests the need for compaction or an initial sync to reclaim disk space.| MongoDB Collections Fragmented |
 | Resources Configuration| mongodb_cpucores | Warns if the number of CPU cores does not meet the minimum recommended requirements according to best practices. | MongoDB CPU Cores |
 | Resources Configuration| mongodb\_dbpath\_mount | Warns if dbpath does not have a dedicated mount point. | MongoDB - Separate Mount Point Other Than "/" Partition for dbpath. |
@@ -72,9 +72,9 @@ We have listed the checks and their details here.
 | Resources Configuration| mongodb_taskexecutor | Warns if the count of MongoDB TaskExecutorPoolSize exceeds the number of available CPU cores. | MongoDB TaskExecutorPoolSize High |
 | Resources Configuration| mongodb\_xfs\_ftype | Warns if dbpath is not using the XFS filesystem type.| MongoDB - XFS |
 | Version Configuration| mongodb_EOL | Raises an error or a warning if your current PSMDB or MongoDB version has reached or is nearing its End-of-Life (EOL) status. | MongoDB Version EOL |
-| Version Configuration| mongodb\_unsupported\_version | Raises an error if your current PSMDB or MongoDB version is not supported. | MongoDB Unspported Version |
+| Version Configuration| mongodb\_unsupported\_version | Raises an error if your current PSMDB or MongoDB version is not supported. | MongoDB Unsupported Version |
 | Version Configuration| mongodb_version | Provides information on current MongoDB or Percona Server for MongoDB versions used in your environment. It also offers details on other available minor or major versions that you may consider for upgrades. | MongoDB Version Check |
-| Generic Performance| mongodb\_multiple\_services | Warns if multiple mongod services are are detected running on a single node. | MongoDB - Multiple mongod Services |
+| Generic Performance| mongodb\_multiple\_services | Warns if multiple mongod services are detected running on a single node. | MongoDB - Multiple mongod Services |
 | Replication Performance| mongodb\_chunk\_imbalance | Warns if the distribution of chunks across shards is imbalanced.| MongoDB Sharding - Chunk Imbalance Across Shards |
 | Replication Performance| mongodb\_oplog\_size_recommendation |Warns if the oplog window is below a 24-hour period and provides a recommended oplog size based on your instance. | MongoDB - Oplog Recovery Window is Low |
 | Replication Performance| mongodb\_replication\_lag | Warns if the replica set member lags behind the primary by more than 10 seconds. | MongoDB Replication Lag |
@@ -100,7 +100,7 @@ We have listed the checks and their details here.
 | Generic Configuration | mysql\_config\_sql_mode | Checks whether the server has specific values configured in sql_mode to ensure maximum data integrity. | Server is Not Configured to Enforce Data Integrity |
 | Generic Configuration | mysql\_config\_tmp\_table\_size_limit | Checks whether the size of temporary tables exceeds the size of heap tables.| Temp Table Size is Larger Than Heap Table Size |
 | Generic Configuration | mysql\_configuration\_log_verbosity | Checks whether warnings are being printed on the log. | Check Log Verbosity |
-| Generic Configuration | mysql\_test\_database | Notifies if there are database nameed 'test' or 'test_%'. | MySQL Test Database |
+| Generic Configuration | mysql\_test\_database | Notifies if there are database named 'test' or 'test_%'. | MySQL Test Database |
 | Generic Configuration | mysql_timezone | Verifies whether the time zone is correctly loaded.| MySQL configuration check |
 | InnoDB Configuration| innodb\_redo\_logs\_not\_sized_correctly | Reviews the InnoDB redo log size and provides suggestions if it is configured too low. | InnoDB Redo Log Size is Not Configured Correctly. |
 | InnoDB Configuration| mysql\_ahi\_efficiency\_performance\_basic_check | Checks the efficiency and effectiveness of InnoDB's Adaptive Hash Index (AHI). | InnoDB Adaptive Hash Index (AHI) Efficiency |
@@ -119,10 +119,10 @@ We have listed the checks and their details here.
 | Resources Configuration| mysql\_32binary\_on_64system | Notifies if version\_compile\_machine equals i686. | Check if Binaries are 32 Bits |
 | Version Configuration| mysql\_unsupported\_version_check | Warns against an unsupported Mysql version. | Checks Mysql Version |
 | Version Configuration| mysql_version | Warns if MySQL, Percona Server for MySQL, or MariaDB version is not the latest available one. | MySQL Version |
-| Version Configuration| mysql\_version\_eol_57 | Checks if server version is EOL. | End Of Life Server Version (5.7). |
+| Version Configuration| mysql\_version\_eol_57 | Checks if the server version is EOL. | End Of Life Server Version (5.7). |
 | Index Query| mysql\_performance\_temp\_ondisk\_table_high | Warns if there are too many on-disk temporary tables being created due to unoptimized query execution. | Too Many on Disk Temporary Tables |
-| Index Query| mysql\_tables\_without_pk | Checks tables without primary keys. | MySQL check for table without Primary Key |
-| Schema Design Query | mysql\_indexes\_larger | Check all the tables to see if any have indexes larger than data. This indicates sub-optimial schema and should be reviewed. |Tables With Index Sizes Larger Than Data |
+| Index Query| mysql\_tables\_without_pk | Checks tables without primary keys. | MySQL check for a table without Primary Key |
+| Schema Design Query | mysql\_indexes\_larger | Check all the tables to see if any have indexes larger than data. This indicates a sub-optimal schema and should be reviewed. |Tables With Index Sizes Larger Than Data |
 | Authentication Security| mysql\_automatic\_expired_password | Warns if the MySQL parameter for automatic password expiry is not active. | MySQL Automatic User Expired Password |
 | Authentication Security| mysql\_security\_anonymous_user | Verifies if anonymous users are present, as this would contradict security best practices.| Anonymous User (You Must Remove Any Anonymous User) |
 | Authentication Security| mysql\_security\_open\_to\_world_host | Checks whether host definitions are set as '%' since this is overly permissive and could pose security risks. | UserS Have Host Definition '%' Which is Too Open |
@@ -130,7 +130,7 @@ We have listed the checks and their details here.
 | Authentication Security| mysql\_security\_user_ssl | Reports users who are not using a secure SSL protocol to connect.| Users Not Using Secure SSL |
 | Authentication Security| mysql\_security\_user\_super\_not_local | Reports users with super privileges who are not connecting from the local host or the host is not fully restricted (e.g., 192.168.%). | Users have Super privileges With Remote and Too Open Access |
 | Authentication Security| mysql\_security\_user\_without\_password | Reports users without passwords. | Users Without Password |
-| Configuration Security| mysql\_config\_local_infile | Checks if "LOAD DATA INFILE" functionality is active.| Load Data in File Active |
+| Configuration Security| mysql\_config\_local_infile | Checks if the "LOAD DATA INFILE" functionality is active.| Load Data in File Active |
 | Configuration Security| mysql\_configuration\_secure\_file\_priv_empty | Warns when  secure\_file\_priv is empty as this enables users with FILE privilege to create files at any location where MySQL server has Write permission. | secure\_file\_priv is Empty |
 | Configuration Security| mysql\_password\_expiry |Checks if MySQL user passwords are expired or expiring within the next 30 days. | Check MySQL User Password Expiry |
 | Configuration Security| mysql\_require\_secure_transport | Checks the status of *mysql_secure_transport_only*. | MySQL configuration check |
@@ -160,13 +160,13 @@ We have listed the checks and their details here.
 | Version Configuration| postgresql\_version\_check | Checks if the currently installed version is outdated for its release level. |
 | Generic Performance| postgresql\_cache\_hit\_ratio\_1 |Checks the hit ratio of one or more databases and raises a complaint when they are too low. |
 | Generic Performance| postgresql\_config\_changes\_need\_restart_1 | Warns if there are any settings or configurations that have been changed and require a server restart or reload.|
-| Generic Performance| postgresql\_tmpfiles\_check | Reports the number of temporary files and number of bytes written to disk since the last statistics reset.|
+| Generic Performance| postgresql\_tmpfiles\_check | Reports the number of temporary files and the number of bytes written to disk since the last statistics reset.|
 | Replication Performance| postgresql\_stale\_replication\_slot\_1 | Warns if there is a stale replication slot. Stale replication slots will lead to WAL file accumulation and can result in a database server outage. |
-| Vacuum Performance| postgresql\_table\_bloat_bytes | Verifies the size of the table bloat in bytes accross all databases and raises alerts accordingly.|
-| Vacuum Performance| postgresql\_table\_bloat\_in\_percentage | Verifies the size of the table bloat in percentage of the total table size and alerts accordingly. |
+| Vacuum Performance| postgresql\_table\_bloat_bytes | Verifies the size of the table bloat in bytes across all databases and raises alerts accordingly.|
+| Vacuum Performance| postgresql\_table\_bloat\_in\_percentage | Verifies the size of the table bloat in the percentage of the total table size and alerts accordingly. |
 | Index Query| postgresql\_number\_of\_index\_check | Lists relations with more than ten indexes. |
 | Index Query| postgresql\_sequential\_scan_check | Checks for tables with excessive sequential scans. |
-| Index Query| postgresql\_unused\_index_check | Lists relations with indexes that have not been used since the statistics where last reset. |
+| Index Query| postgresql\_unused\_index_check | Lists relations with indexes that have not been used since the statistics were last reset. |
 | Authentication Security| postgresql\_super\_role | Notifies if there are users with Superuser role. |
 | Configuration Security| postgresql\_expiring\_passwd_check |Checks for passwords that are expiring and displays the time left before they expire. |
 | CVE Security| postgresql\_cve\_check | Checks if the currently installed version has reported security vulnerabilities. |
