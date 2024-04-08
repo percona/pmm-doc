@@ -219,7 +219,7 @@ When successful, PMM Client will print `MongoDB Service added` with the service'
 !!! hint alert alert-success "Tips"
     - When adding nodes of a sharded cluster, add each node separately using the `--cluster mycluster` option for the [MongoDB Cluster Summary](../../details/dashboards/dashboard-mongodb-cluster-summary.md) dashboard to populate correctly. 
     - You can also use the `--replication-set` option to specify a replication set, altough they are automatically detected. Example: `--replication-set config` for your config servers; `--replication-set rs1` for your servers in the first replica set, `--replication-set rs2` for your servers in the second replica set, and so on.
-    - Atlas doesn't support direct connections. When connecting to an Atlas instance, use the `pmm-admin` option `--direct-connection=false`. (Doing so will prevent replicaset status from working and the MongoDB Overview dashboard widget will show invalid values.)
+    - When connecting to an Atlas instance, keep in mind that direct connections are not supported. Make sure to use the `--direct-connection=false` option with `pmm-admin`. Otherwise, replicaset status functionality will not work as expected, and the MongoDB Overview dashboard widget will show invalid values.
 
 ### Examples
 
