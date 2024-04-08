@@ -190,7 +190,7 @@ For example, to enable the profiler in the `testdb`, run this:
 ```
 
 !!! note alert alert-primary ""
-    If you have already [added the MongoDB service to PMM](#add-service), you should restart the PMM agent service after changing the profiling level.
+    If you have already [added the MongoDB service to PMM](#add-service), make sure to restart the PMM agent service after adjusting the profiling level.
 
 ## Add service
 
