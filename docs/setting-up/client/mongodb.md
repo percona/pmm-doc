@@ -197,7 +197,8 @@ For example, to enable the profiler in the `testdb`, run this:
 "After configuring your database server, you can add a MongoDB service either through the user interface or via the command line.
 
 !!! caution alert alert-warning "Important"
-    To monitor MongoDB sharded clusters, PMM requires access to all cluster components. Make sure to add all config servers, shards, and at least 1-2 mongos routers (adding all mongos routers may cause too much overhead). Otherwise, PMM will not be able to correctly collect metrics and populate dashboards.
+To monitor MongoDB sharded clusters, PMM requires access to all cluster components. Make sure to add all the config servers, shards, and at least 1-2 mongos routers. Otherwise, PMM will not be able to correctly collect metrics and populate dashboards. 
+Keep in mind that adding all mongos routers may cause excessive overhead.
 
 ### With the user interface
 
