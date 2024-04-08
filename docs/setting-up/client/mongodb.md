@@ -141,7 +141,7 @@ You can set profiling:
 - until the next database instance restart, by running a command in a `mongo` session.
 
 !!! note alert alert-primary ""
-    Profiling is turned off by default as it can adversely affect the performance of the database server on certain circumstances (e.g. busy servers profiling all queries).
+Profiling is disabled by default as it may negatively impact the performance of the database server under specific circumstances, such as when busy servers are profiling all queries.
 
 ### Set profiling in the configuration file
 
