@@ -42,7 +42,7 @@ docker exec -it pmm-server chown root.root /srv/nginx/*
 
 ### Use trusted SSL when connecting PMM Client to PMM Server
 
-For the new trusted certificates to take effect, you'll just need to restart the PMM server (or advanced users can restart just nginx from a shell: supervisorctl restart nginx). 
+For the new trusted certificates to take effect, you'll just need to restart the PMM Server (or advanced users can restart just nginx from a shell: supervisorctl restart nginx). 
 
 You can now register clients to the PMM Server using the following:
 ```sh

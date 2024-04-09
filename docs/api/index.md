@@ -30,7 +30,7 @@ Starting with version 3, PMM no longer uses API keys as the primary method for c
 When you install PMM 3.x, any existing API keys will be seamlessly converted to service accounts with corresponding service tokens.
 	```
 
-Service accounts are used to control access to the PMM server components and resources. With an API key, you are authenticated to the PMM server, have access to PMM server components and resources, and perform various actions on them. You can use Service accounts as a replacement for basic authentication and API keys.
+Service accounts are used to control access to the PMM Server components and resources. With an API key, you are authenticated to the PMM Server, have access to PMM Server components and resources, and perform various actions on them. You can use Service accounts as a replacement for basic authentication and API keys.
 
 Service account contains Service Tokens, which is direct replacement for API key.
 
