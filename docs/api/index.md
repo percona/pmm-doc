@@ -14,11 +14,11 @@ The objects visible are nodes, services, and agents:
 
 - A **Service** represents something useful running on the Node: Amazon Aurora MySQL, MySQL, MongoDB, etc. It runs on zero (Amazon Aurora Serverless), single (MySQL), or several (Percona XtraDB Cluster) Nodes. It also has zero or more Agents providing insights for it.
 
-- An **Agent** represents something that runs on the Node which is not useful in itself but instead provides insights (metrics, query performance data, etc.) about Nodes and/or Services. An agent always runs on the single Node (except External Exporters), and provides insights for zero or more Services and Nodes.
+- An **Agent** represents something that runs on the Node which is not useful in itself, but instead provides insights (metrics, query performance data, etc.) about Nodes and/or Services. An agent always runs on the single Node (except External Exporters), and provides insights for zero or more Services and Nodes.
 
 Nodes, Services, and Agents have **Types** which define specific their properties, and their specific logic.
 
-Nodes and Services are external by nature – we do not manage them (create, destroy), but merely maintain a list of them (add to inventory, remove from inventory) in `pmm-managed`. Most Agents are started and stopped by `pmm-agent`. One exception is the External Exporter Type which is started externally.
+Nodes and Services are inherently external. We don't manage their creation or deletion, but rather maintain a list of them within PMM Server by adding them to or removing them from the inventory. The majority of Agents are initiated and halted by pmm-agent, with one exception being the External Exporter Type, which is initiated externally.
 
 
 ## Authentication with service accounts
@@ -28,9 +28,20 @@ Starting with version 3, PMM no longer uses API keys as the primary method for c
 
 **Automatic migration of API keys**
 When you install PMM 3.x, any existing API keys will be seamlessly converted to service accounts with corresponding service tokens.
-	```
 
-Service accounts are used to control access to the PMM Server components and resources. With an API key, you are authenticated to the PMM Server, have access to PMM Server components and resources, and perform various actions on them. You can use Service accounts as a replacement for basic authentication and API keys.
+Service accounts in PMM provide a secure and efficient way to manage access to the PMM Server and its resources. They serve as a replacement for the basic authentication and API keys used in previous versions of PMM (v.2 and earlier).
+
+With service accounts, you can:
+
+- control access to PMM Server components and resources.
+- define granular permissions for various actions.
+- create and manage multiple access tokens for a single service account.
+
+Creating multiple tokens for the same service account is beneficial in the following scenarios:
+
+- when multiple applications require the same permissions but need to be audited or managed separately. By assigning each application its own token, you can track and control their actions individually.
+- when a token becomes compromised and needs to be replaced. Instead of revoking the entire service account, you can rotate or replace the affected token without disrupting other applications using the same service account.
+- when you want to implement token lifecycle management. You can set expiration dates for individual tokens, ensuring that they are regularly rotated and reducing the risk of unauthorized access.
 
 Service account contains Service Tokens, which is direct replacement for API key.
 
