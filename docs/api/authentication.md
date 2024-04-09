@@ -38,7 +38,7 @@ Here's how to generate a service account token:
 9. In same dialog choose also "Expiration" for Service Token. Options are: "No expiration" or "Choose expiration date".
 10. Click **Generate Token**. A pop-up window will display the new token, which usually has a  "glsa_" prefix. 
 12. Copy your service token to the clipboard and store it securely.
-Now you can utilize your new service token for authentication in PMM API calls or in your PMM Agent configuration.
+Now you can utilize your new service token for authentication in PMM API calls or in your pmm-agent configuration.
 
 ## Authenticate
 
