@@ -39,7 +39,7 @@ Also, ensure that the Kubernetes cluster has [high availability](https://kuberne
 ??? info "Summary"
 
     !!! summary alert alert-info ""
-        - Setup PMM admin password
+        - Setup pmm-admin password
         - Install
         - Configuration parameters
         - PMM environment variables
@@ -51,9 +51,9 @@ Also, ensure that the Kubernetes cluster has [high availability](https://kuberne
 
     ---
 
-### Setup PMM admin password
+### Set up pmm-admin password
 
-Create Kubernetes secret with PMM admin password:
+Create Kubernetes secret with pmm-admin password:
 ```sh
 cat <<EOF | kubectl create -f -
 apiVersion: v1
