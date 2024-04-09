@@ -53,7 +53,7 @@ will give:
 
 **Password change**
 
-When adding clients to the PMM server, you use the `admin` user. However, if you change the password for the admin user from the PMM UI, then the clients will not be able to access PMM due to authentication issues. Also, Grafana will lock out the admin user due to multiple unsuccessful login attempts.
+When adding clients to the PMM Server, you use the `admin` user. However, if you change the password for the admin user from the PMM UI, then the clients will not be able to access PMM due to authentication issues. Also, Grafana will lock out the admin user due to multiple unsuccessful login attempts.
 
 In such a scenario, use [Service Accounts](../api/authentication.md#service-accounts-authentication) for authentication. You can use Service Accounts as a replacement for basic authentication and API keys.
 

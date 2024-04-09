@@ -1,4 +1,4 @@
-# Install PMM server with Helm on the Kubernetes clusters
+# Install PMM Server with Helm on the Kubernetes clusters
 
 
 [Helm](https://github.com/helm/helm) is the package manager for Kubernetes. Percona Helm charts can be found in [percona/percona-helm-charts](https://github.com/percona/percona-helm-charts) repository on Github.
@@ -31,7 +31,7 @@ You can physically separate workloads by properly configuring Kubernetes nodes, 
 
 Also, ensure that the Kubernetes cluster has [high availability](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/ha-topology/) so that in case of a node failure, the monitoring service will be running and capturing the required data.
 
-## Install PMM server
+## Install PMM Server
 
 !!! note alert alert-primary "Availability"
     This feature is available starting with PMM 2.29.0.

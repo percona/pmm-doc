@@ -36,7 +36,7 @@ In order to simplify DBaaS, k8s clusters can now be automatically added to PMM a
 To add add a kubernetes cluster automatically to PMM:
 {.power-number}
 
-1. Use [Helm](https://github.com/helm/helm) to install PMM server on Kubernetes clusters. For more information, see [documentation](../setting-up/server/helm.md).
+1. Use [Helm](https://github.com/helm/helm) to install PMM Server on Kubernetes clusters. For more information, see [documentation](../setting-up/server/helm.md).
     ```sh
     helm install pmm --set service.type="LoadBalancer" --set image.repository=percona/pmm-server --set image.tag=2.34.0 --set secret.pmm_password=admin percona/pmm
     ```

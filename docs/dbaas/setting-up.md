@@ -44,7 +44,7 @@ ln -s /usr/local/sbin/minikube /usr/sbin/minikube
 alias kubectl='minikube kubectl --'
 ```
 
-## Start PMM server and activate a DBaaS feature
+## Start PMM Server and activate a DBaaS feature
 
 !!! note alert alert-primary ""
     - To start a fully-working 3 node XtraDB cluster, consisting of sets of 3x HAProxy, 3x PXC and 6x PMM Client containers, you will need at least 9 vCPU available for minikube. (1x vCPU for HAProxy and PXC and 0.5vCPU for each pmm-client containers).
@@ -53,10 +53,10 @@ alias kubectl='minikube kubectl --'
     - Add the option `--network minikube` if you run PMM Server and minikube in the same Docker instance. (This will share a single network and the kubeconfig will work.)
     - Add the options `--env PMM_DEBUG=1` and/or `--env PMM_TRACE=1` if you need extended debug details
 
-To start PMM server and activate DBaaS:
+To start PMM Server and activate DBaaS:
 {.power-number}
 
-1. Start PMM server:
+1. Start PMM Server:
 
     ```sh
     docker run --detach --publish 80:80 --publish 443:443 --name pmm-server percona/pmm-server:2
@@ -261,7 +261,7 @@ For example, if you only run `eksctl delete cluster` to delete an Amazon EKS clu
 
 ## Run PMM Server as a Docker container for DBaaS
 
-1. Start PMM server from a feature branch:
+1. Start PMM Server from a feature branch:
 
     ```sh
     docker run --detach --name pmm-server --publish 80:80 --publish 443:443 --env ENABLE_DBAAS=1  percona/pmm-server:2;
