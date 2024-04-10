@@ -57,8 +57,6 @@ You can include the service token as a query parameter in a REST API call using 
 
 
 **Example**
-
-
 ```sh
 curl -X GET https://service_token:SERVICE_TOKEN@localhost/v1/version
 ```
