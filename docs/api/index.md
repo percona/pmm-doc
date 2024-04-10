@@ -20,5 +20,6 @@ Nodes, Services, and Agents have **Types** which define specific their propertie
 
 Nodes and Services are inherently external. We don't manage their creation or deletion, but rather maintain a list of them within PMM Server by adding them to or removing them from the inventory. The majority of Agents are initiated and halted by pmm-agent, with one exception being the External Exporter Type, which is initiated externally.
 
+## Service accounts and authentication
 
-**[Authentication with service accounts](/api/authentication.md)**
+For information about controlling access to the PMM server components and resources, see the **[Authentication with service accounts](/api/authentication.md)** topic.
