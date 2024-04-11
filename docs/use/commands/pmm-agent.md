@@ -66,11 +66,10 @@ Most options can be set via environment variables (shown in parentheses).
 | `--version`                            |                                     | Show application version, PMM version, time-stamp, git commit hash and branch.
 | `--expose-exporter` (This flag is available starting with PMM 2.41.0.)| | If you enable this flag, any IP address on the local network and anywhere on the internet can access node exporter endpoints. If the flag is disabled, node exporter endpoints can be accessed only locally.
 
+## CONFIG FILE
+Config file is updated by PMM and it is not recommended to change it on your own. If needed you can manually change some properties in config. Like username or password for authorization. In case of service accounts, set the username to `service_token` and place your service token as a password.  
 
 ## USAGE AND EXAMPLES OF `paths-base` FLAG
-
-Since 2.23.0 this flag could be used for easier setup of pmm agent. With this flag, the root permissions for PMM client aren't needed anymore, and it will be
-
 Since 2.23.0 this flag could be used for easier setup of PMM agent. With this flag the root permissions for PMM client aren't needed anymore and it will be fully working.
 
 **Examples:**
