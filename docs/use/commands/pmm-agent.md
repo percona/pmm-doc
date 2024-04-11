@@ -67,9 +67,13 @@ Most options can be set via environment variables (shown in parentheses).
 | `--expose-exporter` (This flag is available starting with PMM 2.41.0.)| | If you enable this flag, any IP address on the local network and anywhere on the internet can access node exporter endpoints. If the flag is disabled, node exporter endpoints can be accessed only locally.
 
 ## CONFIG FILE
-Config file is updated by PMM and it is not recommended to change it on your own. If needed you can manually change some properties in config. Like username or password for authorization. In case of service accounts, set the username to `service_token` and place your service token as a password.  
+
+PMM manages the configuration file, and it's not recommended to modify it manually. However, if necessary, you can make adjustments to specific properties in the config file, such as the username or password used for authorization through service accounts.
+
+To do this, set the username to `service_token` and add your service token as the password. For more information about service account authorization, see [Service accounts authentication](../../api/authentication.md).
 
 ## USAGE AND EXAMPLES OF `paths-base` FLAG
+
 Since 2.23.0 this flag could be used for easier setup of PMM agent. With this flag the root permissions for PMM client aren't needed anymore and it will be fully working.
 
 **Examples:**

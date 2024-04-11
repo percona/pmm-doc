@@ -23,7 +23,7 @@ Creating multiple tokens for the same service account is beneficial in the follo
 
 ## Generate a service account and token
 
-PMM uses the Grafana service account tokens for authentication. A token is a generated random string that acts as an alternative to API passwords.
+PMM uses Grafana service account tokens for authentication. These tokens are randomly generated strings that serve as alternatives to API keys or basic authentication passwords.
 
 Here's how to generate a service account token:
 
