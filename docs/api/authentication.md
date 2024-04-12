@@ -33,10 +33,10 @@ Here's how to generate a service account token:
 4. Click **Add service account**. Specify a unique name for your service account, select a role from the drop-down menu, and click **Create** to display your newly created service account.
 5. Click **Add service account token**.
 6. In the pop-up dialog, provide a name for the new service token, or leave the field empty to generate an automatic name.
-7. Optionally, set an expiration date for the service account token. PMM cannot automatically rotate expired tokens, which means and you will need to manually [update the PMM-agent configuration file](..\use\commands\pmm-agent.md) with a new service account token. Permanent tokens, on the other hand, remain valid indefinitely unless specifically revoked.
+7. Optionally, set an expiration date for the service account token. PMM cannot automatically rotate expired tokens, which means and you will need to manually [update the PMM-agent configuration file](../use/commands/pmm-agent.md) with a new service account token. Permanent tokens, on the other hand, remain valid indefinitely unless specifically revoked.
 8. Click **Generate Token**. A pop-up window will display the new token, which usually has a *glsa_* prefix.
 9. Copy your service token to the clipboard and store it securely.
-Now you can use your new service token for authentication in PMM API calls or in your [pmm-agent configuration](..\use\commands\pmm-agent.md).
+Now you can use your new service token for authentication in PMM API calls or in your [pmm-agent configuration](../use/commands/pmm-agent.md).
 
 ## Authenticate
 
