@@ -108,13 +108,13 @@ Specify each parameter using the `--set key=value[,key=value]` or `--set-string 
 ```sh
 helm install pmm \
 --set secret.create=false --set secret.name=pmm-secret \
---set-string pmmEnv.ENABLE_DBAAS="1" \
+--set-string pmmEnv.DISABLE_UPDATES="1" \
 --set service.type="NodePort" \
 --set storage.storageClassName="linode-block-storage-retain" \
     percona/pmm
 ```
 
-The above command installs PMM with the enabled PMM DBaaS feature. Additionally, it sets the Service network type to `NodePort` and storage class to `linode-block-storage-retain` for persistence storage on LKE.
+The above command installs PMM, while setting the Service network type to `NodePort` and storage class to `linode-block-storage-retain` for persistence storage on LKE.
 
 <div hidden>
 ```sh
@@ -143,7 +143,6 @@ In case you want to add extra environment variables (useful for advanced operati
 ```yaml
 pmmEnv:
   DISABLE_UPDATES: "1"
-  ENABLE_DBAAS: "1"
 ```
 
 ### PMM SSL certificates
@@ -224,14 +223,14 @@ kubectl get volumesnapshot
 
 Percona will release a new chart updating its containers if a new version of the main container is available, there are any significant changes, or critical vulnerabilities exist.
 
-By default UI update feature is disabled and should not be enabled. Do not modify that parameter or add it while modifying the custom `values.yaml` file:
+By default the UI update feature is disabled and should not be enabled. Do not modify that parameter when customizing the `values.yaml` file:
 
 ```yaml
 pmmEnv:
   DISABLE_UPDATES: "1"
 ```
 
-Before updating the helm chart,  it is recommended to pre-pull the image on the node where PMM is running, as the PMM images could be large and could take time to download.
+Before updating the helm chart, it is recommended to pre-pull the image on the node where PMM is running, as the PMM images could be large and could take time to download.
 
 Update PMM as follows:
 
