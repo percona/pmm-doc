@@ -8,12 +8,18 @@
 **How QAN collecting data?**
 - data are collected every minute (at 0 seconds, like 8:15:00, next in 8:16:00 etc)
 - collected data are represented by buckets
-- MySQL data are based on outputs from tables events_statements_summary_by_digest and events_statements_history in mysql database (in case of perfschema), from file (in case of slowlog)
-- PostreSQL data are based on outputs from table pg_stat_statements (in case of PGSS as a query source) and pg_stat_monitor table (in case of PGSM as a query source)
+
+**Sources for data**
+- MySQL Perfschema: tables events_statements_summary_by_digest and events_statements_history in mysql database
+- MySQL Slowlog: file on path provided during configuring your MySQL
+- PostgreSQL pg_stat_statements (PGSS): view pg_stat_statements in required database
+- PostgreSQL pg_stat_statmonitor (PGSM): view pg_stat_monitor in required database
 
 **What is bucket/How is created?**
 - buckets contains all data captured during one minute interval
+- once bucket is created it is send to PMM Server where is it parsed and saved in clickhouse database, which is used for QAN data
 - queries in buckets are aggregated by query ID
+- query IDs are calculated different depends on technology and query source
 
 **Examples:**
 
@@ -54,6 +60,6 @@ Both queries above will have **same query ID**.
 That is why they has same query ID (DIGEST) and in list they are shown as 1 line, not 2. On the another hand in details you still should see real count of how many times query were trigger. As you can see on image below count for INSERT query is 2. Since we triggered INSERT query 2 times it is correct.
 ![QAN MySQL Example 1 Details](../_images/PMM_Query_Analytics_Example1_Details.png) 
 
-2. TODO MySQL, query source perfschema/slowlog, queries processed in two buckets
+2. TODO MySQL, query source perfschema/slowlog, queries split into two buckets
 
 TODO improve wording, structure
