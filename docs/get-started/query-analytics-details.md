@@ -1,37 +1,51 @@
-# Query analytics (QAN)
+# Query analytics under the hood
 
 ## Components
-1. the [Filters Panel](./query-analytics.md#filters-panel)
-2. the [Overview Panel](./query-analytics.md#overview-panel)
-3. the [Details Panel](./query-analytics.md#details-panel)
+1. [Filters Panel](./query-analytics.md#filters-panel)
+2. [Overview Panel](./query-analytics.md#overview-panel)
+3. [Details Panel](./query-analytics.md#details-panel)
 
-**How QAN collecting data?**
+## How QAN collecting data?
 - data are collected every minute (at 0 seconds, like 8:15:00, next in 8:16:00 etc)
 - collected data are represented by buckets
 
-**Sources for data**
+## What is bucket/How is created?
+- buckets contains all data captured during one minute interval
+- once bucket is created it is send to PMM Server where is it parsed and saved in clickhouse database, which is used for QAN data
+- queries in buckets are aggregated by query ID
+- query IDs are calculated different depends on technology and query source
+    - **MySQL Perfschema**
+        - query ID is based on DIGEST value from events_statements_summary_by_digest in mysql database
+        - DIGEST for same query could be different in different versions of MySQL 
+        - DIGEST is generated from query without sensitive data (DIGEST_TEXT), so both queries below will have same query ID.  
+        `INSERT INTO people VALUES ('Joe', 'Doe');`  
+        `INSERT INTO people VALUES ('John', 'Smith');`  
+        - DIGEST is not case sensitive.   
+        `insert into people values ('Joe', 'Doe');`   
+        `INSERT INTO people VALUES ('Joe', 'Doe');`  
+        Both queries above will have **same query ID**. 
+        - with MySQL 8.0 and higher you can use function STATEMENT_DIGEST("your query") to get DIGEST (query ID). See more details on MySQL official website: https://dev.mysql.com/doc/refman/8.0/en/encryption-functions.html#function_statement-digest
+    - **MySQL Slowlog**
+        - query ID is the right-most 16 characters of the MD5 checksum of fingerprint
+        - case sensitive  
+        `insert into people values ('Joe', 'Doe');`   
+        `INSERT INTO people VALUES ('Joe', 'Doe');`  
+        Both queries above will have **different query ID**. 
+
+## Sources for data
 - MySQL Perfschema: tables events_statements_summary_by_digest and events_statements_history in mysql database
 - MySQL Slowlog: file on path provided during configuring your MySQL
 - PostgreSQL pg_stat_statements (PGSS): view pg_stat_statements in required database
 - PostgreSQL pg_stat_statmonitor (PGSM): view pg_stat_monitor in required database
 
-**What is bucket/How is created?**
-- buckets contains all data captured during one minute interval
-- once bucket is created it is send to PMM Server where is it parsed and saved in clickhouse database, which is used for QAN data
-- queries in buckets are aggregated by query ID
-- query IDs are calculated different depends on technology and query source
-
-**Examples:**
-
-1. MySQL, query source perfschema/slowlog.
-
+## Examples
+### 1. MySQL, query source perfschema/slowlog
 Timeline:  
 8:05:05: You started pmm-agent.  
-8:05:20: You triggered queries:  
->`CREATE TABLE people (FirstName varchar(255), LastName varchar(255));`  
+8:05:20: You executed queries:  
+`CREATE TABLE people (FirstName varchar(255), LastName varchar(255));`  
 `INSERT INTO people VALUES ('Joe', 'Doe');`  
 `INSERT INTO people VALUES ('John', 'Smith');`  
-
 8:05:25: Queries finished.   
 8:06:00: Buckets are collected and sent to PMM Server. Now go to QAN.  
 8:06:10: You should see those two rows in QAN list (depends on settings of filter and time range):
@@ -39,27 +53,34 @@ Timeline:
 Lets answer some questions about image above.  
 1. Why query is little bit different in list?
 - query is same, but sensitive data (Joe, John etc) are replaced by "?", "?+" or "..." in list overview
-2. We trigerred two INSERT queries, but there is only one in list. Why?
-- queries are aggregated by query ID.  
-**Slowlog**  
-- case sensitive  
-`insert into people values ('Joe', 'Doe');`   
+2. We trigerred two INSERT queries, but there is only one row in list. Why?
+- For executed queries:
 `INSERT INTO people VALUES ('Joe', 'Doe');`  
-Both queries above will have **different query ID**. 
-- query ID is the right-most 16 characters of the MD5 checksum of fingerprint.  
-**Perfschema**  
-- not case sensitive  
-`insert into people values ('Joe', 'Doe');`   
-`INSERT INTO people VALUES ('Joe', 'Doe');`  
-Both queries above will have **same query ID**. 
-- query ID is based on DIGEST from MySQL
-- with MySQL 8.0 and higher you can use function STATEMENT_DIGEST("your query") to get DIGEST (query ID). See more details on MySQL oficial website: https://dev.mysql.com/doc/refman/8.0/en/encryption-functions.html#function_statement-digest
-- DIGEST is generated from query without sensitive data (DIGEST_TEXT), so for MySQL both queries will DIGEST_TEXT looks like same:  
-`INSERT INTO people VALUES ('?', '?');`  
-`INSERT INTO people VALUES ('?', '?');`   
-That is why they has same query ID (DIGEST) and in list they are shown as 1 line, not 2. On the another hand in details you still should see real count of how many times query were trigger. As you can see on image below count for INSERT query is 2. Since we triggered INSERT query 2 times it is correct.
+`INSERT INTO people VALUES ('John', 'Smith');`
+query ID will be same and that is why it is aggregated as one row in list overview. On the another hand in details you still should see real count of how many times query were executed. As you can see on image below. In details count for INSERT query is 2. Since we executed INSERT query 2 times it is correct and expected.
 ![QAN MySQL Example 1 Details](../_images/PMM_Query_Analytics_Example1_Details.png) 
 
-2. TODO MySQL, query source perfschema/slowlog, queries split into two buckets
+### 2. MySQL, query source perfschema/slowlog, queries execution splitted over two buckets
+
+Timeline:  
+8:05:55: You started pmm-agent.  
+8:05:59: You executed queries:  
+`CREATE TABLE people (FirstName varchar(255), LastName varchar(255));`  
+`INSERT INTO people VALUES ('Joe', 'Doe');`  
+`INSERT INTO people VALUES ('John', 'Smith');` 
+8:06:00: Buckets are collected and sent to PMM Server. Already executed queries are included too in Bucket.
+8:06:01: Queries finished.    
+8:07:00: Buckets are collected and sent to PMM Server. Rest of executed queries is included there.
+8:07:10: You should see those two rows in QAN list (depends on settings of filter and time range):
+![QAN MySQL Example 1 List Overview](../_images/PMM_Query_Analytics_Example1_Overview.png) 
+Lets answer some questions about image above.  
+1. Why query is little bit different in list?
+- query is same, but sensitive data (Joe, John etc) are replaced by "?", "?+" or "..." in list overview
+2. We trigerred two INSERT queries, but there is only one row in list. Why?
+- For executed queries:
+`INSERT INTO people VALUES ('Joe', 'Doe');`  
+`INSERT INTO people VALUES ('John', 'Smith');`
+query ID will be same and that is why it is aggregated as one row in list overview. On the another hand in details you still should see real count of how many times query were executed. As you can see on image below. In details count for INSERT query is 2. Since we executed INSERT query 2 times it is correct and expected.
+![QAN MySQL Example 1 Details](../_images/PMM_Query_Analytics_Example1_Details.png) 
 
 TODO improve wording, structure
