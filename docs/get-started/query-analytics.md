@@ -1,4 +1,4 @@
-# Query Analytics
+# Query Analytics under the hood
 
 The *Query Analytics* dashboard shows how queries are executed and where they spend their time.  It helps you analyze database queries over time, optimize database performance, and find and remedy the source of problems.
 
@@ -329,3 +329,8 @@ To share a link for Query Analytics, use *Copy Link*. It copies the link to the 
 
 [SLOW_QUERY_LOG]: ../setting-up/client/mysql.md#slow-query-log
 [PERFORMANCE_SCHEMA]: ../setting-up/client/mysql.md#performance-schema
+
+## QAN under the hood
+
+To understand how metrics are calculated and details about QAN visit:
+[QAN under the hood](./query-analytics-details.md)
