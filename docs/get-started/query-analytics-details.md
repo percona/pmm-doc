@@ -40,7 +40,7 @@
 
 ## Examples
 ### 1. MySQL, query source perfschema/slowlog
-Timeline:  
+**Timeline**   
 8:05:05: You started pmm-agent.  
 8:05:20: You executed queries:  
 `CREATE TABLE people (FirstName varchar(255), LastName varchar(255));`  
@@ -48,39 +48,38 @@ Timeline:
 `INSERT INTO people VALUES ('John', 'Smith');`  
 8:05:25: Queries finished.   
 8:06:00: Buckets are collected and sent to PMM Server. Now go to QAN.  
-8:06:10: You should see those two rows in QAN list (depends on settings of filter and time range):
+8:06:10: You should see two rows in QAN list overview (depends on settings of filter and time range):
 ![QAN MySQL Example 1 List Overview](../_images/PMM_Query_Analytics_Example1_Overview.png) 
 Lets answer some questions about image above.  
-1. Why query is little bit different in list?
-- query is same, but sensitive data (Joe, John etc) are replaced by "?", "?+" or "..." in list overview
-2. We trigerred two INSERT queries, but there is only one row in list. Why?
-- For executed queries:
-`INSERT INTO people VALUES ('Joe', 'Doe');`  
-`INSERT INTO people VALUES ('John', 'Smith');`
-query ID will be same and that is why it is aggregated as one row in list overview. On the another hand in details you still should see real count of how many times query were executed. As you can see on image below. In details count for INSERT query is 2. Since we executed INSERT query 2 times it is correct and expected.
-![QAN MySQL Example 1 Details](../_images/PMM_Query_Analytics_Example1_Details.png) 
+1. Why query is little bit different in list overview?
+    - query is same, but sensitive data (Joe, John etc) are replaced by "?", "?+" or "..." in list overview
+2. We trigerred two INSERT queries, but there is only one row in list overview. Why?
+    - For executed queries:  
+    `INSERT INTO people VALUES ('Joe', 'Doe');`    
+    `INSERT INTO people VALUES ('John', 'Smith');`  
+    query ID will be same and that is why it is aggregated as one row in list overview. On the another hand in details you still should see real count of how many times query were executed. As you can see on image below. In details count for INSERT query is 2. Since we executed INSERT query 2 times it is correct and expected.
+    ![QAN MySQL Example 1 Details](../_images/PMM_Query_Analytics_Example1_Details.png) 
 
 ### 2. MySQL, query source perfschema/slowlog, queries execution splitted over two buckets
-
-Timeline:  
+**Timeline**  
 8:05:55: You started pmm-agent.  
 8:05:59: You executed queries:  
 `CREATE TABLE people (FirstName varchar(255), LastName varchar(255));`  
 `INSERT INTO people VALUES ('Joe', 'Doe');`  
-`INSERT INTO people VALUES ('John', 'Smith');` 
-8:06:00: Buckets are collected and sent to PMM Server. Already executed queries are included too in Bucket.
+`INSERT INTO people VALUES ('John', 'Smith');`   
+8:06:00: Buckets are collected and sent to PMM Server. Already executed queries are included too in Bucket. Could be find in QAN already in range 8:05:00 - 8:06:00 or any another timestamp, which includes this minute.  
 8:06:01: Queries finished.    
-8:07:00: Buckets are collected and sent to PMM Server. Rest of executed queries is included there.
-8:07:10: You should see those two rows in QAN list (depends on settings of filter and time range):
-![QAN MySQL Example 1 List Overview](../_images/PMM_Query_Analytics_Example1_Overview.png) 
-Lets answer some questions about image above.  
-1. Why query is little bit different in list?
-- query is same, but sensitive data (Joe, John etc) are replaced by "?", "?+" or "..." in list overview
-2. We trigerred two INSERT queries, but there is only one row in list. Why?
-- For executed queries:
-`INSERT INTO people VALUES ('Joe', 'Doe');`  
-`INSERT INTO people VALUES ('John', 'Smith');`
-query ID will be same and that is why it is aggregated as one row in list overview. On the another hand in details you still should see real count of how many times query were executed. As you can see on image below. In details count for INSERT query is 2. Since we executed INSERT query 2 times it is correct and expected.
-![QAN MySQL Example 1 Details](../_images/PMM_Query_Analytics_Example1_Details.png) 
+8:07:00: Buckets are collected and sent to PMM Server. Rest of executed queries is included there and since now visible/increased in QAN.
+8:07:10: You should see two rows in QAN list overview (depends on settings of filter and time range):
 
-TODO improve wording, structure
+Now lets take a look on results with different time range filters.
+1. QAN with time range filter (Last 12 hours)
+    - two rows in overview (one for CREATE query, another for INSERT)
+    - in details for INSERT query count is 2
+2. Range 8:05:00 - 8:06:00
+    - one row in overview for CREATE query, because none of INSERT queries were executed by that time
+3. Range 8:06:00 - 8:07:00
+    - one row in overview for INSERT query, because CREATE query were send in previous bucket
+    - in details for INSERT query count is 2. Both queries were executed in this range
+
+Always rember that it could take up to 2 minutes until all data are visible in QAN since execution is done.
