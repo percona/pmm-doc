@@ -11,8 +11,8 @@
 
 ## What is bucket/How is created?
 - buckets contains all data captured during one minute interval
-- once bucket is created it is send to PMM Server where is it parsed and saved in clickhouse database, which is used for QAN data
-- queries in buckets are aggregated by query ID
+- once bucket is created it is send to PMM Server where is it parsed and saved in clickhouse database. All QAN related data are stored there. Clickhouse is part of PMM Server, or you can use external one
+- queries in buckets are aggregated by query ID. It means one row in list overview for all queries with same query ID
 - query IDs are calculated different depends on technology and query source
     - **MySQL Perfschema**
         - query ID is based on DIGEST value from events_statements_summary_by_digest in mysql database
@@ -27,16 +27,17 @@
         - with MySQL 8.0 and higher you can use function STATEMENT_DIGEST("your query") to get DIGEST (query ID). See more details on MySQL official website: https://dev.mysql.com/doc/refman/8.0/en/encryption-functions.html#function_statement-digest
     - **MySQL Slowlog**
         - query ID is the right-most 16 characters of the MD5 checksum of fingerprint
-        - case sensitive  
+        - fingerprint is query without sensitive data
+        - MD5 checksum is case sensitive.
         `insert into people values ('Joe', 'Doe');`   
         `INSERT INTO people VALUES ('Joe', 'Doe');`  
         Both queries above will have **different query ID**. 
 
 ## Sources for data
-- MySQL Perfschema: tables events_statements_summary_by_digest and events_statements_history in mysql database
+- MySQL Perfschema: tables `events_statements_summary_by_digest` and `events_statements_history` in MySQL database called `mysql`
 - MySQL Slowlog: file on path provided during configuring your MySQL
-- PostgreSQL pg_stat_statements (PGSS): view pg_stat_statements in required database
-- PostgreSQL pg_stat_statmonitor (PGSM): view pg_stat_monitor in required database
+- PostgreSQL pg_stat_statements (PGSS): view `pg_stat_statements` in required database
+- PostgreSQL pg_stat_statmonitor (PGSM): view `pg_stat_monitor` in required database
 
 ## Examples
 ### 1. MySQL, query source perfschema/slowlog
@@ -67,13 +68,13 @@ Lets answer some questions about image above.
 `CREATE TABLE people (FirstName varchar(255), LastName varchar(255));`  
 `INSERT INTO people VALUES ('Joe', 'Doe');`  
 `INSERT INTO people VALUES ('John', 'Smith');`   
-8:06:00: Buckets are collected and sent to PMM Server. Already executed queries are included too in Bucket. Could be find in QAN already in range 8:05:00 - 8:06:00 or any another timestamp, which includes this minute.  
+8:06:00: Buckets are collected and sent to PMM Server. Already executed queries are included too in bucket. Could be find in QAN already in range 8:05:00 - 8:06:00 or any another timestamp, which includes this minute.  
 8:06:01: Queries finished.    
 8:07:00: Buckets are collected and sent to PMM Server. Rest of executed queries is included there and since now visible/increased in QAN.
 8:07:10: You should see two rows in QAN list overview (depends on settings of filter and time range):
 
 Now lets take a look on results with different time range filters.
-1. QAN with time range filter (Last 12 hours)
+1. QAN with default time range filter (Last 12 hours)
     - two rows in overview (one for CREATE query, another for INSERT)
     - in details for INSERT query count is 2
 2. Range 8:05:00 - 8:06:00
