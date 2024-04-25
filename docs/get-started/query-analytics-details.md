@@ -27,7 +27,7 @@
             insert into people values ('Joe', 'Doe');   
             INSERT INTO people VALUES ('Joe', 'Doe'); 
             ``` 
-        Both queries above will have **same query ID**. 
+            Both queries above will have **same query ID**. 
         - with MySQL 8.0 and higher you can use function STATEMENT_DIGEST("your query") to get DIGEST (query ID). See more details on MySQL official website: https://dev.mysql.com/doc/refman/8.0/en/encryption-functions.html#function_statement-digest
     - **MySQL Slowlog**
         - query ID is the right-most 16 characters of the MD5 checksum of fingerprint
