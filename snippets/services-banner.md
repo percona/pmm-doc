@@ -2,9 +2,9 @@
 
 ## Get expert help { .title }
 
-If you need assistance, visit the community forum for comprehensive and free database knowledge, or contact our Percona Database Experts for professional support and services.
+If you need assistance, you can find comprehensive and free database knowledge on our community forum or blog posts. For professional support and services, contact our Percona Database Experts.
 
 <div class="actions" markdown>
 
-[:material-forum-outline: Community Forum](https://forums.percona.com/c/percona-monitoring-and-management-pmm/percona-monitoring-and-management-pmm-v2/31) [:percona-logo: Get a Percona Expert](https://www.percona.com/about/contact)
+[:material-forum-outline: Community Forum](https://forums.percona.com/){:target="_blank"} [:percona-logo: Get a Percona Expert](https://www.percona.com/about/contact){:target="_blank"}
 </div></div>
