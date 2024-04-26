@@ -60,14 +60,12 @@ extra_css:
   - css/extra.css
   - css/nocopy.css
   - css/design.css
-
-#Copyright
-copyright: >
-  <a href="https://www.percona.com/about">Percona LLC</a> and/or its affiliates © 2023 — <a href="#__consent">Cookie Consent</a>
+  - css/osano.css
 
 extra_javascript:
   #  - js/lightgallery.min.js
   - js/promptremover.js
+  - js/consent.js
 
 markdown_extensions:
   attr_list: {}
@@ -125,10 +123,9 @@ plugins:
       - "setting-up/client/docker.md"
   # https://github.com/orzih/mkdocs-with-pdf
   with-pdf:
-    output_path: "_pdf/PerconaMonitoringAndManagement-2.41.1.pdf"
+    output_path: "_pdf/PerconaMonitoringAndManagement-2.41.2.pdf"
     cover_title: "Percona Monitoring and Management Documentation"
-    cover_subtitle: 2.41.1 (Feb 01, 2024)
-
+    cover_subtitle: 2.41.2 (Mar 20, 2024)
     author: "Percona Technical Documentation Team"
     cover_logo: docs/_images/Percona_Logo_Color.png
     custom_template_path: _resources/templates
@@ -144,13 +141,6 @@ plugins:
 
 extra:
   homepage: https://docs.percona.com
-  consent:
-    title: Cookie consent
-    description: >-
-      We use cookies to recognize your repeated visits and preferences, as well
-      as to measure the effectiveness of our documentation and whether users
-      find what they're searching for. With your consent, you're helping us to
-      make our documentation better. Read more about <a class="reference external" href="https://www.percona.com/20180524-cookie-policy" target="_blank">Percona Cookie Policy</a>.
   edit_page_text: '<i class="uil uil-pen"></i> <b>Edit this page</b>'
   updated_text: '<i class="uil uil-refresh"></i> Page updated'
 
@@ -360,157 +350,63 @@ nav:
     - troubleshoot/pmm_dump.md
 
   - Release notes:
-    - Release notes index: release-notes/index.md
-    - "PMM 2.41.0 (Dec 12, 2023)": release-notes/2.41.0.md
-    - "PMM 2.40.1 (Oct 20, 2023)": release-notes/2.40.1.md
-    - "PMM 2.40.0 (Oct 5 2023)": release-notes/2.40.0.md
-    - "PMM 2.39.0 (Aug 14, 2023)": release-notes/2.39.0.md
-    - "PMM 2.38.1 (July 13, 2023)": release-notes/2.38.1.md
-    - "PMM 2.38.0 (July 3, 2023)": release-notes/2.38.0.md
-    - "PMM 2.37.1 (June 5, 2023)": release-notes/2.37.1.md
-    - "PMM 2.37.0 (May 2, 2023)": release-notes/2.37.0.md
-    - "PMM 2.36.0 (Mar. 23, 2023)": release-notes/2.36.0.md
-    - "PMM 2.35.0 (Feb. 23, 2023)": release-notes/2.35.0.md
-    - "PMM 2.34.0 (Jan. 30, 2023)": release-notes/2.34.0.md
-    - 2022:
-      - "PMM 2.33.0 (Dec. 13, 2022)": release-notes/2.33.0.md
-      - "PMM 2.32.0 (Nov. 8, 2022)": release-notes/2.32.0.md
-      - "PMM 2.31.0 (Sept. 26, 2022)": release-notes/2.31.0.md
-      - "PMM 2.30.0 (Aug. 8, 2022)": release-notes/2.30.0.md
-      - "PMM 2.29.1 (July 7, 2022)": release-notes/2.29.1.md
-      - "PMM 2.29.0 (July 19, 2022)": release-notes/2.29.0.md
-      - "PMM 2.28.0 (June 12, 2022)": release-notes/2.28.0.md
-      - "PMM 2.27.0 (Apr. 4, 2022)": release-notes/2.27.0.md
-      - "PMM 2.26.0 (Feb. 8, 2022)": release-notes/2.26.0.md
-    - 2021:
-      - "PMM 2.25.0 (Dec 14, 2021)": release-notes/2.25.0.md
-      - "PMM 2.24.0 (Nov 18, 2021)": release-notes/2.24.0.md
-      - "PMM 2.23.0 (Oct. 21, 2021)": release-notes/2.23.0.md
-      - "PMM 2.22.0 (Sept. 23, 2021)": release-notes/2.22.0.md
-      - "PMM 2.21.0 (Aug. 26, 2021)": release-notes/2.21.0.md
-      - "PMM 2.20.0 (Aug. 3, 2021)": release-notes/2.20.0.md
-      - "PMM 2.19.0 (June 30, 2021)": release-notes/2.19.0.md
-      - "PMM 2.18.0 (June 1, 2021)": release-notes/2.18.0.md
-      - "PMM 2.17.0 (May 11, 2021)": release-notes/2.17.0.md
-      - "PMM 2.16.0 (Apr. 15, 2021)": release-notes/2.16.0.md
-      - "PMM 2.15.1 (Mar. 18, 2021)": release-notes/2.15.1.md
-      - "PMM 2.15.0 (Mar. 01, 2021)": release-notes/2.15.0.md
-      - "PMM 2.14.0 (Jan. 28, 2021)": release-notes/2.14.0.md
-    - 2020:
-      - "PMM 2.13.0 (Dec. 29, 2020)": release-notes/2.13.0.md
-      - "PMM 2.12.0 (Dec. 1, 2020)": release-notes/2.12.0.md
-      - "PMM 2.11.1 (Oct. 19, 2020)": release-notes/2.11.1.md
-      - "PMM 2.11.0 (Oct. 14, 2020)": release-notes/2.11.0.md
-      - "PMM 2.10.1 (Sept. 22, 2020)": release-notes/2.10.1.md
-      - "PMM 2.10.0 (Sept. 15, 2020)": release-notes/2.10.0.md
-      - "PMM 2.9.1 (Aug 4, 2020)": release-notes/2.9.1.md
-      - "PMM 2.9.0 (July 14, 2020)": release-notes/2.9.0.md
-      - "PMM 2.8.0 (June 25, 2020)": release-notes/2.8.0.md
-      - "PMM 2.7.0 (June 9, 2020)": release-notes/2.7.0.md
-      - "PMM 2.6.1 (May 18, 2020)": release-notes/2.6.1.md
-      - "PMM 2.6.0 (May 11, 2020)": release-notes/2.6.0.md
-      - "PMM 2.5.0 (Apr. 14, 2020)": release-notes/2.5.0.md
-      - "PMM 2.4.0 (Mar. 18, 2020)": release-notes/2.4.0.md
-      - "PMM 2.3.0 (Mar. 18, 2020)": release-notes/2.3.0.md
-      - "PMM 2.2.2 (Feb. 4, 2020)": release-notes/2.2.2.md
-      - "PMM 2.2.1 (Jan. 23, 2020)": release-notes/2.2.1.md
-    - 2019:      
-      - "PMM 2.2.0 (Dec. 24, 2019)": release-notes/2.2.0.md
-      - "PMM 2.1.0 (Nov. 11, 2019)": release-notes/2.1.0.md
-      - "PMM 2.0.1 (Nov. 11, 2019)": release-notes/2.0.1.md
-      - "PMM 2.0.0 (Sept. 19, 2019)": release-notes/2.0.0.md
-
-  - Reference: 
-    - Architecture:
-      - reference/index.md
-      - Third-party components in PMM: 
-        - reference/third-party/victoria.md
-        - reference/third-party/clickhouse.md
-        - reference/third-party/postgresql.md
-      - reference/pmm_components_and_versions.md
-      - reference/personal_data_handling.md
-      - PMM API:
-        - api/index.md
-        - api/authentication.md
-      
-    - reference/develop_advisor_checks.md    
-
-    - PMM dashboards:
-      - Insight:
-        - reference/dashboards/dashboard-home.md
-        - reference/dashboards/dashboard-advanced-data-exploration.md
-        - reference/dashboards/dashboard-victoriametrics.md
-        - reference/dashboards/dashboard-victoriametrics-agents-overview.md
-      - Environments:
-        - reference/dashboards/dashboard-env-overview.md
-        - reference/dashboards/dashboard-environent-summary.md
-      - Kubernetes:
-        - reference/dashboards/kubernetes_cluster_summary.md
-        - reference/dashboards/kubernetes_pods_status.md
-        - reference/dashboards/kubernetes_volume.md
-        - reference/dashboards/kubernetes_monitor_operators.md
-        - reference/dashboards/kubernetes_monitor_db_clusters_managed.md
-      - DBaas:
-        - reference/dashboards/dashboard-cluster-summary.md
-      - OS Dashboards:
-        - reference/dashboards/dashboard-cpu-utilization-details.md
-        - reference/dashboards/dashboard-disk-details.md
-        - reference/dashboards/dashboard-network-details.md
-        - reference/dashboards/dashboard-memory-details.md
-        - reference/dashboards/dashboard-node-temperature-details.md
-        - reference/dashboards/dashboard-nodes-compare.md
-        - reference/dashboards/dashboard-nodes-overview.md
-        - reference/dashboards/dashboard-node-summary.md
-        - reference/dashboards/dashboard-numa-details.md
-        - reference/dashboards/dashboard-processes-details.md
-      - Prometheus dashboards:
-        - reference/dashboards/dashboard-prometheus-exporter-status.md
-        - reference/dashboards/dashboard-prometheus-exporters-overview.md
-      - MySQL dashboards:
-        - reference/dashboards/dashboard-mysql-amazon-aurora-details.md
-        - reference/dashboards/dashboard-mysql-command-handler-counters-compare.md
-        - reference/dashboards/dashboard-mysql-innodb-compression-details.md
-        - reference/dashboards/dashboard-mysql-innodb-details.md
-        - reference/dashboards/dashboard-mysql-myisam-aria-details.md
-        - reference/dashboards/dashboard-mysql-myrocks-details.md
-        - reference/dashboards/dashboard-mysql-instance-summary.md
-        - reference/dashboards/dashboard-mysql-instances-compare.md
-        - reference/dashboards/dashboard-mysql-instances-overview.md
-        - reference/dashboards/dashboard-mysql-wait-event-analyses-details.md
-        - reference/dashboards/dashboard-mysql-performance-schema-details.md
-        - reference/dashboards/dashboard-mysql-query-response-time-details.md
-        - reference/dashboards/dashboard-mysql-replication-summary.md
-        - reference/dashboards/dashboard-mysql-group-replication-summary.md
-        - reference/dashboards/dashboard-mysql-table-details.md
-        - reference/dashboards/dashboard-mysql-user-details.md
-        - reference/dashboards/dashboard-mysql-tokudb-details.md
-      - MongoDB dashboards:
-        - reference/dashboards/dashboard-mongodb-experimental_collection_overview.md
-        - reference/dashboards/dashboard-mongodb-experimental_collection_details.md
-        - reference/dashboards/dashboard-mongodb-experimental_oplog.md
-        - reference/dashboards/dashboard-mongodb-cluster-summary.md
-        - reference/dashboards/dashboard-mongodb-instance-summary.md
-        - reference/dashboards/dashboard-mongodb-instances-overview.md
-        - reference/dashboards/dashboard-mongodb-instances-compare.md
-        - reference/dashboards/dashboard-mongodb-replset-summary.md
-        - reference/dashboards/dashboard-mongodb-inmemory-details.md
-        - reference/dashboards/dashboard-mongodb-mmapv1-details.md
-        - reference/dashboards/dashboard-mongodb-wiredtiger-details.md
-      - PostgreSQL dashboards:
-        - reference/dashboards/dashboard-postgresql-instances-overview.md
-        - reference/dashboards/dashboard-postgresql-instance-summary.md
-        - reference/dashboards/dashboard-postgresql-instances-compare.md
-        - reference/dashboards/dashboard-postgresql-vacuum-monitoring-experimental.md
-      - ProxySQL dashboards:
-        - reference/dashboards/dashboard-proxysql-instance-summary.md
-      - HA dashboards:
-        - reference/dashboards/dashboard-pxc-galera-node-summary.md
-        - reference/dashboards/dashboard-pxc-galera-cluster-summary.md
-        - reference/dashboards/dashboard-pxc-galera-cluster-summary-experimental.md
-        - reference/dashboards/dashboard-pxc-galera-nodes-compare.md
-        - reference/dashboards/dashboard-haproxy-instance-summary.md
-
-    -  reference/glossary.md
-    -  reference/faq.md
-    - reference/trademark-policy.md
-    - reference/copyright.md
+      - release-notes/index.md
+      - "PMM 2.41.2": release-notes/2.41.2.md
+      - "PMM 2.41.1": release-notes/2.41.1.md
+      - "PMM 2.41.0": release-notes/2.41.0.md
+      - "PMM 2.40.1": release-notes/2.40.1.md
+      - "PMM 2.40.0": release-notes/2.40.0.md
+      - "PMM 2.39.0": release-notes/2.39.0.md
+      - "PMM 2.38.1": release-notes/2.38.1.md
+      - "PMM 2.38.0": release-notes/2.38.0.md
+      - "PMM 2.37.1": release-notes/2.37.1.md
+      - "PMM 2.37.0": release-notes/2.37.0.md
+      - "PMM 2.36.0": release-notes/2.36.0.md
+      - "PMM 2.35.0": release-notes/2.35.0.md
+      - "PMM 2.34.0": release-notes/2.34.0.md
+      - "PMM 2.33.0": release-notes/2.33.0.md
+      - "PMM 2.32.0": release-notes/2.32.0.md
+      - "PMM 2.31.0": release-notes/2.31.0.md
+      - "PMM 2.30.0": release-notes/2.30.0.md
+      - "PMM 2.29.1": release-notes/2.29.1.md
+      - "PMM 2.29.0": release-notes/2.29.0.md
+      - "PMM 2.28.0": release-notes/2.28.0.md
+      - "PMM 2.27.0": release-notes/2.27.0.md
+      - "PMM 2.26.0": release-notes/2.26.0.md
+      - "PMM 2.25.0": release-notes/2.25.0.md
+      - "PMM 2.24.0": release-notes/2.24.0.md
+      - "PMM 2.23.0": release-notes/2.23.0.md
+      - "PMM 2.22.0": release-notes/2.22.0.md
+      - "PMM 2.21.0": release-notes/2.21.0.md
+      - "PMM 2.20.0": release-notes/2.20.0.md
+      - "PMM 2.19.0": release-notes/2.19.0.md
+      - "PMM 2.18.0": release-notes/2.18.0.md
+      - "PMM 2.17.0": release-notes/2.17.0.md
+      - "PMM 2.16.0": release-notes/2.16.0.md
+      - "PMM 2.15.1": release-notes/2.15.1.md
+      - "PMM 2.15.0": release-notes/2.15.0.md
+      - "PMM 2.14.0": release-notes/2.14.0.md
+      - "PMM 2.13.0": release-notes/2.13.0.md
+      - "PMM 2.12.0": release-notes/2.12.0.md
+      - "PMM 2.11.1": release-notes/2.11.1.md
+      - "PMM 2.11.0": release-notes/2.11.0.md
+      - "PMM 2.10.1": release-notes/2.10.1.md
+      - "PMM 2.10.0": release-notes/2.10.0.md
+      - "PMM 2.9.1": release-notes/2.9.1.md
+      - "PMM 2.9.0": release-notes/2.9.0.md
+      - "PMM 2.8.0": release-notes/2.8.0.md
+      - "PMM 2.7.0": release-notes/2.7.0.md
+      - "PMM 2.6.1": release-notes/2.6.1.md
+      - "PMM 2.6.0": release-notes/2.6.0.md
+      - "PMM 2.5.0": release-notes/2.5.0.md
+      - "PMM 2.4.0": release-notes/2.4.0.md
+      - "PMM 2.3.0": release-notes/2.3.0.md
+      - "PMM 2.2.2": release-notes/2.2.2.md
+      - "PMM 2.2.1": release-notes/2.2.1.md
+      - "PMM 2.2.0": release-notes/2.2.0.md
+      - "PMM 2.1.0": release-notes/2.1.0.md
+      - "PMM 2.0.1": release-notes/2.0.1.md
+      - "PMM 2.0.0": release-notes/2.0.0.md
+  - Reference:
+      - "Copyright and licensing information": copyright.md
+      - trademark-policy.md
