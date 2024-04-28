@@ -22,4 +22,4 @@ Nodes and Services are inherently external. We don't manage their creation or de
 
 ## Service accounts and authentication
 
-For information about controlling access to the PMM server components and resources, see the **[Authentication with service accounts](../api/authentication.md)** topic.
+For information about controlling access to the PMM Server components and resources, see the **[Authentication with service accounts](../api/authentication.md)** topic.
