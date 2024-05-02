@@ -21,6 +21,8 @@
 
 - [VictoriaMetrics](victoria-metrics.md): The monitoring solution and time-series database that replaced Prometheus in [PMM 2.12.0](../release-notes/2.12.0.md).
 
+- [QAN under the hood](query-analytics.md): The *Query Analytics* dashboard shows how queries are executed and where they spend their time.  It helps you analyze database queries over time, optimize database performance, and find and remedy the source of problems.
+
 - [ClickHouse](clickhouse.md):  A third-party column-oriented database management system (DBMS) that facilitates the Query Analytics functionality.
 
 - [PostgreSQL](postgresql.md):  An open source object-relational database management system used as the primary data store.

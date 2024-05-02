@@ -1,0 +1,91 @@
+# Query analytics under the hood
+
+## Components
+1. [Filters Panel](../get-started/./query-analytics.md#filters-panel)
+2. [Overview Panel](../get-started./query-analytics.md#overview-panel)
+3. [Details Panel](../get-started./query-analytics.md#details-panel)
+
+## How QAN collects data?
+- data are collected every minute (at 0 seconds, like 8:15:00, next in 8:16:00 etc)
+- collected data are represented by buckets
+
+## What is a bucket/How is it created?
+- buckets contains all data captured during one minute interval
+- once a bucket is created it is sent to PMM Server where it is parsed and saved in the clickhouse database. All QAN related data is stored there. Clickhouse is part of PMM Server, or you can use an external one
+- queries in buckets are aggregated by query ID. It means one row in list overview for all queries with same query ID
+- query IDs are calculated different depends on technology and query source 
+    - **MySQL Perfschema** 
+        - query ID is based on DIGEST value from events_statements_summary_by_digest in mysql database 
+        - DIGEST for same query could be different in different versions of MySQL 
+        - DIGEST is generated from query without sensitive data (DIGEST_TEXT), so both queries below will have **same query ID** 
+            ```sh 
+            INSERT INTO people VALUES ('Joe', 'Doe'); 
+            INSERT INTO people VALUES ('John', 'Smith'); 
+            ``` 
+        - with MySQL 8.0 and higher you can use function STATEMENT_DIGEST("your query") to get DIGEST (query ID). See more details on MySQL official website [here](https://dev.mysql.com/doc/refman/8.0/en/encryption-functions.html#function_statement-digest "MySQL Perfschema digest details") 
+    - **MySQL Slowlog** 
+        - query ID is the right-most 16 characters of the MD5 checksum of fingerprint 
+        - fingerprint is query without sensitive data, so like in case of Perfschema both queries below will have **same query ID** 
+            ```sh 
+            INSERT INTO people VALUES ('Joe', 'Doe'); 
+            INSERT INTO people VALUES ('John', 'Smith'); 
+            ``` 
+
+## Sources for data
+- MySQL Perfschema: tables `events_statements_summary_by_digest` and `events_statements_history` in MySQL database called `mysql`
+- MySQL Slowlog: file on path provided during configuring your MySQL
+- PostgreSQL pg_stat_statements (PGSS): view `pg_stat_statements` in required database
+- PostgreSQL pg_stat_statmonitor (PGSM): view `pg_stat_monitor` in required database
+
+## Examples
+### 1. MySQL, query source perfschema/slowlog
+**Timeline**   
+**8:05:05:** You started pmm-agent.
+
+**8:05:20:** You executed queries:
+```sh 
+CREATE TABLE people (FirstName varchar(255), LastName varchar(255));
+INSERT INTO people VALUES ('Joe', 'Doe');
+INSERT INTO people VALUES ('John', 'Smith');
+```
+**8:05:25:** Queries finished.
+
+**8:06:00:** Buckets are collected and sent to PMM Server. Now go to QAN.
+
+**8:06:10:** You should see two rows in QAN list overview (depends on settings of filter and time range):
+![QAN MySQL Example 1 List Overview](../_images/PMM_Query_Analytics_Example1_Overview.png) 
+Lets answer some questions about the image above.   
+**Question:** Why is the query a little bit different in the list overview?   
+**Answer:** The query is the same, but sensitive data (Joe, John etc) are replaced by "?", "?+" or "..." in list overview  
+**Question:** We triggered two INSERT queries, but there is only one row in the list overview. Why?   
+**Answer:** for executed queries: 
+```sh 
+INSERT INTO people VALUES ('Joe', 'Doe');
+INSERT INTO people VALUES ('John', 'Smith');
+``` 
+query ID will be the same and that is why it is aggregated as one row in the list overview. On the other hand in detail you still should see a real count of how many times the query was executed. As you can see in the image below. In detail the count for the INSERT query is 2. Since we executed the INSERT query 2 times it is correct and expected. 
+![QAN MySQL Example 1 Details](../_images/PMM_Query_Analytics_Example1_Details.png)
+
+### 2. MySQL, query source perfschema/slowlog, queries execution splitted over two buckets
+**Timeline**   
+**8:05:55:** You started pmm-agent. 
+
+**8:05:59:** You executed queries: 
+```sh
+CREATE TABLE people (FirstName varchar(255), LastName varchar(255));
+INSERT INTO people VALUES ('Joe', 'Doe');
+INSERT INTO people VALUES ('John', 'Smith'); 
+``` 
+**8:06:00:** Buckets are collected and sent to PMM Server. Already executed queries are included too in the bucket. Could be found in QAN already in range 8:05:00 - 8:06:00 or any other timestamp, which includes this minute.
+
+**8:06:01:** Queries finished.
+
+**8:07:00:** Buckets are collected and sent to PMM Server. Rest of executed queries are included there and since now visible/increased in QAN.
+
+**8:07:10:** You should see two rows in QAN list overview (depends on settings of filter and time range):
+Now let's take a look at results with different time range filters.
+1. QAN with default time range filter (Last 12 hours) - two rows in overview (one for CREATE query, another for INSERT) - in details for INSERT query count is 2
+2. Range 8:05:00 - 8:06:00 - one row in overview for CREATE query, because none of INSERT queries were executed by that time
+3. Range 8:06:00 - 8:07:00 - one row in overview for INSERT query, because CREATE query were sent in previous bucket - in details for INSERT query count is 2. Both queries were executed in this range
+
+Always remember that it could take up to 2 minutes until all data are visible in QAN since execution is done. More technologies covered (PG, Mongo) with examples will be included in near future.
