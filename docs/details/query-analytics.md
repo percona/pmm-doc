@@ -13,23 +13,20 @@
 - buckets contains all data captured during one minute interval
 - once a bucket is created it is sent to PMM Server where it is parsed and saved in the clickhouse database. All QAN related data is stored there. Clickhouse is part of PMM Server, or you can use an external one
 - queries in buckets are aggregated by query ID. It means one row in list overview for all queries with same query ID
-- query IDs are calculated different depends on technology and query source 
-    - **MySQL Perfschema** 
-        - query ID is based on DIGEST value from events_statements_summary_by_digest in mysql database 
+- query IDs are calculated different depends on technology and query source  
+**MySQL**   
+DIGEST (Perfschema) and fingerprint (Slowlog) are same. It is query without sensitive data. In case below both queries will have **same query ID**  
+    ```sh
+    INSERT INTO people VALUES ('Joe', 'Doe'); 
+    INSERT INTO people VALUES ('John', 'Smith'); 
+    ``` 
+    - **Perfschema** 
+        - query ID is based on DIGEST (fingerprint) value from events_statements_summary_by_digest in mysql database 
         - DIGEST for same query could be different in different versions of MySQL 
-        - DIGEST is generated from query without sensitive data (DIGEST_TEXT), so both queries below will have **same query ID** 
-            ```sh 
-            INSERT INTO people VALUES ('Joe', 'Doe'); 
-            INSERT INTO people VALUES ('John', 'Smith'); 
-            ``` 
+        - DIGEST is generated from query without sensitive data (DIGEST_TEXT)
         - with MySQL 8.0 and higher you can use function STATEMENT_DIGEST("your query") to get DIGEST (query ID). See more details on MySQL official website [here](https://dev.mysql.com/doc/refman/8.0/en/encryption-functions.html#function_statement-digest "MySQL Perfschema digest details") 
-    - **MySQL Slowlog** 
-        - query ID is the right-most 16 characters of the MD5 checksum of fingerprint 
-        - fingerprint is query without sensitive data, so like in case of Perfschema both queries below will have **same query ID** 
-            ```sh 
-            INSERT INTO people VALUES ('Joe', 'Doe'); 
-            INSERT INTO people VALUES ('John', 'Smith'); 
-            ``` 
+    - **Slowlog** 
+        - query ID is the right-most 16 characters of the MD5 checksum of fingerprint
 
 ## Sources for data
 - MySQL Perfschema: tables `events_statements_summary_by_digest` and `events_statements_history` in MySQL database called `mysql`

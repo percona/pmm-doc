@@ -8,6 +8,8 @@
 
 - [Data handling in PMM](personal_data_handling): Personal and confidential data handling in PMM.
 
+- [QAN under the hood](query-analytics.md): The *Query Analytics* dashboard shows how queries are executed and where they spend their time.  It helps you analyze database queries over time, optimize database performance, and find and remedy the source of problems.
+
 - [Developing Advisor checks](develop-checks/index.md): Database health assessments.
 
 - [Dashboards reference](dashboards/index.md): A complete list of dashboards by category, with screenshots.
@@ -20,8 +22,6 @@
 - [API](api.md): How to access the Swagger API.
 
 - [VictoriaMetrics](victoria-metrics.md): The monitoring solution and time-series database that replaced Prometheus in [PMM 2.12.0](../release-notes/2.12.0.md).
-
-- [QAN under the hood](query-analytics.md): The *Query Analytics* dashboard shows how queries are executed and where they spend their time.  It helps you analyze database queries over time, optimize database performance, and find and remedy the source of problems.
 
 - [ClickHouse](clickhouse.md):  A third-party column-oriented database management system (DBMS) that facilitates the Query Analytics functionality.
 
