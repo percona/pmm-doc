@@ -15,10 +15,13 @@ Use the following Docker container environment variables (with `-e var=value`) t
 | `DISABLE_ALERTING`                           | Disables built-in Percona Alerting, which is enabled by default.
 | `ENABLE_AZUREDISCOVER`                                          | Enable support for discovery of Azure databases.
 | `DISABLE_BACKUP_MANAGEMENT`                                     | Disables Backup Management, which is enabled by default.
-| `ENABLE_DBAAS`                                                  | Enable DBaaS features.
 | `PMM_DEBUG`                                                     | Enables a more verbose log level.
 | `PMM_TRACE`                                                     | Enables a more verbose log level including trace-back information.
 | `PMM_PUBLIC_ADDRESS`                                            | External IP address or the DNS name on which PMM server is running.
+| `PMM_WATCHTOWER_HOST=${PMM_WATCHTOWER_HOST:-http://watchtower:8080}` | Specifies the connection URL for the WatchTower container, including the schema (http), host (watchtower), and port (8080). 
+| `PMM_WATCHTOWER_TOKEN=${PMM_WATCHTOWER_TOKEN:-123}`             | Defines the authentication token used for secure communication between the PMM Server container and the WatchTower container. Make sure this matches the value of the `WATCHTOWER_HTTP_API_TOKEN` environment variable set in the WatchTower container.
+
+## Other variables
 
 The following variables are also supported but values passed are not verified by PMM. If any other variable is found, it will be considered invalid and the server won't start.
 
@@ -31,4 +34,3 @@ The following variables are also supported but values passed are not verified by
 | `KUBERNETES_`                                                   | Kubernetes environment variables.
 | `MONITORING_`                                                   | Kubernetes monitoring environment variables.
 | `PERCONA_TEST_`                                                 | Unknown variable but won't prevent the server starting.
-| `PERCONA_TEST_DBAAS`                                            | Deprecated. Use `ENABLE_DBAAS`.

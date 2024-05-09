@@ -1,4 +1,4 @@
-# Install PMM server on the virtual machine
+# Install PMM Server on the virtual machine
 
 How to run PMM Server as a virtual machine.
 
@@ -36,7 +36,7 @@ Most steps can be done with either a user interface or on the command line, but 
 
 | Component         | Value
 |-------------------|-------------------------------
-| OS                | CentOS 7.9 (64-bit)
+| OS                | Oracle Linux 9.3
 | CPU               | 1
 | Base memory       | 4096 MB
 | Disks             | LVM, 2 physical volumes

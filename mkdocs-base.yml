@@ -12,34 +12,35 @@ edit_uri: edit/main/docs/
 
 theme:
   name: material
-  logo: _images/percona-logo.svg
-  favicon: _images/percona-favicon.ico
-  custom_dir: overrides/
+  custom_dir: overrides
+  logo: assets/pmm-mark.svg
+  favicon: assets/pmm-fav.svg
   font:
     text: Roboto
     code: Roboto Mono
   icon:
     edit: material/file-edit-outline
     view: material/file-eye-outline
-  
+
   palette:
-    # Light mode
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/brightness-auto
+        name: Color theme set to Automatic. Click to change
     - media: "(prefers-color-scheme: light)"
       scheme: percona-light
       primary: custom
       accent: custom
       toggle:
-        icon: material/toggle-switch-off-outline
-        name: Switch to dark mode
-
-    # Dark mode
+        icon: material/brightness-7
+        name: Color theme set to Light Mode. Click to change
     - media: "(prefers-color-scheme: dark)"
-      scheme: slate
+      scheme: percona-dark
       primary: custom
       accent: custom
       toggle:
-        icon: material/toggle-switch
-        name: Switch to light mode
+        icon: material/brightness-4
+        name: Color theme set to Dark Mode. Click to change
 
   # Theme features
 
@@ -60,6 +61,8 @@ extra_css:
   - css/extra.css
   - css/nocopy.css
   - css/design.css
+  - css/osano.css
+  - css/pmm.css
 
 #Copyright
 copyright: >
@@ -68,6 +71,7 @@ copyright: >
 extra_javascript:
   #  - js/lightgallery.min.js
   - js/promptremover.js
+  - js/consent.js
 
 markdown_extensions:
   attr_list: {}
@@ -98,8 +102,8 @@ markdown_extensions:
   pymdownx.highlight:
     use_pygments: true
   pymdownx.emoji:
-    emoji_index: !!python/name:materialx.emoji.twemoji
-    emoji_generator: !!python/name:materialx.emoji.to_svg
+    emoji_index: !!python/name:material.extensions.emoji.twemoji
+    emoji_generator: !!python/name:material.extensions.emoji.to_svg
     options:
       custom_icons:
         - overrides/.icons
@@ -143,14 +147,6 @@ plugins:
     canonical_version: null
 
 extra:
-  homepage: https://docs.percona.com
-  consent:
-    title: Cookie consent
-    description: >-
-      We use cookies to recognize your repeated visits and preferences, as well
-      as to measure the effectiveness of our documentation and whether users
-      find what they're searching for. With your consent, you're helping us to
-      make our documentation better. Read more about <a class="reference external" href="https://www.percona.com/20180524-cookie-policy" target="_blank">Percona Cookie Policy</a>.
   edit_page_text: '<i class="uil uil-pen"></i> <b>Edit this page</b>'
   updated_text: '<i class="uil uil-refresh"></i> Page updated'
 
@@ -167,12 +163,12 @@ nav:
       - install-pmm/plan-pmm-installation/hardware_and_system.md
       - install-pmm/plan-pmm-installation/network_and_firewall.md
     - Install PMM in HA mode: install-pmm/HA.md  
-    - Install PMM server:
+    - Install PMM Server:
       - install-pmm/install-pmm-server/index.md
       - install-pmm/install-pmm-server/prerequisites.md
       - Bare metal:
-        - Easy-install script: install-pmm/install-pmm-server/baremetal/easy-install.md  
         - Docker:
+          - install-pmm/install-pmm-server/baremetal/docker/easy-install.md  
           - install-pmm/install-pmm-server/baremetal/docker/index.md
           - install-pmm/install-pmm-server/baremetal/docker/run_with_vol.md
           - install-pmm/install-pmm-server/baremetal/docker/run_with_data_container.md
@@ -232,7 +228,7 @@ nav:
         - Remove services: install-pmm/install-pmm-client/connect-database/remove-services/index.md
 
   - Upgrade: 
-    - Upgrade PMM server: 
+    - Upgrade PMM Server: 
       - pmm-upgrade/index.md
       - pmm-upgrade/ui_upgrade.md
       - Manual upgrade:     
@@ -254,13 +250,8 @@ nav:
     - use/using-pmm.md
     - PMM user interface:
       - reference/ui/ui_components.md  
-      - reference/ui/index.md
       - reference/ui/log_in.md
-      - reference/ui/controls.md
-      - reference/ui/nav.md
-      - reference/ui/panels.md
       - reference/ui/timezone.md
-      - reference/ui/view.md
     - PMM Inventory: use/dashboard-inventory.md
     - Metrics monitoring: 
       - use/monitor.md
@@ -276,11 +267,7 @@ nav:
         - Manage dashboards:
           - use/dashboards-panels/manage-dashboards/create-folders.md
           - use/dashboards-panels/manage-dashboards/manage-folders.md
-        - Set custom home dashboard:
-          - use/dashboards-panels/custom_dashboard/index.md
-          - use/dashboards-panels/custom_dashboard/set_custom_team.md
-          - use/dashboards-panels/custom_dashboard/set_custom_for_org.md
-          - use/dashboards-panels/custom_dashboard/set_personal_home.md
+          - use/dashboard-panels/set-custom-dashboard
         - Share dashboards and panels: use/dashboards-panels/share-dashboards/share_dashboard.md
         - Annotate: use/dashboards-panels/annotate/annotate.md              
 
@@ -321,7 +308,6 @@ nav:
       - use/commands/index.md
       - use/commands/pmm-admin.md
       - use/commands/pmm-agent.md
-      - Backup and restore: dbaas/backup_restore.md
   - Configure:      
     - configure-pmm/configure.md
     - configure-pmm/metrics_res.md
@@ -358,10 +344,6 @@ nav:
     - troubleshoot/checklist.md
     - troubleshoot/upgrade_issues.md
     - troubleshoot/config_issues.md
-    - DBaaS issues:
-      - troubleshoot/dbaas/index.md      
-      - troubleshoot/dbaas/olm_issues.md
-      - troubleshoot/dbaas/operator_issues.md
     - troubleshoot/alerting_issues.md
     - troubleshoot/qan_issues.md
     - troubleshoot/plugin_issues.md
@@ -398,12 +380,8 @@ nav:
         - reference/dashboards/dashboard-environent-summary.md
       - Kubernetes:
         - reference/dashboards/kubernetes_cluster_summary.md
-        - reference/dashboards/kubernetes_pods_status.md
-        - reference/dashboards/kubernetes_volume.md
         - reference/dashboards/kubernetes_monitor_operators.md
         - reference/dashboards/kubernetes_monitor_db_clusters_managed.md
-      - DBaas:
-        - reference/dashboards/dashboard-cluster-summary.md
       - OS Dashboards:
         - reference/dashboards/dashboard-cpu-utilization-details.md
         - reference/dashboards/dashboard-disk-details.md
