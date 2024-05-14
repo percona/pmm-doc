@@ -56,8 +56,11 @@ A sample [IAM](https://aws.amazon.com/iam/) policy is:
      - **S3**: Specify the S3-compatible backup location endpoint (URL), bucket name, and connection details.
      - **Local Client**: specify the path on your local client for files to be backed up to.
 
-4. Optionally, for S3-compatible storages, you can click **Test** to check the connection.
+!!! caution alert alert-warning "Important"
+    If your S3 endpoint is using a custom x509 certificate, PMM server must be able to verify it. For this, append the CA certificate to /etc/pki/ca-trust/extracted/pem/tls-ca-bundle.pem file inside the pmm-server container
 
+4. Optionally, for S3-compatible storages, you can click **Test** to check the connection.
+   
 5. Click **Add** to create the location.
 
 ## Specific target directories for backups
