@@ -18,7 +18,7 @@ The dashboard contains three panels:
 - the [Details Panel](#details-panel).
 
 !!! note alert alert-primary ""
-    Query Analytics data retrieval is not instantaneous and can be delayed due to network conditions. In such situations *no data* is reported and a gap appears in the sparkline.
+    Query Analytics data retrieval may experience delays due to network conditions. As a result, a small amount of data (up to 1 hour) will be buffered in the memory and reported when the connection is restored.
 
 ## Filters Panel
 
@@ -280,11 +280,13 @@ The *Plan* tab shows the plan for PostgreSQL queries (only available when using 
 
 ![!image](../_images/PMM_Query_Analytics_Tabs_Plan.png)
 
-## Query Analytics for PostgreSQL
+## Query Analytics (QAN) for PostgreSQL
 
-In QAN we support two types of query sources, `pg_stat_monitor` and `pg_stat_statements`. Before this version, PGSS was the default query source, but now it's PGSM.
+QAN offers support for two types of query sources: `pg_stat_monitor` (PGSM) and `pg_stat_statements` (PGSS). While PGSS used to be the default query source, recent PMM versions have transitioned to PGSM. 
+If PGSM is unavailable on your system, QAN will seamlessly fall back to PGSS and you will be notified of this in pmm-admin.
 
-PMM 2.36 now supports [pg_stat_monitor](https://docs.percona.com/pg-stat-monitor/index.html) 2.0 (PGSM 2.0) in QAN, a powerful PostgreSQL query performance monitoring tool. By downloading this update, you will have access to the latest improvements and fixes covered by PGSM2, including:
+
+PMM has integrated support for [pg_stat_monitor](https://docs.percona.com/pg-stat-monitor/index.html) 2.0 (PGSM 2.0) into QAN starting with version 2.36. This robust tool enhances PostgreSQL query performance monitoring by providing access to the latest improvements and fixes included in PGSM2, including:
 
 - Improved internal architecture that results in fewer lock acquisitions and increases performance by approximately 20%.
 - Support for PostgreSQL 15 

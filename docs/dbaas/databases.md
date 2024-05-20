@@ -1,5 +1,8 @@
 ## DB clusters
 
+!!! caution alert alert-primary "Do not use for mission-critical workloads"
+    DBaaS feature is deprecated. We encourage you to use [Percona Everest](http://per.co.na/pmm-to-everest) instead. Check our [Migration guide](http://per.co.na/pmm-to-everest-guide).
+
 ### Add a DB Cluster
 
 In order to create a database cluster you must have at least one Kubernetes cluster registered to PMM.  Start [here](dbaas/setting-up.md#create-a-kubernetes-cluster) if you haven't done that yet.  

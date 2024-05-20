@@ -4,7 +4,6 @@ site_name: Percona Monitoring and Management
 site_description: Documentation
 site_author: Percona LLC
 site_url: ""
-copyright: Percona LLC, &#169; 2023
 use_directory_urls: false
 repo_name: percona/pmm-doc
 repo_url: https://github.com/percona/pmm-doc
@@ -12,27 +11,37 @@ edit_uri: edit/main/docs/
 
 theme:
   name: material
-  logo: _images/percona-logo.svg
-  favicon: _images/percona-favicon.ico
+  custom_dir: overrides
+  logo: assets/pmm-mark.svg
+  favicon: assets/pmm-fav.svg
   font:
-    text: Poppins
-  palette:
+    text: Roboto
+    code: Roboto Mono
+  icon:
+    edit: material/file-edit-outline
+    view: material/file-eye-outline
 
-    # Light mode
+  palette:
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/brightness-auto
+        name: Color theme set to Automatic. Click to change
     - media: "(prefers-color-scheme: light)"
       scheme: percona-light
+      primary: custom
+      accent: custom
       toggle:
-        icon: material/toggle-switch-off-outline
-        name: Switch to dark mode
-
-    # Dark mode
+        icon: material/brightness-7
+        name: Color theme set to Light Mode. Click to change
     - media: "(prefers-color-scheme: dark)"
-      scheme: slate
+      scheme: percona-dark
+      primary: custom
+      accent: custom
       toggle:
-        icon: material/toggle-switch
-        name: Switch to light mode
+        icon: material/brightness-4
+        name: Color theme set to Dark Mode. Click to change
 
-# Theme features
+  # Theme features
 
   features:
     - search.highlight
@@ -44,38 +53,55 @@ theme:
     - content.action.view
 
 extra_css:
-  - https://unicons.iconscout.com/release/v3.0.3/css/line.css
+  - https://unicons.iconscout.com/release/v4.0.8/css/line.css
   - https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css
   - css/percona.css
   - css/lightgallery.min.css
-  - css/nocopy.css\
   - css/extra.css
+  - css/nocopy.css
+  - css/design.css
+  - css/osano.css
+  - css/pmm.css
 
 extra_javascript:
-#  - js/lightgallery.min.js
+  #  - js/lightgallery.min.js
   - js/promptremover.js
-
+  - js/consent.js
 
 markdown_extensions:
   attr_list: {}
   toc:
-    permalink: True
+    permalink: true
   admonition: {}
+  footnotes: {}
   def_list: {}
   meta: {}
-  smarty: { smart_angled_quotes: true }
+  md_in_html: {}
+  smarty:
+      {smart_angled_quotes: true}
   pymdownx.details: {}
   pymdownx.mark: {}
   pymdownx.smartsymbols: {}
-  pymdownx.tabbed: {}
+  pymdownx.tabbed:
+      {alternate_style: true}
   pymdownx.tilde: {}
   pymdownx.superfences: {}
+  pymdownx.tabbed:
+    alternate_style: true
+  pymdownx.tasklist:
+    custom_checkbox: true
+  pymdownx.snippets:
+      base_path: ["snippets"]
+      auto_append:
+        - services-banner.md
   pymdownx.highlight:
-    linenums: false
-  pymdownx.inlinehilite: {}
+    use_pygments: true
   pymdownx.emoji:
-      emoji_index: !!python/name:materialx.emoji.twemoji
-      emoji_generator: !!python/name:materialx.emoji.to_svg
+    emoji_index: !!python/name:material.extensions.emoji.twemoji
+    emoji_generator: !!python/name:material.extensions.emoji.to_svg
+    options:
+      custom_icons:
+        - overrides/.icons
 
 plugins:
   search:
@@ -87,6 +113,7 @@ plugins:
     enable_checks: false
     min_length: 50
     max_length: 160
+  # https://mkdocs-macros-plugin.readthedocs.io/en/latest/
   macros:
     include_yaml:
       - "variables.yml"
@@ -96,10 +123,9 @@ plugins:
       - "setting-up/client/docker.md"
   # https://github.com/orzih/mkdocs-with-pdf
   with-pdf:
-    output_path: '_pdf/PerconaMonitoringAndManagement-2.39.0.pdf'
-    cover_title: 'Percona Monitoring and Management Documentation'
-    cover_subtitle: 2.39.0 (Aug 14, 2023)
-
+    output_path: "_pdf/PerconaMonitoringAndManagement-2.41.2.pdf"
+    cover_title: "Percona Monitoring and Management Documentation"
+    cover_subtitle: 2.41.2 (Mar 20, 2024)
     author: "Percona Technical Documentation Team"
     cover_logo: docs/_images/Percona_Logo_Color.png
     custom_template_path: _resources/templates
@@ -114,20 +140,14 @@ plugins:
     canonical_version: null
 
 extra:
-  homepage:
-    https://docs.percona.com
-  consent:
-    title: Cookie consent
-    description: >-
-      We use cookies to recognize your repeated visits and preferences, as well
-      as to measure the effectiveness of our documentation and whether users
-      find what they're searching for. With your consent, you're helping us to
-      make our documentation better. Read more about <a class="reference external" href="https://www.percona.com/20180524-cookie-policy" target="_blank">Percona Cookie Policy</a>.
+  edit_page_text: '<i class="uil uil-pen"></i> <b>Edit this page</b>'
+  updated_text: '<i class="uil uil-refresh"></i> Page updated'
 
 # Common navigation for percona.com, render.com and PDF
 nav:
   - Welcome: index.md
-  - Setting up:
+  - Quickstart guide: quickstart/index.md
+  - Setting up: 
       - setting-up/index.md
       - Server:
           - setting-up/server/index.md
@@ -159,17 +179,17 @@ nav:
           - get-started/backup/index.md
           - get-started/backup/prepare_storage_location.md
           - MongoDB backups:
-                - get-started/backup/backup_mongo.md
-                - get-started/backup/mongo-prerequisites.md
-                - get-started/backup/create_mongo_on_demand.md
-                - get-started/backup/create_PITR_mongo.md
-                - get-started/backup/restore_MongoDB_backups.md
-                - get-started/backup/mongodb_limitations.md
+              - get-started/backup/backup_mongo.md
+              - get-started/backup/mongo-prerequisites.md
+              - get-started/backup/create_mongo_on_demand.md
+              - get-started/backup/create_PITR_mongo.md
+              - get-started/backup/restore_MongoDB_backups.md
+              - get-started/backup/mongodb_limitations.md
           - MySQL backups:
-                - get-started/backup/backup_mysql.md
-                - get-started/backup/mysql_prerequisites.md
-                - get-started/backup/create_mysql_backup.md
-                - get-started/backup/restore_mysql_backup.md
+              - get-started/backup/backup_mysql.md
+              - get-started/backup/mysql_prerequisites.md
+              - get-started/backup/create_mysql_backup.md
+              - get-started/backup/restore_mysql_backup.md
           - get-started/backup/edit_scheduled.md
           - get-started/backup/delete_a_backup.md
       - Roles and permissions:
@@ -181,7 +201,9 @@ nav:
           - get-started/roles-and-permissions/assign_roles.md
           - get-started/roles-and-permissions/use_case.md
       - get-started/query-analytics.md
-      - get-started/advisors.md
+      - Advisors:
+          - get-started/advisors.md
+          - get-started/advisors-details.md
   - How to:
       - how-to/index.md
       - how-to/configure.md
@@ -189,10 +211,12 @@ nav:
       - how-to/upgrade.md
       - how-to/secure.md
       - how-to/optimize.md
+      - how-to/HA.md
       - how-to/annotate.md
       - how-to/share-dashboard.md
       - how-to/extend-metrics.md
       - how-to/troubleshoot.md
+      - how-to/PMM_dump.md
       - Integrate with Percona Platform:
           - how-to/integrate-platform.md
           - how-to/account-info.md
@@ -223,6 +247,8 @@ nav:
                   - details/dashboards/kubernetes_cluster_summary.md
                   - details/dashboards/kubernetes_pods_status.md
                   - details/dashboards/kubernetes_volume.md
+                  - details/dashboards/kubernetes_monitor_operators.md
+                  - details/dashboards/kubernetes_monitor_db_clusters_managed.md
               - DBaas:
                   - details/dashboards/dashboard-cluster-summary.md
               - OS Dashboards:
@@ -292,29 +318,34 @@ nav:
       - details/postgresql.md
       - details/glossary.md
   - DBaaS:
-    - "Introduction": dbaas/index.md
-    - dbaas/architecture.md
-    - "Setting up":
-      - "Setting up DBaaS": dbaas/setting-up.html#setting-up-dbaas
-      - "Create a Kubernetes Cluster": dbaas/setting-up.html#create-a-kubernetes-cluster
-      - "Deleting Kubernetes clusters ": dbaas/setting-up.html#deleting-clusters
-    - "Getting started":
-      - "Activating DBaaS": dbaas/get-started.html#getting-started-with-dbaas
-      - "Add a Kubernetes cluster automatically": dbaas/get-started.html#getting-started-with-dbaas
-      - "Add a Kubernetes cluster manually": dbaas/get-started.html#add-a-kubernetes-cluster
-      - "Manage allowed component versions": dbaas/get-started.html#manage-allowed-component-versions
-      - "Troubleshooting":
-        - "OLM installation": dbaas/troubleshoot-kubernetes.html#troubleshooting-olm-installation
-        - "Operators installation": dbaas/troubleshoot-kubernetes.html#troubleshooting-operators-installation
-    - "Managing Database clusters":
-      - "Add a DB Cluster": dbaas/databases.html#add-a-db-cluster
-      - "Manage a DB Cluster": dbaas/databases.html#edit-a-db-cluster
-      - "Delete a DB Cluster": dbaas/databases.html#delete-a-db-cluster
-      - "Create a database cluster from a template": dbaas/DBaaS_template.md
-    - "Backup and restore": dbaas/backup_restore.md
+      - "Introduction": dbaas/index.md
+      - dbaas/architecture.md
+      - "Setting up":
+          - "Setting up DBaaS": dbaas/setting-up.html#setting-up-dbaas
+          - "Create a Kubernetes Cluster": dbaas/setting-up.html#create-a-kubernetes-cluster
+          - "Deleting Kubernetes clusters ": dbaas/setting-up.html#deleting-clusters
+      - "Getting started":
+          - "Activating DBaaS": dbaas/get-started.html#getting-started-with-dbaas
+          - "Add a Kubernetes cluster automatically": dbaas/get-started.html#getting-started-with-dbaas
+          - "Add a Kubernetes cluster manually": dbaas/get-started.html#add-a-kubernetes-cluster
+          - "Manage allowed component versions": dbaas/get-started.html#manage-allowed-component-versions
+          - "Troubleshooting":
+              - "OLM installation": dbaas/troubleshoot-kubernetes.html#troubleshooting-olm-installation
+              - "Operators installation": dbaas/troubleshoot-kubernetes.html#troubleshooting-operators-installation
+      - "Managing Database clusters":
+          - "Add a DB Cluster": dbaas/databases.html#add-a-db-cluster
+          - "Manage a DB Cluster": dbaas/databases.html#edit-a-db-cluster
+          - "Delete a DB Cluster": dbaas/databases.html#delete-a-db-cluster
+          - "Create a database cluster from a template": dbaas/DBaaS_template.md
+      - "Backup and restore": dbaas/backup_restore.md
   - faq.md
-  - Release Notes:
+  - Release notes:
       - release-notes/index.md
+      - "PMM 2.41.2": release-notes/2.41.2.md
+      - "PMM 2.41.1": release-notes/2.41.1.md
+      - "PMM 2.41.0": release-notes/2.41.0.md
+      - "PMM 2.40.1": release-notes/2.40.1.md
+      - "PMM 2.40.0": release-notes/2.40.0.md
       - "PMM 2.39.0": release-notes/2.39.0.md
       - "PMM 2.38.1": release-notes/2.38.1.md
       - "PMM 2.38.0": release-notes/2.38.0.md
@@ -367,5 +398,5 @@ nav:
       - "PMM 2.0.1": release-notes/2.0.1.md
       - "PMM 2.0.0": release-notes/2.0.0.md
   - Reference:
-    - "Copyright and licensing information": copyright.md
-    - trademark-policy.md
+      - "Copyright and licensing information": copyright.md
+      - trademark-policy.md

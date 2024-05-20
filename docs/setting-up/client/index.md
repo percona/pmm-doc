@@ -33,7 +33,9 @@ Here's an overview of the choices.
 - If using it, install [Docker].
 - System requirements:
     - Operating system -- PMM Client runs on any modern 64-bit Linux distribution. It is tested on supported versions of Debian, Ubuntu, CentOS, and Red Hat Enterprise Linux. (See [Percona software support life cycle]).
-    - Disk -- A minimum of 100 MB of storage is required for installing the PMM Client package. With a good connection to PMM Server, additional storage is not required. However, the client needs to store any collected data that it cannot dispatch immediately, so additional storage may be required if the connection is unstable or the throughput is low. VMagent uses 1 GB of disk space for cache during a network outage. QAN, on the other hand, uses RAM to store cache.
+    - Disk -- A minimum of 100 MB of storage is required for installing the PMM Client package. 
+    
+    With a good connection to PMM Server, additional storage is not required. However, the client needs to store any collected data that it cannot dispatch immediately, so additional storage may be required if the connection is unstable or the throughput is low. VMagent uses 1 GB of disk space for cache during a network outage. QAN, on the other hand, uses RAM to store cache.
 
 ## Install
 
@@ -409,9 +411,9 @@ pmm-admin remove <service-type> <service-name>
     - [Percona release]
     - [PMM Client architecture](../../details/architecture.md#pmm-client)
 
+[Debian 12(Bookworm)]: https://www.percona.com/downloads/pmm2/{{release}}/binary/debian/bookworm/
 [Debian 11 (Bullseye)]: https://www.percona.com/downloads/pmm2/{{release}}/binary/debian/bullseye/
 [Debian 10 (Buster)]: https://www.percona.com/downloads/pmm2/{{release}}/binary/debian/buster/
-[Debian 9 (Stretch)]: https://www.percona.com/downloads/pmm2/{{release}}/binary/debian/stretch/
 [Docker]: https://docs.docker.com/get-docker/
 [Percona Monitoring and Management 2 download]: https://www.percona.com/downloads/pmm2/
 [Percona release]: https://www.percona.com/doc/percona-repo-config/percona-release.html
@@ -419,6 +421,5 @@ pmm-admin remove <service-type> <service-name>
 [PMM Client Docker image]: https://hub.docker.com/r/percona/pmm-client/tags/
 [Red Hat/CentOS/Oracle 7]: https://www.percona.com/downloads/pmm2/{{release}}/binary/redhat/7/
 [Red Hat/CentOS/Oracle 8]: https://www.percona.com/downloads/pmm2/{{release}}/binary/redhat/8/
-[Ubuntu 18.04 (Bionic Beaver)]: https://www.percona.com/downloads/pmm2/{{release}}/binary/debian/bionic/
 [Ubuntu 20.04 (Focal Fossa)]: https://www.percona.com/downloads/pmm2/{{release}}/binary/debian/focal/
 [Ubuntu 22.04 (Jammy Jellyfish)]: https://www.percona.com/downloads/pmm2/{{release}}/binary/debian/jammy/

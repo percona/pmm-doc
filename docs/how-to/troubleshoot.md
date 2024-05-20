@@ -72,9 +72,6 @@ A bug in PMM Server ansible scripts caused PMM to upgrade Nginx's dependencies w
 !!! caution alert alert-warning "Important"
     This issue has been resolved for PMM version 2.33.0. However, the issue persists on all the versions prior to 2.33.0.
 
-  
-
-
 **Solution**
 
 While PMM is being upgraded, log in to the PMM server and run the following command:
@@ -82,6 +79,21 @@ While PMM is being upgraded, log in to the PMM server and run the following comm
 ```sh
    sed -i 's/- nginx/- nginx*/' /usr/share/pmm-update/ansible/playbook/tasks/update.yml
 ```
+
+#### PMM cannot acess admin user after upgrading
+
+After upgrading PMM from version 2.39.0 to 2.40.0 (not el7) using Docker, the `admin` user cannot access the PMM UI.
+
+**Solution**: To fix the problem and gain back admin access to the PMM interface execute the following:
+
+```sh
+# psql -U grafana
+grafana=> update "user" set id='1' where login='admin';
+UPDATE 1
+grafana=> \q
+
+# grafana cli --homepath=/usr/share/grafana --config=/etc/grafana/grafana.ini admin reset-admin-password <PASS>
+``` 
 
 ### Configuration issues
 
@@ -143,7 +155,7 @@ In such a scenario, use [API key](../details/api.md#api-keys-and-authentication)
 
 Percona Alerting option isn't active.
 
-1. Go to <i class="uil uil-cog"></i> *Configuration* → <i class="uil uil-setting"></i> *Settings* → *Advanced Settings*.
+1. Go to {{icon.configuration}} *Configuration* → <i class="uil uil-setting"></i> *Settings* → *Advanced Settings*.
 2. Enable *Alerting*.
 
 ### Custom alert rule templates not migrated to Percona Alerting
@@ -154,7 +166,7 @@ PMM is no longer sourcing templates from the ``ia`` folder, since we have deprec
 
 If you get an email or page from your system that the IP is not reachable from outside my organization, do the following:
 
-To configure your PMM Server’s Public Address, select <i class="uil uil-cog"></i> *Configuration* → <i class="uil uil-setting"></i> *Settings* → *Advanced Settings*, and supply an address to use in your alert notifications.
+To configure your PMM Server’s Public Address, select {{icon.configuration}} *Configuration* → <i class="uil uil-setting"></i> *Settings* → *Advanced Settings*, and supply an address to use in your alert notifications.
 
 #### Alert Rule Templates are disabled
 

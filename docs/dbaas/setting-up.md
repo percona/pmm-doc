@@ -1,5 +1,9 @@
 # Setting up DBaaS
 
+!!! caution alert alert-primary "Do not use for mission-critical workloads"
+    DBaaS feature is deprecated. We encourage you to use [Percona Everest](http://per.co.na/pmm-to-everest) instead. Check our [Migration guide](http://per.co.na/pmm-to-everest-guide).
+
+    
 To use the Database as a Service (DBaaS) solution in PMM there are a few things that need to be setup first including a suitable Kubernetes Cluster.  If you've already got a kubernetes cluster you can jump ahead and [enable DBaaS in PMM](../dbaas/get-started.html).
 
 If you don't have a Kubernetes cluster available you can use the [free K8s provided by Percona](https://www.percona.com/blog/private-dbaas-with-free-kubernetes-cluster/) for evaluation which will allow you to play around with DBaaS for 3 hours before the cluster expires.
