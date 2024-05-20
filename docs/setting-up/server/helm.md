@@ -114,7 +114,7 @@ helm install pmm \
     percona/pmm
 ```
 
-The above command installs PMM, while setting the Service network type to `NodePort` and storage class to `linode-block-storage-retain` for persistence storage on LKE.
+The command above installs PMM, configuring the service network type as `NodePort` and setting the storage class to `linode-block-storage-retain` for persistent storage on LKE.```
 
 <div hidden>
 ```sh
