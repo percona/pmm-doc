@@ -57,7 +57,7 @@ A sample [IAM](https://aws.amazon.com/iam/) policy is:
      - **Local Client**: specify the path on your local client for files to be backed up to.
 
 !!! caution alert alert-warning "Important"
-    If your S3 endpoint is using a custom x509 certificate, PMM server and all PMM clients must be able to verify it. For this, append the CA certificate to the file containing the list of root CA certificates. These are stored on /etc/ssl/cert.pem file inside the pmm-server container. On the client side, it is usually /etc/ssl/certs/ca-bundle.crt
+    If your S3 endpoint is using a custom x509 certificate, PMM Server and all PMM Clients must be able to verify it. For this, append the CA certificate to the file containing the list of root CA certificates. These are stored on _/etc/ssl/cert.pem_ file inside the pmm-server container. On the Client side, it is usually _/etc/ssl/certs/ca-bundle.crt_
 
 4. Optionally, for S3-compatible storages, you can click **Test** to check the connection.
    
