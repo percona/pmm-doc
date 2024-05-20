@@ -141,7 +141,7 @@ You can set profiling:
 - until the next database instance restart, by running a command in a `mongo` session.
 
 !!! note alert alert-primary ""
-    Profiling is turned off by default as it can adversely affect the performance of the database server.
+Profiling is disabled by default as it may negatively impact the performance of the database server under specific circumstances, such as when busy servers are profiling all queries.
 
 ### Set profiling in the configuration file
 
@@ -190,15 +190,19 @@ For example, to enable the profiler in the `testdb`, run this:
 ```
 
 !!! note alert alert-primary ""
-    If you have already [added a service](#add-service), you should remove it and re-add it after changing the profiling level.
+    If you have already [added the MongoDB service to PMM](#add-service), make sure to restart the PMM agent service after adjusting the profiling level.
 
 ## Add service
 
-When you have configured your database server, you can add a MongoDB service with the user interface or on the command line.
+"After configuring your database server, you can add a MongoDB service either through the user interface or via the command line.
+
+!!! caution alert alert-warning "Important"
+To monitor MongoDB sharded clusters, PMM requires access to all cluster components. Make sure to add all the config servers, shards, and at least 1-2 mongos routers. Otherwise, PMM will not be able to correctly collect metrics and populate dashboards. 
+Keep in mind that adding all mongos routers may cause excessive overhead.
 
 ### With the user interface
 
-1. Select <i class="uil uil-cog"></i> *Configuration* → {{icon.inventory}} *Inventory*.
+1. Select {{icon.configuration}} *Configuration* → {{icon.inventory}} *Inventory*.
 
 2. Select *MongoDB -- Add a remote instance*.
 
@@ -214,8 +218,9 @@ Use `pmm-admin` to add the database server as a service using one of these examp
 When successful, PMM Client will print `MongoDB Service added` with the service's ID and name. Use the `--environment` and `-custom-labels` options to set tags for the service to help identify them.
 
 !!! hint alert alert-success "Tips"
-    - When adding nodes of a sharded cluster, add each node separately using the `--cluster mycluster` option for the MongoDB Cluster Summary dashboard to populate correctly.
-    - Atlas doesn't support direct connections. When connecting to an Atlas instance, use the `pmm-admin` option `--direct-connection=false`. (Doing so will prevent replicaset status from working and the MongoDB Overview dashboard widget will show invalid values.)
+    - When adding nodes to a sharded cluster, ensure to add each node separately using the `--cluster mycluster` option. This allows the [MongoDB Cluster Summary](../../details/dashboards/dashboard-mongodb-cluster-summary.md) dashboard to populate correctly. 
+    - You can also use the `--replication-set` option to specify a replication set, altough they are automatically detected. For instance, you can use `--replication-set config` for your config servers; `--replication-set rs1` for your servers in the first replica set, `--replication-set rs2` for your servers in the second replica set, and so on.
+    - When connecting to an Atlas instance, keep in mind that direct connections are not supported. Make sure to use the `--direct-connection=false` option with `pmm-admin`. Otherwise, replicaset status functionality will not work as expected, and the MongoDB Overview dashboard widget will show invalid values.
 
 ### Examples
 
@@ -267,7 +272,7 @@ where:
 
 ### With the user interface
 
-1. Select <i class="uil uil-cog"></i> *Configuration* → {{icon.inventory}} *Inventory*.
+1. Select {{icon.configuration}} *Configuration* → {{icon.inventory}} *Inventory*.
 2. In the *Services* tab, verify the *Service name*, *Addresses*, and any other relevant values used when adding the service.
 3. In the *Options* column, expand the *Details* section and check that the Agents are using the desired data source.
 4. If your MongoDB instance is configured to use TLS, click on the **Use TLS for database connection** check box and fill in TLS certificates and keys.
@@ -299,7 +304,7 @@ pmm-admin inventory list services --service-type=mongodb
 
 ### With the user interface
 
-1. Select <i class="uil uil-cog"></i> *Configuration* → {{icon.inventory}} *Inventory*.
+1. Select {{icon.configuration}} *Configuration* → {{icon.inventory}} *Inventory*.
 2. In the first column, click the tick box for the service you want to remove.
 3. Click <i class="uil uil-trash-alt"></i> *Delete*.
 4. On the *Confirm action* dialog window:
@@ -322,7 +327,7 @@ pmm-admin remove mongodb SERVICE_NAME
 [Percona Server for MongoDB]: https://www.percona.com/software/mongodb/percona-server-for-mongodb
 [profiling feature]: https://docs.mongodb.com/manual/tutorial/manage-the-database-profiler/
 [YAML]: http://yaml.org/spec/
-[MONGODB_CONFIG_OP_PROF]: https://docs.mongodb.com/manual/reference/configuration-options/#operationprofiling-options
+[MONGODB_CONFIG_OP_PROF]: https://docs.percona.com/percona-server-for-mongodb/LATEST/rate-limit.html
 [PSMDB_RATELIMIT]: https://www.percona.com/doc/percona-server-for-mongodb/LATEST/rate-limit.html#enabling-the-rate-limit
 [PMM_ADMIN_MAN_PAGE]: ../../details/commands/pmm-admin.md
 [Troubleshooting connection difficulties]: ../../how-to/troubleshoot.md#connection-difficulties
