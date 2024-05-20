@@ -39,7 +39,7 @@ If one is available, click the update button to update to the version indicated.
 
 ### Package Manager
 
-The easiest way to manage the agent installation and updates is to rely on the operating system package manager. Use the [percona-release](https://docs.percona.com/percona-software-repositories/installing.html) package to handle access to Percona repositories.
+The easiest way to manage the agent installation and updates is to rely on the operating system package manager. Use the [percona-release](https://docs.percona.com/percona-software-repositories/installing.html) package to help you install Percona software in general, and PMM Agent in particular.
 
 PMM Agent is available from the `tools` repository. To deploy a new version of the agent, you have the following options:
 - install the latest version if you are using a package manager
