@@ -327,7 +327,7 @@ pmm-admin remove mongodb SERVICE_NAME
 [Percona Server for MongoDB]: https://www.percona.com/software/mongodb/percona-server-for-mongodb
 [profiling feature]: https://docs.mongodb.com/manual/tutorial/manage-the-database-profiler/
 [YAML]: http://yaml.org/spec/
-[MONGODB_CONFIG_OP_PROF]: https://docs.mongodb.com/manual/reference/configuration-options/#operationprofiling-options
+[MONGODB_CONFIG_OP_PROF]: https://docs.percona.com/percona-server-for-mongodb/LATEST/rate-limit.html
 [PSMDB_RATELIMIT]: https://www.percona.com/doc/percona-server-for-mongodb/LATEST/rate-limit.html#enabling-the-rate-limit
 [PMM_ADMIN_MAN_PAGE]: ../../details/commands/pmm-admin.md
 [Troubleshooting connection difficulties]: ../../how-to/troubleshoot.md#connection-difficulties

@@ -206,6 +206,9 @@ To use *Performance Schema*, set the variables below.
 | [`performance-schema-consumer-statements-digest`][perfschema-consumer-statements-digest]   | `ON`               | Configures the `statements-digest` consumer.
 | [`innodb_monitor_enable`][sysvar_innodb_monitor_enable]                                    | all                | Enables InnoDB metrics counters.
 
+!!! caution alert alert-warning "Important"
+    When dealing with long queries, increasing the value of the variable [performance_schema_max_digest_length](https://dev.mysql.com/doc/refman/8.0/en/performance-schema-system-variables.html#sysvar_performance_schema_max_digest_length) will avoid having query examples truncated.
+
 #### Examples
 
 - Configuration file.
