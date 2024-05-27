@@ -60,7 +60,7 @@ For example, to install the latest version of the PMM Agent on Red Hat or its de
 percona-release enable tools
 yum update pmm2-client
 ```
-This keeps the existing agent configuration.
+By running these commands, your existing agent configuration will be preserved during the update process.
 
 To deploy a specific version, you can check the available versions and then provide the full name of the package, for example:
 ```
