@@ -52,7 +52,7 @@ If one is available, click the update button to update to the version indicated.
 The most convenient and efficient way to manage the installation and updates of the PMM Agent is by leveraging your operating system's package manager. Percona provides the [percona-release](https://docs.percona.com/percona-software-repositories/installing.html) package, which helps you install Percona software, including the PMM Agent.```
 
 PMM Agent is available from the `tools` repository. To deploy a new version of the Agent, you have two options:
-- install the latest version if you are using a package manager
+- If you are using a package manager, you can install the latest version of the PMM Agent directly.
 - replace the currently installed package with the latest if you chose to install PMM Agent from the tarball
 
 For example the following commands install the latest version of the agent on Red Hat or derivatives:
