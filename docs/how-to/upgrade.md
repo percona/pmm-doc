@@ -55,7 +55,7 @@ PMM Agent is available from the `tools` repository. To deploy a new version of t
 - If you are using a package manager, you can install the latest version of the PMM Agent directly.
 - If you initially installed the PMM Agent from a tarball, you can replace the currently installed package with the latest version.
 
-For example the following commands install the latest version of the agent on Red Hat or derivatives:
+For example, to install the latest version of the PMM Agent on Red Hat or its derivatives, you can use the following commands:
 ```
 percona-release enable tools
 yum update pmm2-client
