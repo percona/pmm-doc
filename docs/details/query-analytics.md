@@ -6,7 +6,8 @@
 3. [Details Panel](../get-started./query-analytics.md#details-panel)
 
 ## How QAN collects data?
-- data are collected every minute (at 0 seconds, like 8:15:00, next in 8:16:00 etc)
+- QAN collects data every minute, on the minute (e.g., 8:15:00 and next at 8:16:00, etc.).
+
 - collected data are represented by buckets
 
 ## What is a bucket/How is it created?
