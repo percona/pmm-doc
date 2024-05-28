@@ -84,7 +84,8 @@ INSERT INTO people VALUES ('John', 'Smith');
 Now let's take a look at results with different time range filters.
 1. QAN with default time range filter (Last 12 hours) - two rows in overview (one for CREATE query, another for INSERT). In the Details panel, the count for the INSERT query is 2.
 2. Range 8:05:00 - 8:06:00 - one row in overview for CREATE query, because none of INSERT queries were executed by that time
-3. Range 8:06:00 - 8:07:00 - one row in overview for INSERT query, because CREATE query were sent in previous bucket - in details for INSERT query count is 2. Both queries were executed in this range
+3. Range 8:06:00 - 8:07:00 - One row in the Overview panel for the INSERT query because the CREATE query was sent in the previous bucket.
+In the Details Panel, the count for the INSERT query is 2 since both queries were executed in this range.
 
 Remember that it may take up to 2 minutes for all the data to be visible in QAN after the queries have finished executing.
 
