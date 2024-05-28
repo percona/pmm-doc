@@ -10,7 +10,7 @@
 
 - collected data are represented by buckets
 
-## What is a bucket/How is it created?
+## Understanding buckets
 - buckets contains all data captured during one minute interval
 - once a bucket is created it is sent to PMM Server where it is parsed and saved in the clickhouse database. All QAN related data is stored there. Clickhouse is part of PMM Server, or you can use an external one
 - queries in buckets are aggregated by query ID. It means one row in list overview for all queries with same query ID
