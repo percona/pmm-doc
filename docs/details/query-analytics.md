@@ -8,7 +8,7 @@
 ## How QAN collects data?
 - QAN collects data every minute, on the minute (e.g., 8:15:00 and next at 8:16:00, etc.).
 
-- collected data are represented by buckets
+- The collected data is represented by "buckets."
 
 ## Understanding buckets
 - buckets contains all data captured during one minute interval
