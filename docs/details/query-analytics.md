@@ -86,4 +86,6 @@ Now let's take a look at results with different time range filters.
 2. Range 8:05:00 - 8:06:00 - one row in overview for CREATE query, because none of INSERT queries were executed by that time
 3. Range 8:06:00 - 8:07:00 - one row in overview for INSERT query, because CREATE query were sent in previous bucket - in details for INSERT query count is 2. Both queries were executed in this range
 
-Always remember that it could take up to 2 minutes until all data are visible in QAN since execution is done. More technologies covered (PG, Mongo) with examples will be included in near future.
+Remember that it may take up to 2 minutes for all the data to be visible in QAN after the queries have finished executing.
+
+In the future, we will include examples covering more technologies (e.g., PostgreSQL, MongoDB) in this topic.
