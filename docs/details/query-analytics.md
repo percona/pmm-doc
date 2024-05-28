@@ -1,6 +1,7 @@
 # Query analytics under the hood
 
 ## Components
+QAN consists of three main components:
 1. [Filters Panel](../get-started/./query-analytics.md#filters-panel)
 2. [Overview Panel](../get-started./query-analytics.md#overview-panel)
 3. [Details Panel](../get-started./query-analytics.md#details-panel)
