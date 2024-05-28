@@ -80,7 +80,7 @@ INSERT INTO people VALUES ('John', 'Smith');
 
 **8:07:00:** Buckets are collected and sent to PMM Server. Rest of executed queries are included there and since now visible/increased in QAN.
 
-**8:07:10:** You should see two rows in QAN list overview (depends on settings of filter and time range):
+**8:07:10:** You should see two rows in the QAN Overview Panel (depending on the filter settings and time range):
 Now let's take a look at results with different time range filters.
 1. QAN with default time range filter (Last 12 hours) - two rows in overview (one for CREATE query, another for INSERT) - in details for INSERT query count is 2
 2. Range 8:05:00 - 8:06:00 - one row in overview for CREATE query, because none of INSERT queries were executed by that time
