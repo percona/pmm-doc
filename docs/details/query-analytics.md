@@ -14,7 +14,8 @@ QAN consists of three main components:
 ## Understanding buckets
 - A bucket contains all the data captured during a one-minute interval.
 
-- once a bucket is created it is sent to PMM Server where it is parsed and saved in the clickhouse database. All QAN related data is stored there. Clickhouse is part of PMM Server, or you can use an external one
+-  Once a bucket is created, it is sent to the PMM Server, where it is parsed and saved in the ClickHouse database. All QAN-related data is stored in ClickHouse, which can be either part of the PMM Server or an external instance.
+
 - queries in buckets are aggregated by query ID. It means one row in list overview for all queries with same query ID
 - query IDs are calculated different depends on technology and query source  
 **MySQL**   
