@@ -332,5 +332,6 @@ To share a link for Query Analytics, use *Copy Link*. It copies the link to the 
 
 ## QAN under the hood
 
-To understand how metrics are calculated and details about QAN visit:
+To understand how metrics are calculated and to learn more details about QAN, see 
+
 [QAN under the hood](../details/query-analytics-details.md)
