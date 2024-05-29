@@ -1,4 +1,4 @@
-# Query analytics under the hood
+# Query Analytics under the hood
 
 ## Components
 QAN consists of three main components:
