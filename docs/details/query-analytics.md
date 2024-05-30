@@ -77,7 +77,7 @@ query ID will be the same which is why they are aggregated into a single row in 
 **Timeline**   
 **8:05:55:** You start pmm-agent. 
 
-**8:05:59:** You executed queries: 
+**8:05:59:** You execute the following queries: 
 ```sh
 CREATE TABLE people (FirstName varchar(255), LastName varchar(255));
 INSERT INTO people VALUES ('Joe', 'Doe');
