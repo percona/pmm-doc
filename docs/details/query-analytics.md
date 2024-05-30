@@ -48,7 +48,7 @@ MySQL Performance Schema: The `events_statements_summary_by_digest` and `events_
 **Timeline**   
 **8:05:05:** You start the pmm-agent.
 
-**8:05:20:** You executed queries:
+**8:05:20:** You execute the following queries:
 ```sh 
 CREATE TABLE people (FirstName varchar(255), LastName varchar(255));
 INSERT INTO people VALUES ('Joe', 'Doe');
