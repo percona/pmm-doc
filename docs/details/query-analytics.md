@@ -32,7 +32,7 @@ DIGEST (Perfschema) and fingerprint (Slowlog) are same. It is query without sens
         - DIGEST for same query could be different in different versions of MySQL 
         - The DIGEST is generated from the query text without sensitive data (DIGEST_TEXT).
 
-        - with MySQL 8.0 and higher you can use function STATEMENT_DIGEST("your query") to get DIGEST (query ID). See more details on MySQL official website [here](https://dev.mysql.com/doc/refman/8.0/en/encryption-functions.html#function_statement-digest "MySQL Perfschema digest details") 
+        - In MySQL 8.0 and higher, you can use the STATEMENT_DIGEST("your query") function to obtain the DIGEST (query ID) for a given query. See the [MySQL official documentation](https://dev.mysql.com/doc/refman/8.0/en/encryption-functions.html#function_statement-digest) for more details.
     - **Slowlog** 
         - query ID is the MD5 checksum of fingerprint
 
