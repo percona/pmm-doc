@@ -75,7 +75,7 @@ query ID will be the same which is why they are aggregated into a single row in 
 
 ### Example 2: MySQL with Performance Schema or Slow Log, Query Execution Split Across Two Buckets
 **Timeline**   
-**8:05:55:** You started pmm-agent. 
+**8:05:55:** You start pmm-agent. 
 
 **8:05:59:** You executed queries: 
 ```sh
