@@ -29,7 +29,7 @@ DIGEST (Perfschema) and fingerprint (Slowlog) are same. It is query without sens
     - **Perfschema** 
         - The query ID is based on the DIGEST (fingerprint) value from the `events_statements_summary_by_digest` table in the mysql database.
 
-        - DIGEST for same query could be different in different versions of MySQL 
+        - The DIGEST value for the same query may differ across MySQL versions. 
         - The DIGEST is generated from the query text without sensitive data (DIGEST_TEXT).
 
         - In MySQL 8.0 and higher, you can use the STATEMENT_DIGEST("your query") function to obtain the DIGEST (query ID) for a given query. See the [MySQL official documentation](https://dev.mysql.com/doc/refman/8.0/en/encryption-functions.html#function_statement-digest) for more details.
@@ -85,7 +85,7 @@ INSERT INTO people VALUES ('John', 'Smith');
 ``` 
 **8:06:00:** The first bucket is collected and sent to the PMM Server. The queries executed so far are included in this bucket and can be found in QAN for the time range 8:05:00-8:06:00.
 
-**8:06:01:** Queries finished.
+**8:06:01:** The queries finish executing.
 
 **8:07:00:** The second bucket is collected and sent to the PMM Server. The remaining executed queries are included in this bucket and are now visible in QAN.
 
