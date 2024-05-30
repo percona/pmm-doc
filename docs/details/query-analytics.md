@@ -19,7 +19,9 @@ QAN consists of three main components:
 - queries in buckets are aggregated by query ID, which means that all queries with the same query ID are represented by a single row in the Overview panel.
 - Query IDs are calculated differently depending on the database technology and query source.
 **MySQL**   
-DIGEST (Perfschema) and fingerprint (Slowlog) are same. It is query without sensitive data. In case below both queries will have **same query ID**  
+For MySQL, the query ID is based on the DIGEST value (for Performance Schema) or the MD5 checksum of the fingerprint (for slow log).
+
+DIGEST (Perfschema) and fingerprint (Slowlog) are same. It is query without sensitive data. In case below both queries will have **same query ID**. The DIGEST value is generated from the query text without sensitive data.
     ```sh
     INSERT INTO people VALUES ('Joe', 'Doe'); 
     INSERT INTO people VALUES ('John', 'Smith'); 
