@@ -54,7 +54,7 @@ CREATE TABLE people (FirstName varchar(255), LastName varchar(255));
 INSERT INTO people VALUES ('Joe', 'Doe');
 INSERT INTO people VALUES ('John', 'Smith');
 ```
-**8:05:25:** Queries finished.
+**8:05:25:** The queries finish executing.
 
 **8:06:00:** Buckets are collected and sent to PMM Server. Now go to QAN.
 
