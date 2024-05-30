@@ -271,7 +271,7 @@ For a custom value, select **Custom** and enter or choose your preferred value f
 
 ### Maximum connection limit
 
-Starting with PMM 2.42, you can set a maximum limit on the number of connections that the PostgreSQL exporter can open to the same PostgreSQL instance.
+Starting with PMM 2.42.0, you can set a maximum limit on the number of connections that the PostgreSQL exporter can open to the same PostgreSQL instance.
 
 By setting a maximum connection limit, you can prevent excessive connections during concurrent operations, and ensure that connections are closed promptly to avoid idle connections.
 
