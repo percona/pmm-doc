@@ -83,7 +83,7 @@ CREATE TABLE people (FirstName varchar(255), LastName varchar(255));
 INSERT INTO people VALUES ('Joe', 'Doe');
 INSERT INTO people VALUES ('John', 'Smith'); 
 ``` 
-**8:06:00:** Buckets are collected and sent to PMM Server. Already executed queries are included too in the bucket. Could be found in QAN already in range 8:05:00 - 8:06:00 or any other timestamp, which includes this minute.
+**8:06:00:** The first bucket is collected and sent to the PMM Server. The queries executed so far are included in this bucket and can be found in QAN for the time range 8:05:00-8:06:00.
 
 **8:06:01:** Queries finished.
 
