@@ -61,7 +61,7 @@ INSERT INTO people VALUES ('John', 'Smith');
 
 **8:06:10:** Here, you should see two rows in the QAN Overview Panel (depending on the filter settings and time range):
 ![QAN MySQL Example 1 List Overview](../_images/PMM_Query_Analytics_Example1_Overview.png) 
-Lets answer some questions about the image above.   
+Let's answer some questions about the image above.   
 **Question:** Why is the query a little bit different in the list overview?   
 **Answer:** The query is the same, but sensitive data (Joe, John etc) are replaced by "?", "?+" or "..." in list overview  
 **Question:** We triggered two INSERT queries, but there is only one row in the list overview. Why?   
