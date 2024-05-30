@@ -70,7 +70,7 @@ Let's answer some questions about the image above.
 INSERT INTO people VALUES ('Joe', 'Doe');
 INSERT INTO people VALUES ('John', 'Smith');
 ``` 
-query ID will be the same and that is why it is aggregated as one row in the list overview. On the other hand in detail you still should see a real count of how many times the query was executed. As you can see in the image below. In detail the count for the INSERT query is 2. Since we executed the INSERT query 2 times it is correct and expected. 
+query ID will be the same which is why they are aggregated into a single row in the Overview list. However, in the Details panel, you should still see the actual count of how many times the query was executed. As you can see in the image below, the count for the INSERT query is 2 in the Details panel, which matches the number of times we executed the INSERT query.
 ![QAN MySQL Example 1 Details](../_images/PMM_Query_Analytics_Example1_Details.png)
 
 ### 2. MySQL, query source perfschema/slowlog, queries execution splitted over two buckets
