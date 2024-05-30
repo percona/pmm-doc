@@ -43,7 +43,8 @@ MySQL Performance Schema: The `events_statements_summary_by_digest` and `events_
 - PostgreSQL pg_stat_monitor (PGSM): The `pg_stat_monitor` view in the required database.
 
 ## Examples
-### 1. MySQL, query source perfschema/slowlog
+### Example 1: MySQL with Performance Schema or Slow Log
+
 **Timeline**   
 **8:05:05:** You started pmm-agent.
 
