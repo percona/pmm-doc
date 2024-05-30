@@ -34,7 +34,7 @@ DIGEST (Perfschema) and fingerprint (Slowlog) are same. It is query without sens
 
         - In MySQL 8.0 and higher, you can use the STATEMENT_DIGEST("your query") function to obtain the DIGEST (query ID) for a given query. See the [MySQL official documentation](https://dev.mysql.com/doc/refman/8.0/en/encryption-functions.html#function_statement-digest) for more details.
     - **Slowlog** 
-        - query ID is the MD5 checksum of fingerprint
+        - The query ID is the MD5 checksum of the query fingerprint.
 
 ## Sources for data
 - MySQL Perfschema: tables `events_statements_summary_by_digest` and `events_statements_history` in MySQL database called `mysql`
