@@ -40,7 +40,7 @@ DIGEST (Perfschema) and fingerprint (Slowlog) are same. It is query without sens
 MySQL Performance Schema: The `events_statements_summary_by_digest` and `events_statements_history` tables in the `mysql` database.
 - MySQL Slow Log: The slow log file specified during MySQL configuration.
 - PostgreSQL pg_stat_statements (PGSS): The `pg_stat_statements` view in the required database.
-- PostgreSQL pg_stat_statmonitor (PGSM): view `pg_stat_monitor` in required database
+- PostgreSQL pg_stat_monitor (PGSM): The `pg_stat_monitor` view in the required database.
 
 ## Examples
 ### 1. MySQL, query source perfschema/slowlog
