@@ -61,6 +61,7 @@ Values for the *Custom* preset can be entered as values, or changed with the arr
 ### Configure metrics resolution per-service
 
 While changing the metrics resolution in the settings tab applies to all services, you can also configure metrics resolutions on a per-service basis by setting the resolution settings for each exporter individually via the API.
+
 Customizing the resolution settings for individual services enables you to fine-tune your PMM setup to balance data granularity and resource consumption.
 
 This enables you to:
