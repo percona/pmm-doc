@@ -37,7 +37,7 @@ DIGEST (Perfschema) and fingerprint (Slowlog) are same. It is query without sens
         - The query ID is the MD5 checksum of the query fingerprint.
 
 ## Sources for data
-- MySQL Perfschema: tables `events_statements_summary_by_digest` and `events_statements_history` in MySQL database called `mysql`
+MySQL Performance Schema: The `events_statements_summary_by_digest` and `events_statements_history` tables in the `mysql` database.
 - MySQL Slowlog: file on path provided during configuring your MySQL
 - PostgreSQL pg_stat_statements (PGSS): view `pg_stat_statements` in required database
 - PostgreSQL pg_stat_statmonitor (PGSM): view `pg_stat_monitor` in required database
