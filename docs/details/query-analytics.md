@@ -46,7 +46,7 @@ MySQL Performance Schema: The `events_statements_summary_by_digest` and `events_
 ### Example 1: MySQL with Performance Schema or Slow Log
 
 **Timeline**   
-**8:05:05:** You started pmm-agent.
+**8:05:05:** You start the pmm-agent.
 
 **8:05:20:** You executed queries:
 ```sh 
