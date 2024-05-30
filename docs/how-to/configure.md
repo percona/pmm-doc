@@ -70,6 +70,8 @@ This enables you to:
 - Reduce storage requirements by adjusting resolution for less critical components
 - Align your monitoring setup with the specific needs of your environment
 
+For information on enabling this feature via API, see the [**Change Postgres Exporter endpoint**](https://percona-pmm.readme.io/reference/changepostgresexporter) in the API documentation.
+
 ## Advanced Settings
 
 ![!](../_images/PMM_Settings_Advanced_Settings.jpg)
