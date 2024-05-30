@@ -73,7 +73,7 @@ INSERT INTO people VALUES ('John', 'Smith');
 query ID will be the same which is why they are aggregated into a single row in the Overview list. However, in the Details panel, you should still see the actual count of how many times the query was executed. As you can see in the image below, the count for the INSERT query is 2 in the Details panel, which matches the number of times we executed the INSERT query.
 ![QAN MySQL Example 1 Details](../_images/PMM_Query_Analytics_Example1_Details.png)
 
-### 2. MySQL, query source perfschema/slowlog, queries execution splitted over two buckets
+### Example 2: MySQL with Performance Schema or Slow Log, Query Execution Split Across Two Buckets
 **Timeline**   
 **8:05:55:** You started pmm-agent. 
 
