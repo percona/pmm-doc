@@ -87,7 +87,7 @@ INSERT INTO people VALUES ('John', 'Smith');
 
 **8:06:01:** Queries finished.
 
-**8:07:00:** Buckets are collected and sent to PMM Server. Rest of executed queries are included there and since now visible/increased in QAN.
+**8:07:00:** The second bucket is collected and sent to the PMM Server. The remaining executed queries are included in this bucket and are now visible in QAN.
 
 **8:07:10:** You should see two rows in the QAN Overview Panel (depending on the filter settings and time range):
 Now let's take a look at results with different time range filters.
