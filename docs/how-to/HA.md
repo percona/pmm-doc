@@ -1,22 +1,76 @@
-# Set up PMM in HA mode
+
+# Set up PMM in High Availability (HA) mode
 
 !!! caution alert alert-warning "Important"
-    This feature has been added in PMM 2.41.0 and is currently in [Technical Preview](https://docs.percona.com/percona-monitoring-and-management/details/glossary.html#technical-preview). Early adopters are advised to use this feature for testing purposes only as it is subject to change.
-
-Set up PMM using Docker containers in a high-availability (HA) configuration following these instructions. 
-
-PMM Server is deployed in a high-availability setup where three PMM Server instances are configured, one being the leader and others are followers. These servers provide services including:
-
-- ClickHouse: A fast, open-source analytical database.
-- VictoriaMetrics: A scalable, long-term storage solution for time series data.
-- PostgreSQL: A powerful open-source relational database management system, used in this setup to store PMM data like inventory, settings, and other feature-related data.
+    This feature has been added in Percona Monitoring and Management (PMM) 2.41.0 and is currently in [Technical Preview](https://docs.percona.com/percona-monitoring-and-management/details/glossary.html#technical-preview). Early adopters are advised to use this feature for testing purposes only as it is subject to change.
 
 ## Importance of HA
 
-Having high availability increases the reliability of the PMM service, as the leader server handles all client requests, and subsequent servers take over if the leader fails.
+Ensuring your monitoring system remains operational is crucial. Deploying PMM in a High Availability (HA) setup significantly increases its reliability.
 
-- Gossip Protocol: This protocol facilitates PMM servers to discover and share information about their states with each other. It is used for managing the PMM server list and failure detection.
-- Raft Protocol: This is a consensus algorithm that allows PMM servers to agree on a leader and ensures that logs are replicated among all machines.
+In an HA configuration, three PMM Server instances are configured: one as the leader and the others as followers. The leader server handles all client requests. If the leader fails, the followers take over, minimizing downtime.
+
+HA is about having redundant systems ready to take over seamlessly, ensuring that your monitoring system remains resilient even if one instance encounters issues.
+
+These PMM Server instances provide the following essential services:
+
+- ClickHouse: Stores Query Analytics (QAN) metrics.
+- VictoriaMetrics: Stores Prometheus metrics.
+PostgreSQL: Stores PMM data like inventory and settings.
+
+
+To facilitate communication and coordination among the PMM Server instances, two key protocols are used:
+
+- **Gossip protocol**: Enables PMM servers to discover and share information about their states. It is used for managing the PMM server list and failure detection, ensuring that all instances are aware of the current state of the cluster.
+- **Raft protocol**: Ensures that PMM servers agree on a leader and that logs are replicated among all machines to maintain data consistency.
+
+
+## HA options PMM
+
+Since HA can add complexity, before considering HA for PMM, keep in mind that: 
+
+- Critical systems requiring immediate response benefit from sub-second failover HA, while less critical applications with some tolerance for downtime (seconds or minutes) have more flexibility.
+
+- PMM itself has a one-minute minimum alerting interval, so even with perfect HA, the fastest you'll know about an issue is one minute after it occurs.
+
+- consider your specific uptime needs, performance requirements, and potential data loss you can tolerate, while also keeping in mind PMM's limitations.
+
+
+### 1. Simple Docker restart with data caching
+
+The most straightforward approach to increase availability in PMM is to launch the PMM server within Docker using the `--restart=always` flag. 
+
+This ensures that the PMM Server automatically restarts if a minor issue occurs. Additionally, PMM's data caching feature stores data locally on the PMM Client when the connection to the PMM Server is interrupted.
+
+Once the connection is restored, the cached data is transferred to the PMM Server, ensuring no data loss during the restart process.
+
+This option is suitable for scenarios where the primary concern is the ability to investigate potential issues later. 
+
+However, it's important to note that this approach is limited by the underlying physical infrastructure. If the failure stems from a hardware issue, automatic recovery might be challenging.
+
+### 2. Leverage Kubernetes for enhanced isolation
+
+For users running PMM in a Kubernetes (K8s) environment, PMM offers a Helm chart that facilitates running PMM with enhanced isolation. In this setup, even if the physical infrastructure encounters a problem, K8s automatically handles failover, migrating the PMM instance to a healthy node.
+
+While restarts within K8s can take up to several minutes (depending on your infrastructure configuration), PMM's data caching ensures that information is preserved during this transition. Alerts will still be triggered to keep you informed about any issues that started during PMM's restart and continue after PMM is back.
+
+### 3. Fully-clustered PMM in Kubernetes (coming Q3/2024)
+
+For users with large deployments, numerous instances, and distributed locations, we are currently a developing fully clustered PMM setup in Kubernetes, which is planned for release in Q3/2024. 
+
+This option will provide a comprehensive HA solution, including clustered database setups (ClickHouse, VictoriaMetrics, and PostgreSQL).
+
+In this setup, multiple PMM instances will be configured, with one being the leader and the others as followers.
+
+Leader election will be managed using the Raft consensus algorithm, ensuring a smooth transition of the leader role if the current leader fails. The architecture will consist of:
+
+- Multiple PMM instances for redundancy
+- Clustered PostgreSQL for storing metadata and configuration data
+- Clustered ClickHouse for storing query performance metrics (Query Analytics)
+- Clustered VictoriaMetrics for storing operational metrics from monitored databases and hosts
+- HAProxy for managing and directing network traffic to the current leader PMM instance
+
+This fully clustered PMM setup in Kubernetes will provide the highest level of availability and reliability for large-scale, mission-critical monitoring environments.
 
 ## Prerequisites
 
@@ -660,7 +714,7 @@ HAProxy provides high availability for your PMM setup by directing traffic to th
     
 HAProxy is now configured to redirect traffic to the leader PMM managed server. This ensures highly reliable service by redirecting requests to the remainder of the servers in the event that the leader server goes down.
 
-### **Step 8: Accessing PMM**
+### **Step 8: Access PMM**
 
 You can access the PMM web interface via HAProxy once all the components are set up and configured:
 
