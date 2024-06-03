@@ -31,7 +31,7 @@ DIGEST (Performance Schema) and fingerprint (Slow Log) are both methods of repre
 
 - The query ID is based on the DIGEST (fingerprint) value from the `events_statements_summary_by_digest` table in the mysql database.
 
-        - The DIGEST value for the same query may differ across MySQL versions. 
+- The DIGEST value for the same query may differ across MySQL versions. 
         - The DIGEST is generated from the query text without sensitive data (DIGEST_TEXT).
 
         - In MySQL 8.0 and higher, you can use the STATEMENT_DIGEST("your query") function to obtain the DIGEST (query ID) for a given query. See the [MySQL official documentation](https://dev.mysql.com/doc/refman/8.0/en/encryption-functions.html#function_statement-digest) for more details.
