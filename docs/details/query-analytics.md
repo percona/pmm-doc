@@ -38,6 +38,7 @@ DIGEST (Performance Schema) and fingerprint (Slow Log) are both methods of repre
 - The query ID is the MD5 checksum of the query fingerprint.
 
 ## Sources for data
+
 MySQL Performance Schema: The `events_statements_summary_by_digest` and `events_statements_history` tables in the `mysql` database.
 - MySQL Slow Log: The slow log file specified during MySQL configuration.
 - PostgreSQL pg_stat_statements (PGSS): The `pg_stat_statements` view in the required database.
