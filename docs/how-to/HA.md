@@ -14,7 +14,7 @@ These PMM Server instances provide the following essential services:
 
 - ClickHouse: Stores Query Analytics (QAN) metrics.
 - VictoriaMetrics: Stores Prometheus metrics.
-PostgreSQL: Stores PMM data like inventory and settings.
+- PostgreSQL: Stores PMM data like inventory and settings.
 
 To facilitate communication and coordination among the PMM Server instances, two key protocols are used:
 
