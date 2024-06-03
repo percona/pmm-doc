@@ -16,11 +16,6 @@ These PMM Server instances provide the following essential services:
 - VictoriaMetrics: Stores Prometheus metrics.
 - PostgreSQL: Stores PMM data like inventory and settings.
 
-To facilitate communication and coordination among the PMM Server instances, two key protocols are used:
-
-- **Gossip protocol**: Enables PMM servers to discover and share information about their states. It is used for managing the PMM server list and failure detection, ensuring that all instances are aware of the current state of the cluster.
-- **Raft protocol**: Ensures that PMM servers agree on a leader and that logs are replicated among all machines to maintain data consistency.
-
 ## HA options PMM
 
 Since HA can add complexity, before considering HA for PMM, keep in mind that:
@@ -61,23 +56,28 @@ Leader election will be managed using the Raft consensus algorithm, ensuring a s
 - Clustered VictoriaMetrics for storing operational metrics from monitored databases and hosts
 - HAProxy for managing and directing network traffic to the current leader PMM instance
 
-This fully clustered PMM setup in Kubernetes will provide the highest level of availability and reliability for large-scale, mission-critical monitoring environments.
+### 4. Manual setup for HA
 
-## Prerequisites
+If none of the above options work for your specific use case, you can consider setting up PMM in HA mode manually by following the steps below.
+
+To facilitate communication and coordination among the PMM Server instances, two key protocols are used:
+
+- **Gossip protocol**: Enables PMM servers to discover and share information about their states. It is used for managing the PMM server list and failure detection, ensuring that all instances are aware of the current state of the cluster.
+- **Raft protocol**: Ensures that PMM servers agree on a leader and that logs are replicated among all machines to maintain data consistency.
+
+#### Prerequisites
 
 You will need the following before you can begin the deployment:
 
 - Docker installed and configured on your system. If you haven't installed Docker, you can follow **[this guide](https://docs.docker.com/get-docker/)**.
 
-## Procedure to set up PMM in HA mode
-
 !!! note alert alert-primary "Note"
     - The sections below provide instructions for setting up the services on both the same and separate instances. However, it is not recommended to run the services on a single machine for production purposes. This approach is only recommended for the development environment.
     - It is recommended to use clustered versions of PosgreSQL, Victoriametrics, Clickhouse, etc., instead of standalone versions when setting up the services.
 
-The steps to set up PMM in HA mode are:
+To set up PMM in HA mode manually:
 
-### **Step 1: Define environment variables**
+#### **Step 1: Define environment variables**
 
 Before you start with the setup, define the necessary environment variables on each instance where the services will be running. These variables will be used in subsequent commands. 
 
@@ -122,7 +122,7 @@ For all IP addresses, use the format `17.10.1.x`, and for all usernames and pass
 !!! note alert alert-primary "Note"
     Ensure that you have all the environment variables from Step 1 set in each instance where you run these commands.
 
-### **Step 2: Create Docker network (Optional)**
+#### **Step 2: Create Docker network (Optional)**
         
 1. Set up a Docker network for PMM services if you plan to run all the services on the same instance. As a result of this Docker network, your containers will be able to communicate with each other, which is essential for the High Availability (HA) mode to function properly in PMM. This step may be optional if you run your services on separate instances.
 
@@ -132,7 +132,7 @@ For all IP addresses, use the format `17.10.1.x`, and for all usernames and pass
     docker network create pmm-network --subnet=17.10.1.0/16
     ```
 
-### **Step 3: Set up ClickHouse**
+#### **Step 3: Set up ClickHouse**
 
 ClickHouse is an open-source column-oriented database management system. In PMM, ClickHouse stores Query Analytics (QAN) metrics, which provide detailed information about your queries.
 
@@ -178,8 +178,7 @@ To set up ClickHouse:
         - If you run the services on the same instance, the `--network` and `--ip` flags assign a specific IP address to the container within the Docker network created in the previous step. This IP address is referenced in subsequent steps as the ClickHouse service address. 
         - The `--network` and `--ip` flags are not required if the services are running on separate instances since ClickHouse will bind to the default network interface.
 
-
-### **Step 4: Set up VictoriaMetrics**
+#### **Step 4: Set up VictoriaMetrics**
 
 VictoriaMetrics provides a long-term storage solution for your time-series data. In PMM, it is used to store Prometheus metrics.
 
@@ -248,7 +247,7 @@ To set up VictoriaMetrics:
         - If you run the services on the same instance,  the `--network` and `--ip` flags are used to assign a specific IP address to the container within the Docker network created in Step 2. This IP address is referenced in subsequent steps as the VictoriaMetrics service address. 
         - The `--network` and `--ip` flags are not required if the services are running on separate instances, as VictoriaMetrics will bind to the default network interface.
 
-### **Step 5: Set up PostgreSQL**
+#### **Step 5: Set up PostgreSQL**
 
 PostgreSQL is a powerful, open-source object-relational database system. In PMM, it's used to store data related to inventory, settings, and other features.
 
@@ -343,7 +342,7 @@ To set up PostgreSQL:
         - If you run the services on the same instance, the `--network` and `--ip` flags are used to assign a specific IP address to the container within the Docker network created in Step 2. This IP address is referenced in subsequent steps as the PostgreSQL service address.
         - The `--network` and `--ip` flags are not required if the services are running on separate instances, as PostgreSQL will bind to the default network interface.
 
-### **Step 6: Running PMM Services**
+#### **Step 6: Running PMM Services**
 
 The PMM server orchestrates the collection, storage, and visualization of metrics. In our high-availability setup, we'll have one active PMM server and two passive PMM servers.
 
@@ -579,7 +578,7 @@ The PMM server orchestrates the collection, storage, and visualization of metric
         - If you run the service on a separate instance, remove the **`--network`** and **`--ip`** flags.
 
 
-### **Step 7: Running HAProxy**
+#### **Step 7: Running HAProxy**
 
 HAProxy provides high availability for your PMM setup by directing traffic to the current leader server via the `/v1/leaderHealthCheck` endpoint.
     
@@ -703,7 +702,7 @@ HAProxy provides high availability for your PMM setup by directing traffic to th
     
 HAProxy is now configured to redirect traffic to the leader PMM managed server. This ensures highly reliable service by redirecting requests to the remainder of the servers in the event that the leader server goes down.
 
-### **Step 8: Access PMM**
+#### **Step 8: Access PMM**
 
 You can access the PMM web interface via HAProxy once all the components are set up and configured:
 
