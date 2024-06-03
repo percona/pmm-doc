@@ -7,7 +7,7 @@ QAN consists of three main components:
 3. [Details Panel](../get-started./query-analytics.md#details-panel)
 
 ## How QAN collects data?
-- QAN collects data every minute, on the minute (e.g., 8:15:00 and next at 8:16:00, etc.).
+- QAN collects data every minute, on the minute (e.g. 8:15:00 and next at 8:16:00, etc.).
 
 - The collected data is represented by "buckets."
 
