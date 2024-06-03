@@ -1,13 +1,11 @@
 # Set up PMM in High Availability (HA) mode
 
 !!! caution alert alert-warning "Important"
-    This feature has been added in Percona Monitoring and Management (PMM) 2.41.0 and is currently in [Technical Preview](https://docs.percona.com/percona-monitoring-and-management/details/glossary.html#technical-preview). Early adopters are advised to use this feature for testing purposes only as it is subject to change.
+    This feature is currently in [Technical Preview](https://docs.percona.com/percona-monitoring-and-management/details/glossary.html#technical-preview). Early adopters are advised to use this feature for testing purposes only as it is subject to change.
 
 ## Importance of HA
 
 High Availability (HA) is a critical aspect of any monitoring system, as it ensures that your monitoring infrastructure remains resilient and continues to function seamlessly, even if one or more instances encounter issues. HA implements redundant systems that are ready to take over to minimize downtime and maintain continuous visibility into the performance and health of PMM.
-
-In an HA configuration, three PMM Server instances are configured: one as the leader and the others as followers. The leader server handles all client requests. If the leader fails, the followers take over, minimizing downtime.
 
 ## HA options PMM
 
@@ -51,18 +49,22 @@ Leader election will be managed using the Raft consensus algorithm, ensuring a s
 
 ### 4. Manual setup for HA
 
-If none of the above options work for your specific use case, you can consider setting up PMM in HA mode manually by following the steps below.
+If none of the above options work for your specific use case, consider setting up PMM in HA mode manually by following the steps below.
 
 To enable communication and coordination among the PMM Server instances, two key protocols are used:
 
 - **Gossip protocol**: Enables PMM servers to discover and share information about their states. It is used for managing the PMM server list and failure detection, ensuring that all instances are aware of the current state of the cluster.
 - **Raft protocol**: Ensures that PMM servers agree on a leader and that logs are replicated among all machines to maintain data consistency.
-  
-These protocols work in tandem to ensure that the PMM Server instances can effectively store and manage the data collected from your monitored databases and systems. The PMM Server instances provide the following critical services:
 
-- ClickHouse: Stores Query Analytics (QAN) metrics.
-- VictoriaMetrics: Stores Prometheus metrics.
-- PostgreSQL: Stores PMM data like inventory and settings.
+These protocols work in tandem to ensure that the PMM Server instances can effectively store and manage the data collected from your monitored databases and systems. 
+
+In an HA configuration, three PMM Server instances are configured: one as the leader and the others as followers. The leader server handles all client requests. If the leader fails, the followers take over, minimizing downtime.
+
+To eliminate single points of failure and provide better service level agreements (SLAs), the critical services typically bundled with PMM Server are extracted and set up as separate, clustered instances:
+
+- ClickHouse: A clustered setup of ClickHouse is used to store Query Analytics (QAN) metrics. This ensures that QAN data remains highly available and can be accessed even if one of the ClickHouse nodes fails.
+- VictoriaMetrics: A clustered setup of VictoriaMetrics is used to store Prometheus metrics. This provides a highly available and scalable solution for storing and querying metrics data.
+- PostgreSQL: A clustered setup of PostgreSQL is used to store PMM data, such as inventory and settings. This ensures that PMM's configuration and metadata remain highly available and can be accessed by all PMM Server instances.
 
 #### Prerequisites
 
