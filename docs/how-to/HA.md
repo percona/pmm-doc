@@ -1,4 +1,3 @@
-
 # Set up PMM in High Availability (HA) mode
 
 !!! caution alert alert-warning "Important"
@@ -9,12 +8,6 @@
 High Availability (HA) is a critical aspect of any monitoring system, as it ensures that your monitoring infrastructure remains resilient and continues to function seamlessly, even if one or more instances encounter issues. HA implements redundant systems that are ready to take over to minimize downtime and maintain continuous visibility into the performance and health of PMM.
 
 In an HA configuration, three PMM Server instances are configured: one as the leader and the others as followers. The leader server handles all client requests. If the leader fails, the followers take over, minimizing downtime.
-
-These PMM Server instances provide the following essential services:
-
-- ClickHouse: Stores Query Analytics (QAN) metrics.
-- VictoriaMetrics: Stores Prometheus metrics.
-- PostgreSQL: Stores PMM data like inventory and settings.
 
 ## HA options PMM
 
@@ -28,7 +21,7 @@ Since HA can add complexity, before considering HA for PMM, keep in mind that:
 
 ### 1. Simple Docker restart with data caching
 
-The most straightforward approach to increase availability in PMM is to launch the PMM server within Docker using the `--restart=always` flag. 
+The most straightforward approach to increase availability in PMM is to launch the PMM server within Docker using the `--restart=always` flag.
 
 This ensures that the PMM Server automatically restarts if a minor issue occurs. Additionally, PMM's data caching feature stores data locally on the PMM Client when the connection to the PMM Server is interrupted.
 
@@ -60,10 +53,16 @@ Leader election will be managed using the Raft consensus algorithm, ensuring a s
 
 If none of the above options work for your specific use case, you can consider setting up PMM in HA mode manually by following the steps below.
 
-To facilitate communication and coordination among the PMM Server instances, two key protocols are used:
+To enable communication and coordination among the PMM Server instances, two key protocols are used:
 
 - **Gossip protocol**: Enables PMM servers to discover and share information about their states. It is used for managing the PMM server list and failure detection, ensuring that all instances are aware of the current state of the cluster.
 - **Raft protocol**: Ensures that PMM servers agree on a leader and that logs are replicated among all machines to maintain data consistency.
+  
+These protocols work in tandem to ensure that the PMM Server instances can effectively store and manage the data collected from your monitored databases and systems. The PMM Server instances provide the following critical services:
+
+- ClickHouse: Stores Query Analytics (QAN) metrics.
+- VictoriaMetrics: Stores Prometheus metrics.
+- PostgreSQL: Stores PMM data like inventory and settings.
 
 #### Prerequisites
 
@@ -576,7 +575,6 @@ The PMM server orchestrates the collection, storage, and visualization of metric
         - Ensure to set the environment variables from Step 1  in each instance where you run these commands.
         - If you run the service on the same instance, remove the **`-p`** flags.
         - If you run the service on a separate instance, remove the **`--network`** and **`--ip`** flags.
-
 
 #### **Step 7: Running HAProxy**
 
