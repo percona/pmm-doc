@@ -16,7 +16,7 @@ QAN consists of three main components:
 
 - Once a bucket is created, it is sent to the PMM Server, where it is parsed and saved in the ClickHouse database. All QAN-related data is stored in ClickHouse, which can be either part of the PMM Server or an external instance.
 
-- queries in buckets are aggregated by query ID, which means that all queries with the same query ID are represented by a single row in the Overview panel.
+- Queries in buckets are aggregated by query ID, which means that all queries with the same query ID are represented by a single row in the Overview panel.
 - Query IDs are calculated differently depending on the database technology and query source.
 **MySQL**   
 For MySQL, the query ID is based on the DIGEST value (for Performance Schema) or the MD5 checksum of the fingerprint (for slow log).
