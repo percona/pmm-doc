@@ -1,10 +1,5 @@
 # Set up PMM in High Availability (HA) mode
 
-!!! caution alert alert-warning "Important"
-    This feature is currently in [Technical Preview](https://docs.percona.com/percona-monitoring-and-management/details/glossary.html#technical-preview). Early adopters are advised to use this feature for testing purposes only as it is subject to change.
-
-## Importance of HA
-
 High Availability (HA) is a critical aspect of any monitoring system, as it ensures that your monitoring infrastructure remains resilient and continues to function seamlessly, even if one or more instances encounter issues. HA implements redundant systems that are ready to take over to minimize downtime and maintain continuous visibility into the performance and health of PMM.
 
 ## HA options PMM
@@ -48,6 +43,9 @@ Leader election will be managed using the Raft consensus algorithm, ensuring a s
 - HAProxy for managing and directing network traffic to the current leader PMM instance
 
 ### 4. Manual setup for HA
+
+!!! caution alert alert-warning "Important"
+    Manual setup for HA is feature is currently in [Technical Preview](https://docs.percona.com/percona-monitoring-and-management/details/glossary.html#technical-preview). Early adopters are advised to use this feature for testing purposes only as it is subject to change.
 
 If none of the above options work for your specific use case, consider setting up PMM in HA mode manually by following the steps below.
 
