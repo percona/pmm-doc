@@ -28,7 +28,8 @@ DIGEST (Performance Schema) and fingerprint (Slow Log) are both methods of repre
     INSERT INTO people VALUES ('John', 'Smith'); 
     ``` 
 ### Perfschema
-        - The query ID is based on the DIGEST (fingerprint) value from the `events_statements_summary_by_digest` table in the mysql database.
+
+- The query ID is based on the DIGEST (fingerprint) value from the `events_statements_summary_by_digest` table in the mysql database.
 
         - The DIGEST value for the same query may differ across MySQL versions. 
         - The DIGEST is generated from the query text without sensitive data (DIGEST_TEXT).
