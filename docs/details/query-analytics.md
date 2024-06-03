@@ -64,6 +64,7 @@ INSERT INTO people VALUES ('John', 'Smith');
 Let's answer some questions about the image above.   
 **Question:** Why does the query look slightly different in the Overview list?
 **Answer:** The query is the same, but sensitive data (e.g., 'Joe', 'John') is replaced by placeholders like "?", "?+", or "..." in the Overview list.
+
 **Question:** We triggered two INSERT queries, but there is only one row in the list overview. Why?   
 **Answer:** For the executed queries below, query ID will be the same which is why they are aggregated into a single row in the Overview list. However, in the Details panel, you should still see the actual count of how many times the query was executed. As you can see in the image below, the count for the INSERT query is 2 in the Details panel, which matches the number of times we executed the INSERT query.
 
