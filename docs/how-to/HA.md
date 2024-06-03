@@ -6,11 +6,9 @@
 
 ## Importance of HA
 
-Ensuring your monitoring system remains operational is crucial. Deploying PMM in a High Availability (HA) setup significantly increases its reliability.
+High Availability (HA) is a critical aspect of any monitoring system, as it ensures that your monitoring infrastructure remains resilient and continues to function seamlessly, even if one or more instances encounter issues. HA implements redundant systems that are ready to take over to minimize downtime and maintain continuous visibility into the performance and health of PMM.
 
 In an HA configuration, three PMM Server instances are configured: one as the leader and the others as followers. The leader server handles all client requests. If the leader fails, the followers take over, minimizing downtime.
-
-HA is about having redundant systems ready to take over seamlessly, ensuring that your monitoring system remains resilient even if one instance encounters issues.
 
 These PMM Server instances provide the following essential services:
 
@@ -18,23 +16,20 @@ These PMM Server instances provide the following essential services:
 - VictoriaMetrics: Stores Prometheus metrics.
 PostgreSQL: Stores PMM data like inventory and settings.
 
-
 To facilitate communication and coordination among the PMM Server instances, two key protocols are used:
 
 - **Gossip protocol**: Enables PMM servers to discover and share information about their states. It is used for managing the PMM server list and failure detection, ensuring that all instances are aware of the current state of the cluster.
 - **Raft protocol**: Ensures that PMM servers agree on a leader and that logs are replicated among all machines to maintain data consistency.
 
-
 ## HA options PMM
 
-Since HA can add complexity, before considering HA for PMM, keep in mind that: 
+Since HA can add complexity, before considering HA for PMM, keep in mind that:
 
 - Critical systems requiring immediate response benefit from sub-second failover HA, while less critical applications with some tolerance for downtime (seconds or minutes) have more flexibility.
 
 - PMM itself has a one-minute minimum alerting interval, so even with perfect HA, the fastest you'll know about an issue is one minute after it occurs.
 
-- consider your specific uptime needs, performance requirements, and potential data loss you can tolerate, while also keeping in mind PMM's limitations.
-
+- Consider your specific uptime needs, performance requirements, and potential data loss you can tolerate, while also keeping in mind PMM's limitations.
 
 ### 1. Simple Docker restart with data caching
 
@@ -44,23 +39,19 @@ This ensures that the PMM Server automatically restarts if a minor issue occurs.
 
 Once the connection is restored, the cached data is transferred to the PMM Server, ensuring no data loss during the restart process.
 
-This option is suitable for scenarios where the primary concern is the ability to investigate potential issues later. 
-
-However, it's important to note that this approach is limited by the underlying physical infrastructure. If the failure stems from a hardware issue, automatic recovery might be challenging.
+This option is suitable for scenarios where the primary concern is the ability to investigate potential issues later. However, it's important to note that this approach is limited by the underlying physical infrastructure. If the failure stems from a hardware issue, automatic recovery might be challenging.
 
 ### 2. Leverage Kubernetes for enhanced isolation
 
-For users running PMM in a Kubernetes (K8s) environment, PMM offers a Helm chart that facilitates running PMM with enhanced isolation. In this setup, even if the physical infrastructure encounters a problem, K8s automatically handles failover, migrating the PMM instance to a healthy node.
+If you are running PMM in a Kubernetes (K8s) environment, PMM offers a Helm chart that facilitates running PMM with enhanced isolation. In this setup, even if the physical infrastructure encounters a problem, K8s automatically handles failover, migrating the PMM instance to a healthy node.
 
 While restarts within K8s can take up to several minutes (depending on your infrastructure configuration), PMM's data caching ensures that information is preserved during this transition. Alerts will still be triggered to keep you informed about any issues that started during PMM's restart and continue after PMM is back.
 
 ### 3. Fully-clustered PMM in Kubernetes (coming Q3/2024)
 
-For users with large deployments, numerous instances, and distributed locations, we are currently a developing fully clustered PMM setup in Kubernetes, which is planned for release in Q3/2024. 
+If you have a large deployment with numerous instances and distributed locations, you might find that a fully clustered PMM setup in Kubernetes is better suited to your needs. We are actively developing this solution, which is slated for release in Q3/2024, to cater specifically to users managing extensive and complex monitoring environments.
 
-This option will provide a comprehensive HA solution, including clustered database setups (ClickHouse, VictoriaMetrics, and PostgreSQL).
-
-In this setup, multiple PMM instances will be configured, with one being the leader and the others as followers.
+This option will provide a comprehensive HA solution, including clustered database setups (ClickHouse, VictoriaMetrics, and PostgreSQL). In this setup, multiple PMM instances will be configured, with one being the leader and the others as followers.
 
 Leader election will be managed using the Raft consensus algorithm, ensuring a smooth transition of the leader role if the current leader fails. The architecture will consist of:
 
@@ -92,7 +83,6 @@ Before you start with the setup, define the necessary environment variables on e
 
 For all IP addresses, use the format `17.10.1.x`, and for all usernames and passwords, use a string format like `example`.
 
-
 | **Variable**        | **Description**
 | ------------------------------------------------| -------------------------------------------------------------------------------------------------------------------------------
 | `CH_HOST_IP`                                     | The IP address of the instance where the ClickHouse service is running or the desired IP address for the ClickHouse container within the Docker network, depending on your setup.</br></br>Example: `17.10.1.2`
@@ -109,7 +99,6 @@ For all IP addresses, use the format `17.10.1.x`, and for all usernames and pass
 | `PMM_PASSIVE2_IP`                                         | The IP address of the instance where the second passive PMM server is running or the desired IP address for your second passive PMM server container within the Docker network, depending on your setup.</br></br>Example: `17.10.1.7`
 | `PMM_PASSIVE2_NODE_ID`                                    | The unique ID for your second passive PMM server node.</br></br>Example: `pmm-server-passive2`
 | `PMM_DOCKER_IMAGE` &nbsp; &nbsp; &nbsp; &nbsp;                                      | The specific PMM Server Docker image for this guide.</br></br>Example: `percona/pmm-server:2`
-
 
 ??? example "Expected output"
         
