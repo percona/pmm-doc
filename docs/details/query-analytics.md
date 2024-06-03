@@ -58,7 +58,6 @@ INSERT INTO people VALUES ('John', 'Smith');
 **8:05:25:** The queries finish executing.
 
 **8:06:00:** The buckets are collected and sent to the PMM Server. Head back to QAN.
-
 **8:06:10:** Head back to QAN. Here, you should see two rows in the QAN Overview Panel (depending on the filter settings and time range):
 ![QAN MySQL Example 1 List Overview](../_images/PMM_Query_Analytics_Example1_Overview.png) 
 
