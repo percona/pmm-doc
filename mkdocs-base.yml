@@ -312,6 +312,7 @@ nav:
           - details/commands/index.md
           - details/commands/pmm-admin.md
           - details/commands/pmm-agent.md
+      - details/query-analytics.md
       - details/api.md
       - details/victoria-metrics.md
       - details/clickhouse.md
