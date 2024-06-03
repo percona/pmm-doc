@@ -4,8 +4,8 @@
 QAN consists of three main components:
 
 1. [Filters Panel](../get-started/./query-analytics.md#filters-panel)
-2. [Overview Panel](../get-started./query-analytics.md#overview-panel)
-3. [Details Panel](../get-started./query-analytics.md#details-panel)
+2. [Overview Panel](../get-started/./query-analytics.md#overview-panel)
+3. [Details Panel](../get-started/./query-analytics.md#details-panel)
 
 ## How QAN collects data?
 - QAN collects data every minute, on the minute (e.g. 8:15:00 and next at 8:16:00, etc.).
