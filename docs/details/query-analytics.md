@@ -22,7 +22,7 @@ QAN consists of three main components:
 **MySQL**   
 - For MySQL, the query ID is based on the DIGEST value (for Performance Schema) or the MD5 checksum of the fingerprint (for slow log).
 
-DIGEST (Perfschema) and fingerprint (Slowlog) are same. It is query without sensitive data. In case below both queries will have **same query ID**. The DIGEST value is generated from the query text without sensitive data.
+DIGEST (Performance Schema) and fingerprint (Slow Log) are both methods of representing a query without its sensitive data. In the case below, both queries will have the **same query ID** because the DIGEST value is generated from the query text after removing the sensitive data.
     ```sh
     INSERT INTO people VALUES ('Joe', 'Doe'); 
     INSERT INTO people VALUES ('John', 'Smith'); 
