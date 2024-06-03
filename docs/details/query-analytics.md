@@ -61,6 +61,7 @@ INSERT INTO people VALUES ('John', 'Smith');
 
 **8:06:10:** Here, you should see two rows in the QAN Overview Panel (depending on the filter settings and time range):
 ![QAN MySQL Example 1 List Overview](../_images/PMM_Query_Analytics_Example1_Overview.png) 
+
 Let's answer some questions about the image above.   
 **Question:** Why does the query look slightly different in the Overview list?
 
