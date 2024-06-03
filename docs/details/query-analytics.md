@@ -63,6 +63,7 @@ INSERT INTO people VALUES ('John', 'Smith');
 ![QAN MySQL Example 1 List Overview](../_images/PMM_Query_Analytics_Example1_Overview.png) 
 Let's answer some questions about the image above.   
 **Question:** Why does the query look slightly different in the Overview list?
+
 **Answer:** The query is the same, but sensitive data (e.g., 'Joe', 'John') is replaced by placeholders like "?", "?+", or "..." in the Overview list.
 
 **Question:** We triggered two INSERT queries, but there is only one row in the list overview. Why?   
