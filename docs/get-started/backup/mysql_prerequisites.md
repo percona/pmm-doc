@@ -37,4 +37,4 @@ Before creating MySQL backups, make sure to:
     - [`qpress`][PERCONA_QPRESS].
 
 !!! caution alert alert-warning "Important"
-       The versions of each must be compatible with the installed version of MySQL.
+       Make sure that the versions of xtrabackup, xbcloud, xbstream, and qpress are fully compatible with the currently installed version of MySQL on the system. 
