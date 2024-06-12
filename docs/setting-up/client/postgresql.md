@@ -80,7 +80,7 @@ Here are the benefits and drawbacks of each.
 
 |                      | <i class="uil uil-thumbs-up"></i> Benefits     | <i class="uil uil-thumbs-down"></i> Drawbacks
 |----------------------|------------------------------------------------|---------------------------------------------------
-| `pg_stat_statements` | 1. Part of official `postgresql-contrib` package. | 1. No aggregated statistics or histograms<br>2. No query examples <br>3. No query examples<br>4. No plan execution information
+| `pg_stat_statements` | 1. Part of official `postgresql-contrib` package. | 1. No aggregated statistics or histograms<br>2. No query examples <br>3. No plan execution information
 | `pg_stat_monitor`    | 1. Builds on `pg_stat_monitor` features.<br>2. Bucket-based aggregation. | 
 
 For a more detailed comparison of extensions, see [Comparison with pg_stat_statements](https://docs.percona.com/pg-stat-monitor/comparison.html) in the `pg_stat_monitor` documentation.
@@ -184,7 +184,7 @@ You can now [add the service](#add-service).
     !!! caution alert alert-warning
         It is important to set maximal length of query to 2048 characters or more for PMM to work properly.
 
-    You can get a list of other available settings with `SELECT * FROM pg_stat_monitor_settings;`.
+    You can get a list of other available settings with `SELECT * FROM pg_settings WHERE name LIKE 'pg_stat_monitor.%';`.
 
     Other important parameters are:
     ```ini
