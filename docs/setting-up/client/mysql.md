@@ -61,11 +61,10 @@ Here are the benefits and drawbacks of *Slow query log* and *Performance Schema*
 
 | Database server          | Versions       | Recommended source |
 |--------------------------|----------------|--------------------|
-| MySQL                    | 5.1-5.5        | Slow query log     |
-| MySQL                    | 5.6+           | Performance Schema |
+| MySQL                    | 8.0+           | Performance Schema |
 | MariaDB                  | 10.0+          | Performance Schema |
-| Percona Server for MySQL | 5.7, 8.0       | Slow query log     |
-| Percona XtraDB Cluster   | 5.6, 5.7, 8.0  | Slow query log     |
+| Percona Server for MySQL | 8.0+           | Slow query log     |
+| Percona XtraDB Cluster   | 8.0+           | Slow query log     |
 
 ### Slow query log
 
@@ -205,6 +204,9 @@ To use *Performance Schema*, set the variables below.
 | [`performance-schema-instrument`][perfschema-instrument]                                   | `'statement/%=ON'` | Configures Performance Schema instruments.
 | [`performance-schema-consumer-statements-digest`][perfschema-consumer-statements-digest]   | `ON`               | Configures the `statements-digest` consumer.
 | [`innodb_monitor_enable`][sysvar_innodb_monitor_enable]                                    | all                | Enables InnoDB metrics counters.
+
+!!! caution alert alert-warning "Important"
+    When dealing with long queries, increasing the value of the variable [performance_schema_max_digest_length](https://dev.mysql.com/doc/refman/8.0/en/performance-schema-system-variables.html#sysvar_performance_schema_max_digest_length) will avoid having query examples truncated.
 
 #### Examples
 

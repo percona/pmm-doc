@@ -8,6 +8,8 @@
 
 - [Data handling in PMM](personal_data_handling): Personal and confidential data handling in PMM.
 
+- [QAN under the hood](query-analytics.md): The Query Analytics dashboard provides insights into query execution and time allocation, helping you analyze database queries over time. It enables you to optimize database performance and identify and resolve issues at their source.
+
 - [Developing Advisor checks](develop-checks/index.md): Database health assessments.
 
 - [Dashboards reference](dashboards/index.md): A complete list of dashboards by category, with screenshots.
