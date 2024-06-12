@@ -28,22 +28,44 @@ Run the example codes below in a `mongo` session to:
 
 ```{.javascript data-prompt=">"}
  db.getSiblingDB("admin").createRole({
-    role: "explainRole",
-    privileges: [{
-        resource: {
-            db: "",
-            collection: ""
-        },
-        actions: [
-            "listIndexes",
-            "listCollections",
-            "dbStats",
-            "dbHash",
+   "role": "explainRole",
+   "privileges": [
+      {
+         "resource": {
+            "db": "",
+            "collection": ""
+         },
+         "actions": [
             "collStats",
+            "dbHash",
+            "dbStats",
+            "find",
+            "listIndexes",
+            "listCollections"
+         ]
+     },
+     {
+         "resource": {
+            "db": "",
+            "collection": "system.profile"
+         },
+         "actions": [
+            "dbStats",
+            "collStats",
+            "indexStats"
+         ]
+      },
+      {
+         "resource": {
+            "db": "",
+            "collection": "system.version"
+         },
+         "actions": [
             "find"
-        ]
-    }],
-    roles: []
+         ]
+      }
+   ],
+   "roles": []
 })
 ```    
 
@@ -79,18 +101,6 @@ Run the example codes below in a `mongo` session to:
         { "db" : "admin", "role" : "pbmAnyAction" }
     ]
 })
- db.getSiblingDB("admin").updateUser("pmm", {
-    roles: [
-        { role: "explainRole", db: "admin" },
-        { role: "clusterMonitor", db: "admin" },
-        { role: "read", db: "local" },
-        { "db" : "admin", "role" : "readWrite", "collection": "" },
-        { "db" : "admin", "role" : "backup" },
-        { "db" : "admin", "role" : "clusterMonitor" },
-        { "db" : "admin", "role" : "restore" },
-        { "db" : "admin", "role" : "pbmAnyAction" }
-    ]
-})
 ```
 
 ### Permissions for advanced metrics
@@ -111,25 +121,6 @@ actions : [
 }
 ```
 
-If the role `explainRole` already exists, then you can use the following command to provide additional privileges:
-
-```{.javascript data-prompt=">"}
- db.runCommand({
-    grantPrivilegesToRole: "explainRole",
-    privileges: [{
-        "resource": {
-            "db": "",
-            "collection": "system.profile"
-        },
-        "actions": [
-            "indexStats",
-            "dbStats",
-            "collStats"
-        ]
-    }]
-})
-```
-
 ## Profiling
 
 To use PMM Query Analytics, you must turn on MongoDB's [profiling feature].
@@ -140,7 +131,7 @@ You can set profiling:
 - when starting MongoDB, by passing arguments to `mongod` on the command line;
 - until the next database instance restart, by running a command in a `mongo` session.
 
-!!! note alert alert-primary ""
+!!! note alert alert-primary "Important"
 Profiling is disabled by default as it may negatively impact the performance of the database server under specific circumstances, such as when busy servers are profiling all queries.
 
 ### Set profiling in the configuration file
@@ -189,27 +180,16 @@ For example, to enable the profiler in the `testdb`, run this:
 > db.setProfilingLevel(2, {slowms: 0})
 ```
 
-!!! note alert alert-primary ""
+!!! note alert alert-primary "Important"
     If you have already [added the MongoDB service to PMM](#add-service), make sure to restart the PMM agent service after adjusting the profiling level.
 
 ## Add service
 
-"After configuring your database server, you can add a MongoDB service either through the user interface or via the command line.
+After configuring your database server, you can add a MongoDB service either through the user interface or via the command line.
 
 !!! caution alert alert-warning "Important"
 To monitor MongoDB sharded clusters, PMM requires access to all cluster components. Make sure to add all the config servers, shards, and at least 1-2 mongos routers. Otherwise, PMM will not be able to correctly collect metrics and populate dashboards. 
 Keep in mind that adding all mongos routers may cause excessive overhead.
-
-### With the user interface
-
-1. Select {{icon.configuration}} *Configuration* → {{icon.inventory}} *Inventory*.
-
-2. Select *MongoDB -- Add a remote instance*.
-
-3. Enter or select values for the fields.
-
-4. Click *Add service*.
-
 
 ### On the command line
 
@@ -233,19 +213,8 @@ pmm-admin add mongodb \
 ```sh
 pmm-admin add mongodb \
 --username=pmm_mongodb --password=password \
-mongo 127.0.0.1:27017
-```
-
-```sh
-pmm-admin add mongodb \
---username=pmm_mongodb --password=password \
---service-name=mymongosvc --host=127.0.0.1 --port=27017
-```
-
-#### Connect via UNIX socket
-
-```sh
-pmm-admin add mongodb --socket=/tmp/mongodb-27017.sock
+--service-name=mymongosvc --host=127.0.0.1 --port=27017 \
+--enable-all-collectors
 ```
 
 #### Connecting via SSL/TLS
@@ -254,9 +223,11 @@ pmm-admin add mongodb --socket=/tmp/mongodb-27017.sock
 pmm-admin add mongodb --tls \
 --tls-certificate-key-file=PATHTOCER \
 --tls-certificate-key-file-password=IFPASSWORDTOCERTISSET \
---tls-ca-file=PATHTOCACERT
---authentication-mechanism=AUTHENTICATION-MECHANISM
---authentication-database=AUTHENTICATION-DATABASE
+--tls-ca-file=PATHTOCACERT \
+--authentication-mechanism=AUTHENTICATION-MECHANISM \
+--authentication-database=AUTHENTICATION-DATABASE \
+--cluster=mycluster \
+--enable-all-collectors
 ```
 
 where:
@@ -267,18 +238,19 @@ where:
 - `AUTHENTICATION-MECHANISM`: Authentication mechanism. Default is empty. Use `MONGODB-X509` for SSL certificates.
 - `AUTHENTICATION-DATABASE`: Authentication database. Default is empty. Use `$external` for SSL certificates.
 
+### With the PMM interface
 
-## Check the service
-
-### With the user interface
+Use this option when you don't have direct access to the underlying host to install pmm-agent locally.
 
 1. Select {{icon.configuration}} *Configuration* → {{icon.inventory}} *Inventory*.
-2. In the *Services* tab, verify the *Service name*, *Addresses*, and any other relevant values used when adding the service.
-3. In the *Options* column, expand the *Details* section and check that the Agents are using the desired data source.
-4. If your MongoDB instance is configured to use TLS, click on the **Use TLS for database connection** check box and fill in TLS certificates and keys.
-If you use TLS, the authentication mechanism is automatically set to `MONGODB-X509`.
 
-![!](../../_images/PMM_Add_Instance_MongoDB_TLS.jpg)
+2. Select *MongoDB -- Add a remote instance*.
+
+3. Enter or select values for the fields.
+
+4. Click *Add service*.
+
+## Check the service
 
 ### On the command line
 
@@ -287,6 +259,16 @@ Look for your service in the output of this command.
 ```sh
 pmm-admin inventory list services --service-type=mongodb
 ```
+
+### With the PMM interface
+
+1. Select {{icon.configuration}} *Configuration* → {{icon.inventory}} *Inventory*.
+2. In the *Services* tab, verify the *Service name*, *Addresses*, and any other relevant values used when adding the service.
+3. In the *Options* column, expand the *Details* section and check that the Agents are using the desired data source.
+4. If your MongoDB instance is configured to use TLS, click on the **Use TLS for database connection** check box and fill in TLS certificates and keys.
+If you use TLS, the authentication mechanism is automatically set to `MONGODB-X509`.
+
+![!](../../_images/PMM_Add_Instance_MongoDB_TLS.jpg)
 
 ### Check data
 
@@ -302,15 +284,6 @@ pmm-admin inventory list services --service-type=mongodb
 
 ## Remove service
 
-### With the user interface
-
-1. Select {{icon.configuration}} *Configuration* → {{icon.inventory}} *Inventory*.
-2. In the first column, click the tick box for the service you want to remove.
-3. Click <i class="uil uil-trash-alt"></i> *Delete*.
-4. On the *Confirm action* dialog window:
-    1. (Optional) Select *Force mode* to also delete associated agents.
-    2. Click *Proceed*.
-
 ### On the command line
 
 ```sh
@@ -318,6 +291,17 @@ pmm-admin remove mongodb SERVICE_NAME
 ```
 
 - `SERVICE_NAME`: The name the service was added as. (Find it with `pmm-admin list`.)
+  
+### With the PMM interface
+
+Use this option only top remove agents installed through the PMM interface.
+
+1. Select {{icon.configuration}} *Configuration* → {{icon.inventory}} *Inventory*.
+2. In the first column, click the tick box for the service you want to remove.
+3. Click <i class="uil uil-trash-alt"></i> *Delete*.
+4. On the *Confirm action* dialog window:
+    1. (Optional) Select *Force mode* to also delete associated agents.
+    2. Click *Proceed*.
 
 !!! seealso alert alert-info "See also"
     - [`pmm-admin add mongodb`](../../details/commands/pmm-admin.md#mongodb)

@@ -329,3 +329,9 @@ To share a link for Query Analytics, use *Copy Link*. It copies the link to the 
 
 [SLOW_QUERY_LOG]: ../setting-up/client/mysql.md#slow-query-log
 [PERFORMANCE_SCHEMA]: ../setting-up/client/mysql.md#performance-schema
+
+## QAN under the hood
+
+To understand how metrics are calculated and to learn more details about QAN, see 
+
+[QAN under the hood](../details/query-analytics.md).

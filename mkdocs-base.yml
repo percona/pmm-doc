@@ -123,9 +123,9 @@ plugins:
       - "setting-up/client/docker.md"
   # https://github.com/orzih/mkdocs-with-pdf
   with-pdf:
-    output_path: "_pdf/PerconaMonitoringAndManagement-2.41.2.pdf"
+    output_path: "_pdf/PerconaMonitoringAndManagement-2.42.0.pdf"
     cover_title: "Percona Monitoring and Management Documentation"
-    cover_subtitle: 2.41.2 (Mar 20, 2024)
+    cover_subtitle: 2.42.0 (Jun 11, 2024)
     author: "Percona Technical Documentation Team"
     cover_logo: docs/_images/Percona_Logo_Color.png
     custom_template_path: _resources/templates
@@ -312,6 +312,7 @@ nav:
           - details/commands/index.md
           - details/commands/pmm-admin.md
           - details/commands/pmm-agent.md
+      - details/query-analytics.md
       - details/api.md
       - details/victoria-metrics.md
       - details/clickhouse.md
@@ -341,6 +342,7 @@ nav:
   - faq.md
   - Release notes:
       - release-notes/index.md
+      - "PMM 2.42.0": release-notes/2.42.0.md    
       - "PMM 2.41.2": release-notes/2.41.2.md
       - "PMM 2.41.1": release-notes/2.41.1.md
       - "PMM 2.41.0": release-notes/2.41.0.md

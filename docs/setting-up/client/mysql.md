@@ -61,11 +61,10 @@ Here are the benefits and drawbacks of *Slow query log* and *Performance Schema*
 
 | Database server          | Versions       | Recommended source |
 |--------------------------|----------------|--------------------|
-| MySQL                    | 5.1-5.5        | Slow query log     |
-| MySQL                    | 5.6+           | Performance Schema |
+| MySQL                    | 8.0+           | Performance Schema |
 | MariaDB                  | 10.0+          | Performance Schema |
-| Percona Server for MySQL | 5.7, 8.0       | Slow query log     |
-| Percona XtraDB Cluster   | 5.6, 5.7, 8.0  | Slow query log     |
+| Percona Server for MySQL | 8.0+           | Slow query log     |
+| Percona XtraDB Cluster   | 8.0+           | Slow query log     |
 
 ### Slow query log
 
