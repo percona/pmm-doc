@@ -24,7 +24,7 @@ This option is suitable for scenarios where the primary concern is the ability t
 
 ### 2. Leverage Kubernetes for enhanced isolation
 
-If you are running PMM in a Kubernetes (K8s) environment, PMM offers a Helm chart that facilitates running PMM with enhanced isolation. See [Setting up PMM Server with Docker](../setting-up/server/helm.md).
+If you are running PMM in a Kubernetes (K8s) environment, PMM offers a Helm chart that facilitates running PMM with enhanced isolation. See [Setting up PMM Server with Helm](../setting-up/server/helm.md).
 
 In this setup, even if the physical infrastructure encounters a problem, K8s automatically handles failover, migrating the PMM instance to a healthy node. 
 
