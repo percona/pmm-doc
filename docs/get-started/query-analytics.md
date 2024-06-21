@@ -299,9 +299,9 @@ PMM has integrated support for [pg_stat_monitor](https://docs.percona.com/pg-sta
 
 ### PostreSQL 9.x
 
-Starting with PMM 2.43.0, `pg_query_go` package version 5. This version is essential for parsing PostgreSQL queries in QAN,providing enhanced functionality, and enabling us to upgrade other important dependencies.
+PMM 2.43.0 upgraded the 'pg_query_go' package to version 5. This version helps parse PostgreSQL queries in QAN, provides improved functionality, and enables subsequent upgrades of important dependencies.
 
-However, this version does not support listing PostgreSQL database tables for versions 9.4, 9.5, and 9.6 in QAN. Since all PostgreSQL 9.x versions have already reached their end-of-life status, we recommend upgrading to a supported version of PostgreSQL.
+However, this new version does not support listing PostgreSQL database tables for versions 9.4, 9.5, and 9.6 in QAN. Since all PostgreSQL 9.x versions have already reached their end-of-life status, we recommend upgrading to a supported version of PostgreSQL.
 
 If you're looking to upgrade, you can easily [install the latest version of Percona Distribution for PostgreSQL](https://docs.percona.com/postgresql/13/installing.html). 
 
