@@ -292,19 +292,29 @@ PMM has integrated support for [pg_stat_monitor](https://docs.percona.com/pg-sta
 - Enhanced consistency with `pg_stat_statements` so that the `pg_stat_monitor` view has identical column names, columns, and data types as `pg_stat_statements` for every major version of PostgreSQL from versions 11 to 15.
 - A bucket status indication (done vs. current) eliminates the need for the tool to evaluate bucket status and facilitates accurate data display.
 - The generation of a unique ID for a query makes it easier to monitor query planning, execution, and performance regardless of version, database, user, or schema.
-- It has backward compatibility with your historical data (data collected by older PMM and PGSM)
+- Backward compatibility with your historical data (data collected by older PMM and PGSM)
 - More detailed histogram ranges
 - Security improvements
-- All previous PGSM versions are still supported
+- Support for all previous PGSM versions
 
-!!! note alert alert-primary "Postgres 15"
-    You will probably need to grant more permissions to the user in PostgreSQL 15. An error message will appear in the `pmm-agent` log if more permissions are required. This behavior is pertaining to PostgreSQL and not PMM.
+### PostreSQL 9.x
 
-    You can use this query:
+Starting with PMM 2.43.0, `pg_query_go` package version 5. This version is essential for parsing PostgreSQL queries in QAN,providing enhanced functionality, and enabling us to upgrade other important dependencies.
+
+However, this version does not support listing PostgreSQL database tables for versions 9.4, 9.5, and 9.6 in QAN. Since all PostgreSQL 9.x versions have already reached their end-of-life status, we recommend upgrading to a supported version of PostgreSQL.
+
+If you're looking to upgrade, you can easily [install the latest version of Percona Distribution for PostgreSQL](https://docs.percona.com/postgresql/13/installing.html). 
+
+
+### PostreSQL 15
+You will probably need to grant more permissions to the user in PostgreSQL 15. An error message will appear in the `pmm-agent` log if more permissions are required. This behavior pertains to PostgreSQL and not PMM.
+
+You can use this query:
     ```
     CREATE USER pmm WITH SUPERUSER ENCRYPTED PASSWORD 'USERNAME';
     ```
     where `USERNAME` should be replaced by the user.
+
 
 ## Query Analytics for MongoDB
 
