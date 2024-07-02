@@ -108,7 +108,7 @@ Run the example codes below in a `mongo` session to:
 To fetch advanced metrics like usage statistics for collection and indexes, use the following to provide additional privileges to an existing PMM user:
 
 ```{.javascript data-prompt=">"}
-db.updateRole(
+db.getSiblingDB("admin").updateRole(
   "explainRole",
   {
     privileges: [
@@ -132,7 +132,8 @@ You can set profiling:
 - until the next database instance restart, by running a command in a `mongo` session.
 
 !!! note alert alert-primary "Important"
-Profiling is disabled by default as it may negatively impact the performance of the database server under specific circumstances, such as when busy servers are profiling all queries.
+    
+    Profiling is disabled by default as it may negatively impact the performance of the database server under specific circumstances, such as when busy servers are profiling all queries.
 
 ### Set profiling in the configuration file
 
