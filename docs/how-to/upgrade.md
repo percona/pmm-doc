@@ -19,10 +19,9 @@ This sequential upgrading process ensures that PMM's internal components are mig
 ## Update the Server
 
 !!! caution alert alert-warning "Known issues for older versions"
-    - Upgrading to PMM 2.32.0 from older versions fails. We recommend upgrading directly to2.33 or latest version. For more information, see the [troubleshooting topic](../how-to/troubleshoot.md#pmm-server-fails-while-upgrading).
+    - Upgrading to PMM 2.32.0 from older versions fails. We recommend upgrading directly to 2.33 or the latest version. For more information, see the [troubleshooting topic](../how-to/troubleshoot.md#pmm-server-fails-while-upgrading).
 
-    - PMM versions prior to 2.33.0 may not show the latest versions available with instances created from the AWS marketplace in specific environments, including AWS. For solution, see the [troubleshooting](../how-to/troubleshoot.md#pmm-server-not-showing-latest-versions-available-with-the-instances-created-from-aws) section.
-
+    - PMM versions prior to 2.33.0 may not show the latest versions available with instances created from the AWS marketplace in specific environments, including AWS. For a solution, see the [troubleshooting](../how-to/troubleshoot.md#pmm-server-not-showing-latest-versions-available-with-the-instances-created-from-aws) section.
 
 Client and server components are installed and updated separately.
 
@@ -38,46 +37,55 @@ The panel shows:
 - whether the server is up to date;
 - the last time a check was made for updates.
 
-Click the refresh button to manually check for updates.
-
-If one is available, click the update button to update to the version indicated.
+Click the refresh button to manually check for updates. If an update is available, click the Update button to install the indicated version.
 
 !!! seealso alert alert-info "See also"
     [PMM Server Docker upgrade](../setting-up/server/docker.md#upgrade)
 
 ## Updating a PMM-Agent
 
-### Package Manager
+There are two primary methods to update the PMM Agent:
 
-The most convenient and efficient way to manage the installation and updates of the PMM Agent is by leveraging your operating system's package manager. Percona provides the [percona-release](https://docs.percona.com/percona-software-repositories/installing.html) package, which helps you install Percona software, including the PMM Agent.```
+1. Using your operating system's package manager
+2. Updating from a tarball
 
-PMM Agent is available from the `tools` repository. To deploy a new version of the Agent, you have two options:
-- If you are using a package manager, you can install the latest version of the PMM Agent directly.
-- If you initially installed the PMM Agent from a tarball, you can replace the currently installed package with the latest version.
+The package manager method is generally more convenient and efficient.
 
-For example, to install the latest version of the PMM Agent on Red Hat or its derivatives, you can use the following commands:
-```
-percona-release enable tools
-yum update pmm2-client
-```
-By running these commands, your existing agent configuration will be preserved during the update process.
+### 1. Package Manager method
 
-To deploy a specific version, you can check the available versions and then provide the full name of the package, for example:
-```
-yum --showduplicates search pmm2-client
-pmm2-client-2.36.0-6.el7.x86_64 : PMM-agent
-pmm2-client-2.37.0-6.el7.x86_64 : PMM-agent
-pmm2-client-2.37.1-6.el7.x86_64 : PMM-agent
+Percona provides the [percona-release](https://docs.percona.com/percona-software-repositories/installing.html) package, which helps you install Percona software, including the PMM Agent. The PMM Agent is available from the `pmm-client` repository.
 
-yum update pmm2-client-2.37.1-6.el7.x86_64
-```
+To deploy a new version of the Agent via package manager, simply replace the currently installed package with the latest version of the PMM Agent or with a specific version.
 
-### Tarball
+#### Install the latest PMM Agent version
 
-PMM-Agent can also be updated from tarball:
+Run the commands below to install the latest PMM Agent version via package manager and keep your existing Agent configuration during the update process.
+
+For example, to install the latest version of the PMM Agent on Red Hat or its derivatives:
+
+    ```
+    percona-release enable tools
+    yum update pmm2-client
+    ```
+#### Deploy a specific version
+
+To deploy a specific version of the PMM Agent via package manager, check the available versions and then provide the full name of the package. For example:
+
+    ```
+    yum --showduplicates search pmm2-client
+    pmm2-client-2.36.0-6.el7.x86_64 : PMM-agent
+    pmm2-client-2.37.0-6.el7.x86_64 : PMM-agent
+    pmm2-client-2.37.1-6.el7.x86_64 : PMM-agent
+
+    yum update pmm2-client-2.37.1-6.el7.x86_64
+    ```
+
+### Tarball method
+
+If you initially installed the PMM Agent from a tarball, you can update it by replacing the currently installed package with the latest version:
 
  1. Download `tar.gz` with `pmm2-client`.
- 2. Extract it.
+ 2. Extract the tarball.
  3. Run `./install_tarball` script with the `-u` flag.
 
 !!! caution alert alert-warning "Important"
