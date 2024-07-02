@@ -303,7 +303,7 @@ PMM 2.43.0 upgraded the 'pg_query_go' package to version 5. This version helps p
 
 However, this new version does not support listing PostgreSQL database tables for versions 9.4, 9.5, and 9.6 in QAN. Since all PostgreSQL 9.x versions have already reached their end-of-life status, we recommend upgrading to a supported version of PostgreSQL.
 
-If you're looking to upgrade, you can easily [install the latest version of Percona Distribution for PostgreSQL](https://docs.percona.com/postgresql/13/installing.html). 
+If you're looking to upgrade, you can easily [install the latest version of Percona Distribution for PostgreSQL](https://docs.percona.com/postgresql/16/installing.html). 
 
 
 ### PostreSQL 15
