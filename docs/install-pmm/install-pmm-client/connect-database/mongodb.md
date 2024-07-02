@@ -90,12 +90,14 @@ db.getSiblingDB("admin").updateRole(
   "explainRole",
   {
     privileges: [
-	@@ -132,7 +132,8 @@ You can set profiling:
-- until the next database instance restart, by running a command in a `mongo` session.
-
-!!! note alert alert-primary "Important"
-
-    Profiling is disabled by default as it may negatively impact the performance of the database server under specific circumstances, such as when busy servers are profiling all queries.
+      {
+        resource: { db: "", collection: "" },
+        actions: ["collStats", "dbStats", "indexStats"]
+      }
+    ]
+  }
+)
+```
 
 ## Profiling
 
