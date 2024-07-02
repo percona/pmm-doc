@@ -117,6 +117,8 @@ You can get PMM Server logs with either of these methods:
 
 In a browser, visit `https://<address-of-your-pmm-server>/logs.zip`.
 
+The default size of each log file delivered by this endpoint is limited to 50,000 lines. However, you can override this setting by adding a `line-count` parameter to the endpoint. Read more at in the [API documentation](https://percona-pmm.readme.io/reference/logs).
+
 **From Help menu**
 
 1. Select <i class="uil uil-question-circle"></i> *Help* → <i class="uil uil-download-alt"></i> *PMM Logs*.
