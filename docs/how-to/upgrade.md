@@ -64,7 +64,7 @@ Run the commands below to install the latest PMM Agent version via package manag
 For example, to install the latest version of the PMM Agent on Red Hat or its derivatives:
 
     ```
-    percona-release enable tools
+    percona-release enable pmm2-client
     yum update pmm2-client
     ```
 #### Deploy a specific version
