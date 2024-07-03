@@ -2,7 +2,7 @@
 
 The **Settings** page is where you configure PMM.
 
-Open the **Settings** page from the [main menu](../details/interface.md#main-menu) with <i class="uil uil-cog"></i> **Configuration** → <i class="uil uil-setting"></i> **Settings**. The page opens with the **Metrics Resolution** settings tab selected.
+Open the **Settings** page from the [main menu](../details/interface.md#main-menu) with {{icon.configuration}} **Configuration** → <i class="uil uil-setting"></i> **Settings**. The page opens with the **Metrics Resolution** settings tab selected.
 
 ![!image](../_images/PMM_Settings_Metrics_Resolution.jpg)
 
@@ -10,6 +10,7 @@ On the left are the selector tabs:
 
 - [Configure](#configure)
   - [Metrics resolution](#metrics-resolution)
+    - [Configure metrics resolution per-service](#configure-metrics-resolution-per-service)
   - [Advanced Settings](#advanced-settings)
     - [Data Retention](#data-retention)
     - [Telemetry](#telemetry)
@@ -57,6 +58,20 @@ Values for the *Custom* preset can be entered as values, or changed with the arr
 !!! note alert alert-primary ""
     If there is poor network connectivity between PMM Server and PMM Client, or between PMM Client and the database server being monitored, scraping every second may not be possible when the network latency is greater than 1 second.
 
+### Configure metrics resolution per-service
+
+While changing the metrics resolution in the settings tab applies to all services, you can also configure metrics resolutions on a per-service basis by setting the resolution settings for each exporter individually via the API.
+
+Customizing the resolution settings for individual services enables you to fine-tune your PMM setup to balance data granularity and resource consumption.
+
+This enables you to:
+
+- Allocate resources efficiently by focusing on high-resolution data for key services
+- Reduce storage requirements by adjusting resolution for less critical components
+- Align your monitoring setup with the specific needs of your environment
+
+For information on enabling this feature via API, see the [**Change Postgres Exporter endpoint**](https://percona-pmm.readme.io/reference/changepostgresexporter) in the API documentation.
+
 ## Advanced Settings
 
 ![!](../_images/PMM_Settings_Advanced_Settings.jpg)
@@ -72,10 +87,10 @@ Specifically, gathering this information helps determine if we need to release p
 
 PMM Telemetry is based on data collected by various PMM components and stored inside PMM server 
 
--!!! note alert alert-primary ""
+!!! note alert alert-primary ""
     When PMM is installed, telemetry is not sent immediately. Before the first telemetry report is generated, PMM provides users with a 24-hour grace period to disable telemetry.
 
-To see the metrics being collected by telemetry, from the [main menu](../details/interface.md#main-menu) navigate to <i class="uil uil-cog"></i> *Configuration* → <i class="uil uil-setting"></i> *Settings* → *Advanced Settings* → *Telemetry* and hover over the exclamation mark.
+To see the metrics being collected by telemetry, from the [main menu](../details/interface.md#main-menu) navigate to {{icon.configuration}} *Configuration* → *Settings* → *Advanced Settings* → *Telemetry* and hover over the exclamation mark.
 
 ![!image](../_images/PMM_Settings_Advanced_Settings_Telemetry.png)
 

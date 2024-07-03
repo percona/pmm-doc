@@ -64,9 +64,9 @@ You can store data from your PMM in:
 
     * For PMM versions prior to 2.27.0:
 
-        ```sh
-        docker exec -t pmm-server bash -c 'grafana-cli --homepath /usr/share/grafana --configOverrides cfg:default.paths.data=/srv/grafana admin reset-admin-password newpass'
-        ```
+    ```sh
+    docker exec -t pmm-server bash -c 'grafana-cli --homepath /usr/share/grafana --configOverrides cfg:default.paths.data=/srv/grafana admin reset-admin-password newpass'
+    ```
 
 5. Visit `https://localhost:443` to see the PMM user interface in a web browser. (If you are accessing the docker host remotely, replace `localhost` with the IP or server name of the host.)
        
@@ -373,7 +373,9 @@ The following variables are also supported but values passed are not verified by
 | --------------------------------------------------------------- | ------------------------------------------------------
 | `_`, `HOME`, `HOSTNAME`, `LANG`, `PATH`, `PWD`, `SHLVL`, `TERM` | Default environment variables.
 | `GF_*`                                                          | [Grafana](https://grafana.com/docs/grafana/latest/setup-grafana/configure-grafana/) environment variables.
-| `VM_*`                                                          | [VictoriaMetrics'](https://docs.victoriametrics.com/Single-server-VictoriaMetrics.html#environment-variables) environment variables.
+| `VM_*`                                                          | [VictoriaMetrics'](https://docs.victoriametrics.com/Single-server-VictoriaMetrics.html#environment-variables) environment variables. 
+Note that environment variables inherit their names from the command line flags. To find out which variables are available to you, see the full list of [CLI command flags](https://docs.victoriametrics.com/Single-server-VictoriaMetrics.html#list-of-command-line-flags). 
+
 | `SUPERVISOR_`                                                   | `supervisord` environment variables.
 | `KUBERNETES_`                                                   | Kubernetes environment variables.
 | `MONITORING_`                                                   | Kubernetes monitoring environment variables.

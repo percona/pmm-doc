@@ -43,6 +43,13 @@ CREATE USER 'pmm'@'127.0.0.1' IDENTIFIED BY 'pass' WITH MAX_USER_CONNECTIONS 10;
 GRANT SELECT, PROCESS, REPLICATION CLIENT, RELOAD ON *.* TO 'pmm'@'127.0.0.1';
 ```
 
+**On MariaDB 10.5.8+**
+
+```sql
+CREATE USER 'pmm'@'127.0.0.1' IDENTIFIED BY 'pass' WITH MAX_USER_CONNECTIONS 10;
+GRANT SELECT, PROCESS, REPLICA MONITOR, RELOAD *.* TO 'pmm'@'127.0.0.1';
+```
+
 
 ## Choose and configure a source
 
@@ -61,11 +68,10 @@ Here are the benefits and drawbacks of *Slow query log* and *Performance Schema*
 
 | Database server          | Versions       | Recommended source |
 |--------------------------|----------------|--------------------|
-| MySQL                    | 5.1-5.5        | Slow query log     |
-| MySQL                    | 5.6+           | Performance Schema |
+| MySQL                    | 8.0+           | Performance Schema |
 | MariaDB                  | 10.0+          | Performance Schema |
-| Percona Server for MySQL | 5.7, 8.0       | Slow query log     |
-| Percona XtraDB Cluster   | 5.6, 5.7, 8.0  | Slow query log     |
+| Percona Server for MySQL | 8.0+           | Slow query log     |
+| Percona XtraDB Cluster   | 8.0+           | Slow query log     |
 
 ### Slow query log
 
@@ -205,6 +211,9 @@ To use *Performance Schema*, set the variables below.
 | [`performance-schema-instrument`][perfschema-instrument]                                   | `'statement/%=ON'` | Configures Performance Schema instruments.
 | [`performance-schema-consumer-statements-digest`][perfschema-consumer-statements-digest]   | `ON`               | Configures the `statements-digest` consumer.
 | [`innodb_monitor_enable`][sysvar_innodb_monitor_enable]                                    | all                | Enables InnoDB metrics counters.
+
+!!! caution alert alert-warning "Important"
+    When dealing with long queries, increasing the value of the variable [performance_schema_max_digest_length](https://dev.mysql.com/doc/refman/8.0/en/performance-schema-system-variables.html#sysvar_performance_schema_max_digest_length) will avoid having query examples truncated.
 
 #### Examples
 
@@ -370,16 +379,16 @@ Default query source (`slowlog`), service name (`{node name}-mysql`), and servic
 pmm-admin add mysql --username=pmm --password=pass
 ```
 
-Slow query log source and log size limit (1 gigabyte), service name (`MYSQL_NODE`) and service address/port (`191.168.1.123:3306`).
+Slow query log source and log size limit (1 gigabyte), service name (`MYSQL_SERVICE`) and service address/port (`191.168.1.123:3306`).
 
 ```sh
-pmm-admin add mysql --query-source=slowlog --size-slow-logs=1GiB --username=pmm --password=pass MYSQL_NODE 192.168.1.123:3306
+pmm-admin add mysql --query-source=slowlog --size-slow-logs=1GiB --username=pmm --password=pass MYSQL_SERVICE 192.168.1.123:3306
 ```
 
-Slow query log source, disabled log management (use [`logrotate`][LOGROTATE] or some other log management tool), service name (`MYSQL_NODE`) and service address/port (`191.168.1.123:3306`).
+Slow query log source, disabled log management (use [`logrotate`][LOGROTATE] or some other log management tool), service name (`MYSQL_SERVICE`) and service address/port (`191.168.1.123:3306`).
 
 ```sh
-pmm-admin add mysql --query-source=slowlog --size-slow-logs=-1GiB --username=pmm --password=pass MYSQL_NODE 192.168.1.123:3306
+pmm-admin add mysql --query-source=slowlog --size-slow-logs=-1GiB --username=pmm --password=pass MYSQL_SERVICE 192.168.1.123:3306
 ```
 
 Default query source (`slowlog`), service name (`{node}-mysql`), connect via socket.
@@ -390,16 +399,16 @@ pmm-admin add mysql --username=pmm --password=pass --socket=/var/run/mysqld/mysq
 
 #### Performance Schema
 
-Performance schema query source, service name (`MYSQL_NODE`) and default service address/port (`127.0.0.1:3306`).
+Performance schema query source, service name (`MYSQL_SERVICE`) and default service address/port (`127.0.0.1:3306`).
 
 ```sh
-pmm-admin add mysql --query-source=perfschema --username=pmm --password=pass MYSQL_NODE
+pmm-admin add mysql --query-source=perfschema --username=pmm --password=pass MYSQL_SERVICE
 ```
 
-Performance schema query source, service name (`MYSQL_NODE`) and default service address/port (`127.0.0.1:3306`) specified with flags.
+Performance schema query source, service name (`MYSQL_SERVICE`) and default service address/port (`127.0.0.1:3306`) specified with flags.
 
 ```sh
-pmm-admin add mysql --query-source=perfschema --username=pmm --password=pass --service-name=MYSQL_NODE --host=127.0.0.1 --port=3306
+pmm-admin add mysql --query-source=perfschema --username=pmm --password=pass --service-name=MYSQL_SERVICE--host=127.0.0.1 --port=3306
 ```
 
 #### Identifying services
@@ -436,7 +445,7 @@ If your MySQL instance is configured to use TLS:
 
 ### PMM user interface
 
-1. Select <i class="uil uil-cog"></i> *Configuration* → {{icon.inventory}} *Inventory*.
+1. Select {{icon.configuration}} *Configuration* → {{icon.inventory}} *Inventory*.
 2. In the *Services* tab, verify the *Service name*, *Addresses*, and any other relevant information in the form.
 3. In the *Options* column, expand the *Details* section and check that the Agents are using the desired data source.
 
