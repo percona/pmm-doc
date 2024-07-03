@@ -73,11 +73,15 @@ To deploy a specific version of the PMM Agent via package manager, check the ava
 
     ```
     yum --showduplicates search pmm2-client
-    pmm2-client-2.36.0-6.el7.x86_64 : PMM-agent
-    pmm2-client-2.37.0-6.el7.x86_64 : PMM-agent
-    pmm2-client-2.37.1-6.el7.x86_64 : PMM-agent
+    pmm2-client-2.39.0-6.el9.x86_64 : Percona Monitoring and Management Client (pmm-agent)
+    pmm2-client-2.40.0-6.el9.x86_64 : Percona Monitoring and Management Client (pmm-agent)
+    pmm2-client-2.40.1-6.el9.x86_64 : Percona Monitoring and Management Client (pmm-agent)
+    pmm2-client-2.41.0-6.el9.x86_64 : Percona Monitoring and Management Client (pmm-agent)
+    pmm2-client-2.41.1-6.el9.x86_64 : Percona Monitoring and Management Client (pmm-agent)
+    pmm2-client-2.41.2-6.el9.x86_64 : Percona Monitoring and Management Client (pmm-agent)
+    pmm2-client-2.42.0-6.el9.x86_64 : Percona Monitoring and Management Client (pmm-agent)
 
-    yum update pmm2-client-2.37.1-6.el7.x86_64
+    yum update pmm2-client-2.41.2-6.el9.x86_64
     ```
 
 ### Tarball method
