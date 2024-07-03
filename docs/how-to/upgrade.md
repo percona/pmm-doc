@@ -44,16 +44,14 @@ Click the refresh button to manually check for updates. If an update is availabl
 
 ## Updating a PMM-Agent
 
-There are two primary methods to update the PMM Agent:
+There are two primary methods to update the PMM Agent, depending on your initial installation method:
 
-1. Using your operating system's package manager
-2. Updating from a tarball
-
-The package manager method is generally more convenient and efficient.
+1. Using your operating system's package manager.
+2. Updating from a tarball.
 
 ### 1. Package Manager method
 
-Percona provides the [percona-release](https://docs.percona.com/percona-software-repositories/installing.html) package, which helps you install Percona software, including the PMM Agent. The PMM Agent is available from the `pmm-client` repository.
+The package manager method is generally more convenient and efficient. Percona provides the [percona-release](https://docs.percona.com/percona-software-repositories/installing.html) package, which helps you install Percona software, including the PMM Agent. The PMM Agent is available from the `pmm-client` repository.
 
 To deploy a new version of the Agent via package manager, simply replace the currently installed package with the latest version of the PMM Agent or with a specific version.
 
