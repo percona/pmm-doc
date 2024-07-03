@@ -354,7 +354,7 @@ Add the MySQL server as a service using one of the following example commands. U
 pmm-admin add mysql --username=pmm --password=<your_password> MYSQL_SERVICE_NAME
 ```
 
-### Examples
+### Example configurations
 
 #### TLS connection
 
