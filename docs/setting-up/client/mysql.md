@@ -422,7 +422,12 @@ pmm-admin add mysql --environment=test --custom-labels='source=slowlog'  --usern
 
 ![!](../../_images/PMM_Add_Instance_MySQL.png)
 
-If your MySQL instance is configured to use TLS, click on the *Use TLS for database connections* check box and fill in your TLS certificates and key.
+#### For MySQL instances using TLS
+
+If your MySQL instance is configured to use TLS: 
+
+1. Click on the **Use TLS for database connections** check box.
+2. Fill in your TLS certificates and key.
 
 ![!](../../_images/PMM_Add_Instance_MySQL_TLS.png)
 
