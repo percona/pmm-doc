@@ -410,7 +410,7 @@ Default query source (`slowlog`), environment labeled `test`, custom labels sett
 pmm-admin add mysql --environment=test --custom-labels='source=slowlog'  --username=root --password=password --query-source=slowlog MySQLSlowLog localhost:3306
 ```
 
-### As a Remote instance 
+### Install PMM Client as a remote instance
 
 1. Select <i class="uil uil-cog"></i> **Configuration > {{icon.inventory}} Inventory >{{icon.addinstance}} Add Service**.
 
