@@ -418,7 +418,7 @@ pmm-admin add mysql --environment=test --custom-labels='source=slowlog'  --usern
 
 3. Complete the required fields.
 
-4. Click *Add service*.
+4. Click **Add service**.
 
 ![!](../../_images/PMM_Add_Instance_MySQL.png)
 
