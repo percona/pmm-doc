@@ -342,7 +342,7 @@ User activity, individual table and index access details are shown on the [MySQL
 ## Add service
 
 There are two ways to install  PMM Client  for monitoring your MySQL database:
-1. [By Installing PMM Client locally] - This option collects both database and OS/host metrics, allowing for more effective comparison between the two and better problem identification.
+1. [Local installation](#Install-PMM-Client locally): Installs PMM Client directly on the database node, collecting both database and OS/host metrics. This option enables more effective comparison and problem identification.
 2. [As a Remote Instance] - This option should be used when it is not possible to install PMM Client on the Database node. It will not provide OS/Node metrics in PMM.
 
 
