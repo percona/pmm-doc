@@ -412,7 +412,7 @@ pmm-admin add mysql --environment=test --custom-labels='source=slowlog'  --usern
 
 ### As a Remote instance 
 
-1. Select <i class="uil uil-cog"></i> *Configuration* → {{icon.inventory}} *Inventory* → {{icon.addinstance}} *Add Service*.
+1. Select <i class="uil uil-cog"></i> **Configuration > {{icon.inventory}} Inventory >{{icon.addinstance}} Add Service**.
 
 2. Select *MySQL -- Add a remote instance*.
 
