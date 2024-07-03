@@ -346,7 +346,7 @@ There are two ways to install  PMM Client  for monitoring your MySQL database:
 2. [As a Remote Instance] - This option should be used when it is not possible to install PMM Client on the Database node. It will not provide OS/Node metrics in PMM.
 
 
-### By Installing PMM Client locally
+### Install PMM Client locally
 
 Add the database server as a service using one of these example commands. If successful, PMM Client will print `MySQL Service added` with the service's ID and name. Use the `--environment` and `-custom-labels` options to set tags for the service to help identify them.
 
