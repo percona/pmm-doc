@@ -160,7 +160,7 @@ PMM communicates with the PMM Server via a PMM agent process.
     `--server-url=server-url`
     : PMM Server URL in `https://username:password@pmm-server-host/` format.
 
-    `--machine-id="/machine_id/9812826a1c45454a98ba45c56cc4f5b0"`
+    `--machine-id="/9812826a1c45454a98ba45c56cc4f5b0"`
     : Node machine-id (default is auto-detected).
 
     `--distro="linux"`
@@ -903,7 +903,7 @@ pmm-admin add mysql --query-source=slowlog --username=pmm --password=pmm sl-mysq
 
 ```txt
 MySQL Service added.
-Service ID  : /service_id/a89191d4-7d75-44a9-b37f-a528e2c4550f
+Service ID  : /a89191d4-7d75-44a9-b37f-a528e2c4550f
 Service name: sl-mysql
 ```
 
@@ -917,8 +917,8 @@ pmm-admin status --wait=30s
 ```
 
 ```txt
-Agent ID: /agent_id/c2a55ac6-a12f-4172-8850-4101237a4236
-Node ID : /node_id/29b2cc24-3b90-4892-8d7e-4b44258d9309
+Agent ID: /c2a55ac6-a12f-4172-8850-4101237a4236
+Node ID : /29b2cc24-3b90-4892-8d7e-4b44258d9309
 PMM Server:
  URL : https://x.x.x.x:443/
  Version: 2.5.0
@@ -929,7 +929,7 @@ PMM Client:
  pmm-admin version: 2.5.0
  pmm-agent version: 2.5.0
 Agents:
- /agent_id/aeb42475-486c-4f48-a906-9546fc7859e8 mysql_slowlog_agent Running
+ /aeb42475-486c-4f48-a906-9546fc7859e8 mysql_slowlog_agent Running
 ```
 
 ### Disable collectors
