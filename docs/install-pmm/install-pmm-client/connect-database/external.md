@@ -64,7 +64,7 @@ For more details see <https://prometheus.io/docs/instrumenting/writing_exporters
     ```sh
     root@mysql1:~# pmm-admin add external --group=processes  --listen-port=9256
     External Service added.
-    Service ID  : /service_id/6485f4fd-745b-4dfb-8b72-328e300f8b50
+    Service ID  : /6485f4fd-745b-4dfb-8b72-328e300f8b50
     Service name: mysql1-processes
     Group       : processes
     ```
