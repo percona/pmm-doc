@@ -123,7 +123,7 @@ Download logs and components configuration to troubleshoot any issues with the P
    - Unlimited, full log: `https://<pmm-server>/logs.zip?line-count=-1`
 3. Through the UI, by selecting the **Help > PMM Logs** option from the main menu.
 
-    If you need to share logs with with Percona Support via an SFTP server, you can also use the **PMM Dump** option from the Help menu to generate a compressed tarball file containing a comprehensive export of your PMM metrics and QAN data.
+    If you need to share logs with Percona Support via an SFTP server, you can also use the **PMM Dump** option from the Help menu to generate a compressed tarball file containing a comprehensive export of your PMM metrics and QAN data.
     For more information, see [Export PMM data with PMM Dump](../how-to/PMM_dump.md) topic in the product documentation.
 
 #### Connection difficulties
