@@ -111,19 +111,20 @@ Logs obtained in this way include PMM Client logs and logs received from the PMM
 
 Beginning with [PMM 2.4.0](../release-notes/2.4.0.md), there is a flag that enables the fetching of [`pprof`](https://github.com/google/pprof) debug profiles and adds them to the diagnostics data. To enable, run `pmm-admin summary --pprof`.
 
-You can get PMM Server logs with either of these methods:
+## Accessing logs and PMM Server data
 
-**Direct download**
+Download logs and components configuration to troubleshoot any issues with the PMM Server:
 
-In a browser, visit `https://<address-of-your-pmm-server>/logs.zip`.
+1. Through direct URL, by visiting `https://<address-of-your-pmm-server>/logs.zip`.
+2. By calling the Logs endpoint, which enables you to customize the log content using the `line-count` parameter: For example:
 
-The default size of each log file delivered by this endpoint is limited to 50,000 lines. However, you can override this setting by adding a `line-count` parameter to the endpoint. Read more in the [API documentation](https://percona-pmm.readme.io/reference/logs).
+   - Default 50,000 lines: `https://<pmm-server>/logs.zip`
+   - Custom number of lines: `https://<pmm-server>/logs.zip?line-count=10000`
+   - Unlimited, full log: `https://<pmm-server>/logs.zip?line-count=-1`
+3. Through the UI, by selecting the **Help > PMM Logs** option from the main menu.
 
-**From Help menu**
-
-1. Select <i class="uil uil-question-circle"></i> *Help* → <i class="uil uil-download-alt"></i> *PMM Logs*.
-
-2. Click *PMM Logs* to retrieve PMM diagnostics data which can be examined and shared with our support team should you need help.
+If you need to share logs with with Percona Support via an SFTP server, you can also use the **PMM Dump** option from the Help menu to generate a compressed tarball file containing a comprehensive export of your PMM metrics and QAN data.
+For more information, see [Export PMM data with PMM Dump](../how-to/PMM_dump.md) topic in the product documentation.
 
 #### Connection difficulties
 
