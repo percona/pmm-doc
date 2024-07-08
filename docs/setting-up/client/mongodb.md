@@ -21,7 +21,7 @@ Run the example codes below in a `mongo` session to:
 -  create custom roles with the privileges required for creating/restoring backups and working with Query Analytics (QAN)
 -  create/update a database user with these roles above, plus the built-in  `clusterMonitor` role
   
-!!! caution alert alert-warning ""
+!!! caution alert alert-warning "Important"
     Values for username (`user`) and password (`pwd`) are examples. Replace them before using these code snippets.
 
 ### Create roles with privileges for backups and QAN
@@ -105,20 +105,20 @@ Run the example codes below in a `mongo` session to:
 
 ### Permissions for advanced metrics
 
-To fetch advanced metrics, use the following to provide additional privileges to an existing PMM user:
+To fetch advanced metrics like usage statistics for collection and indexes, use the following to provide additional privileges to an existing PMM user:
 
-```json
-{
-resource : {
-    db : "",
-    collection : "system.profile"
-    },
-actions : [
-    "collStats",
-    "dbStats",
-    "indexStats"
-   ]
-}
+```{.javascript data-prompt=">"}
+db.getSiblingDB("admin").updateRole(
+  "explainRole",
+  {
+    privileges: [
+      {
+        resource: { db: "", collection: "" },
+        actions: ["collStats", "dbStats", "indexStats"]
+      }
+    ]
+  }
+)
 ```
 
 ## Profiling
@@ -132,7 +132,8 @@ You can set profiling:
 - until the next database instance restart, by running a command in a `mongo` session.
 
 !!! note alert alert-primary "Important"
-Profiling is disabled by default as it may negatively impact the performance of the database server under specific circumstances, such as when busy servers are profiling all queries.
+    
+    Profiling is disabled by default as it may negatively impact the performance of the database server under specific circumstances, such as when busy servers are profiling all queries.
 
 ### Set profiling in the configuration file
 
@@ -181,6 +182,7 @@ For example, to enable the profiler in the `testdb`, run this:
 ```
 
 !!! note alert alert-primary "Important"
+
     If you have already [added the MongoDB service to PMM](#add-service), make sure to restart the PMM agent service after adjusting the profiling level.
 
 ## Add service
@@ -188,8 +190,9 @@ For example, to enable the profiler in the `testdb`, run this:
 After configuring your database server, you can add a MongoDB service either through the user interface or via the command line.
 
 !!! caution alert alert-warning "Important"
-To monitor MongoDB sharded clusters, PMM requires access to all cluster components. Make sure to add all the config servers, shards, and at least 1-2 mongos routers. Otherwise, PMM will not be able to correctly collect metrics and populate dashboards. 
-Keep in mind that adding all mongos routers may cause excessive overhead.
+
+    To monitor MongoDB sharded clusters, PMM requires access to all cluster components. Make sure to add all the config servers, shards, and at least 1-2 mongos routers. Otherwise, PMM will not be able to correctly collect metrics and populate dashboards. 
+    Keep in mind that adding all mongos routers may cause excessive overhead.
 
 ### On the command line
 
