@@ -917,8 +917,8 @@ pmm-admin status --wait=30s
 ```
 
 ```txt
-Agent ID: /c2a55ac6-a12f-4172-8850-4101237a4236
-Node ID : /29b2cc24-3b90-4892-8d7e-4b44258d9309
+Agent ID: c2a55ac6-a12f-4172-8850-4101237a4236
+Node ID : 29b2cc24-3b90-4892-8d7e-4b44258d9309
 PMM Server:
  URL : https://x.x.x.x:443/
  Version: 2.5.0
@@ -928,8 +928,7 @@ PMM Client:
  Latency : 465.658µs
  pmm-admin version: 2.5.0
  pmm-agent version: 2.5.0
-Agents:
- /aeb42475-486c-4f48-a906-9546fc7859e8 mysql_slowlog_agent Running
+Agents: aeb42475-486c-4f48-a906-9546fc7859e8 mysql_slowlog_agent Running
 ```
 
 ### Disable collectors
