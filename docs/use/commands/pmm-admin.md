@@ -903,7 +903,7 @@ pmm-admin add mysql --query-source=slowlog --username=pmm --password=pmm sl-mysq
 
 ```txt
 MySQL Service added.
-Service ID  : /a89191d4-7d75-44a9-b37f-a528e2c4550f
+Service ID  : a89191d4-7d75-44a9-b37f-a528e2c4550f
 Service name: sl-mysql
 ```
 
