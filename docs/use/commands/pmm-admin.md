@@ -160,7 +160,7 @@ PMM communicates with the PMM Server via a PMM agent process.
     `--server-url=server-url`
     : PMM Server URL in `https://username:password@pmm-server-host/` format.
 
-    `--machine-id="/9812826a1c45454a98ba45c56cc4f5b0"`
+    `--machine-id="9812826a1c45454a98ba45c56cc4f5b0"`
     : Node machine-id (default is auto-detected).
 
     `--distro="linux"`
