@@ -351,13 +351,16 @@ User activity, individual table and index access details are shown on the [MySQL
 ## Add service
 
 There are two ways to install  PMM Client  for monitoring your MySQL database:
+
 1. [Local installation](#Install-PMM-Client locally): Installs PMM Client directly on the database node, collecting both database and OS/host metrics. This option enables more effective comparison and problem identification.
 2. [Remote instance](#Install-PMM-Client-as-a-remote-instance): Use when local installation isn't possible. This method doesn't provide OS/Node metrics in PMM.
 
 
 ### Install PMM Client locally
 
-Add the MySQL server as a service using one of the following example commands. Upon successful addition, PMM Client will display "MySQL Service added" along with the service's ID and name. Use --environment and --custom-labels options to set identifying tags for the service.
+Add the MySQL server as a service using one of the following example commands. 
+
+Upon successful addition, PMM Client will display "MySQL Service added" along with the service's ID and name. Use `--environment` and `--custom-labels` options to set identifying tags for the service.
 
 ```sh
 pmm-admin add mysql --username=pmm --password=<your_password> MYSQL_SERVICE_NAME
@@ -421,7 +424,7 @@ pmm-admin add mysql --environment=test --custom-labels='source=slowlog'  --usern
 
 ### Install PMM Client as a remote instance
 
-1. Select <i class="uil uil-cog"></i> **Configuration > {{icon.inventory}} Inventory >{{icon.addinstance}} Add Service**.
+1. Select <i class="uil uil-cog"></i> **Configuration > {{icon.inventory}} Inventory > {{icon.addinstance}} Add Service**.
 
 2. Choose **MySQL > Add a remote instance**.
 
