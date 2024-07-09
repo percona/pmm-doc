@@ -80,7 +80,7 @@ Here are the benefits and drawbacks of each.
 
 |                      | <i class="uil uil-thumbs-up"></i> Benefits     | <i class="uil uil-thumbs-down"></i> Drawbacks
 |----------------------|------------------------------------------------|---------------------------------------------------
-| `pg_stat_statements` | 1. Part of official `postgresql-contrib` package. | 1. No aggregated statistics or histograms.<br>2. No Query Examples.
+| `pg_stat_statements` | 1. Part of official `postgresql-contrib` package. | 1. No aggregated statistics or histograms<br>2. No query examples <br>3. No plan execution information
 | `pg_stat_monitor`    | 1. Builds on `pg_stat_monitor` features.<br>2. Bucket-based aggregation. | 
 
 For a more detailed comparison of extensions, see [Comparison with pg_stat_statements](https://docs.percona.com/pg-stat-monitor/comparison.html) in the `pg_stat_monitor` documentation.
@@ -184,7 +184,7 @@ You can now [add the service](#add-service).
     !!! caution alert alert-warning
         It is important to set maximal length of query to 2048 characters or more for PMM to work properly.
 
-    You can get a list of other available settings with `SELECT * FROM pg_stat_monitor_settings;`.
+    You can get a list of other available settings with `SELECT * FROM pg_settings WHERE name LIKE 'pg_stat_monitor.%';`.
 
     Other important parameters are:
     ```ini
@@ -247,7 +247,7 @@ If your PostgreSQL instance is configured to use TLS, click on the *Use TLS for 
 
 ### Auto-discovery limit
 
-PMM 2.41.0 introduces limit for **Auto-discovery** in PostgreSQL, a feature that dynamically discovers all databases in your PostgreSQL instance. 
+Starting with PMM 2.41.0 you can set a limit for **Auto-discovery** in PostgreSQL, a feature that dynamically discovers all databases in your PostgreSQL instance. 
 
 Limiting **Auto-discovery** reduces connections and prevents high CPU and RAM usage caused by multiple databases.
 
@@ -257,7 +257,7 @@ Limiting **Auto-discovery** reduces connections and prevents high CPU and RAM us
     - Setting a high limit may impact performance adversely.
     - Setting a low limit might result in some missing metrics due to Auto-discovery being disabled.
 
-By default, **Auto-discovery** is enabled (server defined with a limit 10). 
+By default, **Auto-discovery** is enabled (server defined with a limit 10).
 
 ![!](../../_images/PMM_Add_Instance_PostgreSQL_autodiscovery_enabled.png)
 
@@ -269,7 +269,20 @@ For a custom value, select **Custom** and enter or choose your preferred value f
 
 ![!](../../_images/PMM_Add_Instance_PostgreSQL_autodiscovery_custom.png)
 
+### Maximum connection limit
 
+Starting with PMM 2.42.0, you can set a maximum limit on the number of connections that the PostgreSQL exporter can open to the same PostgreSQL instance.
+
+By setting a maximum connection limit, you can prevent excessive connections during concurrent operations, and ensure that connections are closed promptly to avoid idle connections.
+
+When adjusting the maximum number of connections, consider the following:
+
+- higher values might be needed for larger or busier instances.
+- setting the limit too high can impact performance.
+- if no limit is specified or the option is disabled, the server will manage the connection limits automatically.
+
+![!](../../_images/Max_Connection_Limit.png)
+  
 ### On the command line
 
 Add the database server as a service using one of these example commands. If successful, PMM Client will print `PostgreSQL Service added` with the service's ID and name. Use the `--environment` and `-custom-labels` options to set tags for the service to help identify them.

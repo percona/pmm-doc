@@ -10,6 +10,7 @@ On the left are the selector tabs:
 
 - [Configure](#configure)
   - [Metrics resolution](#metrics-resolution)
+    - [Configure metrics resolution per-service](#configure-metrics-resolution-per-service)
   - [Advanced Settings](#advanced-settings)
     - [Data Retention](#data-retention)
     - [Telemetry](#telemetry)
@@ -56,6 +57,20 @@ Values for the *Custom* preset can be entered as values, or changed with the arr
 
 !!! note alert alert-primary ""
     If there is poor network connectivity between PMM Server and PMM Client, or between PMM Client and the database server being monitored, scraping every second may not be possible when the network latency is greater than 1 second.
+
+### Configure metrics resolution per-service
+
+While changing the metrics resolution in the settings tab applies to all services, you can also configure metrics resolutions on a per-service basis by setting the resolution settings for each exporter individually via the API.
+
+Customizing the resolution settings for individual services enables you to fine-tune your PMM setup to balance data granularity and resource consumption.
+
+This enables you to:
+
+- Allocate resources efficiently by focusing on high-resolution data for key services
+- Reduce storage requirements by adjusting resolution for less critical components
+- Align your monitoring setup with the specific needs of your environment
+
+For information on enabling this feature via API, see the [**Change Postgres Exporter endpoint**](https://percona-pmm.readme.io/reference/changepostgresexporter) in the API documentation.
 
 ## Advanced Settings
 
