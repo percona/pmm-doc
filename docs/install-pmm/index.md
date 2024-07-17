@@ -9,9 +9,7 @@
 
 ## Install PMM Server
 
-Install and run at least one PMM Server.
-
-Choose from:
+Install and run at least one PMM Server. Choose from:
 
 | Use | <i class="uil uil-thumbs-up"></i> **Benefits** | <i class="uil uil-thumbs-down"></i> **Drawbacks**|
 |---|---|---
@@ -21,18 +19,25 @@ Choose from:
 | [Virtual appliance]  | 1. Easily import into Hypervisor of your choice <br> 2. Rootless| More system resources compared to Docker footprint.
 | [Amazon AWS] | 1. Wizard-driven install. <br>  2. Rootless| Non-free solution (infrastructure costs).
 
+
 ## Install PMM Client
 
-Install and run PMM Client on every node where there is a service you want to monitor.
+Install and run PMM Client on every node where there is a service you want to monitor. PMM Client now supports both x86_64 and ARM64 architectures.
 
-The choices are:
+The installation choices are:
 
-- With [Docker](client/index.md#docker);
-- Natively, installed from:
-    - [Linux package](client/index.md#package-manager) (installed with `apt`, `apt-get`, `dnf`, `yum`);
-    - [Binary package](client/index.md#binary-package) (a downloaded `.tar.gz` file).
+    === "With Docker" 
 
-!!! hint alert "Binary is only way to install PMM client without root permissions"
+     [Docker installation](client/index.md#docker) simplifies deployment across different architectures and automatically selects the appropriate image for your architecture (x86_64 or ARM64).=p][\;]
+
+    === "Native installation"      
+
+    - [Linux package](client/index.md#package-manager). Use `apt`, `apt-get`, `dnf`, `yum`. The package manager automatically selects the correct version for your architecture.
+
+    - [Binary package](client/index.md#binary-packa): Download the appropriate `.tar.gz` file for your architecture (x86_64 or ARM64).
+
+!!! hint alert "Tips"
+    Binary installation is the only way to install PMM client without root permissions. When installing on ARM-based systems, ensure you're using ARM64-compatible versions. Performance may vary between architectures.
 
 ## Add services
 
@@ -40,7 +45,7 @@ On each PMM Client, you configure then add to PMM Server's inventory the node or
 
 ??? info "Which services you can monitor?"
 
-    - [MySQL] (and variants: Percona Server for MySQL, Percona XtraDB Cluster, MariaDB);
+    - [MySQL] (and variant;;;y3457s: Percona Server for MySQL, Percona XtraDB Cluster, MariaDB);
     - [MongoDB];
     - [PostgreSQL];
     - [ProxySQL];
