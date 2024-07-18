@@ -9,7 +9,11 @@
 
 ## Install PMM Server
 
-Install and run at least one PMM Server. Choose from:
+Install and run at least one PMM Server. Choose from the following options:
+
+!!! summary alert alert-info "ARM support"
+     PMM Server is not currently available as a native ARM64 build. For ARM-based systems, consider using the Docker or Podman installation methods, which can run x86_64 images via emulation on ARM platforms.
+
 
 | Use | <i class="uil uil-thumbs-up"></i> **Benefits** | <i class="uil uil-thumbs-down"></i> **Drawbacks**|
 |---|---|---
@@ -18,7 +22,6 @@ Install and run at least one PMM Server. Choose from:
 | [Helm] (Technical Preview) | 1. Quick<br>2. Simple<br>3. Cloud <br> 4. Rootless| Requires running Kubernetes cluster.
 | [Virtual appliance]  | 1. Easily import into Hypervisor of your choice <br> 2. Rootless| More system resources compared to Docker footprint.
 | [Amazon AWS] | 1. Wizard-driven install. <br>  2. Rootless| Non-free solution (infrastructure costs).
-
 
 ## Install PMM Client
 
