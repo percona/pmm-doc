@@ -60,7 +60,7 @@ The other way of moving dashboards from one folder to another is:
 
     ![!image](../../_images/PMM_Move_dashboards-way2.png)
 
-4. Click *Save Dashboard* on the left.
+4. Click **Save Dashboard** on the left.
 
 ### Navigate to a dashboard folder page to assign folder permissions
 
@@ -85,7 +85,7 @@ The Home dashboard you set is the dashboard all the users will see after logging
 
 ### For your organization 
 
-Organization Admins can set the home dashboard for their organization. For information on managing users in an organization, see [Manage Users](../../how-to/manage-users.md)
+Organization Admins can set the home dashboard for their organization. For information on managing users in an organization, see [Manage Users](../../how-to/manage-users.md).
 
 1. Navigate to the dashboard that you want to set as the home dashboard.
 2. Click the <i class="uil uil-star"></i> star next to the dashboard title to mark the dashboard as a favorite.
@@ -103,19 +103,15 @@ Organization and team Admins can set the home dashboard for their team:
 3. On the main menu, hover your cursor over {{icon.configuration}} **Configuration**. 
 4. Click **Teams**. Grafana displays the team list.
 5. Click on the team for whom you want to set the home dashboard and then navigate to the **Settings** tab.
-6. In the Home Dashboard field, select the dashboard that you want to use for your home dashboard.
+6. In the **Home Dashboard** field, select the dashboard that you want to use for your home dashboard.
 7. Click **Save**.
 
-### Set your Personal Home Dashboard
+### Set your personal Home dashboard
 
 1. From the main menu, go to <i class="uil uil-apps"></i> **Dashboards > Browse** and select the dashboard you want to set as your home dashboard.
 2. Click the <i class="uil uil-star"></i> star next to the dashboard title to mark it as a favorite.
-
-    ![!image](../../_images/PMM_click_to_add_favorite_dashboard.png)
-
 3. From the side menu go to {{icon.configuration}} **Configuration > Preferences**. In the **Home Dashboard** field, select the dashboard that you want to set as your home dashboard.
 
     ![!image](../../_images/PMM_set_home_dashboard.png)
 
 4. Click **Save**.
-
