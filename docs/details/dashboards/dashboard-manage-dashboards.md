@@ -2,7 +2,7 @@
 
 PMM offers various types of dashboards for monitoring and managing the performance of your databases:
 
-1. **Standard dashboards**: include database overviews, database-specific dashboards, query analytics, system-level metrics, replication, and high availability dashboards. These offer comprehensive insights into various aspects of your database environment.
+1. **Standard dashboards**: include database overviews, database-specific dashboards, system-level metrics, replication, and high availability dashboards. These offer comprehensive insights into various aspects of your database environment.
 2. **Experimental dashboards**: newer, or less stable dashboards that usually introduce new metrics or visualizations or monitoring approaches.
 3. **Custom dashboards**: user-created dashboards tailored to specific metrics or needs, allowing you to combine data from different sources for customized monitoring and analysis.
 
