@@ -273,7 +273,7 @@ dnf localinstall *.rpm
     pmm-admin status
     ```
     
-    !!! hint PMM-Agent can be updated from tarball:
+    !!! hint "PMM-Agent can be updated from tarball:"
 
      1. Download tar.gz with pmm2-client.
      2. Extract it.
