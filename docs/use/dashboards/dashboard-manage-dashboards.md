@@ -10,7 +10,7 @@ Standard and experimental dashboards are "provisioned dashboards", meaning they 
 
 - created by PMM out of the box based on predefined configurations to ensure consistency across deployments.
 - protected from editing through the UI to prevent accidental modifications. Trying to modify these dashboards via the UI will result in a `Cannot save provisioned dashboard` error.
-- replaced during PMM upgrades, to ensure they are always up-to-date with the latest version. Any manual changes made by setting `allowUIUpdates: true` in `/usr/share/grafana/conf/provisioning/dashboards/default.yml` will be overwritten.
+- replaced during PMM upgrades, to ensure they are always up-to-date with the latest version. Any manual changes will be overwritten.
 
 Remember:
 
