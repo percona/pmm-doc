@@ -31,8 +31,8 @@
 
 ### ARM-specific considerations
 
-- **Docker**: If using Docker for PMM Client on ARM systems, ensure you're using the ARM64-compatible Docker images."
-- **Performance**: MM Client has been tested on various ARM platforms, including AWS Graviton processors and Apple M series chips. Performance may vary across different ARM implementations. Conduct thorough testing to ensure optimal performance in your environment.
+- **Docker**: If using Docker for PMM Client on ARM systems, ensure you're using the ARM64-compatible Docker images.
+- **Performance**: Performance may vary across different ARM implementations. Conduct thorough testing to ensure optimal performance in your environment.
 - **Compatibility**: Ensure you're using ARM-compatible versions of any additional software or databases you're monitoring with PMM.
-- **Third-party components**: Some third-party plugins or exporters may not yet be available for ARM architecture. Check compatibility before installing.
+- **PMM Server**: PMM Server is not currently available as a native ARM64 build. For ARM-based systems, consider using the Docker or Podman installation methods, which can run x86_64 images via emulation on ARM platforms.
 - **Resource usage**: Monitor resource usage closely on ARM systems, as it may differ from x86_64 systems. Adjust your configuration as needed for optimal performance.
