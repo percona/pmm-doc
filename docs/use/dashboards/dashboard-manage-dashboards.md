@@ -1,4 +1,4 @@
-# Manage dashboards
+# Manage PMM dashboards
 
 
 This section describes how to manage your PMM dashboards and the widgets on those dashboards, including:
