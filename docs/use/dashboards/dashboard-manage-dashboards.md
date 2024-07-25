@@ -14,17 +14,17 @@ Standard and experimental dashboards are "provisioned dashboards", meaning they 
 
 Remember:
 
-- Always work with cloned copies of PMM dashboards
-- Changes to original PMM dashboards will be lost during updates
+- Always work with cloned copies of PMM dashboards.
+- Changes to original PMM dashboards will be lost during updates.
 - Experimental dashboards may change more frequently, therefore consider re-cloning them after upgrades.
 
 ## Create dashboard folders
 
-Folders help you organize and group PMM dashboards, especially useful for numerous dashboards and multiple teams using the same PMM instance.
+Folders help you organize and group PMM dashboards, making it easier to manage numerous dashboards and accommodate multiple teams using the same PMM instance.
 
 To create a dashboard folder (requires **Admin** privileges):
 
-1. On the PMM dashboards page, from the side menu, go to <i class="uil uil-plus"></i> **Dashboards > New folder**.
+1. From the side menu, go to <i class="uil uil-plus"></i> **Dashboards > New > New folder**.
 
 2. Enter a unique name for your folder and click **Create**.
 
@@ -34,39 +34,42 @@ To create a dashboard folder (requires **Admin** privileges):
 
 To delete multiple dashboards at once:
 
-1. From the side menu, go to <i class="uil uil-apps"></i> **Dashboards > Browse**.
+1. From the side menu, go to <i class="uil uil-apps"></i> **Dashboards** page.
 2. Select the dashboards that you want to delete, and click **Delete**.
 
 ### Move dashboards between folders
 
 To move dashboards from one folder to another (requires **Editor** rights):
 
-#### Method 1
+#### From the Dasboards page
 
-1.  Go to **Dashboards > Browse**.
-2.  Select the dashboards that you want to move and click **Move**.
+1. On the **Dashboards** page, enter the name of the dashboard you want to move in the search bar.
+2. Check the box next to the dashboard name.
+3. Select the target folder then click **Move**.
 
     ![!image](../../_images/PMM_Move_dashboards.png)
 
-3. On the **Choose Dashboard Folder** dialog box select the dashboards that you want to move from the drop-down. Click *Move*.
-
-#### Method 2
+#### From within the dashboard
 
 The other way of moving dashboards from one folder to another is:
 
 1. Open the dashboard that you want to move to another folder.
-2. Click on {{icon.configuration}} icon to open **Dashboard Settings**.
-3. On the **General** page, under **Folder** select the folder name that you want to move from the dropdown.
+2. Click on {{icon.configuration}} icon at the top right of the page to open **Dashboard settings**.
+3. On the **General** tab, under **Folder** select the folder name that you want to move from the drop-down.
 
     ![!image](../../_images/PMM_Move_dashboards-way2.png)
 
-4. Click *Save Dashboard* on the left.
+4. Click **Save Dashboard** on the top right of the page.
 
 ### Navigate to a dashboard folder page to assign folder permissions
 
-1. From the side menu, go to <i class="uil uil-apps"></i> **Dashboards > Browse** and hover over the dashboard folder whose permissions you want to set. 
-2. Click **Go to Folder**.
-3. Go to the **Permissions** tab and select the requisite permission from the drop-down for the various roles.
+Fine-tune access control for your dashboard folders, ensuring team members have the right level of access to the dashboards they need. To set permissions for a dashboard folder:
+
+1. Navigate to the **Dashboards** page.
+2. Locate and click on the target folder.
+3. In the top right corner, click **Folder actions**.
+4. From the dropdown menu, select **Manage permissions**.
+5. For each user, role, team, or service account, select the appropriate permission level from the dropdown next to it.
 
     ![!image](../../_images/PMM_Permissions_dashboards_folder.png)
 
@@ -74,25 +77,24 @@ The other way of moving dashboards from one folder to another is:
 
 You cannot directly edit provisioned dashboards. Instead, clone the dashboard and edit or move the cloned dashboard freely: 
 
-1. Open the dashboard.
-2. Click the settings icon.
-3. Select **Save as** to create a copy.
-4. Name your copy and choose where to save it.
+1. Open the dashboard you wish to edit.
+2. Click the {{icon.configuration}} icon at the top right of the page to open **Dashboard settings**.
+3. Click **Make editable**, then at the top right of the page, click **Save as** to create a copy.
+4. Name your copy and choose the location where you want to save it.
 
 ## Setting a custom Home dashboard
 
 The Home dashboard you set is the dashboard all the users will see after logging in to PMM UI. You can set the home dashboard for a server, an organization, a team, or your user account.
 
-### For your organization 
+### For your organization
 
 Organization Admins can set the home dashboard for their organization. For information on managing users in an organization, see [Manage Users](../../how-to/manage-users.md)
 
 1. Navigate to the dashboard that you want to set as the home dashboard.
 2. Click the <i class="uil uil-star"></i> star next to the dashboard title to mark the dashboard as a favorite.
-3. Hover your cursor over {{icon.configuration}} **Configuration**.
-4. Click **Preferences**.
-5. In the **Home Dashboard** field, select the dashboard that you want to set as your home dashboard.
-6. Click **Save**.
+3. From the side menu, go to {{icon.configuration}} **Administration > General > Default preferences**.
+4. In the **Home Dashboard** field, select the dashboard that you want to set as your home dashboard.
+5. Click **Save** then confirm.
 
 #### For a team
 
@@ -100,22 +102,17 @@ Organization and team Admins can set the home dashboard for their team:
 
 1. Navigate to the dashboard that you want to set as your home dashboard.
 2. Click <i class="uil uil-star"></i> star next to the dashboard to mark the dashboard as a favorite.
-3. On the main menu, hover your cursor over {{icon.configuration}} **Configuration**. 
-4. Click **Teams**. Grafana displays the team list.
-5. Click on the team for whom you want to set the home dashboard and then navigate to the **Settings** tab.
-6. In the Home Dashboard field, select the dashboard that you want to use for your home dashboard.
-7. Click **Save**.
+3. From the main menu, choose {{icon.configuration}} **Administration > Teams**. Grafana displays the team list.
+4. Click on the team for whom you want to set the home dashboard and then navigate to the **Settings** tab.
+5. In the **Home Dashboard** field, select the dashboard that you want to use for your home dashboard.
+6. Click **Save**.
 
-### Set your Personal Home Dashboard
+### Set your personal Home dashboard
 
 1. From the main menu, go to <i class="uil uil-apps"></i> **Dashboards > Browse** and select the dashboard you want to set as your home dashboard.
 2. Click the <i class="uil uil-star"></i> star next to the dashboard title to mark it as a favorite.
-
-    ![!image](../../_images/PMM_click_to_add_favorite_dashboard.png)
-
-3. From the side menu go to {{icon.configuration}} **Configuration > Preferences**. In the **Home Dashboard** field, select the dashboard that you want to set as your home dashboard.
+3. From the side menu go to {{icon.configuration}} **Administration > General > Default preferences**. In the **Home Dashboard** field, select the dashboard that you want to set as your home dashboard.
 
     ![!image](../../_images/PMM_set_home_dashboard.png)
 
 4. Click **Save**.
-
