@@ -77,7 +77,7 @@ As an example, suppose you want to change the medium resolution to 15s for a Pos
 - Identify the `agent_id` of the **exporter** Agent Type corresponding to the service you'd like to change.
   - This can be found from the [Inventory](../details/dashboards/dashboard-inventory.md) by clicking on the "Monitoring" column of the service you'd like to change.
 - Set `"mr": "15s"` inside `metrics_resolutions`.
-  - You can use `hr` or `lh` to set high or low resolution respectively.
+  - You can use `hr` or `lh` to change high or low resolution respectively.
  
 The full example is reported below. 
 
