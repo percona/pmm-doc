@@ -48,7 +48,7 @@ On each PMM Client, you configure then add to PMM Server's inventory the node or
 
 ??? info "Which services you can monitor?"
 
-    - [MySQL] (and variant;;;y3457s: Percona Server for MySQL, Percona XtraDB Cluster, MariaDB);
+    - [MySQL] (and variants: Percona Server for MySQL, Percona XtraDB Cluster, MariaDB);
     - [MongoDB];
     - [PostgreSQL];
     - [ProxySQL];
