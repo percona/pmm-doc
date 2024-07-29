@@ -62,23 +62,25 @@ Values for the *Custom* preset can be entered as values, or changed with the arr
 
 You can configure metrics resolutions both globally and on a per-service basis. While the global setting in the **Settings** tab applies to all services,  PMM 2.42 and later also enables you to customize resolution for individual services. You can do this by adjusting the `metrics_resolutions` setting for each exporter using the "[Change Agent Attributes](https://percona-pmm.readme.io/reference/changeagent)" API (see below for an example).
 
-Customizing resolution settings for individual services allows you to fine-tune your PMM setup, balancing data granularity with resource consumption. This feature enables you to:```
-
-This enables you to:
+Customizing resolution settings for individual services allows you to fine-tune your PMM setup, balancing data granularity with resource consumption. This feature enables you to:
 
 - Allocate resources efficiently by focusing on high-resolution data for key services
 - Reduce storage requirements by lowering resolution for less important components
 - Align your monitoring setup with the specific needs of your environment
+  
 To change resolution settings:
 
-- The `ChangePostgresExporter` API will need to be used in this case.
-  - You can use the equivalent `ChangeMySQLdExporter` or `ChangeMongoDBExporter` for MySQL or MongoDB respectively.
-- Identify the `agent_id` of the **exporter** Agent Type corresponding to the service you'd like to change.
-  - This can be found from the [Inventory](../details/dashboards/dashboard-inventory.md) by clicking on the "Monitoring" column of the service you'd like to change.
-- Set `"mr": "15s"` inside `metrics_resolutions`.
-  - You can use `hr` or `lh` to change high or low resolution respectively.
+1. Identify the appropriate API endpoint:
+
+     - For PostgreSQL: `ChangePostgresExporter`
+     - For MySQL: `ChangeMySQLdExporter`
+     - For MongoDB: `ChangeMongoDBExporter`
+
+2. Locate the `agent_id` of the exporter you want to modify. You can find this in the [Inventory dashboard](../details/dashboards/dashboard-inventory.md) under the **Monitoring** column for the target service.
+   
+4. Set the desired resolution using `hr` (high), `mr` (medium), or `lr` (low) in the `metrics_resolutions` field.
  
-**Example**:  Setting 15s medium resolution for a PostgreSQL server:```
+**Example**:  Setting 15s medium resolution for a PostgreSQL server:
 
 ```
 > curl -X 'POST' \
