@@ -60,7 +60,7 @@ Values for the *Custom* preset can be entered as values, or changed with the arr
 
 ### Configure metrics resolution per-service
 
-While changing the metrics resolution in the settings tab applies to all services, starting from v2.42.0 you can also configure metrics resolutions on a per-service basis by setting the resolution settings for each exporter individually via the API.
+While changing the metrics resolution in the settings tab applies to all services, starting from v2.42.0 you can also configure metrics resolutions on a per-service basis by setting the `metrics_resolutions` settings for each exporter individually via the "[Change Agent Attributes](https://percona-pmm.readme.io/reference/changeagent)" API (see below for an example).
 
 Customizing the resolution settings for individual services enables you to fine-tune your PMM setup to balance data granularity and resource consumption.
 
@@ -70,7 +70,7 @@ This enables you to:
 - Reduce storage requirements by adjusting resolution for less critical components
 - Align your monitoring setup with the specific needs of your environment
 
-For information on enabling this feature via API, see the [**Change Postgres Exporter endpoint**](https://percona-pmm.readme.io/reference/changepostgresexporter) in the API documentation.
+For more information, see the [**Change Agent Attributes**](https://percona-pmm.readme.io/reference/changeagent) section in the API documentation.
 
 ## Advanced Settings
 
