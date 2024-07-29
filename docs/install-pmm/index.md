@@ -40,7 +40,7 @@ The installation choices are:
     - [Binary package](client/index.md#binary-packa): Download the appropriate `.tar.gz` file for your architecture (x86_64 or ARM64).
 
 !!! hint alert "Tips"
-    Binary installation is the only way to install PMM client without root permissions. When installing on ARM-based systems, ensure you're using ARM64-compatible versions. Performance may vary between architectures.
+    Both binary installation and Docker containers can be run without root permissions. When installing on ARM-based systems, ensure you're using ARM64-compatible versions. Performance may vary between architectures.
 
 ## Add services
 
