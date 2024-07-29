@@ -69,7 +69,7 @@ This enables you to:
 - Allocate resources efficiently by focusing on high-resolution data for key services
 - Reduce storage requirements by lowering resolution for less important components
 - Align your monitoring setup with the specific needs of your environment
-
+To change resolution settings:
 
 - The `ChangePostgresExporter` API will need to be used in this case.
   - You can use the equivalent `ChangeMySQLdExporter` or `ChangeMongoDBExporter` for MySQL or MongoDB respectively.
