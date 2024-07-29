@@ -79,7 +79,7 @@ As an example, suppose you want to change the medium resolution to 15s for a Pos
 - Set `"mr": "15s"` inside `metrics_resolutions`.
   - You can use `hr` or `lh` to change high or low resolution respectively.
  
-The full example is reported below. 
+**Example**:  Setting 15s medium resolution for a PostgreSQL server:```
 
 ```
 > curl -X 'POST' \
