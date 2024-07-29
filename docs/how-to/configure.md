@@ -62,7 +62,7 @@ Values for the *Custom* preset can be entered as values, or changed with the arr
 
 You can configure metrics resolutions both globally and on a per-service basis. While the global setting in the **Settings** tab applies to all services,  PMM 2.42 and later also enables you to customize resolution for individual services. You can do this by adjusting the `metrics_resolutions` setting for each exporter using the "[Change Agent Attributes](https://percona-pmm.readme.io/reference/changeagent)" API (see below for an example).
 
-Customizing the resolution settings for individual services enables you to fine-tune your PMM setup to balance data granularity and resource consumption.
+Customizing resolution settings for individual services allows you to fine-tune your PMM setup, balancing data granularity with resource consumption. This feature enables you to:```
 
 This enables you to:
 
