@@ -87,7 +87,7 @@ The full example is reported below.
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
   -d '{
-  "agent_id": "agent_id_64b195b1-4d65-4838-9eab-50b79c0a07a3", // Your exporter agent ID
+  "agent_id": "/agent_id/64b195b1-4d65-4838-9eab-50b79c0a07a3", // Your exporter agent ID
   "common": {
     "enable": true,
     "disable": true,
