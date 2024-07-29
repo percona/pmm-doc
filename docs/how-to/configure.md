@@ -70,7 +70,6 @@ This enables you to:
 - Reduce storage requirements by lowering resolution for less important components
 - Align your monitoring setup with the specific needs of your environment
 
-As an example, suppose you want to change the medium resolution to 15s for a PostgreSQL server.
 
 - The `ChangePostgresExporter` API will need to be used in this case.
   - You can use the equivalent `ChangeMySQLdExporter` or `ChangeMongoDBExporter` for MySQL or MongoDB respectively.
