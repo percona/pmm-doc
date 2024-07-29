@@ -77,8 +77,8 @@ As an example, suppose you want to change the medium resolution to 15s for a Pos
   - This can be found from the [Inventory](../details/dashboards/dashboard-inventory.md) by clicking on the "Monitoring" column of the service you'd like to change.
 - Set `"mr": "15s"` inside `metrics_resolutions`.
   - You can use `hr` or `lh` to set high or low resolution respectively.
-
-The full example is reported below. For more information, see the [**Change Agent Attributes**](https://percona-pmm.readme.io/reference/changeagent) section in the API documentation.
+ 
+The full example is reported below. 
 
 ```
 > curl -X 'POST' \
@@ -96,6 +96,10 @@ The full example is reported below. For more information, see the [**Change Agen
   }
 }'
 ```
+
+To reeset the customization of the metric resolution, make an API call in which you pass `0s` (`"mr": "0s"` in the example above). The Exporter will fallback to the default value from the global PMM settings.
+
+For more information, see the [**Change Agent Attributes**](https://percona-pmm.readme.io/reference/changeagent) section in the API documentation.
 
 ## Advanced Settings
 
