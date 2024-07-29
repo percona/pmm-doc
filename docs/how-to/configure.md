@@ -73,7 +73,7 @@ This enables you to:
 As an example, suppose you want to change the medium resolution to 15s for a PostgreSQL server.
 
 - The `ChangePostgresExporter` API will need to be used in this case.
-  - You can use the equivalent `ChangeMySQLdExporter` or `ChangeMongoExporter` for MySQL or MongoDB respectively.
+  - You can use the equivalent `ChangeMySQLdExporter` or `ChangeMongoDBExporter` for MySQL or MongoDB respectively.
 - Identify the `agent_id` of the **exporter** Agent Type corresponding to the service you'd like to change.
   - This can be found from the [Inventory](../details/dashboards/dashboard-inventory.md) by clicking on the "Monitoring" column of the service you'd like to change.
 - Set `"mr": "15s"` inside `metrics_resolutions`.
