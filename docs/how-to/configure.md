@@ -98,7 +98,7 @@ As an example, suppose you want to change the medium resolution to 15s for a Pos
 }'
 ```
 
-To reeset the customization of the metric resolution, make an API call in which you pass `0s` (`"mr": "0s"` in the example above). The Exporter will fallback to the default value from the global PMM settings.
+To reset a custom resolution, make an API call with "mr": "0s" (or "hr": "0s", "lr": "0s" as appropriate). This will revert the exporter to using the global PMM settings.
 
 For more information, see the [**Change Agent Attributes**](https://percona-pmm.readme.io/reference/changeagent) section in the API documentation.
 
