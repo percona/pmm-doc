@@ -70,7 +70,32 @@ This enables you to:
 - Reduce storage requirements by adjusting resolution for less critical components
 - Align your monitoring setup with the specific needs of your environment
 
-For more information, see the [**Change Agent Attributes**](https://percona-pmm.readme.io/reference/changeagent) section in the API documentation.
+As an example, suppose you want to change the medium resolution to 15s for a PostgreSQL server.
+- The `ChangePostgresExporter` API will need to be used in this case.
+  - You can use the equivalent `ChangeMySQLdExporter` or `ChangeMongoExporter` for MySQL or MongoDB respectively.
+- Identify the `agent_id` of the **exporter** Agent Type corresponding to the service you'd like to change.
+  - This can be found from the [Inventory](../details/dashboards/dashboard-inventory.md) by clicking on the "Monitoring" column of the service you'd like to change.
+- Set `"mr": "15s"` inside `metrics_resolutions`.
+  - You can use `hr` or `lh` to set high or low resolution respectively.
+
+The full example is reported below. For more information, see the [**Change Agent Attributes**](https://percona-pmm.readme.io/reference/changeagent) section in the API documentation.
+
+```
+> curl -X 'POST' \
+  'http://admin:admin@127.0.0.1/v1/inventory/Agents/ChangePostgresExporter' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "agent_id": "agent_id_64b195b1-4d65-4838-9eab-50b79c0a07a3", // Your exporter agent ID
+  "common": {
+    "enable": true,
+    "disable": true,
+    "custom_labels": {
+      "metrics_resolutions": {"mr": "15s"} // it can be 'mr', 'hr, 'lr' in any combination
+    }
+  }
+}'
+```
 
 ## Advanced Settings
 
