@@ -67,7 +67,7 @@ Customizing resolution settings for individual services allows you to fine-tune 
 This enables you to:
 
 - Allocate resources efficiently by focusing on high-resolution data for key services
-- Reduce storage requirements by adjusting resolution for less critical components
+- Reduce storage requirements by lowering resolution for less important components
 - Align your monitoring setup with the specific needs of your environment
 
 As an example, suppose you want to change the medium resolution to 15s for a PostgreSQL server.
