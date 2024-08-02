@@ -110,7 +110,7 @@ You can now add services with [`pmm-admin`](../../details/commands/pmm-admin.md)
 
     ```sh
     percona-release disable all
-    percona-release enable original release
+    percona-release enable pmm2-client
     ```
 
 #### Debian-based
