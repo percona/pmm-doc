@@ -60,14 +60,14 @@ Values for the *Custom* preset can be entered as values, or changed with the arr
 
 ### Configure metrics resolution per-service
 
-You can configure metrics resolutions both globally and on a per-service basis. While the global setting in the **Settings** tab applies to all services,  PMM 2.42 and later also enables you to customize resolution for individual services. You can do this by adjusting the `metrics_resolutions` setting for each exporter using the "[Change Agent Attributes](https://percona-pmm.readme.io/reference/changeagent)" API (see below for an example).
+You can configure metrics resolutions both globally and on a per-service basis. While the global setting in the **Settings** tab applies to all services, PMM 2.42 and later also enables you to customize resolution for individual services. You can do this by adjusting the `metrics_resolutions` setting for each exporter using the API (see below for an example).
 
 Customizing resolution settings for individual services allows you to fine-tune your PMM setup, balancing data granularity with resource consumption. This feature enables you to:
 
 - Allocate resources efficiently by focusing on high-resolution data for key services
 - Reduce storage requirements by lowering resolution for less important components
 - Align your monitoring setup with the specific needs of your environment
-  
+
 To change resolution settings:
 
 1. Identify the appropriate API endpoint:
@@ -77,9 +77,9 @@ To change resolution settings:
      - For MongoDB: `ChangeMongoDBExporter`
 
 2. Locate the `agent_id` of the exporter you want to modify. You can find this in the [Inventory dashboard](../details/dashboards/dashboard-inventory.md) under the **Monitoring** column for the target service.
-   
+
 4. Set the desired resolution using `hr` (high), `mr` (medium), or `lr` (low) in the `metrics_resolutions` field.
- 
+
 **Example**:  Setting 15s medium resolution for a PostgreSQL server:
 
 ```
@@ -101,7 +101,11 @@ To change resolution settings:
 
 To reset a custom resolution, make an API call with "mr": "0s" (or "hr": "0s", "lr": "0s" as appropriate). This will revert the exporter to using the global PMM settings.
 
-For more information, see the [**Change Agent Attributes**](https://percona-pmm.readme.io/reference/changeagent) section in the API documentation.
+For more information on configuring per-service metrics resolution, see the following sections in the API documentation:
+
+- [Change Postgres Exporter](https://percona-pmm.readme.io/reference/changepostgresexporter)
+- [Change mysqld Exporter](https://percona-pmm.readme.io/reference/changemysqldexporter)
+- [Change MongoDB Exporter](https://percona-pmm.readme.io/reference/changemongodbexporter)
 
 ## Advanced Settings
 
@@ -113,10 +117,10 @@ For more information, see the [**Change Agent Attributes**](https://percona-pmm.
 
 ### Telemetry
 
-The *Telemetry* switch enables gathering and sending basic **anonymous** data to Percona, which helps us to determine where to focus the development and what is the uptake for each release of PMM. 
+The *Telemetry* switch enables gathering and sending basic **anonymous** data to Percona, which helps us to determine where to focus the development and what is the uptake for each release of PMM.
 Specifically, gathering this information helps determine if we need to release patches to legacy versions beyond support, determine when supporting a particular version is no longer necessary, and understand the best frequency of releases.
 
-PMM Telemetry is based on data collected by various PMM components and stored inside PMM server 
+PMM Telemetry is based on data collected by various PMM components and stored inside PMM server
 
 !!! note alert alert-primary ""
     When PMM is installed, telemetry is not sent immediately. Before the first telemetry report is generated, PMM provides users with a 24-hour grace period to disable telemetry.
