@@ -60,7 +60,7 @@ Values for the *Custom* preset can be entered as values, or changed with the arr
 
 ### Configure metrics resolution per-service
 
-You can configure metrics resolutions both globally and on a per-service basis. While the global setting in the **Settings** tab applies to all services, PMM 2.42 and later also enables you to customize resolution for individual services. You can do this by adjusting the `metrics_resolutions` setting for each exporter using the API (see below for an example).
+You can configure metrics resolutions both globally and on a per-service basis. While the global setting in the **Settings** tab applies to all services, PMM 2.42 and later also enables you to customize resolution for individual services. You can do this by adjusting the `metrics_resolutions` setting for each exporter using the [API](https://percona-pmm.readme.io) (see below for an example).
 
 Customizing resolution settings for individual services allows you to fine-tune your PMM setup, balancing data granularity with resource consumption. This feature enables you to:
 
@@ -78,24 +78,78 @@ To change resolution settings:
 
 2. Locate the `agent_id` of the exporter you want to modify. You can find this in the [Inventory dashboard](../details/dashboards/dashboard-inventory.md) under the **Monitoring** column for the target service.
 
-4. Set the desired resolution using `hr` (high), `mr` (medium), or `lr` (low) in the `metrics_resolutions` field.
-
-**Example**:  Setting 15s medium resolution for a PostgreSQL server:
+4. Set the desired resolution using `hr` (high), `mr` (medium), or `lr` (low) in the `metrics_resolutions` field, running a command similar to
 
 ```
-> curl -X 'POST' \
-  'http://admin:admin@127.0.0.1/v1/inventory/Agents/ChangePostgresExporter' \
-  -H 'accept: application/json' \
-  -H 'Content-Type: application/json' \
-  -d '{
-  "agent_id": "/agent_id/64b195b1-4d65-4838-9eab-50b79c0a07a3", // Your exporter agent ID
-  "common": {
-    "custom_labels": {
-      "metrics_resolutions": {"mr": "15s"} // it can be 'mr', 'hr, 'lr' in any combination
-    }
-  }
-}'
+curl --request POST \
+        --url https://<your-pmm-user>:<your-pmm-pwd>@<your-pmm-address>/v1/inventory/Agents/<change-endpoint> \
+        --header 'accept: application/json' \
+        --header 'content-type: application/json' \
+        --data '
+    {
+    "common": {
+        "metrics_resolutions": {
+           "hr": "<your-hr>",
+           "mr": "<your-mr>",
+           "lr": "<your-lr>"
+        }
+    },
+    "agent_id": "/agent_id/<your-agent-id>"  
+    }  '
 ```
+
+**Note:**
+
+- `metrics_resolutions`: can include 'hr, 'mr', 'lr' in any combination.
+- Use _curl_'s `--insecure` option in case you have self-signed certificates.
+
+
+**Example**:  Setting 60s high, 300s medium, and 3600s low resolution for a MongoDB server with a MongoDB exporter's `agent_id` equal to `/agent_id/0ad0eebf-65a2-488f-a473-3a98b335b6d8`:
+
+```
+curl --insecure --request POST \
+        --url https://admin:adminPwd@127.0.0.1/v1/inventory/Agents/ChangeMongoDBExporter \
+        --header 'accept: application/json' \
+        --header 'content-type: application/json' \
+        --data '
+    {
+    "common": {
+        "metrics_resolutions": {
+           "hr": "60s",
+           "mr": "300s",
+           "lr": "3600s"
+        }
+    },
+    "agent_id": "/agent_id/0ad0eebf-65a2-488f-a473-3a98b335b6d8"  
+    }  '
+```
+
+If successful, the command above will print an output similar to the following, from which you can verify that the changes took effect.
+
+```
+ {
+   "mongodb_exporter":  {
+     "agent_id":  "/agent_id/0ad0eebf-65a2-488f-a473-3a98b335b6d8",
+     "pmm_agent_id":  "/agent_id/893dc1b9-f5d6-449f-b6f1-4433fbc38fce",
+     "service_id":  "/service_id/311930d0-babb-4a64-b936-440ad745c71d",
+     "username":  "mongodb_exporter",
+     "tls_skip_verify":  true,
+     "push_metrics_enabled":  true,
+     "status":  "RUNNING",
+     "listen_port":  42002,
+     "collections_limit":  -1,
+     "enable_all_collectors":  true,
+     "process_exec_path":  "/usr/local/percona/pmm2/exporters/mongodb_exporter",
+     "log_level":  "warn",
+     "metrics_resolutions":  {
+       "hr":  "60s",
+       "mr":  "300s",
+       "lr":  "3600s"
+     }
+   }
+```
+
+The new configured metrics resolutions can also be found in the `vmagentscrapecfg` file. This file can be identified by checking the `-promscrape.config` variable passed to the `vmagent` command (you can use `ps aux | grep vmagent` for this scope).
 
 To reset a custom resolution, make an API call with "mr": "0s" (or "hr": "0s", "lr": "0s" as appropriate). This will revert the exporter to using the global PMM settings.
 
