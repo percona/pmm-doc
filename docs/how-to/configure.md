@@ -124,7 +124,7 @@ curl --insecure --request POST \
     }  '
 ```
 
-If successful, the command above will print an output similar to the following, from which you can verify that the changes took effect.
+If successful, the command above will print an output similar to the following, from which you can verify that the changes took effect:
 
 ```
  {
