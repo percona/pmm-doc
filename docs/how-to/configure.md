@@ -90,8 +90,6 @@ To change resolution settings:
   -d '{
   "agent_id": "/agent_id/64b195b1-4d65-4838-9eab-50b79c0a07a3", // Your exporter agent ID
   "common": {
-    "enable": true,
-    "disable": true,
     "custom_labels": {
       "metrics_resolutions": {"mr": "15s"} // it can be 'mr', 'hr, 'lr' in any combination
     }
