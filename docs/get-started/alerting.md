@@ -2,7 +2,7 @@
 
 !!! alert alert-info ""
     Percona Alerting is the new Alerting feature introduced in PMM 2.31. This replaces the Integrated Alerting feature available in previous versions.  
-    
+
 Alerting notifies of important or unusual activity in your database environments so that you can identify and resolve problems quickly. When something needs your attention, Percona Alerting can be configured to automatically send you a notification through your specified contact points.
 
 PMM 2.31 introduced Percona Alerting which replaces Integrated Alerting in previous PMM versions. In addition to full feature parity, Percona Alerting includes additional benefits like Grafana-based alert rules and a unified, easy-to-use alerting command center on the **Alerting** page.
@@ -32,7 +32,7 @@ The Alerting page contains are split into eight tabs: Fired Alerts, Alert Rules,
 
 ## Alert rules
 
-Alert rules describe the circumstances under which you want to be alerted. The evaluation criteria that you define determine whether an alert will fire. 
+Alert rules describe the circumstances under which you want to be alerted. The evaluation criteria that you define determine whether an alert will fire.
 
 An alert rule consists of one or more queries and expressions, a condition, the frequency of evaluation, and the duration over which the condition is met. For example, you might configure an alert to fire and trigger a notification when MongoDB is down.
 
@@ -53,7 +53,7 @@ PMM provides a set of Alert Rule templates with common events and expressions fo
 You can check the alert templates available for your account under **Alerting > Alert rule templates** tab. PMM lists here the following types of templates:
 
 - Built-in templates, available out-of-the-box with PMM.
-- Templates downloaded from Percona Platform.
+- Templates downloaded from Percona Platform. See [Integrate PMM with Percona Platform](../how-to/integrate-platform.md).
 - Custom templates created or uploaded on the **Alerting page > Alert Templates** tab. You can also store your custom template files in your ``/srv/alerting/templates`` directory and PMM will load them during startup.
 
 ### Create alert rules from alert rule templates
@@ -153,7 +153,7 @@ After provisioning the resources required for creating Percona templated alerts,
 2. On the **Create alert rule** page, select the **Percona templated alert** option. If you want to learn about creating Grafana alerts instead, check our [Grafana's documentation](https://grafana.com/docs/grafana/latest/alerting/).
 3. In the **Template details** section, choose the template on which you want to base the new alert rule. This automatically populates the **Name**, **Duration**, and **Severity** fields with information from the template. You can change these values if you want to override the default specifications in the template.
 4. In the **Filters** field, specify if you want the alert rule to apply only to specific services or nodes. For example: `service_name=ps5.7`. When creating alert rule filters, consider the following:
-   
+
     - Filters use conjunction semantics. This means that if you add more than one filter, PMM will combine their conditions to search for matches: filter 1 AND filter 2 AND filter 3.
     - **Label** must be an exact match. You can find a complete list of labels using the <i class="uil uil-compass"></i> **Explore** menu in PMM.
 
@@ -190,8 +190,8 @@ To use SMTP with a PMM Docker installation:
     GF_SMTP_FROM_ADDRESS=email@domain.com
     GF_SMTP_FROM_NAME=Percona Alerting
     ```
-    Below is a summary of each environment variable above: 
-    - `GF_SMTP_ENABLED`: When true, enables Grafana to send emails. 
+    Below is a summary of each environment variable above:
+    - `GF_SMTP_ENABLED`: When true, enables Grafana to send emails.
     - `GF_SMTP_HOST`: Host address of your SMTP server.
     - `GF_SMTP_USER`: Username for SMTP authentication.
     - `GF_SMTP_PASSWORD`: Password for SMTP authentication
@@ -201,7 +201,7 @@ To use SMTP with a PMM Docker installation:
 
     *NB: If you are using your Gmail’s SMTP credentials as shown above, you will have to generate an app password and fill it in as the value of your $GF_SMTP_PASSWORD variable.*
 
-2. Pass in the `.env` file to Docker run using the `--env-file` flag: 
+2. Pass in the `.env` file to Docker run using the `--env-file` flag:
     ```
     docker run --env-file=.env -p 443:443 -p 80:80 percona/pmm-server:2
     ```
@@ -278,13 +278,13 @@ This can be useful, for example, when you want to send notifications to a catch-
 6. Toggle **Override grouping** if you do not want to use root policy grouping.
 7. Toggle **Override general timings** to specify how often you want to wait until the initial notification is sent for a new group. When this is disabled, PMM uses root policy group timings instead.
 8. Add a mute timing if you want to mute notifications or this policy for a specific, regular interval. For example, you can create a mute to suppress trivial notifications during weekends.  Mute timings are different from silences in the sense that they are recurring, while silences have a fixed start and end time.
-   
+
 !!! caution alert alert-warning "Important"
     Time specified in mute timing must be in UTC and military format i.e. 14:00 not 2:00 PM.
 
 ## Silence alerts
-Create a silence when you want to suppress/stop alerts and their associated notifications for a very specific amount of time. 
-Silences default to today’s current date and have a default duration of two hours. 
+Create a silence when you want to suppress/stop alerts and their associated notifications for a very specific amount of time.
+Silences default to today’s current date and have a default duration of two hours.
 
 You can also schedule a silence for a future date and time. This is referred to as a `Pending` silence, which can be observed on the Silences page.
 
@@ -340,7 +340,7 @@ After upgrading to PMM 2.31, make sure to manually migrate any alert rules that 
 ##### Script commands
 
 The default command for migrating rules is:
-```yaml 
+```yaml
 python3 ia_migration.py -u admin -p admin
 ```
 To see all the available options, check the scrip help using `ia_migration.py -h`
