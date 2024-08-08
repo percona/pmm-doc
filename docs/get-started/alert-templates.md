@@ -17,19 +17,8 @@ To check the alert templates for your PMM instance, go to PMM > **Alerting > Ale
 
 Here is the full list of alert templates available in Percona Monitoring and Management (PMM).
 
-This list includes both built-in templates, accessible to all PMM users, and customer-only templates, which are exclusive to users who have connected their PMM instance to the Percona Platform using a Percona Account.
+This list includes both built-in templates, accessible to all PMM users, and customer-only templates, which are exclusive to users who have [connected PMM to Percona Platform](../how-to/integrate-platform.md) using a Percona Account.
 
-Certainly. I'll update the table while keeping the original descriptions intact and organizing it by database technology. Here's the updated table:
-
-### PMM Alert templates
-
-This table presents a comprehensive list of alert templates available in Percona Monitoring and Management (PMM). It includes both built-in templates, available to all PMM users, and customer-only templates. Customer-only templates are exclusive to users who have connected their PMM instance to the Percona Platform using a Percona account. Templates are organized by database technology for easy reference.
-
-Certainly. I'll reorganize the table to put the generic database technology templates at the top, followed by specific database technologies. Here's the updated table:
-
-### PMM Alert Templates
-
-This table presents a comprehensive list of alert templates available in Percona Monitoring and Management (PMM). It includes both built-in templates, available to all PMM users, and customer-only templates. Customer-only templates are exclusive to users who have connected their PMM instance to the Percona Platform using a Percona account. Templates are organized with generic database technology templates at the top, followed by specific database technologies.
 
 | Template name | Description | Availability | Database technology |
 | :------------ | :---------- | :----------- | :------------------ |
