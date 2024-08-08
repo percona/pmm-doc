@@ -79,8 +79,12 @@ Once PMM is set up, choose the database or the application that you want it to m
                 wget https://repo.percona.com/apt/percona-release_latest.generic_all.deb
                 dpkg -i percona-release_latest.generic_all.deb
                 ```
+            2. Enable the PMM client repository:
 
-            2. Install the PMM Client package:
+                ```sh
+                percona-release enable pmm2-client release
+                ```
+            3. Install the PMM Client package:
 
                 ```sh
                 apt update
@@ -98,7 +102,13 @@ Once PMM is set up, choose the database or the application that you want it to m
                 yum install -y https://repo.percona.com/yum/percona-release-latest.noarch.rpm
                 ```
 
-            2. Install the PMM Client package:
+            2.  Enable the PMM client repository:
+
+               ```sh
+               percona-release enable pmm2-client release
+               ```
+
+            3. Install the PMM Client package:
 
                 ```sh
                 yum install -y pmm2-client
@@ -175,8 +185,12 @@ Once PMM is set up, choose the database or the application that you want it to m
                 wget https://repo.percona.com/apt/percona-release_latest.generic_all.deb
                 dpkg -i percona-release_latest.generic_all.deb
                 ```
+            2. Enable the PMM client repository:
 
-            2. Install the PMM Client package:
+                ```sh
+                percona-release enable pmm2-client release
+                ```
+            3. Install the PMM Client package:
 
                 ```sh
                 apt update
@@ -188,12 +202,18 @@ Once PMM is set up, choose the database or the application that you want it to m
             Install the following with `root` permission: 
             { .power-number}   
 
-            3. Install [percona-release](https://docs.percona.com/percona-software-repositories/installing.html) tool.  If this is already installed, [update percona-release](https://docs.percona.com/percona-software-repositories/updating.html) to the latest version:
+            1. Install [percona-release](https://docs.percona.com/percona-software-repositories/installing.html) tool.  If this is already installed, [update percona-release](https://docs.percona.com/percona-software-repositories/updating.html) to the latest version:
 
                 ```sh
                 yum install -y https://repo.percona.com/yum/percona-release-latest.noarch.rpm
                 ```
-            4. Install the PMM Client package:
+
+            2. Enable the PMM client repository:
+
+                ```sh
+                percona-release enable pmm2-client release
+                ```
+            3. Install the PMM Client package:
 
                 ```sh
                 yum install -y pmm2-client
@@ -296,8 +316,12 @@ Once PMM is set up, choose the database or the application that you want it to m
                 ```sh
                 yum install -y https://repo.percona.com/yum/percona-release-latest.noarch.rpm
                 ```
+            2. Enable the PMM client repository:
 
-            2. Install the PMM Client package:
+                ```sh
+                percona-release enable pmm2-client release
+                ```
+            3. Install the PMM Client package:
 
                 ```sh
                 yum install -y pmm2-client
@@ -336,8 +360,12 @@ Once PMM is set up, choose the database or the application that you want it to m
                 wget https://repo.percona.com/apt/percona-release_latest.generic_all.deb
                 dpkg -i percona-release_latest.generic_all.deb
                 ```
+            2. Enable the PMM client repository:
 
-            2. Install the PMM Client package:
+                ```sh
+                percona-release enable pmm2-client release
+                ```
+            3. Install the PMM Client package:
 
                 ```sh
                 apt update
@@ -353,8 +381,12 @@ Once PMM is set up, choose the database or the application that you want it to m
                 ```sh
                 yum install -y https://repo.percona.com/yum/percona-release-latest.noarch.rpm
                 ```
+            2. Enable the PMM client repository:
 
-            2. Install the PMM Client package:
+                ```sh
+                percona-release enable pmm2-client release
+                ```
+            3. Install the PMM Client package:
 
                 ```sh
                 yum install -y pmm2-client
@@ -392,8 +424,12 @@ Once PMM is set up, choose the database or the application that you want it to m
                 wget https://repo.percona.com/apt/percona-release_latest.generic_all.deb
                 dpkg -i percona-release_latest.generic_all.deb
                 ```
+            2. Enable the PMM client repository:
 
-            2. Install the PMM Client package:
+                ```sh
+                percona-release enable pmm2-client release
+                ```
+            3. Install the PMM Client package:
 
                 ```sh
                 apt update
@@ -409,8 +445,13 @@ Once PMM is set up, choose the database or the application that you want it to m
                 ```sh
                 yum install -y https://repo.percona.com/yum/percona-release-latest.noarch.rpm
                 ```
+            2. Enable the PMM client repository:
 
-            2. Install the PMM Client package:
+                ```sh
+                percona-release enable pmm2-client release
+                ```
+            
+            3. Install the PMM Client package:
 
                 ```sh
                 yum install -y pmm2-client
