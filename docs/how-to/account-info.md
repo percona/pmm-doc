@@ -2,7 +2,7 @@
 
 When you connect your PMM instances to Percona Platform, PMM gets access to:
 
--  More alert templates
+- [More alert templates](../get-started/alert-templates.md)
 -  Basic Advisor Checks for additional database checks
 -  Standard/Premium Advisor Checks for more advanced database health checks.
 
