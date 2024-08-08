@@ -19,46 +19,46 @@ To check the alert templates for your PMM instance, go to PMM > **Alerting > Ale
 
 These templates are available to all PMM users, regardless of their account type.
 
+### Built-in alert templates
+
+| Template name | Description | Database technology |
+| :------------ | :---------- | :------------------ |
+| MongoDB down | Detects when a MongoDB instance becomes unavailable, enabling rapid response to maintain database accessibility. | MongoDB |
+| PMM agent down | Monitors PMM Agent status and alerts when an agent becomes unreachable, indicating potential host or agent issues.  | MySQL, MongoDB, PostgreSQL, ProxySQL |
+| Backup failed [*Technical Preview*] | Monitors backup processes and alerts on failures, providing details about the failed backup artifact and service. Helps maintain data safety and recovery readiness. This template is currently in Technical Preview status and should be used for testing purposes only as it is subject to change. | MySQL, MongoDB, PostgreSQL, ProxySQL |
+| Memory used by MongoDB connections | Tracks MongoDB connection memory usage and alerts when it exceeds configurable thresholds. Helps identify and address potential performance issues caused by high memory consumption. | MongoDB |
+| Memory used by MongoDB | Monitors overall MongoDB memory usage and alerts when it exceeds 80% of total system memory. Provides details about specific MongoDB services and nodes experiencing high memory consumption, aiding in resource optimization. | MongoDB |
+| MongoDB restarted | Detects recent MongoDB restarts, alerting if an instance has been restarted within the last 5 minutes (default threshold). Facilitates investigation of unexpected downtime and potential issues. | MongoDB |
+| MySQL down | Monitors MySQL instance availability and alerts when any MySQL service becomes unreachable. Enables quick response to maintain database services. | MySQL |
+| MySQL replication running IO | Tracks MySQL replication I/O thread status and alerts if it stops running on a replica. Crucial for ensuring data is being received from the primary server. | MySQL |
+| MySQL replication running SQL | Monitors MySQL replication SQL thread status and alerts if it stops running on a replica. Essential for verifying that received data is being applied correctly to maintain data consistency. | MySQL |
+| MySQL restarted | Detects recent MySQL restarts, alerting if an instance has been restarted within the last 5 minutes (default threshold). Aids in investigating unexpected downtime and potential issues. | MySQL |
+| MySQL connections in use | Tracks MySQL connection usage and alerts when the percentage of active connections exceeds 80% of the maximum allowed (default threshold). Helps prevent performance degradation due to connection overload. | MySQL |
+| Node high CPU load | Monitors node CPU usage and alerts when it surpasses 80% (default threshold). Provides details about specific nodes experiencing high CPU load, indicating potential performance issues or scaling needs. | MySQL, MongoDB, PostgreSQL |
+| Memory available less than a threshold | Tracks available memory on nodes and alerts when free memory drops below 20% (default threshold). Helps prevent system instability due to memory constraints. | MySQL, MongoDB, PostgreSQL |
+| Node high swap filling up | Monitors node swap usage and alerts when it exceeds 80% (default threshold). Indicates potential memory pressure and performance degradation, allowing for timely intervention. | MySQL, MongoDB, PostgreSQL |
+| PostgreSQL down | Detects when PostgreSQL instances become unavailable, enabling quick response to maintain database services. Provides details about affected services and nodes. | PostgreSQL |
+| PostgreSQL restarted | Identifies recent PostgreSQL restarts, alerting if an instance has been restarted within the last 5 minutes (default threshold). Aids in investigating unexpected downtime and potential issues. | PostgreSQL |
+| PostgreSQL connections in use | Monitors PostgreSQL connection usage and alerts when the percentage of active connections exceeds 80% of the maximum allowed (default threshold). Helps prevent performance degradation due to excessive connections. | PostgreSQL |
+| ProxySQL server status | Tracks ProxySQL server status and alerts when a server's status becomes OFFLINE_SOFT (3) or OFFLINE_HARD (4). Provides details about the server's endpoint, hostgroup, and associated ProxySQL service. Crucial for maintaining high availability and preventing service disruptions. | ProxySQL |
+
+### Customer-only alert templates
+
 | Template Name | Description | Database Technology |
 | :------------ | :---------- | :------------------ |
-| **MongoDB Down** | Detects when a MongoDB instance becomes unavailable, enabling rapid response to maintain database accessibility. | MongoDB |
-| **PMM Agent Down** | Notifies when the PMM agent stops communicating, ensuring continuous monitoring across your database systems. | MySQL, MongoDB, PostgreSQL, ProxySQL |
-| **Backup Failed [Technical Preview]** | Alerts on backup failures, helping maintain data safety and recovery readiness. This template is  currently in Technical Preview status. Use this template for testing purposes only as it is subject to change.| MySQL, MongoDB, PostgreSQL, ProxySQL |
-| **Memory Used by MongoDB Connections** | Monitors memory consumption by MongoDB connections to prevent resource exhaustion. | MongoDB |
-| **Memory Used by MongoDB** | Tracks overall MongoDB memory usage for optimal resource allocation. | MongoDB |
-| **MongoDB Restarted** | Notifies of MongoDB instance restarts, facilitating investigation of unexpected downtime. | MongoDB |
-| **MySQL Down** | Alerts when a MySQL instance becomes unavailable, enabling quick response to maintain service. | MySQL |
-| **MySQL Replication Running IO** | Monitors the I/O thread of MySQL replication to ensure data receipt from the master. | MySQL |
-| **MySQL Replication Running SQL** | Monitors the SQL thread of MySQL replication to ensure that data received from the primary is being properly applied to the replica. Helps detect replication lag, data inconsistencies, and potential bottlenecks in the replication process. Critical for maintaining data integrity and minimizing downtime in replicated MySQL environments. | MySQL |
-| **MySQL Restarted** | Notifies of MySQL instance restarts, allowing investigation of unexpected downtime. | MySQL |
-| **MySQL Connections in Use** | Monitors active MySQL connections to prevent overload and connection issues. | MySQL |
-| **Node High CPU Load** | Alerts on high CPU usage, indicating potential performance issues or scaling needs. | MySQL, MongoDB, PostgreSQL |
-| **Memory Available Less Than a Threshold** | Notifies when available memory falls below a set threshold, preventing system instability. | MySQL, MongoDB, PostgreSQL |
-| **Node High Swap Filling Up** | Monitors swap space usage, indicating potential memory pressure and performance degradation. | MySQL, MongoDB, PostgreSQL |
-| **PostgreSQL Down** | Alerts when a PostgreSQL instance becomes unavailable, enabling quick response to maintain service. | PostgreSQL |
-| **PostgreSQL Restarted** | Notifies of PostgreSQL instance restarts, facilitating investigation of unexpected downtime. | PostgreSQL |
-| **PostgreSQL Connections in Use** | Tracks active PostgreSQL connections to prevent overload and connection issues. | PostgreSQL |
-| **ProxySQL Server Status** | Monitors ProxySQL server status to ensure proper load balancing and high availability. | ProxySQL |
-
-### Customer-Only alert templates
-
-These advanced templates are exclusively available to Percona customers who [connect PMM to Percona Platform](../how-to/integrate-platform.md) with a Percona Account.
-
-| Template Name | Description | Database Technology |
-| :------------ | :---------- | :------------------ |
-| **MongoDB DBPath Disk Space Utilization** | Monitors disk space usage in MongoDB's data directory to prevent storage-related issues. | MongoDB |
-| **MongoDB Host SSL Certificate Expiry** | Alerts on approaching SSL certificate expiration to maintain secure connections. | MongoDB |
-| **MongoDB Oplog Window** | Tracks oplog window size to ensure sufficient time for secondary node data replication. | MongoDB |
-| **MongoDB Read Tickets** | Monitors read ticket availability in WiredTiger storage engine to optimize read performance. | MongoDB |
-| **MongoDB Replication Lag is High** | Alerts when replication lag exceeds acceptable thresholds, ensuring data consistency across replicas. | MongoDB |
-| **MongoDB ReplicaSet Has No Primary** | Notifies when a replica set loses its primary node, potentially affecting write operations. | MongoDB |
-| **MongoDB Member is in Unusual State** | Alerts on abnormal states of replica set members, helping maintain cluster health. | MongoDB |
-| **MongoDB Write Tickets** | Monitors write ticket availability in WiredTiger storage engine to optimize write performance. | MongoDB |
-| **PostgreSQL Index Bloat is High** | Alerts on excessive index bloat, which can degrade query performance. | PostgreSQL |
-| **PostgreSQL High Number of Dead Tuples** | Monitors accumulation of dead tuples, which can impact query performance and storage efficiency. | PostgreSQL |
-| **PostgreSQL Has a High Number of Statement Timeouts** | Tracks frequent statement timeouts, indicating potential performance or configuration issues. | PostgreSQL |
-| **PostgreSQL Table Bloat is High** | Alerts on excessive table bloat, which can degrade query performance and waste storage. | PostgreSQL |
-| **PostgreSQL High Rate of Transaction Rollbacks** | Monitors frequent transaction rollbacks, which may indicate application or database issues. | PostgreSQL |
-| **PostgreSQL Tables Not Auto Analyzed** | Identifies tables not being auto-analyzed, potentially leading to suboptimal query plans. | PostgreSQL |
-| **PostgreSQL Tables Not Auto Vacuumed** | Alerts on tables not being auto-vacuumed, which can lead to bloat and performance issues. | PostgreSQL |
-| **PostgreSQL Unused Replication Slot** | Identifies unused replication slots, which can prevent WAL retention and lead to disk space issues. | PostgreSQL |
+| MongoDB DBPath disk space utilization | Monitors disk space usage in MongoDB's data directory and alerts when it exceeds set thresholds. Helps prevent storage-related issues and ensures adequate space for database operations. | MongoDB |
+| MongoDB host SSL certificate expiry | Tracks SSL certificate expiration dates for MongoDB hosts and alerts when certificates are approaching expiry. Enables timely certificate renewal to maintain secure connections. | MongoDB |
+| MongoDB oplog window | Monitors the oplog window size and alerts when it falls below the recommended threshold (typically 24-48 hours). Ensures sufficient time for secondary nodes to replicate data and maintain cluster consistency. | MongoDB |
+| MongoDB read tickets | Tracks read ticket availability in the WiredTiger storage engine and alerts when it falls below set thresholds. Helps optimize read performance and identify potential bottlenecks. | MongoDB |
+| MongoDB replication lag is high | Monitors replication lag and alerts when it exceeds acceptable thresholds. Crucial for maintaining data consistency across replicas and identifying synchronization issues. | MongoDB |
+| MongoDB ReplicaSet has no primary | Detects when a replica set loses its primary node and alerts users. Indicates that the cluster is in read-only mode, potentially affecting write operations and overall database functionality. | MongoDB |
+| MongoDB member is in unusual state | Identifies and alerts when replica set members enter unusual states such as Recovering, Startup, or Rollback. Helps maintain cluster health and performance by enabling quick intervention. | MongoDB |
+| MongoDB write tickets | Monitors write ticket availability in the WiredTiger storage engine and alerts when it falls below set thresholds. Aids in optimizing write performance and identifying potential bottlenecks. | MongoDB |
+| PostgreSQL index bloat is high | Detects excessive index bloat and alerts users. Helps identify performance degradation due to bloated indexes, enabling timely maintenance to improve query performance. | PostgreSQL |
+| PostgreSQL high number of dead tuples | Monitors the accumulation of dead tuples in relations and alerts when they exceed set thresholds. Indicates potential issues with vacuum settings and helps optimize storage and query performance. | PostgreSQL |
+| PostgreSQL has a high number of statement timeouts | Tracks and alerts on frequent query cancellations due to statement timeouts. Helps identify various issues such as high load, poorly written queries, or inadequate resource allocation. | PostgreSQL |
+| PostgreSQL table bloat is high | Detects excessive table bloat and alerts users. Indicates a need to adjust vacuum settings for specific relations or globally, helping to maintain optimal query performance and storage efficiency. | PostgreSQL |
+| PostgreSQL high rate of transaction rollbacks | Monitors the ratio of transaction rollbacks to commits and alerts on high rates. Helps identify potential application or database issues leading to frequent transaction failures. | PostgreSQL |
+| PostgreSQL tables not auto analyzed | Identifies tables that are not being auto-analyzed and alerts users. Crucial for maintaining accurate statistics and generating proper query execution plans. | PostgreSQL |
+| PostgreSQL tables not auto vacuumed | Detects tables that are not being auto-vacuumed and alerts users. Essential for managing bloat, optimizing storage, and maintaining overall database health. | PostgreSQL |
+| PostgreSQL unused replication slot | Identifies and alerts on unused replication slots. Helps prevent excessive WAL retention and potential disk space issues, especially when replicas are offline. | PostgreSQL |
