@@ -1,4 +1,4 @@
-# PMM Alert Templates
+# PMM alert templates
 
 Alert templates provide a set of common events and expressions for alerting, serving as a foundation for creating alert rules.
 
