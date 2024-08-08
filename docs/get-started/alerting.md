@@ -53,7 +53,7 @@ PMM provides a set of Alert Rule templates with common events and expressions fo
 You can check the alert templates available for your account under **Alerting > Alert rule templates** tab. PMM lists here the following types of templates:
 
 - Built-in templates, available out-of-the-box with PMM.
-- Templates downloaded from Percona Platform. See [Integrate PMM with Percona Platform](../how-to/integrate-platform.md).
+- Additional templates available after connecting PMM with Percona Platform. See [Integrate PMM with Percona Platform](../how-to/integrate-platform.md).
 - Custom templates created or uploaded on the **Alerting page > Alert Templates** tab. You can also store your custom template files in your ``/srv/alerting/templates`` directory and PMM will load them during startup.
 
 ### Create alert rules from alert rule templates
