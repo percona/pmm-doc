@@ -27,7 +27,7 @@ The output of this command should look as follows:
 
 ```txt
 HAProxy Service added.
-Service ID  : /service_id/c481183f-70a2-443f-91e5-cae5cecd06a2
+Service ID  : c481183f-70a2-443f-91e5-cae5cecd06a2
 Service name: Ubuntu-haproxy
 ```
 
