@@ -116,7 +116,7 @@ You can now add services with [`pmm-admin`](../../details/commands/pmm-admin.md)
 
 === "Debian-based"
 
-    1. Configure repositories.
+   1. Configure repositories.
 
     ```sh
     wget https://repo.percona.com/apt/percona-release_latest.generic_all.deb
@@ -126,22 +126,20 @@ You can now add services with [`pmm-admin`](../../details/commands/pmm-admin.md)
     2. Install the PMM Client package.
 
     !!! hint "Root permissions"
-        ```sh
-        apt update
-        apt install -y pmm2-client
-        ```
-
-3. Check.
+    ```sh
+    apt update
+    apt install -y pmm2-client
+    ```
+    3. Check.
 
     ```sh
     pmm-admin --version
     ```
-
-4. [Register the node](#register).
+    4. [Register the node](#register).
 
 === "Red Hat-based"
 
-    1. Configure repositories
+   1. Configure repositories
 
     ```sh
     yum install -y https://repo.percona.com/yum/percona-release-latest.noarch.rpm
@@ -158,8 +156,7 @@ You can now add services with [`pmm-admin`](../../details/commands/pmm-admin.md)
     ```sh
     pmm-admin --version
     ```
-
-4. [Register the node](#register).
+    4. [Register the node](#register).
 
 ### Package manager -- manual download
 
