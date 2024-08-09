@@ -174,8 +174,7 @@ nav:
       - get-started/index.md
       - get-started/interface.md
       - get-started/alerting.md
-      - get-started/alert-templates.md
-      - Backup and Restore:
+      - Backup and restore:
           - get-started/backup/index.md
           - get-started/backup/prepare_storage_location.md
           - MongoDB backups:
