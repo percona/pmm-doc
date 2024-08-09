@@ -75,8 +75,9 @@ The [PMM Client Docker image] is a convenient way to run PMM Client as a preconf
     --volumes-from pmm-client-data \
     percona/pmm-client:2
     ```
-!!! hint alert-success "Tips"
-    You can find a complete list of compatible environment variables [here](../../details/commands/pmm-agent.md).
+    
+    !!! hint alert-success "Tips"
+        You can find a complete list of compatible environment variables [here](../../details/commands/pmm-agent.md).
 
 4. Check status.
 
@@ -113,16 +114,16 @@ You can now add services with [`pmm-admin`](../../details/commands/pmm-admin.md)
     percona-release enable original release
     ```
 
-#### Debian-based
+=== "Debian-based"
 
-1. Configure repositories.
+    1. Configure repositories.
 
     ```sh
     wget https://repo.percona.com/apt/percona-release_latest.generic_all.deb
     dpkg -i percona-release_latest.generic_all.deb
     ```
 
-2. Install the PMM Client package.
+    2. Install the PMM Client package.
 
     !!! hint "Root permissions"
         ```sh
@@ -138,21 +139,21 @@ You can now add services with [`pmm-admin`](../../details/commands/pmm-admin.md)
 
 4. [Register the node](#register).
 
-#### Red Hat-based
+=== "Red Hat-based"
 
-1. Configure repositories.
+    1. Configure repositories
 
     ```sh
     yum install -y https://repo.percona.com/yum/percona-release-latest.noarch.rpm
     ```
 
-2. Install the PMM Client package.
+    2. Install the PMM Client package
 
     ```sh
     yum install -y pmm2-client
     ```
 
-3. Check.
+    3. Check
 
     ```sh
     pmm-admin --version
@@ -183,17 +184,17 @@ Here are the download page links for each supported platform.
 - [Ubuntu 20.04 (Focal Fossa)]
 - [Ubuntu 22.04 (Jammy Jellyfish)]
 
-#### Debian-based
+=== "Debian-based"
 
-```sh
-dpkg -i *.deb
-```
+    ```sh
+    dpkg -i *.deb
+    ```
 
-#### Red Hat-based
+=== "Red Hat-based"
 
-```sh
-dnf localinstall *.rpm
-```
+    ```sh
+    dnf localinstall *.rpm
+    ```
 
 ### Binary package
 
@@ -273,13 +274,13 @@ dnf localinstall *.rpm
     pmm-admin status
     ```
     
-    !!! hint PMM-Agent can be updated from tarball:
+    !!! hint "PMM-Agent can be updated from tarball"
 
-     1. Download tar.gz with pmm2-client.
-     2. Extract it.
-     3. Run ./install_tarball script with the "-u" flag.
+        1. Download tar.gz with pmm2-client.
+        2. Extract it.
+        3. Run ./install_tarball script with the "-u" flag.
 
-    The configuration file will be overwritten if you do not provide the "-u" flag while the pmm-agent is updated.
+        The configuration file will be overwritten if you do not provide the "-u" flag while the pmm-agent is updated.
 
 ## Register
 
@@ -302,6 +303,12 @@ Register on PMM Server with IP address `192.168.33.14` using the default `admin/
 
 ```sh
 pmm-admin config --server-insecure-tls --server-url=https://admin:admin@192.168.33.14:443 192.168.33.23 generic mynode
+```
+
+Register your client node running on Docker with PMM Server.
+
+```sh
+docker exec pmm-admin config --server-insecure-tls --server-url=https://admin:admin@X.X.X.X:443
 ```
 
 ## Add services
@@ -358,29 +365,29 @@ How to remove (uninstall) PMM Client.
 
 ### Package manager
 
-#### Debian-based distributions
+=== "Debian-based distributions"
 
-1. Uninstall the PMM Client package.
+    1. Uninstall the PMM Client package.
 
     ```sh
     apt remove -y pmm2-client
     ```
 
-2. Remove the Percona repository
+    2. Remove the Percona repository
 
     ```sh
     dpkg -r percona-release
     ```
 
-#### Red Hat-based distributions
+=== "Red Hat-based distributions"
 
-1. Uninstall the PMM Client package.
+    1. Uninstall the PMM Client package.
 
     ```sh
     yum remove -y pmm2-client
     ```
 
-2. Remove the Percona repository
+    2. Remove the Percona repository
 
     ```sh
     yum remove -y percona-release
