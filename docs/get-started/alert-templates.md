@@ -5,7 +5,7 @@ Alert templates provide a set of common events and expressions for alerting, ser
 Percona Monitoring and Management (PMM) offers three categories of alert templates to enhance database performance monitoring:
 
 1. **Built-in templates**: templates that are available out-of-the-box with the PMM installation and are available to all PMM users.
-2. **Percona Platform templates**: additional templates available exclusively to Percona customers who [connect PMM to Percona Platform](../how-to/integrate-platform.md) using a Percona Account.
+2. **Percona Platform templates**: additional templates dynamically delivered to PMM if the instance [connected to Percona Platform](../how-to/integrate-platform.md) using a Percona Account.
     When connected to the Platform, PMM automatically downloads these templates if the **Telemetry** option is enabled under **Configuration > Settings > Advanced Settings**.
 3. **Custom templates**: user-created templates for specific needs not met by built-in or Percona Platform templates. These allow you to tailor alerts to your unique environment and requirements.
    For details on creating custom templates, see [Percona Alerting](../get-started/alerting.md#configure-alert-templates).
