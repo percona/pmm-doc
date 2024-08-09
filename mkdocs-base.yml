@@ -173,8 +173,8 @@ nav:
   - Get started:
       - get-started/index.md
       - get-started/interface.md
-      - get-started/alerting.md   
-      - Alert templates: 
+      - Percona Alerting: 
+          - get-started/alerting.md   
           - get-started/alert-templates.md
       - Backup and Restore:
           - get-started/backup/index.md
