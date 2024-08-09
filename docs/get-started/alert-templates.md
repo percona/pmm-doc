@@ -5,7 +5,7 @@ Alert templates provide a set of common events and expressions for alerting, ser
 Percona Monitoring and Management (PMM) offers three categories of alert templates to enhance database performance monitoring:
 
 1. **Built-in templates**: templates that are available out-of-the-box with the PMM installation and are available to all PMM users.
-2. **Percona Platform templates**: additional templates dynamically delivered to PMM if the instance [connected to Percona Platform](../how-to/integrate-platform.md) using a Percona Account.
+2. **Percona Platform templates**: additional templates dynamically delivered to PMM if the instance is [connected to Percona Platform](../how-to/integrate-platform.md) using a Percona Account.
     When connected to the Platform, PMM automatically downloads these templates if the **Telemetry** option is enabled under **Configuration > Settings > Advanced Settings**.
 3. **Custom templates**: user-created templates for specific needs not met by built-in or Percona Platform templates. These allow you to tailor alerts to your unique environment and requirements.
    For details on creating custom templates, see [Percona Alerting](../get-started/alerting.md#configure-alert-templates).
@@ -16,12 +16,11 @@ To check the alert templates for your PMM instance, go to PMM > **Alerting > Ale
 
 ## Available alert template
 
-The table below lists of alert templates available in Percona Monitoring and Management (PMM). 
+The table below lists all the alert templates available in Percona Monitoring and Management (PMM). 
 
-This list includes both built-in templates, accessible to all PMM users, and customer-only templates.
-To have a Customer's list of Templates you need to be a percona customer and   [connect PMM to Percona Platform](../how-to/integrate-platform.md) using a Percona Account.
+This list includes both built-in templates (accessible to all PMM users), and customer-only templates.
 
-This list includes both built-in templates, accessible to all PMM users, and customer-only templates, which are available to all users who have [connected PMM to Percona Platform](../how-to/integrate-platform.md) using a Percona Account.
+To access the customer-only templates, you must be a Percona customer and [connect PMM to Percona Platform](../how-to/integrate-platform.md) using a Percona Account.
 
 
 | Template name | Description | Availability | Database technology |

@@ -173,8 +173,9 @@ nav:
   - Get started:
       - get-started/index.md
       - get-started/interface.md
-      - get-started/alerting.md
-      - get-started/alert-templates.md
+      - get-started/alerting.md   
+          - get-started/alert-templates.md
+
       - Backup and Restore:
           - get-started/backup/index.md
           - get-started/backup/prepare_storage_location.md
