@@ -18,7 +18,8 @@ To check the alert templates for your PMM instance, go to PMM > **Alerting > Ale
 
 The table below lists of alert templates available in Percona Monitoring and Management (PMM). 
 
-This list includes both built-in templates, accessible to all PMM users, and customer-only templates, which are available to all Percona customers who have [connected PMM to Percona Platform](../how-to/integrate-platform.md) using a Percona Account, regardless of their specific tier.
+This list includes both built-in templates, accessible to all PMM users, and customer-only templates.
+To have a Customer's list of Templates you need to be a percona customer and   [connect PMM to Percona Platform](../how-to/integrate-platform.md) using a Percona Account.
 
 This list includes both built-in templates, accessible to all PMM users, and customer-only templates, which are available to all users who have [connected PMM to Percona Platform](../how-to/integrate-platform.md) using a Percona Account.
 
