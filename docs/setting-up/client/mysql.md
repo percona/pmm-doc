@@ -75,7 +75,7 @@ Here are the benefits and drawbacks of *Slow query log* and *Performance Schema*
 
 This section covers how to configure a MySQL-based database server to use the *slow query log* as a source of metrics.
 
-### Applicable versions
+#### Applicable versions
 
 | Server                   | Versions         |
 |--------------------------|------------------|
@@ -86,7 +86,7 @@ This section covers how to configure a MySQL-based database server to use the *s
 
 The *slow query log* records the details of queries that take more than a certain amount of time to complete. With the database server configured to write this information to a file rather than a table, PMM Client parses the file and sends aggregated data to PMM Server via the Query Analytics part of PMM Agent.
 
-### Settings
+#### Settings
 
 | Variable                                                        | Value  |Description
 |-----------------------------------------------------------------|--------|----------------------------------------------------------
