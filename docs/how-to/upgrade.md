@@ -61,26 +61,26 @@ Run the commands below to install the latest PMM Agent version via package manag
 
 For example, to install the latest version of the PMM Agent on Red Hat or its derivatives:
 
-    ```
-    percona-release enable pmm2-client
-    yum update pmm2-client
-    ```
+ ```sh
+ percona-release enable pmm2-client
+ yum update pmm2-client
+ ```
 #### Deploy a specific version
 
 To deploy a specific version of the PMM Agent via package manager, check the available versions and then provide the full name of the package. For example:
 
-    ```
-    yum --showduplicates search pmm2-client
-    pmm2-client-2.39.0-6.el9.x86_64 : Percona Monitoring and Management Client (pmm-agent)
-    pmm2-client-2.40.0-6.el9.x86_64 : Percona Monitoring and Management Client (pmm-agent)
-    pmm2-client-2.40.1-6.el9.x86_64 : Percona Monitoring and Management Client (pmm-agent)
-    pmm2-client-2.41.0-6.el9.x86_64 : Percona Monitoring and Management Client (pmm-agent)
-    pmm2-client-2.41.1-6.el9.x86_64 : Percona Monitoring and Management Client (pmm-agent)
-    pmm2-client-2.41.2-6.el9.x86_64 : Percona Monitoring and Management Client (pmm-agent)
-    pmm2-client-2.42.0-6.el9.x86_64 : Percona Monitoring and Management Client (pmm-agent)
+ ```sh
+ yum --showduplicates search pmm2-client
+ pmm2-client-2.39.0-6.el9.x86_64 : Percona Monitoring and Management Client (pmm-agent)
+ pmm2-client-2.40.0-6.el9.x86_64 : Percona Monitoring and Management Client (pmm-agent)
+ pmm2-client-2.40.1-6.el9.x86_64 : Percona Monitoring and Management Client (pmm-agent)
+ pmm2-client-2.41.0-6.el9.x86_64 : Percona Monitoring and Management Client (pmm-agent)
+ pmm2-client-2.41.1-6.el9.x86_64 : Percona Monitoring and Management Client (pmm-agent)
+ pmm2-client-2.41.2-6.el9.x86_64 : Percona Monitoring and Management Client (pmm-agent)
+ pmm2-client-2.42.0-6.el9.x86_64 : Percona Monitoring and Management Client (pmm-agent)
 
-    yum update pmm2-client-2.41.2-6.el9.x86_64
-    ```
+ yum update pmm2-client-2.41.2-6.el9.x86_64
+ ```
 
 ### Tarball method
 
