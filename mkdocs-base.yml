@@ -175,7 +175,6 @@ nav:
       - get-started/interface.md
       - get-started/alerting.md   
           - Alert templates: get-started/alert-templates.md
-
       - Backup and Restore:
           - get-started/backup/index.md
           - get-started/backup/prepare_storage_location.md
