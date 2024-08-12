@@ -125,24 +125,72 @@ After the role is created EC2 instances running PMM will have permissions to dis
 !!! note alert alert-primary ""
     It’s also possible to create an IAM role to delegate permissions to an IAM user or to add permissions to a user belonging to another AWS account. See the [official AWS documentation on creating IAM roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create.html).
 
-## Setting up the Amazon RDS DB Instance
+## Setting up PMM for Amazon RDS DB Instance
 
-Query Analytics requires Configuring Performance Schema as the query source, because the slow query log is stored on the AWS (Amazon Web Services) side, and QAN agent is not able to read it.  Enable the `performance_schema` option under `Parameter Groups` in Amazon RDS.
+### Configure Performance Schema
 
-!!! caution alert alert-warning "Important"
-    Enabling Performance Schema on T2 instances is not recommended because it can easily run the T2 instance out of memory.
+To enable Query Analytics, you need to configure the Performance Schema as the query source. This is necessary because the slow query log is stored on the AWS (Amazon Web Services) side, making it inaccessible to the QAN agent.
 
-When adding a monitoring instance for Amazon RDS, specify a unique name to distinguish it from the local instance.  If you do not specify a name, it will use the client’s host name.
+To configure the Performance Schema:
 
-Create the `pmm` user with the following privileges on the Amazon RDS instance that you want to monitor:
+1. Navigate to the **Parameter Groups** section in the Amazon RDS management console.
+2. Find or create a parameter group associated with your RDS instance.
+3. Enable the **performance_schema** option within the parameter group.
+
+!!! note alert alert-primary "Memory usage caution"
+    Enabling Performance Schema on T2 instances is not recommended, as it can quickly exhaust the instance's memory, leading to potential performance degradation.
+
+### Adding a monitoring instance
+
+When adding a monitoring instance for Amazon RDS:
+
+- Specify a unique name to distinguish it from the local instance.
+- If no name is provided, the client's hostname will be used.
+
+### Creating a PMM user for MySQL 8 on Amazon RDS
+
+Run the following SQL script to create the necessary user and grant appropriate permissions:
 
 ```sql
-CREATE USER 'pmm'@'%' IDENTIFIED BY 'pass';
+-- Create user with mysql_native_password authentication plugin
+CREATE USER 'pmm'@'%' IDENTIFIED WITH 'mysql_native_password' BY 'pass';
+
+-- Grant necessary privileges
 GRANT SELECT, PROCESS, REPLICATION CLIENT ON *.* TO 'pmm'@'%';
-ALTER USER 'pmm'@'%' WITH MAX_USER_CONNECTIONS 10;
 GRANT SELECT, UPDATE, DELETE, DROP ON performance_schema.* TO 'pmm'@'%';
+
+-- Set maximum simultaneous connections for the user
+ALTER USER 'pmm'@'%' WITH MAX_USER_CONNECTIONS 10;
+
+-- Remove the limit on connections per hour
+ALTER USER 'pmm'@'%' WITH MAX_CONNECTIONS_PER_HOUR 0;
 ```
 
+### Key considerations
+
+1. **Authentication plugin**: `mysql_native_password` is used for compatibility with older clients and tools.
+
+2. **MAX_USER_CONNECTIONS**: 
+   - Limits simultaneous connections for the PMM user
+   - Acts as a failsafe to prevent connection pileup if there are issues with the monitored instance
+
+3. **MAX_CONNECTIONS_PER_HOUR**: 
+    - Crucial to prevent gaps in MySQL metrics
+    - If you experience gaps in metrics, ensure this setting is 0 (unlimited)
+
+4. **Connection Limits Explained**:
+   - `MAX_USER_CONNECTIONS`: Caps simultaneous connections
+   - `MAX_CONNECTIONS_PER_HOUR`: Limits total hourly connections
+
+5. **Password security**: Use a strong, unique password instead of 'pass'.
+
+6. **Permissions**: Adjust as needed for your security requirements.
+
+7. **Applying changes**: Restart PMM Client or reconnect to the database after changes.
+
+8. **Troubleshooting**: 
+   - Check PMM Agent logs for error messages if experiencing issues
+   - Pay attention to connection-related errors
 
 ## Adding an Amazon RDS, Aurora or Remote Instance
 
