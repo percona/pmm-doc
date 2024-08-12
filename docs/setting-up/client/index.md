@@ -116,43 +116,44 @@ You can now add services with [`pmm-admin`](../../details/commands/pmm-admin.md)
 
 === "Debian-based"
 
-   1. Configure repositories: 
-    ```sh
-    wget https://repo.percona.com/apt/percona-release_latest.generic_all.deb
-    dpkg -i percona-release_latest.generic_all.deb
-    ```
-   2. Install the PMM Client package:
+    1. Configure repositories: 
+       ```sh
+       wget https://repo.percona.com/apt/percona-release_latest.generic_all.deb
+       dpkg -i percona-release_latest.generic_all.deb
+       ```
 
-    !!! hint "Root permissions"
-    ```sh
-    apt update
-    apt install -y pmm2-client
-    ```
+    2. Install the PMM Client package:
+       !!! hint "Root permissions"
+           ```sh
+           apt update
+           apt install -y pmm2-client
+           ```
+
     3. Check:
+       ```sh
+       pmm-admin --version
+       ```
 
-    ```sh
-    pmm-admin --version
-    ```
     4. [Register the node](#register).
 
 === "Red Hat-based"
 
-   1. Configure repositories:
-   2. 
-    ```sh
-    yum install -y https://repo.percona.com/yum/percona-release-latest.noarch.rpm
-    ```
-   3. Install the PMM Client package:
+    1. Configure repositories:
+       ```sh
+       yum install -y https://repo.percona.com/yum/percona-release-latest.noarch.rpm
+       ```
 
-    ```sh
-    yum install -y pmm2-client
-    ```
-   4. Check:
+    2. Install the PMM Client package:
+       ```sh
+       yum install -y pmm2-client
+       ```
 
-    ```sh
-    pmm-admin --version
-    ```
-    5. [Register the node](#register).
+    3. Check:
+       ```sh
+       pmm-admin --version
+       ```
+
+    4. [Register the node](#register).
 
 ### Package manager -- manual download
 
@@ -252,8 +253,6 @@ Here are the download page links for each supported platform.
     ```sh
     pmm-agent setup --config-file=${PMM_DIR}/config/pmm-agent.yaml --server-address=192.168.1.123 --server-insecure-tls --server-username=admin --server-password=admin --paths-tempdir=${PMM_DIR}/tmp --paths-base=${PMM_DIR}
     ```
-
-
 
 9. Run the agent.
 
@@ -360,31 +359,27 @@ How to remove (uninstall) PMM Client.
 
 === "Debian-based distributions"
 
-    1. Uninstall the PMM Client package.
+    1. Uninstall the PMM Client package:
+       ```sh
+       apt remove -y pmm2-client
+       ```
 
-    ```sh
-    apt remove -y pmm2-client
-    ```
-
-    2. Remove the Percona repository
-
-    ```sh
-    dpkg -r percona-release
-    ```
+    2. Remove the Percona repository:
+       ```sh
+       dpkg -r percona-release
+       ```
 
 === "Red Hat-based distributions"
 
-    1. Uninstall the PMM Client package.
+    1. Uninstall the PMM Client package:
+       ```sh
+       yum remove -y pmm2-client
+       ```
 
-    ```sh
-    yum remove -y pmm2-client
-    ```
-
-    2. Remove the Percona repository
-
-    ```sh
-    yum remove -y percona-release
-    ```
+    2. Remove the Percona repository:
+       ```sh
+       yum remove -y percona-release
+       ```
 
 ## Unregister
 
