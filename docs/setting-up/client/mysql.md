@@ -46,9 +46,8 @@ It is good practice to use a non-superuser account to connect PMM Client to the 
 
     ```sql
     CREATE USER 'pmm'@'127.0.0.1' IDENTIFIED BY 'pass' WITH MAX_USER_CONNECTIONS 10;
-    GRANT SELECT, PROCESS, REPLICA MONITOR, RELOAD *.* TO 'pmm'@'127.0.0.1';
+    GRANT SELECT, PROCESS, REPLICA MONITOR, RELOAD ON *.* TO 'pmm'@'127.0.0.1';
     ```
-
 ## Choose and configure a source
 
 Decide which source of metrics to use, and configure your database server for it. The choices are [Slow query log](#slow-query-log) and [Performance Schema](#performance-schema).
