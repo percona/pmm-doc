@@ -28,29 +28,26 @@ Check that:
 
 It is good practice to use a non-superuser account to connect PMM Client to the monitored database instance. This example creates a database user with name `pmm`, password `pass`, and the necessary permissions.
 
+=== "MySQL 8.0"
 
-**On MySQL 8.0**
+    ```sql
+    CREATE USER 'pmm'@'127.0.0.1' IDENTIFIED BY 'pass' WITH MAX_USER_CONNECTIONS 10;
+    GRANT SELECT, PROCESS, REPLICATION CLIENT, RELOAD, BACKUP_ADMIN ON *.* TO 'pmm'@'127.0.0.1';
+    ```
 
-```sql
-CREATE USER 'pmm'@'127.0.0.1' IDENTIFIED BY 'pass' WITH MAX_USER_CONNECTIONS 10;
-GRANT SELECT, PROCESS, REPLICATION CLIENT, RELOAD, BACKUP_ADMIN ON *.* TO 'pmm'@'127.0.0.1';
-```
+=== "MySQL 5.7"
 
-**On MySQL 5.7**
+    ```sql
+    CREATE USER 'pmm'@'127.0.0.1' IDENTIFIED BY 'pass' WITH MAX_USER_CONNECTIONS 10;
+    GRANT SELECT, PROCESS, REPLICATION CLIENT, RELOAD ON *.* TO 'pmm'@'127.0.0.1';
+    ```
 
-```sql
-CREATE USER 'pmm'@'127.0.0.1' IDENTIFIED BY 'pass' WITH MAX_USER_CONNECTIONS 10;
-GRANT SELECT, PROCESS, REPLICATION CLIENT, RELOAD ON *.* TO 'pmm'@'127.0.0.1';
-```
+=== "MariaDB 10.5.8+"
 
-**On MariaDB 10.5.8+**
-
-```sql
-CREATE USER 'pmm'@'127.0.0.1' IDENTIFIED BY 'pass' WITH MAX_USER_CONNECTIONS 10;
-GRANT SELECT, PROCESS, REPLICA MONITOR, RELOAD *.* TO 'pmm'@'127.0.0.1';
-```
-
-
+    ```sql
+    CREATE USER 'pmm'@'127.0.0.1' IDENTIFIED BY 'pass' WITH MAX_USER_CONNECTIONS 10;
+    GRANT SELECT, PROCESS, REPLICA MONITOR, RELOAD ON *.* TO 'pmm'@'127.0.0.1';
+    ```
 ## Choose and configure a source
 
 Decide which source of metrics to use, and configure your database server for it. The choices are [Slow query log](#slow-query-log) and [Performance Schema](#performance-schema).
@@ -77,7 +74,7 @@ Here are the benefits and drawbacks of *Slow query log* and *Performance Schema*
 
 This section covers how to configure a MySQL-based database server to use the *slow query log* as a source of metrics.
 
-### Applicable versions
+#### Applicable versions
 
 | Server                   | Versions         |
 |--------------------------|------------------|
@@ -88,7 +85,7 @@ This section covers how to configure a MySQL-based database server to use the *s
 
 The *slow query log* records the details of queries that take more than a certain amount of time to complete. With the database server configured to write this information to a file rather than a table, PMM Client parses the file and sends aggregated data to PMM Server via the Query Analytics part of PMM Agent.
 
-### Settings
+#### Settings
 
 | Variable                                                        | Value  |Description
 |-----------------------------------------------------------------|--------|----------------------------------------------------------
@@ -100,7 +97,7 @@ The *slow query log* records the details of queries that take more than a certai
 
 #### Examples
 
-- Configuration file.
+=== "Configuration file"
 
     ```ini
     slow_query_log=ON
@@ -110,7 +107,7 @@ The *slow query log* records the details of queries that take more than a certai
     log_slow_slave_statements=ON
     ```
 
-- Session.
+=== "Session"
 
     ```sql
     SET GLOBAL slow_query_log = 1;
@@ -144,7 +141,7 @@ Some MySQL-based database servers support extended slow query log variables.
 
 ##### Examples
 
-- Configuration file (Percona Server for MySQL, Percona XtraDB Cluster).
+=== "Configuration file (Percona Server for MySQL, Percona XtraDB Cluster)"
 
     ```ini
     log_slow_rate_limit=100
@@ -154,13 +151,13 @@ Some MySQL-based database servers support extended slow query log variables.
     slow_query_log_use_global_control='all'
     ```
 
-- Configuration file (MariaDB).
+=== "Configuration file (MariaDB)"
 
     ```ini
     log_slow_rate_limit=100
     ```
 
-- Session (Percona Server for MySQL, Percona XtraDB Cluster).
+=== "Session (Percona Server for MySQL, Percona XtraDB Cluster)"
 
     ```sql
     SET GLOBAL log_slow_rate_limit = 100;
@@ -217,7 +214,7 @@ To use *Performance Schema*, set the variables below.
 
 #### Examples
 
-- Configuration file.
+=== "Configuration file"
 
     ```ini
     performance_schema=ON
@@ -226,7 +223,7 @@ To use *Performance Schema*, set the variables below.
     innodb_monitor_enable=all
     ```
 
-- Session.
+=== "Session"
 
     (`performance_schema` cannot be set in a session and must be set at server start-up.)
 
@@ -336,13 +333,13 @@ User activity, individual table and index access details are shown on the [MySQL
 
 ### Examples
 
-- Configuration file.
+=== "Configuration file"
 
     ```ini
     userstat=ON
     ```
 
-- Session.
+=== "Session"
 
     ```sql
     SET GLOBAL userstat = ON;
@@ -350,7 +347,7 @@ User activity, individual table and index access details are shown on the [MySQL
 
 ## Add service
 
-There are two ways to install  PMM Client  for monitoring your MySQL database:
+There are two ways to install PMM Client for monitoring your MySQL database:
 
 1. [Local installation](#Install-PMM-Client locally): Installs PMM Client directly on the database node, collecting both database and OS/host metrics. This option enables more effective comparison and problem identification.
 2. [Remote instance](#Install-PMM-Client-as-a-remote-instance): Use when local installation isn't possible. This method doesn't provide OS/Node metrics in PMM.
