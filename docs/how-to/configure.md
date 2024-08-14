@@ -11,14 +11,15 @@ On the left are the selector tabs:
 - [Configure](#configure)
   - [Metrics resolution](#metrics-resolution)
     - [Configure metrics resolution per-service](#configure-metrics-resolution-per-service)
-  - [Advanced Settings](#advanced-settings)
-    - [Data Retention](#data-retention)
+      - [Example](#example)
+  - [Advanced settings](#advanced-settings)
+    - [Data retention](#data-retention)
     - [Telemetry](#telemetry)
     - [Check for updates](#check-for-updates)
     - [Advisors](#advisors)
     - [Percona Alerting](#percona-alerting)
     - [Backup Management](#backup-management)
-    - [Public Address](#public-address)
+    - [Public address](#public-address)
     - [Database as a Service (DBaaS)](#database-as-a-service-dbaas)
     - [Microsoft Azure monitoring](#microsoft-azure-monitoring)
   - [SSH Key](#ssh-key)
@@ -72,9 +73,9 @@ To change resolution settings:
 
 1. Identify the appropriate API endpoint:
 
-     - For PostgreSQL: `ChangePostgresExporter`
-     - For MySQL: `ChangeMySQLdExporter`
-     - For MongoDB: `ChangeMongoDBExporter`
+     - for PostgreSQL: `ChangePostgresExporter`
+     - for MySQL: `ChangeMySQLdExporter`
+     - for MongoDB: `ChangeMongoDBExporter`
 
 2. Locate the `agent_id` of the exporter you want to modify. You can find this in the [Inventory dashboard](../details/dashboards/dashboard-inventory.md) under the **Monitoring** column for the target service.
 
@@ -98,13 +99,13 @@ curl --request POST \
     }  '
 ```
 
-**Note:**
+!!! note alert alert-primary "Note"
+    - `metrics_resolutions`: can include 'hr, 'mr', 'lr' in any combination.
+    - Use _curl_'s `--insecure` option in case you have self-signed certificates.
 
-- `metrics_resolutions`: can include 'hr, 'mr', 'lr' in any combination.
-- Use _curl_'s `--insecure` option in case you have self-signed certificates.
+#### Example
 
-
-**Example**:  Setting 60s high, 300s medium, and 3600s low resolution for a MongoDB server with a MongoDB exporter's `agent_id` equal to `/agent_id/0ad0eebf-65a2-488f-a473-3a98b335b6d8`:
+Setting 60s high, 300s medium, and 3600s low resolution for a MongoDB server with a MongoDB exporter's `agent_id` equal to `/agent_id/0ad0eebf-65a2-488f-a473-3a98b335b6d8`:
 
 ```
 curl --insecure --request POST \
@@ -149,7 +150,7 @@ If successful, the command above will print an output similar to the following, 
    }
 ```
 
-The new configured metrics resolutions can also be found in the `vmagentscrapecfg` file. This file can be identified by checking the `-promscrape.config` variable passed to the `vmagent` command (you can use `ps aux | grep vmagent` for this scope).
+You can also find the new configured metrics resolutions in the `vmagentscrapecfg` file. To locate this file, check the `-promscrape.config` variable passed to the `vmagent` command (you can use `ps aux | grep vmagent` for this scope).
 
 To reset a custom resolution, make an API call with "mr": "0s" (or "hr": "0s", "lr": "0s" as appropriate). This will revert the exporter to using the global PMM settings.
 
@@ -159,11 +160,11 @@ For more information on configuring per-service metrics resolution, see the foll
 - [Change mysqld Exporter](https://percona-pmm.readme.io/reference/changemysqldexporter)
 - [Change MongoDB Exporter](https://percona-pmm.readme.io/reference/changemongodbexporter)
 
-## Advanced Settings
+## Advanced settings
 
 ![!](../_images/PMM_Settings_Advanced_Settings.jpg)
 
-### Data Retention
+### Data retention
 
 *Data retention* specifies how long data is stored by PMM Server. By default, time-series data is stored for 30 days. You can adjust the data retention time to balance your system's available disk space with your metrics history requirements.
 
@@ -224,7 +225,7 @@ Enables [Backup Management](../get-started/backup/index.md) option and reveals t
 - Set retention policies
 - Monitor your backup and restore activity
 
-### Public Address
+### Public address
 
 The address or hostname PMM Server will be accessible at. Click **Get from browser** to have your browser detect and populate this field automatically.
 
