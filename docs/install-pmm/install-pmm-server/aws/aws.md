@@ -1,47 +1,39 @@
-# Install PMM Server on AWS Marketplace
+# Install PMM Server from AWS Marketplace
 
-You can run an instance of PMM Server hosted at AWS Marketplace.
-
-Assuming that you have an AWS (Amazon Web Services) account, locate *Percona Monitoring and Management Server* in [AWS Marketplace](https://aws.amazon.com/marketplace) or use [this link](https://aws.amazon.com/marketplace/pp/B077J7FYGX).
-
-![!](../../../_images/PMM_AWS_Marketplace.png)
-
-Selecting a region and instance type in the *Pricing Information* section will give you an estimate of the costs involved. This is only an indication of costs. You will choose regions and instance types in later steps.
-
-Percona Monitoring and Management Server is provided at no cost, but you may need to pay for infrastructure costs.
-
-!!! note alert alert-primary ""
-    Disk space consumed by PMM Server depends on the number of hosts being monitored. Although each environment will be unique, you can consider the data consumption figures for the [PMM Demo](https://pmmdemo.percona.com/) web site which consumes approximately 230 MB per host per day, or approximately 6.9 GB per host at the default 30 day retention period.
-
-    For more information, see our blog post [How much disk space should I allocate for Percona Monitoring and Management?](https://www.percona.com/blog/2017/05/04/how-much-disk-space-should-i-allocate-for-percona-monitoring-and-management/).
-
-To install PMM Server on AWS:
+To install PMM Server from AWS Marketplace:
 {.power-number}
 
-1. Click **Continue to Subscribe**.
+1. Access the AWS Marketplace: Go to [AWS Marketplace](https://aws.amazon.com/marketplace) and search for **Percona Monitoring and Management Server** or [access the PMM Server listing] directly.
 
-2. **Subscribe to this software**: Check the terms and conditions and click *Continue to Configuration*.
+2. Subscribe to PMM Server: click **Continue to Subscribe** on the PMM Server listing page, review the terms and conditions, then click **Continue to Configuration**.
 
-3. **Configure this software**:
+3. Configure PMM Server: Select the latest version (recommended), choose the AWS region where you want to deploy PMM, then click **Continue to Launch**.
+4. **Launch the PMM Server**: 
+   - Choose **Launch from Website** to configure and launch directly from the AWS Marketplace or **Launch through EC2** if you prefer launching via the EC2 Management Console for more customization.
+   - **EC2 Instance Type:** select an appropriate instance type based on your monitoring needs and anticipated load.
+   - **VPC Settings:** choose an existing VPC or create a new one to host your PMM Server.
+   - **Subnet Settings:** select an existing subnet or create a new one within your VPC.
+   - **Security Group Settings:** choose an existing security group or create a new one based on the default settings provided by the seller.
+   - **Key Pair Settings:** select an existing key pair for SSH access, or create a new one if necessary.
+   - Click **"Launch"** to deploy the PMM Server.
+Once the instance is launched, it will appear in the EC2 console.
 
-    1. Select a value for **Software Version**. (The latest is {{release}}.)
-    2. Select a region. (You can change this in the next step.)
-    3. Click **Continue to Launch**.
+Make sure to assign a meaningful name to the instance to help distinguish it from others in your environment.
 
-4. **Launch this software**:
+## Security consideration
 
-    1. **Choose Action**: Select a launch option. **Launch from Website** is a quick way to make your instance ready. For more control, choose *Launch through EC2*.
+  - Ensure that your security group allows inbound traffic on ports **22** (SSH), **80** (HTTP), and **443** (HTTPS).
+  - If PMM needs to monitor an RDS instance, make sure it can access port **3306** on the RDS.
 
-    2. **EC2 Instance Type**: Select an instance type.
+## Service costs
 
-    3. **VPC Settings**: Choose or create a VPC (virtual private cloud).
+While Percona Monitoring and Management Server itself is provided at no cost, be aware that you will incur AWS infrastructure costs based on the EC2 instance type, storage, and data transfer.
 
-    4. **Subnet Settings**: Choose or create a subnet.
+## Disk space consumption
 
-    5. **Security Group Settings**: Choose a security group or click *Create New Based On Seller Settings
+The disk space required by PMM Server depends on the number of monitored hosts and the retention period for the data.
 
-    6. **Key Pair Settings**: Choose or create a key pair.
+As a reference, the [PMM Demo](https://pmmdemo.percona.com/) site consumes approximately 230 MB per host per day, which totals around 6.9 GB per host over a 30-day retention period.
+Tip: You can estimate your disk space needs based on the number of hosts and the desired retention period.
 
-    7. Click **Launch**.
-
-
+For more information, see our blog post [How much disk space should I allocate for Percona Monitoring and Management](https://www.percona.com/blog/2017/05/04/how-much-disk-space-should-i-allocate-for-percona-monitoring-and-management/).
