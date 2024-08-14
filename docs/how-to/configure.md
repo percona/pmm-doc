@@ -11,14 +11,15 @@ On the left are the selector tabs:
 - [Configure](#configure)
   - [Metrics resolution](#metrics-resolution)
     - [Configure metrics resolution per-service](#configure-metrics-resolution-per-service)
-  - [Advanced Settings](#advanced-settings)
-    - [Data Retention](#data-retention)
+      - [Example](#example)
+  - [Advanced settings](#advanced-settings)
+    - [Data retention](#data-retention)
     - [Telemetry](#telemetry)
     - [Check for updates](#check-for-updates)
     - [Advisors](#advisors)
     - [Percona Alerting](#percona-alerting)
     - [Backup Management](#backup-management)
-    - [Public Address](#public-address)
+    - [Public address](#public-address)
     - [Database as a Service (DBaaS)](#database-as-a-service-dbaas)
     - [Microsoft Azure monitoring](#microsoft-azure-monitoring)
   - [SSH Key](#ssh-key)
@@ -60,32 +61,119 @@ Values for the *Custom* preset can be entered as values, or changed with the arr
 
 ### Configure metrics resolution per-service
 
-While changing the metrics resolution in the settings tab applies to all services, you can also configure metrics resolutions on a per-service basis by setting the resolution settings for each exporter individually via the API.
+You can configure metrics resolutions both globally and on a per-service basis. While the global setting in the **Settings** tab applies to all services, PMM 2.42 and later also enables you to customize resolution for individual services. You can do this by adjusting the `metrics_resolutions` setting for each exporter using the [API](https://percona-pmm.readme.io) (see below for an example).
 
-Customizing the resolution settings for individual services enables you to fine-tune your PMM setup to balance data granularity and resource consumption.
-
-This enables you to:
+Customizing resolution settings for individual services allows you to fine-tune your PMM setup, balancing data granularity with resource consumption. This feature enables you to:
 
 - Allocate resources efficiently by focusing on high-resolution data for key services
-- Reduce storage requirements by adjusting resolution for less critical components
+- Reduce storage requirements by lowering resolution for less important components
 - Align your monitoring setup with the specific needs of your environment
 
-For information on enabling this feature via API, see the [**Change Postgres Exporter endpoint**](https://percona-pmm.readme.io/reference/changepostgresexporter) in the API documentation.
+To change resolution settings:
 
-## Advanced Settings
+1. Identify the appropriate API endpoint:
+
+     - for PostgreSQL: `ChangePostgresExporter`
+     - for MySQL: `ChangeMySQLdExporter`
+     - for MongoDB: `ChangeMongoDBExporter`
+
+2. Locate the `agent_id` of the exporter you want to modify. You can find this in the [Inventory dashboard](../details/dashboards/dashboard-inventory.md) under the **Monitoring** column for the target service.
+
+4. Set the desired resolution using `hr` (high), `mr` (medium), or `lr` (low) in the `metrics_resolutions` field, running a command similar to
+
+```
+curl --request POST \
+        --url https://<your-pmm-user>:<your-pmm-pwd>@<your-pmm-address>/v1/inventory/Agents/<change-endpoint> \
+        --header 'accept: application/json' \
+        --header 'content-type: application/json' \
+        --data '
+    {
+    "common": {
+        "metrics_resolutions": {
+           "hr": "<your-hr>",
+           "mr": "<your-mr>",
+           "lr": "<your-lr>"
+        }
+    },
+    "agent_id": "/agent_id/<your-agent-id>"  
+    }  '
+```
+
+!!! note alert alert-primary "Note"
+    - `metrics_resolutions`: can include 'hr, 'mr', 'lr' in any combination.
+    - Use _curl_'s `--insecure` option in case you have self-signed certificates.
+
+#### Example
+
+Setting 60s high, 300s medium, and 3600s low resolution for a MongoDB server with a MongoDB exporter's `agent_id` equal to `/agent_id/0ad0eebf-65a2-488f-a473-3a98b335b6d8`:
+
+```
+curl --insecure --request POST \
+        --url https://admin:adminPwd@127.0.0.1/v1/inventory/Agents/ChangeMongoDBExporter \
+        --header 'accept: application/json' \
+        --header 'content-type: application/json' \
+        --data '
+    {
+    "common": {
+        "metrics_resolutions": {
+           "hr": "60s",
+           "mr": "300s",
+           "lr": "3600s"
+        }
+    },
+    "agent_id": "/agent_id/0ad0eebf-65a2-488f-a473-3a98b335b6d8"  
+    }  '
+```
+
+If successful, the command above will print an output similar to the following, from which you can verify that the changes took effect:
+
+```
+ {
+   "mongodb_exporter":  {
+     "agent_id":  "/agent_id/0ad0eebf-65a2-488f-a473-3a98b335b6d8",
+     "pmm_agent_id":  "/agent_id/893dc1b9-f5d6-449f-b6f1-4433fbc38fce",
+     "service_id":  "/service_id/311930d0-babb-4a64-b936-440ad745c71d",
+     "username":  "mongodb_exporter",
+     "tls_skip_verify":  true,
+     "push_metrics_enabled":  true,
+     "status":  "RUNNING",
+     "listen_port":  42002,
+     "collections_limit":  -1,
+     "enable_all_collectors":  true,
+     "process_exec_path":  "/usr/local/percona/pmm2/exporters/mongodb_exporter",
+     "log_level":  "warn",
+     "metrics_resolutions":  {
+       "hr":  "60s",
+       "mr":  "300s",
+       "lr":  "3600s"
+     }
+   }
+```
+
+You can also find the new configured metrics resolutions in the `vmagentscrapecfg` file. To locate this file, check the `-promscrape.config` variable passed to the `vmagent` command (you can use `ps aux | grep vmagent` for this scope).
+
+To reset a custom resolution, make an API call with "mr": "0s" (or "hr": "0s", "lr": "0s" as appropriate). This will revert the exporter to using the global PMM settings.
+
+For more information on configuring per-service metrics resolution, see the following sections in the API documentation:
+
+- [Change Postgres Exporter](https://percona-pmm.readme.io/reference/changepostgresexporter)
+- [Change mysqld Exporter](https://percona-pmm.readme.io/reference/changemysqldexporter)
+- [Change MongoDB Exporter](https://percona-pmm.readme.io/reference/changemongodbexporter)
+
+## Advanced settings
 
 ![!](../_images/PMM_Settings_Advanced_Settings.jpg)
 
-### Data Retention
+### Data retention
 
 *Data retention* specifies how long data is stored by PMM Server. By default, time-series data is stored for 30 days. You can adjust the data retention time to balance your system's available disk space with your metrics history requirements.
 
 ### Telemetry
 
-The *Telemetry* switch enables gathering and sending basic **anonymous** data to Percona, which helps us to determine where to focus the development and what is the uptake for each release of PMM. 
+The *Telemetry* switch enables gathering and sending basic **anonymous** data to Percona, which helps us to determine where to focus the development and what is the uptake for each release of PMM.
 Specifically, gathering this information helps determine if we need to release patches to legacy versions beyond support, determine when supporting a particular version is no longer necessary, and understand the best frequency of releases.
 
-PMM Telemetry is based on data collected by various PMM components and stored inside PMM server 
+PMM Telemetry is based on data collected by various PMM components and stored inside PMM server
 
 !!! note alert alert-primary ""
     When PMM is installed, telemetry is not sent immediately. Before the first telemetry report is generated, PMM provides users with a 24-hour grace period to disable telemetry.
@@ -137,7 +225,7 @@ Enables [Backup Management](../get-started/backup/index.md) option and reveals t
 - Set retention policies
 - Monitor your backup and restore activity
 
-### Public Address
+### Public address
 
 The address or hostname PMM Server will be accessible at. Click **Get from browser** to have your browser detect and populate this field automatically.
 
