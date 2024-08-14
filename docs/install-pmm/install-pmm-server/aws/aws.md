@@ -8,15 +8,23 @@ To install PMM Server from AWS Marketplace:
 2. Subscribe to PMM Server: click **Continue to Subscribe** on the PMM Server listing page, review the terms and conditions, then click **Continue to Configuration**.
 
 3. Configure PMM Server: Select the latest version (recommended), choose the AWS region where you want to deploy PMM, then click **Continue to Launch**.
-4. **Launch the PMM Server**: 
-   - Choose **Launch from Website** to configure and launch directly from the AWS Marketplace or **Launch through EC2** if you prefer launching via the EC2 Management Console for more customization.
-   - **EC2 Instance Type:** select an appropriate instance type based on your monitoring needs and anticipated load.
-   - **VPC Settings:** choose an existing VPC or create a new one to host your PMM Server.
-   - **Subnet Settings:** select an existing subnet or create a new one within your VPC.
-   - **Security Group Settings:** choose an existing security group or create a new one based on the default settings provided by the seller.
-   - **Key Pair Settings:** select an existing key pair for SSH access, or create a new one if necessary.
-   - Click **"Launch"** to deploy the PMM Server.
-Once the instance is launched, it will appear in the EC2 console.
+4. Launch the PMM Server: 
+
+   4.1. Choose **Launch from Website** to configure and launch directly from the AWS Marketplace or **Launch through EC2** if you prefer launching via the EC2 Management Console for more customization.
+   
+   4.2. In the **EC2 Instance Type** field, select an appropriate instance type based on your monitoring needs and anticipated load.
+   
+   4.3. In the **VPC Settings** field, choose an existing VPC or create a new one to host your PMM Server.
+   
+   4.4. In the **Subnet Settings** field, select an existing subnet or create a new one within your VPC.
+   
+   4.5. In the **Security Group Settings** field, choose an existing security group or create a new one based on the default settings provided by the seller.
+   
+   4.6. In the **Key Pair Settings** field, select an existing key pair for SSH access, or create a new one if necessary.
+   
+   4.7. Click **Launch** to deploy the PMM Server.
+
+   Once the instance is launched, it will appear in the EC2 console.
 
 Make sure to assign a meaningful name to the instance to help distinguish it from others in your environment.
 
