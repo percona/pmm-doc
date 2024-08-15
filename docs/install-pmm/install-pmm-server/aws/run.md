@@ -5,12 +5,10 @@ After [installing PMM Server from AWS Marketplace](../aws/aws.md):
 
 1. Wait until the AWS console reports that the instance is running. 
 2. Select your instance and open its IP address in a web browser. You can find the IP address in the **IPv4 Public IP** column or at the top of the **Properties** panel under the **Public IP** field:
-
-    ![!image](../../../_images/aws-marketplace.pmm.ec2.properties.png)
+    [!image](../../../_images/aws-marketplace.pmm.ec2.properties.png)
 3. Log into PMM using the default credentials:
      - Username: `admin`
      - Password: `your instance ID`
-
 4. Change the default credentials then use the new ones on the PMM Server home page:
 
    ![PMM Home Dashboard](../../../_images/PMM_Home_Dashboard.png)
@@ -28,18 +26,21 @@ By default, your EC2 instance will have a private IP for internal VPC network ac
 To use only the private IP:
 
 === "During EC2 instance creation"
+    To use only the private IP for your EC2 instance during EC2 instance creation:
     {.power-number}
 
     1. In the **Network Settings** section, uncheck **Auto-assign public IP**.
     2. Do not assign an Elastic IP to the instance.
 
 === "For an existing instance"
-    {.power-number}
+To use only the private IP for an existing instance EC2 instance:   {.power-number}
 
     1. If a public IP is assigned, remove it by disassociating it in the EC2 console.
     2. If an Elastic IP is assigned, disassociate it from the instance.
 
-### To access your PMM Server using only a private IP
+### Access PMM Server using only a private IP
+
+To access your PMM Server using only a private IP:
 {.power-number}
 
 1. Ensure you're connected to your VPC.
