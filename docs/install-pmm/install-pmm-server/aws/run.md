@@ -2,15 +2,16 @@
 
 After [installing PMM Server from AWS Marketplace](../aws/aws.md): 
 {.power-number}
+
 1. Wait until the AWS console reports that the instance is running. 
 2. Select your instance and open its IP address in a web browser. You can find the IP address in the **IPv4 Public IP** column or at the top of the **Properties** panel under the **Public IP** field:
 
     ![!image](../../../_images/aws-marketplace.pmm.ec2.properties.png)
 3. Log into PMM using the default credentials:
      - Username: `admin`
-     - Password: [`your instance ID`]
+     - Password: `your instance ID`
 
-4. Change the default credentials then use the new ones on the PMM Server home page. 
+4. Change the default credentials then use the new ones on the PMM Server home page:
 
    ![PMM Home Dashboard](../../../_images/PMM_Home_Dashboard.png)
 
@@ -27,28 +28,28 @@ By default, your EC2 instance will have a private IP for internal VPC network ac
 To use only the private IP:
 
 === "During EC2 instance creation"
-
     {.power-number}
+
     1. In the **Network Settings** section, uncheck **Auto-assign public IP**.
     2. Do not assign an Elastic IP to the instance.
 
 === "For an existing instance"
-
     {.power-number}
+
     1. If a public IP is assigned, remove it by disassociating it in the EC2 console.
     2. If an Elastic IP is assigned, disassociate it from the instance.
 
 ### To access your PMM Server using only a private IP
-
 {.power-number}
+
 1. Ensure you're connected to your VPC.
 2. Use the private IP address to access the PMM Server dashboard.
 
 ### Configure PMM Server to use an Elastic IP (Optional)
 
 For a static, public-facing IP address:
-
 {.power-number}
+
 1. Allocate an Elastic IP address in the EC2 console.
 2. Associate the Elastic IP address with your EC2 instance's Network interface ID.
 
@@ -60,8 +61,8 @@ For detailed information on EC2 instance IP addressing, see the [AWS documentati
 ## Resize the EBS volume
 
 To increase available disk space:
-
 {.power-number}
+
 1. Increase the size of the EBS volume as needed. For instructions, see [Modifying the Size, IOPS, or Type of an EBS Volume on Linux](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-modify-volume.html).
 2. After updating the EBS volume, PMM Server will auto-detect changes within approximately 5 minutes and reconfigure itself.
 
