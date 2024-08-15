@@ -392,17 +392,24 @@ For example, if you want all collectors except `topmetrics`, specify:
 --enable-all-collectors --disable-collectors=topmetrics
 ```
 
-###### Limit `dbStats`, `collStats` and `indexStats`
+###### Limit `dbStats`, `collStats`, `indexStats` and `CurrentOp`
 
 By default, PMM decides the limit for the number of collections to monitor the `collStats` and `indexStats` collectors.
 
-You can also set an additional limit for the `collStats`, `indexStats`, `dbStats`, and `topmetrics` collectors with the `--max-collections-limit` parameter.
+You can also set an additional limit for the `collStats`, `indexStats`, `dbStats`, `topmetrics` and `CurrentOp` collectors with the `--max-collections-limit` parameter.
 
 Set the value of the parameter `--max-collections-limit` to:
 
 - 0: which indicates that `collStats` and `indexStats` can handle unlimited collections.
 - n, which indicates that `collStats` and `indexStats` can handle <=n collections. If the limit is crossed - exporter stops collecting monitoring data for the `collStats` and `indexStats` collectors.
 - -1 (default) doesn't need to be explicitly set. It indicates that PMM decides how many collections it would monitor, currently <=200 (subject to change).
+
+The `CurrentOp`  collector behaves differently:
+
+- It is not affected by the `--max-collections-limit` parameter.
+- Instead, it uses a separate `--max-current-ops-limit` parameter to control the number of current operations monitored.
+- Set `--max-current-ops-limit=n` to limit the number of current operations monitored to n.
+- The default value for `--max-current-ops-limit` is **100**.
 
 To further limit collections to monitor, enable `collStats` and `indexStats` for some databases or collections:
 
@@ -414,7 +421,7 @@ To add MongoDB with all collectors (`diagnosticdata`, `replicasetstatus`, `colls
 
 `pmm-admin add mongodb --username=admin --password=admin_pass --enable-all-collectors mongodb_srv_1 127.0.0.1:27017`
 
-To add MongoDB with all collectors (`diagnosticdata`, `replicasetstatus`, `collstats`, `dbstats`, `indexstats`, `CurrentOp`  and `topmetrics`) with `max-collections-limit` set to 1000:
+To add MongoDB with all collectors (`diagnosticdata`, `replicasetstatus`, `collstats`, `dbstats`, `indexstats`, `CurrentOp` and `topmetrics`) with `max-collections-limit` set to 1000:
 
 `pmm-admin add mongodb --username=admin --password=admin_pass --enable-all-collectors --max-collections-limit=1000 mongodb_srv_1 127.0.0.1:27017`
 
@@ -449,6 +456,7 @@ In high resolution we collect metrics from collectors which work fast:
 - `diagnosticdata`
 - `replicasetstatus`
 - `topmetrics`
+- `CurrentOp`
 
 In low resolution we collect metrics from collectors which could take some time:
 - `dbstats`
