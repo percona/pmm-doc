@@ -380,7 +380,7 @@ FLAGS:
 ###### Enable all collectors
 
 To enable all collectors, pass the parameter `--enable-all-collectors` in the `pmm-admin add mongodb` command.
-This will enable `collstats`, `dbstats`, `indexstats`, and `topmetrics` collectors.
+This will enable `collstats`, `dbstats`, `indexstats`, `CurrentOp` and `topmetrics` collectors.
 
 ###### Disable some collectors
 
@@ -404,20 +404,17 @@ Set the value of the parameter `--max-collections-limit` to:
 - n, which indicates that `collStats` and `indexStats` can handle <=n collections. If the limit is crossed - exporter stops collecting monitoring data for the `collStats` and `indexStats` collectors.
 - -1 (default) doesn't need to be explicitly set. It indicates that PMM decides how many collections it would monitor, currently <=200 (subject to change).
 
-
 To further limit collections to monitor, enable `collStats` and `indexStats` for some databases or collections:
 
 - Specify the databases and collections that `collStats` and `indexStats` will use to collect data using the parameter `--stats-collections`. This parameter receives a comma-separated list of name spaces in the form `database[.collection]`.
 
-
-
 ###### Examples
 
-To add MongoDB with all collectors (`diagnosticdata`, `replicasetstatus`, `collstats`, `dbstats`, `indexstats`, and `topmetrics`) with default limit detected by PMM (currently <=200 collections, but subject to change):
+To add MongoDB with all collectors (`diagnosticdata`, `replicasetstatus`, `collstats`, `dbstats`, `indexstats`, `CurrentOp`, and `topmetrics`) with default limit detected by PMM (currently <=200 collections, but subject to change):
 
 `pmm-admin add mongodb --username=admin --password=admin_pass --enable-all-collectors mongodb_srv_1 127.0.0.1:27017`
 
-To add MongoDB with all collectors (`diagnosticdata`, `replicasetstatus`, `collstats`, `dbstats`, `indexstats`, and `topmetrics`) with `max-collections-limit` set to 1000:
+To add MongoDB with all collectors (`diagnosticdata`, `replicasetstatus`, `collstats`, `dbstats`, `indexstats`, `CurrentOp`  and `topmetrics`) with `max-collections-limit` set to 1000:
 
 `pmm-admin add mongodb --username=admin --password=admin_pass --enable-all-collectors --max-collections-limit=1000 mongodb_srv_1 127.0.0.1:27017`
 
