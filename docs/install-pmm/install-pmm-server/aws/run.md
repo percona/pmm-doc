@@ -7,7 +7,7 @@ After [installing PMM Server from AWS Marketplace](../aws/aws.md):
 2. Select your instance and open its IP address in a web browser. You can find the IP address in the **IPv4 Public IP** column or at the top of the **Properties** panel under the **Public IP** field:
    
     ![image](../../../_images/aws-marketplace.pmm.ec2.properties.png)
-4. Log into PMM using the default credentials:
+3. Open the IP address in a web browser and log into PMM using the default credentials:
      - Username: `admin`
      - Password: `your instance ID`
     ![image](../../../_images/PMM_Login.png)
