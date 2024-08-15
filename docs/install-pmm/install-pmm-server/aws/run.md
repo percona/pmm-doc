@@ -10,7 +10,7 @@ After [installing PMM Server from AWS Marketplace](../aws/aws.md):
 4. Log into PMM using the default credentials:
      - Username: `admin`
      - Password: `your instance ID`
-    ![image](../../../_images/PMM_Login.jpg)
+    ![image](../../../_images/PMM_Login.png)
 5. Change the default credentials then use the new ones on the PMM Server home page:
 
    ![PMM Home Dashboard](../../../_images/PMM_Home_Dashboard.png)
