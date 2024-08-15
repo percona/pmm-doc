@@ -8,7 +8,7 @@ After [installing PMM Server from AWS Marketplace](../aws/aws.md):
     ![!image](../../../_images/aws-marketplace.pmm.ec2.properties.png)
 3. Log into PMM using the default credentials:
      - Username: `admin`
-     - Password: <your instance ID>
+     - Password: [`your instance ID`]
 
 4. Change the default credentials then use the new ones on the PMM Server home page. 
 
@@ -23,45 +23,45 @@ After [installing PMM Server from AWS Marketplace](../aws/aws.md):
 
 ### Configure PMM Server to use a private IP only
 
-By default, your EC2 instance will have a private IP for internal VPC network access. To use only the private IP:
+By default, your EC2 instance will have a private IP for internal VPC network access. 
+To use only the private IP:
 
-#### During EC2 instance creation
+=== "During EC2 instance creation"
+
+    {.power-number}
+    1. In the **Network Settings** section, uncheck **Auto-assign public IP**.
+    2. Do not assign an Elastic IP to the instance.
+
+=== "For an existing instance"
+
+    {.power-number}
+    1. If a public IP is assigned, remove it by disassociating it in the EC2 console.
+    2. If an Elastic IP is assigned, disassociate it from the instance.
+
+### To access your PMM Server using only a private IP
 
 {.power-number}
-1. In the **Network Settings** section, uncheck **Auto-assign public IP**.
-2. Do not assign an Elastic IP to the instance.
-
-#### For an existing instance
-{.power-number}
-
-1. If a public IP is assigned, remove it by disassociating it in the EC2 console.
-2. If an Elastic IP is assigned, disassociate it from the instance.
-
-#### To access your PMM Server using only a private IP
-{.power-number}
-
 1. Ensure you're connected to your VPC.
 2. Use the private IP address to access the PMM Server dashboard.
 
-### Configure PMM Server to use an Elastic IP (pptional)
+### Configure PMM Server to use an Elastic IP (Optional)
 
 For a static, public-facing IP address:
-{.power-number}
 
+{.power-number}
 1. Allocate an Elastic IP address in the EC2 console.
 2. Associate the Elastic IP address with your EC2 instance's Network interface ID.
 
-
 !!! note alert alert-primary ""
-    Associating a new Elastic IP to an instance with an existing Elastic IP will disassociate the old one, but it will remain allocated to your account
+    Associating a new Elastic IP to an instance with an existing Elastic IP will disassociate the old one, but it will remain allocated to your account.
 
 For detailed information on EC2 instance IP addressing, see the [AWS documentation on using instance addressing](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-instance-addressing.html).
 
 ## Resize the EBS volume
 
 To increase available disk space:
-{.power-number}
 
+{.power-number}
 1. Increase the size of the EBS volume as needed. For instructions, see [Modifying the Size, IOPS, or Type of an EBS Volume on Linux](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-modify-volume.html).
 2. After updating the EBS volume, PMM Server will auto-detect changes within approximately 5 minutes and reconfigure itself.
 
