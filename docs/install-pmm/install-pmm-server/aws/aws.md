@@ -21,8 +21,7 @@ Make sure to assign a meaningful name to the instance to help distinguish it fro
 
 ## Security consideration
 
-- Ensure that your security group allows inbound traffic on ports **22** (SSH), **80** (HTTP), and **443** (HTTPS).
-- If PMM needs to monitor an RDS instance, make sure it can access port **3306** on the RDS.
+Ensure that your security group allows inbound traffic on ports **22** (SSH) and **443** (HTTPS).
 
 ## Service costs
 

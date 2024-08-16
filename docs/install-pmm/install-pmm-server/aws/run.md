@@ -18,7 +18,8 @@ After [installing PMM Server from AWS Marketplace](../aws/aws.md):
    These credentials not only manage access to the PMM web interface but also facilitate authentication between the PMM Server and PMM Clients. You will need to reuse these credentials when configuring PMM Clients on other hosts.
 
 !!! note alert alert-primary ""
-    For SSH access instructions, see [Connecting to Your Linux Instance Using SSH](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstancesLinux.html). Replace the user name `ec2-user` with `admin`.
+    For SSH access instructions, see [Connecting to Your Linux Instance Using SSH](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstancesLinux.html). Replace the user name `ec2-user` with `admin`. You can also add SSH keys later through the **PMM Configuration > Settings > SSH Key** page. 
+
 
 ## Configure PMM Server IP Settings
 
