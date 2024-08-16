@@ -392,11 +392,11 @@ For example, if you want all collectors except `topmetrics`, specify:
 --enable-all-collectors --disable-collectors=topmetrics
 ```
 
-###### Limit `dbStats`, `collStats`, `indexStats` and `CurrentOp`
+###### Limit `dbStats`, `collStats`, `indexStats` and `currentop`
 
 By default, PMM decides the limit for the number of collections to monitor the `collStats` and `indexStats` collectors.
 
-You can also set an additional limit for the `collStats`, `indexStats`, `dbStats`, `topmetrics` and `CurrentOp` collectors with the `--max-collections-limit` parameter.
+You can also set an additional limit for the `collStats`, `indexStats`, `dbStats`, `topmetrics` and `currentop` collectors with the `--max-collections-limit` parameter.
 
 Set the value of the parameter `--max-collections-limit` to:
 
@@ -404,24 +404,27 @@ Set the value of the parameter `--max-collections-limit` to:
 - n, which indicates that `collStats` and `indexStats` can handle <=n collections. If the limit is crossed - exporter stops collecting monitoring data for the `collStats` and `indexStats` collectors.
 - -1 (default) doesn't need to be explicitly set. It indicates that PMM decides how many collections it would monitor, currently <=200 (subject to change).
 
-The `CurrentOp`  collector behaves differently:
+###### CurrentOp collector behavior
 
-- It is not affected by the `--max-collections-limit` parameter.
-- Instead, it uses a separate `--max-current-ops-limit` parameter to control the number of current operations monitored.
-- Set `--max-current-ops-limit=n` to limit the number of current operations monitored to n.
-- The default value for `--max-current-ops-limit` is **100**.
+The `CurrentOp` collector has specific limitations to focus on potentially problematic long-running operations while reducing the load on the monitored system:
 
-To further limit collections to monitor, enable `collStats` and `indexStats` for some databases or collections:
+1. **Time-based filtering**: It only collects operations that have been running for longer than one minute.
+2. **Database exclusion**: Operations in the `admin` and `local` databases are ignored.
 
-- Specify the databases and collections that `collStats` and `indexStats` will use to collect data using the parameter `--stats-collections`. This parameter receives a comma-separated list of name spaces in the form `database[.collection]`.
+###### Limiting collection scope
+
+To further refine the scope of monitored collections:
+
+1. Use the `--stats-collections` parameter to specify which databases and collections `collStats` and `indexStats` will monitor.
+2. The parameter accepts a comma-separated list of namespaces in the format `database[.collection]`.
 
 ###### Examples
 
-To add MongoDB with all collectors (`diagnosticdata`, `replicasetstatus`, `collstats`, `dbstats`, `indexstats`, `CurrentOp`, and `topmetrics`) with default limit detected by PMM (currently <=200 collections, but subject to change):
+To add MongoDB with all collectors (`diagnosticdata`, `replicasetstatus`, `collstats`, `dbstats`, `indexstats`, `currentop`, and `topmetrics`) with default limit detected by PMM (currently <=200 collections, but subject to change):
 
 `pmm-admin add mongodb --username=admin --password=admin_pass --enable-all-collectors mongodb_srv_1 127.0.0.1:27017`
 
-To add MongoDB with all collectors (`diagnosticdata`, `replicasetstatus`, `collstats`, `dbstats`, `indexstats`, `CurrentOp` and `topmetrics`) with `max-collections-limit` set to 1000:
+To add MongoDB with all collectors (`diagnosticdata`, `replicasetstatus`, `collstats`, `dbstats`, `indexstats`, `currentop` and `topmetrics`) with `max-collections-limit` set to 1000:
 
 `pmm-admin add mongodb --username=admin --password=admin_pass --enable-all-collectors --max-collections-limit=1000 mongodb_srv_1 127.0.0.1:27017`
 
@@ -452,13 +455,15 @@ Enable all collectors and limit monitoring for `dbstats`, `indexstats`, `collsta
 
 PMM collects metrics in two [resolutions](../../how-to/configure.md#metrics-resolution) to decrease CPU and Memory usage: high and low resolutions.
 
-In high resolution we collect metrics from collectors which work fast:
+In high resolution we collect metrics from collectors that work fast:
+
 - `diagnosticdata`
 - `replicasetstatus`
 - `topmetrics`
-- `CurrentOp`
+- `currentop`
 
 In low resolution we collect metrics from collectors which could take some time:
+
 - `dbstats`
 - `indexstats`
 - `collstats`
