@@ -11,7 +11,7 @@ After [installing PMM Server from AWS Marketplace](../aws/aws.md):
      - Username: `admin`
      - Password: `your instance ID`
     ![image](../../../_images/PMM_Login.png)
-5. Change the default credentials then use the new ones on the PMM Server home page:
+4. Change the default credentials then use the new ones on the PMM Server home page:
 
    ![PMM Home Dashboard](../../../_images/PMM_Home_Dashboard.png)
 
@@ -19,7 +19,6 @@ After [installing PMM Server from AWS Marketplace](../aws/aws.md):
 
 !!! note alert alert-primary ""
     For SSH access instructions, see [Connecting to Your Linux Instance Using SSH](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstancesLinux.html). Replace the user name `ec2-user` with `admin`. You can also add SSH keys later through the **PMM Configuration > Settings > SSH Key** page. 
-
 
 ## Configure PMM Server IP Settings
 
@@ -68,14 +67,5 @@ For detailed information on EC2 instance IP addressing, see the [AWS documentati
 To increase available disk space:
 {.power-number}
 
-1. Increase the size of the EBS volume as needed. For instructions, see [Modifying the Size, IOPS, or Type of an EBS Volume on Linux](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-modify-volume.html).
-2. After updating the EBS volume, PMM Server will auto-detect changes within approximately 5 minutes and reconfigure itself.
-
-## PMM Client configuration example
-
-When setting up PMM Client on another host, use a command similar to this (DO NOT RUN ON THE PMM SERVER):
-
-```sh
-pmm-admin config --server-insecure-tls --server-url=https://admin:admin@<IP Address>:443
-```
-Replace `admin:admin` with your actual credentials and `<IP Address>` with your PMM Server's IP.
+1. Your AWS instance comes with a predefined size which can become a limitation. To make more disk space available to your instance, increase the size of the EBS volume as needed. For instructions, see [Modifying the Size, IOPS, or Type of an EBS Volume on Linux](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-modify-volume.html).
+2. After updating the EBS volume, PMM Server will auto-detect changes within approximately 5 minutes and reconfigure itself.4
