@@ -254,7 +254,7 @@ You will get results like in previous PMM versions. This method of `explain` pre
 
 !!! note alert alert-primary "'Explain' for MongoDB"
 
-    To run the `EXPLAIN` command, you need the same permissions as for executing the original query. For example, if you want to run `EXPLAIN` on an `UPDATE` query, you need to have update permissions
+    To run the `EXPLAIN` command, you need the same permissions as for executing the original query. For example, if you want to run `EXPLAIN` on an `UPDATE` query, you need to have `update` permissions
 
     Example: Grant the `explainRole` with update permissions.
 
