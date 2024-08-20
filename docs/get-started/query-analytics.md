@@ -204,7 +204,7 @@ The *Details* tab contains a *Query time distribution* bar (only for MySQL datab
     - *Node type*: Type of the node.
     - *User name*: Username of the database being monitored.
     - *Service Name*: The name or identifier of the service.
-    - *Service type*: The service that is being monitored. For example, MySQL, PostgreSQl, etc.
+    - *Service type*: The type of service being monitored. For example, MySQL, PostgreSQL, etc.
 
     ![!image](../_images/PMM_QAN_metadata.png)
 
