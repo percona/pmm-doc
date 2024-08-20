@@ -55,8 +55,7 @@ theme:
 extra_css:
   - https://unicons.iconscout.com/release/v4.0.8/css/line.css
   - https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css
-  - css/percona.css
-  - css/lightgallery.min.css
+  # - css/lightgallery.min.css
   - css/extra.css
   - css/nocopy.css
   - css/design.css
@@ -174,7 +173,9 @@ nav:
   - Get started:
       - get-started/index.md
       - get-started/interface.md
-      - get-started/alerting.md
+      - Percona Alerting: 
+          - get-started/alerting.md   
+          - get-started/alert-templates.md
       - Backup and Restore:
           - get-started/backup/index.md
           - get-started/backup/prepare_storage_location.md
