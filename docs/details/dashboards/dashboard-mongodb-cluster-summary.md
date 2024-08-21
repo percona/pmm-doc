@@ -1,4 +1,4 @@
-# MongoDB Cluster Summary
+# MongoDB Sharded Cluster Summary
 
 ![!image](../../_images/PMM_MongoDB_Cluster_Summary.jpg)
 
