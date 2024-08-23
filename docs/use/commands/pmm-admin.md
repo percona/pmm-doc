@@ -392,7 +392,7 @@ For example, if you want all collectors except `topmetrics`, specify:
 --enable-all-collectors --disable-collectors=topmetrics
 ```
 
-###### Limit `dbStats`, `collStats`, `indexStats` and `currentop`
+###### Limit `dbStats`, `collStats`, `indexStats` and `currentopmetrics`
 
 By default, PMM decides the limit for the number of collections to monitor the `collStats` and `indexStats` collectors.
 
