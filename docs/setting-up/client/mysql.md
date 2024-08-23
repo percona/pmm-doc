@@ -350,33 +350,23 @@ User activity, individual table and index access details are shown on the [MySQL
 
 ## Add service
 
-When you have configured your database server, you can add a MySQL service with the user interface or on the command line.
+There are two ways to install  PMM Client  for monitoring your MySQL database:
 
-When adding a service with the command line, you must use the `pmm-admin --query-source=SOURCE` option to match the source you've chosen and configured the database server for.
+1. [Local installation](#Install-PMM-Client locally): Installs PMM Client directly on the database node, collecting both database and OS/host metrics. This option enables more effective comparison and problem identification.
+2. [Remote instance](#Install-PMM-Client-as-a-remote-instance): Use when local installation isn't possible. This method doesn't provide OS/Node metrics in PMM.
 
-With the PMM user interface, you select *Use performance schema*, or deselect it to use *slow query log*.
 
-### With the user interface
+### Install PMM Client locally
 
-1. Select {{icon.configuration}} *Configuration* → {{icon.inventory}} *Inventory* → {{icon.addinstance}} *Add Service*.
+Add the MySQL server as a service using one of the following example commands. 
 
-2. Select *MySQL -- Add a remote instance*.
+Upon successful addition, PMM Client will display "MySQL Service added" along with the service's ID and name. Use `--environment` and `--custom-labels` options to set identifying tags for the service.
 
-3. Enter or select values for the fields.
+```sh
+pmm-admin add mysql --username=pmm --password=<your_password> MYSQL_SERVICE_NAME
+```
 
-4. Click *Add service*.
-
-![!](../../_images/PMM_Add_Instance_MySQL.png)
-
-If your MySQL instance is configured to use TLS, click on the *Use TLS for database connections* check box and fill in your TLS certificates and key.
-
-![!](../../_images/PMM_Add_Instance_MySQL_TLS.png)
-
-### On the command line
-
-Add the database server as a service using one of these example commands. If successful, PMM Client will print `MySQL Service added` with the service's ID and name. Use the `--environment` and `-custom-labels` options to set tags for the service to help identify them.
-
-### Examples
+### Example configurations
 
 #### TLS connection
 
@@ -431,6 +421,28 @@ Default query source (`slowlog`), environment labeled `test`, custom labels sett
 ```sh
 pmm-admin add mysql --environment=test --custom-labels='source=slowlog'  --username=root --password=password --query-source=slowlog MySQLSlowLog localhost:3306
 ```
+
+### Install PMM Client as a remote instance
+
+1. Select <i class="uil uil-cog"></i> **Configuration > {{icon.inventory}} Inventory > {{icon.addinstance}} Add Service**.
+
+2. Choose **MySQL > Add a remote instance**.
+
+3. Complete the required fields.
+
+4. Click **Add service**.
+
+![!](../../_images/PMM_Add_Instance_MySQL.png)
+
+#### For MySQL instances using TLS
+
+If your MySQL instance is configured to use TLS: 
+
+1. Click on the **Use TLS for database connections** check box.
+2. Fill in your TLS certificates and key.
+
+![!](../../_images/PMM_Add_Instance_MySQL_TLS.png)
+
 
 ## Check the service
 

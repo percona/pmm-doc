@@ -110,7 +110,7 @@ You can now add services with [`pmm-admin`](../../details/commands/pmm-admin.md)
 
     ```sh
     percona-release disable all
-    percona-release enable original release
+    percona-release enable pmm2-client
     ```
 
 #### Debian-based
@@ -273,7 +273,7 @@ dnf localinstall *.rpm
     pmm-admin status
     ```
     
-    !!! hint PMM-Agent can be updated from tarball:
+    !!! hint "PMM-Agent can be updated from tarball:"
 
      1. Download tar.gz with pmm2-client.
      2. Extract it.
