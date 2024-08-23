@@ -460,7 +460,6 @@ In high resolution we collect metrics from collectors that work fast:
 - `diagnosticdata`
 - `replicasetstatus`
 - `topmetrics`
-- `currentop`
 
 In low resolution we collect metrics from collectors which could take some time:
 
