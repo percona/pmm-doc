@@ -380,7 +380,7 @@ FLAGS:
 ###### Enable all collectors
 
 To enable all collectors, pass the parameter `--enable-all-collectors` in the `pmm-admin add mongodb` command.
-This will enable `collstats`, `dbstats`, `indexstats`, `currentop` and `topmetrics` collectors.
+This will enable `collstats`, `dbstats`, `indexstats`, `currentopmetrics` and `topmetrics` collectors.
 
 ###### Disable some collectors
 
