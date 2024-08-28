@@ -46,7 +46,7 @@ It is good practice to use a non-superuser account to connect PMM Client to the 
 
     ```sql
     CREATE USER 'pmm'@'127.0.0.1' IDENTIFIED BY 'pass' WITH MAX_USER_CONNECTIONS 10;
-    GRANT SELECT, PROCESS, REPLICA MONITOR, RELOAD ON *.* TO 'pmm'@'127.0.0.1';
+    GRANT SELECT, PROCESS, REPLICA MONITOR, BINLOG MONITOR, RELOAD ON *.* TO 'pmm'@'127.0.0.1';
     ```
 ## Choose and configure a source
 
