@@ -28,29 +28,26 @@ Check that:
 
 It is good practice to use a non-superuser account to connect PMM Client to the monitored database instance. This example creates a database user with name `pmm`, password `pass`, and the necessary permissions.
 
+=== "MySQL 8.0"
 
-**On MySQL 8.0**
+    ```sql
+    CREATE USER 'pmm'@'127.0.0.1' IDENTIFIED BY 'pass' WITH MAX_USER_CONNECTIONS 10;
+    GRANT SELECT, PROCESS, REPLICATION CLIENT, RELOAD, BACKUP_ADMIN ON *.* TO 'pmm'@'127.0.0.1';
+    ```
 
-```sql
-CREATE USER 'pmm'@'127.0.0.1' IDENTIFIED BY 'pass' WITH MAX_USER_CONNECTIONS 10;
-GRANT SELECT, PROCESS, REPLICATION CLIENT, RELOAD, BACKUP_ADMIN ON *.* TO 'pmm'@'127.0.0.1';
-```
+=== "MySQL 5.7"
 
-**On MySQL 5.7**
+    ```sql
+    CREATE USER 'pmm'@'127.0.0.1' IDENTIFIED BY 'pass' WITH MAX_USER_CONNECTIONS 10;
+    GRANT SELECT, PROCESS, REPLICATION CLIENT, RELOAD ON *.* TO 'pmm'@'127.0.0.1';
+    ```
 
-```sql
-CREATE USER 'pmm'@'127.0.0.1' IDENTIFIED BY 'pass' WITH MAX_USER_CONNECTIONS 10;
-GRANT SELECT, PROCESS, REPLICATION CLIENT, RELOAD ON *.* TO 'pmm'@'127.0.0.1';
-```
+=== "MariaDB 10.5.8+"
 
-**On MariaDB 10.5.8+**
-
-```sql
-CREATE USER 'pmm'@'127.0.0.1' IDENTIFIED BY 'pass' WITH MAX_USER_CONNECTIONS 10;
-GRANT SELECT, PROCESS, REPLICA MONITOR, RELOAD *.* TO 'pmm'@'127.0.0.1';
-```
-
-
+    ```sql
+    CREATE USER 'pmm'@'127.0.0.1' IDENTIFIED BY 'pass' WITH MAX_USER_CONNECTIONS 10;
+    GRANT SELECT, PROCESS, REPLICA MONITOR, RELOAD ON *.* TO 'pmm'@'127.0.0.1';
+    ```
 ## Choose and configure a source
 
 Decide which source of metrics to use, and configure your database server for it. The choices are [Slow query log](#slow-query-log) and [Performance Schema](#performance-schema).
@@ -77,7 +74,7 @@ Here are the benefits and drawbacks of *Slow query log* and *Performance Schema*
 
 This section covers how to configure a MySQL-based database server to use the *slow query log* as a source of metrics.
 
-### Applicable versions
+#### Applicable versions
 
 | Server                   | Versions         |
 |--------------------------|------------------|
@@ -88,7 +85,7 @@ This section covers how to configure a MySQL-based database server to use the *s
 
 The *slow query log* records the details of queries that take more than a certain amount of time to complete. With the database server configured to write this information to a file rather than a table, PMM Client parses the file and sends aggregated data to PMM Server via the Query Analytics part of PMM Agent.
 
-### Settings
+#### Settings
 
 | Variable                                                        | Value  |Description
 |-----------------------------------------------------------------|--------|----------------------------------------------------------
@@ -100,7 +97,7 @@ The *slow query log* records the details of queries that take more than a certai
 
 #### Examples
 
-- Configuration file.
+=== "Configuration file"
 
     ```ini
     slow_query_log=ON
@@ -110,7 +107,7 @@ The *slow query log* records the details of queries that take more than a certai
     log_slow_slave_statements=ON
     ```
 
-- Session.
+=== "Session"
 
     ```sql
     SET GLOBAL slow_query_log = 1;
@@ -144,7 +141,7 @@ Some MySQL-based database servers support extended slow query log variables.
 
 ##### Examples
 
-- Configuration file (Percona Server for MySQL, Percona XtraDB Cluster).
+=== "Configuration file (Percona Server for MySQL, Percona XtraDB Cluster)"
 
     ```ini
     log_slow_rate_limit=100
@@ -154,13 +151,13 @@ Some MySQL-based database servers support extended slow query log variables.
     slow_query_log_use_global_control='all'
     ```
 
-- Configuration file (MariaDB).
+=== "Configuration file (MariaDB)"
 
     ```ini
     log_slow_rate_limit=100
     ```
 
-- Session (Percona Server for MySQL, Percona XtraDB Cluster).
+=== "Session (Percona Server for MySQL, Percona XtraDB Cluster)"
 
     ```sql
     SET GLOBAL log_slow_rate_limit = 100;
@@ -217,7 +214,7 @@ To use *Performance Schema*, set the variables below.
 
 #### Examples
 
-- Configuration file.
+=== "Configuration file"
 
     ```ini
     performance_schema=ON
@@ -226,7 +223,7 @@ To use *Performance Schema*, set the variables below.
     innodb_monitor_enable=all
     ```
 
-- Session.
+=== "Session"
 
     (`performance_schema` cannot be set in a session and must be set at server start-up.)
 
@@ -336,13 +333,13 @@ User activity, individual table and index access details are shown on the [MySQL
 
 ### Examples
 
-- Configuration file.
+=== "Configuration file"
 
     ```ini
     userstat=ON
     ```
 
-- Session.
+=== "Session"
 
     ```sql
     SET GLOBAL userstat = ON;
@@ -350,33 +347,23 @@ User activity, individual table and index access details are shown on the [MySQL
 
 ## Add service
 
-When you have configured your database server, you can add a MySQL service with the user interface or on the command line.
+There are two ways to install PMM Client for monitoring your MySQL database:
 
-When adding a service with the command line, you must use the `pmm-admin --query-source=SOURCE` option to match the source you've chosen and configured the database server for.
+1. [Local installation](#Install-PMM-Client locally): Installs PMM Client directly on the database node, collecting both database and OS/host metrics. This option enables more effective comparison and problem identification.
+2. [Remote instance](#Install-PMM-Client-as-a-remote-instance): Use when local installation isn't possible. This method doesn't provide OS/Node metrics in PMM.
 
-With the PMM user interface, you select *Use performance schema*, or deselect it to use *slow query log*.
 
-### With the user interface
+### Install PMM Client locally
 
-1. Select {{icon.configuration}} *Configuration* → {{icon.inventory}} *Inventory* → {{icon.addinstance}} *Add Service*.
+Add the MySQL server as a service using one of the following example commands. 
 
-2. Select *MySQL -- Add a remote instance*.
+Upon successful addition, PMM Client will display "MySQL Service added" along with the service's ID and name. Use `--environment` and `--custom-labels` options to set identifying tags for the service.
 
-3. Enter or select values for the fields.
+```sh
+pmm-admin add mysql --username=pmm --password=<your_password> MYSQL_SERVICE_NAME
+```
 
-4. Click *Add service*.
-
-![!](../../_images/PMM_Add_Instance_MySQL.png)
-
-If your MySQL instance is configured to use TLS, click on the *Use TLS for database connections* check box and fill in your TLS certificates and key.
-
-![!](../../_images/PMM_Add_Instance_MySQL_TLS.png)
-
-### On the command line
-
-Add the database server as a service using one of these example commands. If successful, PMM Client will print `MySQL Service added` with the service's ID and name. Use the `--environment` and `-custom-labels` options to set tags for the service to help identify them.
-
-### Examples
+### Example configurations
 
 #### TLS connection
 
@@ -431,6 +418,28 @@ Default query source (`slowlog`), environment labeled `test`, custom labels sett
 ```sh
 pmm-admin add mysql --environment=test --custom-labels='source=slowlog'  --username=root --password=password --query-source=slowlog MySQLSlowLog localhost:3306
 ```
+
+### Install PMM Client as a remote instance
+
+1. Select <i class="uil uil-cog"></i> **Configuration > {{icon.inventory}} Inventory > {{icon.addinstance}} Add Service**.
+
+2. Choose **MySQL > Add a remote instance**.
+
+3. Complete the required fields.
+
+4. Click **Add service**.
+
+![!](../../_images/PMM_Add_Instance_MySQL.png)
+
+#### For MySQL instances using TLS
+
+If your MySQL instance is configured to use TLS: 
+
+1. Click on the **Use TLS for database connections** check box.
+2. Fill in your TLS certificates and key.
+
+![!](../../_images/PMM_Add_Instance_MySQL_TLS.png)
+
 
 ## Check the service
 
