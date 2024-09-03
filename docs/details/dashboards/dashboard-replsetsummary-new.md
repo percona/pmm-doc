@@ -1,9 +1,7 @@
-# MongoDB ReplSet Summary (OLD)
+# MongoDB ReplSet Summary (NEW)
 
-??? info "Dashboard update notice"
-     A [new version of the MongoDB ReplSet Summary dashboard](../../../docs/details/dashboard-replsetsummary-new.md) is available. This older version will be deprecated and removed from PMM in the near future. We encourage you to start using the new dashboard to benefit from its enhanced monitoring capabilities.
-
-![!image](../../_images/PMM_MongoDB_ReplSet_Summary.jpg)
+     
+![!image](../../_images/MongoDB_ReplSetSummary_New.png)
 
 ## Replication Lag
 
