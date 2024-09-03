@@ -46,6 +46,7 @@
 | MongoDB           | [Experimental MongoDB Collection Details]                                                             | 100
 | MongoDB           | [Experimental MongoDB Oplog Details]                                                             | 100
 | MongoDB           | [MongoDB Cluster Summary]                                                                | 55
+| MongoDB           | [MongoDB Router Summary]                                                                 | 55
 | MongoDB           | [MongoDB Instance Summary]                                                               | 42
 | MongoDB           | [MongoDB Instances Compare]                                                              | 19
 | MongoDB           | [MongoDB ReplSet Summary]                                                                | 130
@@ -108,6 +109,7 @@
 [Experimental MongoDB Collection Details]: dashboard-mongodb-experimental_collection_details.md
 [Experimental MongoDB Oplog Details]: dashboard-mongodb-experimental_oplog.md
 [MongoDB Cluster Summary]: dashboard-mongodb-cluster-summary.md
+[MongoDB Router Summary]: dashboard-mongodb-router-summary.md
 [MongoDB Instance Summary]: dashboard-mongodb-instance-summary.md
 [MongoDB Instances Overview]: dashboard-mongodb-instances-overview.md
 [MongoDB Instances Compare]: dashboard-mongodb-instances-compare.md
@@ -125,4 +127,3 @@
 [Experimental PXC/Galera Cluster Summary]: dashboard-pxc-galera-cluster-summary-experimental.md
 [PXC/Galera Nodes Compare]: dashboard-pxc-galera-nodes-compare.md
 [HAProxy Instance Summary]: dashboard-haproxy-instance-summary.md
-
