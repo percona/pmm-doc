@@ -285,9 +285,11 @@ nav:
                   - details/dashboards/dashboard-mysql-user-details.md
                   - details/dashboards/dashboard-mysql-tokudb-details.md
               - MongoDB Dashboards:
-                  - details/dashboards/dashboard-mongodb-experimental_collection_overview.md
+                  - docs/details/dashboards/dashboard-replsetsummary-new.md
+                  - docs/details/dashboards/dashboard-sharded-cluster-summary.md
+                  - details/dashboards/dashboard-mongodb_collection_overview.md
                   - details/dashboards/dashboard-mongodb-experimental_collection_details.md
-                  - details/dashboards/dashboard-mongodb-experimental_oplog.md
+                  - details/dashboards/dashboard-mongodb_oplog.md
                   - details/dashboards/dashboard-mongodb-cluster-summary.md
                   - details/dashboards/dashboard-mongodb-instance-summary.md
                   - details/dashboards/dashboard-mongodb-instances-overview.md
