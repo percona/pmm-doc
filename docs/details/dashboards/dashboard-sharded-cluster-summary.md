@@ -2,6 +2,8 @@
 
 This dashboard provides a comprehensive view of your MongoDB sharded cluster's performance, health, and resource utilization. It offers insights into shard distribution, query operations, data balance, and replication status across your entire cluster.
 
+For MongoS (Router) specific monitoring, see the [MongoDB Router Summary](dashboard-mongodb-router-summary.md) dashboard.
+
 ![MongoDB Sharded Cluster Summary](../../_images/MongoDB_Sharded_Cluster_Summary.png)
 
 ## Overview
