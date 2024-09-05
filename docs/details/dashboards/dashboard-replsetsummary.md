@@ -1,11 +1,11 @@
 
-# MongoDB ReplSet Summary (NEW)
+# MongoDB ReplSet Summary
 
-The MongoDB ReplSet Summary dashboard offers a comprehensive view of your MongoDB replica set's health and performance. It provides clear insights for both simple and complex, multi-environment setups. 
+The MongoDB ReplSet Summary dashboard offers a comprehensive view of your MongoDB replica set's health and performance. It provides clear insights for both simple and complex, multi-environment setups.
 
 The dashboard displays key metrics for individual nodes and the entire replica set, allowing you to quickly spot issues and maintain optimal database performance. With focused information and effective visualizations, it helps you identify and resolve potential problems efficiently, making it easier to manage MongoDB deployments of any size.
 
-![MongoDB ReplSet Summary](../../_images/MongoDB_ReplSetSummary_New.png)
+![MongoDB ReplSet Summary](../../_images/MongoDB_ReplSetSummary.png)
 
 ## Overview
 
@@ -39,7 +39,7 @@ This stat panel displays the current rate of disk Input/Output Operations Per Se
 
 ### Network Traffic
 
-Displays the current network traffic for the MongoDB server, showing separate values for inbound and outbound data transfer rates in bytes per second. It uses an area graph to visualize recent trends in network activity. The panel provides a real-time view of data movement across the network, helping you monitor the MongoDB server's network load. 
+Displays the current network traffic for the MongoDB server, showing separate values for inbound and outbound data transfer rates in bytes per second. It uses an area graph to visualize recent trends in network activity. The panel provides a real-time view of data movement across the network, helping you monitor the MongoDB server's network load.
 
 High values or sudden spikes can indicate increased database activity, potential performance bottlenecks, or unusual network patterns. Use this metric to assess network utilization and identify periods of intense data transfer that might affect MongoDB's performance or user experience.
 
@@ -69,10 +69,12 @@ For more details on replica set states, see to the [MongoDB documentation](https
 
 ### Command Operations
 
-Shows the rates of different MongoDB operations per second, including primary operations (like queries, inserts, updates, and deletes), replicated operations on secondary nodes, and automatic deletions by TTL indexes. 
+Shows the rates of different MongoDB operations per second, including primary operations (like queries, inserts, updates, and deletes), replicated operations on secondary nodes, and automatic deletions by TTL indexes.
 
 It helps you visualize your database's workload, showing how different types of operations contribute to overall activity. Use this to spot unusual patterns, balance between read and write operations, and understand your MongoDB instance's performance at a glance.
 
+You can filter the chart to focus on specific command types by clicking on their names in the legend. This will display only the selected metric. To view multiple speci
+metrics, use *Ctrl + click*  to select multiple items. 
 ### Top Hottest Collections by Read
 
 Lists the five collections with the highest read activity. Use this The panel to quickly identify which collections are under the most demand, allowing you to monitor read-heavy workloads and optimize performance accordingly.
@@ -87,7 +89,7 @@ Lists the five collections with the most write operations.
 
 ### Query Efficiency
 
-Measures the efficiency of queries in your MongoDB cluster by showing the ratio of documents or index entries scanned versus documents returned. A ratio of 1 indicates that every document returned matched the query criteria exactly, while a higher value, such as 100, suggests that on average, 100 documents were scanned to return a single document. 
+Measures the efficiency of queries in your MongoDB cluster by showing the ratio of documents or index entries scanned versus documents returned. A ratio of 1 indicates that every document returned matched the query criteria exactly, while a higher value, such as 100, suggests that on average, 100 documents were scanned to return a single document.
 
 Use this panel to assess query performance, identify inefficient queries, and optimize indexing strategies. 
 
@@ -99,8 +101,7 @@ Use this panel to track these queued operations and monitor the impact of lockin
 
 ### Reads & Writes
 
-Tracks the number of read and write operations over time in your MongoDB environment. Reads represent data queries, while writes represent data modifications. 
-
+Tracks the number of read and write operations over time in your MongoDB environment. Reads represent data queries, while writes represent data modifications.
 
 Use this panel to get insights into the workload distribution and monitor the performance of database operations, ensuring that the system is handling read and write operations efficiently.
 

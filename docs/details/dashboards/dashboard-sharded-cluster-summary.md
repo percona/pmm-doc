@@ -2,19 +2,21 @@
 
 This dashboard provides a comprehensive view of your MongoDB sharded cluster's performance, health, and resource utilization. It offers insights into shard distribution, query operations, data balance, and replication status across your entire cluster.
 
-![MongoDB Sharded Cluster Summary](../../_images/MongoDB_Sharded_Cluster_Summary.jpg)
+![MongoDB Sharded Cluster Summary](../../_images/MongoDB_Sharded_Cluster_Summary.png)
 
 ## Overview
 
 ### QPS of Services in Shard
- 
-Displays the Queries Per Second (QPS) for each shard and the config server replica set in your MongoDB cluster. It shows the rate of operations (excluding commands) for each component, helping you quickly assess the query load distribution across your sharded environment. 
+
+Displays the Queries Per Second (QPS) for each shard and the config server replica set in your MongoDB cluster. It shows the rate of operations (excluding commands) for each component, helping you quickly assess the query load distribution across your sharded environment.
 
 The chart uses the most recent non-null value and updates based on your selected time interval. This visualization allows you to easily identify which shards are handling the most queries and spot any potential load imbalances. 
 
 ### Shards
 
-A shard contains a subset of sharded data for a sharded cluster. Together, the cluster’s shards hold the entire data set for the cluster.
+This metric reports the number of shards in your MongoDB cluster.
+
+A shard contains a subset of sharded data for a sharded cluster. Together, the cluster's shards hold the entire data set for the cluster. The number of shards indicates how your data is distributed across the cluster, which is crucial for understanding your database's scalability and performance.
 
 ### Mongos
 
@@ -22,7 +24,9 @@ Number of mongos routers registered as part of the cluster.
 
 ### Draining Shards
 
-When you run removeShard, MongoDB drains the shard by using the balancer to move the shard’s chunks to other shards in the cluster. Once the shard is drained, MongoDB removes the shard from the cluster.
+This metric displays a single number representing the current count of shards that are in the process of being drained from your MongoDB cluster.
+
+When you run removeShard, MongoDB drains the shard by using the balancer to move the shard's chunks to other shards in the cluster. Once the shard is drained, MongoDB removes the shard from the cluster. The number shown here indicates how many shards are currently undergoing this draining process.
 
 ### DBs
 
@@ -92,11 +96,12 @@ It combines all types of operations (queries, inserts, updates, deletes, and get
 This visualization helps you monitor the distribution of workload across shards and identify any imbalances or unusual patterns in operation rates.
 
 ### MongoDB Versions
+
 Displays the current MongoDB version for each service in your cluster.
 
-This information helps you quickly identify which version of MongoDB is running on each service, ensuring all parts of your cluster are using consistent and up-to-date software. 
+This information helps you quickly identify which version of MongoDB is running on each service, ensuring all parts of your cluster are using consistent and up-to-date software.
 
-Use this to track version differences across your MongoDB deployment and plan upgrades as needed."
+Use this to track version differences across your MongoDB deployment and plan upgrades as needed.
 
 ## Node States
 
@@ -108,7 +113,7 @@ The visualization helps you track state changes, identify any instability in the
 
 ### Size of Collections in Shards
 
-Displays the storage size of MongoDB collections across different shards in your cluster. 
+Displays the storage size of MongoDB collections across different shards in your cluster.
 
 The data is organized by database and collection, with separate columns for each shard.
 
@@ -116,7 +121,7 @@ This visualization helps you understand how your data is distributed across shar
 
 ### Number of Collections in Shards
 
-This table shows how many collections each database has across different shards in your MongoDB cluster. It lists database names in rows and shard names in columns, with the number of collections at each intersection. 
+This table shows how many collections each database has across different shards in your MongoDB cluster. It lists database names in rows and shard names in columns, with the number of collections at each intersection.
 
 This overview helps you quickly see how your data is spread out, identify databases with many collections, and check if collections are evenly distributed across shards. 
 
