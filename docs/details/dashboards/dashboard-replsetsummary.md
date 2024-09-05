@@ -74,14 +74,15 @@ Shows the rates of different MongoDB operations per second, including primary op
 It helps you visualize your database's workload, showing how different types of operations contribute to overall activity. Use this to spot unusual patterns, balance between read and write operations, and understand your MongoDB instance's performance at a glance.
 
 You can filter the chart to focus on specific command types by clicking on their names in the legend. This will display only the selected metric. To view multiple speci
-metrics, use *Ctrl + click*  to select multiple items. 
+metrics, use *Ctrl + click*  to select multiple items.
+
 ### Top Hottest Collections by Read
 
-Lists the five collections with the highest read activity. Use this The panel to quickly identify which collections are under the most demand, allowing you to monitor read-heavy workloads and optimize performance accordingly.
+Lists the five collections with the highest read activity. Use this panel to quickly identify which collections are under the most demand, allowing you to monitor read-heavy workloads and optimize performance accordingly.
 
 ### Query Execution Times
 
-Displays the average latency of operations, categorized by read, write, or command. It visualizes how long each type of operation takes to execute over time, helping you identify trends or potential performance bottlenecks in your database operations Use this panel to you to monitor and optimize the responsiveness of your MongoDB cluster.
+Displays the average latency of operations, categorized by read, write, or command. It visualizes how long each type of operation takes to execute over time, helping you identify trends or potential performance bottlenecks in your database operations. Use this panel to you to monitor and optimize the responsiveness of your MongoDB cluster.
 
 ### Top Hottest Collections by Write
 
@@ -107,7 +108,7 @@ Use this panel to get insights into the workload distribution and monitor the pe
 
 ### Connections
 
-monitors the average number of active and available MongoDB connections over time.
+Monitors the average number of active and available MongoDB connections over time.
 
 Use this panel to track connection usage and ensure the database has sufficient capacity to handle incoming requests without reaching its limit.
 

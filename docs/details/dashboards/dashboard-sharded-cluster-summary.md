@@ -16,9 +16,9 @@ The chart uses the most recent non-null value and updates based on your selected
 
 ### Shards
 
-This metric reports the number of shards in your MongoDB cluster.
+Reports the number of shards in your MongoDB cluster. The number of shards indicates how your data is distributed across the cluster, which is crucial for understanding your database's scalability and performance.
 
-A shard contains a subset of sharded data for a sharded cluster. Together, the cluster's shards hold the entire data set for the cluster. The number of shards indicates how your data is distributed across the cluster, which is crucial for understanding your database's scalability and performance.
+A shard contains a subset of sharded data for a sharded cluster. Together, the cluster's shards hold the entire data set for the cluster.
 
 ### Mongos
 
@@ -26,9 +26,9 @@ Number of mongos routers registered as part of the cluster.
 
 ### Draining Shards
 
-This metric displays a single number representing the current count of shards that are in the process of being drained from your MongoDB cluster.
+Displays a single number representing the current count of shards that are in the process of being drained from your MongoDB cluster.
 
-When you run removeShard, MongoDB drains the shard by using the balancer to move the shard's chunks to other shards in the cluster. Once the shard is drained, MongoDB removes the shard from the cluster. The number shown here indicates how many shards are currently undergoing this draining process.
+When you run `removeShard`, MongoDB drains the shard by using the balancer to move the shard's chunks to other shards in the cluster. Once the shard is drained, MongoDB removes the shard from the cluster. The number shown here indicates how many shards are currently undergoing this draining process.
 
 ### DBs
 
