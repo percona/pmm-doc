@@ -65,6 +65,12 @@ Elections occur when a new primary node needs to be chosen, which can happen dur
 
 A very recent election might indicate a recent change or issue in your cluster that warrants investigation, while a long time since the last election suggests stability in the primary node assignment.
 
+### Chunks distribution
+
+ Dsplays the distribution of chunks across different shards in a MongoDB cluster as a series of horizontal bars. It updates every minute, showing the percentage of total chunks each shard holds.
+
+Use this to quickly identify any imbalances in data distribution among shards, which is crucial for maintaining optimal performance in a sharded MongoDB setup.
+
 ### Command Operations
 
 Provides a comprehensive overview of MongoDB operation rates across your deployment. It displays the frequency of primary operations (query, insert, update, delete, and getmore), replicated operations on secondary nodes, and document deletions by Time-To-Live (TTL) indexes. 
