@@ -35,7 +35,7 @@ Shows how long the system has been running without a restart. As uptime increase
 Displays the current version of MongoDB running on the system. This information is crucial for ensuring the system is running the intended version and for quickly identifying any nodes that might need updates.
 ## Node States
 
-This section allows to easily see the state (UP or DOWN) for all MongoS that are part of the selected sharded cluster.
+Shows the status of all MongoDB Shard (MongoS) nodes in the selected cluster over time. It uses a color-coded timeline: green bars mean a node is "UP" and working, while red bars show it's "DOWN" or unreachable. This simple view helps you quickly spot which nodes are active, see any recent status changes, and identify patterns in node availability.
 
 ## Details
 
