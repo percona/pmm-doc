@@ -1,6 +1,6 @@
 # Experimental MongoDB Router Summary
 
-This dashboard is available from PMM v2.43.0 and should only be used in case of sharded clusters, to monitor the MongoS (router) nodes.
+This dashboard is available starting from PMM 2.43 and is specifically designed for monitoring MongoS (router) nodes in sharded MongoDB clusters.
 
 ![!image](../../_images/PMM_MongoDB_Router_Summary.png)
 
