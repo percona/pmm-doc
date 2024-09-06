@@ -42,10 +42,10 @@
 | MySQL             | [MySQL Group Replication Summary]                                                        | 18
 | MySQL             | [MySQL Table Details]                                                                    | 45
 | MySQL             | [MySQL User Details]                                                                     | 62
-| MongoDB           | [Experimental MongoDB Collection Overview]                                                             | 100
+| MongoDB           | [MongoDB Collection Overview]                                                             | 100
 | MongoDB           | [Experimental MongoDB Collection Details]                                                             | 100
-| MongoDB           | [Experimental MongoDB Oplog Details]                                                             | 100
-| MongoDB           | [MongoDB Cluster Summary]                                                                | 55
+| MongoDB           | [MongoDB Oplog Details]                                                             | 100
+| MongoDB           | [MongoDB Sharded Cluster Summary]                                                                | 55                                                              | 55
 | MongoDB           | [MongoDB Router Summary]                                                                 | 55
 | MongoDB           | [MongoDB Instance Summary]                                                               | 42
 | MongoDB           | [MongoDB Instances Compare]                                                              | 19
@@ -105,15 +105,16 @@
 [MySQL Table Details]: dashboard-mysql-table-details.md
 [MySQL User Details]: dashboard-mysql-user-details.md
 [MySQL TokuDB Details]: dashboard-mysql-tokudb-details.md
-[Experimental MongoDB Collection Overview]: dashboard-mongodb-experimental_collection_overview.md
+[MongoDB Collection Overview]: dashboard-mongodb_collection_overview.md
 [Experimental MongoDB Collection Details]: dashboard-mongodb-experimental_collection_details.md
+[MongoDB Oplog Details]: dashboard-mongodb_oplog.md
+[MongoDB Cluster Summary]: dashboard-sharded-cluster-summary.md
 [Experimental MongoDB Oplog Details]: dashboard-mongodb-experimental_oplog.md
-[MongoDB Cluster Summary]: dashboard-mongodb-cluster-summary.md
 [MongoDB Router Summary]: dashboard-mongodb-router-summary.md
 [MongoDB Instance Summary]: dashboard-mongodb-instance-summary.md
 [MongoDB Instances Overview]: dashboard-mongodb-instances-overview.md
 [MongoDB Instances Compare]: dashboard-mongodb-instances-compare.md
-[MongoDB ReplSet Summary]: dashboard-mongodb-replset-summary.md
+[MongoDB ReplSet Summary]: dashboard-replsetsummary.md
 [MongoDB InMemory Details]: dashboard-mongodb-inmemory-details.md
 [MongoDB MMAPv1 Details]: dashboard-mongodb-mmapv1-details.md
 [MongoDB WiredTiger Details]: dashboard-mongodb-wiredtiger-details.md
