@@ -48,11 +48,11 @@
 | MongoDB           | [MongoDB Sharded Cluster Summary]                                                        | 55
 | MongoDB           | [MongoDB Cluster Summary (OLD)]                                                          | 55
 | MongoDB           | [MongoDB Router Summary]                                                                 | 55
-| MongoDB           | [MongoDB Instance Summary]                                                               | 42
-| MongoDB           | [MongoDB Instances Overview]                                                              | 42
-| MongoDB           | [MongoDB Instances Compare]                                                              | 19
 | MongoDB           | [MongoDB ReplSet Summary]                                                                | 130
 | MongoDB           | [MongoDB ReplSet Summary (OLD)]                                                          | 130
+| MongoDB           | [MongoDB Instance Summary]                                                               | 42
+| MongoDB           | [MongoDB Instances Overview]                                                             | 42
+| MongoDB           | [MongoDB Instances Compare]                                                              | 19
 | MongoDB           | [MongoDB InMemory Details]                                                               | 46
 | MongoDB           | [MongoDB MMAPv1 Details]                                                                 | 52
 | MongoDB           | [MongoDB WiredTiger Details]                                                             | 54
