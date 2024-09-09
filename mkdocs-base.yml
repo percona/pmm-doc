@@ -285,17 +285,17 @@ nav:
                   - details/dashboards/dashboard-mysql-user-details.md
                   - details/dashboards/dashboard-mysql-tokudb-details.md
               - MongoDB Dashboards:
-                  - docs/details/dashboards/dashboard-replsetsummary-new.md
-                  - docs/details/dashboards/dashboard-sharded-cluster-summary.md
                   - details/dashboards/dashboard-mongodb_collection_overview.md
                   - details/dashboards/dashboard-mongodb-experimental_collection_details.md
                   - details/dashboards/dashboard-mongodb_oplog.md
-                  - details/dashboards/dashboard-mongodb-cluster-summary.md
+                  - docs/details/dashboards/dashboard-sharded-cluster-summary.md
+                  - details/dashboards/dashboard-mongodb-cluster-summary-old.md
                   - details/dashboards/dashboard-mongodb-router-summary.md
+                  - docs/details/dashboards/dashboard-replsetsummary.md
+                  - details/dashboards/dashboard-mongodb-replset-summary-old.md
                   - details/dashboards/dashboard-mongodb-instance-summary.md
                   - details/dashboards/dashboard-mongodb-instances-overview.md
                   - details/dashboards/dashboard-mongodb-instances-compare.md
-                  - details/dashboards/dashboard-mongodb-replset-summary.md
                   - details/dashboards/dashboard-mongodb-inmemory-details.md
                   - details/dashboards/dashboard-mongodb-mmapv1-details.md
                   - details/dashboards/dashboard-mongodb-wiredtiger-details.md
