@@ -113,7 +113,6 @@
 [MongoDB Oplog Details]: dashboard-mongodb_oplog.md
 [MongoDB Sharded Cluster Summary]: dashboard-sharded-cluster-summary.md
 [MongoDB Cluster Summary (OLD)]: dashboard-mongodb-cluster-summary-old.md
-[Experimental MongoDB Oplog Details]: dashboard-mongodb-experimental_oplog.md
 [Experimental MongoDB Router Summary]: dashboard-mongodb-router-summary.md
 [MongoDB Instance Summary]: dashboard-mongodb-instance-summary.md
 [MongoDB Instances Overview]: dashboard-mongodb-instances-overview.md
