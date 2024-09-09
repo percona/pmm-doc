@@ -2,9 +2,9 @@
 
 | Category          | Dashboard                                                                                | Elements { data-sort-method='number'} |
 |-------------------|------------------------------------------------------------------------------------------|:-------------------------------------:|
-| Kubernetes        | [Kubernetes Cluster Summary]                                                              | 7
-| Kubernetes        | [Kubernetes Pods Status]                                                                         | 26
-| Kubernetes        | [Kubernetes Volumes]                                                             | 57
+| Kubernetes        | [Kubernetes Cluster Summary]                                                             | 7
+| Kubernetes        | [Kubernetes Pods Status]                                                                 | 26
+| Kubernetes        | [Kubernetes Volumes]                                                                     | 57
 | Insight           | [Advanced Data Exploration]                                                              | 7
 | Insight           | [Home Dashboard]                                                                         | 26
 | Insight           | [Prometheus Exporter Status]                                                             | 57
@@ -42,10 +42,10 @@
 | MySQL             | [MySQL Group Replication Summary]                                                        | 18
 | MySQL             | [MySQL Table Details]                                                                    | 45
 | MySQL             | [MySQL User Details]                                                                     | 62
-| MongoDB           | [MongoDB Collection Overview]                                                             | 100
-| MongoDB           | [Experimental MongoDB Collection Details]                                                             | 100
-| MongoDB           | [MongoDB Oplog Details]                                                             | 100
-| MongoDB           | [MongoDB Sharded Cluster Summary]                                                                | 55                                                              | 55
+| MongoDB           | [MongoDB Collection Overview]                                                            | 100
+| MongoDB           | [Experimental MongoDB Collection Details]                                                | 100
+| MongoDB           | [MongoDB Oplog Details]                                                                  | 100
+| MongoDB           | [MongoDB Sharded Cluster Summary]                                                        | 55
 | MongoDB           | [MongoDB Router Summary]                                                                 | 55
 | MongoDB           | [MongoDB Instance Summary]                                                               | 42
 | MongoDB           | [MongoDB Instances Compare]                                                              | 19
@@ -60,7 +60,7 @@
 | ProxySQL          | [ProxySQL Instance Summary]                                                              | 55
 | High-availability | [PXC/Galera Node Summary]                                                                | 32
 | High-availability | [PXC/Galera Cluster Summary]                                                             | 19
-| High-availability | [Experimental PXC/Galera Cluster Summary]                                                 | 7
+| High-availability | [Experimental PXC/Galera Cluster Summary]                                                | 7
 | High-availability | [PXC/Galera Nodes Compare]                                                               | 55
 | High-availability | [HAProxy Instance Summary]                                                               | 113
 
