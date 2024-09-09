@@ -292,10 +292,11 @@ nav:
                   - details/dashboards/dashboard-mongodb_oplog.md
                   - details/dashboards/dashboard-cluster-summary.md
                   - details/dashboards/dashboard-mongodb-router-summary.md
+                  - docs/details/dashboards/dashboard-replsetsummary.md
+                  - details/dashboards/dashboard-mongodb-replset-summary-old.md
                   - details/dashboards/dashboard-mongodb-instance-summary.md
                   - details/dashboards/dashboard-mongodb-instances-overview.md
                   - details/dashboards/dashboard-mongodb-instances-compare.md
-                  - details/dashboards/dashboard-mongodb-replset-summary.md
                   - details/dashboards/dashboard-mongodb-inmemory-details.md
                   - details/dashboards/dashboard-mongodb-mmapv1-details.md
                   - details/dashboards/dashboard-mongodb-wiredtiger-details.md
