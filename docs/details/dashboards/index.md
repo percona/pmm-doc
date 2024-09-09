@@ -51,6 +51,7 @@
 | MongoDB           | [MongoDB Instance Summary]                                                               | 42
 | MongoDB           | [MongoDB Instances Compare]                                                              | 19
 | MongoDB           | [MongoDB ReplSet Summary]                                                                | 130
+| MongoDB           | [MongoDB ReplSet Summary (OLD)]                                                          | 130
 | MongoDB           | [MongoDB InMemory Details]                                                               | 46
 | MongoDB           | [MongoDB MMAPv1 Details]                                                                 | 52
 | MongoDB           | [MongoDB WiredTiger Details]                                                             | 54
@@ -117,6 +118,7 @@
 [MongoDB Instances Overview]: dashboard-mongodb-instances-overview.md
 [MongoDB Instances Compare]: dashboard-mongodb-instances-compare.md
 [MongoDB ReplSet Summary]: dashboard-replsetsummary.md
+[MongoDB ReplSet Summary (OLD)]: dashboard-mongodb-replset-summary-old.md
 [MongoDB InMemory Details]: dashboard-mongodb-inmemory-details.md
 [MongoDB MMAPv1 Details]: dashboard-mongodb-mmapv1-details.md
 [MongoDB WiredTiger Details]: dashboard-mongodb-wiredtiger-details.md
