@@ -49,6 +49,7 @@
 | MongoDB           | [MongoDB Cluster Summary (OLD)]                                                          | 55
 | MongoDB           | [MongoDB Router Summary]                                                                 | 55
 | MongoDB           | [MongoDB Instance Summary]                                                               | 42
+| MongoDB           | [MongoDB Instances Overview]                                                              | 42
 | MongoDB           | [MongoDB Instances Compare]                                                              | 19
 | MongoDB           | [MongoDB ReplSet Summary]                                                                | 130
 | MongoDB           | [MongoDB ReplSet Summary (OLD)]                                                          | 130
