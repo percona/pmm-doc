@@ -46,6 +46,7 @@
 | MongoDB           | [Experimental MongoDB Collection Details]                                                | 100
 | MongoDB           | [MongoDB Oplog Details]                                                                  | 100
 | MongoDB           | [MongoDB Sharded Cluster Summary]                                                        | 55
+| MongoDB           | [MongoDB Cluster Summary (OLD)]                                                          | 55
 | MongoDB           | [MongoDB Router Summary]                                                                 | 55
 | MongoDB           | [MongoDB Instance Summary]                                                               | 42
 | MongoDB           | [MongoDB Instances Compare]                                                              | 19
@@ -108,7 +109,8 @@
 [MongoDB Collection Overview]: dashboard-mongodb_collection_overview.md
 [Experimental MongoDB Collection Details]: dashboard-mongodb-experimental_collection_details.md
 [MongoDB Oplog Details]: dashboard-mongodb_oplog.md
-[MongoDB Cluster Summary]: dashboard-sharded-cluster-summary.md
+[MongoDB Sharded Cluster Summary]: dashboard-sharded-cluster-summary.md
+[MongoDB Cluster Summary (OLD)]: dashboard-mongodb-cluster-summary-old.md
 [Experimental MongoDB Oplog Details]: dashboard-mongodb-experimental_oplog.md
 [MongoDB Router Summary]: dashboard-mongodb-router-summary.md
 [MongoDB Instance Summary]: dashboard-mongodb-instance-summary.md
