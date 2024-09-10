@@ -293,7 +293,6 @@ nav:
                   - details/dashboards/dashboard-cluster-summary.md
                   - details/dashboards/dashboard-mongodb-router-summary.md
                   - details/dashboards/dashboard-replsetsummary.md
-                  - details/dashboards/dashboard-mongodb-replset-summary-old.md
                   - details/dashboards/dashboard-mongodb-instance-summary.md
                   - details/dashboards/dashboard-mongodb-instances-overview.md
                   - details/dashboards/dashboard-mongodb-instances-compare.md
