@@ -140,7 +140,7 @@ Indicates the timespan (window) between the newest and oldest operations in the 
 
 ### Flow Control
 
-Displays the average latency of operations, categorized by read, write, or command.
+Monitors and displays the performance metrics related to flow control in a MongoDB cluster. It provides insights into the frequency and duration of lagged operations, which can help you identify potential bottlenecks or performance issues.
 
 ### WiredTiger Concurrency Tickets Available
 
