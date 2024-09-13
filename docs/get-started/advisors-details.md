@@ -16,8 +16,8 @@ You can also access this list through the [**Advisor checks for PMM**](https://p
 | **Version Configuration** | Notifies of newly released database versions to streamline database maintenance and ensure the most up-to-date performance. |Percona Customers, Community | MySQL, MongoDB, PostgreSQL|
 | **Generic Configuration** | Provides basic recommendations for improving your database configuration.   | Percona Customers, Community |MySQL, MongoDB, PostgreSQL| 
 | **Resources Configuration** | Watches your database and gives you recommendations for efficient management of resources like binaries architecture, CPU number versus DB Configuration, etc. | Percona Customers, Community | MySQL, MongoDB|
-| **Connection Configuration** |Provides recommendations on configuring database connection parameters for improving database performance.  | Percona Customers |MySQL, MongoDB, PostgreSQL|
-| **Replication Configuration** | Provides recommendations for scalable replication in database clusters. | Percona Customers | MySQL, MongoDB|
+| **Connection Configuration** |Provides recommendations on configuring database connection parameters for improving database performance.  | Percona Customers, Community |MySQL, MongoDB, PostgreSQL|
+| **Replication Configuration** | Provides recommendations for scalable replication in database clusters. | Percona Customers, Community | MySQL, MongoDB|
 | **InnoDB Configuration** | Advises on configuring InnoDB optimization for high performance. | Percona Customers | MySQL|
 | **Vacuum Configuration** | Provides recommendations on optimizing Vacuum operations. | Percona Customers | PostgreSQL|
 
@@ -27,7 +27,7 @@ You can also access this list through the [**Advisor checks for PMM**](https://p
 | :--------- | :---------- | :--- |:--- |
 | **Generic Performance** | Provides basic database configuration recommendations for high-performance query execution. | Percona Customers, Community | MongoDB, PostgreSQL|
 | **Vacuum Performance** | Helps improve the efficiency and execution speed of database Vacuum commands. |  Percona Customers | PostgreSQL|
-| **Replication Performance** |Checks efficient replication usage of your database. | Percona Customers | MongoDB, PostgreSQL|
+| **Replication Performance** |Checks efficient replication usage of your database. | Percona Customers, Community | MongoDB, PostgreSQL|
 
 
 ### Security Advisors
@@ -35,14 +35,14 @@ You can also access this list through the [**Advisor checks for PMM**](https://p
 | :--------- | :---------- | :--- |:--- |
 | **CVE Security** | Informs you of any database versions affected by CVE. |Percona Customers, Community | MongoDB, PostgreSQL |
 | **Configuration Security** | Checks your database configuration to ensure that security best practices are correctly implemented.  | Percona Customers, Community |MySQL, MongoDB, PostgreSQL|
-| **Authentication Security** | Ensures that all database authentication parameters are configured securely. | Percona Customers |MySQL, MongoDB, PostgreSQL|
-| **Replication Security** | Helps safeguard data replication by assessing security risks and providing recommendations for improving protection. | Percona Customers |MySQL|
+| **Authentication Security** | Ensures that all database authentication parameters are configured securely. | Percona Customers, Community |MySQL, MongoDB, PostgreSQL|
+| **Replication Security** | Helps safeguard data replication by assessing security risks and providing recommendations for improving protection. | Percona Customers, Community |MySQL|
 | **Connection Security** | Helps identify security issues on network connections and provides recommendations for enhancing security. | Percona Customers |MySQL, MongoDB|
 
 ### Query Advisors
 | Advisor Name | Description | Subscription | Database Technology|
 | :--------- | :---------- | :--- |:--- |
-| **Index Query** | Provides query and index optimization strategies for peak database performance. | Percona Customers | MySQL, MongoDB, PostgreSQL |
+| **Index Query** | Provides query and index optimization strategies for peak database performance. | Percona Customers, Community | MySQL, MongoDB, PostgreSQL |
 | **Schema Design Query** | Helps create efficient database schemas by analyzing queries and offering suggestions for optimization. | Percona Customers, Community |MySQL|
 
 ## List of checks
