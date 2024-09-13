@@ -1,7 +1,7 @@
 # MongoDB Cluster Summary (OLD)
 
 ??? info "Dashboard update notice"
-     A [new version of the MongoDB Sharded Cluster Summary dashboarddocs/details/dashboard-sharded-](../../details/dashboards/dashboard-sharded-cluster-summary.md) is available. 
+     A [new version of the MongoDB Sharded Cluster Summary dashboard](../../details/dashboards/dashboard-sharded-cluster-summary.md) is available. 
      This older version will be deprecated and removed from PMM in the near future. We encourage you to start using the new dashboard to benefit from its enhanced monitoring capabilities.
 
 ![!image](../../_images/PMM_MongoDB_Cluster_Summary.jpg)
