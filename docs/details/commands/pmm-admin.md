@@ -427,18 +427,6 @@ FLAGS:
         ```
         pmm-admin add mongodb --username=admin --password=admin_pass --enable-all-collectors --max-collections-limit=0 --disable-collectors=collstats mongodb_srv_1 127.0.0.1:27017```
 
-
-
-
-
-
-
-
-
-
-
-
-
 ##### Resolutions
 
 PMM collects metrics in two [resolutions](../../how-to/configure.md#metrics-resolution) to decrease CPU and Memory usage: high and low resolutions.
