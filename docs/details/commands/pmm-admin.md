@@ -258,7 +258,7 @@ PMM communicates with the PMM Server via a PMM agent process.
 `pmm-admin add mongodb [FLAGS] [node-name] [node-address]`
 :    Add MongoDB to monitoring.
 
-    FLAGS:
+##### FLAGS:
 
     `--node-id=node-id`
     :  Node ID (default is auto-detected).
@@ -326,6 +326,18 @@ PMM communicates with the PMM Server via a PMM agent process.
         !!! caution ""
             Ensure you do not set the value of `max-query-length` to 1, 2, or 3. Otherwise, the PMM agent will get terminated.
 
+##### COLLECTORS  
+MongoDB exporter includes the following collectors:
+
+- `diagnosticdata`
+- `replicasetstatus`
+- `collstats`
+- `dbstats`
+- `indexstats`
+- `topmetrics`
+- `currentop`: This only collects operations running for longer than one minute and ignores operations in the admin and local databases.
+- `fcv` (Feature Compatibility Version)
+  
 ##### Advanced options
 
 PMM starts the MongoDB exporter by default only with `diagnosticdata` and `replicasetstatus` collectors enabled.
@@ -348,7 +360,7 @@ FLAGS:
 :  Collections for collstats & indexstats.
 
 === "Default configuration"
-    To add MongoDB with default collectors (`diagnosticdata` and `replicasetstatus`):
+    To add MongoDB with default collectors (`diagnosticdata` and `replicasetstatus` and `fcv` (Feature Compatibility Version) collectors:
 
     ```
     pmm-admin add mongodb --username=admin --password=admin_pass mongodb_srv_1 127.0.0.1:27017
@@ -359,11 +371,11 @@ FLAGS:
 === "Enable all collectors"
 
     To enable all collectors, pass the parameter `--enable-all-collectors` in the `pmm-admin add mongodb` command.
-    This will enable `collstats`, `dbstats`, `indexstats`, `topmetrics` and `fcv` (Feature Compatibility Version) collectors.
+    This will enable `collstats`, `dbstats`, `indexstats`, `topmetrics`, `currentopmetrics` and `fcv` collectors.
 
     Examples: 
 
-    1. To add MongoDB with all collectors (`diagnosticdata`, `replicasetstatus`, `collstats`, `dbstats`, `indexstats`, and `topmetrics`) with default limit detected by PMM (currently <=200 collections, but subject to change):
+    1. To add MongoDB with all collectors (`diagnosticdata`, `replicasetstatus`, `collstats`, `dbstats`, `indexstats`, `currentopmetrics`, `topmetrics` and `fcv`) with default limit detected by PMM (currently <=200 collections, but subject to change):
 
         ```
         pmm-admin add mongodb --username=admin --password=admin_pass --enable-all-collectors mongodb_srv_1 127.0.0.1:27017
@@ -375,11 +387,11 @@ FLAGS:
         pmm-admin add mongodb --username=admin --password=admin_pass --enable-all-collectors --max-collections-limit=0 mongodb_srv_1 127.0.0.1:27017
         ```
 
-=== "Limit dbStats, collStats & indexStats"
+=== "Limit dbStats, collStats, indexStats & currentopmetrics"
 
     By default, PMM decides the limit for the number of collections to monitor the `collStats` and `indexStats` collectors.
 
-    You can also set an additional limit for the `collStats`, `indexStats`, `dbStats`, and `topmetrics` collectors with the `--max-collections-limit` parameter.
+    You can also set an additional limit for the `collStats`, `indexStats`, `dbStats`, `currentopmetrics` and `topmetrics` collectors with the `--max-collections-limit` parameter.
 
     Set the value of the parameter `--max-collections-limit` to:
 
@@ -388,26 +400,26 @@ FLAGS:
     - -1 (default) doesn't need to be explicitly set. It indicates that PMM decides how many collections it would monitor, currently <=200 (subject to change).
 
 
-    To further limit collections to monitor, enable `collStats` and `indexStats` for some databases or collections:
+    To further refine the scope of monitored collections:
+    1. Use the `--stats-collections` parameter to specify which databases and collections `collStats` and `indexStats` will monitor.
+    2. The parameter accepts a comma-separated list of namespaces in the format `database[.collection]`.
 
-    - Specify the databases and collections that `collStats` and `indexStats` will use to collect data using the parameter `--stats-collections`. This parameter receives a comma-separated list of name spaces in the form `database[.collection]`.
- 
     Examples:
 
-    1. To add MongoDB with all collectors (`diagnosticdata`, `replicasetstatus`, `collstats`, `dbstats`, `indexstats`, and `topmetrics`) with `max-collections-limit` set to 1000:
+    3. To add MongoDB with all collectors (`diagnosticdata`, `replicasetstatus`, `collstats`, `dbstats`, `indexstats`, `currentopmetrics`, `topmetrics` and `fcv) with `max-collections-limit` set to 1000:
 
         ```
         pmm-admin add mongodb --username=admin --password=admin_pass --enable-all-collectors --max-collections-limit=1000 mongodb_srv_1 127.0.0.1:27017
         ```
 
-    2. If `--stats-collections=db1,db2.col1` then the collectors are run as follows:
+    4. If `--stats-collections=db1,db2.col1` then the collectors are run as follows:
 
         | Database | Collector is run on            |
         |----------|--------------------------------|
         | `db1`    | All the collections            |
         | `db2`    | **Only** for collection `col1` |
 
-    3. Enable all collectors and limit monitoring for `dbstats`, `indexstats`, `collstats` and `topmetrics` for all collections in `db1` and `col1` collection in `db2`, without limiting `max-collections-limit` for a number of collections in `db1`:
+    5. Enable all collectors and limit monitoring for `dbstats`, `indexstats`, `collstats` and `topmetrics` for all collections in `db1` and `col1` collection in `db2`, without limiting `max-collections-limit` for a number of collections in `db1`:
     
         ```
         pmm-admin add mongodb --username=admin --password=admin_pass --enable-all-collectors --max-collections-limit=0 --stats-collections=db1,db2.col1 mongodb_srv_1 127.0.0.1:27017
