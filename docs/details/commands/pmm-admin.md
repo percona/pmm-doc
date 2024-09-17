@@ -121,10 +121,8 @@ PMM communicates with the PMM Server via a PMM agent process.
 
 ### CONFIGURATION COMMANDS
 
-#### `pmm-admin config`
-
-`pmm-admin config [FLAGS] [node-address] [node-type] [node-name]`
-:   Configure a local `pmm-agent`.
+=== "pmm-admin config"
+   Configure a local `pmm-agent`.
 
     FLAGS:
 
@@ -152,132 +150,86 @@ PMM communicates with the PMM Server via a PMM agent process.
     `--agent-password=password` (This parameter i available starting with PMM 2.29.0.)
     : Custom agent password.
 
-#### `pmm-admin register`
+    === "pmm-admin register"
+        Register the current Node with the PMM Server.
 
-`pmm-admin register [FLAGS] [node-address] [node-type] [node-name]`
-: Register the current Node with the PMM Server.
+        ```
+        pmm-admin register [FLAGS] [node-address] [node-type] [node-name]
+        ```
 
-    `--server-url=server-url`
-    : PMM Server URL in `https://username:password@pmm-server-host/` format.
+        FLAGS:
 
-    `--machine-id="/machine_id/9812826a1c45454a98ba45c56cc4f5b0"`
-    : Node machine-id (default is auto-detected).
+        - `--server-url=server-url`: PMM Server URL in `https://username:password@pmm-server-host/` format.
+        - `--machine-id="/machine_id/9812826a1c45454a98ba45c56cc4f5b0"`: Node machine-id (default is auto-detected).
+        - `--distro="linux"`: Node OS distribution (default is auto-detected).
+        - `--container-id=container-id`: Container ID.
+        - `--container-name=container-name`: Container name.
+        - `--node-model=node-model`: Node model.
+        - `--region=region`: Node region.
+        - `--az=availability-zone`: Node availability zone.
+        - `--custom-labels=labels`: Custom user-assigned labels.
+        - `--agent-password=password`: Custom agent password. (Available starting with PMM 2.29.0.)
 
-    `--distro="linux"`
-    : Node OS distribution (default is auto-detected).
+=== "pmm-admin add"
 
-    `--container-id=container-id`
-    : Container ID.
+    Configure the PMM agent with a listen port.
 
-    `--container-name=container-name`
-    : Container name.
+    ```
+    pmm-admin add --pmm-agent-listen-port=LISTEN_PORT DATABASE [FLAGS] [NAME] [ADDRESS]
+    ```
 
-    `--node-model=node-model`
-    : Node model.
+    - `--pmm-agent-listen-port=LISTEN_PORT`: The PMM agent listen port.
 
-    `--region=region`
-    : Node region.
+    DATABASE:= [MongoDB](#mongodb) | [MySQL](#mysql) | [PostgreSQL](#postgresql) | [ProxySQL](#proxysql)
 
-    `--az=availability-zone`
-    : Node availability zone.
+=== "pmm-admin remove"
+    Remove Service from monitoring.
 
-    `--custom-labels=labels`
-    : Custom user-assigned labels.
+    ```
+    pmm-admin remove [FLAGS] service-type [service-name]
+    ```
 
-    `--agent-password=password` (This parameter is available starting with PMM 2.29.0.)
-    : Custom agent password.
- 
-#### `pmm-admin add --pmm-agent-listen-port=LISTEN_PORT`
+    FLAGS:
 
-`pmm-admin add --pmm-agent-listen-port=LISTEN_PORT DATABASE [FLAGS] [NAME] [ADDRESS]`
-: Configure the PMM agent with a listen port.
+    - `--service-id=service-id`: Service ID.
+    - `--force`: Remove service with that name or ID and all dependent services and agents.
 
-    ` --pmm-agent-listen-port=LISTEN_PORT`
-    : The PMM agent listen port.
+    Note: When you remove a service, collected data remains on PMM Server for the specified [retention period](../../faq.md).
 
-DATABASE:= [[MongoDB](#mongodb) | [MySQL](#mysql) | [PostgreSQL](#postgresql) | [ProxySQL](#proxysql)]
+=== "pmm-admin annotate"
 
+    Annotate an event. ([Read more](../../how-to/annotate.md))
 
-#### `pmm-admin remove`
+    ```
+    pmm-admin annotate [--node|--service] <annotation> [--tags <tags>] [--node-name=<node>] [--service-name=<service>]
+    ```
 
-`pmm-admin remove [FLAGS] service-type [service-name]`
-: Remove Service from monitoring.
-
-    `--service-id=service-id`
-    : Service ID.
-
-    `--force`
-    : Remove service with that name or ID and all dependent services and agents.
-
-When you remove a service, collected data remains on PMM Server for the specified [retention period](../../faq.md).
-
-#### `pmm-admin annotate`
-
-`pmm-admin annotate [--node|--service] <annotation> [--tags <tags>] [--node-name=<node>] [--service-name=<service>]`
-: Annotate an event. ([Read more](../../how-to/annotate.md))
-
-    `<annotation>`
-    : The annotation string. If it contains spaces, it should be quoted.
-
-    `--node`
-    : Annotate the current node or that specified by `--node-name`.
-
-    `--service`
-    : Annotate all services running on the current node, or that specified by `--service-name`.
-
-    `--tags`
-    : A quoted string that defines one or more comma-separated tags for the annotation. Example: `"tag 1,tag 2"`.
-
-    `--node-name`
-    : The node name being annotated.
-
-    `--service-name`
-    : The service name being annotated.
+    - `<annotation>`: The annotation string. If it contains spaces, it should be quoted.
+    - `--node`: Annotate the current node or that specified by `--node-name`.
+    - `--service`: Annotate all services running on the current node, or that specified by `--service-name`.
+    - `--tags`: A quoted string that defines one or more comma-separated tags for the annotation. Example: `"tag 1,tag 2"`.
+    - `--node-name`: The node name being annotated.
+    - `--service-name`: The service name being annotated.
 
     **Combining flags**
 
-    Flags may be combined as shown in the following examples.
+    Flags may be combined in various ways. For example:
 
-    `--node`
-    : Current node.
+    - `--node`: Current node.
+    - `--node-name`: Node with name.
+    - `--node --node-name=NODE_NAME`: Node with name.
+    - `--node --service-name`: Current node and service with name.
+    - `--node --node-name --service-name`: Node with name and service with name.
+    - `--node --service`: Current node and all services of current node.
+    - `-node --node-name --service --service-name`: Service with name and node with name.
+    - `--service`: All services of the current node.
+    - `--service-name`: Service with name.
+    - `--service --service-name`: Service with name.
+    - `--service --node-name`: All services of current node and node with name.
+    - `--service-name --node-name`: Service with name and node with name.
+    - `--service --service-name -node-name`: Service with name and node with name.
 
-    `--node-name`
-    : Node with name.
-
-    `--node --node-name=NODE_NAME`
-    : Node with name.
-
-    `--node --service-name`
-    : Current node and service with name.
-
-    `--node --node-name --service-name`
-    : Node with name and service with name.
-
-    `--node --service`
-    : Current node and all services of current node.
-
-    `-node --node-name --service --service-name`
-    : Service with name and node with name.
-
-    `--service`
-    : All services of the current node.
-
-    `--service-name`
-    : Service with name.
-
-    `--service --service-name`
-    : Service with name.
-
-    `--service --node-name`
-    : All services of current node and node with name.
-
-    `--service-name --node-name`
-    : Service with name and node with name.
-
-    `--service --service-name -node-name`
-    : Service with name and node with name.
-
-    !!! hint alert alert-success "Tip"
+    !!! tip
         If node or service name is specified, they are used instead of other parameters.
 
 ### DATABASE COMMANDS
@@ -355,7 +307,7 @@ When you remove a service, collected data remains on PMM Server for the specifie
         !!! caution ""
             Ensure you do not set the value of `max-query-length` to 1, 2, or 3. Otherwise, the PMM agent will get terminated.
 
-##### Advanced Options
+##### Advanced options
 
 PMM starts the MongoDB exporter by default only with `diagnosticdata` and `replicasetstatus` collectors enabled.
 
@@ -376,73 +328,97 @@ FLAGS:
 `--stats-collections=db1,db2.col1`
 :  Collections for collstats & indexstats.
 
+=== "Default Configuration"
+    To add MongoDB with default collectors (`diagnosticdata` and `replicasetstatus`):
 
-###### Enable all collectors
+    ```
+    pmm-admin add mongodb --username=admin --password=admin_pass mongodb_srv_1 127.0.0.1:27017
+    ```
 
-To enable all collectors, pass the parameter `--enable-all-collectors` in the `pmm-admin add mongodb` command.
-This will enable `collstats`, `dbstats`, `indexstats`, and `topmetrics` collectors.
+    This command adds MongoDB to PMM monitoring with only the default collectors enabled. It's the simplest way to start monitoring a MongoDB instance without enabling additional collectors.
 
-###### Disable some collectors
+=== "Enable all collectors"
 
-To enable only some collectors, pass the parameter `--enable-all-collectors` along with the parameter `--disable-collectors`.
+    To enable all collectors, pass the parameter `--enable-all-collectors` in the `pmm-admin add mongodb` command.
+    This will enable `collstats`, `dbstats`, `indexstats`, `topmetrics` and `fcv` (Feature Compatibility Version) collectors.
 
-For example, if you want all collectors except `topmetrics`, specify:
+    Examples: 
 
-```
---enable-all-collectors --disable-collectors=topmetrics
-```
+    1. To add MongoDB with all collectors (`diagnosticdata`, `replicasetstatus`, `collstats`, `dbstats`, `indexstats`, and `topmetrics`) with default limit detected by PMM (currently <=200 collections, but subject to change):
 
-###### Limit `dbStats`, `collStats` and `indexStats`
+        ```
+        pmm-admin add mongodb --username=admin --password=admin_pass --enable-all-collectors mongodb_srv_1 127.0.0.1:27017
+        ```
 
-By default, PMM decides the limit for the number of collections to monitor the `collStats` and `indexStats` collectors.
+    2. To enable all the collectors with an unlimited number of collections monitored:
 
-You can also set an additional limit for the `collStats`, `indexStats`, `dbStats`, and `topmetrics` collectors with the `--max-collections-limit` parameter.
+        ```
+        pmm-admin add mongodb --username=admin --password=admin_pass --enable-all-collectors --max-collections-limit=0 mongodb_srv_1 127.0.0.1:27017
+        ```
 
-Set the value of the parameter `--max-collections-limit` to:
+=== "Limit dbStats, collStats and indexStats"
 
-- 0: which indicates that `collStats` and `indexStats` can handle unlimited collections.
-- n, which indicates that `collStats` and `indexStats` can handle <=n collections. If the limit is crossed - exporter stops collecting monitoring data for the `collStats` and `indexStats` collectors.
-- -1 (default) doesn't need to be explicitly set. It indicates that PMM decides how many collections it would monitor, currently <=200 (subject to change).
+    By default, PMM decides the limit for the number of collections to monitor the `collStats` and `indexStats` collectors.
+
+    You can also set an additional limit for the `collStats`, `indexStats`, `dbStats`, and `topmetrics` collectors with the `--max-collections-limit` parameter.
+
+    Set the value of the parameter `--max-collections-limit` to:
+
+    - 0: which indicates that `collStats` and `indexStats` can handle unlimited collections.
+    - n, which indicates that `collStats` and `indexStats` can handle <=n collections. If the limit is crossed - exporter stops collecting monitoring data for the `collStats` and `indexStats` collectors.
+    - -1 (default) doesn't need to be explicitly set. It indicates that PMM decides how many collections it would monitor, currently <=200 (subject to change).
 
 
-To further limit collections to monitor, enable `collStats` and `indexStats` for some databases or collections:
+    To further limit collections to monitor, enable `collStats` and `indexStats` for some databases or collections:
 
-- Specify the databases and collections that `collStats` and `indexStats` will use to collect data using the parameter `--stats-collections`. This parameter receives a comma-separated list of name spaces in the form `database[.collection]`.
+    - Specify the databases and collections that `collStats` and `indexStats` will use to collect data using the parameter `--stats-collections`. This parameter receives a comma-separated list of name spaces in the form `database[.collection]`.
+ 
+    Examples:
+
+    1. To add MongoDB with all collectors (`diagnosticdata`, `replicasetstatus`, `collstats`, `dbstats`, `indexstats`, and `topmetrics`) with `max-collections-limit` set to 1000:
+
+        ```
+        pmm-admin add mongodb --username=admin --password=admin_pass --enable-all-collectors --max-collections-limit=1000 mongodb_srv_1 127.0.0.1:27017
+        ```
+
+    2. If `--stats-collections=db1,db2.col1` then the collectors are run as follows:
+
+        | Database | Collector is run on            |
+        |----------|--------------------------------|
+        | `db1`    | All the collections            |
+        | `db2`    | **Only** for collection `col1` |
+
+    3. Enable all collectors and limit monitoring for `dbstats`, `indexstats`, `collstats` and `topmetrics` for all collections in `db1` and `col1` collection in `db2`, without limiting `max-collections-limit` for a number of collections in `db1`:
+    
+        ```
+        pmm-admin add mongodb --username=admin --password=admin_pass --enable-all-collectors --max-collections-limit=0 --stats-collections=db1,db2.col1 mongodb_srv_1 127.0.0.1:27017
+        ```
+=== "Disable some collectors"
+
+    To enable only some collectors, pass the parameter `--enable-all-collectors` along with the parameter `--disable-collectors`.
+
+    Examples: 
+
+    1.  If you want all collectors except `topmetrics`, specify  ```
+    --enable-all-collectors --disable-collectors=topmetrics
+    ```
+
+    2. To disable `collstats` collector and enable all the others without limiting `max-collections-limit`:
+
+        ```
+        pmm-admin add mongodb --username=admin --password=admin_pass --enable-all-collectors --max-collections-limit=0 --disable-collectors=collstats mongodb_srv_1 127.0.0.1:27017```
 
 
 
-###### Examples
 
-To add MongoDB with all collectors (`diagnosticdata`, `replicasetstatus`, `collstats`, `dbstats`, `indexstats`, and `topmetrics`) with default limit detected by PMM (currently <=200 collections, but subject to change):
 
-`pmm-admin add mongodb --username=admin --password=admin_pass --enable-all-collectors mongodb_srv_1 127.0.0.1:27017`
 
-To add MongoDB with all collectors (`diagnosticdata`, `replicasetstatus`, `collstats`, `dbstats`, `indexstats`, and `topmetrics`) with `max-collections-limit` set to 1000:
 
-`pmm-admin add mongodb --username=admin --password=admin_pass --enable-all-collectors --max-collections-limit=1000 mongodb_srv_1 127.0.0.1:27017`
 
-To enable all the collectors with an unlimited number of collections monitored:
 
-`pmm-admin add mongodb --username=admin --password=admin_pass --enable-all-collectors --max-collections-limit=0 mongodb_srv_1 127.0.0.1:27017`
 
-To add MongoDB with default collectors (`diagnosticdata` and `replicasetstatus`):
 
-`pmm-admin add mongodb --username=admin --password=admin_pass mongodb_srv_1 127.0.0.1:27017`
 
-Disable `collstats` collector and enable all the others without limiting `max-collections-limit`:
-
-`pmm-admin add mongodb --username=admin --password=admin_pass --enable-all-collectors --max-collections-limit=0 --disable-collectors=collstats mongodb_srv_1 127.0.0.1:27017`
-
-If `--stats-collections=db1,db2.col1` then the collectors are run as follows:
-
-| Database | Collector is run on            |
-|----------|--------------------------------|
-| `db1`    | All the collections            |
-| `db2`    | **Only** for collection `col1` |
-
-Enable all collectors and limit monitoring for `dbstats`, `indexstats`, `collstats` and `topmetrics` for all collections in `db1` and `col1` collection in `db2`, without limiting `max-collections-limit` for a number of collections in `db1`:
-
-`pmm-admin add mongodb --username=admin --password=admin_pass --enable-all-collectors --max-collections-limit=0 --stats-collections=db1,db2.col1 mongodb_srv_1 127.0.0.1:27017`
 
 ##### Resolutions
 
