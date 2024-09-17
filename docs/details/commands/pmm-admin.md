@@ -122,7 +122,7 @@ PMM communicates with the PMM Server via a PMM agent process.
 ### CONFIGURATION COMMANDS
 
 === "pmm-admin config"
-   Configure a local `pmm-agent`.
+    Configure a local `pmm-agent`.
 
     FLAGS:
 
@@ -140,35 +140,54 @@ PMM communicates with the PMM Server via a PMM agent process.
 
     `--metrics-mode=mode`
     : Metrics flow mode for agents node-exporter. Allowed values:
-        - `auto`: chosen by server (default).
-        - `push`: agent will push metrics.
-        - `pull`: server scrapes metrics from agent.
+      - `auto`: chosen by server (default).
+      - `push`: agent will push metrics.
+      - `pull`: server scrapes metrics from agent.
 
     `--paths-base=dir`
     : Base path where all binaries, tools and collectors of PMM client are located
 
-    `--agent-password=password` (This parameter i available starting with PMM 2.29.0.)
-    : Custom agent password.
+    `--agent-password=password`
+    : Custom agent password. (This parameter is available starting with PMM 2.29.0.)
 
-    === "pmm-admin register"
-        Register the current Node with the PMM Server.
+=== "pmm-admin register"
+    Register the current Node with the PMM Server.
 
-        ```
-        pmm-admin register [FLAGS] [node-address] [node-type] [node-name]
-        ```
+    ```
+    pmm-admin register [FLAGS] [node-address] [node-type] [node-name]
+    ```
 
-        FLAGS:
+    FLAGS:
 
-        - `--server-url=server-url`: PMM Server URL in `https://username:password@pmm-server-host/` format.
-        - `--machine-id="/machine_id/9812826a1c45454a98ba45c56cc4f5b0"`: Node machine-id (default is auto-detected).
-        - `--distro="linux"`: Node OS distribution (default is auto-detected).
-        - `--container-id=container-id`: Container ID.
-        - `--container-name=container-name`: Container name.
-        - `--node-model=node-model`: Node model.
-        - `--region=region`: Node region.
-        - `--az=availability-zone`: Node availability zone.
-        - `--custom-labels=labels`: Custom user-assigned labels.
-        - `--agent-password=password`: Custom agent password. (Available starting with PMM 2.29.0.)
+    - `--server-url=server-url`
+      : PMM Server URL in `https://username:password@pmm-server-host/` format.
+
+    - `--machine-id="/machine_id/9812826a1c45454a98ba45c56cc4f5b0"`
+      : Node machine-id (default is auto-detected).
+
+    - `--distro="linux"`
+      : Node OS distribution (default is auto-detected).
+
+    - `--container-id=container-id`
+      : Container ID.
+
+    - `--container-name=container-name`
+      : Container name.
+
+    - `--node-model=node-model`
+      : Node model.
+
+    - `--region=region`
+      : Node region.
+
+    - `--az=availability-zone`
+      : Node availability zone.
+
+    - `--custom-labels=labels`
+      : Custom user-assigned labels.
+
+    - `--agent-password=password`
+      : Custom agent password. (Available starting with PMM 2.29.0.)
 
 === "pmm-admin add"
 
@@ -328,7 +347,7 @@ FLAGS:
 `--stats-collections=db1,db2.col1`
 :  Collections for collstats & indexstats.
 
-=== "Default Configuration"
+=== "Default configuration"
     To add MongoDB with default collectors (`diagnosticdata` and `replicasetstatus`):
 
     ```
@@ -356,7 +375,7 @@ FLAGS:
         pmm-admin add mongodb --username=admin --password=admin_pass --enable-all-collectors --max-collections-limit=0 mongodb_srv_1 127.0.0.1:27017
         ```
 
-=== "Limit dbStats, collStats and indexStats"
+=== "Limit dbStats, collStats & indexStats"
 
     By default, PMM decides the limit for the number of collections to monitor the `collStats` and `indexStats` collectors.
 
