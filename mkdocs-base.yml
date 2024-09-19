@@ -146,7 +146,7 @@ extra:
 nav:
   - Welcome: index.md
   - Quickstart guide: quickstart/index.md
-  - Setting up: 
+  - Setting up:
       - setting-up/index.md
       - Server:
           - setting-up/server/index.md
@@ -173,8 +173,8 @@ nav:
   - Get started:
       - get-started/index.md
       - get-started/interface.md
-      - Percona Alerting: 
-          - get-started/alerting.md   
+      - Percona Alerting:
+          - get-started/alerting.md
           - get-started/alert-templates.md
       - Backup and Restore:
           - get-started/backup/index.md
@@ -252,7 +252,7 @@ nav:
                   - details/dashboards/kubernetes_monitor_db_clusters_managed.md
               - DBaas:
                   - details/dashboards/dashboard-cluster-summary.md
-              - OS Dashboards:
+              - OS dashboards:
                   - details/dashboards/dashboard-cpu-utilization-details.md
                   - details/dashboards/dashboard-disk-details.md
                   - details/dashboards/dashboard-network-details.md
@@ -263,10 +263,10 @@ nav:
                   - details/dashboards/dashboard-node-summary.md
                   - details/dashboards/dashboard-numa-details.md
                   - details/dashboards/dashboard-processes-details.md
-              - Prometheus Dashboards:
+              - Prometheus dashboards:
                   - details/dashboards/dashboard-prometheus-exporter-status.md
                   - details/dashboards/dashboard-prometheus-exporters-overview.md
-              - MySQL Dashboards:
+              - MySQL dashboards:
                   - details/dashboards/dashboard-mysql-amazon-aurora-details.md
                   - details/dashboards/dashboard-mysql-command-handler-counters-compare.md
                   - details/dashboards/dashboard-mysql-innodb-compression-details.md
@@ -284,26 +284,29 @@ nav:
                   - details/dashboards/dashboard-mysql-table-details.md
                   - details/dashboards/dashboard-mysql-user-details.md
                   - details/dashboards/dashboard-mysql-tokudb-details.md
-              - MongoDB Dashboards:
-                  - details/dashboards/dashboard-mongodb-experimental_collection_overview.md
+              - MongoDB dashboards:
+                  - details/dashboards/dashboard-replsetsummary.md
+                  - details/dashboards/dashboard-sharded-cluster-summary.md
+                  - details/dashboards/dashboard-mongodb_collection_overview.md
                   - details/dashboards/dashboard-mongodb-experimental_collection_details.md
-                  - details/dashboards/dashboard-mongodb-experimental_oplog.md
-                  - details/dashboards/dashboard-mongodb-cluster-summary.md
+                  - details/dashboards/dashboard-mongodb_oplog.md
+                  - details/dashboards/dashboard-cluster-summary.md
+                  - details/dashboards/dashboard-mongodb-router-summary.md
+                  - details/dashboards/dashboard-replsetsummary.md
                   - details/dashboards/dashboard-mongodb-instance-summary.md
                   - details/dashboards/dashboard-mongodb-instances-overview.md
                   - details/dashboards/dashboard-mongodb-instances-compare.md
-                  - details/dashboards/dashboard-mongodb-replset-summary.md
                   - details/dashboards/dashboard-mongodb-inmemory-details.md
                   - details/dashboards/dashboard-mongodb-mmapv1-details.md
                   - details/dashboards/dashboard-mongodb-wiredtiger-details.md
-              - PostgreSQL Dashboards:
+              - PostgreSQL dashboards:
                   - details/dashboards/dashboard-postgresql-instances-overview.md
                   - details/dashboards/dashboard-postgresql-instance-summary.md
                   - details/dashboards/dashboard-postgresql-instances-compare.md
                   - details/dashboards/dashboard-postgresql-vacuum-monitoring-experimental.md
-              - ProxySQL Dashboards:
+              - ProxySQL dashboards:
                   - details/dashboards/dashboard-proxysql-instance-summary.md
-              - HA Dashboards:
+              - HA dashboards:
                   - details/dashboards/dashboard-pxc-galera-node-summary.md
                   - details/dashboards/dashboard-pxc-galera-cluster-summary.md
                   - details/dashboards/dashboard-pxc-galera-cluster-summary-experimental.md
@@ -343,7 +346,8 @@ nav:
   - faq.md
   - Release notes:
       - release-notes/index.md
-      - "PMM 2.42.0": release-notes/2.42.0.md    
+      - "PMM 2.43.0": release-notes/2.43.0.md
+      - "PMM 2.42.0": release-notes/2.42.0.md
       - "PMM 2.41.2": release-notes/2.41.2.md
       - "PMM 2.41.1": release-notes/2.41.1.md
       - "PMM 2.41.0": release-notes/2.41.0.md
