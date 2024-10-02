@@ -36,7 +36,7 @@ The choices are:
 
 ## Add services
 
-On each PMM Client, you configure then add to PMM Server's inventory the node or service you want to monitor.
+On each PMM Client, you configure then add to PMM Server's inventory the nodes or service you want to monitor.
 
 ??? info "Which services you can monitor?"
 
