@@ -34,7 +34,7 @@ Most steps can be done with either a user interface or on the command line, but 
 
 | Component         | Value
 |-------------------|-------------------------------
-| OS                | CentOS 7.9 (64-bit)
+| OS                | Oracle Linux 9 (64-bit)
 | CPU               | 1
 | Base memory       | 4096 MB
 | Disks             | LVM, 2 physical volumes
