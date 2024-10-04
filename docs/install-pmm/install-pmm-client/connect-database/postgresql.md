@@ -18,7 +18,7 @@ How to set up PMM to monitor a [PostgreSQL] or [Percona Distribution for Postgre
 Check that:
 
 - [PMM Server is installed](../../install-pmm-server/index.md) and running with a known IP address accessible from the client node.
-- [PMM Client is installed](../../install-pmm-client/index.md)and the [node is registered with PMM Server](../../register-client-node/index.md).
+- [PMM Client is installed](../../install-pmm-client/index.md) and the [nodes are registered with PMM Server](../../register-client-node/index.md).
 - You have superuser (root) access on the client host.
 - You have superuser access to any database servers that you want to monitor.
 
@@ -244,13 +244,11 @@ When you have configured your database server, you can add a PostgreSQL service 
 To add the service With the user interface:
 {.power-number}
 
-1. Select <i class="uil uil-cog"></i> **Configuration** → {{icon.inventory}} **Inventory** → {{icon.addinstance}} **Add Service**.
+1. Go to  <i class="uil uil-cog"></i> **PMM Configuration  > Add Service > PostgreSQL**. 
 
-2. Select **PostgreSQL -- Add a remote instance**.
+2. Enter or select values for the fields.
 
-3. Enter or select values for the fields.
-
-4. Click **Add service**.
+3. Click **Add service**.
 
 ![!](../../../_images/PMM_Add_Instance_PostgreSQL.jpg)
 
