@@ -41,6 +41,10 @@ To access the Percona customers templates, you must be a Percona customer and [c
 | **MongoDB ReplicaSet has no primary** | Detects when a replica set loses its primary node and alerts users. Indicates that the cluster is in read-only mode, potentially affecting write operations and overall database functionality. | Percona customers | MongoDB |
 | **MongoDB member is in unusual state** | Identifies and alerts when replica set members enter unusual states such as Recovering, Startup, or Rollback. Helps maintain cluster health and performance by enabling quick intervention. | Percona customers | MongoDB |
 | **MongoDB write tickets** | Monitors write ticket availability in the WiredTiger storage engine and alerts when it falls below set thresholds. Aids in optimizing write performance and identifying potential bottlenecks. | Percona customers | MongoDB |
+| **MongoDB too many chunk migrations** | Alert: MongoDB sharded cluster - too many chunk migrations | Percona customers | MongoDB |
+| **MongoDB PBM agent down** | Backup Alerting - PBM Agent Down Alert | • Percona customers<br>• Community | MongoDB |
+| **MongoDB PBM backup duration** | Backup Alerting - Backup took more that `threshold` amount of time | • Percona customers<br>• Community | MongoDB |
+| **MongoDB PBM backup size** | Backup Alerting - Completed backup file size is greater than `threshold` | • Percona customers<br>• Community | MongoDB |
 | **MySQL down** | Monitors MySQL instance availability and alerts when any MySQL service becomes unreachable. Enables quick response to maintain database services. | • Percona customers<br>• Community | MySQL |
 | **MySQL replication running IO** | Tracks MySQL replication I/O thread status and alerts if it stops running on a replica. Crucial for ensuring data is being received from the primary server. | • Percona customers<br>• Community | MySQL |
 | **MySQL replication running SQL** | Monitors MySQL replication SQL thread status and alerts if it stops running on a replica. Essential for verifying that received data is being applied correctly to maintain data consistency. | • Percona customers<br>• Community | MySQL |
