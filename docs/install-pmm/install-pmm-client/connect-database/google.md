@@ -21,17 +21,12 @@ To add a MySQL instance on Google Cloud:
 
 4. Log into the PMM user interface.
 
-5. Select <i class="uil uil-cog"></i> **Configuration** → {{icon.inventory}} **PMM Inventory** → {{icon.addinstance}} **Add Instance**.
+5. Select <i class="uil uil-cog"></i> **PMM Configuration > PMM Inventory >  Service > Add Service > MySQL**.
 
-6. Click **MySQL Add a remote instance**.
+6. Fill in the details for the remote MySQL instance and make sure to enable the **Use performance schema** option.
+7. Click **Add service**.
 
-7. Fill in the details for the remote MySQL instance.
-
-    - Ensure **Use performance schema** is selected.
-
-8. Click **Add service**.
-
-9. Check for values in the **MySQL Instance Overview** dashboard and in **Query Analytics**.
+8. Go to **Dashboards** and check for values in the **MySQL Instance Summary** dashboard and in **Query Analytics**.
 
 ## PostgreSQL
 
@@ -50,17 +45,13 @@ To add a PostgreSQL instance on Google Cloud:
 
 4. Log into the PMM user interface.
 
-5. Select <i class="uil uil-cog"></i> *Configuration* → {{icon.inventory}} *PMM Inventory* → {{icon.addinstance}} *Add Instance*.
+5. Select **PMM Configuration > PMM Inventory > Services > Add Service > PostgreSQL**.
 
-6. Select *PostgreSQL Add a remote instance*.
+6. Fill in the details for the remote PostgreSQL instance and make sure to select **PG Stat Statements** in **Stat tracking options**.
 
-7. Fill in the details for the remote PostgreSQL instance:
+7. Click *Add service*.
 
-    - In *Stat tracking options*, select *PG Stat Statements*.
-
-8. Click *Add service*.
-
-9. Check for values in the *PostgreSQL Instance Overview* dashboard and *Query Analytics*.
+8. Check for values in the *PostgreSQL Instance Overview* dashboard and *Query Analytics*.
 
 ## Cloud SQL Proxy
 
