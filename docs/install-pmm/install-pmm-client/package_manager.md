@@ -7,7 +7,7 @@ On Debian or Red Hat Linux, install `percona-release` and use a Linux package ma
 
     ```sh
     percona-release disable all
-    percona-release percona-release enable pmm3-client
+    percona-release percona-release enable pmm-client
     ```
 
 === "Debian-based"
@@ -26,7 +26,7 @@ On Debian or Red Hat Linux, install `percona-release` and use a Linux package ma
         !!! hint "Root permissions"
             ```sh
             apt update
-            apt install -y pmm3-client
+            apt install -y pmm-client
             ```
 
     3. Check.
@@ -48,7 +48,7 @@ On Debian or Red Hat Linux, install `percona-release` and use a Linux package ma
     2. Install the PMM Client package.
 
         ```sh
-        yum install -y pmm3-client
+        yum install -y pmm-client
         ```
 
     3. Check.
@@ -64,7 +64,7 @@ On Debian or Red Hat Linux, install `percona-release` and use a Linux package ma
 To manually download package manager:
 {.power-number}
 
-1. Visit the [Percona Monitoring and Management 3 download](https://www.percona.com/downloads/pmm3/) page.
+1. Visit the [Percona Monitoring and Management 3 download](https://www.percona.com/downloads//) page.
 2. Under *Version:*, select the one you want (usually the latest).
 3. Under *Software:*, select the item matching your software platform.
 4. Click to download the package file:
@@ -96,5 +96,5 @@ To manually download package manager:
     - [Red Hat/CentOS/Oracle 8](https://www.percona.com/downloads/pmm3/{{release}}/binary/redhat/8/)
     - [Ubuntu 18.04 (Bionic Beaver)](https://www.percona.com/downloads/pmm3/{{release}}/binary/debian/bionic/)
     - [Ubuntu 20.04 (Focal Fossa)](https://www.percona.com/downloads/pmm3/{{release}}/binary/debian/focal/)
-    - [Ubuntu 22.04 (Jammy Jellyfish)](https://www.percona.com/downloads/pmm3/{{release}}/binary/debian/jammy/)
+    - [Ubuntu 22.04 (Jammy Jellyfish)](https://www.percona.com/downloads//{{release}}/binary/debian/jammy/)
 
