@@ -180,7 +180,7 @@ To add a service with the UI:
 
 2. Enter or select values for the fields.
 
-3. Click *Add service*.
+3. Click **Add service**.
 
 ![!](../../../_images/PMM_Add_Instance_MongoDB.jpg)
 

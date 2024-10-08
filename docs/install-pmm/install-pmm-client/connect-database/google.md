@@ -47,11 +47,9 @@ To add a PostgreSQL instance on Google Cloud:
 
 5. Select **PMM Configuration > PMM Inventory > Services > Add Service > PostgreSQL**.
 
-6. Fill in the details for the remote PostgreSQL instance and make sure to select **PG Stat Statements** in **Stat tracking options**.
+6. Fill in the details for the remote PostgreSQL instance and click **Add service**.
 
-7. Click *Add service*.
-
-8. Check for values in the *PostgreSQL Instance Overview* dashboard and *Query Analytics*.
+7. Go to Dashboards and check for values in the **PostgreSQL Instances Overview**  and **Query Analytics**.
 
 ## Cloud SQL Proxy
 
@@ -66,7 +64,7 @@ To add a MySQL instance:
 
 3. [Enable Admin API][GOOGLE_CLOUD_ADMIN_API] and download the JSON credential file.
 
-4. Enable *Performance Schema*.
+4. Enable **Performance Schema**.
 
 5. Run Cloud SQL Proxy (runs on PMM Client node).
 
