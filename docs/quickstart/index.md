@@ -83,13 +83,13 @@ Once PMM is set up, choose the database or the application that you want it to m
             2. Enable the PMM client repository:
 
                 ```sh
-                percona-release enable pmm-client release
+                percona-release enable pmm3-client release
                 ```
             3. Install the PMM Client package:
 
                 ```sh
                 apt update
-                apt install -y pmm2-client
+                apt install -y pmm3-client
                 ```
 
         === ":material-redhat: Red Hat-based"
@@ -106,12 +106,12 @@ Once PMM is set up, choose the database or the application that you want it to m
             5. Enable the PMM client repository:
 
                 ```sh
-                percona-release enable pmm-client release
+                percona-release enable pmm3-client release
                 ```
             6. Install the PMM Client package:
 
                 ```sh
-                yum install -y pmm-client
+                yum install -y pmm3-client
                 ```
 
     3. Register PMM Client:
@@ -189,13 +189,13 @@ Once PMM is set up, choose the database or the application that you want it to m
             2. Enable the PMM client repository:
 
                 ```sh
-                percona-release enable pmm-client release
+                percona-release enable pmm3-client release
                 ```
             3. Install the PMM Client package:
 
                 ```sh
                 apt update
-                apt install -y pmm-client
+                apt install -y pmm3-client
                 ```
 
         === ":material-redhat: Red Hat-based"
@@ -211,12 +211,12 @@ Once PMM is set up, choose the database or the application that you want it to m
             2. Enable the PMM client repository:
 
                 ```sh
-                percona-release enable pmm-client release
+                percona-release enable pmm3-client release
                 ```
             3. Install the PMM Client package:
 
                 ```sh
-                yum install -y pmm-client
+                yum install -y pmm3-client
                 ```
 
     8. Register PMM Client:
@@ -303,13 +303,13 @@ Once PMM is set up, choose the database or the application that you want it to m
             2. Enable the PMM client repository:
 
                 ```sh
-                percona-release enable pmm-client release
+                percona-release enable pmm3-client release
                 ```
             3. Install the PMM Client package:
 
                 ```sh
                 apt update
-                apt install -y pmm-client
+                apt install -y pmm3-client
                 ```
 
         === ":material-redhat: Red Hat-based"
@@ -325,12 +325,12 @@ Once PMM is set up, choose the database or the application that you want it to m
             2. Enable the PMM client repository:
 
                 ```sh
-                percona-release enable pmm-client release
+                percona-release enable pmm3-client release
                 ```
             3. Install the PMM Client package:
 
                 ```sh
-                yum install -y pmm-client
+                yum install -y pmm3-client
                 ```
 
     4. Register PMM Client:
@@ -370,13 +370,13 @@ Once PMM is set up, choose the database or the application that you want it to m
             2. Enable the PMM client repository:
 
                 ```sh
-                percona-release enable pmm-client release
+                percona-release enable pmm3-client release
                 ```
             3. Install the PMM Client package:
 
                 ```sh
                 apt update
-                apt install -y pmm-client
+                apt install -y pmm3-client
                 ```
 
         === ":material-redhat: Red Hat-based"
@@ -392,12 +392,12 @@ Once PMM is set up, choose the database or the application that you want it to m
             2. Enable the PMM client repository:
 
                 ```sh
-                percona-release enable pmm-client release
+                percona-release enable pmm3-client release
                 ```
             3. Install the PMM Client package:
 
                 ```sh
-                yum install -y pmm-client
+                yum install -y pmm3-client
                 ```
 
     3. Register PMM Client:
@@ -436,13 +436,13 @@ Once PMM is set up, choose the database or the application that you want it to m
             2. Enable the PMM client repository:
 
                 ```sh
-                percona-release enable pmm-client release
+                percona-release enable pmm3-client release
                 ```
             3. Install the PMM Client package:
 
                 ```sh
                 apt update
-                apt install -y pmm-client
+                apt install -y pmm3-client
                 ```
 
         === ":material-redhat: Red Hat-based"
@@ -458,12 +458,12 @@ Once PMM is set up, choose the database or the application that you want it to m
             2. Enable the PMM client repository:
 
                 ```sh
-                percona-release enable pmm-client release
+                percona-release enable pmm3-client release
                 ```
             3. Install the PMM Client package:
 
                 ```sh
-                yum install -y pmm-client
+                yum install -y pmm3-client
                 ```
 
     4. Register PMM Client:

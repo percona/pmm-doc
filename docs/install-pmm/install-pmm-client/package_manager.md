@@ -7,7 +7,7 @@ On Debian or Red Hat Linux, install `percona-release` and use a Linux package ma
 
     ```sh
     percona-release disable all
-    percona-release percona-release enable pmm-client
+    percona-release percona-release enable pmm3-client
     ```
 
 === "Debian-based"
@@ -26,7 +26,7 @@ On Debian or Red Hat Linux, install `percona-release` and use a Linux package ma
         !!! hint "Root permissions"
             ```sh
             apt update
-            apt install -y pmm-client
+            apt install -y pmm3-client
             ```
 
     3. Check.
@@ -48,7 +48,7 @@ On Debian or Red Hat Linux, install `percona-release` and use a Linux package ma
     2. Install the PMM Client package.
 
         ```sh
-        yum install -y pmm-client
+        yum install -y pmm3-client
         ```
 
     3. Check.

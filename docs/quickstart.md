@@ -84,7 +84,7 @@ Once PMM is set up, choose the database or the application that you want it to m
 
                 ```sh
                 apt update
-                apt install -y pmm-client
+                apt install -y pmm3-client
                 ```
 
         === ":material-redhat: Red Hat-based"
