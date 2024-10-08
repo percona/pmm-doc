@@ -40,7 +40,7 @@ Most options can be set via environment variables (shown in parentheses).
 | `--debug`                              | `PMM_AGENT_DEBUG`                   | Enable debug output.
 | `--distro=distro`                      | `PMM_AGENT_SETUP_DISTRO`            | Node OS distribution (default is auto-detected).
 | `--force`                              | `PMM_AGENT_SETUP_FORCE`             | Remove Node with that name and all dependent Services and Agents (if existing).
-| `--id=/agent_id/...`                   | `PMM_AGENT_ID`                      | ID of this pmm-agent.
+| `--id=...`                   | `PMM_AGENT_ID`                      | ID of this pmm-agent.
 | `--listen-address=LISTEN-ADDRESS`      | `PMM_AGENT_LISTEN_ADDRESS`          | Agent local API address.
 | `--listen-port=LISTEN-PORT`            | `PMM_AGENT_LISTEN_PORT`             | Agent local API port.
 | `--machine-id=machine-id`              | `PMM_AGENT_SETUP_MACHINE_ID`        | Node machine ID (default is auto-detected).
@@ -87,7 +87,7 @@ Config output:
 ````
 # Updated by `pmm-agent setup`.
 ---
-id: /agent_id/be568008-b1b4-4bd9-98c7-392d1f4b724e
+id: be568008-b1b4-4bd9-98c7-392d1f4b724e
 listen-address: 127.0.0.1
 listen-port: 7777
 server:
@@ -129,7 +129,7 @@ Config output:
 ````
 # Updated by `pmm-agent setup`.
 ---
-id: /agent_id/afce1917-8836-4857-b3e5-ad372c2ddbe5
+id: afce1917-8836-4857-b3e5-ad372c2ddbe5
 listen-address: 127.0.0.1
 listen-port: 7777
 server:
