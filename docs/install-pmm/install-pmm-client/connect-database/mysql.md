@@ -22,7 +22,7 @@ PMM Client collects metrics from [MySQL][ORACLE_MYSQL], [Percona Server for MySQ
 Check that:
 
 - [PMM Server is installed](../../install-pmm-server/index.md) and running with a known IP address accessible from the client node.
-- [PMM Client is installed](../../install-pmm-client/index.md) and the [node is registered with PMM Server](../../register-client-node/index.md).
+- [PMM Client is installed](../../install-pmm-client/index.md) and the [nodes are registered with PMM Server](../../register-client-node/index.md).
 - You have superuser (root) access on the client host.
 
 ## Create a database account for PMM
@@ -348,13 +348,11 @@ With the PMM user interface, you select **Use performance schema**, or deselect 
 To add a service using the UI:
 {.power-number}
 
-1. Select <i class="uil uil-cog"></i> **Configuration** → {{icon.inventory}} **Inventory** → {{icon.addinstance}} **Add Service**.
+1. Select **PMM Configuration > PMM Inventory > Add Service > MySQL**.
 
-2. Select **MySQL -- Add a remote instance**.
+2. Enter or select values for the fields.
 
-3. Enter or select values for the fields.
-
-4. Click **Add service**.
+3. Click **Add service**.
 
 ![!](../../../_images/PMM_Add_Instance_MySQL.jpg)
 
@@ -429,8 +427,7 @@ Add the database server as a service using one of these example commands. If suc
 To check the service with the UI:
 {.power-number}
 
-
-1. Select <i class="uil uil-cog"></i> **Configuration** → {{icon.inventory}} **Inventory**.
+1. Select **PMM Configuration > PMM Inventory**.
 2. In the **Services** tab, verify the **Service name**, **Addresses**, and any other relevant information in the form.
 3. In the **Options** column, expand the **Details** section and check that the Agents are using the desired data source.
 

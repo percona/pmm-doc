@@ -78,18 +78,16 @@ For more details see <https://prometheus.io/docs/instrumenting/writing_exporters
 To add an external service via PMM UI:
 {.power-number}
 
-1. In the PMM web interface, go to <i class="uil uil-cog"></i> **Configuration** → {{icon.inventory}} **PMM Inventory** → {{icon.addinstance}} **Add Instance**.
-
-2. Select **External Service -- Add a remote instance**.
+1. In the PMM web interface, go to **PMM Configuration > PMM Inventory > Add Service > External Service**.
 
     ![!](../../../_images/PMM_External_Serverless.png)
 
-3. Fill the form and set the external service endpoint.
+2. Fill in the form and set the external service endpoint: 
 
-    The endpoint can be set manually:
+ -  manually OR:
 
     ![!](../../../_images/PMM_External_Serverless_switcher_manually.png)
 
-    or by parsing required data from a URL string, in which case you only need to pass a valid URL.
+- by parsing required data from a URL string. In this case you only need to pass a valid URL:
 
     ![!](../../../_images/PMM_External_Serverless_switcher.png)
