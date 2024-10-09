@@ -244,7 +244,7 @@ When you have configured your database server, you can add a PostgreSQL service 
 To add the service With the user interface:
 {.power-number}
 
-1. Go to  <i class="uil uil-cog"></i> **PMM Configuration  > Add Service > PostgreSQL**. 
+1. Go to  **PMM Configuration  > Add Service > PostgreSQL**.
 
 2. Enter or select values for the fields.
 
