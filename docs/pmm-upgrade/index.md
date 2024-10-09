@@ -1,7 +1,7 @@
 # About PMM Server upgrade
 
-!!! caution alert alert-warning "Important"
-    - When upgrading PMM, always upgrade the PMM Server before upgrading any PMM Clients. 
+!!! caution alert alert-warning "Upgrade PMM Server before Clients"
+    - When upgrading PMM, always upgrade the PMM Server before upgrading any PMM Clients.
     - Make sure that the PMM Server version is higher than or equal to the PMM Client version. Mismatched versions can lead to configuration issues and failures in Client-Server communication, as the PMM Server may not recognize all parameters in the client configuration.
 
 Find the detailed information on how to upgrade PMM in the following sections:

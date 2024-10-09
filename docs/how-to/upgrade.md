@@ -13,10 +13,12 @@ Ensure that the PMM Server version is equal to or higher than the PMM Client ver
 ### Migrating from PMM 2
 
 When upgrading PMM from PMM v2, follow the following staged approach: 
+
 1. upgrade to the latest PMM v2 version
 2. Proceed to upgrading to PMM 3. 
 
 Make sure you have access to the machine where PMM Server: 
+
 1. run docker exec -t <pmm-server> supervisorctl stop all to stop all services of pmm-server container
 2. run docker exec -t <pmm-server> chown -R pmm:pmm /srv to transfer ownership of all directories and files located in /srv directory to pmm user
 3. stop and remove pmm-server container (docker stop pmm-server && docker rm pmm-server )
