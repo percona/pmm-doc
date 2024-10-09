@@ -1,15 +1,5 @@
 # Upgrade
 
-To upgrade your PMM instance, go to **PMM Configuration > Updates**. Here, you can view the current PMM Server version, check if your instance is up-to-date, and see the timestamp of the last update check.
-
-If an update is available, simply click the **Update** button to install the latest version.
-
-![Update page](../Update_page.png)
-
-You can also check a summary of this information on the **Upgrade** panel on the Home page.  
-
-![!image](../_images/PMM_Home_Dashboard_Panels_Upgrade.jpg)
-
 Client and Server components are installed and updated separately.
 
 
