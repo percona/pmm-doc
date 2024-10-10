@@ -50,7 +50,7 @@ The [PMM Client Docker image] is a convenient way to run PMM Client as a preconf
     percona/pmm-client:2
     ```
 
-2. Use the image as a template to create a persistent data store that preserves local data when the image is updated.
+2. Create a persistent data store that preserves local data when the image is updated:
 
     ```sh
     docker create \
@@ -59,7 +59,7 @@ The [PMM Client Docker image] is a convenient way to run PMM Client as a preconf
     percona/pmm-client:2 /bin/true
     ```
 
-3. Run the container to start [PMM Agent](../../details/commands/pmm-agent.md) in setup mode. Set `X.X.X.X` to the IP address of your PMM Server. (Do not use the `docker --detach` option as PMM agent only logs to the console.)
+3. Run the container to start [PMM Agent](../../details/commands/pmm-agent.md) in setup mode. Set `X.X.X.X` to the IP address of your PMM Server. (Do not use the `docker --detach` option as PMM Agent only logs to the console.)
 
     ```sh
     PMM_SERVER=X.X.X.X:443
@@ -79,20 +79,35 @@ The [PMM Client Docker image] is a convenient way to run PMM Client as a preconf
     !!! hint alert-success "Tips"
         You can find a complete list of compatible environment variables [here](../../details/commands/pmm-agent.md).
 
-4. Check status.
+4. After the initial setup, run the container in normal mode:
+    ```sh
+    docker run \
+    -d \
+    --name pmm-client \
+    -e PMM_AGENT_CONFIG_FILE=/usr/local/percona/pmm2/config/pmm-agent.yaml \
+    --volumes-from pmm-client-data \
+    percona/pmm-client:2
+    ```
+5. Add services with `pmm-admin` by prefixing commands with `docker exec pmm-client`:
+   ```sh
+   docker exec pmm-client pmm-admin add mysql --username=pmm --password=<your_password>
+   ```
+6. Check the status:
 
     ```sh
     docker exec pmm-client \
     pmm-admin status
     ```
 
-    In the PMM user interface you will also see an increase in the number of monitored nodes.
+In the PMM user interface you will also see an increase in the number of monitored nodes.
 
 You can now add services with [`pmm-admin`](../../details/commands/pmm-admin.md) by prefixing commands with `docker exec pmm-client`.
 
 !!! hint alert alert-success "Tips"
     - Adjust host firewall and routing rules to allow Docker communications. ([Read more](../../how-to/troubleshoot.md))
     - For help: `docker run --rm percona/pmm-client:2 --help`
+    - The `PMM_AGENT_CONFIG_FILE` is located at `/usr/local/percona/pmm2/config/pmm-agent.yaml` inside the container.
+    - If you encounter permission issues, you may need to adjust ownership: `docker exec pmm-client chown -R pmm-agent:pmm-agent /usr/local/percona/pmm2/config`
 
 
     In the GUI.
