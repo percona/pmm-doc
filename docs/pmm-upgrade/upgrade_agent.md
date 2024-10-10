@@ -1,4 +1,4 @@
-# Upgrade PMM agent
+# Upgrade PMM Client
 
 PMM-Agent can be updated from tarball:
 {.power-number}
