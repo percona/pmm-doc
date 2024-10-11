@@ -230,7 +230,6 @@ nav:
       - Upgrade PMM Server in K8s: 
         - pmm-upgrade/upgrade_helm.md
       - pmm-upgrade/upgrade_agent.md
-      - pmm-upgrade/upgrade_from_pmm_1.md
       - pmm-upgrade/upgrade_from_pmm_2.md
       - pmm-upgrade/upgrade_aws.md
   - Uninstall:
