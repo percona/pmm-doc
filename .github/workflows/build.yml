@@ -1,4 +1,4 @@
-name: Build PMM Docs 2.x
+name: Build PMM Docs 3.x
 
 on:
   push:
