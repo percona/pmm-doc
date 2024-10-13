@@ -16,7 +16,7 @@ To check the alert templates for your PMM instance, go to PMM > **Alerting > Ale
 
 ## Available alert template
 
-The table below lists all the alert templates available in Percona Monitoring and Management (PMM). 
+The table below lists all the alert templates available in Percona Monitoring and Management (PMM).
 
 This list includes both built-in templates (accessible to all PMM users), and Percona customers templates.
 
@@ -44,7 +44,7 @@ To access the Percona customers templates, you must be a Percona customer and [c
 | MongoDB | **MongoDB too many chunk migrations** | Monitors amount of chunk migrations in a MongoDB sharded cluster and alerts if they are more than set thresholds. | Percona customers | MongoDB |
 | MongoDB | **MongoDB PBM agent down** | Monitors PBM Agent status and alerts when an agent becomes unreachable, indicating potential host or agent issues. | • Percona customers<br>• Community | MongoDB |
 | MongoDB | **MongoDB PBM backup duration** | Monitors amount of time taken to complete a backup, and alerts when it exceeds set thresholds. If the backup did not complete, no alerts are sent. | • Percona customers<br>• Community | MongoDB |
-| MongoDB | **MongoDB PBM backup size** | Monitors amount of disk space taken by a completed backup, and alerts when it exceeds set thresholds. If the backup did not complete, no alerts are sent. | • Percona customers<br>• Community | MongoDB |
+| MongoDB | **MongoDB PBM backup size** | Monitors the amount of disk space taken by a completed backup and alerts when it exceeds set thresholds. If the backup did not complete, no alerts are sent. | • Percona customers<br>• Community | MongoDB |
 | MySQL | **MySQL down** | Monitors MySQL instance availability and alerts when any MySQL service becomes unreachable. Enables quick response to maintain database services. | • Percona customers<br>• Community | MySQL |
 | MySQL | **MySQL replication running IO** | Tracks MySQL replication I/O thread status and alerts if it stops running on a replica. Crucial for ensuring data is being received from the primary server. | • Percona customers<br>• Community | MySQL |
 | MySQL | **MySQL replication running SQL** | Monitors MySQL replication SQL thread status and alerts if it stops running on a replica. Essential for verifying that received data is being applied correctly to maintain data consistency. | • Percona customers<br>• Community | MySQL |
@@ -61,4 +61,4 @@ To access the Percona customers templates, you must be a Percona customer and [c
 | PostgreSQL | **PostgreSQL tables not auto analyzed** | Identifies tables that are not being auto-analyzed and alerts users. Crucial for maintaining accurate statistics and generating proper query execution plans. | Percona customers | PostgreSQL |
 | PostgreSQL | **PostgreSQL tables not auto vacuumed** | Detects tables that are not being auto-vacuumed and alerts users. Essential for managing bloat, optimizing storage, and maintaining overall database health. | Percona customers | PostgreSQL |
 | PostgreSQL | **PostgreSQL unused replication slot** | Identifies and alerts on unused replication slots. Helps prevent excessive WAL retention and potential disk space issues, especially when replicas are offline. | Percona customers | PostgreSQL |
-| ProxySQL | **ProxySQL server status** | Tracks ProxySQL server status and alerts when a server's status becomes OFFLINE_SOFT (3) or OFFLINE_HARD (4). Provides details about the server's endpoint, hostgroup, and associated ProxySQL service. Crucial for maintaining high availability and preventing service disruptions. | • Percona customers<br>• Community | ProxySQL |
+| ProxySQL | **ProxySQL server status** | Monitors ProxySQL server status and alerts when a server transitions to OFFLINE_SOFT (3) or OFFLINE_HARD (4) state. Includes critical details such as server endpoint, hostgroup, and associated ProxySQL service. This alert is essential for maintaining high availability and preventing database access disruptions. | • Percona customers<br>• Community | ProxySQL |
