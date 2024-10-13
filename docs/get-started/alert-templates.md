@@ -23,7 +23,7 @@ This list includes both built-in templates (accessible to all PMM users), and Pe
 To access the Percona customers templates, you must be a Percona customer and [connect PMM to Percona Platform](../how-to/integrate-platform.md) using a Percona Account.
 
 | Area | Template name | Description | Available for | Database technology |
-| :----|:------------ | :---------- | :----------- | :------------------ |
+| :----|:------------- | :---------- | :------------ | :------------------ |
 | OS | **Node high CPU load** | Monitors node CPU usage and alerts when it surpasses 80% (default threshold). Provides details about specific nodes experiencing high CPU load, indicating potential performance issues or scaling needs. | • Percona customers<br>• Community | MySQL, MongoDB, PostgreSQL |
 | OS | **Memory available less than a threshold** | Tracks available memory on nodes and alerts when free memory drops below 20% (default threshold). Helps prevent system instability due to memory constraints. | • Percona customers<br>• Community | MySQL, MongoDB, PostgreSQL |
 | OS | **Node high swap filling up** | Monitors node swap usage and alerts when it exceeds 80% (default threshold). Indicates potential memory pressure and performance degradation, allowing for timely intervention. | • Percona customers<br>• Community | MySQL, MongoDB, PostgreSQL |
