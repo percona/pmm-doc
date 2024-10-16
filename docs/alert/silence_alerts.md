@@ -29,9 +29,9 @@ For more information on working with silences, see [About alerting silences](htt
 
 ### Template compatibility with previous PMM versions
 
-If you have used Integrated Alerting in previous PMM versions, your custom alert rule templates will be automatically migrated to the new PMM version. After upgrading to the new version, you will find all your alert templates under **Alerting > Alert rule templates**.
+If you have used Integrated Alerting in previous PMM 2.31 and earlier, your custom alert rule templates will be automatically migrated to the new PMM version. After upgrading to the new version, you will find all your alert templates under **Alerting > Alert rule templates**.
 
-If you have any templates available in the  ``/srv/ia/templates`` folder, make sure to transfer them to ``/srv/alerting/templates`` as PMM 2.31 and later will look for custom templates in this location.
+If you have any templates available in the  ``/srv/ia/templates`` folder, make sure to transfer them to ``/srv/alerting/templates`` as PMM 3   will look for custom templates in this location.
 
 ### Template compatibility with other alerting tools
 
