@@ -20,4 +20,4 @@ If the UI is not accessible, you can trigger the update process using an API cal
 2. Run the following curl command:
 
    ```sh
-   curl --user admin:admin --request POST 'http://PMM_SERVER/v3/server/updates:start'
+   curl --user admin:admin --request POST 'http://PMM_SERVER/v1/server/updates:start'
