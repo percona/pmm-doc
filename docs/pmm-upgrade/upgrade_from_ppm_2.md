@@ -60,4 +60,4 @@ For detailed instructions, see the [Upgrade PMM Client topic](../pmm-upgrade/upg
 After you finish migrating:
 
 1. Go  back to **PMM Configuration > Updates**  and check all your previously monitored services are reporting correctly to the new PMM 3 Server.
-2. Check the dashboards to make sure you're receiving the metrics information, QAN data. On the last 15 mins time range on the home dashoboard. check Inventory page to chec the health of the services.
+2. Check the dashboards to make sure you're receiving the metrics information, QAN data. On the last 15 mins time range on the home dashoboard. check Inventory page to check the health of the services.
