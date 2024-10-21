@@ -20,7 +20,7 @@ We use [MkDocs] to convert [Markdown] files into a static HTML website (or [PDF]
 
 The documentation source files are in the `docs` directory. (Other files in this repo are explained in [Directories and files](#directories-and-files).)
 
-The two major PMM versions are kept in separate branches:
+The three major PMM versions are kept in separate branches:
 
 - `PMM3-branch` is for PMM 3.x (latest)
 

@@ -39,7 +39,7 @@ To deploy a specific version of the PMM Client via package manager, check the av
  yum update pmm2-client-2.41.2-6.el9.x86_64
  ```
 
-### Tarball method
+### 2. Tarball method
 
 If you initially installed the PMM Client from a tarball, you can update it by replacing the currently installed package with the latest version:
 

@@ -6,14 +6,17 @@ Due to significant architectural improvements in PMM 3, there is no direct upgra
 
 !!! caution alert alert-warning "Caution"
     PMM versions prior to 2.33.0 may not show the latest versions available with instances created from the AWS marketplace in specific environments, including AWS. For a solution, see the [troubleshooting](../troubleshoot/upgrade_issues.md#pmm-server-not-showing-latest-versions-available-with-the-instances-created-from-aws) section.
+{.power-number}
 
-1. Navigate to **PMM Configuration > Updates** in your PMM 2 web interface.
+1. From the **Home** page, scroll to the **PMM Upgrade** panel and click the Refresh button to manually check for updates.
+    ![PMM Home Dashboard Upgrade Panel](../_images/PMM_Home_Dashboard_Panels_Upgrade2.png)
 2. If an update is available, click the **Update** button to install the latest PMM 2 version.
 3. Verify the update was successful by checking the version number after the update completes.
 
 ## Step 2: Upgrade PMM 2 Server to PMM 3
 
 Follow these manual steps to upgrade your PMM 2 Server to PMM 3:
+{.power-number}
 
 1. Stop all services of the PMM 2 server container:
 
@@ -58,6 +61,8 @@ For detailed instructions, see the [Upgrade PMM Client topic](../pmm-upgrade/upg
 ### Post-upgrade steps
 
 After you finish migrating:
+{.power-number}
 
-1. Go  back to **PMM Configuration > Updates**  and check all your previously monitored services are reporting correctly to the new PMM 3 Server.
-2. Check the dashboards to make sure you're receiving the metrics information, QAN data. On the last 15 mins time range on the home dashoboard. check Inventory page to check the health of the services.
+1. Verify that all clients are up to date by checking **PMM Configuration > Updates**.
+2. Confirm all previously monitored services are reporting correctly to the new PMM 3 Server by reviewing **Configuration > PMM Inventory > Services**.
+3. Check the dashboards to make sure you're receiving the metrics information, QAN data.
