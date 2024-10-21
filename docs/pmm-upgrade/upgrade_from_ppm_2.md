@@ -9,9 +9,9 @@ Due to significant architectural improvements in PMM 3, there is no direct upgra
 {.power-number}
 
 1. From the **Home** page, scroll to the **PMM Upgrade** panel and click the Refresh button to manually check for updates.
-    ![PMM Home Dashboard Upgrade Panel](../_images/PMM_Home_Dashboard_Panels_Upgrade2.png)
-2. If an update is available, click the **Update** button to install the latest PMM 2 version.
-3. Verify the update was successful by checking the version number after the update completes.
+![PMM Home Dashboard Upgrade Panel](../_images/PMM_Home_Dashboard_Panels_Upgrade2.png)
+1. If an update is available, click the **Update** button to install the latest PMM 2 version.
+2. Verify the update was successful by checking the version number after the update completes.
 
 ## Step 2: Upgrade PMM 2 Server to PMM 3
 
