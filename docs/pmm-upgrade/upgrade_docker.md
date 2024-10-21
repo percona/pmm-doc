@@ -25,7 +25,7 @@
 3. Pull the latest image:
 
    ```sh
-   docker pull percona/pmm-server:2
+   docker pull percona/pmm-server:3
    ```
 
 4. Rename the original container:
