@@ -42,7 +42,7 @@ Follow these manual steps to upgrade your PMM 2 Server to PMM 3:
 5. Run a new container based on the PMM 3 image, ensuring you pass the same pmm-data volume:
 
    ```sh
-   docker run -d -p 80:80 -p 443:443 -v pmm-data:/srv --name pmm-server --restart always percona/pmm-server:3
+   docker run -d -p 80:8080 -p 443:8443 -v pmm-data:/srv --name pmm-server --restart always percona/pmm-server:3
    ```
 
 6. Verify that the new PMM 3 Server container is running and accessible through the UI.
