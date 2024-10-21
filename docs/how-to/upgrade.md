@@ -23,7 +23,7 @@ Make sure you have access to the machine where PMM Server:
 2. run docker exec -t <pmm-server> chown -R pmm:pmm /srv to transfer ownership of all directories and files located in /srv directory to pmm user
 3. stop and remove pmm-server container (docker stop pmm-server && docker rm pmm-server )
 4. pull a new docker image for PMM Server v3 (once it goes GA, it will be docker pull percona/pmm-server:3 )
-5. run a new container based on v3 image ( see above) while remembering to pass the same pmm-data volume to it (docker run -d -v pmm-data:/srv ... percona/pmm-server:3 )
+5. run a new container based on v3 image (see above) while remembering to pass the same pmm-data volume to it (docker run -d -v pmm-data:/srv ... percona/pmm-server:3 )
 
 
 
