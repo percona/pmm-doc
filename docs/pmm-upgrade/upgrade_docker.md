@@ -43,7 +43,7 @@
    --publish 443:8443 \
    --volumes-from pmm-data \
    --name pmm-server \
-   percona/pmm-server:2
+   percona/pmm-server:3
    ```
 
 6. After upgrading, verify that PMM Server is running correctly and all your data is accessible.
