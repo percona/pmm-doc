@@ -55,7 +55,7 @@ The migration to PMM v3 introduces several important changes:
 
 # Migration reference table
 
-!!! note "Click to expand migration reference table"
+??? note "Click to expand migration reference table"
 
     | PMM 2                          | PMM 3                              | Comments                     |
     |---------------------------------|------------------------------------|------------------------------|
