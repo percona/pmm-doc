@@ -58,6 +58,7 @@ The migration to PMM v3 introduces several important changes:
 <details>
 <summary>Click to see the complete list of affected variables and their new names.</summary>
 
+## Core variables
 
 | PMM 2 | PMM 3 | Comments |
 |-------|-------|----------|
@@ -142,7 +143,7 @@ The migration to PMM v3 introduces several important changes:
 | `PERCONA_TEST_SAAS_HOST` | | Removed in PMM v3, use `PMM_DEV_PERCONA_PLATFORM_ADDRESS` |
 
 </details>
-                                          |
+
 ## Advanced configuration
 
 ### Networking
