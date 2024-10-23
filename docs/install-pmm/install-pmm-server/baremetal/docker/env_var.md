@@ -56,9 +56,9 @@ The migration to PMM v3 introduces several important changes:
 ### Migration reference table
 
 <details>
-<summary>Click to see the complete list of affected variables and their new names.</summary>
+<summary>Click to expand migration reference table</summary>
 
-## Core variables
+## Core Variables
 
 | PMM 2 | PMM 3 | Comments |
 |-------|-------|----------|
@@ -71,7 +71,7 @@ The migration to PMM v3 introduces several important changes:
 | `ENABLE_RBAC` | `PMM_ENABLE_ACCESS_CONTROL` | |
 | `LESS_LOG_NOISE` | | Removed in PMM v3 |
 
-#### Metrics configuration
+## Metrics Configuration
 
 | PMM 2 | PMM 3 | Comments |
 |-------|-------|----------|
@@ -80,7 +80,7 @@ The migration to PMM v3 introduces several important changes:
 | `METRICS_RESOLUTION_LR` | `PMM_METRICS_RESOLUTION_LR` | |
 | `METRICS_RESOLUTION_MR` | `PMM_METRICS_RESOLUTION_MR` | |
 
-#### Authentication & platform
+## Authentication & Platform
 
 | PMM 2 | PMM 3 | Comments |
 |-------|-------|----------|
@@ -91,7 +91,7 @@ The migration to PMM v3 introduces several important changes:
 | `PERCONA_TEST_PLATFORM_INSECURE` | `PMM_DEV_PERCONA_PLATFORM_INSECURE` | |
 | `PERCONA_TEST_PLATFORM_PUBLIC_KEY` | `PMM_DEV_PERCONA_PLATFORM_PUBLIC_KEY` | |
 
-#### ClickHouse configuration
+## ClickHouse Configuration
 
 | PMM 2 | PMM 3 | Comments |
 |-------|-------|----------|
@@ -104,7 +104,7 @@ The migration to PMM v3 introduces several important changes:
 | `PERCONA_TEST_PMM_CLICKHOUSE_BLOCK_SIZE` | | Removed in PMM v3, because of new clickhouse version |
 | `PERCONA_TEST_PMM_CLICKHOUSE_POOL_SIZE` | | Removed in PMM v3, because of new clickhouse version |
 
-#### PostgreSQL configuration
+## PostgreSQL Configuration
 
 | PMM 2 | PMM 3 | Comments |
 |-------|-------|----------|
@@ -118,7 +118,7 @@ The migration to PMM v3 introduces several important changes:
 | `PERCONA_TEST_POSTGRES_SSL_MODE` | `PMM_POSTGRES_SSL_MODE` | |
 | `PERCONA_TEST_PMM_DISABLE_BUILTIN_POSTGRES` | `PMM_DISABLE_BUILTIN_POSTGRES` | |
 
-#### Telemetry & development
+## Telemetry & Development
 
 | PMM 2 | PMM 3 | Comments |
 |-------|-------|----------|
@@ -131,7 +131,7 @@ The migration to PMM v3 introduces several important changes:
 | `PERCONA_TEST_VERSION_SERVICE_URL` | `PMM_DEV_VERSION_SERVICE_URL` | |
 | `PERCONA_TEST_STARLARK_ALLOW_RECURSION` | `PMM_DEV_ADVISOR_STARLARK_ALLOW_RECURSION` | |
 
-#### Removed variables
+## Removed Variables
 
 | PMM 2 | PMM 3 | Comments |
 |-------|-------|----------|
@@ -147,6 +147,7 @@ The migration to PMM v3 introduces several important changes:
 ## Advanced configuration
 
 ### Networking
+
 | Variable | Description |
 |----------|-------------|
 | `PMM_PUBLIC_ADDRESS` | External DNS/IP for PMM server |
