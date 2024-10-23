@@ -19,7 +19,7 @@
 2. Update PMM tag by editing `~/.config/pmm-server/env` file and running the following command to set the latest release version:
 
    ```sh
-   sed -i "s/PMM_TAG=.*/PMM_TAG=2.33.0/g" ~/.config/pmm-server/env
+   sed -i "s/PMM_TAG=.*/PMM_TAG=3.0.0/g" ~/.config/pmm-server/env
    ```
 
 3. Pre-pull the new image to ensure a faster restart:

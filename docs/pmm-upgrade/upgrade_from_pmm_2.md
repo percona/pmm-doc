@@ -1,6 +1,6 @@
 # Upgrade from PMM 2 to PMM 3
 
-Due to significant architectural improvements in PMM 3, there is no direct upgrade path. Follow this gradual transition to make the switch from PMM version 2 to version 3:
+PMM 3 introduces significant architectural changes that require gradual transition from PMM 2:
 
 ## Step 1: Update PMM 2 Server to the latest version
 {.power-number}
