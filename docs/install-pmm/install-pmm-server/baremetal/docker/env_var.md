@@ -53,24 +53,35 @@ The migration to PMM v3 introduces several important changes:
 -e PMM_ENABLE_UPDATES=false -e PMM_DATA_RETENTION=720h
 ```
 
-# Migration Reference Table
+# Migration reference table
 
 <details>
 
-<summary>Click to expand migration reference table</summary>
+  <summary>Click to expand migration reference table/summary>
 
-## Core variables
+   ## Core variables
 
-| PMM 2                          | PMM 3                              | Comments                     |
-|---------------------------------|------------------------------------|------------------------------|
-| `DATA_RETENTION`                | `PMM_DATA_RETENTION`               |                              |
-| `DISABLE_ALERTING`              | `PMM_ENABLE_ALERTING`              |                              |
-| `DISABLE_UPDATES`               | `PMM_ENABLE_UPDATES`               |                              |
-| `DISABLE_TELEMETRY`             | `PMM_ENABLE_TELEMETRY`             |                              |
-| `DISABLE_BACKUP_MANAGEMENT`      | `PMM_ENABLE_BACKUP_MANAGEMENT`     | Note the reverted boolean    |
-| `ENABLE_AZUREDISCOVER`          | `PMM_ENABLE_AZURE_DISCOVER`        |                              |
-| `ENABLE_RBAC`                   | `PMM_ENABLE_ACCESS_CONTROL`        |                              |
-| `LESS_LOG_NOISE`                |                                    | Removed in PMM v3            |
+  | PMM 2                          | PMM 3                              | Comments                     |
+  |---------------------------------|------------------------------------|------------------------------|
+  | `DATA_RETENTION`                | `PMM_DATA_RETENTION`               |                              |
+  | `DISABLE_ALERTING`              | `PMM_ENABLE_ALERTING`              |                              |
+  | `DISABLE_UPDATES`               | `PMM_ENABLE_UPDATES`               |                              |
+  | `DISABLE_TELEMETRY`             | `PMM_ENABLE_TELEMETRY`             |                              |
+  | `DISABLE_BACKUP_MANAGEMENT`      | `PMM_ENABLE_BACKUP_MANAGEMENT`     | Note the reverted boolean    |
+  | `ENABLE_AZUREDISCOVER`          | `PMM_ENABLE_AZURE_DISCOVER`        |                              |
+  | `ENABLE_RBAC`                   | `PMM_ENABLE_ACCESS_CONTROL`        |                              |
+  | `LESS_LOG_NOISE`                |                                    | Removed in PMM v3            |
+  
+</details>
+
+
+<details>
+
+<summary></summary>
+
+
+
+
 
 ## Metrics configuration
 
