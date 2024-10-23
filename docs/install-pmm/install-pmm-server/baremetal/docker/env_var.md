@@ -59,8 +59,6 @@ The migration to PMM v3 introduces several important changes:
 
   <summary>Click to expand migration reference table/summary>
 
-   ## Core variables
-
   | PMM 2                          | PMM 3                              | Comments                     |
   |---------------------------------|------------------------------------|------------------------------|
   | `DATA_RETENTION`                | `PMM_DATA_RETENTION`               |                              |
