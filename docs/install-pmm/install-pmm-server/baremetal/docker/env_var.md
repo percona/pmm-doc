@@ -20,7 +20,7 @@ docker run -e PMM_DATA_RETENTION=720h -e PMM_DEBUG=true percona/pmm-server:3
 
 ### Feature flags
 
-| Variable | Default | Effect When Enabled |
+| Variable | Default | Effect when enabled |
 |----------|---------|-------------------|
 | `PMM_ENABLE_UPDATES` | `true` | Allows version checks and UI updates |
 | `PMM_ENABLE_TELEMETRY` | `true` | Enables usage data collection |
@@ -57,7 +57,7 @@ The migration to PMM v3 introduces several important changes:
 
 <details>
 
-  <summary>Click to expand migration reference table/summary>
+  <summary>Click to expand migration reference table</summary>
 
   | PMM 2                          | PMM 3                              | Comments                     |
   |---------------------------------|------------------------------------|------------------------------|
@@ -172,12 +172,12 @@ The migration to PMM v3 introduces several important changes:
 
 ### Development & testing
 
-| Variable | Use Case |
+| Variable | Use case |
 |----------|----------|
 | `PMM_DEV_*` | Development environment settings |
 | `PMM_TEST_*` | Testing environment settings |
 
-### Supported external Variables
+### Supported external variables
 - **Grafana**: All `GF_*` variables
 - **VictoriaMetrics**: All `VM_*` variables
 - **Kubernetes**: All `KUBERNETES_*` variables
