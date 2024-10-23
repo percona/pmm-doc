@@ -53,7 +53,7 @@ The migration to PMM v3 introduces several important changes:
 -e PMM_ENABLE_UPDATES=false -e PMM_DATA_RETENTION=720h
 ```
 
-### Migration reference table
+# Migration Reference Table
 
 <details>
 <summary>Click to expand migration reference table</summary>
@@ -80,7 +80,7 @@ The migration to PMM v3 introduces several important changes:
 | `METRICS_RESOLUTION_LR` | `PMM_METRICS_RESOLUTION_LR` | |
 | `METRICS_RESOLUTION_MR` | `PMM_METRICS_RESOLUTION_MR` | |
 
-## Authentication & Platform
+## Authentication & Percona Platform
 
 | PMM 2 | PMM 3 | Comments |
 |-------|-------|----------|
