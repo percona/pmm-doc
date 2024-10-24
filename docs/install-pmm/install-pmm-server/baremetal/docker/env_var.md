@@ -67,7 +67,7 @@ docker run -e PMM_DATA_RETENTION=720h -e PMM_DEBUG=true percona/pmm-server:3
 
 ## Variables for migrating from PMM v2 to PMM v3
 
-The migration to PMM v3 introduces several important changes:
+When migrating from PMM v2 to PMM v3, you'll need to update your environment variables to match the new naming convention. This is because PMM v3 introduces several important changes to improve consistency and clarity:
 
 - environment variables now use `PMM_` prefix
 - some boolean flags reversed (e.g., `DISABLE_` → `ENABLE_`)
@@ -100,22 +100,22 @@ The migration to PMM v3 introduces several important changes:
     | `LESS_LOG_NOISE`                |                                    | Removed in PMM v3            |
     
     #### Metrics configuration
-    | PMM 2                          | PMM 3                              | Comments                      |
-    |---------------------------------|------------------------------------|------------------------------|
-    | `METRICS_RESOLUTION`            | `PMM_METRICS_RESOLUTION`           |                              |
-    | `METRICS_RESOLUTION_HR`         | `PMM_METRICS_RESOLUTION_HR`        |                              |
-    | `METRICS_RESOLUTION_LR`         | `PMM_METRICS_RESOLUTION_LR`        |                              |
-    | `METRICS_RESOLUTION_MR`         | `PMM_METRICS_RESOLUTION_MR`        |                              |
+    | PMM 2                          | PMM 3                              | 
+    |---------------------------------|------------------------------------|
+    | `METRICS_RESOLUTION`            | `PMM_METRICS_RESOLUTION`           | 
+    | `METRICS_RESOLUTION_HR`         | `PMM_METRICS_RESOLUTION_HR`        | 
+    | `METRICS_RESOLUTION_LR`         | `PMM_METRICS_RESOLUTION_LR`        | 
+    | `METRICS_RESOLUTION_MR`         | `PMM_METRICS_RESOLUTION_MR`        |    
     
     #### Authentication & Percona Platform
-    | PMM 2                          | PMM 3                              | Comments                      |
-    |---------------------------------|------------------------------------|------------------------------|
-    | `OAUTH_PMM_CLIENT_ID`           | `PMM_DEV_OAUTH_CLIENT_ID`          |                              |
-    | `OAUTH_PMM_CLIENT_SECRET`       | `PMM_DEV_OAUTH_CLIENT_SECRET`      |                              |
-    | `PERCONA_PLATFORM_API_TIMEOUT`  | `PMM_DEV_PERCONA_PLATFORM_API_TIMEOUT` |                          |
-    | `PERCONA_TEST_PLATFORM_ADDRESS` | `PMM_DEV_PERCONA_PLATFORM_ADDRESS` |                              |
-    | `PERCONA_TEST_PLATFORM_INSECURE`| `PMM_DEV_PERCONA_PLATFORM_INSECURE`|                              |
-    | `PERCONA_TEST_PLATFORM_PUBLIC_KEY` | `PMM_DEV_PERCONA_PLATFORM_PUBLIC_KEY` |                        |
+    | PMM 2                          | PMM 3                              | 
+    |---------------------------------|------------------------------------|
+    | `OAUTH_PMM_CLIENT_ID`           | `PMM_DEV_OAUTH_CLIENT_ID`          |  
+    | `OAUTH_PMM_CLIENT_SECRET`       | `PMM_DEV_OAUTH_CLIENT_SECRET`      | 
+    | `PERCONA_PLATFORM_API_TIMEOUT`  | `PMM_DEV_PERCONA_PLATFORM_API_TIMEOUT` |  
+    | `PERCONA_TEST_PLATFORM_ADDRESS` | `PMM_DEV_PERCONA_PLATFORM_ADDRESS` |      
+    | `PERCONA_TEST_PLATFORM_INSECURE`| `PMM_DEV_PERCONA_PLATFORM_INSECURE`|        
+    | `PERCONA_TEST_PLATFORM_PUBLIC_KEY` | `PMM_DEV_PERCONA_PLATFORM_PUBLIC_KEY` |     
     
     #### ClickHouse configuration
     | PMM 2                               | PMM 3                              | Comments                 |
@@ -130,29 +130,29 @@ The migration to PMM v3 introduces several important changes:
     | `PERCONA_TEST_PMM_CLICKHOUSE_POOL_SIZE`  |                                    | Removed in PMM v3, new version|
     
     #### PostgreSQL configuration
-    | PMM 2                               | PMM 3                              | Comments                     |
-    |-------------------------------------|------------------------------------|------------------------------|
-    | `PERCONA_TEST_POSTGRES_ADDR`        | `PMM_POSTGRES_ADDR`                |                              |
-    | `PERCONA_TEST_POSTGRES_DBNAME`      | `PMM_POSTGRES_DBNAME`              |                              |
-    | `PERCONA_TEST_POSTGRES_USERNAME`    | `PMM_POSTGRES_USERNAME`            |                              |
-    | `PERCONA_TEST_POSTGRES_DBPASSWORD`  | `PMM_POSTGRES_DBPASSWORD`          |                              |
-    | `PERCONA_TEST_POSTGRES_SSL_CA_PATH` | `PMM_POSTGRES_SSL_CA_PATH`         |                              |
-    | `PERCONA_TEST_POSTGRES_SSL_CERT_PATH` | `PMM_POSTGRES_SSL_CERT_PATH`      |                             |
-    | `PERCONA_TEST_POSTGRES_SSL_KEY_PATH` | `PMM_POSTGRES_SSL_KEY_PATH`       |                              |
-    | `PERCONA_TEST_POSTGRES_SSL_MODE`    | `PMM_POSTGRES_SSL_MODE`            |                              |
-    | `PERCONA_TEST_PMM_DISABLE_BUILTIN_POSTGRES` | `PMM_DISABLE_BUILTIN_POSTGRES` |                          |
+    | PMM 2                               | PMM 3                              | 
+    |-------------------------------------|------------------------------------|
+    | `PERCONA_TEST_POSTGRES_ADDR`        | `PMM_POSTGRES_ADDR`                |
+    | `PERCONA_TEST_POSTGRES_DBNAME`      | `PMM_POSTGRES_DBNAME`              |
+    | `PERCONA_TEST_POSTGRES_USERNAME`    | `PMM_POSTGRES_USERNAME`            | 
+    | `PERCONA_TEST_POSTGRES_DBPASSWORD`  | `PMM_POSTGRES_DBPASSWORD`          |  
+    | `PERCONA_TEST_POSTGRES_SSL_CA_PATH` | `PMM_POSTGRES_SSL_CA_PATH`         | 
+    | `PERCONA_TEST_POSTGRES_SSL_CERT_PATH` | `PMM_POSTGRES_SSL_CERT_PATH`      | 
+    | `PERCONA_TEST_POSTGRES_SSL_KEY_PATH` | `PMM_POSTGRES_SSL_KEY_PATH`       |   
+    | `PERCONA_TEST_POSTGRES_SSL_MODE`    | `PMM_POSTGRES_SSL_MODE`            |  
+    | `PERCONA_TEST_PMM_DISABLE_BUILTIN_POSTGRES` | `PMM_DISABLE_BUILTIN_POSTGRES` |   
    
     #### Telemetry & development
-    | PMM 2                               | PMM 3                              | Comments                     |
-    |-------------------------------------|------------------------------------|------------------------------|
-    | `PMM_TEST_TELEMETRY_DISABLE_SEND`   | `PMM_DEV_TELEMETRY_DISABLE_SEND`   |                              |
-    | `PERCONA_TEST_TELEMETRY_DISABLE_START_DELAY` | `PMM_DEV_TELEMETRY_DISABLE_START_DELAY` |                |
-    | `PMM_TEST_TELEMETRY_FILE`           | `PMM_DEV_TELEMETRY_FILE`           |                              |
-    | `PERCONA_TEST_TELEMETRY_HOST`       | `PMM_DEV_TELEMETRY_HOST`           |                              |
-    | `PERCONA_TEST_TELEMETRY_INTERVAL`   | `PMM_DEV_TELEMETRY_INTERVAL`       |                              |
-    | `PERCONA_TEST_TELEMETRY_RETRY_BACKOFF` | `PMM_DEV_TELEMETRY_RETRY_BACKOFF` |                            |
-    | `PERCONA_TEST_VERSION_SERVICE_URL`  | `PMM_DEV_VERSION_SERVICE_URL`      |                              |
-    | `PERCONA_TEST_STARLARK_ALLOW_RECURSION` | `PMM_DEV_ADVISOR_STARLARK_ALLOW_RECURSION` |                  |
+    | PMM 2                               | PMM 3                              | 
+    |-------------------------------------|------------------------------------|
+    | `PMM_TEST_TELEMETRY_DISABLE_SEND`   | `PMM_DEV_TELEMETRY_DISABLE_SEND`   |                
+    | `PERCONA_TEST_TELEMETRY_DISABLE_START_DELAY` | `PMM_DEV_TELEMETRY_DISABLE_START_DELAY` | 
+    | `PMM_TEST_TELEMETRY_FILE`           | `PMM_DEV_TELEMETRY_FILE`           |   
+    | `PERCONA_TEST_TELEMETRY_HOST`       | `PMM_DEV_TELEMETRY_HOST`           |   
+    | `PERCONA_TEST_TELEMETRY_INTERVAL`   | `PMM_DEV_TELEMETRY_INTERVAL`       |      
+    | `PERCONA_TEST_TELEMETRY_RETRY_BACKOFF` | `PMM_DEV_TELEMETRY_RETRY_BACKOFF` |   
+    | `PERCONA_TEST_VERSION_SERVICE_URL`  | `PMM_DEV_VERSION_SERVICE_URL`      |         
+    | `PERCONA_TEST_STARLARK_ALLOW_RECURSION` | `PMM_DEV_ADVISOR_STARLARK_ALLOW_RECURSION` |       
     
     #### Removed variables
     | PMM 2                               | PMM 3                              | Comments                     |
