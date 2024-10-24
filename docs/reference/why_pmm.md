@@ -19,17 +19,10 @@
     - [Setting up PMM Server](setting-up/server/index.md)
     - [Setting up PMM Client](setting-up/client/index.md)
 
-## How can I upgrade from version 1?
+## How can I upgrade from version 2?
 
-There is no direct software upgrade path.
+There is no direct software upgrade path. For infomation, see [Upgrade from PMM2](../pmm-upgrade/upgrade_from_pmm_2.md).
 
-You must [set up](setting-up/index.md) PMM 2 and connect your existing clients to it.
-
-When all data is registered in PMM2 and expired in PMM1, decommission your PMM1 instance.
-
-!!! seealso alert alert-info "See also"
-    - [Upgrade from PMM1](how-to/upgrade.md#upgrade-from-pmm-1)
-    - [Percona blog: Running PMM1 and PMM2 Clients on the Same Host](https://www.percona.com/blog/2019/11/27/running-pmm1-and-pmm2-clients-on-the-same-host/)
 
 ## How to control data retention? {: #retention }
 
