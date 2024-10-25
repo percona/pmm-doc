@@ -55,7 +55,6 @@ docker run -e PMM_DATA_RETENTION=720h -e PMM_DEBUG=true percona/pmm-server:3
 
 | Variable | Use case |
 |----------|----------|
-| `PMM_DEV_*` | Development environment settings |
 | `PMM_TEST_*` | Testing environment settings |
 
 ### Supported external variables

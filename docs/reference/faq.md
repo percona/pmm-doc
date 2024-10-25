@@ -20,11 +20,11 @@
 
 ## How can I upgrade from version 2?
 
-A direct software upgrade path is not available. For detailed instructions, see [Upgrade from PMM2](../pmm-upgrade/upgrade_from_pmm_2.md)
+PMM 3 introduces significant architectural changes that require gradual transition from PMM 2. For detailed instructions, see [Upgrade from PMM2](../pmm-upgrade/upgrade_from_pmm_2.md).
 
 ## How to control data retention? {: #retention }
 
-Go to <i class="uil uil-cog"></i> *Configuration* → <i class="uil uil-setting"></i> *Settings* → *Advanced Settings* → *Data retention* to adjust the value in days.
+Go to **PMM Configuration > Settings > Advanced Settings > Data retention** to adjust the value in days.
 
 !!! seealso alert alert-info "See also"
     [Configure data retention](how-to/configure.md#data-retention)
@@ -70,7 +70,7 @@ When you remove a monitoring service, previously collected data remains availabl
 
 By default, the RDS discovery works with the default `aws` partition. But you can switch to special regions, like the [GovCloud](https://aws.amazon.com/govcloud-us/) one, with the alternative [AWS partitions](https://docs.aws.amazon.com/sdk-for-go/api/aws/endpoints/#pkg-constants) (e.g. `aws-us-gov`) adding them to the *Settings* via the PMM Server [API](details/api.md).
 
-![!image](_images/aws-partitions-in-api.png)
+![!image](../_images/aws-partitions-in-api.png)
 
 To specify other than the default value, or to use several, use the JSON Array syntax: `["aws", "aws-cn"]`.
 
