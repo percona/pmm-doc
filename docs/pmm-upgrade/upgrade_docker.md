@@ -1,6 +1,8 @@
 # Upgrade PMM Server using Docker
 
 ## Before you begin
+
+Before starting the upgrade, complete these preparation steps to ensure you can recover your system if needed and confirm compatibility with the new version:
 {.power-number}
 
 1. Create a backup before upgrading, as downgrades are not possible. Therefore, reverting to a previous version requires an backup made prior to the upgrade.
@@ -12,6 +14,8 @@
     ```
 
 ## Upgrade steps
+
+Follow these steps to upgrade your PMM Server while preserving your monitoring data and settings. In case of any issues, you can restore your system using the backup created in the preparation steps.
 {.power-number}
 
 1. Stop the current container:
@@ -27,7 +31,6 @@
    ```sh
    docker pull percona/pmm-server:3
    ```
-
 4. Rename the original container:
 
    ```sh

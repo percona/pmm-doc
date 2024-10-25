@@ -3,10 +3,11 @@
 PMM 3 introduces significant architectural changes that require gradual transition from PMM 2:
 
 ## Step 1: Update PMM 2 Server to the latest version
+
+Before upgrading to PMM 3, ensure your PMM 2 Server is running the latest version:
 {.power-number}
 
 1. From the **Home** page, scroll to the **PMM Upgrade** panel and click the Refresh button to manually check for updates.
-![PMM Home Dashboard Upgrade Panel](../_images/PMM_Home_Dashboard_Panels_Upgrade2.png)
 2. If an update is available, click the **Update** button to install the latest PMM 2 version.
 3. Verify the update was successful by checking the version number after the update completes.
 
@@ -41,9 +42,9 @@ Follow these manual steps to upgrade your PMM 2 Server to PMM 3:
 
 5. Run a new container based on the PMM 3 image, ensuring you pass the same pmm-data volume:
 
-   ```sh
-   docker run -d -p 80:8080 -p 443:8443 -v pmm-data:/srv --name pmm-server --restart always percona/pmm-server:3
-   ```
+    ```sh
+    docker run -d -p 80:8080 -p 443:8443 -v pmm-data:/srv --name pmm-server --restart always percona/pmm-server:3
+    ```
 
 6. Verify that the new PMM 3 Server container is running and accessible through the UI.
 
