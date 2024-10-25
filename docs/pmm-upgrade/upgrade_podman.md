@@ -7,7 +7,7 @@ Before starting the upgrade, complete these preparation steps to ensure you can 
 
 1. Create a backup before upgrading, as downgrades are not possible. Therefore, reverting to a previous version requires an backup made prior to the upgrade.
 
-2. Check your current PMM version by navigating to **PMM Configuration > Updates** or by running the following command. If accessing remotely, replace `localhost` with the appropriate IP address or server name:
+2. Verify your current PMM version: Check your current PMM version by navigating to **PMM Configuration > Updates** or by running the following command. If accessing remotely, replace `localhost` with the appropriate IP address or server name:
 
     ```sh
     podman exec -it pmm-server \
@@ -22,23 +22,22 @@ Follow these steps to upgrade your PMM Server while preserving your monitoring d
 1. [Back up your data](../install-pmm/install-pmm-server/baremetal/podman/backup_container_podman.md).
 
 2. Update PMM tag by editing `~/.config/pmm-server/env` file and running the following command to set the latest release version:
-
-   ```sh
-   sed -i "s/PMM_TAG=.*/PMM_TAG=3.0.0/g" ~/.config/pmm-server/env
-   ```
+    ```sh
+    sed -i "s/PMM_TAG=.*/PMM_TAG=3.0.0/g" ~/.config/pmm-server/env
+    ```
 
 3. Pre-pull the new image to ensure a faster restart:
 
     ```sh
-   source ~/.config/pmm-server/env
-   podman pull ${PMM_IMAGE}:${PMM_TAG}
-   ```
+    source ~/.config/pmm-server/env
+    podman pull ${PMM_IMAGE}:${PMM_TAG}
+    ```
 
 4. Restart PMM Server:
 
     ```sh
-   systemctl --user restart pmm-server
-   ```
+    systemctl --user restart pmm-server
+    ```
 
 5. After the upgrade, verify that PMM Server is running correctly:
 
@@ -46,7 +45,7 @@ Follow these steps to upgrade your PMM Server while preserving your monitoring d
     podman ps | grep pmm-server
     ```
 
-6. Check the logs for any errors:
+3. Check the logs for any errors:
 
     ```sh
     podman logs pmm-server

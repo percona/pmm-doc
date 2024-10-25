@@ -33,15 +33,16 @@ Follow these steps to upgrade your PMM Server while preserving your monitoring d
 {.power-number}
 
 1. Update Helm repository:
-   ```sh
-   helm repo update percona
-   ```
 
-2. Upgrade PMM :
+    ```sh
+    helm repo update percona
+    ```
 
-   ```sh
-   helm upgrade pmm -f values.yaml percona/pmm
-   ```
+2. Upgrade PMM:
+
+    ```sh
+    helm upgrade pmm -f values.yaml percona/pmm
+    ```
 
 3. After the upgrade, verify that PMM Server is running correctly:
 

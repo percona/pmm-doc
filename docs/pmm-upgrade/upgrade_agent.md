@@ -1,6 +1,7 @@
 # Upgrade PMM Client
 
 There are two primary methods to update PMM Clients, depending on your initial installation method:
+{.power-number}
 
 1. Using your operating system's package manager.
 2. Updating from a tarball.
@@ -36,6 +37,7 @@ To deploy a specific version of the PMM Client via package manager, check the av
 ### 2. Tarball method
 
 If you initially installed the PMM Client from a tarball, you can update it by replacing the currently installed package with the latest version:
+{.power-number}
 
  1. Download `tar.gz` with `pmm-client`.
  2. Extract the tarball.
