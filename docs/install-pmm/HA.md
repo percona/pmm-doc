@@ -38,22 +38,22 @@ Before you start with the setup, define the necessary environment variables on e
 
 For all IP addresses, use the format `17.10.1.x`, and for all usernames and passwords, use a string format like `example`.
 
-| Variable                      | Description |
-|-------------------------------|-------------|
-| `CH_HOST_IP`                 | The IP address of the instance where the ClickHouse service is running or the desired IP address for the ClickHouse container within the Docker network, depending on your setup.</br></br>Example: `17.10.1.2` |
-| `VM_HOST_IP`                 | The IP address of the instance where the VictoriaMetrics service is running or the desired IP address for the VictoriaMetrics container within the Docker network, depending on your setup.</br></br>Example: `17.10.1.3` |
-| `PG_HOST_IP`                 | The IP address of the instance where the PostgreSQL service is running or the desired IP address for the PostgreSQL container within the Docker network, depending on your setup.</br></br>Example: `17.10.1.4` |
-| `PG_USERNAME`                | The username for your PostgreSQL server.</br></br>Example: `pmmuser` |
-| `PG_PASSWORD`                | The password for your PostgreSQL server.</br></br>Example: `pgpassword` |
-| `GF_USERNAME`                | The username for your Grafana database user.</br></br>Example: `gfuser` |
-| `GF_PASSWORD`                | The password for your Grafana database user.</br></br>Example: `gfpassword` |
-| `PMM_ACTIVE_IP`              | The IP address of the instance where the active PMM Server is running or the desired IP address for your active PMM Server container within the Docker network, depending on your setup.</br></br>Example: `17.10.1.5` |
-| `PMM_ACTIVE_NODE_ID`         | The unique ID for your active PMM Server node.</br></br>Example: `pmm-server-active` |
-| `PMM_PASSIVE_IP`             | The IP address of the instance where the first passive PMM Server is running or the desired IP address for your first passive PMM Server container within the Docker network, depending on your setup.</br></br>Example: `17.10.1.6` |
-| `PMM_PASSIVE_NODE_ID`        | The unique ID for your first passive PMM Server node.</br></br>Example: `pmm-server-passive` |
-| `PMM_PASSIVE2_IP`            | The IP address of the instance where the second passive PMM Server is running or the desired IP address for your second passive PMM Server container within the Docker network, depending on your setup.</br></br>Example: `17.10.1.7` |
-| `PMM_PASSIVE2_NODE_ID`       | The unique ID for your second passive PMM Server node.</br></br>Example: `pmm-server-passive2` |
-| `PMM_DOCKER_IMAGE`           | The specific PMM Server Docker image for this guide.</br></br>Example: `percona/pmm-server:2` |
+| Variable                                         | Description |
+|-------------------------------------------------|-------------|
+| `CH_HOST_IP`                                     | The IP address of the instance where the ClickHouse service is running or the desired IP address for the ClickHouse container within the Docker network, depending on your setup.</br></br>Example: `17.10.1.2` |
+| `VM_HOST_IP`                                     | The IP address of the instance where the VictoriaMetrics service is running or the desired IP address for the VictoriaMetrics container within the Docker network, depending on your setup.</br></br>Example: `17.10.1.3` |
+| `PG_HOST_IP`                                     | The IP address of the instance where the PostgreSQL service is running or the desired IP address for the PostgreSQL container within the Docker network, depending on your setup.</br></br>Example: `17.10.1.4` |
+| `PG_USERNAME`                                    | The username for your PostgreSQL server.</br></br>Example: `pmmuser` |
+| `PG_PASSWORD`                                    | The password for your PostgreSQL server.</br></br>Example: `pgpassword` |
+| `GF_USERNAME`                                    | The username for your Grafana database user.</br></br>Example: `gfuser` |
+| `GF_PASSWORD`                                    | The password for your Grafana database user.</br></br>Example: `gfpassword` |
+| `PMM_ACTIVE_IP`                                  | The IP address of the instance where the active PMM Server is running or the desired IP address for your active PMM Server container within the Docker network, depending on your setup.</br></br>Example: `17.10.1.5` |
+| `PMM_ACTIVE_NODE_ID`                            | The unique ID for your active PMM Server node.</br></br>Example: `pmm-server-active` |
+| `PMM_PASSIVE_IP`                                 | The IP address of the instance where the first passive PMM Server is running or the desired IP address for your first passive PMM Server container within the Docker network, depending on your setup.</br></br>Example: `17.10.1.6` |
+| `PMM_PASSIVE_NODE_ID`                           | The unique ID for your first passive PMM Server node.</br></br>Example: `pmm-server-passive` |
+| `PMM_PASSIVE2_IP`                               | The IP address of the instance where the second passive PMM Server is running or the desired IP address for your second passive PMM Server container within the Docker network, depending on your setup.</br></br>Example: `17.10.1.7` |
+| `PMM_PASSIVE2_NODE_ID`                          | The unique ID for your second passive PMM Server node.</br></br>Example: `pmm-server-passive2` |
+| `PMM_DOCKER_IMAGE`                              | The specific PMM Server Docker image for this guide.</br></br>Example: `percona/pmm-server:2` |
 
 ??? example "Expected output"
         
