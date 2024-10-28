@@ -140,22 +140,13 @@ docker exec -t pmm-server bash -c  "grafana-cli --homepath /usr/share/grafana a
 
 (This example assumes your Docker container is named `pmm-server`.)
 
-
 ## How to change the PMM password for a default admin user?
 
-If you're deploying through Docker, you can change the default password for an admin user after starting the Docker container as follows:
+If you're deploying through Docker, you can change the default password for an admin user after starting the Docker container:
 
-* For PMM versions 2.27.0 and later:
-
-```sh
-docker exec -t pmm-server change-admin-password <new_password>
-```
-
-* For PMM versions prior to 2.27.0:
-
-```sh
-docker exec -t pmm-server bash -c 'grafana-cli --homepath /usr/share/grafana --configOverrides cfg:default.paths.data=/srv/grafana admin reset-admin-password newpass'
-```
+    ```sh
+    docker exec -t pmm-server change-admin-password your_secure_password123
+    ```
 
 ## How to use a non-default listen-port for pmm-admin?
 
@@ -185,7 +176,7 @@ Read our [Privacy Policy](https://www.percona.com/privacy-policy) to learn how P
 
 Following [CVE fix 2023-3128](https://grafana.com/blog/2023/06/22/grafana-security-release-for-cve-2023-3128/) in the 2.38 release, PMM increases security by only allowing authentications based on the unique user ID provided by the identity provider.
 
-If you are trying to log into PMM via a third-party authentication provider which doesn't support a unique ID field, PMM 2.38 and later will show this error on second and subsequent authentications.
+If you are trying to log into PMM via a third-party authentication provider which doesn't support a unique ID field, PMM will show this error on second and subsequent authentications.
 
 **Solution**: we recommend logging into PMM using a Percona Account, as this is a highly secure authentication method.
 **Workaround**: if you need to log into PMM via a third-party authentication provider which doesn’t support a unique ID field, you can use the following workaround to log into PMM:

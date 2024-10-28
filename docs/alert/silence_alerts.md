@@ -28,7 +28,7 @@ For more information on working with silences, see [About alerting silences](htt
 
 ## Alerting compatibility
 
-### Template compatibility with previous PMM versions
+### Template compatibility with PMM 2
 
 After upgrading from the latest PMM 2 version to PMM 3, you will find all your alert templates under **Alerting > Alert rule templates**.
 

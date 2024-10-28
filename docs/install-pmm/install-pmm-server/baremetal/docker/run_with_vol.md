@@ -29,10 +29,10 @@ To run Docker with volume:
     perconalab/pmm-server:3.0.0-rc
     ```
     
-4. Change the password for the default `admin` user:
+4. Change the password for the default `admin` user, replacing `your_secure_password123` with a strong, unique password:
 
     ```sh
-    docker exec -t pmm-server change-admin-password <new_password>
+    docker exec -t pmm-server change-admin-password your_secure_password123
     ```
 
 5. Check the [WatchTower prerequisites](../docker/index.md|#prerequisites) and pass the following command to Docker Socket to start [Watchtower](https://containrrr.dev/watchtower/):

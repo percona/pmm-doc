@@ -59,7 +59,7 @@ PMM communicates with the PMM Server via a PMM agent process.
 `--trace`
 :    Enable trace logging (implies debug).
 
-`--log-level` (This parameter is available starting with PMM 2.29.0.)
+`--log-level` 
 :  Set the level for the logs as per your requirement such as INFO, WARNING, ERROR, and FATAL.
 
 `--json`
@@ -77,7 +77,7 @@ PMM communicates with the PMM Server via a PMM agent process.
 `--group=<group-name>`
 : Group name for external services. Default: `external`
 
-`--expose-exporter` (This flag is availble starting with PMM 2.41.0.)
+`--expose-exporter` 
 : If you enable this flag, any IP address on the local network and anywhere on the internet can access exporter endpoints. If the flag is disabled/not present, exporter endpoints can be accessed only locally. The flag is disabled by default
 
 ## COMMANDS
@@ -116,7 +116,7 @@ PMM communicates with the PMM Server via a PMM agent process.
     `--skip-server`
     : Skip fetching `logs.zip` from PMM Server.
 
-    `--pprof` (This parameter is available starting with PMM 2.29.0)
+    `--pprof`
     : Include performance profiling data in the summary.
 
 ### CONFIGURATION COMMANDS
@@ -149,7 +149,7 @@ PMM communicates with the PMM Server via a PMM agent process.
     `--paths-base=dir`
     : Base path where all binaries, tools and collectors of PMM client are located
 
-    `--agent-password=password` (This parameter i available starting with PMM 2.29.0.)
+    `--agent-password=password`
     : Custom agent password.
 
 #### `pmm-admin register`
@@ -184,7 +184,7 @@ PMM communicates with the PMM Server via a PMM agent process.
     `--custom-labels=labels`
     : Custom user-assigned labels.
 
-    `--agent-password=password` (This parameter is available starting with PMM 2.29.0.)
+    `--agent-password=password`
     : Custom agent password.
  
 #### `pmm-admin add --pmm-agent-listen-port=LISTEN_PORT`
@@ -346,7 +346,7 @@ When you remove a service, collected data remains on PMM Server for the specifie
         - `push`: agent will push metrics.
         - `pull`: server scrapes metrics from agent.
 
-    `--max-query-length=NUMBER` (This parameter is available starting with PMM 2.32.0.)
+    `--max-query-length=NUMBER` 
     : Limit query length in QAN. Allowed values:
         - -1: No limit.
         -  0: Default value. The default value is 2048 chars.
@@ -570,7 +570,7 @@ In low resolution we collect metrics from collectors which could take some time:
         - `push`: agent will push metrics.
         - `pull`: server scrapes metrics from agent.
 
-    `--max-query-length=NUMBER` (This parameter is available starting with PMM 2.32.0.)
+    `--max-query-length=NUMBER`
     : Limit query length in QAN. Allowed values:
         - -1: No limit.
         -  0: Default value. The default value is 2048 chars.
@@ -654,7 +654,7 @@ In low resolution we collect metrics from collectors which could take some time:
         - `push`: agent will push metrics.
         - `pull`: server scrapes metrics from agent.
 
-    `--max-query-length=NUMBER` (This parameter is available starting with PMM 2.32.0.)
+    `--max-query-length=NUMBER` 
     : Limit query length in QAN. Allowed values:
         - -1: No limit.
         -  0: Default value. The default value is 2048 chars.
