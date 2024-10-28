@@ -4,7 +4,7 @@ This section provides instructions for running PMM Server with Docker based on t
 
 ## Running PMM Server with Watchtower
 
-To enable PMM Server upgrades via the **Upgrade page** and the **Upgrade Now** button on the Home dashboard, you must configure Watchtower during the PMM Server installation. Watchtower is a container monitoring tool that automatically updates Docker containers to their latest version when triggered.
+To enable PMM Server upgrades via the **Upgrade page** and the **Upgrade Now** button on the Home dashboard, you must configure Watchtower during the PMM Server installation. Watchtower is a container monitoring tool that helps update Docker containers to their latest version when triggered.
 
 The [Easy-install script](../easy-install.md) script includes Watchtower commands, allowing for a one-step setup of PMM alongside Watchtower.
 
