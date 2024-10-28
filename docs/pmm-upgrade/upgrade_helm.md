@@ -20,7 +20,7 @@ Before starting the upgrade, complete these preparation steps to ensure you can 
 
 1. Create a backup before upgrading, as downgrades are not possible. Therefore, reverting to a previous version requires a backup made prior to the upgrade.
 
-2. Pre-pull the image: To reduce downtime, pre-pull the new image on the node where PMM is running:
+2. To reduce downtime, pre-pull the new image on the node where PMM is running:
 
     ```sh
     # Replace <version> with the latest PMM version
