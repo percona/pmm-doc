@@ -51,11 +51,6 @@ docker run -e PMM_DATA_RETENTION=720h -e PMM_DEBUG=true percona/pmm-server:3
 | `PMM_CLICKHOUSE_*` | ClickHouse connection settings |
 | `PMM_POSTGRES_*` | PostgreSQL connection settings |
 
-### Development & testing
-
-| Variable | Use case |
-|----------|----------|
-| `PMM_TEST_*` | Testing environment settings |
 
 ### Supported external variables
 
