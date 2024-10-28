@@ -18,7 +18,7 @@ Percona releases new chart versions to update containers when:
 Before starting the upgrade, complete these preparation steps to ensure you can recover your system if needed and confirm compatibility with the new version:
 {.power-number}
 
-1. Create a backup before upgrading, as downgrades are not possible. Therefore, reverting to a previous version requires an backup made prior to the upgrade.
+1. Create a backup before upgrading, as downgrades are not possible. Therefore, reverting to a previous version requires a backup made prior to the upgrade.
 
 2. Pre-pull the image: To reduce downtime, pre-pull the new image on the node where PMM is running:
 
