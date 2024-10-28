@@ -3,6 +3,7 @@
 When you need to share a dashboard with your team members, you can either send them a direct link to the dashboard, or render and send the dashboard as a .PNG image.
 
 ## Share as direct link
+
 1. Go to the dashboard that you want to share.
 2. Click at the top of the dashboard to display the panel menu.
 3. Select **Share** to reveal the **Share Panel** and either:  
@@ -12,24 +13,30 @@ When you need to share a dashboard with your team members, you can either send t
 !!! hint alert alert-success "Tip"
        If your current domain is different than the one specified in the Grafana .INI configuration file, PMM will ask you to correct this mismatch before you can generate a short URL:
     ![!image](../_images/PMM_Common_Panel_Menu_Share.png)
-    To fix this 
+
 ## Share as a PNG file
 
-Rendering images requires the Image Renderer plug-in. If your PMM Admin has not installed this for your PMM instance, you will see the following error message under **Share Panel > Link**.
+Rendering images requires the Image Renderer plug-in running as a separate container. If your PMM Admin has not installed this for your PMM instance, you will see the following error message under **Share Panel > Link**.
+
 ![!image](../_images/No_Image_Render_Plugin.png)
 
-To install the dependencies:
+To enable image rendering: 
 
-1. Connect to your PMM Server Docker container.
+1. Deploy the Grafana Image Renderer container alongside PMM Server:
 
     ```sh
-    docker exec -it pmm-server bash
+    docker run -d --name renderer --network=pmm-network grafana/grafana-image-renderer:latest
     ```
 
-2. Install Grafana plug-ins.
+2. Configure PMM Server with the required environment variables:
 
     ```sh
-    grafana-cli plugins install grafana-image-renderer
+    docker run -d \
+    --name pmm-server \
+    --network=pmm-network \
+    -e GF_RENDERING_SERVER_URL=http://renderer:8081/render \
+    -e GF_RENDERING_CALLBACK_URL=https://pmm-server:8443/graph/ \
+    percona/pmm-server:latest
     ```
 
 3. Restart Grafana.
