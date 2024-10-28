@@ -63,4 +63,4 @@ After you finish migrating:
 
 1. Verify that all clients are up to date by checking **PMM Configuration > Updates**.
 2. Confirm all previously monitored services are reporting correctly to the new PMM 3 Server by reviewing **Configuration > PMM Inventory > Services**.
-3. Check the dashboards to make sure you're receiving the metrics information, QAN data.
+3. Check the dashboards to make sure you're receiving the metrics information and QAN data.
