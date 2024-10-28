@@ -8,7 +8,7 @@ There are two primary methods to update PMM Clients, depending on your initial i
 
 ### 1. Package Manager method
 
-The package manager method is generally more convenient and efficient. Percona provides the [percona-release](https://docs.percona.com/percona-software-repositories/installing.html) package, which helps you install Percona software, including the PMM Client. The PMM Client is available from the `pmm-client` repository.
+The package manager method is generally more convenient and efficient. Percona provides the [percona-release](https://docs.percona.com/percona-software-repositories/installing.html) package, which helps you install Percona software, including PMM Client. PMM Client is available from the `pmm-client` repository.
 
 To deploy a new version of the Client via package manager, simply replace the currently installed package with the latest version of the PMM Client or with a specific version.
 
