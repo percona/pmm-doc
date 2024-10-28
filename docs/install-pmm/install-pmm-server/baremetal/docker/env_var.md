@@ -106,15 +106,6 @@ When migrating from PMM v2 to PMM v3, you'll need to update your environment var
     | `METRICS_RESOLUTION_LR`         | `PMM_METRICS_RESOLUTION_LR`        | 
     | `METRICS_RESOLUTION_MR`         | `PMM_METRICS_RESOLUTION_MR`        |    
     
-    #### Authentication & Percona Platform
-    | PMM 2                          | PMM 3                              | 
-    |---------------------------------|------------------------------------|
-    | `OAUTH_PMM_CLIENT_ID`           | `PMM_DEV_OAUTH_CLIENT_ID`          |  
-    | `OAUTH_PMM_CLIENT_SECRET`       | `PMM_DEV_OAUTH_CLIENT_SECRET`      | 
-    | `PERCONA_PLATFORM_API_TIMEOUT`  | `PMM_DEV_PERCONA_PLATFORM_API_TIMEOUT` |  
-    | `PERCONA_TEST_PLATFORM_ADDRESS` | `PMM_DEV_PERCONA_PLATFORM_ADDRESS` |      
-    | `PERCONA_TEST_PLATFORM_INSECURE`| `PMM_DEV_PERCONA_PLATFORM_INSECURE`|        
-    | `PERCONA_TEST_PLATFORM_PUBLIC_KEY` | `PMM_DEV_PERCONA_PLATFORM_PUBLIC_KEY` |     
     
     #### ClickHouse configuration
     | PMM 2                               | PMM 3                              | Comments                 |

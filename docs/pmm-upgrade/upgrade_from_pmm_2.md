@@ -22,7 +22,7 @@ Follow these manual steps to upgrade your PMM 2 Server to PMM 3:
     docker pull percona/pmm-server:3
     ```
 
-2. Stop all services of the PMM 2 server container:
+2. Stop all services of the PMM 2 Server container:
 
     ```sh
     docker exec -t pmm-server supervisorctl stop all
@@ -34,7 +34,7 @@ Follow these manual steps to upgrade your PMM 2 Server to PMM 3:
     docker exec -t pmm-server chown -R pmm:pmm /srv
     ```
 
-4. Stop and remove the PMM 2 server container:
+4. Stop and remove the PMM 2 Server container:
 
     ```sh
     docker stop pmm-server && docker rm pmm-server
