@@ -20,7 +20,7 @@ Rendering images requires the Image Renderer plug-in running as a separate conta
 
 ![!image](../_images/No_Image_Render_Plugin.png)
 
-To enable image rendering: 
+To enable image rendering:
 
 1. Deploy the Grafana Image Renderer container alongside PMM Server:
 
@@ -28,7 +28,14 @@ To enable image rendering:
     docker run -d --name renderer --network=pmm-network grafana/grafana-image-renderer:latest
     ```
 
-2. Configure PMM Server with the required environment variables:
+2. Stop your existing PMM Server container:
+
+   ```sh  
+    docker stop pmm-server
+    docker rm pmm-server
+    ```
+
+3. Start a new PMM Server container with the required environment variables:
 
     ```sh
     docker run -d \
@@ -40,29 +47,7 @@ To enable image rendering:
     percona/pmm-server:latest
     ```
 
-3. Restart Grafana.
-
-    ```sh
-    supervisorctl restart grafana
-    ```
-
-4. Install libraries.
-
-    ```sh
-    yum install -y libXcomposite libXdamage libXtst cups libXScrnSaver pango \
-    atk adwaita-cursor-theme adwaita-icon-theme at at-spi2-atk at-spi2-core \
-    cairo-gobject colord-libs dconf desktop-file-utils ed emacs-filesystem \
-    gdk-pixbuf2 glib-networking gnutls gsettings-desktop-schemas \
-    gtk-update-icon-cache gtk3 hicolor-icon-theme jasper-libs json-glib \
-    libappindicator-gtk3 libdbusmenu libdbusmenu-gtk3 libepoxy \
-    liberation-fonts liberation-narrow-fonts liberation-sans-fonts \
-    liberation-serif-fonts libgusb libindicator-gtk3 libmodman libproxy \
-    libsoup libwayland-cursor libwayland-egl libxkbcommon m4 mailx nettle \
-    patch psmisc redhat-lsb-core redhat-lsb-submod-security rest spax time \
-    trousers xdg-utils xkeyboard-config alsa-lib
-    ```
-
-To render the image: 
+To render the image:
 
 1. Go to the dashboard that you want to share.
 2. Click at the top of the dashboard to display the panel menu.
