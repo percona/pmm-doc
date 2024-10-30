@@ -1,8 +1,8 @@
-# Upgrade from PMM 2 to PMM 3
+# Migrate from PMM 2 to PMM 3
 
 PMM 3 introduces significant architectural changes that require gradual transition from PMM 2:
 
-## Step 1: Update PMM 2 Server to the latest version
+## Step 1: Upgrade PMM 2 Server to the latest version
 
 Before upgrading to PMM 3, ensure your PMM 2 Server is running the latest version:
 {.power-number}
@@ -11,7 +11,7 @@ Before upgrading to PMM 3, ensure your PMM 2 Server is running the latest versio
 2. If an update is available, click the **Update** button to install the latest PMM 2 version.
 3. Verify the update was successful by checking the version number after the update completes.
 
-## Step 2: Upgrade PMM 2 Server to PMM 3
+## Step 2: Migrate PMM 2 Server to PMM 3
 
 Follow these manual steps to upgrade your PMM 2 Server to PMM 3:
 {.power-number}
@@ -48,15 +48,15 @@ Follow these manual steps to upgrade your PMM 2 Server to PMM 3:
 
 6. Verify that the new PMM 3 Server container is running and accessible through the UI.
 
-## Step 3: Upgrade PMM 2 Clients to PMM 3
+## Step 3: Migrate PMM 2 Clients to PMM 3
 
 !!! caution alert alert-warning "Important"
     Support of PMM 2 Clients by PMM 3 Server will be limited to metrics and Query Analytics (QAN) only. This limited support will be dropped in PMM 3.3.
 
 Depending on your initial installation method, update PMM Clients using your operating system's package manager or by updating from a tarball.
-For detailed instructions, see the [Upgrade PMM Client topic](../pmm-upgrade/upgrade_agent.md).
+For detailed instructions, see the [Upgrade PMM Client topic](../pmm-upgrade/upgrade_client.md).
 
-### Post-upgrade steps
+### Post-migration steps
 
 After you finish migrating:
 {.power-number}

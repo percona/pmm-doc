@@ -12,4 +12,4 @@ Find the detailed information on how to upgrade PMM in the following sections:
 
 * [Upgrade PMM Server using Docker](upgrade_docker.md)
 
-* [Upgrade from PMM 2](upgrade_from_pmm_2.md)
+* [Migrate from PMM 2](migrating_from_pmm_2.md)

@@ -20,7 +20,7 @@
 
 ## How can I upgrade from version 2?
 
-PMM 3 introduces significant architectural changes that require gradual transition from PMM 2. For detailed instructions, see [Upgrade from PMM2](../pmm-upgrade/upgrade_from_pmm_2.md).
+PMM 3 introduces significant architectural changes that require gradual transition from PMM 2. For detailed instructions, see [Upgrade from PMM2](../pmm-upgrade/migrating_from_pmm_2.md).
 
 ## How to control data retention? {: #retention }
 
