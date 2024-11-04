@@ -37,9 +37,9 @@ You can upgrade PMM Server using Podman either through the UI or manually using 
             RestartSec=20
 
             ExecStart=/usr/bin/podman run \
-                --volume /home/admin/.config/systemd/user/:/home/pmm/update/ \
+                --volume ~/.config/systemd/user/:/home/pmm/update/ \
                 --rm --replace=true --name %N \
-                --env-file=/home/admin/.config/systemd/user/pmm-server.env \
+                --env-file=~/.config/systemd/user/pmm-server.env \
                 --net pmm_default \
                 --cap-add=net_admin,net_raw \
                 --userns=keep-id:uid=1000,gid=1000 \
@@ -51,7 +51,7 @@ You can upgrade PMM Server using Podman either through the UI or manually using 
             WantedBy=default.target
             ```
 
-        2. Create the environment file at `/home/admin/.config/systemd/user/pmm-server.env`:
+        2. Create the environment file at `~/.config/systemd/user/pmm-server.env`:
 
             ```sh
             PMM_WATCHTOWER_HOST=http://watchtower:8080
