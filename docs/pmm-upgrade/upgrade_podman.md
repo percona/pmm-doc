@@ -101,7 +101,7 @@ You can upgrade PMM Server using Podman either through the UI or manually using 
         systemctl --user enable --now watchtower
         ```
 
-    4. Go to **PMM Configuration > Updates** and click the **Upgrade** button.
+    4. Upgrade via **PMM Configuration > Updates > Upgrade.
 
 === "Manual upgrade"
 
