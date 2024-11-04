@@ -113,7 +113,7 @@ You can upgrade PMM Server using Podman either through the UI or manually using 
     2. Update PMM tag by editing `~/.config/systemd/user/pmm-server.env` file and running the following command to set the latest release version:
    
         ```sh
-        sed -i "s/PMM_TAG=.*/PMM_TAG=3.0.0/g" ~/.config/systemd/user/pmm-server.env
+        sed -i "s/PMM_IMAGE=.*/PMM_IMAGE=docker.io/pmm-server:3.0.0/g" ~/.config/systemd/user/pmm-server.env
         ```
 
     3. Pre-pull the new image to ensure a faster restart:
