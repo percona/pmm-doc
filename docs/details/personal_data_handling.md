@@ -56,3 +56,4 @@ The following questions are being answered related to personal and confidential 
 
     For more information about Percona security posture, please refer to our [Trust Center here](https://trust.percona.com/).
 
+All credentials stored by PMM are encrypted in the internal database. For more details, see here: [Encryption Details](/encryption.md)
