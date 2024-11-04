@@ -56,7 +56,7 @@ You can upgrade PMM Server using Podman either through the UI or manually using 
             ```sh
             PMM_WATCHTOWER_HOST=http://watchtower:8080
             PMM_WATCHTOWER_TOKEN=123
-            PMM_IMAGE=docker.io/perconalab/pmm-server-fb:PR-3682-c87ed27
+            PMM_IMAGE=docker.io/perconalab/pmm-server:3
             ```
 
         3. Create or update the Watchtower service file at `~/.config/systemd/user/watchtower.service`:
