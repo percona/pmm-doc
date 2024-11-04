@@ -32,7 +32,7 @@ You can upgrade PMM Server using Podman either through the UI or manually using 
             After=time-sync.target
 
             [Service]
-            EnvironmentFile=/home/admin/.config/systemd/user/pmm-server.env
+            EnvironmentFile=~/.config/systemd/user/pmm-server.env
             Restart=on-failure
             RestartSec=20
 
@@ -110,15 +110,15 @@ You can upgrade PMM Server using Podman either through the UI or manually using 
 
         1. [Back up your data](../install-pmm/install-pmm-server/baremetal/podman/backup_container_podman.md).
 
-        2. Update PMM tag by editing `~/.config/pmm-server/env` file and running the following command to set the latest release version:
+        2. Update PMM tag by editing `~/.config/systemd/user/pmm-server.env` file and running the following command to set the latest release version:
             ```sh
-            sed -i "s/PMM_TAG=.*/PMM_TAG=3.0.0/g" ~/.config/pmm-server/env
+            sed -i "s/PMM_TAG=.*/PMM_TAG=3.0.0/g" ~/.config/systemd/user/pmm-server.env
             ```
 
         3. Pre-pull the new image to ensure a faster restart:
 
             ```sh
-            source ~/.config/pmm-server/env
+            source ~/.config/systemd/user/pmm-server.env
             podman pull ${PMM_IMAGE}:${PMM_TAG}
             ```
 
