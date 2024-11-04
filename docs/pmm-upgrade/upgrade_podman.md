@@ -86,7 +86,7 @@ You can upgrade PMM Server using Podman either through the UI or manually using 
                 -e WATCHTOWER_DEBUG=${WATCHTOWER_DEBUG} \
                 --net pmm_default \
                 --cap-add=net_admin,net_raw \
-                docker.io/perconalab/watchtower:PMM-12573-podman
+                docker.io/perconalab/watchtower:latest
 
             ExecStop=/usr/bin/podman stop -t 10 %N
 
