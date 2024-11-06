@@ -77,7 +77,7 @@ You can edit the labels as follows:
 
 2. Click on the three dots next to the service you want to edit labels for.
 
-3. Click **Edit** to chenge the labels, then click **Save Changes**. 
+3. Click **Edit** to change the labels, then click **Save Changes**. 
 
     ![!](../_images/PMM_access_edit_labels.png)
 
