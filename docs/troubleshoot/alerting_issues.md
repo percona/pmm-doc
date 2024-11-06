@@ -18,7 +18,7 @@ If you have any templates available in the  `/srv/ia/templates` folder, make sur
 
 If you get an email or page from your system that the IP is not reachable from outside my organization, do the following:
 
-To configure your PMM Server’s Public Address, select <i class="uil uil-cog"></i> **Configuration** → <i class="uil uil-setting"></i> **Settings* → *Advanced Settings**, and supply an address to use in your alert notifications.
+To configure your PMM Server’s Public Address, select  **PMM Configuration > Settings > Advanced Settings**, and supply an address to use in your alert notifications.
 
 ## Alert Rule Templates are disabled
 

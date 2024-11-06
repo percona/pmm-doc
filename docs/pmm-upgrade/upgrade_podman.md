@@ -14,129 +14,39 @@ Before starting the upgrade, complete these preparation steps to ensure you can 
     curl -ku admin:admin https://localhost/v1/version
     ```
 
-You can upgrade PMM Server using Podman either through the UI or manually using Podman commands:
+## Upgrade steps
 
-=== "UI-based upgrade (recommended)"
+Follow these steps to upgrade your PMM Server while preserving your monitoring data and settings—you can restore from your backup if needed.
+{.power-number}
 
-    This method requires setting up PMM Server and Watchtower services:
-    {.power-number}
+1. [Back up your data](../install-pmm/install-pmm-server/baremetal/podman/backup_container_podman.md).
+2. Update PMM tag by editing `~/.config/systemd/user/pmm-server.env` file and running the following command to set the latest release version:
 
-    1. Create or update the PMM Server service file at `~/.config/systemd/user/pmm-server.service`:
+    ```sh
+    sed -i "s/PMM_IMAGE=.*/PMM_IMAGE=docker.io/pmm-server:3.0.0/g" ~/.config/systemd/user/pmm-server.env
+     ```
 
-        ```sh
-        [Unit]
-        Description=pmm-server
-        Wants=network-online.target
-        After=network-online.target
-        After=nss-user-lookup.target nss-lookup.target
-        After=time-sync.target
+3. Pre-pull the new image to ensure a faster restart:
 
-        [Service]
-        EnvironmentFile=~/.config/systemd/user/pmm-server.env
-        Restart=on-failure
-        RestartSec=20
+    ```sh
+    source ~/.config/systemd/user/pmm-server.env
+    podman pull ${PMM_IMAGE}:${PMM_TAG}
+    ```
 
-           ExecStart=/usr/bin/podman run \
-            --volume ~/.config/systemd/user/:/home/pmm/update/ \
-            --rm --replace=true --name %N \
-            --env-file=~/.config/systemd/user/pmm-server.env \
-            --net pmm_default \
-            --cap-add=net_admin,net_raw \
-            --userns=keep-id:uid=1000,gid=1000 \
-            -p 443:8443/tcp --ulimit=host ${PMM_IMAGE}
+4. Restart PMM Server:
 
-            ExecStop=/usr/bin/podman stop -t 10 %N
+    ```sh
+    systemctl --user restart pmm-server
+    ```
 
-        [Install]
-        WantedBy=default.target
-        ```
+5. After the upgrade, verify that PMM Server is running correctly:
 
-    1. Create the environment file at `~/.config/systemd/user/pmm-server.env`:
+    ```sh
+    podman ps | grep pmm-server
+    ```
 
-        ```sh
-        PMM_WATCHTOWER_HOST=http://watchtower:8080
-        PMM_WATCHTOWER_TOKEN=123
-        PMM_IMAGE=docker.io/perconalab/pmm-server:3
-        ```
+6. Check the logs for any errors:
 
-    2. Create or update the Watchtower service file at `~/.config/systemd/user/watchtower.service`:
-
-        ```sh
-        [Unit]
-        Description=watchtower
-        Wants=network-online.target
-        After=network-online.target
-        After=nss-user-lookup.target nss-lookup.target
-        After=time-sync.target
-
-        [Service]
-        Restart=on-failure
-        RestartSec=20
-
-        Environment=WATCHTOWER_HTTP_API_UPDATE=1
-        Environment=WATCHTOWER_HTTP_API_TOKEN=123
-        Environment=WATCHTOWER_NO_RESTART=1
-        Environment=WATCHTOWER_DEBUG=1
-
-        ExecStart=/usr/bin/podman run --rm --replace=true --name %N \
-            -v ${XDG_RUNTIME_DIR}/podman/podman.sock:/var/run/docker.sock \
-            -e WATCHTOWER_HTTP_API_UPDATE=${WATCHTOWER_HTTP_API_UPDATE} \
-            -e WATCHTOWER_HTTP_API_TOKEN=${WATCHTOWER_HTTP_API_TOKEN} \
-            -e WATCHTOWER_NO_RESTART=${WATCHTOWER_NO_RESTART} \
-            -e WATCHTOWER_DEBUG=${WATCHTOWER_DEBUG} \
-            --net pmm_default \
-            --cap-add=net_admin,net_raw \
-            docker.io/perconalab/watchtower:latest
-
-        ExecStop=/usr/bin/podman stop -t 10 %N
-
-        [Install]
-        WantedBy=default.target
-        ```
-
-    3. Start services:
-
-        ```sh
-        systemctl --user enable --now pmm-server
-        systemctl --user enable --now watchtower
-        ```
-
-    4. Upgrade via **PMM Configuration > Updates > Upgrade.
-
-=== "Manual upgrade"
-
-    Follow these steps to upgrade your PMM Server while preserving your monitoring data and settings—you can restore from your backup if needed.
-    {.power-number}
-
-    1. [Back up your data](../install-pmm/install-pmm-server/baremetal/podman/backup_container_podman.md).
-
-    2. Update PMM tag by editing `~/.config/systemd/user/pmm-server.env` file and running the following command to set the latest release version:
-   
-        ```sh
-        sed -i "s/PMM_IMAGE=.*/PMM_IMAGE=docker.io/pmm-server:3.0.0/g" ~/.config/systemd/user/pmm-server.env
-        ```
-
-    3. Pre-pull the new image to ensure a faster restart:
-
-        ```sh
-        source ~/.config/systemd/user/pmm-server.env
-        podman pull ${PMM_IMAGE}:${PMM_TAG}
-        ```
-
-    4. Restart PMM Server:
-
-        ```sh
-        systemctl --user restart pmm-server
-        ```
-
-    5.  After the upgrade, verify that PMM Server is running correctly:
-
-        ```sh
-        podman ps | grep pmm-server
-        ```
-
-    6.  Check the logs for any errors:
-
-        ```sh
-        podman logs pmm-server
-        ```
+    ```sh
+    podman logs pmm-server
+    ```
