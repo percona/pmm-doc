@@ -1,18 +1,20 @@
 # Install PMM Server with Podman on Docker image
 
-This section provides instructions for running PMM Server with Podman based on our [Docker image](https://hub.docker.com/r/percona/pmm-server).
+This section provides instructions for running PMM Server with Podman based on our [Docker image](https://hub.docker.com/r/percona/pmm-server). 
 
 !!! seealso alert alert-info "See also"
     - [Docker](../docker/index.md) 
     - Other [tags](https://hub.docker.com/r/percona/pmm-server/tags) are available.
 
-Podman is an open-source project available on most Linux platforms and resides on [GitHub](https://github.com/containers/podman). Podman is a daemonless container engine for developing, managing, and running Open Container Initiative (OCI) containers and container images on your Linux System. 
+## About Podman
 
-Non-privileged users could run containers under the control of Podman.
+Podman is an open-source, daemonless container engine for developing, managing, and running Open Container Initiative (OCI) containers and container images on Linux systems. It is widely supported across Linux distributions and hosted on [GitHub](https://github.com/containers/podman). 
 
-It could be just aliased (`alias docker=podman`) with docker and work with the same way. All instructions from [Docker](../docker/index.md) section also apply here.
+One of Podman’s advantages is that it allows non-privileged users to run containers, enhancing security by avoiding elevated permissions.
 
-Percona recommends running PMM as a non-privileged user and running it as part of the SystemD service provided. SystemD service ensures that the service is running and maintains logs and other management features (start, stop, etc.).
+Podman is compatible with Docker; by using an alias (`alias docker=podman`), you can run Docker commands seamlessly with Podman. All instructions in the Docker section apply to Podman as well.
+
+Percona recommends running PMM (Percona Monitoring and Management) with Podman as a non-privileged user and as part of the provided SystemD service. SystemD helps ensure that the service is actively running and offers logging and management functions, such as start, stop, and restart.
 
 ## Before you start
 
@@ -25,13 +27,25 @@ Percona recommends running PMM as a non-privileged user and running it as part o
       - Grant Watchtower access to the Docker socket to monitor and manage containers effectively, ensuring proper security measures are in place to protect the Docker socket.
       - Verify that both Watchtower and PMM Server are on the same network, or ensure PMM Server can connect to Watchtower for communication. This network setup is essential for PMM Server to initiate updates through Watchtower.
 
-## Run as non-privileged user to start PMM
+## Update mechanism
 
-This requires setting up PMM Server and Watchtower services:
-{.power-number}
+PMM Server updates work differently in Podman compared to Docker due to security policies:
 
-1. Create or update the PMM Server service file at `~/.config/systemd/user/pmm-server.service`:
+- Docker updates use a simpler flow where PMM Server directly instructs Watchtower to replace the Docker container in one step.
+- Podman updates require SystemD integration and follow a multi-step process with environment file changes for better security isolation.
 
+## Install with UI updates
+
+You can install PMM with either automated UI-based updates or a manual update method, depending on your preferences. 
+
+The UI-based method, using Watchtower, enables direct updates from the web interface without requiring command-line access and automates the process. On the other hand, the manual method offers a simpler setup with complete control over updates and no need for additional services, but it requires command-line access and manual intervention to track and apply updates.
+
+=== "Installation with UI updates"
+
+    This method enables updates through the PMM web interface using Watchtower and SystemD services. When you initiate an update in the UI, PMM Server updates its image reference, prompting Watchtower to pull the new image. Watchtower then stops the existing container, and SystemD automatically restarts it with the updated image.
+    {.power-number}
+
+    1. **Create PMM Server service file at `~/.config/systemd/user/pmm-server.service`:
     ```sh
     [Unit]
     Description=pmm-server
@@ -56,16 +70,15 @@ This requires setting up PMM Server and Watchtower services:
     WantedBy=default.target
     ```
 
-2. Create the environment file at `~/.config/systemd/user/pmm-server.env`:
-
+    2. Create the environment file at `~/.config/systemd/user/pmm-server.env`:
+   
     ```sh
     PMM_WATCHTOWER_HOST=http://watchtower:8080
     PMM_WATCHTOWER_TOKEN=123
     PMM_IMAGE=docker.io/perconalab/pmm-server:3
     ```
 
-3. Create or update the Watchtower service file at `~/.config/systemd/user/watchtower.service`:
-
+    3. Create or update the Watchtower service file at `~/.config/systemd/user/watchtower.service`:
     ```sh
     [Unit]
     Description=watchtower
@@ -94,11 +107,56 @@ This requires setting up PMM Server and Watchtower services:
     WantedBy=default.target
     ```
 
-4. Start services:
-
+    4. Start services:
     ```sh
     systemctl --user enable --now pmm-server
     systemctl --user enable --now watchtower
     ```
+    5. Go to `https://localhost:8443` to access the PMM user interface in a web browser. If you are accessing the host remotely, replace `localhost` with the IP or server name of the host.
 
-5. Visit `https://localhost:8443` to see the PMM user interface in a web browser. If you are accessing host remotely, replace localhost with the IP or server name of the host.
+=== "Installation with manual updates"
+
+    The installation with manual updates offers a straightforward setup with direct control over updates, without relying on additional services. In this approach, you manually update the `PMM_TAG` in the environment file and restart the PMM Server service. SystemD then automatically manages the container replacement.
+
+    1. **Create PMM Server service file at `~/.config/systemd/user/pmm-server.service`:
+    ```sh
+    [Unit]
+    Description=pmm-server
+    Wants=network-online.target
+    After=network-online.target
+    After=nss-user-lookup.target nss-lookup.target
+    After=time-sync.target
+    [Service]
+    EnvironmentFile=~/.config/systemd/user/pmm-server.env
+    Restart=on-failure
+    RestartSec=20
+    ExecStart=/usr/bin/podman run \
+        --volume ~/.config/systemd/user/:/home/pmm/update/ \
+        --rm --replace=true --name %N \
+        --env-file=~/.config/systemd/user/pmm-server.env \
+        --net pmm_default \
+        --cap-add=net_admin,net_raw \
+        --userns=keep-id:uid=1000,gid=1000 \
+        -p 443:8443/tcp --ulimit=host ${PMM_IMAGE}
+    ExecStop=/usr/bin/podman stop -t 10 %N
+    [Install]
+    WantedBy=default.target
+    ```
+
+    2. Create the environment file at `~/.config/systemd/user/pmm-server.env`:
+   
+    ```sh
+    PMM_WATCHTOWER_HOST=http://watchtower:8080
+    PMM_WATCHTOWER_TOKEN=123
+    PMM_IMAGE=docker.io/perconalab/pmm-server:3
+    ```
+
+    3. Start services:
+   
+    ```sh
+    systemctl --user enable --now pmm-server
+    ```
+
+    4. Go to `https://localhost:8443` to access the PMM user interface in a web browser. If you are accessing the host remotely, replace `localhost` with the IP or server name of the host.
+
+    For information on manually upgrading, see [Upgrade PMM Server using Podman](../../../../pmm-upgrade/upgrade_podman.md).
