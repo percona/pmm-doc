@@ -122,7 +122,7 @@ On the other hand, the manual method offers a simpler setup with complete contro
 
 === "Installation with manual updates"
 
-    The installation with manual updates offers a straightforward setup with direct control over updates, without relying on additional services. In this approach, you manually update the `PMM_TAG` in the environment file and restart the PMM Server service. SystemD then automatically manages the container replacement.
+    The installation with manual updates offers a straightforward setup with direct control over updates, without relying on additional services. In this approach, you manually update the `PMM_IMAGE` in the environment file and restart the PMM Server service. SystemD then automatically manages the container replacement.
     {.power-number}
     
     1. Create PMM Server service file at `~/.config/systemd/user/pmm-server.service`:
