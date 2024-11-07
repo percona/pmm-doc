@@ -91,6 +91,7 @@ To install PMM Client with **binary** package with root permissions:
     ```
 
 === "Without root permissions"
+
 To install PMM Client with **binary** package without root permissions:
 {.power-number}
 
@@ -179,7 +180,6 @@ To install PMM Client with **binary** package without root permissions:
     ```sh
     pmm-admin status
     ```
-
     
 !!! hint alert alert-success "Tips"
     - Download tar.gz with pmm-client.
