@@ -7,7 +7,7 @@ On Debian or Red Hat Linux, install `percona-release` and use a Linux package ma
 
     ```sh
     percona-release disable all
-    percona-release percona-release enable pmm-client
+    percona-release percona-release enable pmm3-client
     ```
 
 === "Debian-based"
