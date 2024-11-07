@@ -1,6 +1,6 @@
 # Install PMM Server with Podman on Docker image
 
-This section provides instructions for running PMM Server with Podman based on our [Docker image](https://hub.docker.com/r/percona/pmm-server). 
+This section provides instructions for running PMM Server with Podman based on our [Docker image](https://hub.docker.com/r/percona/pmm-server).
 
 !!! seealso alert alert-info "See also"
     - [Docker](../docker/index.md) 
@@ -8,13 +8,13 @@ This section provides instructions for running PMM Server with Podman based on o
 
 ## About Podman
 
-Podman is an open-source, daemonless container engine for developing, managing, and running Open Container Initiative (OCI) containers and container images on Linux systems. It is widely supported across Linux distributions and hosted on [GitHub](https://github.com/containers/podman). 
+Podman is an open-source, daemonless container engine for developing, managing, and running Open Container Initiative (OCI) containers and container images on Linux systems. It is widely supported across Linux distributions and hosted on [GitHub](https://github.com/containers/podman).
 
 One of Podman’s advantages is that it allows non-privileged users to run containers, enhancing security by avoiding elevated permissions.
 
 Podman is compatible with Docker; by using an alias (`alias docker=podman`), you can run Docker commands seamlessly with Podman. All instructions in the Docker section apply to Podman as well.
 
-Percona recommends running PMM (Percona Monitoring and Management) with Podman as a non-privileged user and as part of the provided SystemD service. SystemD helps ensure that the service is actively running and offers logging and management functions, such as start, stop, and restart.
+Percona recommends running PMM with Podman as a non-privileged user and as part of the provided SystemD service. SystemD helps ensure that the service is actively running and offers logging and management functions, such as start, stop, and restart.
 
 ## Before you start
 
@@ -36,7 +36,7 @@ PMM Server updates work differently in Podman compared to Docker due to security
 
 ## Install with UI updates
 
-You can install PMM with either automated UI-based updates or a manual update method, depending on your preferences. 
+You can install PMM with either automated UI-based updates or a manual update method, depending on your preferences.
 
 The UI-based method, using Watchtower, enables direct updates from the web interface without requiring command-line access and automates the process. On the other hand, the manual method offers a simpler setup with complete control over updates and no need for additional services, but it requires command-line access and manual intervention to track and apply updates.
 
@@ -108,10 +108,12 @@ The UI-based method, using Watchtower, enables direct updates from the web inter
     ```
 
     4. Start services:
+   
     ```sh
     systemctl --user enable --now pmm-server
     systemctl --user enable --now watchtower
     ```
+
     5. Go to `https://localhost:8443` to access the PMM user interface in a web browser. If you are accessing the host remotely, replace `localhost` with the IP or server name of the host.
 
 === "Installation with manual updates"
