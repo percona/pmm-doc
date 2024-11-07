@@ -10,7 +10,7 @@ Before starting the upgrade, complete these preparation steps to ensure you can 
 2. Verify your current PMM version: Check your current PMM version by navigating to **PMM Configuration > Updates** or by running the following command. If accessing remotely, replace `localhost` with the appropriate IP address or server name:
 
     ```sh
-   docker exec -it pmm-server curl -ku admin:admin https://localhost/v1/version
+   docker exec -it pmm-server curl -ku admin:admin https://localhost:8443/v1/version
     ```
 
 ## Upgrade steps
