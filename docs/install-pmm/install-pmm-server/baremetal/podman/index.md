@@ -34,7 +34,7 @@ PMM Server updates work differently in Podman compared to Docker due to security
 - Docker updates use a simpler flow where PMM Server directly instructs Watchtower to replace the Docker container in one step.
 - Podman updates require SystemD integration and follow a multi-step process with environment file changes for better security isolation.
 
-## Install with UI updates
+## Install
 
 You can install PMM with either automated UI-based updates or a manual update method, depending on your preferences.
 
