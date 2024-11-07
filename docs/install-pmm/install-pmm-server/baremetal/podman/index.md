@@ -49,29 +49,29 @@ On the other hand, the manual method offers a simpler setup with complete contro
 
     1. Create PMM Server service file at `~/.config/systemd/user/pmm-server.service`:
 
-    ```sh
-    [Unit]
-    Description=pmm-server
-    Wants=network-online.target
-    After=network-online.target
-    After=nss-user-lookup.target nss-lookup.target
-    After=time-sync.target
-    [Service]
-    EnvironmentFile=~/.config/systemd/user/pmm-server.env
-    Restart=on-failure
-    RestartSec=20
-    ExecStart=/usr/bin/podman run \
-        --volume ~/.config/systemd/user/:/home/pmm/update/ \
-        --rm --replace=true --name %N \
-        --env-file=~/.config/systemd/user/pmm-server.env \
-        --net pmm_default \
-        --cap-add=net_admin,net_raw \
-        --userns=keep-id:uid=1000,gid=1000 \
-        -p 443:8443/tcp --ulimit=host ${PMM_IMAGE}
-    ExecStop=/usr/bin/podman stop -t 10 %N
-    [Install]
-    WantedBy=default.target
-    ```
+        ```sh
+        [Unit]
+        Description=pmm-server
+        Wants=network-online.target
+        After=network-online.target
+        After=nss-user-lookup.target nss-lookup.target
+        After=time-sync.target
+        [Service]
+        EnvironmentFile=~/.config/systemd/user/pmm-server.env
+        Restart=on-failure
+        RestartSec=20
+        ExecStart=/usr/bin/podman run \
+            --volume ~/.config/systemd/user/:/home/pmm/update/ \
+            --rm --replace=true --name %N \
+            --env-file=~/.config/systemd/user/pmm-server.env \
+            --net pmm_default \
+            --cap-add=net_admin,net_raw \
+            --userns=keep-id:uid=1000,gid=1000 \
+            -p 443:8443/tcp --ulimit=host ${PMM_IMAGE}
+        ExecStop=/usr/bin/podman stop -t 10 %N
+        [Install]
+        WantedBy=default.target
+        ```
 
     2. Create the environment file at `~/.config/systemd/user/pmm-server.env`:
    
@@ -123,7 +123,8 @@ On the other hand, the manual method offers a simpler setup with complete contro
 === "Installation with manual updates"
 
     The installation with manual updates offers a straightforward setup with direct control over updates, without relying on additional services. In this approach, you manually update the `PMM_TAG` in the environment file and restart the PMM Server service. SystemD then automatically manages the container replacement.
-
+    {.power-number}
+    
     1. Create PMM Server service file at `~/.config/systemd/user/pmm-server.service`:
    
         ```sh
