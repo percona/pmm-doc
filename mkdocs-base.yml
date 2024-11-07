@@ -7,8 +7,8 @@ site_url: ""
 copyright: Percona LLC, &#169; 2023
 use_directory_urls: false
 repo_name: percona/pmm-doc
-repo_url: https://github.com/percona/pmm-doc
-edit_uri: edit/main/docs/
+repo_url: https://github.com/percona/pmm-doc/
+edit_uri: edit/PMM3-branch/docs/
 
 theme:
   name: material
@@ -56,17 +56,12 @@ theme:
 extra_css:
   - https://unicons.iconscout.com/release/v3.0.3/css/line.css
   - https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css
-  - css/percona.css
   - css/lightgallery.min.css
   - css/extra.css
   - css/nocopy.css
   - css/design.css
   - css/osano.css
   - css/pmm.css
-
-#Copyright
-copyright: >
-  <a href="https://www.percona.com/about">Percona LLC</a> and/or its affiliates © 2023 — <a href="#__consent">Cookie Consent</a>
 
 extra_javascript:
   #  - js/lightgallery.min.js
@@ -87,7 +82,7 @@ markdown_extensions:
   pymdownx.details: {}
   pymdownx.mark: {}
   pymdownx.smartsymbols: {}
-  pymdownx.tabbed: 
+  pymdownx.tabbed:
       {alternate_style: true}
   pymdownx.tilde: {}
   pymdownx.superfences: {}
@@ -108,8 +103,6 @@ markdown_extensions:
       custom_icons:
         - overrides/.icons
 
-
-
 plugins:
   search:
     separator: '[\s\-,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
@@ -120,6 +113,7 @@ plugins:
     enable_checks: false
     min_length: 50
     max_length: 160
+  # https://mkdocs-macros-plugin.readthedocs.io/en/latest/
   macros:
     include_yaml:
       - "variables.yml"
@@ -129,12 +123,11 @@ plugins:
       - "setting-up/client/docker.md"
   # https://github.com/orzih/mkdocs-with-pdf
   with-pdf:
-    output_path: "_pdf/PerconaMonitoringAndManagement-2.41.0.pdf"
+    output_path: "_pdf/PerconaMonitoringAndManagement-3.0.0 ALPHA.pdf"
     cover_title: "Percona Monitoring and Management Documentation"
-    cover_subtitle: 2.41.0 (Oct 20, 2023)
-
+    cover_subtitle: 3.0.0 (May 16, 2024)
     author: "Percona Technical Documentation Team"
-    cover_logo: docs/_images/Percona_Logo_Color.png
+    cover_logo: docs/_images/pmm_pdf_logo.png
     custom_template_path: _resources/templates
     enabled_if_env: ENABLE_PDF_EXPORT
   # Check links - but extends build time significantly
@@ -195,7 +188,7 @@ nav:
         - install-pmm/install-pmm-server/baremetal/helm/index.md
         - install-pmm/install-pmm-server/baremetal/helm/backup_container_helm.md
         - install-pmm/install-pmm-server/baremetal/helm/restore_container_helm.md            
-      - AWS marketplace:
+      - AWS Marketplace:
         - install-pmm/install-pmm-server/aws/aws.md
         - install-pmm/install-pmm-server/aws/limit_access.md
         - install-pmm/install-pmm-server/aws/settings.md
@@ -203,14 +196,14 @@ nav:
         - install-pmm/install-pmm-server/aws/back_pmm_server.md
         - install-pmm/install-pmm-server/aws/restore_pmm_server.md
         - install-pmm/install-pmm-server/aws/remove_pmm_server.md
-    - Set up PMM client:
-      - Install PMM client:
+    - Set up PMM Client:
+      - Install PMM Client:
         - install-pmm/install-pmm-client/index.md
         - install-pmm/install-pmm-client/prerequisites.md
-        - Percona Repositories: install-pmm/install-pmm-client/package_manager.md          
+        - Percona repositories: install-pmm/install-pmm-client/package_manager.md          
         - Images: install-pmm/install-pmm-client/docker.md
         - Manual binaries: install-pmm/install-pmm-client/binary_package.md          
-        - Register client node: install-pmm/register-client-node/index.md 
+        - Register Client node: install-pmm/register-client-node/index.md 
         - Add services to PMM: 
           - install-pmm/install-pmm-client/connect-database/index.md
           - MySQL: install-pmm/install-pmm-client/connect-database/mysql.md
@@ -240,7 +233,7 @@ nav:
       - pmm-upgrade/upgrade_from_pmm_1.md
       - pmm-upgrade/upgrade_aws.md
   - Uninstall:
-    - Uninstall PMM client: 
+    - Uninstall PMM Client: 
       - Docker: uninstall-pmm/uninstall_docker.md
       - Helm: uninstall-pmm/uninstall_helm.md 
       - Package manager: uninstall-pmm/uninstall_package_manager.md
@@ -352,6 +345,7 @@ nav:
   - Release notes:
     - Release notes index: release-notes/index.md
     - "PMM 3.0.0-ALPHA (2024-04-16)": release-notes/3.0.0_Alpha.md
+    - "PMM 3.0.0-BETA (2024-09-16)": release-notes/3.0.0_Beta.md
     
 
   - Reference: 
