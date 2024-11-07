@@ -153,8 +153,6 @@ On the other hand, the manual method offers a simpler setup with complete contro
     2. Create the environment file at `~/.config/systemd/user/pmm-server.env`:
    
         ```sh
-        PMM_WATCHTOWER_HOST=http://watchtower:8080
-        PMM_WATCHTOWER_TOKEN=123
         PMM_IMAGE=docker.io/perconalab/pmm-server:3
         ```
 
