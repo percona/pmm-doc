@@ -139,7 +139,6 @@ On the other hand, the manual method offers a simpler setup with complete contro
         Restart=on-failure
         RestartSec=20
         ExecStart=/usr/bin/podman run \
-            --volume ~/.config/systemd/user/:/home/pmm/update/ \
             --rm --replace=true --name %N \
             --env-file=~/.config/systemd/user/pmm-server.env \
             --net pmm_default \
