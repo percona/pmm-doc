@@ -83,7 +83,7 @@ Once PMM is set up, choose the database or the application that you want it to m
             2. Enable the PMM client repository:
 
                 ```sh
-                percona-release enable pmm-client release
+                percona-release enable pmm3-client release
                 ```
             3. Install the PMM Client package:
 
@@ -106,7 +106,7 @@ Once PMM is set up, choose the database or the application that you want it to m
             5. Enable the PMM client repository:
 
                 ```sh
-                percona-release enable pmm-client release
+                percona-release enable pmm3-client release
                 ```
             6. Install the PMM Client package:
 
@@ -189,7 +189,7 @@ Once PMM is set up, choose the database or the application that you want it to m
             2. Enable the PMM client repository:
 
                 ```sh
-                percona-release enable pmm-client release
+                percona-release enable pmm3-client release
                 ```
             3. Install the PMM Client package:
 
@@ -211,7 +211,7 @@ Once PMM is set up, choose the database or the application that you want it to m
             2. Enable the PMM client repository:
 
                 ```sh
-                percona-release enable pmm-client release
+                percona-release enable pmm3-client release
                 ```
             3. Install the PMM Client package:
 
@@ -303,7 +303,7 @@ Once PMM is set up, choose the database or the application that you want it to m
             2. Enable the PMM client repository:
 
                 ```sh
-                percona-release enable pmm-client release
+                percona-release enable pmm3-client release
                 ```
             3. Install the PMM Client package:
 
@@ -325,7 +325,7 @@ Once PMM is set up, choose the database or the application that you want it to m
             2. Enable the PMM client repository:
 
                 ```sh
-                percona-release enable pmm-client release
+                percona-release enable pmm3-client release
                 ```
             3. Install the PMM Client package:
 
@@ -370,7 +370,7 @@ Once PMM is set up, choose the database or the application that you want it to m
             2. Enable the PMM client repository:
 
                 ```sh
-                percona-release enable pmm-client release
+                percona-release enable pmm3-client release
                 ```
             3. Install the PMM Client package:
 
@@ -392,7 +392,7 @@ Once PMM is set up, choose the database or the application that you want it to m
             2. Enable the PMM client repository:
 
                 ```sh
-                percona-release enable pmm-client release
+                percona-release enable pmm3-client release
                 ```
             3. Install the PMM Client package:
 
@@ -436,7 +436,7 @@ Once PMM is set up, choose the database or the application that you want it to m
             2. Enable the PMM client repository:
 
                 ```sh
-                percona-release enable pmm-client release
+                percona-release enable pmm3-client release
                 ```
             3. Install the PMM Client package:
 
@@ -458,7 +458,7 @@ Once PMM is set up, choose the database or the application that you want it to m
             2. Enable the PMM client repository:
 
                 ```sh
-                percona-release enable pmm-client release
+                percona-release enable pmm3-client release
                 ```
             3. Install the PMM Client package:
 
