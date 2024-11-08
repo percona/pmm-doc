@@ -51,7 +51,7 @@ Follow these manual steps to upgrade your PMM 2 Server to PMM 3:
 ## Step 3: Migrate PMM 2 Clients to PMM 3
 
 !!! caution alert alert-warning "Important"
-    Support of PMM 2 Clients by PMM 3 Server will be limited to metrics and Query Analytics (QAN) only. This limited support will be dropped in PMM 3.3.
+    Support of PMM 2 Clients by PMM 3 Server is limited to metrics and Query Analytics (QAN) only. This limited support will be dropped in PMM 3.3.
 
 Depending on your initial installation method, update PMM Clients using your operating system's package manager or by updating from a tarball.
 For detailed instructions, see the [Upgrade PMM Client topic](../pmm-upgrade/upgrade_client.md).

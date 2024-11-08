@@ -3,8 +3,8 @@
 There are two primary methods to update PMM Clients, depending on your initial installation method:
 {.power-number}
 
-1. Using your operating system's package manager.
-2. Updating from a tarball.
+1. Using your operating system's package manager
+2. Updating from a tarball
 
 ### 1. Package Manager method
 
