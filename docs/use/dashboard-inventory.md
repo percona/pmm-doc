@@ -73,13 +73,11 @@ Understanding the relationship between nodes and services is key to gaining insi
 
 You can edit the labels as follows:
 
-1. From the **Main** menu, navigate to <i class="uil uil-cog"></i> **Configuration → Inventory**.
+1. From the **Main** menu, go to **PMM Configuration > PMM Inventory > Services**.
 
 2. Click on the three dots next to the service you want to edit labels for.
 
-3. Click **Edit**. The **Edit Service** page opens.
-
-4. Edit the labels as per your requirement and click **Save Changes**. The editing service dialogue box opens.
+3. Click **Edit** to change the labels, then click **Save Changes**. 
 
     ![!](../_images/PMM_access_edit_labels.png)
 
@@ -102,7 +100,6 @@ Editing existing labels can impact the following PMM functions:
 
 - **Dashboard data**: Edited labels do not affect the existing time-series(metrics). It will only affect the new time-series(metrics).
 
-
 #### Cluster view
 
 !!! caution alert alert-warning "Disclaimer"
@@ -111,15 +108,15 @@ Editing existing labels can impact the following PMM functions:
 
 Starting with PMM 2.40.0, you can choose to view a group of services as a single cluster  with the **Organize by Clusters** toggle. PMM uses the `cluster` label to display services under the same cluster.
 
-![!image](../../_images/PMM_Inventory_cluster_view.png)
+![!image](../_images/PMM_Inventory_cluster_view.png)
 
 Click the downward arrow to view cluster details, including the services running on that cluster, agents, and labels.
 
-![!image](../../_images/PMM_Inventory_cluster_view_details.png)
+![!image](../_images/PMM_Inventory_cluster_view_details.png)
 
 Furthermore, you can filter the clusters by criteria such as Cluster name, Status, Service name, Node name, Monitoring, Address, and Port. 
 
-![!image](../../_images/PMM_Inventory_cluster_view_filter.png)
+![!image](../_images/PMM_Inventory_cluster_view_filter.png)
 
 
 ### **Nodes** tab
@@ -137,28 +134,25 @@ Furthermore, starting with PMM 2.40.0, you can see the service running on that s
 To see the details of the agents running, do the following:
 {.power-number}
 
-1. On the **Nodes** tab, under the **Monitoring** column, click **OK** or **Failed** depending on the status of the node that you have selected. A page that provides the user with crucial information regarding the total number of agents deployed on that node is displayed.
+1. In the **Nodes** tab, under the **Monitoring** column, click **OK** or **Failed** based on the node’s status to view information about the total number of agents deployed on that node:
      
      ![!image](../_images/PMM_Inventory_Node_Selection.png)
 
-2. Click on the <image src="../../_images/arrow-downward.ico" width="15px" aria-label="downward arrow"/> icon under the **Options** column to view the properties of a specific agent.
+2. Click on the <image src="../_images/arrow-downward.ico" width="15px" aria-label="downward arrow"/> icon under the **Options** column to view the properties of a specific agent.
 
-3.  On the **Nodes** tab, under the **Options** column, click on the <image src="../../_images/arrow-downward.ico" width="15px" aria-label="downward arrow"/> icon for the selected node to check the properties and the current health status of an agent.       
+3.  On the **Nodes** tab, under the **Options** column, click on the <image src="../_images/arrow-downward.ico" width="15px" aria-label="downward arrow"/> icon for the selected node to check the properties and the current health status of an agent.       
      
      ![!image](../_images/PMM_Inventory_Node_Agent_Properties.png)
-
 
 ## Removing items from the inventory
 
 To remove items from the inventory:
 {.power-number}
 
-1. Go to <i class="uil uil-cog"></i> **Configuration** > {{icon.inventory}} **Inventory**.
+1. Go to  **PMM Configuration > PMM Inventory**.
 
 2. In the first column, select the items to be removed.
         
     ![!image](../_images/PMM_Inventory_Item_Selection.png)
 
 3. Click **Delete** and confirm the removal.
-
-
