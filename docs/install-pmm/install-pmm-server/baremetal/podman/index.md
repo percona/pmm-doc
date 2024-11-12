@@ -2,11 +2,10 @@
 
 This section provides instructions for running PMM Server with Podman based on our [Docker image](https://hub.docker.com/r/percona/pmm-server).
 
-!!! note alert alert-primary ""
-    The tags used here are for the current release (PMM 2.33.0). Other [tags](https://hub.docker.com/r/percona/pmm-server/tags) are available.
 
 !!! seealso alert alert-info "See also"
-    [Docker](../docker/index.md)
+    - [Docker](../docker/index.md) 
+    - Other [tags](https://hub.docker.com/r/percona/pmm-server/tags) are available.
 
 Podman is an open-source project available on most Linux platforms and resides on [GitHub](https://github.com/containers/podman). Podman is a daemonless container engine for developing, managing, and running Open Container Initiative (OCI) containers and container images on your Linux System. 
 
@@ -28,9 +27,6 @@ Percona recommends running PMM as a non-privileged user and running it as part o
       - Verify that both Watchtower and PMM Server are on the same network, or ensure PMM Server can connect to Watchtower for communication. This network setup is essential for PMM Server to initiate updates through Watchtower.
 
 ## Run as non-privileged user to start PMM
-
-!!! note alert alert-primary "Availability"
-    This feature is available starting with PMM 2.29.0.
 
 ??? info "Summary"
 
