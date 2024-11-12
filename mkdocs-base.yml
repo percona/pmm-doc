@@ -312,6 +312,7 @@ nav:
       - pmm-admin/security/index.md
       - pmm-admin/security/ssl_encryption.md 
       - pmm-admin/security/grafana_cookies.md  
+      - pmm-admin/security/data_encryption.md  
     - Percona Platform:
       - configure-pmm/percona_platform/integrate_with_percona_platform.md
       - configure-pmm/percona_platform/check_percona_platform.md
