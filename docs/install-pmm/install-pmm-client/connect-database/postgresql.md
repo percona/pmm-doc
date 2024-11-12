@@ -263,7 +263,7 @@ If your PostgreSQL instance is configured to use TLS, click on the *Use TLS for 
 
 ### Auto-discovery limit
 
-PMM 2.41.0 introduces limit for **Auto-discovery** in PostgreSQL, a feature that dynamically discovers all databases in your PostgreSQL instance. 
+Limit for **Auto-discovery** in PostgreSQL is a feature that dynamically discovers all databases in your PostgreSQL instance. 
 
 Limiting **Auto-discovery** reduces connections and prevents high CPU and RAM usage caused by multiple databases.
 
@@ -352,7 +352,7 @@ where:
 
 #### Automatic discovery limit via CLI
 
-Starting with PMM 2.41.0, there is a new flag in `pmm-admin` to limit Auto-discovery:
+The `pmm-admin` flag limits Auto-discovery:
 
 `--auto-discovery-limit=XXX`
 
@@ -402,7 +402,7 @@ To check the data:
 ### Running custom queries
 
 The PostgreSQL exporter can run custom queries to add new metrics not provided by default.  
-Those custom queries must be defined in the `/usr/local/percona/pmm2/collectors/custom-queries/postgresql` in the same host where the exporter is
+Those custom queries must be defined in the `/usr/local/percona/pmm/collectors/custom-queries/postgresql` in the same host where the exporter is
 running. There are 3 directories inside it:
     - high-resolution/   - every 5 seconds
     - medium-resolution/ - every 10 seconds
