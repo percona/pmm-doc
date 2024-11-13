@@ -24,7 +24,7 @@ Before upgrading to PMM 3, ensure your PMM 2 Server is running the latest versio
     docker exec -t <pmm-server> supervisorctl stop all
     ```
 
-    2. Transfer /srv directory ownership:
+    2. Transfer `/srv` directory ownership:
 
     ```sh
     docker exec -t <pmm-server> chown -R pmm:pmm /srv
