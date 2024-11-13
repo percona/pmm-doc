@@ -13,45 +13,99 @@ Before upgrading to PMM 3, ensure your PMM 2 Server is running the latest versio
 
 ## Step 2: Migrate PMM 2 Server to PMM 3
 
-Follow these manual steps to upgrade your PMM 2 Server to PMM 3:
-{.power-number}
+=== ":simple-mysql: For Docker Volume"
 
-1. Pull the new PMM 3 Server Docker image:
+    Follow these manual steps to upgrade your PMM 2 Server to PMM 3:
+    { .power-number}
 
-    ```sh
-    docker pull percona/pmm-server:3
-    ```
-
-2. Stop all services of the PMM 2 Server container:
+    1. Stop all PMM Server services:
 
     ```sh
-    docker exec -t pmm-server supervisorctl stop all
+    docker exec -t <pmm-server> supervisorctl stop all
     ```
 
-3. Transfer ownership of all directories and files in the `/srv` directory to the pmm user:
+    2. Transfer /srv directory ownership:
 
     ```sh
-    docker exec -t pmm-server chown -R pmm:pmm /srv
+    docker exec -t <pmm-server> chown -R pmm:pmm /srv
     ```
 
-4. Stop and remove the PMM 2 Server container:
+    3. List and note your Docker volume:
+
+    ```sh
+    docker inspect -f '{{ range .Mounts }}{{ if eq .Type "volume" }}{{ .Name }}{{ "\n" }}{{ end }}{{ end }}' <pmm-server>
+    ```
+
+    4. Stop and remove existing container:
 
     ```sh
     docker stop pmm-server && docker rm pmm-server
     ```
 
-5. Run a new container based on the PMM 3 image, ensuring you pass the same pmm-data volume:
+    5. Pull PMM 3 Server image:
 
     ```sh
-    docker run -d -p 80:8080 -p 443:8443 -v pmm-data:/srv --name pmm-server --restart always percona/pmm-server:3
+    docker pull percona/pmm-server:3
     ```
 
-6. Verify that the new PMM 3 Server container is running and accessible through the UI.
+    6. Run new container with existing volume:
+   
+    ```sh
+    docker run -d -v pmm-server-data:/srv -p 80:8080 -p 443:8443 --name pmm-server --restart always percona/pmm-server:3
+    ```
+
+=== ":simple-mysql: For Data Container"
+
+    Follow these manual steps to upgrade your PMM 2 Server to PMM 3:
+    { .power-number}
+
+    1. Stop all PMM Server services:
+
+    ```sh
+    docker exec -t <pmm-server> supervisorctl stop all
+    ```
+
+    2. Transfer `/srv` directory ownership:
+
+    ```sh
+    docker exec -t <pmm-server> chown -R pmm:pmm /srv
+    ```
+
+    3. Identify data container using either:
+   
+    - ```sh
+    docker ps -a --filter "status=created"
+    docker exec -t <pmm-server> chown -R pmm:pmm /srv
+    ```
+    
+    OR
+
+    - ```sh
+    docker inspect -f '{{ range .Mounts }}{{ if eq .Type "volume" }}{{ .Name }}{{ "\n" }}{{ end }}{{ end }}' <pmm-server>
+    ``` 
+    
+    4. Stop and remove existing container:
+
+    ```sh
+    docker stop pmm-server && docker rm pmm-server
+    ```
+
+    5. Pull PMM 3 Server image:
+   
+    ```sh
+    docker pull percona/pmm-server:3
+    ``` 
+
+    6. Run new container with existing data container:
+
+    ```sh
+    docker run -d --volumes-from pmm-server-data -p 80:8080 -p 443:8443 --name pmm-server --restart always percona/pmm-server:3
+    ``` 
 
 ## Step 3: Migrate PMM 2 Clients to PMM 3
 
 !!! caution alert alert-warning "Important"
-    Support of PMM 2 Clients by PMM 3 Server is limited to metrics and Query Analytics (QAN) only. This limited support will be dropped in PMM 3.3.
+    PMM 3 Server provides limited support for PMM 2 Clients (metrics and Query Analytics only). This support will be removed in PMM 3.3.
 
 Depending on your initial installation method, update PMM Clients using your operating system's package manager or by updating from a tarball.
 For detailed instructions, see the [Upgrade PMM Client topic](../pmm-upgrade/upgrade_client.md).
