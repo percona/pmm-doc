@@ -13,7 +13,7 @@ Before upgrading to PMM 3, ensure your PMM 2 Server is running the latest versio
 
 ## Step 2: Migrate PMM 2 Server to PMM 3
 
-=== ":simple-mysql: For Docker Volume"
+=== "For Docker Volume"
 
     Follow these manual steps to upgrade your PMM 2 Server to PMM 3:
     { .power-number}
@@ -54,7 +54,7 @@ Before upgrading to PMM 3, ensure your PMM 2 Server is running the latest versio
     docker run -d -v pmm-server-data:/srv -p 80:8080 -p 443:8443 --name pmm-server --restart always percona/pmm-server:3
     ```
 
-=== ":simple-mysql: For Data Container"
+=== "For Data Container"
 
     Follow these manual steps to upgrade your PMM 2 Server to PMM 3:
     { .power-number}
@@ -84,19 +84,19 @@ Before upgrading to PMM 3, ensure your PMM 2 Server is running the latest versio
     docker inspect -f '{{ range .Mounts }}{{ if eq .Type "volume" }}{{ .Name }}{{ "\n" }}{{ end }}{{ end }}' <pmm-server>
     ``` 
     
-    4. Stop and remove existing container:
+    1. Stop and remove existing container:
 
     ```sh
     docker stop pmm-server && docker rm pmm-server
     ```
 
-    5. Pull PMM 3 Server image:
+    2. Pull PMM 3 Server image:
    
     ```sh
     docker pull percona/pmm-server:3
     ``` 
 
-    6. Run new container with existing data container:
+    3. Run new container with existing data container:
 
     ```sh
     docker run -d --volumes-from pmm-server-data -p 80:8080 -p 443:8443 --name pmm-server --restart always percona/pmm-server:3
