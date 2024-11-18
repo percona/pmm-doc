@@ -33,7 +33,8 @@ Before upgrading to PMM 3, ensure your PMM 2 Server is running the latest versio
     3. List and note down your Docker volume:
    
     ```sh
-    docker inspect -f '{{range .Mounts}}{{if eq .Type \"volume\"}}{{.Name}}{{"\n"}}{{end}}{{end}}' pmm-server    ```
+    docker inspect -f '{{range .Mounts}}{{if eq .Type \"volume\"}}{{.Name}}{{"\n"}}{{end}}{{end}}' pmm-server    
+    ```
 
     4. Stop and remove existing container:
 
@@ -72,14 +73,16 @@ Before upgrading to PMM 3, ensure your PMM 2 Server is running the latest versio
 
     3. Identify data container using either:
    
-    - ```sh
+    - 
+    ```sh
     docker ps -a --filter "status=created"
     docker exec -t <pmm-server> chown -R pmm:pmm /srv
     ```
     
     OR
 
-    - ```sh
+    - 
+    ```sh
     docker inspect -f '{{ range .Mounts }}{{ if eq .Type "volume" }}{{ .Name }}{{ "\n" }}{{ end }}{{ end }}' <pmm-server>
     ``` 
     
