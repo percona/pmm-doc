@@ -32,9 +32,11 @@ Before upgrading to PMM 3, ensure your PMM 2 Server is running the latest versio
 
     3. List and note down your Docker volume:
    
+    {% raw %}
     ```sh
     docker inspect -f '{{range .Mounts}}{{if eq .Type \"volume\"}}{{.Name}}{{"\n"}}{{end}}{{end}}' pmm-server    
     ```
+    {% endraw %}
 
     4. Stop and remove existing container:
 
