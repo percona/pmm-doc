@@ -32,8 +32,9 @@ Before upgrading to PMM 3, ensure your PMM 2 Server is running the latest versio
 
     3. List and note down your Docker volume:
    
-    !!! note alert alert-info ""
-        docker inspect -f '&#123;&#123; range .Mounts &#125;&#125;&#123;&#123; if eq .Type \"volume\" &#125;&#125;&#123;&#123; .Name &#125;&#125;&#123;&#123; "\n" &#125;&#125;&#123;&#123; end &#125;&#125;&#123;&#123; end &#125;&#125;' <pmm-server>
+    ```sh
+    docker inspect -f '&#123;&#123; range .Mounts &#125;&#125;&#123;&#123; if eq .Type \"volume\" &#125;&#125;&#123;&#123; .Name &#125;&#125;&#123;&#123; "\n" &#125;&#125;&#123;&#123; end &#125;&#125;&#123;&#123; end &#125;&#125;' <pmm-server>
+    ```
 
     4. Stop and remove existing container:
 
@@ -82,7 +83,9 @@ Before upgrading to PMM 3, ensure your PMM 2 Server is running the latest versio
 
     - 
     ```sh
+    {% raw %}
     docker inspect -f '{{ range .Mounts }}{{ if eq .Type "volume" }}{{ .Name }}{{ "\n" }}{{ end }}{{ end }}' <pmm-server>
+    {% endraw %}
     ``` 
     
     4. Stop and remove existing container:
