@@ -13,7 +13,7 @@ Before upgrading to PMM 3, ensure your PMM 2 Server is running the latest versio
 
 ## Step 2: Migrate PMM 2 Server to PMM 3
 
-=== "For PMM 2 with Docker volume"
+=== "PMM 2 with Docker volume"
 
     Follow these manual steps to upgrade your PMM 2 Server to PMM 3:
     { .power-number}
@@ -56,7 +56,7 @@ Before upgrading to PMM 3, ensure your PMM 2 Server is running the latest versio
         docker run -d -v pmm-server-data:/srv -p 443:8443 --name pmm-server --restart always percona/pmm-server:3
         ```
 
-=== "For PMM 2 with data container"
+=== "PMM 2 with data container"
 
     Follow these manual steps to upgrade your PMM 2 Server to PMM 3:
     { .power-number}
