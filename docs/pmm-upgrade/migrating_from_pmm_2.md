@@ -26,17 +26,17 @@ Before upgrading to PMM 3, ensure your PMM 2 Server is running the latest versio
 
     2. Transfer `/srv` directory ownership:
 
-    ```sh
+     ```sh
      docker exec -t <pmm-server> chown -R pmm:pmm /srv
-    ```
+     ```
 
     3. List and note down your Docker volume:
    
-    ```sh
+     ```sh
         {% raw %}
         docker inspect -f '{{ range .Mounts }}{{ if eq .Type "volume" }}{{ .Name }}{{ "\n" }}{{ end }}{{ end }}' <pmm-server>
         {% endraw %}
-    ```
+     ```
 
     4. Stop and remove existing container:
 
