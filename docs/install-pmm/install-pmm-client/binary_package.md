@@ -109,12 +109,12 @@ Choose your installation instructions based on whether you have root permissions
 
     2. Download the corresponding checksum file:
 
-          === "For x86_64 (AMD64)"
+        === "For x86_64 (AMD64)"
             ```sh
             wget https://downloads.percona.com/downloads/pmm/{{release}}/binary/tarball/pmm-client-{{release}}-x86_64.tar.gz.sha256sum
             ```
 
-          === "For ARM64 (aarch64)"
+        === "For ARM64 (aarch64)"
             ```sh
             wget https://downloads.percona.com/downloads/pmm/{{release}}/binary/tarball/pmm-client-{{release}}-aarch64.tar.gz.sha256sum
             ```
