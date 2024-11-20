@@ -43,14 +43,14 @@ Here's an overview of the choices.
 
 The [PMM Client Docker image] is a convenient way to run PMM Client as a preconfigured [Docker] container.
 
-1. Pull the PMM Client docker image.
+1. Pull the PMM Client docker image:
 
     ```sh
     docker pull \
     percona/pmm-client:2
     ```
 
-2. Use the image as a template to create a persistent data store that preserves local data when the image is updated.
+2. Use the image as a template to create a persistent data store that preserves local data when the image is updated:
 
     ```sh
     docker create \
@@ -59,7 +59,7 @@ The [PMM Client Docker image] is a convenient way to run PMM Client as a preconf
     percona/pmm-client:2 /bin/true
     ```
 
-3. Run the container to start [PMM Agent](../../details/commands/pmm-agent.md) in setup mode. Set `X.X.X.X` to the IP address of your PMM Server. (Do not use the `docker --detach` option as PMM agent only logs to the console.)
+3. Run the container to start [PMM Agent](../../details/commands/pmm-agent.md) in setup mode. Set `X.X.X.X` to the IP address of your PMM Server. Do not use the `--detach` flag as PMM Agent only outputs logs to the console:
 
     ```sh
     PMM_SERVER=X.X.X.X:443
@@ -79,7 +79,7 @@ The [PMM Client Docker image] is a convenient way to run PMM Client as a preconf
     !!! hint alert-success "Tips"
         You can find a complete list of compatible environment variables [here](../../details/commands/pmm-agent.md).
 
-4. Check status.
+4. Check status:
 
     ```sh
     docker exec pmm-client \
@@ -204,13 +204,13 @@ Here are the download page links for each supported platform.
     wget https://downloads.percona.com/downloads/pmm2/{{release}}/binary/tarball/pmm2-client-{{release}}-x86_64.tar.gz.sha256sum
     ```
 
-3. Verify the download.
+3. Verify the download:
 
     ```sh
     sha256sum -c pmm2-client-{{release}}-x86_64.tar.gz.sha256sum
     ```
 
-4. Unpack the package and move into the directory.
+4. Unpack the package and move into the directory:
 
     ```sh
     tar xfz pmm2-client-{{release}}-x86_64.tar.gz && cd pmm2-client-{{release}}
@@ -229,20 +229,20 @@ Here are the download page links for each supported platform.
         export PMM_DIR=/usr/local/percona/pmm2
         ```
 
-6. Run the installer.
+6. Run the installer:
 
     !!! hint "Root permissions (if you skipped step 5 for non root users)"
         ```sh
         ./install_tarball
         ```
 
-7. Change the path.
+7. Change the path:
 
     ```sh
     PATH=$PATH:$PMM_DIR/bin
     ```
 
-8. Set up the agent (pick the command for you depending on permissions)
+8. Set up the agent (pick the command for you depending on permissions):
 
     !!! hint "Root permissions"
     ```sh
@@ -254,13 +254,13 @@ Here are the download page links for each supported platform.
     pmm-agent setup --config-file=${PMM_DIR}/config/pmm-agent.yaml --server-address=192.168.1.123 --server-insecure-tls --server-username=admin --server-password=admin --paths-tempdir=${PMM_DIR}/tmp --paths-base=${PMM_DIR}
     ```
 
-9. Run the agent.
+9. Run the agent:
 
     ```sh
     pmm-agent --config-file=${PMM_DIR}/config/pmm-agent.yaml
     ```
 
-10. Open a new terminal and check.
+10. Open a new terminal and check:
 
     ```sh
     pmm-admin status
@@ -276,7 +276,7 @@ Here are the download page links for each supported platform.
 
 ## Register
 
-Register your client node with PMM Server.
+Register your client node with PMM Server:
 
 ```sh
 pmm-admin config --server-insecure-tls --server-url=https://admin:admin@X.X.X.X:443
@@ -331,25 +331,25 @@ How to remove (uninstall) PMM Client.
 !!! caution alert alert-warning "Caution"
     These steps delete the PMM Client Docker image and client services configuration data.
 
-1. Stop pmm-client container.
+1. Stop pmm-client container:
 
     ```sh
     docker stop pmm-client
     ```
 
-2. Remove containers.
+2. Remove containers:
 
     ```sh
     docker rm pmm-client
     ```
 
-3. Remove the image.
+3. Remove the image:
 
     ```sh
     docker rmi $(docker images | grep "percona/pmm-client" | awk {'print $3'})
     ```
 
-4. Remove the volume.
+4. Remove the volume:
 
     ```sh
     docker volume rm pmm-client-data
@@ -383,7 +383,7 @@ How to remove (uninstall) PMM Client.
 
 ## Unregister
 
-How to unregister PMM Client from PMM Server.
+Unregister PMM Client from PMM Server:
 
 ```sh
 pmm-admin unregister --force
@@ -393,7 +393,7 @@ All services monitored by this node will be removed from monitoring.
 
 ## Remove services
 
-You must specify the service type and service name to remove services from monitoring.
+Specify the service type and service name to remove services from monitoring:
 
 ```sh
 pmm-admin remove <service-type> <service-name>
