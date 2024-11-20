@@ -127,7 +127,7 @@ plugins:
     cover_title: "Percona Monitoring and Management Documentation"
     cover_subtitle: 3.0.0 (May 16, 2024)
     author: "Percona Technical Documentation Team"
-    cover_logo: docs/_images/pmm_pdf_logo.png
+    cover_logo: docs/_images/Percona_Logo_Color.png
     custom_template_path: _resources/templates
     enabled_if_env: ENABLE_PDF_EXPORT
   # Check links - but extends build time significantly
@@ -274,13 +274,15 @@ nav:
         - use/qan/panels/overview.md
         - use/qan/panels/filters.md
         - use/qan/panels/details.md
-    - Advisors: advisors/advisors.md
-
+    - Advisors:
+      - advisors/advisors.md
+      - advisors/advisor-details.md 
+      - advisors/develop-advisor-checks.md
     - Percona Alerting:
       - alert/index.md
-      - alert/alert_type.md
       - alert/alert_rules.md
-      - alert/contact_points.md
+      - alert/alert_notifications.md
+      - alert/templates_list.md
       - alert/silence_alerts.md
     - Backup and restore: 
       - backup/index.md
@@ -364,8 +366,6 @@ nav:
         - api/index.md
         - api/authentication.md
       
-    - reference/develop_advisor_checks.md    
-
     - PMM dashboards:
       - Insight:
         - reference/dashboards/dashboard-home.md
