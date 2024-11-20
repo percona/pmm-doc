@@ -8,50 +8,50 @@ Choose your installation instructions based on whether you have root permissions
 
     1. Download the PMM Client package for your architecture:
 
-        === "For ARM64 (aarch64)"
-            ```sh 
-            wget https://downloads.percona.com/downloads/pmm/{{release}}/binary/tarball/pmm-client-{{release}}-aarch64.tar.gz
-            ```
-
         === "For x86_64 (AMD64)"
             ```sh
             wget https://downloads.percona.com/downloads/pmm/{{release}}/binary/tarball/pmm-client-{{release}}-x86_64.tar.gz
             ```
 
-    2. Download the corresponding checksum file:
-
         === "For ARM64 (aarch64)"
-            ```sh
-            wget https://downloads.percona.com/downloads/pmm/{{release}}/binary/tarball/pmm-client-{{release}}-aarch64.tar.gz.sha256sum
+            ```sh 
+            wget https://downloads.percona.com/downloads/pmm/{{release}}/binary/tarball/pmm-client-{{release}}-aarch64.tar.gz
             ```
+
+    2. Download the corresponding checksum file:
 
         === "For x86_64 (AMD64)"
             ```sh
             wget https://downloads.percona.com/downloads/pmm/{{release}}/binary/tarball/pmm-client-{{release}}-x86_64.tar.gz.sha256sum
             ```
 
-    3. Verify the download:
-
         === "For ARM64 (aarch64)"
             ```sh
-            sha256sum -c pmm-client-{{release}}-aarch64.tar.gz.sha256sum
+            wget https://downloads.percona.com/downloads/pmm/{{release}}/binary/tarball/pmm-client-{{release}}-aarch64.tar.gz.sha256sum
             ```
+
+    3. Verify the download:
 
         === "For x86_64 (AMD64)"
             ```sh
             sha256sum -c pmm-client-{{release}}-x86_64.tar.gz.sha256sum
             ```
 
-    4. Unpack the package and move into the directory:
-
         === "For ARM64 (aarch64)"
             ```sh
-            tar xfz pmm-client-{{release}}-aarch64.tar.gz && cd pmm-client-{{release}}
+            sha256sum -c pmm-client-{{release}}-aarch64.tar.gz.sha256sum
             ```
+
+    4. Unpack the package and move into the directory:
 
         === "For x86_64 (AMD64)"
             ```sh
             tar xfz pmm-client-{{release}}-x86_64.tar.gz && cd pmm-client-{{release}}
+            ```
+
+        === "For ARM64 (aarch64)"
+            ```sh
+            tar xfz pmm-client-{{release}}-aarch64.tar.gz && cd pmm-client-{{release}}
             ```
 
     5. Set the installation directory:
@@ -97,52 +97,52 @@ Choose your installation instructions based on whether you have root permissions
 
     1. Download the PMM Client package for your architecture:
 
-        === "For ARM64 (aarch64)"
-            ```sh
-            wget https://downloads.percona.com/downloads/pmm/{{release}}/binary/tarball/pmm-client-{{release}}-aarch64.tar.gz
-            ```
-
         === "For x86_64 (AMD64)"
             ```sh
             wget https://downloads.percona.com/downloads/pmm/{{release}}/binary/tarball/pmm-client-{{release}}-x86_64.tar.gz
             ```
 
-    2. Download the corresponding checksum file:
-
         === "For ARM64 (aarch64)"
             ```sh
-            wget https://downloads.percona.com/downloads/pmm/{{release}}/binary/tarball/pmm-client-{{release}}-aarch64.tar.gz.sha256sum
+            wget https://downloads.percona.com/downloads/pmm/{{release}}/binary/tarball/pmm-client-{{release}}-aarch64.tar.gz
             ```
+
+    2. Download the corresponding checksum file:
 
         === "For x86_64 (AMD64)"
             ```sh
             wget https://downloads.percona.com/downloads/pmm/{{release}}/binary/tarball/pmm-client-{{release}}-x86_64.tar.gz.sha256sum
             ```
 
-    3. Verify the download:
-
         === "For ARM64 (aarch64)"
             ```sh
-            sha256sum -c pmm-client-{{release}}-aarch64.tar.gz.sha256sum
+            wget https://downloads.percona.com/downloads/pmm/{{release}}/binary/tarball/pmm-client-{{release}}-aarch64.tar.gz.sha256sum
             ```
+
+    3. Verify the download:
 
         === "For x86_64 (AMD64)"
             ```sh
             sha256sum -c pmm-client-{{release}}-x86_64.tar.gz.sha256sum
             ```
-
-    4. Unpack the package and move into the directory:
-
+            
         === "For ARM64 (aarch64)"
             ```sh
-            tar xfz pmm-client-{{release}}-aarch64.tar.gz && cd pmm-client-{{release}}
+            sha256sum -c pmm-client-{{release}}-aarch64.tar.gz.sha256sum
             ```
+
+    4. Unpack the package and move into the directory:
 
         === "For x86_64 (AMD64)"
             ```sh
             tar xfz pmm-client-{{release}}-x86_64.tar.gz && cd pmm-client-{{release}}
             ```
 
+        === "For ARM64 (aarch64)"
+            ```sh
+            tar xfz pmm-client-{{release}}-aarch64.tar.gz && cd pmm-client-{{release}}
+            ```
+    
     5. Set the installation directory:
 
         ```sh
