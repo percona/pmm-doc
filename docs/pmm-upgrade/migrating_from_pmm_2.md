@@ -75,13 +75,13 @@ Before upgrading to PMM 3, ensure your PMM 2 Server is running the latest versio
 
     3. Identify data container using either:
    
-         - ```sh
-           docker ps -a --filter "status=created"
-           ```
+        ```sh
+        docker ps -a --filter "status=created"
+        ```
        
-         OR
+        OR
 
-        - ```sh
+        ```sh
         {% raw %}
         docker inspect -f '{{ range .Mounts }}{{ if eq .Type "volume" }}{{ .Name }}{{ "\n" }}{{ end }}{{ end }}' <pmm-server>
         {% endraw %}
