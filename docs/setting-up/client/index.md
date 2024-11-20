@@ -195,25 +195,25 @@ Here are the download page links for each supported platform.
 1. Download the PMM Client package:
 
     ```sh
-    wget https://downloads.percona.com/downloads/pmm2/{{release}}/binary/tarball/pmm2-client-{{release}}.tar.gz
+    wget https://downloads.percona.com/downloads/pmm2/{{release}}/binary/tarball/pmm2-client-{{release}}-x86_64.tar.gz
     ```
 
 2. Download the PMM Client package checksum file:
 
     ```sh
-    wget https://downloads.percona.com/downloads/pmm2/{{release}}/binary/tarball/pmm2-client-{{release}}.tar.gz.sha256sum
+    wget https://downloads.percona.com/downloads/pmm2/{{release}}/binary/tarball/pmm2-client-{{release}}-x86_64.tar.gz.sha256sum
     ```
 
 3. Verify the download.
 
     ```sh
-    sha256sum -c pmm2-client-{{release}}.tar.gz.sha256sum
+    sha256sum -c pmm2-client-{{release}}-x86_64.tar.gz.sha256sum
     ```
 
 4. Unpack the package and move into the directory.
 
     ```sh
-    tar xfz pmm2-client-{{release}}.tar.gz && cd pmm2-client-{{release}}
+    tar xfz pmm2-client-{{release}}-x86_64.tar.gz && cd pmm2-client-{{release}}
     ```
 
 5. Choose one of these two commands (depends on your permissions):
