@@ -22,7 +22,7 @@ PMM Client collects metrics from [MySQL][ORACLE_MYSQL], [Percona Server for MySQ
 Check that:
 
 - [PMM Server is installed](../../install-pmm-server/index.md) and running with a known IP address accessible from the client node.
-- [PMM Client is installed](../../install-pmm-client/index.md) and the [node is registered with PMM Server](../../register-client-node/index.md).
+- [PMM Client is installed](../../install-pmm-client/index.md) and the [nodes are registered with PMM Server](../../register-client-node/index.md).
 - You have superuser (root) access on the client host.
 
 ## Create a database account for PMM
@@ -337,24 +337,22 @@ User activity, individual table and index access details are shown on the [MySQL
 
 ## Add service
 
-When you have configured your database server, you can add a MySQL service with the user interface or on the command line.
+There are two ways to install  PMM Client  for monitoring your MySQL database:
 
-When adding a service with the command line, you must use the `pmm-admin --query-source=SOURCE` option to match the source you've chosen and configured the database server for.
+1. [Local installation](#Install-PMM-Client locally): Installs PMM Client directly on the database node, collecting both database and OS/host metrics. This option enables more effective comparison and problem identification.
+2. [Remote instance](#Install-PMM-Client-as-a-remote-instance): Use when local installation isn't possible. This method doesn't provide OS/Node metrics in PMM.
 
-With the PMM user interface, you select **Use performance schema**, or deselect it to use **slow query log**.
 
-### With the user interface
+### Install PMM Client locally
 
-To add a service using the UI:
-{.power-number}
+Add the MySQL server as a service using one of the following example commands. 
+Upon successful addition, PMM Client will display "MySQL Service added" along with the service's ID and name. 
 
-1. Select <i class="uil uil-cog"></i> **Configuration** → {{icon.inventory}} **Inventory** → {{icon.addinstance}} **Add Service**.
+1. Select **PMM Configuration > PMM Inventory > Add Service > MySQL**.
 
-2. Select **MySQL -- Add a remote instance**.
+2. Enter or select values for the fields.
 
-3. Enter or select values for the fields.
-
-4. Click **Add service**.
+3. Click **Add service**.
 
 ![!](../../../_images/PMM_Add_Instance_MySQL.jpg)
 
@@ -368,59 +366,32 @@ Add the database server as a service using one of these example commands. If suc
 
 ??? info "Examples"
 
-    #### TLS connection
+#### TLS connection
 
-    ```sh
-    pmm-admin add mysql --username=user --password=pass --tls --tls-skip-verify --tls-ca=pathtoca.pem --tls-cert=pathtocert.pem --tls-key=pathtocertkey.pem --server-url=http://admin:admin@127.0.0.1 --query-source=perfschema name localhost:3306
-    ```
+```sh 
+pmm-admin add mysql --environment=test --custom-labels='source=slowlog'  --username=root --password=password --query-source=slowlog MySQLSlowLog localhost:3306
+```
 
-    #### Slow query log
+### Install PMM Client as a remote instance
 
-    Default query source (`slowlog`), service name (`{node name}-mysql`), and service address/port (`127.0.0.1:3306`), with database server account `pmm` and password `pass`.
+1. Select <i class="uil uil-cog"></i> ** PMM Configuration > PMM Inventory > {{icon.addinstance}} Add Service**.
 
-    ```sh
-    pmm-admin add mysql --username=pmm --password=pass
-    ```
+2. Choose **MySQL > Add a remote instance**.
 
-    Slow query log source and log size limit (1 gigabyte), service name (`MYSQL_NODE`) and service address/port (`191.168.1.123:3306`).
+3. Complete the required fields.
 
-    ```sh
-    pmm-admin add mysql --query-source=slowlog --size-slow-logs=1GiB --username=pmm --password=pass MYSQL_NODE 192.168.1.123:3306
-    ```
+4. Click **Add service**.
 
-    Slow query log source, disabled log management (use [`logrotate`][LOGROTATE] or some other log management tool), service name (`MYSQL_NODE`) and service address/port (`191.168.1.123:3306`).
+![!](../../_images/PMM_Add_Instance_MySQL.png)
 
-    ```sh
-    pmm-admin add mysql --query-source=slowlog --size-slow-logs=-1GiB --username=pmm --password=pass MYSQL_NODE 192.168.1.123:3306
-    ```
+#### For MySQL instances using TLS
 
-    Default query source (`slowlog`), service name (`{node}-mysql`), connect via socket.
+If your MySQL instance is configured to use TLS: 
 
-    ```sh
-    pmm-admin add mysql --username=pmm --password=pass --socket=/var/run/mysqld/mysqld.sock
-    ```
+1. Click on the **Use TLS for database connections** check box.
+2. Fill in your TLS certificates and key.
 
-    #### Performance Schema
-
-    Performance schema query source, service name (`MYSQL_NODE`) and default service address/port (`127.0.0.1:3306`).
-
-    ```sh
-    pmm-admin add mysql --query-source=perfschema --username=pmm --password=pass MYSQL_NODE
-    ```
-
-    Performance schema query source, service name (`MYSQL_NODE`) and default service address/port (`127.0.0.1:3306`) specified with flags.
-
-    ```sh
-    pmm-admin add mysql --query-source=perfschema --username=pmm --password=pass --service-name=MYSQL_NODE --host=127.0.0.1 --port=3306
-    ```
-
-    #### Identifying services
-
-    Default query source (`slowlog`), environment labeled `test`, custom labels setting `source` to `slowlog`. (This example uses positional parameters for service name and service address.)
-
-    ```sh
-    pmm-admin add mysql --environment=test --custom-labels='source=slowlog'  --username=root --password=password --query-source=slowlog MySQLSlowLog localhost:3306
-    ```
+![!](../../_images/PMM_Add_Instance_MySQL_TLS.png)
 
 ## Check the service
 
@@ -429,8 +400,7 @@ Add the database server as a service using one of these example commands. If suc
 To check the service with the UI:
 {.power-number}
 
-
-1. Select <i class="uil uil-cog"></i> **Configuration** → {{icon.inventory}} **Inventory**.
+1. Select **PMM Configuration > PMM Inventory**.
 2. In the **Services** tab, verify the **Service name**, **Addresses**, and any other relevant information in the form.
 3. In the **Options** column, expand the **Details** section and check that the Agents are using the desired data source.
 

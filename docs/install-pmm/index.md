@@ -43,9 +43,7 @@ The installation choices are:
     Both binary installation and Docker containers can be run without root permissions. When installing on ARM-based systems, ensure you're using ARM64-compatible versions. Performance may vary between architectures.
 
 ## Add services
-
-On each PMM Client, you configure then add to PMM Server's inventory the node or service you want to monitor.
-
+On each PMM Client instance, configure the nodes and services you want to monitor. 
 ??? info "Which services you can monitor?"
 
     - [MySQL] (and variants: Percona Server for MySQL, Percona XtraDB Cluster, MariaDB);

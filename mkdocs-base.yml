@@ -127,7 +127,7 @@ plugins:
     cover_title: "Percona Monitoring and Management Documentation"
     cover_subtitle: 3.0.0 (May 16, 2024)
     author: "Percona Technical Documentation Team"
-    cover_logo: docs/_images/pmm_pdf_logo.png
+    cover_logo: docs/_images/Percona_Logo_Color.png
     custom_template_path: _resources/templates
     enabled_if_env: ENABLE_PDF_EXPORT
   # Check links - but extends build time significantly
@@ -227,11 +227,13 @@ nav:
       - Manual upgrade:     
         - pmm-upgrade/upgrade_docker.md
         - pmm-upgrade/upgrade_podman.md
-      - Upgrade PM server in K8s: 
+      - Upgrade PMM Server in K8s: 
         - pmm-upgrade/upgrade_helm.md
-      - pmm-upgrade/upgrade_agent.md
-      - pmm-upgrade/upgrade_from_pmm_1.md
+      - pmm-upgrade/migrating_from_pmm_2.md
       - pmm-upgrade/upgrade_aws.md
+    - Upgrade PMM Client:       
+      - pmm-upgrade/upgrade_client.md
+
   - Uninstall:
     - Uninstall PMM Client: 
       - Docker: uninstall-pmm/uninstall_docker.md
@@ -272,13 +274,15 @@ nav:
         - use/qan/panels/overview.md
         - use/qan/panels/filters.md
         - use/qan/panels/details.md
-    - Advisors: advisors/advisors.md
-
+    - Advisors:
+      - advisors/advisors.md
+      - advisors/advisor-details.md 
+      - advisors/develop-advisor-checks.md
     - Percona Alerting:
       - alert/index.md
-      - alert/alert_type.md
       - alert/alert_rules.md
-      - alert/contact_points.md
+      - alert/alert_notifications.md
+      - alert/templates_list.md
       - alert/silence_alerts.md
     - Backup and restore: 
       - backup/index.md
@@ -310,6 +314,7 @@ nav:
       - pmm-admin/security/index.md
       - pmm-admin/security/ssl_encryption.md 
       - pmm-admin/security/grafana_cookies.md  
+      - pmm-admin/security/data_encryption.md  
     - Percona Platform:
       - configure-pmm/percona_platform/integrate_with_percona_platform.md
       - configure-pmm/percona_platform/check_percona_platform.md
@@ -344,10 +349,8 @@ nav:
 
   - Release notes:
     - Release notes index: release-notes/index.md
-    - "PMM 3.0.0-ALPHA (2024-04-16)": release-notes/3.0.0_Alpha.md
-    - "PMM 3.0.0-BETA (2024-09-16)": release-notes/3.0.0_Beta.md
-    
-
+    - "PMM 3.0.0-BETA (2024-11-21)": release-notes/3.0.0_Beta.md
+  
   - Reference: 
     - Architecture:
       - reference/index.md
@@ -361,8 +364,6 @@ nav:
         - api/index.md
         - api/authentication.md
       
-    - reference/develop_advisor_checks.md    
-
     - PMM dashboards:
       - Insight:
         - reference/dashboards/dashboard-home.md
