@@ -29,7 +29,7 @@ Follow these steps to upgrade your PMM Server while preserving your monitoring d
 3. Pull the latest image:
 
     ```sh
-   docker pull percona/pmm-server:3.0.0-beta
+   docker pull perconalab/pmm-server:3.0.0-beta
     ```
 
 4. Rename the original container:
