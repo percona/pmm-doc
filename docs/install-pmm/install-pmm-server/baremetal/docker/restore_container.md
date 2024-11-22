@@ -39,7 +39,7 @@ To restore the container:
 5. Remove Victoria Metrics data folder.
 
     ```sh
-    docker run --rm --volumes-from pmm-data -it percona/pmm-server:3.0.0-beta rm -r /srv/victoriametrics/data
+    docker run --rm --volumes-from pmm-data -it perconalab/pmm-server:3.0.0-beta rm -r /srv/victoriametrics/data
     ```
 
 6. Copy the data.
