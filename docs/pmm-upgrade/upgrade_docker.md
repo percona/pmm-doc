@@ -47,7 +47,7 @@ Follow these steps to upgrade your PMM Server while preserving your monitoring d
    --publish 443:8443 \
    --volumes-from pmm-data \
    --name pmm-server \
-   percona/pmm-server:3.0.0-beta
+   perconalab/pmm-server:3.0.0-beta
    ```
 
 6. After upgrading, verify that PMM Server is running correctly and all your data is accessible.
