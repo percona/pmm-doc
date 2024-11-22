@@ -9,7 +9,7 @@ To run Docker with data container:
     ```sh
     docker create --volume /srv \
     --name pmm-data \
-    percona/pmm-server:3.0.0-beta /bin/true
+    perconalab/pmm-server:3.0.0-beta /bin/true
     ```
 
     !!! caution alert alert-warning "Important"

@@ -51,15 +51,15 @@ To restore the container:
 7. Restore permissions.
 
     ```sh
-    docker run --rm --volumes-from pmm-data -it percona/pmm-server:3.0.0-beta chown -R root:root /srv && \
-    docker run --rm --volumes-from pmm-data -it percona/pmm-server:3.0.0-beta chown -R pmm:pmm /srv/alertmanager && \
-    docker run --rm --volumes-from pmm-data -it percona/pmm-server:3.0.0-beta chown -R root:pmm /srv/clickhouse && \
-    docker run --rm --volumes-from pmm-data -it percona/pmm-server:3.0.0-beta chown -R grafana:grafana /srv/grafana && \
-    docker run --rm --volumes-from pmm-data -it percona/pmm-server:3.0.0-beta chown -R pmm:pmm /srv/logs && \
-    docker run --rm --volumes-from pmm-data -it percona/pmm-server:3.0.0-beta chown -R postgres:postgres /srv/postgres14 && \
-    docker run --rm --volumes-from pmm-data -it percona/pmm-server:3.0.0-beta chown -R pmm:pmm /srv/prometheus && \
-    docker run --rm --volumes-from pmm-data -it percona/pmm-server:3.0.0-beta chown -R pmm:pmm /srv/victoriametrics && \
-    docker run --rm --volumes-from pmm-data -it percona/pmm-server:3.0.0-beta chown -R postgres:postgres /srv/logs/postgresql14.log
+    docker run --rm --volumes-from pmm-data -it perconalab/pmm-server:3.0.0-beta chown -R root:root /srv && \
+    docker run --rm --volumes-from pmm-data -it perconalab/pmm-server:3.0.0-beta chown -R pmm:pmm /srv/alertmanager && \
+    docker run --rm --volumes-from pmm-data -it perconalab/pmm-server:3.0.0-beta chown -R root:pmm /srv/clickhouse && \
+    docker run --rm --volumes-from pmm-data -it perconalab/pmm-server:3.0.0-beta chown -R grafana:grafana /srv/grafana && \
+    docker run --rm --volumes-from pmm-data -it perconalab/pmm-server:3.0.0-beta chown -R pmm:pmm /srv/logs && \
+    docker run --rm --volumes-from pmm-data -it perconalab/pmm-server:3.0.0-beta chown -R postgres:postgres /srv/postgres14 && \
+    docker run --rm --volumes-from pmm-data -it perconalab/pmm-server:3.0.0-beta chown -R pmm:pmm /srv/prometheus && \
+    docker run --rm --volumes-from pmm-data -it perconalab/pmm-server:3.0.0-beta chown -R pmm:pmm /srv/victoriametrics && \
+    docker run --rm --volumes-from pmm-data -it perconalab/pmm-server:3.0.0-beta chown -R postgres:postgres /srv/logs/postgresql14.log
     ```
 
 8. Start the image.

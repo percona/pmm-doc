@@ -7,7 +7,7 @@ To run Docker with volume:
 1. Pull the image:
 
     ```sh
-    docker pull percona/pmm-server:3.0.0-beta
+    docker pull perconalab/pmm-server:3.0.0-beta
     ```
 
 2. Create a volume:
