@@ -73,7 +73,7 @@ For all IP addresses, use the format `17.10.1.x`, and for all usernames and pass
     export PMM_PASSIVE_NODE_ID=pmm-server-passive
     export PMM_PASSIVE2_IP=17.10.1.7
     export PMM_PASSIVE2_NODE_ID=pmm-server-passive2
-    export PMM_DOCKER_IMAGE=percona/pmm-server:3.0.0-beta
+    export PMM_DOCKER_IMAGE=perconalab/pmm-server:3.0.0-beta
     ```
 
 !!! note alert alert-primary "Note"
