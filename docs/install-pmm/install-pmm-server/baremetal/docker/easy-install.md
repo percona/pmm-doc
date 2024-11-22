@@ -36,7 +36,7 @@ Download and install PMM Server using `cURL` or `wget`:
         ./pmm --interactive
         ```
 
-[github]: https://github.com/percona/pmm/blob/main/get-pmm.sh
+[github]: https://github.com/percona/pmm/blob/v3/get-pmm.sh
 
 ### Next steps
 
