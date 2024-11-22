@@ -53,7 +53,7 @@ Before upgrading to PMM 3, ensure your PMM 2 Server is running the latest versio
     6. Run new container with existing volume:
    
         ```sh
-        docker run -d -v pmm-server-data:/srv -p 443:8443 --name pmm-server --restart always percona/pmm-server:3.0.0-beta
+        docker run -d -v pmm-server-data:/srv -p 443:8443 --name pmm-server --restart always perconalab/pmm-server:3.0.0-beta
         ```
 
 === "PMM 2 with data container"
