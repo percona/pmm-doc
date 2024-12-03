@@ -3,7 +3,7 @@
 To install Percona Monitoring and Management (PMM) Server from AWS Marketplace:
 {.power-number}
 
-1. Go to [AWS Marketplace](https://aws.amazon.com/marketplace) and search for **Percona Monitoring and Management Server** or [access the PMM Server listing] directly.
+1. Go to [AWS Marketplace](https://aws.amazon.com/marketplace) and search for **Percona Monitoring and Management Server** or [access the PMM Server listing](https://aws.amazon.com/marketplace/pp/prodview-uww55ejutsnom?sr=0-1&ref_=beagle&applicationId=AWSMPContessa) directly.
 
 2. Click **Continue to Subscribe** on the PMM Server listing page, review the terms and conditions, then click **Continue to Configuration**.
 
