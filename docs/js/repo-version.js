@@ -1,6 +1,5 @@
-
 var xhr = new XMLHttpRequest();
-xhr.open('GET', ABS_BASE_URL + '/../versions.json');
+xhr.open('GET',  'https://api.github.com/repos/percona/pmm-doc');
 xhr.onload = function () {
     var info = JSON.parse(this.responseText);
 
