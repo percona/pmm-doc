@@ -122,6 +122,6 @@ By default, Grafana uses the timezone from your web browser. However, you can ch
 
 ### Set user timezone
 
-1. On the left menu, hover over the {{icon.configuration}} **Configuration**, then click **Preferences**
+1. On the left menu, hover over the {{icon.configuration}} **Configuration**, then click **Preferences**.
 2. On the Preferences tab, click on **Timezone** and select an option from the drop-down menu.
 3. Click **Save**.
