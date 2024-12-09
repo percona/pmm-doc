@@ -18,13 +18,13 @@ PMM's user interface is a browser application based on [Grafana].
 
    - Password: `admin`
 
-4. Click _Log in_.
+4. Click **Log in**.
 
 5. If this is your first time logging in, you'll be asked to set a new password. (We recommend you do.)
 
-   - Either enter a new password in both fields and click _Submit_, or,
+   - Either enter a new password in both fields and click **Submit**, OR
 
-   - click _Skip_ to use the default password.
+   - click **Skip** to use the default password.
 
 6. The PMM Home dashboard loads.
 
@@ -68,7 +68,7 @@ There are two ways to open the dashboard search page. (Each takes you to the sam
 
 ![!Search dashboards by name](../_images/PMM_Home_Dashboard_Search.png)
 
-1. Click _Search dashboards by name_ and begin typing any part of the dashboard name (in this example, "_Instances_").
+1. Click **Search dashboards by name** and begin typing any part of the dashboard name (in this example, **Instances**).
 
    ![!Search dashboards by name](../_images/PMM_Home_Dashboard_Search_String.png)
 
@@ -78,7 +78,7 @@ There are two ways to open the dashboard search page. (Each takes you to the sam
 
 ### Open a dashboard with the menu
 
-In the [main menu](../details/interface.md#main-menu), the {{icon.dashboards}} _PMM Dashboards_ icon reveals a submenu containing links to all PMM dashboards grouped by service type. (This menu will replace the [shortcut menu](../details/interface.md#shortcut-menu) which has links to commonly-used dashboards.)
+In the [main menu](../details/interface.md#main-menu), the {{icon.dashboards}} **PMM Dashboards** icon reveals a submenu containing links to all PMM dashboards grouped by service type. (This menu will replace the [shortcut menu](../details/interface.md#shortcut-menu) which has links to commonly-used dashboards.)
 
 ## Panels
 
@@ -105,7 +105,7 @@ At the top of each panel and to the right of the panel name is the _panel menu_.
 
 ### View
 
-The _View_ menu items opens panels in full-window mode. This is useful for graphs with several metrics.
+The **View** menu items opens panels in full-window mode. This is useful for graphs with several metrics.
 
 Exit a panel's full window mode by pressing _Escape_ or clicking the left arrow <i class="uil uil-arrow-left"></i> next to the dashboard name.
 
@@ -118,10 +118,10 @@ Exit a panel's full window mode by pressing _Escape_ or clicking the left arrow 
 
 ## Timezones
 
-By default Grafana uses the timezone from your web browser. However, you can change this setting.
+By default, Grafana uses the timezone from your web browser. However, you can change this setting.
 
 ### Set user timezone
 
-1. On the left menu, hover your cursor over your avatar and then click _Preferences_.
-2. Click to select an option in the _Timezone list_.
-3. Click _Save_.
+1. On the left menu, hover over the {{icon.configuration}} **Configuration**, then click **Preferences**
+2. On the Preferences tab, click on **Timezone** and select an option from the drop-down menu.
+3. Click **Save**.
