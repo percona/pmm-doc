@@ -370,6 +370,9 @@ FLAGS:
 
 === "Enable all collectors"
 
+    !!! caution alert alert-warning "Warning"
+      Before using `--enable-all-collectors` with MongoDB Service, be aware that the MongoDB exporter's memory usage may increase significantly when monitoring MongoDB 8.0+ clusters, especially with sharding and multiple collections. Consider using specific collectors instead if you frequently create new collections or work with many collections.
+     
     To enable all collectors, pass the parameter `--enable-all-collectors` in the `pmm-admin add mongodb` command.
     This will enable `collstats`, `dbstats`, `indexstats`, `topmetrics`, `currentopmetrics` and `fcv` collectors.
 
