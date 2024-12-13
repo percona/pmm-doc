@@ -1,6 +1,6 @@
 # Share dashboards and panels
 
-When you need to share a dashboard with your team members, you can either send them a direct link to the dashboard, or render and send the dashboard as a .PNG image.
+When you need to share a dashboard with your team members, you can either send them a direct link to the dashboard, or render and send each panel as a .PNG image.
 
 ## Share as direct link
 
@@ -15,7 +15,7 @@ When you need to share a dashboard with your team members, you can either send t
        If your current domain is different than the one specified in the Grafana .INI configuration file, PMM will ask you to correct this mismatch before you can generate a short URL:
     ![!image](../_images/PMM_Common_Panel_Menu_Share.png)
 
-## Share as a PNG file
+## Share a panel as a PNG file
 
 To enable image rendering:
 
@@ -47,13 +47,13 @@ To enable image rendering:
    percona/pmm-server:2
    ```
 
-## Render Dashboard image
+## Render Panel image
 
-To Render the dashboard image:
+To Render the panel image:
 {.power-number}
 
-1. Go to the dashboard that you want to share.
-2. Click at the top of the dashboard to display the panel menu.
+1. Go to the dashboard with the panel that you want to share.
+2. Click at the top of the panel to display the panel menu.
 3. Select **Share** to reveal the **Share Panel**.
 4. Click **Direct link rendered image**. This opens a new browser tab.
 5. Wait for the image to be rendered, then use your browser's Image Save function to download the image.    
