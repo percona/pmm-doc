@@ -9,7 +9,7 @@ To share a panel via direct link:
 
 1. Go to the dashboard with the panel that you want to share.
 2. Click at the top of the panel to display the panel menu: 
-   ![!image](../_images/share_panel.png)
+   ![!image](../../../_images/share_panel.png)
 
 3. Select **Share** to reveal the **Share Panel** window and either:
 
@@ -51,6 +51,7 @@ To enable image rendering:
     -e GF_RENDERING_CALLBACK_URL=https://pmm-server:8443/graph/ \
     perconalab/pmm-server:3.0.0-beta
     ```
+
 ### Render panel image
 
 To Render a panel image:
