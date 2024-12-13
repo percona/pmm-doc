@@ -5,11 +5,10 @@ When you need to share a dashboard with your team members, you can either send t
 ## Share as direct link
 
 1. Go to the dashboard that you want to share.
-2. Click at the top of the dashboard to display the panel menu.
-3. Select **Share** to reveal the **Share Panel** and either:  
+3. Click the **Share** icon at the top of the dashboard to reveal the **Share** window and either:  
 
     - copy and send the full URL for the dashboard, OR
-    - toggle the **Short URL** option to generate a simple link with a unique identifier
+    - toggle the **Shorten URL** option to generate a simple link with a unique identifier
 
 !!! hint alert alert-success "Tip"
        If your current domain is different than the one specified in the Grafana .INI configuration file, PMM will ask you to correct this mismatch before you can generate a short URL:
@@ -35,7 +34,7 @@ To enable image rendering:
    docker rm pmm-server
    ```
 
-3. Start a new PMM Server container with the GF_RENDERING_SERVER_URL and GF_RENDERING_CALLBACK_URL environment variables. For example:
+3. Start a new PMM Server container with the `GF_RENDERING_SERVER_URL` and `GF_RENDERING_CALLBACK_URL` environment variables. For example:
 
    ```sh
    docker run -d \
@@ -47,13 +46,13 @@ To enable image rendering:
    percona/pmm-server:2
    ```
 
-### Render Panel image
+### Render panel image
 
-To Render the panel image:
-{.power-number}
+To Render a panel image:
 
 1. Go to the dashboard with the panel that you want to share.
-2. Click at the top of the panel to display the panel menu.
-3. Select **Share** to reveal the **Share Panel**.
-4. Click **Direct link rendered image**. This opens a new browser tab.
+2. Click at the top of the panel to display the panel menu:
+   ![!image](../_images/share_panel.png)
+3. Select **Share** to reveal the **Share Panel** window.
+4. In the **Link** tab, click **Direct link rendered image**. This opens a new browser tab.
 5. Wait for the image to be rendered, then use your browser's Image Save function to download the image.    
