@@ -14,3 +14,46 @@ When you need to share a dashboard with your team members, you can either send t
 !!! hint alert alert-success "Tip"
        If your current domain is different than the one specified in the Grafana .INI configuration file, PMM will ask you to correct this mismatch before you can generate a short URL:
     ![!image](../_images/PMM_Common_Panel_Menu_Share.png)
+
+## Share as a PNG file
+
+To enable image rendering:
+
+1. Deploy the Grafana Image Renderer container alongside PMM Server:
+
+   ```sh
+   docker run -d \
+   --name renderer \
+   -e IGNORE_HTTPS_ERRORS=true \
+   grafana/grafana-image-renderer:latest
+   ```
+
+2. Stop your existing PMM Server container:
+
+   ```sh 
+   docker stop pmm-server
+   docker rm pmm-server
+   ```
+
+3. Start a new PMM Server container with the GF_RENDERING_SERVER_URL and GF_RENDERING_CALLBACK_URL environment variables. For example:
+
+   ```sh
+   docker run -d \
+   --name pmm-server \
+   -p 443:443 \
+   --volumes-from pmm-data \   
+   -e GF_RENDERING_SERVER_URL=http://renderer:8081/render \
+   -e GF_RENDERING_CALLBACK_URL=http://pmm-server:3000/graph/ \
+   percona/pmm-server:2
+   ```
+
+## Render Dashboard image
+
+To Render the dashboard image:
+{.power-number}
+
+1. Go to the dashboard that you want to share.
+2. Click at the top of the dashboard to display the panel menu.
+3. Select **Share** to reveal the **Share Panel**.
+4. Click **Direct link rendered image**. This opens a new browser tab.
+5. Wait for the image to be rendered, then use your browser's Image Save function to download the image.    
