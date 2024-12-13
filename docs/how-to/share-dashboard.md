@@ -43,7 +43,7 @@ To enable image rendering:
    -p 443:443 \
    --volumes-from pmm-data \   
    -e GF_RENDERING_SERVER_URL=http://renderer:8081/render \
-   -e GF_RENDERING_CALLBACK_URL=http://pmm-server:3000/graph/ \
+   -e GF_RENDERING_CALLBACK_URL=https://pmm-server:443/graph/ \
    percona/pmm-server:2
    ```
 
