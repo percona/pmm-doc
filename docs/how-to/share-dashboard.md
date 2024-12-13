@@ -2,10 +2,14 @@
 
 When you need to share a dashboard with your team members, you can either send them a direct link to the dashboard, or render and send each panel as a .PNG image.
 
-## Share as direct link
+## Share panel as direct link
 
-1. Go to the dashboard that you want to share.
-3. Click the **Share** icon at the top of the dashboard to reveal the **Share** window and either:  
+1. Go to the dashboard with the panel that you want to share.
+2. Click at the top of the panel to display the panel menu: 
+   ![!image](../_images/share_panel.png)
+
+3. Select **Share** to reveal the **Share Panel** window and either:
+
 
     - copy and send the full URL for the dashboard, OR
     - toggle the **Shorten URL** option to generate a simple link with a unique identifier
@@ -19,32 +23,32 @@ When you need to share a dashboard with your team members, you can either send t
 To enable image rendering:
 
 1. Deploy the Grafana Image Renderer container alongside PMM Server:
-
-   ```sh
-   docker run -d \
-   --name renderer \
-   -e IGNORE_HTTPS_ERRORS=true \
-   grafana/grafana-image-renderer:latest
-   ```
+   
+    ```sh
+    docker run -d \
+    --name renderer \
+    -e IGNORE_HTTPS_ERRORS=true \
+    grafana/grafana-image-renderer:latest
+    ```
 
 2. Stop your existing PMM Server container:
 
-   ```sh 
-   docker stop pmm-server
-   docker rm pmm-server
-   ```
+    ```sh 
+    docker stop pmm-server
+    docker rm pmm-server
+    ```
 
 3. Start a new PMM Server container with the `GF_RENDERING_SERVER_URL` and `GF_RENDERING_CALLBACK_URL` environment variables. For example:
 
-   ```sh
-   docker run -d \
-   --name pmm-server \
-   -p 443:443 \
-   --volumes-from pmm-data \   
-   -e GF_RENDERING_SERVER_URL=http://renderer:8081/render \
-   -e GF_RENDERING_CALLBACK_URL=https://pmm-server:443/graph/ \
-   percona/pmm-server:2
-   ```
+    ```sh
+    docker run -d \
+    --name pmm-server \
+    -p 443:443 \
+    --volumes-from pmm-data \   
+    -e GF_RENDERING_SERVER_URL=http://renderer:8081/render \
+    -e GF_RENDERING_CALLBACK_URL=https://pmm-server:443/graph/ \
+    percona/pmm-server:2
+    ```
 
 ### Render panel image
 
@@ -52,7 +56,6 @@ To Render a panel image:
 
 1. Go to the dashboard with the panel that you want to share.
 2. Click at the top of the panel to display the panel menu:
-   ![!image](../_images/share_panel.png)
 3. Select **Share** to reveal the **Share Panel** window.
 4. In the **Link** tab, click **Direct link rendered image**. This opens a new browser tab.
 5. Wait for the image to be rendered, then use your browser's Image Save function to download the image.    
