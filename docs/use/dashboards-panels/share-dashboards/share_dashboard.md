@@ -43,7 +43,8 @@ To enable image rendering:
 
 3. Start a new PMM Server container with the required environment variables:
 
-    ```docker run -d \
+    ```sh
+    docker run -d \
     --name pmm-server \
     --network=pmm-network \
     -p 8443:443 \
