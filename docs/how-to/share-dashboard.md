@@ -47,7 +47,7 @@ To enable image rendering:
    percona/pmm-server:2
    ```
 
-## Render Panel image
+### Render Panel image
 
 To Render the panel image:
 {.power-number}
