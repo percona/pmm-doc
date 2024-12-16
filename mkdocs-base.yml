@@ -67,6 +67,7 @@ extra_javascript:
   #  - js/lightgallery.min.js
   - js/promptremover.js
   - js/consent.js
+  - js/repo-version.js
 
 markdown_extensions:
   attr_list: {}
