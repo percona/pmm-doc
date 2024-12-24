@@ -24,7 +24,7 @@ The dashboard contains three panels:
 
 ![!image](../_images/PMM_Query_Analytics_Panels_Filters.jpg)
 
-- The *Filter* panel on the left hand side of the dashboard lists the filters grouped by category. It also shows the percentage of the main metrics (explained below). If you select a different metric, the percentages on the left panel will change as per this metric. When you select a metric, it reduces the overview list as per the matching filter.
+- The *Filter* panel on the left-hand side of the dashboard lists the filters grouped by category. It also shows the percentage of the main metrics (explained below). If you select a different metric, the percentages on the left panel will change as per this metric. When you select a metric, it reduces the overview list as per the matching filter.
 - The first five of each category are shown. If there are more, the list is expanded by clicking *Show all* beside the category name, and collapsed again with *Show top 5*.
 - Applying a filter may make other filters inapplicable. These become grayed out and inactive.
 - Click the chart symbol <i class="uil uil-graph-bar"></i> to navigate directly to an item's associated dashboard.
@@ -120,12 +120,12 @@ Delete the search text and press Enter to see the full list again.
 
 - The first column is the object’s identifier. For *Query*, it is the query’s [Fingerprint](../details/glossary/#fingerprint).
 - The second column is the *Main metric*, containing a reduced graphical representation of the metric over time, called a *sparkline*, and a horizontal meter, filled to reflect a percentage of the total value.
-- Additional values are revealed as mouse-over tool-tips.
+- Additional values are revealed as mouse-over tooltips.
 
 ### Tool-tips
 
 - For the *Query* dimension, hovering over the information icon <i class="fa fa-info-circle"></i> reveals the query ID and its example.
-- Hovering on a column header reveals an informative tool-tip for that column.
+- Hovering on a column header reveals an informative tooltip for that column.
 - Hovering on the main metric sparkline highlights the data point and a tooltip shows the data value under the cursor.
 
 ![!image](../_images/PMM_Query_Analytics_Main_Metric_Sparkline.jpg)
@@ -144,7 +144,7 @@ Delete the search text and press Enter to see the full list again.
 
     ![!image](../_images/PMM_Query_Analytics_Devices_Add_Columns.jpg)
 
-- When clicked, a text field and list of available metrics are revealed. Select a metric or enter a search string to reduce the list. Selecting a metric adds it to the panel.
+- When clicked, a text field and a list of available metrics are revealed. Select a metric or enter a search string to reduce the list. Selecting a metric adds it to the panel.
 - A metric column is removed by clicking on the column heading and selecting *Remove column*.
 - The value plotted in the *main metric* column can be changed by clicking a metric column heading and selecting *Swap with main metric*.
 
@@ -155,7 +155,7 @@ Delete the search text and press Enter to see the full list again.
 
 ### Pagination
 
-- The pagination device lets you move forwards or backwards through pages, jump to a specific page, and choose how many items are listed per page.
+- The pagination device lets you move forward or backward through pages, jump to a specific page, and choose how many items are listed per page.
 
     ![!image](../_images/PMM_Query_Analytics_Devices_Pagination.jpg)
 
@@ -190,11 +190,11 @@ The *Details* tab contains a *Query time distribution* bar (only for MySQL datab
     - *Sum*: A summation of the metric for the selected query, and the percentage of the total;
     - *Per Query Stats*: The value of the metric per query.
 
-- Each row in the table is a metric. The contents depends on the chosen dimension.
+- Each row in the table is a metric. The contents depend on the chosen dimension.
 
 - *Metadata* table:
 
-    PMM 2.39.0 now includes a metadata table for QAN to address the issue of identifying problematic queries. This feature allows you easily identify the services, nodes, and labels associated with your identified queries.
+    PMM 2.39.0 now includes a metadata table for QAN to address the issue of identifying problematic queries. This feature allows you to easily identify the services, nodes, and labels associated with your identified queries.
     
     The **Metadata** table shows the following information:
 
@@ -202,9 +202,9 @@ The *Details* tab contains a *Query time distribution* bar (only for MySQL datab
     - *Environment*: Environment being used such as Dev, Staging, Production, etc.
     - *Node Name*: Name or identifier of a node.
     - *Node type*: Type of the node.
-    - *User name*: User name of database being monitored.
+    - *User name*: Username of the database being monitored.
     - *Service Name*: The name or identifier of the service.
-    - *Service type*: The service which is being monitored. For example, MySQL, PostgreSQl, etc.
+    - *Service type*: The type of service being monitored. For example, MySQL, PostgreSQL, etc.
 
     ![!image](../_images/PMM_QAN_metadata.png)
 
@@ -216,7 +216,7 @@ For PostgreSQL queries (when using `pg_stat_monitor`) the top query will also be
 Other useful metrics (when using *pg_stat_monitor*) to monitor PostgreSQL Server performance are [Histograms](https://github.com/percona/pg_stat_monitor/blob/master/docs/USER_GUIDE.md#histogram). 
 *Histograms* provide more explicit information about number of queries for fingerprint (`queryid`). Ranges are from 0 seconds up to 100 seconds.  
 
-Here is picture of *histogram* in graph:
+Here is a picture of *histogram* in graph:
 ![!image](../_images/PMM_Query_Analytics_Tabs_Details_Histogram.png)
 
 ### Examples Tab
@@ -250,11 +250,11 @@ Below is an illustration of the same query using values instead of placeholders.
 ![!image](../_images/PMM_Query_Analytics_Tabs_Explain_With_Values.png)
 
 The image shown above illustrates a query with two placeholders. Therefore, you must enter the correct values in both fields. After filling in these values, click *Explain* to get the results like in the previous PMM versions without data leaks.
-You will get result like in previous PMM versions. This method of `explain` prevents data leak.
+You will get results like in previous PMM versions. This method of `explain` prevents data leaks.
 
 !!! note alert alert-primary "'Explain' for MongoDB"
 
-    To run Explain you need the same permissions as for executing the original query. For example, to run explain on `updates` you need update permissions.  
+    To run the `EXPLAIN` command, you need the same permissions as for executing the original query. For example, if you want to run `EXPLAIN` on an `UPDATE` query, you need to have `update` permissions
 
     Example: Grant the `explainRole` with update permissions.
 
@@ -285,7 +285,6 @@ The *Plan* tab shows the plan for PostgreSQL queries (only available when using 
 QAN offers support for two types of query sources: `pg_stat_monitor` (PGSM) and `pg_stat_statements` (PGSS). While PGSS used to be the default query source, recent PMM versions have transitioned to PGSM. 
 If PGSM is unavailable on your system, QAN will seamlessly fall back to PGSS and you will be notified of this in pmm-admin.
 
-
 PMM has integrated support for [pg_stat_monitor](https://docs.percona.com/pg-stat-monitor/index.html) 2.0 (PGSM 2.0) into QAN starting with version 2.36. This robust tool enhances PostgreSQL query performance monitoring by providing access to the latest improvements and fixes included in PGSM2, including:
 
 - Improved internal architecture that results in fewer lock acquisitions and increases performance by approximately 20%.
@@ -293,19 +292,29 @@ PMM has integrated support for [pg_stat_monitor](https://docs.percona.com/pg-sta
 - Enhanced consistency with `pg_stat_statements` so that the `pg_stat_monitor` view has identical column names, columns, and data types as `pg_stat_statements` for every major version of PostgreSQL from versions 11 to 15.
 - A bucket status indication (done vs. current) eliminates the need for the tool to evaluate bucket status and facilitates accurate data display.
 - The generation of a unique ID for a query makes it easier to monitor query planning, execution, and performance regardless of version, database, user, or schema.
-- It has backward compatibility with your historical data (data collected by older PMM and PGSM)
+- Backward compatibility with your historical data (data collected by older PMM and PGSM)
 - More detailed histogram ranges
 - Security improvements
-- All previous PGSM versions are still supported
+- Support for all previous PGSM versions
 
-!!! note alert alert-primary "Postgres 15"
-    You will probably need to grant more permissions to the user in PostgreSQL 15. An error message will appear in the `pmm-agent` log if more permissions are required. This behavior is pertaining to PostgreSQL and not PMM.
+### PostreSQL 9.x
 
-    You can use this query:
+PMM 2.43.0 upgraded the 'pg_query_go' package to version 5. This version helps parse PostgreSQL queries in QAN, provides improved functionality, and enables subsequent upgrades of important dependencies.
+
+However, this new version does not support listing PostgreSQL database tables for versions 9.4, 9.5, and 9.6 in QAN. Since all PostgreSQL 9.x versions have already reached their end-of-life status, we recommend upgrading to a supported version of PostgreSQL.
+
+If you're looking to upgrade, you can easily [install the latest version of Percona Distribution for PostgreSQL](https://docs.percona.com/postgresql/16/installing.html). 
+
+
+### PostreSQL 15
+You will probably need to grant more permissions to the user in PostgreSQL 15. An error message will appear in the `pmm-agent` log if more permissions are required. This behavior pertains to PostgreSQL and not PMM.
+
+You can use this query:
     ```
     CREATE USER pmm WITH SUPERUSER ENCRYPTED PASSWORD 'USERNAME';
     ```
     where `USERNAME` should be replaced by the user.
+
 
 ## Query Analytics for MongoDB
 
