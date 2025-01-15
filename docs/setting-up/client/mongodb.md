@@ -24,82 +24,42 @@ Run the example codes below in a `mongo` session to:
 !!! caution alert alert-warning "Important"
     Values for username (`user`) and password (`pwd`) are examples. Replace them before using these code snippets.
 
-### Create roles with privileges for backups and QAN
+### Create a role with privileges for monitoring and QAN
+
+This role contains the minimum privileges required for monitoring and Query Analytics. 
 
 ```{.javascript data-prompt=">"}
  db.getSiblingDB("admin").createRole({
    "role": "explainRole",
    "privileges": [
       {
-         "resource": {
-            "db": "",
-            "collection": ""
+         "resource": { "db": "", "collection": ""
          },
-         "actions": [
-            "collStats",
-            "dbHash",
-            "dbStats",
-            "find",
-            "listIndexes",
-            "listCollections"
-         ]
-     },
-     {
-         "resource": {
-            "db": "",
-            "collection": "system.profile"
-         },
-         "actions": [
-            "dbStats",
-            "collStats",
-            "indexStats"
-         ]
+         "actions": [ "dbHash", "find", "listIndexes", "listCollections"  ]
       },
       {
-         "resource": {
-            "db": "",
-            "collection": "system.version"
-         },
-         "actions": [
-            "find"
-         ]
+         "resource": { "db": "", "collection": "system.version"  },
+         "actions": [ "find" ]
       }
    ],
    "roles": []
 })
 ```    
+### Create a role with privileges for backup management
+
+This role is required only if you intend to use PMM backup management features.
 
 ```{.javascript data-prompt=">"}
  db.getSiblingDB("admin").createRole({
     "role": "pbmAnyAction",
-    "privileges": [{
-        "resource": {
-            "anyResource": true
-        },
-        "actions": [
-            "anyAction"
-        ]
-    }],
+    "privileges": [
+      {
+        "resource": { "anyResource": true  },
+        "actions": [ "anyAction" ]
+      }
+    ],
     "roles": []
 });
-```
-
-### Create/update user and assign created roles
-
-```{.javascript data-prompt=">"}
- db.getSiblingDB("admin").createUser({
-    user: "pmm",
-    pwd: "pmm",
-    roles: [
-        { role: "explainRole", db: "admin" },
-        { role: "read", db: "local" },
-        { "db" : "admin", "role" : "readWrite", "collection": "" },
-        { "db" : "admin", "role" : "backup" },
-        { "db" : "admin", "role" : "clusterMonitor" },
-        { "db" : "admin", "role" : "restore" },
-        { "db" : "admin", "role" : "pbmAnyAction" }
-    ]
-})
 ```
 
 ### Permissions for advanced metrics
@@ -110,14 +70,52 @@ To fetch advanced metrics like usage statistics for collection and indexes, use 
 db.getSiblingDB("admin").updateRole(
   "explainRole",
   {
-    privileges: [
+    "privileges": [
       {
-        resource: { db: "", collection: "" },
-        actions: ["collStats", "dbStats", "indexStats"]
-      }
+        "resource": { "db": "", "collection": "" },
+        "actions": [ "collStats", "dbStats", "indexStats" ]
+      },
+      {
+        "resource": { "db": "", "collection": "system.profile" },
+        "actions": [ "dbStats", "collStats", "indexStats" ]
+      },
     ]
   }
 )
+```
+
+### Create/update user and assign created roles
+
+User with minimum privileges for monitoring:
+
+```{.javascript data-prompt=">"}
+ db.getSiblingDB("admin").createUser({
+    "user": "pmm",
+    "pwd": "pmm",
+    "roles": [
+        { "db": "admin", "role": "explainRole" },
+        { "db": "local", "role": "read" },
+        { "db": "admin". "role": "clusterMonitor" }
+    ]
+})
+```
+
+If you intent to use PMM's backup management features, additional permissions are required: 
+
+```{.javascript data-prompt=">"}
+ db.getSiblingDB("admin").createUser({
+    "user": "pmm",
+    "pwd": "pmm",
+    "roles": [
+        { "db" : "admin", "role": "explainRole" },
+        { "db" : "local", "role": "read" },
+        { "db" : "admin", "role" : "readWrite", "collection": "" },
+        { "db" : "admin", "role" : "backup" },
+        { "db" : "admin", "role" : "clusterMonitor" },
+        { "db" : "admin", "role" : "restore" },
+        { "db" : "admin", "role" : "pbmAnyAction" }
+    ]
+})
 ```
 
 ## Profiling
@@ -202,15 +200,19 @@ When successful, PMM Client will print `MongoDB Service added` with the service'
 !!! hint alert alert-success "Tips"
     - When adding nodes to a sharded cluster, ensure to add each node separately using the `--cluster mycluster` option. This allows the [MongoDB Cluster Summary](../../details/dashboards/dashboard-mongodb-cluster-summary.md) dashboard to populate correctly. 
     - You can also use the `--replication-set` option to specify a replication set, altough they are automatically detected. For instance, you can use `--replication-set config` for your config servers; `--replication-set rs1` for your servers in the first replica set, `--replication-set rs2` for your servers in the second replica set, and so on.
+    - If you are running mongos routers using containers, make sure to specify the `diagnosticDataCollectionDirectoryPath` in order for pmm-agent to be able to capture mongos metrics properly. For example: `mongos --setParameter diagnosticDataCollectionDirectoryPath=/var/log/mongo/mongos.diagnostic.data/`
+
 
 ### Examples
 
+Add basic data collection
 ```sh
 pmm-admin add mongodb \
 --username=pmm_mongodb --password=password \
 --query-source=profiler --cluster=mycluster
 ```
 
+Add complete data collection with a custom service name
 ```sh
 pmm-admin add mongodb \
 --username=pmm_mongodb --password=password \
